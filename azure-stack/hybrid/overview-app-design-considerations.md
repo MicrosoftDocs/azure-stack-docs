@@ -30,9 +30,9 @@ Essentially, these are questions you need to think about before creating a hybri
 - Identify and evaluate the app components.
 - Evaluate app components against the pillars.
 
-## Evaluate the application components
+## Evaluate the app components
 
-Each component of an app has its own specific role within the larger app and should be reviewed with all design considerations. Each component's requirements and features should map to these considerations to help determine the application architecture.
+Each component of an app has its own specific role within the larger app and should be reviewed with all design considerations. Each component's requirements and features should map to these considerations to help determine the app architecture.
 
 Decompose your app into its components by studying your app's architecture and determining what it consists of. Components can also include other apps that your app interacts with. As you identify the components, evaluate your intended hybrid operations according to their characteristics by asking these questions:
 
@@ -47,8 +47,7 @@ The common app components to include in your inventory are listed in Table 1.
 
 ### Table 1. Common app components
 
-
-| **Component** | **Hybrid application guidance** |
+| **Component** | **Hybrid app guidance** |
 | ---- | ---- |
 | Client connections | Your app (on any device) can access users in various ways, from a single-entry point, including the following ways:<br>-   A client-server model that requires the user to have a client installed to work with the app. A server-based app that's accessed from a browser.<br>-   Client connections can include notifications when the connection is broken or alerts when roaming charges may apply. |
 | Authentication  | Authentication can be required for a user connecting to the app, or from one component connecting to another. |
@@ -177,7 +176,7 @@ For the core discussion of this pillar, see [*Resiliency*](https://docs.microsof
 
 ## Manageability
 
-The considerations for how you manage your hybrid apps are critical in designing your architecture. A well-managed hybrid app provides an infrastructure as code that enables the integration of consistent application code in a common development pipeline. By implementing consistent system-wide and individual testing of changes to the infrastructure, you can ensure an integrated deployment if the changes pass the tests, allowing them to be merged into the source code.
+The considerations for how you manage your hybrid apps are critical in designing your architecture. A well-managed hybrid app provides an infrastructure as code that enables the integration of consistent app code in a common development pipeline. By implementing consistent system-wide and individual testing of changes to the infrastructure, you can ensure an integrated deployment if the changes pass the tests, allowing them to be merged into the source code.
 
 For the core discussion of this pillar, see [*DevOps*](/azure/architecture/framework/#devops) in the five pillars of architecture excellence.
 
@@ -230,5 +229,5 @@ It can seem like a time-consuming task beforehand, but you easily get your retur
 For more information, see the following resources:
 
 - [Hybrid cloud](https://azure.microsoft.com/overview/hybrid-cloud/)
-- [Hybrid cloud applications](https://azure.microsoft.com/solutions/hybrid-cloud-app/)
+- [Hybrid cloud apps](https://azure.microsoft.com/solutions/hybrid-cloud-app/)
 - [Develop Azure Resource Manager templates for cloud consistency](https://aka.ms/consistency)

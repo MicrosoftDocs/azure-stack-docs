@@ -58,9 +58,9 @@ Deployment automation systems are the key control point in the DevOps Patterns. 
 
 Availability in the context of the DevPattern means being able to recover any state information associated with your workflow, such as test results, code dependencies, or other artifacts. To assess your availability requirements, consider two common metrics:
 
--   Recovery Time Objective (RTO) specifies how long you can go without a system.
+- Recovery Time Objective (RTO) specifies how long you can go without a system.
 
--   Recovery Point Objective (RPO) indicates how much data you can afford to lose if a disruption in service affects the system.
+- Recovery Point Objective (RPO) indicates how much data you can afford to lose if a disruption in service affects the system.
 
 In practice, RTO, and RPO imply redundancy and backup. On the global Azure cloud, availability isn't a question of hardware recovery—that's part of Azure—but rather ensuring you maintain the state of your DevOps systems. On Azure Stack Hub, hardware recovery may be a consideration.
 
@@ -87,6 +87,7 @@ This pattern isn't recommended:
 ## Next steps
 
 To learn more about topics introduced in this article:
+
 - See the [Azure DevOps documentation](/azure/devops) to learn more about Azure DevOps and related tools, including Azure Repos, and Azure Pipelines.
 - See the [Azure Stack family of products and solutions](/azure-stack) to learn more about the entire portfolio of products and solutions.
 

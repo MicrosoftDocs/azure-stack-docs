@@ -131,6 +131,7 @@ For more information about service principal creation and using a certificate fo
 ## Next steps
 
 To learn more about topics introduced in this article:
+
 - Watch [Dynamically scale apps between datacenters and public cloud](https://www.youtube.com/watch?v=2lw8zOpJTn0) for an overview of how this pattern is used.
 - See [Hybrid app design considerations](overview-app-design-considerations.md) to learn more about best practices and to answer additional questions you might have.
 - This pattern uses the Azure Stack family of products, including Azure Stack Hub. See the [Azure Stack family of products and solutions](/azure-stack) to learn more about the entire portfolio of products and solutions.
