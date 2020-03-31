@@ -28,7 +28,7 @@ Use this article as a guide to get started using Azure Stack Hub storage develop
 For the storage client libraries, be aware of the version that is compatible with the REST API. You must also specify the Azure Stack Hub endpoint in your code.
 
 
-::: moniker range=">azs-2002"
+::: moniker range=">=azs-2002"
 ### 2002 update or newer versions
 
 | Client library | Azure Stack Hub supported version | Link | Endpoint specification |
