@@ -126,7 +126,7 @@ You can use the dashboard. For more information on the Kubernetes dashboard, see
 
 ## Custom Virtual Networks
 
-If you face connectivity issues accessing the Kubernetes dashboard after you deploy Kubernetes to a [custom virtual network](https://docs.microsoft.com/en-us/azure-stack/user/kubernetes-aks-engine-custom-vnet), ensure that the target subnet/s are linked to the route table and network security group resources created by AKS engine.
+If you face connectivity issues accessing the Kubernetes dashboard after you deploy Kubernetes to a [custom virtual network](https://docs.microsoft.com/azure-stack/user/kubernetes-aks-engine-custom-vnet), ensure that the target subnet/s are linked to the route table and network security group resources created by AKS engine.
 
 Make sure that the network security group rules allow communication between the master nodes and the Kubernetes dashboard pod IP. This can be validated by using the ping command from a master node.
 
