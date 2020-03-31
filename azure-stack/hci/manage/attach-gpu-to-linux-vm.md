@@ -19,8 +19,8 @@ This document assumes you have the Azure Stack HCI cluster deployed and VMs inst
 1. Install the NVIDIA GPU(s) physically into the appropriate server(s) following OEM instructions and BIOS recommendations.
 2. Power on each server.
 3. Sign in using an account with administrative privileges to the server(s) with the NVIDIA GPU installed.
-4. Open **Device Manager** and navigate to the *other devices* section. You should see a device listed as "PCI Express Graphics Processing Unit."
-5. Right-click on "PCI Express Graphics Processing Unit" to bring up the **Properties** page. Click **Details**. From the dropdown under **Property**, select "Location paths."
+4. Open **Device Manager** and navigate to the *other devices* section. You should see a device listed as "3D Video Controller."
+5. Right-click on "3D Video Controller" to bring up the **Properties** page. Click **Details**. From the dropdown under **Property**, select "Location paths."
 6. Note the value with string PCIRoot as highlighted in the screen shot below. Right-click on **Value** and copy/save it.
     :::image type="content" source="media/attach-gpu-to-linux-vm/pciroot.png" alt-text="Location Path Screenshot":::
 7. Open Windows PowerShell with elevated privileges and execute the `Dismount-VMHostAssignableDevice` cmdlet to dismount the GPU device for DDA to VM. Replace the *LocationPath* value with the value for your device obtained in step 6.
