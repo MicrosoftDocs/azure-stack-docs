@@ -4,7 +4,7 @@ description: This article details how to deploy the operating system for Azure S
 author: JohnCobb1
 ms.author: v-johcob 
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 03/31/2020
 ---
 
 # Deploy Azure Stack HCI
@@ -76,6 +76,6 @@ Now you're ready to get your hardware provider's latest firmware updates.
 1. Select the hardware provider's product name to go to the company's Azure Stack HCI solutions website to get the product's latest firmware updates.
 
 ## Next steps
-To perform the next management task related to this article, see:K
+To perform the next management task related to this article, see:
 > [!div class="nextstepaction"]
 > [Creating volumes in Azure Stack HCI](../manage/create-volumes.md)
