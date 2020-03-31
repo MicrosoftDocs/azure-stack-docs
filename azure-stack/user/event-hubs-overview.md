@@ -12,6 +12,8 @@ ms.lastreviewed: 11/27/2019
 
 # Event Hubs on Azure Stack Hub overview
 
+[!INCLUDE [preview-banner](../includes/event-hubs-preview.md)]
+
 Event Hubs on Azure Stack Hub allows you to realize hybrid cloud scenarios. Streaming and event-based solutions are supported, for both on-premises and Azure cloud processing. Whether your scenario is hybrid (connected), or disconnected, your solution can support processing of events/streams at large scale. Your scenario is only bound by the Event Hubs Cluster size, which you can provision according to your needs. 
 
 ## Features 
@@ -23,6 +25,7 @@ The Event Hubs editions (on Azure Stack Hub and on Azure) offer a high degree of
 | Operator administrator experience | ✔ | ✘ |
 | Kafka support | ✔ | ✔ |
 | Same set of SDKs | ✔ | ✔ |
+| Authorize access to Event Hubs using Azure Active Directory | ✘ | ✔ |
 | Capture feature | ✘ | ✔ |
 | Geo-disaster recovery | ✘ | ✔ |
 | Azure Monitor | ✔ | ✔ |
@@ -35,7 +38,7 @@ In addition, Azure Resource Management operations can be accomplished using Azur
 The [Azure Event Hubs documentation](/azure/event-hubs/) applies to both editions of Event Hubs: Event Hubs on Azure Stack Hub, and Azure Event Hubs. This documentation contains topics on using Event Hubs and activities such as:
 
 - Details on [Event Hubs concepts](/azure/event-hubs/event-hubs-features)
-- How to [create an Event Hubs cluster and namespace](/azure/event-hubs/event-hubs-dedicated-cluster-create-portal)
+- How to [create an Event Hubs cluster and namespace](event-hubs-quickstart-cluster-portal.md)
 - How to create an [event hub](/azure/event-hubs/event-hubs-create#create-an-event-hub)
 - How to stream [using the Kafka protocol](/azure/event-hubs/event-hubs-quickstart-kafka-enabled-event-hubs)
 
@@ -51,6 +54,6 @@ To learn more about the Event Hubs on Azure Stack Hub operator experience, refer
 
 ## Next steps
 
-If it's not available in your subscription, work with your administrator to [install the Event Hubs on Azure Stack Hub resource provider](../operator/event-hubs-rp-overview.md).
+If Event Hubs is not available in your subscription, work with your administrator to [install the Event Hubs on Azure Stack Hub resource provider](../operator/event-hubs-rp-overview.md).
 
 If you have Event Hubs installed and you're ready to use it, consult the [Event Hubs documentation](/azure/event-hubs/event-hubs-about) for more details on the service.
