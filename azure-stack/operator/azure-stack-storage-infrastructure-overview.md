@@ -26,9 +26,9 @@ This article describes the health and operational status of Azure Stack Hub stor
 
 Powered by Windows Server software, Azure Stack Hub defines storage capabilities with a combination of Storage Spaces Direct (S2D) and Windows Server Failover Clustering. This combination provides a performant, scalable, and resilient storage service.
 
-Azure Stack Hub integrated system partners offer many solution variations, including a wide range of storage flexibility. You currently can select a combination of three drive types: NVMe (non-volatile memory express), SATA/SAS SSD (solid-state drive), HDD (hard disk drive).
+Azure Stack Hub integrated system partners offer many solution variations, including a wide range of storage flexibility. You currently can select up to two drive types from the three supported drive types: NVMe (non-volatile memory express), SATA/SAS SSD (solid-state drive), HDD (hard disk drive). 
 
-Storage Spaces Direct features a cache to maximize storage performance. In an Azure Stack Hub appliance with single or multiple types of drives, Storage Spaces Direct automatically use all drives of the "fastest" (NVMe &gt; SSD &gt; HDD) type for caching. The remaining drives are used for capacity. The drives could be grouped into either an "all-flash" or "hybrid" deployment:
+Storage Spaces Direct features a cache to maximize storage performance. In an Azure Stack Hub appliance with one drive type (i.e. NVMe or SSD) all drives are used for capacity. If there are two drive types, Storage Spaces Direct automatically use all drives of the "fastest" (NVMe &gt; SSD &gt; HDD) type for caching. The remaining drives are used for capacity. The drives could be grouped into either an "all-flash" or "hybrid" deployment:
 
 ![Azure Stack Hub storage infrastructure](media/azure-stack-storage-infrastructure-overview/image1.png)
 

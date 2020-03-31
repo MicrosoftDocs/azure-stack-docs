@@ -20,6 +20,8 @@
     href: manage/delete-volumes.md
   - name: Replace drives
     href: manage/replace-drives.md
+  - name: Attach GPU to Linux VM
+    href: manage/attach-gpu-to-linux-vm.md
 - name: Concepts
   items:
   - name: Choose drives
