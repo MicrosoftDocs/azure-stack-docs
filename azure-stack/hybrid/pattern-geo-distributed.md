@@ -1,5 +1,5 @@
 ---
-title: Geo-distributed app pattern for the intelligent edge using Azure and Azure Stack Hub.
+title: Geo-distributed app pattern
 description: Learn about the geo-distributed app pattern for the intelligent edge using Azure and Azure Stack Hub.
 author: BryanLa
 ms.topic: article
@@ -7,15 +7,14 @@ ms.date: 11/05/2019
 ms.author: bryanla
 ms.reviewer: anajod2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub user, I want to learn about the geo-distributed app pattern so I can direct traffic to specific endpoints based on various metrics.
+# Keyword: geo-distributed app pattern azure stack hub
 
 ---
 
+# Geo-distributed app pattern
 
-# Geo-distributed pattern
-
-Learn how to provide app endpoints across multiple regions, and route user traffic based on location and compliance needs.
+Learn how to provide app endpoints across multiple regions and route user traffic based on location and compliance needs.
 
 ## Context and problem
 
@@ -64,7 +63,7 @@ The pattern ensures seamless management and familiar interface between environme
 ## When to use this pattern
 
 - My organization has international branches requiring custom regional security and distribution policies.
-- Each of my organization’s offices pulls employee, business, and facility data, requiring reporting activity per local regulations and time zone.
+- Each of my organization's offices pulls employee, business, and facility data, requiring reporting activity per local regulations and time zone.
 - High scale requirements can be met by horizontally scaling out apps, with multiple app deployments being made within a single region, as well as across regions, to handle extreme load requirements.
 - The applications must be highly available and responsive to client requests even in the case of a single region outage.
 
