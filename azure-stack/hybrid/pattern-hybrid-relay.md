@@ -1,6 +1,6 @@
 ---
-title: Pattern for implementing a hybrid relay solution using Azure and Azure Stack Hub.
-description: Learn how to use Azure and Azure Stack Hub services, to connect to edge resources or devices protected by firewalls.
+title: Hybrid relay pattern in Azure and Azure Stack Hub
+description: Use the hybrid relay pattern to connect to edge resources or devices protected by firewalls in Azure and Azure Stack Hub.
 author: BryanLa
 ms.topic: article
 ms.date: 11/05/2019
@@ -8,23 +8,22 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub user, I
+# Keyword: hybrid relay pattern azure stack hub
 
 ---
 
-
 # Hybrid relay pattern
 
-Learn how to connect to resources or devices at the edge, that are protected by firewalls using Azure Service Bus Relays.
+Learn how to connect to edge resources or devices protected by firewalls using the hybrid relay pattern and Azure Service Bus Relays.
 
 ## Context and problem
 
-Edge devices are often behind a corporate firewall or NAT device. Although they're secure, they may be unable to communicate with the public cloud, or edge devices on other corporate networks. It may be necessary to expose certain ports and functionality to users in the public cloud in a secure manner. 
+Edge devices are often behind a corporate firewall or NAT device. Although they're secure, they may be unable to communicate with the public cloud, or edge devices on other corporate networks. It may be necessary to expose certain ports and functionality to users in the public cloud in a secure manner.
 
 ## Solution
 
-The hybrid relay pattern uses Azure Service Bus Relays to establish a WebSockets tunnel, between two endpoints that can't directly communicate. Devices that aren't on-premises, but need to connect to an on-premises endpoint,  will connect to an endpoint in the public cloud. This endpoint will redirect the traffic, on predefined routes over a secure channel. An endpoint inside the on-premises environment receives the traffic, and routes it to the correct destination. 
+The hybrid relay pattern uses Azure Service Bus Relays to establish a WebSockets tunnel, between two endpoints that can't directly communicate. Devices that aren't on-premises, but need to connect to an on-premises endpoint,  will connect to an endpoint in the public cloud. This endpoint will redirect the traffic, on predefined routes over a secure channel. An endpoint inside the on-premises environment receives the traffic, and routes it to the correct destination.
 
 ![hybrid relay solution architecture](media/pattern-hybrid-relay/solution-architecture.png)
 
@@ -33,7 +32,7 @@ Here's how the solution works:
 1. A device connects to the Virtual Machine (VM) in Azure, on a predefined port.
 2. Traffic is forwarded to the Service Bus relay in Azure.
 3. The VM on Azure Stack Hub, which has already established a long-lived connection to the Service Bus Relay receives the traffic and forwards it on to the destination.
-4. The on-premises service or endpoint processes the request. 
+4. The on-premises service or endpoint processes the request.
 
 ## Components
 
@@ -60,7 +59,7 @@ These tunnels and connections aren't redundant. To ensure high-availability, you
 
 ### Manageability
 
-This solution can span many devices and locations, which could get unwieldy. Azure’s IoT services can automatically bring new locations and devices online and keep them up-to-date.
+This solution can span many devices and locations, which could get unwieldy. Azure's IoT services can automatically bring new locations and devices online and keep them up-to-date.
 
 ### Security
 
