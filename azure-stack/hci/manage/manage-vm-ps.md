@@ -14,6 +14,8 @@ ms.reviewer: JasonGerend
 
 Windows PowerShell can be used to create and manage your virtual machines (VMs) on Azure Stack HCI. This article discusses how to manage individual VMs. If you want to manage multiple VMs or cluster-wide VM settings, such as load-balancing VMs across your cluster, see [Manage Azure Stack HCI clusters using PowerShell].
 
+VM management is best done from a remote computer running Windows 10, rather than on a host server in the cluster. This Windows 10 PC is called the management computer.
+
 For the complete reference documentation for managing Hyper-V VMs using PowerShell, see [Hyper-V reference](https://docs.microsoft.com/powershell/module/hyper-v/?view=win10-ps).
 
 ## Run Windows PowerShell
@@ -25,18 +27,22 @@ The Windows Powershell app is used to perform all the tasks in this article. It 
 
 ## Get VM inventory
 
-Use the `Get-VM` cmdlet to return a list of all virtual machines. For more information, see [Get-VM](https://docs.microsoft.com/powershell/module/hyper-v/get-vm?view=win10-ps) reference documentation.
+The following example returns a list of all VMs in a cluster.
 
+```powershell
+$Servers=(Get-ClusterNode -Cluster "ClusterName").Name
+Get-VM -CimSession $Servers
+```
 The following example returns a list of all running VMs by adding a filter using the `Where-Object` command. For more information, see [Using the Where-Object](<https://docs.microsoft.com/previous-versions/windows/it-pro/windows-powershell-1.0/ee177028(v=technet.10)>) documentation.
 
 ```powershell
-Get-VM -ComputerName hci_cluster1  | Where-Object -Property State -eq "Running"
+Get-VM -ComputerName | Where-Object -Property State -eq "Running"
 ```
 
 The next example returns a list of all shut-down VMs.
 
 ```powershell
-Get-VM -ComputerName hci_cluster1  | Where-Object -Property State -eq "Off"
+Get-VM -ComputerName | Where-Object -Property State -eq "Off"
 ```
 
 ## Start and stop a VM
@@ -46,13 +52,13 @@ Use the `Start-VM` and `Stop-VM` commands to start or stop a VM. For detailed in
 The following example shows how to start a VM named TestVM:
 
 ```powershell
-Start-VM -Name TestVM
+Start-VM -ComputerName TestVM
 ```
 
 The following example shows how to shut-down a VM named TestVM:
  
 ```powershell
-Stop-VM -Name TestVM
+Stop-VM -ComputerName TestVM
 ```
 
 ## Move a VM
