@@ -122,7 +122,7 @@ For more details on the steps listed below, see the [Azure Monitor documentation
    * Select a **Subscription** to link to by selecting from the drop-down list if the default selected is not appropriate.
    * For **Resource Group**, select an existing resource group that contains one or more Azure virtual machines.
 
-    :::image type="content" source="media/monitor/mcreate-loganalytics-workspace-02.png" alt-text="Create Log Analytics resource blade":::
+    :::image type="content" source="media/monitor/create-loganalytics-workspace-02.png" alt-text="Create Log Analytics resource blade":::
 
 3. After providing the required information on the **Log Analytics Workspace** pane, click **OK**.  
 
