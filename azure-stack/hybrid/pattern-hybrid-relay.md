@@ -8,7 +8,7 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: As an Azure Stack Hub user, I
+# Intent: As an Azure Stack Hub user, I want to use the hybrid relay pattern in Azure and Azure Stack Hub to connect to edge resources protected by firewalls.
 # Keyword: hybrid relay pattern azure stack hub
 
 ---
