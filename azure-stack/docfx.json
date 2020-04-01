@@ -85,10 +85,6 @@
         "exclude": [
           "**/obj/**",
           "**/includes/**",
-          "asdk/**",
-          "operator/**",
-          "partner/**",
-          "user/**",
           "_themes/**",
           "_themes.pdf/**",
           "README.md",
@@ -107,10 +103,6 @@
         ],
         "exclude": [
           "**/obj/**",
-          "asdk/**",
-          "operator/**",
-          "partner/**",
-          "user/**",
           "_themes/**",
           "_themes.pdf/**"
         ]
