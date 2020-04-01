@@ -85,6 +85,10 @@
         "exclude": [
           "**/obj/**",
           "**/includes/**",
+          "asdk/**",
+          "operator/**",
+          "partner/**",
+          "user/**",
           "_themes/**",
           "_themes.pdf/**",
           "README.md",
@@ -101,6 +105,70 @@
           "**/*.jpg",
           "**/*.svg"
         ],
+        "exclude": [
+          "**/obj/**",
+          "asdk/**",
+          "operator/**",
+          "partner/**",
+          "user/**",
+          "_themes/**",
+          "_themes.pdf/**"
+        ]
+      },
+      {
+        "files": [
+          "**/*.png",
+          "**/*.jpg",
+          "**/*.svg"
+        ],
+        "src": "asdk",
+        "dest": "asdk",
+        "group": "version-ash",
+        "exclude": [
+          "**/obj/**",
+          "_themes/**",
+          "_themes.pdf/**"
+        ]
+      },
+      {
+        "files": [
+          "**/*.png",
+          "**/*.jpg",
+          "**/*.svg"
+        ],
+        "src": "operator",
+        "dest": "operator",
+        "group": "version-ash",
+        "exclude": [
+          "**/obj/**",
+          "_themes/**",
+          "_themes.pdf/**"
+        ]
+      },
+      {
+        "files": [
+          "**/*.png",
+          "**/*.jpg",
+          "**/*.svg"
+        ],
+        "src": "partner",
+        "dest": "partner",
+        "group": "version-ash",
+        "exclude": [
+          "**/obj/**",
+          "_themes/**",
+          "_themes.pdf/**"
+        ]
+      },
+      {
+        "files": [
+          "**/*.png",
+          "**/*.jpg",
+          "**/*.svg"
+        ],
+        "src": "user",
+        "dest": "user",
+        "group": "version-ash",
         "exclude": [
           "**/obj/**",
           "_themes/**",
