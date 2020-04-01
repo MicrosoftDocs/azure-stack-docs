@@ -99,7 +99,8 @@
         "files": [
           "**/*.png",
           "**/*.jpg",
-          "**/*.svg"
+          "**/*.svg",
+          "**/*.gif"
         ],
         "exclude": [
           "**/obj/**",
@@ -111,7 +112,8 @@
         "files": [
           "**/*.png",
           "**/*.jpg",
-          "**/*.svg"
+          "**/*.svg",
+          "**/*.gif"
         ],
         "src": "asdk",
         "dest": "asdk",
@@ -126,7 +128,8 @@
         "files": [
           "**/*.png",
           "**/*.jpg",
-          "**/*.svg"
+          "**/*.svg",
+          "**/*.gif"
         ],
         "src": "operator",
         "dest": "operator",
@@ -141,7 +144,8 @@
         "files": [
           "**/*.png",
           "**/*.jpg",
-          "**/*.svg"
+          "**/*.svg",
+          "**/*.gif"
         ],
         "src": "partner",
         "dest": "partner",
@@ -156,7 +160,8 @@
         "files": [
           "**/*.png",
           "**/*.jpg",
-          "**/*.svg"
+          "**/*.svg",
+          "**/*.gif"
         ],
         "src": "user",
         "dest": "user",
