@@ -29,18 +29,18 @@ All data collected by Azure Monitor fits into one of two fundamental types: metr
 
 1. [Metrics](/azure/azure-monitor/platform/data-platform#metrics) are numerical values that describe some aspect of a system at a particular point in time. They are lightweight and capable of supporting near real-time scenarios. You'll see data collected by Azure Monitor right in their Overview page in the Azure portal.
 
-:::image type="content" source="media/monitor/metrics.png" alt-text="image of metrics ingesting in metrics explorer":::
+:::image type="content" source="media/monitor/metrics.png" alt-text="image of metrics ingesting in metrics explorer" border="false":::
 
 2. [Logs](/azure/azure-monitor/platform/data-platform#logs) contain different kinds of data organized into records with different sets of properties for each type. Telemetry such as events and traces are stored as logs in addition to performance data so that it can all be combined for analysis. Log data collected by Azure Monitor can be analyzed with [queries](/azure/azure-monitor/log-query/log-query-overview) to quickly retrieve, consolidate, and analyze collected data. You can create and test queries using [Log Analytics](/azure/azure-monitor/log-query/portals) in the Azure portal and then either directly analyze the data using these tools or save queries for use with [visualizations](/azure/azure-monitor/visualizations) or [alert rules](/azure/azure-monitor/platform/alerts-overview).
 
-:::image type="content" source="media/monitor/logs.png" alt-text="image of logs ingesting in log analytics":::
+:::image type="content" source="media/monitor/logs.png" alt-text="image of logs ingesting in log analytics" border="false":::
 
 ## How does Windows Admin Center enable you to use Azure Monitor?
 
 From within Windows Admin Center, you can enable two monitoring solutions:
 
 - [Azure Update Management](/windows-server/manage/windows-admin-center/azure/azure-update-management) (in the Updates tool)
-- Azure Monitor for VMs (in server Settings), a.k.a Virtual Machines insights
+- Azure Monitor for VMs (in server Settings), a.k.a Virtual Machine insights
 
 You can get started using Azure Monitor from either of these tools. If you've never used Azure Monitor before, Windows Admin Center will automatically provision a Log Analytics workspace (and Azure Automation account, if needed), and install and configure the Microsoft Monitoring Agent (MMA) on the target server. It will then install the corresponding solution into the workspace.
 
@@ -122,7 +122,7 @@ For more details on the steps listed below, see the [Azure Monitor documentation
    * Select a **Subscription** to link to by selecting from the drop-down list if the default selected is not appropriate.
    * For **Resource Group**, select an existing resource group that contains one or more Azure virtual machines.
 
-    :::image type="content" source="mcreate-loganalytics-workspace-02.png" alt-text="Create Log Analytics resource blade":::
+    :::image type="content" source="media/monitor/mcreate-loganalytics-workspace-02.png" alt-text="Create Log Analytics resource blade":::
 
 3. After providing the required information on the **Log Analytics Workspace** pane, click **OK**.  
 
@@ -134,7 +134,7 @@ Before installing the Microsoft Monitoring Agent for Windows, you need the works
 1. In the Azure portal, click **All services** found in the upper left-hand corner. In the list of resources, type **Log Analytics**. As you begin typing, the list filters based on your input. Select **Log Analytics**.
 2. In your list of Log Analytics workspaces, select *DefaultLAWorkspace* created earlier.
 3. Select **Advanced settings**.
-    :::image type="content" source="log-analytics-advanced-settings-01.png" alt-text="Log Analytics Advance Settings":::
+    :::image type="content" source="media/monitor/log-analytics-advanced-settings-01.png" alt-text="Log Analytics Advance Settings":::
 4. Select **Connected Sources**, and then select **Windows Servers**.   
 5. The value to the right of **Workspace ID** and **Primary Key**. Save both temporarily - copy and paste both into your favorite editor for the time being.
 
@@ -151,13 +151,13 @@ The following steps install and configure the Microsoft Monitoring Agent. **Be s
    1. Paste the **Workspace ID** and **Workspace Key (Primary Key)** that you copied earlier.
     a. If the computer needs to communicate through a proxy server to the Log Analytics service, click **Advanced** and provide the URL and port number of the proxy server.  If your proxy server requires authentication, type the username and password to authenticate with the proxy server and then click **Next**.  
 7. Click **Next** once you have completed providing the necessary configuration settings.
-    :::image type="content" source="log-analytics-mma-setup-laworkspace.png" alt-text="paste Workspace ID and Primary Key":::
+    :::image type="content" source="media/monitor/log-analytics-mma-setup-laworkspace.png" alt-text="paste Workspace ID and Primary Key":::
 8. On the **Ready to Install** page, review your choices and then click **Install**.
 9. On the **Configuration completed successfully** page, click **Finish**.
 
 When complete, the **Microsoft Monitoring Agent** appears in **Control Panel**. You can review your configuration and verify that the agent is connected to Log Analytics. When connected, on the **Azure Log Analytics** tab, the agent displays a message stating: **The Microsoft Monitoring Agent has successfully connected to the Microsoft Log Analytics service.**
 
-:::image type="content" source="log-analytics-mma-laworkspace-status.png" alt-text="MMA connection status to Log Analytics":::
+:::image type="content" source="media/monitor/log-analytics-mma-laworkspace-status.png" alt-text="MMA connection status to Log Analytics":::
 
 To understand the supported configuration, review [supported Windows operating systems](/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems) and [network firewall configuration](/azure/azure-monitor/platform/log-analytics-agent#network-firewall-requirements).
 
