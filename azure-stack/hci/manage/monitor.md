@@ -161,7 +161,123 @@ When complete, the **Microsoft Monitoring Agent** appears in **Control Panel**. 
 
 To understand the supported configuration, review [supported Windows operating systems](/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems) and [network firewall configuration](/azure/azure-monitor/platform/log-analytics-agent#network-firewall-requirements).
 
+## Setting up alerts using Windows Admin Center
 
+In Windows Admin Center, you can configure default alerts that will apply to all servers in your Log Analytics workspace. 
+
+:::image type="content" source="media/monitor/setup1.gif" alt-text="Configure alerts screen shot":::
+
+These are the alerts and their default conditions that you can opt into:
+
+| Alert Name                | Default Condition                                  |
+|---------------------------|----------------------------------------------------|
+| CPU utilization           | Over 85% for 10 minutes                            |
+| Disk capacity utilization | Over 85% for 10 minutes                            |
+| Memory utilization        | Available memory less than 100 MB for 10 minutes   |
+| Heartbeat                 | Fewer than 2 beats for 5 minutes                   |
+| System critical error     | Any critical alert in the cluster system event log |
+| Health service alert      | Any health service fault on the cluster            |
+
+Once you configure the alerts in Windows Admin Center, you can see the alerts in your log analytics workspace in Azure.
+
+:::image type="content" source="media/monitor/setup2.gif" alt-text="View alerts screen shot":::
+
+During this onboarding flow, the steps below are happening under the hood. We detail how to configure them in detail in case you want to manually setup your cluster. 
+
+### Collecting event and performance data
+
+Log Analytics can collect events from the Windows event log and performance counters that you specify for longer term analysis and reporting, and take action when a particular condition is detected.  Follow these steps to configure collection of events from the Windows event log, and several common performance counters to start with.  
+
+1. In the Azure portal, click **More services** found on the lower left-hand corner. In the list of resources, type **Log Analytics**. As you begin typing, the list filters based on your input. Select **Log Analytics**.
+2. Select **Advanced settings**.
+    :::image type="content" source="media/monitor/log-analytics-advanced-settings-01.png" alt-text="Log Analytics Advanced Settings":::
+3. Select **Data**, and then select **Windows Event Logs**.  
+4. Here, add the Health Service event channel by typing in the name below and the click the plus sign **+**.  
+   ```
+   Event Channel: Microsoft-Windows-Health/Operational
+   ```
+5. In the table, check the severities **Error** and **Warning**.   
+6. Click **Save** at the top of the page to save the configuration.
+7. Select **Windows Performance Counters** to enable collection of performance counters on a Windows computer. 
+8. When you first configure Windows Performance counters for a new Log Analytics workspace, you are given the option to quickly create several common counters. They are listed with a checkbox next to each.
+    :::image type="content" source="media/monitor/windows-perfcounters-default.png" alt-text="[Default Windows performance counters selected":::
+    Click **Add the selected performance counters**.  They are added and preset with a ten second collection sample interval.  
+9. Click **Save** at the top of the page to save the configuration.
+
+## Creating alerts based on log data
+
+If you've made it this far, your cluster should be sending your logs and performance counters to Log Analytics. The next step is to create alert rules that automatically run log searches at regular intervals. If results of the log search match particular criteria, then an alert is fired that sends you an email or text notification. Let's explore this below.
+
+### Create a query
+
+Start by opening the Log Search portal.   
+
+1. In the Azure portal, click **All services**. In the list of resources, type **Monitor**. As you begin typing, the list filters based on your input. Select **Monitor**.
+2. On the Monitor navigation menu, select **Log Analytics** and then select a workspace.
+
+The quickest way to retrieve some data to work with is a simple query that returns all records in table. Type the following queries in the search box and click the search button.  
+
+```
+Event
+```
+
+Data is returned in the default list view, and you can see how many total records were returned.
+
+:::image type="content" source="media/monitor/log-analytics-portal-eventlist-01.png" alt-text="Simple query screen shot":::
+
+On the left side of the screen is the filter pane which allows you to add filtering to the query without modifying it directly.  Several record properties are displayed for that record type, and you can select one or more property values to narrow your search results.
+
+Select the checkbox next to **Error** under **EVENTLEVELNAME** or type the following to limit the results to error events.
+
+```
+Event | where (EventLevelName == "Error")
+```
+
+:::image type="content" source="media/monitor/log-analytics-portal-eventlist-02.png" alt-text="Filter screen shot":::
+
+After you have the approriate queries made for events you care about, save them for the next step.
+
+### Create alerts
+Now, let's walk through an example for creating an alert.
+
+1. In the Azure portal, click **All services**. In the list of resources, type **Log Analytics**. As you begin typing, the list filters based on your input. Select **Log Analytics**.
+2. In the left-hand pane, select **Alerts** and then click **New Alert Rule** from the top of the page to create a new alert.
+    :::image type="content" source="media/monitor/alert-rule-02.png" alt-text="Create new alert rule screen shot":::
+3. For the first step, under the **Create Alert** section, you are going to select your Log Analytics workspace as the resource, since this is a log based alert signal.  Filter the results by choosing the specific **Subscription** from the drop-down list if you have more than one, which contains Log Analytics workspace created earlier.  Filter the **Resource Type** by selecting **Log Analytics** from the drop-down list.  Finally, select the **Resource** **DefaultLAWorkspace** and then click **Done**.
+    :::image type="content" source="media/monitor/alert-rule-03.png" alt-text="Create new alert rule step 1 screen shot":::
+4. Under the section **Alert Criteria**, click **Add Criteria** to select your saved query and then specify logic that the alert rule follows.
+5. Configure the alert with the following information:  
+   a. From the **Based on** drop-down list, select **Metric measurement**.  A metric measurement will create an alert for each object in the query with a value that exceeds our specified threshold.  
+   b. For the **Condition**, select **Greater than** and specify a thershold.  
+   c. Then define when to trigger the alert. For example you could select **Consecutive breaches** and from the drop-down list select **Greater than** a value of 3.  
+   d. Under Evaluation based on section, modify the **Period** value to **30** minutes and **Frequency** to 5. The rule will run every five minutes and return records that were created within the last thirty minutes from the current time.  Setting the time period to a wider window accounts for the potential of data latency, and ensures the query returns data to avoid a false negative where the alert never fires.  
+6. Click **Done** to complete the alert rule.
+    :::image type="content" source="media/monitor/alert-signal-logic-02.png" alt-text="Configure alert signal screen shot":::
+7. Now moving onto the second step, provide a name of your alert in the **Alert rule name** field, such as **Alert on all Error Events**.  Specify a **Description** detailing specifics for the alert, and select **Critical(Sev 0)** for the **Severity** value from the options provided.
+8. To immediately activate the alert rule on creation, accept the default value for **Enable rule upon creation**.
+9. For the third and final step, you specify an **Action Group**, which ensures that the same actions are taken each time an alert is triggered and can be used for each rule you define. Configure a new action group with the following information:  
+   a. Select **New action group** and the **Add action group** pane appears.  
+   b. For **Action group name**, specify a name such as **IT Operations - Notify** and a **Short name** such as **itops-n**.  
+   c. Verify the default values for **Subscription** and **Resource group** are correct. If not, select the correct one from the drop-down list.
+   d. Under the Actions section, specify a name for the action, such as **Send Email** and under **Action Type** select **Email/SMS/Push/Voice** from the drop-down list. The **Email/SMS/Push/Voice** properties pane will open to the right in order to provide additional information.  
+   e. On the **Email/SMS/Push/Voice** pane, select and setup your preference. For example, enable **Email** and provide a valid email SMTP address to deliver the message to.  
+   f. Click **OK** to save your changes.<br><br> 
+
+    :::image type="content" source="media/monitor/action-group-properties-01.png" alt-text="Create new action group screen shot":::
+
+10. Click **OK** to complete the action group. 
+11. Click **Create alert rule** to complete the alert rule. It starts running immediately.
+    :::image type="content" source="media/monitor/alert-rule-01.png" alt-text="Complete creating new alert rule screen shot":::
+
+### Example alert
+
+For reference, this is what an example alert looks like in Azure.
+
+:::image type="content" source="media/monitor/alert.gif" alt-text="Azure alert screen shot":::
+
+Below is an example of the email that you will be send by Azure Monitor:
+
+:::image type="content" source="media/monitor/warning.png" alt-text="Alert email example screen shot":::
 
 ## Disabling Monitoring
 
