@@ -125,4 +125,4 @@ To delete the cluster:
 In this quickstart, you learned how to create an Event Hubs cluster using the portal. Now continue with the "Send and receive events" quickstarts, starting with the first one:  
 
 > [!div class="nextstepaction"]
-> [Send events to or receive events from Azure Event Hubs using .NET Core](/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)
+> [Send events to or receive events from Event Hubs](/azure/event-hubs/get-started-dotnet-standard-send-v2)
