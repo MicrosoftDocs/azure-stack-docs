@@ -65,11 +65,8 @@ The following versions are supported with Azure Stack Hub Storage:
 
 Azure Storage services APIs:
 
-2002 update or newer versions:
+1811 update or newer versions:
 
-- [2019-02-02](https://docs.microsoft.com/rest/api/storageservices/version-2019-02-02)
-- [2018-11-09](https://docs.microsoft.com/rest/api/storageservices/version-2018-11-09)
-- [2018-03-28](https://docs.microsoft.com/rest/api/storageservices/version-2018-03-28)
 - [2017-11-09](https://docs.microsoft.com/rest/api/storageservices/version-2017-11-09)
 - [2017-07-29](https://docs.microsoft.com/rest/api/storageservices/version-2017-07-29)
 - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
@@ -80,8 +77,6 @@ Azure Storage services APIs:
 
 Previous versions:
 
-- [2017-11-09](https://docs.microsoft.com/rest/api/storageservices/version-2017-11-09)
-- [2017-07-29](https://docs.microsoft.com/rest/api/storageservices/version-2017-07-29)
 - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
 - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
 - [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
@@ -90,10 +85,18 @@ Previous versions:
 
 Azure Storage services management APIs:
 
+1811 update or newer versions:
+
 - [2017-10-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 - [2017-06-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 - [2016-12-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 - [2016-05-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+
+Previous versions:
+
 - [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 - [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 - [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
