@@ -95,13 +95,17 @@
       },
       {
         "group": "version-ash",
-        "src" : "hci",
-        "dest" : "hci",
+        "src" : ".",
+        "dest" : "version",
         "files": [
           "**/*.md",
           "**/*.yml"
         ],
         "exclude": [
+          "asdk/**",
+          "operator/**",
+          "partner/**",
+          "user/**",
           "**/obj/**",
           "**/includes/**",
           "_themes/**",
@@ -198,10 +202,14 @@
           "**/*.svg",
           "**/*.gif"
         ],
-        "src": "hci",
-        "dest": "hci",
+        "src": ".",
+        "dest": "version",
         "group": "version-ash",
         "exclude": [
+          "asdk/**",
+          "operator/**",
+          "partner/**",
+          "user/**",
           "**/obj/**",
           "_themes/**",
           "_themes.pdf/**"
