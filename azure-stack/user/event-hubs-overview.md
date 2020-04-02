@@ -29,7 +29,7 @@ Using Event Hubs on Azure Stack Hub, you can implement business scenarios such a
 
 ## Build Hybrid solutions
 
-Build solutions that ingest and process edge data locally on your Azure Stack Hub. Send aggregated data to Azure for further processing, visualization, and storage. If appropriate, leverage serverless computing on Azure.
+Build hybrid solutions that ingest and process edge data locally on your Azure Stack Hub. Send aggregated data to Azure for further processing, visualization, and storage. If appropriate, leverage serverless computing on Azure.
 
 [![Hybrid solutions diagram](media/event-hubs-overview/hybrid-architecture-ehoash.png)](media/event-hubs-overview/hybrid-architecture-ehoash.png#lightbox)
 
