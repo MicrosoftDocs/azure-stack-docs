@@ -4,9 +4,9 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 03/20/2020
+ms.date: 03/31/2020
 ms.author: sethm
-ms.reviewer: prchint
+ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
@@ -476,7 +476,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 The 1908 release of Azure Stack Hub must be applied on the 1907 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1907.26.70](https://support.microsoft.com/help/4541348)
+- [Azure Stack Hub hotfix 1.1907.29.80](https://support.microsoft.com/help/4555650)
 
 The Azure Stack Hub 1908 Update requires **Azure Stack Hub OEM version 2.1 or later** from your system's hardware provider. OEM updates include driver and firmware updates to your Azure Stack Hub system hardware. For more information about applying OEM updates, see [Apply Azure Stack Hub original equipment manufacturer updates](azure-stack-update-oem.md)
 
