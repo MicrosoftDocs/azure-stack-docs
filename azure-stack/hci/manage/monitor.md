@@ -11,7 +11,7 @@ ms.date: 04/02/2020
 
 > Applies to: Windows Server 2019
 
-[Azure Monitor](/azure/azure-monitor/overview) collects, analyzes, and acts on telemetry from a variety of resources, including Windows Servers and VMs, both on-premises and in the cloud. Though Azure Monitor pulls data from Azure VMs and other Azure resources, this article focuses on how Azure Monitor works with on-premises servers and VMs running on Azure Stack HCI, specifically with Windows Admin Center.
+[Azure Monitor](/azure/azure-monitor/overview) collects, analyzes, and acts on telemetry from a variety of resources, including Windows servers and VMs, both on-premises and in the cloud. Though Azure Monitor pulls data from Azure VMs and other Azure resources, this article focuses on how Azure Monitor works with on-premises servers and VMs running on Azure Stack HCI, specifically with Windows Admin Center.
 
 ## How does Azure Monitor work?
 :::image type="content" source="media/monitor/azure-monitor-diagram.png" alt-text="diagram of how Azure Monitor works" border="false":::
@@ -59,7 +59,7 @@ If you connect to a different server, but have already setup a Log Analytics wor
 When you set up Azure Monitor for VMs in **Server Settings**, Windows Admin Center enables the Azure Monitor for VMs solution, also known as Virtual Machine insights. This solution allows you to monitor server health and events, create email alerts, get a consolidated view of server performance across your environment, and visualize apps, systems, and services connected to a given server.
 
 > [!NOTE]
-> Despite its name, VM insights works for physical servers as well as virtual machines.
+> Despite its name, Virtual Machine insights works for physical servers as well as virtual machines.
 
 With Azure Monitor's free 5 GB of data/month/customer allowance, you can easily try this out for a server or two without worry of getting charged. Read on to see additional benefits of onboarding servers into Azure Monitor, such as getting a consolidated view of systems performance across the servers in your environment.
 
@@ -69,7 +69,7 @@ The simplest way to onboard your cluster to Azure Monitor is by using the automa
 
 :::image type="content" source="media/monitor/onboarding.gif" alt-text="image of onboarding cluster to Azure Monitor":::
 
-From the Overview page of a server connection, click the new button **Manage alerts**, or go to **Server Settings > Monitoring and alerts**. Within this page, onboard your server to Azure Monitor by clicking **Set up** and completing the setup pane. Admin Center takes care of provisioning the Azure Log Analytics workspace, installing the necessary agent, and ensuring the VM Insights solution is configured. Once complete, your server will send performance counter data to Azure Monitor, enabling you to view and create email alerts based on this server, from the Azure portal.
+From the Overview page of a server connection, click the new button **Manage alerts**, or go to **Server Settings > Monitoring and alerts**. Within this page, onboard your server to Azure Monitor by clicking **Set up** and completing the setup pane. Admin Center takes care of provisioning the Azure Log Analytics workspace, installing the necessary agent, and ensuring the Virtual Machine insights solution is configured. Once complete, your server will send performance counter data to Azure Monitor, enabling you to view and create email alerts based on this server, from the Azure portal.
 
 ## Onboard your cluster manually using PowerShell
 
@@ -77,7 +77,7 @@ If you prefer to onboard your cluster manually, follow the steps below.
 
 ### Configure Health Service
 
-The first thing that you need to do is configure your cluster. As you may know, the [Health Service](/windows-server/failover-clustering/health-service-overview) improves the day-to-day monitoring and operational experience for clusters running Storage Spaces Direct. 
+The first thing that you need to do is configure your cluster. As you may know, the [Health Service](/windows-server/failover-clustering/health-service-overview) improves the day-to-day monitoring and operational experience for clusters running Storage Spaces Direct.
 
 As we saw above, Azure Monitor collects logs from each node that it is running on in your cluster. So, we have to configure the Health Service to write to an event channel, which happens to be:
 
@@ -126,7 +126,7 @@ For more details on the steps listed below, see the [Azure Monitor documentation
 
 3. After providing the required information on the **Log Analytics Workspace** pane, click **OK**.  
 
-While the information is verified and the workspace is created, you can track its progress under **Notifications** from the menu. 
+While the information is verified and the workspace is created, you can track its progress under **Notifications** from the menu.
 
 #### Obtain workspace ID and key
 Before installing the Microsoft Monitoring Agent for Windows, you need the workspace ID and key for your Log Analytics workspace.  This information is required by the setup wizard to properly configure the agent and ensure it can successfully communicate with Log Analytics.  
@@ -135,7 +135,7 @@ Before installing the Microsoft Monitoring Agent for Windows, you need the works
 2. In your list of Log Analytics workspaces, select *DefaultLAWorkspace* created earlier.
 3. Select **Advanced settings**.
     :::image type="content" source="media/monitor/log-analytics-advanced-settings-01.png" alt-text="Log Analytics Advance Settings":::
-4. Select **Connected Sources**, and then select **Windows Servers**.   
+4. Select **Connected Sources**, and then select **Windows Servers**.
 5. The value to the right of **Workspace ID** and **Primary Key**. Save both temporarily - copy and paste both into your favorite editor for the time being.
 
 ### Installing the agent on Windows
@@ -283,14 +283,14 @@ You can also [write custom log queries](/azure/azure-monitor/log-query/get-start
 
 ## Get a consolidated view across multiple servers
 
-If you onboard multiple servers to a single Log Analytics workspace within Azure Monitor, you can get a consolidated view of all these servers from the [Virtual Machines Insights](/azure/azure-monitor/insights/vminsights-overview) solution within Azure Monitor. (Note that only the Performance and Maps tabs of Virtual Machines Insights for Azure Monitor will work with on-premises servers – the health tab functions only with Azure VMs.) To view this in the Azure portal, go to **Azure Monitor > Virtual Machines** (under Insights), and navigate to the **Performance** or **Maps** tabs.
+If you onboard multiple servers to a single Log Analytics workspace within Azure Monitor, you can get a consolidated view of all these servers from the [Virtual Machines insights](/azure/azure-monitor/insights/vminsights-overview) solution within Azure Monitor. (Note that only the Performance and Maps tabs of Virtual Machines Insights for Azure Monitor will work with on-premises servers – the health tab functions only with Azure VMs.) To view this in the Azure portal, go to **Azure Monitor > Virtual Machines** (under Insights), and navigate to the **Performance** or **Maps** tabs.
 
 ## Visualize connected services
 
-When Windows Admin Center onboards a server into the VM Insights solution within Azure Monitor, it also lights up a capability called [Service Map](/azure/azure-monitor/insights/service-map). This capability automatically discovers application components and maps the communication between services so that you can easily visualize connections between servers with great detail from the Azure portal. You can find this by going to the Azure portal and selecting **Azure Monitor > Virtual Machines** (under Insights), and navigating to the **Maps** tab.
+When Windows Admin Center onboards a server into the Virtual Machine insights solution within Azure Monitor, it also lights up a capability called [Service Map](/azure/azure-monitor/insights/service-map). This capability automatically discovers application components and maps the communication between services so that you can easily visualize connections between servers with great detail from the Azure portal. You can find this by going to the Azure portal and selecting **Azure Monitor > Virtual Machines** (under Insights), and navigating to the **Maps** tab.
 
 > [!NOTE]
-> The visualizations for Virtual Machines Insights for Azure Monitor are offered in six public regions currently.  For the latest information, check the [Azure Monitor for VMs documentation](/azure/azure-monitor/insights/vminsights-onboard#log-analytics).  You must deploy the Log Analytics workspace in one of the supported regions to get the additional benefits provided by the Virtual Machines Insights solution described above.
+> The visualizations for Virtual Machine insights for Azure Monitor are offered in six public regions currently.  For the latest information, check the [Azure Monitor for VMs documentation](/azure/azure-monitor/insights/vminsights-onboard#log-analytics). You must deploy the Log Analytics workspace in one of the supported regions to get the additional benefits provided by the Virtual Machine insights solution described above.
 
 ## Disabling monitoring
 
