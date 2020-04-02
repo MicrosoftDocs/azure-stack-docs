@@ -1,6 +1,6 @@
 ---
-title: Pattern for implementing out of stock detection at the edge, using Azure and Azure Stack Edge.
-description: Learn how to use Azure and Azure Stack Edge services, to implement out of stock detection.
+title: Out of stock detection using Azure and Azure Stack Edge
+description: Learn how to use Azure and Azure Stack Edge services to implement out of stock detection.
 author: BryanLa
 ms.topic: article
 ms.date: 11/05/2019
@@ -8,11 +8,10 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Edge user, I want to learn how to use Azure and Azure Stack Edge services to implement out of stock detection.
+# Keyword: azure stack edge out of stock detection
 
 ---
-
 
 # Out of stock detection at the edge pattern
 
@@ -20,7 +19,7 @@ This pattern illustrates how to determine if shelves have out of stock items usi
 
 ## Context and problem
 
-Physical retail stores lose sales because when customers look for an item, it’s not present on the shelf. However, the item could have been in the back of the store and just not been restocked. Stores would like to utilize their staff more efficiently, and get automatically notified when items need restocking.
+Physical retail stores lose sales because when customers look for an item, it's not present on the shelf. However, the item could have been in the back of the store and just not been restocked. Stores would like to utilize their staff more efficiently, and get automatically notified when items need restocking.
 
 ## Solution
 
@@ -28,7 +27,7 @@ The solution example uses an edge device, such as an Azure Stack Edge in each st
 
 ![out of stock at edge solution architecture](media/pattern-out-of-stock-at-edge/solution-architecture.png)
 
-Here’s how the solution works:
+Here's how the solution works:
 1. Images are captured from a network camera over HTTP or RTSP.
 2. The image is resized and sent to the inference driver, which communicates with the ML model to determine if there are any out of stock images.
 3. The ML model returns any out of stock areas.
@@ -58,15 +57,15 @@ Consider the following points when deciding how to implement this solution:
 
 ### Scalability 
 
-Most machine learning models can only run at a certain number of frames per second, depending on the provided hardware. Determine the optimal sample rate from your camera(s), to ensure that the ML pipeline doesn’t back up. Different types of hardware will handle different numbers of cameras and frame rates.
+Most machine learning models can only run at a certain number of frames per second, depending on the provided hardware. Determine the optimal sample rate from your camera(s), to ensure that the ML pipeline doesn't back up. Different types of hardware will handle different numbers of cameras and frame rates.
 
 ### Availability
 
-It’s important to consider what might happen if the edge device loses connectivity. Consider what data might be lost from the Time Series Insights and Power BI dashboard. The example solution as provided isn't designed to be highly available.
+It's important to consider what might happen if the edge device loses connectivity. Consider what data might be lost from the Time Series Insights and Power BI dashboard. The example solution as provided isn't designed to be highly available.
 
 ### Manageability
 
-This solution can span many devices and locations, which could get unwieldy. Azure’s IoT services can automatically bring new locations and devices online and keep them up-to-date. Proper data governance procedures must be followed as well.
+This solution can span many devices and locations, which could get unwieldy. Azure's IoT services can automatically bring new locations and devices online and keep them up-to-date. Proper data governance procedures must be followed as well.
 
 ### Security
 
