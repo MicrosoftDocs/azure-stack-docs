@@ -126,6 +126,10 @@
           "**/*.gif"
         ],
         "exclude": [
+          "asdk/**",
+          "operator/**",
+          "partner/**",
+          "user/**",
           "**/obj/**",
           "_themes/**",
           "_themes.pdf/**"
