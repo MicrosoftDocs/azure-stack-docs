@@ -190,6 +190,22 @@
           "_themes/**",
           "_themes.pdf/**"
         ]
+      },
+      {
+        "files": [
+          "**/*.png",
+          "**/*.jpg",
+          "**/*.svg",
+          "**/*.gif"
+        ],
+        "src": "hci",
+        "dest": "hci",
+        "group": "version-ash",
+        "exclude": [
+          "**/obj/**",
+          "_themes/**",
+          "_themes.pdf/**"
+        ]
       }
     ],
     "overwrite": [],
