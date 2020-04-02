@@ -125,23 +125,6 @@
           "**/*.svg",
           "**/*.gif"
         ],
-        "exclude": [
-          "asdk/**",
-          "operator/**",
-          "partner/**",
-          "user/**",
-          "**/obj/**",
-          "_themes/**",
-          "_themes.pdf/**"
-        ]
-      },
-      {
-        "files": [
-          "**/*.png",
-          "**/*.jpg",
-          "**/*.svg",
-          "**/*.gif"
-        ],
         "src": "asdk",
         "dest": "asdk",
         "group": "version-ash",
@@ -193,6 +176,19 @@
         "src": "user",
         "dest": "user",
         "group": "version-ash",
+        "exclude": [
+          "**/obj/**",
+          "_themes/**",
+          "_themes.pdf/**"
+        ]
+      },
+      {
+        "files": [
+          "**/*.png",
+          "**/*.jpg",
+          "**/*.svg",
+          "**/*.gif"
+        ],
         "exclude": [
           "**/obj/**",
           "_themes/**",
