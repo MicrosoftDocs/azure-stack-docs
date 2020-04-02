@@ -4,7 +4,7 @@ description: Monitor servers and configure alerts with Azure Monitor from Window
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 04/01/2020
+ms.date: 04/02/2020
 ---
 
 # Monitor Azure Stack HCI with Azure Monitor
@@ -27,7 +27,7 @@ Some solutions, like Azure Update Management, also depend on Azure Automation, w
 
 All data collected by Azure Monitor fits into one of two fundamental types: metrics and logs.
 
-1. [Metrics](/azure/azure-monitor/platform/data-platform#metrics) are numerical values that describe some aspect of a system at a particular point in time. They are lightweight and capable of supporting near real-time scenarios. You'll see data collected by Azure Monitor right in their Overview page in the Azure portal.
+1. [Metrics](/azure/azure-monitor/platform/data-platform#metrics) are numerical values that describe some aspect of a system at a particular point in time. They are lightweight and capable of supporting near real-time scenarios. You'll see data collected by Azure Monitor right in the **Overview** page in the Azure portal.
 
 :::image type="content" source="media/monitor/metrics.png" alt-text="image of metrics ingesting in metrics explorer" border="false":::
 
@@ -39,12 +39,12 @@ All data collected by Azure Monitor fits into one of two fundamental types: metr
 
 From within Windows Admin Center, you can enable two monitoring solutions:
 
-- [Azure Update Management](/windows-server/manage/windows-admin-center/azure/azure-update-management) (in the Updates tool)
+- [Azure Update Management](/windows-server/manage/windows-admin-center/azure/azure-update-management) (in the **Updates** tool)
 - Azure Monitor for VMs (in server Settings), a.k.a Virtual Machine insights
 
 You can get started using Azure Monitor from either of these tools. If you've never used Azure Monitor before, Windows Admin Center will automatically provision a Log Analytics workspace (and Azure Automation account, if needed), and install and configure the Microsoft Monitoring Agent (MMA) on the target server. It will then install the corresponding solution into the workspace.
 
-For instance, if you first go to the Updates tool to setup Azure Update Management, Windows Admin Center will:
+For instance, if you first go to the **Updates** tool to setup Azure Update Management, Windows Admin Center will:
 
 1. Install the MMA on the machine
 2. Create the Log Analytics workspace and the Azure Automation account (since an Azure Automation account is necessary in this case)
@@ -56,7 +56,7 @@ If you connect to a different server, but have already setup a Log Analytics wor
 
 ## Azure Monitor for virtual machines (a.k.a. Virtual Machine insights)
 
-When you set up Azure Monitor for VMs in server Settings, Windows Admin Center enables the Azure Monitor for VMs solution, also known as Virtual Machine insights. This solution allows you to monitor server health and events, create email alerts, get a consolidated view of server performance across your environment, and visualize apps, systems, and services connected to a given server.
+When you set up Azure Monitor for VMs in **Server Settings**, Windows Admin Center enables the Azure Monitor for VMs solution, also known as Virtual Machine insights. This solution allows you to monitor server health and events, create email alerts, get a consolidated view of server performance across your environment, and visualize apps, systems, and services connected to a given server.
 
 > [!NOTE]
 > Despite its name, VM insights works for physical servers as well as virtual machines.
@@ -65,11 +65,11 @@ With Azure Monitor's free 5 GB of data/month/customer allowance, you can easily 
 
 ## Onboard your cluster using Windows Admin Center
 
-The simplest way to onboard your cluster to Azure Monitor is by using the automated workflow in Windows Admin Center.
+The simplest way to onboard your cluster to Azure Monitor is by using the automated workflow in Windows Admin Center that configures the Health Service and Log Analytics, then installs the MMA.
 
 :::image type="content" source="media/monitor/onboarding.gif" alt-text="image of onboarding cluster to Azure Monitor":::
 
-This automated onboarding workflow configures the Health Service and Log Analytics, then installs the MMA.
+From the Overview page of a server connection, click the new button **Manage alerts**, or go to **Server Settings > Monitoring and alerts**. Within this page, onboard your server to Azure Monitor by clicking **Set up** and completing the setup pane. Admin Center takes care of provisioning the Azure Log Analytics workspace, installing the necessary agent, and ensuring the VM Insights solution is configured. Once complete, your server will send performance counter data to Azure Monitor, enabling you to view and create email alerts based on this server, from the Azure portal.
 
 ## Onboard your cluster manually using PowerShell
 
@@ -96,7 +96,7 @@ When you run the cmdlet above to set the Health Settings, you cause the events w
 
 ### Configure Log Analytics
 
-Now that you have setup the proper logging on your cluster, the next step is to properly configure log analytics.
+Now that you have setup the proper logging on your cluster, the next step is to properly configure Log Analytics.
 
 To give an overview, [Azure Log Analytics](/azure/azure-monitor/platform/agent-windows) can collect data directly from your physical or virtual Windows computers in your data center or other cloud environment into a single repository for detailed analysis and correlation.
 
@@ -163,7 +163,7 @@ To understand the supported configuration, review [supported Windows operating s
 
 ## Setting up alerts using Windows Admin Center
 
-In Windows Admin Center, you can configure default alerts that will apply to all servers in your Log Analytics workspace. 
+Once you've attached your server to Azure Monitor, you can use the intelligent hyperlinks within the **Settings > Monitoring and alerts** page to navigate to the Azure Portal. In Windows Admin Center, you can easily configure default alerts that will apply to all servers in your Log Analytics workspace. Windows Admin Center automatically enables performance counters to be collected, so you can [create a new alert](/azure/azure-monitor/platform/alerts-log) by customizing one of many pre-defined queries, or write your own.
 
 :::image type="content" source="media/monitor/setup1.gif" alt-text="Configure alerts screen shot":::
 
@@ -178,15 +178,13 @@ These are the alerts and their default conditions that you can opt into:
 | System critical error     | Any critical alert in the cluster system event log |
 | Health service alert      | Any health service fault on the cluster            |
 
-Once you configure the alerts in Windows Admin Center, you can see the alerts in your log analytics workspace in Azure.
+Once you configure the alerts in Windows Admin Center, you can see the alerts in your Log Analytics workspace in Azure.
 
 :::image type="content" source="media/monitor/setup2.gif" alt-text="View alerts screen shot":::
 
-During this onboarding flow, the steps below are happening under the hood. We detail how to configure them in detail in case you want to manually setup your cluster. 
-
 ### Collecting event and performance data
 
-Log Analytics can collect events from the Windows event log and performance counters that you specify for longer term analysis and reporting, and take action when a particular condition is detected.  Follow these steps to configure collection of events from the Windows event log, and several common performance counters to start with.  
+Log Analytics can collect events from the Windows event log and performance counters that you specify for longer term analysis and reporting, and take action when a particular condition is detected. Follow these steps to configure collection of events from the Windows event log, and several common performance counters to start with.  
 
 1. In the Azure portal, click **More services** found on the lower left-hand corner. In the list of resources, type **Log Analytics**. As you begin typing, the list filters based on your input. Select **Log Analytics**.
 2. Select **Advanced settings**.
@@ -204,16 +202,16 @@ Log Analytics can collect events from the Windows event log and performance coun
     Click **Add the selected performance counters**.  They are added and preset with a ten second collection sample interval.  
 9. Click **Save** at the top of the page to save the configuration.
 
-## Creating alerts based on log data
+## Create queries and alerts based on log data
 
 If you've made it this far, your cluster should be sending your logs and performance counters to Log Analytics. The next step is to create alert rules that automatically run log searches at regular intervals. If results of the log search match particular criteria, then an alert is fired that sends you an email or text notification. Let's explore this below.
 
 ### Create a query
 
-Start by opening the Log Search portal.   
+Start by opening the **Log Search** portal.
 
 1. In the Azure portal, click **All services**. In the list of resources, type **Monitor**. As you begin typing, the list filters based on your input. Select **Monitor**.
-2. On the Monitor navigation menu, select **Log Analytics** and then select a workspace.
+2. On the **Monitor** navigation menu, select **Log Analytics** and then select a workspace.
 
 The quickest way to retrieve some data to work with is a simple query that returns all records in table. Type the following queries in the search box and click the search button.  
 
@@ -235,7 +233,7 @@ Event | where (EventLevelName == "Error")
 
 :::image type="content" source="media/monitor/log-analytics-portal-eventlist-02.png" alt-text="Filter screen shot":::
 
-After you have the approriate queries made for events you care about, save them for the next step.
+After you have the appropriate queries made for events you care about, save them for the next step.
 
 ### Create alerts
 Now, let's walk through an example for creating an alert.
@@ -248,7 +246,7 @@ Now, let's walk through an example for creating an alert.
 4. Under the section **Alert Criteria**, click **Add Criteria** to select your saved query and then specify logic that the alert rule follows.
 5. Configure the alert with the following information:  
    a. From the **Based on** drop-down list, select **Metric measurement**.  A metric measurement will create an alert for each object in the query with a value that exceeds our specified threshold.  
-   b. For the **Condition**, select **Greater than** and specify a thershold.  
+   b. For the **Condition**, select **Greater than** and specify a threshold.  
    c. Then define when to trigger the alert. For example you could select **Consecutive breaches** and from the drop-down list select **Greater than** a value of 3.  
    d. Under Evaluation based on section, modify the **Period** value to **30** minutes and **Frequency** to 5. The rule will run every five minutes and return records that were created within the last thirty minutes from the current time.  Setting the time period to a wider window accounts for the potential of data latency, and ensures the query returns data to avoid a false negative where the alert never fires.  
 6. Click **Done** to complete the alert rule.
@@ -275,15 +273,30 @@ For reference, this is what an example alert looks like in Azure.
 
 :::image type="content" source="media/monitor/alert.gif" alt-text="Azure alert screen shot":::
 
-Below is an example of the email that you will be send by Azure Monitor:
+Below is an example of the email that you will be sent by Azure Monitor:
 
 :::image type="content" source="media/monitor/warning.png" alt-text="Alert email example screen shot":::
 
-## Disabling Monitoring
+## Create custom Kusto queries in Log Analytics
 
-To completely disconnect your server from the Log Analytics workspace, uninstall the MMA. This means that this server will no longer send data to the workspace, and all the solutions installed in that workspace will no longer collect and process data from that server. However, this does not affect the workspace itself – all the resources reporting to that workspace will continue to do so. To uninstall the MMA agent within WAC, go to Apps & Features, find the Microsoft Monitoring Agent, and click Uninstall.
+You can also [write custom log queries](/azure/azure-monitor/log-query/get-started-queries) in Azure Monitor using the Kusto query language to collect data from one or more virtual machines.
 
-If you want to turn off a specific solution within a workspace, you will need to [remove the monitoring solution from the Azure portal](/azure/azure-monitor/insights/solutions#remove-a-management-solution). Removing a monitoring solution means that the insights created by that solution will no longer be generated for _any_ of the servers reporting to that workspace. For example, if I uninstall the Azure Monitor for VMs solution, I will no longer see insights about VM or server performance from any of the machines connected to my workspace.
+## Get a consolidated view across multiple servers
+
+If you onboard multiple servers to a single Log Analytics workspace within Azure Monitor, you can get a consolidated view of all these servers from the [Virtual Machines Insights](/azure/azure-monitor/insights/vminsights-overview) solution within Azure Monitor. (Note that only the Performance and Maps tabs of Virtual Machines Insights for Azure Monitor will work with on-premises servers – the health tab functions only with Azure VMs.) To view this in the Azure portal, go to **Azure Monitor > Virtual Machines** (under Insights), and navigate to the **Performance** or **Maps** tabs.
+
+## Visualize connected services
+
+When Windows Admin Center onboards a server into the VM Insights solution within Azure Monitor, it also lights up a capability called [Service Map](/azure/azure-monitor/insights/service-map). This capability automatically discovers application components and maps the communication between services so that you can easily visualize connections between servers with great detail from the Azure portal. You can find this by going to the Azure portal and selecting **Azure Monitor > Virtual Machines** (under Insights), and navigating to the **Maps** tab.
+
+> [!NOTE]
+> The visualizations for Virtual Machines Insights for Azure Monitor are offered in six public regions currently.  For the latest information, check the [Azure Monitor for VMs documentation](/azure/azure-monitor/insights/vminsights-onboard#log-analytics).  You must deploy the Log Analytics workspace in one of the supported regions to get the additional benefits provided by the Virtual Machines Insights solution described above.
+
+## Disabling monitoring
+
+To completely disconnect your server from the Log Analytics workspace, uninstall the MMA. This means that this server will no longer send data to the workspace, and all the solutions installed in that workspace will no longer collect and process data from that server. However, this does not affect the workspace itself; all the resources reporting to that workspace will continue to do so. To uninstall the MMA agent within WAC, go to **Apps & Features**, find the **Microsoft Monitoring Agent**, and click **Uninstall**.
+
+If you want to turn off a specific solution within a workspace, you will need to [remove the monitoring solution from the Azure portal](/azure/azure-monitor/insights/solutions#remove-a-management-solution). Removing a monitoring solution means that the insights created by that solution will no longer be generated for _any_ of the servers reporting to that workspace. For example, if you uninstall the Azure Monitor for VMs solution, you will no longer see insights about VM or server performance from any of the machines connected to your workspace.
 
 ## Next steps
 
