@@ -9,7 +9,7 @@ ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
 # Intent: As an Azure Stack Edge user, I want to learn how to use Azure and Azure Stack Edge services to implement out of stock detection.
-# Keyword: azure stack edge out of stock detection
+# Keyword: azure stack edge stock detection
 
 ---
 
@@ -19,7 +19,7 @@ This pattern illustrates how to determine if shelves have out of stock items usi
 
 ## Context and problem
 
-Physical retail stores lose sales because when customers look for an item, it's not present on the shelf. However, the item could have been in the back of the store and just not been restocked. Stores would like to utilize their staff more efficiently and get automatically notified when items need restocking.
+Physical retail stores lose sales because when customers look for an item, it's not present on the shelf. However, the item could have been in the back of the store and not been restocked. Stores would like to use their staff more efficiently and get automatically notified when items need restocking.
 
 ## Solution
 
