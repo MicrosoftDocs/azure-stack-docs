@@ -31,7 +31,7 @@ This retail analytics pattern uses a tiered approach to inferencing at the edge.
 
 Here's a summary of how the solution works:
 
-1. The Custom Vision AI Dev Kit gets a configuration from IoT Hub which installs the IoT Edge Runtime and an ML model.
+1. The Custom Vision AI Dev Kit gets a configuration from IoT Hub, which installs the IoT Edge Runtime and an ML model.
 2. If the model sees a person, it takes a picture and uploads it to Azure Stack Hub blob storage.
 3. The blob service triggers an Azure Function on Azure Stack Hub.
 4. The Azure Function calls a container with the Face API to get demographic and emotion data from the image.
@@ -70,7 +70,7 @@ To enable this solution to scale across multiple cameras and locations, you'll n
 
 ### Availability
 
-Since this solution is tiered, it's important to think about how to deal with networking or power failures. Depending on business needs, it might be appropriate to implement a mechanism to cache images locally, then forward to Azure Stack Hub when connectivity returns. If the location is large enough, deploying a Data Box Edge with the Face API container to that location might be a better option.
+Since this solution is tiered, it's important to think about how to deal with networking or power failures. Depending on business needs, you might want to implement a mechanism to cache images locally, then forward to Azure Stack Hub when connectivity returns. If the location is large enough, deploying a Data Box Edge with the Face API container to that location might be a better option.
 
 ### Manageability
 
