@@ -4,9 +4,9 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 03/20/2020
+ms.date: 04/02/2020
 ms.author: sethm
-ms.reviewer: prchint
+ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
@@ -109,7 +109,17 @@ For more information about update build types, see [Manage updates in Azure Stac
   | Microsoft.Backup.Admin | backupLocation         | 2016-05-01 |
   | Microsoft.Backup.Admin | backups                | 2016-05-01 |
   | Microsoft.Backup.Admin | operations             | 2016-05-01 |
-  
+
+- When creating a Windows VM using PowerShell, make sure to add the `provisionvmagent` flag if you want the VM to deploy extensions. Without this flag, the VM is created without the guest agent, removing the ability to deploy VM extensions:
+
+   ```powershell
+   $VirtualMachine = Set-AzureRmVMOperatingSystem `
+     -VM $VirtualMachine `
+     -Windows `
+     -ComputerName "MainComputer" `
+     -Credential $Credential -ProvisionVMAgent
+  ```
+
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
@@ -269,11 +279,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - When downloading marketplace items from Azure to Azure Stack Hub, there's a new user interface that enables you to specify a version of the item when multiple versions exist. The new UI is available in both connected and disconnected scenarios. For more information, see [Download marketplace items from Azure to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md).  
 
-- Starting with the 1910 release, the Azure Stack Hub system **requires** an additional /20 private internal IP space. This network is private to the Azure Stack Hub system and can be reused on multiple Azure Stack Hub systems within your datacenter. While the network is private to Azure Stack Hub, it must not overlap with a network in your datacenter. The /20 private IP space is divided into multiple networks that enable running the Azure Stack Hub infrastructure on containers (as previously mentioned in the [1905 release notes](release-notes.md?view=azs-1905)). The goal of running the Azure Stack Hub infrastructure in containers is to optimize utilization and enhance performance. In addition, the /20 private IP space is also used to enable ongoing efforts that will reduce required routable IP space before deployment.
-
-  - Please note that the /20 input serves as a prerequisite to the next Azure Stack Hub update after 1910. When the next Azure Stack Hub update after 1910 releases and you attempt to install it, the update will fail if you haven't completed the /20 input as described in the remediation steps as follows. An alert will be present in the administrator portal until the above remediation steps have been completed. See the [Datacenter network integration](azure-stack-network.md#private-network) article to understand how this new private space will be consumed.
-
-  - Remediation steps: To remediate, follow the instructions to [open a PEP Session](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Prepare a [private internal IP range](azure-stack-network.md#logical-networks) of size /20, and run the following cmdlet (only available starting with 1910) in the PEP session using the following example: `Set-AzsPrivateNetwork -UserSubnet 100.87.0.0/20`. If the operation is performed successfully, you'll receive the message **Azs Internal Network range added to the config**. If successfully completed, the alert will close in the administrator portal. The Azure Stack Hub system can now update to the next version.
+- Starting with the 1910 release, the Azure Stack Hub system **requires** an additional /20 private internal IP space.  See (Network integration planning for Azure Stack)[azure-stack-network.md] for more information.
   
 - The infrastructure backup service deletes partially uploaded backup data if the external storage location runs out of capacity during the upload procedure.  
 
@@ -405,7 +411,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 The 1908 release of Azure Stack Hub must be applied on the 1907 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1907.26.70](https://support.microsoft.com/help/4541348)
+- [Azure Stack Hub hotfix 1.1907.29.80](https://support.microsoft.com/help/4555650)
 
 The Azure Stack Hub 1908 Update requires **Azure Stack Hub OEM version 2.1 or later** from your system's hardware provider. OEM updates include driver and firmware updates to your Azure Stack Hub system hardware. For more information about applying OEM updates, see [Apply Azure Stack Hub original equipment manufacturer updates](azure-stack-update-oem.md)
 
@@ -538,7 +544,7 @@ The 1907 release of Azure Stack Hub must be applied on the 1906 release with the
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1907.26.70](https://support.microsoft.com/help/4541348)
+- [Azure Stack Hub hotfix 1.1907.29.80](https://support.microsoft.com/help/4555650)
 ::: moniker-end
 
 ::: moniker range=">=azs-1907"

@@ -86,6 +86,7 @@ SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-intercep
 |Windows Defender|&#42;.wdcp.microsoft.com<br>&#42;.wdcpalt.microsoft.com<br>&#42;.wd.microsoft.com<br>&#42;.update.microsoft.com<br>&#42;.download.microsoft.com<br>https:\//www.microsoft.com/pkiops/crl<br>https:\//www.microsoft.com/pkiops/certs<br>https:\//crl.microsoft.com/pki/crl/products<br>https:\//www.microsoft.com/pki/certs<br>https:\//secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|Public VIP - /27<br>Public infrastructure Network|
 |NTP|(IP of NTP server provided for deployment)|UDP|123|Public VIP - /27|
 |DNS|(IP of DNS server provided for deployment)|TCP<br>UDP|53|Public VIP - /27|
+|SYSLOG|(IP of SYSLOG server provided for deployment)|TCP<br>UDP|6514<br>514|Public VIP - /27|
 |CRL|(URL under CRL Distribution Points on your certificate)|HTTP|80|Public VIP - /27|
 |LDAP|Active Directory Forest provided for Graph integration|TCP<br>UDP|389|Public VIP - /27|
 |LDAP SSL|Active Directory Forest provided for Graph integration|TCP|636|Public VIP - /27|
