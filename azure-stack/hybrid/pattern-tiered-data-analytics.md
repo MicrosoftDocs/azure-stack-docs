@@ -1,6 +1,6 @@
 ---
-title: Pattern for implementing a tiered data for analytics solution using Azure and Azure Stack Hub.
-description: Learn how to use Azure and Azure Stack Hub services, to implement a tiered data solution across the hybrid cloud.
+title: Tiered data for analytics pattern using Azure and Azure Stack Hub
+description: Learn how to use Azure and Azure Stack Hub to implement a tiered data solution across the hybrid cloud.
 author: BryanLa
 ms.topic: article
 ms.date: 11/05/2019
@@ -8,11 +8,10 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure hybrid user, I want to use Azure and Azure Stack Hub to implement a tiered data solution across the hybrid cloud.
+# Keyword: tiered data pattern azure stack hub
 
 ---
-
 
 # Tiered data for analytics pattern
 
