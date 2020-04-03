@@ -19,7 +19,8 @@ This pattern illustrates how to use Azure Stack Hub and Azure to stage, analyze,
 
 ## Context and problem
 
-One of the problems facing enterprise organizations in the modern technology landscape concerns secure data storage, processing and analyzing. Considerations include:
+One of the problems facing enterprise organizations in the modern technology landscape concerns secure data storage, processing, and analyzing. Considerations include:
+
 - data content
 - location
 - security and privacy requirements
@@ -27,16 +28,17 @@ One of the problems facing enterprise organizations in the modern technology lan
 - maintenance
 - storage warehousing
 
-Azure, in combination with Azure Stack Hub, addresses data concerns and offers low-cost solutions. This solution is best expressed through a distributed manufacturing or logistics company. 
+Azure, in combination with Azure Stack Hub, addresses data concerns and offers low-cost solutions. This solution is best expressed through a distributed manufacturing or logistics company.
 
 The solution is based on the following scenario:
+
 - A large multi-branch manufacturing organization.
-- Rapid and secure data storage, processing, and distribution between global remote locations and its central headquarters are required. 
-- Employee and machinery activity, facility information, and business reporting data that must remain secure. The data must be distributed appropriately, and meet regional compliance policy and industry regulations.
+- Rapid and secure data storage, processing, and distribution between global remote locations and its central headquarters are required.
+- Employee and machinery activity, facility information, and business reporting data that must remain secure. The data must be distributed appropriately and meet regional compliance policy and industry regulations.
 
 ## Solution
 
-Utilizing both on-premises and public cloud environments meets the demands of multi-facility enterprises. Azure Stack Hub offers a rapid, secure, and flexible solution for collecting, processing, storing, and distributing local and remote data. Particularly when security, confidentiality, corporate policy, and regulatory requirements may differ between locations and users. 
+Utilizing both on-premises and public cloud environments meets the demands of multi-facility enterprises. Azure Stack Hub offers a rapid, secure, and flexible solution for collecting, processing, storing, and distributing local and remote data. Particularly when security, confidentiality, corporate policy, and regulatory requirements may differ between locations and users.
 
 ![tiered data for analytics solution architecture](media/pattern-tiered-data-analytics/solution-architecture.png)
 
