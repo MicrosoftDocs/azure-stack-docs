@@ -99,7 +99,7 @@ Deployment_Files will hold two files **DeployResourceGroups.ps1** and **DeployRe
 
     ![Review the folders](./media/azure-stack-network-howto-backup-replicator/image4.png)
 
-3.  Set the context to the target subscription, change the folder to **Deployment_Files**, deploy the resource groups and then start the resource deployment.
+3.  Set the context to the target subscription, change the folder to **Deployment_Files**, deploy the resource groups (run the DeployResourceGroups.ps1 script), and then start the resource deployment (run the DeployResources.ps1 script).
 
     ![Configure and start the deployment](./media/azure-stack-network-howto-backup-replicator/image6.png)
 
