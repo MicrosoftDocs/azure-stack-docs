@@ -70,6 +70,9 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
+- Improvements to Storage infrastructure cluster service logs and events. Logs and events of Storage infrastructure cluster service will be kept up to 14 days for better diagnostics and troubleshooting. 
+
+
 ### Changes
 
  
