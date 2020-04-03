@@ -37,12 +37,13 @@ All data collected by Azure Monitor fits into one of two fundamental types: metr
 
 ## How does Windows Admin Center enable you to use Azure Monitor?
 
-From within Windows Admin Center, you can enable two monitoring solutions:
+From within Windows Admin Center, you can enable three monitoring solutions:
 
+- [Azure Monitor for Clusters](#onboard-your-cluster-using-windows-admin-center)
 - [Azure Update Management](/windows-server/manage/windows-admin-center/azure/azure-update-management) (in the **Updates** tool)
 - Azure Monitor for VMs (in server Settings), a.k.a Virtual Machine insights
 
-You can get started using Azure Monitor from either of these tools. If you've never used Azure Monitor before, Windows Admin Center will automatically provision a Log Analytics workspace (and Azure Automation account, if needed), and install and configure the MMA on the target server. It will then install the corresponding solution into the workspace.
+You can get started using Azure Monitor from any of these tools. If you've never used Azure Monitor before, Windows Admin Center will automatically provision a Log Analytics workspace (and Azure Automation account, if needed), and install and configure the MMA on the target server. It will then install the corresponding solution into the workspace.
 
 For instance, if you first go to the **Updates** tool to setup Azure Update Management, Windows Admin Center will:
 
