@@ -4,14 +4,14 @@ description: Monitor servers and configure alerts with Azure Monitor from Window
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 04/02/2020
+ms.date: 04/03/2020
 ---
 
 # Monitor Azure Stack HCI with Azure Monitor
 
 > Applies to: Windows Server 2019
 
-[Azure Monitor](/azure/azure-monitor/overview) collects, analyzes, and acts on telemetry from a variety of resources, including Windows servers and VMs, both on-premises and in the cloud. Though Azure Monitor pulls data from Azure VMs and other Azure resources, this article focuses on how Azure Monitor works with on-premises servers and VMs running on Azure Stack HCI, specifically with Windows Admin Center.
+[Azure Monitor](/azure/azure-monitor/overview) collects, analyzes, and acts on telemetry from a variety of resources, including Windows servers and virtual machines (VMs), both on-premises and in the cloud. Though Azure Monitor pulls data from Azure VMs and other Azure resources, this article focuses on how Azure Monitor works with on-premises servers and VMs running on Azure Stack HCI, specifically with Windows Admin Center.
 
 ## How does Azure Monitor work?
 :::image type="content" source="media/monitor/azure-monitor-diagram.png" alt-text="diagram of how Azure Monitor works" border="false":::
@@ -19,7 +19,7 @@ Data generated from on-premises Windows Servers is collected in a Log Analytics 
 
 When you enable a monitoring solution in a Log Analytics workspace, all the servers reporting to that workspace will start collecting data relevant to that solution, so that the solution can generate insights for all the servers in the workspace.
 
-To collect telemetry data on an on-premises server and push it to the Log Analytics workspace, Azure Monitor requires the installation of the Microsoft Monitoring Agent, or the MMA. Certain monitoring solutions also require a secondary agent. For example, Azure Monitor for VMs also depends on a ServiceMap agent for additional functionality that this solution provides.
+To collect telemetry data on an on-premises server and push it to the Log Analytics workspace, Azure Monitor requires the installation of the Microsoft Monitoring Agent (MMA). Certain monitoring solutions also require a secondary agent. For example, Azure Monitor for VMs also depends on a ServiceMap agent for additional functionality that this solution provides.
 
 Some solutions, like Azure Update Management, also depend on Azure Automation, which enables you to centrally manage resources across Azure and non-Azure environments. For example, Azure Update Management uses Azure Automation to schedule and orchestrate installation of updates across machines in your environment, centrally, from the Azure portal.
 
@@ -42,17 +42,17 @@ From within Windows Admin Center, you can enable two monitoring solutions:
 - [Azure Update Management](/windows-server/manage/windows-admin-center/azure/azure-update-management) (in the **Updates** tool)
 - Azure Monitor for VMs (in server Settings), a.k.a Virtual Machine insights
 
-You can get started using Azure Monitor from either of these tools. If you've never used Azure Monitor before, Windows Admin Center will automatically provision a Log Analytics workspace (and Azure Automation account, if needed), and install and configure the Microsoft Monitoring Agent (MMA) on the target server. It will then install the corresponding solution into the workspace.
+You can get started using Azure Monitor from either of these tools. If you've never used Azure Monitor before, Windows Admin Center will automatically provision a Log Analytics workspace (and Azure Automation account, if needed), and install and configure the MMA on the target server. It will then install the corresponding solution into the workspace.
 
 For instance, if you first go to the **Updates** tool to setup Azure Update Management, Windows Admin Center will:
 
-1. Install the MMA on the machine
-2. Create the Log Analytics workspace and the Azure Automation account (since an Azure Automation account is necessary in this case)
+1. Install the MMA on the machine.
+2. Create the Log Analytics workspace and the Azure Automation account (because an Azure Automation account is necessary in this case).
 3. Install the Update Management solution in the newly created workspace.
 
 If you want to add another monitoring solution from within Windows Admin Center on the same server, Windows Admin Center will simply install that solution into the existing workspace to which that server is connected. Windows Admin Center will additionally install any other necessary agents.
 
-If you connect to a different server, but have already setup a Log Analytics workspace (either through Windows Admin Center or manually in the Azure Portal), you can also install the MMA agent on the server and connect it up to an existing workspace. When you connect a server into a workspace, it automatically starts collecting data and reporting to solutions installed in that workspace.
+If you connect to a different server, but have already setup a Log Analytics workspace (either through Windows Admin Center or manually in the Azure Portal), you can also install the MMA on the server and connect it up to an existing workspace. When you connect a server into a workspace, it automatically starts collecting data and reporting to solutions installed in that workspace.
 
 ## Azure Monitor for virtual machines (a.k.a. Virtual Machine insights)
 
@@ -92,7 +92,7 @@ To configure the Health Service, you run:
 get-storagesubsystem clus* | Set-StorageHealthSetting -Name "Platform.ETW.MasTypes" -Value "Microsoft.Health.EntityType.Subsystem,Microsoft.Health.EntityType.Server,Microsoft.Health.EntityType.PhysicalDisk,Microsoft.Health.EntityType.StoragePool,Microsoft.Health.EntityType.Volume,Microsoft.Health.EntityType.Cluster"
 ```
 
-When you run the cmdlet above to set the Health Settings, you cause the events we want to begin being written to the *Microsoft-Windows-Health/Operational* event channel.
+Running the cmdlet above tells the Health Setting to start writing events to the *Microsoft-Windows-Health/Operational* event channel.
 
 ### Configure Log Analytics
 
@@ -129,7 +129,7 @@ For more details on the steps listed below, see the [Azure Monitor documentation
 While the information is verified and the workspace is created, you can track its progress under **Notifications** from the menu.
 
 #### Obtain workspace ID and key
-Before installing the Microsoft Monitoring Agent for Windows, you need the workspace ID and key for your Log Analytics workspace.  This information is required by the setup wizard to properly configure the agent and ensure it can successfully communicate with Log Analytics.  
+Before installing the MMA for Windows, you need the workspace ID and key for your Log Analytics workspace.  This information is required by the setup wizard to properly configure the agent and ensure it can successfully communicate with Log Analytics.  
 
 1. In the Azure portal, click **All services** found in the upper left-hand corner. In the list of resources, type **Log Analytics**. As you begin typing, the list filters based on your input. Select **Log Analytics**.
 2. In your list of Log Analytics workspaces, select *DefaultLAWorkspace* created earlier.
@@ -138,22 +138,23 @@ Before installing the Microsoft Monitoring Agent for Windows, you need the works
 4. Select **Connected Sources**, and then select **Windows Servers**.
 5. The value to the right of **Workspace ID** and **Primary Key**. Save both temporarily - copy and paste both into your favorite editor for the time being.
 
-### Installing the agent on Windows
-The following steps install and configure the Microsoft Monitoring Agent. **Be sure to install this agent on each server in your cluster and indicate that you want the agent to run at Windows Startup.**
+### Installing the MMA on Windows
+The following steps install and configure the Microsoft Monitoring Agent.
+
+> [!IMPORTANT]
+> Be sure to install this agent on each server in your cluster and indicate that you want the agent to run at Windows startup.
 
 1. On the **Windows Servers** page, select the appropriate **Download Windows Agent** version to download depending on the processor architecture of the Windows operating system.
 2. Run Setup to install the agent on your computer.
-2. On the **Welcome** page, click **Next**.
-3. On the **License Terms** page, read the license and then click **I Agree**.
-4. On the **Destination Folder** page, change or keep the default installation folder and then click **Next**.
-5. On the **Agent Setup Options** page, choose to connect the agent to Azure Log Analytics and then click **Next**.
-6. On the **Azure Log Analytics** page, perform the following:
-   1. Paste the **Workspace ID** and **Workspace Key (Primary Key)** that you copied earlier.
-    a. If the computer needs to communicate through a proxy server to the Log Analytics service, click **Advanced** and provide the URL and port number of the proxy server.  If your proxy server requires authentication, type the username and password to authenticate with the proxy server and then click **Next**.  
-7. Click **Next** once you have completed providing the necessary configuration settings.
+3. On the **Welcome** page, click **Next**.
+4. On the **License Terms** page, read the license and then click **I Agree**.
+5. On the **Destination Folder** page, change or keep the default installation folder and then click **Next**.
+6. On the **Agent Setup Options** page, choose to connect the agent to Azure Log Analytics and then click **Next**.
+7. On the **Azure Log Analytics** page, paste the **Workspace ID** and **Workspace Key (Primary Key)** that you copied earlier. If the computer needs to communicate through a proxy server to the Log Analytics service, click **Advanced** and provide the URL and port number of the proxy server. If your proxy server requires authentication, type the username and password to authenticate with the proxy server and then click **Next**.  
+8. Click **Next** once you have completed providing the necessary configuration settings.
     :::image type="content" source="media/monitor/log-analytics-mma-setup-laworkspace.png" alt-text="paste Workspace ID and Primary Key":::
-8. On the **Ready to Install** page, review your choices and then click **Install**.
-9. On the **Configuration completed successfully** page, click **Finish**.
+9. On the **Ready to Install** page, review your choices and then click **Install**.
+10. On the **Configuration completed successfully** page, click **Finish**.
 
 When complete, the **Microsoft Monitoring Agent** appears in **Control Panel**. You can review your configuration and verify that the agent is connected to Log Analytics. When connected, on the **Azure Log Analytics** tab, the agent displays a message stating: **The Microsoft Monitoring Agent has successfully connected to the Microsoft Log Analytics service.**
 
@@ -241,7 +242,7 @@ Now, let's walk through an example for creating an alert.
 1. In the Azure portal, click **All services**. In the list of resources, type **Log Analytics**. As you begin typing, the list filters based on your input. Select **Log Analytics**.
 2. In the left-hand pane, select **Alerts** and then click **New Alert Rule** from the top of the page to create a new alert.
     :::image type="content" source="media/monitor/alert-rule-02.png" alt-text="Create new alert rule screen shot":::
-3. For the first step, under the **Create Alert** section, you are going to select your Log Analytics workspace as the resource, since this is a log based alert signal.  Filter the results by choosing the specific **Subscription** from the drop-down list if you have more than one, which contains Log Analytics workspace created earlier.  Filter the **Resource Type** by selecting **Log Analytics** from the drop-down list.  Finally, select the **Resource** **DefaultLAWorkspace** and then click **Done**.
+3. For the first step, under the **Create Alert** section, you are going to select your Log Analytics workspace as the resource, since this is a log-based alert signal.  Filter the results by choosing the specific **Subscription** from the drop-down list if you have more than one, which contains Log Analytics workspace created earlier.  Filter the **Resource Type** by selecting **Log Analytics** from the drop-down list.  Finally, select the **Resource** **DefaultLAWorkspace** and then click **Done**.
     :::image type="content" source="media/monitor/alert-rule-03.png" alt-text="Create new alert rule step 1 screen shot":::
 4. Under the section **Alert Criteria**, click **Add Criteria** to select your saved query and then specify logic that the alert rule follows.
 5. Configure the alert with the following information:  
