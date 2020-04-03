@@ -29,11 +29,11 @@ All data collected by Azure Monitor fits into one of two fundamental types: metr
 
 1. [Metrics](/azure/azure-monitor/platform/data-platform#metrics) are numerical values that describe some aspect of a system at a particular point in time. They are lightweight and capable of supporting near real-time scenarios. You'll see data collected by Azure Monitor right in the **Overview** page in the Azure portal.
 
-:::image type="content" source="media/monitor/metrics.png" alt-text="image of metrics ingesting in metrics explorer" border="false":::
+    :::image type="content" source="media/monitor/metrics.png" alt-text="image of metrics ingesting in metrics explorer" border="false":::
 
 2. [Logs](/azure/azure-monitor/platform/data-platform#logs) contain different kinds of data organized into records with different sets of properties for each type. Telemetry such as events and traces are stored as logs in addition to performance data so that it can all be combined for analysis. Log data collected by Azure Monitor can be analyzed with [queries](/azure/azure-monitor/log-query/log-query-overview) to quickly retrieve, consolidate, and analyze collected data. You can create and test queries using [Log Analytics](/azure/azure-monitor/log-query/portals) in the Azure portal and then either directly analyze the data using these tools or save queries for use with [visualizations](/azure/azure-monitor/visualizations) or [alert rules](/azure/azure-monitor/platform/alerts-overview).
 
-:::image type="content" source="media/monitor/logs.png" alt-text="image of logs ingesting in log analytics" border="false":::
+    :::image type="content" source="media/monitor/logs.png" alt-text="image of logs ingesting in log analytics" border="false":::
 
 ## How does Windows Admin Center enable you to use Azure Monitor?
 
