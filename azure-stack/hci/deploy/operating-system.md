@@ -4,7 +4,7 @@ description: This article details how to deploy the operating system for Azure S
 author: JohnCobb1
 ms.author: v-johcob 
 ms.topic: article
-ms.date: 04/02/2020
+ms.date: 04/03/2020
 ---
 
 # Deploy Azure Stack HCI
@@ -44,7 +44,7 @@ System Center Virtual Machine Manager (VMM) is part of the System Center suite. 
 If you're using VMM to set up and deploy Windows Server on your server nodes, you can do most initial configuration automatically on all nodes at once. To get started, see [Plan VMM installation](/system-center/vmm/plan-install?view=sc-vmm-2019).
 
 ## Connect Windows Admin Center to your cluster servers
-There are three options to connect one or more of your to your cluster servers to Windows Admin Center:
+There are three options to connect one or more of your cluster servers to Windows Admin Center:
 - Add a single server or a cluster as a managed node
 - Bulk import multiple servers
 - Search Active Directory to add servers
@@ -52,38 +52,36 @@ There are three options to connect one or more of your to your cluster servers t
 **Add a single server or a cluster as a managed node:**
 1. Open **Windows Admin Center**, and then under **All connections**, select **+ Add**.
 
-  ![Add button screenshot](./media/operating-system/add-server.png)
+    ![Add button screenshot](/media/operating-system/add-server.png)
 
 1. On the **Add resources** page, you can choose to add a server, a cluster, a Windows PC, or an Azure VM. On the **Windows Server** tile, select **Add**.
 
-  ![Choose connection type screenshot of Windows Server tile](./media/operating-system/choose-connection-type.png)
+    ![Choose connection type screenshot of Windows Server tile](./media/operating-system/choose-connection-type.png)
   
 1. On the **Add one** tab, in the **Server name** box, type the name of the server, and then select **Add** to add it to your connection list on the overview page.
 
-  ![Server name box to add a single server](./media/operating-system/add-single-server.png)
+    ![Server name box to add a single server](../media/operating-system/add-single-server.png)
 
 1. Under **All connections**, in the **Name** column, select the checkbox next to the server, and then select **Connect** to display the server's **Overview** page in Windows Admin Center from **Server Manger**.
-
 1. Repeat the previous step to start each server that you add to Windows Admin Center.
 
 **-- Or --**
 
-**Bulk import multiple servers**
+**Bulk import multiple servers:**
 1. On the **Windows Server** tile, select **Add**, and then select the **Import a file** tab.
 
-  ![The Bulk import box to add multiple servers](./media/operating-system/bulk-import-a-list.png)
+    ![The Bulk import box to add multiple servers](./media/operating-system/bulk-import-a-list.png)
   
 1. Click **Select a file** to select a text file that contains a comma, or new line separated, list of FQDNs for the servers you want to add Windows Admin Center.
 
 **-- Or --**
 
-**Search Active Directory to add servers**
+**Search Active Directory to add servers:**
 1. On the **Windows Server** tile, select **Add**, and then select the **Search Active Directory** tab.
 
- ![The Search Active Directory box to add multiple servers](./media/operating-system/search-ad.png)
+   ![The Search Active Directory box to add multiple servers](./media/operating-system/search-ad.png)
  
 1. Enter your search criteria and click **Search**. Wildcards (*) are supported.
-
 1. After the search completes, select one or more of the results, optionally add tags, and then click **Add**.
 
 ## Get the latest Windows updates
