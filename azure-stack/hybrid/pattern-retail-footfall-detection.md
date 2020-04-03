@@ -61,11 +61,11 @@ Consider the following points when deciding how to implement this solution:
 
 ### Scalability
 
-To enable this solution to scale across multiple cameras and locations, you'll need to make sure that all of the components can handle the increased load. You may need to take actions such as:
+To enable this solution to scale across multiple cameras and locations, you'll need to make sure that all of the components can handle the increased load. You may need to take actions like:
 
-- Increase the number of Stream Analytics streaming units
-- Scale out the Face API deployment
-- Increase the Event Hubs cluster throughput
+- Increase the number of Stream Analytics streaming units.
+- Scale out the Face API deployment.
+- Increase the Event Hubs cluster throughput.
 - For extreme cases, migrate from Azure Functions to a virtual machine may be necessary.
 
 ### Availability
@@ -74,15 +74,16 @@ Since this solution is tiered, it's important to think about how to deal with ne
 
 ### Manageability
 
-This solution can span many devices and locations, which could get unwieldy. [Azure's IoT services](/azure/iot-fundamentals/) can be used to automatically bring new locations and devices online and keep them up-to-date. 
+This solution can span many devices and locations, which could get unwieldy. [Azure's IoT services](/azure/iot-fundamentals/) can be used to automatically bring new locations and devices online and keep them up to date.
 
 ### Security
 
-This solution captures customer images, making security a paramount consideration. Make sure all storage accounts are secured with the proper access policies, and that keys are rotated regularly. Ensure storage accounts and Event Hubs have retention policies that meet corporate and government privacy regulations. Also make sure to tier the user access levels. Tiering ensures that users only have access to the data they need for their role.
+This solution captures customer images, making security a paramount consideration. Make sure all storage accounts are secured with the proper access policies and rotate keys regularly. Ensure storage accounts and Event Hubs have retention policies that meet corporate and government privacy regulations. Also make sure to tier the user access levels. Tiering ensures that users only have access to the data they need for their role.
 
 ## Next steps
 
 To learn more about the topics introduced in this article:
+
 - See the [Tiered Data pattern](https://aka.ms/tiereddatadeploy), which is leveraged by the footfall detection pattern.
 - See the [Custom Vision AI Dev Kit](https://azure.github.io/Vision-AI-DevKit-Pages/) to learn more about using custom vision. 
 
