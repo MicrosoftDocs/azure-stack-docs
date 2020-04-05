@@ -32,6 +32,7 @@ This article summarizes the known Azure Stack Hub Storage differences from Azure
 |Managed disks|Premium and standard supported|Supported when you use version 1808 or later.
 |Managed disk snapshots|General available|Supported.
 |Managed disk incremental snapshots|General available|Not yet supported.
+|Managed disk snapshots for VM in a running state|General available|Not yet supported.
 |Blob name|1,024 characters (2,048 bytes)|880 characters (1,760 bytes)
 |Block blob max size|4.75 TB (100 MB X 50,000 blocks)|4.75 TB (100 MB x 50,000 blocks) for the 1802 update or newer version. 50,000 X 4 MB (approximately 195 GB) for previous versions.
 |Page blob snapshot copy|Backup Azure unmanaged VM disks attached to a running VM supported|Supported in [API as an async operation](azure-stack-acs-differences.md).
@@ -43,9 +44,15 @@ This article summarizes the known Azure Stack Hub Storage differences from Azure
 |Page blob page size|512 bytes|4 KB
 |Table partition key and row key size|1,024 characters (2,048 bytes)|400 characters (800 bytes)
 |Blob snapshot|The max number of snapshots of one blob isn't limited.|The max number of snapshots of one blob is 1,000.
-|Azure AD Authentication for storage|In preview|Not yet supported.
+|Azure AD Authentication for storage|General available|Not yet supported.
 |Immutable Blobs|General available|Not yet supported.
 |Firewall and virtual network rules for storage|General available|Not yet supported.|
+|Map a custom domain to Blob Storage endpoint|General available|Not yet supported.|
+|Static website hosting in blob Storage|General available|Not yet supported.|
+|Encrypt storage data at rest with customer-managed keys|General available|Not yet supported.|
+|Verify transactional data integrity with CRC64 hash|General available|Not yet supported.|
+|Server-side synchronous copy of data from URL|General available|Not yet supported.|
+|Batch API for Blob Storage|General available|Not yet supported.|
 
 There are also differences with storage metrics:
 

@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 03/20/2020
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 03/18/2020
@@ -68,6 +68,12 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Remediation: Select an account type from the **Account type** dropdown list, then create the snapshot.
 - Occurrence: Common
 
+### Alert for network interface disconnected
+
+- Applicable: This issue applies to 1908 and above.
+- Cause: When a cable is disconnected from a network adapter, an alert does not show in the administrator portal. This issue is caused because this fault is disabled by default in Windows Server 2019.
+- Occurrence: Common
+
 ## Networking
 
 ### Network Security Groups
@@ -106,10 +112,28 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 ## Compute
 
+### VM overview blade does not show correct computer name
+
+- Applicable: This issue applies to 2002 and later.
+- Cause: When viewing details of a VM in the overview blade, the computer name shows as **(not available)**.
+- Remediation: View the **Properties** blade under **Settings**.
+
+### NVv4 VM size on portal
+
+- Applicable: This issue applies to 2002 and later.
+- Cause: When going through the VM creation experience, you will see the VM size: NV4as_v4. Customers who have the hardware required for the AMD Mi25-based Azure Stack Hub GPU preview are able to have a successful VM deployment. All other customers will have a failed VM deployment with this VM size.
+- Remediation: By design in preparation for the Azure Stack Hub GPU preview.
+
 ### VM boot diagnostics
 
 - Applicable: This issue applies to all supported releases.
-- Cause: When creating a new Windows virtual machine (VM), the following error might be displayed: **Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'**. The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.
+- Cause: When creating a new virtual machine (VM), the following error might be displayed: **Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'**. The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.
+- Remediation: Recreate the storage account with the same name you used previously.
+- Occurrence: Common
+
+
+- Applicable: This issue applies to all supported releases.
+- Cause: When trying to start a stop-deallocated virtual machine,the following error might be displayed: **VM diagnostics Storage account 'diagnosticstorageaccount' not found. Ensure storage account is not deleted**. The error occurs if you attempt to start a VM with boot diagnostics enabled, but the referenced boot diagnostics storage account is deleted.
 - Remediation: Recreate the storage account with the same name you used previously.
 - Occurrence: Common
 
@@ -127,6 +151,11 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Applicable: This issue applies to all supported releases.
 - Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack Hub environment.
 - Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack Hub deployment.
+
+### SQL VM provision will be failed in ASDK
+- Applicable: This issue applies to ASDK 2002 only. 
+- Cause: When creating a new SQL VM in ASDK 2002, you may receive an error message **"Extension with publisher 'Microsoft.SqlServer.Management', type 'SqlIaaSAgent', and type handler version '2.0' could not be found in the extension repository."** There is no 'SqlIaaSAgent' 2.0 in Azure Stack Hub. 
+
 
 ## Resource Providers
 
