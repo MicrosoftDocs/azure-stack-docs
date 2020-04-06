@@ -8,7 +8,7 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 10/31/2019
 
-# Intent: As an Azure hybrid user, I want to use Azure and Azure Stack Hub to implement an AI-based footfall detection pattern for analyzing retail store traffic.
+# Intent: As an Azure Stack Hub user, I want to use Azure and Azure Stack Hub to implement an AI-based footfall detection pattern for analyzing retail store traffic.
 # Keyword: footfall detection pattern azure stack hub
 
 ---

@@ -8,7 +8,7 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: As an Azure hybrid user, I want to use Azure and Azure Stack Hub to implement a tiered data solution across the hybrid cloud.
+# Intent: As an Azure Stack Hub user, I want to use Azure and Azure Stack Hub to implement a tiered data solution across the hybrid cloud.
 # Keyword: tiered data pattern azure stack hub
 
 ---
