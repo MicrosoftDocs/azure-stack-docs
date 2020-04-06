@@ -38,7 +38,7 @@ The solution is based on the following scenario:
 
 ## Solution
 
-Utilizing both on-premises and public cloud environments meets the demands of multi-facility enterprises. Azure Stack Hub offers a rapid, secure, and flexible solution for collecting, processing, storing, and distributing local and remote data. This pattern is especially useful when security, confidentiality, corporate policy, and regulatory requirements may differ between locations and users.
+Using both on-premises and public cloud environments meets the demands of multi-facility enterprises. Azure Stack Hub offers a rapid, secure, and flexible solution for collecting, processing, storing, and distributing local and remote data. This pattern is especially useful when security, confidentiality, corporate policy, and regulatory requirements may differ between locations and users.
 
 ![Tiered data pattern for analytics solution architecture](media/pattern-tiered-data-analytics/solution-architecture.png)
 
