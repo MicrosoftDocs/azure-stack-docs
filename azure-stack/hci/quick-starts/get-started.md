@@ -118,4 +118,4 @@ Select **Diagnostics** from the **Tools** menu to collect information for troubl
 For a deeper dive into performance monitoring, see also:
 
 - [Performance history for Storage Spaces Direct](/windows-server/storage/storage-spaces/performance-history)
-- Monitor with Azure Monitor
+- [Monitor Azure Stack HCI with Azure Monitor](../manage/azure-monitor.md)
