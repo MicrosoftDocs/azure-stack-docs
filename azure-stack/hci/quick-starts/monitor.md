@@ -4,7 +4,7 @@ description: Quickly connect to an existing cluster using Windows Admin Center t
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 03/27/2020
+ms.date: 04/06/2020
 ---
 
 # Quickstart: Monitor Azure Stack HCI clusters with Windows Admin Center
@@ -122,4 +122,4 @@ Select **Diagnostics** from the **Tools** menu to collect information for troubl
 For a deeper dive into performance monitoring, see also:
 
 - [Performance history for Storage Spaces Direct](/windows-server/storage/storage-spaces/performance-history)
-- [Monitor with Azure Monitor](monitor.md)
+- Monitor with Azure Monitor
