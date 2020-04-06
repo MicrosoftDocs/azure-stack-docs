@@ -28,8 +28,8 @@ The Windows PowerShell app is used to perform all the tasks in this article. It 
 To see the current cluster and its member nodes, run:
 
 ```powershell
-Get-Cluster
-Get-ClusterNode
+Get-Cluster -ComputerName your_cluster_name
+Get-ClusterNode -ComputerName your_node_name
 ```
 
 To see which Windows features are installed on the cluster use the `Get-WindowsFeature` cmdlet. For example:
