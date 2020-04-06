@@ -14,7 +14,7 @@
     href: manage/delete-volumes.md
   - name: Replace drives
     href: manage/replace-drives.md
-  - name: Monitor Azure Stack HCI with Azure Monitor
+  - name: Monitor with Azure Monitor
     href: manage/azure-monitor.md
   - name: Attach GPU to Linux VM
     href: manage/attach-gpu-to-linux-vm.md
