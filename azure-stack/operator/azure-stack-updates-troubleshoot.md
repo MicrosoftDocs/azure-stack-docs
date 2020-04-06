@@ -4,7 +4,7 @@ description: As an Azure Stack Hub operator, learn how to resolve issues with up
 author: IngridAtMicrosoft
 
 ms.topic: how-to
-ms.date: 03/04/2020
+ms.date: 04/06/2020
 ms.author: inhenkel
 ms.lastreviewed: 09/23/2019
 ms.reviewer: ppacent
