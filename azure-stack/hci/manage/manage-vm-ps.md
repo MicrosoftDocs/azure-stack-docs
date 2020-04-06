@@ -36,13 +36,13 @@ Get-VM -CimSession $Servers
 The following example returns a list of all running VMs by adding a filter using the `Where-Object` command. For more information, see [Using the Where-Object](<https://docs.microsoft.com/previous-versions/windows/it-pro/windows-powershell-1.0/ee177028(v=technet.10)>) documentation.
 
 ```powershell
-Get-VM -ComputerName your_cluster_name | Where-Object -Property State -eq "Running"
+Get-VM -ComputerName your_cluster | Where-Object -Property State -eq "Running"
 ```
 
 The next example returns a list of all shut-down VMs.
 
 ```powershell
-Get-VM -ComputerName your_cluster_name | Where-Object -Property State -eq "Off"
+Get-VM -ComputerName your_cluster | Where-Object -Property State -eq "Off"
 ```
 
 ## Start and stop a VM
@@ -52,13 +52,13 @@ Use the `Start-VM` and `Stop-VM` commands to start or stop a VM. For detailed in
 The following example shows how to start a VM named TestVM:
 
 ```powershell
-Start-VM -ComputerName TestVM
+Start-VM -ComputerName your_VM
 ```
 
 The following example shows how to shut-down a VM named TestVM:
  
 ```powershell
-Stop-VM -ComputerName TestVM
+Stop-VM -ComputerName your_VM
 ```
 
 ## Move a VM
