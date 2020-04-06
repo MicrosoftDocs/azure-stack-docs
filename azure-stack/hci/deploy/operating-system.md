@@ -1,55 +1,52 @@
 ---
-title: Deploy Azure Stack HCI
+title: Deploy the Azure Stack HCI operating system
 description: This article details how to deploy the operating system for Azure Stack HCI, connect cluster servers to Windows Admin Center to get Windows updates, and how to get firmware updates from hardware providers.
 author: JohnCobb1
 ms.author: v-johcob 
 ms.topic: article
-ms.date: 04/03/2020
+ms.date: 04/06/2020
 ---
 
-# Deploy Azure Stack HCI
-You can deploy Azure Stack HCI to run on the cluster servers in your organization after first installing the Server Core option of Windows Server 2019 Datacenter. Server Core is a minimal installation of the operating system. It includes most server roles, but uses less disk space to provide a smaller attack surface because of its smaller code base.
-
-This article details Windows Server 2019 deployment options for Azure Stack HCI. It then details how to connect the servers in your cluster to Windows Admin Center to get the latest Windows updates, and update the firmware on the servers of your hardware provider.
+# Deploy the Azure Stack HCI operating system
+The first step in deploying an Azure Stack HCI cluster is deploying the operating system on each of the servers to be clustered. This topic details the deployment options for the Azure Stack HCI operating system, as well as how to connect the servers in your cluster to Windows Admin Center to get the latest Windows updates, and update the firmware on the servers of your hardware provider.
 
 ## Prerequisites
-- Server Core of Windows Server 2019 Datacenter installed on the primary management computer.
+- Windows Admin Center set up on a system that can access the cluster.
 
 ## Deployment preparation
-After you've acquired the server hardware for your Azure Stack HCI solution, it's time to rack and cable it. Use the following steps to prepare the server hardware for deployment of Windows Server 2019 Datacenter, and then getting Windows updates and the latest firmware settings.
+After you've acquired the server hardware for your Azure Stack HCI solution, it's time to rack and cable it. Use the following steps to prepare the server hardware for deployment of the operating system, and then getting Windows updates and the latest firmware settings.
 
 1. Rack all server nodes that you want to use in your server cluster.
-1. Connect the server nodes to your primary management computer running Windows Server 2019 Datacenter, according to instructions from your Azure Stack HCI hardware vendor.
 1. Connect the server nodes to your network switches.
 1. Configure the BIOS or the Unified Extensible Firmware Interface (UEFI) of your servers as recommended by your Azure Stack HCI hardware vendor to maximize performance and reliability.
 
 ## Deployment options
 Windows Server 2019 deployment options include:
+- Preinstallation by the server manufacturer.
 - Manual deployment by connecting either a keyboard and monitor directly to the server hardware in your datacenter, or by connecting a KVM hardware device to the server hardware.
 - Headless deployment using an answer file.
 - System Center Virtual Machine Manager (VMM).
 
 ### Manual deployment
-Install Windows Server 2019 Datacenter on a local disk of each server node. Or refer to the preinstalled operating system that came with the server nodes of your Azure Stack HCI solution hardware.
+Install Azure Stack HCI on the system drive of each server to be clustered.
 
 ### Headless deployment
-You can use an answer file to do a headless deployment of Windows Server 2019 Datacenter. The answer file uses an XML format to define configuration settings and values during an unattended installation of Windows Server.
+You can use an answer file to do a headless deployment of the operating system. The answer file uses an XML format to define configuration settings and values during an unattended installation of Windows Server.
 
-For this deployment option, you can use Windows System Image Manager (Windows SIM) to create an unattend.xml answer file to deploy Windows Server on your server nodes. Windows SIM creates your unattend answer file through a GUI tool with component sections to define the "answers" to the configuration questions, and then ensure correct format and syntax in the file.
-The Windows SIM tool is available in the Windows Assessment and Deployment Kit (Windows ADK). To get started: [Download and install the Windows ADK](/windows-hardware/get-started/adk-install).
+For this deployment option, you can use Windows System Image Manager (Windows SIM) to create an unattend.xml answer file to deploy the operating system on your servers. Windows System Image Manager creates your unattend answer file through a graphical tool with component sections to define the "answers" to the configuration questions, and then ensure the correct format and syntax in the file.
+The Windows System Image Manager tool is available in the Windows Assessment and Deployment Kit (Windows ADK). To get started: [Download and install the Windows ADK](/windows-hardware/get-started/adk-install).
 
 ### System Center Virtual Machine Manager (VMM) deployment
-System Center Virtual Machine Manager (VMM) is part of the System Center suite. You can use VMM to configure and deploy Windows Server 2019 Datacenter to the server nodes in your datacenter.
-
-If you're using VMM to set up and deploy Windows Server on your server nodes, you can do most initial configuration automatically on all nodes at once. To get started, see [Plan VMM installation](/system-center/vmm/plan-install?view=sc-vmm-2019).
+System Center Virtual Machine Manager (VMM) is part of the System Center suite. You can use VMM to deploy the Azure Stack HCI operating system on bare-metal hardware, as well as to cluster the servers. To get started, see [Plan VMM installation](/system-center/vmm/plan-install?view=sc-vmm-2019).
 
 ## Connect Windows Admin Center to your cluster servers
-There are three options to connect one or more of your cluster servers to Windows Admin Center:
+After installing the operating system on each server in the cluster, you can connect the servers to Windows Admin Center and use this browser-based tool for the rest of the cluster configuration. There are three ways to connect your servers to Windows Admin Center:
 - Add a single server or a cluster as a managed node
 - Bulk import multiple servers
 - Search Active Directory to add servers
 
-**Add a single server or a cluster as a managed node:**
+The following sections describe each approach.
+### Add a single server or a cluster as a managed node
 1. Open **Windows Admin Center**, and then under **All connections**, select **+ Add**.
 
     ![Add button screenshot](../media/operating-system/add-server.png)
@@ -65,18 +62,14 @@ There are three options to connect one or more of your cluster servers to Window
 1. Under **All connections**, in the **Name** column, select the checkbox next to the server, and then select **Connect** to display the server's **Overview** page in Windows Admin Center from **Server Manger**.
 1. Repeat the previous step to start each server that you add to Windows Admin Center.
 
-**-- Or --**
-
-**Bulk import multiple servers:**
+### Bulk import multiple servers
 1. On the **Windows Server** tile, select **Add**, and then select the **Import a file** tab.
 
     ![The Bulk import box to add multiple servers](../media/operating-system/bulk-import-a-list.png)
   
 1. Click **Select a file** to select a text file that contains a comma, or new line separated, list of FQDNs for the servers you want to add Windows Admin Center.
 
-**-- Or --**
-
-**Search Active Directory to add servers:**
+### Search Active Directory to add servers
 1. On the **Windows Server** tile, select **Add**, and then select the **Search Active Directory** tab.
 
    ![The Search Active Directory box to add multiple servers](../media/operating-system/search-ad.png)
