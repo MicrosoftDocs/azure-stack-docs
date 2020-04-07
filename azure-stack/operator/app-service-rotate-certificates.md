@@ -83,7 +83,7 @@ To rotate the System Credentials used within Azure App Service on Azure Stack Hu
 
 1. Select the **Scope** of the System Credential you are rotating.  Operators can choose to rotate the System Credentials for All roles or individual roles.
 
-1. Specify the a **new Local Admin User Name**, new **Password** and confirm the **Password** and click **OK**
+1. Specify a **new Local Admin User Name**, new **Password** and confirm the **Password** and click **OK**
 
 1. The credential(s) will be rotated as required throughout the corresponding Azure App Service on Azure Stack Hub role instance.  Operators can monitor the status of the procedure using the **Status** button.
 
