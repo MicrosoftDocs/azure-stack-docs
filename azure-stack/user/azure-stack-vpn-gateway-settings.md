@@ -158,7 +158,7 @@ Unlike Azure, which supports multiple offers as both an initiator and a responde
 
 > [!IMPORTANT] 
 > When using S2S tunnel, packets are further encapsulated with additional headers which increases the overall size of the packet. In these scenarios, you must clamp TCP **MSS** at **1350**. Or if your VPN devices do not support MSS clamping, you can alternatively set the **MTU** on the tunnel interface to **1400** bytes instead. 
-For more information, see [Virutal Network TCPIP performance tuning] (virtual-network-tcpip-performance-tuning.md) 
+For more information, see [Virutal Network TCPIP performance tuning](/azure/virtual-network/virtual-network-tcpip-performance-tuning)
 >
 
 ### IKE Phase 1 (Main Mode) parameters
