@@ -35,7 +35,7 @@ All Event Hubs clusters use a [D11_V2](../user/azure-stack-vm-sizes.md#mo-dv2) V
 
 ## Resource provider resource consumption  
 
-The resource consumption by the Event Hubs resource provider is constant, and independent of the number or sizes of clusters created by users. The following table shows the core utilization by the Event Hubs resource provider on Azure Stack Hub, and the approximate resource consumption by other resources. The Event Hubs resource provider uses a [D2_V2](/user/azure-stack-vm-sizes#dv2-series) VM type for its deployment.
+The resource consumption by the Event Hubs resource provider is constant, and independent of the number or sizes of clusters created by users. The following table shows the core utilization by the Event Hubs resource provider on Azure Stack Hub, and the approximate resource consumption by other resources. The Event Hubs resource provider uses a [D2_V2](../user/azure-stack-vm-sizes#dv2-series) VM type for its deployment.
 
 |                                  | VM Type | Cluster Nodes | Cores | VM Storage | Memory | Storage Accounts |
 |----------------------------------|---------|-------|-------|------------|--------|------------------|
