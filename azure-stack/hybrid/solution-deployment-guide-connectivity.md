@@ -156,7 +156,7 @@ Use the following steps to create a virtual network gateway in Azure.
 
     After the gateway is created, you can see the IP address assigned to it by looking at the virtual network in the portal. The gateway appears as a connected device. To see more information about the gateway, select the device.
 
-6. Repeat the previous steps (1-5) on your Azure Stack Hub deployment.
+7. Repeat the previous steps (1-5) on your Azure Stack Hub deployment.
 
 ## Create the local network gateway in Azure and Azure Stack Hub
 
@@ -166,7 +166,7 @@ The local network gateway typically refers to your on-premises location. You giv
 - The IP address prefixes that will be routed through the VPN gateway to the VPN device. The address prefixes you specify are the prefixes located on your on-premises network.
 
   >[!Note]
-  >If your on-premises network changes or you need to change the public IP address for the VPN device, you can easily update these values later.
+  >If your on-premises network changes or you need to change the public IP address for the VPN device, you can update these values later.
 
 1. In the portal, select **+Create a resource**.
 2. In the search box, enter **Local network gateway**, then select **Enter** to search. A list of results will display.
@@ -187,7 +187,7 @@ The local network gateway typically refers to your on-premises location. You giv
 Site-to-site connections to an on-premises network require a VPN device. The VPN device you configure is referred to as a connection. To configure your connection, you need:
 
 - A shared key. This key is the same shared key that you specify when creating your site-to-site VPN connection. In our examples, we use a basic shared key. We recommend that you generate a more complex key to use.
-- The public IP address of your virtual network gateway. You can view the public IP address by using the Azure portal, PowerShell, or CLI. To find the public IP address of your VPN gateway using the Azure portal, navigate to virtual network gateways, then select the name of your gateway.
+- The public IP address of your virtual network gateway. You can view the public IP address by using the Azure portal, PowerShell, or CLI. To find the public IP address of your VPN gateway using the Azure portal, go to virtual network gateways, then select the name of your gateway.
 
 Use the following steps to create a site-to-site VPN connection between your virtual network gateway and your on-premises VPN device.
 
