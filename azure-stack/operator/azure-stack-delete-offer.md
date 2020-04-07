@@ -62,7 +62,6 @@ Alternatively, you can delete some quotas using these REST APIs:
 
 - [Compute](/rest/api/azurestack/quotas%20(compute)/delete)
 - [Network](/rest/api/azurestack/quotas%20(network)/delete)
-- [Storage](/rest/api/azurestack/storagequotas/delete)
 
 > [!NOTE]
 > You cannot delete a quota if there are any current plans that use it. You must first delete the plan that references the quota.
