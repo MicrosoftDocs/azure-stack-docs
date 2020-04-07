@@ -20,14 +20,14 @@ You can access resources with security in global Azure and Azure Stack Hub using
 In this solution, you'll build a sample environment to:
 
 > [!div class="checklist"]
-> - Keep data on-premises to meet privacy or regulatory requirements, but keep access to global Azure resources.
+> - Keep data on-premises to meet privacy or regulatory requirements but keep access to global Azure resources.
 > - Maintain a legacy system while using cloud-scaled app deployment and resources in global Azure.
 
 > [!Tip]  
 > ![hybrid-pillars.png](./media/solution-deployment-guide-cross-cloud-scaling/hybrid-pillars.png)  
 > Microsoft Azure Stack Hub is an extension of Azure. Azure Stack Hub brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
 > 
-> The article [Design Considerations for Hybrid Applications](overview-app-design-considerations.md) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
+> The article [Hybrid app design considerations](overview-app-design-considerations.md) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid apps. The design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
 
 ## Prerequisites
 
@@ -36,13 +36,13 @@ A few components are required to build a hybrid connectivity deployment. Some of
 ### Azure
 
 - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
-- Create a [web app](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?view=vsts&tabs=vsts) in Azure. Make note of the web app URL, because you'll need it in the  solution.
+- Create a [web app](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?view=vsts&tabs=vsts) in Azure. Make note of the web app URL because you'll need it in the solution.
 
 ### Azure Stack Hub
 
 An Azure OEM/hardware partner can deploy a production Azure Stack Hub, and all users can deploy an Azure Stack Development Kit (ASDK).
 
-- Use your production Azure Stack Hub or deploy the Azure Stack Development Kit from https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1.
+- Use your production Azure Stack Hub or deploy the ASDK from https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1.
    >[!Note]
    >Deploying the ASDK can take up to 7 hours, so plan accordingly.
 
@@ -61,14 +61,14 @@ This solution example assumes that you have some basic knowledge of Azure and Az
 
 ### Before you begin
 
-Verify that you meet the following criteria before you  start configuring hybrid cloud connectivity:
+Verify that you meet the following criteria before you start configuring hybrid cloud connectivity:
 
 - You need an externally facing public IPv4 address for your VPN device. This IP address can't be located behind a NAT (Network Address Translation).
 - All resources are deployed in the same region/location.
 
 #### Solution example values
 
-The examples in this solution use the following values. You can use these values to create a test environment or refer to them for a better understanding of the examples. For more information about VPN gateway settings in general, see [About VPN Gateway Settings](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings).
+The examples in this solution use the following values. You can use these values to create a test environment or refer to them for a better understanding of the examples. For more information about VPN gateway settings, see [About VPN Gateway Settings](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings).
 
 Connection specifications:
 
@@ -84,7 +84,7 @@ Connection specifications:
 Network and subnet IP addresses:
 
 | Azure/Azure Stack Hub Connection | Name | Subnet | IP Address |
-|-------------------------------------|---------------------------------------------|---------------------------------------|-----------------------------|
+|---|---|---|---|
 | Azure vNet | ApplicationvNet<br>10.100.102.9/23 | ApplicationSubnet<br>10.100.102.0/24 |  |
 |  |  | GatewaySubnet<br>10.100.103.0/24 |  |
 | Azure Stack Hub vNet | ApplicationvNet<br>10.100.100.0/23 | ApplicationSubnet <br>10.100.100.0/24 |  |
@@ -112,7 +112,7 @@ To create a vNet in Azure:
 
 To create a vNet in Azure Stack Hub:
 
-* Repeat the previous steps (1-4) using the Azure Stack Hub **tenant portal**.
+1. Repeat the above steps (1-4) using the Azure Stack Hub **tenant portal**.
 
 ## Add a gateway subnet
 
@@ -127,7 +127,7 @@ In the [Azure portal](https://portal.azure.com/), navigate to the Resource Manag
     ![Add gateway subnet](media/solution-deployment-guide-connectivity/image4.png)
 
 4. The **Name** for the subnet is automatically filled in with the value 'GatewaySubnet'. This value is required for Azure to recognize the subnet as the gateway subnet.
-5. Change the **Address range** values that are provided to match your configuration requirements, and then select **OK**.
+5. Change the **Address range** values that are provided to match your configuration requirements and then select **OK**.
 
 ## Create a Virtual Network Gateway in Azure and Azure Stack
 
