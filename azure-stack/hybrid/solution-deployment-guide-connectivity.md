@@ -136,7 +136,7 @@ Use the following steps to create a virtual network gateway in Azure.
 1. On the left side of the portal page, select **+** and enter 'virtual network gateway' in the search field.
 2. In **Results**, select **Virtual network gateway**.
 3. In **Virtual network gateway**, select **Create** to open the **Create virtual network gateway** page.
-4. On **Create virtual network gateway**, specify the values for your network gateway (as shown in **Tutorial example values**) and the following additional values:
+4. On **Create virtual network gateway**, specify the values for your network gateway using our **Tutorial example values**. Include the following additional values:
 
    - **SKU**: basic
    - **Virtual Network**: Select the virtual network you created earlier. The gateway subnet you created is automatically selected.
@@ -171,20 +171,20 @@ The local network gateway typically refers to your on-premises location. You giv
 1. In the portal, select **+Create a resource**.
 2. In the search box, enter **Local network gateway**, then select **Enter** to search. A list of results will display.
 3. Select **Local network gateway**, then select **Create** to open the **Create local network gateway** page.
-4. On **Create local network gateway**, specify the values for your local network gateway, using our **Tutorial example values**. Include the following additional values.
+4. On **Create local network gateway**, specify the values for your local network gateway using our **Tutorial example values**. Include the following additional values:
 
-    - **IP address**: The public IP address of the VPN device that you want Azure or Azure Stack Hub to connect to. Specify a valid public IP address that isn't behind a NAT so Azure can reach the address. If you don't have the IP address right now, you can use a value from the example as a placeholder, but you'll have to go back and replace the  placeholder with the public IP address of your VPN device. Azure can't connect to the device until you provide a valid address.
+    - **IP address**: The public IP address of the VPN device that you want Azure or Azure Stack Hub to connect to. Specify a valid public IP address that isn't behind a NAT so Azure can reach the address. If you don't have the IP address right now, you can use a value from the example as a placeholder. You'll have to go back and replace the placeholder with the public IP address of your VPN device. Azure can't connect to the device until you provide a valid address.
     - **Address Space**: the address range for the network that this local network represents. You can add multiple address space ranges. Make sure that the ranges you specify don't overlap with ranges of other networks that you want to connect to. Azure will route the address range that you specify to the on-premises VPN device IP address. Use your own values if you want to connect to your on-premises site, not an example value.
     - **Configure BGP settings**: Use only when configuring BGP. Otherwise, don't select this option.
     - **Subscription**: Verify that the correct subscription is showing.
-    - **Resource Group**: Select the resource group that you want to use. You can either create a new resource group, or select one that you've already created.
+    - **Resource Group**: Select the resource group that you want to use. You can either create a new resource group or select one that you've already created.
     - **Location**: Select the location that this object will be created in. You may want to select the same location that your VNet resides in, but you're not required to do so.
 5. When you finish specifying the required values, select **Create** to create the local network gateway.
 6. Repeat these steps (1-5) on your Azure Stack Hub deployment.
 
 ## Configure your connection
 
-Site-to-site connections to an on-premises network require a VPN device. The VPN device you configure is referred to as a Connection. To configure your Connection, you need:
+Site-to-site connections to an on-premises network require a VPN device. The VPN device you configure is referred to as a connection. To configure your connection, you need:
 
 - A shared key. This key is the same shared key that you specify when creating your site-to-site VPN connection. In our examples, we use a basic shared key. We recommend that you generate a more complex key to use.
 - The public IP address of your virtual network gateway. You can view the public IP address by using the Azure portal, PowerShell, or CLI. To find the public IP address of your VPN gateway using the Azure portal, navigate to virtual network gateways, then select the name of your gateway.
@@ -202,7 +202,7 @@ Use the following steps to create a site-to-site VPN connection between your vir
     - **Virtual Network Gateway**: Select the virtual network gateway you created.
     - **Local Network Gateway**: Select the local network gateway you created.
     - **Connection Name**: This name is autopopulated using the values from the two gateways.
-    - **Shared Key**: This value must match the value that you're using for your local on-premises VPN device. The tutorial example uses 'abc123', but you should use something more complex. The important thing is that this value MUST be the same value that you specify when configuring your VPN device.
+    - **Shared Key**: This value must match the value that you're using for your local on-premises VPN device. The tutorial example uses 'abc123', but you should use something more complex. The important thing is that this value *must* be the same value that you specify when configuring your VPN device.
     - The values for **Subscription**, **Resource Group**, and **Location** are fixed.
 
 6. Select **OK** to create your connection.
