@@ -28,13 +28,14 @@ The information in this article describes registering Azure Stack Hub integrated
 
 ## Prerequisites
 
-You need the following prerequisites in place before you register:
+Complete the following prerequisites before you register:
 
 - Verify your credentials.
 - Set the PowerShell language mode.
 - Install PowerShell for Azure Stack Hub.
 - Download the Azure Stack Hub tools.
-- Determine your registration scenario.
+- Determine your billing model.
+- Determine your unique registration name.
 
 ### Verify your credentials
 
@@ -83,22 +84,18 @@ The Azure Stack Hub tools GitHub repository contains PowerShell modules that sup
 To ensure you're using the latest version, delete any existing versions of the Azure Stack Hub tools and [download the latest version from GitHub](azure-stack-powershell-download.md) before registering with Azure.
 
 ::: zone pivot="state-connected"
-### Billing models for a connected deployment
+### Determine your billing model
 
- Connected means you've deployed Azure Stack Hub so that it can connect to the internet and to Azure. You either have Azure AD or Active Directory Federation Services (AD FS) for your identity store. With a connected deployment, you can choose from two billing models: pay-as-you-use or capacity-based.
-  - [Register a connected Azure Stack Hub with Azure using the **pay-as-you-use** billing model](#register-connected-with-pay-as-you-go-billing).
-  - [Register a connected Azure Stack Hub with Azure using the **capacity** billing model](#register-connected-with-capacity-billing).
+ Connected means you've deployed Azure Stack Hub so that it can connect to the internet and to Azure. You either have Azure AD or Active Directory Federation Services (AD FS) for your identity store. With a connected deployment, you can choose from two billing models: pay-as-you-use or capacity-based. You specify the billing model later, while running the registration script.
 ::: zone-end
 
 ::: zone pivot="state-disconnected"
-### Billing model for a disconnected deployment
+### Determine your billing model
 
- With the disconnected from Azure deployment option, you can deploy and use Azure Stack Hub without a connection to the internet. However, with a disconnected deployment, you're limited to an AD FS identity store and the capacity-based billing model.
-  - [Register a disconnected Azure Stack Hub using the **capacity** billing model
-](#register-disconnected-with-capacity-billing).
+ With the disconnected from Azure deployment option, you can deploy and use Azure Stack Hub without a connection to the internet. However, with a disconnected deployment, you're limited to an AD FS identity store and the capacity-based billing model. You specify the billing model later, while running the registration script.
 ::: zone-end
 
-### Determine a unique registration name to use
+### Determine your unique registration name
 
 When you register Azure Stack Hub with Azure, you must provide a unique registration name. An easy way to associate your Azure Stack Hub subscription with an Azure registration is to use your Azure Stack Hub **Cloud ID**.
 
@@ -182,7 +179,7 @@ Connected environments can access the internet and Azure. For these environments
 
 ## Register connected with capacity billing
 
-Use these steps to register Azure Stack Hub with Azure using the pay-as-you-use billing model.
+Use these steps to register Azure Stack Hub with Azure using the capacity billing model.
 
 > [!Note]  
 > All these steps must be run from a computer that has access to the privileged endpoint (PEP). For details about the PEP, see [Using the privileged endpoint in Azure Stack Hub](azure-stack-privileged-endpoint.md).
