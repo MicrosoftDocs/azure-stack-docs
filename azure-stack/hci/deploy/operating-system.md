@@ -21,7 +21,7 @@ After you've acquired the server hardware for your Azure Stack HCI solution, it'
 1. Configure the BIOS or the Unified Extensible Firmware Interface (UEFI) of your servers as recommended by your Azure Stack HCI hardware vendor to maximize performance and reliability.
 
 ## Deployment options
-Windows Server 2019 deployment options include:
+Deployment options include:
 - Preinstallation by the server manufacturer.
 - Manual deployment by connecting either a keyboard and monitor directly to the server hardware in your datacenter, or by connecting a KVM hardware device to the server hardware.
 - Headless deployment using an answer file.
