@@ -4,7 +4,7 @@ description: Learn how to rotate secrets and certificates used by Azure App Serv
 author: BryanLa
 
 ms.topic: article
-ms.date: 04/02/2020
+ms.date: 04/07/2020
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/10/2019
@@ -71,12 +71,6 @@ To rotate the certificates used within Azure App Service on Azure Stack Hub, com
 
 1. The certificates will be rotated as required throughout the Azure App Service on Azure Stack Hub role instances.  Operators can monitor the status of the procedure using the **Status** button.
 
-### Rotate certificate in Identity Application in Azure Active Directory
-
-If the **Identity Application Certificate** is rotated, it must also be updated in the Azure Active Directory Application in the Operator's AAD Tenant.
-
-1. Go to the **Azure** portal and access the 
-
 ## Rotate system credentials
 
 To rotate the System Credentials used within Azure App Service on Azure Stack Hub, complete the following steps:
@@ -89,7 +83,7 @@ To rotate the System Credentials used within Azure App Service on Azure Stack Hu
 
 1. Select the **Scope** of the System Credential you are rotating.  Operators can choose to rotate the System Credentials for All roles or individual roles.
 
-1. Specify the **Local Admin User Name**, new **Password** and confirm the **Password** and click **OK**
+1. Specify the a **new Local Admin User Name**, new **Password** and confirm the **Password** and click **OK**
 
 1. The credential(s) will be rotated as required throughout the corresponding Azure App Service on Azure Stack Hub role instance.  Operators can monitor the status of the procedure using the **Status** button.
 
