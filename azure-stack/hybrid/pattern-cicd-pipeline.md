@@ -1,6 +1,6 @@
 ---
-title: The DevOps pattern for the intelligent edge using Azure and Azure Stack Hub.
-description: Learn about the DevOps pattern for the intelligent edge using Azure and Azure Stack Hub. 
+title: The DevOps pattern in Azure Stack Hub
+description: Learn about the DevOps pattern so you can ensure consistency across deployments in Azure and Azure Stack Hub.
 author: BryanLa
 ms.topic: article
 ms.date: 11/05/2019
@@ -8,11 +8,10 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack user, I want to learn about the DevOps so I can ensure consistency across deployments in Azure and Azure Stack Hub.
+# Keyword: devops pattern azure stack hub
 
 ---
-
 
 # DevOps pattern
 
@@ -22,7 +21,7 @@ Code from a single location and deploy to multiple targets in development, test,
 
 Application deployment continuity, security, and reliability are essential to organizations and critical to development teams.
 
-Apps often require refactored code to run in each target environment. This means that an app is not completely portable. It must be updated, tested, and validated as it moves through each environment. For example, code written in a development environment must then be rewritten to work in a test environment, and rewritten when it finally lands in a production environment. Furthermore, this code is specifically tied to the host. This increases the cost and complexity of maintaining your app. Each version of the app is tied to each environment. The increased complexity and duplication increase the risk of security and code quality. In addition, the code cannot be readily redeployed when you remove restore failed hosts or deploy additional hosts to handle increases in demand.
+Apps often require refactored code to run in each target environment. This means that an app isn't completely portable. It must be updated, tested, and validated as it moves through each environment. For example, code written in a development environment must then be rewritten to work in a test environment and rewritten when it finally lands in a production environment. Furthermore, this code is specifically tied to the host. This increases the cost and complexity of maintaining your app. Each version of the app is tied to each environment. The increased complexity and duplication increase the risk of security and code quality. In addition, the code can't be readily redeployed when you remove restore failed hosts or deploy additional hosts to handle increases in demand.
 
 ## Solution
 
@@ -40,7 +39,7 @@ Using a DevOps release pipeline helps you:
 
 ## Issues and considerations
 
-The DevOps Pattern is intended to ensure consistency across deployments regardless of the target environment. However, capabilities vary across cloud and on-premises environments. Consider the following:
+The DevOps Pattern is intended to ensure consistency across deployments regardless of the target environment. However, capabilities vary across cloud and on-premises environments. Consider the following points:
 
 - Are the functions, endpoints, services, and other resources in your deployment available in the target deployment locations?
 - Are configuration artifacts stored in locations that are accessible across clouds?
@@ -59,11 +58,11 @@ Deployment automation systems are the key control point in the DevOps Patterns. 
 
 Availability in the context of the DevPattern means being able to recover any state information associated with your workflow, such as test results, code dependencies, or other artifacts. To assess your availability requirements, consider two common metrics:
 
--   Recovery Time Objective (RTO) specifies how long you can go without a system.
+- Recovery Time Objective (RTO) specifies how long you can go without a system.
 
--   Recovery Point Objective (RPO) indicates how much data you can afford to lose if a disruption in service affects the system.
+- Recovery Point Objective (RPO) indicates how much data you can afford to lose if a disruption in service affects the system.
 
-In practice, RTO, and RPO imply redundancy and backup. On the global Azure cloud, availability is not a question of hardware recovery—that is part of Azure—but rather ensuring you maintain the state of your DevOps systems. On Azure Stack Hub, hardware recovery may be a consideration.
+In practice, RTO, and RPO imply redundancy and backup. On the global Azure cloud, availability isn't a question of hardware recovery—that's part of Azure—but rather ensuring you maintain the state of your DevOps systems. On Azure Stack Hub, hardware recovery may be a consideration.
 
 Another major consideration when designing the system used for deployment automation is access control and the proper management of the rights needed to deploy services to cloud environments. What rights are needed to create, delete, or modify deployments? For example, one set of rights is typically required to create a resource group in Azure and another to deploy services in the resource group.
 
@@ -71,24 +70,25 @@ Another major consideration when designing the system used for deployment automa
 
 The design of any system based on the DevOps pattern must consider automation, logging, and alerting for each service across the portfolio. Use shared services, an application team, or both, and track security policies and governance as well.
 
-Deploy production environments and development/test environments in separate resource groups on Azure or Azure Stack Hub. Then you can monitor each environment’s resources and roll up billing costs by resource group. You can also delete resources as a set, which is useful for test deployments.
+Deploy production environments and development/test environments in separate resource groups on Azure or Azure Stack Hub. Then you can monitor each environment's resources and roll up billing costs by resource group. You can also delete resources as a set, which is useful for test deployments.
 
 ## When to use this pattern
 
 Use this pattern if:
 
 - You can develop code in one environment that meets the needs of your developers, and deploy to an environment specific to your solution where it may be difficult to develop new code.
-- You can use the code and tools your developers would like, as long as they are able to follow the continuous integration and continuous delivery process in the DevOps Pattern.
+- You can use the code and tools your developers would like, as long as they're able to follow the continuous integration and continuous delivery process in the DevOps Pattern.
 
 This pattern isn't recommended:
 
-- If you cannot automate infrastructure, provisioning resources, configuration, identity, and security tasks.
-- If teams do not have access to hybrid cloud resources to implement a Continuous Integration/Continuous Development (CI/CD) approach.
+- If you can't automate infrastructure, provisioning resources, configuration, identity, and security tasks.
+- If teams don't have access to hybrid cloud resources to implement a Continuous Integration/Continuous Development (CI/CD) approach.
 
 ## Next steps
 
 To learn more about topics introduced in this article:
-- See the [Azure DevOps documentation](/azure/devops) to learn more about Azure DevOps and related tools, including Azure Repos, and Azure Pipelines.
-- See the [Azure Stack family of products and solutions](/azure-stack), to learn more about the entire portfolio of products and solutions.
 
-When you're ready to test the solution example, continue with the [DevOps hybrid CI/CD solution deployment guide](https://aka.ms/hybriddevopsdeploy). The deployment guide provides step-by-step instructions for deploying and testing its components. You learn how to deploy an application to Azure and Azure Stack Hub using a hybrid continuous integration/continuous delivery (CI/CD) pipeline.
+- See the [Azure DevOps documentation](/azure/devops) to learn more about Azure DevOps and related tools, including Azure Repos, and Azure Pipelines.
+- See the [Azure Stack family of products and solutions](/azure-stack) to learn more about the entire portfolio of products and solutions.
+
+When you're ready to test the solution example, continue with the [DevOps hybrid CI/CD solution deployment guide](https://aka.ms/hybriddevopsdeploy). The deployment guide provides step-by-step instructions for deploying and testing its components. You learn how to deploy an app to Azure and Azure Stack Hub using a hybrid continuous integration/continuous delivery (CI/CD) pipeline.
