@@ -9,7 +9,7 @@ groups:
   - id: state-disconnected
     title: Disconnected
 
-# BELOW: copied for reuse from github.com/microsoftdocs/azure-docs-pr/articles/zone-pivot-groups.yml
+# BELOW: entries inherited from github.com/microsoftdocs/azure-docs-pr/articles/zone-pivot-groups.yml for reuse.
 # Owner: erhopf
 # One-off groups
 - id: client-operating-system
