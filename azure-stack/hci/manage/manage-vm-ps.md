@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to Windows Server 2019
 
-Windows PowerShell can be used to create and manage your virtual machines (VMs) on Azure Stack HCI. This article discusses how to manage individual VMs. If you want to manage multiple VMs or cluster-wide VM settings, such as load-balancing VMs across your cluster, see [Manage Azure Stack HCI clusters using PowerShell].
+Windows PowerShell can be used to create and manage your virtual machines (VMs) on Azure Stack HCI. This article discusses how to manage individual VMs. If you want to manage cluster-wide VM settings, such as load-balancing VMs across your cluster, see [Manage Azure Stack HCI clusters using PowerShell].
 
 VM management is best done from a remote computer running Windows 10, rather than on a host server in the cluster. This Windows 10 PC is called the management computer.
 
@@ -68,7 +68,7 @@ The `Move-VM` cmdlet moves a VM to a different server. For more information, see
  The following example shows how to move a VM to a remote server when the VM is stored on an SMB share:
 
 ```powershell
-Move-VM "VM_name" remoteServerName
+Move-VM -ComputerName your_VM your_remoteServer
  ```
 
 The following example shows how to move a VM to a remote server and move all files associated with the VM to D:\VM_name on the remote computer:
