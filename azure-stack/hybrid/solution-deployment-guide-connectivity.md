@@ -1,5 +1,5 @@
 ---
-title: Configure hybrid cloud connectivity using Azure and Azure Stack Hub
+title: Configure hybrid cloud connectivity in Azure and Azure Stack Hub
 description: Learn how to configure hybrid cloud connectivity using Azure and Azure Stack Hub.
 author: BryanLa
 ms.topic: article
@@ -8,11 +8,10 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub user, I want to configure hybrid cloud connectivity using Azure and Azure Stack Hub so I can access global resources with security.
+# Keyword: hybrid cloud connectivity azure stack hub
 
 ---
-
 
 # Configure hybrid cloud connectivity using Azure and Azure Stack Hub
 
@@ -30,45 +29,42 @@ In this solution, you'll build a sample environment to:
 > 
 > The article [Design Considerations for Hybrid Applications](overview-app-design-considerations.md) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
 
-
 ## Prerequisites
 
 A few components are required to build a hybrid connectivity deployment. Some of these components take time to prepare, so plan accordingly.
 
-**Azure Stack Hub**
+### Azure
+
+- If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+- Create a [web app](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?view=vsts&tabs=vsts) in Azure. Make note of the web app URL, because you'll need it in the  solution.
+
+### Azure Stack Hub
 
 An Azure OEM/hardware partner can deploy a production Azure Stack Hub, and all users can deploy an Azure Stack Development Kit (ASDK).
 
-**Azure Stack Hub components**
+- Use your production Azure Stack Hub or deploy the Azure Stack Development Kit from https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1.
+   >[!Note]
+   >Deploying the ASDK can take up to 7 hours, so plan accordingly.
+
+- Deploy [App Service](../operator/azure-stack-app-service-deploy.md) PaaS services to Azure Stack Hub.
+- [Create plans and offers](../operator/service-plan-offer-subscription-overview.md) in the Azure Stack Hub environment.
+- [Create tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) within the Azure Stack Hub environment.
+
+### Azure Stack Hub components
 
 An Azure Stack Hub operator must deploy the App Service, create plans and offers, create a tenant subscription, and add the Windows Server 2016 image. If you already have these components, make sure they meet the requirements before you start this  solution.
 
 This solution example assumes that you have some basic knowledge of Azure and Azure Stack Hub. To learn more before starting the solution, read the following articles:
 
- - [Introduction to Azure](https://azure.microsoft.com/overview/what-is-azure/)
- - [Azure Stack Hub Key Concepts](../operator/azure-stack-overview.md)
-
-### Azure
-
- - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
- - Create a [web app](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?view=vsts&tabs=vsts) in Azure. Make note of the web app URL, because you'll need it in the  solution.
-
-### Azure Stack Hub
-
- - Use your production Azure Stack Hub or deploy the Azure Stack Development Kit from https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1.
-   >[!Note]
-   >Deploying the ASDK can take up to 7 hours, so plan accordingly.
-
- - Deploy [App Service](../operator/azure-stack-app-service-deploy.md) PaaS services to Azure Stack Hub.
- - [Create plans and offers](../operator/service-plan-offer-subscription-overview.md) in the Azure Stack Hub environment.
- - [Create tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) within the Azure Stack Hub environment.
+- [Introduction to Azure](https://azure.microsoft.com/overview/what-is-azure/)
+- [Azure Stack Hub Key Concepts](../operator/azure-stack-overview.md)
 
 ### Before you begin
 
 Verify that you meet the following criteria before you  start configuring hybrid cloud connectivity:
 
- - You need an externally facing public IPv4 address for your VPN device. This IP address can't be located behind a NAT (Network Address Translation).
- - All resources are deployed in the same region/location.
+- You need an externally facing public IPv4 address for your VPN device. This IP address can't be located behind a NAT (Network Address Translation).
+- All resources are deployed in the same region/location.
 
 #### Solution example values
 
@@ -76,14 +72,14 @@ The examples in this solution use the following values. You can use these values
 
 Connection specifications:
 
- - **VPN type**: route-based
- - **Connection type**: site-to-site (IPsec)
- - **Gateway type**: VPN
- - **Azure connection name**: Azure-Gateway-AzureStack-S2SGateway (the portal will autofill this value)
- - **Azure Stack Hub connection name**: AzureStack-Gateway-Azure-S2SGateway (the portal will autofill this value)
- - **Shared key**: any compatible with VPN hardware, with matching values on both sides of connection
- - **Subscription**: any preferred subscription
- - **Resource group**: Test-Infra
+- **VPN type**: route-based
+- **Connection type**: site-to-site (IPsec)
+- **Gateway type**: VPN
+- **Azure connection name**: Azure-Gateway-AzureStack-S2SGateway (the portal will autofill this value)
+- **Azure Stack Hub connection name**: AzureStack-Gateway-Azure-S2SGateway (the portal will autofill this value)
+- **Shared key**: any compatible with VPN hardware, with matching values on both sides of connection
+- **Subscription**: any preferred subscription
+- **Resource group**: Test-Infra
 
 Network and subnet IP addresses:
 
