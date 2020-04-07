@@ -2,7 +2,7 @@
 groups:
 - id: state-connected-disconnected
   title: Network state
-  prompt: Choose connected or disconnected
+  prompt: Choose whether you've deployed connected or disconnected
   pivots:
   - id: state-connected
     title: Connected

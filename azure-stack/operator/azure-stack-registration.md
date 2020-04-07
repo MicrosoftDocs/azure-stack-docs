@@ -82,19 +82,17 @@ The Azure Stack Hub tools GitHub repository contains PowerShell modules that sup
 
 To ensure you're using the latest version, delete any existing versions of the Azure Stack Hub tools and [download the latest version from GitHub](azure-stack-powershell-download.md) before registering with Azure.
 
-### Determine your registration scenario
-
-Your Azure Stack Hub deployment may be *connected* or *disconnected*.
-
 ::: zone pivot="state-connected"
-- **Connected**  
+### Billing models for a connected deployment
+
  Connected means you've deployed Azure Stack Hub so that it can connect to the internet and to Azure. You either have Azure AD or Active Directory Federation Services (AD FS) for your identity store. With a connected deployment, you can choose from two billing models: pay-as-you-use or capacity-based.
   - [Register a connected Azure Stack Hub with Azure using the **pay-as-you-use** billing model](#register-connected-with-pay-as-you-go-billing).
   - [Register a connected Azure Stack Hub with Azure using the **capacity** billing model](#register-connected-with-capacity-billing).
 ::: zone-end
 
 ::: zone pivot="state-disconnected"
-- **Disconnected**  
+### Billing model for a disconnected deployment
+
  With the disconnected from Azure deployment option, you can deploy and use Azure Stack Hub without a connection to the internet. However, with a disconnected deployment, you're limited to an AD FS identity store and the capacity-based billing model.
   - [Register a disconnected Azure Stack Hub using the **capacity** billing model
 ](#register-disconnected-with-capacity-billing).
@@ -114,6 +112,7 @@ Run: Enter-PSSession -ComputerName <privileged endpoint computer name> -Configur
 Run: Get-AzureStackStampInformation
 ```
 
+::: zone pivot="state-connected"
 ## Register connected with pay-as-you-go billing
 
 Use these steps to register Azure Stack Hub with Azure using the pay-as-you-use billing model.
@@ -230,7 +229,9 @@ Connected environments can access the internet and Azure. For these environments
    > You can disable usage reporting with the UsageReportingEnabled parameter for the **Set-AzsRegistration** cmdlet by setting the parameter to false. 
    
    For more information on the Set-AzsRegistration cmdlet, see [Registration reference](#registration-reference).
+::: zone-end
 
+::: zone pivot="state-disconnected"
 ## Register disconnected with capacity billing
 
 If you're registering Azure Stack Hub in a disconnected environment (with no internet connectivity), you need to get a registration token from the Azure Stack Hub environment. Then use that token on a computer that can connect to Azure and has PowerShell for Azure Stack Hub installed.  
@@ -326,6 +327,7 @@ Optionally, you can use the Get-Content cmdlet to point to a file that contains 
   $ActivationKey = Get-Content -Path '<Path>\<Activation Key File>'
   New-AzsActivationResource -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -ActivationKey $ActivationKey
   ```
+::: zone-end
 
 ## Verify Azure Stack Hub registration
 
@@ -355,7 +357,8 @@ Alternatively, you can verify if your registration was successful by using the M
 
 ## Renew or change registration
 
-### Renew or change registration in connected environments
+::: zone pivot="state-connected"
+### Connected deployment
 
 You need to update or renew your registration in the following circumstances:
 
@@ -380,8 +383,10 @@ If you want to change the billing model or how to offer features for your instal
   ```powershell  
   Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel <billing model> -RegistrationName $RegistrationName
   ```
+::: zone-end
 
-### Renew or change registration in disconnected environments
+::: zone pivot="state-disconnected"
+### Disconnected deployment
 
 You need to update or renew your registration in the following circumstances:
 
@@ -418,12 +423,14 @@ Or you can use the registration name:
 ### Re-register using disconnected steps
 
 You've now completely unregistered in a disconnected scenario and must repeat the steps for registering an Azure Stack Hub environment in a disconnected scenario.
+::: zone-end
 
 ### Disable or enable usage reporting
 
 For Azure Stack Hub environments that use a capacity billing model, turn off usage reporting with the **UsageReportingEnabled** parameter using either the **Set-AzsRegistration** or the **Get-AzsRegistrationToken** cmdlets. Azure Stack Hub reports usage metrics by default. Operators with capacity uses or supporting a disconnected environment need to turn off usage reporting.
 
-#### With a connected Azure Stack Hub
+::: zone pivot="state-connected"
+#### Connected deployment
 
    ```powershell  
    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
@@ -434,8 +441,9 @@ For Azure Stack Hub environments that use a capacity billing model, turn off usa
       -BillingModel Capacity
       -RegistrationName $RegistrationName
    ```
-
-#### With a disconnected Azure Stack Hub
+::: zone-end
+::: zone pivot="state-disconnected"
+#### Disconnected deployment
 
 1. To change the registration token, run the following PowerShell cmdlets:  
 
@@ -449,6 +457,7 @@ For Azure Stack Hub environments that use a capacity billing model, turn off usa
    > The registration token is saved in the file specified for *$FilePathForRegistrationToken*. You can change the filepath or filename at your discretion.
 
 2. Save this registration token for use on the Azure connected machine. You can copy the file or the text from *$FilePathForRegistrationToken*.
+::: zone-end
 
 ## Move a registration resource
 
