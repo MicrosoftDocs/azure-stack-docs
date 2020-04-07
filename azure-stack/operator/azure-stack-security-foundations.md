@@ -8,7 +8,7 @@ ms.topic: article
 ms.date: 06/10/2019
 ms.author: justinha
 ms.reviewer: fiseraci
-ms.lastreviewed: 1/16/2019
+ms.lastreviewed: 04/07/2020
 
 # Intent: As an Azure Stack operator, I want to learn about the security controls applied in Azure Stack.
 # Keyword: security controls azure stack
@@ -113,4 +113,3 @@ The compliance documentation can be found on the [Microsoft Service Trust Portal
 - [Configure Azure Stack Hub security controls](azure-stack-security-configuration.md)
 - [Learn how to rotate your secrets in Azure Stack Hub](azure-stack-rotate-secrets.md)
 - [PCI-DSS and the CSA-CCM documents for Azure Stack Hub](https://aka.ms/azurestackcompliance)
-- [DoD and NIST documents for Azure Stack Hub](https://aka.ms/azurestackcompliance)
