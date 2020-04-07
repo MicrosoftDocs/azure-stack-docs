@@ -46,7 +46,7 @@ landingContent:
             url: manage/attach-gpu-to-linux-vm.md
 
   # Card
-  - title: Azure Stack HCI Concepts
+  - title: Azure Stack HCI concepts
     linkLists:
       - linkListType: concept
         links:
