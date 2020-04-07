@@ -113,6 +113,21 @@ First, create the network resources for Azure. The following instructions show h
 
 10. Review the **Summary** section, and then select **OK**.
 
+## Create a Custom IPSec Policy
+
+Since Azure Stack Hub's default parameters for IPSec Policies have changed for [builds 1910 and above](azure-stack-vpn-gateway-settings.md#ipsecike-parameters), a custom IPSec Policy is needed in order for Azure to match AzSH.  
+1. Create a custom policy
+ ```powershell
+   $IPSecPolicy = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup ECP384  `
+    -IpsecEncryption GCMAES256 -IpsecIntegrity GCMAES256 -PfsGroup ECP384 -SALifeTimeSeconds 27000 `
+    -SADataSizeKilobytes 102400000 
+   ```
+ 2. Apply the policy to the connection
+  ```powershell
+  $Connection = Get-AzVirtualNetworkGatewayConnection -Name myTunnel -ResourceGroupName myRG
+  Set-AzVirtualNetworkGatewayConnection -IpsecPolicies $IPSecPolicy -VirtualNetworkGatewayConnection $Connection
+   ```
+
 ## Create a VM
 
 Now create a VM in Azure, and put it on your VM subnet in your virtual network.
