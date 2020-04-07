@@ -66,7 +66,7 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 
 ### New features
 
-- For a list of new features in this release, see [this section](/azure-stack/operator/release-notes?view=azs-1908#whats-new-1) of the Azure Stack release notes.
+- For a list of new features in this release, see [this section](/azure-stack/operator/release-notes?view=azs-1908#whats-new-2) of the Azure Stack release notes.
 
 <!-- ### Changes -->
 
@@ -89,7 +89,7 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 ### Fixed and known issues
 
 - When creating VM resources using some Marketplace images, you might not be able to complete the deployment. As a workaround, you can click on the **Download template and parameters** link in the **Summary** page and click on the **Deploy** button in the **Template** blade.
-- For a list of Azure Stack issues fixed in this release, see [this section](/azure-stack/operator/release-notes?view=azs-1907#fixes-2) of the Azure Stack release notes.
+- For a list of Azure Stack issues fixed in this release, see [this section](/azure-stack/operator/release-notes?view=azs-1907#fixes-3) of the Azure Stack release notes.
 - For a list of known issues, see [this article](/azure-stack/operator/known-issues?view=azs-1907).
-- Note that [available Azure Stack hotfixes](/azure-stack/operator/release-notes?view=azs-1907#hotfixes-2) are not applicable to the Azure Stack ASDK.
+- Note that [available Azure Stack hotfixes](/azure-stack/operator/release-notes?view=azs-1907#hotfixes-3) are not applicable to the Azure Stack ASDK.
 ::: moniker-end
