@@ -9,6 +9,7 @@ ms.date: 02/25/2020
 ms.author: inhenkel
 ms.reviewer: avishwan
 ms.lastreviewed: 03/04/2019
+zone_pivot_groups: state-connected-disconnected
 
 # Intent: As an Azure Stack operator, I want to register my Azure Stack with Azure so I can download marketplace items and set up data reporting.
 # Keyword: register azure stack (registration)
@@ -85,15 +86,19 @@ To ensure you're using the latest version, delete any existing versions of the A
 
 Your Azure Stack Hub deployment may be *connected* or *disconnected*.
 
+::: zone pivot="state-connected"
 - **Connected**  
  Connected means you've deployed Azure Stack Hub so that it can connect to the internet and to Azure. You either have Azure AD or Active Directory Federation Services (AD FS) for your identity store. With a connected deployment, you can choose from two billing models: pay-as-you-use or capacity-based.
   - [Register a connected Azure Stack Hub with Azure using the **pay-as-you-use** billing model](#register-connected-with-pay-as-you-go-billing).
   - [Register a connected Azure Stack Hub with Azure using the **capacity** billing model](#register-connected-with-capacity-billing).
+::: zone-end
 
+::: zone pivot="state-disconnected"
 - **Disconnected**  
  With the disconnected from Azure deployment option, you can deploy and use Azure Stack Hub without a connection to the internet. However, with a disconnected deployment, you're limited to an AD FS identity store and the capacity-based billing model.
   - [Register a disconnected Azure Stack Hub using the **capacity** billing model
 ](#register-disconnected-with-capacity-billing).
+::: zone-end
 
 ### Determine a unique registration name to use
 
