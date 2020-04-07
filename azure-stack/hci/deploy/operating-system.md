@@ -4,11 +4,11 @@ description: This article details how to deploy the operating system for Azure S
 author: JohnCobb1
 ms.author: v-johcob 
 ms.topic: article
-ms.date: 04/06/2020
+ms.date: 04/07/2020
 ---
 
 # Deploy the Azure Stack HCI operating system
-The first step in deploying an Azure Stack HCI cluster is deploying the operating system on each of the servers to be clustered. This topic details the deployment options for the Azure Stack HCI operating system, as well as how to connect the servers in your cluster to Windows Admin Center to get the latest Windows updates, and update the firmware on the servers of your hardware provider.
+The first step in deploying Azure Stack HCI on a cluster is to install the Azure Stack HCI operating system on each server in the cluster. This topic discusses methods for deploying the operating system, how to use Windows Admin Center to connect to the servers and get the latest Windows updates, as well as how to update the firmware on the servers.
 
 ## Prerequisites
 - Windows Admin Center set up on a system that can access the cluster.
@@ -20,8 +20,8 @@ After you've acquired the server hardware for your Azure Stack HCI solution, it'
 1. Connect the server nodes to your network switches.
 1. Configure the BIOS or the Unified Extensible Firmware Interface (UEFI) of your servers as recommended by your Azure Stack HCI hardware vendor to maximize performance and reliability.
 
-## Deployment options
-Windows Server 2019 deployment options include:
+## Operating system deployment options
+Deployment options include:
 - Preinstallation by the server manufacturer.
 - Manual deployment by connecting either a keyboard and monitor directly to the server hardware in your datacenter, or by connecting a KVM hardware device to the server hardware.
 - Headless deployment using an answer file.
