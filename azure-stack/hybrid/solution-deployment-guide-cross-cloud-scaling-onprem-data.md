@@ -301,21 +301,21 @@ When you create your web app in an App Service environment, it starts with one i
 
 1. In Azure, find the App Service plan for the sites you want to scale out, and then select **Scale-out (App Service plan)**.
 
-    ![Scale out](media/solution-deployment-guide-hybrid/image16.png)
+    ![Scale out Azure App Service](media/solution-deployment-guide-hybrid/image16.png)
 
 2. Select **Enable autoscale**.
 
-    ![Enable autoscale](media/solution-deployment-guide-hybrid/image17.png)
+    ![Enable autoscale in Azure App Service](media/solution-deployment-guide-hybrid/image17.png)
 
 3. Enter a name for **Autoscale Setting Name**. For the **Default** auto scale rule, select **Scale based on a metric**. Set the **Instance limits** to **Minimum: 1**, **Maximum: 10**, and **Default: 1**.
 
-    ![Configure auto scale](media/solution-deployment-guide-hybrid/image18.png)
+    ![Configure autoscale in Azure App Service](media/solution-deployment-guide-hybrid/image18.png)
 
 4. Select **+Add a rule**.
 
 5. In **Metric Source**, select **Current Resource**. Use the following Criteria and Actions for the rule.
 
-**Criteria**
+#### Criteria
 
 1. Under **Time Aggregation,** select **Average**.
 
@@ -326,7 +326,7 @@ When you create your web app in an App Service environment, it starts with one i
    - Set the **Threshold** to **50**.
    - Set the **Duration** to **10**.
 
-**Action**
+#### Action
 
 1. Under **Operation**, select **Increase Count by**.
 
@@ -341,15 +341,15 @@ When you create your web app in an App Service environment, it starts with one i
 6. In **Metric Source**, select **Current Resource.**
 
    > [!Note]  
-   > The current resource will contain your App Service plan's name/GUID, and the **Resource Type** and **Resource** drop-down lists will be unavailable.
+   > The current resource will contain your App Service plan's name/GUID and the **Resource Type** and **Resource** drop-down lists will be unavailable.
 
 ### Enable automatic scale in
 
 When traffic decreases, the Azure web app can automatically reduce the number of active instances to reduce costs. This action is less aggressive than scale-out and minimizes the impact on app users.
 
-1. Navigate to the **Default** scale out condition, select **+ Add a rule**. Use the following Criteria and Actions for the rule.
+1. Go to the **Default** scale out condition, then select **+ Add a rule**. Use the following Criteria and Actions for the rule.
 
-**Criteria**
+#### Criteria
 
 1. Under **Time Aggregation,** select **Average**.
 
@@ -360,7 +360,7 @@ When traffic decreases, the Azure web app can automatically reduce the number of
    - Set the **Threshold** to **30**.
    - Set the **Duration** to **10**.
 
-**Action**
+#### Action**
 
 1. Under **Operation**, select **Decrease Count by**.
 
