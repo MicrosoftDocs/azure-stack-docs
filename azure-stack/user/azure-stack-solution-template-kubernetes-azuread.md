@@ -4,12 +4,16 @@ description: Learn how to deploy Kubernetes to Azure Stack Hub using Azure Activ
 author: mattbriggs
 
 ms.topic: article
-ms.date: 1/22/2020
+ms.date: 3/12/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 06/18/2019
+ms.lastreviewed: 3/12/2020
+
+# Intent: As an Azure Stack user, I want to deploy Kubernetes using Azure AD so I can use Kubernetes with the Azure AD identity management system.
+# Keyword: deploy kubernetes azure ad
 
 ---
+
 
 # Deploy Kubernetes to Azure Stack Hub using Azure Active Directory
 

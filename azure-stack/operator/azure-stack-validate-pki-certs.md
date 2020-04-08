@@ -5,12 +5,17 @@ description: Learn how to validate PKI certificates for Azure Stack Hub integrat
 services: azure-stack
 documentationcenter: ''
 author: IngridAtMicrosoft
-ms.topic: article
-ms.date:  07/23/2019
+ms.topic: how-to
+ms.date:  03/04/2020
 ms.author: inhenkel
 ms.reviewer: ppacent
 ms.lastreviewed: 01/08/2019
+
+# Intent: As an Azure Stack Hub operator, I want to validate PKI certificates for Azure Stack Hub integrated systems using the Readiness Checker tool.
+# Keyword: azure stack hub validate pki certificates readiness checker
+
 ---
+
 
 # Validate Azure Stack Hub PKI certificates
 
@@ -84,11 +89,11 @@ Use these steps to prepare and to validate the Azure Stack Hub PKI certificates 
         - `C:\Certificates\Deployment\Admin Portal\CustomerCertificate.pfx`
         - `C:\Certificates\Deployment\ARM Admin\CustomerCertificate.pfx`
 
-3. In the PowerShell window, change the values of `RegionName` and `FQDN` appropriate to the Azure Stack Hub environment and run the following cmdlet:
+3. In the PowerShell window, change the values of `RegionName`, `FQDN` and `IdentitySystem` appropriate to the Azure Stack Hub environment and run the following cmdlet:
 
     ```powershell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
-    Invoke-AzsCertificateValidation -CertificateType Deployment -CertificatePath C:\Certificates\Deployment -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com  
+    Invoke-AzsCertificateValidation -CertificateType Deployment -CertificatePath C:\Certificates\Deployment -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD  
     ```
 
 4. Check the output and ensure that all certificates pass all tests. For example:

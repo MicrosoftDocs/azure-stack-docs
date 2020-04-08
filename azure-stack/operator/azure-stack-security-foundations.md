@@ -8,9 +8,13 @@ ms.topic: article
 ms.date: 06/10/2019
 ms.author: justinha
 ms.reviewer: fiseraci
-ms.lastreviewed: 1/16/2020
+ms.lastreviewed: 04/07/2020
+
+# Intent: As an Azure Stack operator, I want to learn about the security controls applied in Azure Stack.
+# Keyword: security controls azure stack
 
 ---
+
 # Azure Stack Hub infrastructure security controls
 
 Security considerations and compliance regulations are among the main drivers for using hybrid clouds. Azure Stack Hub is designed for these scenarios. This article explains the security controls in place for Azure Stack Hub.
@@ -102,11 +106,10 @@ The assessments include the following standards:
 - [CSA Cloud Control Matrix](https://cloudsecurityalliance.org/group/cloud-controls-matrix/#_overview) is a comprehensive mapping across multiple standards, including FedRAMP Moderate, ISO27001, HIPAA, HITRUST, ITAR, NIST SP800-53, and others.
 - [FedRAMP High](https://www.fedramp.gov/fedramp-releases-high-baseline/) for government customers.
 
-The compliance documentation can be found on the [Microsoft Service Trust Portal](https://servicetrust.microsoft.com/ViewPage/AzureStack). The compliance guides are a protected resource and require you to sign in with your Azure cloud service credentials.
+The compliance documentation can be found on the [Microsoft Service Trust Portal](https://aka.ms/azurestackcompliance). The compliance guides are a protected resource and require you to sign in with your Azure cloud service credentials.
 
 ## Next steps
 
 - [Configure Azure Stack Hub security controls](azure-stack-security-configuration.md)
 - [Learn how to rotate your secrets in Azure Stack Hub](azure-stack-rotate-secrets.md)
-- [PCI-DSS and the CSA-CCM documents for Azure Stack Hub](https://servicetrust.microsoft.com/ViewPage/TrustDocuments)
-- [DoD and NIST documents for Azure Stack Hub](https://servicetrust.microsoft.com/ViewPage/Blueprint)
+- [PCI-DSS and the CSA-CCM documents for Azure Stack Hub](https://aka.ms/azurestackcompliance)

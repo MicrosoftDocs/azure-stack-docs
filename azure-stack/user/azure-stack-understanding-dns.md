@@ -9,7 +9,11 @@ ms.author: Justinha
 ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2019
 
+# Intent: As an Azure Stack user, I want to use iDNS so I can resolve external and internal DNS names.
+# Keyword: azure stack iDNS
+
 ---
+
 # Use iDNS in Azure Stack Hub 
 
 iDNS is an Azure Stack Hub networking feature that enables you to resolve external DNS names (for example, https:\//www.bing.com.) It also allows you to register internal virtual network names. By doing so, you can resolve virtual machines (VMs) on the same virtual network by name rather than IP address. This approach removes the need to provide custom DNS server entries. For more information about DNS, see the [Azure DNS Overview](https://docs.microsoft.com/azure/dns/dns-overview).

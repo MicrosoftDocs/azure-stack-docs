@@ -5,12 +5,16 @@ description: Learn how to register Azure Stack Hub integrated systems with Azure
 author: IngridAtMicrosoft
 
 ms.topic: article
-ms.date: 02/25/2020
+ms.date: 04/06/2020
 ms.author: inhenkel
 ms.reviewer: avishwan
 ms.lastreviewed: 03/04/2019
 
+# Intent: As an Azure Stack operator, I want to register my Azure Stack with Azure so I can download marketplace items and set up data reporting.
+# Keyword: register azure stack (registration)
+
 ---
+
 
 # Register Azure Stack Hub with Azure
 
@@ -405,6 +409,13 @@ Or you can use the registration name:
   $RegistrationName = "AzureStack-<unique-registration-name>"
   Unregister-AzsEnvironment -RegistrationName $RegistrationName
   ```
+
+### Re-register using connected steps
+
+If changing your billing model from capacity billing in a disconnected state to consumption billing in a connected state, you will re-register following the [connected model steps](#change-the-billing-model-or-how-to-offer-features). 
+
+>[!Note] 
+>This does not change your identity model, only the billing mechanism, and you will still use ADFS as your identity source.
 
 ### Re-register using disconnected steps
 

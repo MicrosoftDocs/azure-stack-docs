@@ -9,7 +9,11 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 07/09/2019
 
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 # Use Docker to run PowerShell in Azure Stack Hub
 
 In this article, you use Docker to create Windows-based containers on which to run the version of PowerShell that's required for working with the various interfaces. In Docker, you must use Windows-based containers.
@@ -40,7 +44,7 @@ To use PowerShell to access resources in Azure Stack Hub, you need a service pri
 
 The Dockerfile opens the Microsoft image *microsoft/windowsservercore*, which has Windows PowerShell 5.1 installed. The file then loads NuGet and the Azure Stack Hub PowerShell modules, and downloads the tools from Azure Stack Hub Tools.
 
-1. [Download the azure-stack-powershell repository](https://github.com/mattbriggs/azure-stack-powershell) as a ZIP file, or clone the repository.
+1. [Download the azure-stack-powershell repository](https://github.com/Azure-Samples/azure-stack-hub-powershell-in-docker.git) as a ZIP file, or clone the repository.
 
 2. Open the repository folder from your terminal.
 

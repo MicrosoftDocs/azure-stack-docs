@@ -9,9 +9,11 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/13/2019
 
-# keywords: authentication info
-# Intent: I am a developer and I would like to programmatically authenticate to Azure Stack Hub.
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Get authentication information for Azure Stack Hub
 
@@ -67,7 +69,7 @@ To get the tenant ID:
 
 The Azure Resource Manager endpoint is the metadata endpoint for the deployment and management service for Azure Stack Hub. It provides a management layer that enables you to create, update, and delete resources in your Azure subscription.
 
-For an integrated system, the URL for the Azure Resource Manager Endpoint is:<br>`https://management.<location>.<fqdn>.com`
+For an integrated system, the URL for the Azure Resource Manager Endpoint is:<br>`https://management.<location>.<fqdn>`
 
 To get the metadata endpoint that points to properties such as gallery endpoint, graph endpoint, portal endpoint, sign in endpoint, and audiences, the URL is: `<ResourceManager>/metadata/endpoints?api-version=1.0`
 

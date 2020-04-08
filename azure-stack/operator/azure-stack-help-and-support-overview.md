@@ -9,7 +9,11 @@ ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 07/24/2019
 
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 # Microsoft Azure Stack Hub help and support
 
 **Help + support** in the Azure Stack Hub portal has resources to help operators learn more about Azure Stack Hub, check their support options, and get expert help. Beginning with the 1907 release, operators can also use Help + support to collect diagnostic logs for troubleshooting.  

@@ -6,9 +6,13 @@ author: mattbriggs
 ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg
-ms.lastreviewed: 12/01/2018
+ms.lastreviewed: 12/01/2019
+
+# Intent: As an Azure Stack user, I want to use Azure Monitor with Azure Stack so I can monitor Azure resources.
+# Keyword: azure stack monitor
 
 ---
+
 
 # Use Azure Monitor on Azure Stack Hub
 

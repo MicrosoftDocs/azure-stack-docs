@@ -3,13 +3,17 @@ title: Manage updates
 description: Learn how to manage updates in Azure Stack Hub
 author: IngridAtMicrosoft
 
-ms.topic: article
-ms.date: 10/01/2019
+ms.topic: how-to
+ms.date: 03/04/2020
 ms.author: inhenkel
 ms.lastreviewed: 09/10/2019
-ms.reviewer: ppacent 
+ms.reviewer: ppacent
+
+# Intent: As an Azure Stack Hub operator, I want to manage updates so I can keep everything up to date.
+# Keyword: manage updates azure stack hub
 
 ---
+
 
 # Manage updates in Azure Stack Hub
 
@@ -76,7 +80,7 @@ Once you know you have an update, apply it by using the following steps.
 
     For internet-disconnected Azure Stack Hub environments and environments with weak or intermittent internet connectivity, update packages are imported into Azure Stack Hub storage via the Azure Stack Hub administrator portal. For more steps to upload and prepare the update package, see [Upload and prepare an Azure Stack Hub update package](azure-stack-update-prepare-package.md).
 
-    All OEM update packages are manually imported into your environment, regardless of your Azure Stack Hub system’s internet connectivity. For more steps to import and prepare the update package, see [Upload and prepare an Azure Stack Hub update package](azure-stack-update-prepare-package.md).
+    All OEM update packages are manually imported into your environment, regardless of your Azure Stack Hub system's internet connectivity. For more steps to import and prepare the update package, see [Upload and prepare an Azure Stack Hub update package](azure-stack-update-prepare-package.md).
 
 3. **Apply the update**.
 

@@ -8,7 +8,12 @@ ms.date: 08/13/2019
 ms.author: bryanla
 ms.reviewer: efemmano
 ms.lastreviewed: 04/25/2019
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Delete quotas, plans, offers, and subscriptions
 
@@ -57,7 +62,6 @@ Alternatively, you can delete some quotas using these REST APIs:
 
 - [Compute](/rest/api/azurestack/quotas%20(compute)/delete)
 - [Network](/rest/api/azurestack/quotas%20(network)/delete)
-- [Storage](/rest/api/azurestack/storagequotas/delete)
 
 > [!NOTE]
 > You cannot delete a quota if there are any current plans that use it. You must first delete the plan that references the quota.

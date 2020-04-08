@@ -9,7 +9,12 @@ ms.date: 05/03/2019
 ms.author: justinha
 ms.reviewer: unknown
 ms.lastreviewed: 03/29/2019
+
+# Intent: As an Azure Stack Hub operator, I want to learn the differences between global Azure, Azure Stack Hub, and Azure Stack HCI.
+# Keyword: differences azure stack hub
+
 ---
+
 
 # Differences between global Azure, Azure Stack Hub, and Azure Stack HCI
 
@@ -25,7 +30,7 @@ Microsoft Azure is an ever-expanding set of cloud services to help your organiza
 
 Global Azure offers more than 100 services available in 54 regions around the globe. For the most current list of global Azure services, see the [*Products available by region*](https://azure.microsoft.com/regions/services). The services available in Azure are listed by category and also by whether they're generally available or available through preview.
 
-For more information about global Azure services, see [Get started with Azure](https://docs.microsoft.com/azure/#pivot=get-started&panel=get-started1).
+For more information about global Azure services, see [Get started with Azure](https://docs.microsoft.com/azure/?pivot=get-started&panel=get-started1).
 
 ## Azure Stack Hub
 

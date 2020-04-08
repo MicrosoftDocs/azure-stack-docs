@@ -4,12 +4,16 @@ description: Learn how to use a Linux machine in your Azure Stack Hub to host th
 author: mattbriggs
 
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 3/19/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 01/28/2020
+ms.lastreviewed: 3/19/2020
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
 
 ---
+
 
 # Install the AKS engine on Linux in Azure Stack Hub
 
@@ -88,7 +92,7 @@ If you are unable to verify that you have installed the AKS engine on your clien
 
 You will need to add a certificate when running the client VM for the AKS engine on the ASDK.
 
-When you are using an ASDK your Azure Resource Manager endpoint is using a self-signed certificate, you need explicitly to add this certificate to the machine’s trusted certificate store. You can find the ASDK root certificate in any VM you deploy in the ASDK. For example, in an Ubuntu VM you will find it in this directory `/var/lib/waagent/Certificates.pem`. 
+When you are using an ASDK your Azure Resource Manager endpoint is using a self-signed certificate, you need explicitly to add this certificate to the machine's trusted certificate store. You can find the ASDK root certificate in any VM you deploy in the ASDK. For example, in an Ubuntu VM you will find it in this directory `/var/lib/waagent/Certificates.pem`. 
 
 Copy the certificate file with the following command:
 

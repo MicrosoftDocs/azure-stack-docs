@@ -8,7 +8,12 @@ ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/11/2019
+
+# Intent: As an Azure Stack user, I want to update and manage my VMs using Azure Automation tools so I can keep everything running smoothly. 
+# Keyword: vm update management automation
+
 ---
+
 
 # VM update and management automation in Azure Stack Hub
 Use the following Azure Automation solution features to manage Windows and Linux virtual machines (VMs) that are deployed using Azure Stack Hub:
@@ -61,7 +66,7 @@ As a solution, Azure Monitor for VMs includes support for monitoring performance
 
 3. Dependency map that displays the interconnected components with the VM from various resource groups and subscriptions.
 
-After the Log Analytics Workspace is created, enable the performance counters in the workspace for collection on Linux and Windows VMs. Then, install and enable the ServiceMap and InfrastructureInsights solution in your workspace. The process is described in the [Deploy Azure Monitor for VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-onboard#how-to-enable-azure-monitor-for-vms-preview) guide.
+After the Log Analytics Workspace is created, enable the performance counters in the workspace for collection on Linux and Windows VMs. Then, install and enable the ServiceMap and InfrastructureInsights solution in your workspace. The process is described in the [Deploy Azure Monitor for VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview) guide.
 
 ### In the Azure Stack Hub administrator portal
 After enabling the Azure Automation solutions in the Azure portal, you next need to sign in to the Azure Stack Hub administrator portal as a cloud admin and download the **Azure Monitor, Update and Configuration Management** and the **Azure Monitor, Update and Configuration Management for Linux** extension in the Azure Stack Hub Marketplace.

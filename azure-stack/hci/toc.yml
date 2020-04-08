@@ -4,16 +4,54 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
+- name: Manage
+  items:
+  - name: Create volumes
+    href: manage/create-volumes.md
+  - name: Extend volumes
+    href: manage/extend-volumes.md
+  - name: Delete volumes
+    href: manage/delete-volumes.md
+  - name: Replace drives
+    href: manage/replace-drives.md
+  - name: Monitor with Azure Monitor
+    href: manage/azure-monitor.md
+  - name: Attach GPU to Linux VM
+    href: manage/attach-gpu-to-linux-vm.md
+- name: Concepts
+  items:
+  - name: Choose drives
+    href: concepts/choose-drives.md
+  - name: Plan volumes
+    href: concepts/plan-volumes.md
+  - name: Understand the cache
+    href: concepts/cache.md
+  - name: Fault tolerance and storage efficiency
+    href: concepts/fault-tolerance.md
+  - name: Cluster and storage pool quorum
+    href: concepts/quorum.md
 - name: Reference
   items:
   - name: Hyper-V PowerShell commands
     href: /powershell/module/hyper-v
   - name: Storage PowerShell commands
     href: /powershell/module/storage
+  - name: ClusterAwareUpdating PowerShell commands
+    href: /powershell/module/clusterawareupdating
+  - name: FailoverClusters PowerShell commands
+    href: /powershell/module/failoverclusters
+  - name: StorageReplica PowerShell commands
+    href: /powershell/module/storagereplica
 - name: Related
   items:
   - name: Azure Stack family
     href: ../index.yml
+  - name: Azure Stack Hub
+    href: /azure-stack/operator/azure-stack-overview?view=azs-2002
+  - name: Azure Stack Edge
+    href: /azure/databox-online/data-box-edge-overview
+  - name: Windows Server
+    href: /windows-server/
   - name: Windows Admin Center
     href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
   - name: Azure Hybrid Services
@@ -28,3 +66,4 @@
     href: /windows-server/networking/sdn
   - name: System Center
     href: /system-center/
+

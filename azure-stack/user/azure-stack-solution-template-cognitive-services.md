@@ -9,7 +9,11 @@ ms.author: mabrigg
 ms.reviewer: guanghu
 ms.lastreviewed: 11/11/2019
 
+# Intent: As an Azure Stack user, I want to deploy cognitive services on Azure Stack using containers so I can use the benefits of Azure Cognitive Services. 
+# Keyword: azure stack cognitive services
+
 ---
+
 
 # Deploy Azure Cognitive Services to Azure Stack Hub
 

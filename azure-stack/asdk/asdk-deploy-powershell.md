@@ -9,8 +9,11 @@ ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
 
+# Intent: As an ASDK user, I want to deploy the ASDK using the command line in Powershell so I can evaluate Azure Stack features.
+# Keyword: deploy asdk command line
 
 ---
+
 
 # Deploy ASDK from the command line using Powershell
 

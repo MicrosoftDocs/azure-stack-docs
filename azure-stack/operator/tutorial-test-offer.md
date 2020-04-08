@@ -7,7 +7,12 @@ ms.topic: tutorial
 ms.date: 10/13/2019
 ms.reviewer: shriramnat
 ms.lastreviewed: 10/06/2019
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Tutorial: Test a service offering
 
@@ -138,3 +143,4 @@ Next, learn about deploying resource providers for value-add services. They allo
 - [Offer SQL on Azure Stack Hub](azure-stack-sql-resource-provider.md)
 - [Offer MySQL on Azure Stack Hub](azure-stack-mysql-resource-provider.md)
 - [Offer App Service on Azure Stack Hub](azure-stack-app-service-overview.md)
+- [Offer Event Hubs on Azure Stack Hub](event-hubs-rp-overview.md)

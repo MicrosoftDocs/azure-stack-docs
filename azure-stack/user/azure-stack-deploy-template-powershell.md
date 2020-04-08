@@ -9,7 +9,11 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 09/23/2019
 
+# Intent: As an Azure Stack user, I want to deploy a template using PowerShell in Azure Stack so I can manage resources efficiently. 
+# Keyword: deploy template powershell
+
 ---
+
 
 # Deploy a template using Powershell in Azure Stack Hub
 

@@ -8,7 +8,12 @@ ms.date: 12/03/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
+
+# Intent: As an Azure Stack user, I want to create managed and unmanaged disk storage in Azure Stack so I can store OS files and other data.
+# Keyword: create vm disk storage
+
 ---
+
 
 # Create VM disk storage in Azure Stack Hub
 

@@ -8,7 +8,12 @@ ms.date: 05/09/2019
 ms.author: inhenkel
 ms.reviewer: fiseraci
 ms.lastreviewed: 05/09/2019
+
+# Intent: As an Azure Stack operator, I want to know about identity architecture, and the differences between Azure AD and AD FS.
+# Keyword: azure stack identity architecture
+
 ---
+
 
 # Identity architecture for Azure Stack Hub
 

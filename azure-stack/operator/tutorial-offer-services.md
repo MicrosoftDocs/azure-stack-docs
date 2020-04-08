@@ -8,7 +8,12 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.reviewer: shriramnat
 ms.lastreviewed: 10/16/2019
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Create a service offering for users in Azure Stack Hub
 
@@ -60,6 +65,7 @@ Value-add services are supported by resource providers that are installed after 
 | Microsoft.Web | App Service function apps, web apps, API apps | 
 | Microsoft.MySqlAdapter | MySQL hosting server, MySQL database | 
 | Microsoft.SqlAdapter | SQL Server hosting server, SQL Server database |
+| Microsoft.EventHub | Event Hubs |
 
 ::: moniker range=">=azs-1902"
 

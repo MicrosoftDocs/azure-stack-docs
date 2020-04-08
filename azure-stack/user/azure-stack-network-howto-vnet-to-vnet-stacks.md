@@ -9,9 +9,11 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
 
-# keywords: VNET connection Azure Stack Hub
-# Intent: As an Azure Stack Hub user, I want connect two VNETs so that they can share resources.
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Establish a VNET to VNET connection in Azure Stack Hub with Fortinet FortiGate NVA
 

@@ -9,9 +9,11 @@ ms.author: mabrigg
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/07/2019
 
-# keywords:  X
-# Intent: As an Azure Stack Hub Operator, I want < what? > so that < why? >
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Replicate resources using the Azure Stack Hub subscription replicator
 
@@ -97,7 +99,7 @@ Deployment_Files will hold two files **DeployResourceGroups.ps1** and **DeployRe
 
     ![Review the folders](./media/azure-stack-network-howto-backup-replicator/image4.png)
 
-3.  Set the context to the target subscription, change the folder to **Deployment_Files**, deploy the resource groups and then start the resource deployment.
+3.  Set the context to the target subscription, change the folder to **Deployment_Files**, deploy the resource groups (run the DeployResourceGroups.ps1 script), and then start the resource deployment (run the DeployResources.ps1 script).
 
     ![Configure and start the deployment](./media/azure-stack-network-howto-backup-replicator/image6.png)
 

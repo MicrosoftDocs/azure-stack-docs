@@ -9,7 +9,11 @@ ms.author: justinha
 ms.reviewer: shisab
 ms.lastreviewed: 10/08/2019
 
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 # Configure automatic Azure Stack Hub diagnostic log collection
 
 We recommend configuring the automatic diagnostic log collection feature to streamline your log collection and customer support experience. 
@@ -68,7 +72,7 @@ For best practices about choosing parameters for the automatic log collection st
 
 1. Click **Create**.  
 
-Copy the URL and enter it when you [configure automatic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md). 
+Copy the URL and enter it when you [configure automatic log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md). 
 For more information about SAS URLs, see [Using shared access signatures (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1). 
 
 

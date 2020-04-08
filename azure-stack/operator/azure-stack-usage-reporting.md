@@ -11,7 +11,12 @@ ms.date: 01/27/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/07/2019
+
+# Intent: As an Azure Stack Hub operator, I want to report Azure Stack Hub usage data to Azure.
+# Keyword: azure stack hub report usage data
+
 ---
+
 
 # Report Azure Stack Hub usage data to Azure
 

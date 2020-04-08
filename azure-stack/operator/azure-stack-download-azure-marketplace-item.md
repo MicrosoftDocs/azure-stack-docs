@@ -6,8 +6,13 @@ ms.topic: conceptual
 ms.date: 02/04/2020
 ms.author: sethm
 ms.reviewer: avishwan
-ms.lastreviewed: 12/23/2018
+ms.lastreviewed: 12/23/2019
+
+# Intent: As an Azure Stack operator, I want to download marketplace items from Azure Marketplace and publish them to my Azure Stack.
+# Keyword: download marketplace items azure stack
+
 ---
+
 
 # Download Marketplace items to Azure Stack Hub 
 
@@ -86,6 +91,8 @@ There are two parts to this scenario:
   ```
   Install-Module -Name Azs.Syndication.Admin
   ```
+  
+- .NET Framework 4.7 or later versions
 
 Once you have registered your Azure Stack, you can disregard the following message that appears on the Marketplace management blade, as this is not relevant for the disconnected use case:
 

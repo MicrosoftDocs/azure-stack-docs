@@ -4,12 +4,16 @@ description: How to connect virtual networks in Azure Stack Hub to virtual netwo
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 01/22/2020
+ms.date: 04/07/2020
 ms.author: sethm
 ms.reviewer: scottnap
-ms.lastreviewed: 10/24/2018
+ms.lastreviewed: 10/24/2019
+
+# Intent: As an Azure Stack user, I want to connect Azure Stack to Azure using VPN so I can have a site-to-site connection.
+# Keyword: connect azure stack vpn
 
 ---
+
 # Connect Azure Stack Hub to Azure using VPN
 
 This article describes how to create a site-to-site VPN to connect a virtual network in Azure Stack Hub to a virtual network in Azure.
@@ -108,6 +112,25 @@ First, create the network resources for Azure. The following instructions show h
    >If you use a different value for the shared key, remember that it must match the value for the shared key that you create on the other end of the connection.
 
 10. Review the **Summary** section, and then select **OK**.
+
+## Create a Custom IPSec Policy
+
+Since the Azure Stack Hub default parameters for IPSec policies have changed for [builds 1910 and later](azure-stack-vpn-gateway-settings.md#ipsecike-parameters), a custom IPSec policy is needed in order for Azure to match Azure Stack Hub.
+
+1. Create a custom policy:
+
+   ```powershell
+     $IPSecPolicy = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup ECP384  `
+     -IpsecEncryption GCMAES256 -IpsecIntegrity GCMAES256 -PfsGroup ECP384 -SALifeTimeSeconds 27000 `
+     -SADataSizeKilobytes 102400000 
+   ```
+
+2. Apply the policy to the connection:
+
+   ```powershell
+   $Connection = Get-AzVirtualNetworkGatewayConnection -Name myTunnel -ResourceGroupName myRG
+   Set-AzVirtualNetworkGatewayConnection -IpsecPolicies $IPSecPolicy -VirtualNetworkGatewayConnection $Connection
+   ```
 
 ## Create a VM
 
