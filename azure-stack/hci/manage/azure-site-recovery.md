@@ -2,8 +2,8 @@
 title: Protect Azure Stack HCI VMs using Azure Site Recovery
 description: Use Windows Admin Center to protect your Azure Stack HCI VMs with Azure Site Recovery.
 ms.topic: article
-author: v-johcob
-ms.author: JohnCobb1
+author: JohnCobb1
+ms.author: v-johcob
 ms.date: 04/8/2020
 ms.localizationpriority: low
 ---
