@@ -221,7 +221,7 @@ You'll also need to create a subdomain with an A record for the Azure Stack Hub 
 
 ### Configure custom domains in Azure Stack Hub
 
-1. Add the **azurestack.northwind.com** hostname to the Azure Stack Hub web app by [mapping an A record to Azure App Service](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain#map-an-a-record). Use the Internet-routable IP address for the App Service app.
+1. Add the **azurestack.northwind.com** hostname to the Azure Stack Hub web app by [mapping an A record to Azure App Service](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain#map-an-a-record). Use the internet-routable IP address for the App Service app.
 
 2. Add the **app.northwind.com** hostname to the Azure Stack Hub web app by [mapping a CNAME to Azure App Service](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain#map-a-cname-record). Use the hostname you configured in the previous step (1) as the target for the CNAME.
 
@@ -243,11 +243,11 @@ To add SSL to Azure:
 
 To add SSL to Azure Stack Hub:
 
-- Repeat steps 1-3 that you used for Azure.
+1. Repeat steps 1-3 that you used for Azure.
 
 ## Configure and deploy the web app
 
-You'll configure the app code to report telemetry to the correct Application Insights instance, and configure the web apps with the right connection strings. To learn more about Application Insights, see [What is Application Insights?](https://docs.microsoft.com/azure/application-insights/app-insights-overview)
+You'll configure the app code to report telemetry to the correct Application Insights instance and configure the web apps with the right connection strings. To learn more about Application Insights, see [What is Application Insights?](https://docs.microsoft.com/azure/application-insights/app-insights-overview)
 
 ### Add Application Insights
 
@@ -257,10 +257,10 @@ You'll configure the app code to report telemetry to the correct Application Ins
 
 ### Configure dynamic connection strings
 
-Each instance of the web app will use a different method to connect to the SQL database. The app in Azure uses the private IP address of the SQL Server virtual machine (VM), and the app in Azure Stack Hub uses the public IP address of the SQL Server VM.
+Each instance of the web app will use a different method to connect to the SQL database. The app in Azure uses the private IP address of the SQL Server VM and the app in Azure Stack Hub uses the public IP address of the SQL Server VM.
 
 > [!Note]  
-> On an Azure Stack Hub Integrated System, the public IP address shouldn't be internet-routable. On an Azure Stack Development Kit (ASDK), the public IP address isn't routable outside the ASDK.
+> On an Azure Stack Hub integrated system, the public IP address shouldn't be internet-routable. On an ASDK, the public IP address isn't routable outside the ASDK.
 
 You can use App Service environment variables to pass a different connection string to each instance of the app.
 
