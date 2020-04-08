@@ -46,6 +46,12 @@
     href: /powershell/module/failoverclusters
   - name: StorageReplica PowerShell commands
     href: /powershell/module/storagereplica
+  - name: NetAdapter PowerShell commands
+    href: /powershell/module/netadapter
+  - name: NetQoS PowerShell commands
+    href: /powershell/module/netqos
+  - name: DcbQoS PowerShell commands
+    href: /powershell/module/dcbqos
 - name: Related
   items:
   - name: Azure Stack family
