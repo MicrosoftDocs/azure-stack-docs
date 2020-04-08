@@ -134,7 +134,7 @@ The Azure App Service simplifies running and managing a web app. Because Azure S
 
 2. Repeat the previous step (1) in Azure Stack Hub.
 
-### Add Route for Azure Stack Hub
+### Add route for Azure Stack Hub
 
 The App Service on Azure Stack Hub must be routable from the public internet to let users access your app. If your Azure Stack Hub is accessible from the internet, make a note of the public-facing IP address or URL for the Azure Stack Hub web app.
 
@@ -152,13 +152,13 @@ To provide connectivity between the web front end in Azure and the SQL Server da
 
 The virtual network gateway in the Azure side of the hybrid network must allow point-to-site connections to integrate with Azure App Service.
 
-1. In Azure, navigate to the virtual network gateway page. Under **Settings**, select **Point-to-site configuration**.
+1. In Azure, go to the virtual network gateway page. Under **Settings**, select **Point-to-site configuration**.
 
-    ![Point-to-site option](media/solution-deployment-guide-hybrid/image8.png)
+    ![Point-to-site option in Azure virtual network gateway](media/solution-deployment-guide-hybrid/image8.png)
 
 2. Select **Configure now** to configure point-to-site.
 
-    ![Start point-to-site configuration](media/solution-deployment-guide-hybrid/image9.png)
+    ![Start point-to-site configuration in Azure virtual network gateway](media/solution-deployment-guide-hybrid/image9.png)
 
 3. On the **Point-to-site** configuration page, enter the private IP address range that you want to use in **Address pool**.
 
@@ -167,7 +167,7 @@ The virtual network gateway in the Azure side of the hybrid network must allow p
 
    Under **Tunnel Type**, uncheck the **IKEv2 VPN**. Select **Save** to finish configuring point-to-site.
 
-   ![Point-to-site settings](media/solution-deployment-guide-hybrid/image10.png)
+   ![Point-to-site settings in Azure virtual network gateway](media/solution-deployment-guide-hybrid/image10.png)
 
 ### Integrate the Azure App Service app with the hybrid network
 
@@ -175,15 +175,15 @@ The virtual network gateway in the Azure side of the hybrid network must allow p
 
 2. Navigate to **Settings** for the App Service plan hosting the web app. In **Settings**, select **Networking**.
 
-    ![Configure Networking](media/solution-deployment-guide-hybrid/image11.png)
+    ![Configure Networking for the App Service plan](media/solution-deployment-guide-hybrid/image11.png)
 
 3. In **VNET Integration**, select **Click here to manage**.
 
-    ![Manage VNET integration](media/solution-deployment-guide-hybrid/image12.png)
+    ![Manage VNET integration for the App Service plan](media/solution-deployment-guide-hybrid/image12.png)
 
 4. Select the VNET that you want to configure. Under **IP ADDRESSES ROUTED TO VNET**, enter the IP address range for the Azure VNet, the Azure Stack Hub VNet, and the point-to-site address spaces. Select **Save** to validate and save these settings.
 
-    ![IP address ranges to route](media/solution-deployment-guide-hybrid/image13.png)
+    ![IP address ranges to route in Virtual Network Integration](media/solution-deployment-guide-hybrid/image13.png)
 
 To learn more about how App Service integrates with Azure VNets, see [Integrate your app with an Azure Virtual Network](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet).
 
@@ -191,13 +191,13 @@ To learn more about how App Service integrates with Azure VNets, see [Integrate 
 
 The local network gateway in the Azure Stack Hub virtual network needs to be configured to route traffic from the App Service point-to-site address range.
 
-1. In Azure Stack Hub, navigate to **Local network gateway**. Under **Settings**, select **Configuration**.
+1. In Azure Stack Hub, go to **Local network gateway**. Under **Settings**, select **Configuration**.
 
-    ![Gateway configuration option](media/solution-deployment-guide-hybrid/image14.png)
+    ![Gateway configuration option in Azure Stack Hub local network gateway](media/solution-deployment-guide-hybrid/image14.png)
 
 2. In **Address space**, enter the point-to-site address range for the virtual network gateway in Azure.
 
-    ![Point-to-site address space](media/solution-deployment-guide-hybrid/image15.png)
+    ![Point-to-site address space in Azure Stack Hub local network gateway](media/solution-deployment-guide-hybrid/image15.png)
 
 3. Select **Save** to validate and save the configuration.
 
