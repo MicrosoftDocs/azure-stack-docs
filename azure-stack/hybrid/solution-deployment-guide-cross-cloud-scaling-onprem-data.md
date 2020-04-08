@@ -1,6 +1,6 @@
 ---
-title: Deploy an app that uses on-premises data, and scales cross-cloud using Azure and Azure Stack Hub
-description: Learn how to deploy an app that uses on-premises data, and scales cross-cloud using Azure and Azure Stack Hub.
+title: Deploy hybrid app with on-prem data that scales cross-cloud
+description: Learn how to deploy an app that uses on-premises data and scales cross-cloud using Azure and Azure Stack Hub.
 author: BryanLa
 ms.topic: article
 ms.date: 11/05/2019
@@ -8,17 +8,16 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub user, I want to deploy an app that uses on-premises data and scales cross-cloud using Azure and Azure Stack Hub so I can combine the benefits of private cloud with the scalability of the public cloud.
+# Keyword: cross-cloud hybrid app azure stack hub
 
 ---
 
+# Deploy hybrid app with on-prem data that scales cross-cloud
 
-# Deploy an app that uses on-premises data, and scales cross-cloud using Azure and Azure Stack Hub
+This solution guide shows you how to deploy a hybrid app that spans both Azure and Azure Stack Hub and uses a single on-premises data source.
 
-This solution guide shows you how to deploy a hybrid application, that spans both Azure and Azure Stack Hub, and uses a single on-premises data source.
-
-By using a hybrid cloud solution, you can combine the compliance benefits of a private cloud with the scalability of the public cloud. Additionally, your developers can take advantage of the Microsoft developer ecosystem, and apply their skills to the cloud and on-premises environments.
+By using a hybrid cloud solution, you can combine the compliance benefits of a private cloud with the scalability of the public cloud. Your developers can also take advantage of the Microsoft developer ecosystem and apply their skills to the cloud and on-premises environments.
 
 ## Overview and assumptions
 
