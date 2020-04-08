@@ -16,6 +16,10 @@
     href: manage/replace-drives.md
   - name: Use Azure Site Recovery
     href: manage/azure-site-recovery.md
+  - name: Monitor with Azure Monitor
+    href: manage/azure-monitor.md
+  - name: Attach GPU to Linux VM
+    href: manage/attach-gpu-to-linux-vm.md
 - name: Concepts
   items:
   - name: Choose drives
@@ -34,10 +38,22 @@
     href: /powershell/module/hyper-v
   - name: Storage PowerShell commands
     href: /powershell/module/storage
+  - name: ClusterAwareUpdating PowerShell commands
+    href: /powershell/module/clusterawareupdating
+  - name: FailoverClusters PowerShell commands
+    href: /powershell/module/failoverclusters
+  - name: StorageReplica PowerShell commands
+    href: /powershell/module/storagereplica
 - name: Related
   items:
   - name: Azure Stack family
     href: ../index.yml
+  - name: Azure Stack Hub
+    href: /azure-stack/operator/azure-stack-overview?view=azs-2002
+  - name: Azure Stack Edge
+    href: /azure/databox-online/data-box-edge-overview
+  - name: Windows Server
+    href: /windows-server/
   - name: Windows Admin Center
     href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
   - name: Azure Hybrid Services
@@ -50,3 +66,5 @@
     href: /windows-server/virtualization/hyper-v/hyper-v-on-windows-server
   - name: Software Defined Networking
     href: /windows-server/networking/sdn
+  - name: System Center
+    href: /system-center/
