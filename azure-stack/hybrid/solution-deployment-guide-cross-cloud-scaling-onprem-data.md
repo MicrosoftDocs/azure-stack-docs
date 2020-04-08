@@ -77,13 +77,13 @@ Before you start this solution, make sure you meet the following requirements:
 
 3. In **Marketplace**, select **Compute**, and then choose **More**. Under **More**, select the **Free SQL Server License: SQL Server 2017 Developer on Windows Server** image.
 
-    ![Select a virtual machine image](media/solution-deployment-guide-hybrid/image2.png)
+    ![Select a virtual machine image in Azure Stack Hub user portal](media/solution-deployment-guide-hybrid/image2.png)
 
 4. On **Free SQL Server License: SQL Server 2017 Developer on Windows Server**, select **Create**.
 
 5. On **Basics > Configure basic settings**, provide a **Name** for the virtual machine (VM), a **User name** for the SQL Server SA, and a **Password** for the SA.  From the **Subscription** drop-down list, select the subscription that you're deploying to. For **Resource group**, use **Choose existing** and put the VM in the same resource group as your Azure Stack Hub web app.
 
-    ![Configure basic settings for VM](media/solution-deployment-guide-hybrid/image3.png)
+    ![Configure basic settings for VM in Azure Stach Hub user portal](media/solution-deployment-guide-hybrid/image3.png)
 
 6. Under **Size**, pick a size for your VM. For this tutorial, we recommend A2_Standard or a DS2_V2_Standard.
 
@@ -101,10 +101,11 @@ Before you start this solution, make sure you meet the following requirements:
    - **Diagnostics storage account**: Create a new account if you need one.
    - Select **OK** to save your configuration.
 
-     ![Configure optional features](media/solution-deployment-guide-hybrid/image4.png)
+     ![Configure optional VM features in Azure Stack Hub user portal](media/solution-deployment-guide-hybrid/image4.png)
 
 8. Under **SQL Server settings**, configure the following settings:
-   - For **SQL connectivity**, select to **Public (Internet)**.
+
+   - For **SQL connectivity**, select **Public (Internet)**.
    - For **Port**, keep the default, **1433**.
    - For **SQL authentication**, select **Enable**.
 
@@ -113,15 +114,15 @@ Before you start this solution, make sure you meet the following requirements:
 
    - For the rest of the settings, keep the defaults. Select **OK**.
 
-     ![Configure SQL Server settings](media/solution-deployment-guide-hybrid/image5.png)
+     ![Configure SQL Server settings in Azure Stack Hub user portal](media/solution-deployment-guide-hybrid/image5.png)
 
-9. On **Summary**, review the virtual machine configuration, and then select **OK** to start the deployment.
+9. On **Summary**, review the VM configuration and then select **OK** to start the deployment.
 
-    ![Configuration summary](media/solution-deployment-guide-hybrid/image6.png)
+    ![Configuration summary in Azure Stack Hub user portal](media/solution-deployment-guide-hybrid/image6.png)
 
 10. It takes some time to create the new VM. You can view the STATUS of your VMs in **Virtual machines**.
 
-    ![Virtual machines](media/solution-deployment-guide-hybrid/image7.png)
+    ![Virtual machines status in Azure Stack Hub user portal](media/solution-deployment-guide-hybrid/image7.png)
 
 ## Create web apps in Azure and Azure Stack Hub
 
