@@ -39,29 +39,29 @@ This tutorial covers the following tasks:
 > ![hybrid-pillars.png](./media/solution-deployment-guide-cross-cloud-scaling/hybrid-pillars.png)  
 > Microsoft Azure Stack Hub is an extension of Azure. Azure Stack Hub brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
 > 
-> The article [Design Considerations for Hybrid Applications](overview-app-design-considerations.md) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
+> The article [Hybrid app design considerations](overview-app-design-considerations.md) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid apps. The design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
 
 ### Assumptions
 
 This tutorial assumes that you have a basic knowledge of global Azure and Azure Stack Hub. If you want to learn more before starting the tutorial, review these articles:
 
- - [Introduction to Azure](https://azure.microsoft.com/overview/what-is-azure/)
- - [Azure Stack Hub Key Concepts](../operator/azure-stack-overview.md)
+- [Introduction to Azure](https://azure.microsoft.com/overview/what-is-azure/)
+- [Azure Stack Hub Key Concepts](../operator/azure-stack-overview.md)
 
-This tutorial also assumes that you have an Azure subscription. If you don't have a subscription, you can [create a free account](https://azure.microsoft.com/free/) before you begin.
+This tutorial also assumes that you have an Azure subscription. If you don't have a subscription, [create a free account](https://azure.microsoft.com/free/) before you begin.
 
 ## Prerequisites
 
 Before you start this solution, make sure you meet the following requirements:
 
-- An Azure Stack Development Kit (ASDK) or a subscription on an Azure Stack Hub Integrated System. To deploy an Azure Stack Development Kit, follow the instructions in [Deploy the ASDK using the installer](../asdk/asdk-install.md).
+- An Azure Stack Development Kit (ASDK) or a subscription on an Azure Stack Hub Integrated System. To deploy the ASDK, follow the instructions in [Deploy the ASDK using the installer](../asdk/asdk-install.md).
 - Your Azure Stack Hub installation should have the following installed:
   - The Azure App Service. Work with your Azure Stack Hub Operator to deploy and configure the Azure App Service on your environment. This tutorial requires the App Service to have at least one (1) available dedicated worker role.
   - A Windows Server 2016 image.
   - A Windows Server 2016 with a Microsoft SQL Server image.
   - The appropriate plans and offers.
   - A domain name for your web app. If you don't have a domain name, you can buy one from a domain provider such as GoDaddy, Bluehost, and InMotion.
-- An SSL certificate for your domain from a trusted certificate authority such as LetsEncrypt.
+- An SSL certificate for your domain from a trusted certificate authority like LetsEncrypt.
 - A web app that communicates with a SQL Server database and supports Application Insights. You can download the [dotnetcore-sqldb-tutorial](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial) sample app from GitHub.
 - A hybrid network between an Azure virtual network and Azure Stack Hub virtual network. For detailed instructions, see [Configure hybrid cloud connectivity with Azure and Azure Stack Hub](solution-deployment-guide-connectivity.md).
 
