@@ -6,7 +6,7 @@
     href: overview.md
 - name: Get started
   items:
-  - name: Get started with Azure Stack HCI and Windows Admin Center
+  - name: Use Azure Stack HCI with Windows Admin Center
     href: get-started.md
 - name: Manage
   items:
