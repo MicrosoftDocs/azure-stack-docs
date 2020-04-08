@@ -1,13 +1,13 @@
 ---
-title: Getting started with Azure Stack HCI and Windows Admin Center
+title: Get started with Azure Stack HCI and Windows Admin Center
 description: Quickly connect to an existing Azure Stack HCI cluster and use Windows Admin Center to monitor cluster and storage performance.
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 04/06/2020
+ms.date: 04/08/2020
 ---
 
-# Quickstart: Getting started with Azure Stack HCI and Windows Admin Center
+# Get started with Azure Stack HCI and Windows Admin Center
 
 > Applies to: Windows Server 2019
 
