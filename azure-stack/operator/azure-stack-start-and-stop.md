@@ -85,4 +85,4 @@ Take the following steps if the infrastructure and tenant services don't success
 
 ## Next steps
 
-Learn more about [Azure Stack Hub diagnostic tools](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs)
+Learn more about [Azure Stack Hub diagnostic tools](azure-stack-diagnostic-log-collection-overview-tzl.md)
