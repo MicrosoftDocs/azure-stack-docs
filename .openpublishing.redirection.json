@@ -6,6 +6,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-stack/user/azure-stack-solution-mongodb-ha.md",
       "redirect_url": "/azure-stack/hybrid/solution-deployment-guide-mongodb-ha",
       "redirect_document_id": false
