@@ -41,6 +41,7 @@ This article provides an overview of the unique considerations for Azure Stack H
 | Network Security Groups | Augmented Security Rules | Supported | Not yet supported. |
 |  | Effective Security Rules | Supported | Not yet supported. |
 |  | Application Security Groups | Supported | Not yet supported. |
+|  | Rule Protocols | TCP, UDP, ICMP, Any | Only TCP, UDP or Any |
 | Virtual Network Gateways | Point-to-Site VPN Gateway | Supported | Not yet supported. |
 |  | Vnet-to-Vnet Gateway | Supported | Not yet supported. |
 |  | Virtual Network Gateway Type | Azure Supports VPN<br> Express Route <br> Hyper Net. | Azure Stack Hub currently supports only VPN type. |
