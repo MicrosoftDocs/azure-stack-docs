@@ -56,7 +56,7 @@ Your Azure Stack Hub deployment must have internet connectivity and be registere
 
 5. If the version of an item is shown as **Multiple**, you can select that item and then choose a specific version from the resulting version selector dropdown. Note that Microsoft now has the ability to add attributes that block administrators from downloading marketplace products that are incompatible with their Azure Stack, due to various properties, such as the Azure Stack version or billing model. Only Microsoft can add these attributes:
 
-   ![Add from Azure](media/azure-stack-download-azure-marketplace-item/add-from-azure3.png)
+   [![Add from Azure](media/azure-stack-download-azure-marketplace-item/add-from-azure3sm.png "Multiple versions")](media/azure-stack-download-azure-marketplace-item/add-from-azure3.png#lightbox)
 
 6. Select the item you want, and then select **Download**. Download times vary and depends on the network connectivity. After the download completes, you can deploy the new marketplace item as either an Azure Stack Hub operator or a user.
 
