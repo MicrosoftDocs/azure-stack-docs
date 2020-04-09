@@ -4,10 +4,10 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
-- name: Deploy
+- name: Get started
   items:
-  - name: Before you start
-    href: deploy/before-you-start.md
+  - name: Use Azure Stack HCI with Windows Admin Center
+    href: get-started.md
 - name: Manage
   items:
   - name: Create volumes
@@ -46,6 +46,12 @@
     href: /powershell/module/failoverclusters
   - name: StorageReplica PowerShell commands
     href: /powershell/module/storagereplica
+  - name: NetAdapter PowerShell commands
+    href: /powershell/module/netadapter
+  - name: NetQoS PowerShell commands
+    href: /powershell/module/netqos
+  - name: DcbQoS PowerShell commands
+    href: /powershell/module/dcbqos
 - name: Related
   items:
   - name: Azure Stack family
