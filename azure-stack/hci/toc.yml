@@ -1,9 +1,13 @@
-- name: Azure Stack HCI documentation
-  href: overview.md
-- name: Overview
+- name: Azure Stack test
+  href: index.yml
+- name: Test article
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
+- name: Get started
+  items:
+  - name: Use Azure Stack HCI with Windows Admin Center
+    href: get-started.md
 - name: Manage
   items:
   - name: Create volumes
@@ -16,6 +20,10 @@
     href: manage/replace-drives.md
   - name: Monitor with Azure Monitor
     href: manage/azure-monitor.md
+  - name: Manage VM
+    href: manage/manage-vm.md
+  - name: Manage VM with PS
+    href: manage/manage-vm-ps.md
   - name: Attach GPU to Linux VM
     href: manage/attach-gpu-to-linux-vm.md
 - name: Concepts
@@ -42,6 +50,12 @@
     href: /powershell/module/failoverclusters
   - name: StorageReplica PowerShell commands
     href: /powershell/module/storagereplica
+  - name: NetAdapter PowerShell commands
+    href: /powershell/module/netadapter
+  - name: NetQoS PowerShell commands
+    href: /powershell/module/netqos
+  - name: DcbQoS PowerShell commands
+    href: /powershell/module/dcbqos
 - name: Related
   items:
   - name: Azure Stack family
@@ -66,4 +80,3 @@
     href: /windows-server/networking/sdn
   - name: System Center
     href: /system-center/
-
