@@ -52,7 +52,7 @@ These services require additional configuration before you can make them availab
 
 ### Service roadmap
 
-Azure Stack Hub will continue to add support for Azure services. For the projected roadmap, see the [Azure Stack Hub: An extension of Azure](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) whitepaper. You can also monitor the [Azure Stack Hub blog posts](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) for new announcements.
+Azure Stack Hub will continue to add support for Azure services. For the projected roadmap, see the [Azure Stack Hub: An extension of Azure](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) whitepaper. You can also monitor the [Azure Stack Hub blog posts](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) for new announcements.
 
 ## What account should I use?
 
@@ -67,25 +67,25 @@ There are a few account considerations to be aware of when managing Azure Stack 
 
 ## What tools do I use to manage?
 
-You can use the [administrator portal](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-portals) or PowerShell to manage Azure Stack Hub. The easiest way to learn the basic concepts is through the portal. If you want to use PowerShell, there are preparation steps. Before you get started, you might want to get familiar with how PowerShell is used on Azure Stack Hub. For more information, see [Get started with PowerShell on Azure Stack
+You can use the [administrator portal](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-portals) or PowerShell to manage Azure Stack Hub. The easiest way to learn the basic concepts is through the portal. If you want to use PowerShell, there are preparation steps. Before you get started, you might want to get familiar with how PowerShell is used on Azure Stack Hub. For more information, see [Get started with PowerShell on Azure Stack
 Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-powershell-overview).
 
-Azure Stack Hub uses Azure Resource Manager as its underlying deployment, management, and organization mechanism. If you're going to manage Azure Stack Hub and help support users, you should learn about Resource Manager. See the [Getting Started with Azure Resource Manager](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf) whitepaper.
+Azure Stack Hub uses Azure Resource Manager as its underlying deployment, management, and organization mechanism. If you're going to manage Azure Stack Hub and help support users, you should learn about Resource Manager. See the [Getting Started with Azure Resource Manager](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf) whitepaper.
 
 ## Your typical responsibilities
 
-Your users want to use services. From their perspective, your main role is to make these services available to them. Decide which services to offer and make those services available by creating plans, offers, and quotas. For more information, see [Overview of offering services in Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/service-plan-offer-subscription-overview).
+Your users want to use services. From their perspective, your main role is to make these services available to them. Decide which services to offer and make those services available by creating plans, offers, and quotas. For more information, see [Overview of offering services in Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/service-plan-offer-subscription-overview).
 
-You'll also need to add items to [Azure Stack Hub Marketplace](https://docs.microsoft.com/azure-stack/operator/azure-stack-marketplace). The easiest way is to [download marketplace items from Azure to Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item).
+You'll also need to add items to [Azure Stack Hub Marketplace](https://docs.microsoft.com/azure-stack/operator/azure-stack-marketplace). The easiest way is to [download marketplace items from Azure to Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item).
 
-If you want to test your plans, offers, and services, you can use the [user portal](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-portals); not the administrator portal.
+If you want to test your plans, offers, and services, you can use the [user portal](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-portals); not the administrator portal.
 
 In addition to providing services, you must do the regular duties of an operator to keep Azure Stack Hub up and running. These duties include the following tasks:
 
-- Add user accounts for [Azure AD](https://docs.microsoft.com/azure-stack/operator/azure-stack-add-new-user-aad) deployment.
+- Add user accounts for [Azure AD](https://docs.microsoft.com/azure-stack/operator/azure-stack-add-new-user-aad) deployment.
 - [Set access permissions using role-based access control](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-permissions). (This task isn't restricted to admins.)
 - [Monitor infrastructure health](https://docs.microsoft.com/azure-stack/operator/azure-stack-monitor-health).
-- Manage [network](https://docs.microsoft.com/azure-stack/operator/azure-stack-viewing-public-ip-address-consumption) and [storage](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-storage-accounts) resources.
+- Manage [network](https://docs.microsoft.com/azure-stack/operator/azure-stack-viewing-public-ip-address-consumption) and [storage](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-storage-accounts) resources.
 - [Start and stop Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-start-and-stop&branch=release-tzl).
 - [Operating the extended storage](https://docs.microsoft.com/azure-stack/tdc/extended-storage-operator-guide&branch=release-tzl).
 - [Manage IoT Hub](https://docs.microsoft.com/azure-stack/operator/iot-hub-rp-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&.bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl).
@@ -135,7 +135,7 @@ Here is a list of daily, weekly, and monthly tasks for an operator:
 
 ## What to tell your users
 
-You'll need to let your users know how to work with services in Azure Stack Hub, how to connect to the environment, and how to subscribe to offers. Besides any custom documentation that you may want to provide your users, you can direct users to [Azure Stack Hub User Documentation](https://docs.microsoft.com/azure-stack/user/).
+You'll need to let your users know how to work with services in Azure Stack Hub, how to connect to the environment, and how to subscribe to offers. Besides any custom documentation that you may want to provide your users, you can direct users to [Azure Stack Hub User Documentation](https://docs.microsoft.com/azure-stack/user/).
 
 ### Understand how to work with services in Azure Stack Hub
 
@@ -149,22 +149,22 @@ The information in these articles summarizes the differences between a service i
 
 ### Connect to Azure Stack Hub as a user
 
-Your users will want to know how to [access the user portal](https://docs.microsoft.com/azure-stack/user/azure-stack-use-portal) or how to connect through PowerShell. In an integrated systems environment, the user portal address varies per deployment. You'll need to provide your users with the correct URL.
+Your users will want to know how to [access the user portal](https://docs.microsoft.com/azure-stack/user/azure-stack-use-portal) or how to connect through PowerShell. In an integrated systems environment, the user portal address varies per deployment. You'll need to provide your users with the correct URL.
 
-If using PowerShell, users may have to register resource providers before they can use services. A resource provider manages a service. For example, the networking resource provider manages resources like virtual networks, network interfaces, and load balancers. They must [install](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install) PowerShell, [download](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-download) additional modules,
-and [configure](https://docs.microsoft.com/azure-stack/user/azure-stack-powershell-configure-user) PowerShell (which includes resource provider registration).
+If using PowerShell, users may have to register resource providers before they can use services. A resource provider manages a service. For example, the networking resource provider manages resources like virtual networks, network interfaces, and load balancers. They must [install](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install) PowerShell, [download](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-download) additional modules,
+and [configure](https://docs.microsoft.com/azure-stack/user/azure-stack-powershell-configure-user) PowerShell (which includes resource provider registration).
 
 ### Subscribe to an offer
 
-Before a user can use services, they must [subscribe to an offer](https://docs.microsoft.com/azure-stack/operator/azure-stack-subscribe-plan-provision-vm) that you've created as an operator.
+Before a user can use services, they must [subscribe to an offer](https://docs.microsoft.com/azure-stack/operator/azure-stack-subscribe-plan-provision-vm) that you've created as an operator.
 
 ## Where to get support
 
-To find support information for earlier releases of Azure Stack Hub (pre-1905), see [Azure Stack Hub servicing policy](https://docs.microsoft.com/azure-stack/operator/azure-stack-servicing-policy).
+To find support information for earlier releases of Azure Stack Hub (pre-1905), see [Azure Stack Hub servicing policy](https://docs.microsoft.com/azure-stack/operator/azure-stack-servicing-policy).
 
 For an integrated system, there's a coordinated escalation and resolution process between Microsoft and our original equipment manufacturer (OEM) hardware partners.
 
-If there's a cloud services issue, support is offered through Microsoft Customer Support Services (CSS). To open a support request, select the help and support icon (question mark) in the upper-right corner of the administrator portal. Then select **Help + support** and then **New support request** under the **Support** section.
+If there's a cloud services issue, support is offered through Microsoft Customer Support Services (CSS). To open a support request, select the help and support icon (question mark) in the upper-right corner of the administrator portal. Then select **Help + support** and then **New support request** under the **Support** section.
 
 If there's an issue with deployment, patch and update, hardware (including field replaceable units), or any hardware-branded software—like software running on the hardware lifecycle host—contact your OEM hardware vendor first.
 
