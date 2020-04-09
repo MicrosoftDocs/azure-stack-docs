@@ -71,9 +71,12 @@ To rotate the certificates used within Azure App Service on Azure Stack Hub, com
 
 1. The certificates will be rotated as required throughout the Azure App Service on Azure Stack Hub role instances.  Operators can monitor the status of the procedure using the **Status** button.
 
-### Rotate credential for AAD identity application
-
 When the identity application certificate is rotated the corresponding application in AAD or ADFS must also be updated with the new certificate.
+
+> [!IMPORTANT]
+> Failure to update the identity application with the new certificate, after rotation, will break the user portal experience for Azure Functions, prevent users from being able to use the KUDU Developer tools, and prevent Administrators from managing worker tier scale sets from the App Service administration experience.
+
+### Rotate credential for the AAD identity application 
 
 The identity application is created by the operator before deployment of Azure App Service on Azure Stack Hub.  If the Application ID is unknown, follow these steps to discover it:
 
@@ -83,9 +86,9 @@ The identity application is created by the operator before deployment of Azure A
 
 1. Select **Access Control (IAM)** and select the **App Service** application
 
-1. Take a note of the **APP ID** this is the Application ID of the identity application.
+1. Take a note of the **APP ID**, this value is the Application ID of the identity application that must be updated in Azure Active Directory.
 
-To rotate the certificate for the application in Active Directory follow these steps:
+To rotate the certificate for the application in Active Directory, follow these steps:
 
 1. Go to the **Azure portal** and sign in using the Global Admin used to deploy Azure Stack Hub
 
@@ -111,7 +114,7 @@ The identity application is created by the operator before deployment of Azure A
 
 1. Select **Access Control (IAM)** and select the **AzureStack-AppService-<guid>** application
 
-1. Take a note of the **Object ID** this is the id of the Service Principal which must be updated in ADFS.
+1. Take a note of the **Object ID**, this value is the ID of the Service Principal that must be updated in ADFS.
 
 To rotate the certificate for the application in ADFS, you will need to have access to the privileged endpoint (PEP), and then update the certificate credential using PowerShell, substituting your own values for the following placeholders:
 
