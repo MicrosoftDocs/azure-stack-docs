@@ -437,11 +437,11 @@ You'll use Application Insights metrics to create alerts. When these alerts trig
 
 ### Create an alert from metrics
 
-Navigate to the resource group for this tutorial, and then select the Application Insights instance to open **Application Insights**.
+Go to the resource group for this tutorial and then select the Application Insights instance to open **Application Insights**.
 
 ![Application Insights](media/solution-deployment-guide-hybrid/image21.png)
 
-You'll use this view to create a scale-out alert and a scale in alert.
+You'll use this view to create a scale-out alert and a scale-in alert.
 
 ### Create the scale-out alert
 
@@ -464,7 +464,7 @@ You'll use this view to create a scale-out alert and a scale in alert.
 
 9. On the menu bar, select **Save**.
 
-### Create the scale in alert
+### Create the scale-in alert
 
 1. Under **CONFIGURE**, select **Alerts (classic)**.
 2. Select **Add metric alert (classic)**.
@@ -485,9 +485,9 @@ You'll use this view to create a scale-out alert and a scale in alert.
 
 9. On the menu bar, select **Save**.
 
-The following screen capture shows the alerts for scale-out and scale-in.
+The following screenshot shows the alerts for scale-out and scale-in.
 
-   ![Alerts (classic)](media/solution-deployment-guide-hybrid/image22.png)
+   ![Application Insights alerts (classic)](media/solution-deployment-guide-hybrid/image22.png)
 
 ## Redirect traffic between Azure and Azure Stack Hub
 
