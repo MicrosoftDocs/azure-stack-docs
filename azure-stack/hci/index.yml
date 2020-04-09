@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: khdownie
   ms.author: v-kedow
-  ms.date: 04/07/2020
+  ms.date: 04/09/2020
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -25,7 +25,7 @@ landingContent:
       - linkListType: get-started
         links:
           - text: Azure Stack HCI catalog
-            url: /cloud-platform/azure-stack-hci-catalog
+            url: https://www.microsoft.com/cloud-platform/azure-stack-hci-catalog
 
   # Card
   - title: Manage Azure Stack HCI
