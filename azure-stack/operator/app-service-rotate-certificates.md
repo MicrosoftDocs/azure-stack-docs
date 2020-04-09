@@ -75,7 +75,7 @@ To rotate the certificates used within Azure App Service on Azure Stack Hub, com
 
 When the identity application certificate is rotated the corresponding application in AAD or ADFS must also be updated with the new certificate.
 
-The identity application is created by the operator before deployment of Azure App Service on Azure Stack Hub.  If the application id is unknown, follow these steps to discover it:
+The identity application is created by the operator before deployment of Azure App Service on Azure Stack Hub.  If the Application ID is unknown, follow these steps to discover it:
 
 1. Go to the **Azure Stack Hub Administration Portal**
 
@@ -83,19 +83,19 @@ The identity application is created by the operator before deployment of Azure A
 
 1. Select **Access Control (IAM)** and select the **App Service** application
 
-1. Take a note of the **APP ID** this is the application id of the identity application.
+1. Take a note of the **APP ID** this is the Application ID of the identity application.
 
 To rotate the certificate for the application in Active Directory follow these steps:
 
-1. Go to the **Azure Portal** and sign in using the Global Admin used to deploy Azure Stack Hub
+1. Go to the **Azure portal** and sign in using the Global Admin used to deploy Azure Stack Hub
 
 1. Go to **Azure Active Directory** and browse to **App Registrations**
 
-1. Search for the **Application ID** specify the identity application id
+1. Search for the **Application ID**,  specify the identity Application ID
 
 1. Select the application and then go to **Certificates & Secrets**
 
-1. Click **Upload certificate** and upload the new certificate for the identity application as a cer, pem or crt file.
+1. Click **Upload certificate** and upload the new certificate for the identity application with one of the following file types: .cer, .pem, .crt
 
 1. Confirm the **thumbprint** matches that listed in the App Service administration experience in the Azure Stack Hub Admin portal
 
@@ -103,7 +103,7 @@ To rotate the certificate for the application in Active Directory follow these s
 
 ### Rotate certificate for ADFS Identity Application
 
-The identity application is created by the operator before deployment of Azure App Service on Azure Stack Hub.  If the application id is unknown, follow these steps to discover it:
+The identity application is created by the operator before deployment of Azure App Service on Azure Stack Hub.  If the Application's Object ID is unknown, follow these steps to discover it:
 
 1. Go to the **Azure Stack Hub Administration Portal**
 
