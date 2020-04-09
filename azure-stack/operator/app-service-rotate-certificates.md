@@ -123,9 +123,7 @@ To rotate the certificate for the application in ADFS, you will need to have acc
 | \<CertificateFileLocation\> | The location of your X509 certificate on disk. | "d:\certs\sso.cer" |
 | \<ApplicationObjectId\> | The identifier assigned to the identity application. | "S-1-5-21-401916501-2345862468-1451220656-1451" |
 
- in an elevated Windows PowerShell session
-
-1. Open an elevated Windows PowerShell session, and run the following script
+ 1. Open an elevated Windows PowerShell session, and run the following script
 
     ```powershell
     # Sign in to PowerShell interactively, using credentials that have access to the VM running the Privileged Endpoint
