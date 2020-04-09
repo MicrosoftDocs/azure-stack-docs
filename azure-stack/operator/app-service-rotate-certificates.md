@@ -2,7 +2,6 @@
 title: Rotate App Service on Azure Stack Hub secrets and certificates 
 description: Learn how to rotate secrets and certificates used by Azure App Service on Azure Stack Hub
 author: apwestgarth
-manager: stefsch
 
 ms.topic: article
 ms.date: 04/09/2020
@@ -26,7 +25,7 @@ This document contains the procedure for rotating the following secrets:
 
 * Encryption Keys used within Azure App Service on Azure Stack Hub;
 * Database connection credentials used by Azure App Service on Azure Stack Hub to interact with the hosting and metering databases;
-* Certificates used by Azure App Service on Azure Stack Hub to secure endpoints;
+* Certificates used by Azure App Service on Azure Stack Hub to secure endpoints and rotation of identity application certificate in Azure Active Directory (Azure AD) or Active Directory Federation Services (ADFS)
 * System credentials for Azure App Service on Azure Stack Hub infrastructure roles.
 
 ## Rotate encryption keys
@@ -76,7 +75,7 @@ When the identity application certificate is rotated the corresponding applicati
 > [!IMPORTANT]
 > Failure to update the identity application with the new certificate, after rotation, will break the user portal experience for Azure Functions, prevent users from being able to use the KUDU Developer tools, and prevent Administrators from managing worker tier scale sets from the App Service administration experience.
 
-### Rotate credential for the AAD identity application 
+### Rotate credential for the Azure AD identity application 
 
 The identity application is created by the operator before deployment of Azure App Service on Azure Stack Hub.  If the Application ID is unknown, follow these steps to discover it:
 
