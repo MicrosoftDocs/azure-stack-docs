@@ -383,7 +383,7 @@ Create a Traffic Manager profile in Azure and then configure endpoints to enable
    - For **Routing method**, select the **Weighted**.
    - For **Subscription**, select the subscription you want to create  this profile in.
    - In **Resource Group**, create a new resource group for this profile.
-   - In **Resource group location**, select the location of the resource group. This setting refers to the location of the resource group and has no impact on the Traffic Manager profile that is deployed globally.
+   - In **Resource group location**, select the location of the resource group. This setting refers to the location of the resource group and has no impact on the Traffic Manager profile that's deployed globally.
 
 4. Select **Create**.
 
@@ -427,7 +427,7 @@ You'll configure the Azure endpoint next.
 
 After both endpoints are configured, they're listed in **Traffic Manager profile** when you select **Endpoints**. The example in the following screen capture shows two endpoints, with status and configuration information for each one.
 
-![Endpoints](media/solution-deployment-guide-hybrid/image20.png)
+![Endpoints in Traffic Manager profile](media/solution-deployment-guide-hybrid/image20.png)
 
 ## Set up Application Insights monitoring and alerting
 
