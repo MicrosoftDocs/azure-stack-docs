@@ -60,7 +60,7 @@ Before you start this solution, make sure you meet the following requirements:
   - A Windows Server 2016 image.
   - A Windows Server 2016 with a Microsoft SQL Server image.
   - The appropriate plans and offers.
-  - A domain name for your web app. If you don't have a domain name, you can buy one from a domain provider such as GoDaddy, Bluehost, and InMotion.
+  - A domain name for your web app. If you don't have a domain name, you can buy one from a domain provider like GoDaddy, Bluehost, and InMotion.
 - An SSL certificate for your domain from a trusted certificate authority like LetsEncrypt.
 - A web app that communicates with a SQL Server database and supports Application Insights. You can download the [dotnetcore-sqldb-tutorial](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial) sample app from GitHub.
 - A hybrid network between an Azure virtual network and Azure Stack Hub virtual network. For detailed instructions, see [Configure hybrid cloud connectivity with Azure and Azure Stack Hub](solution-deployment-guide-connectivity.md).
@@ -173,7 +173,7 @@ The virtual network gateway in the Azure side of the hybrid network must allow p
 
 1. To connect the app to the Azure VNet, follow the instructions in [Gateway required VNet integration](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet#gateway-required-vnet-integration).
 
-2. Navigate to **Settings** for the App Service plan hosting the web app. In **Settings**, select **Networking**.
+2. Go to **Settings** for the App Service plan hosting the web app. In **Settings**, select **Networking**.
 
     ![Configure Networking for the App Service plan](media/solution-deployment-guide-hybrid/image11.png)
 
@@ -235,7 +235,7 @@ You'll configure your Azure and Azure Stack Hub web apps to use SSL certificates
 
 To add SSL to Azure:
 
-1. Make sure that the SSL certificate you obtain is valid for the subdomain you created. (It's okay to use wildcard certificates.)
+1. Make sure that the SSL certificate you get is valid for the subdomain you created. (It's okay to use wildcard certificates.)
 
 2. In Azure, follow the instructions in the **Prepare your web app** and **Bind your SSL certificate** sections of the [Bind an existing custom SSL certificate to Azure Web Apps](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-ssl) article. Select **SNI-based SSL** as the **SSL Type**.
 
@@ -383,7 +383,7 @@ Create a Traffic Manager profile in Azure and then configure endpoints to enable
    - For **Routing method**, select the **Weighted**.
    - For **Subscription**, select the subscription you want to create  this profile in.
    - In **Resource Group**, create a new resource group for this profile.
-   - In **Resource group location**, select the location of the resource group. This setting refers to the location of the resource group and has no impact on the Traffic Manager profile that's deployed globally.
+   - In **Resource group location**, select the location of the resource group. This setting refers to the location of the resource group and has no affect on the Traffic Manager profile that's deployed globally.
 
 4. Select **Create**.
 
