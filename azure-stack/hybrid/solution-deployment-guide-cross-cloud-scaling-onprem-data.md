@@ -83,7 +83,7 @@ Before you start this solution, make sure you meet the following requirements:
 
 5. On **Basics > Configure basic settings**, provide a **Name** for the virtual machine (VM), a **User name** for the SQL Server SA, and a **Password** for the SA.  From the **Subscription** drop-down list, select the subscription that you're deploying to. For **Resource group**, use **Choose existing** and put the VM in the same resource group as your Azure Stack Hub web app.
 
-    ![Configure basic settings for VM in Azure Stach Hub user portal](media/solution-deployment-guide-hybrid/image3.png)
+    ![Configure basic settings for VM in Azure Stack Hub user portal](media/solution-deployment-guide-hybrid/image3.png)
 
 6. Under **Size**, pick a size for your VM. For this tutorial, we recommend A2_Standard or a DS2_V2_Standard.
 
