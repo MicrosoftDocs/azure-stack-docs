@@ -1,6 +1,6 @@
 ---
-title: Deploy an app that scales cross-cloud using Azure and Azure Stack Hub
-description: Learn how to deploy an app that scales cross-cloud, using Azure and Azure Stack Hub.
+title: Deploy an app that scales cross-cloud
+description: Learn how to deploy an app that scales cross-cloud using Azure and Azure Stack Hub.
 author: BryanLa
 ms.topic: article
 ms.date: 11/05/2019
@@ -8,13 +8,12 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub user, I want to deploy an app that scales cross-cloud using Azure and Azure Stack Hub so I can combine the benefits of private cloud with the scalability of the public cloud.
+# Keyword: cross-cloud hybrid app azure stack hub
 
 ---
 
-
-# Deploy an app that scales cross-cloud using Azure and Azure Stack Hub
+# Deploy an app that scales cross-cloud
 
 Learn how to create a cross-cloud solution to provide a manually triggered process for switching from an Azure Stack Hub hosted web app to an Azure hosted web app with autoscaling via traffic manager. This process ensures flexible and scalable cloud utility when under load.
 
