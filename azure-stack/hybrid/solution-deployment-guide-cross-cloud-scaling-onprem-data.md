@@ -491,7 +491,7 @@ The following screenshot shows the alerts for scale-out and scale-in.
 
 ## Redirect traffic between Azure and Azure Stack Hub
 
-You can configure manual or automatic switching of your web app traffic switching between Azure and Azure Stack Hub.
+You can configure manual or automatic switching of your web app traffic between Azure and Azure Stack Hub.
 
 ### Configure manual switching between Azure and Azure Stack Hub
 
@@ -499,22 +499,22 @@ When your web site reaches the thresholds that you configure, you'll receive an 
 
 1. In the Azure portal, select your Traffic Manager profile.
 
-    ![Traffic Manager endpoints](media/solution-deployment-guide-hybrid/image20.png)
+    ![Traffic Manager endpoints in Azure portal](media/solution-deployment-guide-hybrid/image20.png)
 
 2. Select **Endpoints**.
 3. Select the **Azure endpoint**.
 4. Under **Status**, select **Enabled**, and then select **Save**.
 
-    ![Enable Azure endpoint](media/solution-deployment-guide-hybrid/image23.png)
+    ![Enable Azure endpoint in Azure portal](media/solution-deployment-guide-hybrid/image23.png)
 
 5. On **Endpoints** for the Traffic Manager profile, select **External endpoint**.
 6. Under **Status**, select **Disabled**, and then select **Save**.
 
-    ![Disable Azure Stack Hub endpoint](media/solution-deployment-guide-hybrid/image24.png)
+    ![Disable Azure Stack Hub endpoint in Azure portal](media/solution-deployment-guide-hybrid/image24.png)
 
 After the endpoints are configured, app traffic goes to your Azure scale-out web app instead of the Azure Stack Hub web app.
 
- ![Endpoints changed](media/solution-deployment-guide-hybrid/image25.png)
+ ![Endpoints changed in Azure web app traffic](media/solution-deployment-guide-hybrid/image25.png)
 
 To reverse the flow back to Azure Stack Hub, use the previous steps to:
 
