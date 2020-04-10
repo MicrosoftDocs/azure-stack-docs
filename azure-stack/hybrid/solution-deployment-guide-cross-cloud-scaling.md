@@ -96,13 +96,13 @@ Azure Repos
 
 ### Create self-contained web app deployment for App Services in both clouds
 
-1.  Edit the **WebApplication.csproj** file. Select `Runtimeidentifier` and add `win10-x64`. (See [Self-contained Deployment](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf) documentation.) 
+1.  Edit the **WebApplication.csproj** file. Select `Runtimeidentifier` and add `win10-x64`. (See [Self-contained deployment](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf) documentation.)
 
     ![Edit web app project file](media/solution-deployment-guide-cross-cloud-scaling/image3.png)
 
-2.  Check in the code to Azure Repos using Team Explorer.
+2. Check in the code to Azure Repos using Team Explorer.
 
-3.  Confirm that the app code has been checked into Azure Repos.
+3. Confirm that the app code has been checked into Azure Repos.
 
 ## Create the build definition
 
