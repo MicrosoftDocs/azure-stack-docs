@@ -1,6 +1,6 @@
 ---
 title: Validate an Azure Stack HCI cluster
-description: This how-to guide discusses cluster validation and testing considerations for an existing Azure Stack HCI cluster in Windows Admin Center. It includes steps on how to validate networking, the cluster, test storage, and adjust the cluster. The article also includes some specific validation scenarios.
+description: This how-to article focuses on why cluster validation is important, and when to run it on an existing Azure Stack HCI cluster. The article includes  validation scenarios for troubleshooting an updated server cluster.
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
@@ -10,16 +10,14 @@ ms.date: 4/10/2020
 > Applies to Windows Server 2019
 
 # Validate an Azure Stack HCI cluster
-In this how-to guide, you learn about:
-- Cluster validation and testing considerations for an existing cluster.
-- Steps to validate networking and the cluster.
-- Specific validation scenarios
-<!---Redo intro and list based on Jason's feedback in article, then match in metadata. Also update screenshot format for existing.--->
+This how-to article focuses on why cluster validation is important and when to run it:
+- After deploying a server cluster, run the Validate-DCB tool to test networking, and the Validate feature in Windows Admin Center.
+- After updating a server cluster, depending on your scenario, run both validation options to troubleshoot cluster issues.
+<!---Redo intro and list based on Jason's feedback in article, then match in metadata.--->
 
 ## What is cluster validation?
-You use the cluster validation feature in Windows Admin Center to run focused tests on a collection of servers in a cluster node. Cluster validation tests the underlying hardware and software directly, and individually. The process produces an accurate assessment report of how well failover clustering is supported on a given configuration.
-
-Cluster validation is intended to catch hardware or configuration problems before the cluster goes into production. Cluster validation helps to ensure that the Azure Stack HCI solution that you're about to deploy is truly dependable. You can also use cluster validation on configured failover clusters as a diagnostic tool.
+Cluster validation is intended to catch hardware or configuration problems before a cluster goes into production. Cluster validation helps to ensure that the Azure Stack HCI solution that you're about to deploy is truly dependable. You can also use cluster validation on configured failover clusters as a diagnostic tool. You can use Storage Spaces Direct to perform cluster validation prior to creating your server cluster.
+To learn more, see [Step 3.2: Validate the cluster](windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-32-validate-the-cluster) of the Deploy Storage Spaces Direct topic.
 
 ## Cluster validation considerations for an existing cluster
 When you do cluster validation on an existing cluster, you might not always run all tests. If you include storage tests, there are different considerations to keep in mind. This section outlines the main considerations:
@@ -69,12 +67,12 @@ Use the following steps to validate the servers in an existing cluster in Window
 1. On the **Inventory** page, select the servers in the cluster, then expand the **More** submenu and select **Validate cluster (Preview)**.
 1. On the **Validate Cluster** pop-up window, select **Yes**.
 
-    :::image type="content" source="./media/validate-cluster.png" alt-text="Validate Cluster pop-up window":::
+    :::image type="content" source="./media/validate/validate-cluster.png" alt-text="Validate Cluster pop-up window":::
 
 1. On the **Credential Security Service Provider (CredSSP)** pop-up window, select **Yes**.
 1. Provide your credentials to enable **CredSSP** and then select **Continue**.
 
-    :::image type="content" source="./media/validated-cluster-notice.png" alt-text="Validated cluster notice":::
+    :::image type="content" source="./media/validate/validated-cluster-notice.png" alt-text="Validated cluster notice":::
 
 > [!NOTE]
 > After your cluster servers have been validated, you will need to disable CredSSP for security reasons.
