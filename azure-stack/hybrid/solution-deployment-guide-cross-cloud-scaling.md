@@ -36,26 +36,18 @@ In this solution, you'll build a sample environment to:
 
 ## Prerequisites
 
--   Azure subscription. If needed, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before beginning.
-
-- An Azure Stack Hub Integrated System or deployment of Azure Stack Development Kit.
-    - For instructions on installing Azure Stack Hub, see [Install the Azure Stack Development Kit](../asdk/asdk-install.md).
-    - For an ASDK post-deployment automation script, go to: [https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1) 
-    - This installation may require a few hours to complete.
-
--   Deploy [App Service](../operator/azure-stack-app-service-deploy.md) PaaS services to Azure Stack Hub.
-
--   [Create Plan/Offers](../operator/service-plan-offer-subscription-overview.md) within the Azure Stack Hub environment.
-
--   [Create tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) within the Azure Stack Hub environment.
-
--   Create a web app within the tenant subscription. Make note of the new web app URL for later use.
-
--   Deploy Azure Pipelines Virtual Machine (VM) within the tenant subscription.
-
--   Windows Server 2016 VM with .NET 3.5 is required. This VM will be built in the tenant subscription on Azure Stack Hub as the private build agent.
-
--   [Windows Server 2016 with SQL 2017 VM Image](../operator/azure-stack-add-vm-image.md) is available in the Azure Stack Hub Marketplace. If this image isn't available, work with an Azure Stack Hub Operator to ensure it's added to the environment.
+- Azure subscription. If needed, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before beginning.
+- An Azure Stack Hub integrated system or deployment of Azure Stack Development Kit (ASDK).
+  - For instructions on installing Azure Stack Hub, see [Install the ASDK](../asdk/asdk-install.md).
+  - For an ASDK post-deployment automation script, go to: [https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1)
+  - This installation may require a few hours to complete.
+- Deploy [App Service](../operator/azure-stack-app-service-deploy.md) PaaS services to Azure Stack Hub.
+- [Create plans/offers](../operator/service-plan-offer-subscription-overview.md) within the Azure Stack Hub environment.
+- [Create tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) within the Azure Stack Hub environment.
+- Create a web app within the tenant subscription. Make note of the new web app URL for later use.
+- Deploy Azure Pipelines virtual machine (VM) within the tenant subscription.
+- Windows Server 2016 VM with .NET 3.5 is required. This VM will be built in the tenant subscription on Azure Stack Hub as the private build agent.
+- [Windows Server 2016 with SQL 2017 VM image](../operator/azure-stack-add-vm-image.md) is available in the Azure Stack Hub Marketplace. If this image isn't available, work with an Azure Stack Hub Operator to ensure it's added to the environment.
 
 ## Issues and considerations
 
@@ -73,22 +65,20 @@ The cross-cloud solution ensures seamless management and familiar interface betw
 
 ## Cross-cloud scaling
 
-### Obtain a custom domain and configure DNS
+### Get a custom domain and configure DNS
 
 Update the DNS zone file for the domain. Azure AD will verify ownership of the custom domain name. Use [Azure DNS](https://docs.microsoft.com/azure/dns/dns-getstarted-portal) for Azure/Office 365/external DNS records within Azure, or add the DNS entry at [a different DNS registrar](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/).
 
-1.  Register a custom domain with a public registrar.
-
-2.  Sign in to the domain name registrar for the domain. An approved admin may be required to make DNS updates.
-
-3.  Update the DNS zone file for the domain by adding the DNS entry provided by Azure AD. (The DNS entry won't affect mail routing or web hosting behaviors.)
+1. Register a custom domain with a public registrar.
+2. Sign in to the domain name registrar for the domain. An approved admin may be required to make DNS updates.
+3. Update the DNS zone file for the domain by adding the DNS entry provided by Azure AD. (The DNS entry won't affect email routing or web hosting behaviors.)
 
 ### Create a default multi-node web app in Azure Stack Hub
 
 Set up hybrid continuous integration and continuous deployment (CI/CD) to deploy web apps to Azure and Azure Stack Hub and to autopush changes to both clouds.
 
 > [!Note]  
-> Azure Stack Hub with proper images syndicated to run (Windows Server and SQL) and App Service deployment are required. For more information, review the App Service documentation [Before you get started with App Service on Azure Stack Hub](../operator/azure-stack-app-service-before-you-get-started.md).
+> Azure Stack Hub with proper images syndicated to run (Windows Server and SQL) and App Service deployment are required. For more information, review the App Service documentation [Prerequisites for deploying App Service on Azure Stack Hub](../operator/azure-stack-app-service-before-you-get-started.md).
 
 ### Add Code to Azure Repos
 
