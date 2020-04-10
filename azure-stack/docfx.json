@@ -78,6 +78,8 @@
         ]
       },
       {
+        "src": ".",
+        "dest": ".",
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -96,7 +98,7 @@
       {
         "group": "version-ash",
         "src" : ".",
-        "dest" : "version",
+        "dest" : ".",
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -183,6 +185,8 @@
         ]
       },
       {
+        "src": ".",
+        "dest": ".",
         "files": [
           "**/*.png",
           "**/*.jpg",
@@ -203,7 +207,7 @@
           "**/*.gif"
         ],
         "src": ".",
-        "dest": "version",
+        "dest": ".",
         "group": "version-ash",
         "exclude": [
           "asdk/**",
