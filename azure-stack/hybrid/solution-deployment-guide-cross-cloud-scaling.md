@@ -124,7 +124,7 @@ Azure Pipelines and Azure DevOps Services provide a highly configurable and mana
 
 ## Create release definition
 
-1.  Select the **plus** button to add a new release under the **Releases** tab in the **Build and Release** section of VSO.
+1. Select the **plus** button to add a new release under the **Releases** tab in the **Build and Release** section of Azure DevOps Services.
 
     ![Create a release definition](media/solution-deployment-guide-cross-cloud-scaling/image5.png)
 
@@ -163,32 +163,30 @@ Azure Pipelines and Azure DevOps Services provide a highly configurable and mana
     ![Save changes in release pipeline](media/solution-deployment-guide-cross-cloud-scaling/image14.png)
 
 10. Add a new artifact selecting the build for the Azure Stack Hub app.
-    
+
     ![Add new artifact for Azure Stack Hub app](media/solution-deployment-guide-cross-cloud-scaling/image15.png)
 
-
 11. Add one more environment by applying the Azure App Service Deployment.
-    
+
     ![Add environment to Azure App Service Deployment](media/solution-deployment-guide-cross-cloud-scaling/image16.png)
 
-12. Name the new environment Azure Stack.
-    
+12. Name the new environment "Azure Stack".
+
     ![Name environment in Azure App Service Deployment](media/solution-deployment-guide-cross-cloud-scaling/image17.png)
 
 13. Find the Azure Stack environment under **Task** tab.
-    
+
     ![Azure Stack environment](media/solution-deployment-guide-cross-cloud-scaling/image18.png)
 
 14. Select the subscription for the Azure Stack endpoint.
-    
+
     ![Select the subscription for the Azure Stack endpoint](media/solution-deployment-guide-cross-cloud-scaling/image19.png)
 
 15. Set the Azure Stack web app name as the App service name.
-
     ![Set Azure Stack web app name](media/solution-deployment-guide-cross-cloud-scaling/image20.png)
 
 16. Select the Azure Stack agent.
-    
+
     ![Select the Azure Stack agent](media/solution-deployment-guide-cross-cloud-scaling/image21.png)
 
 17. Under the Deploy Azure App Service section, select the valid **Package or Folder** for the environment. Select **OK** to folder location.
@@ -198,15 +196,15 @@ Azure Pipelines and Azure DevOps Services provide a highly configurable and mana
     ![Select folder for Azure App Service Deployment](media/solution-deployment-guide-cross-cloud-scaling/image23.png)
 
 18. Under Variable tab add a variable named `VSTS\_ARM\_REST\_IGNORE\_SSL\_ERRORS`, set its value as **true**, and scope to Azure Stack.
-    
+
     ![Add variable to Azure App Deployment](media/solution-deployment-guide-cross-cloud-scaling/image24.png)
 
 19. Select the **Continuous** deployment trigger icon in both artifacts and enable the **Continues** deployment trigger.
-    
+
     ![Select continuous deployment trigger](media/solution-deployment-guide-cross-cloud-scaling/image25.png)
 
 20. Select the **Pre-deployment** conditions icon in the Azure Stack environment and set the trigger to **After release.**
-    
+
     ![Select pre-deployment conditions](media/solution-deployment-guide-cross-cloud-scaling/image26.png)
 
 21. Save all changes.
@@ -216,31 +214,31 @@ Azure Pipelines and Azure DevOps Services provide a highly configurable and mana
 
 ## Publish to Azure Stack Hub via Visual Studio
 
-By creating endpoints, a Visual Studio Online (VSTO) build can deploy Azure Service apps to Azure Stack Hub. Azure Pipelines connects to the build agent, which connects to Azure Stack Hub.
+By creating endpoints, an Azure DevOps Services build can deploy Azure Service apps to Azure Stack Hub. Azure Pipelines connects to the build agent, which connects to Azure Stack Hub.
 
-1.  Sign in to VSTO and navigate to the app settings page.
+1. Sign in to Azure DevOps Services and go to the app settings page.
 
-2.  On **Settings**, select **Security**.
+2. On **Settings**, select **Security**.
 
-3.  In **VSTS Groups**, select **Endpoint Creators**.
+3. In **VSTS Groups**, select **Endpoint Creators**.
 
-4.  On the **Members** tab, select **Add**.
+4. On the **Members** tab, select **Add**.
 
-5.  In **Add users and groups**, enter a user name and select that user from the list of users.
+5. In **Add users and groups**, enter a user name and select that user from the list of users.
 
-6.  Select **Save changes**.
+6. Select **Save changes**.
 
-7.  In the **VSTS Groups** list, select **Endpoint Administrators**.
+7. In the **VSTS Groups** list, select **Endpoint Administrators**.
 
-8.  On the **Members** tab, select **Add**.
+8. On the **Members** tab, select **Add**.
 
-9.  In **Add users and groups**, enter a user name and select that user from the list of users.
+9. In **Add users and groups**, enter a user name and select that user from the list of users.
 
 10. Select **Save changes**.
 
-Now that the endpoint information exists, the Azure Pipelines to Azure Stack Hub connection is ready to use. The build agent in Azure Stack Hub gets instructions from Azure Pipelines, and then the agent conveys endpoint information for communication with Azure Stack Hub.
+Now that the endpoint information exists, the Azure Pipelines to Azure Stack Hub connection is ready to use. The build agent in Azure Stack Hub gets instructions from Azure Pipelines and then the agent conveys endpoint information for communication with Azure Stack Hub.
 
-## Develop the application build
+## Develop the app build
 
 > [!Note]  
 > Azure Stack Hub with proper images syndicated to run (Windows Server and SQL) and App Service deployment are required. For more information, review the App Service documentation [Before you get started with App Service on Azure Stack Hub](../operator/azure-stack-app-service-before-you-get-started.md).
