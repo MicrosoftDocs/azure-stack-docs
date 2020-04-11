@@ -241,33 +241,33 @@ Now that the endpoint information exists, the Azure Pipelines to Azure Stack Hub
 ## Develop the app build
 
 > [!Note]  
-> Azure Stack Hub with proper images syndicated to run (Windows Server and SQL) and App Service deployment are required. For more information, review the App Service documentation [Before you get started with App Service on Azure Stack Hub](../operator/azure-stack-app-service-before-you-get-started.md).
+> Azure Stack Hub with proper images syndicated to run (Windows Server and SQL) and App Service deployment are required. For more information, see [Prerequisites for deploying App Service on Azure Stack Hub](../operator/azure-stack-app-service-before-you-get-started.md).
 
 Use [Azure Resource Manager templates](https://azure.microsoft.com/resources/templates/) like web app code from Azure Repos to deploy to both clouds.
 
 ### Add code to an Azure Repos project
 
-1.  Sign in to Azure Repos with an account that has project creation rights on Azure Stack Hub. The next screen capture shows how to connect to the HybridCICD project.
+1. Sign in to Azure Repos with an account that has project creation rights on Azure Stack Hub.
 
-2.  **Clone the repository** by creating and opening the default web app.
+2. **Clone the repository** by creating and opening the default web app.
 
 #### Create self-contained web app deployment for App Services in both clouds
 
-1.  Edit the **WebApplication.csproj** file: Select `Runtimeidentifier` and then add `win10-x64`. For more information, see [Self-contained deployment](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf) documentation.
+1. Edit the **WebApplication.csproj** file: Select `Runtimeidentifier` and then add `win10-x64`. For more information, see [Self-contained deployment](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf) documentation.
 
-2.  Use Team Explorer to check the code into Azure Repos.
+2. Use Team Explorer to check the code into Azure Repos.
 
-3.  Confirm that the app code was checked into Azure Repos.
+3. Confirm that the app code was checked into Azure Repos.
 
 ### Create the build definition
 
-1.  Sign in to Azure Pipelines with an account that can create a build definition.
+1. Sign in to Azure Pipelines with an account that can create a build definition.
 
-2.  Navigate to the **Build Web Application** page for the project.
+2. Go to the **Build Web Application** page for the project.
 
-3.  In **Arguments**, add **-r win10-x64** code. This addition is required to trigger a self-contained deployment with .NET Core.
+3. In **Arguments**, add **-r win10-x64** code. This addition is required to trigger a self-contained deployment with .NET Core.
 
-4.  Run the build. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf) process will publish artifacts that can run on Azure and Azure Stack Hub.
+4. Run the build. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf) process will publish artifacts that can run on Azure and Azure Stack Hub.
 
 #### Use an Azure hosted build agent
 
@@ -275,29 +275,29 @@ Using a hosted build agent in Azure Pipelines is a convenient option to build an
 
 ### Configure the continuous deployment (CD) process
 
-Azure Pipelines and Azure DevOps Services provide a highly configurable and manageable pipeline for releases to multiple environments such as development, staging, quality assurance (QA), and production. This process can include requiring approvals at specific stages of the application life cycle.
+Azure Pipelines and Azure DevOps Services provide a highly configurable and manageable pipeline for releases to multiple environments like development, staging, quality assurance (QA), and production. This process can include requiring approvals at specific stages of the app life cycle.
 
 #### Create release definition
 
-Creating a release definition is the final step in the application build process. This release definition is used to create a release and deploy a build.
+Creating a release definition is the final step in the app build process. This release definition is used to create a release and deploy a build.
 
-1.  Sign in to Azure Pipelines and navigate to **Build and Release** for the project.
+1. Sign in to Azure Pipelines and navigate to **Build and Release** for the project.
 
-2.  On the **Releases** tab, select **[ + ]** and then pick **Create release definition**.
+2. On the **Releases** tab, select **[ + ]** and then pick **Create release definition**.
 
-3.  On **Select a Template**, choose **Azure App Service Deployment**, and then select **Apply**.
+3. On **Select a Template**, choose **Azure App Service Deployment**, and then select **Apply**.
 
-4.  On **Add artifact**, from the **Source (Build definition)**, select the Azure Cloud build app.
+4. On **Add artifact**, from the **Source (Build definition)**, select the Azure Cloud build app.
 
-5.  On the **Pipeline** tab, select the **1 Phase**, **1 Task** link to **View environment tasks**.
+5. On the **Pipeline** tab, select the **1 Phase**, **1 Task** link to **View environment tasks**.
 
-6.  On the **Tasks** tab, enter Azure as the **Environment name** and select the AzureCloud Traders-Web EP from the **Azure subscription** list.
+6. On the **Tasks** tab, enter Azure as the **Environment name** and select the AzureCloud Traders-Web EP from the **Azure subscription** list.
 
-7.  Enter the **Azure app service name**, which is `northwindtraders` in the next screen capture.
+7. Enter the **Azure app service name**, which is `northwindtraders` in the next screen capture.
 
-8.  For the Agent phase, select **Hosted VS2017** from the **Agent queue** list.
+8. For the Agent phase, select **Hosted VS2017** from the **Agent queue** list.
 
-9.  In **Deploy Azure App Service**, select the valid **Package or folder** for the environment.
+9. In **Deploy Azure App Service**, select the valid **Package or folder** for the environment.
 
 10. In **Select File or Folder**, select **OK** to **Location**.
 
