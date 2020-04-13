@@ -9,7 +9,7 @@ ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
 # Intent: As an Azure Stack Hub user, I want to deploy an app that scales cross-cloud using Azure and Azure Stack Hub so I can combine the benefits of private cloud with the scalability of the public cloud.
-# Keyword: cross-cloud hybrid app azure stack hub
+# Keyword: cross-cloud app azure stack hub
 
 ---
 
