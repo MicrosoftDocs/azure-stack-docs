@@ -1,36 +1,30 @@
 ---
-title: Deploy a template using PowerShell in Azure Stack | Microsoft Docs
-description: Deploy a template using PowerShell in Azure Stack.
-services: azure-stack
-documentationcenter: ''
+title: Deploy a template using PowerShell in Azure Stack Hub 
+description: Deploy a template using PowerShell in Azure Stack Hub.
 author: mattbriggs
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2019
+ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 09/23/2019
 
+# Intent: As an Azure Stack user, I want to deploy a template using PowerShell in Azure Stack so I can manage resources efficiently. 
+# Keyword: deploy template powershell
+
 ---
 
-# Deploy a template using Powershell in Azure Stack
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+# Deploy a template using Powershell in Azure Stack Hub
 
-You can use PowerShell to deploy Azure Resource Manager templates to Azure Stack. This article describes how to use PowerShell to deploy a template.
+You can use PowerShell to deploy Azure Resource Manager templates to Azure Stack Hub. This article describes how to use PowerShell to deploy a template.
 
 ## Run AzureRM PowerShell cmdlets
 
 This example uses **AzureRM** PowerShell cmdlets and a template stored on GitHub. The template creates a Windows Server 2012 R2 Datacenter virtual machine.
 
 >[!NOTE]
-> Before you try this example, make sure that you've [configured PowerShell](azure-stack-powershell-configure-user.md) for an Azure Stack user.
+> Before you try this example, make sure that you've [configured PowerShell](azure-stack-powershell-configure-user.md) for an Azure Stack Hub user.
 
 1. Browse the [AzureStack-QuickStart-Templates repo](https://aka.ms/AzureStackGitHub) and find the **101-simple-windows-vm** template. Save the template to this location: `C:\templates\azuredeploy-101-simple-windows-vm.json`.
 2. Open an elevated PowerShell command prompt.
@@ -57,7 +51,7 @@ This example uses **AzureRM** PowerShell cmdlets and a template stored on GitHub
     >[!IMPORTANT]
     > Every time you run this script, increment the value of the `$myNum` parameter to prevent overwriting your deployment.
 
-4. Open the Azure Stack portal, select **Browse**, and then select  **Virtual machines** to find your new virtual machine (**myDeployment001**).
+4. Open the Azure Stack Hub portal, select **Browse**, and then select  **Virtual machines** to find your new virtual machine (**myDeployment001**).
 
 ## Cancel a running template deployment
 

@@ -1,14 +1,18 @@
 ---
-title: Test an Azure Stack service offering.
+title: Test an Azure Stack Hub service offering.
 description: Learn how to test a service offering, by creating a subscription and deploying resources. 
 author: BryanLa
 ms.author: bryanla
-ms.service: azure-stack
 ms.topic: tutorial
 ms.date: 10/13/2019
 ms.reviewer: shriramnat
 ms.lastreviewed: 10/06/2019
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Tutorial: Test a service offering
 
@@ -26,7 +30,7 @@ Before starting this tutorial, you must complete the following prerequisites:
 
 - Complete the [Offer a service to users](tutorial-offer-services.md) tutorial. In it, you learn how to create the offer used by this tutorial.
 
-- The offer you subscribe to in this tutorial enables deployment of a virtual machine (VM) resource. If you'd like to test VM deployment, you must first make a VM image available in Azure Stack Marketplace, by downloading it from Azure Marketplace. See [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md) for instructions. 
+- The offer you subscribe to in this tutorial enables deployment of a virtual machine (VM) resource. If you'd like to test VM deployment, you must first make a VM image available in Azure Stack Hub Marketplace, by downloading it from Azure Marketplace. See [Download marketplace items from Azure to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md) for instructions. 
 
 ## Subscribe to the offer
 
@@ -134,8 +138,9 @@ In this tutorial you learned how to:
 > * Create a subscription
 > * Create and deploy resources 
 
-Next, learn about deploying resource providers for add-on services. They allow you to offer even more services to users in your plans:
+Next, learn about deploying resource providers for value-add services. They allow you to offer even more services to users in your plans:
 
-- [Offer SQL on Azure Stack](azure-stack-sql-resource-provider.md)
-- [Offer MySQL on Azure Stack](azure-stack-mysql-resource-provider.md)
-- [Offer App Service on Azure Stack](azure-stack-app-service-overview.md)
+- [Offer SQL on Azure Stack Hub](azure-stack-sql-resource-provider.md)
+- [Offer MySQL on Azure Stack Hub](azure-stack-mysql-resource-provider.md)
+- [Offer App Service on Azure Stack Hub](azure-stack-app-service-overview.md)
+- [Offer Event Hubs on Azure Stack Hub](event-hubs-rp-overview.md)

@@ -1,23 +1,20 @@
 ---
-title: Removing the SQL resource provider on Azure Stack | Microsoft Docs
-description: Learn how you to remove the SQL resource provider from your Azure Stack deployment.
-services: azure-stack
-documentationCenter: ''
-author: mattbriggs
-manager: femila
-editor: ''
+title: Remove the SQL resource provider
+titleSuffix: Azure Stack Hub
+description: Learn how to remove the SQL resource provider from your Azure Stack Hub deployment.
+author: bryanla
 
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/02/2019
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: xiaofmao
-ms.lastreviewed: 11/20/2018
+ms.lastreviewed: 11/20/2019
+
+# Intent: As an Azure Stack operator, I want to remove the SQL resource provider.
+# Keyword: remove sql resource provider azure stack
 
 ---
+
 
 # Remove the SQL resource provider
 
@@ -26,16 +23,7 @@ Before you remove the SQL resource provider, you must remove all the provider de
 > [!NOTE]
 > You can find the download links for the resource provider installers in [Deploy the resource provider prerequisites](./azure-stack-sql-resource-provider-deploy.md#prerequisites).
 
-Removing the SQL resource provider does not delete tenant databases from hosting servers.
-
-## Dependency cleanup
-
-There are several cleanup tasks to do before you run the DeploySqlProvider.ps1 script to remove the resource provider.
-
-The Azure Stack Operator is responsible for the following cleanup tasks:
-
-* Delete any plans that reference the SQL Adapter.
-* Delete any quotas that are associated with the SQL Adapter.
+Removing the SQL resource provider will delete the associated plans and quotas managed by operator. But it doesn't delete tenant databases from hosting servers.
 
 ## To remove the SQL resource provider
 
@@ -50,11 +38,11 @@ The Azure Stack Operator is responsible for the following cleanup tasks:
 
 4. Run the DeploySqlProvider.ps1 script using the following parameters:
 
-    * **Uninstall**. Removes the resource provider and all associated resources.
-    * **PrivilegedEndpoint**. The IP address or DNS name of the privileged endpoint.
-    * **AzureEnvironment**. The Azure environment used for deploying Azure Stack. Required only for Azure AD deployments.
-    * **CloudAdminCredential**. The credential for the cloud administrator, necessary to access the privileged endpoint.
-    * **AzCredential**. The credential for the Azure Stack service admin account. Use the same credentials that you used for deploying Azure Stack.
+    * **Uninstall**: Removes the resource provider and all associated resources.
+    * **PrivilegedEndpoint**: The IP address or DNS name of the privileged endpoint.
+    * **AzureEnvironment**: The Azure environment used for deploying Azure Stack Hub. Required only for Azure AD deployments.
+    * **CloudAdminCredential**: The credential for the cloud admin, necessary to access the privileged endpoint.
+    * **AzCredential**: The credential for the Azure Stack Hub service admin account. Use the same credentials that you used for deploying Azure Stack Hub.
 
 ## Next steps
 

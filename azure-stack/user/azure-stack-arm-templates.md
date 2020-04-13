@@ -1,38 +1,31 @@
 ---
-title: Use Azure Resource Manager templates in Azure Stack | Microsoft Docs
-description: Learn how to use Azure Resource Manager templates in Azure Stack to provision resources.
-services: azure-stack
-documentationcenter: ''
+title: Use Azure Resource Manager templates in Azure Stack Hub 
+description: Learn how to use Azure Resource Manager templates in Azure Stack Hub to provision resources.
 author: mattbriggs
-manager: femila
-editor: ''
 
-ms.assetid: 2022dbe5-47fd-457d-9af3-6c01688171d7
-ms.service: azure-stack
 
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2019
+ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: justini
-ms.lastreviewed: 11/14/2018
+ms.lastreviewed: 11/14/2019
+
+# Intent: As an Azure Stack user, I want to use Azure Resource Manager templates to provision resources for my application.
+# Keyword: resource manager templates
 
 ---
-# Use Azure Resource Manager templates in Azure Stack
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+# Use Azure Resource Manager templates in Azure Stack Hub
 
 You can use Azure Resource Manager templates to deploy and provision all the resources for your application in a single, coordinated operation. You can also redeploy templates to make changes to the resources in a resource group.
 
-These templates can be deployed with the Microsoft Azure Stack portal, PowerShell, the command line, and Visual Studio.
+These templates can be deployed with the Microsoft Azure Stack Hub portal, PowerShell, the command line, and Visual Studio.
 
 The following quickstart templates are [available on GitHub](https://aka.ms/azurestackgithub):
 
 ## Deploy SharePoint Server (non-high-availability deployment)
 
-Use the PowerShell [Desired State Configuration](/powershell/dsc/overview/overview) (DSC) extension to [create a SharePoint Server 2013 farm](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha) that includes the following resources:
+Use the PowerShell [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) extension to [create a SharePoint Server 2013 farm](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha) that includes the following resources:
 
 * A virtual network
 * Three storage accounts
@@ -70,11 +63,11 @@ Use the PowerShell DSC extension to configure an existing virtual machine Local 
 
 ## Basic virtual machine
 
-[Deploy a Windows VM](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-simple-windows-vm) that includes a virtual network (with DNS), public IP address, and a network interface.
+[Deploy a Windows VM](https://aka.ms/aa6zdzx) that includes a virtual network (with DNS), public IP address, and a network interface.
 
 ## Cancel a running template deployment
 
-To cancel a running template deployment, use the [Stop-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment) PowerShell [cmdlet](/powershell/developer/cmdlet/cmdlet-overview).
+To cancel a running template deployment, use the [Stop-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment) PowerShell [cmdlet](/powershell/scripting/developer/cmdlet/cmdlet-overview).
 
 ## Next steps
 

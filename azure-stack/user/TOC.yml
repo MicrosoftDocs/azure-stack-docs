@@ -2,6 +2,8 @@
   href: index.yml
 - name: Overview
   items:
+  - name: What is Azure Stack Hub?
+    href: user-overview.md
   - name: Key considerations
     href: azure-stack-considerations.md
 - name: Quickstarts
@@ -19,16 +21,18 @@
     href: azure-stack-quick-create-vm-linux-powershell.md
   - name: Create Linux VM - CLI
     href: azure-stack-quick-create-vm-linux-cli.md
+  - name: Create Event Hubs cluster - Portal
+    href: event-hubs-quickstart-cluster-portal.md    
 - name: Tutorials
   items:
+    - name: Subscribe to an offer
+      href: azure-stack-subscribe-services.md
     - name: Create a VM from a template
       href: azure-stack-create-vm-template.md
 - name: How-to guides
   items:
   - name: Get started building solutions for the hybrid cloud
     items:
-      - name: Subscribe to an offer
-        href: azure-stack-subscribe-services.md
       - name: Enable a Cloud Solution Provider
         href: azure-stack-csp-enable-billing-usage-tracking.md
       - name: Use the Azure Stack Hub Portal
@@ -37,11 +41,13 @@
         items:  
         - name: Set up a development environment
           href: azure-stack-dev-start.md
+        - name: Get authorization information
+          href: authenticate-azure-stack-hub.md
         - name: Use PowerShell with Azure Stack Hub
           items: 
           - name: Azure Stack Hub PowerShell overview
             href: azure-stack-powershell-overview.md
-          - name: Install Azure Stack PowerShell
+          - name: Install Azure Stack Hub PowerShell
             href: /azure-stack/operator/azure-stack-powershell-install?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
             maintainContext: true
           - name: Connect with PowerShell
@@ -61,6 +67,8 @@
           href: azure-stack-install-visual-studio.md
         - name: Use a Secure Shell
           href: azure-stack-dev-start-howto-ssh-public-key.md
+        - name: Create a key with ssh-keygen
+          href: create-ssh-key-on-windows.md
         - name: Use a REST client with the API
           href: azure-stack-rest-api-use.md
       - name: Use Azure Stack Hub Resource Manager templates
@@ -73,7 +81,7 @@
           href: azure-stack-developer.md  
         - name: Check templates
           href: azure-stack-validate-templates.md
-          name: Deploy templates
+        - name: Deploy templates
           items:
           - name: Deploy with the portal
             href: azure-stack-deploy-template-portal.md
@@ -179,6 +187,10 @@
           href: azure-stack-key-vault-store-credentials.md
         - name: KeyVault sample app
           href: azure-stack-key-vault-sample-app.md
+      - name: Event Hubs
+        items:
+        - name: Overview
+          href: event-hubs-overview.md
       - name: Azure Monitor
         href: azure-stack-metrics-azure-data.md
         items: 
@@ -196,7 +208,7 @@
         items:
         - name: AKS engine
           items:
-          - name: AKS Engine on Azure Stack Hub
+          - name: AKS engine on Azure Stack Hub
             href: azure-stack-kubernetes-aks-engine-overview.md
           - name: Support policy
             href: azure-stack-kubernetes-aks-engine-support.md 
@@ -208,6 +220,8 @@
             href: azure-stack-kubernetes-aks-engine-deploy-windows.md
           - name: Deploy a cluster
             href: azure-stack-kubernetes-aks-engine-deploy-cluster.md
+          - name: Deploy to custom virtual network
+            href: kubernetes-aks-engine-custom-vnet.md
           - name: Scale a cluster
             href: azure-stack-kubernetes-aks-engine-scale.md
           - name: Upgrade a cluster
@@ -251,36 +265,41 @@
       - name: Deploy a NodeJS web app 
         href: azure-stack-dev-start-howto-vm-nodejs.md
   - name: Deploy foundational patterns
+    href: deploy-foundational-patterns.md
     items:
-    - name: VNET peering
-      items:
-      - name: VNet peering with FortiGate
-        href: azure-stack-network-howto-vnet-to-vnet.md
+    - name: Networking patterns
+      items: 
       - name: VNet peering with VMs
         href: azure-stack-network-howto-vnet-peering.md
-    - name: Setup VPN to on-prem
-      href: azure-stack-network-howto-vnet-to-onprem.md
-    - name: VNET to VNET connection
-      href: azure-stack-network-howto-vnet-to-vnet-stacks.md
-    - name: Extend the data center
-      href: azure-stack-network-howto-extend-datacenter.md
+      - name: Use third-party NVAs (Fortinet Fortigate NVA)
+        items:
+        - name: VNet peering with FortiGate
+          href: azure-stack-network-howto-vnet-to-vnet.md
+        - name: Set up VPN to on-prem
+          href: azure-stack-network-howto-vnet-to-onprem.md
+        - name: VNET to VNET connection
+          href: azure-stack-network-howto-vnet-to-vnet-stacks.md
+      - name: Use RRAS
+        items:
+        - name: Set up a multiple site-to-site VPN
+          href: network-howto-vpn-tunnel.md
+        - name: Create a VPN tunnel (GRE)
+          href: network-howto-vpn-tunnel-gre.md
+        - name: Create a VPN tunnel (IPSEC)
+          href: network-howto-vpn-tunnel-ipsec.md
     - name: F5 load balancer
       href: network-howto-f5.md
-    - name: Connect to iSCSI storage
-      href: azure-stack-network-howto-iscsi-storage.md
-    - name: Set up tunnels
+    - name: Connect to external storage
       items:
-      - name: Set up a multiple site-to-site VPN
-        href: network-howto-vpn-tunnel.md
-      - name: Create a VPN tunnel (GRE)
-        href: network-howto-vpn-tunnel-gre.md
-      - name: Create a VPN tunnel (IPSEC)
-        href: network-howto-vpn-tunnel-ipsec.md
+        - name: Connect to iSCSI storage
+          href: azure-stack-network-howto-iscsi-storage.md
+        - name: Extend the datacenter
+          href: azure-stack-network-howto-extend-datacenter.md
     - name: Back up and recovery
       items:
-      - name: Back up your VM on Azure Stack with Commvault
+      - name: Back up your VM on Azure Stack Hub with Commvault
         href: azure-stack-network-howto-backup-commvault.md
-      - name: Back up your storage accounts on Azure Stack
+      - name: Back up your storage accounts on Azure Stack Hub
         href: azure-stack-network-howto-backup-storage.md
       - name: Copy subscription resources
         href: azure-stack-network-howto-backup-replicator.md
@@ -300,8 +319,8 @@
         href: iaas-architecture-nva-architecture.md
 - name: Reference
   items:
-  - name: Azure Stack PowerShell
-    href: /powershell/azure/azure-stack/overview?view=azurestackps-1.3.0
+  - name: Azure Stack Hub PowerShell
+    href: https://docs.microsoft.com/powershell/azure/azure-stack/overview
   - name: Azure Stack Hub REST API Browser
     href: /rest/api/
   - name: Azure CLI
@@ -314,11 +333,11 @@
     href: /azure-stack/asdk/
 - name: Resources
   items:
-  - name: Azure Stack roadmap
+  - name: Azure Stack Hub roadmap
     href: https://azure.microsoft.com/roadmap/?tag=azure-stack
-  - name: Azure Stack MSDN forum
+  - name: Azure Stack Hub MSDN forum
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack
-  - name: Azure Stack Documentation feedback
+  - name: Azure Stack Hub Documentation feedback
     href: https://feedback.azure.com/forums/344565-azure-stack?category_id=160275
   - name: Pricing information
     href: https://azure.microsoft.com/overview/azure-stack/how-to-buy/

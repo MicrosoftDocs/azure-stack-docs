@@ -1,34 +1,26 @@
 ---
-title: Best practices for automatic Azure Stack log collection | Microsoft Docs
-description: Best practices for automatic log collection in Azure Stack Help + Support
-services: azure-stack
-documentationcenter: ''
+title: Best practices for automatic Azure Stack Hub log collection 
+description: Best practices for automatic log collection in Azure Stack Hub Help + Support
 author: justinha
-manager: femila
-editor: ''
 
-ms.assetid: a20bea32-3705-45e8-9168-f198cfac51af
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 07/25/2019
 
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
-# Best practices for automatic Azure Stack log collection 
 
-*Applies to: Azure Stack integrated systems*
+# Best practices for automatic Azure Stack Hub log collection 
 
+This topic covers best practices for managing automatic diagnostic log collection for Azure Stack Hub. 
 
-This topic covers best practices for managing automatic diagnostic log collection for Azure Stack. 
+## Collecting logs from multiple Azure Stack Hub systems
 
-## Collecting logs from multiple Azure Stack systems
-
-Set up one blob container for every Azure Stack scale unit you want to collect logs from. For more information about how to configure the blob container, see [Configure automatic Azure Stack diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md). As a best practice, only save diagnostic logs from the same Azure Stack scale unit within a single blob container. 
+Set up one blob container for every Azure Stack Hub scale unit you want to collect logs from. For more information about how to configure the blob container, see [Configure automatic Azure Stack Hub diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md). As a best practice, only save diagnostic logs from the same Azure Stack Hub scale unit within a single blob container. 
 
 ## Retention policy
 
@@ -72,11 +64,11 @@ The following table can help environments with limited or metered connections to
 ## Managing costs
 
 Azure [blob storage charges](https://azure.microsoft.com/pricing/details/storage/blobs/) depend on how much data is saved each month and other factors such as data redundancy. 
-If you don't have an existing storage account, you can sign in to the Azure portal, click **Storage accounts**, and follow the steps to [create an Azure blob container SAS URL](azure-stack-configure-automatic-diagnostic-log-collection.md).
+If you don't have an existing storage account, you can sign in to the Azure portal, click **Storage accounts**, and follow the steps to [create an Azure blob container SAS URL](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md).
 
-As a best practice, create an Azure Blob storage [lifecycle management policy](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts) to minimize ongoing storage costs. For more information about how to set up the storage account, see [Configure automatic Azure Stack diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md)
+As a best practice, create an Azure Blob storage [lifecycle management policy](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts) to minimize ongoing storage costs. For more information about how to set up the storage account, see [Configure automatic Azure Stack Hub diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md)
 
 ## See also
 
-[Configure automatic Azure Stack log collection](azure-stack-best-practices-automatic-diagnostic-log-collection.md)
+[Configure automatic Azure Stack Hub log collection](azure-stack-best-practices-automatic-diagnostic-log-collection.md)
 

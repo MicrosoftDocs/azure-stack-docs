@@ -2,17 +2,19 @@
 title: Deploy an app that scales cross-cloud using Azure and Azure Stack Hub
 description: Learn how to deploy an app that scales cross-cloud, using Azure and Azure Stack Hub.
 author: BryanLa
-ms.service: azure-stack
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
 
-# Deploy an app that scales cross-cloud using Azure and Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
+# Deploy an app that scales cross-cloud using Azure and Azure Stack Hub
 
 Learn how to create a cross-cloud solution to provide a manually triggered process for switching from an Azure Stack Hub hosted web app to an Azure hosted web app with autoscaling via traffic manager. This process ensures flexible and scalable cloud utility when under load.
 
@@ -37,8 +39,8 @@ In this solution, you'll build a sample environment to:
 
 -   Azure subscription. If needed, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before beginning.
 
-- An Azure Stack Hub Integrated System or deployment of Azure Stack Hub Development Kit.
-    - For instructions on installing Azure Stack Hub, see [Install the Azure Stack Hub Development Kit](../asdk/asdk-install.md).
+- An Azure Stack Hub Integrated System or deployment of Azure Stack Development Kit.
+    - For instructions on installing Azure Stack Hub, see [Install the Azure Stack Development Kit](../asdk/asdk-install.md).
     - For an ASDK post-deployment automation script, go to: [https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1) 
     - This installation may require a few hours to complete.
 
@@ -54,7 +56,7 @@ In this solution, you'll build a sample environment to:
 
 -   Windows Server 2016 VM with .NET 3.5 is required. This VM will be built in the tenant subscription on Azure Stack Hub as the private build agent.
 
--   [Windows Server 2016 with SQL 2017 VM Image](../operator/azure-stack-add-vm-image.md#add-a-vm-image-as-an-azure-stack-operator-using-the-portal) is available in the Azure Stack Hub Marketplace. If this image isn't available, work with an Azure Stack Hub Operator to ensure it's added to the environment.
+-   [Windows Server 2016 with SQL 2017 VM Image](../operator/azure-stack-add-vm-image.md) is available in the Azure Stack Hub Marketplace. If this image isn't available, work with an Azure Stack Hub Operator to ensure it's added to the environment.
 
 ## Issues and considerations
 
@@ -105,7 +107,7 @@ Azure Repos
 
 ### Create self-contained web app deployment for App Services in both clouds
 
-1.  Edit the **WebApplication.csproj** file. Select `Runtimeidentifier` and add `win10-x64`. (See [Self-contained Deployment](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) documentation.) 
+1.  Edit the **WebApplication.csproj** file. Select `Runtimeidentifier` and add `win10-x64`. (See [Self-contained Deployment](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf) documentation.) 
 
     ![Edit web app project file](media/solution-deployment-guide-cross-cloud-scaling/image3.png)
 
@@ -121,7 +123,7 @@ Azure Repos
 
     ![Add code to the web app](media/solution-deployment-guide-cross-cloud-scaling/image4.png)
 
-3. Run the build. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) process will publish artifacts that run on Azure and Azure Stack Hub.
+3. Run the build. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf) process will publish artifacts that run on Azure and Azure Stack Hub.
 
 ## Use an Azure hosted agent
 
@@ -264,7 +266,7 @@ Use [Azure Resource Manager templates](https://azure.microsoft.com/resources/tem
 
 #### Create self-contained web app deployment for App Services in both clouds
 
-1.  Edit the **WebApplication.csproj** file: Select `Runtimeidentifier` and then add `win10-x64`. For more information, see [Self-contained deployment](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) documentation.
+1.  Edit the **WebApplication.csproj** file: Select `Runtimeidentifier` and then add `win10-x64`. For more information, see [Self-contained deployment](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf) documentation.
 
 2.  Use Team Explorer to check the code into Azure Repos.
 
@@ -278,7 +280,7 @@ Use [Azure Resource Manager templates](https://azure.microsoft.com/resources/tem
 
 3.  In **Arguments**, add **-r win10-x64** code. This addition is required to trigger a self-contained deployment with .NET Core.
 
-4.  Run the build. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) process will publish artifacts that can run on Azure and Azure Stack Hub.
+4.  Run the build. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf) process will publish artifacts that can run on Azure and Azure Stack Hub.
 
 #### Use an Azure hosted build agent
 

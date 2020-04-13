@@ -1,42 +1,35 @@
 ---
-title: Allow apps to access Azure Stack Key Vault secrets | Microsoft Docs
-description: Learn how to run a sample app that retrieves keys and secrets from a key vault in Azure Stack.
-services: azure-stack
-documentationcenter: ''
+title: Allow apps to access Azure Stack Hub Key Vault secrets 
+description: Learn how to run a sample app that retrieves keys and secrets from a key vault in Azure Stack Hub.
 author: sethmanheim
-manager: femila
-editor: ''
 
-ms.assetid: 3748b719-e269-4b48-8d7d-d75a84b0e1e5
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 02/19/2020
 ms.author: sethm
 ms.lastreviewed: 04/08/2019
 
+# Intent: As an Azure Stack user, I want to create an app that accesses key vault secrets
+# Keyword: access key vault secrets
+
 ---
 
-# Allow apps to access Azure Stack Key Vault secrets
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+# Allow apps to access Azure Stack Hub Key Vault secrets
 
-Follow the steps in this article to run the sample app **HelloKeyVault** that retrieves keys and secrets from a key vault in Azure Stack.
+Follow the steps in this article to run the sample app **HelloKeyVault** that retrieves keys and secrets from a key vault in Azure Stack Hub.
 
 ## Prerequisites
 
 You can install the following prerequisites from the [Azure Stack Development Kit](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp), or from a Windows-based external client if you're [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn):
 
-* Install [Azure Stack-compatible Azure PowerShell modules](../operator/azure-stack-powershell-install.md).
-* Download the [tools required to work with Azure Stack](../operator/azure-stack-powershell-download.md).
+* Install [Azure Stack Hub-compatible Azure PowerShell modules](../operator/azure-stack-powershell-install.md).
+* Download the [tools required to work with Azure Stack Hub](../operator/azure-stack-powershell-download.md).
 
 ## Create a key vault and register an app
 
 To prepare for the sample application:
 
-* Create a key vault in Azure Stack.
+* Create a key vault in Azure Stack Hub.
 * Register an app in Azure Active Directory (Azure AD).
 
 Use the Azure portal or PowerShell to prepare for the sample app.
@@ -64,12 +57,12 @@ Function GenerateSymmetricKey()
     return [System.Convert]::ToBase64String($key)
 }
 
-Write-Host 'Please log into your Azure Stack user environment' -foregroundcolor Green
+Write-Host 'Please log into your Azure Stack Hub user environment' -foregroundcolor Green
 
 $tenantARM = "https://management.local.azurestack.external"
 $aadTenantName = "FILL THIS IN WITH YOUR AAD TENANT NAME. FOR EXAMPLE: myazurestack.onmicrosoft.com"
 
-# Configure the Azure Stack operator's PowerShell environment.
+# Configure the Azure Stack Hub operator's PowerShell environment.
 Add-AzureRMEnvironment `
   -Name "AzureStackUser" `
   -ArmEndpoint $tenantARM
@@ -150,15 +143,23 @@ To load the **HelloKeyVault** sample:
 In Visual Studio:
 
 1. Open the HelloKeyVault\App.config file and find the `<appSettings>` element.
-2. Update the **VaultUrl**, **AuthClientId**, and **AuthClientSecret** keys with the values returned when creating the key vault. By default, the App.config file has a placeholder for `AuthCertThumbprint`. Replace this placeholder with `AuthClientSecret`.
+2. Update the **VaultUrl**, **AuthClientId**, and **AuthCertThumbprint** keys with the values returned when creating the key vault. By default, the App.config file has a placeholder for `AuthCertThumbprint`. Replace this placeholder with `AuthClientSecret`.
 
-   ![App settings](media/azure-stack-key-vault-sample-app/appconfig.png)
+   ```xml
+   <appSettings>
+    <!-- Update these settings for your test environment -->
+    <add key="VaultUrl" value="URL to your Vault" />
+    <add key="AuthClientId" value="Client Id of your Service Principal" />
+    <add key="AuthCertThumbprint" value="Thumbprint of the certificate used for authentication" />
+    <add key="TracingEnabled" value="false" />
+   </appSettings>
+   ```
 
 3. Rebuild the solution.
 
 ## Run the app
 
-When you run **HelloKeyVault**, the app signs in to Azure AD and then uses the `AuthClientSecret` token to authenticate to the key vault in Azure Stack.
+When you run **HelloKeyVault**, the app signs in to Azure AD and then uses the `AuthClientSecret` token to authenticate to the key vault in Azure Stack Hub.
 
 You can use the **HelloKeyVault** sample to:
 
