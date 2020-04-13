@@ -64,7 +64,7 @@ Your Azure Stack Hub deployment must have internet connectivity and be registere
 ::: zone-end
 
 ::: zone pivot="state-disconnected"
-If Azure Stack Hub has limited or no internet connectivity, you can use PowerShell and the *marketplace syndication tool* to download the marketplace items to a machine with internet connectivity. You then transfer the items to your Azure Stack Hub environment. In a disconnected environment, you can't download marketplace items by using the Azure Stack Hub portal.
+When Azure Stack Hub has limited or no internet connectivity, you use PowerShell and the *marketplace syndication tool* to download the marketplace items to a machine with internet connectivity. You then transfer the items to your Azure Stack Hub environment. In a disconnected environment, you can't download marketplace items by using the Azure Stack Hub portal.
 
 The marketplace syndication tool can also be used in a connected scenario.
 
