@@ -34,7 +34,7 @@ Complete the following prerequisites before you register:
 - Set the PowerShell language mode.
 - Install PowerShell for Azure Stack Hub.
 - Download the Azure Stack Hub tools.
-- Choose your billing model.
+- Determine your billing model.
 - Determine your unique registration name.
 
 ### Verify your credentials
@@ -61,7 +61,7 @@ If you don't have an Azure subscription that meets these requirements, you can [
 > [!NOTE]
 > If you have more than one Azure Stack Hub, a best practice is to register each Azure Stack Hub to its own subscription. This makes it easier for you to track usage.
 
-### PowerShell language mode
+### Set the PowerShell language mode
 
 To successfully register Azure Stack Hub, the PowerShell language mode must be set to **FullLanguageMode**.  To verify that the current language mode is set to full, open an elevated PowerShell window and run the following PowerShell cmdlets:
 
@@ -83,7 +83,7 @@ The Azure Stack Hub tools GitHub repository contains PowerShell modules that sup
 
 To ensure you're using the latest version, delete any existing versions of the Azure Stack Hub tools and [download the latest version from GitHub](azure-stack-powershell-download.md) before registering with Azure.
 
-### Choose your billing model
+### Determine your billing model
 ::: zone pivot="state-connected"
  Connected means you've deployed Azure Stack Hub so that it can connect to the internet and to Azure. You either have Azure AD or Active Directory Federation Services (AD FS) for your identity store. With a connected deployment, you can choose from two billing models: pay-as-you-use or capacity-based. You specify the billing model later, while running the registration script.
 ::: zone-end
@@ -94,7 +94,7 @@ To ensure you're using the latest version, delete any existing versions of the A
 
 ### Determine your unique registration name
 
-When you register Azure Stack Hub with Azure, you must provide a unique registration name. An easy way to associate your Azure Stack Hub subscription with an Azure registration is to use your Azure Stack Hub **Cloud ID**.
+When you run the registration script, you must provide a unique registration name. An easy way to associate your Azure Stack Hub subscription with an Azure registration is to use your Azure Stack Hub **Cloud ID**.
 
 > [!NOTE]
 > Azure Stack Hub registrations using the capacity-based billing model will need to change the unique name when re-registering after those yearly subscriptions expire unless you [delete the expired registration](azure-stack-registration.md#change-the-subscription-you-use) and re-register with Azure.
