@@ -4,10 +4,10 @@ description: Learn how to deploy Azure App Service in an offline Azure Stack Hub
 author: BryanLa
 
 ms.topic: article
-ms.date: 01/13/2020
+ms.date: 04/13/2020
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 01/13/2019
+ms.lastreviewed: 04/13/2019
 
 # Intent: As an Azure Stack operator, I want to deploy App Service in an offline environment secured by AD FS.
 # Keyword: deploy app service offline azure stack
@@ -18,14 +18,14 @@ ms.lastreviewed: 01/13/2019
 # Deploy Azure App Service in an offline environment in Azure Stack Hub
 
 > [!IMPORTANT]
-> Apply the 1910 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 1.8.
+> Apply the 2002 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 2020.Q2.
 
 By following the instructions in this article, you can deploy the [Azure App Service resource provider](azure-stack-app-service-overview.md) to an Azure Stack Hub environment that is:
 - Not connected to the internet.
 - Secured by Active Directory Federation Services (AD FS).
 
 > [!IMPORTANT]
-> Before you run the resource provider installer, make sure you've completed the steps in [Prerequisites for deploying Azure App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md). You should also read the [release notes](azure-stack-app-service-release-notes-update-eight.md) that accompany the 1.8 release to learn about new functionality, fixes, and any known issues that could affect your deployment.
+> Before you run the resource provider installer, make sure you've completed the steps in [Prerequisites for deploying Azure App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md). You should also read the [release notes](app-service-release-notes-2020-Q2.md) that accompany the 1.8 release to learn about new functionality, fixes, and any known issues that could affect your deployment.
 
 To add the Azure App Service resource provider to your offline Azure Stack Hub deployment, you must complete these top-level tasks:
 
