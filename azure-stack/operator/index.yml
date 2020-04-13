@@ -1,17 +1,17 @@
 ### YamlMime:Landing
 
-title: Azure Stack Operator Documentation # < 60 chars
-summary: Microsoft Azure Stack is a hybrid cloud platform that lets you provide Azure services from your datacenter. Learn how to manage Azure Stack. # < 160 chars
+title: Azure Stack Hub Operator Documentation # < 60 chars
+summary: Microsoft Azure Stack Hub is a hybrid cloud platform that lets you provide Azure services from your datacenter. Learn how to manage Azure Stack Hub. # < 160 chars
 
 metadata:
-  title: Azure Stack Documentation - Tutorials, API Reference # Required; page title displayed in search results. Include the brand. < 60 chars.
-  description: Learn how to manage the Azure Stack integrated systems infrastructure and how to offer services with our quickstarts and tutorials. # Required; article description that is displayed in search results. < 160 chars.
+  title: Azure Stack Hub Documentation - Tutorials, API Reference # Required; page title displayed in search results. Include the brand. < 60 chars.
+  description: Learn how to manage the Azure Stack Hub integrated systems infrastructure and how to offer services with our quickstarts and tutorials. # Required; article description that is displayed in search results. < 160 chars.
   services: azure-stack
   ms.service: azure-stack #Required; service per approved list. service slug assigned to your service by ACOM.
   ms.topic: landing-page # Required
   author: justinha #Required; your GitHub user alias, with correct capitalization.
   ms.author: justinha #Required; microsoft alias of author; optional team alias.
-  ms.date: 10/17/2019 #Required; mm/dd/yyyy format.
+  ms.date: 04/13/2020 #Required; mm/dd/yyyy format.
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
 
@@ -19,11 +19,11 @@ landingContent:
 # Cards and links should be based on top customer tasks or top subjects
 # Start card title with a verb
   # Card (optional)
-  - title: About Azure Stack
+  - title: About Azure Stack Hub
     linkLists:
       - linkListType: overview
         links:
-          - text: What is Azure Stack?
+          - text: What is Azure Stack Hub?
             url: azure-stack-overview.md
           - text: What is Azure Stack HCI?
             url: azure-stack-hci-overview.md
@@ -33,7 +33,7 @@ landingContent:
             url: azure-stack-release-notes-security-updates.md
           - text: Release notes
             url: azure-stack-release-notes-1908.md
-          - text: Azure Stack Capacity Planner
+          - text: Azure Stack Hub Capacity Planner
             url: azure-stack-capacity-planning-overview.md
 
   # Card (optional)
@@ -57,11 +57,11 @@ landingContent:
             url: azure-stack-disconnected-deployment.md
 
   # Card          
-  - title: Azure Stack tools
+  - title: Azure Stack Hub tools
     linkLists:
       - linkListType: download
         links:
-          - text: Download Azure Stack tools from GitHub 
+          - text: Download Azure Stack Hub tools from GitHub 
             url: azure-stack-powershell-download.md
           - text: Install Azure Stack PowerShell 
             url: azure-stack-powershell-install.md
@@ -71,7 +71,7 @@ landingContent:
             url: ../asdk/asdk-download.md
 
   # Card
-  - title: Try Azure Stack
+  - title: Try Azure Stack Hub
     linkLists:
       - linkListType: deploy
         links:
@@ -95,7 +95,7 @@ landingContent:
             url: azure-stack-app-service-overview.md
 
   # Card
-  - title: Manage Azure Stack
+  - title: Manage Azure Stack Hub
     linkLists:
       - linkListType: how-to-guide
         links:
