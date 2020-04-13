@@ -4,7 +4,7 @@ description: Learn about identity architecture for Azure Stack Hub, and the diff
 author: IngridAtMicrosoft
 
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 04/10/2020
 ms.author: inhenkel
 ms.reviewer: fiseraci
 ms.lastreviewed: 05/09/2019
@@ -48,7 +48,7 @@ A single-tenant topology is useful when:
 - All users are part of the same tenant.
 - A service provider hosts an Azure Stack Hub instance for an organization.
 
-![Azure Stack Hub single-tenant topology with Azure AD](media/azure-stack-identity-architecture/single-tenant.png)
+![Azure Stack Hub single-tenant topology with Azure AD](media/azure-stack-identity-architecture/single-tenant.svg)
 
 This topology features the following characteristics:
 
@@ -65,7 +65,7 @@ A multi-tenant topology is useful when:
 
 - A service provider wants to allow users from multiple organizations to access Azure Stack Hub.
 
-![Azure Stack Hub multi-tenant topology with Azure AD](media/azure-stack-identity-architecture/multi-tenant.png)
+![Azure Stack Hub multi-tenant topology with Azure AD](media/azure-stack-identity-architecture/multi-tenant.svg)
 
 This topology features the following characteristics:
 
@@ -80,7 +80,7 @@ The AD FS topology is required when either of the following conditions is true:
 - Azure Stack Hub doesn't connect to the internet.
 - Azure Stack Hub can connect to the internet, but you choose to use AD FS for your identity provider.
   
-![Azure Stack Hub topology using AD FS](media/azure-stack-identity-architecture/adfs.png)
+![Azure Stack Hub topology using AD FS](media/azure-stack-identity-architecture/adfs.svg)
 
 This topology features the following characteristics:
 
