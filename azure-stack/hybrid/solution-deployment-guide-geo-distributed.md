@@ -1,6 +1,6 @@
 ---
-title: Direct traffic with a geo-distributed app solution using Azure and Azure Stack Hub
-description: Learn how to create a geo-distributed app solution using Azure and Azure Stack Hub, that directs traffic to specific endpoints.
+title: Direct traffic with a geo-distributed app using Azure and Azure Stack Hub
+description: Learn how to direct traffic to specific endpoints with a geo-distributed app solution using Azure and Azure Stack Hub.
 author: BryanLa
 ms.topic: article
 ms.date: 11/05/2019
@@ -8,13 +8,12 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub user, I want to direct traffic to specific endpoints with a geo-distributed app solution using Azure and Azure Stack Hub so I can ensure information is routed to endpoints based on regional requirements.
+# Keyword: direct traffic geo-distributed app azure stack hub
 
 ---
 
-
-# Create a geo-distributed app solution to direct traffic with Azure and Azure Stack Hub
+# Direct traffic with a geo-distributed app using Azure and Azure Stack Hub
 
 Learn how to direct traffic to specific endpoints based on various metrics using the geo-distributed apps pattern. Creating a Traffic Manager profile with geographic-based routing and endpoint configuration ensures information is routed to endpoints based on regional requirements, corporate and international regulation, and your data needs.
 
