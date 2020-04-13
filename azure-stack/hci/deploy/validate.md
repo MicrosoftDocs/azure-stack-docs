@@ -48,15 +48,33 @@ On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE
 - Each Windows node.
 - Each network port that RDMA traffic passes through on the fabric.
 
+### Prerequisites
+- Set up information of the servers that you want the tool to validate.
+- An internet connection to download the tool module in Windows Powershell from Microsoft.
+
 ### Install and run the Validate-DCB tool
 To install and run the Validate-DCB tool:
+<!---Where/how does user connect to MS network to get tool. Use Jan's video instruction to add useful info to steps. Use screenshots that require config/mulitple settings--->
 
-1. <!---Where user goes to get tool. Use Jan's screenshots that require config/mulitple settings--->
+1. Open a Windows Powershell session as an Administrator, type `Install-module validate-DCB`, and then press **Enter**.
+
+    :::image type="content" source="../media/validate/power-shell-install-for-tool.png" alt-text="The PowerShell command to install the validate-DCB tool module":::
+
+1. After PowerShell connects to the Microsoft network location for the tool, in Powershell, type `Validate-DCB` and press Enter to start the tool.
+1. Add the Cluster name
+1. Resolve
+   The Cluster Nodes are listed.
+1. Add vSwitch Name
+1. Add pNIC, vNIC and vlan information
+1. Select RDMA type iWARP or RoCE
+
+<!---Add steps 9-15--->
+
 
 ### Review results
 To review your results from the Validate-DCB tool:
 
-1. <!---Where user goes to get tool. Use Jan's screenshots that require config/mulitple settings--->
+1. <!---Use Jan's video instruction to add useful info to steps. Use Jan's screenshots that require config/mulitple settings--->
 
 ### Resolve errors
 To learn about resolving errors that the Validate-DCB tool identifies, watch a quick video about how to fix errors.
