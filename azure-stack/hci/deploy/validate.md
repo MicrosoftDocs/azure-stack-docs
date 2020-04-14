@@ -4,7 +4,7 @@ description: This how-to article focuses on why cluster validation is important,
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 4/13/2020
+ms.date: 4/14/2020
 ---
 
 # Validate an Azure Stack HCI cluster
@@ -49,24 +49,39 @@ On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE
 - Each network port that RDMA traffic passes through on the fabric.
 
 ### Prerequisites
-- Set up information of the servers that you want the tool to validate.
+- Network setup information of the server cluster that you want to validate, including:
+    - Host or server cluster name.
+    - Virtual switch name.
+    - Network adapter names.
+    - Priority Flow Control (PFC) and Enhanced Transmission Selection (ETS) settings. 
 - An internet connection to download the tool module in Windows Powershell from Microsoft.
+<!---Where/how does user connect to MS network to get tool? Use Jan's video instruction to add useful info to steps. Update prereqs with details from video/screenshots. Use screenshots that require config/mulitple settings--->
 
 ### Install and run the Validate-DCB tool
 To install and run the Validate-DCB tool:
-<!---Where/how does user connect to MS network to get tool. Use Jan's video instruction to add useful info to steps. Use screenshots that require config/mulitple settings--->
-
 1. Open a Windows Powershell session as an Administrator, type `Install-module validate-DCB`, and then press **Enter**.
 
-    :::image type="content" source="../media/validate/power-shell-install-for-tool.png" alt-text="The PowerShell command to install the validate-DCB tool module":::
+    :::image type="content" source="../media/validate/powershell-install-for-tool.png" alt-text="The PowerShell command to install the validate-DCB tool module":::
 
-1. After PowerShell connects to the Microsoft network location for the tool, in Powershell, type `Validate-DCB` and press Enter to start the tool.
-1. Add the Cluster name
-1. Resolve
-   The Cluster Nodes are listed.
-1. Add vSwitch Name
-1. Add pNIC, vNIC and vlan information
-1. Select RDMA type iWARP or RoCE
+1. After PowerShell connects to the Microsoft network to download the tool, type `Validate-DCB` and press Enter to start the tool.
+1. On the Welcome to the Validate-DCB configuration wizard page, select **Next**.
+1. On the Clusters and Nodes page, type the name of the server cluster that you want to validate, select **Resolve** to list it on the page, and then select **Next**.
+
+    :::image type="content" source="../media/validate/clusters-and-nodes.png" alt-text="The Clusters and Nodes page of the Validate-DCB configuration wizard":::
+
+1. On the Adapters page:
+   1. Select the **vSwitch attached** checkbox and type the name of vSwitch.
+   1. Under **Adapter Name**, type the name of each physical NIC, under **Host vNIC Name**, the name of each vNIC, and under **VLAN**, the name of each VLAN.
+   1. Expand the **RDMA Type** drop-down list box and select **RoCE**, leave **Jumbo Frames** set to **9014**, and then select **Next**. 
+
+    :::image type="content" source="../media/validate/adapters.png" alt-text="The Adapters page of the Validate-DCB configuration wizard":::
+
+    > [!IMPORTANT]
+    > Add references here on determining jumbo frame and vSR-IOV...
+
+    <!---Many users will need help on how to configure stuff like the jumbo frame size, R/RoCE Max Frame Size, whether to enable vSR-IOV. This is absolutely stuff that we can cover in the doc, but John might need help figuring out what to say if the videos don't cover them.--->
+
+1. On the Data Center Bridging page, ...
 
 <!---Add steps 9-15--->
 
