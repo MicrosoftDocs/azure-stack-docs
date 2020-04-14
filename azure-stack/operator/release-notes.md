@@ -4,9 +4,9 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 03/20/2020
+ms.date: 04/10/2020
 ms.author: sethm
-ms.reviewer: prchint
+ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
@@ -87,7 +87,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Introduced a new micro-service called DNS Orchestrator that improves the resiliency logic for the internal DNS services during patch and update.
 - Added a new request validation to fail invalid blob URIs for the boot diagnostic storage account parameter while creating VMs.
 - Added auto-remediation and logging improvements for Rdagent and Host agent - two services on the host that facilitate VM CRUD operations.
-- Added a new feature to marketplace management that provides the ability to block administrators from downloading marketplace products that are incompatible with their Azure Stack, due to various attributes such as the Azure Stack version or billing model.
+- Added a new feature to marketplace management that enables Microsoft to add attributes that block administrators from downloading marketplace products that are incompatible with their Azure Stack, due to various properties, such as the Azure Stack version or billing model. Only Microsoft can add these attributes. For more information, see [Use the portal to download marketplace items](azure-stack-download-azure-marketplace-item.md#use-the-portal-to-download-marketplace-items).
 
 ### Changes
 
@@ -109,7 +109,17 @@ For more information about update build types, see [Manage updates in Azure Stac
   | Microsoft.Backup.Admin | backupLocation         | 2016-05-01 |
   | Microsoft.Backup.Admin | backups                | 2016-05-01 |
   | Microsoft.Backup.Admin | operations             | 2016-05-01 |
-  
+
+- When creating a Windows VM using PowerShell, make sure to add the `provisionvmagent` flag if you want the VM to deploy extensions. Without this flag, the VM is created without the guest agent, removing the ability to deploy VM extensions:
+
+   ```powershell
+   $VirtualMachine = Set-AzureRmVMOperatingSystem `
+     -VM $VirtualMachine `
+     -Windows `
+     -ComputerName "MainComputer" `
+     -Credential $Credential -ProvisionVMAgent
+  ```
+
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
@@ -159,14 +169,14 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 The 2002 release of Azure Stack Hub must be applied on the 1910 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1910.24.108](https://support.microsoft.com/help/4541350)
+- [Azure Stack Hub hotfix 1.1910.37.132](https://support.microsoft.com/help/4550133)
 
 ### After successfully applying the 2002 update
 
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- No Azure Stack Hub hotfix available for 2002.
+- [Azure Stack Hub hotfix 1.2002.19.73](https://support.microsoft.com/help/4557355)
 ::: moniker-end
 
 ::: moniker range="azs-1910"
@@ -326,14 +336,14 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 The 1910 release of Azure Stack Hub must be applied on the 1908 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1908.19.62](https://support.microsoft.com/help/4541349)
+- [Azure Stack Hub hotfix 1.1908.25.78](https://support.microsoft.com/help/4552361)
 
 ### After successfully applying the 1910 update
 
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1910.24.108](https://support.microsoft.com/help/4541350)
+- [Azure Stack Hub hotfix 1.1910.37.132](https://support.microsoft.com/help/4550133)
 ::: moniker-end
 
 ::: moniker range="azs-1908"
@@ -401,7 +411,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 The 1908 release of Azure Stack Hub must be applied on the 1907 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1907.26.70](https://support.microsoft.com/help/4541348)
+- [Azure Stack Hub hotfix 1.1907.29.80](https://support.microsoft.com/help/4555650)
 
 The Azure Stack Hub 1908 Update requires **Azure Stack Hub OEM version 2.1 or later** from your system's hardware provider. OEM updates include driver and firmware updates to your Azure Stack Hub system hardware. For more information about applying OEM updates, see [Apply Azure Stack Hub original equipment manufacturer updates](azure-stack-update-oem.md)
 
@@ -410,7 +420,7 @@ The Azure Stack Hub 1908 Update requires **Azure Stack Hub OEM version 2.1 or la
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1908.19.62](https://support.microsoft.com/help/4541349)
+- [Azure Stack Hub hotfix 1.1908.25.78](https://support.microsoft.com/help/4552361)
 ::: moniker-end
 
 ::: moniker range="azs-1907"
@@ -534,7 +544,7 @@ The 1907 release of Azure Stack Hub must be applied on the 1906 release with the
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1907.26.70](https://support.microsoft.com/help/4541348)
+- [Azure Stack Hub hotfix 1.1907.29.80](https://support.microsoft.com/help/4555650)
 ::: moniker-end
 
 ::: moniker range=">=azs-1907"
