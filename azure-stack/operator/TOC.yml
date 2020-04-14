@@ -296,11 +296,11 @@
         href: azure-stack-app-service-deploy.md
       - name: Deploy App Service for high availability
         href: app-service-deploy-ha.md
-      - name: Deploy App Service offline
+      - name: Deploy App Service Disconnected
         href: azure-stack-app-service-deploy-offline.md
       - name: Update App Service
         href: /azure-stack/operator/azure-stack-app-service-update?pivots=state-connected
-      - name: Update App Service Offline
+      - name: Update App Service Disconnected
         href: /azure-stack/operator/azure-stack-app-service-update?pivots=state-disconnected
       - name: Add App Service infrastructure roles
         href: azure-stack-app-service-add-worker-roles.md
