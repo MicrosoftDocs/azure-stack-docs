@@ -299,9 +299,9 @@
       - name: Deploy App Service offline
         href: azure-stack-app-service-deploy-offline.md
       - name: Update App Service
-        href: azure-stack-app-service-update.md?pivots="state-connected"
+        href: /azure-stack/operator/azure-stack-app-service-update?pivots="state-connected"
       - name: Update App Service Offline
-        href: azure-stack-app-service-update.md?pivots="state-disconnected"
+        href: /azure-stack/operator/azure-stack-app-service-update?pivots="state-disconnected"
       - name: Add App Service infrastructure roles
         href: azure-stack-app-service-add-worker-roles.md
       - name: Configure deployment sources
