@@ -25,7 +25,7 @@ Before you can install Event Hubs on Azure Stack Hub, you must download the reso
 > The download process can take 30 minutes to 2 hours, depending on the network latency and existing packages on your Azure Stack Hub instance. 
 
 ::: zone pivot="state-connected"
-Follow these instructions for a connected sceanario:
+Follow these instructions for a connected scenario:
 
 1. Sign in to the Azure Stack Hub administrator portal.
 2. Select **Marketplace Management** on the left.
@@ -40,8 +40,6 @@ Notice that additional software packages are downloaded along with Event Hubs, i
 
 - Microsoft Azure Stack Hub Add-On RP Windows Server INTERNAL ONLY
 - PowerShell Desired State Configuration
-
-Once the download process is complete, skip to the [Install Prerequisites section](#install-prerequisites).
 ::: zone-end
 
 ::: zone pivot="state-disconnected"
@@ -54,12 +52,11 @@ For a disconnected or partially connected scenario, you download the packages to
 
 ## Installation 
 
-1. If you haven't already, sign in to the Azure Stack Hub administrator portal.
-2. Select **Marketplace Management** on the left, then select **Resource providers**.
-3. Once Event Hubs and other required software have been downloaded, **Marketplace Management** should show the "Event Hubs" packages with a status of "Not Installed". There may be other packages that show a status of "Downloaded". Select the "Event Hubs" row you wish to install.
+1. If you haven't already, sign in to the Azure Stack Hub administrator portal, select **Marketplace Management** on the left, select **Resource providers**.
+2. Once Event Hubs and other required software have been downloaded, **Marketplace Management** shows the "Event Hubs" packages with a status of "Not Installed". There may be other packages that show a status of "Downloaded". Select the "Event Hubs" row you wish to install.
    [![Marketplace management downloaded packages](media/event-hubs-rp-install/2-marketplace-management-downloaded.png)](media/event-hubs-rp-install/2-marketplace-management-downloaded.png#lightbox)
  
-4. The Event Hubs install package page should show a blue banner across the top. Select the banner to start the installation of Event Hubs.
+3. The Event Hubs install package page shows a blue banner across the top. Select the banner to start the installation of Event Hubs.
    [![Marketplace management event hubs - start install](media/event-hubs-rp-install/3-marketplace-management-install-ready.png)](media/event-hubs-rp-install/3-marketplace-management-install-ready.png#lightbox)
 
 ### Install prerequisites
