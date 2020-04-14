@@ -3,7 +3,7 @@ title: Publish Azure Stack Hub services in your datacenter
 description: Learn how to publish Azure Stack Hub services in your datacenter.
 author: IngridAtMicrosoft
 ms.topic: article
-ms.date: 12/11/2019
+ms.date: 04/10/2020
 ms.author: inhenkel
 ms.reviewer: wamota
 ms.lastreviewed: 12/11/2019
@@ -14,18 +14,18 @@ ms.lastreviewed: 12/11/2019
 ---
 
 
-# Publish Azure Stack Hub services in your datacenter 
+# Publish Azure Stack Hub services in your datacenter
 
 Azure Stack Hub sets up virtual IP addresses (VIPs) for its infrastructure roles. These VIPs are allocated from the public IP address pool. Each VIP is secured with an access control list (ACL) in the software-defined network layer. ACLs are also used across the physical switches (TORs and BMC) to further harden the solution. A DNS entry is created for each endpoint in the external DNS zone that's specified at deployment time. For example, the user portal is assigned the DNS host entry of portal.*&lt;region>.&lt;fqdn>*.
 
 The following architectural diagram shows the different network layers and ACLs:
 
-![Diagram showing different network layers and ACLs](media/azure-stack-integrate-endpoints/Integrate-Endpoints-01.png)
+![Diagram showing different network layers and ACLs](media/azure-stack-integrate-endpoints/integrate-endpoints-01.svg)
 
-### Ports and URLs
+## Ports and URLs
 
 To make Azure Stack Hub services (like the portals, Azure Resource Manager, DNS, and so on) available to external networks, you must allow inbound traffic to these endpoints for specific URLs, ports, and protocols.
- 
+
 In a deployment where a transparent proxy uplinks to a traditional proxy server or a firewall is protecting the solution, you must allow specific ports and URLs for both [inbound](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound) and [outbound](azure-stack-integrate-endpoints.md#ports-and-urls-outbound) communication. These include ports and URLs for identity, the marketplace, patch and update, registration, and usage data.
 
 SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-interception) and can lead to service failures when accessing endpoints. 
