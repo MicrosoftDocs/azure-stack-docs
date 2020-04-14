@@ -42,7 +42,7 @@ If your Azure Stack Hub issue is not addressed in this article, please visit the
 Each NVA has basic configuration requirements to function correctly on Azure Stack Hub. The following section provides the steps to verify these basic configurations. For more information, [contact the vendor of the NVA](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
 > [!IMPORTANT]
-> When using an S2S tunnel, packets are further encapsulated with additional headers. This encapsulation increases the overall size of the packet. In these scenarios, you must clamp TCP **MSS** at **1350**. If your VPN devices do not support MSS clamping, you can set the MTU on the tunnel interface to **1400** bytes instead.
+> When using an S2S tunnel, packets are further encapsulated with additional headers. This encapsulation increases the overall size of the packet. In these scenarios, you must clamp TCP **MSS** at **1350**. If your VPN devices do not support MSS clamping, you can set the MTU on the tunnel interface to **1400** bytes instead. For more information, see [Virutal Network TCPIP performance tuning](/azure/virtual-network/virtual-network-tcpip-performance-tuning).
 
 ### Check whether IP forwarding is enabled on NVA
 
