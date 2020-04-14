@@ -47,11 +47,11 @@ If the agent process is shut down ungracefully for example, machine restarted, p
 ## VM images
 
 ### Failure occurs when uploading VM image in the `VaaSPreReq` script
-Refer to the section below on **Handle slow network connectivity**. It provides manual steps to upload the VM images to AzureStack stamp.
+Refer to the section below on **Handle slow network connectivity**. It provides manual steps to upload the VM images to Azure Stack stamp.
 
 ### Handle slow network connectivity
 
-### 1. Verify that the environment is healthy
+#### 1. Verify that the environment is healthy
 
 1. From the DVM / jump box, check that you can successfully sign in to the admin portal using the admin credentials.
 
@@ -96,7 +96,8 @@ You can use **Get-HashFile** cmdlet to get the hash value for the downloaded pub
 | OpenLogic-CentOS-69-20180105.vhd | C8B874FE042E33B488110D9311AF1A5C7DC3B08E6796610BF18FDD6728C7913C |
 | Debian8_latest.vhd | 06F8C11531E195D0C90FC01DFF5DC396BB1DD73A54F8252291ED366CACD996C1 |
 
-### 4. Upload VM images to a storage account
+#### 4. Upload VM images to a storage account
+
 1. Use an existing storage account or create a new storage account in Azure.
 
 2. Create a container to upload the images to.
@@ -105,7 +106,7 @@ You can use **Get-HashFile** cmdlet to get the hash value for the downloaded pub
     > [!IMPORTANT]
     > Change the 'Public Access Level' of the container to 'Blob (anonymous read access for blobs only)'
 
-### 5. Upload VM images to AzureStack environment
+#### 5. Upload VM images to Azure Stack environment
 
 1. Sign in as the service admin to the admin portal. You can find the admin portal URL from ECE store or your stamp information file. For instructions, see [Environment parameters](azure-stack-vaas-parameters.md#environment-parameters).
 
