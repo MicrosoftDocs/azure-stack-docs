@@ -22,9 +22,13 @@ Before you deploy Azure App Service on Azure Stack Hub, you must complete the pr
 > [!IMPORTANT]
 > Apply the 2002 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 2002.Q2.
 
-# Common Elements
+## Common prerequisites
 
-## Download the installer and helper scripts
+[!INCLUDE [Common RP prerequisites](../includes/marketplace-resource-provider-prerequisites.md)]
+
+## Common Elements
+
+### Download the installer and helper scripts
 
 1. Download the [App Service on Azure Stack Hub deployment helper scripts](https://aka.ms/appsvconmashelpers).
 2. Download the [App Service on Azure Stack Hub installer](https://aka.ms/appsvconmasinstaller).
@@ -39,7 +43,7 @@ Before you deploy Azure App Service on Azure Stack Hub, you must complete the pr
    - Modules folder
      - GraphAPI.psm1
 
-## Retrieve the Azure Resource Manager root certificate for Azure Stack Hub
+### Retrieve the Azure Resource Manager root certificate for Azure Stack Hub
 
 Open an elevated PowerShell session on a computer that can reach the privileged endpoint on the Azure Stack Hub Integrated System or ASDK Host.
 
@@ -51,14 +55,14 @@ When you run the following PowerShell command, you have to provide the privilege
     Get-AzureStackRootCert.ps1
 ```
 
-### Get-AzureStackRootCert.ps1 script parameters
+#### Get-AzureStackRootCert.ps1 script parameters
 
 | Parameter | Required or optional | Default value | Description |
 | --- | --- | --- | --- |
 | PrivilegedEndpoint | Required | AzS-ERCS01 | Privileged endpoint |
 | CloudAdminCredential | Required | AzureStack\CloudAdmin | Domain account credential for Azure Stack Hub cloud admins |
 
-## Virtual network
+### Virtual network
 
 > [!NOTE]
 > The precreation of a custom virtual network is optional as the Azure App Service on Azure Stack Hub can create the required virtual network but will then need to communicate with SQL and File Server via public IP addresses.
@@ -75,36 +79,33 @@ Subnets
 - PublishersSubnet /24
 - WorkersSubnet /21
 
-## Create an Azure Active Directory app
+### Create an Identity Application to Enable SSO Scenarios
 
-Configure an Azure AD service principal, to support the following operations:
+Azure App Service uses an Identity Application (Service Principal) to support the following operations:
 
 - Virtual machine scale set integration on worker tiers.
-- SSO for the Azure Functions portal and advanced developer tools.
+- SSO for the Azure Functions portal and advanced developer tools (Kudu).
 
-These steps apply to Azure AD-secured Azure Stack Hub environments only.
+Depending on which identity provider the Azure Stack Hub is using, Azure Active Directory (Azure AD) or Active Directory Federation Services (ADFS) you must follow the appropriate steps below to create the service principal for use by the Azure App Service on Azure Stack Hub resource provider.
 
-Admins must configure SSO to:
-
-- Enable the advanced developer tools within App Service (Kudu).
-- Enable the use of the Azure Functions portal experience.
+#### Create an Azure AD App
 
 Follow these steps to create the service principal in your Azure AD tenant:
 
 1. Open a PowerShell instance as azurestack\AzureStackAdmin.
-2. Go to the location of the scripts that you downloaded and extracted in the [prerequisite step](azure-stack-app-service-before-you-get-started.md).
-3. [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
-4. Run the **Create-AADIdentityApp.ps1** script. When you're prompted, enter the Azure AD tenant ID that you're using for your Azure Stack Hub deployment. For example, enter **myazurestack.onmicrosoft.com**.
-5. In the **Credential** window, enter your Azure AD service admin account and password. Select **OK**.
-6. Enter the certificate file path and certificate password for the [certificate created earlier](azure-stack-app-service-before-you-get-started.md). The certificate created for this step by default is **sso.appservice.local.azurestack.external.pfx**.
-7. Make note of the application ID that's returned in the PowerShell output. You use the ID in the following steps to provide consent for the application's permissions, and during installation. 
-8. Open a new browser window, and sign in to the [Azure portal](https://portal.azure.com) as the Azure Active Directory service admin.
-9. Open the Azure Active Directory service.
-10. Select **App Registrations** in the left pane.
-11. Search for the application ID you noted in step 7. 
-12. Select the App Service application registration from the list.
-13. Select **API permissions** in the left pane.
-14. Select **Grant admin consent for \<tenant\>**, where \<tenant\> is the name of your Azure AD tenant. Confirm the consent grant by selecting **Yes**.
+1. Go to the location of the scripts that you downloaded and extracted in the [prerequisite step](azure-stack-app-service-before-you-get-started.md).
+1. [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
+1. Run the **Create-AADIdentityApp.ps1** script. When you're prompted, enter the Azure AD tenant ID that you're using for your Azure Stack Hub deployment. For example, enter **myazurestack.onmicrosoft.com**.
+1. In the **Credential** window, enter your Azure AD service admin account and password. Select **OK**.
+1. Enter the certificate file path and certificate password for the [certificate created earlier](azure-stack-app-service-before-you-get-started.md). The certificate created for this step by default is **sso.appservice.local.azurestack.external.pfx**.
+1. Make note of the application ID that's returned in the PowerShell output. You use the ID in the following steps to provide consent for the application's permissions, and during installation. 
+1. Open a new browser window, and sign in to the [Azure portal](https://portal.azure.com) as the Azure Active Directory service admin.
+1. Open the Azure Active Directory service.
+1. Select **App Registrations** in the left pane.
+1. Search for the application ID you noted in step 7. 
+1. Select the App Service application registration from the list.
+1. Select **API permissions** in the left pane.
+1. Select **Grant admin consent for \<tenant\>**, where \<tenant\> is the name of your Azure AD tenant. Confirm the consent grant by selecting **Yes**.
 
 ```powershell
     Create-AADIdentityApp.ps1
@@ -120,27 +121,14 @@ Follow these steps to create the service principal in your Azure AD tenant:
 | CertificatePassword | Required | Null | Password that helps protect the certificate private key. |
 | Environment | Optional | AzureCloud | The name of the supported Cloud Environment in which the target Azure Active Directory Graph Service is available.  Allowed values: 'AzureCloud', 'AzureChinaCloud', 'AzureUSGovernment', 'AzureGermanCloud'.|
 
-## Create an Active Directory Federation Services app
-
-For Azure Stack Hub environments secured by AD FS, you must configure an AD FS service principal to support the following operations:
-
-- Virtual machine scale set integration on worker tiers.
-- SSO for the Azure Functions portal and advanced developer tools.
-
-Admins must configure SSO to:
-
-- Configure a service principal for virtual machine scale set integration on worker tiers.
-- Enable the advanced developer tools within App Service (Kudu).
-- Enable the use of the Azure Functions portal experience.
-
-Follow these steps:
+#### Create an ADFS app
 
 1. Open a PowerShell instance as azurestack\AzureStackAdmin.
-2. Go to the location of the scripts that you downloaded and extracted in the [prerequisite step](azure-stack-app-service-before-you-get-started.md).
-3. [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
-4. Run the **Create-ADFSIdentityApp.ps1** script.
-5. In the **Credential** window, enter your AD FS cloud admin account and password. Select **OK**.
-6. Provide the certificate file path and certificate password for the [certificate created earlier](azure-stack-app-service-before-you-get-started.md). The certificate created for this step by default is **sso.appservice.local.azurestack.external.pfx**.
+1. Go to the location of the scripts that you downloaded and extracted in the [prerequisite step](azure-stack-app-service-before-you-get-started.md).
+1. [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
+1. Run the **Create-ADFSIdentityApp.ps1** script.
+1. In the **Credential** window, enter your AD FS cloud admin account and password. Select **OK**.
+1. Provide the certificate file path and certificate password for the [certificate created earlier](azure-stack-app-service-before-you-get-started.md). The certificate created for this step by default is **sso.appservice.local.azurestack.external.pfx**.
 
 ```powershell
     Create-ADFSIdentityApp.ps1
@@ -157,12 +145,28 @@ Follow these steps:
 
 <!--Connected/Disconnected-->
 
-## Download items from the Azure Marketplace
+### Download items from the Azure Marketplace
 
 Azure App Service on Azure Stack Hub requires items to be [downloaded from the Azure Marketplace](azure-stack-download-azure-marketplace-item.md), making them available in the Azure Stack Hub Marketplace. These items must be downloaded before you start the deployment or upgrade of Azure App Service on Azure Stack Hub:
 
+<!-- Connected --->
+>![IMPORTANT]
+> Windows Server Core is not a supported platform image for use with Azure App Service on Azure Stack Hub.
+>
+> Do not use evaluation images for production deployments.
+>
 1. The latest version of Windows Server 2016 Datacenter virtual machine image.
-2. Custom Script Extension v1.9.1 or greater. This is a virtual machine extension.
+<!-- Disconnected --->
+1. Operators are required to provide a Windows Server 2016 Datacenter Full virtual machine image with Microsoft.Net 3.5.1 SP1 activated.  Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 be activated on the image used for deployment. Marketplace-syndicated Windows Server 2016 images don't have this feature enabled and in disconnected environments are unable to reach Microsoft Update to download the packages to install via DISM. Therefore, you must create and use a Windows Server 2016 image with this feature pre-enabled with disconnected deployments.
+
+See (Add a custom VM image to Azure Stack Hub)[azure-stack-add-vm-image.md] for details on creating a custom image and adding to Marketplace. Be sure to specify the following when adding the image to Marketplace:
+
+   Publisher = MicrosoftWindowsServer
+   Offer = WindowsServer
+   SKU = 2016-Datacenter
+   Version = Specify the "latest" version
+<!-- For All --> 
+1. Custom Script Extension v1.9.1 or greater. This is a virtual machine extension.
 
 ## Get certificates
 
