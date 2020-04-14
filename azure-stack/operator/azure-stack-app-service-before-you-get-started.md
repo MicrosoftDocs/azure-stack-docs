@@ -65,7 +65,7 @@ When you run the following PowerShell command, you have to provide the privilege
 ### Virtual network
 
 > [!NOTE]
-> The precreation of a custom virtual network is optional as the Azure App Service on Azure Stack Hub can create the required virtual network but will then need to communicate with SQL and File Server via public IP addresses.
+> The precreation of a custom virtual network is optional as the Azure App Service on Azure Stack Hub can create the required virtual network but will then need to communicate with SQL and File Server via public IP addresses.  Should you use the App Service HA File Server and SQL Server Quickstart template to deploy the pre-requisite SQL and File Server resources, the template will also deploy a virtual network.
 
 Azure App Service on Azure Stack Hub lets you deploy the resource provider to an existing virtual network or lets you create a virtual network as part of the deployment. Using an existing virtual network enables the use of internal IPs to connect to the file server and SQL Server required by Azure App Service on Azure Stack Hub. The virtual network must be configured with the following address range and subnets before installing Azure App Service on Azure Stack Hub:
 
