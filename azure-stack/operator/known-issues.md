@@ -280,6 +280,18 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack Hub environment.
 - Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack Hub deployment.
 
+### SQL VM
+
+#### Storage account creating failure when configuring Auto Backup
+- Applicable: This issue applies to 2002. 
+- Cause: When configuring the Automated Backup of SQL VM with a **new** storage account, it fails with an error "Deployment template validation failed. The template parameter for 'SqlAutobackupStorageAccountKind' is not found."
+- Remediation: Apply the latest 2002 hotfix. 
+
+#### Auto backup cannot be configured with TLS 1.2 enabled
+- Applicable: This issue applies to fresh install of 2002 and later, or any previous release with TLS 1.2 enabled stamp.
+- Cause: When configuration the Automated Backup of SQL VM with an **existing** storage account, it fails with an error "SQL Server IaaS Agent: The underlying connection was closed: An unexpected error occurred on a send."
+- Occurrence: Common
+
 ## Resource providers
 
 ### SQL/MySQL
