@@ -71,7 +71,7 @@ In this part, you'll create a web app.
 
 > [!div class="checklist"]
 > - Create web apps and publish.
-> - Add Code to Azure Repos.
+> - Add code to Azure Repos.
 > - Point the app build to multiple cloud targets.
 > - Manage and configure the CD process.
 
@@ -96,7 +96,7 @@ Update the DNS zone file for the domain. Azure AD can then verify ownership of t
 Set up Hybrid Continuous Integration/Continuous Delivery (CI/CD) to deploy Web App to Azure and Azure Stack Hub, and auto push changes to both clouds.
 
 > [!Note]  
-> Azure Stack Hub with proper images syndicated to run (Windows Server and SQL) and App Service deployment are required. For more information, see [Before you get started with App Service on Azure Stack Hub](../operator/azure-stack-app-service-before-you-get-started.md) in the Azure Stack Hub Operator documentation.
+> Azure Stack Hub with proper images syndicated to run (Windows Server and SQL) and App Service deployment are required. For more information, see [Prerequisites for deploying App Service on Azure Stack Hub](../operator/azure-stack-app-service-before-you-get-started.md).
 
 #### Add Code to Azure Repos
 
@@ -112,13 +112,13 @@ Set up Hybrid Continuous Integration/Continuous Delivery (CI/CD) to deploy Web A
 
 ### Create web app deployment in both clouds
 
-1.  Edit the **WebApplication.csproj** file: Select `Runtimeidentifier` and add `win10-x64`. (See [Self-contained Deployment](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf) documentation.)
+1. Edit the **WebApplication.csproj** file: Select `Runtimeidentifier` and add `win10-x64`. (See [Self-contained Deployment](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf) documentation.)
 
-    ![Edit web application project file in Visual Studio](media/solution-deployment-guide-geo-distributed/image3.png)
+    ![Edit web app project file in Visual Studio](media/solution-deployment-guide-geo-distributed/image3.png)
 
-1.  **Check in the code to Azure Repos** using Team Explorer.
+2. **Check in the code to Azure Repos** using Team Explorer.
 
-2.  Confirm that the **application code** has been checked into Azure Repos.
+3. Confirm that the **application code** has been checked into Azure Repos.
 
 ### Create the build definition
 
@@ -126,11 +126,11 @@ Set up Hybrid Continuous Integration/Continuous Delivery (CI/CD) to deploy Web A
 
 2. Add `-r win10-x64` code. This addition is necessary to trigger a self-contained deployment with .NET Core.
 
-    ![Add code to the build definition](media/solution-deployment-guide-geo-distributed/image4.png)
+    ![Add code to the build definition in Azure Pipelines](media/solution-deployment-guide-geo-distributed/image4.png)
 
 3. **Run the build**. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf) process will publish artifacts that can run on Azure and Azure Stack Hub.
 
-**Using an Azure Hosted Agent**
+#### Using an Azure Hosted Agent
 
 Using a hosted agent in Azure Pipelines is a convenient option to build and deploy web apps. Maintenance and upgrades are automatically performed by Microsoft Azure, which enables uninterrupted development, testing, and deployment.
 
@@ -140,7 +140,7 @@ Azure DevOps Services provide a highly configurable and manageable pipeline for 
 
 ## Create release definition
 
-1.  Select the **plus** button to add a new release under the **Releases** tab in the **Build and Release** section of VSO.
+1. Select the **plus** button to add a new release under the **Releases** tab in the **Build and Release** section of VSO.
 
     ![Create a release definition](media/solution-deployment-guide-geo-distributed/image5.png)
 
