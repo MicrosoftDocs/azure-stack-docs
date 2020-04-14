@@ -20,7 +20,7 @@ Technical support for third-party NVAs and their integration with the Azure Stac
 > [!NOTE]
 > If you have a connectivity or routing problem that involves an NVA, you should [contact the vendor of the NVA](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) directly.
 
-If your Azure Stack Hub issue is not addressed in this article, please visit the [Azure Stack Hub MSDN forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). You also can submit an Azure support request. To submit a support request, see [Azure Stack Hub support](azure-stack-manage-basics.md#where-to-get-support).
+If your Azure Stack Hub issue is not addressed in this article, please visit the [Azure Stack Hub MSDN forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). You also can submit an Azure support request. To submit a support request, see [Azure Stack Hub support](../operator/azure-stack-manage-basics.md#where-to-get-support).
 
 ## Checklist for troubleshooting with NVA vendor
 
@@ -144,4 +144,4 @@ If you do see the packets coming in but with no response, then you may need to a
 
 ### Create a support ticket
 
-If none of the preceding steps resolve your issue, please create a [support ticket](azure-stack-manage-basics.md#where-to-get-support) and use the [on demand log collection tool](azure-stack-configure-on-demand-diagnostic-log-collection.md) to provide logs.
+If none of the preceding steps resolve your issue, please create a [support ticket](../operator/azure-stack-manage-basics.md#where-to-get-support) and use the [on demand log collection tool](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md) to provide logs.

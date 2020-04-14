@@ -17,7 +17,7 @@ This article describes troubleshooting steps you can take after you configure a 
 
 If your Azure Stack Hub issue is not addressed in this article, you can visit the [Azure Stack Hub MSDN forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack).
 
-You also can submit an Azure support request. Please see [Azure Stack Hub support](azure-stack-manage-basics.md#where-to-get-support).
+You also can submit an Azure support request. Please see [Azure Stack Hub support](../operator/azure-stack-manage-basics.md#where-to-get-support).
 
 ## Troubleshooting steps
 
@@ -67,4 +67,4 @@ The Azure Stack Hub default parameters for IPsec/IKEV2 have changed [starting wi
 
 ## Create a support ticket
 
-If none of the preceding steps resolve your issue, please create a [support ticket](azure-stack-manage-basics.md#where-to-get-support) and use the [on demand log collection tool](azure-stack-configure-on-demand-diagnostic-log-collection.md) to provide logs.
+If none of the preceding steps resolve your issue, please create a [support ticket](../operator/azure-stack-manage-basics.md#where-to-get-support) and use the [on demand log collection tool](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md) to provide logs.
