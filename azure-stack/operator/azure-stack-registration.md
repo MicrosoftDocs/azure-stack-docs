@@ -525,7 +525,7 @@ You might see one of the errors below while attempting to register your Azure St
 
 - Cloud identifier [`GUID`] is already registered. Reusing cloud identifiers is not allowed.
 
-   Cause: this happens if your Azure Stack environment is already registered. If you want to re-register your environment with a different subscription or billing model, [see these instructions](#renew-or-change-registration).
+   Cause: this happens if your Azure Stack environment is already registered. If you want to re-register your environment with a different subscription or billing model, follow the [Renew or change registration steps](#renew-or-change-registration).
 
 - When trying to access Marketplace management, an error occurs when trying to syndicate products.
 
@@ -533,7 +533,7 @@ You might see one of the errors below while attempting to register your Azure St
 ::: zone pivot="state-disconnected"
 - Marketplace management still asks you to register and activate your Azure Stack Hub even when you've already registered your stamp using the disconnected process.
 
-   Cause: this is a known issue for disconnected environments. You can verify your registration status by [following these steps](#verify-azure-stack-hub-registration). In order to use Marketplace management, use [the offline tool](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario).
+   Cause: this is a known issue for disconnected environments, and requires you to [verify your registration status](#verify-azure-stack-hub-registration). In order to use Marketplace management, use [the offline tool](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario).
 ::: zone-end
 
 ## Next steps
