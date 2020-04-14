@@ -3,7 +3,7 @@ title: Azure Stack Hub datacenter DNS integration
 description: Learn how to integrate Azure Stack Hub DNS with your datacenter DNS.
 author: IngridAtMicrosoft
 ms.topic: article
-ms.date: 1/22/2020
+ms.date: 04/10/2020
 ms.author: inhenkel
 ms.reviewer: wfayed
 ms.lastreviewed: 08/21/2019
@@ -72,13 +72,11 @@ There are two types of DNS servers:
 
 Azure Stack Hub includes both authoritative and recursive DNS servers. The recursive servers are used to resolve names of everything except for the internal private zone and the external public DNS zone for that Azure Stack Hub deployment.
 
-![Azure Stack Hub DNS architecture](media/azure-stack-integrate-dns/Integrate-DNS-01.png)
+![Azure Stack Hub DNS architecture](media/azure-stack-integrate-dns/Integrate-DNS-01.svg)
 
 ## Resolving external DNS names from Azure Stack Hub
 
 To resolve DNS names for endpoints outside Azure Stack Hub (for example: www\.bing.com), you need to provide DNS servers that Azure Stack Hub can use to forward DNS requests for which Azure Stack Hub isn't authoritative. For deployment, DNS servers that Azure Stack Hub forwards requests to are required in the Deployment Worksheet (in the DNS Forwarder field). Provide at least two servers in this field for fault tolerance. Without these values, Azure Stack Hub deployment fails. You can edit the DNS Forwarder values with the [**Set-AzSDnsForwarder** cmdlet](#editing-dns-forwarder-ips) after deployment. 
-
-
 
 ### Configure conditional DNS forwarding
 
@@ -93,14 +91,14 @@ For this procedure, use a computer in your datacenter network that can communica
 
 1. Open an elevated Windows PowerShell session (run as administrator), and connect to the IP address of the privileged endpoint. Use the credentials for CloudAdmin authentication.
 
-   ```
+   ```PowerShell
    $cred=Get-Credential 
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $cred
    ```
 
 2. After you connect to the privileged endpoint, run the following PowerShell command. Substitute the sample values provided with your domain name and IP addresses of the DNS servers you want to use.
 
-   ```
+   ```PowerShell
    Register-CustomDnsServer -CustomDomainName "contoso.com" -CustomDnsIPAddresses "192.168.1.1","192.168.1.2"
    ```
 
