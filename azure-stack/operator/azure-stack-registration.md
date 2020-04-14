@@ -85,11 +85,11 @@ To ensure you're using the latest version, delete any existing versions of the A
 
 ### Determine your billing model
 ::: zone pivot="state-connected"
- Connected means you've deployed Azure Stack Hub so that it can connect to the internet and to Azure. You either have Azure AD or Active Directory Federation Services (AD FS) for your identity store. With a connected deployment, you can choose from two billing models: pay-as-you-use or capacity-based. You specify the billing model later, while running the registration script.
+ A connected deployment allows Azure Stack Hub to connect to the internet, and to Azure. You can also use either Azure AD or Active Directory Federation Services (AD FS) as your identity store, and choose from two billing models: pay-as-you-use or capacity-based. You specify the billing model later, while running the registration script.
 ::: zone-end
 
 ::: zone pivot="state-disconnected"
- With the disconnected from Azure deployment option, you can deploy and use Azure Stack Hub without a connection to the internet. However, with a disconnected deployment, you're limited to an AD FS identity store and the capacity-based billing model. You specify the billing model later, while running the registration script.
+ A disconnected deployment allows you to use Azure Stack Hub without a connection to the internet. With a disconnected deployment, you're limited to an AD FS identity store and the capacity-based billing model. You specify the billing model later, while running the registration script.
 ::: zone-end
 
 ### Determine your unique registration name
@@ -97,7 +97,7 @@ To ensure you're using the latest version, delete any existing versions of the A
 When you run the registration script, you must provide a unique registration name. An easy way to associate your Azure Stack Hub subscription with an Azure registration is to use your Azure Stack Hub **Cloud ID**.
 
 > [!NOTE]
-> Azure Stack Hub registrations using the capacity-based billing model will need to change the unique name when re-registering after those yearly subscriptions expire unless you [delete the expired registration](azure-stack-registration.md#change-the-subscription-you-use) and re-register with Azure.
+> Azure Stack Hub registrations using the capacity-based billing model will need to change the unique name when re-registering after those yearly subscriptions expire unless you [delete the expired registration](#renew-or-change-registration) and re-register with Azure.
 
 To determine the Cloud ID for your Azure Stack Hub deployment, open PowerShell as an admin on a computer that can access the Privileged Endpoint, run the following commands, and then record the **CloudID** value:
 
@@ -412,7 +412,7 @@ Or you can use the registration name:
 
 ### Re-register using connected steps
 
-If changing your billing model from capacity billing in a disconnected state to consumption billing in a connected state, you will re-register following the [connected model steps](#change-the-billing-model-or-how-to-offer-features). 
+If changing your billing model from capacity billing in a disconnected state to consumption billing in a connected state, you will re-register following the [connected model steps](azure-stack-registration.md?pivots=state-connected#change-the-billing-model-or-how-to-offer-features). 
 
 >[!Note] 
 >This does not change your identity model, only the billing mechanism, and you will still use ADFS as your identity source.
@@ -525,15 +525,16 @@ You might see one of the errors below while attempting to register your Azure St
 
 - Cloud identifier [`GUID`] is already registered. Reusing cloud identifiers is not allowed.
 
-   Cause: this happens if your Azure Stack environment is already registered. If you want to re-register your environment with a different subscription or billing model, [see these instructions](#change-the-subscription-you-use).
+   Cause: this happens if your Azure Stack environment is already registered. If you want to re-register your environment with a different subscription or billing model, follow the [Renew or change registration steps](#renew-or-change-registration).
 
 - When trying to access Marketplace management, an error occurs when trying to syndicate products.
 
    Cause: this usually happens when Azure Stack Hub is unable to access the registration resource. One common reason for this is that when an Azure subscription's directory tenant changes, it resets the registration. You can't access the Azure Stack Hub Marketplace or report usage if you've changed the subscription's directory tenant. You need to re-register to fix this issue.
-
+::: zone pivot="state-disconnected"
 - Marketplace management still asks you to register and activate your Azure Stack Hub even when you've already registered your stamp using the disconnected process.
 
-   Cause: this is a known issue for disconnected environments. You can verify your registration status by [following these steps](azure-stack-registration.md#verify-azure-stack-hub-registration). In order to use Marketplace management, use [the offline tool](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario).
+   Cause: this is a known issue for disconnected environments, and requires you to [verify your registration status](#verify-azure-stack-hub-registration). In order to use Marketplace management, use [the offline tool](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario).
+::: zone-end
 
 ## Next steps
 
