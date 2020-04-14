@@ -2,7 +2,7 @@
   "redirections": [
     {
       "source_path": "azure-stack/operator/azure-stack-app-service-update-offline.md",
-      "redirect_url": "/azure-stack/operator/azure-stack-app-service-update?pivots=\"state-disconnected\"",
+      "redirect_url": "/azure-stack/operator/azure-stack-app-service-update?pivots=state-disconnected",
       "redirect_document_id": false
     },
     {
