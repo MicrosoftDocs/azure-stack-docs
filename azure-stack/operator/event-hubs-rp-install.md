@@ -13,7 +13,7 @@ zone_pivot_groups: state-connected-disconnected
 
 # How to install Event Hubs on Azure Stack Hub
 
-[!INCLUDE [preview-banner](../includes/event-hubs-preview.md)]
+[!INCLUDE [preview banner](../includes/event-hubs-preview.md)]
 
 This article shows you how to download and install the Event Hubs resource provider, making it available to offer to customers for subscription.
 
