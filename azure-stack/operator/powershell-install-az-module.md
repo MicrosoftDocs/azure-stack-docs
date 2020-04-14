@@ -52,7 +52,7 @@ To use Azure PowerShell in PowerShell 5.1 on Windows:
    [Windows PowerShell 5.1](https://docs.microsoft.com//powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)
    if needed. If you're on Windows 10, you already have PowerShell 5.1 installed.
 2. Install [.NET Framework 4.7.2 or later](https://docs.microsoft.com//dotnet/framework/install).
-3. Make sure you have the latest version of PowerShellGet. Run `Install-Module PowerShellGet -Force`. 
+3. Make sure you have the latest version of PowerShellGet. Run `Install-Module PowerShellGet -MinimumVersion 2.2.3 -Force`. 
 
 ## 2. Prerequisites for Linux and Mac
 PowerShell Core 6.x or later version is needed. Follow the [link](https://docs.microsoft.com//powershell/scripting/install/installing-powershell-core-on-windows) for instructions
@@ -79,7 +79,7 @@ The Azure Stack Az module will work Azure Stack Hub 2002 or later. In addition, 
 Run the following command from a PowerShell session:
 
 ```powershell  
-Install-Module -Name Az.BootStrapper -Force
+Install-Module -Name Az.BootStrapper -Force -AllowPrerelease
 Use-AzProfile -Profile 2019-03-01-hybrid -Force
 Install-Module -Name AzureStack -RequiredVersion 2.0.0-preview -AllowPrerelease
 ```
@@ -113,7 +113,7 @@ You could either use AzureRM or Az preview modules. For RM modules, see the inst
 
 ```powershell
 
-Install-module -Name PowerShellGet -Force
+Install-module -Name PowerShellGet -MinimumVersion 2.2.3 -Force
 Import-Module -Name PackageManagement -ErrorAction Stop
 
 $Path = "<Path that is used to save the packages>"
@@ -149,7 +149,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
    Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
 
-   Install-Module -Name Az.BootStrapper -Repository $RepoName -Scope AllUsers 
+   Install-Module -Name Az.BootStrapper -Repository $RepoName -Scope AllUsers -AllowPrerelease
 
    Set-BootstrapRepo -Repo $RepoName
 
