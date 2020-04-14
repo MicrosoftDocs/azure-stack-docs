@@ -37,6 +37,10 @@ Before you deploy Azure App Service on Azure Stack Hub, you must complete the pr
    - Modules folder
      - GraphAPI.psm1
 
+## Common prerequisites for resource providers
+
+[!INCLUDE [Common RP prerequisites](../includes/marketplace-resource-provider-prerequisites.md)]
+
 ## Download items from the Azure Marketplace
 
 Azure App Service on Azure Stack Hub requires items to be [downloaded from the Azure Marketplace](azure-stack-download-azure-marketplace-item.md), making them available in the Azure Stack Hub Marketplace. These items must be downloaded before you start the deployment or upgrade of Azure App Service on Azure Stack Hub:
