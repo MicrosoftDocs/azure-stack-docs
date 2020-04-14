@@ -42,7 +42,7 @@ If your Azure Stack Hub issue is not addressed in this article, please visit the
 Each NVA has basic configuration requirements to function correctly on Azure Stack Hub. The following section provides the steps to verify these basic configurations. For more information, [contact the vendor of the NVA](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
 > [!IMPORTANT]
-> When using an S2S tunnel, packets are further encapsulated with additional headers. This encapsulation increases the overall size of the packet. In these scenarios, you must clamp TCP **MSS** at **1350**. If your VPN devices do not support MSS clamping, you can set the MTU on the tunnel interface to **1400** bytes instead. For more information, see [Virtual Network TCP/IP performance tuning](virtual-network-performance-tuning.md).
+> When using an S2S tunnel, packets are further encapsulated with additional headers. This encapsulation increases the overall size of the packet. In these scenarios, you must clamp TCP **MSS** at **1350**. If your VPN devices do not support MSS clamping, you can set the MTU on the tunnel interface to **1400** bytes instead.
 
 ### Check whether IP forwarding is enabled on NVA
 
@@ -144,4 +144,4 @@ If you do see the packets coming in but with no response, then you may need to a
 
 ### Create a support ticket
 
-If none of the preceding steps resolve your issue, please create a [support ticket](operator/azure-stack-manage-basics.md#where-to-get-support) and use the [on demand log collection tool](azure-stack-configure-on-demand-diagnostic-log-collection.md) to provide logs.
+If none of the preceding steps resolve your issue, please create a [support ticket](azure-stack-manage-basics.md#where-to-get-support) and use the [on demand log collection tool](azure-stack-configure-on-demand-diagnostic-log-collection.md) to provide logs.
