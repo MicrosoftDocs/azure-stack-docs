@@ -3,7 +3,7 @@ title: Datacenter integration planning considerations for Azure Stack Hub integr
 description: Learn how to plan and prepare for datacenter integration with Azure Stack Hub integrated systems.
 author: IngridAtMicrosoft
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 04/02/2020
 ms.author: inhenkel
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2019
@@ -26,6 +26,7 @@ To deploy Azure Stack Hub, you need to provide planning information to your solu
 While researching and collecting the required information, you might need to make some pre-deployment configuration changes to your network environment. These changes could include reserving IP address spaces for the Azure Stack Hub solution as well as configuring your routers, switches, and firewalls to prepare for the connectivity to the new Azure Stack Hub solution switches. Make sure to have the subject area expert lined up to help you with your planning.
 
 ## Capacity planning considerations
+
 When you evaluate an Azure Stack Hub solution for acquisition, you make hardware configuration choices which have a direct impact on the overall capacity of the Azure Stack Hub solution. These include the classic choices of CPU, memory density, storage configuration, and overall solution scale (for example, number of servers). Unlike a traditional virtualization solution, the simple arithmetic of these components to determine usable capacity doesn't apply. The first reason is that Azure Stack Hub is architected to host the infrastructure or management components within the solution itself. The second reason is that some of the solution's capacity is reserved in support of resiliency by updating the solution's software in a way that minimizes disruption of tenant workloads.
 
 The [Azure Stack Hub capacity planner spreadsheet](https://aka.ms/azstackcapacityplanner) helps you make informed decisions for planning capacity in two ways. The first is by selecting a hardware offering and attempting to fit a combination of resources. The second is by defining the workload that Azure Stack Hub is intended to run to view the available hardware SKUs that can support it. Finally, the spreadsheet is intended as a guide to help in making decisions related to Azure Stack Hub planning and configuration.
@@ -33,6 +34,7 @@ The [Azure Stack Hub capacity planner spreadsheet](https://aka.ms/azstackcapacit
 The spreadsheet isn't intended to serve as a substitute for your own investigation and analysis. Microsoft makes no representations or warranties, express or implied, with respect to the information provided within the spreadsheet.
 
 ## Management considerations
+
 Azure Stack Hub is a sealed system, where the infrastructure is locked down both from a permissions and network perspective. Network access control lists (ACLs) are applied to block all unauthorized incoming traffic and all unnecessary communications between infrastructure components. This system makes it difficult for unauthorized users to access the system.
 
 For daily management and operations, there's no unrestricted admin access to the infrastructure. Azure Stack Hub operators must manage the system through the administrator portal or through Azure Resource Manager (via PowerShell or the REST API). There's no access to the system by other management tools like Hyper-V Manager or Failover Cluster Manager. To help protect the system, third-party software (for example, agents) can't be installed inside the components of the Azure Stack Hub infrastructure. Interoperability with external management and security software occurs via PowerShell or the REST API.
@@ -42,6 +44,7 @@ Contact Microsoft Support when you need a higher level of access for troubleshoo
 ## Identity considerations
 
 ### Choose identity provider
+
 You'll need to consider which identity provider you want to use for Azure Stack Hub deployment, either Azure AD or AD FS. You can't switch identity providers after deployment without full system redeployment. If you don't own the Azure AD account and are using an account provided to you by your Cloud Solution Provider, and if you decide to switch provider and use a different Azure AD account, you'll have to contact your solution provider to redeploy the solution for you at your cost.
 
 Your identity provider choice has no bearing on tenant virtual machines (VMs), the identity system, accounts they use, or whether they can join an Active Directory domain, and so on. These things are separate.
@@ -49,15 +52,18 @@ Your identity provider choice has no bearing on tenant virtual machines (VMs), t
 You can learn more about choosing an identity provider in the [Azure Stack Hub integrated systems connection models article](./azure-stack-connection-models.md).
 
 ### AD FS and Graph integration
+
 If you choose to deploy Azure Stack Hub using AD FS as the identity provider, you must integrate the AD FS instance on Azure Stack Hub with an existing AD FS instance through a federation trust. This integration allows identities in an existing Active Directory forest to authenticate with resources in Azure Stack Hub.
 
 You can also integrate the Graph service in Azure Stack Hub with the existing Active Directory. This integration lets you manage Role-Based Access Control (RBAC) in Azure Stack Hub. When access to a resource is delegated, the Graph component looks up the user account in the existing Active Directory forest using the LDAP protocol.
 
-The following diagram shows integrated AD FS and Graph traffic flow.
-![Diagram showing AD FS and Graph traffic flow](media/azure-stack-datacenter-integration/ADFSIntegration.PNG)
+The following diagram shows integrated AD FS and Graph traffic flow.<br/><br/>
+![Diagram showing AD FS and Graph traffic flow](media/azure-stack-datacenter-integration/ADFSIntegration.svg)
 
 ## Licensing model
+
 You must decide which licensing model you want to use. The available options depend on if you deploy Azure Stack Hub connected to the internet:
+
 - For a [connected deployment](azure-stack-connected-deployment.md), you can choose either pay-as-you-use or capacity-based licensing. Pay-as-you-use requires a connection to Azure to report usage, which is then billed through Azure commerce. 
 - Only capacity-based licensing is supported if you [deploy disconnected](azure-stack-disconnected-deployment.md) from the internet. 
 
@@ -68,16 +74,16 @@ For more information about the licensing models, see [Microsoft Azure Stack Hub 
 
 You'll need to think about how you want to plan your Azure Stack Hub namespace, especially the region name and external domain name. The external fully qualified domain name (FQDN) of your Azure Stack Hub deployment for public-facing endpoints is the combination of these two names: &lt;*region*&gt;.&lt;*fqdn*&gt;. For example, *east.cloud.fabrikam.com*. In this example, the Azure Stack Hub portals would be available at the following URLs:
 
-- https://portal.east.cloud.fabrikam.com
-- https://adminportal.east.cloud.fabrikam.com
+- `https://portal.east.cloud.fabrikam.com`
+- `https://adminportal.east.cloud.fabrikam.com`
 
 > [!IMPORTANT]
 > The region name you choose for your Azure Stack Hub deployment must be unique and will appear in the portal addresses. 
 
 The following table summarizes these domain naming decisions.
 
-| Name | Description | 
-| -------- | ------------- | 
+| Name | Description |
+| -------- | ------------- |
 |Region name | The name of your first Azure Stack Hub region. This name is used as part of the FQDN for the public virtual IP addresses (VIPs) that Azure Stack Hub manages. Typically, the region name would be a physical location identifier such as a datacenter location.<br><br>The region name must consist of only letters and numbers between 0-9. No special characters (like `-`, `#`, and so on) are allowed.| 
 | External domain name | The name of the Domain Name System (DNS) zone for endpoints with external-facing VIPs. Used in the FQDN for these public VIPs. | 
 | Private (internal) domain name | The name of the domain (and internal DNS zone) created on Azure Stack Hub for infrastructure management.
@@ -92,12 +98,11 @@ For deployment, you'll need to provide Secure Sockets Layer (SSL) certificates f
 
 For more information about what PKI certificates are required to deploy Azure Stack Hub, and how to obtain them, see, [Azure Stack Hub Public Key Infrastructure certificate requirements](azure-stack-pki-certs.md).  
 
-
 > [!IMPORTANT]
 > The provided PKI certificate information should be used as general guidance. Before you acquire any PKI certificates for Azure Stack Hub, work with your OEM hardware partner. They'll provide more detailed certificate guidance and requirements.
 
-
 ## Time synchronization
+
 You must choose a specific time server which is used to synchronize Azure Stack Hub. Time synchronization is critical to Azure Stack Hub and its infrastructure roles because it's used to generate Kerberos tickets. Kerberos tickets are used to authenticate internal services with each other.
 
 You must specify an IP for the time synchronization server. Although most of the components in the infrastructure can resolve a URL, some only support IP addresses. If you're using the disconnected deployment option, you must specify a time server on your corporate network that you're sure you can reach from the infrastructure network in Azure Stack Hub.
@@ -117,11 +122,11 @@ For hybrid connectivity, it's important to consider what kind of deployment you 
 - **Single-tenant Azure Stack Hub**: An Azure Stack Hub deployment that looks, at least from a networking perspective, as if it's one tenant. There can be many tenant subscriptions, but like any intranet service, all traffic travels over the same networks. Network traffic from one subscription travels over the same network connection as another subscription and doesn't need to be isolated via an encrypted tunnel.
 
 - **Multi-tenant Azure Stack Hub**: An Azure Stack Hub deployment where each tenant subscription's traffic that's bound for networks that are external to Azure Stack Hub must be isolated from other tenants' network traffic.
- 
+
 - **Intranet deployment**: An Azure Stack Hub deployment that sits on a corporate intranet, typically on private IP address space and behind one or more firewalls. The public IP addresses aren't truly public because they can't be routed directly over the public internet.
 
 - **Internet deployment**: An Azure Stack Hub deployment that's connected to the public internet and uses internet-routable public IP addresses for the public VIP range. The deployment can still sit behind a firewall, but the public VIP range is directly reachable from the public internet and Azure.
- 
+
 The following table summarizes the hybrid connectivity scenarios with the pros, cons, and use cases.
 
 | Scenario | Connectivity Method | Pros | Cons | Good For |
@@ -138,11 +143,11 @@ You can connect Azure Stack Hub to Azure via [ExpressRoute](https://docs.microso
 
 The following diagram shows ExpressRoute for a single-tenant scenario (where "Customer's connection" is the ExpressRoute circuit).
 
-![Diagram showing single-tenant ExpressRoute scenario](media/azure-stack-datacenter-integration/ExpressRouteSingleTenant.PNG)
+![Diagram showing single-tenant ExpressRoute scenario](media/azure-stack-datacenter-integration/ExpressRouteSingleTenant.svg)
 
-The following diagram shows ExpressRoute for a multi-tenant scenario.
+The following diagram shows ExpressRoute for a multi-tenant scenario.<br/><br/>
 
-![Diagram showing multi-tenant ExpressRoute scenario](media/azure-stack-datacenter-integration/ExpressRouteMultiTenant.PNG)
+![Diagram showing multi-tenant ExpressRoute scenario](media/azure-stack-datacenter-integration/ExpressRouteMultiTenant.svg)
 
 ## External monitoring
 To get a single view of all alerts from your Azure Stack Hub deployment and devices, and to integrate alerts into existing IT Service Management workflows for ticketing, you can [integrate Azure Stack Hub with external datacenter monitoring solutions](azure-stack-integrate-monitor.md).
@@ -157,10 +162,11 @@ The following table summarizes the list of currently available options.
 | Physical servers (BMCs via IPMI) | OEM hardware - Operations Manager vendor management pack<br>OEM hardware vendor-provided solution<br>Hardware vendor Nagios plug-ins.<br>OEM partner-supported monitoring solution (included) | 
 | Network devices (SNMP) | Operations Manager network device discovery<br>OEM hardware vendor-provided solution<br>Nagios switch plug-in |
 | Tenant subscription health monitoring | [System Center Management Pack for Windows Azure](https://www.microsoft.com/download/details.aspx?id=50013) | 
-|  |  | 
+|  |  |
 
 Note the following requirements:
-- The solution you use must be agentless. You can't install third-party agents inside Azure Stack Hub components. 
+
+- The solution you use must be agentless. You can't install third-party agents inside Azure Stack Hub components.
 - If you want to use System Center Operations Manager, Operations Manager 2012 R2 or Operations Manager 2016 is required.
 
 ## Backup and disaster recovery

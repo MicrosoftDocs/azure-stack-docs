@@ -3,7 +3,7 @@ title: Integrate AD FS identity with your Azure Stack Hub datacenter
 description: Learn how to integrate Azure Stack Hub AD FS identity provider with your datacenter AD FS.
 author: IngridAtMicrosoft
 ms.topic: article
-ms.date: 05/10/2019
+ms.date: 04/10/2020
 ms.author: inhenkel
 ms.reviewer: thoroet
 ms.lastreviewed: 05/10/2019
@@ -27,7 +27,7 @@ Deploying with AD FS allows identities in an existing Active Directory forest to
 
 Authentication is one part of identity. To manage role-based access control (RBAC) in Azure Stack Hub, the Graph component must be configured. When access to a resource is delegated, the Graph component looks up the user account in the existing Active Directory forest using the LDAP protocol.
 
-![Azure Stack Hub AD FS architecture](media/azure-stack-integrate-identity/Azure-Stack-ADFS-architecture.png)
+![Azure Stack Hub AD FS architecture](media/azure-stack-integrate-identity/azure-stack-adfs-architecture.svg)
 
 The existing AD FS is the account security token service (STS) that sends claims to the Azure Stack Hub AD FS (the resource STS). In Azure Stack Hub, automation creates the claims provider trust with the metadata endpoint for the existing AD FS.
 
@@ -43,8 +43,8 @@ Requirements:
 
 |Component|Requirement|
 |---------|---------|
-|Graph|Microsoft Active Directory 2012/2012 R2/2016|
-|AD FS|Windows Server 2012/2012 R2/2016|
+|Graph|Microsoft Active Directory 2012/2012 R2/2016 2019|
+|AD FS|Windows Server 2012/2012 R2/2016 2019|
 
 ## Setting up Graph integration
 
@@ -163,7 +163,6 @@ Beginning with version 1807, use this method if the either of the following cond
 
 The following information is required as input for the automation parameters:
 
-
 |Parameter|Description|Example|
 |---------|---------|---------|
 |CustomAdfsName|Name of the claims provider. It appears that way on the AD FS landing page.|Contoso|
@@ -264,7 +263,7 @@ If you decide to manually run the commands, follow these steps:
 
 3. To add the relying party trust, run the following Windows PowerShell command on your AD FS instance or a farm member. Make sure to update the AD FS endpoint and point to the file created in Step 1.
 
-   **For AD FS 2016**
+   **For AD FS 2016/2019**
 
    ```powershell  
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -AccessControlPolicyName "Permit everyone" -TokenLifeTime 1440
@@ -287,6 +286,13 @@ If you decide to manually run the commands, follow these steps:
    ```powershell  
    Set-AdfsProperties -IgnoreTokenBinding $true
    ```
+
+   **For AD FS 2002 and greater**
+
+   > [!NOTE]
+   > When executing `Add-ADFSRelyingPartyTrust` on the customer owned ADFS host/farm, you must first ensure that TLS1.2 is enforced on the ADFS host/farm else the attempt will result in the following error message:
+
+`Add-ADFSRelyingPartyTrust : The underlying connection was closed: An unexpected error occurred on a send.`
 
 ## SPN creation
 

@@ -166,7 +166,7 @@ Azure Resource Manager lets you deploy and manage the infrastructure for your Az
 | Operations | 2018-05-01 |
 | Providers | 2018-05-01 |
 | ResourceGroups| 2018-05-01 |
-| Resources | 2018-05-01/ |
+| Resources | 2018-05-01 |
 | Subscriptions | 2018-05-01 |
 | Subscriptions/locations | 2016-06-01 |
 | Subscriptions/operationresults | 2018-05-01 |

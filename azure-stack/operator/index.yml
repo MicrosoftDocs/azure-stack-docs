@@ -1,149 +1,108 @@
-### YamlMime:YamlDocument
+### YamlMime:Landing
 
-documentType: LandingData
-
-title: Azure Stack Hub Operator Documentation
+title: Azure Stack Hub Operator Documentation # < 60 chars
+summary: Microsoft Azure Stack Hub is a hybrid cloud platform that lets you provide Azure services from your datacenter. Learn how to manage Azure Stack Hub. # < 160 chars
 
 metadata:
-
-  title: Azure Stack Hub Documentation - Tutorials, API Reference
-
-  meta.description: azure-stack
-
+  title: Azure Stack Hub Documentation - Tutorials, API Reference # Required; page title displayed in search results. Include the brand. < 60 chars.
+  description: Learn how to manage the Azure Stack Hub integrated systems infrastructure and how to offer services with our quickstarts and tutorials. # Required; article description that is displayed in search results. < 160 chars.
   services: azure-stack
-
-  author: justinha  
-
-  manager: femila
-
-  layout: LandingPage
-
-  ms.assetid: cbf798da-6f1a-7d4d-7707-5d5e02589e22
-
-  ms.service: azure-stack
-
-  ms.tgt_pltfrm: from-team
-
-  ms.devlang: from-team
-
-  ms.topic: landing-page
-
-  ms.date: 07/09/2019
-
-  ms.author: justinha
-
-abstract:
-
-  description: Microsoft Azure Stack Hub is a hybrid cloud platform that lets you provide Azure services from your datacenter. Learn how to manage the Azure Stack Hub integrated systems infrastructure and how to offer services with our quickstarts and tutorials.<br/><br/>If you're an Azure Stack Hub user who uses services or builds apps for Azure Stack Hub, see our <a href="/azure-stack/user">user documentation</a>.<br/><br/>If you are an Azure Stack Hub operator interested in the Azure Stack Development Kit (ASDK), a single-node deployment of Azure Stack Hub that you can download and use for free, see our <a href="/azure-stack/asdk">ASDK documentation</a>.
-
-sections:
-
-  - title: Getting started with Azure Stack Hub
-
-    items:
-
-    - type: list
-
-      style: cards
-
-      className: cardsA
-
-      items:  
-
-      - html: <a href="/azure-stack/operator/azure-stack-manage-portals">
-
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_portal.svg" alt="">
-
-              <br><b>Use the administration portal</b></a>
-
-              <p>Use the administration portal for day-to-day management and operations of Azure Stack Hub.</p>
-
-      - html: <a href="/azure-stack/operator/azure-stack-powershell-install">
-
-              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
-
-              <br><b>Azure Stack Hub PowerShell</b></a>
-
-              <p>Easily manage your Azure Stack Hub resources from PowerShell.</p>
-
-      - html: <a href="/azure-stack/operator/azure-stack-capacity-planning-overview">
-
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_load-testing.svg" alt="">
-
-              <br><b>Capacity planning</b></a>
-
-              <p>See how different compute resource allocations fit across a selection of hardware offerings.</p>
-
-  - title: Offering Azure Stack Hub services
-
-    items:
-
-    - type: list
-
-      style: cards
-
-      className: cardsA
-
-      items:  
-
-      - html: <a href="/azure-stack/operator/azure-stack-sql-resource-provider">
-
-              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_SQL.svg" alt="hybrid cloud app ci/cd">
-
-              <br><b>Offer SQL as PaaS</b></a>
-
-              <p>Use the SQL Server resource provider to offer SQL databases as a service of Azure Stack Hub.</p>
-
-      - html: <a href="/azure-stack/operator/azure-stack-mysql-resource-provider">
-
-              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_mysql.svg" alt="hybrid cloud app identity">
-
-              <br><b>Offer MySQL as PaaS</b></a>
-
-              <p>Use the MySQL resource provider to offer MySQL databases as a service of Azure Stack Hub.</p>
-
-      - html: <a href="/azure-stack/operator/azure-stack-app-service-overview">
-
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_web-apps.svg" alt="hybrid cloud app scaling">
-
-              <br><b>Offer Azure App Service as PaaS</b></a>
-
-              <p>Help users create web applications and APIs for any platform or device.</p>
-
-  - title: Managing Azure Stack Hub
-
-    items:
-
-    - type: list
-
-      style: cards
-
-      className: cardsA
-
-      items:  
-
-      - html: <a href="/azure-stack/operator/azure-stack-updates">
-
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_upgrade.svg" alt="">
-
-              <br><b>Update Azure Stack Hub</b></a>
-
-              <p>Microsoft bundles a single package each month to keep Azure Stack Hub integrated systems up-to-date. </p>
-
-      - html: <a href="/azure-stack/operator/azure-stack-backup-infrastructure-backup">
-
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_usb.svg" alt="">
-
-              <br><b>Back up Azure Stack Hub</b></a>
-
-              <p>Back up and restore configuration and service data using the Infrastructure Backup Service.</p>
-
-      - html: <a href="/azure-stack/operator/azure-stack-security-configuration">
-
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_cloud-security.svg" alt="">
-
-              <br><b>Configure Azure Stack Hub security</b></a>
-
-              <p>Azure Stack Hub is designed to defend against modern threats and meet compliance standards.</p>
-
-  
+  ms.service: azure-stack #Required; service per approved list. service slug assigned to your service by ACOM.
+  ms.topic: landing-page # Required
+  author: justinha #Required; your GitHub user alias, with correct capitalization.
+  ms.author: justinha #Required; microsoft alias of author; optional team alias.
+  ms.date: 04/13/2020 #Required; mm/dd/yyyy format.
+
+# linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
+
+landingContent:
+# Cards and links should be based on top customer tasks or top subjects
+# Start card title with a verb
+  # Card (optional)
+  - title: About Azure Stack Hub
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is Azure Stack Hub?
+            url: azure-stack-overview.md
+          - text: What is Azure Stack HCI?
+            url: azure-stack-hci-overview.md
+      - linkListType: whats-new
+        links:
+          - text: Security updates
+            url: azure-stack-release-notes-security-updates.md
+          - text: Release notes
+            url: azure-stack-release-notes-1908.md
+          - text: Azure Stack Hub Capacity Planner
+            url: azure-stack-capacity-planning-overview.md
+
+  # Card (optional)
+  - title: Get started
+    linkLists:
+      - linkListType: learn
+        links:
+          - text: Use the administration portal 
+            url: azure-stack-manage-portals.md
+          - text: Offer a service to users 
+            url: tutorial-offer-services.md
+          - text: Test a service offering
+            url: tutorial-test-offer.md
+      - linkListType: concept
+        links:
+          - text: Compare connection models
+            url: azure-stack-connection-models.md
+          - text: Connected deployment 
+            url: azure-stack-connected-deployment.md
+          - text: Disconnected deployment  
+            url: azure-stack-disconnected-deployment.md
+
+  # Card          
+  - title: Azure Stack Hub tools
+    linkLists:
+      - linkListType: download
+        links:
+          - text: Download Azure Stack Hub tools from GitHub 
+            url: azure-stack-powershell-download.md
+          - text: Install Azure Stack PowerShell 
+            url: azure-stack-powershell-install.md
+          - text: Connect with Azure Stack PowerShell
+            url: azure-stack-powershell-configure-admin.md
+          - text: Download the Azure Stack Development Kit (ASDK) 
+            url: ../asdk/asdk-download.md
+
+  # Card
+  - title: Try Azure Stack Hub
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text: Prepare the ASDK host 
+            url: ../asdk/asdk-prepare-host.md
+          - text: Install the ASDK 
+            url: ../asdk/asdk-install.md
+          - text: ASDK admin basics 
+            url: ../asdk/asdk-admin-basics.md
+
+  # Card
+  - title: Offer services
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text: Create an offer for a virtual machine
+            url: azure-stack-tutorial-tenant-vm.md
+          - text: Create a highly available MySQL database
+            url: azure-stack-tutorial-mysql.md
+          - text: Create apps for any platform
+            url: azure-stack-app-service-overview.md
+
+  # Card
+  - title: Manage Azure Stack Hub
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Monitor health and alerts 
+            url: azure-stack-monitor-health.md
+          - text: Install updates and monitor progress
+            url: azure-stack-apply-updates.md
+          - text: Back up and restore configuration and service data 
+            url: azure-stack-backup-infrastructure-backup.md
+       

@@ -2,6 +2,8 @@
   href: index.yml
 - name: Overview
   items:
+  - name: What is Azure Stack Hub?
+    href: user-overview.md
   - name: Key considerations
     href: azure-stack-considerations.md
 - name: Quickstarts
@@ -19,6 +21,8 @@
     href: azure-stack-quick-create-vm-linux-powershell.md
   - name: Create Linux VM - CLI
     href: azure-stack-quick-create-vm-linux-cli.md
+  - name: Create Event Hubs cluster - Portal
+    href: event-hubs-quickstart-cluster-portal.md    
 - name: Tutorials
   items:
     - name: Subscribe to an offer
@@ -63,6 +67,8 @@
           href: azure-stack-install-visual-studio.md
         - name: Use a Secure Shell
           href: azure-stack-dev-start-howto-ssh-public-key.md
+        - name: Create a key with ssh-keygen
+          href: create-ssh-key-on-windows.md
         - name: Use a REST client with the API
           href: azure-stack-rest-api-use.md
       - name: Use Azure Stack Hub Resource Manager templates
@@ -181,6 +187,10 @@
           href: azure-stack-key-vault-store-credentials.md
         - name: KeyVault sample app
           href: azure-stack-key-vault-sample-app.md
+      - name: Event Hubs
+        items:
+        - name: Overview
+          href: event-hubs-overview.md
       - name: Azure Monitor
         href: azure-stack-metrics-azure-data.md
         items: 
@@ -210,6 +220,8 @@
             href: azure-stack-kubernetes-aks-engine-deploy-windows.md
           - name: Deploy a cluster
             href: azure-stack-kubernetes-aks-engine-deploy-cluster.md
+          - name: Deploy to custom virtual network
+            href: kubernetes-aks-engine-custom-vnet.md
           - name: Scale a cluster
             href: azure-stack-kubernetes-aks-engine-scale.md
           - name: Upgrade a cluster
@@ -259,11 +271,11 @@
       items: 
       - name: VNet peering with VMs
         href: azure-stack-network-howto-vnet-peering.md
-      - name: Use third party NVAs (Fortinet Fortigate NVA)
+      - name: Use third-party NVAs (Fortinet Fortigate NVA)
         items:
         - name: VNet peering with FortiGate
           href: azure-stack-network-howto-vnet-to-vnet.md
-        - name: Setup VPN to on-prem
+        - name: Set up VPN to on-prem
           href: azure-stack-network-howto-vnet-to-onprem.md
         - name: VNET to VNET connection
           href: azure-stack-network-howto-vnet-to-vnet-stacks.md

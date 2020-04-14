@@ -2,7 +2,7 @@
   "build": {
     "content": [
       {
-        "group": "asdk",
+        "group": "version-ash",
         "src" : "asdk",
         "dest" : "asdk",
         "files": [
@@ -21,7 +21,7 @@
         ]
       },
       {
-        "group": "operator",
+        "group": "version-ash",
         "src" : "operator",
         "dest" : "operator",
         "files": [
@@ -40,7 +40,7 @@
         ]
       },
       {
-        "group": "partner",
+        "group": "version-ash",
         "src" : "partner",
         "dest" : "partner",
         "files": [
@@ -59,7 +59,7 @@
         ]
       },      
       {
-        "group": "user",
+        "group": "version-ash",
         "src" : "user",
         "dest" : "user",
         "files": [
@@ -78,11 +78,36 @@
         ]
       },
       {
+        "src": ".",
+        "dest": ".",
         "files": [
           "**/*.md",
           "**/*.yml"
         ],
         "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices"
+        ]
+      },
+      {
+        "group": "version-ash",
+        "src" : ".",
+        "dest" : ".",
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "asdk/**",
+          "operator/**",
+          "partner/**",
+          "user/**",
           "**/obj/**",
           "**/includes/**",
           "_themes/**",
@@ -99,9 +124,96 @@
         "files": [
           "**/*.png",
           "**/*.jpg",
-          "**/*.svg"
+          "**/*.svg",
+          "**/*.gif"
+        ],
+        "src": "asdk",
+        "dest": "asdk",
+        "group": "version-ash",
+        "exclude": [
+          "**/obj/**",
+          "_themes/**",
+          "_themes.pdf/**"
+        ]
+      },
+      {
+        "files": [
+          "**/*.png",
+          "**/*.jpg",
+          "**/*.svg",
+          "**/*.gif"
+        ],
+        "src": "operator",
+        "dest": "operator",
+        "group": "version-ash",
+        "exclude": [
+          "**/obj/**",
+          "_themes/**",
+          "_themes.pdf/**"
+        ]
+      },
+      {
+        "files": [
+          "**/*.png",
+          "**/*.jpg",
+          "**/*.svg",
+          "**/*.gif"
+        ],
+        "src": "partner",
+        "dest": "partner",
+        "group": "version-ash",
+        "exclude": [
+          "**/obj/**",
+          "_themes/**",
+          "_themes.pdf/**"
+        ]
+      },
+      {
+        "files": [
+          "**/*.png",
+          "**/*.jpg",
+          "**/*.svg",
+          "**/*.gif"
+        ],
+        "src": "user",
+        "dest": "user",
+        "group": "version-ash",
+        "exclude": [
+          "**/obj/**",
+          "_themes/**",
+          "_themes.pdf/**"
+        ]
+      },
+      {
+        "src": ".",
+        "dest": ".",
+        "files": [
+          "**/*.png",
+          "**/*.jpg",
+          "**/*.svg",
+          "**/*.gif"
         ],
         "exclude": [
+          "**/obj/**",
+          "_themes/**",
+          "_themes.pdf/**"
+        ]
+      },
+      {
+        "files": [
+          "**/*.png",
+          "**/*.jpg",
+          "**/*.svg",
+          "**/*.gif"
+        ],
+        "src": ".",
+        "dest": ".",
+        "group": "version-ash",
+        "exclude": [
+          "asdk/**",
+          "operator/**",
+          "partner/**",
+          "user/**",
           "**/obj/**",
           "_themes/**",
           "_themes.pdf/**"
@@ -128,29 +240,19 @@
     "fileMetadata": {
       "titleSuffix": {
         "**/*.md": "Azure Stack Hub",
-        "asdk/**/*.md": "Azure Stack Development Kit (ASDK)"
+        "asdk/**/*.md": "Azure Stack Development Kit (ASDK)",
+        "hci/**/*.md": "Azure Stack HCI",
+        "hybrid/**/*.md": "Azure Stack"
       }
     },
     "template": [],
     "dest": "AzureStack",
     "markdownEngineName": "markdig",
     "groups": {
-      "asdk": {
-        "dest": "asdk",
-        "moniker_range": ">=azs-1802"
-      },
-      "operator": {
-        "dest": "operator",
-        "moniker_range": ">=azs-1802"
-      },
-      "partner": {
-        "dest": "partner",
-        "moniker_range": ">=azs-1802"
-      },
-      "user": {
-        "dest": "user",
-        "moniker_range": ">=azs-1802"
-      }                  
+      "version-ash": {
+        "moniker_range": ">=azs-1802",
+        "dest": "version-ash"
+      }
     }
   }
 }
