@@ -8,6 +8,7 @@ ms.date: 04/13/2020
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 04/13/2019
+zone_pivot_groups: state-connected-disconnected
 
 # Intent: As an Azure Stack operator, I want to know the prerequisites steps to complete before deploying App Service.
 # Keyword: app service prerequisites azure stack
@@ -15,20 +16,20 @@ ms.lastreviewed: 04/13/2019
 ---
 
 # Prerequisites for deploying App Service on Azure Stack Hub
-<!-- TODO: remove these once the anchors are resolved - here only to suppress build warnings -->
-## Get certificates
 
 Before you deploy Azure App Service on Azure Stack Hub, you must complete the prerequisite steps in this article.
 
 > [!IMPORTANT]
 > Apply the 2002 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 2002.Q2.
 
-## Common prerequisites
+## Resource provider prerequisites
 
 [!INCLUDE [Common RP prerequisites](../includes/marketplace-resource-provider-prerequisites.md)]
 
-<!-- MultiNode Only --->
+<!-- TODO: here only to suppress build warnings - remove and fix referrers once the anchors are resolved -->
+## Get certificates
 
+<!-- MultiNode Only --->
 ### Certificates required for Azure Stack Hub production deployment of Azure App Service
 
 To run the resource provider in production, you must provide the following certificates:
@@ -392,12 +393,15 @@ Follow these steps to create the service principal in your Azure AD tenant:
 Azure App Service on Azure Stack Hub requires items to be [downloaded from the Azure Marketplace](azure-stack-download-azure-marketplace-item.md), making them available in the Azure Stack Hub Marketplace. These items must be downloaded before you start the deployment or upgrade of Azure App Service on Azure Stack Hub:
 
 <!-- Connected --->
+::: zone pivot="state-connected"
 >![IMPORTANT]
 > Windows Server Core is not a supported platform image for use with Azure App Service on Azure Stack Hub.
 >
 > Do not use evaluation images for production deployments.
 >
 1. The latest version of Windows Server 2016 Datacenter virtual machine image.
+::: zone-end
+::: zone pivot="state-disconnected"
 <!-- Disconnected --->
 1. Operators are required to provide a Windows Server 2016 Datacenter Full virtual machine image with Microsoft.Net 3.5.1 SP1 activated.  Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 be activated on the image used for deployment. Marketplace-syndicated Windows Server 2016 images don't have this feature enabled and in disconnected environments are unable to reach Microsoft Update to download the packages to install via DISM. Therefore, you must create and use a Windows Server 2016 image with this feature pre-enabled with disconnected deployments.
 
@@ -407,6 +411,8 @@ See (Add a custom VM image to Azure Stack Hub)[azure-stack-add-vm-image.md] for 
    Offer = WindowsServer
    SKU = 2016-Datacenter
    Version = Specify the "latest" version
+
+::: zone-end
 <!-- For All --> 
 1. Custom Script Extension v1.9.1 or greater. This is a virtual machine extension.
 
