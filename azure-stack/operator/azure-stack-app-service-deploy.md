@@ -4,10 +4,10 @@ description: Learn how to deploy App Service in Azure Stack Hub.
 author: bryanla
 
 ms.topic: article
-ms.date: 01/13/2020
+ms.date: 04/13/2020
 ms.author: bryanla
 ms.reviewer: anwestg
-ms.lastreviewed: 01/13/2019
+ms.lastreviewed: 04/13/2019
 
 # Intent: As an Azure Stack operator, I want to deploy App Service on Azure Stack.
 # Keyword: deploy app service azure stack
@@ -19,7 +19,7 @@ ms.lastreviewed: 01/13/2019
 This article describes how to deploy App Service in Azure Stack Hub.
 
 > [!IMPORTANT]
-> Apply the 1910 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 1.8.
+> Apply the 2002 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 2020.Q2.
 
 You can give your users the ability to create web and API applications. To let users create these apps, you need to:
 
@@ -27,7 +27,7 @@ You can give your users the ability to create web and API applications. To let u
 - After you install the App Service resource provider, you can include it in your offers and plans. Users can then subscribe to get the service and start creating apps.
 
 > [!IMPORTANT]
-> Before you run the resource provider installer, make sure that you've followed the guidance in [Before you get started](azure-stack-app-service-before-you-get-started.md) and have read the [release notes](azure-stack-app-service-release-notes-update-eight.md) which accompany the 1.8 release. Reading this content helps you learn about new functionality, fixes, and any known issues which could affect your deployment.
+> Before you run the resource provider installer, make sure that you've followed the guidance in [Before you get started](azure-stack-app-service-before-you-get-started.md) and have read the [release notes](app-service-release-notes-2020-Q2.md) which accompany the 1.8 release. Reading this content helps you learn about new functionality, fixes, and any known issues which could affect your deployment.
 
 ## Run the App Service resource provider installer
 

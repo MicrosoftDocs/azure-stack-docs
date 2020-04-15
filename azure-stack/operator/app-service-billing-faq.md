@@ -5,10 +5,10 @@ author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 06/10/2019
+ms.date: 04/13/2020
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 06/10/2019
+ms.lastreviewed: 04/13/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -71,6 +71,8 @@ As a cloud operator, you're free to apply your own pricing model to your custome
 ### As a CSP, how can I offer free and shared SKUs for customers to try out the service?
 
 As a cloud operator, you incur costs for offering free and shared SKUs because they're hosted in shared workers. To minimize that cost, you can choose to scale down the shared worker tier to a bare minimum. 
+
+>![IMPORTANT] The installer defaults for Shared Workers were changed in Azure App Service on Azure Stack Hub 2020.Q2 for new installations.  By default Shared Workers are provisioned using the A4_v2 compute SKU which can be changed by the operator at installation time or post install.
 
 For example, to offer free and shared App Service plan SKUs and to offer consumption-based functions, you need a minimum of one A1 instance available. Shared workers are multitenant, so they can host multiple customer apps, each individually isolated and protected by the App Service sandbox. By scaling the shared worker tier in this way, you can limit your outlay to the cost of one vCPU per month.
 
