@@ -232,7 +232,7 @@ Azure DevOps Services provide a highly configurable and manageable pipeline for 
 
 ## Part 2: Update web app options
 
-[Azure App Service](https://docs.microsoft.com/azure/app-service/overview) provides a highly scalable, self-patching web hosting service. 
+[Azure App Service](https://docs.microsoft.com/azure/app-service/overview) provides a highly scalable, self-patching web hosting service.
 
 ![Azure App Service](media/solution-deployment-guide-geo-distributed/image27.png)
 
@@ -249,7 +249,7 @@ To migrate a live site and its DNS domain name to App Service, see [Migrate an a
 
 ### Prerequisites
 
-To complete this  solution:
+To complete this solution:
 
 - [Create an App Service app](https://docs.microsoft.com/azure/app-service/), or use an app created for another  solution.
 
@@ -257,18 +257,16 @@ To complete this  solution:
 
 Update the DNS zone file for the domain. Azure AD will verify ownership of the custom domain name. Use [Azure DNS](https://docs.microsoft.com/azure/dns/dns-getstarted-portal) for Azure/Office 365/external DNS records within Azure, or add the DNS entry at [a different DNS registrar](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/).
 
--   Register a custom domain with a public registrar.
+- Register a custom domain with a public registrar.
 
--   Sign in to the domain name registrar for the domain. (An approved admin may be required to make DNS updates.)
+- Sign in to the domain name registrar for the domain. (An approved admin may be required to make DNS updates.)
 
--   Update the DNS zone file for the domain by adding the DNS entry provided by Azure AD.
+- Update the DNS zone file for the domain by adding the DNS entry provided by Azure AD.
 
 For example, to add DNS entries for northwindcloud.com and www\.northwindcloud.com, configure DNS settings for the northwindcloud.com root domain.
 
 > [!Note]  
->  A domain name may be purchased using the [Azure portal](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain). To map a custom DNS name to a web app, the web app's [App Service plan](https://azure.microsoft.com/pricing/details/app-service/) must be a paid tier (**Shared**, **Basic**, **Standard**, or **Premium**).
-
-
+> A domain name may be purchased using the [Azure portal](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain). To map a custom DNS name to a web app, the web app's [App Service plan](https://azure.microsoft.com/pricing/details/app-service/) must be a paid tier (**Shared**, **Basic**, **Standard**, or **Premium**).
 
 ### Create and map CNAME and A records
 
@@ -277,9 +275,9 @@ For example, to add DNS entries for northwindcloud.com and www\.northwindcloud.c
 > [!Note]  
 >  Use Azure DNS to configure a custom DNS name for Azure Web Apps. For more information, see [Use Azure DNS to provide custom domain settings for an Azure service](https://docs.microsoft.com/azure/dns/dns-custom-domain).
 
-1.  Sign in to the website of the main provider.
+1. Sign in to the website of the main provider.
 
-2.  Find the page for managing DNS records. Every domain provider has its own DNS records interface. Look for areas of the site labeled **Domain Name**, **DNS**, or **Name Server Management**.
+2. Find the page for managing DNS records. Every domain provider has its own DNS records interface. Look for areas of the site labeled **Domain Name**, **DNS**, or **Name Server Management**.
 
 DNS records page can be viewed in **My domains**. Find the link named **Zone file**, **DNS Records**, or **Advanced configuration**.
 
@@ -299,9 +297,9 @@ After adding the CNAME, the DNS records page looks like the following example:
 
 ### Enable the CNAME record mapping in Azure
 
-1. In a new tab, sign in to the Azure portal,
+1. In a new tab, sign in to the Azure portal.
 
-2. Navigate to App Services.
+2. Go to App Services.
 
 3. Select web app.
 
@@ -309,7 +307,7 @@ After adding the CNAME, the DNS records page looks like the following example:
 
 5. Select the **+** icon next to **Add hostname**.
 
-6. Type the fully qualified domain name, such as `www.northwindcloud.com`.
+6. Type the fully qualified domain name, like `www.northwindcloud.com`.
 
 7. Select **Validate**.
 
@@ -317,7 +315,7 @@ After adding the CNAME, the DNS records page looks like the following example:
 
    a.  An **A** record to map to the app's IP address.
 
-   b.  A **TXT** record to map to the app's default hostname <app_name>.azurewebsites.net. App Service uses this record only at configuration time to verify custom domain ownership. After verification, delete the TXT record.
+   b.  A **TXT** record to map to the app's default hostname `<app_name>.azurewebsites.net`. App Service uses this record only at configuration time to verify custom domain ownership. After verification, delete the TXT record.
 
 9. Complete this task in the domain registrar tab and revalidate until the **Add hostname** button is activated.
 
@@ -325,7 +323,7 @@ After adding the CNAME, the DNS records page looks like the following example:
 
 11. Select **Add hostname**.
 
-12. Type the fully qualified domain name, such as `northwindcloud.com`.
+12. Type the fully qualified domain name, like `northwindcloud.com`.
 
 13. Select **Validate**. The **Add** is activated.
 
@@ -337,7 +335,7 @@ After adding the CNAME, the DNS records page looks like the following example:
   
     ![Custom domains](media/solution-deployment-guide-geo-distributed/image31.png) 
   
-    If there's an error, a verification error notification will appear at the bottom of the page. ![Verification error](media/solution-deployment-guide-geo-distributed/image32.png)
+    If there's an error, a verification error notification will appear at the bottom of the page. ![Domain verification error](media/solution-deployment-guide-geo-distributed/image32.png)
 
 > [!Note]  
 >  The above steps may be repeated to map a wildcard domain (\*.northwindcloud.com). This allows the addition of any additional subdomains to this app service without having to create a separate CNAME record for each one. Follow the registrar instructions to configure this setting.
