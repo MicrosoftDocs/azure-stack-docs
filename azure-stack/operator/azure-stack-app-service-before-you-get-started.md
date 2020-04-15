@@ -14,7 +14,6 @@ ms.lastreviewed: 04/13/2019
 
 ---
 
-
 # Prerequisites for deploying App Service on Azure Stack Hub
 
 Before you deploy Azure App Service on Azure Stack Hub, you must complete the prerequisite steps in this article.
@@ -26,7 +25,23 @@ Before you deploy Azure App Service on Azure Stack Hub, you must complete the pr
 
 [!INCLUDE [Common RP prerequisites](../includes/marketplace-resource-provider-prerequisites.md)]
 
+### Download the installer and helper scripts
+
+1. Download the [App Service on Azure Stack Hub deployment helper scripts](https://aka.ms/appsvconmashelpers).
+2. Download the [App Service on Azure Stack Hub installer](https://aka.ms/appsvconmasinstaller).
+3. Extract the files from the helper scripts .zip file. The following files and folders are extracted:
+
+   - Common.ps1
+   - Create-AADIdentityApp.ps1
+   - Create-ADFSIdentityApp.ps1
+   - Create-AppServiceCerts.ps1
+   - Get-AzureStackRootCert.ps1
+   - Remove-AppService.ps1
+   - Modules folder
+     - GraphAPI.psm1
+
 <!-- MultiNode Only --->
+## Prerequisites for deployment on Azure Stack Hub
 
 ### Certificates required for Azure Stack Hub production deployment of Azure App Service
 
@@ -84,54 +99,15 @@ Before deploying the App Service resource provider, you should [validate the cer
 
 As a best practice, when working with any of the necessary [Azure Stack Hub PKI certificates](azure-stack-pki-certs.md), you should plan enough time to test and reissue certificates if necessary.
 
-<!--- ASDK Only --->
-### Certificates required for ASDK deployment of Azure App Service
-
-The *Create-AppServiceCerts.ps1* script works with the Azure Stack Hub certificate authority to create the four certificates that App Service needs.
-
-| File name | Use |
-| --- | --- |
-| _.appservice.local.azurestack.external.pfx | App Service default SSL certificate |
-| api.appservice.local.azurestack.external.pfx | App Service API SSL certificate |
-| ftp.appservice.local.azurestack.external.pfx | App Service publisher SSL certificate |
-| sso.appservice.local.azurestack.external.pfx | App Service identity application certificate |
-
-To create the certificates, follow these steps:
-
-1. Sign in to the ASDK host using the AzureStack\AzureStackAdmin account.
-2. Open an elevated PowerShell session.
-3. Run the *Create-AppServiceCerts.ps1* script from the folder where you extracted the helper scripts. This script creates four certificates in the same folder as the script that App Service needs for creating certificates.
-4. Enter a password to secure the .pfx files, and make a note of it. You have to enter it in the App Service on Azure Stack Hub installer.
-
-#### Create-AppServiceCerts.ps1 script parameters
-
-| Parameter | Required or optional | Default value | Description |
-| --- | --- | --- | --- |
-| pfxPassword | Required | Null | Password that helps protect the certificate private key |
-| DomainName | Required | local.azurestack.external | Azure Stack Hub region and domain suffix |
-
-### Quickstart template for file server for deployments of Azure App Service on ASDK.
-
-For ASDK deployments only, you can use the [example Azure Resource Manager deployment template](https://aka.ms/appsvconmasdkfstemplate) to deploy a configured single-node file server. The single-node file server will be in a workgroup.
-
-## Licensing concerns for required file server and SQL Server
-
-Azure App Service on Azure Stack Hub requires a file server and SQL Server to operate.  You're free to use pre-existing resources located outside of your Azure Stack Hub deployment or deploy resources within their Azure Stack Hub Default Provider Subscription.
-
-If you choose to deploy the resources within your Azure Stack Hub Default Provider Subscription, the licenses for those resources (Windows Server Licenses and SQL Server Licenses) are included in the cost of Azure App Service on Azure Stack Hub subject to the following constraints:
-
-- the infrastructure is deployed into the **Default Provider Subscription**;
-- the infrastructure is exclusively used by the Azure App Service on Azure Stack Hub resource provider.  No other workloads, administrative (other resource providers, for example: SQL-RP) or tenant (for example: tenant apps, which require a database), are permitted to make use of this infrastructure.
-
-## Prepare the file server
+### Prepare the file server
 
 Azure App Service requires the use of a file server. For production deployments, the file server must be configured to be highly available and capable of handling failures.
 
-### Quickstart template for Highly Available file server and SQL Server
+#### Quickstart template for Highly Available file server and SQL Server
 
 A [reference architecture quickstart template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) is now available which will deploy a file server and SQL Server. This template supports Active Directory infrastructure in a virtual network configured to support a highly available deployment of Azure App Service on Azure Stack Hub.
 
-### Steps to deploy a custom file server
+#### Steps to deploy a custom file server
 
 >[!IMPORTANT]
 > If you choose to deploy App Service in an existing virtual network, the file server should be deployed into a separate Subnet from App Service.
@@ -139,7 +115,7 @@ A [reference architecture quickstart template](https://github.com/Azure/AzureSta
 >[!NOTE]
 > If you have chosen to deploy a file server using either of the Quickstart templates mentioned above, you can skip this section as the file servers are configured as part of the template deployment.
 
-#### Provision groups and accounts in Active Directory
+##### Provision groups and accounts in Active Directory
 
 1. Create the following Active Directory global security groups:
 
@@ -162,7 +138,7 @@ A [reference architecture quickstart template](https://github.com/Azure/AzureSta
    - Add **FileShareOwner** to the **FileShareOwners** group.
    - Add **FileShareUser** to the **FileShareUsers** group.
 
-#### Provision groups and accounts in a workgroup
+##### Provision groups and accounts in a workgroup
 
 >[!NOTE]
 > When you're configuring a file server, run all the following commands from an **Administrator Command Prompt**. <br>***Don't use PowerShell.***
@@ -263,22 +239,44 @@ GO
 RECONFIGURE;
 GO
 ```
+
+## Prerequisites for deployment on Azure Stack Development Kit (ASDK)
+
+### Certificates required for ASDK deployment of Azure App Service
+
+The *Create-AppServiceCerts.ps1* script works with the Azure Stack Hub certificate authority to create the four certificates that App Service needs.
+
+| File name | Use |
+| --- | --- |
+| _.appservice.local.azurestack.external.pfx | App Service default SSL certificate |
+| api.appservice.local.azurestack.external.pfx | App Service API SSL certificate |
+| ftp.appservice.local.azurestack.external.pfx | App Service publisher SSL certificate |
+| sso.appservice.local.azurestack.external.pfx | App Service identity application certificate |
+
+To create the certificates, follow these steps:
+
+1. Sign in to the ASDK host using the AzureStack\AzureStackAdmin account.
+2. Open an elevated PowerShell session.
+3. Run the *Create-AppServiceCerts.ps1* script from the folder where you extracted the helper scripts. This script creates four certificates in the same folder as the script that App Service needs for creating certificates.
+4. Enter a password to secure the .pfx files, and make a note of it. You have to enter it in the App Service on Azure Stack Hub installer.
+
+#### Create-AppServiceCerts.ps1 script parameters
+
+| Parameter | Required or optional | Default value | Description |
+| --- | --- | --- | --- |
+| pfxPassword | Required | Null | Password that helps protect the certificate private key |
+| DomainName | Required | local.azurestack.external | Azure Stack Hub region and domain suffix |
+
+### Quickstart template for file server for deployments of Azure App Service on ASDK.
+
+For ASDK deployments only, you can use the [example Azure Resource Manager deployment template](https://aka.ms/appsvconmasdkfstemplate) to deploy a configured single-node file server. The single-node file server will be in a workgroup.
+
+### SQL Server instance
+
+
+
+
 ## Common Elements
-
-### Download the installer and helper scripts
-
-1. Download the [App Service on Azure Stack Hub deployment helper scripts](https://aka.ms/appsvconmashelpers).
-2. Download the [App Service on Azure Stack Hub installer](https://aka.ms/appsvconmasinstaller).
-3. Extract the files from the helper scripts .zip file. The following files and folders are extracted:
-
-   - Common.ps1
-   - Create-AADIdentityApp.ps1
-   - Create-ADFSIdentityApp.ps1
-   - Create-AppServiceCerts.ps1
-   - Get-AzureStackRootCert.ps1
-   - Remove-AppService.ps1
-   - Modules folder
-     - GraphAPI.psm1
 
 ### Retrieve the Azure Resource Manager root certificate for Azure Stack Hub
 
