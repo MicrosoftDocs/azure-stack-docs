@@ -156,7 +156,7 @@ see the [Disable-AzureRmAlias reference](/powershell/module/az.accounts/disable-
 > [!IMPORTANT]
 > When disabling aliases, make sure that they are disabled for _all_ scopes which had aliases enabled.
 
-### Module Name Changes
+### Module name changes
 
 The module names have changed from `AzureRM.*` to `Az.*`, except for the following modules:
 
@@ -202,7 +202,7 @@ Should be changed to:
 Import-Module -Name Az.Compute
 ```
 
-### Migrating Fully-Qualified Cmdlet Invocations
+### Migrating fully qualified cmdlet invocations
 
 Scripts that use module-qualified cmdlet invocations, such as:
 
@@ -334,7 +334,7 @@ Scripts should no longer make processing decisions based on the values fo these 
 - The `Location` parameter has become mandatory in the `Get-AzStorageUsage` cmdlet
 - The Storage API methods now use the Task-based Asynchronous Pattern (TAP), instead of synchronous API calls. The following examples demonstrate the new asynchronous commands:
 
-#### Blob Snapshot
+#### Blob snapshot
 
 AzureRM:
 
@@ -352,7 +352,7 @@ $task.Wait()
 $snapshot = $task.Result
 ```
 
-#### Share Snapshot
+#### Share snapshot
 
 AzureRM:
 
@@ -387,7 +387,7 @@ $task = $b.ICloudBlob.UndeleteAsync()
 $task.Wait()
 ```
 
-#### Set Blob Tier
+#### Set blob tier
 
 AzureRM:
 
