@@ -360,24 +360,24 @@ In this part, we will:
 
 To complete this  solution:
 
--   [Create an App Service app.](https://docs.microsoft.com/azure/app-service/)
--   [Map a custom DNS name to your web app.](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain)
--   Acquire an SSL certificate from a trusted certificate authority and use the key to sign the request.
+- [Create an App Service app.](https://docs.microsoft.com/azure/app-service/)
+- [Map a custom DNS name to your web app.](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain)
+- Acquire an SSL certificate from a trusted certificate authority and use the key to sign the request.
 
 ### Requirements for your SSL certificate
 
 To use a certificate in App Service, the certificate must meet all the following requirements:
 
--   Signed by a trusted certificate authority.
+- Signed by a trusted certificate authority.
 
--   Exported as a password-protected PFX file.
+- Exported as a password-protected PFX file.
 
--   Contains private key at least 2048 bits long.
+- Contains private key at least 2048 bits long.
 
--   Contains all intermediate certificates in the certificate chain.
+- Contains all intermediate certificates in the certificate chain.
 
 > [!Note]  
->  **Elliptic Curve Cryptography (ECC) certificates** work with App Service but aren't included in this guide. Consult a certificate authority for assistance in creating ECC certificates. 
+> **Elliptic Curve Cryptography (ECC) certificates** work with App Service but aren't included in this guide. Consult a certificate authority for assistance in creating ECC certificates.
 
 #### Prepare the web app
 
@@ -385,31 +385,31 @@ To bind a custom SSL certificate to the web app, the [App Service plan](https://
 
 #### Sign in to Azure
 
-1.  Open the [Azure portal](https://portal.azure.com/) and navigate to the web app.
+1. Open the [Azure portal](https://portal.azure.com/) and go to the web app.
 
-2.  From the left menu, select **App Services**, and then select the web app name.
+2. From the left menu, select **App Services**, and then select the web app name.
 
-![Select web app](media/solution-deployment-guide-geo-distributed/image33.png)
+![Select web app in Azure portal](media/solution-deployment-guide-geo-distributed/image33.png)
 
 #### Check the pricing tier
 
-1.  In the left-hand navigation of the web app page, scroll to the **Settings** section and select **Scale up (App Service plan)**.
+1. In the left-hand navigation of the web app page, scroll to the **Settings** section and select **Scale up (App Service plan)**.
 
-    ![Scale-up menu](media/solution-deployment-guide-geo-distributed/image34.png)
+    ![Scale-up menu in web app](media/solution-deployment-guide-geo-distributed/image34.png)
 
-1.  Ensure the web app isn't in the **Free** or **Shared** tier. The web app's current tier is highlighted in a dark blue box.
+1. Ensure the web app isn't in the **Free** or **Shared** tier. The web app's current tier is highlighted in a dark blue box.
 
-    ![Check pricing tier](media/solution-deployment-guide-geo-distributed/image35.png)
+    ![Check pricing tier in web app](media/solution-deployment-guide-geo-distributed/image35.png)
 
 Custom SSL isn't supported in the **Free** or **Shared** tier. To upscale, follow the steps in the next section or the **Choose your pricing tier** page and skip to [Upload and bind your SSL certificate](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl).
 
 #### Scale up your App Service plan
 
-1.  Select one of the **Basic**, **Standard**, or **Premium** tiers.
+1. Select one of the **Basic**, **Standard**, or **Premium** tiers.
 
-2.  Select **Select**.
+2. Select **Select**.
 
-![Choose pricing tier](media/solution-deployment-guide-geo-distributed/image36.png)
+![Choose pricing tier for your web app](media/solution-deployment-guide-geo-distributed/image36.png)
 
 The scale operation is complete when notification is displayed.
 
