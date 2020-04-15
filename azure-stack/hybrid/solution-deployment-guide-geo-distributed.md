@@ -140,90 +140,90 @@ Azure DevOps Services provide a highly configurable and manageable pipeline for 
 
 ## Create release definition
 
-1. Select the **plus** button to add a new release under the **Releases** tab in the **Build and Release** section of VSO.
+1. Select the **plus** button to add a new release under the **Releases** tab in the **Build and Release** section of Azure DevOps Services.
 
-    ![Create a release definition](media/solution-deployment-guide-geo-distributed/image5.png)
+    ![Create a release definition in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image5.png)
 
 2. Apply the Azure App Service Deployment template.
 
-   ![Apply Azure App Service Deployment template](meDia/solution-deployment-guide-geo-distributed/image6.png)
+   ![Apply Azure App Service Deployment template in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image6.png)
 
 3. Under **Add artifact**, add the artifact for the Azure Cloud build app.
 
-   ![Add artifact to Azure Cloud build](media/solution-deployment-guide-geo-distributed/image7.png)
+   ![Add artifact to Azure Cloud build in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image7.png)
 
 4. Under Pipeline tab, select the **Phase, Task** link of the environment and set the Azure cloud environment values.
 
-   ![Set Azure cloud environment values](media/solution-deployment-guide-geo-distributed/image8.png)
+   ![Set Azure cloud environment values in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image8.png)
 
 5. Set the **environment name** and select the **Azure subscription** for the Azure Cloud endpoint.
 
-      ![Select Azure subscription for Azure Cloud endpoint](media/solution-deployment-guide-geo-distributed/image9.png)
+      ![Select Azure subscription for Azure Cloud endpoint in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image9.png)
 
 6. Under **App service name**, set the required Azure app service name.
 
-      ![Set Azure app service name](media/solution-deployment-guide-geo-distributed/image10.png)
+      ![Set Azure app service name in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image10.png)
 
 7. Enter "Hosted VS2017" under **Agent queue** for Azure cloud hosted environment.
 
-      ![Set Agent queue for Azure cloud hosted environment](media/solution-deployment-guide-geo-distributed/image11.png)
+      ![Set Agent queue for Azure cloud hosted environment in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image11.png)
 
 8. In Deploy Azure App Service menu, select the valid **Package or Folder** for the environment. Select **OK** to **folder location**.
   
-      ![Select package or folder for Azure App Service environment](media/solution-deployment-guide-geo-distributed/image12.png)
+      ![Select package or folder for Azure App Service environment in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image12.png)
 
-      ![Select package or folder for Azure App Service environment](media/solution-deployment-guide-geo-distributed/image13.png)
+      ![Select package or folder for Azure App Service environment in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image13.png)
 
 9. Save all changes and go back to **release pipeline**.
 
-    ![Save changes in release pipeline](media/solution-deployment-guide-geo-distributed/image14.png)
+    ![Save changes in release pipeline in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image14.png)
 
 10. Add a new artifact selecting the build for the Azure Stack Hub app.
-    
-    ![Add new artifact for Azure Stack Hub app](media/solution-deployment-guide-geo-distributed/image15.png)
+
+    ![Add new artifact for Azure Stack Hub app in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image15.png)
 
 
 11. Add one more environment by applying the Azure App Service Deployment.
-    
-    ![Add environment to Azure App Service Deployment](media/solution-deployment-guide-geo-distributed/image16.png)
+
+    ![Add environment to Azure App Service Deployment in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image16.png)
 
 12. Name the new environment Azure Stack Hub.
-    
-    ![Name environment in Azure App Service Deployment](media/solution-deployment-guide-geo-distributed/image17.png)
+
+    ![Name environment in Azure App Service Deployment in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image17.png)
 
 13. Find the Azure Stack Hub environment under **Task** tab.
-    
-    ![Azure Stack Hub environment](media/solution-deployment-guide-geo-distributed/image18.png)
+
+    ![Azure Stack Hub environment in Azure DevOps Services in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image18.png)
 
 14. Select the subscription for the Azure Stack Hub endpoint.
-    
-    ![Select the subscription for the Azure Stack Hub endpoint](media/solution-deployment-guide-geo-distributed/image19.png)
+
+    ![Select the subscription for the Azure Stack Hub endpoint in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image19.png)
 
 15. Set the Azure Stack Hub web app name as the App service name.
 
-    ![Set Azure Stack Hub web app name](media/solution-deployment-guide-geo-distributed/image20.png)
+    ![Set Azure Stack Hub web app name in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image20.png)
 
 16. Select the Azure Stack Hub agent.
-    
-    ![Select the Azure Stack Hub agent](media/solution-deployment-guide-geo-distributed/image21.png)
+
+    ![Select the Azure Stack Hub agent in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image21.png)
 
 17. Under the Deploy Azure App Service section, select the valid **Package or Folder** for the environment. Select **OK** to folder location.
 
-    ![Select folder for Azure App Service Deployment](media/solution-deployment-guide-geo-distributed/image22.png)
+    ![Select folder for Azure App Service Deployment in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image22.png)
 
-    ![Select folder for Azure App Service Deployment](media/solution-deployment-guide-geo-distributed/image23.png)
+    ![Select folder for Azure App Service Deployment in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image23.png)
 
 18. Under Variable tab add a variable named `VSTS\_ARM\_REST\_IGNORE\_SSL\_ERRORS`, set its value as **true**, and scope to Azure Stack Hub.
-    
-    ![Add variable to Azure App Deployment](media/solution-deployment-guide-geo-distributed/image24.png)
+
+    ![Add variable to Azure App Deployment in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image24.png)
 
 19. Select the **Continuous** deployment trigger icon in both artifacts and enable the **Continues** deployment trigger.
-    
-    ![Select continuous deployment trigger](media/solution-deployment-guide-geo-distributed/image25.png)
+
+    ![Select continuous deployment trigger in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image25.png)
 
 20. Select the **Pre-deployment** conditions icon in the Azure Stack Hub environment and set the trigger to **After release.**
-    
-    ![Select pre-deployment conditions](media/solution-deployment-guide-geo-distributed/image26.png)
+
+    ![Select pre-deployment conditions in Azure DevOps Services](media/solution-deployment-guide-geo-distributed/image26.png)
 
 21. Save all changes.
 
@@ -243,7 +243,7 @@ Azure DevOps Services provide a highly configurable and manageable pipeline for 
 ### Map an existing custom DNS name to Azure Web Apps
 
 > [!Note]  
->  Use a CNAME for all custom DNS names except a root domain (for example, northwind.com).
+> Use a CNAME for all custom DNS names except a root domain (for example, northwind.com).
 
 To migrate a live site and its DNS domain name to App Service, see [Migrate an active DNS name to Azure App Service](https://docs.microsoft.com/azure/app-service/manage-custom-dns-migrate-domain).
 
@@ -251,9 +251,9 @@ To migrate a live site and its DNS domain name to App Service, see [Migrate an a
 
 To complete this  solution:
 
--   [Create an App Service app](https://docs.microsoft.com/azure/app-service/), or use an app created for another  solution.
+- [Create an App Service app](https://docs.microsoft.com/azure/app-service/), or use an app created for another  solution.
 
--   Purchase a domain name and ensure access to the DNS registry for the domain provider.
+- Purchase a domain name and ensure access to the DNS registry for the domain provider.
 
 Update the DNS zone file for the domain. Azure AD will verify ownership of the custom domain name. Use [Azure DNS](https://docs.microsoft.com/azure/dns/dns-getstarted-portal) for Azure/Office 365/external DNS records within Azure, or add the DNS entry at [a different DNS registrar](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/).
 
