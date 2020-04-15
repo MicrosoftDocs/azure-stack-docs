@@ -1,25 +1,19 @@
 ---
-title: Connect to the ASDK | Microsoft Docs
+title: Connect to the ASDK 
 description: Learn how to connect to the Azure Stack Development Kit (ASDK).
-services: azure-stack
-documentationcenter: ''
 author: justinha
-manager: femila
-editor: ''
 
-ms.assetid: 3cebbfa6-819a-41e3-9f1b-14ca0a2aaba3
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: justinha
 ms.reviewer: knithinc
-ms.lastreviewed: 10/25/2018
+ms.lastreviewed: 10/25/2019
 
+# Intent: As an ASDK user, I want to connect to the ASDK so I can manage resources.
+# Keyword: connect to asdk
 
 ---
+
 # Connect to the ASDK
 
 To manage resources, you must first connect to the Azure Stack Development Kit (ASDK). In this article, we describe the steps that you take to connect to the ASDK by using the following connection options:

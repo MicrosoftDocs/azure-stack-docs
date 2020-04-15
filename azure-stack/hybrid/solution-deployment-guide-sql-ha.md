@@ -2,17 +2,19 @@
 title: Deploy a SQL Server 2016 availability group to Azure and Azure Stack Hub
 description: Learn how to deploy a SQL Server 2016 availability group to Azure and Azure Stack Hub
 author: BryanLa
-ms.service: azure-stack
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
 
-# Deploy a SQL Server 2016 availability group to Azure and Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems*
+# Deploy a SQL Server 2016 availability group to Azure and Azure Stack Hub
 
 This article will step you through an automated deployment of a basic highly available (HA) SQL Server 2016 Enterprise cluster with an asynchronous disaster recovery (DR) site across two Azure Stack Hub environments. To learn more about SQL Server 2016 and high availability, see [Always On availability groups: a high-availability and disaster-recovery solution](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2016).
 
@@ -35,7 +37,7 @@ In this solution, you will build a sample environment to:
 
 ## Prerequisites for SQL Server 2016
 
-  - Two connected Azure Stack Hub Integrated Systems (Azure Stack Hub), this deployment does not work on Azure Stack Hub Development Kits (ASDKs). To learn more about Azure Stack Hub, see [What is Azure Stack Hub?](https://azure.microsoft.com/overview/azure-stack/).
+  - Two connected Azure Stack Hub Integrated Systems (Azure Stack Hub), this deployment does not work on Azure Stack Development Kits (ASDKs). To learn more about Azure Stack Hub, see [What is Azure Stack Hub?](https://azure.microsoft.com/overview/azure-stack/).
   - A tenant subscription on each Azure Stack Hub.    
       - **Make a note of each subscription ID and the Azure Resource Manager endpoint for each Azure Stack Hub.**
   - An Azure Active Directory (Azure AD) service principal that has permissions to the tenant subscription on each Azure Stack Hub. You may need to create two service principals if the Azure Stack Hubs are deployed against different Azure AD tenants. To learn how to create a service principal for Azure Stack Hub, see [Create service principals to give applications access to Azure Stack Hub resources](https://docs.microsoft.com/azure-stack/user/azure-stack-create-service-principals).

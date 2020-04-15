@@ -1,24 +1,19 @@
 ﻿---
-title: Redeploy the ASDK | Microsoft Docs
+title: Redeploy the ASDK 
 description: Learn how to redeploy the Azure Stack Development Kit (ASDK).
-services: azure-stack
-documentationcenter: ''
 author: justinha
-manager: femila
-editor: ''
 
-ms.assetid: 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.custom: 
 ms.date: 02/12/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 11/05/2018
+ms.lastreviewed: 11/05/2019
+
+# Intent: As an ASDK user, I want to redeploy the ASDK so I can upgrade to and evalutate a newer version of Azure Stack.
+# Keyword: redeploy ASDK
+
 ---
+
 
 # Redeploy the ASDK
 In this article, you'll learn how to redeploy the Azure Stack Development Kit (ASDK) in a non-production environment. Because upgrading the ASDK isn't supported, you need to completely redeploy it to move to a newer version. You can also redeploy the ASDK whenever you want to start from scratch.

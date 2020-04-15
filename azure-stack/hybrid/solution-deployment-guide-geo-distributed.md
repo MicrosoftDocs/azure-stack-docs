@@ -2,17 +2,19 @@
 title: Direct traffic with a geo-distributed app solution using Azure and Azure Stack Hub
 description: Learn how to create a geo-distributed app solution using Azure and Azure Stack Hub, that directs traffic to specific endpoints.
 author: BryanLa
-ms.service: azure-stack
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
 
-# Create a geo-distributed app solution to direct traffic with Azure and Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
+# Create a geo-distributed app solution to direct traffic with Azure and Azure Stack Hub
 
 Learn how to direct traffic to specific endpoints based on various metrics using the geo-distributed apps pattern. Creating a Traffic Manager profile with geographic-based routing and endpoint configuration ensures information is routed to endpoints based on regional requirements, corporate and international regulation, and your data needs.
 
@@ -111,7 +113,7 @@ Set up Hybrid Continuous Integration/Continuous Delivery (CI/CD) to deploy Web A
 
 ### Create web app deployment in both clouds
 
-1.  Edit the **WebApplication.csproj** file: Select `Runtimeidentifier` and add `win10-x64`. (See [Self-contained Deployment](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) documentation.)
+1.  Edit the **WebApplication.csproj** file: Select `Runtimeidentifier` and add `win10-x64`. (See [Self-contained Deployment](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf) documentation.)
 
     ![Edit web application project file in Visual Studio](media/solution-deployment-guide-geo-distributed/image3.png)
 
@@ -127,7 +129,7 @@ Set up Hybrid Continuous Integration/Continuous Delivery (CI/CD) to deploy Web A
 
     ![Add code to the build definition](media/solution-deployment-guide-geo-distributed/image4.png)
 
-3. **Run the build**. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) process will publish artifacts that can run on Azure and Azure Stack Hub.
+3. **Run the build**. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf) process will publish artifacts that can run on Azure and Azure Stack Hub.
 
 **Using an Azure Hosted Agent**
 
@@ -536,7 +538,7 @@ In the web app page, select **SL settings**. Then, in **HTTPS Only**, select **O
 When the operation is complete, navigate to any of the HTTP URLs that point to the app. For example:
 
 -   https://<app_name>.azurewebsites.net
--   https://northwindcloud.com
+-   `https://northwindcloud.com`
 -   <https://www.northwindcloud.com>
 
 #### Enforce TLS 1.1/1.2

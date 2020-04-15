@@ -1,25 +1,19 @@
 ---
-title: Download and extract the ASDK | Microsoft Docs
+title: Download and extract the ASDK 
 description: Learn how to download and extract the Azure Stack Development Kit (ASDK).
-services: azure-stack
-documentationcenter: ''
 author: justinha
-manager: femila
-editor: ''
 
-ms.assetid: 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 08/10/2018
+ms.lastreviewed: 08/10/2019
 
+# Intent: As an ASDK user, I want to download and extract the ASDK so I can start using it.
+# Keyword: download extract ASDK
 
 ---
+
 
 # Download and extract the ASDK
 After ensuring that your development kit host computer meets the basic requirements for installing the Azure Stack Development Kit (ASDK), the next step is to download and extract the ASDK deployment package to get the Cloudbuilder.vhdx.

@@ -1,40 +1,36 @@
 ---
-title: Create MySQL databases in Azure Stack | Microsoft Docs
-description: Learn how to create and manage MySQL databases provisioned using the MySQL Adapter Resource Provider in Azure Stack.
-services: azure-stack
-documentationCenter: ''
-author: mattbriggs
-manager: femila
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Create MySQL databases in Azure Stack Hub 
+description: Learn how to create and manage MySQL databases provisioned using the MySQL Adapter Resource Provider in Azure Stack Hub.
+author: bryanla
 ms.topic: article
-ms.date: 10/02/2019
-ms.author: mabrigg
+ms.date: 1/22/2020
+ms.author: bryanla
 ms.reviewer: xiaofmao
-ms.lastreviewed: 10/16/2018
+ms.lastreviewed: 10/16/2019
+
+# Intent: As an Azure Stack operator, I want to create and manage MySQL databases using the MySQL Adapter Resource Provider.
+# Keyword: create mySQL database/s azure stack
 
 ---
 
-# Create MySQL databases in Azure Stack
-An Azure Stack user that's subscribed to an offer that includes the MySQL database service can create and manage self-service MySQL databases in the user portal.
+
+# Create MySQL databases in Azure Stack Hub
+An Azure Stack Hub user that's subscribed to an offer that includes the MySQL database service can create and manage self-service MySQL databases in the user portal.
 
 ## Create a MySQL database
 
-1. Sign in to the Azure Stack user portal.
+1. Sign in to the Azure Stack Hub user portal.
 2. Select **+ Create a resource** > **Data + Storage** > **MySQL Database** > **Add**.
 3. Under **Create MySQL Database**, enter the Database Name, and configure the other settings as required for your environment.
 
-    ![Create a test MySQL database](./media/azure-stack-mysql-rp-deploy/mysql-create-db.png)
+    ![Create a test MySQL database](./media/azure-stack-mysql-rp-deploy/mysql-create-db-a.png)
 
 4. Under **Create Database**, select **SKU**. Under **Select a MySQL SKU**, pick the SKU for your database.
 
     ![Select a MySQL SKU](./media/azure-stack-mysql-rp-deploy/mysql-select-sku.png)
 
     >[!Note]
-    >As hosting servers are added to Azure Stack, they're assigned a SKU. Databases are created in the pool of hosting servers in a SKU.
+    >As hosting servers are added to Azure Stack Hub, they're assigned a SKU. Databases are created in the pool of hosting servers in a SKU.
 
 5. Under **Login**, select ***Configure required settings***.
 6. Under **Select a Login**, you can choose an existing login or select **+ Create a new login** to set up a new login.  Enter a **Database login** name and **Password**, and then select **OK**.
@@ -48,7 +44,7 @@ An Azure Stack user that's subscribed to an offer that includes the MySQL databa
 
 After the database is deployed, take note of the **Connection String** under **Essentials**. You can use this string in any application that needs to access the MySQL database.
 
-![Get the connection string for the MySQL database](./media/azure-stack-mysql-rp-deploy/mysql-db-created.png)
+![Get the connection string for the MySQL database](./media/azure-stack-mysql-rp-deploy/mysql-db-created-a.png)
 
 ## Update the administrative password
 

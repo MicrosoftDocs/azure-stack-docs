@@ -1,34 +1,28 @@
 ---
-title: Azure stack storage differences and considerations | Microsoft Docs
-description: Understand the differences between Azure stack storage and Azure storage, along with Azure Stack deployment considerations.
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub storage differences and considerations 
+description: Understand the differences between Azure Stack Hub storage and Azure storage, along with Azure Stack Hub deployment considerations.
 author: mattbriggs
-manager: femila
 
-ms.assetid:
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/2/2019
+ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.lastreviewed: 01/30/2019
+ms.lastreviewed: 01/30/2020
+
+# Intent: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Azure Stack keyword
 
 ---
-# Azure Stack storage: Differences and considerations
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+# Azure Stack Hub storage: Differences and considerations
 
-Azure Stack storage is the set of storage cloud services in Microsoft Azure Stack. Azure Stack storage provides blob, table, queue, and account management functionality with Azure-consistent semantics.
+Azure Stack Hub storage is the set of storage cloud services in Microsoft Azure Stack Hub. Azure Stack Hub storage provides blob, table, queue, and account management functionality with Azure-consistent semantics.
 
-This article summarizes the known Azure Stack Storage differences from Azure Storage services. It also lists things to consider when you deploy Azure Stack. To learn about high-level differences between global Azure and Azure Stack, see the [Key considerations](azure-stack-considerations.md) article.
+This article summarizes the known Azure Stack Hub Storage differences from Azure Storage services. It also lists things to consider when you deploy Azure Stack Hub. To learn about high-level differences between global Azure and Azure Stack Hub, see the [Key considerations](azure-stack-considerations.md) article.
 
 ## Cheat sheet: Storage differences
 
-| Feature | Azure (global) | Azure Stack |
+| Feature | Azure (global) | Azure Stack Hub |
 | --- | --- | --- |
 |File storage|Cloud-based SMB file shares supported|Not yet supported
 |Azure storage service encryption for data at Rest|256-bit AES encryption. Support encryption using customer-managed keys in Key Vault.|BitLocker 128-bit AES encryption. Encryption using customer-managed keys isn't supported.
@@ -36,20 +30,29 @@ This article summarizes the known Azure Stack Storage differences from Azure Sto
 |Replication options|Locally redundant storage, geo-redundant storage, read-access geo-redundant storage, and zone-redundant storage|Locally redundant storage.
 |Premium storage|Provide high performance and low latency storage. Only support page blobs in premium storage accounts.|Can be provisioned, but no performance limit or guarantee. Would not block using block blobs, append blobs, tables and queues in premium storage accounts.
 |Managed disks|Premium and standard supported|Supported when you use version 1808 or later.
+|Managed disk snapshots|General available|Supported.
+|Managed disk incremental snapshots|General available|Not yet supported.
+|Managed disk snapshots for VM in a running state|General available|Not yet supported.
 |Blob name|1,024 characters (2,048 bytes)|880 characters (1,760 bytes)
 |Block blob max size|4.75 TB (100 MB X 50,000 blocks)|4.75 TB (100 MB x 50,000 blocks) for the 1802 update or newer version. 50,000 X 4 MB (approximately 195 GB) for previous versions.
-|Page blob snapshot copy|Backup Azure unmanaged VM disks attached to a running VM supported|Not yet supported.
+|Page blob snapshot copy|Backup Azure unmanaged VM disks attached to a running VM supported|Supported in [API as an async operation](azure-stack-acs-differences.md).
 |Page blob incremental snapshot copy|Premium and standard Azure page blobs supported|Not yet supported.
-|Page blob billing|Charges are incurred for unique pages, whether they are in the blob or in the snapshot. Would not incur additional charges for snapshots associated with a blob until base blob being updated.|Charges are incurred for base blob and assiociated snapshots. Would incur additional charges for each individual snapshot.
+|Page blob billing|Charges are incurred for unique pages, whether they are in the blob or in the snapshot. Would not incur additional charges for snapshots associated with a blob until base blob being updated.|Charges are incurred for base blob and associated snapshots. Would incur additional charges for each individual snapshot.
 |Storage tiers for blob storage|Hot, cool, and archive storage tiers.|Not yet supported.
 |Soft delete for blob storage|General available|Not yet supported.
 |Page blob max size|8 TB|1 TB
 |Page blob page size|512 bytes|4 KB
 |Table partition key and row key size|1,024 characters (2,048 bytes)|400 characters (800 bytes)
 |Blob snapshot|The max number of snapshots of one blob isn't limited.|The max number of snapshots of one blob is 1,000.
-|Azure AD Authentication for storage|In preview|Not yet supported.
+|Azure AD Authentication for storage|General available|Not yet supported.
 |Immutable Blobs|General available|Not yet supported.
 |Firewall and virtual network rules for storage|General available|Not yet supported.|
+|Map a custom domain to Blob Storage endpoint|General available|Not yet supported.|
+|Static website hosting in blob Storage|General available|Not yet supported.|
+|Encrypt storage data at rest with customer-managed keys|General available|Not yet supported.|
+|Verify transactional data integrity with CRC64 hash|General available|Not yet supported.|
+|Server-side synchronous copy of data from URL|General available|Not yet supported.|
+|Batch API for Blob Storage|General available|Not yet supported.|
 
 There are also differences with storage metrics:
 
@@ -58,7 +61,7 @@ There are also differences with storage metrics:
 
 ## API version
 
-The following versions are supported with Azure Stack Storage:
+The following versions are supported with Azure Stack Hub Storage:
 
 Azure Storage services APIs:
 
@@ -98,10 +101,20 @@ Previous versions:
 - [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 - [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 
-For more information about Azure Stack supported storage client libraries, see: [Get started with Azure Stack storage development tools](azure-stack-storage-dev.md).
+## PowerShell version
+
+For the storage module PowerShell, be aware of the version that is compatible with the REST API. 
+
+| Module | Supported version | Usage |
+|----------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Azure.Storage | [4.5.0](https://www.powershellgallery.com/packages/Azure.Storage/4.5.0) | Manages blobs, queues, tables in Azure Stack Hub storage accounts |
+| AzureRM.Storage | [5.0.4](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.4) | Creates and manages storage accounts in Azure Stack Hub |
+
+
+For more information about Azure Stack Hub supported storage client libraries, see: [Get started with Azure Stack Hub storage development tools](azure-stack-storage-dev.md).
 
 ## Next steps
 
-* [Get started with Azure Stack Storage development tools](azure-stack-storage-dev.md)
-* [Use data transfer tools for Azure Stack storage](azure-stack-storage-transfer.md)
-* [Introduction to Azure Stack Storage](azure-stack-storage-overview.md)
+* [Get started with Azure Stack Hub Storage development tools](azure-stack-storage-dev.md)
+* [Use data transfer tools for Azure Stack Hub storage](azure-stack-storage-transfer.md)
+* [Introduction to Azure Stack Hub Storage](azure-stack-storage-overview.md)

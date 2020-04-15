@@ -1,35 +1,29 @@
 ---
-title: Configure the time server for Azure Stack | Microsoft Docs
-description: Learn how to configure the time server for Azure Stack.
-services: azure-stack
-documentationcenter: ''
-author: mattbriggs
-manager: femila
-
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Configure the time server for Azure Stack Hub 
+description: Learn how to configure the time server for Azure Stack Hub.
+author: IngridAtMicrosoft
 ms.topic: article
-ms.date: 10/10/2019
-ms.author: mabrigg
+ms.date: 2/19/2020
+ms.author: inhenkel
 ms.reviewer: thoroet
 ms.lastreviewed: 10/10/2019
 
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
 
-# Configure the time server for Azure Stack
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*  
+# Configure the time server for Azure Stack Hub
 
-You can use the privileged endpoint (PEP) to update the time server in Azure Stack. Use a host name that resolves to two or more NTP server IP addresses.
+You can use the privileged endpoint (PEP) to update the time server in Azure Stack Hub. Use a host name that resolves to two or more NTP server IP addresses.
 
-Azure Stack uses the Network Time Protocol (NTP) to connect to time servers on the Internet. NTP servers provide accurate system time. Time is used across Azure Stack's physical network switches, hardware lifecycle host, infrastructure service, and virtual machines. If the clock isn't synchronized, Azure Stack may experience severe issues with the network and authentication. Log files, documents, and other files may be created with incorrect timestamps.
+Azure Stack Hub uses the Network Time Protocol (NTP) to connect to time servers on the Internet. NTP servers provide accurate system time. Time is used across Azure Stack Hub's physical network switches, hardware lifecycle host, infrastructure service, and virtual machines. If the clock isn't synchronized, Azure Stack Hub may experience severe issues with the network and authentication. Log files, documents, and other files may be created with incorrect timestamps.
 
-Providing one time server (NTP) is required for Azure Stack to synchronize time. When you deploy Azure Stack, you provide the address of an NTP server. Time is a critical datacenter infrastructure service. If the service changes, you will need to update the time.
+Providing one time server (NTP) is required for Azure Stack Hub to synchronize time. When you deploy Azure Stack Hub, you provide the address of an NTP server. Time is a critical datacenter infrastructure service. If the service changes, you will need to update the time.
 
 > [!NOTE]
-> Azure Stack supports synchronizing time with only one time server (NTP). You cannot provide multiple NTPs for Azure Stack to synchronize time with.
+> Azure Stack Hub supports synchronizing time with only one time server (NTP). You cannot provide multiple NTPs for Azure Stack Hub to synchronize time with.
 
 ## Configure time
 
@@ -43,13 +37,19 @@ Providing one time server (NTP) is required for Azure Stack to synchronize time.
     Get-AzsTimeSource
     ```
 
-3. Run the following command to update Azure Stack to use the new NTP Server and to immediately synchronize the time.
+3. Run the following command to update Azure Stack Hub to use the new NTP Server and to immediately synchronize the time.
 
     > [!Note]  
-    > This procedure don't update the time server on the physical switches
+    > This procedure doesn't update the time server on the physical switches. If you time server is a not a Windows based NTP server, you need to add the flag `0x8`.
 
     ```PowerShell
     Set-AzsTimeSource -TimeServer NEWTIMESERVERIP -resync
+    ```
+
+    For servers other than Windows-based time servers:
+
+    ```PowerShell
+    Set-AzsTimeSource -TimeServer "NEWTIMESERVERIP,0x8" -resync
     ```
 
 4. Review the output of the command for any errors.
@@ -58,4 +58,4 @@ Providing one time server (NTP) is required for Azure Stack to synchronize time.
 ## Next steps
 
 [View the readiness report](azure-stack-validation-report.md)  
-[General Azure Stack integration considerations](azure-stack-datacenter-integration.md)  
+[General Azure Stack Hub integration considerations](azure-stack-datacenter-integration.md)  

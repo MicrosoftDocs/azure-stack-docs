@@ -1,30 +1,24 @@
 ---
-title: Start-AzsReadinessChecker cmdlet reference | Microsoft Docs
-description: PowerShell cmdlet help for the Azure Stack Readiness Checker module.
-services: azure-stack
-documentationcenter: ''
-author: sethmanheim
-manager: femila
-editor: ''
-
-ms.assetid:
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 08/13/2019
-ms.author: sethm
+title: Start-AzsReadinessChecker cmdlet reference 
+description: PowerShell cmdlet help for the Azure Stack Hub Readiness Checker module.
+author: IngridAtMicrosoft
+ms.topic: reference
+ms.date: 03/04/2020
+ms.author: inhenkel
 ms.reviewer: unknown
 ms.lastreviewed: 05/09/2019
 
+# Intent: As an Azure Stack operator, I want a reference page for the Azure Stack Readiness checker cmdlet. 
+# Keyword: Azure Stack Readiness Checker 
+
 ---
+
 
 # Start-AzsReadinessChecker cmdlet reference
 
 Module: **Microsoft.AzureStack.ReadinessChecker**
 
-This module only contains a single cmdlet. The cmdlet performs one or more pre-deployment or pre-servicing functions for Azure Stack.
+This module only contains a single cmdlet. The cmdlet performs one or more pre-deployment or pre-servicing functions for Azure Stack Hub.
 
 ## Syntax
 
@@ -163,7 +157,7 @@ Start-AzsReadinessChecker
 
 ## Description
 
-The **Start-AzsReadinessChecker** cmdlet validates certificates, Azure accounts, Azure subscriptions, and Azure Active Directories (Azure AD). Run validation before deploying Azure Stack, or before Azure Stack servicing actions such as secret rotation. The cmdlet can also be used to generate certificate signing requests for infrastructure certificates, and optionally, PaaS certificates. Finally, the cmdlet can repackage PFX certificates to remediate common packaging issues.
+The **Start-AzsReadinessChecker** cmdlet validates certificates, Azure accounts, Azure subscriptions, and Azure Active Directories (Azure AD). Run validation before deploying Azure Stack Hub, or before Azure Stack Hub servicing actions such as secret rotation. The cmdlet can also be used to generate certificate signing requests for infrastructure certificates, and optionally, PaaS certificates. Finally, the cmdlet can repackage PFX certificates to remediate common packaging issues.
 
 ## Examples
 
@@ -176,7 +170,7 @@ $subjectHash = [ordered]@{"OU"="AzureStack";"O"="Microsoft";"L"="Redmond";"ST"="
 Start-AzsReadinessChecker -regionName $regionName -externalFQDN $externalFQDN -subject $subjectHash -IdentitySystem ADFS -requestType MultipleCSR
 ```
 
-In this example, `Start-AzsReadinessChecker` generates multiple certificate signing requests (CSRs) for certificates suitable for an AD FS Azure Stack deployment with a region name of **east** and an external FQDN of **azurestack.contoso.com**.
+In this example, `Start-AzsReadinessChecker` generates multiple certificate signing requests (CSRs) for certificates suitable for an AD FS Azure Stack Hub deployment with a region name of **east** and an external FQDN of **azurestack.contoso.com**.
 
 ### Example: validate certificates
 
@@ -254,7 +248,7 @@ $subscriptionID = "<subscription ID"
 Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -RegistrationSubscriptionID $subscriptionID -AzureEnvironment "<environment name>"
 ```
 
-In this example, the subscription owner credentials are required for security, and `Start-AzsReadinessChecker` then performs validation against the given account and subscription to ensure it can be used for Azure Stack registration.
+In this example, the subscription owner credentials are required for security, and `Start-AzsReadinessChecker` then performs validation against the given account and subscription to ensure it can be used for Azure Stack Hub registration.
 
 ### Example: validate Azure registration with deployment data (deployment team)
 
@@ -264,7 +258,7 @@ $subscriptionID = "<subscription ID>"
 Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -RegistrationSubscriptionID $subscriptionID -DeploymentDataJSONPath .\contoso-deploymentdata.json
 ```
 
-In this example, the subscription owner credentials are required for security, and `Start-AzsReadinessChecker` then performs validation against the given account and subscription to ensure it can be used for Azure Stack registration, where additional details are read from the deployment data JSON file generated for the deployment.
+In this example, the subscription owner credentials are required for security, and `Start-AzsReadinessChecker` then performs validation against the given account and subscription to ensure it can be used for Azure Stack Hub registration, where additional details are read from the deployment data JSON file generated for the deployment.
 
 ### Example: import/export PFX package
 
@@ -295,7 +289,7 @@ In this example, the deployment or support team receives the readiness report fr
 
 ### -RegionName
 
-Specifies the Azure Stack deployment region name.
+Specifies the Azure Stack Hub deployment region name.
 
 |  |  |
 |----------------------------|--------------|
@@ -307,7 +301,7 @@ Specifies the Azure Stack deployment region name.
 
 ### -FQDN
 
-Specifies the Azure Stack deployment external FQDN, also aliased as **ExternalFQDN** and **ExternalDomainName**.
+Specifies the Azure Stack Hub deployment external FQDN, also aliased as **ExternalFQDN** and **ExternalDomainName**.
 
 |  |  |
 |----------------------------|--------------|
@@ -319,7 +313,7 @@ Specifies the Azure Stack deployment external FQDN, also aliased as **ExternalFQ
 
 ### -IdentitySystem
 
-Specifies the Azure Stack deployment identity system valid values, AAD or ADFS, for Azure Active Directory and Active Directory Federated Services, respectively.
+Specifies the Azure Stack Hub deployment identity system valid values, AAD or ADFS, for Azure Active Directory and Active Directory Federated Services, respectively.
 
 |  |  |
 |----------------------------|--------------|
@@ -356,7 +350,7 @@ Specifies the hashtable containing paths and passwords to PaaS certificates.
 
 ### -DeploymentDataJSONPath
 
-Specifies the Azure Stack deployment data JSON configuration file. This file is generated for deployment.
+Specifies the Azure Stack Hub deployment data JSON configuration file. This file is generated for deployment.
 
 |  |  |
 |----------------------------|---------|
@@ -432,7 +426,7 @@ Specifies the destination path for certificate request files. Directory must alr
 
 ### -AADServiceAdministrator
 
-Specifies the Azure AD service admin to be used for Azure Stack deployment.
+Specifies the Azure AD service admin to be used for Azure Stack Hub deployment.
 
 |  |  |
 |----------------------------|---------|
@@ -444,7 +438,7 @@ Specifies the Azure AD service admin to be used for Azure Stack deployment.
 
 ### -AADDirectoryTenantName
 
-Specifies the Azure AD name to be used for Azure Stack deployment.
+Specifies the Azure AD name to be used for Azure Stack Hub deployment.
 
 |  |  |
 |----------------------------|---------|
@@ -456,7 +450,7 @@ Specifies the Azure AD name to be used for Azure Stack deployment.
 
 ### -AzureEnvironment
 
-Specifies the instance of Azure Services containing the accounts, directories, and subscriptions to be used for Azure Stack deployment and registration.
+Specifies the instance of Azure Services containing the accounts, directories, and subscriptions to be used for Azure Stack Hub deployment and registration.
 
 |  |  |
 |----------------------------|---------|
@@ -469,7 +463,7 @@ Specifies the instance of Azure Services containing the accounts, directories, a
 
 ### -RegistrationAccount
 
-Specifies the registration account to be used for Azure Stack registration.
+Specifies the registration account to be used for Azure Stack Hub registration.
 
 |  |  |
 |----------------------------|---------|
@@ -481,7 +475,7 @@ Specifies the registration account to be used for Azure Stack registration.
 
 ### -RegistrationSubscriptionID
 
-Specifies the registration subscription ID to be used for Azure Stack registration.
+Specifies the registration subscription ID to be used for Azure Stack Hub registration.
 
 |  |  |
 |----------------------------|---------|
@@ -509,11 +503,11 @@ Specifies the path for readiness report, defaults to current directory and defau
 
 Specifies the path under which only the certificate required certificate folders are present.
 
-Required folders for Azure Stack deployment with Azure AD identity system are:
+Required folders for Azure Stack Hub deployment with Azure AD identity system are:
 
 - ACSBlob, ACSQueue, ACSTable, Admin Portal, ARM Admin, ARM Public, KeyVault, KeyVaultInternal, Public Portal
 
-Required folders for Azure Stack deployment with Active Directory Federation Services identity system are:
+Required folders for Azure Stack Hub deployment with Active Directory Federation Services identity system are:
 
 - ACSBlob, ACSQueue, ACSTable, ADFS, Admin Portal, ARM Admin, ARM Public, Graph, KeyVault, KeyVaultInternal, Public Portal
 

@@ -8,4 +8,3 @@
  ms.lastreviewed: 11/11/2019
 ---
 
-*Applies to: Azure Stack integrated systems.*

@@ -1,25 +1,19 @@
 ---
-title: Azure Stack telemetry | Microsoft Docs
+title: Azure Stack telemetry 
 description: Learn how to configure Azure Stack telemetry settings using PowerShell.
-services: azure-stack
-documentationcenter: ''
 author: justinha
-manager: femila
-editor: ''
 
-ms.assetid:
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 10/15/2018
+ms.lastreviewed: 10/15/2019
 
+# Intent: As an ASDK user, I want to learn about Azure Stack telemetry, so I can learn how use it, leverage it, and manage it. 
+# Keyword: azure stack telemetry
 
 ---
+
 
 # Azure Stack telemetry
 
@@ -33,7 +27,7 @@ As an Azure Stack operator, telemetry can provide valuable insights into enterpr
 Azure Stack telemetry is based on the *Windows Server 2016 Connected User Experience and Telemetr*y component, which uses the [Event Tracing for Windows (ETW)](https://msdn.microsoft.com/library/dn904632(v=vs.85).aspx) trace logging technology to gather and store telemetry events and data. Azure Stack components use the same logging technology to publish events and data that are gathered by using public operating system event logging and tracing APIs. Examples of Azure Stack components include Network Resource Provider, Storage Resource Provider, Monitoring Resource Provider, and Update Resource Provider. The Connected User Experience and Telemetry component encrypts data using SSL and uses certificate pinning to transmit telemetry data over HTTPS to the Microsoft Data Management service.
 
 > [!NOTE]
-> To support telemetry data flow, port 443 (HTTPS) must be open in your network. The Connected User Experience and Telemetry component connects to the Microsoft Data Management service at https://v10.vortex-win.data.microsoft.com and also to https://settings-win.data.microsoft.com to download configuration info.
+> To support telemetry data flow, port 443 (HTTPS) must be open in your network. The Connected User Experience and Telemetry component connects to the Microsoft Data Management service at `https://v10.vortex-win.data.microsoft.com` and also to `https://settings-win.data.microsoft.com` to download configuration info.
 
 ## Privacy considerations
 The ETW service routes send telemetry data back to protected cloud storage. The principle of least privileged guides access to telemetry data. Only Microsoft personnel with a valid business need are permitted access to the telemetry data. Microsoft doesn't share our customer's personal data with third parties, except at the customer's discretion or for the limited purposes described in the [Azure Stack Privacy Statement](https://privacy.microsoft.com/PrivacyStatement). We do share business reports with OEMs and partners that include aggregated, anonymized telemetry info. Data sharing decisions are made by an internal Microsoft team including privacy, legal, and data management stakeholders.

@@ -1,27 +1,20 @@
 ---
-title: What is the Azure Stack Hub Development Kit (ASDK)? | Microsoft Docs
-description: Learn about the Azure Stack Hub Development Kit and how it's used to evaluate Azure Stack Hub.
-services: azure-stack
-documentationcenter: ''
+title: What is the Azure Stack Development Kit (ASDK)? | Microsoft Docs
+description: Learn about the Azure Stack Development Kit and how it's used to evaluate Azure Stack Hub.
 author: justinha
-manager: femila
-editor: ''
-
-ms.assetid: 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
-ms.custom: mvc
-ms.date: 02/08/2019
+ms.date: 11/27/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 02/08/2019
+ms.lastreviewed: 11/27/2019
+
+# Intent: As a potential ASDK user, I want to know what the ASDK is.
+# Keyword: what is the asdk
 
 ---
 
-# What is the Azure Stack Hub Development Kit (ASDK)?
+
+# What is the Azure Stack Development Kit (ASDK)?
 [Microsoft Azure Stack Hub integrated systems](../operator/azure-stack-overview.md) range in size from 4-16 nodes, and are jointly supported by a hardware partner and Microsoft. Use Azure Stack Hub integrated systems to enable new scenarios for your production workloads. If you're an Azure Stack Hub operator who manages the integrated systems infrastructure and offers services, see our [operator documentation](/azure-stack/operator).
 
 The ASDK is a single-node deployment of Azure Stack Hub that you can download and use **for free**. All ASDK components are installed in virtual machines (VMs) running on a single host computer that must meet or exceed the [minimum hardware requirements](asdk-deploy-considerations.md#hardware). The ASDK is meant to provide an environment in which you can evaluate Azure Stack Hub and develop modern apps using APIs and tooling consistent with Azure in a *non-production* environment. 
@@ -46,7 +39,7 @@ Single-node ASDK deployments differ from multi-node Azure Stack Hub deployments 
 |Description|ASDK|Multi-node Azure Stack Hub|
 |-----|-----|-----|
 |**Scale**|All components are installed on a single-node server computer.|Can range in size from 4-16 nodes.|
-|**Resilience**|Single-node configuration doesn't provide high availability|[High availability](../operator/azure-stack-overview.md#providing-high-availability) capabilities are supported.|
+|**Resilience**|Single-node configuration doesn't provide high availability|High availability capabilities are supported.|
 |**Networking**|The ASDK host routes all ASDK network traffic. There are no additional switch requirements.|More complex [network routing infrastructure](../operator/azure-stack-network.md#network-infrastructure) in multi-node deployments is necessary including Top-Of-Rack (TOR), Baseboard Management Controller (BMC), and border (datacenter network) switches.|
 |**Patch and update process**|To move to a new version of the ASDK, you must redeploy the ASDK on the ASDK host computer.|[Patch and update](../operator/azure-stack-updates.md) process used to update the installed Azure Stack Hub version.|
 |**Support**|MSDN Azure Stack forum. Microsoft Customer Service and Support (CSS) support is *not* available for non-production environments.|[MSDN Azure Stack forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack) and full CSS support.|
