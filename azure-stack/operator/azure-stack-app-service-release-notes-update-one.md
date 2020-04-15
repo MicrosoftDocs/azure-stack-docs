@@ -29,7 +29,7 @@ The App Service on Azure Stack Hub Update 1 build number is **69.0.13698.9**.
 ### Prerequisites
 
 > [!IMPORTANT]
-> New deployments of Azure App Service on Azure Stack Hub now require a [three-subject wildcard certificate](azure-stack-app-service-before-you-get-started.md#get-certificates) due to improvements in the way in which SSO for Kudu is handled in Azure App Service. The new subject is **\*.sso.appservice.\<region\>.\<domainname\>.\<extension\>**
+> New deployments of Azure App Service on Azure Stack Hub now require a three-subject wildcard certificate due to improvements in the way in which SSO for Kudu is handled in Azure App Service. The new subject is **\*.sso.appservice.\<region\>.\<domainname\>.\<extension\>**
 
 Refer to the [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
 
