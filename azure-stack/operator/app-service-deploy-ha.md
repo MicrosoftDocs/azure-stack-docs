@@ -114,7 +114,7 @@ Before you can run the App Service installer, several steps are required as desc
 
 - [Download the App Service installer and helper scripts](azure-stack-app-service-before-you-get-started.md#download-the-installer-and-helper-scripts).
 - [Download items from the Azure Stack Hub Marketplace](azure-stack-app-service-before-you-get-started.md#download-items-from-the-azure-marketplace).
-- [Generate required certificates](azure-stack-app-service-before-you-get-started.md#get-certificates).
+- [Generate required certificates for your deployment type](azure-stack-app-service-before-you-get-started.md).
 - Create the ID Application based on the identify provider you've chosen for Azure Stack Hub. An ID Application can be made for either [Azure AD](azure-stack-app-service-before-you-get-started.md#create-an-azure-ad-app) or [Active Directory Federation Services](azure-stack-app-service-before-you-get-started.md#create-an-adfs-app) and record the application ID.
 - Ensure that you've added the Windows Server 2016 Datacenter image to the Azure Stack Hub Marketplace. This image is required for App Service installation.
 

@@ -21,13 +21,15 @@ zone_pivot_groups: state-connected-disconnected
 
 Before you deploy Azure App Service on Azure Stack Hub, you must complete the prerequisite steps in this article.
 
-## Common prerequisites
+## Common prerequisites 
+
+This section lists the prerequisites for both integrated system and Azure Stack Development Kit (ASDK) deployments.
 
 ### Resource provider prerequisites
 
 [!INCLUDE [Common RP prerequisites](../includes/marketplace-resource-provider-prerequisites.md)]
 
-### Download the installer and helper scripts
+### Installer and helper scripts
 
 1. Download the [App Service on Azure Stack Hub deployment helper scripts](https://aka.ms/appsvconmashelpers).
 2. Download the [App Service on Azure Stack Hub installer](https://aka.ms/appsvconmasinstaller).
@@ -43,10 +45,12 @@ Before you deploy Azure App Service on Azure Stack Hub, you must complete the pr
      - GraphAPI.psm1
 
 <!-- MultiNode Only --->
-## Prerequisites for deployment on Azure Stack Hub
+## Prerequisites for integrated system deployments
+
+This section lists the prerequisites for integrated system deployments. 
 
 <!-- MultiNode Only --->
-### Certificates required for Azure Stack Hub production deployment of Azure App Service
+### Certificate requirements
 
 To run the resource provider in production, you must provide the following certificates:
 
@@ -243,7 +247,9 @@ RECONFIGURE;
 GO
 ```
 
-## Prerequisites for deployment on Azure Stack Development Kit (ASDK)
+## Prerequisites for ASDK deployments
+
+This section lists the prerequisites for ASDK deployments. 
 
 ### Certificates required for ASDK deployment of Azure App Service
 
