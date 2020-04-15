@@ -1,6 +1,16 @@
 {
   "redirections": [
     {
+      "source_path": "azure-stack/operator/azure-stack-app-service-deploy-offline.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-app-service-deploy?pivots=state-disconnected",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-app-service-update-offline.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-app-service-update?pivots=state-disconnected",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-stack/user/azure-stack-solution-sql-ha.md",
       "redirect_url": "/azure-stack/hybrid/solution-deployment-guide-sql-ha",
       "redirect_document_id": false
