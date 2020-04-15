@@ -106,7 +106,7 @@ To deploy App Service resource provider, follow these steps:
 
    ![App Service Installer][9]
 
-10. For each of the three certificate file boxes, select **Browse** and navigate to the appropriate certificate file. You must provide the password for each certificate. These certificates are the ones that you created in the [Create required certificates step](azure-stack-app-service-before-you-get-started.md#get-certificates). Select **Next** after entering all the information.
+10. For each of the three certificate file boxes, select **Browse** and navigate to the appropriate certificate file. You must provide the password for each certificate. These certificates are the ones that you created in [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md). Select **Next** after entering all the information.
 
     | Box | Certificate file name example |
     | --- | --- |
@@ -326,7 +326,7 @@ To deploy Azure App Service in an offline environment, first create an offline i
 
     ![Enter app ID and certificate info in Azure App Service Installer][40]
 
-1. For each of the three certificate file boxes, select **Browse**, and then go to the appropriate certificate file. You must provide the password for each certificate. These certificates are the ones that you created in the [Create required certificates step](azure-stack-app-service-before-you-get-started.md#get-certificates). Select **Next** after entering all the info.
+1. For each of the three certificate file boxes, select **Browse**, and then go to the appropriate certificate file. You must provide the password for each certificate. These certificates are the ones that you created in [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md). Select **Next** after entering all the info.
 
     | Box | Certificate file name example |
     | --- | --- |
