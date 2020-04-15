@@ -4,9 +4,9 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 03/20/2020
+ms.date: 04/13/2020
 ms.author: sethm
-ms.reviewer: prchint
+ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
@@ -155,13 +155,15 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 ### SQL VM
 
 #### Storage account creating failure when configuring Auto Backup
-- Applicable: This issue applies to 2002. 
-- Cause: When configuring the Automated Backup of SQL VM with a **new** storage account, it fails with an error "Deployment template validation failed. The template parameter for 'SqlAutobackupStorageAccountKind' is not found."
-- Remediation: Apply the latest 2002 hotfix. 
+
+- Applicable: This issue applies to 2002.
+- Cause: When configuring the automated backup of SQL VMs with a new storage account, it fails with the error **Deployment template validation failed. The template parameter for 'SqlAutobackupStorageAccountKind' is not found.**
+- Remediation: Apply the latest 2002 hotfix.
 
 #### Auto backup cannot be configured with TLS 1.2 enabled
-- Applicable: This issue applies to fresh install of 2002 and later, or any previous release with TLS 1.2 enabled stamp.
-- Cause: When configuration the Automated Backup of SQL VM with an **existing** storage account, it fails with an error "SQL Server IaaS Agent: The underlying connection was closed: An unexpected error occurred on a send."
+
+- Applicable: This issue applies to new installations of 2002 and later, or any previous release with TLS 1.2 enabled.
+- Cause: When configuring the automated backup of SQL VMs with an existing storage account, it fails with the error **SQL Server IaaS Agent: The underlying connection was closed: An unexpected error occurred on a send.**
 - Occurrence: Common
 
 ## Resource providers
