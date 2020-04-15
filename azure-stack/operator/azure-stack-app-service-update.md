@@ -9,7 +9,6 @@ ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/13/2019
 zone_pivot_groups: state-connected-disconnected
-zone_pivot_groups: sku
 # Intent: As an Azure Stack operator, I want to update my App Service so I'm up to date.
 # Keyword: update app service azure stack
 
