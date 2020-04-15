@@ -293,15 +293,11 @@
       - name: Before you get started
         href: azure-stack-app-service-before-you-get-started.md
       - name: Deploy App Service
-        href: /azure-stack/operator/azure-stack-app-service-deploy?pivots=state-connected
+        href: azure-stack-app-service-deploy.md
       - name: Deploy App Service for high availability
         href: app-service-deploy-ha.md
-      - name: Deploy App Service Disconnected
-        href: /azure-stack/operator/azure-stack-app-service-deploy?pivots=state-disconnected
       - name: Update App Service
-        href: /azure-stack/operator/azure-stack-app-service-update?pivots=state-connected
-      - name: Update App Service Disconnected
-        href: /azure-stack/operator/azure-stack-app-service-update?pivots=state-disconnected
+        href: azure-stack-app-service-update.md
       - name: Add App Service infrastructure roles
         href: azure-stack-app-service-add-worker-roles.md
       - name: Configure deployment sources
