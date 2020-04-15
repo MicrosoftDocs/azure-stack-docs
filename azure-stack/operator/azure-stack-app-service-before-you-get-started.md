@@ -253,7 +253,7 @@ For production and high-availability purposes, you should use a full version of 
 The SQL Server instance for Azure App Service on Azure Stack Hub must be accessible from all App Service roles. You can deploy SQL Server within the Default Provider Subscription in Azure Stack Hub. Or you can make use of the existing infrastructure within your organization (as long as there's connectivity to Azure Stack Hub). If you're using an Azure Marketplace image, remember to configure the firewall accordingly.
 
 > [!NOTE]
-> A number of SQL IaaS virtual machine images are available through the Marketplace Management feature. Make sure you always download the latest version of the SQL IaaS Extension before you deploy a VM using a Marketplace item. The SQL images are the same as the SQL VMs that are available in Azure. For SQL VMs created from these images, the IaaS extension and corresponding portal enhancements provide features such as automatic patching and backup capabilities.
+> A number of SQL IaaS VM images are available through the Marketplace Management feature. Make sure you always download the latest version of the SQL IaaS Extension before you deploy a VM using a Marketplace item. The SQL images are the same as the SQL VMs that are available in Azure. For SQL VMs created from these images, the IaaS extension and corresponding portal enhancements provide features such as automatic patching and backup capabilities.
 >
 > For any of the SQL Server roles, you can use a default instance or a named instance. If you use a named instance, be sure to manually start the SQL Server Browser service and open port 1434.
 
@@ -399,12 +399,12 @@ Azure App Service on Azure Stack Hub requires items to be [downloaded from the A
 >
 > Do not use evaluation images for production deployments.
 >
-1. The latest version of Windows Server 2016 Datacenter virtual machine image.
+1. The **latest version of Windows Server 2016 Datacenter VM image**.
 ::: zone-end
 
 ::: zone pivot="state-disconnected"
 <!-- Disconnected --->
-1. Operators are required to provide a Windows Server 2016 Datacenter Full virtual machine image with Microsoft.Net 3.5.1 SP1 activated.  Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 be activated on the image used for deployment. Marketplace-syndicated Windows Server 2016 images don't have this feature enabled and in disconnected environments are unable to reach Microsoft Update to download the packages to install via DISM. Therefore, you must create and use a Windows Server 2016 image with this feature pre-enabled with disconnected deployments.
+1. **Windows Server 2016 Datacenter Full VM image with Microsoft.Net 3.5.1 SP1 activated**.  Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 be activated on the image used for deployment. Marketplace-syndicated Windows Server 2016 images don't have this feature enabled and in disconnected environments are unable to reach Microsoft Update to download the packages to install via DISM. Therefore, you must create and use a Windows Server 2016 image with this feature pre-enabled with disconnected deployments.
 
    See [Add a custom VM image to Azure Stack Hub](azure-stack-add-vm-image.md) for details on creating a custom image and adding to Marketplace. Be sure to specify the following when adding the image to Marketplace:
 
@@ -416,7 +416,7 @@ Azure App Service on Azure Stack Hub requires items to be [downloaded from the A
 ::: zone-end
 
 <!-- For All --> 
-2. Custom Script Extension v1.9.1 or greater. This is a virtual machine extension.
+2. **Custom Script Extension v1.9.1 or greater**. This is a VM extension.
 
 ## Next steps
 
