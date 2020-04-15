@@ -8,6 +8,14 @@ groups:
     title: Connected
   - id: state-disconnected
     title: Disconnected
+- id: sku
+  title: Azure Stack Hub SKU
+  prompt: Choose a sku
+  pivots:
+  - id: sku-standard
+    title: Azure Stack Hub
+  - id: sku-asdk
+    title: ASDK
 
 # BELOW: entries inherited from github.com/microsoftdocs/azure-docs-pr/articles/zone-pivot-groups.yml for reuse.
 # For consistency across Docs. This includes: client OSes, languages, etc.
