@@ -95,7 +95,7 @@ In this article, you learn how to upgrade the [Azure App Service resource provid
 * secured by Active Directory Federation Services (AD FS).
 
 > [!IMPORTANT]
-> Prior to running the upgrade, you must complete [deployment of Azure App Service on Azure Stack Hub in an offline environment](azure-stack-app-service-deploy-offline.md). 
+> Prior to running the upgrade, you must complete [deployment of Azure App Service on Azure Stack Hub in an disconnected environment](azure-stack-app-service-deploy-offline.md). 
 
 ## Run the App Service resource provider installer
 

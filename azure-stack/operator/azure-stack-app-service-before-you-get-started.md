@@ -14,8 +14,9 @@ ms.lastreviewed: 04/13/2019
 
 ---
 
-
 # Prerequisites for deploying App Service on Azure Stack Hub
+<!-- TODO: remove these once the anchors are resolved - here only to suppress build warnings -->
+## Get certificates
 
 Before you deploy Azure App Service on Azure Stack Hub, you must complete the prerequisite steps in this article.
 
