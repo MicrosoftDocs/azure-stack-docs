@@ -4,7 +4,7 @@ description: This how-to article focuses on why cluster validation is important,
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 4/14/2020
+ms.date: 4/15/2020
 ---
 
 # Validate an Azure Stack HCI cluster
@@ -53,9 +53,11 @@ On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE
     - Host or server cluster name.
     - Virtual switch name.
     - Network adapter names.
-    - Priority Flow Control (PFC) and Enhanced Transmission Selection (ETS) settings. 
+    - Priority Flow Control (PFC) and Enhanced Transmission Selection (ETS) settings.
 - An internet connection to download the tool module in Windows Powershell from Microsoft.
 <!---Where/how does user connect to MS network to get tool? Use Jan's video instruction to add useful info to steps. Update prereqs with details from video/screenshots. Use screenshots that require config/mulitple settings--->
+
+<!---Should we add Jan's disclaimer in a note? Or maybe include the video link after each procedure that shows the disclaimer?--->
 
 ### Install and run the Validate-DCB tool
 To install and run the Validate-DCB tool:
@@ -77,7 +79,7 @@ To install and run the Validate-DCB tool:
     :::image type="content" source="../media/validate/adapters.png" alt-text="The Adapters page of the Validate-DCB configuration wizard":::
 
     > [!IMPORTANT]
-    > - To learn more about how SR-IOV improves network performance, see [Overview of Single Root I/O Virtualization (SR-IOV)](https://docs.microsoft.com/en-us/windows-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-). 
+    > - To learn more about how SR-IOV improves network performance, see [Overview of Single Root I/O Virtualization (SR-IOV)](https://docs.microsoft.com/windows-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-). 
     > - To learn more about how jumbo frames increase Ethernet and network processing efficiency, see the [Jumbo frame](https://en.wikipedia.org/wiki/Jumbo_frame) wiki.
 
     <!---Many users will need help on how to configure stuff like the jumbo frame size, R/RoCE Max Frame Size, whether to enable vSR-IOV. This is absolutely stuff that we can cover in the doc, but John might need help figuring out what to say if the videos don't cover them.--->
@@ -95,13 +97,35 @@ To install and run the Validate-DCB tool:
 
     :::image type="content" source="../media/validate/save-and-deploy.png" alt-text="The Save and Deploy page of the Validate-DCB configuration wizard":::
 
-### Review results
-To review your results from the Validate-DCB tool:
+### Review results and fix errors
+The Validate-DCB tool produces results in two units:
+1. [Global Unit] results list prerequisites and requirements to run the modal tests.
+1. [Modal Unit] results provide feedback on each cluster host configuration and best practices.
 
-1. <!---Use Jan's video instruction to add useful info to steps. Use Jan's screenshots that require config/mulitple settings--->
+The following example shows successful scan results of a single server for all prerequisites and modal unit tests by indicating a Failed Count of 0.
 
-### Resolve errors
-To learn about resolving errors that the Validate-DCB tool identifies, watch a quick video about how to fix errors.
+    :::image type="content" source="../media/validate/global-unit-and-modal-unit-results.png" alt-text="Validate-DCB Global unit and Modal unit test results":::
+
+This following example identifies a Jumbo Packet error from vNIC SMB02 and how to fix it: 
+1. The results of the Validate-DCB tool scans show a Failed Count error of 1.
+
+    :::image type="content" source="../media/validate/failed-count-error-1.png" alt-text="Validate-DCB tool scan results showing a a Failed Count error of 1":::
+
+1. Scrolling back through results shows an error in red indicating that the Jumbo Packet for vSwitch1 is set at the default size of 1514, but should be set to 9014.
+
+    :::image type="content" source="../media/validate/jumbo-packet-setting-error.png" alt-text="Validate-DCB tool scan result showing a jumbo packet size setting error":::
+
+1. Reviewing the **Advanced** properties for vNIC SMB02 on Host S046036 in the advanced properties of the SMB02 shows that the Jumbo Packet is set to the default of **Disabled**.
+
+    :::image type="content" source="../media/validate/hyper-v-advanced-properties-jumbo-packet-setting.png" alt-text="The Server host's Hyper-V Advanced properties Jumbo Packet setting":::
+
+1. Fixing the error requires enabling the Jumbo Packet feature and changing its size to 9014 bytes. Running the scan again on host S046036 confirms this change by returning a Failed Count of 0.
+
+    :::image type="content" source="../media/validate/jumbo-packet-error-fix-confirmation.png" alt-text="Validate-DCB scan results confirming that the Server host's Jumbo Packet setting is fixed":::
+
+<!---Need screenshot from Jan for this step without numbers--->
+
+To learn more about resolving errors that the Validate-DCB tool identifies, watch a quick video.
 
 > [!VIDEO https://www.youtube.com/embed/cC1uACvhPBs]
 
