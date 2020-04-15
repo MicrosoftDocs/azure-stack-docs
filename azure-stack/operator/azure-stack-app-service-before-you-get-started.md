@@ -394,13 +394,14 @@ Azure App Service on Azure Stack Hub requires items to be [downloaded from the A
 
 <!-- Connected --->
 ::: zone pivot="state-connected"
->![IMPORTANT]
+> [!IMPORTANT]
 > Windows Server Core is not a supported platform image for use with Azure App Service on Azure Stack Hub.
 >
 > Do not use evaluation images for production deployments.
 >
 1. The latest version of Windows Server 2016 Datacenter virtual machine image.
 ::: zone-end
+
 ::: zone pivot="state-disconnected"
 <!-- Disconnected --->
 1. Operators are required to provide a Windows Server 2016 Datacenter Full virtual machine image with Microsoft.Net 3.5.1 SP1 activated.  Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 be activated on the image used for deployment. Marketplace-syndicated Windows Server 2016 images don't have this feature enabled and in disconnected environments are unable to reach Microsoft Update to download the packages to install via DISM. Therefore, you must create and use a Windows Server 2016 image with this feature pre-enabled with disconnected deployments.
@@ -413,6 +414,7 @@ See (Add a custom VM image to Azure Stack Hub)[azure-stack-add-vm-image.md] for 
    Version = Specify the "latest" version
 
 ::: zone-end
+
 <!-- For All --> 
 1. Custom Script Extension v1.9.1 or greater. This is a virtual machine extension.
 
