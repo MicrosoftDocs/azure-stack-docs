@@ -325,16 +325,6 @@
       "source_path": "azure-stack/operator/azure-stack-hci-overview.md", 
       "redirect_url": "/azure-stack/hci/overview", 
       "redirect_document_id": true 
-      },
-    { 
-      "source_path": "azure-stack/operator/migrate-azurerm-az.md", 
-      "redirect_url": "/azure-stack/user/azure-stack-powershell-overview", 
-      "redirect_document_id": true 
-      },
-    { 
-      "source_path": "azure-stack/operator/powershell-install-az-module.md", 
-      "redirect_url": "/azure-stack/operator/azure-stack-powershell-configure-admin", 
-      "redirect_document_id": true 
-      } 
+      }
   ]
 }
