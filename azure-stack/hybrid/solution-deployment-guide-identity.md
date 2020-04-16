@@ -50,7 +50,7 @@ If you deployed Azure Stack Hub with AD FS, you can use PowerShell to create a s
 
 The [Azure Stack Hub API](../user/azure-stack-rest-api-use.md)  solution walks you through the process of retrieving a token to access the Azure Stack Hub API.
 
-## Connect to Azure Stack Hub using Powershell
+## Connect to Azure Stack Hub using PowerShell
 
 The quickstart [to get up and running with PowerShell in Azure Stack Hub](../operator/azure-stack-powershell-install.md)
 walks you through the steps needed to install Azure PowerShell and connect to your Azure Stack Hub installation.
