@@ -4,7 +4,7 @@ description: This how-to article focuses on why cluster validation is important,
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 4/15/2020
+ms.date: 4/16/2020
 ---
 
 # Validate an Azure Stack HCI cluster
@@ -104,18 +104,18 @@ The Validate-DCB tool produces results in two units:
 
 The following example shows successful scan results of a single server for all prerequisites and modal unit tests by indicating a Failed Count of 0.
 
-    :::image type="content" source="../media/validate/global-unit-and-modal-unit-results.png" alt-text="Validate-DCB Global unit and Modal unit test results":::
+:::image type="content" source="../media/validate/global-unit-and-modal-unit-results.png" alt-text="Validate-DCB Global unit and Modal unit test results":::
 
-This following example identifies a Jumbo Packet error from vNIC SMB02 and how to fix it: 
+This example identifies a Jumbo Packet error from vNIC SMB02 and how to fix it: 
 1. The results of the Validate-DCB tool scans show a Failed Count error of 1.
 
     :::image type="content" source="../media/validate/failed-count-error-1.png" alt-text="Validate-DCB tool scan results showing a a Failed Count error of 1":::
 
-1. Scrolling back through results shows an error in red indicating that the Jumbo Packet for vSwitch1 is set at the default size of 1514, but should be set to 9014.
+1. Scrolling back through the results shows an error in red indicating that the Jumbo Packet for vNIC SMB02 on Host S046036 is set at the default size of 1514, but should be set to 9014.
 
     :::image type="content" source="../media/validate/jumbo-packet-setting-error.png" alt-text="Validate-DCB tool scan result showing a jumbo packet size setting error":::
 
-1. Reviewing the **Advanced** properties for vNIC SMB02 on Host S046036 in the advanced properties of the SMB02 shows that the Jumbo Packet is set to the default of **Disabled**.
+1. Reviewing the **Advanced** properties of vNIC SMB02 on Host S046036 shows that the Jumbo Packet is set to the default of **Disabled**.
 
     :::image type="content" source="../media/validate/hyper-v-advanced-properties-jumbo-packet-setting.png" alt-text="The Server host's Hyper-V Advanced properties Jumbo Packet setting":::
 
@@ -123,7 +123,7 @@ This following example identifies a Jumbo Packet error from vNIC SMB02 and how t
 
     :::image type="content" source="../media/validate/jumbo-packet-error-fix-confirmation.png" alt-text="Validate-DCB scan results confirming that the Server host's Jumbo Packet setting is fixed":::
 
-<!---Need screenshot from Jan for this step without numbers--->
+<!---Need screenshot from Jan for final step without numbers--->
 
 To learn more about resolving errors that the Validate-DCB tool identifies, watch a quick video.
 
