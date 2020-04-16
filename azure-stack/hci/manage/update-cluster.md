@@ -49,9 +49,9 @@ Install-WindowsFeature –Name RSAT-Clustering-PowerShell -ComputerName Server1
 
 Cluster-Aware Updating can coordinate the complete cluster updating operation in two modes:  
   
--   **Self-updating mode** For this mode, the CAU clustered role is configured as a workload on the failover cluster that is to be updated, and an associated update schedule is defined. The cluster updates itself at scheduled times by using a default or custom Updating Run profile. During the Updating Run, the CAU Update Coordinator process starts on the node that currently owns the CAU clustered role, and the process sequentially performs updates on each cluster node. To update the current cluster node, the CAU clustered role fails over to another cluster node, and a new Update Coordinator process on that node assumes control of the Updating Run. In self-updating mode, CAU can update the failover cluster by using a fully automated, end-to-end updating process. An administrator can also trigger updates on-demand in this mode, or simply use the remote-updating approach if desired. In self-updating mode, an administrator can get summary information about an Updating Run in progress by connecting to the cluster and running the **Get-CauRun** cmdlet.  
+-   **Self-updating mode** For this mode, the CAU clustered role is configured as a workload on the failover cluster that is to be updated, and an associated update schedule is defined. The cluster updates itself at scheduled times by using a default or custom updating run profile. During the updating run, the CAU Update Coordinator process starts on the node that currently owns the CAU clustered role, and the process sequentially performs updates on each cluster node. To update the current cluster node, the CAU clustered role fails over to another cluster node, and a new Update Coordinator process on that node assumes control of the updating run. In self-updating mode, CAU can update the failover cluster by using a fully automated, end-to-end updating process. An administrator can also trigger updates on-demand in this mode, or simply use the remote-updating approach if desired. 
   
--   **Remote updating mode** For this mode, a remote computer (usually a Windows 10 PC) that has network connectivity to the failover cluster but is not a member of the failover cluster is configured with the Failover Clustering Tools. From the remote computer, called the Update Coordinator, the administrator triggers an on-demand Updating Run by using a default or custom Updating Run profile. Remote updating mode is useful for monitoring real-time progress during the Updating Run, and for clusters that are running on Server Core installations.  
+-   **Remote updating mode** For this mode, a remote computer (usually a Windows 10 PC) that has network connectivity to the failover cluster but is not a member of the failover cluster is configured with the Failover Clustering Tools. From the remote computer, called the Update Coordinator, the administrator triggers an on-demand updating run by using a default or custom updating run profile. Remote updating mode is useful for monitoring real-time progress during the updating run, and for clusters that are running on Server Core installations.  
 
 
    > [!NOTE]
@@ -106,6 +106,31 @@ The updating run process includes the following:
 - Moving the clustered roles back to the original nodes
 
 The updating run process also includes ensuring that quorum is maintained, checking for additional updates that can only be installed after the initial set of updates are installed, and saving a report of the actions taken.
+
+## Check on the status of an updating run
+
+An administrator can get summary information about an updating run in progress by running the **Get-CauRun** cmdlet:
+
+```PowerShell
+Get-CauRun -ClusterName Cluster1
+
+RunId                   : 834dd11e-584b-41f2-8d22-4c9c0471dbad 
+RunStartTime            : 10/13/2019 1:35:39 PM 
+CurrentOrchestrator     : NODE1 
+NodeStatusNotifications : { 
+Node      : NODE1 
+Status    : Waiting 
+Timestamp : 10/13/2019 1:35:49 PM 
+} 
+NodeResults             : { 
+Node                     : NODE2 
+Status                   : Succeeded 
+ErrorRecordData          : 
+NumberOfSucceededUpdates : 0 
+NumberOfFailedUpdates    : 0 
+InstallResults           : Microsoft.ClusterAwareUpdating.UpdateInstallResult[] 
+}
+```
 
 ## Next steps
 
