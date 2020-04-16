@@ -102,11 +102,11 @@ The Validate-DCB tool produces results in two units:
 1. [Global Unit] results list prerequisites and requirements to run the modal tests.
 1. [Modal Unit] results provide feedback on each cluster host configuration and best practices.
 
-The following example shows successful scan results of a single server for all prerequisites and modal unit tests by indicating a Failed Count of 0.
+This example shows successful scan results of a single server for all prerequisites and modal unit tests by indicating a Failed Count of 0.
 
 :::image type="content" source="../media/validate/global-unit-and-modal-unit-results.png" alt-text="Validate-DCB Global unit and Modal unit test results":::
 
-This example identifies a Jumbo Packet error from vNIC SMB02 and how to fix it: 
+The following steps show how to identify a Jumbo Packet error from vNIC SMB02 and fix it: 
 1. The results of the Validate-DCB tool scans show a Failed Count error of 1.
 
     :::image type="content" source="../media/validate/failed-count-error-1.png" alt-text="Validate-DCB tool scan results showing a a Failed Count error of 1":::
@@ -167,8 +167,14 @@ Select the **Successfully validated cluster** notice, and then select **Go to Fa
 > [!NOTE]
 > The server cluster validation process may take some time to complete. Don't switch to another tool in Windows Admin Center while the process is running. In the **Notifications** pane, a status bar below your **Validate cluster** notice indicates when the process is done.
 
-You can also use Windows PowerShell to view your cluster validation report.
-1. <!---Detial PS way to do this. See Jason's team notes on this--->
+You can also use Windows PowerShell to run validation tests on your server cluster and view the results. You can run tests both before and after a cluster is set up.
+
+To run a validation test on a server cluster, issue the **Test-Cluster** <clustername> PowerShell cmdlet from your management PC, or run it directly on the cluster without the -ComputerName parameter:
+
+```PowerShell
+Test-Cluster -ComputerName Server1
+```
+<!---Detail PS way to do this. See Jason's team notes on this--->
 
 ### Disable CredSSP
 After your server cluster is successfully validated, you'll need to disable the Credential Security Support Provider (CredSSP) protocol on each server for security purposes. For more information, see [CVE-2018-0886](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-0886).
