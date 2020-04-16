@@ -8,7 +8,7 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: As an Azure Stack Hub user, I want to configure hybrid cloud identity for Azure and Azure Stack Hub apps so my hybrid apps have hybrid identity architecture.
+# Intent: As an Azure Stack Hub user, I want to configure hybrid cloud identity for Azure and Azure Stack Hub apps so my hybrid apps have a hybrid identity architecture.
 # Keyword: Notdone: keyword noun phrase
 
 ---

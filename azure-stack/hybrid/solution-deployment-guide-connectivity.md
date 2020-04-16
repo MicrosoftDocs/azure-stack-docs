@@ -112,7 +112,7 @@ To create a vNet in Azure:
 
 To create a vNet in Azure Stack Hub:
 
-1. Repeat the above steps (1-4) using the Azure Stack Hub **tenant portal**.
+1. Repeat the steps above (1-4) using the Azure Stack Hub **tenant portal**.
 
 ## Add a gateway subnet
 

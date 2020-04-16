@@ -383,7 +383,7 @@ Create a Traffic Manager profile in Azure and then configure endpoints to enable
    - For **Routing method**, select the **Weighted**.
    - For **Subscription**, select the subscription you want to create  this profile in.
    - In **Resource Group**, create a new resource group for this profile.
-   - In **Resource group location**, select the location of the resource group. This setting refers to the location of the resource group and has no affect on the Traffic Manager profile that's deployed globally.
+   - In **Resource group location**, select the location of the resource group. This setting refers to the location of the resource group and has no impact on the Traffic Manager profile that's deployed globally.
 
 4. Select **Create**.
 
