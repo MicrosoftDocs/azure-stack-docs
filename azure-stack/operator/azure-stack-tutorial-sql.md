@@ -63,11 +63,11 @@ Use the steps in this section to deploy the SQL Server AlwaysOn availability gro
 
 2. Select **\+** **Create a resource** > **Custom**, and then **Template deployment**.
 
-   ![Custom template deployment in Azure Stack Hub administrator portal](media/azure-stack-tutorial-sqlrp/1.png)
+   ![Custom template deployment in Azure Stack Hub administrator portal](media/azure-stack-tutorial-sqlrp/aoag-template-deployment-1.png)
 
 3. On the **Custom deployment** blade, select **Edit template** > **Quickstart template** and then use the drop-down list of available custom templates to select the **sql-2016-alwayson** template. Select **OK**, then **Save**.
 
-   [![Edit template in Azure Stack Hub administrator portal](media/azure-stack-tutorial-sqlrp/2-sm.PNG "Select quickstart template")](media/azure-stack-tutorial-sqlrp/2-lg.PNG#lightbox)
+   [![Edit template in Azure Stack Hub administrator portal](media/azure-stack-tutorial-sqlrp/aoag-template-deployment-2.png "Select quickstart template")](media/azure-stack-tutorial-sqlrp/aoag-template-deployment-2.png#lightbox)
 
 4. On the **Custom deployment** blade, select **Edit parameters** and review the default values. Modify the values as necessary to provide all required parameter information and then select **OK**.
 
@@ -75,13 +75,13 @@ Use the steps in this section to deploy the SQL Server AlwaysOn availability gro
     - Provide complex passwords for the ADMINPASSWORD, SQLSERVERSERVICEACCOUNTPASSWORD, and SQLAUTHPASSWORD parameters.
     - Enter the DNS Suffix for reverse lookup in all lowercase letters for the DNSSUFFIX parameter (**azurestack.external** for ASDK installations).
     
-   [![Edit parameters in Azure Stack Hub administrator portal](media/azure-stack-tutorial-sqlrp/3-sm.PNG "Edit custom deployment parameters")](media/azure-stack-tutorial-sqlrp/3-lg.PNG#lightbox)
+   [![Edit parameters in Azure Stack Hub administrator portal](media/azure-stack-tutorial-sqlrp/aoag-template-deployment-3.png "Edit custom deployment parameters")](media/azure-stack-tutorial-sqlrp/aoag-template-deployment-3.png#lightbox)
 
 5. On the **Custom deployment** blade, choose the subscription to use and create a new resource group or select an existing resource group for the custom deployment.
 
     Next, select the resource group location (**local** for ASDK installations) and then click **Create**. The custom deployment settings will be validated and then the deployment will start.
 
-    [![Choose subscription in Azure Stack Hub administrator portal](media/azure-stack-tutorial-sqlrp/4-sm.PNG "Create custom deployment")](media/azure-stack-tutorial-sqlrp/4-lg.PNG#lightbox)
+    [![Choose subscription in Azure Stack Hub administrator portal](media/azure-stack-tutorial-sqlrp/aoag-template-deployment-4.png "Create custom deployment")](media/azure-stack-tutorial-sqlrp/aoag-template-deployment-4.png#lightbox)
 
 6. In the user portal, select **Resource groups** and then the name of the resource group you created for the custom deployment (**resource-group** for this example). View the status of the deployment to ensure all deployments have completed successfully.
     
