@@ -9,7 +9,7 @@ ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
 # Intent: As an Azure Stack Hub user, I want to direct traffic to specific endpoints with a geo-distributed app solution using Azure and Azure Stack Hub so I can ensure information is routed to endpoints based on regional requirements.
-# Keyword: direct traffic geo-distributed app azure stack hub
+# Keyword: geo-distributed traffic app azure stack hub
 
 ---
 
@@ -289,7 +289,7 @@ The following screenshot is an example of a DNS records page:
 
 2. Add a CNAME record to map a subdomain to the app's default hostname.
 
-   For the www\.northwindcloud.com domain example, add a CNAME record that maps the name to <app\_name>.azurewebsites.net.
+   For the www\.northwindcloud.com domain example, add a CNAME record that maps the name to `<app_name>.azurewebsites.net`.
 
 After adding the CNAME, the DNS records page looks like the following example:
 
@@ -572,7 +572,7 @@ The app allows [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 by
 
 ### Add Traffic Manager endpoints
 
-1. In the portals search bar, search for the **Traffic Manager profile** name created in the preceding section and select the traffic manager profile in the displayed results.
+1. In the portal search bar, search for the **Traffic Manager profile** name created in the preceding section and select the traffic manager profile in the displayed results.
 
 2. In **Traffic Manager profile**, in the **Settings** section, select **Endpoints**.
 
@@ -596,13 +596,13 @@ The app allows [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 by
 
 12. Adding the Azure Endpoint:
 
-    1.  For **Type**, select **Azure endpoint**.
+    1. For **Type**, select **Azure endpoint**.
 
-    2.  Provide a **Name** for the endpoint.
+    2. Provide a **Name** for the endpoint.
 
-    3.  For **Target resource type**, select **App Service**.
+    3. For **Target resource type**, select **App Service**.
 
-    4.  For **Target resource**, select **Choose an app service** to show the listing of the Web Apps under the same subscription. In **Resource**, pick the App service used as the first endpoint.
+    4. For **Target resource**, select **Choose an app service** to show the listing of the Web Apps under the same subscription. In **Resource**, pick the App service used as the first endpoint.
 
 13. Under Geo-mapping, select a region/continent where the resource is located. For example, **North America/Central America/Caribbean.**
 
@@ -615,11 +615,11 @@ The app allows [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 by
     > [!Note]  
     >  Create at least one endpoint with a geographic scope of All (World) to serve as the default endpoint for the resource.
 
-1. When the addition of both endpoints is complete, they're displayed in **Traffic Manager profile** along with their monitoring status as **Online**.
+17. When the addition of both endpoints is complete, they're displayed in **Traffic Manager profile** along with their monitoring status as **Online**.
 
     ![Traffic Manager profile endpoint status](media/solution-deployment-guide-geo-distributed/image46.png)
 
-**Global Enterprise relies on Azure Geo-Distribution capabilities**
+#### Global Enterprise relies on Azure geo-distribution capabilities
 
 Directing data traffic via Azure Traffic Manager and geography-specific endpoints enables global enterprises to adhere to regional regulations and keep data compliant and secure, which is crucial to the success of local and remote business locations.
 
