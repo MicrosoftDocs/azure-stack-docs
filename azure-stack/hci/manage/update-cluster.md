@@ -4,7 +4,7 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 04/15/2020
+ms.date: 04/16/2020
 ---
 
 # Update Azure Stack HCI clusters
@@ -67,17 +67,45 @@ Get-CauClusterRole -ClusterName Cluster1
 
 If the role is not yet configured on the cluster, you will see the following error message:
 
-**Get-CauClusterRole : The current cluster is not configured with a Cluster-Aware Updating clustered role.**
+Get-CauClusterRole : The current cluster is not configured with a Cluster-Aware Updating clustered role.
 
-To add the CAU cluster role for self-updating mode using PowerShell, use the **Add-CauClusterRole** cmdlet:
+To add the CAU cluster role for self-updating mode using PowerShell, use the **Add-CauClusterRole** cmdlet and supply the appropriate [parameters](/powershell/module/clusterawareupdating/add-cauclusterrole?view=win10-ps#parameters), as in the following example:
 
 ```PowerShell
 Add-CauClusterRole -ClusterName Cluster1 -MaxFailedNodes 0 -RequireAllNodesOnline -EnableFirewallRules -VirtualComputerObjectName Cluster1-CAU -Force -CauPluginName Microsoft.WindowsUpdatePlugin -MaxRetriesPerNode 3 -CauPluginArguments @{ 'IncludeRecommendedUpdates' = 'False' } -StartDate "3/2/2020 3:00:00 AM" -DaysOfWeek 4 -WeeksOfMonth @(3) -verbose
 ```
 
-## Scan cluster nodes for updates
+   > [!NOTE]
+   > The above command must be run from a management PC or domain controller.
 
+## Scan cluster for applicable updates
 
+You can use the **Invoke-CAUScan** cmdlet to scan cluster nodes for applicable updates and get a list of the initial set of updates that are applied to each node in a specified cluster:
+
+```PowerShell
+Invoke-CauScan -ClusterName Cluster1 -CauPluginName Microsoft.WindowsUpdatePlugin -Verbose
+```
+
+Generation of the list can take a few minutes to complete. The preview list includes only an initial set of updates; it does not include updates that might become applicable after the initial updates are installed.
+
+## Scan and install updates
+
+To scan cluster nodes for applicable updates and perform a full updating run on the specified cluster, use the **Invoke-CAURun** cmdlet:
+
+```PowerShell
+Invoke-CauRun -ClusterName Cluster1 -CauPluginName Microsoft.WindowsUpdatePlugin -MaxFailedNodes 1 -MaxRetriesPerNode 3 -RequireAllNodesOnline -Force
+```
+
+This command performs a scan and a full updating run on the cluster named Cluster1. This cmdlet uses the Microsoft.WindowsUpdatePlugin plug-in and requires that all cluster nodes be online before the running this cmdlet. In addition, this cmdlet allows no more than three retries per node before marking the node as failed, and allows no more than one node to fail before marking the entire updating run as failed. Because the command specifies the Force parameter, the cmdlet runs without displaying confirmation prompts.
+
+The updating run process includes the following: 
+- Scanning for and downloading applicable updates on each cluster node
+- Moving currently running clustered roles off each cluster node
+- Installing the updates on each cluster node
+- Restarting cluster nodes if required by the installed updates
+- Moving the clustered roles back to the original nodes
+
+The updating run process also includes ensuring that quorum is maintained, checking for additional updates that can only be installed after the initial set of updates are installed, and saving a report of the actions taken.
 
 ## Next steps
 
