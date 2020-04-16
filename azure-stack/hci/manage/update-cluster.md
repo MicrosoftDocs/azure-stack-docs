@@ -1,6 +1,6 @@
 ---
 title: Update Azure Stack HCI clusters
-description: How to apply operating system, firmware, and application updates to Azure Stack HCI using Windows Admin Center and PowerShell.
+description: How to apply operating system and firmware updates to Azure Stack HCI using Windows Admin Center and PowerShell.
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
@@ -49,7 +49,7 @@ Install-WindowsFeature –Name RSAT-Clustering-PowerShell -ComputerName Server1
 
 Cluster-Aware Updating can coordinate the complete cluster updating operation in two modes:  
   
--   **Self-updating mode** For this mode, the CAU clustered role is configured as a workload on the failover cluster that is to be updated, and an associated update schedule is defined. The cluster updates itself at scheduled times by using a default or custom Updating Run profile. During the Updating Run, the CAU Update Coordinator process starts on the node that currently owns the CAU clustered role, and the process sequentially performs updates on each cluster node. To update the current cluster node, the CAU clustered role fails over to another cluster node, and a new Update Coordinator process on that node assumes control of the Updating Run. In self-updating mode, CAU can update the failover cluster by using a fully automated, end-to-end updating process. An administrator can also trigger updates on-demand in this mode, or simply use the remote-updating approach if desired. In self-updating mode, an administrator can get summary information about an Updating Run in progress by connecting to the cluster and running the **Get-CauRun** Windows PowerShell cmdlet.  
+-   **Self-updating mode** For this mode, the CAU clustered role is configured as a workload on the failover cluster that is to be updated, and an associated update schedule is defined. The cluster updates itself at scheduled times by using a default or custom Updating Run profile. During the Updating Run, the CAU Update Coordinator process starts on the node that currently owns the CAU clustered role, and the process sequentially performs updates on each cluster node. To update the current cluster node, the CAU clustered role fails over to another cluster node, and a new Update Coordinator process on that node assumes control of the Updating Run. In self-updating mode, CAU can update the failover cluster by using a fully automated, end-to-end updating process. An administrator can also trigger updates on-demand in this mode, or simply use the remote-updating approach if desired. In self-updating mode, an administrator can get summary information about an Updating Run in progress by connecting to the cluster and running the **Get-CauRun** cmdlet.  
   
 -   **Remote updating mode** For this mode, a remote computer (usually a Windows 10 PC) that has network connectivity to the failover cluster but is not a member of the failover cluster is configured with the Failover Clustering Tools. From the remote computer, called the Update Coordinator, the administrator triggers an on-demand Updating Run by using a default or custom Updating Run profile. Remote updating mode is useful for monitoring real-time progress during the Updating Run, and for clusters that are running on Server Core installations.  
 
@@ -57,7 +57,27 @@ Cluster-Aware Updating can coordinate the complete cluster updating operation in
    > [!NOTE]
    > Starting with Windows 10 October 2018 Update, RSAT is included as a set of "Features on Demand" right from Windows 10. Simply go to Settings > Apps > Apps & features > Optional features > Add a feature > RSAT: Failover Clustering Tools. To see installation progress, click the Back button to view status on the "Manage optional features" page. The installed feature will persist across Windows 10 version upgrades. To install RSAT for Windows 10 prior to the October 2018 Update, [download an RSAT package](https://www.microsoft.com/en-us/download/details.aspx?id=45520).
 
-### Create CAU role to configure self-updating
+### Add CAU cluster role to configure self-updating
+
+The **Get-CauClusterRole** cmdlet displays the configuration properties of the CAU cluster role on the specified cluster.
+
+```PowerShell
+Get-CauClusterRole -ClusterName Cluster1
+```
+
+If the role is not yet configured on the cluster, you will see the following error message:
+
+**Get-CauClusterRole : The current cluster is not configured with a Cluster-Aware Updating clustered role.**
+
+To add the CAU cluster role for self-updating mode using PowerShell, use the **Add-CauClusterRole** cmdlet:
+
+```PowerShell
+Add-CauClusterRole -ClusterName Cluster1 -MaxFailedNodes 0 -RequireAllNodesOnline -EnableFirewallRules -VirtualComputerObjectName Cluster1-CAU -Force -CauPluginName Microsoft.WindowsUpdatePlugin -MaxRetriesPerNode 3 -CauPluginArguments @{ 'IncludeRecommendedUpdates' = 'False' } -StartDate "3/2/2020 3:00:00 AM" -DaysOfWeek 4 -WeeksOfMonth @(3) -verbose
+```
+
+## Scan cluster nodes for updates
+
+
 
 ## Next steps
 
