@@ -136,6 +136,10 @@
       items:
       - name: Install PowerShell RM
         href: azure-stack-powershell-install.md
+      - name: Install PowerShell Az
+        href: powershell-install-az-module.md
+      - name: Migrate PowerShell AzureRM to Az
+        href: migrate-azurerm-az.md
       - name: Download tools
         href: azure-stack-powershell-download.md
       - name: Connect with PowerShell
@@ -308,6 +312,8 @@
         href: app-service-back-up.md
       - name: Recover App Service
         href: app-service-recover.md
+      - name: Remove App Service
+        href: app-service-remove.md
       - name: App Service billing FAQ
         href: app-service-billing-faq.md
       - name: App Service on Azure Stack Hub release notes
