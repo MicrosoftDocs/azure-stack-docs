@@ -115,7 +115,7 @@ Next, set up the Custom Vision AI Dev Kit as shown in the [Vision AI DevKit quic
 
 Use the Porter CLI to generate a credential set, then deploy the camera app.
 
-1. Porter will generate a set of credentials that'll automate deployment of the app. Before running the credential generation command, be sure to have the following available:
+1. Porter will generate a set of credentials that will automate deployment of the app. Before running the credential generation command, be sure to have the following available:
 
     - A service principal for accessing Azure resources, including the service principal ID, key, and tenant DNS.
     - The subscription ID for your Azure subscription.
