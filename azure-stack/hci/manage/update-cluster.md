@@ -4,7 +4,7 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 04/16/2020
+ms.date: 04/17/2020
 ---
 
 # Update Azure Stack HCI clusters
@@ -47,15 +47,15 @@ Install-WindowsFeature –Name RSAT-Clustering-PowerShell -ComputerName Server1
 
 ### Choose an updating mode
 
-Cluster-Aware Updating can coordinate the complete cluster updating operation in two modes:  
+Cluster-Aware Updating (CAU) can coordinate the complete cluster updating operation in two modes:  
   
 -   **Self-updating mode** For this mode, the CAU clustered role is configured as a workload on the failover cluster that is to be updated, and an associated update schedule is defined. The cluster updates itself at scheduled times by using a default or custom updating run profile. During the updating run, the CAU Update Coordinator process starts on the node that currently owns the CAU clustered role, and the process sequentially performs updates on each cluster node. To update the current cluster node, the CAU clustered role fails over to another cluster node, and a new Update Coordinator process on that node assumes control of the updating run. In self-updating mode, CAU can update the failover cluster by using a fully automated, end-to-end updating process. An administrator can also trigger updates on-demand in this mode, or simply use the remote-updating approach if desired. 
   
--   **Remote updating mode** For this mode, a remote computer (usually a Windows 10 PC) that has network connectivity to the failover cluster but is not a member of the failover cluster is configured with the Failover Clustering Tools. From the remote computer, called the Update Coordinator, the administrator triggers an on-demand updating run by using a default or custom updating run profile. Remote updating mode is useful for monitoring real-time progress during the updating run, and for clusters that are running on Server Core installations.  
+-   **Remote updating mode** For this mode, a remote management computer (usually a Windows 10 PC) that has network connectivity to the failover cluster but is not a member of the failover cluster is configured with the Failover Clustering Tools. From the remote management computer, called the Update Coordinator, the administrator triggers an on-demand updating run by using a default or custom updating run profile. Remote updating mode is useful for monitoring real-time progress during the updating run, and for clusters that are running on Server Core installations.  
 
 
    > [!NOTE]
-   > Starting with Windows 10 October 2018 Update, RSAT is included as a set of "Features on Demand" right from Windows 10. Simply go to **Settings > Apps > Apps & features > Optional features > Add a feature > RSAT: Failover Clustering Tools**. To see installation progress, click the Back button to view status on the "Manage optional features" page. The installed feature will persist across Windows 10 version upgrades. To install RSAT for Windows 10 prior to the October 2018 Update, [download an RSAT package](https://www.microsoft.com/en-us/download/details.aspx?id=45520).
+   > Starting with Windows 10 October 2018 Update, RSAT is included as a set of "Features on Demand" right from Windows 10. Simply go to **Settings > Apps > Apps & features > Optional features > Add a feature > RSAT: Failover Clustering Tools**, and select **Install**. To see installation progress, click the Back button to view status on the "Manage optional features" page. The installed feature will persist across Windows 10 version upgrades. To install RSAT for Windows 10 prior to the October 2018 Update, [download an RSAT package](https://www.microsoft.com/en-us/download/details.aspx?id=45520).
 
 ### Add CAU cluster role to configure self-updating
 
@@ -96,7 +96,7 @@ To scan cluster nodes for applicable updates and perform a full updating run on 
 Invoke-CauRun -ClusterName Cluster1 -CauPluginName Microsoft.WindowsUpdatePlugin -MaxFailedNodes 1 -MaxRetriesPerNode 3 -RequireAllNodesOnline -Force
 ```
 
-This command performs a scan and a full updating run on the cluster named Cluster1. This cmdlet uses the Microsoft.WindowsUpdatePlugin plug-in and requires that all cluster nodes be online before the running this cmdlet. In addition, this cmdlet allows no more than three retries per node before marking the node as failed, and allows no more than one node to fail before marking the entire updating run as failed. Because the command specifies the Force parameter, the cmdlet runs without displaying confirmation prompts.
+This command performs a scan and a full updating run on the cluster named Cluster1. This cmdlet uses the Microsoft.WindowsUpdatePlugin plug-in and requires that all cluster nodes be online before running this cmdlet. In addition, this cmdlet allows no more than three retries per node before marking the node as failed, and allows no more than one node to fail before marking the entire updating run as failed. Because the command specifies the Force parameter, the cmdlet runs without displaying confirmation prompts.
 
 The updating run process includes the following: 
 - Scanning for and downloading applicable updates on each cluster node
