@@ -29,7 +29,7 @@ To remove Azure App Service from Azure Stack Hub, follow this one step.
 
 ## Remove databases and file share content
 
-These steps only need to be completed if your SQL Server and/or File Server is deployed off-stamp or in a different resource group.
+You only need to follow this section if your SQL Server and/or File Server is deployed off-stamp or in a different resource group, otherwise continue to the next section.
 
 ### Remove Databases and Logins
 
