@@ -4,7 +4,7 @@ description: This how-to article focuses on why cluster validation is important,
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 4/16/2020
+ms.date: 4/17/2020
 ---
 
 # Validate an Azure Stack HCI cluster
@@ -106,7 +106,7 @@ This example shows successful scan results of a single server for all prerequisi
 
 :::image type="content" source="../media/validate/global-unit-and-modal-unit-results.png" alt-text="Validate-DCB Global unit and Modal unit test results":::
 
-The following steps show how to identify a Jumbo Packet error from vNIC SMB02 and fix it: 
+The following steps show how to identify a Jumbo Packet error from vNIC SMB02 and fix it:
 1. The results of the Validate-DCB tool scans show a Failed Count error of 1.
 
     :::image type="content" source="../media/validate/failed-count-error-1.png" alt-text="Validate-DCB tool scan results showing a a Failed Count error of 1":::
