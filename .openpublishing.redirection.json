@@ -11,6 +11,26 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-help-and-support-overview.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-help-and-support-overview-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-best-practices-automatic-diagnostic-log-collection.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-help-and-support-overview-tzl",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-diagnostic-log-collection-overview.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview-tzl",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-stack/user/azure-stack-solution-mongodb-ha.md",
       "redirect_url": "/azure-stack/hybrid/solution-deployment-guide-mongodb-ha",
       "redirect_document_id": false
