@@ -312,6 +312,8 @@
         href: app-service-back-up.md
       - name: Recover App Service
         href: app-service-recover.md
+      - name: Remove App Service
+        href: app-service-remove.md
       - name: App Service billing FAQ
         href: app-service-billing-faq.md
       - name: App Service on Azure Stack Hub release notes
