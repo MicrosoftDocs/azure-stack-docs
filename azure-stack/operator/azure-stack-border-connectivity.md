@@ -29,7 +29,7 @@ The Software Load Balancer (SLB) running inside the Azure Stack Hub solution pee
 
 To ensure that user traffic immediately and transparently recovers from failure, the VPC or MLAG configured between the TOR devices allows the use of multi-chassis link aggregation to the hosts and HSRP or VRRP that provides network redundancy for the IP networks.
 
-![BGP routing](media/azure-stack-border-connectivity/bgp-routing.png)
+![BGP routing](media/azure-stack-border-connectivity/bgp-routing.svg)
 
 ## Static routing
 Static routing requires additional configuration to the border devices. It requires more manual intervention and management as well as thorough analysis before any change. Issues caused by a configuration error may take more time to rollback depending on the changes made. This routing method isn't recommended, but it's supported.
@@ -42,7 +42,7 @@ The TOR devices are configured with a static default route sending all traffic t
 
 Static routing applies only to the uplinks between the TOR and border switches. BGP dynamic routing is used inside the rack because it's an essential tool for the SLB and other components and can't be disabled or removed.
 
-![Static routing](media/azure-stack-border-connectivity/static-routing.png)
+![Static routing](media/azure-stack-border-connectivity/static-routing.svg)
 
 <sup>\*</sup> The BMC network is optional after deployment.
 
@@ -58,7 +58,7 @@ If your datacenter requires all traffic to use a proxy, you must configure a *tr
 
 A transparent proxy (also known as an intercepting, inline, or forced proxy) intercepts normal communication at the network layer without requiring any special client configuration. Clients don't need to be aware of the existence of the proxy.
 
-![Transparent proxy](media/azure-stack-border-connectivity/transparent-proxy.png)
+![Transparent proxy](media/azure-stack-border-connectivity/transparent-proxy.svg)
 
 SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-interception) and can lead to service failures when accessing endpoints. The maximum supported timeout to communicate with endpoints required for identity is 60s with 3 retry attempts.
 
