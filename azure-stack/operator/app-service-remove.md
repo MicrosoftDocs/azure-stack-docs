@@ -19,15 +19,15 @@ ms.lastreviewed: 04/17/20207
 > [!Important]
 > This operation will remove all tenant resources, remove the service and quotas from all plans and remove the Azure App Service resource provider in it's entirety.  If you have deployed the App Service Highly Available File Server and SQL Server Quickstart template, these resources will also be removed as they are deployed in the same resource group as Azure App Service on Azure Stack Hub.
 
-To remove Azure App Service from Azure Stack Hub, follow this one simple step.
+To remove Azure App Service from Azure Stack Hub, follow this one step.
 
-1. Delete the Resource Group which holds the Azure App Service on Azure Stack Hub Resources
+1. Delete the Resource Group that holds the Azure App Service on Azure Stack Hub Resources, for example AppService.local
 
 ## Additional steps if SQL Server and File Server is deployed Off stamp or in a different resource group
 
 ### Remove Databases and Logins
 
-1. If you are using SQL Always On, remove the AppService_Hosting and AppService_Metering databases from the Availability Group
+1. If you are using **SQL Server Always On**, remove the **AppService_Hosting** and **AppService_Metering** databases from the Availability Group
 
 1. Execute the following SQL Script to remove the databases and logins
 
