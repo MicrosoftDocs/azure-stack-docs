@@ -31,7 +31,7 @@ To remove Azure App Service from Azure Stack Hub, follow this one step:
 
 You only need to follow this section if your SQL Server and/or File Server is deployed off-stamp or in a different resource group, otherwise continue to the next section.
 
-### Remove Databases and Logins
+### Remove databases and logins
 
 1. If using **SQL Server Always On**, remove the **AppService_Hosting** and **AppService_Metering** databases from the Availability Group:
 
@@ -67,7 +67,7 @@ You only need to follow this section if your SQL Server and/or File Server is de
    --******************************************************************
    ```
 
-### Remove the application file content from the File Server
+### Remove the application file content from the file server
 
 1. Remove the content fileshare from your file server.
 
