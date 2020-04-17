@@ -27,7 +27,7 @@ To remove Azure App Service from Azure Stack Hub, follow this one step.
 
 ### Remove Databases and Logins
 
-1. If you are using **SQL Server Always On**, remove the **AppService_Hosting** and **AppService_Metering** databases from the Availability Group
+1. If using **SQL Server Always On**, remove the **AppService_Hosting** and **AppService_Metering** databases from the Availability Group
 
 1. Execute the following SQL Script to remove the databases and logins
 
