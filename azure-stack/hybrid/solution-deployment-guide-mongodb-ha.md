@@ -37,7 +37,7 @@ In this solution, you'll create a sample environment to:
 
 ## Prerequisites for MongoDB with Azure Stack Hub
 
-- Two connected Azure Stack Hub integrated systems (Azure Stack Hub). This deployment doesn't work on the Azure Stack Development Kit (ASDK). To learn more about Azure Stack Hub, see [What is Azure Stack Hub?](https://azure.microsoft.com/en-us/products/azure-stack/hub/)
+- Two connected Azure Stack Hub integrated systems (Azure Stack Hub). This deployment doesn't work on the Azure Stack Development Kit (ASDK). To learn more about Azure Stack Hub, see [What is Azure Stack Hub?](https://azure.microsoft.com/products/azure-stack/hub/)
   - A tenant subscription on each Azure Stack Hub. 
   - **Make a note of each subscription ID and the Azure Resource Manager endpoint for each Azure Stack Hub.**
 - An Azure Active Directory (Azure AD) service principal that has permissions to the tenant subscription on each Azure Stack Hub. You may need to create two service principals if the Azure Stack Hubs are deployed against different Azure AD tenants. To learn how to create a service principal for Azure Stack Hub, see [Use an app identity to access Azure Stack Hub resources](https://docs.microsoft.com/azure-stack/user/azure-stack-create-service-principals).
@@ -70,7 +70,7 @@ Docker images for each deployment eliminate dependency issues between different 
     cd .\MongoHADRDemo\
     ```
 
-3. Run the deployment. Provide credentials and resource names where needed. HA refers to the Azure Stack Hub where the HA cluster will be deployed, and DR to the Azure Stack Hub where the DR cluster will be deployed.
+3. Run the deployment. Provide credentials and resource names where needed. HA refers to the Azure Stack Hub where the HA cluster will be deployed. DR refers to the Azure Stack Hub where the DR cluster will be deployed.
 
     ```powershell
     .\Deploy-AzureResourceGroup.ps1 `
