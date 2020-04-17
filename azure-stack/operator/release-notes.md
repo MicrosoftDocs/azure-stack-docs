@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 04/10/2020
+ms.date: 04/17/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
@@ -42,19 +42,19 @@ For help with troubleshooting updates and the update process, see [Troubleshoot 
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
-::: moniker range="azs-2004"
-## 2004 build reference
+::: moniker range="azs-2005"
+## 2005 build reference
 
-The Azure Stack Hub 2004 update build number is **1.2004.x.xx**.
+The Azure Stack Hub 2005 update build number is **1.2005.x.xx**.
 
 > [!IMPORTANT]  
 > With the Azure Stack Hub 2002 update, Microsoft is temporarily extending our [Azure Stack Hub support policy statements](azure-stack-servicing-policy.md).  We are working with customers around the world who are responding to COVID-19 and who may be making important decisions about their Azure Stack Hub systems, how they are updated and managed, and as a result, ensuring their data center business operations continue to operate normally. In support of our customers, Microsoft is offering a temporary support policy change extension to include three previous update versions.  As a result, the newly released 2002 update and any one of the three previous update versions (e.g. 1910, 1908, and 1907) will be supported.
 
 ### Update type
 
-The Azure Stack Hub 2004 update build type is **Express**.
+The Azure Stack Hub 2005 update build type is **Full**.
 
-The 2004 update package is larger in size compared to previous updates. The increased size results in longer download times. The update will remain in the **Preparing** state for a long time, and operators can expect this process to take longer than with previous updates. The 2002 update has had the following expected runtimes in our internal testing- 4 nodes: 15-42 hours, 8 nodes: 20-50 hours, 12 nodes: 20-60 hours, 16 nodes: 25-70 hours. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2002 update and should not be compared to other Azure Stack Hub updates.
+The 2005 update package is larger in size compared to previous updates. The increased size results in longer download times. The update will remain in the **Preparing** state for a long time, and operators can expect this process to take longer than with previous updates. The 2002 update has had the following expected runtimes in our internal testing- 4 nodes: 15-42 hours, 8 nodes: 20-50 hours, 12 nodes: 20-60 hours, 16 nodes: 25-70 hours. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2002 update and should not be compared to other Azure Stack Hub updates.
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
@@ -94,7 +94,7 @@ Before applying the update, make sure to review the following information:
 
 ## Download the update
 
-You can download the Azure Stack Hub 2004 update package from [the Azure Stack Hub download page](https://aka.ms/azurestackupdatedownload).
+You can download the Azure Stack Hub 2005 update package from [the Azure Stack Hub download page](https://aka.ms/azurestackupdatedownload).
 
 ## Hotfixes
 
@@ -105,19 +105,19 @@ Azure Stack Hub releases hotfixes on a regular basis. Be sure to install the lat
 
 Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
 
-### Prerequisites: Before applying the 2004 update
+### Prerequisites: Before applying the 2005 update
 
-The 2004 release of Azure Stack Hub must be applied on the 2002 release with the following hotfixes:
+The 2005 release of Azure Stack Hub must be applied on the 2002 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
 - [Azure Stack Hub hotfix 1.2002.16.67](https://support.microsoft.com/help/4555660)
 
-### After successfully applying the 2004 update
+### After successfully applying the 2005 update
 
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- No Azure Stack Hub hotfix available for 2004.
+- No Azure Stack Hub hotfix available for 2005.
 ::: moniker-end
 
 ::: moniker range="azs-2002"

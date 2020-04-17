@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 04/13/2020
+ms.date: 04/17/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
@@ -34,7 +34,7 @@ To access known issues for a different version, use the version selector dropdow
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
 
-::: moniker range="azs-2004"
+::: moniker range="azs-2005"
 ## Update
 
 For known Azure Stack Hub update issues please see [Troubleshooting Updates in Azure Stack Hub](azure-stack-updates-troubleshoot.md).
