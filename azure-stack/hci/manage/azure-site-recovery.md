@@ -42,7 +42,7 @@ Complete the following steps once per host server or cluster containing the VMs 
 1. Select any VM (it doesn't need to be the VM that you want to protect).
 1. Expand the **More** submenu and then select **Set up VM Protection**.
 
-    :::image type="content" source="/media/azure-site-recovery/set-up-vm-protection.png" alt-text="The Set up VM Protection submenu option in Windows Admin Center.":::
+    :::image type="content" source="media/azure-site-recovery/set-up-vm-protection.png" alt-text="The Set up VM Protection submenu option in Windows Admin Center.":::
 
 1. Sign in to your Azure Account.
 1. On the Setting up host with Azure Site Recovery page, enter the required information, and then select **Set up**:
@@ -52,7 +52,7 @@ Complete the following steps once per host server or cluster containing the VMs 
    - **Recovery Services Vault:** A name for the Azure Site Recovery vault for the protected VMs on this host.  
    - **Location:** The Azure region where the Azure Site Recovery resources should be created.
 
-    :::image type="content" source="/media/azure-site-recovery/set-up-host-with-asr.png" alt-text="The Setting up host with Azure Site Recovery page in Windows Admin Center.":::
+    :::image type="content" source="media/azure-site-recovery/set-up-host-with-asr.png" alt-text="The Setting up host with Azure Site Recovery page in Windows Admin Center.":::
 
 1. Wait until you see the notification: **Site Recovery Setting Completed**.
  
