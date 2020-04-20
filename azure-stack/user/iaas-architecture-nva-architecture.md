@@ -4,7 +4,7 @@ description: Learn how to Deploy highly available network virtual appliances on 
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 11/01/2019
+ms.date: 04/20/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
