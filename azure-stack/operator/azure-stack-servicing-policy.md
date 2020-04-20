@@ -46,7 +46,7 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
-- [Azure Stack Hub 2004 update](/azure-stack/operator/release-notes?view=azs-2004)
+- [Azure Stack Hub 2005 update](/azure-stack/operator/release-notes?view=azs-2005)
 - [Azure Stack Hub 2002 update](/azure-stack/operator/release-notes?view=azs-2002)
 - [Azure Stack Hub 1910 update](/azure-stack/operator/release-notes?view=azs-1910)
 - [Azure Stack Hub 1908 update](/azure-stack/operator/release-notes?view=azs-1908)
@@ -59,14 +59,14 @@ Hotfixes are downloaded and installed just like the regular full update packages
 
 For information about currently available hotfixes, see the release notes for that update:
 
-- [Azure Stack Hub 2004 hotfix](/azure-stack/operator/release-notes?view=azs-2004#hotfixes)
+- [Azure Stack Hub 2005 hotfix](/azure-stack/operator/release-notes?view=azs-2005#hotfixes)
 - [Azure Stack Hub 2002 hotfix](/azure-stack/operator/release-notes?view=azs-2002#hotfixes-1)
 - [Azure Stack Hub 1910 hotfix](/azure-stack/operator/release-notes?view=azs-1910#hotfixes-2)
 - [Azure Stack Hub 1908 hotfix](/azure-stack/operator/release-notes?view=azs-1908#hotfixes-3)
 
 ## Keep your system under support
 
-::: moniker range="azs-2004"
+::: moniker range="azs-2005"
 
 > [!IMPORTANT]  
 > With the Azure Stack Hub 2002 update, Microsoft is temporarily extending our Azure Stack Hub support policy statements. We are working with customers around the world who are responding to COVID-19 and who may be making important decisions about their Azure Stack Hub systems, how they are updated and managed, and as a result, ensuring their data center business operations continue to operate normally. In support of our customers, Microsoft is offering a temporary support policy change extension to include three previous update versions. As a result, the newly released 2002 update and any one of the three previous update versions (e.g. 1910, 1908, and 1907) will be supported.
