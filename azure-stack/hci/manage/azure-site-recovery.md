@@ -2,9 +2,9 @@
 title: Protect Azure Stack HCI VMs using Azure Site Recovery
 description: Use Windows Admin Center to protect your Azure Stack HCI VMs with Azure Site Recovery.
 ms.topic: article
-author: JohnCobb1
-ms.author: v-johcob
-ms.date: 04/8/2020
+author: davannaw-msft
+ms.author: dawhite
+ms.date: 04/20/2020
 ms.localizationpriority: low
 ---
 
@@ -42,18 +42,18 @@ Complete the following steps once per host server or cluster containing the VMs 
 1. Select any VM (it doesn't need to be the VM that you want to protect).
 1. Expand the **More** submenu and then select **Set up VM Protection**.
 
-    > [!div class="mx-imgBorder"]
-    > ![Set up VM Protection](media/azure-site-recovery/set-up-vm-protection.png)
+    :::image type="content" source="/media/azure-site-recovery/set-up-vm-protection.png" alt-text="The Set up VM Protection submenu option in Windows Admin Center.":::
 
 1. Sign in to your Azure Account.
-1. Enter the required information:
+1. On the Setting up host with Azure Site Recovery page, enter the required information, and then select **Set up**:
 
    - **Subscription:** The Azure subscription that you want to use for VM replication on this host.
+   - **Resource Group:** A new Resource Group name.
+   - **Recovery Services Vault:** A name for the Azure Site Recovery vault for the protected VMs on this host.  
    - **Location:** The Azure region where the Azure Site Recovery resources should be created.
-   - **Storage Account:** The storage account where replicated VM workloads on this host will be saved.
-   - **Vault:** A name for the Azure Site Recovery vault for the protected VMs on this host.
 
-1. Select **Setup ASR**.
+    :::image type="content" source="/media/azure-site-recovery/set-up-host-with-asr.png" alt-text="The Setting up host with Azure Site Recovery page in Windows Admin Center.":::
+
 1. Wait until you see the notification: **Site Recovery Setting Completed**.
  
 This process could take up to 10 minutes. You can watch the progress by going to **Notifications** (the bell icon at the top right of Windows Admin Center).
@@ -71,7 +71,7 @@ Complete the following steps to protect your VMs:
 
     If you want to use a premium storage account, create one in the Azure portal. To learn more, see the **Premium SSD** section of [What disk types are available in Azure?](https://docs.microsoft.com/azure/storage/common/storage-premium-storage) The **Create New** option provided in Windows Admin Center creates a standard storage account.
 
-1. Enter the name of the **Storage Account** to use for this VM's replication, and then select **Protect VM** to enable replication for the VM. 
+1. Enter the name of the **Storage Account** to use for this VM's replication, and then select **Protect VM** to enable replication for the VM.
 
     Azure Site Recovery starts the replication process. The VM is protected when the value in the **Protected** column of the **Virtual Machine Inventory** grid changes to **Yes**. This process could take several minutes.  
 
