@@ -71,7 +71,7 @@ different versions of Azure PowerShell.
       cd .\SQLHADRDemo\
       ```
 
-3. Run the deployment. Provide credentials and resource names where needed. HA refers to the Azure Stack Hub where the HA cluster will be deployed, and DR to the Azure Stack Hub where the DR cluster will be deployed.
+3. Run the deployment. Provide credentials and resource names where needed. HA refers to the Azure Stack Hub where the HA cluster will be deployed. DR refers to the Azure Stack Hub where the DR cluster will be deployed.
 
       ```powershell
       > .\Deploy-AzureResourceGroup.ps1 `
@@ -99,12 +99,12 @@ different versions of Azure PowerShell.
       exit
       ```
 
-7.  Inspect the deployment by viewing the resources in each Azure Stack Hub's portal. Connect to one of the SQL instances on the HA environment and inspecting the Availability Group through SQL Server Management Studio (SSMS).
+7.  Inspect the deployment by viewing the resources in each Azure Stack Hub's portal. Connect to one of the SQL instances on the HA environment and inspect the Availability Group through SQL Server Management Studio (SSMS).
 
-![SQL Server 2016 SQL HA](media/solution-deployment-guide-sql-ha/image2.png)
+    ![SQL Server 2016 SQL HA](media/solution-deployment-guide-sql-ha/image2.png)
 
 ## Next steps
 
-  - Use SQL Server Management Studio to manually fail over the cluster, see [Perform a Forced Manual Failover of an Always On Availability Group (SQL Server)](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/perform-a-forced-manual-failover-of-an-availability-group-sql-server?view=sql-server-2017)
-  - Learn more about hybrid cloud applications, see [Hybrid Cloud Solutions.](https://aka.ms/azsdevtutorials)
-  - Use your own data or modify the code to this sample on [GitHub](https://github.com/Azure-Samples/azure-intelligent-edge-patterns).
+- Use SQL Server Management Studio to manually fail over the cluster. See [Perform a Forced Manual Failover of an Always On Availability Group (SQL Server)](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/perform-a-forced-manual-failover-of-an-availability-group-sql-server?view=sql-server-2017)
+- Learn more about hybrid cloud apps. See [Hybrid Cloud Solutions.](https://aka.ms/azsdevtutorials)
+- Use your own data or modify the code to this sample on [GitHub](https://github.com/Azure-Samples/azure-intelligent-edge-patterns).
