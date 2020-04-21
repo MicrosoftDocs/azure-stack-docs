@@ -16,11 +16,11 @@ ms.lastreviewed: 06/10/2019
 
 # Azure App Service on Azure Stack Hub billing overview and FAQ
 
-This article shows how cloud operators are billed for offering Azure App Service on Azure Stack Hub and how they can bill their tenants for their use of the service.
+This article shows how cloud operators are billed for offering Azure App Service on Azure Stack Hub and how they can bill their tenants for using the service.
 
 ## Billing overview
 
-Azure Stack Hub cloud operators choose to deploy the Azure App Service on Azure Stack Hub onto their Azure Stack Hub stamp to offer the tenant capabilities of Azure App Service and Azure Functions to their customers. The Azure App Service resource provider consists of multiple types of roles that can be divided between infrastructure and worker tiers.
+Azure Stack Hub cloud operators choose to deploy Azure App Service on Azure Stack Hub onto their Azure Stack Hub stamp to offer the tenant capabilities of Azure App Service and Azure Functions to their customers. The Azure App Service resource provider consists of multiple types of roles that can be divided between infrastructure and worker tiers.
 
 Infrastructure roles aren't billed because they're required for the core operation of the service. Infrastructure roles can be scaled out as required to support the demands of the cloud operator's tenants. The infrastructure roles are as follows:
 
@@ -33,7 +33,7 @@ Worker tiers consist of two main types: shared and dedicated. Worker usage is bi
 
 ## Shared workers
 
-Shared workers are multitenant and host free and shared App Service plans and consumption-based Azure functions for many tenants. Shared workers emit usage meters when marked as ready in the Azure App Service resource provider.
+Shared workers are multi-tenant and host free and shared App Service plans and consumption-based Azure functions for many tenants. Shared workers emit usage meters when marked as ready in the Azure App Service resource provider.
 
 ## Dedicated workers
 
