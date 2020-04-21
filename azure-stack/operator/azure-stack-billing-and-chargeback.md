@@ -4,7 +4,7 @@ description: Learn how Azure Stack Hub users are billed for resource usage, and 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 04/20/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 03/21/2019
@@ -31,7 +31,7 @@ If you've [registered your Azure Stack Hub instance with Azure](azure-stack-regi
 
 The following image shows the key components in the usage pipeline:
 
-![Usage pipeline](media/azure-stack-billing-and-chargeback/usagepipeline.png)
+![Usage pipeline](media/azure-stack-billing-and-chargeback/usagepipeline.svg)
 
 ## What usage information can I find, and how?
 
