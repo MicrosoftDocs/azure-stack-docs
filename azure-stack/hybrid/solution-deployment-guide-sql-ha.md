@@ -89,17 +89,17 @@ different versions of Azure PowerShell.
       -AzureStackSubscriptionId_DR "drSubscriptionId"
       ```
 
-4.  Type `Y` to allow the NuGet provider to be installed, which will kick off the API Profile "2018-03-01-hybrid" modules to be installed.
+4. Type `Y` to allow the NuGet provider to be installed, which will kick off the API Profile "2018-03-01-hybrid" modules to be installed.
 
-5.  Wait for resource deployment to complete.
+5. Wait for resource deployment to complete.
 
-6.  Once DR resource deployment has completed, exit the container.
+6. Once DR resource deployment has completed, exit the container.
 
       ```powershell
       exit
       ```
 
-7.  Inspect the deployment by viewing the resources in each Azure Stack Hub's portal. Connect to one of the SQL instances on the HA environment and inspect the Availability Group through SQL Server Management Studio (SSMS).
+7. Inspect the deployment by viewing the resources in each Azure Stack Hub's portal. Connect to one of the SQL instances on the HA environment and inspect the Availability Group through SQL Server Management Studio (SSMS).
 
     ![SQL Server 2016 SQL HA](media/solution-deployment-guide-sql-ha/image2.png)
 
