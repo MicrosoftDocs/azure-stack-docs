@@ -4,7 +4,7 @@ description: Learn how to register Azure Stack Hub as a Cloud Solution Provider 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 04/20/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 10/15/2019
@@ -23,7 +23,7 @@ As a CSP, you work with diverse customers using your Azure Stack Hub. Each custo
 
 The following figure shows the required steps to choose your shared services account, and to register the Azure account with the Azure Stack Hub account. Once registered, you can onboard your end customers:
 
-[![Process for enabling usage and management as a Cloud Solution Provider](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.png "Process for enabling usage and management as a Cloud Solution Provider")](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.png#lightbox)
+[![Process for enabling usage and management as a Cloud Solution Provider](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.svg "Process for enabling usage and management as a Cloud Solution Provider")](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.png#lightbox)
 
 ## Create a CSP or APSS subscription
 
