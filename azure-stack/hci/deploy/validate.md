@@ -4,13 +4,18 @@ description: This how-to article focuses on why cluster validation is important,
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 4/17/2020
+ms.date: 4/21/2020
 ---
 
 # Validate an Azure Stack HCI cluster
+
+>Applies to: Azure Stack HCI
+
 This how-to article focuses on why cluster validation is important, and when to run it on an existing Azure Stack HCI cluster. We recommend performing cluster validation for the following primary scenarios:
 - After deploying a server cluster, run the Validate-DCB tool to test networking, and use the Validate feature in Windows Admin Center.
 - After updating a server cluster, depending on your scenario, run both validation options to troubleshoot cluster issues.
+
+To learn about how to create a failover cluster, [Create a failover cluster](/windows-server/failover-clustering/create-failover-cluster#create-the-failover-cluster).
 
 ## What is cluster validation?
 Cluster validation is intended to catch hardware or configuration problems before a cluster goes into production. Cluster validation helps to ensure that the Azure Stack HCI solution that you're about to deploy is truly dependable. You can also use cluster validation on configured failover clusters as a diagnostic tool.
@@ -33,7 +38,7 @@ This section describes scenarios in which validation is also needed or useful.
  
 - **Validation after the cluster is configured and in use:**
 
-  - **Before adding a node:** When you add a server to a cluster, we strongly recommend first connecting the server to the cluster networks and storage, and then run the Validate cluster feature. Specifying both the existing cluster nodes and the new node when you run the feature.
+  - **Before adding a node:** When you add a server to a cluster, we strongly recommend to first connect the server to the cluster networks and storage, and then run the Validate cluster feature. Specify both the existing cluster nodes and the new node when you run the feature.
   
   - **When attaching new storage:** When you attach new storage to the cluster, which is different from exposing a new LUN in existing storage, run the Validate cluster feature to confirm that the new storage will function correctly. To minimize the affect on availability, we recommend running the Validate cluster feature after attaching the storage. Run the feature before using any new LUNs in clustered services or applications.
 
@@ -42,7 +47,7 @@ This section describes scenarios in which validation is also needed or useful.
   - **After restoring a system from backup:** After you restore a system from backup, run the Validate cluster feature to confirm that the system functions correctly as part of a cluster.
 
 ## Step 1: Validate networking
-The Microsoft Validate-DCB tool is designed to validate the Data Center Bridging (DCB) configuration on your Windows nodes. To do this, the tool takes an expected configuration as input, and then unit tests each Windows system. This section covers how to install and run the Validate-DCB tool, review results, and resolve networking errors that the tool identifies.
+The Microsoft Validate-DCB tool is designed to validate the Data Center Bridging (DCB) configuration on your server cluster nodes. To do this, the tool takes an expected configuration as input, and then unit tests each cluster. This section covers how to install and run the Validate-DCB tool, review results, and resolve networking errors that the tool identifies.
 
 On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE) requires DCB technologies to make the network fabric lossless. The configuration requirements are complex and error prone. For these reasons, exact configuration is required across:
 - Each Windows node.
@@ -54,14 +59,14 @@ On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE
     - Virtual switch name.
     - Network adapter names.
     - Priority Flow Control (PFC) and Enhanced Transmission Selection (ETS) settings.
-- An internet connection to download the tool module in Windows Powershell from Microsoft.
+- An internet connection to download the tool module in Windows PowerShell from Microsoft.
 <!---Where/how does user connect to MS network to get tool? Use Jan's video instruction to add useful info to steps. Update prereqs with details from video/screenshots. Use screenshots that require config/mulitple settings--->
 
 <!---Should we add Jan's disclaimer in a note? Or maybe include the video link after each procedure that shows the disclaimer?--->
 
 ### Install and run the Validate-DCB tool
 To install and run the Validate-DCB tool:
-1. Open a Windows Powershell session as an Administrator, type `Install-module validate-DCB`, and then press **Enter**.
+1. Open a Windows PowerShell session as an Administrator, type `Install-module validate-DCB`, and then press **Enter**.
 
     :::image type="content" source="../media/validate/powershell-install-for-tool.png" alt-text="The PowerShell command to install the validate-DCB tool module":::
 
@@ -73,7 +78,7 @@ To install and run the Validate-DCB tool:
 
 1. On the Adapters page:
    1. Select the **vSwitch attached** checkbox and type the name of the vSwitch.
-   1. Under **Adapter Name**, type the name of each physical NIC, under **Host vNIC Name**, the name of each virtual NIC (vNIC), and under **VLAN**, the name of each virtual local area networks (VLAN).
+   1. Under **Adapter Name**, type the name of each physical NIC, under **Host vNIC Name**, the name of each virtual NIC (vNIC), and under **VLAN**, the name of each network.
    1. Expand the **RDMA Type** drop-down list box and select **RoCE**, leave **Jumbo Frames** set to **9014**, and then select **Next**.
 
     :::image type="content" source="../media/validate/adapters.png" alt-text="The Adapters page of the Validate-DCB configuration wizard":::
@@ -134,7 +139,7 @@ The Create Cluster extension in Windows Admin Center is required for this sectio
 
 Use the following steps to validate the servers in an existing cluster in Windows Admin Center.
 
-1. In Windows Admin Center, under **All connections**, select the Windows Server cluster that you want to validate, and then select **Connect**.
+1. In Windows Admin Center, under **All connections**, select the Azure Stack HCI cluster that you want to validate, and then select **Connect**.
 
     The **Cluster Manager Dashboard** displays overview information about the cluster.
 
@@ -169,12 +174,12 @@ Select the **Successfully validated cluster** notice, and then select **Go to Fa
 
 You can also use Windows PowerShell to run validation tests on your server cluster and view the results. You can run tests both before and after a cluster is set up.
 
-To run a validation test on a server cluster, issue the **Test-Cluster** <clustername> PowerShell cmdlet from your management PC, or run it directly on the cluster without the -ComputerName parameter:
+To run a validation test on a server cluster, issue the **Get-Cluster** and **Test-Cluster** <server clustername> PowerShell cmdlets from your management PC, or run only the **Test-Cluster** cmdlet directly on the cluster:
 
 ```PowerShell
-Test-Cluster -ComputerName Server1
+$Cluster = Get-Cluster -Name 'server-cluster1'
+Test-Cluster -InputObject $Cluster -Verbose
 ```
-<!---Detail PS way to do this. See Jason's team notes on this--->
 
 ### Disable CredSSP
 After your server cluster is successfully validated, you'll need to disable the Credential Security Support Provider (CredSSP) protocol on each server for security purposes. For more information, see [CVE-2018-0886](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-0886).
