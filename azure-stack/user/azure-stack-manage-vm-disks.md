@@ -87,7 +87,7 @@ Each unmanaged disk you add should be put in a separate container.
       Premium disks (SSD) are backed by solid-state drives and offer consistent, low-latency performance. They provide the best balance between price and performance, and are ideal for I/O-intensive apps and production workloads.
 
       **Standard HDD**  
-      Standard disks (HDD) are backed by magnetic drives and are preferable for apps where data is accessed infrequently. Zone-redundant disks are backed by zone-redundant storage (ZRS) that replicates your data across multiple zones, ensuring your data is available even if a single zone is down.
+      Standard disks (HDD) are backed by magnetic drives and are preferable for apps where data is accessed infrequently. 
 
    * Select the **Source type**.
 
