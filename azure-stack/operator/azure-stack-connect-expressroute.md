@@ -268,7 +268,7 @@ The router is the ASDK host running the Routing and Remote Access Services (RRAS
 
 After you finish configuring Azure Stack Hub, you can deploy the Azure resources. The following figure shows an example of a tenant virtual network in Azure. You can use any name and addressing scheme for your VNet in Azure. However, the address range of the VNets in Azure and Azure Stack Hub must be unique and must not overlap:
 
-![Azure VNets](media/azure-stack-connect-expressroute/AzureArchitecture.png)
+![Azure VNets](media/azure-stack-connect-expressroute/azurearchitecture.svg)
 
 The resources you deploy in Azure are similar to the resources you deployed in Azure Stack Hub. You deploy the following components:
 
