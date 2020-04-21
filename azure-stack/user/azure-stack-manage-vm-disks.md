@@ -4,7 +4,7 @@ description: Create disks for virtual machines in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 04/20/2020
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
@@ -29,7 +29,7 @@ Unmanaged disks require that you create a storage account to store the disks. Th
 
 ## Best practice guidelines
 
-It is recommended that you use Managed Disks for VM for easier management and capacity balance. You don't have to prepare a storage account and containers before using Managed Disks. When creating multiple managed disks, the disks are distributed into multiple volumes, which helps to balance the capacity of volumes.  
+It is recommended that you use managed disks for VMs for easier management and capacity balance. You don't have to prepare a storage account and containers before using managed disks. When creating multiple managed disks, the disks are distributed into multiple volumes, which helps to balance the capacity of volumes.  
 
 For unmanaged disks, to improve performance and reduce the overall costs, we recommend that you place each unmanaged disk in a separate container. Although you can put both OS disks and data disks in the same container, the best practice is that one container should hold either an OS disk or a data disk, but not both at the same time.
 
@@ -43,7 +43,7 @@ The following table summarizes how to add disks by using the portal, and by usin
 
 | Method | Options
 |-|-|
-|User portal|- Add new data disks to an existing VM. New disks are created by Azure Stack Hub. </br> </br> - Add an existing disk (.vhd) file to a  previously created VM. To do so, you must prepare the .vhd and then upload the file to Azure Stack Hub. |
+|User portal| - Add new data disks to an existing VM. New disks are created by Azure Stack Hub. </br> </br> - Add an existing disk (.vhd) file to a previously created VM. To do so, you must prepare the .vhd and then upload the file to Azure Stack Hub. |
 |[PowerShell](#use-powershell-to-add-multiple-disks-to-a-vm) | - Create a new VM with an OS disk, and at the same time add one or more data disks to that VM. |
 
 ## Use the portal to add disks to a VM
@@ -57,8 +57,8 @@ After you create a VM, you can use the portal to:
 
 Each unmanaged disk you add should be put in a separate container.
 
->[!NOTE]  
->Disks created and managed by Azure are called [managed disks](/azure/virtual-machines/windows/managed-disks-overview).
+> [!NOTE]  
+> Disks created and managed by Azure are called [managed disks](/azure/virtual-machines/windows/managed-disks-overview).
 
 ### Use the portal to create and attach a new data disk
 
@@ -87,7 +87,7 @@ Each unmanaged disk you add should be put in a separate container.
       Premium disks (SSD) are backed by solid-state drives and offer consistent, low-latency performance. They provide the best balance between price and performance, and are ideal for I/O-intensive apps and production workloads.
 
       **Standard HDD**  
-      Standard disks (HDD) are backed by magnetic drives and are preferable for apps where data is accessed infrequently. Zone-redundant disks are backed by zone-redundant storage (ZRS) that replicates your data across multiple zones, ensuring your data is available even if a single zone is down.
+      Standard disks (HDD) are backed by magnetic drives and are preferable for apps where data is accessed infrequently. 
 
    * Select the **Source type**.
 
@@ -127,10 +127,8 @@ For more information about working with storage accounts in Azure Stack Hub, see
     - Plan to use a different container to hold the .vhd file than the container that holds the OS disk.  
     - Before uploading any VHD to Azure, you should follow [Prepare a Windows VHD or VHDX to upload to Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
     - Review [Plan for the migration to Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/on-prem-to-azure#plan-for-the-migration-to-managed-disks) before starting your migration to [Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
-    
+
     ![Example: Upload a VHD file](media/azure-stack-manage-vm-disks/upload-vhd.png)
-
-
 
 2. After the .vhd file is uploaded, you're ready to attach the VHD to a VM. In the menu on the left, select  **Virtual machines**.  
  ![Example: Select a VM in the dashboard](media/azure-stack-manage-vm-disks/vm-dashboard.png)
@@ -167,7 +165,7 @@ The **Add-AzureRmVMDataDisk** cmdlet adds a data disk to a VM. You can add a dat
 
 ### Add data disks to a **new** VM
 
-The following examples use PowerShell commands to create a VM with three data disks. The commands are provided with several parts due to the minor differences when using managed disks or unmanaged disks. 
+The following examples use PowerShell commands to create a VM with three data disks. The commands are provided with several parts due to the minor differences when using managed disks or unmanaged disks.
 
 #### Create virtual machine configuration and network resources
 
@@ -213,9 +211,7 @@ $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName `
 
 ```
 
-#### Add managed disk
->[!NOTE]  
->It is only for adding managed disks in this section. 
+#### Add managed disks
 
 The following three commands add managed data disks to the virtual machine stored in `$VirtualMachine`. Each command specifies the name and additional properties of the disk:
 
@@ -246,10 +242,7 @@ $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name $osDiskName  `
                                       -CreateOption FromImage -Windows
 ```
 
-#### Add unmanaged disk
-
->[!NOTE]  
->This section is only for adding unmanaged disks. 
+#### Add unmanaged disks
 
 The next three commands assign paths of three unmanaged data disks to the `$DataDiskVhdUri01`, `$DataDiskVhdUri02`, and `$DataDiskVhdUri03` variables. Define a different path name in the URL to distribute the disks to different containers:
 
@@ -295,9 +288,9 @@ $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name $osDiskName -Vhd
                                       -CreateOption FromImage -Windows
 ```
 
-
 #### Create new virtual machine
-Use the following PowerShell commands to set OS image, add network configuration to the VM, and then start the new VM.
+
+Use the following PowerShell commands to set OS image, add network configuration to the VM, and then start the new VM:
 
 ```powershell
 #Create the new VM
@@ -308,9 +301,9 @@ $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine -Windows -Com
 New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $VirtualMachine
 ```
 
+### Add data disks to an existing VM
 
-### Add data disks to an **existing** VM
-The following examples use PowerShell commands to add three data disks to an existing VM.
+The following examples use PowerShell commands to add three data disks to an existing VM:
 
 #### Get virtual machine
 
@@ -322,9 +315,6 @@ $VirtualMachine = Get-AzureRmVM -ResourceGroupName "myResourceGroup" `
 ```
 
 #### Add managed disk
-
->[!NOTE]  
->This section is only for adding managed disks.
 
 The next three commands add the managed data disks to the VM stored in the `$VirtualMachine` variable. Each command specifies the name and additional properties of the disk:
 
@@ -344,9 +334,6 @@ Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "DataDisk3" -Lun 2 `
 ```
 
 #### Add unmanaged disk
-
->[!NOTE]  
->This section is only for adding unmanaged disks. 
 
 The next three commands assign paths for three data disks to the `$DataDiskVhdUri01`, `$DataDiskVhdUri02`, and `$DataDiskVhdUri03` variables. The different path names in the VHD URIs indicate different containers for the disk placement:
 
