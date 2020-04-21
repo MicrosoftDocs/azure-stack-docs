@@ -82,6 +82,10 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Cause: An explicit **DenyAllOutbound** rule cannot be created in an NSG as this will prevent all internal communication to infrastructure needed for the VM deployment to complete.
 - Occurrence: Common
 
+- Applicable: This issue applies to all supported releases. 
+- Cause: When creating an Inbound or an Outbound Network Security rule, the **Protocol** option shows an **ICMP** button. This is currently not supported on Azure Stack Hub. This issue is fixed and will not appear in the next Azure Stack Hub build. 
+- Occurrence: Common
+
 ### Network interface
 
 #### Adding/removing network interface
