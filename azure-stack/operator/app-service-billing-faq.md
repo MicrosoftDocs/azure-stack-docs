@@ -44,9 +44,9 @@ Meters are emitted for dedicated workers when they're:
 - Marked as ready in the Azure App Service resource provider.
 - Assigned to an App Service plan.
 
-This billing model enables cloud operators to provision a pool of dedicated workers ready for customers to use without paying for the workers until they're effectively reserved by their tenant's App Service plan. 
+This billing model enables cloud operators to provision a pool of dedicated workers ready for customers to use without paying for the workers until they're effectively reserved by their tenant's App Service plan.
 
-For example, say you have 20 workers in the small worker tier. Then if you have five customers that create two S1 App Service plans each, and they each scale the App Service plan up to two instances, you have no workers available. As a result, there's also no capacity for any of your customers or new customers to scale out or create new App Service plans. 
+For example, say you have 20 workers in the small worker tier. Then if you have five customers that create two S1 App Service plans each, and they each scale the App Service plan up to two instances, you have no workers available. As a result, there's also no capacity for any of your customers or new customers to scale out or create new App Service plans.
 
 Cloud operators can view the current number of available workers per worker tier by looking at the worker tiers in the Azure App Service configuration on Azure Stack Hub administration.
 
@@ -60,9 +60,9 @@ Cloud operators can query the [Azure Stack Hub Tenant Resource Usage API](azure-
 
 ### How do I license the SQL Server and file server infrastructure required in the prerequisites?
 
-Licensing for SQL Server and file server infrastructure, required by the Azure App Service resource provider, is covered in the Azure App Service on Azure Stack Hub [Before you get started](azure-stack-app-service-before-you-get-started.md#licensing-concerns-for-required-file-server-and-sql-server) article.
+Licensing for SQL Server and file server infrastructure, required by the Azure App Service resource provider, is covered here: [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md#licensing-concerns-for-required-file-server-and-sql-server).
 
-### The Usage FAQ lists the tenant meters but not the prices for those meters. Where can I find them?
+### The usage FAQ lists the tenant meters but not the prices for those meters. Where can I find them?
 
 As a cloud operator, you're free to apply your own pricing model to your customers. The usage service provides the usage metering. You can then use the meter quantity to charge your customers based on the pricing model you determine. The ability to set pricing enables operators to differentiate from other Azure Stack Hub operators.
 
@@ -72,7 +72,7 @@ As a cloud operator, you incur costs for offering free and shared SKUs because t
 
 For example, to offer free and shared App Service plan SKUs and to offer consumption-based functions, you need a minimum of one A1 instance available. Shared workers are multitenant, so they can host multiple customer apps, each individually isolated and protected by the App Service sandbox. By scaling the shared worker tier in this way, you can limit your outlay to the cost of one vCPU per month.
 
-You can then choose to create a quota, for use in a plan, which only offers free and shared SKUs and limits the number of free and shared App Service plans your customer can create.
+You can then choose to create a quota for use in a plan, which only offers free and shared SKUs and limits the number of free and shared App Service plans your customer can create.
 
 ## Sample scripts to assist with billing
 
