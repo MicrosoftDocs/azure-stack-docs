@@ -28,7 +28,7 @@ To get these tools, clone the GitHub repository from the `master` branch or down
 cd \
 
 # Download the tools archive.
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 invoke-webrequest `
   https://github.com/Azure/AzureStack-Tools/archive/master.zip `
   -OutFile master.zip
@@ -53,7 +53,7 @@ To get these tools, clone the GitHub repository from the `az` branch or download
 cd \
 
 # Download the tools archive.
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 invoke-webrequest 
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 invoke-webrequest `
   https://github.com/Azure/AzureStack-Tools/archive/az.zip `
   -OutFile az.zip
