@@ -82,6 +82,10 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Cause: An explicit **DenyAllOutbound** rule cannot be created in an NSG as this will prevent all internal communication to infrastructure needed for the VM deployment to complete.
 - Occurrence: Common
 
+- Applicable: This issue applies to all supported releases. 
+- Cause: When creating an Inbound or an Outbound Network Security rule, the **Protocol** option shows an **ICMP** button. This is currently not supported on Azure Stack Hub. This issue is fixed and will not appear in the next Azure Stack Hub build. 
+- Occurrence: Common
+
 ### Network interface
 
 #### Adding/removing network interface
@@ -95,6 +99,13 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 - Applicable: This issue applies to all supported releases.
 - Cause: The primary NIC of a VM cannot be changed. Deleting or detaching the primary NIC results in issues when starting up the VM.
+- Occurrence: Common
+
+### Public IP
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The **IdleTimeoutInMinutes** for a Public IP that is associated to a Load Balancer cannot be changed. The operation will put the Public IP into a failed state.
+- Remediation: To bring the Public IP back into a successful state, change the **IdleTimeoutInMinutes** on the Load Balancer rule referencing the Public IP back to the original value (the default value is 4 minutes). 
 - Occurrence: Common
 
 ### Virtual Network Gateway

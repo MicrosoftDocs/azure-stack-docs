@@ -310,6 +310,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
 
+The Qualys vulnerability report for this release can be downloaded from the [Qualys website](https://www.qualys.com/azure-stack/).
+
 ## Update planning
 
 Before applying the update, make sure to review the following information:
@@ -395,6 +397,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 ## Security updates
 
 For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
+
+The Qualys vulnerability report for this release can be downloaded from the [Qualys website](https://www.qualys.com/azure-stack/).
 
 ## <a name="download-the-update-1908"></a>Download the update
 
@@ -513,6 +517,8 @@ The Azure Stack Hub 1907 update build type is **Express**. For more information 
 ## Security updates
 
 For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
+
+The Qualys vulnerability report for this release can be downloaded from the [Qualys website](https://www.qualys.com/azure-stack/).
 
 ## Update planning
 
