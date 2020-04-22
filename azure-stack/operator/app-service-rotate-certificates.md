@@ -57,52 +57,52 @@ To update the credentials for the database connection string for the App Service
 
 ## Rotate certificates
 
-To rotate the certificates used within Azure App Service on Azure Stack Hub, complete the following steps:
+To rotate the certificates used within Azure App Service on Azure Stack Hub, take the following steps:
 
-1. Go to the App Service Administration experience in the Azure Stack Hub Administrators Portal.
+1. Go to the App Service administration experience in the Azure Stack Hub administrator portal.
 
-1. Navigate to the **Secrets** menu option
+1. Go to the **Secrets** menu option.
 
-1. Click the **Rotate** button in the Certificates section
+1. Select the **Rotate** button in the Certificates section
 
-1. Provide the **certificate file** and associated **password** for the certificates you wish to rotate and click **OK**.
+1. Provide the **certificate file** and associated **password** for the certificates you wish to rotate and select **OK**.
 
-1. The certificates will be rotated as required throughout the Azure App Service on Azure Stack Hub role instances.  Operators can monitor the status of the procedure using the **Status** button.
+1. The certificates are rotated as required throughout the Azure App Service on Azure Stack Hub role instances. Operators can check the status of the procedure using the **Status** button.
 
-When the identity application certificate is rotated the corresponding application in AAD or ADFS must also be updated with the new certificate.
+When the identity application certificate is rotated, the corresponding app in AAD or ADFS must also be updated with the new certificate.
 
 > [!IMPORTANT]
-> Failure to update the identity application with the new certificate, after rotation, will break the user portal experience for Azure Functions, prevent users from being able to use the KUDU Developer tools, and prevent Administrators from managing worker tier scale sets from the App Service administration experience.
+> Failure to update the identity application with the new certificate after rotation will break the user portal experience for Azure Functions, prevent users from being able to use the KUDU developer tools, and prevent admins from managing worker tier scale sets from the App Service administration experience.
 
-### Rotate credential for the Azure AD identity application 
+### Rotate credential for the Azure AD identity application
 
-The identity application is created by the operator before deployment of Azure App Service on Azure Stack Hub.  If the Application ID is unknown, follow these steps to discover it:
+The identity application is created by the operator before deployment of Azure App Service on Azure Stack Hub. If the application ID is unknown, follow these steps to discover it:
 
-1. Go to the **Azure Stack Hub Administration Portal**
+1. Go to the **Azure Stack Hub administrator portal**.
 
-1. Go to **Subscriptions** and select **Default Provider Subscription**
+1. Go to **Subscriptions** and select **Default Provider Subscription**.
 
-1. Select **Access Control (IAM)** and select the **App Service** application
+1. Select **Access Control (IAM)** and select the **App Service** application.
 
-1. Take a note of the **APP ID**, this value is the Application ID of the identity application that must be updated in Azure Active Directory.
+1. Take a note of the **APP ID**, this value is the application ID of the identity application that must be updated in Azure AD.
 
-To rotate the certificate for the application in Active Directory, follow these steps:
+To rotate the certificate for the application in Azure AD, follow these steps:
 
-1. Go to the **Azure portal** and sign in using the Global Admin used to deploy Azure Stack Hub
+1. Go to the **Azure portal** and sign in using the Global Admin used to deploy Azure Stack Hub.
 
-1. Go to **Azure Active Directory** and browse to **App Registrations**
+1. Go to **Azure Active Directory** and browse to **App Registrations**.
 
-1. Search for the **Application ID**,  specify the identity Application ID
+1. Search for the **Application ID**, then specify the identity Application ID.
 
-1. Select the application and then go to **Certificates & Secrets**
+1. Select the application and then go to **Certificates & Secrets**.
 
-1. Click **Upload certificate** and upload the new certificate for the identity application with one of the following file types: .cer, .pem, .crt
+1. Select **Upload certificate** and upload the new certificate for the identity application with one of the following file types: .cer, .pem, .crt.
 
-1. Confirm the **thumbprint** matches that listed in the App Service administration experience in the Azure Stack Hub Admin portal
+1. Confirm the **thumbprint** matches that listed in the App Service administration experience in the Azure Stack Hub administrator portal.
 
-1. Delete the old certificate
+1. Delete the old certificate.
 
-### Rotate certificate for ADFS Identity Application
+### Rotate certificate for AD FS identity application
 
 The identity application is created by the operator before deployment of Azure App Service on Azure Stack Hub.  If the Application's Object ID is unknown, follow these steps to discover it:
 
