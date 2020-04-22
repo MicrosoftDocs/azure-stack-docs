@@ -23,7 +23,7 @@ To add a scale unit node, you act in Azure Stack Hub and run tooling from your h
 
 The following flow diagram shows the general process to add a scale unit node:
 
-![Add scale unit flow](media/azure-stack-add-scale-node/add-node-flow.png)
+![Add scale unit flow](media/azure-stack-add-scale-node/add-node-flow.svg)
 <br> *Whether your OEM hardware vendor enacts the physical server rack placement and updates the firmware varies based on your support contract.*
 
 The operation to add a new node can take several hours or days to complete. There is no impact to any running workloads on the system while an additional scale unit node is added.
