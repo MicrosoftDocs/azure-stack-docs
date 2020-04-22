@@ -24,7 +24,7 @@ This document contains the procedure for rotating the following secrets:
 
 * Encryption keys used within Azure App Service on Azure Stack Hub.
 * Database connection credentials used by Azure App Service on Azure Stack Hub to interact with the hosting and metering databases.
-* Certificates used by Azure App Service on Azure Stack Hub to secure endpoints and rotation of identity application certificate in Azure Active Directory (Azure AD) or Active Directory Federation Services (ADFS).
+* Certificates used by Azure App Service on Azure Stack Hub to secure endpoints and rotation of identity application certificates in Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS).
 * System credentials for Azure App Service on Azure Stack Hub infrastructure roles.
 
 ## Rotate encryption keys
@@ -69,7 +69,7 @@ To rotate the certificates used within Azure App Service on Azure Stack Hub, tak
 
 1. The certificates are rotated as required throughout the Azure App Service on Azure Stack Hub role instances. Operators can check the status of the procedure using the **Status** button.
 
-When the identity application certificate is rotated, the corresponding app in AAD or ADFS must also be updated with the new certificate.
+When the identity application certificate is rotated, the corresponding app in Azure AD or AD FS must also be updated with the new certificate.
 
 > [!IMPORTANT]
 > Failure to update the identity application with the new certificate after rotation will break the user portal experience for Azure Functions, prevent users from being able to use the KUDU developer tools, and prevent admins from managing worker tier scale sets from the App Service administration experience.
@@ -114,7 +114,7 @@ The identity application is created by the operator before deployment of Azure A
 
 1. Take a note of the **Object ID**, this value is the ID of the Service Principal that must be updated in AD FS.
 
-To rotate the certificate for the application in AD FS, you need to have access to the privileged endpoint (PEP). Then you update the certificate credential using PowerShell, substituting your own values for the following placeholders:
+To rotate the certificate for the application in AD FS, you need to have access to the privileged endpoint (PEP). Then you update the certificate credential using PowerShell, replacing your own values for the following placeholders:
 
 | Placeholder | Description | Example |
 | ----------- | ----------- | ------- |
@@ -154,7 +154,6 @@ To rotate the certificate for the application in AD FS, you need to have access 
     PSComputerName        : AzS-ERCS01
     RunspaceId            : cb471c79-a0d3-40ec-90ba-89087d104510
     ```
-
 
 ## Rotate system credentials
 
