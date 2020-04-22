@@ -44,7 +44,7 @@ Meters are emitted for dedicated workers when they're:
 - Marked as ready in the Azure App Service resource provider.
 - Assigned to an App Service plan.
 
-This billing model enables cloud operators to provision a pool of dedicated workers ready for customers to use without paying for the workers until they're effectively reserved by their tenant's App Service plan.
+This billing model lets cloud operators provision a pool of dedicated workers ready for customers to use without paying for the workers until they're effectively reserved by their tenant's App Service plan.
 
 For example, say you have 20 workers in the small worker tier. Then if you have five customers that create two S1 App Service plans each, and they each scale the App Service plan up to two instances, you have no workers available. As a result, there's also no capacity for any of your customers or new customers to scale out or create new App Service plans.
 
@@ -68,9 +68,9 @@ As a cloud operator, you're free to apply your own pricing model to your custome
 
 ### As a CSP, how can I offer free and shared SKUs for customers to try out the service?
 
-As a cloud operator, you incur costs for offering free and shared SKUs because they're hosted in shared workers. To minimize that cost, you can choose to scale down the shared worker tier to a bare minimum. 
+As a cloud operator, you incur costs for offering free and shared SKUs because they're hosted in shared workers. To minimize that cost, you can choose to scale down the shared worker tier to a bare minimum.
 
-For example, to offer free and shared App Service plan SKUs and to offer consumption-based functions, you need a minimum of one A1 instance available. Shared workers are multitenant, so they can host multiple customer apps, each individually isolated and protected by the App Service sandbox. By scaling the shared worker tier in this way, you can limit your outlay to the cost of one vCPU per month.
+For example, to offer free and shared App Service plan SKUs and to offer consumption-based functions, you need a minimum of one A1 instance available. Shared workers are multi-tenant, so they can host multiple customer apps, each individually isolated and protected by the App Service sandbox. By scaling the shared worker tier in this way, you can limit your outlay to the cost of one vCPU per month.
 
 You can then choose to create a quota for use in a plan, which only offers free and shared SKUs and limits the number of free and shared App Service plans your customer can create.
 
