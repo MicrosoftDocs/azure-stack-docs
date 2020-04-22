@@ -15,45 +15,45 @@ ms.lastreviewed: 04/09/2020
 
 # Rotate App Service on Azure Stack Hub secrets and certificates
 
-These instructions only apply to Azure App Service on Azure Stack Hub.  Rotation of Azure App Service on Azure Stack Hub secrets is not included in the centralized secret rotation procedure for Azure Stack Hub.  Operators can monitor the validity of secrets within the system, the date on which they were last updated, and the time remaining until the secrets expire.
+These instructions only apply to Azure App Service on Azure Stack Hub. Rotation of Azure App Service on Azure Stack Hub secrets is not included in the centralized secret rotation procedure for Azure Stack Hub. Operators can monitor the validity of secrets within the system, the date on which they were last updated, and the time remaining until the secrets expire.
 
 > [!Important]
-> Operators will not receive alerts for secret expiration on the Azure Stack Hub dashboard as Azure App Service on Azure Stack Hub is not integrated with the Azure Stack Hub alerting service.  Operators must regularly monitor their secrets using the Azure App Service on Azure Stack Hub administration experience in the Azure Stack Hub Administrators portal.
+> Operators won't receive alerts for secret expiration on the Azure Stack Hub dashboard as Azure App Service on Azure Stack Hub is not integrated with the Azure Stack Hub alerting service. Operators must regularly monitor their secrets using the Azure App Service on Azure Stack Hub administration experience in the Azure Stack Hub administrator portal.
 
 This document contains the procedure for rotating the following secrets:
 
-* Encryption Keys used within Azure App Service on Azure Stack Hub;
-* Database connection credentials used by Azure App Service on Azure Stack Hub to interact with the hosting and metering databases;
-* Certificates used by Azure App Service on Azure Stack Hub to secure endpoints and rotation of identity application certificate in Azure Active Directory (Azure AD) or Active Directory Federation Services (ADFS)
+* Encryption keys used within Azure App Service on Azure Stack Hub.
+* Database connection credentials used by Azure App Service on Azure Stack Hub to interact with the hosting and metering databases.
+* Certificates used by Azure App Service on Azure Stack Hub to secure endpoints and rotation of identity application certificate in Azure Active Directory (Azure AD) or Active Directory Federation Services (ADFS).
 * System credentials for Azure App Service on Azure Stack Hub infrastructure roles.
 
 ## Rotate encryption keys
 
-To rotate the encryption keys used within Azure App Service on Azure Stack Hub, complete the following steps:
+To rotate the encryption keys used within Azure App Service on Azure Stack Hub, take the following steps:
 
-1. Go to the App Service Administration experience in the Azure Stack Hub Administrators Portal.
+1. Go to the App Service administration experience in the Azure Stack Hub administrator portal.
 
-1. Navigate to the **Secrets** menu option
+1. Go to the **Secrets** menu option.
 
-1. Click the **Rotate** button in the Encryption Keys section
+1. Select the **Rotate** button in the Encryption Keys section.
 
-1. Click **OK** to start the rotation procedure.
+1. Select **OK** to start the rotation procedure.
 
-1. The encryption keys are rotated and all role instances are updated. Operators can monitor the Status of the procedure using the **Status** button.
+1. The encryption keys are rotated and all role instances are updated. Operators can check the status of the procedure using the **Status** button.
 
 ## Rotate connection strings
 
-To update the credentials for the database connection string for the App Service hosting and metering databases, complete the following steps:
+To update the credentials for the database connection string for the App Service hosting and metering databases, take the following steps:
 
-1. Go to the App Service Administration experience in the Azure Stack Hub Administrators Portal.
+1. Go to the App Service administration experience in the Azure Stack Hub administrator portal.
 
-1. Navigate to the **Secrets** menu option
+1. Go to the **Secrets** menu option.
 
-1. Click the **Rotate** button in the Connection Strings section
+1. Select the **Rotate** button in the Connection Strings section.
 
-1. Provide the **SQL SA Username** and **Password** and click **OK** to start the rotation procedure. 
+1. Provide the **SQL SA Username** and **Password** and select **OK** to start the rotation procedure.
 
-1. The credentials will be rotated throughout the Azure App Service role instances. Operators can monitor the Status of the procedure using the **Status** button.
+1. The credentials are rotated throughout the Azure App Service role instances. Operators can check the status of the procedure using the **Status** button.
 
 ## Rotate certificates
 
