@@ -41,7 +41,7 @@ For help with troubleshooting updates and the update process, see [Troubleshoot 
 
 ## Download the update
 
-You can download the Azure Stack Hub 2002 update package from [the Azure Stack Hub download page](https://aka.ms/azurestackupdatedownload).
+You can download the Azure Stack Hub update package from [the Azure Stack Hub download page](https://aka.ms/azurestackupdatedownload).
 
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
