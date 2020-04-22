@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 04/13/2020
+ms.date: 04/22/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
@@ -82,6 +82,10 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Cause: An explicit **DenyAllOutbound** rule cannot be created in an NSG as this will prevent all internal communication to infrastructure needed for the VM deployment to complete.
 - Occurrence: Common
 
+- Applicable: This issue applies to all supported releases. 
+- Cause: When creating an inbound or an outbound network security rule, the **Protocol** option shows an **ICMP** option. This is currently not supported on Azure Stack Hub. This issue is fixed and will not appear in the next Azure Stack Hub release.
+- Occurrence: Common
+
 ### Network interface
 
 #### Adding/removing network interface
@@ -95,6 +99,13 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 - Applicable: This issue applies to all supported releases.
 - Cause: The primary NIC of a VM cannot be changed. Deleting or detaching the primary NIC results in issues when starting up the VM.
+- Occurrence: Common
+
+### Public IP
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The **IdleTimeoutInMinutes** value for a public IP that is associated to a load balancer cannot be changed. The operation puts the public IP into a failed state.
+- Remediation: To bring the public IP back into a successful state, change the **IdleTimeoutInMinutes** value on the load balancer rule that references the public IP back to the original value (the default value is 4 minutes).
 - Occurrence: Common
 
 ### Virtual Network Gateway
@@ -114,8 +125,8 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 ### VM overview blade does not show correct computer name
 
-- Applicable: This issue applies to 2002 and later.
-- Cause: When viewing details of a VM in the overview blade, the computer name shows as **(not available)**.
+- Applicable: This issue applies to all releases.
+- Cause: When viewing details of a VM in the overview blade, the computer name shows as **(not available)**. This is by design for VMs created from specialized disks/disk snapshots.
 - Remediation: View the **Properties** blade under **Settings**.
 
 ### NVv4 VM size on portal
