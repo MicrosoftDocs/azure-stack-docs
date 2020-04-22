@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 04/13/2020
+ms.date: 04/22/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
@@ -83,7 +83,7 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Occurrence: Common
 
 - Applicable: This issue applies to all supported releases. 
-- Cause: When creating an Inbound or an Outbound Network Security rule, the **Protocol** option shows an **ICMP** button. This is currently not supported on Azure Stack Hub. This issue is fixed and will not appear in the next Azure Stack Hub build. 
+- Cause: When creating an inbound or an outbound network security rule, the **Protocol** option shows an **ICMP** option. This is currently not supported on Azure Stack Hub. This issue is fixed and will not appear in the next Azure Stack Hub release.
 - Occurrence: Common
 
 ### Network interface
@@ -104,8 +104,8 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 ### Public IP
 
 - Applicable: This issue applies to all supported releases.
-- Cause: The **IdleTimeoutInMinutes** for a Public IP that is associated to a Load Balancer cannot be changed. The operation will put the Public IP into a failed state.
-- Remediation: To bring the Public IP back into a successful state, change the **IdleTimeoutInMinutes** on the Load Balancer rule referencing the Public IP back to the original value (the default value is 4 minutes). 
+- Cause: The **IdleTimeoutInMinutes** value for a public IP that is associated to a load balancer cannot be changed. The operation puts the public IP into a failed state.
+- Remediation: To bring the public IP back into a successful state, change the **IdleTimeoutInMinutes** value on the load balancer rule that references the public IP back to the original value (the default value is 4 minutes).
 - Occurrence: Common
 
 ### Virtual Network Gateway
