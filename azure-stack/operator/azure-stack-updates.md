@@ -68,7 +68,7 @@ Notice of updates varies on a couple of factors, such as your connection to the 
 
 Once you know you have an update, apply it by using the following steps.
 
-![Azure Stack Hub update process](./media/azure-stack-updates/azure-stack-update-process.png)
+![Azure Stack Hub update process](./media/azure-stack-updates/azure-stack-update-process.svg)
 
 1. **Plan for the update**.
 
