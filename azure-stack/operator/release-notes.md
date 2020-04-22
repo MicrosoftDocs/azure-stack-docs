@@ -284,6 +284,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - A new version of Azure Stack Hub admin PowerShell modules is available. <!-- For more information, see -->
 
+- New Azure PowerShell tenant modules were released for Azure Stack Hub on April 15, 2020. The currently used Azure RM modules will continue to work, but will no longer be updated after build 2002.
+
 - Added the **Set-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to configure the manual update for Windows Defender definitions in the Azure Stack Hub infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack Hub](azure-stack-security-av.md).
 
 - Added the **Get-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to retrieve the configuration of the manual update for Windows Defender definitions in the Azure Stack Hub infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack Hub](azure-stack-security-av.md).
