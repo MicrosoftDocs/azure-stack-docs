@@ -104,25 +104,25 @@ To rotate the certificate for the application in Azure AD, follow these steps:
 
 ### Rotate certificate for AD FS identity application
 
-The identity application is created by the operator before deployment of Azure App Service on Azure Stack Hub.  If the Application's Object ID is unknown, follow these steps to discover it:
+The identity application is created by the operator before deployment of Azure App Service on Azure Stack Hub. If the application's object ID is unknown, follow these steps to discover it:
 
-1. Go to the **Azure Stack Hub Administration Portal**
+1. Go to the **Azure Stack Hub administrator portal**.
 
-1. Go to **Subscriptions** and select **Default Provider Subscription**
+1. Go to **Subscriptions** and select **Default Provider Subscription**.
 
-1. Select **Access Control (IAM)** and select the **AzureStack-AppService-<guid>** application
+1. Select **Access Control (IAM)** and select the **AzureStack-AppService-<guid>** application.
 
-1. Take a note of the **Object ID**, this value is the ID of the Service Principal that must be updated in ADFS.
+1. Take a note of the **Object ID**, this value is the ID of the Service Principal that must be updated in AD FS.
 
-To rotate the certificate for the application in ADFS, you will need to have access to the privileged endpoint (PEP), and then update the certificate credential using PowerShell, substituting your own values for the following placeholders:
+To rotate the certificate for the application in AD FS, you need to have access to the privileged endpoint (PEP). Then you update the certificate credential using PowerShell, substituting your own values for the following placeholders:
 
 | Placeholder | Description | Example |
 | ----------- | ----------- | ------- |
-| \<PepVM\> | The name of the privileged endpoint VM on your Azure Stack Hub instance. | "AzS-ERCS01" |
-| \<CertificateFileLocation\> | The location of your X509 certificate on disk. | "d:\certs\sso.cer" |
-| \<ApplicationObjectId\> | The identifier assigned to the identity application. | "S-1-5-21-401916501-2345862468-1451220656-1451" |
+| `<PepVM>` | The name of the privileged endpoint VM on your Azure Stack Hub instance. | "AzS-ERCS01" |
+| `<CertificateFileLocation>` | The location of your X509 certificate on disk. | "d:\certs\sso.cer" |
+| `<ApplicationObjectId>` | The identifier assigned to the identity application. | "S-1-5-21-401916501-2345862468-1451220656-1451" |
 
- 1. Open an elevated Windows PowerShell session, and run the following script
+1. Open an elevated Windows PowerShell session and run the following script:
 
     ```powershell
     # Sign in to PowerShell interactively, using credentials that have access to the VM running the Privileged Endpoint
@@ -143,7 +143,7 @@ To rotate the certificate for the application in ADFS, you will need to have acc
 
     ```
 
-1. After the script finishes, it displays the updated app registration info, including the thumbprint value for the certificate
+1. After the script finishes, it displays the updated app registration info, including the thumbprint value for the certificate.
 
     ```shell
     ApplicationIdentifier : S-1-5-21-401916501-2345862468-1451220656-1451
@@ -158,19 +158,16 @@ To rotate the certificate for the application in ADFS, you will need to have acc
 
 ## Rotate system credentials
 
-To rotate the System Credentials used within Azure App Service on Azure Stack Hub, complete the following steps:
+To rotate the system credentials used within Azure App Service on Azure Stack Hub, take the following steps:
 
-1. Go to the App Service Administration experience in the Azure Stack Hub Administrators Portal.
+1. Go to the App Service administration experience in the Azure Stack Hub administrator portal.
 
-1. Navigate to the **Secrets** menu option
+1. Go to the **Secrets** menu option.
 
-1. Click the **Rotate** button in the System Credentials section
+1. Select the **Rotate** button in the System Credentials section.
 
-1. Select the **Scope** of the System Credential you are rotating.  Operators can choose to rotate the System Credentials for All roles or individual roles.
+1. Select the **Scope** of the System Credential you're rotating. Operators can choose to rotate the system credentials for all roles or individual roles.
 
-1. Specify a **new Local Admin User Name**, new **Password** and confirm the **Password** and click **OK**
+1. Specify a **new Local Admin User Name** and a new **Password**. Then confirm the **Password** and select **OK**.
 
-1. The credential(s) will be rotated as required throughout the corresponding Azure App Service on Azure Stack Hub role instance.  Operators can monitor the status of the procedure using the **Status** button.
-
-
-
+1. The credential(s) are rotated as required throughout the corresponding Azure App Service on Azure Stack Hub role instance. Operators can check the status of the procedure using the **Status** button.
