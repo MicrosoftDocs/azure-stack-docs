@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 04/10/2020
+ms.date: 04/22/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
@@ -39,6 +39,10 @@ Before applying the update, make sure to review the following information:
 
 For help with troubleshooting updates and the update process, see [Troubleshoot patch and update issues for Azure Stack Hub](azure-stack-updates-troubleshoot.md).
 
+## Download the update
+
+You can download the Azure Stack Hub update package from [the Azure Stack Hub download page](https://aka.ms/azurestackupdatedownload).
+
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
@@ -67,6 +71,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 <!-- What's new, also net new experiences and features. -->
 
 - A new version (1.8.1) of the Azure Stack Hub admin PowerShell modules based on AzureRM is available.
+- New Azure PowerShell tenant modules will be released for Azure Stack Hub on April 15, 2020. The currently used Azure RM modules will continue to work, but will no longer be updated after build 2002.
 - Added new warning alert on the Azure Stack Hub administrator portal to report on connectivity issues with the configured syslog server. Alert title is **The Syslog client encountered a networking issue while sending a Syslog message**.
 - Added new warning alert on the Azure Stack Hub administrator portal to report on connectivity issues with the Network Time Protocol (NTP) server. Alert title is **Invalid Time Source on [node name]**.
 - The [Java SDK](https://azure.microsoft.com/develop/java/) released new packages due to a breaking change in 2002 related to TLS restrictions. You must install the new Java SDK dependency. You can find the instructions at [Java and API version profiles](../user/azure-stack-version-profiles-java.md?view=azs-2002#java-and-api-version-profiles).
@@ -142,18 +147,6 @@ For more information about update build types, see [Manage updates in Azure Stac
 ## Security updates
 
 For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
-
-## Update planning
-
-Before applying the update, make sure to review the following information:
-
-- [Known issues](known-issues.md)
-- [Security updates](release-notes-security-updates.md)
-- [Checklist of activities before and after applying the update](release-notes-checklist.md)
-
-## Download the update
-
-You can download the Azure Stack Hub 2002 update package from [the Azure Stack Hub download page](https://aka.ms/azurestackupdatedownload).
 
 ## Hotfixes
 
@@ -310,17 +303,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
 
-## Update planning
-
-Before applying the update, make sure to review the following information:
-
-- [Known issues](known-issues.md)
-- [Security updates](release-notes-security-updates.md)
-- [Checklist of activities before and after applying the update](release-notes-checklist.md)
-
-## Download the update
-
-You can download the Azure Stack Hub 1910 update package from [the Azure Stack Hub download page](https://aka.ms/azurestackupdatedownload).
+The Qualys vulnerability report for this release can be downloaded from the [Qualys website](https://www.qualys.com/azure-stack/).
 
 ## Hotfixes
 
@@ -396,7 +379,9 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
 
-## <a name="download-the-update-1908"></a>Download the update
+The Qualys vulnerability report for this release can be downloaded from the [Qualys website](https://www.qualys.com/azure-stack/).
+
+## Download the update
 
 You can download the Azure Stack Hub 1908 update package from [the Azure Stack Hub download page](https://aka.ms/azurestackupdatedownload).
 
@@ -513,6 +498,8 @@ The Azure Stack Hub 1907 update build type is **Express**. For more information 
 ## Security updates
 
 For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
+
+The Qualys vulnerability report for this release can be downloaded from the [Qualys website](https://www.qualys.com/azure-stack/).
 
 ## Update planning
 
