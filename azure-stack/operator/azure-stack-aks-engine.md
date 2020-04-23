@@ -1,21 +1,19 @@
 ---
-title: Add the Azure Kubernetes Services (AKS) engine prerequisites to the Azure Stack Hub Marketplace 
-description: Learn how to add AKS engine prerequisites to the Azure Stack Hub Marketplace.
+title: Add Kubernetes Services engine prerequisites to Azure Stack Hub Marketplace 
+description: Learn how to add Azure Kubernetes Services (AKS) engine prerequisites to Azure Stack Hub Marketplace.
 author: mattbriggs
-
 ms.topic: article
 ms.date: 2/27/2020
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 11/21/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub user, I want to add Azure Kubernetes Services engine prerequisites to Azure Stack Hub Marketplace so I can make the AKS engine available to my users in both connected and disconnected environments. 
+# Keyword: azure stack hub marketplace kubernetes services
 
 ---
 
-
-# Add the Azure Kubernetes Services (AKS) engine prerequisites to the Azure Stack Hub Marketplace
+# Add the Azure Kubernetes Services engine prerequisites to Azure Stack Hub Marketplace
 
 You can enable your users to set up the Azure Kubernetes Services (AKS) Engine by adding the items described in this article to your Azure Stack Hub. Your users can then deploy a Kubernetes cluster in a single, coordinated operation. This article walks you through the steps you need to make the AKS engine available to your users in both connected and disconnected environments. The AKS engine depends on a service principle identity, and in the marketplace, a Custom Script extension and the AKS Base Image. The AKS engine requires that you are running [Azure Stack Hub 1910](release-notes.md?view=azs-1910) or greater.
 
