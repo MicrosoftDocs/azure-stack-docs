@@ -100,8 +100,6 @@ You can find the current version and upgrade version in the following table for 
 
 -   Updates to Linux Kernel version 4.15.0-1071-azure for Ubuntu 16.04-LTS. See "[Package: linux-image-4.15.0-1071-azure (4.15.0-1071.76) \[security\]](https://packages.ubuntu.com/xenial/linux-image-4.15.0-1071-azure)" for details.
 
--   New addon for [Node Problem Detector](https://github.com/kubernetes/node-problem-detector) v0.8.1 ([\#2808](https://github.com/Azure/aks-engine/issues/2808)), this functionality is in private preview and will not work in with a disconnected environment. The component aims to make various node problems visible to the upstream layers in cluster management stack. It is a daemon, which runs on each node, detects node problems and reports them to the Kubernetes apiserver
-
 -   New hyperkube updates to support Kubernetes versions 1.14.8 and 1.15.10.
 
 -   Update kubectl to match the version of Kubernetes for the cluster.. This component is available in the Kubernetes cluster master nodes, you can run it by SSH into a master.
