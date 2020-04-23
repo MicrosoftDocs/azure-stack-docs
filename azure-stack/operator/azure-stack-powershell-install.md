@@ -14,7 +14,7 @@ ms.lastreviewed: 04/14/2020
 
 ---
 
-# Install PowerShell AzureRM or Az module for Azure Stack Hub
+# Install PowerShell AzureRM module for Azure Stack Hub
 
 Azure PowerShell AzureRM provides a set of cmdlets that use the Azure Resource Manager model for managing your Azure Stack Hub resources.
 
