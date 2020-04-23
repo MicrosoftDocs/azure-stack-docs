@@ -4,7 +4,7 @@ description: Create disks for virtual machines in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 04/22/2020
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
@@ -83,11 +83,8 @@ Each unmanaged disk you add should be put in a separate container.
    * Select the **Account type**.
       ![Example: Attach a new disk to the vm](media/azure-stack-manage-vm-disks/create-manage-disk.png)
 
-      **Premium SSD**  
-      Premium disks (SSD) are backed by solid-state drives and offer consistent, low-latency performance. They provide the best balance between price and performance, and are ideal for I/O-intensive apps and production workloads.
-
-      **Standard HDD**  
-      Standard disks (HDD) are backed by magnetic drives and are preferable for apps where data is accessed infrequently. 
+    > [!NOTE]  
+    > Premium disks (SSD) and standard disks (HDD) are backed by the same storage infrastructure in Azure Stack Hub. They provide the same performance.
 
    * Select the **Source type**.
 
@@ -102,7 +99,7 @@ Each unmanaged disk you add should be put in a separate container.
 
    * Select the **Size (GiB)**.
 
-     Standard disk costs increase based on the size of the disk. Premium disk costs and performance increase based on the size of the disk. For more information, see [Managed Disks pricing](https://go.microsoft.com/fwlink/?linkid=843142).
+     Disk costs increase based on the size of the disk.
 
    * Select **Create**. Azure Stack Hub creates and validates the managed disk.
 
