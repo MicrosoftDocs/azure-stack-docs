@@ -4,10 +4,10 @@ title: Troubleshoot Network Virtual Appliance issues on Azure Stack Hub
 description: 115-145 characters including spaces. This abstract displays in the search result.
 author: sethmanheim
 ms.author: sethm
-ms.date: 4/14/2020
+ms.date: 4/23/2020
 ms.topic: article
 ms.reviewer: sranthar
-ms.lastreviewed: 04/14/2020
+ms.lastreviewed: 04/23/2020
 
 ---
 
@@ -20,7 +20,7 @@ Technical support for third-party NVAs and their integration with the Azure Stac
 > [!NOTE]
 > If you have a connectivity or routing problem that involves an NVA, you should [contact the vendor of the NVA](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) directly.
 
-If your Azure Stack Hub issue is not addressed in this article, please visit the [Azure Stack Hub MSDN forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). You also can submit an Azure support request. To submit a support request, see [Azure Stack Hub support](../operator/azure-stack-manage-basics.md#where-to-get-support).
+If your Azure Stack Hub NVA issue is not addressed in this article, please create an [Azure Stack Hub support ticket](../operator/azure-stack-manage-basics.md#where-to-get-support).
 
 ## Checklist for troubleshooting with NVA vendor
 
