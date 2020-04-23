@@ -17,6 +17,11 @@ When updating Azure Stack HCI clusters, the goal is to maintain availability by 
 
 To use CAU, you must first install the **Failover Clustering** feature in Windows Server on each cluster node, using either Windows Admin Center or PowerShell, and [create and validate a failover cluster](/windows-server/failover-clustering/create-failover-cluster#create-a-failover-cluster-by-using-windows-powershell). You must also install the **Failover Clustering Tools**, which are part of the **Remote Server Administration Tools** and are installed by default when you install the Failover Clustering feature using Windows Admin Center (is this true)? 
 
+CAU has two plug-ins:
+
+- The **Microsoft.WindowsUpdatePlugin** installs downloads from Windows Update (WU) and offline sources like WSUS
+- The **Microsoft.HotfixPlugin** enables custom sources such as OEM-specific feature updates
+
 ### Install Failover Clustering and Failover Clustering Tools using PowerShell
 
 To check if a cluster or server has the Failover Clustering feature already installed, issue the **Get-WindowsFeature** PowerShell cmdlet from your management PC, or run it directly on the cluster or server without the -ComputerName parameter:
