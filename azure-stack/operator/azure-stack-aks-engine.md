@@ -4,16 +4,15 @@ description: Learn how to add AKS engine prerequisites to the Azure Stack Hub Ma
 author: mattbriggs
 
 ms.topic: article
-ms.date: 2/27/2020
+ms.date: 4/23/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 11/21/2019
+ms.lastreviewed: 4/23/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
 
 ---
-
 
 # Add the Azure Kubernetes Services (AKS) engine prerequisites to the Azure Stack Hub Marketplace
 
@@ -56,7 +55,7 @@ Add the following item to the marketplace:
     In the list, select:
     - **Publisher**: Azure Kubernetes Service
     - **Offer**: aks
-    - **Version**: AKS Base Image 16.04-LTS Image Distro, October 2019 (2019.10.24 or version that maps to AKS engine)
+    - **Version**: AKS Base Ubuntu 16.04-LTS Image Distro, March 2020 (Version: 2020.03.19) or version that maps to AKS engine
 
 1. Select **Download.**
 
