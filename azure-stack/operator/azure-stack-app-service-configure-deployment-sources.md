@@ -101,7 +101,7 @@ You must have a Microsoft account linked to a OneDrive account to complete this 
     ![OneDrive Applications][10]
 
 3. Enter a **Name** for the new app registration: enter **App Service on Azure Stack Hub** and then select **Create Application**.
-4. The next screen lists the properties of your new app. Save the **Application ID** to soame temporary location.
+4. The next screen lists the properties of your new app. Save the **Application ID** to a temporary location.
 
     ![OneDrive Application Properties][11]
 
@@ -118,7 +118,7 @@ You must have a Microsoft account linked to a OneDrive account to complete this 
         ![OneDrive Application - Graph Permissions][13]
 
 9. Select **Save**.
-10. In a new browser tab or window, sign in to the Azure Stack Hub adminisrtator portal as the service admin.
+10. In a new browser tab or window, sign in to the Azure Stack Hub administrator portal as the service admin.
 11. Go to **Resource Providers** and select the **App Service Resource Provider Admin**.
 12. Select **Source control configuration**.
 13. Copy and paste the **Application ID** into the **Client ID** input box and **Password** into the **Client Secret** input box for OneDrive.
