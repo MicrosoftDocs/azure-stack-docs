@@ -39,19 +39,23 @@ In addition to local Git, the following source control providers are supported:
 
 You must have a GitHub account to complete this task. You might want to use an account for your organization rather than a personal account.
 
-1. Sign in to GitHub, browse to https://www.github.com/settings/developers, and then click **Register a new application**.
+1. Sign in to GitHub, go to https://www.github.com/settings/developers, and then select **Register a new application**.
+
     ![GitHub - Register a new application][3]
+
 2. Enter an **Application name**. For example, **App Service on Azure Stack Hub**.
-3. Enter the **Homepage URL**. The Homepage URL must be the Azure Stack Hub portal address. For example, `https://portal.<region>.<FQDN>`. For more details on the Azure Stack Hub fully qualified domain name (FQDN), see [Azure Stack Hub DNS namespace](azure-stack-integrate-dns.md#azure-stack-hub-dns-namespace).
+3. Enter the **Homepage URL**. The Homepage URL must be the Azure Stack Hub portal address. For example, `https://portal.<region>.<FQDN>`. For more information on the Azure Stack Hub fully qualified domain name (FQDN), see [Azure Stack Hub DNS namespace](azure-stack-integrate-dns.md#azure-stack-hub-dns-namespace).
 4. Enter an **Application Description**.
 5. Enter the **Authorization callback URL**. In a default Azure Stack Hub deployment, the URL is in the form `https://portal.<region>.<FQDN>/TokenAuthorize`. 
-6. Click **Register application**. A page is displayed listing the **Client ID** and **Client Secret** for the app.
+6. Select **Register application**. A page is displayed listing the **Client ID** and **Client Secret** for the app.
+
     ![GitHub - Completed application registration][5]
-7. In a new browser tab or window, sign in to the Azure Stack Hub admin portal as the service admin.
-8. Browse to **Resource Providers**, and select the **App Service Resource Provider Admin**.
-9. Click **Source control configuration**.
+
+7. In a new browser tab or window, sign in to the Azure Stack Hub administrator portal as the service admin.
+8. Go to **Resource Providers** and select the **App Service Resource Provider Admin**.
+9. Select **Source control configuration**.
 10. Copy and paste the **Client ID** and **Client Secret** into the corresponding input boxes for GitHub.
-11. Click **Save**.
+11. Select **Save**.
 
 ## Configure BitBucket
 
