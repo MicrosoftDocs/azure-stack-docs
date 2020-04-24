@@ -64,7 +64,7 @@ Recovering an application from an agent requires manually recreating the VM, ins
 
 #### Backup using disk snapshot for stopped VMs
 
-Backup products can protect IaaS VM configuration and disks attached to a stopped VM. Backup products that integrate with Azure Stack Hub APIs to capture VM configuration and create disk snapshots. If planned downtime for the application is possible, then make sure the VM is in a stopped state before starting backup workflow.  
+Backup products can protect IaaS VM configuration and disks attached to a stopped VM. Use backup products that integrate with Azure Stack Hub APIs to capture VM configuration and create disk snapshots. If planned downtime for the application is possible, then make sure the VM is in a stopped state before starting backup workflow.  
 
 #### Backup using disk snapshot snapshot for running VMs
 
