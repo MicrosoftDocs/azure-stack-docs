@@ -57,7 +57,7 @@ The following instructions use the minimum steps to perform the upgrade. If woul
 |1.15.4 | 1.15.10 |
 |1.15.5 | 1.15.10 |
 
-For a complete mapping of AKS engine, AKS Base Image and Kubernetes versions see [Supported AKS Engine Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions)."
+For a complete mapping of AKS engine, AKS Base Image and Kubernetes versions see [Supported AKS Engine Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions).
 
 2. Collect the information you will need to run the `upgrade` command. The upgrade uses the following parameters:
 
