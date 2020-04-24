@@ -23,36 +23,36 @@ These release notes describe new features, fixes, and known issues in Azure App 
 
 ## Build reference
 
-The App Service on Azure Stack Hub Update 8 build number is **86.0.2.13**
+The App Service on Azure Stack Hub update 8 build number is **86.0.2.13**
 
 ### Prerequisites
 
-Refer to the [Before You Get Started documentation](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
+See [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md) before you begin deployment.
 
 Before you begin the upgrade of Azure App Service on Azure Stack to 1.8:
 
-- Ensure all roles are Ready in the Azure App Service Administration in the Azure Stack Admin Portal
+- Ensure all roles are ready in Azure App Service administration in the Azure Stack Hub administrator portal.
 
-- Back up the App Service and Master Databases:
+- Back up the App Service and master databases:
   - AppService_Hosting;
   - AppService_Metering;
   - Master
 
-- Back up the Tenant App content file share
+- Back up the tenant app content file share.
 
-- Syndicate the **Custom Script Extension** version **1.9.3** from the Marketplace
+- Syndicate the **Custom Script Extension** version **1.9.3** from Azure Stack Hub Marketplace.
 
 ### New features and fixes
 
-Azure App Service on Azure Stack Update 8 includes the following improvements and fixes:
+Azure App Service on Azure Stack update 8 includes the following improvements and fixes:
 
-- Updates to **App Service Tenant, Admin, Functions portals and Kudu tools**. Consistent with Azure Stack Portal SDK version.
+- Updates to **App Service tenant, admin, functions portals and Kudu tools**. Consistent with Azure Stack portal SDK version.
 
-- Updates **Azure Functions runtime** to **v1.0.12615**.
+- Updates **Azure functions runtime** to **v1.0.12615**.
 
-- Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.
+- Updates to core service to improve reliability and error messaging, which enables easier diagnosis of common issues.
 
-- **Updates to the following application frameworks and tools**:
+- **Updates to the following app frameworks and tools**:
   - ASP.NET Core 3.1.0
   - ASP.NET Core 3.0.1
   - ASP.NET Core 2.2.8
@@ -73,13 +73,13 @@ Azure App Service on Azure Stack Update 8 includes the following improvements an
 - **Updates to underlying operating system of all roles**:
   - [2019-12 Cumulative Update for Windows Server 2016 for x64-based Systems (KB4530689)](https://support.microsoft.com/help/4530689)
 
-- **Managed Disk support for new deployments**
+- **Managed disk support for new deployments**
 
-All new deployments of Azure App Service on Azure Stack Hub will make use of managed disks for all Virtual Machines and Virtual Machine Scale Sets.  All existing deployments will continue to use unmanaged disks.
+All new deployments of Azure App Service on Azure Stack Hub will make use of managed disks for all virtual machines and virtual machine scale sets. All existing deployments will continue to use unmanaged disks.
 
-- **TLS 1.2 Enforced by Front End load balancers**
+- **TLS 1.2 enforced by front-end load balancers**
 
-As of this update **TLS 1.2** will be enforced for all applications.
+As of this update, **TLS 1.2** will be enforced for all apps.
 
 ### Known issues (upgrade)
 
