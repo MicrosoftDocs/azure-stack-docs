@@ -83,11 +83,11 @@ SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-intercep
 |Patch & Update|https://&#42;.azureedge.net<br>https:\//aka.ms/azurestackautomaticupdate|HTTPS|443|Public VIP - /27|
 |Registration|**Azure**<br>https:\//management.azure.com<br>**Azure Government**<br>https:\//management.usgovcloudapi.net/<br>**Azure China 21Vianet**<br>https:\//management.chinacloudapi.cn|HTTPS|443|Public VIP - /27|
 |Usage|**Azure**<br>https://&#42;.trafficmanager.net<br>**Azure Government**<br>https://&#42;.usgovtrafficmanager.net<br>**Azure China 21Vianet**<br>https://&#42;.trafficmanager.cn|HTTPS|443|Public VIP - /27|
-|Windows Defender|&#42;.wdcp.microsoft.com<br>&#42;.wdcpalt.microsoft.com<br>&#42;.wd.microsoft.com<br>&#42;.update.microsoft.com<br>&#42;.download.microsoft.com<br>https:\//www.microsoft.com/pkiops/crl<br>https:\//www.microsoft.com/pkiops/certs<br>https:\//crl.microsoft.com/pki/crl/products<br>https:\//www.microsoft.com/pki/certs<br>https:\//secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|Public VIP - /27<br>Public infrastructure Network|
+|Windows Defender|&#42;.wdcp.microsoft.com<br>&#42;.wdcpalt.microsoft.com<br>&#42;.wd.microsoft.com<br>&#42;.update.microsoft.com<br>&#42;.download.microsoft.com<br><br>https:\//secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|Public VIP - /27<br>Public infrastructure Network|
 |NTP|(IP of NTP server provided for deployment)|UDP|123|Public VIP - /27|
 |DNS|(IP of DNS server provided for deployment)|TCP<br>UDP|53|Public VIP - /27|
 |SYSLOG|(IP of SYSLOG server provided for deployment)|TCP<br>UDP|6514<br>514|Public VIP - /27|
-|CRL|(URL under CRL Distribution Points on your certificate)|HTTP|80|Public VIP - /27|
+|CRL|(URL under CRL Distribution Points on your certificate)<br>http://crl.microsoft.com/pki/crl/products<br>http://mscrl.microsoft.com/pki/mscorp<br>http://www.microsoft.com/pki/certs<br>http://www.microsoft.com/pki/mscorp<br>http://www.microsoft.com/pkiops/crl<br>http://www.microsoft.com/pkiops/certs<br>|HTTP|80|Public VIP - /27|
 |LDAP|Active Directory Forest provided for Graph integration|TCP<br>UDP|389|Public VIP - /27|
 |LDAP SSL|Active Directory Forest provided for Graph integration|TCP|636|Public VIP - /27|
 |LDAP GC|Active Directory Forest provided for Graph integration|TCP|3268|Public VIP - /27|
