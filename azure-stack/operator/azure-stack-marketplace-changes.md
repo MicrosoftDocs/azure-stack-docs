@@ -185,6 +185,23 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 - 04/17/2020: Bitnami	WordPress with NGINX and SSL - version	5.3.2002212004
 - 04/17/2020: Bitnami	XOOPS - version	2.5.2004042000
 - 04/17/2020: Bitnami	ZooKeeper - version	3.6.2003261205
+- 04/17/2020: Bitnami Elastic Search Cluster - Version 1.0.1
+- 04/17/2020: Bitnami Kafka Cluster  –  Version 1.0.1
+- 04/17/2020: Bitnami MongoDB with Replication – Version 1.0.1
+- 04/17/2020: Bitnami Redis High Availability – Version 1.0.26
+- 04/17/2020: Bitnami Moodle Multi-Tier – Version 1.0.45
+- 04/17/2020: Bitnami ZooKeeper Cluster - Version 1.0.17
+- 04/17/2020: Bitnami PostgreSQL with Replication - Version 1.0.36
+- 04/17/2020: Bitnami Memcached Multiple Instances - Version 1.0.33 
+- 04/17/2020: Bitnami MySQL with Replication - Version 1.0.36
+- 04/17/2020: Bitnami Cassandra Cluster - Version 1.0.20
+- 04/17/2020: Bitnami etcd Cluster - Version 1.0.15
+- 04/17/2020: Bitnami MariaDB with Replication - Version 1.0.12
+- 04/17/2020: Bitnami WordPress Multi-Tier - Version 1.0.55
+- 04/17/2020: Bitnami NATS Cluster - Version 1.0.18
+- 04/17/2020: Bitnami MariaDB Galera Cluster - Version 1.0.35
+- 04/17/2020: Bitnami Jenkins Cluster - Version 1.0.69
+- 04/17/2020: Bitnami RabbitMQ Cluster - Version 1.0.37
 - 07/11/2019:	Thales CipherTrust Cloud Key Manager - version 1.0.7
 - 07/16/2019:	Windows Server 2016 Datacenter Server Core BYOL - version 2016.127.20190522
 - 07/16/2019:	Windows Server 2016 Datacenter Server Core Pay-as-you-use - version 2016.127.20190522
