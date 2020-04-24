@@ -24,27 +24,31 @@ CAU has two plug-ins:
 
 ### Install Failover Clustering and Failover Clustering Tools using PowerShell
 
-To check if a cluster or server has the Failover Clustering feature already installed, issue the **Get-WindowsFeature** PowerShell cmdlet from your management PC, or run it directly on the cluster or server without the -ComputerName parameter:
+To check if a cluster or server has the Failover Clustering feature already installed, issue the **`Get-WindowsFeature`** PowerShell cmdlet from your management PC, or run it directly on the cluster or server without the -ComputerName parameter:
 
 ```PowerShell
 Get-WindowsFeature -Name Failover* -ComputerName Server1
+
+Display Name                                            Name                       Install State
+------------                                            ----                       -------------
+[X] Failover Clustering                                 Failover-Clustering            Installed
 ```
 
 Make sure "Install State" says Installed, and that an X appears before Failover Clustering. 
 
-If the Failover Clustering feature is not installed, install it with the **Install-WindowsFeature** cmdlet:
+If the Failover Clustering feature is not installed, install it with the **`Install-WindowsFeature`** cmdlet:
 
 ```PowerShell
 Install-WindowsFeature –Name Failover-Clustering –IncludeManagementTools -ComputerName Server1
 ```
 
-You'll also  need the the Failover Cluster Module for PowerShell, which includes Windows Powershell cmdlets for managing failover clusters. It also includes the Cluster-Aware Updating module for Windows PowerShell, for installing software updates on failover clusters. To check if a cluster or server has the Failover Cluster Module for PowerShell already installed, issue the **Get-WindowsFeature** PowerShell cmdlet from your management PC, or run it directly on the cluster or server without the -ComputerName parameter:
+You'll also  need the the Failover Cluster Module for PowerShell, which includes Windows Powershell cmdlets for managing failover clusters. It also includes the Cluster-Aware Updating module for Windows PowerShell, for installing software updates on failover clusters. To check if a cluster or server has the Failover Cluster Module for PowerShell already installed, issue the **`Get-WindowsFeature`** PowerShell cmdlet from your management PC, or run it directly on the cluster or server without the -ComputerName parameter:
 
 ```PowerShell
 Get-WindowsFeature -Name RSAT-Clustering-PowerShell -ComputerName Server1
 ```
 
-If the Failover Cluster Module for PowerShell is not installed, install it with the **Install-WindowsFeature** cmdlet:
+If the Failover Cluster Module for PowerShell is not installed, install it with the **`Install-WindowsFeature`** cmdlet:
 
 ```PowerShell
 Install-WindowsFeature –Name RSAT-Clustering-PowerShell -ComputerName Server1
@@ -64,7 +68,7 @@ CAU can coordinate the complete cluster updating operation in two modes:
 
 ### Add CAU cluster role to configure self-updating
 
-The **Get-CauClusterRole** cmdlet displays the configuration properties of the CAU cluster role on the specified cluster.
+The **`Get-CauClusterRole`** cmdlet displays the configuration properties of the CAU cluster role on the specified cluster.
 
 ```PowerShell
 Get-CauClusterRole -ClusterName Cluster1
@@ -74,7 +78,7 @@ If the role is not yet configured on the cluster, you will see the following err
 
 Get-CauClusterRole : The current cluster is not configured with a Cluster-Aware Updating clustered role.
 
-To add the CAU cluster role for self-updating mode using PowerShell, use the **Add-CauClusterRole** cmdlet and supply the appropriate [parameters](/powershell/module/clusterawareupdating/add-cauclusterrole?view=win10-ps#parameters), as in the following example:
+To add the CAU cluster role for self-updating mode using PowerShell, use the **`Add-CauClusterRole`** cmdlet and supply the appropriate [parameters](/powershell/module/clusterawareupdating/add-cauclusterrole?view=win10-ps#parameters), as in the following example:
 
 ```PowerShell
 Add-CauClusterRole -ClusterName Cluster1 -MaxFailedNodes 0 -RequireAllNodesOnline -EnableFirewallRules -VirtualComputerObjectName Cluster1-CAU -Force -CauPluginName Microsoft.WindowsUpdatePlugin -MaxRetriesPerNode 3 -CauPluginArguments @{ 'IncludeRecommendedUpdates' = 'False' } -StartDate "3/2/2020 3:00:00 AM" -DaysOfWeek 4 -WeeksOfMonth @(3) -verbose
@@ -85,7 +89,7 @@ Add-CauClusterRole -ClusterName Cluster1 -MaxFailedNodes 0 -RequireAllNodesOnlin
 
 ## Scan cluster for applicable updates
 
-You can use the **Invoke-CAUScan** cmdlet to scan cluster nodes for applicable updates and get a list of the initial set of updates that are applied to each node in a specified cluster:
+You can use the **`Invoke-CAUScan`** cmdlet to scan cluster nodes for applicable updates and get a list of the initial set of updates that are applied to each node in a specified cluster:
 
 ```PowerShell
 Invoke-CauScan -ClusterName Cluster1 -CauPluginName Microsoft.WindowsUpdatePlugin -Verbose
@@ -95,7 +99,7 @@ Generation of the list can take a few minutes to complete. The preview list incl
 
 ## Scan and install updates
 
-To scan cluster nodes for applicable updates and perform a full updating run on the specified cluster, use the **Invoke-CAURun** cmdlet:
+To scan cluster nodes for applicable updates and perform a full updating run on the specified cluster, use the **`Invoke-CAURun`** cmdlet:
 
 ```PowerShell
 Invoke-CauRun -ClusterName Cluster1 -CauPluginName Microsoft.WindowsUpdatePlugin -MaxFailedNodes 1 -MaxRetriesPerNode 3 -RequireAllNodesOnline -Force
@@ -114,7 +118,7 @@ The updating run process also includes ensuring that quorum is maintained, check
 
 ## Check on the status of an updating run
 
-An administrator can get summary information about an updating run in progress by running the **Get-CauRun** cmdlet:
+An administrator can get summary information about an updating run in progress by running the **`Get-CauRun`** cmdlet:
 
 ```PowerShell
 Get-CauRun -ClusterName Cluster1
