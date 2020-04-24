@@ -22,7 +22,7 @@ This article describes the contents of the Azure Kubernetes Service (AKS) engine
 
 The AKS engine upgrade command fully automates the upgrade process of your cluster, it takes care of virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the information in this article.
 
-## Upgrade considerations
+### Upgrade considerations
 
 -   Are you using the correct marketplace item, AKS Base Ubuntu 16.04-LTS Image Distro for your version of the AKS engine? You can find the versions in the section [Download the new AKS base Ubuntu Image and AKS engine versions](#download-the-new-aks-base-ubuntu-image-and-aks-engine-versions).
 
@@ -40,23 +40,25 @@ The AKS engine upgrade command fully automates the upgrade process of your clust
 
 -   Set up a staged upgrade on a cluster that's configured with the same values as the production cluster and test the upgrade there before doing so in your production cluster.
 
-## Use the upgrade command
+### Use the upgrade command
 
 You will be required to use the AKS engine "upgrade" command as described in the following article [Upgrade a Kubernetes cluster on Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-upgrade).
 
-## Upgrade interruptions
+### Upgrade interruptions
 
 Sometimes unexpected factors interrupt the upgrade of the cluster. An interruption can occur when the AKS engine reports an error or something happens to the AKS engine execution process. Examine the cause of the interruption, address it, and submit again the same upgrade command to continue the upgrade process. The **upgrade** command is idempotent and should resume the upgrade of the cluster once resubmitted the command. Normally, interruptions increase the time to complete the update, but should not affect the completion of it.
 
-## Estimated upgrade time
+### Estimated upgrade time
 
 The estimated time is between 12 to 15 minutes per VM in the cluster. For example, a 20-node cluster may take approximately to five (5) hours to upgrade.
 
-### Download the new AKS base Ubuntu Image and AKS engine versions
+## Download new image and AKS engine
+
+Download the new versions of the AKS base Ubuntu Image and AKS engine.
 
 As explain in the AKS engine for Azure Stack Hub documentation, deploying a Kubernetes cluster requires two main components: 
 1. The aks-engine binary
-2.  AKS Base Ubuntu 16.04-LTS Image Distro
+2. AKS Base Ubuntu 16.04-LTS Image Distro
 
 New versions of these are available with this update:
 
@@ -68,7 +70,7 @@ New versions of these are available with this update:
 
 -   The Kubernetes cluster administrator will need to download the new aks-engine version 0.48.0. See instructions in this the following article, [Install the AKS engine on Linux in Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-deploy-linux). You can follow the same process you use to install the cluster for the first time. The update will overwrite the previous binary. For example, if you used the `get-akse.sh` script, follow the same steps outlined in the article [Install in a connected environment](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-deploy-linux#install-in-a-connected-environment). The same process applies if you're installing in on a Windows system, article [Install the AKS engine on Windows in Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-deploy-windows).
 
-### Kubernetes version upgrade path
+##S Kubernetes version upgrade path
 
 You can find the current version and upgrade version in the following table for Azure Stack Hub. Don't follow the aks-engine `get-versions` command since the command one also includes the versions supported in global Azure. The following version and upgrade table applies to the AKS engine cluster in Azure Stack Hub.
 
