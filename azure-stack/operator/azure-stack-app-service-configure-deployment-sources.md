@@ -114,7 +114,7 @@ You must have a Microsoft account linked to a OneDrive account to complete this 
 8. Add the **Microsoft Graph Permissions** - **Delegated Permissions**.
 
     - **Files.ReadWrite.AppFolder**
-    - **User. Read**  
+    - **User. Read**
         ![OneDrive Application - Graph Permissions][13]
 
 9. Select **Save**.
@@ -129,24 +129,28 @@ You must have a Microsoft account linked to a OneDrive account to complete this 
 > [!NOTE]
 > You must have a DropBox account to complete this task. You might want to use an account for your organization rather than a personal account.
 
-1. Browse to https://www.dropbox.com/developers/apps and sign in using your DropBox account credentials.
-2. Click **Create app**.
+1. Go to https://www.dropbox.com/developers/apps and sign in using your DropBox account credentials.
+2. Select **Create app**.
 
     ![Dropbox apps][14]
 
 3. Select **DropBox API**.
 4. Set the access level to **App Folder**.
 5. Enter a **Name** for your app.
-![Dropbox application registration][15]
-6. Click **Create App**. You're presented with a page listing the settings for the app, including **App key** and **App secret**.
+
+    ![Dropbox application registration][15]
+
+6. Select **Create App**. You're presented with a page listing the settings for the app, including **App key** and **App secret**.
 7. Make sure that the **App folder name** is set to **App Service on Azure Stack Hub**.
-8. Set the **OAuth 2 Redirect URI** and then click **Add**. In a default Azure Stack Hub deployment, the Redirect URI is in the form `https://portal.<region>.<FQDN>/TokenAuthorize`. 
-![Dropbox application configuration][16]
-9.  In a new browser tab or window, sign in to the Azure Stack Hub admin portal as the service admin.
-10.  Browse to **Resource Providers** and select the **App Service Resource Provider Admin**.
-11. Click **Source control configuration**.
+8. Set the **OAuth 2 Redirect URI** and then select **Add**. In a default Azure Stack Hub deployment, the redirect URI is in the form `https://portal.<region>.<FQDN>/TokenAuthorize`.
+
+    ![Dropbox application configuration][16]
+
+9. In a new browser tab or window, sign in to the Azure Stack Hub administrator portal as the service admin.
+10. Go to **Resource Providers** and select the **App Service Resource Provider Admin**.
+11. Select **Source control configuration**.
 12. Copy and paste the **Application Key** into the **Client ID** input box and **App secret** into the **Client Secret** input box for DropBox.
-13. Click **Save**.
+13. Select **Save**.
 
 ## Next steps
 
