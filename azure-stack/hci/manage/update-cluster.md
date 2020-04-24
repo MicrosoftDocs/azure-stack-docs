@@ -28,13 +28,15 @@ To check if a cluster or server has the Failover Clustering feature already inst
 
 ```PowerShell
 Get-WindowsFeature -Name Failover* -ComputerName Server1
+```
 
+Make sure "Install State" says Installed, and that an X appears before Failover Clustering.
+
+```Shell
 Display Name                                            Name                       Install State
 ------------                                            ----                       -------------
 [X] Failover Clustering                                 Failover-Clustering            Installed
 ```
-
-Make sure "Install State" says Installed, and that an X appears before Failover Clustering. 
 
 If the Failover Clustering feature is not installed, install it with the **`Install-WindowsFeature`** cmdlet:
 
