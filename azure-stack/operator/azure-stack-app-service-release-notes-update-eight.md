@@ -16,10 +16,10 @@ ms.lastreviewed: 03/25/2019
 
 # App Service on Azure Stack Hub update 8 release notes
 
-These release notes describe the improvements and fixes in Azure App Service on Azure Stack Hub Update 8 and any known issues. Known issues are divided into issues directly related to the deployment, update process, and issues with the build (post-installation).
+These release notes describe new features, fixes, and known issues in Azure App Service on Azure Stack Hub update 8. Known issues are divided into two sections: issues related to the upgrade process and issues with the build (post-installation).
 
 > [!IMPORTANT]
-> Apply the 1910 update to your Azure Stack integrated system or deploy the latest Azure Stack development kit before deploying Azure App Service 1.8.
+> Apply the 1910 update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before deploying Azure App Service 1.8.
 
 ## Build reference
 
