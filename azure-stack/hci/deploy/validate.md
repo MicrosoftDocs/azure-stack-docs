@@ -4,7 +4,7 @@ description: This how-to article focuses on why cluster validation is important,
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 4/23/2020
+ms.date: 4/24/2020
 ---
 
 # Validate an Azure Stack HCI cluster
@@ -60,7 +60,6 @@ On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE
     - Network adapter names.
     - Priority Flow Control (PFC) and Enhanced Transmission Selection (ETS) settings.
 - An internet connection to download the tool module in Windows PowerShell from Microsoft.
-<!---Where/how does user connect to MS network to get tool? Use Jan's video instruction to add useful info to steps. Update prereqs with details from video/screenshots. Use screenshots that require config/mulitple settings--->
 
 <!---Should we add Jan's disclaimer in a note? Or maybe include the video link after each procedure that shows the disclaimer?--->
 
@@ -70,7 +69,12 @@ To install and run the Validate-DCB tool:
 
     :::image type="content" source="../media/validate/powershell-install-for-tool.png" alt-text="The PowerShell command to install the validate-DCB tool module":::
 
+1. Accept the requests to use the NuGet provider and access the repository to install the tool.
 1. After PowerShell connects to the Microsoft network to download the tool, type `Validate-DCB` and press **Enter** to start the tool wizard.
+
+> [!NOTE]
+    > If you cannot run the Validate-DCB tool script, you might need to adjust your PowerShell execution policies. Use the `Get-ExecutionPolicy` cmdlet to view your current script execution policy settings. For information on setting execution policies in PowerShell, see [About Execution Policies](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7).
+
 1. On the Welcome to the Validate-DCB configuration wizard page, select **Next**.
 1. On the Clusters and Nodes page, type the name of the server cluster that you want to validate, select **Resolve** to list it on the page, and then select **Next**.
 
@@ -86,8 +90,6 @@ To install and run the Validate-DCB tool:
     > [!IMPORTANT]
     > - To learn more about how SR-IOV improves network performance, see [Overview of Single Root I/O Virtualization (SR-IOV)](https://docs.microsoft.com/windows-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-). 
     > - To learn more about how jumbo frames increase Ethernet and network processing efficiency, see the [Jumbo frame](https://en.wikipedia.org/wiki/Jumbo_frame) wiki.
-
-    <!---Many users will need help on how to configure stuff like the jumbo frame size, R/RoCE Max Frame Size, whether to enable vSR-IOV. This is absolutely stuff that we can cover in the doc, but John might need help figuring out what to say if the videos don't cover them.--->
 
 1. On the Data Center Bridging page, under **Policy Name**, change **SMBDirect** to **SMB**, leave the other settings values as is, and select **Next**.
 
