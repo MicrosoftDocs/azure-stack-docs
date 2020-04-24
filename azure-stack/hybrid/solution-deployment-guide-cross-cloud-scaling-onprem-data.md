@@ -1,5 +1,5 @@
 ---
-title: Deploy hybrid app with on-prem data that scales cross-cloud
+title: Deploy hybrid app with on-premises data that scales cross-cloud
 description: Learn how to deploy an app that uses on-premises data and scales cross-cloud using Azure and Azure Stack Hub.
 author: BryanLa
 ms.topic: article
@@ -13,7 +13,7 @@ ms.lastreviewed: 11/05/2019
 
 ---
 
-# Deploy hybrid app with on-prem data that scales cross-cloud
+# Deploy hybrid app with on-premises data that scales cross-cloud
 
 This solution guide shows you how to deploy a hybrid app that spans both Azure and Azure Stack Hub and uses a single on-premises data source.
 
@@ -360,7 +360,7 @@ When traffic decreases, the Azure web app can automatically reduce the number of
    - Set the **Threshold** to **30**.
    - Set the **Duration** to **10**.
 
-#### Action**
+#### Action
 
 1. Under **Operation**, select **Decrease Count by**.
 
