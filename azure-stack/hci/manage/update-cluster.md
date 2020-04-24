@@ -32,7 +32,7 @@ Get-WindowsFeature -Name Failover* -ComputerName Server1
 
 Make sure "Install State" says Installed, and that an X appears before Failover Clustering.
 
-```Shell
+```PowerShell
 Display Name                                            Name                       Install State
 ------------                                            ----                       -------------
 [X] Failover Clustering                                 Failover-Clustering            Installed
