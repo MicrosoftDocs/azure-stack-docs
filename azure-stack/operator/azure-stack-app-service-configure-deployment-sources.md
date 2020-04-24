@@ -15,7 +15,7 @@ ms.lastreviewed: 10/15/2019
 
 # Configure deployment sources for App Services on Azure Stack Hub
 
-App Service on Azure Stack Hub supports on-demand deployment from multiple source control providers. This feature lets app developers deploy direct from their source control repositories. If users want to configure App Service to connect to their repositories, a cloud operator must first configure the integration between App Service on Azure Stack Hub and the source control provider.  
+App Service on Azure Stack Hub supports on-demand deployment from multiple source control providers. This feature lets app developers deploy directly from their source control repositories. If users want to configure App Service to connect to their repositories, a cloud operator must first configure the integration between App Service on Azure Stack Hub and the source control provider.  
 
 In addition to local Git, the following source control providers are supported:
 
@@ -26,11 +26,14 @@ In addition to local Git, the following source control providers are supported:
 
 ## View deployment sources in App Service administration
 
-1. Sign in to the Azure Stack Hub admin portal as the service admin.
+1. Sign in to the Azure Stack Hub administrator portal as the service admin.
 2. Browse to **All Services** and select the **App Service**.
-    ![App Service Resource Provider Admin][1]
-3. Click **Source control configuration**. You can see the list of all configured deployment sources.
-    ![App Service Resource Provider Admin Source Control Configuration][2]
+
+    ![App Service resource provider admin][1]
+
+3. Select **Source control configuration**. You can see the list of all configured deployment sources.
+
+    ![App Service resource provider admin source control configuration][2]
 
 ## Configure GitHub
 
