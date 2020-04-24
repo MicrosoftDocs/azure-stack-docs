@@ -55,8 +55,8 @@ The estimated time is between 12 to 15 minutes per VM in the cluster. For exampl
 ### Download the new AKS base Ubuntu Image and AKS engine versions
 
 As explain in the AKS engine for Azure Stack Hub documentation, deploying a Kubernetes cluster requires two main components: 
-1. the aks-engine binary
-2. the AKS base Image.
+1. The aks-engine binary
+2.  AKS Base Ubuntu 16.04-LTS Image Distro
 
 New versions of these are available with this update:
 
@@ -72,7 +72,7 @@ New versions of these are available with this update:
 
 You can find the current version and upgrade version in the following table for Azure Stack Hub. Don't follow the aks-engine `get-versions` command since the command one also includes the versions supported in global Azure. The following version and upgrade table applies to the AKS engine cluster in Azure Stack Hub.
 
-| **Current Version** | **Upgrade available** |
+| **Current version** | **Upgrade available** |
 | --------------------| ----------------------|
 | 1.14.7 | 1.15.10 |
 | 1.14.8 | 1.15.10 |
@@ -81,7 +81,7 @@ You can find the current version and upgrade version in the following table for 
 
 ## What's new 
 
--   Support for Kubernetes version 1.15.10 ([\#2834](https://github.com/Azure/aks-engine/issues/2834)). When deploying a new cluster make sure to specify in your api model json file (a.k.s. cluster definition file) the release version number as well as the minor version number. Example [here](https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-azurestack.json):
+-   Support for Kubernetes version 1.15.10 ([\#2834](https://github.com/Azure/aks-engine/issues/2834)). When deploying a new cluster make sure to specify in your api model json file (a.k.s. cluster definition file) the release version number as well as the minor version number. You can find an example: [kubernetes-azurestack.json](https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-azurestack.json):
 
     - `"orchestratorRelease": "1.15`,
 

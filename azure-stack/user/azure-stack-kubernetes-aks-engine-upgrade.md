@@ -50,7 +50,7 @@ The following instructions use the minimum steps to perform the upgrade. If woul
 
 1. You need to first determine the versions you can target for the upgrade. This version depends on the version you currently have and then use that version value to perform the upgrade. The versions of Kubernetes supported in the latest update are 1.14.7 and 1.15.10. Follow this table for the upgrades available:
 
-| Current Version | Upgrade available |
+| Current version | Upgrade available |
 | --- | --- |
 |1.14.7 | 1.15.10 |
 |1.14.8 | 1.15.10 |
