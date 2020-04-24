@@ -72,8 +72,8 @@ To install and run the Validate-DCB tool:
 1. Accept the requests to use the NuGet provider and access the repository to install the tool.
 1. After PowerShell connects to the Microsoft network to download the tool, type `Validate-DCB` and press **Enter** to start the tool wizard.
 
-> [!NOTE]
-    > If you cannot run the Validate-DCB tool script, you might need to adjust your PowerShell execution policies. Use the `Get-ExecutionPolicy` cmdlet to view your current script execution policy settings. For information on setting execution policies in PowerShell, see [About Execution Policies](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7).
+    > [!NOTE]
+        > If you cannot run the Validate-DCB tool script, you might need to adjust your PowerShell execution policies. Use the **Get-ExecutionPolicy** cmdlet to view your current script execution policy settings. For information on setting execution policies in PowerShell, see [About Execution Policies](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7).
 
 1. On the Welcome to the Validate-DCB configuration wizard page, select **Next**.
 1. On the Clusters and Nodes page, type the name of the server cluster that you want to validate, select **Resolve** to list it on the page, and then select **Next**.
