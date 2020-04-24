@@ -4,7 +4,7 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 04/17/2020
+ms.date: 04/24/2020
 ---
 
 # Update Azure Stack HCI clusters
@@ -15,11 +15,11 @@ When updating Azure Stack HCI clusters, the goal is to maintain availability by 
 
 ## Configure Cluster-Aware Updating
 
-To use CAU, you must first install the **Failover Clustering** feature in Windows Server on each cluster node, using either Windows Admin Center or PowerShell, and [create and validate a failover cluster](/windows-server/failover-clustering/create-failover-cluster#create-a-failover-cluster-by-using-windows-powershell). You must also install the **Failover Clustering Tools**, which are part of the **Remote Server Administration Tools** and are installed by default when you install the Failover Clustering feature using Windows Admin Center (is this true)? 
+To use CAU, you must first install the **Failover Clustering** feature in Windows Server on each cluster node, using either Windows Admin Center or PowerShell, and [create and validate a failover cluster](/windows-server/failover-clustering/create-failover-cluster#create-a-failover-cluster-by-using-windows-powershell). You must also install the **Failover Clustering Tools**, which are part of the **Remote Server Administration Tools (RSAT)** and are installed by default when you install the Failover Clustering feature using Windows Admin Center **(is this true)?**
 
 CAU has two plug-ins:
 
-- The **Microsoft.WindowsUpdatePlugin** installs downloads from Windows Update (WU) and offline sources like WSUS
+- The **Microsoft.WindowsUpdatePlugin** installs downloads from Windows Update and offline sources like WSUS
 - The **Microsoft.HotfixPlugin** enables custom sources such as OEM-specific feature updates
 
 ### Install Failover Clustering and Failover Clustering Tools using PowerShell
@@ -52,7 +52,7 @@ Install-WindowsFeature –Name RSAT-Clustering-PowerShell -ComputerName Server1
 
 ### Choose an updating mode
 
-Cluster-Aware Updating (CAU) can coordinate the complete cluster updating operation in two modes:  
+CAU can coordinate the complete cluster updating operation in two modes:  
   
 -   **Self-updating mode** For this mode, the CAU clustered role is configured as a workload on the failover cluster that is to be updated, and an associated update schedule is defined. The cluster updates itself at scheduled times by using a default or custom updating run profile. During the updating run, the CAU Update Coordinator process starts on the node that currently owns the CAU clustered role, and the process sequentially performs updates on each cluster node. To update the current cluster node, the CAU clustered role fails over to another cluster node, and a new Update Coordinator process on that node assumes control of the updating run. In self-updating mode, CAU can update the failover cluster by using a fully automated, end-to-end updating process. An administrator can also trigger updates on-demand in this mode, or simply use the remote-updating approach if desired. 
   
