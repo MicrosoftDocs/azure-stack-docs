@@ -16,11 +16,11 @@ Affinity is a rule that establishes a relationship between two or more resource 
 
 Affinity and anti-affinity rules are used similarly to the way Azure uses Availability Zones. In Azure, you can configure Availability Zones to keep VMs in separate zones and away from each other or in the same zone with each other.  
 
-Using affinity and anti-affinity rules, any clustered VM would either stay in the same cluster node or be prevented from being together in the same cluster node.  In this way, the only way to move a VM out of a node would be to do it manually.  You can also keep VMs together with the Cluster Shared Volume (CSV) that it’s VHDX resides on.
+Using affinity and anti-affinity rules, any clustered VM would either stay in the same cluster node or be prevented from being together in the same cluster node.  In this way, the only way to move a VM out of a node would be to do it manually.  You can also keep VMs together with the Cluster Shared Volume (CSV) that its VHDX resides on.
 
-Combining affinity and anti-affinity rules, you can also configure a multi-site (stretched) cluster across two sites (fault domains) and keep your virtual machines (VMs) in the site they need to be in.
+Combining affinity and anti-affinity rules, you can also configure a multi-site (stretched) cluster across two sites (fault domains) and keep your VMs in the site they need to be in.
 
-## New Powershell Cmdlets
+## New PowerShell cmdlets
 
 To setup affinity rules for Azure Stack HCI clusters, we have created the following new PowerShell cmdlets.
 
@@ -80,8 +80,6 @@ Add-ClusterGroupToAffinityRule -Groups -Name
 
 The **`Add-ClusterSharedVolumeToAffinityRule`** allows your VMs to stay together with the Cluster Shared Volume the VHDX resides on, where:
 
-where:
-
 **`-ClusterSharedVolumes`** is the CSV disk(s) you wish to add to the rule
 
 **`-Name`** is the name of rule to add to
@@ -130,13 +128,13 @@ Example:
 Remove-ClusterSharedVolumeFromAffinityRule -ClusterSharedVolumes -Name
 ```
 
-## Existing PowerShell Cmdlets
+## Existing PowerShell cmdlets
 
 With the advent of the new cmdlets, we also added additional new switches to a few existing cmdlets.
 
 ### Move-ClusterGroup
 
-The new `-IgnoreAffinityRule` switch ignores the rule and moves the clustered resource group to another cluster node.
+The new `-IgnoreAffinityRule` switch ignores the rule and moves the clustered resource group to another cluster node. For more information on this cmdlet, see [Move-ClusterGroup](https://docs.microsoft.com/en-us/powershell/module/failoverclusters/move-clustergroup?view=win10-ps).
 
 Example:
 
@@ -145,11 +143,11 @@ Move-ClusterGroup -IgnoreAffinityRule
 ```
 
 > [!NOTE]
-> If a move rule is valid (supported), all groups and roles that are affected will also move.  If a VM move will knowingly violate a rule yet it is needed on a one-time temporary basis, use the `-IgnoreAffinityRule` switch to allow the move to occur. In this case, a violation warning for the VM will be displayed. You can then enable the rule back when as necessary.
+> If a move rule is valid (supported), all groups and roles that are affected will also move.  If a VM move will knowingly violate a rule yet it is needed on a one-time temporary basis, use the `-IgnoreAffinityRule` switch to allow the move to occur. In this case, a violation warning for the VM will be displayed. You can then enable the rule back as necessary.
 
 ### Start-ClusterGroup
 
-The new `-IgnoreAffinityRule` switch ignores the rule and brings the clustered resource group online in its current location.
+The new `-IgnoreAffinityRule` switch ignores the rule and brings the clustered resource group online in its current location. For more information on this cmdlet, see [Start-ClusterGroup](https://docs.microsoft.com/en-us/powershell/module/failoverclusters/start-clustergroup?view=win10-ps).
 
 Example:
 
@@ -184,7 +182,7 @@ SQL     DifferentNode   {SQL1, SQL2}     1
 
 ### Scenario 2
 
-Let's say you have Azure Stack HCI stretched cluster with two sites (fault domains). You have two domain controllers you wish to keep in separate sites. With AntiAffinity and DifferentFaultDomain as a type, these domain controllers will always stay in different sites.  The example commands for this would be:
+Let's say you have an Azure Stack HCI stretched cluster with two sites (fault domains). You have two domain controllers you wish to keep in separate sites. Using an anti-affinity rule with `DifferentFaultDomain` as a rule type, these domain controllers will always stay in different sites.  The example commands for this would be:
 
 ```powershell
 New-ClusterAffinityRule -Name DC -Ruletype DifferentFaultDomain
@@ -287,7 +285,7 @@ TrioApart   DifferentFaultDomain   {DC1, DC2}           1
 
 ## Storage affinity rules
 
-You can also keep a VM and it’s VHDX on a Cluster Shared Volume (CSV) on the same cluster node. This would keep CSV redirection from occurring, which can slow down the starting or stopping of a VM.  Taking into account the combined affinity and anti-affinity scenario previously, you can keep the SQL VM and the Cluster Shared Volume on the same cluster node.  To do that, use the following commands:
+You can also keep a VM and its VHDX on a Cluster Shared Volume (CSV) on the same cluster node. This would keep CSV redirection from occurring, which can slow down the starting or stopping of a VM.  Taking into account the combined affinity and anti-affinity scenario previously, you can keep the SQL VM and the Cluster Shared Volume on the same cluster node.  To do that, use the following commands:
 
 ```powershell
 New-ClusterAffinityRule -Name SQL1CSV1 -Ruletype SameNode
