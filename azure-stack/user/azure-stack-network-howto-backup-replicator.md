@@ -73,7 +73,7 @@ The tool requires a parameter named **parallel**. This parameter takes a boolean
 
 ## Add additional resource types
 
-Adding new resource types is simple. The developer must create a customized processor and either an Azure Resource Manager template or an Azure Resource Manager template generator. After that is complete the developer must add the resource type to the ValidateSet for the **$resourceType** parameter and the **$resourceTypes** array in resource_retriever.ps1. When adding the resource type to the **$resourceTypes **array, it must be added in the correct order. The order of the array determines the order that resources will be deployed, so keep dependencies in mind. Lastly, if the customized processor utilizes an Azure Resource Manager template generator, they must add the resource type name to the **$customTypes** array in **post_process.ps1**.
+Adding new resource types is simple. The developer must create a customized processor and either an Azure Resource Manager template or an Azure Resource Manager template generator. After that is complete the developer must add the resource type to the ValidateSet for the **$resourceType** parameter and the **$resourceTypes** array in resource_retriever.ps1. When adding the resource type to the **$resourceTypes** array, it must be added in the correct order. The order of the array determines the order that resources will be deployed, so keep dependencies in mind. Lastly, if the customized processor utilizes an Azure Resource Manager template generator, they must add the resource type name to the **$customTypes** array in **post_process.ps1**.
 
 ## Run Azure subscription replicator
 
