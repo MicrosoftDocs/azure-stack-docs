@@ -215,7 +215,9 @@
           - name: AKS engine on Azure Stack Hub
             href: azure-stack-kubernetes-aks-engine-overview.md
           - name: Support policy
-            href: azure-stack-kubernetes-aks-engine-support.md 
+            href: azure-stack-kubernetes-aks-engine-support.md
+          - name: AKS engine release notes
+            href: kubernetes-aks-engine-release-notes.md
           - name: Set up prerequisites
             href: azure-stack-kubernetes-aks-engine-set-up.md
           - name: Create Linux client
