@@ -1,17 +1,16 @@
 ---
 title: App Service on Azure Stack Hub update 6 release notes 
-description: Learn about what's in update six for App Service on Azure Stack Hub, the known issues, and where to download the update.
+description: Update 6 release notes for App Service on Azure Stack Hub, including new features, fixes, and known issues.
 author: apwestgarth
 manager: stefsch
-
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub user, I want the release notes for update 6 of App Service on Azure Stack Hub so I can know the new features, fixes, and known issues.
+# Keyword: app service azure stack hub update 6 release notes
 
 ---
 
