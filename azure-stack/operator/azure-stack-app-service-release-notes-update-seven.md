@@ -48,7 +48,7 @@ Azure App Service on Azure Stack Hub Update 7 includes the following improvement
 
 - Resolution for [CVE-2019-1372](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-1372) Remote Code Execution Vulnerability.
 
-- Updates to **App Service tenant, administrator, functions portals and Kudu tools**. Consistent with Azure Stack Hub Portal SDK version.
+- Updates to **App Service tenant, administrator, functions portals, and Kudu tools**. Consistent with Azure Stack Hub Portal SDK version.
 
 - Updates **Azure Functions runtime** to **v1.0.12582**.
 
@@ -79,7 +79,7 @@ Azure App Service on Azure Stack Hub Update 7 includes the following improvement
 - **Azure function monitoring** configured correctly.
 
 - **Windows update behavior**:
-  Based on customer feedback, we have changed the way Windows Update is configured on App Service roles from Update 7:
+  Based on customer feedback, we've changed the way Windows Update is configured on App Service roles from Update 7:
   - Three modes:
     - **Disabled** - Windows Update service disabled, Windows is updated with the KB that's shipped with Azure App Service on Azure Stack Hub releases;
     - **Automatic** - Windows Update service enabled and Windows Update determines how and when to update;
