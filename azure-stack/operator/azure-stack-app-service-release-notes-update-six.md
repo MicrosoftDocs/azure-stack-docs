@@ -16,32 +16,31 @@ ms.lastreviewed: 08/20/2019
 
 # App Service on Azure Stack Hub update 6 release notes
 
-These release notes describe the improvements and fixes in Azure App Service on Azure Stack Hub Update 6 and any known issues. Known issues are divided into issues directly related to the deployment, update process, and issues with the build (post-installation).
+These release notes describe new features, fixes, and known issues in Azure App Service on Azure Stack Hub update 6. Known issues are divided into two sections: issues related to the upgrade process and issues with the build (post-installation).
 
 > [!IMPORTANT]
-> Apply the 1904 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Development kit before deploying Azure App Service 1.6.
-
+> Apply the 1904 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Development Kit (ASDK) before deploying Azure App Service 1.6.
 
 ## Build reference
 
-The App Service on Azure Stack Hub Update 6 build number is **82.0.1.50**
+The App Service on Azure Stack Hub Update 6 build number is **82.0.1.50**.
 
 ### Prerequisites
 
-Refer to the [Before You Get Started documentation](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
+See [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md) before you begin deployment.
 
 Before you begin the upgrade of Azure App Service on Azure Stack Hub to 1.6:
 
-- Ensure all roles are Ready in the Azure App Service Administration in the Azure Stack Hub Admin Portal
+- Ensure all roles are ready in Azure App Service administration in the Azure Stack Hub administrator portal.
 
-- Back up the App Service and Master Databases:
+- Back up the App Service and master databases:
   - AppService_Hosting;
   - AppService_Metering;
   - Master
 
-- Back up the Tenant App content file share
+- Back up the tenant app content file share.
 
-- Syndicate the **Custom Script Extension** version **1.9.1** from the Marketplace
+- Syndicate the **Custom Script Extension** version **1.9.1** from Azure Stack Hub Marketplace.
 
 ### New features and fixes
 
