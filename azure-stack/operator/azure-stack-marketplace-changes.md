@@ -62,6 +62,16 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Updated Marketplace items
 
+- 04/20/2020: Windows Server 2012 Datacenter - BYOL - version 3.127.20190521
+- 04/20/2020: Windows Server 2012 R2 Datacenter - Pay as you use - version 4.127.20200205
+- 04/20/2020: Windows Server 2012 R2 Datacenter - BYOL - version 4.127.20200205
+- 04/20/2020: Windows Server 2012 Datacenter - Pay as you use - version 3.127.20200205
+- 04/20/2020: Windows Server 2016 Datacenter - BYOL - version 2020.01
+- 04/20/2020: Windows Server 2016 Datacenter Server Core - Pay as you use	- version 2020.01
+- 04/20/2020: Windows Server 2016 Datacenter Server Core - BYOL- version 2020.01
+- 04/20/2020: Windows Server 2016 Datacenter with Containers - Pay as you use	- version 2020.01
+- 04/20/2020: Windows Server 2016 Datacenter with Containers - BYOL - version 2020.01
+- 04/20/2020: Windows Server 2016 Datacenter - Pay as you use	- version 2020.01
 - 04/17/2020: Bitnami	AbanteCart - version	1.2.2002091007
 - 04/17/2020: Bitnami	ActiveMQ - version	5.15.2003260344
 - 04/17/2020: Bitnami	Akeneo - version	3.2.2004030743
@@ -225,7 +235,6 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 - 09/24/2019: F5-Networks Big-IP Virtual Edition - version 14.1.200000
 - 09/25/2019: Debian 8 - version 8.0.20190806
 - 10/1/2019:  Microsoft JsonADDomain Extension - version 1.3.4
-
 
 ## Next steps
 
