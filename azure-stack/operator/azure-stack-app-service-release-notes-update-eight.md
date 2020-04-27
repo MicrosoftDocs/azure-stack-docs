@@ -127,13 +127,13 @@ Take one of the following actions and select retry within the installer.
 
     1. Enable contained database.
 
-    ```sql
+        ```sql
 
         sp_configure 'contained database authentication', 1;
         GO
         RECONFIGURE;
             GO
-    ```
+        ```
 
     1. Convert the database to partially contained. This step incurs downtime as all active sessions need to be killed.
 
