@@ -346,5 +346,11 @@
       "redirect_url": "/azure-stack/hci/overview", 
       "redirect_document_id": true 
       }
+      { 
+        "source_path": "azure-stack/user/kubernetes-aks-engine-release-notes.md", 
+        "redirect_url": "/azure-stack/user/azure-stack-kubernetes-aks-engine-overview", 
+        "redirect_document_id": true 
+        }
+    ]
   ]
 }
