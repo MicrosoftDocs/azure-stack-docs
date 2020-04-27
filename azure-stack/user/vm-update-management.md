@@ -4,10 +4,10 @@ description: Learn how to use the Azure Monitor for VMs, Update Management, Chan
 author: mattbriggs
 
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 04/27/2020
 ms.author: mabrigg
 ms.reviewer: rtiberiu
-ms.lastreviewed: 11/11/2019
+ms.lastreviewed: 04/27/2020
 
 # Intent: As an Azure Stack user, I want to update and manage my VMs using Azure Automation tools so I can keep everything running smoothly. 
 # Keyword: vm update management automation
@@ -52,7 +52,7 @@ Next, you must [create an Automation account](https://docs.microsoft.com/azure/a
 
 5. Repeat steps 2-4 to enable all three solutions. 
 
-   [![](media/vm-update-management/1-sm.PNG "Enable Azure Automation account features")](media/vm-update-management/1-lg.PNG#lightbox)
+   [![](media//vm-update-management/1-sm.PNG "Enable Azure Automation account features")](media//vm-update-management/1-lg.PNG)
 
 ### Enable Azure Monitor for VMs
 
@@ -71,11 +71,11 @@ After the Log Analytics Workspace is created, enable the performance counters in
 ### In the Azure Stack Hub administrator portal
 After enabling the Azure Automation solutions in the Azure portal, you next need to sign in to the Azure Stack Hub administrator portal as a cloud admin and download the **Azure Monitor, Update and Configuration Management** and the **Azure Monitor, Update and Configuration Management for Linux** extension in the Azure Stack Hub Marketplace.
 
-   ![Azure Monitor, update and configuration management extension marketplace item](media/vm-update-management/2.PNG) 
+   ![Azure Monitor, update and configuration management extension marketplace item](media//vm-update-management/2.PNG) 
 
 To enable the Azure Monitor for VMs Map solution and gain insights into the networking dependencies, download the **Azure Monitor Dependency Agent**:
 
-   ![Azure Monitor Dependency Agent](media/vm-update-management/2-dependency.PNG) 
+   ![Azure Monitor Dependency Agent](media//vm-update-management/2-dependency.PNG) 
 
 ## Enable Update Management for Azure Stack Hub VMs
 Follow these steps to enable update management for Azure Stack Hub VMs.
@@ -84,15 +84,15 @@ Follow these steps to enable update management for Azure Stack Hub VMs.
 
 2. In the Azure Stack Hub user-portal, go to the Extensions blade of the VMs for which you want to enable these solutions, click **+ Add**, select the **Azure Update and Configuration Management** extension, and then click **Create**:
 
-   [![](media/vm-update-management/3-sm.PNG "VM extension blade")](media/vm-update-management/3-lg.PNG#lightbox)
+   [![](media//vm-update-management/3-sm.PNG "VM extension blade")](media//vm-update-management/3-lg.PNG)
 
 3. Provide the previously created WorkspaceID and Primary Key to link the agent with the LogAnalytics workspace. Then click **OK** to deploy the extension.
 
-   [![](media/vm-update-management/4-sm.PNG "Providing the WorkspaceID and Key")](media/vm-update-management/4-lg.PNG#lightbox) 
+   [![](media//vm-update-management/4-sm.PNG "Providing the WorkspaceID and Key")](media//vm-update-management/4-lg.PNG) 
 
 4. As described in the [Update Management documentation](https://docs.microsoft.com/azure/automation/automation-update-management), you need to enable the Update Management solution for each VM that you want to manage. To enable the solution for all VMs reporting to the workspace, select **Update management**, click **Manage machines**, and then select the **Enable on all available and future machines** option.
 
-   [![](media/vm-update-management/5-sm.PNG "Enable Update Management solution on all machines")](media/vm-update-management/5-lg.PNG#lightbox) 
+   [![](media//vm-update-management/5-sm.PNG "Enable Update Management solution on all machines")](media//vm-update-management/5-lg.PNG) 
 
    > [!TIP]
    > Repeat this step to enable each solution for the Azure Stack Hub VMs that report to the workspace. 
@@ -101,12 +101,28 @@ After the Azure Update and Configuration Management extension is enabled, a scan
 
 After the VMs are scanned, they'll appear in the Azure Automation account in the Update Management solution: 
 
-   [![](media/vm-update-management/6-sm.PNG "Azure Automation account in Update Management")](media/vm-update-management/6-lg.PNG#lightbox) 
+   [![](media//vm-update-management/6-sm.PNG "Azure Automation account in Update Management")](media//vm-update-management/6-lg.PNG) 
 
 > [!IMPORTANT]
 > It can take between 30 minutes and 6 hours for the dashboard to display updated data from managed computers.
 
 The Azure Stack Hub VMs can now be included in scheduled update deployments together with Azure VMs.
+
+##  Creat an update deployment schedule
+
+To create an update deployment schedule, you must use use a PowerShell cmdlet, or the Azure REST API, to pass the machines. Use the following PowerShell example to get your machines scheduled. You can use the **New-AzAutomationSchedule** cmdlet with the `ForUpdateConfiguration` parameter to create a schedule. Then, use the **New-AzAutomationSoftwareUpdateConfiguration** cmdlet and pass the machines in the other tenant to the `NonAzureComputer` parameter. To run this script you will need to use the [preview of the Azure Stack Az module](../operator/powershell-install-az-module.md).
+
+The following example shows how to do this:
+
+```Powershell  
+$nonAzurecomputers = @("server-01", "server-02")
+
+$startTime = ([DateTime]::Now).AddMinutes(10)
+
+$s = New-AzAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdateConfiguration
+
+New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+```
 
 ## Enable Azure Monitor for VMs running on Azure Stack Hub
 Once the VM has the **Azure Monitor, Update and Configuration Management**, and the **Azure Monitor Dependency Agent** extensions installed, it will start reporting data in the [Azure Monitor for VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview) solution. 
