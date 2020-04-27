@@ -1,17 +1,16 @@
 ---
 title: App Service on Azure Stack Hub update 7 release notes 
-description: Learn about what's in update seven for App Service on Azure Stack Hub, the known issues, and where to download the update.
+description: Update 7 release notes for App Service on Azure Stack Hub, including new features, fixes, and known issues.
 author: apwestgarth
 manager: stefsch
-
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub user, I want the release notes for update 7 of App Service on Azure Stack Hub so I can know the new features, fixes, and known issues.
+# Keyword: app service azure stack hub update 7 release notes
 
 ---
 
@@ -21,7 +20,6 @@ These release notes describe the improvements and fixes in Azure App Service on 
 
 > [!IMPORTANT]
 > Apply the 1907 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Development kit before deploying Azure App Service 1.7.
-
 
 ## Build reference
 
