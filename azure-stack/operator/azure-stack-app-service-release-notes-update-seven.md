@@ -46,15 +46,15 @@ Before you begin the upgrade of Azure App Service on Azure Stack Hub to 1.7:
 
 Azure App Service on Azure Stack Hub Update 7 includes the following improvements and fixes:
 
-- Resolution for [CVE-2019-1372](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-1372) Remote Code Execution Vulnerability
+- Resolution for [CVE-2019-1372](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-1372) Remote Code Execution Vulnerability.
 
-- Updates to **App Service Tenant, Admin, Functions portals and Kudu tools**. Consistent with Azure Stack Hub Portal SDK version.
+- Updates to **App Service tenant, administrator, functions portals and Kudu tools**. Consistent with Azure Stack Hub Portal SDK version.
 
 - Updates **Azure Functions runtime** to **v1.0.12582**.
 
 - Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.
 
-- **Updates to the following application frameworks and tools**:
+- **Updates to the following app frameworks and tools**:
   - ASP.NET Core 2.2.46
   - Zul OpenJDK 8.38.0.13
   - Tomcat 7.0.94
@@ -67,24 +67,27 @@ Azure App Service on Azure Stack Hub Update 7 includes the following improvement
 - **Updates to underlying operating system of all roles**:
   - [2019-08 Cumulative Update for Windows Server 2016 for x64-based Systems (KB4512495)](https://support.microsoft.com/help/4512495)
 
-- **Access Restrictions now enabled in User Portal**:
-  - As of this release Users can configure Access Restrictions for their Web/Api/Functions applications according to the documentation published - [Azure App Service Access Restrictions](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions), **NOTE**: Azure App Service on Azure Stack Hub does not support Service Endpoints.
+- **Access restrictions now enabled in user portal**:
+  - Users can now configure access restrictions for their web/API/functions apps according to the documentation published - [Azure App Service access restrictions](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions).
+  
+  > [!NOTE]
+  > Azure App Service on Azure Stack Hub does not support service endpoints.
 
-- **Deployment Options (Classic) Functionality Restored**:
-  - Users can once again use the Deployment Options (Classic) to configure deployment of their apps from GitHub, Bitbucket, Dropbox, OneDrive, Local and External Repositories, and to set the Deployment Credentials for their applications.
+- **Deployment options (classic) functionality restored**:
+  - Users can once again use the deployment options (classic) to configure deployment of their apps from GitHub, Bitbucket, Dropbox, OneDrive, local and external repositories, and to set the deployment credentials for their apps.
 
-- **Azure Function Monitoring** configured correctly.
+- **Azure function monitoring** configured correctly.
 
-- **Windows Update Behavior**:
-  Based on customer feedback we have changed the way in which Windows Update is configured on App Service roles from Update 7:
+- **Windows update behavior**:
+  Based on customer feedback, we have changed the way Windows Update is configured on App Service roles from Update 7:
   - Three modes:
-    - **Disabled** - Windows Update service disabled, Windows will be updated with the KB that is shipped with Azure App Service on Azure Stack Hub releases;
-    - **Automatic** - Windows Update service enabled and Windows Update will determine how and when to update;
-    - **Managed** - Windows Update service is disabled, Azure App Service will perform a Windows Update cycle during OnStart of the individual role.
+    - **Disabled** - Windows Update service disabled, Windows is updated with the KB that's shipped with Azure App Service on Azure Stack Hub releases;
+    - **Automatic** - Windows Update service enabled and Windows Update determines how and when to update;
+    - **Managed** - Windows Update service is disabled, Azure App Service performs a Windows Update cycle during OnStart of the individual role.
 
   **New** Deployments - Windows Update service is disabled by default.
 
-  **Existing** Deployments - If you have modified the setting on the Controller, the value will now change from **False** to **Disabled** and a previous value of **true** will become **Automatic**
+  **Existing** Deployments - If you've modified the setting on the controller, the value will change from **False** to **Disabled** and a previous value of **true** will become **Automatic**.
 
 ### Post-deployment steps
 
