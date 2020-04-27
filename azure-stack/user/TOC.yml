@@ -1,4 +1,4 @@
-- name: Azure Stack Hub User Documentation
+                                                                                         - name: Azure Stack Hub User Documentation
   href: index.yml
 - name: Overview
   items:
@@ -212,6 +212,8 @@
             href: azure-stack-kubernetes-aks-engine-overview.md
           - name: Support policy
             href: azure-stack-kubernetes-aks-engine-support.md
+          - name: AKS engine release notes
+            href: kubernetes-aks-engine-release-notes.md
           - name: Set up prerequisites
             href: azure-stack-kubernetes-aks-engine-set-up.md
           - name: Create Linux client
