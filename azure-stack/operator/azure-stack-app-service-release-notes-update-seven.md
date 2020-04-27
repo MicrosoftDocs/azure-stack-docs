@@ -92,28 +92,29 @@ Azure App Service on Azure Stack Hub Update 7 includes the following improvement
 ### Post-deployment steps
 
 > [!IMPORTANT]
-> If you have provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
+> If you've provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
 ### Known issues (post-installation)
 
-- Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network,  as called out in the Azure App Service on Azure Stack Hub deployment documentation.
+- Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network, as called out in the Azure App Service on Azure Stack Hub deployment documentation.
 
-If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
- * Source: Any
- * Source port range: *
- * Destination: IP Addresses
- * Destination IP address range: Range of IPs for your file server
- * Destination port range: 445
- * Protocol: TCP
- * Action: Allow
- * Priority: 700
- * Name: Outbound_Allow_SMB445
+If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the administrator portal and add an outbound security rule with the following properties:
 
-### Known issues for Cloud Admins operating Azure App Service on Azure Stack Hub
+* Source: Any
+* Source port range: *
+* Destination: IP addresses
+* Destination IP address range: Range of IPs for your file server
+* Destination port range: 445
+* Protocol: TCP
+* Action: Allow
+* Priority: 700
+* Name: Outbound_Allow_SMB445
 
-Refer to the documentation in the [Azure Stack Hub 1907 Release Notes](azure-stack-release-notes-1907.md)
+### Known issues for cloud admins operating Azure App Service on Azure Stack Hub
+
+Refer to the documentation in the [Azure Stack Hub release notes](azure-stack-release-notes-1907.md)
 
 ## Next steps
 
-- For an overview of Azure App Service, see [Azure App Service on Azure Stack Hub overview](azure-stack-app-service-overview.md).
-- For more information about how to prepare to deploy App Service on Azure Stack Hub, see [Before you get started with App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md).
+- For an overview of Azure App Service, see [Azure App Service and Azure Functions on Azure Stack Hub overview](azure-stack-app-service-overview.md).
+- For more information about how to prepare to deploy App Service on Azure Stack Hub, see [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md).

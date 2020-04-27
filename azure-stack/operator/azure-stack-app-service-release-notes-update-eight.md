@@ -9,7 +9,7 @@ ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/25/2019
 
-# Intent: As an Azure Stack Hub user, I want to know the release notes for update 8 of App Service on Azure Stack Hub so I can know the new features, fixes, and known issues.
+# Intent: As an Azure Stack Hub user, I want the release notes for update 8 of App Service on Azure Stack Hub so I can know the new features, fixes, and known issues.
 # Keyword: app service azure stack hub update 8 release notes
 
 ---
@@ -23,7 +23,7 @@ These release notes describe new features, fixes, and known issues in Azure App 
 
 ## Build reference
 
-The App Service on Azure Stack Hub update 8 build number is **86.0.2.13**
+The App Service on Azure Stack Hub update 8 build number is **86.0.2.13**.
 
 ### Prerequisites
 
@@ -79,7 +79,7 @@ All new deployments of Azure App Service on Azure Stack Hub will make use of man
 
 - **TLS 1.2 enforced by front-end load balancers**
 
-As of this update, **TLS 1.2** is enforced for all apps.
+**TLS 1.2** is now enforced for all apps.
 
 ### Known issues (upgrade)
 
@@ -98,7 +98,7 @@ Take one of the following actions and select retry within the installer.
 ### Post-deployment steps
 
 > [!IMPORTANT]
-> If you have provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
+> If you've provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
 ### Known issues (post-installation)
 
@@ -268,5 +268,5 @@ Refer to the documentation in the [Azure Stack 1907 Release Notes](azure-stack-r
 
 ## Next steps
 
-- For an overview of Azure App Service, see [Azure App Service on Azure Stack overview](azure-stack-app-service-overview.md).
+- For an overview of Azure App Service, see [Azure App Service and Azure Functions on Azure Stack Hub overview](azure-stack-app-service-overview.md).
 - For more information about how to prepare to deploy App Service on Azure Stack, see [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md).
