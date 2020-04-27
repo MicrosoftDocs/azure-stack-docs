@@ -10,7 +10,7 @@ ms.reviewer: anwestg
 ms.lastreviewed: 03/25/2019
 
 # Intent: As an Azure Stack Hub user, I want to know the release notes for update 8 of App Service on Azure Stack Hub so I can know the new features, fixes, and known issues.
-# Keyword: app service on azure stack hub update 8 release notes
+# Keyword: app service azure stack hub update 8 release notes
 
 ---
 
