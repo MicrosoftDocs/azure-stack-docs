@@ -39,31 +39,27 @@ At the top of **Help + support** are links to things to try first, like read abo
 
 ### Get expert help
 
-For an integrated system, there is a coordinated escalation and resolution process between Microsoft and our original equipment manufacturer (OEM) hardware partners.
+For an integrated system, there's a coordinated escalation and resolution process between Microsoft and our original equipment manufacturer (OEM) hardware partners.
 
-If there is a cloud services issue, support is offered through Microsoft Customer Support Services (CSS).
-You can click **Help** (question mark) in the upper-right corner of the administrator portal and then click **Help + support** to open **Help + Support Overview** and submit a new support request. Creating a support request will preselect Azure Stack Hub service. We highly recommend that customers use this experience to submit tickets rather than using the Global Azure portal.
+If there's a cloud services issue, support is offered through Microsoft Customer Support Services (CSS). You can select **Help** (question mark) in the upper-right corner of the administrator portal and then select **Help + support** to open **Help + Support Overview** and submit a new support request. Creating a support request will preselect Azure Stack Hub service. We highly recommend that customers use this experience to submit tickets rather than using the Global Azure portal.
 
-If there is an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, such as software running on the hardware lifecycle host, contact your OEM hardware vendor first.
-For anything else, contact Microsoft CSS.
+If there's an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, like software running on the hardware lifecycle host, contact your OEM hardware vendor first. For anything else, contact Microsoft CSS.
 
 ![Get expert help for integrated systems](media/azure-stack-help-and-support/get-support-integrated.png)
 
-For the ASDK, you can ask support-related questions in the [Azure Stack Hub MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack).
+For the Azure Stack Development Kit (ASDK), you can ask support-related questions in the [Azure Stack Hub MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack).
 
-You can click **Help** (question mark) in the upper-right corner of the administrator portal and then click **Help + support** to open **Help + Support Overview**, which has a link to the forum.
-MSDN forums are regularly monitored.  
-Because the development kit is an evaluation environment, there is no official support offered through Microsoft CSS.
+Select **Help** (question mark) in the upper-right corner of the administrator portal and then select **Help + support** to open **Help + Support Overview**, which has a link to the forum. MSDN forums are regularly monitored. Because the ASDK is an evaluation environment, there's no official support offered through Microsoft CSS.
 
 You can also reach out to the MSDN Forums to discuss an issue, or take online training and improve your own skills.
 
-![Get expert help](media/azure-stack-help-and-support/get-support-cards.png)
+![Get expert help for Azure Stack Hub](media/azure-stack-help-and-support/get-support-cards.png)
 
 ### Get up to speed with Azure Stack Hub
 
 This set of tutorials is customized depending on whether you're running the ASDK or integrated systems so you can quickly get up to speed with your environment.
 
-![Get support tutorials](media/azure-stack-help-and-support/get-support-tutorials.png)
+![Get support tutorials for Azure Stack Hub](media/azure-stack-help-and-support/get-support-tutorials.png)
 
 ## Diagnostic log collection
 
