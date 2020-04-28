@@ -1,6 +1,6 @@
 --- 
-title: Manage Azure Stack HCI clusters using Windows PowerShell 
-description: Learn how to manage clusters on Azure Stack HCI using Windows PowerShell 
+title: Manage Azure Stack HCI clusters using PowerShell 
+description: Learn how to manage clusters on Azure Stack HCI using PowerShell 
 author: v-dasis 
 ms.topic: article 
 ms.date: 03/22/2020 
@@ -8,7 +8,7 @@ ms.author: v-dasis
 ms.reviewer: JasonGerend 
 ---
 
-# Manage Azure Stack HCI clusters using Windows PowerShell
+# Manage Azure Stack HCI clusters using PowerShell
 
 > Applies to Windows Server 2019
 
@@ -18,7 +18,7 @@ For the complete reference documentation for managing clusters using PowerShell,
 
 ## Run Windows PowerShell
 
-The Windows PowerShell app is used to perform all the tasks in this article. It is recommended that you pin the app to your taskbar for convenience.
+Windows PowerShell is used to perform all the tasks in this article. It is recommended that you pin the app to your taskbar for convenience.
 
 1. Click the Taskbar search bar in the lower left and then type *PowerShell* in the text field.
 2. Under **Windows PowerShell** on the right, select **Run as administrator**.
@@ -28,8 +28,8 @@ The Windows PowerShell app is used to perform all the tasks in this article. It 
 To see the current cluster and its member nodes, run:
 
 ```powershell
-Get-Cluster -ComputerName your_cluster_name
-Get-ClusterNode -ComputerName your_node_name
+Get-Cluster -ComputerName <computer_name> -cluster <cluster_name>
+Get-ClusterNode -ComputerName <computer_name> -cluster <cluster_name>
 ```
 
 To see which Windows features are installed on the cluster use the `Get-WindowsFeature` cmdlet. For example:
