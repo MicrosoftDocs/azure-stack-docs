@@ -55,6 +55,7 @@ Azure App Service on Azure Stack Hub Update 7 includes the following improvement
 - Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.
 
 - **Updates to the following app frameworks and tools**:
+
   - ASP.NET Core 2.2.46
   - Zul OpenJDK 8.38.0.13
   - Tomcat 7.0.94
@@ -112,7 +113,7 @@ If you chose to deploy into an existing virtual network and an internal IP addre
 
 ### Known issues for cloud admins operating Azure App Service on Azure Stack Hub
 
-Refer to the documentation in the [Azure Stack Hub release notes](azure-stack-release-notes-1907.md)
+Refer to the documentation in the [Azure Stack Hub 1907 release notes](azure-stack-release-notes-1907.md)
 
 ## Next steps
 
