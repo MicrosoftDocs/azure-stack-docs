@@ -12,7 +12,7 @@ ms.lastreviewed: 04/27/2020
 
 # Azure Stack Hub privileged endpoint reference
 
-The PEP is a pre-configured remote PowerShell console that provides you with just enough capabilities to help you perform a required task. The endpoint uses PowerShell JEA (Just Enough Administration) to expose only a restricted set of cmdlets.
+The PowerShell Azure Stack privileged endpoint (PEP) is a pre-configured remote PowerShell console that provides you with just enough capabilities to help you perform a required task. The endpoint uses PowerShell JEA (Just Enough Administration) to expose only a restricted set of cmdlets.
 
 ## Privilege Endpoint cmdlets
 
