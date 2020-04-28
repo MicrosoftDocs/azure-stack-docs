@@ -4,7 +4,7 @@ description: Use Windows Admin Center to protect your Azure Stack HCI VMs with A
 ms.topic: article
 author: davannaw-msft
 ms.author: dawhite
-ms.date: 04/20/2020
+ms.date: 04/28/2020
 ms.localizationpriority: low
 ---
 
@@ -67,11 +67,16 @@ Complete the following steps to protect your VMs:
 1. In Windows Admin Center, return to the server or cluster that you configured in the previous task.
 1. Under **Tools**, select **Virtual machines**, and then select the  **Inventory** tab.
 1. Select the VM that you want to protect, expand the **More** submenu,  and then select **Protect VM**.
+
+    :::image type="content" source="media/azure-site-recovery/protect-vm-setting.png" alt-text="The Protect VM setting option in Windows Admin Center.":::
+
 1. Review capacity requirements for protecting the VM. For more information, see [Plan capacity for Hyper-V VM disaster recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-capacity-planner).
 
     If you want to use a premium storage account, create one in the Azure portal. To learn more, see the **Premium SSD** section of [What disk types are available in Azure?](https://docs.microsoft.com/azure/storage/common/storage-premium-storage) The **Create New** option provided in Windows Admin Center creates a standard storage account.
 
 1. Enter the name of the **Storage Account** to use for this VM's replication, and then select **Protect VM** to enable replication for the VM.
+
+    :::image type="content" source="media/azure-site-recovery/protect-vm-setting-asr.png" alt-text="Defining the Storage Account for Azure Site Recovery to protect a VM in Windows Admin Center.":::
 
     Azure Site Recovery starts the replication process. The VM is protected when the value in the **Protected** column of the **Virtual Machine Inventory** grid changes to **Yes**. This process could take several minutes.  
 
