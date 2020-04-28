@@ -30,7 +30,7 @@ Support Service configuration settings.
 The example below gets registration details if stamp was registered or else null.
 
 ```
-PS C:\\\> Get-AzureStackSupportConfiguration
+PS  C:\> Get-AzureStackSupportConfiguration
 ```
 
 ## Parameters

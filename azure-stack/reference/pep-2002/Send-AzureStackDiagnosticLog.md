@@ -32,13 +32,13 @@ Makes a request to Support Bridge Service to upload diagnostic logs for stamp.
 The example below sends last 4 hour logs to Microsoft.
 
 ```
-PS C:\\\> Send-AzureStackDiagnosticLog
+PS  C:\> Send-AzureStackDiagnosticLog
 ```
 
 ### Example 2
 The example below sends last 4 hour Support Service and WAS logs to Microsoft.
 ```
-PS C:\\\> Send-AzureStackDiagnosticLog -FilterByRole SupportBridgeController,WAS
+PS  C:\> Send-AzureStackDiagnosticLog -FilterByRole SupportBridgeController,WAS
 ```
 
 ## Parameters
