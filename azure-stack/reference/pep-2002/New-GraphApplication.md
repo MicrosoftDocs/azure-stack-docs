@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # New-GraphApplication
 
 ## Synopsis
-New-GraphApplication is a wrapper funnction to call AD FS Graph cmdlets on AD FS.
+New-GraphApplication is a wrapper function to call AD FS Graph cmdlets on AD FS.
 
 ## Syntax
 
@@ -35,7 +35,7 @@ New-GraphApplication -Name $ApplicationName -ClientRedirectUris $redirectUri -Cl
 ## Parameters
 
 ### -Name
-Name of the Application with maximum length of 50 chars, It will be modified as Azurestack-$Name-$({guid}::{NewGuid}()) and is returned by the function.
+Name of the Application with maximum length of 50 chars, It will be modified as `Azurestack-$Name-$({guid}::{NewGuid}())`and is returned by the function.
 
 ```yaml
 Type: Object

@@ -98,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkDiagnostics
-Generate the cluster network diagnotics logs.
+Generate the cluster network diagnostics logs.
 
 ```yaml
 Type: SwitchParameter
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkDiagnosticsLevel
-Specifies the level of depth of the network diagnotics logs.
+Specifies the level of depth of the network diagnostics logs.
 
 ```yaml
 Type: Object

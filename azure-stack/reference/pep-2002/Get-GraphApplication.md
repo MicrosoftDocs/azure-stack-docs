@@ -49,7 +49,7 @@ Accept wildcard characters: False
 ```
 
 ### -ApplicationName
-Application Name of the application registerd in ADFS.
+Application Name of the application registered in ADFS.
 
 ```yaml
 Type: Object
