@@ -1,6 +1,6 @@
 ---
 title: Close-PrivilegedEndpoint privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Close-PrivilegedEndpoint
+description: Reference for PowerShell Azure Stack privileged endpoint - Close-PrivilegedEndpoint
 author: mattbriggs
 
 ms.topic: reference
@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # Set-SyslogServer
 
 ## Synopsis
-Sets the Syslog server endpoint
+Sets the syslog server endpoint.
 
 ## Syntax
 
@@ -26,8 +26,9 @@ Set-SyslogServer [-Remove] [[-ServerName] <Object>] [-NoEncryption] [-SkipCertif
 ## Examples
 
 ### Example 1
+
 ```
-Set-SyslogServer -ServerName \<FQDN or ip address of Syslog server\>
+Set-SyslogServer -ServerName <FQDN or IP address of Syslog server>
 ```
 
 ### Example 2
@@ -58,8 +59,8 @@ Set-SyslogServer -Remove
 ## Parameters
 
 ### -ServerName
-The FQDN or IPv4 Address of Syslog server.
-Without any other parameter, default protocol is TCP with enabled encryption; Certificate validation; Certificate name check
+The FQDN or IPv4 Address of syslog server.
+Without any other parameter, default protocol is TCP with enabled encryption; Certificate validation; Certificate name check.
 
 ```yaml
 Type: Object
@@ -89,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoEncryption
-Specify NoEncryption if desire to disable encryption for TCP traffic
+Specify NoEncryption if desire to disable encryption for TCP traffic.
 
 ```yaml
 Type: SwitchParameter
@@ -104,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkipCNCheck
-Specify SkipCNCheck if desire to skip checking certificate name
+Specify SkipCNCheck if desire to skip checking certificate name.
 
 ```yaml
 Type: SwitchParameter
@@ -119,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkipCertificateCheck
-Specify SkipCertificateCheck if desire to skip checking Syslog Server certificate
+Specify SkipCertificateCheck if desire to skip checking Syslog Server certificate.
 
 ```yaml
 Type: SwitchParameter
@@ -134,7 +135,7 @@ Accept wildcard characters: False
 ```
 
 ### -UseUDP
-Specify UseUDP if Syslog server uses UDP protocol
+Specify UseUDP if Syslog server uses UDP protocol.
 
 ```yaml
 Type: SwitchParameter

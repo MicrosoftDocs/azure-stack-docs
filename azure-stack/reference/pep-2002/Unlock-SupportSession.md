@@ -1,6 +1,6 @@
 ---
 title: Unlock-SupportSession privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Unlock-SupportSession
+description: Reference for PowerShell Azure Stack privileged endpoint - Unlock-SupportSession
 author: mattbriggs
 
 ms.topic: reference
@@ -19,18 +19,6 @@ ms.lastreviewed: 04/27/2020
 ```
 Unlock-SupportSession [[-ResponseToken] <Object>] [-AsJob]
 ```
-
-## Description
-
-
-## Examples
-
-### Example 1
-```powershell
-PS C:\> 
-```
-
-
 
 ## Parameters
 

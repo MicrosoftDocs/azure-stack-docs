@@ -1,6 +1,6 @@
 ---
 title: Set-GraphApplication privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Set-GraphApplication
+description: Reference for PowerShell Azure Stack privileged endpoint - Set-GraphApplication
 author: mattbriggs
 
 ms.topic: reference
@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # Set-GraphApplication
 
 ## Synopsis
-Set-GraphApplication is a wrapper funnction to call ADFS Graph cmdlets on ADFS.
+Set-GraphApplication is a wrapper function to call AD FS Graph cmdlets on AD FS.
 
 ## Syntax
 
@@ -23,7 +23,7 @@ Set-GraphApplication [-ClientCertificates <Object>] [-ClientRedirectUris <Object
 ```
 
 ## Description
-Invokes the Set-GraphApplicationGroup on ADFS to modify an application on to ADFS machine.
+Invokes the Set-GraphApplicationGroup on AD FS to modify an application on to AD FS machine.
 
 ## Examples
 
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClientRedirectUris
-Redirect URI used to create a new application in ADFS.
+Redirect URI used to create a new application in AD FS.
 
 ```yaml
 Type: Object
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClientCertificates
-Certificate used to create a new application in ADFS.
+Certificate used to create a new application in AD FS.
 
 ```yaml
 Type: Object

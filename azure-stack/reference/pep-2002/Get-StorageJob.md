@@ -1,6 +1,6 @@
 ---
 title: Get-StorageJob privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Get-StorageJob
+description: Reference for PowerShell Azure Stack privileged endpoint - Get-StorageJob
 author: mattbriggs
 
 ms.topic: reference

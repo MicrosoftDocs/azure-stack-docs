@@ -1,6 +1,6 @@
 ---
 title: Start-AzureStack privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Start-AzureStack
+description: Reference for PowerShell Azure Stack privileged endpoint - Start-AzureStack
 author: mattbriggs
 
 ms.topic: reference
@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # Start-AzureStack
 
 ## Synopsis
-Starts all Azure Stack services.
+Starts all Azure Stack Hub services.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Start-AzureStack [[-TimeoutInSecs] <Object>] [-AsJob]
 ```
 
 ## Description
-Starts all Azure Stack services.
+Starts all Azure Stack Hub services.
 
 ## Examples
 

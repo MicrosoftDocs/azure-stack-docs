@@ -1,6 +1,6 @@
 ---
 title: Set-TLSPolicy privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Set-TLSPolicy
+description: Reference for PowerShell Azure Stack privileged endpoint - Set-TLSPolicy
 author: mattbriggs
 
 ms.topic: reference

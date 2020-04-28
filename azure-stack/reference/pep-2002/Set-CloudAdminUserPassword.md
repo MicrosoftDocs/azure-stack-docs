@@ -1,6 +1,6 @@
 ---
 title: Set-CloudAdminUserPassword privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Set-CloudAdminUserPassword
+description: Reference for PowerShell Azure Stack privileged endpoint - Set-CloudAdminUserPassword
 author: mattbriggs
 
 ms.topic: reference

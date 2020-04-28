@@ -1,6 +1,6 @@
 ---
 title: Set-ServiceAdminOwner privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Set-ServiceAdminOwner
+description: Reference for PowerShell Azure Stack privileged endpoint - Set-ServiceAdminOwner
 author: mattbriggs
 
 ms.topic: reference
@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # Set-ServiceAdminOwner
 
 ## Synopsis
-Script to update service admin upn
+Script to update service administrator.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Set-ServiceAdminOwner [[-TimeoutInSecs] <Object>] [[-ServiceAdminOwnerUpn] <Obje
 ```
 
 ## Description
-Script to update service admin upn
+Script to update service administrator UPN.
 
 ## Examples
 

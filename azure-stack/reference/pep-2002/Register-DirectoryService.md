@@ -1,6 +1,6 @@
 ---
 title: Register-DirectoryService privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint -Register-DirectoryService
+description: Reference for PowerShell Azure Stack privileged endpoint -Register-DirectoryService
 author: mattbriggs
 
 ms.topic: reference
@@ -13,9 +13,9 @@ ms.lastreviewed: 04/27/2020
 # Register-DirectoryService
 
 ## Synopsis
-Script to register customer Active Directory with Graph Service
-CustomADGlobalCatalog is Global Catalog for custom Active Directory.
-This will be 'RootDomain' value from output of 'Get-ADForest' cmdlet
+Script to register customer Active Directory (Azure AD) with Graph Service.
+**CustomADGlobalCatalog** is the global catalog for custom Active Directory.
+This will be `RootDomain` value from output of **Get-ADForest** cmdlet.
 
 ## Syntax
 
@@ -25,9 +25,9 @@ Register-DirectoryService [-Force] [[-TimeoutInSecs] <Object>] [-SkipRootDomainV
 ```
 
 ## Description
-Script to register customer Active Directory with Graph Service
-CustomADGlobalCatalog is Global Catalog for custom Active Directory.
-This will be 'RootDomain' value from output of 'Get-ADForest' cmdlet
+Script to register customer Active Directory with Graph Service.
+**CustomADGlobalCatalog** is Global Catalog for custom Active Directory.
+This will be `RootDomain` value from output of **Get-ADForest** cmdlet.
 
 ## Examples
 

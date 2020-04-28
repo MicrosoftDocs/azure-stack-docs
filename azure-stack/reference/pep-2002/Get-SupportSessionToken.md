@@ -1,6 +1,6 @@
 ---
 title: Get-SupportSessionToken privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Get-SupportSessionToken
+description: Reference for PowerShell Azure Stack privileged endpoint - Get-SupportSessionToken
 author: mattbriggs
 
 ms.topic: reference

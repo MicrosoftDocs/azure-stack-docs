@@ -1,6 +1,6 @@
 ---
 title: Remove-GraphApplication privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Remove-GraphApplication
+description: Reference for PowerShell Azure Stack privileged endpoint - Remove-GraphApplication
 author: mattbriggs
 
 ms.topic: reference
@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # Remove-GraphApplication
 
 ## Synopsis
-Remove-GraphApplication is a wrapper funnction to call ADFS Graph cmdlets on ADFS.
+Remove-GraphApplication is a wrapper function to call AD FS Graph cmdlets on AD FS.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Remove-GraphApplication [[-ApplicationIdentifier] <Object>] [-AsJob]
 ```
 
 ## Description
-Invokes the Remove-GraphApplicationGroup on ADFS to remove the specified application on to ADFS machine.
+Invokes the Remove-GraphApplicationGroup on AD FS to remove the specified application on to AD FS machine.
 
 ## Examples
 

@@ -1,6 +1,6 @@
 ---
 title: Get-GraphApplication privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Get-GraphApplication
+description: Reference for PowerShell Azure Stack privileged endpoint - Get-GraphApplication
 author: mattbriggs
 
 ms.topic: reference
@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # Get-GraphApplication
 
 ## Synopsis
-Get-GraphApplication is a wrapper function to get the Graph application information for the Applicaiton Name or Identifier specified.
+Get-GraphApplication is a wrapper function to get the graph application information for the applicaiton name or identifier specified.
 
 ## Syntax
 
@@ -34,7 +34,7 @@ Get-GraphApplication -ApplicationName $ApplicationName
 ## Parameters
 
 ### -ApplicationIdentifier
-Application Identifier of the application register in ADFS.
+Application Identifier of the application register in AD FS.
 
 ```yaml
 Type: Object

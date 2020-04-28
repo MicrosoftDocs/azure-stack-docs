@@ -1,6 +1,6 @@
 ---
 title: Invoke-AzureStackOnDemandLog endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Invoke-AzureStackOnDemandLog
+description: Reference for PowerShell Azure Stack privileged endpoint - Invoke-AzureStackOnDemandLog
 author: mattbriggs
 
 ms.topic: reference
@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # Invoke-AzureStackOnDemandLog
 
 ## Synopsis
-Generates on demand logs from AzureStack roles where applicable.
+Generates on demand logs from Azure Stack Hub roles where applicable.
 
 ## Syntax
 

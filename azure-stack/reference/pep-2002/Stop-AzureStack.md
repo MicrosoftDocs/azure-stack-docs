@@ -1,6 +1,6 @@
 ---
 title: Stop-AzureStack privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Stop-AzureStack
+description: Reference for PowerShell Azure Stack privileged endpoint - Stop-AzureStack
 author: mattbriggs
 
 ms.topic: reference
@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # Stop-AzureStack
 
 ## Synopsis
-Stops all Azure Stack services.
+Stops all Azure Stack Hub services.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Stop-AzureStack [[-TimeoutInSecs] <Object>] [-AsJob]
 ```
 
 ## Description
-Stops all Azure Stack services, and stops the physical computers on which Azure Stack is running.
+Stops all Azure Stack services, and stops the physical computers on which Azure Stack Hub is running.
 
 ## Parameters
 

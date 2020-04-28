@@ -1,6 +1,6 @@
 ---
 title: New-AzureBridgeServicePrincipal privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - New-AzureBridgeServicePrincipal
+description: Reference for PowerShell Azure Stack privileged endpoint - New-AzureBridgeServicePrincipal
 author: mattbriggs
 
 ms.topic: reference
@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # New-AzureBridgeServicePrincipal
 
 ## Synopsis
-Creates a new servcie principal in Azure Active Directory
+Creates a new service principal in Azure Active Directory (Azure AD).
 
 ## Syntax
 

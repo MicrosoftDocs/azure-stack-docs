@@ -1,6 +1,6 @@
 ---
 title: Set-SyslogClient privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Set-SyslogClient
+description: Reference for PowerShell Azure Stack privileged endpoint - Set-SyslogClient
 author: mattbriggs
 
 ms.topic: reference
@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # Set-SyslogClient
 
 ## Synopsis
-Imports and applies Syslog client endpoint certificate
+Imports and applies syslog client endpoint certificate.
 
 ## Syntax
 
@@ -26,7 +26,7 @@ Set-SyslogClient [-OutputSeverity <Object>] [-PfxBinary <Object>] [-RemoveCertif
 
 ### -PfxBinary
 Certificate in a binary format.
-Use Get-Content to extract the array of bytes from the certificate file
+Use **Get-Content** to extract the array of bytes from the certificate file.
 
 ```yaml
 Type: Object
@@ -41,7 +41,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertPassword
-Password to the certificate as a secure string
+Password to the certificate as a secure string.
 
 ```yaml
 Type: Object

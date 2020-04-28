@@ -1,4 +1,4 @@
-- name: Azure Stack Hub Privileged Endpoint Reference
+- name: Azure Stack Hub privileged endpoint reference
   href: index.md
   expanded: true
   items:

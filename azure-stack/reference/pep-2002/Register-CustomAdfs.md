@@ -1,6 +1,6 @@
 ---
 title: Register-CustomAdfs privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Register-CustomAdfs
+description: Reference for PowerShell Azure Stack privileged endpoint - Register-CustomAdfs
 author: mattbriggs
 
 ms.topic: reference
@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # Register-CustomAdfs
 
 ## Synopsis
-Script to register custom Active Directory Federation Service (ADFS) as claims provider with Azure Stack ADFS
+Script to register custom Active Directory Federation Service (AD FS) as claims provider with Azure Stack AD FS
 
 ## Syntax
 
@@ -24,7 +24,7 @@ Register-CustomAdfs [-CustomADFSFederationMetadataEndpointUri <Object>]
 ```
 
 ## Description
-Script to register custom Active Directory Federation Service (ADFS) as claims provider with Azure Stack ADFS
+Script to register custom Active Directory Federation Service (AD FS) as claims provider with Azure Stack AD FS
 
 ## Examples
 
@@ -33,8 +33,10 @@ Script to register custom Active Directory Federation Service (ADFS) as claims p
 Register-CustomAdfs -CustomAdfsName "Contoso" -CustomADFSFederationMetadataEndpointUri "https://adfs.contoso.com/federationmetadata/2007-06/federationmetadata.xml"  -TimeoutInSecs 1000
 ```
 
+### Example 2
+```
 Register-CustomAdfs -CustomAdfsName "Contoso" -CustomADFSFederationMetadataFile "c:\temp\FederationMetadata.xml" -TimeoutInSecs 1000
-
+```
 ## Parameters
 
 ### -CustomAdfsName

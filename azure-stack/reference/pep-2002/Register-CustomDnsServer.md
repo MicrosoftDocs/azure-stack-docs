@@ -1,6 +1,6 @@
 ---
 title: Close-PrivilegedEndpoint privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Close-PrivilegedEndpoint
+description: Reference for PowerShell Azure Stack privileged endpoint - Close-PrivilegedEndpoint
 author: mattbriggs
 
 ms.topic: reference
@@ -13,8 +13,7 @@ ms.lastreviewed: 04/27/2020
 # Register-CustomDnsServer
 
 ## Synopsis
-Script to register custom DNS servers with Azure Stack DNS.
-This script will create conditional forwarding in Azure Stack DNS
+Script to register custom DNS servers with Azure Stack Hub DNS. This script will create conditional forwarding in Azure Stack Hub DNS.
 
 ## Syntax
 

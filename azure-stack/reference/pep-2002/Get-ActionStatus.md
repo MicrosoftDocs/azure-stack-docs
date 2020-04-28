@@ -1,6 +1,6 @@
 ---
 title: Get-ActionStatusprivileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Get-ActionStatus
+description: Reference for PowerShell Azure Stack privileged endpoint - Get-ActionStatus
 author: mattbriggs
 
 ms.topic: reference

@@ -1,6 +1,6 @@
 ---
 title: Get-ClusterLog privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Get-ClusterLog
+description: Reference for PowerShell Azure Stack privileged endpoint - Get-ClusterLog
 author: mattbriggs
 
 ms.topic: reference

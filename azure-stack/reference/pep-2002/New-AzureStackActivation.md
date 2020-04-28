@@ -1,6 +1,6 @@
 ---
 title: New-AzureStackActivation privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - New-AzureStackActivation
+description: Reference for PowerShell Azure Stack privileged endpoint - New-AzureStackActivation
 author: mattbriggs
 
 ms.topic: reference
@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # New-AzureStackActivation
 
 ## Synopsis
-Activate Azure Stack
+Activate Azure Stack Hub.
 
 ## Syntax
 

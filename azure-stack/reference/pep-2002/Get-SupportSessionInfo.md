@@ -1,6 +1,6 @@
 ---
 title: Get-SupportSessionInfo privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Get-SupportSessionInfo
+description: Reference for PowerShell Azure Stack privileged endpoint - Get-SupportSessionInfo
 author: mattbriggs
 
 ms.topic: reference

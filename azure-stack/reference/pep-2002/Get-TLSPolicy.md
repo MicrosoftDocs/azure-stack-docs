@@ -1,6 +1,6 @@
 ---
 title: Get-TLSPolicy privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Get-TLSPolicy
+description: Reference for PowerShell Azure Stack privileged endpoint - Get-TLSPolicy
 author: mattbriggs
 
 ms.topic: reference

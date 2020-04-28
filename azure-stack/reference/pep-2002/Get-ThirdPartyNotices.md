@@ -1,6 +1,6 @@
 ---
 title: Get-ThirdPartyNotices privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Get-ThirdPartyNotices
+description: Reference for PowerShell Azure Stack privileged endpoint - Get-ThirdPartyNotices
 author: mattbriggs
 
 ms.topic: reference

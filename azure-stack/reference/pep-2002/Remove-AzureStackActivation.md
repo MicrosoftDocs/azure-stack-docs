@@ -1,6 +1,6 @@
 ---
 title: Remove-AzureStackActivation privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Remove-AzureStackActivation
+description: Reference for PowerShell Azure Stack privileged endpoint - Remove-AzureStackActivation
 author: mattbriggs
 
 ms.topic: reference

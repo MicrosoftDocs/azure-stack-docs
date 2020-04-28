@@ -1,6 +1,6 @@
 ---
 title: New-CloudAdminUser privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - New-CloudAdminUser
+description: Reference for PowerShell Azure Stack privileged endpoint - New-CloudAdminUser
 author: mattbriggs
 
 ms.topic: reference

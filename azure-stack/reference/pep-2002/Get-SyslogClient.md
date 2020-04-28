@@ -1,6 +1,6 @@
 ---
 title: Get-SyslogClient privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Get-SyslogClient
+description: Reference for PowerShell Azure Stack privileged endpoint - Get-SyslogClient
 author: mattbriggs
 
 ms.topic: reference
@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # Get-SyslogClient
 
 ## Synopsis
-Gets the Syslog Client settings
+Gets the syslog client settings.
 
 ## Syntax
 

@@ -1,6 +1,6 @@
 ---
 title: Repair-VirtualDisk privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Repair-VirtualDisk
+description: Reference for PowerShell Azure Stack privileged endpoint - Repair-VirtualDisk
 author: mattbriggs
 
 ms.topic: reference
@@ -11,8 +11,6 @@ ms.lastreviewed: 04/27/2020
 ---
 
 # Repair-VirtualDisk
-
-## Synopsis
 
 ## Syntax
 

@@ -1,6 +1,6 @@
 ---
 title: Test-AzureStack privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Test-AzureStack
+description: Reference for PowerShell Azure Stack privileged endpoint - Test-AzureStack
 author: mattbriggs
 
 ms.topic: reference
@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # Test-AzureStack
 
 ## Synopsis
-Validates the status of Azure Stack
+Validates the status of Azure Stack Hub.
 
 ## Syntax
 
@@ -25,20 +25,22 @@ Test-AzureStack [-BackupShareCredential <Object>] [-Include <Object>] [-Detailed
 ```
 
 ## Description
-If no faults are detected, Test-AzureStack returns $true.
-If faults are detected it will return $false.
+If no faults are detected, Test-AzureStack returns `$true`.
+If faults are detected it will return `$false`.
 
 ## Examples
 
 ### Example 1
-```
+
 To run Test-AzureStack without operator and user scenarios:
 ```
-
-\[azs-ercs01\]: PS\>Test-AzureStack
+[azs-ercs01\]: PS\>Test-AzureStack
+```
 
 To Run Test-AzureStack with operator and user scenarios:
-\[azs-ercs01\]: PS\>Test-AzureStack -ServiceAdminCredentials \<PSCredential\>
+```
+[azs-ercs01\]: PS\>Test-AzureStack -ServiceAdminCredentials \<PSCredential\>
+```
 
 ## Parameters
 

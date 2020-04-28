@@ -1,6 +1,6 @@
 ---
 title: Get-CloudAdminUserList privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Get-CloudAdminUserList
+description: Reference for PowerShell Azure Stack privileged endpoint - Get-CloudAdminUserList
 author: mattbriggs
 
 ms.topic: reference

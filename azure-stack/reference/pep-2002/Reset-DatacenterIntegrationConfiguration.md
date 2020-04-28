@@ -1,6 +1,6 @@
 ---
 title: Reset-DatacenterIntegrationConfiguration privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Reset-DatacenterIntegrationConfiguration
+description: Reference for PowerShell Azure Stack privileged endpoint - Reset-DatacenterIntegrationConfiguration
 author: mattbriggs
 
 ms.topic: reference
@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # Reset-DatacenterIntegrationConfiguration
 
 ## Synopsis
-Script to reset Datacenter Integration changes
+Script to reset datacenter integration changes.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Reset-DatacenterIntegrationConfiguration [[-TimeoutInSecs] <Object>] [-AsJob]
 ```
 
 ## Description
-Script to reset Datacenter Integration changes
+Script to reset datacenter integration changes.
 
 ## Examples
 

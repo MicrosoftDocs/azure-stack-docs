@@ -1,6 +1,6 @@
 ---
 title: New-GraphApplication privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - New-GraphApplication
+description: Reference for PowerShell Azure Stack privileged endpoint - New-GraphApplication
 author: mattbriggs
 
 ms.topic: reference
@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # New-GraphApplication
 
 ## Synopsis
-New-GraphApplication is a wrapper funnction to call ADFS Graph cmdlets on ADFS.
+New-GraphApplication is a wrapper funnction to call AD FS Graph cmdlets on AD FS.
 
 ## Syntax
 
@@ -23,7 +23,7 @@ New-GraphApplication [-ClientCertificates <Object>] [-Name <Object>] [-ClientRed
 ```
 
 ## Description
-Invokes the New-GraphApplicationGroup on ADFS to add new application on to ADFS machine.
+Invokes the New-GraphApplicationGroup on AD FS to add new application on to AD FS machine.
 
 ## Examples
 
@@ -35,7 +35,7 @@ New-GraphApplication -Name $ApplicationName -ClientRedirectUris $redirectUri -Cl
 ## Parameters
 
 ### -Name
-Name of the Application with maximum length of 50 chars, It will be modified as Azurestack-$Name-$(\[guid\]::NewGuid()) and is returned by the function.
+Name of the Application with maximum length of 50 chars, It will be modified as Azurestack-$Name-$({guid}::{NewGuid}()) and is returned by the function.
 
 ```yaml
 Type: Object
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClientRedirectUris
-Redirect URI used to create a new application in ADFS.
+Redirect URI used to create a new application in AD FS.
 
 ```yaml
 Type: Object
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClientCertificates
-Certificate used to create a new application in ADFS.
+Certificate used to create a new application in AD FS.
 
 ```yaml
 Type: Object

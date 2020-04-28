@@ -1,6 +1,6 @@
 ---
 title: Get-AzureStackStampInformation privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Get-AzureStackStampInformation
+description: Reference for PowerShell Azure Stack privileged endpoint - Get-AzureStackStampInformation
 author: mattbriggs
 
 ms.topic: reference

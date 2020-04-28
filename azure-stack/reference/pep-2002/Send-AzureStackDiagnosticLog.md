@@ -1,6 +1,6 @@
 ---
 title: Send-AzureStackDiagnosticLog privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Send-AzureStackDiagnosticLog
+description: Reference for PowerShell Azure Stack privileged endpoint - Send-AzureStackDiagnosticLog
 author: mattbriggs
 
 ms.topic: reference
@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # Send-AzureStackDiagnosticLog
 
 ## Synopsis
-Sends Azure Stack Diagnostic Logs to Microsoft.
+Sends Azure Stack Hub diagnostic logs to Microsoft.
 
 ## Syntax
 
@@ -28,18 +28,18 @@ Makes a request to Support Bridge Service to upload diagnostic logs for stamp.
 ## Examples
 
 ### Example 1
-```
-The example below sends last 4 hour logs to Microsoft.
-```
 
+The example below sends last 4 hour logs to Microsoft.
+
+```
 PS C:\\\> Send-AzureStackDiagnosticLog
+```
 
 ### Example 2
-```
 The example below sends last 4 hour Support Service and WAS logs to Microsoft.
 ```
-
 PS C:\\\> Send-AzureStackDiagnosticLog -FilterByRole SupportBridgeController,WAS
+```
 
 ## Parameters
 

@@ -1,7 +1,7 @@
 ---
 title: Get-AzureStackLog
  privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Get-AzureStackLog
+description: Reference for PowerShell Azure Stack privileged endpoint - Get-AzureStackLog
 author: mattbriggs
 
 ms.topic: reference
@@ -14,7 +14,7 @@ ms.lastreviewed: 04/27/2020
 # Get-AzureStackLog
 
 ## Synopsis
-Get logs from various roles of AzureStack with timeout.
+Get logs from various roles of Azure Stack Hub with timeout.
 Works for both multi-node or one node environments.
 
 ## Syntax
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -FromDate
-This will get the logs starting from last hour
+This will get the logs starting from last hour.
 
 ```yaml
 Type: Object
@@ -225,7 +225,7 @@ Accept wildcard characters: False
 ```
 
 ### -TimeOutInMinutes
-Timeout for log collection tool
+Timeout for log collection tool.
 
 ```yaml
 Type: Object
@@ -240,7 +240,7 @@ Accept wildcard characters: False
 ```
 
 ### -IncludeDumpFile
-Disable dump file collection by default
+Disable dump file collection by default.
 
 ```yaml
 Type: SwitchParameter
@@ -255,7 +255,7 @@ Accept wildcard characters: False
 ```
 
 ### -PerformVMLogRecovery
-Perform WindowsEvents Log recovery for Off/OffCritical/Paused/PausedCritical VMs
+Perform WindowsEvents Log recovery for `Off`, `OffCritical`, `Paused`, `PausedCritical` VMs.
 
 ```yaml
 Type: SwitchParameter

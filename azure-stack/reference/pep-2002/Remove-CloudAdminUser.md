@@ -1,6 +1,6 @@
 ---
 title: Remove-CloudAdminUser privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Remove-CloudAdminUser
+description: Reference for PowerShell Azure Stack privileged endpoint - Remove-CloudAdminUser
 author: mattbriggs
 
 ms.topic: reference

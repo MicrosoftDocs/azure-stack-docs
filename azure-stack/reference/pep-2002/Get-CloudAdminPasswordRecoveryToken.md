@@ -1,6 +1,6 @@
 ---
 title: Get-CloudAdminPasswordRecoveryToken privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Get-CloudAdminPasswordRecoveryToken
+description: Reference for PowerShell Azure Stack privileged endpoint - Get-CloudAdminPasswordRecoveryToken
 author: mattbriggs
 
 ms.topic: reference

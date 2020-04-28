@@ -1,6 +1,6 @@
 ---
 title: Get-AzureStackSupportConfiguration privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Get-AzureStackSupportConfiguration
+description: Reference for PowerShell Azure Stack privileged endpoint - Get-AzureStackSupportConfiguration
 author: mattbriggs
 
 ms.topic: reference
@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # Get-AzureStackSupportConfiguration
 
 ## Synopsis
-Gets Support Service configuration settings.
+Gets support service configuration settings.
 
 ## Syntax
 
@@ -27,11 +27,11 @@ Support Service configuration settings.
 ## Examples
 
 ### Example 1
-```
 The example below gets registration details if stamp was registered or else null.
-```
 
+```
 PS C:\\\> Get-AzureStackSupportConfiguration
+```
 
 ## Parameters
 

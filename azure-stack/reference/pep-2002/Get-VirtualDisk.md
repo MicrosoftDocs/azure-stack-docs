@@ -1,6 +1,6 @@
 ---
 title: Get-VirtualDisk privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - Get-VirtualDisk
+description: Reference for PowerShell Azure Stack privileged endpoint - Get-VirtualDisk
 author: mattbriggs
 
 ms.topic: reference

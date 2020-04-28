@@ -1,6 +1,6 @@
 ---
 title: New-RegistrationToken privileged endpoint for Azure Stack Hub
-description: Reference for Powershell Azure Stack privileged endpoint - New-RegistrationToken
+description: Reference for PowerShell Azure Stack privileged endpoint - New-RegistrationToken
 author: mattbriggs
 
 ms.topic: reference
@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # New-RegistrationToken
 
 ## Synopsis
-Creates a new registration token
+Creates a new registration token.
 
 ## Syntax
 
