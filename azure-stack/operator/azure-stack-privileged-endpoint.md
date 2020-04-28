@@ -47,7 +47,7 @@ You will need set your current culture setting to `en-US` when running the privi
       - On an integrated system, run the following command from an elevated Windows PowerShell session to add the PEP as a trusted host on the hardened VM running on the hardware lifecycle host or the Privileged Access Workstation.
 
       ```powershell  
-        winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
+    Set-Item WSMan:\localhost\Client\TrustedHosts -Value '<IP Address of Privileged Endpoint>' -Concatenate
       ```
 
       - If you're running the ASDK, sign in to the development kit host.
