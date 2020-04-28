@@ -198,4 +198,4 @@ After the transcript log files are successfully transferred to the file share, t
 ## Next steps
 
 [Azure Stack Hub diagnostic tools](azure-stack-diagnostic-log-collection-overview-tzl.md)
-[Azure Stack Hub privileged endpoint reference](../reference/pep-2002/)
+[Azure Stack Hub privileged endpoint reference](../reference/pep-2002/index.md)
