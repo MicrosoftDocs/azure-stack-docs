@@ -4,10 +4,10 @@ description: Establish the requirements for running the ASK Engine on your Azure
 author: mattbriggs
 
 ms.topic: article
-ms.date: 04/23/2020
+ms.date: 04/28/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 04/23/2020
+ms.lastreviewed: 04/28/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase

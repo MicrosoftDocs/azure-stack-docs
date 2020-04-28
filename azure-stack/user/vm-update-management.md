@@ -108,9 +108,9 @@ After the VMs are scanned, they'll appear in the Azure Automation account in the
 
 The Azure Stack Hub VMs can now be included in scheduled update deployments together with Azure VMs.
 
-##  Creat an update deployment schedule
+##  Create an update deployment schedule
 
-To create an update deployment schedule, you must use use a PowerShell cmdlet, or the Azure REST API, to pass the machines. Use the following PowerShell example to get your machines scheduled. You can use the **New-AzAutomationSchedule** cmdlet with the `ForUpdateConfiguration` parameter to create a schedule. Then, use the **New-AzAutomationSoftwareUpdateConfiguration** cmdlet and pass the machines in the other tenant to the `NonAzureComputer` parameter. To run this script you will need to use the [preview of the Azure Stack Az module](../operator/powershell-install-az-module.md).
+To create an update deployment schedule, you must use use a PowerShell cmdlet, or the Azure REST API, to pass the machines. Use the following PowerShell example to get your machines scheduled. You can use the **[New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule)** cmdlet with the `ForUpdateConfiguration` parameter to create a schedule. Then, use the **[New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationsoftwareupdateconfiguration)** cmdlet and pass the Azure Stack Hub machines to the `NonAzureComputer` parameter. To run this script you will need to use the global [Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/).
 
 The following example shows how to do this:
 
