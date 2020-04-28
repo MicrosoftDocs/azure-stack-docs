@@ -24,9 +24,9 @@ Your users will need to create Event Hubs clusters with CUs that meet their busi
 - The total cores used by a 1 CU Event Hubs cluster.
 - The approximate capacity required for consumption of other resources, including VM storage, memory, and storage accounts.
 
-| | VM Type | Cluster Nodes | Cores per VM/node | Total Cores | VM Storage | Memory | Storage Accounts |
-|-|---------|-------|-------------------|-------------|------------|--------|------------------|
-| **1 CU Event Hubs cluster** | [D11_V2](../user/azure-stack-vm-sizes.md#mo-dv2) | 5 | 2 | 10 | 500 GiB | 70 GiB | 4 |
+| | VM Type | Cluster Nodes | Cores per VM/node | Total Cores | VM Storage | Memory | Storage Accounts | Public IPs |
+|-|---------|-------|-------------------|-------------|------------|--------|------------------|---|
+| **1 CU Event Hubs cluster** | [D11_V2](../user/azure-stack-vm-sizes.md#mo-dv2) | 5 | 2 | 10 | 500 GiB | 70 GiB | 4 | 1 |
 
 All Event Hubs clusters use a [D11_V2](../user/azure-stack-vm-sizes.md#mo-dv2) VM type for their nodes. A D11_V2 VM type consists of 2 cores. So 1 CU Event Hubs cluster uses 5 D11_V2 VMs, which translates into 10 cores used. In determining the number of cores to configure for a quota, use a multiple of the total cores used by 1 CU. This calculation reflects the maximum CU count you'll allow your users to use, when creating Event Hubs clusters. For example, to configure a quota that allows users to create a cluster with 2 CUs of capacity, set your quota at 20 cores.
 
@@ -37,9 +37,9 @@ All Event Hubs clusters use a [D11_V2](../user/azure-stack-vm-sizes.md#mo-dv2) V
 
 The resource consumption by the Event Hubs resource provider is constant, and independent of the number or sizes of clusters created by users. The following table shows the core utilization by the Event Hubs resource provider on Azure Stack Hub, and the approximate resource consumption by other resources. The Event Hubs resource provider uses a [D2_V2](/azure-stack/user/azure-stack-vm-sizes#dv2-series) VM type for its deployment.
 
-|                                  | VM Type | Cluster Nodes | Cores | VM Storage | Memory | Storage Accounts |
-|----------------------------------|---------|-------|-------|------------|--------|------------------|
-| **Event Hubs resource provider** | D2_V2   | 3     | 6     | 300 GiB    | 21 GiB | 2                |
+|                                  | VM Type | Cluster Nodes | Cores | VM Storage | Memory | Storage Accounts | Public IPs |
+|----------------------------------|---------|-------|-------|------------|--------|---|---|
+| **Event Hubs resource provider** | D2_V2   | 3     | 6     | 300 GiB    | 21 GiB | 2 |  | 1 |
 
 > [!IMPORTANT]
 > Resource provider consumption is not something that is controlled by quotas. You do not need to accommodate the cores used by the resource provider in your quota configurations. Resource providers are installed using an administrator subscription. The subscription does not impose resource consumption limits on operators, when installing their required resource providers.
@@ -50,13 +50,15 @@ The total capacity consumed by the Event Hubs service includes resource consumpt
 
 The following table shows the total Event Hubs consumption under various configurations, regardless if they're managed by quota. These numbers are based on the resource provider and Event Hubs cluster consumptions presented above. You can easily calculate your total Azure Stack Hub usage for other deployment sizes, using these examples.
 
-|                                      | Cores | VM Storage | Memory  | Storage Accounts | Total Storage |
-|--------------------------------------|-------|------------|---------|------------------|---------------|
-| **1-CU cluster + resource provider** | 16    | 800 GiB    | 91 GiB  | 6                | variable\*    |
-| **2-CU cluster + resource provider** | 26    | 1.3 TB     | 161 GiB | 10               | variable\*    |
-| **4-CU cluster + resource provider** | 46    | 2.3 TB     | 301 GiB | 18               | variable\*    |
+|                                      | Cores | VM Storage | Memory  | Storage Accounts | Total Storage\* | Public IPs\*\* |
+|--------------------------------------|-------|------------|---------|------------------|---------------|------------|
+| **1-CU cluster + resource provider** | 16    | 800 GiB    | 91 GiB  | 6                | variable    | 2 |
+| **2-CU cluster + resource provider** | 26    | 1.3 TB     | 161 GiB | 10               | variable    | 3 |
+| **4-CU cluster + resource provider** | 46    | 2.3 TB     | 301 GiB | 18               | variable    | 5 |
 
 \* The ingress data block (message/event) rate and message retention are two important factors that contribute to the storage used by Event Hubs clusters. For example, if message retention is set to 7 days when creating an event hub, and messages are ingested at a rate of 1MB/s, the approximate storage used is 604 GB (1 MB x 60 seconds x 60 minutes x 24 hours X 7 days). If messages are sent at a rate of 20MB/s with a 7 days retention, the approximate storage consumption is 12TB. Be sure to consider ingress data rate and retention time to fully understand storage capacity consumption.
+
+\*\* Public IP addresses are consumed from the [network quota provided as part of your subscription](azure-stack-quota-types.md#network-quota-types).
 
 ## Next steps
 
