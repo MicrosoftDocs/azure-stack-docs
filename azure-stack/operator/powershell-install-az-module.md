@@ -80,7 +80,7 @@ Run the following command from a PowerShell session:
 
 ```powershell  
 Install-Module -Name Az.BootStrapper -Force -AllowPrerelease
-Use-AzProfile -Profile 2019-03-01-hybrid -Force
+Install-AzProfile -Profile 2019-03-01-hybrid -Force
 Install-Module -Name AzureStack -RequiredVersion 2.0.0-preview -AllowPrerelease
 ```
 
@@ -153,7 +153,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
    Set-BootstrapRepo -Repo $RepoName
 
-   Use-AzProfile -Profile '2019-03-01-hybrid' -Force -Scope AllUsers
+   Install-AzProfile -Profile '2019-03-01-hybrid' -Force -Scope AllUsers
 
    Install-Module -Name AzureStack -Repository $RepoName -RequiredVersion 2.0.0-preview -AllowPrerelease -Scope AllUsers
    ```
