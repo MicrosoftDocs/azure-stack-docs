@@ -57,8 +57,8 @@ The estimated time is between 12 to 15 minutes per VM in the cluster. For exampl
 Download the new versions of the AKS base Ubuntu Image and AKS engine.
 
 As explain in the AKS engine for Azure Stack Hub documentation, deploying a Kubernetes cluster requires two main components: 
-1. The aks-engine binary
-2. AKS Base Ubuntu 16.04-LTS Image Distro
+- The aks-engine binary
+- AKS Base Ubuntu 16.04-LTS Image Distro
 
 New versions of these are available with this update:
 
@@ -118,11 +118,11 @@ You can find the current version and upgrade version in the following table for 
 
 ## Known issues
 
-1.  Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. Deploying one service at the time if possible.
+-  Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. Deploying one service at the time if possible.
 
-2.  Running aks-engine get-versions will produce information applicable to Azure and Azure Stack Hub, however, there is not explicit way to discern what corresponds to Azure Stack Hub. Do not use this command to figure out what versions area available to upgrade. Use the upgrade reference table described above.
+-  Running aks-engine get-versions will produce information applicable to Azure and Azure Stack Hub, however, there is not explicit way to discern what corresponds to Azure Stack Hub. Do not use this command to figure out what versions area available to upgrade. Use the upgrade reference table described above.
 
-3.  Since aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, please ignore them and use the version table above as the official guide for this update.
+-  Since aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, please ignore them and use the version table above as the official guide for this update.
 
 ## Reference
 
@@ -142,7 +142,7 @@ Following is a list of some of the bugs fixed as well as the complete set of rel
 
 -   Update to use single omsagent yaml for all k8s versions to avoid any manual errors and easy maintainability ([\#2692](https://github.com/Azure/aks-engine/issues/2692))
 
-### Release Notes:
+### Release notes
 
 This is the complete set of release notes for Azure and Azure Stack Hub combined
 
@@ -157,6 +157,6 @@ This is the complete set of release notes for Azure and Azure Stack Hub combined
 -   https://github.com/Azure/aks-engine/releases/tag/v0.47.0
 -   https://github.com/Azure/aks-engine/releases/tag/v0.48.0
 
-## Next step
+## Next steps
 
 - Read about the [The AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)
