@@ -46,13 +46,14 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 1.8:
 
 Azure App Service on Azure Stack update 8 includes the following improvements and fixes:
 
-- Updates to **App Service tenant, admin, functions portals and Kudu tools**. Consistent with Azure Stack portal SDK version.
+- Updates to **App Service tenant, admin, functions portals, and Kudu tools**. Consistent with Azure Stack portal SDK version.
 
 - Updates **Azure functions runtime** to **v1.0.12615**.
 
 - Updates to core service to improve reliability and error messaging, which enables easier diagnosis of common issues.
 
 - **Updates to the following app frameworks and tools**:
+
   - ASP.NET Core 3.1.0
   - ASP.NET Core 3.0.1
   - ASP.NET Core 2.2.8
@@ -264,7 +265,7 @@ Take one of the following actions and select retry within the installer.
 
 ### Known issues for cloud admins operating Azure App Service on Azure Stack
 
-Refer to the documentation in the [Azure Stack 1907 Release Notes](azure-stack-release-notes-1907.md).
+Refer to the documentation in the [Azure Stack 1907 release notes](azure-stack-release-notes-1907.md).
 
 ## Next steps
 
