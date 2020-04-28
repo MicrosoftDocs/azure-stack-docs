@@ -4,10 +4,10 @@ description: Establish the requirements for running the ASK Engine on your Azure
 author: mattbriggs
 
 ms.topic: article
-ms.date: 04/23/2020
+ms.date: 04/28/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 04/23/2020
+ms.lastreviewed: 04/28/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -35,10 +35,6 @@ Your cloud operator will need to have the following items in place.
 | AKS Base Ubuntu Image | AKS Base Ubuntu 16.04-LTS Image Distro, March 2020, version: 2020.03.19 | Required | If you don't have this item in your subscription, contact your cloud operator. See more information on the version dependency see [Matching engine to base image version](#matching-engine-to-base-image-version).<br> If you are the cloud operator for Azure Stack Hub and would like to offer the AKS engine, follow the instructions at [Add the AKS engine to the Azure Stack Hub Marketplace](../operator/azure-stack-aks-engine.md). |
 | Service principal identity (SPN) |  An application that needs to deploy or configure resources through Azure Resource Manager, must be represented by a service principal. | Required | You may need to contact your Azure Stack Hub operator for this item.<br>If an Azure Active Directory (AAD) Service Principal identity is used, Internet access is required from the VMs in the Kubernetes cluster so that the Service Principal can be authenticated with AAD. If there is no internet access, the Kubernetes cluster will not be functional.<br>For instructions see [Use an app identity to access resources](https://docs.microsoft.com/azure-stack/operator/azure-stack-create-service-principals) |
 | (SPN) assigned **Contributor** role | To allow an application to access resources in your subscription using its service principal, you must assign the service principal to a role for a specific resource. | Required | For instructions, see [Assign a role](https://docs.microsoft.com/azure-stack/operator/azure-stack-create-service-principals#assign-a-role) |
-
-
-Add the following to the "Service Principal" requirement description: ""
-
 
 
 You can set the following items.
