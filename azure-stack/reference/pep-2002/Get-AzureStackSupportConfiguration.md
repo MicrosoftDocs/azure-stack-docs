@@ -38,7 +38,7 @@ PS  C:\> Get-AzureStackSupportConfiguration
 ### -IncludeRegistrationObjectId
 Optional.
 Requires internet connectivity.
-Retrieves registration identity object id.
+Retrieves registration identity object ID.
 
 ```yaml
 Type: SwitchParameter
@@ -72,4 +72,4 @@ Requires Support VM to have internet connectivity.
 
 ## Next steps
 
-For information on how to access and use the privileged endpoint, see [Use the privileged endpoint in Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-monitor-update).
+For information on how to access and use the privileged endpoint, see [Use the privileged endpoint in Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint).

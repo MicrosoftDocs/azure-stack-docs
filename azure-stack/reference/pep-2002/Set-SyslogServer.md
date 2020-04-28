@@ -181,4 +181,4 @@ Accept wildcard characters: False
 
 ## Next steps
 
-For information on how to access and use the privileged endpoint, see [Use the privileged endpoint in Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-monitor-update).
+For information on how to access and use the privileged endpoint, see [Use the privileged endpoint in Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint).
