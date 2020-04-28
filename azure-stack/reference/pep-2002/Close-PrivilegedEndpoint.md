@@ -12,8 +12,6 @@ ms.lastreviewed: 04/27/2020
 
 # Close-PrivilegedEndpoint
 
-## Synopsis
-
 ## Syntax
 
 ```

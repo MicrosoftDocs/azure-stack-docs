@@ -26,7 +26,7 @@ The PowerShell Azure Stack privileged endpoint (PEP) is a pre-configured remote 
 | [Get-CloudAdminPasswordRecoveryToken](Get-CloudAdminPasswordRecoveryToken.md) | No description. |
 | [Get-CloudAdminUserList](Get-CloudAdminUserList.md) | No description. |
 | [Get-ClusterLog](Get-ClusterLog.md) | No description. |
-| [Get-GraphApplication](Get-GraphApplication.md) | Get-GraphApplication is a wrapper function to get the Graph application information for the Applicaiton Name or Identifier specified. |
+| [Get-GraphApplication](Get-GraphApplication.md) | Get-GraphApplication is a wrapper function to get the Graph application information for the application Name or Identifier specified. |
 | [Get-StorageJob](Get-StorageJob.md) | No description. |
 | [Get-SupportSessionInfo](Get-SupportSessionInfo.md) | No description. |
 | [Get-SupportSessionToken](Get-SupportSessionToken.md) | No description. |

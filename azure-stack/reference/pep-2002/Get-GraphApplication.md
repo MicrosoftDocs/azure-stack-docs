@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # Get-GraphApplication
 
 ## Synopsis
-Get-GraphApplication is a wrapper function to get the graph application information for the applicaiton name or identifier specified.
+Get-GraphApplication is a wrapper function to get the graph application information for the application name or identifier specified.
 
 ## Syntax
 
