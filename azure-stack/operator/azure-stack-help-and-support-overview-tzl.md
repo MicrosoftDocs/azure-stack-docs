@@ -27,11 +27,11 @@ Operators can use **Help + support** to learn more about Azure Stack Hub, check 
 
 ### Things to try first
 
-At the top of **Help + support** are links to things to try first, like read about a new concept, understand how billing works, or see which support options are available.
+At the top of **Help + support** are things you should try first, like read about new concepts, learn how billing works, or see which support options are available.
 
 ![Self-service support in Azure Stack Hub](media/azure-stack-help-and-support/get-support-tiles.png)
 
-- **Documentation**. [Azure Stack Hub Operator Documentation](index.yml) includes concepts, how-to topics, and tutorials that show how to offer Azure Stack Hub services like virtual machines, SQL databases, web apps, and more.
+- **Documentation**. [Azure Stack Hub Operator Documentation](index.yml) includes concepts, how-to topics, and tutorials that show how to offer Azure Stack Hub services. These services include virtual machines, SQL databases, web apps, and more.
 
 - **Learn about billing**. Get tips on [usage and billing](azure-stack-billing-and-chargeback.md).
 
@@ -43,7 +43,7 @@ For an integrated system, there's a coordinated escalation and resolution proces
 
 If there's a cloud services issue, support is offered through Microsoft Customer Support Services (CSS). You can select **Help** (question mark) in the upper-right corner of the administrator portal and then select **Help + support** to open **Help + Support Overview** and submit a new support request. Creating a support request will preselect Azure Stack Hub service. We highly recommend that customers use this experience to submit tickets rather than using the Global Azure portal.
 
-If there's an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, like software running on the hardware lifecycle host, contact your OEM hardware vendor first. For anything else, contact Microsoft CSS.
+If there's an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software (like software running on the hardware lifecycle host), contact your OEM hardware vendor first. For anything else, contact Microsoft CSS.
 
 ![Get expert help for integrated systems](media/azure-stack-help-and-support/get-support-integrated.png)
 
