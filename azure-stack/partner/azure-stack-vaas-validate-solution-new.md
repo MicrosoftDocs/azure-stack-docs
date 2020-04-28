@@ -1,14 +1,12 @@
 ---
-title: Validate a new Azure Stack Hub solution 
-description: Learn how to validate a new Azure Stack Hub solution with Validation as a Service.
+title: Validate a solution in Azure Stack Hub
+description: Learn how to validate a new Azure Stack Hub solution with the solution validation workflow.
 author: mattbriggs
-
 ms.topic: quickstart
-ms.date: 11/11/2019
+ms.date: 04/20/2020
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
-
 
 ROBOTS: NOINDEX
 
@@ -18,15 +16,15 @@ ROBOTS: NOINDEX
 ---
 
 
-# Validate a new Azure Stack Hub solution
+# Validate a solution in Azure Stack Hub
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Learn how to use the **solution validation** workflow to certify new Azure Stack Hub solutions.
+Learn how to use the **solution validation** workflow to validate new Azure Stack Hub solutions.
 
-An Azure Stack Hub solution is a hardware bill of materials (BoM) that has been jointly agreed upon between Microsoft and the partner after meeting the Windows Server logo certification requirements. A solution must be recertified when there has been a change to the hardware BoM. For further questions about when to recertify solutions, contact the team at [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com).
+An Azure Stack Hub solution is a hardware bill of materials (BoM) that has been jointly agreed upon between Microsoft and the partner after meeting the Windows Server logo certification requirements. A solution must be recertified when there has been a change to the hardware BoM. For further questions about when to revalidate solutions, contact the team at [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com).
 
-To certify your solution, run the solution validation workflow twice. Run it once for the *minimally* supported configuration. Run it a second time for the *maximally* supported configuration. Microsoft certifies the solution if both configurations pass all tests.
+To validate your solution, run the solution validation workflow twice. Run it once for the *minimally* supported configuration. Run it a second time for the *maximally* supported configuration. Microsoft validates the solution if both configurations pass all tests.
 
 [!INCLUDE [azure-stack-vaas-workflow-validation-completion](includes/azure-stack-vaas-workflow-validation-completion.md)]
 
@@ -34,36 +32,36 @@ To certify your solution, run the solution validation workflow twice. Run it onc
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_select-solution](includes/azure-stack-vaas-workflow-step_select-solution.md)]
 
-3. Select **Start** on the **Solution Validations** tile.
+2. Select **Start** on the **Solution Validations** tile.
 
     ![Solution validations workflow tile](media/tile_validation-solution.png)
 
-4. [!INCLUDE [azure-stack-vaas-workflow-step_naming](includes/azure-stack-vaas-workflow-step_naming.md)]
+3. [!INCLUDE [azure-stack-vaas-workflow-step_naming](includes/azure-stack-vaas-workflow-step_naming.md)]
 
-5. Select the **solution configuration**.
+4. Select the **solution configuration**.
     - **Minimum**: the solution is configured with the minimum supported number of nodes.
     - **Maximum**: the solution is configured with the maximum supported number of nodes.
-6. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
+5. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
 
     ![Solution Validation information](media/workflow_validation-solution_info.png)
 
-7. [!INCLUDE [azure-stack-vaas-workflow-step_test-params](includes/azure-stack-vaas-workflow-step_test-params.md)]
+6. [!INCLUDE [azure-stack-vaas-workflow-step_test-params](includes/azure-stack-vaas-workflow-step_test-params.md)]
 
     > [!NOTE]
-    > Environment parameters cannot be modified after creating a workflow.
+    > Environment parameters can't be modified after creating a workflow.
 
-8. [!INCLUDE [azure-stack-vaas-workflow-step_tags](includes/azure-stack-vaas-workflow-step_tags.md)]
-9. [!INCLUDE [azure-stack-vaas-workflow-step_submit](includes/azure-stack-vaas-workflow-step_submit.md)]
-    You will be redirected to the tests summary page.
+7. [!INCLUDE [azure-stack-vaas-workflow-step_tags](includes/azure-stack-vaas-workflow-step_tags.md)]
+8. [!INCLUDE [azure-stack-vaas-workflow-step_submit](includes/azure-stack-vaas-workflow-step_submit.md)]
+    You 'll be redirected to the tests summary page.
 
 ## Run Solution Validation tests
 
-In the **Solution Validation tests summary** page, you will see a list of the tests required for completing validation.
+In the **Solution Validation tests summary** page, you'll see a list of the tests required for completing validation.
 
-In the validation workflows, **scheduling** a test uses the workflow-level common parameters that you specified during workflow creation (see [Workflow common parameters for Azure Stack Hub Validation as a Service](azure-stack-vaas-parameters.md)). If any of test parameter values become invalid, you must resupply them as instructed in [Modify workflow parameters](azure-stack-vaas-monitor-test.md#change-workflow-parameters).
+In the validation workflows, **scheduling** a test uses the workflow-level common parameters that you specified during workflow creation (see [Workflow common parameters for Azure Stack Hub validation as a service](azure-stack-vaas-parameters.md)). If any of the test parameter values become invalid, you must resupply them as instructed in [Modify workflow parameters](azure-stack-vaas-monitor-test.md#change-workflow-parameters).
 
 > [!NOTE]
-> Scheduling a validation test over an existing instance will create a new instance in place of the old instance in the portal. Logs for the old instance will be retained but are not accessible from the portal.  
+> Scheduling a validation test over an existing instance will create a new instance in place of the old instance in the portal. Logs for the old instance will be retained but aren't accessible from the portal.<br>
 Once a test has completed successfully, the **Schedule** action becomes disabled.
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_select-agent](includes/azure-stack-vaas-workflow-step_select-agent.md)]

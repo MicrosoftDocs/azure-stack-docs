@@ -7,7 +7,7 @@ documentationcenter: ''
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/27/2020
+ms.date: 04/20/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/07/2019
@@ -29,7 +29,7 @@ Azure Stack Hub multi-node systems that use the consumption-based billing model 
 
 Usage data reporting is required for the Azure Stack Hub multi-node users who license under the pay-as-you-use model. It's optional for customers who license under the capacity model (see the [How to buy](https://azure.microsoft.com/overview/azure-stack/how-to-buy/) page). For Azure Stack Development Kit (ASDK) users, Azure Stack Hub operators can report usage data and test the feature. However, users won't be charged for any usage they incur.
 
-![billing flow for usage data in Azure Stack Hub](media/azure-stack-usage-reporting/billing-flow.png)
+![billing flow for usage data in Azure Stack Hub](media/azure-stack-usage-reporting/billing-flow.svg)
 
 Usage data is sent from Azure Stack Hub to Azure through the Azure Bridge. In Azure, the commerce system processes the usage data and generates the bill. After the bill is generated, the Azure subscription owner can view and download it from the [Azure Account Center](https://account.windowsazure.com/subscriptions). To learn about how Azure Stack Hub is licensed, see the [Azure Stack Hub packaging and pricing document](https://go.microsoft.com/fwlink/?LinkId=842847).
 
