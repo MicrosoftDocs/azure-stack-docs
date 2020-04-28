@@ -30,37 +30,37 @@ The PEP is a pre-configured remote PowerShell console that provides you with jus
 | [Get-StorageJob](Get-StorageJob.md) | No description. |
 | [Get-SupportSessionInfo](Get-SupportSessionInfo.md) | No description. |
 | [Get-SupportSessionToken](Get-SupportSessionToken.md) | No description. |
-| [Get-SyslogClient](Get-SyslogClient.md) | Gets the Syslog Client settings |
-| [Get-SyslogServer](Get-SyslogServer.md) | Gets the Syslog server endpoint |
+| [Get-SyslogClient](Get-SyslogClient.md) | Gets the syslog Client settings. |
+| [Get-SyslogServer](Get-SyslogServer.md) | Gets the syslog server endpoint. |
 | [Get-ThirdPartyNotices](Get-ThirdPartyNotices.md) | No description. |
 | [Get-TLSPolicy](Get-TLSPolicy.md) | No description. |
 | [Get-VirtualDisk](Get-VirtualDisk.md) | No description. |
 | [Invoke-AzureStackOnDemandLog](Invoke-AzureStackOnDemandLog.md) | Generates on demand logs from AzureStack roles where applicable. |
-| [New-AzureBridgeServicePrincipal](New-AzureBridgeServicePrincipal.md) | Creates a new servcie principal in Azure Active Directory |
-| [New-AzureStackActivation](New-AzureStackActivation.md) | Activate Azure Stack |
+| [New-AzureBridgeServicePrincipal](New-AzureBridgeServicePrincipal.md) | Creates a new servcie principal in Azure Active Directory. |
+| [New-AzureStackActivation](New-AzureStackActivation.md) | Activate Azure Stack. |
 | [New-CloudAdminUser](New-CloudAdminUser.md) | No description. |
-| [New-GraphApplication](New-GraphApplication.md) | New-GraphApplication is a wrapper funnction to call ADFS Graph cmdlets on ADFS. |
+| [New-GraphApplication](New-GraphApplication.md) | New-GraphApplication is a wrapper funnction to call ADFS Graph cmdlets on AD FS. |
 | [New-RegistrationToken](New-RegistrationToken.md) | Creates a new registration token |
-| [Register-CustomAdfs](Register-CustomAdfs.md) | Script to register custom Active Directory Federation Service (ADFS) as claims provider with Azure Stack ADFS |
+| [Register-CustomAdfs](Register-CustomAdfs.md) | Script to register custom Active Directory Federation Service (ADFS) as claims provider with Azure Stack AD FS. |
 | [Register-CustomDnsServer](Register-CustomDnsServer.md) | Script to register custom DNS servers with Azure Stack DNS. |
-| [Register-DirectoryService](Register-DirectoryService.md) | Script to register customer Active Directory with Graph Service |
+| [Register-DirectoryService](Register-DirectoryService.md) | Script to register customer Active Directory with Graph Service. |
 | [Remove-AzureStackActivation](Remove-AzureStackActivation.md) | No description. |
 | [Remove-CloudAdminUser](Remove-CloudAdminUser.md) | No description. |
-| [Remove-GraphApplication](Remove-GraphApplication.md) | Remove-GraphApplication is a wrapper funnction to call ADFS Graph cmdlets on ADFS. |
+| [Remove-GraphApplication](Remove-GraphApplication.md) | Remove-GraphApplication is a wrapper funnction to call ADFS Graph cmdlets on AD FS. |
 | [Repair-VirtualDisk](Repair-VirtualDisk.md) | No description. |
-| [Reset-DatacenterIntegrationConfiguration](Reset-DatacenterIntegrationConfiguration.md) | Script to reset Datacenter Integration changes |
+| [Reset-DatacenterIntegrationConfiguration](Reset-DatacenterIntegrationConfiguration.md) | Script to reset Datacenter Integration changes. |
 | [Send-AzureStackDiagnosticLog](Send-AzureStackDiagnosticLog.md) | Sends Azure Stack Diagnostic Logs to Microsoft. |
 | [Set-CloudAdminUserPassword](Set-CloudAdminUserPassword.md) | No description. |
-| [Set-GraphApplication](Set-GraphApplication.md) | Set-GraphApplication is a wrapper funnction to call ADFS Graph cmdlets on ADFS. |
-| [Set-ServiceAdminOwner](Set-ServiceAdminOwner.md) | Script to update service admin upn |
-| [Set-SyslogClient](Set-SyslogClient.md) | Imports and applies Syslog client endpoint certificate |
-| [Set-SyslogServer](Set-SyslogServer.md) | Sets the Syslog server endpoint |
+| [Set-GraphApplication](Set-GraphApplication.md) | Set-GraphApplication is a wrapper funnction to call ADFS Graph cmdlets on AD FS. |
+| [Set-ServiceAdminOwner](Set-ServiceAdminOwner.md) | Script to update service administrator. |
+| [Set-SyslogClient](Set-SyslogClient.md) | Imports and applies syslog client endpoint certificate. |
+| [Set-SyslogServer](Set-SyslogServer.md) | Sets the syslog server endpoint. |
 | [Set-Telemetry](Set-Telemetry.md) | Enables or disables the transfer of telemetry data to Microsoft. |
 | [Set-TLSPolicy](Set-TLSPolicy.md) | No description. |
 | [Start-AzureStack](Start-AzureStack.md) | Starts all Azure Stack services. |
 | [Start-SecretRotation](Start-SecretRotation.md) | Triggers secret rotation on a stamp. |
 | [Stop-AzureStack](Stop-AzureStack.md) | Stops all Azure Stack services. |
-| [Test-AzureStack](Test-AzureStack.md) | Validates the status of Azure Stack |
+| [Test-AzureStack](Test-AzureStack.md) | Validates the status of Azure Stack. |
 | [Unlock-SupportSession](Unlock-SupportSession.md) | No description. |
 
 ## Next steps
