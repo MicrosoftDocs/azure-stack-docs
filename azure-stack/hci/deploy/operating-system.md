@@ -4,13 +4,13 @@ description: This article discusses different ways to deploy the Azure Stack HCI
 author: JohnCobb1
 ms.author: v-johcob 
 ms.topic: article
-ms.date: 04/28/2020
+ms.date: 04/29/2020
 ---
 
 # Deploy the Azure Stack HCI operating system
-The first step in deploying Azure Stack HCI is to install the Azure Stack HCI operating system on each server that you want to use in a cluster. This article discusses different ways to deploy the operating system, and using Windows Admin Center to connect to the servers. After deploying the operating system, you're ready to use related guidance on creating a server cluster. Optional steps to get the latest Windows updates and firmware for your servers are included.
+The first step in deploying Azure Stack HCI is to install the Azure Stack HCI operating system on each server that you want to use in a cluster. This article discusses different ways to deploy the operating system, and using Windows Admin Center to connect to the servers.
 
-<!---Update intro and yaml to reposition references to getting Windows Updates and firmware updates. Mention customers can do this most effectively through the create cluster wizard.--->
+After deploying the operating system, you're ready to use related guidance on creating a server cluster, and getting the latest Windows updates and firmware updates for your servers. Optional steps to get these updates are included in this article. However, we recommending using the Cluster Creation wizard to streamline getting updates. To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/en-us/azure-stack/hci/deploy/operating-system?branch=pr-en-us-2779).
 
 ## Prerequisites
 - Windows Admin Center set up on a system that can access a server cluster.
@@ -24,18 +24,20 @@ After you've acquired the server hardware for your Azure Stack HCI solution, it'
 
 ## Operating system deployment options
 Deployment options include:
-- Preinstallation by server manufacturer.
+- Server manufacturer preinstallation.
 - Manual deployment by connecting either a keyboard and monitor directly to the server hardware in your datacenter, or by connecting a KVM hardware device to the server hardware.
 - Headless deployment using an answer file.
 - System Center Virtual Machine Manager (VMM).
 
-### Preinstallation by server manufacturer
-TBD. 
-<!---Explain this is the Azure Stack HCI Integrated Systems route for enterprise customers.--->
+### Server manufacturer preinstallation
+For enterprise deployment of the Azure Stack HCI operating system, we recommend Azure Stack HCI Integrated System solution hardware from your preferred hardware partner. Azure Stack HCI Integrated System hardware arrives with the operating system preinstalled, and supports using Windows Admin Center to deploy and update drivers and firmware from the hardware manufacturer.
+
+Solution hardware ranges from 2 to 16 nodes and is tested and validated by Microsoft and partner vendors. ​To find Azure Stack HCI solutions from your preferred hardware vendor, see the [Azure Stack HCI Catalog](https://www.microsoft.com/cloud-platform/azure-stack-hci-catalog).
 
 ### Manual deployment
 Install Azure Stack HCI on the system drive of each server to be clustered.
-<!---Add Lab setup notes here on how to do this manually using Sconfig. See Jason's notes for detail. Include pointer to windows server article on SConfig. link: https://docs.microsoft.com/en-us/windows-server/get-started/sconfig-on-ws2016--->
+
+<!---Add Lab setup notes here on how to do this manually using Sconfig. Server Core only. See Jason's notes for detail. Include pointer to windows server article on SConfig. link: https://docs.microsoft.com/windows-server/get-started/sconfig-on-ws2016--->
 
 ### Headless deployment
 You can use an answer file to do a headless deployment of the operating system. The answer file uses an XML format to define configuration settings and values during an unattended installation of Windows Server.
@@ -87,8 +89,7 @@ The following sections describe each approach.
 1. After the search completes, select one or more of the results, optionally add tags, and then click **Add**.
 
 ## Getting the latest Windows updates and firmware updates
-TBD. 
-<!---Mention that the cluster creation wizard can streamline installing updates on all servers in the cluster, so it makes sense to do it then vs. manually on each prior to clustering. That's the optimal way. Include x-reference to Dan's Cluster Creation topic: This sections includes steps to get both outside the wizard from WAC.--->
+This section includes optional steps you can use to get the latest Windows updates and firmware updates for your servers. However, we recommending using the Cluster Creation wizard to streamline getting updates. To learn about creating a server cluster using the wizard, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/en-us/azure-stack/hci/deploy/operating-system?branch=pr-en-us-2779).
 
 ### Get the latest Windows updates
 To use Windows Admin Center to get the latest Windows updates:
