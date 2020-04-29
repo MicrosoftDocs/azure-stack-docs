@@ -65,7 +65,7 @@ For best practices on choosing parameters for the automatic log collection stora
    - **Location**: Choose a datacenter in accordance with your company policy.
    - **Performance**: Standard.
    - **Account kind** StorageV2 (general purpose v2).
-   - **Replication**: Locally-redundant storage (LRS).
+   - **Replication**: Locally redundant storage (LRS).
    - **Access tier**: Cool.
 
    ![Blob container properties](media/azure-stack-automatic-log-collection/azure-stack-log-collection-create-storage-account.png)
@@ -129,37 +129,37 @@ The history of logs collected from Azure Stack Hub appears on the **Log collecti
 
 ![Log collections in Help + support](media/azure-stack-help-and-support/azure-stack-log-collection.png)
 
-## Proactive diagnostic log collection alerts 
+## Proactive diagnostic log collection alerts
 
 If enabled, proactive log collection uploads logs only when one of the following events is raised.
 
 For example, **Update failed** is an alert that triggers proactive diagnostic log collection. If it's enabled, diagnostic logs are proactively captured during an update failure to help CSS troubleshoot the problem. The diagnostic logs are only collected when the alert for **Update failed** is raised.
 
-|Alert Title  |    FaultIdType|    
-|-------------|------------|
-|Unable to connect to the remote service |    UsageBridge.NetworkError|
-|Update failed |    Urp.UpdateFailure    |          
-|Storage Resource Provider infrastructure/dependencies not available |    StorageResourceProviderDependencyUnavailable     |     
-|Node not connected to controller|    ServerHostNotConnectedToController     |     
-|Route publication failure |    SlbMuxRoutePublicationFailure |    
-|Storage Resource Provider internal data store unavailable |    StorageResourceProvider. DataStoreConnectionFail     |       
-|Storage device failure    | Microsoft.Health.FaultType.VirtualDisks.Detached     |      
-|Health controller cannot access storage account | Microsoft.Health.FaultType.StorageError |    
-|Connectivity to a physical disk has been lost |    Microsoft.Health.FaultType.PhysicalDisk.LostCommunication     |    
-|The blob service isn't running on a node |    StorageService.The.blob.service.is.not.running.on.a.node-Critical |    
-|Infrastructure role unhealthy |    Microsoft.Health.FaultType.GenericExceptionFault |        
-|Table service errors |    StorageService.Table.service.errors-Critical |              
-|A file share is over 80% utilized |    Microsoft.Health.FaultType.FileShare.Capacity.Warning.Infra |       
-|Scale unit node is offline    | FRP.Heartbeat.PhysicalNode |    
-|Infrastructure role instance unavailable |    FRP.Heartbeat.InfraVM    |    
-|Infrastructure role instance unavailable  |    FRP.Heartbeat.NonHaVm     |        
-|The infrastructure role, Directory Management, has reported time synchronization errors |    DirectoryServiceTimeSynchronizationError |       
-|Pending external certificate expiration |    CertificateExpiration.ExternalCert.Warning |
-|Pending external certificate expiration |    CertificateExpiration.ExternalCert.Critical |
-|Unable to provision virtual machines for specific class and size due to low memory capacity |    AzureStack.ComputeController.VmCreationFailure.LowMemory |
-|Node inaccessible for virtual machine placement |    AzureStack.ComputeController.HostUnresponsive |    
-|Backup failed  | AzureStack.BackupController.BackupFailedGeneralFault |    
-|The scheduled backup was skipped due to a conflict with failed operations    | AzureStack.BackupController.BackupSkippedWithFailedOperationFault |    
+| Alert Title | FaultIdType |
+|---|---|
+|Unable to connect to the remote service | UsageBridge.NetworkError|
+|Update failed | Urp.UpdateFailure |
+|Storage Resource Provider infrastructure/dependencies not available |    StorageResourceProviderDependencyUnavailable |
+|Node not connected to controller| ServerHostNotConnectedToController |  
+|Route publication failure | SlbMuxRoutePublicationFailure |
+|Storage Resource Provider internal data store unavailable |    StorageResourceProvider. DataStoreConnectionFail |
+|Storage device failure | Microsoft.Health.FaultType.VirtualDisks.Detached |
+|Health controller can't access storage account | Microsoft.Health.FaultType.StorageError |
+|Connectivity to a physical disk has been lost | Microsoft.Health.FaultType.PhysicalDisk.LostCommunication |
+|The blob service isn't running on a node | StorageService.The.blob.service.is.not.running.on.a.node-Critical |
+|Infrastructure role unhealthy | Microsoft.Health.FaultType.GenericExceptionFault |
+|Table service errors | StorageService.Table.service.errors-Critical |
+|A file share is over 80% utilized | Microsoft.Health.FaultType.FileShare.Capacity.Warning.Infra |
+|Scale unit node is offline | FRP.Heartbeat.PhysicalNode |
+|Infrastructure role instance unavailable | FRP.Heartbeat.InfraVM |
+|Infrastructure role instance unavailable  | FRP.Heartbeat.NonHaVm |
+|The infrastructure role, Directory Management, has reported time synchronization errors | DirectoryServiceTimeSynchronizationError |
+|Pending external certificate expiration | CertificateExpiration.ExternalCert.Warning |
+|Pending external certificate expiration | CertificateExpiration.ExternalCert.Critical |
+|Unable to provision virtual machines for specific class and size due to low memory capacity | AzureStack.ComputeController.VmCreationFailure.LowMemory |
+|Node inaccessible for virtual machine placement | AzureStack.ComputeController.HostUnresponsive |
+|Backup failed  | AzureStack.BackupController.BackupFailedGeneralFault |
+|The scheduled backup was skipped due to a conflict with failed operations    | AzureStack.BackupController.BackupSkippedWithFailedOperationFault |
 
 ## See also
 
