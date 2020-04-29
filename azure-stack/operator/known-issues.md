@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 04/22/2020
+ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
@@ -165,7 +165,9 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 ::: moniker range="azs-2002"
 ## Update
 
-For known Azure Stack Hub update issues please see [Troubleshooting Updates in Azure Stack Hub](azure-stack-updates-troubleshoot.md).
+After applying the 2002 update, an alert for an "Invalid Time Source" may incorrectly appear in the Administrator portal. This false-positive alert can be ignored and will be fixed in an upcoming release. 
+
+For other known Azure Stack Hub update issues, please see [Troubleshooting Updates in Azure Stack Hub](azure-stack-updates-troubleshoot.md).
 
 ## Portal
 
