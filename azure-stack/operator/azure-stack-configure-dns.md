@@ -15,7 +15,7 @@ ms.lastreviewed: 11/21/2019
 
 # Update the DNS forwarder in Azure Stack Hub
 
-At least one reachable DNS forwarder is necessary for the Azure Stack Hub infrastructure to resolve external names. A DNS forwarder must be provided for the deployment of Azure Stack Hub. That input is used for the Azure Stack Hub internal DNS servers as forwarder, and enables external name resolution for services like authentication, marketplace management, or usage.
+At least one reachable DNS forwarder is necessary for the Azure Stack Hub infrastructure to resolve external names. A DNS forwarder must be provided for the deployment of Azure Stack Hub. That input is used for the Azure Stack Hub internal DNS servers as a forwarder and it enables external name resolution for services like authentication, marketplace management, or usage.
 
 DNS is a critical datacenter infrastructure service that can change. If it does, Azure Stack Hub must be updated.
 
