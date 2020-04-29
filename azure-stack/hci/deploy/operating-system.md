@@ -10,7 +10,7 @@ ms.date: 04/29/2020
 # Deploy the Azure Stack HCI operating system
 The first step in deploying Azure Stack HCI is to install the Azure Stack HCI operating system on each server that you want to use in a cluster. This article discusses different ways to deploy the operating system, and using Windows Admin Center to connect to the servers.
 
-After deploying the operating system, you're ready to use related guidance on creating a server cluster, and getting the latest Windows updates and firmware updates for your servers. Optional steps to get these updates are included in this article. However, we recommending using the Cluster Creation wizard to streamline getting updates. To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/en-us/azure-stack/hci/deploy/operating-system?branch=pr-en-us-2779).
+After deploying the operating system, you're ready to use related guidance on creating a server cluster, and getting the latest Windows updates and firmware updates for your servers. Optional steps to get these updates are included in this article. However, we recommending using the Cluster Creation wizard to streamline getting updates. To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/operating-system?branch=pr-en-us-2779).
 
 ## Prerequisites
 - Windows Admin Center set up on a system that can access a server cluster.
@@ -89,7 +89,7 @@ The following sections describe each approach.
 1. After the search completes, select one or more of the results, optionally add tags, and then click **Add**.
 
 ## Getting the latest Windows updates and firmware updates
-This section includes optional steps you can use to get the latest Windows updates and firmware updates for your servers. However, we recommending using the Cluster Creation wizard to streamline getting updates. To learn about creating a server cluster using the wizard, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/en-us/azure-stack/hci/deploy/operating-system?branch=pr-en-us-2779).
+This section includes optional steps you can use to get the latest Windows updates and firmware updates for your servers. However, we recommending using the Cluster Creation wizard to streamline getting updates. To learn about creating a server cluster using the wizard, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/operating-system?branch=pr-en-us-2779).
 
 ### Get the latest Windows updates
 To use Windows Admin Center to get the latest Windows updates:
