@@ -53,8 +53,8 @@ The following table shows the total Event Hubs consumption under various configu
 |                                      | Cores | VM Storage | Memory  | Storage Accounts | Total Storage\* | Public IPs\*\* |
 |--------------------------------------|-------|------------|---------|------------------|---------------|------------|
 | **1-CU cluster + resource provider** | 16    | 800 GiB    | 91 GiB  | 6                | variable    | 2 |
-| **2-CU cluster + resource provider** | 26    | 1.3 TB     | 161 GiB | 10               | variable    | 3 |
-| **4-CU cluster + resource provider** | 46    | 2.3 TB     | 301 GiB | 18               | variable    | 5 |
+| **2-CU cluster + resource provider** | 26    | 1.3 TB     | 161 GiB | 10               | variable    | 2 |
+| **4-CU cluster + resource provider** | 46    | 2.3 TB     | 301 GiB | 18               | variable    | 2 |
 
 \* The ingress data block (message/event) rate and message retention are two important factors that contribute to the storage used by Event Hubs clusters. For example, if message retention is set to 7 days when creating an event hub, and messages are ingested at a rate of 1MB/s, the approximate storage used is 604 GB (1 MB x 60 seconds x 60 minutes x 24 hours X 7 days). If messages are sent at a rate of 20MB/s with a 7 days retention, the approximate storage consumption is 12TB. Be sure to consider ingress data rate and retention time to fully understand storage capacity consumption.
 
