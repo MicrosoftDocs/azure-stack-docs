@@ -43,7 +43,7 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 2020 Q2:
 
 - Syndicate the **Custom Script Extension** version **1.9.3** from the Marketplace
 
-### New features and fixes
+### Updates
 
 Azure App Service on Azure Stack Update Q2 includes the following improvements and fixes:
 
@@ -54,6 +54,7 @@ Azure App Service on Azure Stack Update Q2 includes the following improvements a
 - Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.
 
 - **Updates to the following application frameworks and tools**:
+  - ASP.Net Framework 4.7.2
   - ASP.NET Core 3.1.3
   - ASP.NET Core Module v2 13.1.19331.0
   - PHP 7.4.2
@@ -69,10 +70,23 @@ Azure App Service on Azure Stack Update Q2 includes the following improvements a
     - 6.12.0
     - 6.13.4
   
-
 - **Updates to underlying operating system of all roles**:
   - [2020-04 Cumulative Update for Windows Server 2016 for x64-based Systems (KB4550929)](https://support.microsoft.com/help/4550929)
   - [2020-04 Servicing Stack Update for Windows Server 2016 for x64-based Systems (KB4550994)](https://support.microsoft.com/help/4550994)
+
+- **Cumulative Updates for Windows Server are now applied to Controller roles as part of deployment and upgrade**
+
+### Issues fixed in this release
+
+- Upgrades will now complete if SQL Always On Cluster has failed over to secondary node
+- New deployments of Azure App Service on Azure Stack Hub do not require databases to be converted to contained databases
+- Adding additional workers or infrastructure role instances will complete correctly without manual intervention
+- Adding custom worker tiers will complete correctly without manual intervention
+- Workers are no longer marked as ready if the local disk is out of space
+- Timeout increased for retrieving the ARM Certificate
+- Number of messages retrieved from server logs and displayed in the Admin Portal is limited to stay underneath the max ARM Request size
+- Timeout increase for startup of Usage Service to mitigate latency reaching storage endpoints
+- 
 
 ### Post-deployment steps
 
