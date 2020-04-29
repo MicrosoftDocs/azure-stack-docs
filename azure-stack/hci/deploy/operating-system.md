@@ -89,7 +89,7 @@ The following sections describe each approach.
 1. After the search completes, select one or more of the results, optionally add tags, and then click **Add**.
 
 ## Getting the latest Windows updates and firmware updates
-This section includes optional steps you can use to get the latest Windows updates and firmware updates for your servers. However, we recommending using the Cluster Creation wizard to streamline getting updates. To learn about creating a server cluster using the wizard, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/operating-system?branch=pr-en-us-2779).
+This section includes optional steps you can use to get the latest Windows updates and firmware updates for your servers. However, we recommending using the Cluster Creation wizard to streamline getting updates. To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/operating-system?branch=pr-en-us-2779).
 
 ### Get the latest Windows updates
 To use Windows Admin Center to get the latest Windows updates:
