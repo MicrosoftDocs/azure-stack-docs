@@ -13,7 +13,7 @@ ms.lastreviewed: 11/11/2019
 
 ---
 
-# Modify specific settings on your Azure Stack Hub switch configuration
+# Change settings on your Azure Stack Hub switch configuration
 
 You can change a few environmental settings for your Azure Stack Hub switch configuration. You can identify which of the settings you can change in the template created by your original equipment manufacturer (OEM). This article explains each of those customizable settings and how the changes can affect your Azure Stack Hub. These settings include password update, syslog server, simple network management protocol (SNMP) monitoring, authentication, and the access control list.
 
