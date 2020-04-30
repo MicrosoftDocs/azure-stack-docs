@@ -1,6 +1,6 @@
 ---
-title: Modify specific settings on your Azure Stack Hub switch configuration 
-description: Learn what you can customize on your Azure Stack Hub switch configuration. After the original equipment manufacturer (OEM) creates the configuration, do not alter it without consent from either the OEM or the Microsoft Azure Stack Hub engineering team.
+title: Change settings on your Azure Stack Hub switch configuration 
+description: Learn what settings you can change on your Azure Stack Hub switch configuration.
 author: IngridAtMicrosoft
 ms.topic: conceptual
 ms.date: 03/04/2020
@@ -8,15 +8,14 @@ ms.author: inhenkel
 ms.reviewer: wamota
 ms.lastreviewed: 11/11/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub user, I want to change the settings on my Azure Stack Hub switch configuration so I can customize them to my needs.
+# Keyword: azure stack hub switch configuration settings
 
 ---
 
+# Modify specific settings on your Azure Stack Hub switch configuration
 
-#  Modify specific settings on your Azure Stack Hub switch configuration
-
-You can modify a few environmental settings for your Azure Stack Hub switch configuration. You can identify which of the settings you can change in the template created by your original equipment manufacturer (OEM). This article explains each of those customizable settings, and how the changes can affect your Azure Stack Hub. These settings include password update, syslog server, SNMP monitoring, authentication, and the access control list. 
+You can modify a few environmental settings for your Azure Stack Hub switch configuration. You can identify which of the settings you can change in the template created by your original equipment manufacturer (OEM). This article explains each of those customizable settings and how the changes can affect your Azure Stack Hub. These settings include password update, syslog server, SNMP monitoring, authentication, and the access control list.
 
 During deployment of the Azure Stack Hub solution, the original equipment manufacturer (OEM) creates and applies the switch configuration for both TORs and BMC. The OEM uses the Azure Stack Hub automation tool to validate that the required configurations are properly set on these devices. The configuration is based the information in your Azure Stack Hub [Deployment Worksheet](azure-stack-deployment-worksheet.md). After the OEM creates the configuration, **do not** alter the configuration without consent from either the OEM or the Microsoft Azure Stack Hub engineering team. A change to the network device configuration can significantly impact the operation or troubleshooting of network issues in your Azure Stack Hub instance.
 
