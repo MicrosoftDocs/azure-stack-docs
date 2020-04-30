@@ -59,7 +59,7 @@ Complete the following steps once per host server or cluster containing the VMs 
 This process could take up to 10 minutes. You can watch the progress by going to **Notifications** (the bell icon at the top right of Windows Admin Center).
 
 >[!NOTE]
-> This process automatically installs the ASR agent onto the target server or nodes (if you are configuring a cluster), and creates a **Resource Group** with the specified **Storage Account** and **Vault**, in the specified **Location**. It also registers the target host with the Azure Site Recovery service and configures a default replication policy.
+> This process automatically installs the Azure Site Recovery agent onto the target server or nodes (if you are configuring a cluster), and creates a **Resource Group** with the specified **Storage Account** and **Vault**, in the specified **Location**. It also registers the target host with the Azure Site Recovery service and configures a default replication policy.
 
 ## Step 2: Select VMs to protect
 Complete the following steps to protect your VMs:
