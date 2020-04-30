@@ -15,7 +15,7 @@ ms.lastreviewed: 11/11/2019
 
 # Modify specific settings on your Azure Stack Hub switch configuration
 
-You can change a few environmental settings for your Azure Stack Hub switch configuration. You can identify which of the settings you can change in the template created by your original equipment manufacturer (OEM). This article explains each of those customizable settings and how the changes can affect your Azure Stack Hub. These settings include password update, syslog server, SNMP monitoring, authentication, and the access control list.
+You can change a few environmental settings for your Azure Stack Hub switch configuration. You can identify which of the settings you can change in the template created by your original equipment manufacturer (OEM). This article explains each of those customizable settings and how the changes can affect your Azure Stack Hub. These settings include password update, syslog server, simple network management protocol (SNMP) monitoring, authentication, and the access control list.
 
 During deployment of the Azure Stack Hub solution, the original equipment manufacturer (OEM) creates and applies the switch configuration for both TORs and BMC. The OEM uses the Azure Stack Hub automation tool to validate that the required configurations are properly set on these devices. The configuration is based on the information in your Azure Stack Hub [deployment worksheet](azure-stack-deployment-worksheet.md).
 
@@ -32,11 +32,11 @@ The operator can update the password for any user on the network switches at any
 
 ## Syslog server
 
-Operators can redirect the switch logs to a syslog server on their datacenter. Use this configuration to ensure that the logs from a particular point in time can be used for troubleshooting. By default, the logs are stored on the switches; their capacity for storing logs is limited. Check the [Access control list updates](#access-control-list-updates) section for an overview of how to configure the permissions for switch management access.
+Operators can redirect the switch logs to a syslog server on their datacenter. Use this configuration to ensure the logs from a particular point in time can be used for troubleshooting. By default, the logs are stored on the switches, but their capacity for storing logs is limited. Check the [Access control list updates](#access-control-list-updates) section for an overview of how to configure the permissions for switch management access.
 
 ## SNMP monitoring
 
-The operator can configure simple network management protocol (SNMP) v2 or v3 to monitor the network devices and send traps to a network monitoring app on the datacenter. For security reasons, use SNMPv3 since it's more secure than v2. Consult your OEM hardware provider for the MIBs and configuration required. Check the [Access control list updates](#access-control-list-updates) section for an overview of how to configure the permissions for switch management access.
+The operator can configure SNMP v2 or v3 to monitor the network devices and send traps to a network monitoring app on the datacenter. For security reasons, use SNMPv3 since it's more secure than v2. Consult your OEM hardware provider for the MIBs and configuration required. Check the [Access control list updates](#access-control-list-updates) section for an overview of how to configure the permissions for switch management access.
 
 ## Authentication
 
