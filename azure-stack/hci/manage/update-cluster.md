@@ -42,7 +42,7 @@ Display Name                                            Name                    
             [ ] Failover Cluster Command Interface      RSAT-Clustering-CmdI...        Available
 ```
 
-If the Failover Clustering feature is not installed, install it on each server node with the **`Install-WindowsFeature`** cmdlet, using the **-IncludeAllSubFeature**  and **–IncludeManagementTools** parameters:
+If the Failover Clustering feature is not installed, install it on each server node with the **`Install-WindowsFeature`** cmdlet, using the -IncludeAllSubFeature and -IncludeManagementTools parameters:
 
 ```PowerShell
 Install-WindowsFeature –Name Failover-Clustering -IncludeAllSubFeature –IncludeManagementTools -ComputerName Server1
