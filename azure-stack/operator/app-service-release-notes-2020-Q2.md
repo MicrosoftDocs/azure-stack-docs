@@ -54,7 +54,7 @@ Azure App Service on Azure Stack Update Q2 includes the following improvements a
 - Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.
 
 - **Updates to the following application frameworks and tools**:
-  - ASP.Net Framework 4.7.2
+  - ASP.NET Framework 4.7.2
   - ASP.NET Core 3.1.3
   - ASP.NET Core Module v2 13.1.19331.0
   - PHP 7.4.2
@@ -79,14 +79,13 @@ Azure App Service on Azure Stack Update Q2 includes the following improvements a
 ### Issues fixed in this release
 
 - Upgrades will now complete if SQL Always On Cluster has failed over to secondary node
-- New deployments of Azure App Service on Azure Stack Hub do not require databases to be converted to contained databases
+- New deployments of Azure App Service on Azure Stack Hub do not require databases to be manually converted to contained databases
 - Adding additional workers or infrastructure role instances will complete correctly without manual intervention
 - Adding custom worker tiers will complete correctly without manual intervention
 - Workers are no longer marked as ready if the local disk is out of space
-- Timeout increased for retrieving the ARM Certificate
-- Number of messages retrieved from server logs and displayed in the Admin Portal is limited to stay underneath the max ARM Request size
-- Timeout increase for startup of Usage Service to mitigate latency reaching storage endpoints
-- 
+- Time out increased for retrieving the Azure Resource Manager Certificate
+- The number of messages retrieved, from server logs and displayed in the Admin Portal, is limited to stay underneath the max Azure Resource Manager Request size
+- Time out increase for startup of Usage Service to mitigate latency reaching storage endpoints
 
 ### Post-deployment steps
 
@@ -112,7 +111,7 @@ Azure App Service on Azure Stack Update Q2 includes the following improvements a
 
 - Tenants unable to create App Service Plan using new on App Service Plan blade in tenant portal
 
-Tenants can still create App Service Plans when creating a new app, changing the App Service Plan for a current app, or via the App Service Plan marketplace item
+When creating a new application, tenants can create App Service Plans during the create app workflow, or when changing the App Service Plan for a current app, or via the App Service Plan marketplace item
 
 ## Next steps
 
