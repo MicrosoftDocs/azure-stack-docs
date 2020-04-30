@@ -56,7 +56,7 @@ The following figure shows the Azure Stack Hub and Azure environments after you 
 
 The following figure shows how multiple tenants connect from the Azure Stack Hub infrastructure through the ExpressRoute router to Azure:
 
-![Multi-tenant connections with ExpressRoute](media/azure-stack-connect-expressroute/Architecture.png)
+![Multi-tenant connections with ExpressRoute](media/azure-stack-connect-expressroute/architecture.svg)
 
 The example in this article uses the same multi-tenant architecture shown in this diagram to connect Azure Stack Hub to Azure using ExpressRoute private peering. The connection is done using a site-to-site VPN connection from the virtual network gateway in Azure Stack Hub to an ExpressRoute router.
 
@@ -329,7 +329,7 @@ Repeat these steps for any additional tenant VNets you want to connect in Azure 
 
 You can use the following ExpressRoute router configuration diagram as a guide for configuring your ExpressRoute Router. This figure shows two tenants (Tenant 1 and Tenant 2) with their respective ExpressRoute circuits. Each tenant is linked to their own VRF (Virtual Routing and Forwarding) in the LAN and WAN side of the ExpressRoute router. This configuration ensures end-to-end isolation between the two tenants. Take note of the IP addresses used in the router interfaces as you follow the configuration example.
 
-![ExpressRoute router configuration](media/azure-stack-connect-expressroute/EndToEnd.png)
+![ExpressRoute router configuration](media/azure-stack-connect-expressroute/endtoend.svg)
 
 You can use any router that supports IKEv2 VPN and BGP to terminate the site-to-site VPN connection from Azure Stack Hub. The same router is used to connect to Azure using an ExpressRoute circuit.
 
