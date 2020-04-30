@@ -93,7 +93,7 @@ Complete the following steps to prepare failover to an Azure VM:
 1. Run a test failover. To learn more, see [Run a disaster recovery drill to Azure](https://docs.microsoft.com/azure/site-recovery/hyper-v-site-walkthrough-test-failover).
 
 ## Step 4: Create recovery plans
-*Recovery Plan* is a feature in Azure Site Recovery that lets you fail over and recover an entire application's collection of VMs. It's possible to recover protected VMs individually. But a better way is to add the VMs of an application to your recovery plan. You can then fail over the entire application through the recovery plan. You can also use the test failover feature of Recovery Plan to test the recovery of the application.
+Recovery plans in Azure Site Recovery enable you to fail over and recover an entire application's collection of VMs. It's possible to recover protected VMs individually. But a better way is to add the VMs of an application to your recovery plan. You can then fail over the entire application through the recovery plan. You can also use the test failover feature of a recovery plan to test the recovery of the application.
 
 Recovery Plan lets you group VMs, sequence the order in which they should start during a failover, and automate additional recovery steps. After you've protected your VMs, you can go to the Azure Site Recovery vault in the Azure portal to create recovery plans for them. To learn more, see [Create and customize recovery plans](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans).
 
