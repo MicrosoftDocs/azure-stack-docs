@@ -298,16 +298,16 @@
         href: app-service-billing-faq.md
       - name: Before you get started
         href: azure-stack-app-service-before-you-get-started.md
-      - name: Deployment and upgrade
+      - name: Deployment
         items:
         - name: Deploy App Service
           href: azure-stack-app-service-deploy.md
         - name: Deploy App Service for high availability
           href: app-service-deploy-ha.md
-        - name: Update App Service
-          href: azure-stack-app-service-update.md
       - name: Life cycle management 
         items:
+        - name: Update App Service
+          href: azure-stack-app-service-update.md
         - name: Add App Service infrastructure roles
           href: azure-stack-app-service-add-worker-roles.md
         - name: Configure deployment sources
