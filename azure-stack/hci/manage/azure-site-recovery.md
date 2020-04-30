@@ -4,7 +4,7 @@ description: Use Windows Admin Center to protect your Azure Stack HCI VMs with A
 ms.topic: article
 author: davannaw-msft
 ms.author: dawhite
-ms.date: 04/28/2020
+ms.date: 04/30/2020
 ms.localizationpriority: low
 ---
 
@@ -36,7 +36,6 @@ The following is required to complete the steps in this article:
 
 ## Step 1: Set up VM protection on your target host
 Complete the following steps once per host server or cluster containing the VMs that you want to target for protection:
-
 1. In Windows Admin Center on the **All connections** page, connect to the server or cluster hosting the VMs that you want to protect.
 1. Under **Tools**, select **Virtual machines**, and then select the **Inventory** tab.
 1. Select any VM (it doesn't need to be the VM that you want to protect).
@@ -63,7 +62,6 @@ This process could take up to 10 minutes. You can watch the progress by going to
 
 ## Step 2: Select VMs to protect
 Complete the following steps to protect your VMs:
-
 1. In Windows Admin Center, return to the server or cluster that you configured in the previous task.
 1. Under **Tools**, select **Virtual machines**, and then select the  **Inventory** tab.
 1. Select the VM that you want to protect, expand the **More** submenu,  and then select **Protect VM**.
@@ -84,7 +82,6 @@ Complete the following steps to protect your VMs:
 It's not required to complete this step before starting VM replication. The VM is protected with only replication. However, we recommend configuring failover settings when you set up Azure Site Recovery.
  
 Complete the following steps to prepare failover to an Azure VM:
-
 1. Set up an Azure network that the failed-over VM will attach to this VNET. To learn more, see [Set up disaster recovery of on-premises Hyper-V VMs to Azure](https://docs.microsoft.com/azure/site-recovery/hyper-v-site-walkthrough-prepare-azure).
 
     >[!NOTE]
@@ -95,7 +92,7 @@ Complete the following steps to prepare failover to an Azure VM:
 ## Step 4: Create recovery plans
 Recovery plans in Azure Site Recovery enable you to fail over and recover an entire application's collection of VMs. It's possible to recover protected VMs individually. But a better way is to add the VMs of an application to your recovery plan. You can then fail over the entire application through the recovery plan. You can also use the test failover feature of a recovery plan to test the recovery of the application.
 
-Recovery Plan lets you group VMs, sequence the order in which they should start during a failover, and automate additional recovery steps. After you've protected your VMs, you can go to the Azure Site Recovery vault in the Azure portal to create recovery plans for them. To learn more, see [Create and customize recovery plans](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans).
+Recovery plans let you group VMs, sequence the order in which they should start during a failover, and automate additional recovery steps. After you've protected your VMs, you can go to the Azure Site Recovery vault in the Azure portal to create recovery plans for them. To learn more, see [Create and customize recovery plans](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans).
 
 ## Step 5: Monitor replicated VMs in Azure
 To verify no failures in the server registration process, go to the **Azure portal**, select **All resources**, select **Recovery Services Vault**, select **Jobs**, and then select **Site Recovery Jobs**. The **Recovery Services Vault** name is the one that you specified in Step 6 of the first task in this article.
