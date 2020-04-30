@@ -4,7 +4,7 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 04/24/2020
+ms.date: 04/30/2020
 ---
 
 # Update Azure Stack HCI clusters
@@ -38,23 +38,13 @@ Display Name                                            Name                    
 [X] Failover Clustering                                 Failover-Clustering            Installed
 ```
 
-If the Failover Clustering feature is not installed, install it with the **`Install-WindowsFeature`** cmdlet:
+If the Failover Clustering feature is not installed, install it with the **`Install-WindowsFeature`** cmdlet, using the **-IncludeAllSubFeature**  and **–IncludeManagementTools** parameters:
 
 ```PowerShell
-Install-WindowsFeature –Name Failover-Clustering –IncludeManagementTools -ComputerName Server1
+Install-WindowsFeature –Name Failover-Clustering -IncludeAllSubFeature –IncludeManagementTools -ComputerName Server1
 ```
 
-You'll also  need the the Failover Cluster Module for PowerShell, which includes Windows Powershell cmdlets for managing failover clusters. It also includes the Cluster-Aware Updating module for Windows PowerShell, for installing software updates on failover clusters. To check if a cluster or server has the Failover Cluster Module for PowerShell already installed, issue the **`Get-WindowsFeature`** PowerShell cmdlet from your management PC, or run it directly on the cluster or server without the -ComputerName parameter:
-
-```PowerShell
-Get-WindowsFeature -Name RSAT-Clustering-PowerShell -ComputerName Server1
-```
-
-If the Failover Cluster Module for PowerShell is not installed, install it with the **`Install-WindowsFeature`** cmdlet:
-
-```PowerShell
-Install-WindowsFeature –Name RSAT-Clustering-PowerShell -ComputerName Server1
-```
+This command will also install the Failover Cluster Module for PowerShell, which includes Powershell cmdlets for managing failover clusters, and the Cluster-Aware Updating module for PowerShell, for installing software updates on failover clusters.
 
 ### Choose an updating mode
 
