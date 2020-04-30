@@ -50,7 +50,6 @@ First, create the network resources for Azure. The following instructions show h
 ### Create the virtual network and virtual machine (VM) subnet
 
 1. Sign in to the [Azure portal](https://portal.azure.com/) using your Azure account.
-
 2. In the user portal, select **+ Create a resource**.
 3. Go to **Marketplace**, and then select **Networking**.
 4. Select **Virtual network**.
