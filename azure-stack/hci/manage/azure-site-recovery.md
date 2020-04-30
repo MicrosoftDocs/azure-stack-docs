@@ -37,7 +37,7 @@ The following is required to complete the steps in this article:
 ## Step 1: Set up VM protection on your target host
 Complete the following steps once per host server or cluster containing the VMs that you want to target for protection:
 
-1. In Windows Admin Center, navigate to the server or cluster hosting the VMs that you want to protect (via either with **Server Manager** or **Cluster Manager**).
+1. In Windows Admin Center on the **All connections** page, connect to the server or cluster hosting the VMs that you want to protect.
 1. Under **Tools**, select **Virtual machines**, and then select the  **Inventory** tab.
 1. Select any VM (it doesn't need to be the VM that you want to protect).
 1. Expand the **More** submenu and then select **Set up VM Protection**.
