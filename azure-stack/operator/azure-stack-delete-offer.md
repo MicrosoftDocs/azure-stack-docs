@@ -25,7 +25,7 @@ If you want to delete a quota, you must work back through any plans and offers t
 
 To delete a subscription, select **All services**, then **User subscriptions**, to display a list of all subscriptions on the system. If you're working on an offer, you can also select **Subscriptions** from there.
 
-You can delete subscriptions from this list, or you can use PowerShell to write a script that deletes all subscriptions for you, using the commands documented in the [Subscriptions - Delete reference](/rest/api/azurestack/subscriptions/delete).
+You can delete subscriptions from this list, or you can use PowerShell to write a script that deletes all subscriptions for you. These commands are documented in the [Subscriptions - Delete reference](/rest/api/azurestack/subscriptions/delete).
 
 > [!CAUTION]
 > Deleting a subscription also deletes any data and resources it contains.
