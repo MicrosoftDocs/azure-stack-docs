@@ -12,7 +12,7 @@ ms.localizationpriority: low
 
 >Applies To: Windows Server 2019
 
-Windows Admin Center streamlines the process of replicating virtual machines (VMs) on your Hyper-V servers or clusters, giving you the power to take advantage of Azure from your own datacenter. To automate setup, you connect the Windows Admin Center gateway to Azure.
+Windows Admin Center streamlines the process of replicating virtual machines (VMs) on your servers or clusters, giving you the power to take advantage of Azure from your own datacenter. To automate setup, you connect Windows Admin Center to Azure.
 
 This article shows you how to use Azure Site Recovery to configure replication settings and create a recovery plan in the Azure portal. Completing these tasks enables Windows Admin Center to start VM replication to protect your VMs. Azure Site Recovery also protects your physical servers and cluster nodes.
 
