@@ -24,27 +24,36 @@ CAU has two plug-ins:
 
 ### Install Failover Clustering and Failover Clustering Tools using PowerShell
 
-To check if a cluster or server has the Failover Clustering feature already installed, issue the **`Get-WindowsFeature`** PowerShell cmdlet from your management PC, or run it directly on the cluster or server without the -ComputerName parameter:
+To check if a cluster or server has the Failover Clustering feature and Failover Clustering Tools already installed, issue the **`Get-WindowsFeature`** PowerShell cmdlet from your management PC, or run it directly on the cluster or server without the -ComputerName parameter:
 
 ```PowerShell
-Get-WindowsFeature -Name Failover* -ComputerName Server1
+Get-WindowsFeature -Name Failover*, RSAT-Clustering* -ComputerName Server1
 ```
 
-Make sure "Install State" says Installed, and that an X appears before Failover Clustering.
+Make sure "Install State" says Installed and that an X appears before both Failover Clustering and Failover Cluster Module for Windows PowerShell:
 
-```PowerShell
 Display Name                                            Name                       Install State
 ------------                                            ----                       -------------
 [X] Failover Clustering                                 Failover-Clustering            Installed
+        [X] Failover Clustering Tools                   RSAT-Clustering                Installed
+            [X] Failover Cluster Module for Windows ... RSAT-Clustering-Powe...        Installed
+            [ ] Failover Cluster Automation Server      RSAT-Clustering-Auto...        Available
+            [ ] Failover Cluster Command Interface      RSAT-Clustering-CmdI...        Available
 ```
 
-If the Failover Clustering feature is not installed, install it with the **`Install-WindowsFeature`** cmdlet, using the **-IncludeAllSubFeature**  and **–IncludeManagementTools** parameters:
+If the Failover Clustering feature is not installed, install it on each server node with the **`Install-WindowsFeature`** cmdlet, using the **-IncludeAllSubFeature**  and **–IncludeManagementTools** parameters:
 
 ```PowerShell
 Install-WindowsFeature –Name Failover-Clustering -IncludeAllSubFeature –IncludeManagementTools -ComputerName Server1
 ```
 
 This command will also install the Failover Cluster Module for PowerShell, which includes Powershell cmdlets for managing failover clusters, and the Cluster-Aware Updating module for PowerShell, for installing software updates on failover clusters.
+
+If the Failover Clustering feature is already installed but the Failover Cluster Module for Windows PowerShell is not, simply install it on each server node with the **Install-WindowsFeature** cmdlet:
+
+```PowerShell
+Install-WindowsFeature –Name RSAT-Clustering-PowerShell -ComputerName Server1
+```
 
 ### Choose an updating mode
 
