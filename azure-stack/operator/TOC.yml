@@ -306,7 +306,7 @@
           href: app-service-deploy-ha.md
         - name: Update App Service
           href: azure-stack-app-service-update.md
-      - name: Day two operations 
+      - name: Life cycle management 
         items:
         - name: Add App Service infrastructure roles
           href: azure-stack-app-service-add-worker-roles.md
@@ -322,24 +322,24 @@
           href: app-service-remove.md
       - name: App Service on Azure Stack Hub release notes
         items:
-        - name: App Service on Azure Stack Hub update 1 release notes
-          href: azure-stack-app-service-release-notes-update-one.md
-        - name: App Service on Azure Stack Hub update 2 release notes
-          href: azure-stack-app-service-release-notes-update-two.md
-        - name: App Service on Azure Stack Hub update 3 release notes
-          href: azure-stack-app-service-release-notes-update-three.md
-        - name: App Service on Azure Stack Hub update 4 release notes
-          href: azure-stack-app-service-release-notes-update-four.md
-        - name: App Service on Azure Stack Hub update 5 release notes
-          href: azure-stack-app-service-release-notes-update-five.md
-        - name: App Service on Azure Stack Hub update 6 release notes
-          href: azure-stack-app-service-release-notes-update-six.md
-        - name: App Service on Azure Stack Hub update 7 release notes
-          href: azure-stack-app-service-release-notes-update-seven.md
-        - name: App Service on Azure Stack Hub update 8 release notes
-          href: azure-stack-app-service-release-notes-update-eight.md
         - name: App Service on Azure Stack Hub 2020 Q2 release notes
           href: app-service-release-notes-2020-Q2.md
+        - name: App Service on Azure Stack Hub update 8 release notes
+          href: azure-stack-app-service-release-notes-update-eight.md
+        - name: App Service on Azure Stack Hub update 7 release notes
+          href: azure-stack-app-service-release-notes-update-seven.md
+        - name: App Service on Azure Stack Hub update 6 release notes
+          href: azure-stack-app-service-release-notes-update-six.md
+        - name: App Service on Azure Stack Hub update 5 release notes
+          href: azure-stack-app-service-release-notes-update-five.md
+        - name: App Service on Azure Stack Hub update 4 release notes
+          href: azure-stack-app-service-release-notes-update-four.md
+        - name: App Service on Azure Stack Hub update 3 release notes
+          href: azure-stack-app-service-release-notes-update-three.md
+        - name: App Service on Azure Stack Hub update 2 release notes
+          href: azure-stack-app-service-release-notes-update-two.md
+        - name: App Service on Azure Stack Hub update 1 release notes
+          href: azure-stack-app-service-release-notes-update-one.md   
     - name: Event Hubs on Azure Stack Hub
       items:
       - name: Overview
