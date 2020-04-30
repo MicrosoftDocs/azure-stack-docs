@@ -65,7 +65,7 @@ For disconnected deployments of Azure Stack Hub, you need to use AD FS. Azure St
 
 Azure Stack Hub uses the same operations model as Azure. An Azure Stack Hub operator can deliver a variety of services and apps to tenant users, similar to how Microsoft delivers Azure services to tenant users. 
 
-![Diagram showing Azure Stack Hub job roles](./media/azure-stack-overview/azure-stack-job-roles.png)
+![Diagram showing Azure Stack Hub job roles](./media/azure-stack-overview/azure-stack-job-roles.svg)
 
 You can manage Azure Stack Hub with the administrator portal, user portal, or [PowerShell](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.7.1). The Azure Stack Hub portals are each backed by separate instances of Azure Resource Manager. An **Azure Stack Hub Operator** uses the administrator portal to manage Azure Stack Hub, and to do things like create tenant offerings and maintain the health and monitor status of the integrated system. The user portal provides a self-service experience for consumption of cloud resources like virtual machines (VMs), storage accounts, and web apps.
 
