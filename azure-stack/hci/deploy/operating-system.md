@@ -4,7 +4,7 @@ description: This article discusses different ways to deploy the Azure Stack HCI
 author: JohnCobb1
 ms.author: v-johcob 
 ms.topic: article
-ms.date: 04/29/2020
+ms.date: 04/30/2020
 ---
 
 # Deploy the Azure Stack HCI operating system
@@ -30,14 +30,25 @@ Deployment options include:
 - System Center Virtual Machine Manager (VMM).
 
 ### Server manufacturer preinstallation
-For enterprise deployment of the Azure Stack HCI operating system, we recommend Azure Stack HCI Integrated System solution hardware from your preferred hardware partner. Azure Stack HCI Integrated System hardware arrives with the operating system preinstalled, and supports using Windows Admin Center to deploy and update drivers and firmware from the hardware manufacturer.
+For enterprise deployment of the Azure Stack HCI operating system, we recommend Azure Stack HCI Integrated System solution hardware from your preferred hardware partner. The solution hardware arrives with the operating system preinstalled, and supports using Windows Admin Center to deploy and update drivers and firmware from the hardware manufacturer.
 
-Solution hardware ranges from 2 to 16 nodes and is tested and validated by Microsoft and partner vendors. ​To find Azure Stack HCI solutions from your preferred hardware vendor, see the [Azure Stack HCI Catalog](https://www.microsoft.com/cloud-platform/azure-stack-hci-catalog).
+Solution hardware ranges from 2 to 16 nodes and is tested and validated by Microsoft and partner vendors. ​To find Azure Stack HCI solution hardware from your preferred hardware partner, see the [Azure Stack HCI Catalog](https://www.microsoft.com/cloud-platform/azure-stack-hci-catalog).
 
 ### Manual deployment
-Install Azure Stack HCI on the system drive of each server to be clustered.
+To manually install the Azure Stack HCI operating system on the system drive of each server to be clustered, we recommend using the Server Configuration tool (Sconfig.cmd). You can use Sconfig.cmd to configure and manage Server Core installations. To use the tool, you must be a member of the Administrators group. To learn more about the tool, see [Configure a Server Core installation of Windows Server 2016 or Windows Server, version 1709, with Sconfig.cmd](/windows-server/get-started/sconfig-on-ws2016).
 
-<!---Add Lab setup notes here on how to do this manually using Sconfig. Server Core only. See Jason's notes for detail. Include pointer to windows server article on SConfig. link: https://docs.microsoft.com/windows-server/get-started/sconfig-on-ws2016--->
+To use Sconfig:
+1. Connect to the computer on which you want to install and configure the Azure Stack HCI operating system.
+1. Open a command prompt as an administrator, and then change to the system drive.
+1. At the command prompt, type `Sconfig`, and then press Enter to open the Server Configuration tool interface.
+
+    :::image type="content" source="../media/operating-system/sconfig-interface.png" alt-text="The Server Configuration tool interface.":::
+
+1. tbd
+1. tbd
+
+
+<!---Add Lab setup notes here on how to do this manually using Sconfig. Server Core only. See Jason's notes for detail.--->
 
 ### Headless deployment
 You can use an answer file to do a headless deployment of the operating system. The answer file uses an XML format to define configuration settings and values during an unattended installation of Windows Server.
