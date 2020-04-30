@@ -31,7 +31,7 @@ You can set up the failover portion when you want to fail over to an Azure VM; i
 The following is required to complete the steps in this article:
 
 - The target servers hosting the VMs that you want to protect must have Internet access to replicate to Azure.
-- A connection from your Windows Admin Center gateway to Azure. For more information, see [Configuring Azure integration](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/azure-integration).
+- A connection from Windows Admin Center to Azure. For more information, see [Configuring Azure integration](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/azure-integration).
 - Review the capacity planning tool to evaluate the requirements for successful replication and failover. For more information, see [About the Azure Site Recovery Deployment Planner for Hyper-V disaster recovery to Azure](https://docs.microsoft.com/azure/site-recovery/hyper-v-site-walkthrough-capacity).
 
 ## Step 1: Set up VM protection on your target host
