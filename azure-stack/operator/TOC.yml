@@ -294,28 +294,32 @@
         href: azure-stack-app-service-overview.md
       - name: App Service capacity planning
         href: azure-stack-app-service-capacity-planning.md
-      - name: Before you get started
-        href: azure-stack-app-service-before-you-get-started.md
-      - name: Deploy App Service
-        href: azure-stack-app-service-deploy.md
-      - name: Deploy App Service for high availability
-        href: app-service-deploy-ha.md
-      - name: Update App Service
-        href: azure-stack-app-service-update.md
-      - name: Add App Service infrastructure roles
-        href: azure-stack-app-service-add-worker-roles.md
-      - name: Configure deployment sources
-        href: azure-stack-app-service-configure-deployment-sources.md
-      - name: Rotate App Service secrets and certificates
-        href: app-service-rotate-certificates.md
-      - name: Back up App Service
-        href: app-service-back-up.md
-      - name: Recover App Service
-        href: app-service-recover.md
-      - name: Remove App Service
-        href: app-service-remove.md
       - name: App Service billing FAQ
         href: app-service-billing-faq.md
+      - name: Before you get started
+        href: azure-stack-app-service-before-you-get-started.md
+      - name: Deployment and upgrade
+        items:
+        - name: Deploy App Service
+          href: azure-stack-app-service-deploy.md
+        - name: Deploy App Service for high availability
+          href: app-service-deploy-ha.md
+        - name: Update App Service
+          href: azure-stack-app-service-update.md
+      - name: Day two operations 
+        items:
+        - name: Add App Service infrastructure roles
+          href: azure-stack-app-service-add-worker-roles.md
+        - name: Configure deployment sources
+          href: azure-stack-app-service-configure-deployment-sources.md
+        - name: Rotate App Service secrets and certificates
+          href: app-service-rotate-certificates.md
+        - name: Back up App Service
+         href: app-service-back-up.md
+        - name: Recover App Service
+          href: app-service-recover.md
+        - name: Remove App Service
+          href: app-service-remove.md
       - name: App Service on Azure Stack Hub release notes
         items:
         - name: App Service on Azure Stack Hub update 1 release notes
