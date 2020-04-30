@@ -32,6 +32,7 @@ Get-WindowsFeature -Name Failover*, RSAT-Clustering* -ComputerName Server1
 
 Make sure "Install State" says Installed and that an X appears before both Failover Clustering and Failover Cluster Module for Windows PowerShell:
 
+```PowerShell
 Display Name                                            Name                       Install State
 ------------                                            ----                       -------------
 [X] Failover Clustering                                 Failover-Clustering            Installed
