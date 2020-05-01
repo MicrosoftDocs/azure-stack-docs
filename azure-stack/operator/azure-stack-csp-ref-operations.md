@@ -4,7 +4,7 @@ description: Learn how to register tenants and how tenant usage is tracked in Az
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 05/01/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 10/14/2019
@@ -19,8 +19,8 @@ ms.lastreviewed: 10/14/2019
 
 This article contains details about registration operations. You can use these operations to:
 
-- Manage tenant registrations
-- Manage tenant usage tracking
+- Manage tenant registrations.
+- Manage tenant usage tracking.
 
 ## Add tenant to registration
 
