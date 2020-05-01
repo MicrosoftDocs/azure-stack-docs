@@ -35,7 +35,7 @@ App Service offers several app types, each of which is intended to host a specif
 
 - [Web Apps](/azure/app-service/overview) for hosting websites and web apps.
 - [API Apps](/azure/app-service/overview) for hosting REST APIs.
-- Azure Functions for hosting event driven, serverless workloads.
+- [Azure Functions v1](/azure/azure-functions) for hosting event driven, serverless workloads.
 
 The word *app* refers to the hosting resources dedicated to running a workload. Taking *web app* as an example, you're probably accustomed to thinking of a web app as both the compute resources and app code that together deliver functionality to a browser. In Azure App Service, a web app is the compute resource that Azure Stack Hub provides for hosting your app code.
 
@@ -53,7 +53,6 @@ The App Service resource provider uses the same code that Azure App Service uses
 In Azure, there are shared and dedicated workers. A shared worker supports high-density and multi-tenant app hosting, and there's only one set of shared workers. Dedicated servers are used by only one tenant and come in three sizes: small, medium, and large. The needs of on-premises customers can't always be described by using those terms. In App Service on Azure Stack Hub, resource provider admins define the worker tiers they want to make available. Based on your unique hosting needs, you can define multiple sets of shared workers or different sets of dedicated workers. By using those worker-tier definitions, they can then define their own pricing SKUs.
 
 ## Portal features
-
 
 Azure App Service on Azure Stack Hub uses the same user interface that Azure App Service uses. The same is true with the back end. However, some features are disabled in Azure Stack Hub. The Azure-specific expectations or services that those features require aren't currently available in Azure Stack Hub.
 
