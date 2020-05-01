@@ -128,23 +128,23 @@ To deploy App Service resource provider, follow these steps:
 
     ![App Service Installer][11]
 
-12. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in an ASDK deployment. A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, select **Next**.
+12. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in a production deployment.  For ASDK deployment you can scale the instances down to lower SKUs to reduce the core and memory commit but you will experience a performance degredation. A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, select **Next**.
 
     >[!NOTE]
     >For production deployments, following the guidance in [Capacity planning for Azure App Service server roles in Azure Stack Hub](azure-stack-app-service-capacity-planning.md).
 
     | Role | Minimum instances | Minimum SKU | Notes |
     | --- | --- | --- | --- |
-    | Controller | 1 | Standard_A2 - (2 vCPU, 3584 MB) | Manages and maintains the health of the App Service cloud. |
-    | Management | 1 | Standard_A2 - (2 vCPUs, 3584 MB) | Manages the App Service Azure Resource Manager and API endpoints, portal extensions (admin, tenant, Functions portal), and the data service. To support failover, increased the recommended instances to 2. |
-    | Publisher | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Publishes content via FTP and web deployment. |
-    | FrontEnd | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Routes requests to App Service apps. |
-    | Shared Worker | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Hosts web or API apps and Azure Functions apps. You might want to add more instances. As an operator, you can define your offering and choose any SKU tier. The tiers must have a minimum of one vCPU. |
+    | Controller | 2 | Standard_A4_v2 - (4 cores, 8192 MB) | Manages and maintains the health of the App Service cloud. |
+    | Management | 1 | Standard_D3_v2 - (4 cores, 14336 MB) | Manages the App Service Azure Resource Manager and API endpoints, portal extensions (admin, tenant, Functions portal), and the data service. To support failover, increase the recommended instances to 2. |
+    | Publisher | 1 | Standard_A2_v2 - (2 cores, 4096 MB) | Publishes content via FTP and web deployment. |
+    | FrontEnd | 1 | Standard_A4_v2 - (4 cores, 8192 MB) | Routes requests to App Service apps. |
+    | Shared Worker | 1 | Standard_A4_v2 - (4 cores, 8192 MB) | Hosts web or API apps and Azure Functions apps. You might want to add more instances. As an operator, you can define your offering and choose any SKU tier. The tiers must have a minimum of one vCPU. |
 
     ![App Service Installer][13]
 
-    >[!NOTE]
-    >**Windows Server 2016 Core isn't a supported platform image for use with Azure App Service on Azure Stack Hub.  Don't use evaluation images for production deployments.**
+    > [!NOTE]
+    > **Windows Server 2016 Core isn't a supported platform image for use with Azure App Service on Azure Stack Hub.  Don't use evaluation images for production deployments.**
 
 13. In the **Select Platform Image** box, choose your deployment Windows Server 2016 virtual machine (VM) image from the images available in the compute resource provider for the App Service cloud. Select **Next**.
 
@@ -363,20 +363,21 @@ To deploy Azure App Service in an offline environment, first create an offline i
 
     ![Enter SQL Server info in Azure App Service Installer][42]
 
-1. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in an ASDK deployment. A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, select **Next**.
+1. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in a production deployment.  For ASDK deployment you can scale the instances down to lower SKUs to reduce the core and memory commit but you will experience a performance degredation.  A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, select **Next**.
 
      > [!NOTE]
      > For production deployments, follow the guidance in [Capacity planning for Azure App Service server roles in Azure Stack Hub](azure-stack-app-service-capacity-planning.md).
      >
      >
 
+    
     | Role | Minimum instances | Minimum SKU | Notes |
     | --- | --- | --- | --- |
-    | Controller | 1 | Standard_A2 - (2 vCPU, 3584 MB) | Manages and maintains the health of the Azure App Service cloud. |
-    | Management | 1 | Standard_A2 - (2 vCPUs, 3584 MB) | Manages the Azure App Service Azure Resource Manager and API endpoints, portal extensions (admin, tenant, Functions portal), and the data service. To support failover, increase the recommended instances to 2. |
-    | Publisher | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Publishes content via FTP and web deployment. |
-    | FrontEnd | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Routes requests to Azure App Service apps. |
-    | Shared Worker | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Hosts web or API apps and Azure Functions apps. You might want to add more instances. As an operator, you can define your offering and choose any SKU tier. The tiers must have a minimum of one vCPU. |
+    | Controller | 2 | Standard_A4_v2 - (4 cores, 8192 MB) | Manages and maintains the health of the App Service cloud. |
+    | Management | 1 | Standard_D3_v2 - (4 cores, 14336 MB) | Manages the App Service Azure Resource Manager and API endpoints, portal extensions (admin, tenant, Functions portal), and the data service. To support failover, increase the recommended instances to 2. |
+    | Publisher | 1 | Standard_A2_v2 - (2 cores, 4096 MB) | Publishes content via FTP and web deployment. |
+    | FrontEnd | 1 | Standard_A4_v2 - (4 cores, 8192 MB) | Routes requests to App Service apps. |
+    | Shared Worker | 1 | Standard_A4_v2 - (4 cores, 8192 MB) | Hosts web or API apps and Azure Functions apps. You might want to add more instances. As an operator, you can define your offering and choose any SKU tier. The tiers must have a minimum of one vCPU. |
 
     ![Set role tiers and SKU options in Azure App Service Installer][44]
 
