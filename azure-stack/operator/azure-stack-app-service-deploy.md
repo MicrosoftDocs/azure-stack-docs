@@ -128,7 +128,7 @@ To deploy App Service resource provider, follow these steps:
 
     ![App Service Installer][11]
 
-12. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in a production deployment.  For ASDK deployment you can scale the instances down to lower SKUs to reduce the core and memory commit but you will experience a performance degredation. A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, select **Next**.
+12. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in a production deployment.  For ASDK deployment you can scale the instances down to lower SKUs to reduce the core and memory commit but you will experience a performance degradation. A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, select **Next**.
 
     >[!NOTE]
     >For production deployments, following the guidance in [Capacity planning for Azure App Service server roles in Azure Stack Hub](azure-stack-app-service-capacity-planning.md).
@@ -363,7 +363,7 @@ To deploy Azure App Service in an offline environment, first create an offline i
 
     ![Enter SQL Server info in Azure App Service Installer][42]
 
-1. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in a production deployment.  For ASDK deployment you can scale the instances down to lower SKUs to reduce the core and memory commit but you will experience a performance degredation.  A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, select **Next**.
+1. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in a production deployment.  For ASDK deployment you can scale the instances down to lower SKUs to reduce the core and memory commit but you will experience a performance degradation.  A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, select **Next**.
 
      > [!NOTE]
      > For production deployments, follow the guidance in [Capacity planning for Azure App Service server roles in Azure Stack Hub](azure-stack-app-service-capacity-planning.md).
