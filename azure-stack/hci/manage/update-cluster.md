@@ -4,27 +4,27 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 04/30/2020
+ms.date: 05/01/2020
 ---
 
 # Update Azure Stack HCI clusters
 
 > Applies to: Windows Server 2019
 
-When updating Azure Stack HCI clusters, the goal is to maintain availability by updating only one server node at a time. Many operating system updates require taking the server offline, for example to do a restart or to update software such as the network stack. We recommend using [Cluster-Aware Updating (CAU)](/windows-server/failover-clustering/cluster-aware-updating), a feature that automates the software updating process on clustered servers while maintaining availability. CAU can be used on all editions of Windows Server, including Server Core installations.
+When updating Azure Stack HCI clusters, the goal is to maintain availability by updating only one server in the cluster at a time. Many operating system updates require taking the server offline, for example to do a restart or to update software such as the network stack. We recommend using [Cluster-Aware Updating (CAU)](/windows-server/failover-clustering/cluster-aware-updating), a feature that automates the software updating process on clustered servers while maintaining availability. Cluster-Aware Updating can be used on all editions of Windows Server, including Server Core installations.
 
 ## Configure Cluster-Aware Updating
 
-To use CAU, you must first install the **Failover Clustering** feature in Windows Server on each cluster node, using either Windows Admin Center or PowerShell, and [create and validate a failover cluster](/windows-server/failover-clustering/create-failover-cluster#create-a-failover-cluster-by-using-windows-powershell). You must also install the **Failover Clustering Tools**, which are part of the **Remote Server Administration Tools (RSAT)** and are installed by default when you install the Failover Clustering feature using Windows Admin Center **(is this true)?**
+Before you can update a cluster, you first need to [create and validate a failover cluster](/windows-server/failover-clustering/create-failover-cluster#create-a-failover-cluster-by-using-windows-powershell) and install the **Failover Clustering Tools**, which are part of the **Remote Server Administration Tools (RSAT)** and include the Cluster-Aware Updating tools.
 
-CAU has two plug-ins:
+Cluster-Aware Updating has two plug-ins:
 
-- The **Microsoft.WindowsUpdatePlugin** installs downloads from Windows Update and offline sources like WSUS
-- The **Microsoft.HotfixPlugin** enables custom sources such as OEM-specific feature updates
+- The **Microsoft.WindowsUpdatePlugin** installs updates from Windows Update and offline sources like Windows Server Update Services.
+- The **Microsoft.HotfixPlugin** enables custom sources such as OEM-specific feature updates.
 
 ### Install Failover Clustering and Failover Clustering Tools using PowerShell
 
-To check if a cluster or server has the Failover Clustering feature and Failover Clustering Tools already installed, issue the **`Get-WindowsFeature`** PowerShell cmdlet from your management PC, or run it directly on the cluster or server without the -ComputerName parameter:
+To check if a cluster or server has the Failover Clustering feature and Failover Clustering Tools already installed, issue the **`Get-WindowsFeature`** PowerShell cmdlet from your management PC (or run it directly on the cluster or server, omitting the -ComputerName parameter):
 
 ```PowerShell
 Get-WindowsFeature -Name Failover*, RSAT-Clustering* -ComputerName Server1
@@ -32,7 +32,7 @@ Get-WindowsFeature -Name Failover*, RSAT-Clustering* -ComputerName Server1
 
 Make sure "Install State" says Installed and that an X appears before both Failover Clustering and Failover Cluster Module for Windows PowerShell:
 
-```PowerShell
+```
 Display Name                                            Name                       Install State
 ------------                                            ----                       -------------
 [X] Failover Clustering                                 Failover-Clustering            Installed
@@ -42,7 +42,7 @@ Display Name                                            Name                    
             [ ] Failover Cluster Command Interface      RSAT-Clustering-CmdI...        Available
 ```
 
-If the Failover Clustering feature is not installed, install it on each server node with the **`Install-WindowsFeature`** cmdlet, using the -IncludeAllSubFeature and -IncludeManagementTools parameters:
+If the Failover Clustering feature is not installed, install it on each server in the cluster with the **`Install-WindowsFeature`** cmdlet, using the -IncludeAllSubFeature and -IncludeManagementTools parameters:
 
 ```PowerShell
 Install-WindowsFeature –Name Failover-Clustering -IncludeAllSubFeature –IncludeManagementTools -ComputerName Server1
@@ -50,7 +50,7 @@ Install-WindowsFeature –Name Failover-Clustering -IncludeAllSubFeature –Incl
 
 This command will also install the Failover Cluster Module for PowerShell, which includes Powershell cmdlets for managing failover clusters, and the Cluster-Aware Updating module for PowerShell, for installing software updates on failover clusters.
 
-If the Failover Clustering feature is already installed but the Failover Cluster Module for Windows PowerShell is not, simply install it on each server node with the **Install-WindowsFeature** cmdlet:
+If the Failover Clustering feature is already installed but the Failover Cluster Module for Windows PowerShell is not, simply install it on each server in the cluster with the **Install-WindowsFeature** cmdlet:
 
 ```PowerShell
 Install-WindowsFeature –Name RSAT-Clustering-PowerShell -ComputerName Server1
@@ -58,9 +58,9 @@ Install-WindowsFeature –Name RSAT-Clustering-PowerShell -ComputerName Server1
 
 ### Choose an updating mode
 
-CAU can coordinate the complete cluster updating operation in two modes:  
+Cluster-Aware Updating can coordinate the complete cluster updating operation in two modes:  
   
--   **Self-updating mode** For this mode, the CAU clustered role is configured as a workload on the failover cluster that is to be updated, and an associated update schedule is defined. The cluster updates itself at scheduled times by using a default or custom updating run profile. During the updating run, the CAU Update Coordinator process starts on the node that currently owns the CAU clustered role, and the process sequentially performs updates on each cluster node. To update the current cluster node, the CAU clustered role fails over to another cluster node, and a new Update Coordinator process on that node assumes control of the updating run. In self-updating mode, CAU can update the failover cluster by using a fully automated, end-to-end updating process. An administrator can also trigger updates on-demand in this mode, or simply use the remote-updating approach if desired. 
+-   **Self-updating mode** For this mode, the CAU clustered role is configured as a workload on the failover cluster that is to be updated, and an associated update schedule is defined. The cluster updates itself at scheduled times by using a default or custom updating run profile. During the updating run, the CAU Update Coordinator process starts on the node that currently owns the CAU clustered role, and the process sequentially performs updates on each cluster node. To update the current cluster node, the CAU clustered role fails over to another cluster node, and a new Update Coordinator process on that node assumes control of the updating run. In self-updating mode, Cluster-Aware Updating can update the failover cluster by using a fully automated, end-to-end updating process. An administrator can also trigger updates on-demand in this mode, or simply use the remote-updating approach if desired. 
   
 -   **Remote updating mode** For this mode, a remote management computer (usually a Windows 10 PC) that has network connectivity to the failover cluster but is not a member of the failover cluster is configured with the Failover Clustering Tools. From the remote management computer, called the Update Coordinator, the administrator triggers an on-demand updating run by using a default or custom updating run profile. Remote updating mode is useful for monitoring real-time progress during the updating run, and for clusters that are running on Server Core installations.  
 
@@ -78,7 +78,7 @@ Get-CauClusterRole -ClusterName Cluster1
 
 If the role is not yet configured on the cluster, you will see the following error message:
 
-Get-CauClusterRole : The current cluster is not configured with a Cluster-Aware Updating clustered role.
+```Get-CauClusterRole : The current cluster is not configured with a Cluster-Aware Updating clustered role.```
 
 To add the CAU cluster role for self-updating mode using PowerShell, use the **`Add-CauClusterRole`** cmdlet and supply the appropriate [parameters](/powershell/module/clusterawareupdating/add-cauclusterrole?view=win10-ps#parameters), as in the following example:
 
@@ -89,9 +89,9 @@ Add-CauClusterRole -ClusterName Cluster1 -MaxFailedNodes 0 -RequireAllNodesOnlin
    > [!NOTE]
    > The above command must be run from a management PC or domain controller.
 
-## Scan cluster for applicable updates
+## Check for cluster updates
 
-You can use the **`Invoke-CAUScan`** cmdlet to scan cluster nodes for applicable updates and get a list of the initial set of updates that are applied to each node in a specified cluster:
+You can use the **`Invoke-CAUScan`** cmdlet to scan servers for applicable updates and get a list of the initial set of updates that are applied to each server in a specified cluster:
 
 ```PowerShell
 Invoke-CauScan -ClusterName Cluster1 -CauPluginName Microsoft.WindowsUpdatePlugin -Verbose
@@ -99,9 +99,9 @@ Invoke-CauScan -ClusterName Cluster1 -CauPluginName Microsoft.WindowsUpdatePlugi
 
 Generation of the list can take a few minutes to complete. The preview list includes only an initial set of updates; it does not include updates that might become applicable after the initial updates are installed.
 
-## Scan and install updates
+## Install updates
 
-To scan cluster nodes for applicable updates and perform a full updating run on the specified cluster, use the **`Invoke-CAURun`** cmdlet:
+To scan servers for applicable updates and perform a full updating run on the specified cluster, use the **`Invoke-CAURun`** cmdlet:
 
 ```PowerShell
 Invoke-CauRun -ClusterName Cluster1 -CauPluginName Microsoft.WindowsUpdatePlugin -MaxFailedNodes 1 -MaxRetriesPerNode 3 -RequireAllNodesOnline -Force
@@ -110,11 +110,11 @@ Invoke-CauRun -ClusterName Cluster1 -CauPluginName Microsoft.WindowsUpdatePlugin
 This command performs a scan and a full updating run on the cluster named Cluster1. This cmdlet uses the Microsoft.WindowsUpdatePlugin plug-in and requires that all cluster nodes be online before running this cmdlet. In addition, this cmdlet allows no more than three retries per node before marking the node as failed, and allows no more than one node to fail before marking the entire updating run as failed. Because the command specifies the Force parameter, the cmdlet runs without displaying confirmation prompts.
 
 The updating run process includes the following: 
-- Scanning for and downloading applicable updates on each cluster node
-- Moving currently running clustered roles off each cluster node
-- Installing the updates on each cluster node
-- Restarting cluster nodes if required by the installed updates
-- Moving the clustered roles back to the original nodes
+- Scanning for and downloading applicable updates on each server in the cluster
+- Moving currently running clustered roles off each server
+- Installing the updates on each server
+- Restarting the server if required by the installed updates
+- Moving the clustered roles back to the original server
 
 The updating run process also includes ensuring that quorum is maintained, checking for additional updates that can only be installed after the initial set of updates are installed, and saving a report of the actions taken.
 
@@ -124,7 +124,11 @@ An administrator can get summary information about an updating run in progress b
 
 ```PowerShell
 Get-CauRun -ClusterName Cluster1
+```
 
+Here's some sample output:
+
+```
 RunId                   : 834dd11e-584b-41f2-8d22-4c9c0471dbad 
 RunStartTime            : 10/13/2019 1:35:39 PM 
 CurrentOrchestrator     : NODE1 
