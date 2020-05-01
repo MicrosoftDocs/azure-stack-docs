@@ -38,7 +38,7 @@ The diagnostic log collection feature offers two options to send logs. The follo
 
 You agree to periodic automatic log collections by Microsoft based only on Azure Stack Hub system health alerts. You also acknowledge and consent to the upload and retention of those logs in an Azure storage account managed and controlled by Microsoft.
 
-The data will be used only for the purpose of troubleshooting system health alerts and won't be used for marketing, advertising, or any other commercial purposes without your consent. The data can be retained for up to 90 days and any data Microsoft collects will be handled in accordance with our [standard privacy practices](https://privacy.microsoft.com/).
+The data will be used only troubleshooting system health alerts and won't be used for marketing, advertising, or any other commercial purposes without your consent. The data can be retained for up to 90 days and any data Microsoft collects will be handled following our [standard privacy practices](https://privacy.microsoft.com/).
 
 Any data previously collected with your consent won't be affected by the revocation of your permission.
 
@@ -58,7 +58,7 @@ If you're disconnected from the internet or want to only save logs locally, use 
 
 By initiating diagnostic log collection from Azure Stack Hub, you acknowledge and consent to uploading those logs and retaining them in an Azure storage account managed and controlled by Microsoft. Microsoft CSS can access these logs right away with the support case without having to engage with the customer for log collection.
 
-The data will be used only for the purpose of troubleshooting system health alerts and won't be used for marketing, advertising, or any other commercial purposes without your consent. The data can be retained for up to 90 days and any data Microsoft collects will be handled in accordance with our [standard privacy practices](https://privacy.microsoft.com/).
+The data will be used only for troubleshooting system health alerts and won't be used for marketing, advertising, or any other commercial purposes without your consent. The data can be retained for up to 90 days and any data Microsoft collects will be handled following our [standard privacy practices](https://privacy.microsoft.com/).
 
 Logs collected using **Send logs now** are uploaded to a storage managed and controlled by Microsoft. These logs are accessed by Microsoft in the context of a support case and to improve the health of Azure Stack Hub.
 
@@ -97,9 +97,9 @@ The average size of diagnostic log collection varies based on whether log collec
 
 For on-demand log collection, the size of the logs collection depends on how many hours are being collected. You can choose any 1-4 hour sliding window from the last seven days.
 
-When automatic diagnostic log collection is enabled, the service monitors for critical alerts. After a critical alert gets raised and persists for around 30 minutes, the service collects and uploads appropriate logs. This log collection size is around 2 GB on average. If there's a patch and update failure, automatic log collection will start only if a critical alert is raised and persists for around 30 minutes. We recommend that you follow [guidance on monitoring the patch and update](azure-stack-updates.md). Alert monitoring, log collection, and upload are transparent to the user.
+When automatic diagnostic log collection is enabled, the service monitors for critical alerts. After a critical alert gets raised and persists for around 30 minutes, the service collects and uploads appropriate logs. This log collection size is around 2 GB on average. If there's a patch and update failure, automatic log collection will start only if a critical alert is raised and persists for around 30 minutes. We recommend you follow [guidance on monitoring the patch and update](azure-stack-updates.md). Alert monitoring, log collection, and upload are transparent to the user.
 
-In a healthy system, logs won't be collected at all. In an unhealthy system, log collection may run two or three times in a day, but typically only once. At most, it could potentially run up to ten times in a day in a worst-case scenario.  
+In a healthy system, logs won't be collected at all. In an unhealthy system, log collection may run two or three times in a day, but typically only once. At most, it could potentially run up to 10 times in a day in a worst-case scenario.  
 
 The following table can help environments with limited or metered connections to Azure consider the impact of enabling automatic log collection.
 
