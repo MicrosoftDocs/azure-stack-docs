@@ -4,7 +4,7 @@ description: This article discusses different ways to deploy the Azure Stack HCI
 author: JohnCobb1
 ms.author: v-johcob 
 ms.topic: article
-ms.date: 04/30/2020
+ms.date: 05/01/2020
 ---
 
 # Deploy the Azure Stack HCI operating system
@@ -35,20 +35,20 @@ For enterprise deployment of the Azure Stack HCI operating system, we recommend 
 Solution hardware ranges from 2 to 16 nodes and is tested and validated by Microsoft and partner vendors. ​To find Azure Stack HCI solution hardware from your preferred hardware partner, see the [Azure Stack HCI Catalog](https://www.microsoft.com/cloud-platform/azure-stack-hci-catalog).
 
 ### Manual deployment
-To manually install the Azure Stack HCI operating system on the system drive of each server to be clustered, we recommend using the Server Configuration tool (Sconfig.cmd). You can use Sconfig.cmd to configure and manage Server Core installations. To use the tool, you must be a member of the Administrators group. To learn more about the tool, see [Configure a Server Core installation of Windows Server 2016 or Windows Server, version 1709, with Sconfig.cmd](/windows-server/get-started/sconfig-on-ws2016).
+To manually deploy the Azure Stack HCI operating system on the system drive of each server to be clustered, we recommend using the Server Configuration tool (Sconfig.cmd). You can use Sconfig.cmd to configure and manage Server Core installations. To use the tool, you must be a member of the Administrators group. To learn more about the tool, see [Configure a Server Core installation of Windows Server 2016 or Windows Server, version 1709, with Sconfig.cmd](/windows-server/get-started/sconfig-on-ws2016).
 
 To use Sconfig:
-1. Connect to the computer on which you want to install and configure the Azure Stack HCI operating system.
+1. Connect to the server running the Azure Stack HCI operating system that you want to deploy.
 1. Open a command prompt as an administrator, and then change to the system drive.
-1. At the command prompt, type `Sconfig`, and then press Enter to open the Server Configuration tool interface.
+1. At the command prompt, type `Sconfig.cmd` and press Enter to open the Server Configuration tool interface.
 
     :::image type="content" source="../media/operating-system/sconfig-interface.png" alt-text="The Server Configuration tool interface.":::
 
-1. tbd
-1. tbd
+1. Take note of the computer's **Domain/Workgroup** and its **Computer Name** for reference.
 
+From the Server Configuration tool interface, you can perform important tasks, such as adding additional users to the local administrators group and changing network settings. You can also enable **Automatic Updates** to download and install Windows Updates on the server.
 
-<!---Add Lab setup notes here on how to do this manually using Sconfig. Server Core only. See Jason's notes for detail.--->
+After configuring the operating system as needed with Sconfig on each server, you're ready to use the Cluster Creation wizard in Windows Admin Center to cluster the servers. To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/operating-system?branch=pr-en-us-2779).
 
 ### Headless deployment
 You can use an answer file to do a headless deployment of the operating system. The answer file uses an XML format to define configuration settings and values during an unattended installation of Windows Server.
