@@ -41,7 +41,7 @@ This article assumes a basic understanding of Azure Stack Hub networking.
 
 An NVA can be deployed to a perimeter network in many different architectures. For example, the following figure illustrates the use of a single NVA for ingress.
 
-![A screenshot of a social media post Description automatically generated](./media/iaas-architecture-nva-architecture/image1.png)
+![A screenshot of a social media post Description automatically generated](./media/iaas-architecture-nva-architecture/iaas-architecture-nva-architecture-image1.svg)
 
 In this architecture, the NVA provides a secure network boundary by checking all inbound and outbound network traffic and passing only the traffic that meets network security rules. The fact that all network traffic must pass through the NVA means that the NVA is a single point of failure in the network. If the NVA fails, there is no other path for network traffic and all the back-end subnets are unavailable.
 
@@ -59,7 +59,7 @@ The following architectures describe the resources and configuration necessary f
 
 The following figure shows a high availability architecture that implements an ingress perimeter network behind an internet-facing load balancer. This architecture is designed to provide connectivity to Azure Stack Hub workloads for layer 7 traffic, such as HTTP or HTTPS:
 
-![A screenshot of a map Description automatically generated](./media/iaas-architecture-nva-architecture/image2.png)
+![A screenshot of a map Description automatically generated](./media/iaas-architecture-nva-architecture/iaas-architecture-nva-architecture-image2.svg)
 
 The benefit of this architecture is that all NVAs are active, and if one fails the load balancer directs network traffic to the other NVA. Both NVAs route traffic to the internal load balancer so as long as one NVA is active, traffic continues to flow. The NVAs are required to terminate SSL traffic intended for the web tier VMs. These NVAs cannot be extended to handle Enterprise Network traffic because Enterprise Network traffic requires another dedicated set of NVAs with their own network routes.
 
@@ -67,7 +67,7 @@ The benefit of this architecture is that all NVAs are active, and if one fails t
 
 The Ingress with layer 7 NVAs architecture can be expanded to provide an egress perimeter network for requests originating in the Azure Stack Hub workload. The following architecture is designed to provide high availability of the NVAs in the perimeter network for layer 7 traffic, such as HTTP or HTTPS:
 
-![A screenshot of a cell phone Description automatically generated](./media/iaas-architecture-nva-architecture/image3.png)
+![A screenshot of a cell phone Description automatically generated](./media/iaas-architecture-nva-architecture/iaas-architecture-nva-architecture-image4.svg)
 
 In this architecture, all traffic originating in Azure Stack Hub is routed to an internal load balancer. The load balancer distributes outgoing requests between a set of NVAs. These NVAs direct traffic to the Internet using their individual public IP addresses.
 
@@ -75,7 +75,7 @@ In this architecture, all traffic originating in Azure Stack Hub is routed to an
 
 In the two ingress and egress architectures, there was a separate perimeter network for ingress and egress. The following architecture demonstrates how to create a perimeter network that can be used for both ingress and egress for layer 7 traffic, such as HTTP or HTTPS:
 
-![A screenshot of a social media post Description automatically generated](./media/iaas-architecture-nva-architecture/image4.png)
+![A screenshot of a social media post Description automatically generated](./media/iaas-architecture-nva-architecture/iaas-architecture-nva-architecture-image4.svg)
 
 In the Ingress-egress with layer 7 NVAs architecture, the NVAs process incoming requests from a Layer 7 Load Balancer. The NVAs also process outgoing requests from the workload VMs in the back-end pool of the load balancer. Because incoming traffic is routed with a layer 7 load balancer, and outgoing traffic is routed with an SLB (Azure Stack Hub Basic Load Balancer), the NVAs are responsible for maintaining session affinity. That is, the layer 7 load balancer maintains a mapping of inbound and outbound requests so it can forward the correct response to the original requestor. However, the internal load balancer doesn't have access to the layer 7 load balancer mappings, and uses its own logic to send responses to the NVAs. It's possible the load balancer could send a response to an NVA that did not initially receive the request from the layer 7 load balancer. In this case, the NVAs must communicate and transfer the response between them so the correct NVA can forward the response to the layer 7 load balancer.
 
