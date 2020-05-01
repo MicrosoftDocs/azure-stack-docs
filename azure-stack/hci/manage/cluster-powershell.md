@@ -3,7 +3,7 @@ title: Manage Azure Stack HCI clusters using PowerShell
 description: Learn how to manage clusters on Azure Stack HCI using PowerShell 
 author: v-dasis 
 ms.topic: article 
-ms.date: 03/22/2020 
+ms.date: 04/30/2020 
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -12,9 +12,14 @@ ms.reviewer: JasonGerend
 
 > Applies to Windows Server 2019
 
-Windows PowerShell can be used to manage resources and configure features on your Azure Stack HCI clusters. For information on managing the VMs in your cluster, see [Manage VMs on Azure Stack HCI with Windows PowerShell].
+Windows PowerShell can be used to manage resources and configure features on your Azure Stack HCI clusters.
 
-For the complete reference documentation for managing clusters using PowerShell, see [FailoverCluster reference](https://docs.microsoft.com/powershell/module/failoverclusters/?view=win10-ps).
+We recommend that you manage your cluster nodes from a remote computer running Windows 10, rather than directly on the servers. This remote computer is called the management computer.
+
+> [!NOTE]
+> When running PowerShell commands from a management computer, you will need to include the `-Name` parameter with the name of the cluster you are managing.
+
+For the complete reference documentation for managing clusters using PowerShell, see the [FailoverCluster reference](https://docs.microsoft.com/powershell/module/failoverclusters/?view=win10-ps).
 
 ## Run Windows PowerShell
 
@@ -23,155 +28,151 @@ Windows PowerShell is used to perform all the tasks in this article. It is recom
 1. Click the Taskbar search bar in the lower left and then type *PowerShell* in the text field.
 2. Under **Windows PowerShell** on the right, select **Run as administrator**.
 
+If the following cmdlets aren't available in your PowerShell session, you may need to add the `Failover Cluster` Module for Windows PowerShell Feature, using the following PowerShell cmd: `Add-WindowsFeature RSAT-Clustering-PowerShell`.
+
 ## View cluster settings and resources
 
-To see the current cluster and its member nodes, run:
+Gets information about a cluster names Cluster1:
 
 ```powershell
-Get-Cluster -ComputerName <computer_name> -cluster <cluster_name>
-Get-ClusterNode -ComputerName <computer_name> -cluster <cluster_name>
+Get-Cluster -Cluster Cluster1
+```
+Gets information about one or more nodes, or servers, in Cluster1:
+
+```powershell
+Get-ClusterNode -Cluster Cluster1
 ```
 
-To see which Windows features are installed on the cluster use the `Get-WindowsFeature` cmdlet. For example:
+To see which Windows features are installed on a cluster node, use the `Get-WindowsFeature` cmdlet. For example:
 
 ```powershell
-Get-WindowsFeature "Hyper-V", "Failover-Clustering", "Data-Center-Bridging", "BitLocker"
+Get-WindowsFeature -ComputerName Server1 "Hyper-V", "Failover-Clustering", "Data-Center-Bridging", "BitLocker"
 ```
 
 To see network adapters and their properties such as Name, IPv4 addresses, and VLAN ID:
 
 ```powershell
-Get-NetAdapter | Where Status -Eq "Up" | Sort InterfaceAlias | Format-Table Name, InterfaceDescription, Status, LinkSpeed, VLANID, MacAddress
-Get-NetAdapter | Where Status -Eq "Up" | Get-NetIPAddress -AddressFamily IPv4 -ErrorAction SilentlyContinue | Sort InterfaceAlias | Format-Table InterfaceAlias, IPAddress, PrefixLength
+Get-CimSession -ComputerName Server1 | Get-NetAdapter | Where Status -Eq "Up" | Sort InterfaceAlias | Format-Table Name, InterfaceDescription, Status, LinkSpeed, VLANID, MacAddress
 ```
 
 To see Hyper-V virtual switches and how physical network adapters are teamed:
 
 ```powershell
-Get-VMSwitch
-Get-VMSwitchTeam
+Get-CimSession -ComputerName Server1 | Get-VMSwitch
 ```
 
 To see host virtual network adapters:
 
 ```powershell
-Get-VMNetworkAdapter -ManagementOS | Format-Table Name, IsManagementOS, SwitchName
-Get-VMNetworkAdapterTeamMapping -ManagementOS | Format-Table NetAdapterName, ParentAdapter
+Get-CimSession -ComputerName Server1 | Get-VMNetworkAdapter -ManagementOS | Format-Table Name, IsManagementOS, SwitchName
 ```
 
-To see whether Storage Spaces Direct is enabled and the default storage pool that's created automatically:
+To see whether Storage Spaces Direct is enabled:
 
 ```powershell
-Get-ClusterStorageSpacesDirect
-Get-StoragePool -IsPrimordial $False
+Get-CimSession -ComputerName Server1 |Get-ClusterStorageSpacesDirect
 ```
 
 ## Start or stop a cluster
 
 Use the `Start-Cluster` and `Stop-Cluster` cmdlets to add or remove a server node for your cluster. For more examples and usage information, see the [Start-Cluster](https://docs.microsoft.com/powershell/module/failoverclusters/start-cluster?view=win10-ps) and [Stop-Cluster](https://docs.microsoft.com/powershell/module/failoverclusters/stop-cluster?view=win10-ps) reference documentation.
 
-Starts the Cluster service on all nodes of the cluster on which it is not yet started:
+> [!NOTE]
+> You will need to temporarily enable Credential Security Service Provider (CredSSP) authentication to start the Cluster service on a server node.
+
+Starts the Cluster service on all server nodes of the cluster on which it is not yet started:
 
 ```powershell
-Start-Cluster
-Name 
----- 
-mycluster
+Start-Cluster -Name Cluster1
 ```
 
-This example stops the Cluster service on all nodes in the cluster named cluster1, which will stop all services and applications configured in the cluster:
+This example stops the Cluster service on all nodes in the cluster named Cluster1, which will stop all services and applications configured in the cluster:
 
 ```powershell
-Stop-Cluster -Name cluster1
+Stop-Cluster -Name Cluster1
 ```
 
 ## Add or remove a server
 
 Use the `Add-ClusterNode` and `Remove-ClusterNode` cmdlets to add or remove a server node for your cluster. For more examples and usage information, see the [Add-ClusterNode](https://docs.microsoft.com/powershell/module/failoverclusters/add-clusternode?view=win10-ps) and [Remove-ClusterNode](https://docs.microsoft.com/powershell/module/failoverclusters/remove-clusternode?view=win10-ps) reference documentation.
 
-This example adds node named node4 to the local cluster:
+> [!NOTE]
+> You will need to temporarily enable Credential Security Service Provider (CredSSP) authentication to add or remove a server node.
+
+This example adds a node named Node4 to a cluster named Cluster1:
 
 ```powershell
-Add-ClusterNode -Name node4
-Name                                                                      State 
-----                                                                      ----- 
-node4                                                                        Up
+Add-ClusterNode -Cluster Cluster1 -Name Node4
 ```
 
-This example removes the node named node4 from the local cluster:
+This example removes the node named node4 from cluster Cluster1:
 
 ```powershell
-Remove-ClusterNode -Name node4
+Remove-ClusterNode -Cluster Cluster1 -Name Node4
 ```
 
 ## Set quorum options
 
 Use the `Set-ClusterQuorum` cmdlet to set quorum options for the cluster. For more examples and usage information, see the [Set-ClusterQuorum](https://docs.microsoft.com/powershell/module/failoverclusters/set-clusterquorum?view=win10-ps) reference documentation.
 
-This example changes the quorum configuration to Node Majority on the local cluster:
+This example changes the quorum configuration to Node Majority on on cluster Cluster1:
 
 ```powershell
-Set-ClusterQuorum -NodeMajority
-Cluster                    QuorumResource                  QuorumType 
--------                    --------------                  ---------- 
-cluster1                                                 NodeMajority
+Set-ClusterQuorum -Cluster Cluster1 -NodeMajority
 ```
 
-This example changes the quorum configuration to Node and Disk Majority on the local cluster, using the disk resource named Cluster Disk 7 for the disk witness.
+This example changes the quorum configuration to Node and Disk Majority on cluster Cluster1, using the disk resource named Cluster Disk 7 for the disk witness.
 
 ```powershell
-Set-ClusterQuorum -DiskWitness "Cluster Disk 7"
-Cluster                    QuorumResource                  QuorumType 
--------                    --------------                  ---------- 
-cluster1                   Cluster Disk 7         NodeAndDiskMajority
+Set-ClusterQuorum -Cluster Cluster1 -DiskWitness "Cluster Disk 7"
 ```
 
 ## Enable Storage Spaces Direct
 
 Use the `Enable-ClusterStorageSpacesDirect` cmdlet to enable Storage Spaces Direct (S2D) on the cluster. For more examples and usage information, see the [Enable-ClusterStorageSpacesDirect](https://docs.microsoft.com/powershell/module/failoverclusters/enable-clusterstoragespacesdirect?view=win10-ps) reference documentation.
 
-This example enables Storage Spaces Direct on the local cluster:
+This example enables Storage Spaces Direct on Server1:
 
 ```powershell
-Enable-ClusterStorageSpacesDirect                                               NodeMajority
+Get-CimSession -ComputerName Server1 | Enable-ClusterStorageSpacesDirect
 ```
 
 ## Configure a Hyper-V host
 
 Use the `Set-VMHost` cmdlet to configure various Hyper-V host settings, such as VHD and VM paths, live migrations, storage migrations, authentication, NUMA spanning and others. For more examples and usage information, see the [Enable-ClusterStorageSpacesDirect](https://docs.microsoft.com/powershell/module/hyper-v/Set-VMHost?view=win10-ps) reference documentation.
 
-This example specifies new default locations for virtual hard disks and VMs on the local Hyper-V host:
+This example specifies new default locations for virtual hard disks and VMs on host server Server1:
 
 ```powershell
-Set-VMHost -VirtualHardDiskPath "C:\Hyper-V\Virtual Hard Disks" -VirtualMachinePath "C:\Hyper-V\Configuration Files"
+Set-VMHost -ComputerName Server1 -VirtualHardDiskPath "C:\Hyper-V\Virtual Hard Disks" -VirtualMachinePath "C:\Hyper-V\Configuration Files"
 ```
 
-This example configures the local Hyper-V host to allow 10 simultaneous live migrations and storage migrations:
+This example configures host server Server1 to allow 10 simultaneous live migrations and storage migrations:
 
 ```powershell
-Set-VMHost -MaximumVirtualMachineMigrations 10 -MaximumStorageMigrations 10
+Set-VMHost -ComputerName Server1 -MaximumVirtualMachineMigrations 10 -MaximumStorageMigrations 10
 ```
 
-This example configures the local Hyper-V host to use Kerberos to authenticate incoming live migrations:
+This example configures host server Server1 to use Kerberos to authenticate incoming live migrations:
 
 ```powershell
-Set-VMHost -VirtualMachineMigrationAuthenticationType Kerberos
+Set-VMHost -ComputerName Server1 -VirtualMachineMigrationAuthenticationType Kerberos
 ```
 
-This example disables NUMA spanning on the local Hyper-V host:
+This example disables NUMA spanning on host server Server1:
 
 ```powershell
-Set-VMHost -NumaSpanningEnabled $false
+Set-VMHost -ComputerName Server1 -NumaSpanningEnabled $false
 ```
 
 ## Validate a cluster
 
-Use the `Test-Cluster` cmdlet to run validation tests on the cluster. For more examples and usage information, see the [Test-Cluster](https://docs.microsoft.com/powershell/module/failoverclusters/test-cluster?view=win10-ps) reference documentation.
+Use the `Test-Cluster` cmdlet to run validation tests on a cluster. For more examples and usage information, see the [Test-Cluster](https://docs.microsoft.com/powershell/module/failoverclusters/test-cluster?view=win10-ps) reference documentation.
 
-This example runs all applicable cluster validation tests on the local cluster:
+This example runs all applicable cluster validation tests on a cluster named Cluster1:
 
 ```powershell
-Test-Cluster
+Test-Cluster -Cluster Cluster1
 Mode                LastWriteTime     Length Name 
 ----                -------------     ------ ---- 
 -a---        10/10/2008   6:31 PM    1132255 Test-Cluster on 2008.10.10 At 18.22.53.mht
@@ -181,7 +182,7 @@ This example lists the names of all tests and categories in cluster validation. 
 
 
 ```powershell
-Test-Cluster -List
+Test-Cluster -Cluster Cluster1 -List
 Category                                DisplayName                             Description 
 --------                                -----------                             ----------- 
 Cluster Configuration                   List Cluster Core Groups                List information about the available... 
@@ -256,16 +257,19 @@ System Configuration                    Validate System Drive Variable          
 
 Use the `Remove-ClusterResource` cmdlet to remove one or all resources on a cluster. For more examples and usage information, see the [Remove-ClusterResource](https://docs.microsoft.com/powershell/module/failoverclusters/remove-clusterresource?view=win10-ps) reference documentation.
 
-The following example removes cluster resources by name:
+> [!NOTE]
+> You will need to temporarily enable Credential Security Service Provider (CredSSP) authentication to remove a cluster.
+
+The following example removes cluster resources by name on cluster Cluster1:
 
 ```powershell
-Get-ClusterResource -Name "<NAME>" | Remove-ClusterResource
+Remove-ClusterResource -Cluster Cluster1 -Name "Cluster Disk 4"
 ```
 
-This example removes the cluster entirely using the `Remove-Cluster` cmdlet:
+This example removes cluster Cluster1 entirely using the `Remove-Cluster` cmdlet:
 
 ```powershell
-Remove-Cluster
+Remove-Cluster -Cluster Cluster1
 ```
 
 ## Next Steps
