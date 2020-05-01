@@ -21,7 +21,7 @@ zone_pivot_groups: state-connected-disconnected
 
 Before you deploy Azure App Service on Azure Stack Hub, you must complete the prerequisite steps in this article.
 
-## Common prerequisites 
+## Before you get started 
 
 This section lists the prerequisites for both integrated system and Azure Stack Development Kit (ASDK) deployments.
 
@@ -44,7 +44,7 @@ This section lists the prerequisites for both integrated system and Azure Stack 
      - GraphAPI.psm1
 
 <!-- MultiNode Only --->
-## Prerequisites for integrated system deployments
+## Certificates and server configuration (Integrated Systems)
 
 This section lists the prerequisites for integrated system deployments. 
 
@@ -226,8 +226,6 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 
 For the Azure App Service on Azure Stack Hub hosting and metering databases, you must prepare a SQL Server instance to hold the App Service databases.
 
-For ASDK deployments, you can use SQL Server Express 2014 SP2 or later. SQL Server must be configured to support **Mixed Mode** authentication because App Service on Azure Stack Hub **DOES NOT** support Windows Authentication.
-
 For production and high-availability purposes, you should use a full version of SQL Server 2014 SP2 or later, enable mixed-mode authentication, and deploy in a [highly available configuration](https://docs.microsoft.com/sql/sql-server/failover-clusters/high-availability-solutions-sql-server).
 
 The SQL Server instance for Azure App Service on Azure Stack Hub must be accessible from all App Service roles. You can deploy SQL Server within the Default Provider Subscription in Azure Stack Hub. Or you can make use of the existing infrastructure within your organization (as long as there's connectivity to Azure Stack Hub). If you're using an Azure Marketplace image, remember to configure the firewall accordingly.
@@ -246,7 +244,7 @@ RECONFIGURE;
 GO
 ```
 
-## Prerequisites for ASDK deployments
+## Certificates and server configuration (ASDK)
 
 This section lists the prerequisites for ASDK deployments. 
 
@@ -310,9 +308,7 @@ If you choose to deploy the resources within your Azure Stack Hub Default Provid
 - the infrastructure is deployed into the Default Provider Subscription;
 - the infrastructure is exclusively used by the Azure App Service on Azure Stack Hub resource provider. No other workloads, administrative (other resource providers, for example: SQL-RP) or tenant (for example: tenant apps, which require a database), are permitted to make use of this infrastructure.
 
-## Common Elements
-
-### Retrieve the Azure Resource Manager root certificate for Azure Stack Hub
+## Retrieve the Azure Resource Manager root certificate for Azure Stack Hub
 
 Open an elevated PowerShell session on a computer that can reach the privileged endpoint on the Azure Stack Hub Integrated System or ASDK Host.
 
@@ -330,6 +326,8 @@ When you run the following PowerShell command, you have to provide the privilege
 | --- | --- | --- | --- |
 | PrivilegedEndpoint | Required | AzS-ERCS01 | Privileged endpoint |
 | CloudAdminCredential | Required | AzureStack\CloudAdmin | Domain account credential for Azure Stack Hub cloud admins |
+
+## Network and identity configuration
 
 ### Virtual network
 
