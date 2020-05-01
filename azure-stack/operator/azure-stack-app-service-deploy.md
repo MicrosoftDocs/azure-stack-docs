@@ -22,7 +22,7 @@ zone_pivot_groups: state-connected-disconnected
 > Before you run the resource provider installer, you must complete the steps in [Before you get started](azure-stack-app-service-before-you-get-started.md)
 
 ::: zone pivot="state-connected"
-In this article you learn how to deploy App Service in Azure Stack Hub, which gives your users the ability to create web and API applications. You need to:
+In this article you learn how to deploy App Service in Azure Stack Hub, which gives your users the ability to create Web, API and Azure Functions applications. You need to:
 
 - Add the [App Service resource provider](azure-stack-app-service-overview.md) to your Azure Stack Hub deployment using the steps described in this article.
 - After you install the App Service resource provider, you can include it in your offers and plans. Users can then subscribe to get the service and start creating apps.
@@ -31,10 +31,16 @@ In this article you learn how to deploy App Service in Azure Stack Hub, which gi
 
 Installing the App Service resource provider takes at least an hour. The length of time needed depends on how many role instances you deploy. During the deployment, the installer runs the following tasks:
 
-- Create a blob container in the specified Azure Stack Hub storage account.
-- Create a DNS zone and entries for App Service.
-- Register the App Service resource provider.
-- Register the App Service gallery items.
+- Registers the required resource providers in the Default Provider Subscription
+- Grants contributor access to the App Service Identity application
+- Create Resource Group and Virtual network (if required)
+- Create Storage accounts and containers for App Service installation artifacts, usage service and resource hydration
+- Download App Service artifacts and upload them to the App Service storage account
+- Deploy the App Service
+- Register the usage service
+- Create DNS Entries for App Service
+- Register the App Service admin and tenant resource providers
+- Register Gallery Items - Web, API, Function App, App Service Plan, WordPress, DNN, Orchard and Django applications
 
 To deploy App Service resource provider, follow these steps:
 
