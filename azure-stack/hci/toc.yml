@@ -1,6 +1,6 @@
-- name: Azure Stack test
-  href: index.yml
-- name: Test article
+- name: Azure Stack HCI documentation
+  href: overview.md
+- name: Overview
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
