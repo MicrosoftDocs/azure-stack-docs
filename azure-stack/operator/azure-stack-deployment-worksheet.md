@@ -1,5 +1,5 @@
 ---
-title: Deployment Worksheet for Azure Stack Hub integrated systems 
+title: Deployment worksheet for Azure Stack Hub
 description: Learn how to install and use the deployment worksheet tool to deploy Azure Stack Hub.
 author: IngridAtMicrosoft
 ms.topic: article
@@ -8,11 +8,10 @@ ms.author: inhenkel
 ms.reviewer: wamota
 ms.lastreviewed: 04/19/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub user, I want to install and use the deployment worksheet tool so I can have all necessary deployment information in one place.
+# Keyword: deployment worksheet azure stack hub
 
 ---
-
 
 # Deployment worksheet for Azure Stack Hub integrated systems
 
