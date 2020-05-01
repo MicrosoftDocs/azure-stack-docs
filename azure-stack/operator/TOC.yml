@@ -296,7 +296,7 @@
         href: azure-stack-app-service-capacity-planning.md
       - name: App Service billing FAQ
         href: app-service-billing-faq.md
-      - name: Before you get started
+      - name: Prerequisites
         href: azure-stack-app-service-before-you-get-started.md
       - name: Deployment
         items:
