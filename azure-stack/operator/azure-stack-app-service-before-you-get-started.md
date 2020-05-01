@@ -40,7 +40,6 @@ This section lists the prerequisites for both integrated system and Azure Stack 
    - Create-ADFSIdentityApp.ps1
    - Create-AppServiceCerts.ps1
    - Get-AzureStackRootCert.ps1
-   - Remove-AppService.ps1
    - Modules folder
      - GraphAPI.psm1
 
@@ -282,8 +281,25 @@ For ASDK deployments only, you can use the [example Azure Resource Manager deplo
 
 ### SQL Server instance
 
+For the Azure App Service on Azure Stack Hub hosting and metering databases, you must prepare a SQL Server instance to hold the App Service databases.
 
+For ASDK deployments, you can use SQL Server Express 2014 SP2 or later. SQL Server must be configured to support **Mixed Mode** authentication because App Service on Azure Stack Hub **DOES NOT** support Windows Authentication.
 
+The SQL Server instance for Azure App Service on Azure Stack Hub must be accessible from all App Service roles. You can deploy SQL Server within the Default Provider Subscription in Azure Stack Hub. Or you can make use of the existing infrastructure within your organization (as long as there's connectivity to Azure Stack Hub). If you're using an Azure Marketplace image, remember to configure the firewall accordingly.
+
+> [!NOTE]
+> A number of SQL IaaS VM images are available through the Marketplace Management feature. Make sure you always download the latest version of the SQL IaaS Extension before you deploy a VM using a Marketplace item. The SQL images are the same as the SQL VMs that are available in Azure. For SQL VMs created from these images, the IaaS extension and corresponding portal enhancements provide features such as automatic patching and backup capabilities.
+>
+> For any of the SQL Server roles, you can use a default instance or a named instance. If you use a named instance, be sure to manually start the SQL Server Browser service and open port 1434.
+
+The App Service installer will check to ensure the SQL Server has database containment enabled. To enable database containment on the SQL Server that will host the App Service databases, run these SQL commands:
+
+```sql
+sp_configure 'contained database authentication', 1;
+GO
+RECONFIGURE;
+GO
+```
 
 ## Common Elements
 
