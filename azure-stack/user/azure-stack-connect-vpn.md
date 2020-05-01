@@ -29,7 +29,7 @@ To complete the connection configuration, make sure you have the following items
 
 The following figure shows what the connection configuration should look like when you're done:
 
-![Site-to-site VPN connection configuration](media/azure-stack-connect-vpn/image2.png)
+![Site-to-site VPN connection configuration](media/azure-stack-connect-vpn/azure-stack-connect-vpn-image2.svg)
 
 ### Network configuration example values
 
