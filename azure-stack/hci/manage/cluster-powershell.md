@@ -17,7 +17,7 @@ Windows PowerShell can be used to manage resources and configure features on you
 We recommend that you manage your cluster nodes from a remote computer running Windows 10, rather than directly on the servers. This remote computer is called the management computer.
 
 > [!NOTE]
-> When running PowerShell commands from a management computer, you will need to include the `-Name` parameter with the name of the cluster you are managing.
+> When running PowerShell commands from a management computer, you will need to include the `-Name` or `-Cluster` parameter with the name of the cluster you are managing.
 
 For the complete reference documentation for managing clusters using PowerShell, see the [FailoverCluster reference](https://docs.microsoft.com/powershell/module/failoverclusters/?view=win10-ps).
 
