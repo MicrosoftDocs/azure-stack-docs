@@ -32,7 +32,7 @@ You can plan your App Service capacity strategy using these guidelines.
 | Management | 2 | D3_v2 |
 | Publisher | 2 | A2_v2 |
 | Web Workers - shared | 2 | A4_v2 |
-| Web Workers - dedicated | 2 per tier | A1 |
+| Web Workers - dedicated | 2 per tier | A1_v2 |
 
 ## Controller role
 
