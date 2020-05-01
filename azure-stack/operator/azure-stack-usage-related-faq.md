@@ -7,7 +7,7 @@ documentationcenter: ''
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/27/2020
+ms.date: 05/01/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 02/26/2019
@@ -418,13 +418,13 @@ Currently, you can query only by **Reported Time**.
 
 | **HTTP status code** | **Error code** | **Description** |
 | --- | --- | --- |
-| 400/Bad Request |*NoApiVersion* |The *api-version* query parameter is missing. |
-| 400/Bad Request |*InvalidProperty* |A property is missing or has an invalid value. The message in the error code in the response body identifies the missing property. |
-| 400/Bad Request |*RequestEndTimeIsInFuture* |The value for *ReportedEndTime* is in the future. Values in the future aren't allowed for this argument. |
-| 400/Bad Request |*SubscriberIdIsNotDirectTenant* |A provider API call has used a subscription ID that isn't a valid tenant of the caller. |
-| 400/Bad Request |*SubscriptionIdMissingInRequest* |The subscription ID of the caller is missing. |
-| 400/Bad Request |*InvalidAggregationGranularity* |An invalid aggregation granularity was requested. Valid values are daily and hourly. |
-| 503 |*ServiceUnavailable* |A retryable error occurred because the service is busy or the call is being throttled. |
+| 400/Bad Request |NoApiVersion |The `api-version` query parameter is missing. |
+| 400/Bad Request |InvalidProperty |A property is missing or has an invalid value. The message in the error code in the response body identifies the missing property. |
+| 400/Bad Request |RequestEndTimeIsInFuture |The value for `ReportedEndTime` is in the future. Values in the future are not allowed for this argument. |
+| 400/Bad Request |SubscriberIdIsNotDirectTenant |A provider API call has used a subscription ID that is not a valid tenant of the caller. |
+| 400/Bad Request |SubscriptionIdMissingInRequest |The subscription ID of the caller is missing. |
+| 400/Bad Request |InvalidAggregationGranularity |An invalid aggregation granularity was requested. Valid values are daily and hourly. |
+| 503 |ServiceUnavailable |A retryable error occurred because the service is busy or the call is being throttled. |
 
 ## What is the policy for charging for VMs?
 
