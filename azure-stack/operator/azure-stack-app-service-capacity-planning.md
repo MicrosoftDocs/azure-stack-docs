@@ -20,8 +20,8 @@ To set up a production-ready deployment of Azure App Service on Azure Stack Hub,
 
 This article provides guidance for the minimum number of compute instances and compute SKUs you should use for any production deployment.
 
-> ![NOTE]
-> The guidance on recommended compute SKU for roles was update with the 2020.Q2 release of Azure App Service on Azure Stack Hub to bring standard deployments in line with Azure deployments.
+> [!NOTE]
+> The guidance on recommended compute SKU for roles was updated with the 2020.Q2 release of Azure App Service on Azure Stack Hub to bring standard deployments in line with Azure deployments.
 
 You can plan your App Service capacity strategy using these guidelines.
 
