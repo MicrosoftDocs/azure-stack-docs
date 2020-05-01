@@ -14,7 +14,7 @@ ms.reviewer: JasonGerend
 
 Windows PowerShell can be used to create and manage your virtual machines (VMs) on Azure Stack HCI. This article discusses how to manage individual VMs. If you want to manage cluster-wide VM settings, such as load-balancing VMs across your cluster, see [Manage Azure Stack HCI clusters using PowerShell].
 
-We recommend that you manage your VMs from a remote computer running Windows 10, rather than on an actual host server in the cluster. This remote computer is called the management computer.
+We recommend that you manage your VMs from a remote computer running Windows 10, rather than on a host server in a cluster. This remote computer is called the management computer.
 
 > [!NOTE]
 > When running PowerShell commands from a management computer, you will need to include the -ComputerName parameter with the name of the host server you are managing. NetBIOS names, IP addresses, and fully qualified domain names are allowable.
