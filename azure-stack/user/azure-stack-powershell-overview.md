@@ -36,7 +36,7 @@ Resource providers provide both functionality and controls for managing and conf
 
 The following block diagram shows the relationships between the sets of PowerShell modules. From your machine, you can load the PowerShell modules and manage both global Azure and Azure Stack Hub.
 
-![Azure Stack Hub Powershell](media/azure-stack-powershell-overview/azure-stack-powerShell.svg)
+![Azure Stack Hub PowerShell](media/azure-stack-powershell-overview/azure-stack-powerShell.svg)
 
 ### Global Azure
 
