@@ -25,7 +25,7 @@ You can find the template in the **lucidqdreams** fork of [Azure Intelligent Edg
 
 The diagram shows a VM hosted on Azure Stack Hub with an iSCSI mounted disk from a Windows machine on premises (physical or virtual) allowing storage external to Azure Stack Hub to mount inside your Azure Stack Hub hosted VM over the iSCSI protocol.
 
-![alt text](./media/azure-stack-network-howto-iscsi-storage/overview-iscsi.svg)
+![alt text](./media/azure-stack-network-howto-iscsi-storage/overview-iscsi2.svg)
 
 ### Requirements
 
