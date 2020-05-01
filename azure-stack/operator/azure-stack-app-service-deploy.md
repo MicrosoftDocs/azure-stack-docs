@@ -269,7 +269,7 @@ To deploy Azure App Service in an offline environment, first create an offline i
 
     ![Offline installation package generated successfully in Azure App Service Installer](media/azure-stack-app-service-deploy-offline/image02.png)
 
-4. Copy the installer (AppService.exe) and the offline installation package to your Azure Stack Hub host machine.
+4. Copy the installer (AppService.exe) and the offline installation package to a machine which has connectivity to your Azure Stack Hub.
 
 ## Complete the offline installation of Azure App Service on Azure Stack Hub
 
