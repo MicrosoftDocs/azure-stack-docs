@@ -44,6 +44,7 @@ This section lists the prerequisites for both integrated system and Azure Stack 
      - GraphAPI.psm1
 
 <!-- MultiNode Only --->
+::: zone pivot="state-integrated"
 ## Certificates and server configuration (Integrated Systems)
 
 This section lists the prerequisites for integrated system deployments. 
@@ -243,6 +244,10 @@ GO
 RECONFIGURE;
 GO
 ```
+::: zone-end
+
+<!-- ASDK Only --->
+::: zone pivot="state-ASDK"
 
 ## Certificates and server configuration (ASDK)
 
@@ -297,7 +302,10 @@ sp_configure 'contained database authentication', 1;
 GO
 RECONFIGURE;
 GO
+
 ```
+
+::: zone-end
 
 ## Licensing concerns for required file server and SQL Server
 
