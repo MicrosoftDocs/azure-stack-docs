@@ -4,7 +4,7 @@ description: Learn how to delegate tasks like creating offers and signing up use
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/27/2020
+ms.date: 05/01/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/07/2019
@@ -36,11 +36,11 @@ The following roles are part of delegation:
 
 ## Delegation steps
 
-There are two basic steps to setting up delegation:
+There are two steps to setting up delegation:
 
-1. **Create a delegated provider subscription**: Subscribe a user to an offer containing only the subscriptions service. Users who subscribe to this offer can then extend the delegated offers to other users by signing them up for those offers.
+1. **Create a delegated provider subscription**: Subscribe a user to an offer containing only the subscription service. Users who subscribe to this offer can then extend the delegated offers to other users by signing them up for those offers.
 
-2. **Delegate an offer to the delegated provider**: This offer enables the delegated provider to create subscriptions or to extend the offer to their users. The delegated provider can now take the offer and offer it to other users.
+2. **Delegate an offer to the delegated provider**: This offer enables the delegated provider to create subscriptions or to extend the offer to their users. The delegated provider can now take the offer and extend it to other users.
 
 The following figure shows the steps for setting up delegation:
 
@@ -54,11 +54,11 @@ After this relationship is established, the Azure Stack Hub operator can delegat
 
 ## Delegation walkthrough
 
-The following sections provide a walkthrough for setting up a delegated provider, delegating an offer, and verifying that users can sign up for the delegated offer.
+The following sections describe the steps to set up a delegated provider, delegate an offer, and verify that users can sign up for the delegated offer.
 
 ### Set up roles
 
-To use this walkthrough, you need two Azure AD accounts in addition to your Azure Stack Hub operator account. If you don't have these two accounts, you must create them. The accounts can belong to any Azure AD user and are referred to as the delegated provider and the user.
+To use this walkthrough, you need two Azure AD accounts in addition to your Azure Stack Hub operator account. If you don't have these two accounts, you must create them. The accounts can belong to any Azure AD user and are referred to as the *delegated provider* and the *user*.
 
 | **Role** | **Organizational rights** |
 | --- | --- |
@@ -66,7 +66,7 @@ To use this walkthrough, you need two Azure AD accounts in addition to your Azur
 | User |User |
 
  > [!NOTE]
- > In the case of a CSP-reseller, creating this delegated provider requires these users be in the tenant directory (the user Azure AD). The Azure Stack Hub operator must [first onboard](azure-stack-enable-multitenancy.md) that tenant Azure AD, and then set up usage and billing by following [these steps](azure-stack-csp-howto-register-tenants.md).
+ > In the case of a CSP-reseller, creating this delegated provider requires that these users are in the tenant directory (the user Azure AD). The Azure Stack Hub operator must [first onboard](azure-stack-enable-multitenancy.md) that tenant Azure AD, and then set up usage and billing by following [these steps](azure-stack-csp-howto-register-tenants.md).
 
 ### Identify the delegated provider
 
@@ -114,7 +114,7 @@ Sign in to the user portal as the delegated provider and then create a new offer
    ![Assign a name in Azure Stack Hub user portal](media/azure-stack-delegated-provider/image6.png)
 
    >[!IMPORTANT]
-   >It's important to understand that delegated providers can only choose offers that are delegated to them. They can't make changes to those offers. Only an Azure Stack Hub operator can change these offers. For example, only an operator can change their plans and quotas. A delegated provider doesn't construct an offer from base plans and add-on plans.
+   >It's important to understand that delegated providers can only choose offers that are delegated to them. They cannot make changes to those offers; only an Azure Stack Hub operator can change these offers. For example, only an operator can change their plans and quotas. A delegated provider does not construct an offer from base plans and add-on plans.
 
 3. The delegated provider can make these offers public through their own portal URL. To make the offer public, select **Browse**, and then **Offers**. Select the offer, and then select **Change State**.
 
@@ -124,7 +124,7 @@ Sign in to the user portal as the delegated provider and then create a new offer
 
     b.  Copy the portal URL to a separate location, such as Notepad.
 
-    ![Select the Delegated Provider Subscription in Azure Stack Hub user portal](media/azure-stack-delegated-provider/dpportaluri.png)  
+    ![Select the delegated provider subscription in Azure Stack Hub user portal](media/azure-stack-delegated-provider/dpportaluri.png)  
 
    You've finished creating a delegated offer as a delegated provider. Sign out as the delegated provider and close the browser window.
 
@@ -133,7 +133,7 @@ Sign in to the user portal as the delegated provider and then create a new offer
 1. In a new browser window, go to the delegated portal URL that you saved in the previous step. Sign in to the portal as a user.
 
    >[!NOTE]
-   >The delegated offers aren't visible unless you use the delegated portal.
+   >The delegated offers are not visible unless you use the delegated portal.
 
 1. In the dashboard, select **Get a subscription**. You'll see that only the delegated offers that were created by the delegated provider are presented to the user.
 
