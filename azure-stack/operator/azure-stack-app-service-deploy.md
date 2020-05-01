@@ -100,7 +100,7 @@ To deploy App Service resource provider, follow these steps:
 
 9. On the next App Service Installer page, follow these steps:
 
-   a. In the **Identity Application ID** box, enter the GUID for the app you're using for identity (from Azure AD).
+   a. In the **Identity Application ID** box, enter the GUID for the Identity application you created as part of the [pre-requisites](azure-stack-app-service-before-you-get-started.md).
 
    b. In the **Identity Application certificate file** box, enter (or browse to) the location of the certificate file.
 
@@ -324,7 +324,7 @@ To deploy Azure App Service in an offline environment, first create an offline i
    ![File share info in Azure App Service Installer][38]
 
 1. On the next page:
-    1. In the **Identity Application ID** box, enter the GUID for the app you're using for identity (from Azure AD).
+    1. In the **Identity Application ID** box, enter the GUID for the Identity application you created as part of the [pre-requisites](azure-stack-app-service-before-you-get-started.md).
     1. In the **Identity Application certificate file** box, enter (or browse to) the location of the certificate file.
     1. In the **Identity Application certificate password** box, enter the password for the certificate. This password is the one that you made note of when you used the script to create the certificates.
     1. In the **Azure Resource Manager root certificate file** box, enter (or browse to) the location of the certificate file.
