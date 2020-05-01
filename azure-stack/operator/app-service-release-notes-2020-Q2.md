@@ -19,8 +19,7 @@ ms.lastreviewed: 04/30/2020
 
 These release notes describe the improvements and fixes in Azure App Service on Azure Stack Hub 2020 Q2 and any known issues. Known issues are divided into issues directly related to the deployment, update process, and issues with the build (post-installation).
 
-> [!IMPORTANT]
-> Apply the 2002 update to your Azure Stack integrated system or deploy the latest Azure Stack development kit before deploying Azure App Service 2020 Q2.
+[!INCLUDE [azure stack hub update reminder](../includes/app-service-hub-update-banner.md)]
 
 ## Build reference
 
