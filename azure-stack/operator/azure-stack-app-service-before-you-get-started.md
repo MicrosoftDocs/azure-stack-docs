@@ -301,6 +301,15 @@ RECONFIGURE;
 GO
 ```
 
+## Licensing concerns for required file server and SQL Server
+
+Azure App Service on Azure Stack Hub requires a file server and SQL Server to operate. You're free to use pre-existing resources located outside of your Azure Stack Hub deployment or deploy resources within their Azure Stack Hub Default Provider Subscription.
+
+If you choose to deploy the resources within your Azure Stack Hub Default Provider Subscription, the licenses for those resources (Windows Server Licenses and SQL Server Licenses) are included in the cost of Azure App Service on Azure Stack Hub subject to the following constraints:
+
+- the infrastructure is deployed into the Default Provider Subscription;
+- the infrastructure is exclusively used by the Azure App Service on Azure Stack Hub resource provider. No other workloads, administrative (other resource providers, for example: SQL-RP) or tenant (for example: tenant apps, which require a database), are permitted to make use of this infrastructure.
+
 ## Common Elements
 
 ### Retrieve the Azure Resource Manager root certificate for Azure Stack Hub
