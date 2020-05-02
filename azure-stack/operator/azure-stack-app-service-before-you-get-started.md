@@ -8,7 +8,7 @@ ms.date: 04/13/2020
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 04/13/2019
-zone_pivot_groups: state-connected-disconnected, state-integrated
+zone_pivot_groups: state-connected-disconnected, state-integrated-asdk
 
 # Intent: As an Azure Stack operator, I want to know the prerequisites steps to complete before deploying App Service.
 # Keyword: app service prerequisites azure stack
