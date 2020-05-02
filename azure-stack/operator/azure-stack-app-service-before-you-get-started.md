@@ -44,7 +44,7 @@ This section lists the prerequisites for both integrated system and Azure Stack 
      - GraphAPI.psm1
 
 <!-- MultiNode Only --->
-::: zone pivot="state-integrated"
+::: zone pivot="state-integrated, state-connected, state-disconnected"
 ## Certificates and server configuration (Integrated Systems)
 
 This section lists the prerequisites for integrated system deployments. 
@@ -247,7 +247,7 @@ GO
 ::: zone-end
 
 <!-- ASDK Only --->
-::: zone pivot="state-asdk"
+::: zone pivot="state-asdk, state-connected, state-disconnected"
 
 ## Certificates and server configuration (ASDK)
 
@@ -429,7 +429,7 @@ Follow these steps to create the service principal in your Azure AD tenant:
 Azure App Service on Azure Stack Hub requires items to be [downloaded from the Azure Marketplace](azure-stack-download-azure-marketplace-item.md), making them available in the Azure Stack Hub Marketplace. These items must be downloaded before you start the deployment or upgrade of Azure App Service on Azure Stack Hub:
 
 <!-- Connected --->
-::: zone pivot="state-connected"
+::: zone pivot="state-connected, state-integrated, state-asdk"
 > [!IMPORTANT]
 > Windows Server Core is not a supported platform image for use with Azure App Service on Azure Stack Hub.
 >
@@ -438,7 +438,7 @@ Azure App Service on Azure Stack Hub requires items to be [downloaded from the A
 1. The **latest version of Windows Server 2016 Datacenter VM image**.
 ::: zone-end
 
-::: zone pivot="state-disconnected"
+::: zone pivot="state-disconnected, state-integrated, state-asdk"
 <!-- Disconnected --->
 1. **Windows Server 2016 Datacenter Full VM image with Microsoft.Net 3.5.1 SP1 activated**.  Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 be activated on the image used for deployment. Marketplace-syndicated Windows Server 2016 images don't have this feature enabled and in disconnected environments are unable to reach Microsoft Update to download the packages to install via DISM. Therefore, you must create and use a Windows Server 2016 image with this feature pre-enabled with disconnected deployments.
 
