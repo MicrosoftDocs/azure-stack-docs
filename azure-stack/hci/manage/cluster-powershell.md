@@ -17,7 +17,7 @@ Windows PowerShell can be used to manage resources and configure features on you
 We recommend that you manage your cluster nodes from a remote computer running Windows 10, rather than directly on the servers. This remote computer is called the management computer.
 
 > [!NOTE]
-> When running PowerShell commands from a management computer, you will need to include the `-Name` or `-Cluster` parameter with the name of the cluster you are managing.
+> When running PowerShell commands from a management computer, you will need to include the `-Name` or `-Cluster` parameter with the name of the cluster you are managing. In addition, you will need to specify the fully qualified domain name (FQDN) when using the `-ComputerName` parameter for a server node.
 
 For the complete reference documentation for managing clusters using PowerShell, see the [FailoverCluster reference](https://docs.microsoft.com/powershell/module/failoverclusters/?view=win10-ps).
 
@@ -30,12 +30,15 @@ Windows PowerShell is used to perform all the tasks in this article. It is recom
 
 If the following cmdlets aren't available in your PowerShell session, you may need to add the `Failover Cluster` Module for Windows PowerShell Feature, using the following PowerShell cmd: `Add-WindowsFeature RSAT-Clustering-PowerShell`.
 
+> [!NOTE]
+> Starting with Windows 10 October 2018 Update, RSAT is included as a set of "Features on Demand" right from Windows 10. Simply go to **Settings > Apps > Apps & features > Optional features > Add a feature > RSAT: Failover Clustering Tools**, and select **Install**. To see installation progress, click the Back button to view status on the "Manage optional features" page. The installed feature will persist across Windows 10 version upgrades.
+
 ## View cluster settings and resources
 
-Gets information about a cluster names Cluster1:
+Gets information about a cluster named Cluster1:
 
 ```powershell
-Get-Cluster -Cluster Cluster1
+Get-Cluster -Name Cluster1
 ```
 Gets information about one or more nodes, or servers, in Cluster1:
 
@@ -46,31 +49,31 @@ Get-ClusterNode -Cluster Cluster1
 To see which Windows features are installed on a cluster node, use the `Get-WindowsFeature` cmdlet. For example:
 
 ```powershell
-Get-WindowsFeature -ComputerName Server1 "Hyper-V", "Failover-Clustering", "Data-Center-Bridging", "BitLocker"
+Get-WindowsFeature -ComputerName Server1
 ```
 
 To see network adapters and their properties such as Name, IPv4 addresses, and VLAN ID:
 
 ```powershell
-Get-CimSession -ComputerName Server1 | Get-NetAdapter | Where Status -Eq "Up" | Sort InterfaceAlias | Format-Table Name, InterfaceDescription, Status, LinkSpeed, VLANID, MacAddress
+Get-NetAdapter -ComputerName Server1 | Where Status -Eq "Up" | Sort InterfaceAlias | Format-Table Name, InterfaceDescription, Status, LinkSpeed, VLANID, MacAddress
 ```
 
 To see Hyper-V virtual switches and how physical network adapters are teamed:
 
 ```powershell
-Get-CimSession -ComputerName Server1 | Get-VMSwitch
+Get-VMSwitch -ComputerName Server1 
 ```
 
 To see host virtual network adapters:
 
 ```powershell
-Get-CimSession -ComputerName Server1 | Get-VMNetworkAdapter -ManagementOS | Format-Table Name, IsManagementOS, SwitchName
+Get-VMNetworkAdapter -ComputerName Server1
 ```
 
 To see whether Storage Spaces Direct is enabled:
 
 ```powershell
-Get-CimSession -ComputerName Server1 |Get-ClusterStorageSpacesDirect
+Get-CimSession -ComputerName Server1 | Get-ClusterStorageSpacesDirect
 ```
 
 ## Start or stop a cluster
@@ -99,7 +102,7 @@ Use the `Add-ClusterNode` and `Remove-ClusterNode` cmdlets to add or remove a se
 > [!NOTE]
 > You will need to temporarily enable Credential Security Service Provider (CredSSP) authentication to add or remove a server node.
 
-This example adds a node named Node4 to a cluster named Cluster1:
+This example adds a server named Node4 to a cluster named Cluster1. Make sure the server is powered on and connected to the cluster network first.
 
 ```powershell
 Add-ClusterNode -Cluster Cluster1 -Name Node4
@@ -159,12 +162,6 @@ This example configures host server Server1 to use Kerberos to authenticate inco
 Set-VMHost -ComputerName Server1 -VirtualMachineMigrationAuthenticationType Kerberos
 ```
 
-This example disables NUMA spanning on host server Server1:
-
-```powershell
-Set-VMHost -ComputerName Server1 -NumaSpanningEnabled $false
-```
-
 ## Validate a cluster
 
 Use the `Test-Cluster` cmdlet to run validation tests on a cluster. For more examples and usage information, see the [Test-Cluster](https://docs.microsoft.com/powershell/module/failoverclusters/test-cluster?view=win10-ps) reference documentation.
@@ -173,9 +170,6 @@ This example runs all applicable cluster validation tests on a cluster named Clu
 
 ```powershell
 Test-Cluster -Cluster Cluster1
-Mode                LastWriteTime     Length Name 
-----                -------------     ------ ---- 
--a---        10/10/2008   6:31 PM    1132255 Test-Cluster on 2008.10.10 At 18.22.53.mht
 ```
 
 This example lists the names of all tests and categories in cluster validation. Specify these test names with *Ignore* or *Include* parameters to run specific tests:
