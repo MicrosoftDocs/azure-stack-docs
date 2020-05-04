@@ -35,7 +35,7 @@ Sending traps to the listener requires authentication and must use the same cred
 
 When an SNMP trap is received on any of the three ERCS instances on TCP port 162, the OID is matched internally and an alert is raised. The Azure Stack Hub health and monitoring system only accepts OIDs defined by the hardware partner. If an OID is unknown to Azure Stack Hub, it won't match it to an alert.
 
-Once a faulty component is replaced, an event is sent from the BMC to the SNMP listener that indicates the state change, and the alert will close automatically in Azure Stack Hub.
+Once a faulty component is replaced, an event is sent from the BMC to the SNMP listener that indicates the state change. The alert then closes automatically in Azure Stack Hub.
 
 > [!NOTE]
 > Existing alerts won't close automatically when the entire node or motherboard is replaced. The same applies when the BMC loses its configuration; for example, due to a factory reset.
