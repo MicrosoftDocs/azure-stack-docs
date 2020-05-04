@@ -367,6 +367,8 @@ Azure App Service uses an Identity Application (Service Principal) to support th
 
 Depending on which identity provider the Azure Stack Hub is using, Azure Active Directory (Azure AD) or Active Directory Federation Services (ADFS) you must follow the appropriate steps below to create the service principal for use by the Azure App Service on Azure Stack Hub resource provider.
 
+::: zone pivot="state-connected"
+
 #### Create an Azure AD App
 
 Follow these steps to create the service principal in your Azure AD tenant:
@@ -400,7 +402,8 @@ Follow these steps to create the service principal in your Azure AD tenant:
 | CertificatePassword | Required | Null | Password that helps protect the certificate private key. |
 | Environment | Optional | AzureCloud | The name of the supported Cloud Environment in which the target Azure Active Directory Graph Service is available.  Allowed values: 'AzureCloud', 'AzureChinaCloud', 'AzureUSGovernment', 'AzureGermanCloud'.|
 
-::: zone pivot="state-disconnected"
+::: zone-end
+
 #### Create an ADFS app
 
 1. Open a PowerShell instance as azurestack\AzureStackAdmin.
@@ -421,8 +424,6 @@ Follow these steps to create the service principal in your Azure AD tenant:
 | CloudAdminCredential | Required | Null | Domain account credential for Azure Stack Hub cloud admins. An example is Azurestack\CloudAdmin. |
 | CertificateFilePath | Required | Null | **Full path** to the identity application's certificate PFX file. |
 | CertificatePassword | Required | Null | Password that helps protect the certificate private key. |
-
-::: zone-end
 
 <!--Connected/Disconnected-->
 
