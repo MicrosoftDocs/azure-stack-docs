@@ -44,14 +44,14 @@ This section assumes that you already have an ISO file from the Red Hat website 
 
 1. Create or edit the `/etc/sysconfig/network` file, and add the following text:
 
-    ```sh
+    ```shell
     NETWORKING=yes
     HOSTNAME=localhost.localdomain
     ```
 
 1. Create or edit the `/etc/sysconfig/network-scripts/ifcfg-eth0` file, and add the following text as needed:
 
-    ```sh
+    ```shell
     DEVICE=eth0
     ONBOOT=yes
     BOOTPROTO=dhcp
@@ -76,7 +76,7 @@ This section assumes that you already have an ISO file from the Red Hat website 
 
 1. Modify the kernel boot line in your grub configuration to include additional kernel parameters for Azure. To make this modification, open `/etc/default/grub` in a text editor, and modify the `GRUB_CMDLINE_LINUX` parameter. For example:
 
-    ```sh
+    ```shell
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
     ```
 
@@ -84,7 +84,7 @@ This section assumes that you already have an ISO file from the Red Hat website 
 
    Graphical and quiet boot are not useful in a cloud environment where we want all the logs to be sent to the serial port. You can leave the `crashkernel` option configured if desired. This parameter reduces the amount of available memory in the VM by 128 MB or more, which might be problematic on smaller VM sizes. We recommend that you remove the following parameters:
 
-    ```sh
+    ```shell
     rhgb quiet crashkernel=auto
     ```
 
@@ -103,7 +103,7 @@ This section assumes that you already have an ISO file from the Red Hat website 
 
 1. Ensure that the SSH server is installed and configured to start at boot time, which is usually the default. Modify `/etc/ssh/sshd_config` to include the following line:
 
-    ```sh
+    ```shell
     ClientAliveInterval 180
     ```
 
@@ -165,7 +165,7 @@ This section assumes that you already have an ISO file from the Red Hat website 
 
     The Azure Linux Agent can automatically configure swap space by using the local resource disk that's attached to the VM after the VM is provisioned on Azure. The local resource disk is a temporary disk, and it might be emptied when the VM is deprovisioned. After you install the Azure Linux Agent in the previous step, modify the following parameters in `/etc/waagent.conf` appropriately:
 
-    ```sh
+    ```shell
     ResourceDisk.Format=y
     ResourceDisk.Filesystem=ext4
     ResourceDisk.MountPoint=/mnt/resource
@@ -207,7 +207,7 @@ This section assumes that you already have an ISO file from the Red Hat website 
 
    Set a root password with guestfish:
 
-    ```sh
+    ```shell
     guestfish --rw -a <image-name>
     > <fs> run
     > <fs> list-filesystems
@@ -222,14 +222,14 @@ This section assumes that you already have an ISO file from the Red Hat website 
 
 1. Create or edit the `/etc/sysconfig/network` file, and add the following text:
 
-    ```sh
+    ```shell
     NETWORKING=yes
     HOSTNAME=localhost.localdomain
     ```
 
 1. Create or edit the `/etc/sysconfig/network-scripts/ifcfg-eth0` file, and add the following text:
 
-    ```sh
+    ```shell
     DEVICE=eth0
     ONBOOT=yes
     BOOTPROTO=dhcp
@@ -254,7 +254,7 @@ This section assumes that you already have an ISO file from the Red Hat website 
 
 1. Modify the kernel boot line in your grub configuration to include additional kernel parameters for Azure. To do this configuration, open `/etc/default/grub` in a text editor, and modify  the `GRUB_CMDLINE_LINUX` parameter. For example:
 
-    ```sh
+    ```shell
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
     ```
 
@@ -262,7 +262,7 @@ This section assumes that you already have an ISO file from the Red Hat website 
 
    Graphical and quiet boot are not useful in a cloud environment where all the logs are sent to the serial port. You can leave the `crashkernel` option configured if desired. This parameter reduces the amount of available memory in the VM by 128 MB or more, which might be problematic on smaller VM sizes. We recommend you remove the following parameters:
 
-    ```sh
+    ```shell
     rhgb quiet crashkernel=auto
     ```
 
@@ -276,7 +276,7 @@ This section assumes that you already have an ISO file from the Red Hat website 
 
     Edit `/etc/dracut.conf` and add content:
 
-    ```sh
+    ```shell
     add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
     ```
 
@@ -301,7 +301,7 @@ This section assumes that you already have an ISO file from the Red Hat website 
 
     Modify /etc/ssh/sshd_config to include the following lines:
 
-    ```sh
+    ```shell
     PasswordAuthentication yes
     ClientAliveInterval 180
     ```
@@ -363,7 +363,7 @@ This section assumes that you already have an ISO file from the Red Hat website 
 
     The Azure Linux Agent can automatically configure swap space by using the local resource disk that's attached to the VM after the VM is provisioned on Azure. The local resource disk is a temporary disk, and it might be emptied when the VM is de-provisioned. After you install the Azure Linux Agent in the previous step, modify the following parameters in `/etc/waagent.conf` appropriately:
 
-    ```sh
+    ```shell
     ResourceDisk.Format=y
     ResourceDisk.Filesystem=ext4
     ResourceDisk.MountPoint=/mnt/resource
@@ -434,14 +434,14 @@ This section assumes that you've already installed an RHEL VM in VMware. For det
 
 1. Create or edit the `/etc/sysconfig/network` file, and add the following text:
 
-    ```sh
+    ```shell
     NETWORKING=yes
     HOSTNAME=localhost.localdomain
     ```
 
 1. Create or edit the `/etc/sysconfig/network-scripts/ifcfg-eth0` file, and add the following text:
 
-    ```sh
+    ```shell
     DEVICE=eth0
     ONBOOT=yes
     BOOTPROTO=dhcp
@@ -466,13 +466,13 @@ This section assumes that you've already installed an RHEL VM in VMware. For det
 
 1. Modify the kernel boot line in your grub configuration to include additional kernel parameters for Azure. To make this modification, open `/etc/default/grub` in a text editor. Modify the `GRUB_CMDLINE_LINUX` parameter. For example:
 
-    ```sh
+    ```shell
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
     ```
 
     This configuration also ensures that all console messages are sent to the first serial port, which can assist Azure support with debugging issues. It also turns off the new RHEL 7 naming conventions for NICs. We recommend that you remove the following parameters:
 
-    ```sh
+    ```shell
     rhgb quiet crashkernel=auto
     ```
 
@@ -488,7 +488,7 @@ This section assumes that you've already installed an RHEL VM in VMware. For det
 
     Edit `/etc/dracut.conf`, add content:
 
-    ```sh
+    ```shell
     add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
     ```
 
@@ -507,7 +507,7 @@ This section assumes that you've already installed an RHEL VM in VMware. For det
 
 1. Ensure that the SSH server is installed and configured to start at boot time. This setting is usually the default. Modify `/etc/ssh/sshd_config` to include the following line:
 
-    ```sh
+    ```shell
     ClientAliveInterval 180
     ```
 
@@ -568,7 +568,7 @@ This section assumes that you've already installed an RHEL VM in VMware. For det
 
     The Azure Linux Agent can automatically configure swap space by using the local resource disk attached to the VM after the VM is provisioned on Azure. Note that the local resource disk is a temporary disk, and it might be emptied when the VM is de-provisioned. After you install the Azure Linux Agent in the previous step, modify the following parameters in `/etc/waagent.conf` appropriately:
 
-    ```sh
+    ```shell
     ResourceDisk.Format=y
     ResourceDisk.Filesystem=ext4
     ResourceDisk.MountPoint=/mnt/resource
@@ -629,7 +629,7 @@ This section assumes that you've already installed an RHEL VM in VMware. For det
 
 1. Create a kickstart file that includes the following content, and save the file. Stopping and uninstalling cloud-init is optional (cloud-init is supported on Azure Stack Hub post 1910 release). Install the agent from the redhat repo only after the 1910 release. Prior to 1910, use the Azure repo as done in the previous section. For details about kickstart installation, see the [Kickstart Installation Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html).
 
-    ```sh
+    ```shell
     Kickstart for provisioning a RHEL 7 Azure VM
 
     System authorization information
@@ -784,7 +784,7 @@ To resolve this issue, add Hyper-V modules to initramfs and rebuild it:
 
 Edit `/etc/dracut.conf`, and add the following content:
 
-```sh
+```shell
 add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
 ```
 
