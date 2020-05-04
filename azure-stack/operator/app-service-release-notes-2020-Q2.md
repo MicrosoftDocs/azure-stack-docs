@@ -81,10 +81,14 @@ Azure App Service on Azure Stack Update Q2 includes the following improvements a
 - New deployments of Azure App Service on Azure Stack Hub do not require databases to be manually converted to contained databases
 - Adding additional workers or infrastructure role instances will complete correctly without manual intervention
 - Adding custom worker tiers will complete correctly without manual intervention
+- Removal of custom worker tiers now complete without portal errors
 - Workers are no longer marked as ready if the local disk is out of space
 - Time out increased for retrieving the Azure Resource Manager Certificate
 - The number of messages retrieved, from server logs and displayed in the Admin Portal, is limited to stay underneath the max Azure Resource Manager Request size
-- Time out increase for startup of Usage Service to mitigate latency reaching storage endpoints
+- Time out issue causing usage service startup issues
+- Resolved database deployment issue when creating Orchard CMS sites
+- Controllers are now updated with Windows Cumulative Updates as part of deployment and upgrade
+- App Service no longer locks operations when custom domain verification fails
 
 ### Post-deployment steps
 
@@ -111,6 +115,10 @@ Azure App Service on Azure Stack Update Q2 includes the following improvements a
 - Tenants unable to create App Service Plan using new on App Service Plan blade in tenant portal
 
 When creating a new application, tenants can create App Service Plans during the create app workflow, or when changing the App Service Plan for a current app, or via the App Service Plan marketplace item
+
+- Custom domains are not supported in disconnected environments
+
+App Service performs domain ownership verification against public DNS endpoints, as a result custom domains are not supported in disconnected scenarios.
 
 ## Next steps
 
