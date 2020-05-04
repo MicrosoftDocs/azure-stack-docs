@@ -12,6 +12,9 @@ ms.lastreviewed: 11/18/2019
 
 # How to update an Azure Stack Hub resource provider
 
+> [!IMPORTANT]
+> Before continuing, be sure to review the resource provider's latest release notes to learn about new functionality, fixes, and any known issues that could affect your deployment. The release notes may also specify the minimum Azure Stack Hub version required for the resource provider.
+
 Resource providers installed from Marketplace will require regular servicing. Servicing is done by applying service updates, provided by Microsoft on a regular basis. Updates can include both new features and fixes.  
 
 ## Check for updates
