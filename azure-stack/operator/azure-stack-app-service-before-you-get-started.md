@@ -222,7 +222,7 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 
 ### Prepare the SQL Server instance
 
->[!NOTE]
+> [!NOTE]
 > If you've chosen to deploy the Quickstart template for Highly Available File Server and SQL Server, you can skip this section as the template deploys and configures SQL Server in a HA configuration.
 
 For the Azure App Service on Azure Stack Hub hosting and metering databases, you must prepare a SQL Server instance to hold the App Service databases.
@@ -400,6 +400,7 @@ Follow these steps to create the service principal in your Azure AD tenant:
 | CertificatePassword | Required | Null | Password that helps protect the certificate private key. |
 | Environment | Optional | AzureCloud | The name of the supported Cloud Environment in which the target Azure Active Directory Graph Service is available.  Allowed values: 'AzureCloud', 'AzureChinaCloud', 'AzureUSGovernment', 'AzureGermanCloud'.|
 
+::: zone pivot="state-disconnected"
 #### Create an ADFS app
 
 1. Open a PowerShell instance as azurestack\AzureStackAdmin.
@@ -421,6 +422,7 @@ Follow these steps to create the service principal in your Azure AD tenant:
 | CertificateFilePath | Required | Null | **Full path** to the identity application's certificate PFX file. |
 | CertificatePassword | Required | Null | Password that helps protect the certificate private key. |
 
+::: zone-end
 
 <!--Connected/Disconnected-->
 
