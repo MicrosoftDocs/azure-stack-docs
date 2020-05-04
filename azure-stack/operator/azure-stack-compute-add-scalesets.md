@@ -3,7 +3,7 @@ title: Make virtual machine scale sets available in Azure Stack Hub
 description: Learn how a cloud operator can add virtual machine scale sets to Azure Stack Hub Marketplace.
 author: sethmanheim
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 05/04/2020
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 10/22/2019
@@ -76,7 +76,7 @@ For more information, see [operating system disks and images](../user/azure-stac
 
 ## Scale a virtual machine scale set
 
-You can scale the size of a virtual machine scale set to make it larger or smaller.
+You can change the size of a virtual machine scale set to make it larger or smaller.
 
 1. In the portal, select your scale set and then select **Scaling**.
 
