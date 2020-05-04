@@ -25,7 +25,7 @@ You can find the template in the **lucidqdreams** fork of [Azure Intelligent Edg
 
 The diagram shows a VM hosted on Azure Stack Hub with an iSCSI mounted disk from a Windows machine on premises (physical or virtual) allowing storage external to Azure Stack Hub to mount inside your Azure Stack Hub hosted VM over the iSCSI protocol.
 
-![alt text](./media/azure-stack-network-howto-iscsi-storage/overview.png)
+![alt text](./media/azure-stack-network-howto-iscsi-storage/overview-iscsi2.svg)
 
 ### Requirements
 
@@ -58,7 +58,7 @@ The diagram shows a VM hosted on Azure Stack Hub with an iSCSI mounted disk from
 
 The diagram shows the resources deployed from the template to create the iSCSI client you can use to connect to the iSCSI target. This template will deploy the VM and other resources, In addition, it will run the prepare-iSCSIClient.ps1 and reboot the VM.
 
-![alt text](./media/azure-stack-network-howto-iscsi-storage/iscsi-file-server.png)
+![alt text](./media/azure-stack-network-howto-iscsi-storage/iscsi-file-server.svg)
 
 ### The Deployment process
 
@@ -69,7 +69,7 @@ The resource group template generates output, which is meant to be the input for
 3. Run `Create-iSCSITarget.ps1` using the IP address and server name outputs from the template as in-out parameters for the script on the iSCSI target, which can be a virtual machine or physical server.
 4. Use the external IP address or addresses of the iSCSI Target server as inputs to run the `Connect-toiSCSITarget.ps1` script. 
 
-![alt text](./media/azure-stack-network-howto-iscsi-storage/process.png)
+![alt text](./media/azure-stack-network-howto-iscsi-storage/process.svg)
 
 ### Inputs for azuredeploy.json
 
@@ -98,7 +98,7 @@ The resource group template generates output, which is meant to be the input for
 
 You can also run the scripts on an existing Virtual Machine to connect from the iSCSI client to a iSCSI target. This flow is if you are creating the iSCSI target yourself. This diagram shows the execution flow of the PowerShell scripts. These scripts can be found in the Script directory:
 
-![alt text](./media/azure-stack-network-howto-iscsi-storage/script-flow.png)
+![alt text](./media/azure-stack-network-howto-iscsi-storage/script-flow.svg)
 
 ### Prepare-iSCSIClient.ps1
 
