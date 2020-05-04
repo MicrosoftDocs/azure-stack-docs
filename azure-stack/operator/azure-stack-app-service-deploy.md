@@ -22,7 +22,7 @@ zone_pivot_groups: state-connected-disconnected
 > Before you run the resource provider installer, you must complete the steps in [Before you get started](azure-stack-app-service-before-you-get-started.md)
 
 ::: zone pivot="state-connected"
-In this article you learn how to deploy App Service in Azure Stack Hub, which gives your users the ability to create web and API applications. You need to:
+In this article you learn how to deploy App Service in Azure Stack Hub, which gives your users the ability to create Web, API and Azure Functions applications. You need to:
 
 - Add the [App Service resource provider](azure-stack-app-service-overview.md) to your Azure Stack Hub deployment using the steps described in this article.
 - After you install the App Service resource provider, you can include it in your offers and plans. Users can then subscribe to get the service and start creating apps.
@@ -31,10 +31,16 @@ In this article you learn how to deploy App Service in Azure Stack Hub, which gi
 
 Installing the App Service resource provider takes at least an hour. The length of time needed depends on how many role instances you deploy. During the deployment, the installer runs the following tasks:
 
-- Create a blob container in the specified Azure Stack Hub storage account.
-- Create a DNS zone and entries for App Service.
-- Register the App Service resource provider.
-- Register the App Service gallery items.
+- Registers the required resource providers in the Default Provider Subscription
+- Grants contributor access to the App Service Identity application
+- Create Resource Group and Virtual network (if required)
+- Create Storage accounts and containers for App Service installation artifacts, usage service and resource hydration
+- Download App Service artifacts and upload them to the App Service storage account
+- Deploy the App Service
+- Register the usage service
+- Create DNS Entries for App Service
+- Register the App Service admin and tenant resource providers
+- Register Gallery Items - Web, API, Function App, App Service Plan, WordPress, DNN, Orchard and Django applications
 
 To deploy App Service resource provider, follow these steps:
 
@@ -94,7 +100,7 @@ To deploy App Service resource provider, follow these steps:
 
 9. On the next App Service Installer page, follow these steps:
 
-   a. In the **Identity Application ID** box, enter the GUID for the app you're using for identity (from Azure AD).
+   a. In the **Identity Application ID** box, enter the GUID for the Identity application you created as part of the [pre-requisites](azure-stack-app-service-before-you-get-started.md).
 
    b. In the **Identity Application certificate file** box, enter (or browse to) the location of the certificate file.
 
@@ -122,23 +128,23 @@ To deploy App Service resource provider, follow these steps:
 
     ![App Service Installer][11]
 
-12. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in an ASDK deployment. A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, select **Next**.
+12. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in a production deployment.  For ASDK deployment you can scale the instances down to lower SKUs to reduce the core and memory commit but you will experience a performance degradation. A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, select **Next**.
 
     >[!NOTE]
     >For production deployments, following the guidance in [Capacity planning for Azure App Service server roles in Azure Stack Hub](azure-stack-app-service-capacity-planning.md).
 
     | Role | Minimum instances | Minimum SKU | Notes |
     | --- | --- | --- | --- |
-    | Controller | 1 | Standard_A2 - (2 vCPU, 3584 MB) | Manages and maintains the health of the App Service cloud. |
-    | Management | 1 | Standard_A2 - (2 vCPUs, 3584 MB) | Manages the App Service Azure Resource Manager and API endpoints, portal extensions (admin, tenant, Functions portal), and the data service. To support failover, increased the recommended instances to 2. |
-    | Publisher | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Publishes content via FTP and web deployment. |
-    | FrontEnd | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Routes requests to App Service apps. |
-    | Shared Worker | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Hosts web or API apps and Azure Functions apps. You might want to add more instances. As an operator, you can define your offering and choose any SKU tier. The tiers must have a minimum of one vCPU. |
+    | Controller | 2 | Standard_A4_v2 - (4 cores, 8192 MB) | Manages and maintains the health of the App Service cloud. |
+    | Management | 1 | Standard_D3_v2 - (4 cores, 14336 MB) | Manages the App Service Azure Resource Manager and API endpoints, portal extensions (admin, tenant, Functions portal), and the data service. To support failover, increase the recommended instances to 2. |
+    | Publisher | 1 | Standard_A2_v2 - (2 cores, 4096 MB) | Publishes content via FTP and web deployment. |
+    | FrontEnd | 1 | Standard_A4_v2 - (4 cores, 8192 MB) | Routes requests to App Service apps. |
+    | Shared Worker | 1 | Standard_A4_v2 - (4 cores, 8192 MB) | Hosts web or API apps and Azure Functions apps. You might want to add more instances. As an operator, you can define your offering and choose any SKU tier. The tiers must have a minimum of one vCPU. |
 
     ![App Service Installer][13]
 
-    >[!NOTE]
-    >**Windows Server 2016 Core isn't a supported platform image for use with Azure App Service on Azure Stack Hub.  Don't use evaluation images for production deployments.**
+    > [!NOTE]
+    > **Windows Server 2016 Core isn't a supported platform image for use with Azure App Service on Azure Stack Hub.  Don't use evaluation images for production deployments.**
 
 13. In the **Select Platform Image** box, choose your deployment Windows Server 2016 virtual machine (VM) image from the images available in the compute resource provider for the App Service cloud. Select **Next**.
 
@@ -263,7 +269,7 @@ To deploy Azure App Service in an offline environment, first create an offline i
 
     ![Offline installation package generated successfully in Azure App Service Installer](media/azure-stack-app-service-deploy-offline/image02.png)
 
-4. Copy the installer (AppService.exe) and the offline installation package to your Azure Stack Hub host machine.
+4. Copy the installer (AppService.exe) and the offline installation package to a machine which has connectivity to your Azure Stack Hub.
 
 ## Complete the offline installation of Azure App Service on Azure Stack Hub
 
@@ -318,7 +324,7 @@ To deploy Azure App Service in an offline environment, first create an offline i
    ![File share info in Azure App Service Installer][38]
 
 1. On the next page:
-    1. In the **Identity Application ID** box, enter the GUID for the app you're using for identity (from Azure AD).
+    1. In the **Identity Application ID** box, enter the GUID for the Identity application you created as part of the [pre-requisites](azure-stack-app-service-before-you-get-started.md).
     1. In the **Identity Application certificate file** box, enter (or browse to) the location of the certificate file.
     1. In the **Identity Application certificate password** box, enter the password for the certificate. This password is the one that you made note of when you used the script to create the certificates.
     1. In the **Azure Resource Manager root certificate file** box, enter (or browse to) the location of the certificate file.
@@ -357,20 +363,21 @@ To deploy Azure App Service in an offline environment, first create an offline i
 
     ![Enter SQL Server info in Azure App Service Installer][42]
 
-1. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in an ASDK deployment. A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, select **Next**.
+1. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in a production deployment.  For ASDK deployment you can scale the instances down to lower SKUs to reduce the core and memory commit but you will experience a performance degradation.  A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, select **Next**.
 
      > [!NOTE]
      > For production deployments, follow the guidance in [Capacity planning for Azure App Service server roles in Azure Stack Hub](azure-stack-app-service-capacity-planning.md).
      >
      >
 
+    
     | Role | Minimum instances | Minimum SKU | Notes |
     | --- | --- | --- | --- |
-    | Controller | 1 | Standard_A2 - (2 vCPU, 3584 MB) | Manages and maintains the health of the Azure App Service cloud. |
-    | Management | 1 | Standard_A2 - (2 vCPUs, 3584 MB) | Manages the Azure App Service Azure Resource Manager and API endpoints, portal extensions (admin, tenant, Functions portal), and the data service. To support failover, increase the recommended instances to 2. |
-    | Publisher | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Publishes content via FTP and web deployment. |
-    | FrontEnd | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Routes requests to Azure App Service apps. |
-    | Shared Worker | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Hosts web or API apps and Azure Functions apps. You might want to add more instances. As an operator, you can define your offering and choose any SKU tier. The tiers must have a minimum of one vCPU. |
+    | Controller | 2 | Standard_A4_v2 - (4 cores, 8192 MB) | Manages and maintains the health of the App Service cloud. |
+    | Management | 1 | Standard_D3_v2 - (4 cores, 14336 MB) | Manages the App Service Azure Resource Manager and API endpoints, portal extensions (admin, tenant, Functions portal), and the data service. To support failover, increase the recommended instances to 2. |
+    | Publisher | 1 | Standard_A2_v2 - (2 cores, 4096 MB) | Publishes content via FTP and web deployment. |
+    | FrontEnd | 1 | Standard_A4_v2 - (4 cores, 8192 MB) | Routes requests to App Service apps. |
+    | Shared Worker | 1 | Standard_A4_v2 - (4 cores, 8192 MB) | Hosts web or API apps and Azure Functions apps. You might want to add more instances. As an operator, you can define your offering and choose any SKU tier. The tiers must have a minimum of one vCPU. |
 
     ![Set role tiers and SKU options in Azure App Service Installer][44]
 

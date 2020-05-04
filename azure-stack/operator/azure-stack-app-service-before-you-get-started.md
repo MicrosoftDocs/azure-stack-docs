@@ -21,7 +21,7 @@ zone_pivot_groups: state-connected-disconnected
 
 Before you deploy Azure App Service on Azure Stack Hub, you must complete the prerequisite steps in this article.
 
-## Common prerequisites 
+## Before you get started 
 
 This section lists the prerequisites for both integrated system and Azure Stack Development Kit (ASDK) deployments.
 
@@ -40,12 +40,12 @@ This section lists the prerequisites for both integrated system and Azure Stack 
    - Create-ADFSIdentityApp.ps1
    - Create-AppServiceCerts.ps1
    - Get-AzureStackRootCert.ps1
-   - Remove-AppService.ps1
    - Modules folder
      - GraphAPI.psm1
 
 <!-- MultiNode Only --->
-## Prerequisites for integrated system deployments
+<!-- ::: zone pivot="state-integrated" -->
+## Certificates and server configuration (Integrated Systems)
 
 This section lists the prerequisites for integrated system deployments. 
 
@@ -222,12 +222,10 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 
 ### Prepare the SQL Server instance
 
->[!NOTE]
+> [!NOTE]
 > If you've chosen to deploy the Quickstart template for Highly Available File Server and SQL Server, you can skip this section as the template deploys and configures SQL Server in a HA configuration.
 
 For the Azure App Service on Azure Stack Hub hosting and metering databases, you must prepare a SQL Server instance to hold the App Service databases.
-
-For ASDK deployments, you can use SQL Server Express 2014 SP2 or later. SQL Server must be configured to support **Mixed Mode** authentication because App Service on Azure Stack Hub **DOES NOT** support Windows Authentication.
 
 For production and high-availability purposes, you should use a full version of SQL Server 2014 SP2 or later, enable mixed-mode authentication, and deploy in a [highly available configuration](https://docs.microsoft.com/sql/sql-server/failover-clusters/high-availability-solutions-sql-server).
 
@@ -246,8 +244,12 @@ GO
 RECONFIGURE;
 GO
 ```
+<!-- ::: zone-end -->
 
-## Prerequisites for ASDK deployments
+<!-- ASDK Only --->
+<!-- ::: zone pivot="state-asdk" -->
+
+## Certificates and server configuration (ASDK)
 
 This section lists the prerequisites for ASDK deployments. 
 
@@ -282,12 +284,39 @@ For ASDK deployments only, you can use the [example Azure Resource Manager deplo
 
 ### SQL Server instance
 
+For the Azure App Service on Azure Stack Hub hosting and metering databases, you must prepare a SQL Server instance to hold the App Service databases.
 
+For ASDK deployments, you can use SQL Server Express 2014 SP2 or later. SQL Server must be configured to support **Mixed Mode** authentication because App Service on Azure Stack Hub **DOES NOT** support Windows Authentication.
 
+The SQL Server instance for Azure App Service on Azure Stack Hub must be accessible from all App Service roles. You can deploy SQL Server within the Default Provider Subscription in Azure Stack Hub. Or you can make use of the existing infrastructure within your organization (as long as there's connectivity to Azure Stack Hub). If you're using an Azure Marketplace image, remember to configure the firewall accordingly.
 
-## Common Elements
+> [!NOTE]
+> A number of SQL IaaS VM images are available through the Marketplace Management feature. Make sure you always download the latest version of the SQL IaaS Extension before you deploy a VM using a Marketplace item. The SQL images are the same as the SQL VMs that are available in Azure. For SQL VMs created from these images, the IaaS extension and corresponding portal enhancements provide features such as automatic patching and backup capabilities.
+>
+> For any of the SQL Server roles, you can use a default instance or a named instance. If you use a named instance, be sure to manually start the SQL Server Browser service and open port 1434.
 
-### Retrieve the Azure Resource Manager root certificate for Azure Stack Hub
+The App Service installer will check to ensure the SQL Server has database containment enabled. To enable database containment on the SQL Server that will host the App Service databases, run these SQL commands:
+
+```sql
+sp_configure 'contained database authentication', 1;
+GO
+RECONFIGURE;
+GO
+
+```
+
+<!-- ::: zone-end -->
+
+## Licensing concerns for required file server and SQL Server
+
+Azure App Service on Azure Stack Hub requires a file server and SQL Server to operate. You're free to use pre-existing resources located outside of your Azure Stack Hub deployment or deploy resources within their Azure Stack Hub Default Provider Subscription.
+
+If you choose to deploy the resources within your Azure Stack Hub Default Provider Subscription, the licenses for those resources (Windows Server Licenses and SQL Server Licenses) are included in the cost of Azure App Service on Azure Stack Hub subject to the following constraints:
+
+- the infrastructure is deployed into the Default Provider Subscription;
+- the infrastructure is exclusively used by the Azure App Service on Azure Stack Hub resource provider. No other workloads, administrative (other resource providers, for example: SQL-RP) or tenant (for example: tenant apps, which require a database), are permitted to make use of this infrastructure.
+
+## Retrieve the Azure Resource Manager root certificate for Azure Stack Hub
 
 Open an elevated PowerShell session on a computer that can reach the privileged endpoint on the Azure Stack Hub Integrated System or ASDK Host.
 
@@ -305,6 +334,8 @@ When you run the following PowerShell command, you have to provide the privilege
 | --- | --- | --- | --- |
 | PrivilegedEndpoint | Required | AzS-ERCS01 | Privileged endpoint |
 | CloudAdminCredential | Required | AzureStack\CloudAdmin | Domain account credential for Azure Stack Hub cloud admins |
+
+## Network and identity configuration
 
 ### Virtual network
 
@@ -336,6 +367,7 @@ Azure App Service uses an Identity Application (Service Principal) to support th
 
 Depending on which identity provider the Azure Stack Hub is using, Azure Active Directory (Azure AD) or Active Directory Federation Services (ADFS) you must follow the appropriate steps below to create the service principal for use by the Azure App Service on Azure Stack Hub resource provider.
 
+::: zone pivot="state-connected"
 #### Create an Azure AD App
 
 Follow these steps to create the service principal in your Azure AD tenant:
@@ -368,6 +400,7 @@ Follow these steps to create the service principal in your Azure AD tenant:
 | CertificateFilePath | Required | Null | **Full path** to the identity application certificate file generated earlier. |
 | CertificatePassword | Required | Null | Password that helps protect the certificate private key. |
 | Environment | Optional | AzureCloud | The name of the supported Cloud Environment in which the target Azure Active Directory Graph Service is available.  Allowed values: 'AzureCloud', 'AzureChinaCloud', 'AzureUSGovernment', 'AzureGermanCloud'.|
+::: zone-end
 
 #### Create an ADFS app
 
@@ -389,7 +422,6 @@ Follow these steps to create the service principal in your Azure AD tenant:
 | CloudAdminCredential | Required | Null | Domain account credential for Azure Stack Hub cloud admins. An example is Azurestack\CloudAdmin. |
 | CertificateFilePath | Required | Null | **Full path** to the identity application's certificate PFX file. |
 | CertificatePassword | Required | Null | Password that helps protect the certificate private key. |
-
 
 <!--Connected/Disconnected-->
 

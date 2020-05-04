@@ -127,7 +127,7 @@ To upgrade App Service in a disconnected environment, you must first create an o
 
 3. The Azure App Service installer creates an offline upgrade package and displays the path to it.  You can click **Open folder** to open the folder in your file explorer.
 
-4. Copy the installer (AppService.exe) and the offline upgrade package to your Azure Stack Hub host machine.
+4. Copy the installer (AppService.exe) and the offline installation package to a machine which has connectivity to your Azure Stack Hub.
 
 ## Complete the upgrade of App Service on Azure Stack Hub
 
