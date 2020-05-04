@@ -15,7 +15,7 @@ ms.lastreviewed: 10/01/2019
 
 # Azure Stack Hub Marketplace changes
 
-This article describes recent additions, updates, changes, and removals of [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) over approximately the last 3 months. The information in this section is updated frequently, so check back often for changes.
+This article lists recent additions, updates, changes, and removals of [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) over the last three months. The information in this section is updated frequently, so check back often for changes.
 
 The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) article always contains the most current list of available Azure Stack Hub Marketplace items.
 
@@ -220,9 +220,9 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 - 08/08/2019: CloudLink SecureVM Extension for Linux - version 6.8
 - 08/08/2019: CloudLink SecureVM Extension for Windows - version 6.8
 - 07/30/2019: SQLIaaSExtension - version 1.3.20180
-- 07/30/2019: SQL Server 2017 (Express, Developer, Standard and Enterprise editions) - version 14.0.20190410
-- 07/30/2019: SQL Server 2016 SP1 (Express, Developer, Standard and Enterprise editions) - version 13.2.20190410
-- 07/30/2019: SQL Server 2016 SP2 (Express, Developer, Standard and Enterprise editions) - version 13.2.20190410
+- 07/30/2019: SQL Server 2017 (Express, Developer, Standard, and Enterprise editions) - version 14.0.20190410
+- 07/30/2019: SQL Server 2016 SP1 (Express, Developer, Standard, and Enterprise editions) - version 13.2.20190410
+- 07/30/2019: SQL Server 2016 SP2 (Express, Developer, Standard, and Enterprise editions) - version 13.2.20190410
 - 07/16/2019:    Windows Server 2016 Datacenter Server Core BYOL - version 2016.127.20190522
 - 07/16/2019:    Windows Server 2016 Datacenter Server Core Pay-as-you-use - version 2016.127.20190522
 - 07/16/2019:    Windows Server 2016 Datacenter With Containers BYOL - version 2016.127.20190522
