@@ -5,7 +5,7 @@ description: Learn how to troubleshoot Azure Stack Hub, including issues with VM
 author: justinha
 
 ms.topic: article
-ms.date: 11/05/2019
+ms.date: 04/30/2020
 ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 11/05/2019
@@ -33,6 +33,7 @@ These sections include links to docs that cover common questions sent to Microso
 * [How to use diagnostics tools in Azure Stack Hub](azure-stack-diagnostics.md)
 * [How to validate Azure Stack Hub system state](azure-stack-diagnostic-test.md)
 * [Update package release cadence](azure-stack-servicing-policy.md#update-package-release-cadence)
+* [Verify and troubleshoot node status](azure-stack-node-actions.md)
 
 ### Supported operating systems and sizes for guest VMs
 
