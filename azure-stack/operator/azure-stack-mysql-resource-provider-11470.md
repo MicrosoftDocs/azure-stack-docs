@@ -2,18 +2,16 @@
 title: Azure Stack Hub MySQL resource provider 1.1.47.0 release notes 
 description: View the release notes to see what's new in the Azure Stack Hub MySQL resource provider 1.1.47.0 update.
 author: justinha
-
 ms.topic: article
 ms.date: 11/26/2019
 ms.author: justinha
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/26/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub user, I want the release notes for the MySQL resource provider 1.1.47.0 update.
+# Keyword: azure stack hub mysql resource provider 1.1.47.0 release notes
 
 ---
-
 
 # MySQL resource provider 1.1.47.0 release notes
 
@@ -32,19 +30,18 @@ Download the MySQL resource provider binary and then run the self-extractor to e
 
 ## New features and fixes
 
-This version of the Azure Stack Hub MySQL resource provider is a hotfix release to make the resource provider compatible with some of the latest portal changes in the 1910 update without any new feature.
+This version of the Azure Stack Hub MySQL resource provider is a hotfix release to make the resource provider compatible with some of the latest portal changes in the 1910 update. There are no new features.
 
-It also supports the current latest Azure Stack Hub API version profile 2019-03-01-hybrid and Azure Stack Hub PowerShell module 1.8.0. So during deployment and update, no specific history versions of modules need to be installed.
+It also supports the latest Azure Stack Hub API version profile 2019-03-01-hybrid and Azure Stack Hub PowerShell module 1.8.0. So during deployment and update, no specific history versions of modules need to be installed.
 
-It is recommended that you apply the MySQL resource provider hotfix 1.1.47.0 after Azure Stack Hub is upgraded to the 1910 release.
+It's recommended that you apply the MySQL resource provider hotfix 1.1.47.0 after Azure Stack Hub is upgraded to the 1910 release.
 
 ## Known issues
 
 None.
 
 ## Next steps
-[Learn more about the MySQL resource provider](azure-stack-mysql-resource-provider.md).
 
-[Prepare to deploy the MySQL resource provider](azure-stack-mysql-resource-provider-deploy.md#prerequisites).
-
-[Upgrade the MySQL resource provider from a previous version](azure-stack-mysql-resource-provider-update.md). 
+- [Learn more about the MySQL resource provider](azure-stack-mysql-resource-provider.md).
+- [Prepare to deploy the MySQL resource provider](azure-stack-mysql-resource-provider-deploy.md#prerequisites).
+- [Upgrade the MySQL resource provider from a previous version](azure-stack-mysql-resource-provider-update.md).
