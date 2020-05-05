@@ -23,9 +23,9 @@ These release notes describe the improvements and fixes in Azure App Service on 
 
 ## Build reference
 
-The App Service on Azure Stack Hub 2020 Q2 build number is **87.0.2.x**
+The App Service on Azure Stack Hub 2020 Q2 build number is **87.0.2.10**
 
-### Prerequisites
+## Prerequisites
 
 Refer to the [Before You Get Started documentation](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
 
@@ -42,7 +42,7 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 2020 Q2:
 
 - Syndicate the **Custom Script Extension** version **1.9.3** from the Marketplace
 
-### Updates
+## Updates
 
 Azure App Service on Azure Stack Update Q2 includes the following improvements and fixes:
 
@@ -91,7 +91,7 @@ To maintain consistency with our public cloud service, new deployments of Azure 
 
 For ASDK deployments, you can scale the instances down to lower SKUs to reduce the core and memory commit but you will experience a performance degradation.
 
-### Issues fixed in this release
+## Issues fixed in this release
 
 - Upgrades will now complete if SQL Always On Cluster has failed over to secondary node
 - New deployments of Azure App Service on Azure Stack Hub do not require databases to be manually converted to contained databases
@@ -106,12 +106,14 @@ For ASDK deployments, you can scale the instances down to lower SKUs to reduce t
 - Controllers are now updated with Windows Cumulative Updates as part of deployment and upgrade
 - App Service no longer locks operations when custom domain verification fails
 
-### Post-deployment steps
+## Pre-Update steps
+
+## Post-deployment steps
 
 > [!IMPORTANT]
 > If you have provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
-### Known issues (post-installation)
+## Known issues (post-installation)
 
 - Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network,  as called out in the Azure App Service on Azure Stack deployment documentation.
 
