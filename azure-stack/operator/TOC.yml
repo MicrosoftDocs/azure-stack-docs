@@ -172,8 +172,6 @@
           href: azure-stack-update-monitor.md
         - name: Use privileged endpoint
           href: azure-stack-monitor-update.md
-      - name: Troubleshoot updates
-        href: azure-stack-updates-troubleshoot.md
     - name: Monitor health and alerts
       href: azure-stack-monitor-health.md
     - name: Monitor hardware components

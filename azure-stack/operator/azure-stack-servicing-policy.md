@@ -91,9 +91,9 @@ For more information about resource provider compatibility, please see the relea
 
 Azure Stack Hub follows the same support process as Azure. Enterprise customers can follow the process described in [How to create an Azure support request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). If you're a customer of a Cloud Solution Provider (CSP), contact your CSP for support. For more information, see the [Azure Support FAQs](https://azure.microsoft.com/support/faq/).
 
-For help troubleshooting update issues, see [Best practices for troubleshooting Azure Stack Hub patch and update issues](azure-stack-updates-troubleshoot.md).
+For help troubleshooting update issues, see [Best practices for troubleshooting Azure Stack Hub patch and update issues](azure-stack-troubleshooting.md).
 
 ## Next steps
 
 - [Manage updates in Azure Stack Hub](azure-stack-updates.md)
-- [Best practices for troubleshooting Azure Stack Hub patch and update issues](azure-stack-updates-troubleshoot.md)
+- [Best practices for troubleshooting Azure Stack Hub patch and update issues](azure-stack-troubleshooting.md)
