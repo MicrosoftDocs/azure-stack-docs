@@ -38,9 +38,14 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 2020 Q2:
   - AppService_Metering;
   - Master
 
+> [!Important]
+> Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server.  The resource provider does not manage these resources.  The cloud operator is responsible for backing up the App Service databases and tenant content file share.
+
 - Back up the Tenant App content file share
 
 - Syndicate the **Custom Script Extension** version **1.9.3** from the Marketplace
+
+
 
 ## Updates
 
