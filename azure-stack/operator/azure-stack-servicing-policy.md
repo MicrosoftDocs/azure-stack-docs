@@ -5,7 +5,7 @@ description: Learn about the Azure Stack Hub servicing policy and how to keep an
 author: sethmanheim
 
 ms.topic: article
-ms.date: 02/07/2020
+ms.date: 05/07/2020
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 03/18/2020
@@ -80,6 +80,10 @@ Hotfixes aren't considered major update versions. If your Azure Stack Hub instan
 For example, if the most recently available update version is 1904, and the previous two update packages were versions 1903 and 1902, both 1902 and 1903 remain in support. However, 1901 is out of support. The policy holds true when there's no release for a month or two. For example, if the current release is 1807 and there was no 1806 release, the previous two update packages of 1805 and 1804 remain in support.
 
 Microsoft software update packages are non-cumulative and require the previous update package or hotfix as a prerequisite. If you decide to defer one or more updates, consider the overall runtime if you want to get to the latest version.
+
+### Resource provider version support
+
+For Azure Stack Hub resource providers, it's important to note that only the most recently released version of a given resource provider is supported, even though you may be using an older version of Azure Stack Hub that is still within the support window.
 
 ## Get support
 
