@@ -16,7 +16,7 @@ zone_pivot_groups: state-connected-disconnected
 
 # Update Azure App Service on Azure Stack Hub
 
-[!INCLUDE [azure stack hub update reminder](../includes/app-service-hub-update-banner.md)]
+[!INCLUDE [Azure Stack Hub update reminder](../includes/app-service-hub-update-banner.md)]
 
 ::: zone pivot="state-connected"
 In this article, you learn how to upgrade the [Azure App Service resource provider](azure-stack-app-service-overview.md) deployed in an internet-connected Azure Stack Hub environment.
@@ -63,8 +63,8 @@ To upgrade your deployment of Azure App Service on Azure Stack Hub, follow these
             - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
             - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
         - **Service Principal**
-            - The service principal which you use **must** have **Owner** rights on the **Default Provider Subscription**
-            - Provide the **Service Principal ID**, **Certificate File** and **Password** and select **Connect**.
+            - The service principal that you use **must** have **Owner** rights on the **Default Provider Subscription**
+            - Provide the **Service Principal ID**, **Certificate File**, and **Password** and select **Connect**.
 
     1. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.    Azure App Service on Azure Stack Hub **must** be deployed in the **Default Provider Subscription**.
 
@@ -127,7 +127,7 @@ To upgrade App Service in a disconnected environment, you must first create an o
 
 3. The Azure App Service installer creates an offline upgrade package and displays the path to it.  You can click **Open folder** to open the folder in your file explorer.
 
-4. Copy the installer (AppService.exe) and the offline installation package to a machine which has connectivity to your Azure Stack Hub.
+4. Copy the installer (AppService.exe) and the offline installation package to a machine that has connectivity to your Azure Stack Hub.
 
 ## Complete the upgrade of App Service on Azure Stack Hub
 
@@ -159,8 +159,8 @@ To upgrade App Service in a disconnected environment, you must first create an o
             - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
             - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
         - **Service Principal**
-            - The service principal which you use **must** have **Owner** rights on the **Default Provider Subscription**
-            - Provide the **Service Principal ID**, **Certificate File** and **Password** and select **Connect**.
+            - The service principal that you use **must** have **Owner** rights on the **Default Provider Subscription**
+            - Provide the **Service Principal ID**, **Certificate File**, and **Password** and select **Connect**.
 
    1. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.  Azure App Service on Azure Stack Hub **must** be deployed in the **Default Provider Subscription**.
 
