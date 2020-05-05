@@ -4,7 +4,7 @@ description: Learn about capacity planning for App Service server roles in Azure
 author: BryanLa
 
 ms.topic: article
-ms.date: 04/13/2020
+ms.date: 05/05/2020
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 04/13/2020

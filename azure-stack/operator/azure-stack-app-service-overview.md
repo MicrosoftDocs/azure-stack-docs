@@ -4,7 +4,7 @@ description: Overview of Azure App Service and Azure Functions on Azure Stack Hu
 author: BryanLa
 
 ms.topic: article
-ms.date: 01/13/2020
+ms.date: 05/05/2020
 ms.author: BryanLa
 ms.reviewer: anwestg
 ms.lastreviewed: 01/13/2019
