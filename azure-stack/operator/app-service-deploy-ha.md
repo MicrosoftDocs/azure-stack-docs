@@ -15,7 +15,6 @@ zone_pivot_groups: state-connected-disconnected
 
 ---
 
-
 # Deploy App Service in a highly available configuration
 
 This article shows you how to use Azure Stack Hub Marketplace items to deploy App Service for Azure Stack Hub in a highly available configuration. In addition to available marketplace items, this solution also uses the [appservice-fileshare-sqlserver-ha](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) Azure Stack Hub Quickstart template. This template automates the creation of a highly available infrastructure for hosting the App Service resource provider. App Service is then installed on this highly available VM infrastructure. 
@@ -290,7 +289,7 @@ To deploy Azure App Service in an offline environment, first create an offline i
 
     ![Connect to the Azure Stack Hub subscription on App Service](media/app-service-deploy-ha/05.png)
 
-1. Select **Use existing VNet and Subnets** and the **Resource Group Name** for the resource group used to deploy the highly available template.<br><br>Next, select the virtual network created as part of the template deployment and then select the appropriate role subnets from the drop-down list options. 
+1. Select **Use existing VNet and Subnets** and the **Resource Group Name** for the resource group used to deploy the highly available template.  Next, select the virtual network created as part of the template deployment and then select the appropriate role subnets from the drop-down list options. 
 
     ![Vnet selection on App Service](media/app-service-deploy-ha/06.png)
 
@@ -298,7 +297,7 @@ To deploy Azure App Service in an offline environment, first create an offline i
 
     ![File share output information on App Service](media/app-service-deploy-ha/07.png)
 
-1. Because the machine used to install App Service isn't located on the same VNet as the file server used to host the App Service file share, you can't resolve the name. **This error is expected behavior**.<br><br>Verify that the info entered for the file share UNC path and accounts info is correct. Then press **Yes** on the alert dialog to continue App Service installation.
+1. Because the machine used to install App Service isn't located on the same VNet as the file server used to host the App Service file share, you can't resolve the name. **This error is expected behavior**.  Verify that the info entered for the file share UNC path and accounts info is correct. Then press **Yes** on the alert dialog to continue App Service installation.
 
     ![Expected error dialog on App Service](media/app-service-deploy-ha/08.png)
 
@@ -319,11 +318,11 @@ To deploy Azure App Service in an offline environment, first create an offline i
 
     ![SQL Server connection information on App Service](media/app-service-deploy-ha/10.png)
 
-1. Because the machine used to install App Service isn't located on the same VNet as the SQL server used to host the App Service databases, you can't resolve the name.  **This is expected behavior**.<br><br>Verify that the info entered for the SQL Server name and accounts info is correct and press **Yes** to continue App Service installation. Click **Next**.
+1. Because the machine used to install App Service isn't located on the same VNet as the SQL server used to host the App Service databases, you can't resolve the name.  **This is expected behavior**.  Verify that the info entered for the SQL Server name and accounts info is correct and press **Yes** to continue App Service installation. Click **Next**.
 
     ![SQL Server connection information on App Service](media/app-service-deploy-ha/11.png)
 
-1. Accept the default role configuration values or change to the recommended values and click **Next**.<br><br>We recommend that the default values for the App Service infrastructure role instances be changed as follows for highly available configurations:
+1. Accept the default role configuration values or change to the recommended values and click **Next**.  We recommend that the default values for the App Service infrastructure role instances be changed as follows for highly available configurations:
 
     |Role|Default|Highly available recommendation|
     |-----|-----|-----|
