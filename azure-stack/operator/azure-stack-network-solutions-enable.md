@@ -8,7 +8,7 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 09/30/2019
 
-# Intent: As an Azure Stack Hub user, I want to add Fortinet FortiGate to Azure Stack Hub Marketplace so my users can create network solutions.
+# Intent: As an Azure Stack Hub operator, I want to add Fortinet FortiGate to Azure Stack Hub Marketplace so my users can create network solutions.
 # Keyword: fortinet fortigate azure stack hub network solutions
 
 ---

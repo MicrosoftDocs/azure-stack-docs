@@ -8,7 +8,7 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/28/2019
 
-# Intent: As an Azure Stack Hub user, I want to add Commvault to Azure Stack Hub Marketplace so I can
+# Intent: As an Azure Stack Hub operator, I want to add Commvault to Azure Stack Hub Marketplace so I can
 # Keyword: add commvault azure stack hub marketplace
 
 ---

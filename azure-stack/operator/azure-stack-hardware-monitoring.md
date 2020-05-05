@@ -8,7 +8,7 @@ ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 11/21/2019
 
-# Intent: As an Azure Stack Hub user, I want to monitor the status and health of my hardware components and set alerts when needed.
+# Intent: As an Azure Stack Hub operator, I want to monitor the status and health of my hardware components and set alerts when needed.
 # Keyword: monitor hardware health azure stack hub
 
 ---

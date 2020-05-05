@@ -8,7 +8,7 @@ ms.author: justinha
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/26/2019
 
-# Intent: As an Azure Stack Hub user, I want the release notes for the MySQL resource provider 1.1.47.0 update.
+# Intent: As an Azure Stack Hub operator, I want the release notes for the MySQL resource provider 1.1.47.0 update.
 # Keyword: azure stack hub mysql resource provider 1.1.47.0 release notes
 
 ---

@@ -8,7 +8,7 @@ ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 10/01/2019
 
-# Intent: As an Azure Stack Hub user, I want to know what's new in Azure Stack Hub Marketplace so I can stay up to date.
+# Intent: As an Azure Stack Hub operator, I want to know what's new in Azure Stack Hub Marketplace so I can stay up to date.
 # Keyword: new marketplace items azure stack hub
 
 ---
