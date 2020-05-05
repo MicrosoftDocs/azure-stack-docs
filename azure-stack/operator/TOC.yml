@@ -38,7 +38,7 @@
       - name: Storage capacity planning
         href: azure-stack-capacity-planning-storage.md
       - name: Storage infrastructure overview
-        href: azure-stack-capacity-planning-storage.md
+        href: azure-stack-manage-storage-infrastructure.md
     - name: Azure Stack Hub Capacity Planner
       href: azure-stack-capacity-planner.md
   - name: Datacenter integration
