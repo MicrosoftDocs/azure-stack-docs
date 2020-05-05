@@ -44,6 +44,8 @@ If the update fails, you can resume the update run where it left off by running 
 ```powershell
 Get-AzsUpdateRun -Name 5173e9f4-3040-494f-b7a7-738a6331d55c -UpdateName Microsoft1.0.180305.1 | Resume-AzsUpdateRun
 ```
+## Troubleshoot
+For more information on troubleshooting updates, see [Azure Stack Troubleshooting](azure-stack-troubleshooting.md)
 
 ## Next steps
 
