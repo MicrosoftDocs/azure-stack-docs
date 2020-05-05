@@ -5,7 +5,7 @@ author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 03/05/2020
+ms.date: 05/05/2020
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/25/2019
@@ -26,13 +26,15 @@ These release notes describe the improvements and fixes in Azure App Service on 
 
 The App Service on Azure Stack Hub Update 8 build number is **86.0.2.13**
 
-### Prerequisites
+## Prerequisites
 
 Refer to the [Before You Get Started documentation](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
 
 Before you begin the upgrade of Azure App Service on Azure Stack to 1.8:
 
 - Ensure all roles are Ready in the Azure App Service Administration in the Azure Stack Admin Portal
+
+- Backup App Service Secrets using the App Service Administration in the Azure Stack Hub Admin Portal
 
 - Back up the App Service and Master Databases:
   - AppService_Hosting;
@@ -41,9 +43,12 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 1.8:
 
 - Back up the Tenant App content file share
 
+  > [!Important]
+  > Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server.  The resource provider does not manage these resources.  The cloud operator is responsible for backing up the App Service databases and tenant content file share.
+
 - Syndicate the **Custom Script Extension** version **1.9.3** from the Marketplace
 
-### New features and fixes
+## New features and fixes
 
 Azure App Service on Azure Stack Update 8 includes the following improvements and fixes:
 
@@ -82,7 +87,7 @@ All new deployments of Azure App Service on Azure Stack Hub will make use of man
 
 As of this update **TLS 1.2** will be enforced for all applications.
 
-### Known issues (upgrade)
+## Known issues (upgrade)
 
 - Upgrade will fail if SQL Server Always On Cluster has failed over to secondary node
 
@@ -96,12 +101,12 @@ Take one of the following actions and click retry within the installer.
 
 - Fail over the SQL Cluster to the previous active node.
 
-### Post-deployment steps
+## Post-deployment steps
 
 > [!IMPORTANT]
 > If you have provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
-### Known issues (post-installation)
+## Known issues (post-installation)
 
 - Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network,  as called out in the Azure App Service on Azure Stack deployment documentation.
 
@@ -182,6 +187,33 @@ Due to a regression in this release, both App Service databases (appservice_host
 1. Migrate logins to contained database users.
 
     ```sql
+        USE appservice_hosting
+        IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
+        BEGIN
+        DECLARE @username sysname ;  
+        DECLARE user_cursor CURSOR  
+        FOR
+            SELECT dp.name
+            FROM sys.database_principals AS dp  
+            JOIN sys.server_principals AS sp
+                ON dp.sid = sp.sid  
+                WHERE dp.authentication_type = 1 AND dp.name NOT IN ('dbo','sys','guest','INFORMATION_SCHEMA');
+            OPEN user_cursor  
+            FETCH NEXT FROM user_cursor INTO @username  
+                WHILE @@FETCH_STATUS = 0  
+                BEGIN  
+                    EXECUTE sp_migrate_user_to_contained
+                    @username = @username,  
+                    @rename = N'copy_login_name',  
+                    @disablelogin = N'do_not_disable_login';  
+                FETCH NEXT FROM user_cursor INTO @username  
+            END  
+            CLOSE user_cursor ;  
+            DEALLOCATE user_cursor ;
+            END
+        GO
+
+        USE appservice_metering
         IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
         BEGIN
         DECLARE @username sysname ;  
@@ -264,7 +296,7 @@ Due to a regression in this release, both App Service databases (appservice_host
         
     ```
 
-### Known issues for Cloud Admins operating Azure App Service on Azure Stack
+## Known issues for Cloud Admins operating Azure App Service on Azure Stack
 
 Refer to the documentation in the [Azure Stack 1907 Release Notes](azure-stack-release-notes-1907.md)
 

@@ -4,7 +4,7 @@ description: Learn about billing for Azure App Service on Azure Stack Hub.
 author: apwestgarth
 manager: stefsch
 ms.topic: article
-ms.date: 04/13/2020
+ms.date: 05/05/2020
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 04/13/2020

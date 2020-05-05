@@ -4,7 +4,7 @@ description: Learn the prerequisite steps to complete before you deploy Azure Ap
 author: BryanLa
 
 ms.topic: article
-ms.date: 04/13/2020
+ms.date: 05/05/2020
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 04/13/2019
@@ -17,7 +17,7 @@ zone_pivot_groups: state-connected-disconnected
 
 # Prerequisites for deploying App Service on Azure Stack Hub
 
-[!INCLUDE [azure stack hub update reminder](../includes/app-service-hub-update-banner.md)]
+[!INCLUDE [Azure Stack Hub update reminder](../includes/app-service-hub-update-banner.md)]
 
 Before you deploy Azure App Service on Azure Stack Hub, you must complete the prerequisite steps in this article.
 
@@ -44,12 +44,10 @@ This section lists the prerequisites for both integrated system and Azure Stack 
      - GraphAPI.psm1
 
 <!-- MultiNode Only --->
-<!-- ::: zone pivot="state-integrated" -->
 ## Certificates and server configuration (Integrated Systems)
 
 This section lists the prerequisites for integrated system deployments. 
 
-<!-- MultiNode Only --->
 ### Certificate requirements
 
 To run the resource provider in production, you must provide the following certificates:
@@ -112,7 +110,10 @@ Azure App Service requires the use of a file server. For production deployments,
 
 #### Quickstart template for Highly Available file server and SQL Server
 
-A [reference architecture quickstart template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) is now available which will deploy a file server and SQL Server. This template supports Active Directory infrastructure in a virtual network configured to support a highly available deployment of Azure App Service on Azure Stack Hub.
+A [reference architecture quickstart template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) is now available that will deploy a file server and SQL Server. This template supports Active Directory infrastructure in a virtual network configured to support a highly available deployment of Azure App Service on Azure Stack Hub.
+
+> [!NOTE]
+> The ASDK instance must be able to download resources from GitHub in order to complete the deployment.
 
 #### Steps to deploy a custom file server
 
@@ -244,11 +245,8 @@ GO
 RECONFIGURE;
 GO
 ```
-<!-- ::: zone-end -->
 
 <!-- ASDK Only --->
-<!-- ::: zone pivot="state-asdk" -->
-
 ## Certificates and server configuration (ASDK)
 
 This section lists the prerequisites for ASDK deployments. 
@@ -269,7 +267,7 @@ To create the certificates, follow these steps:
 1. Sign in to the ASDK host using the AzureStack\AzureStackAdmin account.
 2. Open an elevated PowerShell session.
 3. Run the *Create-AppServiceCerts.ps1* script from the folder where you extracted the helper scripts. This script creates four certificates in the same folder as the script that App Service needs for creating certificates.
-4. Enter a password to secure the .pfx files, and make a note of it. You have to enter it in the App Service on Azure Stack Hub installer.
+4. Enter a password to secure the .pfx files, and make a note of it. You must enter it later, in the App Service on Azure Stack Hub installer.
 
 #### Create-AppServiceCerts.ps1 script parameters
 
@@ -280,7 +278,10 @@ To create the certificates, follow these steps:
 
 ### Quickstart template for file server for deployments of Azure App Service on ASDK.
 
-For ASDK deployments only, you can use the [example Azure Resource Manager deployment template](https://aka.ms/appsvconmasdkfstemplate) to deploy a configured single-node file server. The single-node file server will be in a workgroup.
+For ASDK deployments only, you can use the [example Azure Resource Manager deployment template](https://aka.ms/appsvconmasdkfstemplate) to deploy a configured single-node file server. The single-node file server will be in a workgroup.  
+
+> [!NOTE]
+> The ASDK instance must be able to download resources from GitHub in order to complete the deployment.
 
 ### SQL Server instance
 
@@ -305,8 +306,6 @@ GO
 
 ```
 
-<!-- ::: zone-end -->
-
 ## Licensing concerns for required file server and SQL Server
 
 Azure App Service on Azure Stack Hub requires a file server and SQL Server to operate. You're free to use pre-existing resources located outside of your Azure Stack Hub deployment or deploy resources within their Azure Stack Hub Default Provider Subscription.
@@ -315,6 +314,10 @@ If you choose to deploy the resources within your Azure Stack Hub Default Provid
 
 - the infrastructure is deployed into the Default Provider Subscription;
 - the infrastructure is exclusively used by the Azure App Service on Azure Stack Hub resource provider. No other workloads, administrative (other resource providers, for example: SQL-RP) or tenant (for example: tenant apps, which require a database), are permitted to make use of this infrastructure.
+
+## Operational responsibility of file and sql servers
+
+Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server.  The resource provider does not manage these resources.  The cloud operator is responsible for backing up the App Service databases and tenant content file share.
 
 ## Retrieve the Azure Resource Manager root certificate for Azure Stack Hub
 
@@ -441,9 +444,9 @@ Azure App Service on Azure Stack Hub requires items to be [downloaded from the A
 
 ::: zone pivot="state-disconnected"
 <!-- Disconnected --->
-1. **Windows Server 2016 Datacenter Full VM image with Microsoft.Net 3.5.1 SP1 activated**.  Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 be activated on the image used for deployment. Marketplace-syndicated Windows Server 2016 images don't have this feature enabled and in disconnected environments are unable to reach Microsoft Update to download the packages to install via DISM. Therefore, you must create and use a Windows Server 2016 image with this feature pre-enabled with disconnected deployments.
+1. **Windows Server 2016 Datacenter Full VM image with Microsoft.Net 3.5.1 SP1 activated**.  Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 is activated on the image used for deployment. Marketplace-syndicated Windows Server 2016 images don't have this feature enabled and in disconnected environments are unable to reach Microsoft Update to download the packages to install via DISM. Therefore, you must create and use a Windows Server 2016 image with this feature pre-enabled with disconnected deployments.
 
-   See [Add a custom VM image to Azure Stack Hub](azure-stack-add-vm-image.md) for details on creating a custom image and adding to Marketplace. Be sure to specify the following when adding the image to Marketplace:
+   See [Add a custom VM image to Azure Stack Hub](azure-stack-add-vm-image.md) for details on creating a custom image and adding to Marketplace. Be sure to specify the following properties when adding the image to Marketplace:
 
    - Publisher = MicrosoftWindowsServer
    - Offer = WindowsServer
@@ -453,7 +456,7 @@ Azure App Service on Azure Stack Hub requires items to be [downloaded from the A
 ::: zone-end
 
 <!-- For All --> 
-2. **Custom Script Extension v1.9.1 or greater**. This is a VM extension.
+2. **Custom Script Extension v1.9.1 or greater**. This item is a VM extension.
 
 ## Next steps
 
