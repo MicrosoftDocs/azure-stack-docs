@@ -26,7 +26,7 @@ These release notes describe improvements, fixes, and known issues in Azure App 
 
 The App Service on Azure Stack Hub Update 5 build number is **80.0.2.15**.
 
-### Prerequisites
+## Prerequisites
 
 Refer to the [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
 
@@ -46,7 +46,7 @@ Before you begin the upgrade of Azure App Service on Azure Stack Hub to 1.5:
 
 - Syndicate the **Custom Script Extension** version **1.9.1** from Azure Marketplace.
 
-### New features and fixes
+## New features and fixes
 
 Azure App Service on Azure Stack Hub Update 5 includes the following improvements and fixes:
 
@@ -67,12 +67,12 @@ Azure App Service on Azure Stack Hub Update 5 includes the following improvement
 - **Updates to underlying operating system of all roles**:
   - [2019-02 Cumulative Update for Windows Server 2016 for x64-based Systems (KB4487006)](https://support.microsoft.com/help/4487006/windows-10-update-kb4487006)
 
-### Post-deployment Steps
+## Post-deployment Steps
 
 > [!IMPORTANT]  
 > If you've provided the App Service resource provider with a SQL Always On Instance you *must* [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
-### Post-update steps
+## Post-update steps
 
 For customers wishing to migrate to a contained database for existing Azure App Service on Azure Stack Hub deployments, execute these steps after the Azure App Service on Azure Stack Hub 1.5 update has completed:
 
@@ -201,7 +201,7 @@ For customers wishing to migrate to a contained database for existing Azure App 
         SELECT containment FROM sys.databases WHERE NAME LIKE (SELECT DB_NAME())
     ```
 
-### Known issues (post-installation)
+## Known issues (post-installation)
 
 - Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network. This issue is called out in the Azure App Service on Azure Stack Hub deployment documentation.
 
@@ -217,7 +217,7 @@ If you chose to deploy into an existing virtual network and an internal IP addre
  * Priority: 700
  * Name: Outbound_Allow_SMB445
 
-### Known issues for cloud admins operating Azure App Service on Azure Stack Hub
+## Known issues for cloud admins operating Azure App Service on Azure Stack Hub
 
 Refer to the documentation in the [Azure Stack Hub 1809 release notes](azure-stack-update-1903.md).
 

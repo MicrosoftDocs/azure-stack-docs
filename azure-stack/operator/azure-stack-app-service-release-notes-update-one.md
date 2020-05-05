@@ -26,14 +26,14 @@ These release notes describe improvements, fixes, and known issues in Azure App 
 
 The App Service on Azure Stack Hub Update 1 build number is **69.0.13698.9**.
 
-### Prerequisites
+## Prerequisites
 
 > [!IMPORTANT]
 > New deployments of Azure App Service on Azure Stack Hub now require a three-subject wildcard certificate due to improvements in the way in which SSO for Kudu is handled in Azure App Service. The new subject is **\*.sso.appservice.\<region\>.\<domainname\>.\<extension\>**
 
 Refer to the [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
 
-### New features and fixes
+## New features and fixes
 
 Azure App Service on Azure Stack Hub Update 1 includes the following improvements and fixes:
 
@@ -77,7 +77,7 @@ Azure App Service on Azure Stack Hub Update 1 includes the following improvement
 
   - Added validation of storage connection in the custom storage picker for Azure Functions.
 
-#### Fixes
+### Fixes
 
 - When creating an offline deployment package, customers will no longer receive an access denied error message when opening the folder from the App Service installer.
 
@@ -91,7 +91,7 @@ Azure App Service on Azure Stack Hub Update 1 includes the following improvement
 
 - Fixed incorrect status being returned to Azure Resource Manager when a subscription is deleted that contained resources in the Microsoft.Web namespace.
 
-### Known issues with the deployment process
+## Known issues with the deployment process
 
 - Certificate validation errors.
 
@@ -101,11 +101,11 @@ Azure App Service on Azure Stack Hub Update 1 includes the following improvement
 
     An error in the Get-AzureStackRootCert.ps1 caused customers to fail to retrieve the Azure Stack Hub root certificate when executing the script on a machine that doesn't have the root certificate installed. The script has also now been re-released which resolves the issue. [Download the updated helper scripts here](https://aka.ms/appsvconmashelpers). If you continue to experience issues retrieving the root certificate with the updated script, contact support.
 
-### Known issues with the update process
+## Known issues with the update process
 
 - There are no known issues for the update of Azure App Service on Azure Stack Hub Update 1.
 
-### Known issues (post-installation)
+## Known issues (post-installation)
 
 - Slot swap doesn't function.
 
@@ -201,7 +201,7 @@ If you chose to deploy into an existing virtual network and an internal IP addre
 - Priority: 700
 - Name: Outbound_Allow_SMB445
 
-### Known issues for cloud admins operating Azure App Service on Azure Stack Hub
+## Known issues for cloud admins operating Azure App Service on Azure Stack Hub
 
 Refer to the documentation in the [Azure Stack Hub 1802 Release Notes](azure-stack-update-1903.md)
 

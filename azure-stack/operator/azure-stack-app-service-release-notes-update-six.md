@@ -27,7 +27,7 @@ These release notes describe the improvements and fixes in Azure App Service on 
 
 The App Service on Azure Stack Hub Update 6 build number is **82.0.1.50**
 
-### Prerequisites
+## Prerequisites
 
 Refer to the [Before You Get Started documentation](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
 
@@ -47,7 +47,7 @@ Before you begin the upgrade of Azure App Service on Azure Stack Hub to 1.6:
 
 - Syndicate the **Custom Script Extension** version **1.9.1** from the Marketplace
 
-### New features and fixes
+## New features and fixes
 
 Azure App Service on Azure Stack Hub Update 6 includes the following improvements and fixes:
 
@@ -73,12 +73,12 @@ Azure App Service on Azure Stack Hub Update 6 includes the following improvement
 - **Updates to underlying operating system of all roles**:
   - [2019-04 Cumulative Update for Windows Server 2016 for x64-based Systems (KB4493473)](https://support.microsoft.com/help/4493473/windows-10-update-kb4493473)
 
-### Post-deployment Steps
+## Post-deployment Steps
 
 > [!IMPORTANT]
 > If you have provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
-### Known issues (post-installation)
+## Known issues (post-installation)
 
 - Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network,  as called out in the Azure App Service on Azure Stack Hub deployment documentation.
 
@@ -93,11 +93,11 @@ If you chose to deploy into an existing virtual network and an internal IP addre
  * Priority: 700
  * Name: Outbound_Allow_SMB445
 
-### Known issues for Cloud Admins operating Azure App Service on Azure Stack Hub
+## Known issues for Cloud Admins operating Azure App Service on Azure Stack Hub
 
 Refer to the documentation in the [Azure Stack Hub 1908 Release Notes](/azure-stack/operator/release-notes?view=azs-1908)
 
-### Known issues for Tenants deploying applications on Azure App Service on Azure Stack Hub
+## Known issues for Tenants deploying applications on Azure App Service on Azure Stack Hub
 
 - Deployment Center is greyed out
 
