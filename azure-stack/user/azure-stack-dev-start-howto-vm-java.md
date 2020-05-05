@@ -3,22 +3,20 @@ title: Deploy a Java WAR to a virtual machine in Azure Stack Hub
 description:  Deploy a Java WAR to a virtual machine in Azure Stack Hub.
 author: mattbriggs
 
-ms.topic: overview
-ms.date: 1/22/2020
+ms.topic: how-to
+ms.date: 05/05/2020 
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/02/2019
+ms.lastreviewed: 05/05/2020
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As a developer, I want to understanding how to create a Java web app so that I can build Java apps on Azure Stack Hub
+# Keyword: Java webapp Azure Stack Hub
 
 ---
 
-
-
 # Deploy a Java web app to a VM in Azure Stack Hub
 
-You can create a virtual machine (VM) to host your Python web app in Azure Stack Hub. In this article, you install and configure an Apache Tomcat server on a Linux VM in Azure Stack Hub. You then load a Java Web Application Resource (WAR) file into the server. A WAR file is used to distribute a collection of Java archive (JAR) files, compressed files that contain Java resources such as classes, text, images, XML, and HTML, and other resources that are used to deliver a web application.
+You can create a virtual machine (VM) to host your Java web app in Azure Stack Hub. In this article, you install, open the right ports, and configure an Apache Tomcat server on a Linux VM in Azure Stack Hub. You then load a Java Web Application Resource (WAR) file into the server. A WAR file is used to distribute a collection of Java archive (JAR) files, compressed files that contain Java resources such as classes, text, images, XML, and HTML, and other resources that are used to deliver a web application.
 
 ## Create a VM
 
