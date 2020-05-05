@@ -108,7 +108,7 @@ For ASDK deployments, you can scale the instances down to lower SKUs to reduce t
 
 ## Pre-Update steps
 
-Review the known issues for update and take any action prescribed.
+Review the [known issues for update](#known-issues-update) and take any action prescribed.
 
 ## Post-deployment steps
 
