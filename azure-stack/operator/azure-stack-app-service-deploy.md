@@ -33,14 +33,14 @@ Installing the App Service resource provider takes at least an hour. The length 
 
 - Registers the required resource providers in the Default Provider Subscription
 - Grants contributor access to the App Service Identity application
-- Create Resource Group and Virtual network (if required)
-- Create Storage accounts and containers for App Service installation artifacts, usage service and resource hydration
+- Create Resource Group and Virtual network (if necessary)
+- Create Storage accounts and containers for App Service installation artifacts, usage service, and resource hydration
 - Download App Service artifacts and upload them to the App Service storage account
 - Deploy the App Service
 - Register the usage service
 - Create DNS Entries for App Service
 - Register the App Service admin and tenant resource providers
-- Register Gallery Items - Web, API, Function App, App Service Plan, WordPress, DNN, Orchard and Django applications
+- Register Gallery Items - Web, API, Function App, App Service Plan, WordPress, DNN, Orchard, and Django applications
 
 To deploy App Service resource provider, follow these steps:
 
@@ -69,8 +69,8 @@ To deploy App Service resource provider, follow these steps:
             - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
 
         - **Service Principal**
-            - The service principal which you use **must** have **Owner** rights on the **Default Provider Subscription**
-            - Provide the **Service Principal ID**, **Certificate File** and **Password** and select **Connect**.
+            - The service principal that you use **must** have **Owner** rights on the **Default Provider Subscription**
+            - Provide the **Service Principal ID**, **Certificate File**, and **Password** and select **Connect**.
 
     1. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.  Azure App Service on Azure Stack Hub **must** be deployed in the **Default Provider Subscription**.
 
@@ -128,7 +128,7 @@ To deploy App Service resource provider, follow these steps:
 
     ![App Service Installer][11]
 
-12. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in a production deployment.  For ASDK deployment you can scale the instances down to lower SKUs to reduce the core and memory commit but you will experience a performance degradation. A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, select **Next**.
+12. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in a production deployment.  For ASDK deployment, you can scale the instances down to lower SKUs to reduce the core and memory commit but you will experience a performance degradation. A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, select **Next**.
 
     >[!NOTE]
     >For production deployments, following the guidance in [Capacity planning for Azure App Service server roles in Azure Stack Hub](azure-stack-app-service-capacity-planning.md).
@@ -269,7 +269,7 @@ To deploy Azure App Service in an offline environment, first create an offline i
 
     ![Offline installation package generated successfully in Azure App Service Installer](media/azure-stack-app-service-deploy-offline/image02.png)
 
-4. Copy the installer (AppService.exe) and the offline installation package to a machine which has connectivity to your Azure Stack Hub.
+4. Copy the installer (AppService.exe) and the offline installation package to a machine that has connectivity to your Azure Stack Hub.
 
 ## Complete the offline installation of Azure App Service on Azure Stack Hub
 
@@ -299,8 +299,8 @@ To deploy Azure App Service in an offline environment, first create an offline i
             - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
             - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
         - **Service Principal**
-            - The service principal which you use **must** have **Owner** rights on the **Default Provider Subscription**
-            - Provide the **Service Principal ID**, **Certificate File** and **Password** and select **Connect**.
+            - The service principal that you use **must** have **Owner** rights on the **Default Provider Subscription**
+            - Provide the **Service Principal ID**, **Certificate File**, and **Password** and select **Connect**.
 
     1. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.  Azure App Service on Azure Stack Hub **must** be deployed in the **Default Provider Subscription**.
 
@@ -332,7 +332,7 @@ To deploy Azure App Service in an offline environment, first create an offline i
 
     ![Enter app ID and certificate info in Azure App Service Installer][40]
 
-1. For each of the three certificate file boxes, select **Browse**, and then go to the appropriate certificate file. You must provide the password for each certificate. These certificates are the ones that you created in [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md). Select **Next** after entering all the info.
+1. For each of the three certificate file boxes, select **Browse**, and then go to the appropriate certificate file. , the password for each certificate. These certificates are the ones that you created in [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md). Select **Next** after entering all the info.
 
     | Box | Certificate file name example |
     | --- | --- |
@@ -359,11 +359,11 @@ To deploy Azure App Service in an offline environment, first create an offline i
     >    GO
     >    ***********************************************************
     > ```
-    > For more details, see the [release notes for Azure App Service on Azure Stack Hub 1.3](azure-stack-app-service-release-notes-update-three.md).
+    > For more information, see the [release notes for Azure App Service on Azure Stack Hub 1.3](azure-stack-app-service-release-notes-update-three.md).
 
     ![Enter SQL Server info in Azure App Service Installer][42]
 
-1. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in a production deployment.  For ASDK deployment you can scale the instances down to lower SKUs to reduce the core and memory commit but you will experience a performance degradation.  A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, select **Next**.
+1. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in a production deployment.  For ASDK deployment, you can scale the instances down to lower SKUs to reduce the core and memory commit but you will experience a performance degradation.  A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, select **Next**.
 
      > [!NOTE]
      > For production deployments, follow the guidance in [Capacity planning for Azure App Service server roles in Azure Stack Hub](azure-stack-app-service-capacity-planning.md).
@@ -417,7 +417,7 @@ To deploy Azure App Service in an offline environment, first create an offline i
 ## Post-deployment steps
 
 > [!IMPORTANT]
-> If you've provided the Azure App Service RP with a SQL Always On Instance, you *must* [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database). You must also synchronize the databases to prevent any loss of service in the event of a database failover.
+> If you've provided the Azure App Service RP with a SQL Always On Instance, you **must** [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database). You must also synchronize the databases to prevent any loss of service in the event of a database failover.
 
 If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB traffic between the worker subnet and the file server. In the administrator portal, go to the WorkersNsg Network Security Group and add an outbound security rule with the following properties:
 
