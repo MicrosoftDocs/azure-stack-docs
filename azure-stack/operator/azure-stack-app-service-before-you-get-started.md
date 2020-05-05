@@ -248,7 +248,6 @@ GO
 
 <!-- ASDK Only --->
 <!-- ::: zone pivot="state-asdk" -->
-
 ## Certificates and server configuration (ASDK)
 
 This section lists the prerequisites for ASDK deployments. 
@@ -306,6 +305,9 @@ GO
 ```
 
 <!-- ::: zone-end -->
+
+> [!IMPORTANT] 
+> Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server.  The resource provider does not manage these resources.  The cloud operator is responsible for backing up the App Service databases and tenant content file share.
 
 ## Licensing concerns for required file server and SQL Server
 
