@@ -83,7 +83,9 @@ Microsoft software update packages are non-cumulative and require the previous u
 
 ### Resource provider version support
 
-For Azure Stack Hub resource providers, it's important to note that only the most recently released version of a given resource provider is supported, even though you may be using an older version of Azure Stack Hub that is still within the support window.
+For Azure Stack Hub resource providers, it's important to note that only the most recently released version of a given resource provider that is compatible with your supported version of Azure Stack Hub is supported, even though you may be using an older version of Azure Stack Hub that is still within the support window.
+
+For more information about resource provider compatibility, please see the release notes for that specific resource provider.
 
 ## Get support
 
