@@ -117,11 +117,24 @@ Review the [known issues for update](#known-issues-update) and take any action p
 
 ## Known issues (update)
 
-- In situations where a customer has converted the appservice_hosting and appservice_metering databases to contained upgrade may fail if logins have not been successfully migrated to contained users
+- In situations where a customer has converted the appservice_hosting and appservice_metering databases to contained database, upgrade may fail if logins have not been successfully migrated to contained users
 
-Customers that have converted the appservice_hosting and appservice_metering databases to contained databases post deployment, and have not successfully migrated the database logins to contained users, may experience upgrade failures.  
+Customers that have converted the appservice_hosting and appservice_metering databases to contained database post deployment, and have not successfully migrated the database logins to contained users, may experience upgrade failures.  
 
 Customers must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q2.  **This script is non-destructive and will not cause downtime**.
+
+This script must be run under the following conditions
+
+1. By a user which has the system administrator privilege, for example the SQL SA Account;
+1. If using SQL Always on, ensure the script is run from the SQL instance which contains all App Service logins:
+  - appservice_hosting_FileServer
+  - appservice_hosting_HostingAdmin
+  - appservice_hosting_LoadBalancer
+  - appservice_hosting_Operations
+  - appservice_hosting_Publisher
+  - appservice_hosting_SecurePublisher
+  - appservice_hosting_WebWorkerManager
+  - All WebWorker logins - these are in the form WebWorker_<instance ip address>
 
 ```sql
         USE appservice_hosting
@@ -175,7 +188,7 @@ Customers must execute the following script against the SQL Server hosting appse
             DEALLOCATE user_cursor ;
             END
         GO
-    ```
+```
 
 ## Known issues (post-installation)
 
