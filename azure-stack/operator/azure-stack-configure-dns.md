@@ -8,7 +8,7 @@ ms.author: inhenkel
 ms.reviewer: thoroet
 ms.lastreviewed: 11/21/2019
 
-# Intent: As an Azure Stack Hub user, I want to update the DNS forwarder in Azure Stack Hub so it can resolve external names.
+# Intent: As an Azure Stack Hub operator, I want to update the DNS forwarder in Azure Stack Hub so it can resolve external names.
 # Keyword: update dns forwarder azure stack hub
 
 ---
@@ -21,6 +21,8 @@ DNS is a critical datacenter infrastructure service that can change. If it does,
 
 This article describes using the privileged endpoint (PEP) to update the DNS forwarder in Azure Stack Hub. It's recommended that you use two reliable DNS
 forwarder IP addresses.
+
+## Steps to update the DNS forwarder
 
 1. Connect to the [privileged endpoint](azure-stack-privileged-endpoint.md). It's not necessary to unlock the privileged endpoint by opening a support ticket.
 

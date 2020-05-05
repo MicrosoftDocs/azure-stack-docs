@@ -8,7 +8,7 @@ ms.author: inhenkel
 ms.reviewer: wamota
 ms.lastreviewed: 11/11/2019
 
-# Intent: As an Azure Stack Hub user, I want to change the settings on my Azure Stack Hub switch configuration so I can customize them to my needs.
+# Intent: As an Azure Stack Hub operator, I want to change the settings on my Azure Stack Hub switch configuration so I can customize them to my needs.
 # Keyword: azure stack hub switch configuration settings
 
 ---

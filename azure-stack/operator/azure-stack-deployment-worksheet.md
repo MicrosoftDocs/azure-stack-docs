@@ -8,7 +8,7 @@ ms.author: inhenkel
 ms.reviewer: wamota
 ms.lastreviewed: 04/19/2019
 
-# Intent: As an Azure Stack Hub user, I want to install and use the deployment worksheet tool so I can have all necessary deployment information in one place.
+# Intent: As an Azure Stack Hub operator, I want to install and use the deployment worksheet tool so I can have all necessary deployment information in one place.
 # Keyword: deployment worksheet azure stack hub
 
 ---

@@ -8,7 +8,7 @@ ms.author: justinha
 ms.reviewer: shisab
 ms.lastreviewed: 04/17/2020
 
-# Intent: As an Azure Stack Hub user, I want to proactively collect diagnostic logs when an alert gets raised so logs are uploaded automatically for analysis before opening a case with CSS.
+# Intent: As an Azure Stack Hub operator, I want to proactively collect diagnostic logs when an alert gets raised so logs are uploaded automatically for analysis before opening a case with CSS.
 # Keyword: proactive diagnostic log collection azure stack hub
 
 ---

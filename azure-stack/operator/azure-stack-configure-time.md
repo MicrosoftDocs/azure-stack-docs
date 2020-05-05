@@ -8,7 +8,7 @@ ms.author: inhenkel
 ms.reviewer: thoroet
 ms.lastreviewed: 10/10/2019
 
-# Intent: As an Azure Stack Hub user, I want to configure the time server in Azure Stack Hub so my system time is accurate and synchronized.
+# Intent: As an Azure Stack Hub operator, I want to configure the time server in Azure Stack Hub so my system time is accurate and synchronized.
 # Keyword: time server azure stack hub
 
 ---

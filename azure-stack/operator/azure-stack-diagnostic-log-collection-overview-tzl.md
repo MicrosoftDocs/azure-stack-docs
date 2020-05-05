@@ -8,7 +8,7 @@ ms.author: justinha
 ms.reviewer: shisab
 ms.lastreviewed: 02/26/2020
 
-# Intent: As an Azure Stack Hub user, I want to learn about diagnostic log collection so I can share them with CSS when I need help addressing an issue.
+# Intent: As an Azure Stack Hub operator, I want to learn about diagnostic log collection so I can share them with CSS when I need help addressing an issue.
 # Keyword: diagnostic log collection azure stack hub
 ---
 # Diagnostic log collection in Azure Stack Hub

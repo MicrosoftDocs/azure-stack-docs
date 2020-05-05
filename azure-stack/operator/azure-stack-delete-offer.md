@@ -8,7 +8,7 @@ ms.author: bryanla
 ms.reviewer: efemmano
 ms.lastreviewed: 04/25/2019
 
-# Intent: As an Azure Stack Hub user, I want to delete quotas, plans, offers, and subscriptions that I no longer need.
+# Intent: As an Azure Stack Hub operator, I want to delete quotas, plans, offers, and subscriptions that I no longer need.
 # Keyword: delete quotas plans offers azure stack hub
 
 ---
