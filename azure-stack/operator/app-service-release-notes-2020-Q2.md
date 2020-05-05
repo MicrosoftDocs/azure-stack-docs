@@ -19,7 +19,7 @@ ms.lastreviewed: 04/30/2020
 
 These release notes describe the improvements and fixes in Azure App Service on Azure Stack Hub 2020 Q2 and any known issues. Known issues are divided into issues directly related to the deployment, update process, and issues with the build (post-installation).
 
-[!INCLUDE [azure stack hub update reminder](../includes/app-service-hub-update-banner.md)]
+[!INCLUDE [Azure Stack Hub update reminder](../includes/app-service-hub-update-banner.md)]
 
 ## Build reference
 
@@ -31,7 +31,7 @@ Refer to the [Before You Get Started documentation](azure-stack-app-service-befo
 
 Before you begin the upgrade of Azure App Service on Azure Stack to 2020 Q2:
 
-- Ensure all roles are Ready in the Azure App Service Administration in the Azure Stack Admin Portal
+- Ensure all roles are Ready in the Azure App Service Administration in the Azure Stack Hub Admin Portal
 
 - Back up the App Service and Master Databases:
   - AppService_Hosting;
@@ -75,13 +75,29 @@ Azure App Service on Azure Stack Update Q2 includes the following improvements a
 
 - **Cumulative Updates for Windows Server are now applied to Controller roles as part of deployment and upgrade**
 
+- **Updated default Virtual Machine and Scale set skus for new deployments**:
+To maintain consistency with our public cloud service, new deployments of Azure App Service on Azure Stack Hub will use the following SKUs for the underlying machines and scale sets used to operate the resource provider
+  
+  | Role | Minimum instances | Minimum SKU |
+  | --- | --- | --- |
+  | Controller | 2 | Standard_A4_v2 - (4 cores, 8192 MB) |
+  | Management | 1 | Standard_D3_v2 - (4 cores, 14336 MB) |
+  | Publisher | 1 | Standard_A2_v2 - (2 cores, 4096 MB) |
+  | FrontEnd | 1 | Standard_A4_v2 - (4 cores, 8192 MB) |
+  | Shared Worker | 1 | Standard_A4_v2 - (4 cores, 8192 MB) |
+  | Small dedicated worker | 1 | Standard_A1_v2 - (1 cores, 2048 MB) |
+  | Medium dedicated worker | 1 | Standard_A2_v2 - (2 cores, 4096 MB) |
+  | Large dedicated worker | 1 | Standard_A4_v2 - (4 cores, 8192 MB) |
+
+For ASDK deployments, you can scale the instances down to lower SKUs to reduce the core and memory commit but you will experience a performance degradation.
+
 ### Issues fixed in this release
 
 - Upgrades will now complete if SQL Always On Cluster has failed over to secondary node
 - New deployments of Azure App Service on Azure Stack Hub do not require databases to be manually converted to contained databases
 - Adding additional workers or infrastructure role instances will complete correctly without manual intervention
 - Adding custom worker tiers will complete correctly without manual intervention
-- Removal of custom worker tiers now complete without portal errors
+- Removal of custom worker tiers now completes without portal errors
 - Workers are no longer marked as ready if the local disk is out of space
 - Time out increased for retrieving the Azure Resource Manager Certificate
 - The number of messages retrieved, from server logs and displayed in the Admin Portal, is limited to stay underneath the max Azure Resource Manager Request size
@@ -112,7 +128,7 @@ Azure App Service on Azure Stack Update Q2 includes the following improvements a
 
 ### Known issues for Cloud Admins operating Azure App Service on Azure Stack
 
-- Tenants unable to create App Service Plan using new on App Service Plan blade in tenant portal
+- Tenants unable to create App Service Plan using new on App Service Plan view in tenant portal
 
 When creating a new application, tenants can create App Service Plans during the create app workflow, or when changing the App Service Plan for a current app, or via the App Service Plan marketplace item
 
