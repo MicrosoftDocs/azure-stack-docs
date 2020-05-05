@@ -150,9 +150,10 @@ Installing the App Service resource provider takes at least an hour. The length 
 - Register the App Service admin and tenant resource providers
 - Register Gallery Items - Web, API, Function App, App Service Plan, WordPress, DNN, Orchard, and Django applications
 
-To deploy the App Service resource provider, follow these steps:
 <!-- Connected --->
 ::: zone pivot="state-connected"
+To deploy the App Service resource provider, follow these steps:
+
 1. Run the previously downloaded App Service installer (**appservice.exe**) as an admin from a computer that can access the Azure Stack Hub Admin Azure Resource Management Endpoint.
 
 2. Select **Deploy App Service or upgrade to the latest version**.
