@@ -410,7 +410,7 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 - Applicable: This issue applies to 1910 and earlier releases.
 - Cause: Unable to connect to the Privileged Endpoint (ERC VMs) from a computer running a non-English version of Windows.
-- Remediation: This is a known issue that has been fixed in releases later than 1910. As a workaround you can run the **New-PSSession** and **Enter-PSSession** Powershell cmdlets using the **en-US** culture; for examples, set the culture using this script: https://resources.oreilly.com/examples/9780596528492/blob/master/Use-Culture.ps1.
+- Remediation: This is a known issue that has been fixed in releases later than 1910. As a workaround you can run the **New-PSSession** and **Enter-PSSession** PowerShell cmdlets using the **en-US** culture; for examples, set the culture using this script: https://resources.oreilly.com/examples/9780596528492/blob/master/Use-Culture.ps1.
 - Occurrence: Rare
 
 ### Virtual machine scale set
@@ -490,7 +490,7 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 ### Load Balancer
 
 - Applicable: This issue applies to all supported releases. 
-- Cause: When adding Avaiability Set VMs to the backend pool of a Load Balancer, an error message is being displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal, the functionality is still in place and VMs are successfully added to the backend pool interally. 
+- Cause: When adding Availability Set VMs to the backend pool of a Load Balancer, an error message is being displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal, the functionality is still in place and VMs are successfully added to the backend pool interally. 
 - Occurrence: Common
 
 ### Network Security Groups
@@ -655,7 +655,7 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 ### Load Balancer
 
 - Applicable: This issue applies to all supported releases. 
-- Cause: When adding Avaiability Set VMs to the backend pool of a Load Balancer, an error message is being displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal, the functionality is still in place and VMs are successfully added to the backend pool interally. 
+- Cause: When adding Availability Set VMs to the backend pool of a Load Balancer, an error message is being displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal, the functionality is still in place and VMs are successfully added to the backend pool interally. 
 - Occurrence: Common
 
 ### Network Security Groups
