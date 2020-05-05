@@ -139,6 +139,8 @@ This script must be run under the following conditions
     - appservice_hosting_Publisher
     - appservice_hosting_SecurePublisher
     - appservice_hosting_WebWorkerManager
+    - appservice_metering_Common
+    - appservice_metering_Operations
     - All WebWorker logins - which are in the form WebWorker_<instance ip address>
 
 ```sql
