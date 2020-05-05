@@ -39,7 +39,7 @@ To access known issues for a different version, use the version selector dropdow
 
 After applying the 2002 update, an alert for an "Invalid Time Source" may incorrectly appear in the Administrator portal. This false-positive alert can be ignored and will be fixed in an upcoming release. 
 
-For other known Azure Stack Hub update issues, please see [Troubleshooting Updates in Azure Stack Hub](azure-stack-updates-troubleshoot.md).
+For other known Azure Stack Hub update issues, please see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md).
 
 ## Portal
 
@@ -204,7 +204,7 @@ For other known Azure Stack Hub update issues, please see [Troubleshooting Updat
 ::: moniker range="azs-1910"
 ## Update
 
-For known Azure Stack Hub update issues please see [Troubleshooting Updates in Azure Stack Hub](azure-stack-updates-troubleshoot.md).
+For known Azure Stack Hub update issues please see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md).
 
 ## Portal
 
