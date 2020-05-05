@@ -94,7 +94,7 @@ For ASDK deployments, you can scale the instances down to lower SKUs to reduce t
 ## Issues fixed in this release
 
 - Upgrades will now complete if SQL Always On Cluster has failed over to secondary node
-- New deployments of Azure App Service on Azure Stack Hub do not require databases to be manually converted to contained databases
+- New deployments of Azure App Service on Azure Stack Hub no longer require databases to be manually converted to contained databases
 - Adding additional workers or infrastructure role instances will complete correctly without manual intervention
 - Adding custom worker tiers will complete correctly without manual intervention
 - Removal of custom worker tiers now completes without portal errors
@@ -108,7 +108,7 @@ For ASDK deployments, you can scale the instances down to lower SKUs to reduce t
 
 ## Pre-Update steps
 
-Please review the known issues for update and take any action prescribed.
+Review the known issues for update and take any action prescribed.
 
 ## Post-deployment steps
 
@@ -119,7 +119,9 @@ Please review the known issues for update and take any action prescribed.
 
 - In situations where a customer has converted the appservice_hosting and appservice_metering databases to contained upgrade may fail if logins have not been successfully migrated to contained users
 
-In the event that customers have converted the appservice_hosting and appservice_metering databases to contained post deployment, and the database logins have not been successfully migrated to contained users, upgrades may fail.  Therefore customers must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q2.  **This script is non-destructive and will not cause downtime**.
+Customers that have converted the appservice_hosting and appservice_metering databases to contained databases post deployment, and have not successfully migrated the database logins to contained users, may experience upgrade failures.  
+
+Customers must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q2.  **This script is non-destructive and will not cause downtime**.
 
 ```sql
         USE appservice_hosting
