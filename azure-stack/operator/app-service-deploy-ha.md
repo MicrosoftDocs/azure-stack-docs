@@ -141,7 +141,7 @@ Installing the App Service resource provider takes at least an hour. The length 
 
 - Registers the required resource providers in the Default Provider Subscription
 - Grants contributor access to the App Service Identity application
-- Create Resource Group and Virtual network (if required)
+- Create Resource Group and Virtual network (if necessary)
 - Create Storage accounts and containers for App Service installation artifacts, usage service, and resource hydration
 - Download App Service artifacts and upload them to the App Service storage account
 - Deploy the App Service
