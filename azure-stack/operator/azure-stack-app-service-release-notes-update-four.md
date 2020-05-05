@@ -34,15 +34,15 @@ Before you begin the upgrade of Azure App Service on Azure Stack Hub to 1.4:
 
 - Ensure all roles are ready in the Azure App Service administration in the Azure Stack Hub administrator portal.
 
-- Back up the App Service and master databases:
+- Back up the App Service and Master Databases:
   - AppService_Hosting;
   - AppService_Metering;
   - Master
 
-> [!Important]
-> Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server.  The resource provider does not manage these resources.  The cloud operator is responsible for backing up the App Service databases and tenant content file share.
+- Back up the Tenant App content file share
 
-- Back up the tenant app content file share.
+  > [!Important]
+  > Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server.  The resource provider does not manage these resources.  The cloud operator is responsible for backing up the App Service databases and tenant content file share.
 
 - Syndicate the **Custom Script Extension** version **1.9** from Azure Marketplace.
 
