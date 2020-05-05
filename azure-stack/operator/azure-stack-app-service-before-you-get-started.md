@@ -44,12 +44,10 @@ This section lists the prerequisites for both integrated system and Azure Stack 
      - GraphAPI.psm1
 
 <!-- MultiNode Only --->
-<!-- ::: zone pivot="state-integrated" -->
 ## Certificates and server configuration (Integrated Systems)
 
 This section lists the prerequisites for integrated system deployments. 
 
-<!-- MultiNode Only --->
 ### Certificate requirements
 
 To run the resource provider in production, you must provide the following certificates:
@@ -244,10 +242,8 @@ GO
 RECONFIGURE;
 GO
 ```
-<!-- ::: zone-end -->
 
 <!-- ASDK Only --->
-<!-- ::: zone pivot="state-asdk" -->
 ## Certificates and server configuration (ASDK)
 
 This section lists the prerequisites for ASDK deployments. 
@@ -304,11 +300,6 @@ GO
 
 ```
 
-<!-- ::: zone-end -->
-
-> [!IMPORTANT] 
-> Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server.  The resource provider does not manage these resources.  The cloud operator is responsible for backing up the App Service databases and tenant content file share.
-
 ## Licensing concerns for required file server and SQL Server
 
 Azure App Service on Azure Stack Hub requires a file server and SQL Server to operate. You're free to use pre-existing resources located outside of your Azure Stack Hub deployment or deploy resources within their Azure Stack Hub Default Provider Subscription.
@@ -317,6 +308,10 @@ If you choose to deploy the resources within your Azure Stack Hub Default Provid
 
 - the infrastructure is deployed into the Default Provider Subscription;
 - the infrastructure is exclusively used by the Azure App Service on Azure Stack Hub resource provider. No other workloads, administrative (other resource providers, for example: SQL-RP) or tenant (for example: tenant apps, which require a database), are permitted to make use of this infrastructure.
+
+## Operational responsibility of file and sql servers
+
+Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server.  The resource provider does not manage these resources.  The cloud operator is responsible for backing up the App Service databases and tenant content file share.
 
 ## Retrieve the Azure Resource Manager root certificate for Azure Stack Hub
 
