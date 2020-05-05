@@ -16,7 +16,7 @@ zone_pivot_groups: state-connected-disconnected
 
 # Deploy App Service in Azure Stack Hub
 
-[!INCLUDE [azure stack hub update reminder](../includes/app-service-hub-update-banner.md)]
+[!INCLUDE [Azure Stack hub update reminder](../includes/app-service-hub-update-banner.md)]
 
 > [!IMPORTANT]
 > Before you run the resource provider installer, you must complete the steps in [Before you get started](azure-stack-app-service-before-you-get-started.md)
