@@ -34,6 +34,8 @@ Before you begin the upgrade of Azure App Service on Azure Stack Hub to 1.4:
 
 - Ensure all roles are ready in the Azure App Service administration in the Azure Stack Hub administrator portal.
 
+- Backup App Service Secrets using the App Service Administration in the Azure Stack Hub Admin Portal
+
 - Back up the App Service and Master Databases:
   - AppService_Hosting;
   - AppService_Metering;

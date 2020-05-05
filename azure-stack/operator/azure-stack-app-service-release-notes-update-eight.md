@@ -34,6 +34,8 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 1.8:
 
 - Ensure all roles are Ready in the Azure App Service Administration in the Azure Stack Admin Portal
 
+- Backup App Service Secrets using the App Service Administration in the Azure Stack Hub Admin Portal
+
 - Back up the App Service and Master Databases:
   - AppService_Hosting;
   - AppService_Metering;
