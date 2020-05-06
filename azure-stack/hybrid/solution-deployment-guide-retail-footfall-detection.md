@@ -8,7 +8,7 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: As an Azure Stack Hub User, I want to deploy a footfall detection solution using Azure and Azure Stack Hub so I can analyze visitor traffic in retail stores.
+# Intent: As an Azure Stack Hub operator, I want to deploy a footfall detection solution using Azure and Azure Stack Hub so I can analyze visitor traffic in retail stores.
 # Keyword: AI footfall detection azure stack hub
 
 ---
