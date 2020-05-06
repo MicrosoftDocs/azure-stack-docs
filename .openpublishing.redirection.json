@@ -359,7 +359,7 @@
       { 
         "source_path": "azure-stack/operator/azure-stack-updates-troubleshoot.md", 
         "redirect_url": "/azure-stack/operator/azure-stack-troubleshooting.md", 
-        "redirect_document_id": true 
+        "redirect_document_id": false
         }
   ]
 }
