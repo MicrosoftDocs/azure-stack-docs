@@ -33,9 +33,9 @@ A single concurrent user can manage resources in the Azure Stack administrator p
 
 2. On the ASDK host computer, open Server Manager (ServerManager.exe). Select **Local Server**, turn off **IE Enhanced Security Configuration**, and close Server Manager.
 
-3. Sign in to the administrator portal as **AzureStack\CloudAdmin** or use other Azure Stack Operator credentials. The ASDK administrator portal address is [https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external).
+3. Sign in to the administrator portal as **AzureStack\CloudAdmin** or use other Azure Stack Operator credentials. The ASDK administrator portal address is `https://adminportal.local.azurestack.external`.
 
-4. Sign in to the user portal as **AzureStack\CloudAdmin** or use other Azure Stack user credentials. The ASDK user portal address is [https://portal.local.azurestack.external](https://portal.local.azurestack.external).
+4. Sign in to the user portal as **AzureStack\CloudAdmin** or use other Azure Stack user credentials. The ASDK user portal address is `https://portal.local.azurestack.external`.
 
 > [!NOTE]
 > For more info on when to use which account, see [ASDK admin basics](asdk-admin-basics.md#what-account-should-i-use).
@@ -118,7 +118,7 @@ The first time you connect, you'll be prompted to install the Azure Stack root c
 
 ### Test VPN connectivity
 
-To test the portal connection, open a browser, and then go to either the user portal (https://portal.local.azurestack.external/) or the administrator portal (https://adminportal.local.azurestack.external/).
+To test the portal connection, open a browser, and then go to either the user portal at `https://portal.local.azurestack.external/` or the administrator portal `https://adminportal.local.azurestack.external/`.
 
 Sign in with the appropriate subscription credentials to create and manage resources.  
 

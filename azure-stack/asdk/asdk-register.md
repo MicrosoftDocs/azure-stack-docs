@@ -210,7 +210,7 @@ When activation is complete, you should see a message similar to: **Your environ
 
 You can use the **Region management** tile to verify that the Azure Stack registration was successful. This tile is available on the default dashboard in the administrator portal.
 
-1. Sign in to the [Azure Stack administrator portal](https://adminportal.local.azurestack.external).
+1. Sign in to the Azure Stack administrator portal `https://adminportal.local.azurestack.external`.
 
 2. From the Dashboard, select **Region management**.
 
