@@ -163,7 +163,7 @@ After logging in as the Azure Stack operator, [install Azure Stack PowerShell](a
 
 ```powershell
 $decryptioncertpassword = Read-Host -AsSecureString -Prompt "Password for the decryption certificate"
-Restore-AzsBackup -ResourceId "<BackupID>" `
+Restore-AzsBackup -Name "<BackupID>" `
  -DecryptionCertPath "<path to decryption certificate with file name (.pfx)>" `
  -DecryptionCertPassword $decryptioncertpassword
 ```
@@ -171,7 +171,7 @@ Restore-AzsBackup -ResourceId "<BackupID>" `
 **Recovery mode with encryption key**
 ```powershell
 $decryptioncertpassword = Read-Host -AsSecureString -Prompt "Password for the decryption certificate"
-Restore-AzsBackup -ResourceId "<BackupID>"
+Restore-AzsBackup -Name "<BackupID>"
 ```
 
 Wait 60 minutes after calling this cmdlet to start verification of backup data on the cloud recovered ASDK.
