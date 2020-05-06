@@ -8,7 +8,7 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: As an Azure Stack Hub user, I want to do machine learning model training at the edge with Azure and Azure Stack Hub so I can generate portable ML models from data that only exists on-premises.
+# Intent: As an Azure Stack Hub operator, I want to do machine learning model training at the edge with Azure and Azure Stack Hub so I can generate portable ML models from data that only exists on-premises.
 # Keyword: machine learning pattern azure stack hub
 ---
 

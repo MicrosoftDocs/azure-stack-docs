@@ -8,7 +8,7 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: As an Azure Stack Hub user, I want to deploy a highly available MongoDB solution to Azure and Azure Stack Hub.
+# Intent: As an Azure Stack Hub operator, I want to deploy a highly available MongoDB solution to Azure and Azure Stack Hub.
 # Keyword: deploy highly available mongodb azure stack hub
 
 ---

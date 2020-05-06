@@ -296,50 +296,52 @@
         href: azure-stack-app-service-overview.md
       - name: App Service capacity planning
         href: azure-stack-app-service-capacity-planning.md
-      - name: Before you get started
-        href: azure-stack-app-service-before-you-get-started.md
-      - name: Deploy App Service
-        href: azure-stack-app-service-deploy.md
-      - name: Deploy App Service for high availability
-        href: app-service-deploy-ha.md
-      - name: Deploy App Service offline
-        href: azure-stack-app-service-deploy-offline.md
-      - name: Update App Service
-        href: azure-stack-app-service-update.md
-      - name: Update App Service Offline
-        href: azure-stack-app-service-update-offline.md
-      - name: Add App Service infrastructure roles
-        href: azure-stack-app-service-add-worker-roles.md
-      - name: Configure deployment sources
-        href: azure-stack-app-service-configure-deployment-sources.md
-      - name: Rotate App Service secrets and certificates
-        href: app-service-rotate-certificates.md
-      - name: Back up App Service
-        href: app-service-back-up.md
-      - name: Recover App Service
-        href: app-service-recover.md
-      - name: Remove App Service
-        href: app-service-remove.md
       - name: App Service billing FAQ
         href: app-service-billing-faq.md
+      - name: Prerequisites
+        href: azure-stack-app-service-before-you-get-started.md
+      - name: Deployment
+        items:
+        - name: Deploy App Service
+          href: azure-stack-app-service-deploy.md
+        - name: Deploy App Service for high availability
+          href: app-service-deploy-ha.md
+      - name: Life cycle management 
+        items:
+        - name: Update App Service
+          href: azure-stack-app-service-update.md
+        - name: Add App Service infrastructure roles
+          href: azure-stack-app-service-add-worker-roles.md
+        - name: Configure deployment sources
+          href: azure-stack-app-service-configure-deployment-sources.md
+        - name: Rotate App Service secrets and certificates
+          href: app-service-rotate-certificates.md
+        - name: Back up App Service
+          href: app-service-back-up.md
+        - name: Recover App Service
+          href: app-service-recover.md
+        - name: Remove App Service
+          href: app-service-remove.md
       - name: App Service on Azure Stack Hub release notes
         items:
-        - name: App Service on Azure Stack Hub update 1 release notes
-          href: azure-stack-app-service-release-notes-update-one.md
-        - name: App Service on Azure Stack Hub update 2 release notes
-          href: azure-stack-app-service-release-notes-update-two.md
-        - name: App Service on Azure Stack Hub update 3 release notes
-          href: azure-stack-app-service-release-notes-update-three.md
-        - name: App Service on Azure Stack Hub update 4 release notes
-          href: azure-stack-app-service-release-notes-update-four.md
-        - name: App Service on Azure Stack Hub update 5 release notes
-          href: azure-stack-app-service-release-notes-update-five.md
-        - name: App Service on Azure Stack Hub update 6 release notes
-          href: azure-stack-app-service-release-notes-update-six.md
-        - name: App Service on Azure Stack Hub update 7 release notes
-          href: azure-stack-app-service-release-notes-update-seven.md
+        - name: App Service on Azure Stack Hub 2020 Q2 release notes
+          href: app-service-release-notes-2020-Q2.md
         - name: App Service on Azure Stack Hub update 8 release notes
           href: azure-stack-app-service-release-notes-update-eight.md
+        - name: App Service on Azure Stack Hub update 7 release notes
+          href: azure-stack-app-service-release-notes-update-seven.md
+        - name: App Service on Azure Stack Hub update 6 release notes
+          href: azure-stack-app-service-release-notes-update-six.md
+        - name: App Service on Azure Stack Hub update 5 release notes
+          href: azure-stack-app-service-release-notes-update-five.md
+        - name: App Service on Azure Stack Hub update 4 release notes
+          href: azure-stack-app-service-release-notes-update-four.md
+        - name: App Service on Azure Stack Hub update 3 release notes
+          href: azure-stack-app-service-release-notes-update-three.md
+        - name: App Service on Azure Stack Hub update 2 release notes
+          href: azure-stack-app-service-release-notes-update-two.md
+        - name: App Service on Azure Stack Hub update 1 release notes
+          href: azure-stack-app-service-release-notes-update-one.md   
     - name: Event Hubs on Azure Stack Hub
       items:
       - name: Overview
