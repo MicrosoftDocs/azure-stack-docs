@@ -159,7 +159,7 @@ You must register Azure Stack with Azure so that you can [download Azure Marketp
 **[Register Azure Stack with Azure](asdk-register.md)**
 
 ## Next steps
-Congratulations! After completing these steps, you'll have an ASDK environment with both [admin](https://adminportal.local.azurestack.external) and [user](https://portal.local.azurestack.external) portals. 
+Congratulations! After completing these steps, you'll have an ASDK environment with both admin `https://adminportal.local.azurestack.external` and user `https://portal.local.azurestack.external` portals. 
 
 [Post ASDK installation configuration tasks](asdk-post-deploy.md)
 
