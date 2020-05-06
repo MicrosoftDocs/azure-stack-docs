@@ -5,7 +5,7 @@ description: Learn about the Azure Stack Hub servicing policy and how to keep an
 author: sethmanheim
 
 ms.topic: article
-ms.date: 02/07/2020
+ms.date: 05/07/2020
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 03/18/2020
@@ -81,13 +81,19 @@ For example, if the most recently available update version is 1904, and the prev
 
 Microsoft software update packages are non-cumulative and require the previous update package or hotfix as a prerequisite. If you decide to defer one or more updates, consider the overall runtime if you want to get to the latest version.
 
+### Resource provider version support
+
+For Azure Stack Hub resource providers, it's important to note that only the most recently released version of a given resource provider that is compatible with your supported version of Azure Stack Hub is supported, even though you may be using an older version of Azure Stack Hub that is still within the support window.
+
+For more information about resource provider compatibility, please see the release notes for that specific resource provider.
+
 ## Get support
 
 Azure Stack Hub follows the same support process as Azure. Enterprise customers can follow the process described in [How to create an Azure support request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). If you're a customer of a Cloud Solution Provider (CSP), contact your CSP for support. For more information, see the [Azure Support FAQs](https://azure.microsoft.com/support/faq/).
 
-For help troubleshooting update issues, see [Best practices for troubleshooting Azure Stack Hub patch and update issues](azure-stack-updates-troubleshoot.md).
+For help troubleshooting update issues, see [Best practices for troubleshooting Azure Stack Hub patch and update issues](azure-stack-troubleshooting.md).
 
 ## Next steps
 
 - [Manage updates in Azure Stack Hub](azure-stack-updates.md)
-- [Best practices for troubleshooting Azure Stack Hub patch and update issues](azure-stack-updates-troubleshoot.md)
+- [Best practices for troubleshooting Azure Stack Hub patch and update issues](azure-stack-troubleshooting.md)
