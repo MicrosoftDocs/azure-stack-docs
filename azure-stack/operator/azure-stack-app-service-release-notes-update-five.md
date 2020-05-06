@@ -5,7 +5,7 @@ author: bryanla
 manager: stefsch
 
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 05/05/2020
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/25/2019
@@ -26,7 +26,7 @@ These release notes describe improvements, fixes, and known issues in Azure App 
 
 The App Service on Azure Stack Hub Update 5 build number is **80.0.2.15**.
 
-### Prerequisites
+## Prerequisites
 
 Refer to the [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
 
@@ -34,16 +34,21 @@ Before you begin the upgrade of Azure App Service on Azure Stack Hub to 1.5:
 
 - Ensure all roles are ready in the Azure App Service administration in the Azure Stack Hub administrator portal.
 
-- Back up the App Service and master databases:
+- Backup App Service Secrets using the App Service Administration in the Azure Stack Hub Admin Portal
+
+- Back up the App Service and Master Databases:
   - AppService_Hosting;
   - AppService_Metering;
   - Master
 
-- Back up the tenant app content file share.
+- Back up the Tenant App content file share
+
+  > [!Important]
+  > Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server.  The resource provider does not manage these resources.  The cloud operator is responsible for backing up the App Service databases and tenant content file share.
 
 - Syndicate the **Custom Script Extension** version **1.9.1** from Azure Marketplace.
 
-### New features and fixes
+## New features and fixes
 
 Azure App Service on Azure Stack Hub Update 5 includes the following improvements and fixes:
 
@@ -64,12 +69,12 @@ Azure App Service on Azure Stack Hub Update 5 includes the following improvement
 - **Updates to underlying operating system of all roles**:
   - [2019-02 Cumulative Update for Windows Server 2016 for x64-based Systems (KB4487006)](https://support.microsoft.com/help/4487006/windows-10-update-kb4487006)
 
-### Post-deployment Steps
+## Post-deployment Steps
 
 > [!IMPORTANT]  
 > If you've provided the App Service resource provider with a SQL Always On Instance you *must* [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
-### Post-update steps
+## Post-update steps
 
 For customers wishing to migrate to a contained database for existing Azure App Service on Azure Stack Hub deployments, execute these steps after the Azure App Service on Azure Stack Hub 1.5 update has completed:
 
@@ -132,6 +137,33 @@ For customers wishing to migrate to a contained database for existing Azure App 
 1. Migrate logins to contained database users.
 
     ```sql
+        USE appservice_hosting
+        IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
+        BEGIN
+        DECLARE @username sysname ;  
+        DECLARE user_cursor CURSOR  
+        FOR
+            SELECT dp.name
+            FROM sys.database_principals AS dp  
+            JOIN sys.server_principals AS sp
+                ON dp.sid = sp.sid  
+                WHERE dp.authentication_type = 1 AND dp.name NOT IN ('dbo','sys','guest','INFORMATION_SCHEMA');
+            OPEN user_cursor  
+            FETCH NEXT FROM user_cursor INTO @username  
+                WHILE @@FETCH_STATUS = 0  
+                BEGIN  
+                    EXECUTE sp_migrate_user_to_contained
+                    @username = @username,  
+                    @rename = N'copy_login_name',  
+                    @disablelogin = N'do_not_disable_login';  
+                FETCH NEXT FROM user_cursor INTO @username  
+            END  
+            CLOSE user_cursor ;  
+            DEALLOCATE user_cursor ;
+            END
+        GO
+
+        USE appservice_metering
         IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
         BEGIN
         DECLARE @username sysname ;  
@@ -171,7 +203,7 @@ For customers wishing to migrate to a contained database for existing Azure App 
         SELECT containment FROM sys.databases WHERE NAME LIKE (SELECT DB_NAME())
     ```
 
-### Known issues (post-installation)
+## Known issues (post-installation)
 
 - Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network. This issue is called out in the Azure App Service on Azure Stack Hub deployment documentation.
 
@@ -187,7 +219,7 @@ If you chose to deploy into an existing virtual network and an internal IP addre
  * Priority: 700
  * Name: Outbound_Allow_SMB445
 
-### Known issues for cloud admins operating Azure App Service on Azure Stack Hub
+## Known issues for cloud admins operating Azure App Service on Azure Stack Hub
 
 Refer to the documentation in the [Azure Stack Hub 1809 release notes](azure-stack-update-1903.md).
 
