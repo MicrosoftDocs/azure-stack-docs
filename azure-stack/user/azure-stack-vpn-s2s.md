@@ -56,7 +56,7 @@ on a site-to-site VPN connection:
 
 The instructions in this article help you set up and configure IPsec/IKE policies, as shown in the following figure:
 
-![Set up and configure IPsec/IKE policies](media/azure-stack-vpn-s2s/site-to-site.png)
+![Set up and configure IPsec/IKE policies](media/azure-stack-vpn-s2s/site-to-site.svg)
 
 ## Part 2 - Supported cryptographic algorithms and key strengths
 
@@ -111,7 +111,7 @@ For more information, see [RFC3526](https://tools.ietf.org/html/rfc3526) and [RF
 
 This section walks through the steps to create a site-to-site VPN connection with an IPsec/IKE policy. The following steps create the connection, as shown in the following figure:
 
-![site-to-site-policy](media/azure-stack-vpn-s2s/site-to-site.png)
+![site-to-site-policy](media/azure-stack-vpn-s2s/site-to-site.svg)
 
 For more detailed step-by-step instructions for creating a site-to-site VPN connection, see [Create a site-to-site VPN connection](/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell).
 

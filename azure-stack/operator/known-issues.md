@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 04/29/2020
+ms.date: 05/05/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
@@ -39,7 +39,7 @@ To access known issues for a different version, use the version selector dropdow
 
 After applying the 2002 update, an alert for an "Invalid Time Source" may incorrectly appear in the Administrator portal. This false-positive alert can be ignored and will be fixed in an upcoming release. 
 
-For other known Azure Stack Hub update issues, please see [Troubleshooting Updates in Azure Stack Hub](azure-stack-updates-troubleshoot.md).
+For other known Azure Stack Hub update issues, please see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md).
 
 ## Portal
 
@@ -75,6 +75,12 @@ For other known Azure Stack Hub update issues, please see [Troubleshooting Updat
 - Applicable: This issue applies to 1908 and above.
 - Cause: When a cable is disconnected from a network adapter, an alert does not show in the administrator portal. This issue is caused because this fault is disabled by default in Windows Server 2019.
 - Occurrence: Common
+
+### Access Control (IAM)
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The IAM extension is out of date. The Ibiza portal that shipped with Azure Stack Hub introduces a new behavior that causes the RBAC extension to fail if the user is opening the **Access Control (IAM)** blade for a subscription that is not selected in the global subscription selector (**Directory + Subscription** in the user portal). The blade displays **Loading** in a loop, and the user cannot add new roles to the subscription. The **Add** blade also displays **Loading** in a loop.
+- Remediation: Ensure that the subscription is checked in the **Directory + Subscription** menu. The menu can be accessed from the top of the portal, near the **Notifications** button, or via the shortcut on the **All resources** blade that displays **Don't see a subscription? Open Directory + Subscription settings**. The subscription must be selected in this menu.
 
 ## Networking
 
@@ -204,7 +210,7 @@ For other known Azure Stack Hub update issues, please see [Troubleshooting Updat
 ::: moniker range="azs-1910"
 ## Update
 
-For known Azure Stack Hub update issues please see [Troubleshooting Updates in Azure Stack Hub](azure-stack-updates-troubleshoot.md).
+For known Azure Stack Hub update issues please see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md).
 
 ## Portal
 
@@ -247,7 +253,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Cause: In the user portal, when you try to upload a blob in the upload blade, there is an option to select **AAD** or **Key Authentication**, however **AAD** is not supported in Azure Stack Hub.
 - Occurrence: Common
 
-
 ### Alert for network interface disconnected
 
 - Applicable: This issue applies to 1908 and above.
@@ -265,7 +270,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, the **VPN Troubleshoot** feature and **Metrics** in a VPN gateway resource appears, however this is not supported in Azure Stack Hub.
 - Occurrence: Common
-
 
 ### Delete a storage container
 
@@ -410,7 +414,7 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 - Applicable: This issue applies to 1910 and earlier releases.
 - Cause: Unable to connect to the Privileged Endpoint (ERC VMs) from a computer running a non-English version of Windows.
-- Remediation: This is a known issue that has been fixed in releases later than 1910. As a workaround you can run the **New-PSSession** and **Enter-PSSession** Powershell cmdlets using the **en-US** culture; for examples, set the culture using this script: https://resources.oreilly.com/examples/9780596528492/blob/master/Use-Culture.ps1.
+- Remediation: This is a known issue that has been fixed in releases later than 1910. As a workaround you can run the **New-PSSession** and **Enter-PSSession** PowerShell cmdlets using the **en-US** culture; for examples, set the culture using this script: https://resources.oreilly.com/examples/9780596528492/blob/master/Use-Culture.ps1.
 - Occurrence: Rare
 
 ### Virtual machine scale set
@@ -490,7 +494,7 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 ### Load Balancer
 
 - Applicable: This issue applies to all supported releases. 
-- Cause: When adding Avaiability Set VMs to the backend pool of a Load Balancer, an error message is being displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal, the functionality is still in place and VMs are successfully added to the backend pool interally. 
+- Cause: When adding Availability Set VMs to the backend pool of a Load Balancer, an error message is being displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal, the functionality is still in place and VMs are successfully added to the backend pool interally. 
 - Occurrence: Common
 
 ### Network Security Groups
@@ -655,7 +659,7 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 ### Load Balancer
 
 - Applicable: This issue applies to all supported releases. 
-- Cause: When adding Avaiability Set VMs to the backend pool of a Load Balancer, an error message is being displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal, the functionality is still in place and VMs are successfully added to the backend pool interally. 
+- Cause: When adding Availability Set VMs to the backend pool of a Load Balancer, an error message is being displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal, the functionality is still in place and VMs are successfully added to the backend pool interally. 
 - Occurrence: Common
 
 ### Network Security Groups

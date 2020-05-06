@@ -25,7 +25,7 @@ These release notes describe new features, fixes, and known issues in Azure App 
 
 The App Service on Azure Stack Hub Update 7 build number is **84.0.2.10**.
 
-### Prerequisites
+## Prerequisites
 
 See [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
 
@@ -33,16 +33,21 @@ Before you begin the upgrade of Azure App Service on Azure Stack Hub to 1.7:
 
 - Ensure all roles are ready in Azure App Service administration in the Azure Stack Hub administrator portal.
 
-- Back up the App Service and master databases:
+- Backup App Service Secrets using the App Service Administration in the Azure Stack Hub Admin Portal
+
+- Back up the App Service and master Databases:
   - AppService_Hosting;
   - AppService_Metering;
-  - Master
+  - master
 
 - Back up the tenant app content file share.
 
-- Syndicate the **Custom Script Extension** version **1.9.3** from Azure Stack Hub Marketplace.
+  > [!Important]
+  > Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server.  The resource provider does not manage these resources.  The cloud operator is responsible for backing up the App Service databases and tenant content file share.
 
-### New features and fixes
+- Syndicate the **Custom Script Extension** version **1.9.3** from the Azure Stack Hub Marketplace.
+
+## New features and fixes
 
 Azure App Service on Azure Stack Hub Update 7 includes the following improvements and fixes:
 
@@ -90,12 +95,12 @@ Azure App Service on Azure Stack Hub Update 7 includes the following improvement
 
   **Existing** Deployments - If you've modified the setting on the controller, the value will change from **False** to **Disabled** and a previous value of **true** will become **Automatic**.
 
-### Post-deployment steps
+## Post-deployment steps
 
 > [!IMPORTANT]
 > If you've provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
-### Known issues (post-installation)
+## Known issues (post-installation)
 
 - Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network, as called out in the Azure App Service on Azure Stack Hub deployment documentation.
 
@@ -111,7 +116,7 @@ If you chose to deploy into an existing virtual network and an internal IP addre
 * Priority: 700
 * Name: Outbound_Allow_SMB445
 
-### Known issues for cloud admins operating Azure App Service on Azure Stack Hub
+## Known issues for cloud admins operating Azure App Service on Azure Stack Hub
 
 Refer to the documentation in the [Azure Stack Hub 1907 release notes](azure-stack-release-notes-1907.md)
 

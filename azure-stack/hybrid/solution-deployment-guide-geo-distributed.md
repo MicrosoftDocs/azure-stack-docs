@@ -8,7 +8,7 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: As an Azure Stack Hub user, I want to direct traffic to specific endpoints with a geo-distributed app solution using Azure and Azure Stack Hub so I can ensure information is routed to endpoints based on regional requirements.
+# Intent: As an Azure Stack Hub operator, I want to direct traffic to specific endpoints with a geo-distributed app solution using Azure and Azure Stack Hub so I can ensure information is routed to endpoints based on regional requirements.
 # Keyword: geo-distributed traffic app azure stack hub
 
 ---
@@ -342,7 +342,7 @@ After adding the CNAME, the DNS records page looks like the following example:
 
 #### Test in a browser
 
-Browse to the DNS name(s) configured earlier (for example, `northwindcloud.com` or www.northwindcloud.com).
+Browse to the DNS name(s) configured earlier (for example, `northwindcloud.com` or `www.northwindcloud.com`).
 
 ## Part 3: Bind a custom SSL cert
 
@@ -536,7 +536,7 @@ When the operation is complete, go to any of the HTTP URLs that point to the app
 
 - https://<app_name>.azurewebsites.net
 - `https://northwindcloud.com`
-- <https://www.northwindcloud.com>
+- `https://www.northwindcloud.com`
 
 #### Enforce TLS 1.1/1.2
 

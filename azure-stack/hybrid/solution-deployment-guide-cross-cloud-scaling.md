@@ -8,7 +8,7 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: As an Azure Stack Hub user, I want to deploy an app that scales cross-cloud using Azure and Azure Stack Hub so I can combine the benefits of private cloud with the scalability of the public cloud.
+# Intent: As an Azure Stack Hub operator, I want to deploy an app that scales cross-cloud using Azure and Azure Stack Hub so I can combine the benefits of private cloud with the scalability of the public cloud.
 # Keyword: cross-cloud app azure stack hub
 
 ---
@@ -39,7 +39,7 @@ In this solution, you'll build a sample environment to:
 - Azure subscription. If needed, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before beginning.
 - An Azure Stack Hub integrated system or deployment of Azure Stack Development Kit (ASDK).
   - For instructions on installing Azure Stack Hub, see [Install the ASDK](../asdk/asdk-install.md).
-  - For an ASDK post-deployment automation script, go to: [https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1)
+  - For an ASDK post-deployment automation script, go to: [https://github.com/mattmcspirit/azurestack/](https://github.com/mattmcspirit/azurestack)
   - This installation may require a few hours to complete.
 - Deploy [App Service](../operator/azure-stack-app-service-deploy.md) PaaS services to Azure Stack Hub.
 - [Create plans/offers](../operator/service-plan-offer-subscription-overview.md) within the Azure Stack Hub environment.

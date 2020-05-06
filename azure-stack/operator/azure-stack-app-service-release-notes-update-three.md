@@ -26,7 +26,7 @@ These release notes describe improvements, fixes, and known issues in Azure App 
 
 The App Service on Azure Stack Hub Update 3 build number is **74.0.13698.31**.
 
-### Prerequisites
+## Prerequisites
 
 Refer to the [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
 
@@ -34,7 +34,7 @@ Before you begin the upgrade of Azure App Service on Azure Stack Hub to 1.3, ens
 
 ![App Service role status](media/azure-stack-app-service-release-notes-update-three/image01.png)
 
-### New features and fixes
+## New features and fixes
 
 Azure App Service on Azure Stack Hub Update 3 includes the following improvements and fixes:
 
@@ -66,7 +66,7 @@ Azure App Service on Azure Stack Hub Update 3 includes the following improvement
   - [Servicing stack update for Windows Server 2016 for x64-based Systems (KB4132216)](https://support.microsoft.com/help/4132216/servicing-stack-update-for-windows-10-1607-may-17-2018)
   - [2018-07 Cumulative Update for Windows Server 2016 for x64-based Systems (KB4338822)](https://support.microsoft.com/help/4338822/windows-10-update-kb4338822)
 
-### Post Update Steps (optional)
+## Post Update Steps (optional)
 
 For customers wishing to migrate to a contained database for existing Azure App Service on Azure Stack Hub deployments, execute these steps after the Azure App Service on Azure Stack Hub 1.3 update has completed:
 
@@ -170,7 +170,7 @@ For customers wishing to migrate to a contained database for existing Azure App 
         SELECT containment FROM sys.databases WHERE NAME LIKE (SELECT DB_NAME())
     ```
 
-### Known issues (post-installation)
+## Known issues (post-installation)
 
 - Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network. This issue is called out in the Azure App Service on Azure Stack Hub deployment documentation.
 
@@ -186,7 +186,7 @@ If you chose to deploy into an existing virtual network and an internal IP addre
  * Priority: 700
  * Name: Outbound_Allow_SMB445
 
-### Known issues for cloud admins operating Azure App Service on Azure Stack Hub
+## Known issues for cloud admins operating Azure App Service on Azure Stack Hub
 
 Refer to the documentation in the Azure Stack Hub 1807 release notes.
 
