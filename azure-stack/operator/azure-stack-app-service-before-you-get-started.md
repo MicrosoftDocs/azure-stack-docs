@@ -113,7 +113,7 @@ Azure App Service requires the use of a file server. For production deployments,
 A [reference architecture quickstart template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) is now available that will deploy a file server and SQL Server. This template supports Active Directory infrastructure in a virtual network configured to support a highly available deployment of Azure App Service on Azure Stack Hub.
 
 > [!NOTE]
-> The ASDK instance must be able to download resources from GitHub in order to complete the deployment.
+> The integrated system instance must be able to download resources from GitHub in order to complete the deployment.
 
 #### Steps to deploy a custom file server
 
