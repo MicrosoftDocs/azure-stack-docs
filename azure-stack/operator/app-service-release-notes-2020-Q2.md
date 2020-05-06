@@ -85,16 +85,16 @@ Azure App Service on Azure Stack Update Q2 includes the following improvements a
 - **Updated default Virtual Machine and Scale set skus for new deployments**:
 To maintain consistency with our public cloud service, new deployments of Azure App Service on Azure Stack Hub will use the following SKUs for the underlying machines and scale sets used to operate the resource provider
   
-  | Role | Minimum instances | Minimum SKU |
-  | --- | --- | --- |
-  | Controller | 2 | Standard_A4_v2 - (4 cores, 8192 MB) |
-  | Management | 1 | Standard_D3_v2 - (4 cores, 14336 MB) |
-  | Publisher | 1 | Standard_A2_v2 - (2 cores, 4096 MB) |
-  | FrontEnd | 1 | Standard_A4_v2 - (4 cores, 8192 MB) |
-  | Shared Worker | 1 | Standard_A4_v2 - (4 cores, 8192 MB) |
-  | Small dedicated worker | 1 | Standard_A1_v2 - (1 cores, 2048 MB) |
-  | Medium dedicated worker | 1 | Standard_A2_v2 - (2 cores, 4096 MB) |
-  | Large dedicated worker | 1 | Standard_A4_v2 - (4 cores, 8192 MB) |
+  | Role | Minimum SKU |
+  | --- | --- |
+  | Controller | Standard_A4_v2 - (4 cores, 8192 MB) |
+  | Management | Standard_D3_v2 - (4 cores, 14336 MB) |
+  | Publisher | Standard_A2_v2 - (2 cores, 4096 MB) |
+  | FrontEnd | Standard_A4_v2 - (4 cores, 8192 MB) |
+  | Shared Worker | Standard_A4_v2 - (4 cores, 8192 MB) |
+  | Small dedicated worker | Standard_A1_v2 - (1 cores, 2048 MB) |
+  | Medium dedicated worker | Standard_A2_v2 - (2 cores, 4096 MB) |
+  | Large dedicated worker | Standard_A4_v2 - (4 cores, 8192 MB) |
 
 For ASDK deployments, you can scale the instances down to lower SKUs to reduce the core and memory commit but you will experience a performance degradation.
 
