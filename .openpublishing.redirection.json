@@ -355,6 +355,11 @@
       "source_path": "azure-stack/operator/azure-stack-hci-overview.md", 
       "redirect_url": "/azure-stack/hci/overview", 
       "redirect_document_id": true 
-      }
+      },
+      { 
+        "source_path": "azure-stack/operator/azure-stack-updates-troubleshoot.md", 
+        "redirect_url": "/azure-stack/operator/azure-stack-troubleshooting", 
+        "redirect_document_id": false
+        }
   ]
 }
