@@ -4,7 +4,7 @@ description: Learn how to use API version profiles with Ruby in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 05/05/2020
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
@@ -45,7 +45,7 @@ An API profile is a combination of resource providers and service versions. You 
 
 - If not available, create a subscription and save the subscription ID to be used later. Instructions to create a subscription are in the [Create subscriptions to offers in Azure Stack Hub](../operator/azure-stack-subscribe-plan-provision-vm.md) article.
 - Create a service principal and save its ID and secret. Instructions to create a service principal for Azure Stack Hub are in the [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md) article.
-- Make sure your service principal has the contributor/owner role assigned on your subscription. Instructions on how to assign a role to a service principal are in the [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md).
+- Make sure your service principal has the contributor/owner role assigned on your subscription. Instructions on how to assign a role to a service principal are in the [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md) article.
 
 ## Install the RubyGem packages
 
