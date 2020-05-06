@@ -37,7 +37,7 @@ To access known issues for a different version, use the version selector dropdow
 ::: moniker range="azs-2005"
 ## Update
 
-For known Azure Stack Hub update issues please see [Troubleshooting Updates in Azure Stack Hub](azure-stack-updates-troubleshoot.md).
+For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
 ## Portal
 
