@@ -342,7 +342,7 @@ After adding the CNAME, the DNS records page looks like the following example:
 
 #### Test in a browser
 
-Browse to the DNS name(s) configured earlier (for example, `northwindcloud.com` or www.northwindcloud.com).
+Browse to the DNS name(s) configured earlier (for example, `northwindcloud.com` or `www.northwindcloud.com`).
 
 ## Part 3: Bind a custom SSL cert
 
@@ -536,7 +536,7 @@ When the operation is complete, go to any of the HTTP URLs that point to the app
 
 - https://<app_name>.azurewebsites.net
 - `https://northwindcloud.com`
-- <https://www.northwindcloud.com>
+- `https://www.northwindcloud.com`
 
 #### Enforce TLS 1.1/1.2
 
