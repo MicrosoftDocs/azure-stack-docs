@@ -1,25 +1,23 @@
 ---
-title: Monitor updates in Azure Stack Hub using PowerShell 
-description: Learn to monitor updates in Azure Stack Hub using PowerShell
+title: Monitor updates with PowerShell in Azure Stack Hub
+description: Learn how to monitor updates with PowerShell in Azure Stack Hub.
 author: IngridAtMicrosoft
-
 ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: inhenkel
 ms.lastreviewed: 08/23/2019
 ms.reviewer: ppacent
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub operator, I want to monitor updates with PowerShell so I can monitor and manage all my updates.
+# Keyword: monitor updates powershell azure stack hub
 
 ---
 
-
-# Monitor updates in Azure Stack Hub using PowerShell
+# Monitor updates with PowerShell in Azure Stack Hub
 
 You can use the Azure Stack Hub administrative endpoints to monitor and manage your updates. They're accessible with PowerShell. For instructions on getting set up with PowerShell on Azure Stack Hub, see [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
 
-You can use the following PowerShell cmdlet to manage your updates:
+You can use the following PowerShell cmdlets to manage your updates:
 
 | Cmdlet | Description |
 |------------------------------------------------------|-------------|
@@ -31,7 +29,7 @@ You can use the following PowerShell cmdlet to manage your updates:
 
 ## Get a list of update runs
 
-To get the list of update runs command:
+To get the list of update runs:
 
 ```powershell
 Get-AzsUpdateRun -UpdateName Microsoft1.0.180302.1
@@ -44,9 +42,11 @@ If the update fails, you can resume the update run where it left off by running 
 ```powershell
 Get-AzsUpdateRun -Name 5173e9f4-3040-494f-b7a7-738a6331d55c -UpdateName Microsoft1.0.180305.1 | Resume-AzsUpdateRun
 ```
+
 ## Troubleshoot
-For more information on troubleshooting updates, see [Azure Stack Troubleshooting](azure-stack-troubleshooting.md)
+
+For more information on troubleshooting updates, see [Azure Stack Troubleshooting](azure-stack-troubleshooting.md).
 
 ## Next steps
 
--   [Managing updates in Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates)
+- [Managing updates in Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates)
