@@ -219,7 +219,7 @@ You can download the helper script from [Azure Stack Hub Tools](https://github.c
 
 If you decide to manually run the commands, follow these steps:
 
-1. Copy the following content into a .txt file (for example, saved as c:\ClaimRules.txt) on your datacenter's AD FS instance or farm member:
+1. Copy the following content into a .txt file (for example, saved as c:\ClaimIssuanceRules.txt) on your datacenter's AD FS instance or farm member:
 
    ```text
    @RuleTemplate = "LdapClaims"

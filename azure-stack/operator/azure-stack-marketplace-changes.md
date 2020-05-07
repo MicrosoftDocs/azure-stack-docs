@@ -3,7 +3,7 @@ title: What's new in the Azure Stack Hub Marketplace
 description: Changes and updates in the Azure Stack Hub Marketplace.
 author: sethmanheim
 ms.topic: article
-ms.date: 04/27/2020
+ms.date: 05/06/2020
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 10/01/2019
@@ -57,6 +57,7 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 - Bitnami X2Engine Sales CRM
 - Bitnami SugarCRM
 - Bitnami Node.js High-Availability Cluster
+- Bitnami ProcessMaker Enterprise Edition
 - A10 vThunder: L4-L7 Application Delivery Controller, Global Server Load Balancing (GSLB), SSL Insight
 - Check Point vSEC Security Management
 
