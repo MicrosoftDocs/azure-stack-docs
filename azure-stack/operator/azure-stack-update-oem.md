@@ -19,7 +19,7 @@ You can apply original equipment manufacturer (OEM) updates to your Azure Stack 
 
 ## Overview of OEM updates
 
-In addition to Microsoft Azure Stack Hub updates, many OEMs also release regular updates for your Azure Stack Hub hardware, such as driver and firmware updates. These updates are referred to as **OEM Package Updates**. To understand whether your OEM releases OEM Package Updates, check your [OEM's Azure Stack Hub documentation](#oem-contact-information).
+In addition to Microsoft Azure Stack Hub updates, many OEMs also release regular updates for your Azure Stack Hub hardware, such as driver and firmware updates. These updates are referred to as **OEM package updates**. To understand whether your OEM releases OEM package updates, check your [OEM's Azure Stack Hub documentation](#oem-contact-information).
 
 These OEM package updates are uploaded into the **updateadminaccount** storage account and applied via the Azure Stack Hub administrator portal. For more information, see [Applying OEM updates](#apply-oem-updates).
 
