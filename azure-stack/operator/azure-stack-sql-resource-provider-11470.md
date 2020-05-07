@@ -31,11 +31,11 @@ Download the SQL resource provider binary and then run the self-extractor to ext
 
 ## New features and fixes
 
-This version of the Azure Stack Hub SQL resource provider is a hotfix release to make the resource provider compatible with some of the latest portal changes in the 1910 update. There are no new features.
+This version of the Azure Stack Hub SQL resource provider is a hotfix release to make the resource provider compatible with the latest portal changes in the 1910 update. There are no new features.
 
 It also supports the latest Azure Stack Hub API version profile 2019-03-01-hybrid and Azure Stack Hub PowerShell module 1.8.0. So during deployment and update, no specific history versions of modules need to be installed.
 
-Please follow the resource provider update process to apply the SQL resource provider hotfix 1.1.47.0 after Azure Stack Hub is upgraded to the 1910 update. It will help address a known issue in the administrator portal where Capacity Monitoring in SQL resource provider keeps loading.
+Follow the resource provider update process to apply the SQL resource provider hotfix 1.1.47.0 after Azure Stack Hub is upgraded to the 1910 update. It will help address a known issue in the administrator portal where Capacity Monitoring in SQL resource provider keeps loading.
 
 ## Known issues
 
