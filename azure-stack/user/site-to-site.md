@@ -4,10 +4,10 @@ title: Troubleshoot site-to-site VPN connections in Azure Stack Hub
 description: Troubleshooting steps you can take after you configure a site-to-site VPN connection between an on-premises network and an Azure Stack Hub virtual network.
 author: sethmanheim
 ms.author: sethm
-ms.date: 05/05/2020
+ms.date: 05/07/2020
 ms.topic: article
 ms.reviewer: sranthar
-ms.lastreviewed: 05/05/2020
+ms.lastreviewed: 05/07/2020
 
 ---
 
@@ -19,14 +19,26 @@ If your Azure Stack Hub issue is not addressed in this article, you can visit th
 
 You also can submit an Azure support request. Please see [Azure Stack Hub support](../operator/azure-stack-manage-basics.md#where-to-get-support).
 
-## Troubleshooting steps
+## Initial troubleshooting steps
 
 The Azure Stack Hub default parameters for IPsec/IKEV2 have changed [starting with the 1910 build](../user/azure-stack-vpn-gateway-settings.md#ike-phase-1-main-mode-parameters) Please contact your Azure Stack Hub operator for more information on the build version.
 
 > [!IMPORTANT]
 > When using an S2S tunnel, packets are further encapsulated with additional headers. This encapsulation increases the overall size of the packet. In these scenarios, you must clamp TCP **MSS** at **1350**. If your VPN devices do not support MSS clamping, you can set the MTU on the tunnel interface to **1400** bytes instead. For more information, see [Virutal Network TCPIP performance tuning](/azure/virtual-network/virtual-network-tcpip-performance-tuning).
 
+- Confirm that the VPN configure is route-based (IKEv2). Azure Stack Hub does not support policy-based (IKEv1) configurations.
+
+- Check whether the on-premises VPN device has the perfect forward secrecy feature enabled. This feature can cause disconnection problems. If the VPN device has perfect forward secrecy enabled, disable the feature. Then, update the VPN gateway IPsec policy.
+
 - Check whether you are using a [validated VPN device and operating system version](/azure/vpn-gateway/vpn-gateway-about-vpn-devices#devicetable). If the device is not a validated VPN device, you might have to contact the device manufacturer to see if there is a compatibility issue.
+
+- Verify the VPN peer IPs:
+
+  - The IP definition in the **Local Network Gateway** object in Azure Stack Hub should match the on-premises device IP.
+
+  - The Azure Stack Hub gateway IP definition that is set on the on-premises device should match the Azure Stack Hub gateway IP.
+
+## Status "Not Connected" - intermittent disconnects
 
 - Compare the shared key for the on-premises VPN device to the AzSH virtual network VPN to make sure that the keys match. To view the shared key for the AzSH VPN connection, use one of the following methods:
 
@@ -40,11 +52,7 @@ The Azure Stack Hub default parameters for IPsec/IKEV2 have changed [starting wi
       Get-AzureRMVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group>
       ```
 
-- Verify the VPN peer IPs:
-
-  - The IP definition in the **Local Network Gateway** object in Azure Stack Hub should match the on-premises device IP.
-
-  - The Azure Stack Hub gateway IP definition that is set on the on-premises device should match the Azure Stack Hub gateway IP.
+## Status "Connected" – traffic not flowing
 
 - Check for, and remove the user-defined routing (UDR) and network security groups (NSGs) on the gateway subnet, and then test the result. If the problem is resolved, validate the settings that UDR or NSG applied.
 
@@ -63,10 +71,6 @@ The Azure Stack Hub default parameters for IPsec/IKEV2 have changed [starting wi
   - Verify that the virtual network address space(s) match exactly between the Azure Stack Hub virtual network and on-premises definitions.
 
   - Verify that the subnets match exactly between the **Local Network Gateway** and on-premises definitions for the on-premises network.
-
-- Check whether the on-premises VPN device has the perfect forward secrecy feature enabled. This feature can cause disconnection problems. If the VPN device has perfect forward secrecy enabled, disable the feature. Then, update the VPN gateway IPsec policy.
-
-- IKEv2 VPN is a standards-based IPsec VPN solution that uses outbound UDP ports 500 and 4500 and IP protocol 50. Firewalls do not always open these ports, so it's possible IKEv2 VPN cannot traverse proxies and firewalls. Please make sure those ports are open on the routing path.
 
 ## Create a support ticket
 
