@@ -272,7 +272,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - When downloading marketplace items from Azure to Azure Stack Hub, there's a new user interface that enables you to specify a version of the item when multiple versions exist. The new UI is available in both connected and disconnected scenarios. For more information, see [Download marketplace items from Azure to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md).  
 
-- Starting with the 1910 release, the Azure Stack Hub system **requires** an additional /20 private internal IP space.  See (Network integration planning for Azure Stack)[azure-stack-network.md] for more information.
+- Starting with the 1910 release, the Azure Stack Hub system **requires** an additional /20 private internal IP space.  See [Network integration planning for Azure Stack](azure-stack-network.md]) for more information.
   
 - The infrastructure backup service deletes partially uploaded backup data if the external storage location runs out of capacity during the upload procedure.  
 
