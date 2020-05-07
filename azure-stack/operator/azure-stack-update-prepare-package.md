@@ -1,19 +1,17 @@
 ---
-title: Prepare an Azure Stack Hub update package 
-description: Learn to prepare an Azure Stack Hub update package.
+title: Prepare update package in Azure Stack Hub
+description: Learn to prepare an update package in Azure Stack Hub.
 author: IngridAtMicrosoft
-
 ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: inhenkel
 ms.lastreviewed: 09/10/2019
 ms.reviewer: ppacent
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub operator, I want to prepare an update package so I can use it to update my Azure Stack Hub environment.
+# Keyword: prepare update package azure stack hub
 
 ---
-
 
 # Prepare an Azure Stack Hub update package
 
