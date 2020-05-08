@@ -20,7 +20,7 @@ This article provides an overview of preparing Azure Stack Hub update packages s
 - [Downloading the update package](#download-the-update-package).
 - [Importing the update package into your Azure Stack Hub environment via the Azure Stack Hub administrator portal](#import-and-install-updates).
 
-On systems that can connect to the automatic update endpoints, Azure Stack Hub software updates and hotfixes are automatically downloaded and prepared. On systems without connectivity and for any update from the OEM, the update package must be prepared as explained in this topic.  
+On systems that can connect to the automatic update endpoints, Azure Stack Hub software updates and hotfixes are automatically downloaded and prepared. On systems without connectivity and for any update from the original equipment manufacturer (OEM), the update package must be prepared as explained in this topic.  
 
 The following table shows when update packages require manual preparation and when they're prepared automatically.
 
@@ -35,7 +35,7 @@ The following table shows when update packages require manual preparation and wh
 
 ## Download the update package
 
-The update package for Azure Stack Hub updates and hotfixes is available through the update blade for connected systems. You need to download the package and move the package to a location that's accessible to your Azure Stack Hub instance if you're updating an OEM package, or if you're supporting a disconnected system. You may also need to download and then upload the package to an accessible location if you're running a system with an intermittent connection.
+The update package for Azure Stack Hub updates and hotfixes is available through the update blade for connected systems. Download the package and move the package to a location that's accessible to your Azure Stack Hub instance if you're updating an OEM package or if you're supporting a disconnected system. You also might need to download and then upload the package to an accessible location if you're running a system with an intermittent connection.
 
 Review the package contents. An update package typically consists of the following files:
 
@@ -55,11 +55,11 @@ Azure Stack Hub updates for [full and express updates](https://docs.microsoft.co
 
 ### Where to download Azure Stack Hub hotfix packages
 
-Package for [Azure Stack Hub hotfixes](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates#update-package-types) are hosted in the same secure Azure endpoint as for Azure Stack Hub updates. Azure Stack Hub operators with connected instances will see the [Azure Stack Hub updates automatically appear in the administrator portal](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#automatic-download-and-preparation-for-update-packages). You can download them using the embedded links in each of the respective hotfix KB articles, like [Azure Stack Hub hotfix 1.1906.11.52](https://support.microsoft.com/help/4515650). You can find hotfixes in the release notes corresponding to your Azure Stack Hub version.
+Packages for [Azure Stack Hub hotfixes](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates#update-package-types) are hosted in the same secure Azure endpoint as for Azure Stack Hub updates. Azure Stack Hub operators with connected instances will see the [Azure Stack Hub updates automatically appear in the administrator portal](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#automatic-download-and-preparation-for-update-packages). You can download them using the embedded links in each of the respective hotfix KB articles, like [Azure Stack Hub hotfix 1.1906.11.52](https://support.microsoft.com/help/4515650). You can find hotfixes in the release notes corresponding to your Azure Stack Hub version.
 
 ### Where to download OEM update packages
 
-Your OEM vendor will also release updates, like driver and firmware updates. While these updates are delivered as separate [OEM package updates](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates#update-package-types) by your hardware vendor, they're still imported, installed, and managed the same way as update packages from Microsoft. You can find a list of vendor contact links at [Apply Azure Stack Hub original equipment manufacturer (OEM) updates](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-oem#oem-contact-information).
+Your OEM vendor will also release updates, like driver and firmware updates. While these updates are delivered as separate [OEM package updates](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates#update-package-types) by your hardware vendor, they're still imported, installed, and managed the same way as update packages from Microsoft. You can find a list of vendor contact links at [Apply Azure Stack Hub OEM updates](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-oem#oem-contact-information).
 
 ## Import and install updates
 
@@ -100,7 +100,7 @@ The following procedure shows how to import and install update packages in the a
 
 11. To install the update, select the package that's marked as **Ready** and either right-click the package and select **Update now**, or select the **Update now** action near the top.
 
-12. When you select the installing update package, you can view the status in the **Update run details** area. From here, you can also select **Download summary** to download the log files. Logs from update runs are available for 6 months after the attempt ended.
+12. When you select the installing update package, you can view the status in the **Update run details** area. From here, you can also select **Download summary** to download the log files. Logs from update runs are available for six months after the attempt ended.
 
 13. When the update finishes, the Update blade shows the updated Azure Stack Hub version.
 
