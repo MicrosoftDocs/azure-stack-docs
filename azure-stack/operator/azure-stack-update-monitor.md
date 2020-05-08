@@ -29,7 +29,7 @@ You can use the following PowerShell cmdlets to manage your updates:
 
 ## Get a list of update runs
 
-To get the list of update runs:
+To get the list of update runs, run the following command:
 
 ```powershell
 Get-AzsUpdateRun -UpdateName Microsoft1.0.180302.1
