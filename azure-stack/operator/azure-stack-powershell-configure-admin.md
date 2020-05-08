@@ -63,7 +63,7 @@ Connect to the Azure Stack Hub operator environment with PowerShell with Azure A
   ```
 
 > [!Note]  
-> AD FS only supports interactive authentication with user identities. If a credential object is required, you must use a service principal (SPN). For more information on setting up a service principal with Azure Stack Hub and AD FS as your identity management service, see [Manage an AD FS service principal](azure-stack-create-service-principals.md#manage-an-ad-fs-service-principal).
+> AD FS only supports interactive authentication with user identities. If a credential object is required, you must use a service principal (SPN). For more information on setting up a service principal with Azure Stack Hub and AD FS as your identity management service, see [Manage an AD FS app identity](azure-stack-create-service-principals.md#manage-an-ad-fs-app-identity).
 
 ## Test the connectivity
 
