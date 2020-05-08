@@ -4,7 +4,7 @@ description: Learn about and configure IPsec/IKE policy for site-to-site VPN or 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/07/2020
+ms.date: 05/07/2020
 ms.author: sethm
 ms.lastreviewed: 05/07/2019
 
@@ -121,7 +121,7 @@ Before you begin, make sure you have the following prerequisites:
 
 - An Azure subscription. If you don't already have an Azure subscription, you can activate your [MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), or sign up for a [free account](https://azure.microsoft.com/pricing/free-trial/).
 
-- The Azure Resource Manager PowerShell cmdlets. For more info on installing the PowerShell cmdlets, see [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md).
+- The Azure Resource Manager PowerShell cmdlets. For more info about installing the PowerShell cmdlets, see [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md).
 
 ### Step 1 - Create the virtual network, VPN gateway, and local network gateway
 
