@@ -75,7 +75,7 @@ Before the MySQL server can be added as an Azure Stack Hub MySQL Server host, ex
 
 4. Create a remote access user account to be used by the Azure Stack Hub MySQL Hosting Server to connect to MySQL.
 
-    Run the following commands to log in to MySQL as root, using the root password created earlier. Create a new admin user and replace *\<username\>* and *\<password\>* as required for your environment. For example, the created user is named **sa** and a strong password is used:
+    Run the following commands to log in to MySQL as root, using the root password which is recorded in *~/bitnami_credentials*. Create a new admin user and replace *\<username\>* and *\<password\>* as required for your environment. In this example, the created user is named **sa** and a strong password is used:
 
    ```
    mysql -u root -p
