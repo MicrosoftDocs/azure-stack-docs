@@ -45,9 +45,6 @@ By default, no public access is configured for MySQL into the host VM. For the A
 
 Before the MySQL server can be added as an Azure Stack Hub MySQL Server host, external access must be enabled. Take Bitnami MySQL, which is available in Azure Stack Hub marketplace as an example, you can take the following steps to configure the external access.
 
-> [!NOTE]
-> The MySQL hosting server should use password as the authentication type. SSH public key cannot be supported by MySQL resource provider.
-
 1. Using an SSH client (this example uses [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)) login to the MySQL server from a computer that can access the public IP.
 
     Use the public IP and log in to the VM with the username of **bitnami** and the application password you created earlier without special characters.
