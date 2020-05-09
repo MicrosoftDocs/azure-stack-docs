@@ -23,9 +23,30 @@ You can host a MySQL hosting server instance on a virtual machine (VM) in [Azure
 
 MySQL versions 5.6, 5.7 and 8.0 may be used for your hosting servers. The MySQL RP doesn't support caching_sha2_password authentication. MySQL 8.0 servers must be configured to use mysql_native_password.
 
-## Configure external access to the MySQL hosting server
+## Prepare a MySQL hosting server
 
-Before the MySQL server can be added as an Azure Stack Hub MySQL Server host, external access must be enabled. Take BitNami MySQL which is available in Azure Stack Hub marketplace as an example, you can take the following steps to configure the external access.
+### Create a network security group rule
+
+By default, no public access is configured for MySQL into the host VM. For the Azure Stack Hub MySQL resource provider to connect and manage the MySQL server, an inbound network security group (NSG) rule needs to be created.
+
+1. In the administrator portal, go to the resource group created when deploying the MySQL server and select the network security group (**default-subnet-sg**):
+
+   ![Select network security group in Azure Stack Hub administrator portal](media/azure-stack-tutorial-mysqlrp/img6.png)
+
+2. Select **Inbound security rules** and then select **Add**.
+
+    Enter **3306** in the **Destination port range** and optionally provide a description in the **Name** and **Description** fields.
+
+   ![open](media/azure-stack-tutorial-mysqlrp/img7.png)
+
+3. Select **Add** to close the inbound security rule dialog.
+
+### Configure external access to the MySQL hosting server
+
+Before the MySQL server can be added as an Azure Stack Hub MySQL Server host, external access must be enabled. Take Bitnami MySQL which is available in Azure Stack Hub marketplace as an example, you can take the following steps to configure the external access.
+
+> [!NOTE]
+> The MySQL hosting server should use password as the authentication type. SSH public key cannot be supported by MySQL resource provider.
 
 1. Using an SSH client (this example uses [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)) log in to the MySQL server from a computer that can access the public IP.
 
@@ -39,11 +60,24 @@ Before the MySQL server can be added as an Azure Stack Hub MySQL Server host, ex
 
    ![Check bitnami service](media/azure-stack-tutorial-mysqlrp/bitnami2.png)
 
-3. Create a remote access user account to be used by the Azure Stack Hub MySQL Hosting Server to connect to MySQL and then exit the SSH client.
+3. If the MySQL hosting server is MySQL 8.0 and above versions, you need to change the authentication method to **mysql_native_password**. If the MySQL version is below 8.0, this step can be skipped.
+
+   Take Bitnami MySQL as example, the configuration file is under **/opt/bitnami/mysql/conf/my.cnf**. Set the property **default_authentication_plugin** with value **mysql_native_password**.
+   ```
+   [mysqld]
+   default_authentication_plugin=mysql_native_password
+   ```
+   Restart the bitnami service and make sure the bitnami service is running properly.
+   ```
+   sudo service bitnami restart
+   sudo service bitnami status
+   ```
+
+4. Create a remote access user account to be used by the Azure Stack Hub MySQL Hosting Server to connect to MySQL.
 
     Run the following commands to log in to MySQL as root, using the root password created earlier. Create a new admin user and replace *\<username\>* and *\<password\>* as required for your environment. In this example, the created user is named **sqlsa** and a strong password is used:
 
-   ```mysql
+   ```
    mysql -u root -p
    create user <username>@'%' identified by '<password>';
    grant all privileges on *.* to <username>@'%' with grant option;
@@ -52,9 +86,16 @@ Before the MySQL server can be added as an Azure Stack Hub MySQL Server host, ex
 
    ![Create admin user](media/azure-stack-tutorial-mysqlrp/bitnami3.png)
 
-4. Record the new MySQL user information.
+5. Make sure the plugin of the created sql user **sqlsa** is **mysql_native_password** and then exit the SSH client.
+   
+   ```
+   SELECT user,host,plugin from mysql.user;
+   ```
+6. Record the new MySQL user information.
 
-This username and password will be used while Azure Stack Hub operator create a MySQL hosting server using this MySQL server.
+   This username and password will be used while Azure Stack Hub operator create a MySQL hosting server using this MySQL server.
+
+7. To Allow **3306** port in inbound port rules in the NSG which is associated with the MySQL VM.
 
 ## Connect to a MySQL hosting server
 
