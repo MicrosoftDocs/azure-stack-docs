@@ -103,7 +103,7 @@ The number of VM Temp volumes and Object Store volumes is equal to the number of
 
 ### Fault tolerance and mirroring
 
-Volumes in Storage Spaces Direct provide resiliency to protect against hardware problems, such as drive or server failures. They also enable continuous availability throughout server maintenance, like software updates.
+Volumes in Storage Spaces Direct provide resiliency to protect against hardware problems, such as drive or server failures. They enable continuous availability throughout server maintenance, like software updates.
 
 Mirroring provides fault tolerance by keeping multiple copies of all data. How that data is striped and placed is non-trivial, but any data stored using mirroring is written in its entirety multiple times. Each copy is written to different physical hardware (different drives in different servers) that are assumed to fail independently. 
 
