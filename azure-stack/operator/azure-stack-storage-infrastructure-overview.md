@@ -99,7 +99,7 @@ The number of VM Temp volumes and Object Store volumes is equal to the number of
 - The number of volumes remains the same even if a node malfunctioning or is removed.
 
 > [!NOTE]
-> If you use the [Azure Stack Development Kit (ASDK)](https://docs.microsoft.com/en-us/azure-stack/asdk/), there's a single volume with multiple [shares](azure-stack-manage-storage-shares.md).
+> If you use the [Azure Stack Development Kit (ASDK)](https://docs.microsoft.com/azure-stack/asdk/), there's a single volume with multiple [shares](azure-stack-manage-storage-shares.md).
 
 ### Fault tolerance and mirroring
 
