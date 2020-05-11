@@ -5,10 +5,11 @@ description: Learn how to manage storage infrastructure for Azure Stack Hub.
 author: IngridAtMicrosoft
 
 ms.topic: article
-ms.date: 5/5/2020
+ms.date: 5/11/2020
 ms.author: inhenkel
 ms.lastreviewed: 5/5/2020
 ms.reviewer: jiaha
+ms.custom: contperfq4
 
 # Intent: As an Azure Stack operator, I want to understand storage infrastructure in Azure Stack.
 # Keyword: manage storage infrastructure azure stack
