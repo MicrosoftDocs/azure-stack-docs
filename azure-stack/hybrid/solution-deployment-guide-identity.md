@@ -8,7 +8,7 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: As an Azure Stack Hub user, I want to configure hybrid cloud identity for Azure and Azure Stack Hub apps so my hybrid apps have a hybrid identity architecture.
+# Intent: As an Azure Stack Hub operator, I want to configure hybrid cloud identity for Azure and Azure Stack Hub apps so my hybrid apps have a hybrid identity architecture.
 # Keyword: hybrid cloud identity azure stack hub
 
 ---
@@ -40,11 +40,11 @@ You must have Azure Stack Hub operator permissions for the steps in this solutio
 
 ## Create a service principal for Azure AD in the portal
 
-If you deployed Azure Stack Hub using Azure AD as the identity store, you can create service principals just like you do for Azure. [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md#manage-an-azure-ad-service-principal) shows you how to perform the steps through the portal. Be sure you have the [required Azure AD permissions](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) before beginning.
+If you deployed Azure Stack Hub using Azure AD as the identity store, you can create service principals just like you do for Azure. [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md#manage-an-azure-ad-app-identity) shows you how to perform the steps through the portal. Be sure you have the [required Azure AD permissions](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) before beginning.
 
 ## Create a service principal for AD FS using PowerShell
 
-If you deployed Azure Stack Hub with AD FS, you can use PowerShell to create a service principal, assign a role for access, and sign in from PowerShell using that identity. [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md#manage-an-ad-fs-service-principal) shows you how to perform the required steps using PowerShell.
+If you deployed Azure Stack Hub with AD FS, you can use PowerShell to create a service principal, assign a role for access, and sign in from PowerShell using that identity. [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md#manage-an-ad-fs-app-identity) shows you how to perform the required steps using PowerShell.
 
 ## Using the Azure Stack Hub API
 

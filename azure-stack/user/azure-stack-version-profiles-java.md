@@ -4,7 +4,7 @@ description: Learn how to use API version profiles with Java in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 05/05/2020
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
@@ -105,7 +105,7 @@ Set AZURE_TENANT_ID=<Your_Tenant_ID>
 
 ### MacOS, Linux, and Unix-based systems
 
-In Unix based systems, use the following command:
+In Unix-based systems, use the following command:
 
 ```shell
 Export AZURE_TENANT_ID=<Your_Tenant_ID>
