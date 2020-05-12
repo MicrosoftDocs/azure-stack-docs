@@ -1,5 +1,5 @@
 ---
-title: Deployment Worksheet for Azure Stack Hub integrated systems 
+title: Deployment worksheet for Azure Stack Hub
 description: Learn how to install and use the deployment worksheet tool to deploy Azure Stack Hub.
 author: IngridAtMicrosoft
 ms.topic: article
@@ -8,28 +8,27 @@ ms.author: inhenkel
 ms.reviewer: wamota
 ms.lastreviewed: 04/19/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub operator, I want to install and use the deployment worksheet tool so I can have all necessary deployment information in one place.
+# Keyword: deployment worksheet azure stack hub
 
 ---
 
-
 # Deployment worksheet for Azure Stack Hub integrated systems
 
-The Azure Stack Hub deployment worksheet is a Windows Forms application that aggregates all necessary deployment information and decisions in one place. You can complete the deployment worksheet during the planning process, and review it before the deployment starts.
+The Azure Stack Hub deployment worksheet is a Windows Forms app that aggregates all necessary deployment information and decisions in one place. You can complete the deployment worksheet during the planning process and review it before the deployment starts.
 
-The information required by the worksheet covers networking, security, and identity information. It requires important decisions that may need knowledge in many different areas; therefore, you might want to consult with teams possessing expertise in these areas in order to complete the worksheet.
+The information required by the worksheet covers networking, security, and identity information. This information may require specific knowledge in certain areas so we recommend you consult with experts to complete the worksheet.
 
-While filling out the worksheet, you might need to make some pre-deployment configuration changes to your network environment. This can include reserving IP address spaces for the Azure Stack Hub solution, and configuring routers, switches, and firewalls, to prepare for connectivity to the new Azure Stack Hub solution.
+While filling out the worksheet, you might need to make some pre-deployment configuration changes to your network environment. These changes can include reserving IP address spaces for the Azure Stack Hub solution, and configuring routers, switches, and firewalls to prepare for connectivity to the new Azure Stack Hub solution.
 
 > [!NOTE]
-> For more information about how to complete the deployment worksheet tool, see [this article in the Azure Stack Hub documentation](azure-stack-datacenter-integration.md).
+> For more information on how to complete the deployment worksheet tool, see [Datacenter integration planning considerations for Azure Stack Hub integrated systems](azure-stack-datacenter-integration.md).
 
-[![Deployment Worksheet](media/azure-stack-deployment-worksheet/depworksheet.png "Deployment Worksheet")](media/azure-stack-deployment-worksheet/depworksheet.png)
+[![Deployment Worksheet for Azure Stack Hub deployment](media/azure-stack-deployment-worksheet/depworksheet.png "Deployment Worksheet")](media/azure-stack-deployment-worksheet/depworksheet.png)
 
 ## Installing the Windows PowerShell module
 
-For each release of the deployment worksheet, you must perform a one-time installation of a Powershell module for each machine on which you want to use the deployment worksheet.
+For each release of the deployment worksheet, you must do a one-time installation of a PowerShell module for each machine on which you want to use the deployment worksheet.
 
 > [!NOTE]  
 > The computer must be connected to the internet for this method to work.
@@ -46,9 +45,9 @@ If you receive a message about installing from an untrusted repository, press **
 
 ## Use the deployment worksheet tool
 
-To launch and use the deployment worksheet on a computer on which you have installed the deployment worksheet PowerShell module, perform the following steps:
+To launch and use the deployment worksheet on a computer on which you've installed the deployment worksheet PowerShell module, do the following steps:
 
-1. Start Windows PowerShell (do not use the PowerShell ISE, as unexpected results can occur). It is not necessary to run PowerShell as an Administrator.
+1. Start Windows PowerShell (don't use the PowerShell ISE, as unexpected results can occur). It's not necessary to run PowerShell as an administrator.
 
 2. Import the **AzS.Deployment.Worksheet** PowerShell module:
 
@@ -62,9 +61,9 @@ To launch and use the deployment worksheet on a computer on which you have insta
    Start-DeploymentWorksheet
    ```
 
-The deployment worksheet consists of separate tabs for collecting environment settings, such as **Customer Settings**, **Network Settings**, and **Scale Unit #**. You must supply all values (except for any marked **Optional**) on all tabs before any configuration data files can be generated. After all required values have been entered into the tool, you can use the **Action** menu to **Import**, **Export**, and **Generate**. The JSON files required for deployment are as follows:
+The deployment worksheet consists of separate tabs for collecting environment settings, like **Customer Settings**, **Network Settings**, and **Scale Unit #**. You must supply all values (except for any marked **Optional**) on all tabs before any configuration data files can be generated. After all required values have been entered into the tool, you can use the **Action** menu to **Import**, **Export**, and **Generate**. The JSON files required for deployment are as follows:
 
-**Import**: Enables you to import an Azure Stack Hub configuration data file (ConfigurationData.json) that was generated by this tool, or those created by any previous release of the deployment worksheet. Performing an import resets the forms and deletes any previously entered setting or generated data.
+**Import**: Enables you to import an Azure Stack Hub configuration data file (ConfigurationData.json) that was generated by this tool or those files created by any previous release of the deployment worksheet. Doing an import resets the forms and deletes any previously entered setting or generated data.
 
 **Export**: Validates the data currently entered into the forms, generates the IP subnets and assignments, and then saves the content as JSON-formatted configuration files. You can then use these files to generate the network configuration and install Azure Stack Hub.
 
@@ -72,7 +71,7 @@ The deployment worksheet consists of separate tabs for collecting environment se
 
 **Clear All**: Clears all data currently entered in the forms and returns them to default values.
 
-**Save or Open your work in-progress**: You can save and open partially entered data as you are working on it, using the **File->Save** and **File->Open** menus. This differs from the **Import** and **Export** functions, as these require all data to be entered and validated. Open/save does not validate and does not require all fields to be entered to save your work in progress.
+**Save or Open your work in-progress**: You can save and open partially entered data as you're working on it using the **File->Save** and **File->Open** menus. This function differs from the **Import** and **Export** functions because they require all data to be entered and validated. Open/save doesn't validate and doesn't require all fields to be entered to save your work in progress.
 
 **Logging and Warning messages**: While the form is being used, you might see non-critical warning messages displayed in the PowerShell window. Critical errors are displayed as a pop-up message. Optional detailed logging, including a log written to disk, can be enabled to assist in troubleshooting problems.
 

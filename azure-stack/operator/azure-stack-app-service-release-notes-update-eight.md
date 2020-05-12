@@ -4,7 +4,7 @@ description: Update 8 release notes for App Service on Azure Stack Hub, includin
 author: apwestgarth
 manager: stefsch
 ms.topic: article
-ms.date: 03/05/2020
+ms.date: 05/05/2020
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/25/2019
@@ -25,26 +25,31 @@ These release notes describe new features, fixes, and known issues in Azure App 
 
 The App Service on Azure Stack Hub update 8 build number is **86.0.2.13**.
 
-### Prerequisites
+## Prerequisites
 
 See [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md) before you begin deployment.
 
-Before you begin the upgrade of Azure App Service on Azure Stack to 1.8:
+Before you begin the upgrade of Azure App Service on Azure Stack Hub to 1.8:
 
 - Ensure all roles are ready in Azure App Service administration in the Azure Stack Hub administrator portal.
 
-- Back up the App Service and master databases:
+- Backup App Service Secrets using the App Service Administration in the Azure Stack Hub Admin Portal
+
+- Back up the App Service and master Databases:
   - AppService_Hosting;
   - AppService_Metering;
-  - Master
+  - master
 
 - Back up the tenant app content file share.
 
-- Syndicate the **Custom Script Extension** version **1.9.3** from Azure Stack Hub Marketplace.
+  > [!Important]
+  > Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server.  The resource provider does not manage these resources.  The cloud operator is responsible for backing up the App Service databases and tenant content file share.
 
-### New features and fixes
+- Syndicate the **Custom Script Extension** version **1.9.3** from the Azure Stack Hub Marketplace
 
-Azure App Service on Azure Stack update 8 includes the following improvements and fixes:
+## New features and fixes
+
+Azure App Service on Azure Stack Hub update 8 includes the following improvements and fixes:
 
 - Updates to **App Service tenant, admin, functions portals, and Kudu tools**. Consistent with Azure Stack portal SDK version.
 
@@ -82,7 +87,7 @@ All new deployments of Azure App Service on Azure Stack Hub will make use of man
 
 **TLS 1.2** is now enforced for all apps.
 
-### Known issues (upgrade)
+## Known issues (upgrade)
 
 - Upgrade fails if SQL Server Always On Cluster has failed over to secondary node.
 
@@ -96,14 +101,14 @@ Take one of the following actions and select retry within the installer.
 
 - Fail over the SQL Cluster to the previous active node.
 
-### Post-deployment steps
+## Post-deployment steps
 
 > [!IMPORTANT]
 > If you've provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
-### Known issues (post-installation)
+## Known issues (post-installation)
 
-- Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network, as called out in the Azure App Service on Azure Stack deployment documentation.
+- Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network, as called out in the Azure App Service on Azure Stack Hub deployment documentation.
 
   If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the administrator portal and add an outbound security rule with the following properties:
 
@@ -181,6 +186,33 @@ Take one of the following actions and select retry within the installer.
     1. Migrate logins to contained database users.
 
         ```sql
+        USE appservice_hosting
+        IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
+        BEGIN
+        DECLARE @username sysname ;  
+        DECLARE user_cursor CURSOR  
+        FOR
+            SELECT dp.name
+            FROM sys.database_principals AS dp  
+            JOIN sys.server_principals AS sp
+                ON dp.sid = sp.sid  
+                WHERE dp.authentication_type = 1 AND dp.name NOT IN ('dbo','sys','guest','INFORMATION_SCHEMA');
+            OPEN user_cursor  
+            FETCH NEXT FROM user_cursor INTO @username  
+                WHILE @@FETCH_STATUS = 0  
+                BEGIN  
+                    EXECUTE sp_migrate_user_to_contained
+                    @username = @username,  
+                    @rename = N'copy_login_name',  
+                    @disablelogin = N'do_not_disable_login';  
+                FETCH NEXT FROM user_cursor INTO @username  
+            END  
+            CLOSE user_cursor ;  
+            DEALLOCATE user_cursor ;
+            END
+        GO
+
+        USE appservice_metering
         IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
         BEGIN
         DECLARE @username sysname ;  
@@ -263,11 +295,11 @@ Take one of the following actions and select retry within the installer.
 
     ```
 
-### Known issues for cloud admins operating Azure App Service on Azure Stack
+## Known issues for cloud admins operating Azure App Service on Azure Stack Hub
 
-Refer to the documentation in the [Azure Stack 1907 release notes](azure-stack-release-notes-1907.md).
+Refer to the documentation in the [Azure Stack Hub 1907 release notes](azure-stack-release-notes-1907.md).
 
 ## Next steps
 
 - For an overview of Azure App Service, see [Azure App Service and Azure Functions on Azure Stack Hub overview](azure-stack-app-service-overview.md).
-- For more information about how to prepare to deploy App Service on Azure Stack, see [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md).
+- For more information about how to prepare to deploy App Service on Azure Stack Hub, see [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md).

@@ -8,12 +8,12 @@ ms.date: 01/02/2020
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/02/2019
+zone_pivot_groups: state-connected-disconnected
 
 # Intent: As an Azure Stack operator, I want to deploy App Services in a highly available configuration so I can.....
 # Keyword: deploy app service
 
 ---
-
 
 # Deploy App Service in a highly available configuration
 
@@ -91,12 +91,11 @@ Follow these steps to discover the template output values:
 
 3. Click **Deployments** and select **Microsoft.Template**.
 
-    ![Microsoft.Template deployment](media/app-service-deploy-ha/6.png)
+    ![Microsoft. Template deployment](media/app-service-deploy-ha/6.png)
 
 4. After selecting the **Microsoft.Template** deployment, select **Outputs** and record the template parameter output. This info is required when deploying App Service.
 
     ![Parameter output](media/app-service-deploy-ha/7.png)
-
 
 ## Deploy App Service in a highly available configuration
 Follow the steps in this section to deploy App Service for Azure Stack Hub in a highly available configuration based on the [appservice-fileshare-sqlserver-ha](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) Azure Stack Hub Quickstart template. 
@@ -112,20 +111,46 @@ Before you can run the App Service installer, several steps are required as desc
 > [!TIP]
 > Not all steps described in the [Before you get started with App Service article](azure-stack-app-service-before-you-get-started.md) are required because the template deployment configures the infrastructure VMs for you.
 
-- [Download the App Service installer and helper scripts](azure-stack-app-service-before-you-get-started.md#download-the-installer-and-helper-scripts).
+- [Download the App Service installer and helper scripts](azure-stack-app-service-before-you-get-started.md#installer-and-helper-scripts).
 - [Download items from the Azure Stack Hub Marketplace](azure-stack-app-service-before-you-get-started.md#download-items-from-the-azure-marketplace).
-- [Generate required certificates](azure-stack-app-service-before-you-get-started.md#get-certificates).
-- Create the ID Application based on the identify provider you've chosen for Azure Stack Hub. An ID Application can be made for either [Azure AD](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-app) or [Active Directory Federation Services](azure-stack-app-service-before-you-get-started.md#create-an-active-directory-federation-services-app) and record the application ID.
+- [Generate required certificates for your deployment type](azure-stack-app-service-before-you-get-started.md).
+- Create the ID Application based on the identify provider you've chosen for Azure Stack Hub. An ID Application can be made for either [Azure AD](azure-stack-app-service-before-you-get-started.md#create-an-azure-ad-app) or [Active Directory Federation Services](azure-stack-app-service-before-you-get-started.md#create-an-adfs-app) and record the application ID.
+<!-- Connected --->
+::: zone pivot="state-connected"
 - Ensure that you've added the Windows Server 2016 Datacenter image to the Azure Stack Hub Marketplace. This image is required for App Service installation.
+::: zone-end
+
+::: zone pivot="state-disconnected"
+<!-- Disconnected --->
+- **Windows Server 2016 Datacenter Full VM image with Microsoft.Net 3.5.1 SP1 activated**.  Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1, be activated on the image used for deployment. Marketplace-syndicated Windows Server 2016 images don't have this feature enabled and in disconnected environments are unable to reach Microsoft Update to download the packages to install via DISM. Therefore, you must create and use a Windows Server 2016 image with this feature pre-enabled with disconnected deployments.
+
+   See [Add a custom VM image to Azure Stack Hub](azure-stack-add-vm-image.md) for details on creating a custom image and adding to Marketplace. Be sure to specify the following properties when adding the image to Marketplace:
+
+   - Publisher = MicrosoftWindowsServer
+   - Offer = WindowsServer
+   - SKU = 2016-Datacenter
+   - Version = Specify the "latest" version
+
+::: zone-end
+
+<!-- For All --> 
 
 ### Steps for App Service deployment
 Installing the App Service resource provider takes at least an hour. The length of time needed depends on how many role instances you deploy. During the deployment, the installer runs the following tasks:
 
-- Create a blob container in the specified Azure Stack Hub storage account.
-- Create a DNS zone and entries for App Service.
-- Register the App Service resource provider.
-- Register the App Service gallery items.
+- Registers the required resource providers in the Default Provider Subscription
+- Grants contributor access to the App Service Identity application
+- Create Resource Group and Virtual network (if necessary)
+- Create Storage accounts and containers for App Service installation artifacts, usage service, and resource hydration
+- Download App Service artifacts and upload them to the App Service storage account
+- Deploy the App Service
+- Register the usage service
+- Create DNS Entries for App Service
+- Register the App Service admin and tenant resource providers
+- Register Gallery Items - Web, API, Function App, App Service Plan, WordPress, DNN, Orchard, and Django applications
 
+<!-- Connected --->
+::: zone pivot="state-connected"
 To deploy the App Service resource provider, follow these steps:
 
 1. Run the previously downloaded App Service installer (**appservice.exe**) as an admin from a computer that can access the Azure Stack Hub Admin Azure Resource Management Endpoint.
@@ -161,17 +186,6 @@ To deploy the App Service resource provider, follow these steps:
 9. Because the machine used to install App Service isn't located on the same VNet as the file server used to host the App Service file share, you can't resolve the name. **This error is expected behavior**.<br><br>Verify that the info entered for the file share UNC path and accounts info is correct. Then press **Yes** on the alert dialog to continue App Service installation.
 
     ![Expected error dialog on App Service](media/app-service-deploy-ha/08.png)
-
-    If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule. This rule enables SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the administrator portal and add an outbound security rule with the following properties:
-    - Source: Any
-    - Source port range: *
-    - Destination: IP Addresses
-    - Destination IP address range: Range of IPs for your file server
-    - Destination port range: 445
-    - Protocol: TCP
-    - Action: Allow
-    - Priority: 700
-    - Name: Outbound_Allow_SMB445
 
 10. Provide the Identity Application ID and the path and passwords to the identity certificates and click **Next**:
     - Identity application certificate (in the format of **sso.appservice.local.azurestack.external.pfx**)
@@ -225,6 +239,138 @@ To deploy the App Service resource provider, follow these steps:
 18. Review the App Service deployment progress. This deployment can take over an hour depending on your specific deployment configuration and hardware. After the installer successfully finishes, select **Exit**.
 
     ![Setup complete for App Service](media/app-service-deploy-ha/16.png)
+
+::: zone-end
+
+::: zone pivot="state-disconnected"
+<!-- Disconnected --->
+
+## Create an offline installation package
+
+To deploy Azure App Service in an offline environment, first create an offline installation package on a machine that's connected to the internet.
+
+1. Run the AppService.exe installer on a machine that's connected to the internet. 
+
+1. Select **Advanced** > **Create offline installation package**. This step will take several minutes to complete.
+
+    ![Create an offline package in Azure App Service Installer][31]
+
+1. The Azure App Service installer creates an offline installation package and displays the path to it. You can select **Open folder** to open the folder in File Explorer.
+
+    ![Offline installation package generated successfully in Azure App Service Installer](media/azure-stack-app-service-deploy-offline/image02.png)
+
+1. Copy the installer (AppService.exe) and the offline installation package to a machine that has connectivity to your Azure Stack Hub.
+
+## Complete the offline installation of Azure App Service on Azure Stack Hub
+
+1. Run appservice.exe as an admin from a computer that can reach the Azure Stack Hub Admin Azure Resource Management endpoint.
+
+1. Select **Advanced** > **Complete offline installation**.
+
+    ![Complete offline installation in Azure App Service Installer][32]
+
+1. Browse to the location of the offline installation package you previously created, and then select **Next**.
+
+    ![Specify offline installation package path im Azure App Service Installer](media/azure-stack-app-service-deploy-offline/image04.png)
+
+1. Accept Microsoft licensing terms and click **Next**.
+
+    ![Microsoft licensing terms on App Service](media/app-service-deploy-ha/02.png)
+
+1. Accept non-Microsoft licensing terms and click **Next**.
+
+    ![Non-Microsoft licensing terms on App Service](media/app-service-deploy-ha/03.png)
+
+1. Provide the App Service cloud endpoint configuration for your Azure Stack Hub environment.
+
+    ![App Service cloud endpoint configuration on App Service](media/app-service-deploy-ha/04.png)
+
+1. **Connect** to the Azure Stack Hub subscription to be used for the installation and choose the location. 
+
+    ![Connect to the Azure Stack Hub subscription on App Service](media/app-service-deploy-ha/05.png)
+
+1. Select **Use existing VNet and Subnets** and the **Resource Group Name** for the resource group used to deploy the highly available template.  Next, select the virtual network created as part of the template deployment and then select the appropriate role subnets from the drop-down list options. 
+
+    ![Vnet selection on App Service](media/app-service-deploy-ha/06.png)
+
+1. Provide the previously recorded template outputs info for the file share path and file share owner parameters. When finished, click **Next**.
+
+    ![File share output information on App Service](media/app-service-deploy-ha/07.png)
+
+1. Because the machine used to install App Service isn't located on the same VNet as the file server used to host the App Service file share, you can't resolve the name. **This error is expected behavior**.  Verify that the info entered for the file share UNC path and accounts info is correct. Then press **Yes** on the alert dialog to continue App Service installation.
+
+    ![Expected error dialog on App Service](media/app-service-deploy-ha/08.png)
+
+1. Provide the Identity Application ID and the path and passwords to the identity certificates and click **Next**:
+    - Identity application certificate (in the format of **sso.appservice.local.azurestack.external.pfx**)
+    - Azure Resource Manager root certificate (**AzureStackCertificationAuthority.cer**)
+
+    ![ID application certificate and root certificate on App Service](media/app-service-deploy-ha/008.png)
+
+1. Next, provide the remaining required information for the following certificates and click **Next**:
+    - Default Azure Stack Hub SSL certificate (in the format of **_.appservice.local.azurestack.external.pfx**)
+    - API SSL certificate (in the format of **api.appservice.local.azurestack.external.pfx**)
+    - Publisher certificate (in the form of **ftp.appservice.local.azurestack.external.pfx**) 
+
+    ![Additional configuration certificates on App Service](media/app-service-deploy-ha/09.png)
+
+1. Provide the SQL Server connection info using the SQL Server connection info from the high availability template deployment outputs:
+
+    ![SQL Server connection information on App Service](media/app-service-deploy-ha/10.png)
+
+1. Because the machine used to install App Service isn't located on the same VNet as the SQL server used to host the App Service databases, you can't resolve the name.  **This is expected behavior**.  Verify that the info entered for the SQL Server name and accounts info is correct and press **Yes** to continue App Service installation. Click **Next**.
+
+    ![SQL Server connection information on App Service](media/app-service-deploy-ha/11.png)
+
+1. Accept the default role configuration values or change to the recommended values and click **Next**.  We recommend that the default values for the App Service infrastructure role instances be changed as follows for highly available configurations:
+
+    |Role|Default|Highly available recommendation|
+    |-----|-----|-----|
+    |Controller Role|2|2|
+    |Management Role|1|3|
+    |Publisher Role|1|3|
+    |FrontEnd Role|1|3|
+    |Shared Worker Role|1|2|
+    |     |     |     |
+
+    ![Infrastructure role instance values on App Service](media/app-service-deploy-ha/12.png)
+
+    > [!NOTE]
+    > Changing from the default values to those recommended in this tutoral increases the hardware requirements for installing App Service. A total of 18 cores and 32,256 MB of RAM is needed to support the recommended 13 VMs instead of the default 9 cores and 16,128 MB of RAM for 6 VMs.
+
+1. Select the platform image to use for installing the App Service infrastructure VMs and click **Next**:
+
+    ![Platform image selection on App Service](media/app-service-deploy-ha/13.png)
+
+1. Provide App Service infrastructure role credential info to be used and click **Next**:
+
+    ![Infrastructure role credentials on App Service](media/app-service-deploy-ha/14.png)
+
+1. Review the info to be used to deploy App Service and click **Next** to begin deployment.
+
+    ![Review installation summary on App Service](media/app-service-deploy-ha/15.png)
+
+1. Review the App Service deployment progress. This deployment can take over an hour depending on your specific deployment configuration and hardware. After the installer successfully finishes, select **Exit**.
+
+    ![Setup complete for App Service](media/app-service-deploy-ha/16.png)
+
+::: zone-end
+
+## Post Deployment steps
+
+1. You **must** [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database). You must also synchronize the databases to prevent any loss of service in the event of a database failover.
+
+2. You have deployed App Service into an existing virtual network and are using an internal IP address to connect to your file server, you **must** add an outbound security rule, enabling SMB traffic between the worker subnet and the file server. In the administrator portal, go to the WorkersNsg Network Security Group and add an outbound security rule with the following properties:
+
+- Source: Any
+- Source port range: *
+- Destination: IP addresses
+- Destination IP address range: Range of IPs for your file server
+- Destination port range: 445
+- Protocol: TCP
+- Action: Allow
+- Priority: 700
+- Name: Outbound_Allow_SMB445
 
 ## Next steps
 
