@@ -38,7 +38,7 @@ Before starting, ensure that the [SQL Server resource provider](azure-stack-sql-
 
 - [Windows Server 2016 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/MicrosoftWindowsServer.WindowsServer) marketplace image.
 - SQL Server 2016 SP1 or SP2 (Enterprise, Standard, or Developer) on Windows Server 2016 server image. This article uses the [SQL Server 2016 SP2 Enterprise on Windows Server 2016](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoftsqlserver.sql2016sp2-ws2016) marketplace image.
-- [SQL Server IaaS Extension](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) version 1.2.30 or higher. The SQL IaaS Extension installs necessary components that are required by the Marketplace SQL Server items for all Windows versions. It enables SQL-specific settings to be configured on SQL virtual machines (VMs). If the extension isn't installed in the local marketplace, provisioning of SQL will fail.
+- [SQL Server IaaS Extension](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) version 1.3.20180 or higher. The SQL IaaS Extension installs necessary components that are required by the Marketplace SQL Server items for all Windows versions. It enables SQL-specific settings to be configured on SQL virtual machines (VMs). If the extension isn't installed in the local marketplace, provisioning of SQL will fail.
 - [Custom script extension for Windows](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.CustomScriptExtension) version 1.9.1 or higher. Custom Script Extension is a tool that can be used to automatically launch post-deployment VM customization tasks.
 - [PowerShell Desired State Configuration (DSC)](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.DSC-arm) version 2.76.0.0 or higher. DSC is a management platform in Windows PowerShell that enables deploying and managing configuration data for software services. The platform also manages the environment in which these services run.
 
@@ -59,15 +59,15 @@ Use the steps in this section to deploy the SQL Server AlwaysOn availability gro
 - One availability set containing the SQL and file share witness VMs.
 
 1. 
-   [!INCLUDE [azs-admin-portal](../includes/azs-admin-portal.md)]
+   [!INCLUDE [azs-user-portal](../includes/azs-user-portal.md)]
 
 2. Select **\+** **Create a resource** > **Custom**, and then **Template deployment**.
 
-   ![Custom template deployment in Azure Stack Hub administrator portal](media/azure-stack-tutorial-sqlrp/1.png)
+   ![Custom template deployment in Azure Stack Hub administrator portal](media/azure-stack-tutorial-sqlrp/aoag-template-deployment-1.png)
 
 3. On the **Custom deployment** blade, select **Edit template** > **Quickstart template** and then use the drop-down list of available custom templates to select the **sql-2016-alwayson** template. Select **OK**, then **Save**.
 
-   [![Edit template in Azure Stack Hub administrator portal](media/azure-stack-tutorial-sqlrp/2-sm.PNG "Select quickstart template")](media/azure-stack-tutorial-sqlrp/2-lg.PNG#lightbox)
+   [![Edit template in Azure Stack Hub administrator portal](media/azure-stack-tutorial-sqlrp/aoag-template-deployment-2.png "Select quickstart template")](media/azure-stack-tutorial-sqlrp/aoag-template-deployment-2.png#lightbox)
 
 4. On the **Custom deployment** blade, select **Edit parameters** and review the default values. Modify the values as necessary to provide all required parameter information and then select **OK**.
 
@@ -75,22 +75,20 @@ Use the steps in this section to deploy the SQL Server AlwaysOn availability gro
     - Provide complex passwords for the ADMINPASSWORD, SQLSERVERSERVICEACCOUNTPASSWORD, and SQLAUTHPASSWORD parameters.
     - Enter the DNS Suffix for reverse lookup in all lowercase letters for the DNSSUFFIX parameter (**azurestack.external** for ASDK installations).
     
-   [![Edit parameters in Azure Stack Hub administrator portal](media/azure-stack-tutorial-sqlrp/3-sm.PNG "Edit custom deployment parameters")](media/azure-stack-tutorial-sqlrp/3-lg.PNG#lightbox)
+   [![Edit parameters in Azure Stack Hub administrator portal](media/azure-stack-tutorial-sqlrp/aoag-template-deployment-3.png "Edit custom deployment parameters")](media/azure-stack-tutorial-sqlrp/aoag-template-deployment-3.png#lightbox)
 
 5. On the **Custom deployment** blade, choose the subscription to use and create a new resource group or select an existing resource group for the custom deployment.
 
     Next, select the resource group location (**local** for ASDK installations) and then click **Create**. The custom deployment settings will be validated and then the deployment will start.
 
-    [![Choose subscription in Azure Stack Hub administrator portal](media/azure-stack-tutorial-sqlrp/4-sm.PNG "Create custom deployment")](media/azure-stack-tutorial-sqlrp/4-lg.PNG#lightbox)
+    [![Choose subscription in Azure Stack Hub administrator portal](media/azure-stack-tutorial-sqlrp/aoag-template-deployment-4.png "Create custom deployment")](media/azure-stack-tutorial-sqlrp/aoag-template-deployment-4.png#lightbox)
 
-6. In the administrator portal, select **Resource groups** and then the name of the resource group you created for the custom deployment (**resource-group** for this example). View the status of the deployment to ensure all deployments have completed successfully.
+6. In the user portal, select **Resource groups** and then the name of the resource group you created for the custom deployment (**resource-group** for this example). View the status of the deployment to ensure all deployments have completed successfully.
     
     Next, review the resource group items and select the **SQLPIPsql\<resource group name\>** public IP address item. Record the public IP address and full FQDN of the load balancer public IP. You'll need to provide this to an Azure Stack Hub operator so they can create a SQL hosting server leveraging this SQL AlwaysOn availability group.
 
    > [!NOTE]
    > The template deployment will take several hours to complete.
-
-   ![Custom deployment complete in Azure Stack Hub administrator portal](./media/azure-stack-tutorial-sqlrp/5.png)
 
 ### Enable automatic seeding
 
@@ -98,13 +96,18 @@ After the template has successfully deployed and configured the SQL AlwaysON ava
 
 When you create an availability group with automatic seeding, SQL Server automatically creates the secondary replicas for every database in the group without any other manual intervention necessary. This measure ensures high availability of AlwaysOn databases.
 
-Use these SQL commands to configure automatic seeding for the AlwaysOn availability group. Replace `<InstanceName>` with the primary instance SQL Server name and `<availability_group_name>` with the AlwaysOn availability group name as necessary.
+Use these SQL commands to configure automatic seeding for the AlwaysOn availability group. Replace `<PrimaryInstanceName>` with the primary instance SQL Server name, `<SecondaryInstanceName>` with the secondary instance SQL Server name and `<availability_group_name>` with the AlwaysOn availability group name as necessary.
 
 On the primary SQL instance:
 
   ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>]
-      MODIFY REPLICA ON '<InstanceName>'
+      MODIFY REPLICA ON '<PrimaryInstanceName>'
+      WITH (SEEDING_MODE = AUTOMATIC)
+  GO
+  
+  ALTER AVAILABILITY GROUP [<availability_group_name>]
+      MODIFY REPLICA ON '<SecondaryInstanceName>'
       WITH (SEEDING_MODE = AUTOMATIC)
   GO
   ```

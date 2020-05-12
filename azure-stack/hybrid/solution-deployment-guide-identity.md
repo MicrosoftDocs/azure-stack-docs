@@ -8,13 +8,12 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub operator, I want to configure hybrid cloud identity for Azure and Azure Stack Hub apps so my hybrid apps have a hybrid identity architecture.
+# Keyword: hybrid cloud identity azure stack hub
 
 ---
 
-
-# Configure hybrid cloud identity for Azure and Azure Stack Hub applications
+# Configure hybrid cloud identity for Azure and Azure Stack Hub apps
 
 Learn how to configure a hybrid cloud identity for your Azure and Azure Stack Hub apps.
 
@@ -35,35 +34,34 @@ You must have Azure Stack Hub operator permissions for the steps in this solutio
 
 > [!Tip]  
 > ![hybrid-pillars.png](./media/solution-deployment-guide-cross-cloud-scaling/hybrid-pillars.png)  
-> Microsoft Azure Stack Hub is an extension of Azure. Azure Stack Hub brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
+> Microsoft Azure Stack Hub is an extension of Azure. Azure Stack Hub brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that lets you build and deploy hybrid apps anywhere.  
 > 
-> The article [Design Considerations for Hybrid Applications](overview-app-design-considerations.md) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
-
+> The article [Hybrid app design considerations](overview-app-design-considerations.md) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid apps. The design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
 
 ## Create a service principal for Azure AD in the portal
 
-If you deployed Azure Stack Hub using Azure AD as the identity store, you can create service principals just like you do for Azure. [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md#manage-an-azure-ad-service-principal) shows you how to perform the steps through the portal. Be sure you have the [required Azure AD permissions](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) before beginning.
+If you deployed Azure Stack Hub using Azure AD as the identity store, you can create service principals just like you do for Azure. [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md#manage-an-azure-ad-app-identity) shows you how to perform the steps through the portal. Be sure you have the [required Azure AD permissions](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) before beginning.
 
 ## Create a service principal for AD FS using PowerShell
 
-If you deployed Azure Stack Hub with AD FS, you can use PowerShell to create a service principal, assign a role for access, and sign in from PowerShell using that identity. [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md#manage-an-ad-fs-service-principal) shows you how to perform the required steps using PowerShell.
+If you deployed Azure Stack Hub with AD FS, you can use PowerShell to create a service principal, assign a role for access, and sign in from PowerShell using that identity. [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md#manage-an-ad-fs-app-identity) shows you how to perform the required steps using PowerShell.
 
 ## Using the Azure Stack Hub API
 
 The [Azure Stack Hub API](../user/azure-stack-rest-api-use.md)  solution walks you through the process of retrieving a token to access the Azure Stack Hub API.
 
-## Connect to Azure Stack Hub using Powershell
+## Connect to Azure Stack Hub using PowerShell
 
 The quickstart [to get up and running with PowerShell in Azure Stack Hub](../operator/azure-stack-powershell-install.md)
 walks you through the steps needed to install Azure PowerShell and connect to your Azure Stack Hub installation.
 
 ### Prerequisites
 
-You need an Azure Stack Hub installation connected to Azure Active Directory with a subscription you can access. If you don't have an Azure Stack Hub installation, you can use these instructions to set up an [Azure Stack Development Kit](../asdk/asdk-install.md).
+You need an Azure Stack Hub installation connected to Azure AD with a subscription you can access. If you don't have an Azure Stack Hub installation, you can use these instructions to set up an [Azure Stack Development Kit (ASDK)](../asdk/asdk-install.md).
 
 #### Connect to Azure Stack Hub using code
 
-To connect to Azure Stack Hub using code, use the Azure Resource Manager endpoints API to get the authentication and graph endpoints for your Azure Stack Hub installation, and then authenticate using REST requests. You can find a sample client application on
+To connect to Azure Stack Hub using code, use the Azure Resource Manager endpoints API to get the authentication and graph endpoints for your Azure Stack Hub installation. Then authenticate using REST requests. You can find a sample client application on
 [GitHub](https://github.com/shriramnat/HybridARMApplication).
 
 >[!Note]
@@ -71,5 +69,5 @@ To connect to Azure Stack Hub using code, use the Azure Resource Manager endpoin
 
 ## Next steps
 
- - To learn more about how identity is handled in Azure Stack Hub, see [Identity architecture for Azure Stack Hub](../operator/azure-stack-identity-architecture.md).
- - To learn more about Azure Cloud Patterns, see [Cloud Design Patterns](https://docs.microsoft.com/azure/architecture/patterns).
+- To learn more about how identity is handled in Azure Stack Hub, see [Identity architecture for Azure Stack Hub](../operator/azure-stack-identity-architecture.md).
+- To learn more about Azure Cloud Patterns, see [Cloud Design Patterns](https://docs.microsoft.com/azure/architecture/patterns).

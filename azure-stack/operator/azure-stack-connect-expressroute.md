@@ -4,7 +4,7 @@ description: Learn how to connect virtual networks in Azure Stack Hub to virtual
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 04/20/2020
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/22/2019
@@ -52,11 +52,11 @@ To connect Azure Stack Hub and Azure using ExpressRoute, you must meet the follo
 
 The following figure shows the Azure Stack Hub and Azure environments after you finish setting up ExpressRoute using the examples in this article:
 
-![ExpressRoute network](media/azure-stack-connect-expressroute/Conceptual.png)
+![ExpressRoute network](media/azure-stack-connect-expressroute/conceptual.svg)
 
 The following figure shows how multiple tenants connect from the Azure Stack Hub infrastructure through the ExpressRoute router to Azure:
 
-![Multi-tenant connections with ExpressRoute](media/azure-stack-connect-expressroute/Architecture.png)
+![Multi-tenant connections with ExpressRoute](media/azure-stack-connect-expressroute/architecture.svg)
 
 The example in this article uses the same multi-tenant architecture shown in this diagram to connect Azure Stack Hub to Azure using ExpressRoute private peering. The connection is done using a site-to-site VPN connection from the virtual network gateway in Azure Stack Hub to an ExpressRoute router.
 
@@ -69,7 +69,7 @@ To set up the Azure Stack Hub environment for the first tenant, use the followin
 >[!NOTE]
 >These steps show how to create resources using the Azure Stack Hub portal, but you can also use PowerShell.
 
-![Azure Stack Hub network setup](media/azure-stack-connect-expressroute/image2.png)
+![Azure Stack Hub network setup](media/azure-stack-connect-expressroute/azure-stack-connect-expressrouteimage-image2.svg)
 
 ### Before you begin
 
@@ -268,7 +268,7 @@ The router is the ASDK host running the Routing and Remote Access Services (RRAS
 
 After you finish configuring Azure Stack Hub, you can deploy the Azure resources. The following figure shows an example of a tenant virtual network in Azure. You can use any name and addressing scheme for your VNet in Azure. However, the address range of the VNets in Azure and Azure Stack Hub must be unique and must not overlap:
 
-![Azure VNets](media/azure-stack-connect-expressroute/AzureArchitecture.png)
+![Azure VNets](media/azure-stack-connect-expressroute/azurearchitecture.svg)
 
 The resources you deploy in Azure are similar to the resources you deployed in Azure Stack Hub. You deploy the following components:
 
@@ -329,7 +329,7 @@ Repeat these steps for any additional tenant VNets you want to connect in Azure 
 
 You can use the following ExpressRoute router configuration diagram as a guide for configuring your ExpressRoute Router. This figure shows two tenants (Tenant 1 and Tenant 2) with their respective ExpressRoute circuits. Each tenant is linked to their own VRF (Virtual Routing and Forwarding) in the LAN and WAN side of the ExpressRoute router. This configuration ensures end-to-end isolation between the two tenants. Take note of the IP addresses used in the router interfaces as you follow the configuration example.
 
-![ExpressRoute router configuration](media/azure-stack-connect-expressroute/EndToEnd.png)
+![ExpressRoute router configuration](media/azure-stack-connect-expressroute/endtoend.svg)
 
 You can use any router that supports IKEv2 VPN and BGP to terminate the site-to-site VPN connection from Azure Stack Hub. The same router is used to connect to Azure using an ExpressRoute circuit.
 

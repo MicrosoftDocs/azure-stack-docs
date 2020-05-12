@@ -215,7 +215,9 @@
           - name: AKS engine on Azure Stack Hub
             href: azure-stack-kubernetes-aks-engine-overview.md
           - name: Support policy
-            href: azure-stack-kubernetes-aks-engine-support.md 
+            href: azure-stack-kubernetes-aks-engine-support.md
+          - name: AKS engine release notes
+            href: kubernetes-aks-engine-release-notes.md
           - name: Set up prerequisites
             href: azure-stack-kubernetes-aks-engine-set-up.md
           - name: Create Linux client
@@ -233,7 +235,7 @@
           - name: Troubleshoot AKS engine
             href: azure-stack-kubernetes-aks-engine-troubleshoot.md
           - name: Use Azure Monitor for containers
-            href: kubernetes-aks-engine-azure-monitor.md
+            href: https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-hybrid-setup
         - name: Marketplace item
           items: 
           - name: Deploy a Kubernetes cluster
