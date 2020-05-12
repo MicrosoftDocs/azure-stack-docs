@@ -231,7 +231,7 @@
           - name: Troubleshoot AKS engine
             href: azure-stack-kubernetes-aks-engine-troubleshoot.md
           - name: Use Azure Monitor for containers
-            href: /azure/azure-monitor/insights/container-insights-hybrid-setup
+            href: https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-hybrid-setup
         - name: Marketplace item
           items: 
           - name: Deploy a Kubernetes cluster
