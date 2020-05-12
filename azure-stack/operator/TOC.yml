@@ -500,11 +500,21 @@
   items:
   - name: Azure Stack Hub PowerShell
     href: https://docs.microsoft.com/powershell/azure/azure-stack/overview
+- name: Reference
+  items:
+  - name: Azure Stack Hub PowerShell
+    href: https://docs.microsoft.com/powershell/azure/azure-stack/overview?
   - name: Azure Stack Hub privileged endpoint
-    href: ../reference/pep-2002/
-  - name: Azure Stack Hub User documentation
+    href: ../reference/pep-2002/    
+  - name: Azure Stack Hub administrator REST APIs
+    href: https://docs.microsoft.com/rest/api/azure-stack/
+  - name: Azure CLI
+    href: /cli/azure/reference-index?view=azure-cli-2017-03-09-profile
+- name: Related
+  items:
+  - name: Azure Stack Hub user documentation
     href: /azure-stack/user/
-  - name: ASDK documentation
+  - name: ASDK Documentation
     href: /azure-stack/asdk/
 - name: Resources
   items:
