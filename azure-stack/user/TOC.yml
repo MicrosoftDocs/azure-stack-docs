@@ -167,6 +167,10 @@
             href: azure-stack-vpn-s2s.md
           - name: VPN gateway settings
             href: azure-stack-vpn-gateway-settings.md
+          - name: Troubleshoot Network Virtual Appliance issues
+            href: network-virtual-appliance.md
+          - name: Troubleshoot site-to-site connections
+            href: site-to-site.md  
         - name: iDNS for Azure Stack Hub
           href: azure-stack-understanding-dns.md
         - name: DNS in Azure Stack Hub
@@ -231,7 +235,7 @@
           - name: Troubleshoot AKS engine
             href: azure-stack-kubernetes-aks-engine-troubleshoot.md
           - name: Use Azure Monitor for containers
-            href: kubernetes-aks-engine-azure-monitor.md
+            href: https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-hybrid-setup
         - name: Marketplace item
           items: 
           - name: Deploy a Kubernetes cluster
