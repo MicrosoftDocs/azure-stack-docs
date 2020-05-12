@@ -4,10 +4,10 @@ title: Troubleshoot Network Virtual Appliance issues on Azure Stack Hub
 description: Troubleshoot VM or VPN connectivity issues and errors when using a third party Network Virtual Appliance (NVA) in Microsoft Azure Stack Hub.
 author: sethmanheim
 ms.author: sethm
-ms.date: 05/05/2020
+ms.date: 05/12/2020
 ms.topic: article
 ms.reviewer: sranthar
-ms.lastreviewed: 05/05/2020
+ms.lastreviewed: 05/12/2020
 
 ---
 
