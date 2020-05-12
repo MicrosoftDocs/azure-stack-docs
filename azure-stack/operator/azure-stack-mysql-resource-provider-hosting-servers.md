@@ -45,7 +45,7 @@ By default, no public access is configured for MySQL into the host VM. For the A
 
 Before the MySQL server can be added as an Azure Stack Hub MySQL Server host, external access must be enabled. Take Bitnami MySQL, which is available in Azure Stack Hub marketplace as an example, you can take the following steps to configure the external access.
 
-1. Using an SSH client (this example uses [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)) login to the MySQL server from a computer that can access the public IP.
+1. Using an SSH client (this example uses [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)) log in to the MySQL server from a computer that can access the public IP.
 
     Use the public IP and log in to the VM with the username and the application password you created earlier without special characters.
 
@@ -57,7 +57,7 @@ Before the MySQL server can be added as an Azure Stack Hub MySQL Server host, ex
 
    ![Check bitnami service](media/azure-stack-tutorial-mysqlrp/bitnami2.png)
 
-3. If the MySQL hosting server is MySQL 8.0 and above versions, you need to change the authentication method to **mysql_native_password**. If the MySQL version is below 8.0, this step can be skipped.
+3. If the MySQL hosting server is version 8.0 or above, you need to change the authentication method to **mysql_native_password**. If the MySQL version is below 8.0, this step can be skipped.
 
    Take Bitnami MySQL as example, the configuration file is under **/opt/bitnami/mysql/conf/my.cnf**. Set the property **default_authentication_plugin** with value **mysql_native_password**.
    ```
@@ -65,7 +65,7 @@ Before the MySQL server can be added as an Azure Stack Hub MySQL Server host, ex
    default_authentication_plugin=mysql_native_password
    ```
    Restart the bitnami service and make sure the bitnami service is running properly.
-   ```
+   ```console
    sudo service bitnami restart
    sudo service bitnami status
    ```
@@ -74,7 +74,7 @@ Before the MySQL server can be added as an Azure Stack Hub MySQL Server host, ex
 
     Run the following commands to log in to MySQL as root, using the root password which is recorded in *~/bitnami_credentials*. Create a new admin user and replace *\<username\>* and *\<password\>* as required for your environment. In this example, the created user is named **sqlsa** and a strong password is used:
 
-   ```
+   ```sql
    mysql -u root -p
    create user <username>@'%' identified by '<password>';
    grant all privileges on *.* to <username>@'%' with grant option;
@@ -85,7 +85,7 @@ Before the MySQL server can be added as an Azure Stack Hub MySQL Server host, ex
 
 5. Make sure the plugin of the created sql user **sqlsa** is **mysql_native_password** and then exit the SSH client.
    
-   ```
+   ```sql
    SELECT user,host,plugin from mysql.user;
    ```
 6. Record the new MySQL user information.
