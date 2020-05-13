@@ -5,10 +5,10 @@ description: Learn how to troubleshoot Azure Stack Hub, including issues with VM
 author: justinha
 
 ms.topic: article
-ms.date: 04/30/2020
+ms.date: 05/13/2020
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 11/05/2019
+ms.lastreviewed: 15/13/2020
 
 # Intent: As an Azure Stack operator, I want to troubleshoot Azure Stack issues.
 # Keyword: toubleshoot azure stack
@@ -127,7 +127,7 @@ If the Create-AADIdentityApp.ps1 script that's required for App Service fails, b
 
 The Azure Stack Hub patch and update process is designed to allow operators to apply update packages in a consistent, streamlined way. While uncommon, issues can occur during patch and update process. The following steps are recommended should you encounter an issue during the patch and update process:
 
-0. **Prerequisites**: Be sure that you have followed the [Update Activity Checklist](release-notes-checklist.md) and have [Configured Automatic Log Collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md).
+0. **Prerequisites**: Be sure that you have followed the [Update Activity Checklist](release-notes-checklist.md) and [enable proactive log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md).
 
 1. Follow the remediation steps in the failure alert created when your update failed.
 
