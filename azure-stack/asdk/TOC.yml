@@ -53,9 +53,9 @@
     href: /cli/azure/?view=azure-cli-2017-03-09-profile
 - name: Related
   items:
-  - name: Azure Stack Hub Operator Documentation
+  - name: Azure Stack Hub operator documentation
     href: /azure-stack/operator
-  - name: Azure Stack Hub User Documentation
+  - name: Azure Stack Hub user documentation
     href: /azure-stack/user/
 - name: Resources
   items:

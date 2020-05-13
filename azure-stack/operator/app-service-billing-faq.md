@@ -9,7 +9,7 @@ ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 04/13/2020
 
-# Intent: As an Azure Stack Hub user, I want to know how cloud operators are billed for offering Azure App Service and how I can bill my tenants. 
+# Intent: As an Azure Stack Hub operator, I want to know how cloud operators are billed for offering Azure App Service and how I can bill my tenants. 
 # Keyword: azure stack hub app service billing
 
 ---
