@@ -8,7 +8,7 @@ ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 04/09/2020
 
-# Intent: As an Stack Hub user, I want to rotate App Service on Azure Stack Hub secrets and certificates so I can maintain secure communication.
+# Intent: As an Stack Hub operator, I want to rotate App Service on Azure Stack Hub secrets and certificates so I can maintain secure communication.
 # Keyword: app service azure stack hub rotate secrets certificates
 
 ---
