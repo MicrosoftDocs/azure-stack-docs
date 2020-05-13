@@ -184,22 +184,6 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 - 05/07/2020: Bitnami XOOPS - version 2.5.2004220506
 - 05/07/2020: Bitnami ZooKeeper - version 3.6.2004302354
 - 05/07/2020: Bitnami Zurmo - version 3.2.2004220512
-- 04/20/2020: Windows Server 2012 Datacenter - BYOL - version 3.127.20190521
-- 04/20/2020: Windows Server 2012 R2 Datacenter - Pay as you use - version 4.127.20200205
-- 04/20/2020: Windows Server 2012 R2 Datacenter - BYOL - version 4.127.20200205
-- 04/20/2020: Windows Server 2012 Datacenter - Pay as you use - version 3.127.20200205
-- 04/20/2020: Windows Server 2016 Datacenter - BYOL - version 2016.127.20200131
-- 04/20/2020: Windows Server 2016 Datacenter - Pay as you use - version 2016.127.20200131
-- 04/20/2020: Windows Server 2016 Datacenter Server Core - BYOL- version 2016.127.20200131
-- 04/20/2020: Windows Server 2016 Datacenter Server Core - Pay as you use - version 2016.127.20200131
-- 04/20/2020: Windows Server 2016 Datacenter with Containers - BYOL - version 2016.127.20200131
-- 04/20/2020: Windows Server 2016 Datacenter with Containers - Pay as you use - version 2016.127.20200131
-- 04/20/2020: Windows Server 2008 R2 SP1 BYOL - version 2.127.20200206
-- 04/20/2020: Windows Server 2008 R2 SP1 Pay as you use - version 2.127.20200206
-- 04/20/2020: Windows Server 2012 R2 Datacenter BYOL - version 4.127.20200205
-- 04/20/2020: Windows Server 2012 R2 Datacenter Pay as you use - version 4.127.20200205
-- 04/20/2020: Windows Server 2012 Datacenter BYOL - version 3.127.20200205
-- 04/20/2020: Windows Server 2012 Datacenter Pay as you use - version 3.127.20200205
 - 04/20/2020: Windows Server 2019 Datacenter BYOL - version 2019.127.20200213
 - 04/20/2020: Windows Server 2019 Datacenter Payg - version 2019.127.20200213
 - 04/20/2020: Windows Server 2019 Datacenter Server Core BYOL - version 2019.127.- 20200204
@@ -208,6 +192,22 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 - 04/20/2020: Windows Server 2019 Datacenter With Containers Payg - version 2019.127.- 20200204
 - 04/20/2020: Windows Server 2019 Datacenter Core With Containers BYOL - version 2019.- 127.20200204
 - 04/20/2020: Windows Server 2019 Datacenter Core With Containers Payg - version 2019.127.20200204
+- 04/20/2020: Windows Server 2016 Datacenter - BYOL - version 2016.127.20200131
+- 04/20/2020: Windows Server 2016 Datacenter - Pay as you use - version 2016.127.20200131
+- 04/20/2020: Windows Server 2016 Datacenter Server Core - BYOL- version 2016.127.20200131
+- 04/20/2020: Windows Server 2016 Datacenter Server Core - Pay as you use - version 2016.127.20200131
+- 04/20/2020: Windows Server 2016 Datacenter with Containers - BYOL - version 2016.127.20200131
+- 04/20/2020: Windows Server 2016 Datacenter with Containers - Pay as you use - version 2016.127.20200131
+- 04/20/2020: Windows Server 2012 Datacenter - BYOL - version 3.127.20190521
+- 04/20/2020: Windows Server 2012 R2 Datacenter - Pay as you use - version 4.127.20200205
+- 04/20/2020: Windows Server 2012 R2 Datacenter - BYOL - version 4.127.20200205
+- 04/20/2020: Windows Server 2012 Datacenter - Pay as you use - version 3.127.20200205
+- 04/20/2020: Windows Server 2012 R2 Datacenter BYOL - version 4.127.20200205
+- 04/20/2020: Windows Server 2012 R2 Datacenter Pay as you use - version 4.127.20200205
+- 04/20/2020: Windows Server 2012 Datacenter BYOL - version 3.127.20200205
+- 04/20/2020: Windows Server 2012 Datacenter Pay as you use - version 3.127.20200205
+- 04/20/2020: Windows Server 2008 R2 SP1 BYOL - version 2.127.20200206
+- 04/20/2020: Windows Server 2008 R2 SP1 Pay as you use - version 2.127.20200206
 - 04/17/2020: Bitnami AbanteCart - version 1.2.2002091007
 - 04/17/2020: Bitnami ActiveMQ - version 5.15.2003260344
 - 04/17/2020: Bitnami Akeneo - version 3.2.2004030743
