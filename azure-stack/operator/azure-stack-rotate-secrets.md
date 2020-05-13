@@ -213,7 +213,7 @@ To rotate external secrets:
 
 5. Wait while your secrets rotate. External secret rotation takes approximately one hour.
 
-    When secret rotation successfully completes, your console will display **Overall action status: Success**.
+    When secret rotation successfully completes, your console will display **ActionPlanInstanceID ... CurrentStatus: Completed**, followed by a **DONE**.
 
     > [!Note]
     > If secret rotation fails, follow the instructions in the error message and re-run **Start-SecretRotation** with the **-ReRun** parameter.
@@ -259,7 +259,7 @@ Remove-PSSession -Session $PEPSession
 
 3. Wait while your secrets rotate.
 
-   When secret rotation successfully completes, your console will display **Overall action status: Success**.
+   When secret rotation successfully completes, your console will display **ActionPlanInstanceID ... CurrentStatus: Completed**, followed by a **DONE**
     > [!Note]
     > If secret rotation fails, follow the instructions in the error message and rerun **Start-SecretRotation** with the  **-Internal** and **-ReRun** parameters.  
 
