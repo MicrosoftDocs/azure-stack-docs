@@ -499,7 +499,7 @@
 - name: Reference
   items:
   - name: Azure Stack Hub PowerShell
-    href: "https://docs.microsoft.com/powershell/azure/azure-stack/overview"
+    href: https://docs.microsoft.com/powershell/azure/azure-stack/overview
   - name: Azure Stack Hub privileged endpoint
     href: ../reference/pep-2002/    
   - name: Azure Stack Hub administrator REST APIs
