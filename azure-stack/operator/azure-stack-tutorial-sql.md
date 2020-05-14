@@ -36,8 +36,8 @@ Before starting, ensure that the [SQL Server resource provider](azure-stack-sql-
 > [!IMPORTANT]
 > All of the following are required for the Azure Stack Hub quickstart template to be used.
 
-- [Windows Server 2016 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/MicrosoftWindowsServer.WindowsServer) marketplace image.
-- SQL Server 2016 SP1 or SP2 (Enterprise, Standard, or Developer) on Windows Server 2016 server image. This article uses the [SQL Server 2016 SP2 Enterprise on Windows Server 2016](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoftsqlserver.sql2016sp2-ws2016) marketplace image.
+- Windows Server 2016 Datacenter marketplace image.
+- SQL Server 2016 SP1 or SP2 (Enterprise or Developer) on Windows Server 2016 server image. This article uses the SQL Server 2016 SP2 Enterprise on Windows Server 2016 marketplace image.
 - [SQL Server IaaS Extension](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) version 1.3.20180 or higher. The SQL IaaS Extension installs necessary components that are required by the Marketplace SQL Server items for all Windows versions. It enables SQL-specific settings to be configured on SQL virtual machines (VMs). If the extension isn't installed in the local marketplace, provisioning of SQL will fail.
 - [Custom script extension for Windows](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.CustomScriptExtension) version 1.9.1 or higher. Custom Script Extension is a tool that can be used to automatically launch post-deployment VM customization tasks.
 - [PowerShell Desired State Configuration (DSC)](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.DSC-arm) version 2.76.0.0 or higher. DSC is a management platform in Windows PowerShell that enables deploying and managing configuration data for software services. The platform also manages the environment in which these services run.
@@ -46,7 +46,7 @@ To learn more about adding items to Azure Stack Marketplace, see the [Azure Stac
 
 ## Create a SQL Server AlwaysOn availability group
 
-Use the steps in this section to deploy the SQL Server AlwaysOn availability group by using the [sql-2016-alwayson Azure Stack Hub quickstart template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sql-2016-alwayson). This template deploys two SQL Server Enterprise, Standard or Developer instances in an Always On Availability Group. It creates the following resources:
+Use the steps in this section to deploy the SQL Server AlwaysOn availability group by using the [sql-2016-alwayson Azure Stack Hub quickstart template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sql-2016-alwayson). This template deploys two SQL Server Enterprise or Developer instances in an Always On Availability Group. It creates the following resources:
 
 - A network security group.
 - A virtual network.
@@ -54,7 +54,7 @@ Use the steps in this section to deploy the SQL Server AlwaysOn availability gro
 - Four public IP addresses (one for AD, two for each SQL VM, and one for public load balancer bound to SQL AlwaysOn listener).
 - One external load balancer for SQL VMs with Public IP bound to the SQL AlwaysOn listener.
 - One VM (Windows Server 2016) configured as Domain Controller for a new forest with a single domain.
-- Two VMs (Windows Server 2016) configured with SQL Server 2016 SP1 or SP2 Enterprise, Standard, or Developer Edition and clustered. These must be marketplace images.
+- Two VMs (Windows Server 2016) configured with SQL Server 2016 SP1 or SP2 Enterprise or Developer Edition and clustered. These must be marketplace images.
 - One VM (Windows Server 2016) configured as the file share witness for the cluster.
 - One availability set containing the SQL and file share witness VMs.
 
