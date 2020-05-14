@@ -326,11 +326,11 @@
 - name: Reference
   items:
   - name: Azure Stack Hub PowerShell
-    href: https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=
+    href: https://docs.microsoft.com/powershell/azure/azure-stack/overview 
   - name: Azure Stack Hub administrator REST APIs
     href: /rest/api/azure-stack/
   - name: Azure CLI
-    href: https://docs.microsoft.com/cli/azure/reference-index?view=
+    href: https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest
 - name: Related
   items:
   - name: Azure Stack Hub operator documentation
