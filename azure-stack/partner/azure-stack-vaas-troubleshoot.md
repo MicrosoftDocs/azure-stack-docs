@@ -139,7 +139,7 @@ The properties of all required VM images are as follows:
 | Canonical | UbuntuServer | Linux | 14.04.3-LTS | 1.0.0 | https://[*Your storage account*]/[*container name*]/Ubuntu1404LTS.vhd |
 | Canonical | UbuntuServer | Linux | 16.04-LTS | 16.04.20170811 | https://[*Your storage account*]/[*container name*]/Ubuntu1604-20170619.1.vhd |
 | OpenLogic | CentOS | Linux | 6.9 | 1.0.0 | https://[*Your storage account*]/[*container name*]/OpenLogic-CentOS-69-20180105.vhd |
-| credativ | Debian | Linux | 8 | 1.0.0 | https://[*Your storage account*]/[*container name*]/Debian8_latest.vhd |
+| Credativ | Debian | Linux | 8 | 1.0.0 | https://[*Your storage account*]/[*container name*]/Debian8_latest.vhd |
 
 ## Next steps
 
