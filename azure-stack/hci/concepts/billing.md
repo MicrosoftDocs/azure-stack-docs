@@ -43,5 +43,5 @@ To manually upload core usage data to Azure, use the **`Sync-AzureStackHCI`** cm
 
 For related information, see also:
 
-- [Pricing Overview—How Azure Pricing Works](https://azure.microsoft.com/en-us/pricing/)
+- [Pricing Overview—How Azure Pricing Works](https://azure.microsoft.com/pricing/)
 - [Overview of Azure Cost Management and Billing](/azure/cost-management-billing/cost-management-billing-overview)
