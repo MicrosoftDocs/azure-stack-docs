@@ -158,22 +158,25 @@ Details about the key fields:
 Use of the following command to deploy the cognitive service containers:
 
 ```bash  
-    Kubectl apply -f <yamlFineName>
+    Kubectl apply -f <yamlFileName>
 ```
 Use of the following command to monitor how it deploys: 
 ```bash  
     Kubectl get pod - watch
 ```
 
-## Configure proxy settings
+## Configure HTTP proxy settings
 
-The worker nodes need a proxy and SSL.
+The worker nodes need a proxy and SSL. To configure an HTTP proxy for making outbound requests, use these two arguments:
+
+- **HTTP_PROXY** – the proxy to use, for example `https://proxy:8888`
+- **HTTP_PROXY_CREDS** – any credentials needed to authenticate against the proxy,for example `username:password`.
 
 ### Set up the proxy
 
 1. Add a `http-proxy.conf` file to both locations:
     - `/etc/system/system/docker.service.d/`
-    - `/cat/etc/environment`
+    - `/cat/etc/environment/`
 
 2. Validate that you can sign on to the container using the credentials provided by the Cognitive Services team and perform a `docker pull` in the following container: 
 
