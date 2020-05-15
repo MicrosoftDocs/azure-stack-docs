@@ -31,17 +31,17 @@ Azure Stack Hub integrated system partners offer many solution variations, inclu
 
 Storage Spaces Direct features a cache to maximize storage performance. In an Azure Stack Hub appliance with one drive type (that is, NVMe or SSD) all drives are used for capacity. If there are two drive types, Storage Spaces Direct automatically uses all drives of the "fastest" (NVMe &gt; SSD &gt; HDD) type for caching. The remaining drives are used for capacity. The drives could be grouped into either an "all-flash" or "hybrid" deployment:
 
-![Azure Stack Hub storage infrastructure](media/azure-stack-storage-infrastructure-overview/image1.png)
+![Azure Stack Hub storage infrastructure](media/azure-stack-storage-infrastructure-overview/image1.svg)
 
 All-flash deployments aim to maximize storage performance and don't include rotational HDDs.
 
-![Azure Stack Hub storage infrastructure](media/azure-stack-storage-infrastructure-overview/image2.png)
+![Azure Stack Hub storage infrastructure](media/azure-stack-storage-infrastructure-overview/image2.svg)
 
 Hybrid deployments aim to balance performance and capacity or to maximize capacity and do include rotational HDDs.
 
 The behavior of the cache is determined automatically based on the type(s) of drives that are being cached for. When caching for SSDs (such as NVMe caching for SSDs), only writes are cached. This reduces wear on the capacity drives, reducing the cumulative traffic to the capacity drives and extending their lifetime. In the meantime, reads aren't cached. They aren't cached because reads don't significantly affect the lifespan of flash and because SSDs universally offer low read latency. When caching for HDDs (such as SSDs caching for HDDs), both reads and writes are cached, to provide flash-like latency (often /~10x better) for both.
 
-![Azure Stack Hub storage infrastructure](media/azure-stack-storage-infrastructure-overview/image3.png)
+![Azure Stack Hub storage infrastructure](media/azure-stack-storage-infrastructure-overview/image3.svg)
 
 For the available configuration of storage, you can check Azure Stack Hub OEM partner (https://azure.microsoft.com/overview/azure-stack/partners/) for detailed specification.
 
@@ -52,7 +52,7 @@ For the available configuration of storage, you can check Azure Stack Hub OEM pa
 
 The *storage service* partitions the available storage into separate volumes that are allocated to hold system and tenant data. Volumes combine the drives in the storage pool to provide the fault tolerance, scalability, and performance benefits of Storage Spaces Direct.
 
-![Azure Stack Hub storage infrastructure](media/azure-stack-storage-infrastructure-overview/image4.png)
+![Azure Stack Hub storage infrastructure](media/azure-stack-storage-infrastructure-overview/image4.svg)
 
 There are three types of volumes created on Azure Stack Hub storage pool:
 
@@ -74,7 +74,7 @@ In a multi-node deployment, you would see three infrastructure volumes, while th
 
 Volumes in Storage Spaces Direct provide resiliency to protect against hardware problems, such as drive or server failures. They also enable continuous availability throughout server maintenance, like software updates. Azure Stack Hub deployment uses three-way mirroring to ensure data resilience. Three copies of tenant data are written to different servers, where they land in cache:
 
-![Azure Stack Hub storage infrastructure](media/azure-stack-storage-infrastructure-overview/image5.png)
+![Azure Stack Hub storage infrastructure](media/azure-stack-storage-infrastructure-overview/image5.svg)
 
 Mirroring provides fault tolerance by keeping multiple copies of all data. How that data is striped and placed is non-trivial, but it's true to say that any data stored using mirroring is written in its entirety multiple times. Each copy is written to different physical hardware (different drives in different servers) that are assumed to fail independently. Three-way mirroring can safely tolerate at least two hardware problems (drive or server) at a time. For example, if you're rebooting one server when suddenly another drive or server fails, all data remains safe and continuously accessible.
 
