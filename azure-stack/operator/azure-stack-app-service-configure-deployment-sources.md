@@ -8,7 +8,7 @@ ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 10/15/2019
 
-# Intent: As an Azure Stack Hub user, I want to configure deployment sources for App Services on Azure Stack Hub so I can deploy directly from my source control repositories.
+# Intent: As an Azure Stack Hub operator, I want to configure deployment sources for App Services on Azure Stack Hub so I can deploy directly from my source control repositories.
 # Keyword: deployment sources app services azure stack hub
 
 ---

@@ -9,7 +9,7 @@ ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2019
 
-# Intent: As an Azure Stack Hub user, I want the release notes for update 7 of App Service on Azure Stack Hub so I can know the new features, fixes, and known issues.
+# Intent: As an Azure Stack Hub operator, I want the release notes for update 7 of App Service on Azure Stack Hub so I can know the new features, fixes, and known issues.
 # Keyword: app service azure stack hub update 7 release notes
 
 ---
