@@ -1,40 +1,39 @@
 ---
-title: Manage Azure Stack HCI clusters
-description: Learn how to manage your hyperconverged clusters on Azure Stack HCI. 
+title: Manage Azure Stack HCI clusters using Windows Admin Center
+description: Learn how to manage your clusters on Azure Stack HCI using Windows Admin Center. 
 ms.topic: article
 author: v-dasis
 ms.author: v-dasis
 ms.reviewer: jgerend
-ms.date: 03/17/2020
+ms.date: 05/18/2020
 ---
 
-# Manage Azure Stack HCI clusters
+# Manage Azure Stack HCI clusters using Windows Admin Center
 
 > Applies to: Windows Server 2019
 
 Windows Admin Center can be used to manage your clusters in Azure Stack HCI. Specifically, you will be using the Cluster Manager extension in Windows Admin Center to manage your clusters.
 
-## View the cluster dashboard ##
+## View the cluster dashboard
 
 The cluster dashboard displays information regarding cluster health and performance.
 
-> [!div class="mx-imgBorder"]
-> ![cluster settings](media/manage-cluster/cluster-dashboard.png)
+:::image type="content" source="media/manage-cluster/cluster-dashboard.png" alt-text="Cluster Dashboard screen":::
 
-1. In Windows Admin Center, click the cluster name under **All connections**.
-1. Under **Tools** on the left, select **Dashboard**. You can view the following:
-    - Cluster event alerts
-    - List of the servers joined to the cluster
-    - List of virtual machines running on the cluster
-    - List of disk drives available on the cluster
-    - List of disk volumes available on the cluster
-    - Total cluster CPU usage for the cluster
-    - Total cluster memory usage for the cluster
-    - Total cluster storage usage for the cluster
-    - Total cluster input/output operations/second (IOPS)
-    - Average cluster latency in milliseconds
+To view this information, select the cluster name under **All connections**, then under **Tools** on the left, select **Dashboard**. You can view the following:
 
-## Change cluster general settings ##
+- Cluster event alerts
+- List of the servers joined to the cluster
+- List of virtual machines running on the cluster
+- List of disk drives available on the cluster
+- List of volumes available on the cluster
+- Total cluster CPU usage for the cluster
+- Total cluster memory usage for the cluster
+- Total cluster storage usage for the cluster
+- Total cluster input/output operations/second (IOPS)
+- Average cluster latency in milliseconds
+
+## Change cluster general settings
 
 There are five general settings that can be applied to your cluster.
 
@@ -42,89 +41,78 @@ There are five general settings that can be applied to your cluster.
 1. Under **Tools**, click **Settings**.
 1. To change the cluster name, select **Access point** and enter the new name.
 
-> [!div class="mx-imgBorder"]
-> ![cluster settings](media/manage-cluster/cluster-settings-access.png)
+    :::image type="content" source="media/manage-cluster/cluster-settings-access.png" alt-text="cluster Access point screen":::
 
-4. To control node shutdown behavior, select **Node shutdown behavior** and ensure the checkbox is enabled. This moves any virtual machines from the node first to allow graceful node shutdown.
+1. To control node shutdown behavior, select **Node shutdown behavior** and ensure the checkbox is enabled. This moves any virtual machines from the node first to allow graceful node shutdown.
 
-> [!div class="mx-imgBorder"]
-> ![cluster settings](media/manage-cluster/cluster-settings-shutdown.png)
+    :::image type="content" source="media/manage-cluster/cluster-settings-shutdown.png" alt-text="cluster Node shutdown behavior screen":::
 
-5. To encrypt SMB connections used to send data between cluster nodes, select **Cluster traffic encryption**, then select **Encrypt** from the dropdown boxes for the following:
+1. To encrypt SMB connections used to send data between cluster nodes, select **Cluster traffic encryption**, then select **Encrypt** from the dropdown boxes for the following:
 
- - **Core traffic** - encrypts traffic sent over NetFT (cluster virtual adapter) on port 3343
+   - **Core traffic** - encrypts traffic sent over NetFT (cluster virtual adapter) on port 3343
 
-  - **Server traffic** - encrypts Cluster Shared Volume (CSV) and Storage Bus Layer (SBL) traffic
+   - **Server traffic** - encrypts Cluster Shared Volume (CSV) and Storage Bus Layer (SBL) traffic
 
-> [!div class="mx-imgBorder"]
-> ![cluster settings](media/manage-cluster/cluster-settings-encryption.png)
+        :::image type="content" source="media/manage-cluster/cluster-settings-encryption.png" alt-text="cluster Cluster traffic encryption screen":::
 
-6. To automatically load-balance virtual machines across the cluster, select **Virtual machine load balancing**, and do the following:
+1. To automatically load-balance virtual machines across the cluster, select **Virtual machine load balancing**, and do the following:
 
- - For **Balance virtual machines**, select the appropriate action
- - For **Aggressiveness**, select the appropriate behavior
+   - For **Balance virtual machines**, select the appropriate action
+   - For **Aggressiveness**, select the appropriate behavior
 
- For information on how this works, see [Virtual Machine Load Balancing overview](https://docs.microsoft.com/windows-server/failover-clustering/vm-load-balancing-overview).
+     For information on how this works, see [Virtual Machine Load Balancing overview](https://docs.microsoft.com/windows-server/failover-clustering/vm-load-balancing-overview).
 
-> [!div class="mx-imgBorder"]
-> ![cluster settings](media/manage-cluster/cluster-settings-vm-load.png)
+        :::image type="content" source="media/manage-cluster/cluster-settings-vm-load.png" alt-text="cluster Virtual machine load balancing screen":::
 
-7. To select a quorum witness type, select **Witness**, then select one of the following:
+1. To select a quorum witness type, select **Witness**, then select one of the following:
 
-  - **Cloud witness** - to use an Azure cloud resource as witness 
+   - **Cloud witness** - to use an Azure cloud resource as witness
    - **Disk witness** - to use a disk resource as witness
-  - **File share witness** - to use a file share as witness 
+   - **File share witness** - to use a file share as witness
 
-For more information, see [Configure and manage quorum](https://docs.microsoft.com/windows-server/failover-clustering/manage-cluster-quorum).
+        For more information, see [Configure and manage quorum](https://docs.microsoft.com/windows-server/failover-clustering/manage-cluster-quorum).
 
+        :::image type="content" source="media/manage-cluster/cluster-settings-witness.png" alt-text="cluster Witness screen":::
 
-> [!div class="mx-imgBorder"]
-> ![cluster settings](media/manage-cluster/cluster-settings-witness.png)
-
-## Change cluster Hyper-V settings ##
+## Change cluster Hyper-V settings
 
 There are five Hyper-V host settings that can be applied to your cluster.
 
 1. In Windows Admin Center, click **Cluster Manager** from the top drop-down arrow.
-2. Under **Tools**, click **Settings**.
-3. Select **General** and do the following:
+1. Under **Tools**, click **Settings**.
+1. Select **General** and then use the following settings:
 
- - for **Virtual Hard Disks Path**, specify the default folder to store the virtual hard disk files to
+   - **Virtual Hard Disks Path** - specify the default folder for storing virtual hard disk files.
 
- - for **Virtual Machines Path**, specify the default folder to store the virtual machine configuration files to
+   - **Virtual Machines Path** - specify the default folder for storing the virtual machine configuration files.
 
- - for **Hypervisor Scheduler Type**, select either **Core Scheduler** or **Classic Scheduler**. This determines how the hypervisor schedules virtual processes to run on physical processors that use simultaneous multi-threading (also known as SMT or hyper-threading)
+   - **Hypervisor Scheduler Type** - select **Core Scheduler** or **Classic Scheduler**. This determines how the hypervisor schedules virtual processes to run on physical processors that use simultaneous multi-threading (also known as SMT or hyper-threading).
 
-> [!div class="mx-imgBorder"]
-> ![Hyper-V general settings](media/manage-cluster/cluster-settings-hyperv.png)
+        :::image type="content" source="media/manage-cluster/cluster-settings-hyperv.png" alt-text="cluster Hyper-V General settings  screen":::
 
-4. To allow redirection of local devices and resources from virtual machines, select **Enhanced Session Mode**. Note that enhanced session mode connections require a supported guest operating system.
+1. To allow redirection of local devices and resources from virtual machines, select **Enhanced Session Mode**. Note that enhanced session mode connections require a supported guest operating system.
 
-> [!div class="mx-imgBorder"]
-> ![Hyper-V enhanced session mode settings](media/manage-cluster/cluster-settings-session.png)
+    :::image type="content" source="media/manage-cluster/cluster-settings-session.png" alt-text="cluster Hyper-V Enhanced Session Mode screen":::
 
-5. To allow virtual machines to span physical NUMA nodes, select **NUMA Spanning**. Non-uniform memory architecture (NUMA) spanning can provide a virtual machine with more memory than what is available on a single NUMA node.
+1. To allow virtual machines to span physical NUMA nodes, select **NUMA Spanning**. Non-uniform memory architecture (NUMA) spanning can provide a virtual machine with more memory than what is available on a single NUMA node.
 
-> [!div class="mx-imgBorder"]
-> ![Hyper-V NUMA spanning settings](media/manage-cluster/cluster-settings-numa.png)
+    :::image type="content" source="media/manage-cluster/cluster-settings-numa.png" alt-text="cluster NUMA Spanning screen":::
 
-6. To specify the number of live migrations that can be performed at the same time, select **Live Migration**, select a number, then specify the following:
+1. To specify the number of VMs that can be simultaneously moved while running (live migrated), select **Live Migration**, select a number, then specify the following:, select **Live Migration**, select a number, then specify the following:
 
- - for **Authentication Protocol**, select either **CredSSP** or **Kerberos**.
+   - for **Authentication Protocol**, select either **CredSSP** or **Kerberos**.
 
-  - for **Performance Option**, select either **Compression** or **SMB**. Compressed data is sent over a TCP/IP connection.
+   - for **Performance Option**, select either **Compression** or **SMB**. Compressed data is sent over a TCP/IP connection.
 
    - enable the **Use any network** checkbox to use any available network on a node to perform the migration
 
-> [!div class="mx-imgBorder"]
-> ![Hyper-V live migration settings](media/manage-cluster/cluster-settings-liv-migration.png)
+        :::image type="content" source="media/manage-cluster/cluster-settings-liv-migration.png" alt-text="cluster Live Migration screen":::
 
-7. To specify the number of storage migrations that can be performed at the same time, select **Storage Migration**, then select a number. 
+1. To specify the number of storage migrations that can be performed at the same time, select **Storage Migration**, then select a number.
 
-> [!div class="mx-imgBorder"]
-> ![Hyper-V storage migration settings](media/manage-cluster/cluster-settings-sto-migration.png)
+    :::image type="content" source="media/manage-cluster/cluster-settings-sto-migration.png" alt-text="cluster Storage Migration screen":::
 
-## Change cluster storage settings ##
+## Change cluster storage settings
 
 There are two settings you can change related to Storage Spaces Direct that can be applied to your cluster.
 
@@ -132,20 +120,18 @@ There are two settings you can change related to Storage Spaces Direct that can 
 1. Under **Tools**, click **Settings** at the bottom.
 1. To configure the storage cache, select **Storage Spaces Direct**, then configure the following:
 
- - for **Persistent cache**, select either **Enabled** or **Disabled**
+   - for **Persistent cache**, select either **Enabled** or **Disabled**
 
-  - for **Cache mode for HDD**, select **Read only**, **Write only**, or **Read/Write**
+   - for **Cache mode for HDD**, select **Read only**, **Write only**, or **Read/Write**
 
-   - for **Cache mode for SSD**, select **Read only**, **Write only**, or **Read/Write** 
+   - for **Cache mode for SSD**, select **Read only**, **Write only**, or **Read/Write**
 
-> [!div class="mx-imgBorder"]
-> ![Storage Spaces Direct settings](media/manage-cluster/cluster-settings-ssd.png)
+        :::image type="content" source="media/manage-cluster/cluster-settings-ssd.png" alt-text="cluster Storage Spaces Direct screen":::
 
-4. To use server memory to cache frequent reads, select **In-memory cache** and specify the maximum memory to be used per sever. Also see [Using Storage Spaces Direct with the CSV in-memory read cache](https://docs.microsoft.com/windows-server/storage/storage-spaces/csv-cache).
+1. To use server memory to cache frequent reads, select **In-memory cache** and specify the maximum memory to be used per sever. Also see [Using Storage Spaces Direct with the CSV in-memory read cache](https://docs.microsoft.com/windows-server/storage/storage-spaces/csv-cache).
 
-> [!div class="mx-imgBorder"]
-> ![In-memory cache settings](media/manage-cluster/cluster-settings-memory.png)
+    :::image type="content" source="media/manage-cluster/cluster-settings-memory.png" alt-text="cluster In-memory cache screen":::
 
-## Next Steps ##
+## Next steps
 
-- To add or remove a server node from a cluster, see [Add or remove servers on an Azure HCI cluster].
+- To monitor your cluster performance, see [Monitor cluster performance](https://docs.microsoft.com/azure-stack/hci/get-started#monitor-cluster-performance-with-the-windows-admin-center-dashboard)
