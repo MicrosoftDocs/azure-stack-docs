@@ -3,7 +3,7 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/13/2020
+ms.date: 05/18/2020
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 10/01/2019
@@ -62,6 +62,9 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Updated marketplace items
 
+- 05/15/2020: Bitnami AbanteCart - version 1.2.2004220207
+- 05/15/2020: Bitnami Canvas LMS - version 2020.5.2005120909
+- 05/15/2020: Bitnami Neos - version 5.2.2005130917
 - 05/07/2020: Bitnami ActiveMQ - version 5.15.2003260344
 - 05/07/2020: Bitnami Akeneo- version 4-3.2.2004230142
 - 05/07/2020: Bitnami Alfresco Community - version 201911.0.2004242008
