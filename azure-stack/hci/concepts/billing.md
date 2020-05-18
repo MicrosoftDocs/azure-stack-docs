@@ -4,7 +4,7 @@ description: How billing and payment works in Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 05/15/2020
+ms.date: 05/18/2020
 ---
 
 # Azure Stack HCI billing and payment
@@ -20,7 +20,7 @@ Azure Stack HCI's cloud-style billing model is consistent, familiar, and easy fo
 ## Advantages of the Azure Stack HCI billing model
 
 - It's simple: There's no minimum, no maximum, and no math with memory, storage, or network ingress/egress.
-- It rewards customers who run their virtualization infrastructure more efficiently, with higher v-to-p density.
+- It rewards customers who run their virtualization infrastructure more efficiently, with higher virtual-to-physical density.
 - It’s easy to figure out how much your on-premises Azure Stack HCI deployment will cost, and costs scale predictably from the network edge to the data center.
 
 ## How core usage is assessed
