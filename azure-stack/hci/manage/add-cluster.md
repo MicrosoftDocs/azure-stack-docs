@@ -5,14 +5,14 @@ ms.topic: article
 author: v-dasis
 ms.author: v-dasis
 ms.reviewer: jgerend
-ms.date: 03/04/2020
+ms.date: 05/18/2020
 ---
 
 # Add or remove servers for an Azure Stack HCI cluster
 
 > Applies to: Windows Server 2019
 
-You can easily add or remove servers from a cluster in Azure Stack HCI. Keep in mind that each new physical server must be homogeneous in CPU type, memory, and disk number and size to the servers that are already present in the cluster.
+You can easily add or remove servers from a cluster in Azure Stack HCI. Keep in mind that each new physical server must closely match the rest of the servers in the cluster when it comes to CPU type, memory, number of drives, and the type and size of the drives.
 
 Whenever you add or remove a server, you must also perform cluster validation afterwards to ensure the cluster is functioning normally.
 
@@ -21,7 +21,7 @@ Whenever you add or remove a server, you must also perform cluster validation af
 The first step is to acquire new HCI hardware from your original OEM. Always refer to your OEM-provided documentation when adding new server hardware for use in your cluster.
 
 1. Place the new physical server in the rack and cable it appropriately.
-1. Enable physical switch ports and adjust access control lists (ACLs) if applicable.
+1. Enable physical switch ports and adjust access control lists (ACLs) and VLAN IDs if applicable.
 1. Configure the correct IP address in the baseboard management controller (BMC) and apply all BIOS settings per OEM instructions.
 1. Apply the current firmware baseline to all components by using the tools that are provided by your OEM.
 1. Run OEM validation tests to ensure homogeneity with the existing cluster servers.
@@ -45,7 +45,7 @@ Once your server has spun up correctly, use Windows Admin Center to join the ser
 
 The steps for removing a server from your cluster are similar to those for adding a server to a cluster.
 
-Keep in mind that when you remove a server, you will also remove any virtual machines, storage drives, and workloads associated with the server.
+Keep in mind that when you remove a server, you will also remove any virtual machines, drives, and workloads associated with the server.
 
 > [!div class="mx-imgBorder"]
 > ![Remove server node](media/manage-cluster/remove-server.png)
@@ -65,15 +65,11 @@ Whenever you add or remove a server from a cluster, you must validate the cluste
 > [!div class="mx-imgBorder"]
 > ![Validate cluster](media//manage-cluster/validate-cluster.png)
 
-> [!NOTE]
-> Cluster validation requires that [CredSSP](https://docs.microsoft.com/windows-server/manage/windows-admin-center/understand/faq#does-windows-admin-center-use-credssp) is enabled.
-
 1. In **Windows Admin Center**, select **Cluster Manager** from the top drop-down arrow.
 1. Under **Tools**, select **Servers**.
-1. Under **Servers**, select the **Inventory** tab, select **More**, then select **Validate Cluster (Preview)**.
+1. Under **Servers**, select the **Inventory** tab, select **More**, then select **Validate Cluster**.
 1. Verify that all validation steps passed successfully.
 
-## Next Steps ##
+## Next steps ##
 
- - To learn more about cluster validation, see [Future Topic]
- To manage your clusters, see [Manage clusters in Azure Stack HCI].
+ - To learn more about cluster validation, see [Validate Hardware for a Failover Cluster](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134244(v=ws.11)).
