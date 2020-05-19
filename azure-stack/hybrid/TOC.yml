@@ -79,7 +79,7 @@
 - name: Resources
   items:
   - name: Azure Stack Hub updates
-    href: https://azure.microsoft.com/roadmap/?tag=azure-stack
+    href: https://azure.microsoft.com/en-us/updates/?query=azure%20stack%20hub
   - name: Azure Stack Hub MSDN forum
     href: https://social.msdn.microsoft.com/Forums/home?forum=AzureStack
   - name: Azure Stack Hub documentation feedback

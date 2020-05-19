@@ -339,8 +339,8 @@
     href: /azure-stack/asdk/
 - name: Resources
   items:
-  - name: Azure Stack Hub roadmap
-    href: https://azure.microsoft.com/roadmap/?tag=azure-stack
+  - name: Azure Stack Hub road map
+    href: https://azure.microsoft.com/en-us/updates/?query=azure%20stack%20hub
   - name: Azure Stack Hub MSDN forum
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack
   - name: Azure Stack Hub Documentation feedback
