@@ -67,7 +67,7 @@ Currently, the following additional Platform-as-a-Service (PaaS) services are su
 > These services require additional configuration before you can make them available to your users and aren't available by default when you install the ASDK.
 
 ## Service roadmap
-Azure Stack Hub will continue to add support for additional Azure services. To learn about what's coming next with Azure Stack Hub, see the [Azure Stack roadmap](https://azure.microsoft.com/en-us/updates/?query=azure%20stack%20hub).
+Azure Stack Hub will continue to add support for additional Azure services. To learn about what's coming next with Azure Stack Hub, see the [Azure Stack roadmap](https://azure.microsoft.com/updates/?query=azure%20stack%20hub).
 
 
 ## Next steps
