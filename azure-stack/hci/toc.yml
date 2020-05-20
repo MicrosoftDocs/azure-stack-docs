@@ -27,9 +27,9 @@
   - name: Monitor with Azure Monitor
     href: manage/azure-monitor.md
   - name: Manage VMs
-    href: manage/manage-vm.md
+    href: manage/vm.md
   - name: Manage VMs with PowerShell
-    href: manage/manage-vm-ps.md
+    href: manage/vm-powershell.md
   - name: Attach GPU to Linux VM
     href: manage/attach-gpu-to-linux-vm.md
 - name: Concepts
