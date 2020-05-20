@@ -40,7 +40,7 @@ This section describes scenarios in which validation is also needed or useful.
 
   - **Before adding a node:** When you add a server to a cluster, we strongly recommend to first connect the server to the cluster networks and storage, and then run the Validate cluster feature. Specify both the existing cluster nodes and the new node when you run the feature.
   
-  - **When attaching new storage:** When you attach new storage to the cluster, which is different from exposing a new LUN in existing storage, run the Validate cluster feature to confirm that the new storage will function correctly. To minimize the affect on availability, we recommend running the Validate cluster feature after attaching the storage. Run the feature before using any new LUNs in clustered services or applications.
+  - **When adding drives:** When you add additional drives to the cluster, which is different from replacing failed drives or creating virtual disks or volumes that rely on the existing drives, run the Validate cluster feature to confirm that the new storage will function correctly. 
 
   - **When making changes that affect firmware or drivers:** If you upgrade or make changes to the cluster that affect firmware or drivers, you must run the Validate cluster feature to confirm that the new combination of hardware, firmware, drivers, and software supports failover cluster functionality. If the change affects firmware or drivers for storage, we recommend keeping a small LUN available that clustered services and applications do not use. This allows you to run the storage validation tests without taking your services and applications offline.
 
