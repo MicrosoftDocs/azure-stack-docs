@@ -198,7 +198,7 @@ Instead of using Windows Admin Center, you can also manage your VMs through a Hy
 
     - The **Connect** option connects to the VM using Remote Desktop in your web browser.
 
-    - The **Download RDP file** option downloads an .rdp file that you can open to connect with the Remote Desktop Connection app (mstsc.exe). 
+    - The **Download RDP file** option downloads an .rdp file that you can open to connect with the Remote Desktop Connection app (mstsc.exe).
 
 ## Protect VMs with Azure Site Recovery
 

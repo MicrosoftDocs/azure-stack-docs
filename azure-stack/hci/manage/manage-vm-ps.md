@@ -1,14 +1,14 @@
 --- 
-title: Manage VMs on Azure Stack HCI with Windows PowerShell 
+title: Manage VMs on Azure Stack HCI using Windows PowerShell 
 description: How to manage virtual machines on Azure Stack HCI using Windows PowerShell 
 author: v-dasis 
 ms.topic: article 
-ms.date: 05/19/2020 
+ms.date: 05/20/2020 
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
 
-# Manage VMs on Azure Stack HCI with Windows PowerShell
+# Manage VMs on Azure Stack HCI using Windows PowerShell
 
 > Applies to Windows Server 2019
 
@@ -170,14 +170,22 @@ Set-VMProcessor -ComputerName Server1 -Name VM1 -Count 2 -Reserve 10 -Maximum 75
 
 The `New-VM` cmdlet is used to create a new VM. For detailed usage, see the [New-VM](https://docs.microsoft.com/powershell/module/hyper-v/new-vm?view=win10-ps) reference documentation.
 
-Here are the settings that you can specify when creating a new VM with an existing virtual hard disk, where:  
-    - **-Name** is the name that you provide for the virtual machine that you're creating.  
-    - **-MemoryStartupBytes** is the amount of memory   that is available to the virtual machine at start up.  
-    - **-BootDevice** is the device that the virtual machine boots to when it starts. Typically this is a virtual hard disk (VHD), an .iso file for DVD-based boot, or a network adapter (NetworkAdapter) for network boot.  
-    - **-VHDPath** is the path to the virtual machine disk that you want to use.  
-    - **-Path** is the path to store the virtual machine configuration files.  
-    - **-Generation** is the virtual machine generation. Use generation 1 for VHD and generation 2 for VHDX.
-    - **-Switch** is the name of the virtual switch that you want the virtual machine to use to connect to other virtual machines or the network. Get the name of the virtual switch by using [Get-VMSwitch](https://docs.microsoft.com/powershell/module/hyper-v/get-vmswitch?view=win10-ps). For example:  
+Here are the settings that you can specify when creating a new VM with an existing virtual hard disk, where:
+
+**-Name** is the name that you provide for the virtual machine that you're creating.
+
+**-MemoryStartupBytes** is the amount of memory   that is available to the virtual machine at start up.
+
+**-BootDevice** is the device that the virtual machine boots to when it starts.
+ Typically this is a virtual hard disk (VHD), an .iso file for DVD-based boot, or a network adapter (NetworkAdapter) for network boot.
+
+**-VHDPath** is the path to the virtual machine disk that you want to use.
+
+**-Path** is the path to store the virtual machine configuration files.
+
+**-Generation** is the virtual machine generation. Use generation 1 for VHD and generation 2 for VHDX.
+
+**-Switch** is the name of the virtual switch that you want the virtual machine to use to connect to other virtual machines or the network. Get the name of the virtual switch by using [Get-VMSwitch](https://docs.microsoft.com/powershell/module/hyper-v/get-vmswitch?view=win10-ps). For example:  
 
 The full command as follows for creating a VM called VM1:
 
@@ -203,4 +211,4 @@ To create a virtual machine with a new virtual disk that boots to an operating s
 
 ## Next steps  
 
-- You can also create and manage VMs using Windows Admin Center. For more information, see [Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/overview)
+- You can also create and manage VMs using Windows Admin Center. For more information, see [Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/overview).
