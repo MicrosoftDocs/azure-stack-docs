@@ -5,7 +5,7 @@ ms.topic: article
 author: v-dasis
 ms.author: v-dasis
 ms.reviewer: jgerend
-ms.date: 05/18/2020
+ms.date: 05/20/2020
 ---
 
 # Manage Azure Stack HCI clusters using Windows Admin Center
