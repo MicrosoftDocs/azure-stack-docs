@@ -22,12 +22,11 @@ Cluster-Aware Updating has two plug-ins:
 - The **Microsoft.WindowsUpdatePlugin** installs updates from Windows Update and offline sources like Windows Server Update Services.
 - The **Microsoft.HotfixPlugin** enables custom sources such as OEM-specific feature updates.
 
-   > [!TIP]
-   > To test whether a failover cluster is properly set up to apply software updates using Cluster-Aware Updating, run the **`Test-CauSetup`** PowerShell cmdlet, which performs a Best Practices Analyzer (BPA) scan of the failover cluster and network environment:
-   >
-   > ```powershell
-   >Test-CauSetup -ClusterName Cluster1
-   >```
+> [!TIP]
+> To test whether a failover cluster is properly set up to apply software updates using Cluster-Aware Updating, run the **Test-CauSetup** PowerShell cmdlet, which performs a Best Practices Analyzer (BPA) scan of the failover cluster and network environment and alerts you of any warnings or errors:
+>
+>`Test-CauSetup -ClusterName Cluster1`
+>
 
 ### Install Failover Clustering and Failover Clustering Tools using PowerShell
 
@@ -100,9 +99,20 @@ Add-CauClusterRole -ClusterName Cluster1 -MaxFailedNodes 0 -RequireAllNodesOnlin
 
 ### Enable firewall rules to allow remote restarts
 
-You'll likely need to allow the servers to restart remotely during the update process. If you're using Windows Admin Center to perform the updates, Windows Firewall rules will automatically be updated on each server to allow remote restarts. If you're updating with PowerShell, either enable the 'Remote Shutdown' firewall rule group in Windows Firewall or pass -EnableFirewallRules parameter to the cmdlet.
+You'll likely need to allow the servers to restart remotely during the update process. If you're using Windows Admin Center to perform the updates, Windows Firewall rules will automatically be updated on each server to allow remote restarts. If you're updating with PowerShell, either enable the 'Remote Shutdown' firewall rule group in Windows Firewall or pass the -EnableFirewallRules parameter to the cmdlet.
 
-## Check for cluster updates
+## Updating a cluster using Windows Admin Center
+
+Windows Admin Center makes it easy to update a cluster using a simple user interface.
+
+1. When you connect to a cluster, the Windows Admin Center dashboard will alert you to critical updates along with a link to update now. Alternatively, select **Updates** from the **Tools** menu at the left.
+2. To use the Cluster-Aware updating tool in Windows Admin Center, you must enable Credential Security Service Provider (CredSSP) and provide explicit credentials. When asked if CredSSP be enabled, click **Yes**. 
+3. Specify your name and password, and click **Continue**.
+4. Available updates will be displayed; or, click **Check Available Updates** to refresh the list.
+5. Select the updates you wish to install and click **Apply All Updates**. This will install the updates on every server in the cluster. If a restart is needed, cluster roles such as virtual machines will be moved to another server first to prevent any disruption.
+6. To improve security, disable CredSSP as soon as you're finished installing the updates.
+
+## Check for cluster updates with PowerShell
 
 You can use the **`Invoke-CAUScan`** cmdlet to scan servers for applicable updates and get a list of the initial set of updates that are applied to each server in a specified cluster:
 
@@ -112,7 +122,7 @@ Invoke-CauScan -ClusterName Cluster1 -CauPluginName Microsoft.WindowsUpdatePlugi
 
 Generation of the list can take a few minutes to complete. The preview list includes only an initial set of updates; it does not include updates that might become applicable after the initial updates are installed.
 
-## Install updates
+## Install updates with PowerShell
 
 To scan servers for applicable updates and perform a full updating run on the specified cluster, use the **`Invoke-CAURun`** cmdlet:
 
