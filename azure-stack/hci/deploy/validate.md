@@ -132,7 +132,7 @@ The following steps show how to identify a Jumbo Packet error from vNIC SMB02 an
 
 <!---Need screenshot from Jan for final step without numbers--->
 
-To learn more about resolving errors that the Validate-DCB tool identifies, watch a quick video.
+To learn more about resolving errors that the Validate-DCB tool identifies, see the following video.
 
 > [!VIDEO https://www.youtube.com/embed/cC1uACvhPBs]
 
