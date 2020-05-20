@@ -147,7 +147,7 @@ Use the following steps to validate the servers in an existing cluster in Window
 
 1. On the **Cluster Manager Dashboard**, under **Tools**, select **Servers**.
 1. On the **Servers** page, select the **Inventory** tab.
-1. On the **Inventory** page, select the servers in the cluster, then expand the **More** submenu and select **Validate cluster (Preview)**.
+1. On the **Inventory** page, select the servers in the cluster, then expand the **More** submenu and select **Validate cluster**.
 1. On the **Validate Cluster** pop-up window, select **Yes**.
 
     :::image type="content" source="../media/validate/validate-cluster.png" alt-text="Validate Cluster pop-up window":::
