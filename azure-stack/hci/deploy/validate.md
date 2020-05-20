@@ -153,7 +153,7 @@ Use the following steps to validate the servers in an existing cluster in Window
     :::image type="content" source="../media/validate/validate-cluster.png" alt-text="Validate Cluster pop-up window":::
 
 1. On the **Credential Security Service Provider (CredSSP)** pop-up window, select **Yes**.
-1. Provide your credentials to enable **CredSSP** and then select **Continue**.
+1. Provide your credentials to enable **CredSSP** and then select **Continue**.<br> Cluster validation runs in the background and gives you a notification when it's complete, at which point you can view the validation report, as described in the next section.
 
     :::image type="content" source="../media/validate/validated-cluster-notice.png" alt-text="Validated cluster notice":::
 
