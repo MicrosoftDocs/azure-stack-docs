@@ -50,7 +50,7 @@ This section describes scenarios in which validation is also needed or useful.
 The Microsoft Validate-DCB tool is designed to validate the Data Center Bridging (DCB) configuration on the cluster. To do this, the tool takes an expected configuration as input, and then tests each server in the cluster. This section covers how to install and run the Validate-DCB tool, review results, and resolve networking errors that the tool identifies.
 
 On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE) requires DCB technologies to make the network fabric lossless. The configuration requirements are complex and error prone. For these reasons, exact configuration is required across:
-- Each Windows node.
+- Each server in the cluster
 - Each network port that RDMA traffic passes through on the fabric.
 
 ### Prerequisites
