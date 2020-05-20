@@ -103,7 +103,7 @@ You'll likely need to allow the servers to restart remotely during the update pr
 
 ## Update a cluster using Windows Admin Center
 
-Windows Admin Center makes it easy to update a cluster using a simple user interface.
+Windows Admin Center makes it easy to update a cluster and apply operating system and solution updates using a simple user interface. If you've purchased an integrated system from a Microsoft hardware partner, it’s easy to get the latest drivers, firmware, and other updates directly from Windows Admin Center by installing the appropriate partner update extension(s). ​If your hardware was not purchased as an integrated system, firmware and driver updates may need to be performed separately, following the hardware vendor's recommendations.
 
 1. When you connect to a cluster, the Windows Admin Center dashboard will alert you to critical updates along with a link to update now. Alternatively, select **Updates** from the **Tools** menu at the left.
 2. To use the Cluster-Aware updating tool in Windows Admin Center, you must enable Credential Security Service Provider (CredSSP) and provide explicit credentials. When asked if CredSSP should be enabled, click **Yes**. 
