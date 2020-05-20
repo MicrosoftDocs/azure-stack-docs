@@ -265,12 +265,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Cause: In the user portal, when you select a managed disk, with disk type Premium SSD, the drop-down list shows **OS Disk**. The tooltip next to that option says **Certain OS Disk sizes may be available for free with Azure Free Account**; however, this is not valid for Azure Stack Hub. In addition, the list includes **Free account eligible** which is also not valid for Azure Stack Hub.
 - Occurrence: Common
 
-### VPN troubleshoot and metrics
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **VPN Troubleshoot** feature and **Metrics** in a VPN gateway resource appears, however this is not supported in Azure Stack Hub.
-- Occurrence: Common
-
 ### Delete a storage container
 
 - Applicable: This issue applies to all supported releases.
@@ -283,12 +277,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, when you navigate to **Virtual Machines** and try to refresh using the button at the top, the states fail to update accurately.
 - Remediation: The status is automatically updated every 5 minutes regardless of whether the refresh button has been clicked or not. Wait 5 minutes and check the status.
-- Occurrence: Common
-
-### Virtual Network Gateway
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you create a route table, **Virtual Network gateway** appears as one of the next hop type options; however, this is not supported in Azure Stack Hub.
 - Occurrence: Common
 
 ### Storage account options
@@ -365,6 +353,12 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 ### Virtual Network Gateway
 
+#### Next Hop Type
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you create a route table, **Virtual Network gateway** appears as one of the next hop type options; however, this is not supported in Azure Stack Hub.
+- Occurrence: Common
+
 #### Alerts
 
 - Applicable: This issue applies to all supported releases.
@@ -381,6 +375,10 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, the **Connections** blade displays a feature called **VPN Troubleshooter**. This feature is currently not supported in Azure Stack Hub.
+- Occurrence: Common
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **VPN Troubleshoot** feature and **Metrics** in a VPN gateway resource appears, however this is not supported in Azure Stack Hub.
 - Occurrence: Common
 
 #### Documentation
@@ -526,6 +524,12 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Occurrence: Common
 
 ### Virtual Network Gateway
+
+#### Next Hop Type
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you create a route table, **Virtual Network gateway** appears as one of the next hop type options; however, this is not supported in Azure Stack Hub.
+- Occurrence: Common
 
 #### Alerts
 
@@ -691,6 +695,12 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Occurrence: Common
 
 ### Virtual Network Gateway
+
+#### Next Hop Type
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you create a route table, **Virtual Network gateway** appears as one of the next hop type options; however, this is not supported in Azure Stack Hub.
+- Occurrence: Common
 
 #### Alerts
 
