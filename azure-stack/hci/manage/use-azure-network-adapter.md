@@ -4,12 +4,12 @@ description: This article provides requirements and steps on how to use Azure Ne
 ms.topic: article
 author: thomasmaurer
 ms.author: thmaure
-ms.date: 05/19/2020
+ms.date: 05/20/2020
 ---
 
 # Use Azure Network Adapter to connect a server to an Azure Virtual Network
 
->Applies To: Azure Stack HCI
+>Applies To: Azure Stack HCI v20H2
 
 A lot of workloads running on-premises and in multi-cloud environments require
 connections to virtual machines (VMs) running in Microsoft Azure. To connect a
@@ -62,7 +62,7 @@ In Windows Admin Center:
 
     - **Authentication Certificate**
 
-        Azure uses certificates to authenticate clients connecting to a Virtual Network over a Point-to-Site VPN connection. The public key information of the root certificate is uploaded to Azure. The root certificate is then considered “trusted'” by Azure for a Point-to-Site connection to the Virtual Network. Client certificates must be generated from the trusted root certificate and installed on the client server. The client certificate is used to authenticate the client when it initiates a connection to the Virtual Network.
+        Azure uses certificates to authenticate clients connecting to a Virtual Network over a Point-to-Site VPN connection. The public key information of the root certificate is uploaded to Azure. The root certificate is then considered “trusted” by Azure for a Point-to-Site connection to the Virtual Network. Client certificates must be generated from the trusted root certificate and installed on the client server. The client certificate is used to authenticate the client when it initiates a connection to the Virtual Network.
     
         To learn more, see the “Configure authentication type” section of [Configure a Point-to-Site VPN connection to a VNet using native Azure certificate authentication: Azure portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal).
 
