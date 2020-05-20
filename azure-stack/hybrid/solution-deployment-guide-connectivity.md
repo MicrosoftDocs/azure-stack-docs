@@ -8,7 +8,7 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: As an Azure Stack Hub user, I want to configure hybrid cloud connectivity using Azure and Azure Stack Hub so I can access global resources with security.
+# Intent: As an Azure Stack Hub operator, I want to configure hybrid cloud connectivity using Azure and Azure Stack Hub so I can access global resources with security.
 # Keyword: hybrid cloud connectivity azure stack hub
 
 ---
@@ -42,7 +42,7 @@ A few components are required to build a hybrid connectivity deployment. Some of
 
 An Azure OEM/hardware partner can deploy a production Azure Stack Hub, and all users can deploy an Azure Stack Development Kit (ASDK).
 
-- Use your production Azure Stack Hub or deploy the ASDK from https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1.
+- Use your production Azure Stack Hub or deploy the ASDK.
    >[!Note]
    >Deploying the ASDK can take up to 7 hours, so plan accordingly.
 

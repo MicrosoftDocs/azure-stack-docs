@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 04/22/2020
+ms.date: 05/07/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
@@ -37,7 +37,7 @@ Before applying the update, make sure to review the following information:
 - [Security updates](release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](release-notes-checklist.md)
 
-For help with troubleshooting updates and the update process, see [Troubleshoot patch and update issues for Azure Stack Hub](azure-stack-updates-troubleshoot.md).
+For help with troubleshooting updates and the update process, see [Troubleshoot patch and update issues for Azure Stack Hub](azure-stack-troubleshooting.md).
 
 ## Download the update
 
@@ -137,7 +137,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue that was a common cause of Azure Stack Hub update failures due to memory pressure on the ERCS role.
 - Fixed a bug in the update blade in which the update status showed as **Installing** instead of **Preparing** during the preparation phase of an Azure Stack Hub update.
 - Fixed an issue where the RSC feature on the physical switches was creating inconsistences and dropping the traffic flowing through a load balancer. The RSC feature is now disabled by default.
-- Fixed an issue where adding a secondary IP to the VM was causing RDP issues.
+- Fixed an issue where multiple IP configurations on a NIC was causing traffic to be misrouted and prevented outbound connectivity. 
 - Fixed an issue where the MAC address of a NIC was being cached, and assigning of that address to another resource was causing VM deployment failures.
 - Fixed an issue where Windows VM images from the RETAIL channel could not have their license activated by AVMA.
 - Fixed an issue where VMs would fail to be created if the number of virtual cores requested by the VM was equal to the node's physical cores. We now allow VMs to have virtual cores equal to or less than the node's physical cores.
@@ -169,7 +169,7 @@ The 2002 release of Azure Stack Hub must be applied on the 1910 release with the
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.2002.19.73](https://support.microsoft.com/help/4557355)
+- [Azure Stack Hub hotfix 1.2002.24.85](https://support.microsoft.com/help/4558081)
 ::: moniker-end
 
 ::: moniker range="azs-1910"
@@ -272,7 +272,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - When downloading marketplace items from Azure to Azure Stack Hub, there's a new user interface that enables you to specify a version of the item when multiple versions exist. The new UI is available in both connected and disconnected scenarios. For more information, see [Download marketplace items from Azure to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md).  
 
-- Starting with the 1910 release, the Azure Stack Hub system **requires** an additional /20 private internal IP space.  See (Network integration planning for Azure Stack)[azure-stack-network.md] for more information.
+- Starting with the 1910 release, the Azure Stack Hub system **requires** an additional /20 private internal IP space. See [Network integration planning for Azure Stack](azure-stack-network.md) for more information.
   
 - The infrastructure backup service deletes partially uploaded backup data if the external storage location runs out of capacity during the upload procedure.  
 
