@@ -191,5 +191,5 @@ After your server cluster is successfully validated, you'll need to disable the 
 
     The result of Step 2 removes the red **CredSSP ENABLED** banner at the top of the server's **Overview** page, and disables CredSSP on the other servers.
 
-## Next steps
+## See also
 - Windows Server Assessment is a Premier Service available for customers who want Microsoft to review their installations of Windows Server 2019. For more information, contact Microsoft Premier Support. To learn more, see [Getting Started with the Windows Server On-Demand Assessment (Server, Security, Hyper-V, Failover Cluster, IIS)](https://docs.microsoft.com/services-hub/health/getting-started-windows-server).
