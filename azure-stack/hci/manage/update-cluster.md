@@ -4,23 +4,30 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 05/01/2020
+ms.date: 05/20/2020
 ---
 
 # Update Azure Stack HCI clusters
 
 > Applies to: Windows Server 2019
 
-When updating Azure Stack HCI clusters, the goal is to maintain availability by updating only one server in the cluster at a time. Many operating system updates require taking the server offline, for example to do a restart or to update software such as the network stack. We recommend using [Cluster-Aware Updating (CAU)](/windows-server/failover-clustering/cluster-aware-updating), a feature that automates the software updating process on clustered servers while maintaining availability. Cluster-Aware Updating can be used on all editions of Windows Server, including Server Core installations.
+When updating Azure Stack HCI clusters, the goal is to maintain availability by updating only one server in the cluster at a time. Many operating system updates require taking the server offline, for example to do a restart or to update software such as the network stack. We recommend using [Cluster-Aware Updating (CAU)](/windows-server/failover-clustering/cluster-aware-updating), a feature that makes it easier to install Windows updates to every server in your cluster while keeping your applications running by automating the software updating process. Cluster-Aware Updating can be used on all editions of Windows Server, including Server Core installations.
 
 ## Configure Cluster-Aware Updating
 
-Before you can update a cluster, you first need to [create and validate a failover cluster](/windows-server/failover-clustering/create-failover-cluster#create-a-failover-cluster-by-using-windows-powershell) and install the **Failover Clustering Tools**, which are part of the **Remote Server Administration Tools (RSAT)** and include the Cluster-Aware Updating tools.
+Before you can update a cluster, you first need to [create and validate a failover cluster](/windows-server/failover-clustering/create-failover-cluster#create-a-failover-cluster-by-using-windows-powershell) and install the **Failover Clustering Tools**, which are part of the **Remote Server Administration Tools (RSAT)** and include the Cluster-Aware Updating software. If you're updating an existing cluster, these tools may already be installed.
 
 Cluster-Aware Updating has two plug-ins:
 
 - The **Microsoft.WindowsUpdatePlugin** installs updates from Windows Update and offline sources like Windows Server Update Services.
 - The **Microsoft.HotfixPlugin** enables custom sources such as OEM-specific feature updates.
+
+   > [!TIP]
+   > To test whether a failover cluster is properly set up to apply software updates using Cluster-Aware Updating, run the **`Test-CauSetup`** PowerShell cmdlet, which performs a Best Practices Analyzer (BPA) scan of the failover cluster and network environment:
+   >
+   > ```powershell
+   >Test-CauSetup -ClusterName Cluster1
+   >```
 
 ### Install Failover Clustering and Failover Clustering Tools using PowerShell
 
@@ -68,7 +75,9 @@ Cluster-Aware Updating can coordinate the complete cluster updating operation in
    > [!NOTE]
    > Starting with Windows 10 October 2018 Update, RSAT is included as a set of "Features on Demand" right from Windows 10. Simply go to **Settings > Apps > Apps & features > Optional features > Add a feature > RSAT: Failover Clustering Tools**, and select **Install**. To see installation progress, click the Back button to view status on the "Manage optional features" page. The installed feature will persist across Windows 10 version upgrades. To install RSAT for Windows 10 prior to the October 2018 Update, [download an RSAT package](https://www.microsoft.com/en-us/download/details.aspx?id=45520).
 
-### Add CAU cluster role to configure self-updating
+### Add CAU cluster role to the cluster
+
+The CAU cluster role is required for self-updating mode. If you're using Windows Admin Center to perform the updates, the CAU cluster role will automatically be added.
 
 The **`Get-CauClusterRole`** cmdlet displays the configuration properties of the CAU cluster role on the specified cluster.
 
@@ -89,6 +98,10 @@ Add-CauClusterRole -ClusterName Cluster1 -MaxFailedNodes 0 -RequireAllNodesOnlin
    > [!NOTE]
    > The above command must be run from a management PC or domain controller.
 
+### Enable firewall rules to allow remote restarts
+
+You'll likely need to allow the servers to restart remotely during the update process. If you're using Windows Admin Center to perform the updates, Windows Firewall rules will automatically be updated on each server to allow remote restarts. If you're updating with PowerShell, either enable the 'Remote Shutdown' firewall rule group in Windows Firewall or pass -EnableFirewallRules parameter to the cmdlet.
+
 ## Check for cluster updates
 
 You can use the **`Invoke-CAUScan`** cmdlet to scan servers for applicable updates and get a list of the initial set of updates that are applied to each server in a specified cluster:
@@ -104,10 +117,10 @@ Generation of the list can take a few minutes to complete. The preview list incl
 To scan servers for applicable updates and perform a full updating run on the specified cluster, use the **`Invoke-CAURun`** cmdlet:
 
 ```PowerShell
-Invoke-CauRun -ClusterName Cluster1 -CauPluginName Microsoft.WindowsUpdatePlugin -MaxFailedNodes 1 -MaxRetriesPerNode 3 -RequireAllNodesOnline -Force
+Invoke-CauRun -ClusterName Cluster1 -CauPluginName Microsoft.WindowsUpdatePlugin -MaxFailedNodes 1 -MaxRetriesPerNode 3 -RequireAllNodesOnline -EnableFirewallRules -Force
 ```
 
-This command performs a scan and a full updating run on the cluster named Cluster1. This cmdlet uses the Microsoft.WindowsUpdatePlugin plug-in and requires that all cluster nodes be online before running this cmdlet. In addition, this cmdlet allows no more than three retries per node before marking the node as failed, and allows no more than one node to fail before marking the entire updating run as failed. Because the command specifies the Force parameter, the cmdlet runs without displaying confirmation prompts.
+This command performs a scan and a full updating run on the cluster named Cluster1. This cmdlet uses the Microsoft.WindowsUpdatePlugin plug-in and requires that all cluster nodes be online before running this cmdlet. In addition, this cmdlet allows no more than three retries per node before marking the node as failed, and allows no more than one node to fail before marking the entire updating run as failed. It also enables firewall rules to allow the servers to restart remotely. Because the command specifies the Force parameter, the cmdlet runs without displaying confirmation prompts.
 
 The updating run process includes the following: 
 - Scanning for and downloading applicable updates on each server in the cluster
