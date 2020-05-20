@@ -18,6 +18,8 @@
     href: manage/delete-volumes.md
   - name: Replace drives
     href: manage/replace-drives.md
+  - name: Manage clusters
+    href: manage/cluster.md
   - name: Use Azure Site Recovery
     href: manage/azure-site-recovery.md
   - name: Monitor with Azure Monitor
