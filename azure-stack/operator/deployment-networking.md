@@ -3,8 +3,8 @@ title: Deployment network traffic
 titleSuffix: Azure Stack Hub
 description: Learn about network traffic flow during Azure Stack Hub deployment.
 author: IngridAtMicrosoft
-ms.topic: article
-ms.date: 12/05/2019
+ms.topic: conceptual
+ms.date: 04/10/2020
 ms.author: inhenkel
 ms.reviewer: wamota
 ms.lastreviewed: 12/05/2019
@@ -21,7 +21,7 @@ Understanding network traffic during Azure Stack Hub deployment will help make t
 
 This illustration shows all the components and connections involved in the deployment process:
 
-![Azure Stack Hub deployment network topology](media/deployment-networking/figure1.png)
+![Azure Stack Hub deployment network topology](media/deployment-networking/figure1.svg)
 
 > [!NOTE]
 > This article describes the requirements for a connected deployment. To learn about other deployment methods, see [Azure Stack Hub deployment connection models](azure-stack-connection-models.md).

@@ -4,7 +4,7 @@ description: Troubleshooting Azure Stack Hub usage issues and errors.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 05/01/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 06/27/2019
@@ -48,7 +48,7 @@ This section describes the usage error codes.
 | Unauthorized               | The Azure bridge is unable to push data to the usage service in Azure, because the Azure service is unable to authenticate the Azure Stack Hub bridge. | Check if the registration resource has been modified, and if so, re-register Azure Stack Hub. <br><br> Sometimes, a time sync issue between Azure Stack Hub and Azure AD can cause this failure. In this case, ensure the times on the XRP VMs on Azure Stack Hub are in sync with Azure AD. |
 |                            |                                                                                                                                                   |                                                                                                                                                                                                                                                                                                    |
 
-Additionally, you may be required to provide the log files for the Azure Bridge, WAS, and WASPublic components by following [these steps](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs).
+Additionally, you may be required to provide the log files for the Azure Bridge, WAS, and WASPublic components.
 
 ## Next steps
 

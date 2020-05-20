@@ -4,7 +4,7 @@ description: Learn how to get authentication information for Azure Stack Hub
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 12/13/2019
+ms.date: 04/20/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/13/2019
@@ -69,7 +69,7 @@ To get the tenant ID:
 
 The Azure Resource Manager endpoint is the metadata endpoint for the deployment and management service for Azure Stack Hub. It provides a management layer that enables you to create, update, and delete resources in your Azure subscription.
 
-For an integrated system, the URL for the Azure Resource Manager Endpoint is:<br>`https://management.<location>.<fqdn>.com`
+For an integrated system, the URL for the Azure Resource Manager Endpoint is:<br>`https://management.<location>.<fqdn>`
 
 To get the metadata endpoint that points to properties such as gallery endpoint, graph endpoint, portal endpoint, sign in endpoint, and audiences, the URL is: `<ResourceManager>/metadata/endpoints?api-version=1.0`
 

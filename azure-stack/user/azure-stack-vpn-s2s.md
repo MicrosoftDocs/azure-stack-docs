@@ -4,7 +4,7 @@ description: Learn about and configure IPsec/IKE policy for site-to-site VPN or 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/07/2020
+ms.date: 05/07/2020
 ms.author: sethm
 ms.lastreviewed: 05/07/2019
 
@@ -56,7 +56,7 @@ on a site-to-site VPN connection:
 
 The instructions in this article help you set up and configure IPsec/IKE policies, as shown in the following figure:
 
-![Set up and configure IPsec/IKE policies](media/azure-stack-vpn-s2s/site-to-site.png)
+![Set up and configure IPsec/IKE policies](media/azure-stack-vpn-s2s/site-to-site.svg)
 
 ## Part 2 - Supported cryptographic algorithms and key strengths
 
@@ -66,10 +66,10 @@ The following table lists the supported cryptographic algorithms and key strengt
 |------------------------------------------------------|--------------------------------------------------------------------------|
 | IKEv2 Encryption                                     | AES256, AES192, AES128, DES3, DES                                        |
 | IKEv2 Integrity                                      | SHA384, SHA256, SHA1, MD5                                                |
-| DH Group                                             | ECP384, ECP256, DHGroup14, DHGroup2048, DHGroup2, DHGroup1, None         |
+| DH Group                                             | ECP384, ECP256, DHGroup24, DHGroup14, DHGroup2, DHGroup1                 |
 | IPsec Encryption                                     | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, None |
-| IPsec Integrity                                      | GCMASE256, GCMAES192, GCMAES128, SHA256, SHA1, MD5                       |
-| PFS Group                                            | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, None                         |
+| IPsec Integrity                                      | GCMASE256, GCMAES192, GCMAES128                                          |
+| PFS Group                                            | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, PFSMM, None                  |
 | QM SA Lifetime                                       | (Optional: default values are used if not specified)<br />                         Seconds (integer; min. 300/default 27000 seconds)<br />                         KBytes (integer; min. 1024/default 102400000 KBytes) |
 | Traffic Selector                                     | Policy-based Traffic Selectors are not supported in Azure Stack Hub.         |
 
@@ -111,7 +111,7 @@ For more information, see [RFC3526](https://tools.ietf.org/html/rfc3526) and [RF
 
 This section walks through the steps to create a site-to-site VPN connection with an IPsec/IKE policy. The following steps create the connection, as shown in the following figure:
 
-![site-to-site-policy](media/azure-stack-vpn-s2s/site-to-site.png)
+![site-to-site-policy](media/azure-stack-vpn-s2s/site-to-site.svg)
 
 For more detailed step-by-step instructions for creating a site-to-site VPN connection, see [Create a site-to-site VPN connection](/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell).
 
@@ -121,7 +121,7 @@ Before you begin, make sure you have the following prerequisites:
 
 - An Azure subscription. If you don't already have an Azure subscription, you can activate your [MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), or sign up for a [free account](https://azure.microsoft.com/pricing/free-trial/).
 
-- The Azure Resource Manager PowerShell cmdlets. For more info on installing the PowerShell cmdlets, see [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md).
+- The Azure Resource Manager PowerShell cmdlets. For more info about installing the PowerShell cmdlets, see [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md).
 
 ### Step 1 - Create the virtual network, VPN gateway, and local network gateway
 

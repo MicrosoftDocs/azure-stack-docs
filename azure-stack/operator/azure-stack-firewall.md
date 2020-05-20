@@ -2,8 +2,8 @@
 title: Azure Stack Hub firewall integration for Azure Stack Hub integrated systems 
 description: Learn about Azure Stack Hub firewall integration for Azure Stack Hub integrated systems.
 author: IngridAtMicrosoft
-ms.topic: article
-ms.date: 11/15/2019
+ms.topic: conceptual
+ms.date: 04/10/2020
 ms.author: inhenkel
 ms.reviewer: thoroet
 ms.lastreviewed: 11/15/2019
@@ -40,7 +40,7 @@ In an edge deployment, Azure Stack Hub is deployed directly behind the edge rout
 
 Public routable IP addresses are specified for the public VIP pool from the external network at deployment time. In an edge scenario, it's not recommended to use public routable IPs on any other network for security purposes. This scenario enables a user to experience the full self-controlled cloud experience as in a public cloud like Azure.  
 
-![Azure Stack Hub edge firewall example](./media/azure-stack-firewall/firewallScenarios.png)
+![Azure Stack Hub edge firewall example](./media/azure-stack-firewall/firewallScenarios.svg)
 
 ## Enterprise intranet or perimeter network firewall scenario
 In an enterprise intranet or perimeter deployment, Azure Stack Hub is deployed on a multi-zoned firewall or in between the edge firewall and the internal, corporate network firewall. Its traffic is then distributed between the secure, perimeter network (or DMZ), and unsecure zones as described below:
@@ -49,7 +49,7 @@ In an enterprise intranet or perimeter deployment, Azure Stack Hub is deployed o
 - **Perimeter zone**. The perimeter network is where external or internet-facing apps like Web servers are typically deployed. It's usually monitored by a firewall to avoid attacks like DDoS and intrusion (hacking) while still allowing specified inbound traffic from the internet. Only the external network public VIP pool of Azure Stack Hub should reside in the DMZ zone.
 - **Unsecure zone**. This is the external network, the internet. It **is not** recommended to deploy Azure Stack Hub in the unsecure zone.
 
-![Azure Stack Hub perimeter network example](./media/azure-stack-firewall/perimeter-network-scenario.png)
+![Azure Stack Hub perimeter network example](./media/azure-stack-firewall/perimeter-network-scenario.svg)
 
 ## Learn more
 Learn more about [ports and protocols used by Azure Stack Hub endpoints](azure-stack-integrate-endpoints.md).

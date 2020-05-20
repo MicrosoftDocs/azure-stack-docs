@@ -22,7 +22,7 @@ Microsoft provides Azure and the Azure Stack Hub family of services in one Azure
 
 This article describes the differences between global Azure, Azure Stack Hub, and Azure Stack HCI capabilities. It provides common scenario recommendations to help you make the best choice for delivering Microsoft cloud-based services for your organization.
 
-![Azure ecosystem overview](./media/compare-azure-azure-stack/azure-family.png)
+![Azure ecosystem overview](./media/compare-azure-azure-stack/azure-family.svg)
 
 ## Global Azure
 
@@ -30,7 +30,7 @@ Microsoft Azure is an ever-expanding set of cloud services to help your organiza
 
 Global Azure offers more than 100 services available in 54 regions around the globe. For the most current list of global Azure services, see the [*Products available by region*](https://azure.microsoft.com/regions/services). The services available in Azure are listed by category and also by whether they're generally available or available through preview.
 
-For more information about global Azure services, see [Get started with Azure](https://docs.microsoft.com/azure/#pivot=get-started&panel=get-started1).
+For more information about global Azure services, see [Get started with Azure](https://docs.microsoft.com/azure/?pivot=get-started&panel=get-started1).
 
 ## Azure Stack Hub
 
@@ -53,7 +53,7 @@ In addition to the resource providers described above, there are additional PaaS
 - Ethereum Blockchain
 - Cloud Foundry
 
-### Example use cases for Azure Stack Hub:
+### Example use cases for Azure Stack Hub
 
 - Financial modeling
 - Clinical and claims data

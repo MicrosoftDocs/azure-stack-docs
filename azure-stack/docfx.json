@@ -2,7 +2,9 @@
   "build": {
     "content": [
       {
-        "group": "all",
+        "group": "version-ash",
+        "src" : "asdk",
+        "dest" : "asdk",
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -17,17 +19,201 @@
           "LICENSE-CODE",
           "ThirdPartyNotices"
         ]
+      },
+      {
+        "group": "version-ash",
+        "src" : "operator",
+        "dest" : "operator",
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices"
+        ]
+      },
+      {
+        "group": "version-ash",
+        "src" : "partner",
+        "dest" : "partner",
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices"
+        ]
+      },      
+      {
+        "group": "version-ash",
+        "src" : "user",
+        "dest" : "user",
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices"
+        ]
+      },
+      {
+        "src": ".",
+        "dest": ".",
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices"
+        ]
+      },
+      {
+        "group": "version-ash",
+        "src" : ".",
+        "dest" : ".",
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "asdk/**",
+          "operator/**",
+          "partner/**",
+          "user/**",
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices"
+        ]
       }
     ],
     "resource": [
       {
-        "group": "all",
         "files": [
           "**/*.png",
           "**/*.jpg",
-          "**/*.svg"
+          "**/*.svg",
+          "**/*.gif"
+        ],
+        "src": "asdk",
+        "dest": "asdk",
+        "group": "version-ash",
+        "exclude": [
+          "**/obj/**",
+          "_themes/**",
+          "_themes.pdf/**"
+        ]
+      },
+      {
+        "files": [
+          "**/*.png",
+          "**/*.jpg",
+          "**/*.svg",
+          "**/*.gif"
+        ],
+        "src": "operator",
+        "dest": "operator",
+        "group": "version-ash",
+        "exclude": [
+          "**/obj/**",
+          "_themes/**",
+          "_themes.pdf/**"
+        ]
+      },
+      {
+        "files": [
+          "**/*.png",
+          "**/*.jpg",
+          "**/*.svg",
+          "**/*.gif"
+        ],
+        "src": "partner",
+        "dest": "partner",
+        "group": "version-ash",
+        "exclude": [
+          "**/obj/**",
+          "_themes/**",
+          "_themes.pdf/**"
+        ]
+      },
+      {
+        "files": [
+          "**/*.png",
+          "**/*.jpg",
+          "**/*.svg",
+          "**/*.gif"
+        ],
+        "src": "user",
+        "dest": "user",
+        "group": "version-ash",
+        "exclude": [
+          "**/obj/**",
+          "_themes/**",
+          "_themes.pdf/**"
+        ]
+      },
+      {
+        "src": ".",
+        "dest": ".",
+        "files": [
+          "**/*.png",
+          "**/*.jpg",
+          "**/*.svg",
+          "**/*.gif"
         ],
         "exclude": [
+          "**/obj/**",
+          "_themes/**",
+          "_themes.pdf/**"
+        ]
+      },
+      {
+        "files": [
+          "**/*.png",
+          "**/*.jpg",
+          "**/*.svg",
+          "**/*.gif"
+        ],
+        "src": ".",
+        "dest": ".",
+        "group": "version-ash",
+        "exclude": [
+          "asdk/**",
+          "operator/**",
+          "partner/**",
+          "user/**",
           "**/obj/**",
           "_themes/**",
           "_themes.pdf/**"
@@ -42,6 +228,7 @@
       "feedback_product_url": "https://feedback.azure.com/forums/344565-azure-stack",
       "breadcrumb_path": "/azure-stack/breadcrumb/toc.json",
       "extendBreadcrumb": true,
+      "uhfHeaderId": "azure",
       "_op_documentIdPathDepotMapping": {
         "./": {
           "depot_name": "Azure.azure-documents",
@@ -54,16 +241,18 @@
     "fileMetadata": {
       "titleSuffix": {
         "**/*.md": "Azure Stack Hub",
-        "asdk/**/*.md": "Azure Stack Development Kit (ASDK)"
+        "asdk/**/*.md": "Azure Stack Development Kit (ASDK)",
+        "hci/**/*.md": "Azure Stack HCI",
+        "hybrid/**/*.md": "Azure Stack"
       }
     },
     "template": [],
     "dest": "AzureStack",
     "markdownEngineName": "markdig",
     "groups": {
-      "all": {
-        "dest": "all",
-        "moniker_range": ">=azs-1802"
+      "version-ash": {
+        "moniker_range": ">=azs-1802",
+        "dest": "version-ash"
       }
     }
   }

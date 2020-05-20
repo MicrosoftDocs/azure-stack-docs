@@ -4,10 +4,10 @@ description: Learn how to use the privileged endpoint (PEP) in Azure Stack Hub a
 author: mattbriggs
 
 ms.topic: article
-ms.date: 1/8/2020
+ms.date: 04/28/2020
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.lastreviewed: 1/8/2020
+ms.lastreviewed: 04/28/2020
 
 # Intent: As an Azure Stack operator, I want to use the privileged endpoint in Azure Stack so I can complete certain tasks.
 # Keyword: azure stack privileged endpoint PEP
@@ -20,7 +20,7 @@ As an Azure Stack Hub operator, you should use the administrator portal, PowerSh
 
 You can use the PEP to perform these tasks:
 
-- Low-level tasks, such as [collecting diagnostic logs](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs).
+- Low-level tasks, such as [collecting diagnostic logs](azure-stack-get-azurestacklog.md).
 - Many post-deployment datacenter integration tasks for integrated systems, such as adding Domain Name System (DNS) forwarders after deployment, setting up Microsoft Graph integration, Active Directory Federation Services (AD FS) integration, certificate rotation, and so on.
 - To work with support to obtain temporary, high-level access for in-depth troubleshooting of an integrated system.
 
@@ -47,7 +47,7 @@ You will need set your current culture setting to `en-US` when running the privi
       - On an integrated system, run the following command from an elevated Windows PowerShell session to add the PEP as a trusted host on the hardened VM running on the hardware lifecycle host or the Privileged Access Workstation.
 
       ```powershell  
-        winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
+    Set-Item WSMan:\localhost\Client\TrustedHosts -Value '<IP Address of Privileged Endpoint>' -Concatenate
       ```
 
       - If you're running the ASDK, sign in to the development kit host.
@@ -109,7 +109,7 @@ You will need set your current culture setting to `en-US` when running the privi
    - Stop-AzureStack
    - Get-ClusterLog
 
-## Tips for using the privileged endpoint 
+## How to use the privileged endpoint 
 
 As mentioned above, the PEP is a [PowerShell JEA](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) endpoint. While providing a strong security layer, a JEA endpoint reduces some of the basic PowerShell capabilities, such as scripting or tab completion. If you try any type of script operation, the operation fails with the error **ScriptsNotAllowed**. This failure is expected behavior.
 
@@ -119,7 +119,7 @@ For instance, to get the list of parameters for a given cmdlet, run the followin
     Get-Command <cmdlet_name> -Syntax
 ```
 
-Alternatively, you can use the [Import-PSSession](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Import-PSSession?view=powershell-5.1) cmdlet to import all the PEP cmdlets into the current session on your local machine. By doing so, all cmdlets and functions of the PEP are now available on your local machine, together with tab completion and, more in general, scripting.
+Alternatively, you can use the [**Import-PSSession**](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Import-PSSession?view=powershell-5.1) cmdlet to import all the PEP cmdlets into the current session on your local machine. The cmdlets and functions of the PEP are now available on your local machine, together with tab completion and, more in general, scripting. You can also run the **[Get-Help](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-help)** module to review cmdlet instructions.
 
 To import the PEP session on your local machine, do the following steps:
 
@@ -197,4 +197,5 @@ After the transcript log files are successfully transferred to the file share, t
 
 ## Next steps
 
-[Azure Stack Hub diagnostic tools](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs)
+- [Azure Stack Hub diagnostic tools](azure-stack-diagnostic-log-collection-overview-tzl.md)
+- [Azure Stack Hub privileged endpoint reference](../reference/pep-2002/index.md)

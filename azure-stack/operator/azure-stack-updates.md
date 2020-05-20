@@ -3,8 +3,8 @@ title: Manage updates
 description: Learn how to manage updates in Azure Stack Hub
 author: IngridAtMicrosoft
 
-ms.topic: article
-ms.date: 10/01/2019
+ms.topic: how-to
+ms.date: 05/13/2020
 ms.author: inhenkel
 ms.lastreviewed: 09/10/2019
 ms.reviewer: ppacent
@@ -50,7 +50,7 @@ The three types of updates are released with the following cadence:
 
 To continue to receive support, you must keep your Azure Stack Hub environment on a supported Azure Stack Hub software version. For more information, see [Azure Stack Hub Servicing Policy](azure-stack-update-servicing-policy.md).
 
-## Where to get notice of an update
+## How to know an update is available
 
 Notice of updates varies on a couple of factors, such as your connection to the internet and the type of update.
 
@@ -68,7 +68,7 @@ Notice of updates varies on a couple of factors, such as your connection to the 
 
 Once you know you have an update, apply it by using the following steps.
 
-![Azure Stack Hub update process](./media/azure-stack-updates/azure-stack-update-process.png)
+![Azure Stack Hub update process](./media/azure-stack-updates/azure-stack-update-process.svg)
 
 1. **Plan for the update**.
 
@@ -80,7 +80,7 @@ Once you know you have an update, apply it by using the following steps.
 
     For internet-disconnected Azure Stack Hub environments and environments with weak or intermittent internet connectivity, update packages are imported into Azure Stack Hub storage via the Azure Stack Hub administrator portal. For more steps to upload and prepare the update package, see [Upload and prepare an Azure Stack Hub update package](azure-stack-update-prepare-package.md).
 
-    All OEM update packages are manually imported into your environment, regardless of your Azure Stack Hub system’s internet connectivity. For more steps to import and prepare the update package, see [Upload and prepare an Azure Stack Hub update package](azure-stack-update-prepare-package.md).
+    All OEM update packages are manually imported into your environment, regardless of your Azure Stack Hub system's internet connectivity. For more steps to import and prepare the update package, see [Upload and prepare an Azure Stack Hub update package](azure-stack-update-prepare-package.md).
 
 3. **Apply the update**.
 

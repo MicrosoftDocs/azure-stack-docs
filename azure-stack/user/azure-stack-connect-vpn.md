@@ -4,7 +4,7 @@ description: How to connect virtual networks in Azure Stack Hub to virtual netwo
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 01/22/2020
+ms.date: 04/07/2020
 ms.author: sethm
 ms.reviewer: scottnap
 ms.lastreviewed: 10/24/2019
@@ -29,7 +29,7 @@ To complete the connection configuration, make sure you have the following items
 
 The following figure shows what the connection configuration should look like when you're done:
 
-![Site-to-site VPN connection configuration](media/azure-stack-connect-vpn/image2.png)
+![Site-to-site VPN connection configuration](media/azure-stack-connect-vpn/azure-stack-connect-vpn-image2.svg)
 
 ### Network configuration example values
 
@@ -50,7 +50,6 @@ First, create the network resources for Azure. The following instructions show h
 ### Create the virtual network and virtual machine (VM) subnet
 
 1. Sign in to the [Azure portal](https://portal.azure.com/) using your Azure account.
-
 2. In the user portal, select **+ Create a resource**.
 3. Go to **Marketplace**, and then select **Networking**.
 4. Select **Virtual network**.
@@ -112,6 +111,25 @@ First, create the network resources for Azure. The following instructions show h
    >If you use a different value for the shared key, remember that it must match the value for the shared key that you create on the other end of the connection.
 
 10. Review the **Summary** section, and then select **OK**.
+
+## Create a Custom IPSec Policy
+
+Since the Azure Stack Hub default parameters for IPSec policies have changed for [builds 1910 and later](azure-stack-vpn-gateway-settings.md#ipsecike-parameters), a custom IPSec policy is needed in order for Azure to match Azure Stack Hub.
+
+1. Create a custom policy:
+
+   ```powershell
+     $IPSecPolicy = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup ECP384  `
+     -IpsecEncryption GCMAES256 -IpsecIntegrity GCMAES256 -PfsGroup ECP384 -SALifeTimeSeconds 27000 `
+     -SADataSizeKilobytes 102400000 
+   ```
+
+2. Apply the policy to the connection:
+
+   ```powershell
+   $Connection = Get-AzVirtualNetworkGatewayConnection -Name myTunnel -ResourceGroupName myRG
+   Set-AzVirtualNetworkGatewayConnection -IpsecPolicies $IPSecPolicy -VirtualNetworkGatewayConnection $Connection
+   ```
 
 ## Create a VM
 

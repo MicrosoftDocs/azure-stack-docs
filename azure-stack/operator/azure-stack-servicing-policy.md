@@ -5,10 +5,10 @@ description: Learn about the Azure Stack Hub servicing policy and how to keep an
 author: sethmanheim
 
 ms.topic: article
-ms.date: 02/07/2020
+ms.date: 05/07/2020
 ms.author: sethm
 ms.reviewer: harik
-ms.lastreviewed: 01/11/2020
+ms.lastreviewed: 03/18/2020
 
 # Intent: As an Azure Stack operator, I want to learn about servicing policy and how to keep an integrated system supported.
 # Keyword: servicing policy azure stack
@@ -46,10 +46,10 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
+- [Azure Stack Hub 2002 update](/azure-stack/operator/release-notes?view=azs-2002)
 - [Azure Stack Hub 1910 update](/azure-stack/operator/release-notes?view=azs-1910)
 - [Azure Stack Hub 1908 update](/azure-stack/operator/release-notes?view=azs-1908)
 - [Azure Stack Hub 1907 update](/azure-stack/operator/release-notes?view=azs-1907)
-- [Azure Stack Hub 1906 update](/azure-stack/operator/release-notes?view=azs-1906)
 
 ## Hotfixes
 
@@ -59,12 +59,19 @@ Hotfixes are downloaded and installed just like the regular full update packages
 
 For information about currently available hotfixes, see the release notes for that update:
 
-- [Azure Stack Hub 1910 hotfix](/azure-stack/operator/release-notes?view=azs-1910#hotfixes)
-- [Azure Stack Hub 1908 hotfix](/azure-stack/operator/release-notes?view=azs-1908#hotfixes-1)
-- [Azure Stack Hub 1907 hotfix](/azure-stack/operator/release-notes?view=azs-1907#hotfixes-2)
-- [Azure Stack Hub 1906 hotfix](/azure-stack/operator/release-notes?view=azs-1906#hotfixes-3)
+- [Azure Stack Hub 2002 hotfix](/azure-stack/operator/release-notes?view=azs-2002#hotfixes)
+- [Azure Stack Hub 1910 hotfix](/azure-stack/operator/release-notes?view=azs-1910#hotfixes-1)
+- [Azure Stack Hub 1908 hotfix](/azure-stack/operator/release-notes?view=azs-1908#hotfixes-2)
+- [Azure Stack Hub 1907 hotfix](/azure-stack/operator/release-notes?view=azs-1907#hotfixes-3)
 
 ## Keep your system under support
+
+::: moniker range="azs-2002"
+
+> [!IMPORTANT]  
+> With the Azure Stack Hub 2002 update, Microsoft is temporarily extending our Azure Stack Hub support policy statements. We are working with customers around the world who are responding to COVID-19 and who may be making important decisions about their Azure Stack Hub systems, how they are updated and managed, and as a result, ensuring their data center business operations continue to operate normally. In support of our customers, Microsoft is offering a temporary support policy change extension to include three previous update versions. As a result, the newly released 2002 update and any one of the three previous update versions (e.g. 1910, 1908, and 1907) will be supported.
+
+::: moniker-end
 
 For your Azure Stack Hub instance to remain in a supported state, the instance must run the most recently released update version or run either of the two preceding update versions.
 
@@ -74,13 +81,19 @@ For example, if the most recently available update version is 1904, and the prev
 
 Microsoft software update packages are non-cumulative and require the previous update package or hotfix as a prerequisite. If you decide to defer one or more updates, consider the overall runtime if you want to get to the latest version.
 
+### Resource provider version support
+
+For Azure Stack Hub resource providers, it's important to note that only the most recently released version of a given resource provider that is compatible with your supported version of Azure Stack Hub is supported, even though you may be using an older version of Azure Stack Hub that is still within the support window.
+
+For more information about resource provider compatibility, please see the release notes for that specific resource provider.
+
 ## Get support
 
 Azure Stack Hub follows the same support process as Azure. Enterprise customers can follow the process described in [How to create an Azure support request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). If you're a customer of a Cloud Solution Provider (CSP), contact your CSP for support. For more information, see the [Azure Support FAQs](https://azure.microsoft.com/support/faq/).
 
-For help troubleshooting update issues, see [Best practices for troubleshooting Azure Stack Hub patch and update issues](azure-stack-updates-troubleshoot.md).
+For help troubleshooting update issues, see [Best practices for troubleshooting Azure Stack Hub patch and update issues](azure-stack-troubleshooting.md).
 
 ## Next steps
 
 - [Manage updates in Azure Stack Hub](azure-stack-updates.md)
-- [Best practices for troubleshooting Azure Stack Hub patch and update issues](azure-stack-updates-troubleshoot.md)
+- [Best practices for troubleshooting Azure Stack Hub patch and update issues](azure-stack-troubleshooting.md)

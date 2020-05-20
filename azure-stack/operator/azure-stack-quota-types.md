@@ -58,6 +58,12 @@ ms.lastreviewed: 12/07/2019
 | Maximum load balancers |50 |The maximum number of load balancers that a subscription can create in this location. |
 | Maximum network security groups |50 |The maximum number of network security groups that a subscription can create in this location. |
 
+## Event Hubs quota types
+
+| **Type** | **Default value** | **Description** |
+| --- | --- | --- |
+| Maximum number of VM cores | 10 | The maximum number of cores that a subscription can create in this location (for example, an A3 VM has four cores). |
+
 ## View an existing quota
 
 There are two different ways to view an existing quota:
