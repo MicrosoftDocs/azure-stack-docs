@@ -98,6 +98,10 @@ Visit the [Azure Stack HCI website](https://azure.microsoft.com/overview/azure-s
 
 ## Video-based learning
 
+The Azure extended network video is here:
+
+- [Seamless connectivity to Azure with Windows Server and hybrid networking](https://www.youtube.com/watch?v=do2_4Y2p9dk)
+
 Here are some videos from Microsoft Ignite 2019 sessions:
 
 - [Microsoft Ignite Live 2019 - Getting Started with Azure Stack HCI](https://www.youtube.com/watch?v=vueHIBqNIEU)

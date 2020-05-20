@@ -4,7 +4,7 @@ description: Learn about API version profiles in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/06/2020
+ms.date: 05/04/2020
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 07/24/2019
@@ -19,7 +19,7 @@ ms.lastreviewed: 07/24/2019
 
 API profiles specify the Azure resource provider and the API version for Azure REST endpoints. You can create custom clients in different languages using API profiles. Each client uses an API profile to contact the correct resource provider and API version for Azure Stack Hub.
 
-You can create an app to work with Azure resource providers without having to sort out exactly which version of each resource provider API is compatible with Azure Stack Hub. Just align your app to a profile and the SDK reverts to the correct API version.
+You can create an app to work with Azure resource providers without having to know exactly which version of each resource provider API is compatible with Azure Stack Hub. Just align your app to a profile and the SDK reverts to the correct API version.
 
 This topic helps you:
 

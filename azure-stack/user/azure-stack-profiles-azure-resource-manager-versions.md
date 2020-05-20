@@ -4,7 +4,7 @@ description: Learn about the Azure Resource Manager API versions supported by pr
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/07/2020
+ms.date: 05/05/2020
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/08/2019

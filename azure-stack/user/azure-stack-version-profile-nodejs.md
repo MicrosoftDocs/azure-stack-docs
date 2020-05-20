@@ -4,13 +4,13 @@ description: Learn about using API version profiles with Node.js in Azure Stack 
 author: mattbriggs
 
 ms.topic: article
-ms.date: 11/11/2019
+ms.date: 04/30/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 11/11/2019
+ms.lastreviewed: 04/30/2020
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub developer, I want to use NodeJS to create a VM.
+# Keyword: Azure Stack NodeJS
 
 ---
 
@@ -211,9 +211,9 @@ function main() {
 
 You can use the following samples as a reference for creating solutions with Node.js and Azure Stack Hub API profiles. You can get the samples from GitHub in the following repositories:
 
-- [Storage node resource provider getting started](https://github.com/sijuman/storage-node-resource-provider-getting-started)
-- [Compute node manage](https://github.com/sijuman/compute-node-manage-vm)
-- [Resource-manager node resources and groups](https://github.com/sijuman/resource-manager-node-resources-and-groups)
+- [Storage node resource provider getting started](https://github.com/Azure-Samples/hybrid-storage-nodejs-create-storageaccount)
+- [Compute node manage](https://github.com/Azure-Samples/Hybrid-compute-nodejs-create-vm)
+- [Resource-manager node resources and groups](https://github.com/Azure-Samples/Hybrid-resourcegroups-nodejs-manageresources)
 
 ### Sample create storage account 
 

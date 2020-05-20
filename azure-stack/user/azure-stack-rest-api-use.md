@@ -4,7 +4,7 @@ description: Learn how to retrieve an authentication from Azure to make API requ
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 05/06/2020
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2020
@@ -23,11 +23,11 @@ You can use the Azure Stack Hub REST APIs to automate operations such as adding 
 
 The APIs require your client to authenticate to the Microsoft Azure sign-in endpoint. The endpoint returns a token to use in the header of every request sent to the Azure Stack Hub APIs. Microsoft Azure uses Oauth 2.0.
 
-This article provides examples that use the **cURL** utility to create Azure Stack Hub requests. cURL is a command-line tool with a library for transferring data. These examples walk through the process of retrieving a token to access the Azure Stack Hub APIs. Most programming languages provide Oauth 2.0 libraries, which have robust token management and handle tasks such as refreshing the token.
+This article provides examples that use the **cURL** utility to create Azure Stack Hub requests. cURL is a command-line tool with a library for transferring data. These examples describe the process of retrieving a token to access the Azure Stack Hub APIs. Most programming languages provide Oauth 2.0 libraries, which have robust token management and handle tasks such as refreshing the token.
 
 Review the entire process of using the Azure Stack Hub REST APIs with a generic REST client, such as **cURL**, to help you understand the underlying requests and what you can expect in a response payload.
 
-This article does not explore all the options available for retrieving tokens, such as interactive sign-in or creating dedicated app IDs. To get information about these topics, see the [Azure REST API reference](/rest/api/).
+This article does not explore all the options available for retrieving tokens, such as interactive sign-in or creating dedicated app IDs. For information about these topics, see the [Azure REST API reference](/rest/api/).
 
 ## Get a token from Azure
 

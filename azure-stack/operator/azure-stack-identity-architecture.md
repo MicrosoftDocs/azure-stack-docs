@@ -1,11 +1,10 @@
 ---
 title: Identity architecture for Azure Stack Hub 
 description: Learn about identity architecture for Azure Stack Hub, and the differences between Azure AD and AD FS.
-author: IngridAtMicrosoft
-
+author: BryanLa
 ms.topic: conceptual
-ms.date: 05/09/2019
-ms.author: inhenkel
+ms.date: 04/10/2020
+ms.author: bryanla
 ms.reviewer: fiseraci
 ms.lastreviewed: 05/09/2019
 
@@ -27,7 +26,7 @@ The identity provider that you choose can limit your options, including support 
 |------------------------------|----------|-------|
 |Connected to the internet     |Yes       |Optional|
 |Support for multi-tenancy     |Yes       |No      |
-|Offer items in the Marketplace |Yes       |Yes (requires use of the [offline Marketplace Syndication](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) tool)|
+|Offer items in the Marketplace |Yes       |Yes (requires use of the [offline Marketplace Syndication](azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected) tool)|
 |Support for Active Directory Authentication Library (ADAL) |Yes |Yes|
 |Support for tools such as Azure CLI, Visual Studio, and PowerShell  |Yes |Yes|
 |Create service principals through the Azure portal     |Yes |No|
@@ -48,7 +47,7 @@ A single-tenant topology is useful when:
 - All users are part of the same tenant.
 - A service provider hosts an Azure Stack Hub instance for an organization.
 
-![Azure Stack Hub single-tenant topology with Azure AD](media/azure-stack-identity-architecture/single-tenant.png)
+![Azure Stack Hub single-tenant topology with Azure AD](media/azure-stack-identity-architecture/single-tenant.svg)
 
 This topology features the following characteristics:
 
@@ -65,7 +64,7 @@ A multi-tenant topology is useful when:
 
 - A service provider wants to allow users from multiple organizations to access Azure Stack Hub.
 
-![Azure Stack Hub multi-tenant topology with Azure AD](media/azure-stack-identity-architecture/multi-tenant.png)
+![Azure Stack Hub multi-tenant topology with Azure AD](media/azure-stack-identity-architecture/multi-tenant.svg)
 
 This topology features the following characteristics:
 
@@ -80,7 +79,7 @@ The AD FS topology is required when either of the following conditions is true:
 - Azure Stack Hub doesn't connect to the internet.
 - Azure Stack Hub can connect to the internet, but you choose to use AD FS for your identity provider.
   
-![Azure Stack Hub topology using AD FS](media/azure-stack-identity-architecture/adfs.png)
+![Azure Stack Hub topology using AD FS](media/azure-stack-identity-architecture/adfs.svg)
 
 This topology features the following characteristics:
 

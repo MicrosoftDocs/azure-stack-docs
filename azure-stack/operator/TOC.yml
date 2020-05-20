@@ -34,7 +34,11 @@
     - name: Compute
       href: azure-stack-capacity-planning-compute.md
     - name: Storage
-      href: azure-stack-capacity-planning-storage.md
+      items:
+      - name: Storage capacity planning
+        href: azure-stack-capacity-planning-storage.md
+      - name: Storage infrastructure overview
+        href: azure-stack-storage-infrastructure-overview.md
     - name: Azure Stack Hub Capacity Planner
       href: azure-stack-capacity-planner.md
   - name: Datacenter integration
@@ -74,7 +78,7 @@
       href: azure-stack-deployment-worksheet.md
     - name: Identity integration
       items:    
-      - name: Choose an identity provider
+      - name: Choose an identity provider 
         href: azure-stack-integrate-identity.md
       - name: Create registration role
         href: azure-stack-registration-role.md
@@ -134,8 +138,12 @@
       href: azure-stack-cli-admin.md
     - name: Set up management environment
       items:
-      - name: Install PowerShell RM
+      - name: Install PowerShell AzureRM
         href: azure-stack-powershell-install.md
+      - name: Install PowerShell Az
+        href: powershell-install-az-module.md
+      - name: Migrate PowerShell AzureRM to Az
+        href: migrate-azurerm-az.md
       - name: Download tools
         href: azure-stack-powershell-download.md
       - name: Connect with PowerShell
@@ -164,8 +172,6 @@
           href: azure-stack-update-monitor.md
         - name: Use privileged endpoint
           href: azure-stack-monitor-update.md
-      - name: Troubleshoot updates
-        href: azure-stack-updates-troubleshoot.md
     - name: Monitor health and alerts
       href: azure-stack-monitor-health.md
     - name: Monitor hardware components
@@ -183,7 +189,7 @@
         - name: Manage storage capacity
           href: azure-stack-manage-storage-shares.md
         - name: Manage storage infrastructure
-          href: azure-stack-storage-infrastructure-overview.md
+          href: azure-stack-manage-storage-infrastructure.md
         - name: Manage physical memory capacity
           href: azure-stack-manage-storage-physical-memory-capacity.md
         - name: Add scale unit nodes
@@ -290,48 +296,52 @@
         href: azure-stack-app-service-overview.md
       - name: App Service capacity planning
         href: azure-stack-app-service-capacity-planning.md
-      - name: Before you get started
-        href: azure-stack-app-service-before-you-get-started.md
-      - name: Deploy App Service
-        href: azure-stack-app-service-deploy.md
-      - name: Deploy App Service for high availability
-        href: app-service-deploy-ha.md
-      - name: Deploy App Service offline
-        href: azure-stack-app-service-deploy-offline.md
-      - name: Update App Service
-        href: azure-stack-app-service-update.md
-      - name: Update App Service Offline
-        href: azure-stack-app-service-update-offline.md
-      - name: Add App Service infrastructure roles
-        href: azure-stack-app-service-add-worker-roles.md
-      - name: Configure deployment sources
-        href: azure-stack-app-service-configure-deployment-sources.md
-      - name: Rotate App Service secrets and certificates
-        href: app-service-rotate-certificates.md
-      - name: Back up App Service
-        href: app-service-back-up.md
-      - name: Recover App Service
-        href: app-service-recover.md
       - name: App Service billing FAQ
         href: app-service-billing-faq.md
+      - name: Prerequisites
+        href: azure-stack-app-service-before-you-get-started.md
+      - name: Deployment
+        items:
+        - name: Deploy App Service
+          href: azure-stack-app-service-deploy.md
+        - name: Deploy App Service for high availability
+          href: app-service-deploy-ha.md
+      - name: Life cycle management 
+        items:
+        - name: Update App Service
+          href: azure-stack-app-service-update.md
+        - name: Add App Service infrastructure roles
+          href: azure-stack-app-service-add-worker-roles.md
+        - name: Configure deployment sources
+          href: azure-stack-app-service-configure-deployment-sources.md
+        - name: Rotate App Service secrets and certificates
+          href: app-service-rotate-certificates.md
+        - name: Back up App Service
+          href: app-service-back-up.md
+        - name: Recover App Service
+          href: app-service-recover.md
+        - name: Remove App Service
+          href: app-service-remove.md
       - name: App Service on Azure Stack Hub release notes
         items:
-        - name: App Service on Azure Stack Hub update 1 release notes
-          href: azure-stack-app-service-release-notes-update-one.md
-        - name: App Service on Azure Stack Hub update 2 release notes
-          href: azure-stack-app-service-release-notes-update-two.md
-        - name: App Service on Azure Stack Hub update 3 release notes
-          href: azure-stack-app-service-release-notes-update-three.md
-        - name: App Service on Azure Stack Hub update 4 release notes
-          href: azure-stack-app-service-release-notes-update-four.md
-        - name: App Service on Azure Stack Hub update 5 release notes
-          href: azure-stack-app-service-release-notes-update-five.md
-        - name: App Service on Azure Stack Hub update 6 release notes
-          href: azure-stack-app-service-release-notes-update-six.md
-        - name: App Service on Azure Stack Hub update 7 release notes
-          href: azure-stack-app-service-release-notes-update-seven.md
+        - name: App Service on Azure Stack Hub 2020 Q2 release notes
+          href: app-service-release-notes-2020-Q2.md
         - name: App Service on Azure Stack Hub update 8 release notes
           href: azure-stack-app-service-release-notes-update-eight.md
+        - name: App Service on Azure Stack Hub update 7 release notes
+          href: azure-stack-app-service-release-notes-update-seven.md
+        - name: App Service on Azure Stack Hub update 6 release notes
+          href: azure-stack-app-service-release-notes-update-six.md
+        - name: App Service on Azure Stack Hub update 5 release notes
+          href: azure-stack-app-service-release-notes-update-five.md
+        - name: App Service on Azure Stack Hub update 4 release notes
+          href: azure-stack-app-service-release-notes-update-four.md
+        - name: App Service on Azure Stack Hub update 3 release notes
+          href: azure-stack-app-service-release-notes-update-three.md
+        - name: App Service on Azure Stack Hub update 2 release notes
+          href: azure-stack-app-service-release-notes-update-two.md
+        - name: App Service on Azure Stack Hub update 1 release notes
+          href: azure-stack-app-service-release-notes-update-one.md   
     - name: Event Hubs on Azure Stack Hub
       items:
       - name: Overview
@@ -490,16 +500,24 @@
   items:
   - name: Azure Stack Hub PowerShell
     href: https://docs.microsoft.com/powershell/azure/azure-stack/overview
-  - name: Azure Stack Hub User documentation
+  - name: Azure Stack Hub privileged endpoint
+    href: ../reference/pep-2002/    
+  - name: Azure Stack Hub administrator REST APIs
+    href: /rest/api/azure-stack/
+  - name: Azure CLI
+    href: https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest
+- name: Related
+  items:
+  - name: Azure Stack Hub user documentation
     href: /azure-stack/user/
-  - name: ASDK documentation
+  - name: ASDK Documentation
     href: /azure-stack/asdk/
 - name: Resources
   items:
   - name: Training and certification
     href: azure-stack-train-and-cert.md
-  - name: Azure Stack Hub roadmap
-    href: https://azure.microsoft.com/roadmap/?tag=azure-stack
+  - name: Azure Stack Hub road map
+    href: https://azure.microsoft.com/updates/?query=azure%20stack%20hub
   - name: Azure Stack Hub MSDN forum
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack
   - name: Azure Stack Hub Documentation feedback
