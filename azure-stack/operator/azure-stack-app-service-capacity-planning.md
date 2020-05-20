@@ -4,10 +4,10 @@ description: Learn about capacity planning for App Service server roles in Azure
 author: BryanLa
 
 ms.topic: article
-ms.date: 03/13/2019
+ms.date: 05/05/2020
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 03/13/20192
+ms.lastreviewed: 04/13/2020
 
 # Intent: As an Azure Stack operator, I want to learn about how much computing capacy I need for a stable production deployment. 
 # Keyword: capacity planning azure stack
@@ -20,44 +20,49 @@ To set up a production-ready deployment of Azure App Service on Azure Stack Hub,
 
 This article provides guidance for the minimum number of compute instances and compute SKUs you should use for any production deployment.
 
+> [!NOTE]
+> The guidance on recommended compute SKU for roles was updated with the 2020.Q2 release of Azure App Service on Azure Stack Hub to bring standard deployments in line with Azure deployments.
+
 You can plan your App Service capacity strategy using these guidelines.
 
 | App Service server role | Minimum recommended number of instances | Recommended compute SKU|
 | --- | --- | --- |
-| Controller | 2 | A1 |
-| Front End | 2 | A1 |
-| Management | 2 | A3 |
-| Publisher | 2 | A1 |
-| Web Workers - shared | 2 | A1 |
-| Web Workers - dedicated | 2 per tier | A1 |
+| Controller | 2 | A4v2 |
+| Front End | 2 | A4_v2 |
+| Management | 2 | D3_v2 |
+| Publisher | 2 | A2_v2 |
+| Web Workers - shared | 2 | A4_v2 |
+| Web Workers - dedicated - small | 2 per tier | A1_v2 |
+| Web Workers - dedicated - medium | 2 per tier | A2_v2 |
+| Web Workers - dedicated - large | 2 per tier | A4_v2 |
 
 ## Controller role
 
-**Recommended minimum**: Two instances of A1 Standard
+**Recommended minimum**: Two instances of A4v2
 
 The Azure App Service controller typically experiences low consumption of CPU, memory, and network resources. However, for high availability, you must have two controllers. Two controllers are also the maximum number of controllers permitted. You can create the second web sites controller direct from the installer during deployment.
 
 ## Front-end role
 
-**Recommended minimum**: Two instances of A1 Standard
+**Recommended minimum**: Two instances of A4v_2
 
 The front-end routes requests to web workers depending on web worker availability. For high availability, you should have more than one front end, and you can have more than two. For capacity planning purposes, consider that each core can handle approximately 100 requests per second.
 
 ## Management role
 
-**Recommended minimum**: Two instances of A3 Standard
+**Recommended minimum**: Two instances of D3v2
 
 The Azure App classic deployment model role is responsible for the App Service Azure Resource Manager and API endpoints, portal extensions (admin, tenant, Functions portal), and the data service. The management server role typically requires only about 4-GB RAM in a production environment. However, it may experience high CPU levels when many management tasks (such as web site creation) are performed. For high availability, you should have more than one server assigned to this role, and at least two cores per server.
 
 ## Publisher role
 
-**Recommended minimum**: Two instances of A1 Standard
+**Recommended minimum**: Two instances of A2v2
 
 If many users are publishing simultaneously, the publisher role may experience heavy CPU usage. For high availability, make sure more than one publisher role is available. The publisher only handles FTP/FTPS traffic.
 
 ## Web worker role
 
-**Recommended minimum**: Two instances of A1 Standard
+**Recommended minimum**: Two instances of A4_v2
 
 For high availability, you should have at least four web worker roles: two for shared web site mode and two for each dedicated worker tier you plan to offer. The shared and dedicated compute modes provide different levels of service to tenants. You might need more web workers if many of your customers are:
 

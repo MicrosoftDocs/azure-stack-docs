@@ -17,55 +17,66 @@ ms.lastreviewed: 03/19/2019
 
 # Manage storage capacity for Azure Stack Hub
 
-This article helps Azure Stack Hub cloud operators monitor and manage the storage capacity of their Azure Stack Hub deployment. The Azure Stack Hub storage infrastructure allocates a subset of the total storage capacity of the Azure Stack Hub deployment as *storage services*. Storage services store a tenant's data in shares on volumes that correspond to the nodes of the deployment.
+This article helps Azure Stack Hub cloud operators monitor and manage the storage capacity of their Azure Stack Hub deployment. The Azure Stack Hub storage infrastructure allocates a subset of the total storage capacity of the Azure Stack Hub deployment as storage services. Storage services store a tenant's data in shares on volumes that correspond to the nodes of the deployment.
 
 As a cloud operator, you have a limited amount of storage to work with. The amount of storage is defined by the solution you implement. The solution is provided by your OEM vendor when you use a multinode solution, or it's provided by the hardware on which you install the Azure Stack Development Kit (ASDK).
 
 Because Azure Stack Hub doesn't support expansion of storage capacity, it's important to [monitor](#monitor-shares) the available storage to ensure that efficient operations are maintained.
 
-When the remaining free capacity of a share becomes limited, plan to [manage the available space](#manage-available-space) to prevent the shares from running out of capacity.
+When the remaining free capacity of a volume becomes limited, plan to [manage the available space](#manage-available-space) to prevent the shares from running out of capacity.
 
 Your options for managing capacity include:
 - Reclaiming capacity.
-- Migrating a container.
+- Migrating storage objects.
 
-When a share is 100 percent utilized, the storage service no longer functions for that share. To get assistance in restoring operations for the share, contact Microsoft support.
+When an object store volume is 100% utilized, the storage service no longer functions for that volume. To get assistance in restoring operations for the volume, contact Microsoft support.
 
 ## Understand volumes and shares, containers, and disks
 ### Volumes and shares
-The *storage service* partitions the available storage into separate, equal volumes that are allocated to hold tenant data. The number of volumes is equal to the number of nodes in the Azure Stack Hub deployment:
+The *storage service* partitions the available storage into separate, equal volumes that are allocated to hold tenant data. For more information about volumes in Azure Stack Hub, see [Manage storage infrastructure for Azure Stack Hub](azure-stack-manage-storage-infrastructure.md).
 
-- In a four-node deployment, there are four volumes. Each volume has a single share. In a multinode deployment, the number of shares isn't reduced if a node is removed or if it malfunctions.
+Object store volumes hold tenant data. Tenant data includes page blobs, block blobs, append blobs, tables, queues, databases, and related metadata stores. The number of object store volumes is equal to the number of nodes in the Azure Stack Hub deployment:
+
+- On a four-node deployment, there are four object store volumes. On a multinode deployment, the number of volumes isn't reduced if a node is removed or malfunctioning.
 - If you use the ASDK, there's a single volume with a single share.
 
-Because the storage service shares are for the exclusive use of storage services, you must not directly modify, add, or remove any files on the shares. Only storage services should work on the files stored in these volumes.
+The object store volumes are for the exclusive use of storage services. You must not directly modify, add, or remove any files on the volumes. Only storage services should work on the files stored in these volumes.
 
-Shares on volumes hold tenant data. Tenant data includes page blobs, block blobs, append blobs, tables, queues, databases, and related metadata stores. Because the storage objects (blobs, and so on) are individually contained within a single share, the maximum size of each object can't exceed the size of a share. The maximum size of a new object depends on the capacity that remains in a share as unused space when the new object is created.
+Because the storage objects (blobs, and so on) are individually contained within a single volume, the maximum size of each object can't exceed the size of a volume. The maximum size of new objects depends on the capacity that remains in a volume as unused space when that new object is created.
 
-When a share is low on free space and actions to [reclaim](#reclaim-capacity) space aren't successful or they're unavailable, Azure Stack Hub cloud operators can migrate the blob containers from one share to another.
+When an object store volume is low on free space and actions to [reclaim](#reclaim-capacity) space aren't successful or available, Azure Stack Hub cloud operators can migrate storage objects from one volume to another.
 
 For information about how tenant users work with blob storage in Azure Stack Hub, see [Azure Stack Hub Storage services](/azure-stack/user/azure-stack-storage-overview).
 
 ### Containers
 Tenant users create containers that are then used to store blob data. Although users decide in which container to place blobs, the storage service uses an algorithm to determine on which volume to put the container. The algorithm typically chooses the volume with the most available space.  
 
-After a blob is placed in a container, the blob can grow to use more space. As you add new blobs and existing blobs grow, the available space in the volume that holds the container shrinks.  
+After a blob is placed in a container, the blob can grow to use more space. As you add new blobs and existing blobs grow, the available space in the volume that holds the container shrinks. 
 
-Containers aren't limited to a single share. When the combined blob data in a container grows to use 80 percent or more of the available space, the container enters *overflow* mode. When the container is in overflow mode, any new blobs that are created in the container are allocated to a different volume that has sufficient space. Over time, a container in overflow mode can have blobs that are distributed across multiple volumes.
+Containers aren't limited to a single volume. When the combined blob data in a container grows to use 80% or more of the available space, the container enters *overflow* mode. When in overflow mode, any new blobs that are created in that container are allocated to a different volume that has sufficient space. Over time, a container in overflow mode can have blobs that are distributed across multiple volumes.
 
-When 80 percent (and then 90 percent) of the available space in a volume is used, the system raises alerts in the Azure Stack Hub administrator portal. Cloud operators should review available storage capacity and plan to rebalance the content. The storage service stops working when a disk is 100 percent used and no additional alerts are raised.
+When 80% (and then 90%) of the available space in a volume is used, the system raises [alerts](#storage-space-alerts) in the Azure Stack Hub administrator portal. Cloud operators should review available storage capacity and plan to rebalance the content. The storage service stops working when a disk is 100% used and no additional alerts are raised.
 
 ### Disks
-Virtual machine (VM) disks are added to containers by tenants, and they include an operating system disk. VMs can also have one or more data disks. Both types of disks are stored as page blobs. The guidance to tenants is to place each disk into a separate container to improve the performance of the VM.
+Azure Stack Hub supports the use of managed disks and unmanaged disks in VMs, as both an operating system (OS) and a data disk.
+
+**Managed disks** simplify disk management for Azure IaaS VMs by managing the storage accounts associated with the VM disks. You only have to specify the size of disk you need, and Azure Stack Hub creates and manages the disk for you. For more information, see [Managed Disks Overview](/azure/virtual-machines/windows/managed-disks-overview).
+
+It is recommended that you use Managed Disks for VM for easier management and capacity balance. You don't have to prepare a storage account and containers before using Managed Disks. When creating multiple managed disks, the disks are distributed into multiple volumes, which helps to balance the capacity of volumes.  
+
+**Unmanaged disks** are VHD files that are stored as page blobs in Azure storage accounts. The page blobs created by tenants are referred to as VM disks and are stored in containers in the storage accounts. We recommend you use Unmanaged Disks only for VMs that need to compatible with 3rd party tools only support Azure Unmanaged Disks.
+
+The guidance to tenants is to place each disk into a separate container to improve performance of the VM.
 
 - Each container that holds a disk, or page blob, from a VM is considered an attached container to the VM that owns the disk.
 - A container that doesn't hold any disks from a VM is considered a free container.
 
-The options to free up space on an attached container are limited. To learn more, see [Move VM disks](#move-vm-disks).
+The options to free up space on an attached container are limited. To learn more, see [Distribute unmanaged disks](#distribute-unmanaged-disks).
 
 >[!TIP]  
-> Cloud operators don't directly manage disks, which are attached to VMs that tenants might add to a container. However, when you plan to manage space on storage shares, it can be useful to understand how disks relate to containers and shares.
+> Cloud operators don't directly operate unmanaged disks, which are attached to VMs that tenants might add to a container. However, when you plan to manage space on storage shares, it can be useful to understand how unmanaged disks relate to containers and shares.
 
+::: moniker range="<azs-2002"
 ## Monitor shares
 Use Azure PowerShell or the administrator portal to monitor shares so that you can understand when free space is limited. When you use the portal, you receive alerts about shares that are low on space.
 
@@ -88,17 +99,44 @@ As a cloud operator, you can use the administrator portal to view the storage ca
    - **Total**: The total space, in bytes, that's available on the share. This space is used for data and metadata that's maintained by the storage services.
    - **Used**: The amount of data, in bytes, that's used by all the extents from the files that store the tenant data and associated metadata.
 
+::: moniker-end
+::: moniker range=">=azs-2002"
+
+## Monitor volumes
+Use PowerShell or the administrator portal to monitor volumes so you can understand when free space is limited. When you use the portal, you receive alerts about volumes that are low on space.
+
+### Use PowerShell
+As a cloud operator, you can monitor the storage capacity of a volume using the PowerShell `Get-AzsVolume` cmdlet. The cmdlet returns the total and free space in gigabyte (GB) on each of the volumes.
+
+![Example: Return free space for volumes](media/azure-stack-manage-storage-shares/listvolumespowershell.png)
+
+- **Total capacity**: The total space in GB that's available on the share. This space is used for data and metadata that's maintained by the storage services.
+- **Remaining capacity**: The amount of space in GB that's free to store the tenant data and associated metadata.
+
+### Use the administrator portal
+As a cloud operator, you can use the administrator portal to view the storage capacity of all volumes.
+
+1. Sign in to the Azure Stack Hub administrator portal (`https://adminportal.local.azurestack.external`).
+2. Select **All services** > **Storage** > **Volumes** to open the volume list where you can view the usage information.
+
+    ![Example: Storage volumes in Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/listvolumes.png)
+
+   - **Total**: The total space available on the volume. This space is used for data and metadata that's maintained by the storage services.
+   - **Used**: The amount of data that's used by the all the extents from the files that store the tenant data and associated metadata.
+
+::: moniker-end
+
 ### Storage space alerts
-When you use the administrator portal, you receive alerts about shares that are low on space.
+When you use the administrator portal, you receive alerts about volumes that are low on space.
 
 > [!IMPORTANT]
-> As a cloud operator, you should prevent shares from reaching full usage. When a share is 100 percent utilized, the storage service no longer functions for that share. To recover free space and restore operations on a share that's 100 percent utilized, you must contact Microsoft support.
+> As a cloud operator, you should prevent shares from reaching full usage. When a share is 100% utilized, the storage service no longer functions for that share. To recover free space and restore operations on a share that's 100% utilized, you must contact Microsoft support.
 
-* **Warning**: When a file share is over 80 percent utilized, you receive a *Warning* alert in the administrator portal:
+* **Warning**: When a file share is over 80% utilized, you receive a *Warning* alert in the administrator portal:
 
   ![Example: Warning alert in the Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-warning.png)
 
-* **Critical**: When a file share is over 90 percent utilized, you receive a *Critical* alert in the administrator portal:
+* **Critical**: When a file share is over 90% utilized, you receive a *Critical* alert in the administrator portal:
 
   ![Example: Critical alert in the Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-critical.png)
 
@@ -107,14 +145,15 @@ When you use the administrator portal, you receive alerts about shares that are 
   ![Example: View alert details in the Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-details.png)
 
 ## Manage available space
-When it's necessary to free up space on a share, use the least invasive methods first. For example, try to reclaim space before you choose to migrate a container.  
+When it's necessary to free space on a volume, use the least invasive methods first. For example, try to reclaim space before you choose to migrate a managed disk.  
 
 ### Reclaim capacity
-*This option applies to both multinode deployments and the Azure Stack Development Kit.*
 
 You can reclaim the capacity that's used by tenant accounts that have been deleted. This capacity is automatically reclaimed when the data [retention period](azure-stack-manage-storage-accounts.md#set-the-retention-period) is reached, or you can act to reclaim it immediately.
 
 For more information, see the "Reclaim capacity" section of [Manage Azure Stack Hub storage accounts](azure-stack-manage-storage-accounts.md#reclaim).
+
+::: moniker range="<azs-2002"
 
 ### Migrate a container between volumes
 *This option applies only to Azure Stack Hub integrated systems.*
@@ -202,6 +241,82 @@ Migration consolidates all of a container's blobs on the new share.
 *This option applies only to Azure Stack Hub integrated systems.*
 
 The most extreme method for managing space involves moving VM disks. Because moving an attached container (one that contains a VM disk) is complex, contact Microsoft support to accomplish this action.
+
+::: moniker-end
+::: moniker range=">=azs-2002"
+
+### Migrate a managed disk between volumes
+*This option applies only to Azure Stack Hub integrated systems.*
+
+Because of tenant usage patterns, some tenant volumes use more space than others. The result can be a volume that runs low on space before other volume that are relatively unused.
+
+You can free up space on an overused volume by manually migrating some managed disks to a different volume. You can migrate several managed disks to a single volume that has capacity to hold them all. Use migration to move *offline* managed disks. Offline managed disks are disks that aren't attached to a VM.
+
+> [!IMPORTANT]
+> Migration of managed disks is an offline operation that requires the use of PowerShell. You must detach the candidate disks for migration from their owner VM before starting migration job (once the migration job is done, you can reattach them). Until migration completes, all managed disks you are migrating must remain offline and can't be used, otherwise the migration job would abort and all unmigrated disks are still on their original volumes. You should also avoid upgrading Azure Stack Hub until all ongoing migration completes.
+
+#### To migrate managed disks using PowerShell
+1. Confirm that you have Azure PowerShell installed and configured. For instructions on configuring the PowerShell environment, see [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md). To sign in to Azure Stack Hub, see [Configure the operator environment and sign in to Azure Stack Hub](azure-stack-powershell-configure-admin.md).
+2. Examine the managed disks to understand what disks are on the volume that you plan to migrate. To identify the best candidate disks for migration in a volume, use the `Get-AzsDisk` cmdlet:
+
+   ```powershell  
+   $ScaleUnit = (Get-AzsScaleUnit)[0]
+   $StorageSubSystem = (Get-AzsStorageSubSystem -ScaleUnit $ScaleUnit.Name)[0]
+   $Volumes = (Get-AzsVolume -ScaleUnit $ScaleUnit.Name -StorageSubSystem $StorageSubSystem.Name | Where-Object {$_.VolumeLabel -Like "ObjStore_*"})
+   $SourceVolume  = ($Volumes | Sort-Object RemainingCapacityGB)[0]
+   $Disks = Get-AzsDisk -Status All -ScaleUnit $ScaleUnit.name -VolumeLabel $SourceVolume.VolumeLabel | Select-Object -First 10
+   ```
+   Then examine $disks:
+
+   ```powershell
+   $Disks
+   ```
+
+   ![Example: $Disks](media/azure-stack-manage-storage-shares/disks.png)
+
+3. Identify the best destination volume to hold the disks you migrate:
+
+   ```powershell
+   $DestinationVolume  = ($Volumes | Sort-Object RemainingCapacityGB -Descending)[0]
+   ```
+
+4. Start migration for managed disks. Migration is asynchronous. If you start migration of additional disks before the first migration completes, use the job name to track the status of each.
+
+   ```powershell
+   $jobName = "MigratingDisk"
+   Start-AzsDiskMigrationJob -Disks $Disks -TargetScaleUnit $ScaleUnit.name -TargetVolumeLabel $DestinationVolume.VolumeLabel -Name $jobName
+   ```
+
+5. Use the job name to check on the status of the migration job. When the disk migration is complete, **MigrationStatus** is set to **Complete**.
+
+   ```powershell 
+   $job = Get-AzsDiskMigrationJob -Name $jobName
+   ```
+
+   ![Example: Migration status](media/azure-stack-manage-storage-shares/diskmigrationjob.png)
+   
+   If you are migrating multiple managed disks in one migration job, you can also check the sub tasks of the job.
+
+   ```powershell 
+   $job.Subtasks
+   ```
+
+   ![Example: Migration sub task status](media/azure-stack-manage-storage-shares/diskmigrationsubtask.png)
+
+6. You can cancel an in-progress migration job. Canceled migration jobs are processed asynchronously. You can track cancellation by using job name until the status confirms the migration job is **Canceled**:
+
+   ```powershell
+   Stop-AzsDiskMigrationJob -Name $jobName
+   ```
+
+   ![Example: Canceled status](media/azure-stack-manage-storage-shares/diskmigrationstop.png)
+
+### Distribute unmanaged disks
+*This option applies only to Azure Stack Hub integrated systems.*
+
+The most extreme method for managing space involves moving unmanaged disks. If the tenant add numbers of unmanaged disks to one container, the total used capacity of the container could grow beyond the available capacity of the volume that holds it before the container entering *overflow* mode. To avoid single container exhaust the space of a volume, the tenant could distribute the existing unmanaged disks of one container to different containers. Because distributing an attached container (one that contains a VM disk) is complex, contact Microsoft Support to accomplish this action.
+
+::: moniker-end
 
 ## Next steps
 To learn more about offering VMs to users, see [Manage storage capacity for Azure Stack Hub](azure-stack-tutorial-tenant-vm.md).

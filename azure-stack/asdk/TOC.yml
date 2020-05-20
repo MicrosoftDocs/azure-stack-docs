@@ -53,14 +53,14 @@
     href: /cli/azure/?view=azure-cli-2017-03-09-profile
 - name: Related
   items:
-  - name: Azure Stack Hub Operator Documentation
+  - name: Azure Stack Hub operator documentation
     href: /azure-stack/operator
-  - name: Azure Stack Hub User Documentation
+  - name: Azure Stack Hub user documentation
     href: /azure-stack/user/
 - name: Resources
   items:
-  - name: Azure Stack roadmap
-    href: https://azure.microsoft.com/roadmap/?tag=azure-stack
+  - name: Azure Stack road map
+    href: https://azure.microsoft.com/updates/?query=azure%20stack%20hub
   - name: Azure Stack MSDN forum
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack
   - name: Azure Stack Documentation feedback

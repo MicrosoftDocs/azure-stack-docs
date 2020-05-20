@@ -4,7 +4,7 @@ description: Learn how to manage updates in Azure Stack Hub
 author: IngridAtMicrosoft
 
 ms.topic: how-to
-ms.date: 03/04/2020
+ms.date: 05/13/2020
 ms.author: inhenkel
 ms.lastreviewed: 09/10/2019
 ms.reviewer: ppacent
@@ -50,7 +50,7 @@ The three types of updates are released with the following cadence:
 
 To continue to receive support, you must keep your Azure Stack Hub environment on a supported Azure Stack Hub software version. For more information, see [Azure Stack Hub Servicing Policy](azure-stack-update-servicing-policy.md).
 
-## Where to get notice of an update
+## How to know an update is available
 
 Notice of updates varies on a couple of factors, such as your connection to the internet and the type of update.
 
@@ -68,7 +68,7 @@ Notice of updates varies on a couple of factors, such as your connection to the 
 
 Once you know you have an update, apply it by using the following steps.
 
-![Azure Stack Hub update process](./media/azure-stack-updates/azure-stack-update-process.png)
+![Azure Stack Hub update process](./media/azure-stack-updates/azure-stack-update-process.svg)
 
 1. **Plan for the update**.
 

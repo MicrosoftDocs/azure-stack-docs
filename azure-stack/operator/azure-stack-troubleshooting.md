@@ -5,10 +5,10 @@ description: Learn how to troubleshoot Azure Stack Hub, including issues with VM
 author: justinha
 
 ms.topic: article
-ms.date: 11/05/2019
+ms.date: 05/13/2020
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 11/05/2019
+ms.lastreviewed: 15/13/2020
 
 # Intent: As an Azure Stack operator, I want to troubleshoot Azure Stack issues.
 # Keyword: toubleshoot azure stack
@@ -33,6 +33,7 @@ These sections include links to docs that cover common questions sent to Microso
 * [How to use diagnostics tools in Azure Stack Hub](azure-stack-diagnostics.md)
 * [How to validate Azure Stack Hub system state](azure-stack-diagnostic-test.md)
 * [Update package release cadence](azure-stack-servicing-policy.md#update-package-release-cadence)
+* [Verify and troubleshoot node status](azure-stack-node-actions.md)
 
 ### Supported operating systems and sizes for guest VMs
 
@@ -87,7 +88,7 @@ You can use PowerShell to get stamp utilization information without help from CS
 4. Run `get-azurestacklog -filterbyrole seedring` using an invoke-command call.
 5. Extract the seedring .zip. You can obtain the validation report from the ERCS folder where you ran `test-azurestack`.
 
-For more information, see [Azure Stack Hub Diagnostics](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs).
+For more information, see [Azure Stack Hub Diagnostics](azure-stack-get-azurestacklog.md).
 
 ## Troubleshoot virtual machines (VMs)
 
@@ -116,8 +117,32 @@ It may take up to 14 hours for reclaimed capacity to show up in the portal. Spac
 
 If you're using an integrated system in a disconnected scenario, it's recommended to use an Enterprise Certificate Authority (CA). Export the root certificate in a Base-64 format and then import it in Azure Storage Explorer. Make sure that you remove the trailing slash (`/`) from the Resource Manager endpoint. For more information, see [Prepare for connecting to Azure Stack Hub](/azure-stack/user/azure-stack-storage-connect-se).
 
-## Troubleshooting App Service
+## Troubleshoot App Service
 
 ### Create-AADIdentityApp.ps1 script fails
 
-If the Create-AADIdentityApp.ps1 script that's required for App Service fails, be sure to include the required `-AzureStackAdminCredential` parameter when running the script. For more information, see [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-app).
+If the Create-AADIdentityApp.ps1 script that's required for App Service fails, be sure to include the required `-AzureStackAdminCredential` parameter when running the script. For more information, see [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md#create-an-azure-ad-app).
+
+## Troubleshoot Azure Stack Hub updates
+
+The Azure Stack Hub patch and update process is designed to allow operators to apply update packages in a consistent, streamlined way. While uncommon, issues can occur during patch and update process. The following steps are recommended should you encounter an issue during the patch and update process:
+
+0. **Prerequisites**: Be sure that you have followed the [Update Activity Checklist](release-notes-checklist.md) and [enable proactive log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md).
+
+1. Follow the remediation steps in the failure alert created when your update failed.
+
+2. If you have been unable to resolve your issue, create an [Azure Stack Hub support ticket](azure-stack-help-and-support-overview-tzl.md). Be sure you have [logs collected](azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md) for the time span when the issue occurred.
+
+## Common Azure Stack Hub patch and update issues
+
+*Applies to: Azure Stack Hub integrated systems*
+
+### PreparationFailed
+
+**Applicable**: This issue applies to all supported releases.
+
+**Cause**: When attempting to install the Azure Stack Hub update, the status for the update might fail and change state to `PreparationFailed`. For internet-connected systems this is usually indicative of the update package being unable to download properly due to a weak internet connection. 
+
+**Remediation**: You can work around this issue by clicking **Install now** again. If the problem persists, we recommend manually uploading the update package by following the [Install updates](azure-stack-apply-updates.md?#install-updates-and-monitor-progress) section.
+
+**Occurrence**: Common

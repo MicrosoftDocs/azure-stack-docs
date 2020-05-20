@@ -4,7 +4,7 @@ description: Learn how to Back up your VM on Azure Stack Hub with Commvault.
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 10/30/2019
+ms.date: 04/20/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/30/2019
@@ -39,7 +39,7 @@ You can also download and offer compatible partner VM images to protect your Azu
 
 The topology of this approach will look like the following diagram:
 
-![](./media/azure-stack-network-howto-backup-commvault/backup-vm-commvault-diagram.png)
+![](./media/azure-stack-network-howto-backup-commvault/backup-vm-commvault-diagram.svg)
 
 ## Create the Commvault VM form the Commvault Marketplace Item
 
@@ -50,7 +50,7 @@ The topology of this approach will look like the following diagram:
     > [!Note]  
     > If Commvault is not available to you, contact your cloud operator.
 
-    ![](./media/azure-stack-network-howto-backup-commvault/commvault-create-vm-01.png)
+    ![Create VM](./media/azure-stack-network-howto-backup-commvault/commvault-create-vm-01.png)
 
 3. Configure the basic settings in **Create virtual machine, 1 Basics**:
 

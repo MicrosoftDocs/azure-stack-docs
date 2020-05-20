@@ -1,0 +1,62 @@
+### YamlMime:Landing
+
+title: Azure Stack HCI documentation
+summary: Azure Stack HCI is a hyperconverged Windows Server 2019 cluster that uses validated hardware to run virtualized workloads on-premises, making it easy for customers to consolidate aging infrastructure and connect to Azure for cloud services.
+
+metadata:
+  title: Azure Stack HCI documentation
+  description: Azure Stack HCI is a hyperconverged Windows Server 2019 cluster that uses validated hardware to run virtualized workloads on-premises.
+#  ms.service: service #Required; service per approved list. service slug assigned to your service by ACOM.
+  ms.topic: landing-page
+  author: khdownie
+  ms.author: v-kedow
+  ms.date: 04/17/2020
+
+# linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
+
+landingContent:
+  # Card (optional)
+  - title: About Azure Stack HCI
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is Azure Stack HCI?
+            url: overview.md
+      - linkListType: get-started
+        links:
+          - text: Use Azure Stack HCI with Windows Admin Center
+            url: get-started.md
+
+  # Card
+  - title: Manage Azure Stack HCI
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Create volumes
+            url: manage/create-volumes.md
+          - text: Extend volumes
+            url: manage/extend-volumes.md
+          - text: Delete volumes
+            url: manage/delete-volumes.md
+          - text: Replace drives
+            url: manage/replace-drives.md
+          - text: Monitor with Azure Monitor
+            url: manage/azure-monitor.md
+          - text: Attach GPU to Linux VM
+            url: manage/attach-gpu-to-linux-vm.md
+
+  # Card
+  - title: Azure Stack HCI concepts
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Choose drives
+            url: concepts/choose-drives.md
+          - text: Plan volumes
+            url: concepts/plan-volumes.md
+          - text: Understand the cache
+            url: concepts/cache.md
+          - text: Fault tolerance and storage efficiency
+            url: concepts/fault-tolerance.md
+          - text: Cluster and storage pool quorum
+            url: concepts/quorum.md

@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Learn how to rotate your secrets in Azure Stack Hub.
 author: IngridAtMicrosoft
 ms.topic: how-to
-ms.date: 03/04/2020
+ms.date: 04/03/2020
 ms.reviewer: ppacent
 ms.author: inhenkel
 ms.lastreviewed: 12/13/2019
@@ -61,6 +61,9 @@ Azure Stack Hub uses various secrets to maintain secure communication between th
 
 > [!Note]
 > All other secure keys and strings, including BMC and switch passwords as well as user and administrator account passwords are still manually updated by the administrator.
+
+> [!Important]
+> These procedures do not rotate the certificates, secrets and credentials for the Azure App Service on Azure Stack Hub resource provider.  To rotate these you should follow the steps in the [Rotate App Service secrets and certificates](app-service-rotate-certificates.md) article
 
 > [!Important]
 > Starting with Azure Stack Hub's 1811 release, secret rotation has been separated for internal and external certificates.
@@ -210,7 +213,7 @@ To rotate external secrets:
 
 5. Wait while your secrets rotate. External secret rotation takes approximately one hour.
 
-    When secret rotation successfully completes, your console will display **Overall action status: Success**.
+    When secret rotation successfully completes, your console will display **ActionPlanInstanceID ... CurrentStatus: Completed**, followed by a **DONE**.
 
     > [!Note]
     > If secret rotation fails, follow the instructions in the error message and re-run **Start-SecretRotation** with the **-ReRun** parameter.
@@ -256,7 +259,7 @@ Remove-PSSession -Session $PEPSession
 
 3. Wait while your secrets rotate.
 
-   When secret rotation successfully completes, your console will display **Overall action status: Success**.
+   When secret rotation successfully completes, your console will display **ActionPlanInstanceID ... CurrentStatus: Completed**, followed by a **DONE**
     > [!Note]
     > If secret rotation fails, follow the instructions in the error message and rerun **Start-SecretRotation** with the  **-Internal** and **-ReRun** parameters.  
 
