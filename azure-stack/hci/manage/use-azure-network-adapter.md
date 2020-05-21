@@ -25,7 +25,7 @@ connection. The process automates configuring the Virtual Network gateway and th
 Azure Network Adapter Point-to-Site VPN connections are useful when you want to
 connect to your Virtual Network from a remote location, such as a branch office,
 store, or other location. You can also use Azure Network Adapter instead of a
-Site-to-Site VPN when you require only a few Windows Server clients to connect
+Site-to-Site VPN when you require only a few servers to connect
 to a Virtual Network. Azure Network Adapter connections don't require a VPN
 device or a public-facing IP address.
 
