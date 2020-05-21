@@ -26,6 +26,10 @@
     href: manage/azure-site-recovery.md
   - name: Monitor with Azure Monitor
     href: manage/azure-monitor.md
+  - name: Manage VMs
+    href: manage/vm.md
+  - name: Manage VMs with PowerShell
+    href: manage/vm-powershell.md
   - name: Attach GPU to Linux VM
     href: manage/attach-gpu-to-linux-vm.md
 - name: Concepts

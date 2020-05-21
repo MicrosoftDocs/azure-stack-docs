@@ -243,7 +243,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 The 2002 release of Azure Stack Hub must be applied on the 1910 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1910.37.132](https://support.microsoft.com/help/4550133)
+- [Azure Stack Hub hotfix 1.1910.40.138](https://support.microsoft.com/help/4558082)
 
 ### After successfully applying the 2002 update
 
@@ -402,14 +402,14 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 The 1910 release of Azure Stack Hub must be applied on the 1908 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1908.25.78](https://support.microsoft.com/help/4552361)
+- [Azure Stack Hub hotfix 1.1908.29.87](https://support.microsoft.com/help/4558083)
 
 ### After successfully applying the 1910 update
 
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1910.37.132](https://support.microsoft.com/help/4550133)
+- [Azure Stack Hub hotfix 1.1910.40.138](https://support.microsoft.com/help/4558082)
 ::: moniker-end
 
 ::: moniker range="azs-1908"
@@ -488,7 +488,7 @@ The Azure Stack Hub 1908 Update requires **Azure Stack Hub OEM version 2.1 or la
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1908.25.78](https://support.microsoft.com/help/4552361)
+- [Azure Stack Hub hotfix 1.1908.29.87](https://support.microsoft.com/help/4558083)
 ::: moniker-end
 
 <!------------------------------------------------------------>
