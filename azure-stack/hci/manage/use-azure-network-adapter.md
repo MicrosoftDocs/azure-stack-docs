@@ -43,7 +43,7 @@ following:
 > [!NOTE]
 > It’s not required to install Windows Admin Center on the server that you want to connect to Azure. However, you can do that in a single server scenario.
 
-## Add Azure Network Adapter to a Windows Server
+## Add an Azure Network Adapter to a server
 To configure Azure Network Adapter, go to the Network extension for it in Windows Admin Center.
 
 In Windows Admin Center:
