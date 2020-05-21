@@ -4,10 +4,10 @@ description: Learn how to deploy Azure Cognitive Services to Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 05/13/2020
+ms.date: 05/21/2020
 ms.author: mabrigg
 ms.reviewer: guanghu
-ms.lastreviewed: 05/13/2020
+ms.lastreviewed: 05/21/2020
 
 # Intent: As an Azure Stack user, I want to deploy cognitive services on Azure Stack using containers so I can use the benefits of Azure Cognitive Services. 
 # Keyword: azure stack cognitive services
@@ -175,7 +175,7 @@ The worker nodes need a proxy and SSL. To configure an HTTP proxy for making out
 ### Set up the proxy
 
 1. Add a `http-proxy.conf` file to both locations:
-    - `/etc/system/system/docker.service.d/`
+    - `/etc/system/systemd/docker.service.d/`
     - `/cat/etc/environment/`
 
 2. Validate that you can sign on to the container using the credentials provided by the Cognitive Services team and perform a `docker pull` in the following container: 
