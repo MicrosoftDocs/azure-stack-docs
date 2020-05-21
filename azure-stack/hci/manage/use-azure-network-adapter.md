@@ -9,11 +9,11 @@ ms.date: 05/20/2020
 
 # Use Azure Network Adapter to connect a server to an Azure Virtual Network
 
->Applies To: Azure Stack HCI v20H2
+>Applies to: Windows Server 2019, Windows Server 2016, Windows Server 2012 R2
 
 A lot of workloads running on-premises and in multi-cloud environments require
 connections to virtual machines (VMs) running in Microsoft Azure. To connect a
-Windows Server to an Azure Virtual Network, you have several options, including
+server to an Azure Virtual Network, you have several options, including
 Site-to-Site VPN, Azure Express Route, and Point-to-Site VPN.
 
 Windows Admin Center and Azure Network Adapter provide a one-click experience to
@@ -25,7 +25,7 @@ connection. The process automates configuring the Virtual Network gateway and th
 Azure Network Adapter Point-to-Site VPN connections are useful when you want to
 connect to your Virtual Network from a remote location, such as a branch office,
 store, or other location. You can also use Azure Network Adapter instead of a
-Site-to-Site VPN when you require only a few Windows Server clients to connect
+Site-to-Site VPN when you require only a few servers to connect
 to a Virtual Network. Azure Network Adapter connections don't require a VPN
 device or a public-facing IP address.
 
@@ -34,7 +34,7 @@ Using Azure Network Adapter to connect to a Virtual Network requires the
 following:
 - An Azure account with at least one active subscription.
 - An existing Virtual Network.
-- Internet access for the target Windows servers that you want to back up to Azure.
+- Internet access for the target servers that you want to connect to the Azure virtual network.
 - A Windows Admin Center connection to Azure.
   To learn more, see [Configuring Azure integration](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/azure-integration).
 - The latest version of Windows Admin Center.
@@ -43,13 +43,13 @@ following:
 > [!NOTE]
 > It’s not required to install Windows Admin Center on the server that you want to connect to Azure. However, you can do that in a single server scenario.
 
-## Add Azure Network Adapter to a Windows Server
+## Add an Azure Network Adapter to a server
 To configure Azure Network Adapter, go to the Network extension for it in Windows Admin Center.
 
 In Windows Admin Center:
 1. Navigate to the server or cluster hosting the VMs that you want to add to Azure Network Adapter.
 1. Under **Tools**, select **Networks**.
-1. Select **Add Azure Network Adapter (Preview)**.
+1. Select **Add Azure Network Adapter**.
 1. On the **Add Azure Network Adapter** pane, enter the following required information, and then select **Create**:
     - **Subscription**
     - **Location**
@@ -69,7 +69,7 @@ In Windows Admin Center:
     :::image type="content" source="media/azure-network-adapter/add-azure-network-adapter.png" alt-text="The Add Azure Network Adapter pane in Windows Admin Center.":::
 
 > [!NOTE]
-> Network appliances such as VPN Gateway and Application Gateway that run inside a virtual network are charged. To learn more, see [Virtual Network pricing](https://azure.microsoft.com/pricing/details/virtual-network/).
+> Network appliances, such as VPN Gateway and Application Gateway that run inside a virtual network, come with additional cost. To learn more, see [Virtual Network pricing](https://azure.microsoft.com/pricing/details/virtual-network/).
 
 If there is no existing Azure Virtual Network gateway, Windows Admin Center creates one for you. The setup process can take up to 25 minutes. After the Azure Network Adapter is created, you can start to access VMs in the Virtual Network directly from your Windows Server.
 
