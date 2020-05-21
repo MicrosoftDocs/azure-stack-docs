@@ -49,7 +49,7 @@ To configure Azure Network Adapter, go to the Network extension for it in Window
 In Windows Admin Center:
 1. Navigate to the server or cluster hosting the VMs that you want to add to Azure Network Adapter.
 1. Under **Tools**, select **Networks**.
-1. Select **Add Azure Network Adapter (Preview)**.
+1. Select **Add Azure Network Adapter**.
 1. On the **Add Azure Network Adapter** pane, enter the following required information, and then select **Create**:
     - **Subscription**
     - **Location**
