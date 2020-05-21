@@ -24,7 +24,9 @@ Cluster validation is intended to catch hardware or configuration problems befor
 This section describes scenarios in which validation is also needed or useful.
 
 - **Validation before the cluster is configured:**
-  - **A set of servers ready to become a failover cluster:** This is the most straightforward validation scenario. The hardware components (systems, networks, and storage) are connected, but the systems aren't functioning as a cluster. Running tests in this situation has no affect on availability.
+  - **A set of servers ready to become a failover cluster:** This is the most straightforward validation scenario. The hardware components (systems, networks, and storage) are connected, but the systems aren't yet functioning as a cluster. Running tests in this situation has no affect on availability.
+
+  - **Cloned or imaged systems:** If you clone or image systems to different hardware, run the Validate cluster feature as you would with any other new cluster. We recommend to run the Validate cluster feature just after connecting the hardware components and installing the failover cluster feature, before clients start using the cluster.
  
   - **Server VMs:** For virtualized servers in a cluster, run the Validate cluster feature as you would on any other new cluster. The requirement to run the feature is the same whether you have:
     - A "host cluster" where failover occurs between two physical computers.
@@ -35,18 +37,18 @@ This section describes scenarios in which validation is also needed or useful.
 
   - **Before adding a node:** When you add a server to a cluster, we strongly recommend to run the Validate cluster feature. Specify both the existing cluster nodes and the new node when you run the feature.
   
-  - **When attaching new storage:** When you attach new storage to the cluster, run the Validate cluster feature to confirm that it will function correctly. To minimize the affect on availability, we recommend running the Validate cluster feature after attaching the storage.
+  - **When adding drives:** When you add additional drives to the cluster, which is different from replacing failed drives or creating virtual disks or volumes that rely on the existing drives, run the Validate cluster feature to confirm that the new storage will function correctly.
 
   - **When making changes that affect firmware or drivers:** If you upgrade or make changes to the cluster that affect firmware or drivers, you must run the Validate cluster feature to confirm that the new combination of hardware, firmware, drivers, and software supports failover cluster functionality.
 
   - **After restoring a system from backup:** After you restore a system from backup, run the Validate cluster feature to confirm that the system functions correctly as part of a cluster.
 
 ## Step 1: Validate networking
-The Microsoft Validate-DCB tool is designed to validate the Data Center Bridging (DCB) configuration on your server cluster nodes. To do this, the tool takes an expected configuration as input, and then unit tests each cluster. This section covers how to install and run the Validate-DCB tool, review results, and resolve networking errors that the tool identifies.
+The Microsoft Validate-DCB tool is designed to validate the Data Center Bridging (DCB) configuration on the cluster. To do this, the tool takes an expected configuration as input, and then tests each server in the cluster. This section covers how to install and run the Validate-DCB tool, review results, and resolve networking errors that the tool identifies.
 
 On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE) requires DCB technologies to make the network fabric lossless. The configuration requirements are complex and error prone. For these reasons, exact configuration is required across:
-- Each Windows node.
-- Each network port that RDMA traffic passes through on the fabric.
+- Each server in the cluster
+- Each network port that RDMA traffic passes through on the fabric
 
 ### Prerequisites
 - Network setup information of the server cluster that you want to validate, including:
@@ -58,7 +60,7 @@ On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE
 
 ### Install and run the Validate-DCB tool
 To install and run the Validate-DCB tool:
-1. Open a Windows PowerShell session as an Administrator, type `Install-module validate-DCB`, and then press **Enter**.
+1. On your management PC, open a Windows PowerShell session as an Administrator, type `Install-module validate-DCB`, and then press **Enter**.
 
     :::image type="content" source="../media/validate/powershell-install-for-tool.png" alt-text="The PowerShell command to install the validate-DCB tool module":::
 
@@ -124,7 +126,7 @@ The following steps show how to identify a Jumbo Packet error from vNIC SMB02 an
 
 <!---Need screenshot from Jan for final step without numbers--->
 
-To learn more about resolving errors that the Validate-DCB tool identifies, watch a quick video.
+To learn more about resolving errors that the Validate-DCB tool identifies, see the following video.
 
 > [!VIDEO https://www.youtube.com/embed/cC1uACvhPBs]
 
@@ -146,13 +148,13 @@ Use the following steps to validate the servers in an existing cluster in Window
 
 1. On the **Cluster Manager Dashboard**, under **Tools**, select **Servers**.
 1. On the **Servers** page, select the **Inventory** tab.
-1. On the **Inventory** page, select the servers in the cluster, then expand the **More** submenu and select **Validate cluster (Preview)**.
+1. On the **Inventory** page, select the servers in the cluster, then expand the **More** submenu and select **Validate cluster**.
 1. On the **Validate Cluster** pop-up window, select **Yes**.
 
     :::image type="content" source="../media/validate/validate-cluster.png" alt-text="Validate Cluster pop-up window":::
 
 1. On the **Credential Security Service Provider (CredSSP)** pop-up window, select **Yes**.
-1. Provide your credentials to enable **CredSSP** and then select **Continue**.
+1. Provide your credentials to enable **CredSSP** and then select **Continue**.<br> Cluster validation runs in the background and gives you a notification when it's complete, at which point you can view the validation report, as described in the next section.
 
 > [!NOTE]
 > After your cluster servers have been validated, you will need to disable CredSSP for security reasons.
@@ -179,5 +181,5 @@ After your server cluster is successfully validated, you'll need to disable the 
 
     The result of Step 2 removes the red **CredSSP ENABLED** banner at the top of the server's **Overview** page, and disables CredSSP on the other servers.
 
-## Next steps
+## See also
 - Windows Server Assessment is a Premier Service available for customers who want Microsoft to review their installations of Windows Server 2019. For more information, contact Microsoft Premier Support. To learn more, see [Getting Started with the Windows Server On-Demand Assessment (Server, Security, Hyper-V, Failover Cluster, IIS)](https://docs.microsoft.com/services-hub/health/getting-started-windows-server).
