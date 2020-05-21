@@ -149,7 +149,7 @@ Connected environments can access the internet and Azure. For these environments
    Import-Module .\RegisterWithAzure.psm1
    ```
 
-6. Next, in the same PowerShell session, ensure you're signed in to the correct Azure PowerShell context. This context would be the Azure account that was used to register the Azure Stack Hub resource provider previously. Powershell to run:
+6. Next, in the same PowerShell session, ensure you're signed in to the correct Azure PowerShell context. This context would be the Azure account that was used to register the Azure Stack Hub resource provider previously. PowerShell to run:
 
    ```powershell  
    Connect-AzureRmAccount -Environment "<environment name>"
@@ -253,7 +253,7 @@ If you're registering Azure Stack Hub in a disconnected environment (with no int
 
 ### Connect to Azure and register
 
-On the computer that is connected to the internet, do the same steps to import the RegisterWithAzure.psm1 module and sign in to the correct Azure Powershell context. Then call Register-AzsEnvironment. Specify the registration token to register with Azure. If you're registering more than one instance of Azure Stack Hub using the same Azure Subscription ID, specify a unique registration name.
+On the computer that is connected to the internet, do the same steps to import the RegisterWithAzure.psm1 module and sign in to the correct Azure PowerShell context. Then call Register-AzsEnvironment. Specify the registration token to register with Azure. If you're registering more than one instance of Azure Stack Hub using the same Azure Subscription ID, specify a unique registration name.
 
 You need your registration token and a unique token name.
 
@@ -383,9 +383,9 @@ If you want to change the subscription you use, you must first run the **Remove-
   Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel '<Billing model>' -RegistrationName '<Registration name>' --ResourceGroupName '<Registration resource group name>'
   ```
 
-### Change the billing model/how to offer features or for re-registration
+### Change billing model, how features are offered, or re-register your instance
 
-If you want to change the billing model or how to offer features for your installation, you can call the registration function to set the new values. You don't need to first remove the current registration. Sign in to the subscription ID shown in the [administrator portal](#verify-azure-stack-hub-registration), and then rerun registration with a new `BillingModel` value while keeping the `RegistrationName` and `ResourceGroupName` parameters values same as shown in the [administrator portal](#verify-azure-stack-hub-registration):
+This section applies if you want to change the billing model, how features are offered, or you want to re-register your instance. For all of these cases, you call the registration function to set the new values. You don't need to first remove the current registration. Sign in to the subscription ID shown in the [administrator portal](#verify-azure-stack-hub-registration), and then rerun registration with a new `BillingModel` value while keeping the `RegistrationName` and `ResourceGroupName` parameters values same as shown in the [administrator portal](#verify-azure-stack-hub-registration):
 
   ```powershell  
   # select the subscription used during the registration
@@ -429,7 +429,7 @@ Or you can use the registration name and registration resource group name from t
 
 ### Re-register using connected steps
 
-If changing your billing model from capacity billing in a disconnected state to consumption billing in a connected state, you will re-register following the [connected model steps](azure-stack-registration.md?pivots=state-connected#change-the-billing-modelhow-to-offer-features-or-for-re-registration). 
+If changing your billing model from capacity billing in a disconnected state to consumption billing in a connected state, you will re-register following the [connected model steps](azure-stack-registration.md?pivots=state-connected#change-billing-model-how-features-are-offered-or-re-register-your-instance). 
 
 >[!Note] 
 >This does not change your identity model, only the billing mechanism, and you will still use ADFS as your identity source.
@@ -535,9 +535,9 @@ Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-Privil
 
 You might see one of the errors below while attempting to register your Azure Stack Hub:
 
-- Could not retrieve mandatory hardware info for `$hostName`. Check physical host and connectivity, then try to re-run registration.
+- Could not retrieve mandatory hardware info for `$hostName`. Check physical host and connectivity, then try to rerun registration.
 
-- Cannot connect to `$hostName` to get hardware info. Check physical host and connectivity, then try to re-run registration.
+- Cannot connect to `$hostName` to get hardware info. Check physical host and connectivity, then try to rerun registration.
 
    Cause: this is typically because we try to obtain hardware details such as UUID, Bios, and CPU from the hosts to attempt activation and weren't able to due to the inability to connect to the physical host.
 
