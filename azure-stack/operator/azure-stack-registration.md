@@ -360,36 +360,36 @@ You need to update or renew your registration in the following circumstances:
 
 ### Prerequisites
 
-You need the following information from [administrator portal](#verify-azure-stack-hub-registration) to renew or change registration
+You need the following information from the [administrator portal](#verify-azure-stack-hub-registration) to renew or change registration:
 
-| Administrator Portal | Cmdlet Parameter | Notes | 
+| Administrator portal | Cmdlet parameter | Notes | 
 |-----|-----|-----|
-| REGISTRATION SUBSCRIPTION ID | Subscription | Subscription id used during previous registration |
+| REGISTRATION SUBSCRIPTION ID | Subscription | Subscription ID used during previous registration |
 | REGISTRATION RESOURCE GROUP | ResourceGroupName | Resource group under which the previous registration resource exists |
 | REGISTRATION NAME | RegistrationName | Registration name used during previous registration |
 
 ### Change the subscription you use
 
-If you want to change the subscription you use, you must first run the **Remove-AzsRegistration** cmdlet, then ensure you're signed in to the correct Azure PowerShell context. Then run **Set-AzsRegistration** with any changed parameters including `<billing model>`. While running **Remove-AzsRegistration**, you must be signed in to the subscription used during the registration and use values of the `RegistrationName` and `ResourceGroupName` parameters as shown in the [administrator portal](#verify-azure-stack-hub-registration):
+If you want to change the subscription you use, you must first run the **Remove-AzsRegistration** cmdlet, then ensure you're signed in to the correct Azure PowerShell context. Then run **Set-AzsRegistration** with any changed parameters, including `<billing model>`. While running **Remove-AzsRegistration**, you must be signed in to the subscription used during the registration and use values of the `RegistrationName` and `ResourceGroupName` parameters as shown in the [administrator portal](#verify-azure-stack-hub-registration):
 
   ```powershell  
   # select the subscription used during the registration (shown in portal)
-  Select-AzureRmSubscription -Subscription '<Registration subscription id from portal>'
+  Select-AzureRmSubscription -Subscription '<Registration subscription ID from portal>'
   # unregister using the parameter values from portal
   Remove-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -RegistrationName '<Registration name from portal>' -ResourceGroupName '<Registration resource group from portal>'
   # switch to new subscription id
-  Select-AzureRmSubscription -Subscription '<New subscription id>'
+  Select-AzureRmSubscription -Subscription '<New subscription ID>'
   # register 
   Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel '<Billing model>' -RegistrationName '<Registration name>' --ResourceGroupName '<Registration resource group name>'
   ```
 
 ### Change the billing model/how to offer features or for re-registration
 
-If you want to change the billing model or how to offer features for your installation, you can call the registration function to set the new values. You don't need to first remove the current registration. Sign in to the subscription id shown in the [administrator portal](#verify-azure-stack-hub-registration), and then rerun registration with new `BillingModel` value while keeping the `RegistrationName` and `ResourceGroupName` parameters values same as shown in the [administrator portal](#verify-azure-stack-hub-registration):
+If you want to change the billing model or how to offer features for your installation, you can call the registration function to set the new values. You don't need to first remove the current registration. Sign in to the subscription ID shown in the [administrator portal](#verify-azure-stack-hub-registration), and then rerun registration with a new `BillingModel` value while keeping the `RegistrationName` and `ResourceGroupName` parameters values same as shown in the [administrator portal](#verify-azure-stack-hub-registration):
 
   ```powershell  
   # select the subscription used during the registration
-  Select-AzureRmSubscription -Subscription '<Registration subscription id from portal>'
+  Select-AzureRmSubscription -Subscription '<Registration subscription ID from portal>'
   # rerun registration with new BillingModel (or same billing model in case of re-registration) but using other parameters values from portal
   Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel '<New billing model>' -RegistrationName '<Registration name from portal>' -ResourceGroupName '<Registration resource group from portal>'
   ```
@@ -408,7 +408,7 @@ You first need to remove the activation resource from Azure Stack Hub, and then 
 
 To remove the activation resource in Azure Stack Hub, run the following PowerShell cmdlets in your Azure Stack Hub environment:  
 
-  ```Powershell
+  ```powershell
   Remove-AzsActivationResource -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint
   ```
 
@@ -416,14 +416,14 @@ Next, to remove the registration resource in Azure, ensure you're on an Azure-co
 
 You can use the registration token used to create the resource:  
 
-  ```Powershell
+  ```powershell
   $RegistrationToken = "<registration token>"
   Unregister-AzsEnvironment -RegistrationToken $RegistrationToken
   ```
 
 Or you can use the registration name and registration resource group name from the [administrator portal](#verify-azure-stack-hub-registration):
 
-  ```Powershell
+  ```powershell
   Unregister-AzsEnvironment -RegistrationName '<Registration name from portal>' -ResourceGroupName '<Registration resource group from portal>'
   ```
 
