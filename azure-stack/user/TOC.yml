@@ -97,6 +97,8 @@
         items:
         - name: Overview
           href: azure-stack-version-profiles.md
+        - name: Resource provider APIs supported by profiles
+          href: azure-stack-profiles-azure-resource-manager-versions.md
         - name: .NET
           href: azure-stack-version-profiles-net.md
         - name: Java
@@ -109,8 +111,6 @@
           href: azure-stack-version-profiles-python.md
         - name: NodeJS
           href: azure-stack-version-profile-nodejs.md
-        - name: Resource provider APIs supported by profiles
-          href: azure-stack-profiles-azure-resource-manager-versions.md
   - name: Use resource providers
     items:
     - name: Security, compliance, and identity
