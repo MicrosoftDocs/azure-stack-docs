@@ -429,7 +429,7 @@ Or you can use the registration name and registration resource group name from t
 
 ### Re-register using connected steps
 
-If changing your billing model from capacity billing in a disconnected state to consumption billing in a connected state, you will re-register following the [connected model steps](azure-stack-registration.md?pivots=state-connected#change-the-billing-model-or-how-to-offer-features). 
+If changing your billing model from capacity billing in a disconnected state to consumption billing in a connected state, you will re-register following the [connected model steps](azure-stack-registration.md?pivots=state-connected#change-the-billing-modelhow-to-offer-features-or-for-re-registration). 
 
 >[!Note] 
 >This does not change your identity model, only the billing mechanism, and you will still use ADFS as your identity source.
