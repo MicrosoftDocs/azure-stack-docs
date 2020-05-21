@@ -20,6 +20,8 @@
     href: manage/replace-drives.md
   - name: Manage clusters
     href: manage/cluster.md
+  - name: Add or remove servers
+    href: manage/add-cluster.md
   - name: Use Azure Site Recovery
     href: manage/azure-site-recovery.md
   - name: Monitor with Azure Monitor
