@@ -69,7 +69,7 @@ In Windows Admin Center:
     :::image type="content" source="media/azure-network-adapter/add-azure-network-adapter.png" alt-text="The Add Azure Network Adapter pane in Windows Admin Center.":::
 
 > [!NOTE]
-> Network appliances such as VPN Gateway and Application Gateway that run inside a virtual network are charged. To learn more, see [Virtual Network pricing](https://azure.microsoft.com/pricing/details/virtual-network/).
+> Network appliances, such as VPN Gateway and Application Gateway that run inside a virtual network, come with additional cost. To learn more, see [Virtual Network pricing](https://azure.microsoft.com/pricing/details/virtual-network/).
 
 If there is no existing Azure Virtual Network gateway, Windows Admin Center creates one for you. The setup process can take up to 25 minutes. After the Azure Network Adapter is created, you can start to access VMs in the Virtual Network directly from your Windows Server.
 
