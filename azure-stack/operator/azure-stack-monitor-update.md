@@ -161,6 +161,8 @@ Invoke-Command -Session $pepSession -ScriptBlock { Resume-AzureStackUpdate }
 
 The privileged endpoint is available on all ERCS VMs in the Azure Stack Hub environment. Because the connection isn't made to a highly available endpoint, you may experience occasional interruptions, warning, or error messages. These messages may indicate that the session was disconnected or that there was an error communicating with the ECE Service. This behavior is expected. You can retry the operation in a few minutes or create a new privileged endpoint session on one of the other ERCS VMs.
 
+For more information on troubleshooting updates, see [Azure Stack Troubleshooting](azure-stack-troubleshooting.md)
+
 ## Next steps
 
 - [Managing updates in Azure Stack Hub](azure-stack-updates.md)

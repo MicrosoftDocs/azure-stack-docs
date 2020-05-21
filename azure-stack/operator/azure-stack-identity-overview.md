@@ -1,11 +1,11 @@
 ---
 title: Overview of identity providers for Azure Stack Hub 
 description: Learn about the identity providers you can use with Azure Stack Hub.
-author: IngridAtMicrosoft
+author: BryanLa
 
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.author: inhenkel
+ms.date: 04/10/2020
+ms.author: bryanla
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/14/2019
 
@@ -33,7 +33,7 @@ For more information about your options, which depend on your Azure Stack Hub en
 
 The next sections discuss common concepts about identity providers and their use in Azure Stack Hub.
 
-![Terminology for identity providers](media/azure-stack-identity-overview/terminology.png)
+![Terminology for identity providers](media/azure-stack-identity-overview/terminology.svg)
 
 ### Directory tenants and organizations
 
@@ -131,7 +131,7 @@ If you set up Azure AD with multi-tenancy, some apps propagate to the new direct
 
 ### Authentication by apps and users
 
-![Identity between layers of Azure Stack Hub](media/azure-stack-identity-overview/identity-layers.png)
+![Identity between layers of Azure Stack Hub](media/azure-stack-identity-overview/identity-layers.svg)
 
 For apps and users, the architecture of Azure Stack Hub is described by four layers. Interactions between each of these layers can use different types of authentication.
 
@@ -142,7 +142,7 @@ For apps and users, the architecture of Azure Stack Hub is described by four lay
 |Resource providers     |Calls passed to resource providers are secured with certificate-based authentication. <br>Azure Resource Manager and the resource provider then stay in communication through an API. For every call that's received from Azure Resource Manager, the resource provider validates the call with that certificate.|
 |Infrastructure and business logic     |Resource providers communicate with business logic and infrastructure by using an authentication mode of their choice. The default resource providers that ship with Azure Stack Hub use Windows Authentication to secure this communication.|
 
-![Information needed for authentication](media/azure-stack-identity-overview/authentication.png)
+![Information needed for authentication](media/azure-stack-identity-overview/authentication.svg)
 
 ### Authenticate to Azure Resource Manager
 
@@ -169,7 +169,7 @@ The token must then pass in the header of a request to Azure Resource Manager. A
 
 When all validations are complete, Azure Resource Manager uses the *object id* (oid) and the *groups* claims to make a list of resources that the principal can access.
 
-![Diagram of the token exchange protocol](media/azure-stack-identity-overview/token-exchange.png)
+![Diagram of the token exchange protocol](media/azure-stack-identity-overview/token-exchange.svg)
 
 > [!NOTE]
 > After deployment, Azure Active Directory global administrator permission isn't required. However, some operations may require the global admin credentials (for example, a resource provider installer script or a new feature requiring a permission to be granted). You can either temporarily re-instate the account's global admin permissions or use a separate global admin account that's an owner of the *default provider subscription*.

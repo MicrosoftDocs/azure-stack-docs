@@ -3,7 +3,7 @@ title: Integrate external monitoring solution with Azure Stack Hub
 description: Learn how to integrate Azure Stack Hub with an external monitoring solution in your datacenter.
 author: IngridAtMicrosoft
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 04/10/2020
 ms.author: inhenkel
 ms.reviewer: thoroet
 ms.lastreviewed: 06/05/2019
@@ -29,7 +29,7 @@ Each Azure Stack Hub solution ships with a hardware lifecycle host. This host ru
 
 The following diagram shows traffic flow between an Azure Stack Hub integrated system, the hardware lifecycle host, an external monitoring solution, and an external ticketing/data collection system.
 
-![Diagram showing traffic between Azure Stack Hub, monitoring, and ticketing solution.](media/azure-stack-integrate-monitor/MonitoringIntegration.png)  
+![Diagram showing traffic between Azure Stack Hub, monitoring, and ticketing solution.](media/azure-stack-integrate-monitor/monitoringintegration.svg)  
 
 > [!NOTE]
 > External monitoring integration directly with physical servers isn't allowed and actively blocked by Access Control Lists (ACLs). External monitoring integration directly with physical network devices is supported. Check with your OEM provider on how to enable this feature.
@@ -57,7 +57,7 @@ For a ticketing solution, you can integrate Operations Manager with System Cente
 
 The following diagram shows integration of Azure Stack Hub with an existing System Center deployment. You can automate Service Manager further with System Center Orchestrator or Service Management Automation (SMA) to run operations in Azure Stack Hub.
 
-![Diagram showing integration with OM, Service Manager, and SMA.](media/azure-stack-integrate-monitor/SystemCenterIntegration.png)
+![Diagram showing integration with OM, Service Manager, and SMA.](media/azure-stack-integrate-monitor/systemcenterintegration.svg)
 
 ## Integrate with Nagios
 

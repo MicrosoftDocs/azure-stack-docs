@@ -8,7 +8,7 @@
   items:
   - name: Single 
     items:
-        - name: Cross cloud scaling
+        - name: Cross-cloud scaling
           href: pattern-cross-cloud-scale.md
         - name: DevOps hybrid CI/CD
           href: pattern-cicd-pipeline.md
@@ -22,7 +22,7 @@
           href: pattern-train-ml-model-at-edge.md
   - name: Multi
     items:
-    - name: Cross cloud scaling (on-premises data)
+    - name: Cross-cloud scaling (on-premises data)
       href: pattern-cross-cloud-scale-onprem-data.md
     - name: Footfall detection (retail)
       href: pattern-retail-footfall-detection.md
@@ -79,7 +79,7 @@
 - name: Resources
   items:
   - name: Azure Stack Hub updates
-    href: https://azure.microsoft.com/roadmap/?tag=azure-stack
+    href: https://azure.microsoft.com/updates/?query=azure%20stack%20hub
   - name: Azure Stack Hub MSDN forum
     href: https://social.msdn.microsoft.com/Forums/home?forum=AzureStack
   - name: Azure Stack Hub documentation feedback

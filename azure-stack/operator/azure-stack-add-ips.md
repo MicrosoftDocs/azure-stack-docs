@@ -4,7 +4,7 @@ description: Learn how to add public IP addresses to Azure Stack Hub.
 author: justinha
 
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 04/20/2020
 ms.author: justinha
 ms.reviewer: scottnap
 ms.lastreviewed: 09/10/2019
@@ -26,7 +26,7 @@ You can add public IP addresses to your Azure Stack Hub system at any time after
 
 At a high level, the process of adding a new public IP address block to Azure Stack Hub looks like this:
 
- ![Add IP flow](media/azure-stack-add-ips/flow.PNG)
+ ![Add IP flow](media/azure-stack-add-ips/flow.svg)
 
 ## Obtain the address block from your provider
 The first thing you'll need to do is to obtain the address block you want to add to Azure Stack Hub. Depending on where you obtain your address block from, consider what the lead time is and manage this against the rate at which you're consuming public IP addresses in Azure Stack Hub.
@@ -36,7 +36,7 @@ The first thing you'll need to do is to obtain the address block you want to add
 
 ## Add the IP address range to Azure Stack Hub
 
-1. In a browser, go to your administrator portal dashboard. For this example, we'll use https://adminportal.local.azurestack.external.
+1. In a browser, go to your administrator portal dashboard. For this example, we'll use `https://adminportal.local.azurestack.external`.
 2. Sign in to the Azure Stack Hub administrator portal as a cloud operator.
 3. On the default dashboard, find the Region management list and select the region you want to manage. For this example, we use local.
 4. Find the Resource providers tile and click on the network resource provider.

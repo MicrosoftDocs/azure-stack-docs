@@ -3,10 +3,11 @@ title: Download marketplace items from Azure and publish to Azure Stack Hub
 description: Learn how to download marketplace items from Azure and publish to Azure Stack Hub.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 02/04/2020
+ms.date: 04/13/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 12/23/2019
+zone_pivot_groups: state-connected-disconnected
 
 # Intent: As an Azure Stack operator, I want to download marketplace items from Azure Marketplace and publish them to my Azure Stack.
 # Keyword: download marketplace items azure stack
@@ -28,15 +29,14 @@ See [Azure Marketplace items for Azure Stack Hub](azure-stack-marketplace-azure-
 > [!NOTE]
 > The catalog will be different based on the cloud your Azure Stack Hub system is connected to. The cloud environment is determined by the Azure subscription you use for registering your Azure Stack Hub.
 
-## Connected scenario
+::: zone pivot="state-connected"
+A connected deployment allows you to use the administrator portal to download marketplace items.
 
-If Azure Stack Hub connects to the internet, you can use the administrator portal to download marketplace items.
-
-### Prerequisites
+## Prerequisites
 
 Your Azure Stack Hub deployment must have internet connectivity and be registered with Azure.
 
-### Use the portal to download marketplace items
+## Use the portal to download marketplace items
 
 1. Sign into the Azure Stack Hub administrator portal.
 
@@ -54,17 +54,17 @@ Your Azure Stack Hub deployment must have internet connectivity and be registere
 
    ![Add from Azure](media/azure-stack-download-azure-marketplace-item/add-from-azure1.png)
 
-5. If the version of an item is shown as **Multiple**, you can select that item and then choose a specific version from the resulting version selector dropdown:
+5. If the version of an item is shown as **Multiple**, you can select that item and then choose a specific version from the resulting version selector dropdown. Note that Microsoft now has the ability to add attributes that block administrators from downloading marketplace products that are incompatible with their Azure Stack, due to various properties, such as the Azure Stack version or billing model. Only Microsoft can add these attributes:
 
-   ![Add from Azure](media/azure-stack-download-azure-marketplace-item/add-from-azure3.png)
+   [![Add from Azure](media/azure-stack-download-azure-marketplace-item/add-from-azure3sm.png "Multiple versions")](media/azure-stack-download-azure-marketplace-item/add-from-azure3.png#lightbox)
 
 6. Select the item you want, and then select **Download**. Download times vary and depends on the network connectivity. After the download completes, you can deploy the new marketplace item as either an Azure Stack Hub operator or a user.
 
 7. To deploy the downloaded item, select **+ Create a resource**, and then search among the categories for the new marketplace item. Next, select the item to begin the deployment process. The process varies for different marketplace items.
+::: zone-end
 
-## Disconnected or a partially connected scenario
-
-If Azure Stack Hub has limited or no internet connectivity, you can use PowerShell and the *marketplace syndication tool* to download the marketplace items to a machine with internet connectivity. You then transfer the items to your Azure Stack Hub environment. In a disconnected environment, you can't download marketplace items by using the Azure Stack Hub portal.
+::: zone pivot="state-disconnected"
+When Azure Stack Hub has limited or no internet connectivity, you use PowerShell and the *marketplace syndication tool* to download the marketplace items to a machine with internet connectivity. You then transfer the items to your Azure Stack Hub environment. In a disconnected environment, you can't download marketplace items by using the Azure Stack Hub portal.
 
 The marketplace syndication tool can also be used in a connected scenario.
 
@@ -73,7 +73,7 @@ There are two parts to this scenario:
 - **Part 1**: Download from Marketplace items. On the computer with internet access, you configure PowerShell, download the syndication tool, and then download items from Azure Marketplace.
 - **Part 2**: Upload and publish to Azure Stack Hub Marketplace. You move the files you downloaded to your Azure Stack Hub environment and then publish them to Azure Stack Hub Marketplace.
 
-### Prerequisites
+## Prerequisites
 
 - A connected environment (does not have to be Azure Stack Hub). You need connectivity to get the list of products from Azure with their details, and to download everything locally. Once this is done, the rest of the procedure does not require internet connectivity. It creates a catalog of items you've previously downloaded for you to use in your disconnected environment.
 
@@ -98,7 +98,7 @@ Once you have registered your Azure Stack, you can disregard the following messa
 
 ![Marketplace management](media/azure-stack-download-azure-marketplace-item/toolsmsg.png)
 
-### Use the marketplace syndication tool to download marketplace items
+## Use the marketplace syndication tool to download marketplace items
 
 > [!IMPORTANT]
 > Be sure to download the marketplace syndication tool each time you download marketplace items in a disconnected scenario. Frequent changes are made to this tool and the most current version should be used for each download.
@@ -168,7 +168,7 @@ Once you have registered your Azure Stack, you can disregard the following messa
     Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Azs.Syndication.Admin -Path "Destination folder path in quotes" -Force
     ```
 
-### Import the download and publish to Azure Stack Hub Marketplace using PowerShell
+## Import the download and publish to Azure Stack Hub Marketplace using PowerShell
 
 1. You must move the files that you have [previously downloaded](#use-the-marketplace-syndication-tool-to-download-marketplace-items) locally to a machine that has connectivity to your Azure Stack Hub environment. The marketplace syndication tool must also be available to your Azure Stack Hub environment because you need to use the tool to perform the import operation.
 
@@ -187,3 +187,4 @@ Once you have registered your Azure Stack, you can disregard the following messa
     ```
 
 5. After the script successfully completes, the marketplace items should be available in Azure Stack Hub Marketplace.
+::: zone-end

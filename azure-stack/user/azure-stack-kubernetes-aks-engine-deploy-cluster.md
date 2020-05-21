@@ -4,10 +4,10 @@ description: How to deploy a Kubernetes cluster on Azure Stack Hub from a client
 author: mattbriggs
 
 ms.topic: article
-ms.date: 3/19/2020
+ms.date: 4/23/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 3/19/2020
+ms.lastreviewed: 4/23/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -45,11 +45,7 @@ This section looks at creating an API model for your cluster.
     > [!Note]  
     > If you don't have nano installed, you can install nano on Ubuntu: `sudo apt-get install nano`.
 
-3.  In the kubernetes-azurestack.json file, find `orchestratorRelease`. Select one of the supported Kubernetes versions. For example, 1.14, 1.15. The versions are often updates. Specify the version as x.xx rather than x.xx.x. For a list of current versions, see [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions). You can find out the supported version by running the following AKS engine command:
-
-    ```bash
-    aks-engine get-versions
-    ```
+3.  In the kubernetes-azurestack.json file, find orchestratorRelease and orchestratorVersion. Select one of the supported Kubernetes versions. For example, for `orchestratorRelease` use 1.14 or 1.15 and for `orchestratorVersion` use 1.14.7 or 1.15.10 respectively. Specify the `orchestratorRelease` as x.xx and orchestratorVersion as x.xx.x. For a list of current versions, see [Supported AKS engine Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions)
 
 4.  Find `customCloudProfile` and provide the URL to the tenant portal. For example, `https://portal.local.azurestack.external`. 
 
@@ -80,9 +76,12 @@ This section looks at creating an API model for your cluster.
 
     | Field | Description |
     | --- | --- |
-    | count | Enter the number of agents you want for your deployment. |
+    | count | Enter the number of agents you want for your deployment. The maximum count of nodes to use per subscription is 50. If you are deploying more than one cluster per subscription ensure that the total agent count doesn't go beyond 50. Make sure to use the configuration items specified in [the sample API model JSON file](https://github.com/Azure/aks-engine/blob/master/examples/azure-stack/kubernetes-azurestack.json).  |
     | vmSize | Enter [a size supported by Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes), example `Standard_D2_v2`. |
     | distro | Enter `aks-ubuntu-16.04`. |
+
+
+
 
 9.  In `linuxProfile` update:
 

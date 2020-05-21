@@ -4,9 +4,9 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 05/05/2020
 ms.author: sethm
-ms.reviewer: prchint
+ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
@@ -37,7 +37,9 @@ To access known issues for a different version, use the version selector dropdow
 ::: moniker range="azs-2002"
 ## Update
 
-For known Azure Stack Hub update issues please see [Troubleshooting Updates in Azure Stack Hub](azure-stack-updates-troubleshoot.md).
+After applying the 2002 update, an alert for an "Invalid Time Source" may incorrectly appear in the Administrator portal. This false-positive alert can be ignored and will be fixed in an upcoming release. 
+
+For other known Azure Stack Hub update issues, please see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md).
 
 ## Portal
 
@@ -74,12 +76,22 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Cause: When a cable is disconnected from a network adapter, an alert does not show in the administrator portal. This issue is caused because this fault is disabled by default in Windows Server 2019.
 - Occurrence: Common
 
+### Access Control (IAM)
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The IAM extension is out of date. The Ibiza portal that shipped with Azure Stack Hub introduces a new behavior that causes the RBAC extension to fail if the user is opening the **Access Control (IAM)** blade for a subscription that is not selected in the global subscription selector (**Directory + Subscription** in the user portal). The blade displays **Loading** in a loop, and the user cannot add new roles to the subscription. The **Add** blade also displays **Loading** in a loop.
+- Remediation: Ensure that the subscription is checked in the **Directory + Subscription** menu. The menu can be accessed from the top of the portal, near the **Notifications** button, or via the shortcut on the **All resources** blade that displays **Don't see a subscription? Open Directory + Subscription settings**. The subscription must be selected in this menu.
+
 ## Networking
 
 ### Network Security Groups
 
 - Applicable: This issue applies to all supported releases. 
 - Cause: An explicit **DenyAllOutbound** rule cannot be created in an NSG as this will prevent all internal communication to infrastructure needed for the VM deployment to complete.
+- Occurrence: Common
+
+- Applicable: This issue applies to all supported releases. 
+- Cause: When creating an inbound or an outbound network security rule, the **Protocol** option shows an **ICMP** option. This is currently not supported on Azure Stack Hub. This issue is fixed and will not appear in the next Azure Stack Hub release.
 - Occurrence: Common
 
 ### Network interface
@@ -97,6 +109,13 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Cause: The primary NIC of a VM cannot be changed. Deleting or detaching the primary NIC results in issues when starting up the VM.
 - Occurrence: Common
 
+### Public IP
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The **IdleTimeoutInMinutes** value for a public IP that is associated to a load balancer cannot be changed. The operation puts the public IP into a failed state.
+- Remediation: To bring the public IP back into a successful state, change the **IdleTimeoutInMinutes** value on the load balancer rule that references the public IP back to the original value (the default value is 4 minutes).
+- Occurrence: Common
+
 ### Virtual Network Gateway
 
 #### Documentation
@@ -112,16 +131,28 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 ## Compute
 
+### VM overview blade does not show correct computer name
+
+- Applicable: This issue applies to all releases.
+- Cause: When viewing details of a VM in the overview blade, the computer name shows as **(not available)**. This is by design for VMs created from specialized disks/disk snapshots.
+- Remediation: View the **Properties** blade under **Settings**.
+
 ### NVv4 VM size on portal
 
-- Applicable: This issue applies to 2002 and beyond
-- Cause: When going through the VM creation experience you will see the VM size: NV4as_v4 . Customers who have hardware required for the AMD Mi25 based Azure Stack Hub GPU preview will be able to have a successful VM deployment. All other customers will have a failed VM deployment with this VM size.
-- Remediation: By design in preparation for the Azure Stack Hub GPU Preview.
+- Applicable: This issue applies to 2002 and later.
+- Cause: When going through the VM creation experience, you will see the VM size: NV4as_v4. Customers who have the hardware required for the AMD Mi25-based Azure Stack Hub GPU preview are able to have a successful VM deployment. All other customers will have a failed VM deployment with this VM size.
+- Remediation: By design in preparation for the Azure Stack Hub GPU preview.
 
 ### VM boot diagnostics
 
 - Applicable: This issue applies to all supported releases.
-- Cause: When creating a new Windows virtual machine (VM), the following error might be displayed: **Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'**. The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.
+- Cause: When creating a new virtual machine (VM), the following error might be displayed: **Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'**. The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.
+- Remediation: Recreate the storage account with the same name you used previously.
+- Occurrence: Common
+
+
+- Applicable: This issue applies to all supported releases.
+- Cause: When trying to start a stop-deallocated virtual machine,the following error might be displayed: **VM diagnostics Storage account 'diagnosticstorageaccount' not found. Ensure storage account is not deleted**. The error occurs if you attempt to start a VM with boot diagnostics enabled, but the referenced boot diagnostics storage account is deleted.
 - Remediation: Recreate the storage account with the same name you used previously.
 - Occurrence: Common
 
@@ -140,7 +171,21 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack Hub environment.
 - Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack Hub deployment.
 
-## Resource Providers
+### SQL VM
+
+#### Storage account creating failure when configuring Auto Backup
+
+- Applicable: This issue applies to 2002.
+- Cause: When configuring the automated backup of SQL VMs with a new storage account, it fails with the error **Deployment template validation failed. The template parameter for 'SqlAutobackupStorageAccountKind' is not found.**
+- Remediation: Apply the latest 2002 hotfix.
+
+#### Auto backup cannot be configured with TLS 1.2 enabled
+
+- Applicable: This issue applies to new installations of 2002 and later, or any previous release with TLS 1.2 enabled.
+- Cause: When configuring the automated backup of SQL VMs with an existing storage account, it fails with the error **SQL Server IaaS Agent: The underlying connection was closed: An unexpected error occurred on a send.**
+- Occurrence: Common
+
+## Resource providers
 
 ### SQL/MySQL
 
@@ -152,7 +197,7 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 - Applicable: This issue applies to release 2002.
 - Cause: If the stamp contains App Service resource provider (RP) version 1.7 and older, upon update of the stamp, the blades for App Service do not load.
-- Remediation: Update the RP to version 1.8.
+- Remediation: Update the RP to version [2020 Q2](azure-stack-app-service-update.md).
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
@@ -165,7 +210,7 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 ::: moniker range="azs-1910"
 ## Update
 
-For known Azure Stack Hub update issues please see [Troubleshooting Updates in Azure Stack Hub](azure-stack-updates-troubleshoot.md).
+For known Azure Stack Hub update issues please see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md).
 
 ## Portal
 
@@ -176,7 +221,7 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
 - Occurrence: Common
 
-### Subscriptions Lock blade
+### Duplicate Subscription button in Lock blade
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the administrator portal, the **Lock** blade for user subscriptions has two buttons that say **Subscription**.
@@ -208,7 +253,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Cause: In the user portal, when you try to upload a blob in the upload blade, there is an option to select **AAD** or **Key Authentication**, however **AAD** is not supported in Azure Stack Hub.
 - Occurrence: Common
 
-
 ### Alert for network interface disconnected
 
 - Applicable: This issue applies to 1908 and above.
@@ -220,13 +264,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, when you select a managed disk, with disk type Premium SSD, the drop-down list shows **OS Disk**. The tooltip next to that option says **Certain OS Disk sizes may be available for free with Azure Free Account**; however, this is not valid for Azure Stack Hub. In addition, the list includes **Free account eligible** which is also not valid for Azure Stack Hub.
 - Occurrence: Common
-
-### VPN troubleshoot and metrics
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **VPN Troubleshoot** feature and **Metrics** in a VPN gateway resource appears, however this is not supported in Azure Stack Hub.
-- Occurrence: Common
-
 
 ### Delete a storage container
 
@@ -240,12 +277,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, when you navigate to **Virtual Machines** and try to refresh using the button at the top, the states fail to update accurately.
 - Remediation: The status is automatically updated every 5 minutes regardless of whether the refresh button has been clicked or not. Wait 5 minutes and check the status.
-- Occurrence: Common
-
-### Virtual Network Gateway
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you create a route table, **Virtual Network gateway** appears as one of the next hop type options; however, this is not supported in Azure Stack Hub.
 - Occurrence: Common
 
 ### Storage account options
@@ -322,6 +353,12 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 ### Virtual Network Gateway
 
+#### Next Hop Type
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you create a route table, **Virtual Network gateway** appears as one of the next hop type options; however, this is not supported in Azure Stack Hub.
+- Occurrence: Common
+
 #### Alerts
 
 - Applicable: This issue applies to all supported releases.
@@ -338,6 +375,10 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, the **Connections** blade displays a feature called **VPN Troubleshooter**. This feature is currently not supported in Azure Stack Hub.
+- Occurrence: Common
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **VPN Troubleshoot** feature and **Metrics** in a VPN gateway resource appears, however this is not supported in Azure Stack Hub.
 - Occurrence: Common
 
 #### Documentation
@@ -371,7 +412,7 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 - Applicable: This issue applies to 1910 and earlier releases.
 - Cause: Unable to connect to the Privileged Endpoint (ERC VMs) from a computer running a non-English version of Windows.
-- Remediation: This is a known issue that has been fixed in releases later than 1910. As a workaround you can run the **New-PSSession** and **Enter-PSSession** Powershell cmdlets using the **en-US** culture; for examples, set the culture using this script: https://resources.oreilly.com/examples/9780596528492/blob/master/Use-Culture.ps1.
+- Remediation: This is a known issue that has been fixed in releases later than 1910. As a workaround you can run the **New-PSSession** and **Enter-PSSession** PowerShell cmdlets using the **en-US** culture; for examples, set the culture using this script: https://resources.oreilly.com/examples/9780596528492/blob/master/Use-Culture.ps1.
 - Occurrence: Rare
 
 ### Virtual machine scale set
@@ -414,7 +455,7 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Remediation: You can view these subscription properties in the **Essentials** pane of the **Subscriptions Overview** blade.
 - Occurrence: Common
 
-### Subscriptions Lock blade
+### Duplicate Subscription button in Lock blade
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the administrator portal, the **Lock** blade for user subscriptions has two buttons labeled **subscription**.
@@ -451,7 +492,7 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 ### Load Balancer
 
 - Applicable: This issue applies to all supported releases. 
-- Cause: When adding Avaiability Set VMs to the backend pool of a Load Balancer, an error message is being displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal, the functionality is still in place and VMs are successfully added to the backend pool interally. 
+- Cause: When adding Availability Set VMs to the backend pool of a Load Balancer, an error message is being displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal, the functionality is still in place and VMs are successfully added to the backend pool interally. 
 - Occurrence: Common
 
 ### Network Security Groups
@@ -483,6 +524,12 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Occurrence: Common
 
 ### Virtual Network Gateway
+
+#### Next Hop Type
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you create a route table, **Virtual Network gateway** appears as one of the next hop type options; however, this is not supported in Azure Stack Hub.
+- Occurrence: Common
 
 #### Alerts
 
@@ -616,7 +663,7 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 ### Load Balancer
 
 - Applicable: This issue applies to all supported releases. 
-- Cause: When adding Avaiability Set VMs to the backend pool of a Load Balancer, an error message is being displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal, the functionality is still in place and VMs are successfully added to the backend pool interally. 
+- Cause: When adding Availability Set VMs to the backend pool of a Load Balancer, an error message is being displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal, the functionality is still in place and VMs are successfully added to the backend pool interally. 
 - Occurrence: Common
 
 ### Network Security Groups
@@ -648,6 +695,12 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Occurrence: Common
 
 ### Virtual Network Gateway
+
+#### Next Hop Type
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you create a route table, **Virtual Network gateway** appears as one of the next hop type options; however, this is not supported in Azure Stack Hub.
+- Occurrence: Common
 
 #### Alerts
 

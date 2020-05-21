@@ -4,7 +4,7 @@ description: An overview of what Azure Stack Hub is and how it lets you run Azur
 author: justinha
 
 ms.topic: overview
-ms.date: 11/08/2019
+ms.date: 04/20/2020
 ms.author: justinha
 ms.reviewer: unknown
 ms.lastreviewed: 11/08/2019
@@ -40,11 +40,11 @@ The Azure Stack Hub architecture lets you provide Azure services at the edge for
 
 ## Deployment options
 
-Azure Stack Hub integrated systems are offered through a partnership of Microsoft and hardware partners, creating a solution that offers cloud-paced innovation and computing management simplicity. Because Azure Stack Hub is offered as an integrated hardware and software system, you have the flexibility and control you need, along with the ability to innovate from the cloud. 
+Azure Stack Hub integrated systems are offered through a partnership of Microsoft and hardware partners, creating a solution that offers cloud-paced innovation and computing management simplicity. Because Azure Stack Hub is offered as an integrated hardware and software system, you have the flexibility and control you need, along with the ability to innovate from the cloud.
 
 An Azure Stack Hub integrated system can range in size from 4-16 servers, called a *scale unit*. Integrated systems are jointly supported by the hardware partner and Microsoft. The following diagram shows an example of a scale unit. 
 
-![Diagram showing an Azure Stack Hub integrated system](./media/azure-stack-overview/azure-stack-integrated-system.png). 
+![Diagram showing an Azure Stack Hub integrated system](./media/azure-stack-overview/azure-stack-integrated-system.svg). 
 
 <!---add info and image on regions, etc--->
 
@@ -65,7 +65,7 @@ For disconnected deployments of Azure Stack Hub, you need to use AD FS. Azure St
 
 Azure Stack Hub uses the same operations model as Azure. An Azure Stack Hub operator can deliver a variety of services and apps to tenant users, similar to how Microsoft delivers Azure services to tenant users. 
 
-![Diagram showing Azure Stack Hub job roles](./media/azure-stack-overview/azure-stack-job-roles.png)
+![Diagram showing Azure Stack Hub job roles](./media/azure-stack-overview/azure-stack-job-roles.svg)
 
 You can manage Azure Stack Hub with the administrator portal, user portal, or [PowerShell](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.7.1). The Azure Stack Hub portals are each backed by separate instances of Azure Resource Manager. An **Azure Stack Hub Operator** uses the administrator portal to manage Azure Stack Hub, and to do things like create tenant offerings and maintain the health and monitor status of the integrated system. The user portal provides a self-service experience for consumption of cloud resources like virtual machines (VMs), storage accounts, and web apps.
 
