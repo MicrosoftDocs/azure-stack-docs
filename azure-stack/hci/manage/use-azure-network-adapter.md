@@ -34,7 +34,7 @@ Using Azure Network Adapter to connect to a Virtual Network requires the
 following:
 - An Azure account with at least one active subscription.
 - An existing Virtual Network.
-- Internet access for the target Windows servers that you want to back up to Azure.
+- Internet access for the target servers that you want to connect to the Azure virtual network.
 - A Windows Admin Center connection to Azure.
   To learn more, see [Configuring Azure integration](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/azure-integration).
 - The latest version of Windows Admin Center.
