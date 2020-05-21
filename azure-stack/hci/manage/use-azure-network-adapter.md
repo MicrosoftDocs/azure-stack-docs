@@ -13,7 +13,7 @@ ms.date: 05/20/2020
 
 A lot of workloads running on-premises and in multi-cloud environments require
 connections to virtual machines (VMs) running in Microsoft Azure. To connect a
-Windows Server to an Azure Virtual Network, you have several options, including
+server to an Azure Virtual Network, you have several options, including
 Site-to-Site VPN, Azure Express Route, and Point-to-Site VPN.
 
 Windows Admin Center and Azure Network Adapter provide a one-click experience to
