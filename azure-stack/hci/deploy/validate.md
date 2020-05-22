@@ -78,7 +78,7 @@ Install-module validate-DCB
 1. On the Adapters page:
    1. Select the **vSwitch attached** checkbox and type the name of the vSwitch.
    1. Under **Adapter Name**, type the name of each physical NIC, under **Host vNIC Name**, the name of each virtual NIC (vNIC), and under **VLAN**, the name of each network.
-   1. Expand the **RDMA Type** drop-down list box and select **RoCE**, leave **Jumbo Frames** set to **9014**, and then select **Next**.
+   1. Expand the **RDMA Type** drop-down list box and select the appropriate protocol: **RoCE** or **iWARP**. Also set **Jumbo Frames** to the appropriate value for your network, and then select **Next**.
 
     :::image type="content" source="../media/validate/adapters.png" alt-text="The Adapters page of the Validate-DCB configuration wizard":::
 
