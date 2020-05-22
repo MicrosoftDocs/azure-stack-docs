@@ -328,4 +328,4 @@ SQL2CSV2    SameNode               {SQL2, <CSV2-GUID>}  1
 
 ## Next steps
 
-Learn how to manage your VMs using Windows Admin Center. See [Manage VMs on Azure Stack HCI using Windows Admin Center](manage/vm.md).
+Learn how to manage your VMs using Windows Admin Center. See [Manage VMs on Azure Stack HCI using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/manage/vm).
