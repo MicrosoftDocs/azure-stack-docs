@@ -47,7 +47,7 @@ following:
 To configure Azure Network Adapter, go to the Network extension for it in Windows Admin Center.
 
 In Windows Admin Center:
-1. Navigate to the server or cluster hosting the VMs that you want to add to Azure Network Adapter.
+1. Navigate to the server hosting the VMs that you want to add to Azure Network Adapter.
 1. Under **Tools**, select **Networks**.
 1. Select **Add Azure Network Adapter**.
 1. On the **Add Azure Network Adapter** pane, enter the following required information, and then select **Create**:
@@ -73,7 +73,7 @@ In Windows Admin Center:
 
 If there is no existing Azure Virtual Network gateway, Windows Admin Center creates one for you. The setup process can take up to 25 minutes. After the Azure Network Adapter is created, you can start to access VMs in the virtual network directly from your server.
 
-If you don’t need the connectivity anymore, on the **Disconnect VPN Confirmation** pop-up window, select **Yes**.
+If you don’t need the connectivity anymore, under **Networks**, select the Azure Network Adapter that you want to disconnect, from the top menu, select **Disconnect**, and then on the **Disconnect VPN Confirmation** pop-up window, select **Yes**.
 
 ## Next steps
 For more information about Azure Virtual Network, see also:
