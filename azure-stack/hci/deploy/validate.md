@@ -4,12 +4,12 @@ description: This how-to article focuses on why cluster validation is important,
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 5/20/2020
+ms.date: 5/22/2020
 ---
 
 # Validate an Azure Stack HCI cluster
 
->Applies to: Azure Stack HCI v20H2
+>Applies to: Azure Stack HCI, version v20H2
 
 This how-to article focuses on why cluster validation is important, and when to run it on an existing Azure Stack HCI cluster. We recommend performing cluster validation for the following primary scenarios:
 - After deploying a server cluster, run the Validate-DCB tool to test networking, and use the Validate feature in Windows Admin Center.
@@ -25,8 +25,6 @@ This section describes scenarios in which validation is also needed or useful.
 
 - **Validation before the cluster is configured:**
   - **A set of servers ready to become a failover cluster:** This is the most straightforward validation scenario. The hardware components (systems, networks, and storage) are connected, but the systems aren't yet functioning as a cluster. Running tests in this situation has no affect on availability.
-
-  - **Cloned or imaged systems:** If you clone or image systems to different hardware, run the Validate cluster feature as you would with any other new cluster. We recommend to run the Validate cluster feature just after connecting the hardware components and installing the failover cluster feature, before clients start using the cluster.
  
   - **Server VMs:** For virtualized servers in a cluster, run the Validate cluster feature as you would on any other new cluster. The requirement to run the feature is the same whether you have:
     - A "host cluster" where failover occurs between two physical computers.
@@ -124,8 +122,6 @@ The following steps show how to identify a Jumbo Packet error from vNIC SMB02 an
 
     :::image type="content" source="../media/validate/jumbo-packet-error-fix-confirmation.png" alt-text="Validate-DCB scan results confirming that the Server host's Jumbo Packet setting is fixed":::
 
-<!---Need screenshot from Jan for final step without numbers--->
-
 To learn more about resolving errors that the Validate-DCB tool identifies, see the following video.
 
 > [!VIDEO https://www.youtube.com/embed/cC1uACvhPBs]
@@ -138,6 +134,20 @@ To run a validation test on a server cluster, issue the **Get-Cluster** and **Te
 $Cluster = Get-Cluster -Name 'server-cluster1'
 Test-Cluster -InputObject $Cluster -Verbose
 ```
+
+### View validation reports
+Now you're ready to view your cluster validation report.
+
+There are a couple ways to access validation reports:
+- On the **Inventory** page, expand the **More** submenu, and then select **View validation reports**.
+
+    Or
+
+- At the top right of **Windows Admin Center**, select the **Notifications** bell icon to display the **Notifications** pane.
+Select the **Successfully validated cluster** notice, and then select **Go to Failover Cluster validation report**.
+
+> [!NOTE]
+> The server cluster validation process may take some time to complete. Don't switch to another tool in Windows Admin Center while the process is running. In the **Notifications** pane, a status bar below your **Validate cluster** notice indicates when the process is done.
 
 ## Step 2: Validate the cluster
 Use the following steps to validate the servers in an existing cluster in Windows Admin Center.
@@ -158,20 +168,6 @@ Use the following steps to validate the servers in an existing cluster in Window
 
 > [!NOTE]
 > After your cluster servers have been validated, you will need to disable CredSSP for security reasons.
-
-### View validation reports
-Now you're ready to view your cluster validation report.
-
-There are a couple ways to access validation reports:
-- On the **Inventory** page, expand the **More** submenu, and then select **View validation reports**.
-
-    Or
-
-- At the top right of **Windows Admin Center**, select the **Notifications** bell icon to display the **Notifications** pane.
-Select the **Successfully validated cluster** notice, and then select **Go to Failover Cluster validation report**.
-
-> [!NOTE]
-> The server cluster validation process may take some time to complete. Don't switch to another tool in Windows Admin Center while the process is running. In the **Notifications** pane, a status bar below your **Validate cluster** notice indicates when the process is done.
 
 ### Disable CredSSP
 After your server cluster is successfully validated, you'll need to disable the Credential Security Support Provider (CredSSP) protocol on each server for security purposes. For more information, see [CVE-2018-0886](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-0886).
