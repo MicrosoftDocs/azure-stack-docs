@@ -8,7 +8,7 @@
   items:
   - name: Before you start
     href: deploy/before-you-start.md
-  - name: VM affinity rules
+  - name: Setup VM affinity rules
     href: deploy/vm-affinity.md  
 - name: Manage
   items:
