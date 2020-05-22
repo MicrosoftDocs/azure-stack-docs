@@ -26,14 +26,14 @@ These release notes describe improvements, fixes, and known issues in Azure App 
 
 The App Service on Azure Stack Hub Update 2 build number is **72.0.13698.10**.
 
-### Prerequisites
+## Prerequisites
 
 > [!IMPORTANT]
-> New deployments of Azure App Service on Azure Stack Hub now require a [three-subject wildcard certificate](azure-stack-app-service-before-you-get-started.md#get-certificates) due to improvements in the way in which SSO for Kudu is handled in Azure App Service. The new subject is: **\*.sso.appservice.\<region\>.\<domainname\>.\<extension\>**
+> New deployments of Azure App Service on Azure Stack Hub now require a three-subject wildcard certificate due to improvements in the way in which SSO for Kudu is handled in Azure App Service. The new subject is: **\*.sso.appservice.\<region\>.\<domainname\>.\<extension\>**
 
 Refer to the [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
 
-### New features and fixes
+## New features and fixes
 
 Azure App Service on Azure Stack Hub Update 2 includes the following improvements and fixes:
 
@@ -67,7 +67,7 @@ Azure App Service on Azure Stack Hub Update 2 includes the following improvement
   - System credential rotation
   - Connection string rotation
 
-### Known issues (post-installation)
+## Known issues (post-installation)
 
 - Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network.
 
@@ -83,7 +83,7 @@ If you chose to deploy into an existing virtual network and an internal IP addre
 * Priority: 700
 * Name: Outbound_Allow_SMB445
 
-### Known issues for cloud admins operating Azure App Service on Azure Stack Hub
+## Known issues for cloud admins operating Azure App Service on Azure Stack Hub
 
 Refer to the documentation in the [Azure Stack Hub 1804 Release Notes](azure-stack-update-1903.md)
 

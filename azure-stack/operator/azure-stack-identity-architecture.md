@@ -1,11 +1,10 @@
 ---
 title: Identity architecture for Azure Stack Hub 
 description: Learn about identity architecture for Azure Stack Hub, and the differences between Azure AD and AD FS.
-author: IngridAtMicrosoft
-
+author: BryanLa
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.author: inhenkel
+ms.author: bryanla
 ms.reviewer: fiseraci
 ms.lastreviewed: 05/09/2019
 
@@ -27,7 +26,7 @@ The identity provider that you choose can limit your options, including support 
 |------------------------------|----------|-------|
 |Connected to the internet     |Yes       |Optional|
 |Support for multi-tenancy     |Yes       |No      |
-|Offer items in the Marketplace |Yes       |Yes (requires use of the [offline Marketplace Syndication](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) tool)|
+|Offer items in the Marketplace |Yes       |Yes (requires use of the [offline Marketplace Syndication](azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected) tool)|
 |Support for Active Directory Authentication Library (ADAL) |Yes |Yes|
 |Support for tools such as Azure CLI, Visual Studio, and PowerShell  |Yes |Yes|
 |Create service principals through the Azure portal     |Yes |No|

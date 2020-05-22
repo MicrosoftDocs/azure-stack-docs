@@ -4,7 +4,7 @@ description: Learn how to manage Key Vault in Azure Stack Hub by using PowerShel
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/07/2020
+ms.date: 04/29/2020
 ms.author: sethm
 ms.lastreviewed: 05/09/2019
 
@@ -146,14 +146,16 @@ Use the **Set-AzureRmKeyVaultAccessPolicy** cmdlet to authorize an app to access
 
 In the following example, the vault name is **ContosoKeyVault**, and the app you want to authorize has a client ID of **8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed**. To authorize the app, run the following command. You can also specify the **PermissionsToKeys** parameter to set permissions for a user, an app, or a security group.
 
+When using Set-AzureRmKeyvaultAccessPolicy against an ADFS configured Azure Stack Hub environment,  the parameter BypassObjectIdValidation should be provided
+
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToKeys decrypt,sign
+Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToKeys decrypt,sign -BypassObjectIdValidation
 ```
 
 If you want to authorize that same app to read secrets in your vault, run the following cmdlet:
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300 -PermissionsToKeys Get
+Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300 -PermissionsToKeys Get -BypassObjectIdValidation
 ```
 
 ## Next steps
