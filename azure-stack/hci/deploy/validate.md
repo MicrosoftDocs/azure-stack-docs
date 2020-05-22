@@ -58,9 +58,11 @@ On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE
 
 ### Install and run the Validate-DCB tool
 To install and run the Validate-DCB tool:
-1. On your management PC, open a Windows PowerShell session as an Administrator, type `Install-module validate-DCB`, and then press **Enter**.
+1. On your management PC, open a Windows PowerShell session as an Administrator, and then use the following command to install the tool.
 
-    :::image type="content" source="../media/validate/powershell-install-for-tool.png" alt-text="The PowerShell command to install the validate-DCB tool module":::
+```powershell
+Install-module validate-DCB
+```
 
 1. Accept the requests to use the NuGet provider and access the repository to install the tool.
 1. After PowerShell connects to the Microsoft network to download the tool, type `Validate-DCB` and press **Enter** to start the tool wizard.
