@@ -3,10 +3,10 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/18/2020
+ms.date: 05/22/2020
 ms.author: sethm
 ms.reviewer: ihcherie
-ms.lastreviewed: 10/01/2019
+ms.lastreviewed: 05/22/2020
 
 # Intent: As an Azure Stack Hub operator, I want to know what's new in Azure Stack Hub Marketplace so I can stay up to date.
 # Keyword: new marketplace items azure stack hub
@@ -62,6 +62,24 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Updated marketplace items
 
+- 5/21/2020: Ubuntu Server 16.04 LTS - version 16.04.202004290
+- 5/21/2020: Ubuntu Server 18.04 LTS - version 18.04.202004080
+- 5/21/2020: Windows Server 2008 R2 SP1 BYOL - version 7601.24552.2004101827
+- 5/21/2020: Windows Server 2008 R2 SP1 Pay as you use - version 7601.24552.2004101827
+- 5/21/2020: Windows Server 2012 Datacenter BYOL - version 9200.23016.2004101828
+- 5/21/2020: Windows Server 2012 Datacenter Pay as you use - version 9200.23016.2004101828
+- 5/21/2020: Windows Server 2012 R2 Datacenter BYOL - version 9600.19676.2004101829
+- 5/21/2020: Windows Server 2012 R2 Datacenter Pay as you use - version 9600.19676.2004101829
+- 5/21/2020: Windows Server 2016 Datacenter BYOL - version 14393.3630.2004101604
+- 5/21/2020: Windows Server 2016 Datacenter Pay as you use - version 14393.3630.2004101604
+- 5/21/2020: Windows Server 2016 Datacenter Server Core BYOL - version 14393.3630.2004101604
+- 5/21/2020: Windows Server 2016 Datacenter Server Core Pay as you use - version 14393.3630.2004101604
+- 5/21/2020: Windows Server 2019 Datacenter Server Core BYOL - version 17763.1158.2004131759
+- 5/21/2020: Windows Server 2019 Datacenter Server Core Pay as you use - version 17763.1158.2004131759
+- 5/21/2020: Windows Server 2019 Datacenter BYOL - version 17763.1158.2004131759
+- 5/21/2020: Windows Server 2019 Datacenter Pay as you use - version 17763.1158.2004131759
+- 5/21/2020: Windows Server 2019 Datacenter with Containers BYOL - version 17763.1158.2004131759
+- 5/21/2020: Windows Server 2019 Datacenter with Containers Pay as you use - version 17763.1158.2004131759
 - 05/15/2020: Bitnami AbanteCart - version 1.2.2004220207
 - 05/15/2020: Bitnami Canvas LMS - version 2020.5.2005120909
 - 05/15/2020: Bitnami Neos - version 5.2.2005130917
