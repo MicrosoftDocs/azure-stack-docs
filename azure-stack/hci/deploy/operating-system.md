@@ -48,7 +48,7 @@ To use Sconfig:
 
 1. Take note of the computer's **Domain/Workgroup** and its **Computer Name** for reference.
 
-From the Server Configuration tool interface, you can perform important tasks, such as adding additional users to the local administrators group and changing network settings. You can also enable **Automatic Updates** to download and install Windows Updates on the server.
+From the Server Configuration tool interface, you can perform important tasks, such as adding additional users to the local administrators group and changing network settings.
 
 After configuring the operating system as needed with Sconfig on each server, you're ready to use the Cluster Creation wizard in Windows Admin Center to cluster the servers. To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/operating-system?branch=pr-en-us-2779).
 
