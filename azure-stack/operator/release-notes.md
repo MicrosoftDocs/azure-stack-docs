@@ -79,22 +79,19 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Improvements to Storage infrastructure cluster service logs and events. Logs and events of Storage infrastructure cluster service will be kept up to 14 days for better diagnostics and troubleshooting.
 
-- Improvements that increase reliability for Start & Stop Azure Stack Hub.
-
+- Improvements that increase reliability of starting and stopping Azure Stack Hub.
 
 ### Changes
 
-- Removed the actions to stop, shutdown and restart an infrastructure role instance from the Admin Portal. The corresponding APIs have also been removed in the Fabric Resource Provider. The following PowerShell commands in the Admin RM module & AZ preview for Azure Stack Hub stop working : Stop-AzsInfrastructureRoleInstance, Disable-InfrastructureRoleInstance, Restart-InfrastructureRoleInstance
-Note the above commands will be removed from the next Admin AZ module release for Azure Stack Hub
-
+- Removed the actions to stop, shut down, and restart an infrastructure role instance from the admin portal. The corresponding APIs have also been removed in the Fabric Resource Provider. The following PowerShell cmdlets in the admin RM module and AZ preview for Azure Stack Hub no longer work: **Stop-AzsInfrastructureRoleInstance**, **Disable-InfrastructureRoleInstance**, and **Restart-InfrastructureRoleInstance**. Note that the above cmdlets will be removed from the next admin AZ module release for Azure Stack Hub.
  
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
-- Fixed an issue that could cause repair scale unit node to fail becuase it could not find the path to the base os image.
+- Fixed an issue that could cause a repair scale unit node to fail becuase it could not find the path to the base OS image.
 
-- FIxed an issue with scale in & out for the support infrastrucutre role that has a cascading effect to repair scale unit node.
+- Fixed an issue with scale-in and scale-out for the support infrastrucutre role that has a cascading effect on repairing scale unit nodes.
 
 ## Security updates
 
