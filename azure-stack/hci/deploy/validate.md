@@ -4,7 +4,7 @@ description: This how-to article focuses on why cluster validation is important,
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 5/22/2020
+ms.date: 5/26/2020
 ---
 
 # Validate an Azure Stack HCI cluster
@@ -60,9 +60,9 @@ On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE
 To install and run the Validate-DCB tool:
 1. On your management PC, open a Windows PowerShell session as an Administrator, and then use the following command to install the tool.
 
-```powershell
-Install-module validate-DCB
-```
+    ```powershell
+    Install-module validate-DCB
+    ```
 
 1. Accept the requests to use the NuGet provider and access the repository to install the tool.
 1. After PowerShell connects to the Microsoft network to download the tool, type `Validate-DCB` and press **Enter** to start the tool wizard.
@@ -85,7 +85,7 @@ Install-module validate-DCB
     > [!IMPORTANT]
     > - To learn more about how SR-IOV improves network performance, see [Overview of Single Root I/O Virtualization (SR-IOV)](https://docs.microsoft.com/windows-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-).
 
-1. On the Data Center Bridging page, under **Policy Name**, change **SMBDirect** to **SMB**, leave the other settings values as is, and select **Next**.
+1. On the Data Center Bridging page, modify the values to match your organization's settings for **Priority**, **Policy Name**, and **Bandwidth Reservation**, and then select **Next**.
 
     :::image type="content" source="../media/validate/data-center-bridging.png" alt-text="The Data Center Bridging page of the Validate-DCB configuration wizard":::
 
