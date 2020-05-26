@@ -3,8 +3,9 @@ title: Resource provider API versions supported by profiles in Azure Stack Hub
 description: Learn about the Azure Resource Manager API versions supported by profiles in Azure Stack Hub.
 author: sethmanheim
 
+ms.custom: contperfq4
 ms.topic: article
-ms.date: 05/05/2020
+ms.date: 05/21/2020
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/08/2019
