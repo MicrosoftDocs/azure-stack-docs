@@ -35,7 +35,9 @@ For enterprise deployment of the Azure Stack HCI operating system, we recommend 
 Solution hardware ranges from 2 to 16 nodes and is tested and validated by Microsoft and partner vendors. ​To find Azure Stack HCI solution hardware from your preferred hardware partner, see the [Azure Stack HCI Catalog](https://www.microsoft.com/cloud-platform/azure-stack-hci-catalog).
 
 ### Manual deployment
-To manually deploy the Azure Stack HCI operating system on the system drive of each server to be clustered, we recommend using the Server Configuration tool (Sconfig.cmd). You can use Sconfig.cmd to configure and manage Server Core installations. To use the tool, you must be a member of the Administrators group. To learn more about the tool, see [Configure a Server Core installation of Windows Server 2016 or Windows Server, version 1709, with Sconfig.cmd](/windows-server/get-started/sconfig-on-ws2016).
+To manually deploy the Azure Stack HCI operating system on the system drive of each server to be clustered, install the operating system via your preferred method, such as booting from a DVD, USB drive, or installing over the network using [Windows Deployment Services](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831764(v=ws.11)). 
+
+Then start each server and use the Server Configuration tool (Sconfig.cmd) to prepare the servers for clustering. To learn more about the tool, see [Configure a Server Core installation with Sconfig.cmd](/windows-server/get-started/sconfig-on-ws2016).
 
 To use Sconfig:
 1. Connect to the server running the Azure Stack HCI operating system that you want to deploy.
