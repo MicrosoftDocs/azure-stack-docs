@@ -36,6 +36,8 @@
     href: manage/attach-gpu-to-linux-vm.md
 - name: Concepts
   items:
+  - name: Usage and billing
+    href: concepts/billing.md
   - name: Choose drives
     href: concepts/choose-drives.md
   - name: Plan volumes
