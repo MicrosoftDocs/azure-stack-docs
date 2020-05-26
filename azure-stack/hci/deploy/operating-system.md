@@ -16,7 +16,7 @@ After deploying the operating system, you're ready to use related guidance on cr
 - Windows Admin Center set up on a system that can access the servers you want to cluster, as described in [Before you deploy Azure Stack HCI](before-you-start.md#install-windows-admin-center).
 
 ## Deployment preparation
-After you've acquired the server hardware for your Azure Stack HCI solution, it's time to rack and cable it. Use the following steps to prepare the server hardware for deployment of the operating system, and then getting Windows updates and the latest firmware settings.
+After you've acquired the server hardware for your Azure Stack HCI solution, it's time to rack and cable it. Use the following steps to prepare the server hardware for deployment of the operating system.
 
 1. Rack all server nodes that you want to use in your server cluster.
 1. Connect the server nodes to your network switches.
