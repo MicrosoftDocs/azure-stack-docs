@@ -67,7 +67,7 @@ For more information about using VMM to do a bare-metal deployment of the operat
 After installing the operating system on each server in the cluster, you can connect the servers to Windows Admin Center and use this browser-based tool for the rest of the cluster configuration. There are three ways to connect your servers to Windows Admin Center:
 - Add a single server or a cluster as a managed node
 - Bulk import multiple servers
-- Search Active Directory to add servers
+- Search Active Directory to add servers (if the servers are already domain-joined)
 
 The following sections describe each approach.
 ### Add a single server or a cluster as a managed node
