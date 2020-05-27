@@ -15,7 +15,7 @@ ms.lastreviewed: 09/23/2019
 ---
 
 
-# Deploy a template using Powershell in Azure Stack Hub
+# Deploy a template using PowerShell in Azure Stack Hub
 
 You can use PowerShell to deploy Azure Resource Manager templates to Azure Stack Hub. This article describes how to use PowerShell to deploy a template.
 
