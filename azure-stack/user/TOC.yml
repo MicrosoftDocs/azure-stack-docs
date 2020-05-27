@@ -97,6 +97,8 @@
         items:
         - name: Overview
           href: azure-stack-version-profiles.md
+        - name: Resource provider APIs supported by profiles
+          href: azure-stack-profiles-azure-resource-manager-versions.md
         - name: .NET
           href: azure-stack-version-profiles-net.md
         - name: Java
@@ -109,8 +111,6 @@
           href: azure-stack-version-profiles-python.md
         - name: NodeJS
           href: azure-stack-version-profile-nodejs.md
-        - name: Resource provider APIs supported by profiles
-          href: azure-stack-profiles-azure-resource-manager-versions.md
   - name: Use resource providers
     items:
     - name: Security, compliance, and identity
@@ -339,8 +339,8 @@
     href: /azure-stack/asdk/
 - name: Resources
   items:
-  - name: Azure Stack Hub roadmap
-    href: https://azure.microsoft.com/roadmap/?tag=azure-stack
+  - name: Azure Stack Hub road map
+    href: https://azure.microsoft.com/updates/?query=azure%20stack%20hub
   - name: Azure Stack Hub MSDN forum
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack
   - name: Azure Stack Hub Documentation feedback

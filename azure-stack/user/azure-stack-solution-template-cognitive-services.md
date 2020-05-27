@@ -4,25 +4,41 @@ description: Learn how to deploy Azure Cognitive Services to Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 05/21/2020
 ms.author: mabrigg
 ms.reviewer: guanghu
-ms.lastreviewed: 11/11/2019
+ms.lastreviewed: 05/21/2020
 
 # Intent: As an Azure Stack user, I want to deploy cognitive services on Azure Stack using containers so I can use the benefits of Azure Cognitive Services. 
 # Keyword: azure stack cognitive services
 
 ---
 
-
 # Deploy Azure Cognitive Services to Azure Stack Hub
 
-> [!Note]  
-> Azure Cognitive Services on Azure Stack Hub is in preview.
-
-You can use Azure Cognitive Services with container support on Azure Stack Hub. Container support in Azure Cognitive Services allows you to use the same rich APIs that are available in Azure. Your use of containers enables flexibility in where to deploy and host the services delivered in [Docker containers](https://www.docker.com/what-container). Container support is currently available in preview for a subset of Azure Cognitive Services, including parts of [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home), [Face](https://docs.microsoft.com/azure/cognitive-services/face/overview), and [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview), and [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/luis-container-howto) (LUIS).
+You can use Azure Cognitive Services with container support on Azure Stack Hub. Container support in Azure Cognitive Services allows you to use the same rich APIs that are available in Azure. Your use of containers enables flexibility in where to deploy and host the services delivered in [Docker containers](https://www.docker.com/what-container). 
 
 Containerization is an approach to software distribution in which an app or service, including its dependencies and configuration, are packaged as a container image. With little or no modification, you can deploy an image to a container host. Each container is isolated from other containers and from the underlying operating system. The system itself only has the components needed to run your image. A container host has a smaller footprint than a virtual machine. You can also create containers from images for short-term tasks and they can be removed when no longer needed.
+
+Container support is currently available for a subset of Azure Cognitive Services:
+
+- Language Understanding
+- Text Analytics (Sentiment 3.0)
+
+> [!IMPORTANT]
+> A subset of Azure Cognitive Services for Azure Stack Hub are currently in public preview.
+> The review version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities. 
+> For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Container support is currently in public preview for a subset of Azure Cognitive Services:
+
+- Read (optical character recognition \[OCR])
+- Key phrase extraction
+- Language detection
+- Anomaly detector
+- Form recognizer
+- Speech-to-text (custom, standard)
+- Text-to-speech (custom, standard)
 
 ## Use containers with Cognitive Services on Azure Stack Hub
 
@@ -142,12 +158,37 @@ Details about the key fields:
 Use of the following command to deploy the cognitive service containers:
 
 ```bash  
-    Kubectl apply -f <yamlFineName>
+    Kubectl apply -f <yamlFileName>
 ```
 Use of the following command to monitor how it deploys: 
 ```bash  
     Kubectl get pod - watch
 ```
+
+## Configure HTTP proxy settings
+
+The worker nodes need a proxy and SSL. To configure an HTTP proxy for making outbound requests, use these two arguments:
+
+- **HTTP_PROXY** – the proxy to use, for example `https://proxy:8888`
+- **HTTP_PROXY_CREDS** – any credentials needed to authenticate against the proxy,for example `username:password`.
+
+### Set up the proxy
+
+1. Add a `http-proxy.conf` file to both locations:
+    - `/etc/system/systemd/docker.service.d/`
+    - `/cat/etc/environment/`
+
+2. Validate that you can sign on to the container using the credentials provided by the Cognitive Services team and perform a `docker pull` in the following container: 
+
+    `docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest`
+
+    Run:
+
+    `docker run hello-world pull`
+
+### SSL interception setup
+
+1. Add the **https interception** certificate to `/usr/local/share/ca-certificates` and updated the store with `update-ca-certificates`. 
 
 ## Test the cognitive service
 
