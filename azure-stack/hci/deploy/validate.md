@@ -4,7 +4,7 @@ description: This how-to article focuses on why cluster validation is important,
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 5/26/2020
+ms.date: 5/28/2020
 ---
 
 # Validate an Azure Stack HCI cluster
@@ -29,7 +29,6 @@ This section describes scenarios in which validation is also needed or useful.
   - **Server VMs:** For virtualized servers in a cluster, run the Validate cluster feature as you would on any other new cluster. The requirement to run the feature is the same whether you have:
     - A "host cluster" where failover occurs between two physical computers.
     - A "guest cluster" where failover occurs between guest operating systems on the same physical computer.
-    - Some other configuration that includes one or more virtualized servers.
  
 - **Validation after the cluster is configured and in use:**
 
@@ -50,10 +49,10 @@ On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE
 
 ### Prerequisites
 - Network setup information of the server cluster that you want to validate, including:
-    - Host or server cluster name.
-    - Virtual switch name.
-    - Network adapter names.
-    - Priority Flow Control (PFC) and Enhanced Transmission Selection (ETS) settings.
+    - Host or server cluster name
+    - Virtual switch name
+    - Network adapter names
+    - Priority Flow Control (PFC) and Enhanced Transmission Selection (ETS) settings
 - An internet connection to download the tool module in Windows PowerShell from Microsoft.
 
 ### Install and run the Validate-DCB tool
@@ -73,16 +72,16 @@ To install and run the Validate-DCB tool:
 1. On the Welcome to the Validate-DCB configuration wizard page, select **Next**.
 1. On the Clusters and Nodes page, type the name of the server cluster that you want to validate, select **Resolve** to list it on the page, and then select **Next**.
 
-    :::image type="content" source="../media/validate/clusters-and-nodes.png" alt-text="The Clusters and Nodes page of the Validate-DCB configuration wizard":::
+    :::image type="content" source="../media/validate/clusters-and-nodes.png" alt-text="The Clusters and Nodes page of the Validate-DCB configuration wizard" lightbox="media/validate/clusters-and-nodes.png":::
 
 1. On the Adapters page:
    1. Select the **vSwitch attached** checkbox and type the name of the vSwitch.
-   1. Under **Adapter Name**, type the name of each physical NIC, under **Host vNIC Name**, the name of each virtual NIC (vNIC), and under **VLAN**, the VLAN ID in use with for each adapter.
+   1. Under **Adapter Name**, type the name of each physical NIC, under **Host vNIC Name**, the name of each virtual NIC (vNIC), and under **VLAN**, the VLAN ID in use for each adapter.
    1. Expand the **RDMA Type** drop-down list box and select the appropriate protocol: **RoCE** or **iWARP**. Also set **Jumbo Frames** to the appropriate value for your network, and then select **Next**.
 
     :::image type="content" source="../media/validate/adapters.png" alt-text="The Adapters page of the Validate-DCB configuration wizard":::
 
-    > [!INOTE]
+    > [!NOTE]
     > - To learn more about how SR-IOV improves network performance, see [Overview of Single Root I/O Virtualization (SR-IOV)](https://docs.microsoft.com/windows-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-).
 
 1. On the Data Center Bridging page, modify the values to match your organization's settings for **Priority**, **Policy Name**, and **Bandwidth Reservation**, and then select **Next**.
