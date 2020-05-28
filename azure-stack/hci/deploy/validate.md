@@ -143,7 +143,6 @@ Now you're ready to view your cluster validation report.
 There are a couple ways to access validation reports:
 - On the **Inventory** page, expand the **More** submenu, and then select **View validation reports**.
 
-    Or
 
 - At the top right of **Windows Admin Center**, select the **Notifications** bell icon to display the **Notifications** pane.
 Select the **Successfully validated cluster** notice, and then select **Go to Failover Cluster validation report**.
