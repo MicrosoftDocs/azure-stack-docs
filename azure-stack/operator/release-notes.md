@@ -81,6 +81,12 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Improvements that increase reliability of starting and stopping Azure Stack Hub.
 
+- Improvements that reduce the Update runtime by using decentralization and removing dependencies. Compared to 2002 update, 4 nodes stamp update time is reduced from 15-42 hours to 9-16 hours, 8 nodes: from 20-50 hours to 12-22 hours, 12 nodes: from 20-60 hours to 15-28 hours, 16 nodes: from 25-70 hours to 18-34 hours. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications.
+
+- Allow update to fail early if there is certain unrecoverable errors.
+
+- Improved resiliency of Update package downloading from the internet.
+
 ### Changes
 
 - Removed the actions to stop, shut down, and restart an infrastructure role instance from the admin portal. The corresponding APIs have also been removed in the Fabric Resource Provider. The following PowerShell cmdlets in the admin RM module and AZ preview for Azure Stack Hub no longer work: **Stop-AzsInfrastructureRoleInstance**, **Disable-InfrastructureRoleInstance**, and **Restart-InfrastructureRoleInstance**. Note that the above cmdlets will be removed from the next admin AZ module release for Azure Stack Hub.
