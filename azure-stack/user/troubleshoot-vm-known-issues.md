@@ -24,7 +24,7 @@ You can find known issues for troubleshooting the Azure Stack Hub compute resour
 - **Cause**  
     When viewing details of a VM in the overview blade, the computer name shows as (not available). The display is by design for VMs created from specialized disks/disk snapshots.  
 - **Remediation**  
-    View the Properties blade under Settings.  
+    In the portal select **Settings** > **Properties**.
 - **Occurrence**  
     `please update`  
 
@@ -34,7 +34,7 @@ You can find known issues for troubleshooting the Azure Stack Hub compute resour
 - **Cause**  
     When going through the VM creation experience, you will see the VM size: NV4as_v4. Customers who have the hardware required for the AMD Mi25-based Azure Stack Hub GPU preview are able to have a successful VM deployment. All other customers will have a failed VM deployment with this VM size.  
 - **Remediation**  
-    By design in preparation for the Azure Stack Hub GPU preview.  
+    None.  
 - **Occurrence**  
     `please update`  
 
@@ -44,7 +44,7 @@ You can find known issues for troubleshooting the Azure Stack Hub compute resour
 - **Cause**  
     When creating a new virtual machine (VM), the following error might be displayed: Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'. The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.  
 - **Remediation**  
-    Recreate the storage account with the same name you used previously.
+    Recreate the storage account with the same name you previously use .
 - **Occurrence**  
     Common  
 
@@ -54,7 +54,7 @@ You can find known issues for troubleshooting the Azure Stack Hub compute resour
 - **Cause**  
     When trying to start a stop-deallocated virtual machine, the following error might be displayed: VM diagnostics Storage account 'diagnosticstorageaccount' not found. Ensure storage account is not deleted. The error occurs if you attempt to start a VM with boot diagnostics enabled, but the referenced boot diagnostics storage account is deleted.  
 - **Remediation**  
-    Recreate the storage account with the same name you used previously.  
+    Recreate the storage account with the same name you previously used.  
 - **Occurrence**
     Common  
 
