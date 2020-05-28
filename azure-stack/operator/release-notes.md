@@ -81,11 +81,11 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Improvements that increase reliability of starting and stopping Azure Stack Hub.
 
-- Improvements that reduce the Update runtime by using decentralization and removing dependencies. Compared to 2002 update, 4 nodes stamp update time is reduced from 15-42 hours to 9-16 hours, 8 nodes: from 20-50 hours to 12-22 hours, 12 nodes: from 20-60 hours to 15-28 hours, 16 nodes: from 25-70 hours to 18-34 hours. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications.
+- Improvements that reduce the update runtime by using decentralization and removing dependencies. Compared to the 2002 update, the 4 nodes stamp update time is reduced from 15-42 hours to 9-16 hours. 8 nodes is reduced from 20-50 hours to 12-22 hours. 12 nodes is reduced from 20-60 hours to 15-28 hours. 16 nodes is reduced from 25-70 hours to 18-34 hours. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications.
 
-- Allow update to fail early if there is certain unrecoverable errors.
+- The update now fails early if there are certain unrecoverable errors.
 
-- Improved resiliency of Update package downloading from the internet.
+- Improved resiliency of the update package while downloading from the internet.
 
 ### Changes
 
