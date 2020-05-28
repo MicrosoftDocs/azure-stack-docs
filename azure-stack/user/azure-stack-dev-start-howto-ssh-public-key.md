@@ -4,7 +4,7 @@ description: How to use an SSH public key
 author: mattbriggs
 
 ms.topic: overview
-ms.date: 1/22/2020
+ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/02/2019
