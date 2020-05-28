@@ -30,6 +30,8 @@ The Azure Stack Hub default parameters for IPsec/IKEV2 have changed [starting wi
 
 - Check whether you are using a [validated VPN device and operating system version](/azure/vpn-gateway/vpn-gateway-about-vpn-devices#devicetable). If the device is not a validated VPN device, you might have to contact the device manufacturer to see if there is a compatibility issue.
 
+- Verify that there are no overlapping IP ranges between Azure Stack Hub virtual network and on-premises network. This can cause routing issues. 
+
 - Verify the VPN peer IPs:
 
   - The IP definition in the **Local Network Gateway** object in Azure Stack Hub should match the on-premises device IP.
