@@ -4,10 +4,10 @@ description: Learn how to add a tenant for usage and billing to Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 04/24/2020
+ms.date: 5/28/2020
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 09/17/2019
+ms.lastreviewed: 5/28/2020
 
 # Intent: As an Azure Stack operator, I want to add tenants to Azure Stack for usage and billing.
 # Keyword: add tenants azure stack
@@ -73,7 +73,7 @@ The following section describes the parameters for the **New-AzureRmResource** c
 | Parameter | Description |
 | --- | --- |
 |registrationSubscriptionID | The Azure subscription that was used for the initial registration of the Azure Stack Hub.|
-| customerSubscriptionID | The Azure subscription (not Azure Stack Hub) belonging to the customer to be registered. Must be created in the CSP offer. In practice, this means through Partner Center. If a customer has more than one Azure Active Directory tenant, this subscription must be created in the tenant that will be used to log into Azure Stack Hub. The customer subscription ID must use lowercase letters. |
+| customerSubscriptionID | The Azure subscription (not Azure Stack Hub) belonging to the customer to be registered. Must be created in the CSP offer. In practice, this means through Partner Center. If a customer has more than one Azure Active Directory tenant, this subscription must be created in the tenant that will be used to log into Azure Stack Hub. The customer subscription ID is case sensitive. |
 | resourceGroup | The resource group in Azure in which your registration is stored. |
 | registrationName | The name of the registration of your Azure Stack Hub. It's an object stored in Azure. 
 
