@@ -82,7 +82,7 @@ To install and run the Validate-DCB tool:
 
     :::image type="content" source="../media/validate/adapters.png" alt-text="The Adapters page of the Validate-DCB configuration wizard":::
 
-    > [!IMPORTANT]
+    > [!INOTE]
     > - To learn more about how SR-IOV improves network performance, see [Overview of Single Root I/O Virtualization (SR-IOV)](https://docs.microsoft.com/windows-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-).
 
 1. On the Data Center Bridging page, modify the values to match your organization's settings for **Priority**, **Policy Name**, and **Bandwidth Reservation**, and then select **Next**.
