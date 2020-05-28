@@ -8,15 +8,15 @@ ms.date: 05/28/2020
 ---
 
 # Deploy the Azure Stack HCI operating system
-The first step in deploying Azure Stack HCI is to install the Azure Stack HCI operating system on each server that you want to use in a cluster. This article discusses different ways to deploy the operating system, and using Windows Admin Center to connect to the servers.
+After completing the steps in [Before you deploy Azure Stack HCI](before-you-start.md#install-windows-admin-center), the first step in deploying Azure Stack HCI is to install the Azure Stack HCI operating system on each server that you want to cluster. This article discusses different ways to deploy the operating system, and using Windows Admin Center to connect to the servers.
 
 After deploying the operating system, you're ready to use related guidance on creating a server cluster, and getting the latest Windows updates and firmware updates for your servers. Optional steps to get these updates are included in this article. However, we recommending using the Cluster Creation wizard to streamline getting updates. To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/operating-system?branch=pr-en-us-2779).
 
 ## Prerequisites
-- Windows Admin Center set up on a system that can access a server cluster.
+- Windows Admin Center set up on a system that can access the servers you want to cluster, as described in [Before you deploy Azure Stack HCI](before-you-start.md#install-windows-admin-center).
 
 ## Deployment preparation
-After you've acquired the server hardware for your Azure Stack HCI solution, it's time to rack and cable it. Use the following steps to prepare the server hardware for deployment of the operating system, and then getting Windows updates and the latest firmware settings.
+After you've acquired the server hardware for your Azure Stack HCI solution, it's time to rack and cable it. Use the following steps to prepare the server hardware for deployment of the operating system.
 
 1. Rack all server nodes that you want to use in your server cluster.
 1. Connect the server nodes to your network switches.
@@ -46,10 +46,12 @@ System Center Virtual Machine Manager (VMM) is part of the System Center suite. 
 For more information about using VMM to do a bare-metal deployment of the operating system, see [Provision a Hyper-V host or cluster from bare metal computers](/system-center/vmm/hyper-v-bare-metal?view=sc-vmm-2019).
 
 ### Manual deployment
-To manually deploy the Azure Stack HCI operating system on the system drive of each server to be clustered, we recommend using the Server Configuration tool (Sconfig.cmd). You can use Sconfig.cmd to configure and manage Server Core installations. To use the tool, you must be a member of the Administrators group. To learn more about the tool, see [Configure a Server Core installation of Windows Server 2016 or Windows Server, version 1709, with Sconfig.cmd](/windows-server/get-started/sconfig-on-ws2016).
+To manually deploy the Azure Stack HCI operating system on the system drive of each server to be clustered, install the operating system via your preferred method, such as booting from a DVD, USB drive, or installing over the network using [Windows Deployment Services](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831764(v=ws.11)). 
+
+Then start each server and use the Server Configuration tool (Sconfig.cmd) to prepare the servers for clustering. To learn more about the tool, see [Configure a Server Core installation with Sconfig.cmd](/windows-server/get-started/sconfig-on-ws2016).
 
 To use Sconfig:
-1. Connect to the server running the Azure Stack HCI operating system that you want to deploy.
+1. Connect to the server running the Azure Stack HCI operating system that you want to deploy. This could be locally via a keyboard and monitor or using a remote management (headless or BMC) controller.
 1. Open a command prompt as an administrator, and then change to the system drive.
 1. At the command prompt, type `Sconfig.cmd` and press Enter to open the Server Configuration tool interface.
 
@@ -57,15 +59,29 @@ To use Sconfig:
 
 1. Take note of the computer's **Domain/Workgroup** and its **Computer Name** for reference.
 
-From the Server Configuration tool interface, you can perform important tasks, such as adding additional users to the local administrators group and changing network settings. You can also enable **Automatic Updates** to download and install Windows Updates on the server.
+From the Server Configuration tool interface, you can perform important tasks, such as adding additional users to the local administrators group and changing network settings.
 
 After configuring the operating system as needed with Sconfig on each server, you're ready to use the Cluster Creation wizard in Windows Admin Center to cluster the servers. To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/operating-system?branch=pr-en-us-2779).
 
+<<<<<<< HEAD
+=======
+### Headless deployment
+You can use an answer file to do a headless deployment of the operating system. The answer file uses an XML format to define configuration settings and values during an unattended installation of the operating system.
+
+For this deployment option, you can use Windows System Image Manager to create an unattend.xml answer file to deploy the operating system on your servers. Windows System Image Manager creates your unattend answer file through a graphical tool with component sections to define the "answers" to the configuration questions, and then ensure the correct format and syntax in the file.
+The Windows System Image Manager tool is available in the Windows Assessment and Deployment Kit (Windows ADK). To get started: [Download and install the Windows ADK](/windows-hardware/get-started/adk-install).
+
+### System Center Virtual Machine Manager (VMM) deployment
+System Center Virtual Machine Manager (VMM) is part of the System Center suite. You can use VMM to deploy the Azure Stack HCI operating system on bare-metal hardware, as well as to cluster the servers. To learn about VMM, see [System requirements for System Center Virtual Machine Manager](/system-center/vmm/system-requirements?view=sc-vmm-2019).
+
+For more information about using VMM to do a bare-metal deployment of the operating system, see [Provision a Hyper-V host or cluster from bare metal computers](/system-center/vmm/hyper-v-bare-metal?view=sc-vmm-2019).
+
+>>>>>>> e37ca914d468372a4acf2fb0b507a7bab5c5c519
 ## Connect Windows Admin Center to your cluster servers
 After installing the operating system on each server in the cluster, you can connect the servers to Windows Admin Center and use this browser-based tool for the rest of the cluster configuration. There are three ways to connect your servers to Windows Admin Center:
 - Add a single server or a cluster as a managed node
 - Bulk import multiple servers
-- Search Active Directory to add servers
+- Search Active Directory to add servers (if the servers are already domain-joined)
 
 The following sections describe each approach.
 ### Add a single server or a cluster as a managed node
