@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/20/2020
+ms.date: 05/28/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
@@ -41,13 +41,6 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ## Portal
 
-### Administrative subscriptions
-
-- Applicable: This issue applies to all supported releases.
-- Cause: The two administrative subscriptions that were introduced with version 1804 should not be used. The subscription types are **Metering** subscription, and **Consumption** subscription.
-- Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
-- Occurrence: Common
-
 ### Subscription permissions
 
 - Applicable: This issue applies to all supported releases.
@@ -55,47 +48,22 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
 - Occurrence: Common
 
-### Storage account options
+### Administrative subscriptions
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the name of storage accounts is shown as **Storage account - blob, file, table, queue**; however, **file** is not supported in Azure Stack Hub.
+- Cause: The two administrative subscriptions that were introduced with version 1804 should not be used. The subscription types are **Metering** subscription, and **Consumption** subscription.
+- Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
 - Occurrence: Common
-
-### Create Managed Disk snapshot
-
-- Applicable: This issue applies to release 2002.
-- Cause: In the user portal, when creating a Managed Disk snapshot, the **Account type** box is empty. When you select the **Create** button with an empty account type, the snapshot creation fails.
-- Remediation: Select an account type from the **Account type** dropdown list, then create the snapshot.
-- Occurrence: Common
-
-### Alert for network interface disconnected
-
-- Applicable: This issue applies to 1908 and above.
-- Cause: When a cable is disconnected from a network adapter, an alert does not show in the administrator portal. This issue is caused because this fault is disabled by default in Windows Server 2019.
-- Occurrence: Common
-
-### Access Control (IAM)
-
-- Applicable: This issue applies to all supported releases.
-- Cause: The IAM extension is out of date. The Ibiza portal that shipped with Azure Stack Hub introduces a new behavior that causes the RBAC extension to fail if the user is opening the **Access Control (IAM)** blade for a subscription that is not selected in the global subscription selector (**Directory + Subscription** in the user portal). The blade displays **Loading** in a loop, and the user cannot add new roles to the subscription. The **Add** blade also displays **Loading** in a loop.
-- Remediation: Ensure that the subscription is checked in the **Directory + Subscription** menu. The menu can be accessed from the top of the portal, near the **Notifications** button, or via the shortcut on the **All resources** blade that displays **Don't see a subscription? Open Directory + Subscription settings**. The subscription must be selected in this menu.
 
 ## Networking
 
 ### Network Security Groups
 
-- Applicable: This issue applies to all supported releases. 
+- Applicable: This issue applies to all supported releases.
 - Cause: An explicit **DenyAllOutbound** rule cannot be created in an NSG as this will prevent all internal communication to infrastructure needed for the VM deployment to complete.
 - Occurrence: Common
 
 ### Network interface
-
-#### Adding/removing network interface
-
-- Applicable: This issue applies to all supported releases.
-- Cause: A new network interface cannot be added to a VM that is in a **running** state.
-- Remediation: Stop the virtual machine before adding or removing a network interface.
-- Occurrence: Common
 
 #### Primary network interface
 
@@ -124,13 +92,6 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: When going through the VM creation experience, you will see the VM size: NV4as_v4. Customers who have the hardware required for the AMD Mi25-based Azure Stack Hub GPU preview are able to have a successful VM deployment. All other customers will have a failed VM deployment with this VM size.
 - Remediation: By design in preparation for the Azure Stack Hub GPU preview.
 
-### VM boot diagnostics
-
-- Applicable: This issue applies to all supported releases.
-- Cause: When creating a new Windows virtual machine (VM), the following error might be displayed: **Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'**. The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.
-- Remediation: Recreate the storage account with the same name you used previously.
-- Occurrence: Common
-
 ### Consumed compute quota
 
 - Applicable: This issue applies to all supported releases.
@@ -147,6 +108,8 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack Hub deployment.
 
 ## Resource Providers
+
+For more information about resource providers, see the [Azure Stack Hub documentation](azure-stack-app-service-overview.md) for that specific resource provider.
 
 ### SQL/MySQL
 
