@@ -15,7 +15,7 @@ This topic provides a high-level, step-by-step overview of the Azure Stack HCI d
 
 ## Step 1: Plan storage
 
-Azure Stack HCI uses industry-standard servers with local-attached drives to create highly available, highly scalable software-defined storage. To meet your performance and capacity requirements, carefully choose drives and plan volumes.
+Azure Stack HCI uses industry-standard servers with local-attached drives to create highly available, highly scalable software-defined storage. To meet your performance and capacity requirements, carefully [choose drives](../concepts/choose-drives.md) and [plan volumes](../concepts/plan-volumes.md).
 
 ## Step 2: Plan networking
 
@@ -29,7 +29,11 @@ If your Azure Stack HCI deployment will stretch across multiple sites, determine
 
 [Before you start](before-you-start.md), determine whether your hardware meets the base requirements for Azure Stack HCI. Then, install Windows Admin Center on a Windows 10 PC to manage your Azure Stack HCI cluster. 
 
-## Step 5: Validate the configuration
+## Step 5: Deploy the operating system
+
+Deploy the Azure Stack HCI operating system on each server you want to cluster.
+
+## Step 6: Validate the configuration
 
 Before you create the cluster, it's a good idea to validate the configuration to make sure that the hardware and hardware settings are compatible with failover clustering. You must have at least two servers to run all tests. If you have only one node, many of the critical storage tests do not run.
 
@@ -42,21 +46,21 @@ Test-Cluster –Node Server1, Server2
 > [!NOTE]
 > The **Test-Cluster** cmdlet outputs the results to a log file in the current working directory. For example: C:\Users\<username>\AppData\Local\Temp\
 
-## Step 6: Deploy the operating system
+## Step 7: Create a failover cluster
 
-Next, deploy the Azure Stack HCI operating system on each server you want to cluster. Create a failover cluster, and connect to Azure for usage metering and additional services.
+Create a failover cluster using Windows Admin Center or Powershell.
 
-## Step 7: Validate the cluster
+## Step 8: Validate the cluster
 
-After deploying a server cluster, run the Validate-DCB tool to test networking, and use the Validate feature in Windows Admin Center by selecting **Tools > Servers > Inventory > Validate cluster**.
+After deploying a cluster, run the Validate-DCB tool to test networking, and use the Validate feature in Windows Admin Center by selecting **Tools > Servers > Inventory > Validate cluster**.
 
-## Step 8: Deploy multi-site clusters
+## Step 9: Deploy multi-site clusters
 
 For native disaster recovery and business continuity, you can deploy a stretched cluster that spans two geographically separate sites.
 
-## Step 9: Deploy workloads
+## Step 10: Deploy workloads and connect to Azure
 
-You are now ready to create virtual machines and deploy workloads on Azure Stack HCI.
+You are now ready to create virtual machines and deploy workloads on Azure Stack HCI. You can also connect your cluster to Azure for usage metering and additional services.
 
 ## Next steps
 
