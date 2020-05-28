@@ -33,7 +33,7 @@ This section describes scenarios in which validation is also needed or useful.
  
 - **Validation after the cluster is configured and in use:**
 
-  - **Before adding a node:** When you add a server to a cluster, we strongly recommend to run the Validate cluster feature. Specify both the existing cluster nodes and the new node when you run the feature.
+  - **Before adding a server to the cluster:** When you add a server to a cluster, we strongly recommend validating the cluster. Specify both the existing cluster members and the new server when you run cluster validation.
   
   - **When adding drives:** When you add additional drives to the cluster, which is different from replacing failed drives or creating virtual disks or volumes that rely on the existing drives, run the Validate cluster feature to confirm that the new storage will function correctly.
 
