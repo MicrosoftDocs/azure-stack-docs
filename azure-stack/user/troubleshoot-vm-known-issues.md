@@ -48,8 +48,8 @@ You can find known issues for troubleshooting the Azure Stack Hub compute resour
 - **Occurrence**  
     Common  
 
-## VM diagnostics Storage account 'diagnosticstorageaccount' not found
-- **Applicable**
+## VM diagnostics storage account not found
+- **Applicable**  
     This issue applies to all supported releases.  
 - **Cause**  
     When trying to start a stop-deallocated virtual machine, the following error might be displayed: VM diagnostics Storage account 'diagnosticstorageaccount' not found. Ensure storage account is not deleted. The error occurs if you attempt to start a VM with boot diagnostics enabled, but the referenced boot diagnostics storage account is deleted.  
