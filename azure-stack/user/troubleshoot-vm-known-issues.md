@@ -44,7 +44,7 @@ You can find known issues for troubleshooting the Azure Stack Hub compute resour
 - **Cause**  
     When creating a new virtual machine (VM), the following error might be displayed: Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'. The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.  
 - **Remediation**  
-    Recreate the storage account with the same name you previously use .
+    Recreate the storage account with the same name you previously used.
 - **Occurrence**  
     Common  
 
