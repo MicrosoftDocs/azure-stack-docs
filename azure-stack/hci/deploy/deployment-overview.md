@@ -31,7 +31,7 @@ If your Azure Stack HCI deployment will stretch across multiple sites, determine
 
 ## Step 5: Validate the configuration
 
-Before you create the cluster, validate the configuration to make sure that the hardware and hardware settings are compatible with failover clustering. You must have at least two servers to run all tests. If you have only one node, many of the critical storage tests do not run.
+Before you create the cluster, it's a good idea to validate the configuration to make sure that the hardware and hardware settings are compatible with failover clustering. You must have at least two servers to run all tests. If you have only one node, many of the critical storage tests do not run.
 
 The following example runs all cluster validation tests on computers that are named *Server1* and *Server2*.
 
@@ -48,7 +48,7 @@ Next, deploy the Azure Stack HCI operating system on each server you want to clu
 
 ## Step 7: Validate the cluster
 
-After deploying a server cluster, run the Validate-DCB tool to test networking, and use the Validate feature in Windows Admin Center.
+After deploying a server cluster, run the Validate-DCB tool to test networking, and use the Validate feature in Windows Admin Center by selecting **Tools > Servers > Inventory > Validate cluster**.
 
 ## Step 8: Deploy multi-site clusters
 
