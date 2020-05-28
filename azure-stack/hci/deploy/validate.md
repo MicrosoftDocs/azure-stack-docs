@@ -15,7 +15,7 @@ This how-to article focuses on why cluster validation is important, and when to 
 - After deploying a server cluster, run the Validate-DCB tool to test networking, and use the Validate feature in Windows Admin Center.
 - After updating a server cluster, depending on your scenario, run both validation options to troubleshoot cluster issues.
 
-To learn about how to create a failover cluster, see [Create a failover cluster](/windows-server/failover-clustering/create-failover-cluster#create-the-failover-cluster).
+To learn about how to deploy an Azure Stack HCI cluster, see [Deploy Storage Spaces Direct](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct).
 
 ## What is cluster validation?
 Cluster validation is intended to catch hardware or configuration problems before a cluster goes into production. Cluster validation helps to ensure that the Azure Stack HCI solution that you're about to deploy is truly dependable. You can also use cluster validation on configured failover clusters as a diagnostic tool.
@@ -33,7 +33,7 @@ This section describes scenarios in which validation is also needed or useful.
  
 - **Validation after the cluster is configured and in use:**
 
-  - **Before adding a node:** When you add a server to a cluster, we strongly recommend to run the Validate cluster feature. Specify both the existing cluster nodes and the new node when you run the feature.
+  - **Before adding a server to the cluster:** When you add a server to a cluster, we strongly recommend validating the cluster. Specify both the existing cluster members and the new server when you run cluster validation.
   
   - **When adding drives:** When you add additional drives to the cluster, which is different from replacing failed drives or creating virtual disks or volumes that rely on the existing drives, run the Validate cluster feature to confirm that the new storage will function correctly.
 
@@ -44,7 +44,7 @@ This section describes scenarios in which validation is also needed or useful.
 ## Step 1: Validate networking
 The Microsoft Validate-DCB tool is designed to validate the Data Center Bridging (DCB) configuration on the cluster. To do this, the tool takes an expected configuration as input, and then tests each server in the cluster. This section covers how to install and run the Validate-DCB tool, review results, and resolve networking errors that the tool identifies.
 
-On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE) requires DCB technologies to make the network fabric lossless. The configuration requirements are complex and error prone. For these reasons, exact configuration is required across:
+On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE) requires DCB technologies to make the network fabric lossless. And while iWARP doesn't require DCB, it's still recommended. However, configuring DCB can be complex, with exact configuration required across:
 - Each server in the cluster
 - Each network port that RDMA traffic passes through on the fabric
 
@@ -61,7 +61,7 @@ To install and run the Validate-DCB tool:
 1. On your management PC, open a Windows PowerShell session as an Administrator, and then use the following command to install the tool.
 
     ```powershell
-    Install-module validate-DCB
+    Install-Module Validate-DCB
     ```
 
 1. Accept the requests to use the NuGet provider and access the repository to install the tool.
@@ -77,12 +77,12 @@ To install and run the Validate-DCB tool:
 
 1. On the Adapters page:
    1. Select the **vSwitch attached** checkbox and type the name of the vSwitch.
-   1. Under **Adapter Name**, type the name of each physical NIC, under **Host vNIC Name**, the name of each virtual NIC (vNIC), and under **VLAN**, the name of each network.
+   1. Under **Adapter Name**, type the name of each physical NIC, under **Host vNIC Name**, the name of each virtual NIC (vNIC), and under **VLAN**, the VLAN ID in use with for each adapter.
    1. Expand the **RDMA Type** drop-down list box and select the appropriate protocol: **RoCE** or **iWARP**. Also set **Jumbo Frames** to the appropriate value for your network, and then select **Next**.
 
     :::image type="content" source="../media/validate/adapters.png" alt-text="The Adapters page of the Validate-DCB configuration wizard":::
 
-    > [!IMPORTANT]
+    > [!INOTE]
     > - To learn more about how SR-IOV improves network performance, see [Overview of Single Root I/O Virtualization (SR-IOV)](https://docs.microsoft.com/windows-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-).
 
 1. On the Data Center Bridging page, modify the values to match your organization's settings for **Priority**, **Policy Name**, and **Bandwidth Reservation**, and then select **Next**.
@@ -94,7 +94,7 @@ To install and run the Validate-DCB tool:
 
 1. On the Save and Deploy page, in the **Configuration File Path** box, save the configuration file using a .ps1 extension to a location where you can use it again later if needed, and then select **Export** to start running the Validate-DCB tool.
 
-   - You can optionally deploy your configuration file by completing the **Deploy Configuration to Nodes** section of the page.
+   - You can optionally deploy your configuration file by completing the **Deploy Configuration to Nodes** section of the page, which includes the ability to use an Azure Automation account to deploy the configuration and then validate it. See [Create an Azure Automation account](/azure/automation/automation-quickstart-create-account) to get started with Azure Automation.
 
     :::image type="content" source="../media/validate/save-and-deploy.png" alt-text="The Save and Deploy page of the Validate-DCB configuration wizard":::
 
@@ -143,7 +143,6 @@ Now you're ready to view your cluster validation report.
 There are a couple ways to access validation reports:
 - On the **Inventory** page, expand the **More** submenu, and then select **View validation reports**.
 
-    Or
 
 - At the top right of **Windows Admin Center**, select the **Notifications** bell icon to display the **Notifications** pane.
 Select the **Successfully validated cluster** notice, and then select **Go to Failover Cluster validation report**.
