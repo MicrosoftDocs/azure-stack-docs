@@ -61,7 +61,7 @@ To install and run the Validate-DCB tool:
 1. On your management PC, open a Windows PowerShell session as an Administrator, and then use the following command to install the tool.
 
     ```powershell
-    Install-module validate-DCB
+    Install-Module Validate-DCB
     ```
 
 1. Accept the requests to use the NuGet provider and access the repository to install the tool.
