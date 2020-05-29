@@ -4,7 +4,7 @@ description: This how-to article focuses on why cluster validation is important,
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 5/28/2020
+ms.date: 5/29/2020
 ---
 
 # Validate an Azure Stack HCI cluster
@@ -12,7 +12,7 @@ ms.date: 5/28/2020
 >Applies to: Azure Stack HCI, version v20H2
 
 This how-to article focuses on why cluster validation is important, and when to run it on an existing Azure Stack HCI cluster. We recommend performing cluster validation for the following primary scenarios:
-- After deploying a server cluster, run the Validate-DCB tool to test networking, and use the Validate feature in Windows Admin Center.
+- After deploying a server cluster, run the Validate-DCB tool to test networking, and run cluster validation in Windows Admin Center.
 - After updating a server cluster, depending on your scenario, run both validation options to troubleshoot cluster issues.
 
 To learn about how to deploy an Azure Stack HCI cluster, see [Deploy Storage Spaces Direct](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct).
@@ -26,7 +26,7 @@ This section describes scenarios in which validation is also needed or useful.
 - **Validation before the cluster is configured:**
   - **A set of servers ready to become a failover cluster:** This is the most straightforward validation scenario. The hardware components (systems, networks, and storage) are connected, but the systems aren't yet functioning as a cluster. Running tests in this situation has no affect on availability.
  
-  - **Server VMs:** For virtualized servers in a cluster, run the Validate cluster feature as you would on any other new cluster. The requirement to run the feature is the same whether you have:
+  - **Server VMs:** For virtualized servers in a cluster, run cluster validation as you would on any other new cluster. The requirement to run the feature is the same whether you have:
     - A "host cluster" where failover occurs between two physical computers.
     - A "guest cluster" where failover occurs between guest operating systems on the same physical computer.
  
@@ -34,11 +34,11 @@ This section describes scenarios in which validation is also needed or useful.
 
   - **Before adding a server to the cluster:** When you add a server to a cluster, we strongly recommend validating the cluster. Specify both the existing cluster members and the new server when you run cluster validation.
   
-  - **When adding drives:** When you add additional drives to the cluster, which is different from replacing failed drives or creating virtual disks or volumes that rely on the existing drives, run the Validate cluster feature to confirm that the new storage will function correctly.
+  - **When adding drives:** When you add additional drives to the cluster, which is different from replacing failed drives or creating virtual disks or volumes that rely on the existing drives, run cluster validation to confirm that the new storage will function correctly.
 
-  - **When making changes that affect firmware or drivers:** If you upgrade or make changes to the cluster that affect firmware or drivers, you must run the Validate cluster feature to confirm that the new combination of hardware, firmware, drivers, and software supports failover cluster functionality.
+  - **When making changes that affect firmware or drivers:** If you upgrade or make changes to the cluster that affect firmware or drivers, you must run cluster validation to confirm that the new combination of hardware, firmware, drivers, and software supports failover cluster functionality.
 
-  - **After restoring a system from backup:** After you restore a system from backup, run the Validate cluster feature to confirm that the system functions correctly as part of a cluster.
+  - **After restoring a system from backup:** After you restore a system from backup, run cluster validation to confirm that the system functions correctly as part of a cluster.
 
 ## Step 1: Validate networking
 The Microsoft Validate-DCB tool is designed to validate the Data Center Bridging (DCB) configuration on the cluster. To do this, the tool takes an expected configuration as input, and then tests each server in the cluster. This section covers how to install and run the Validate-DCB tool, review results, and resolve networking errors that the tool identifies.
@@ -72,7 +72,7 @@ To install and run the Validate-DCB tool:
 1. On the Welcome to the Validate-DCB configuration wizard page, select **Next**.
 1. On the Clusters and Nodes page, type the name of the server cluster that you want to validate, select **Resolve** to list it on the page, and then select **Next**.
 
-    :::image type="content" source="../media/validate/clusters-and-nodes.png" alt-text="The Clusters and Nodes page of the Validate-DCB configuration wizard" lightbox="media/validate/clusters-and-nodes.png":::
+    :::image type="content" source="../media/validate/clusters-and-nodes.png" alt-text="The Clusters and Nodes page of the Validate-DCB configuration wizard" lightbox="../media/validate/clusters-and-nodes.png":::
 
 1. On the Adapters page:
    1. Select the **vSwitch attached** checkbox and type the name of the vSwitch.
