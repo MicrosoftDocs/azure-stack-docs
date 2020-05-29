@@ -53,18 +53,18 @@ To get these tools, clone the GitHub repository from the `az` branch or download
 cd \
 
 # Download the tools archive.
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
 invoke-webrequest `
   https://github.com/Azure/AzureStack-Tools/archive/az.zip `
-  -OutFile az.zip
+  -OutFile master.zip
 
 # Expand the downloaded files.
-expand-archive az.zip `
+expand-archive master.zip `
   -DestinationPath . `
   -Force
 
 # Change to the tools directory.
- cd AzureStack-Tools-az
+cd AzureStack-Tools-master
 
 ```
 
