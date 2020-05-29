@@ -6,7 +6,7 @@ ms.author: bryanla
 ms.topic: how-to
 ms.date: 05/07/2020
 ms.lastreviewed: 05/07/2020
-robots: nosnippet
+ROBOTS: nosnippet
 
 # Intent: As an Azure Stack operator, I want to use an app identity to access resources. 
 # Keyword: azure stack hub app identity service principal
