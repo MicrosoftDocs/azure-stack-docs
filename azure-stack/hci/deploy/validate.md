@@ -72,21 +72,21 @@ To install and run the Validate-DCB tool:
 1. On the Welcome to the Validate-DCB configuration wizard page, select **Next**.
 1. On the Clusters and Nodes page, type the name of the server cluster that you want to validate, select **Resolve** to list it on the page, and then select **Next**.
 
-    :::image type="content" source="../media/validate/clusters-and-nodes.png" alt-text="The Clusters and Nodes page of the Validate-DCB configuration wizard" lightbox="../media/validate/clusters-and-nodes.png":::
+    :::image type="content" source="../media/validate/clusters-and-nodes.png" alt-text="The Clusters and Nodes page of the Validate-DCB configuration wizard":::
 
 1. On the Adapters page:
    1. Select the **vSwitch attached** checkbox and type the name of the vSwitch.
    1. Under **Adapter Name**, type the name of each physical NIC, under **Host vNIC Name**, the name of each virtual NIC (vNIC), and under **VLAN**, the VLAN ID in use for each adapter.
    1. Expand the **RDMA Type** drop-down list box and select the appropriate protocol: **RoCE** or **iWARP**. Also set **Jumbo Frames** to the appropriate value for your network, and then select **Next**.
 
-    :::image type="content" source="../media/validate/adapters.png" alt-text="The Adapters page of the Validate-DCB configuration wizard":::
+    :::image type="content" source="../media/validate/adapters.png" alt-text="The Adapters page of the Validate-DCB configuration wizard" lightbox="../media/validate/adapters.png":::
 
     > [!NOTE]
     > - To learn more about how SR-IOV improves network performance, see [Overview of Single Root I/O Virtualization (SR-IOV)](https://docs.microsoft.com/windows-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-).
 
 1. On the Data Center Bridging page, modify the values to match your organization's settings for **Priority**, **Policy Name**, and **Bandwidth Reservation**, and then select **Next**.
 
-    :::image type="content" source="../media/validate/data-center-bridging.png" alt-text="The Data Center Bridging page of the Validate-DCB configuration wizard":::
+    :::image type="content" source="../media/validate/data-center-bridging.png" alt-text="The Data Center Bridging page of the Validate-DCB configuration wizard" lightbox="../media/validate/data-center-bridging.png":::
 
     > [!NOTE]
     > Selecting RDMA over RoCE on the previous wizard page requires DCB for network reliability on all NICs and switchports.
