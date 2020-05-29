@@ -4,18 +4,29 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 05/21/2020
+ms.date: 05/29/2020
 ---
 
 # Update Azure Stack HCI clusters
 
 > Applies to: Azure Stack HCI, version 20H2, Windows Server 2019
 
-When updating Azure Stack HCI clusters, the goal is to maintain availability by updating only one server in the cluster at a time. Many operating system updates require taking the server offline, for example to do a restart or to update software such as the network stack. We recommend using [Cluster-Aware Updating (CAU)](/windows-server/failover-clustering/cluster-aware-updating), a feature that makes it easier to install Windows updates to every server in your cluster while keeping your applications running by automating the software updating process. Cluster-Aware Updating can be used on all editions of Windows Server, including Server Core installations.
+When updating Azure Stack HCI clusters, the goal is to maintain availability by updating only one server in the cluster at a time. Many operating system updates require taking the server offline, for example to do a restart or to update software such as the network stack. We recommend using [Cluster-Aware Updating (CAU)](/windows-server/failover-clustering/cluster-aware-updating), a feature that makes it easier to install Windows updates to every server in your cluster while keeping your applications running by automating the software updating process. Cluster-Aware Updating can be used on all editions of Windows Server, including Server Core installations, and can be initiated either through Windows Admin Center or using PowerShell.
+
+## Update a cluster using Windows Admin Center
+
+Windows Admin Center makes it easy to update a cluster and apply operating system and solution updates using a simple user interface. If you've purchased an integrated system from a Microsoft hardware partner, it’s easy to get the latest drivers, firmware, and other updates directly from Windows Admin Center by installing the appropriate partner update extension(s). ​If your hardware was not purchased as an integrated system, firmware and driver updates may need to be performed separately, following the hardware vendor's recommendations.
+
+1. When you connect to a cluster, the Windows Admin Center dashboard will alert you to critical updates along with a link to update now. Alternatively, select **Updates** from the **Tools** menu at the left.
+2. To use the Cluster-Aware updating tool in Windows Admin Center, you must enable Credential Security Service Provider (CredSSP) and provide explicit credentials. When asked if CredSSP should be enabled, click **Yes**.
+3. Specify your username and password, and click **Continue**.
+4. Available updates will be displayed; click **Check Available Updates** to refresh the list.
+5. Select the updates you wish to install and click **Apply All Updates**. This will install the updates on every server in the cluster. If a restart is needed, cluster roles such as virtual machines will be moved to another server first to prevent any disruption.
+6. To improve security, disable CredSSP as soon as you're finished installing the updates.
 
 ## Configure Cluster-Aware Updating
 
-Before you can update a cluster, you first need to [create and validate a failover cluster](/windows-server/failover-clustering/create-failover-cluster#create-a-failover-cluster-by-using-windows-powershell) and install the **Failover Clustering Tools**, which are part of the **Remote Server Administration Tools (RSAT)** and include the Cluster-Aware Updating software. If you're updating an existing cluster, these tools may already be installed.
+Before you can update a cluster using Cluster-Aware Updating, you first need to install the **Failover Clustering Tools**, which are part of the **Remote Server Administration Tools (RSAT)** and include the Cluster-Aware Updating software. If you're updating an existing cluster, these tools may already be installed.
 
 Cluster-Aware Updating has two plug-ins:
 
@@ -100,17 +111,6 @@ Add-CauClusterRole -ClusterName Cluster1 -MaxFailedNodes 0 -RequireAllNodesOnlin
 ### Enable firewall rules to allow remote restarts
 
 You'll likely need to allow the servers to restart remotely during the update process. If you're using Windows Admin Center to perform the updates, Windows Firewall rules will automatically be updated on each server to allow remote restarts. If you're updating with PowerShell, either enable the Remote Shutdown firewall rule group in Windows Firewall or pass the -EnableFirewallRules parameter to the cmdlet.
-
-## Update a cluster using Windows Admin Center
-
-Windows Admin Center makes it easy to update a cluster and apply operating system and solution updates using a simple user interface. If you've purchased an integrated system from a Microsoft hardware partner, it’s easy to get the latest drivers, firmware, and other updates directly from Windows Admin Center by installing the appropriate partner update extension(s). ​If your hardware was not purchased as an integrated system, firmware and driver updates may need to be performed separately, following the hardware vendor's recommendations.
-
-1. When you connect to a cluster, the Windows Admin Center dashboard will alert you to critical updates along with a link to update now. Alternatively, select **Updates** from the **Tools** menu at the left.
-2. To use the Cluster-Aware updating tool in Windows Admin Center, you must enable Credential Security Service Provider (CredSSP) and provide explicit credentials. When asked if CredSSP should be enabled, click **Yes**. 
-3. Specify your username and password, and click **Continue**.
-4. Available updates will be displayed; click **Check Available Updates** to refresh the list.
-5. Select the updates you wish to install and click **Apply All Updates**. This will install the updates on every server in the cluster. If a restart is needed, cluster roles such as virtual machines will be moved to another server first to prevent any disruption.
-6. To improve security, disable CredSSP as soon as you're finished installing the updates.
 
 ## Check for updates with PowerShell
 
