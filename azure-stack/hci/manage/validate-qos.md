@@ -1,9 +1,9 @@
 ---
 title: Validate QoS Settings
 description: Validate QoS settings configuration for Azure Stack HCI clusters
-author: v-kedow
+author: khdownie
 ms.topic: article
-ms.date: 05/29/2020
+ms.date: 06/01/2020
 ms.author: v-kedow
 ms.reviewer: JasonGerend
 ---
