@@ -4,7 +4,7 @@ description: Learn how to add public IP addresses to Azure Stack Hub.
 author: justinha
 
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 05/28/2020
 ms.author: justinha
 ms.reviewer: scottnap
 ms.lastreviewed: 09/10/2019
@@ -16,7 +16,9 @@ ms.lastreviewed: 09/10/2019
 
 # Add public IP addresses
 
-In this article, we refer to external addresses as public IP addresses. In the context of Azure Stack Hub, a public IP address is an IP address that's accessible from outside of Azure Stack Hub. Whether that external network is public internet routable or is on an intranet and uses private address space doesn't matter for the purposes of this article—the steps are the same.
+In this article, we refer to external addresses as public IP addresses. In the context of Azure Stack Hub, a public IP address is an IP address that's accessible from outside of Azure Stack Hub. Whether that external network is public internet routable or is on an intranet and uses private address space doesn't matter for the purposes of this article, the steps are the same. 
+
+While you can set up multiple IP pools, you won't be able to select which one to use. Azure Stack Hub threads all IP pools as one. When you create a resource, you can't pick an IP for assignment.
 
 > [!IMPORTANT]
 > The steps in this article apply only to systems that were deployed using the partner toolkit version 1809 or later. Systems that were deployed before version 1809 require the top-of-rack (TOR) switch access control lists (ACLs) to be updated to PERMIT the new public VIP pool range. If you are running older switch configurations, work with your OEM to either add the appropriate PERMIT ACLs for the new public IP pool or reconfigure your switch using the latest partner toolkit to prevent the new public IP addresses from being blocked.
