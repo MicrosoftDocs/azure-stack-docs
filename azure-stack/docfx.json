@@ -85,25 +85,6 @@
           "**/*.yml"
         ],
         "exclude": [
-          "**/obj/**",
-          "**/includes/**",
-          "_themes/**",
-          "_themes.pdf/**",
-          "README.md",
-          "LICENSE",
-          "LICENSE-CODE",
-          "ThirdPartyNotices"
-        ]
-      },
-      {
-        "group": "version-ash",
-        "src" : ".",
-        "dest" : ".",
-        "files": [
-          "**/*.md",
-          "**/*.yml"
-        ],
-        "exclude": [
           "asdk/**",
           "operator/**",
           "partner/**",
@@ -193,22 +174,6 @@
           "**/*.svg",
           "**/*.gif"
         ],
-        "exclude": [
-          "**/obj/**",
-          "_themes/**",
-          "_themes.pdf/**"
-        ]
-      },
-      {
-        "files": [
-          "**/*.png",
-          "**/*.jpg",
-          "**/*.svg",
-          "**/*.gif"
-        ],
-        "src": ".",
-        "dest": ".",
-        "group": "version-ash",
         "exclude": [
           "asdk/**",
           "operator/**",
