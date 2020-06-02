@@ -3,7 +3,7 @@ title: Validate QoS Settings
 description: Validate QoS settings configuration for Azure Stack HCI clusters
 author: khdownie
 ms.topic: article
-ms.date: 06/01/2020
+ms.date: 06/02/2020
 ms.author: v-kedow
 ms.reviewer: JasonGerend
 ---
@@ -16,7 +16,21 @@ As traffic increases on your network, it is increasingly important for you to ba
 
 On your network, mission-critical and latency-sensitive applications must compete for network bandwidth against lower priority traffic. At the same time, some users and computers with specific network performance requirements might require differentiated service levels.
 
-This article discusses how to validate your QoS (quality of service) settings for consistency across server nodes, and verify that important rules are defined.
+This article discusses how to validate your QoS (quality of service) settings for consistency across servers in an Azure Stack HCI cluster, and verify that important rules are defined.
+
+## Install data center bridging
+
+Data center bridging is required to use QoS-specific cmdlets. To check if the data center bridging feature is installed, run the following cmdlet in PowerShell:
+
+```PowerShell
+Get-WindowsFeature -Name Data-Center-Bridging -ComputerName Server1
+```
+
+If it is not present, install it:
+
+```PowerShell
+Install-WindowsFeature –Name Data-Center-Bridging -ComputerName Server1
+```
 
 ## Run a cluster validation test
 
@@ -32,35 +46,45 @@ You can view the validation report in Windows Admin Center, or by accessing a lo
 
 Near the bottom of the report, you will see "Validate QoS Settings Configuration" and a corresponding report for each server in the cluster.
 
+To understand which traffic classes are already set, use the `Get-NetQosTrafficClass` cmdlet.
+
 ## Validate networking QoS rules
 
-Validate the consistency of DCB Willing Status and Flow Control Status settings between cluster nodes.
+Validate the consistency of DCB willing status and priority flow control status settings between servers in the cluster. 
 
-### DCB Willing Status
+### DCB willing status
 
-Network adapters that support the Data Center Bridging Capability Exchange protocol (DCBX) can accept configurations from a remote device. To enable this capability, the DCB Willing bit on the network adapter must be set to true. If the Willing bit is set to false, the device will reject all configuration attempts from remote devices and enforce only the local configurations.
+Network adapters that support the Data Center Bridging Capability Exchange protocol (DCBX) can accept configurations from a remote device. To enable this capability, the DCB willing bit on the network adapter must be set to true. If the willing bit is set to false, the device will reject all configuration attempts from remote devices and enforce only the local configurations. If you're using RoCE adapters, then the willing bit should be set to false on all servers.
 
 All servers in an Azure Stack HCI cluster should have the DCB Willing bit set the same way.
 
-### DCB Flow Control Status
+Use the `Set-NetQosDcbxSetting` cmdlet to set the DCB willing bit, as in the following example:
+
+```PowerShell
+Set-NetQosDcbxSetting -InterfaceAlias StorageA –Willing $false -Confirm:$False
+```
+
+### DCB flow control status
 
 Priority-based flow control is essential if the upper layer protocol, such as Fiber Channel, assumes a lossless underlying transport. DCB flow control can be enabled or disabled either globally or for individual network adapters. If enabled, it allows for the creation of QoS policies that prioritize certain application traffic.
 
-In order for QoS policies to work seamlessly during failover, all servers in an Azure Stack HCI cluster should have the same flow control status settings.
+In order for QoS policies to work seamlessly during failover, all servers in an Azure Stack HCI cluster should have the same flow control status settings. If you're using RoCE adapters, then priority flow control must be enabled on all servers.
+
+Use the `Enable-NetQosFlowControl` and `Disable-NetQosFlowControl` cmdlets with the -priority parameter to turn priority flow control on or off.
 
 ## Validate storage QoS rules
 
-Validate that all nodes have a rule for Clustering and for SMB or SMB Direct. Otherwise, this may cause connectivity problems and performance problems.
+Validate that all nodes have a rule for failover clustering and for SMB or SMB Direct. Otherwise, this may cause connectivity problems and performance problems.
 
-### QoS Rule for Failover Clustering
+### QoS Rule for failover clustering
 
 If **any** storage QoS rules are defined in a cluster, then a QoS rule for failover clustering should be present, or connectivity problems may occur.
 
-### QoS Rule for SMB
+### QoS rule for SMB
 
 If some or all nodes have QOS rules defined but do not have a QOS Rule for SMB, this may cause connectivity and performance problems for SMB.
 
-### QoS Rule for SMB Direct
+### QoS rule for SMB Direct
 
 If some or all nodes have QOS rules defined but do not have a QOS Rule for SMB Direct, this may cause connectivity and performance problems for SMB Direct.
 
