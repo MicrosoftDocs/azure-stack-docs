@@ -72,6 +72,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Released a new feature that enables an autonomous healing capability, which detects faults, assesses impact, and safely mitigates system issues. With this feature, we are working toward increased availability of the system without manual intervention. With release 2005 and later, customers will experience a reduction in the number of alerts. Any failure in this pipeline doesn't require action by Azure Stack Hub operators unless notified.
 - There is a new option in the Azure Stack Hub admin portal for air-gapped/disconnected Azure Stack Hub customers, to save logs locally. You can store the logs in a local SMB share when Azure Stack Hub is disconnected from Azure.
+- The Azure Stack Hub admin portal does not block certain operations if a system operation is already in progress. For example if an update is in progress it will not be possible to add a new scale unit node.
 
 ### Improvements
 
