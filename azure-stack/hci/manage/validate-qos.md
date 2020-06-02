@@ -74,7 +74,11 @@ In order for QoS policies to work seamlessly during failover, all servers in an 
 
 Use the `Get-NetQosFlowControl` cmdlet to get the current flow control configuration. All priorities are disabled by default.
 
-Use the `Enable-NetQosFlowControl` and `Disable-NetQosFlowControl` cmdlets with the -priority parameter to turn priority flow control on or off.
+Use the `Enable-NetQosFlowControl` and `Disable-NetQosFlowControl` cmdlets with the -priority parameter to turn priority flow control on or off, for example:
+
+```PowerShell
+Enable-NetQosFlowControl –Priority 3
+```
 
 ## Validate storage QoS rules
 
@@ -98,7 +102,7 @@ New-NetQosPolicy "SMB" -NetDirectPortMatchCondition 445 -PriorityValue8021Action
 
 ### QoS rule for SMB Direct
 
-If some or all nodes have QOS rules defined but do not have a QOS Rule for SMB Direct, this may cause connectivity and performance problems for SMB Direct.
+SMB Direct bypasses the networking stack, instead using RDMA methods to transfer data. If some or all nodes have QOS rules defined but do not have a QOS Rule for SMB Direct, this may cause connectivity and performance problems for SMB Direct.
 
 ## Next steps
 
