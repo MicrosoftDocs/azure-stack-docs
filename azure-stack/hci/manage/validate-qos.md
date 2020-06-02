@@ -50,15 +50,17 @@ To understand which traffic classes are already set, use the `Get-NetQosTrafficC
 
 ## Validate networking QoS rules
 
-Validate the consistency of DCB willing status and priority flow control status settings between servers in the cluster. 
+Validate the consistency of DCB willing status and priority flow control status settings between servers in the cluster.
+
+**Is there a way to do the stuff below in WAC? I don't see QoS on the UI anywhere.**
 
 ### DCB willing status
 
-Network adapters that support the Data Center Bridging Capability Exchange protocol (DCBX) can accept configurations from a remote device. To enable this capability, the DCB willing bit on the network adapter must be set to true. If the willing bit is set to false, the device will reject all configuration attempts from remote devices and enforce only the local configurations. If you're using RoCE adapters, then the willing bit should be set to false on all servers.
+Network adapters that support the Data Center Bridging Capability Exchange protocol (DCBX) can accept configurations from a remote device. To enable this capability, the DCB willing bit on the network adapter must be set to true. If the willing bit is set to false, the device will reject all configuration attempts from remote devices and enforce only the local configurations. If you're using RoCE adapters, then the willing bit should be set to false on all servers. **Is this true?**
 
-All servers in an Azure Stack HCI cluster should have the DCB Willing bit set the same way.
+All servers in an Azure Stack HCI cluster should have the DCB willing bit set the same way.
 
-Use the `Set-NetQosDcbxSetting` cmdlet to set the DCB willing bit, as in the following example:
+Use the `Set-NetQosDcbxSetting` cmdlet to set the DCB willing bit to either true or false, as in the following example:
 
 ```PowerShell
 Set-NetQosDcbxSetting -InterfaceAlias StorageA –Willing $false -Confirm:$False
@@ -68,21 +70,31 @@ Set-NetQosDcbxSetting -InterfaceAlias StorageA –Willing $false -Confirm:$False
 
 Priority-based flow control is essential if the upper layer protocol, such as Fiber Channel, assumes a lossless underlying transport. DCB flow control can be enabled or disabled either globally or for individual network adapters. If enabled, it allows for the creation of QoS policies that prioritize certain application traffic.
 
-In order for QoS policies to work seamlessly during failover, all servers in an Azure Stack HCI cluster should have the same flow control status settings. If you're using RoCE adapters, then priority flow control must be enabled on all servers.
+In order for QoS policies to work seamlessly during failover, all servers in an Azure Stack HCI cluster should have the same flow control status settings. If you're using RDMA over Converged Ethernet (RoCE) adapters, then priority flow control must be enabled on all servers.
+
+Use the `Get-NetQosFlowControl` cmdlet to get the current flow control configuration. All priorities are disabled by default.
 
 Use the `Enable-NetQosFlowControl` and `Disable-NetQosFlowControl` cmdlets with the -priority parameter to turn priority flow control on or off.
 
 ## Validate storage QoS rules
 
-Validate that all nodes have a rule for failover clustering and for SMB or SMB Direct. Otherwise, this may cause connectivity problems and performance problems.
+Validate that all nodes have a QoS rule for failover clustering and for SMB or SMB Direct. Otherwise, connectivity problems and performance problems may occur.
 
 ### QoS Rule for failover clustering
 
-If **any** storage QoS rules are defined in a cluster, then a QoS rule for failover clustering should be present, or connectivity problems may occur.
+If **any** storage QoS rules are defined in a cluster, then a QoS rule for failover clustering should be present, or connectivity problems may occur. To add a new network QoS rule for failover clustering, use the `New-NetQosPolicy` cmdlet as in the following example:
+
+```PowerShell
+New-NetQosPolicy "Cluster" -Cluster -PriorityValue8021Action 7
+```
 
 ### QoS rule for SMB
 
-If some or all nodes have QOS rules defined but do not have a QOS Rule for SMB, this may cause connectivity and performance problems for SMB.
+If some or all nodes have QOS rules defined but do not have a QOS Rule for SMB, this may cause connectivity and performance problems for SMB. To add a new network QoS rule for SMB, use the `New-NetQosPolicy` cmdlet as in the following example:
+
+```PowerShell
+New-NetQosPolicy "SMB" -NetDirectPortMatchCondition 445 -PriorityValue8021Action 3
+```
 
 ### QoS rule for SMB Direct
 
