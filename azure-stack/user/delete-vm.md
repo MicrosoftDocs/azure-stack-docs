@@ -25,11 +25,11 @@ When you create a new VM you typically create a new resource group and put all t
 
 ::: zone pivot="delete-vm-portal"
 
-[!INCLUDE [Portal](includes/<your-include>.md)]
+[!INCLUDE [Portal](../includes/howto-vm-delete-portal.md)]
 
 ::: zone-end
 
-[!INCLUDE [PowerShell](includes/<your-include>.md)]
+[!INCLUDE [PowerShell](../includes/howto-vm-delete-ps.md)]
 
 ::: zone pivot="delete-vm-ps"
 
