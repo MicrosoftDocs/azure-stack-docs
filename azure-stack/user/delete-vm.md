@@ -29,10 +29,11 @@ When you create a new VM you typically create a new resource group and put all t
 
 ::: zone-end
 
-[!INCLUDE [PowerShell](../includes/howto-vm-delete-ps.md)]
-
 ::: zone pivot="delete-vm-ps"
 
+[!INCLUDE [PowerShell](../includes/howto-vm-delete-ps.md)]
+
+::: zone-end
 
 ## Next steps
 
