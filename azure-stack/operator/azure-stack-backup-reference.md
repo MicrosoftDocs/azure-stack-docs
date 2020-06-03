@@ -112,6 +112,15 @@ We recommend you back up at last two times a day and keep at most seven days of 
 | SMB file share hosted on a storage device within the trusted network environment. | Port 445 is required if the Azure Stack Hub instance resides in a firewalled environment. Infrastructure Backup Controller will initiate a connection to the SMB file server over port 445. |
 | To use FQDN of file server, the name must be resolvable from the PEP.             |                                                                                                                                                                                         |
 
+#### Firewall rules
+Make sure to setup firewall rules to allow connectivity between ERCS VMs to the external storage location. 
+
+| Source | Target | Protocol/Port |
+|------------------|-----------------------|--------------------------------|
+| ERCS VM 1        | Storage location      | 445/SMB                        |
+| ERCS VM 2        | Storage location      | 445/SMB                        |
+| ERCS VM 3        | Storage location      | 445/SMB                        |
+
 > [!Note]  
 > No inbound ports need to be opened.
 
