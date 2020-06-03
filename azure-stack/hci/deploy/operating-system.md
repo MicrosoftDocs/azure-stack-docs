@@ -4,7 +4,7 @@ description: This article discusses different ways to deploy the Azure Stack HCI
 author: JohnCobb1
 ms.author: v-johcob 
 ms.topic: article
-ms.date: 06/01/2020
+ms.date: 06/03/2020
 ---
 
 # Deploy the Azure Stack HCI operating system
@@ -59,7 +59,7 @@ To use Sconfig:
 1. Open a command prompt as an administrator, and then change to the system drive.
 1. At the command prompt, type `Sconfig.cmd` and press Enter to open the Server Configuration tool interface.
 
-    :::image type="content" source="../media/operating-system/sconfig-interface.png" alt-text="The Server Configuration tool interface.":::
+    :::image type="content" source="../media/operating-system/azure-stack-hci-sconfig-screen.png" alt-text="The Server Configuration tool interface.":::
 
 1. Take note of the computer's **Domain/Workgroup** and its **Computer Name** for reference.
 
