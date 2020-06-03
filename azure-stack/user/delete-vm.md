@@ -23,7 +23,7 @@ If you delete an Azure Stack Hub VM, Azure Stack Hub won't automatically remove 
 
 When you create a new VM you typically create a new resource group and put all the dependencies in that resource group. When you want to delete the VM and all its dependencies you can delete the resource group. The Azure Resource Manager will handle the dependencies to successfully delete them. There are times when you cannot delete the resource group in order to remove the VM. For example, the VM may contain resources that are not dependenices of the VM that you would like to keep.
 
-::: zone pivot="delete-vm"
+::: zone pivot="delete-vmgi"
 [!INCLUDE [Portal](../includes/howto-vm-delete-portal.md)]
 ::: zone-end
 
