@@ -25,7 +25,7 @@ Azure Stack HCI uses industry-standard servers with local-attached drives to cre
 
 Take note of the server names, domain names, RDMA protocols and versions, and VLAN ID for your deployment.
 
-### Plan multi-site clusters
+### Plan stretched clusters
 
 If your Azure Stack HCI deployment will stretch across multiple sites, determine how many servers you will need at each site, and whether the cluster configuration will be active/passive or active/active.
 
@@ -58,7 +58,7 @@ Test-Cluster –Node Server1, Server2
 
 5. Connect to Azure
 
-Part of the value of Azure Stack HCI is the ability to connect to Azure for additional services. Customers must have an Azure account and connect to Azure at least once a month to allow for core usage metering data to be uploaded.
+Part of the value of Azure Stack HCI is the ability to connect to Azure for additional services. First, register Windows Admin Center with Azure. Then register Azure Stack HCI with the Azure Stack HCI Azure service.
 
 6. Deploy storage
 
