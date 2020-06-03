@@ -10,7 +10,7 @@ ms.lastreviewed: 06/03/2020
 
 ## Delete a VM with dependencies using the portal
 
-In the case where we cannot delete the resource group (either the dependencies are not in the same resource group, or there are other resources ), follow the steps below:
+In the case where you cannot delete the resource group, either the dependencies are not in the same resource group, or there are other resources, follow the steps below:
 
 1. Open the Azure Stack user portal.
 2. Select **Virtual machines**. Find your virtual machine, and then select your machine to open the Virtual machine blade.

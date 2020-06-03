@@ -14,7 +14,7 @@ groups:
   pivots:
   - id: delete-vm-portal
     title: Portal
-  - id: delete-vm-PS
+  - id: delete-vm-ps
     title: PowerShell
 
 # BELOW: entries inherited from github.com/microsoftdocs/azure-docs-pr/articles/zone-pivot-groups.yml for reuse.

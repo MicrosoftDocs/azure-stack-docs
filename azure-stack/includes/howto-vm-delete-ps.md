@@ -10,7 +10,7 @@ ms.lastreviewed: 06/03/2020
 
 ## Delete a VM with dependencies using PowerShell
 
-In the case where we cannot delete the resource group (either the dependencies are not in the same resource group, or there are other resources ), follow the steps below:
+In the case where you cannot delete the resource group, either the dependencies are not in the same resource group, or there are other resources, follow the steps below:
 
 Connect to the your Azure Stack Hub environment.
 
@@ -56,7 +56,7 @@ $vm | Remove-AzureRmVM _Force
 Remove the vNic.
 
 ```powershell
-$vm | Remove-AzureRmNetworkInterface –Force
+$vm | Remove-AzureRmNetworkInterface -Force
 ```
 
 Remove the OS disc.
