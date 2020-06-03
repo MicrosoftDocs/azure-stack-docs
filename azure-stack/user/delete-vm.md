@@ -19,9 +19,11 @@ zone_pivot_groups: delete-vms
 
 In this article you can find the steps to remove a VM and its dependencies in Azure Stack Hub.
 
+If you delete an Azure Stack Hub VM, Azure Stack Hub won't automatically remove the associated resources, such as the attached data disks, vNics, or the boot diagnostics disk storage container.
+
 When you create a new VM you typically create a new resource group and put all the dependencies in that resource group. When you want to delete the VM and all its dependencies you can delete the resource group. The Azure Resource Manager will handle the dependencies to successfully delete them. There are times when you cannot delete the resource group in order to remove the VM. For example, the VM may contain resources that are not dependenices of the VM that you would like to keep.
 
-::: zone pivot="delete-vm-portal>"
+::: zone pivot="delete-vm-portal"
 ## Delete a VM with dependencies using the portal
 
 In the case where we cannot delete the resource group (either the dependencies are not in the same resource group, or there are other resources ), follow the steps below:
