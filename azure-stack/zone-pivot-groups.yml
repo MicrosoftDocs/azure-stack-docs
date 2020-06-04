@@ -10,7 +10,7 @@ groups:
     title: Disconnected
 - id: delete-vm
   title: Tool to delete VM
-  prompt: Choose a control plane to delete a VM
+  prompt: Choose a tool to delete a VM
   pivots:
   - id: delete-vm-portal
     title: Portal
