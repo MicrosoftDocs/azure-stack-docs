@@ -10,7 +10,7 @@ ms.date: 06/04/2020
 # Deploy the Azure Stack HCI operating system
 After completing the steps in [Before you deploy Azure Stack HCI](before-you-start.md#install-windows-admin-center), the first step in deploying Azure Stack HCI is to install the Azure Stack HCI operating system on each server that you want to cluster. This article discusses different ways to deploy the operating system, and using Windows Admin Center to connect to the servers.
 
-After deploying the operating system, you're ready to use related guidance on creating a server cluster, and getting the latest Windows updates and firmware updates for your servers. Optional steps to get these updates are included in this article. However, we recommending using the Cluster Creation wizard to streamline getting updates. To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/operating-system?branch=pr-en-us-2779).
+After deploying the operating system, you're ready to use related guidance on creating a server cluster, and getting the latest Windows updates and firmware updates for your servers. Optional steps to get these updates are included in this article. However, we recommend using the Cluster Creation wizard to streamline getting updates. To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/operating-system?branch=pr-en-us-2779).
 
 ## Prerequisites
 - Windows Admin Center set up on a system that can access the servers you want to cluster, as described in [Before you deploy Azure Stack HCI](before-you-start.md#install-windows-admin-center).
@@ -50,11 +50,43 @@ For more information about using VMM to do a bare-metal deployment of the operat
 Another option is to install the Azure Stack HCI operating system over the network using [Windows Deployment Services](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831764(v=ws.11)).
 
 ### Manual deployment
-To manually deploy the Azure Stack HCI operating system on the system drive of each server to be clustered, install the operating system via your preferred method, such as booting from a DVD or USB drive.
+To manually deploy the Azure Stack HCI operating system on the system drive of each server to be clustered, install the operating system via your preferred method, such as booting from a DVD or USB drive. Then start each server and use the Server Configuration tool (Sconfig.cmd) to prepare the servers for clustering. To learn more about the tool, see [Configure a Server Core installation with Sconfig.cmd](/windows-server/get-started/sconfig-on-ws2016).
 
-Then start each server and use the Server Configuration tool (Sconfig.cmd) to prepare the servers for clustering. To learn more about the tool, see [Configure a Server Core installation with Sconfig.cmd](/windows-server/get-started/sconfig-on-ws2016).
+To manually install the Azure Stack HCI operating system:
+1. Start the Install Azure Stack HCI wizard on the system drive of the server where you want to install the operating system.
+1. Choose the language to install or accept the default language settings, select **Next**, and then on the Azure Stack HCI page, select **Install now**.
 
-To use Sconfig:
+    :::image type="content" source="../media/operating-system/azure-stack-hci-install-language.png" alt-text="The language page of the Install Azure Stack HCI wizard.":::
+
+The Setup is starting notice displays.
+
+1. On the Applicable notices and license terms page, review the license terms, select the **I accept the license terms** checkbox, and then select **Next**.
+1. On the Which type of installation do you want? page, select **Custom: Install the newer version of Azure Stack HCI only (advanced)**.
+
+    :::image type="content" source="../media/operating-system/azure-stack-hci-install-which-type.png" alt-text="The installation type option page of the Install Azure Stack HCI wizard.":::
+
+1. On the Where do you want to install Azure Stack HCI? page, either confirm the drive location where you want to install the operating system or update it, and then select **Next**.
+
+    :::image type="content" source="../media/operating-system/azure-stack-hci-install-where.png" alt-text="The drive location page of the Install Azure Stack HCI wizard.":::
+
+1. The Installing Azure Stack HCI page displays to show status on the process.
+
+    :::image type="content" source="../media/operating-system/azure-stack-hci-installing.png" alt-text="The status page of the Install Azure Stack HCI wizard.":::
+
+    > [!NOTE]
+    > The installation process restarts the operating system twice to complete the process, and displays notices on starting services before opening an Administrator command prompt.
+
+1. At the Administrator command prompt, select **Ok** to change the user’s password before signing in to the operating system, and press Enter.
+
+    :::image type="content" source="../media/operating-system/azure-stack-hci-change-admin-password.png" alt-text="The change password prompt.":::
+
+1. At the Enter new credential for Administrator prompt, enter a new password, enter it again to confirm it, and then press Enter.
+
+1. At the Your password was changed confirmation prompt, press Enter.
+
+    :::image type="content" source="../media/operating-system/azure-stack-hci-admin-password-changed.png" alt-text="The changed password confirmation prompt":::
+
+To use Sconfig.cmd:
 1. Connect to the server running the Azure Stack HCI operating system that you want to deploy. This could be locally via a keyboard and monitor or using a remote management (headless or BMC) controller.
 1. Open a command prompt as an administrator, and then change to the system drive.
 1. At the command prompt, type `Sconfig.cmd` and press Enter to open the Server Configuration tool interface.
@@ -65,7 +97,7 @@ To use Sconfig:
 
 From the Server Configuration tool interface, you can perform important tasks, such as adding additional users to the local administrators group and changing network settings.
 
-After configuring the operating system as needed with Sconfig on each server, you're ready to use the Cluster Creation wizard in Windows Admin Center to cluster the servers. To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/operating-system?branch=pr-en-us-2779).
+After configuring the operating system as needed with Sconfig.cmd on each server, you're ready to use the Cluster Creation wizard in Windows Admin Center to cluster the servers. To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/operating-system?branch=pr-en-us-2779).
 
 ## Connect Windows Admin Center to your cluster servers
 After installing the operating system on each server in the cluster, you can connect the servers to Windows Admin Center and use this browser-based tool for the rest of the cluster configuration. There are three ways to connect your servers to Windows Admin Center:
