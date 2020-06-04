@@ -4,7 +4,7 @@ description: An overview of the Azure Stack HCI deployment process.
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 06/03/2020
+ms.date: 06/04/2020
 ---
 
 # Azure Stack HCI deployment overview
@@ -41,7 +41,7 @@ Deploy the Azure Stack HCI operating system on each server you want to cluster.
 
 3. Create the cluster
 
-Create a failover cluster using Windows Admin Center or Powershell. For native disaster recovery and business continuity, you can deploy a stretched cluster that spans two geographically separate sites.
+Create a failover cluster using Windows Admin Center or Powershell. For native disaster recovery and business continuity, you can [deploy a stretched cluster](multi-site-cluster.md) that spans two geographically separate sites.
 
 4. Validate the cluster
 
