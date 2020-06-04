@@ -3,14 +3,14 @@ title: Validate QoS Settings
 description: Validate QoS settings configuration for Azure Stack HCI clusters
 author: khdownie
 ms.topic: article
-ms.date: 06/02/2020
+ms.date: 06/04/2020
 ms.author: v-kedow
 ms.reviewer: JasonGerend
 ---
 
 # Validate QoS settings
 
-> Applies to Azure Stack HCI v20H2, Windows Server 2019
+> Applies to Azure Stack HCI, Windows Server 2019
 
 As traffic increases on your network, it is increasingly important for you to balance network performance with the cost of service - but network traffic is not normally easy to prioritize and manage.
 
