@@ -58,7 +58,7 @@ Test-Cluster –Node Server1, Server2
 
 5. Connect to Azure
 
-Part of the value of Azure Stack HCI is the ability to connect to Azure for additional services. First, register Windows Admin Center with Azure. Then register Azure Stack HCI with the Azure Stack HCI Azure service.
+Part of the value of Azure Stack HCI is the ability to connect to Azure for additional services. First, register Windows Admin Center with Azure. Then register Azure Stack HCI with the Azure Stack HCI Azure service. Users must connect to Azure from time to time in order for core usage to be assessed for billing purposes.
 
 6. Deploy storage
 
