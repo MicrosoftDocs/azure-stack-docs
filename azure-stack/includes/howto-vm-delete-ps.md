@@ -12,17 +12,15 @@ ms.lastreviewed: 06/03/2020
 
 In the case where you cannot delete the resource group, either the dependencies are not in the same resource group, or there are other resources, follow the steps below:
 
-Connect to the your Azure Stack Hub environment.
+Connect to the your Azure Stack Hub environment, and then update the following variables with your VM name and resource group. For instructions on connecting to your Powershell session to Azure Stack Hub, see [Connect to Azure Stack Hub with PowerShell as a user](azure-stack-powershell-configure-user.md).
 
 ```powershell
-$vmName = 'MYVM'
- $rgName = 'MyResourceGroup'
- $vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $rgName
- Next, we need to get the VM ID. This is required to find the associated boot diagnostics container.
-
+$vmName = 'DELETEVM'
+$rgName = 'RESOURCEGROUP'
+$vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $rgName
 ```
 
-Retrieve the VM information and name of dependencies.
+Retrieve the VM information and name of dependencies. In the same session, run the following cmdlets:
 
 ```powershell
  $azResourceParams = @{
@@ -34,23 +32,22 @@ Retrieve the VM information and name of dependencies.
  $vmId = $vmResource.Properties.VmId
 ```
 
-Delete the boot diagnostic storage container.
+Delete the boot diagnostic storage container. In the same session, run the following cmdlets:
 
 ```powershell
 $diagSa = [regex]::match($vm.DiagnosticsProfile.bootDiagnostics.storageUri, '^http[s]?://(.+?)\.').groups[1].value
- $diagContainerName = ('bootdiagnostics-{0}-{1}' -f $vm.Name.ToLower().Substring(0, 9), $vmId)
- $diagSaRg = (Get-AzureRmStorageAccount | where { $_.StorageAccountName -eq $diagSa }).ResourceGroupName
- $saParams = @{
- 'ResourceGroupName' = $diagSaRg
--'Name' = $diagSa
- }
- Get-AzureRmStorageAccount @saParams | Get-AzureStorageContainer | where { $_.Name-eq $diagContainerName } | Remove-AzureStorageContainer -Force
+$diagContainerName = ('bootdiagnostics-{0}-{1}' -f $vm.Name.ToLower().Substring(0, 9), $vmId)
+$diagSaRg = (Get-AzureRmStorageAccount | where { $_.StorageAccountName -eq $diagSa }).ResourceGroupName
+$saParams = @{
+    'ResourceGroupName' = $diagSaRg
+    'Name' = $diagSa }
+Get-AzureRmStorageAccount @saParams | Get-AzureStorageContainer | where { $_.Name-eq $diagContainerName } | Remove-AzureStorageContainer -Force
 ```
 
-Delete the VM.
+Delete the VM. The cmdlet takes some time to run. In the same session, run the following cmdlets:
 
 ```powershell
-$vm | Remove-AzureRmVM _Force
+$vm | Remove-AzureRmVM -Force
 ```
 
 Remove the vNic.
