@@ -59,7 +59,7 @@ To use Sconfig:
 1. Open a command prompt as an administrator, and then change to the system drive.
 1. At the command prompt, type `Sconfig.cmd` and press Enter to open the Server Configuration tool interface.
 
-    :::image type="content" source="../media/operating-system/azure-stack-hci-sconfig-screen.png" alt-text="The Server Configuration tool interface." lightbox="../media/operating-system/azure-stack-hci-sconfig-screen.png:::
+    :::image type="content" source="../media/operating-system/azure-stack-hci-sconfig-screen.png" alt-text="The Server Configuration tool interface." lightbox="../media/operating-system/azure-stack-hci-sconfig-screen.png":::
 
 1. Take note of the computer's **Domain/Workgroup** and its **Computer Name** for reference.
 
