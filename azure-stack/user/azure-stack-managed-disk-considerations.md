@@ -187,13 +187,13 @@ $PIp = New-AzureRmPublicIpAddress -ResourceGroupName $ResourceGroupName -Locatio
   -Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
 
 # Create an inbound network security group rule for port 3389
-$NsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name "MyNetworkSecurityGroupRuleRDP"  -Protocol Tcp `
+$NsgRuleSSH = New-AzureRmNetworkSecurityRuleConfig -Name "MyNetworkSecurityGroupRuleSSH"  -Protocol Tcp `
   -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
-  -DestinationPortRange 3389 -Access Allow
+  -DestinationPortRange 22 -Access Allow
 
 # Create a network security group
 $Nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $ResourceGroupName -Location $Location `
-  -Name "MyNetworkSecurityGroup" -SecurityRules $NsgRuleRDP
+  -Name "MyNetworkSecurityGroup" -SecurityRules $NsgRuleSSH
 
 # Create a virtual network card and associate with public IP address and NSG
 $Nic = New-AzureRmNetworkInterface -Name "MyNic" -ResourceGroupName $ResourceGroupName -Location $Location `
