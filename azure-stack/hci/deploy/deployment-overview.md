@@ -31,19 +31,19 @@ If your Azure Stack HCI deployment will stretch across multiple sites, determine
 
 ## Deploy
 
-1. Before you start
+### 1. Before you start
 
 [Before you start](before-you-start.md), determine whether your hardware meets the base requirements for Azure Stack HCI. Then, install Windows Admin Center to manage your Azure Stack HCI cluster. 
 
-2. Deploy the operating system
+### 2. Deploy the operating system
 
 Deploy the Azure Stack HCI operating system on each server you want to cluster.
 
-3. Create the cluster
+### 3. Create the cluster
 
 Create a failover cluster using Windows Admin Center or Powershell. For native disaster recovery and business continuity, you can [deploy a stretched cluster](multi-site-cluster.md) that spans two geographically separate sites.
 
-4. Validate the cluster
+### 4. Validate the cluster
 
 After creating the cluster, run the Validate-DCB tool to test networking, and use the Validate feature in Windows Admin Center by selecting **Tools > Servers > Inventory > Validate cluster**.
 
@@ -56,15 +56,15 @@ Test-Cluster –Node Server1, Server2
 > [!NOTE]
 > The **Test-Cluster** cmdlet outputs the results to a log file in the current working directory. For example: C:\Users\<username>\AppData\Local\Temp\
 
-5. Connect to Azure
+### 5. Connect to Azure
 
 Part of the value of Azure Stack HCI is the ability to connect to Azure for additional services. First, register Windows Admin Center with Azure. Then register Azure Stack HCI with the Azure Stack HCI Azure service. Users must connect to Azure from time to time in order for core usage to be assessed for billing purposes.
 
-6. Deploy storage
+### 6. Deploy storage
 
 [Create volumes](../manage/create-volumes.md) on a single-site cluster, or create volumes, pools, and replication groups on a stretched cluster.
 
-7. Deploy workloads
+### 7. Deploy workloads
 
 You are now ready to create virtual machines on Azure Stack HCI using Windows Admin Center.
 
