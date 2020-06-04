@@ -54,11 +54,9 @@ To manually deploy the Azure Stack HCI operating system on the system drive of e
 
 To manually install the Azure Stack HCI operating system:
 1. Start the Install Azure Stack HCI wizard on the system drive of the server where you want to install the operating system.
-1. Choose the language to install or accept the default language settings, select **Next**, and then on the Azure Stack HCI page, select **Install now**.
+1. Choose the language to install or accept the default language settings, select **Next**, and then on next page of the wizard, select **Install now**.
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-install-language.png" alt-text="The language page of the Install Azure Stack HCI wizard.":::
-
-The Setup is starting notice displays.
 
 1. On the Applicable notices and license terms page, review the license terms, select the **I accept the license terms** checkbox, and then select **Next**.
 1. On the Which type of installation do you want? page, select **Custom: Install the newer version of Azure Stack HCI only (advanced)**.
@@ -82,7 +80,7 @@ The Setup is starting notice displays.
 
 1. At the Enter new credential for Administrator prompt, enter a new password, enter it again to confirm it, and then press Enter.
 
-1. At the Your password was changed confirmation prompt, press Enter.
+1. At the Your password has been changed confirmation prompt, press Enter.
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-admin-password-changed.png" alt-text="The changed password confirmation prompt":::
 
