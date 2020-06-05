@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/21/2020
+ms.date: 05/29/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
@@ -162,14 +162,14 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 The 2002 release of Azure Stack Hub must be applied on the 1910 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1910.40.138](https://support.microsoft.com/help/4558082)
+- [Azure Stack Hub hotfix 1.1910.42.142](https://support.microsoft.com/help/4564874)
 
 ### After successfully applying the 2002 update
 
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.2002.24.85](https://support.microsoft.com/help/4558081)
+- [Azure Stack Hub hotfix 1.2002.28.93](https://support.microsoft.com/help/4562966)
 ::: moniker-end
 
 ::: moniker range="azs-1910"
@@ -326,7 +326,7 @@ The 1910 release of Azure Stack Hub must be applied on the 1908 release with the
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1910.40.138](https://support.microsoft.com/help/4558082)
+- [Azure Stack Hub hotfix 1.1910.42.142](https://support.microsoft.com/help/4564874)
 ::: moniker-end
 
 ::: moniker range="azs-1908"
