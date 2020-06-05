@@ -99,6 +99,8 @@ Subscriptions let users access your offers. If you're an Azure Stack Hub operato
 
 Users create new subscriptions and get access to existing subscriptions by signing in to Azure Stack Hub. Each subscription represents an association with a single offer. The offer (and its plans and quotas) assigned to one subscription can't be shared with other subscriptions. Each resource that a user creates is associated with one subscription.
 
+As an Azure Stack Hub operator, you are able to see information about tenant subscriptions, however are unable to access the contents of those subscriptions unless explicitly added through RBAC by a tenant administrator of that subscription. This enables tenants to enforce separation of power and responsibilities between Azure Stack Hub operator and tenant spaces.
+
 ### Default provider subscription
 
 The default provider subscription is automatically created when you deploy the ASDK. This subscription can be used to manage Azure Stack Hub, deploy additional resource providers, and create plans and offers for users. For security and licensing reasons, it shouldn't be used to run customer workloads and apps. The quota of the default provider subscription can't be changed.
