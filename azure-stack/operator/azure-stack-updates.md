@@ -64,7 +64,22 @@ Notice of updates varies on a couple of factors, such as your connection to the 
 
     OEM updates will depend on your manufacturer. You'll need to establish a communication channel with your OEM so that you can be aware of updates from your OEM that need to be applied. For more information about the OEMs and the OEM update process, see [Apply Azure Stack Hub original equipment manufacturer (OEM) updates](azure-stack-update-oem.md).
 
-## Update processes
+### Major version to major version
+
+An update from major version to major version must be step by step:
+
+- the current environment can only update to the next major version
+- you can't skip a major version update.
+
+For example, if your environment is 1.x, the latest available update version is 3.x, you should update as 1.x then 2.x then 3.x.
+
+### Hotfixes within major versions
+
+Within the same major version number, Azure Stack may release multiple hotfixes. As Hotfixes are cumulative, the latest update package includes all past hotfixes. You can update to the latest hotfix by jumping hotfix numbers.
+
+For example, if you are at version IN.MV.1.x, the latest update is IN.MV.4.x. Even though there are updates of version IN.MV.2.x and IN.MV.3.x, you can directly install IN.MV.4.x. You will get all the hotfixes in IN.MV.2.x and IN.MV.3.x automatically.
+
+## Update process
 
 Once you know you have an update, apply it by using the following steps.
 
