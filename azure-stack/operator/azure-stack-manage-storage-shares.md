@@ -153,7 +153,7 @@ You can reclaim the capacity that's used by tenant accounts that have been delet
 
 For more information, see the "Reclaim capacity" section of [Manage Azure Stack Hub storage accounts](azure-stack-manage-storage-accounts.md#reclaim).
 
-::: moniker range="<azs-2002"
+::: moniker range="<azs-1910"
 
 ### Migrate a container between volumes
 *This option applies only to Azure Stack Hub integrated systems.*
@@ -243,7 +243,7 @@ Migration consolidates all of a container's blobs on the new share.
 The most extreme method for managing space involves moving VM disks. Because moving an attached container (one that contains a VM disk) is complex, contact Microsoft support to accomplish this action.
 
 ::: moniker-end
-::: moniker range=">=azs-2002"
+::: moniker range=">=azs-1910"
 
 ### Migrate a managed disk between volumes
 *This option applies only to Azure Stack Hub integrated systems.*
