@@ -1,7 +1,7 @@
 {
   "redirections": [
     { 
-      "source_path": "azure-stack/hybrid/", 
+      "source_path": "azure-stack/hybrid/index.yml", 
       "redirect_url": "/hybrid/app-solutions/", 
       "redirect_document_id": false
     },    { 
