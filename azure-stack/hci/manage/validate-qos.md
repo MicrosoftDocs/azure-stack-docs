@@ -46,7 +46,7 @@ You can view the validation report in Windows Admin Center, or by accessing a lo
 
 Near the bottom of the report, you will see "Validate QoS Settings Configuration" and a corresponding report for each server in the cluster.
 
-To understand which traffic classes are already set, use the `Get-NetQosTrafficClass` cmdlet.
+To understand which traffic classes are already set on a server, use the `Get-NetQosTrafficClass` cmdlet.
 
 ## Validate networking QoS rules
 
@@ -63,7 +63,7 @@ All servers in an Azure Stack HCI cluster should have the DCB willing bit set th
 Use the `Set-NetQosDcbxSetting` cmdlet to set the DCB willing bit to either true or false, as in the following example:
 
 ```PowerShell
-Set-NetQosDcbxSetting -InterfaceAlias StorageA –Willing $false -Confirm:$False
+Set-NetQosDcbxSetting –Willing $false
 ```
 
 ### DCB flow control status
@@ -74,7 +74,7 @@ In order for QoS policies to work seamlessly during failover, all servers in an 
 
 Use the `Get-NetQosFlowControl` cmdlet to get the current flow control configuration. All priorities are disabled by default.
 
-Use the `Enable-NetQosFlowControl` and `Disable-NetQosFlowControl` cmdlets with the -priority parameter to turn priority flow control on or off, for example:
+Use the `Enable-NetQosFlowControl` and `Disable-NetQosFlowControl` cmdlets with the -priority parameter to turn priority flow control on or off. For example, the following command enables flow control on traffic tagged with priority 3:
 
 ```PowerShell
 Enable-NetQosFlowControl –Priority 3
@@ -86,23 +86,31 @@ Validate that all nodes have a QoS rule for failover clustering and for SMB or S
 
 ### QoS Rule for failover clustering
 
-If **any** storage QoS rules are defined in a cluster, then a QoS rule for failover clustering should be present, or connectivity problems may occur. To add a new network QoS rule for failover clustering, use the `New-NetQosPolicy` cmdlet as in the following example:
+If **any** storage QoS rules are defined in a cluster, then a QoS rule for failover clustering should be present, or connectivity problems may occur. To add a new QoS rule for failover clustering, use the `New-NetQosPolicy` cmdlet as in the following example:
 
-```PowerShell
-New-NetQosPolicy "Cluster" -Cluster -PriorityValue8021Action 7
-```
+??
 
 ### QoS rule for SMB
 
 If some or all nodes have QOS rules defined but do not have a QOS Rule for SMB, this may cause connectivity and performance problems for SMB. To add a new network QoS rule for SMB, use the `New-NetQosPolicy` cmdlet as in the following example:
 
 ```PowerShell
-New-NetQosPolicy "SMB" -NetDirectPortMatchCondition 445 -PriorityValue8021Action 3
+New-NetQosPolicy -Name "SMB Policy" -SMB -PriorityValue8021Action 3
 ```
 
 ### QoS rule for SMB Direct
 
-SMB Direct bypasses the networking stack, instead using RDMA methods to transfer data. If some or all nodes have QOS rules defined but do not have a QOS Rule for SMB Direct, this may cause connectivity and performance problems for SMB Direct.
+SMB Direct bypasses the networking stack, instead using RDMA methods to transfer data. If some or all nodes have QOS rules defined but do not have a QOS Rule for SMB Direct, this may cause connectivity and performance problems for SMB Direct. To create a new QoS policy for SMB Direct, issue the following commands:
+
+```PowerShell
+New-NetQosPolicy "Cluster" -Cluster -PriorityValue8021Action 7
+New-NetQosPolicy "SMB" -NetDirectPortMatchCondition 445 -PriorityValue8021Action 3
+
+or would this be better?
+
+New-NetQosPolicy “SMB Direct” –NetDirectPort 445 –Priority 3
+```
+
 
 ## Next steps
 
