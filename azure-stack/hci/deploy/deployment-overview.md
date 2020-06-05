@@ -58,7 +58,7 @@ Test-Cluster –Node Server1, Server2
 
 ### 5. Connect to Azure
 
-Azure Stack HCI works best when regularly connected to Azure. To get started, [register your Windows Admin Center gateway](/windows-server/manage/windows-admin-center/azure/azure-integration) by going to the Azure tab in Windows Admin Center settings. Then, register Azure Stack HCI with your Azure subscription, either using Windows Admin Center or PowerShell. Users must connect to Azure a minimum of once a month in order for core usage to be assessed for billing purposes.
+Azure Stack HCI works best when regularly connected to Azure. To get started, register your Windows Admin Center gateway by going to the Azure tab in Windows Admin Center settings. Then, register Azure Stack HCI with your Azure subscription, either using Windows Admin Center or PowerShell. Users must connect to Azure a minimum of once a month in order for core usage to be assessed for billing purposes.
 
 ### 6. Deploy storage
 
