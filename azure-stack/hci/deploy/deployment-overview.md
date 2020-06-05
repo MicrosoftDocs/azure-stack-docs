@@ -4,7 +4,7 @@ description: An overview of the Azure Stack HCI deployment process.
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 06/04/2020
+ms.date: 06/05/2020
 ---
 
 # Azure Stack HCI deployment overview
@@ -58,7 +58,7 @@ Test-Cluster –Node Server1, Server2
 
 ### 5. Connect to Azure
 
-Part of the value of Azure Stack HCI is the ability to connect to Azure for additional services. First, register Windows Admin Center with Azure. Then register Azure Stack HCI with the Azure Stack HCI Azure service. Users must connect to Azure a minimum of once a month in order for core usage to be assessed for billing purposes.
+Azure Stack HCI works best when regularly connected to Azure. To get started, [register your Windows Admin Center gateway](/windows-server/manage/windows-admin-center/azure/azure-integration) by going to the Azure tab in Windows Admin Center settings. Then, register Azure Stack HCI with your Azure subscription, either using Windows Admin Center or PowerShell. Users must connect to Azure a minimum of once a month in order for core usage to be assessed for billing purposes.
 
 ### 6. Deploy storage
 
@@ -66,7 +66,7 @@ Part of the value of Azure Stack HCI is the ability to connect to Azure for addi
 
 ### 7. Deploy workloads
 
-You are now ready to create virtual machines on Azure Stack HCI using Windows Admin Center.
+You are now ready to create virtual machines and deploy workloads on Azure Stack HCI using Windows Admin Center.
 
 ## Next steps
 
