@@ -1,6 +1,10 @@
 {
   "redirections": [
     { 
+      "source_path": "azure-stack/hybrid/", 
+      "redirect_url": "/hybrid/app-solutions/", 
+      "redirect_document_id": false
+    },    { 
       "source_path": "azure-stack/hybrid/overview-app-design-considerations.md", 
       "redirect_url": "/hybrid/app-solutions/overview-app-design-considerations", 
       "redirect_document_id": false
