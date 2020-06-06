@@ -28,7 +28,7 @@ The [Azure technical documentation content](/azure) assumes that apps are being 
 
 * Azure Stack Hub delivers a subset of the services and features that are available in Azure.
 * Your company or service provider can choose which services they want to offer. The available options might include customized services or applications. They may offer their own customized documentation.
-* You must use the correct Azure Stack Hub-specific endpoints (for example, the URLs for the portal address and the Azure Resource Manager endpoint).
+* Use the correct Azure Stack Hub-specific endpoints (for example, the URLs for the portal address and the Azure Resource Manager endpoint).
 * You must use PowerShell and API versions that are supported by Azure Stack Hub. Using supported versions ensures that your apps work in both Azure Stack Hub and Azure.
 
 ## Cheat sheet: High-level differences
