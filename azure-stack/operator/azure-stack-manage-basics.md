@@ -86,12 +86,12 @@ In addition to providing services, you must do the regular duties of an operator
 - [Set access permissions using role-based access control](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-permissions). (This task isn't restricted to admins.)
 - [Monitor infrastructure health](https://docs.microsoft.com/azure-stack/operator/azure-stack-monitor-health).
 - Manage [network](https://docs.microsoft.com/azure-stack/operator/azure-stack-viewing-public-ip-address-consumption) and [storage](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-storage-accounts) resources.
-- [Start and stop Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-start-and-stop&branch=release-tzl).
-- [Operating the extended storage](https://docs.microsoft.com/azure-stack/tdc/extended-storage-operator-guide&branch=release-tzl).
-- [Manage IoT Hub](https://docs.microsoft.com/azure-stack/operator/iot-hub-rp-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&.bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl).
+- [Start and stop Azure Stack Hub](azure-stack-start-and-stop.md).
+- [Operating the extended storage](../user/azure-stack-network-howto-extend-datacenter.md).
+- [Manage IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub).
 - [Manage Event Hub](https://docs.microsoft.com/azure-stack/operator/event-hubs-rp-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl).
 - [Manage App Service](https://docs.microsoft.com/azure-stack/operator/azure-stack-app-service-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl).
-- Replace bad hardware. Here is the list of [replaceable parts](https://docs.microsoft.com/azure-stack/tdc/cru-replaceable-parts&branch=release-tzl).
+- Replace bad hardware. Here is the list of [replaceable parts](azure-stack-replace-component.md).
 - [Get support](https://docs.microsoft.com/azure-stack/operator/azure-stack-help-and-support-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl).
 
 ## Operator tasks
