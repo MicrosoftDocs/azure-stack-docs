@@ -45,7 +45,11 @@ The following table lists the pre-installed software on the OAW VM.
 ## Check HLH version
 
 1. Log onto the HLH with your credentials.
-1. Open PowerShell ISE and run `'C:\Version\Get-Version.ps1'`
+1. Open PowerShell ISE and run the following script:
+
+   ```powershell
+   'C:\Version\Get-Version.ps1'
+   ```
 
    ![Screenshot of PowerShell cmdlet to check the Hardware LifeCycle Host version](./media/azure-stack-operator-access-workstation/check-hlh-version.png)
 
