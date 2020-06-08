@@ -4,7 +4,7 @@ description: This how-to article focuses on why cluster validation is important,
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 5/29/2020
+ms.date: 06/08/2020
 ---
 
 # Validate an Azure Stack HCI cluster
@@ -178,4 +178,5 @@ After your server cluster is successfully validated, you'll need to disable the 
     The result of Step 2 removes the red **CredSSP ENABLED** banner at the top of the server's **Overview** page, and disables CredSSP on the other servers.
 
 ## See also
+- Performance testing against synthetic workloads in a newly created storage space using DiskSpd.exe. To learn more, see [Test Storage Spaces Performance Using Synthetic Workloads in Windows Server](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn894707(v=ws.11)).
 - Windows Server Assessment is a Premier Service available for customers who want Microsoft to review their installations of Windows Server 2019. For more information, contact Microsoft Premier Support. To learn more, see [Getting Started with the Windows Server On-Demand Assessment (Server, Security, Hyper-V, Failover Cluster, IIS)](https://docs.microsoft.com/services-hub/health/getting-started-windows-server).
