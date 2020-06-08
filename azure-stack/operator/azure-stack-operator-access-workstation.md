@@ -85,4 +85,8 @@ Please note that once the VM is created manually, the image file will be modifie
 
    ![Screenshot of VM Settings](./media/azure-stack-operator-access-workstation/vm-settings.png)
 
+1. If you have chosen a Generation 2 VM, click **Security** and then click **Enable Trusted Platform Module**.
 
+   ![Screenshot of Enable TPM](./media/azure-stack-operator-access-workstation/vm-settings.png)
+
+1. 
