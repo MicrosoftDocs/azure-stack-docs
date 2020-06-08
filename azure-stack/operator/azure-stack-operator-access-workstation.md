@@ -99,4 +99,9 @@ Please note that once the VM is created manually, the image file will be modifie
 
    ![Screenshot of Connect to a VM](./media/azure-stack-operator-access-workstation/connect-vm.png)
 
+1. Click **Start**.
+1. Wait for the VM to start and provide a password with a minimum length of 14 characters for the built-in Administrator account (which will be renamed to AdminUser later). 
+
+   ![Screenshot of setting the AdminUser password](./media/azure-stack-operator-access-workstation/admin-password.png)
+
 1. 
