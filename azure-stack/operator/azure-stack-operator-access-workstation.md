@@ -109,9 +109,9 @@ Please note that once the VM is created manually, the image file will be modifie
 
    >[!TIP]
    >If you want to configure networking to be able to access BMC management network:
-   >1. In Hyper-V Manager, right-click the HLH VM and click **Settings**, click **Network Adapter** and change the configuration to the appropriate virtual switch.
-   >1. Navigate back to OAW VM.
-   >1. Click **Network & Internet Settings** and change the adapter.
+   >- In Hyper-V Manager, right-click the HLH VM and click **Settings**, click **Network Adapter** and change the configuration to the appropriate virtual switch.
+   >- Navigate back to OAW VM.
+   >- Click **Network & Internet Settings** and change the adapter.
 
 
 
