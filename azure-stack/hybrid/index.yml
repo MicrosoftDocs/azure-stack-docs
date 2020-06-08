@@ -1,0 +1,82 @@
+### YamlMime:Landing
+
+title: Azure hybrid patterns and solutions documentation
+summary: Learn how to leverage hybrid patterns and solution examples in your app development. Azure and Azure Stack enable development of hybrid applications, built on a suite of intelligent cloud and intelligent edge services. 
+
+metadata:
+  title: Azure hybrid patterns and solutions documentation
+  description: Learn how to leverage hybrid patterns and solution examples in your app development. Azure and Azure Stack enable development of hybrid applications, built on a suite of intelligent cloud and intelligent edge services. 
+  ms.service: azure-stack 
+  ms.topic: landing-page 
+  author: BryanLa
+  ms.author: bryanla
+  ms.date: 10/31/2019
+
+# linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
+
+landingContent:
+# Cards and links should be based on top customer tasks or top subjects
+# Start card title with a verb
+  # Card (optional)
+  - title: About hybrid patterns and solutions
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What are hybrid patterns and solution examples?
+            url: overview-patterns-solution-examples.md
+      - linkListType: concept
+        links:
+          - text: Hybrid app design considerations
+            url: overview-app-design-considerations.md
+
+  # Card
+  - title: Explore hybrid patterns
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Cross-cloud scaling
+            url: pattern-cross-cloud-scale.md
+          - text: DevOps hybrid CI/CD
+            url: pattern-cicd-pipeline.md
+          - text: Footfall detection (retail)
+            url: pattern-retail-footfall-detection.md
+          - text: Geo-distributed app
+            url: pattern-geo-distributed.md
+
+  # Card
+  - title: Deploy hybrid solution examples
+    linkLists:
+      - linkListType: tutorial
+        links:
+          - text: Cross-cloud scaling
+            url: solution-deployment-guide-cross-cloud-scaling.md
+          - text: DevOps hybrid CI/CD
+            url: https://aka.ms/hybriddevopsdeploy 
+          - text: Footfall detection (retail)
+            url: solution-deployment-guide-retail-footfall-detection.md
+          - text: Geo-distributed app
+            url: solution-deployment-guide-geo-distributed.md
+
+  # Card
+  - title: Retail footfall detection scenario
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Pattern
+            url: pattern-retail-footfall-detection.md
+      - linkListType: tutorial
+        links:
+          - text: Solution deployment guide
+            url: solution-deployment-guide-retail-footfall-detection.md
+
+  # Card
+  - title: Cross-cloud scaling using on-premises data scenario
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Pattern
+            url: pattern-cross-cloud-scale-onprem-data.md
+      - linkListType: tutorial
+        links:
+          - text: Solution deployment guide
+            url: solution-deployment-guide-cross-cloud-scaling-onprem-data.md
