@@ -104,4 +104,15 @@ Please note that once the VM is created manually, the image file will be modifie
 
    ![Screenshot of setting the AdminUser password](./media/azure-stack-operator-access-workstation/admin-password.png)
 
-1. 
+1. When the logon screen appears, sign in using use the password you provided previously for the built-in AdminUser. 
+1. The VM is now ready to use.
+
+   >[!TIP]
+   >If you want to configure networking to be able to access BMC management network:
+   >1. In Hyper-V Manager, right-click the HLH VM and click **Settings**, click **Network Adapter** and change the configuration to the appropriate virtual switch.
+   >1. Navigate back to OAW VM.
+   >1. Click **Network & Internet Settings** and change the adapter.
+
+
+
+
