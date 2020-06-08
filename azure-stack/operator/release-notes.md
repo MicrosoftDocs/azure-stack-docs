@@ -69,10 +69,11 @@ For more information about update build types, see [Manage updates in Azure Stac
 ### What's new
 
 <!-- What's new, also net new experiences and features. -->
-
+- This build offers support for 3 new GPU VM types- NCv3 (Nvidia V100), NVv4 (AMD Mi25) and NC_T4 (NVIDIA T4) VM size. VM deployments will be successful for those who have the right hardware and are onboarded onto the Azure Stack Hub GPU Preview Program. If interested, you may sign up for the GPU Preview Program on aka.ms/azurestackhubgpupreview.
 - Released a new feature that enables an autonomous healing capability, which detects faults, assesses impact, and safely mitigates system issues. With this feature, we are working toward increased availability of the system without manual intervention. With release 2005 and later, customers will experience a reduction in the number of alerts. Any failure in this pipeline doesn't require action by Azure Stack Hub operators unless notified.
 - There is a new option in the Azure Stack Hub admin portal for air-gapped/disconnected Azure Stack Hub customers, to save logs locally. You can store the logs in a local SMB share when Azure Stack Hub is disconnected from Azure.
 - The Azure Stack Hub admin portal now blocks certain operations if a system operation is already in progress. For example, if an update is in progress, it will not be possible to add a new scale unit node.
+- This release brings more fabric consistency with Azure on pre-1910 created VMs too. In 1910, we announced that all newly created VMs will use the wireserver protocol enabling customers to use the same WALA agent as well as Windows guest agent as Azure, and therefore easily use Azure images on Azure Stack Hub. With this release, all the pre-1910 created VMs will be automatically migrated to use the wireserver protocol. This also brings more reliable VM creation, VM extension deployment and making improvements in steady state uptime.
 
 ### Improvements
 
@@ -88,6 +89,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Improved resiliency of the update package while downloading from the internet.
 
+- Improved resiliency of stop-deallocating a VM.
+
 ### Changes
 
 - Removed the actions to stop, shut down, and restart an infrastructure role instance from the admin portal. The corresponding APIs have also been removed in the Fabric Resource Provider. The following PowerShell cmdlets in the admin RM module and AZ preview for Azure Stack Hub no longer work: **Stop-AzsInfrastructureRoleInstance**, **Disable-InfrastructureRoleInstance**, and **Restart-InfrastructureRoleInstance**. Note that the above cmdlets will be removed from the next admin AZ module release for Azure Stack Hub.
@@ -99,6 +102,10 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue that could cause a repair scale unit node to fail becuase it could not find the path to the base OS image.
 
 - Fixed an issue with scale-in and scale-out for the support infrastrucutre role that has a cascading effect on repairing scale unit nodes.
+
+- Fixed an issue where .VHD (instead of .vhd) was not allowed when operators add their own images to the Azure Stack Hub administator portal on All services> Compute> VM Images > Add.
+
+- Fixed an issue where a previous VM restart operation causes a subsequent unexpected restart post any other VM update operation (adding disks, tags, etc).
 
 ## Security updates
 
