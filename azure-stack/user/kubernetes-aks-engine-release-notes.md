@@ -56,7 +56,7 @@ The estimated time is between 12 to 15 minutes per VM in the cluster. For exampl
 
 Download the new versions of the AKS base Ubuntu Image and AKS engine.
 
-As explain in the AKS engine for Azure Stack Hub documentation, deploying a Kubernetes cluster requires two main components: 
+As explained in the AKS engine for Azure Stack Hub documentation, deploying a Kubernetes cluster requires two main components: 
 - The aks-engine binary
 - AKS Base Ubuntu 16.04-LTS Image Distro
 
