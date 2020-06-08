@@ -95,4 +95,8 @@ Please note that once the VM is created manually, the image file will be modifie
 
    ![Screenshot of Processors](./media/azure-stack-operator-access-workstation/virtual-processors.png)
 
-1.    
+1. Right-click the created VM in the Hyper-V Manager and click **Connect...**.    
+
+   ![Screenshot of Connect to a VM](./media/azure-stack-operator-access-workstation/connect-vm.png)
+
+1. 
