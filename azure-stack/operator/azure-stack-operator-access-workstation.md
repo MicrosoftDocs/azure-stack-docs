@@ -62,7 +62,6 @@ The following table lists the pre-installed software on the OAW VM.
 1. Modify the parameters following the guidance in the script.
 1. Run the script.
 
-
 ## Create the OAW VM manually
 
 Please note that once the VM is created manually, the image file will be modified. Please re-download the VM image file when creating new instances of the VM. 
