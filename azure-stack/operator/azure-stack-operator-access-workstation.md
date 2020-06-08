@@ -76,8 +76,7 @@ Please note that once the VM is created manually, the image file will be modifie
    | Specify Generation        | Choose **Generation 2** to support Secure Boot             |
    | Assign Memory             | Specify **4096** MB or greater                             |
    | Configure Networking      | Select a switch with access to the BMC management network  |
-   | Connect Virtual Hard Disk | - Click **Use an existing virtual hard disk**<br>
-   - Browse to where you saved the ManagementVM.vhdx in Step 2<br>- Click **Finish**        |
+   | Connect Virtual Hard Disk | - Click **Use an existing virtual hard disk**<br>- Browse to where you saved ManagementVM.vhdx in step 2<br>- Click **Finish**<br> |
 
    ![Screenshot of Connect Virtual Hard Disk wizard page](./media/azure-stack-operator-access-workstation/connect-virtual-hard-disk.png)
 
