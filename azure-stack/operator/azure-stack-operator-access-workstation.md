@@ -91,4 +91,8 @@ Please note that once the VM is created manually, the image file will be modifie
 
    ![Screenshot of Enable TPM](./media/azure-stack-operator-access-workstation/enable-tpm.png)
 
-1. 
+1. Click **Processor** and assign 8 or more virtual processors, and then click **Apply** and **OK** to exit the settings.
+
+   ![Screenshot of Processors](./media/azure-stack-operator-access-workstation/virtual-processors.png)
+
+1.    
