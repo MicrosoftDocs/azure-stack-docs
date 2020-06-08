@@ -103,9 +103,9 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Fixed an issue with scale-in and scale-out for the support infrastrucutre role that has a cascading effect on repairing scale unit nodes.
 
-- Fixed an issue where .VHD (instead of .vhd) was not allowed when operators add their own images to the Azure Stack Hub administator portal on All services> Compute> VM Images > Add.
+- Fixed an issue in which the .VHD extension (instead of .vhd) was not allowed when operators added their own images to the Azure Stack Hub administator portal on **All services > Compute > VM Images > Add**.
 
-- Fixed an issue where a previous VM restart operation causes a subsequent unexpected restart post any other VM update operation (adding disks, tags, etc).
+- Fixed an issue in which a previous VM restart operation caused a subsequent unexpected restart after any other VM update operation (adding disks, tags, etc).
 
 ## Security updates
 
