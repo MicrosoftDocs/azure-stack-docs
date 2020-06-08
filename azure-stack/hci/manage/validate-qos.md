@@ -3,7 +3,7 @@ title: Validate QoS Settings
 description: Validate QoS settings configuration for Azure Stack HCI clusters
 author: khdownie
 ms.topic: article
-ms.date: 06/04/2020
+ms.date: 06/08/2020
 ms.author: v-kedow
 ms.reviewer: JasonGerend
 ---
@@ -88,14 +88,16 @@ Validate that all nodes have a QoS rule for failover clustering and for SMB or S
 
 If **any** storage QoS rules are defined in a cluster, then a QoS rule for failover clustering should be present, or connectivity problems may occur. To add a new QoS rule for failover clustering, use the `New-NetQosPolicy` cmdlet as in the following example:
 
-??
+```PowerShell
+New-NetQosPolicy "Cluster" -IPDstPort 3343 -Priority 6
+```
 
 ### QoS rule for SMB
 
 If some or all nodes have QOS rules defined but do not have a QOS Rule for SMB, this may cause connectivity and performance problems for SMB. To add a new network QoS rule for SMB, use the `New-NetQosPolicy` cmdlet as in the following example:
 
 ```PowerShell
-New-NetQosPolicy -Name "SMB Policy" -SMB -PriorityValue8021Action 3
+New-NetQosPolicy -Name "SMB" -SMB -PriorityValue8021Action 3
 ```
 
 ### QoS rule for SMB Direct
@@ -103,12 +105,7 @@ New-NetQosPolicy -Name "SMB Policy" -SMB -PriorityValue8021Action 3
 SMB Direct bypasses the networking stack, instead using RDMA methods to transfer data. If some or all nodes have QOS rules defined but do not have a QOS Rule for SMB Direct, this may cause connectivity and performance problems for SMB Direct. To create a new QoS policy for SMB Direct, issue the following commands:
 
 ```PowerShell
-New-NetQosPolicy "Cluster" -Cluster -PriorityValue8021Action 7
-New-NetQosPolicy "SMB" -NetDirectPortMatchCondition 445 -PriorityValue8021Action 3
-
-or would this be better?
-
-New-NetQosPolicy “SMB Direct” –NetDirectPort 445 –Priority 3
+New-NetQosPolicy "SMB Direct" –NetDirectPort 445 –Priority 3
 ```
 
 
