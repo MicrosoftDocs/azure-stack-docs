@@ -8,6 +8,10 @@
   items:
   - name: Before you start
     href: deploy/before-you-start.md
+  - name: Create clusters
+    href: deploy/create-cluster.md
+  - name: Create clusters with PowerShell
+    href: deploy/create-cluster-powershell.md
 - name: Manage
   items:
   - name: Create volumes
