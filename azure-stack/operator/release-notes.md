@@ -69,7 +69,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 ### What's new
 
 <!-- What's new, also net new experiences and features. -->
-- This build offers support for 3 new GPU VM types- NCv3 (Nvidia V100), NVv4 (AMD Mi25) and NC_T4 (NVIDIA T4) VM size. VM deployments will be successful for those who have the right hardware and are onboarded onto the Azure Stack Hub GPU Preview Program. If interested, you may sign up for the GPU Preview Program on aka.ms/azurestackhubgpupreview.
+- This build offers support for 3 new GPU VM types- NCv3 (Nvidia V100), NVv4 (AMD Mi25) and NC_T4 (NVIDIA T4) VM size. VM deployments will be successful for those who have the right hardware and are onboarded onto the Azure Stack Hub GPU preview program. If you are interested, sign up for the GPU preview program at https://aka.ms/azurestackhubgpupreview.
 - Released a new feature that enables an autonomous healing capability, which detects faults, assesses impact, and safely mitigates system issues. With this feature, we are working toward increased availability of the system without manual intervention. With release 2005 and later, customers will experience a reduction in the number of alerts. Any failure in this pipeline doesn't require action by Azure Stack Hub operators unless notified.
 - There is a new option in the Azure Stack Hub admin portal for air-gapped/disconnected Azure Stack Hub customers, to save logs locally. You can store the logs in a local SMB share when Azure Stack Hub is disconnected from Azure.
 - The Azure Stack Hub admin portal now blocks certain operations if a system operation is already in progress. For example, if an update is in progress, it will not be possible to add a new scale unit node.
