@@ -1,5 +1,104 @@
 {
   "redirections": [
+    { 
+      "source_path": "azure-stack/hybrid/index.yml", 
+      "redirect_url": "/hybrid/app-solutions/", 
+      "redirect_document_id": false
+    },    { 
+      "source_path": "azure-stack/hybrid/overview-app-design-considerations.md", 
+      "redirect_url": "/hybrid/app-solutions/overview-app-design-considerations", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/hybrid/overview-patterns-solution-examples.md", 
+      "redirect_url": "/hybrid/app-solutions/overview-patterns-solution-examples", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/hybrid/pattern-cicd-pipeline.md", 
+      "redirect_url": "/hybrid/app-solutions/pattern-cicd-pipeline", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/hybrid/pattern-cross-cloud-scale-onprem-data.md", 
+      "redirect_url": "/hybrid/app-solutions/pattern-cross-cloud-scale-onprem-data", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/hybrid/pattern-cross-cloud-scale.md", 
+      "redirect_url": "/hybrid/app-solutions/pattern-cross-cloud-scale", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/hybrid/pattern-geo-distributed.md", 
+      "redirect_url": "/hybrid/app-solutions/pattern-geo-distributed", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/hybrid/pattern-hybrid-relay.md", 
+      "redirect_url": "/hybrid/app-solutions/pattern-hybrid-relay", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/hybrid/pattern-out-of-stock-at-edge.md", 
+      "redirect_url": "/hybrid/app-solutions/pattern-out-of-stock-at-edge", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/hybrid/pattern-retail-footfall-detection.md", 
+      "redirect_url": "/hybrid/app-solutions/pattern-retail-footfall-detection", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/hybrid/pattern-tiered-data-analytics.md", 
+      "redirect_url": "/hybrid/app-solutions/pattern-tiered-data-analytics", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/hybrid/pattern-train-ml-model-at-edge.md", 
+      "redirect_url": "/hybrid/app-solutions/pattern-train-ml-model-at-edge", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/hybrid/solution-deployment-guide-connectivity.md", 
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-connectivity", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling-onprem-data.md", 
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-cross-cloud-scaling-onprem-data", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling.md", 
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-cross-cloud-scaling", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/hybrid/solution-deployment-guide-geo-distributed.md", 
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-geo-distributed", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/hybrid/solution-deployment-guide-identity.md", 
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-identity", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/hybrid/solution-deployment-guide-mongodb-ha.md", 
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-mongodb-ha", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/hybrid/solution-deployment-guide-retail-footfall-detection.md", 
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-retail-footfall-detection", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/hybrid/solution-deployment-guide-sql-ha.md", 
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-sql-ha", 
+      "redirect_document_id": false
+    },
     {
       "source_path": "azure-stack/operator/azure-stack-app-service-deploy-offline.md",
       "redirect_url": "/azure-stack/operator/azure-stack-app-service-deploy?pivots=state-disconnected",
@@ -12,7 +111,7 @@
     },
     {
       "source_path": "azure-stack/user/azure-stack-solution-sql-ha.md",
-      "redirect_url": "/azure-stack/hybrid/solution-deployment-guide-sql-ha",
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-sql-ha",
       "redirect_document_id": false
     },
     {
@@ -42,7 +141,7 @@
     },
     {
       "source_path": "azure-stack/user/azure-stack-solution-mongodb-ha.md",
-      "redirect_url": "/azure-stack/hybrid/solution-deployment-guide-mongodb-ha",
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-mongodb-ha",
       "redirect_document_id": false
     },
     {
@@ -52,27 +151,27 @@
     },
     {
       "source_path": "azure-stack/user/azure-stack-solution-hybrid-cloud.md",
-      "redirect_url": "/azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling-onprem-data",
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-cross-cloud-scaling-onprem-data",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/user/azure-stack-solution-geo-distributed.md",
-      "redirect_url": "/azure-stack/hybrid/solution-deployment-guide-geo-distributed",
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-geo-distributed",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/user/azure-stack-solution-cloud-burst.md",
-      "redirect_url": "/azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling",
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-cross-cloud-scaling",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/user/azure-stack-solution-hybrid-connectivity.md",
-      "redirect_url": "/azure-stack/hybrid/solution-deployment-guide-connectivity",
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-connectivity",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/user/azure-stack-solution-hybrid-identity.md",
-      "redirect_url": "/azure-stack/hybrid/solution-deployment-guide-identity",
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-identity",
       "redirect_document_id": false
     },
     {
@@ -82,32 +181,32 @@
     },
     {
       "source_path": "azure-stack/user/azure-stack-hybrid-cloud-patterns.md",
-      "redirect_url": "/azure-stack/hybrid/overview-patterns-solution-examples",
+      "redirect_url": "/hybrid/app-solutions/overview-patterns-solution-examples",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/user/azure-stack-edge-pattern-geo-distribution.md",
-      "redirect_url": "/azure-stack/hybrid/pattern-geo-distributed",
+      "redirect_url": "/hybrid/app-solutions/pattern-geo-distributed",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/user/hybrid-solution-retail-footfall-detection.md",
-      "redirect_url": "/azure-stack/hybrid/pattern-retail-footfall-detection",
+      "redirect_url": "/hybrid/app-solutions/pattern-retail-footfall-detection",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/user/azure-stack-edge-pattern-hybrid-ci-cd.md",
-      "redirect_url": "/azure-stack/hybrid/pattern-cicd-pipeline",
+      "redirect_url": "/hybrid/app-solutions/pattern-cicd-pipeline",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/user/azure-stack-edge-pattern-cross-cloud-scaling.md",
-      "redirect_url": "/azure-stack/hybrid/pattern-cross-cloud-scale",
+      "redirect_url": "/hybrid/app-solutions/pattern-cross-cloud-scale",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/user/azure-stack-edge-pattern-overview.md",
-      "redirect_url": "/azure-stack/hybrid/overview-app-design-considerations",
+      "redirect_url": "/hybrid/app-solutions/overview-app-design-considerations",
       "redirect_document_id": false
     },
     {
@@ -350,16 +449,16 @@
       "source_path": "azure-stack/operator/azure-stack-update-plan.md",
       "redirect_url": "/azure-stack/operator/release-notes-checklist",
       "redirect_document_id": false
-      },
+    },
     { 
       "source_path": "azure-stack/operator/azure-stack-hci-overview.md", 
       "redirect_url": "/azure-stack/hci/overview", 
       "redirect_document_id": true 
-      },
-      { 
-        "source_path": "azure-stack/operator/azure-stack-updates-troubleshoot.md", 
-        "redirect_url": "/azure-stack/operator/azure-stack-troubleshooting", 
-        "redirect_document_id": false
-        }
+    },
+    { 
+      "source_path": "azure-stack/operator/azure-stack-updates-troubleshoot.md", 
+      "redirect_url": "/azure-stack/operator/azure-stack-troubleshooting", 
+      "redirect_document_id": false
+    }
   ]
 }
