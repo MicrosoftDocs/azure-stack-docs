@@ -4,7 +4,7 @@ description: Learn how to manage updates in Azure Stack Hub
 author: sethmanheim
 
 ms.topic: how-to
-ms.date: 06/04/2020
+ms.date: 06/09/2020
 ms.author: sethm
 ms.lastreviewed: 09/10/2019
 ms.reviewer: niy
