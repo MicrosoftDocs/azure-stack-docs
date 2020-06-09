@@ -24,7 +24,7 @@ To access the administrator portal, browse to the portal URL and sign in by usin
 
 | Environment | Administrator Portal URL |   
 | -- | -- | 
-| ASDK| https://adminportal.local.azurestack.external  |
+| ASDK| `https://adminportal.local.azurestack.external`  |
 | Integrated systems | https://adminportal.&lt;*region*&gt;.&lt;*FQDN*&gt; | 
 | | |
 
