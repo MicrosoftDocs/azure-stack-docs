@@ -327,7 +327,7 @@ Optionally, you can use the Get-Content cmdlet to point to a file that contains 
 
 You can use the **Region management** tile to verify that the Azure Stack Hub registration was successful. This tile is available on the default dashboard in the administrator portal. The status can be registered, or not registered. If registered, it also shows the Azure subscription ID that you used to register your Azure Stack Hub along with the registration resource group and name.
 
-1. Sign in to the [Azure Stack Hub administrator portal](https://adminportal.local.azurestack.external).
+1. Sign in to the Azure Stack Hub administrator portal `https://adminportal.local.azurestack.external`.
 
 2. From the Dashboard, select **Region management**.
 
