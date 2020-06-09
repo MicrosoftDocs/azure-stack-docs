@@ -32,19 +32,20 @@ Microsoft recommends purchasing a validated Azure Stack HCI hardware/software so
 
 Azure Stack HCI deployments that exceed the following specifications are not supported:
 
-| ---------------------------- | -------|
-| Physical servers per cluster | 16     |
-| VMs per host                 | 1,024  |
-| Disks per VM (SCSI)          | 256    |
-| Storage per cluster          | 4 PB   |
-| Logical processors per host  | 512    |
-| RAM per host                 | 24 TB  |
-| RAM per VM                   | 12 TB* |
-| Virtual processors per host  | 2,048  |
-| Virtual processors per VM    | 240**  |
+| Resource                     | Maximum |
+| ---------------------------- | --------|
+| Physical servers per cluster | 16      |
+| VMs per host                 | 1,024   |
+| Disks per VM (SCSI)          | 256     |
+| Storage per cluster          | 4 PB    |
+| Logical processors per host  | 512     |
+| RAM per host                 | 24 TB   |
+| RAM per VM                   | 12 TB[^1]  |
+| Virtual processors per host  | 2,048   |
+| Virtual processors per VM    | 240[^2]   |
 
-* Applies only to generation 2 VMs; generation 1 VMs are limited to 1 TB.
-** Applies only to generation 2 VMs; generation 1 VMs are limited to 64 virtual processors.
+[^1]: Applies only to generation 2 VMs; generation 1 VMs are limited to 1 TB.
+[^2]: Applies only to generation 2 VMs; generation 1 VMs are limited to 64 virtual processors.
 
 ## Gather information
 
