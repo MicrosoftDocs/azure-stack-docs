@@ -46,7 +46,7 @@
     href: concepts/fault-tolerance.md
   - name: Cluster and storage pool quorum
     href: concepts/quorum.md
-  - name: Security Considerations
+  - name: Security considerations
     href: concepts/security.md
 - name: Reference
   items:
