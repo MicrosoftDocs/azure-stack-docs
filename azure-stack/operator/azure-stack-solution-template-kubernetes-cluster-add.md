@@ -29,7 +29,7 @@ This article looks at using an Azure Resource Manager template to deploy and pro
 
 Create a plan, an offer, and a subscription for the Kubernetes marketplace item. You can also use an existing plan and offer.
 
-1. Sign in to the [administrator portal.](https://adminportal.local.azurestack.external)
+1. Sign in to the administrator portal `https://adminportal.local.azurestack.external`.
 
 1. Create a plan as the base plan. For instructions, see [Create a plan in Azure Stack Hub](azure-stack-create-plan.md).
 
@@ -61,7 +61,7 @@ If you use Active Directory Federated Services (AD FS) for your identity managem
 
 Add the following Ubuntu Server image to Azure Stack Hub Marketplace:
 
-1. Sign in to the [administrator portal](https://adminportal.local.azurestack.external).
+1. Sign in to the administrator portal `https://adminportal.local.azurestack.external`.
 
 1. Select **All services**, and then under the **ADMINISTRATION** category, select **Marketplace management**.
 
@@ -81,7 +81,7 @@ Add the following Ubuntu Server image to Azure Stack Hub Marketplace:
 
 Add the Kubernetes from Azure Stack Hub Marketplace:
 
-1. Open the [administrator portal](https://adminportal.local.azurestack.external).
+1. Open the administrator portal `https://adminportal.local.azurestack.external`.
 
 1. Select **ALL services** and then under the **ADMINISTRATION** category, select **Marketplace Management**.
 
@@ -101,7 +101,7 @@ Add the Kubernetes from Azure Stack Hub Marketplace:
 
 ## Add Kubernetes to the marketplace
 
-1. Open the [administrator portal](https://adminportal.local.azurestack.external).
+1. Open the administrator portal `https://adminportal.local.azurestack.external`.
 
 1. Select **All services** and then under the **ADMINISTRATION** category, select **Marketplace Management**.
 
