@@ -11,7 +11,9 @@ ms.date: 06/09/2020
 
 >Applies to: Azure Stack HCI, version 20H2
 
-This topic provides security considerations and recommendations related to the Azure Stack HCI operating system. Part 1 covers basic security tools and technologies to harden the operating system, and protect data and identities to efficiently build a secure foundation for your organization. It includes resources available through the Azure Security Center. Part 2 covers more advanced security considerations to further strengthen the security posture of your organization in these areas.
+This topic provides security considerations and recommendations related to the Azure Stack HCI operating system:
+- Part 1 covers basic security tools and technologies to harden the operating system, and protect data and identities to efficiently build a secure foundation for your organization. It includes resources available through the Azure Security Center.
+- Part 2 covers more advanced security considerations to further strengthen the security posture of your organization in these areas.
 
 ## Why are security considerations important?
 Security affects everyone in your organization from upper-level management to the information worker. Inadequate security is a real risk for organizations, as a security breach can potentially disrupt all normal business and bring your organization to a halt. The sooner that you can detect a potential attack, the faster you can mitigate any compromise in security.
