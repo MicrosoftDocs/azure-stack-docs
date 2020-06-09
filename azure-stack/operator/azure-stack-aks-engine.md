@@ -17,7 +17,7 @@ ms.lastreviewed: 6/08/2020
 
 # Add the Azure Kubernetes Services (AKS) engine prerequisites to the Azure Stack Hub Marketplace
 
-You can enable your users to set up the Azure Kubernetes Services (AKS) Engine by adding the items described in this article to your Azure Stack Hub. Your users can then deploy a Kubernetes cluster in a single, coordinated operation. This article walks you through the steps you need to make the AKS engine available to your users in both connected and disconnected environments. The AKS engine depends on a service principle identity, and in the marketplace, a Custom Script extension and the AKS Base Image. The AKS engine requires that you are running [Azure Stack Hub 1910](release-notes.md?view=azs-1910) or greater.
+You can enable your users to set up the Azure Kubernetes Services (AKS) Engine by adding the items described in this article to your Azure Stack Hub. Your users can then deploy a Kubernetes cluster in a single, coordinated operation. This article walks you through the steps you need to make the AKS engine available to your users in both connected and disconnected environments. The AKS engine depends on a service principle identity, and in the marketplace, a Custom Script extension and the AKS Base Image. The AKS engine requires that you're running [Azure Stack Hub 1910](release-notes.md?view=azs-1910) or greater.
 
 ## Check your user's service offering
 
@@ -43,7 +43,7 @@ You can add the AKS Base Image to the marketplace by getting the item from Azure
 
 Add the following item to the marketplace:
 
-1. Sign in to the [Administration portal](https://adminportal.local.azurestack.external).
+1. Sign in to the Administration portal `https://adminportal.local.azurestack.external`.
 
 1. Select **All services**, and then under the **ADMINISTRATION** category, select **Marketplace management**.
 
@@ -64,7 +64,7 @@ Add the following item to the marketplace:
 
 You can add the custom script to the marketplace by getting the item from Azure. However, if your Azure Stack Hub is disconnected, use the instructions [Download marketplace items from Azure](azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected) to add the item.  Add the item specified in step 5.
 
-1. Open the [Administration portal](https://adminportal.local.azurestack.external).
+1. Open the Administration portal `https://adminportal.local.azurestack.external`.
 
 1. Select **ALL services** and then under the **ADMINISTRATION** category, select **Marketplace Management**.
 
