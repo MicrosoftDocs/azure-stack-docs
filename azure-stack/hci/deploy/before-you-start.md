@@ -40,12 +40,9 @@ Azure Stack HCI deployments that exceed the following specifications are not sup
 | Storage per cluster          | 4 PB    |
 | Logical processors per host  | 512     |
 | RAM per host                 | 24 TB   |
-| RAM per VM                   | 12 TB[^1]  |
+| RAM per VM                   | 12 TB (generation 2 VM) or 1 TB (generation 1)|
 | Virtual processors per host  | 2,048   |
-| Virtual processors per VM    | 240[^2]   |
-
-[^1]: Applies only to generation 2 VMs; generation 1 VMs are limited to 1 TB.
-[^2]: Applies only to generation 2 VMs; generation 1 VMs are limited to 64 virtual processors.
+| Virtual processors per VM    | 240 (generation 2 VM) or 64 (generation 1)|
 
 ## Gather information
 
