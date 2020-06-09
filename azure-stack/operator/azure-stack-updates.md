@@ -1,13 +1,13 @@
 ---
 title: Manage updates 
 description: Learn how to manage updates in Azure Stack Hub
-author: IngridAtMicrosoft
+author: sethmanheim
 
 ms.topic: how-to
 ms.date: 06/04/2020
-ms.author: inhenkel
+ms.author: sethm
 ms.lastreviewed: 09/10/2019
-ms.reviewer: ppacent
+ms.reviewer: niy
 
 # Intent: As an Azure Stack Hub operator, I want to manage updates so I can keep everything up to date.
 # Keyword: manage updates azure stack hub
@@ -66,18 +66,13 @@ Notice of updates varies on a couple of factors, such as your connection to the 
 
 ### Major version to major version
 
-An update from major version to major version must be step by step:
+An update from major version to major version must be step by step: the current environment can only update to the next major version, and you can't skip a major version update.
 
-- the current environment can only update to the next major version
-- you can't skip a major version update.
-
-For example, if your environment is 1.x, the latest available update version is 3.x, you should update as 1.x then 2.x then 3.x.
+For example, if your Azure Stack Hub environment is 1908.x, and the latest available update version is 2002.x, you should update from 1908 to 1910, then update to 2002.
 
 ### Hotfixes within major versions
 
-Within the same major version number, Azure Stack may release multiple hotfixes. As Hotfixes are cumulative, the latest update package includes all past hotfixes. You can update to the latest hotfix by jumping hotfix numbers.
-
-For example, if you are at version IN.MV.1.x, the latest update is IN.MV.4.x. Even though there are updates of version IN.MV.2.x and IN.MV.3.x, you can directly install IN.MV.4.x. You will get all the hotfixes in IN.MV.2.x and IN.MV.3.x automatically.
+Within the same major version number, Azure Stack Hub may release multiple hotfixes. Hotfixes are cumulative; the latest hotfix package includes all past hotfixes for that version. For more information, see [Hotfixes](azure-stack-servicing-policy.md#hotfixes).
 
 ## Update process
 
