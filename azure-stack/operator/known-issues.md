@@ -96,6 +96,13 @@ For other known Azure Stack Hub update issues, please see [Troubleshooting Updat
 - Cause: When creating an inbound or an outbound network security rule, the **Protocol** option shows an **ICMP** option. This is currently not supported on Azure Stack Hub. This issue is fixed and will not appear in the next Azure Stack Hub release.
 - Occurrence: Common
 
+### Cannot delete an NSG if NICs not attached to running VM
+
+- Applicable: This issue applies to all supported releases.
+- Cause: When disassociating an NSG and a NIC that is not attached to a running VM, the update (PUT) operation for that object fails at the network controller layer. The NSG will be updated at the network resource provider layer, but not on the network controller, so the NSG moves to a failed state.
+- Remdiation: Attach the NICs associated to the NSG that needs to be removed with running VMs, and disassociate the NSG or remove all the NICs that were associated with the NSG.
+- Occurrence: Common
+
 ### Network interface
 
 #### Adding/removing network interface
