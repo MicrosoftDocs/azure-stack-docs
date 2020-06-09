@@ -27,7 +27,7 @@ Learn how to create a Windows Server 2016 virtual machine (VM) by using the Azur
 
 Sign in to the Azure Stack Hub portal. The address of the Azure Stack Hub portal depends on which Azure Stack Hub product you're connecting to:
 
-* For the Azure Stack Development Kit (ASDK), go to: https://portal.local.azurestack.external.
+* For the Azure Stack Development Kit (ASDK), go to: `https://portal.local.azurestack.external`.
 * For an Azure Stack Hub integrated system, go to the URL that your Azure Stack Hub operator provided.
 
 ## Create a VM
