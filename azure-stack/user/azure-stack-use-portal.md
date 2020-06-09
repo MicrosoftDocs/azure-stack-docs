@@ -23,7 +23,7 @@ Use the Azure Stack Hub portal to subscribe to public offers and use the service
 Your Azure Stack Hub operator (either a service provider or an admin in your organization), will let you know the correct URL to access the portal.
 
 - For an integrated system, the URL varies based on your operator's region and external domain name, and will be in the format https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt;.
-- If you're using the Azure Stack Development Kit (ASDK), the portal address is https://portal.local.azurestack.external.
+- If you're using the Azure Stack Development Kit (ASDK), the portal address is `https://portal.local.azurestack.external`.
 - The default time zone for all Azure Stack Hub deployments is set to Coordinated Universal Time (UTC). You can select a time zone when installing Azure Stack Hub but it automatically reverts to UTC as the default during installation.
 
 ## Customize the dashboard
