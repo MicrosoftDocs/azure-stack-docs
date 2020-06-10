@@ -107,9 +107,6 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
     > [!NOTE]
     > If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable CredSSP for the wizard to continue. Once your cluster is created and the wizard is completed, you will need to disable again CredSSP for security reasons.
 
-> [!NOTE]
-    > The wizard will attempt to automatically detect the two sites in Active Directory per IP addressing or subnet masking. Make sure this has happened correctly. **<== change per new functionality here ==>**
-
 1. Review all validation steps and make changes as needed.
 
     **[STOPPAGE** - wizard validation errors "Validate Network Communication"
