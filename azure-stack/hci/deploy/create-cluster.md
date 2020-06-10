@@ -4,7 +4,7 @@ description: Learn how to create a server cluster for Azure Stack HCI using Wind
 author: v-dasis
 ms.topic: article
 ms.prod: 
-ms.date: 06/09/2020
+ms.date: 06/10/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -13,30 +13,30 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI v20H2
 
-In this article you will learn how to use Windows Admin Center to create an Azure Stack HCI hyperconverged cluster. The Create Cluster wizard in Windows Admin Center will do most of the heavy lifting for you.
+In this article you will learn how to use Windows Admin Center to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. The Create Cluster wizard in Windows Admin Center will do most of the heavy lifting for you.
 
 You have a choice between two cluster types:
 
 - Standard cluster with at least two server nodes, all residing in a single site.
 - Stretched cluster with at least four server nodes that span across two sites, with two nodes per site.
 
-Sites can be in two different states, different cities, different floors, or different rooms. The two sites provide disaster recovery and business continuity should a site suffer an outage or failure.
+Sites can be in two different states, different cities, different floors, or different rooms. Using two sites provides disaster recovery and business continuity should a site suffer an outage or failure.
 
 ## Before you begin
 
-Here are several considerations and requirements before you begin:
+Here are several requirements before you begin:
+
+- Make sure you have reviewed hardware requirements and considerations in [Planning a cluster].
 
 - You should run Windows Admin Center from a remote computer running Windows 10, rather than from a host server in the cluster. This remote computer is called the management computer.
 
 - You must have administrative privileges for the cluster. Use an account that’s a member of the local Administrators group on each server.
 
-- Each server you want to add to the cluster, as well as the management computer, must all be joined to the same Active Directory domain.
-
-- For stretched clusters, ensure you have met all hardware requirements as listed in [Plan stretched clusters].
+- Each server you want to add to the cluster, as well as the management computer, must all be joined to the same Active Directory domain or fully trusted domain.
 
 ## Run the Create Cluster wizard
 
-These are the major steps in the Create Cluster wizard for creating a cluster:
+These are the major steps in the Create Cluster wizard:
 
 1. **Get Started** - ensures that each server meets the prerequisites for and features needed for cluster join.
 1. **Networking** - assigns and configures network adapters and creates a virtual switch.
@@ -44,7 +44,7 @@ These are the major steps in the Create Cluster wizard for creating a cluster:
 1. **Storage** - Configures Storage Spaces Direct and virtual storage.
 1. **SDN** (optional) - configures software-defined networking.
 
-After the wizard completes, you will then setup the witness. For stretched clusters, you will also configure Storage Replica and replication between sites.
+After the wizard completes, you will then setup the witness. For stretched clusters, you will also configure Storage Replica and replication between your sites.
 
 OK, lets begin:
 
@@ -175,7 +175,7 @@ Three and higher-node clusters need a witness to be able to withstand two server
 > [!NOTE]
 > This task only applies to stretched clusters.
 
-For stretched clusters, you need to create the data and log volumes for each site, create replication groups, and setup replication between the sites.
+For stretched clusters, you need to create data and log volumes for each site, create a replication group for each site, and setup replication between the sites.
 
 There are two types of stretched clusters, active/active and active/passive.
 You can set up active-active replication, where failover replication can happen bi-directionally from either site, or active-passive site replication, where there is a preferred site and direction for failover replication, as explained.
@@ -212,7 +212,7 @@ The following diagram shows both Site 1 and Site 2 as being active sites, with b
 
 ## Next steps
 
-- You can further validate your cluster. See [Validate server cluster].
+- You may want to further validate your cluster. See [Validate server cluster].
 
 - For stretched clusters, you can verify replication between sites. See [Create Azure Stack HCI cluster using PowerShell].
 
