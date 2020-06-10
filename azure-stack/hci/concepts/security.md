@@ -33,9 +33,15 @@ This section discusses how to protect services and virtual machines (VMs) runnin
 
     To learn more about Azure Stack HCI certified hardware providers, see the [Azure Stack HCI solutions](https://azure.microsoft.com/products/azure-stack/hci/) website.
 
-- **Device Guard**
-- **Cluster-aware updating**
-- **Update** via Windows Admin Center
+- **Device Guard** and **Credential Guard**. Device Guard protects against malware with no known signature, unsigned code, and malware that gains access to the kernel to either capture sensitive information or damage the system. Windows Defender Credential Guard uses virtualization-based security to isolate secrets so that only privileged system software can access them.
+
+    To learn more, see [Manage Windows Defender Credential Guard](https://docs.microsoft.com/windows/security/identity-protection/credential-guard/credential-guard-manage) and download the [Device Guard and Credential Guard hardware readiness tool](https://www.microsoft.com/en-us/download/details.aspx?id=53337).
+
+- **Update** via Windows Admin Center 
+ 
+- **Cluster-Aware Updating** is a recommended feature that makes it easier to install Windows updates on every server in your cluster while keeping your applications running by automating the software updating process. You can use Cluster-Aware Updating on all editions of Windows Server, including the Azure Stack HCI operating system, and initiate it through either Windows Admin Center or using PowerShell.
+
+    To learn more, see [Update Azure Stack HCI clusters](https://docs.microsoft.com/azure-stack/hci/manage/update-cluster?branch=pr-en-us-3363).
 
 ### Protect data
 This section discusses how to protect data and workloads on the operating system:
