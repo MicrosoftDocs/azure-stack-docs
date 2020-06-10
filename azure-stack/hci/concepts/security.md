@@ -4,7 +4,7 @@ description: This topic provides guidance on security considerations for the Azu
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 06/09/2020
+ms.date: 06/10/2020
 ---
 
 # Azure Stack HCI security considerations
@@ -24,8 +24,18 @@ After researching an environment's weak points to exploit them, an attacker can 
 The following sections recommend security tools and technologies to build a secure foundation for the servers running the Azure Stack HCI operating system in your environment.
 
 ### Harden the environment
-This section discusses how to protect services running on the operating system:
-- **Azure Stack HCI certified hardware** 
+This section discusses how to protect services and virtual machines (VMs) running on the operating system:
+- **Azure Stack HCI certified hardware** provides consistent Secure Boot, UEFI, and TPM settings out of the box. Combining virtualization-based security and certified hardware helps protect security-sensitive workloads. You can also connect this trusted infrastructure to Azure Security Center to activate behavioral analytics and reporting to account for rapidly changing workloads and threats.
+
+    - *Secure boot* is a security standard developed by the PC industry to help ensure that a device boots using only software that is trusted by the Original Equipment Manufacturer (OEM). To learn more, see [Secure boot](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-secure-boot).
+    - *United Extensible Firmware Interface (UEFI)* controls the booting process of the server, and then passes control to either Windows or another operating system. To learn more, see [UEFI firmware requirements](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-uefi).
+    - *Trusted Platform Module (TPM)* technology provides hardware-based, security-related functions. A TPM chip is a secure crypto-processor that generates, stores, and limits the use of cryptographic keys. To learn more, see [Trusted Platform Module Technology Overview](https://docs.microsoft.com/windows/security/information-protection/tpm/trusted-platform-module-overview).
+
+    To learn more about Azure Stack HCI certified hardware providers, see the [Azure Stack HCI solutions](https://azure.microsoft.com/products/azure-stack/hci/) website.
+
+- **Device Guard**
+- **Cluster-aware updating**
+- **Update** via Windows Admin Center
 
 ### Protect data
 This section discusses how to protect data and workloads on the operating system:
@@ -64,8 +74,9 @@ TBD
 
 ## Next steps
 For more information, see also:
-<!---Placeholders for format examples. Replace all before initial topic review.--->
+<!---Placeholders for format examples to other topics. Replace as needed before initial topic review.--->
 
+- [Security best practices for Azure solutions](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/)
+- [Storage Spaces Direct hardware requirements](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements)
 - [Azure Stack HCI overview](../overview.md)
 - [Understand the cache in Azure Stack HCI](cache.md)
-- [Storage Spaces Direct hardware requirements](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements)
