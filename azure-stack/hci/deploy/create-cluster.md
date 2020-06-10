@@ -187,13 +187,13 @@ You can set up active-active replication, where failover replication can happen 
 
 The following diagram shows Site 1 as the active site with failover to Site 2, a unidirectional replication failover.
 
-:::image type="content" source="media/stretched-cluster/stretch-active-passive.png" alt-text="Active/passive stretched cluster scenario":::
+:::image type="content" source="media/cluster/stretch-active-passive.png" alt-text="Active/passive stretched cluster scenario":::
 
 ### Active/active stretched cluster
 
 The following diagram shows both Site 1 and Site 2 as being active sites, with bidirectional replication failover to the other site.
 
-:::image type="content" source="media/stretched-cluster/stretch-active-active.png" alt-text="Active/active stretched cluster scenario":::
+:::image type="content" source="media/cluster/stretch-active-active.png" alt-text="Active/active stretched cluster scenario":::
 
 1. In Windows Admin Center, under **Tools**, select **Volumes**.
 1. In the right pane, select the **Inventory** tab, then select **Create**.
