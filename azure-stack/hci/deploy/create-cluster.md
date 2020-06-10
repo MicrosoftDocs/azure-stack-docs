@@ -175,22 +175,24 @@ Three and higher-node clusters need a witness to be able to withstand two server
 > [!NOTE]
 > This task only applies to stretched clusters.
 
-For stretched clusters, you need to create data and log volumes for each site, create a replication group for each site, and setup replication between the sites.
+For stretched clusters, you need to create data and log volumes for each server pair across sites, create a replication group for each site, and setup replication between the sites.
 
-There are two types of stretched clusters, active/active and active/passive.
-You can set up active-active replication, where failover replication can happen bi-directionally from either site, or active-passive site replication, where there is a preferred site and direction for failover replication, as explained.
+There are two types of stretched clusters, active/passive and active/active.
+You can set up active-passive site replication, where there is a preferred site and direction for replication. Active-active replication is where replication can happen bi-directionally from either site. This article covers the active/passive configuration only.
 
 ### Active/passive stretched cluster
 
-The following diagram shows Site 1 as the active site with failover to Site 2, a unidirectional replication failover.
+The following diagram shows Site 1 as the active site with replication to Site 2, a unidirectional replication.
 
 :::image type="content" source="media/cluster/stretch-active-passive.png" alt-text="Active/passive stretched cluster scenario":::
 
 ### Active/active stretched cluster
 
-The following diagram shows both Site 1 and Site 2 as being active sites, with bidirectional replication failover to the other site.
+The following diagram shows both Site 1 and Site 2 as being active sites, with bidirectional replication to the other site.
 
 :::image type="content" source="media/cluster/stretch-active-active.png" alt-text="Active/active stretched cluster scenario":::
+
+OK, let's begin:
 
 1. In Windows Admin Center, under **Tools**, select **Volumes**.
 1. In the right pane, select the **Inventory** tab, then select **Create**.
