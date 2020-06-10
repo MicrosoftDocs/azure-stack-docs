@@ -4,7 +4,7 @@ description: Learn how to install Visual Studio and connect to Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/07/2020
+ms.date: 06/09/2020
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/04/2020
@@ -33,7 +33,7 @@ You can use Visual Studio to write and deploy Azure Resource Manager [templates]
 
 5. [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md).
 
-6. Restart the operating system after the installation completes.
+6. Restart the computer after the installation completes.
 
 ## Connect to Azure Stack Hub with Azure AD
 
