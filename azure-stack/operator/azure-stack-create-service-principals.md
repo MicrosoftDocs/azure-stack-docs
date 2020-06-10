@@ -12,7 +12,7 @@ ms.lastreviewed: 05/07/2020
 
 ---
 # Use an app identity to access Azure Stack Hub resources
-<meta name="robots" content="nosnippet">
+
 An application that needs to deploy or configure resources through Azure Resource Manager must be represented by its own identity. Just as a user is represented by a security principal called a user principal, an app is represented by a service principal. The service principal provides an identity for your app, allowing you to delegate only the necessary permissions to the app.  
 
 As an example, you may have a configuration management app that uses Azure Resource Manager to inventory Azure resources. In this scenario, you can create a service principal, grant the "reader" role to that service principal, and limit the configuration management app to read-only access.
