@@ -173,11 +173,51 @@ Three and higher-node clusters need a witness to be able to withstand two server
 > [!NOTE]
 > The **Disk witness** option is not suitable for stretched clusters.
 
+## Create volumes and setup replication
 
+> [!NOTE]
+> This task only applies to stretched clusters.
+
+For stretched clusters, you need to create the data and log volumes for each site, create replication groups, and setup replication between the sites.
+
+There are two types of stretched clusters, active/active and active/passive.
+You can set up active-active replication, where failover replication can happen bi-directionally from either site, or active-passive site replication, where there is a preferred site and direction for failover replication, as explained.
+
+### Active/passive stretched cluster
+
+The following diagram shows Site 1 as the active site with failover to Site 2, a unidirectional replication failover.
+
+:::image type="content" source="media/stretched-cluster/stretch-active-passive.png" alt-text="Active/passive stretched cluster scenario":::
+
+### Active/active stretched cluster
+
+The following diagram shows both Site 1 and Site 2 as being active sites, with bidirectional replication failover to the other site.
+
+:::image type="content" source="media/stretched-cluster/stretch-active-active.png" alt-text="Active/active stretched cluster scenario":::
+
+1. In Windows Admin Center, under **Tools**, select **Volumes**.
+1. In the right pane, select the **Inventory** tab, then select **Create**.
+1. In the **Create volume** panel, select **Replicate volume between sites**.
+1. Select a replication direction between sites from the drop-down box.
+1. Under **Replication mode**, select **Asynchronous** or **Synchronous**.
+1. Enter a Source replication group name and a Destination replication group name.
+1. Enter the desired size for the log volume.
+1. Under **Advanced**, do the following:
+     - Enter/change the **Source replication group name**.
+     - Enter/change the **Destination replication group name**.
+     - To **use blocks already seeded on the target**..., select that checkbox.
+     - To **encrypt replication traffic**, select that checkbox.
+     - To **enable consistency groups**, select that checkbox.
+1. When finished, click **Create**.
+1. Verify that a data disk and a log disk are created in your source site, and that corresponding data and log replica disks are created in the destination site.
+1. Under **Tools**, select **Storage Replica**.
+1. In the right pane, under **Partnerships**, verify that the replication partnership has been successfully created.
 
 ## Next steps
 
 - You can further validate your cluster. See [Validate server cluster].
+
+- For stretched clusters, you can verify replication between sites. See [Create Azure Stack HCI cluster using PowerShell].
 
 - You can create your virtual machines. See [Manage VMs on Azure Stack HCI](https://docs.microsoft.com/azure-stack/hci/manage/vm).
 
