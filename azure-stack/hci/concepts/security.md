@@ -37,21 +37,48 @@ This section discusses how to protect services and virtual machines (VMs) runnin
 
     To learn more, see [Manage Windows Defender Credential Guard](https://docs.microsoft.com/windows/security/identity-protection/credential-guard/credential-guard-manage) and download the [Device Guard and Credential Guard hardware readiness tool](https://www.microsoft.com/en-us/download/details.aspx?id=53337).
 
-- **Update** via Windows Admin Center 
-
+- **Update** via Windows Admin Center
+    <!---Get link to Dan's article from his next PR to replacing existing link.--->
  
-    To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](kkk).
+    To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](/windows-server/failover-clustering/cluster-aware-updating-requirements).
  
- 
-- **Cluster-Aware Updating** is a recommended feature that makes it easier to install Windows updates on every server in your cluster while keeping your applications running by automating the software updating process. You can use Cluster-Aware Updating on all editions of Windows Server, including the Azure Stack HCI operating system, and initiate it through either Windows Admin Center or using PowerShell.
+- **Cluster-Aware Updating** makes it easier to install Windows updates on every server in your cluster while keeping your applications running by automating the software updating process. You can use Cluster-Aware Updating on all editions of Windows Server, including the Azure Stack HCI operating system, and initiate it through either Windows Admin Center or using PowerShell.
 
     To learn more, see [Cluster-Aware Updating requirements and best practices](/windows-server/failover-clustering/cluster-aware-updating-requirements) and [Update Azure Stack HCI clusters](https://docs.microsoft.com/azure-stack/hci/manage/update-cluster?branch=pr-en-us-3363).
 
 ### Protect data
-This section discusses how to protect data and workloads on the operating system:
+This section discusses how to use Windows Admin Center to protect data and workloads on the operating system:
+
+- **BitLocker for Storage Spaces** protects data at rest. You can use BitLocker to encrypt the contents of Storage Spaces data volumes on the operating system. Using BitLocker to protect data can help government or other organizations stay compliant with such standards as FIPS 140-2 and HIPAA.
+
+    To access BitLocker in Windows Admin Center, navigate to **Volumes**, select **Inventory** and then select a volume. On the volume's detail page, switch the **Encryption (BitLocker)** toggle on, and then on the **Turn on Encryption** page, provide your credentials to complete the workflow.
+
+    <!---Confirm flow in WAC and get supporting screenshots per PP2 release notes.--->
+
+- **SMB** encryption for Windows networking protects data in transit. The *Server Message Block (SMB) protocol* is a network file sharing protocol that allows applications on a computer to read and write to files and to request services from server programs on a computer network.
+
+    SMB is enabled by default in Windows Admin Center. To access the SMB options, on the **All connections** page, select a server, then on the server's overview page, under **Tools**, select **Roles and Features** to display the options for **SMB 1.0/CIFS File Sharing Support** and **SMB Bandwidth Limit**.
+
+    To learn more, see [Overview of file sharing using the SMB 3 protocol in Windows Server](https://docs.microsoft.com/windows-server/storage/file-server/file-server-smb-overview).
+
+- **Windows Defender Antivirus** in Windows Admin Center protects the operating system on clients and servers against viruses, malware, spyware, other threats. To learn more, see [Microsoft Defender Antivirus on Windows Server 2016 and 2019](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-antivirus/microsoft-defender-antivirus-on-windows-server-2016)
 
 ### Protect identities
-This section discusses how to protect privileged identities:
+This section discusses how to use Windows Admin Center to protect privileged identities:
+
+- **Access control** 
+
+- **Browser traffic** 
+
+<!---Describe at high level, address 4 related sub bullets in outline.--->
+
+- **Local accounts** 
+
+- **Multifactor authentication** 
+
+- **RBAC** 
+
+- **Windows Admin Center security tools** 
 
 ## Azure Security Center
 TBD
