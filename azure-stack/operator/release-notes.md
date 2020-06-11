@@ -109,9 +109,9 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Fixed an issue in which a previous VM restart operation caused a subsequent unexpected restart after any other VM update operation (adding disks, tags, etc).
 
-- Fixed an issue where creating a duplicate DNS zone caused the portal to hang, it should now show an appropriate error. 
-- Fixed an issue where Get-AzureStackLogs was not collecting the required logs to troubleshoot networking issues. 
-- Fixed an issue where portal was allowing fewer number of NICs to be attached than what it actually allows. 
+- Fixed an issue in which creating a duplicate DNS zone caused the portal to hang. It should now show an appropriate error. 
+- Fixed an issue in which **Get-AzureStackLogs** was not collecting the required logs to troubleshoot networking issues. 
+- Fixed an issue in which the portal allowed fewer NICs to be attached than what it actually allows. 
 
 ## Security updates
 
