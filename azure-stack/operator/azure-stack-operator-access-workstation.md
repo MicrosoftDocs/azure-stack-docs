@@ -62,6 +62,81 @@ The following table lists the pre-installed software on the OAW VM.
 1. Modify the parameters following the guidance in the script.
 1. Run the script.
 
+    This script is part of Microsoft Azure Stack Hub and prepares the virtual machine as the Operator Access
+    Workstation (OAW), which is uesd to access Microsoft Azure Stack Hub for administrative or diagostic activities.
+
+ .Parameter LocalAdministratorPassword
+    Password for the virtual machine's local administrator account AdminUser.
+ .Parameter AzureStackCertificatePath
+    Optional parameter; path of certificates to be imported to the virtual machine trusted root for Azure Stack Hub access.
+    Won't take effect if -SkipNetworkConfiguration is set.
+.Parameter ERCSVMIP
+    Optional parameter; IP of Azure Stack Hub ERCS VM(s) to be added to trusted host list of the virtual machine.
+    Won't take effect if -SkipNetworkConfiguration is set.
+ .Parameter SkipNetworkConfiguration
+    Optional parameter; use this flag to skip network configuration for the virtual machine, user can configure later.
+ .Parameter UseDVMConfiguration
+    Optional parameter; use this flag to apply Azure Stack Hub deployment virtual machine (dvm) network configuration.
+ .Parameter DeploymentDataFilePath
+    Optional parameter; path of DeploymentData.json.
+    Won't take effect if -SkipNetworkConfiguration is set.
+ .Parameter IPAddress
+    The static IPv4 address to configure TCP/IP on the virtual machine.
+ .Parameter SubnetMask
+    The IPv4 subnet mask to configure TCP/IP on the virtual machine.
+ .Parameter DefaultGateway
+    IPv4 address of the default gateway to configure TCP/IP on the virtual machine.
+ .Parameter DNS
+    DNS server(s) to configure TCP/IP on the virtual machine.
+ .Parameter VlanId
+    Optional parameter; the VLAN ID that needs to be configured in HyperV for the virtual machine.
+ .Parameter ImageFilePath
+    Path of OAW.vhdx provided by Microsoft.
+    Optional parameter; default value is OAW.vhdx under the same parent folder of this script.
+ .Parameter VirtualMachineName
+    The name to be assigned to the virtual machine.
+    Optional parameter; default value is AzSOAW.
+ .Parameter VirtualMachineMemory
+    Memory to be assigned to the virtual machine.
+    Optional parameter; default value is 4GB.
+ .Parameter VirtualProcessorCount
+    Number of virtual processors to be assigned to the virtual machine.
+    Optional parameter; default value is 8.
+ .Parameter VirtualMachineDiffDiskPath
+    Path to store temporary diff disk files while the manageemnt VM was active.
+    Optional parameter; default value is DiffDisks sub directory under the same parent folder of this script.
+ .Parameter PhysicalAdapterMACAddress
+    Optional parameter; the MAC address of the host's network adapter that will be used to connect the virtual machine to.
+    If there is only one physical network adapter, this parameter is not needed and the only network adapter will be used.
+    If there are more than one physical network adapters, this parameter is required to specify which one to use.
+ .Parameter VirtualSwitchName
+    Optional parameter; the name of virtual switch that needs to be configured in HyperV for the virtual machine.
+    If there is VMSwitch with the provided name, such VMSwitch will be selected.
+    If there is only one VMSwitch with switch type External, value 'DVMVirtualSwitch' can be used to select this VMSwitch without providing its name.
+    If there is no VMSwitch with the provided name, a VMSwitch will be created with the provided name.
+ .Parameter ReCreate
+    Optional parameter; use this flag to remove and re-create the virtual machine if there is already an exsited virtual machine with the same name.
+
+ .EXAMPLE
+
+  Running at HLH without customization in version 2005 or later.
+    $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
+    New-OAW.ps1 -LocalAdministratorPassword $securePassword
+
+  Running at HLH with DeploymentData.json.
+    $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
+    New-OAW.ps1 -LocalAdministratorPassword $securePassword `
+        -DeploymentDataFilePath 'D:\AzureStack\DeploymentData.json'
+
+  Running at a host with network connection to Azure Stack Hub.
+    $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
+    New-OAW.ps1 -LocalAdministratorPassword $securePassword `
+        -IPAddress '192.168.0.20' `
+        -SubnetMask '255.255.255.0' `
+        -DefaultGateway '192.168.0.1' `
+        -DNS '192.168.0.10' `
+
+
 ## Create the OAW VM manually
 
 Please note that once the VM is created manually, the image file will be modified. Please re-download the VM image file when creating new instances of the VM. 
@@ -114,5 +189,24 @@ Please note that once the VM is created manually, the image file will be modifie
    >- Click **Network & Internet Settings** and change the adapter.
 
 
+## Remove the OAW VM
 
+The following script removes the OAW VM, which is used to access Azure Stack Hub for administration and diagnostics. This script also removes the disk files and the guardian associated with the VM.
+
+1. Log onto the HLH with your credentials.
+1. Open an elevated PowerShell session. 
+1. Navigate to the extracted contents of the installed OAW.zip file.
+1. Remove the VM by running the Remove-OAW.ps1 script: 
+
+   ```powershell
+   Remove-OAW.ps1 -VirtualMachineName <name>
+   ```
+
+   Where \<name\> is the name of the virtual machine to be removed. By default, the name is **AzSOAW**.
+
+   For example:
+
+   ```powershell
+   Remove-OAW.ps1 -VirtualMachineName <name>
+   ```
 
