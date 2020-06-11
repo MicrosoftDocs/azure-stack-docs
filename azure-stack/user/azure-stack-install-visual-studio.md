@@ -4,7 +4,7 @@ description: Learn how to install Visual Studio and connect to Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 06/09/2020
+ms.date: 06/11/2020
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/04/2020
@@ -41,7 +41,7 @@ You can use Visual Studio to write and deploy Azure Resource Manager [templates]
 
 2. From the **View** menu, select **Cloud Explorer**.
 
-3. In the new pane, select **Add Account** and sign in with your Azure Active Directory (Azure AD) credentials.  
+3. Select **Manage Accounts**, then in the new pane, sign in with your Azure Active Directory (Azure AD) credentials.  
 
     ![Screenshot of Cloud Explorer once logged in and connected to Azure Stack Hub](./media/azure-stack-install-visual-studio/image2.png)
 
@@ -53,7 +53,7 @@ Once logged in, you can [deploy templates](azure-stack-deploy-template-visual-st
 
 2. From **Tools**, select **Options**.
 
-3. Expand **Environment** in the **Navigation Pane** and select **Accounts**.
+3. Expand **Environment** in the navigation pane and select **Accounts**.
 
 4. Select **Add**, and enter the User Azure Resource Manger endpoint. For the Azure Stack Development Kit (ASDK), the URL is: `https://management.local.azurestack/external`.  For Azure Stack Hub integrated systems, the URL is: `https://management.[Region}.[External FQDN]`.
 
