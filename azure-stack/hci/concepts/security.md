@@ -4,7 +4,7 @@ description: This topic provides guidance on security considerations for the Azu
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 06/10/2020
+ms.date: 06/11/2020
 ---
 
 # Azure Stack HCI security considerations
@@ -38,10 +38,14 @@ This section discusses how to protect services and virtual machines (VMs) runnin
     To learn more, see [Manage Windows Defender Credential Guard](https://docs.microsoft.com/windows/security/identity-protection/credential-guard/credential-guard-manage) and download the [Device Guard and Credential Guard hardware readiness tool](https://www.microsoft.com/en-us/download/details.aspx?id=53337).
 
 - **Update** via Windows Admin Center 
+
+ 
+    To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](kkk).
+ 
  
 - **Cluster-Aware Updating** is a recommended feature that makes it easier to install Windows updates on every server in your cluster while keeping your applications running by automating the software updating process. You can use Cluster-Aware Updating on all editions of Windows Server, including the Azure Stack HCI operating system, and initiate it through either Windows Admin Center or using PowerShell.
 
-    To learn more, see [Update Azure Stack HCI clusters](https://docs.microsoft.com/azure-stack/hci/manage/update-cluster?branch=pr-en-us-3363).
+    To learn more, see [Cluster-Aware Updating requirements and best practices](/windows-server/failover-clustering/cluster-aware-updating-requirements) and [Update Azure Stack HCI clusters](https://docs.microsoft.com/azure-stack/hci/manage/update-cluster?branch=pr-en-us-3363).
 
 ### Protect data
 This section discusses how to protect data and workloads on the operating system:
@@ -80,9 +84,12 @@ TBD
 
 ## Next steps
 For more information, see also:
-<!---Placeholders for format examples to other topics. Replace as needed before initial topic review.--->
+<!---Placeholders for format examples to other topics. Replace all that don't apply before initial topic review.--->
 
+- [Protect Azure Stack HCI VMs using Azure Site Recovery](https://docs.microsoft.com/azure-stack/hci/manage/azure-site-recovery)
 - [Security best practices for Azure solutions](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/)
+
+
 - [Storage Spaces Direct hardware requirements](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements)
 - [Azure Stack HCI overview](../overview.md)
 - [Understand the cache in Azure Stack HCI](cache.md)
