@@ -52,6 +52,7 @@ This article provides an overview of the unique considerations for Azure Stack H
 |  | Gateway Resizing | Azure supports resizing the gateway after deployment. | Resizing not supported. |
 |  | Availability Configuration | Active/Active | Active/Passive |
 |  | UsePolicyBasedTrafficSelectors | Azure supports using policy-based traffic selectors with route-based gateway connections. | Not yet supported. |
+|  | Monitoring and Alerts | Azure uses Azure Monitor to provide the ability to set up alerts for VPN resources. | Not yet supported.|
 | Load balancer | SKU | Basic and Standard Load Balancers are supported | Only the Basic Load Balancer is supported.<br>The SKU property is not supported.<br>The Basic SKU load balancer /path/ cannot have more than 5 front-end IP configurations.  |
 |  | Zones | Availability Zones are Supported. | Not yet supported |
 |  | Inbound NAT Rules support for Service Endpoints | Azure supports specifying Service Endpoints for Inbound NAT rules. | Azure Stack Hub doesn't yet support Service Endpoints, so these can't be specified. |
