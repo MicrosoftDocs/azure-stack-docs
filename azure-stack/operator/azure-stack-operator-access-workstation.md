@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: asganesh
 ms.topic: article
-ms.date: 04/03/2020
+ms.date: 06/11/2020
 ms.author: justinha
 ms.reviewer: asganesh
 ms.lastreviewed: 06/08/2020
@@ -191,6 +191,6 @@ The following script removes the OAW VM, which is used to access Azure Stack Hub
    For example:
 
    ```powershell
-   Remove-OAW.ps1 -VirtualMachineName <name>
+   Remove-OAW.ps1 -VirtualMachineName AzSOAW
    ```
 
