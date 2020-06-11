@@ -90,6 +90,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Improved resiliency of the update package while downloading from the internet.
 
 - Improved resiliency of stop-deallocating a VM.
+- Improved resiliency of the Network Controller Host Agent. 
+
 
 ### Changes
 
@@ -106,6 +108,10 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue in which the .VHD extension (instead of .vhd) was not allowed when operators added their own images to the Azure Stack Hub administator portal on **All services > Compute > VM Images > Add**.
 
 - Fixed an issue in which a previous VM restart operation caused a subsequent unexpected restart after any other VM update operation (adding disks, tags, etc).
+
+- Fixed an issue in which creating a duplicate DNS zone caused the portal to hang. It should now show an appropriate error. 
+- Fixed an issue in which **Get-AzureStackLogs** was not collecting the required logs to troubleshoot networking issues. 
+- Fixed an issue in which the portal allowed fewer NICs to be attached than what it actually allows. 
 
 ## Security updates
 
