@@ -68,11 +68,12 @@ Step 1 of the wizard walks you through making sure all prerequisites are met bef
 1. On **Add servers to the cluster** page, enter your domain account username *<domain/user>* and password, then click **Next**. This account must be a member of the local Administrators group on each server.
 1. Enter the fully-qualified domain name (FQDN) of the first server and click **Add**.
 1. Repeat Step 3 for each server that will be part of the cluster. When finished, click **Next**.
-1. On the **Join the servers to a domain​** page, if applicable, specify the domain and an account that can join servers to the domain. Then optionally rename the servers and click **Next**.
+1. If needed, on the **Join the servers to a domain​** page, specify the domain and an account that can join servers to the domain. Then optionally rename the servers and click **Next**.
 1. Click **Install Features**. When finished, click **Next**.
 
 > [!NOTE]
 > The wizard will install the following required features for you:
+
 > - BitLocker
 > - Data Center Bridging (for RoCEv2 network adapters)
 > - Failover Clustering
@@ -82,9 +83,9 @@ Step 1 of the wizard walks you through making sure all prerequisites are met bef
 > - RSAT-AD-PowerShell module
 > - Storage Replica (only installed for stretched clusters)
 
-1. For **Install operation system updates**, click **Install**. When complete, click **Next**.
-1. For **Install drivers and firmware updates**, click **Install**. When complete, click **Next**.
-1. If prompted, click **Restart servers** and verify that each server has successfully started.
+1. For **Install updates**, click **Install**. When complete, click **Next**.
+1. If needed for your OEM vendor, for **Install drivers and firmware updates**, click **Install**. When complete, click **Next**.
+1. If needed, click **Restart servers** and verify that each server has successfully started.
 
 ### Step 2: Networking
 
@@ -92,7 +93,16 @@ Step 2 of the wizard walks you through verifying network adapters, assigning IPv
 
 1. Select **Next: Networking**.
 1. Under **Verify the network adapters**, wait until the green checkbox appears and select **Next**.
-1. Select the management network adapters you want to use if applicable; otherwise accept the defaults shown and click **Apply changes and check connectivity**.
+
+1. For **Select management adapters**, select either one for two management adapters to use for each server and then do the following for each server:
+
+- Select the **Description** checkbox. Note that all adapters are selected and that wizard may offer a recommendation for you.
+- Unselect the checkboxes for those adapters you don't want used for cluster management.
+
+> [!NOTE]
+> It is recommended that you reserve the highest-speed adapters for data traffic and use the lowest-speed adapter for cluster management.
+
+1. When changes have been made, click **Apply changes and check connectivity**.
 1. Under **Define networks**, make sure each network adapter for each server has a unique IPv4 address, a subnet mask, and a VLAN ID. Hover over each table element and enter or change values as needed. When finished, click **Apply and test**.
 
 1. Under **Virtual switch**, select a preferred configuration. Wait for the virtual switches to be successfully created for each server.
@@ -108,12 +118,6 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
     > If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable CredSSP for the wizard to continue. Once your cluster is created and the wizard is completed, you will need to disable again CredSSP for security reasons.
 
 1. Review all validation steps and make changes as needed.
-
-    **[STOPPAGE** - wizard validation errors "Validate Network Communication"
-Network interfaces hci-srv4.redmond.corp.microsoft.com - vSMB1 and hci-srv3.redmond.corp.microsoft.com - vSMB1 are on the same cluster network, yet address 10.0.0.13 is not reachable from 10.0.0.14 using UDP on port 3343.
-
-    Node hci-srv3.redmond.corp.microsoft.com is reachable from Node hci-srv4.redmond.corp.microsoft.com by only one pair of network interfaces. It is possible that this network path is a single point of failure for communication within the cluster. Please verify that this single path is highly available, or consider adding additional networks to the cluster.].
-
 1. Under **Create the cluster**, enter a name for your cluster.
 1. Under **Networks**, select the preferred configuration.
 1. Under **IP addresses**, select either dynamic or static IP addresses to use.

@@ -125,8 +125,12 @@ Invoke-Command ($ServerList) {
     Install-WindowsFeature -Name $Using:Featurelist
 }
 ```
+Next, restart all the servers:
 
-**== Add server restart command ==**
+```powershell
+$ServerList = "Server1", "Server2", "Server3", "Server4"
+Restart-Computer -ComputerName $ServerList
+```
 
 ## Step 2: Configure the network
 
