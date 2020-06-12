@@ -50,15 +50,14 @@ OK, lets begin:
 
 1. In Windows Admin Center, under **All connections**, click **Add**.
 1. In the **Add resources** panel, under **Windows Server cluster**, select **Create new**.
-1. Under **Select the workload type**, select on of the following:
-
-    - **Virtual machines**
-    - **Cluster-aware roles and apps**
-
+1. Under **Choose cluster type**, select **Azure Stack HCI**.
+1. Select whether or not to deploy Software Defined Networking. 
 1. Under **Select server locations**, select one the following:
 
     - **All servers in one site**
     - **Servers in two sites**
+
+1. When finished, click **Create**.
 
 ### Step 1: Get Started
 
@@ -83,8 +82,8 @@ Step 1 of the wizard walks you through making sure all prerequisites are met bef
 > - RSAT-AD-PowerShell module
 > - Storage Replica (only installed for stretched clusters)
 
-1. For **Install updates**, click **Install**. When complete, click **Next**.
-1. If needed for your OEM vendor, for **Install drivers and firmware updates**, click **Install**. When complete, click **Next**.
+1. For **Install updates**, if needed, click **Install updates**. When complete, click **Next**.
+1. For **Solution updates**, if needed, click **Install extension**. When complete, click **Next**.
 1. If needed, click **Restart servers** and verify that each server has successfully started.
 
 ### Step 2: Networking
@@ -102,22 +101,24 @@ Step 2 of the wizard walks you through verifying network adapters, assigning IPv
 > [!NOTE]
 > It is recommended that you reserve the highest-speed adapters for data traffic and use the lowest-speed adapter for cluster management.
 
-1. When changes have been made, click **Apply changes and check connectivity**.
+1. When changes have been made, click **Apply and test**.
 1. Under **Define networks**, make sure each network adapter for each server has a unique IPv4 address, a subnet mask, and a VLAN ID. Hover over each table element and enter or change values as needed. When finished, click **Apply and test**.
+1. Wait until the **Status** column shows **Passed** for each server, then click **Next**.
 
-1. Under **Virtual switch**, select a preferred configuration. Wait for the virtual switches to be successfully created for each server.
+1. Under **Virtual switch**, change the name  and other configuration settings as needed, then click **Apply and test**. The **Status** column should show **Passed** for each server after the virtual switches have been created.
 
 ### Step 3: Clustering
 
 Step 3 of the wizard makes sure everything thus far has been set up correctly, assigns sites in the case of stretched cluster deployments, and then actually creates the cluster.
 
 1. Select **Next: Clustering**.
-1. Under **Validate the cluster**, select **Validate**.
+1. Under **Validate the cluster**, select **Validate**. Validation may take several minutes.
 
     > [!NOTE]
     > If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable CredSSP for the wizard to continue. Once your cluster is created and the wizard is completed, you will need to disable again CredSSP for security reasons.
 
-1. Review all validation steps and make changes as needed.
+1. 
+1. Review all validation status, download the report to get detailed information on any failures, make changes, then click **Validate again** as needed.
 1. Under **Create the cluster**, enter a name for your cluster.
 1. Under **Networks**, select the preferred configuration.
 1. Under **IP addresses**, select either dynamic or static IP addresses to use.
