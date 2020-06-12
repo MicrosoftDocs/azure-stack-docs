@@ -160,7 +160,7 @@ For more information, see [Enable-AzsScaleUnitNode](https://docs.microsoft.com/p
 ## Repair
 
 > [!CAUTION]  
-> Firmware leveling is critical for the success of the operation described in this article. Missing this step can lead to system instability, a decrease in performance, security threads, or failure when Azure Stack Hub automation deploys the operating system. Always consult your hardware partner's documentation when replacing hardware to ensure the applied firmware matches the OEM Version displayed in the [Azure Stack Hub administrator portal](azure-stack-updates.md).<br><br>
+> Firmware leveling is critical for the success of the operation described in this article. Missing this step can lead to system instability, a decrease in performance, security threats, or failure when Azure Stack Hub automation deploys the operating system. Always consult your hardware partner's documentation when replacing hardware to ensure the applied firmware matches the OEM Version displayed in the [Azure Stack Hub administrator portal](azure-stack-updates.md).<br><br>
 For more information and links to partner documentation, see [Replace a hardware component](azure-stack-replace-component.md).
 
 | Hardware Partner | Region | URL |

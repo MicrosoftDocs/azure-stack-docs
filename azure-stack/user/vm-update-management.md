@@ -14,7 +14,6 @@ ms.lastreviewed: 04/27/2020
 
 ---
 
-
 # VM update and management automation in Azure Stack Hub
 Use the following Azure Automation solution features to manage Windows and Linux virtual machines (VMs) that are deployed using Azure Stack Hub:
 
@@ -110,7 +109,7 @@ The Azure Stack Hub VMs can now be included in scheduled update deployments toge
 
 ##  Create an update deployment schedule
 
-To create an update deployment schedule, you must use use a PowerShell cmdlet, or the Azure REST API, to pass the machines. Use the following PowerShell example to get your machines scheduled. You can use the **[New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule)** cmdlet with the `ForUpdateConfiguration` parameter to create a schedule. Then, use the **[New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationsoftwareupdateconfiguration)** cmdlet and pass the Azure Stack Hub machines to the `NonAzureComputer` parameter. To run this script you will need to use the global [Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/).
+To create an update deployment schedule, you must use a PowerShell cmdlet, or the Azure REST API, to pass the machines. Use the following PowerShell example to get your machines scheduled. You can use the **[New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule)** cmdlet with the `ForUpdateConfiguration` parameter to create a schedule. Then, use the **[New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationsoftwareupdateconfiguration)** cmdlet and pass the Azure Stack Hub machines to the `NonAzureComputer` parameter. To run this script you will need to use the global [Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/).
 
 The following example shows how to do this:
 
