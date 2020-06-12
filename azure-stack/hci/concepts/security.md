@@ -4,7 +4,7 @@ description: This topic provides guidance on security considerations for the Azu
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 06/11/2020
+ms.date: 06/12/2020
 ---
 
 # Azure Stack HCI security considerations
@@ -51,13 +51,22 @@ This section discusses how to use Windows Admin Center to protect data and workl
 
 - **BitLocker for Storage Spaces** protects data at rest. You can use BitLocker to encrypt the contents of Storage Spaces data volumes on the operating system. Using BitLocker to protect data can help government or other organizations stay compliant with such standards as FIPS 140-2 and HIPAA.
 
-    To access BitLocker in Windows Admin Center, navigate to **Volumes**, select **Inventory** and then select a volume. On the volume's detail page, switch the **Encryption (BitLocker)** toggle on, and then on the **Turn on Encryption** page, provide your credentials to complete the workflow.
+    To access BitLocker in Windows Admin Center:
 
-    <!---Confirm flow in WAC and get supporting screenshots per PP2 release notes.--->
+    1. Connect to a Storage Spaces Direct cluster, and then on the **Tools** pane, select **Volumes**.
+    1. On the **Volumes** page, select **Inventory**, and then under **Optional features**, switch the **Encryption (BitLocker)** toggle on.
+    1. On the **Encryption (BitLocker)** pop-up, select **Start**, and then on the **Turn on Encryption** page, provide your credentials to complete the workflow.
 
-- **SMB** encryption for Windows networking protects data in transit. The *Server Message Block (SMB) protocol* is a network file sharing protocol that allows applications on a computer to read and write to files and to request services from server programs on a computer network.
+    :::image type="content" source="media/security/bitlocker-toggle-switch" alt-text="The BitLocker toggle to enable the feature":::
 
-    SMB is enabled by default in Windows Admin Center. To access the SMB options, on the **All connections** page, select a server, then on the server's overview page, under **Tools**, select **Roles and Features** to display the options for **SMB 1.0/CIFS File Sharing Support** and **SMB Bandwidth Limit**.
+   >[!NOTE]
+   > If the **Install BitLocker freature first** pop-up displays, follow its instructions to install the feature on each server in the cluster, and then restart your servers.
+
+- **SMB** encryption for Windows networking protects data in transit. *Server Message Block (SMB)* is a network file sharing protocol that allows applications on a computer to read and write to files and to request services from server programs on a computer network.
+
+    To install SMB feature options on a server in Windows Admin Center:
+    1. On the **All connections** page, select a server, then under **Tools**, select **Roles and Features**.
+    1. Scroll down the **Features** list to select the options for **SMB 1.0/CIFS File Sharing Support** and **SMB Bandwidth Limit**, and then select **Install**.
 
     To learn more, see [Overview of file sharing using the SMB 3 protocol in Windows Server](https://docs.microsoft.com/windows-server/storage/file-server/file-server-smb-overview).
 
@@ -98,16 +107,6 @@ TBD
 
 ## More security resources
 TBD
-
-
-
-<!---Example note format.--->
-   >[!NOTE]
-   > TBD.
-
-<!---Example figure format. See style sheet for new format standard.--->
-![Deployment options for maximizing capacity](media/choose-drives/maximizing-capacity.png)
-
 
 ## Next steps
 For more information, see also:
