@@ -22,7 +22,7 @@ This article lists all the security updates in the last four updates of Azure St
 ::: moniker range="azs-2005"
 ## 2005 update
 
-Because of the cumulative nature of Windows updates, this update contains the security payloads for the previous months. This list of CVEs reflects the security payloads since the last Full update, hence [February 2020](https://portal.msrc.microsoft.com/en-us/security-guidance/releasenotedetail/2020-Feb), [March 2020](https://portal.msrc.microsoft.com/en-us/security-guidance/releasenotedetail/2020-Mar), [April 2020](https://portal.msrc.microsoft.com/en-us/security-guidance/releasenotedetail/2020-Apr) and [May 2020](https://portal.msrc.microsoft.com/en-us/security-guidance/releasenotedetail/2020-May).
+Because of the cumulative nature of Windows updates, this update contains the security payloads for the previous months. This list of CVEs reflects the security payloads since the last full update, [February 2020](https://portal.msrc.microsoft.com/en-us/security-guidance/releasenotedetail/2020-Feb), [March 2020](https://portal.msrc.microsoft.com/en-us/security-guidance/releasenotedetail/2020-Mar), [April 2020](https://portal.msrc.microsoft.com/en-us/security-guidance/releasenotedetail/2020-Apr) and [May 2020](https://portal.msrc.microsoft.com/en-us/security-guidance/releasenotedetail/2020-May).
 For more information about these vulnerabilities, click on the links below.
 
 - [CVE-2020-1158](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2020-1158)
