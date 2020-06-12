@@ -16,7 +16,7 @@ ms.lastreviewed: 06/08/2020
 
 # Azure Stack Hub Operator Access Workstation (Preview Only)
 
-The Operator Access Workstation (OAW.vhdx) is used to deploy a jump box virtual machine (VM) on the Hardware Lifecycle Host (HLH) so an Azure Stack Hub operator can access the privileged endpoint (PEP) and the Administrator portal for support scenarios. The HLH version must be 2005 or later. 
+The Operator Access Workstation (OAW) is used to deploy a jump box virtual machine (VM) on the Hardware Lifecycle Host (HLH) so an Azure Stack Hub operator can access the privileged endpoint (PEP) and the Administrator portal for support scenarios. The HLH version must be 2005 or later. 
 
 The OAW VM should be created when an operator performs a new task. After a required task inside the VM is completed, the VM should be shut down and removed as Azure Stack Hub doesn't need to always run it.  
 
@@ -129,7 +129,7 @@ To create the OWA VM on a host with network connection to Azure Stack Hub, run t
 
 ## Check the OAW VM version
 
-1. Log onto the HLH or host with your credentials.
+1. Log onto the OAW VM with your credentials.
 1. Open PowerShell ISE and run the following script:
 
    ```powershell
