@@ -16,19 +16,23 @@ ms.lastreviewed: 06/08/2020
 
 # Azure Stack Hub Operator Access Workstation (Preview Only)
 
-The Operator Access Workstation (OAW.vhdx) is used to deploy a jump box virtual machine (VM) on the Hardware Lifecycle Host (HLH) so an Azure Stack Hub operator can access the privileged endpoint (PEP) and the Administrator portal for support scenarios. The HLH version must be 2005 or later. Beginning with the 2005, the image file is in public preview only and is not supported in production environments.  
+The Operator Access Workstation (OAW.vhdx) is used to deploy a jump box virtual machine (VM) on the Hardware Lifecycle Host (HLH) so an Azure Stack Hub operator can access the privileged endpoint (PEP) and the Administrator portal for support scenarios. The HLH version must be 2005 or later. 
 
-The OAW VM should be created when an operator creates a new support task. After a required support task inside the VM is completed, the VM should be shut down and removed as support tasks do not require this VM to always run.  
+The OAW VM should be created when an operator performs a new task. After a required task inside the VM is completed, the VM should be shut down and removed as Azure Stack Hub doesn't need to always run it.  
 
 Due to the stateless nature of the solution, there are no updates for the OAW VM. For each milestone, a new version of the VM image file will be released. Use the latest version to create a new OAW VM. The image file is based on the latest Windows Server 2019 version. After installation, you can apply updates, including any critical updates, using Windows Update. 
 
 You can download the OAW VM for the preview here.
 
-The following security enhancement configuration for the HLH is also applied to the OAW VM: 
+The following user account policy for the HLH is applied to the OAW VM: 
 
-1. MaximumPasswordAge = 42 days
-2. Built-in Guest username: GUser (disabled by default) 
-3. Built-in Administrator username: AdminUser
+- Built-in Administrator username: AdminUser
+- MinimumPasswordLength = 14
+- PasswordComplexity is enabled
+- MinimumPasswordAge = 1 (day)
+- MaximumPasswordAge = 42 (days)
+- NewGuestName = GUser (disabled by default)
+
 
 The following table lists the pre-installed software on the OAW VM.
 
@@ -60,7 +64,7 @@ The following script prepares the virtual machine as the Operator Access Worksta
 1. On a machine with internet connectivity, download the OAW VM zip from here: TBD
 1. Log onto the HLH with your credentials.
 1. Open an elevated Powershell session.
-1. Extract the zip file from Step 1 and open the New-VM.ps1 file inside the elevated Powershell session.
+1. Extract the zip file from Step 1 and open the New-OAW.ps1 file inside the elevated Powershell session.
 1. Modify the parameters following the guidance in the script.
 1. Run the script. For example, to create the OWA VM on the HLH without any customization using Azure Stack Hub version 2005 or later, run the New-OAW.ps1 script with the following parameters:
 
