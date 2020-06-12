@@ -312,7 +312,7 @@ For more information about these vulnerabilities, click on the links below.
 - [CVE-2020-0756](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2020-0756)
 - [CVE-2020-0757](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2020-0757)
 
-
+::: moniker-end
 
 
 
@@ -663,12 +663,6 @@ This update of Azure Stack Hub does not include security updates to the underlyi
 
 Because of the cumulative nature of Windows updates, this update also contains the security payloads for the previous months. This list of CVEs reflects the security payload of June, July, August and September 2019.
 For more information about these vulnerabilities, click on the preceding links, or see Microsoft Knowledge Base articles [4516077](https://support.microsoft.com/help/4516077).
-::: moniker-end
-
-::: moniker range="azs-1907"
-## 1907 update
-
-This update of Azure Stack Hub does not include security updates to the underlying operating system that hosts Azure Stack Hub.
 ::: moniker-end
 
 ## Next steps
