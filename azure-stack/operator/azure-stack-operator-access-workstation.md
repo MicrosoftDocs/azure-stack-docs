@@ -55,9 +55,10 @@ The following table lists the pre-installed software on the OAW VM.
    'C:\Version\Get-Version.ps1'
    ```
 
+   For example:
    ![Screenshot of PowerShell cmdlet to check the Hardware LifeCycle Host version](./media/azure-stack-operator-access-workstation/check-hlh-version.png)
 
-## Create the OAW VM using a script   
+## Create the OAW VM using a script
 
 The following script prepares the virtual machine as the Operator Access Workstation (OAW), which is used to access Microsoft Azure Stack Hub for administration and diagnostics.
 
