@@ -189,13 +189,13 @@ You can set up active-passive site replication, where there is a preferred site 
 
 The following diagram shows Site 1 as the active site with replication to Site 2, a unidirectional replication.
 
-:::image type="content" source="media/cluster/stretch-active-passive.png" alt-text="Active/passive stretched cluster scenario":::
+:::image type="content" source="media/cluster/stretch-active-passive.png" alt-text="Active/passive stretched cluster scenario" lightbox="media/cluster/stretch-active-passive.png":::
 
 ### Active/active stretched cluster
 
 The following diagram shows both Site 1 and Site 2 as being active sites, with bidirectional replication to the other site.
 
-:::image type="content" source="media/cluster/stretch-active-active.png" alt-text="Active/active stretched cluster scenario":::
+:::image type="content" source="media/cluster/stretch-active-active.png" alt-text="Active/active stretched cluster scenario" lightbox="media/cluster/stretch-active-active.png":::
 
 OK, let's begin:
 
