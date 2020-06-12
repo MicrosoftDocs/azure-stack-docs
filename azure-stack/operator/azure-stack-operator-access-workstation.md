@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: asganesh
 ms.topic: article
-ms.date: 06/11/2020
+ms.date: 06/12/2020
 ms.author: justinha
 ms.reviewer: asganesh
 ms.lastreviewed: 06/08/2020
@@ -40,7 +40,7 @@ The following table lists the pre-installed software on the OAW VM.
 |--------------------------|------------------------------------------------------------------------------------------------|
 | [Microsoft Edge for Business](https://www.microsoft.com/edge/business/)                                            | Desktop                                                                                        |
 | [Az Modules](https://docs.microsoft.com/azure-stack/operator/powershell-install-az-module)                         | \[SystemDrive\]\ProgramFiles\WindowsPowerShell\Modules                                         |  
-| [Powershell 7](https://docs.microsoft.com/powershell/scripting/whats-new/what-s-new-in-powershell-70?view=powershell-7)| Launched from Start menu                                                                       |
+| [Powershell 7](https://devblogs.microsoft.com/powershell/announcing-PowerShell-7-0/)| Launched from Start menu                                                                       |
 | [Azure Command-Line Interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | Recommend using Microsoft Edge for Business as the default web browser to work with Azure CLI. |
 | [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)   | Launched from Start menu                                                                       |
 | [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)                             | \[SystemDrive\]\VMSoftware\azcopy_windows_amd64_10.3.4                                         |
@@ -124,58 +124,6 @@ To create the OWA VM on a host with network connection to Azure Stack Hub, run t
       -DefaultGateway '192.168.0.1' `
       -DNS '192.168.0.10' `
    ```
-
-## Create the OAW VM manually
-
-Please note that once the VM is created manually, the image file will be modified. Please re-download the VM image file when creating new instances of the VM. 
-
-1. On a machine with internet connectivity, download the OAW VM zip from here: TBD
-1. Copy the new .vhdx image over to the HLH host in a well-known location.
-1. Log onto the HLH with your credentials.
-1. On the HLH host, launch the Hyper-V Manager.
-1. Ensure no VM is selected. In the Hyper-V Manager, click Action->New->Virtual Machine.
-1. Complete the New Virtual Machine Wizard pages using the following table. 
-
-   | Wizard page               | Values                                                     |
-   |---------------------------|------------------------------------------------------------|
-   | Specify Name and Location | Provide a name for the VM and location to store it         |
-   | Specify Generation        | Choose **Generation 2** to support Secure Boot             |
-   | Assign Memory             | Specify **4096** MB or greater                             |
-   | Configure Networking      | Select a switch with access to the BMC management network  |
-   | Connect Virtual Hard Disk | - Click **Use an existing virtual hard disk**<br>- Browse to where you saved ManagementVM.vhdx in step 2<br>- Click **Finish**<br> |
-
-   ![Screenshot of Connect Virtual Hard Disk wizard page](./media/azure-stack-operator-access-workstation/connect-virtual-hard-disk.png)
-
-1. Right-click the new VM in Hyper-V Manager and click **Settings**.
-
-   ![Screenshot of VM Settings](./media/azure-stack-operator-access-workstation/vm-settings.png)
-
-1. If you have chosen a Generation 2 VM, click **Security** and then click **Enable Trusted Platform Module**.
-
-   ![Screenshot of Enable TPM](./media/azure-stack-operator-access-workstation/enable-tpm.png)
-
-1. Click **Processor** and assign 8 or more virtual processors, and then click **Apply** and **OK** to exit the settings.
-
-   ![Screenshot of Processors](./media/azure-stack-operator-access-workstation/virtual-processors.png)
-
-1. Right-click the created VM in the Hyper-V Manager and click **Connect...**.    
-
-   ![Screenshot of Connect to a VM](./media/azure-stack-operator-access-workstation/connect-vm.png)
-
-1. Click **Start**.
-1. Wait for the VM to start and provide a password with a minimum length of 14 characters for the built-in Administrator account (which will be renamed to AdminUser later). 
-
-   ![Screenshot of setting the AdminUser password](./media/azure-stack-operator-access-workstation/admin-password.png)
-
-1. When the logon screen appears, sign in using use the password you provided previously for the built-in AdminUser. 
-1. The VM is now ready to use.
-
-   >[!TIP]
-   >If you want to configure networking to be able to access BMC management network:
-   >- In Hyper-V Manager, right-click the HLH VM and click **Settings**, click **Network Adapter** and change the configuration to the appropriate virtual switch.
-   >- Navigate back to OAW VM.
-   >- Click **Network & Internet Settings** and change the adapter.
-
 
 ## Remove the OAW VM
 
