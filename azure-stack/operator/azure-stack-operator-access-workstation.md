@@ -38,7 +38,7 @@ The following table lists the pre-installed software on the OAW VM.
 
 | Software Name	           | Location                                                                                       |
 |--------------------------|------------------------------------------------------------------------------------------------|
-| [Microsoft Edge for Business](https://www.microsoft.com/edge/business/)                                            | Desktop                                                                                        |
+| [Microsoft Edge for Business](https://www.microsoft.com/edge/business/)                                            | \{SystemDrive\]\Program Files (x86)\Microsoft\Edge\Application                                                                                        |
 | [Az Modules](https://docs.microsoft.com/azure-stack/operator/powershell-install-az-module)                         | \[SystemDrive\]\ProgramFiles\WindowsPowerShell\Modules                                         |  
 | [Powershell 7](https://devblogs.microsoft.com/powershell/announcing-PowerShell-7-0/)| \[SystemDrive\]\Program Files\PowerShell\7                                                                       |
 | [Azure Command-Line Interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | \[SystemDrive\]\Program Files (x86)\Microsoft SDKs\Azure\CLI2 |
