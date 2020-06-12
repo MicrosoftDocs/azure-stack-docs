@@ -91,7 +91,7 @@ This section discusses how to use Windows Admin Center to protect privileged ide
 
 - **Role-based access control (RBAC)** in Windows Admin Center allows users limited access to the servers they need to manage instead of making them full local administrators. To use RBAC in Windows Admin Center, you configure each managed server with a PowerShell Just Enough Administration endpoint.
 
-    To learn more, see [Role-based access control](/windows-server/manage/windows-admin-center/plan/user-access-options#role-based-access-control) and [Just Enough Administration](https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/jea/overview?view=powershell-7).
+    To learn more, see [Role-based access control](/windows-server/manage/windows-admin-center/plan/user-access-options#role-based-access-control) and [Just Enough Administration](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview?view=powershell-7).
 
 - **Windows Admin Center security tools** 
 
