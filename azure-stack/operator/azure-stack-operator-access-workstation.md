@@ -56,6 +56,7 @@ The following table lists the pre-installed software on the OAW VM.
    ```
 
    For example:
+
    ![Screenshot of PowerShell cmdlet to check the version of the OWA VM](./media/azure-stack-operator-access-workstation/check-hlh-version.png)
 
 ## Create the OAW VM using a script
@@ -136,6 +137,7 @@ To create the OWA VM on a host with network connection to Azure Stack Hub, run t
    ```
 
    For example:
+
    ![Screenshot of PowerShell cmdlet to check the Hardware LifeCycle Host version](./media/azure-stack-operator-access-workstation/check-oaw-vm-version.png)
 
 
