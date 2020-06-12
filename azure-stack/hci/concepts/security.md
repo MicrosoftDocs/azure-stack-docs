@@ -38,7 +38,7 @@ This section discusses how to protect services and virtual machines (VMs) runnin
     To learn more, see [Manage Windows Defender Credential Guard](https://docs.microsoft.com/windows/security/identity-protection/credential-guard/credential-guard-manage) and download the [Device Guard and Credential Guard hardware readiness tool](https://www.microsoft.com/en-us/download/details.aspx?id=53337).
 
 - **Update** via Windows Admin Center
-    <!---Get link to Dan's article from his next PR to replacing existing link.--->
+    <!---Get link to Dan's article for high-level intro and reference to it from his next PR to replacing existing link.--->
  
     To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](/windows-server/failover-clustering/cluster-aware-updating-requirements).
  
@@ -49,7 +49,7 @@ This section discusses how to protect services and virtual machines (VMs) runnin
 ### Protect data
 This section discusses how to use Windows Admin Center to protect data and workloads on the operating system:
 
-- **BitLocker for Storage Spaces** protects data at rest. You can use BitLocker to encrypt the contents of Storage Spaces data volumes on the operating system. Using BitLocker to protect data can help government or other organizations stay compliant with such standards as FIPS 140-2 and HIPAA.
+- **BitLocker for Storage Spaces** protects data at rest. You can use BitLocker to encrypt the contents of Storage Spaces data volumes on the operating system. Using BitLocker to protect data can help government and other organizations stay compliant with such standards as FIPS 140-2 and HIPAA.
 
     To access BitLocker in Windows Admin Center:
 
@@ -57,10 +57,10 @@ This section discusses how to use Windows Admin Center to protect data and workl
     1. On the **Volumes** page, select **Inventory**, and then under **Optional features**, switch the **Encryption (BitLocker)** toggle on.
     1. On the **Encryption (BitLocker)** pop-up, select **Start**, and then on the **Turn on Encryption** page, provide your credentials to complete the workflow.
 
-    :::image type="content" source="/media/security/bitlocker-toggle-switch.png" alt-text="The BitLocker toggle to enable the feature":::
+        :::image type="content" source="./media/security/bitlocker-toggle-switch.png" alt-text="The BitLocker toggle to enable the feature":::
 
    >[!NOTE]
-   > If the **Install BitLocker freature first** pop-up displays, follow its instructions to install the feature on each server in the cluster, and then restart your servers.
+   > If the **Install BitLocker feature first** pop-up displays, follow its instructions to install the feature on each server in the cluster, and then restart your servers.
 
 - **SMB** encryption for Windows networking protects data in transit. *Server Message Block (SMB)* is a network file sharing protocol that allows applications on a computer to read and write to files and to request services from server programs on a computer network.
 
@@ -75,7 +75,11 @@ This section discusses how to use Windows Admin Center to protect data and workl
 ### Protect identities
 This section discusses how to use Windows Admin Center to protect privileged identities:
 
-- **Access control** 
+- **Access control** can improve the security of your management landscape. Windows Admin Center defines two roles for access to the gateway service: gateway users and gateway administrators. Gateway administrator identity provider options include:
+    - Active Directory or local machine groups to enforce smartcard authentication.
+    - Azure Active Directory to enforce conditional access and multifactor authentication.
+ 
+    To learn more, see [User access options with Windows Admin Center](/windows-server/manage/windows-admin-center/plan/user-access-options) and [Configure User Access Control and Permissions](/windows-server/manage/windows-admin-center/configure/user-access-control).
 
 - **Browser traffic** 
 
@@ -83,9 +87,11 @@ This section discusses how to use Windows Admin Center to protect privileged ide
 
 - **Local accounts** 
 
-- **Multifactor authentication** 
+- **Multifactor authentication**
 
-- **RBAC** 
+- **Role-based access control (RBAC)** in Windows Admin Center allows users limited access to the servers they need to manage instead of making them full local administrators. To use RBAC in Windows Admin Center, you configure each managed server with a PowerShell Just Enough Administration endpoint.
+
+    To learn more, see [Role-based access control](/windows-server/manage/windows-admin-center/plan/user-access-options#role-based-access-control) and [Just Enough Administration](https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/jea/overview?view=powershell-7).
 
 - **Windows Admin Center security tools** 
 
