@@ -40,9 +40,9 @@ The following table lists the pre-installed software on the OAW VM.
 |--------------------------|------------------------------------------------------------------------------------------------|
 | [Microsoft Edge for Business](https://www.microsoft.com/edge/business/)                                            | Desktop                                                                                        |
 | [Az Modules](https://docs.microsoft.com/azure-stack/operator/powershell-install-az-module)                         | \[SystemDrive\]\ProgramFiles\WindowsPowerShell\Modules                                         |  
-| [Powershell 7](https://devblogs.microsoft.com/powershell/announcing-PowerShell-7-0/)| Launched from Start menu                                                                       |
-| [Azure Command-Line Interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | Recommend using Microsoft Edge for Business as the default web browser to work with Azure CLI. |
-| [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)   | Launched from Start menu                                                                       |
+| [Powershell 7](https://devblogs.microsoft.com/powershell/announcing-PowerShell-7-0/)| \[SystemDrive\]\Program Files\PowerShell\7                                                                       |
+| [Azure Command-Line Interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | \[SystemDrive\]\Program Files (x86)\Microsoft SDKs\Azure\CLI2 |
+| [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)   | \[SystemDrive\]\Program Files (x86)\Microsoft Azure Storage Explorer                                                                       |
 | [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)                             | \[SystemDrive\]\VMSoftware\azcopy_windows_amd64_10.3.4                                         |
 | [AzureStack-Tools](https://github.com/Azure/AzureStack-Tools/tree/az)                  | \[SystemDrive\]\VMSoftware\AzureStack-Tools                                                    |
 
