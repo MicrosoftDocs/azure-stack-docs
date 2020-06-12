@@ -57,7 +57,7 @@ This section discusses how to use Windows Admin Center to protect data and workl
     1. On the **Volumes** page, select **Inventory**, and then under **Optional features**, switch the **Encryption (BitLocker)** toggle on.
     1. On the **Encryption (BitLocker)** pop-up, select **Start**, and then on the **Turn on Encryption** page, provide your credentials to complete the workflow.
 
-    :::image type="content" source="media/security/bitlocker-toggle-switch" alt-text="The BitLocker toggle to enable the feature":::
+    :::image type="content" source="/media/security/bitlocker-toggle-switch.png" alt-text="The BitLocker toggle to enable the feature":::
 
    >[!NOTE]
    > If the **Install BitLocker freature first** pop-up displays, follow its instructions to install the feature on each server in the cluster, and then restart your servers.
