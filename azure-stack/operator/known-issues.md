@@ -139,6 +139,11 @@ For other known Azure Stack Hub update issues, please see [Troubleshooting Updat
   - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
 ## Compute
+### Cannot create a VMSS with Standard_DS2_v2 VM size on portal
+
+- Applicable: This issue applies to the 2002 release.
+- Cause: There is a portal bug that prevents VMSS creation with the Standard_DS2_v2 VM size. Creating one will error out with: "{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"BadRequest","message":"{\r\n \"error\": {\r\n \"code\": \"NetworkProfileValidationError\",\r\n \"message\": \"Virtual Machine size Standard_DS2_v2 is not in the allowed list of VM sizes for accelerated networking to be enabled on the VM at index 0 for VM Scale Set /subscriptions/x/resourceGroups/RGVMSS/providers/Microsoft.Compute/virtualMachineScaleSets/vmss. Allowed sizes: .\"\r\n }\r\n}"}]}"
+Remediation: Create a VMSS with PowerShell or a resource manager template.
 
 ### VM overview blade does not show correct computer name
 
