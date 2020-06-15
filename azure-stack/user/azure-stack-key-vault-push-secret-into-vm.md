@@ -4,7 +4,7 @@ description: Learn how to deploy a virtual machine and push a certificate onto i
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 06/12/2020
 ms.author: sethm
 ms.lastreviewed: 12/27/2019
 
