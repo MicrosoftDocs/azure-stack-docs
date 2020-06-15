@@ -101,7 +101,7 @@ SkipNetworkConfiguration     | Optional parameter; use this flag to skip network
 
  ### Examples
 
-To create the OWA VM on the HLH without any customization using Azure Stack Hub version 2005 or later, run the New-OAW.ps1 script with the following parameters:
+To create the OAW VM on the HLH without any customization using Azure Stack Hub version 2005 or later, run the New-OAW.ps1 script with the following parameters:
 
    ```powershell
    $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
