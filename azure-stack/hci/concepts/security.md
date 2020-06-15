@@ -4,7 +4,7 @@ description: This topic provides guidance on security considerations for the Azu
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 06/12/2020
+ms.date: 06/15/2020
 ---
 
 # Azure Stack HCI security considerations
@@ -37,10 +37,9 @@ This section discusses how to protect services and virtual machines (VMs) runnin
 
     To learn more, see [Manage Windows Defender Credential Guard](https://docs.microsoft.com/windows/security/identity-protection/credential-guard/credential-guard-manage) and download the [Device Guard and Credential Guard hardware readiness tool](https://www.microsoft.com/en-us/download/details.aspx?id=53337).
 
-- **Update** via Windows Admin Center
-    <!---Get link to Dan's article for high-level intro and reference to it from his next PR to replacing existing link.--->
+- **Windows** and **firmware** updates are essential to help ensure that both the operating system and system hardware are protected from attackers. You can apply Windows updates via the **Updates** feature in Windows Admin Center to your servers. However, we recommend using the Cluster Creation wizard to streamline getting updates. To get the latest firmware updates from Azure Stack HCI certified hardware providers, see the [Azure Stack HCI Catalog](https://www.microsoft.com/cloud-platform/azure-stack-hci-catalog).
  
-    To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](/windows-server/failover-clustering/cluster-aware-updating-requirements).
+    To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster).
  
 - **Cluster-Aware Updating** makes it easier to install Windows updates on every server in your cluster while keeping your applications running by automating the software updating process. You can use Cluster-Aware Updating on all editions of Windows Server, including the Azure Stack HCI operating system, and initiate it through either Windows Admin Center or using PowerShell.
 
