@@ -4,10 +4,10 @@ titleSuffix: Azure Stack Hub
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: asganesh
 ms.topic: article
-ms.date: 06/12/2020
+ms.date: 06/15/2020
 ms.author: justinha
 ms.reviewer: asganesh
-ms.lastreviewed: 06/08/2020
+ms.lastreviewed: 06/15/2020
 
 # Intent: As an Azure Stack operator, I want to download and configure an Azure Stack Hub Operator Access Workstation.
 # Keyword: azure stack hub operator access workstation
@@ -80,7 +80,7 @@ The following table lists the parameters that can be run with New-OAW.ps1.
 | Parameter   | Description       |
 |-------------|-------------------|
 | LocalAdministratorPassword | Password for the virtual machine's local administrator account AdminUser. |
-| AzureStackCertificatePath  | Optional parameter; path of certificates to be imported to the virtual machine trusted root for Azure Stack Hub access. Won't take effect if -SkipNetworkConfiguration is set. |
+| AzureStackCertificatePath  | Optional parameter; path of certificates to be imported to the virtual machine for Azure Stack Hub access. |
 | ERCSVMIP                   | Optional parameter; IP of Azure Stack Hub ERCS VM(s) to be added to trusted host list of the virtual machine. Won't take effect if -SkipNetworkConfiguration is set. |
 SkipNetworkConfiguration     | Optional parameter; use this flag to skip network configuration for the virtual machine, user can configure later. |
 | UseDVMConfiguration        | Optional parameter; use this flag to apply Azure Stack Hub deployment virtual machine (dvm) network configuration. |
