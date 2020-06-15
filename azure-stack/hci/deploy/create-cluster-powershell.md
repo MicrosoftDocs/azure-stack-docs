@@ -110,7 +110,7 @@ The next step is to install required Windows roles and features on every server 
 Use the following command for each server:
 
 ```powershell
-Install-WindowsFeature -ComputerName Server1 -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "Hyper-V", "Hyper-V-PowerShell", "RSAT-Clustering-PowerShell", "Storage-Replica"
+Install-WindowsFeature -ComputerName Server1 -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering  -IncludeAllSubFeature -IncludeManagementTools", "FS-FileServer", "Hyper-V", "Hyper-V-PowerShell", "RSAT-Clustering-PowerShell", "Storage-Replica"
 ```
 
 To run the command on all servers in the cluster as the same time, use the following script, modifying the list of variables at the beginning to fit your environment.
@@ -118,7 +118,7 @@ To run the command on all servers in the cluster as the same time, use the follo
 ```powershell
 # Fill in these variables with your values
 $ServerList = "Server1", "Server2", "Server3", "Server4"
-$FeatureList = "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "Hyper-V", "Hyper-V-PowerShell", "RSAT-Clustering-PowerShell", "Storage-Replica"
+$FeatureList = "BitLocker", "Data-Center-Bridging", "Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools", "FS-FileServer", "Hyper-V", "Hyper-V-PowerShell", "RSAT-Clustering-PowerShell", "Storage-Replica"
 
 # This part runs the Install-WindowsFeature cmdlet on all servers in $ServerList, passing the list of features in $FeatureList.
 Invoke-Command ($ServerList) {
@@ -134,7 +134,128 @@ Restart-Computer -ComputerName $ServerList
 
 ## Step 2: Configure the network
 
-**== add networking commands here ==**
+### Disable unused networks
+
+You must disable any networks disconnected or not used for management, storage or workload traffic (such as VMs). Here is how to identify unused networks:
+
+```powershell
+$Servers = "Server1", "Server2", "Server3", "Server4"
+Get-NetAdapter -CimSession $Servers | Where-Object Status -eq Disconnected
+```
+And here is how to disable them:
+
+```powershell
+Get-NetAdapter -CimSession $Servers | Where-Object Status -eq Disconnected | Disable-NetAdapter -Confirm:$False
+```
+
+### Assign virtual network adapters
+
+Next, you will assign virtual network adapters (vNICs) dedicated for management and storage, as in the example:
+
+```powershell
+$Servers = "Server1", "Server2", "Server3", "Server4"
+$vSwitchName="vSwitch"
+Rename-VMNetworkAdapter -ManagementOS -Name $vSwitchName -NewName Management -ComputerName $Servers
+Add-VMNetworkAdapter -ManagementOS -Name SMB01 -SwitchName $vSwitchName -CimSession $Servers
+Add-VMNetworkAdapter -ManagementOS -Name SMB02 -SwitchName $vSwitchName -Cimsession $Servers
+```
+
+And verify they have been successfully added and assigned:
+
+```powershell
+$Servers = "Server1", "Server2", "Server3", "Server4"
+Get-VMNetworkAdapter -CimSession $Servers -ManagementOS
+```
+
+### Create virtual switches
+
+A virtual switch is needed for each server node in your cluster. In the following example, a virtual switch with SR-IOV capability is created using network adapters that are connected (Status is UP). SR-IOV enabled might be useful as it's required for RDMA enabled vmNICs (vNICs for VMs).
+
+```powershell
+$Servers = "Server1", "Server2", "Server3", "Server4"
+$vSwitchName="vSwitch"
+
+#Create virtual switch
+Invoke-Command -ComputerName $Servers -ScriptBlock {New-VMSwitch -Name $using:vSwitchName -EnableEmbeddedTeaming $TRUE -EnableIov $true -NetAdapterName (Get-NetAdapter | Where-Object Status -eq Up ).InterfaceAlias}
+```
+
+Now, validate that the switch has been successfully created:
+
+```powershell
+$Servers = "Server1", "Server2", "Server3", "Server4"
+Get-VMSwitch -CimSession $Servers | Select-Object Name, IOVEnabled, IOVS*
+Get-VMSwitchTeam -CimSession $Servers
+```
+
+### Configure VLANs and IP addresses
+
+You can configure either one or two subnets. Two subnets are preferred if you want to prevent overloading of the switch interconnect. For example, SMB storage traffic will stay on a subnet that's dedicated to one physical switch.
+
+#### Configure one subnet
+
+```powershell
+$Servers = "Server1", "Server2", "Server3", "Server4"
+$StorNet="172.16.1."
+$StorVLAN=1
+$IP=1 #starting IP Address
+
+#Configure IP Addresses
+foreach ($Server in $Servers){
+    New-NetIPAddress -IPAddress ($StorNet+$IP.ToString()) -InterfaceAlias "vEthernet (SMB01)" -CimSession $Server -PrefixLength 24
+    $IP++
+    New-NetIPAddress -IPAddress ($StorNet+$IP.ToString()) -InterfaceAlias "vEthernet (SMB02)" -CimSession $Server -PrefixLength 24
+    $IP++
+}
+
+#Configure VLANs
+Set-VMNetworkAdapterVlan -VMNetworkAdapterName SMB01 -VlanId $StorVLAN -Access -ManagementOS -CimSession $Servers
+Set-VMNetworkAdapterVlan -VMNetworkAdapterName SMB02 -VlanId $StorVLAN -Access -ManagementOS -CimSession $Servers
+#Restart each host vNIC adapter so that the Vlan is active.
+Restart-NetAdapter "vEthernet (SMB01)" -CimSession $Servers
+Restart-NetAdapter "vEthernet (SMB02)" -CimSession $Servers
+ 
+```
+
+#### Configure two subnets
+
+```powershell
+$Servers = "Server1", "Server2", "Server3", "Server4"
+$StorNet1="172.16.1."
+$StorNet2="172.16.2."
+$StorVLAN1=1
+$StorVLAN2=2
+$IP=1 #starting IP Address
+
+#Configure IP Addresses
+foreach ($Server in $Servers){
+    New-NetIPAddress -IPAddress ($StorNet1+$IP.ToString()) -InterfaceAlias "vEthernet (SMB01)" -CimSession $Server -PrefixLength 24
+    New-NetIPAddress -IPAddress ($StorNet2+$IP.ToString()) -InterfaceAlias "vEthernet (SMB02)" -CimSession $Server -PrefixLength 24
+    $IP++
+}
+
+#Configure VLANs
+Set-VMNetworkAdapterVlan -VMNetworkAdapterName SMB01 -VlanId $StorVLAN1 -Access -ManagementOS -CimSession $Servers
+Set-VMNetworkAdapterVlan -VMNetworkAdapterName SMB02 -VlanId $StorVLAN2 -Access -ManagementOS -CimSession $Servers
+#Restart each host vNIC adapter so that the Vlan is active.
+Restart-NetAdapter "vEthernet (SMB01)" -CimSession $Servers
+Restart-NetAdapter "vEthernet (SMB02)" -CimSession $Servers
+```
+
+#### Verify VLAN IDs and subnets
+
+```powershell
+$Servers = "Server1", "Server2", "Server3", "Server4"
+#verify ip config
+Get-NetIPAddress -CimSession $servers -InterfaceAlias vEthernet* -AddressFamily IPv4 | Sort-Object -Property PSComputername | ft pscomputername,interfacealias,ipaddress -AutoSize -GroupBy PSComputerName
+
+#Verify that the VlanID is set
+Get-VMNetworkAdapterVlan -ManagementOS -CimSession $servers | Sort-Object -Property Computername | Format-Table ComputerName,AccessVlanID,ParentAdapter -AutoSize -GroupBy ComputerName
+
+```
+
+```powershell
+Get-VMSwitch | FL
+```
 
 ## Step 3: Verify cluster setup
 
