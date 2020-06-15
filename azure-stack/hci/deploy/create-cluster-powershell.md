@@ -250,11 +250,115 @@ Get-NetIPAddress -CimSession $servers -InterfaceAlias vEthernet* -AddressFamily 
 
 #Verify that the VlanID is set
 Get-VMNetworkAdapterVlan -ManagementOS -CimSession $servers | Sort-Object -Property Computername | Format-Table ComputerName,AccessVlanID,ParentAdapter -AutoSize -GroupBy ComputerName
+```
+### Configure RDMA
 
+Next, we will enable RDMA on the host vNIC adapters and associate each of these vNICs to a physical network adapter that is associated with the virtual switch.
+
+```powershell
+$Servers = "Server1", "Server2", "Server3", "Server4"
+$vSwitchName="vSwitch"
+
+#Enable RDMA on the host vNIC adapters
+Enable-NetAdapterRDMA "vEthernet (SMB01)","vEthernet (SMB02)" -CimSession $Servers
+
+#Associate each of the vNICs configured for RDMA to a physical adapter that is up and is not virtual to be sure that each RDMA enabled ManagementOS vNIC is mapped to separate RDMA pNIC
+Invoke-Command -ComputerName $servers -ScriptBlock {
+    $physicaladapters=(get-vmswitch $using:vSwitchName).NetAdapterInterfaceDescriptions | Sort-Object
+    $netadapters=foreach ($physicaladapter in $physicaladapters){Get-NetAdapter -InterfaceDescription $physicaladapter}
+    $i=1
+    foreach ($netadapter in ($Netadapters | Sort-Object -Property MacAddress)){
+        Set-VMNetworkAdapterTeamMapping -VMNetworkAdapterName "SMB0$i" -ManagementOS -PhysicalNetAdapterName $netadapter.Name
+        $i++
+    }
+}
+```
+
+Now we validate that this happened successfully:
+
+```powershell
+$Servers = "Server1", "Server2", "Server3", "Server4"
+#verify RDMA
+Get-NetAdapterRdma -CimSession $Servers | Sort-Object -Property SystemName | Format-Table SystemName,InterfaceDescription,Name,Enabled -AutoSize -GroupBy SystemName
+#verify mapping
+Get-VMNetworkAdapterTeamMapping -CimSession $Servers -ManagementOS | Format-Table ComputerName,NetAdapterName,ParentAdapter
+```
+
+### Configure Jumbo frames
+
+You may need to increase the jumbo frames if you are using iWARP. If not using the default values, make sure all switches are configured end-to-end.
+
+```powershell
+$Servers = "Server1", "Server2", "Server3", "Server4"
+$JumboSize=9014
+Set-NetAdapterAdvancedProperty -CimSession $Servers  -DisplayName "Jumbo Packet" -RegistryValue $JumboSize
+```
+And validate:
+
+```powershell
+$Servers="S2D1","S2D2","S2D3","S2D4"
+Get-NetAdapterAdvancedProperty -CimSession $servers -DisplayName "Jumbo Packet"
+```
+
+### Configure DCB
+
+Datacenter-Bridging (DCB) is required for RoCE RDMA and recommended in some scenarios for iWARP as well to prioritize traffic or to send pause frames.
+
+```powershell
+$Servers = "Server1", "Server2", "Server3", "Server4"
+$vSwitchName="vSwitch"
+#install dcb feature
+foreach ($server in $servers) {Install-WindowsFeature -Name "Data-Center-Bridging" -ComputerName $server}
+
+#add qos Policies
+New-NetQosPolicy "SMB"       -NetDirectPortMatchCondition 445 -PriorityValue8021Action 3 -CimSession $servers
+New-NetQosPolicy "ClusterHB" -Cluster                         -PriorityValue8021Action 7 -CimSession $servers
+New-NetQosPolicy "Default"   -Default                         -PriorityValue8021Action 0 -CimSession $servers
+
+Invoke-Command -ComputerName $servers -ScriptBlock {
+    #Turn on Flow Control for SMB
+    Enable-NetQosFlowControl -Priority 3
+    #Disable flow control for other traffic than 3 (pause frames should go only from priority 3
+    Disable-NetQosFlowControl -Priority 0,1,2,4,5,6,7
+    #Disable Data Center bridging exchange (disable accept data center bridging (DCB) configurations from a remote device via the DCBX protocol, which is specified in the IEEE data center bridging (DCB) standard.)
+    Set-NetQosDcbxSetting -willing $false -confirm:$false
+    #Configure IeeePriorityTag
+    #IeePriorityTag needs to be On if you want tag your nonRDMA traffic for QoS. Can be off if traffic uses adapters that pass vSwitch (both SR-IOV and RDMA bypasses vSwitch)
+    Set-VMNetworkAdapter -ManagementOS -Name "SMB*" -IeeePriorityTag on
+    #Apply policy to the target adapters.  The target adapters are adapters connected to vSwitch
+    Enable-NetAdapterQos -InterfaceDescription (Get-VMSwitch -Name $using:vSwitchName).NetAdapterInterfaceDescriptions
+    #Create a Traffic class and give SMB Direct 60% of the bandwidth minimum. The name of the class will be "SMB".
+    #This value needs to match physical switch configuration. Value might vary based on your needs.
+    #If connected directly (in 2 node configuration) skip this step.
+    New-NetQosTrafficClass "SMB"       -Priority 3 -BandwidthPercentage 60 -Algorithm ETS
+    New-NetQosTrafficClass "ClusterHB" -Priority 7 -BandwidthPercentage 1 -Algorithm ETS
+}
+```
+And validate:
+
+```powershell
+$Servers="S2D1","S2D2","S2D3","S2D4"
+#validate QOS Policies
+Get-NetQosPolicy -CimSession $servers | Select-Object Name,NetworkProfile,Template,NetDirectPort,PriorityValue8021Action,PSComputerName | Sort-Object PSComputerName | Format-Table -GroupBy PSComputerName
+
+#validate Flow Control (enabled for Priority3, disabled for other priorities)
+Invoke-Command -ComputerName $servers -ScriptBlock {get-netqosflowcontrol} | Select-Object Name,Enabled,PSComputerName
+
+#validate Data Center bridging exchange
+Invoke-Command -ComputerName $servers -ScriptBlock {Get-NetQosDcbxSetting} | Select-Object Willing,PSComputerName
+
+#validate IEEEPriorityTag
+Get-VMNetworkAdapter -CimSession $servers -ManagementOS -Name SMB* | Select-Object Name,IeeePriorityTag,ComputerName
+
+#validate policy on physical adapters
+Invoke-Command -ComputerName $servers -ScriptBlock {Get-NetAdapterQos -InterfaceDescription (Get-VMSwitch -Name $using:vSwitchName).NetAdapterInterfaceDescriptions}
+
+#validate traffic classes
+Invoke-Command -ComputerName $servers -ScriptBlock {Get-NetQosTrafficClass} | Select-Object Priority,BandwidthPercentage,Algorithm,PSComputerName
 ```
 
 ```powershell
-Get-VMSwitch | FL
+
 ```
 
 ## Step 3: Verify cluster setup
