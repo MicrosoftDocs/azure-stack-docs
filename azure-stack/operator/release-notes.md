@@ -115,7 +115,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue in which **Get-AzureStackLogs** was not collecting the required logs to troubleshoot networking issues. 
 - Fixed an issue in which the portal allowed fewer NICs to be attached than what it actually allows. 
 - Fixed code integrity policy to not emit violation events for certain internal software. This reduces noice in code integrity violation events emitted via syslog client.
-- Fixed **Set-TLSPolicy** cmdlet to enforce new policy even without requiring restart of the https service or the reboot of the host.
+- Fixed **Set-TLSPolicy** cmdlet to enforce new policy without requiring restart of the https service or the reboot of the host.
 
 ## Security updates
 
