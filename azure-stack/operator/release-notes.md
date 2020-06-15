@@ -91,6 +91,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Improved resiliency of stop-deallocating a VM.
 - Improved resiliency of the Network Controller Host Agent. 
+- Added additional fields to the CEF payload of the syslog messages to report the source IP and the account used to connect to the   privileged endpoint and the recovery endpoint. Please refer to [Integrate Azure Stack Hub with monitoring solutions using syslog forwarding](https://docs.microsoft.com/azure-stack/operator/azure-stack-integrate-security) for details.
+- Added Windows Defender events (Event IDs 5001, 5010, 5012) to the list of events emitted via the syslog client.
 
 
 ### Changes
@@ -112,6 +114,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue in which creating a duplicate DNS zone caused the portal to hang. It should now show an appropriate error. 
 - Fixed an issue in which **Get-AzureStackLogs** was not collecting the required logs to troubleshoot networking issues. 
 - Fixed an issue in which the portal allowed fewer NICs to be attached than what it actually allows. 
+- Fixed Code Integrity policy to not emit violation events for certain internal software. This will reduce noice in Code Integrity violation events emitted via syslog client.
+- Fixed **Set-TLSPolicy** cmdlet to enforce new policy even withouth requiring restart of the https service or the reboot of the host.
 
 ## Security updates
 
