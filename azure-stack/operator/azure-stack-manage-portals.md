@@ -77,8 +77,8 @@ To access the Azure Stack Hub operator documentation, use the help and support i
 
 If you click the help icon (question mark) in the upper-right corner of the administrator portal, click **Help + support**, and then click **New support request** under **Support**, one of the following results happens:
 
-- If you're using an integrated system, this action opens a site where you can directly open a support ticket with Microsoft Customer Support Services (CSS). Refer to [Where to get support](azure-stack-manage-basics.md#where-to-get-support) to understand when you should go through Microsoft support or through your original equipment manufacturer (OEM) hardware vendor support.
-- If you're using the ASDK, this action opens the [Azure Stack Hub forums site](https://social.msdn.microsoft.com/Forums/home?forum=AzureStack) directly. These forums are regularly monitored. Because the ASDK is an evaluation environment, there's no official support offered through Microsoft CSS.
+- If you're using an integrated system, this action opens a site where you can directly open a support ticket with Microsoft Support. Refer to [Where to get support](azure-stack-manage-basics.md#where-to-get-support) to understand when you should go through Microsoft support or through your original equipment manufacturer (OEM) hardware vendor support.
+- If you're using the ASDK, this action opens the [Azure Stack Hub forums site](https://social.msdn.microsoft.com/Forums/home?forum=AzureStack) directly. These forums are regularly monitored. Because the ASDK is an evaluation environment, there's no official support offered through Microsoft Support.
 
 ### Quick access to the Azure roadmap
 
