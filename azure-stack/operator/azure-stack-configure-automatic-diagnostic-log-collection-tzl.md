@@ -20,6 +20,9 @@ Save time with customer support by proactively collecting diagnostic logs when a
 
 If system health conditions need to be investigated, the logs can be uploaded automatically for analysis before opening a support case with Microsoft Customer Support Services (CSS).
 
+>[!NOTE]
+>If you are disconnected from the internet or want to only save logs locally, use [Get-AzureStackLog](azure-stack-get-azurestacklog.md) method to send logs. 
+
 ## Steps to configure proactive log collection
 
 Follow these steps to configure proactive log collection. Proactive log collection can be disabled and re-enabled anytime.  
