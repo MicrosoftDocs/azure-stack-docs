@@ -1,19 +1,17 @@
 ---
-title: Monitor Azure Stack Hub hardware health 
+title: Monitor hardware health in Azure Stack Hub
 description: Learn how to monitor the health of Azure Stack Hub hardware components.
 author: sethmanheim
-
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 06/15/2020
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 11/21/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub operator, I want to monitor the status and health of my hardware components and set alerts when needed.
+# Keyword: monitor hardware health azure stack hub
 
 ---
-
 
 # Monitor Azure Stack Hub hardware components
 
@@ -27,20 +25,20 @@ The Azure Stack Hub health and monitoring system monitors the status of the stor
 - Boot drives
 
 > [!NOTE]
-> Prior to enabling this feature, you must validate with your hardware partner that they are ready. Your hardware partner will also provide the detailed steps for enabling this feature in the BMC.
+> Before you enable this feature, you must validate with your hardware partner that they're ready. Your hardware partner will also provide the detailed steps for enabling this feature in the baseboard management controller (BMC).
 
 ## SNMP listener scenario
 
-An SNMP v3 listener is running on all three ERCS instances on TCP port 162. The baseboard management controller (BMC) must be configured to send SNMP traps to the Azure Stack Hub listener. You can get the three PEP IPs from the admin portal by opening the region properties view.
+An SNMP v3 listener is running on all three ERCS instances on TCP port 162. The BMC must be configured to send SNMP traps to the Azure Stack Hub listener. You can get the three PEP IPs from the administrator portal by opening the region properties view.
 
 Sending traps to the listener requires authentication and must use the same credential as accessing base BMC itself.
 
-When an SNMP trap is received on any of the three ERCS instances on TCP port 162, the OID is matched internally and an alert is raised. The Azure Stack Hub health and monitoring system only accepts OIDs defined by the hardware partner. If an OID is unknown to Azure Stack Hub, it will not match it to an alert.
+When an SNMP trap is received on any of the three ERCS instances on TCP port 162, the OID is matched internally and an alert is raised. The Azure Stack Hub health and monitoring system only accepts OIDs defined by the hardware partner. If an OID is unknown to Azure Stack Hub, it won't match it to an alert.
 
-Once a faulty component is replaced, an event is sent from the BMC to the SNMP listener that indicates the state change, and the alert will close automatically in Azure Stack Hub.
+Once a faulty component is replaced, an event is sent from the BMC to the SNMP listener that indicates the state change. The alert then closes automatically in Azure Stack Hub.
 
 > [!NOTE]
-> Existing alerts will not close automatically when the entire node or motherboard is replaced. The same applies when the BMC loses its configuration; for example, due to a factory reset.
+> Existing alerts do not close automatically when the entire node or motherboard is replaced. The same applies when the BMC loses its configuration; for example, due to a factory reset.
 
 ## Next steps
 

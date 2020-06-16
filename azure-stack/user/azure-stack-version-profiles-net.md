@@ -4,7 +4,7 @@ description: Learn how to use API version profiles with .NET SDK in Azure Stack 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/27/2020
+ms.date: 05/05/2020
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
@@ -96,7 +96,7 @@ You can get the metadata info from the Resource Manager endpoint. The endpoint r
 
 Note the following considerations:
 
-- The **ResourceManagerUrl** in the Azure Stack Development Kit (ASDK) is: https://management.local.azurestack.external/.
+- The **ResourceManagerUrl** in the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external/`.
 
 - The **ResourceManagerUrl** in integrated systems is: `https://management.region.<fqdn>/`, where `<fqdn>` is your fully qualified domain name.
 To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`.

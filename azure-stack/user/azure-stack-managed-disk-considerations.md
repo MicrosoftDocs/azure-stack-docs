@@ -4,7 +4,7 @@ description: Learn about differences and considerations when working with manage
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 05/04/2020
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 03/23/2019
@@ -22,7 +22,7 @@ This article summarizes the differences between [*managed disks* in Azure Stack 
 Managed disks simplify disk management for IaaS virtual machines (VMs) by managing the [storage accounts](../operator/azure-stack-manage-storage-accounts.md) associated with the VM disks.
 
 > [!NOTE]  
-> Managed disks on Azure Stack Hub are available starting with the 1808 update. Beginning with the 1811 update, the feature is enabled by default when creating VMs using the Azure Stack Hub portal.
+> Managed disks on Azure Stack Hub were available starting with the 1808 update. Beginning with the 1811 update, the feature is enabled by default when creating VMs using the Azure Stack Hub portal.
   
 ## Cheat sheet: managed disk differences
 
@@ -56,7 +56,7 @@ There are also differences with storage metrics:
 Azure Stack Hub managed disks support the following API versions:
 
 - 2017-03-30
-- 2017-12-01
+- 2017-12-01 (Managed images only, no disks, no snapshots)
 
 ## Convert to managed disks
 
@@ -187,13 +187,13 @@ $PIp = New-AzureRmPublicIpAddress -ResourceGroupName $ResourceGroupName -Locatio
   -Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
 
 # Create an inbound network security group rule for port 3389
-$NsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name "MyNetworkSecurityGroupRuleRDP"  -Protocol Tcp `
+$NsgRuleSSH = New-AzureRmNetworkSecurityRuleConfig -Name "MyNetworkSecurityGroupRuleSSH"  -Protocol Tcp `
   -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
-  -DestinationPortRange 3389 -Access Allow
+  -DestinationPortRange 22 -Access Allow
 
 # Create a network security group
 $Nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $ResourceGroupName -Location $Location `
-  -Name "MyNetworkSecurityGroup" -SecurityRules $NsgRuleRDP
+  -Name "MyNetworkSecurityGroup" -SecurityRules $NsgRuleSSH
 
 # Create a virtual network card and associate with public IP address and NSG
 $Nic = New-AzureRmNetworkInterface -Name "MyNic" -ResourceGroupName $ResourceGroupName -Location $Location `

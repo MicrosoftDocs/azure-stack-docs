@@ -1,21 +1,20 @@
 ---
-title: Quota types in Azure Stack Hub 
-description: View and edit the different quota types available for services and resources in Azure Stack Hub.
+title: Quotas and quota types in Azure Stack Hub 
+description: View and edit the different quotas and quota types available for services and resources in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 01/07/2020
+ms.date: 06/09/2020
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2019
 
-# Intent: As an Azure Stack operator, I want to view and edit quota types available for services and resources in Azure Stack.
-# Keyword: quota types azure stack
+# Intent: As an Azure Stack operator, I want to view and edit quotas available for services and resources in Azure Stack.
+# Keyword: quotas quota types azure stack
 
 ---
 
 # Quota types in Azure Stack Hub
-
 
 [Quotas](service-plan-offer-subscription-overview.md#plans) define the limits of resources that a user subscription can provision or consume. For example, a quota might allow a user to create up to five virtual machines (VMs). Each resource can have its own types of quotas.
 
@@ -57,6 +56,12 @@ ms.lastreviewed: 12/07/2019
 | Maximum NICs |100 |The maximum number of network interfaces that a subscription can create in this location. |
 | Maximum load balancers |50 |The maximum number of load balancers that a subscription can create in this location. |
 | Maximum network security groups |50 |The maximum number of network security groups that a subscription can create in this location. |
+
+## Event Hubs quota types
+
+| **Type** | **Default value** | **Description** |
+| --- | --- | --- |
+| Maximum number of VM cores | 10 | The maximum number of cores that a subscription can create in this location (for example, an A3 VM has four cores). |
 
 ## View an existing quota
 

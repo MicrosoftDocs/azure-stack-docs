@@ -2,10 +2,10 @@
 title: Create a custom role for Azure Stack Hub registration
 titleSuffix: Azure Stack Hub
 description: Learn how to create a custom role to avoid using global administrator for Azure Stack Hub registration.
-author: IngridAtMicrosoft
+author: BryanLa
 ms.topic: how-to
-ms.date: 03/04/2020
-ms.author: inhenkel
+ms.date: 03/27/2020
+ms.author: bryanla
 ms.reviewer: rtiberiu
 ms.lastreviewed: 06/10/2019
 
@@ -17,7 +17,7 @@ ms.lastreviewed: 06/10/2019
 # Create a custom role for Azure Stack Hub registration
 
 > [!WARNING]
-> This isn't a security posture feature. Use it in scenarios where you want constraints to prevent accidental changes to the Azure Subscription. When a user is delegated rights to this custom role, the user has rights to edit permissions and elevate rights. Only assign users you trust to the custom role.
+> This is not a security posture feature. Use it in scenarios where you want constraints to prevent accidental changes to the Azure Subscription. When a user is delegated rights to this custom role, the user has rights to edit permissions and elevate rights. Only assign users you trust to the custom role.
 
 During Azure Stack Hub registration, you must sign in with an Azure Active Directory (Azure AD) account. The account requires the following Azure AD permissions and Azure Subscription permissions:
 
@@ -50,7 +50,9 @@ To create a custom role, you must have the `Microsoft.Authorization/roleDefiniti
         "Microsoft.Authorization/roleAssignments/read",
         "Microsoft.Authorization/roleAssignments/write",
         "Microsoft.Authorization/roleAssignments/delete",
-        "Microsoft.Authorization/permissions/read"
+        "Microsoft.Authorization/permissions/read",
+        "Microsoft.Authorization/locks/read",
+        "Microsoft.Authorization/locks/write
       ],
       "NotActions": [
       ],

@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Release notes for Azure Stack Hub validation as a service.
 author: mattbriggs
 ms.topic: article
-ms.date: 10/28/2019
+ms.date: 04/20/2020
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 10/28/2019
@@ -23,6 +23,15 @@ ROBOTS: NOINDEX
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 This article has the release notes for Azure Stack Hub validation as a service.
+
+## Version 4.4.3.2
+
+2020 February 2
+
+- Service maintenance updates.
+
+- Bug fixes
+  - Fixed tests Test101LinuxEmptyAttachedDiskManagedDisk, Test101WindowsEmptyAttachedDiskManagedDisk.
 
 ## Version 4.4.2.1
 

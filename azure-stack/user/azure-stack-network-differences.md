@@ -2,7 +2,7 @@
 title: Azure Stack Hub networking differences 
 description: Learn about differences and considerations when working with networking in Azure Stack Hub.
 author: mattbriggs
-ms.date: 1/22/2020
+ms.date: 5/27/2020
 ms.topic: article
 ms.author: mabrigg
 ms.reviewer: wamota
@@ -38,9 +38,10 @@ This article provides an overview of the unique considerations for Azure Stack H
 |  | Service Endpoints | Supported for internal (non-Internet) connection to Azure Services. | Not yet supported. |
 |  | Service Endpoint Policies | Supported | Not yet supported. |
 |  | Service Tunnels | Supported | Not yet supported.  |
-| Network Security Groups | Augmented Security Rules | Supported | Not yet supported. |
+| Network Security Groups | Augmented Security Rules | Supported | Supported. |
 |  | Effective Security Rules | Supported | Not yet supported. |
 |  | Application Security Groups | Supported | Not yet supported. |
+|  | Rule Protocols | TCP, UDP, ICMP, Any | Only TCP, UDP or Any |
 | Virtual Network Gateways | Point-to-Site VPN Gateway | Supported | Not yet supported. |
 |  | Vnet-to-Vnet Gateway | Supported | Not yet supported. |
 |  | Virtual Network Gateway Type | Azure Supports VPN<br> Express Route <br> Hyper Net. | Azure Stack Hub currently supports only VPN type. |
@@ -51,6 +52,7 @@ This article provides an overview of the unique considerations for Azure Stack H
 |  | Gateway Resizing | Azure supports resizing the gateway after deployment. | Resizing not supported. |
 |  | Availability Configuration | Active/Active | Active/Passive |
 |  | UsePolicyBasedTrafficSelectors | Azure supports using policy-based traffic selectors with route-based gateway connections. | Not yet supported. |
+|  | Monitoring and Alerts | Azure uses Azure Monitor to provide the ability to set up alerts for VPN resources. | Not yet supported.|
 | Load balancer | SKU | Basic and Standard Load Balancers are supported | Only the Basic Load Balancer is supported.<br>The SKU property is not supported.<br>The Basic SKU load balancer /path/ cannot have more than 5 front-end IP configurations.  |
 |  | Zones | Availability Zones are Supported. | Not yet supported |
 |  | Inbound NAT Rules support for Service Endpoints | Azure supports specifying Service Endpoints for Inbound NAT rules. | Azure Stack Hub doesn't yet support Service Endpoints, so these can't be specified. |

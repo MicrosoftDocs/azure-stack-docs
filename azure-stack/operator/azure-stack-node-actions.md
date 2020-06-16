@@ -4,7 +4,7 @@ description: Learn about scale unit node actions, including power on, power off,
 author: IngridAtMicrosoft
 
 ms.topic: how-to
-ms.date: 03/04/2020
+ms.date: 04/30/2020
 ms.author: inhenkel
 ms.reviewer: thoroet
 ms.lastreviewed: 11/11/2019
@@ -55,6 +55,35 @@ To view the status of a scale unit:
 | Repairing | The node is actively being repaired. |
 | Maintenance | The node is paused, and no active user workload is running. |
 | Requires Remediation | An error has been detected that requires the node to be repaired. |
+
+### Azure Stack Hub shows Adding status after an operation
+
+Azure Stack Hub may show the operational node status as **Adding** after an operation like drain, resume, repair, shutdown or start was executed.
+This can happen when the Fabric Resource Provider Role cache did not refresh after an operation. 
+
+Before applying the following steps ensure that no operation is currently in progress. Update the endpoint to match your environment.
+
+1. Open PowerShell and add your Azure Stack Hub environment. This requires [Azure Stack Hub PowerShell to be installed](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install) on your computer.
+
+   ```powershell
+   Add-AzureRmEnvironment -Name AzureStack -ARMEndpoint https://adminmanagement.local.azurestack.external
+   Add-AzureRmAccount -Environment AzureStack
+   ```
+
+2. Run the following command to restart the Fabric Resource Provider Role.
+
+   ```powershell
+   Restart-AzsInfrastructureRole -Name FabricResourceProvider
+   ```
+
+3. Validate the operational status of the impacted scale unit node changed to **Running**. You can use the Administrator portal or the following PowerShell command:
+
+   ```powershell
+   Get-AzsScaleUnitNode |ft name,scaleunitnodestatus,powerstate
+   ```
+
+4. If the node operational status is still shown as **Adding** continue to open a support incident.
+
 
 ## Scale unit node actions
 
@@ -131,7 +160,7 @@ For more information, see [Enable-AzsScaleUnitNode](https://docs.microsoft.com/p
 ## Repair
 
 > [!CAUTION]  
-> Firmware leveling is critical for the success of the operation described in this article. Missing this step can lead to system instability, a decrease in performance, security threads, or failure when Azure Stack Hub automation deploys the operating system. Always consult your hardware partner's documentation when replacing hardware to ensure the applied firmware matches the OEM Version displayed in the [Azure Stack Hub administrator portal](azure-stack-updates.md).<br><br>
+> Firmware leveling is critical for the success of the operation described in this article. Missing this step can lead to system instability, a decrease in performance, security threats, or failure when Azure Stack Hub automation deploys the operating system. Always consult your hardware partner's documentation when replacing hardware to ensure the applied firmware matches the OEM Version displayed in the [Azure Stack Hub administrator portal](azure-stack-updates.md).<br><br>
 For more information and links to partner documentation, see [Replace a hardware component](azure-stack-replace-component.md).
 
 | Hardware Partner | Region | URL |
@@ -176,4 +205,6 @@ To run the shutdown action, open an elevated PowerShell prompt, and run the foll
 
 ## Next steps
 
-[Learn about the Azure Stack Hub Fabric operator module](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0).
+- [Install Azure Stack PowerShell](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install)
+- [Learn about the Azure Stack Hub Fabric operator module](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0)
+- [Monitor Add node operations](https://docs.microsoft.com/azure-stack/operator/azure-stack-add-scale-node#monitor-add-node-operations)

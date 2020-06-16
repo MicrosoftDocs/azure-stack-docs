@@ -4,7 +4,7 @@ description: Learn how to use Azure Monitor on Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 1/22/2020
+ms.date: 5/27/2020
 ms.author: mabrigg
 ms.lastreviewed: 12/01/2019
 
@@ -16,7 +16,7 @@ ms.lastreviewed: 12/01/2019
 
 # Use Azure Monitor on Azure Stack Hub
 
-This article provides an overview of the Azure Monitor service in Azure Stack Hub. It discusses the operation of Azure Monitor and additional information on how to use Azure Monitor on Azure Stack Hub. 
+This article provides an overview of the Azure Monitor service in Azure Stack Hub. It discusses the operation of Azure Monitor and additional information on how to use Azure Monitor on Azure Stack Hub.
 
 For an overview of Azure Monitor, see the global Azure article [Get started with Azure Monitor on Azure Stack Hub](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started).
 
@@ -43,7 +43,7 @@ Like Azure Monitor on Azure, Azure Monitor on Azure Stack Hub provides base-leve
 
 ## Azure Monitor sources: compute subset
 
-![Azure Monitor on Azure Stack Hub sources -compute subset](media//azure-stack-metrics-azure-data/azs-monitor-computersubset.png)
+![Azure Monitor on Azure Stack Hub sources -compute subset](media//azure-stack-metrics-azure-data/azs-monitor-computersubset.svg)
 
 The **Microsoft.Compute** resource provider in Azure Stack Hub includes:
  - Virtual machines 
@@ -77,7 +77,7 @@ You can search the activity logs for information about your compute resources as
 
 ## Azure monitor sources: everything else
 
-![Azure Monitor on Azure Stack Hub sources - everything else](media//azure-stack-metrics-azure-data/azs-monitor-othersubset.png)
+![Azure Monitor on Azure Stack Hub sources - everything else](media//azure-stack-metrics-azure-data/azs-monitor-othersubset.svg)
 
 ### Resources - metrics and diagnostics logs
 

@@ -2,22 +2,20 @@
 title: Configure deployment sources for App Services on Azure Stack Hub 
 description: Learn how to configure deployment sources (Git, GitHub, BitBucket, DropBox, and OneDrive) for App Services on Azure Stack Hub.
 author: bryanla
-
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 10/15/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub operator, I want to configure deployment sources for App Services on Azure Stack Hub so I can deploy directly from my source control repositories.
+# Keyword: deployment sources app services azure stack hub
 
 ---
 
-
 # Configure deployment sources for App Services on Azure Stack Hub
 
-App Service on Azure Stack Hub supports on-demand deployment from multiple source control providers. This feature lets app developers deploy direct from their source control repositories. If users want to configure App Service to connect to their repositories, a cloud operator must first configure the integration between App Service on Azure Stack Hub and the source control provider.  
+App Service on Azure Stack Hub supports on-demand deployment from multiple source control providers. This feature lets app developers deploy directly from their source control repositories. If users want to configure App Service to connect to their repositories, a cloud operator must first configure the integration between App Service on Azure Stack Hub and the source control provider.  
 
 In addition to local Git, the following source control providers are supported:
 
@@ -28,104 +26,131 @@ In addition to local Git, the following source control providers are supported:
 
 ## View deployment sources in App Service administration
 
-1. Sign in to the Azure Stack Hub admin portal (https://adminportal.local.azurestack.external) as the service admin.
+1. Sign in to the Azure Stack Hub administrator portal as the service admin.
 2. Browse to **All Services** and select the **App Service**.
-    ![App Service Resource Provider Admin][1]
-3. Click **Source control configuration**. You can see the list of all configured deployment sources.
-    ![App Service Resource Provider Admin Source Control Configuration][2]
+
+    ![App Service resource provider admin][1]
+
+3. Select **Source control configuration**. You can see the list of all configured deployment sources.
+
+    ![App Service resource provider admin source control configuration][2]
 
 ## Configure GitHub
 
 You must have a GitHub account to complete this task. You might want to use an account for your organization rather than a personal account.
 
-1. Sign in to GitHub, browse to https://www.github.com/settings/developers, and then click **Register a new application**.
+1. Sign in to GitHub, go to https://www.github.com/settings/developers, and then select **Register a new application**.
+
     ![GitHub - Register a new application][3]
+
 2. Enter an **Application name**. For example, **App Service on Azure Stack Hub**.
-3. Enter the **Homepage URL**. The Homepage URL must be the Azure Stack Hub portal address. For example, https://portal.local.azurestack.external.
+3. Enter the **Homepage URL**. The Homepage URL must be the Azure Stack Hub portal address. For example, `https://portal.<region>.<FQDN>`. For more information on the Azure Stack Hub fully qualified domain name (FQDN), see [Azure Stack Hub DNS namespace](azure-stack-integrate-dns.md#azure-stack-hub-dns-namespace).
 4. Enter an **Application Description**.
-5. Enter the **Authorization callback URL**. In a default Azure Stack Hub deployment, the URL is in the form https://portal.local.azurestack.external/TokenAuthorize. If you're running under a different domain, switch your domain name for local.azurestack.external.
-6. Click **Register application**. A page is displayed listing the **Client ID** and **Client Secret** for the app.
+5. Enter the **Authorization callback URL**. In a default Azure Stack Hub deployment, the URL is in the form `https://portal.<region>.<FQDN>/TokenAuthorize`. 
+6. Select **Register application**. A page is displayed listing the **Client ID** and **Client Secret** for the app.
+
     ![GitHub - Completed application registration][5]
-7. In a new browser tab or window, sign in to the Azure Stack Hub admin portal (https://adminportal.local.azurestack.external) as the service admin.
-8. Browse to **Resource Providers**, and select the **App Service Resource Provider Admin**.
-9. Click **Source control configuration**.
+
+7. In a new browser tab or window, sign in to the Azure Stack Hub administrator portal as the service admin.
+8. Go to **Resource Providers** and select the **App Service Resource Provider Admin**.
+9. Select **Source control configuration**.
 10. Copy and paste the **Client ID** and **Client Secret** into the corresponding input boxes for GitHub.
-11. Click **Save**.
+11. Select **Save**.
 
 ## Configure BitBucket
 
 You must have a BitBucket account to complete this task. You might want to use an account for your organization rather than a personal account.
 
-1. Sign in to BitBucket and browse to **Integrations** under your account.
+1. Sign in to BitBucket and go to **Integrations** under your account.
+
     ![BitBucket Dashboard - Integrations][7]
-2. Click **OAuth** under Access Management and **Add consumer**.
+
+2. Select **OAuth** under Access Management and **Add consumer**.
+
     ![BitBucket Add OAuth Consumer][8]
+
 3. Enter a **Name** for the consumer. For example, **App Service on Azure Stack Hub**.
 4. Enter a **Description** for the app.
-5. Enter the **Callback URL**. In a default Azure Stack Hub deployment, the callback URL is in the form https://portal.local.azurestack.external/TokenAuthorize. If you're running under a different domain, substitute your domain name for azurestack.local. For BitBucket integration to succeed, the URL must follow the capitalization listed here.
-6. Enter the **URL**. This URL should be the Azure Stack Hub portal URL. For example, https://portal.local.azurestack.external.
+5. Enter the **Callback URL**. In a default Azure Stack Hub deployment, the callback URL is in the form `https://portal.<region>.<FQDN>/TokenAuthorize`. For BitBucket integration to succeed, the URL must follow the capitalization listed here.
+6. Enter the **URL**. This URL should be the Azure Stack Hub portal URL. For example, `https://portal.<region>.<FQDN>`.
 7. Select the **Permissions** required:
+
     - **Repositories**: *Read*
     - **Webhooks**: *Read and write*
-8. Click **Save**. You now see this new app, along with the **Key** and **Secret**, under **OAuth consumers**.
+
+8. Select **Save**. You now see this new app, along with the **Key** and **Secret**, under **OAuth consumers**.
+
     ![BitBucket Application Listing][9]
-9.  In a new browser tab or window, sign in to the Azure Stack Hub admin portal (https://adminportal.local.azurestack.external) as the service admin.
-10.  Browse to **Resource Providers** and select the **App Service Resource Provider Admin**.
-11. Click **Source control configuration**.
+
+9. In a new browser tab or window, sign in to the Azure Stack Hub administrator portal as the service admin.
+10. Go to **Resource Providers** and select the **App Service Resource Provider Admin**.
+11. Select **Source control configuration**.
 12. Copy and paste the **Key** into the **Client ID** input box and **Secret** into the **Client Secret** input box for BitBucket.
-13. Click **Save**.
+13. Select **Save**.
 
 ## Configure OneDrive
 
-You must have a Microsoft Account linked to a OneDrive account to complete this task.  You might want to use an account for your organization rather than a personal account.
+You must have a Microsoft account linked to a OneDrive account to complete this task. You might want to use an account for your organization rather than a personal account.
 
 > [!NOTE]
-> OneDrive for Business accounts are currently not supported.
+> OneDrive for business accounts are currently not supported.
 
-1. Browse to https://apps.dev.microsoft.com/?referrer=https%3A%2F%2Fdev.onedrive.com%2Fapp-registration.htm and sign in using your Microsoft Account.
-2. Under **My applications**, click **Add an app**.
-![OneDrive Applications][10]
-3. Enter a **Name** for the new app registration: enter **App Service on Azure Stack Hub**, and then click **Create Application**.
-4. The next screen lists the properties of your new app. Save the **Application ID** to some temporary location.
-![OneDrive Application Properties][11]
-5. Under **Application Secrets**, click **Generate New Password**. Make a note of the **New password generated**. This password is your application secret and it's not retrievable after you click **OK**.
-6. Under **Platforms**, click **Add Platform**, and then select **Web**.
-7. Enter the **Redirect URI**. In a default Azure Stack Hub deployment, the Redirect URI is in the form https://portal.local.azurestack.external/TokenAuthorize. If you're running under a different domain, switch your domain name for azurestack.local.
-![OneDrive Application - Add Web Platform][12]
+1. Go to https://apps.dev.microsoft.com/?referrer=https%3A%2F%2Fdev.onedrive.com%2Fapp-registration.htm and sign in using your Microsoft account.
+2. Under **My applications**, select **Add an app**.
+
+    ![OneDrive Applications][10]
+
+3. Enter a **Name** for the new app registration: enter **App Service on Azure Stack Hub** and then select **Create Application**.
+4. The next screen lists the properties of your new app. Save the **Application ID** to a temporary location.
+
+    ![OneDrive Application Properties][11]
+
+5. Under **Application Secrets**, select **Generate New Password**. Make a note of the **New password generated**. This password is your application secret and it's not retrievable after you select **OK**.
+6. Under **Platforms**, select **Add Platform** and then select **Web**.
+7. Enter the **Redirect URI**. In a default Azure Stack Hub deployment, the redirect URI is in the form `https://portal.<region>.<FQDN>/TokenAuthorize`.
+
+    ![OneDrive Application - Add Web Platform][12]
+
 8. Add the **Microsoft Graph Permissions** - **Delegated Permissions**.
+
     - **Files.ReadWrite.AppFolder**
-    - **User. Read**  
-      ![OneDrive Application - Graph Permissions][13]
-9. Click **Save**.
-10.  In a new browser tab or window, sign in to the Azure Stack Hub admin portal (https://adminportal.local.azurestack.external) as the service admin.
-11.  Browse to **Resource Providers** and select the **App Service Resource Provider Admin**.
-12. Click **Source control configuration**.
+    - **User. Read**
+        ![OneDrive Application - Graph Permissions][13]
+
+9. Select **Save**.
+10. In a new browser tab or window, sign in to the Azure Stack Hub administrator portal as the service admin.
+11. Go to **Resource Providers** and select the **App Service Resource Provider Admin**.
+12. Select **Source control configuration**.
 13. Copy and paste the **Application ID** into the **Client ID** input box and **Password** into the **Client Secret** input box for OneDrive.
-14. Click **Save**.
+14. Select **Save**.
 
 ## Configure DropBox
 
 > [!NOTE]
 > You must have a DropBox account to complete this task. You might want to use an account for your organization rather than a personal account.
 
-1. Browse to https://www.dropbox.com/developers/apps and sign in using your DropBox account credentials.
-2. Click **Create app**.
+1. Go to https://www.dropbox.com/developers/apps and sign in using your DropBox account credentials.
+2. Select **Create app**.
 
     ![Dropbox apps][14]
 
 3. Select **DropBox API**.
 4. Set the access level to **App Folder**.
 5. Enter a **Name** for your app.
-![Dropbox application registration][15]
-6. Click **Create App**. You're presented with a page listing the settings for the app, including **App key** and **App secret**.
+
+    ![Dropbox application registration][15]
+
+6. Select **Create App**. You're presented with a page listing the settings for the app, including **App key** and **App secret**.
 7. Make sure that the **App folder name** is set to **App Service on Azure Stack Hub**.
-8. Set the **OAuth 2 Redirect URI** and then click **Add**. In a default Azure Stack Hub deployment, the Redirect URI is in the form https://portal.local.azurestack.external/TokenAuthorize. If you're running under a different domain, switch your domain for azurestack.local.
-![Dropbox application configuration][16]
-9.  In a new browser tab or window, sign in to the Azure Stack Hub admin portal (https://adminportal.local.azurestack.external) as the service admin.
-10.  Browse to **Resource Providers** and select the **App Service Resource Provider Admin**.
-11. Click **Source control configuration**.
+8. Set the **OAuth 2 Redirect URI** and then select **Add**. In a default Azure Stack Hub deployment, the redirect URI is in the form `https://portal.<region>.<FQDN>/TokenAuthorize`.
+
+    ![Dropbox application configuration][16]
+
+9. In a new browser tab or window, sign in to the Azure Stack Hub administrator portal as the service admin.
+10. Go to **Resource Providers** and select the **App Service Resource Provider Admin**.
+11. Select **Source control configuration**.
 12. Copy and paste the **Application Key** into the **Client ID** input box and **App secret** into the **Client Secret** input box for DropBox.
-13. Click **Save**.
+13. Select **Save**.
 
 ## Next steps
 

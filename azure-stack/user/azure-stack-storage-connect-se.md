@@ -4,7 +4,7 @@ description: Learn how to connect Storage Explorer to an  Azure Stack Hub subscr
 author: mattbriggs
 
 ms.topic: conceptual
-ms.date: 11/11/2019
+ms.date: 04/20/2020
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/11/2019
@@ -107,7 +107,7 @@ Use the following steps to connect Storage Explorer to an Azure Stack Hub subscr
     | Field | Notes |
     | ---   | ---   |
     | Environment name | The field can be customized by user. |
-    | Azure Resource Manager endpoint | The samples of Azure Resource Manager resource endpoints of Azure Stack Development Kit.<br>For operators: https://adminmanagement.local.azurestack.external <br> For users: https://management.local.azurestack.external |
+    | Azure Resource Manager endpoint | The samples of Azure Resource Manager resource endpoints of Azure Stack Development Kit.<br>For operators: `https://adminmanagement.local.azurestack.external` <br> For users: `https://management.local.azurestack.external` |
 
     If you're working on Azure Stack Hub integrated system and don't know your management endpoint, contact your operator.
 

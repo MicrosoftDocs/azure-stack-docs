@@ -37,7 +37,7 @@ Before starting this tutorial, you must complete the following prerequisites:
 1. Sign in to the user portal with a user account 
 
    - For an integrated system, the URL varies based on your operator's region and external domain name, using the format https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt;.
-   - If you're using the Azure Stack Development Kit, the portal address is https://portal.local.azurestack.external.
+   - If you're using the Azure Stack Development Kit, the portal address is `https://portal.local.azurestack.external`.
 
 1. Select the **Get a Subscription** tile.
 
@@ -143,3 +143,4 @@ Next, learn about deploying resource providers for value-add services. They allo
 - [Offer SQL on Azure Stack Hub](azure-stack-sql-resource-provider.md)
 - [Offer MySQL on Azure Stack Hub](azure-stack-mysql-resource-provider.md)
 - [Offer App Service on Azure Stack Hub](azure-stack-app-service-overview.md)
+- [Offer Event Hubs on Azure Stack Hub](event-hubs-rp-overview.md)

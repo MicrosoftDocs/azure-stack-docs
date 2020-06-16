@@ -4,7 +4,7 @@ description: PowerShell in Azure Stack Hub has a number of modules and contexts.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 1/22/2020
+ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/02/2019
@@ -36,7 +36,7 @@ Resource providers provide both functionality and controls for managing and conf
 
 The following block diagram shows the relationships between the sets of PowerShell modules. From your machine, you can load the PowerShell modules and manage both global Azure and Azure Stack Hub.
 
-![Azure Stack Hub Powershell](media/azure-stack-powershell-overview/Azure-Stack-PowerShell.png)
+![Azure Stack Hub PowerShell](media/azure-stack-powershell-overview/azure-stack-powerShell.svg)
 
 ### Global Azure
 
@@ -70,5 +70,5 @@ You can use Docker containers to isolate each version of PowerShell on your loca
 ## Next steps
 
 - Read about [API profiles for PowerShell](azure-stack-version-profiles.md) in Azure Stack Hub.
-- Install [Azure Stack Hub Powershell](../operator/azure-stack-powershell-install.md).
+- Install [Azure Stack Hub PowerShell](../operator/azure-stack-powershell-install.md).
 - Read about creating [Azure Resource Manager templates](azure-stack-develop-templates.md) for cloud consistency.

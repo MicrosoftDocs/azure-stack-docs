@@ -4,10 +4,10 @@ description: Learn how to upgrade a Kubernetes cluster on Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 01/02/2020
+ms.date: 4/23/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 01/02/2019
+ms.lastreviewed: 4/23/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -48,30 +48,16 @@ When upgrading a production cluster, consider:
 
 The following instructions use the minimum steps to perform the upgrade. If would like additional detail, see the article [Upgrading Kubernetes Clusters](https://github.com/Azure/aks-engine/blob/master/docs/topics/upgrade.md).
 
-1. You need to first determine the versions you can target for the upgrade. This version depends on the version you currently have and then use that version value to perform the upgrade.
+1. You need to first determine the versions you can target for the upgrade. This version depends on the version you currently have and then use that version value to perform the upgrade. The versions of Kubernetes supported in the latest update are 1.14.7 and 1.15.10. Follow this table for the upgrades available:
 
-    Run the following commands:
+| Current version | Upgrade available |
+| --- | --- |
+|1.14.7 | 1.15.10 |
+|1.14.8 | 1.15.10 |
+|1.15.4 | 1.15.10 |
+|1.15.5 | 1.15.10 |
 
-    ```bash  
-    $ aks-engine get-versions
-    Version Upgrades
-    1.15.0
-    1.14.3  1.15.0
-    1.14.1  1.14.3, 1.15.0
-    1.13.7  1.14.1, 1.14.3
-    1.13.5  1.13.7, 1.14.1, 1.14.3
-    1.12.8  1.13.5, 1.13.7
-    1.12.7  1.12.8, 1.13.5, 1.13.7
-    1.11.10 1.12.7, 1.12.8
-    1.11.9  1.11.10, 1.12.7, 1.12.8
-    1.10.13 1.11.9, 1.11.10
-    1.10.12 1.10.13, 1.11.9, 1.11.10
-    1.9.11  1.10.12, 1.10.13
-    1.9.10  1.9.11, 1.10.12, 1.10.13
-    1.6.9   1.9.10, 1.9.11
-    ```
-
-    For example, according to the output of the `get-versions` command, if your current Kubernetes version is "1.13.5" you can upgrade to "1.13.7, 1.14.1, 1.14.3".
+For a complete mapping of AKS engine, AKS Base Image and Kubernetes versions see [Supported AKS Engine Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions).
 
 2. Collect the information you will need to run the `upgrade` command. The upgrade uses the following parameters:
 
@@ -105,7 +91,7 @@ The following instructions use the minimum steps to perform the upgrade. If woul
 
 ## Steps to only upgrade the OS image
 
-1. Review [the supported-kubernetes-versions table](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions) and determine if you have the version of aks-engine and AKS base Image that you plan for your upgrade. To view the version of aks-engine run: `aks-engine version`.
+1. Review [the supported-kubernetes-versions table](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions) and determine if you have the version of aks-engine and AKS base Image that you plan for your upgrade. To view the version of aks-engine run: `aks-engine version`.
 2. Upgrade your AKS engine accordingly, in the machine where you have installed aks-engine run: `./get-akse.sh --version vx.xx.x` replacing **x.xx.x** with your targeted version.
 3. Ask your Azure Stack Hub operator to add the version of the AKS Base Image you need in the Azure Stack Hub Marketplace that you plan to use.
 4. Run the `aks-engine upgrade` command using the same version of Kubernetes that you are already using, but add the `--force`. You can see an example in [Forcing an upgrade](#forcing-an-upgrade).

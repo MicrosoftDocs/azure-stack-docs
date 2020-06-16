@@ -4,7 +4,7 @@ description: Create a Linux server VM by using Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: quickstart
-ms.date: 1/10/2020
+ms.date: 04/20/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 1/10/2020
@@ -64,7 +64,7 @@ To create an SSH key pair:
 
 The address of the Azure Stack Hub portal depends on which Azure Stack Hub product you're connecting to:
 
-* For the ASDK, go to https://portal.local.azurestack.external.
+* For the ASDK, go to `https://portal.local.azurestack.external`.
 
 * For an Azure Stack Hub integrated system, go to the URL that your Azure Stack Hub operator provided.
 

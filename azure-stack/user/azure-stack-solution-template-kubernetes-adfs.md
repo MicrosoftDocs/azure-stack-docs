@@ -4,10 +4,10 @@ description: Learn how to deploy Kubernetes to Azure Stack Hub using Active Dire
 author: mattbriggs
 
 ms.topic: article
-ms.date: 1/22/2020
+ms.date: 3/12/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 06/18/20192
+ms.lastreviewed: 3/12/2020
 
 # Intent: As an Azure Stack user, I want to deploy Kubernetes using AD FS so I can use Kubernetes with the AD FS identity management system.
 # Keyword: deploy kubernetes ad fs
@@ -56,7 +56,7 @@ You need to work with your Azure Stack Hub administrator to set up your service 
 
 ## Deploy Kubernetes
 
-1. Open the [Azure Stack Hub portal](https://portal.local.azurestack.external).
+1. Open the Azure Stack Hub portal `https://portal.local.azurestack.external`.
 
 1. Select **+ Create a resource** > **Compute** > **Kubernetes Cluster**. Select **Create**.
 

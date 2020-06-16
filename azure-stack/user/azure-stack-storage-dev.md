@@ -3,7 +3,7 @@ title: Get started with Azure Stack Hub storage development tools
 description: Guidance to get started with using Azure Stack Hub storage development tools 
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 1/22/2020
+ms.date: 5/27/2020
 ms.topic: conceptual
 ms.reviewer: xiaofmao
 ms.lastreviewed: 02/27/2019

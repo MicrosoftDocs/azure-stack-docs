@@ -4,10 +4,10 @@ description: Learn how to deploy Kubernetes to Azure Stack Hub using Azure Activ
 author: mattbriggs
 
 ms.topic: article
-ms.date: 1/22/2020
+ms.date: 3/12/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 06/18/2019
+ms.lastreviewed: 3/12/2020
 
 # Intent: As an Azure Stack user, I want to deploy Kubernetes using Azure AD so I can use Kubernetes with the Azure AD identity management system.
 # Keyword: deploy kubernetes azure ad
@@ -72,7 +72,7 @@ Set up a service principal in Azure. The service principal gives your applicatio
 
 Give the service principal access to your subscription so that the principal can create resources.
 
-1.  Sign in to the [Azure Stack Hub portal](https://portal.local.azurestack.external/).
+1.  Sign in to the Azure Stack Hub portal `https://portal.local.azurestack.external/`.
 
 1. Select **All services** > **Subscriptions**.
 
@@ -88,7 +88,7 @@ Give the service principal access to your subscription so that the principal can
 
 ## Deploy Kubernetes
 
-1. Open the [Azure Stack Hub portal](https://portal.local.azurestack.external).
+1. Open the Azure Stack Hub portal `https://portal.local.azurestack.external`.
 
 1. Select **+ Create a resource** > **Compute** > **Kubernetes Cluster**. Click **Create**.
 

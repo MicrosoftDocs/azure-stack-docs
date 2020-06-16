@@ -3,7 +3,7 @@ title: Access the Kubernetes Dashboard in Azure Stack Hub
 description: Learn how to access the Kubernetes Dashboard in Azure Stack Hub  
 author: mattbriggs  
 ms.topic: article 
-ms.date: 1/22/2020
+ms.date: 5/27/2020
 ms.author: mabrigg 
 ms.reviewer: waltero 
 ms.lastreviewed: 06/18/2019
@@ -46,7 +46,7 @@ You can retrieve the URL for the dashboard from the master node in your cluster.
 
 1. Get the public IP address and username for your cluster master from the Azure Stack Hub dashboard. To get this information:
 
-    - Sign in to the [Azure Stack Hub portal](https://portal.local.azurestack.external/)
+    - Sign in to the Azure Stack Hub portal `https://portal.local.azurestack.external/`.
     - Select **All services** > **All resources**. Find the master in your cluster resource group. The master is named `k8s-master-<sequence-of-numbers>`. 
 
 2. Open the master node in the portal. Copy the **Public IP** address. Click **Connect** to get your user name in the  **Login using VM local account** box. This is the same user name you set when creating your cluster. Use the public IP address rather than the private IP address listed in the connect blade.
@@ -121,6 +121,14 @@ You can retrieve the URL for the dashboard from the master node in your cluster.
 You can use the dashboard. For more information on the Kubernetes dashboard, see [Kubernetes Web UI Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) 
 
 ![Azure Stack Hub Kubernetes Dashboard](media/azure-stack-solution-template-kubernetes-dashboard/azure-stack-kub-dashboard.png)
+
+## Troubleshooting
+
+### Custom Virtual Networks
+
+If you face connectivity issues accessing the Kubernetes dashboard after you deploy Kubernetes to a [custom virtual network](https://docs.microsoft.com/azure-stack/user/kubernetes-aks-engine-custom-vnet), ensure that target subnets are linked to the route table and network security group resources that were created by the AKS engine.
+
+Make sure that the network security group rules allow communication between the master nodes and the Kubernetes dashboard pod IP. This can be validated by using the ping command from a master node.
 
 ## Next steps 
 

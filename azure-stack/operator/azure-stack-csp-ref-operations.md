@@ -4,7 +4,7 @@ description: Learn how to register tenants and how tenant usage is tracked in Az
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 05/01/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 10/14/2019
@@ -19,8 +19,8 @@ ms.lastreviewed: 10/14/2019
 
 This article contains details about registration operations. You can use these operations to:
 
-- Manage tenant registrations
-- Manage tenant usage tracking
+- Manage tenant registrations.
+- Manage tenant usage tracking.
 
 ## Add tenant to registration
 
@@ -41,7 +41,7 @@ For more information about Azure Stack Hub and API profiles, see [Manage API ver
 | Parameter                  | Description |
 |---                         | --- |
 | registrationSubscriptionID | The Azure subscription that was used for the initial registration. |
-| customerSubscriptionID     | The  Azure subscription (not Azure Stack Hub) belonging to the customer to be registered. Must be created in the Cloud Solution Provider (CSP) offer through the Partner Center. If a customer has more than one tenant, create a subscription for the tenant to sign in to Azure Stack Hub. |
+| customerSubscriptionID     | The  Azure subscription (not Azure Stack Hub) belonging to the customer to be registered. Must be created in the Cloud Solution Provider (CSP) offer through the Partner Center. If a customer has more than one tenant, create a subscription for the tenant to sign in to Azure Stack Hub. The customer subscription ID is case sensitive. |
 | resourceGroup              | The resource group in Azure in which your registration is stored. |
 | registrationName           | The name of the registration of your Azure Stack Hub. It's an object stored in Azure. The name is usually in the form **azurestack-CloudID**, where **CloudID** is the cloud ID of your Azure Stack Hub deployment. |
 
@@ -125,7 +125,7 @@ You can remove a tenant that has been added to a registration. If that tenant is
 | registrationSubscriptionId | Subscription ID for the registration.   |
 | resourceGroup              | The resource group for the registration.   |
 | registrationName           | The name of the registration.  |
-| customerSubscriptionId     | The customer subscription ID.  |
+| customerSubscriptionId     | The customer subscription ID. The customer subscription ID is case sensitive.  |
 
 ### PowerShell
 

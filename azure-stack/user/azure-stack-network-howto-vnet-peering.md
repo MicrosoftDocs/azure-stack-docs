@@ -4,7 +4,7 @@ description: Learn how to connect two Azure Stack Hubs through VNET peering.
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 1/22/2020
+ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
@@ -24,7 +24,7 @@ This deployment pattern is the foundation that will allow VPN Tunnels to be crea
 You can find the templates in the [Azure Intelligent Edge Patterns GitHub](https://github.com/Azure-Samples/azure-intelligent-edge-patterns
 ) repository. The template is in the **S2SVPNTunnel** folder.
 
-![alt text](./media/azure-stack-network-howto-vnet-peering/overview.png)
+![alt text](./media/azure-stack-network-howto-vnet-peering/overview.svg)
 
 ## Requirements
 
@@ -52,7 +52,7 @@ You can find the templates in the [Azure Intelligent Edge Patterns GitHub](https
 
 The template provides default values for VNet naming and IP addressing. It requires a password for the administrator (rrasadmin) and also offers the ability to use your own storage blob with SAS token. Be careful to keep these values within legal ranges as deployment may fail. The PowerShell DSC package is executed on each RRAS VM and installing routing and all required dependent services and features. This DSC can be customized further if needed. The custom script extension run the following script and `Add-Site2Site.ps1` configures the VPNS2S tunnel between the two RRAS servers with a shared key. You can view the detailed output from the custom script extension to see the results of the VPN tunnel configuration
 
-![alt text](./media/azure-stack-network-howto-vnet-peering/s2svpntunnels2.png)
+![alt text](./media/azure-stack-network-howto-vnet-peering/s2svpntunnels2.svg)
 
 ## Next steps
 

@@ -4,7 +4,7 @@ description: Learn about Azure Stack Hub Storage services.
 author: mattbriggs
 
 ms.topic: conceptual
-ms.date: 1/22/2020
+ms.date: 5/27/2020
 ms.author: mabrigg
 ms.lastreviewed: 01/14/2020
 
@@ -37,7 +37,7 @@ Azure Stack Hub Storage provides the following three services:
 
 An Azure Stack Hub Storage account is a secure account that gives you access to services in Azure Stack Hub Storage. Your storage account provides the unique namespace for your storage resources. The following diagram shows the relationships between the Azure Stack Hub Storage resources in a storage account:
 
-![Azure Stack Hub Storage overview](media/azure-stack-storage-overview/AzureStackStorageOverview.png)
+![Azure Stack Hub Storage overview](media/azure-stack-storage-overview/azurestackstorageoverview.svg)
 
 ### Blob storage
 

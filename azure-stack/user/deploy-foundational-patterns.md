@@ -4,7 +4,7 @@ description: Learn how to Deploy foundational patterns with Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 11/06/2019
+ms.date: 04/20/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 11/06/2019
@@ -64,4 +64,4 @@ You can find the templates in the [Azure Intelligent Edge Patterns GitHub](https
 
 ## Next steps
 
-[Azure hybrid patterns and solutions documentation](https://docs.microsoft.com/azure-stack/hybrid/)
+[Azure hybrid patterns and solutions documentation](\hybrid\app-solutions)
