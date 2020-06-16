@@ -333,7 +333,7 @@ For more information about update build types, see [Manage updates in Azure Stac
     - Integration with Azure Arc.
     - Integration with Azure Monitor for Containers.
   - Use Windows Containers with AKS engine.
-  - Receive CSS and engineering support for their deployments.
+  - Receive Microsoft Support and engineering support for their deployments.
 
 ### Improvements
 
