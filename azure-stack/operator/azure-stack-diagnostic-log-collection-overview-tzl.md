@@ -3,38 +3,55 @@ title: Diagnostic log collection in Azure Stack Hub
 description: Learn about diagnostic log collection in Azure Stack Hub Help + support.
 author: justinha
 ms.topic: article
-ms.date: 02/26/2020
+ms.date: 05/11/2020
 ms.author: justinha
 ms.reviewer: shisab
-ms.lastreviewed: 02/26/2020
+ms.lastreviewed: 05/11/2020
 
 # Intent: As an Azure Stack Hub operator, I want to learn about diagnostic log collection so I can share them with CSS when I need help addressing an issue.
 # Keyword: diagnostic log collection azure stack hub
 ---
 # Diagnostic log collection in Azure Stack Hub
 
-::: moniker range=">= azs-2002"
 
 Azure Stack Hub is a large collection of both Windows components and on-premise Azure services interacting with each other. All these components and services generate their own set of logs. To enable Microsoft Customer Support Services (CSS) to diagnose issues efficiently, we've provided a seamless experience for diagnostic log collection.
 
 Diagnostic log collection in **Help + support** helps operators quickly collect and share diagnostic logs with CSS in an easy user interface, which doesn't require PowerShell. Logs get collected even if other infrastructure services are down.  
 
-It's recommended to use this approach of log collection and only resort to [using the privileged endpoint (PEP)](azure-stack-get-azurestacklog.md) if the administrator portal or **Help + support** blade is unavailable.
+Diagnostic log collection in Help and Support helps operators quickly collect and share diagnostic logs with Microsoft Customer Support Services (CSS), an easy user interface, which does not require PowerShell. Logs get collected even if other infrastructure services are down.  
+
+::: moniker range=">= azs-2002"
+
+It is recommended to use this approach of log collection and only resort to [using the privileged endpoint (PEP)](azure-stack-get-azurestacklog.md) if the Administrator portal or Help and Support blade is unavailable. 
 
 >[!NOTE]
->Azure Stack Hub must be registered and have internet connectivity to use diagnostic log collection. If Azure Stack Hub isn't registered, then [use the privileged endpoint (PEP)](azure-stack-get-azurestacklog.md) to share logs.
+>Azure Stack Hub must be registered to use diagnostic log collection. If Azure Stack Hub is not registered, use [Get-AzureStackLog](azure-stack-get-azurestacklog.md) to share logs. 
 
 ![Diagnostic log collection options in Azure Stack Hub](media/azure-stack-help-and-support/banner-enable-automatic-log-collection.png)
 
 ## Collection options and data handling
 
-The diagnostic log collection feature offers two options to send logs. The following table explains each option and how your data is handled in each case.
+::: moniker-end
+::: moniker range=">= azs-2005"
 
-### Send logs proactively
+Depending on connectivity to Azure, Azure Stack Hub has suitable ways to collect, save, and send diagnostic logs to CSS. If Azure Stack Hub can connect to Azure, the recommended way is to enable **Proactive log collection**, which will automatically upload diagnostic logs to a Microsoft-controlled storage blob in Azure when a critical alert gets raised. You can alternatively collect logs on-demand by using **Send logs now**, or you can save logs locally if Azure Stack Hub is disconnected from Azure. 
+
+The following sections explain each option and how your data is handled in each case. 
+
+::: moniker-end
+
+::: moniker range="= azs-2002"
+Diagnostic log collection feature offers two options to send logs. The following sections explain each option and how your data is handled in each case. 
+::: moniker-end
+
+::: moniker range=">= azs-2002"
+
+## Send logs proactively
 
 [Proactive log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md) streamlines and simplifies diagnostic log collection so customers can send logs to Microsoft before opening a support case. Diagnostic logs are proactively uploaded from Azure Stack Hub for analysis. These logs are only collected when a [system health alert](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md#proactive-diagnostic-log-collection-alerts) is raised and are only accessed by the CSS in the context of a support case.
 
-#### How the data is handled
+
+### How the data is handled
 
 You agree to periodic automatic log collections by Microsoft based only on Azure Stack Hub system health alerts. You also acknowledge and consent to the upload and retention of those logs in an Azure storage account managed and controlled by Microsoft.
 
@@ -44,23 +61,38 @@ Any data previously collected with your consent won't be affected by the revocat
 
 Logs collected using **Proactive log collection** are uploaded to an Azure storage account managed and controlled by Microsoft. These logs may be accessed by Microsoft in the context of a support case and to improve the health of Azure Stack Hub.
 
-### Send logs now
+## Send logs now
 
 [Send logs now](azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md) is a manual option where diagnostic logs are uploaded from Azure Stack Hub only when you (as the customer) initiate the collection, usually before opening a support case.
 
 Azure Stack operators can send diagnostics logs on-demand to Microsoft Customer Support Services (CSS) by using the administrator portal or PowerShell. If Azure Stack Hub is connected to the Azure, using [Send logs now in the administrator portal](azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md) is recommended because it's the simplest way to send the logs directly to Microsoft. If the portal is unavailable, operators should instead [send logs now using PowerShell](azure-stack-configure-on-demand-diagnostic-log-collection-powershell-tzl.md).
 
-If you're disconnected from the internet or want to only save logs locally, use [Get-AzureStackLog](azure-stack-get-azurestacklog.md) method to send logs. The following flowchart shows which option to use for sending diagnostic logs in each case.
+::: moniker-end
+::: moniker range="= azs-2002"
+If you are disconnected from the internet or want to only save logs locally, use [Get-AzureStackLog](azure-stack-get-azurestacklog.md) method to send logs. The following flowchart shows which option to use for sending diagnostic logs in each case. 
+::: moniker-end
+
+::: moniker range=">= azs-2002"
 
 ![Flowchart shows how to send logs now to Microsoft](media/azure-stack-help-and-support/send-logs-now-flowchart.png)
 
-#### How the data is handled
+### How the data is handled
 
 By initiating diagnostic log collection from Azure Stack Hub, you acknowledge and consent to uploading those logs and retaining them in an Azure storage account managed and controlled by Microsoft. Microsoft CSS can access these logs right away with the support case without having to engage with the customer for log collection.
 
-The data will be used only for troubleshooting system health alerts and won't be used for marketing, advertising, or any other commercial purposes without your consent. The data can be retained for up to 90 days and any data Microsoft collects will be handled following our [standard privacy practices](https://privacy.microsoft.com/).
+::: moniker-end
 
-Logs collected using **Send logs now** are uploaded to a storage managed and controlled by Microsoft. These logs are accessed by Microsoft in the context of a support case and to improve the health of Azure Stack Hub.
+::: moniker range=">= azs-2005"
+
+## Save logs locally
+
+You can save logs to a local SMB share when Azure Stack Hub is disconnected from Azure. In the **Settings** blade, enter the path and a username and password with permission to write to the share. During a support case, Microsoft CSS will provide detailed steps on how to get these local logs transferred.
+
+![Screenshot of diagnostic log collection options](media/azure-stack-help-and-support/save-logs-locally.png)
+
+::: moniker-end
+
+::: moniker range=">= azs-2002"
 
 ## Bandwidth considerations
 

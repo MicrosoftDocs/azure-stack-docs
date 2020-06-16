@@ -3,10 +3,10 @@ title: Proactive diagnostic log collection in Azure Stack Hub
 description: Learn how to configure proactive diagnostic log collection in Azure Stack Hub Help + support.
 author: justinha
 ms.topic: article
-ms.date: 04/17/2020
+ms.date: 06/16/2020
 ms.author: justinha
 ms.reviewer: shisab
-ms.lastreviewed: 04/17/2020
+ms.lastreviewed: 06/16/2020
 
 # Intent: As an Azure Stack Hub operator, I want to proactively collect diagnostic logs when an alert gets raised so logs are uploaded automatically for analysis before opening a case with CSS.
 # Keyword: proactive diagnostic log collection azure stack hub
@@ -19,6 +19,9 @@ ms.lastreviewed: 04/17/2020
 Save time with customer support by proactively collecting diagnostic logs when an alert gets raised on Azure Stack Hub.
 
 If system health conditions need to be investigated, the logs can be uploaded automatically for analysis before opening a support case with Microsoft Customer Support Services (CSS).
+
+>[!NOTE]
+>If you are disconnected from the internet or want to only save logs locally, use [Get-AzureStackLog](azure-stack-get-azurestacklog.md) method to send logs. 
 
 ## Steps to configure proactive log collection
 
@@ -116,6 +119,9 @@ Follow these steps to add the SAS URL to the log collection UI:
 >Automatic log collection can be disabled and re-enabled anytime. The SAS URL configuration won't change. If automatic log collection is re-enabled, the previously entered SAS URL will undergo the same validation checks, and an expired SAS URL will be rejected.
 
 ::: moniker-end
+
+>[!NOTE]
+>If log location settings are configured for a local file share, make sure lifecycle management policies will prevent share storage from reaching its size quota. Azure Stack Hub does not monitor local file share or enforce any retention policies.
 
 ## View log collection
 
