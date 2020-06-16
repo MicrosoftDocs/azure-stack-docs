@@ -21,7 +21,7 @@ This document provides troubleshooting information for Azure Stack Hub integrate
 
 ## Frequently asked questions
 
-These sections include links to docs that cover common questions sent to Microsoft Customer Support Services (CSS).
+These sections include links to docs that cover common questions sent to Microsoft Support.
 
 ### Purchase considerations
 
@@ -80,7 +80,7 @@ Choose the type of shared services account that you use for Azure Stack Hub. The
 
 ### Get scale unit metrics
 
-You can use PowerShell to get stamp utilization information without help from CSS. To obtain stamp utilization:
+You can use PowerShell to get stamp utilization information without help from Microsoft Support. To obtain stamp utilization:
 
 1. Create a PEP session.
 2. Run `test-azurestack`.
