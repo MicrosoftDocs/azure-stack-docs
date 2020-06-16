@@ -4,7 +4,7 @@ description: This topic provides guidance on security considerations for the Azu
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 06/15/2020
+ms.date: 06/16/2020
 ---
 
 # Azure Stack HCI security considerations
@@ -80,19 +80,28 @@ This section discusses how to use Windows Admin Center to protect privileged ide
  
     To learn more, see [User access options with Windows Admin Center](/windows-server/manage/windows-admin-center/plan/user-access-options) and [Configure User Access Control and Permissions](/windows-server/manage/windows-admin-center/configure/user-access-control).
 
-- **Browser traffic** 
+- **Browser traffic** to Windows Admin Center uses HTTPS. Traffic from Windows Admin Center to managed servers uses standard PowerShell and Windows Management Instrumentation (WMI) over Windows Remote Management (WinRM). Windows Admin Center supports the Local Administrator Password Solution (LAPS), resource-based constrained delegation, gateway access control using Active Directory (AD) or Microsoft Azure Active Directory (Azure AD), and role-based access control (RBAC) for managing target servers.
 
-<!---Describe at high level, address 4 related sub bullets in outline.--->
+    Windows Admin Center supports Microsoft Edge (Windows 10, version 1709 or later), Google Chrome, and Microsoft Edge Insider on Windows 10. You can install Windows Admin Center on either a Windows 10 PC or a Windows server.
 
-- **Local accounts** 
+    If you install Windows Admin Center on a server it runs as a gateway, with no UI on the host server. In this scenario, administrators can log on to the server via a secure HTTPS session, secured by a self-signed security certificate on the host. However, it's better to use an appropriate SSL certificate from a trusted certificate authority for the sign-on process because supported browsers treat a self-signed connection as unsecure, even if the connection is to a local IP address over a trusted VPN.
 
-- **Multifactor authentication**
+    To learn more about installation options for your organization, see [What type of installation is right for you?](https:///windows-server/manage/windows-admin-center/plan/installation-options).
+
+- **CredSSP** is an authentication provider that Windows Admin Center uses in a few cases to pass credentials to machines beyond the specific server you are targeting to manage. Windows Admin Center currently requires CredSSP to:
+    - Manage disaggregated SMB storage in virtual machines.
+    - Access the **Updates** tool to use either the Failover clustering or Cluster-Aware Updating features.
+
+    To learn more, see [Does Windows Admin Center use CredSSP?](/windows-server/manage/windows-admin-center/understand/faq#does-windows-admin-center-use-credssp)
 
 - **Role-based access control (RBAC)** in Windows Admin Center allows users limited access to the servers they need to manage instead of making them full local administrators. To use RBAC in Windows Admin Center, you configure each managed server with a PowerShell Just Enough Administration endpoint.
 
     To learn more, see [Role-based access control](/windows-server/manage/windows-admin-center/plan/user-access-options#role-based-access-control) and [Just Enough Administration](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview?view=powershell-7).
 
-- **Windows Admin Center security tools** 
+- **Security tools** in Windows Admin Center that you can use to manage and protect identities include Active Directory, Certificates, Firewall, Local Users and Groups, and more.
+
+    To learn more, see [Manage Servers with Windows Admin Center](/windows-server/manage/windows-admin-center/use/manage-servers).
+
 
 ## Azure Security Center
 TBD
