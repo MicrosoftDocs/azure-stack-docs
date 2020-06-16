@@ -57,7 +57,7 @@ For the ASDK, you can ask support-related questions in the [Azure Stack MSDN For
 You can also access the forums by clicking **Help** (question mark) in the upper-right corner of the administrator portal. Then click **Help + support** to open Help + Support **Overview**, which has a link to the forum. MSDN forums are regularly monitored.  
 
 > [!IMPORTANT]
-> Because the ASDK is an evaluation environment, there's no official support offered through Microsoft Customer Support Services (CSS).
+> Because the ASDK is an evaluation environment, there's no official support offered through Microsoft Support.
 
 ## Next steps
 [Deploy the ASDK](asdk-install.md)
