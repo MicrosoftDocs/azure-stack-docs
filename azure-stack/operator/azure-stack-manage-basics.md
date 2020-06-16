@@ -128,11 +128,11 @@ Before a user can use services, they must [subscribe to an offer](azure-stack-su
 
 For an integrated system, there's a coordinated escalation and resolution process between Microsoft and our original equipment manufacturer (OEM) hardware partners.
 
-If there's a cloud services issue, support is offered through Microsoft Customer Support Services (CSS). To open a support request, select the Help and support icon (question mark) in the upper-right corner of the administrator portal, select **Help + support**, and then select **New support request** under the **Support** section.
+If there's a cloud services issue, support is offered through Microsoft Support. To open a support request, select the help and support icon (question mark) in the upper-right corner of the administrator portal. Then select **Help + support** and then **New support request** under the **Support** section.
 
 If there's an issue with deployment, patch and update, hardware (including field replaceable units), or any hardware-branded software, like software running on the hardware lifecycle host, contact your OEM hardware vendor first.
 
-For anything else, contact Microsoft CSS.
+For anything else, contact Microsoft Support.
 
 ### Azure Stack Development Kit (ASDK)
 
