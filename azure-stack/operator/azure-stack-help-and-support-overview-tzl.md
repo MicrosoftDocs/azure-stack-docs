@@ -41,15 +41,15 @@ At the top of **Help + support** are things you should try first, like read abou
 
 For an integrated system, there's a coordinated escalation and resolution process between Microsoft and our original equipment manufacturer (OEM) hardware partners.
 
-If there's a cloud services issue, support is offered through Microsoft Customer Support Services (CSS). You can select **Help** (question mark) in the upper-right corner of the administrator portal and then select **Help + support** to open **Help + Support Overview** and submit a new support request. Creating a support request will preselect Azure Stack Hub service. We highly recommend that customers use this experience to submit tickets rather than using the Global Azure portal.
+If there's a cloud services issue, support is offered through Microsoft Support. You can select **Help** (question mark) in the upper-right corner of the administrator portal and then select **Help + support** to open **Help + Support Overview** and submit a new support request. Creating a support request will preselect Azure Stack Hub service. We highly recommend that customers use this experience to submit tickets rather than using the Global Azure portal.
 
-If there's an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software (like software running on the hardware lifecycle host), contact your OEM hardware vendor first. For anything else, contact Microsoft CSS.
+If there's an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software (like software running on the hardware lifecycle host), contact your OEM hardware vendor first. For anything else, contact Microsoft Support.
 
 ![Get expert help for integrated systems](media/azure-stack-help-and-support/get-support-integrated.png)
 
 For the Azure Stack Development Kit (ASDK), you can ask support-related questions in the [Azure Stack Hub MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack).
 
-Select **Help** (question mark) in the upper-right corner of the administrator portal and then select **Help + support** to open **Help + Support Overview**, which has a link to the forum. MSDN forums are regularly monitored. Because the ASDK is an evaluation environment, there's no official support offered through Microsoft CSS.
+Select **Help** (question mark) in the upper-right corner of the administrator portal and then select **Help + support** to open **Help + Support Overview**, which has a link to the forum. MSDN forums are regularly monitored. Because the ASDK is an evaluation environment, there's no official support offered through Microsoft Support.
 
 You can also reach out to the MSDN Forums to discuss an issue, or take online training and improve your own skills.
 
@@ -82,7 +82,7 @@ Beginning with the 1907 release, there are two new ways to collect logs in **Hel
 
 ![Diagnostic log collection options](media/azure-stack-automatic-log-collection/azure-stack-log-collection-overview.png)
 
-Integrated systems can share the diagnostic logs with Microsoft Customer Support Service (CSS). Because Azure Stack Development Kit (ASDK) is an evaluation environment, it's not supported by CSS. For more information, see [Azure Stack Hub diagnostic log collection overview](azure-stack-diagnostic-log-collection-overview.md).
+Integrated systems can share the diagnostic logs with Microsoft Support. Because Azure Stack Development Kit (ASDK) is an evaluation environment, it's not supported by Microsoft Support. For more information, see [Azure Stack Hub diagnostic log collection overview](azure-stack-diagnostic-log-collection-overview.md).
 
 ## Help and support for earlier releases Azure Stack Hub (pre-1905)
 
@@ -90,15 +90,15 @@ Previous Azure Stack Hub releases also have a link to **Help + support** that re
 
 ![Get support tutorials](media/azure-stack-help-and-support/get-support-previous.png)
 
-If there's a cloud services issue, support is offered through Microsoft Customer Support Services (CSS). You can select **Help** (question mark) in the upper-right corner of the administrator portal, select **Help and Support**, and then select **New support request** to directly submit a new support request with CSS.
+If there's a cloud services issue, support is offered through Microsoft Support. You can select **Help** (question mark) in the upper-right corner of the administrator portal, select **Help and Support**, and then select **New support request** to directly submit a new support request with Microsoft Support.
 
-For an integrated system, there's a coordinated escalation and resolution process between Microsoft and our OEM partners. If there's a cloud services issue, support is offered through Microsoft CSS.
+For an integrated system, there's a coordinated escalation and resolution process between Microsoft and our OEM partners. If there's a cloud services issue, support is offered through Microsoft Support.
 
-If there's an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, like software running on the hardware lifecycle host, contact your OEM hardware vendor first. For anything else, contact Microsoft CSS.
+If there's an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, like software running on the hardware lifecycle host, contact your OEM hardware vendor first. For anything else, contact Microsoft Support.
 
 For the ASDK, you can ask support-related questions in the [Azure Stack Hub MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack).
 
-Select **Help** (question mark) in the upper-right corner of the administrator portal and then select **New support request** to get help from experts in the Azure Stack Hub community. Because the ASDK is an evaluation environment, there's no official support offered through Microsoft CSS.
+Select **Help** (question mark) in the upper-right corner of the administrator portal and then select **New support request** to get help from experts in the Azure Stack Hub community. Because the ASDK is an evaluation environment, there's no official support offered through Microsoft Support.
 
 ::: moniker-end
 
