@@ -81,7 +81,7 @@ Run the following command from a PowerShell session:
 ```powershell  
 Install-Module -Name Az.BootStrapper -Force -AllowPrerelease
 Install-AzProfile -Profile 2019-03-01-hybrid -Force
-Install-Module -Name AzureStack -RequiredVersion 2.0.0-preview -AllowPrerelease
+Install-Module -Name AzureStack -RequiredVersion 2.0.1-preview -AllowPrerelease
 ```
 
 > [!Note]  
@@ -118,7 +118,7 @@ Import-Module -Name PackageManagement -ErrorAction Stop
 
 $savedModulesPath = "<Path that is used to save the packages>"
 Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Az -Path $savedModulesPath -Force -RequiredVersion 0.10.0-preview
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $savedModulesPath -Force -RequiredVersion 2.0.0-preview
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $savedModulesPath -Force -RequiredVersion 2.0.1-preview
 ```
 ::: moniker-end
 
@@ -155,7 +155,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
    Install-AzProfile -Profile '2019-03-01-hybrid' -Force -Scope AllUsers
 
-   Install-Module -Name AzureStack -Repository $RepoName -RequiredVersion 2.0.0-preview -AllowPrerelease -Scope AllUsers
+   Install-Module -Name AzureStack -Repository $RepoName -RequiredVersion 2.0.1-preview -AllowPrerelease -Scope AllUsers
    ```
 
 ### Confirm the installation of PowerShell
