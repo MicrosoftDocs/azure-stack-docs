@@ -39,14 +39,14 @@ With these foundational services, you can offer infrastructure-as-a-service (Iaa
 
 ### Additional services
 
-We support the following additional platform-as-a-service (PaaS) services:
+Azure Stack Hub supports the following additional platform-as-a-service (PaaS) services:
 
 - App Service
 - Azure Functions
 - SQL and MySQL databases
 - Kubernetes
 - IoT Hub
-- Event Hub
+- Event Hubs
 
 These services require additional configuration before you can make them available to your users. For more information, see **Tutorials** and **How-to guides** > **Offer services** in our [Azure Stack Hub operator documentation](https://docs.microsoft.com/azure-stack/operator/).
 
