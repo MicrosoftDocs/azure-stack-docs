@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 06/10/2020
+ms.date: 06/17/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
@@ -143,7 +143,7 @@ For other known Azure Stack Hub update issues, please see [Troubleshooting Updat
 
 - Applicable: This issue applies to the 2002 release.
 - Cause: There is a portal bug that prevents VMSS creation with the Standard_DS2_v2 VM size. Creating one will error out with: "{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"BadRequest","message":"{\r\n \"error\": {\r\n \"code\": \"NetworkProfileValidationError\",\r\n \"message\": \"Virtual Machine size Standard_DS2_v2 is not in the allowed list of VM sizes for accelerated networking to be enabled on the VM at index 0 for VM Scale Set /subscriptions/x/resourceGroups/RGVMSS/providers/Microsoft.Compute/virtualMachineScaleSets/vmss. Allowed sizes: .\"\r\n }\r\n}"}]}"
-Remediation: Create a VMSS with PowerShell or a resource manager template.
+- Remediation: Create a VMSS with PowerShell or a resource manager template.
 
 ### VM overview blade does not show correct computer name
 
@@ -153,7 +153,7 @@ Remediation: Create a VMSS with PowerShell or a resource manager template.
 
 ### NVv4 VM size on portal
 
-- Applicable: This issue applies to 2002 and later.
+- Applicable: This issue applies to release 2002 and later.
 - Cause: When going through the VM creation experience, you will see the VM size: NV4as_v4. Customers who have the hardware required for the AMD Mi25-based Azure Stack Hub GPU preview are able to have a successful VM deployment. All other customers will have a failed VM deployment with this VM size.
 - Remediation: By design in preparation for the Azure Stack Hub GPU preview.
 
@@ -164,6 +164,7 @@ Remediation: Create a VMSS with PowerShell or a resource manager template.
 - Remediation: Recreate the storage account with the same name you used previously.
 - Occurrence: Common
 
+### VM boot diagnostics
 
 - Applicable: This issue applies to all supported releases.
 - Cause: When trying to start a stop-deallocated virtual machine,the following error might be displayed: **VM diagnostics Storage account 'diagnosticstorageaccount' not found. Ensure storage account is not deleted**. The error occurs if you attempt to start a VM with boot diagnostics enabled, but the referenced boot diagnostics storage account is deleted.
@@ -397,6 +398,8 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, the **Connections** blade displays a feature called **VPN Troubleshooter**. This feature is currently not supported in Azure Stack Hub.
 - Occurrence: Common
+
+#### VPN troubleshooter
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, the **VPN Troubleshoot** feature and **Metrics** in a VPN gateway resource appears, however this is not supported in Azure Stack Hub.
