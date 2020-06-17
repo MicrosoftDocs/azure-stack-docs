@@ -16,13 +16,13 @@ This topic helps you troubleshoot cluster validation reporting for network and s
 
 ## Install data center bridging
 
-Data center bridging is required to use QoS-specific cmdlets. To check if the data center bridging feature is already installed on a server, run the following cmdlet in PowerShell:
+Data Center Bridging must be installed to use QoS-specific cmdlets. To check if the Data Center Bridging feature is already installed on a server, run the following cmdlet in PowerShell:
 
 ```PowerShell
 Get-WindowsFeature -Name Data-Center-Bridging -ComputerName Server1
 ```
 
-If Data Center Bridging is not installed, install it now by running the following cmdlet on each server in the cluster:
+If Data Center Bridging is not installed, install it by running the following cmdlet on each server in the cluster:
 
 ```PowerShell
 Install-WindowsFeature –Name Data-Center-Bridging -ComputerName Server1
