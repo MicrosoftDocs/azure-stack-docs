@@ -4,7 +4,7 @@ description: This topic provides guidance on security considerations for the Azu
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 06/16/2020
+ms.date: 06/17/2020
 ---
 
 # Azure Stack HCI security considerations
@@ -102,10 +102,18 @@ This section discusses how to use Windows Admin Center to protect privileged ide
 
     To learn more, see [Manage Servers with Windows Admin Center](/windows-server/manage/windows-admin-center/use/manage-servers).
 
-
 ## Azure Security Center
-TBD
+*Azure Security Center* is a unified infrastructure security management system that strengthens the security posture of your data centers, and provides advanced threat protection across your hybrid workloads in the cloud and on premises. Security Center provides you with tools to assess the security status of your network, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. Security Center performs all of these services at high speed in the cloud with no deployment overhead through auto-provisioning and protection with Azure services.
 
+Security Center protects VMs for both Windows servers and Linux servers by installing the Log Analytics agent on these resources. Azure correlates events that the agents collect into recommendations (hardening tasks) that you perform to make your workloads secure. The hardening tasks based on security best practices include managing and enforcing security policies. You can then track the results and manage compliance and governance over time through Security Center monitoring while reducing the attack surface across all of your resources.
+
+Managing who can access your Azure resources and subscriptions is an important part of your Azure governance strategy. Azure role-based access control (RBAC) is the primary method of managing access in Azure. To learn more, see [Manage access to your Azure environment with role-based access control](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/manage-access).
+
+Working with Security Center through Windows Admin Center requires an Azure subscription. To get started, see [Connect Azure Stack HCI to Azure](https://docs.microsoft.com/en-us/azure-stack/hci/deploy/connect-to-azure).
+
+After registering, to access the Azure Security Center in Windows Admin Center, under **All Connections**, select a server or VM, under **Tools**, select **Azure Security Center**, and then select **Sign into Azure**.
+
+To learn more, see [What is Azure Security Center?](https://docs.microsoft.com/azure/security-center/security-center-intro).
 
 ## Part 2: Add advanced security
 The following sections recommend advanced security tools and technologies to further harden the servers running the Azure Stack HCI operating system in your environment.
