@@ -109,16 +109,16 @@ Installation has five steps:
 ::: moniker range=">=azs-2002"
 Azure Stack Hub 2002 or later.
 
-You could either use AzureRM or Az preview modules. For RM modules, see the instructions at [Install PowerShell AzureRM module](azure-stack-powershell-install.md).
+You could either use AzureRM or Az preview modules. For RM modules, see the instructions at [Install PowerShell AzureRM module](azure-stack-powershell-install.md). The following code saves modules from trustworthy online repository https://www.powershellgallery.com/.
 
 ```powershell
 
 Install-module -Name PowerShellGet -MinimumVersion 2.2.3 -Force
 Import-Module -Name PackageManagement -ErrorAction Stop
 
-$Path = "<Path that is used to save the packages>"
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Az -Path $Path -Force -RequiredVersion 0.10.0-preview
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 2.0.0-preview
+$savedModulesPath = "<Path that is used to save the packages>"
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Az -Path $savedModulesPath -Force -RequiredVersion 0.10.0-preview
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $savedModulesPath -Force -RequiredVersion 2.0.0-preview
 ```
 ::: moniker-end
 
