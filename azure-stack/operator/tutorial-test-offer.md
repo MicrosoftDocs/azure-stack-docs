@@ -37,7 +37,7 @@ Before starting this tutorial, you must complete the following prerequisites:
 1. Sign in to the user portal with a user account 
 
    - For an integrated system, the URL varies based on your operator's region and external domain name, using the format https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt;.
-   - If you're using the Azure Stack Development Kit, the portal address is https://portal.local.azurestack.external.
+   - If you're using the Azure Stack Development Kit, the portal address is `https://portal.local.azurestack.external`.
 
 1. Select the **Get a Subscription** tile.
 

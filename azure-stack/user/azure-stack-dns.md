@@ -2,9 +2,8 @@
 title: DNS in Azure Stack Hub 
 description: Learn about DNS in Azure Stack Hub and how to create and manage DNS zones.
 author: sethmanheim
-
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 06/11/2020
 ms.author: sethm
 ms.lastreviewed: 01/05/2020
 
@@ -43,7 +42,7 @@ You have a load balancer processing requests from a web app. Behind the load bal
 
 You can create and manage DNS zones and records in Azure Stack Hub.
 
-Azure Stack Hub provides a DNS service similar to Azure, using APIs that are consistent with the Azure DNS APIs.  By hosting your domains in Azure Stack Hub DNS, you can manage your DNS records using the same credentials, APIs, and tools. You can also use the same billing and support as your other Azure services.
+Azure Stack Hub provides a DNS service similar to Azure, using APIs that are consistent with the Azure DNS APIs. By hosting your domains in Azure Stack Hub DNS, you can manage your DNS records using the same credentials, APIs, and tools. You can also use the same billing and support as your other Azure services.
 
 The Azure Stack Hub DNS infrastructure is more compact than Azure. The size and location of an Azure Stack Hub deployment affects DNS scope, scale, and performance. This also means that performance, availability, global distribution, and high availability can vary from deployment to deployment.
 
@@ -53,9 +52,9 @@ DNS in Azure Stack Hub is similar to DNS in Azure, but there are a few important
 
 * **Does not support AAAA records**: Azure Stack Hub doesn't support AAAA records because Azure Stack Hub does not support IPv6 addresses. This is a key difference between DNS in Azure and Azure Stack Hub.
 
-* **Is not multi-tenant**: The DNS Service in Azure Stack Hub isn't multi-tenant. Tenants cannot create the same DNS zone. Only the first subscription that attempts to create the zone succeeds, and later requests fail. This is another key difference between Azure and Azure Stack Hub DNS.
+* **Is not multi-tenant**: The DNS Service in Azure Stack Hub is not multi-tenant. Tenants cannot create the same DNS zone. Only the first subscription that attempts to create the zone succeeds, and later requests fail. This is another key difference between Azure and Azure Stack Hub DNS.
 
-* **Tags, metadata, and Etags**: There are minor differences in how Azure Stack Hub handles tags, metadata, Etags, and limits.
+* **Tags, metadata, and Etags**: There are minor differences in the way Azure Stack Hub handles tags, metadata, Etags, and limits.
 
 To learn more about Azure DNS, see [DNS zones and records](/azure/dns/dns-zones-records).
 

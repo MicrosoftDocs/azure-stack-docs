@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/05/2020
+ms.date: 06/10/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
@@ -84,14 +84,23 @@ For other known Azure Stack Hub update issues, please see [Troubleshooting Updat
 
 ## Networking
 
-### Network Security Groups
+### DenyAllOutbound rule cannot be created
 
 - Applicable: This issue applies to all supported releases. 
 - Cause: An explicit **DenyAllOutbound** rule cannot be created in an NSG as this will prevent all internal communication to infrastructure needed for the VM deployment to complete.
 - Occurrence: Common
 
+### ICMP protocol not supported for NSG rules
+
 - Applicable: This issue applies to all supported releases. 
 - Cause: When creating an inbound or an outbound network security rule, the **Protocol** option shows an **ICMP** option. This is currently not supported on Azure Stack Hub. This issue is fixed and will not appear in the next Azure Stack Hub release.
+- Occurrence: Common
+
+### Cannot delete an NSG if NICs not attached to running VM
+
+- Applicable: This issue applies to all supported releases.
+- Cause: When disassociating an NSG and a NIC that is not attached to a running VM, the update (PUT) operation for that object fails at the network controller layer. The NSG will be updated at the network resource provider layer, but not on the network controller, so the NSG moves to a failed state.
+- Remdiation: Attach the NICs associated to the NSG that needs to be removed with running VMs, and disassociate the NSG or remove all the NICs that were associated with the NSG.
 - Occurrence: Common
 
 ### Network interface
@@ -130,6 +139,11 @@ For other known Azure Stack Hub update issues, please see [Troubleshooting Updat
   - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
 ## Compute
+### Cannot create a VMSS with Standard_DS2_v2 VM size on portal
+
+- Applicable: This issue applies to the 2002 release.
+- Cause: There is a portal bug that prevents VMSS creation with the Standard_DS2_v2 VM size. Creating one will error out with: "{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"BadRequest","message":"{\r\n \"error\": {\r\n \"code\": \"NetworkProfileValidationError\",\r\n \"message\": \"Virtual Machine size Standard_DS2_v2 is not in the allowed list of VM sizes for accelerated networking to be enabled on the VM at index 0 for VM Scale Set /subscriptions/x/resourceGroups/RGVMSS/providers/Microsoft.Compute/virtualMachineScaleSets/vmss. Allowed sizes: .\"\r\n }\r\n}"}]}"
+Remediation: Create a VMSS with PowerShell or a resource manager template.
 
 ### VM overview blade does not show correct computer name
 
@@ -336,6 +350,13 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Cause: In the user portal, the **Virtual Network** blade shows an option to use **Service Endpoints**. This feature is currently not supported in Azure Stack Hub.
 - Occurrence: Common
 
+### Cannot delete an NSG if NICs not attached to running VM
+
+- Applicable: This issue applies to all supported releases.
+- Cause: When disassociating an NSG and a NIC that is not attached to a running VM, the update (PUT) operation for that object fails at the network controller layer. The NSG will be updated at the network resource provider layer, but not on the network controller, so the NSG moves to a failed state.
+- Remdiation: Attach the NICs associated to the NSG that needs to be removed with running VMs, and disassociate the NSG or remove all the NICs that were associated with the NSG.
+- Occurrence: Common
+
 ### Network interface
 
 #### Adding/removing network interface
@@ -507,6 +528,13 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Cause: In the user portal, the **Virtual Network** blade shows an option to use **Service Endpoints**. This feature is currently not supported in Azure Stack Hub.
 - Occurrence: Common
 
+### Cannot delete an NSG if NICs not attached to running VM
+
+- Applicable: This issue applies to all supported releases.
+- Cause: When disassociating an NSG and a NIC that is not attached to a running VM, the update (PUT) operation for that object fails at the network controller layer. The NSG will be updated at the network resource provider layer, but not on the network controller, so the NSG moves to a failed state.
+- Remdiation: Attach the NICs associated to the NSG that needs to be removed with running VMs, and disassociate the NSG or remove all the NICs that were associated with the NSG.
+- Occurrence: Common
+
 ### Network interface
 
 #### Adding/Removing Network Interface
@@ -664,6 +692,13 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 - Applicable: This issue applies to all supported releases. 
 - Cause: When adding Availability Set VMs to the backend pool of a Load Balancer, an error message is being displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal, the functionality is still in place and VMs are successfully added to the backend pool interally. 
+- Occurrence: Common
+
+### Cannot delete an NSG if NICs not attached to running VM
+
+- Applicable: This issue applies to all supported releases.
+- Cause: When disassociating an NSG and a NIC that is not attached to a running VM, the update (PUT) operation for that object fails at the network controller layer. The NSG will be updated at the network resource provider layer, but not on the network controller, so the NSG moves to a failed state.
+- Remdiation: Attach the NICs associated to the NSG that needs to be removed with running VMs, and disassociate the NSG or remove all the NICs that were associated with the NSG.
 - Occurrence: Common
 
 ### Network Security Groups

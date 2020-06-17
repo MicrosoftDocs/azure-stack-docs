@@ -72,7 +72,7 @@ Set up a service principal in Azure. The service principal gives your applicatio
 
 Give the service principal access to your subscription so that the principal can create resources.
 
-1.  Sign in to the [Azure Stack Hub portal](https://portal.local.azurestack.external/).
+1.  Sign in to the Azure Stack Hub portal `https://portal.local.azurestack.external/`.
 
 1. Select **All services** > **Subscriptions**.
 
@@ -88,7 +88,7 @@ Give the service principal access to your subscription so that the principal can
 
 ## Deploy Kubernetes
 
-1. Open the [Azure Stack Hub portal](https://portal.local.azurestack.external).
+1. Open the Azure Stack Hub portal `https://portal.local.azurestack.external`.
 
 1. Select **+ Create a resource** > **Compute** > **Kubernetes Cluster**. Click **Create**.
 

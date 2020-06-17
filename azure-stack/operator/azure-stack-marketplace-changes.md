@@ -3,7 +3,7 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/28/2020
+ms.date: 06/15/2020
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 05/28/2020
@@ -62,6 +62,7 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Updated marketplace items
 
+- 6/12/2020: Bitnami Grafana - version 6.7.2006040249
 - 5/21/2020: Ubuntu Server 16.04 LTS - version 16.04.202004290
 - 5/21/2020: Ubuntu Server 18.04 LTS - version 18.04.202004080
 - 5/21/2020: Windows Server 2008 R2 SP1 BYOL - version 7601.24552.2004101827

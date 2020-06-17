@@ -4,7 +4,7 @@ description: Learn how to use the Azure Stack Development Kit (ASDK) to create a
 author: sethmanheim
 
 ms.topic: tutorial
-ms.date: 01/23/2020
+ms.date: 06/15/2020
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/13/2019
@@ -32,7 +32,7 @@ Azure Stack Hub quickstart templates are stored in the GitHub [global Azure Stac
 
 Over time, many GitHub users have contributed to the repo, resulting in a collection of more than 400 deployment templates. This repo is a good starting point for understanding how you can deploy various kinds of environments to Azure Stack Hub.
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > Some of these templates are created by members of the community and not by Microsoft. Each template is licensed under a license agreement by its owner, not Microsoft. Microsoft is not responsible for these templates and does not screen for security, compatibility, or performance. Community templates are not supported under any Microsoft support program or service, and are made available "AS IS," without warranty of any kind.
 
 If you want to contribute Azure Resource Manager templates to GitHub, make your contribution to the [AzureStack-QuickStart-Templates](https://github.com/Azure/AzureStack-QuickStart-Templates) repo. To learn more about this repo and how to contribute to it, see the [readme file](https://aka.ms/aa6zktg).
@@ -119,7 +119,7 @@ Now that the Linux VM has been successfully created, you can sign in to start Mi
 
     ![Dashboard](media/azure-stack-create-vm-template/12.PNG)
 
-5. To deploy a sample application, visit the official Kubernetes documentation page, and skip the "Create Minikube Cluster" section as you've already created one. Jump to the section "Create your Node.js application" at https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/.
+5. To deploy a sample application, visit the official Kubernetes documentation page, and skip the "Create Minikube Cluster" section as you've already created one. Go to the section [Create your Node.js application](https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/).
 
 ## Next steps
 
