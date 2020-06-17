@@ -91,7 +91,6 @@ SkipNetworkConfiguration     | Optional parameter; use this flag to skip network
 | SubnetMask                 | The IPv4 subnet mask to configure TCP/IP on the virtual machine.                                                   |
 | DefaultGateway             | IPv4 address of the default gateway to configure TCP/IP on the virtual machine.                                    |
 | DNS                        | DNS server(s) to configure TCP/IP on the virtual machine.                                                          |
-| VlanId                     | Optional parameter; the VLAN ID that needs to be configured in HyperV for the virtual machine.                     |
 | ImageFilePath              | Path of OAW.vhdx provided by Microsoft. Optional parameter; default value is **OAW.vhdx** under the same parent folder of this script. |
 | VirtualMachineName         | The name to be assigned to the virtual machine. Optional parameter; default value is **AzSOAW**.                       |
 | VirtualMachineMemory       | Memory to be assigned to the virtual machine. Optional parameter; default value is **4GB**.                            |
