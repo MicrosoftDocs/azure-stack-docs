@@ -337,7 +337,7 @@ Invoke-Command -ComputerName $servers -ScriptBlock {
 And validate:
 
 ```powershell
-$Servers="S2D1","S2D2","S2D3","S2D4"
+$Servers = "Server1", "Server2", "Server3", "Server4"
 #validate QOS Policies
 Get-NetQosPolicy -CimSession $servers | Select-Object Name,NetworkProfile,Template,NetDirectPort,PriorityValue8021Action,PSComputerName | Sort-Object PSComputerName | Format-Table -GroupBy PSComputerName
 
@@ -357,8 +357,18 @@ Invoke-Command -ComputerName $servers -ScriptBlock {Get-NetAdapterQos -Interface
 Invoke-Command -ComputerName $servers -ScriptBlock {Get-NetQosTrafficClass} | Select-Object Priority,BandwidthPercentage,Algorithm,PSComputerName
 ```
 
-```powershell
+### Configure iWARP firewall rule
 
+For iWarp RDMA to work, a Windows firewall rule needs to be enabled.
+
+```powershell
+$Servers = "Server1", "Server2", "Server3", "Server4"
+Enable-NetFirewallRule -Name "FPSSMBD-iWARP-In-TCP" -CimSession $servers
+```
+
+```powershell
+$Servers="S2D1","S2D2","S2D3","S2D4"
+Get-NetFirewallRule -Name "FPSSMBD-iWARP-In-TCP" -CimSession $servers | Select-Object Name,Enabled,Profile,PSComputerName
 ```
 
 ## Step 3: Verify cluster setup

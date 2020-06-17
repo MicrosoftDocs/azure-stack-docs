@@ -4,7 +4,7 @@ description: Learn how to create a server cluster for Azure Stack HCI using Wind
 author: v-dasis
 ms.topic: article
 ms.prod: 
-ms.date: 06/10/2020
+ms.date: 06/16/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -142,6 +142,11 @@ Step 4 of the wizard walks you through setting up Storage Spaces Direct and virt
 1. Review the validation results. If all is good, click **Next**.
 1. Under **Enable Storage Spaces Direct**, click **Enable**.
 1. Download the report and review. When all is good, click **Finish**.
+
+Congratulations, you have created a cluster.
+
+> [!NOTE]
+> After the cluster is created, it can take time for the cluster name to be replicated. If resolving the cluster isn't successful, in most cases you can substitute the computer name of a server node in the the cluster instead of the cluster name.
 
 ### Step 5 (Optional): SDN
 
