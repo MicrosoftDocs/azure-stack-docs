@@ -1,32 +1,28 @@
 ---
-title: Validate QoS Settings
-description: Validate QoS settings configuration for Azure Stack HCI clusters
+title: Troubleshoot cluster validation reporting
+description: Troubleshoot cluster validation reporting and validate QoS settings configuration for Azure Stack HCI clusters
 author: khdownie
 ms.topic: article
-ms.date: 06/08/2020
+ms.date: 06/17/2020
 ms.author: v-kedow
 ms.reviewer: JasonGerend
 ---
 
-# Validate QoS settings
+# Troubleshoot cluster validation reporting
 
 > Applies to Azure Stack HCI, Windows Server 2019
 
-As traffic increases on your network, it is increasingly important for you to balance network performance with the cost of service - but network traffic is not normally easy to prioritize and manage.
-
-On your network, mission-critical and latency-sensitive applications must compete for network bandwidth against lower priority traffic. At the same time, some users and computers with specific network performance requirements might require differentiated service levels.
-
-This article discusses how to validate your QoS (quality of service) settings for consistency across servers in an Azure Stack HCI cluster, and verify that important rules are defined.
+This topic helps you troubleshoot cluster validation reporting for network and storage QoS (quality of service) settings across servers in an Azure Stack HCI cluster, and verify that important rules are defined. For optimal connectivity and performance, the cluster validation process verifies that Data Center Bridging (DCB) QoS configuration is consistent and, if defined, contains appropriate rules for Failover Clustering and SMB/SMB Direct traffic classes.
 
 ## Install data center bridging
 
-Data center bridging is required to use QoS-specific cmdlets. To check if the data center bridging feature is installed, run the following cmdlet in PowerShell:
+Data center bridging is required to use QoS-specific cmdlets. To check if the data center bridging feature is already installed on a server, run the following cmdlet in PowerShell:
 
 ```PowerShell
 Get-WindowsFeature -Name Data-Center-Bridging -ComputerName Server1
 ```
 
-If it is not present, install it:
+If Data Center Bridging is not installed, install it now by running the following cmdlet on each server in the cluster:
 
 ```PowerShell
 Install-WindowsFeature –Name Data-Center-Bridging -ComputerName Server1
@@ -40,7 +36,7 @@ Either use the Validate feature in Windows Admin Center by selecting **Tools > S
 Test-Cluster –Node Server1, Server2
 ```
 
-Among other things, the test will validate that the Data Center Bridging (DCB) QoS Configuration is consistent, and that all servers in the cluster have the same number of traffic classes and QoS Rules. It will also verify that all servers have QoS rules defined for Failover Clustering and SMB traffic classes.
+Among other things, the test will validate that DCB QoS Configuration is consistent, and that all servers in the cluster have the same number of traffic classes and QoS Rules. It will also verify that all servers have QoS rules defined for Failover Clustering and SMB/SMB Direct traffic classes.
 
 You can view the validation report in Windows Admin Center, or by accessing a log file in the current working directory. For example: C:\Users\<username>\AppData\Local\Temp\
 
@@ -107,7 +103,6 @@ SMB Direct bypasses the networking stack, instead using RDMA methods to transfer
 ```PowerShell
 New-NetQosPolicy "SMB Direct" –NetDirectPort 445 –Priority 3
 ```
-
 
 ## Next steps
 
