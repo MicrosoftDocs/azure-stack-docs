@@ -32,11 +32,7 @@ The diagnostic log collection feature offers two options to send logs. The follo
 
 ### Send logs proactively
 
-<<<<<<< HEAD
 [Proactive log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md) streamlines and simplifies diagnostic log collection so customers can send logs to Microsoft before opening a support case. Diagnostic logs are proactively uploaded from Azure Stack Hub for analysis. These logs are only collected when a [system health alert](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md#proactive-diagnostic-log-collection-alerts) is raised and are only accessed by the Microsoft Support in the context of a support case.
-=======
-[Proactive log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md) streamlines and simplifies diagnostic log collection so customers can send logs to Microsoft before opening a support case. Diagnostic logs are proactively uploaded from Azure Stack Hub for analysis. These logs are only collected when a [system health alert](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md#proactive-diagnostic-log-collection-alerts) is raised and are only accessed by Microsoft Support in the context of a support case.
->>>>>>> 1a83b0640b78fe0c105eae8beb99c69ed92e4900
 
 #### How the data is handled
 
