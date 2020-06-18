@@ -22,11 +22,11 @@ The OAW VM should be created when an operator performs a new task. After a requi
 
 Due to the stateless nature of the solution, there are no updates for the OAW VM. For each milestone, a new version of the VM image file will be released. Use the latest version to create a new OAW VM. The image file is based on the latest Windows Server 2019 version. After installation, you can apply updates, including any critical updates, using Windows Update. 
 
-Please be sure to review the [Microsoft Privacy Statement and Legal Terms](https://privacy.microsoft.com/privacystatement) prior to download. 
+Please be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and Legal Terms prior to download. 
 
-You can download the OAW VM for the preview here.
+You can download the necessary files to create the OAW VM for the preview here.
 
-The following user account policy for the HLH is applied to the OAW VM: 
+The following user account policy is applied to the OAW VM: 
 
 - Built-in Administrator username: AdminUser
 - MinimumPasswordLength = 14
@@ -59,7 +59,7 @@ The following table lists the pre-installed software on the OAW VM.
 
    For example:
 
-   ![Screenshot of PowerShell cmdlet to check the version of the OWA VM](./media/azure-stack-operator-access-workstation/check-hlh-version.png)
+   ![Screenshot of PowerShell cmdlet to check the version of the OAW VM](./media/azure-stack-operator-access-workstation/check-hlh-version.png)
 
 ## Create the OAW VM using a script
 
@@ -70,7 +70,7 @@ The following script prepares the virtual machine as the Operator Access Worksta
 1. Open an elevated Powershell session.
 1. Extract the zip file from Step 1 and open the New-OAW.ps1 file inside the elevated Powershell session.
 1. Modify the parameters following the guidance in the script.
-1. Run the script. For example, to create the OWA VM on the HLH without any customization using Azure Stack Hub version 2005 or later, run the New-OAW.ps1 script with the following parameters:
+1. Run the script. For example, to create the OAW VM on the HLH without any customization using Azure Stack Hub version 2005 or later, run the New-OAW.ps1 script with the following parameters:
 
    ```powershell
    $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
@@ -83,9 +83,9 @@ The following table lists the parameters that can be run with New-OAW.ps1.
 |-------------|-------------------|
 | LocalAdministratorPassword | Password for the virtual machine's local administrator account AdminUser. |
 | AzureStackCertificatePath  | Optional parameter; path of certificates to be imported to the virtual machine for Azure Stack Hub access. |
-| ERCSVMIP                   | Optional parameter; IP of Azure Stack Hub ERCS VM(s) to be added to trusted host list of the virtual machine. Won't take effect if -SkipNetworkConfiguration is set. |
+| ERCSVMIP                   | Optional parameter; IP of Azure Stack Hub ERCS VM(s) to be added to trusted host list of the virtual machine. Won't take effect if **-SkipNetworkConfiguration** is set. |
 SkipNetworkConfiguration     | Optional parameter; use this flag to skip network configuration for the virtual machine, user can configure later. |
-| UseDVMConfiguration        | Optional parameter; use this flag to apply Azure Stack Hub deployment virtual machine (dvm) network configuration. |
+| UseDVMConfiguration        | Optional parameter; use this flag to apply Azure Stack Hub deployment virtual machine (dvm) network configuration. Won't take effect if **-SkipNetworkConfiguration** is set.|
 | DeploymentDataFilePath     | Optional parameter; path of DeploymentData.json. Won't take effect if **-SkipNetworkConfiguration** is set.            |
 | IPAddress                  | The static IPv4 address to configure TCP/IP on the virtual machine.                                                |
 | SubnetMask                 | The IPv4 subnet mask to configure TCP/IP on the virtual machine.                                                   |
@@ -109,7 +109,7 @@ To create the OAW VM on the HLH without any customization using Azure Stack Hub 
    New-OAW.ps1 -LocalAdministratorPassword $securePassword   
    ```
 
-To create the OWA VM on the HLH with DeploymentData.json, run the New-OAW.ps1 script with the following parameters:
+To create the OAW VM on the HLH with DeploymentData.json, run the New-OAW.ps1 script with the following parameters:
 
    ```powershell
    $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
@@ -117,7 +117,7 @@ To create the OWA VM on the HLH with DeploymentData.json, run the New-OAW.ps1 sc
       -DeploymentDataFilePath 'D:\AzureStack\DeploymentData.json'
    ```
 
-To create the OWA VM on a host with network connection to Azure Stack Hub, run the New-OAW.ps1 script with the following parameters:
+To create the OAW VM on a host with network connection to Azure Stack Hub, run the New-OAW.ps1 script with the following parameters:
 
    ```powershell
    $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
@@ -125,7 +125,7 @@ To create the OWA VM on a host with network connection to Azure Stack Hub, run t
       -IPAddress '192.168.0.20' `
       -SubnetMask '255.255.255.0' `
       -DefaultGateway '192.168.0.1' `
-      -DNS '192.168.0.10' `
+      -DNS '192.168.0.10'
    ```
 
 ## Check the OAW VM version
