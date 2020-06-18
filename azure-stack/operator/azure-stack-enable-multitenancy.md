@@ -3,7 +3,7 @@ title: Configure multi-tenancy in Azure Stack Hub
 description: Learn how to enable and disable multiple Azure Active Directory tenants in Azure Stack Hub.
 author: BryanLa
 ms.topic: how-to
-ms.date: 03/04/2020
+ms.date: 06/18/2020
 ms.author: bryanla
 ms.reviewer: bryanr
 ms.lastreviewed: 06/10/2019
@@ -76,7 +76,7 @@ Register-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint
 
 Once the Azure Stack Hub operator has enabled the Fabrikam directory to be used with Azure Stack Hub, Mary must register Azure Stack Hub with Fabrikam's directory tenant.
 
-#### Registering Azure Stack Hub with the guest directory
+#### Register Azure Stack Hub with the guest directory
 
 Mary (directory admin of Fabrikam) runs the following commands in the guest directory fabrikam.onmicrosoft.com:
 
@@ -94,7 +94,7 @@ Register-AzSWithMyDirectoryTenant `
 ```
 
 > [!IMPORTANT]
-> If your Azure Stack Hub admin installs new services or updates in the future, you may need to run this script again.
+> If your Azure Stack Hub administrator installs new services or updates in the future, you may need to run this script again.
 >
 > Run this script again at any time to check the status of the Azure Stack Hub apps in your directory.
 >
@@ -104,13 +104,13 @@ Register-AzSWithMyDirectoryTenant `
 
 Now that you and Mary have completed the steps to onboard Mary's directory, Mary can direct Fabrikam users to sign in. Fabrikam users (users with the fabrikam.onmicrosoft.com suffix) sign in by visiting https\://portal.local.azurestack.external.
 
-Mary will direct any [foreign principals](/azure/role-based-access-control/rbac-and-directory-admin-roles) in the Fabrikam directory (users in the Fabrikam directory without the suffix of fabrikam.onmicrosoft.com) to sign in using https\://portal.local.azurestack.external/fabrikam.onmicrosoft.com. If they don't use this URL, they're sent to their default directory (Fabrikam) and receive an error that says their admin hasn't consented.
+Mary will direct any [foreign principals](/azure/role-based-access-control/rbac-and-directory-admin-roles) in the Fabrikam directory (users in the Fabrikam directory without the suffix of fabrikam.onmicrosoft.com) to sign in using https\://portal.local.azurestack.external/fabrikam.onmicrosoft.com. If they don't use this URL, they're sent to their default directory (Fabrikam) and receive an error that says their administrator hasn't consented.
 
 ## Disable multi-tenancy
 
 If you no longer want multiple tenants in Azure Stack Hub, you can disable multi-tenancy by doing the following steps in order:
 
-1. As the admin of the guest directory (Mary in this scenario), run *Unregister-AzsWithMyDirectoryTenant*. The cmdlet uninstalls all the Azure Stack Hub apps from the new directory.
+1. As the administrator of the guest directory (Mary in this scenario), run *Unregister-AzsWithMyDirectoryTenant*. The cmdlet uninstalls all the Azure Stack Hub apps from the new directory.
 
     ``` PowerShell
     ## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint.
@@ -125,7 +125,7 @@ If you no longer want multiple tenants in Azure Stack Hub, you can disable multi
      -Verbose 
     ```
 
-2. As the service admin of Azure Stack Hub (you in this scenario), run *Unregister-AzSGuestDirectoryTenant*.
+2. As the service administrator of Azure Stack Hub (you in this scenario), run *Unregister-AzSGuestDirectoryTenant*.
 
     ``` PowerShell
     ## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint.
@@ -148,6 +148,42 @@ If you no longer want multiple tenants in Azure Stack Hub, you can disable multi
 
     > [!WARNING]
     > The disable multi-tenancy steps must be performed in order. Step #1 fails if step #2 is completed first.
+
+## Retrieve Azure Stack Hub identity health report 
+
+Execute the following cmdlet as the Azure Stack Hub administrator.
+
+```powershell
+
+$AdminResourceManagerEndpoint = "https://adminmanagement.<region>.<domain>"
+$DirectoryName = "<homeDirectoryTenant>.onmicrosoft.com"
+$healthReport = Get-AzsHealthReport -AdminResourceManagerEndpoint $AdminResourceManagerEndpoint -DirectoryTenantName $DirectoryName
+Write-Host "Healthy directories: "
+$healthReport.directoryTenants | Where status -EQ 'Healthy' | Select -Property tenantName,tenantId,status | ft
+
+
+Write-Host "Unhealthy directories: "
+$healthReport.directoryTenants | Where status -NE 'Healthy' | Select -Property tenantName,tenantId,status | ft
+```
+
+### Update Azure AD tenant permissions
+
+This action with clear the alert in Azure Stack Hub, indicating that a directory requires an update. Run the following commands from the **Azurestack-tools-master/identity** folder:
+
+```powershell
+Import-Module ..\Connect\AzureStack.Connect.psm1
+Import-Module ..\Identity\AzureStack.Identity.psm1
+
+$adminResourceManagerEndpoint = "https://adminmanagement.<region>.<domain>"
+
+# This is the primary tenant Azure Stack is registered to:
+$homeDirectoryTenantName = "<homeDirectoryTenant>.onmicrosoft.com"
+
+Update-AzsHomeDirectoryTenant -AdminResourceManagerEndpoint $adminResourceManagerEndpoint `
+   -DirectoryTenantName $homeDirectoryTenantName -Verbose
+```
+
+The script prompts you for administrative credentials on the Azure AD tenant, and takes several minutes to run. The alert should clear after you run the cmdlet.
 
 ## Next steps
 
