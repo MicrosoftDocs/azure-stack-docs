@@ -4,12 +4,12 @@ description: This topic provides guidance on security considerations for the Azu
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 06/17/2020
+ms.date: 06/18/2020
 ---
 
 # Azure Stack HCI security considerations
 
->Applies to: Azure Stack HCI, version 20H2
+>Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
 This topic provides security considerations and recommendations related to the Azure Stack HCI operating system:
 - Part 1 covers basic security tools and technologies to harden the operating system, and protect data and identities to efficiently build a secure foundation for your organization. It includes resources available through the Azure Security Center.
@@ -54,9 +54,10 @@ This section discusses how to use Windows Admin Center to protect data and workl
 
     1. Connect to a Storage Spaces Direct cluster, and then on the **Tools** pane, select **Volumes**.
     1. On the **Volumes** page, select **Inventory**, and then under **Optional features**, switch the **Encryption (BitLocker)** toggle on.
+    
+        :::image type="content" source="./media/security/bitlocker-toggle-switch.png" alt-text="The toggle switch to enable BitLocker":::
+    
     1. On the **Encryption (BitLocker)** pop-up, select **Start**, and then on the **Turn on Encryption** page, provide your credentials to complete the workflow.
-
-        :::image type="content" source="./media/security/bitlocker-toggle-switch.png" alt-text="The BitLocker toggle to enable the feature":::
 
    >[!NOTE]
    > If the **Install BitLocker feature first** pop-up displays, follow its instructions to install the feature on each server in the cluster, and then restart your servers.
@@ -111,15 +112,30 @@ Managing who can access your Azure resources and subscriptions is an important p
 
 Working with Security Center through Windows Admin Center requires an Azure subscription. To get started, see [Connect Azure Stack HCI to Azure](https://docs.microsoft.com/azure-stack/hci/deploy/connect-to-azure).
 
-After registering, to access the Azure Security Center in Windows Admin Center, under **All Connections**, select a server or VM, under **Tools**, select **Azure Security Center**, and then select **Sign into Azure**.
+After registering, access Security Center in Windows Admin Center: On the **All Connections** page, select a server or VM, under **Tools**, select **Azure Security Center**, and then select **Sign into Azure**.
 
-To learn more, see [What is Azure Security Center?](https://docs.microsoft.com/azure/security-center/security-center-intro).
+To learn more, see [What is Azure Security Center?](https://docs.microsoft.com/azure/security-center/security-center-intro)
 
 ## Part 2: Add advanced security
-The following sections recommend advanced security tools and technologies to further harden the servers running the Azure Stack HCI operating system in your environment.
+The following sections recommend advanced security tools and technologies to further harden servers running the Azure Stack HCI operating system in your environment.
 
 ### Harden the environment
-TBD
+- **Control Flow Guard (CFG)** in Windows helps protect the operating system and applications from memory corruption-based attacks. CFG places tight restrictions on where an application can execute code, making it much harder for exploits to execute arbitrary code through vulnerabilities such as buffer overflows.
+
+    To learn more, see [Control Flow Guard](https://docs.microsoft.com/windows/win32/secbp/control-flow-guard)
+
+- **Microsoft security baselines** are based on security recommendations from Microsoft obtained through partnership with commercial organizations and the US government, such as the Department of Defense. The security baselines include recommended security settings for Windows Firewall, Windows Defender, and many others.
+
+    The security baselines are provided as Group Policy object (GPO) backups that you can import into Active Directory Domain Services (AD DS), and then deploy to domain-joined servers to harden the environment. You can also use Local Script tools to configure standalone (non domain-joined) servers with security baselines. To get started using the security baselines, download the [Microsoft Security Compliance Toolkit 1.0](https://www.microsoft.com/download/details.aspx?id=55319).
+
+    To learn more, see [Microsoft Security Baselines](https://techcommunity.microsoft.com/t5/microsoft-security-baselines/bg-p/Microsoft-Security-Baselines).
+
+- **Turbine** enables you to hotpatch VMs running on the latest Windows Server operating systems with security updates and minimal downtime. Turbine significantly reduces the number of restarts VMs require to get fully updated. Operating system security updates are responsible for nearly 70% of server restarts.
+
+    To learn more, see [Turbine]().
+
+    <!--Could not fine any explicit Microsoft links on Turbine yet.--!>
+
 
 ### Protect data
 TBD
