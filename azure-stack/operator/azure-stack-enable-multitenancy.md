@@ -151,7 +151,7 @@ If you no longer want multiple tenants in Azure Stack Hub, you can disable multi
 
 ## Retrieve Azure Stack Hub identity health report 
 
-Execute the following cmdlet as the Azure Stack Hub administrator.
+Replace the `<region>`, `<domain>`, and `<homeDirectoryTenant>` placeholders, then execute the following cmdlet as the Azure Stack Hub administrator.
 
 ```powershell
 
