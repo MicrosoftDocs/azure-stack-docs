@@ -41,7 +41,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 5. Run the following command from an elevated prompt and include the version number:
 
     ```PowerShell  
-        choco install aks-engine --version0.51.0 -y
+        choco install aks-engine --version 0.51.0 -y
     ```
 
 > [!Note]  
@@ -66,7 +66,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 7.  Run the following command from an elevated prompt. Include the right version number:
 
     ```PowerShell  
-        choco install aks-engine --version0.51.0 -y
+        choco install aks-engine --version 0.51.0 -y
     ```
 
 ## Verify the installation
@@ -87,7 +87,7 @@ If you are unable to verify that you have installed the AKS engine on your clien
 
 You will need to add a certificate when running the client VM for the AKS engine on the ASDK on a machine outside of the ASDK. If you're using a Windows VM within the ASDK environment itself, the machine already trusts the ASDK certificate. If your client machine is outside of the ASDK, you need to extract the certificate from the ASDK, and add it to the your Windows machine.
 
-When you are using an ASDK your Azure Resource Manager endpoint is using a self-signed certificate, you need explicitly to add this certificate to the machine’s trusted certificate store. You can find the ASDK root certificate in any VM you deploy in the ASDK.
+When you are using an ASDK your Azure Resource Manager endpoint is using a self-signed certificate, you need explicitly to add this certificate to the machine's trusted certificate store. You can find the ASDK root certificate in any VM you deploy in the ASDK.
 
 1. Export the CA root certificate. For instructions, see [Export the Azure Stack Hub CA root certificate](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles-azurecli2#export-the-azure-stack-hub-ca-root-certificate)
 2. Trust the Azure Stack Hub CA root certificate. For instructions, see [Trust the Azure Stack Hub CA root certificate](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles-azurecli2#trust-the-azure-stack-hub-ca-root-certificate).
