@@ -14,7 +14,7 @@ ms.lastreviewed: 06/19/2020
 
 ---
 
-## Release notes for the AKS engine on Azure Stack Hub
+# Release notes for the AKS engine on Azure Stack Hub
 
 *Applies to version 0.51.0 of the ASK engine.*
 
