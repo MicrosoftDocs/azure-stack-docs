@@ -19,9 +19,9 @@ ms.lastreviewed: 06/19/2020
 
 The Azure Stack Hub Operator Access Workstation ("OAW") serves as a jumpbox virtual machine to access the Azure Stack Stamp via the Base Management Controller (BMC) Management network. 
 
-The OAW is intended to be used by an Azure Stack Cloud Operator to perform a series of possible administrator operations, or to assist Microsoft Support engineers during a customer support call to better assist in troubleshooting.
+The OAW is intended to be used by an Azure Stack Cloud Operator to perform a series of possible administrator operations, or to assist Microsoft Support engineers during a customer support call to better assist in troubleshooting. For more information, see [Azure Stack Hub Operator Access Workstation](azure-stack-operator-access-workstation.md).
 
-By [downloading the OAW](https://aka.ms/OAW), you acknowledge that you have read and agree to the following license terms governing your use of OAW.  
+By downloading the OAW, you acknowledge that you have read and agree to the following license terms governing your use of OAW.  
 
 Licensing: [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 

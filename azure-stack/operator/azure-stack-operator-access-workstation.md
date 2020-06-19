@@ -24,7 +24,7 @@ Due to the stateless nature of the solution, there are no updates for the OAW VM
 
 Please be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](azure-stack-operator-access-workstation-legal-terms.md) prior to download.
 
-You can download the necessary files to create the OAW VM for the preview from the [Microsoft website](https://aka.ms/OAW).
+You can download the necessary files to create the OAW VM for the preview from [here](https://aka.ms/OAW).
 
 The following user account policy is applied to the OAW VM: 
 
@@ -66,7 +66,7 @@ The following table lists the pre-installed software on the OAW VM.
 The following script prepares the virtual machine as the Operator Access Workstation (OAW), which is used to access Microsoft Azure Stack Hub for administration and diagnostics.
 
 1. Log onto the HLH with your credentials
-1. Download [OAW.zip](https://aka.ms/OAW) and extract the files.
+1. Download OAW.zip and extract the files.
 1. Open an elevated PowerShell session.
 1. Navigate to the extracted contents of the OAW.zip file.
 1. Run the New-OAW.ps1 script. The following two parameter sets are available for New-OAW, with optional parameters shown in brackets:
