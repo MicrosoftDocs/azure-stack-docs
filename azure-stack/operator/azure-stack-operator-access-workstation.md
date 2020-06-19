@@ -65,11 +65,10 @@ The following table lists the pre-installed software on the OAW VM.
 
 The following script prepares the virtual machine as the Operator Access Workstation (OAW), which is used to access Microsoft Azure Stack Hub for administration and diagnostics.
 
-1. On a machine with internet connectivity, download the OAW VM zip from here: TBD
-1. Log onto the HLH with your credentials.
-1. Open an elevated Powershell session.
-1. Extract the zip file from Step 1 and open the New-OAW.ps1 file inside the elevated Powershell session.
-1. Modify the parameters following the guidance in the script.
+1. Log onto the HLH with your credentials
+1. Download OAW.zip and extract the files.
+1. Open an elevated PowerShell session.
+1. Navigate to the extracted contents of the OAW.zip file.
 1. Run the New-OAW.ps1 script. The following two parameter sets are available for New-OAW, with optional parameters shown in brackets:
 
    ```powershell
@@ -87,7 +86,7 @@ The following script prepares the virtual machine as the Operator Access Worksta
    New-OAW.ps1 -LocalAdministratorPassword $securePassword   
    ```
 
-The following table lists the definitions for each parameter.
+The following table lists the definition for each parameter.
 
 | Parameter   | Description       |
 |-------------|-------------------|
