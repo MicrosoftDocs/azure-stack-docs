@@ -70,14 +70,24 @@ The following script prepares the virtual machine as the Operator Access Worksta
 1. Open an elevated Powershell session.
 1. Extract the zip file from Step 1 and open the New-OAW.ps1 file inside the elevated Powershell session.
 1. Modify the parameters following the guidance in the script.
-1. Run the script. For example, to create the OAW VM on the HLH without any customization using Azure Stack Hub version 2005 or later, run the New-OAW.ps1 script with the following parameters:
+1. Run the New-OAW.ps1 script. The following two parameter sets are available for New-OAW, with optional parameters shown in brackets:
+
+   ```powershell
+   -LocalAdministratorPassword <Security.SecureString> [-AzureStackCertificatePath <String>] [-ERCSVMIP <String[]>] [-DNS <String[]>] [-DeploymentDataFilePath <String>] [-SkipNetworkConfiguration] [-UseDVMConfiguration] [-ImageFilePath <String>] [-VirtualMachineName <String>] [-VirtualMachineMemory <int64>] [-VirtualProcessorCount <int>] [-VirtualMachineDiffDiskPath <String>] [-PhysicalAdapterMACAddress <String>] [-VirtualSwitchName <String>] [-ReCreate] [-AsJob] [-Passthru] [-WhatIf] [-Confirm] [<CommonParameters>]
+   ```
+
+   ```powershell
+   -LocalAdministratorPassword <Security.SecureString> -IPAddress <String> -SubnetMask <String> -DefaultGateway <String> -DNS <String[]> [-AzureStackCertificatePath <String>] [-ERCSVMIP <String[]>] [-ImageFilePath <String>] [-VirtualMachineName <String>] [-VirtualMachineMemory <int64>] [-VirtualProcessorCount <int>] [-VirtualMachineDiffDiskPath <String>] [-PhysicalAdapterMACAddress <String>] [-VirtualSwitchName <String>] [-ReCreate] [-AsJob] [-Passthru] [-WhatIf] [-Confirm] [<CommonParameters>]
+   ```
+
+   For example, to create the OAW VM on the HLH without any customization using Azure Stack Hub version 2005 or later, run the New-OAW.ps1 script with only the **-LocalAdministratorPassword** parameter:
 
    ```powershell
    $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
    New-OAW.ps1 -LocalAdministratorPassword $securePassword   
    ```
 
-The following table lists the parameters that can be run with New-OAW.ps1.
+The following table lists the definitions for each parameter.
 
 | Parameter   | Description       |
 |-------------|-------------------|
