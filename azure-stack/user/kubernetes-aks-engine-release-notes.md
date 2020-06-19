@@ -64,11 +64,11 @@ New versions of these are available with this update:
 
 -   The Azure Stack Hub operator will need to download a new AKS base Ubuntu Image:
 
-    -   Name: `AKS Base Ubuntu 16.04-LTS Image Distro, March 2020`
-    -   Version: `2020.03.19`
+    -   Name: `AKS Base Ubuntu 16.04-LTS Image Distro, May 2020`
+    -   Version: `2020.05.13`
     -   Follow the instructions in the following article [Add the Azure Kubernetes Services (AKS) engine prerequisites to the Azure Stack Hub Marketplace](https://docs.microsoft.com/azure-stack/operator/azure-stack-aks-engine)
 
--   The Kubernetes cluster administrator will need to download the new aks-engine version 0.48.0. See instructions in this the following article, [Install the AKS engine on Linux in Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-deploy-linux). You can follow the same process you use to install the cluster for the first time. The update will overwrite the previous binary. For example, if you used the `get-akse.sh` script, follow the same steps outlined in the article [Install in a connected environment](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-deploy-linux#install-in-a-connected-environment). The same process applies if you're installing in on a Windows system, article [Install the AKS engine on Windows in Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-deploy-windows).
+-   The Kubernetes cluster administrator will need to download the new aks-engine version0.51.0. See instructions in this the following article, [Install the AKS engine on Linux in Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-deploy-linux). You can follow the same process you use to install the cluster for the first time. The update will overwrite the previous binary. For example, if you used the `get-akse.sh` script, follow the same steps outlined in the article [Install in a connected environment](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-deploy-linux#install-in-a-connected-environment). The same process applies if you're installing in on a Windows system, article [Install the AKS engine on Windows in Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-deploy-windows).
 
 ## Kubernetes version upgrade path
 
@@ -126,7 +126,7 @@ You can find the current version and upgrade version in the following table for 
 
 ## Reference
 
-Following is a list of some of the bugs fixed as well as the complete set of release notes from 0.44.0 to 0.48.0, notice that the latter list will include Azure and Azure Stack Hub items
+Following is a list of some of the bugs fixed as well as the complete set of release notes from 0.44.0 to0.51.0, notice that the latter list will include Azure and Azure Stack Hub items
 
 ### Bug fixes
 
