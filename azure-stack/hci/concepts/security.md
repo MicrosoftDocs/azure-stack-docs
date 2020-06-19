@@ -4,7 +4,7 @@ description: This topic provides guidance on security considerations for the Azu
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 06/18/2020
+ms.date: 06/19/2020
 ---
 
 # Azure Stack HCI security considerations
@@ -136,12 +136,33 @@ The following sections recommend advanced security tools and technologies to fur
 
     <!--Could not fine any explicit Microsoft links on Turbine yet.--!>
 
-
 ### Protect data
-TBD
+- **Hardening the Hyper-V environment** requires hardening Windows Server running on a VM just as you would harden the operating system running
+on a physical server. Because virtual environments typically have multiple VMs sharing the same physical host, it is imperative to protect both the physical host and the VMs running on it. An attacker who compromises a host can affect multiple VMs with a greater impact on workloads and services. This section discusses the following methods that you can use to harden Windows Server in a Hyper-V environment:
+
+     - **Guarded fabric and shielded VMs** TBD
+     
+     - **Virtual Trusted Platform Module (vTPM)** TBD
+     
+     - **Software Defined Networking** using micro-segmentation firewall TBD
+
 
 ### Protect identities
+- **Just in Time (JIT) access** in Windows Server lets you lock down inbound traffic to Azure VMs by assigning users to privileged groups from which they can perform specific tasks for a limited time. JIT reduces network exposure to attacks while providing users access to VMs when needed. Using JIT requires a subscription to Security Center's standard pricing tier. 
+
+    To learn more, see [Secure your management ports with just-in-time access](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) and [Upgrade to Standard tier for enhanced security](https://docs.microsoft.com/en-us/azure/security-center/security-center-pricing).
+
+- **Local Administrator Password Solution (LAPS)** is a lightweight mechanism for Active Directory domain-joined systems that periodically sets each computer’s local admin account password to a new random and unique value. Passwords are stored in a secured confidential attribute on the corresponding computer object in Active Directory, where only specifically-authorized users can retrieve them. LAPS uses local accounts for remote computer management in a way that offers some advantages over using domain accounts. To learn more, see [Remote Use of Local Accounts: LAPS Changes Everything](https://docs.microsoft.com/archive/blogs/secguide/remote-use-of-local-accounts-laps-changes-everything).
+
+    To get started using LAPS, download [Local Administrator Password Solution (LAPS)](https://www.microsoft.com/download/details.aspx?id=46899).
+
+- **Microsoft Advanced Threat Analytics (ATA)**
 TBD
+ 
+
+- **Remote Credential Guard**
+TBD
+ 
 
 ## More security resources
 TBD
