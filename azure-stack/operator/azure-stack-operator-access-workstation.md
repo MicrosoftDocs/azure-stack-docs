@@ -4,10 +4,10 @@ titleSuffix: Azure Stack Hub
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: asganesh
 ms.topic: article
-ms.date: 06/17/2020
+ms.date: 06/19/2020
 ms.author: justinha
 ms.reviewer: asganesh
-ms.lastreviewed: 06/15/2020
+ms.lastreviewed: 06/19/2020
 
 # Intent: As an Azure Stack operator, I want to download and configure an Azure Stack Hub Operator Access Workstation.
 # Keyword: azure stack hub operator access workstation
@@ -22,9 +22,9 @@ The OAW VM should be created when an operator performs a new task. After a requi
 
 Due to the stateless nature of the solution, there are no updates for the OAW VM. For each milestone, a new version of the VM image file will be released. Use the latest version to create a new OAW VM. The image file is based on the latest Windows Server 2019 version. After installation, you can apply updates, including any critical updates, using Windows Update. 
 
-Please be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and Legal Terms prior to download. 
+Please be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](azure-stack-operator-access-workstation-legal-terms.md) prior to download.
 
-You can download the necessary files to create the OAW VM for the preview here.
+You can download the necessary files to create the OAW VM for the preview from the [Microsoft website](https://aka.ms/OAW).
 
 The following user account policy is applied to the OAW VM: 
 
@@ -66,7 +66,7 @@ The following table lists the pre-installed software on the OAW VM.
 The following script prepares the virtual machine as the Operator Access Workstation (OAW), which is used to access Microsoft Azure Stack Hub for administration and diagnostics.
 
 1. Log onto the HLH with your credentials
-1. Download OAW.zip and extract the files.
+1. Download [OAW.zip](https://aka.ms/OAW) and extract the files.
 1. Open an elevated PowerShell session.
 1. Navigate to the extracted contents of the OAW.zip file.
 1. Run the New-OAW.ps1 script. The following two parameter sets are available for New-OAW, with optional parameters shown in brackets:
