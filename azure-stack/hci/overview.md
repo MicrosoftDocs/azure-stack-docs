@@ -1,7 +1,8 @@
 ---
 title: Azure Stack HCI solutions overview
 description: An overview of Azure Stack HCI solutions.
-ms.topic: article
+ms.topic: overview
+ms.prod: windows-server
 author: jasongerend
 ms.author: jgerend
 ms.localizationpriority: medium

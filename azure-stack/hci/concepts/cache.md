@@ -3,7 +3,8 @@ title: Understanding the cache in Azure Stack HCI
 description: How read and write caching works in Storage Spaces Direct and Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
-ms.topic: article
+ms.prod: windows-server
+ms.topic: conceptual
 ms.date: 02/28/2020
 ---
 
@@ -166,7 +167,7 @@ You may choose to use the CSV cache, or not – it's up to you. It is off by def
 
 ## Manual configuration
 
-For most deployments, manual configuration is not required. In case you do need it, see the following sections. 
+For most deployments, manual configuration is not required. In case you do need it, see the following sections.
 
 If you need to make changes to the cache device model after setup, edit the Health Service's Support Components Document, as described in [Health Service overview](/windows-server/failover-clustering/health-service-overview#supported-components-document).
 

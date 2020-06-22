@@ -2,7 +2,8 @@
 title: Manage VMs on Azure Stack HCI using Windows Admin Center
 description: Learn how to create and manage virtual machines in a cluster on Azure Stack HCI using Windows Admin Center.
 author: v-dasis
-ms.topic: article
+ms.topic: how-to
+ms.prod: windows-server
 ms.date: 05/20/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
@@ -56,7 +57,7 @@ You can view resources usage and performance metrics for all VMs in your cluster
 :::image type="content" source="media/manage-vm/host-metrics.png" alt-text="host metrics screen":::
 
 1. Under **Tools**, scroll down and select **Virtual Machines**.
-1. The **Summary** tab on the right provides a holistic view of Hyper-V host resources and performance for a selected server or cluster, including the following: 
+1. The **Summary** tab on the right provides a holistic view of Hyper-V host resources and performance for a selected server or cluster, including the following:
     - The number of VMs that are running, stopped, paused, and saved
     - Recent health alerts or Hyper-V event log events for clusters
     - CPU and memory usage with host vs guest breakdown
@@ -145,7 +146,7 @@ You can easily create a new virtual machine using Windows Admin Center.
 1. Under **Virtual processors**, select the number of virtual processors and whether you want nested virtualization enabled.
 1. Under **Memory**, select the amount of startup memory (4 GB is recommended as a minimum), and a min and max range of dynamic memory as applicable to be allocated to the VM.
 1. Under **Network**, select a network adapter from the dropdown list.
-1. Under **Storage**, click **Add** and select whether to create a new virtual hard disk or to use an existing virtual hard disk. If you're using an existing virtual hard disk, click **Browse** and select the applicable file path.  
+1. Under **Storage**, click **Add** and select whether to create a new virtual hard disk or to use an existing virtual hard disk. If you're using an existing virtual hard disk, click **Browse** and select the applicable file path.
 1. Under **Operating system**, do one of the following:
    - Select **Install an operating system later** if you want to install an operating system for the VM later.
    - Select **Install an operating system from an image file (*.iso)**, click **Browse**, then select the applicable .iso image file to use.

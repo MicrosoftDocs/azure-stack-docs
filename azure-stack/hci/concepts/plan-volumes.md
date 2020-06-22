@@ -3,7 +3,8 @@ title: Planning volumes in Azure Stack HCI
 description: How to plan storage volumes in Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
-ms.topic: article
+ms.topic: conceptual
+ms.prod: windows-server
 ms.date: 03/06/2020
 ---
 
