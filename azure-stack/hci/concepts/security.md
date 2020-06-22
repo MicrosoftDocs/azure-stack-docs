@@ -3,8 +3,8 @@ title: Azure Stack HCI security considerations
 description: This topic provides guidance on security considerations for the Azure Stack HCI operating system.
 author: JohnCobb1
 ms.author: v-johcob
-ms.topic: article
-ms.date: 06/19/2020
+ms.topic: conceptual
+ms.date: 06/22/2020
 ---
 
 # Azure Stack HCI security considerations
@@ -133,19 +133,23 @@ The following sections recommend advanced security tools and technologies to fur
 - **Turbine** enables you to hotpatch VMs running on the latest Windows Server operating systems with security updates and minimal downtime. Turbine significantly reduces the number of restarts VMs require to get fully updated. Operating system security updates are responsible for nearly 70% of server restarts.
 
     To learn more, see [Turbine]().
-
-    <!--Could not fine any explicit Microsoft links on Turbine yet.--!>
+    <!--Either update this feature reference when it ships or pull it if to ship after HCI release--!>
 
 ### Protect data
 - **Hardening the Hyper-V environment** requires hardening Windows Server running on a VM just as you would harden the operating system running
 on a physical server. Because virtual environments typically have multiple VMs sharing the same physical host, it is imperative to protect both the physical host and the VMs running on it. An attacker who compromises a host can affect multiple VMs with a greater impact on workloads and services. This section discusses the following methods that you can use to harden Windows Server in a Hyper-V environment:
 
-     - **Guarded fabric and shielded VMs** TBD
-     
-     - **Virtual Trusted Platform Module (vTPM)** TBD
-     
-     - **Software Defined Networking** using micro-segmentation firewall TBD
+    - **Guarded fabric and shielded VMs** strengthen the security for VMs running in Hyper-V environments by preventing attackers from modify VM files. A *guarded fabric* consists of a Host Guardian Service (HGS) that is typically a cluster of three nodes, one or more guarded hosts, and a set of shielded VMs. The Attestation Service evaluates the validity of hosts requests, while the Key Protection Service determines whether to release keys that the guarded hosts can use to start the shielded VM.
 
+        To learn more, see [Guarded fabric and shielded VMs overview](https://docs.microsoft.com/windows-server/security/guarded-fabric-shielded-vm/guarded-fabric-and-shielded-vms).
+     
+     - **Virtual Trusted Platform Module (vTPM)** in Windows Server supports TPM for VMs, which lets you to use advanced security technologies, such as BitLocker in VMs. You can enable TPM support on any Generation 2 Hyper-V VM by using either Hyper-V Manager or the `Enable-VMTPM` Windows PowerShell cmdlet.
+     
+        To learn more, see [Enable-VMTPM](https://docs.microsoft.com/powershell/module/hyper-v/enable-vmtpm?view=win10-ps).
+     
+     - **Software Defined Networking (SDN)** in Windows Server lets you to centrally configure and manage physical and virtual network devices, such as routers, switches, and gateways in your datacenter. Virtual network elements, such as Hyper-V Virtual Switch, Hyper-V Network Virtualization, and RAS Gateway are designed to be integral elements of your SDN infrastructure.
+
+        To learn more, see [SDN in Windows Server overview](https://docs.microsoft.com/windows-server/networking/sdn/software-defined-networking) and [What's New in SDN for Windows Server 2019](https://docs.microsoft.com/windows-server/networking/sdn/sdn-whats-new).
 
 ### Protect identities
 - **Just in Time (JIT) access** in Windows Server lets you lock down inbound traffic to Azure VMs by assigning users to privileged groups from which they can perform specific tasks for a limited time. JIT reduces network exposure to attacks while providing users access to VMs when needed. Using JIT requires a subscription to Security Center's standard pricing tier. 
@@ -156,25 +160,22 @@ on a physical server. Because virtual environments typically have multiple VMs s
 
     To get started using LAPS, download [Local Administrator Password Solution (LAPS)](https://www.microsoft.com/download/details.aspx?id=46899).
 
-- **Microsoft Advanced Threat Analytics (ATA)**
-TBD
- 
+- **Microsoft Advanced Threat Analytics (ATA)** TBD
+    <!-- Double check this is right section for this feature. Maybe better in advanced protect data section? --!>
 
-- **Remote Credential Guard**
-TBD
+- **Remote Credential Guard** TBD
  
 
 ## More security resources
-TBD
+- [Beginning your General Data Protection Regulation (GDPR) journey for Windows Server](https://docs.microsoft.com/windows-server/security/gdpr/gdpr-winserver-whitepaper)
+- [Security best practices for Azure solutions](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/)
+- [Security and Assurance](https://docs.microsoft.com/windows-server/security/security-and-assurance)
+
 
 ## Next steps
 For more information, see also:
-<!---Placeholders for format examples to other topics. Replace all that don't apply before initial topic review.--->
-
 - [Protect Azure Stack HCI VMs using Azure Site Recovery](https://docs.microsoft.com/azure-stack/hci/manage/azure-site-recovery)
-- [Security best practices for Azure solutions](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/)
 
 
-- [Storage Spaces Direct hardware requirements](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements)
 - [Azure Stack HCI overview](../overview.md)
-- [Understand the cache in Azure Stack HCI](cache.md)
+<!---Last link here is placeholder for format example. Cut before review initial topic review.--->
