@@ -32,7 +32,7 @@ landingContent:
 
   - title: Get started
     linkLists:
-      - linkListType: linkListType
+      - linkListType: get-started
         links:
           - text: Learn how to use the Validation as a Service portal
             url: azure-stack-vaas-schedule-test-pass.md
