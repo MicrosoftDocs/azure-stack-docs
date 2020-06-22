@@ -64,4 +64,4 @@ You can find the templates in the [Azure Intelligent Edge Patterns GitHub](https
 
 ## Next steps
 
-[Azure hybrid patterns and solutions documentation](https://docs.microsoft.com/azure-stack/hybrid/)
+[Azure hybrid patterns and solutions documentation](\hybrid\app-solutions)

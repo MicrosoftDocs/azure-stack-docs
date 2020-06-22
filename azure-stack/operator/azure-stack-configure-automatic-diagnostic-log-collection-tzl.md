@@ -8,7 +8,7 @@ ms.author: justinha
 ms.reviewer: shisab
 ms.lastreviewed: 04/17/2020
 
-# Intent: As an Azure Stack Hub operator, I want to proactively collect diagnostic logs when an alert gets raised so logs are uploaded automatically for analysis before opening a case with CSS.
+# Intent: As an Azure Stack Hub operator, I want to proactively collect diagnostic logs when an alert gets raised so logs are uploaded automatically for analysis before opening a case with Microsoft Support.
 # Keyword: proactive diagnostic log collection azure stack hub
 
 ---
@@ -18,7 +18,7 @@ ms.lastreviewed: 04/17/2020
 
 Save time with customer support by proactively collecting diagnostic logs when an alert gets raised on Azure Stack Hub.
 
-If system health conditions need to be investigated, the logs can be uploaded automatically for analysis before opening a support case with Microsoft Customer Support Services (CSS).
+If system health conditions need to be investigated, the logs can be uploaded automatically for analysis before opening a support case with Microsoft Support.
 
 ## Steps to configure proactive log collection
 
@@ -39,13 +39,13 @@ Follow these steps to configure proactive log collection. Proactive log collecti
 
 We recommend configuring the automatic diagnostic log collection feature to streamline your log collection and customer support experience.
 
-If system health conditions need to be investigated, the logs can be uploaded automatically for analysis by Microsoft Customer Support Services (CSS).
+If system health conditions need to be investigated, the logs can be uploaded automatically for analysis by Microsoft Support.
 
 ## Create an Azure blob container SAS URL
 
 Before you can configure automatic log collection, you need to get a shared access signature (SAS) for a blob container. A SAS lets you grant access to resources in your storage account without sharing your account keys.
 
-You can save Azure Stack Hub log files to a blob container in Azure, and then provide the SAS URL where CSS can collect the logs.
+You can save Azure Stack Hub log files to a blob container in Azure, and then provide the SAS URL where Microsoft Support can collect the logs.
 
 ### Prerequisites
 
@@ -133,7 +133,7 @@ The history of logs collected from Azure Stack Hub appears on the **Log collecti
 
 If enabled, proactive log collection uploads logs only when one of the following events is raised.
 
-For example, **Update failed** is an alert that triggers proactive diagnostic log collection. If it's enabled, diagnostic logs are proactively captured during an update failure to help CSS troubleshoot the problem. The diagnostic logs are only collected when the alert for **Update failed** is raised.
+For example, **Update failed** is an alert that triggers proactive diagnostic log collection. If it's enabled, diagnostic logs are proactively captured during an update failure to help Microsoft Support troubleshoot the problem. The diagnostic logs are only collected when the alert for **Update failed** is raised.
 
 | Alert Title | FaultIdType |
 |---|---|
