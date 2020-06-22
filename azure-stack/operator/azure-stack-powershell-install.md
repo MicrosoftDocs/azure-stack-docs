@@ -88,7 +88,7 @@ Run the following PowerShell script to install these modules on your development
 ::: moniker range=">=azs-2002"
 For Azure Stack Hub 2002 or later:
 
-You could either user AzureRm modules or Az preview modules. The use of the Az modules requires Azure Stack Hub 2002 and the latest hotfix.
+You can use either user AzureRm modules or Az preview modules. The use of the Az modules requires Azure Stack Hub 2002 and the latest hotfix.
 
 To use Az preview modules, follow the instructions at [Install PowerShell Az module](powershell-install-az-module.md).
 
@@ -267,15 +267,24 @@ In scenarios that require a proxy server to access the internet, you first confi
    [System.Net.WebRequest]::DefaultWebProxy.Credentials = Get-Credential
    ```
 
-## 7. Known Issues
-Az modules and AzureRM modules are not compatible. It is necessary to uninstall Az modules before installing the AzureRM modules.
+## Known issue
 
-The following error indicates that AzureRM modules and Az modules are loaded in the same session. 
+###  Method get_SerializationSettings error 
 
->  Method 'get_SerializationSettings' in type 'Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient' from assembly 'Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' does 
-not have an implementation.
+- Cause: The PowerShell Az module and PowerShell AzureRM modules are not compatible.
 
-To fix the error, close the powershell session and uninstall either Az or AzureRM modules
+    The following error indicates that AzureRM modules and Az modules are loaded in the same session: 
+
+    ```powershell  
+    >  Method 'get_SerializationSettings' in type 'Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient' from assembly 'Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' does 
+    not have an implementation.
+    ```
+
+- Remediation: Uninstall the conflicting modules. 
+
+  If you would like to use the AzureRM modules, uninstall the Az modules. Or uninstall the AzureRM if you would like to use the Az module. Close your PowerShell session and uninstall either Az or AzureRM modules. 
+  
+  You can find instructions at [Uninstall existing versions of the Azure Stack Hub PowerShell modules](#uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules).
 
 ## Next steps
 
