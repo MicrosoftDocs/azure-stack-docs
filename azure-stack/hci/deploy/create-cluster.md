@@ -3,43 +3,44 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: v-dasis
 ms.topic: article
+ms.type: how-to
 ms.prod: 
-ms.date: 06/16/2020
+ms.date: 06/22/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
 
 # Create an Azure Stack HCI cluster using Windows Admin Center
 
-> Applies to Azure Stack HCI v20H2
+> Applies to Azure Stack HCI, version v20H2
 
 In this article you will learn how to use Windows Admin Center to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. The Create Cluster wizard in Windows Admin Center will do most of the heavy lifting for you.
 
 You have a choice between two cluster types:
 
-- Standard cluster with at least two server nodes, all residing in a single site.
-- Stretched cluster with at least four server nodes that span across two sites, with two nodes per site.
+- Standard cluster with at least two server nodes, residing in a single site.
+- Stretched cluster with at least four server nodes that span across two sites, with at least two nodes per site.
 
-Sites can be in two different states, different cities, different floors, or different rooms. Using two sites provides disaster recovery and business continuity should a site suffer an outage or failure.
+Sites can be in two different states, different cities, different floors, or different rooms. Stretched clusters Using two sites provides disaster recovery and business continuity should a site suffer an outage or failure.
 
 ## Before you begin
 
 Here are several requirements before you begin:
 
-- Make sure you have reviewed hardware requirements and considerations in [Planning a cluster].
+- Make sure you have reviewed the hardware requirements and other considerations in [Planning a cluster].
 
 - You should run Windows Admin Center from a remote computer running Windows 10, rather than from a host server in the cluster. This remote computer is called the management computer.
 
-- You must have administrative privileges for the cluster. Use an account that’s a member of the local Administrators group on each server.
+- Every server you want to include in the cluster, as well as your management computer, must be joined to the same Active Directory domain or fully trusted domain.
 
-- Each server you want to add to the cluster, as well as the management computer, must all be joined to the same Active Directory domain or fully trusted domain.
+- You must have administrative privileges for the cluster. Use a domain account that’s a member of the local Administrators group on each server.
 
 ## Run the Create Cluster wizard
 
-These are the major steps in the Create Cluster wizard:
+Here are the major steps in the Create Cluster wizard:
 
 1. **Get Started** - ensures that each server meets the prerequisites for and features needed for cluster join.
-1. **Networking** - assigns and configures network adapters and creates a virtual switch.
+1. **Networking** - assigns and configures network adapters and creates a virtual switch for each server.
 1. **Clustering** - validates the cluster is setup correctly. For stretched clusters, also sets up up the two sites.
 1. **Storage** - Configures Storage Spaces Direct and virtual storage.
 1. **SDN** (optional) - configures software-defined networking.
@@ -55,19 +56,19 @@ OK, lets begin:
 1. Under **Select server locations**, select one the following:
 
     - **All servers in one site**
-    - **Servers in two sites**
+    - **Servers in two sites** (for stretched cluster)
 
 1. When finished, click **Create**.
 
 ### Step 1: Get Started
 
-Step 1 of the wizard walks you through making sure all prerequisites are met beforehand, adding the server nodes, installing needed features, and then restarting each server.
+Step 1 of the wizard walks you through making sure all prerequisites are met beforehand, adding the server nodes, installing needed features, and then restarting each server if needed.
 
 1. Review the prerequisites listed in the wizard to ensure each server node is cluster-ready. When finished, click **Next**.
 1. On **Add servers to the cluster** page, enter your domain account username *<domain/user>* and password, then click **Next**. This account must be a member of the local Administrators group on each server.
-1. Enter the fully-qualified domain name (FQDN) of the first server and click **Add**.
+1. Enter the name of the first server you want to add, then click **Add**.
 1. Repeat Step 3 for each server that will be part of the cluster. When finished, click **Next**.
-1. If needed, on the **Join the servers to a domain​** page, specify the domain and an account that can join servers to the domain. Then optionally rename the servers and click **Next**.
+1. If needed, on the **Join the servers to a domain​** page, specify the domain and an account to join the servers to the domain. Then optionally rename the servers to more friendly names and click **Next**.
 1. Click **Install Features**. When finished, click **Next**.
 
 > [!NOTE]
@@ -76,30 +77,30 @@ Step 1 of the wizard walks you through making sure all prerequisites are met bef
 > - BitLocker
 > - Data Center Bridging (for RoCEv2 network adapters)
 > - Failover Clustering
-> - File Server (for file share witness or hosting file shares)
+> - File Server (for file-share witness or hosting file shares)
 > - FS-Data-Deduplication module
 > - Hyper-V
 > - RSAT-AD-PowerShell module
 > - Storage Replica (only installed for stretched clusters)
 
-1. For **Install updates**, if needed, click **Install updates**. When complete, click **Next**.
-1. For **Solution updates**, if needed, click **Install extension**. When complete, click **Next**.
-1. If needed, click **Restart servers** and verify that each server has successfully started.
+1. For **Install updates**, if required, click **Install updates**. When complete, click **Next**.
+1. For **Solution updates**, if required, click **Install extension**. When complete, click **Next**.
+1. Click **Restart servers**, if required. Verify that each server has successfully started.
 
 ### Step 2: Networking
 
-Step 2 of the wizard walks you through verifying network adapters, assigning IPv4 addresses, subnet masks, and VLAN ID for each server and creating virtual switches.
+Step 2 of the wizard walks you through verifying network adapters, assigning IPv4 addresses, subnet masks, and VLAN ID for each server and creating virtual switches for each server.
 
 1. Select **Next: Networking**.
-1. Under **Verify the network adapters**, wait until the green checkbox appears and select **Next**.
+1. Under **Verify the network adapters**, wait until green checkboxes appear next to each adapter, then select **Next**.
 
 1. For **Select management adapters**, select either one for two management adapters to use for each server and then do the following for each server:
 
-- Select the **Description** checkbox. Note that all adapters are selected and that wizard may offer a recommendation for you.
+- Select the **Description** checkbox. Note that all adapters are selected and that the wizard may offer a recommendation for you.
 - Unselect the checkboxes for those adapters you don't want used for cluster management.
 
 > [!NOTE]
-> It is recommended that you reserve the highest-speed adapters for data traffic and use the lowest-speed adapter for cluster management.
+> It is recommended that you reserve the highest-speed network adapters for data traffic and use the lowest-speed adapter for cluster management.
 
 1. When changes have been made, click **Apply and test**.
 1. Under **Define networks**, make sure each network adapter for each server has a unique IPv4 address, a subnet mask, and a VLAN ID. Hover over each table element and enter or change values as needed. When finished, click **Apply and test**.
@@ -115,10 +116,9 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
 1. Under **Validate the cluster**, select **Validate**. Validation may take several minutes.
 
     > [!NOTE]
-    > If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable CredSSP for the wizard to continue. Once your cluster is created and the wizard is completed, you will need to disable again CredSSP for security reasons.
+    > If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable CredSSP for the wizard to continue. Once your cluster is created and the wizard has completed, you will need to disable CredSSP again for security reasons.
 
-1. 
-1. Review all validation status, download the report to get detailed information on any failures, make changes, then click **Validate again** as needed.
+1. Review all validation statuses, download the report to get detailed information on any failures, make changes, then click **Validate again** as needed. Repeat again as necessary until all validation checks pass.
 1. Under **Create the cluster**, enter a name for your cluster.
 1. Under **Networks**, select the preferred configuration.
 1. Under **IP addresses**, select either dynamic or static IP addresses to use.
@@ -130,14 +130,14 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
 
 ### Step 4: Storage
 
-Step 4 of the wizard walks you through setting up Storage Spaces Direct and virtual hard disks for your cluster.
+Step 4 of the wizard walks you through setting up Storage Spaces Direct and configuring virtual hard disks for your cluster.
 
 > [!NOTE]
 > For stretched clusters, make sure the sites have been configured properly and server nodes assigned to them before enabling Storage Spaces Direct.
 
 1. Select **Next: Storage**.
-1. Under **Verify drives**, click the **>** icon next to each server to verify that the proper disks are working and connected, then click **Next**.
-1. Under **Clean drives**, click **Clean drives** to empty the drives. When ready, click **Next**.
+1. Under **Verify drives**, click the **>** icon next to each server to verify that the disks are working and connected, then click **Next**.
+1. Under **Clean drives**, click **Clean drives** to empty the drives of data. When ready, click **Next**.
 1. Under **Validate storage**, click **Next**.
 1. Review the validation results. If all is good, click **Next**.
 1. Under **Enable Storage Spaces Direct**, click **Enable**.
@@ -146,14 +146,14 @@ Step 4 of the wizard walks you through setting up Storage Spaces Direct and virt
 Congratulations, you have created a cluster.
 
 > [!NOTE]
-> After the cluster is created, it can take time for the cluster name to be replicated. If resolving the cluster isn't successful, in most cases you can substitute the computer name of a server node in the the cluster instead of the cluster name.
+> After the cluster is created, it can take time for the cluster name to be replicated across your domain. If resolving the cluster isn't successful after some time, in most cases you can substitute the computer name of a server node in the the cluster instead of the cluster name.
 
 ### Step 5 (Optional): SDN
 
-Step 5 of the wizard is only applicable if you selected a **Hyperconverged + SDN** cluster type to create at the start of the wizard. This stage then walks you through setting up software-defined networking (SDN) for your cluster.
+Step 5 of the wizard is only applicable if you selected a **Hyperconverged + SDN** cluster type at the start of the wizard. This step will walk you through setting up software-defined networking (SDN) for your cluster.
 
 1. Select **Next: SDN**.
-1. **[PLACEHOLDER STEPS]**  **<== need massive help here. Is this on the plate for July release? ==>**
+1. **[PLACEHOLDER STEPS]**
 
 ## Disable CredSSP
 
@@ -167,9 +167,9 @@ After your server cluster is successfully created, you will need to disable the 
 
 ## Setup the witness
 
-When using Storage Spaces Direct in a cluster a witness resource is not automatically created as there are no shared disks yet. You can use either an Azure cloud witness or a file share witness.
+A witness resource is highly recommended for all clusters. Two-node clusters need a witness so that either server going offline does not cause the other node to become unavailable as well. Three and higher-node clusters need a witness to be able to withstand two servers failing or being offline.  You can use a file share as a witness, or use an Azure cloud witness.
 
-Three and higher-node clusters need a witness to be able to withstand two servers failing or being offline. Two-node clusters need a witness so that either server going offline does not cause the other node to become unavailable as well. You can use a file share as a witness, or use an Azure cloud witness. A cloud witness is recommended.
+A cloud witness is recommended if all server nodes have a reliable Internet connection. For more information, see [Deploy a Cloud Witness for a Failover Cluster](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)
 
 1. In Windows Admin Center, under **Tools**, select **Settings**.
 1. In the right pane, select **Witness**.
@@ -180,12 +180,12 @@ Three and higher-node clusters need a witness to be able to withstand two server
 > [!NOTE]
 > The **Disk witness** option is not suitable for stretched clusters.
 
-## Create volumes and setup replication
+## Setup volumes and replication
 
 > [!NOTE]
 > This task only applies to stretched clusters.
 
-For stretched clusters, you need to create data and log volumes for each server pair across sites, create a replication group for each site, and setup replication between the sites.
+For stretched clusters, you will need to create data and log volumes for each server node pair across sites, create a replication group for each site, and setup replication between the sites.
 
 There are two types of stretched clusters, active/passive and active/active.
 You can set up active-passive site replication, where there is a preferred site and direction for replication. Active-active replication is where replication can happen bi-directionally from either site. This article covers the active/passive configuration only.
@@ -222,12 +222,14 @@ OK, let's begin:
 1. Under **Tools**, select **Storage Replica**.
 1. In the right pane, under **Partnerships**, verify that the replication partnership has been successfully created.
 
+## Verify replication (stretched cluster)
+
+For stretched clusters, you should verify successful data replication between sites before deploying VMs and other workloads. See Step 9 in [Create Azure Stack HCI cluster using PowerShell] for more information.
+
 ## Next steps
 
 - You may want to further validate your cluster. See [Validate server cluster].
 
-- For stretched clusters, you can verify replication between sites. See [Create Azure Stack HCI cluster using PowerShell].
-
-- You can create your virtual machines. See [Manage VMs on Azure Stack HCI](https://docs.microsoft.com/azure-stack/hci/manage/vm).
+- You can deploy VMs. See [Manage VMs on Azure Stack HCI](https://docs.microsoft.com/azure-stack/hci/manage/vm).
 
 - You can also create a cluster using Windows PowerShell. See [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md).
