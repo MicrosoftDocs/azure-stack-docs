@@ -267,6 +267,16 @@ In scenarios that require a proxy server to access the internet, you first confi
    [System.Net.WebRequest]::DefaultWebProxy.Credentials = Get-Credential
    ```
 
+## 7. Known Issues
+Az modules and AzureRM modules are not compatible. It is necessary to uninstall Az modules before installing the AzureRM modules.
+
+The following error indicates that AzureRM modules and Az modules are loaded in the same session. 
+
+>  Method 'get_SerializationSettings' in type 'Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient' from assembly 'Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' does 
+not have an implementation.
+
+To fix the error, close the powershell session and uninstall either Az or AzureRM modules
+
 ## Next steps
 
 - [Download Azure Stack Hub tools from GitHub](azure-stack-powershell-download.md)
