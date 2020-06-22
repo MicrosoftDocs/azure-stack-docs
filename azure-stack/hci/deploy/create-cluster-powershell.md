@@ -4,13 +4,13 @@ description: Learn how to create a hyperconverged cluster for Azure Stack HCI us
 author: v-dasis
 ms.topic: article
 ms.prod: 
-ms.date: 06/10/2020
+ms.date: 06/22/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
 # Create an Azure Stack HCI cluster using Windows PowerShell
 
-> Applies to: Azure Stack HCI v20H2
+> Applies to: Azure Stack HCI, version v20H2
 
 In this article you will learn how to use Windows PowerShell to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct.
 
@@ -482,7 +482,7 @@ New-CimSession -Cluster Cluster1 | Enable-ClusterStorageSpacesDirect -PoolFriend
 ```
 
 > [!NOTE]
-You can also use a server node name instead of the cluster name above. Using the server name can be more reliable due to DNS replication delays that may occur with the newly created cluster name.
+> You can also use a server node name instead of the cluster name above. Using the server name can be more reliable due to DNS replication delays that may occur with the newly created cluster name.
 
 ## Step 7: Create a witness
 
