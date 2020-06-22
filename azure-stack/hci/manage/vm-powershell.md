@@ -1,11 +1,12 @@
---- 
-title: Manage VMs on Azure Stack HCI using Windows PowerShell 
-description: How to manage virtual machines on Azure Stack HCI using Windows PowerShell 
-author: v-dasis 
-ms.topic: article 
-ms.date: 05/20/2020 
-ms.author: v-dasis 
-ms.reviewer: JasonGerend 
+---
+title: Manage VMs on Azure Stack HCI using Windows PowerShell
+description: How to manage virtual machines on Azure Stack HCI using Windows PowerShell
+author: v-dasis
+ms.topic: how-to
+ms.prod: windows-server
+ms.date: 05/20/2020
+ms.author: v-dasis
+ms.reviewer: JasonGerend
 ---
 
 # Manage VMs on Azure Stack HCI using Windows PowerShell
@@ -166,7 +167,7 @@ The following example configures a VM named VM1 with two virtual processors, a r
 Set-VMProcessor -ComputerName Server1 -Name VM1 -Count 2 -Reserve 10 -Maximum 75 -RelativeWeight 200
 ```
 
-## Create a VM  
+## Create a VM
 
 The `New-VM` cmdlet is used to create a new VM. For detailed usage, see the [New-VM](https://docs.microsoft.com/powershell/module/hyper-v/new-vm?view=win10-ps) reference documentation.
 
@@ -185,7 +186,7 @@ Here are the settings that you can specify when creating a new VM with an existi
 
 - **-Generation** is the virtual machine generation. Use generation 1 for VHD and generation 2 for VHDX.
 
-- **-Switch** is the name of the virtual switch that you want the virtual machine to use to connect to other virtual machines or the network. Get the name of the virtual switch by using [Get-VMSwitch](https://docs.microsoft.com/powershell/module/hyper-v/get-vmswitch?view=win10-ps). For example:  
+- **-Switch** is the name of the virtual switch that you want the virtual machine to use to connect to other virtual machines or the network. Get the name of the virtual switch by using [Get-VMSwitch](https://docs.microsoft.com/powershell/module/hyper-v/get-vmswitch?view=win10-ps). For example:
 
 The full command as follows for creating a VM called VM1:
 
@@ -193,7 +194,7 @@ The full command as follows for creating a VM called VM1:
  New-VM -ComputerName Server1 -Name VM1 -MemoryStartupBytes <Memory> -BootDevice <BootDevice> -VHDPath <VHDPath> -Path <Path> -Generation <Generation> -Switch <SwitchName>
  ```
 
-The next example creates a Generation 2 virtual machine with 4GB of memory. It boots from the folder VMs\Win10.vhdx in the current directory and uses the virtual switch named ExternalSwitch. The virtual machine configuration files are stored in the folder VMData.  
+The next example creates a Generation 2 virtual machine with 4GB of memory. It boots from the folder VMs\Win10.vhdx in the current directory and uses the virtual switch named ExternalSwitch. The virtual machine configuration files are stored in the folder VMData.
 
 ``` powershell
 New-VM -ComputerName Server1 -Name VM1 -MemoryStartupBytes 4GB -BootDevice VHD -VHDPath .\VMs\Win10.vhdx -Path .\VMData -Generation 2 -Switch ExternalSwitch
@@ -201,14 +202,14 @@ New-VM -ComputerName Server1 -Name VM1 -MemoryStartupBytes 4GB -BootDevice VHD -
 
 The following parameters are used to specify virtual hard disks.
 
-To create a virtual machine with a new virtual hard disk, replace the **-VHDPath** parameter from the example above with  **-NewVHDPath** and add the **-NewVHDSizeBytes** parameter as shown here:  
+To create a virtual machine with a new virtual hard disk, replace the **-VHDPath** parameter from the example above with  **-NewVHDPath** and add the **-NewVHDSizeBytes** parameter as shown here:
 
-``` powershell  
-New-VM -ComputerName Server1 -Name VM1 -MemoryStartupBytes 4GB -BootDevice VHD -NewVHDPath .\VMs\Win10.vhdx -Path .\VMData -NewVHDSizeBytes 20GB -Generation 2 -Switch ExternalSwitch  
- ```  
+``` powershell
+New-VM -ComputerName Server1 -Name VM1 -MemoryStartupBytes 4GB -BootDevice VHD -NewVHDPath .\VMs\Win10.vhdx -Path .\VMData -NewVHDSizeBytes 20GB -Generation 2 -Switch ExternalSwitch
+ ```
 
-To create a virtual machine with a new virtual disk that boots to an operating system image, see the PowerShell example in [Create virtual machine walkthrough for Hyper-V on Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_create_vm).  
+To create a virtual machine with a new virtual disk that boots to an operating system image, see the PowerShell example in [Create virtual machine walkthrough for Hyper-V on Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_create_vm).
 
-## Next steps  
+## Next steps
 
 You can also create and manage VMs using Windows Admin Center. For more information, see [Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/overview).
