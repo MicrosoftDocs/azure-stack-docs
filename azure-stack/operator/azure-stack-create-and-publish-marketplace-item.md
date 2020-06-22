@@ -3,7 +3,7 @@ title: Create and publish a Marketplace item in Azure Stack Hub
 description: Learn how to create and publish an Azure Stack Hub Marketplace item.
 author: sethmanheim
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 06/11/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 05/07/2019
@@ -234,7 +234,7 @@ The Marketplace uses the following icons:
 | Large |115 px |115 px |Always required |
 | Medium |90 px |90 px |Always required |
 | Small |40 px |40 px |Always required |
-| Screenshot |533 px |324 px |Always required |
+| Screenshot |533 px |324 px |Optional |
 
 ### Categories
 
