@@ -3,13 +3,13 @@ title: Update Azure Stack HCI clusters
 description: How to apply operating system and firmware updates to Azure Stack HCI using Windows Admin Center and PowerShell.
 author: khdownie
 ms.author: v-kedow
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/22/2020
 ---
 
 # Update Azure Stack HCI clusters
 
-> Applies to: Azure Stack HCI, version 20H2, Windows Server 2019
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
 When updating Azure Stack HCI clusters, the goal is to maintain availability by updating only one server in the cluster at a time. Many operating system updates require taking the server offline, for example to do a restart or to update software such as the network stack. We recommend using [Cluster-Aware Updating (CAU)](/windows-server/failover-clustering/cluster-aware-updating), a feature that makes it easier to install Windows updates to every server in your cluster while keeping your applications running by automating the software updating process. Cluster-Aware Updating can be used on all editions of Windows Server, including Server Core installations, and can be initiated either through Windows Admin Center or using PowerShell.
 
