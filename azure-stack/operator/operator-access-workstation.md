@@ -172,4 +172,4 @@ The following script removes the OAW VM, which is used to access Azure Stack Hub
 
 ## Next steps
 
-[Azure Stack Management Tasks](azure-stack-management-basics.md)
+[Azure Stack Management Tasks](azure-stack-manage-basics.md)
