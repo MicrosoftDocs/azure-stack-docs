@@ -284,7 +284,7 @@ In scenarios that require a proxy server to access the internet, you first confi
 
   If you would like to use the AzureRM modules, uninstall the Az modules. Or uninstall the AzureRM if you would like to use the Az modules. Close your PowerShell session and uninstall either Az or AzureRM modules. 
   
-  You can find instructions at [Uninstall existing versions of the Azure Stack Hub PowerShell modules](##3-uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules).
+  You can find instructions at [Uninstall existing versions of the Azure Stack Hub PowerShell modules](#3-uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules).
 
 ## Next steps
 
