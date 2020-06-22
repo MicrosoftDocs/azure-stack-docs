@@ -4,10 +4,10 @@ description: Learn how to install PowerShell for Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 06/16/2020
+ms.date: 06/22/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 04/16/2020
+ms.lastreviewed: 06/22/2020
 
 # Intent: As an Azure Stack operator, I want to install Powershell Az for Azure Stack.
 # Keyword: install powershell azure stack Az
@@ -149,13 +149,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
    Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
 
-   Install-Module -Name Az.BootStrapper -Repository $RepoName -Scope AllUsers -AllowPrerelease
-
-   Set-BootstrapRepo -Repo $RepoName
-
-   Install-AzProfile -Profile '2019-03-01-hybrid' -Force -Scope AllUsers
-
-   Install-Module -Name AzureStack -Repository $RepoName -RequiredVersion 2.0.1-preview -AllowPrerelease -Scope AllUsers
+   Install-Module -Name Az -Repository $RepoName -RequiredVersion 0.10.0-preview -AllowPrerelease -Scope AllUsers
    ```
 
 ### Confirm the installation of PowerShell
