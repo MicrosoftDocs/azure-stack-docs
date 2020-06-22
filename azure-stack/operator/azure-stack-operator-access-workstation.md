@@ -94,7 +94,7 @@ The following table lists the definition for each parameter.
 | AzureStackCertificatePath  | Optional parameter; path of certificates to be imported to the virtual machine for Azure Stack Hub access. |
 | ERCSVMIP                   | Optional parameter; IP of Azure Stack Hub ERCS VM(s) to be added to trusted host list of the virtual machine. Won't take effect if **-SkipNetworkConfiguration** is set. |
 SkipNetworkConfiguration     | Optional parameter; use this flag to skip network configuration for the virtual machine, user can configure later. |
-| UseDVMConfiguration        | Optional parameter; use this flag to apply Azure Stack Hub deployment virtual machine (dvm) network configuration. Won't take effect if **-SkipNetworkConfiguration** is set.|
+| UseDVMConfiguration        | Optional parameter; use this flag to apply Azure Stack Hub deployment virtual machine (DVM) network configuration. Won't take effect if **-SkipNetworkConfiguration** is set.|
 | DeploymentDataFilePath     | Optional parameter; path of DeploymentData.json. Won't take effect if **-SkipNetworkConfiguration** is set.            |
 | IPAddress                  | The static IPv4 address to configure TCP/IP on the virtual machine.                                                |
 | SubnetMask                 | The IPv4 subnet mask to configure TCP/IP on the virtual machine.                                                   |
