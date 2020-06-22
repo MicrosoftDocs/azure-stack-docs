@@ -1,6 +1,5 @@
 ---
 title: Azure Stack Hub Operator Access Workstation
-titleSuffix: Azure Stack Hub
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: asganesh
 ms.topic: article
@@ -64,7 +63,7 @@ The following table lists the pre-installed software on the OAW VM.
 
 The following script prepares the virtual machine as the Operator Access Workstation (OAW), which is used to access Microsoft Azure Stack Hub for administration and diagnostics.
 
-1. Log onto the HLH with your credentials
+1. Log onto the HLH with your credentials.
 1. Download OAW.zip and extract the files.
 1. Open an elevated PowerShell session.
 1. Navigate to the extracted contents of the OAW.zip file.
@@ -171,3 +170,6 @@ The following script removes the OAW VM, which is used to access Azure Stack Hub
    Remove-OAW.ps1 -VirtualMachineName AzSOAW
    ```
 
+## Next steps
+
+[Azure Stack Management Tasks](azure-stack-management-basics.md)
