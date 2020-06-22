@@ -273,7 +273,7 @@ In scenarios that require a proxy server to access the internet, you first confi
 
 - Cause: The PowerShell Az module and PowerShell AzureRM modules are not compatible.
 
-    The following error indicates that AzureRM modules and Az modules are loaded in the same session: 
+    The following error indicates that the AzureRM modules and Az modules are loaded in the same session: 
 
     ```powershell  
     >  Method 'get_SerializationSettings' in type 'Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient' from assembly 'Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' does 
@@ -282,7 +282,7 @@ In scenarios that require a proxy server to access the internet, you first confi
 
 - Remediation: Uninstall the conflicting modules. 
 
-  If you would like to use the AzureRM modules, uninstall the Az modules. Or uninstall the AzureRM if you would like to use the Az module. Close your PowerShell session and uninstall either Az or AzureRM modules. 
+  If you would like to use the AzureRM modules, uninstall the Az modules. Or uninstall the AzureRM if you would like to use the Az modules. Close your PowerShell session and uninstall either Az or AzureRM modules. 
   
   You can find instructions at [Uninstall existing versions of the Azure Stack Hub PowerShell modules](##3-uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules).
 
