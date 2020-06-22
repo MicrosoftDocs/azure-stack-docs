@@ -16,7 +16,7 @@ ms.lastreviewed: 06/19/2020
 
 # Azure Stack Hub Operator Access Workstation (Preview Only)
 
-The Operator Access Workstation (OAW) is used to deploy a jump box virtual machine (VM) on the Hardware Lifecycle Host (HLH) so an Azure Stack Hub operator can access the privileged endpoint (PEP) and the Administrator portal for support scenarios. The HLH version must be 2005 or later. 
+The Operator Access Workstation (OAW) is used to deploy a jump box virtual machine (VM) on the Hardware Lifecycle Host (HLH) so an Azure Stack Hub operator can access the privileged endpoint (PEP) and the Administrator portal for support scenarios. The HLH version must run version 2005 or later. 
 
 The OAW VM should be created when an operator performs a new task. After a required task inside the VM is completed, the VM should be shut down and removed as Azure Stack Hub doesn't need to always run it.  
 
@@ -35,10 +35,9 @@ The following user account policy is applied to the OAW VM:
 - MaximumPasswordAge = 42 (days)
 - NewGuestName = GUser (disabled by default)
 
-
 The following table lists the pre-installed software on the OAW VM.
 
-| Software Name	           | Location                                                                                       |
+| Software Name           | Location                                                                                       |
 |--------------------------|------------------------------------------------------------------------------------------------|
 | [Microsoft Edge for Business](https://www.microsoft.com/edge/business/)                                            | \[SystemDrive\]\Program Files (x86)\Microsoft\Edge\Application                                                                                        |
 | [Az Modules](https://docs.microsoft.com/azure-stack/operator/powershell-install-az-module)                         | \[SystemDrive\]\ProgramFiles\WindowsPowerShell\Modules                                         |  
@@ -59,7 +58,7 @@ The following table lists the pre-installed software on the OAW VM.
 
    For example:
 
-   ![Screenshot of PowerShell cmdlet to check the version of the OAW VM](./media/azure-stack-operator-access-workstation/check-hlh-version.png)
+   ![Screenshot of PowerShell cmdlet to check the version of the OAW VM](./media/operator-access-workstation/check-hardware-lifecycle-host-version.png)
 
 ## Create the OAW VM using a script
 
@@ -83,7 +82,7 @@ The following script prepares the virtual machine as the Operator Access Worksta
 
    ```powershell
    $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
-   New-OAW.ps1 -LocalAdministratorPassword $securePassword   
+   New-OAW.ps1 -LocalAdministratorPassword $securePassword  
    ```
 
 The following table lists the definition for each parameter.
@@ -148,7 +147,7 @@ To create the OAW VM on a host with network connection to Azure Stack Hub, run t
 
    For example:
 
-   ![Screenshot of PowerShell cmdlet to check the Hardware LifeCycle Host version](./media/azure-stack-operator-access-workstation/check-oaw-vm-version.png)
+   ![Screenshot of PowerShell cmdlet to check the Hardware LifeCycle Host version](./media/operator-access-workstation/check-operator-access-workstation-vm-version.png)
 
 
 ## Remove the OAW VM
