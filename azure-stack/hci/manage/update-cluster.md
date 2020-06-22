@@ -4,7 +4,7 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 05/29/2020
+ms.date: 06/22/2020
 ---
 
 # Update Azure Stack HCI clusters
@@ -110,7 +110,7 @@ Add-CauClusterRole -ClusterName Cluster1 -MaxFailedNodes 0 -RequireAllNodesOnlin
 
 ### Enable firewall rules to allow remote restarts
 
-You'll likely need to allow the servers to restart remotely during the update process. If you're using Windows Admin Center to perform the updates, Windows Firewall rules will automatically be updated on each server to allow remote restarts. If you're updating with PowerShell, either enable the Remote Shutdown firewall rule group in Windows Firewall or pass the -EnableFirewallRules parameter to the cmdlet.
+You'll need to allow the servers to restart remotely during the update process. If you're using Windows Admin Center to perform the updates, Windows Firewall rules will automatically be updated on each server to allow remote restarts. If you're updating with PowerShell, either enable the Remote Shutdown firewall rule group in Windows Firewall, or pass the -EnableFirewallRules parameter to the cmdlet such as in the example above.
 
 ## Check for updates with PowerShell
 
