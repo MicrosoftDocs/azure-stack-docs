@@ -15,7 +15,7 @@ ms.lastreviewed: 05/28/2020
 
 # Azure Stack Hub Marketplace changes
 
-This article lists recent additions, updates, changes, and removals of [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) over the last three months. The information in this section is updated frequently, so check back often for changes.
+This article lists recent additions, updates, changes, and removals of [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md). The information in this section is updated frequently, so check back often for changes.
 
 The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) article always contains the most current list of available Azure Stack Hub Marketplace items.
 
