@@ -4,7 +4,6 @@ description: A discussion of resiliency options in Storage Spaces Direct includi
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
-ms.prod: windows-server
 ms.date: 02/28/2020
 ---
 

@@ -4,7 +4,6 @@ description: How to choose drives for Storage Spaces Direct in Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
-ms.prod: windows-server
 ms.date: 03/06/2020
 ---
 

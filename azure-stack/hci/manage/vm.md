@@ -3,7 +3,6 @@ title: Manage VMs on Azure Stack HCI using Windows Admin Center
 description: Learn how to create and manage virtual machines in a cluster on Azure Stack HCI using Windows Admin Center.
 author: v-dasis
 ms.topic: how-to
-ms.prod: windows-server
 ms.date: 05/20/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend

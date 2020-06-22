@@ -4,7 +4,6 @@ description: How to create volumes in Azure Stack HCI using Windows Admin Center
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.prod: windows-server
 ms.date: 02/28/2020
 ---
 

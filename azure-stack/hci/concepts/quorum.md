@@ -4,7 +4,6 @@ description: Understanding cluster and pool quorum in Storage Spaces Direct on A
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
-ms.prod: windows-server
 ms.date: 02/28/2020
 ---
 
