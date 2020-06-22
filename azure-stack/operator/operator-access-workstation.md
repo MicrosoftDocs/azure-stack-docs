@@ -4,10 +4,10 @@ titleSuffix: Azure Stack Hub
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: asganesh
 ms.topic: article
-ms.date: 06/19/2020
+ms.date: 06/22/2020
 ms.author: justinha
 ms.reviewer: asganesh
-ms.lastreviewed: 06/19/2020
+ms.lastreviewed: 06/22/2020
 
 # Intent: As an Azure Stack operator, I want to download and configure an Azure Stack Hub Operator Access Workstation.
 # Keyword: azure stack hub operator access workstation
@@ -22,7 +22,7 @@ The OAW VM should be created when an operator performs a new task. After a requi
 
 Due to the stateless nature of the solution, there are no updates for the OAW VM. For each milestone, a new version of the VM image file will be released. Use the latest version to create a new OAW VM. The image file is based on the latest Windows Server 2019 version. After installation, you can apply updates, including any critical updates, using Windows Update. 
 
-Please be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](azure-stack-operator-access-workstation-legal-terms.md) prior to download.
+Please be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](https://aka.ms/OAW) prior to download.
 
 You can download the necessary files to create the OAW VM for the preview from [here](https://aka.ms/OAW).
 
