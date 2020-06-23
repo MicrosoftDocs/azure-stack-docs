@@ -4,7 +4,7 @@ description: This topic provides guidance on security considerations for the Azu
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 06/23/2020
 ---
 
 # Azure Stack HCI security considerations
@@ -85,7 +85,7 @@ This section discusses how to use Windows Admin Center to protect privileged ide
 
     Windows Admin Center supports Microsoft Edge (Windows 10, version 1709 or later), Google Chrome, and Microsoft Edge Insider on Windows 10. You can install Windows Admin Center on either a Windows 10 PC or a Windows server.
 
-    If you install Windows Admin Center on a server it runs as a gateway, with no UI on the host server. In this scenario, administrators can log on to the server via a secure HTTPS session, secured by a self-signed security certificate on the host. However, it's better to use an appropriate SSL certificate from a trusted certificate authority for the sign-on process because supported browsers treat a self-signed connection as unsecure, even if the connection is to a local IP address over a trusted VPN.
+    If you install Windows Admin Center on a server it runs as a gateway, with no UI on the host server. In this scenario, administrators can log on to the server via an HTTPS session, secured by a self-signed security certificate on the host. However, it's better to use an appropriate SSL certificate from a trusted certificate authority for the sign-on process, because supported browsers treat a self-signed connection as unsecure, even if the connection is to a local IP address over a trusted VPN.
 
     To learn more about installation options for your organization, see [What type of installation is right for you?](https:///windows-server/manage/windows-admin-center/plan/installation-options).
 
@@ -130,7 +130,7 @@ The following sections recommend advanced security tools and technologies to fur
 
     To learn more, see [Microsoft Security Baselines](https://techcommunity.microsoft.com/t5/microsoft-security-baselines/bg-p/Microsoft-Security-Baselines).
 
-- **Turbine** enables you to hotpatch VMs running on the latest Windows Server operating systems with security updates and minimal downtime. Turbine significantly reduces the number of restarts VMs require to get fully updated. Operating system security updates are responsible for nearly 70% of server restarts.
+- **Turbine** enables you to hot patch VMs running on the latest Windows Server operating systems with security updates and minimal downtime. Turbine significantly reduces the number of restarts VMs require to get fully updated. Operating system security updates are responsible for nearly 70% of server restarts.
 
     To learn more, see [Turbine]().
     <!--Either update this feature reference when it ships or pull it if to ship after HCI release--!>
@@ -143,13 +143,13 @@ on a physical server. Because virtual environments typically have multiple VMs s
 
         To learn more, see [Guarded fabric and shielded VMs overview](https://docs.microsoft.com/windows-server/security/guarded-fabric-shielded-vm/guarded-fabric-and-shielded-vms).
      
-     - **Virtual Trusted Platform Module (vTPM)** in Windows Server supports TPM for VMs, which lets you to use advanced security technologies, such as BitLocker in VMs. You can enable TPM support on any Generation 2 Hyper-V VM by using either Hyper-V Manager or the `Enable-VMTPM` Windows PowerShell cmdlet.
+     - **Virtual Trusted Platform Module (vTPM)** in Windows Server supports TPM for VMs, which lets you use advanced security technologies, such as BitLocker in VMs. You can enable TPM support on any Generation 2 Hyper-V VM by using either Hyper-V Manager or the `Enable-VMTPM` Windows PowerShell cmdlet.
      
         To learn more, see [Enable-VMTPM](https://docs.microsoft.com/powershell/module/hyper-v/enable-vmtpm?view=win10-ps).
      
      - **Software Defined Networking (SDN)** in Windows Server lets you to centrally configure and manage physical and virtual network devices, such as routers, switches, and gateways in your datacenter. Virtual network elements, such as Hyper-V Virtual Switch, Hyper-V Network Virtualization, and RAS Gateway are designed to be integral elements of your SDN infrastructure.
 
-        To learn more, see [SDN in Windows Server overview](https://docs.microsoft.com/windows-server/networking/sdn/software-defined-networking) and [What's New in SDN for Windows Server 2019](https://docs.microsoft.com/windows-server/networking/sdn/sdn-whats-new).
+        To learn more, see [Software Defined Networking (SDN)](https://docs.microsoft.com/windows-server/networking/sdn/).
 
 ### Protect identities
 - **Just in Time (JIT) access** in Windows Server lets you lock down inbound traffic to Azure VMs by assigning users to privileged groups from which they can perform specific tasks for a limited time. JIT reduces network exposure to attacks while providing users access to VMs when needed. Using JIT requires a subscription to Security Center's standard pricing tier. 
@@ -160,22 +160,20 @@ on a physical server. Because virtual environments typically have multiple VMs s
 
     To get started using LAPS, download [Local Administrator Password Solution (LAPS)](https://www.microsoft.com/download/details.aspx?id=46899).
 
-- **Microsoft Advanced Threat Analytics (ATA)** TBD
-    <!-- Double check this is right section for this feature. Maybe better in advanced protect data section? --!>
+- **Microsoft Advanced Threat Analytics (ATA)** is an on-premises product that you can use to help detect attackers attempting to compromise privileged identities. ATA parses network traffic for authentication, authorization, and information gathering protocols, such as Kerberos and DNS. ATA uses the data to build behavioral profiles of users and other entities on the network to detect anomalies and known attack patterns.
+    
+    To learn more, see [What is Advanced Threat Analytics?](https://docs.microsoft.com/advanced-threat-analytics/what-is-ata).
 
-- **Remote Credential Guard** TBD
- 
+- **Windows Defender Remote Credential Guard** protects credentials over a Remote Desktop connection by redirecting Kerberos requests back to the device that's requesting the connection. It also provides single sign-on (SSO) for Remote Desktop sessions. During a Remote Desktop session, if the target device is compromised, your credentials are not exposed because both credential and credential derivatives are never passed over the network to the target device.
+
+    To learn more, see [Manage Windows Defender Credential Guard](https://docs.microsoft.com/windows/security/identity-protection/credential-guard/credential-guard-manage).
 
 ## More security resources
+For more information on security and regulatory compliance, see also:
 - [Beginning your General Data Protection Regulation (GDPR) journey for Windows Server](https://docs.microsoft.com/windows-server/security/gdpr/gdpr-winserver-whitepaper)
+- [Security and Assurance](https://docs.microsoft.com/windows-server/security/security-and-assurance)- 
 - [Security best practices for Azure solutions](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/)
-- [Security and Assurance](https://docs.microsoft.com/windows-server/security/security-and-assurance)
-
 
 ## Next steps
 For more information, see also:
 - [Protect Azure Stack HCI VMs using Azure Site Recovery](https://docs.microsoft.com/azure-stack/hci/manage/azure-site-recovery)
-
-
-- [Azure Stack HCI overview](../overview.md)
-<!---Last link here is placeholder for format example. Cut before review initial topic review.--->
