@@ -3,10 +3,10 @@ title: Azure Stack Hub Operator Access Workstation
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: asganesh
 ms.topic: article
-ms.date: 06/22/2020
+ms.date: 06/23/2020
 ms.author: justinha
 ms.reviewer: asganesh
-ms.lastreviewed: 06/22/2020
+ms.lastreviewed: 06/23/2020
 
 # Intent: As an Azure Stack operator, I want to download and configure an Azure Stack Hub Operator Access Workstation.
 # Keyword: azure stack hub operator access workstation
@@ -23,9 +23,9 @@ Due to the stateless nature of the solution, there are no updates for the OAW VM
 
 Please be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](https://docs.microsoft.com/legal/azure-stack-hub/azure-stack-operator-access-workstation-legal-terms) prior to download.
 
-You can download the necessary files to create the OAW VM for the preview from [here](https://aka.ms/OAW).
+You can download the necessary files to create the OAW VM for the preview from [here](https://aka.ms/OAWDownload).
 
-The following user account policy is applied to the OAW VM: 
+The following user account policy is applied to the OAW VM:
 
 - Built-in Administrator username: AdminUser
 - MinimumPasswordLength = 14
