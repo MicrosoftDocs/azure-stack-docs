@@ -171,7 +171,7 @@ on a physical server. Because virtual environments typically have multiple VMs s
 ## More security resources
 For more information on security and regulatory compliance, see also:
 - [Beginning your General Data Protection Regulation (GDPR) journey for Windows Server](https://docs.microsoft.com/windows-server/security/gdpr/gdpr-winserver-whitepaper)
-- [Security and Assurance](https://docs.microsoft.com/windows-server/security/security-and-assurance)- 
+- [Security and Assurance](https://docs.microsoft.com/windows-server/security/security-and-assurance)
 - [Security best practices for Azure solutions](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/)
 
 ## Next steps
