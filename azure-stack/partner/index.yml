@@ -1,40 +1,62 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
+
 title: Azure Stack Hub partner documentation
+summary: Learn how to validate your hardware to host Azure Stack Hub. Validation as a Service is a native Azure Service designed for use by solution partners who are co-engineering offerings with Microsoft.
+
 metadata:
-  title: Azure Stack Hub partner D\documentation - tutorials, API R\reference
-  description: Learn how to validate your hardware to host Azure Stack Hub. Validation as a Service is a native Azure Service designed for use by solution partners who are co-engineering Azure Stack Hub offerings with Microsoft.
-  services: azure-stack
-  author: mattbriggs
-  manager: femila
+  title: Azure Stack Hub partner # Required; page title displayed in search results. Include the brand. < 60 chars.
+  description: Learn how to validate your hardware to host Azure Stack Hub. Validation as a Service is a native Azure Service designed for use by solution partners who are co-engineering offerings with Microsoft.
   ms.service: azure-stack
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: partner
   ms.topic: landing-page
-  ms.date: 07/25/2018
+  author: mattbriggs
   ms.author: mabrigg
-  ms.reviewer: johnhas
-abstract:
-  description: You can use Validation as a Service to check your hardware for use with Azure Stack Hub. The service is a native Azure service designed for use by solution partners who are co-engineering Azure Stack Hub offerings with Microsoft.
-sections:
-- title: 5-Minute Quickstart
-  items: 
-  - type: paragraph
-    text: Learn how to use the Validation as a Service portal to schedule tests on your hardware.
-  - type: list
-    style: icon48
-    items: 
-    - image: 
-        src: media/i_account-management.svg
-      text: Use the Validation as a Service portal to schedule your first test
-      href: azure-stack-vaas-schedule-test-pass.md
-- title: Step-by-step tutorials
-  items:
-  - type: paragraph
-    text: 'Learn how to validate your Azure Stack Hub hardware.'
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="/azure-stack/partner/azure-stack-vaas-validate-solution-new">Validate a new Azure Stack Hub solution</a>
-    - html: <a href="/azure-stack/partner/azure-stack-vaas-validate-oem-package">Validate OEM packages</a>
-    - html: <a href="/azure-stack/partner/azure-stack-vaas-validate-microsoft-updates">Validate software updates from Microsoft</a>
+  ms.date: 06/22/2020
+
+# linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
+
+landingContent:
+# Cards and links should be based on top customer tasks or top subjects
+# Start card title with a verb
+  # Card (optional)
+  - title: About Validation as a Service for Azure Stack Hub
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is Validation as a Service?
+            url: azure-stack-vaas-overview.md
+      - linkListType: whats-new
+        links:
+          - text: Release notes
+            url: azure-stack-vaas-release-notes.md
+
+  - title: Get started
+    linkLists:
+      - linkListType: get-started
+        links:
+          - text: Learn how to use the Validation as a Service portal
+            url: azure-stack-vaas-schedule-test-pass.md
+          - text: Validate a solution
+            url: azure-stack-vaas-validate-solution-new.md
+
+  # Card
+  - title: How to use
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Validate a new Azure Stack Hub solution
+            url: azure-stack-vaas-validate-solution-new.md
+          - text: Validate OEM packages
+            url: azure-stack-vaas-validate-oem-package.md
+          - text: Validate software updates from Microsoft
+            url: azure-stack-vaas-validate-microsoft-updates.md
+          - text: Troubleshoot Validation as a Service
+            url: azure-stack-vaas-troubleshoot.md
+      - linkListType: concept
+        links:
+          - text: Key concepts
+            url: azure-stack-vaas-key-concepts.md
+          - text: Best practices
+            url: azure-stack-vaas-best-practice.md
+          - text: Common parameters
+            url: azure-stack-vaas-parameters.md
