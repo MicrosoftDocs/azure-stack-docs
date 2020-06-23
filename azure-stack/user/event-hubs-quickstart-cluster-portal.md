@@ -48,7 +48,7 @@ An Event Hubs cluster provides a unique scoping container in which you can creat
    - **Location**: You can leave the defaulted current location, or change to another.
    - **Cluster Capacity**: For this quickstart leave the default of 1 CU.
 
-[!INCLUDE [event-hubs-scale](../includes/event-hubs-scale.md)]
+      [!INCLUDE [event-hubs-scale](../includes/event-hubs-scale.md)]
 
    - Select the **Next: Tags >** button at the bottom of the page to continue. You may have to wait for the system to fully provision resources. 
 
