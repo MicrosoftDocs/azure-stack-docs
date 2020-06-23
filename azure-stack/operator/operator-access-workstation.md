@@ -21,7 +21,7 @@ The OAW VM should be created when an operator performs a new task. After a requi
 
 Due to the stateless nature of the solution, there are no updates for the OAW VM. For each milestone, a new version of the VM image file will be released. Use the latest version to create a new OAW VM. The image file is based on the latest Windows Server 2019 version. After installation, you can apply updates, including any critical updates, using Windows Update. 
 
-Please be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](https://docs.microsoft.com/legal/azure-stack-hub/azure-stack-operator-access-workstation-legal-terms) prior to download.
+Please be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](https://review.docs.microsoft.com/legal/azure-stack-hub/azure-stack-operator-access-workstation-legal-terms?branch=master) prior to download.
 
 You can download the necessary files to create the OAW VM for the preview from [here](https://aka.ms/OAWDownload).
 
@@ -39,11 +39,11 @@ The following table lists the pre-installed software on the OAW VM.
 | Software Name           | Location                                                                                       |
 |--------------------------|------------------------------------------------------------------------------------------------|
 | [Microsoft Edge for Business](https://www.microsoft.com/edge/business/)                                            | \[SystemDrive\]\Program Files (x86)\Microsoft\Edge\Application                                                                                        |
-| [Az Modules](https://docs.microsoft.com/azure-stack/operator/powershell-install-az-module)                         | \[SystemDrive\]\ProgramFiles\WindowsPowerShell\Modules                                         |  
+| [Az Modules](https://review.docs.microsoft.com/azure-stack/operator/powershell-install-az-module?branch=master)                         | \[SystemDrive\]\ProgramFiles\WindowsPowerShell\Modules                                         |  
 | [Powershell 7](https://devblogs.microsoft.com/powershell/announcing-PowerShell-7-0/)| \[SystemDrive\]\Program Files\PowerShell\7                                                                       |
-| [Azure Command-Line Interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | \[SystemDrive\]\Program Files (x86)\Microsoft SDKs\Azure\CLI2 |
+| [Azure Command-Line Interface (CLI)](https://review.docs.microsoft.com/cli/azure/?view=azure-cli-latest&branch=master) | \[SystemDrive\]\Program Files (x86)\Microsoft SDKs\Azure\CLI2 |
 | [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)   | \[SystemDrive\]\Program Files (x86)\Microsoft Azure Storage Explorer                                                                       |
-| [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)                             | \[SystemDrive\]\VMSoftware\azcopy_windows_amd64_10.3.4                                         |
+| [AzCopy](https://review.docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?branch=master)                             | \[SystemDrive\]\VMSoftware\azcopy_windows_amd64_10.3.4                                         |
 | [AzureStack-Tools](https://github.com/Azure/AzureStack-Tools/tree/az)                  | \[SystemDrive\]\VMSoftware\AzureStack-Tools                                                    |
 
 ## Check HLH version
