@@ -45,6 +45,10 @@ An Event Hubs cluster provides a unique scoping container in which you can creat
    - **Cluster name**: Enter a name. The system immediately checks to see if the name is available. If available, a checkmark will show at the right end of the field. 
    - **Subscription**: Select the subscription in which you want to create the cluster. 
    - **Resource group**: Create/Select the resource group in which you want to create the cluster. 
+   - **Location**: You can leave the defaulted current location, or change to another.
+   - **Cluster Capacity**: For this quickstart leave the default of 1 CU.
+&nbsp;&nbsp;&nbsp;&nbsp;[!INCLUDE [event-hubs-scale](../includes/event-hubs-scale.md)]
+
    - Select the **Next: Tags >** button at the bottom of the page to continue. You may have to wait for the system to fully provision resources. 
 
    [![Create Event Hub cluster - basics](media/event-hubs-quickstart-cluster-portal/1-create-cluster-basics.png)](media/event-hubs-quickstart-cluster-portal/1-create-cluster-basics.png#lightbox)
