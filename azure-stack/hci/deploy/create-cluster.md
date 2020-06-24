@@ -40,7 +40,7 @@ Here are several requirements before you begin:
 Here are the major steps in the Create Cluster wizard:
 
 1. **Get Started** - ensures that each server meets the prerequisites for and features needed for cluster join.
-1. **Networking** - assigns and configures network adapters and creates a virtual switch for each server.
+1. **Networking** - assigns and configures network adapters and creates the virtual switches for each server.
 1. **Clustering** - validates the cluster is setup correctly. For stretched clusters, also sets up up the two sites.
 1. **Storage** - Configures Storage Spaces Direct and virtual storage.
 1. **SDN** (optional) - configures software-defined networking.
@@ -71,17 +71,16 @@ Step 1 of the wizard walks you through making sure all prerequisites are met bef
 1. If needed, on the **Join the servers to a domain​** page, specify the domain and an account to join the servers to the domain. Then optionally rename the servers to more friendly names and click **Next**.
 1. Click **Install Features**. When finished, click **Next**.
 
-> [!NOTE]
-> The wizard will install the following required features for you:
-
-> - BitLocker
-> - Data Center Bridging (for RoCEv2 network adapters)
-> - Failover Clustering
-> - File Server (for file-share witness or hosting file shares)
-> - FS-Data-Deduplication module
-> - Hyper-V
-> - RSAT-AD-PowerShell module
-> - Storage Replica (only installed for stretched clusters)
+    > [!NOTE]
+    > The wizard will install the following required features for you:
+    > - BitLocker
+    > - Data Center Bridging (for RoCEv2 network adapters)
+    > - Failover Clustering
+    > - File Server (for file-share witness or hosting file shares)
+    > - FS-Data-Deduplication module
+    > - Hyper-V
+    > - RSAT-AD-PowerShell module
+    > - Storage Replica (only installed for stretched clusters)
 
 1. For **Install updates**, if required, click **Install updates**. When complete, click **Next**.
 1. For **Solution updates**, if required, click **Install extension**. When complete, click **Next**.
@@ -89,24 +88,43 @@ Step 1 of the wizard walks you through making sure all prerequisites are met bef
 
 ### Step 2: Networking
 
-Step 2 of the wizard walks you through verifying network adapters, assigning IPv4 addresses, subnet masks, and VLAN ID for each server and creating virtual switches for each server.
+Step 2 of the wizard walks you through verifying network interface adapters (NICs), selecting a management adapter, assigning IP addresses, subnet masks, and VLAN IDs for each server and creating the virtual switches.
+
+It is mandatory to select at least one of the adapters for management purposes, as the wizard requires at least one dedicated physical NIC for cluster management.  Once an adapter is designated for management, it’s excluded from the rest of the wizard workflow.
+
+> [!NOTE]
+> Currently, only DHCP is supported for management adapters.
 
 1. Select **Next: Networking**.
 1. Under **Verify the network adapters**, wait until green checkboxes appear next to each adapter, then select **Next**.
 
 1. For **Select management adapters**, select either one for two management adapters to use for each server and then do the following for each server:
 
-- Select the **Description** checkbox. Note that all adapters are selected and that the wizard may offer a recommendation for you.
-- Unselect the checkboxes for those adapters you don't want used for cluster management.
+    - Select the **Description** checkbox. Note that all adapters are selected and that the wizard may offer a recommendation for you.
+    - Unselect the checkboxes for those adapters you don't want used for cluster management.
 
-> [!NOTE]
-> It is recommended that you reserve the highest-speed network adapters for data traffic and use the lowest-speed adapter for cluster management.
+    > [!NOTE]
+    > It is recommended that you reserve the highest-speed network adapters for data traffic and use the lowest-speed adapter for cluster management.
 
 1. When changes have been made, click **Apply and test**.
-1. Under **Define networks**, make sure each network adapter for each server has a unique IPv4 address, a subnet mask, and a VLAN ID. Hover over each table element and enter or change values as needed. When finished, click **Apply and test**.
-1. Wait until the **Status** column shows **Passed** for each server, then click **Next**.
+1. Under **Define networks**, make sure each network adapter for each server has a unique IP address, a subnet mask, and a VLAN ID. Hover over each table element and enter or change values as needed. When finished, click **Apply and test**.
 
-1. Under **Virtual switch**, change the name  and other configuration settings as needed, then click **Apply and test**. The **Status** column should show **Passed** for each server after the virtual switches have been created.
+    > [!NOTE]
+    > Adapters that don’t support the `VLANID` advanced property won’t accept VLAN IDs.
+
+1. Wait until the **Status** column shows **Passed** for each server, then click **Next**. This step verifies network connectivity between all adapters with the same subnet and VLAN ID. The provided IP addresses are transferred from the physical adapter to the virtual adapters once the virtual switches are created in the next step.
+
+    > [!NOTE]
+    > It may take several minutes to complete depending on the number of adapters configured.
+
+1. Under **Virtual switch**, select one of the following options as applicable. Depending on how many adapters are present, not all options may show up.
+
+    - Create one virtual switch for both Hyper-V and storage use
+    - Create one virtual switch for Hyper-V use only
+    - Create two virtual switches, one for Hyper-V and one for storage use
+    - Don't create a virtual switch
+
+1. Change the name of a switch and other configuration settings as needed, then click **Apply and test**. The **Status** column should show **Passed** for each server after the virtual switches have been created.
 
 ### Step 3: Clustering
 
@@ -154,6 +172,7 @@ Step 5 of the wizard is only applicable if you selected a **Hyperconverged + SDN
 
 1. Select **Next: SDN**.
 1. **[PLACEHOLDER STEPS]**
+1. **Network Controller**
 
 ## Disable CredSSP
 
