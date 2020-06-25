@@ -98,7 +98,7 @@ There are five Hyper-V host settings that can be applied to your cluster.
 
     :::image type="content" source="media/manage-cluster/cluster-settings-numa.png" alt-text="cluster NUMA Spanning screen":::
 
-1. To specify the number of VMs that can be simultaneously moved while running (live migrated), select **Live Migration**, select a number, then specify the following:, select **Live Migration**, select a number, then specify the following:
+1. To specify the number of VMs that can be simultaneously moved while running (live migrated), select **Live Migration**, select a number, then specify the following:
 
    - for **Authentication Protocol**, select either **CredSSP** or **Kerberos**.
 
