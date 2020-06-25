@@ -4,7 +4,7 @@ description: This topic provides guidance on security considerations for the Azu
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 06/25/2020
 ---
 
 # Azure Stack HCI security considerations
@@ -12,8 +12,9 @@ ms.date: 06/23/2020
 >Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
 This topic provides security considerations and recommendations related to the Azure Stack HCI operating system:
-- Part 1 covers basic security tools and technologies to harden the operating system, and protect data and identities to efficiently build a secure foundation for your organization. It includes resources available through the Azure Security Center.
-- Part 2 covers more advanced security considerations to further strengthen the security posture of your organization in these areas.
+- Part 1 covers basic security tools and technologies to harden the operating system, and protect data and identities to efficiently build a secure foundation for your organization.
+- Part 2 covers resources available through the Azure Security Center.
+- Part 3 covers more advanced security considerations to further strengthen the security posture of your organization in these areas.
 
 ## Why are security considerations important?
 Security affects everyone in your organization from upper-level management to the information worker. Inadequate security is a real risk for organizations, as a security breach can potentially disrupt all normal business and bring your organization to a halt. The sooner that you can detect a potential attack, the faster you can mitigate any compromise in security.
@@ -48,7 +49,7 @@ This section discusses how to protect services and virtual machines (VMs) runnin
 ### Protect data
 This section discusses how to use Windows Admin Center to protect data and workloads on the operating system:
 
-- **BitLocker for Storage Spaces** protects data at rest. You can use BitLocker to encrypt the contents of Storage Spaces data volumes on the operating system. Using BitLocker to protect data can help government and other organizations stay compliant with such standards as FIPS 140-2 and HIPAA.
+- **BitLocker for Storage Spaces** protects data at rest. You can use BitLocker to encrypt the contents of Storage Spaces data volumes on the operating system. Using BitLocker to protect data can help organizations stay compliant with government, regional, and industry-specific standards such as FIPS 140-2, GDPR, and HIPAA.
 
     To access BitLocker in Windows Admin Center:
 
@@ -70,7 +71,7 @@ This section discusses how to use Windows Admin Center to protect data and workl
 
     To learn more, see [Overview of file sharing using the SMB 3 protocol in Windows Server](https://docs.microsoft.com/windows-server/storage/file-server/file-server-smb-overview).
 
-- **Windows Defender Antivirus** in Windows Admin Center protects the operating system on clients and servers against viruses, malware, spyware, other threats. To learn more, see [Microsoft Defender Antivirus on Windows Server 2016 and 2019](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-antivirus/microsoft-defender-antivirus-on-windows-server-2016)
+- **Windows Defender Antivirus** in Windows Admin Center protects the operating system on clients and servers against viruses, malware, spyware, and other threats. To learn more, see [Microsoft Defender Antivirus on Windows Server 2016 and 2019](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-antivirus/microsoft-defender-antivirus-on-windows-server-2016).
 
 ### Protect identities
 This section discusses how to use Windows Admin Center to protect privileged identities:
@@ -90,8 +91,9 @@ This section discusses how to use Windows Admin Center to protect privileged ide
     To learn more about installation options for your organization, see [What type of installation is right for you?](https:///windows-server/manage/windows-admin-center/plan/installation-options).
 
 - **CredSSP** is an authentication provider that Windows Admin Center uses in a few cases to pass credentials to machines beyond the specific server you are targeting to manage. Windows Admin Center currently requires CredSSP to:
-    - Manage disaggregated SMB storage in virtual machines.
+    - Create a new cluster.
     - Access the **Updates** tool to use either the Failover clustering or Cluster-Aware Updating features.
+    - Manage disaggregated SMB storage in VMs.
 
     To learn more, see [Does Windows Admin Center use CredSSP?](/windows-server/manage/windows-admin-center/understand/faq#does-windows-admin-center-use-credssp)
 
@@ -103,7 +105,7 @@ This section discusses how to use Windows Admin Center to protect privileged ide
 
     To learn more, see [Manage Servers with Windows Admin Center](/windows-server/manage/windows-admin-center/use/manage-servers).
 
-## Azure Security Center
+## Part 2: Use Azure Security Center
 *Azure Security Center* is a unified infrastructure security management system that strengthens the security posture of your data centers, and provides advanced threat protection across your hybrid workloads in the cloud and on premises. Security Center provides you with tools to assess the security status of your network, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. Security Center performs all of these services at high speed in the cloud with no deployment overhead through auto-provisioning and protection with Azure services.
 
 Security Center protects VMs for both Windows servers and Linux servers by installing the Log Analytics agent on these resources. Azure correlates events that the agents collect into recommendations (hardening tasks) that you perform to make your workloads secure. The hardening tasks based on security best practices include managing and enforcing security policies. You can then track the results and manage compliance and governance over time through Security Center monitoring while reducing the attack surface across all of your resources.
@@ -116,7 +118,7 @@ After registering, access Security Center in Windows Admin Center: On the **All 
 
 To learn more, see [What is Azure Security Center?](https://docs.microsoft.com/azure/security-center/security-center-intro)
 
-## Part 2: Add advanced security
+## Part 3: Add advanced security
 The following sections recommend advanced security tools and technologies to further harden servers running the Azure Stack HCI operating system in your environment.
 
 ### Harden the environment
@@ -126,7 +128,7 @@ The following sections recommend advanced security tools and technologies to fur
 
 - **Microsoft security baselines** are based on security recommendations from Microsoft obtained through partnership with commercial organizations and the US government, such as the Department of Defense. The security baselines include recommended security settings for Windows Firewall, Windows Defender, and many others.
 
-    The security baselines are provided as Group Policy object (GPO) backups that you can import into Active Directory Domain Services (AD DS), and then deploy to domain-joined servers to harden the environment. You can also use Local Script tools to configure standalone (non domain-joined) servers with security baselines. To get started using the security baselines, download the [Microsoft Security Compliance Toolkit 1.0](https://www.microsoft.com/download/details.aspx?id=55319).
+    The security baselines are provided as Group Policy Object (GPO) backups that you can import into Active Directory Domain Services (AD DS), and then deploy to domain-joined servers to harden the environment. You can also use Local Script tools to configure standalone (non domain-joined) servers with security baselines. To get started using the security baselines, download the [Microsoft Security Compliance Toolkit 1.0](https://www.microsoft.com/download/details.aspx?id=55319).
 
     To learn more, see [Microsoft Security Baselines](https://techcommunity.microsoft.com/t5/microsoft-security-baselines/bg-p/Microsoft-Security-Baselines).
 
@@ -139,7 +141,7 @@ The following sections recommend advanced security tools and technologies to fur
 - **Hardening the Hyper-V environment** requires hardening Windows Server running on a VM just as you would harden the operating system running
 on a physical server. Because virtual environments typically have multiple VMs sharing the same physical host, it is imperative to protect both the physical host and the VMs running on it. An attacker who compromises a host can affect multiple VMs with a greater impact on workloads and services. This section discusses the following methods that you can use to harden Windows Server in a Hyper-V environment:
 
-    - **Guarded fabric and shielded VMs** strengthen the security for VMs running in Hyper-V environments by preventing attackers from modify VM files. A *guarded fabric* consists of a Host Guardian Service (HGS) that is typically a cluster of three nodes, one or more guarded hosts, and a set of shielded VMs. The Attestation Service evaluates the validity of hosts requests, while the Key Protection Service determines whether to release keys that the guarded hosts can use to start the shielded VM.
+    - **Guarded fabric and shielded VMs** strengthen the security for VMs running in Hyper-V environments by preventing attackers from modifying VM files. A *guarded fabric* consists of a Host Guardian Service (HGS) that is typically a cluster of three nodes, one or more guarded hosts, and a set of shielded VMs. The Attestation Service evaluates the validity of hosts requests, while the Key Protection Service determines whether to release keys that the guarded hosts can use to start the shielded VM.
 
         To learn more, see [Guarded fabric and shielded VMs overview](https://docs.microsoft.com/windows-server/security/guarded-fabric-shielded-vm/guarded-fabric-and-shielded-vms).
      
