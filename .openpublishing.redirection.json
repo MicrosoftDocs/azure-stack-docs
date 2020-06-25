@@ -116,7 +116,7 @@
     },
     {
       "source_path": "azure-stack/operator/azure-stack-best-practices-automatic-diagnostic-log-collection.md",
-      "redirect_url": "/azure-stack/operator/azure-stack-help-and-support-overview",
+      "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview",
       "redirect_document_id": true
     },
     {
