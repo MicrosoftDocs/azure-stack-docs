@@ -4,7 +4,7 @@ description: This topic provides guidance on how to change languages in the Azur
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 06/25/2020
 ---
 
 # Changing languages in Azure Stack HCI
@@ -20,26 +20,39 @@ This article explains how to change the language in:
 - Microsoft Edge
 - Server Core in the Azure Stack HCI operating system
 
-## Change the language on the management PC running Windows 10
-TBD
+## Change the language in the management PC running Windows 10
+You can install a language pack to use for Windows 10, apps, and websites. You also can change your keyboard language, and set an input language in a language-preference order for websites and apps.
+
+Changing either the language that you use in Windows 10 or the keyboard language does not affect the display language in Windows Admin Center.
+
+   >[!IMPORTANT]
+   > After changing your language in Windows 10, we recommend to set your preferred keyboard language as the default before signing out to avoid potential keyboard input issues.
+
+To learn more, see [Manage the input and display language settings in Windows 10](https://support.microsoft.com/help/4496404/windows-10-manage-the-input-and-display-language).
 
 
 ## Change the language in Windows Admin Center
 TBD
 
 
-## Change the language in Edge
+
+
+## Change the language in Microsoft Edge
+You can add supported languages to Microsoft Edge, and reorder your language preferences in the browser. You also can add a foreign language translator extension to the browser to get translations.
+
+To learn more, see [Microsoft Edge language support](https://docs.microsoft.com/deployedge/microsoft-edge-supported-languages).
+
+## Change the language in Server Core
 TBD
 
 
-## Change the language in Server Core 
-TBD
+
 
 <!---Example note format.--->
    >[!NOTE]
    > TBD.
 
-<!---Example figure format, but use new standard in other topcis.--->
+<!---Example figure format, but use new standard in other topics.--->
 <!--- ![Deployment options for maximizing capacity](media/choose-drives/maximizing-capacity.png)--->
 
 
