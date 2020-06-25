@@ -2,8 +2,8 @@
 title: Troubleshoot cluster validation reporting
 description: Troubleshoot cluster validation reporting and validate QoS settings configuration for Azure Stack HCI clusters
 author: khdownie
-ms.topic: article
-ms.date: 06/17/2020
+ms.topic: troubleshooting
+ms.date: 06/25/2020
 ms.author: v-kedow
 ms.reviewer: JasonGerend
 ---
