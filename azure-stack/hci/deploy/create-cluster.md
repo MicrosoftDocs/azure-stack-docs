@@ -43,7 +43,9 @@ Here are the major steps in the Create Cluster wizard:
 1. **Networking** - assigns and configures network adapters and creates the virtual switches for each server.
 1. **Clustering** - validates the cluster is setup correctly. For stretched clusters, also sets up up the two sites.
 1. **Storage** - Configures Storage Spaces Direct and virtual storage.
-1. **SDN** (optional) - configures software-defined networking.
+
+> [!NOTE]
+> Software Defined Networking (SDN) is not supported for this release of the wizard.
 
 After the wizard completes, you will then setup the witness. For stretched clusters, you will also configure Storage Replica and replication between your sites.
 
@@ -73,6 +75,7 @@ Step 1 of the wizard walks you through making sure all prerequisites are met bef
 
     > [!NOTE]
     > The wizard will install the following required features for you:
+
     > - BitLocker
     > - Data Center Bridging (for RoCEv2 network adapters)
     > - Failover Clustering
@@ -165,14 +168,6 @@ Congratulations, you have created a cluster.
 
 > [!NOTE]
 > After the cluster is created, it can take time for the cluster name to be replicated across your domain. If resolving the cluster isn't successful after some time, in most cases you can substitute the computer name of a server node in the the cluster instead of the cluster name.
-
-### Step 5 (Optional): SDN
-
-Step 5 of the wizard is only applicable if you selected a **Hyperconverged + SDN** cluster type at the start of the wizard. This step will walk you through setting up software-defined networking (SDN) for your cluster.
-
-1. Select **Next: SDN**.
-1. **[PLACEHOLDER STEPS]**
-1. **Network Controller**
 
 ## Disable CredSSP
 
