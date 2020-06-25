@@ -4,10 +4,10 @@ description: Learn the steps you need to take with the update to AKS engine on A
 author: mattbriggs
 
 ms.topic: article
-ms.date: 06/19/2020
+ms.date: 06/24/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 06/19/2020
+ms.lastreviewed: 06/24/2020
 
 # Intent: As an Azure Stack Hub user, I would like to update a Kubernetes cluster using the AKS engine on a custom virtual network so that I can deliver my service in an environment that extends my data center or in a hybrid cloud solution with my cluster in Azure Stack Hub and Azure.
 # Keywords: update ASK engine Azure Stack Hub
@@ -80,8 +80,8 @@ New versions of these are available with this update:
 
 | Azure Stack Hub version | AKS engine version |
 | ----------------------------- | ------------------------ |
-| 1910 | 0.43.0 |
-| 2002 | 0.43.1, 0.51.0 |
+| 1910 | 0.43.0 , 0.43.1 |
+| 2002 | 0.48.0, 0.51.0 |
 
 ## Kubernetes version upgrade path in AKS engine 0.51.0
 
