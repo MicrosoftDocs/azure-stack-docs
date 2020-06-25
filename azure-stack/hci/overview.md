@@ -1,7 +1,7 @@
 ---
 title: Azure Stack HCI solutions overview
 description: An overview of Azure Stack HCI solutions.
-ms.topic: article
+ms.topic: overview
 author: jasongerend
 ms.author: jgerend
 ms.localizationpriority: medium
@@ -9,7 +9,6 @@ ms.date: 11/04/2019
 
 # Intent: As an Azure Stack operator, I want an overview of HCI solutions so I can run VMs on-premises and connect to Azure with an HCI solution.
 # Keyword: HCI solutions azure stack
-
 ---
 
 # Azure Stack HCI solutions overview
