@@ -3,11 +3,11 @@ title: Azure Stack HCI deployment overview
 description: An overview of the Azure Stack HCI deployment process.
 author: khdownie
 ms.author: v-kedow
-ms.topic: article
-ms.date: 06/05/2020
+ms.topic: overview
+ms.date: 06/25/2020
 ---
 
-# Azure Stack HCI deployment overview
+# What Is the Deployment Process for Azure Stack HCI?
 
 > Applies to: Azure Stack HCI, version 20H2
 
