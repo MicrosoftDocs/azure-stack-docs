@@ -3,13 +3,13 @@ title: Azure Stack HCI billing and payment
 description: How billing and payment works in Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
-ms.topic: article
-ms.date: 05/18/2020
+ms.topic: conceptual
+ms.date: 06/26/2020
 ---
 
 # Azure Stack HCI billing and payment
 
-> Applies to: Azure Stack HCI
+> Applies to: Azure Stack HCI, version 20H2
 
 Azure Stack HCI is an Azure service that goes on your Azure subscription tab just like any other Azure service. No traditional on-premises software license is required, although guest virtual machines (VMs) may require individual operating system licensing. Currencies and discounts are handled centrally by the Azure Commerce billing platform, and the customer gets one unified, itemized bill at the end of the month.
 
