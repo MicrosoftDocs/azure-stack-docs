@@ -5,7 +5,7 @@ author: v-dasis
 ms.topic: article
 ms.type: how-to
 ms.prod: 
-ms.date: 06/22/2020
+ms.date: 06/26/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -239,6 +239,13 @@ OK, let's begin:
 ## Verify replication (stretched cluster)
 
 For stretched clusters, you should verify successful data replication between sites before deploying VMs and other workloads. See Step 9 in [Create Azure Stack HCI cluster using PowerShell] for more information.
+
+## Remove a cluster
+
+If you wish a remove an existing cluster, simply do this:
+
+1. Go to the Windows Admin Center main page.
+1. Hover to the left of the cluster name, click the checkbox, then select **Remove**.
 
 ## Next steps
 
