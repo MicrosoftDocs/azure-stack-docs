@@ -38,7 +38,7 @@ To change the language in Windows Admin Center:
 1. Expand the **Language** drop-down list to select your preferred language, and then expand the **Regional formate** drop-down list to select a different region if needed.
 1. Select **Save and reload**.
 
-    :::image type="content" source="media/language-region.png" alt-text="The Language / Region page in Windows Admin Center":::
+    :::image type="content" source="./media/language-region.png" alt-text="The Language / Region page in Windows Admin Center":::
 
 To learn more, see [Windows Admin Center Settings](https://docs.microsoft.com/windows-server/manage/windows-admin-center/configure/settings).
 
@@ -53,11 +53,18 @@ There are a couple ways to change the language in Server Core of the Azure Stack
 <!---Point to Dan's cluster creation topic using To learn more prompt here?.--->
 
 To change the language in Windows Server Core:
-1. Open an Administrator command prompt, type control `intl.cpl` and press Enter.
+1. Open an Administrator command prompt, type `control intl.cpl` and press Enter.
 
-    The **Regional Settings** Control Panel tool displays.
+    The **Region** Control Panel tool displays.
 
-1. Expand the **Format** tab drop-down list to change the Windows display language.
+1. Select the **Keyboards and Languages** tab, and then select the **Change keyboards...** button.
+1. On the **Formats** tab, expand the **Format:** drop-down list to select a language, and then select **OK**.
+
+    :::image type="content" source="./media/change-language-control-panel.png" alt-text="The Change Language Control Panel in Server Core":::
+
+
+1. Select the **Keyboards and Languages** tab, and then select the **Change keyboards...** button.
+
 
 Select language preferences->Language->Add a language
 
