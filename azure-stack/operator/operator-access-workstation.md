@@ -23,7 +23,7 @@ Due to the stateless nature of the solution, there are no updates for the OAW VM
 
 Please be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](https://review.docs.microsoft.com/legal/azure-stack-hub/azure-stack-operator-access-workstation-legal-terms?branch=master) prior to download.
 
-You can download the necessary files to create the OAW VM for the preview from [**here**](https://aka.ms/OAWDownload).
+To get the files to create the OAW VM for the preview, [**download here**](https://aka.ms/OAWDownload).
 
 The following user account policy is applied to the OAW VM:
 
