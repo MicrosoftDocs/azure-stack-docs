@@ -4,7 +4,7 @@ description: Learn how to deploy a VM using a password stored in an Azure Stack 
 author: mattbriggs
 
 ms.topic: conceptual
-ms.date: 1/22/2020
+ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/14/2020
