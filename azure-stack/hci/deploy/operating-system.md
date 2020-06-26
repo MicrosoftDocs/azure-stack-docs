@@ -3,8 +3,8 @@ title: Deploy the Azure Stack HCI operating system
 description: This article discusses different ways to deploy the Azure Stack HCI operating system, and then use Windows Admin Center to connect to your servers. Reference to related guidance on creating a server cluster is included, as well as optional steps to get the latest Windows updates and firmware for your servers.
 author: JohnCobb1
 ms.author: v-johcob 
-ms.topic: article
-ms.date: 06/15/2020
+ms.topic: tutorial
+ms.date: 06/26/2020
 ---
 
 # Deploy the Azure Stack HCI operating system
@@ -61,6 +61,9 @@ To manually install the Azure Stack HCI operating system:
 1. On the Applicable notices and license terms page, review the license terms, select the **I accept the license terms** checkbox, and then select **Next**.
 1. On the Which type of installation do you want? page, select **Custom: Install the newer version of Azure Stack HCI only (advanced)**.
 
+    > [!NOTE]
+    > Upgrade installations are not supported in this release of the operating system.
+
     :::image type="content" source="../media/operating-system/azure-stack-hci-install-which-type.png" alt-text="The installation type option page of the Install Azure Stack HCI wizard.":::
 
 1. On the Where do you want to install Azure Stack HCI? page, either confirm the drive location where you want to install the operating system or update it, and then select **Next**.
@@ -79,7 +82,6 @@ To manually install the Azure Stack HCI operating system:
     :::image type="content" source="../media/operating-system/azure-stack-hci-change-admin-password.png" alt-text="The change password prompt.":::
 
 1. At the Enter new credential for Administrator prompt, enter a new password, enter it again to confirm it, and then press Enter.
-
 1. At the Your password has been changed confirmation prompt, press Enter.
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-admin-password-changed.png" alt-text="The changed password confirmation prompt":::
