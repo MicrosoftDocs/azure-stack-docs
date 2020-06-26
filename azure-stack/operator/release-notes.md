@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 06/09/2020
+ms.date: 06/26/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
@@ -94,11 +94,10 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Added additional fields to the CEF payload of the syslog messages to report the source IP and the account used to connect to the privileged endpoint and the recovery endpoint. See [Integrate Azure Stack Hub with monitoring solutions using syslog forwarding](azure-stack-integrate-security.md) for details.
 - Added Windows Defender events (Event IDs 5001, 5010, 5012) to the list of events emitted via the syslog client.
 
-
 ### Changes
 
 - Removed the actions to stop, shut down, and restart an infrastructure role instance from the admin portal. The corresponding APIs have also been removed in the Fabric Resource Provider. The following PowerShell cmdlets in the admin RM module and AZ preview for Azure Stack Hub no longer work: **Stop-AzsInfrastructureRoleInstance**, **Disable-InfrastructureRoleInstance**, and **Restart-InfrastructureRoleInstance**. Note that the above cmdlets will be removed from the next admin AZ module release for Azure Stack Hub.
- 
+
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
@@ -148,7 +147,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 The 2005 release of Azure Stack Hub must be applied on the 2002 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.2002.24.85](https://support.microsoft.com/help/4558081)
+- [Azure Stack Hub hotfix 1.2002.44.126](https://support.microsoft.com/help/4570099)
 
 ### After successfully applying the 2005 update
 
