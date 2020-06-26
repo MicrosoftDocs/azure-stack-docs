@@ -21,7 +21,7 @@ The OAW VM should be created when an operator performs a new task. After a requi
 
 Due to the stateless nature of the solution, there are no updates for the OAW VM. For each milestone, a new version of the VM image file will be released. Use the latest version to create a new OAW VM. The image file is based on the latest Windows Server 2019 version. After installation, you can apply updates, including any critical updates, using Windows Update. 
 
-Please be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](https://review.docs.microsoft.com/legal/azure-stack-hub/azure-stack-operator-access-workstation-legal-terms?branch=master) prior to download.
+Please be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](https://docs.microsoft.com/legal/azure-stack-hub/azure-stack-operator-access-workstation-legal-terms) prior to download.
 
 To get the files to create the OAW VM for the preview, [**download here**](https://aka.ms/OAWDownload).
 
