@@ -38,7 +38,7 @@ To change the language in Windows Admin Center:
 1. Expand the **Language** drop-down list to select your preferred language, and then expand the **Regional formate** drop-down list to select a different region if needed.
 1. Select **Save and reload**.
 
-    :::image type="content" source="../media/language-region.png" alt-text="The Language / Region page in Windows Admin Center":::
+    :::image type="content" source="media/language-region.png" alt-text="The Language / Region page in Windows Admin Center":::
 
 To learn more, see [Windows Admin Center Settings](https://docs.microsoft.com/windows-server/manage/windows-admin-center/configure/settings).
 
@@ -60,7 +60,7 @@ To change the language in Windows Server Core:
 1. Select the **Keyboards and Languages** tab, and then select the **Change keyboards...** button.
 1. On the **Formats** tab, expand the **Format:** drop-down list to select a language, and then select **OK**.
 
-    :::image type="content" source="../media/change-language-control-panel.png" alt-text="The Change Language Control Panel in Server Core":::
+    :::image type="content" source="media/change-language-control-panel.png" alt-text="The Change Language Control Panel in Server Core":::
 
 
 1. Select the **Keyboards and Languages** tab, and then select the **Change keyboards...** button.
