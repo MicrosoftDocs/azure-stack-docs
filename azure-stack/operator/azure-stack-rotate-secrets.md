@@ -17,9 +17,9 @@ monikerRange: '>=azs-1803'
 
 # Rotate secrets in Azure Stack Hub
 
-*These instructions apply only to Azure Stack Hub Integrated Systems version 1803 and Later. Don't attempt secret rotation on pre-1802 Azure Stack Hub Versions*
+*These instructions apply only to Azure Stack Hub Integrated Systems version 1803 and Later. Don't attempt secret rotation on pre-1803 Azure Stack Hub Versions*
 
-Secrets help you maintain secure communication between the Azure Stack Hub infrastructure resources and services.
+Secrets that are rotated regularly help you maintain secure communication between the Azure Stack Hub infrastructure resources and services.
 
 ## Overview
 
@@ -102,7 +102,7 @@ For rotation of internal and external secrets:
 
 3. Operators may notice alerts open and automatically close during rotation of Azure Stack Hub secrets.  This behavior is expected and the alerts can be ignored. Operators can verify the validity of these alerts by running **Test-AzureStack**.  For operators using System Center Operations Manager to monitor Azure Stack Hub systems, placing a system in maintenance mode will prevent these alerts from reaching their ITSM systems but will continue to alert if the Azure Stack Hub system becomes unreachable.
 
-For for rotation of external secrets only:
+For rotation of external secrets, complete these additional steps:
 
 1. Run **[Test-AzureStack](azure-stack-diagnostic-test.md)** and confirm all test outputs are healthy before rotating secrets.
 2. Prepare a new set of replacement external certificates:
@@ -113,11 +113,14 @@ For for rotation of external secrets only:
     - Make sure the PFX encryption is **TripleDES-SHA1**. If you run into an issue, see [Fix common issues with Azure Stack Hub PKI certificates](azure-stack-remediate-certs.md#pfx-encryption).
 3. Store a backup to the certificates used for rotation in a secure backup location. If your rotation runs and then fails, replace the certificates in the file share with the backup copies before you rerun the rotation. Keep backup copies in the secure backup location.
 4. Create a fileshare you can access from the ERCS VMs. The file share must be  readable and writable for the **CloudAdmin** identity.
-5. Open a PowerShell ISE console from a computer where you have access to the fileshare. Navigate to your fileshare.
-6. Run **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)** to create the required directories for your external certificates. The CertDirectoryMaker script will create a folder structure that will adhere to: ***.\Certificates\AAD*** or ***.\Certificates\ADFS***, depending on the identity provider used for Azure Stack Hub.
+5. Open a PowerShell ISE console from a computer where you have access to the fileshare. Navigate to your fileshare, where you create directories to place your external certificates.
+6. Run **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)**. The CertDirectoryMaker script will create a folder structure that will adhere to: ***.\Certificates\AAD*** or ***.\Certificates\ADFS***, depending on the identity provider used for Azure Stack Hub. Your folder structure must begin with a **\\Certificates** folder, followed by ONLY an **\\AAD** or **\\ADFS** folder. All additional subdirectories are contained within the preceding structure. For example:
+    - File share = **\\\\\<IPAddress>\\\<ShareName>**
+    - Certificate root older for Azure AD provider = **\\Certificates\AAD**
+    - Full path = **\\\\\<IPAddress>\\\<ShareName>\Certificates\AAD**
 
     > [!IMPORTANT]
-    > Your folder structure must end with **AAD** or **ADFS** folders, and all subdirectories are within this structure. Otherwise **Start-SecretRotation** will return the following error:
+    > **Start-SecretRotation** will perform validations to ensure a compliant folder structure, per step #6. A folder structure that is not compliant will throw the following error:
     >
     > ```powershell
     > Cannot bind argument to parameter 'Path' because it is null.
@@ -125,22 +128,13 @@ For for rotation of external secrets only:
     > + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Test-Certificate
     > + PSComputerName        : xxx.xxx.xxx.xxx
     > ```
-    >
-    > The error message indicates a problem accessing your fileshare, but in reality it's the folder structure that's being enforced. More information can be found in the Microsoft.AzureStack.ReadinessChecker [PublicCertHelper module](https://www.powershellgallery.com/packages/Microsoft.AzureStack.ReadinessChecker/1.1811.1101.1/Content/CertificateValidation%5CPublicCertHelper.psm1).
-    >
-    > It's also important that your fileshare folder structure begins with a **Certificates** folder, otherwise it will also fail on validation.
-    > The fileshare mount should look like **\\\\\<IPAddress>\\\<ShareName>\\** and it should contain folder **Certificates\AAD** or **Certificates\ADFS** inside.
-    >
-    > For example:
-    > - Fileshare = **\\\\\<IPAddress>\\\<ShareName>\\**
-    > - CertFolder = **Certificates\AAD**
-    > - FullPath = **\\\\\<IPAddress>\\\<ShareName>\Certificates\AAD**
+    > More information can be found in the Microsoft.AzureStack.ReadinessChecker [PublicCertHelper module](https://www.powershellgallery.com/packages/Microsoft.AzureStack.ReadinessChecker/1.1811.1101.1/Content/CertificateValidation%5CPublicCertHelper.psm1).
 
 ## Rotate external secrets
 
 Complete the following steps to rotate external secrets:
 
-1. Within the **\Certificates\\\<IdentityProvider>** directory created in the prerequisites section, place the new set of replacement external certificates in the directory structure according to the format outlined in the **Mandatory certificates** section of the [Azure Stack Hub PKI certificate requirements](azure-stack-pki-certs.md#mandatory-certificates). 
+1. Place the new set of replacement external certificates in the **\Certificates\\\<IdentityProvider>** directory created in the prerequisites section. Be sure to follow the format outlined in the **Mandatory certificates** section of the [Azure Stack Hub PKI certificate requirements](azure-stack-pki-certs.md#mandatory-certificates). 
 
     Here's an example of a folder structure for the Azure AD Identity Provider:
     ```powershell
@@ -208,12 +202,9 @@ Complete the following steps to rotate external secrets:
     - Runs **[Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/Invoke-Command?view=powershell-5.1)**, passing the PEP session variable as the **Session** parameter.
 
     - Runs **Start-SecretRotation** in the PEP session, using the following parameters:
-        - **PfxFilesPath**  
-        Specify the network path to your Certificates directory created earlier.  
-        - **PathAccessCredential**  
-        A PSCredential object for credentials to the share.
-        - **CertificatePassword**  
-        A secure string of the password used for all of the pfx certificate files created.
+        - **PfxFilesPath**: The network path to your Certificates directory created earlier.  
+        - **PathAccessCredential**: THe PSCredential object for credentials to the share.
+        - **CertificatePassword**: A secure string of the password used for all of the pfx certificate files created.
 
 3. Wait while the secrets rotate. External secret rotation takes approximately one hour. When secret rotation successfully completes, your console will display **ActionPlanInstanceID ... CurrentStatus: Completed**, followed by a **DONE**.
 
@@ -233,7 +224,7 @@ Complete the following steps to rotate external secrets:
 > [!Note]
 > Internal secret rotation should only be done if you suspect an internal secret has been compromised by a malicious entity, or if you've received an alert (on build 1811 or later) indicating internal certificates are nearing expiration. Azure Stack Hub environments on pre-1811 versions may see alerts for pending internal certificate or secret expirations. These alerts are inaccurate and should be ignored without running internal secret rotation. Inaccurate internal secret expiration alerts are a known issue that's resolved in 1811. Internal secrets won't expire unless the environment has been active for two years.
 
-Reference the [Rotate external secrets](#rotate-external-secrets) section for an example of a PowerShell script you can adapt, and details on how it works. You can use this same script, by making a few changes to run the following steps:
+Reference the PowerShell script in step 2 of [Rotate external secrets](#rotate-external-secrets). The script provides an example you can adapt for internal secret rotation, by making a few changes to run the following steps:
 
 1. Create a PowerShell session with the [Privileged endpoint](azure-stack-privileged-endpoint.md).
 2. In the Privileged Endpoint session, run the `Start-SecretRotation` command using the `-Internal` switch.
