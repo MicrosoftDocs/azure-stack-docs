@@ -10,7 +10,7 @@ ms.author: inhenkel
 ms.lastreviewed: 12/13/2019
 monikerRange: '>=azs-1803'
 
-# Intent: As an Azure Stack operator, I want to rotate secrets in Azure Stack.
+# Intent: As an Azure Stack Hub operator, I want to rotate secrets in Azure Stack Hub.
 # Keyword: rotate secrets azure stack
 
 ---
@@ -27,7 +27,7 @@ Azure Stack Hub uses various secrets to maintain secure communication between th
 
 ### Internal vs external secrets
 
-Beginning with Azure Stack Hub release 1811, secret rotation has been separated for internal and external certificates:
+Starting with release 1811, secret rotation is separated for internal and external certificates:
 
 - **Internal secrets**: Certificates, passwords, secure strings, and keys used by the Azure Stack Hub infrastructure without intervention of the Azure Stack Hub Operator.
 
@@ -87,15 +87,14 @@ Azure Stack Hub supports secret rotation with external certificates from a new C
 
 ## Prerequisites
 
-> [!IMPORTANT]
-> For pre-1811 versions: If secret rotation has already been performed, you must update to version 1811 or later before you perform secret rotation again. Secret Rotation must be executed via the [Privileged Endpoint](azure-stack-privileged-endpoint.md) and requires Azure Stack Hub Operator credentials. If you don't know whether secret rotation has been run on your environment, update to 1811 before performing secret rotation.
-
 For rotation of internal and external secrets:
 
 1. It's highly recommended you update your Azure Stack Hub instance to the latest version.
 
-    > [!Note]
-    > For pre-1811 versions, you don't need to rotate secrets to add extension host certificates. You should follow the instructions in the article [Prepare for extension host for Azure Stack Hub](azure-stack-extension-host-prepare.md) to add extension host certificates.
+    > [!IMPORTANT]
+    > For pre-1811 versions:
+    > - If secret rotation has already been performed, you must update to version 1811 or later before you perform secret rotation again. Secret Rotation must be executed via the [Privileged Endpoint](azure-stack-privileged-endpoint.md) and requires Azure Stack Hub Operator credentials. If you don't know whether secret rotation has been run on your environment, update to 1811 before performing secret rotation.
+    > - You don't need to rotate secrets to add extension host certificates. You should follow the instructions in the article [Prepare for extension host for Azure Stack Hub](azure-stack-extension-host-prepare.md) to add extension host certificates.
 
 2. Notify your users of any maintenance operations. Schedule normal maintenance windows, as much as possible,  during non-business hours. Maintenance operations may affect both user workloads and portal operations.
 
@@ -113,7 +112,7 @@ For rotation of external secrets, complete these additional steps:
 3. Store a backup to the certificates used for rotation in a secure backup location. If your rotation runs and then fails, replace the certificates in the file share with the backup copies before you rerun the rotation. Keep backup copies in the secure backup location.
 4. Create a fileshare you can access from the ERCS VMs. The file share must be  readable and writable for the **CloudAdmin** identity.
 5. Open a PowerShell ISE console from a computer where you have access to the fileshare. Navigate to your fileshare, where you create directories to place your external certificates.
-6. Run **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)**. The CertDirectoryMaker script will create a folder structure that will adhere to: ***.\Certificates\AAD*** or ***.\Certificates\ADFS***, depending on the identity provider used for Azure Stack Hub. Your folder structure must begin with a **\\Certificates** folder, followed by ONLY an **\\AAD** or **\\ADFS** folder. All additional subdirectories are contained within the preceding structure. For example:
+6. Run **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)**. The CertDirectoryMaker script will create a folder structure that adheres to ***.\Certificates\AAD*** or ***.\Certificates\ADFS***, depending on your identity provider. Your folder structure must begin with a **\\Certificates** folder, followed by ONLY an **\\AAD** or **\\ADFS** folder. All additional subdirectories are contained within the preceding structure. For example:
     - File share = **\\\\\<IPAddress>\\\<ShareName>**
     - Certificate root older for Azure AD provider = **\\Certificates\AAD**
     - Full path = **\\\\\<IPAddress>\\\<ShareName>\Certificates\AAD**
@@ -138,45 +137,45 @@ Complete the following steps to rotate external secrets:
     Here's an example of a folder structure for the Azure AD Identity Provider:
     ```powershell
         <ShareName>
-        │   │
-        │   └───Certificates
-        │         └───AAD
-        │             ├───ACSBlob
-        │             │       <CertName>.pfx
-        │             │
-        │             ├───ACSQueue
-        │             │       <CertName>.pfx
-        │             │
-        │             ├───ACSTable
-        │             │       <CertName>.pfx
-        │             │
-        │             ├───Admin Extension Host
-        │             │       <CertName>.pfx
-        │             │
-        │             ├───Admin Portal
-        │             │       <CertName>.pfx
-        │             │
-        │             ├───ARM Admin
-        │             │       <CertName>.pfx
-        │             │
-        │             ├───ARM Public
-        │             │       <CertName>.pfx
-        │             │
-        │             ├───KeyVault
-        │             │       <CertName>.pfx
-        │             │
-        │             ├───KeyVaultInternal
-        │             │       <CertName>.pfx
-        │             │
-        │             ├───Public Extension Host
-        │             │       <CertName>.pfx
-        │             │
-        │             └───Public Portal
-        │                     <CertName>.pfx
+            │
+            └───Certificates
+                  └───AAD
+                      ├───ACSBlob
+                      │       <CertName>.pfx
+                      │
+                      ├───ACSQueue
+                      │       <CertName>.pfx
+                      │
+                      ├───ACSTable
+                      │       <CertName>.pfx
+                      │
+                      ├───Admin Extension Host
+                      │       <CertName>.pfx
+                      │
+                      ├───Admin Portal
+                      │       <CertName>.pfx
+                      │
+                      ├───ARM Admin
+                      │       <CertName>.pfx
+                      │
+                      ├───ARM Public
+                      │       <CertName>.pfx
+                      │
+                      ├───KeyVault
+                      │       <CertName>.pfx
+                      │
+                      ├───KeyVaultInternal
+                      │       <CertName>.pfx
+                      │
+                      ├───Public Extension Host
+                      │       <CertName>.pfx
+                      │
+                      └───Public Portal
+                              <CertName>.pfx
 
     ```
 
-2. Use the following PowerShell script to rotate the secrets. The script requires access to a Privileged EndPoint (PEP) session. The PEP is accessed through a remote PowerShell session on the virtual machine (VM) that hosts the PEP. If you're using an integrated system, there are three instances of the PEP, each running inside a VM (Prefix-ERCS01, Prefix-ERCS02, or Prefix-ERCS03) on different hosts for resiliency. If you're using the ASDK, this VM is named AzS-ERCS01. 
+2. Use the following PowerShell script to rotate the secrets. The script requires access to a Privileged EndPoint (PEP) session. The PEP is accessed through a remote PowerShell session on the virtual machine (VM) that hosts the PEP. If you're using an integrated system, there are three instances of the PEP, each running inside a VM (Prefix-ERCS01, Prefix-ERCS02, or Prefix-ERCS03) on different hosts. If you're using the ASDK, this VM is named AzS-ERCS01. Update the `<placeholder>` values before running:
 
     ```powershell
     # Create a PEP Session
@@ -205,7 +204,7 @@ Complete the following steps to rotate external secrets:
         - **PathAccessCredential**: THe PSCredential object for credentials to the share.
         - **CertificatePassword**: A secure string of the password used for all of the pfx certificate files created.
 
-3. Wait while the secrets rotate. External secret rotation takes approximately one hour. When secret rotation successfully completes, your console will display **ActionPlanInstanceID ... CurrentStatus: Completed**, followed by a **DONE**.
+3. External secret rotation takes approximately one hour. After successful completion, your console will display **ActionPlanInstanceID ... CurrentStatus: Completed**, followed by a **DONE**. Remove your certificates from the share created in the prerequisites section and store them in their secure backup location.
 
     > [!Note]
     > If secret rotation fails, follow the instructions in the error message and re-run **Start-SecretRotation** with the **-ReRun** parameter.
@@ -216,12 +215,10 @@ Complete the following steps to rotate external secrets:
     >
     >Contact support if you experience repeated secret rotation failures.
 
-4. After successful completion of secret rotation, remove your certificates from the share created in the prerequisites section and store them in their secure backup location.
-
 ## Rotate internal secrets
 
 > [!Note]
-> Internal secret rotation should only be done if you suspect an internal secret has been compromised by a malicious entity, or if you've received an alert (on build 1811 or later) indicating internal certificates are nearing expiration. Azure Stack Hub environments on pre-1811 versions may see alerts for pending internal certificate or secret expirations. These alerts are inaccurate and should be ignored without running internal secret rotation. Inaccurate internal secret expiration alerts are a known issue that's resolved in 1811. Internal secrets won't expire unless the environment has been active for two years.
+> Internal secret rotation should only be done if you suspect an internal secret has been compromised by a malicious entity, or if you've received an alert (on build 1811 or later) indicating internal certificates are nearing expiration. Pre-1811 versions may see alerts for pending internal certificate or secret expirations. These alerts are inaccurate and should be ignored. Inaccurate internal secret expiration alerts are a known issue resolved in 1811. Internal secrets won't expire unless the environment has been active for two years.
 
 Reference the PowerShell script in step 2 of [Rotate external secrets](#rotate-external-secrets). The script provides an example you can adapt for internal secret rotation, by making a few changes to run the following steps:
 
@@ -229,9 +226,9 @@ Reference the PowerShell script in step 2 of [Rotate external secrets](#rotate-e
 2. In the Privileged Endpoint session, run the `Start-SecretRotation` command using the `-Internal` switch.
 
     > [!Note]
-    > Azure Stack Hub environments on pre-1811 versions won't require the **-Internal** flag. **Start-SecretRotation** will rotate only internal secrets.
+    > Pre-1811 versions don't require the **-Internal** flag. 
 
-3. Wait while your secrets rotate. When secret rotation successfully completes, your console will display **ActionPlanInstanceID ... CurrentStatus: Completed**, followed by a **DONE**
+3. After successful completion, your console will display **ActionPlanInstanceID ... CurrentStatus: Completed**, followed by a **DONE**
 
     > [!Note]
     > If secret rotation fails, follow the instructions in the error message and rerun **Start-SecretRotation** with the  **-Internal** and **-ReRun** parameters.  
