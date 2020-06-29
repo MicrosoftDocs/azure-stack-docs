@@ -105,16 +105,16 @@ Completing the secret rotation steps in the following sections will resolve thes
     > [!Note]
     > The next steps only apply when rotating Azure Stack Hub external secrets.
 
-4. Run **[Test-AzureStack](azure-stack-diagnostic-test.md)** and confirm all test outputs are healthy before rotating secrets.
-5. Prepare a new set of replacement external certificates:
+3. Run **[Test-AzureStack](azure-stack-diagnostic-test.md)** and confirm all test outputs are healthy before rotating secrets.
+4. Prepare a new set of replacement external certificates:
     - The new set must match the certificate specifications outlined in the [Azure Stack Hub PKI certificate requirements](azure-stack-pki-certs.md). 
     - You can generate a certificate signing request (CSR) for purchasing or creating new certificates using the steps outlined in [Generate PKI Certificates](azure-stack-get-pki-certs.md) and prepare them for use in your Azure Stack Hub environment using the steps in [Prepare Azure Stack Hub PKI Certificates](azure-stack-prepare-pki-certs.md). 
     - Be sure to validate the certificates you prepare with the steps outlined in [Validate PKI Certificates](azure-stack-validate-pki-certs.md)- Make sure there are no special characters in the password, like `*` or `)`.
     - Make sure the PFX encryption is **TripleDES-SHA1**. If you run into an issue, see [Fix common issues with Azure Stack Hub PKI certificates](azure-stack-remediate-certs.md#pfx-encryption).
-7. Store a backup to the certificates used for rotation in a secure backup location. If your rotation runs and then fails, replace the certificates in the file share with the backup copies before you rerun the rotation. Keep backup copies in the secure backup location.
-8. Create a fileshare you can access from the ERCS VMs. The file share must be  readable and writable for the **CloudAdmin** identity.
-9. Open a PowerShell ISE console from a computer where you have access to the fileshare. Navigate to your fileshare.
-10. Run **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)** to create the required directories for your external certificates. The CertDirectoryMaker script will create a folder structure that will adhere to: ***.\Certificates\AAD*** or ***.\Certificates\ADFS***, depending on the identity provider used for Azure Stack Hub.
+5. Store a backup to the certificates used for rotation in a secure backup location. If your rotation runs and then fails, replace the certificates in the file share with the backup copies before you rerun the rotation. Keep backup copies in the secure backup location.
+6. Create a fileshare you can access from the ERCS VMs. The file share must be  readable and writable for the **CloudAdmin** identity.
+7. Open a PowerShell ISE console from a computer where you have access to the fileshare. Navigate to your fileshare.
+8. Run **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)** to create the required directories for your external certificates. The CertDirectoryMaker script will create a folder structure that will adhere to: ***.\Certificates\AAD*** or ***.\Certificates\ADFS***, depending on the identity provider used for Azure Stack Hub.
 
     > [!IMPORTANT]
     > Your folder structure must end with **AAD** or **ADFS** folders, and all subdirectories are within this structure. Otherwise **Start-SecretRotation** will return the following error:
@@ -140,7 +140,7 @@ Operators may notice alerts open and automatically close during rotation of Azur
 
 ## Rotate external secrets
 
-To rotate external secrets:
+Follow these steps to rotate external secrets:
 
 1. Within the newly created **\Certificates\\\<IdentityProvider>** directory created in the prerequisites section, place the new set of replacement external certificates in the directory structure according to the format outlined in the **Mandatory certificates** section of the [Azure Stack Hub PKI certificate requirements](azure-stack-pki-certs.md#mandatory-certificates).
 
@@ -185,57 +185,50 @@ To rotate external secrets:
 
     ```
 
-2. Use the following PowerShell script to rotate the secrets. The script will:
-
-  - Create a PowerShell Session with the [Privileged endpoint](azure-stack-privileged-endpoint.md) using the **CloudAdmin** account and store the sessions as a variable. You'll use this variable as the parameter in the next step. 
-
-    > [!IMPORTANT]  
-    > Don't enter the session. Store the session as a variable.
-
-3. Run **[Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/Invoke-Command?view=powershell-5.1)**. Pass your privileged endpoint PowerShell session variable as the **Session** parameter.
-
-4. Run **Start-SecretRotation** with the following parameters:
-    - **PfxFilesPath**  
-    Specify the network path to your Certificates directory created earlier.  
-    - **PathAccessCredential**  
-    A PSCredential object for credentials to the share.
-    - **CertificatePassword**  
-    A secure string of the password used for all of the pfx certificate files created.
-
-5. Wait while your secrets rotate. External secret rotation takes approximately one hour.
-
-    When secret rotation successfully completes, your console will display **ActionPlanInstanceID ... CurrentStatus: Completed**, followed by a **DONE**.
-
-    > [!Note]
-    > If secret rotation fails, follow the instructions in the error message and re-run **Start-SecretRotation** with the **-ReRun** parameter.
+2. Use the following PowerShell script to rotate the secrets. The script requires access to a Privileged EndPoint (PEP) session. You access the PEP through a remote PowerShell session on the virtual machine (VM) that hosts the PEP. In the ASDK, this VM is named AzS-ERCS01. If you're using an integrated system, there are three instances of the PEP, each running inside a VM (Prefix-ERCS01, Prefix-ERCS02, or Prefix-ERCS03) on different hosts for resiliency.
 
     ```powershell
-    Start-SecretRotation -ReRun
+    # Create a PEP Session
+    winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
+    $PEPCreds = Get-Credential
+    $PEPSession = New-PSSession -ComputerName <IpOfERCSMachine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
+
+    # Run Secret Rotation
+    $CertPassword = ConvertTo-SecureString "<CertPasswordHere>" -AsPlainText -Force
+    $CertShareCreds = Get-Credential
+    $CertSharePath = "<NetworkPathOfCertShare>"
+    Invoke-Command -Session $PEPSession -ScriptBlock {
+        Start-SecretRotation -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCreds -CertificatePassword $using:CertPassword
+    }
+    Remove-PSSession -Session $PEPSession
     ```
 
-    Contact support if you experience repeated secret rotation failures.
+    The script performs the following steps:
 
-6. After successful completion of secret rotation, remove your certificates from the share created in the prerequisites section and store them in their secure backup location.
+    - Creates a PowerShell Session with the [Privileged endpoint](azure-stack-privileged-endpoint.md) using the **CloudAdmin** account, and stores the session as a variable. This variable is used as the parameter in the next step. 
 
-## Use PowerShell to rotate secrets
+    - Runs **[Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/Invoke-Command?view=powershell-5.1)**, passing the PEP session variable as the **Session** parameter.
 
-The following PowerShell example demonstrates the cmdlets and parameters to run in order to rotate your secrets.
+    - Runs **Start-SecretRotation** using the following parameters:
+        - **PfxFilesPath**  
+        Specify the network path to your Certificates directory created earlier.  
+        - **PathAccessCredential**  
+        A PSCredential object for credentials to the share.
+        - **CertificatePassword**  
+        A secure string of the password used for all of the pfx certificate files created.
+
+3. Wait while your secrets rotate. External secret rotation takes approximately one hour. When secret rotation successfully completes, your console will display **ActionPlanInstanceID ... CurrentStatus: Completed**, followed by a **DONE**.
+
+> [!Note]
+> If secret rotation fails, follow the instructions in the error message and re-run **Start-SecretRotation** with the **-ReRun** parameter.
 
 ```powershell
-# Create a PEP Session
-winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
-$PEPCreds = Get-Credential
-$PEPSession = New-PSSession -ComputerName <IpOfERCSMachine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
-
-# Run Secret Rotation
-$CertPassword = ConvertTo-SecureString "<CertPasswordHere>" -AsPlainText -Force
-$CertShareCreds = Get-Credential
-$CertSharePath = "<NetworkPathOfCertShare>"
-Invoke-Command -Session $PEPSession -ScriptBlock {
-    Start-SecretRotation -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCreds -CertificatePassword $using:CertPassword
-}
-Remove-PSSession -Session $PEPSession
+Start-SecretRotation -ReRun
 ```
+
+Contact support if you experience repeated secret rotation failures.
+
+4. After successful completion of secret rotation, remove your certificates from the share created in the prerequisites section and store them in their secure backup location.
 
 ## Rotate internal secrets
 
