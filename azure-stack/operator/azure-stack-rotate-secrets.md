@@ -108,7 +108,8 @@ For for rotation of external secrets only:
 2. Prepare a new set of replacement external certificates:
     - The new set must match the certificate specifications outlined in the [Azure Stack Hub PKI certificate requirements](azure-stack-pki-certs.md). 
     - You can generate a certificate signing request (CSR) for purchasing or creating new certificates using the steps outlined in [Generate PKI Certificates](azure-stack-get-pki-certs.md) and prepare them for use in your Azure Stack Hub environment using the steps in [Prepare Azure Stack Hub PKI Certificates](azure-stack-prepare-pki-certs.md). 
-    - Be sure to validate the certificates you prepare with the steps outlined in [Validate PKI Certificates](azure-stack-validate-pki-certs.md)- Make sure there are no special characters in the password, like `*` or `)`.
+    - Be sure to validate the certificates you prepare with the steps outlined in [Validate PKI Certificates](azure-stack-validate-pki-certs.md)
+    - Make sure there are no special characters in the password, like `*` or `)`.
     - Make sure the PFX encryption is **TripleDES-SHA1**. If you run into an issue, see [Fix common issues with Azure Stack Hub PKI certificates](azure-stack-remediate-certs.md#pfx-encryption).
 3. Store a backup to the certificates used for rotation in a secure backup location. If your rotation runs and then fails, replace the certificates in the file share with the backup copies before you rerun the rotation. Keep backup copies in the secure backup location.
 4. Create a fileshare you can access from the ERCS VMs. The file share must be  readable and writable for the **CloudAdmin** identity.
@@ -139,9 +140,9 @@ For for rotation of external secrets only:
 
 Complete the following steps to rotate external secrets:
 
-1. Within the newly created **\Certificates\\\<IdentityProvider>** directory created in the prerequisites section, place the new set of replacement external certificates in the directory structure according to the format outlined in the **Mandatory certificates** section of the [Azure Stack Hub PKI certificate requirements](azure-stack-pki-certs.md#mandatory-certificates).
+1. Within the newly created **\Certificates\\\<IdentityProvider>** directory created in the prerequisites section, place the new set of replacement external certificates in the directory structure according to the format outlined in the **Mandatory certificates** section of the [Azure Stack Hub PKI certificate requirements](azure-stack-pki-certs.md#mandatory-certificates). 
 
-    Example of folder structure for the Azure AD Identity Provider:
+    Here's an example of a folder structure for the Azure AD Identity Provider:
     ```powershell
         <ShareName>
         │   │
@@ -182,7 +183,7 @@ Complete the following steps to rotate external secrets:
 
     ```
 
-2. Use the following PowerShell script to rotate the secrets. The script requires access to a Privileged EndPoint (PEP) session. You access the PEP through a remote PowerShell session on the virtual machine (VM) that hosts the PEP. In the ASDK, this VM is named AzS-ERCS01. If you're using an integrated system, there are three instances of the PEP, each running inside a VM (Prefix-ERCS01, Prefix-ERCS02, or Prefix-ERCS03) on different hosts for resiliency.
+2. Use the following PowerShell script to rotate the secrets. The script requires access to a Privileged EndPoint (PEP) session. The PEP is accessed through a remote PowerShell session on the virtual machine (VM) that hosts the PEP. If you're using an integrated system, there are three instances of the PEP, each running inside a VM (Prefix-ERCS01, Prefix-ERCS02, or Prefix-ERCS03) on different hosts for resiliency. If you're using the ASDK, this VM is named AzS-ERCS01. 
 
     ```powershell
     # Create a PEP Session
@@ -232,23 +233,24 @@ Complete the following steps to rotate external secrets:
 > [!Note]
 > Internal secret rotation should only be done if you suspect an internal secret has been compromised by a malicious entity, or if you've received an alert (on build 1811 or later) indicating internal certificates are nearing expiration. Azure Stack Hub environments on pre-1811 versions may see alerts for pending internal certificate or secret expirations. These alerts are inaccurate and should be ignored without running internal secret rotation. Inaccurate internal secret expiration alerts are a known issue that's resolved in 1811. Internal secrets won't expire unless the environment has been active for two years.
 
+Reference the [Rotate external secrets](#rotate-external-secrets) section for an example of a PowerShell script you can adapt, and details on how it works. You can use this same script, by making a few changes to run the following steps:
+
 1. Create a PowerShell session with the [Privileged endpoint](azure-stack-privileged-endpoint.md).
-2. In the Privileged Endpoint session, run **Start-SecretRotation -Internal**.
+2. In the Privileged Endpoint session, run the `Start-SecretRotation` command using the `-Internal` switch.
 
     > [!Note]
     > Azure Stack Hub environments on pre-1811 versions won't require the **-Internal** flag. **Start-SecretRotation** will rotate only internal secrets.
 
-3. Wait while your secrets rotate.
+3. Wait while your secrets rotate. When secret rotation successfully completes, your console will display **ActionPlanInstanceID ... CurrentStatus: Completed**, followed by a **DONE**
 
-   When secret rotation successfully completes, your console will display **ActionPlanInstanceID ... CurrentStatus: Completed**, followed by a **DONE**
     > [!Note]
     > If secret rotation fails, follow the instructions in the error message and rerun **Start-SecretRotation** with the  **-Internal** and **-ReRun** parameters.  
-
-```powershell
-Start-SecretRotation -Internal -ReRun
-```
-
-Contact support if you experience repeated secret rotation failures.
+    >
+    >```powershell
+    >Start-SecretRotation -Internal -ReRun
+    >```
+    >
+    > Contact support if you experience repeated secret rotation failures.
 
 ## Start-SecretRotation reference
 
