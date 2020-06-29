@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Learn how to rotate your secrets in Azure Stack Hub.
 author: IngridAtMicrosoft
 ms.topic: how-to
-ms.date: 04/03/2020
+ms.date: 06/29/2020
 ms.reviewer: ppacent
 ms.author: inhenkel
 ms.lastreviewed: 12/13/2019
@@ -24,6 +24,8 @@ Secrets that are rotated regularly help you maintain secure communication betwee
 ## Overview
 
 Azure Stack Hub uses various secrets to maintain secure communication between the Azure Stack Hub infrastructure resources and services. To maintain the integrity of the Azure Stack Hub infrastructure, operators need the ability to periodically rotate their infrastructure's secrets at frequencies that are consistent with their organization's security requirements.
+
+### Internal vs external secrets
 
 Beginning with Azure Stack Hub release 1811, secret rotation has been separated for internal and external certificates:
 
@@ -45,17 +47,27 @@ Beginning with Azure Stack Hub release 1811, secret rotation has been separated 
     \* Only applicable if the environment's identity provider is Active Directory Federated Services (AD FS).
 
 > [!Important]
-> This article does not address secret rotation for value-add resource providers. To rotate those secrets, follow the steps in the appropriate article(s) listed below:
+> All other secure keys and strings, including BMC and switch passwords as well as user and administrator account passwords are still manually updated by the administrator. In addition, this article does not address secret rotation for value-add resource providers. To rotate those secrets, refer to the following articles instead:
 >
 > - [Event Hubs on Azure Stack Hub secrets rotation](app-service-rotate-certificates.md)
 > - [Rotate App Service on Azure Stack Hub secrets and certificates](app-service-rotate-certificates.md)
 > - [MySQL resource provider - Rotate secrets](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation)
 > - [SQL resource provider - Rotate secrets](azure-stack-sql-resource-provider-maintain.md#secrets-rotation)
 
-> [!Note]
-> All other secure keys and strings, including BMC and switch passwords as well as user and administrator account passwords are still manually updated by the administrator.
+### Expiration alerts
 
-### Secrets with external certificates from a new Certificate Authority
+When secrets are within 30 days of expiration, the following alerts are generated in the administrator portal:
+
+- Pending service account password expiration
+- Pending internal certificate expiration
+- Pending external certificate expiration
+
+Completing the secret rotation steps in the following sections will resolve these alerts.
+
+> [!Note]
+> Azure Stack Hub environments on pre-1811 versions may see alerts for pending internal certificate or secret expirations. These alerts are inaccurate and should be ignored without running internal secret rotation. Inaccurate internal secret expiration alerts are a known issue that's resolved in 1811. Internal secrets won't expire unless the environment has been active for two years.
+
+### External certificates from a new Certificate Authority
 
 Azure Stack Hub supports secret rotation with external certificates from a new Certificate Authority (CA) in the following contexts:
 
@@ -71,25 +83,12 @@ Azure Stack Hub supports secret rotation with external certificates from a new C
 |From Public<sup>*</sup>|To Self-Signed|Not Supported||
 |From Public<sup>*</sup>|To Public<sup>*</sup>|Supported|1803 & Later|
 
-<sup>*</sup>Indicates that the Public Certificate Authorities are part of the Windows Trusted Root Program. You can find the full list in the article [Microsoft Trusted Root Certificate Program: Participants (as of June 27, 2017)](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
-
-### Expiration alerts
-
-When secrets are within 30 days of expiration, the following alerts are generated in the administrator portal:
-
-- Pending service account password expiration
-- Pending internal certificate expiration
-- Pending external certificate expiration
-
-Completing the secret rotation steps in the following sections will resolve these alerts.
-
-> [!Note]
-> Azure Stack Hub environments on pre-1811 versions may see alerts for pending internal certificate or secret expirations. These alerts are inaccurate and should be ignored without running internal secret rotation. Inaccurate internal secret expiration alerts are a known issue that's resolved in 1811. Internal secrets won't expire unless the environment has been active for two years.
+<sup>*</sup>Indicates that the Public Certificate Authorities are part of the Windows Trusted Root Program. You can find the full list in the article [List of Participants - Microsoft Trusted Root Program](/security/trusted-root/participants-list.md).
 
 ## Prerequisites
 
 > [!IMPORTANT]
-> For pre-1811 versions: If secret rotation has already been performed, you must update to version 1811 or later before you execute secret rotation again. Secret Rotation must be executed via the [Privileged Endpoint](azure-stack-privileged-endpoint.md) and requires Azure Stack Hub Operator credentials. If you don't know whether secret rotation has been run on your environment, update to 1811 before executing secret rotation again.
+> For pre-1811 versions: If secret rotation has already been performed, you must update to version 1811 or later before you perform secret rotation again. Secret Rotation must be executed via the [Privileged Endpoint](azure-stack-privileged-endpoint.md) and requires Azure Stack Hub Operator credentials. If you don't know whether secret rotation has been run on your environment, update to 1811 before performing secret rotation.
 
 For rotation of internal and external secrets:
 
