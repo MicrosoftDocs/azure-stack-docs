@@ -4,7 +4,7 @@ description: An overview of Azure Stack HCI
 ms.topic: overview
 author: khdownie
 ms.author: v-kedow
-ms.date: 06/26/2020
+ms.date: 06/29/2020
 
 # Intent: As an Azure Stack operator, I want an overview of HCI solutions so I can run VMs on-premises and connect to Azure with an HCI solution.
 # Keyword: HCI solutions azure stack
@@ -244,7 +244,6 @@ As your organization digitally transforms, you may find you can move faster by u
 Because Azure Stack HCI is intended as a virtualization host, there are only a small number of server roles that it is licensed to run directly:
 
 - Device health attestation
-- File and storage services
 - Host guardian service
 - Hyper-V
 - Network controller
