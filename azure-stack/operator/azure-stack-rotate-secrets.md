@@ -23,7 +23,7 @@ This article provides guidance and PowerShell script for secret rotation, to hel
 
 ## Overview
 
-Azure Stack Hub uses secrets to maintain secure communication with infrastructure resources and services. To maintain the integrity of the Azure Stack Hub infrastructure, operators need the ability to periodically rotate their infrastructure's secrets at frequencies that are consistent with their organization's security requirements.
+Azure Stack Hub uses secrets to maintain secure communication with infrastructure resources and services. To maintain the integrity of the Azure Stack Hub infrastructure, operators need the ability to rotate secrets at frequencies that are consistent with their organization's security requirements.
 
 ### Internal vs external secrets
 
@@ -217,7 +217,7 @@ Complete the following steps to rotate external secrets:
 
 ## Rotate internal secrets
 
-Internal secret rotation should only be done if you suspect an internal secret has been compromised by a malicious entity, or if you've received an alert indicating internal certificates are nearing expiration. Pre-1811 versions may see alerts for pending internal certificate or secret expirations. These alerts are inaccurate and should be ignored. Inaccurate internal secret expiration alerts are a known issue resolved in 1811. Internal secrets won't expire unless the environment has been active for two years.
+Internal secret rotation is only required if you suspect one has been compromised, or you've received an expiration alert. Pre-1811 versions may see alerts for pending internal certificate or secret expirations. These alerts are inaccurate and should be ignored, and are a known issue resolved in 1811. Internal secrets won't expire unless the environment has been active for two years.
 
 Reference the PowerShell script in step 2 of [Rotate external secrets](#rotate-external-secrets). The script provides an example you can adapt for internal secret rotation, by making a few changes to run the following steps:
 
@@ -394,7 +394,7 @@ Invoke-Command -Session $PEPSession -ScriptBlock {
 Remove-PSSession -Session $PEPSession
 ```
 
-This command rotates all of the infrastructure secrets exposed to Azure Stack Hub internal network, as well as the TLS certificates used for Azure Stack Hub's external network infrastructure endpoints. Start-SecretRotation rotates all stack-generated secrets, and because there are provided certificates, external endpoint certificates will also be rotated.  
+This command rotates the infrastructure secrets exposed to Azure Stack Hub internal network, and the TLS certificates used for Azure Stack Hub's external network infrastructure endpoints. Start-SecretRotation rotates all stack-generated secrets, and because there are provided certificates, external endpoint certificates will also be rotated.  
 
 ## Next steps
 
