@@ -185,7 +185,9 @@ To rotate external secrets:
 
     ```
 
-2. Create a PowerShell Session with the [Privileged endpoint](azure-stack-privileged-endpoint.md) using the **CloudAdmin** account and store the sessions as a variable. You'll use this variable as the parameter in the next step.
+2. Use the following PowerShell script to rotate the secrets. The script will:
+
+  - Create a PowerShell Session with the [Privileged endpoint](azure-stack-privileged-endpoint.md) using the **CloudAdmin** account and store the sessions as a variable. You'll use this variable as the parameter in the next step. 
 
     > [!IMPORTANT]  
     > Don't enter the session. Store the session as a variable.
