@@ -92,7 +92,13 @@ Azure Stack HCI is a world-class, integrated virtualization stack built on prove
 
 ## What you need for Azure Stack HCI
 
-To get started, [determine your hardware requirements](deploy/before-you-start.md), then simply browse the [Azure Stack HCI Catalog](/cloud-platform/azure-stack-hci-catalog) and purchase validated hardware (from 2 to 16 server nodes) from your preferred hardware partner. Then, if you don't already have one, [get an Azure subscription](https://azure.microsoft.com/) to enable billing and access to hybrid services and software downloads you may need.
+To get started, [determine your hardware requirements](deploy/before-you-start.md), simply purchase validated hardware (from 2 to 16 server nodes) from your preferred Microsoft hardware partner. Then, if you don't already have one, [get an Azure subscription](https://azure.microsoft.com/) to enable billing and access to hybrid services and software downloads you may need.
+
+## Hardware partners
+
+You can purchase validated Azure Stack HCI solutions from your preferred Microsoft partner to get up and running without lengthy design and build time. Microsoft partners also offer a single point of contact for implementation and support services.
+
+Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) page or browse the [Azure Stack HCI Catalog](/cloud-platform/azure-stack-hci-catalog) to view 70+ Azure Stack HCI solutions currently available from Microsoft partners such as ASUS, Axellio, Blue Chip, DataON, Dell EMC, Fujitsu, HPE, Hitachi, Huawei, Lenovo, NEC, primeLine Solutions, QCT, SecureGUARD, and Supermicro.
 
 ## Licensing, billing, and pricing
 
@@ -116,12 +122,6 @@ To manage these technologies, you can use the following management tools:
 - [PowerShell](https://docs.microsoft.com/powershell/?view=powershell-6)
 - Other management tools, like [Server Manager](https://docs.microsoft.com/windows-server/administration/server-manager/server-manager), and MMC snap-ins
 - Non-Microsoft tools like 5Nine Manager
-
-## Hardware partners
-
-You can purchase validated Azure Stack HCI solutions from your preferred Microsoft partner to get up and running without lengthy design and build time. Microsoft partners also offer a single point of contact for implementation and support services.
-
-Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) to view our 70+ Azure Stack HCI solutions currently available from these Microsoft partners: ASUS, Axellio, Blue Chip, DataON, Dell EMC, Fujitsu, HPE, Hitachi, Huawei, Lenovo, NEC, primeLine Solutions, QCT, SecureGUARD, and Supermicro.
 
 ## Video-based learning
 
