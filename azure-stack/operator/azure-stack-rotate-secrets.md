@@ -71,7 +71,7 @@ Azure Stack Hub supports secret rotation with external certificates from a new C
 |From Public<sup>*</sup>|To Self-Signed|Not Supported||
 |From Public<sup>*</sup>|To Public<sup>*</sup>|Supported|1803 & Later|
 
-<sup>*</sup>Indicates that the Public Certificate Authorities are those that are part of the Windows Trusted Root Program. You can find the full list in the article [Microsoft Trusted Root Certificate Program: Participants (as of June 27, 2017)](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
+<sup>*</sup>Indicates that the Public Certificate Authorities are part of the Windows Trusted Root Program. You can find the full list in the article [Microsoft Trusted Root Certificate Program: Participants (as of June 27, 2017)](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
 
 ### Expiration alerts
 
@@ -140,7 +140,7 @@ For for rotation of external secrets only:
 
 Complete the following steps to rotate external secrets:
 
-1. Within the newly created **\Certificates\\\<IdentityProvider>** directory created in the prerequisites section, place the new set of replacement external certificates in the directory structure according to the format outlined in the **Mandatory certificates** section of the [Azure Stack Hub PKI certificate requirements](azure-stack-pki-certs.md#mandatory-certificates). 
+1. Within the **\Certificates\\\<IdentityProvider>** directory created in the prerequisites section, place the new set of replacement external certificates in the directory structure according to the format outlined in the **Mandatory certificates** section of the [Azure Stack Hub PKI certificate requirements](azure-stack-pki-certs.md#mandatory-certificates). 
 
     Here's an example of a folder structure for the Azure AD Identity Provider:
     ```powershell
@@ -252,7 +252,62 @@ Reference the [Rotate external secrets](#rotate-external-secrets) section for an
     >
     > Contact support if you experience repeated secret rotation failures.
 
-## Start-SecretRotation reference
+## Update the baseboard management controller (BMC) credential
+
+The baseboard management controller (BMC) monitors the physical state of your servers. Refer to your original equipment manufacturer (OEM) hardware vendor for instructions to update the user account name and password of the BMC.
+
+>[!NOTE]
+> Your OEM may provide additional management apps. Updating the user name or password for other management apps has no effect on the BMC user name or password.
+
+1. **Versions earlier than 1910**: Update the BMC on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
+
+   **Version 1910 and later**: It's no longer required that you first update the BMC credentials on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
+
+    | Parameter | Description | State |
+    | --- | --- | --- |
+    | BypassBMCUpdate | When you use the parameter, credentials in the BMC aren't update. Only the Azure Stack Hub internal datastore is updated. | Optional |
+
+2. Open a privileged endpoint in Azure Stack Hub sessions. For instructions, see [Using the privileged endpoint in Azure Stack Hub](azure-stack-privileged-endpoint.md).
+
+3. After your PowerShell prompt has changed to **[IP address or ERCS VM name]: PS>** or to **[azs-ercs01]: PS>**, depending on the environment, run `Set-BmcCredential` by running `Invoke-Command`. Pass your privileged endpoint session variable as a parameter. For example:
+
+    ```powershell
+    # Interactive Version
+    $PEPIp = "<Privileged Endpoint IP or Name>" # You can also use the machine name instead of IP here.
+    $PEPCreds = Get-Credential "<Domain>\CloudAdmin" -Message "PEP Credentials"
+    $NewBmcPwd = Read-Host -Prompt "Enter New BMC password" -AsSecureString
+    $NewBmcUser = Read-Host -Prompt "Enter New BMC user name"
+
+    $PEPSession = New-PSSession -ComputerName $PEPIp -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
+
+    Invoke-Command -Session $PEPSession -ScriptBlock {
+        # Parameter BmcPassword is mandatory, while the BmcUser parameter is optional.
+        Set-BmcCredential -BmcPassword $using:NewBmcPwd -BmcUser $using:NewBmcUser
+    }
+    Remove-PSSession -Session $PEPSession
+    ```
+
+    You can also use the static PowerShell version with the Passwords as code lines:
+
+    ```powershell
+    # Static Version
+    $PEPIp = "<Privileged Endpoint IP or Name>" # You can also use the machine name instead of IP here.
+    $PEPUser = "<Privileged Endpoint user for example Domain\CloudAdmin>"
+    $PEPPwd = ConvertTo-SecureString "<Privileged Endpoint Password>" -AsPlainText -Force
+    $PEPCreds = New-Object System.Management.Automation.PSCredential ($PEPUser, $PEPPwd)
+    $NewBmcPwd = ConvertTo-SecureString "<New BMC Password>" -AsPlainText -Force
+    $NewBmcUser = "<New BMC User name>"
+
+    $PEPSession = New-PSSession -ComputerName $PEPIp -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
+
+    Invoke-Command -Session $PEPSession -ScriptBlock {
+        # Parameter BmcPassword is mandatory, while the BmcUser parameter is optional.
+        Set-BmcCredential -BmcPassword $using:NewBmcPwd -BmcUser $using:NewBmcUser
+    }
+    Remove-PSSession -Session $PEPSession
+    ```
+
+## Reference: Start-SecretRotation cmdlet
 
 Rotates the secrets of an Azure Stack Hub System. Only executed against the Azure Stack Hub privileged endpoint.
 
@@ -289,12 +344,12 @@ The **Start-SecretRotation** cmdlet rotates the infrastructure secrets of an Azu
 ### Parameters
 
 | Parameter | Type | Required | Position | Default | Description |
-| -- | -- | -- | -- | -- | -- |
+|--|--|--|--|--|--|
 | `PfxFilesPath` | String  | False  | Named  | None  | The fileshare path to the **\Certificates** directory containing all external network endpoint certificates. Only required when rotating external secrets. End directory must be **\Certificates**. |
 | `CertificatePassword` | SecureString | False  | Named  | None  | The password for all certificates provided in the -PfXFilesPath. Required value if PfxFilesPath is provided when external secrets are rotated. |
 | `Internal` | String | False | Named | None | Internal flag must be used anytime an Azure Stack Hub operator wishes to rotate internal infrastructure secrets. |
 | `PathAccessCredential` | PSCredential | False  | Named  | None  | The PowerShell credential for the fileshare of the **\Certificates** directory containing all external network endpoint certificates. Only required when rotating external secrets.  |
-| `ReRun` | SwitchParameter | False  | Named  | None  | ReRun must be used anytime secret rotation is reattempted after a failed attempt. |
+| `ReRun` | SwitchParameter | False  | Named  | None  | Must be used anytime secret rotation is reattempted after a failed attempt. |
 
 ### Examples
 
@@ -353,62 +408,7 @@ Invoke-Command -Session $PEPSession -ScriptBlock {
 Remove-PSSession -Session $PEPSession
 ```
 
-This command rotates all of the infrastructure secrets exposed to Azure Stack Hub internal network as well as the TLS certificates used for Azure Stack Hub's external network infrastructure endpoints. Start-SecretRotation rotates all stack-generated secrets, and because there are provided certificates, external endpoint certificates will also be rotated.  
-
-## Update the baseboard management controller (BMC) credential
-
-The baseboard management controller (BMC) monitors the physical state of your servers. Refer to your original equipment manufacturer (OEM) hardware vendor for instructions to update the user account name and password of the BMC.
-
->[!NOTE]
-> Your OEM may provide additional management apps. Updating the user name or password for other management apps has no effect on the BMC user name or password.
-
-1. **Versions earlier than 1910**: Update the BMC on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
-
-   **Version 1910 and later**: It's no longer required that you first update the BMC credentials on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
-
-    | Parameter | Description | State |
-    | --- | --- | --- |
-    | BypassBMCUpdate | When you use the parameter, credentials in the BMC aren't update. Only the Azure Stack Hub internal datastore is updated. | Optional |
-
-2. Open a privileged endpoint in Azure Stack Hub sessions. For instructions, see [Using the privileged endpoint in Azure Stack Hub](azure-stack-privileged-endpoint.md).
-
-3. After your PowerShell prompt has changed to **[IP address or ERCS VM name]: PS>** or to **[azs-ercs01]: PS>**, depending on the environment, run `Set-BmcCredential` by running `Invoke-Command`. Pass your privileged endpoint session variable as a parameter. For example:
-
-    ```powershell
-    # Interactive Version
-    $PEPIp = "<Privileged Endpoint IP or Name>" # You can also use the machine name instead of IP here.
-    $PEPCreds = Get-Credential "<Domain>\CloudAdmin" -Message "PEP Credentials"
-    $NewBmcPwd = Read-Host -Prompt "Enter New BMC password" -AsSecureString
-    $NewBmcUser = Read-Host -Prompt "Enter New BMC user name"
-
-    $PEPSession = New-PSSession -ComputerName $PEPIp -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
-
-    Invoke-Command -Session $PEPSession -ScriptBlock {
-        # Parameter BmcPassword is mandatory, while the BmcUser parameter is optional.
-        Set-BmcCredential -BmcPassword $using:NewBmcPwd -BmcUser $using:NewBmcUser
-    }
-    Remove-PSSession -Session $PEPSession
-    ```
-
-    You can also use the static PowerShell version with the Passwords as code lines:
-
-    ```powershell
-    # Static Version
-    $PEPIp = "<Privileged Endpoint IP or Name>" # You can also use the machine name instead of IP here.
-    $PEPUser = "<Privileged Endpoint user for example Domain\CloudAdmin>"
-    $PEPPwd = ConvertTo-SecureString "<Privileged Endpoint Password>" -AsPlainText -Force
-    $PEPCreds = New-Object System.Management.Automation.PSCredential ($PEPUser, $PEPPwd)
-    $NewBmcPwd = ConvertTo-SecureString "<New BMC Password>" -AsPlainText -Force
-    $NewBmcUser = "<New BMC User name>"
-
-    $PEPSession = New-PSSession -ComputerName $PEPIp -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
-
-    Invoke-Command -Session $PEPSession -ScriptBlock {
-        # Parameter BmcPassword is mandatory, while the BmcUser parameter is optional.
-        Set-BmcCredential -BmcPassword $using:NewBmcPwd -BmcUser $using:NewBmcUser
-    }
-    Remove-PSSession -Session $PEPSession
-    ```
+This command rotates all of the infrastructure secrets exposed to Azure Stack Hub internal network, as well as the TLS certificates used for Azure Stack Hub's external network infrastructure endpoints. Start-SecretRotation rotates all stack-generated secrets, and because there are provided certificates, external endpoint certificates will also be rotated.  
 
 ## Next steps
 
