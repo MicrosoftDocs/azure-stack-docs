@@ -2,11 +2,11 @@
 title: Rotate secrets
 titleSuffix: Azure Stack Hub
 description: Learn how to rotate your secrets in Azure Stack Hub.
-author: IngridAtMicrosoft
+author: BryanLa
 ms.topic: how-to
 ms.date: 06/29/2020
 ms.reviewer: ppacent
-ms.author: inhenkel
+ms.author: bryanla
 ms.lastreviewed: 12/13/2019
 monikerRange: '>=azs-1803'
 
