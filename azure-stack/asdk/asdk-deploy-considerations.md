@@ -29,9 +29,7 @@ Before you deploy the Azure Stack Development Kit (ASDK), make sure your ASDK ho
 | Compute: Memory |192-GB RAM. |256-GB RAM. |
 | Compute: BIOS |Hyper-V Enabled (with SLAT support). |Hyper-V Enabled (with SLAT support). |
 | Network: NIC |Windows Server 2012 R2 Certification. No specialized features required. | Windows Server 2012 R2 Certification. No specialized features required. |
-| HW logo certification |[Certified for Windows Server 2012 R2](https://www.windowsservercatalog.com/content.aspx?ctf=logo.htm). 
-|[Certified for Windows Server 2016](https://www.windowsservercatalog.com/content.aspx?ctf=logo.htm). 
-|
+| HW logo certification |[Certified for Windows Server 2012 R2](https://www.windowsservercatalog.com/content.aspx?ctf=logo.htm). |[Certified for Windows Server 2016](https://www.windowsservercatalog.com/content.aspx?ctf=logo.htm). |
 
 <sup>*</sup> You need more than this recommended capacity if you plan on adding many of the [marketplace items](../operator/azure-stack-create-and-publish-marketplace-item.md) from Azure.
 
