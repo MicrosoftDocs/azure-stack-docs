@@ -30,8 +30,7 @@ Your users will need to create Event Hubs clusters with CUs that meet their busi
 
 All Event Hubs clusters use a [D11_V2](../user/azure-stack-vm-sizes.md#mo-dv2) VM type for their nodes. A D11_V2 VM type consists of 2 cores. So 1 CU Event Hubs cluster uses 5 D11_V2 VMs, which translates into 10 cores used. In determining the number of cores to configure for a quota, use a multiple of the total cores used by 1 CU. This calculation reflects the maximum CU count you'll allow your users to use, when creating Event Hubs clusters. For example, to configure a quota that allows users to create a cluster with 2 CUs of capacity, set your quota at 20 cores.
 
-> [!NOTE]
-> **Public preview only** The available version of Event Hubs on Azure Stack Hub only supports the creation of 1 CU clusters. The General Availability (GA) version of Event Hubs will include support for different CU configuration options.
+[!INCLUDE [event-hubs-scale](../includes/event-hubs-scale.md)]
 
 ## Resource provider resource consumption  
 
