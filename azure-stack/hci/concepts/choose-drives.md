@@ -4,21 +4,22 @@ description: How to choose drives for Storage Spaces Direct in Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
-ms.date: 03/06/2020
+ms.date: 06/24/2020
 ---
 
 # Choosing drives for Azure Stack HCI
 
->Applies to: Windows Server 2019
+>Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
 This topic provides guidance on how to choose drives for [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) to meet your performance and capacity requirements for Azure Stack HCI.
 
 ## Drive types
 
-Storage Spaces Direct currently works with three types of drives:
+Storage Spaces Direct currently works with four types of drives:
 
 |||
 |----------------------|--------------------------|
+|![PMem](media/choose-drives/pmem-100px.png)|**PMem** refers to persistent memory, a new type of memory technology that delivers a unique combination of affordable large capacity and persistence.|
 |![NVMe](media/choose-drives/NVMe-100-px.png)|**NVMe** (Non-Volatile Memory Express) refers to solid-state drives that sit directly on the PCIe bus. Common form factors are 2.5" U.2, PCIe Add-In-Card (AIC), and M.2. NVMe offers higher IOPS and IO throughput with lower latency than any other type of drive we support today.|
 |![SSD](media/choose-drives/SSD-100-px.png)|**SSD** refers to solid-state drives, which connect via conventional SATA or SAS.|
 |![HDD](media/choose-drives/HDD-100-px.png)|**HDD** refers to rotational, magnetic hard disk drives, which offer vast storage capacity.|
@@ -95,3 +96,4 @@ For more information, see also:
 - [Storage Spaces Direct hardware requirements](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements)
 - [Planning volumes in Azure Stack HCI](plan-volumes.md)
 - [Fault tolerance and storage efficiency](fault-tolerance.md)
+- [Understand and deploy persistent memory](/windows-server/storage/storage-spaces/deploy-pmem)
