@@ -2,18 +2,17 @@
 title: Use the privileged endpoint (PEP) to collect diagnostic logs
 description: Learn how to collect diagnostic logs on demand in Azure Stack Hub using the Administrator portal or a PowerShell script.
 author: justinha
-
+ms.custom: conteperfq4
 ms.topic: article
-ms.date: 03/05/2020
+ms.date: 06/30/2020
 ms.author: justinha
 ms.reviewer: shisab
-ms.lastreviewed: 03/05/2020
+ms.lastreviewed: 06/30/2020
 
 ---
 # Send Azure Stack Hub diagnostic logs by using the privileged endpoint (PEP)
 
 <!--how do you look up the PEP IP address. You look up the azurestackstampinfo.json--->
-
 
 To run Get-AzureStackLog on an integrated system, you need to have access to the privileged endpoint (PEP). Here's an example script you can run using the PEP to collect logs. If you are canceling a running log collection to start a new one, please wait 5 minutes Before starting new log collection and enter `Remove-PSSession -Session $session`.
 
