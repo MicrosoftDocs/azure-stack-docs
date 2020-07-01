@@ -51,8 +51,20 @@ landingContent:
             url: manage/delete-volumes.md
           - text: Replace drives
             url: manage/replace-drives.md
+          - text: Manage clusters
+            url: manage/cluster.md
+          - text: Manage clusters with PowerShell
+            url: manage/cluster-powershell.md
+          - text: Add or remove servers
+            url: manage/add-cluster.md
+          - text: Use Azure Site Recovery
+            url: manage/azure-site-recovery.md
           - text: Monitor with Azure Monitor
             url: manage/azure-monitor.md
+          - text: Manage VMs
+            url: manage/vm.md
+          - text: Manage VMs with PowerShell
+            url: manage/vm-powershell.md
           - text: Attach GPU to Linux VM
             url: manage/attach-gpu-to-linux-vm.md
 
