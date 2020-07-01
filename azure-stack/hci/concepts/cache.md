@@ -21,36 +21,16 @@ The following video goes into details on how caching works for Storage Spaces Di
 
 ## Drive types and deployment options
 
-Storage Spaces Direct currently works with three types of storage devices:
+Storage Spaces Direct currently works with four types of drives:
 
-<table>
-	<tr style="border: 0;">
-		<td style="padding: 10px; border: 0; width:70px">
-			<img src="media/cache/NVMe-100px.png">
-		</td>
-		<td style="padding: 10px; border: 0;" valign="middle">
-			NVMe (Non-Volatile Memory Express)
-		</td>
-	</tr>
-	<tr style="border: 0;">
-		<td style="padding: 10px; border: 0; width:70px">
-			<img src="media/cache/SSD-100px.png">
-		</td>
-		<td style="padding: 10px; border: 0;" valign="middle">
-			SATA/SAS SSD (Solid-State Drive)
-		</td>
-	</tr>
-	<tr style="border: 0;">
-		<td style="padding: 10px; border: 0; width:70px">
-			<img src="media/cache/HDD-100px.png">
-		</td>
-		<td style="padding: 10px; border: 0;" valign="middle">
-			HDD (Hard Disk Drive)
-		</td>
-	</tr>
-</table>
+|||
+|----------------------|--------------------------|
+|![PMem](media/choose-drives/pmem-100px.png)|**PMem** refers to persistent memory, a new type of low latency, high performance storage.|
+|![NVMe](media/choose-drives/NVMe-100-px.png)|**NVMe** (Non-Volatile Memory Express) refers to solid-state drives that sit directly on the PCIe bus. Common form factors are 2.5" U.2, PCIe Add-In-Card (AIC), and M.2. NVMe offers higher IOPS and IO throughput with lower latency than any other type of drive we support today except PMem.|
+|![SSD](media/choose-drives/SSD-100-px.png)|**SSD** refers to solid-state drives, which connect via conventional SATA or SAS.|
+|![HDD](media/choose-drives/HDD-100-px.png)|**HDD** refers to rotational, magnetic hard disk drives, which offer vast storage capacity.|
 
-These can be combined in six ways, which we group into two categories: "all-flash" and "hybrid".
+These can be combined in various ways, which we group into two categories: "all-flash" and "hybrid".
 
 ### All-flash deployment possibilities
 
