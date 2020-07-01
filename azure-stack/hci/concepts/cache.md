@@ -4,12 +4,12 @@ description: How read and write caching works in Storage Spaces Direct and Azure
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
-ms.date: 02/28/2020
+ms.date: 07/01/2020
 ---
 
 # Understanding the cache in Azure Stack HCI
 
->Applies to: Windows Server 2019
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
 [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) features a built-in server-side cache to maximize storage performance. It is a large, persistent, real-time read *and* write cache. The cache is configured automatically when Storage Spaces Direct is enabled. In most cases, no manual management whatsoever is required.
 How the cache works depends on the types of drives present.
