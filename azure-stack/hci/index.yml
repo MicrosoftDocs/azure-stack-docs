@@ -28,6 +28,16 @@ landingContent:
           - text: Use Azure Stack HCI with Windows Admin Center
             url: get-started.md
 
+  # Card 
+  - title: Deploy Azure Stack HCI
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text: Deployment overview
+            url: deploy/deployment-overview.md
+          - text: Before you start
+            url: deploy/before-you-start.md
+
   # Card
   - title: Manage Azure Stack HCI
     linkLists:
