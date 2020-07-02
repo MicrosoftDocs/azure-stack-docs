@@ -25,7 +25,11 @@ This topic covers known issues for the AKS engine on Azure Stack Hub.
 
   * In connected environments it is not obvious to notice this issue since there are no signs in the cluster that the affected components were not upgraded. Everything appears to work as expected.
   * In disconnected environments you can see this problem when you run a query for the system pods status and see that the pods for the components mentioned below are not in “Ready” state:
+
+    ```PowerShell
     kubectl get pods -n kube-system
+    ```
+
   * Workaround. To solve this issue, please execute the command under “Workaround” for each of the components.
 
     |Component Name	|Workaround	|Affected Scenarios|
@@ -47,10 +51,9 @@ This topic covers known issues for the AKS engine on Azure Stack Hub.
 
         agentpool: linuxpool
 
-  If a LoadBalancer service was already created in your cluster, you can find out which agent pool was selected as the load balancer's backend pool by inspecting the load balancer backend pools blade in the Azure Stack Hub portal. Once you have that information, you can specify the target agent pool by updating your deployment/pod yaml (as explained in the previous paragraph).
+  If a LoadBalancer service was already created in your cluster, you can find out which agent pool was selected as the backend pool of the load balancer by inspecting the load balancer backend pools blade in the Azure Stack Hub portal. Once you have that information, you can specify the target agent pool by updating your deployment/pod yaml (as explained in the previous paragraph).
 
 * Command scope for `get-versions`. The output of the `get-versions` command only pertains to Azure and not Azure Stack Hub clouds. For more information about the different upgrade paths, see [Steps to upgrade to a newer Kubernetes version](azure-stack-kubernetes-aks-engine-upgrade.md#steps-to-upgrade-to-a-newer-kubernetes-version).
-
 
 ## Next steps 
 
