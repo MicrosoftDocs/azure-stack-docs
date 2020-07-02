@@ -47,10 +47,12 @@ This topic covers known issues for the AKS engine on Azure Stack Hub.
 
   You can force Kubernetes to create pods in a specific agent pool by adding [node selector](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) "agentpool: MY_POOL_NAME" in your pod template.
 
-      nodeSelector:
+  ```powershell
+  nodeSelector:
 
         agentpool: linuxpool
-
+  ```
+  
   If a LoadBalancer service was already created in your cluster, you can find out which agent pool was selected as the backend pool of the load balancer by inspecting the load balancer backend pools blade in the Azure Stack Hub portal. Once you have that information, you can specify the target agent pool by updating your deployment/pod yaml (as explained in the previous paragraph).
 
 * Command scope for `get-versions`. The output of the `get-versions` command only pertains to Azure and not Azure Stack Hub clouds. For more information about the different upgrade paths, see [Steps to upgrade to a newer Kubernetes version](azure-stack-kubernetes-aks-engine-upgrade.md#steps-to-upgrade-to-a-newer-kubernetes-version).
