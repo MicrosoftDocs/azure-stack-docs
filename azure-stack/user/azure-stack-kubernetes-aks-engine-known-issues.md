@@ -21,7 +21,7 @@ This topic covers known issues for the AKS engine on Azure Stack Hub.
 
 ## Upgrade issues in AKS Engine 0.51.0
 
-* During upgrade (aks-engine upgrade) of a Kubernetes cluster from version 1.15.x to 1.16.x, the following kubernetes components will require extra manual steps to be upgraded: kube-proxy, azure-cni-networkmonitor, csi-secrets-store, kubernetes-dashboard. The following describes what you may observe and how to work around the issues.
+* During upgrade (aks-engine upgrade) of a Kubernetes cluster from version 1.15.x to 1.16.x, upgrade of the following kubernetes components requires extra manual steps: **kube-proxy**, **azure-cni-networkmonitor**, **csi-secrets-store**, **kubernetes-dashboard**. The following describes what you may observe and how to work around the issues.
 
   * In connected environments it is not obvious to notice this issue since there are no signs in the cluster that the affected components were not upgraded. Everything appears to work as expected.
   * In disconnected environments you can see this problem when you run a query for the system pods status and see that the pods for the components mentioned below are not in “Ready” state:
@@ -30,16 +30,16 @@ This topic covers known issues for the AKS engine on Azure Stack Hub.
     kubectl get pods -n kube-system
     ```
 
-  * Workaround. To solve this issue, please execute the command under “Workaround” for each of the components.
+  * As a workaround to solve this issue for each of these components, run the command in the Workaround column in the following table.
 
     |Component Name	|Workaround	|Affected Scenarios|
     |---------------|-----------|------------------|
-    |kube-proxy	    | `kubectl delete ds kube-proxy -n kube-system`	|Connected, Disconnected |
-    |azure-cni-networkmonitor	| `kubectl delete ds azure-cni-networkmonitor -n kube-system`	| Connected, Disconnected |
-    |csi-secrets-store	|`sudo sed -i s/Always/IfNotPresent/g /etc/kubernetes/addons/secrets-store-csi-driver.yaml`<br>`kubectl delete ds csi-secrets-store -n kube-system` | Disconnected |
-    |kubernetes-dashboard |Run the following command on each master node:<br>`sudo sed -i s/Always/IfNotPresent/g /etc/kubernetes/addons/kubernetes-dashboard.yaml` |Disconnected |
+    |**kube-proxy**	    | `kubectl delete ds kube-proxy -n kube-system`	|Connected, Disconnected |
+    |**azure-cni-networkmonitor**	| `kubectl delete ds azure-cni-networkmonitor -n kube-system`	| Connected, Disconnected |
+    |**csi-secrets-store**	|`sudo sed -i s/Always/IfNotPresent/g /etc/kubernetes/addons/secrets-store-csi-driver.yaml`<br>`kubectl delete ds csi-secrets-store -n kube-system` | Disconnected |
+    |**kubernetes-dashboard** |Run the following command on each master node:<br>`sudo sed -i s/Always/IfNotPresent/g /etc/kubernetes/addons/kubernetes-dashboard.yaml` |Disconnected |
 
-* Kubernetes 1.17 is not supported in this release. Even though there are PRs alluding to it, 1.17 is in fact not supported.
+* Kubernetes 1.17 is not supported in this release. Although there are PRs alluding to it, 1.17 is actually not supported.
 
 ## Basic load balancer SKU limitations
 
