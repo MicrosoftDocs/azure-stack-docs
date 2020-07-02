@@ -44,7 +44,7 @@ Each article addresses common consideration such as:
 Use the storage patterns to increase your storage options with Azure Stack Hub. In Azure Stack Hub storage is finite. Connect to resources in your existing datacenter. Find instructions for creating a Windows VM in Azure Stack Hub to connect to an external iSCSI target. You can learn how to enable key features such as Multipath I/O (MPIO), to optimize performance and connectivity between the VM and external storage.
 
 | iSCSI storage | Extend storage |
-| --- | --- | --- |
+| --- | --- |
 | ![Connect to iSCSI storage](media/deploy-foundational-patterns/icon-storage-87-storage-accounts-classic.svg)<br>[Connect to iSCSI storage](azure-stack-network-howto-iscsi-storage.md) | ![Extend the datacenter](media/deploy-foundational-patterns/icon-storage-88-recovery-services-vaults.svg)<br>[Extend the datacenter](azure-stack-network-howto-extend-datacenter.md) |
 
 ## Backup
@@ -54,9 +54,9 @@ You can use the backup and disaster recovery patterns to copy all the resources 
 
 
 |  Back up  |  Copy  |
-| --- | --- | --- |
+| --- | --- |
 | ![Back up your VM on Azure Stack Hub with Commvault](media/deploy-foundational-patterns/icon-storage-100-import-export-jobs.svg)<br>[Back up your VM on Azure Stack Hub with Commvault](azure-stack-network-howto-backup-commvault.md) | ![Copy subscription resources](media/deploy-foundational-patterns/icon-storage-94-data-box.svg)<br>[Copy subscription resources](azure-stack-network-howto-backup-replicator.md) |
-|  | ![Back up your storage accounts on Azure Stack Hub](media/deploy-foundational-patterns/icon-storage-93-storage-sync-services.svg)<br>[Back up your storage accounts on Azure Stack Hub](azure-stack-network-howto-backup-storage.md)  |
+|  ![Back up your storage accounts on Azure Stack Hub](media/deploy-foundational-patterns/icon-storage-93-storage-sync-services.svg)<br>[Back up your storage accounts on Azure Stack Hub](azure-stack-network-howto-backup-storage.md)  | |
 
 ## GitHub samples
 
@@ -64,4 +64,4 @@ You can find the templates in the [Azure Intelligent Edge Patterns GitHub](https
 
 ## Next steps
 
-[Azure hybrid patterns and solutions documentation](\hybrid\app-solutions)
+[Azure hybrid patterns and solutions documentation](/hybrid/app-solutions)
