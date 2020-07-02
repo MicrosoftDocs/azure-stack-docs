@@ -4,7 +4,7 @@ description: Learn how to create a hyperconverged cluster for Azure Stack HCI us
 author: v-dasis
 ms.topic: article
 ms.prod: 
-ms.date: 06/22/2020
+ms.date: 07/02/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
