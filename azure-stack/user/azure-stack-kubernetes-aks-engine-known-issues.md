@@ -39,7 +39,7 @@ This topic covers known issues for the AKS engine on Azure Stack Hub.
     |**csi-secrets-store**	|`sudo sed -i s/Always/IfNotPresent/g /etc/kubernetes/addons/secrets-store-csi-driver.yaml`<br>`kubectl delete ds csi-secrets-store -n kube-system` | Disconnected |
     |**kubernetes-dashboard** |Run the following command on each master node:<br>`sudo sed -i s/Always/IfNotPresent/g /etc/kubernetes/addons/kubernetes-dashboard.yaml` |Disconnected |
 
-* Kubernetes 1.17 is not supported in this release. Although there are PRs alluding to it, 1.17 is actually not supported.
+* Kubernetes 1.17 is not supported in this release. Although there are PRs alluding to it, 1.17 is not supported.
 
 ## Basic load balancer SKU limitations
 
