@@ -23,8 +23,8 @@ This topic covers known issues for the AKS engine on Azure Stack Hub.
 
 * During upgrade (aks-engine upgrade) of a Kubernetes cluster from version 1.15.x to 1.16.x, upgrade of the following kubernetes components requires extra manual steps: **kube-proxy**, **azure-cni-networkmonitor**, **csi-secrets-store**, **kubernetes-dashboard**. The following describes what you may observe and how to work around the issues.
 
-  * In connected environments it is not obvious to notice this issue since there are no signs in the cluster that the affected components were not upgraded. Everything appears to work as expected.
-  * In disconnected environments you can see this problem when you run a query for the system pods status and see that the pods for the components mentioned below are not in “Ready” state:
+  * In connected environments, it is not obvious to notice this issue since there are no signs in the cluster that the affected components were not upgraded. Everything appears to work as expected.
+  * In disconnected environments, you can see this problem when you run a query for the system pods status and see that the pods for the components mentioned below are not in “Ready” state:
 
     ```PowerShell
     kubectl get pods -n kube-system
