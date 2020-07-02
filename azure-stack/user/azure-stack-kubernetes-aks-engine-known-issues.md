@@ -34,14 +34,14 @@ This topic covers known issues for the AKS engine on Azure Stack Hub.
 
     |Component Name	|Workaround	|Affected Scenarios|
     |---------------|-----------|------------------|
-    |kube-proxy	    | kubectl delete ds kube-proxy -n kube-system	|Connected, Disconnected |
-    |azure-cni-networkmonitor	| kubectl delete ds azure-cni-networkmonitor -n kube-system	| Connected, Disconnected |
-    |csi-secrets-store	|sudo sed -i s/Always/IfNotPresent/g /etc/kubernetes/addons/secrets-store-csi-driver.yaml kubectl delete ds csi-secrets-store -n kube-system | Disconnected |
-    |kubernetes-dashboard |Run the following command on each master node:<br>sudo sed -i s/Always/IfNotPresent/g /etc/kubernetes/addons/kubernetes-dashboard.yaml |Disconnected |
+    |kube-proxy	    | `kubectl delete ds kube-proxy -n kube-system`	|Connected, Disconnected |
+    |azure-cni-networkmonitor	| `kubectl delete ds azure-cni-networkmonitor -n kube-system`	| Connected, Disconnected |
+    |csi-secrets-store	|`sudo sed -i s/Always/IfNotPresent/g /etc/kubernetes/addons/secrets-store-csi-driver.yaml`<br>`kubectl delete ds csi-secrets-store -n kube-system` | Disconnected |
+    |kubernetes-dashboard |Run the following command on each master node:<br>`sudo sed -i s/Always/IfNotPresent/g /etc/kubernetes/addons/kubernetes-dashboard.yaml` |Disconnected |
 
 * Kubernetes 1.17 is not supported in this release. Even though there are PRs alluding to it, 1.17 is in fact not supported.
 
-## Basic Load Balancer Limitations
+## Basic load balancer SKU limitations
 
 * Single agent pool limitation. Currently, Azure Stack Hub only supports the Basic load balancer SKU. This SKU [limits](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus) the backend pool endpoints to virtual machines in a single availability set (or virtual machine scale set). This implies that all replicas of a LoadBalancer service should be deployed on the same agent pool and it also implies that each individual cluster can either have a Linux LoadBalancer service or a Windows LoadBalancer service.
 
