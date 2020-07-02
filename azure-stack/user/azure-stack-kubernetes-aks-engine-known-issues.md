@@ -9,8 +9,8 @@ ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 07/02/2020
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: Not done: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Not done: keyword noun phrase
 
 ---
 
@@ -57,6 +57,6 @@ This topic covers known issues for the AKS engine on Azure Stack Hub.
 
 * Command scope for `get-versions`. The output of the `get-versions` command only pertains to Azure and not Azure Stack Hub clouds. For more information about the different upgrade paths, see [Steps to upgrade to a newer Kubernetes version](azure-stack-kubernetes-aks-engine-upgrade.md#steps-to-upgrade-to-a-newer-kubernetes-version).
 
-## Next steps 
+## Next steps
 
 [AKS engine on Azure Stack Hub overview](azure-stack-kubernetes-aks-engine-overview.md)
