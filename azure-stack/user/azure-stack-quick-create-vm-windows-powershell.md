@@ -8,6 +8,7 @@ ms.date: 04/20/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/11/2019
+ms.custom: conteperfq4
 
 # Intent: As an Azure Stack user, I want to create a Windows Server VM with PowerShell in Azure Stack so that I can automate the creation of VMs.
 # Keyword: Windows Server VM
