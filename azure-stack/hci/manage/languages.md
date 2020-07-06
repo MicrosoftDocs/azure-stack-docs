@@ -63,9 +63,11 @@ To change the display language in the operating system:
 1. Under **Add a language**, the list of available languages displays as well as the keyboard layout for each one.
 1. Nest to the display language of interest, select **Options** to enable it needed.
 
-You can also use the following Windows PowerShell command to override the current language setting in Windows Server Core:
+You can also use the following Windows PowerShell **Set-WinUILanguageOverride** cmdlet, where `de-DE` in this example specifies German to override the current language setting in the operating system:
 
-`Set-WinUILanguageOverride de-DE`
+```PowerShell
+Set-WinUILanguageOverride de-DE
+```
 
 <!---All guidance and Microsoft link references taken from https://dennisspan.com/managing-windows-languages-and-language-packs/--->
 
