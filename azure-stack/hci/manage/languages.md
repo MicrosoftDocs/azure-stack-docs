@@ -4,7 +4,7 @@ description: This topic provides guidance on how to change languages in the Azur
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 07/06/2020
 ---
 
 # Changing languages in Azure Stack HCI
@@ -48,40 +48,29 @@ You can add supported languages to Microsoft Edge, and reorder your language pre
 To learn more, see [Microsoft Edge language support](https://docs.microsoft.com/deployedge/microsoft-edge-supported-languages).
 
 ## Change the language in Server Core
-There are a couple ways to change the language in Server Core of the Azure Stack HCI operating system. However, we recommend to change your language choice after clustering your servers. You can change the language and keyboard input method on a single server using the **Regional Settings** Control Panel tool. You can also change the language in Server Core using Windows PowerShell.
+If you need to change the language in Server Core of the Azure Stack HCI operating system, we recommend doing so after clustering your servers. You can add a language pack to Server Core, and then run a Windows PowerShell command to change the language and keyboard input method. A language pack is installed in the directory *%SystemRoot%\System32\%Language-ID%*, so for example *C:\Windows\System32\es-ES*. The size of a language pack is about 50 MB. If you want to install all 38 language packs, the size of the required image is about 2 GB.
 
-<!---Point to Dan's cluster creation topic using To learn more prompt here?.--->
+For a complete list of language packs for Windows Server, see [Available languages for Windows](https://docs.microsoft.com/windows-hardware/manufacture/desktop/available-language-packs-for-windows).
 
-To change the language in Windows Server Core:
-1. Open an Administrator command prompt, type `control intl.cpl` and press Enter.
+To manually obtain and add language packs to the operating system:
+1. After installing the operating system, download and install additional language packs by going to **Settings**, select **Time & language**, select **Region and language**, and then under **Optinos**, select **Add a language**.
+1. Add a language pack to Server Core using the **DISM / Add-WindowsPackage** tool. The `Add-WindowsPackage` PowerShell command is the equivalent of the DISM executable.
 
-    The **Region** Control Panel tool displays.
+    To learn more, see [Add languages to Windows images](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows).
 
-1. Select the **Keyboards and Languages** tab, and then select the **Change keyboards...** button.
-1. On the **Formats** tab, expand the **Format:** drop-down list to select a language, and then select **OK**.
+To change the display language in the operating system:
+1. Go to **Control Panel** and select **Language**.
+1. Under **Add a language**, the list of available languages displays as well as the keyboard layout for each one.
+1. Nest to the display language of interest, select **Options** to enable it needed.
 
-    :::image type="content" source="media/languages/change-language-control-panel.png" alt-text="The Change Language Control Panel in Server Core":::
+You can also use the following Windows PowerShell command to override the current language setting in Windows Server Core:
 
+`Set-WinUILanguageOverride de-DE`
 
-1. Select the **Keyboards and Languages** tab, and then select the **Change keyboards...** button.
+<!---All guidance and Microsoft link references taken from https://dennisspan.com/managing-windows-languages-and-language-packs/--->
 
-
-Select language preferences->Language->Add a language
-
-To change the keyboard input method, Language->Spelling, typing & keyboard settings->under More keyboard settings->Advanced keyboard settings->can set Override for default input method->expand drop-down list to choose language.
-
-
-To use Windows PowerShell to change the language in Windows Server Core:
-1. TBD 
-
-
-<!---Example note format.--->
-   >[!NOTE]
-   > TBD.
 
 ## Next steps
 For more information, see also:
-
-<!---Confirm ToC location; currently from here to:--->
 
 - [Add or remove servers for an Azure Stack HCI cluster](https://docs.microsoft.com/azure-stack/hci/manage/add-cluster)
