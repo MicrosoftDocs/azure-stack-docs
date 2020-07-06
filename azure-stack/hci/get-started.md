@@ -4,7 +4,7 @@ description: Quickly connect to an existing Azure Stack HCI cluster and use Wind
 author: khdownie
 ms.author: v-kedow
 ms.topic: overview
-ms.date: 07/20/2020
+ms.date: 07/06/2020
 ---
 
 # Get started with Azure Stack HCI and Windows Admin Center
