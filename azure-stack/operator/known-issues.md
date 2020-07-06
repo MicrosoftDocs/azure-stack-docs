@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 06/17/2020
+ms.date: 07/06/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
@@ -84,29 +84,29 @@ For other known Azure Stack Hub update issues, please see [Troubleshooting Updat
 
 ## Networking
 
-#### DenyAllOutbound rule cannot be created
+### DenyAllOutbound rule cannot be created
 
 - Applicable: This issue applies to all supported releases. 
 - Cause: An explicit **DenyAllOutbound** rule cannot be created in an NSG as this will prevent all internal communication to infrastructure needed for the VM deployment to complete.
 - Occurrence: Common
 
-#### ICMP protocol not supported for NSG rules
+### ICMP protocol not supported for NSG rules
 
 - Applicable: This issue applies to all supported releases. 
 - Cause: When creating an inbound or an outbound network security rule, the **Protocol** option shows an **ICMP** option. This is currently not supported on Azure Stack Hub. This issue is fixed and will not appear in the next Azure Stack Hub release.
 - Occurrence: Common
 
-#### Cannot delete an NSG if NICs not attached to running VM
+### Cannot delete an NSG if NICs not attached to running VM
 
 - Applicable: This issue applies to all supported releases.
 - Cause: When disassociating an NSG and a NIC that is not attached to a running VM, the update (PUT) operation for that object fails at the network controller layer. The NSG will be updated at the network resource provider layer, but not on the network controller, so the NSG moves to a failed state.
 - Remdiation: Attach the NICs associated to the NSG that needs to be removed with running VMs, and disassociate the NSG or remove all the NICs that were associated with the NSG.
 - Occurrence: Common
 
-#### Load Balancer directing traffic to one backend VM in specific scenarios 
+### Load Balancer directing traffic to one backend VM in specific scenarios 
 
 - Applicable: This issue applies to all supported releases. 
-- Cause: When enabling 'Session Affinity' on a load balancer, the 2 tuple hash utilizes the PA IP (Physical Address IP) instead of the private IPs assigned to the VMs. In scenarios where traffic destined to the load balancer arrives through a VPN or if all the client VMs (source IPs) reside on the same node and Session Affinity is enabled, all traffic is being directed to one backend VM. 
+- Cause: When enabling **Session Affinity** on a load balancer, the 2 tuple hash utilizes the PA IP (Physical Address IP) instead of the private IPs assigned to the VMs. In scenarios where traffic directed to the load balancer arrives through a VPN, or if all the client VMs (source IPs) reside on the same node and Session Affinity is enabled, all traffic is directed to one backend VM.
 - Occurrence: Common
 
 ### Network interface
