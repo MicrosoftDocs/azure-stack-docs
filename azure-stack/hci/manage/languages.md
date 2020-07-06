@@ -48,9 +48,11 @@ You can add supported languages to Microsoft Edge, and reorder your language pre
 To learn more, see [Microsoft Edge language support](https://docs.microsoft.com/deployedge/microsoft-edge-supported-languages).
 
 ## Change the language in Server Core
-If you need to change the language in Server Core of the Azure Stack HCI operating system, we recommend doing so after clustering your servers. You can add a language pack to Server Core, and then run a Windows PowerShell command to change the language and keyboard input method. A language pack is installed in the directory *%SystemRoot%\System32\%Language-ID%*, so for example *C:\Windows\System32\es-ES*. The size of a language pack is about 50 MB. If you want to install all 38 language packs, the size of the required image is about 2 GB.
+If you need to change the language in Server Core of the Azure Stack HCI operating system, we recommend doing so after clustering your servers. You can add a language pack to Server Core, and then run a Windows PowerShell command to change the language and keyboard input method.
 
-For a complete list of language packs for Windows Server, see [Available languages for Windows](https://docs.microsoft.com/windows-hardware/manufacture/desktop/available-language-packs-for-windows).
+A language pack is installed in the directory *%SystemRoot%\System32\%Language-ID%*, so for example *C:\Windows\System32\es-ES*. The size of a language pack is about 50 MB. If you want to install all 38 language packs, the size of the required image is about 2 GB.
+
+To learn more, see [Available languages for Windows](https://docs.microsoft.com/windows-hardware/manufacture/desktop/available-language-packs-for-windows).
 
 To manually obtain and add language packs to the operating system:
 1. After installing the operating system, download and install additional language packs by going to **Settings**, select **Time & language**, select **Region and language**, and then under **Optinos**, select **Add a language**.
@@ -61,7 +63,7 @@ To manually obtain and add language packs to the operating system:
 To change the display language in the operating system:
 1. Go to **Control Panel** and select **Language**.
 1. Under **Add a language**, the list of available languages displays as well as the keyboard layout for each one.
-1. Nest to the display language of interest, select **Options** to enable it needed.
+1. Next to the display language of interest, select **Options** to enable it needed.
 
 You can also use the following Windows PowerShell **Set-WinUILanguageOverride** cmdlet, where `de-DE` in this example specifies German to override the current language setting in the operating system:
 
