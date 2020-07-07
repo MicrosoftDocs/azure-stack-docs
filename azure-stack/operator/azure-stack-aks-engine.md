@@ -56,7 +56,7 @@ Add the following item to the marketplace:
     In the list, select:
     - **Publisher**: Azure Kubernetes Service
     - **Offer**: aks
-    - **Version**: AKS Base Ubuntu 16.04-LTS Image Distro, March 2020 (2020.03.19 or version that maps to AKS engine)
+    - **Version**: AKS Base Ubuntu 16.04-LTS Image Distro, May 2020 (2020.05.13 or version that maps to AKS engine)
 
 1. Select **Download.**
 

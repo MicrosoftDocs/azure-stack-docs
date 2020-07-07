@@ -3,7 +3,7 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 06/15/2020
+ms.date: 06/19/2020
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 05/28/2020
@@ -15,7 +15,7 @@ ms.lastreviewed: 05/28/2020
 
 # Azure Stack Hub Marketplace changes
 
-This article lists recent additions, updates, changes, and removals of [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) over the last three months. The information in this section is updated frequently, so check back often for changes.
+This article lists recent additions, updates, changes, and removals of [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md). The information in this section is updated frequently, so check back often for changes.
 
 The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) article always contains the most current list of available Azure Stack Hub Marketplace items.
 
@@ -62,6 +62,8 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Updated marketplace items
 
+- 6/19/2020: Bitnami Gitlab CE – version 13.0.2006110322
+- 6/16/2020: SQLIaaSExtension – version 1.3.20370
 - 6/12/2020: Bitnami Grafana - version 6.7.2006040249
 - 5/21/2020: Ubuntu Server 16.04 LTS - version 16.04.202004290
 - 5/21/2020: Ubuntu Server 18.04 LTS - version 18.04.202004080
