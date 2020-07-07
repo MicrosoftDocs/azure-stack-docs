@@ -63,9 +63,9 @@ To manually obtain and add language packs to the operating system:
 To change the display language in the operating system:
 1. Go to **Control Panel** and select **Language**.
 1. Under **Add a language**, the list of available languages displays, as well as the keyboard layout for each one.
-1. Next to the display language that you want to use, select **Options** to enable it needed.
+1. Next to the display language that you want to use, select **Options** to enable it if needed.
 
-You can also use the Windows PowerShell **Set-WinUILanguageOverride** cmdlet to override the Windows UI language in the operating system of the current user account. In the following example, `de-DE` specifies German to override the current language setting in the operating system:
+You can also use the PowerShell **Set-WinUILanguageOverride** cmdlet to override the Windows UI language in the operating system of the current user account. In the following example, `de-DE` specifies German to override the current language setting in the operating system:
 
 ```PowerShell
 Set-WinUILanguageOverride de-DE
