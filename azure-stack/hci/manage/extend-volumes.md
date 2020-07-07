@@ -4,11 +4,12 @@ description: How to resize volumes in Azure Stack HCI using Windows Admin Center
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 03/10/2020
+ms.date: 07/01/2020
 ---
 
 # Extending volumes in Storage Spaces Direct
-> Applies to: Windows Server 2019
+
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
 This topic provides instructions for resizing volumes on a [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) cluster by using Windows Admin Center.
 

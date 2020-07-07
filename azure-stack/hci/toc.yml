@@ -10,6 +10,8 @@
     href: get-started.md
 - name: Deploy
   items:
+  - name: Deployment overview
+    href: deploy/deployment-overview.md
   - name: Before you start
     href: deploy/before-you-start.md
 - name: Manage
