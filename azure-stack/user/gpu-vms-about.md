@@ -17,9 +17,9 @@ ms.lastreviewed: 07/07/2020
 
 *Applies to: Azure Stack integrated systems*
 
-In this article, you can learn which (GPU)s models are supported on the Azure Stack Hub multinode system. You can also find instructions on installing the drivers used with the GPUs. GPU support in Azure Stack Hub enables solutions such as Artificial Intelligence, training, inference, and data visualization. The AMD Radeon Instinct Mi25 can be used to support graphic-intensive applications such as Autodesk AutoCAD.
+In this article, you can learn which Graphics processing unit (GPU) models are supported on the Azure Stack Hub multinode system. You can also find instructions on installing the drivers used with the GPUs. GPU support in Azure Stack Hub enables solutions such as Artificial Intelligence, training, inference, and data visualization. The AMD Radeon Instinct Mi25 can be used to support graphic-intensive applications such as Autodesk AutoCAD.
 
-You can choose from two GPU models in the public preview period. They are available in NVIDIA V100 Tensor Core and AMD Mi25 GPUs. These physical GPUs align with the following Azure N-Series VM types as follows:
+You can choose from two GPU models in the public preview period. They are available in NVIDIA V100 Tensor Core and AMD Mi25 GPUs. These physical GPUs align with the following Azure N-Series virtual machine (VM) types as follows:
 - [NCv3](https://docs.microsoft.com/azure/virtual-machines/ncv3-series)
 - [NVv4 (AMD Mi25)](https://docs.microsoft.com/azure/virtual-machines/nvv4-series)
 
