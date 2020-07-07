@@ -1,5 +1,5 @@
 ---
-title:  Graphics Processing Units (GPU) Virtual Machine (VM) on Azure Stack Hub
+title:  Graphics processing unit (GPU) virtual machine (VM) on Azure Stack Hub
 description: Reference for GPU computing in Azure Stack Hub.
 author: mattbriggs
 ms.author: mabrigg
@@ -13,17 +13,17 @@ ms.lastreviewed: 07/07/2020
 # Keyword: Azure Stack Hub Graphics Processing Unit (GPU)
 ---
 
-# Graphics Processing Unit (GPU) Virtual Machine (VM) on Azure Stack Hub
+# Graphics processing unit (GPU) virtual machine (VM) on Azure Stack Hub
 
 *Applies to: Azure Stack integrated systems*
 
-In this article, you can, which supported models and where to find instructions on installing drivers to use Graphics Processing Units (GPU)s Virtual Machines (VM)s on the Azure Stack Hub multinode system. GPU support in Azure Stack Hub supports solutions such as Artificial Intelligence, training, inference, and data visualization. The AMD Radeon Instinct Mi25 can be used to support graphic-intensive applications such as Autodesk AutoCAD.
+In this article, you can learn which (GPU)s models are supported on the Azure Stack Hub multinode system. You can also find instructions on installing the drivers used with the GPUs. GPU support in Azure Stack Hub enables solutions such as Artificial Intelligence, training, inference, and data visualization. The AMD Radeon Instinct Mi25 can be used to support graphic-intensive applications such as Autodesk AutoCAD.
 
 You can choose from two GPU models in the public preview period. They are available in NVIDIA V100 Tensor Core and AMD Mi25 GPUs. These physical GPUs align with the following Azure N-Series VM types as follows:
 - [NCv3](https://docs.microsoft.com/azure/virtual-machines/ncv3-series)
 - [NVv4 (AMD Mi25)](https://docs.microsoft.com/azure/virtual-machines/nvv4-series)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Azure Stack Hub GPU support is currently in public preview. To participate in the preview, complete the form at [aka.ms/azurestackhubgpupreview](https://aka.ms/azurestackhubgpupreview).
 > This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities. 
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -36,7 +36,7 @@ The NVv4-series virtual machines are powered by [AMD Radeon Instinct MI25](https
 | --- | --- | --- | --- | --- | --- | --- | --- |   
 | Standard_NV4as_v4 |4 |14 |88 | 1/8 | 2 | 4 | 2 | 
 
-## Patch and Update, FRU behavior of VMs 
+## Patch and update, FRU behavior of VMs 
 
 GPU VMs will undergo downtime during operations such as patch and update (PnU) as well as hardware replacement (FRU) of Azure Stack Hub. The following table goes over the state of the VM as observed during these activities as well as the manual action that the user can do to make these VMs available again post these operations. 
 
