@@ -67,11 +67,11 @@ To change the display language in the operating system:
 
 You can also use the Windows PowerShell **Set-WinUILanguageOverride** cmdlet to override the Windows UI language in the operating system of the current user account. In the following example, `de-DE` specifies German to override the current language setting in the operating system:
 
-    ```PowerShell
-    Set-WinUILanguageOverride de-DE
-    ```
+```PowerShell
+Set-WinUILanguageOverride de-DE
+```
 
-To learn more, see [Set-WinUILanguageOverride](https://docs.microsoft.com/en-us/powershell/module/international/set-winuilanguageoverride?view=win10-ps).
+To learn more, see [Set-WinUILanguageOverride](https://docs.microsoft.com/powershell/module/international/set-winuilanguageoverride?view=win10-ps).
 
 ## Next steps
 For more information, see also:
