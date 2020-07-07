@@ -23,8 +23,8 @@ Windows Admin Center makes it easy to update a cluster and apply operating syste
 1. Any available updates will be displayed; click **Check Available Updates** to refresh the list.
 1. Select the updates you wish to install and click **Apply All Updates**. This will install the updates on every server in the cluster. If a restart is needed, cluster roles such as virtual machines will be moved to another server first to prevent any disruption.
 1. To improve security, disable CredSSP as soon as you're finished installing the updates:
-> - In Windows Admin Center, under **All connections**, select the first server in your cluster, and then select **Connect**.
-> - On the **Overview** page, select **Disable CredSSP**, and then on the **Disable CredSSP** pop-up window, select **Yes**.
+- In Windows Admin Center, under **All connections**, select the first server in your cluster, and then select **Connect**.
+- On the **Overview** page, select **Disable CredSSP**, and then on the **Disable CredSSP** pop-up window, select **Yes**.
 
 ## Configure Cluster-Aware Updating
 
