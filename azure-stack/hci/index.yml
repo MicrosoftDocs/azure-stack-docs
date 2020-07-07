@@ -37,6 +37,16 @@ landingContent:
             url: deploy/deployment-overview.md
           - text: Before you start
             url: deploy/before-you-start.md
+          - text: Deploy the Azure Stack HCI operating system
+            url: deploy/before-you-start.md
+          - text: Validate an Azure Stack HCI cluster
+            url: deploy/before-you-start.md
+          - text: Create cluster
+            url: deploy/before-you-start.md
+          - text: Create cluster with PowerShell
+            url: deploy/before-you-start.md
+          - text: Setup VM affinity rules
+            url: deploy/before-you-start.md  
 
   # Card
   - title: Manage Azure Stack HCI
@@ -61,6 +71,8 @@ landingContent:
             url: manage/vm.md
           - text: Manage VMs with PowerShell
             url: manage/vm-powershell.md
+            - text: Change languages
+            url: manage/vm-powershell.md
 
   # Card
   - title: Azure Stack HCI concepts
@@ -77,6 +89,8 @@ landingContent:
             url: concepts/fault-tolerance.md
           - text: Cluster and storage pool quorum
             url: concepts/quorum.md
+          - text: Security considerations
+            url: concepts/quorum.md
 
   # Card 
   - title: Use Azure services
@@ -86,4 +100,8 @@ landingContent:
           - text: Use Azure Site Recovery
             url: manage/azure-site-recovery.md
           - text: Monitor with Azure Monitor
+            url: manage/azure-monitor.md
+          - text: Use Azure Network Adapter
+            url: manage/azure-monitor.md
+          - text: Use Azure Backup
             url: manage/azure-monitor.md
