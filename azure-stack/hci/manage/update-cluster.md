@@ -4,7 +4,7 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 07/07/2020
 ---
 
 # Update Azure Stack HCI clusters
@@ -17,12 +17,14 @@ When updating Azure Stack HCI clusters, the goal is to maintain availability by 
 
 Windows Admin Center makes it easy to update a cluster and apply operating system and solution updates using a simple user interface. If you've purchased an integrated system from a Microsoft hardware partner, it’s easy to get the latest drivers, firmware, and other updates directly from Windows Admin Center by installing the appropriate partner update extension(s). ​If your hardware was not purchased as an integrated system, firmware and driver updates may need to be performed separately, following the hardware vendor's recommendations.
 
-1. When you connect to a cluster, the Windows Admin Center dashboard will alert you to critical updates along with a link to update now. Alternatively, select **Updates** from the **Tools** menu at the left.
-2. To use the Cluster-Aware updating tool in Windows Admin Center, you must enable Credential Security Service Provider (CredSSP) and provide explicit credentials. When asked if CredSSP should be enabled, click **Yes**.
-3. Specify your username and password, and click **Continue**.
-4. Available updates will be displayed; click **Check Available Updates** to refresh the list.
-5. Select the updates you wish to install and click **Apply All Updates**. This will install the updates on every server in the cluster. If a restart is needed, cluster roles such as virtual machines will be moved to another server first to prevent any disruption.
-6. To improve security, disable CredSSP as soon as you're finished installing the updates.
+1. When you connect to a cluster, the Windows Admin Center dashboard will alert you if one or more servers have updates ready to be installed, and provide a link to update now. Alternatively, you can select **Updates** from the **Tools** menu at the left.
+1. To use the Cluster-Aware updating tool in Windows Admin Center, you must enable Credential Security Service Provider (CredSSP) and provide explicit credentials. When asked if CredSSP should be enabled, click **Yes**.
+1. Specify your username and password, and click **Continue**.
+1. Any available updates will be displayed; click **Check Available Updates** to refresh the list.
+1. Select the updates you wish to install and click **Apply All Updates**. This will install the updates on every server in the cluster. If a restart is needed, cluster roles such as virtual machines will be moved to another server first to prevent any disruption.
+1. To improve security, disable CredSSP as soon as you're finished installing the updates:
+> - In Windows Admin Center, under **All connections**, select the first server in your cluster, and then select **Connect**.
+> - On the **Overview** page, select **Disable CredSSP**, and then on the **Disable CredSSP** pop-up window, select **Yes**.
 
 ## Configure Cluster-Aware Updating
 
