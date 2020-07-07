@@ -4,12 +4,12 @@ description: Quickly connect to an existing Azure Stack HCI cluster and use Wind
 author: khdownie
 ms.author: v-kedow
 ms.topic: overview
-ms.date: 04/08/2020
+ms.date: 07/06/2020
 ---
 
 # Get started with Azure Stack HCI and Windows Admin Center
 
-> Applies to: Windows Server 2019
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
 This topic provides instructions for installing Windows Admin Center, connecting to an Azure Stack HCI cluster, and monitoring cluster and storage performance.
 
@@ -115,7 +115,7 @@ Select **Diagnostics** from the **Tools** menu to collect information for troubl
 
 ## Next steps
 
-For a deeper dive into performance monitoring, see also:
+For a deeper dive into monitoring your Azure Stack HCI clusters, see also:
 
 - [Performance history for Storage Spaces Direct](/windows-server/storage/storage-spaces/performance-history)
 - [Monitor Azure Stack HCI with Azure Monitor](manage/azure-monitor.md)
