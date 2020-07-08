@@ -4,9 +4,9 @@ description: Check templates for deployment to Azure Stack Hub with a template v
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 06/09/2020
 ms.author: sethm
-ms.reviewer: unknown
+ms.reviewer: sijuman
 ms.lastreviewed: 12/27/2019
 
 # Intent: As an Azure Stack user, I want to use the template validation tool so I can see if my templates are ready to deploy.
@@ -17,7 +17,7 @@ ms.lastreviewed: 12/27/2019
 
 # Use the template validation tool in Azure Stack Hub
 
-Use the template validation tool to check whether your Azure Resource Manager [templates](azure-stack-arm-templates.md) are ready to deploy to Azure Stack Hub. The template validation tool is available as a part of the Azure Stack Hub tools GitHub repo. Download the Azure Stack Hub tools by using the steps described in [Download tools from GitHub](../operator/azure-stack-powershell-download.md).
+Use the template validation tool to check whether your Azure Resource Manager [templates](azure-stack-arm-templates.md) are ready to deploy to Azure Stack Hub. The template validation tool is available with the Azure Stack Hub tools GitHub repo. Download the Azure Stack Hub tools by using the steps described in [Download tools from GitHub](../operator/azure-stack-powershell-download.md).
 
 ## Overview
 
@@ -30,7 +30,7 @@ To validate a template, you must first build a cloud capabilities file, and then
 
 Before you use the template validator, run the **AzureRM.CloudCapabilities** PowerShell module to build a JSON file.
 
->[!NOTE]
+> [!NOTE]
 > If you update your integrated system, or add any new services or virtual extensions, you should run this module again.
 
 1. Make sure you have connectivity to Azure Stack Hub. These steps can be done from the Azure Stack Development Kit (ASDK) host, or you can use a [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn) to connect from your workstation.

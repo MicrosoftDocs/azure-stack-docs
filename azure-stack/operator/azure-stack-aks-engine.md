@@ -4,10 +4,10 @@ description: Learn how to add AKS engine prerequisites to the Azure Stack Hub Ma
 author: mattbriggs
 
 ms.topic: article
-ms.date: 2/27/2020
+ms.date: 6/08/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 11/21/2019
+ms.lastreviewed: 6/08/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -17,7 +17,7 @@ ms.lastreviewed: 11/21/2019
 
 # Add the Azure Kubernetes Services (AKS) engine prerequisites to the Azure Stack Hub Marketplace
 
-You can enable your users to set up the Azure Kubernetes Services (AKS) Engine by adding the items described in this article to your Azure Stack Hub. Your users can then deploy a Kubernetes cluster in a single, coordinated operation. This article walks you through the steps you need to make the AKS engine available to your users in both connected and disconnected environments. The AKS engine depends on a service principle identity, and in the marketplace, a Custom Script extension and the AKS Base Image. The AKS engine requires that you are running [Azure Stack Hub 1910](release-notes.md?view=azs-1910) or greater.
+You can enable your users to set up the Azure Kubernetes Services (AKS) Engine by adding the items described in this article to your Azure Stack Hub. Your users can then deploy a Kubernetes cluster in a single, coordinated operation. This article walks you through the steps you need to make the AKS engine available to your users in both connected and disconnected environments. The AKS engine depends on a service principle identity, and in the marketplace, a Custom Script extension and the AKS Base Image. The AKS engine requires that you're running [Azure Stack Hub 1910](release-notes.md?view=azs-1910) or greater.
 
 ## Check your user's service offering
 
@@ -43,7 +43,7 @@ You can add the AKS Base Image to the marketplace by getting the item from Azure
 
 Add the following item to the marketplace:
 
-1. Sign in to the [Administration portal](https://adminportal.local.azurestack.external).
+1. Sign in to the Administration portal `https://adminportal.local.azurestack.external`.
 
 1. Select **All services**, and then under the **ADMINISTRATION** category, select **Marketplace management**.
 
@@ -51,12 +51,12 @@ Add the following item to the marketplace:
 
 1. Enter `AKS Base`.
 
-1. Select the image version that matches the version of the AKS engine. You can find listing of AKS Base Image to AKS engine version at [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions). 
+1. Select the image version that matches the version of the AKS engine. You can find listing of AKS Base Image to AKS engine version at [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions). 
 
     In the list, select:
     - **Publisher**: Azure Kubernetes Service
     - **Offer**: aks
-    - **Version**: AKS Base Image 16.04-LTS Image Distro, October 2019 (2019.10.24 or version that maps to AKS engine)
+    - **Version**: AKS Base Ubuntu 16.04-LTS Image Distro, May 2020 (2020.05.13 or version that maps to AKS engine)
 
 1. Select **Download.**
 
@@ -64,7 +64,7 @@ Add the following item to the marketplace:
 
 You can add the custom script to the marketplace by getting the item from Azure. However, if your Azure Stack Hub is disconnected, use the instructions [Download marketplace items from Azure](azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected) to add the item.  Add the item specified in step 5.
 
-1. Open the [Administration portal](https://adminportal.local.azurestack.external).
+1. Open the Administration portal `https://adminportal.local.azurestack.external`.
 
 1. Select **ALL services** and then under the **ADMINISTRATION** category, select **Marketplace Management**.
 

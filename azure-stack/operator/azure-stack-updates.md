@@ -1,13 +1,13 @@
 ---
 title: Manage updates 
 description: Learn how to manage updates in Azure Stack Hub
-author: IngridAtMicrosoft
+author: sethmanheim
 
 ms.topic: how-to
-ms.date: 05/13/2020
-ms.author: inhenkel
+ms.date: 06/09/2020
+ms.author: sethm
 ms.lastreviewed: 09/10/2019
-ms.reviewer: ppacent
+ms.reviewer: niy
 
 # Intent: As an Azure Stack Hub operator, I want to manage updates so I can keep everything up to date.
 # Keyword: manage updates azure stack hub
@@ -64,7 +64,17 @@ Notice of updates varies on a couple of factors, such as your connection to the 
 
     OEM updates will depend on your manufacturer. You'll need to establish a communication channel with your OEM so that you can be aware of updates from your OEM that need to be applied. For more information about the OEMs and the OEM update process, see [Apply Azure Stack Hub original equipment manufacturer (OEM) updates](azure-stack-update-oem.md).
 
-## Update processes
+### Major version to major version
+
+An update from major version to major version must be step by step: the current environment can only update to the next major version, and you can't skip a major version update.
+
+For example, if your Azure Stack Hub environment is 1908.x, and the latest available update version is 2002.x, you should update from 1908 to 1910, then update to 2002.
+
+### Hotfixes within major versions
+
+Within the same major version number, Azure Stack Hub may release multiple hotfixes. Hotfixes are cumulative; the latest hotfix package includes all past hotfixes for that version. For more information, see [Hotfixes](azure-stack-servicing-policy.md#hotfixes).
+
+## Update process
 
 Once you know you have an update, apply it by using the following steps.
 

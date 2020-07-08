@@ -21,7 +21,7 @@ ms.lastreviewed: 06/11/2019
 ::: moniker range=">=azs-1902"
 ## Create a plan (1902 and later)
 
-1. Sign in to the [Azure Stack Hub administrator portal](https://adminportal.local.azurestack.external).
+1. Sign in to the Azure Stack Hub administrator portal `https://adminportal.local.azurestack.external`.
 
 2. To create a plan and offer that users can subscribe to, select **+ Create a resource**, then **Offers + Plans**, then **Plan**.
   
@@ -65,7 +65,7 @@ ms.lastreviewed: 06/11/2019
 ::: moniker range="<=azs-1901"
 ## Create a plan (1901 and earlier)
 
-1. Sign in to the [Azure Stack Hub administrator portal](https://adminportal.local.azurestack.external).
+1. Sign in to the Azure Stack Hub administrator portal `https://adminportal.local.azurestack.external`.
 
 2. To create a plan and offer that users can subscribe to, select **+ New**, then **Offers + Plans**, then **Plan**.
   
