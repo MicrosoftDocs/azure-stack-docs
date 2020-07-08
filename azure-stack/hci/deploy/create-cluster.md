@@ -23,19 +23,20 @@ You have a choice between two cluster types:
 
 Sites can be in two different states, different cities, different floors, or different rooms. Stretched clusters Using two sites provides disaster recovery and business continuity should a site suffer an outage or failure.
 
-## Before you begin
+## Before you run the wizard
 
-Here are several requirements before you begin:
+Before you run the Create Cluster wizard, make sure you:
 
-- Make sure you have reviewed the hardware requirements and other considerations discussed in the [Before you start] article.
+- Have read the hardware and other requirements in [Before you start].
+- Validate the OEM hardware for each server in the cluster. See [Validate hardware].
+- Install the Azure Stack HCI OS on each server in the cluster. See [Deploy Azure Stack HCI].
+- Install Windows Admin Center on a remote (management) computer. See {Install Windows Admin Center}. Don't run the wizard from a server in the cluster.
+- Have administrative privileges. Use an account that’s a member of the local Administrators group on each server.
 
-- You should run Windows Admin Center from a remote computer, rather than from a host server in the cluster. This remote computer is called the management computer.
+Also, your management computer must be joined to the same Active Directory domain in which you'll create the cluster, or a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
 
-- Your management computer must be joined to the same Active Directory domain in which you'll create the cluster, or a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
 
-- You must have administrative privileges for the cluster. Use an account that’s a member of the local Administrators group on each server.
-
-## Run the Create Cluster wizard
+## Run the wizard
 
 Here are the major steps in the Create Cluster wizard:
 
@@ -173,20 +174,14 @@ After your server cluster is successfully created, you will need to disable the 
 1. Under **Overview**, select **Disable CredSSP**. You will see that the red **CredSSP ENABLED** banner at the top disappears.
 1. Repeat steps 3 and 4 for each server in your cluster.
 
-## Setup the witness
+## After you run the wizard
 
-A witness resource is highly recommended for all clusters. Two-node clusters need a witness so that either server going offline does not cause the other node to become unavailable as well. Three and higher-node clusters need a witness to be able to withstand two servers failing or being offline.  You can use a file share as a witness, or use an Azure cloud witness.
+After the wizard has completed, there are still some steps you need to do to have a fully-functioning cluster:
 
-A cloud witness is recommended if all server nodes have a reliable Internet connection. For more information, see [Deploy a Cloud Witness for a Failover Cluster](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)
-
-1. In Windows Admin Center, under **Tools**, select **Settings**.
-1. In the right pane, select **Witness**.
-1. Under **Witness type**, select one of the following:
-      - **Cloud witness** - enter your Azure storage account name, key and endpoint
-      - **File share witness** - enter the file share path (//server/share)
-
-> [!NOTE]
-> The **Disk witness** option is not suitable for stretched clusters.
+- Create your volumes and virtual disks. See [Create volumes].
+- Setup a witness (highly recommended). See [Setup a witness].
+- For stretched clusters, setup Storage Replica. See [Setup Storage Replica].
+- For stretched clusters, verify successful data replication between sites before deploying VMs and other workloads. See Step 9 in [Create Azure Stack HCI cluster using PowerShell] for more information.
 
 ## Setup volumes and replication (stretched cluster)
 
@@ -233,8 +228,9 @@ For stretched clusters, you should verify successful data replication between si
 
 ## Next steps
 
-- You may want to further validate your cluster. See [Validate server cluster].
-
-- You can deploy VMs. See [Manage VMs on Azure Stack HCI](https://docs.microsoft.com/azure-stack/hci/manage/vm).
-
-- You can also create a cluster using Windows PowerShell. See [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md).
+- Create your volumes and virtual disks. See [Create volumes].
+- Setup a witness (highly recommended). See [Setup a witness].
+- For stretched clusters, setup Storage Replica. See [Setup Storage Replica].
+- For stretched clusters, verify successful data replication between sites before deploying VMs and other workloads. See Step 9 in [Create Azure Stack HCI cluster using PowerShell] for more information.
+- Provision your VMs. See [Manage VMs on Azure Stack HCI](https://docs.microsoft.com/azure-stack/hci/manage/vm).
+- You can also create a cluster using PowerShell. See [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md).
