@@ -11,43 +11,40 @@ ms.date: 07/08/2020
 
 >Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-Windows Admin Center streamlines the process of backing up your Windows Servers to Azure and protecting you from accidental or malicious deletions, corruption and even ransomware. To automate setup, you can connect the Windows Admin Center gateway to Azure.
+Windows Admin Center streamlines backing up the Windows Servers that you manage to Microsoft Azure, as well as protecting you from accidental or malicious deletions, corruption, and even ransomware. To automate setup, you connect Windows Admin Center to Azure to use the Azure Backup service.
 
-Use the following information to configure Backup for you Windows Server and create a Backup policy to backup your server's Volumes and the Windows System State from the Windows Admin Center.
-
-<!---Qualify intro with messaging from Thomas.--->
+This article shows you how to configure Azure Backup, and create a Backup policy for server volumes and Windows system State from Windows Admin Center. This guidance is intended for backing up workloads running on the Azure Stack HCI operating system to Azure.
 
 To learn more about Azure integration with Windows Admin Center, see [Connecting Windows Server to Azure hybrid services](/windows-server/manage/windows-admin-center/azure/).
 
-## How does Azure Backup work with Windows Admin Center?
-**Azure Backup** is the Azure-based service you can use to back up (or protect) and restore your data in the Microsoft cloud. Azure Backup replaces your existing on-premises or off-site backup solution with a cloud-based solution that is reliable, secure, and cost-competitive.
-[Learn more about Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview).
+## How Azure Backup works with Windows Admin Center
+**Azure Backup** is the service that you can use to back up, protect, and restore your data in Azure. Azure Backup replaces either existing on-premises or off-premises backup solutions with a cloud-based solution that is reliable, secure, and cost-competitive.
 
-Azure Backup offers multiple components that you download and deploy on the appropriate computer, server, or in the cloud. The component, or agent, that you deploy depends on what you want to protect. All Azure Backup components (no matter whether you're protecting data on-premises or in Azure) can be used to back up data to a Recovery Services vault in Azure.
+To learn more, see [What is the Azure Backup service?](https://docs.microsoft.com/azure/backup/backup-overview).
 
-The integration of Azure Backup in the Windows Admin Center is ideal for backing up volumes and the Windows System state on-premises Windows physical or virtual servers. This makes for a comprehensive mechanism to backup File Servers, Domain Controllers and IIS Web Servers.
+Azure Backup offers multiple components that you download and deploy on the appropriate computer, server, or in the cloud. The component, or agent, that you deploy depends on what you want to protect. All Azure Backup components can back up data to a Recovery Services vault in Azure, no matter whether you're protecting data on-premises or in Azure.
 
-Windows Admin Center exposes the Azure Backup integration via the native **Backup** tool. The **Backup** tool provides setup, management and monitoring experiences to quickly start backing up your servers, perform common backup and restore operations and to monitor overall backup health of your Windows Servers.
+Azure Backup integration with Windows Admin Center is ideal for backing up volumes and the Windows system state for either on-premises Windows Servers or virtual servers. The comprehensive process backs up file servers, domain controllers, and IIS web servers.
+
+You access Azure Backup in Windows Admin Center via the **Backup** tool. The **Backup** tool setup, management, and monitoring capabilities let you quickly start backing up servers, perform backup and restore operations, and monitor the overall backup health of the Windows Servers that you manage.
 
 ## Prerequisites
-The following is required to use Azure Backup:
+The following prerequisites are required to use Azure Backup:
 - An Azure Account with at least one active subscription
-- The target Windows Servers that you want to back up must have Internet access to Azure
+- Internet access to Azure for the target Windows Servers
 - A connection from the Windows Admin Center gateway to Azure
 
     To learn more, see [Configuring Azure integration](/windows-server/manage/windows-admin-center/azure/azure-integration)
 
-## Set up Azure Backup
-<!---Restate heading so it doesn't repeat Step 2 below.--->
+## Getting started with Azure Backup
+When you first select the **Backup** tool for a server connection to Azure, the **Welcome to Azure Backup** page displays. Select **Set up Azure Backup** to start the Azure Backup setup wizard. The following sections detail the steps in the wizard.
 
-When you click on the **Backup** tool for a server connection on which Azure Backup is not yet enabled, you would see the **Welcome to Azure Backup** screen. Click the **Set up Azure Backup** button. This would open the Azure Backup setup wizard. Follow the steps as listed below in the wizard to back up your server.
+If Azure Backup is already configured for a server connection, selecting the **Backup** tool opens the **Backup Dashboard**. See the ([Management and Monitoring](#management-and-monitoring)) section for information about operations and tasks that you can perform from the dashboard.
 
-If Azure Backup is already configured, clicking on the **Backup** tool will open the **Backup Dashboard**. Refer to the ([Management and Monitoring](#management-and-monitoring)) section to discover operations and tasks that can be performed from the dashboard.
-
-To start the workflow to back up a Windows Server, open a server connection, select the **Backup** tool, and then and use the steps in the following sections.
+<!---Complete edit pass on all content below against Thomas' screenshot in his mail.--->
 
 ### Step 1: Log on to Microsoft Azure
-Sign into you Azure Account. 
+Sign into you Azure Account.
 
 > [!NOTE]
 > If you have connected your Windows Admin Center gateway to Azure, you should be automatically logged in to Azure. You can click **sign-out** to further sign-in as a different user.
