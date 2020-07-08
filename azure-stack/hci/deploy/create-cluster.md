@@ -5,7 +5,7 @@ author: v-dasis
 ms.topic: article
 ms.type: how-to
 ms.prod: 
-ms.date: 07/02/2020
+ms.date: 07/08/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -183,9 +183,9 @@ After the wizard has completed, there are still some steps you need to do to hav
 - For stretched clusters, setup Storage Replica. See [Setup Storage Replica].
 - For stretched clusters, verify successful data replication between sites before deploying VMs and other workloads. See Step 9 in [Create Azure Stack HCI cluster using PowerShell] for more information.
 
-## Setup volumes and replication (stretched cluster)
+## Setup replication (stretched cluster)
 
-For stretched clusters, you will need to create data and log volumes for each server node pair across sites, create a replication group for each site, and setup replication between the sites.
+For stretched clusters, Storage Replica is used to provide replication between sites. Specifically, you need to create data and log volumes for each server node pair across sites, create a replication group for each site, and setup a replication partnership between the sites.
 
 There are two types of stretched clusters, active/passive and active/active.
 You can set up active-passive site replication, where there is a preferred site and direction for replication. Active-active replication is where replication can happen bi-directionally from either site. This article covers the active/passive configuration only.
@@ -222,13 +222,12 @@ OK, let's begin:
 1. Under **Tools**, select **Storage Replica**.
 1. In the right pane, under **Partnerships**, verify that the replication partnership has been successfully created.
 
-## Verify replication (stretched cluster)
-
-For stretched clusters, you should verify successful data replication between sites before deploying VMs and other workloads. See Step 9 in [Create Azure Stack HCI cluster using PowerShell] for more information.
-
 ## Next steps
 
-- Create your volumes and virtual disks. See [Create volumes].
+- Register your cluster with Azure. See [Register Azure Stack Hub with Azure](https://docs.microsoft.com/azure-stack/operator/azure-stack-registration?view=azs-2002&pivots=state-connected).
+
+- Validate the cluster post-creation. See [Validate the cluster].
+- Create volumes and virtual disks. See [Create volumes].
 - Setup a witness (highly recommended). See [Setup a witness].
 - For stretched clusters, setup Storage Replica. See [Setup Storage Replica].
 - For stretched clusters, verify successful data replication between sites before deploying VMs and other workloads. See Step 9 in [Create Azure Stack HCI cluster using PowerShell] for more information.
