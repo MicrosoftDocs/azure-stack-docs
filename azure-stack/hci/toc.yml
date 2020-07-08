@@ -12,6 +12,9 @@
   items:
   - name: Before you start
     href: deploy/before-you-start.md
+  - name: Setup a witness
+    href: deploy/witness.md
+
 - name: Manage
   items:
   - name: Create volumes
