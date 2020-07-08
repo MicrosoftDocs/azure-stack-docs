@@ -16,10 +16,26 @@ ms.reviewer: JasonGerend
 
 In this article you will learn how to use Windows Admin Center to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. The Create Cluster wizard in Windows Admin Center will do most of the heavy lifting for you.
 
+## Cluster types
+
 You have a choice between two cluster types:
 
 - Standard cluster with at least two server nodes, residing in a single site.
 - Stretched cluster with at least four server nodes that span across two sites, with at least two nodes per site.
+
+In addition, there are two types of stretched clusters, active/passive and active/active. You can set up active-passive site replication, where there is a preferred site and direction for replication. Active-active replication is where replication can happen bi-directionally from either site. This article covers the active/passive configuration only.
+
+### Active/passive stretched cluster
+
+The following diagram shows Site 1 as the active site with replication to Site 2, a unidirectional replication.
+
+:::image type="content" source="media/cluster/stretch-active-passive.png" alt-text="Active/passive stretched cluster scenario" lightbox="media/cluster/stretch-active-passive.png":::
+
+### Active/active stretched cluster
+
+The following diagram shows both Site 1 and Site 2 as being active sites, with bidirectional replication to the other site.
+
+:::image type="content" source="media/cluster/stretch-active-active.png" alt-text="Active/active stretched cluster scenario" lightbox="media/cluster/stretch-active-active.png":::
 
 Sites can be in two different states, different cities, different floors, or different rooms. Stretched clusters Using two sites provides disaster recovery and business continuity should a site suffer an outage or failure.
 
@@ -164,9 +180,11 @@ Congratulations, you now have a cluster.
 
 After the cluster is created, it can take time for the cluster name to be replicated across your domain. If resolving the cluster isn't successful after some time, in most cases you can substitute the computer name of a server node in the the cluster instead of the cluster name.
 
-## Disable CredSSP
+## After you run the wizard
 
-After your server cluster is successfully created, you will need to disable the Credential Security Support Provider (CredSSP) protocol on each server for security purposes. CredSSP needed to be enabled for the Create Cluster wizard. For more information, see [CVE-2018-0886](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2018-0886).
+After the wizard has completed, there are still some important tasks you need to complete in order to have a fully-functioning cluster.
+
+The first task is to disable the Credential Security Support Provider (CredSSP) protocol on each server for security purposes. Remember that CredSSP needed to be enabled for the wizard. For more information, see [CVE-2018-0886](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2018-0886).
 
 1. In Windows Admin Center, under **All connections**, select the cluster you just created.
 1. Under **Tools**, select **Servers**.
@@ -174,33 +192,17 @@ After your server cluster is successfully created, you will need to disable the 
 1. Under **Overview**, select **Disable CredSSP**. You will see that the red **CredSSP ENABLED** banner at the top disappears.
 1. Repeat steps 3 and 4 for each server in your cluster.
 
-## After you run the wizard
+OK, now here are the other tasks you will need to do:
 
-After the wizard has completed, there are still some steps you need to do to have a fully-functioning cluster:
-
-- Create your volumes and virtual disks. See [Create volumes].
 - Setup a witness (highly recommended). See [Setup a witness].
+- Create your volumes and virtual disks. See [Create volumes].
 - For stretched clusters, setup Storage Replica. See [Setup Storage Replica].
 - For stretched clusters, verify successful data replication between sites before deploying VMs and other workloads. See Step 9 in [Create Azure Stack HCI cluster using PowerShell] for more information.
+
 
 ## Setup replication (stretched cluster)
 
 For stretched clusters, Storage Replica is used to provide replication between sites. Specifically, you need to create data and log volumes for each server node pair across sites, create a replication group for each site, and setup a replication partnership between the sites.
-
-There are two types of stretched clusters, active/passive and active/active.
-You can set up active-passive site replication, where there is a preferred site and direction for replication. Active-active replication is where replication can happen bi-directionally from either site. This article covers the active/passive configuration only.
-
-### Active/passive stretched cluster
-
-The following diagram shows Site 1 as the active site with replication to Site 2, a unidirectional replication.
-
-:::image type="content" source="media/cluster/stretch-active-passive.png" alt-text="Active/passive stretched cluster scenario" lightbox="media/cluster/stretch-active-passive.png":::
-
-### Active/active stretched cluster
-
-The following diagram shows both Site 1 and Site 2 as being active sites, with bidirectional replication to the other site.
-
-:::image type="content" source="media/cluster/stretch-active-active.png" alt-text="Active/active stretched cluster scenario" lightbox="media/cluster/stretch-active-active.png":::
 
 OK, let's begin:
 
@@ -226,10 +228,10 @@ OK, let's begin:
 
 - Register your cluster with Azure. See [Register Azure Stack Hub with Azure](https://docs.microsoft.com/azure-stack/operator/azure-stack-registration?view=azs-2002&pivots=state-connected).
 
-- Validate the cluster post-creation. See [Validate the cluster].
-- Create volumes and virtual disks. See [Create volumes].
 - Setup a witness (highly recommended). See [Setup a witness].
+- Create volumes and virtual disks. See [Create volumes].
 - For stretched clusters, setup Storage Replica. See [Setup Storage Replica].
 - For stretched clusters, verify successful data replication between sites before deploying VMs and other workloads. See Step 9 in [Create Azure Stack HCI cluster using PowerShell] for more information.
+- Further validate the cluster post-creation. See [Validate the cluster].
 - Provision your VMs. See [Manage VMs on Azure Stack HCI](https://docs.microsoft.com/azure-stack/hci/manage/vm).
 - You can also create a cluster using PowerShell. See [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md).
