@@ -15,6 +15,8 @@ Windows Admin Center streamlines the process of backing up your Windows Servers 
 
 Use the following information to configure Backup for you Windows Server and create a Backup policy to backup your server's Volumes and the Windows System State from the Windows Admin Center.
 
+<!---Qualify intro with messaging from Thomas.--->
+
 To learn more about Azure integration with Windows Admin Center, see [Connecting Windows Server to Azure hybrid services](/windows-server/manage/windows-admin-center/azure/).
 
 ## What is Azure Backup and how does it work with Windows Admin Center?
@@ -32,6 +34,7 @@ The following is required to use Azure Backup:
 - An Azure Account with at least one active subscription
 - The target Windows Servers that you want to back up must have Internet access to Azure
 - A connection from the Windows Admin Center gateway to Azure
+
     To learn more, see [Configuring Azure integration](/windows-server/manage/windows-admin-center/azure/azure-integration)
 
 ## Set up Azure Backup
@@ -91,12 +94,8 @@ Once you have successfully setup Azure Backup, you would see the **Backup Dashbo
 
 ## Next steps
 For more information, see also:
+- [Protect Azure Stack HCI VMs using Azure Site Recovery](https://docs.microsoft.com/azure-stack/hci/manage/azure-site-recovery)
 
-
-<!---Set Next steps link to next in the list of the toc file. Placeholders for format examples. Replace all before initial topic review.--->
-
-- [Azure Stack HCI overview](../overview.md)
-- [Understand the cache in Azure Stack HCI](cache.md)
 
 <!---Example figure format--->
 <!---:::image type="content" source="media/attach-gpu-to-linux-vm/vlc-player.png" alt-text="VLC Player Screenshot":::--->
