@@ -10,68 +10,68 @@ ms.lastreviewed: 06/03/2020
 
 ### Delete a VM with dependencies using PowerShell
 
-In the case where you cannot delete the resource group, either the dependencies are not in the same resource group, or there are other resources, follow the steps below:
+In the case where you cannot delete the resource group, either the dependencies are not in the same resource group, or there are other resources, follow these steps.
 
-Connect to the your Azure Stack Hub environment, and then update the following variables with your VM name and resource group. For instructions on connecting to your Powershell session to Azure Stack Hub, see [Connect to Azure Stack Hub with PowerShell as a user](azure-stack-powershell-configure-user.md).
+Connect to the your Azure Stack Hub environment, and then update the following variables with your VM name and resource group. For instructions on connecting to your PowerShell session to Azure Stack Hub, see [Connect to Azure Stack Hub with PowerShell as a user](azure-stack-powershell-configure-user.md).
 
 ```powershell
-$vmName = 'DELETEVM'
-$rgName = 'RESOURCEGROUP'
-$vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $rgName
+$machineName = 'VM_TO_DELETE'
+$resGroupName = 'RESOURCE_GROUP'
+$machine = Get-AzureRmVM -Name $machineName -ResourceGroupName $resGroupName
 ```
 
 Retrieve the VM information and name of dependencies. In the same session, run the following cmdlets:
 
 ```powershell
- $azResourceParams = @{
- 'ResourceName' = $vmName
+ $azResParams = @{
+ 'ResourceName' = $machineName
  'ResourceType' = 'Microsoft.Compute/virtualMachines'
-     'ResourceGroupName' = $rgName
+     'ResourceGroupName' = $resGroupName
  }
- $vmResource = Get-AzureRmResource @azResourceParams
+ $vmResource = Get-AzureRmResource @azResParams
  $vmId = $vmResource.Properties.VmId
 ```
 
 Delete the boot diagnostic storage container. In the same session, run the following cmdlets:
 
 ```powershell
-$diagSa = [regex]::match($vm.DiagnosticsProfile.bootDiagnostics.storageUri, '^http[s]?://(.+?)\.').groups[1].value
-$diagContainerName = ('bootdiagnostics-{0}-{1}' -f $vm.Name.ToLower().Substring(0, 9), $vmId)
-$diagSaRg = (Get-AzureRmStorageAccount | where { $_.StorageAccountName -eq $diagSa }).ResourceGroupName
-$saParams = @{
-    'ResourceGroupName' = $diagSaRg
-    'Name' = $diagSa }
-Get-AzureRmStorageAccount @saParams | Get-AzureStorageContainer | where { $_.Name-eq $diagContainerName } | Remove-AzureStorageContainer -Force
+$container = [regex]::match($machine.DiagnosticsProfile.bootDiagnostics.storageUri, '^http[s]?://(.+?)\.').groups[1].value
+$diagContainerName = ('bootdiagnostics-{0}-{1}' -f $machine.Name.ToLower().Substring(0, 9), $vmId)
+$containerRg = (Get-AzureRmStorageAccount | where { $_.StorageAccountName -eq $container }).ResourceGroupName
+$storeParams = @{
+    'ResourceGroupName' = $containerRg
+    'Name' = $container }
+Get-AzureRmStorageAccount @storeParams | Get-AzureStorageContainer | where { $_.Name-eq $diagContainerName } | Remove-AzureStorageContainer -Force
 ```
 
 Delete the VM. The cmdlet takes some time to run. In the same session, run the following cmdlets:
 
 ```powershell
-$vm | Remove-AzureRmVM -Force
+$machine | Remove-AzureRmVM -Force
 ```
 
-Remove the vNic.
+Remove the the virtual network interface.
 
 ```powershell
-$vm | Remove-AzureRmNetworkInterface -Force
+$machine | Remove-AzureRmNetworkInterface -Force
 ```
 
-Remove the OS disc.
+Delete the operating system disk.
 
 ```powershell
-$osDiskUri = $vm.StorageProfile.OSDisk.Vhd.Uri
-$osDiskContainerName = $osDiskUri.Split('/')[-2]
-$osDiskStorageAcct = Get-AzureRmStorageAccount | where { $_.StorageAccountName -eq $osDiskUri.Split('/')[2].Split('.')[0] }
-$osDiskStorageAcct | Remove-AzureStorageBlob -Container $osDiskContainerName -Blob $osDiskUri.Split('/')[-1]
+$osVhdUri = $machine.StorageProfile.OSDisk.Vhd.Uri
+$osDiskConName = $osVhdUri.Split('/')[-2]
+$osDiskStorageAcct = Get-AzureRmStorageAccount | where { $_.StorageAccountName -eq $osVhdUri.Split('/')[2].Split('.')[0] }
+$osDiskStorageAcct | Remove-AzureStorageBlob -Container $osDiskConName -Blob $osVhdUri.Split('/')[-1]
 ```
 
-Remove any attached data disks.
+Remove data disks attached to your VM.
 
 ```powershell
-if ($vm.DataDiskNames.Count -gt 0)
+if ($machine.DataDiskNames.Count -gt 0)
  {
     Write-Verbose -Message 'Removing data disks...'
-        foreach ($uri in $vm.StorageProfile.DataDisks.Vhd.Uri)
+        foreach ($uri in #machine.StorageProfile.DataDisks.Vhd.Uri)
         {
             $dataDiskStorageAcct = Get-AzureRmStorageAccount -Name $uri.Split('/')[2].Split('.')[0]
         
