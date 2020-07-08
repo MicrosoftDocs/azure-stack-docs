@@ -8,7 +8,7 @@ ms.reviewer: kivenkat
 ms.lastreviewed: 06/03/2020
 ---
 
-## Delete a VM with dependencies using PowerShell
+### Delete a VM with dependencies using PowerShell
 
 In the case where you cannot delete the resource group, either the dependencies are not in the same resource group, or there are other resources, follow the steps below:
 

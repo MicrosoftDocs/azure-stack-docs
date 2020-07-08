@@ -4,11 +4,10 @@ description: How to delete a VM (virtual machine) with dependencies on Azure Sta
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 06/04/2020
+ms.date: 07/08/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 06/04/2020
-zone_pivot_groups: delete-vm
+ms.lastreviewed: 07/08/2020
 
 # Intent: As an Azure Stack user, I want to delete a VM with dependencies in Azure Stack Hub.
 # Keyword: virtual machine delete
@@ -23,13 +22,15 @@ If you delete an Azure Stack Hub VM, Azure Stack Hub won't automatically remove 
 
 When you create a new VM you typically create a new resource group and put all the dependencies in that resource group. When you want to delete the VM and all its dependencies you can delete the resource group. The Azure Resource Manager will handle the dependencies to successfully delete them. There are times when you cannot delete the resource group to remove the VM. For example, the VM may contain resources that are not dependencies of the VM that you would like to keep.
 
-::: zone pivot="delete-vm-portal"
-[!INCLUDE [Delete a VM with dependencies using the portal](../includes/howto-vm-delete-portal.md)]
-::: zone-end
+## Delete a VM with dependencies
 
-::: zone pivot="delete-vm-ps"
+### [With the portal](#tab/portal)
+
+[!INCLUDE [Delete a VM with dependencies using the portal](../includes/howto-vm-delete-portal.md)]
+
+### [With PowerShell](#tab/ps)
+
 [!INCLUDE [Delete a VM with dependencies using PowerShell](../includes/howto-vm-delete-ps.md)]
-::: zone-end
 
 ## Next steps
 
