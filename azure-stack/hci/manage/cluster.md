@@ -5,12 +5,12 @@ ms.topic: how-to
 author: v-dasis
 ms.author: v-dasis
 ms.reviewer: jgerend
-ms.date: 05/20/2020
+ms.date: 07/08/2020
 ---
 
 # Manage Azure Stack HCI clusters using Windows Admin Center
 
-> Applies to: Windows Server 2019
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
 Windows Admin Center can be used to manage your clusters in Azure Stack HCI. Specifically, you will be using the Cluster Manager extension in Windows Admin Center to manage your clusters.
 
@@ -33,6 +33,26 @@ To view this information, select the cluster name under **All connections**, the
 - Total cluster input/output operations/second (IOPS)
 - Average cluster latency in milliseconds
 
+## Change cluster storage settings
+
+There are two settings you can change related to Storage Spaces Direct that can be applied to your cluster.
+
+1. In Windows Admin Center, click **Cluster Manager** from the top drop-down arrow.
+1. Under **Tools**, click **Settings** at the bottom.
+1. To configure the storage cache, select **Storage Spaces Direct**, then configure the following:
+
+   - for **Persistent cache**, select either **Enabled** or **Disabled**
+
+   - for **Cache mode for HDD**, select **Read only**, **Write only**, or **Read/Write**
+
+   - for **Cache mode for SSD**, select **Read only**, **Write only**, or **Read/Write**
+
+        :::image type="content" source="media/manage-cluster/cluster-settings-ssd.png" alt-text="cluster Storage Spaces Direct screen":::
+
+1. To use server memory to cache frequent reads, select **In-memory cache** and specify the maximum memory to be used per sever. Also see [Using Storage Spaces Direct with the CSV in-memory read cache](https://docs.microsoft.com/windows-server/storage/storage-spaces/csv-cache).
+
+    :::image type="content" source="media/manage-cluster/cluster-settings-memory.png" alt-text="cluster In-memory cache screen":::
+
 ## Change cluster general settings
 
 There are five general settings that can be applied to your cluster.
@@ -41,7 +61,7 @@ There are five general settings that can be applied to your cluster.
 1. Under **Tools**, click **Settings**.
 1. To change the cluster name, select **Access point** and enter the new name.
 
-    :::image type="content" source="media/manage-cluster/cluster-settings-access.png" alt-text="cluster Access point screen":::
+    :::image type="content" source="media/manage-cluster/cluster-settings-access.png" alt-text="Active/active stretched cluster scenario" lightbox="media/manage-cluster/cluster-settings-access.png":::
 
 1. To control node shutdown behavior, select **Node shutdown behavior** and ensure the checkbox is enabled. This moves any virtual machines from the node first to allow graceful node shutdown.
 
@@ -111,26 +131,6 @@ There are five Hyper-V host settings that can be applied to your cluster.
 1. To specify the number of storage migrations that can be performed at the same time, select **Storage Migration**, then select a number.
 
     :::image type="content" source="media/manage-cluster/cluster-settings-sto-migration.png" alt-text="cluster Storage Migration screen":::
-
-## Change cluster storage settings
-
-There are two settings you can change related to Storage Spaces Direct that can be applied to your cluster.
-
-1. In Windows Admin Center, click **Cluster Manager** from the top drop-down arrow.
-1. Under **Tools**, click **Settings** at the bottom.
-1. To configure the storage cache, select **Storage Spaces Direct**, then configure the following:
-
-   - for **Persistent cache**, select either **Enabled** or **Disabled**
-
-   - for **Cache mode for HDD**, select **Read only**, **Write only**, or **Read/Write**
-
-   - for **Cache mode for SSD**, select **Read only**, **Write only**, or **Read/Write**
-
-        :::image type="content" source="media/manage-cluster/cluster-settings-ssd.png" alt-text="cluster Storage Spaces Direct screen":::
-
-1. To use server memory to cache frequent reads, select **In-memory cache** and specify the maximum memory to be used per sever. Also see [Using Storage Spaces Direct with the CSV in-memory read cache](https://docs.microsoft.com/windows-server/storage/storage-spaces/csv-cache).
-
-    :::image type="content" source="media/manage-cluster/cluster-settings-memory.png" alt-text="cluster In-memory cache screen":::
 
 ## Next steps
 
