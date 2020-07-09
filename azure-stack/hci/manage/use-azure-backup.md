@@ -39,35 +39,34 @@ The following prerequisites are required to use Azure Backup:
 ## Getting started with Azure Backup
 When you first select the **Backup** tool in Windows Admin Center to establish a server connection to Azure, the **Welcome to Azure Backup** page displays. Select **Set up Azure Backup** to start the Azure Backup setup wizard. The following sections detail the steps in the wizard.
 
-If Azure Backup is already configured for a server connection, selecting the **Backup** tool opens the **Backup Dashboard**. See the ([Management and Monitoring](#management-and-monitoring)) section for information about operations and tasks that you can perform from the dashboard.
+If Azure Backup is already configured for a server connection, selecting the **Backup** tool opens the **Backup Dashboard**. See the ([Management and monitoring](#management-and-monitoring)) section for information about operations and tasks that you can perform from the dashboard.
 
 ### Step 1: Log on to the Microsoft Azure portal
-Sign in to your Azure Account.
+Sign in to your Azure account.
 
 > [!NOTE]
-> If you've already connected the Windows Admin Center gateway to Azure, you should automatically log on to the portal. Select **sign out** to sign in as a different user.
+> If you've already connected the Windows Admin Center gateway to Azure, you should automatically log on to the portal. Select **sign out** to then sign in as a different user.
 
 ### Step 2: Set up Azure Backup
-Select the appropriate settings for Azure Backup as described below:
-
-- **Subscription Id:** The Azure subscription that you want to use for backing up Windows Server to Azure. All Azure assets like the Azure Resource Group and the Recovery Services Vault will be created and associated with the selected Subscription.
+Select the following settings for Azure Backup:
+- **Subscription Id:** The Azure subscription that you want to use for backing up Windows Server to Azure. All Azure assets like the Azure Resource Group and the Recovery Services Vault will be created and associated with the selected subscription.
 - **Vault:** The Recovery Services Vault is the location where your servers' backups will be stored. You can use either an existing vault or Windows Admin Center will create a new one.  
 - **Resource Group:** The Azure Resource Group is a container for a collection of resources. The Recovery Services vault is either created or contained in the specified Resource Group. You can use either an existing Resource Group or Windows Admin Center will create a new one.
 - **Location:** The Azure region where the Recovery Services Vault will be created. We recommend to select the Azure region that is closest to the Windows Server that you are backing up.
 
 ### Step 3: Select backup items and schedule
-- Select the items that you want to back up from your server. Windows Admin Center lets you choose among a combination of **Volumes** and the **Windows System State**, and provides an estimated size of the data that you've selected to back up.
+- Select the items that you want to back up from your server. Windows Admin Center lets you choose a combination of volumes and Windows System State, and provides an estimated size of the data that you've selected to back up.
 
     > [!NOTE]
-    > The first backup is a full-backup of all the selected data. Subsequent backups are incremental and transfer only changes to the data that have occurred since the previous backup.
+    > The first backup is a full backup of all the selected data. Subsequent backups are incremental and transfer only changes to the data that have occurred since the previous backup.
 
-- Select from multiple preset **Backup Schedules** for your System State and Volumes.
+- Select from multiple preset **Backup Schedules** for your Windows System State and volumes.
 
 ### Step 4: Enter an encryption passphrase
-- Enter an **Encryption Passphrase** of your choice (minimum 16 characters).  Azure Backup secures your backup data with a user-configured and user-managed encryption passphrase. The encryption passphrase is required to recover data from Azure Backup.
+- Enter an **Encryption Passphrase** that has a minimum of 16 characters. Azure Backup secures your backup data with an encryption passphrase that you create and manage. The encryption passphrase is required to recover data from Azure Backup.
 
     > [!NOTE]
-    > The passphrase must be stored in a secure offsite location, such as another server or the [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal). Microsoft does not store the passphrase and cannot retrieve or reset the passphrase if it is lost or forgotten.
+    > Store the passphrase in a secure offsite location, such as another server or the [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal). Microsoft does not store the passphrase and cannot retrieve or reset the passphrase if it is lost or forgotten.
 
 - Review all of the settings on the wizard page and select **Apply**.
 
@@ -78,17 +77,12 @@ Windows Admin Center then performs the following operations:
 1. Creates the Backup and Retention schedule according to the selected options associated with the Windows Server.
 
 ## Management and monitoring
-Once you have successfully setup Azure Backup, you would see the **Backup Dashboard** when you open the Backup tool for an existing server connection. You can perform the following tasks from the **Backup Dashboard**
-
-- **Access the Vault in Azure:** You can click on the **Recovery Services Vault** link in the **Overview** tab of the **Backup Dashboard** to be taken to the Vault in Azure to perform a [rich set of management operations](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server)
-- **Perform an ad hoc backup:** Click on **Backup Now** to take an ad hoc backup. 
-- **Monitor Jobs and Configure alert notifications:** Navigate to the **Jobs** tab of the dashboard to monitor on-going or past jobs and [configure alert notifications](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#configuring-notifications-for-alerts) to receive emails for any failed jobs or other backup related alerts.
-- **View Recovery Points and Recover Data:** Click on the **Recovery Points** tab of the dashboard to view the Recovery Points and click on **Recover Data** for steps to recover you data from Azure.
+After successfully setting up Azure Backup, you'll see the **Backup Dashboard** when you open the **Backup** tool for an existing server connection. You can perform the following tasks from the dashboard:
+- **Access the vault in Azure:** On the **Overview** tab, select  **Recovery Services Vault** to access the vault where you can perform many management operations. To learn more, see [Monitor and manage Recovery Services vaults](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server).
+- **Perform an ad hoc backup:** Select **Backup Now** to make an ad hoc backup. 
+- **Monitor jobs and configure alert notifications:** Navigate to the **Jobs** tab to monitor ongoing or past jobs, and [configure alert notifications](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#configuring-notifications-for-alerts) to receive email on failed jobs and other backup alerts.
+- **View recovery points and recover data:** Select the **Recovery Points** tab to view recovery points, and select **Recover Data** for steps on how to recover your data from Azure.
 
 ## Next steps
 For more information, see also:
 - [Protect Azure Stack HCI VMs using Azure Site Recovery](https://docs.microsoft.com/azure-stack/hci/manage/azure-site-recovery)
-
-
-<!---Example figure format--->
-<!---:::image type="content" source="media/attach-gpu-to-linux-vm/vlc-player.png" alt-text="VLC Player Screenshot":::--->
