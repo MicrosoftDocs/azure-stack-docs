@@ -29,7 +29,7 @@ PowerShell commands for Azure Stack are installed through the PowerShell Gallery
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 ```
 
-Use API version profiles to specify Azure Stack compatible AzureRM modules.  API version profiles provide a way to manage version differences between Azure and Azure Stack. An API version profile is a set of AzureRM PowerShell modules with specific API versions. The **AzureRM.BootStrapper** module that's available through the PowerShell Gallery provides PowerShell cmdlets that are required to work with API version profiles.
+Use API version profiles to specify Azure Stack compatible Az modules.  API version profiles provide a way to manage version differences between Azure and Azure Stack. An API version profile is a set of Az PowerShell modules with specific API versions. The **Az.BootStrapper** module that's available through the PowerShell Gallery provides PowerShell cmdlets that are required to work with API version profiles.
 
 You can install the latest Azure Stack PowerShell module with or without internet connectivity to the ASDK host computer:
 
@@ -43,15 +43,15 @@ You can install the latest Azure Stack PowerShell module with or without interne
   Get-Module -Name Azs.* -ListAvailable | Uninstall-Module -Force -Verbose
   Get-Module -Name Azure* -ListAvailable | Uninstall-Module -Force -Verbose
 
-  # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
-  Install-Module -Name AzureRM.BootStrapper
+  # Install the Az.BootStrapper module. Select Yes when prompted to install NuGet
+  Install-Module -Name Az.BootStrapper
 
   # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
-  Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
+  Use-AzProfile -Profile 2019-03-01-hybrid -Force
   Install-Module -Name AzureStack -RequiredVersion 1.8.0
   ```
 
-  If the installation is successful, the AzureRM and AzureStack modules are displayed in the output.
+  If the installation is successful, the Az and AzureStack modules are displayed in the output.
 
 - **Without an internet connection** from the ASDK host computer: In a disconnected scenario, you must first download the PowerShell modules to a machine that has internet connectivity using the following PowerShell commands:
 
@@ -59,13 +59,13 @@ You can install the latest Azure Stack PowerShell module with or without interne
   $Path = "<Path that is used to save the packages>"
 
   Save-Package `
-    -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.3.0
+    -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Az -Path $Path -Force -RequiredVersion 2.3.0
   
   Save-Package `
     -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.5.0
   ```
 
-  Next, copy the downloaded packages to the ASDK computer and register the location as the default repository and install the AzureRM and AzureStack modules from this repository:
+  Next, copy the downloaded packages to the ASDK computer and register the location as the default repository and install the Az and AzureStack modules from this repository:
 
     ```powershell  
     $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
@@ -73,7 +73,7 @@ You can install the latest Azure Stack PowerShell module with or without interne
 
     Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
 
-    Install-Module AzureRM -Repository $RepoName
+    Install-Module Az -Repository $RepoName
 
     Install-Module AzureStack -Repository $RepoName
     ```

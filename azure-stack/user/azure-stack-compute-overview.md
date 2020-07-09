@@ -64,7 +64,7 @@ The following table shows how to find the information for an image:
 |Method|Description|
 |---------|---------|
 |Azure Stack Hub portal|The values are automatically specified for you when you select an image to use.|
-|Azure Stack Hub PowerShell|`Get-AzureRMVMImagePublisher -Location "location"`<br>`Get-AzureRMVMImageOffer -Location "location" -Publisher "publisherName"`<br>`Get-AzureRMVMImageSku -Location "location" -Publisher "publisherName" -Offer "offerName"`|
+|Azure Stack Hub PowerShell|`Get-AzVMImagePublisher -Location "location"`<br>`Get-AzVMImageOffer -Location "location" -Publisher "publisherName"`<br>`Get-AzVMImageSku -Location "location" -Publisher "publisherName" -Offer "offerName"`|
 |REST APIs     |[List image publishers](/rest/api/compute/platformimages/platformimages-list-publishers)<br>[List image offers](/rest/api/compute/platformimages/platformimages-list-publisher-offers)<br>[List image SKUs](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus)|
 
 You can choose to upload and use your own image. If you do, the publisher name, offer, and SKU aren't used.

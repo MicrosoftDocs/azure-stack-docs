@@ -66,8 +66,8 @@ Before applying the following steps ensure that no operation is currently in pro
 1. Open PowerShell and add your Azure Stack Hub environment. This requires [Azure Stack Hub PowerShell to be installed](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install) on your computer.
 
    ```powershell
-   Add-AzureRmEnvironment -Name AzureStack -ARMEndpoint https://adminmanagement.local.azurestack.external
-   Add-AzureRmAccount -Environment AzureStack
+   Add-AzEnvironment -Name AzureStack -ARMEndpoint https://adminmanagement.local.azurestack.external
+   Add-AzAccount -Environment AzureStack
    ```
 
 2. Run the following command to restart the Fabric Resource Provider Role.
