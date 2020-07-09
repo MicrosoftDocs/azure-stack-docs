@@ -29,15 +29,15 @@ Download the latest version of **AzsReadinessChecker** from the [PowerShell Gall
 
 ## Install and configure
 
-### [Az PowerShell](#tab/rm)
+### [AzureRM PowerShell](#tab/rm)
 
 ### Prerequisites
 
 The following prerequisites are required:
 
-#### Az PowerShell modules
+#### AzureRM PowerShell modules
 
-You will need to have the Az PowerShell modules installed. For instructions, see [Install PowerShell Az module](azure-stack-powershell-install.md).
+You will need to have the Az PowerShell modules installed. For instructions, see [Install PowerShell AzureRM module](azure-stack-powershell-install.md).
 
 #### The computer on which the tool runs
 
@@ -209,7 +209,7 @@ Invoke-AzsRegistrationValidation Completed
 **Resolution** - In PowerShell, run the following command and follow the prompts to reset the password.
 
 ```powershell
-Login-AzAccount
+Login-AzureRMAccount
 ```
 
 Another way is to sign in to the [Azure portal](https://portal.azure.com) as the account owner, and the user will be forced to change the password.
@@ -232,7 +232,7 @@ Invoke-AzsRegistrationValidation Completed
 **Resolution** - Confirm that the account is valid for the specified Azure environment. In PowerShell, run the following command to verify the account is valid for a specific environment:
 
 ```powershell
-Login-AzAccount -EnvironmentName AzureChinaCloud
+Login-AzureRmAccount -EnvironmentName AzureChinaCloud
 ```
 
 ## Next Steps
