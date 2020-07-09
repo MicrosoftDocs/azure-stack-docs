@@ -7,11 +7,15 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ---
 
-# Why does Azure Stack HCI collect telemetry and diagnostic information?
+# Telemetry and diagnostic data collection in Azure Stack HCI
 
 > Applies to Azure Stack HCI v20H2, Azure Stack HCI
 
-Azure Stack HCI records telemetry and diagnostic information for billing purposes, for software updates, to improve systems stability, and to inform our decisions and focus our efforts in providing the most robust, most valuable HCI platform. This topic explains the telemetry we collect, the benefits, and how to change the diagnostic data levels. For information on diagnostic data collected by Windows Server, see [Configure Windows diagnostic data in your organization](/windows/privacy/configure-windows-diagnostic-data-in-your-organization).
+Like Windows Server, Azure Stack HCI includes the Connected User Experiences and Telemetry component, which uses Event Tracing for Windows (ETW) tracelogging technology that gathers and stores diagnostic data events and data.
+
+## Why does Azure Stack HCI collect telemetry and diagnostic information?
+
+Azure Stack HCI records telemetry and diagnostic information for billing purposes, for software updates, to improve stability, and to inform our decisions and focus our efforts in providing the most robust, most valuable HCI platform. This topic explains the telemetry we collect, the benefits, and how to change the diagnostic data levels. For information on diagnostic data collected by Windows Server, see [Configure Windows diagnostic data in your organization](/windows/privacy/configure-windows-diagnostic-data-in-your-organization).
 
 ## What telemetry and diagnostic data does Azure Stack HCI collect, and where does it go?
 
