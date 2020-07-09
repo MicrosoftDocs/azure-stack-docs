@@ -14,7 +14,6 @@ ms.lastreviewed: 3/19/2020
 
 ---
 
-
 # Move your Marketplace item cluster to the AKS engine on Azure Stack Hub
 
 The Kubernetes Azure Stack Hub Marketplace item uses an Azure Resource Manager template to deploy a deployment virtual machine (VM) to download and install the AKS engine and generate the input API Model used to describe the cluster, after that AKS engine is run in the VM and the cluster deployed. This article shows you how to access the AKS engine and corresponding files so that you can then use it to perform update and scale operations on your Kubernetes cluster.
