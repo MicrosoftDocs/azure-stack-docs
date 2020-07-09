@@ -68,7 +68,7 @@ Select the following settings for Azure Backup:
     > [!NOTE]
     > Store the passphrase in a secure offsite location, such as another server or the [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal). Microsoft does not store the passphrase and cannot retrieve or reset the passphrase if it is lost or forgotten.
 
-- Review all of the settings on the wizard page and select **Apply**.
+- Review all of the settings on the wizard page, and then select **Apply**.
 
 Windows Admin Center then performs the following operations:
 1. Creates an Azure Resource Group if one does not already exist.
