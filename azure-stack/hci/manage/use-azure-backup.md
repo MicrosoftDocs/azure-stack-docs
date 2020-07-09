@@ -30,7 +30,7 @@ You access Azure Backup in Windows Admin Center via the **Backup** tool. The **B
 
 ## Prerequisites
 The following prerequisites are required to use Azure Backup:
-- An Azure Account with at least one active subscription
+- An Azure account with at least one active subscription
 - Internet access to Azure for the target Windows Servers
 - A connection from the Windows Admin Center gateway to Azure
 
