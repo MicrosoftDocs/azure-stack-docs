@@ -3,7 +3,7 @@ title: Download marketplace items from Azure and publish to Azure Stack Hub
 description: Learn how to download marketplace items from Azure and publish to Azure Stack Hub.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 07/09/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 12/23/2019
@@ -28,6 +28,40 @@ See [Azure Marketplace items for Azure Stack Hub](azure-stack-marketplace-azure-
 
 > [!NOTE]
 > The catalog will be different based on the cloud your Azure Stack Hub system is connected to. The cloud environment is determined by the Azure subscription you use for registering your Azure Stack Hub.
+
+::: zone pivot="state-connected"
+A connected deployment allows you to use the administrator portal to download marketplace items.
+
+## Prerequisites
+
+Your Azure Stack Hub deployment must have internet connectivity and be registered with Azure.
+
+## Use the portal to download marketplace items
+
+1. Sign into the Azure Stack Hub administrator portal.
+
+2. Review the available storage space before downloading marketplace items. Later, when you select items for download, you can compare the download size to your available storage capacity. If capacity is limited, consider options for [managing available space](azure-stack-manage-storage-shares.md#manage-available-space).
+
+   To review available space: in **Region management**, select the region you want to explore and then go to **Resource Providers** > **Storage**:
+
+   ![Review storage space in Azure Stack Hub administrator portal](media/azure-stack-download-azure-marketplace-item/storage.png)
+
+3. Open Azure Stack Hub Marketplace and connect to Azure. To do so, select the **Marketplace management** service, select **Marketplace items**, and then select **Add from Azure**:
+
+   ![Add marketplace items from Azure](media/azure-stack-download-azure-marketplace-item/marketplace.png)
+
+4. Each line item also shows the currently available version. If more than one version of a Marketplace item is available, the **Version** column shows **Multiple**. You can click on each item to view its description and additional information, including its download size:
+
+   ![Add from Azure](media/azure-stack-download-azure-marketplace-item/add-from-azure1.png)
+
+5. If the version of an item is shown as **Multiple**, you can select that item and then choose a specific version from the resulting version selector dropdown. Note that Microsoft now has the ability to add attributes that block administrators from downloading marketplace products that are incompatible with their Azure Stack, due to various properties, such as the Azure Stack version or billing model. Only Microsoft can add these attributes:
+
+   [![Add from Azure](media/azure-stack-download-azure-marketplace-item/add-from-azure3sm.png "Multiple versions")](media/azure-stack-download-azure-marketplace-item/add-from-azure3.png#lightbox)
+
+6. Select the item you want, and then select **Download**. Download times vary and depends on the network connectivity. After the download completes, you can deploy the new marketplace item as either an Azure Stack Hub operator or a user.
+
+7. To deploy the downloaded item, select **+ Create a resource**, and then search among the categories for the new marketplace item. Next, select the item to begin the deployment process. The process varies for different marketplace items.
+::: zone-end
 
 ::: zone pivot="state-disconnected"
 When Azure Stack Hub has limited or no internet connectivity, you use PowerShell and the *marketplace syndication tool* to download the marketplace items to a machine with internet connectivity. You then transfer the items to your Azure Stack Hub environment. In a disconnected environment, you can't download marketplace items by using the Azure Stack Hub portal.
@@ -153,38 +187,4 @@ Once you have registered your Azure Stack, you can disregard the following messa
     ```
 
 5. After the script successfully completes, the marketplace items should be available in Azure Stack Hub Marketplace.
-::: zone-end
-
-::: zone pivot="state-connected"
-A connected deployment allows you to use the administrator portal to download marketplace items.
-
-## Prerequisites
-
-Your Azure Stack Hub deployment must have internet connectivity and be registered with Azure.
-
-## Use the portal to download marketplace items
-
-1. Sign into the Azure Stack Hub administrator portal.
-
-2. Review the available storage space before downloading marketplace items. Later, when you select items for download, you can compare the download size to your available storage capacity. If capacity is limited, consider options for [managing available space](azure-stack-manage-storage-shares.md#manage-available-space).
-
-   To review available space: in **Region management**, select the region you want to explore and then go to **Resource Providers** > **Storage**:
-
-   ![Review storage space in Azure Stack Hub administrator portal](media/azure-stack-download-azure-marketplace-item/storage.png)
-
-3. Open Azure Stack Hub Marketplace and connect to Azure. To do so, select the **Marketplace management** service, select **Marketplace items**, and then select **Add from Azure**:
-
-   ![Add marketplace items from Azure](media/azure-stack-download-azure-marketplace-item/marketplace.png)
-
-4. Each line item also shows the currently available version. If more than one version of a Marketplace item is available, the **Version** column shows **Multiple**. You can click on each item to view its description and additional information, including its download size:
-
-   ![Add from Azure](media/azure-stack-download-azure-marketplace-item/add-from-azure1.png)
-
-5. If the version of an item is shown as **Multiple**, you can select that item and then choose a specific version from the resulting version selector dropdown. Note that Microsoft now has the ability to add attributes that block administrators from downloading marketplace products that are incompatible with their Azure Stack, due to various properties, such as the Azure Stack version or billing model. Only Microsoft can add these attributes:
-
-   [![Add from Azure](media/azure-stack-download-azure-marketplace-item/add-from-azure3sm.png "Multiple versions")](media/azure-stack-download-azure-marketplace-item/add-from-azure3.png#lightbox)
-
-6. Select the item you want, and then select **Download**. Download times vary and depends on the network connectivity. After the download completes, you can deploy the new marketplace item as either an Azure Stack Hub operator or a user.
-
-7. To deploy the downloaded item, select **+ Create a resource**, and then search among the categories for the new marketplace item. Next, select the item to begin the deployment process. The process varies for different marketplace items.
 ::: zone-end
