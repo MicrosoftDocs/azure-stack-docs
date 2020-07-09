@@ -8,14 +8,15 @@ ms.author: justinha
 ms.reviewer: shisab
 ms.lastreviewed: 02/26/2020
 
-# Intent: As an Azure Stack Hub operator, I want to learn about diagnostic log collection so I can share them with Microsoft Support when I need help addressing an issue.
-# Keyword: diagnostic log collection azure stack hub
+#Intent: As an Azure Stack Hub operator, I want to learn about diagnostic log collection so I can share them with Microsoft Support when I need help addressing an issue.
+#Keyword: diagnostic log collection azure stack hub
+
 ---
 # Diagnostic log collection in Azure Stack Hub
 
-::: moniker range=">= azs-2002"
-
 Azure Stack Hub is a large collection of both Windows components and on-premise Azure services interacting with each other. All these components and services generate their own set of logs. To enable Microsoft Support to diagnose issues efficiently, we've provided a seamless experience for diagnostic log collection.
+
+::: moniker range=">= azs-2002"
 
 Diagnostic log collection in **Help + support** helps operators quickly collect and share diagnostic logs with Microsoft Support in an easy user interface, which doesn't require PowerShell. Logs get collected even if other infrastructure services are down.  
 
