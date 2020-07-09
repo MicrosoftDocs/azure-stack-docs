@@ -56,11 +56,7 @@ If you're disconnected from the internet or want to only save logs locally, use 
 
 #### How the data is handled
 
-<<<<<<< HEAD
-By initiating diagnostic log collection from Azure Stack Hub, you acknowledge and consent to uploading those logs and retaining them in an Azure storage account managed and controlled by Microsoft. Microsoft Microsoft Support can access these logs right away with the support case without having to engage with the customer for log collection.
-=======
 By initiating diagnostic log collection from Azure Stack Hub, you acknowledge and consent to uploading those logs and retaining them in an Azure storage account managed and controlled by Microsoft. Microsoft Support can access these logs right away with the support case without having to engage with the customer for log collection.
->>>>>>> 1a83b0640b78fe0c105eae8beb99c69ed92e4900
 
 The data will be used only for troubleshooting system health alerts and won't be used for marketing, advertising, or any other commercial purposes without your consent. The data can be retained for up to 90 days and any data Microsoft collects will be handled following our [standard privacy practices](https://privacy.microsoft.com/).
 
