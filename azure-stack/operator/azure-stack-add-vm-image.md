@@ -29,10 +29,10 @@ Create a custom generalized VHD.
 **If the VHD is from Azure**, prior to generalizing the VM, make sure of the following:
 
 - When you provision the VM on Azure, use PowerShell and provision it without the `-ProvisionVMAgent` flag.
-- Remove all VM extensions using the **Remove-AzureRmVMExtension** cmdlet from the VM before generalizing the VM in Azure. You can find which VM extensions are installed by going to `Windows (C:) > WindowsAzure > Logs > Plugins`.
+- Remove all VM extensions using the **Remove-AzVMExtension** cmdlet from the VM before generalizing the VM in Azure. You can find which VM extensions are installed by going to `Windows (C:) > WindowsAzure > Logs > Plugins`.
 
    ```powershell
-   Remove-AzureRmVMExtension -ResourceGroupName winvmrg1 -VMName windowsvm -Name "CustomScriptExtension"
+   Remove-AzVMExtension -ResourceGroupName winvmrg1 -VMName windowsvm -Name "CustomScriptExtension"
    ```
 
 Follow the instructions in [this article](/azure/virtual-machines/windows/download-vhd) to correctly generalize and download the VHD before porting it to Azure Stack Hub.
@@ -99,10 +99,10 @@ Before you upload the image, it's important to consider the following:
 
    - On a disconnected Azure Stack Hub, if your VHD is in Azure, you must download the VHD to a machine that has connectivity to both Azure and Azure Stack Hub. Then, copy the VHD to this machine from Azure before you transfer the VHD to Azure Stack Hub using any of the common [storage data transfer tools](../user/azure-stack-storage-transfer.md) that can be used across Azure and Azure Stack Hub.
 
-     One such tool used in this example is the **Add-AzureRmVHD** cmdlet that uploads a VHD to a storage account in the Azure Stack Hub administrator portal.  
+     One such tool used in this example is the **Add-AzVHD** cmdlet that uploads a VHD to a storage account in the Azure Stack Hub administrator portal.  
 
      ```powershell
-     Add-AzureRmVhd -Destination "https://bash.blob.redmond.azurestack.com/sample/vhdtestingmgd.vhd" -LocalFilePath "C:\vhd\vhdtestingmgd.vhd"
+     Add-AzVhd -Destination "https://bash.blob.redmond.azurestack.com/sample/vhdtestingmgd.vhd" -LocalFilePath "C:\vhd\vhdtestingmgd.vhd"
      ```
 
 4. Make a note of the blob storage URI where you uploaded the image. The blob storage URI has the format `<storageAccount>/<blobContainer>/<targetVHDName>.vhd`.

@@ -49,7 +49,7 @@ The Azure Stack Hub default parameters for IPsec/IKEV2 have changed [starting wi
   - **Azure PowerShell**: Use the following PowerShell command:
 
       ```powershell
-      Get-AzureRMVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group>
+      Get-AzVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group>
       ```
 
 ## Status "Connected" – traffic not flowing

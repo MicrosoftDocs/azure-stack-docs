@@ -31,15 +31,15 @@ Download the latest version of the Azure Stack Hub Readiness Checker tool (AzsRe
 
 ## Install and configure
 
-### [AzureRM PowerShell](#tab/rm)
+### [Az PowerShell](#tab/rm)
 
 ## Prerequisites
 
 The following prerequisites are required:
 
-#### AzureRM PowerShell modules
+#### Az PowerShell modules
 
-You will need to have the Az PowerShell modules installed. For instructions, see [Install PowerShell AzureRM module](azure-stack-powershell-install.md).
+You will need to have the Az PowerShell modules installed. For instructions, see [Install PowerShell Az module](azure-stack-powershell-install.md).
 
 #### The computer on which the tool runs
 
@@ -178,7 +178,7 @@ Starting Azure Identity Validation
 
 Checking Installation Requirements: Fail
 Error Details for Service Administrator Account admin@contoso.onmicrosoft.com
-The password for account  has expired or is a temporary password that needs to be reset before continuing. Run Login-AzureRMAccount, login with  credentials and follow the prompts to reset.
+The password for account  has expired or is a temporary password that needs to be reset before continuing. Run Login-AzAccount, login with  credentials and follow the prompts to reset.
 Additional help URL https://aka.ms/AzsRemediateAzureIdentity
 
 Finished Azure Identity Validation
@@ -193,7 +193,7 @@ Invoke-AzsAzureIdentityValidation Completed
 **Resolution** - In PowerShell, run the following command and then follow the prompts to reset the password:
 
 ```powershell
-Login-AzureRMAccount
+Login-AzAccount
 ```
 
 Another way is to sign in to the [Azure portal](https://portal.azure.com) as the account owner and the user will be forced to change the password.
@@ -221,7 +221,7 @@ Invoke-AzsAzureIdentityValidation Completed
 **Resolution** - Confirm that the account is valid for the specified Azure environment. In PowerShell, run the following command to verify the account is valid for a specific environment:
 
 ```powershell
-Login-AzureRmAccount -EnvironmentName AzureChinaCloud
+Login-AzAccount -EnvironmentName AzureChinaCloud
 ```
 
 ### Account is not an administrator

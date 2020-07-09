@@ -19,9 +19,9 @@ ms.lastreviewed: 09/23/2019
 
 You can use PowerShell to deploy Azure Resource Manager templates to Azure Stack Hub. This article describes how to use PowerShell to deploy a template.
 
-## Run AzureRM PowerShell cmdlets
+## Run Az PowerShell cmdlets
 
-This example uses **AzureRM** PowerShell cmdlets and a template stored on GitHub. The template creates a Windows Server 2012 R2 Datacenter virtual machine.
+This example uses **Az** PowerShell cmdlets and a template stored on GitHub. The template creates a Windows Server 2012 R2 Datacenter virtual machine.
 
 >[!NOTE]
 > Before you try this example, make sure that you've [configured PowerShell](azure-stack-powershell-configure-user.md) for an Azure Stack Hub user.
@@ -37,10 +37,10 @@ This example uses **AzureRM** PowerShell cmdlets and a template stored on GitHub
     $myLocation = "yourregion" # local for the ASDK
 
     # Create resource group for template deployment
-    New-AzureRmResourceGroup -Name $RGName -Location $myLocation
+    New-AzResourceGroup -Name $RGName -Location $myLocation
 
     # Deploy simple IaaS template
-    New-AzureRmResourceGroupDeployment `
+    New-AzResourceGroupDeployment `
         -Name myDeployment$myNum `
         -ResourceGroupName $RGName `
         -TemplateUri <path>\AzureStack-QuickStart-Templates\101-vm-windows-create\azuredeploy.json `
@@ -55,7 +55,7 @@ This example uses **AzureRM** PowerShell cmdlets and a template stored on GitHub
 
 ## Cancel a running template deployment
 
-To cancel a running template deployment, use the `Stop-AzureRmResourceGroupDeployment` PowerShell cmdlet.
+To cancel a running template deployment, use the `Stop-AzResourceGroupDeployment` PowerShell cmdlet.
 
 ## Next steps
 

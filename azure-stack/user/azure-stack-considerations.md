@@ -71,12 +71,12 @@ To make sure that you use a correct version of Azure PowerShell, use [API versio
 For other APIs, run the following PowerShell command to output the namespaces, resource types, and API versions that are supported in your Azure Stack Hub subscription (there may still be differences at a property level). For this command to work, you must have already [installed](../operator/azure-stack-powershell-install.md) and [configured](azure-stack-powershell-configure-user.md) PowerShell for an Azure Stack Hub environment. You must also have a subscription to an Azure Stack Hub offer.
 
 ```powershell
-Get-AzureRmResourceProvider | Select ProviderNamespace -Expand ResourceTypes | Select * -Expand ApiVersions | `
+Get-AzResourceProvider | Select ProviderNamespace -Expand ResourceTypes | Select * -Expand ApiVersions | `
 Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} 
 ```
 
 Example output (truncated):
-![Example output of Get-AzureRmResourceProvider command](media/azure-stack-considerations/image1.png)
+![Example output of Get-AzResourceProvider command](media/azure-stack-considerations/image1.png)
 
 ## Next steps
 

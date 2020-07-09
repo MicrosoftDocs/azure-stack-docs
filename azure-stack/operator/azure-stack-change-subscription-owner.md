@@ -45,13 +45,13 @@ Replace the following values in the script before it runs:
 
 ```powershell
 # Set up Azure Stack Hub admin environment
-Add-AzureRmEnvironment -ARMEndpoint $ArmEndpoint -Name AzureStack-admin
-Add-AzureRmAccount -Environment AzureStack-admin -TenantId $TenantId
+Add-AzEnvironment -ARMEndpoint $ArmEndpoint -Name AzureStack-admin
+Add-AzAccount -Environment AzureStack-admin -TenantId $TenantId
 
 # Select admin subscription
-$providerSubscriptionId = (Get-AzureRmSubscription -SubscriptionName "Default Provider Subscription").Id
+$providerSubscriptionId = (Get-AzSubscription -SubscriptionName "Default Provider Subscription").Id
 Write-Output "Setting context to the Default Provider Subscription: $providerSubscriptionId"
-Set-AzureRmContext -Subscription $providerSubscriptionId
+Set-AzContext -Subscription $providerSubscriptionId
 
 # Change user subscription owner
 $subscription = Get-AzsUserSubscription -SubscriptionId $SubscriptionId
