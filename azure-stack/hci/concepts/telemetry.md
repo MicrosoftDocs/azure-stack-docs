@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ---
 
-# Telemetry and diagnostic data collection in Azure Stack HCI
+# Telemetry in Azure Stack HCI
 
 > Applies to Azure Stack HCI v20H2, Azure Stack HCI
 
 Like Windows Server, Azure Stack HCI includes the Connected User Experiences and Telemetry component, which uses Event Tracing for Windows (ETW) tracelogging technology that gathers and stores diagnostic data events and data.
 
-## Why does Azure Stack HCI collect telemetry and diagnostic information?
+## Why does Azure Stack HCI collect data?
 
-Azure Stack HCI records telemetry and diagnostic information for billing purposes, for software updates, to improve stability, and to inform our decisions and focus our efforts in providing the most robust, most valuable HCI platform. This topic explains the telemetry we collect, the benefits, and how to change the diagnostic data levels. For information on diagnostic data collected by Windows Server, see [Configure Windows diagnostic data in your organization](/windows/privacy/configure-windows-diagnostic-data-in-your-organization).
+Azure Stack HCI records telemetry for billing purposes, for software updates, to improve stability, and to inform our decisions and focus our efforts in providing the most robust, most valuable HCI platform. This topic explains the data we collect, the benefits, and how to change the diagnostic data levels. For information on diagnostic data collected by Windows Server, see [Configure Windows diagnostic data in your organization](/windows/privacy/configure-windows-diagnostic-data-in-your-organization).
 
-## What telemetry and diagnostic data does Azure Stack HCI collect, and where does it go?
+## What diagnostic data does Azure Stack HCI collect, and where does it go?
 
 The following table lists the Azure Stack HCI telemetry function descriptions and the corresponding endpoints to which telemetry and diagnostic data are transmitted.
 
@@ -55,4 +55,5 @@ For more information about data privacy, see [Privacy at Microsoft](/privacy).
 For related information, see also:
 
 - [Diagnostic Data Viewer for PowerShell Overview](/windows/privacy/microsoft-diagnosticdataviewer)
-- [Overview of Azure Cost Management and Billing](/azure/cost-management-billing/cost-management-billing-overview)
+- Azure Stack HCI Billing and Payment
+
