@@ -4,16 +4,15 @@ titleSuffix: Azure Stack Hub
 description: Use the Azure Stack Hub Readiness Checker to validate Azure identity.
 author: BryanLa
 ms.topic: how-to
-ms.date: 03/04/2020
+ms.date: 06/25/2020
 ms.author: bryanla
-ms.reviewer: unknown
-ms.lastreviewed: 03/23/2019
+ms.reviewer: jerskine
+ms.lastreviewed: 06/25/2020
 
 # Intent: As an Azure Stack Hub operator, I want to use the Azure Stack Hub Readiness Checker to validate Azure identity.
 # Keyword:  azure stack hub azure identity readiness checker
 
 ---
-
 
 # Validate Azure identity
 
@@ -28,13 +27,21 @@ Validation ensures your environment is ready for Azure Stack Hub to store inform
 
 ## Get the readiness checker tool
 
-Download the latest version of the Azure Stack Hub Readiness Checker tool (AzsReadinessChecker) from the [PowerShell Gallery](https://aka.ms/AzsReadinessChecker).  
+Download the latest version of the Azure Stack Hub Readiness Checker tool (AzsReadinessChecker) from the [PowerShell Gallery](https://aka.ms/AzsReadinessChecker).
+
+## Install and configure
+
+### [AzureRM PowerShell](#tab/rm)
 
 ## Prerequisites
 
 The following prerequisites are required:
 
-**The computer on which the tool runs:**
+#### AzureRM PowerShell modules
+
+You will need to have the Az PowerShell modules installed. For instructions, see [Install PowerShell AzureRM module](azure-stack-powershell-install.md).
+
+#### The computer on which the tool runs
 
 - Windows 10 or Windows Server 2016 with internet connectivity.
 - PowerShell 5.1 or later. To check your version, run the following PowerShell command, and then review the **Major** version and **Minor** versions:  
@@ -44,7 +51,7 @@ The following prerequisites are required:
 - [PowerShell configured for Azure Stack Hub](azure-stack-powershell-install.md).
 - The latest version of [Microsoft Azure Stack Hub Readiness Checker](https://aka.ms/AzsReadinessChecker) tool.
 
-**Azure AD environment:**
+#### Azure AD environment
 
 - Identify the Azure AD account to use for Azure Stack Hub and ensure it's an Azure AD global administrator.
 - Identify your Azure AD tenant name. The tenant name must be the primary domain name for your Azure AD. For example, **contoso.onmicrosoft.com**.
@@ -87,6 +94,62 @@ The following prerequisites are required:
    Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
    Invoke-AzsAzureIdentityValidation Completed
    ```
+
+
+### [Az PowerShell](#tab/az)
+
+### Prerequisites
+
+The following prerequisites are required:
+
+#### Az PowerShell modules
+
+You will need to have the Az PowerShell modules installed. For instructions, see [Install PowerShell Az preview module](powershell-install-az-module.md).
+
+#### Azure Active Directory (Azure AD) environment
+
+- Identify the Azure AD account to use for Azure Stack Hub and ensure it's an Azure AD global administrator.
+- Identify your Azure AD tenant name. The tenant name must be the primary domain name for your Azure AD. For example, **contoso.onmicrosoft.com**.
+
+### Steps to validate Azure identity
+
+1. On a computer that meets the prerequisites, open an elevated PowerShell command prompt, and then run the following command to install **AzsReadinessChecker**:  
+
+   ```powershell
+   Install-Module -Name Az.BootStrapper -Force -AllowPrerelease
+   Install-AzProfile -Profile 2019-03-01-hybrid -Force
+   Install-Module -Name Microsoft.AzureStack.ReadinessChecker -AllowPrerelease
+   ```
+
+2. From the PowerShell prompt, run the following command. Replace `contoso.onmicrosoft.com` with your Azure AD tenant name:
+
+   ```powershell
+   Connect-AzAccount -tenant contoso.onmicrosoft.com
+   ```
+
+3. From the PowerShell prompt, run the following command to start validation of your Azure AD. Replace `contoso.onmicrosoft.com` with your Azure AD tenant name:
+
+   ```powershell
+   Invoke-AzsAzureIdentityValidation -AADDirectoryTenantName contoso.onmicrosoft.com 
+   ```
+
+4. After the tool runs, review the output. Confirm the status is **OK** for installation requirements. A successful validation appears like the following example:
+
+   ```powershell
+   Invoke-AzsAzureIdentityValidation v1.2005.1269 started.
+   Starting Azure Identity Validation
+
+   Checking Installation Requirements: OK
+
+   Finished Azure Identity Validation
+
+   Log location (contains PII): C:\Users\[*redacted*]\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+   Report location (contains PII): C:\Users\[*redacted*]\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+   Invoke-AzsAzureIdentityValidation Completed
+   ```
+
+--- 
+
 
 ## Report and log file
 
