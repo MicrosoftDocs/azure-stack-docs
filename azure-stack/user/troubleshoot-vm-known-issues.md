@@ -4,10 +4,10 @@ description: Learn how to troubleshoot known issues virtual machines on Azure St
 author: mattbriggs
 
 ms.topic: troubleshooting
-ms.date: 5/28/2020
+ms.date: 07/09/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 5/28/2020
+ms.lastreviewed: 07/09/2020
 
 # Intent: As a developer using Azure Stack Hub, I want to fix an issue I encounter when creating or managing my VM so that my users can use my VM or service delivered by the stack.
 # Keyword: Azure Stack Hub troubleshooting VM
@@ -26,7 +26,7 @@ You can find known issues for troubleshooting the Azure Stack Hub compute resour
 - **Remediation**  
     In the portal select **Settings** > **Properties**.
 - **Occurrence**  
-    `please update`  
+    Common  
 
 ## NVv4 VM size on portal
 - **Applicable**  
@@ -36,7 +36,7 @@ You can find known issues for troubleshooting the Azure Stack Hub compute resour
 - **Remediation**  
     None.  
 - **Occurrence**  
-    `please update`  
+    Common  
 
 ## VM boot diagnostics
 - **Applicable**  
@@ -62,7 +62,7 @@ You can find known issues for troubleshooting the Azure Stack Hub compute resour
 - **Applicable**  
     This issue applies to all supported releases.  
 - **Cause**   
-    When creating a new virtual machine, you may receive an error such as This subscription is at capacity for Total Regional vCPUs on this location. This subscription is using all 50 Total Regional vCPUs available.. This indicates that the quota for total cores available to you has been reached.  
+    When creating a new virtual machine, you may receive an error such as This subscription is at capacity for Total Regional vCPUs on this location. This subscription is using all 50 Total Regional vCPUs available. This indicates that the quota for total cores available to you has been reached.  
 - **Remediation**  
     Ask your operator for an add-on plan with additional quota. Changing the current plan's quota will not work or reflect increased quota.
 - **Occurrence**  
