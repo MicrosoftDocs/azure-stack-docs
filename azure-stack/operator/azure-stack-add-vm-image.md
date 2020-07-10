@@ -122,9 +122,10 @@ If a Linux specialized VHD is brought from outside of Azure to Azure Stack Hub, 
 **If the VHD is from Azure**
 You can use [this](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#requirements) guidance to prepare the VHD. 
 
-**Important** 
-You can follow the PowerShell cmdlets below to upload the VHD to an Azure Stack Hub user storage account:
-```powershell
+> [!Important]  
+> You can follow the PowerShell cmdlets below to upload the VHD to an Azure Stack Hub user storage account:
+
+```powershell  
 # Provide values for the variables
 $resourceGroup = 'myResourceGroup'
 $location = 'Orlando'
@@ -141,6 +142,7 @@ $urlOfUploadedImageVhd = ($storageaccounturl + '/' + $vhdName)
 Add-AzVhd -ResourceGroupName $resourceGroup -Destination $urlOfUploadedImageVhd `
     -LocalFilePath $localPath
 ```
+
 For a specialized VHD, make sure to use "attach" semantics using -CreateOption Attach like [this](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks) to create a VM from this VHD.
 
 ### Considerations
@@ -151,7 +153,9 @@ Before you upload the image, it's important to consider the following:
 
 - Azure Stack Hub does not support dynamic disk VHDs.
 
-## Step 2: Upload the VM Image to a storage account as an Azure Stack Hub operator
+## Step 2: Upload a storage account
+
+Upload the VM Image to a storage account as an Azure Stack Hub operator.
 
 1. [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).  
 
@@ -182,7 +186,9 @@ Before you upload the image, it's important to consider the following:
    
 6. You can also use the preceding steps to upload the image to a storage account on the user portal (by signing in as the user) and create a VM directly from it. In this case, it will be a custom VHD that is not available through the marketplace. You will also not need to follow step 3.
 
-## Step 3, Option 1: Add the VM Image as an Azure Stack Hub operator using the portal
+## Step 3, Option 1: Add using the portal
+
+Add the VM Image as an Azure Stack Hub operator using the portal.
 
 1. Sign in to Azure Stack Hub as operator. In the menu, select **All services** > **Compute** under **VM Images** > **Add**.
 
@@ -196,7 +202,9 @@ Before you upload the image, it's important to consider the following:
 
 3. When you add an image, it is only available for Azure Resource Manager-based templates and PowerShell deployments. To make an image available to your users as a marketplace item, publish the marketplace item using the steps in the article [Create and publish a Marketplace item](azure-stack-create-and-publish-marketplace-item.md). Make sure you note the **Publisher**, **Offer**, **SKU**, and **Version** values. You will need them when you edit the Resource Manager template and Manifest.json in your custom .azpkg.
 
-## Step 3, Option 2: Add a VM image as an Azure Stack Hub operator using PowerShell
+## Step 3, Option 2: Add using PowerShell
+
+ Add a VM image as an Azure Stack Hub operator using PowerShell.
 
 1. [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).  
 
@@ -237,7 +245,9 @@ Before you upload the image, it's important to consider the following:
 
 4. When you add an image, it is only available for Azure Resource Manager-based templates and PowerShell deployments. To make an image available to your users as a marketplace item, publish the marketplace item using the steps in the article [Create and publish a Marketplace item](azure-stack-create-and-publish-marketplace-item.md). Make sure you note the **Publisher**, **Offer**, **SKU**, and **Version** values. You will need them when you edit the Resource Manager template and Manifest.json in your custom .azpkg.
 
-## Remove the VM image as an Azure Stack Hub operator using the portal
+## Remove using the portal
+
+Remove the VM image as an Azure Stack Hub operator using the portal.
 
 1. Open the Azure Stack Hub [administrator portal](https://adminportal.local.azurestack.external).
 
@@ -247,7 +257,9 @@ Before you upload the image, it's important to consider the following:
 
 4. Select **Delete**.
 
-## Remove a VM image as an Azure Stack Hub operator using PowerShell
+## Remove using PowerShell
+
+Remove a VM image as an Azure Stack Hub operator using PowerShell.
 
 When you no longer need the VM image that you uploaded, you can delete it from the Marketplace by using the following cmdlet:
 
