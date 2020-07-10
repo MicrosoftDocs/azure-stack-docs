@@ -36,8 +36,9 @@ Before you begin, make sure you:
 - Have read the hardware and other requirements in [Before you start].
 - Validate the OEM hardware for each server in the cluster. See [Validate hardware].
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy Azure Stack HCI].
-- Run PowerShell on a remote (management) computer. See {Install Windows Admin Center}. Don't run PowerShell from a server in the cluster.
+- Run PowerShell on a remote (management) computer. See [Install Windows Admin Center]. Don't run PowerShell from a server in the cluster.
 - Have administrative privileges. Use an account that’s a member of the local Administrators group on each server.
+- Have rights in Active Directory to create objects.
 
 ## Using Windows PowerShell
 
@@ -133,7 +134,7 @@ $ServerList = "Server1", "Server2", "Server3", "Server4"
 Restart-Computer -ComputerName $ServerList
 ```
 
-## Step 2: Configure the network
+## Step 2: Configure networking
 
 ### Disable unused networks
 
@@ -188,9 +189,20 @@ Get-VMSwitch -CimSession $Servers | Select-Object Name, IOVEnabled, IOVS*
 Get-VMSwitchTeam -CimSession $Servers
 ```
 
-### Configure VLANs and IP addresses
+### Configure IP addresses and VLANs
 
 You can configure either one or two subnets. Two subnets are preferred if you want to prevent overloading of the switch interconnect. For example, SMB storage traffic will stay on a subnet that's dedicated to one physical switch.
+
+### Obtain network interface information
+
+Before you can set IP addresses for the network interface cards, there is some information you need first, such as Interface Index (`ifIndex`), `Interface Alias`, and `Address Family`. Write these down for each server node as you will need them later.
+
+Run the following:
+
+```powershell
+$ServerList = "Server1", "Server2", "Server3", "Server4"
+Get-NetIPInterface -ComputerName $ServerList
+```
 
 #### Configure one subnet
 
@@ -214,7 +226,6 @@ Set-VMNetworkAdapterVlan -VMNetworkAdapterName SMB02 -VlanId $StorVLAN -Access -
 #Restart each host vNIC adapter so that the Vlan is active.
 Restart-NetAdapter "vEthernet (SMB01)" -CimSession $Servers
 Restart-NetAdapter "vEthernet (SMB02)" -CimSession $Servers
- 
 ```
 
 #### Configure two subnets
@@ -252,6 +263,7 @@ Get-NetIPAddress -CimSession $servers -InterfaceAlias vEthernet* -AddressFamily 
 #Verify that the VlanID is set
 Get-VMNetworkAdapterVlan -ManagementOS -CimSession $servers | Sort-Object -Property Computername | Format-Table ComputerName,AccessVlanID,ParentAdapter -AutoSize -GroupBy ComputerName
 ```
+
 ### Configure RDMA
 
 Next, we will enable RDMA on the host vNIC adapters and associate each of these vNICs to a physical network adapter that is associated with the virtual switch.
@@ -376,6 +388,26 @@ Get-NetFirewallRule -Name "FPSSMBD-iWARP-In-TCP" -CimSession $servers | Select-O
 
 Next, you must first verify that your servers are prepared and configured properly for cluster creating.
 
+As a sanity check first, consider running the following commands:
+
+Use `Get-ClusterNode` to show all nodes:
+
+```powershell
+Get-ClusterNode
+```
+
+Use `Get-ClusterResource` to show all cluster nodes:
+
+```powershell
+Get-ClusterResource
+```
+
+Use `Get-ClusterNetwork` to show all cluster networks:
+
+```powershell
+Get-ClusterNetwork
+```
+
 ### Step 3.1: Prepare drives
 
 Before you enable Storage Spaces Direct later on, ensure your drives are empty. Run the following script to remove any old partitions or other data.
@@ -432,7 +464,7 @@ Congrats, your cluster has now been created.
 
 ## Step 5: Setup sites (stretched cluster)
 
-This task only applies if you are creating a stretched cluster that spans two sites.
+This task only applies if you are creating a stretched cluster between two sites.
 
 In the cmdlet below, *FaultDomain* is simply another name for a site. This example uses `ClusterS1` as the name of the stretched cluster.
 
@@ -460,7 +492,7 @@ Set-ClusterFaultDomain -CimSession ClusterS1 -Name Server1, Server2 -Parent Site
 Set-ClusterFaultDomain -CimSession ClusterS1 -Name Server3, Server4 -Parent Site2
 ```
 
-Using the `Get-ClusterFaultDomain` cmdlet, verify the nodes are in the correct sites. Note that all the nodes are "children" of their sites based on subnet.
+Using the `Get-ClusterFaultDomain` cmdlet, verify the nodes are in the correct sites.
 
 ```powershell
 Get-ClusterFaultDomain -CimSession ClusterS1
@@ -525,7 +557,7 @@ Set-ClusterQuorum –Cluster Cluster1 -FileShareWitness \\fileserver\fsw
 
 ## Step 7: Create volumes
 
-Volume creation is different for single-site standard clusters versus stretched (two-site) clusters. For both scenarios however, you use the `New-Volume` cmdlet to create a virtual disk, partition and format it, create a volume with matching name, and add it to cluster shared volumes (CSV) – all in one easy step.
+Volume creation is different for single-site standard clusters versus stretched (two-site) clusters. For both scenarios however, you use the `New-Volume` cmdlet to create a virtual disk, partition and format it, create a volume with matching name, and add it to cluster shared volumes (CSV).
 
 For more information, see [Create volumes] (https://docs.microsoft.com/azure-stack/hci/manage/create-volumes).
 
@@ -539,6 +571,12 @@ Creating volumes and virtual disks for stretched clusters is a bit more involved
 
 There are two types of stretched clusters, active/passive and active/active.
 You can set up active-passive site replication, where there is a preferred site and direction for replication. Active-active replication is where replication can happen bi-directionally from either site. This article covers the active/passive configuration only.
+
+You can also define a global preferred site where all resources and groups run on that site. There is a `PreferredSite` parameter used for just this purpose. This setting can be defined at the site and group level.  
+
+```powershell
+(Get-Cluster).PreferredSite = Site1
+```
 
 ### Active/passive stretched cluster
 
