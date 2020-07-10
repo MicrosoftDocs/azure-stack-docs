@@ -4,7 +4,7 @@ description: This how-to article focuses on why cluster validation is important,
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 06/08/2020
+ms.date: 07/10/2020
 ---
 
 # Validate an Azure Stack HCI cluster
@@ -135,6 +135,8 @@ To run a validation test on a server cluster, issue the **Get-Cluster** and **Te
 $Cluster = Get-Cluster -Name 'server-cluster1'
 Test-Cluster -InputObject $Cluster -Verbose
 ```
+
+For more examples and usage information, see the [Test-Cluster](https://docs.microsoft.com/powershell/module/failoverclusters/test-cluster?view=win10-ps) reference documentation.
 
 ### View validation reports
 Now you're ready to view your cluster validation report.
