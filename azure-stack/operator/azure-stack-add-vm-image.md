@@ -23,7 +23,7 @@ Custom images come in two forms: **generalized** and **specialized**.
 
 - **Generalized image**
 
-  A generalized disk image is one that has gone through a sysprep process to remove any unique information (such as user accounts), allowing it to be reused to create multiple VMs. This is a good fit for marketplace items. 
+  A generalized disk image is one that has been prepared with **Sysprep** to remove any unique information (such as user accounts), allowing it to be reused to create multiple VMs. This is a good fit for marketplace items. 
 
 - **Specialized image**
 
@@ -35,7 +35,7 @@ Custom images come in two forms: **generalized** and **specialized**.
 
 Create a custom generalized VHD.
 
-**If the VHD is from outside Azure**, follow the steps in [Upload a generalized VHD and use it to create new VMs in Azure](/azure/virtual-machines/windows/upload-generalized-managed) to correctly **Sysprep** your VHD and make it generalized.
+**If the VHD is from outside Azure**, follow the steps in [Upload a generalized VHD and use it to create new VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed) to correctly **Sysprep** your VHD and make it generalized.
 
 **If the VHD is from Azure**, prior to generalizing the VM, make sure of the following:
 
@@ -50,22 +50,22 @@ Remove-AzureRmVMExtension -ResourceGroupName winvmrg1 -VMName windowsvm -Name "C
 On or after the Azure Stack 1910 release:
 - The above steps do not apply to VHDs brought from Azure to an Azure Stack Hub that is on or beyond the 1910 release. 
 
-Follow the instructions in [this article](/azure/virtual-machines/windows/download-vhd) to correctly generalize and download the VHD before porting it to Azure Stack Hub.
+Follow the instructions in [this article](https://docs.microsoft.com/azure/virtual-machines/windows/download-vhd) to correctly generalize and download the VHD before porting it to Azure Stack Hub.
 
 ### Windows - Specialized
 
-Follow the steps [here](/azure/virtual-machines/windows/create-vm-specialized#prepare-the-vm) to prepare the VHD correctly. 
-To deploy VM extensions, make sure that the VM agent .msi available [here](/azure/virtual-machines/extensions/agent-windows#manual-installation) is installed in the VM before VM deployment. If the VM agent is not present in the VHD, extension deployment will fail.
+Follow the steps [here](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized#prepare-the-vm) to prepare the VHD correctly. 
+To deploy VM extensions, make sure that the VM agent .msi available [here](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows#manual-installation) is installed in the VM before VM deployment. If the VM agent is not present in the VHD, extension deployment will fail.
 
 ### Linux - Generalized
 
 **If the VHD is from outside Azure**, follow the appropriate instructions to generalize the VHD:
 
-- [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Red Hat Enterprise Linux](/azure/azure-stack/azure-stack-redhat-create-upload-vhd)
-- [SLES or openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [CentOS-based Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Debian Linux](https://docs.microsoft.com/azure/virtual-machines/linux/debian-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Red Hat Enterprise Linux](https://docs.microsoft.com/azure/azure-stack/azure-stack-redhat-create-upload-vhd)
+- [SLES or openSUSE](https://docs.microsoft.com/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Ubuntu Server](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 **If the VHD is from Azure**, follow these instructions to generalize and download the VHD:
 
@@ -110,17 +110,17 @@ Specialized VHDs should not be used as the base VHD for a marketplace item. Use 
 
 **If the VHD is from outside Azure**, follow the appropriate instructions to make the VHD suitable for Azure:
 
-- [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Red Hat Enterprise Linux](/azure/azure-stack/azure-stack-redhat-create-upload-vhd)
-- [SLES or openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [CentOS-based Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Debian Linux](https://docs.microsoft.com/azure/virtual-machines/linux/debian-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Red Hat Enterprise Linux](https://docs.microsoft.com/azure/azure-stack/azure-stack-redhat-create-upload-vhd)
+- [SLES or openSUSE](https://docs.microsoft.com/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Ubuntu Server](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 DO NOT RUN THE LAST STEP:  sudo waagent -force -deprovision as this will generalize the VHD.
 If a Linux specialized VHD is brought from outside of Azure to Azure Stack Hub, to run VM extensions, run 'mkdir -p /var/lib/waagent && touch /var/lib/waagent/provisioned' before the logout step.
 
 **If the VHD is from Azure**
-You can use [this](/azure/virtual-machines/linux/upload-vhd#requirements) guidance to prepare the VHD. 
+You can use [this](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#requirements) guidance to prepare the VHD. 
 
 **Important** 
 You can follow the PowerShell cmdlets below to upload the VHD to an Azure Stack Hub user storage account:
@@ -159,7 +159,7 @@ Before you upload the image, it's important to consider the following:
 
 3. Images must be able to be referenced by a blob storage URI. Prepare a Windows or Linux operating system image in VHD format (not VHDX), and then upload the image to a storage account in Azure Stack Hub.
 
-   - If the VHD is in Azure, you can use a tool such as [Azcopy](/azure/storage/common/storage-use-azcopy) to directly transfer the VHD between an Azure and your Azure Stack Hub storage account if you are running on a connected Azure Stack Hub.
+   - If the VHD is in Azure, you can use a tool such as [Azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) to directly transfer the VHD between an Azure and your Azure Stack Hub storage account if you are running on a connected Azure Stack Hub.
 
    - On a disconnected Azure Stack Hub, if your VHD is in Azure, you will need to download the VHD to a machine that has connectivity to both Azure and Azure Stack Hub. Then you copy the VHD to this machine from Azure before you transfer the VHD to Azure Stack Hub using any of the common [storage data transfer tools](../user/azure-stack-storage-transfer.md) that can be used across Azure and Azure Stack Hub.
 
