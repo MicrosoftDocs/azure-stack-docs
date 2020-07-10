@@ -4,7 +4,7 @@ description: Learn how to create a hyperconverged cluster for Azure Stack HCI us
 author: v-dasis
 ms.topic: article
 ms.prod: 
-ms.date: 07/02/2020
+ms.date: 07/09/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -19,30 +19,31 @@ You have a choice between two cluster types:
 - Standard cluster with at least two server nodes, all residing in a single site.
 - Stretched cluster with at least four server nodes that span across two sites, with two nodes per site.
 
-In this article, we will create an example cluster named Cluster1 that is comprised of four server nodes named Server1, Server2, Server3, and Server4. 
+In addition, there are two types of stretched clusters, active/passive and active/active. You can set up active-passive site replication, where there is a preferred site and direction for replication. Active-active replication is where replication can happen bi-directionally from either site. This article covers the active/passive configuration only.
+
+In simple terms, an *active* site is one that has resources and is providing roles and workloads for clients to connect to. A *passive* site is one that does not provide any roles or workloads for clients and is waiting for a failover from the active site for disaster recovery.
+
+Sites can be in two different states, different cities, different floors, or different rooms. Stretched clusters Using two sites provides disaster recovery and business continuity should a site suffer an outage or failure.
+
+In this article, we will create an example cluster named Cluster1 that is comprised of four server nodes named Server1, Server2, Server3, and Server4.
 
 For the stretched cluster scenario, we will use ClusterS1 as the name and use the same four server nodes stretched across sites Site1 and Site2.
 
 ## Before you begin
 
-Here are several requirements before you begin:
+Before you begin, make sure you:
 
-- Make sure you have reviewed hardware requirements and considerations in [Planning a cluster].
-
-- You should run Windows Admin Center from a remote computer running Windows 10, rather than from a host server in the cluster. This remote computer is called the management computer.
-
-- You must have administrative privileges for the cluster. Use an account that’s a member of the local Administrators group on each server.
-
-- Each server you want to add to the cluster, as well as the management computer, must all be joined to the same Active Directory domain or fully trusted domain.
+- Have read the hardware and other requirements in [Before you start].
+- Validate the OEM hardware for each server in the cluster. See [Validate hardware].
+- Install the Azure Stack HCI OS on each server in the cluster. See [Deploy Azure Stack HCI].
+- Run PowerShell on a remote (management) computer. See {Install Windows Admin Center}. Don't run PowerShell from a server in the cluster.
+- Have administrative privileges. Use an account that’s a member of the local Administrators group on each server.
 
 ## Using Windows PowerShell
 
 When running PowerShell commands from a management computer, include the `-Name` or `-Cluster` parameter with the name of the server or cluster you are managing. In addition, you may need to specify the fully qualified domain name (FQDN) when using the `-ComputerName` parameter for a server node.
 
 You will also need the Remote Server Administration Tools (RSAT) cmdlets and PowerShell modules for Hyper-V and Failover Clustering. If these aren't already available in your PowerShell session on your management computer, you can add them using the following command: `Add-WindowsFeature RSAT-Clustering-PowerShell`.
-
-> [!NOTE]
-> Starting with Windows 10 October 2018 Update, RSAT is included as a set of "Features on Demand" right from Windows 10. Simply go to **Settings > Apps > Apps & features > Optional features > Add a feature > RSAT: Failover Clustering Tools**, and select **Install**. To see installation progress, click the Back button to view status on the **Manage optional features** page. Once installed, RSAT will persist across Windows 10 version upgrades.
 
 ## Step 1: Provision the servers
 
@@ -403,7 +404,7 @@ Invoke-Command ($ServerList) {
 } | Sort -Property PsComputerName, Count
 ```
 
-### Step 3.2: Test cluster setup
+### Step 3.2: Test cluster configuration
 
 In this step, you'll ensure that the server nodes are configured correctly to create a cluster. The `Test-Cluster` cmdlet is used to run tests to verify your configuration is suitable to function as a hyperconverged cluster. The example below uses the `-Include` parameter, with the specific categories of tests specified. This ensures that the correct tests are included in the validation.
 
@@ -469,20 +470,36 @@ Get-ClusterFaultDomain -CimSession ClusterS1
 
 After creating the cluster, use the `Enable-ClusterStorageSpacesDirect` cmdlet, which will enable Storage Spaces Direct and do the following automatically:
 
-- **Create a pool:** Creates a storage pool for the cluster that has a name like "Cluster1 Storage Pool".
+- **Create a storage pool:** Creates a storage pool for the cluster that has a name like "Cluster1 Storage Pool".
 
-- **Configures the Storage Spaces Direct caches:** If there is more than one media (drive) type available for Storage Spaces Direct, it enables the fastest as cache devices (read and write in most cases)
+- **Create a Cluster Performance History disk:** Creates a Cluster Performance History virtual disk in the storage pool.
 
-- **Tiers:** Creates two tiers as default tiers. One is called "Capacity" and the other called "Performance". The cmdlet analyzes the devices and configures each tier with the mix of device types and resiliency.
+- **Create data and log volumes:** Creates a data volume and a log volume in the storage pool.
 
-The following command enables Storage Spaces Direct:
+- **Configure Storage Spaces Direct caches:** If there is more than one media (drive) type available for Storage Spaces Direct, it enables the fastest as cache devices (read and write in most cases).
+
+- **Create tiers:** Creates two tiers as default tiers. One is called "Capacity" and the other called "Performance". The cmdlet analyzes the devices and configures each tier with the mix of device types and resiliency.
+
+For stretched clusters, the `Enable-ClusterStorageSpacesDirect` cmdlet will also do the following:
+
+- Check to see if sites have been setup
+- Determine which nodes are in which sites
+- Determines what storage each node has available
+- Checks to see if the Storage Replica feature is installed on each node
+- Creates a storage pool for each site and identifies it with the same of the site
+- Creates data and log volumes in each storage pool - one per site
+
+The following command enables Storage Spaces Direct. You can also specify a friendly name for a storage pool, as shown here:
 
 ```powershell
 New-CimSession -Cluster Cluster1 | Enable-ClusterStorageSpacesDirect -PoolFriendlyName 'Cluster1 Storage Pool'
 ```
 
-> [!NOTE]
-> You can also use a server node name instead of the cluster name above. Using the server name can be more reliable due to DNS replication delays that may occur with the newly created cluster name.
+To see the storage pools, use this:
+
+```powershell
+Get-StoragePool -Cluster Cluster1
+```
 
 ## Step 7: Create a witness
 
@@ -508,17 +525,13 @@ Set-ClusterQuorum –Cluster Cluster1 -FileShareWitness \\fileserver\fsw
 
 ## Step 7: Create volumes
 
-Volume creation is different for single-site clusters versus stretched (two-site) clusters. For both scenarios however, you can use the `New-Volume` cmdlet to create a virtual disk, partition and format it, create a volume with matching name, and add it to cluster shared volumes (CSV) – all in one easy step.
+Volume creation is different for single-site standard clusters versus stretched (two-site) clusters. For both scenarios however, you use the `New-Volume` cmdlet to create a virtual disk, partition and format it, create a volume with matching name, and add it to cluster shared volumes (CSV) – all in one easy step.
+
+For more information, see [Create volumes] (https://docs.microsoft.com/azure-stack/hci/manage/create-volumes).
 
 ### Create volumes for single-site clusters
 
-If you have a standard single-site cluster, do this for each of your server nodes:
-
-```powershell
-New-Volume -CimSession Server1 -FriendlyName Disk1 -FileSystem REFS -DriveLetter F -ResiliencySettingName Mirror -Size 10GB -StoragePoolFriendlyName "Storage Pool for Cluster1"
-```
-
-**<== add more stuff**
+If you have a standard single-site cluster, see [Create volumes] (https://docs.microsoft.com/azure-stack/hci/manage/create-volumes).
 
 ### Create volumes for stretched clusters
 
@@ -540,9 +553,6 @@ The following diagram shows both Site 1 and Site 2 as being active sites, with b
 :::image type="content" source="media/cluster/stretch-active-active.png" alt-text="Active/active stretched cluster scenario":::
 
 OK, now we are ready to begin. We first need to move resource groups around from node to node. The `Move-ClusterGroup` cmdlet is used to this.
-
-> [!TIP]
-> Moving a resource group is also a way of simulating failover between nodes.
 
 First we move the "Available Storage" storage pool resource group to node Server1 in Site1 using the `Move-ClusterGroup` cmdlet:
 
@@ -608,51 +618,94 @@ Now add Disk1 to Cluster Shared Volumes:
 Add-ClusterSharedVolume -Name 'Cluster Virtual Disk (Disk1)'
 ```
 
-### Enable the CSV cache (optional)
-
-Finally and optionally, you can enable the CSV cache to use system memory (RAM) as a write-through block-level cache of read operations that aren't already cached by the Windows cache manager. This can improve performance for applications such as Hyper-V. The CSV cache can boost the performance of read requests and is also useful for Scale-Out File Server scenarios.
-
-Enabling the CSV cache reduces the amount of memory available to run VMs on a hyperconverged cluster, so you'll have to balance storage performance with memory available to VHDs.
-
-To set the size of the CSV cache, run the following command. This example sets a 2 GB CSV cache per server:
-
-```powershell
-$ClusterName = "ClusterS1"
-$CSVCacheSize = 2048 #Size in MB
-
-Write-Output "Setting the CSV cache..."
-(Get-Cluster $ClusterName).BlockCacheSize = $CSVCacheSize
-
-$CSVCurrentCacheSize = (Get-Cluster $ClusterName).BlockCacheSize
-Write-Output "$ClusterName CSV cache size: $CSVCurrentCacheSize MB"
-```
-
 ## Step 8: Configure Storage Replica (stretched cluster)
 
-Next, we will configure Storage Replica by creating replication groups (RG) for each site and specifying the data volumes and log volumes for both the source server nodes in Site1 (Server1, Server2) and the destination (replicated) server nodes in Site2 (Server3, Server4).
+When using PowerShell to set up Storage Replica for a stretched cluster, the disk that will be used for the source data will need to be added as a Cluster Shared Volume (CSV). All other disks must remain as non-CSV drives in the Available Storage group. These disks will then be added as Cluster Shared Volumes during the Storage Replica creation process.
 
-The `New-SRPartnership` cmdlet creates a replication partnership between the two replication groups for the two sites. In this example `Replication1` is the replication group for primary node Server1 in Site1, and `Replication2` is the replication group for destination node Server3 in Site2.
+In the previous step, the virtual disks were added using drive letters to make the identification of them easier. Storage Replica is a one-to-one replication, meaning a single disk can replicate to another single disk.
 
-This cmdlet is also where you specify the source data and log volume names:
+### Step 8.1: Validate the topology for replication
+
+Before starting, you should run the `Test-SRTopology` cmdlet for an extended period (like several hours). The `Test-SRTopology` cmdlet validates a potential replication partnership and validates the local host to the destination server or remotely between source and destination servers.
+
+This cmdlet will perform will validate that:
+
+- SMB can be accessed over the network, which means that TCP port 445 and port 5445 are open bi-directionally.
+- WS-MAN can be accessed over HTTP on the network, which means that TCP port 5985 and 5986 are open.
+- An SR WMIv2 provider can be accessed and accepts requests.
+- Source and destination data volumes exist and are writable.
+- Source and destination log volumes exist with NTFS formatting or ReFS formatting and sufficient free space.
+- Storage is initialized in GPT format, not MBR, with matching sector sizes.
+- There is sufficient physical memory to run replication.
+
+In addition, the `Test-SRTopology` cmdlet will also measure:
+
+- Round-trip latency of ICMP and report the average.
+- Performance counters for write Input/Output and report the average seen on that volume.
+- Estimated initial synchronization time.
+
+Once Test-SRTopology completes, it will create an .html file (TestSrTopologyReport with date and time) in your Windows Temp folder. Any warning or failures should be reviewed as they could cause Storage Replica to not be properly created.
+
+An example command that would run for 5 hours would be:
+
+```powershell
+Test-SRTopology -SourceComputerName Server1 -SourceVolumeName W: -SourceLogVolumeName X: -DestinationComputerName Server3 -DestinationVolumeName Y: -DestinationLogVolumeName Z: -DurationInMinutes 300 -ResultPath c:\temp
+```
+
+### Step 8.2: Create the replication partnership
+
+Now that you completed the `Test-SRTopology` tests, you are ready to configure Storage Replica and create the replication partnership. In a nutshell, we will configure Storage Replica by creating replication groups (RG) for each site and specifying the data volumes and log volumes for both the source server nodes in Site1 (Server1, Server2) and the destination (replicated) server nodes in Site2 (Server3, Server4).
+
+Let's begin:
+
+1. Add the Site1 data disk as a Cluster Shared Volume (CSV):
+
+```powershell
+Add-ClusterSharedVolume -Name "Cluster Virtual Disk (Site1)"
+```
+
+1. The Available Storage group should be "owned" by the node it is currently sitting on. The group can be moved to Server1 using:
+
+```powershell
+Move-ClusterGroup -Name “Available Storage” -Node Server1
+```
+
+1. To create the replication partnership, use the `New-SRPartnership` cmdlet. This cmdlet is also where you specify the source data volume and log volume names:
 
 ```powershell
 New-SRPartnership -SourceComputerName "Server1" -SourceRGName "Replication1" -SourceVolumeName "C:\ClusterStorage\Disk1\" -SourceLogVolumeName "G:" -DestinationComputerName "Server3" -DestinationRGName "Replication2" -DestinationVolumeName "H:" -DestinationLogVolumeName "I:"
 ```
 
-## Step 9: Verify data replication (stretched cluster)
+The `New-SRPartnership` cmdlet creates a replication partnership between the two replication groups for the two sites. In this example `Replication1` is the replication group for primary node Server1 in Site1, and `Replication2` is the replication group for destination node Server3 in Site2.
 
-With Storage Replica, there are several events you can view to ascertain the state of replication between sites in stretched clusters.
+Storage Replica will now be setting everything up. If there is any data to be replicated, it will do it here. Depending on the amount of data it needs to replicate, this may take a while. It is recommended to not move any groups around until this process completes.
 
-To use the previous examples, we can determine replication progress on Server1 in Site1 by running the following command and examining events 5015, 5002, 5004, 1237, 5001, and 2200:
+## Step 9: Verify replication (stretched cluster)
+
+With Storage Replica, there are several events you can view to get the state of replication and view Storage Replica events in stretched clusters.
+
+To determine the replication progress for Server1 in Site1, run the Get-WinEvent command and examine events 5015, 5002, 5004, 1237, 5001, and 2200:
 
 ```powershell
 Get-WinEvent -ComputerName Server1 -ProviderName Microsoft-Windows-StorageReplica -max 20
 ```
 
-For node Server3 in Site2, run the following command to see Storage Replica events that show creation of the partnership. This event states the number of copied bytes and the time taken to replicate from Server1 to Server3:
+For Server3 in Site2, run the following `Get-WinEvent` command to see the Storage Replica events that show creation of the partnership. This event states the number of copied bytes and the time taken. For example:
 
 ```powershell
-Get-WinEvent -ComputerName Server3 -ProviderName Microsoft-Windows-StorageReplica | Where-Object {$_.ID -eq "1215"} | fl
+Get-WinEvent -ComputerName Server3 -ProviderName Microsoft-Windows-StorageReplica | Where-Object {$_.ID -eq "1215"} | FL
+```
+
+For Server3 in Site2, run the `Get-WinEvent` command and examine events 5009, 1237, 5001, 5015, 5005, and 2200 to understand the processing progress. There should be no warnings of errors in this sequence. There will be many 1237 events - these indicate progress.
+
+```powershell
+Get-WinEvent -ComputerName Server3 -ProviderName Microsoft-Windows-StorageReplica | FL
+```
+
+Alternately, the destination server group for the replica states the number of byte remaining to copy at all times, and can be queried through PowerShell with `Get-SRGroup`. For example:
+
+```powershell
+(Get-SRGroup).Replicas | Select-Object numofbytesremaining
 ```
 
 For node Server3 in Site2, run the following command and examine events 5009, 1237, 5001, 5015, 5005, and 2200 to understand the replication progress. There should be no warnings of errors. However, there will be many "1237" events - these simply indicate progress.
@@ -661,7 +714,7 @@ For node Server3 in Site2, run the following command and examine events 5009, 12
 Get-WinEvent -ComputerName Server3 -ProviderName Microsoft-Windows-StorageReplica | FL
 ```
 
-USe this sample for a script that will not terminate:
+As a progress script that will not terminate:
 
 ```powershell
 while($true) {
@@ -671,7 +724,7 @@ Start-Sleep -s 5
 }
 ```
 
-To get the replication state for the stretched cluster, use `Get-SRGroup` and `Get-SRPartnership`:
+To get replication state within the stretched cluster, use `Get-SRGroup` and `Get-SRPartnership`:
 
 ```powershell
 Get-SRGroup -Cluster ClusterS1
@@ -689,8 +742,9 @@ Once successful data replication is confirmed between sites, you can create your
 
 ## Next steps
 
-- You may want to further validate your cluster. See [Validate server cluster].
-
-- You can create your virtual machines. See [Manage VMs on Azure Stack HCI](https://docs.microsoft.com/azure-stack/hci/manage/vm).
-
+- It is important to validate the cluster afterwards. See [Validate server cluster].
+- Register your cluster with Azure. See [Register Azure Stack Hub with Azure](https://docs.microsoft.com/azure-stack/operator/azure-stack-registration?view=azs-2002&pivots=state-connected).
+- Setup a witness (highly recommended). See [Setup a witness].
+- Create volumes and virtual disks. See [Create volumes].
+- Provision your VMs. See [Manage VMs on Azure Stack HCI](https://docs.microsoft.com/azure-stack/hci/manage/vm).
 - You can also create a cluster using Windows Admin Center. See [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md).
