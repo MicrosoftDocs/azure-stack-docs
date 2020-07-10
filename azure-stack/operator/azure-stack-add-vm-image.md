@@ -141,7 +141,7 @@ $urlOfUploadedImageVhd = ($storageaccounturl + '/' + $vhdName)
 Add-AzVhd -ResourceGroupName $resourceGroup -Destination $urlOfUploadedImageVhd `
     -LocalFilePath $localPath
 ```
-For a specialized VHD, make sure to use "attach" semantics using -CreateOption Attach like [this](/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks) to create a VM from this VHD.
+For a specialized VHD, make sure to use "attach" semantics using -CreateOption Attach like [this](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks) to create a VM from this VHD.
 
 ### Considerations
 
@@ -233,7 +233,7 @@ Before you upload the image, it's important to consider the following:
      For example: `https://storageaccount.blob.core.windows.net/vhds/Ubuntu1404.vhd`  
      You can specify a blob storage URI for an `osDisk`.  
 
-     For more information, see the PowerShell reference for the [Add-AzsPlatformimage](/powershell/module/azs.compute.admin/add-azsplatformimage) cmdlet.
+     For more information, see the PowerShell reference for the [Add-AzsPlatformimage](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) cmdlet.
 
 4. When you add an image, it is only available for Azure Resource Manager-based templates and PowerShell deployments. To make an image available to your users as a marketplace item, publish the marketplace item using the steps in the article [Create and publish a Marketplace item](azure-stack-create-and-publish-marketplace-item.md). Make sure you note the **Publisher**, **Offer**, **SKU**, and **Version** values. You will need them when you edit the Resource Manager template and Manifest.json in your custom .azpkg.
 
@@ -279,7 +279,7 @@ When you no longer need the VM image that you uploaded, you can delete it from t
      For example: `1.0.0`  
      The version of the VM Image that users use when they deploy the VM image. This version is in the format *\#.\#.\#*. Don't include a space or other special characters in this field.  
 
-     For more info about the **Remove-AzsPlatformImage** cmdlet, see the Microsoft PowerShell [Azure Stack Hub Operator module documentation](/powershell/module/).
+     For more info about the **Remove-AzsPlatformImage** cmdlet, see the Microsoft PowerShell [Azure Stack Hub Operator module documentation](https://docs.microsoft.com/powershell/azure/azure-stack/overview).
 
 ## Next steps
 
