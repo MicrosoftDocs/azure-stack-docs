@@ -50,7 +50,7 @@ To learn more, see [Microsoft Edge language support](https://docs.microsoft.com/
 ## Change the language in Server Core
 If you need to change the language in Server Core of the Azure Stack HCI operating system, we recommend doing so after clustering your servers. You can add supported language packs to Server Core, and then change the language and keyboard layout to the one you want to use. You can also use a Windows PowerShell command to override the current language and keyboard input method.
 
-Each language pack is installed in the directory *%SystemRoot%\System32\%Language-ID%*. For example, *C:\Windows\System32\es-ES* is the location of the Spanish language pack. Each language pack is about 50 MB. If you want to install all 38 language packs, the size of the required image that you create is about 2 GB.
+Each language pack is installed in the directory *%SystemRoot%\System32\\%Language-ID%*. For example, *C:\Windows\System32\es-ES* is the location of the Spanish language pack. Each language pack is about 50 MB. If you want to install all 38 language packs, the size of the required image that you create is about 2 GB.
 
 To learn more, see [Available languages for Windows](https://docs.microsoft.com/windows-hardware/manufacture/desktop/available-language-packs-for-windows).
 
