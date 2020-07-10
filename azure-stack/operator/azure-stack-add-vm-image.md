@@ -13,13 +13,21 @@ ms.lastreviewed: 07/10/2020
 
 ---
 
-
 # Add a custom VM image to Azure Stack Hub
 
 In Azure Stack Hub, as an operator, you can add your custom virtual machine (VM) image to the marketplace and make it available to your users. You can add VM images to the Azure Stack Hub Marketplace through the administrator portal or Windows PowerShell. Use either an image from the global Azure Marketplace as a base for your custom image, or your create your own using Hyper-V.
-**An Azure Stack user can also use the same guidance(Step 1 only) to create their custom image and upload to a storage account on Azure Stack Hub. They can then proceed to create a VM from this custom image (VHD).**
 
-Custom images come in two forms - generalized and specialized. A generalized disk is one that has gone through a sysprep process to remove any unique information (such as user accounts), allowing for it to be reused to create multiple VMs. This is a good fit for marketplace items. A specialized disk is a copy of a virtual hard disk (VHD) from an existing VM that contains the user accounts, applications, and other state data from your original VM. This is typically the format in which VMs are migrated to Azure Stack Hub.
+A user in the tenant portal in Azure Stack Hub can also add your custom virtual machine (VM) image by following the guidance in step one. A user can create their custom image as a virtual hard disk (VHD) and upload the image to a storage account on Azure Stack Hub. They can then create a VM from the VHD.
+
+Custom images come in two forms: **generalized** and **specialized**. 
+
+- **Generalized image**
+
+  A generalized disk image is one that has gone through a sysprep process to remove any unique information (such as user accounts), allowing it to be reused to create multiple VMs. This is a good fit for marketplace items. 
+
+- **Specialized image**
+
+  A specialized disk image is a copy of a virtual hard disk (VHD) from an existing VM that contains the user accounts, applications, and other state data from your original VM. This is typically the format in which VMs are migrated to Azure Stack Hub.
 
 ## Step 1: Create the custom VM image
 
@@ -91,14 +99,14 @@ To deploy VM extensions, make sure that the VM agent .msi available [here](/azur
 
    1. You might need to select **Save** in the browser to start the download. The default name for the VHD file is _abcd_.
    
-   1. You can now port this VHD to Azure Stack
+   1. You can now port this VHD to Azure Stack Hub
    
- **Important** 
-You can follow [this](/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script) to upload the VHD to an Azure Stack Hub user storage account and create a VM. Make sure provide $urlOfUploadedImageVhd as the Azure Stack Hub storage account+container url. For a generalized VHD, make sure to use "FromImage" semantics using -CreateOption FromImage
+> [!Important]  
+> You find a script in the following article, [Sample script to upload a VHD to Azure and create a new VM](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script) to upload the VHD to an Azure Stack Hub user storage account and create a VM. Make sure provide `$urlOfUploadedImageVhd` as the Azure Stack Hub storage account+container URL. For a generalized VHD, make sure to use `FromImage` value when using `-CreateOption FromImage`.
    
 ### Linux - Specialized
 
-Specialized VHDs should not be used as the base VHD for a marketplace item. Use generalized VHDs for this. However, specialized VHDs are a good fit for when you need to migrate VMs from on-prem to Azure Stack Hub
+Specialized VHDs should not be used as the base VHD for a marketplace item. Use generalized VHDs for this. However, specialized VHDs are a good fit for when you need to migrate VMs from on-premises to Azure Stack Hub
 
 **If the VHD is from outside Azure**, follow the appropriate instructions to make the VHD suitable for Azure:
 
@@ -109,7 +117,7 @@ Specialized VHDs should not be used as the base VHD for a marketplace item. Use 
 - [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 DO NOT RUN THE LAST STEP:  sudo waagent -force -deprovision as this will generalize the VHD.
-If a Linux specialized VHD is brought from outside of Azure to Azure Stack, to run VM extensions, run 'mkdir -p /var/lib/waagent && touch /var/lib/waagent/provisioned' before the logout step.
+If a Linux specialized VHD is brought from outside of Azure to Azure Stack Hub, to run VM extensions, run 'mkdir -p /var/lib/waagent && touch /var/lib/waagent/provisioned' before the logout step.
 
 **If the VHD is from Azure**
 You can use [this](/azure/virtual-machines/linux/upload-vhd#requirements) guidance to prepare the VHD. 
