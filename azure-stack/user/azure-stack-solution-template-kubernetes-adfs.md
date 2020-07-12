@@ -56,7 +56,7 @@ You need to work with your Azure Stack Hub administrator to set up your service 
 
 ## Deploy Kubernetes
 
-1. Open the [Azure Stack Hub portal](https://portal.local.azurestack.external).
+1. Open the Azure Stack Hub portal `https://portal.local.azurestack.external`.
 
 1. Select **+ Create a resource** > **Compute** > **Kubernetes Cluster**. Select **Create**.
 

@@ -4,7 +4,7 @@ description: Create and configure VPN gateways for Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 06/15/2020
 ms.author: sethm
 ms.lastreviewed: 05/21/2019
 
@@ -26,8 +26,8 @@ Each virtual network can have two virtual network gateways, but only one of each
 
 Before you create and configure VPN gateways for Azure Stack Hub, review the [considerations for Azure Stack Hub networking](azure-stack-network-differences.md) to learn how configurations for Azure Stack Hub differ from Azure.
 
->[!NOTE]
->In Azure, the bandwidth throughput for the VPN gateway SKU you choose must be divided across all connections that are connected to the gateway. In Azure Stack Hub however, the bandwidth value for the VPN gateway SKU is applied to each connection resource that is connected to the gateway.
+> [!NOTE]
+> In Azure, the bandwidth throughput for the VPN gateway SKU you choose must be divided across all connections that are connected to the gateway. In Azure Stack Hub however, the bandwidth value for the VPN gateway SKU is applied to each connection resource that is connected to the gateway.
 >
 > For example:
 >
@@ -49,7 +49,7 @@ For information about individual resources and settings for a VPN gateway, see [
 
 ### Deployment tools
 
-You can create and configure resources using one configuration tool, such as the Azure portal. Later you might switch to another tool such as PowerShell to configure additional resources or modify existing resources when applicable. Currently, you can't configure every resource and resource setting in the Azure portal. The instructions in the articles for each connection topology specify when a specific configuration tool is needed.
+You can create and configure resources using one configuration tool, such as the Azure portal. Later, you might switch to another tool such as PowerShell to configure additional resources or modify existing resources when applicable. Currently, you cannot configure every resource and resource setting in the Azure portal. The instructions in the articles for each connection topology specify when a specific configuration tool is needed.
 
 ## Connection topology diagrams
 
@@ -117,8 +117,8 @@ The following table shows the gateway types and the estimated aggregate throughp
 **(2)** - Max tunnels is the total per Azure Stack Hub deployment for all subscriptions.  
 **(3)** - BGP routing is not supported for the Basic SKU.
 
->[!NOTE]
->Only one site-to-site VPN connection can be created between two Azure Stack Hub deployments. This is due to a limitation in the platform that only allows a single VPN connection to the same IP address. Because Azure Stack Hub leverages the multi-tenant gateway, which uses a single public IP for all VPN gateways in the Azure Stack Hub system, there can be only one VPN connection between two Azure Stack Hub systems. This limitation also applies to connecting more than one site-to-site VPN connection to any VPN gateway that uses a single IP address. Azure Stack Hub does not allow more than one local network gateway resource to be created using the same IP address.
+> [!NOTE]
+> Only one site-to-site VPN connection can be created between two Azure Stack Hub deployments. This is due to a limitation in the platform that only allows a single VPN connection to the same IP address. Because Azure Stack Hub leverages the multi-tenant gateway, which uses a single public IP for all VPN gateways in the Azure Stack Hub system, there can be only one VPN connection between two Azure Stack Hub systems. This limitation also applies to connecting more than one site-to-site VPN connection to any VPN gateway that uses a single IP address. Azure Stack Hub does not allow more than one local network gateway resource to be created using the same IP address.
 
 ## Next steps
 

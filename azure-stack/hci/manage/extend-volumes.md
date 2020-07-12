@@ -3,12 +3,13 @@ title: Extend volumes in Azure Stack HCI
 description: How to resize volumes in Azure Stack HCI using Windows Admin Center and PowerShell.
 author: khdownie
 ms.author: v-kedow
-ms.topic: article
-ms.date: 03/10/2020
+ms.topic: how-to
+ms.date: 07/01/2020
 ---
 
 # Extending volumes in Storage Spaces Direct
-> Applies to: Windows Server 2019
+
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
 This topic provides instructions for resizing volumes on a [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) cluster by using Windows Admin Center.
 
@@ -56,7 +57,7 @@ To follow associations between objects in the stack, pipe one **Get-** cmdlet in
 For example, here's how to get from a virtual disk up to its volume:
 
 ```PowerShell
-Get-VirtualDisk <FriendlyName> | Get-Disk | Get-Partition | Get-Volume 
+Get-VirtualDisk <FriendlyName> | Get-Disk | Get-Partition | Get-Volume
 ```
 
 ### Step 1 – Resize the virtual disk
@@ -66,7 +67,7 @@ The virtual disk may use storage tiers, or not, depending on how it was created.
 To check, run the following cmdlet:
 
 ```PowerShell
-Get-VirtualDisk <FriendlyName> | Get-StorageTier 
+Get-VirtualDisk <FriendlyName> | Get-StorageTier
 ```
 
 If the cmdlet returns nothing, the virtual disk doesn't use storage tiers.
@@ -121,7 +122,7 @@ $VirtualDisk = Get-VirtualDisk <FriendlyName>
 # Get its partition
 $Partition = $VirtualDisk | Get-Disk | Get-Partition | Where PartitionNumber -Eq 2
 
-# Resize to its maximum supported size 
+# Resize to its maximum supported size
 $Partition | Resize-Partition -Size ($Partition | Get-PartitionSupportedSize).SizeMax
 ```
 

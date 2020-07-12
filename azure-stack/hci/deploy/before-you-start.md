@@ -4,29 +4,49 @@ description: How to prepare to deploy Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 03/11/2020
+ms.date: 06/09/2020
 ---
 
 # Before you deploy Azure Stack HCI
 
+> Applies to Azure Stack HCI v20H2, Azure Stack HCI
+
 In this how-to guide, you learn how to:
 
 - Determine whether your hardware meets the base requirements for Azure Stack HCI
+- Make sure you're not exceeding the maximum supported hardware specifications
 - Gather the required information for a successful deployment
-- Install Windows Admin Center on a Windows 10 PC
+- Install Windows Admin Center on a management PC
 
 ## Determine hardware requirements
 
 Microsoft recommends purchasing a validated Azure Stack HCI hardware/software solution from our partners. These solutions are designed, assembled, and validated against our reference architecture to ensure compatibility and reliability, so you get up and running quickly.
 
 - Check that the systems, components, devices, and drivers you are using are Windows Server 2019 Certified per the Windows Server Catalog. Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) website for validated solutions.
-- Azure Stack HCI requires a minimum of 2 servers and a maximum of 16 servers. It is recommended that all servers be the same manufacturer and model, with Intel Nehalem or later compatible processor or AMD EPYC or later compatible processor.
-- Make sure that the servers are equipped with sufficient memory for the server operating system, VMs, and other apps or workloads. In addition, allow 4 GB of RAM per terabyte (TB) of cache drive capacity on each server for Storage Spaces Direct metadata.
+- Azure Stack HCI requires a minimum of 2 servers and a maximum of 16 servers; however, clusters can be combined using cluster sets to create an HCI platform of hundreds of nodes. 
+- It's recommended that all servers be the same manufacturer and model, using Intel Broadwell (released Q1 2015) or later compatible processor. A second generation Intel Xeon Scalable processor is required to support Intel Optane DC persistent memory. Processors must be at least 1.4 GHz and compatible with the x64 instruction set.
+- Make sure that the servers are equipped with at least 32 GB of RAM per node to accommodate the server operating system, VMs, and other apps or workloads. In addition, allow 4 GB of RAM per terabyte (TB) of cache drive capacity on each server for Storage Spaces Direct metadata.
 - You can use any boot device supported by Windows Server, which [now includes SATADOM](https://cloudblogs.microsoft.com/windowsserver/2017/08/30/announcing-support-for-satadom-boot-drives-in-windows-server-2016/). RAID 1 mirror is **not** required, but is supported for boot. A 200 GB minimum size is recommended.
 - Azure Stack HCI requires a reliable high bandwidth, low latency network connection between each node. For a small scale cluster (2-3 nodes), you will need a 10 Gbps network interface card (NIC) or faster. For larger clusters (4+ nodes), use 25 Gbps NICs or faster that are remote-direct memory access (RDMA) capable, iWARP (recommended) or RoCE. For any size cluster, two or more network connections from each node is recommended for redundancy and performance.
 - Switched or switchless node interconnects are supported. Network switches must be properly configured to handle the bandwidth and networking type. If using RDMA that implements the RoCE protocol, network device and switch configuration is even more important. Nodes can also be interconnected using direct connections, avoiding using a switch. It is required that every node have a direct connection with every other node of the cluster.
 - Azure Stack HCI works with direct-attached SATA, SAS, or NVMe drives that are physically attached to just one server each. For more help choosing drives, see the [Choosing drives](/windows-server/storage/storage-spaces/choosing-drives) topic. Drives can be internal to the server, or in an external enclosure that is connected to just one server. SCSI Enclosure Services (SES) is required for slot mapping and identification. Each external enclosure must present a unique identifier (Unique ID). **NOT SUPPORTED:** RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) storage, shared SAS enclosures connected to multiple servers, or any form of multi-path IO (MPIO) where drives are accessible by multiple paths. Host-bus adapter (HBA) cards must implement simple pass-through mode.
 - The fully configured cluster (servers, networking, and storage) must pass all [cluster validation tests](https://technet.microsoft.com/library/cc732035(v=ws.10).aspx) per the wizard in Failover Cluster Manager or with the [Test-Cluster cmdlet](/powershell/module/failoverclusters/test-cluster?view=win10-ps) in PowerShell.
+
+## Review maximum supported hardware specifications
+
+Azure Stack HCI deployments that exceed the following specifications are not supported:
+
+| Resource                     | Maximum |
+| ---------------------------- | --------|
+| Physical servers per cluster | 16      |
+| VMs per host                 | 1,024   |
+| Disks per VM (SCSI)          | 256     |
+| Storage per cluster          | 4 PB    |
+| Logical processors per host  | 512     |
+| RAM per host                 | 24 TB   |
+| RAM per VM                   | 12 TB (generation 2 VM) or 1 TB (generation 1)|
+| Virtual processors per host  | 2,048   |
+| Virtual processors per VM    | 240 (generation 2 VM) or 64 (generation 1)|
 
 ## Gather information
 
