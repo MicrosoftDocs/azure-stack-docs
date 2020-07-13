@@ -75,12 +75,14 @@ The following table lists the supported cryptographic algorithms and key strengt
 |------------------------------------------------------|--------------------------------------------------------------------------|
 | IKEv2 Encryption                                     | AES256, AES192, AES128, DES3, DES                                        |
 | IKEv2 Integrity                                      | SHA384, SHA256, SHA1, MD5                                                |
-| DH Group                                             | ECP384, ECP256, DHGroup24, DHGroup14, DHGroup2, DHGroup1                 |
+| DH Group                                             | ECP384, DHGroup14, DHGroup2, DHGroup1, ECP256*, DHGroup24*             |
 | IPsec Encryption                                     | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, None |
 | IPsec Integrity                                      | GCMASE256, GCMAES192, GCMAES128                                          |
 | PFS Group                                            | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, PFSMM, None                  |
 | QM SA Lifetime                                       | (Optional: default values are used if not specified)<br />                         Seconds (integer; min. 300/default 27000 seconds)<br />                         KBytes (integer; min. 1024/default 102400000 KBytes) |
 | Traffic Selector                                     | Policy-based Traffic Selectors are not supported in Azure Stack Hub.         |
+
+\* These parameters are only available in builds 2002 and above. 
 
 - Your on-premises VPN device configuration must match or contain the following algorithms and parameters that you specify on the Azure IPsec/IKE policy:
 
@@ -110,9 +112,11 @@ The following table lists the corresponding Diffie-Hellman Groups supported by t
 | 1                    | DHGroup1  | PFS1          | 768-bit MODP  |
 | 2                    | DHGroup2  | PFS2          | 1024-bit MODP |
 | 14                   | DHGroup14<br/>DHGroup2048 | PFS2048       | 2048-bit MODP |
-| 19                   | ECP256    | ECP256        | 256-bit ECP   |
+| 19                   | ECP256*    | ECP256        | 256-bit ECP   |
 | 20                   | ECP384    | ECP384        | 384-bit ECP   |
-| 24                   | DHGroup24 | PFS24         | 2048-bit MODP |
+| 24                   | DHGroup24* | PFS24         | 2048-bit MODP |
+
+\* These parameters are only available in builds 2002 and above. 
 
 For more information, see [RFC3526](https://tools.ietf.org/html/rfc3526) and [RFC5114](https://tools.ietf.org/html/rfc5114).
 
