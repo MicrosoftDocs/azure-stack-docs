@@ -4,7 +4,7 @@ description: This topic provides guidance on security considerations for the Azu
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: conceptual
-ms.date: 06/25/2020
+ms.date: 07/21/2020
 ---
 
 # Azure Stack HCI security considerations
@@ -131,11 +131,6 @@ The following sections recommend advanced security tools and technologies to fur
     The security baselines are provided as Group Policy Object (GPO) backups that you can import into Active Directory Domain Services (AD DS), and then deploy to domain-joined servers to harden the environment. You can also use Local Script tools to configure standalone (non domain-joined) servers with security baselines. To get started using the security baselines, download the [Microsoft Security Compliance Toolkit 1.0](https://www.microsoft.com/download/details.aspx?id=55319).
 
     To learn more, see [Microsoft Security Baselines](https://techcommunity.microsoft.com/t5/microsoft-security-baselines/bg-p/Microsoft-Security-Baselines).
-
-- **Turbine** enables you to hot patch VMs running on the latest Windows Server operating systems with security updates and minimal downtime. Turbine significantly reduces the number of restarts VMs require to get fully updated. Operating system security updates are responsible for nearly 70% of server restarts.
-
-    To learn more, see [Turbine]().
-    <!--Either update this feature reference when it ships or pull it if to ship after HCI release--!>
 
 ### Protect data
 - **Hardening the Hyper-V environment** requires hardening Windows Server running on a VM just as you would harden the operating system running
