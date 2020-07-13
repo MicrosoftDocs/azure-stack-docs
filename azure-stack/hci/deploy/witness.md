@@ -3,7 +3,7 @@ title: Setup a cluster witness
 description: Learn how to setup a cluster witness 
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 07/08/2020 
+ms.date: 07/21/2020 
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -12,9 +12,9 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version 20H2; Windows Server 2019
 
-A witness resource is highly recommended for all clusters. Two-node clusters need a witness so that either server going offline does not cause the other node to become unavailable as well. Three and higher-node clusters need a witness to be able to withstand two servers failing or being offline.  You can use a file share as a witness or use an Azure cloud witness.
+Setting up a witness resource is mandatory for all clusters. A cluster witness should be setup right after you create a cluster. Two-node clusters need a witness so that either server going offline does not cause the other node to become unavailable as well. Three and higher-node clusters need a witness to be able to withstand two servers failing or being offline.  
 
-A cloud witness is recommended if all server nodes have a reliable Internet connection. For more information, see [Deploy a Cloud Witness for a Failover Cluster](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)
+You can use a file share as a witness or use an Azure cloud witness. An Azure Cloud witness is recommended, provided all server nodes in the cluster have a reliable Internet connection. For more information, see [Deploy a Cloud Witness for a Failover Cluster](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)
 
 ## Setup a witness using Windows Admin Center
 
@@ -44,4 +44,4 @@ Set-ClusterQuorum –Cluster Cluster1 -FileShareWitness \\fileserver\fsw
 
 ## Next steps
 
-For more information on cluster quorum, see [](https://docs.microsoft.com/windows-server/failover-clustering/manage-cluster-quorum)
+For more information on cluster quorum, see [Configure and manage quorum](https://docs.microsoft.com/windows-server/failover-clustering/manage-cluster-quorum).
