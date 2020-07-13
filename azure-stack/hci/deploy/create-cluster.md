@@ -16,7 +16,7 @@ In this article you will learn how to use Windows Admin Center to create an Azur
 
 ## Cluster types
 
-You have a choice between two cluster types:
+You have a choice between creating two cluster types:
 
 - Standard cluster with at least two server nodes, residing in a single site.
 - Stretched cluster with at least four server nodes that span across two sites, with at least two nodes per site.
