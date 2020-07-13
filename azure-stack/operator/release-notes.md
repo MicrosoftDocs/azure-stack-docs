@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 06/26/2020
+ms.date: 07/07/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
@@ -71,6 +71,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 <!-- What's new, also net new experiences and features. -->
 
 - A new version (1.8.1) of the Azure Stack Hub admin PowerShell modules based on AzureRM is available.
+- A new version of the Azure Stack Hub admin REST API is available. You can find details about endpoints and breaking changes in the [API Reference](https://docs.microsoft.com/rest/api/azure-stack/).
 - New Azure PowerShell tenant modules will be released for Azure Stack Hub on April 15, 2020. The currently used Azure RM modules will continue to work, but will no longer be updated after build 2002.
 - Added new warning alert on the Azure Stack Hub administrator portal to report on connectivity issues with the configured syslog server. Alert title is **The Syslog client encountered a networking issue while sending a Syslog message**.
 - Added new warning alert on the Azure Stack Hub administrator portal to report on connectivity issues with the Network Time Protocol (NTP) server. Alert title is **Invalid Time Source on [node name]**.
@@ -164,14 +165,14 @@ For more information about hotfixes, see the [Azure Stack Hub servicing policy](
 The 2002 release of Azure Stack Hub must be applied on the 1910 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1910.54.167](https://support.microsoft.com/help/4570100)
+- [Azure Stack Hub hotfix 1.1910.62.184](https://support.microsoft.com/help/4571141)
 
 ### After successfully applying the 2002 update
 
 After the installation of this update, install any applicable hotfixes.
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.2002.44.126](https://support.microsoft.com/help/4570099)
+- [Azure Stack Hub hotfix 1.2002.52.142](https://support.microsoft.com/help/4571140)
 ::: moniker-end
 
 ::: moniker range="azs-1910"
@@ -321,14 +322,14 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 The 1910 release of Azure Stack Hub must be applied on the 1908 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1908.42.114](https://support.microsoft.com/help/4570101)
+- [Azure Stack Hub hotfix 1.1908.50.131](https://support.microsoft.com/help/4571142)
 
 ### After successfully applying the 1910 update
 
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1910.54.167](https://support.microsoft.com/help/4570100)
+- [Azure Stack Hub hotfix 1.1910.62.184](https://support.microsoft.com/help/4571141)
 ::: moniker-end
 
 ::: moniker range="azs-1908"
@@ -407,7 +408,7 @@ The Azure Stack Hub 1908 Update requires **Azure Stack Hub OEM version 2.1 or la
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1908.42.114](https://support.microsoft.com/help/4570101)
+- [Azure Stack Hub hotfix 1.1908.50.131](https://support.microsoft.com/help/4571142)
 ::: moniker-end
 
 ::: moniker range="azs-1907"
