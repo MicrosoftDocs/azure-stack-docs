@@ -4,7 +4,7 @@ description: This how-to article focuses on why cluster validation is important,
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 07/21/2020
 ---
 
 # Validate an Azure Stack HCI cluster
@@ -40,7 +40,7 @@ This section describes scenarios in which validation is also needed or useful.
 
   - **After restoring a system from backup:** After you restore a system from backup, run cluster validation to confirm that the system functions correctly as part of a cluster.
 
-## Step 1: Validate networking
+## Validate networking
 The Microsoft Validate-DCB tool is designed to validate the Data Center Bridging (DCB) configuration on the cluster. To do this, the tool takes an expected configuration as input, and then tests each server in the cluster. This section covers how to install and run the Validate-DCB tool, review results, and resolve networking errors that the tool identifies.
 
 On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE) requires DCB technologies to make the network fabric lossless. And while iWARP doesn't require DCB, it's still recommended. However, configuring DCB can be complex, with exact configuration required across:
@@ -151,7 +151,7 @@ Select the **Successfully validated cluster** notice, and then select **Go to Fa
 > [!NOTE]
 > The server cluster validation process may take some time to complete. Don't switch to another tool in Windows Admin Center while the process is running. In the **Notifications** pane, a status bar below your **Validate cluster** notice indicates when the process is done.
 
-## Step 2: Validate the cluster
+## Validate the cluster
 Use the following steps to validate the servers in an existing cluster in Windows Admin Center.
 
 1. In Windows Admin Center, under **All connections**, select the Azure Stack HCI cluster that you want to validate, and then select **Connect**.
@@ -178,6 +178,65 @@ After your server cluster is successfully validated, you'll need to disable the 
 1. On the **Overview** page, select **Disable CredSSP**, and then on the **Disable CredSSP** pop-up window, select **Yes**.
 
     The result of Step 2 removes the red **CredSSP ENABLED** banner at the top of the server's **Overview** page, and disables CredSSP on the other servers.
+
+## Validate replication for Storage Replica
+With Storage Replica, there are several events you can view to get the state of replication and view Storage Replica events in a stretched cluster. In the following scenario, we configured Storage Replica by creating replication groups (RGs) for two sites, and then specified the data volumes and log volumes for both the source server nodes in Site1 (Server1, Server2), and the destination (replicated) server nodes in Site2 (Server3, Server4).
+
+To determine the replication progress for Server1 in Site1, run the Get-WinEvent command and examine events 5015, 5002, 5004, 1237, 5001, and 2200:
+
+```powershell
+Get-WinEvent -ComputerName Server1 -ProviderName Microsoft-Windows-StorageReplica -max 20
+```
+
+For Server3 in Site2, run the following `Get-WinEvent` command to see the Storage Replica events that show creation of the partnership. This event states the number of copied bytes and the time taken. For example:
+
+```powershell
+Get-WinEvent -ComputerName Server3 -ProviderName Microsoft-Windows-StorageReplica | Where-Object {$_.ID -eq "1215"} | FL
+```
+
+For Server3 in Site2, run the `Get-WinEvent` command and examine events 5009, 1237, 5001, 5015, 5005, and 2200 to understand the processing progress. There should be no warnings of errors in this sequence. There will be many 1237 events - these indicate progress.
+
+```powershell
+Get-WinEvent -ComputerName Server3 -ProviderName Microsoft-Windows-StorageReplica | FL
+```
+
+Alternately, the destination server group for the replica states the number of byte remaining to copy at all times, and can be queried through PowerShell with `Get-SRGroup`. For example:
+
+```powershell
+(Get-SRGroup).Replicas | Select-Object numofbytesremaining
+```
+
+For node Server3 in Site2, run the following command and examine events 5009, 1237, 5001, 5015, 5005, and 2200 to understand the replication progress. There should be no warnings of errors. However, there will be many "1237" events - these simply indicate progress.
+
+```powershell
+Get-WinEvent -ComputerName Server3 -ProviderName Microsoft-Windows-StorageReplica | FL
+```
+
+As a progress script that will not terminate:
+
+```powershell
+while($true) {
+$v = (Get-SRGroup -Name "Replication2").replicas | Select-Object numofbytesremaining
+[System.Console]::Write("Number of bytes remaining: {0}`r", $v.numofbytesremaining)
+Start-Sleep -s 5
+}
+```
+
+To get replication state within the stretched cluster, use `Get-SRGroup` and `Get-SRPartnership`:
+
+```powershell
+Get-SRGroup -Cluster ClusterS1
+```
+
+```powershell
+Get-SRPartnership -Cluster ClusterS1
+```
+
+```powershell
+(Get-SRGroup).replicas -Cluster ClusterS1
+```
+
+Once successful data replication is confirmed between sites, you can create your VMs and other workloads.
 
 ## See also
 - Performance testing against synthetic workloads in a newly created storage space using DiskSpd.exe. To learn more, see [Test Storage Spaces Performance Using Synthetic Workloads in Windows Server](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn894707(v=ws.11)).
