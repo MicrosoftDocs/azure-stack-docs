@@ -3,7 +3,7 @@ title: Create and publish a Marketplace item in Azure Stack Hub
 description: Learn how to create and publish an Azure Stack Hub Marketplace item.
 author: sethmanheim
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 06/11/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 05/07/2019
@@ -150,7 +150,7 @@ To create a custom marketplace item, do the following:
 11. When you finish modifying your files, convert it to an .azpkg file. You perform the conversion using the **AzureGallery.exe** tool and the sample gallery package you downloaded previously. Run the following command:
 
     ```shell
-    .\AzureGallery.exe package –m c:\<path>\<gallery package name>\manifest.json –o c:\Temp
+    .\AzureGallery.exe package -m c:\<path>\<gallery package name>\manifest.json -o c:\Temp
     ```
 
     > [!NOTE]
@@ -176,7 +176,7 @@ To create a custom marketplace item, do the following:
 
     ```powershell
     Add-AzsGalleryItem -GalleryItemUri `
-    https://sample.blob.core.windows.net/<temporary blob name>/<offerName.publisherName.version>.azpkg –Verbose
+    https://sample.blob.core.windows.net/<temporary blob name>/<offerName.publisherName.version>.azpkg -Verbose
     ```
 
 5. Verify that you have a valid Storage account that is available to store your item. You can get the `GalleryItemURI` value from the Azure Stack Hub administrator portal. Select **Storage account -> Blob Properties -> URL**, with the extension .azpkg. The storage account is only for temporary use, in order to publish to the marketplace.
@@ -234,7 +234,7 @@ The Marketplace uses the following icons:
 | Large |115 px |115 px |Always required |
 | Medium |90 px |90 px |Always required |
 | Small |40 px |40 px |Always required |
-| Screenshot |533 px |324 px |Always required |
+| Screenshot |533 px |324 px |Optional |
 
 ### Categories
 

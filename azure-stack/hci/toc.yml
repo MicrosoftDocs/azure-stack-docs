@@ -4,8 +4,14 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
+- name: Get started
+  items:
+  - name: Use Azure Stack HCI with Windows Admin Center
+    href: get-started.md
 - name: Deploy
   items:
+  - name: Deployment overview
+    href: deploy/deployment-overview.md
   - name: Before you start
     href: deploy/before-you-start.md    
   - name: Deploy Azure Stack HCI

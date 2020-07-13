@@ -3,13 +3,13 @@ title: Fault tolerance and storage efficiency in Azure Stack HCI
 description: A discussion of resiliency options in Storage Spaces Direct including mirroring and parity.
 author: khdownie
 ms.author: v-kedow
-ms.topic: article
-ms.date: 02/28/2020
+ms.topic: conceptual
+ms.date: 07/01/2020
 ---
 
 # Fault tolerance and storage efficiency in Azure Stack HCI
 
->Applies to: Windows Server 2019
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
 This topic introduces the resiliency options available in Storage Spaces Direct and outlines the scale requirements, storage efficiency, and general advantages and tradeoffs of each. It also presents some usage instructions to get you started, and references some great papers, blogs, and additional content where you can learn more.
 

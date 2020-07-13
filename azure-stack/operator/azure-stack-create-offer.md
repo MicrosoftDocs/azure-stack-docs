@@ -21,7 +21,7 @@ ms.lastreviewed: 06/11/2019
 ::: moniker range=">=azs-1902"
 ## Create an offer (1902 and later)
 
-1. Sign in to the [Azure Stack Hub administrator portal](https://adminportal.local.azurestack.external) and select **+ Create a resource**, then **Offers + Plans**, and then **Offer**.
+1. Sign in to the Azure Stack Hub administrator portal `https://adminportal.local.azurestack.external` and select **+ Create a resource**, then **Offers + Plans**, and then **Offer**.
 
    ![Create an offer in Azure Stack Hub](media/azure-stack-create-offer/offers.png)
 
@@ -68,7 +68,7 @@ There are two ways to change the state of an offer:
 ::: moniker range="<=azs-1901"
 ## Create an offer (1901 and earlier)
 
-1. Sign in to the [Azure Stack Hub administrator portal](https://adminportal.local.azurestack.external) and select **+ Create a resource**, then **Tenant Offers + Plans**, and then **Offer**.
+1. Sign in to the Azure Stack Hub administrator portal `https://adminportal.local.azurestack.external` and select **+ Create a resource**, then **Tenant Offers + Plans**, and then **Offer**.
 
    ![Create an offer in Azure Stack Hub](media/azure-stack-create-offer/image01.png)
   
