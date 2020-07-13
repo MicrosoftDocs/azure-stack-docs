@@ -43,7 +43,7 @@ To use PowerShell to access resources in Azure Stack Hub, you need a service pri
 
 ### [AzureRM modules](#tab/rm)
 
-Install the AzureRM PowerShell modules into a Windows-based container. For instructions, see [Install PowerShell AzureRM module](azure-stack-powershell-install.md).
+In these instructions you will run a Windows-based container image and install the PowerShell and the required modules for Azure Stack Hub.
 
 1. You need to run Docker by using Windows containers that require Windows 10. When you run Docker, switch to Windows containers.
 
