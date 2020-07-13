@@ -195,7 +195,7 @@ The first task is to disable the Credential Security Support Provider (CredSSP) 
 OK, now here are the other tasks you will need to do:
 
 - Setup a cluster witness. See [Setup a cluster witness].
-- Create your volumes and virtual disks. See [Create volumes](../manage/create-volumes).
+- Create your volumes and virtual disks. See [Create volumes](../manage/create-volumes.md).
 - For stretched clusters, create volumes and setup replication using Storage Replica. See the applicable section in [Create volumes](https://docs.microsoft.com/azure-stack/hci/manage/create-volumes).
 
 ## Next steps
