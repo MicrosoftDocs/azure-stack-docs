@@ -4,8 +4,7 @@ description: Learn how to create a server cluster for Azure Stack HCI using Wind
 author: v-dasis
 ms.topic: article
 ms.type: how-to
-ms.prod: 
-ms.date: 07/10/2020
+ms.date: 07/21/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -196,42 +195,13 @@ The first task is to disable the Credential Security Support Provider (CredSSP) 
 
 OK, now here are the other tasks you will need to do:
 
-- Setup a witness (highly recommended). See [Setup a witness].
-- Create your volumes and virtual disks. See [Create volumes].
-- For stretched clusters, setup Storage Replica. See [Setup Storage Replica].
-
-## Setup replication (stretched cluster)
-
-For stretched clusters, Storage Replica is used to provide replication between sites. Specifically, you need to create data and log volumes for each server node pair across sites, create a replication group for each site, and setup a replication partnership between the sites.
-
-OK, let's begin:
-
-1. In Windows Admin Center, under **Tools**, select **Volumes**.
-1. In the right pane, select the **Inventory** tab, then select **Create**.
-1. In the **Create volume** panel, select **Replicate volume between sites**.
-1. Select a replication direction between sites from the drop-down box.
-1. Under **Replication mode**, select **Asynchronous** or **Synchronous**.
-1. Enter a Source replication group name and a Destination replication group name.
-1. Enter the desired size for the log volume.
-1. Under **Advanced**, do the following:
-     - Enter/change the **Source replication group name**.
-     - Enter/change the **Destination replication group name**.
-     - To **use blocks already seeded on the target**..., select that checkbox.
-     - To **encrypt replication traffic**, select that checkbox.
-     - To **enable consistency groups**, select that checkbox.
-1. When finished, click **Create**.
-1. Verify that a data disk and a log disk are created in your source site, and that corresponding data and log replica disks are created in the destination site.
-1. Under **Tools**, select **Storage Replica**.
-1. In the right pane, under **Partnerships**, verify that the replication partnership has been successfully created.
-
-Afterwards, you should verify successful data replication between sites before deploying VMs and other workloads. See the Replication section in [Create Azure Stack HCI cluster using PowerShell] for more information.
+- Setup a cluster witness. See [Setup a cluster witness].
+- Create your volumes and virtual disks. See [Create volumes](../manage/create-volumes).
+- For stretched clusters, create volumes and setup replication using Storage Replica. See the applicable section in [Create volumes](https://docs.microsoft.com/azure-stack/hci/manage/create-volumes).
 
 ## Next steps
 
-- Register your cluster with Azure. See [Register Azure Stack Hub with Azure](https://docs.microsoft.com/azure-stack/operator/azure-stack-registration?view=azs-2002&pivots=state-connected).
-
-- Setup a witness (highly recommended). See [Setup a witness].
-- Create volumes and virtual disks. See [Create volumes].
-- Further validate the cluster post-creation. See [Validate the cluster].
+- Register your cluster with Azure. See [Register your cluster with Azure].
+- Do a final validation of the cluster. See [Validate the cluster].
 - Provision your VMs. See [Manage VMs on Azure Stack HCI](https://docs.microsoft.com/azure-stack/hci/manage/vm).
 - You can also create a cluster using PowerShell. See [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md).
