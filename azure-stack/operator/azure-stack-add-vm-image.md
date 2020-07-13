@@ -115,7 +115,8 @@ Step 1: Follow the appropriate instructions to make the VHD suitable for Azure. 
 - [SLES or openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-> [!IMPORTANT] Do not run the last step: (`sudo waagent -force -deprovision`) as this will generalize the VHD.
+> [!IMPORTANT] 
+> Do not run the last step: (`sudo waagent -force -deprovision`) as this will generalize the VHD.
 
 Step 2:
 If a Linux specialized VHD is brought from outside of Azure to Azure Stack Hub, to run VM extensions, do the following:
