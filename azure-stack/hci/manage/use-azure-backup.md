@@ -4,7 +4,7 @@ description: This article provides guidance on how to use Azure Backup through W
 author: thomasmaurer
 ms.author: thmaure
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 07/13/2020
 ---
 
 # Use Azure Backup to back up Windows Servers
@@ -13,7 +13,7 @@ ms.date: 07/10/2020
 
 Windows Admin Center streamlines backing up Windows Servers to Microsoft Azure. The process also protects you from accidental or malicious deletions, corruption, and even ransomware. To automate setup, you connect Windows Admin Center to Azure to use the Azure Backup service.
 
-This article shows you how to configure Azure Backup, and create a Backup policy for server volumes and Windows System State from Windows Admin Center. The guidance is intended for backing up workloads running on the Azure Stack HCI operating system to Azure.
+This article shows you how to configure Azure Backup, and create a Backup policy for server volumes and Windows System State from Windows Admin Center. The guidance is intended for backing up workloads running in virtual machines (VMs) on the Azure Stack HCI operating system to Azure.
 
 To learn more about Azure integration with Windows Admin Center, see [Connecting Windows Server to Azure hybrid services](/windows-server/manage/windows-admin-center/azure/).
 
@@ -34,7 +34,7 @@ The following prerequisites are required to use Azure Backup:
 - Internet access to Azure for the target Windows Servers
 - A connection from the Windows Admin Center gateway to Azure
 
-    To learn more, see [Configuring Azure integration](/windows-server/manage/windows-admin-center/azure/azure-integration)
+    To learn more, see [Configuring Azure integration](/windows-server/manage/windows-admin-center/azure/azure-integration).
 
 ## Getting started with Azure Backup
 When you first select the **Backup** tool in Windows Admin Center to establish a server connection to Azure, the **Welcome to Azure Backup** page displays. Select **Set up Azure Backup** to start the Azure Backup setup wizard. The following sections detail the steps in the wizard.
