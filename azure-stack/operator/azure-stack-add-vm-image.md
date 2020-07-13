@@ -53,7 +53,7 @@ Follow the instructions in [this article](/azure/virtual-machines/windows/downlo
 ### Windows - Specialized
 
 Follow the steps [here](/azure/virtual-machines/windows/create-vm-specialized#prepare-the-vm) to prepare the VHD correctly. 
-To deploy VM extensions, make sure that the VM agent .msi available [here](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows#manual-installation) is installed in the VM before VM deployment. If the VM agent is not present in the VHD, extension deployment will fail.
+To deploy VM extensions, make sure that the VM agent .msi available [here](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows#manual-installation) is installed in the VM before VM deployment. If the VM agent is not present in the VHD, extension deployment will fail. You do NOT need to set the OS profile while provisioning or set $vm.OSProfile.AllowExtensionOperations = $true
 
 ### Linux - Generalized
 
@@ -119,26 +119,45 @@ Step 1: Follow the appropriate instructions to make the VHD suitable for Azure. 
 > Do not run the last step: (`sudo waagent -force -deprovision`) as this will generalize the VHD.
 
 Step 2:
-If a Linux specialized VHD is brought from outside of Azure to Azure Stack Hub, to run VM extensions, do the following:
-****Ubuntu****
-Work through these steps:
+If a Linux specialized VHD is brought from outside of Azure to Azure Stack Hub, to run VM extensions and disable provisioning, do the following:
 
-1.	To ensure walinuxagent provisioning is disabled run: `mkdir -p /var/lib/waagent && touch /var/lib/waagent/provisioned`
-2.	Disable cloud-init install by running: 
+****Identifying what version of Linux Agent is installed in the source VM image****
+Run the below, the version number that describes the provisioning code, is 'WALinuxAgent-', not the 'Goal state agent:'
+```bash
+waagent -version
+```
+For example:
+
+waagent -version
+WALinuxAgent-2.2.45 running on centos 7.7.1908
+Python: 2.7.5
+Goal state agent: 2.2.46
+
+
+****Disable Provisioning with Linux Agent < 2.2.45****
+To disable the Linux Agent provisioning, you set the following parameters in /etc/waagent.conf: Provisioning.Enabled=n, and Provisioning.UseCloudInit=n.
+
+Guidance for scenarios, where you want to run extensions: 
+1. Set the following parameter in /etc/waagent.conf:
+* Provisioning.Enabled=n 
+* Provisioning.UseCloudInit=n
+2. If you have cloud-init in your image, disable cloud init:
 		touch /etc/cloud/cloud-init.disabled
 		sudo sed -i '/azure_resource/d' /etc/fstab
-3.	Install the linux agent
+3. Execute a Logout.
 
-****RHEL 7.4 and 7.6****
-In these OS package repo’s WALinuxAgent 2.2.38 is the latest version available.
+****Disable Provisioning with Linux Agent 2.2.45 and onwards****
+In 2.2.45, there are these configuration option changes: * Provisioning.Enabled and Provisioning.UseCloudInit are now ignored but the Linux Agent. 
 
-When you install the walinuxagent on RHEL, due to the package config, it will not immediately access if  provisioning code is required to start (until a reboot), therefore you can change the settings below:
+In this version, currently there is no 'Provisioning.Agent' option to disable provisioning completely, an option will be added in the near future, however, you can add the provisioning marker file, and with the settings below, provisioning will get ignored:
 
-Set the following parameter in /etc/waagent.conf:
-    * Provisioning.Enabled=n
-    * Provisioning.UseCloudInit=n
+1.	In /etc/waagent.conf add this configuration option, 'Provisioning.Agent=Auto'
+2.	To ensure walinuxagent provisioning is disabled run: `mkdir -p /var/lib/waagent && touch /var/lib/waagent/provisioned`
+3.	Disable cloud-init install by running: 
+		touch /etc/cloud/cloud-init.disabled
+		sudo sed -i '/azure_resource/d' /etc/fstab
+4.	Logout
 
-Run 'mkdir -p /var/lib/waagent && touch /var/lib/waagent/provisioned' before the logout step.
 
 **If the VHD is from Azure**
 You can use [this guidance](/azure/virtual-machines/linux/upload-vhd#requirements) to prepare the VHD. 
