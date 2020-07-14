@@ -11,7 +11,7 @@ ms.date: 07/21/2020
 
 > Applies to Azure Stack HCI v20H2; Windows Server 2019
 
-Azure Stack HCI is delivered as an Azure service and needs to register within 30 days of installation per the Azure Online Services Terms. This topic explains how to register your Azure Stack HCI cluster with with [Azure Arc](https://azure.microsoft.com/services/azure-arc/) for monitoring, support, billing, and hybrid services. Upon registration, an Azure Resource Manager (ARM) resource is created to represent each on-premises Azure Stack HCI cluster, effectively extending the Azure management plane to Azure Stack HCI. Azure Arc registration is a native capability of Azure Stack HCI, with no agent required.
+Azure Stack HCI is delivered as an Azure service and needs to register within 30 days of installation per the Azure Online Services Terms. This topic explains how to register your Azure Stack HCI cluster with with [Azure Arc](https://azure.microsoft.com/services/azure-arc/) for monitoring, support, billing, and hybrid services. Upon registration, an Azure Resource Manager (ARM) resource is created to represent each on-premises Azure Stack HCI cluster, effectively extending the Azure management plane to Azure Stack HCI. Information is periodically synced between the Azure resource and the on-premises cluster. Azure Arc registration is a native capability of Azure Stack HCI, with no agent required.
 
 ## Prerequisites for registration
 
@@ -19,7 +19,7 @@ You won’t be able to register with Azure until you've created an Azure Stack H
 
 ### Internet access
 
-The Azure Stack HCI nodes need outbound connectivity to the cloud. For example, a ping should succeed:
+The Azure Stack HCI nodes need connectivity to the cloud. For example, an outbound ping should succeed:
 
 ```PowerShell
 C:\> ping bing.com
@@ -30,8 +30,8 @@ C:\> ping bing.com
 If you don’t already have an Azure account, [create one](https://azure.microsoft.com/). 
 
 You can use an existing subscription of any type:
-- Free account with Azure credits for students or Visual Studio subscribers
-- Pay-as-you-go subscription with credit card
+- Free account with Azure credits [for students](https://azure.microsoft.com/free/students/) or [Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
+- [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card
 - Subscription obtained through an Enterprise Agreement (EA)
 - Subscription obtained through the Cloud Solution Provider (CSP) program
 
