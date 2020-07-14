@@ -4,18 +4,18 @@ description: How billing and payment works in Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
-ms.date: 06/26/2020
+ms.date: 07/21/2020
 ---
 
 # Azure Stack HCI billing and payment
 
 > Applies to: Azure Stack HCI, version 20H2
 
-Azure Stack HCI is an Azure service that goes on your Azure subscription tab just like any other Azure service. No traditional on-premises software license is required, although guest virtual machines (VMs) may require individual operating system licensing. Currencies and discounts are handled centrally by the Azure Commerce billing platform, and the customer gets one unified, itemized bill at the end of the month.
+Azure Stack HCI is an Azure service that goes on your Azure subscription bill just like any other Azure service. No traditional on-premises software license is required, although guest virtual machines (VMs) may require individual operating system licensing. Currencies and discounts are handled centrally by the Azure Commerce billing platform, and the customer gets one unified, itemized bill at the end of the month.
 
 ## What does Azure Stack HCI charge for?
 
-Azure Stack HCI's cloud-style billing model is consistent, familiar, and easy for customers already using Azure or any other cloud service. Billing is based on a flat rate of **$10/month per physical processor core** in an Azure Stack HCI cluster (additional usage charges apply if you use other Azure services). It's different from a usage-based or consumption-based billing that's based on the number of VMs. While the number of virtual processor cores (VCPUs) may vary over the course of the month, it doesn't affect the price you pay for Azure Stack HCI: you still pay based on the number of physical cores that are present in the cluster.
+Azure Stack HCI's cloud-style billing model is consistent, familiar, and easy for customers already using Azure or any other cloud service. Billing is based on a flat rate of **$10/month per physical processor core after the preview ends** in an Azure Stack HCI cluster (additional usage charges apply if you use other Azure services). There is no charge during the public preview. It's different from a usage-based or consumption-based billing that's based on the number of VMs. While the number of virtual processor cores (VCPUs) may vary over the course of the month, it doesn't affect the price you pay for Azure Stack HCI: you still pay based on the number of physical cores that are present in the cluster.
 
 ## Advantages of the Azure Stack HCI billing model
 
