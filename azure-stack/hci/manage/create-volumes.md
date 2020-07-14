@@ -142,6 +142,20 @@ You're done! Repeat as needed to create more than one volume.
 
 ## Create volumes and setup replication for stretched clusters
 
+There are two types of stretched clusters, active/passive and active/active. You can set up active-passive site replication, where there is a preferred site and direction for replication. Active-active replication is where replication can happen bi-directionally from either site.
+
+### Active/passive stretched cluster
+
+The following diagram shows Site 1 as the active site with replication to Site 2, a unidirectional replication.
+
+:::image type="content" source="media/creating-volumes/active-passive-stretched-cluster.png" alt-text="Active/passive stretched cluster scenario" lightbox="media/creating-volumes/active-passive-stretched-cluster.png":::
+
+### Active/active stretched cluster
+
+The following diagram shows both Site 1 and Site 2 as being active sites, with bidirectional replication to the other site.
+
+:::image type="content" source="media/creating-volumes/active-active-stretched-cluster.png" alt-text="Active/active stretched cluster scenario" lightbox="media/creating-volumes/active-active-stretched-cluster.png":::
+
 For stretched clusters, Storage Replica is used to provide replication between sites. Specifically, data and log volumes for each node pair across sites are created, a storage pool for each site is created, a replication group for each site is created, and a replication partnership between the sites is created - all automatically. You can also specify unidirectional replication (active/passive) or bidirectional (active/passive) operation.
 
 OK, let's begin:
@@ -170,31 +184,9 @@ Afterwards, you should verify successful data replication between sites before d
 
 Volume creation is different for single-site standard clusters versus stretched (two-site) clusters. For both scenarios however, you use the `New-Volume` cmdlet to create a virtual disk, partition and format it, create a volume with matching name, and add it to cluster shared volumes (CSV).
 
-For more information, see [Create volumes] (https://docs.microsoft.com/azure-stack/hci/manage/create-volumes).
-
 Creating volumes and virtual disks for stretched clusters is a bit more involved than for single-site clusters. Stretched clusters require a minimum of four volumes - two data volumes and two log volumes, with a data/log volume pair residing in each site. Then you will create a replication group for each site, and setup replication between them.
 
-There are two types of stretched clusters, active/passive and active/active. You can set up active-passive site replication, where there is a preferred site and direction for replication. Active-active replication is where replication can happen bi-directionally from either site. This article covers the active/passive configuration only.
-
-You can also define a global preferred site where all resources and groups run on that site. There is a `PreferredSite` parameter used for just this purpose. This setting can be defined at the site and group level.  
-
-```powershell
-(Get-Cluster).PreferredSite = Site1
-```
-
-### Active/passive stretched cluster
-
-The following diagram shows Site 1 as the active site with replication to Site 2, a unidirectional replication.
-
-:::image type="content" source="media/creating-volumes/active-passive-stretched-cluster.png" alt-text="Active/passive stretched cluster scenario" lightbox="media/creating-volumes/active-passive-stretched-cluster.png":::
-
-### Active/active stretched cluster
-
-The following diagram shows both Site 1 and Site 2 as being active sites, with bidirectional replication to the other site.
-
-:::image type="content" source="media/creating-volumes/active-active-stretched-cluster.png" alt-text="Active/active stretched cluster scenario" lightbox="media/creating-volumes/active-active-stretched-cluster.png":::
-
-OK, now we are ready to begin. We first need to move resource groups around from node to node. The `Move-ClusterGroup` cmdlet is used to this.
+We first need to move resource groups around from node to node. The `Move-ClusterGroup` cmdlet is used to this.
 
 First we move the "Available Storage" storage pool resource group to node Server1 in Site1 using the `Move-ClusterGroup` cmdlet:
 
