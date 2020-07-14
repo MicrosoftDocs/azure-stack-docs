@@ -15,10 +15,29 @@ Azure Stack HCI is delivered as an Azure service and needs to register within 30
 
 ## Prerequisites for registration
 
-If you don’t already have an Azure account, [create one](https://azure.microsoft.com/). This topic assumes you have already created an Azure Stack HCI cluster and that all servers in the cluster have Internet access.
+You won’t be able to register with Azure until you've created an Azure Stack HCI cluster. The nodes can be physical machines or virtual machines, but they must have Unified Extensible Firmware Interface (UEFI), meaning you can’t use Hyper-V Generation 1 virtual machines.
 
-> [!NOTE]
-> You'll need Azure Active Directory permissions to complete the registration process. If you don't already have them, ask your Azure AD administrator to grant permissions or delegate them to you.
+### Internet access
+
+The Azure Stack HCI nodes need outbound connectivity to the cloud. For example, a ping should succeed:
+
+```PowerShell
+C:\> ping bing.com
+```
+
+### Azure subscription
+
+If you don’t already have an Azure account, [create one](https://azure.microsoft.com/). 
+
+You can use an existing subscription of any type:
+- Free account with Azure credits for students or Visual Studio subscribers
+- Pay-as-you-go subscription with credit card
+- Subscription obtained through an Enterprise Agreement (EA)
+- Subscription obtained through the Cloud Solution Provider (CSP) program
+
+### Azure Active Directory permissions
+
+You'll need Azure Active Directory permissions to complete the registration process. If you don't already have them, ask your Azure AD administrator to grant permissions or delegate them to you.
 
 ## Register using PowerShell
 
