@@ -27,7 +27,7 @@ In this article, you can use Docker to create a container on which to run the ve
 1. In a command-line program, such as Powershell or Bash, enter:
 
     ```bash
-        Docker --version
+    docker --version
     ```
 
 ### Set up a service principal for using PowerShell
@@ -113,9 +113,9 @@ In these instructions you will run a Linux-based container image that contains t
 
 1. From your command line, run the following Docker command:
 
-```bash
+    ```bash
     docker run -it mcr.microsoft.com/azurestack/powershell:0.1.0-ubuntu-18.04 pwsh
-```
+    ```
 
 5. The shell is ready for your cmdlets. Connect to your Azure Stack Hub instance by using the service principal. You are now using a PowerShell prompt in Docker. 
 
