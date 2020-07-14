@@ -29,13 +29,13 @@ In simple terms, an *active* site is one that has resources and is providing rol
 
 The following diagram shows Site 1 as the active site with replication to Site 2, a unidirectional replication.
 
-:::image type="content" source="media/cluster/active-passive-stretched-cluster.png" alt-text="Active-passive stretched cluster scenario" lightbox="media/cluster/stretch-active-passive.png":::
+:::image type="content" source="media/cluster/active-passive-stretched-cluster.png" alt-text="Active-passive stretched cluster scenario" lightbox="media/cluster/active-passive-stretched-cluster.png":::
 
 ### Active/active stretched cluster
 
 The following diagram shows both Site 1 and Site 2 as being active sites, with bidirectional replication to the other site.
 
-:::image type="content" source="media/cluster/active-active-stretched-cluster.png" alt-text="Active-active stretched cluster scenario" lightbox="media/cluster/stretch-active-active.png":::
+:::image type="content" source="media/cluster/active-active-stretched-cluster.png" alt-text="Active-active stretched cluster scenario" lightbox="media/cluster/active-active-stretched-cluster.png":::
 
 Sites can be in two different states, different cities, different floors, or different rooms. Stretched clusters Using two sites provides disaster recovery and business continuity should a site suffer an outage or failure.
 

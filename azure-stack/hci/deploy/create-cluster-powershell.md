@@ -2,7 +2,7 @@
 title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a hyperconverged cluster for Azure Stack HCI using Windows PowerShell
 author: v-dasis
-ms.topic: how to
+ms.topic: how-to
 ms.date: 07/21/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
@@ -27,6 +27,22 @@ Sites can be in two different states, different cities, different floors, or dif
 In this article, we will create an example cluster named Cluster1 that is comprised of four server nodes named Server1, Server2, Server3, and Server4.
 
 For the stretched cluster scenario, we will use ClusterS1 as the name and use the same four server nodes stretched across sites Site1 and Site2.
+
+## Stretched cluster types
+
+Here are the two stretched cluster types:
+
+### Active-passive stretched cluster
+
+The following diagram shows Site 1 as the active site with replication to Site 2, a unidirectional replication.
+
+:::image type="content" source="media/cluster/active-passive-stretched-cluster.png" alt-text="Active/passive stretched cluster scenario"  lightbox="media/cluster/active-passive-stretched-cluster.png":::
+
+### Active-active stretched cluster
+
+The following diagram shows both Site 1 and Site 2 as being active sites, with bidirectional replication to the other site.
+
+:::image type="content" source="media/cluster/active-active-stretched-cluster.png" alt-text="Active/active stretched cluster scenario" lightbox="media/cluster/active-active-stretched-cluster.png":::
 
 ## Before you begin
 
@@ -462,13 +478,13 @@ You can also define a global preferred site where all resources and groups run o
 
 The following diagram shows Site 1 as the active site with replication to Site 2, a unidirectional replication.
 
-:::image type="content" source="media/cluster/active-passive-stretched-cluster.png" alt-text="Active/passive stretched cluster scenario"  lightbox="media/cluster/stretch-active-passive.png":::
+:::image type="content" source="media/cluster/active-passive-stretched-cluster.png" alt-text="Active/passive stretched cluster scenario"  lightbox="media/cluster/active-passive-stretched-cluster.png":::
 
 ### Active/active stretched cluster
 
 The following diagram shows both Site 1 and Site 2 as being active sites, with bidirectional replication to the other site.
 
-:::image type="content" source="media/cluster/active-active-stretched-cluster.png" alt-text="Active/active stretched cluster scenario" lightbox="media/cluster/stretch-active-active.png":::
+:::image type="content" source="media/cluster/active-active-stretched-cluster.png" alt-text="Active/active stretched cluster scenario" lightbox="media/cluster/active-active-stretched-cluster.png":::
 
 OK, now we are ready to begin. We first need to move resource groups around from node to node. The `Move-ClusterGroup` cmdlet is used to this.
 
