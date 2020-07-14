@@ -14,16 +14,16 @@ ms.date: 07/21/2020
 
 > Applies to: Azure Stack HCI v20H2
 
-Azure Stack HCI is a hyperconverged cluster that uses validated hardware to run virtualized Windows and Linux workloads on-premises and easily connect to Azure for cloud-based backup, bursting, and bottomless storage. Initially based on Windows Server 2019, Azure Stack HCI is now delivered as an Azure service with a subscription-based licensing model and hybrid capabilities built-in. Although Azure Stack HCI is based on the same core operating system components as Windows Server, it's an entirely new product line focused on being the best virtualization host.
+Azure Stack HCI is a hyperconverged cluster solution that runs virtualized Windows and Linux workloads in a hybrid on-premises environment. Azure hybrid services enhance the cluster with capabilities such as cloud-based monitoring, site recovery, and backup, as well as a central view of all of your Azure Stack HCI deployments in the Azure portal. You can manage the cluster with your existing tools including Windows Admin Center, System Center, and PowerShell.
 
-Azure Stack HCI solutions use Microsoft-validated hardware from an OEM partner to ensure optimal performance and reliability. The solutions include support for technologies such as NVMe drives, persistent memory, and remote-direct memory access (RDMA) networking, and can be managed centrally using Windows Admin Center or PowerShell.
+Initially based on Windows Server 2019, Azure Stack HCI is now delivered as an Azure service with a subscription-based licensing model and hybrid capabilities built-in. Although Azure Stack HCI is based on the same core operating system components as Windows Server, it's an entirely new product line focused on being the best virtualization host.
 
-In summary, Azure Stack HCI combines several products:
+Azure Stack HCI is a solution that combines several products:
 
 - Hardware from an OEM partner
 - Azure Stack HCI operating system
 - Windows Admin Center
-- Azure services (optional)
+- Azure services
 
 :::image type="content" source="media/overview/azure-stack-hci-solution.png" alt-text="Azure Stack HCI solution diagram" border="false":::
 
@@ -65,7 +65,16 @@ Azure Stack HCI can provide industry-best performance for SQL Server databases a
 
 ## Hybrid capabilities
 
-Azure Stack HCI is uniquely positioned for hybrid infrastructure, allowing you to take advantage of cloud and on-premises resources working together and natively monitor, secure, and back up to the cloud. It's subscription-based and offers built-in integration to additional Azure services:
+Azure Stack HCI is uniquely positioned for hybrid infrastructure, allowing you to take advantage of cloud and on-premises resources working together and natively monitor, secure, and back up to the cloud.
+
+After you register your Azure Stack HCI cluster with Azure, you can use the Azure portal initially for:
+
+- **Monitoring:** View all of your Azure Stack HCI clusters in a single, global view where you can group them by resource group and tag them.
+- **Billing:** Pay for Azure Stack HCI through your Azure subscription (note that there is no cost during the Public Preview).
+
+We're working hard on creating additional capabilities, so stay tuned for more.
+
+You can also subscribe to additional Azure hybrid services:
 
 - **Azure Site Recovery** for high availability and disaster recovery as a service (DRaaS).
 - **Azure Monitor**, a centralized hub to track what's happening across your apps, network, and infrastructure – with advanced analytics powered by AI.
@@ -74,7 +83,6 @@ Azure Stack HCI is uniquely positioned for hybrid infrastructure, allowing you t
 - **Azure Update Management** for update assessment and update deployments for Windows VMs running in Azure and on-premises.
 - **Azure Network Adapter** to connect resources on-premises with your VMs in Azure via a point-to-site VPN.
 - **Azure File Sync** to sync your file server with the cloud.
-- **Azure Portal**, **Azure Arc**, and **Azure Resource Manager (ARM)** integration for a single control plane.
 
 For details, see [Connecting Windows Server to Azure hybrid services](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/index).
 
@@ -92,7 +100,7 @@ Azure Stack HCI is a world-class, integrated virtualization stack built on prove
 
 ## What you need for Azure Stack HCI
 
-To get started, [determine your hardware requirements](deploy/before-you-start.md), simply purchase validated hardware (from 2 to 16 server nodes) from your preferred Microsoft hardware partner. Then, if you don't already have one, [get an Azure subscription](https://azure.microsoft.com/) to enable billing and access to hybrid services and software downloads you may need.
+To get started, [determine your hardware requirements](deploy/before-you-start.md), simply purchase validated hardware (from 2 to 16 server nodes) from your preferred Microsoft hardware partner. Then, if you don't already have one, [get an Azure subscription](https://azure.microsoft.com/) to enable billing and access to Azure services.
 
 ## Hardware partners
 
@@ -122,26 +130,6 @@ To manage these technologies, you can use the following management tools:
 - [PowerShell](https://docs.microsoft.com/powershell/?view=powershell-6)
 - Other management tools, like [Server Manager](https://docs.microsoft.com/windows-server/administration/server-manager/server-manager), and MMC snap-ins
 - Non-Microsoft tools like 5Nine Manager
-
-## Video-based learning
-
-The Azure extended network video is here:
-
-- [Seamless connectivity to Azure with Windows Server and hybrid networking](https://www.youtube.com/watch?v=do2_4Y2p9dk)
-
-Here are some videos from Microsoft Ignite 2019 sessions:
-
-- [Microsoft Ignite Live 2019 - Getting Started with Azure Stack HCI](https://www.youtube.com/watch?v=vueHIBqNIEU)
-- [Discover Azure Stack HCI](https://www.youtube.com/watch?v=4aGZK0Ndmh8&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=13&t=0s)
-- [Modernize your retail stores or branch offices with Azure Stack HCI](https://www.youtube.com/watch?v=-JzLhjfkhmM&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=9&t=0s)
-- [What's new for Azure Stack HCI: 45 things in 45 minutes](https://www.youtube.com/watch?v=C5J4IEnlS_E&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=12&t=0s)
-- [Jumpstart your Azure Stack HCI deployment](https://www.youtube.com/watch?v=gxaPJLrWy5w&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=11&t=0s)
-- [The case of the shrinking data: Data Deduplication in Azure Stack HCI](https://www.youtube.com/watch?v=fmm4iDbDiY4&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=23&t=0s)
-- [Dave Kawula's notes from the field on Azure Stack HCI](https://www.youtube.com/watch?v=OXv7fLlz0ew&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=2&t=0s)
-
-Here's a video from a Hybrid Cloud Virtual Event:
-
-- [Azure Stack HCI | Hybrid Cloud Virtual Event](https://www.youtube.com/watch?v=nxpoEva-R2Y)
 
 ## FAQ
 
@@ -234,8 +222,8 @@ As your organization digitally transforms, you may find you can move faster by u
 ## What's new in Azure Stack HCI
 
 - **New capabilities in Windows Admin Center**: With the ability to create and update clusters via an intuitive UI, Azure Stack HCI is easier than ever to use.
-- **Stretched HCI for automatic failover**: Multi-site clustering with Storage Replica replication and automatic VM failover provides native disaster recovery and business continuity.
-- **Affinity and anti-affinity rules**: These can be used similarly to how Azure uses Availability Zones to keep VMs and storage together or apart in clusters with multiple fault domains, like a stretched cluster.
+- **Stretched clusters for automatic failover**: Multi-site clustering with Storage Replica replication and automatic VM failover provides native disaster recovery and business continuity.
+- **Affinity and anti-affinity rules**: These can be used similarly to how Azure uses Availability Zones to keep VMs and storage together or apart in clusters with multiple fault domains, such as stretched clusters.
 - **GPU acceleration for high-performance workloads**: Virtual desktops, SQL Server, and AI/ML applications can all benefit from boosting performance with GPUs.
 - **BitLocker encryption**: You can now use BitLocker to encrypt the contents of data volumes on Azure Stack HCI, helping government and other customers stay compliant with standards such as FIPS 140-2 and HIPAA.
 
@@ -250,6 +238,26 @@ Because Azure Stack HCI is intended as a virtualization host, there are only a s
 - Remote access
 
 Any other server roles must run inside of VMs.
+
+## Video-based learning
+
+The Azure extended network video is here:
+
+- [Seamless connectivity to Azure with Windows Server and hybrid networking](https://www.youtube.com/watch?v=do2_4Y2p9dk)
+
+Here are some videos from Microsoft Ignite 2019 sessions:
+
+- [Microsoft Ignite Live 2019 - Getting Started with Azure Stack HCI](https://www.youtube.com/watch?v=vueHIBqNIEU)
+- [Discover Azure Stack HCI](https://www.youtube.com/watch?v=4aGZK0Ndmh8&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=13&t=0s)
+- [Modernize your retail stores or branch offices with Azure Stack HCI](https://www.youtube.com/watch?v=-JzLhjfkhmM&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=9&t=0s)
+- [What's new for Azure Stack HCI: 45 things in 45 minutes](https://www.youtube.com/watch?v=C5J4IEnlS_E&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=12&t=0s)
+- [Jumpstart your Azure Stack HCI deployment](https://www.youtube.com/watch?v=gxaPJLrWy5w&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=11&t=0s)
+- [The case of the shrinking data: Data Deduplication in Azure Stack HCI](https://www.youtube.com/watch?v=fmm4iDbDiY4&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=23&t=0s)
+- [Dave Kawula's notes from the field on Azure Stack HCI](https://www.youtube.com/watch?v=OXv7fLlz0ew&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=2&t=0s)
+
+Here's a video from a Hybrid Cloud Virtual Event:
+
+- [Azure Stack HCI | Hybrid Cloud Virtual Event](https://www.youtube.com/watch?v=nxpoEva-R2Y)
 
 ## Next steps
 
