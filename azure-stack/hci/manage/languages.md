@@ -4,7 +4,7 @@ description: This topic provides guidance on how to change languages in the Azur
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 07/21/2020
 ---
 
 # Change languages in Azure Stack HCI
