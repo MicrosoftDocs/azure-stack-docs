@@ -44,10 +44,9 @@ Sites can be in two different states, different cities, different floors, or dif
 Before you run the Create Cluster wizard, make sure you:
 
 - Have read the hardware and other requirements in [Before you start].
-- Validate the OEM hardware for each server in the cluster. See [Validate hardware].
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy Azure Stack HCI].
 - Install Windows Admin Center on a remote (management) computer. See {Install Windows Admin Center}. Don't run the wizard from a server in the cluster.
-- Have administrative privileges. Use an account that’s a member of the local Administrators group on each server.
+- Have an account that’s a member of the local Administrators group on each server.
 
 Also, your management computer must be joined to the same Active Directory domain in which you'll create the cluster, or a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
 
@@ -58,10 +57,10 @@ Here are the major steps in the Create Cluster wizard:
 
 1. **Get Started** - ensures that each server meets the prerequisites for and features needed for cluster join.
 1. **Networking** - assigns and configures network adapters and creates the virtual switches for each server.
-1. **Clustering** - validates the cluster is setup correctly. For stretched clusters, also sets up up the two sites.
-1. **Storage** - Configures Storage Spaces Direct and virtual storage.
+1. **Clustering** - validates the cluster is set up correctly. For stretched clusters, also sets up up the two sites.
+1. **Storage** - Configures Storage Spaces Direct.
 
-After the wizard completes, you setup the witness. For stretched clusters, you also configure Storage Replica and replication between your sites.
+After the wizard completes, you set up the cluster witness, register with Azure, and create volumes (which also sets up replication between sites if you're creating a stretched cluster).
 
 OK, lets begin:
 
@@ -197,7 +196,7 @@ The first task is to disable the Credential Security Support Provider (CredSSP) 
 OK, now here are the other tasks you will need to do:
 
 - Setup a cluster witness. See [Setup a cluster witness].
-- Create your volumes and virtual disks. See [Create volumes](../manage/create-volumes.md).
+- Create your volumes. See [Create volumes](../manage/create-volumes.md).
 - For stretched clusters, create volumes and setup replication using Storage Replica. See the applicable section in [Create volumes](https://docs.microsoft.com/azure-stack/hci/manage/create-volumes).
 
 ## Next steps

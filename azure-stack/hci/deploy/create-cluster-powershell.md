@@ -49,10 +49,9 @@ The following diagram shows both Site 1 and Site 2 as being active sites, with b
 Before you begin, make sure you:
 
 - Have read the hardware and other requirements in [Before you start].
-- Validate the OEM hardware for each server in the cluster. See [Validate hardware].
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy Azure Stack HCI].
 - Run PowerShell on a remote (management) computer. See [Install Windows Admin Center]. Don't run PowerShell from a server in the cluster.
-- Have administrative privileges. Use an account that’s a member of the local Administrators group on each server.
+- Have an account that’s a member of the local Administrators group on each server.
 - Have rights in Active Directory to create objects.
 
 ## Using Windows PowerShell
@@ -467,8 +466,8 @@ The first task is to disable the Credential Security Support Provider (CredSSP) 
 
 OK, now here are the other tasks you will need to do:
 
-- Setup a cluster witness. See [Setup a cluster witness].
-- Create your volumes and virtual disks. See [Create volumes](../manage/create-volumes.md).
+- Set up a cluster witness. See [Setup a cluster witness].
+- Create your volumes. See [Create volumes](../manage/create-volumes.md).
 - For stretched clusters, create volumes and setup replication using Storage Replica. See the applicable section in [Create volumes](../manage/create-volumes.md).
 
 ## Next steps
