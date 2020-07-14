@@ -107,6 +107,7 @@ To deploy VM extensions, make sure that the VM agent .msi available [here](https
 Specialized VHDs should not be used as the base VHD for a marketplace item. Use generalized VHDs for this. However, specialized VHDs are a good fit for when you need to migrate VMs from on-premises to Azure Stack Hub
 
 **If the VHD is from outside Azure**
+
 Step 1: Follow the appropriate instructions to make the VHD suitable for Azure. Use this article until the step to install the linux agent and proceed to step 2 before installing the agent:
 
 - [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -118,49 +119,66 @@ Step 1: Follow the appropriate instructions to make the VHD suitable for Azure. 
 > [!IMPORTANT] 
 > Do not run the last step: (`sudo waagent -force -deprovision`) as this will generalize the VHD.
 
-Step 2:
-If a Linux specialized VHD is brought from outside of Azure to Azure Stack Hub, to run VM extensions and disable provisioning, do the following:
+Step 2: If a Linux specialized VHD is brought from outside of Azure to Azure Stack Hub, to run VM extensions and disable provisioning, do the following:
 
 ****Identifying what version of Linux Agent is installed in the source VM image****
+
 Run the below, the version number that describes the provisioning code, is 'WALinuxAgent-', not the 'Goal state agent:'
 ```bash
 waagent -version
 ```
 For example:
 
-waagent -version
+```bash
+aagent -version
 WALinuxAgent-2.2.45 running on centos 7.7.1908
 Python: 2.7.5
 Goal state agent: 2.2.46
+```
 
+**Disable Provisioning with Linux Agent < 2.2.4**
 
-**Disable Provisioning with Linux Agent < 2.2.4***
 To disable the Linux Agent provisioning, you set the following parameters in /etc/waagent.conf: Provisioning.Enabled=n, and Provisioning.UseCloudInit=n.
 
 Guidance for scenarios, where you want to run extensions: 
+
 1. Set the following parameter in /etc/waagent.conf:
-* Provisioning.Enabled=n 
-* Provisioning.UseCloudInit=n
+
+   * Provisioning.Enabled=n 
+   * Provisioning.UseCloudInit=n
+
 2. To ensure walinuxagent provisioning is disabled run: `mkdir -p /var/lib/waagent && touch /var/lib/waagent/provisioned`
 3. If you have cloud-init in your image, disable cloud init:
-		touch /etc/cloud/cloud-init.disabled
-		sudo sed -i '/azure_resource/d' /etc/fstab
+
+   ```
+   touch /etc/cloud/cloud-init.disabled
+   sudo sed -i '/azure_resource/d' /etc/fstab
+   ```
+   
 4. Execute a Logout.
 
 **Disable Provisioning with Linux Agent 2.2.45 and onwards**
-In 2.2.45, there are these configuration option changes: * Provisioning.Enabled and Provisioning.UseCloudInit are now ignored but the Linux Agent. 
+
+In 2.2.45, there are these configuration option changes:
+
+* Provisioning.Enabled and Provisioning.UseCloudInit are now ignored but the Linux Agent. 
 
 In this version, currently there is no 'Provisioning.Agent' option to disable provisioning completely, however, you can add the provisioning marker file, and with the settings below, provisioning will get ignored:
 
-1.	In /etc/waagent.conf add this configuration option, 'Provisioning.Agent=Auto'
-2.	To ensure walinuxagent provisioning is disabled run: `mkdir -p /var/lib/waagent && touch /var/lib/waagent/provisioned`
-3.	Disable cloud-init install by running: 
-		touch /etc/cloud/cloud-init.disabled
-		sudo sed -i '/azure_resource/d' /etc/fstab
-4.	Logout
+1. In /etc/waagent.conf add this configuration option, 'Provisioning.Agent=Auto'
+2. To ensure walinuxagent provisioning is disabled run: `mkdir -p /var/lib/waagent && touch /var/lib/waagent/provisioned`
+3. Disable cloud-init install by running: 
+
+   ```
+   touch /etc/cloud/cloud-init.disabled
+   sudo sed -i '/azure_resource/d' /etc/fstab
+   ```
+   
+4. Logout
 
 
 **If the VHD is from Azure**
+
 You can use [this guidance](/azure/virtual-machines/linux/upload-vhd#requirements) to prepare the VHD. 
 
 > [!Important]  
