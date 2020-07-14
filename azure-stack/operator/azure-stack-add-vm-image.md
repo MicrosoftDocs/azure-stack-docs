@@ -141,10 +141,11 @@ Guidance for scenarios, where you want to run extensions:
 1. Set the following parameter in /etc/waagent.conf:
 * Provisioning.Enabled=n 
 * Provisioning.UseCloudInit=n
-2. If you have cloud-init in your image, disable cloud init:
+2. To ensure walinuxagent provisioning is disabled run: `mkdir -p /var/lib/waagent && touch /var/lib/waagent/provisioned`
+3. If you have cloud-init in your image, disable cloud init:
 		touch /etc/cloud/cloud-init.disabled
 		sudo sed -i '/azure_resource/d' /etc/fstab
-3. Execute a Logout.
+4. Execute a Logout.
 
 ****Disable Provisioning with Linux Agent 2.2.45 and onwards****
 In 2.2.45, there are these configuration option changes: * Provisioning.Enabled and Provisioning.UseCloudInit are now ignored but the Linux Agent. 
