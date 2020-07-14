@@ -50,7 +50,6 @@ Before you begin, make sure you:
 
 - Have read the hardware and other requirements in [Before you start].
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy Azure Stack HCI].
-- Run PowerShell on a remote (management) computer. See [Install Windows Admin Center]. Don't run PowerShell from a server in the cluster.
 - Have an account that’s a member of the local Administrators group on each server.
 - Have rights in Active Directory to create objects.
 
@@ -150,6 +149,8 @@ Restart-Computer -ComputerName $ServerList
 
 ## Step 2: Configure networking
 
+This step assumes that you have already set up RDMA and other networking for your environment previously.
+
 ### Disable unused networks
 
 You must disable any networks disconnected or not used for management, storage or workload traffic (such as VMs). Here is how to identify unused networks:
@@ -166,7 +167,7 @@ Get-NetAdapter -CimSession $Servers | Where-Object Status -eq Disconnected | Dis
 
 ### Assign virtual network adapters
 
-Next, you will assign virtual network adapters (vNICs) dedicated for management and storage, as in the example:
+Next, you will assign virtual network adapters (vNICs) for management and the rest of your traffic, as in the example:
 
 ```powershell
 $Servers = "Server1", "Server2", "Server3", "Server4"
@@ -278,11 +279,9 @@ Get-NetIPAddress -CimSession $servers -InterfaceAlias vEthernet* -AddressFamily 
 Get-VMNetworkAdapterVlan -ManagementOS -CimSession $servers | Sort-Object -Property Computername | Format-Table ComputerName,AccessVlanID,ParentAdapter -AutoSize -GroupBy ComputerName
 ```
 
-## Step 3: Verify cluster setup
+## Step 3: Prep for cluster setup
 
-Next, you must first verify that your servers are prepared and configured properly for cluster creating.
-
-As a sanity check first, consider running the following commands:
+Next, verify that your servers are ready for clustering. As a sanity check first, consider running the following commands to make sure that the servers don't already belong to a cluster:
 
 Use `Get-ClusterNode` to show all nodes:
 
@@ -304,7 +303,7 @@ Get-ClusterNetwork
 
 ### Step 3.1: Prepare drives
 
-Before you enable Storage Spaces Direct later on, ensure your drives are empty. Run the following script to remove any old partitions or other data.
+Before you enable Storage Spaces Direct, ensure your drives are empty. Run the following script to remove any old partitions or other data.
 
 > [!WARNING]
 > This script will permanently remove any data on any drives other than the Azure Stack HCI system boot drive.
@@ -356,7 +355,7 @@ Congrats, your cluster has now been created.
 > [!NOTE]
 > After the cluster is created, it can take time for the cluster name to be replicated. If resolving the cluster isn't successful, in most cases you can substitute the computer name of a server node in the the cluster instead of the cluster name.
 
-## Step 5: Setup sites (stretched cluster)
+## Step 5: Set up sites (stretched cluster)
 
 This task only applies if you are creating a stretched cluster between two sites.
 
@@ -454,17 +453,7 @@ Congrats, you have now created a bare-bones cluster.
 
 ## After you create the cluster
 
-Now that you are done, there are still some important tasks you need to complete in order to have a fully-functioning cluster.
-
-The first task is to disable the Credential Security Support Provider (CredSSP) protocol on each server for security purposes. Remember that CredSSP needed to be enabled for the wizard. For more information, see [CVE-2018-0886](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2018-0886).
-
-1. In Windows Admin Center, under **All connections**, select the cluster you just created.
-1. Under **Tools**, select **Servers**.
-1. In the right pane, select the first server in the cluster.
-1. Under **Overview**, select **Disable CredSSP**. You will see that the red **CredSSP ENABLED** banner at the top disappears.
-1. Repeat steps 3 and 4 for each server in your cluster.
-
-OK, now here are the other tasks you will need to do:
+Now that you are done, there are still some important tasks you need to complete in order to have a fully-functioning cluster:
 
 - Set up a cluster witness. See [Setup a cluster witness].
 - Create your volumes. See [Create volumes](../manage/create-volumes.md).
