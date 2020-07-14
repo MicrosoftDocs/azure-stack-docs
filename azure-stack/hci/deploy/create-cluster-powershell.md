@@ -2,9 +2,8 @@
 title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a hyperconverged cluster for Azure Stack HCI using Windows PowerShell
 author: v-dasis
-ms.topic: article
-ms.prod: 
-ms.date: 07/10/2020
+ms.topic: how to
+ms.date: 07/21/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -264,126 +263,6 @@ Get-NetIPAddress -CimSession $servers -InterfaceAlias vEthernet* -AddressFamily 
 Get-VMNetworkAdapterVlan -ManagementOS -CimSession $servers | Sort-Object -Property Computername | Format-Table ComputerName,AccessVlanID,ParentAdapter -AutoSize -GroupBy ComputerName
 ```
 
-### Configure RDMA
-
-Next, we will enable RDMA on the host vNIC adapters and associate each of these vNICs to a physical network adapter that is associated with the virtual switch.
-
-```powershell
-$Servers = "Server1", "Server2", "Server3", "Server4"
-$vSwitchName="vSwitch"
-
-#Enable RDMA on the host vNIC adapters
-Enable-NetAdapterRDMA "vEthernet (SMB01)","vEthernet (SMB02)" -CimSession $Servers
-
-#Associate each of the vNICs configured for RDMA to a physical adapter that is up and is not virtual to be sure that each RDMA enabled ManagementOS vNIC is mapped to separate RDMA pNIC
-Invoke-Command -ComputerName $servers -ScriptBlock {
-    $physicaladapters=(get-vmswitch $using:vSwitchName).NetAdapterInterfaceDescriptions | Sort-Object
-    $netadapters=foreach ($physicaladapter in $physicaladapters){Get-NetAdapter -InterfaceDescription $physicaladapter}
-    $i=1
-    foreach ($netadapter in ($Netadapters | Sort-Object -Property MacAddress)){
-        Set-VMNetworkAdapterTeamMapping -VMNetworkAdapterName "SMB0$i" -ManagementOS -PhysicalNetAdapterName $netadapter.Name
-        $i++
-    }
-}
-```
-
-Now we validate that this happened successfully:
-
-```powershell
-$Servers = "Server1", "Server2", "Server3", "Server4"
-#verify RDMA
-Get-NetAdapterRdma -CimSession $Servers | Sort-Object -Property SystemName | Format-Table SystemName,InterfaceDescription,Name,Enabled -AutoSize -GroupBy SystemName
-#verify mapping
-Get-VMNetworkAdapterTeamMapping -CimSession $Servers -ManagementOS | Format-Table ComputerName,NetAdapterName,ParentAdapter
-```
-
-### Configure Jumbo frames
-
-You may need to increase the jumbo frames if you are using iWARP. If not using the default values, make sure all switches are configured end-to-end.
-
-```powershell
-$Servers = "Server1", "Server2", "Server3", "Server4"
-$JumboSize=9014
-Set-NetAdapterAdvancedProperty -CimSession $Servers  -DisplayName "Jumbo Packet" -RegistryValue $JumboSize
-```
-And validate:
-
-```powershell
-$Servers="S2D1","S2D2","S2D3","S2D4"
-Get-NetAdapterAdvancedProperty -CimSession $servers -DisplayName "Jumbo Packet"
-```
-
-### Configure DCB
-
-Datacenter-Bridging (DCB) is required for RoCE RDMA and recommended in some scenarios for iWARP as well to prioritize traffic or to send pause frames.
-
-```powershell
-$Servers = "Server1", "Server2", "Server3", "Server4"
-$vSwitchName="vSwitch"
-#install dcb feature
-foreach ($server in $servers) {Install-WindowsFeature -Name "Data-Center-Bridging" -ComputerName $server}
-
-#add qos Policies
-New-NetQosPolicy "SMB"       -NetDirectPortMatchCondition 445 -PriorityValue8021Action 3 -CimSession $servers
-New-NetQosPolicy "ClusterHB" -Cluster                         -PriorityValue8021Action 7 -CimSession $servers
-New-NetQosPolicy "Default"   -Default                         -PriorityValue8021Action 0 -CimSession $servers
-
-Invoke-Command -ComputerName $servers -ScriptBlock {
-    #Turn on Flow Control for SMB
-    Enable-NetQosFlowControl -Priority 3
-    #Disable flow control for other traffic than 3 (pause frames should go only from priority 3
-    Disable-NetQosFlowControl -Priority 0,1,2,4,5,6,7
-    #Disable Data Center bridging exchange (disable accept data center bridging (DCB) configurations from a remote device via the DCBX protocol, which is specified in the IEEE data center bridging (DCB) standard.)
-    Set-NetQosDcbxSetting -willing $false -confirm:$false
-    #Configure IeeePriorityTag
-    #IeePriorityTag needs to be On if you want tag your nonRDMA traffic for QoS. Can be off if traffic uses adapters that pass vSwitch (both SR-IOV and RDMA bypasses vSwitch)
-    Set-VMNetworkAdapter -ManagementOS -Name "SMB*" -IeeePriorityTag on
-    #Apply policy to the target adapters.  The target adapters are adapters connected to vSwitch
-    Enable-NetAdapterQos -InterfaceDescription (Get-VMSwitch -Name $using:vSwitchName).NetAdapterInterfaceDescriptions
-    #Create a Traffic class and give SMB Direct 60% of the bandwidth minimum. The name of the class will be "SMB".
-    #This value needs to match physical switch configuration. Value might vary based on your needs.
-    #If connected directly (in 2 node configuration) skip this step.
-    New-NetQosTrafficClass "SMB"       -Priority 3 -BandwidthPercentage 60 -Algorithm ETS
-    New-NetQosTrafficClass "ClusterHB" -Priority 7 -BandwidthPercentage 1 -Algorithm ETS
-}
-```
-And validate:
-
-```powershell
-$Servers = "Server1", "Server2", "Server3", "Server4"
-#validate QOS Policies
-Get-NetQosPolicy -CimSession $servers | Select-Object Name,NetworkProfile,Template,NetDirectPort,PriorityValue8021Action,PSComputerName | Sort-Object PSComputerName | Format-Table -GroupBy PSComputerName
-
-#validate Flow Control (enabled for Priority3, disabled for other priorities)
-Invoke-Command -ComputerName $servers -ScriptBlock {get-netqosflowcontrol} | Select-Object Name,Enabled,PSComputerName
-
-#validate Data Center bridging exchange
-Invoke-Command -ComputerName $servers -ScriptBlock {Get-NetQosDcbxSetting} | Select-Object Willing,PSComputerName
-
-#validate IEEEPriorityTag
-Get-VMNetworkAdapter -CimSession $servers -ManagementOS -Name SMB* | Select-Object Name,IeeePriorityTag,ComputerName
-
-#validate policy on physical adapters
-Invoke-Command -ComputerName $servers -ScriptBlock {Get-NetAdapterQos -InterfaceDescription (Get-VMSwitch -Name $using:vSwitchName).NetAdapterInterfaceDescriptions}
-
-#validate traffic classes
-Invoke-Command -ComputerName $servers -ScriptBlock {Get-NetQosTrafficClass} | Select-Object Priority,BandwidthPercentage,Algorithm,PSComputerName
-```
-
-### Configure iWARP firewall rule
-
-For iWarp RDMA to work, a Windows firewall rule needs to be enabled.
-
-```powershell
-$Servers = "Server1", "Server2", "Server3", "Server4"
-Enable-NetFirewallRule -Name "FPSSMBD-iWARP-In-TCP" -CimSession $servers
-```
-
-```powershell
-$Servers="S2D1","S2D2","S2D3","S2D4"
-Get-NetFirewallRule -Name "FPSSMBD-iWARP-In-TCP" -CimSession $servers | Select-Object Name,Enabled,Profile,PSComputerName
-```
-
 ## Step 3: Verify cluster setup
 
 Next, you must first verify that your servers are prepared and configured properly for cluster creating.
@@ -466,6 +345,8 @@ Congrats, your cluster has now been created.
 
 This task only applies if you are creating a stretched cluster between two sites.
 
+### Step 5.1: Create sites
+
 In the cmdlet below, *FaultDomain* is simply another name for a site. This example uses `ClusterS1` as the name of the stretched cluster.
 
 ```powershell
@@ -482,6 +363,8 @@ Use the `Get-ClusterFaultDomain` cmdlet to verify that both sites have been crea
 Get-ClusterFaultDomain
 ```
 
+### Step 5.2: Assign server nodes
+
 Next, we will assign the four server nodes to their respective sites. In the example below, Server1 and Server2 are assigned to Site1, while Server3 and Server4 are assigned to Site2.
 
 ```powershell
@@ -497,6 +380,25 @@ Using the `Get-ClusterFaultDomain` cmdlet, verify the nodes are in the correct s
 ```powershell
 Get-ClusterFaultDomain -CimSession ClusterS1
 ```
+
+### Step 5.3: Set a preferred site
+
+You can also define a global *preferred* site, which means that specified resources and groups must run on the preferred site.  This setting can be defined at the site level using the following command:  
+
+```powershell
+(Get-Cluster).PreferredSite = Site1
+```
+
+Specifying a preferred Site for stretched clusters has the following benefits:
+
+- **Cold start** - during a cold start, virtual machines are placed in the preferred site
+
+- **Quorum voting**
+  - Using a dynamic quorum, weighting is decreased from the passive (replicated) site first to ensure that the preferred site survives if all other things are equal. In addition, server nodes are pruned from the passive site first during regrouping after events such as an asymmetric network connectivity failures.
+
+  - During a quorum split of two sites, if the cluster witness cannot be contacted, the preferred site is automatically elected to win. The server nodes in the passive site then drop out of cluster membership. This allows the cluster to survive a simultaneous 50% loss of votes.
+
+The preferred site can also be configured at the cluster role or group level. In this case, a different preferred site can be configured for each virtual machine group. This enables a site to be active and preferred for specific virtual machines.
 
 ## Step 6: Enable Storage Spaces Direct
 
@@ -533,28 +435,6 @@ To see the storage pools, use this:
 Get-StoragePool -Cluster Cluster1
 ```
 
-## Step 7: Create a witness
-
-Two-node clusters need a witness so that either server going offline does not cause the other node to become unavailable as well. Three and higher-node clusters need a witness to be able to withstand two servers failing or being offline
-
-You can use an Azure cloud witness or a file share as a witness. A cloud witness is recommended.
-
-### Step 6.1: Configure a cloud witness
-
-Use the following to create an Azure cloud witness:
-
-```powershell
-Set-ClusterQuorum –Cluster Cluster1 -CloudWitness -AccountName <AzureStorageAccountName> -AccessKey <AzureStorageAccountAccessKey>
-```
-
-### Step 6.2: Configure a file share witness
-
-Use the following to create a file-share witness:
-
-```powershell
-Set-ClusterQuorum –Cluster Cluster1 -FileShareWitness \\fileserver\fsw
-```
-
 ## Step 7: Create volumes
 
 Volume creation is different for single-site standard clusters versus stretched (two-site) clusters. For both scenarios however, you use the `New-Volume` cmdlet to create a virtual disk, partition and format it, create a volume with matching name, and add it to cluster shared volumes (CSV).
@@ -582,13 +462,13 @@ You can also define a global preferred site where all resources and groups run o
 
 The following diagram shows Site 1 as the active site with replication to Site 2, a unidirectional replication.
 
-:::image type="content" source="media/cluster/stretch-active-passive.png" alt-text="Active/passive stretched cluster scenario":::
+:::image type="content" source="media/cluster/active-passive-stretched-cluster.png" alt-text="Active/passive stretched cluster scenario"  lightbox="media/cluster/stretch-active-passive.png":::
 
 ### Active/active stretched cluster
 
 The following diagram shows both Site 1 and Site 2 as being active sites, with bidirectional replication to the other site.
 
-:::image type="content" source="media/cluster/stretch-active-active.png" alt-text="Active/active stretched cluster scenario":::
+:::image type="content" source="media/cluster/active-active-stretched-cluster.png" alt-text="Active/active stretched cluster scenario" lightbox="media/cluster/stretch-active-active.png":::
 
 OK, now we are ready to begin. We first need to move resource groups around from node to node. The `Move-ClusterGroup` cmdlet is used to this.
 
@@ -718,71 +598,28 @@ The `New-SRPartnership` cmdlet creates a replication partnership between the two
 
 Storage Replica will now be setting everything up. If there is any data to be replicated, it will do it here. Depending on the amount of data it needs to replicate, this may take a while. It is recommended to not move any groups around until this process completes.
 
-## Step 9: Verify replication (stretched cluster)
+After the cluster is created, it can take time for the cluster name to be replicated across your domain. If resolving the cluster isn't successful after some time, in most cases you can substitute the computer name of a server node in the the cluster instead of the cluster name.
 
-With Storage Replica, there are several events you can view to get the state of replication and view Storage Replica events in stretched clusters.
+## After you create the cluster
 
-To determine the replication progress for Server1 in Site1, run the Get-WinEvent command and examine events 5015, 5002, 5004, 1237, 5001, and 2200:
+Now that you are done, there are still some important tasks you need to complete in order to have a fully-functioning cluster.
 
-```powershell
-Get-WinEvent -ComputerName Server1 -ProviderName Microsoft-Windows-StorageReplica -max 20
-```
+The first task is to disable the Credential Security Support Provider (CredSSP) protocol on each server for security purposes. Remember that CredSSP needed to be enabled for the wizard. For more information, see [CVE-2018-0886](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2018-0886).
 
-For Server3 in Site2, run the following `Get-WinEvent` command to see the Storage Replica events that show creation of the partnership. This event states the number of copied bytes and the time taken. For example:
+1. In Windows Admin Center, under **All connections**, select the cluster you just created.
+1. Under **Tools**, select **Servers**.
+1. In the right pane, select the first server in the cluster.
+1. Under **Overview**, select **Disable CredSSP**. You will see that the red **CredSSP ENABLED** banner at the top disappears.
+1. Repeat steps 3 and 4 for each server in your cluster.
 
-```powershell
-Get-WinEvent -ComputerName Server3 -ProviderName Microsoft-Windows-StorageReplica | Where-Object {$_.ID -eq "1215"} | FL
-```
+OK, now here are the other tasks you will need to do:
 
-For Server3 in Site2, run the `Get-WinEvent` command and examine events 5009, 1237, 5001, 5015, 5005, and 2200 to understand the processing progress. There should be no warnings of errors in this sequence. There will be many 1237 events - these indicate progress.
-
-```powershell
-Get-WinEvent -ComputerName Server3 -ProviderName Microsoft-Windows-StorageReplica | FL
-```
-
-Alternately, the destination server group for the replica states the number of byte remaining to copy at all times, and can be queried through PowerShell with `Get-SRGroup`. For example:
-
-```powershell
-(Get-SRGroup).Replicas | Select-Object numofbytesremaining
-```
-
-For node Server3 in Site2, run the following command and examine events 5009, 1237, 5001, 5015, 5005, and 2200 to understand the replication progress. There should be no warnings of errors. However, there will be many "1237" events - these simply indicate progress.
-
-```powershell
-Get-WinEvent -ComputerName Server3 -ProviderName Microsoft-Windows-StorageReplica | FL
-```
-
-As a progress script that will not terminate:
-
-```powershell
-while($true) {
-$v = (Get-SRGroup -Name "Replication2").replicas | Select-Object numofbytesremaining
-[System.Console]::Write("Number of bytes remaining: {0}`r", $v.numofbytesremaining)
-Start-Sleep -s 5
-}
-```
-
-To get replication state within the stretched cluster, use `Get-SRGroup` and `Get-SRPartnership`:
-
-```powershell
-Get-SRGroup -Cluster ClusterS1
-```
-
-```powershell
-Get-SRPartnership -Cluster ClusterS1
-```
-
-```powershell
-(Get-SRGroup).replicas -Cluster ClusterS1
-```
-
-Once successful data replication is confirmed between sites, you can create your VMs and other workloads.
+- Setup a cluster witness. See [Setup a cluster witness].
+- Create your volumes and virtual disks. See [Create volumes](../manage/create-volumes.md).
+- For stretched clusters, create volumes and setup replication using Storage Replica. See the applicable section in [Create volumes](../manage/create-volumes.md).
 
 ## Next steps
 
-- It is important to validate the cluster afterwards. See [Validate server cluster].
-- Register your cluster with Azure. See [Register Azure Stack Hub with Azure](https://docs.microsoft.com/azure-stack/operator/azure-stack-registration?view=azs-2002&pivots=state-connected).
-- Setup a witness (highly recommended). See [Setup a witness].
-- Create volumes and virtual disks. See [Create volumes].
-- Provision your VMs. See [Manage VMs on Azure Stack HCI](https://docs.microsoft.com/azure-stack/hci/manage/vm).
+- Register your cluster with Azure. See [Register your cluster with Azure].
+- Do a final validation of the cluster. See [Validate the cluster].
 - You can also create a cluster using Windows Admin Center. See [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md).
