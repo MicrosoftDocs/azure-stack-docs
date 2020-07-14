@@ -136,13 +136,13 @@ waagent -version
 For example:
 
 ```bash
-aagent -version
+waagent -version
 WALinuxAgent-2.2.45 running on centos 7.7.1908
 Python: 2.7.5
 Goal state agent: 2.2.46
 ```
 
-#### Disable Provisioning with Linux Agent lower than 2.2.4
+##### Disable Provisioning with Linux Agent lower than 2.2.4
 
 To disable the Linux Agent provisioning, set the following parameters in **/etc/waagent.conf**: `Provisioning.Enabled=n, and Provisioning.UseCloudInit=n`.
 
@@ -164,7 +164,7 @@ In scenarios in which you want to run extensions:
 
 4. Execute a logout.
 
-#### Disable provisioning with Linux Agent 2.2.45 and later
+##### Disable provisioning with Linux Agent 2.2.45 and later
 
 In 2.2.45, there are configuration option changes:
 
