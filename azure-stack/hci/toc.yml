@@ -32,6 +32,8 @@
     href: manage/add-cluster.md
   - name: Use Azure Backup
     href: manage/use-azure-backup.md
+  - name: Update cluster
+    href: manage/update-cluster.md
   - name: Use Azure Site Recovery
     href: manage/azure-site-recovery.md
   - name: Monitor with Azure Monitor
