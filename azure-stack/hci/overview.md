@@ -100,7 +100,7 @@ Azure Stack HCI is a world-class, integrated virtualization stack built on prove
 
 ## What you need for Azure Stack HCI
 
-To get started, [determine your hardware requirements](deploy/before-you-start.md), simply purchase validated hardware (from 2 to 16 server nodes) from your preferred Microsoft hardware partner. Then, [download](https://azure.microsoft.com/products/azure-stack/hci/) the Azure Stack HCI operating system. If you don't already have one, [get an Azure subscription](https://azure.microsoft.com/) to enable billing and access to Azure services.
+To get started, determine your hardware requirements, simply purchase validated hardware (from 2 to 16 server nodes) from your preferred Microsoft hardware partner. Then, [download](https://azure.microsoft.com/products/azure-stack/hci/) the Azure Stack HCI operating system. If you don't already have one, [get an Azure subscription](https://azure.microsoft.com/) to enable billing and access to Azure services.
 
 ## Hardware partners
 
@@ -261,5 +261,4 @@ Here's a video from a Hybrid Cloud Virtual Event:
 
 ## Next steps
 
-- [Before you start](deploy/before-you-start.md)
 - [Use Azure Stack HCI with Windows Admin Center](get-started.md)
