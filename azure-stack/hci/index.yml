@@ -39,6 +39,8 @@ landingContent:
             url: deploy/before-you-start.md
           - text: Create cluster
             url: deploy/before-you-start.md
+          - text: Register with Azure
+            url: deploy/before-you-start.md
           - text: Validate an Azure Stack HCI cluster
             url: deploy/before-you-start.md 
 
@@ -81,10 +83,8 @@ landingContent:
             url: manage/cluster-powershell.md
           - text: Add or remove servers
             url: manage/add-cluster.md
-          - text: Manage VMs
-            url: manage/vm.md
-          - text: Manage VMs with PowerShell
-            url: manage/vm-powershell.md
+          - text: Update cluster
+            url: manage/update-cluster.md
           - text: Change languages
             url: manage/vm-powershell.md
 
@@ -107,7 +107,7 @@ landingContent:
             url: concepts/quorum.md
 
   # Card 
-  - title: Use Azure services
+  - title: Connect to Azure
     linkLists:
       - linkListType: how-to-guide
         links:
