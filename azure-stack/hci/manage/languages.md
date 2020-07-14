@@ -11,17 +11,16 @@ ms.date: 07/21/2020
 
 >Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-You can change your preferred language in a management PC running Windows 10, Windows Admin Center, Microsoft Edge, and the Azure Stack HCI operating system on the servers that you manage. Windows Admin Center remains in your language of choice regardless of language changes in these other resources.
+You can change your preferred language in a management PC, Windows Admin Center, Microsoft Edge, and the Azure Stack HCI operating system on the servers that you manage. Windows Admin Center remains in your language of choice regardless of language changes in these other resources.
 
 This article explains how to change languages in:
-
 - Windows 10
 - Windows Admin Center
 - Microsoft Edge
 - Server Core in the Azure Stack HCI operating system
 
-## Change the language in the management PC running Windows 10
-You can install a language pack for use in Windows 10, the apps you use, and the websites that you visit. You also can change your keyboard language, and set the input language in a language-preference order for websites and apps.
+## Change the language in the management PC
+If you are using Windows 10 on your management PC, you can install a language pack for use in Windows 10, the apps you use, and the websites that you visit. You also can change your keyboard language, and set the input language in a language-preference order for websites and apps.
 
 Changing either the language that you use in Windows 10 or the keyboard language doesn't affect the display language in Windows Admin Center.
 
