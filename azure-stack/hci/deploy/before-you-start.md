@@ -69,16 +69,16 @@ These are the *minimum* interconnect requirements for single-site clusters havin
 
 These are the *minimum* interconnect requirements for clusters having four or more nodes, and for high-performance clusters. These apply for each server node:
 
-- One or more 1 Gb network adapter cards to be used for management functions
-- One or more 25 Gb (or faster) network interface cards for storage and workload traffic. We recommend two or more network connections for redundancy and performance
-- Network cards that are remote-direct memory access (RDMA) capable: iWARP (recommended) or RoCE
+- One or more 1 Gb network adapter cards to be used for management functions.
+- One or more 25 Gb (or faster) network interface cards for storage and workload traffic. We recommend two or more network connections for redundancy and performance.
+- Network cards that are remote-direct memory access (RDMA) capable: iWARP (recommended) or RoCE.
 
 ### Site-to-site requirements (stretched cluster)
 
 When connecting between sites for stretched clusters, interconnect requirements within each site still apply, and have additional Storage Replica and Hyper-V live migration traffic requirements that must be considered:
 
-- At least one 1 Gb RDMA (preferably) or Ethernet/TCP connection between sites for synchronous replication
-- A network between sites with enough bandwidth to contain your I/O write workload and an average of 5ms round trip latency or lower for synchronous replication. Asynchronous replication doesn't have a latency recommendation
+- At least one 1 Gb RDMA (preferably) or Ethernet/TCP connection between sites for synchronous replication.
+- A network between sites with enough bandwidth to contain your I/O write workload and an average of 5ms round trip latency or lower for synchronous replication. Asynchronous replication doesn't have a latency recommendation.
 - If using a single connection between sites, set SMB bandwidth limits for Storage Replica using PowerShell. For more information, see [Set-SmbBandwidthLimit](https://docs.microsoft.com/powershell/module/smbshare/set-smbbandwidthlimit?view=win10-ps).
 - If using multiple connections between sites, separate traffic between the connections. For example, put Storage Replica traffic on a separate network than Hyper-V live migration traffic using PowerShell. For more information, see [Set-SRNetworkConstraint](https://docs.microsoft.com/powershell/module/storagereplica/set-srnetworkconstraint?view=win10-ps).
 
