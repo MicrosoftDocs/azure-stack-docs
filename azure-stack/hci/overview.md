@@ -53,7 +53,7 @@ Refreshing and consolidating aging virtualization hosts with Azure Stack HCI can
 
 ### Remote and branch offices
 
-With two-server cluster solutions starting at less than $20,000 per location, Azure Stack HCI is a great way to affordably modernize remote and branch offices, retail stores, and field sites. Innovative nested resiliency allows volumes to stay online and accessible even if multiple hardware failures happen at the same time. Cloud witness technology allows you to use Azure as the lightweight tie-breaker for cluster quorum, preventing split-brain conditions without the cost of a third host. Customers can monitor remote Azure Stack HCI deployments centrally with a global view in the Azure Portal.
+With two-server cluster solutions starting at less than $20,000 per location, Azure Stack HCI is a great way to affordably modernize remote and branch offices, retail stores, and field sites. Innovative nested resiliency allows volumes to stay online and accessible even if multiple hardware failures happen at the same time. Cloud witness technology allows you to use Azure as the lightweight tie-breaker for cluster quorum, preventing split-brain conditions without the cost of a third host. Customers can monitor remote Azure Stack HCI deployments centrally with a global view in the Azure portal.
 
 ### Virtual desktops
 
@@ -112,7 +112,7 @@ Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure
 
 Azure Stack HCI billing is based on a monthly subscription fee per physical processor core, not a perpetual license. When customers connect to Azure, the number of cores used can be uploaded and assessed for billing purposes. Cost doesn’t vary with consumption beyond the physical processor cores, meaning that more VMs don’t cost more, and customers who are able to run denser virtual environments are rewarded.
 
-Customers can either purchase validated servers from a hardware partner with the Azure Stack HCI operating system pre-installed, or they can buy validated bare metal servers from an OEM and download the Azure Stack HCI operating system from the Azure Portal.
+Customers can either purchase validated servers from a hardware partner with the Azure Stack HCI operating system pre-installed, or they can buy validated bare metal servers from an OEM and download the Azure Stack HCI operating system from the Azure portal.
 
 ## Management tools
 
