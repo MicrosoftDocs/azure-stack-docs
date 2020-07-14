@@ -4,7 +4,7 @@ description: This article provides guidance on how to use Azure Backup through W
 author: thomasmaurer
 ms.author: thmaure
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 07/21/2020
 ---
 
 # Use Azure Backup to back up Windows Servers
