@@ -8,6 +8,8 @@ ms.date: 04/28/2020
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/28/2020
+ms.custom: conteperfq4
+
 
 # Intent: As an Azure Stack operator, I want to use the privileged endpoint in Azure Stack so I can complete certain tasks.
 # Keyword: azure stack privileged endpoint PEP
@@ -87,6 +89,8 @@ You will need set your current culture setting to `en-US` when running the privi
       > If you're unable to connect to the ERCS endpoint, retry steps one and two with another ERCS VM IP address.
 
 3. After you connect, the prompt will change to **[*IP address or ERCS VM name*]: PS>** or to **[azs-ercs01]: PS>**, depending on the environment. From here, run `Get-Command` to view the list of available cmdlets.
+
+    You can find a reference for cmdlets in at [Azure Stack Hub privileged endpoint reference](../reference/pep-2002/index.md)
 
    Many of these cmdlets are intended only for integrated system environments (such as the cmdlets related to datacenter integration). In the ASDK, the following cmdlets have been validated:
 

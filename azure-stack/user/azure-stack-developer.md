@@ -4,7 +4,7 @@ description: Development considerations for prototyping apps on Azure Stack Hub 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 06/12/2020
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 05/21/2019
