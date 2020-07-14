@@ -36,7 +36,7 @@ To manually upload core usage data to Azure, use the **`Sync-AzureStackHCI`** cm
 - If I have an Azure commitment to spend, can I use that toward Azure Stack HCI? **Yes**
 - If I have Azure credits (e.g. for students, or awarded as a prize) can I use that toward Azure Stack HCI? **Yes**
 - If my organization negotiated an Enterprise Agreement discount, does that apply to Azure Stack HCI? **Yes**
-- Do the Azure Portal cost management tools work for Azure Stack HCI? **Yes**
+- Do the the Azure portal cost management tools work for Azure Stack HCI? **Yes**
 - Do third-party or custom tools built with the Azure billing APIs work for Azure Stack HCI? **Yes**
 
 ## Next steps
