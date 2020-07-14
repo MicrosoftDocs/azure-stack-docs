@@ -54,7 +54,7 @@ For more information about using VMM to do a bare-metal deployment of the operat
 Another option is to install the Azure Stack HCI operating system over the network using [Windows Deployment Services](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831764(v=ws.11)).
 
 ### Manual deployment
-To manually deploy the Azure Stack HCI operating system on the system drive of each server to be clustered, install the operating system via your preferred method, such as booting from a DVD or USB drive. Then start each server and use the Server Configuration tool (Sconfig.cmd) to prepare the servers for clustering. To learn more about the tool, see [Configure a Server Core installation with Sconfig.cmd](/windows-server/get-started/sconfig-on-ws2016).
+To manually deploy the Azure Stack HCI operating system on the system drive of each server to be clustered, install the operating system via your preferred method, such as booting from a DVD or USB drive. Complete the installation process using the Server Configuration tool (Sconfig.cmd) to prepare the servers for clustering. To learn more about the tool, see [Configure a Server Core installation with Sconfig.cmd](/windows-server/get-started/sconfig-on-ws2016).
 
 To manually install the Azure Stack HCI operating system:
 1. Start the Install Azure Stack HCI wizard on the system drive of the server where you want to install the operating system.
@@ -90,10 +90,7 @@ To manually install the Azure Stack HCI operating system:
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-admin-password-changed.png" alt-text="The changed password confirmation prompt":::
 
-To use Sconfig.cmd:
-1. Connect to the server running the Azure Stack HCI operating system that you want to deploy. This could be locally via a keyboard and monitor or using a remote management (headless or BMC) controller.
-1. Open a command prompt as an administrator, and then change to the system drive.
-1. At the command prompt, type `Sconfig.cmd` and press Enter to open the Server Configuration tool interface.
+    Changing the password automatically starts Sconfig.cmd and displays the main page of the tool.
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-sconfig-screen.png" alt-text="The Server Configuration tool interface." lightbox="../media/operating-system/azure-stack-hci-sconfig-screen.png":::
 
