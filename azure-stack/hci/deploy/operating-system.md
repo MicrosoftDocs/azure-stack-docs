@@ -17,6 +17,7 @@ After deploying the operating system, you're ready to use related guidance on cr
 
 ## Prerequisites
 - Windows Admin Center set up on a system that can access the servers you want to cluster, as described in [Before you deploy Azure Stack HCI](before-you-start.md#install-windows-admin-center).
+- An Azure Stack HCI solution that provides Microsoft validated hardware from your preferred hardware vendor, the Azure Stack HCI operating system, and Azure services, as described in [Azure Stack HCI solutions](https://azure.microsoft.com/products/azure-stack/hci/).
 
 ## Deployment preparation
 After you've acquired the server hardware for your Azure Stack HCI solution, it's time to rack and cable it. Use the following steps to prepare the server hardware for deployment of the operating system.
