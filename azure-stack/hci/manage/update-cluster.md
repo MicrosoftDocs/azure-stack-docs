@@ -4,7 +4,7 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 07/07/2020
+ms.date: 07/21/2020
 ---
 
 # Update Azure Stack HCI clusters
@@ -177,3 +177,4 @@ InstallResults           : Microsoft.ClusterAwareUpdating.UpdateInstallResult[]
 For related information, see also:
 
 - [Updating drive firmware in Storage Spaces Direct](/windows-server/storage/update-firmware)
+- Validate an Azure Stack HCI cluster
