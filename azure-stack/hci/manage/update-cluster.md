@@ -67,7 +67,7 @@ If the Failover Clustering feature is not installed, install it on each server i
 Install-WindowsFeature –Name Failover-Clustering -IncludeAllSubFeature –IncludeManagementTools -ComputerName Server1
 ```
 
-This command will also install the Failover Cluster Module for PowerShell, which includes Powershell cmdlets for managing failover clusters, and the Cluster-Aware Updating module for PowerShell, for installing software updates on failover clusters.
+This command will also install the Failover Cluster Module for PowerShell, which includes PowerShell cmdlets for managing failover clusters, and the Cluster-Aware Updating module for PowerShell, for installing software updates on failover clusters.
 
 If the Failover Clustering feature is already installed but the Failover Cluster Module for Windows PowerShell is not, simply install it on each server in the cluster with the **Install-WindowsFeature** cmdlet:
 
