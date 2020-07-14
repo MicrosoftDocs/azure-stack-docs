@@ -2,8 +2,8 @@
 title: Setup VM affinity rules using Windows PowerShell
 description: Learn how to setup VM affinity rules using Windows PowerShell
 author: v-dasis
-ms.topic: article
-ms.date: 05/22/2020
+ms.topic: how-to
+ms.date: 07/21/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI v20H2, Windows Server 2019
 
-Using Windows PowerShell, you can easily setup affinity and anti-affinity rules for your virtual machines (VMs).
+Using Windows PowerShell, you can easily setup affinity and anti-affinity rules for your virtual machines (VMs) in a cluster.
 
 Affinity is a rule that establishes a relationship between two or more resource groups or roles, such as virtual machines (VMs), to keep them together in an Azure Stack HCI cluster. Anti-affinity is the opposite in that it is used to keep the specified resource groups apart from each other.
 
@@ -210,6 +210,8 @@ DC      DifferentFaultDomain    {DC1, DC2}       1
 ```
 
 ## Affinity rules
+
+Here are a few common scenarios for setting up affinity rules.
 
 ### Scenario 1
 
