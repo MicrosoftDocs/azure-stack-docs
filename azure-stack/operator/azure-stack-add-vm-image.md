@@ -134,7 +134,7 @@ Python: 2.7.5
 Goal state agent: 2.2.46
 
 
-****Disable Provisioning with Linux Agent < 2.2.45****
+**Disable Provisioning with Linux Agent < 2.2.4***
 To disable the Linux Agent provisioning, you set the following parameters in /etc/waagent.conf: Provisioning.Enabled=n, and Provisioning.UseCloudInit=n.
 
 Guidance for scenarios, where you want to run extensions: 
@@ -147,10 +147,10 @@ Guidance for scenarios, where you want to run extensions:
 		sudo sed -i '/azure_resource/d' /etc/fstab
 4. Execute a Logout.
 
-****Disable Provisioning with Linux Agent 2.2.45 and onwards****
+**Disable Provisioning with Linux Agent 2.2.45 and onwards**
 In 2.2.45, there are these configuration option changes: * Provisioning.Enabled and Provisioning.UseCloudInit are now ignored but the Linux Agent. 
 
-In this version, currently there is no 'Provisioning.Agent' option to disable provisioning completely, an option will be added in the near future, however, you can add the provisioning marker file, and with the settings below, provisioning will get ignored:
+In this version, currently there is no 'Provisioning.Agent' option to disable provisioning completely, however, you can add the provisioning marker file, and with the settings below, provisioning will get ignored:
 
 1.	In /etc/waagent.conf add this configuration option, 'Provisioning.Agent=Auto'
 2.	To ensure walinuxagent provisioning is disabled run: `mkdir -p /var/lib/waagent && touch /var/lib/waagent/provisioned`
