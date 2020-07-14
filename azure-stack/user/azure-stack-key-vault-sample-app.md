@@ -4,7 +4,7 @@ description: Learn how to run a sample app that retrieves keys and secrets from 
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 06/15/2020
 ms.author: sethm
 ms.lastreviewed: 04/08/2019
 
@@ -16,7 +16,7 @@ ms.lastreviewed: 04/08/2019
 
 # Allow apps to access Azure Stack Hub Key Vault secrets
 
-Follow the steps in this article to run the sample app **HelloKeyVault** that retrieves keys and secrets from a key vault in Azure Stack Hub.
+The steps in this article describe how to run the sample app **HelloKeyVault** that retrieves keys and secrets from a key vault in Azure Stack Hub.
 
 ## Prerequisites
 
@@ -131,7 +131,7 @@ Make a note of the **VaultUrl**, **AuthClientId**, and **AuthClientSecret** valu
 
 ## Download and configure the sample application
 
-Download the key vault sample from the Azure [Key Vault client samples](https://www.microsoft.com/download/details.aspx?id=45343) page. Extract the contents of the .zip file on your development workstation. There are two apps in the samples folder. This article uses **HelloKeyVault**.
+Download the key vault sample from the Azure [Key Vault client samples](https://www.microsoft.com/download/details.aspx?id=45343) page. Extract the contents of the .zip file on your development workstation. There are two apps in the samples folder; this article uses **HelloKeyVault**.
 
 To load the **HelloKeyVault** sample:
 

@@ -4,7 +4,7 @@ description: Learn how to deploy a secured Service Fabric cluster in Azure Stack
 author: mattbriggs
 
 ms.topic: tutorial
-ms.date: 1/22/2020
+ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: shnatara
 ms.lastreviewed: 09/25/2019
