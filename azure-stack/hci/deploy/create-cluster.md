@@ -74,7 +74,9 @@ OK, lets begin:
     - **All servers in one site**
     - **Servers in two sites** (for stretched cluster)
 
-1. When finished, click **Create**.
+1. When finished, click **Create**. You will now see the Create Cluster wizard, as shown below.
+
+    :::image type="content" source="media/cluster/create-cluster-wizard.png" alt-text="Active-active stretched cluster scenario" lightbox="media/cluster/create-cluster-wizard.png":::
 
 ### Step 1: Get Started
 
