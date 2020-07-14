@@ -69,7 +69,7 @@ landingContent:
             url: manage/vm-powershell.md
           - text: Change languages
             url: manage/vm-powershell.md
-          - text: Setup VM affinity rules
+          - text: Set up VM affinity rules
             url: deploy/before-you-start.md 
 
  # Card
