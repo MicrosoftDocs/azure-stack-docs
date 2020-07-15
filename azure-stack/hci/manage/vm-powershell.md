@@ -211,4 +211,4 @@ Set-VMProcessor -ComputerName Server1 -Name VM1 -Count 2 -Reserve 10 -Maximum 75
 
 ## Next steps  
 
-You can also create and manage VMs using Windows Admin Center. For more information, see [Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/overview).
+You can also create and manage VMs using Windows Admin Center. For more information, see [Windows Admin Center](vm.md).
