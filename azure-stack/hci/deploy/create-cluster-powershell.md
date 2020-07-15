@@ -26,7 +26,7 @@ For the stretched cluster scenario, we will use ClusterS1 as the name and use th
 
 Before you begin, make sure you:
 
-- Have read the hardware and other requirements in [Before you start](create-cluster-powershell.md).
+- Have read the hardware and other requirements in [Before you start](before-you-start.md).
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy Azure Stack HCI](create-cluster-powershell.md).
 - Have an account that’s a member of the local Administrators group on each server.
 - Have rights in Active Directory to create objects.
