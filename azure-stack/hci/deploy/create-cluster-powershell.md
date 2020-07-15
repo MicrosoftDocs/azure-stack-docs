@@ -18,31 +18,9 @@ You have a choice between two cluster types:
 - Standard cluster with at least two server nodes, all residing in a single site.
 - Stretched cluster with at least four server nodes that span across two sites, with two nodes per site.
 
-In addition, there are two types of stretched clusters, active/passive and active/active. You can set up active-passive site replication, where there is a preferred site and direction for replication. Active-active replication is where replication can happen bi-directionally from either site. This article covers the active/passive configuration only.
-
-In simple terms, an *active* site is one that has resources and is providing roles and workloads for clients to connect to. A *passive* site is one that does not provide any roles or workloads for clients and is waiting for a failover from the active site for disaster recovery.
-
-Sites can be in two different states, different cities, different floors, or different rooms. Stretched clusters Using two sites provides disaster recovery and business continuity should a site suffer an outage or failure.
-
 In this article, we will create an example cluster named Cluster1 that is comprised of four server nodes named Server1, Server2, Server3, and Server4.
 
 For the stretched cluster scenario, we will use ClusterS1 as the name and use the same four server nodes stretched across sites Site1 and Site2.
-
-## Stretched cluster types
-
-Here are the two stretched cluster types:
-
-### Active-passive stretched cluster
-
-The following diagram shows Site 1 as the active site with replication to Site 2, a unidirectional replication.
-
-:::image type="content" source="media/cluster/active-passive-stretched-cluster.png" alt-text="Active/passive stretched cluster scenario"  lightbox="media/cluster/active-passive-stretched-cluster.png":::
-
-### Active-active stretched cluster
-
-The following diagram shows both Site 1 and Site 2 as being active sites, with bidirectional replication to the other site.
-
-:::image type="content" source="media/cluster/active-active-stretched-cluster.png" alt-text="Active/active stretched cluster scenario" lightbox="media/cluster/active-active-stretched-cluster.png":::
 
 ## Before you begin
 
@@ -54,6 +32,8 @@ Before you begin, make sure you:
 - Have rights in Active Directory to create objects.
 
 ## Using Windows PowerShell
+
+You can either run PowerShell locally in an RDP session on a host server, or you can run PowerShell remotely from a management computer. This article will cover the remote option.
 
 When running PowerShell commands from a management computer, include the `-Name` or `-Cluster` parameter with the name of the server or cluster you are managing. In addition, you may need to specify the fully qualified domain name (FQDN) when using the `-ComputerName` parameter for a server node.
 
@@ -106,7 +86,7 @@ Add-Computer -NewName "Server1" -DomainName "contoso.com" -Credential "Contoso\U
 If your administrator account isn't a member of the Domain Admins group, add your administrator account to the local Administrators group on each server - or better yet, add the group you use for administrators. You can use the following command to do so:
 
 ```powershell
-Net localgroup Administrators <Domain\Account> /add
+Add-LocalGroupMember -Group "Administrators" -Member "king@contoso.local"
 ```
 
 ### Step 1.3: Install roles and features

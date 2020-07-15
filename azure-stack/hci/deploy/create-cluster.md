@@ -14,30 +14,10 @@ ms.reviewer: JasonGerend
 
 In this article you will learn how to use Windows Admin Center to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. The Create Cluster wizard in Windows Admin Center will do most of the heavy lifting for you.
 
-## Cluster types
-
 You have a choice between creating two cluster types:
 
 - Standard cluster with at least two server nodes, residing in a single site.
 - Stretched cluster with at least four server nodes that span across two sites, with at least two nodes per site.
-
-In addition, there are two types of stretched clusters, active/passive and active/active. You can set up active-passive site replication, where there is a preferred site and direction for replication. Active-active replication is where replication can happen bi-directionally from either site. This article covers the active/passive configuration only.
-
-In simple terms, an *active* site is one that has resources and is providing roles and workloads for clients to connect to. A *passive* site is one that does not provide any roles or workloads for clients and is waiting for a failover from the active site.
-
-### Active/passive stretched cluster
-
-The following diagram shows Site 1 as the active site with replication to Site 2, a unidirectional replication.
-
-:::image type="content" source="media/cluster/active-passive-stretched-cluster.png" alt-text="Active-passive stretched cluster scenario" lightbox="media/cluster/active-passive-stretched-cluster.png":::
-
-### Active/active stretched cluster
-
-The following diagram shows both Site 1 and Site 2 as being active sites, with bidirectional replication to the other site.
-
-:::image type="content" source="media/cluster/active-active-stretched-cluster.png" alt-text="Active-active stretched cluster scenario" lightbox="media/cluster/active-active-stretched-cluster.png":::
-
-Sites can be in two different states, different cities, different floors, or different rooms. Stretched clusters Using two sites provides disaster recovery and business continuity should a site suffer an outage or failure.
 
 ## Before you run the wizard
 
@@ -49,9 +29,6 @@ Before you run the Create Cluster wizard, make sure you:
 - Have an account that’s a member of the local Administrators group on each server.
 
 Also, your management computer must be joined to the same Active Directory domain in which you'll create the cluster, or a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
-
-
-## Run the wizard
 
 Here are the major steps in the Create Cluster wizard:
 
@@ -77,7 +54,7 @@ OK, lets begin:
 
     :::image type="content" source="media/cluster/create-cluster-wizard.png" alt-text="Active-active stretched cluster scenario" lightbox="media/cluster/create-cluster-wizard.png":::
 
-### Step 1: Get Started
+## Step 1: Get Started
 
 Step 1 of the wizard walks you through making sure all prerequisites are met beforehand, adding the server nodes, installing needed features, and then restarting each server if needed.
 
@@ -103,7 +80,7 @@ The wizard installs the following required features for you:
 1. For **Solution updates**, if required, click **Install extension**. When complete, click **Next**.
 1. Click **Restart servers**, if required. Verify that each server has successfully started.
 
-### Step 2: Networking
+## Step 2: Networking
 
 Step 2 of the wizard walks you through verifying network interface adapters (NICs), selecting a management adapter, assigning IP addresses, subnet masks, and VLAN IDs for each server and creating the virtual switches.
 
@@ -144,7 +121,7 @@ Lets begin:
 
 1. Change the name of a switch and other configuration settings as needed, then click **Apply and test**. The **Status** column should show **Passed** for each server after the virtual switches have been created.
 
-### Step 3: Clustering
+## Step 3: Clustering
 
 Step 3 of the wizard makes sure everything thus far has been set up correctly, assigns sites in the case of stretched cluster deployments, and then actually creates the cluster.
 
@@ -163,7 +140,7 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
 
 1. Next assign each server to a site. You'll setup replication across sites later. When finished, click **Apply**.
 
-### Step 4: Storage
+## Step 4: Storage
 
 Step 4 of the wizard walks you through setting up Storage Spaces Direct and configuring virtual hard disks for your cluster.
 
