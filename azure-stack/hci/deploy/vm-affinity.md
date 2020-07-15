@@ -1,6 +1,6 @@
 ---
-title: Setup VM affinity rules using Windows PowerShell
-description: Learn how to setup VM affinity rules using Windows PowerShell
+title: Set up VM affinity rules using Windows PowerShell
+description: Learn how to set up VM affinity rules using Windows PowerShell
 author: v-dasis
 ms.topic: how-to
 ms.date: 07/21/2020
@@ -10,7 +10,7 @@ ms.reviewer: JasonGerend
 
 # Create server and site affinity rules for VMs
 
-> Applies to Azure Stack HCI v20H2, Windows Server 2019
+> Applies to Azure Stack HCI version 20H2
 
 Using Windows PowerShell, you can easily create affinity and anti-affinity rules for your virtual machines (VMs) in a cluster.
 
@@ -20,9 +20,9 @@ Affinity and anti-affinity rules are used similarly to the way Azure uses Availa
 
 Using affinity and anti-affinity rules, any clustered VM would either stay in the same cluster node or be prevented from being together in the same cluster node.  In this way, the only way to move a VM out of a node would be to do it manually.  You can also keep VMs together with the Cluster Shared Volume (CSV) that its VHDX resides on.
 
-Combining affinity and anti-affinity rules, you can also configure a multi-site (stretched) cluster across two sites (fault domains) and keep your VMs in the site they need to be in.
+Combining affinity and anti-affinity rules, you can also configure a stretched cluster across two sites (fault domains) and keep your VMs in the site they need to be in.
 
-Typically, you setup your rules from a remote computer running Windows 10, rather than on a host server in a cluster. This remote computer is called the management computer.
+Typically, you set up your rules from a remote computer, rather than on a host server in a cluster. This remote computer is called the management computer.
 
 > [!NOTE]
 > When running PowerShell commands from a management computer, include the -Name or -Cluster parameter with the name of the cluster you are managing. If applicable, you will also need to specify the fully qualified domain name (FQDN) when using the -ComputerName parameter for a server node
