@@ -3,7 +3,7 @@ title: Manage Azure Stack HCI clusters using PowerShell
 description: Learn how to manage clusters on Azure Stack HCI using PowerShell
 author: v-dasis
 ms.topic: how-to
-ms.date: 05/21/2020
+ms.date: 07/21/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -14,7 +14,7 @@ ms.reviewer: JasonGerend
 
 Windows PowerShell can be used to manage resources and configure features on your Azure Stack HCI clusters.
 
-Typically, you manage clusters from a remote computer running Windows 10, rather than on a host server in a cluster. This remote computer is called the management computer.
+You manage clusters from a remote computer, rather than on a host server in a cluster. This remote computer is called the management computer.
 
 > [!NOTE]
 > When running PowerShell commands from a management computer, include the `-Name` or `-Cluster` parameter with the name of the cluster you are managing. In addition, you will need to specify the fully qualified domain name (FQDN) when using the `-ComputerName` parameter for a server node.
@@ -152,6 +152,5 @@ Remove-Cluster -Cluster Cluster1
 
 ## Next steps
 
-- It is important that you validate your cluster after making any changes. See [Validate an Azure Stack HCI cluster].
 - Configure various Hyper-V host settings such as VM paths and migrations. See the [Set-VMHost](https://docs.microsoft.com/powershell/module/hyper-v/Set-VMHost?view=win10-ps) reference documentation.
 - Manage your clusters using Windows Admin Center. See [Manage clusters on Azure Stack HCI using Windows Admin Center](cluster.md).
