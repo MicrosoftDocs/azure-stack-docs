@@ -23,7 +23,7 @@ You have a choice between creating two cluster types:
 
 Before you run the Create Cluster wizard, make sure you:
 
-- Have read the hardware and other requirements in [Before you start].
+- Have read the hardware and other requirements in [Before you start](before-you-start.md).
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy Azure Stack HCI](create-cluster.md).
 - Install Windows Admin Center on a remote (management) computer. See [Install Windows Admin Center](create-cluster.md). Don't run the wizard from a server in the cluster.
 - Have an account that’s a member of the local Administrators group on each server.
