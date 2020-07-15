@@ -11,7 +11,7 @@ ms.date: 07/21/2020
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-This topic describes how to create volumes on an Azure Stack HCI cluster by using Windows Admin Center and Windows PowerShell, how to work with files on the volumes, and how to enable data deduplication and compression on volumes. To learn how to create volumes and set up replication for stretched clusters, see Create stretched volumes.
+This topic describes how to create volumes on an Azure Stack HCI cluster by using Windows Admin Center and Windows PowerShell, how to work with files on the volumes, and how to enable data deduplication and compression on volumes. To learn how to create volumes and set up replication for stretched clusters, see [Create stretched volumes](create-stretched-volumes).
 
 ## Create a three-way mirror volume
 

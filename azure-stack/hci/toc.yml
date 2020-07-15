@@ -22,6 +22,8 @@
     href: manage/register-windows-admin-center.md
   - name: Create volumes
     href: manage/create-volumes.md
+  - name: Create stretched volumes
+    href: manage/create-stretched-volumes.md
   - name: Extend volumes
     href: manage/extend-volumes.md
   - name: Delete volumes
