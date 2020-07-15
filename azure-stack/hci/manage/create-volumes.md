@@ -142,9 +142,9 @@ You're done! Repeat as needed to create more than one volume.
 
 ## Next steps
 
-To perform other storage management tasks in Storage Spaces Direct, see also:
+For related topics and other storage management tasks, see also:
 
 - [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Planning volumes in Storage Spaces Direct](/windows-server/storage/storage-spaces/plan-volumes)
-- [Extending volumes in Storage Spaces Direct](/windows-server/storage/storage-spaces/resize-volumes)
-- [Deleting volumes in Storage Spaces Direct](/windows-server/storage/storage-spaces/delete-volumes)
+- [Plan volumes](../concepts/plan-volumes.md)
+- [Extend volumes](extend-volumes.md)
+- [Delete volumes](delete-volumes.md)

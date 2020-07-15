@@ -176,6 +176,6 @@ Storage Replica will now be setting everything up. If there is any data to be re
 For related topics and other storage management tasks, see also:
 
 - [Stretched cluster overview](../concepts/stretched-clusters.md)
-- [Plan volumes](plan-volumes.md)
-- [Extend volumes](resize-volumes.md)
+- [Plan volumes](../concepts/plan-volumes.md)
+- [Extend volumes](extend-volumes.md)
 - [Delete volumes](delete-volumes.md)
