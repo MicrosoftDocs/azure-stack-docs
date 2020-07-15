@@ -47,7 +47,7 @@ This section discusses how to protect services and virtual machines (VMs) runnin
 ### Protect data
 This section discusses how to use Windows Admin Center to protect data and workloads on the operating system:
 
-- **BitLocker for Storage Spaces** protects data at rest. You can use BitLocker to encrypt the contents of Storage Spaces data volumes on the operating system. Using BitLocker to protect data can help organizations stay compliant with government, regional, and industry-specific standards such as FIPS 140-2, GDPR, and HIPAA.
+- **BitLocker for Storage Spaces** protects data at rest. You can use BitLocker to encrypt the contents of Storage Spaces data volumes on the operating system. Using BitLocker to protect data can help organizations stay compliant with government, regional, and industry-specific standards such as FIPS 140-2, and HIPAA.
 
     To access BitLocker in Windows Admin Center:
 
@@ -153,6 +153,5 @@ on a physical server. Because virtual environments typically have multiple VMs s
 
 ## Next steps
 For more information on security and regulatory compliance, see also:
-- [Beginning your General Data Protection Regulation (GDPR) journey for Windows Server](https://docs.microsoft.com/windows-server/security/gdpr/gdpr-winserver-whitepaper)
 - [Security and Assurance](https://docs.microsoft.com/windows-server/security/security-and-assurance)
 - [Security best practices for Azure solutions](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/)
