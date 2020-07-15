@@ -23,7 +23,7 @@ There are two types of stretched clusters, active-passive and active-active. You
 
 In simple terms, an *active* site is one that has resources and is providing roles and workloads for clients to connect to. A *passive* site is one that does not provide any roles or workloads for clients and is waiting for a failover from the active site for disaster recovery.
 
-Sites can be in two different states, different cities, different floors, or different rooms. Stretched clusters Using two sites provides disaster recovery and business continuity should a site suffer an outage or failure.
+Sites can be in two different states, different cities, different floors, or different rooms. Stretched clusters using two sites provides disaster recovery and business continuity should a site suffer an outage or failure.
 
 ## Active-passive stretched cluster
 
