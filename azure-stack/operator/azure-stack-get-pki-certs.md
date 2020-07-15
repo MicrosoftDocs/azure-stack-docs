@@ -1,6 +1,6 @@
 ---
-title: Generate certificate signing requests for Azure Stack Hub 
-description: Learn how to generate certificate signing requests for Azure Stack Hub PKI certificates in Azure Stack Hub integrated systems.
+title: Get certificate signing requests for deployment in Azure Stack Hub 
+description: Learn how to get certificate signing requests for Azure Stack Hub PKI certificates in Azure Stack Hub integrated systems.
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 09/10/2019
@@ -14,15 +14,14 @@ ms.lastreviewed: 09/10/2019
 ---
 
 
-# Generate certificate signing requests for Azure Stack Hub
+# Get certificate signing requests for deployment in Azure Stack Hub
 
 You can use the Azure Stack Hub Readiness Checker tool to create Certificate Signing Requests (CSRs) suitable for an Azure Stack Hub deployment. Certificates should be requested, generated, and validated with enough time to test before deployment. You can get the tool [from the PowerShell Gallery](https://aka.ms/AzsReadinessChecker).
 
 You can use the Azure Stack Hub Readiness Checker tool (AzsReadinessChecker) to request the following certificates:
 
-- **Standard Certificate Requests** according to [Generate certificate signing request for new deployments](azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-new-deployments).
-- **Renewal Certificate Requests** according to [Generate certificate signing request for certificate renewal](azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-certificate-renewal).
-- **Platform-as-a-Service**: You can request platform-as-a-service (PaaS) names for certificates as specified in [Azure Stack Hub Public Key Infrastructure certificate requirements - Optional PaaS Certificates](azure-stack-pki-certs.md#optional-paas-certificates).
+- **Standard Certificate Requests** according to [Generate certificate signing request](azure-stack-get-pki-certs.md).
+- **Platform-as-a-Service**: You can request platform-as-a-service (PaaS) names for certificates as specified in [Azure Stack Hub Public Key Infrastructure certificate requirements - Optional PaaS Certificates](azure-stack-pki-certs.md).
 
 ## Prerequisites
 
