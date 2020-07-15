@@ -100,63 +100,6 @@ From the Server Configuration tool interface, you can perform important tasks, s
 
 After configuring the operating system as needed with Sconfig.cmd on each server, you're ready to use the Cluster Creation wizard in Windows Admin Center to cluster the servers. To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster).
 
-## Connect Windows Admin Center to your cluster servers
-After installing the operating system on each server in the cluster, you can connect the servers to Windows Admin Center and use this browser-based tool for the rest of the cluster configuration. There are three ways to connect your servers to Windows Admin Center:
-- Add a single server or a cluster as a managed node
-- Bulk import multiple servers
-- Search Active Directory to add servers (if the servers are already domain-joined)
-
-The following sections describe each approach.
-### Add a single server or a cluster as a managed node
-1. Open **Windows Admin Center**, and then under **All connections**, select **+ Add**.
-
-    :::image type="content" source="../media/operating-system/add-server.png" alt-text="The Add button on the All connections page in Windows Admin Center.":::
-
-1. On the **Add resources** page, you can choose to add a server, a cluster, a Windows PC, or an Azure VM. On the **Windows Server** tile, select **Add**.
-
-    :::image type="content" source="../media/operating-system/choose-connection-type.png" alt-text="The Add resources menu showing the Add Windows Server tile in Windows Admin Center.":::
-  
-1. On the **Add one** tab, in the **Server name** box, type the name of the server, and then select **Add** to add it to your connection list on the overview page.
-
-    :::image type="content" source="../media/operating-system/add-single-server.png" alt-text="The Server name box to add a single server in Windows Admin Center.":::
-
-1. Under **All connections**, in the **Name** column, select the checkbox next to the server, and then select **Connect** to display the server's **Overview** page in Windows Admin Center from **Server Manger**.
-1. Repeat the previous step to start each server that you add to Windows Admin Center.
-
-### Bulk import multiple servers
-1. On the **Windows Server** tile, select **Add**, and then select the **Import a file** tab.
-
-    :::image type="content" source="../media/operating-system/bulk-import-a-list.png" alt-text="The Bulk import box to add multiple servers in Windows Admin Center.":::
-
-1. Click **Select a file** to select a text file that contains a comma, or new line separated, list of FQDNs for the servers you want to add Windows Admin Center.
-
-### Search Active Directory to add servers
-1. On the **Windows Server** tile, select **Add**, and then select the **Search Active Directory** tab.
-
-    :::image type="content" source="../media/operating-system/search-ad.png" alt-text="The Search Active Directory box to add multiple servers in Windows Admin Center.":::
- 
-1. Enter your search criteria and click **Search**. Wildcards (*) are supported.
-1. After the search completes, select one or more of the results, optionally add tags, and then click **Add**.
-
-## Getting the latest Windows updates and firmware updates
-This section includes optional steps you can use to get the latest Windows updates and firmware updates for your servers. However, we recommending using the Cluster Creation wizard to streamline getting updates. To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster).
-
-### Get the latest Windows updates
-To use Windows Admin Center to get the latest Windows updates:
-1. In **Windows Admin Center**, under **All connections** in the **Name** column, select the checkbox next to the first server, and then select **Connect** to display the server's **Overview** page.
-1. On the server's **Overview** page, under **Tools**, select **Updates**.
-1. On the **Windows Update** page, review any available updates.
-1. Under **Update title**, select the updates that you want to apply to the server.
-1. Leave the update restart option set to either **Restart immediately**, or select **Schedule restart**, set the date and time, and then select **Install updates**.
-1. Repeat the previous steps to apply Windows updates to each server.
-
-### Get the latest firmware updates from your hardware provider
-To get your hardware provider's latest firmware updates:
-1. Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/products/azure-stack/hci/) website.
-1. On the website, select [Azure Stack HCI Catalog](https://www.microsoft.com/cloud-platform/azure-stack-hci-catalog).
-1. On the Preferred hardware vendor page of the catalog, under **Hardware partners**, reference your Azure Stack HCI hardware provider.
-1. Select the hardware provider's product name to go to the company's Azure Stack HCI solutions website to get the product's latest firmware updates.
-
 ## Next steps
 To perform the next management task related to this article, see:
 > [!div class="nextstepaction"]
