@@ -9,12 +9,12 @@ ms.date: 07/21/2020
 
 # Validate an Azure Stack HCI cluster
 
->Applies to: Azure Stack HCI, version v20H2
+>Applies to: Azure Stack HCI, version v20H2; Windows Server 2019
 
 This how-to article focuses on why cluster validation is important, and when to run it on an existing Azure Stack HCI cluster. We recommend performing cluster validation for the following primary scenarios:
 - After deploying a server cluster, run the Validate-DCB tool to test networking, and run cluster validation in Windows Admin Center.
 - After updating a server cluster, depending on your scenario, run both validation options to troubleshoot cluster issues.
-
+- After setting up replication with Storage Replica, validate that the replication is proceeding normally by checking some specific events and running a couple commands.
 To learn about how to deploy an Azure Stack HCI cluster, see [Deploy Storage Spaces Direct](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct).
 
 ## What is cluster validation?
@@ -180,7 +180,9 @@ After your server cluster is successfully validated, you'll need to disable the 
     The result of Step 2 removes the red **CredSSP ENABLED** banner at the top of the server's **Overview** page, and disables CredSSP on the other servers.
 
 ## Validate replication for Storage Replica
-With Storage Replica, there are several events you can view to get the state of replication and view Storage Replica events in a stretched cluster. In the following scenario, we configured Storage Replica by creating replication groups (RGs) for two sites, and then specified the data volumes and log volumes for both the source server nodes in Site1 (Server1, Server2), and the destination (replicated) server nodes in Site2 (Server3, Server4).
+If you're using Storage Replica to replicate volumes in a stretched cluster or cluster-to-cluster, there are there are several events and cmdlets that you can use to get the state of replication. 
+
+In the following scenario, we configured Storage Replica by creating replication groups (RGs) for two sites, and then specified the data volumes and log volumes for both the source server nodes in Site1 (Server1, Server2), and the destination (replicated) server nodes in Site2 (Server3, Server4).
 
 To determine the replication progress for Server1 in Site1, run the Get-WinEvent command and examine events 5015, 5002, 5004, 1237, 5001, and 2200:
 
