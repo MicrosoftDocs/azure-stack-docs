@@ -72,6 +72,8 @@
     href: concepts/fault-tolerance.md
   - name: Cluster and storage pool quorum
     href: concepts/quorum.md
+  - name: Security considerations
+    href: concepts/security.md
   - name: Diagnostic data
     href: concepts/diagnostic-data.md
   - name: About stretched clusters
