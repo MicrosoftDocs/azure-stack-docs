@@ -12,12 +12,14 @@
   items:
   - name: Deployment overview
     href: deploy/deployment-overview.md
-  - name: Before you start
-    href: deploy/before-you-start.md    
-  - name: Deploy Azure Stack HCI
-    href: deploy/operating-system.md
+  - name: Before you begin
+    href: deploy/before-you-start.md
+  - name: Connect to Azure
+    href: deploy/register-with-azure.md
 - name: Manage
   items:
+  - name: Register Windows Admin Center
+    href: manage/register-windows-admin-center.md
   - name: Create volumes
     href: manage/create-volumes.md
   - name: Extend volumes

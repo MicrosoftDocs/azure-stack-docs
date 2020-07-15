@@ -4,12 +4,12 @@ description: This article provides requirements and steps on how to use Azure Ne
 ms.topic: article
 author: thomasmaurer
 ms.author: thmaure
-ms.date: 07/21/2020
+ms.date: 07/14/2020
 ---
 
 # Use Azure Network Adapter to connect a server to an Azure Virtual Network
 
->Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016, Windows Server 2012 R2
+>Applies to: Windows Server 2019, Windows Server 2016, Windows Server 2012 R2
 
 A lot of workloads running on-premises and in multi-cloud environments require
 connections to virtual machines (VMs) running in Microsoft Azure. To connect a
