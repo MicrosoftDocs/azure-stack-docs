@@ -1,5 +1,5 @@
 --- 
-title: Setup a cluster witness 
+title: Set up a cluster witness 
 description: Learn how to setup a cluster witness 
 author: v-dasis 
 ms.topic: how-to 
@@ -8,15 +8,15 @@ ms.author: v-dasis
 ms.reviewer: JasonGerend 
 ---
 
-# Setup a cluster witness
+# Set up a cluster witness
 
 > Applies to Azure Stack HCI, version 20H2; Windows Server 2019
 
-Setting up a witness resource is mandatory for all clusters. A cluster witness should be setup right after you create a cluster. Two-node clusters need a witness so that either server going offline does not cause the other node to become unavailable as well. Three and higher-node clusters need a witness to be able to withstand two servers failing or being offline.  
+Setting up a witness resource is mandatory for all clusters, and should be done right after you create a cluster. Two-node clusters need a witness so that either server going offline does not cause the other node to become unavailable as well. Three and higher-node clusters need a witness to be able to withstand two servers failing or being offline.  
 
 You can either use a file share as a witness or use an Azure cloud witness. An Azure cloud witness is recommended, provided all server nodes in the cluster have a reliable internet connection. For more information, see [Deploy a Cloud Witness for a Failover Cluster](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness).
 
-For file-share witnesses, there are requirements for the file server. See [Before you begin] for more information.
+For file-share witnesses, there are requirements for the file server. See [before-you-start.md] for more information.
 
 ## Set up a witness using Windows Admin Center
 
