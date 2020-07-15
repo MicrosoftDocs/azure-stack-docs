@@ -116,6 +116,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed code integrity policy to not emit violation events for certain internal software. This reduces noice in code integrity violation events emitted via syslog client.
 - Fixed **Set-TLSPolicy** cmdlet to enforce new policy without requiring restart of the https service or the reboot of the host.
 - Fixed an issue in which using a Linux NTP server erraneously generates alerts in the administration portal.  
+- Fixed an issue where failover of Backup Controller service instance resulted in automatic backups getting disabled.
+- Fixed an issue where internal secret rotation fails when infrastructure services do not have internet connectivity.
 
 ## Security updates
 
