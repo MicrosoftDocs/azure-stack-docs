@@ -42,7 +42,7 @@ This section discusses how to protect services and virtual machines (VMs) runnin
 
 To manage updates on multiple clusters and servers at a time, consider subscribing to the optional Azure Update Management service, which is integrated with Windows Admin Center. For more info, see [Azure Update Management using Windows Admin Center](https://www.thomasmaurer.ch/2018/11/azure-update-management-windows-admin-center).
 
-    To learn more, see [Update the cluster](../manage/update-cluster.md).
+To learn more, see [Update the cluster](../manage/update-cluster.md).
 
 ### Protect data
 This section discusses how to use Windows Admin Center to protect data and workloads on the operating system:
