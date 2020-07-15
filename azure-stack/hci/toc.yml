@@ -62,6 +62,8 @@
     href: concepts/fault-tolerance.md
   - name: Cluster and storage pool quorum
     href: concepts/quorum.md
+  - name: Diagnostic data
+    href: concepts/diagnostic-data.md
 - name: Reference
   items:
   - name: Hyper-V PowerShell commands
