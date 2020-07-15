@@ -14,7 +14,6 @@
     href: deploy/deployment-overview.md
   - name: Before you begin
     href: deploy/before-you-start.md
-  items:
 - name: Manage
   items:
   - name: Create volumes
