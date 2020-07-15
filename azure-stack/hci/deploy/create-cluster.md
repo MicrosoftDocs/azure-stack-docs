@@ -44,7 +44,6 @@ OK, lets begin:
 1. In Windows Admin Center, under **All connections**, click **Add**.
 1. In the **Add resources** panel, under **Windows Server cluster**, select **Create new**.
 1. Under **Choose cluster type**, select **Azure Stack HCI**.
-1. Select whether or not to deploy Software Defined Networking. 
 1. Under **Select server locations**, select one the following:
 
     - **All servers in one site**
