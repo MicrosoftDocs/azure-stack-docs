@@ -3,7 +3,7 @@ title: About stretched clusters
 description: Learn about stretched clusters
 author: v-dasis
 ms.topic: how-to
-ms.date: 0/22/2020
+ms.date: 07/21/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -26,13 +26,13 @@ Sites can be in two different states, different cities, different floors, or dif
 
 The following diagram shows Site 1 as the active site with replication to Site 2, a unidirectional replication.
 
-:::image type="content" source="media/stretched-cluster/active-passive-stretched-cluster.png" alt-text="Active/passive stretched cluster scenario"  lightbox="media/cluster/active-passive-stretched-cluster.png":::
+:::image type="content" source="media/stretched-cluster/active-passive-stretched-cluster.png" alt-text="Active/passive stretched cluster scenario"  lightbox="media/stretched-cluster/active-passive-stretched-cluster.png":::
 
 ## Active-active stretched cluster
 
 The following diagram shows both Site 1 and Site 2 as being active sites, with bidirectional replication to the other site.
 
-:::image type="content" source="media/stretched-cluster/active-active-stretched-cluster.png" alt-text="Active/active stretched cluster scenario" lightbox="media/cluster/active-active-stretched-cluster.png":::
+:::image type="content" source="media/stretched-cluster/active-active-stretched-cluster.png" alt-text="Active/active stretched cluster scenario" lightbox="media/stretched-cluster/active-active-stretched-cluster.png":::
 
 ## Next steps
 
