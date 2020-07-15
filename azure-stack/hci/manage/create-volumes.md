@@ -1,5 +1,5 @@
 ---
-title: Creating volumes in Azure Stack HCI
+title: Create volumes in Azure Stack HCI
 description: How to create volumes in Azure Stack HCI using Windows Admin Center and PowerShell.
 author: khdownie
 ms.author: v-kedow
@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.date: 07/21/2020
 ---
 
-# Creating volumes in Azure Stack HCI
+# Create volumes in Azure Stack HCI
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
