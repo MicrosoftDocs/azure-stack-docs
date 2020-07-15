@@ -96,7 +96,7 @@ Lets begin:
 1. Select **Next: Networking**.
 1. Under **Verify the network adapters**, wait until green checkboxes appear next to each adapter, then select **Next**.
 
-1. For **Select management adapters**, select either one for two management adapters to use for each server and then do the following for each server:
+1. For **Select management adapters**, select one or two management adapters to use for each server and then do the following for each server:
 
     - Select the **Description** checkbox. Note that all adapters are selected and that the wizard may offer a recommendation for you.
     - Unselect the checkboxes for those adapters you don't want used for cluster management.
