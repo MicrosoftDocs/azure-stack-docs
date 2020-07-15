@@ -68,6 +68,8 @@
     href: concepts/fault-tolerance.md
   - name: Cluster and storage pool quorum
     href: concepts/quorum.md
+  - name: About stretched clusters
+    href: concepts/stretched-clusters.md
 - name: Reference
   items:
   - name: Hyper-V PowerShell commands
