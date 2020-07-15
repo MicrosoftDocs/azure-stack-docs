@@ -4,7 +4,7 @@ description: Learn how to constrain an Azure subscription to behave like an Azur
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/07/2020
+ms.date: 06/09/2020
 ms.author: sethm
 ms.lastreviewed: 03/26/2019
 
@@ -31,7 +31,7 @@ The Azure Stack Hub policy module enables you to configure an Azure subscription
 
 ## Apply policy to Azure subscription
 
-You can use the following commands to apply a default Azure Stack Hub policy against your Azure subscription. Before running these commands, replace `Azure subscription name` with the name of your Azure subscription:
+You can use the following commands to apply a default Azure Stack Hub policy to your Azure subscription. Before running these commands, replace `Azure subscription name` with the name of your Azure subscription:
 
 ```powershell
 Add-AzureRmAccount

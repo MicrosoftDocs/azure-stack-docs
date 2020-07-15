@@ -53,6 +53,7 @@ The key must be stored in a secure location (for example, global Azure Key Vault
 ### Backups
 
  - Backup jobs execute while the system is running so there's no downtime to the management experiences or user apps. Expect the backup jobs to take 20-40 minutes for a solution that's under reasonable load.
+ - Automatic backups will not start during patch and update and FRU operations. Scheduled backups jobs will get skipped by default. On-demand requests for backups are blocked as well during these operations.    
  - Using OEM provided instructions, manually backed up network switches and the hardware lifecycle host (HLH) should be stored on the same backup share where the Infrastructure Backup Controller stores control plane backup data. Consider storing switch and HLH configurations in the region folder. If you have multiple Azure Stack Hub instances in the same region, consider using an identifier for each configuration that belongs to a scale unit.
 
 ### Folder Names

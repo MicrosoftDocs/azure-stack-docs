@@ -3,8 +3,8 @@ title: Choosing drives for Azure Stack HCI
 description: How to choose drives for Storage Spaces Direct in Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
-ms.topic: article
-ms.date: 03/06/2020
+ms.topic: conceptual
+ms.date: 07/14/2020
 ---
 
 # Choosing drives for Azure Stack HCI
@@ -15,11 +15,12 @@ This topic provides guidance on how to choose drives for [Storage Spaces Direct]
 
 ## Drive types
 
-Storage Spaces Direct currently works with three types of drives:
+Storage Spaces Direct currently works with four types of drives:
 
 |||
 |----------------------|--------------------------|
-|![NVMe](media/choose-drives/NVMe-100-px.png)|**NVMe** (Non-Volatile Memory Express) refers to solid-state drives that sit directly on the PCIe bus. Common form factors are 2.5" U.2, PCIe Add-In-Card (AIC), and M.2. NVMe offers higher IOPS and IO throughput with lower latency than any other type of drive we support today.|
+|![PMem](media/choose-drives/pmem-100px.png)|**PMem** refers to persistent memory, a new type of low latency, high performance storage.|
+|![NVMe](media/choose-drives/NVMe-100-px.png)|**NVMe** (Non-Volatile Memory Express) refers to solid-state drives that sit directly on the PCIe bus. Common form factors are 2.5" U.2, PCIe Add-In-Card (AIC), and M.2. NVMe offers higher IOPS and IO throughput with lower latency than any other type of drive we support today except PMem.|
 |![SSD](media/choose-drives/SSD-100-px.png)|**SSD** refers to solid-state drives, which connect via conventional SATA or SAS.|
 |![HDD](media/choose-drives/HDD-100-px.png)|**HDD** refers to rotational, magnetic hard disk drives, which offer vast storage capacity.|
 
@@ -95,3 +96,4 @@ For more information, see also:
 - [Storage Spaces Direct hardware requirements](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements)
 - [Planning volumes in Azure Stack HCI](plan-volumes.md)
 - [Fault tolerance and storage efficiency](fault-tolerance.md)
+- [Understand and deploy persistent memory](/windows-server/storage/storage-spaces/deploy-pmem)

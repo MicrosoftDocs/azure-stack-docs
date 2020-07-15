@@ -5,10 +5,10 @@ description: Learn how to troubleshoot Azure Stack Hub, including issues with VM
 author: justinha
 
 ms.topic: article
-ms.date: 05/13/2020
+ms.date: 07/13/2020
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 15/13/2020
+ms.lastreviewed: 07/13/2020
 
 # Intent: As an Azure Stack operator, I want to troubleshoot Azure Stack issues.
 # Keyword: toubleshoot azure stack
@@ -21,7 +21,7 @@ This document provides troubleshooting information for Azure Stack Hub integrate
 
 ## Frequently asked questions
 
-These sections include links to docs that cover common questions sent to Microsoft Customer Support Services (CSS).
+These sections include links to docs that cover common questions sent to Microsoft Support.
 
 ### Purchase considerations
 
@@ -80,7 +80,7 @@ Choose the type of shared services account that you use for Azure Stack Hub. The
 
 ### Get scale unit metrics
 
-You can use PowerShell to get stamp utilization information without help from CSS. To obtain stamp utilization:
+You can use PowerShell to get stamp utilization information without help from Microsoft Support. To obtain stamp utilization:
 
 1. Create a PEP session.
 2. Run `test-azurestack`.
@@ -91,6 +91,38 @@ You can use PowerShell to get stamp utilization information without help from CS
 For more information, see [Azure Stack Hub Diagnostics](azure-stack-get-azurestacklog.md).
 
 ## Troubleshoot virtual machines (VMs)
+
+### License activation fails for Windows Server 2012 R2 during provisioning
+
+In this case, Windows will fail to activate and you will see a watermark on the bottom right corner of the screen. The WaSetup.xml logs located under C:\Windows\Panther contains the following event:
+
+```xml
+<Event time="2019-05-16T21:32:58.660Z" category="ERROR" source="Unattend">
+    <UnhandledError>
+        <Message>InstrumentProcedure: Failed to execute 'Call ConfigureLicensing()'. Will raise error to caller</Message>
+        <Number>-2147221500</Number>
+        <Description>Could not find the VOLUME_KMSCLIENT product</Description>
+        <Source>Licensing.wsf</Source>
+    </UnhandledError>
+</Event>
+```
+
+
+To activate the license, copy the Automatic Virtual Machine Activation (AVMA) key for the SKU you want to activate.
+
+|Edition|AVMA Key|
+|-|-|
+|Datacenter|Y4TGP-NPTV9-HTC2H-7MGQ3-DV4TW|
+|Standard|DBGBW-NPF86-BJVTX-K3WKJ-MTB6V|
+|Essentials|K2XGM-NMBT3-2R6Q8-WF2FK-P36R2|
+
+On the VM, run the following command:
+
+```powershell
+slmgr /ipk <AVMA_key>
+```
+
+For complete details, see [VM Activation](https://docs.microsoft.com/windows-server/get-started-19/vm-activation-19).
 
 ### Default image and gallery item
 
