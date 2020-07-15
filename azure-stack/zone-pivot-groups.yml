@@ -6,19 +6,8 @@ groups:
   pivots:
   - id: state-disconnected
     title: Disconnected
-<<<<<<< HEAD
-- id: delete-vm
-  title: Tool to delete VM
-  prompt: Choose a tool to delete a VM
-  pivots:
-  - id: delete-vm-portal
-    title: Portal
-  - id: delete-vm-ps
-    title: PowerShell
-=======
   - id: state-connected
     title: Connected
->>>>>>> 5ca5a3f179b6ed09d1061d9fa1c6656ec5287410
 
 # BELOW: entries inherited from github.com/microsoftdocs/azure-docs-pr/articles/zone-pivot-groups.yml for reuse.
 # For consistency across Docs. This includes: client OSes, languages, etc.
