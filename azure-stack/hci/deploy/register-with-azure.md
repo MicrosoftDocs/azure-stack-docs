@@ -19,7 +19,7 @@ You won’t be able to register with Azure until you've created an Azure Stack H
 
 ### Internet access
 
-The Azure Stack HCI nodes need connectivity to the cloud. For example, an outbound ping should succeed:
+The Azure Stack HCI nodes need connectivity to the cloud in order to connect to Azure. For example, an outbound ping should succeed:
 
 ```PowerShell
 C:\> ping bing.com
