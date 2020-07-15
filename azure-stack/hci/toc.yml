@@ -12,9 +12,8 @@
   items:
   - name: Deployment overview
     href: deploy/deployment-overview.md
-  - name: Before you start
+  - name: Before you begin
     href: deploy/before-you-start.md
-  items:
 - name: Manage
   items:
   - name: Register Windows Admin Center
