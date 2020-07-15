@@ -174,10 +174,5 @@ Remove-Cluster -Cluster Cluster1
 
 ## Next steps
 
-<<<<<<< HEAD
 - You should validate the cluster afterwards. See [Validate the cluster](cluster-powershell.md) for more information.
 - Learn how to manage your clusters using Windows Admin Center. See [Manage clusters on Azure Stack HCI using Windows Admin Center](cluster.md).
-=======
-- Configure various Hyper-V host settings such as VM paths and migrations. See the [Set-VMHost](https://docs.microsoft.com/powershell/module/hyper-v/Set-VMHost?view=win10-ps) reference documentation.
-- Manage your clusters using Windows Admin Center. See [Manage clusters on Azure Stack HCI using Windows Admin Center](cluster.md).
->>>>>>> 0ef96ad77108a9b75a564137a387a7fb0357fb47
