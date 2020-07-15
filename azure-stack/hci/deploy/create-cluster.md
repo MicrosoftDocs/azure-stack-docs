@@ -101,7 +101,7 @@ Lets begin:
     - Select the **Description** checkbox. Note that all adapters are selected and that the wizard may offer a recommendation for you.
     - Unselect the checkboxes for those adapters you don't want used for cluster management.
 
-     It is recommended that you reserve the highest-speed network adapters for data traffic and use the lowest-speed adapter for cluster management.
+     You can use 1 Gb adapters as management adapters, but we recommend using 10 Gb or faster adapters for carrying storage and workload (VM) traffic.
 
 1. When changes have been made, click **Apply and test**.
 1. Under **Define networks**, make sure each network adapter for each server has a unique IP address, a subnet mask, and a VLAN ID. Hover over each table element and enter or change values as needed. When finished, click **Apply and test**.
