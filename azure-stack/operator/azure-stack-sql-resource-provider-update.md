@@ -117,7 +117,7 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
   -VMLocalCredential $vmLocalAdminCreds `
   -CloudAdminCredential $cloudAdminCreds `
   -PrivilegedEndpoint $privilegedEndpoint `
-  -AzureEnvironment $AzureEnvironment `
+  -AzureEnvironment $AzureEnvironment ` 
   -DefaultSSLCertificatePassword $PfxPass `
   -DependencyFilesLocalPath $tempDir\cert
 
