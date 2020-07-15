@@ -173,7 +173,7 @@ OK, now here are the other tasks you will need to do:
 - Setup a cluster witness. See [Set up a cluster witness](witness.md).
 - Create your volumes. See [Create volumes](../manage/create-volumes.md).
 - For stretched clusters, create volumes and setup replication using Storage Replica. See the applicable section in [Create volumes](../manage/create-volumes.md).
-
+- Register your cluster with Azure. See [Register your cluster with Azure].
 ## Next steps
 
 - Register your cluster with Azure. See [Register your cluster with Azure](create-cluster.md).
