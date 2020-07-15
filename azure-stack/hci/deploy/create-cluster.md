@@ -24,8 +24,8 @@ You have a choice between creating two cluster types:
 Before you run the Create Cluster wizard, make sure you:
 
 - Have read the hardware and other requirements in [Before you start].
-- Install the Azure Stack HCI OS on each server in the cluster. See [Deploy Azure Stack HCI].
-- Install Windows Admin Center on a remote (management) computer. See {Install Windows Admin Center}. Don't run the wizard from a server in the cluster.
+- Install the Azure Stack HCI OS on each server in the cluster. See [Deploy Azure Stack HCI](create-cluster.md).
+- Install Windows Admin Center on a remote (management) computer. See [Install Windows Admin Center](create-cluster.md). Don't run the wizard from a server in the cluster.
 - Have an account that’s a member of the local Administrators group on each server.
 
 Also, your management computer must be joined to the same Active Directory domain in which you'll create the cluster, or a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
@@ -172,13 +172,13 @@ The first task is to disable the Credential Security Support Provider (CredSSP) 
 
 OK, now here are the other tasks you will need to do:
 
-- Setup a cluster witness. See [Setup a cluster witness].
+- Setup a cluster witness. See [Set up a cluster witness](witness.md).
 - Create your volumes. See [Create volumes](../manage/create-volumes.md).
-- For stretched clusters, create volumes and setup replication using Storage Replica. See the applicable section in [Create volumes](https://docs.microsoft.com/azure-stack/hci/manage/create-volumes).
+- For stretched clusters, create volumes and setup replication using Storage Replica. See the applicable section in [Create volumes](../manage/create-volumes.md).
 
 ## Next steps
 
-- Register your cluster with Azure. See [Register your cluster with Azure].
-- Do a final validation of the cluster. See [Validate the cluster].
+- Register your cluster with Azure. See [Register your cluster with Azure](create-cluster.md).
+- Do a final validation of the cluster. See [Validate the cluster](create-cluster.md).
 - Provision your VMs. See [Manage VMs on Azure Stack HCI](https://docs.microsoft.com/azure-stack/hci/manage/vm).
 - You can also create a cluster using PowerShell. See [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md).

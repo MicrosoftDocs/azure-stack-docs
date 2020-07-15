@@ -26,8 +26,8 @@ For the stretched cluster scenario, we will use ClusterS1 as the name and use th
 
 Before you begin, make sure you:
 
-- Have read the hardware and other requirements in [Before you start].
-- Install the Azure Stack HCI OS on each server in the cluster. See [Deploy Azure Stack HCI].
+- Have read the hardware and other requirements in [Before you start](create-cluster-powershell.md).
+- Install the Azure Stack HCI OS on each server in the cluster. See [Deploy Azure Stack HCI](create-cluster-powershell.md).
 - Have an account that’s a member of the local Administrators group on each server.
 - Have rights in Active Directory to create objects.
 
@@ -435,12 +435,12 @@ Congrats, you have now created a bare-bones cluster.
 
 Now that you are done, there are still some important tasks you need to complete in order to have a fully-functioning cluster:
 
-- Set up a cluster witness. See [Setup a cluster witness].
+- Set up a cluster witness. See [Set up a cluster witness](witness.md).
 - Create your volumes. See [Create volumes](../manage/create-volumes.md).
 - For stretched clusters, create volumes and setup replication using Storage Replica. See the applicable section in [Create volumes](../manage/create-volumes.md).
 
 ## Next steps
 
-- Register your cluster with Azure. See [Register your cluster with Azure].
-- Do a final validation of the cluster. See [Validate the cluster].
+- Register your cluster with Azure. See [Register your cluster with Azure](create-cluster-powershell.md).
+- Do a final validation of the cluster. See [Validate the cluster](create-cluster-powershell.md).
 - You can also create a cluster using Windows Admin Center. See [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md).
