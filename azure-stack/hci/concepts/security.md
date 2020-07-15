@@ -146,7 +146,7 @@ on a physical server. Because virtual environments typically have multiple VMs s
      
         To learn more, see [Enable-VMTPM](https://docs.microsoft.com/powershell/module/hyper-v/enable-vmtpm?view=win10-ps).
      
-     - **Software Defined Networking (SDN)** in Windows Server lets you to centrally configure and manage physical and virtual network devices, such as routers, switches, and gateways in your datacenter. Virtual network elements, such as Hyper-V Virtual Switch, Hyper-V Network Virtualization, and RAS Gateway are designed to be integral elements of your SDN infrastructure.
+     - **Software Defined Networking (SDN)** in Azure Stack HCI and Windows Server centrally configures and manages physical and virtual network devices, such as routers, switches, and gateways in your datacenter. Virtual network elements, such as Hyper-V Virtual Switch, Hyper-V Network Virtualization, and RAS Gateway are designed to be integral elements of your SDN infrastructure.
 
         To learn more, see [Software Defined Networking (SDN)](https://docs.microsoft.com/windows-server/networking/sdn/).
 
