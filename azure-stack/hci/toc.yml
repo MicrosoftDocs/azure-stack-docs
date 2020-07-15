@@ -12,12 +12,14 @@
   items:
   - name: Deployment overview
     href: deploy/deployment-overview.md
-  - name: Before you start
+  - name: Before you begin
     href: deploy/before-you-start.md
-  - name: Setup VM affinity rules
+  - name: Set up VM affinity rules
     href: deploy/vm-affinity.md  
 - name: Manage
   items:
+  - name: Register Windows Admin Center
+    href: manage/register-windows-admin-center.md
   - name: Create volumes
     href: manage/create-volumes.md
   - name: Extend volumes
@@ -30,6 +32,8 @@
     href: manage/cluster.md
   - name: Manage clusters with PowerShell
     href: manage/cluster-powershell.md
+  - name: Change languages
+    href: manage/languages.md
   - name: Add or remove servers
     href: manage/add-cluster.md
   - name: Update cluster
