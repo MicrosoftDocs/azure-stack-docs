@@ -78,16 +78,18 @@ Retrieve the VM information and name of dependencies. In the same session, run t
  $vmId = $vmRes.Properties.VmId
 ```
 
-Delete the boot diagnostic storage container. In the same session, run the following cmdlets:
+Delete the boot diagnostic storage container. If your machine name is shorter than 9 characters, you will need to change the index to your string length in the substring when creating the `$diagContainer` variable. 
+
+In the same session, run the following cmdlets:
 
 ```powershell
 $container = [regex]::match($machine.DiagnosticsProfile.bootDiagnostics.storageUri, '^http[s]?://(.+?)\.').groups[1].value
-$diagContainerName = ('bootdiagnostics-{0}-{1}' -f $machine.Name.ToLower().Substring(0, 9), $vmId)
+$diagContainer = ('bootdiagnostics-{0}-{1}' -f $machine.Name.ToLower().Substring(0, 9), $vmId)
 $containerRg = (Get-AzureRmStorageAccount | where { $_.StorageAccountName -eq $container }).ResourceGroupName
 $storeParams = @{
     'ResourceGroupName' = $containerRg
     'Name' = $container }
-Get-AzureRmStorageAccount @storeParams | Get-AzureStorageContainer | where { $_.Name-eq $diagContainerName } | Remove-AzureStorageContainer -Force
+Get-AzureRmStorageAccount @storeParams | Get-AzureStorageContainer | where { $_.Name-eq $diagContainer } | Remove-AzureStorageContainer -Force
 ```
 
 Delete the VM. The cmdlet takes some time to run. In the same session, run the following cmdlets:
@@ -116,16 +118,14 @@ Remove the data disks attached to your VM.
 ```powershell
 if ($machine.DataDiskNames.Count -gt 0)
  {
-    Write-Verbose -Message 'Removing data disks...'
-        foreach ($uri in #machine.StorageProfile.DataDisks.Vhd.Uri)
+    Write-Verbose -Message 'Deleting disks...'
+        foreach ($uri in $machine.StorageProfile.DataDisks.Vhd.Uri )
         {
             $dataDiskStorageAcct = Get-AzureRmStorageAccount -Name $uri.Split('/')[2].Split('.')[0]
-        
- $dataDiskStorageAcct | Remove-AzureStorageBlob -Container $uri.Split('/')[-2] -Blob $uri.Split('/')[-1] -ea Ignore
-     }
+             $dataDiskStorageAcct | Remove-AzureStorageBlob -Container $uri.Split('/')[-2] -Blob $uri.Split('/')[-1] -ea Ignore
+        }
  }
 ```
-
 
 ## Next steps
 
