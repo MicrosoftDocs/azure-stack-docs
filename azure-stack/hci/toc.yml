@@ -60,6 +60,8 @@
   items:
   - name: Usage and billing
     href: concepts/billing.md
+  - name: Updates and upgrades
+    href: concepts/updates.md
   - name: Choose drives
     href: concepts/choose-drives.md
   - name: Plan volumes
