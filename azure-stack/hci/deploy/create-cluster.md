@@ -65,16 +65,16 @@ Step 1 of the wizard walks you through making sure all prerequisites are met bef
 1. If needed, on the **Join the servers to a domain​** page, specify the domain and an account to join the servers to the domain. Then optionally rename the servers to more friendly names and click **Next**.
 1. Click **Install Features**. When finished, click **Next**.
 
-The wizard installs the following required features for you:
+    The wizard installs the following required features for you:
 
-- BitLocker
-- Data Center Bridging (for RoCEv2 network adapters)
-- Failover Clustering
-- File Server (for file-share witness or hosting file shares)
-- FS-Data-Deduplication module
-- Hyper-V
-- RSAT-AD-PowerShell module
-- Storage Replica (only installed for stretched clusters)
+    - BitLocker
+    - Data Center Bridging (for RoCEv2 network adapters)
+    - Failover Clustering
+    - File Server (for file-share witness or hosting file shares)
+    - FS-Data-Deduplication module
+    - Hyper-V
+    - RSAT-AD-PowerShell module
+    - Storage Replica (only installed for stretched clusters)
 
 1. For **Install updates**, if required, click **Install updates**. When complete, click **Next**.
 1. For **Solution updates**, if required, click **Install extension**. When complete, click **Next**.
