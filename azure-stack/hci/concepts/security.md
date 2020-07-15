@@ -90,7 +90,7 @@ This section discusses how to use Windows Admin Center to protect privileged ide
 
     If you install Windows Admin Center on a server it runs as a gateway, with no UI on the host server. In this scenario, administrators can log on to the server via an HTTPS session, secured by a self-signed security certificate on the host. However, it's better to use an appropriate SSL certificate from a trusted certificate authority for the sign-on process, because supported browsers treat a self-signed connection as unsecure, even if the connection is to a local IP address over a trusted VPN.
 
-    To learn more about installation options for your organization, see [What type of installation is right for you?](https:///windows-server/manage/windows-admin-center/plan/installation-options).
+    To learn more about installation options for your organization, see [What type of installation is right for you?](/windows-server/manage/windows-admin-center/plan/installation-options).
 
 - **CredSSP** is an authentication provider that Windows Admin Center uses in a few cases to pass credentials to machines beyond the specific server you are targeting to manage. Windows Admin Center currently requires CredSSP to:
     - Create a new cluster.
