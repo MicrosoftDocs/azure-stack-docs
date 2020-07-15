@@ -60,6 +60,8 @@ The Azure Stack Hub 2005 update build type is **Full**.
 
 The 2005 update package is larger in size compared to previous updates. The increased size results in longer download times. The update will remain in the **Preparing** state for a long time, and operators can expect this process to take longer than with previous updates. The 2005 update has had the following expected runtimes in our internal testing- 4 nodes: 9-16 hours, 8 nodes: 12-22 hours, 12 nodes: 15-28 hours, 16 nodes: 18-34 hours. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2005 update and should not be compared to other Azure Stack Hub updates.
 
+From 2005 release, when you update to a new major version (i.e. 1.2002.x to 1.2005.x), the latest hotfixes in the new major version will be installed automatically. 
+
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
 <!-- ## What's in this update -->
