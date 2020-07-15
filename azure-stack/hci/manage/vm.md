@@ -233,4 +233,4 @@ You can use Windows Admin Center to configure Azure Site Recovery and replicate 
 
 ## Next steps
 
-You can also create and manage VMs using Windows PowerShell. For more information, see [vm-powershell.md).
+You can also create and manage VMs using Windows PowerShell. For more information, see [Manage VMs on Azure Stack HCI using Windows PowerShell](vm-powershell.md).
