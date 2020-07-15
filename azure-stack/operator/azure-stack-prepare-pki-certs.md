@@ -19,7 +19,7 @@ ms.lastreviewed: 09/16/2019
 
 The certificate files [obtained from your certificate authority (CA) of choice](azure-stack-get-pki-certs.md) must be imported and exported with properties matching Azure Stack Hub's certificate requirements.
 
-## Prepare certificates for deployment (with Azure Stack Readiness Checker)
+## Prepare certificates for deployment with Azure Stack Readiness Checker
 
 Use the Azure Stack Hub Readiness Checker tool to import, package and validate certificates ready for deployment or rotation.
 
