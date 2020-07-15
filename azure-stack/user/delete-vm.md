@@ -24,7 +24,7 @@ When you create a new VM you typically create a new resource group and put all t
 
 ## Delete a VM with dependencies
 
-### [With the portal](#tab/portal)
+###[With the portal](#tab/portal)
 
 ### Delete a VM with dependencies using the portal
 
@@ -52,7 +52,7 @@ In the case where you cannot delete the resource group, either the dependencies 
     2. Wait for the resource to be completely deleted.
     3. You can then delete the next dependency.
 
-### [With PowerShell](#tab/ps)
+## [With PowerShell](#tab/ps)
 
 ### Delete a VM with dependencies using PowerShell
 
