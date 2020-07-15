@@ -320,7 +320,7 @@
           href: app-service-recover.md
         - name: Remove App Service
           href: app-service-remove.md
-      - name: App Service on Azure Stack Hub release notes
+      - name: Release notes
         items:
         - name: 2020 Q2 release notes [May2020]
           href: app-service-release-notes-2020-Q2.md
