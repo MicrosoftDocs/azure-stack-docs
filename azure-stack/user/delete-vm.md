@@ -20,11 +20,13 @@ In this article you can find the steps to remove a VM and its dependencies in Az
 
 If you remove a VM from Azure Stack Hub, the component dependencies, that is data disks, virtual network interfaces, and diagnostic containers, will remain in the resource group. These items won't be automatically deleted along with your OS disc.
 
+## Delete a VM overview
+
 When you create a new VM you typically create a new resource group and put all the dependencies in that resource group. When you want to delete the VM and all its dependencies you can delete the resource group. The Azure Resource Manager will handle the dependencies to successfully delete them. There are times when you cannot delete the resource group to remove the VM. For example, the VM may contain resources that are not dependencies of the VM that you would like to keep.
 
 ## Delete a VM with dependencies
 
-## [With the portal](#tab/portal)
+### [With the portal](#tab/portal)
 
 In the case where you cannot delete the resource group, either the dependencies are not in the same resource group, or there are other resources, follow the steps below:
 
@@ -50,7 +52,7 @@ In the case where you cannot delete the resource group, either the dependencies 
     2. Wait for the resource to be completely deleted.
     3. You can then delete the next dependency.
 
-## [With PowerShell](#tab/ps)
+### [With PowerShell](#tab/ps)
 
 In the case where you cannot delete the resource group, either the dependencies are not in the same resource group, or there are other resources, follow these steps.
 
