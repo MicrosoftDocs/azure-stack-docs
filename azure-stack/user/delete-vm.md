@@ -4,10 +4,10 @@ description: How to delete a VM (virtual machine) with dependencies on Azure Sta
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 07/08/2020
+ms.date: 07/15/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 07/08/2020
+ms.lastreviewed: 07/15/2020
 
 # Intent: As an Azure Stack user, I want to delete a VM with dependencies in Azure Stack Hub.
 # Keyword: virtual machine delete
@@ -18,7 +18,7 @@ ms.lastreviewed: 07/08/2020
 
 In this article you can find the steps to remove a VM and its dependencies in Azure Stack Hub.
 
-If you delete an Azure Stack Hub VM, Azure Stack Hub won't automatically remove the associated resources, such as the attached data disks, vNics, or the boot diagnostics disk storage container.
+If you remove a VM from Azure Stack Hub, the component dependencies, that is data disks, virtual network interfaces, and diagnostic containers, will remain in the resource group. These items won't be automatically deleted along with your OS disc.
 
 When you create a new VM you typically create a new resource group and put all the dependencies in that resource group. When you want to delete the VM and all its dependencies you can delete the resource group. The Azure Resource Manager will handle the dependencies to successfully delete them. There are times when you cannot delete the resource group to remove the VM. For example, the VM may contain resources that are not dependencies of the VM that you would like to keep.
 
@@ -26,11 +26,106 @@ When you create a new VM you typically create a new resource group and put all t
 
 ### [With the portal](#tab/portal)
 
-[!INCLUDE [Delete a VM with dependencies using the portal](../includes/howto-vm-delete-portal.md)]
+### Delete a VM with dependencies using the portal
+
+In the case where you cannot delete the resource group, either the dependencies are not in the same resource group, or there are other resources, follow the steps below:
+
+1. Open the Azure Stack user portal.
+
+2. Select **Virtual machines**. Find your virtual machine, and then select your machine to open the Virtual machine blade.  
+![Delete VM with dependencies](./media/delete-vm/azure-stack-hub-delete-vm-portal.png)  
+
+3. Make a note of the resource group that contains the VM and VM dependencies.
+
+4. Select **Networking** and make note of the networking interface.
+
+5. Select **Disks** and make note of the OS disk and data disks.
+
+6. Return to the **Virtual machine** blade, and select **Delete**.
+
+7. Type `yes` to confirm the delete and select **Delete**.
+
+7. Select **Resource groups** and then select the resource group.
+
+8. Delete the dependencies by manually selecting them and then select **Delete**.
+    1. Type `yes` to confirm the delete and select **Delete**.
+    2. Wait for the resource to be completely deleted.
+    3. You can then delete the next dependency.
 
 ### [With PowerShell](#tab/ps)
 
-[!INCLUDE [Delete a VM with dependencies using PowerShell](../includes/howto-vm-delete-ps.md)]
+### Delete a VM with dependencies using PowerShell
+
+In the case where you cannot delete the resource group, either the dependencies are not in the same resource group, or there are other resources, follow these steps.
+
+Connect to the your Azure Stack Hub environment, and then update the following variables with your VM name and resource group. For instructions on connecting to your PowerShell session to Azure Stack Hub, see [Connect to Azure Stack Hub with PowerShell as a user](azure-stack-powershell-configure-user.md).
+
+```powershell
+$machineName = 'VM_TO_DELETE'
+$resGroupName = 'RESOURCE_GROUP'
+$machine = Get-AzureRmVM -Name $machineName -ResourceGroupName $resGroupName
+```
+
+Retrieve the VM information and name of dependencies. In the same session, run the following cmdlets:
+
+```powershell
+ $azResParams = @{
+ 'ResourceName' = $machineName
+ 'ResourceType' = 'Microsoft.Compute/virtualMachines'
+     'ResourceGroupName' = $resGroupName
+ }
+ $vmRes = Get-AzureRmResource @azResParams
+ $vmId = $vmRes.Properties.VmId
+```
+
+Delete the boot diagnostic storage container. In the same session, run the following cmdlets:
+
+```powershell
+$container = [regex]::match($machine.DiagnosticsProfile.bootDiagnostics.storageUri, '^http[s]?://(.+?)\.').groups[1].value
+$diagContainerName = ('bootdiagnostics-{0}-{1}' -f $machine.Name.ToLower().Substring(0, 9), $vmId)
+$containerRg = (Get-AzureRmStorageAccount | where { $_.StorageAccountName -eq $container }).ResourceGroupName
+$storeParams = @{
+    'ResourceGroupName' = $containerRg
+    'Name' = $container }
+Get-AzureRmStorageAccount @storeParams | Get-AzureStorageContainer | where { $_.Name-eq $diagContainerName } | Remove-AzureStorageContainer -Force
+```
+
+Delete the VM. The cmdlet takes some time to run. In the same session, run the following cmdlets:
+
+```powershell
+$machine | Remove-AzureRmVM -Force
+```
+
+Remove the the virtual network interface.
+
+```powershell
+$machine | Remove-AzureRmNetworkInterface -Force
+```
+
+Delete the operating system disk.
+
+```powershell
+$osVhdUri = $machine.StorageProfile.OSDisk.Vhd.Uri
+$osDiskConName = $osVhdUri.Split('/')[-2]
+$osDiskStorageAcct = Get-AzureRmStorageAccount | where { $_.StorageAccountName -eq $osVhdUri.Split('/')[2].Split('.')[0] }
+$osDiskStorageAcct | Remove-AzureStorageBlob -Container $osDiskConName -Blob $osVhdUri.Split('/')[-1]
+```
+
+Remove the data disks attached to your VM.
+
+```powershell
+if ($machine.DataDiskNames.Count -gt 0)
+ {
+    Write-Verbose -Message 'Removing data disks...'
+        foreach ($uri in #machine.StorageProfile.DataDisks.Vhd.Uri)
+        {
+            $dataDiskStorageAcct = Get-AzureRmStorageAccount -Name $uri.Split('/')[2].Split('.')[0]
+        
+ $dataDiskStorageAcct | Remove-AzureStorageBlob -Container $uri.Split('/')[-2] -Blob $uri.Split('/')[-1] -ea Ignore
+     }
+ }
+```
+
 
 ## Next steps
 
