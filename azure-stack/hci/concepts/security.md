@@ -151,7 +151,7 @@ on a physical server. Because virtual environments typically have multiple VMs s
         To learn more, see [Software Defined Networking (SDN)](https://docs.microsoft.com/windows-server/networking/sdn/).
 
 ### Protect identities
-- **Just in Time (JIT) access** in Windows Server lets you lock down inbound traffic to Azure VMs by assigning users to privileged groups from which they can perform specific tasks for a limited time. JIT reduces network exposure to attacks while providing users access to VMs when needed. Using JIT requires a subscription to Security Center's standard pricing tier. 
+- **Just in Time (JIT) access** in locks down inbound traffic to Azure VMs by assigning users to privileged groups from which they can perform specific tasks for a limited time. JIT reduces network exposure to attacks while providing users access to VMs when needed. Using JIT requires a subscription to Security Center's standard pricing tier. 
 
     To learn more, see [Secure your management ports with just-in-time access](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) and [Upgrade to Standard tier for enhanced security](https://docs.microsoft.com/azure/security-center/security-center-pricing).
 
