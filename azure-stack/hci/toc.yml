@@ -16,7 +16,6 @@
     href: deploy/before-you-start.md
   - name: Connect to Azure
     href: deploy/register-with-azure.md
-  items:
 - name: Manage
   items:
   - name: Create volumes
