@@ -294,21 +294,21 @@ Let's begin:
 
 1. Add the Site1 data disk as a Cluster Shared Volume (CSV):
 
-> ```powershell
-> Add-ClusterSharedVolume -Name "Cluster Virtual Disk (Site1)"
-> ```
+   ```powershell
+   Add-ClusterSharedVolume -Name "Cluster Virtual Disk (Site1)"
+   ```
 
 1. The Available Storage group should be "owned" by the node it is currently sitting on. The group can be moved to Server1 using:
 
-> ```powershell
-> Move-ClusterGroup -Name “Available Storage” -Node Server1
-> ```
+   ```powershell
+   Move-ClusterGroup -Name “Available Storage” -Node Server1
+   ```
 
 1. To create the replication partnership, use the `New-SRPartnership` cmdlet. This cmdlet is also where you specify the source data volume and log volume names:
 
-> ```powershell
-> New-SRPartnership -SourceComputerName "Server1" -SourceRGName "Replication1" -SourceVolumeName "C:\ClusterStorage\Disk1\" -SourceLogVolumeName "G:" -DestinationComputerName "Server3" -DestinationRGName "Replication2" -DestinationVolumeName "H:" -DestinationLogVolumeName "I:"
-> ```
+   ```powershell
+   New-SRPartnership -SourceComputerName "Server1" -SourceRGName "Replication1" -SourceVolumeName "C:\ClusterStorage\Disk1\" -SourceLogVolumeName "G:" -DestinationComputerName "Server3" -DestinationRGName "Replication2" -DestinationVolumeName "H:" -DestinationLogVolumeName "I:"
+   ```
 
 The `New-SRPartnership` cmdlet creates a replication partnership between the two replication groups for the two sites. In this example `Replication1` is the replication group for primary node Server1 in Site1, and `Replication2` is the replication group for destination node Server3 in Site2.
 
