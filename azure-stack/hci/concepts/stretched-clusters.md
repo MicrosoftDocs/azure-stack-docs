@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version v20H2
 
-An Azure Stack HCI stretched cluster solution for disaster recovery provides automatic failover to restore production quickly, and without the need for manual intervention. Storage Replica provides the replication of volumes across sites (or servers) for disaster recovery, with all server nodes staying in sync.
+An Azure Stack HCI stretched cluster solution for disaster recovery provides automatic failover to restore production quickly, and without the need for manual intervention. Storage Replica provides the replication of volumes across sites for disaster recovery, with all servers staying in sync.
 
 Storage Replica supports both synchronous and asynchronous replication:
 
