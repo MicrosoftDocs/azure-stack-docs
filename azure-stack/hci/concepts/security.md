@@ -42,7 +42,7 @@ This section discusses how to protect services and virtual machines (VMs) runnin
 
 To manage updates on multiple clusters and servers at a time, consider subscribing to the optional Azure Update Management service, which is integrated with Windows Admin Center. For more info, see [Azure Update Management using Windows Admin Center](https://www.thomasmaurer.ch/2018/11/azure-update-management-windows-admin-center). 
  
-    To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster).
+    To learn more, see [Update the cluster](../manage/update-cluster.md).
  
 - **Cluster-Aware Updating** makes it easier to install Windows updates on every server in your cluster while keeping your applications running by automating the software updating process. You can use Cluster-Aware Updating on all editions of Windows Server, including the Azure Stack HCI operating system, and initiate it through either Windows Admin Center or using PowerShell.
 
