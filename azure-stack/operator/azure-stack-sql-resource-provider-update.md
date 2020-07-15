@@ -119,7 +119,7 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
   -PrivilegedEndpoint $privilegedEndpoint `
   -AzureEnvironment $AzureEnvironment ` 
   -DefaultSSLCertificatePassword $PfxPass `
-  -DependencyFilesLocalPath $tempDir\cert
+  -DependencyFilesLocalPath $tempDir\cert 
 
  ```
 
