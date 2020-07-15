@@ -38,7 +38,9 @@ This section discusses how to protect services and virtual machines (VMs) runnin
 
     To learn more, see [Manage Windows Defender Credential Guard](https://docs.microsoft.com/windows/security/identity-protection/credential-guard/credential-guard-manage) and download the [Device Guard and Credential Guard hardware readiness tool](https://www.microsoft.com/en-us/download/details.aspx?id=53337).
 
-- **Windows** and **firmware** updates are essential to help ensure that both the operating system and system hardware are protected from attackers. You can apply Windows updates via the **Updates** feature in Windows Admin Center to your servers. However, we recommend using the Cluster Creation wizard to streamline getting updates. To get the latest firmware updates from Azure Stack HCI certified hardware providers, see the [Azure Stack HCI Catalog](https://www.microsoft.com/cloud-platform/azure-stack-hci-catalog).
+- **Windows** and **firmware** updates are essential on clusters, servers (including guest VMs), and PCs to help ensure that both the operating system and system hardware are protected from attackers. You can use the Windows Admin Center **Updates** tool to apply updates to individual systems. If your hardware provider includes Windows Admin Center support for getting driver, firmware, and solution updates, you can get these updates at the same time as Windows updates, otherwise get them directly from your vendor. 
+
+To manage updates on multiple clusters and servers at a time, consider subscribing to the optional Azure Update Management service, which is integrated with Windows Admin Center. For more info, see [Azure Update Management using Windows Admin Center](https://www.thomasmaurer.ch/2018/11/azure-update-management-windows-admin-center). 
  
     To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster).
  
