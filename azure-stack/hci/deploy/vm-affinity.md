@@ -8,7 +8,7 @@ ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
 
-# Setup VM affinity rules using Windows PowerShell
+# Create server and site affinity rules for VMs
 
 > Applies to Azure Stack HCI v20H2, Windows Server 2019
 
