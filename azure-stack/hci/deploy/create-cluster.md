@@ -55,7 +55,7 @@ OK, lets begin:
 
 ## Step 1: Get Started
 
-Step 1 of the wizard walks you through making sure all prerequisites are met beforehand, adding the server nodes, installing needed features, and then restarting each server if needed.
+Step 1 of the wizard walks you through making sure all prerequisites are met, adding the server nodes, installing needed features, and then restarting each server if needed.
 
 1. Review the prerequisites listed in the wizard to ensure each server node is cluster-ready. When finished, click **Next**.
 1. On **Add servers to the cluster** page, enter your account username and password, then click **Next**. This account must be a member of the local Administrators group on each server.
