@@ -143,7 +143,6 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
 
 Step 4 of the wizard walks you through setting up Storage Spaces Direct for your cluster.
 
-For stretched clusters, make sure the sites have been configured properly and server nodes assigned to them before enabling Storage Spaces Direct.
 
 1. Select **Next: Storage**.
 1. Under **Verify drives**, click the **>** icon next to each server to verify that the disks are working and connected, then click **Next**.
