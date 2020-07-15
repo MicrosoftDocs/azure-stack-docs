@@ -140,7 +140,7 @@ New-Volume -FriendlyName "Volume4" -FileSystem CSVFS_ReFS -StoragePoolFriendlyNa
 
 You're done! Repeat as needed to create more than one volume.
 
-## Create volumes and setup replication for stretched clusters
+## Create volumes and set up replication for stretched clusters
 
 There are two types of stretched clusters, active/passive and active/active. You can set up active-passive site replication, where there is a preferred site and direction for replication. Active-active replication is where replication can happen bi-directionally from either site.
 
@@ -167,7 +167,7 @@ OK, let's begin:
 1. Under **Replication mode**, select **Asynchronous** or **Synchronous**.
 1. Enter a Source replication group name and a Destination replication group name.
 1. Enter the desired size for the log volume.
-1. Under **Advanced**, do the following:
+1. Under **Advanced**, optionally do the following:
      - Enter/change the **Source replication group name**.
      - Enter/change the **Destination replication group name**.
      - To **use blocks already seeded on the target**..., select that checkbox.
@@ -184,7 +184,7 @@ Afterwards, you should verify successful data replication between sites before d
 
 Volume creation is different for single-site standard clusters versus stretched (two-site) clusters. For both scenarios however, you use the `New-Volume` cmdlet to create a virtual disk, partition and format it, create a volume with matching name, and add it to cluster shared volumes (CSV).
 
-Creating volumes and virtual disks for stretched clusters is a bit more involved than for single-site clusters. Stretched clusters require a minimum of four volumes - two data volumes and two log volumes, with a data/log volume pair residing in each site. Then you will create a replication group for each site, and setup replication between them.
+Creating volumes and virtual disks for stretched clusters is a bit more involved than for single-site clusters. Stretched clusters require a minimum of four volumes - two data volumes and two log volumes, with a data/log volume pair residing in each site. Then you will create a replication group for each site, and set up replication between them.
 
 We first need to move resource groups around from node to node. The `Move-ClusterGroup` cmdlet is used to this.
 
@@ -200,7 +200,7 @@ Next, create the first virtual disk (Disk1) for node Server1 on site Site1:
 New-Volume -CimSession Server1 -FriendlyName Disk1 -FileSystem REFS -DriveLetter F -ResiliencySettingName Mirror -Size 10GB -StoragePoolFriendlyName "Storage Pool for Site 1"
 ```
 
-Create a second first virtual disk (Disk2) for node Server1:
+Create a second virtual disk (Disk2) for node Server1:
 
 ```powershell
 New-Volume -CimSession Server1 -FriendlyName Disk2 -FileSystem REFS -DriveLetter G -ResiliencySettingName Mirror -Size 10GB -StoragePoolFriendlyName "Storage Pool for Site 1"
@@ -294,21 +294,21 @@ Let's begin:
 
 1. Add the Site1 data disk as a Cluster Shared Volume (CSV):
 
-```powershell
-Add-ClusterSharedVolume -Name "Cluster Virtual Disk (Site1)"
-```
+> ```powershell
+> Add-ClusterSharedVolume -Name "Cluster Virtual Disk (Site1)"
+> ```
 
 1. The Available Storage group should be "owned" by the node it is currently sitting on. The group can be moved to Server1 using:
 
-```powershell
-Move-ClusterGroup -Name “Available Storage” -Node Server1
-```
+> ```powershell
+> Move-ClusterGroup -Name “Available Storage” -Node Server1
+> ```
 
 1. To create the replication partnership, use the `New-SRPartnership` cmdlet. This cmdlet is also where you specify the source data volume and log volume names:
 
-```powershell
-New-SRPartnership -SourceComputerName "Server1" -SourceRGName "Replication1" -SourceVolumeName "C:\ClusterStorage\Disk1\" -SourceLogVolumeName "G:" -DestinationComputerName "Server3" -DestinationRGName "Replication2" -DestinationVolumeName "H:" -DestinationLogVolumeName "I:"
-```
+> ```powershell
+> New-SRPartnership -SourceComputerName "Server1" -SourceRGName "Replication1" -SourceVolumeName "C:\ClusterStorage\Disk1\" -SourceLogVolumeName "G:" -DestinationComputerName "Server3" -DestinationRGName "Replication2" -DestinationVolumeName "H:" -DestinationLogVolumeName "I:"
+> ```
 
 The `New-SRPartnership` cmdlet creates a replication partnership between the two replication groups for the two sites. In this example `Replication1` is the replication group for primary node Server1 in Site1, and `Replication2` is the replication group for destination node Server3 in Site2.
 
