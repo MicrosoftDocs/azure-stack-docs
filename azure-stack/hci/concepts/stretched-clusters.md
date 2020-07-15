@@ -12,11 +12,14 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version v20H2
 
-Many companies need the ability to remain or get back to production quickly if a disaster were to occur. Restoring availability involves what's known as Recovery Time Objective (RTO). This is the duration of time specified where services must be restored to avoid unacceptable consequences to a business. In some cases, this process can occur automatically with production restored nearly immediately. In other cases, manual administrator intervention must occur to restore services, such as the case for Failover Clusters.
+An Azure Stack HCI stretched cluster solution for disaster recovery provides automatic failover to restore production quickly, and without the need for manual intervention. Storage Replica provides the replication of volumes across sites (or servers) for disaster recovery, with all server nodes staying in sync.
 
-An Azure Stack HCI stretched cluster solution for disaster recovery provides automatic failover to restore production quickly, and without the need for manual intervention.
+Storage Replica supports both synchronous and asynchronous replication:
 
-There are two types of stretched clusters, active/passive and active/active. You can set up active-passive site replication, where there is a preferred site and direction for replication. Active-active replication is where replication can happen bi-directionally from either site. This article covers the active/passive configuration only.
+- Synchronous replication mirrors data across sites in a low-latency network with crash-consistent volumes to ensure zero data loss at the file-system level during a failure.
+- Asynchronous replication mirrors data across sites beyond metropolitan ranges over network links with higher latencies, but without a guarantee that both sites have identical copies of the data at the time of a failure.
+
+There are two types of stretched clusters, active-passive and active-active. You can set up active-passive site replication, where there is a preferred site and direction for replication. Active-active replication is where replication can happen bi-directionally from either site. This article covers the active/passive configuration only.
 
 In simple terms, an *active* site is one that has resources and is providing roles and workloads for clients to connect to. A *passive* site is one that does not provide any roles or workloads for clients and is waiting for a failover from the active site for disaster recovery.
 
