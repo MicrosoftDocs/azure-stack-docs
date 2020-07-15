@@ -141,7 +141,7 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
 
 ## Step 4: Storage
 
-Step 4 of the wizard walks you through setting up Storage Spaces Direct and configuring virtual hard disks for your cluster.
+Step 4 of the wizard walks you through setting up Storage Spaces Direct for your cluster.
 
 For stretched clusters, make sure the sites have been configured properly and server nodes assigned to them before enabling Storage Spaces Direct.
 
