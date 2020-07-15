@@ -71,9 +71,9 @@ Backup products can protect IaaS VM configuration and disks attached to a stoppe
 > [!Important]  
 > Using disk snapshots is currently not supported for VM in a running state. Creating a snapshot of a disk attached to a running VM may degrade the performance or impact the availability of the operating system or application in the VM. The recommendation is to use an in-guest agent to protect the application if planned downtime is not an option. 
 
-### VMs in a scale-set or availability group
+### VMs in a scale-set or availability set
 
-VMs in a scale set or availability group that are considered ephemeral resources should not be backed up at the VM level, especially if the application is stateless. For stateful applications deployed in a scale-set or availability group, consider protecting the application data (for example, a database or volume in a storage pool). 
+VMs in a scale set or availability group that are considered ephemeral resources should not be backed up at the VM level, especially if the application is stateless. For stateful applications deployed in a scale-set or availability set, consider protecting the application data (for example, a database or volume in a storage pool). 
 
 ### Replication/manual failover
 
@@ -83,7 +83,7 @@ With this approach, the application is deployed in one cloud and the data is rep
  
 ### High availability/automatic failover
 
-For stateless applications that can only tolerate a few seconds or minutes of downtime, consider a high-availability configuration. High-availability applications are designed to be deployed in multiple locations in an active/active topology where all instances can service requests. For local hardware faults, the Azure Stack Hub infrastructure implements high availability in the physical network using two top of rack switches. For compute-level faults, Azure Stack Hub uses multiple nodes in a scale unit. At the VM level, you can use scale sets in combination with fault domains to ensure node failures don't take down your application. The same application would need to be deployed to a secondary location in the same configuration. To make the application active/active, a load balancer or DNS can be used to direct requests to all available instances.
+For stateless applications that can only tolerate a few seconds or minutes of downtime, consider a high-availability configuration. High-availability applications are designed to be deployed in multiple locations in an active/active topology where all instances can service requests. For local hardware faults, the Azure Stack Hub infrastructure implements high availability in the physical network using two top of rack switches. For compute-level faults, Azure Stack Hub uses multiple nodes in a scale unit and will automatically failover a VM. At the VM level, you can use scale sets or VMs in availability set to ensure node failures don't take down your application. The same application would need to be deployed to a secondary location in the same configuration. To make the application active/active, a load balancer or DNS can be used to direct requests to all available instances.
 
 ### No recovery
 

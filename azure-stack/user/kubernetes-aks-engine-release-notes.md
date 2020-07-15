@@ -4,10 +4,10 @@ description: Learn the steps you need to take with the update to AKS engine on A
 author: mattbriggs
 
 ms.topic: article
-ms.date: 06/24/2020
+ms.date: 06/29/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 06/24/2020
+ms.lastreviewed: 06/25/2020
 
 # Intent: As an Azure Stack Hub user, I would like to update a Kubernetes cluster using the AKS engine on a custom virtual network so that I can deliver my service in an environment that extends my data center or in a hybrid cloud solution with my cluster in Azure Stack Hub and Azure.
 # Keywords: update ASK engine Azure Stack Hub
@@ -92,9 +92,7 @@ You can find the current version and upgrade version in the following table for 
 | 1.14.7, 1.14.8 | 1.15.12 |
 | 1.15.4, 1.15.5, 1.15.10 | 1.15.12, 1.16.9 |
 | 1.15.12 | 1.16.9 |
-| 1.16.8 | 1.16.9, 1.17.5 |
-| 1.16.9 | 1.17.5 |
-| 1.17.4 | 1.17.5 |
+| 1.16.8 | 1.16.9 |
 
 In the API Model json file, please specify the release and version values under the `orchestratorProfile` section, for example, if you are planning to deploy Kubernetes 1.16.9, the following two values must be set, (see example [kubernetes-azurestack.json](https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-azurestack.json)):
 
@@ -107,7 +105,6 @@ In the API Model json file, please specify the release and version values under 
 
 -   Add support for Kubernetes 1.15.12 ([#3212](https://github.com/Azure/aks-engine/issues/3212))
 -   Add support for Kubernetes 1.16.8 & 1.16.9 ([#3157](https://github.com/Azure/aks-engine/issues/3157) and [#3087](https://github.com/Azure/aks-engine/issues/3087))
--   Add support for Kubernetes 1.17.5 ([#3088](https://github.com/Azure/aks-engine/issues/3088))
 -   Kubernetes Dashboard addon v2.0.0 ([#3140](https://github.com/Azure/aks-engine/issues/3140))
 -   Improve operation reliability by removing superfluous** wait for no held apt locks** After apt operations have already completed ([#3049](https://github.com/Azure/aks-engine/issues/3049))
 -   Improve operation reliability by completing script run even after getting an error when connecting to the K8s API server ([#3022](https://github.com/Azure/aks-engine/issues/3022))
@@ -128,8 +125,13 @@ In the API Model json file, please specify the release and version values under 
 ## Known issues
 
 -   Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. Deploying one service at the time if possible.
+-   Kubernetes 1.17 is not supported in this release. Even though there are PRs alluding to it, 1.17 is in fact not supported.
 -   Running aks-engine get-versions will produce information applicable to Azure and Azure Stack Hub, however, there is not explicit way to discern what corresponds to Azure Stack Hub. Do not use this command to figure out what versions area available to upgrade. Use the upgrade reference table described above.
 -   Since aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
+- During upgrade (aks-engine upgrade) of a Kubernetes cluster from version 1.15.x to 1.16.x, the Kubernetes **kube-proxy** component is not upgraded:
+  - In connected environments, this issue may not be obvious, since there are no signs in the cluster that **kube-proxy** was not upgraded. Everything appears to work as expected.
+  - In disconnected environments, you can see this issue when you run the following query for the status of the system pods and see that **kube-proxy** pods are not in the **Ready** state: `kubectl get pods -n kube-system`.
+  - To work around this issue, delete the **kube-proxy** deamonset so that Kubernetes restarts it with the correct version. Run the following command: `kubectl delete ds kube-proxy -n kube-system`.
 
 ## Reference
 

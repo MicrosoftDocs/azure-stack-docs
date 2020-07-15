@@ -4,12 +4,12 @@ description: Monitor servers and configure alerts with Azure Monitor from Window
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 04/03/2020
+ms.date: 06/30/2020
 ---
 
 # Monitor Azure Stack HCI with Azure Monitor
 
-> Applies to: Windows Server 2019
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
 [Azure Monitor](/azure/azure-monitor/overview) collects, analyzes, and acts on telemetry from a variety of resources, including Windows servers and virtual machines (VMs), both on-premises and in the cloud. Though Azure Monitor pulls data from Azure VMs and other Azure resources, this article focuses on how Azure Monitor works with on-premises servers and VMs running on Azure Stack HCI, specifically with Windows Admin Center.
 
@@ -296,7 +296,7 @@ When Windows Admin Center onboards a server into the Virtual Machine insights so
 
 ## Disabling monitoring
 
-To completely disconnect your server from the Log Analytics workspace, uninstall the MMA. This means that this server will no longer send data to the workspace, and all the solutions installed in that workspace will no longer collect and process data from that server. However, this does not affect the workspace itself; all the resources reporting to that workspace will continue to do so. To uninstall the MMA agent within WAC, go to **Apps & Features**, find the **Microsoft Monitoring Agent**, and click **Uninstall**.
+To completely disconnect your server from the Log Analytics workspace, uninstall the MMA. This means that this server will no longer send data to the workspace, and all the solutions installed in that workspace will no longer collect and process data from that server. However, this does not affect the workspace itself; all the resources reporting to that workspace will continue to do so. To uninstall the MMA agent within Windows Admin Center, connect to the server and then go to **Installed apps**, find the Microsoft Monitoring Agent, and then select **Remove**.
 
 If you want to turn off a specific solution within a workspace, you will need to [remove the monitoring solution from the Azure portal](/azure/azure-monitor/insights/solutions#remove-a-management-solution). Removing a monitoring solution means that the insights created by that solution will no longer be generated for _any_ of the servers reporting to that workspace. For example, if you uninstall the Azure Monitor for VMs solution, you will no longer see insights about VM or server performance from any of the machines connected to your workspace.
 
