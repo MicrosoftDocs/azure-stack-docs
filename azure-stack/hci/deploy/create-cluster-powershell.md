@@ -430,7 +430,7 @@ After creating the cluster, use the `Enable-ClusterStorageSpacesDirect` cmdlet, 
 
 For stretched clusters, the `Enable-ClusterStorageSpacesDirect` cmdlet will also do the following:
 
-- Check to see if sites have been setup
+- Check to see if sites have been set up
 - Determine which nodes are in which sites
 - Determines what storage each node has available
 - Checks to see if the Storage Replica feature is installed on each node
