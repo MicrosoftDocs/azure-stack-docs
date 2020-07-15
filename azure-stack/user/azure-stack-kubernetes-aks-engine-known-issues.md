@@ -42,7 +42,7 @@ This topic covers known issues for the AKS engine on Azure Stack Hub.
 
 ## Basic load balancer SKU limitations
 
-* Single agent pool limitation. Currently, Azure Stack Hub only supports the Basic load balancer SKU. This SKU [limits](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus) the backend pool endpoints to virtual machines in a single availability set (or virtual machine scale set). This implies that all replicas of a LoadBalancer service should be deployed on the same agent pool and it also implies that each individual cluster can either have a Linux LoadBalancer service or a Windows LoadBalancer service.
+* Single agent pool limitation. Currently, Azure Stack Hub only supports the Basic load balancer SKU. This SKU [limits](https://docs.microsoft.com/en-us/azure/load-balancer/concepts#limitations) the backend pool endpoints to virtual machines in a single availability set (or virtual machine scale set). This implies that all replicas of a LoadBalancer service should be deployed on the same agent pool and it also implies that each individual cluster can either have a Linux LoadBalancer service or a Windows LoadBalancer service.
 
   You can force Kubernetes to create pods in a specific agent pool by adding [node selector](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) "agentpool: MY_POOL_NAME" in your pod template.
 
