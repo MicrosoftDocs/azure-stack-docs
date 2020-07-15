@@ -106,7 +106,7 @@ Security Center protects VMs for both Windows servers and Linux servers by insta
 
 Managing who can access your Azure resources and subscriptions is an important part of your Azure governance strategy. Azure role-based access control (RBAC) is the primary method of managing access in Azure. To learn more, see [Manage access to your Azure environment with role-based access control](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/manage-access).
 
-Working with Security Center through Windows Admin Center requires an Azure subscription. To get started, see [Connect Azure Stack HCI to Azure](https://docs.microsoft.com/azure-stack/hci/deploy/connect-to-azure).
+Working with Security Center through Windows Admin Center requires an Azure subscription. To get started, see [Integrate Azure Security Center with Windows Admin Center](https://docs.microsoft.com/azure/security-center/windows-admin-center-integration).
 
 After registering, access Security Center in Windows Admin Center: On the **All Connections** page, select a server or VM, under **Tools**, select **Azure Security Center**, and then select **Sign into Azure**.
 
