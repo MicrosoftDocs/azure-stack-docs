@@ -63,7 +63,7 @@ Many organizations want to host virtual desktops on premises for low latency and
 
 Azure Stack HCI can provide industry-best performance for SQL Server databases and other performance-sensitive virtualized workloads that require millions of storage IOPS or database transactions per second, offering consistently low latency with NVMe SSDs, a robust RDMA stack, and persistent memory.
 
-## Hybrid capabilities
+## Azure integration benefits
 
 Azure Stack HCI is uniquely positioned for hybrid infrastructure, allowing you to take advantage of cloud and on-premises resources working together and natively monitor, secure, and back up to the cloud.
 
