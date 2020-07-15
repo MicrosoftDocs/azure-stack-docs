@@ -17,6 +17,8 @@
   items:
 - name: Manage
   items:
+  - name: Register Windows Admin Center
+    href: manage/register-windows-admin-center.md
   - name: Create volumes
     href: manage/create-volumes.md
   - name: Extend volumes
