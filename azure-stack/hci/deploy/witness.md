@@ -1,6 +1,6 @@
 --- 
 title: Set up a cluster witness 
-description: Learn how to setup a cluster witness 
+description: Learn how to set up a cluster witness 
 author: v-dasis 
 ms.topic: how-to 
 ms.date: 07/21/2020 
