@@ -41,7 +41,7 @@ Use these steps to package certificates for new Azure Stack Hub PKI certificates
     ```powershell  
         Install-Module Microsoft.AzureStack.ReadinessChecker
     ```
-2. Declare the **Path** where the certificates reside on disk, . For example:
+2. Declare the **Path** where the certificates reside on disk. For example:
 
     ```powershell  
         $Path = "$env:USERPROFILE\Documents\AzureStack"
