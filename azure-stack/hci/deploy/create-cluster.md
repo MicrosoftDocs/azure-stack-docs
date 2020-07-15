@@ -44,7 +44,6 @@ OK, lets begin:
 1. In Windows Admin Center, under **All connections**, click **Add**.
 1. In the **Add resources** panel, under **Windows Server cluster**, select **Create new**.
 1. Under **Choose cluster type**, select **Azure Stack HCI**.
-1. Select whether or not to deploy Software Defined Networking. 
 1. Under **Select server locations**, select one the following:
 
     - **All servers in one site**
@@ -56,7 +55,7 @@ OK, lets begin:
 
 ## Step 1: Get Started
 
-Step 1 of the wizard walks you through making sure all prerequisites are met beforehand, adding the server nodes, installing needed features, and then restarting each server if needed.
+Step 1 of the wizard walks you through making sure all prerequisites are met, adding the server nodes, installing needed features, and then restarting each server if needed.
 
 1. Review the prerequisites listed in the wizard to ensure each server node is cluster-ready. When finished, click **Next**.
 1. On **Add servers to the cluster** page, enter your account username and password, then click **Next**. This account must be a member of the local Administrators group on each server.
@@ -97,15 +96,15 @@ Lets begin:
 1. Select **Next: Networking**.
 1. Under **Verify the network adapters**, wait until green checkboxes appear next to each adapter, then select **Next**.
 
-1. For **Select management adapters**, select either one for two management adapters to use for each server and then do the following for each server:
+1. For **Select management adapters**, select one or two management adapters to use for each server and then do the following for each server:
 
     - Select the **Description** checkbox. Note that all adapters are selected and that the wizard may offer a recommendation for you.
     - Unselect the checkboxes for those adapters you don't want used for cluster management.
 
-     It is recommended that you reserve the highest-speed network adapters for data traffic and use the lowest-speed adapter for cluster management.
+     You can use 1 Gb adapters as management adapters, but we recommend using 10 Gb or faster adapters for carrying storage and workload (VM) traffic.
 
 1. When changes have been made, click **Apply and test**.
-1. Under **Define networks**, make sure each network adapter for each server has a unique IP address, a subnet mask, and a VLAN ID. Hover over each table element and enter or change values as needed. When finished, click **Apply and test**.
+1. Under **Define networks**, make sure each network adapter for each server has a unique static IP address, a subnet mask, and a VLAN ID. Hover over each table element and enter or change values as needed. When finished, click **Apply and test**.
 
     > [!NOTE]
     > Network adapters that don’t support the `VLANID` advanced property won’t accept VLAN IDs.
@@ -128,7 +127,7 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
 1. Select **Next: Clustering**.
 1. Under **Validate the cluster**, select **Validate**. Validation may take several minutes.
 
-    If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable CredSSP for the wizard to continue. Once your cluster is created and the wizard has completed, you will need to disable CredSSP again for security reasons.
+    If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable CredSSP for the wizard to continue. Once your cluster is created and the wizard has completed, you'll disable CredSSP to increase security.
 
 1. Review all validation statuses, download the report to get detailed information on any failures, make changes, then click **Validate again** as needed. Repeat again as necessary until all validation checks pass.
 1. Under **Create the cluster**, enter a name for your cluster.
@@ -138,13 +137,12 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
 
 1. For stretched clusters, Under **Assign servers to sites**, name the two sites that will be used.
 
-1. Next assign each server to a site. You'll setup replication across sites later. When finished, click **Apply**.
+1. Next assign each server to a site. You'll set up replication across sites later. When finished, click **Apply**.
 
 ## Step 4: Storage
 
-Step 4 of the wizard walks you through setting up Storage Spaces Direct and configuring virtual hard disks for your cluster.
+Step 4 of the wizard walks you through setting up Storage Spaces Direct for your cluster.
 
-For stretched clusters, make sure the sites have been configured properly and server nodes assigned to them before enabling Storage Spaces Direct.
 
 1. Select **Next: Storage**.
 1. Under **Verify drives**, click the **>** icon next to each server to verify that the disks are working and connected, then click **Next**.
@@ -175,7 +173,7 @@ OK, now here are the other tasks you will need to do:
 - Setup a cluster witness. See [Set up a cluster witness](witness.md).
 - Create your volumes. See [Create volumes](../manage/create-volumes.md).
 - For stretched clusters, create volumes and setup replication using Storage Replica. See the applicable section in [Create volumes](../manage/create-volumes.md).
-
+- Register your cluster with Azure. See [Register your cluster with Azure].
 ## Next steps
 
 - Register your cluster with Azure. See [Register your cluster with Azure](create-cluster.md).
