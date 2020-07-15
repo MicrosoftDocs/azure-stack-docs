@@ -326,9 +326,9 @@ When creating the cluster, you'll get a warning that states - `"There were issue
 > [!NOTE]
 > If the servers are using static IP addresses, modify the following command to reflect the static IP address by adding the following parameter and specifying the IP address: `–StaticAddress <X.X.X.X>;`.
 
-> ```powershell
-> New-Cluster –Name Cluster1 –Node Server1, Server2, Server3, Server4 –NoStorage
-> ```
+```powershell
+ New-Cluster –Name Cluster1 –Node Server1, Server2, Server3, Server4 –NoStorage
+```
 
 Congrats, your cluster has now been created.
 

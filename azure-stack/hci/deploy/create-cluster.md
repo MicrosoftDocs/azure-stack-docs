@@ -53,7 +53,7 @@ OK, lets begin:
 
     :::image type="content" source="media/cluster/create-cluster-wizard.png" alt-text="Active-active stretched cluster scenario" lightbox="media/cluster/create-cluster-wizard.png":::
 
-## Step 1: Get Started
+## Step 1: Get started
 
 Step 1 of the wizard walks you through making sure all prerequisites are met, adding the server nodes, installing needed features, and then restarting each server if needed.
 
@@ -173,7 +173,7 @@ OK, now here are the other tasks you will need to do:
 - Setup a cluster witness. See [Set up a cluster witness](witness.md).
 - Create your volumes. See [Create volumes](../manage/create-volumes.md).
 - For stretched clusters, create volumes and setup replication using Storage Replica. See the applicable section in [Create volumes](../manage/create-volumes.md).
-- Register your cluster with Azure. See [Register your cluster with Azure].
+
 ## Next steps
 
 - Register your cluster with Azure. See [Register your cluster with Azure](create-cluster.md).
