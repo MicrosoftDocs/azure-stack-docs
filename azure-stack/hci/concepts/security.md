@@ -78,7 +78,7 @@ This section discusses how to use Windows Admin Center to protect data and workl
 ### Protect identities
 This section discusses how to use Windows Admin Center to protect privileged identities:
 
-- **Access control** can improve the security of your management landscape. Windows Admin Center defines two roles for access to the gateway service: gateway users and gateway administrators. Gateway administrator identity provider options include:
+- **Access control** can improve the security of your management landscape. If you're using a Windows Admin Center server (vs. running on a Windows 10 PC), you can control two levels of access to Windows Admin Center itself: gateway users and gateway administrators. Gateway administrator identity provider options include:
     - Active Directory or local machine groups to enforce smartcard authentication.
     - Azure Active Directory to enforce conditional access and multifactor authentication.
  
