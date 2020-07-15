@@ -71,7 +71,7 @@ This section discusses how to use Windows Admin Center to protect data and workl
     1. On the **All connections** page, select a server, then under **Tools**, select **Roles and Features**.
     1. Scroll down the **Features** list to select the options for **SMB 1.0/CIFS File Sharing Support** and **SMB Bandwidth Limit**, and then select **Install**.
 
-    To learn more, see [Overview of file sharing using the SMB 3 protocol in Windows Server](https://docs.microsoft.com/windows-server/storage/file-server/file-server-smb-overview).
+    To enable SMB encryption, see [SMB security enhancements](/windows-server/storage/file-server/smb-security).
 
 - **Windows Defender Antivirus** in Windows Admin Center protects the operating system on clients and servers against viruses, malware, spyware, and other threats. To learn more, see [Microsoft Defender Antivirus on Windows Server 2016 and 2019](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-antivirus/microsoft-defender-antivirus-on-windows-server-2016).
 
