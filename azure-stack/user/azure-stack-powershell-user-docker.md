@@ -3,14 +3,14 @@ title: Use Docker to run PowerShell in Azure Stack Hub
 description: Use Docker to run PowerShell in Azure Stack Hub
 author: mattbriggs
 
-ms.topic: article
-ms.date: 5/27/2020
+ms.topic: how-to
+ms.date: 7/15/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 07/09/2019
+ms.lastreviewed: 7/15/2020
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub user, I want to run my Azure Stack Hub PowerShell modules in a Docker container to keep them isolated from other processes.
+# Keyword: Azure Stack Hub AzureRM Az PowerShell Docker
 
 ---
 
@@ -43,7 +43,7 @@ To use PowerShell to access resources in Azure Stack Hub, you need a service pri
 
 ### [AzureRM modules](#tab/rm)
 
-In these instructions you will run a Windows-based container image and install the PowerShell and the required modules for Azure Stack Hub.
+In these instructions, you will run a Windows-based container image and install the PowerShell and the required modules for Azure Stack Hub.
 
 1. You need to run Docker by using Windows containers that require Windows 10. When you run Docker, switch to Windows containers.
 
@@ -102,7 +102,7 @@ The Dockerfile opens the Microsoft image *microsoft/windowsservercore*, which ha
 
 ### [Az modules](#tab/az)
 
-In these instructions you will run a Linux-based container image that contains the PowerShell and the required modules for Azure Stack Hub.
+In these instructions, you will run a Linux-based container image that contains the PowerShell and the required modules for Azure Stack Hub.
 
 1. You need to run Docker by using Linux container. When you run Docker, switch to Linux containers.
 
