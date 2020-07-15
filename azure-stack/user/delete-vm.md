@@ -92,12 +92,6 @@ $storeParams = @{
 Get-AzureRmStorageAccount @storeParams | Get-AzureStorageContainer | where { $_.Name-eq $diagContainer } | Remove-AzureStorageContainer -Force
 ```
 
-Delete the VM. The cmdlet takes some time to run. In the same session, run the following cmdlets:
-
-```powershell
-$machine | Remove-AzureRmVM -Force
-```
-
 Remove the the virtual network interface.
 
 ```powershell
@@ -125,6 +119,14 @@ if ($machine.DataDiskNames.Count -gt 0)
              $dataDiskStorageAcct | Remove-AzureStorageBlob -Container $uri.Split('/')[-2] -Blob $uri.Split('/')[-1] -ea Ignore
         }
  }
+```
+
+Finally, delete the VM. The cmdlet takes some time to run. You can audit the components attached to the VM by reviewing the VM object in PowerShell. To review the object, just refer to the variable that contains the VM object. Type `$machine`.
+
+To delete the VM, in the same session, run the following cmdlets:
+
+```powershell
+$machine | Remove-AzureRmVM -Force
 ```
 
 ## Next steps
