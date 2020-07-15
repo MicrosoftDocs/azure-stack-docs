@@ -32,6 +32,8 @@
     href: manage/cluster.md
   - name: Manage clusters with PowerShell
     href: manage/cluster-powershell.md
+  - name: Change languages
+    href: manage/languages.md
   - name: Add or remove servers
     href: manage/add-cluster.md
   - name: Update cluster
