@@ -14,6 +14,8 @@
     href: deploy/deployment-overview.md
   - name: Before you begin
     href: deploy/before-you-start.md
+  - name: Connect to Azure
+    href: deploy/register-with-azure.md
 - name: Manage
   items:
   - name: Register Windows Admin Center
