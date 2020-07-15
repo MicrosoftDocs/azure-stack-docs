@@ -33,9 +33,13 @@ Custom images come in two forms: **generalized** and **specialized**.
 
 ### Windows - Create a custom generalized VHD
 
-**If the VHD is from outside Azure**, follow the steps in [Upload a generalized VHD and use it to create new VMs in Azure](/azure/virtual-machines/windows/upload-generalized-managed) to correctly **Sysprep** your VHD and make it generalized.
+#### VHD is from outside Azure
 
-**If the VHD is from Azure**, prior to generalizing the VM, make sure of the following:
+Follow the steps in [Upload a generalized VHD and use it to create new VMs in Azure](/azure/virtual-machines/windows/upload-generalized-managed) to correctly **Sysprep** your VHD and make it generalized.
+
+#### VHD is from Azure
+
+Prior to generalizing the VM, make sure of the following:
 
 Before the Azure Stack 1910 release:
 
@@ -127,7 +131,7 @@ Step 1: Follow the appropriate instructions to make the VHD suitable for Azure. 
 
 Step 2: If a Linux specialized VHD is brought from outside of Azure to Azure Stack Hub, to run VM extensions and disable provisioning do the following:
 
-Identify what version of Linux Agent is installed in the source VM image. Run the following commands. The version number that describes the provisioning code is `WALinuxAgent-`, not the `Goal state agent`:
+To identify what version of Linux Agent is installed in the source VM image, run the following commands. The version number that describes the provisioning code is `WALinuxAgent-`, not the `Goal state agent`:
 
 ```bash
 waagent -version
@@ -136,15 +140,13 @@ waagent -version
 For example:
 
 ```bash
-aagent -version
+waagent -version
 WALinuxAgent-2.2.45 running on centos 7.7.1908
 Python: 2.7.5
 Goal state agent: 2.2.46
 ```
 
-#### Disable Provisioning with Linux Agent lower than 2.2.4
-
-To disable the Linux Agent provisioning, set the following parameters in **/etc/waagent.conf**: `Provisioning.Enabled=n, and Provisioning.UseCloudInit=n`.
+To disable the Linux Agent provisioning with Linux Agent lower than 2.2.4, set the following parameters in **/etc/waagent.conf**: `Provisioning.Enabled=n, and Provisioning.UseCloudInit=n`.
 
 In scenarios in which you want to run extensions:
 
@@ -164,9 +166,7 @@ In scenarios in which you want to run extensions:
 
 4. Execute a logout.
 
-#### Disable provisioning with Linux Agent 2.2.45 and later
-
-In 2.2.45, there are configuration option changes:
+To disable provisioning with Linux Agent 2.2.45 and later, make the following configuration option changes:
 
 - `Provisioning.Enabled` and `Provisioning.UseCloudInit` are now ignored.
 
