@@ -134,4 +134,4 @@ There are five Hyper-V host settings that can be applied to your cluster.
 
 ## Next steps
 
-- To monitor your cluster performance, see [Monitor cluster performance](https://docs.microsoft.com/azure-stack/hci/get-started#monitor-cluster-performance-with-the-windows-admin-center-dashboard)
+- To monitor your cluster performance, see [Monitor cluster performance](https://docs.microsoft.com/azure-stack/hci/get-started#monitor-cluster-performance-with-the-windows-admin-center-dashboard).
