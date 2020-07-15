@@ -15,15 +15,15 @@ ms.lastreviewed: 07/10/2020
 
 # Add a custom VM image to Azure Stack Hub
 
-In Azure Stack Hub, as an operator, you can add your custom virtual machine (VM) image to the marketplace and make it available to your users. You can add VM images to the Azure Stack Hub Marketplace through the administrator portal or Windows PowerShell. Use either an image from the global Azure Marketplace as a base for your custom image, or your create your own using Hyper-V.
+In Azure Stack Hub, as an operator you can add your custom virtual machine (VM) image to the marketplace and make it available to your users. You can add VM images to the Azure Stack Hub Marketplace through the administrator portal or Windows PowerShell. Use either an image from the global Azure Marketplace as a base for your custom image, or create your own using Hyper-V.
 
-A user in the tenant portal in Azure Stack Hub can also add your custom virtual machine (VM) image by following the guidance in step one. A user can create their custom image as a virtual hard disk (VHD) and upload the image to a storage account on Azure Stack Hub. They can then create a VM from the VHD.
+A user in the tenant portal in Azure Stack Hub can also add your custom virtual machine (VM) image by following the guidance in step 1. A user can create their custom image as a virtual hard disk (VHD) and upload the image to a storage account on Azure Stack Hub. They can then create a VM from the VHD.
 
 Custom images come in two forms: **generalized** and **specialized**. 
 
 - **Generalized image**
 
-  A generalized disk image is one that has been prepared with **Sysprep** to remove any unique information (such as user accounts), allowing it to be reused to create multiple VMs. This is a good fit for marketplace items. 
+  A generalized disk image is one that has been prepared with **Sysprep** to remove any unique information (such as user accounts), enabling it to be reused to create multiple VMs. This is a good option for marketplace items. 
 
 - **Specialized image**
 
@@ -31,11 +31,9 @@ Custom images come in two forms: **generalized** and **specialized**.
 
 ## Step 1: Create the custom VM image
 
-### Windows - Generalized
+### Windows - Create a custom generalized VHD
 
-Create a custom generalized VHD.
-
-**If the VHD is from outside Azure**, follow the steps in [Upload a generalized VHD and use it to create new VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed) to correctly **Sysprep** your VHD and make it generalized.
+**If the VHD is from outside Azure**, follow the steps in [Upload a generalized VHD and use it to create new VMs in Azure](/azure/virtual-machines/windows/upload-generalized-managed) to correctly **Sysprep** your VHD and make it generalized.
 
 **If the VHD is from Azure**, prior to generalizing the VM, make sure of the following:
 
@@ -48,24 +46,24 @@ Remove-AzureRmVMExtension -ResourceGroupName winvmrg1 -VMName windowsvm -Name "C
 ```
 
 On or after the Azure Stack 1910 release:
-- The above steps do not apply to VHDs brought from Azure to an Azure Stack Hub that is on or beyond the 1910 release. 
+- The preceding steps do not apply to VHDs brought from Azure to an Azure Stack Hub that is on or beyond the 1910 release. 
 
-Follow the instructions in [this article](https://docs.microsoft.com/azure/virtual-machines/windows/download-vhd) to correctly generalize and download the VHD before porting it to Azure Stack Hub.
+Follow the instructions in [this article](/azure/virtual-machines/windows/download-vhd) to correctly generalize and download the VHD before porting it to Azure Stack Hub.
 
 ### Windows - Specialized
 
-Follow the steps [here](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized#prepare-the-vm) to prepare the VHD correctly. 
-To deploy VM extensions, make sure that the VM agent .msi available [here](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows#manual-installation) is installed in the VM before VM deployment. If the VM agent is not present in the VHD, extension deployment will fail.
+Follow the steps [here](/azure/virtual-machines/windows/create-vm-specialized#prepare-the-vm) to prepare the VHD correctly. 
+To deploy VM extensions, make sure that the VM agent .msi available [here](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows#manual-installation) is installed in the VM before VM deployment. If the VM agent is not present in the VHD, extension deployment will fail. You do NOT need to set the OS profile while provisioning or set $vm.OSProfile.AllowExtensionOperations = $true
 
 ### Linux - Generalized
 
 **If the VHD is from outside Azure**, follow the appropriate instructions to generalize the VHD:
 
-- [CentOS-based Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Debian Linux](https://docs.microsoft.com/azure/virtual-machines/linux/debian-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Red Hat Enterprise Linux](https://docs.microsoft.com/azure/azure-stack/azure-stack-redhat-create-upload-vhd)
-- [SLES or openSUSE](https://docs.microsoft.com/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Ubuntu Server](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Red Hat Enterprise Linux](azure-stack-redhat-create-upload-vhd.md)
+- [SLES or openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 **If the VHD is from Azure**, follow these instructions to generalize and download the VHD:
 
@@ -77,13 +75,13 @@ To deploy VM extensions, make sure that the VM agent .msi available [here](https
    logout
    ```
 
-   Keep in mind the Azure Linux Agent versions that work with Azure Stack Hub [as documented here](azure-stack-linux.md#azure-linux-agent). Make sure that the sysprepped image has an Azure Linux agent version that is compatible with Azure Stack Hub.
+   The Azure Linux Agent versions that work with Azure Stack Hub [are documented here](azure-stack-linux.md#azure-linux-agent). Make sure that the sysprepped image has an Azure Linux agent version that is compatible with Azure Stack Hub.
 
 2. Stop deallocate the VM.
 
 3. Download the VHD.
 
-   1. To download the VHD file, you need to generate a shared access signature (SAS) URL. When the URL is generated, an expiration time is assigned to the URL.
+   1. To download the VHD file, generate a shared access signature (SAS) URL. When the URL is generated, an expiration time is assigned to the URL.
 
    1. On the menu of the blade for the VM, select **Disks**.
 
@@ -97,30 +95,91 @@ To deploy VM extensions, make sure that the VM agent .msi available [here](https
 
    1. Under the URL that was generated, select **Download the VHD file**.
 
-   1. You might need to select **Save** in the browser to start the download. The default name for the VHD file is _abcd_.
+   1. You might need to select **Save** in the browser to start the download. The default name for the VHD file is **abcd**.
    
    1. You can now port this VHD to Azure Stack Hub
    
-> [!Important]  
+> [!IMPORTANT]  
 > You can find a script in the following article, [Sample script to upload a VHD to Azure and create a new VM](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script) to upload the VHD to an Azure Stack Hub user storage account and create a VM. Make sure provide `$urlOfUploadedImageVhd` as the Azure Stack Hub storage account+container URL. For a generalized VHD, make sure to use `FromImage` value when setting `-CreateOption FromImage`.
    
 ### Linux - Specialized
 
 Specialized VHDs should not be used as the base VHD for a marketplace item. Use generalized VHDs for this. However, specialized VHDs are a good fit for when you need to migrate VMs from on-premises to Azure Stack Hub
 
-**If the VHD is from outside Azure**, follow the appropriate instructions to make the VHD suitable for Azure:
+**If the VHD is from outside Azure**
 
-- [CentOS-based Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Debian Linux](https://docs.microsoft.com/azure/virtual-machines/linux/debian-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Red Hat Enterprise Linux](https://docs.microsoft.com/azure/azure-stack/azure-stack-redhat-create-upload-vhd)
-- [SLES or openSUSE](https://docs.microsoft.com/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Ubuntu Server](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+Step 1: Follow the appropriate instructions to make the VHD suitable for Azure. Use this article until the step to install the linux agent and proceed to step 2 before installing the agent:
 
-DO NOT RUN THE LAST STEP:  sudo waagent -force -deprovision as this will generalize the VHD.
-If a Linux specialized VHD is brought from outside of Azure to Azure Stack Hub, to run VM extensions, run 'mkdir -p /var/lib/waagent && touch /var/lib/waagent/provisioned' before the logout step.
+- [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Red Hat Enterprise Linux](azure-stack-redhat-create-upload-vhd.md)
+- [SLES or openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+> [!IMPORTANT] 
+> Do not run the last step: (`sudo waagent -force -deprovision`) as this will generalize the VHD.
+
+Step 2: If a Linux specialized VHD is brought from outside of Azure to Azure Stack Hub, to run VM extensions and disable provisioning, do the following:
+
+****Identifying what version of Linux Agent is installed in the source VM image****
+
+Run the below, the version number that describes the provisioning code, is 'WALinuxAgent-', not the 'Goal state agent:'
+```bash
+waagent -version
+```
+For example:
+
+```bash
+aagent -version
+WALinuxAgent-2.2.45 running on centos 7.7.1908
+Python: 2.7.5
+Goal state agent: 2.2.46
+```
+
+**Disable Provisioning with Linux Agent < 2.2.4**
+
+To disable the Linux Agent provisioning, you set the following parameters in /etc/waagent.conf: Provisioning.Enabled=n, and Provisioning.UseCloudInit=n.
+
+Guidance for scenarios, where you want to run extensions: 
+
+1. Set the following parameter in /etc/waagent.conf:
+
+   * Provisioning.Enabled=n 
+   * Provisioning.UseCloudInit=n
+
+2. To ensure walinuxagent provisioning is disabled run: `mkdir -p /var/lib/waagent && touch /var/lib/waagent/provisioned`
+3. If you have cloud-init in your image, disable cloud init:
+
+   ```
+   touch /etc/cloud/cloud-init.disabled
+   sudo sed -i '/azure_resource/d' /etc/fstab
+   ```
+   
+4. Execute a Logout.
+
+**Disable Provisioning with Linux Agent 2.2.45 and onwards**
+
+In 2.2.45, there are these configuration option changes:
+
+* Provisioning.Enabled and Provisioning.UseCloudInit are now ignored but the Linux Agent. 
+
+In this version, currently there is no 'Provisioning.Agent' option to disable provisioning completely, however, you can add the provisioning marker file, and with the settings below, provisioning will get ignored:
+
+1. In /etc/waagent.conf add this configuration option, 'Provisioning.Agent=Auto'
+2. To ensure walinuxagent provisioning is disabled run: `mkdir -p /var/lib/waagent && touch /var/lib/waagent/provisioned`
+3. Disable cloud-init install by running: 
+
+   ```
+   touch /etc/cloud/cloud-init.disabled
+   sudo sed -i '/azure_resource/d' /etc/fstab
+   ```
+   
+4. Logout
+
 
 **If the VHD is from Azure**
-You can use [this](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#requirements) guidance to prepare the VHD. 
+
+You can use [this guidance](/azure/virtual-machines/linux/upload-vhd#requirements) to prepare the VHD. 
 
 > [!Important]  
 > You can follow the PowerShell cmdlets below to upload the VHD to an Azure Stack Hub user storage account:
