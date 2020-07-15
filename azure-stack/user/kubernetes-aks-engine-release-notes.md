@@ -4,7 +4,7 @@ description: Learn the steps you need to take with the update to AKS engine on A
 author: mattbriggs
 
 ms.topic: article
-ms.date: 06/25/2020
+ms.date: 06/29/2020
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 06/25/2020
@@ -128,6 +128,10 @@ In the API Model json file, please specify the release and version values under 
 -   Kubernetes 1.17 is not supported in this release. Even though there are PRs alluding to it, 1.17 is in fact not supported.
 -   Running aks-engine get-versions will produce information applicable to Azure and Azure Stack Hub, however, there is not explicit way to discern what corresponds to Azure Stack Hub. Do not use this command to figure out what versions area available to upgrade. Use the upgrade reference table described above.
 -   Since aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
+- During upgrade (aks-engine upgrade) of a Kubernetes cluster from version 1.15.x to 1.16.x, the Kubernetes **kube-proxy** component is not upgraded:
+  - In connected environments, this issue may not be obvious, since there are no signs in the cluster that **kube-proxy** was not upgraded. Everything appears to work as expected.
+  - In disconnected environments, you can see this issue when you run the following query for the status of the system pods and see that **kube-proxy** pods are not in the **Ready** state: `kubectl get pods -n kube-system`.
+  - To work around this issue, delete the **kube-proxy** deamonset so that Kubernetes restarts it with the correct version. Run the following command: `kubectl delete ds kube-proxy -n kube-system`.
 
 ## Reference
 
