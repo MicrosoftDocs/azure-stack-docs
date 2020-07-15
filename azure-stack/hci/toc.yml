@@ -22,6 +22,8 @@
     href: manage/register-windows-admin-center.md
   - name: Create volumes
     href: manage/create-volumes.md
+  - name: Create stretched volumes
+    href: manage/create-stretched-volumes.md
   - name: Extend volumes
     href: manage/extend-volumes.md
   - name: Delete volumes
@@ -58,6 +60,8 @@
   items:
   - name: Usage and billing
     href: concepts/billing.md
+  - name: Updates and upgrades
+    href: concepts/updates.md
   - name: Choose drives
     href: concepts/choose-drives.md
   - name: Plan volumes
