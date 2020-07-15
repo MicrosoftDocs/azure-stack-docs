@@ -14,7 +14,7 @@ ms.date: 07/21/2020
 This how-to article focuses on why cluster validation is important, and when to run it on an existing Azure Stack HCI cluster. We recommend performing cluster validation for the following primary scenarios:
 - After deploying a server cluster, run the Validate-DCB tool to test networking, and run cluster validation in Windows Admin Center.
 - After updating a server cluster, depending on your scenario, run both validation options to troubleshoot cluster issues.
-
+- After setting up replication with Storage Replica, validate that the replication is proceeding normally by checking some specific events and running a couple commands.
 To learn about how to deploy an Azure Stack HCI cluster, see [Deploy Storage Spaces Direct](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct).
 
 ## What is cluster validation?
