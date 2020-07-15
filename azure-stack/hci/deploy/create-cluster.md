@@ -69,7 +69,7 @@ The wizard installs the following required features for you:
 - BitLocker
 - Data Center Bridging (for RoCEv2 network adapters)
 - Failover Clustering
-- File Server (for file-share witness or hosting file shares)
+- File Server
 - FS-Data-Deduplication module
 - Hyper-V
 - RSAT-AD-PowerShell module
