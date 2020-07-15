@@ -43,10 +43,6 @@ This section discusses how to protect services and virtual machines (VMs) runnin
 To manage updates on multiple clusters and servers at a time, consider subscribing to the optional Azure Update Management service, which is integrated with Windows Admin Center. For more info, see [Azure Update Management using Windows Admin Center](https://www.thomasmaurer.ch/2018/11/azure-update-management-windows-admin-center). 
  
     To learn more, see [Update the cluster](../manage/update-cluster.md).
- 
-- **Cluster-Aware Updating** makes it easier to install Windows updates on every server in your cluster while keeping your applications running by automating the software updating process. You can use Cluster-Aware Updating on all editions of Windows Server, including the Azure Stack HCI operating system, and initiate it through either Windows Admin Center or using PowerShell.
-
-    To learn more, see [Cluster-Aware Updating requirements and best practices](/windows-server/failover-clustering/cluster-aware-updating-requirements) and [Update Azure Stack HCI clusters](https://docs.microsoft.com/azure-stack/hci/manage/update-cluster?branch=pr-en-us-3363).
 
 ### Protect data
 This section discusses how to use Windows Admin Center to protect data and workloads on the operating system:
@@ -66,10 +62,6 @@ This section discusses how to use Windows Admin Center to protect data and workl
    > If the **Install BitLocker feature first** pop-up displays, follow its instructions to install the feature on each server in the cluster, and then restart your servers.
 
 - **SMB** encryption for Windows networking protects data in transit. *Server Message Block (SMB)* is a network file sharing protocol that allows applications on a computer to read and write to files and to request services from server programs on a computer network.
-
-    To install SMB feature options on a server in Windows Admin Center:
-    1. On the **All connections** page, select a server, then under **Tools**, select **Roles and Features**.
-    1. Scroll down the **Features** list to select the options for **SMB 1.0/CIFS File Sharing Support** and **SMB Bandwidth Limit**, and then select **Install**.
 
     To enable SMB encryption, see [SMB security enhancements](/windows-server/storage/file-server/smb-security).
 
@@ -124,10 +116,6 @@ To learn more, see [What is Azure Security Center?](https://docs.microsoft.com/a
 The following sections recommend advanced security tools and technologies to further harden servers running the Azure Stack HCI operating system in your environment.
 
 ### Harden the environment
-- **Control Flow Guard (CFG)** in Windows helps protect the operating system and applications from memory corruption-based attacks. CFG places tight restrictions on where an application can execute code, making it much harder for exploits to execute arbitrary code through vulnerabilities such as buffer overflows.
-
-    To learn more, see [Control Flow Guard](https://docs.microsoft.com/windows/win32/secbp/control-flow-guard)
-
 - **Microsoft security baselines** are based on security recommendations from Microsoft obtained through partnership with commercial organizations and the US government, such as the Department of Defense. The security baselines include recommended security settings for Windows Firewall, Windows Defender, and many others.
 
     The security baselines are provided as Group Policy Object (GPO) backups that you can import into Active Directory Domain Services (AD DS), and then deploy to domain-joined servers to harden the environment. You can also use Local Script tools to configure standalone (non domain-joined) servers with security baselines. To get started using the security baselines, download the [Microsoft Security Compliance Toolkit 1.0](https://www.microsoft.com/download/details.aspx?id=55319).
@@ -151,7 +139,7 @@ on a physical server. Because virtual environments typically have multiple VMs s
         To learn more, see [Software Defined Networking (SDN)](https://docs.microsoft.com/windows-server/networking/sdn/).
 
 ### Protect identities
-- **Just in Time (JIT) access** in locks down inbound traffic to Azure VMs by assigning users to privileged groups from which they can perform specific tasks for a limited time. JIT reduces network exposure to attacks while providing users access to VMs when needed. Using JIT requires a subscription to Security Center's standard pricing tier. 
+- **Just in Time (JIT) access** locks down inbound traffic to Azure VMs by assigning users to privileged groups from which they can perform specific tasks for a limited time. JIT reduces network exposure to attacks while providing users access to VMs when needed. Using JIT requires a subscription to Security Center's standard pricing tier. 
 
     To learn more, see [Secure your management ports with just-in-time access](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) and [Upgrade to Standard tier for enhanced security](https://docs.microsoft.com/azure/security-center/security-center-pricing).
 
@@ -167,12 +155,8 @@ on a physical server. Because virtual environments typically have multiple VMs s
 
     To learn more, see [Manage Windows Defender Credential Guard](https://docs.microsoft.com/windows/security/identity-protection/credential-guard/credential-guard-manage).
 
-## More security resources
+## Next steps
 For more information on security and regulatory compliance, see also:
 - [Beginning your General Data Protection Regulation (GDPR) journey for Windows Server](https://docs.microsoft.com/windows-server/security/gdpr/gdpr-winserver-whitepaper)
 - [Security and Assurance](https://docs.microsoft.com/windows-server/security/security-and-assurance)
 - [Security best practices for Azure solutions](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/)
-
-## Next steps
-For more information, see also:
-- [Protect Azure Stack HCI VMs using Azure Site Recovery](https://docs.microsoft.com/azure-stack/hci/manage/azure-site-recovery)
