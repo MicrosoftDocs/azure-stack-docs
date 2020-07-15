@@ -14,7 +14,7 @@
     href: deploy/deployment-overview.md
   - name: Before you begin
     href: deploy/before-you-start.md
-  - name: Setup a cluster witness
+  - name: Set up a cluster witness
     href: deploy/witness.md
 
 - name: Manage
