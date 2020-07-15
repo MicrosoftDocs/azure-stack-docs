@@ -31,6 +31,7 @@ Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media
 ### Fixed and known issues
 
 - The decryption certification password is a new option to specify the password for the self-signed certificate (.pfx) that contains the private key necessary to decrypt backup data. This password is required only if the backup is encrypted using a certificate.
+- Fixed an issue that caused cloud recovery to fail if the original external certificate password changed on the multi-node source system. 
 - For a list of Azure Stack known issues in this release, see the [known issues](../operator/known-issues.md) article.
 - Note that available Azure Stack hotfixes are not applicable to the ASDK.
 ::: moniker-end
