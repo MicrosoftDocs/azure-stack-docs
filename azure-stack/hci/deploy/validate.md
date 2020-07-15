@@ -9,7 +9,7 @@ ms.date: 07/21/2020
 
 # Validate an Azure Stack HCI cluster
 
->Applies to: Azure Stack HCI, version v20H2
+>Applies to: Azure Stack HCI, version v20H2; Windows Server 2019
 
 This how-to article focuses on why cluster validation is important, and when to run it on an existing Azure Stack HCI cluster. We recommend performing cluster validation for the following primary scenarios:
 - After deploying a server cluster, run the Validate-DCB tool to test networking, and run cluster validation in Windows Admin Center.
