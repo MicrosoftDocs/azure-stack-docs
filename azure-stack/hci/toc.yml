@@ -16,7 +16,6 @@
     href: deploy/before-you-start.md
   - name: Set up a cluster witness
     href: deploy/witness.md
-
 - name: Manage
   items:
   - name: Register Windows Admin Center
@@ -49,6 +48,8 @@
     href: manage/vm.md
   - name: Manage VMs with PowerShell
     href: manage/vm-powershell.md
+  - name: Set up VM affinity rules
+    href: manage/vm-affinity.md  
   - name: Attach GPU to Linux VM
     href: manage/attach-gpu-to-linux-vm.md
 - name: Concepts
