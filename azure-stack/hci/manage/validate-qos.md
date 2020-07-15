@@ -3,14 +3,14 @@ title: Troubleshoot cluster validation reporting
 description: Troubleshoot cluster validation reporting and validate QoS settings configuration for Azure Stack HCI clusters
 author: khdownie
 ms.topic: troubleshooting
-ms.date: 06/25/2020
+ms.date: 07/21/2020
 ms.author: v-kedow
 ms.reviewer: JasonGerend
 ---
 
 # Troubleshoot cluster validation reporting
 
-> Applies to Azure Stack HCI, Windows Server 2019
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
 This topic helps you troubleshoot cluster validation reporting for network and storage QoS (quality of service) settings across servers in an Azure Stack HCI cluster, and verify that important rules are defined. For optimal connectivity and performance, the cluster validation process verifies that Data Center Bridging (DCB) QoS configuration is consistent and, if defined, contains appropriate rules for Failover Clustering and SMB/SMB Direct traffic classes.
 
@@ -48,11 +48,9 @@ To understand which traffic classes are already set on a server, use the `Get-Ne
 
 Validate the consistency of DCB willing status and priority flow control status settings between servers in the cluster.
 
-**Is there a way to do the stuff below in WAC? I don't see QoS on the UI anywhere.**
-
 ### DCB willing status
 
-Network adapters that support the Data Center Bridging Capability Exchange protocol (DCBX) can accept configurations from a remote device. To enable this capability, the DCB willing bit on the network adapter must be set to true. If the willing bit is set to false, the device will reject all configuration attempts from remote devices and enforce only the local configurations. If you're using RoCE adapters, then the willing bit should be set to false on all servers. **Is this true?**
+Network adapters that support the Data Center Bridging Capability Exchange protocol (DCBX) can accept configurations from a remote device. To enable this capability, the DCB willing bit on the network adapter must be set to true. If the willing bit is set to false, the device will reject all configuration attempts from remote devices and enforce only the local configurations. If you're using RoCE adapters, then the willing bit should be set to false on all servers.
 
 All servers in an Azure Stack HCI cluster should have the DCB willing bit set the same way.
 

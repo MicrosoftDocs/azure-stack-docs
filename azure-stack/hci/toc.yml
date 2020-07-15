@@ -46,6 +46,8 @@
     href: manage/vm.md
   - name: Manage VMs with PowerShell
     href: manage/vm-powershell.md
+  - name: Troubleshoot cluster validation reporting
+    href: manage/validate-qos.md
   - name: Attach GPU to Linux VM
     href: manage/attach-gpu-to-linux-vm.md
 - name: Concepts
