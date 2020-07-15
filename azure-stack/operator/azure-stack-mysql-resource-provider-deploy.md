@@ -53,7 +53,7 @@ There are several prerequisites that need to be in place before you can deploy t
     |-----|-----|
     |Conditional DNS forwarding is set correctly.|[Azure Stack Hub datacenter integration - DNS](azure-stack-integrate-dns.md)|
     |Inbound ports for resource providers are open.|[Azure Stack Hub datacenter integration - Publish endpoints](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)|
-    |PKI certificate subject and SAN are set correctly.|[Azure Stack Hub deployment mandatory PKI prerequisites](azure-stack-pki-certs.md#mandatory-certificates)[Azure Stack Hub deployment PaaS certificate prerequisites](azure-stack-pki-certs.md#optional-paas-certificates)|
+    |PKI certificate subject and SAN are set correctly.|[Azure Stack Hub deployment mandatory PKI prerequisites](azure-stack-pki-certs.md#generate-certificate-signing-requests-for-new-deployments)[Azure Stack Hub deployment PaaS certificate prerequisites](azure-stack-pki-certs.md#generate-certificate-signing-requests-for-new-deployments)|
     |     |     |
 
 In a disconnected scenario, complete the following steps to download the required PowerShell modules and register the repository manually.
@@ -92,7 +92,7 @@ New-Item -Path $env:ProgramFiles -name "SqlMySqlPsh" -ItemType "Directory"
 
 ### Certificates
 
-_For integrated systems installations only_. You must provide the SQL PaaS PKI certificate described in the optional PaaS certificates section of [Azure Stack Hub deployment PKI requirements](./azure-stack-pki-certs.md#optional-paas-certificates). Place the .pfx file in the location specified by the **DependencyFilesLocalPath** parameter. Don't provide a certificate for ASDK systems.
+_For integrated systems installations only_. You must provide the SQL PaaS PKI certificate described in the optional PaaS certificates section of [Azure Stack Hub deployment PKI requirements](./azure-stack-pki-certs.md#generate-certificate-signing-requests-for-new-deployments). Place the .pfx file in the location specified by the **DependencyFilesLocalPath** parameter. Don't provide a certificate for ASDK systems.
 
 ## Deploy the resource provider
 

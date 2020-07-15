@@ -153,7 +153,7 @@ Running secret rotation using the instructions below will fix these alerts.
 
 To rotate external secrets:
 
-1. Within the newly created **\Certificates\\\<IdentityProvider>** directory created in the pre-steps, place the new set of replacement external certificates in the directory structure according to the format outlined in the **Mandatory certificates** section of the [Azure Stack Hub PKI certificate requirements](azure-stack-pki-certs.md#mandatory-certificates).
+1. Within the newly created **\Certificates\\\<IdentityProvider>** directory created in the pre-steps, place the new set of replacement external certificates in the directory structure according to the format outlined in the **Mandatory certificates** section of the [Azure Stack Hub PKI certificate requirements](azure-stack-pki-certs.md#generate-certificate-signing-requests-for-new-deployments).
 
     Example of folder structure for the Azure AD Identity Provider:
     ```powershell
