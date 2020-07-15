@@ -328,8 +328,6 @@
           href: azure-stack-app-service-release-notes-update-eight.md
         - name: Update 7 release notes [Aug2019]
           href: azure-stack-app-service-release-notes-update-seven.md
-        - name: Update 6 release notes [Jun2019]
-          href: azure-stack-app-service-release-notes-update-six.md
     - name: Event Hubs on Azure Stack Hub
       items:
       - name: Overview
