@@ -29,7 +29,7 @@ Typically, you setup your rules from a remote computer running Windows 10, rathe
 
 ## New PowerShell cmdlets
 
-To setup affinity rules for Azure Stack HCI clusters, we have created the following new PowerShell cmdlets.
+To create affinity rules for Azure Stack HCI clusters, use the following PowerShell cmdlets.
 
 ### New-ClusterAffinityRule
 
