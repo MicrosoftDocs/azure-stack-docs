@@ -137,7 +137,7 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
 
 1. For stretched clusters, Under **Assign servers to sites**, name the two sites that will be used.
 
-1. Next assign each server to a site. You'll setup replication across sites later. When finished, click **Apply**.
+1. Next assign each server to a site. You'll set up replication across sites later. When finished, click **Apply**.
 
 ## Step 4: Storage
 
