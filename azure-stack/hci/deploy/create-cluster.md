@@ -127,7 +127,7 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
 1. Select **Next: Clustering**.
 1. Under **Validate the cluster**, select **Validate**. Validation may take several minutes.
 
-    If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable CredSSP for the wizard to continue. Once your cluster is created and the wizard has completed, you will need to disable CredSSP again for security reasons.
+    If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable CredSSP for the wizard to continue. Once your cluster is created and the wizard has completed, you'll disable CredSSP to increase security.
 
 1. Review all validation statuses, download the report to get detailed information on any failures, make changes, then click **Validate again** as needed. Repeat again as necessary until all validation checks pass.
 1. Under **Create the cluster**, enter a name for your cluster.
