@@ -41,7 +41,7 @@ Deploy the Azure Stack HCI [operating system](operating-system.md) on each serve
 
 ### 3. Create the cluster
 
-Create a failover cluster using [Windows Admin Center](create-cluster) or [PowerShell](create-cluster-powershell). For native disaster recovery and business continuity, you can deploy a [stretched cluster](../concepts/stretched-clusters.md) that spans two geographically separate sites.
+Create a failover cluster using [Windows Admin Center](create-cluster.md) or [PowerShell](create-cluster-powershell.md). For native disaster recovery and business continuity, you can deploy a [stretched cluster](../concepts/stretched-clusters.md) that spans two geographically separate sites.
 
 ### 4. Create a cluster witness
 
