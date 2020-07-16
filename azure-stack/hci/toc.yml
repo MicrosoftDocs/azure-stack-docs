@@ -60,6 +60,8 @@
       href: manage/update-cluster.md
     - name: Add or remove servers
       href: manage/add-cluster.md
+    - name: Manage Azure registration
+      href: manage/manage-azure-registration.md
     - name: Change languages
       href: manage/languages.md
     - name: Troubleshoot cluster validation reporting
