@@ -9,11 +9,11 @@ ms.date: 07/21/2020
 
 # Deploy the Azure Stack HCI operating system
 
-> Applies to: Azure Stack HCI, version 20H2 
+> Applies to: Azure Stack HCI, version 20H2
 
 After completing the steps in [Before you deploy Azure Stack HCI](before-you-start.md#install-windows-admin-center), the first step in deploying Azure Stack HCI is to install the Azure Stack HCI operating system on each server that you want to cluster. This article discusses different ways to deploy the operating system, and using Windows Admin Center to connect to the servers.
 
-After deploying the operating system, you're ready to use related guidance on creating a server cluster, and getting the latest Windows updates and firmware updates for your servers as described in [Create an Azure Stack HCI cluster](operating-system.md).
+After deploying the operating system, you're ready to use related guidance on creating a server cluster, and getting the latest Windows updates and firmware updates for your servers as described in [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md).
 
 ## Prerequisites
 - Windows Admin Center set up on a system that can access the servers you want to cluster, as described in [Before you deploy Azure Stack HCI](before-you-start.md#install-windows-admin-center).
@@ -98,7 +98,7 @@ To manually install the Azure Stack HCI operating system:
 
 From the Server Configuration tool interface, you can perform important tasks, such as adding additional users to the local administrators group and changing network settings.
 
-After configuring the operating system as needed with Sconfig.cmd on each server, you're ready to use the Cluster Creation wizard in Windows Admin Center to cluster the servers. To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster).
+After configuring the operating system as needed with Sconfig.cmd on each server, you're ready to use the Cluster Creation wizard in Windows Admin Center to cluster the servers. To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster).
 
 ## Next steps
 To perform the next management task related to this article, see:
