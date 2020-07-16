@@ -22,7 +22,17 @@
     href: deploy/witness.md
 - name: Manage
   items:
-  - name: Manage Storage
+  - name: Manage VMs
+    items:
+    - name: Manage VMs
+      href: manage/vm.md
+    - name: Manage VMs with PowerShell
+      href: manage/vm-powershell.md
+    - name: Create VM affinity rules
+      href: manage/vm-affinity.md  
+    - name: Attach GPU to Linux VM
+      href: manage/attach-gpu-to-linux-vm.md
+  - name: Manage storage
     items:
     - name: Create volumes
       href: manage/create-volumes.md
@@ -58,16 +68,6 @@
       href: manage/use-azure-network-adapter.md
     - name: Monitor with Azure Monitor
       href: manage/azure-monitor.md
-  - name: Manage VMs
-    items:
-    - name: Manage VMs
-      href: manage/vm.md
-    - name: Manage VMs with PowerShell
-      href: manage/vm-powershell.md
-    - name: Create VM affinity rules
-      href: manage/vm-affinity.md  
-    - name: Attach GPU to Linux VM
-      href: manage/attach-gpu-to-linux-vm.md
 - name: Concepts
   items:
   - name: Stretched clusters
