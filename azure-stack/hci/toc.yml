@@ -42,6 +42,8 @@
     href: manage/languages.md
   - name: Add or remove servers
     href: manage/add-cluster.md
+  - name: Use Azure Backup
+    href: manage/use-azure-backup.md
   - name: Update cluster
     href: manage/update-cluster.md
   - name: Use Azure Site Recovery
