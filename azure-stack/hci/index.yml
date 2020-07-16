@@ -36,13 +36,15 @@ landingContent:
           - text: Before you start
             url: deploy/before-you-start.md
           - text: Deploy the Azure Stack HCI operating system
-            url: deploy/before-you-start.md
+            url: deploy/operating-system.md
           - text: Create cluster
-            url: deploy/before-you-start.md
+            url: deploy/create-cluster.md
+          - text: Setup a cluster witness
+            url: deploy/witness.md
           - text: Register with Azure
-            url: deploy/before-you-start.md
+            url: deploy/register-with-azure.md
           - text: Validate an Azure Stack HCI cluster
-            url: deploy/before-you-start.md 
+            url: deploy/validate.md 
 
   # Card
   - title: Manage storage
