@@ -17,17 +17,17 @@ Once you've created an Azure Stack HCI cluster, you must [register the cluster w
 
 To understand registration status, use the `Get-AzureStackHCI` PowerShell cmdlet and the `ClusterStatus`, `RegistrationStatus`, and `ConnectionStatus` properties. For example, after installing the Azure Stack HCI operating system, before creating or joining a cluster, the `ClusterStatus` property shows "not yet" status:
 
-:::image type="content" source="media/manage-azure-registration/get-azurestackhci-1.png" alt-text="Azure registration status before cluster creation":::
+:::image type="content" source="media/manage-azure-registration/1-get-azurestackhci.png" alt-text="Azure registration status before cluster creation":::
 
 Once the cluster is created, only `RegistrationStatus` shows "not yet" status:
 
-:::image type="content" source="media/manage-azure-registration/get-azurestackhci-2.png" alt-text="Azure registration status after cluster creation":::
+:::image type="content" source="media/manage-azure-registration/2-get-azurestackhci.png" alt-text="Azure registration status after cluster creation":::
 
 Azure Stack HCI needs to register within 30 days of installation per the Azure Online Services Terms. If not clustered after 30 days, the `ClusterStatus` will show `OutOfPolicy`, and if not registered after 30 days, the `RegistrationStatus` will show `OutOfPolicy`.
 
 Once the cluster is registered, you can see the `ConnectionStatus` and `LastConnected` time, which is usually within the last day unless the cluster is temporarily disconnected from the Internet. An Azure Stack HCI cluster can operate fully offline for up to 30 consecutive days.
 
-:::image type="content" source="media/manage-azure-registration/get-azurestackhci-3.png" alt-text="Azure registration status after registration":::
+:::image type="content" source="media/manage-azure-registration/3-get-azurestackhci.png" alt-text="Azure registration status after registration":::
 
 If that maximum period is exceeded, the `ConnectionStatus` will show `OutOfPolicy`.
 
