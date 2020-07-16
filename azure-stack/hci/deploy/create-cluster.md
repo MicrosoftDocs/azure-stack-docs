@@ -95,7 +95,7 @@ Management adapters have two configuration options:
 
 By using teamed adapters, you have a single connection to multiple physical switches but only use a single IP address. Load-balancing becomes available and fault-tolerance is instant instead of waiting for DNS records to update.
 
-Lets begin:
+Let's begin:
 
 1. Select **Next: Networking**.
 1. Under **Verify the network adapters**, wait until green checkboxes appear next to each adapter, then select **Next**.
