@@ -26,6 +26,38 @@
     href: deploy/validate.md
 - name: Manage
   items:
+  - name: Register Windows Admin Center
+    href: manage/register-windows-admin-center.md
+  - name: Manage Azure registration
+    href: manage/manage-azure-registration.md
+  - name: Create volumes
+    href: manage/create-volumes.md
+  - name: Create stretched volumes
+    href: manage/create-stretched-volumes.md
+  - name: Extend volumes
+    href: manage/extend-volumes.md
+  - name: Delete volumes
+    href: manage/delete-volumes.md
+  - name: Replace drives
+    href: manage/replace-drives.md
+  - name: Manage clusters
+    href: manage/cluster.md
+  - name: Manage clusters with PowerShell
+    href: manage/cluster-powershell.md
+  - name: Change languages
+    href: manage/languages.md
+  - name: Add or remove servers
+    href: manage/add-cluster.md
+  - name: Use Azure Backup
+    href: manage/use-azure-backup.md
+  - name: Update cluster
+    href: manage/update-cluster.md
+  - name: Use Azure Site Recovery
+    href: manage/azure-site-recovery.md
+  - name: Use Azure Network Adapter
+    href: manage/use-azure-network-adapter.md
+  - name: Monitor with Azure Monitor
+    href: manage/azure-monitor.md
   - name: Manage VMs
     items:
     - name: Manage VMs
