@@ -18,6 +18,8 @@
     href: deploy/create-cluster.md
   - name: Create the cluster with PowerShell
     href: deploy/create-cluster-powershell.md
+  - name: Validate the cluster
+    href: deploy/validate.md
 - name: Manage
   items:
   - name: Register Windows Admin Center
