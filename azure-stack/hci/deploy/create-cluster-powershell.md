@@ -20,16 +20,16 @@ You have a choice between two cluster types:
 
 In this article, we will create an example cluster named Cluster1 that is comprised of four server nodes named Server1, Server2, Server3, and Server4.
 
-For the stretched cluster scenario, we will use ClusterS1 as the name and use the same four server nodes stretched across sites Site1 and Site2. 
+For the stretched cluster scenario, we will use ClusterS1 as the name and use the same four server nodes stretched across sites Site1 and Site2.
 
-For more information about stretched clusters, see [About stretched clusters](../concepts/stretched-clusters.md).
+For more information about stretched clusters, see [Stretched clusters overview](../concepts/stretched-clusters.md).
 
 ## Before you begin
 
 Before you begin, make sure you:
 
-- Have read the hardware and other requirements in [Before you start](before-you-start.md).
-- Install the Azure Stack HCI OS on each server in the cluster. See [Deploy Azure Stack HCI](create-cluster-powershell.md).
+- Have read the hardware and other requirements in [Before you deploy Azure Stack HCI](before-you-start.md).
+- Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
 - Have an account that’s a member of the local Administrators group on each server.
 - Have rights in Active Directory to create objects.
 
@@ -440,12 +440,13 @@ Congrats, you have now created a bare-bones cluster.
 
 Now that you are done, there are still some important tasks you need to complete in order to have a fully-functioning cluster:
 
-- Set up a cluster witness. See [Set up a cluster witness](witness.md).
+- Setup a cluster witness. See [Set up a cluster witness](witness.md).
 - Create your volumes. See [Create volumes](../manage/create-volumes.md).
-- For stretched clusters, create volumes and setup replication using Storage Replica. See the applicable section in [Create volumes](../manage/create-volumes.md).
+- For stretched clusters, create volumes and setup replication using Storage Replica. See [Create volumes and set up replication for stretched clusters](../manage/create-stretched-volumes.md).
 
 ## Next steps
 
-- Register your cluster with Azure. See [Register your cluster with Azure](create-cluster-powershell.md).
-- Do a final validation of the cluster. See [Validate the cluster](create-cluster-powershell.md).
+- Register your cluster with Azure. See [Manage Azure registration](manage-azure-registration.md).
+- Do a final validation of the cluster. See [Validate an Azure Stack HCI cluster](validate.md)
+- Provision your VMs. See [Manage VMs on Azure Stack HCI using PowerShell](../manage/vm-powershell.md).
 - You can also create a cluster using Windows Admin Center. See [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md).
