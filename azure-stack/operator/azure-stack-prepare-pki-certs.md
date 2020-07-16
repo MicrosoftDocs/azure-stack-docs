@@ -19,7 +19,7 @@ ms.lastreviewed: 09/16/2019
 
 The certificate files [obtained from your certificate authority (CA) of choice](azure-stack-get-pki-certs.md) must be imported and exported with properties matching Azure Stack Hub's certificate requirements.
 
-## Prepare certificates for deployment (with Azure Stack Readiness Checker)
+## Prepare certificates for deployment with Azure Stack Readiness Checker
 
 Use the Azure Stack Hub Readiness Checker tool to import, package and validate certificates ready for deployment or rotation.
 
@@ -30,7 +30,7 @@ Your system should meet the following prerequisites before packaging PKI certifi
 - Microsoft Azure Stack Hub Readiness Checker
 - Certificates returned from Certificate Authority in a single directory in .cer format (other configurable formats .cert, .sst or .pfx).
 - Windows 10 or Windows Server 2016 or later
-- Use the same system that generated the Certificate Signing Request. (Unless targeting pre certificate pre packaged into PFXs)
+- Use the same system that generated the Certificate Signing Request (unless you're targeting a certificate prepackaged into PFXs).
 
 ## Generate certificate signing requests for new deployments
 
