@@ -55,20 +55,20 @@ Select the following settings for Azure Backup:
 - **Location:** The Azure region where the Recovery Services Vault will be created. We recommend selecting the Azure region that is closest to the Windows Server that you're backing up.
 
 ### Step 3: Select backup items and schedule
-- Select the items that you want to back up from your server. Windows Admin Center lets you choose a combination of volumes and Windows System State, and provides an estimated size of the data that you've selected to back up.
+1. Select the items that you want to back up from your server. Windows Admin Center lets you choose a combination of volumes and Windows System State, and provides an estimated size of the data that you've selected to back up.
 
     > [!NOTE]
     > The first backup is a full backup of all the selected data. Subsequent backups are incremental and transfer only changes to the data that have occurred since the previous backup.
 
-- Select from multiple preset **Backup Schedules** for your Windows System State and volumes.
+1. Select from multiple preset **Backup Schedules** for your Windows System State and volumes.
 
 ### Step 4: Enter an encryption passphrase
-- Enter an **Encryption Passphrase** that has a minimum of 16 characters. Azure Backup secures your backup data with an encryption passphrase that you create and manage. The encryption passphrase is required to recover data from Azure Backup.
+1. Enter an **Encryption Passphrase** that has a minimum of 16 characters. Azure Backup secures your backup data with an encryption passphrase that you create and manage. The encryption passphrase is required to recover data from Azure Backup.
 
     > [!NOTE]
     > Store the passphrase in a secure offsite location, such as another server or the [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal). Microsoft does not store the passphrase and cannot retrieve or reset the passphrase if it is lost or forgotten.
 
-- Review all of the settings on the wizard page, and then select **Apply**.
+1. Review all of the settings on the wizard page, and then select **Apply**.
 
 Windows Admin Center then does the following operations:
 1. Creates an Azure Resource Group if one doesn't already exist.
