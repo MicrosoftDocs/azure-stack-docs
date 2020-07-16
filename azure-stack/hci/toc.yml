@@ -20,6 +20,8 @@
     href: deploy/create-cluster-powershell.md
   - name: Register with Azure
     href: deploy/register-with-azure.md
+  - name: Validate the cluster
+    href: deploy/validate.md
 - name: Manage
   items:
   - name: Register Windows Admin Center
