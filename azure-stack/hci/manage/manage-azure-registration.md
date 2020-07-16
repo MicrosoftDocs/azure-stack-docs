@@ -43,8 +43,11 @@ To grant consent, open portal.azure.com and sign in with an Azure account that h
 
 The app requires two permissions:
 
+```http
 https://azurestackhci-usage.trafficmanager.net/AzureStackHCI.Census.Sync
+
 https://azurestackhci-usage.trafficmanager.net/AzureStackHCI.Billing.Sync
+```
 
 Seeking approval from your Azure Active Directory administrator could take some time, so the `Register-AzureStackHCI` cmdlet will exit and leave the registration in status "pending admin consent," i.e. partially completed. Once consent has been granted, simply re-run `Register-AzureStackHCI` to complete registration.
 
