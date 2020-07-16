@@ -50,7 +50,7 @@ The three types of updates are released with the following cadence:
 
 - **OEM hardware vendor-provided updates**. OEM hardware vendors release their updates on an as-needed basis.
 
-To continue to receive support, you must keep your Azure Stack Hub environment on a supported Azure Stack Hub software version. For more information, see [Azure Stack Hub Servicing Policy](azure-stack-update-servicing-policy.md).
+To continue to receive support, you must keep your Azure Stack Hub environment on a supported Azure Stack Hub software version. For more information, see [Azure Stack Hub Servicing Policy](azure-stack-servicing-policy.md).
 
 ## How to know an update is available
 
