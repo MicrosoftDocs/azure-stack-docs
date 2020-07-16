@@ -1,4 +1,4 @@
-﻿---
+---
 title: Prepare Azure Stack Hub PKI certificates for deployment or rotation 
 titleSuffix: Azure Stack Hub
 description: Learn how to prepare PKI certificates for Azure Stack Hub integrated systems deployment or for rotating secrets in an existing Azure Stack Hub environment.
@@ -9,7 +9,7 @@ ms.author: inhenkel
 ms.reviewer: ppacent
 ms.lastreviewed: 09/16/2019
 
-# Intent: As an Azure Stack operator, I want to prepare my PKI certiciates for Azure Stack deployment.
+# Intent: As an Azure Stack operator, I want to prepare my PKI certificates for Azure Stack deployment.
 # Keyword: prepare PKI certificates azure stack
 
 ---
@@ -19,7 +19,112 @@ ms.lastreviewed: 09/16/2019
 
 The certificate files [obtained from your certificate authority (CA) of choice](azure-stack-get-pki-certs.md) must be imported and exported with properties matching Azure Stack Hub's certificate requirements.
 
-## Prepare certificates for deployment
+## Prepare certificates for deployment with Azure Stack Readiness Checker
+
+Use the Azure Stack Hub Readiness Checker tool to import, package and validate certificates ready for deployment or rotation.
+
+## Prerequisites
+
+Your system should meet the following prerequisites before packaging PKI certificates for an Azure Stack Hub deployment:
+
+- Microsoft Azure Stack Hub Readiness Checker
+- Certificates returned from Certificate Authority in a single directory in .cer format (other configurable formats .cert, .sst or .pfx).
+- Windows 10 or Windows Server 2016 or later
+- Use the same system that generated the Certificate Signing Request (unless you're targeting pre certificate prepackaged into PFXs).
+
+## Generate certificate signing requests for new deployments
+
+Use these steps to package certificates for new Azure Stack Hub PKI certificates:
+
+1. Install AzsReadinessChecker from a PowerShell prompt (5.1 or above), by running the following cmdlet:
+
+    ```powershell  
+        Install-Module Microsoft.AzureStack.ReadinessChecker
+    ```
+2. Declare the **Path** where the certificates reside on disk. For example:
+
+    ```powershell  
+        $Path = "$env:USERPROFILE\Documents\AzureStack"
+    ```
+
+3. Declare the **pfxPassword**. For example:
+
+    ```powershell  
+        $pfxPassword = Read-Host -AsSecureString -Prompt "PFX Password"
+    ```
+4. Declare the **ExportPath** where the resulting PFXs will be exported to. For example:
+
+    ```powershell  
+        $ExportPath = "$env:USERPROFILE\Documents\AzureStack"
+    ```
+
+5. Convert certificates to Azure Stack Hub Certificates. For example:
+
+    ```powershell  
+        ConvertTo-AzsPFX -Path $Path -pfxPassword $pfxPassword -ExportPath $ExportPath
+    ```
+8.  Review the output:
+
+    ```powershell  
+    ConvertTo-AzsPFX v1.2005.1286.272 started.
+
+    Stage 1: Scanning Certificates
+        Path: C:\Users\[*redacted*]\Documents\AzureStack Filter: CER Certificate count: 11
+        adminmanagement_east_azurestack_contoso_com_CertRequest_20200710235648.cer
+        adminportal_east_azurestack_contoso_com_CertRequest_20200710235645.cer
+        management_east_azurestack_contoso_com_CertRequest_20200710235644.cer
+        portal_east_azurestack_contoso_com_CertRequest_20200710235646.cer
+        wildcard_adminhosting_east_azurestack_contoso_com_CertRequest_20200710235649.cer
+        wildcard_adminvault_east_azurestack_contoso_com_CertRequest_20200710235642.cer
+        wildcard_blob_east_azurestack_contoso_com_CertRequest_20200710235653.cer
+        wildcard_hosting_east_azurestack_contoso_com_CertRequest_20200710235652.cer
+        wildcard_queue_east_azurestack_contoso_com_CertRequest_20200710235654.cer
+        wildcard_table_east_azurestack_contoso_com_CertRequest_20200710235650.cer
+        wildcard_vault_east_azurestack_contoso_com_CertRequest_20200710235647.cer
+
+    Detected ExternalFQDN: east.azurestack.contoso.com
+
+    Stage 2: Exporting Certificates
+        east.azurestack.contoso.com\Deployment\ARM Admin\ARMAdmin.pfx
+        east.azurestack.contoso.com\Deployment\Admin Portal\AdminPortal.pfx
+        east.azurestack.contoso.com\Deployment\ARM Public\ARMPublic.pfx
+        east.azurestack.contoso.com\Deployment\Public Portal\PublicPortal.pfx
+        east.azurestack.contoso.com\Deployment\Admin Extension Host\AdminExtensionHost.pfx
+        east.azurestack.contoso.com\Deployment\KeyVaultInternal\KeyVaultInternal.pfx
+        east.azurestack.contoso.com\Deployment\ACSBlob\ACSBlob.pfx
+        east.azurestack.contoso.com\Deployment\Public Extension Host\PublicExtensionHost.pfx
+        east.azurestack.contoso.com\Deployment\ACSQueue\ACSQueue.pfx
+        east.azurestack.contoso.com\Deployment\ACSTable\ACSTable.pfx
+        east.azurestack.contoso.com\Deployment\KeyVault\KeyVault.pfx
+
+    Stage 3: Validating Certificates.
+
+    Validating east.azurestack.contoso.com-Deployment-AAD certificates in C:\Users\[*redacted*]\Documents\AzureStack\east.azurestack.contoso.com\Deployment 
+
+    Testing: KeyVaultInternal\KeyVaultInternal.pfx
+    Thumbprint: E86699****************************4617D6
+        PFX Encryption: OK
+        Expiry Date: OK
+        Signature Algorithm: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Length: OK
+        Parse PFX: OK
+        Private Key: OK
+        Cert Chain: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Testing: ARM Public\ARMPublic.pfx
+        ...
+    Log location (contains PII): C:\Users\[*redacted*]\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+    ConvertTo-AzsPFX Completed
+    ```
+    > [!NOTE]
+    > For additional usage use Get-help ConvertTo-AzsPFX -Full for further usage such as disabling validation or filtering for different certificate formats.
+
+    Following a successful validation certificates can be presented for Deployment or Rotation without any additional steps.
+
+## Prepare certificates for deployment (manual steps)
 
 Use the following steps to prepare and validate the Azure Stack Hub PKI certificates that will be used for deploying a new Azure Stack Hub environment or for rotating secrets in an existing Azure Stack Hub environment.
 
