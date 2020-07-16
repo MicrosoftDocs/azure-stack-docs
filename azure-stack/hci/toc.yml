@@ -26,6 +26,8 @@
     href: deploy/register-with-azure.md
   - name: Validate the cluster
     href: deploy/validate.md
+- name: Manage
+  items:
   - name: Manage VMs
     items:
     - name: Manage VMs
