@@ -40,13 +40,10 @@
     href: manage/languages.md
   - name: Add or remove servers
     href: manage/add-cluster.md
-<<<<<<< HEAD
   - name: Use Azure Backup
     href: manage/use-azure-backup.md
-=======
   - name: Update cluster
     href: manage/update-cluster.md
->>>>>>> a4616e648e26435018948c94b3ac320ce9c00d01
   - name: Use Azure Site Recovery
     href: manage/azure-site-recovery.md
   - name: Use Azure Network Adapter
