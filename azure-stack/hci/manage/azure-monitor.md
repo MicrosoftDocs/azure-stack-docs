@@ -4,7 +4,7 @@ description: Monitor servers and configure alerts with Azure Monitor from Window
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 06/30/2020
+ms.date: 07/21/2020
 ---
 
 # Monitor Azure Stack HCI with Azure Monitor
@@ -19,7 +19,7 @@ Data generated from on-premises Windows Servers is collected in a Log Analytics 
 
 When you enable a monitoring solution in a Log Analytics workspace, all the servers reporting to that workspace will start collecting data relevant to that solution, so that the solution can generate insights for all the servers in the workspace.
 
-To collect telemetry data on an on-premises server and push it to the Log Analytics workspace, Azure Monitor requires the installation of the Microsoft Monitoring Agent (MMA). Certain monitoring solutions also require a secondary agent. For example, Azure Monitor for VMs also depends on a ServiceMap agent for additional functionality that this solution provides.
+To collect diagnostic data on an on-premises server and push it to the Log Analytics workspace, Azure Monitor requires the installation of the Microsoft Monitoring Agent (MMA). Certain monitoring solutions also require a secondary agent. For example, Azure Monitor for VMs also depends on a ServiceMap agent for additional functionality that this solution provides.
 
 Some solutions, like Azure Update Management, also depend on Azure Automation, which enables you to centrally manage resources across Azure and non-Azure environments. For example, Azure Update Management uses Azure Automation to schedule and orchestrate installation of updates across machines in your environment, centrally, from the Azure portal.
 

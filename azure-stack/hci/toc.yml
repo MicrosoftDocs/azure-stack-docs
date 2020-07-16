@@ -18,10 +18,14 @@
     href: deploy/create-cluster.md
   - name: Create the cluster with PowerShell
     href: deploy/create-cluster-powershell.md
+  - name: Register with Azure
+    href: deploy/register-with-azure.md
 - name: Manage
   items:
   - name: Register Windows Admin Center
     href: manage/register-windows-admin-center.md
+  - name: Manage Azure registration
+    href: manage/manage-azure-registration.md
   - name: Create volumes
     href: manage/create-volumes.md
   - name: Create stretched volumes

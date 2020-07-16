@@ -31,6 +31,23 @@ Once the cluster is registered, you can see the `ConnectionStatus` and `LastConn
 
 If that maximum period is exceeded, the `ConnectionStatus` will show `OutOfPolicy`.
 
+## Azure Active Directory permissions
+
+In addition to creating an Azure resource in your subscription, registering Azure Stack HCI creates an app identity, conceptually similar to a user, in your Azure Active Directory tenant. The app identity inherits the cluster name. This identity acts on behalf on the Azure Stack HCI cloud service, as appropriate, within your subscription.
+
+If the user who runs `Register-AzureStackHCI` is an Azure Active Directory administrator or has been delegated sufficient permissions, this all happens automatically, and no additional action is required. If not, approval may be needed from your AAD administrator to complete registration. Your AAD administrator can either explicitly grant consent to the app, or they can delegate permissions so that you can grant consent to the app:
+
+:::image type="content" source="media/manage-azure-registration/aad-permissions.png" alt-text="Azure Active Directory permissions and identity diagram" border="false":::
+
+To grant consent, open portal.azure.com and sign in with an Azure account that has sufficient permissions on the Azure Active Directory. Navigate to **Azure Active Directory**, then **App registrations**. Select the app identity named after your cluster and navigate to **API permissions**.
+
+The app requires two permissions:
+
+https://azurestackhci-usage.trafficmanager.net/AzureStackHCI.Census.Sync
+https://azurestackhci-usage.trafficmanager.net/AzureStackHCI.Billing.Sync
+
+Seeking approval from your Azure Active Directory administrator could take some time, so the `Register-AzureStackHCI` cmdlet will exit and leave the registration in status "pending admin consent," i.e. partially completed. Once consent has been granted, simply re-run `Register-AzureStackHCI` to complete registration.
+
 ## Unregister Azure Stack HCI with Azure
 
 When you're ready to decommission your Azure Stack HCI cluster, use the `Unregister-AzureStackHCI` cmdlet to unregister. This stops all monitoring, support, and billing functionality through Azure Arc. The Azure resource representing the cluster and the Azure Active Directory app identity are deleted, but the resource group is not, because it may contain other unrelated resources.
