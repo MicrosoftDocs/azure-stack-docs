@@ -115,7 +115,7 @@ In the API Model json file, please specify the release and version values under 
 -   Ensure pod-security-policy is the first addon loaded ([#3313](https://github.com/Azure/aks-engine/issues/3313))
 -   Update Azure CNI version to v1.1.0 ([#3075](https://github.com/Azure/aks-engine/issues/3075)) (preview)
 -   Add features and fixes to support Windows containers in Azure Stack Hub (preview):
-    -   Fix to Windows version collection ([#2954](https://github.com/Azure/aks-engine/issues/2954))
+    -   Fix to Windows version collection ([#2954](https://github.com/Azure/aks-engine/pull/2954))
     -   Update Azure Stack Windows binaries component name ([#3231](https://github.com/Azure/aks-engine/issues/3231))
     -   Update Windows image validate on Azure Stack Hub ([#3260](https://github.com/Azure/aks-engine/issues/3260))
     -   Update Windows VHDs to include May patches ([#3263](https://github.com/Azure/aks-engine/issues/3263))
