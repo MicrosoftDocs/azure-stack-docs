@@ -298,12 +298,8 @@
         href: app-service-billing-faq.md
       - name: Prerequisites
         href: azure-stack-app-service-before-you-get-started.md
-      - name: Deployment
-        items:
-        - name: Deploy App Service
-          href: azure-stack-app-service-deploy.md
-        - name: Deploy App Service for high availability
-          href: app-service-deploy-ha.md
+      - name: Deploy App Service
+        href: azure-stack-app-service-deploy.md
       - name: Life cycle management 
         items:
         - name: Update App Service
