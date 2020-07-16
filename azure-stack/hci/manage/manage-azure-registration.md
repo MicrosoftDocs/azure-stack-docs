@@ -35,7 +35,7 @@ If that maximum period is exceeded, the `ConnectionStatus` will show `OutOfPolic
 
 In addition to creating an Azure resource in your subscription, registering Azure Stack HCI creates an app identity, conceptually similar to a user, in your Azure Active Directory tenant. The app identity inherits the cluster name. This identity acts on behalf on the Azure Stack HCI cloud service, as appropriate, within your subscription.
 
-If the user who runs `Register-AzureStackHCI` is an Azure Active Directory administrator or has been delegated sufficient permissions, this all happens automatically, and no additional action is required. If not, approval may be needed from your AAD administrator to complete registration. Your AAD administrator can either explicitly grant consent to the app, or they can delegate permissions so that you can grant consent to the app:
+If the user who runs `Register-AzureStackHCI` is an Azure Active Directory administrator or has been delegated sufficient permissions, this all happens automatically, and no additional action is required. If not, approval may be needed from your Azure Active Directory administrator to complete registration. Your administrator can either explicitly grant consent to the app, or they can delegate permissions so that you can grant consent to the app:
 
 :::image type="content" source="media/manage-azure-registration/aad-permissions.png" alt-text="Azure Active Directory permissions and identity diagram" border="false":::
 

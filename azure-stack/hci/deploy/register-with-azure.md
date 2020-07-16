@@ -37,7 +37,7 @@ You can use an existing subscription of any type:
 
 ### Azure Active Directory permissions
 
-You'll need Azure Active Directory permissions to complete the registration process. If you don't already have them, ask your Azure AD administrator to grant permissions or delegate them to you. See [Manage Azure registration](../manage/manage-azure-registration.md) for more information.
+You'll need Azure Active Directory permissions to complete the registration process. If you don't already have them, ask your Azure AD administrator to grant permissions or delegate them to you. See [Manage Azure registration](../manage/manage-azure-registration.md#azure-active-directory-permissions) for more information.
 
 ## Register using PowerShell
 
@@ -69,11 +69,11 @@ If you ran Register-AzureStackHCI remotely from an operating system with Desktop
 
 If you ran Register-AzureStackHCI locally on the Azure Stack HCI operating system, which is unable to render an interactive Azure login window, you’ll be prompted to visit microsoft.com/devicelogin on another device (like your PC or phone), enter the code, and sign in there. This is the same experience Microsoft uses for other devices with limited input modalities, like Xbox.
 
-The registration workflow will detect when you’ve logged in and proceed to completion. You should nthen be able to see your cluster in the Azure portal.
+The registration workflow will detect when you’ve logged in and proceed to completion. You should then be able to see your cluster in the Azure portal.
 
 ## Next steps
 
 You are now ready to:
 
-- Validate the cluster
+- [Validate the cluster](validate.md)
 - [Create volumes](../manage/create-volumes.md)
