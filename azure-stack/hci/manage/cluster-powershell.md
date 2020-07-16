@@ -131,6 +131,28 @@ This example enables Storage Spaces Direct on Server1:
 Enable-ClusterStorageSpacesDirect -CimSession Cluster1
 ```
 
+## Configure a Hyper-V host
+
+Use the `Set-VMHost` cmdlet to configure various Hyper-V host settings, such as VHD and VM paths, live migrations, storage migrations, authentication, NUMA spanning and others. For more examples and usage information, see the [Enable-ClusterStorageSpacesDirect](https://docs.microsoft.com/powershell/module/hyper-v/Set-VMHost?view=win10-ps) reference documentation.
+
+This example specifies new default locations for virtual hard disks and VMs on host server Server1:
+
+```powershell
+Set-VMHost -ComputerName Server1 -VirtualHardDiskPath "C:\Hyper-V\Virtual Hard Disks" -VirtualMachinePath "C:\Hyper-V\Configuration Files"
+```
+
+This example configures host server Server1 to allow 10 simultaneous live migrations and storage migrations:
+
+```powershell
+Set-VMHost -ComputerName Server1 -MaximumVirtualMachineMigrations 10 -MaximumStorageMigrations 10
+```
+
+This example configures host server Server1 to use Kerberos to authenticate incoming live migrations:
+
+```powershell
+Set-VMHost -ComputerName Server1 -VirtualMachineMigrationAuthenticationType Kerberos
+```
+
 ## Remove cluster and resources
 
 Use the `Remove-ClusterResource` cmdlet to remove one or all resources on a cluster. For more examples and usage information, see the [Remove-ClusterResource](https://docs.microsoft.com/powershell/module/failoverclusters/remove-clusterresource?view=win10-ps) reference documentation.
@@ -152,5 +174,5 @@ Remove-Cluster -Cluster Cluster1
 
 ## Next steps
 
-- Configure various Hyper-V host settings such as VM paths and migrations. See the [Set-VMHost](https://docs.microsoft.com/powershell/module/hyper-v/Set-VMHost?view=win10-ps) reference documentation.
-- Manage your clusters using Windows Admin Center. See [Manage clusters on Azure Stack HCI using Windows Admin Center](cluster.md).
+- You should validate the cluster afterwards. See [Validate the cluster](cluster-powershell.md) for more information.
+- Learn how to manage your clusters using Windows Admin Center. See [Manage clusters on Azure Stack HCI using Windows Admin Center](cluster.md).
