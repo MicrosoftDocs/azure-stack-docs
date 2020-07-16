@@ -127,30 +127,6 @@ To learn more about resolving errors that the Validate-DCB tool identifies, see 
 
 > [!VIDEO https://www.youtube.com/embed/cC1uACvhPBs]
 
-You can also use Windows PowerShell to run validation tests on your server cluster and view the results. You can run tests both before and after a cluster is set up.
-
-To run a validation test on a server cluster, issue the **Get-Cluster** and **Test-Cluster** <server clustername> PowerShell cmdlets from your management PC, or run only the **Test-Cluster** cmdlet directly on the cluster:
-
-```PowerShell
-$Cluster = Get-Cluster -Name 'server-cluster1'
-Test-Cluster -InputObject $Cluster -Verbose
-```
-
-For more examples and usage information, see the [Test-Cluster](https://docs.microsoft.com/powershell/module/failoverclusters/test-cluster?view=win10-ps) reference documentation.
-
-### View validation reports
-Now you're ready to view your cluster validation report.
-
-There are a couple ways to access validation reports:
-- On the **Inventory** page, expand the **More** submenu, and then select **View validation reports**.
-
-
-- At the top right of **Windows Admin Center**, select the **Notifications** bell icon to display the **Notifications** pane.
-Select the **Successfully validated cluster** notice, and then select **Go to Failover Cluster validation report**.
-
-> [!NOTE]
-> The server cluster validation process may take some time to complete. Don't switch to another tool in Windows Admin Center while the process is running. In the **Notifications** pane, a status bar below your **Validate cluster** notice indicates when the process is done.
-
 ## Validate the cluster
 Use the following steps to validate the servers in an existing cluster in Windows Admin Center.
 
@@ -159,7 +135,6 @@ Use the following steps to validate the servers in an existing cluster in Window
     The **Cluster Manager Dashboard** displays overview information about the cluster.
 
 1. On the **Cluster Manager Dashboard**, under **Tools**, select **Servers**.
-1. On the **Servers** page, select the **Inventory** tab.
 1. On the **Inventory** page, select the servers in the cluster, then expand the **More** submenu and select **Validate cluster**.
 1. On the **Validate Cluster** pop-up window, select **Yes**.
 
@@ -178,6 +153,31 @@ After your server cluster is successfully validated, you'll need to disable the 
 1. On the **Overview** page, select **Disable CredSSP**, and then on the **Disable CredSSP** pop-up window, select **Yes**.
 
     The result of Step 2 removes the red **CredSSP ENABLED** banner at the top of the server's **Overview** page, and disables CredSSP on the other servers.
+
+### View validation reports
+Now you're ready to view your cluster validation report.
+
+There are a couple ways to access validation reports:
+- On the **Inventory** page, expand the **More** submenu, and then select **View validation reports**.
+
+
+- At the top right of **Windows Admin Center**, select the **Notifications** bell icon to display the **Notifications** pane.
+Select the **Successfully validated cluster** notice, and then select **Go to Failover Cluster validation report**.
+
+> [!NOTE]
+> The server cluster validation process may take some time to complete. Don't switch to another tool in Windows Admin Center while the process is running. In the **Notifications** pane, a status bar below your **Validate cluster** notice indicates when the process is done.
+
+## Validate the cluster using PowerShell
+You can also use Windows PowerShell to run validation tests on your server cluster and view the results. You can run tests both before and after a cluster is set up.
+
+To run a validation test on a server cluster, issue the **Get-Cluster** and **Test-Cluster** <server clustername> PowerShell cmdlets from your management PC, or run only the **Test-Cluster** cmdlet directly on the cluster:
+
+```PowerShell
+$Cluster = Get-Cluster -Name 'server-cluster1'
+Test-Cluster -InputObject $Cluster -Verbose
+```
+
+For more examples and usage information, see the [Test-Cluster](https://docs.microsoft.com/powershell/module/failoverclusters/test-cluster?view=win10-ps) reference documentation.
 
 ## Validate replication for Storage Replica
 If you're using Storage Replica to replicate volumes in a stretched cluster or cluster-to-cluster, there are there are several events and cmdlets that you can use to get the state of replication. 
