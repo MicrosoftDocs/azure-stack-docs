@@ -178,7 +178,7 @@ OK, now here are the other tasks you will need to do:
 
 ## Next steps
 
-- Register your cluster with Azure. See [Manage Azure registration](manage-azure-registration.md).
+- Register your cluster with Azure. See [Manage Azure registration](../manage/manage-azure-registration.md).
 - Do a final validation of the cluster. See [Validate an Azure Stack HCI cluster](validate.md)
 - Provision your VMs. See [Manage VMs on Azure Stack HCI using Windows Admin Center](../manage/vm.md).
 - You can also create a cluster using PowerShell. See [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md).
