@@ -11,7 +11,7 @@ ms.date: 07/21/2020
 
 > Applies to Azure Stack HCI v20H2
 
-Once you've created an Azure Stack HCI cluster, you must [register the cluster with Azure Arc](../deploy/register-with-azure.md). Once the cluster is registered, it periodically syncs information between the on-premises cluster and the cloud. This topic explains how to understand your registration status and unregister your cluster if necessary.
+Once you've created an Azure Stack HCI cluster, you must [register the cluster with Azure Arc](../deploy/register-with-azure.md). Once the cluster is registered, it periodically syncs information between the on-premises cluster and the cloud. This topic explains how to understand your registration status and unregister your cluster when you're ready to decommission it.
 
 ## Understanding registration status
 
