@@ -1,5 +1,5 @@
 ---
-title: About stretched clusters
+title: Stretched clusters overview
 description: Learn about stretched clusters
 author: v-dasis
 ms.topic: how-to
@@ -8,7 +8,7 @@ ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
 
-# About stretched clusters
+# Stretched clusters overview
 
 > Applies to Azure Stack HCI, version v20H2
 
