@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 07/16/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 07/15/2020
@@ -59,8 +59,6 @@ The Azure Stack Hub 2005 update build number is **1.2005.x.xx**.
 The Azure Stack Hub 2005 update build type is **Full**.
 
 The 2005 update package is larger in size compared to previous updates. The increased size results in longer download times. The update will remain in the **Preparing** state for a long time, and operators can expect this process to take longer than with previous updates. The 2005 update has had the following expected runtimes in our internal testing- 4 nodes: 9-16 hours, 8 nodes: 12-22 hours, 12 nodes: 15-28 hours, 16 nodes: 18-34 hours. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2005 update and should not be compared to other Azure Stack Hub updates.
-
-From 2005 release, when you update to a new major version (i.e. 1.2002.x to 1.2005.x), the latest hotfixes in the new major version will be installed automatically. 
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
@@ -129,10 +127,12 @@ You can download the Azure Stack Hub 2005 update package from [the Azure Stack H
 
 ## Hotfixes
 
-Azure Stack Hub releases hotfixes on a regular basis. Be sure to install the latest Azure Stack Hub hotfix for 2002 before updating Azure Stack Hub to 2005.
+Azure Stack Hub releases hotfixes on a regular basis. Starting with the 2005 release, when you update to a new major version (for example, 1.2002.x to 1.2005.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
 
 > [!NOTE]
 > Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
+
+For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
 
@@ -140,14 +140,14 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2005 release of Azure Stack Hub must be applied on the 2002 release with the following hotfixes:
 
-<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
 - [Azure Stack Hub hotfix 1.2002.52.142](https://support.microsoft.com/help/4571140)
 
 ### After successfully applying the 2005 update
 
-After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
+Starting with the 2005 release, when you update to a new major version (for example, 1.2002.x to 1.2005.x), the latest hotfixes (if any) in the new major version are installed automatically.
 
-<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
+After the installation of 2005, if any 2005 hotfixes are subsequently released, you should install them:
+
 - No Azure Stack Hub hotfix available for 2005.
 ::: moniker-end
 
