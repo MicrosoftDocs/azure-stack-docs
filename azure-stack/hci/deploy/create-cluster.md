@@ -91,7 +91,9 @@ Management adapters have two configuration options:
 
 - Physical adapter - if the selected adapter uses DHCP addressing, it is used.
 
-- Teamed-up adapters (for virtual switch creation) - if the selected adapters use DHCP addressing (either for one or both), the DHCP IP address would be assigned as static IP addresses for these adapters.
+- Teamed adapters (for virtual switch creation) - if the selected adapters use DHCP addressing (either for one or both), the DHCP IP address would be assigned as static IP addresses for these adapters.
+
+By using teamed adapters, you have a single connection to multiple physical switches but only use a single IP address. Load-balancing becomes available and fault-tolerance is instant instead of waiting for DNS records to update.
 
 Lets begin:
 
