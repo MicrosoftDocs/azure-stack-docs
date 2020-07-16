@@ -49,7 +49,7 @@ There are two settings you can change related to Storage Spaces Direct that can 
 
         :::image type="content" source="media/manage-cluster/cluster-settings-ssd.png" alt-text="cluster Storage Spaces Direct screen" lightbox="media/manage-cluster/cluster-settings-ssd.png":::
 
-1. To use server memory to cache frequent reads, select **In-memory cache** and specify the maximum memory to be used per sever. Also see [Using Storage Spaces Direct with the CSV in-memory read cache](https://docs.microsoft.com/windows-server/storage/storage-spaces/csv-cache).
+1. To use server memory to cache frequent reads, select **In-memory cache** and specify the maximum memory to be used per sever. Also see [Understanding the cache in Azure Stack HCI](../concepts/cache.md).
 
     :::image type="content" source="media/manage-cluster/cluster-settings-memory.png" alt-text="cluster In-memory cache screen" lightbox="media/manage-cluster/cluster-settings-memory.png":::
 
@@ -90,7 +90,7 @@ There are five general settings that can be applied to your cluster. Here is whe
    - **Disk witness** - to use a disk resource as witness (do not use for stretched clusters)
    - **File share witness** - to use a file share as witness
 
-        For more information, see [Configure and manage quorum](https://docs.microsoft.com/windows-server/failover-clustering/manage-cluster-quorum).
+        For more information, see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).
 
         :::image type="content" source="media/manage-cluster/cluster-settings-witness.png" alt-text="cluster Witness screen" lightbox="media/manage-cluster/cluster-settings-witness.png":::
 
@@ -134,4 +134,4 @@ There are five Hyper-V host settings that can be applied to your cluster.
 
 ## Next steps
 
-- To monitor your cluster performance, see [Monitor cluster performance](https://docs.microsoft.com/azure-stack/hci/get-started#monitor-cluster-performance-with-the-windows-admin-center-dashboard).
+- To monitor your cluster, see [Monitor Azure Stack HCI with Azure Monitor](azure-monitor.md).

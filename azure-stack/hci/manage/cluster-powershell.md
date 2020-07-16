@@ -174,5 +174,5 @@ Remove-Cluster -Cluster Cluster1
 
 ## Next steps
 
-- You should validate the cluster afterwards. See [Validate the cluster](cluster-powershell.md) for more information.
+- You should validate the cluster afterwards after making changes. See [Validate an Azure Stack HCI cluster](../deploy/validate.md) for more information.
 - Learn how to manage your clusters using Windows Admin Center. See [Manage clusters on Azure Stack HCI using Windows Admin Center](cluster.md).
