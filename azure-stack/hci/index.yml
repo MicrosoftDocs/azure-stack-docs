@@ -36,13 +36,15 @@ landingContent:
           - text: Before you start
             url: deploy/before-you-start.md
           - text: Deploy the Azure Stack HCI operating system
-            url: deploy/before-you-start.md
+            url: deploy/operating-system.md
           - text: Create cluster
-            url: deploy/before-you-start.md
+            url: deploy/create-cluster.md
+          - text: Setup a cluster witness
+            url: deploy/witness.md
           - text: Register with Azure
-            url: deploy/before-you-start.md
+            url: deploy/register-with-azure.md
           - text: Validate an Azure Stack HCI cluster
-            url: deploy/before-you-start.md 
+            url: deploy/validate.md 
 
   # Card
   - title: Manage storage
@@ -51,6 +53,8 @@ landingContent:
         links:
           - text: Create volumes
             url: manage/create-volumes.md
+          - text: Create stretched volumes
+            url: manage/create-stretched-volumes.md
           - text: Extend volumes
             url: manage/extend-volumes.md
           - text: Delete volumes
@@ -93,29 +97,33 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
+          - text: Stretched clusters
+            url: concepts/stretched-clusters.md
+          - text: Billing
+            url: concepts/billing.md
+          - text: Updates and upgrades
+            url: concepts/updates.md
           - text: Choose drives
             url: concepts/choose-drives.md
           - text: Plan volumes
             url: concepts/plan-volumes.md
-          - text: Understand the cache
-            url: concepts/cache.md
           - text: Fault tolerance and storage efficiency
             url: concepts/fault-tolerance.md
-          - text: Cluster and storage pool quorum
-            url: concepts/quorum.md
           - text: Security considerations
-            url: concepts/quorum.md
+            url: concepts/security.md
 
   # Card 
   - title: Connect to Azure
     linkLists:
       - linkListType: how-to-guide
         links:
+          - text: Register Windows Admin Center with Azure
+            url: manage/register-windows-admin-center.md
           - text: Use Azure Site Recovery
             url: manage/azure-site-recovery.md
           - text: Monitor with Azure Monitor
             url: manage/azure-monitor.md
           - text: Use Azure Network Adapter
-            url: manage/azure-monitor.md
+            url: manage/use-azure-network-adapter.md
           - text: Use Azure Backup
-            url: manage/azure-monitor.md
+            url: manage/use-azure-backup.md

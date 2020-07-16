@@ -15,7 +15,9 @@ Azure Stack HCI is an Azure service that goes on your Azure subscription bill ju
 
 ## What does Azure Stack HCI charge for?
 
-Azure Stack HCI's cloud-style billing model is consistent, familiar, and easy for customers already using Azure or any other cloud service. Billing is based on a flat rate of **$10/month per physical processor core after the preview ends** in an Azure Stack HCI cluster (additional usage charges apply if you use other Azure services). There is no charge during the public preview. It's different from a usage-based or consumption-based billing that's based on the number of VMs. While the number of virtual processor cores (VCPUs) may vary over the course of the month, it doesn't affect the price you pay for Azure Stack HCI: you still pay based on the number of physical cores that are present in the cluster.
+Azure Stack HCI's cloud-style billing model is consistent, familiar, and easy for customers already using Azure or any other cloud service. There is no charge during the public preview. After the preview ends, billing will be based on a flat rate per physical processor core in an Azure Stack HCI cluster (additional usage charges apply if you use other Azure services).
+
+The pricing model is different from a usage-based or consumption-based billing that's based on the number of VMs. While the number of virtual processor cores (VCPUs) may vary over the course of the month, it doesn't affect the price you pay for Azure Stack HCI: you still pay based on the number of physical cores that are present in the cluster.
 
 ## Advantages of the Azure Stack HCI billing model
 
@@ -23,11 +25,11 @@ Azure Stack HCI's cloud-style billing model is consistent, familiar, and easy fo
 - It rewards customers who run their virtualization infrastructure more efficiently, with higher virtual-to-physical density.
 - It’s easy to figure out how much your on-premises Azure Stack HCI deployment will cost, and costs scale predictably from the network edge to the data center.
 
-## How core usage is assessed
+## How the number of processor cores is assessed
 
-To assess how many cores are present in a cluster, Azure Stack HCI periodically checks the number of physical cores and reports them to Azure. If you're only occasionally connected or your connection is interrupted, don't worry; it can always try again later. Days or weeks of usage data can be uploaded at once. **Customers must connect to Azure at least once every 30 days to allow for metering and billing.**
+To determine how many cores are present in a cluster, Azure Stack HCI periodically checks the number of physical cores and reports them to Azure. If you're only occasionally connected or your connection is interrupted, don't worry; it can always try again later. Days or weeks of core data can be uploaded at once. Customers must connect to Azure at least once every 30 days to allow for billing.
 
-To manually upload core usage data to Azure, use the **`Sync-AzureStackHCI`** cmdlet.
+To manually upload core data to Azure, use the **`Sync-AzureStackHCI`** cmdlet.
 
 ## FAQ
 

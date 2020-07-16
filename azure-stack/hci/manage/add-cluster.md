@@ -60,4 +60,4 @@ Anytime you add or remove a server node from a cluster, be sure and run a cluste
 
 ## Next steps
 
-- You should validate the cluster after adding or removing node. See [Validate the cluster](add-cluster.md).
+- You should validate the cluster after adding or removing node. See [Validate the cluster](../deploy/validate.md) for more information.
