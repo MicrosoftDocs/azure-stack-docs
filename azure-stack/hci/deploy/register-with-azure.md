@@ -76,4 +76,4 @@ The registration workflow will detect when you’ve logged in and proceed to com
 You are now ready to:
 
 - Validate the cluster
-- [Create volumes](create-volumes.md)
+- [Create volumes](../manage/create-volumes.md)
