@@ -20,7 +20,9 @@ You have a choice between two cluster types:
 
 In this article, we will create an example cluster named Cluster1 that is comprised of four server nodes named Server1, Server2, Server3, and Server4.
 
-For the stretched cluster scenario, we will use ClusterS1 as the name and use the same four server nodes stretched across sites Site1 and Site2.
+For the stretched cluster scenario, we will use ClusterS1 as the name and use the same four server nodes stretched across sites Site1 and Site2. 
+
+For more information about stretched clusters, see [About stretched clusters](../concepts/stretched-clusters.md).
 
 ## Before you begin
 
@@ -171,8 +173,11 @@ A virtual switch is needed for each server node in your cluster. In the followin
 ```powershell
 $Servers = "Server1", "Server2", "Server3", "Server4"
 $vSwitchName="vSwitch"
+```
 
-#Create virtual switch
+And to create the virtual switch:
+
+```powershell
 Invoke-Command -ComputerName $Servers -ScriptBlock {New-VMSwitch -Name $using:vSwitchName -EnableEmbeddedTeaming $TRUE -EnableIov $true -NetAdapterName (Get-NetAdapter | Where-Object Status -eq Up ).InterfaceAlias}
 ```
 

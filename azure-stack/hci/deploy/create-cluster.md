@@ -19,6 +19,8 @@ You have a choice between creating two cluster types:
 - Standard cluster with at least two server nodes, residing in a single site.
 - Stretched cluster with at least four server nodes that span across two sites, with at least two nodes per site.
 
+For more information about stretched clusters, see [About stretched clusters](../concepts/stretched-clusters.md).
+
 ## Before you run the wizard
 
 Before you run the Create Cluster wizard, make sure you:
