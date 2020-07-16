@@ -167,4 +167,4 @@ Windows Admin Center is a locally deployed, browser-based app for managing Azure
 
 Advance to the next article to learn how to deploy the Azure Stack HCI operating system.
 > [!div class="nextstepaction"]
-> [Deploy the operating system](before-you-start.md)
+> [Deploy the Azure Stack HCI operating system](operating-system.md)
