@@ -5,7 +5,7 @@
   - name: What is Azure Stack HCI?
     href: overview.md
 - name: Get started
-  items:
+  href: get-started.md
 - name: Manage
   items:
   - name: Create volumes
