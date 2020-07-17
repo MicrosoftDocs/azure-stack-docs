@@ -100,7 +100,9 @@ Azure Stack HCI is a world-class, integrated virtualization stack built on prove
 
 ## What you need for Azure Stack HCI
 
-To get started, determine your hardware requirements, simply purchase validated hardware (from 2 to 16 server nodes) from your preferred Microsoft hardware partner. Then, [download](https://azure.microsoft.com/products/azure-stack/hci/) the Azure Stack HCI operating system. If you don't already have one, [get an Azure subscription](https://azure.microsoft.com/) to enable billing and access to Azure services.
+To get started, [determine your hardware requirements](deploy/before-you-start.md#determine-hardware-requirements), then simply purchase validated hardware (from 2 to 16 server nodes) from your preferred Microsoft hardware partner. Then, [download](https://azure.microsoft.com/products/azure-stack/hci/) the Azure Stack HCI operating system. If you don't already have one, [get an Azure subscription](https://azure.microsoft.com/) to enable billing and access to Azure services.
+
+Azure Stack HCI, version 20H2 requires a least an intermittent (at least every 30 days) connection to the Internet with HTTPS outbound traffic allowed to the following endpoint: *-azurestackhci-usage.azurewebsites.net.
 
 ## Hardware partners
 
@@ -114,7 +116,7 @@ There are a variety of Microsoft partners working on software that extends the c
 
 ## Licensing, billing, and pricing
 
-Azure Stack HCI billing is based on a monthly subscription fee per physical processor core, not a perpetual license. When customers connect to Azure, the number of cores used can be uploaded and assessed for billing purposes. Cost doesn’t vary with consumption beyond the physical processor cores, meaning that more VMs don’t cost more, and customers who are able to run denser virtual environments are rewarded.
+Azure Stack HCI billing is based on a monthly subscription fee per physical processor core, not a perpetual license. When customers connect to Azure, the number of cores used will automatically be uploaded and assessed for billing purposes. Cost doesn’t vary with consumption beyond the physical processor cores, meaning that more VMs don’t cost more, and customers who are able to run denser virtual environments are rewarded.
 
 Customers can either purchase validated servers from a hardware partner with the Azure Stack HCI operating system pre-installed, or they can buy validated bare metal servers from an OEM and download the Azure Stack HCI operating system from the Azure portal.
 
@@ -145,7 +147,7 @@ Azure Stack HCI features the same Hyper-V-based software-defined compute, storag
 
 With Azure Stack Hub, you run cloud services on-premises. You can run Azure IaaS and PaaS services on-premises to consistently build and run cloud apps anywhere, managed with the Azure portal on-premises.
 
-With Azure Stack HCI, you run virtualized workloads on-premises, managed with Windows Admin Center and familiar Windows Server tools. You can optionally connect to Azure for hybrid scenarios like cloud-based Site Recovery, monitoring, and others.
+With Azure Stack HCI, you run virtualized workloads on-premises, managed with Windows Admin Center and familiar Windows Server tools. You can also connect to Azure for hybrid scenarios like cloud-based Site Recovery, monitoring, and others.
 
 ### Why is Microsoft bringing its HCI offering to the Azure Stack family?
 
@@ -153,9 +155,9 @@ Microsoft's hyperconverged technology is already the foundation of Azure Stack H
 
 Many Microsoft customers have complex IT environments and our goal is to provide solutions that meet them where they are with the right technology for the right business need. Azure Stack HCI is an evolution of the Windows Server Software-Defined (WSSD) solutions previously available from our hardware partners. We brought it into the Azure Stack family because we've started to offer new options to connect seamlessly with Azure for infrastructure management services.
 
-### Does Azure Stack HCI need to be connected to Azure?
+### Does Azure Stack HCI need to connect to Azure?
 
-No, it's optional. You can take advantage of integration with Azure for hybrid scenarios like off-site backup and disaster recovery, and cloud-based monitoring and update management, but they're optional. It's no problem to run disconnected from the internet.
+Yes, the cluster must connect to Azure at least once every 30 days in order for the number of cores to be assessed for billing purposes. You can also take advantage of integration with Azure for hybrid scenarios like off-site backup and disaster recovery, and cloud-based monitoring and update management, but they're optional. It's no problem to run disconnected from the internet for extended periods.
 
 ### How does Azure Stack HCI relate to Windows Server?
 
@@ -225,11 +227,20 @@ As your organization digitally transforms, you may find you can move faster by u
 
 ## What's new in Azure Stack HCI
 
+Clusters running Azure Stack HCI, version 20H2 have the following new features as compared to Windows Server 2019-based solutions:
+
+- **Azure portal integration**: The Azure Portal experience for Azure Stack HCI is designed for global-scale multi-cluster monitoring.
 - **New capabilities in Windows Admin Center**: With the ability to create and update clusters via an intuitive UI, Azure Stack HCI is easier than ever to use.
-- **Stretched clusters for automatic failover**: Multi-site clustering with Storage Replica replication and automatic VM failover provides native disaster recovery and business continuity.
+- **Stretched clusters for automatic failover**: Multi-site clustering with Storage Replica replication and automatic VM failover provides native disaster recovery and business continuity to clusters that use Storage Spaces Direct.
 - **Affinity and anti-affinity rules**: These can be used similarly to how Azure uses Availability Zones to keep VMs and storage together or apart in clusters with multiple fault domains, such as stretched clusters.
 - **GPU acceleration for high-performance workloads**: Virtual desktops, SQL Server, and AI/ML applications can all benefit from boosting performance with GPUs.
 - **BitLocker encryption**: You can now use BitLocker to encrypt the contents of data volumes on Azure Stack HCI, helping government and other customers stay compliant with standards such as FIPS 140-2 and HIPAA.
+- **Improved Storage Spaces Direct volume repair speed**: Repair volumes quickly and seamlessly.
+
+Windows Admin Center, version 20H2 provides the following new features to all versions of Azure Stack HCI:
+
+- Cluster creation wizard
+- Cluster updating
 
 ## Supported roles for Azure Stack HCI
 
