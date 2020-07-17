@@ -4,7 +4,7 @@ description: How to plan storage volumes in Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
-ms.date: 07/01/2020
+ms.date: 07/21/2020
 ---
 
 # Planning volumes in Storage Spaces Direct
@@ -186,6 +186,5 @@ See [Creating volumes in Azure Stack HCI](../manage/create-volumes.md).
 
 For more information, see also:
 
-- [Azure Stack HCI overview](../overview.md)
 - [Choosing drives for Storage Spaces Direct](choose-drives.md)
 - [Fault tolerance and storage efficiency](fault-tolerance.md)
