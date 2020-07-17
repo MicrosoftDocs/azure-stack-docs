@@ -19,7 +19,7 @@ Storage Spaces Direct currently works with four types of drives:
 
 |||
 |----------------------|--------------------------|
-|![PMem](media/choose-drives/pmem-100px.png)|**PMem** refers to persistent memory, a new type of low latency, high performance storage.|
+|![PMem](media/choose-drives/pmem-100px.png)|**PMem** refers to persistent memory, a new type of low latency, high-performance storage.|
 |![NVMe](media/choose-drives/NVMe-100-px.png)|**NVMe** (Non-Volatile Memory Express) refers to solid-state drives that sit directly on the PCIe bus. Common form factors are 2.5" U.2, PCIe Add-In-Card (AIC), and M.2. NVMe offers higher IOPS and IO throughput with lower latency than any other type of drive we support today except PMem.|
 |![SSD](media/choose-drives/SSD-100-px.png)|**SSD** refers to solid-state drives, which connect via conventional SATA or SAS.|
 |![HDD](media/choose-drives/HDD-100-px.png)|**HDD** refers to rotational, magnetic hard disk drives, which offer vast storage capacity.|
@@ -59,7 +59,7 @@ For environments with a variety of applications and workloads, some with stringe
 
     There is one additional, rather exotic option: to use drives of *all three* types.
 
-3. **NVMe + SSD + HDD.** With drives of all three types, the NVMe drives cache for both the SSDs and HDDs. The appeal is that you can create volumes on the SSDs, and volumes on the HDDs, side-by-side in the same cluster, all accelerated by NVMe. The former are exactly as in an "all-flash" deployment, and the latter are exactly as in the "hybrid" deployments described above. This is conceptually like having two pools, with largely independent capacity management, failure and repair cycles, and so on.
+3. **NVMe + SSD + HDD.** With drives of all three types, the NVMe drives cache for both the SSDs and HDDs. The appeal is that you can create volumes on the SSDs, and volumes on the HDDs, side by side in the same cluster, all accelerated by NVMe. The former are exactly as in an "all-flash" deployment, and the latter are exactly as in the "hybrid" deployments described above. This is conceptually like having two pools, with largely independent capacity management, failure and repair cycles, and so on.
 
    >[!IMPORTANT]
    > We recommend using the SSD tier to place your most performance-sensitive workloads on all-flash.
@@ -85,7 +85,7 @@ The cache should be sized to accommodate the working set of your applications an
 
 ### General
 
-We recommend limiting the total storage capacity per server to approximately 400 terabytes (TB). The more storage capacity per server, the longer the time required to resync data after downtime or rebooting, such when applying software updates. The current maximum size per storage pool is 4 petabyte (PB) (4,000 TB) for Windows Server 2019.
+We recommend limiting the total storage capacity per server to approximately 400 terabytes (TB). The more storage capacity per server, the longer the time required to resync data after downtime or rebooting, such when applying software updates. The current maximum size per storage pool is 4 petabytes (PB) (4,000 TB) for Windows Server 2019.
 
 ## Next steps
 
