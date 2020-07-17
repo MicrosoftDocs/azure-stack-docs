@@ -4,12 +4,12 @@ description: How to choose drives for Storage Spaces Direct in Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 07/21/2020
 ---
 
 # Choosing drives for Azure Stack HCI
 
->Applies to: Windows Server 2019
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
 This topic provides guidance on how to choose drives for [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) to meet your performance and capacity requirements for Azure Stack HCI.
 
@@ -91,7 +91,6 @@ We recommend limiting the total storage capacity per server to approximately 400
 
 For more information, see also:
 
-- [Azure Stack HCI overview](../overview.md)
 - [Understand the cache in Azure Stack HCI](cache.md)
 - [Storage Spaces Direct hardware requirements](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements)
 - [Planning volumes in Azure Stack HCI](plan-volumes.md)
