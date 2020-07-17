@@ -95,15 +95,15 @@ Now you're ready to use the Server Configuration tool (Sconfig.cmd) to perform i
 :::image type="content" source="../media/operating-system/azure-stack-hci-sconfig-screen.png" alt-text="The Server Configuration tool interface." lightbox="../media/operating-system/azure-stack-hci-sconfig-screen.png":::
 
 From the main page of the Sconfig.cmd tool, you can perform the following initial configuration tasks:
-1. Configure networking or confirm that the network was configured automatically using Dynamic Host Configuration Protocol (DHCP).
-1. Rename the server if the default automatically generated server name does not suite you.
-1. Join the server to an Active Directory domain.
-1. Add your domain user account or designated domain group to local administrators.
-1. Enable Windows Remote Management (WinRM) if you plan to manage the server from outside the local subnet.
+- Configure networking or confirm that the network was configured automatically using Dynamic Host Configuration Protocol (DHCP).
+- Rename the server if the default automatically generated server name does not suite you.
+- Join the server to an Active Directory domain.
+- Add your domain user account or designated domain group to local administrators.
+- Enable Windows Remote Management (WinRM) if you plan to manage the server from outside the local subnet.
 
 After configuring the operating system as needed with Sconfig.cmd on each server, you're ready to use the Cluster Creation wizard in Windows Admin Center to cluster the servers.
 
 ## Next steps
 To perform the next management task related to this article, see:
 > [!div class="nextstepaction"]
-> [Create an Azure Stack HCI cluster using Windows Admin Center](../deploy/create-cluster.md)
+> [Create an Azure Stack HCI cluster](../deploy/create-cluster.md)
