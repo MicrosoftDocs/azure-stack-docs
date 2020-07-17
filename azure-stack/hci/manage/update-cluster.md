@@ -33,7 +33,7 @@ Before you can update a cluster using Cluster-Aware Updating, you first need to 
 To test whether a failover cluster is properly set up to apply software updates using Cluster-Aware Updating, run the **Test-CauSetup** PowerShell cmdlet, which performs a Best Practices Analyzer (BPA) scan of the failover cluster and network environment and alerts you of any warnings or errors:
 
 ```PowerShell
-`Test-CauSetup -ClusterName Cluster1`
+Test-CauSetup -ClusterName Cluster1
 ```
 
 If you need to install features, tools, or roles, see the next sections. Otherwise, skip ahead to [Check for updates with PowerShell](#check-for-updates-with-powershell).
