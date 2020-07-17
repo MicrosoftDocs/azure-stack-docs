@@ -68,9 +68,9 @@ The minimum syntax requires only your Azure subscription ID. Remember that if th
 ## Authenticate with Azure
 Once dependencies have been installed and the parameters have been validated, you need to authenticate (sign in) using your Azure account. Your account needs to have access to the Azure subscription that was specified in order for registration to proceed.
 
-If you ran Register-AzureStackHCI remotely from an operating system with Desktop experience, such as Windows 10, an interactive Azure login window will pop up. The exact prompts you see will vary depending on your security settings (e.g. two-factor authentication). Follow the prompts to log in.
+If you ran Register-AzStackHCI remotely from an operating system with Desktop experience, such as Windows 10, an interactive Azure login window will pop up. The exact prompts you see will vary depending on your security settings (e.g. two-factor authentication). Follow the prompts to log in.
 
-If you ran Register-AzureStackHCI locally on the Azure Stack HCI operating system, which is unable to render an interactive Azure login window, you’ll be prompted to visit microsoft.com/devicelogin on another device (like your PC or phone), enter the code, and sign in there. This is the same experience Microsoft uses for other devices with limited input modalities, like Xbox.
+If you ran Register-AzStackHCI locally on the Azure Stack HCI operating system, which is unable to render an interactive Azure login window, you’ll be prompted to visit microsoft.com/devicelogin on another device (like your PC or phone), enter the code, and sign in there. This is the same experience Microsoft uses for other devices with limited input modalities, like Xbox.
 
 The registration workflow will detect when you’ve logged in and proceed to completion. You should then be able to see your cluster in the Azure portal.
 
