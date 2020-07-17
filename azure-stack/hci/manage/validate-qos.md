@@ -44,13 +44,15 @@ Near the bottom of the report, you will see "Validate QoS Settings Configuration
 
 To understand which traffic classes are already set on a server, use the `Get-NetQosTrafficClass` cmdlet.
 
+To learn more, see [Validate an Azure Stack HCI cluster](../deploy/validate.md).
+
 ## Validate networking QoS rules
 
 Validate the consistency of DCB willing status and priority flow control status settings between servers in the cluster.
 
 ### DCB willing status
 
-Network adapters that support the Data Center Bridging Capability Exchange protocol (DCBX) can accept configurations from a remote device. To enable this capability, the DCB willing bit on the network adapter must be set to true. If the willing bit is set to false, the device will reject all configuration attempts from remote devices and enforce only the local configurations. If you're using RoCE adapters, then the willing bit should be set to false on all servers.
+Network adapters that support the Data Center Bridging Capability Exchange protocol (DCBX) can accept configurations from a remote device. To enable this capability, the DCB willing bit on the network adapter must be set to true. If the willing bit is set to false, the device will reject all configuration attempts from remote devices and enforce only the local configurations. If you're using RDMA over Converged Ethernet (RoCE) adapters, then the willing bit should be set to false on all servers.
 
 All servers in an Azure Stack HCI cluster should have the DCB willing bit set the same way.
 
@@ -64,7 +66,7 @@ Set-NetQosDcbxSetting –Willing $false
 
 Priority-based flow control is essential if the upper layer protocol, such as Fiber Channel, assumes a lossless underlying transport. DCB flow control can be enabled or disabled either globally or for individual network adapters. If enabled, it allows for the creation of QoS policies that prioritize certain application traffic.
 
-In order for QoS policies to work seamlessly during failover, all servers in an Azure Stack HCI cluster should have the same flow control status settings. If you're using RDMA over Converged Ethernet (RoCE) adapters, then priority flow control must be enabled on all servers.
+In order for QoS policies to work seamlessly during failover, all servers in an Azure Stack HCI cluster should have the same flow control status settings. If you're using RoCE adapters, then priority flow control must be enabled on all servers.
 
 Use the `Get-NetQosFlowControl` cmdlet to get the current flow control configuration. All priorities are disabled by default.
 

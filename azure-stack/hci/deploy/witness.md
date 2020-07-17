@@ -47,4 +47,4 @@ Set-ClusterQuorum –Cluster Cluster1 -FileShareWitness \\fileserver\fsw
 
 ## Next steps
 
-For more information on cluster quorum, see [Configure and manage quorum](https://docs.microsoft.com/windows-server/failover-clustering/manage-cluster-quorum).
+For more information on cluster quorum, see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).

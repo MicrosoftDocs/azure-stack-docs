@@ -1,5 +1,5 @@
 ---
-title: About stretched clusters
+title: Stretched clusters overview
 description: Learn about stretched clusters
 author: v-dasis
 ms.topic: how-to
@@ -8,7 +8,7 @@ ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
 
-# About stretched clusters
+# Stretched clusters overview
 
 > Applies to Azure Stack HCI, version v20H2
 
@@ -39,7 +39,7 @@ The following diagram shows both Site 1 and Site 2 as being active sites, with b
 
 ## Next steps
 
-- Learn about hardware and other requirements for stretched clusters. See [Before you start](stretched-clusters.md).
-- Learn how to deploy a stretched cluster using Windows Admin Center. See [Create a cluster using Windows Admin Center](stretched-clusters.md).
-- Learn how to deploy a stretched cluster using PowerShell. See [Create a cluster using PowerShell](stretched-clusters.md).
-- Learn how to set up volumes and replication between sites for stretched clusters. See [Create volumes and replication for stretched clusters](stretched-clusters.md).
+- Learn about hardware and other requirements for stretched clusters. See [Before you start](../deploy/before-you-start.md).
+- Learn how to deploy a stretched cluster using Windows Admin Center. See [Create a cluster using Windows Admin Center](../deploy/create-cluster.md).
+- Learn how to deploy a stretched cluster using PowerShell. See [Create a cluster using PowerShell](../deploy/create-cluster-powershell.md).
+- Learn how to create volumes and set up replication for stretched clusters. See [Create volumes and set up replication for stretched clusters](../manage/create-stretched-volumes.md).

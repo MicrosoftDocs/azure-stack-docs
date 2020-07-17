@@ -36,7 +36,7 @@ Azure Stack HCI is part of the Azure and Azure Stack family, using the same soft
 - [Azure Stack HCI](https://azure.microsoft.com/overview/azure-stack/hci) - Run virtualized apps on-premises, replace and consolidate aging server infrastructure, and connect to Azure for cloud services.
 - [Azure Stack Hub](../operator/azure-stack-overview.md) - Run cloud apps on-premises, when disconnected, or to meet regulatory requirements, using consistent Azure services.
 
-:::image type="content" source="media/overview/azure-family.png" alt-text="Azure Stack family solution diagram" border="false":::
+:::image type="content" source="media/overview/azure-family-updated.png" alt-text="Azure Stack family solution diagram" border="false":::
 
 To learn more:
 
@@ -107,6 +107,10 @@ To get started, determine your hardware requirements, simply purchase validated 
 You can purchase validated Azure Stack HCI solutions from your preferred Microsoft partner to get up and running without lengthy design and build time. Microsoft partners also offer a single point of contact for implementation and support services. You can either purchase validated nodes or an integrated system, which includes the Azure Stack HCI operating system pre-installed as well as partner extensions for driver and firmware updates.
 
 Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) page or browse the [Azure Stack HCI Catalog](/cloud-platform/azure-stack-hci-catalog) to view 70+ Azure Stack HCI solutions currently available from Microsoft partners such as ASUS, Axellio, Blue Chip, DataON, Dell EMC, Fujitsu, HPE, Hitachi, Huawei, Lenovo, NEC, primeLine Solutions, QCT, SecureGUARD, and Supermicro.
+
+## Software partners
+
+There are a variety of Microsoft partners working on software that extends the capabilities of Azure Stack HCI while allowing IT admins to use familiar tools. For example, Altaro, a worldwide provider of backup solutions and Microsoft Gold Partner, has committed to supporting Azure Stack HCI in its Altaro VM Backup solution. This will allow customers and managed service providers to back up virtual machines running on Azure Stack HCI for free until end of June 2021.
 
 ## Licensing, billing, and pricing
 

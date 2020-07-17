@@ -177,4 +177,4 @@ InstallResults           : Microsoft.ClusterAwareUpdating.UpdateInstallResult[]
 For related information, see also:
 
 - [Updating drive firmware in Storage Spaces Direct](/windows-server/storage/update-firmware)
-- Validate an Azure Stack HCI cluster
+- [Validate an Azure Stack HCI cluster](../deploy/validate.md)

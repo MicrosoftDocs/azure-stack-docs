@@ -4,12 +4,12 @@ description: How to prepare to deploy Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 07/14/2020
+ms.date: 07/21/2020
 ---
 
 # Before you deploy Azure Stack HCI
 
-> Applies to Azure Stack HCI v20H2
+> Applies to: Azure Stack HCI, v20H2
 
 In this how-to guide, you learn how to:
 
@@ -77,7 +77,7 @@ These are the *minimum* interconnect requirements for clusters having four or mo
 
 When connecting between sites for stretched clusters, interconnect requirements within each site still apply, and have additional Storage Replica and Hyper-V live migration traffic requirements that must be considered:
 
-- At least one 1 Gb RDMA (preferably) or Ethernet/TCP connection between sites for synchronous replication.
+- At least one 1 Gb RDMA or Ethernet/TCP connection between sites for synchronous replication. A 25 Gb RDMA connection is preferred.
 - A network between sites with enough bandwidth to contain your I/O write workload and an average of 5ms round trip latency or lower for synchronous replication. Asynchronous replication doesn't have a latency recommendation.
 - If using a single connection between sites, set SMB bandwidth limits for Storage Replica using PowerShell. For more information, see [Set-SmbBandwidthLimit](https://docs.microsoft.com/powershell/module/smbshare/set-smbbandwidthlimit?view=win10-ps).
 - If using multiple connections between sites, separate traffic between the connections. For example, put Storage Replica traffic on a separate network than Hyper-V live migration traffic using PowerShell. For more information, see [Set-SRNetworkConstraint](https://docs.microsoft.com/powershell/module/storagereplica/set-srnetworkconstraint?view=win10-ps).
@@ -167,4 +167,4 @@ Windows Admin Center is a locally deployed, browser-based app for managing Azure
 
 Advance to the next article to learn how to deploy the Azure Stack HCI operating system.
 > [!div class="nextstepaction"]
-> [Deploy the operating system](before-you-start.md)
+> [Deploy the Azure Stack HCI operating system](operating-system.md)

@@ -93,7 +93,7 @@ Stop-Cluster -Name Cluster1
 
 Use the `Add-ClusterNode` and `Remove-ClusterNode` cmdlets to add or remove a server node for your cluster. For more examples and usage information, see the [Add-ClusterNode](https://docs.microsoft.com/powershell/module/failoverclusters/add-clusternode?view=win10-ps) and [Remove-ClusterNode](https://docs.microsoft.com/powershell/module/failoverclusters/remove-clusternode?view=win10-ps) reference documentation.
 
-This example adds a server named Node4 to a cluster named Cluster1. Make sure the server is powered on and connected to the cluster network first.
+This example adds a server named Node4 to a cluster named Cluster1. Make sure the server is running and connected to the cluster network first.
 
 ```powershell
 Add-ClusterNode -Cluster Cluster1 -Name Node4
@@ -174,5 +174,5 @@ Remove-Cluster -Cluster Cluster1
 
 ## Next steps
 
-- You should validate the cluster afterwards. See [Validate the cluster](cluster-powershell.md) for more information.
+- You should validate the cluster afterwards after making changes. See [Validate an Azure Stack HCI cluster](../deploy/validate.md) for more information.
 - Learn how to manage your clusters using Windows Admin Center. See [Manage clusters on Azure Stack HCI using Windows Admin Center](cluster.md).
