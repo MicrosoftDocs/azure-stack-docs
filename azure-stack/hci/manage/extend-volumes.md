@@ -4,14 +4,14 @@ description: How to resize volumes in Azure Stack HCI using Windows Admin Center
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 07/01/2020
+ms.date: 07/21/2020
 ---
 
-# Extending volumes in Storage Spaces Direct
+# Extending volumes in Azure Stack HCI
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-This topic provides instructions for resizing volumes on a [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) cluster by using Windows Admin Center.
+This topic provides instructions for resizing volumes on an Azure Stack HCI cluster by using Windows Admin Center.
 
 > [!WARNING]
 > **Not supported: resizing the underlying storage used by Storage Spaces Direct.** If you are running Storage Spaces Direct in a virtualized storage environment, including in Azure, resizing or changing the characteristics of the storage devices used by the virtual machines isn't supported and will cause data to become inaccessible. Instead, follow the instructions in the [Add servers or drives](/windows-server/storage/storage-spaces/add-nodes) section to add additional capacity before extending volumes.
@@ -22,7 +22,7 @@ Watch a quick video on how to resize a volume.
 
 ## Extending volumes using Windows Admin Center
 
-1. In Windows Admin Center, connect to a Storage Spaces Direct cluster, and then select **Volumes** from the **Tools** pane.
+1. In Windows Admin Center, connect to an Azure Stack HCI cluster, and then select **Volumes** from the **Tools** pane.
 2. On the **Volumes** page, select the **Inventory** tab, and then select the volume that you want to resize.
 
     On the volume detail page, the storage capacity for the volume is indicated. You can also open the volumes detail page directly from the Dashboard. On the Dashboard, in the Alerts pane, select the alert, which notifies you if a volume is running low on storage capacity, and then select **Go To Volume**.
@@ -139,6 +139,6 @@ That's it!
 
 For step-by-step instructions on other essential storage management tasks, see also:
 
-- [Planning volumes in Storage Spaces Direct](/windows-server/storage/storage-spaces/plan-volumes)
-- [Creating volumes in Storage Spaces Direct](/windows-server/storage/storage-spaces/create-volumes)
-- [Deleting volumes in Storage Spaces Direct](/windows-server/storage/storage-spaces/delete-volumes)
+- [Plan volumes](../concepts/plan-volumes.md)
+- [Create volumes](create-volumes.md)
+- [Delete volumes](delete-volumes.md)
