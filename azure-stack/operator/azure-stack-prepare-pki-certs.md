@@ -30,7 +30,7 @@ Your system should meet the following prerequisites before packaging PKI certifi
 - Microsoft Azure Stack Hub Readiness Checker
 - Certificates returned from Certificate Authority in a single directory in .cer format (other configurable formats .cert, .sst or .pfx).
 - Windows 10 or Windows Server 2016 or later
-- Use the same system that generated the Certificate Signing Request (unless you're targeting pre certificate prepackaged into PFXs).
+- Use the same system that generated the Certificate Signing Request (unless you're targeting a certificate prepackaged into PFXs).
 
 ## Generate certificate signing requests for new deployments
 
