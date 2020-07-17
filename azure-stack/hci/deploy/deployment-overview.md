@@ -49,7 +49,7 @@ Create a failover cluster using [Windows Admin Center](create-cluster.md) or [Po
 
 ### 5. Register with Azure
 
-Azure Stack HCI works best when regularly connected to Azure. To get started, [register your Windows Admin Center gateway](../manage/register-windows-admin-center.md) by going to the Azure tab in Windows Admin Center settings. Then, [register Azure Stack HCI](register-with-azure.md) with your Azure subscription. Users must connect to Azure a minimum of once a month in order for the number of processor cores to be assessed for billing purposes.
+Azure Stack HCI requires a connection to Azure. To connect your cluster to Azure, see [register Azure Stack HCI with Azure](register-with-azure.md). Once registered, the cluster connects automatically in the background.
 
 ### 6. Validate the cluster
 
@@ -65,7 +65,7 @@ You are now ready to [create virtual machines](../manage/vm.md) and deploy workl
 
 ## Next steps
 
-For related information, see also:
+Learn what you need to do before deploying Azure Stack HCI.
 
-- [Deploy Storage Spaces Direct](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct)
-- [Manage Azure registration](../manage/manage-azure-registration.md)
+> [!div class="nextstepaction"]
+> [Before you begin](before-you-start.md)
