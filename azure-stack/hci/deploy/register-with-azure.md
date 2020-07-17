@@ -47,17 +47,20 @@ Install the PowerShell Module for Azure Stack HCI by running the following Power
 Install-WindowsFeature RSAT-Azure-Stack-HCI -ComputerName Server1
 ```
 
-Import and install the required cmdlets on your management PC or a cluster node:
+Install the required cmdlets on your management PC or a cluster node:
 
 ```PowerShell
-Install-Module Az.AzureStackHCI
-Import-Module Az.AzureStackHCI
+Install-Module Az.StackHCI
 ```
+   > [!NOTE]
+   > 1.	You may see a prompt such as "Do you want PowerShellGet to install and import the NuGet provider now?" to which you should answer Yes (Y).
+   > 2.	You may further be prompted "Are you sure you want to install the modules from 'PSGallery'?" to which you should answer Yes (Y).
+   > 3.	Finally, you might assume that installing the entire **Az** module would include the **StackHCI** sub-module, and that will be correct long-term. However, per standard Azure PowerShell convention, sub-modules in Preview aren't included automatically; rather, you need to explicitly specify them. Thus, for now, you need to explicitly ask for **Az.StackHCI** as shown above.
 
 Register (this will prompt for Azure log-in):
 
 ```PowerShell
-Register-AzureStackHCI -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" [-ResourceName] [-ResourceGroupName] [-ComputerName –Credential]
+Register-AzStackHCI  -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" [-ResourceName] [-ResourceGroupName] [-ComputerName –Credential]
 ```
 
 The minimum syntax requires only your Azure subscription ID. Remember that if the user running the above command must have Azure Active Directory permissions, or the registration process will not complete.
