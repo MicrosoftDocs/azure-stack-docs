@@ -9,7 +9,7 @@ ms.date: 07/21/2020
 
 # Create volumes and set up replication for stretched clusters
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, version 20H2
 
 This topic describes how to create volumes and set up replication for stretched clusters in Azure Stack HCI using Windows Admin Center and PowerShell. To learn how to create volumes on single-site clusters, work with files on the volumes, and how to enable data deduplication and compression on volumes, see [Create volumes](create-volumes.md).
 
@@ -35,7 +35,7 @@ OK, let's begin:
 1. Under **Tools**, select **Storage Replica**.
 1. In the right pane, under **Partnerships**, verify that the replication partnership has been successfully created.
 
-Afterwards, you should verify successful data replication between sites before deploying VMs and other workloads. See the Verifying replication section in [Validate the cluster] for more information.
+Afterwards, you should verify successful data replication between sites before deploying VMs and other workloads. See the Verifying replication section in [Validate the cluster](../deploy/validate.md) for more information.
 
 ## Create volumes for stretched clusters using PowerShell
 
@@ -119,7 +119,7 @@ In the previous step, the virtual disks were added using drive letters to make t
 
 Before starting, you should run the `Test-SRTopology` cmdlet for an extended period (like several hours). The `Test-SRTopology` cmdlet validates a potential replication partnership and validates the local host to the destination server or remotely between source and destination servers.
 
-This cmdlet will perform will validate that:
+This cmdlet will verify that:
 
 - SMB can be accessed over the network, which means that TCP port 445 and port 5445 are open bi-directionally.
 - WS-MAN can be accessed over HTTP on the network, which means that TCP port 5985 and 5986 are open.
