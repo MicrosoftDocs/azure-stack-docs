@@ -36,7 +36,7 @@ Azure Stack HCI is part of the Azure and Azure Stack family, using the same soft
 - [Azure Stack HCI](https://azure.microsoft.com/overview/azure-stack/hci) - Run virtualized apps on-premises, replace and consolidate aging server infrastructure, and connect to Azure for cloud services.
 - [Azure Stack Hub](../operator/azure-stack-overview.md) - Run cloud apps on-premises, when disconnected, or to meet regulatory requirements, using consistent Azure services.
 
-:::image type="content" source="media/overview/azure-family.png" alt-text="Azure Stack family solution diagram" border="false":::
+:::image type="content" source="media/overview/azure-family-updated.png" alt-text="Azure Stack family solution diagram" border="false":::
 
 To learn more:
 
