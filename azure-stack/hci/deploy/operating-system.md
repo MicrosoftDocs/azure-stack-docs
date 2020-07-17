@@ -13,7 +13,7 @@ ms.date: 07/21/2020
 
 After completing the steps in [Before you deploy Azure Stack HCI](before-you-start.md#install-windows-admin-center), the first step in deploying Azure Stack HCI is to install the Azure Stack HCI operating system on each server that you want to cluster. This article discusses different ways to deploy the operating system, and using Windows Admin Center to connect to the servers.
 
-After deploying the operating system, you're ready to use related guidance on creating a server cluster, and getting the latest Windows updates and firmware updates for your servers as described in [Create an Azure Stack HCI cluster](operating-system.md).
+After deploying the operating system, you're ready to use related guidance on creating a server cluster, and getting the latest Windows updates and firmware updates for your servers as described in [Create an Azure Stack HCI cluster](create-cluster.md).
 
 ## Prerequisites
 - Windows Admin Center set up on a system that can access the servers you want to cluster, as described in [Before you deploy Azure Stack HCI](before-you-start.md#install-windows-admin-center).
@@ -90,17 +90,20 @@ To manually install the Azure Stack HCI operating system:
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-admin-password-changed.png" alt-text="The changed password confirmation prompt":::
 
-    Changing the password automatically starts Sconfig.cmd and displays the main page of the tool.
+Now you're ready to use the Server Configuration tool (Sconfig.cmd) to perform important tasks. To use Sconfig.cmd, log on to the server running the Azure Stack HCI operating system. This could be locally via a keyboard and monitor, or using a remote management (headless or BMC) controller, or Remote Desktop. The Sconfig.cmd tool opens automatically when you log on to the server.
 
-    :::image type="content" source="../media/operating-system/azure-stack-hci-sconfig-screen.png" alt-text="The Server Configuration tool interface." lightbox="../media/operating-system/azure-stack-hci-sconfig-screen.png":::
+:::image type="content" source="../media/operating-system/azure-stack-hci-sconfig-screen.png" alt-text="The Server Configuration tool interface." lightbox="../media/operating-system/azure-stack-hci-sconfig-screen.png":::
 
-1. Take note of the computer's **Domain/Workgroup** and its **Computer Name** for reference.
+From the main page of the Sconfig.cmd tool, you can perform the following initial configuration tasks:
+- Configure networking or confirm that the network was configured automatically using Dynamic Host Configuration Protocol (DHCP).
+- Rename the server if the default automatically generated server name does not suite you.
+- Join the server to an Active Directory domain.
+- Add your domain user account or designated domain group to local administrators.
+- Enable Windows Remote Management (WinRM) if you plan to manage the server from outside the local subnet.
 
-From the Server Configuration tool interface, you can perform important tasks, such as adding additional users to the local administrators group and changing network settings.
-
-After configuring the operating system as needed with Sconfig.cmd on each server, you're ready to use the Cluster Creation wizard in Windows Admin Center to cluster the servers. To learn more, see [Create an Azure Stack HCI cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster).
+After configuring the operating system as needed with Sconfig.cmd on each server, you're ready to use the Cluster Creation wizard in Windows Admin Center to cluster the servers.
 
 ## Next steps
 To perform the next management task related to this article, see:
 > [!div class="nextstepaction"]
-> [Creating volumes in Azure Stack HCI](../manage/create-volumes.md)
+> [Create an Azure Stack HCI cluster](../deploy/create-cluster.md)
