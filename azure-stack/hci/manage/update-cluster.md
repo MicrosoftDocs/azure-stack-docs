@@ -26,7 +26,7 @@ Windows Admin Center makes it easy to update a cluster and apply operating syste
     - In Windows Admin Center, under **All connections**, select the first server in your cluster, and then select **Connect**.
     - On the **Overview** page, select **Disable CredSSP**, and then on the **Disable CredSSP** pop-up window, select **Yes**.
 
-## Update a Cluster Using PowerShell
+## Update a cluster using PowerShell
 
 Before you can update a cluster using Cluster-Aware Updating, you first need to install the **Failover Clustering Tools**, which are part of the **Remote Server Administration Tools (RSAT)** and include the Cluster-Aware Updating software. If you're updating an existing cluster, these tools may already be installed.
 
