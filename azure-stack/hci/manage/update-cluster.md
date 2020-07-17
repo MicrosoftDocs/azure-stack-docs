@@ -26,20 +26,17 @@ Windows Admin Center makes it easy to update a cluster and apply operating syste
     - In Windows Admin Center, under **All connections**, select the first server in your cluster, and then select **Connect**.
     - On the **Overview** page, select **Disable CredSSP**, and then on the **Disable CredSSP** pop-up window, select **Yes**.
 
-## Configure Cluster-Aware Updating
+## Update a cluster using PowerShell
 
 Before you can update a cluster using Cluster-Aware Updating, you first need to install the **Failover Clustering Tools**, which are part of the **Remote Server Administration Tools (RSAT)** and include the Cluster-Aware Updating software. If you're updating an existing cluster, these tools may already be installed.
 
-Cluster-Aware Updating has two plug-ins:
+To test whether a failover cluster is properly set up to apply software updates using Cluster-Aware Updating, run the **Test-CauSetup** PowerShell cmdlet, which performs a Best Practices Analyzer (BPA) scan of the failover cluster and network environment and alerts you of any warnings or errors:
 
-- The **Microsoft.WindowsUpdatePlugin** installs updates from Windows Update and offline sources like Windows Server Update Services.
-- The **Microsoft.HotfixPlugin** enables custom sources such as OEM-specific feature updates.
+```PowerShell
+Test-CauSetup -ClusterName Cluster1
+```
 
-> [!TIP]
-> To test whether a failover cluster is properly set up to apply software updates using Cluster-Aware Updating, run the **Test-CauSetup** PowerShell cmdlet, which performs a Best Practices Analyzer (BPA) scan of the failover cluster and network environment and alerts you of any warnings or errors:
->
->`Test-CauSetup -ClusterName Cluster1`
->
+If you need to install features, tools, or roles, see the next sections. Otherwise, skip ahead to [Check for updates with PowerShell](#check-for-updates-with-powershell).
 
 ### Install Failover Clustering and Failover Clustering Tools using PowerShell
 
