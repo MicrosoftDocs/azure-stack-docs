@@ -108,6 +108,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed code integrity policy to not emit violation events for certain internal software. This reduces noise in code integrity violation events emitted via the syslog client.
 - Fixed the **Set-TLSPolicy** PowerShell cmdlet to enforce new policy without requiring restart of the https service or a reboot of the host.
 - Fixed an issue in which using a Linux NTP server incorrectly generates alerts in the administrator portal.  
+- Fixed an issue which may cause DiskRP failure due to the KVS enumerator leak. 
 
 ## Security updates
 
