@@ -82,7 +82,7 @@
   items:
   - name: Stretched clusters
     href: concepts/stretched-clusters.md
-  - name: Usage and billing
+  - name: Billing
     href: concepts/billing.md
   - name: Updates and upgrades
     href: concepts/updates.md
