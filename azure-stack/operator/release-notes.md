@@ -88,6 +88,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Improved resiliency of the Network Controller Host Agent.
 - Added additional fields to the CEF payload of the syslog messages to report the source IP and the account used to connect to the privileged endpoint and the recovery endpoint. See [Integrate Azure Stack Hub with monitoring solutions using syslog forwarding](azure-stack-integrate-security.md) for details.
 - Added Windows Defender events (Event IDs 5001, 5010, 5012) to the list of events emitted via the syslog client.
+- Added alerts in the Azure Stack Administration portal for Windows Defender related events to report on Defender platform and signatures version inconsistencies and failure to take actions on detected malware.
 - Added support for 4 Border Devices when integrating Azure Stack Hub into your datacenter.
 
 ### Changes
