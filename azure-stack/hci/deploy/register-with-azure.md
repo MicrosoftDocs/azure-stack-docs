@@ -47,17 +47,20 @@ Install the PowerShell Module for Azure Stack HCI by running the following Power
 Install-WindowsFeature RSAT-Azure-Stack-HCI -ComputerName Server1
 ```
 
-Import and install the required cmdlets on your management PC or a cluster node:
+Install the required cmdlets on your management PC or a cluster node:
 
 ```PowerShell
-Install-Module Az.AzureStackHCI
-Import-Module Az.AzureStackHCI
+Install-Module Az.StackHCI
 ```
+   > [!NOTE]
+   > 1.	You may see a prompt such as "Do you want PowerShellGet to install and import the NuGet provider now?" to which you should answer Yes (Y).
+   > 2.	You may further be prompted "Are you sure you want to install the modules from 'PSGallery'?" to which you should answer Yes (Y).
+   > 3.	Finally, you might assume that installing the entire **Az** module would include the **StackHCI** sub-module, and that will be correct long-term. However, per standard Azure PowerShell convention, sub-modules in Preview aren't included automatically; rather, you need to explicitly specify them. Thus, for now, you need to explicitly ask for **Az.StackHCI** as shown above.
 
 Register (this will prompt for Azure log-in):
 
 ```PowerShell
-Register-AzureStackHCI -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" [-ResourceName] [-ResourceGroupName] [-ComputerName –Credential]
+Register-AzStackHCI  -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" [-ResourceName] [-ResourceGroupName] [-ComputerName –Credential]
 ```
 
 The minimum syntax requires only your Azure subscription ID. Remember that if the user running the above command must have Azure Active Directory permissions, or the registration process will not complete.
@@ -65,9 +68,9 @@ The minimum syntax requires only your Azure subscription ID. Remember that if th
 ## Authenticate with Azure
 Once dependencies have been installed and the parameters have been validated, you need to authenticate (sign in) using your Azure account. Your account needs to have access to the Azure subscription that was specified in order for registration to proceed.
 
-If you ran Register-AzureStackHCI remotely from an operating system with Desktop experience, such as Windows 10, an interactive Azure login window will pop up. The exact prompts you see will vary depending on your security settings (e.g. two-factor authentication). Follow the prompts to log in.
+If you ran Register-AzStackHCI remotely from an operating system with Desktop experience, such as Windows 10, an interactive Azure login window will pop up. The exact prompts you see will vary depending on your security settings (e.g. two-factor authentication). Follow the prompts to log in.
 
-If you ran Register-AzureStackHCI locally on the Azure Stack HCI operating system, which is unable to render an interactive Azure login window, you’ll be prompted to visit microsoft.com/devicelogin on another device (like your PC or phone), enter the code, and sign in there. This is the same experience Microsoft uses for other devices with limited input modalities, like Xbox.
+If you ran Register-AzStackHCI locally on the Azure Stack HCI operating system, which is unable to render an interactive Azure login window, you’ll be prompted to visit microsoft.com/devicelogin on another device (like your PC or phone), enter the code, and sign in there. This is the same experience Microsoft uses for other devices with limited input modalities, like Xbox.
 
 The registration workflow will detect when you’ve logged in and proceed to completion. You should then be able to see your cluster in the Azure portal.
 

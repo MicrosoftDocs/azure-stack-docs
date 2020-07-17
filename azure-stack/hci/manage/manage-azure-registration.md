@@ -53,12 +53,12 @@ Seeking approval from your Azure Active Directory administrator could take some 
 
 ## Unregister Azure Stack HCI with Azure
 
-When you're ready to decommission your Azure Stack HCI cluster, use the `Unregister-AzureStackHCI` cmdlet to unregister. This stops all monitoring, support, and billing functionality through Azure Arc. The Azure resource representing the cluster and the Azure Active Directory app identity are deleted, but the resource group is not, because it may contain other unrelated resources.
+When you're ready to decommission your Azure Stack HCI cluster, use the `Unregister-AzStackHCI` cmdlet to unregister. This stops all monitoring, support, and billing functionality through Azure Arc. The Azure resource representing the cluster and the Azure Active Directory app identity are deleted, but the resource group is not, because it may contain other unrelated resources.
 
-The minimum syntax requires no parameters at all, you just need to authenticate before running the following cmdlet:
+The minimum syntax requires no parameters at all, you just need to authenticate with Azure before running the following cmdlet:
 
 ```PowerShell
-Unregister-AzureStackHCI
+Unregister-AzStackHCI
 ```
 
 ## Next steps
