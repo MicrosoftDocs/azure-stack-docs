@@ -15,7 +15,7 @@ This topic provides a high-level, step-by-step overview of the Azure Stack HCI d
 
 ## Plan
 
-Before you deploy, carefully plan your storage, networking, and requirements for multi-site clustering.
+Before you deploy, carefully plan your storage, networking, and requirements for multi-site clustering (if any).
 
 ### Plan storage
 
@@ -31,11 +31,11 @@ If your Azure Stack HCI deployment will stretch across multiple sites, determine
 
 ## Deploy
 
-### 1. Before you start
+### 1. Before you begin
 
 Before you start, [determine whether your hardware meets the base requirements and gather information needed](before-you-start.md) for deploying Azure Stack HCI. Then, [install Windows Admin Center](/windows-server/manage/windows-admin-center/use/get-started) to manage your Azure Stack HCI cluster.
 
-### 2. Deploy the operating system
+### 2. Deploy Azure Stack HCI
 
 Deploy the Azure Stack HCI [operating system](operating-system.md) on each server you want to cluster.
 
@@ -43,17 +43,17 @@ Deploy the Azure Stack HCI [operating system](operating-system.md) on each serve
 
 Create a failover cluster using [Windows Admin Center](create-cluster.md) or [PowerShell](create-cluster-powershell.md). For native disaster recovery and business continuity, you can deploy a [stretched cluster](../concepts/stretched-clusters.md) that spans two geographically separate sites.
 
-### 4. Create a cluster witness
+### 4. Set up a cluster witness
 
 [Setting up a witness resource](witness.md) is mandatory for all clusters. Two-node clusters need a witness so that either server going offline does not cause the other node to become unavailable as well. Three and higher-node clusters need a witness to be able to withstand two servers failing or being offline. 
 
-### 5. Validate the cluster
-
-After creating the cluster, [run cluster validation tests](validate.md) to catch hardware or configuration problems before a cluster goes into production.
-
-### 6. Connect to Azure
+### 5. Register with Azure
 
 Azure Stack HCI works best when regularly connected to Azure. To get started, [register your Windows Admin Center gateway](../manage/register-windows-admin-center.md) by going to the Azure tab in Windows Admin Center settings. Then, [register Azure Stack HCI](register-with-azure.md) with your Azure subscription. Users must connect to Azure a minimum of once a month in order for the number of processor cores to be assessed for billing purposes.
+
+### 6. Validate the cluster
+
+After creating and registering the cluster, [run cluster validation tests](validate.md) to catch hardware or configuration problems before the cluster goes into production.
 
 ### 7. Deploy storage
 
