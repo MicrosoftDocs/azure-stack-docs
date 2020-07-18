@@ -236,9 +236,9 @@ Clusters running Azure Stack HCI, version 20H2 have the following new features a
 
 Windows Admin Center, version 20H2 also provides new cluster updating UI to Windows Server-based clusters, including the original Azure Stack HCI solutions. And while you can use the new cluster creation wizard with Windows Server, it can't create Windows Server clusters with Storage Spaces Direct; you need the Azure Stack HCI operating system for that.
 
-## Workloads you can run without virtualizing
+## Roles you can run without virtualizing
 
-Because Azure Stack HCI is intended as a virtualization host, there are only a small number of workloads that it's licensed to run directly:
+Because Azure Stack HCI is intended as a virtualization host, there are only a small number of server roles that it's licensed to run directly:
 
 - Hyper-V
 - Network controller
