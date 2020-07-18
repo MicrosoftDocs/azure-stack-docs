@@ -9,7 +9,7 @@ ms.date: 07/21/2020
 
 # Azure Stack HCI solution overview
 
-Azure Stack HCI is a hyperconverged cluster solution that runs virtualized Windows and Linux workloads in a hybrid on-premises environment. Azure hybrid services enhance the cluster with capabilities such as cloud-based monitoring, site recovery, and VM backups, as well as a central view of all of your Azure Stack HCI deployments in the Azure portal. You can manage the cluster with your existing tools including Windows Admin Center, System Center, and PowerShell.
+Azure Stack HCI is a hyperconverged cluster solution that runs virtualized Windows and Linux workloads in a hybrid on-premises environment. Azure hybrid services enhance the cluster with capabilities such as cloud-based monitoring, Site Recovery, and VM backups, as well as a central view of all of your Azure Stack HCI deployments in the Azure portal. You can manage the cluster with your existing tools including Windows Admin Center, System Center, and PowerShell.
 
 Previously a hardware-software solution using Windows Server 2019, Azure Stack HCI, version 20H2 is a new operating system now in Public Preview. It's derived from Windows Server and intended for on-premises clusters running virtualized workloads, with hybrid-cloud connections built-in. As such, Azure Stack HCI is delivered as an Azure service and billed on an Azure subscription.
 
@@ -65,7 +65,7 @@ You can also subscribe to additional Azure hybrid services:
 - **Azure Network Adapter** to connect resources on-premises with your VMs in Azure via a point-to-site VPN.
 - **Azure File Sync** to sync your file server with the cloud.
 
-For details, see [Connecting Windows Server to Azure hybrid services](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/index).
+For more information, see [Connecting Windows Server to Azure hybrid services](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/index).
 
 ## Why Azure Stack HCI?
 
@@ -76,7 +76,7 @@ Azure Stack HCI is a world-class, integrated virtualization stack built on prove
 - It works with popular third-party backup, security, and monitoring tools.
 - Flexible hardware choices allow customers to choose the vendor with the best service and support in their geography.
 - Joint support between Microsoft and the hardware vendor improves the customer experience.
-- Seamless, full-stack updates makes it easy to stay current.
+- Seamless, full-stack updates make it easy to stay current.
 - A flexible and broad ecosystem gives IT professionals the flexibility they need to build a solution that best meets their needs.
 
 ## What you need for Azure Stack HCI
@@ -86,9 +86,9 @@ To get started, here's what you need:
 - A cluster of two or more servers from the [Azure Stack HCI Catalog](/cloud-platform/azure-stack-hci-catalog), purchased from your preferred Microsoft hardware partner
 - An [Azure subscription](https://azure.microsoft.com/)
 - An internet connection for each server in the cluster that can connect via HTTPS outbound traffic to the following endpoint at least every 30 days: *-azurestackhci-usage.azurewebsites.net
-- For clusters stretched across sites, you need at least one 1 Gb connection between sites (a 25 Gb RDMA connection is preferred), with an average latency of 5 ms round-trip if you want to do synchronous replication where writes occur simultaneously in both sites
+- For clusters stretched across sites, you need at least one 1 Gb connection between sites (a 25 Gb RDMA connection is preferred), with an average latency of 5 ms round trip if you want to do synchronous replication where writes occur simultaneously in both sites
 
-For more details, see [Before you begin](deploy/before-you-start.md).
+For more information, see [Before you begin](deploy/before-you-start.md).
 
 ## Hardware partners
 
@@ -102,7 +102,7 @@ There are a variety of Microsoft partners working on software that extends the c
 
 ## Licensing, billing, and pricing
 
-Azure Stack HCI billing is based on a monthly subscription fee per physical processor core, not a perpetual license. When customers connect to Azure, the number of cores used are automatically uploaded and assessed for billing purposes. Cost doesn’t vary with consumption beyond the physical processor cores, meaning that more VMs don’t cost more, and customers who are able to run denser virtual environments are rewarded.
+Azure Stack HCI billing is based on a monthly subscription fee per physical processor core, not a perpetual license. When customers connect to Azure, the number of cores used is automatically uploaded and assessed for billing purposes. Cost doesn’t vary with consumption beyond the physical processor cores, meaning that more VMs don’t cost more, and customers who are able to run denser virtual environments are rewarded.
 
 Customers can either purchase validated servers from a hardware partner with the Azure Stack HCI operating system pre-installed, or they can buy validated bare metal servers from an OEM and then subscribe to the service and download the Azure Stack HCI operating system from the [Azure portal](https://azure.microsoft.com/products/azure-stack/hci/).
 
@@ -174,7 +174,7 @@ Azure Stack HCI is part of the Azure and Azure Stack family, using the same soft
 
 ## Compare Windows Server and Azure Stack HCI
 
-Many customers will wonder whether Windows Server or Azure Stack HCI is a better fit for their needs. The following table helps you determine which is right for your organization. Both Windows Server and Azure Stack HCI provide the same high quality user experience with a road map of new releases.
+Many customers will wonder whether Windows Server or Azure Stack HCI is a better fit for their needs. The following table helps you determine which is right for your organization. Both Windows Server and Azure Stack HCI provide the same high-quality user experience with a road map of new releases.
 
 | Windows Server | Azure Stack HCI |
 | --------------- | --------------- |
