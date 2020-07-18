@@ -11,7 +11,7 @@ ms.reviewer: JasonGerend
 
 > Applies to: Azure Stack HCI, version v20H2
 
-In this article you will learn how to use Windows PowerShell to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct.
+In this article you will learn how to use Windows PowerShell to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. If you're rather use the Cluster Creation wizard in Windows Admin Center to create the cluster, see [Create the cluster with Windows Admin Center](create-cluster.md).
 
 You have a choice between two cluster types:
 
