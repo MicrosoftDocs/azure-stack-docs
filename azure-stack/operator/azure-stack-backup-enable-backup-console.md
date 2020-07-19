@@ -28,8 +28,8 @@ However, the Infrastructure Backup Service doesn't back up IaaS VMs, network con
 Admins and users are responsible for backing up and restoring IaaS and PaaS resources separately from the infrastructure backup processes. For info on backing up IaaS and PaaS resources, see the following links:
 
 - [Protect VMs deployed on Azure Stack Hub](../user/azure-stack-manage-vm-protect.md)
-- [Back up your app in Azure](https://docs.microsoft.com/azure/app-service/manage-backup)
-- [What is SQL Server on Azure VMs? (Windows)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview)
+- [Back up your app in Azure](/azure/app-service/manage-backup)
+- [What is SQL Server on Azure VMs? (Windows)](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview)
 
 
 ## Enable or reconfigure backup
@@ -67,7 +67,7 @@ Admins and users are responsible for backing up and restoring IaaS and PaaS reso
    > [!Note]
    > **1901 and above**: Azure Stack Hub accepts a certificate to encrypt infrastructure backup data. Make sure to store the certificate with the public and private key in a secure location. For security reasons, it's not recommended that you use the certificate with the public and private keys to configure backup settings. For more info on how to manage the lifecycle of this certificate, see [Infrastructure Backup Service best practices](azure-stack-backup-best-practices.md).
    > 
-   > **1811 or earlier**: Azure Stack Hub accepts a symmetric key to encrypt infrastructure backup data. Use the [New-AzsEncryptionKey64 cmdlet to create a key](https://docs.microsoft.com/powershell/module/azs.backup.admin/new-azsencryptionkeybase64). After you upgrade from 1811 to 1901, backup settings will retain the encryption key. We recommend you update backup settings to use a certificate. Encryption key support is now deprecated. You have at least 3 releases to update settings to use a certificate.
+   > **1811 or earlier**: Azure Stack Hub accepts a symmetric key to encrypt infrastructure backup data. Use the [New-AzsEncryptionKey64 cmdlet to create a key](/powershell/module/azs.backup.admin/new-azsencryptionkeybase64). After you upgrade from 1811 to 1901, backup settings will retain the encryption key. We recommend you update backup settings to use a certificate. Encryption key support is now deprecated. You have at least 3 releases to update settings to use a certificate.
 
 10. Select **OK** to save your backup controller settings.
 
@@ -115,7 +115,7 @@ New backups will start to use the public key in the new certificate. There's no 
 ![Azure Stack Hub - view certificate thumbprint](media/azure-stack-backup/encryption-settings-thumbprint.png)
 
 ### Backwards compatibility mode
-If you configured backup before updating to 1901, the settings are carried over with no change in behavior. In this case, the encryption key is supported for backwards compatibility. You can update the encryption key or switch to use a certificate. You have at least three releases to continue updating the encryption key. Use this time to transition to a certificate. To create a new encryption key, use [New-AzsEncryptionKeyBase64](https://docs.microsoft.com/powershell/module/azs.backup.admin/new-azsencryptionkeybase64).
+If you configured backup before updating to 1901, the settings are carried over with no change in behavior. In this case, the encryption key is supported for backwards compatibility. You can update the encryption key or switch to use a certificate. You have at least three releases to continue updating the encryption key. Use this time to transition to a certificate. To create a new encryption key, use [New-AzsEncryptionKeyBase64](/powershell/module/azs.backup.admin/new-azsencryptionkeybase64).
 
 ![Azure Stack Hub - use encryption key in backward compatibility mode](media/azure-stack-backup/encryption-settings-backcompat-encryption-key.png)
 

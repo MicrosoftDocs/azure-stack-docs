@@ -55,11 +55,11 @@ Azure App Service on Azure Stack Hub Update 2 includes the following improvement
   - Updated .NET Core components to be consistent with Azure App Service in public cloud.
   - Updated Kudu
 
-- Auto swap of deployment slots feature enabled - [Configuring Auto Swap](https://docs.microsoft.com/azure/app-service/deploy-staging-slots#configure-auto-swap).
+- Auto swap of deployment slots feature enabled - [Configuring Auto Swap](/azure/app-service/deploy-staging-slots#configure-auto-swap).
 
 - Testing in production feature enabled - [Introduction to Testing in Production](https://azure.microsoft.com/resources/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/).
 
-- Azure Functions Proxies enabled - [Work with Azure Functions Proxies](https://docs.microsoft.com/azure/azure-functions/functions-proxies).
+- Azure Functions Proxies enabled - [Work with Azure Functions Proxies](/azure/azure-functions/functions-proxies).
 
 - App Service admin extension UX support added for:
   - Secret rotation
@@ -85,7 +85,7 @@ If you chose to deploy into an existing virtual network and an internal IP addre
 
 ## Known issues for cloud admins operating Azure App Service on Azure Stack Hub
 
-Refer to the documentation in the [Azure Stack Hub 1804 Release Notes](azure-stack-update-1903.md)
+Refer to the documentation in the [Azure Stack Hub 1804 Release Notes](./release-notes.md?view=azs-2002)
 
 ## Next steps
 
