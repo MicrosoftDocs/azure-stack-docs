@@ -48,7 +48,7 @@ Diagnostic log collection feature offers two options to send logs. The following
 
 ## Send logs proactively
 
-[Proactive log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md) streamlines and simplifies diagnostic log collection so customers can send logs to Microsoft before opening a support case. Diagnostic logs are proactively uploaded from Azure Stack Hub for analysis. These logs are only collected when a [system health alert](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md#proactive-diagnostic-log-collection-alerts) is raised and are only accessed by Microsoft Support in the context of a support case.
+[Proactive log collection](./azure-stack-configure-automatic-diagnostic-log-collection.md?view=azs-2002) streamlines and simplifies diagnostic log collection so customers can send logs to Microsoft before opening a support case. Diagnostic logs are proactively uploaded from Azure Stack Hub for analysis. These logs are only collected when a [system health alert](./azure-stack-configure-automatic-diagnostic-log-collection.md?view=azs-2002#proactive-diagnostic-log-collection-alerts) is raised and are only accessed by Microsoft Support in the context of a support case.
 
 
 ### How the data is handled
@@ -63,9 +63,9 @@ Logs collected using **Proactive log collection** are uploaded to an Azure stora
 
 ## Send logs now
 
-[Send logs now](azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md) is a manual option where diagnostic logs are uploaded from Azure Stack Hub only when you (as the customer) initiate the collection, usually before opening a support case.
+[Send logs now](./azure-stack-configure-on-demand-diagnostic-log-collection-portal.md?view=azs-2002) is a manual option where diagnostic logs are uploaded from Azure Stack Hub only when you (as the customer) initiate the collection, usually before opening a support case.
 
-Azure Stack operators can send diagnostics logs on-demand to Microsoft Support by using the administrator portal or PowerShell. If Azure Stack Hub is connected to the Azure, using [Send logs now in the administrator portal](azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md) is recommended because it's the simplest way to send the logs directly to Microsoft. If the portal is unavailable, operators should instead [send logs now using PowerShell](azure-stack-configure-on-demand-diagnostic-log-collection-powershell-tzl.md).
+Azure Stack operators can send diagnostics logs on-demand to Microsoft Support by using the administrator portal or PowerShell. If Azure Stack Hub is connected to the Azure, using [Send logs now in the administrator portal](./azure-stack-configure-on-demand-diagnostic-log-collection-portal.md?view=azs-2002) is recommended because it's the simplest way to send the logs directly to Microsoft. If the portal is unavailable, operators should instead [send logs now using PowerShell](./azure-stack-configure-on-demand-diagnostic-log-collection-powershell.md?view=azs-2002).
 
 ::: moniker-end
 ::: moniker range="= azs-2002"
@@ -111,17 +111,17 @@ The following table lists considerations for environments with limited or metere
 
 ## Collecting logs from multiple Azure Stack Hub systems
 
-Set up one blob container for every Azure Stack Hub scale unit you want to collect logs from. For more information about how to configure the blob container, see [Configure automatic Azure Stack Hub diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md). As a best practice, only save diagnostic logs from the same Azure Stack Hub scale unit within a single blob container.
+Set up one blob container for every Azure Stack Hub scale unit you want to collect logs from. For more information about how to configure the blob container, see [Configure automatic Azure Stack Hub diagnostic log collection](./azure-stack-configure-automatic-diagnostic-log-collection.md?view=azs-2002). As a best practice, only save diagnostic logs from the same Azure Stack Hub scale unit within a single blob container.
 
 ## Retention policy
 
-Create an Azure Blob storage [lifecycle management rule](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts) to manage the log retention policy. We suggest retaining diagnostic logs for 30 days. To create a lifecycle management rule in Azure storage, sign in to the Azure portal, select **Storage accounts**, select the blob container, and under **Blob service**, select **Lifecycle Management**.
+Create an Azure Blob storage [lifecycle management rule](/azure/storage/blobs/storage-lifecycle-management-concepts) to manage the log retention policy. We suggest retaining diagnostic logs for 30 days. To create a lifecycle management rule in Azure storage, sign in to the Azure portal, select **Storage accounts**, select the blob container, and under **Blob service**, select **Lifecycle Management**.
 
 ![Lifecycle Management in the Azure portal](media/azure-stack-automatic-log-collection/blob-storage-lifecycle-management.png)
 
 ## SAS token expiration
 
-Set the SAS URL expiry to two years. If you ever renew your storage account keys, make sure to regenerate the SAS URL. You should manage the SAS token according to best practices. For more information, see [Best practices when using SAS](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1#best-practices-when-using-sas).
+Set the SAS URL expiry to two years. If you ever renew your storage account keys, make sure to regenerate the SAS URL. You should manage the SAS token according to best practices. For more information, see [Best practices when using SAS](/azure/storage/common/storage-dotnet-shared-access-signature-part-1#best-practices-when-using-sas).
 
 ## Bandwidth consumption
 
@@ -143,12 +143,12 @@ The following table can help environments with limited or metered connections to
 
 ## Managing costs
 
-Azure [blob storage charges](https://azure.microsoft.com/pricing/details/storage/blobs/) depend on how much data is saved each month and other factors like data redundancy. If you don't have an existing storage account, you can sign in to the Azure portal, select **Storage accounts**, and follow the steps to [create an Azure blob container SAS URL](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md).
+Azure [blob storage charges](https://azure.microsoft.com/pricing/details/storage/blobs/) depend on how much data is saved each month and other factors like data redundancy. If you don't have an existing storage account, you can sign in to the Azure portal, select **Storage accounts**, and follow the steps to [create an Azure blob container SAS URL](./azure-stack-configure-automatic-diagnostic-log-collection.md?view=azs-2002).
 
-As a best practice, create an Azure Blob storage [lifecycle management policy](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts) to minimize ongoing storage costs. For more information about how to set up the storage account, see [Configure automatic Azure Stack Hub diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md)
+As a best practice, create an Azure Blob storage [lifecycle management policy](/azure/storage/blobs/storage-lifecycle-management-concepts) to minimize ongoing storage costs. For more information about how to set up the storage account, see [Configure automatic Azure Stack Hub diagnostic log collection](./azure-stack-configure-automatic-diagnostic-log-collection.md?view=azs-2002)
 
 ::: moniker-end
 
 ## See also
 
-[Azure Stack Hub log and customer data handling](https://docs.microsoft.com/azure-stack/operator/azure-stack-data-collection)
+[Azure Stack Hub log and customer data handling](./azure-stack-data-collection.md)

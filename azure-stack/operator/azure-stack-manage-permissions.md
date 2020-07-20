@@ -23,7 +23,7 @@ A user in Azure Stack Hub can be a reader, owner, or contributor for each instan
  - Owner: User can manage everything, including access to resources.
  - Custom: User has limited, specific access to resources.
 
- For more information about creating a custom role, see [Custom roles for Azure resources](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).
+ For more information about creating a custom role, see [Custom roles for Azure resources](/azure/role-based-access-control/custom-roles).
 
 ## Set access permissions for a user
 
