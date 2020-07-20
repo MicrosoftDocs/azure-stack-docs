@@ -602,4 +602,4 @@ If you want to know how much traffic is passing through your connection, you can
 
 ## Next steps
 
-[Deploy apps to Azure and Azure Stack Hub](../user/azure-stack-solution-pipeline.md)
+[Deploy apps to Azure and Azure Stack Hub](https://github.com/Azure-Samples/azure-intelligent-edge-patterns/tree/master/hybrid-devops)
