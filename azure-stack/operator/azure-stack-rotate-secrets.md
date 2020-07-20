@@ -25,13 +25,13 @@ Secrets help you maintain secure communication between the Azure Stack Hub infra
 ## Rotate secrets overview
 
 1. Prepare the certificates which will be used for secret rotation.
-2. Review the Azure Stack Hub [public key infrastructure certificate requirements](https://docs.microsoft.com/azure-stack/operator/azure-stack-pki-certs).
+2. Review the Azure Stack Hub [public key infrastructure certificate requirements](./azure-stack-pki-certs.md).
 3. [Use the privileged endpoint](azure-stack-privileged-endpoint.md) and run **Test-azurestack**  to confirm that everything is fine.  
 4. Review the [pre-steps for secret rotation](#pre-steps-for-secret-rotation).
-5. [Validate Azure Stack Hub PKI certificates](https://docs.microsoft.com/azure-stack/operator/azure-stack-validate-pki-certs). Make sure there are no special characters in the password, like `*` or `)`.
-6. Make sure the PFX encryption is **TripleDES-SHA1**. If you run into an issue, see [Fix common issues with Azure Stack Hub PKI certificates](https://docs.microsoft.com/azure-stack/operator/azure-stack-remediate-certs#pfx-encryption).
+5. [Validate Azure Stack Hub PKI certificates](./azure-stack-validate-pki-certs.md). Make sure there are no special characters in the password, like `*` or `)`.
+6. Make sure the PFX encryption is **TripleDES-SHA1**. If you run into an issue, see [Fix common issues with Azure Stack Hub PKI certificates](./azure-stack-remediate-certs.md#pfx-encryption).
 7. Prepare the folder structure.  You can find an example in the 
-    [Rotating external secrets](https://docs.microsoft.com/azure-stack/operator/azure-stack-rotate-secrets#rotating-external-secrets) section.
+    [Rotating external secrets](#rotating-external-secrets) section.
 8. [Start the secret rotation](#use-powershell-to-rotate-secrets).
 
 ## Rotate secrets
@@ -201,7 +201,7 @@ To rotate external secrets:
     > [!IMPORTANT]  
     > Don't enter the session. Store the session as a variable.
 
-3. Run **[Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/Invoke-Command?view=powershell-5.1)**. Pass your privileged endpoint PowerShell session variable as the **Session** parameter.
+3. Run **[Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-5.1)**. Pass your privileged endpoint PowerShell session variable as the **Session** parameter.
 
 4. Run **Start-SecretRotation** with the following parameters:
     - **PfxFilesPath**  

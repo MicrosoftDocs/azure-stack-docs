@@ -49,9 +49,9 @@ You can save Azure Stack Hub log files to a blob container in Azure, and then pr
 
 ### Prerequisites
 
-You can use a new or existing blob container in Azure. To create a blob container in Azure, you need at least the [storage blob contributor role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) or the [specific permission](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). Global admins also have the necessary permission.
+You can use a new or existing blob container in Azure. To create a blob container in Azure, you need at least the [storage blob contributor role](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) or the [specific permission](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). Global admins also have the necessary permission.
 
-For best practices on choosing parameters for the automatic log collection storage account, see [Best practices for automatic Azure Stack Hub log collection](azure-stack-best-practices-automatic-diagnostic-log-collection.md). For more information about types of storage accounts, see [Azure storage account overview](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+For best practices on choosing parameters for the automatic log collection storage account, see [Best practices for automatic Azure Stack Hub log collection](./azure-stack-overview.md?view=azs-2002). For more information about types of storage accounts, see [Azure storage account overview](/azure/storage/common/storage-account-overview).
 
 ### Create a blob storage account
 
@@ -95,7 +95,7 @@ For best practices on choosing parameters for the automatic log collection stora
 
 1. Select **Create**.  
 
-Copy the URL and enter it when you [configure automatic log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md). For more information about SAS URLs, see [Using shared access signatures (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1).
+Copy the URL and enter it when you [configure automatic log collection](?view=azs-2002). For more information about SAS URLs, see [Using shared access signatures (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1).
 
 ## Steps to configure automatic log collection
 

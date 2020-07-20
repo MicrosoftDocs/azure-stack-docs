@@ -43,7 +43,7 @@ To complete the connection configuration, you must deploy two ASDK environments.
 
 ## Prepare an offer on POC1 and POC2
 
-On both POC1 and POC2, prepare an offer so that a user can subscribe to the offer and deploy the virtual machines (VMs). For information on how to create an offer, see [Make VMs available to your Azure Stack Hub users](azure-stack-tutorial-tenant-vm.md).
+On both POC1 and POC2, prepare an offer so that a user can subscribe to the offer and deploy the virtual machines (VMs). For information on how to create an offer, see [Make VMs available to your Azure Stack Hub users](./tutorial-offer-services.md?view=azs-2002).
 
 ## Review and complete the network configuration table
 
