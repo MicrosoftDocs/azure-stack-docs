@@ -65,4 +65,4 @@ The PowerShell Azure Stack privileged endpoint (PEP) is a pre-configured remote 
 
 ## Next steps
 
-For more information, about the Privileged Endpoint on Azure Stack Hub see [Using the privileged endpoint in Azure Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint).
+For more information, about the Privileged Endpoint on Azure Stack Hub see [Using the privileged endpoint in Azure Stack](../../operator/azure-stack-privileged-endpoint.md).

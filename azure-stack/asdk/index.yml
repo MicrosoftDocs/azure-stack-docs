@@ -39,7 +39,7 @@ landingContent:
       - linkListType: tutorial
         links:
           - text: Offer IaaS services
-            url: ../operator/azure-stack-tutorial-tenant-vm.md
+            url: ../operator/tutorial-offer-services.md?view=azs-2002
 
   # Card
   - title: How to use

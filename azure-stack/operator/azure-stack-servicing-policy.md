@@ -46,10 +46,10 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
-- [Azure Stack Hub 2002 update](/azure-stack/operator/release-notes?view=azs-2002)
-- [Azure Stack Hub 1910 update](/azure-stack/operator/release-notes?view=azs-1910)
-- [Azure Stack Hub 1908 update](/azure-stack/operator/release-notes?view=azs-1908)
-- [Azure Stack Hub 1907 update](/azure-stack/operator/release-notes?view=azs-1907)
+- [Azure Stack Hub 2002 update](./release-notes.md?view=azs-2002)
+- [Azure Stack Hub 1910 update](./release-notes.md?view=azs-1910)
+- [Azure Stack Hub 1908 update](./release-notes.md?view=azs-1908)
+- [Azure Stack Hub 1907 update](./release-notes.md?view=azs-1907)
 
 ## Hotfixes
 
@@ -59,10 +59,10 @@ Hotfixes are downloaded and installed just like the regular full update packages
 
 For information about currently available hotfixes, see the release notes for that update:
 
-- [Azure Stack Hub 2002 hotfix](/azure-stack/operator/release-notes?view=azs-2002#hotfixes)
-- [Azure Stack Hub 1910 hotfix](/azure-stack/operator/release-notes?view=azs-1910#hotfixes-1)
-- [Azure Stack Hub 1908 hotfix](/azure-stack/operator/release-notes?view=azs-1908#hotfixes-2)
-- [Azure Stack Hub 1907 hotfix](/azure-stack/operator/release-notes?view=azs-1907#hotfixes-3)
+- [Azure Stack Hub 2002 hotfix](./release-notes.md?view=azs-2002#hotfixes)
+- [Azure Stack Hub 1910 hotfix](./release-notes.md?view=azs-1910#hotfixes-1)
+- [Azure Stack Hub 1908 hotfix](./release-notes.md?view=azs-1908#hotfixes-2)
+- [Azure Stack Hub 1907 hotfix](./release-notes.md?view=azs-1907#hotfixes-3)
 
 ## Keep your system under support
 
@@ -89,7 +89,7 @@ For more information about resource provider compatibility, please see the relea
 
 ## Get support
 
-Azure Stack Hub follows the same support process as Azure. Enterprise customers can follow the process described in [How to create an Azure support request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). If you're a customer of a Cloud Solution Provider (CSP), contact your CSP for support. For more information, see the [Azure Support FAQs](https://azure.microsoft.com/support/faq/).
+Azure Stack Hub follows the same support process as Azure. Enterprise customers can follow the process described in [How to create an Azure support request](/azure/azure-supportability/how-to-create-azure-support-request). If you're a customer of a Cloud Solution Provider (CSP), contact your CSP for support. For more information, see the [Azure Support FAQs](https://azure.microsoft.com/support/faq/).
 
 For help troubleshooting update issues, see [Best practices for troubleshooting Azure Stack Hub patch and update issues](azure-stack-troubleshooting.md).
 
