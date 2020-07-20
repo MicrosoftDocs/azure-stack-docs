@@ -19,7 +19,7 @@ ms.lastreviewed: 11/01/2019
 
 This article shows you how to deploy a set of network virtual appliances (NVAs) for high availability in Azure Stack Hub. An NVA is typically used to control the flow of network traffic from a perimeter network, also known as a DMZ, to other networks or subnets. The article includes example architectures for ingress only, egress only, and both ingress and egress.
 
-There are NVAs from different vendors available on [Azure Stack Hub Marketplace](https://docs.microsoft.com/azure-stack/operator/azure-stack-marketplace-azure-items), use one of them for optimal performance.
+There are NVAs from different vendors available on [Azure Stack Hub Marketplace](../operator/azure-stack-marketplace-azure-items.md), use one of them for optimal performance.
 
 The architecture has the following components.
 
@@ -27,13 +27,13 @@ The architecture has the following components.
 
 -   **Virtual network and subnets**. Every Azure VM is deployed into a virtual network that can be segmented into subnets. Create a separate subnet for each tier.
 
--   **Layer 7 Load Balancer.** As Application Gateway is not yet available on Azure Stack Hub, there are alternatives available on [Azure Stack Hub Market place](https://docs.microsoft.com/azure-stack/operator/azure-stack-marketplace-azure-items) such as: [KEMP LoadMaster Load Balancer ADC Content Switch](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure)/ [f5 Big-IP Virtual Edition](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best) or [A10 vThunder ADC](https://azuremarketplace.microsoft.com/marketplace/apps/a10networks.vthunder-414-gr1)
+-   **Layer 7 Load Balancer.** As Application Gateway is not yet available on Azure Stack Hub, there are alternatives available on [Azure Stack Hub Market place](../operator/azure-stack-marketplace-azure-items.md) such as: [KEMP LoadMaster Load Balancer ADC Content Switch](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure)/ [f5 Big-IP Virtual Edition](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best) or [A10 vThunder ADC](https://azuremarketplace.microsoft.com/marketplace/apps/a10networks.vthunder-414-gr1)
 
--   **Load balancers**. Use [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)to distribute network traffic from the web tier to the business tier, and from the business tier to SQL Server.
+-   **Load balancers**. Use [Azure Load Balancer](/azure/load-balancer/load-balancer-overview)to distribute network traffic from the web tier to the business tier, and from the business tier to SQL Server.
 
 -   **Network security groups** (NSGs). Use NSGs to restrict network traffic within the virtual network. For example, in the three-tier architecture shown here, the database tier doesn't accept traffic from the web front end, only from the business tier and the management subnet.
 
--   **UDRs.** Use [*user-defined routes*](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview/) (UDRs) to route traffic to the specific load balancer.
+-   **UDRs.** Use [*user-defined routes*](/azure/virtual-network/virtual-networks-udr-overview/) (UDRs) to route traffic to the specific load balancer.
 
 This article assumes a basic understanding of Azure Stack Hub networking.
 
@@ -85,4 +85,4 @@ In the Ingress-egress with layer 7 NVAs architecture, the NVAs process incoming 
 ## Next steps
 
 - To learn more about Azure Stack Hub VMs, see [Azure Stack Hub VM features](azure-stack-vm-considerations.md).  
-- To learn more about Azure Cloud Patterns, see [Cloud Design Patterns](https://docs.microsoft.com/azure/architecture/patterns).
+- To learn more about Azure Cloud Patterns, see [Cloud Design Patterns](/azure/architecture/patterns).

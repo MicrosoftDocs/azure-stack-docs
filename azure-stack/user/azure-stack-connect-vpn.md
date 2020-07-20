@@ -320,4 +320,4 @@ went through the VPN connection.
 
 ## Next steps
 
-* [Deploy apps to Azure and Azure Stack Hub](azure-stack-solution-pipeline.md)
+* [Deploy apps to Azure and Azure Stack Hub](https://github.com/Azure-Samples/azure-intelligent-edge-patterns/tree/master/hybrid-devops)
