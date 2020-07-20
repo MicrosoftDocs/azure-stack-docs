@@ -114,7 +114,7 @@ In these instructions, you will run a Linux-based container image that contains 
 1. From your command line, run the following Docker command to run PowerShell in an Ubuntu container:
 
     ```bash
-    docker run -it mcr.microsoft.com/azurestack/powershell:ubuntu-18.04
+    docker run -it mcr.microsoft.com/azurestack/powershell
     ```
 
     You can run Ubuntu, Debian, or Centos. You can find the following Docker files in the GitHub repository, [azurestack-powershell](https://github.com/Azure/azurestack-powershell). Refer to the GitHub repository for the latest changes to the Docker files. Each OS is tagged. Replace the tag, the section after the colon, with the tag.
