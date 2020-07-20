@@ -219,7 +219,7 @@ You can use the **Region management** tile to verify that the Azure Stack regist
 3. Select **Properties**. This blade shows the status and details of your environment. The status can be **Registered** or **Not registered**. If registered, it also shows the Azure subscription ID that you used to register your Azure Stack, along with the registration resource group and name.
 
 ## Move a registration resource
-Moving a registration resource between resource groups under the same subscription **is** supported. For more info on moving resources to a new resource group, see [Move resources to new resource group or subscription](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
+Moving a registration resource between resource groups under the same subscription **is** supported. For more info on moving resources to a new resource group, see [Move resources to new resource group or subscription](/azure/azure-resource-manager/resource-group-move-resources).
 
 
 ## Next steps

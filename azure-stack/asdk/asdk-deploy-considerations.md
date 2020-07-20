@@ -141,5 +141,4 @@ Azure Stack requires access to the internet, either directly or through a transp
 ## Next steps
 
 - [Download the ASDK deployment package](asdk-download.md).
-- To learn more about Storage Spaces Direct, see [Storage Spaces Direct overview](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview).
-
+- To learn more about Storage Spaces Direct, see [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview).
