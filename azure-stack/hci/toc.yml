@@ -98,8 +98,6 @@
     href: concepts/quorum.md
   - name: Security considerations
     href: concepts/security.md
-  - name: Diagnostic data
-    href: concepts/diagnostic-data.md
 - name: Reference
   items:
   - name: Hyper-V PowerShell commands
