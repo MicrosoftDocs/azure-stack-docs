@@ -9,7 +9,7 @@ ms.date: 07/21/2020
 
 # Deploy the Azure Stack HCI operating system
 
-> Applies to: Azure Stack HCI, version 20H2 
+> Applies to: Azure Stack HCI, version 20H2
 
 After completing the steps in [Before you deploy Azure Stack HCI](before-you-start.md#install-windows-admin-center), the first step in deploying Azure Stack HCI is to install the Azure Stack HCI operating system on each server that you want to cluster. This article discusses different ways to deploy the operating system, and using Windows Admin Center to connect to the servers.
 
@@ -27,7 +27,7 @@ After you've acquired the server hardware for your Azure Stack HCI solution, it'
 1. Configure the BIOS or the Unified Extensible Firmware Interface (UEFI) of your servers as recommended by your Azure Stack HCI hardware vendor to maximize performance and reliability.
 
 ## Operating system deployment options
-Deployment options include:
+You can deploy the Azure Stack HCI operating system in the same ways that you're used to deploying other Microsoft operating systems:
 - Server manufacturer preinstallation.
 - Headless deployment using an answer file.
 - System Center Virtual Machine Manager (VMM).
@@ -40,21 +40,21 @@ For enterprise deployment of the Azure Stack HCI operating system, we recommend 
 Solution hardware ranges from 2 to 16 nodes and is tested and validated by Microsoft and partner vendors. ​To find Azure Stack HCI solution hardware from your preferred hardware partner, see the [Azure Stack HCI Catalog](https://www.microsoft.com/cloud-platform/azure-stack-hci-catalog).
 
 ### Headless deployment
-You can use an answer file to do a headless deployment of the operating system. The answer file uses an XML format to define configuration settings and values during an unattended installation of Windows Server.
+You can use an answer file to do a headless deployment of the operating system. The answer file uses an XML format to define configuration settings and values during an unattended installation of the operating system.
 
 For this deployment option, you can use Windows System Image Manager to create an unattend.xml answer file to deploy the operating system on your servers. Windows System Image Manager creates your unattend answer file through a graphical tool with component sections to define the "answers" to the configuration questions, and then ensure the correct format and syntax in the file.
 The Windows System Image Manager tool is available in the Windows Assessment and Deployment Kit (Windows ADK). To get started: [Download and install the Windows ADK](/windows-hardware/get-started/adk-install).
 
 ### System Center Virtual Machine Manager (VMM) deployment
-System Center Virtual Machine Manager (VMM) is part of the System Center suite. You can use VMM to deploy the Azure Stack HCI operating system on bare-metal hardware, as well as to cluster the servers. To learn about VMM, see [System requirements for System Center Virtual Machine Manager](/system-center/vmm/system-requirements?view=sc-vmm-2019).
+System Center Virtual Machine Manager (VMM) is part of the System Center suite. You can use VMM to deploy the Azure Stack HCI operating system on bare-metal hardware, as well as to cluster the servers. To learn about VMM, see [System requirements for System Center Virtual Machine Manager](/system-center/vmm/system-requirements).
 
 For more information about using VMM to do a bare-metal deployment of the operating system, see [Provision a Hyper-V host or cluster from bare metal computers](/system-center/vmm/hyper-v-bare-metal?view=sc-vmm-2019).
 
 ### Network deployment
-Another option is to install the Azure Stack HCI operating system over the network using [Windows Deployment Services](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831764(v=ws.11)).
+Another option is to install the Azure Stack HCI operating system over the network using [Windows Deployment Services](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831764(v=ws.11)).
 
 ### Manual deployment
-To manually deploy the Azure Stack HCI operating system on the system drive of each server to be clustered, install the operating system via your preferred method, such as booting from a DVD or USB drive. Complete the installation process using the Server Configuration tool (Sconfig.cmd) to prepare the servers for clustering. To learn more about the tool, see [Configure a Server Core installation with Sconfig.cmd](/windows-server/get-started/sconfig-on-ws2016).
+To manually deploy the Azure Stack HCI operating system on the system drive of each server to be clustered, install the operating system via your preferred method, such as booting from a DVD or USB drive. Complete the installation process using the Server Configuration tool (Sconfig) to prepare the servers for clustering. To learn more about the tool, see [Configure a Server Core installation with Sconfig](/windows-server/get-started/sconfig-on-ws2016).
 
 To manually install the Azure Stack HCI operating system:
 1. Start the Install Azure Stack HCI wizard on the system drive of the server where you want to install the operating system.
@@ -90,18 +90,18 @@ To manually install the Azure Stack HCI operating system:
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-admin-password-changed.png" alt-text="The changed password confirmation prompt":::
 
-Now you're ready to use the Server Configuration tool (Sconfig.cmd) to perform important tasks. To use Sconfig.cmd, log on to the server running the Azure Stack HCI operating system. This could be locally via a keyboard and monitor, or using a remote management (headless or BMC) controller, or Remote Desktop. The Sconfig.cmd tool opens automatically when you log on to the server.
+Now you're ready to use the Server Configuration tool (Sconfig) to perform important tasks. To use Sconfig, log on to the server running the Azure Stack HCI operating system. This could be locally via a keyboard and monitor, or using a remote management (headless or BMC) controller, or Remote Desktop. The Sconfig tool opens automatically when you log on to the server.
 
 :::image type="content" source="../media/operating-system/azure-stack-hci-sconfig-screen.png" alt-text="The Server Configuration tool interface." lightbox="../media/operating-system/azure-stack-hci-sconfig-screen.png":::
 
-From the main page of the Sconfig.cmd tool, you can perform the following initial configuration tasks:
+From the main page of the Sconfig tool, you can perform the following initial configuration tasks:
 - Configure networking or confirm that the network was configured automatically using Dynamic Host Configuration Protocol (DHCP).
 - Rename the server if the default automatically generated server name does not suite you.
 - Join the server to an Active Directory domain.
 - Add your domain user account or designated domain group to local administrators.
 - Enable Windows Remote Management (WinRM) if you plan to manage the server from outside the local subnet.
 
-After configuring the operating system as needed with Sconfig.cmd on each server, you're ready to use the Cluster Creation wizard in Windows Admin Center to cluster the servers.
+After configuring the operating system as needed with Sconfig on each server, you're ready to use the Cluster Creation wizard in Windows Admin Center to cluster the servers.
 
 ## Next steps
 To perform the next management task related to this article, see:
