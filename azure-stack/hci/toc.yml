@@ -14,7 +14,7 @@
     href: deploy/deployment-overview.md
   - name: Before you begin
     href: deploy/before-you-start.md
-  - name: Deploy Azure Stack HCI
+  - name: Deploy the Azure Stack HCI OS
     href: deploy/operating-system.md
   - name: Create the cluster
     href: deploy/create-cluster.md
