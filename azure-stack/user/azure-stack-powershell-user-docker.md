@@ -125,15 +125,15 @@ In these instructions, you will run a Linux-based container image that contains 
     | Debian | `docker run -it mcr.microsoft.com/azurestack/powershell:debian-9` |
     | Centos | `docker run -it mcr.microsoft.com/azurestack/powershell:centos-7` |
 
-2. Check that  that $HOME/.Azure is present. In the container, type:
+2. Check that that $HOME/.Azure is present. In the container, type:
 
-    ```bash  
-    ls
+    ```Powershell  
+    $HOME/.Azure
     ```
 
 3. Grant access this location for the docker process. Type the following command:
 
-    ```bash  
+    ```PowerShell  
     docker run -it -v ~/.Azure/AzureRmContext.json:/root/.Azure/AzureRmContext.json -v ~/.Azure/TokenCache.dat:/root/.Azure/TokenCache.dat mcr.microsoft.com/azurestack/powershell pwsh 
     ```
 
@@ -147,7 +147,7 @@ In these instructions, you will run a Linux-based container image that contains 
 
     | Value | Description |
     | --- | --- |
-    | Account name | The name of your Azure Stack Hub account. |
+    | The name of the environment. | The name of your Azure Stack Hub environment. |
     | Resource Manager Endpoint | The URL for the Resource Manager. Contact your cloud operator if you don't know it. | 
     | Directory Tenant ID | The ID your Azure Stack Hub directory. | 
     | Credential | The password for your Azure Stack Hub account. | 
