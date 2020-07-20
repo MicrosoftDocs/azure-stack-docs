@@ -48,7 +48,7 @@ For more information on how to enforce TLS 1.2 on the external endpoints of Azur
 
 ## Secret management
 
-Azure Stack Hub infrastructure uses a multitude of secrets, like passwords and certificates, to function. Most of the passwords associated with the internal service accounts are automatically rotated every 24 hours because they're [group Managed Service Accounts (gMSA)](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview), a type of domain account managed directly by the internal domain controller.
+Azure Stack Hub infrastructure uses a multitude of secrets, like passwords and certificates, to function. Most of the passwords associated with the internal service accounts are automatically rotated every 24 hours because they're [group Managed Service Accounts (gMSA)](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview), a type of domain account managed directly by the internal domain controller.
 
 Azure Stack Hub infrastructure uses 4096-bit RSA keys for all its internal certificates. Same key-length certificates can also be used for the external endpoints. For more information on secrets and certificate rotation, please refer to [Rotate secrets in Azure Stack Hub](azure-stack-rotate-secrets.md).
 
@@ -59,7 +59,7 @@ Azure Stack Hub makes use of the latest Windows Server security features. One of
 Authorized code is signed by either Microsoft or the OEM partner. The signed authorized code is included in the list of allowed software specified in a policy defined by Microsoft. In other words, only software that has been approved to run in the Azure Stack Hub infrastructure can be executed. Any attempt to execute unauthorized code is blocked and an alert is generated. Azure Stack Hub enforces both User Mode Code Integrity (UMCI) and Hypervisor Code Integrity (HVCI).
 
 The WDAC policy also prevents third-party agents or software from running in the Azure Stack Hub infrastructure.
-For more information on WDAC, please refer to [Windows Defender Application Control and virtualization-based protection of code integrity](https://docs.microsoft.com/windows/security/threat-protection/device-guard/introduction-to-device-guard-virtualization-based-security-and-windows-defender-application-control).
+For more information on WDAC, please refer to [Windows Defender Application Control and virtualization-based protection of code integrity](/windows/security/threat-protection/device-guard/introduction-to-device-guard-virtualization-based-security-and-windows-defender-application-control).
 
 ## Credential Guard
 

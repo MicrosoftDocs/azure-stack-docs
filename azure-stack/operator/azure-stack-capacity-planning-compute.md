@@ -16,7 +16,7 @@ ms.lastreviewed: 06/13/2019
 
 # Azure Stack Hub compute capacity
 
-The [virtual machine (VM) sizes](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes) supported on Azure Stack Hub are a subset of those supported on Azure. Azure imposes resource limits along many vectors to avoid overconsumption of resources (server local and service-level). Without imposing some limits on tenant consumption, the tenant experiences will suffer when other tenants overconsume resources. For networking egress from the VM, there are bandwidth caps in place on Azure Stack Hub that match Azure limitations. For storage resources on Azure Stack Hub, storage IOPS limits avoid basic over consumption of resources by tenants for storage access.
+The [virtual machine (VM) sizes](../user/azure-stack-vm-sizes.md) supported on Azure Stack Hub are a subset of those supported on Azure. Azure imposes resource limits along many vectors to avoid overconsumption of resources (server local and service-level). Without imposing some limits on tenant consumption, the tenant experiences will suffer when other tenants overconsume resources. For networking egress from the VM, there are bandwidth caps in place on Azure Stack Hub that match Azure limitations. For storage resources on Azure Stack Hub, storage IOPS limits avoid basic over consumption of resources by tenants for storage access.
 
 >[!IMPORTANT]
 >The [Azure Stack Hub Capacity Planner](https://aka.ms/azstackcapacityplanner) does not consider or guarantee IOPS performance.
@@ -25,7 +25,7 @@ The [virtual machine (VM) sizes](https://docs.microsoft.com/azure-stack/user/azu
 
 The Azure Stack Hub placement engine places tenant VMs across the available hosts.
 
-Azure Stack Hub uses two considerations when placing VMs. One, is there enough memory on the host for that VM type? And two, are the VMs a part of an [availability set](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) or are they [virtual machine scale sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)?
+Azure Stack Hub uses two considerations when placing VMs. One, is there enough memory on the host for that VM type? And two, are the VMs a part of an [availability set](/azure/virtual-machines/windows/manage-availability) or are they [virtual machine scale sets](/azure/virtual-machine-scale-sets/overview)?
 
 To achieve high availability of a multi-VM production system in Azure Stack Hub, virtual machines (VMs) are placed in an availability set that spreads them across multiple fault domains. A fault domain in an availability set is defined as a single node in the scale unit. Azure Stack Hub supports having an availability set with a maximum of three fault domains to be consistent with Azure. VMs placed in an availability set will be physically isolated from each other by spreading them as evenly as possible over multiple fault domains (Azure Stack Hub hosts). If there's a hardware failure, VMs from the failed fault domain will be restarted in other fault domains. If possible, they'll be kept in separate fault domains from the other VMs in the same availability set. When the host comes back online, VMs will be rebalanced to maintain high availability.  
 

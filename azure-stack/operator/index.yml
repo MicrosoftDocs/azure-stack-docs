@@ -26,13 +26,13 @@ landingContent:
           - text: What is Azure Stack Hub?
             url: azure-stack-overview.md
           - text: What is Azure Stack HCI?
-            url: azure-stack-hci-overview.md
+            url: ../hci/overview.md
       - linkListType: whats-new
         links:
           - text: Security updates
-            url: azure-stack-release-notes-security-updates.md
+            url: ./release-notes-security-updates.md?view=azs-2002
           - text: Release notes
-            url: azure-stack-release-notes-1908.md
+            url: ./release-notes.md?view=azs-2002
           - text: Azure Stack Hub Capacity Planner
             url: azure-stack-capacity-planning-overview.md
 
@@ -88,7 +88,7 @@ landingContent:
       - linkListType: deploy
         links:
           - text: Create an offer for a virtual machine
-            url: azure-stack-tutorial-tenant-vm.md
+            url: ./tutorial-offer-services.md?view=azs-2002
           - text: Create a highly available MySQL database
             url: azure-stack-tutorial-mysql.md
           - text: Create apps for any platform
@@ -105,4 +105,3 @@ landingContent:
             url: azure-stack-apply-updates.md
           - text: Back up and restore configuration and service data 
             url: azure-stack-backup-infrastructure-backup.md
-       

@@ -19,17 +19,17 @@ ms.lastreviewed: 01/14/2020
 
 This article provides SQL server best practices to optimize SQL Server and improve performance in Microsoft Azure Stack Hub virtual machines (VMs). When running SQL Server in Azure Stack Hub VMs, use the same database performance-tuning options applicable to SQL Server in an on-premises server environment. The performance of a relational database in an Azure Stack Hub cloud depends on many factors, including family size of a VM and the configuration of the data disks.
 
-When creating SQL Server images, [consider provisioning your VMs in the Azure Stack Hub portal](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). Download the SQL IaaS Extension from Marketplace Management in the Azure Stack Hub administrator portal and download your choice of SQL Server VM images. These include SQL Server 2016 SP1, SQL Server 2016 SP2, and SQL Server 2017.
+When creating SQL Server images, [consider provisioning your VMs in the Azure Stack Hub portal](/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). Download the SQL IaaS Extension from Marketplace Management in the Azure Stack Hub administrator portal and download your choice of SQL Server VM images. These include SQL Server 2016 SP1, SQL Server 2016 SP2, and SQL Server 2017.
 
 > [!NOTE]  
 > While the article describes how to provision a SQL Server VM using the global Azure portal, the guidance also applies to Azure Stack Hub with the following differences: SSD isn't available for the operating system disk and there are minor differences in storage configuration.
 
-In the VM images, for SQL Server, you can only use bring-your-own-license (BYOL). For Windows Server, the default license model is pay-as-you-go (PAYG). For detailed information of Windows Server license model in VM, refer the article [Windows Server in Azure Stack Hub Marketplace FAQ](https://docs.microsoft.com/azure-stack/operator/azure-stack-windows-server-faq#what-about-other-vms-that-use-windows-server-such-as-sql-or-machine-learning-server).  
+In the VM images, for SQL Server, you can only use bring-your-own-license (BYOL). For Windows Server, the default license model is pay-as-you-go (PAYG). For detailed information of Windows Server license model in VM, refer the article [Windows Server in Azure Stack Hub Marketplace FAQ](../operator/azure-stack-windows-server-faq.md#what-about-other-vms-that-use-windows-server-such-as-sql-or-machine-learning-server).  
 
 Getting the *best* performance for SQL Server on Azure Stack Hub VMs is the focus of this article. If your workload is less demanding, you might not require every recommended optimization. Consider your performance needs and workload patterns as you evaluate these recommendations.
 
 > [!NOTE]  
-> For performance guidance for SQL Server in Azure VMs, refer to [this article](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance).
+> For performance guidance for SQL Server in Azure VMs, refer to [this article](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance).
 
 ## Checklist for SQL server best practices
 
@@ -99,7 +99,7 @@ We recommend storing TempDB on a data disk as each data disk provides a maximum 
 
 - **Disk striping:** For more throughput, you can add additional data disks and use disk striping. To determine the number of data disks you need, analyze the number of IOPS required for your log files and for your data and TempDB files. Notice that IOPS limits are per data disk based on the VM series family, and not based on the VM size. Network bandwidth limits, however, are based on the VM size. See the tables on [VM sizes in Azure Stack Hub](azure-stack-vm-sizes.md) for more detail. Use the following guidelines:
 
-  - For Windows Server 2012 or later, use [Storage Spaces](https://technet.microsoft.com/library/hh831739.aspx) with the following guidelines:
+  - For Windows Server 2012 or later, use [Storage Spaces](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831739(v=ws.11)) with the following guidelines:
 
     1. Set the interleave (stripe size) to 64 KB (65,536 bytes) for online transaction processing (OLTP) workloads and 256 KB (262,144 bytes) for data warehousing workloads to avoid performance impact due to partition misalignment. This must be set with PowerShell.
 
@@ -124,14 +124,14 @@ We recommend storing TempDB on a data disk as each data disk provides a maximum 
 
 ## I/O guidance
 
-- Consider enabling instant file initialization to reduce the time that is required for initial file allocation. To take advantage of instant file initialization, you grant the SQL Server (MSSQLSERVER) service account with **SE_MANAGE_VOLUME_NAME** and add it to the **Perform Volume Maintenance Tasks** security policy. If you're using a SQL Server platform image for Azure, the default service account (**NT Service\MSSQLSERVER**) isn't added to the **Perform Volume Maintenance Tasks** security policy. In other words, instant file initialization isn't enabled in a SQL Server Azure platform image. After adding the SQL Server service account to the **Perform Volume Maintenance Tasks** security policy, restart the SQL Server service. There could be security considerations for using this feature. For more information, see [Database File Initialization](https://msdn.microsoft.com/library/ms175935.aspx).
+- Consider enabling instant file initialization to reduce the time that is required for initial file allocation. To take advantage of instant file initialization, you grant the SQL Server (MSSQLSERVER) service account with **SE_MANAGE_VOLUME_NAME** and add it to the **Perform Volume Maintenance Tasks** security policy. If you're using a SQL Server platform image for Azure, the default service account (**NT Service\MSSQLSERVER**) isn't added to the **Perform Volume Maintenance Tasks** security policy. In other words, instant file initialization isn't enabled in a SQL Server Azure platform image. After adding the SQL Server service account to the **Perform Volume Maintenance Tasks** security policy, restart the SQL Server service. There could be security considerations for using this feature. For more information, see [Database File Initialization](/sql/relational-databases/databases/database-instant-file-initialization?view=sql-server-ver15).
 - **Autogrow** is a contingency for unexpected growth. Don't manage your data and log growth on a day-to-day basis with autogrow. If autogrow is used, pre-grow the file using the **Size** switch.
 - Make sure **autoshrink** is disabled to avoid unnecessary overhead that can negatively affect performance.
-- Setup default backup and database file locations. Use the recommendations in this article and make the changes in the Server properties window. For instructions, see [View or Change the Default Locations for Data and Log Files (SQL Server Management Studio)](https://msdn.microsoft.com/library/dd206993.aspx). The following screenshot shows where to make these changes:
+- Setup default backup and database file locations. Use the recommendations in this article and make the changes in the Server properties window. For instructions, see [View or Change the Default Locations for Data and Log Files (SQL Server Management Studio)](/sql/database-engine/configure-windows/view-or-change-the-default-locations-for-data-and-log-files?view=sql-server-ver15). The following screenshot shows where to make these changes:
 
     > ![View or Change the Default Locations](./media/sql-server-vm-considerations/image1.png)
 
-- Enable locked pages to reduce IO and any paging activities. For more information, see [Enable the Lock Pages in Memory Option (Windows)](https://msdn.microsoft.com/library/ms190730.aspx).
+- Enable locked pages to reduce IO and any paging activities. For more information, see [Enable the Lock Pages in Memory Option (Windows)](/sql/database-engine/configure-windows/enable-the-lock-pages-in-memory-option-windows?view=sql-server-ver15).
 
 - Consider compressing any data files when transferring in/out of Azure Stack Hub, including backups.
 
@@ -141,7 +141,7 @@ Some deployments may achieve additional performance benefits using more advanced
 
 - **Back up to Azure** **storage.** When making backups for SQL Server running in Azure Stack Hub VMs, you can use SQL Server Backup to URL. This feature is available starting with SQL Server 2012 SP1 CU2 and recommended for backing up to the attached data disks.
 
-    When you backup or restore using Azure storage, follow the recommendations provided in [SQL Server Backup to URL Best Practices and Troubleshooting](https://msdn.microsoft.com/library/jj919149.aspx) and [Restoring From Backups Stored in Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure?view=sql-server-2017). You can also automate these backups using [Automated Backup for SQL Server in Azure VMs](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup).
+    When you backup or restore using Azure storage, follow the recommendations provided in [SQL Server Backup to URL Best Practices and Troubleshooting](/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting?view=sql-server-ver15) and [Restoring From Backups Stored in Microsoft Azure](/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure?view=sql-server-2017). You can also automate these backups using [Automated Backup for SQL Server in Azure VMs](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup).
 
 -   **Back up to Azure Stack Hub storage.** You can back up to Azure Stack Hub storage in a similar fashion as with backing up to Azure Storage. When you create a backup inside SQL Server Management Studio (SSMS), you need to enter the configuration information manually. You can't use SSMS to create the storage container or the Shared Access Signature. SSMS only connects to Azure subscriptions, not Azure Stack Hub subscriptions. Instead, you need to create the storage account, container, and Shared Access Signature in the Azure Stack Hub portal or with PowerShell.
 

@@ -63,7 +63,7 @@ This can happen when the Fabric Resource Provider Role cache did not refresh aft
 
 Before applying the following steps ensure that no operation is currently in progress. Update the endpoint to match your environment.
 
-1. Open PowerShell and add your Azure Stack Hub environment. This requires [Azure Stack Hub PowerShell to be installed](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install) on your computer.
+1. Open PowerShell and add your Azure Stack Hub environment. This requires [Azure Stack Hub PowerShell to be installed](./azure-stack-powershell-install.md) on your computer.
 
    ```powershell
    Add-AzureRmEnvironment -Name AzureStack -ARMEndpoint https://adminmanagement.local.azurestack.external
@@ -112,7 +112,7 @@ To run the stop action, open an elevated PowerShell prompt, and run the followin
 
 In the unlikely case that the stop action doesn't work, retry the operation and if it fails a second time use the BMC web interface instead.
 
-For more information, see [Stop-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/stop-azsscaleunitnode).
+For more information, see [Stop-AzsScaleUnitNode](/powershell/module/azs.fabric.admin/stop-azsscaleunitnode).
 
 ## Start
 
@@ -126,7 +126,7 @@ To run the start action, open an elevated PowerShell prompt, and run the followi
 
 In the unlikely case that the start action doesn't work, retry the operation. If it fails a second time, use the BMC web interface instead.
 
-For more information, see [Start-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/start-azsscaleunitnode).
+For more information, see [Start-AzsScaleUnitNode](/powershell/module/azs.fabric.admin/start-azsscaleunitnode).
 
 ## Drain
 
@@ -143,7 +143,7 @@ To run the drain action, open an elevated PowerShell prompt, and run the followi
   Disable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ```
 
-For more information, see [Disable-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/disable-azsscaleunitnode).
+For more information, see [Disable-AzsScaleUnitNode](/powershell/module/azs.fabric.admin/disable-azsscaleunitnode).
 
 ## Resume
 
@@ -155,7 +155,7 @@ To run the resume action, open an elevated PowerShell prompt, and run the follow
   Enable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ```
 
-For more information, see [Enable-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/enable-azsscaleunitnode).
+For more information, see [Enable-AzsScaleUnitNode](/powershell/module/azs.fabric.admin/enable-azsscaleunitnode).
 
 ## Repair
 
@@ -205,6 +205,6 @@ To run the shutdown action, open an elevated PowerShell prompt, and run the foll
 
 ## Next steps
 
-- [Install Azure Stack PowerShell](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install)
-- [Learn about the Azure Stack Hub Fabric operator module](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0)
-- [Monitor Add node operations](https://docs.microsoft.com/azure-stack/operator/azure-stack-add-scale-node#monitor-add-node-operations)
+- [Install Azure Stack PowerShell](./azure-stack-powershell-install.md)
+- [Learn about the Azure Stack Hub Fabric operator module](/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0)
+- [Monitor Add node operations](./azure-stack-add-scale-node.md#monitor-add-node-operations)
