@@ -1,10 +1,16 @@
 {
   "redirections": [
     { 
+      "source_path": "azure-stack/operator/app-service-deploy-ha.md", 
+      "redirect_url": "/azure-stack/operator/azure-stack-app-service-deploy", 
+      "redirect_document_id": false
+    },    
+    { 
       "source_path": "azure-stack/hybrid/index.yml", 
       "redirect_url": "/hybrid/app-solutions/", 
       "redirect_document_id": false
-    },    { 
+    },    
+    { 
       "source_path": "azure-stack/hybrid/overview-app-design-considerations.md", 
       "redirect_url": "/hybrid/app-solutions/overview-app-design-considerations", 
       "redirect_document_id": false

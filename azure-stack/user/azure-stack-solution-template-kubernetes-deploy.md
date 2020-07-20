@@ -60,4 +60,4 @@ You may also find the **Helm** package manager useful for installing and deployi
 
 [Deploy Kubernetes to Azure Stack Hub using Active Directory Federated Services (AD FS)](azure-stack-solution-template-kubernetes-adfs.md)
 
-[Kubernetes on Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
+[Kubernetes on Azure](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

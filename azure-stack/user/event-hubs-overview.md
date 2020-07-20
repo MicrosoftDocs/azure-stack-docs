@@ -61,7 +61,7 @@ The [Azure Event Hubs documentation](/azure/event-hubs/) applies to both edition
 
 ### Operator documentation 
  
-To learn more about the Event Hubs on Azure Stack Hub operator experience, refer to the [Event Hubs operator documentation](/azure-stack/operator/event-hubs-rp-overview). This documentation provides information on activities such as:
+To learn more about the Event Hubs on Azure Stack Hub operator experience, refer to the [Event Hubs operator documentation](../operator/event-hubs-rp-overview.md). This documentation provides information on activities such as:
 
 - Installing Event Hubs.
 - Making Event Hubs available to users.
