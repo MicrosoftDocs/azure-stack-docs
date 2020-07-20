@@ -58,7 +58,7 @@ Your system should meet the following prerequisites before validating PKI certif
 
 ## Perform core services certificate validation
 
-Use these steps to prepare and to validate the Azure Stack Hub PKI certificates for deployment and secret rotation:
+Use these steps to validate the Azure Stack Hub PKI certificates for deployment and secret rotation:
 
 1. Install **AzsReadinessChecker** from a PowerShell prompt (5.1 or above) by running the following cmdlet:
 
@@ -93,70 +93,75 @@ Use these steps to prepare and to validate the Azure Stack Hub PKI certificates 
 
     ```powershell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
-    Invoke-AzsCertificateValidation -CertificateType Deployment -CertificatePath C:\Certificates\Deployment -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD  
+    Invoke-AzsHubDeploymentCertificateValidation -CertificatePath C:\Certificates\Deployment -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD  
     ```
 
 4. Check the output and ensure that all certificates pass all tests. For example:
 
     ```powershell
-    Invoke-AzsCertificateValidation v1.1912.1082.37 started.
-    Testing: KeyVaultInternal\adminvault.pfx
-    Thumbprint: B1CB76****************************565B99
-            Expiry Date: OK
-            Signature Algorithm: OK
-            DNS Names: OK
-            Key Usage: OK
-            Key Length: OK
-            Parse PFX: OK
-            Private Key: OK
-            Cert Chain: OK
-            Chain Order: OK
-            Other Certificates: OK
-    Testing: ARM Public\management.pfx
-    Thumbprint: 44A35E****************************36052A
-            Expiry Date: OK
-            Signature Algorithm: OK
-            DNS Names: OK
-            Key Usage: OK
-            Key Length: OK
-            Parse PFX: OK
-            Private Key: OK
-            Cert Chain: OK
-            Chain Order: OK
-            Other Certificates: OK
-    Testing: Admin Portal\adminportal.pfx
-    Thumbprint: 3F5E81****************************9EBF9A
-            Expiry Date: OK
-            Signature Algorithm: OK
-            DNS Names: OK
-            Key Usage: OK
-            Key Length: OK
-            Parse PFX: OK
-            Private Key: OK
-            Cert Chain: OK
-            Chain Order: OK
-            Other Certificates: OK
-    Testing: Public Portal\portal.pfx
+    Invoke-AzsHubDeploymentCertificateValidation v1.2005.1286.272 started.
+    Testing: KeyVaultInternal\KeyVaultInternal.pfx
+    Thumbprint: E86699****************************4617D6
+        PFX Encryption: OK
+        Expiry Date: OK
+        Signature Algorithm: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Length: OK
+        Parse PFX: OK
+        Private Key: OK
+        Cert Chain: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Testing: ARM Public\ARMPublic.pfx
+    Thumbprint: 8DC4D9****************************69DBAA
+        PFX Encryption: OK
+        Expiry Date: OK
+        Signature Algorithm: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Length: OK
+        Parse PFX: OK
+        Private Key: OK
+        Cert Chain: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Testing: Admin Portal\AdminPortal.pfx
+    Thumbprint: 6F9055****************************4AC0EA
+        PFX Encryption: OK
+        Expiry Date: OK
+        Signature Algorithm: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Length: OK
+        Parse PFX: OK
+        Private Key: OK
+        Cert Chain: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Testing: Public Portal\PublicPortal.pfx
 
-    Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
-    Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
-    Invoke-AzsCertificateValidation Completed
+
+    Log location (contains PII): C:\Users\[*redacted*]\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+    Report location (contains PII): C:\Users\[*redacted*]\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+    Invoke-AzsHubDeploymentCertificateValidation Completed
+
     ```
 
     To validate certificates for other Azure Stack Hub services, change the value for ```-CertificateType```. For example:
 
     ```powershell  
     # App Services
-    Invoke-AzsCertificateValidation -CertificateType AppServices -CertificatePath C:\Certificates\AppServices -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
+    Invoke-AzsHubAppServicesCertificateValidation -CertificatePath C:\Certificates\AppServices -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
 
     # DBAdapter
-    Invoke-AzsCertificateValidation -CertificateType DBAdapter -CertificatePath C:\Certificates\DBAdapter -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
+    Invoke-AzsHubDBAdapterCertificateValidation -CertificatePath C:\Certificates\DBAdapter -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
 
     # EventHubs
-    Invoke-AzsCertificateValidation -CertificateType EventHubs -CertificatePath C:\Certificates\EventHubs -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
+    Invoke-AzsHubEventHubsCertificateValidation -CertificatePath C:\Certificates\EventHubs -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
 
     # IoTHub
-    Invoke-AzsCertificateValidation -CertificateType IoTHub -CertificatePath C:\Certificates\IoTHub -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
+    Invoke-AzsHubIoTHubCertificateValidation -CertificatePath C:\Certificates\IoTHub -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
     ```
     Each folder should contain a single PFX file for the certificate type. If a certificate type has multi-certificate requirements, nested folders for each individual certificate are expected and name-sensitive. The following code shows an example folder/certificate structure for all certificate types, and the appropriate value for ```-CertificateType``` and ```-CertificatePath```.
     

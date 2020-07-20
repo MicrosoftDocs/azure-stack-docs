@@ -132,7 +132,7 @@ For rotation of external secrets, complete these additional prerequisites:
 
 Complete the following steps to rotate external secrets:
 
-1. Place the new set of replacement external certificates in the **\Certificates\\\<IdentityProvider>** directory created in the prerequisites section. Be sure to follow the format outlined in the **Mandatory certificates** section of the [Azure Stack Hub PKI certificate requirements](azure-stack-pki-certs.md#mandatory-certificates). 
+1. Place the new set of replacement external certificates in the **\Certificates\\\<IdentityProvider>** directory created in the prerequisites section. Be sure to follow the `cert.<regionName>.<externalFQDN>` format for \<CertName\>. 
 
     Here's an example of a folder structure for the Azure AD Identity Provider:
     ```powershell
