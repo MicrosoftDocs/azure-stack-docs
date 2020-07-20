@@ -111,11 +111,11 @@ This article provided general guidelines for protecting user VMs deployed on Azu
 - [Considerations for business continuity and disaster recovery](https://aka.ms/azurestackbcdrconsiderationswp)
 
 ### Azure Backup Server
- - [Use Azure Backup to back up files and apps on Azure Stack Hub](https://docs.microsoft.com/azure/backup/backup-mabs-files-applications-azure-stack)
- - [Azure Backup Server support for Azure Stack Hub](https://docs.microsoft.com/azure/backup/ ) 
+ - [Use Azure Backup to back up files and apps on Azure Stack Hub](/azure/backup/backup-mabs-files-applications-azure-stack)
+ - [Azure Backup Server support for Azure Stack Hub](/azure/backup/ ) 
  
  ### Azure Site Recovery
- - [Azure Site Recovery support for Azure Stack Hub](https://docs.microsoft.com/azure/site-recovery/)  
+ - [Azure Site Recovery support for Azure Stack Hub](/azure/site-recovery/)  
  
  ### Partner products
  - [Azure Stack Hub Datacenter Integration Partner Ecosystem datasheet](https://aka.ms/azurestackbcdrpartners)

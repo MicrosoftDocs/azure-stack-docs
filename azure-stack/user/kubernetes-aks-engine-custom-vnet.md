@@ -18,11 +18,11 @@ ms.lastreviewed: 3/19/2020
 
 You can deploy a Kubernetes cluster using the Azure Kubernetes Service (AKS) engine on a custom virtual network. This article looks at finding the information you need in your virtual network. You can find steps for calculating the IP addresses used by your cluster, setting the vales in the API Model, and setting the route table and network security group.
 
-The Kubernetes cluster in Azure Stack Hub using the AKS engine uses the kubenet network plugin. For a discussion of he kubenet network plugin networking in Azure, see [Use kubenet networking with your own IP address ranges in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/configure-kubenet).
+The Kubernetes cluster in Azure Stack Hub using the AKS engine uses the kubenet network plugin. For a discussion of he kubenet network plugin networking in Azure, see [Use kubenet networking with your own IP address ranges in Azure Kubernetes Service (AKS)](/azure/aks/configure-kubenet).
 
 ## Create custom virtual network
 
-You must have a custom virtual network in your Azure Stack Hub instance. For more information, see [Quickstart: Create a virtual network using the Azure portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal).
+You must have a custom virtual network in your Azure Stack Hub instance. For more information, see [Quickstart: Create a virtual network using the Azure portal](/azure/virtual-network/quick-create-portal).
 
 Create a new subnet in your virtual network. You will need to the get the subnet Resource ID and IP address range. You will use the Resource ID and range in your API model when you deploy your cluster.
 
@@ -130,4 +130,4 @@ After you deploy your cluster, return to your virtual network in the Azure Stack
 ## Next steps
 
 - Read about the [The AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)  
-- Read about [Azure Monitor for containers overview](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)
+- Read about [Azure Monitor for containers overview](/azure/azure-monitor/insights/container-insights-overview)
