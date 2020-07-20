@@ -39,5 +39,4 @@ Updating a cluster requires orchestration because some updates require an operat
 
 For related information, see also:
 
-- [Cluster-Aware Updating overview](/windows-server/failover-clustering/cluster-aware-updating)
-- [Cluster-Aware Updating requirements and best practices](/windows-server/failover-clustering/cluster-aware-updating-requirements)
+- [Update Azure Stack HCI clusters](../manage/update-cluster.md)
