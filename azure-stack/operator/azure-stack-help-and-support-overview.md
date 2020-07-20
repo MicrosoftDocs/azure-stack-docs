@@ -65,8 +65,8 @@ This set of tutorials is customized depending on whether you're running the ASDK
 
 You can send diagnostic logs to Microsoft in two ways:
 
-- [Send logs proactively](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md): If enabled, log collection is triggered by specific health alerts.
-- [Send logs now](azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md): You can manually choose a specific sliding window as the time frame for log collection.
+- [Send logs proactively](./azure-stack-configure-automatic-diagnostic-log-collection.md?view=azs-2002): If enabled, log collection is triggered by specific health alerts.
+- [Send logs now](./azure-stack-configure-on-demand-diagnostic-log-collection-portal.md?view=azs-2002): You can manually choose a specific sliding window as the time frame for log collection.
 
 ![Diagnostic log collection options](media/azure-stack-help-and-support/banner-enable-automatic-log-collection.png)
 
@@ -104,6 +104,6 @@ Select **Help** (question mark) in the upper-right corner of the administrator p
 
 ## Next steps
 
-- Learn about [diagnostic log collection](azure-stack-diagnostic-log-collection-overview-tzl.md).
+- Learn about [diagnostic log collection](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002).
 - Learn how to [find your Cloud ID](azure-stack-find-cloud-id.md).
 - Learn about [troubleshooting Azure Stack Hub](azure-stack-troubleshooting.md).
