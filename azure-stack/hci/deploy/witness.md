@@ -20,9 +20,11 @@ For file-share witnesses, there are requirements for the file server. See [Befor
 
 ## Set up a witness using Windows Admin Center
 
-1. In Windows Admin Center, under **Tools**, select **Settings**.
+1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
+1. Under **Cluster connections**, select the cluster.
+1. Under **Tools**, select **Settings**.
 1. In the right pane, select **Witness**.
-1. Under **Witness type**, select one of the following:
+1. For **Witness type**, select one of the following:
       - **Cloud witness** - enter your Azure storage account name, key, and endpoint
       - **File share witness** - enter the file share path (//server/share)
 
