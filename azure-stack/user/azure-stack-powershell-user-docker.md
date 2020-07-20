@@ -4,10 +4,10 @@ description: Use Docker to run PowerShell in Azure Stack Hub
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 7/15/2020
+ms.date: 7/20/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 7/15/2020
+ms.lastreviewed: 7/20/2020
 
 # Intent: As an Azure Stack Hub user, I want to run my Azure Stack Hub PowerShell modules in a Docker container to keep them isolated from other processes.
 # Keyword: Azure Stack Hub AzureRM Az PowerShell Docker
@@ -45,7 +45,7 @@ To use PowerShell to access resources in Azure Stack Hub, you need a service pri
 
 In these instructions, you will run a Windows-based container image and install the PowerShell and the required modules for Azure Stack Hub.
 
-1. You need to run Docker by using Windows containers that require Windows 10. When you run Docker, switch to Windows containers.
+1. You need to run Docker by using Windows containers that require Windows 10. When you run Docker, switch to Windows containers. The images supporting the Az module will require Docker 17.05 or newer.
 
 1. Run Docker from a machine that's joined to the same domain as Azure Stack Hub. If you are using the Azure Stack Development Kit (ASDK), you need to install [the VPN on your remote machine](azure-stack-connect-azure-stack.md#connect-to-azure-stack-hub-with-vpn).
 
@@ -111,18 +111,55 @@ In these instructions, you will run a Linux-based container image that contains 
 
 ## Install Azure Stack Hub Az module on a Linux container
 
-1. From your command line, run the following Docker command:
+1. From your command line, run the following Docker command to run PowerShell in an Ubuntu container:
 
     ```bash
-    docker run -it mcr.microsoft.com/azurestack/powershell:0.1.0-ubuntu-18.04 pwsh
+    docker run -it mcr.microsoft.com/azurestack/powershell:ubuntu-18.04
     ```
 
-5. The shell is ready for your cmdlets. Connect to your Azure Stack Hub instance by using the service principal. You are now using a PowerShell prompt in Docker. 
+    You can run Ubuntu, Debian, or Centos. You can find the following Docker files in the GitHub repository, [azurestack-powershell](https://github.com/Azure/azurestack-powershell). Refer to the GitHub repository for the latest changes to the Docker files. Each OS is tagged. Replace the tag, the section after the colon, with the tag.
+
+    | Linux | Docker image |
+    | --- | --- |
+    | Ubuntu | `docker run -it mcr.microsoft.com/azurestack/powershell:ubuntu-18.04` |
+    | Debian | `docker run -it mcr.microsoft.com/azurestack/powershell:debian-9` |
+    | Centos | `docker run -it mcr.microsoft.com/azurestack/powershell:centos-7` |
+
+2. Check that  that $HOME/.Azure is present. In the container, type:
+
+    ```bash  
+    ls
+    ```
+
+3. Grant access this location for the docker process. Type the following command:
+
+    ```bash  
+    docker run -it -v ~/.Azure/AzureRmContext.json:/root/.Azure/AzureRmContext.json -v ~/.Azure/TokenCache.dat:/root/.Azure/TokenCache.dat mcr.microsoft.com/azurestack/powershell pwsh 
+    ```
+
+4. Verify the host authentication:
+
+    ```bash  
+    docker run -it --rm -v ~/.Azure/AzureRmContext.json:/root/.Azure/AzureRmContext.json -v ~/.Azure/TokenCache.dat:/root/.Azure/TokenCache.dat mcr.microsoft.com/azurestack/powershell pwsh -c Get-AzContext
+    ```
+
+5. The shell is ready for your cmdlets. Test your shell connectivity by signing in and then creating a resource group. You will need the following values:
+
+    | Value | Description |
+    | --- | --- |
+    | Account name | The name of your Azure Stack Hub account. |
+    | Resource Manager Endpoint | The URL for the Resource Manager. Contact your cloud operator if you don't know it. | 
+    | Directory Tenant ID | The ID your Azure Stack Hub directory. | 
+    | Credential | The password for your Azure Stack Hub account. | 
+    | Subscription ID | The numeric ID of your subscription. |
 
     ```powershell
-    $passwd = ConvertTo-SecureString <Secret> -AsPlainText -Force
-    $pscredential = New-Object System.Management.Automation.PSCredential('<ApplicationID>', $passwd)
-    Connect-AzAccount -ServicePrincipal -Credential $pscredential -TenantId <TenantID>
+    ./Login-Environment.ps1 
+    [-Name <String>]  
+    -ResourceManagerEndpoint <System.Uri>  
+    -DirectoryTenantId <String>  
+    -Credential <PSCredential>  
+    [-SubscriptionId <String>]
     ```
 
    PowerShell returns your account object:
@@ -133,7 +170,7 @@ In these instructions, you will run a Linux-based container image that contains 
     <AccountID>    <SubName>       <TenantID>  AzureCloud
     ```
 
-7. Test your connectivity by creating a resource group in Azure Stack Hub.
+7. Test your connectivity by creating a resource group in Azure Stack Hub. Add your Azure Stack Hub instance location. If you are using the ASDK, use 'Local.'
 
     ```powershell  
     New-AzResourceGroup -Name "MyResourceGroup" -Location "Local"
