@@ -64,7 +64,7 @@ For Active Directory deployments having multiple sites, configure the closest Ac
 
 Add the Azure Stack Hub [Public VIP network](azure-stack-network.md#public-vip-network) subnet to the Active Directory Site closest to Azure Stack Hub. For example, let's say your Active Directory has two sites: Seattle and Redmond. If Azure Stack Hub is deployed at the Seattle site, you would add the Azure Stack Hub Public VIP network subnet to the Active Directory site for Seattle.
 
-For more information on Active Directory Sites, see [Designing the site topology](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology).
+For more information on Active Directory Sites, see [Designing the site topology](/windows-server/identity/ad-ds/plan/designing-the-site-topology).
 
 > [!Note]  
 > If your Active Directory consist of a single site, you can skip this step. If you have a catch-all subnet configured, validate that the Azure Stack Hub Public VIP network subnet isn't part of it.
@@ -260,7 +260,7 @@ If you decide to manually run the commands, follow these steps:
    ```
 
     > [!Note]  
-    > The Windows Integrated Authentication (WIA) supported user agent strings may be outdated for your AD FS deployment and may require an update to support the latest clients. You can read more about updating the WIA supported user agent strings in the article [Configuring intranet forms-based authentication for devices that don't support WIA](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-intranet-forms-based-authentication-for-devices-that-do-not-support-wia).<br><br>For steps to enable Form-based authentication policy, see [Configure Authentication Policies](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-authentication-policies).
+    > The Windows Integrated Authentication (WIA) supported user agent strings may be outdated for your AD FS deployment and may require an update to support the latest clients. You can read more about updating the WIA supported user agent strings in the article [Configuring intranet forms-based authentication for devices that don't support WIA](/windows-server/identity/ad-fs/operations/configure-intranet-forms-based-authentication-for-devices-that-do-not-support-wia).<br><br>For steps to enable Form-based authentication policy, see [Configure Authentication Policies](/windows-server/identity/ad-fs/operations/configure-authentication-policies).
 
 3. To add the relying party trust, run the following Windows PowerShell command on your AD FS instance or a farm member. Make sure to update the AD FS endpoint and point to the file created in Step 1.
 

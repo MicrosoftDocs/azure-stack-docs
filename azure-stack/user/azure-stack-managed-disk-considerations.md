@@ -205,6 +205,7 @@ $Image = Get-AzureRmImage -ResourceGroupName $ImageRG -ImageName $ImageName
 $VmConfig = New-AzureRmVMConfig -VMName $VirtualMachineName -VMSize "Standard_D1" | `
 Set-AzureRmVMOperatingSystem -Linux -ComputerName $VirtualMachineName -Credential $Cred | `
 Set-AzureRmVMSourceImage -Id $Image.Id | `
+Set-AzureRmVMOSDisk -VM $VmConfig -CreateOption FromImage -Linux | `
 Add-AzureRmVMNetworkInterface -Id $Nic.Id
 
 # Create a virtual machine

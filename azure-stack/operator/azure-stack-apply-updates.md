@@ -57,7 +57,7 @@ You can view the current version of Azure Stack Hub in the **Updates** blade. To
 
 6. Select the **Download summary** from the Update run details blade to download full logs.
 
-    If you run into an issue while monitoring the update, you can use the [privileged endpoint](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint) to monitor the progress of an Azure Stack Hub update run. You can also use the privileged endpoint to resume a failed update run from the last successful step if the Azure Stack Hub portal becomes unavailable. For instructions, see [Monitor updates in Azure Stack Hub using PowerShell](azure-stack-update-monitor.md).
+    If you run into an issue while monitoring the update, you can use the [privileged endpoint](./azure-stack-privileged-endpoint.md) to monitor the progress of an Azure Stack Hub update run. You can also use the privileged endpoint to resume a failed update run from the last successful step if the Azure Stack Hub portal becomes unavailable. For instructions, see [Monitor updates in Azure Stack Hub using PowerShell](azure-stack-update-monitor.md).
 
     ![Azure Stack Hub update run details](./media/azure-stack-update-apply/image3.png)
 
@@ -79,5 +79,5 @@ You can view the current version of Azure Stack Hub in the **Updates** blade. To
 
 ## Next steps
 
--   [Manage updates in Azure Stack Hub overview](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates)  
--   [Azure Stack Hub servicing policy](https://docs.microsoft.com/azure-stack/operator/azure-stack-servicing-policy)  
+-   [Manage updates in Azure Stack Hub overview](./azure-stack-updates.md)  
+-   [Azure Stack Hub servicing policy](./azure-stack-servicing-policy.md)  
