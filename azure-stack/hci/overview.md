@@ -11,7 +11,7 @@ ms.date: 07/21/2020
 
 Azure Stack HCI is a hyperconverged cluster solution that runs virtualized Windows and Linux workloads in a hybrid on-premises environment. Azure hybrid services enhance the cluster with capabilities such as cloud-based monitoring, Site Recovery, and VM backups, as well as a central view of all of your Azure Stack HCI deployments in the Azure portal. You can manage the cluster with your existing tools including Windows Admin Center, System Center, and PowerShell.
 
-Previously a hardware-software solution using Windows Server 2019, Azure Stack HCI, version 20H2 is a new operating system now in Public Preview. It's derived from Windows Server and intended for on-premises clusters running virtualized workloads, with hybrid-cloud connections built-in. As such, Azure Stack HCI is delivered as an Azure service and billed on an Azure subscription.
+Azure Stack HCI, version 20H2 is a new operating system now in Public Preview. It's intended for on-premises clusters running virtualized workloads, with hybrid-cloud connections built-in. As such, Azure Stack HCI is delivered as an Azure service and billed on an Azure subscription.
 
 At its core, Azure Stack HCI is a solution that combines the following:
 
@@ -125,6 +125,18 @@ To manage these technologies, you can use the following management tools:
 
 ## FAQ
 
+### How does Azure Stack HCI relate to Windows Server?
+
+Windows Server is the foundation of nearly every Azure product, and all the features you value continue to ship and be supported in Windows Server. The initial offering of Azure Stack HCI was based on Windows Server 2019 and used the traditional Windows Server licensing model. Today, Azure Stack HCI continues to be based on Windows Server, but has its own operating system and subscription-based licensing model. Azure Stack HCI is the recommended way to deploy HCI on-premises, using Microsoft-validated hardware from our partners.
+
+### Does Azure Stack HCI need to connect to Azure?
+
+Yes, the cluster must connect to Azure at least once every 30 days in order for the number of cores to be assessed for billing purposes. You can also take advantage of integration with Azure for hybrid scenarios like off-site backup and disaster recovery, and cloud-based monitoring and update management, but they're optional. It's no problem to run disconnected from the internet for extended periods.
+
+### Can I upgrade from Windows Server 2019 to Azure Stack HCI?
+
+You can upgrade from Windows Server 2019 to Azure Stack HCI, but not seamlessly; there is no in-place upgrade at this time. Upgrading requires a maintenance window and a clean install on each server, rebuilding each server individually as part of a rolling cluster upgrade.
+
 ### What do Azure Stack Hub and Azure Stack HCI solutions have in common?
 
 Azure Stack HCI features the same Hyper-V-based software-defined compute, storage, and networking technologies as Azure Stack Hub. Both offerings meet rigorous testing and validation criteria to ensure reliability and compatibility with the underlying hardware platform.
@@ -140,18 +152,6 @@ With Azure Stack HCI, you run virtualized workloads on-premises, managed with Wi
 Microsoft's hyperconverged technology is already the foundation of Azure Stack Hub.
 
 Many Microsoft customers have complex IT environments and our goal is to provide solutions that meet them where they are with the right technology for the right business need. Azure Stack HCI is an evolution of the Windows Server Software-Defined (WSSD) solutions previously available from our hardware partners. We brought it into the Azure Stack family because we've started to offer new options to connect seamlessly with Azure for infrastructure management services.
-
-### Does Azure Stack HCI need to connect to Azure?
-
-Yes, the cluster must connect to Azure at least once every 30 days in order for the number of cores to be assessed for billing purposes. You can also take advantage of integration with Azure for hybrid scenarios like off-site backup and disaster recovery, and cloud-based monitoring and update management, but they're optional. It's no problem to run disconnected from the internet for extended periods.
-
-### How does Azure Stack HCI relate to Windows Server?
-
-Windows Server is the foundation of nearly every Azure product, and all the features you value continue to ship and be supported in Windows Server. The initial offering of Azure Stack HCI was based on Windows Server 2019 and used the traditional Windows Server licensing model. Today, Azure Stack HCI continues to be based on Windows Server, but has its own operating system and subscription-based licensing model. Azure Stack HCI is the recommended way to deploy HCI on-premises, using Microsoft-validated hardware from our partners.
-
-### Can I upgrade from Windows Server 2019 to Azure Stack HCI?
-
-You can upgrade from Windows Server 2019 to Azure Stack HCI, but not seamlessly; there is no in-place upgrade at this time. Upgrading requires a maintenance window and a clean install on each server, rebuilding each server individually as part of a rolling cluster upgrade.
 
 ### Can I upgrade from Azure Stack HCI to Azure Stack Hub?
 
