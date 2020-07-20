@@ -31,7 +31,7 @@ This article provides an overview of the unique considerations for Azure Stack H
 |  | Name servers for zone delegation | Azure provides four name servers for each user (tenant) zone that is created. | Azure Stack Hub provides two name servers for each user (tenant) zone that is created. |
 | Azure Firewall | Network security service | Azure Firewall is a managed, cloud-based network security service that protects your Azure Virtual Network resources. | Not yet supported. |
 | Virtual Network | Virtual network peering | Connect two virtual networks in the same region through the Azure backbone network. | Not yet supported |
-|  | IPv6 addresses | You can assign an IPv6 address as part of the [Network Interface Configuration](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface-addresses#ip-address-versions). | Only IPv4 is supported. |
+|  | IPv6 addresses | You can assign an IPv6 address as part of the [Network Interface Configuration](/azure/virtual-network/virtual-network-network-interface-addresses#ip-address-versions). | Only IPv4 is supported. |
 |  | DDoS Protection Plan | Supported | Not yet supported. |
 |  | Scale Set IP Configurations | Supported | Not yet supported. |
 |  | Private Access Services (Subnet) | Supported | Not yet supported. |

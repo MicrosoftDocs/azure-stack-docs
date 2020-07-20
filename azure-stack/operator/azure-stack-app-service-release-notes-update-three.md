@@ -75,7 +75,7 @@ For customers wishing to migrate to a contained database for existing Azure App 
 >
 >
 
-1. Add [AppService databases (appservice_hosting and appservice_metering) to an Availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database).
+1. Add [AppService databases (appservice_hosting and appservice_metering) to an Availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database).
 
 1. Enable contained database.
     ```sql

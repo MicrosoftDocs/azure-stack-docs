@@ -81,7 +81,7 @@ You can set up a publicly accessible endpoint that hosts a VM alias file. The VM
 
 ### Install or upgrade CLI
 
-Sign in to your development workstation and install CLI. Azure Stack Hub requires version 2.0 or later of Azure CLI. The latest version of the API Profiles requires a current version of the CLI. You install the CLI by using the steps described in the [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) article. 
+Sign in to your development workstation and install CLI. Azure Stack Hub requires version 2.0 or later of Azure CLI. The latest version of the API Profiles requires a current version of the CLI. You install the CLI by using the steps described in the [Install the Azure CLI](/cli/azure/install-azure-cli) article. 
 
 1. To verify whether the installation was successful, open a terminal or command prompt window and run the following command:
 
@@ -198,7 +198,7 @@ To trust the Azure Stack Hub CA root certificate, append it to the existing Pyth
 
    - Sign in as a *service principal*: 
     
-     Before you sign in, [create a service principal through the Azure portal](azure-stack-create-service-principals.md) or CLI and assign it a role. Now, sign in by using the following command:
+     Before you sign in, [create a service principal through the Azure portal](../operator/azure-stack-create-service-principals.md?view=azs-2002) or CLI and assign it a role. Now, sign in by using the following command:
 
      ```azurecli  
      az login --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com> --service-principal -u <Application Id of the Service Principal> -p <Key generated for the Service Principal>
@@ -424,7 +424,7 @@ Use the following steps to connect to Azure Stack Hub:
    
    * Sign in as a *service principal*
     
-     Before you sign in, [create a service principal through the Azure portal](azure-stack-create-service-principals.md) or CLI and assign it a role. Now, sign in by using the following command:
+     Before you sign in, [create a service principal through the Azure portal](../operator/azure-stack-create-service-principals.md?view=azs-2002) or CLI and assign it a role. Now, sign in by using the following command:
 
      ```azurecli  
      az login \

@@ -72,4 +72,4 @@ Requires Support VM to have internet connectivity.
 
 ## Next steps
 
-For information on how to access and use the privileged endpoint, see [Use the privileged endpoint in Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint).
+For information on how to access and use the privileged endpoint, see [Use the privileged endpoint in Azure Stack Hub](../../operator/azure-stack-privileged-endpoint.md).

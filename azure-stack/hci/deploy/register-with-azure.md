@@ -63,7 +63,7 @@ Register (this will prompt for Azure log-in):
 Register-AzStackHCI  -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" [-ResourceName] [-ResourceGroupName] [-ComputerName –Credential]
 ```
 
-The minimum syntax requires only your Azure subscription ID. Remember that if the user running the above command must have Azure Active Directory permissions, or the registration process will not complete.
+The minimum syntax requires only your Azure subscription ID. Remember that the user running the above command must have Azure Active Directory permissions, or the registration process will not complete.
 
 ## Authenticate with Azure
 Once dependencies have been installed and the parameters have been validated, you need to authenticate (sign in) using your Azure account. Your account needs to have access to the Azure subscription that was specified in order for registration to proceed.

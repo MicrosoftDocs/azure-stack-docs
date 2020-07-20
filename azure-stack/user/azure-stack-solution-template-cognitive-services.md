@@ -56,7 +56,7 @@ Container support is currently in public preview for a subset of Azure Cognitive
 
 With Azure Stack Hub, deploy Cognitive Services containers in a Kubernetes cluster along with your app containers for high availability and elastic scaling. You can develop your app by combining Cognitive services with components built on App Services, Functions, Blob storage, SQL, or mySQL databases.
 
-For more details on Cognitive Services containers, go to [Container support in Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support).
+For more details on Cognitive Services containers, go to [Container support in Azure Cognitive Services](/azure/cognitive-services/cognitive-services-container-support).
 
 ## Deploy the Azure Face API
 
@@ -66,7 +66,7 @@ This article describes how to deploy the Azure Face API on a Kubernetes cluster 
 
 Before you get started, you'll need to:
 
-1.  Request access to the container registry to pull Face container images from Azure Cognitive Services Container Registry. For details, see [Request access to the private container registry](https://docs.microsoft.com/azure/cognitive-services/face/face-how-to-install-containers#request-access-to-the-private-container-registry).
+1.  Request access to the container registry to pull Face container images from Azure Cognitive Services Container Registry. For details, see [Request access to the private container registry](/azure/cognitive-services/face/face-how-to-install-containers#request-access-to-the-private-container-registry).
 
 2.  Prepare a Kubernetes cluster on Azure Stack Hub. You can follow the article [Deploy Kubernetes to Azure Stack Hub](azure-stack-solution-template-kubernetes-deploy.md).
 
@@ -74,7 +74,7 @@ Before you get started, you'll need to:
 
 Create a Cognitive Service resource on Azure to preview the Face, LUIS, or Recognize Text containers. You'll need to use the subscription key and endpoint URL from the resource to instantiate the cognitive service containers.
 
-1. Create an Azure resource in the Azure portal. If you want to preview the Face containers, you must first create a corresponding Face resource in the Azure portal. For more information, see [Quickstart: Create a Cognitive Services account in the Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
+1. Create an Azure resource in the Azure portal. If you want to preview the Face containers, you must first create a corresponding Face resource in the Azure portal. For more information, see [Quickstart: Create a Cognitive Services account in the Azure portal](/azure/cognitive-services/cognitive-services-apis-create-account).
 
    > [!Note]
    >  The Face or Computer Vision resource must use the F0   pricing tier.
@@ -206,7 +206,7 @@ You can get the external IP address from the following command:
 
 ## Try the services with Python
 
-You can try to validate the Cognitive services on your Azure Stack Hub by running some simple Python scripts. There are official Python quickstart samples for [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home), [Face](https://docs.microsoft.com/azure/cognitive-services/face/overview), [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview), and [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/luis-container-howto) (LUIS) for your reference.
+You can try to validate the Cognitive services on your Azure Stack Hub by running some simple Python scripts. There are official Python quickstart samples for [Computer Vision](/azure/cognitive-services/computer-vision/home), [Face](/azure/cognitive-services/face/overview), [Text Analytics](/azure/cognitive-services/text-analytics/overview), and [Language Understanding](/azure/cognitive-services/luis/luis-container-howto) (LUIS) for your reference.
 
 There are two things to keep in mind when using Python apps to validate the services running on containers: 
 1. Cognitive services in containers don't need sub keys for authentication but still require any string as a placeholder to satisfy the SDK. 
@@ -235,10 +235,10 @@ print(faces)
 
 ## Next steps
 
-[How to install and run Computer Vision API containers.](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers)
+[How to install and run Computer Vision API containers.](/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers)
 
-[How to install and run Face API containers](https://docs.microsoft.com/azure/cognitive-services/face/face-how-to-install-containers)
+[How to install and run Face API containers](/azure/cognitive-services/face/face-how-to-install-containers)
 
-[How to install and run Text Analytics API containers](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers)
+[How to install and run Text Analytics API containers](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers)
 
-[How to install and run Language Understanding (LIUS) containers](https://docs.microsoft.com/azure/cognitive-services/luis/luis-container-howto)
+[How to install and run Language Understanding (LIUS) containers](/azure/cognitive-services/luis/luis-container-howto)
