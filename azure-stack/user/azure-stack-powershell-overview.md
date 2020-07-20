@@ -23,9 +23,9 @@ This article helps you orient yourself to the variety of PowerShell modules that
 
 | API | PowerShell reference | REST reference |
 | --- | --- | --- |
-| Global Azure Resource Manager | [Azure PowerShell modules](https://github.com/Azure/azure-powershell/blob/master/documentation/azure-powershell-modules.md) | [REST API browser](https://docs.microsoft.com/rest/api/) |
+| Global Azure Resource Manager | [Azure PowerShell modules](https://github.com/Azure/azure-powershell/blob/master/documentation/azure-powershell-modules.md) | [REST API browser](/rest/api/) |
 | Azure Stack Hub Resource Manager | [Manage API version profiles in Azure Stack Hub](azure-stack-version-profiles.md) | [Manage API version profiles in Azure Stack Hub](azure-stack-version-profiles.md) |
-| Azure Stack Hub administrator endpoints | [Azure Stack Hub admin module](https://docs.microsoft.com/powershell/azure/azure-stack/overview) | [REST API browser - Azure Stack Hub](https://docs.microsoft.com/rest/api/?term=Azure%20Azure%20Stack%20Admin) |
+| Azure Stack Hub administrator endpoints | [Azure Stack Hub admin module](/powershell/azure/azure-stack/overview) | [REST API browser - Azure Stack Hub](/rest/api/?term=Azure Azure Stack Admin) |
 | Azure Stack Hub privileged endpoint | [Use the privileged endpoint in Azure Stack Hub](../operator/azure-stack-privileged-endpoint.md) | |
 
 Each interface contacts resource providers in global Azure or Azure Stack Hub. Resource providers enable Azure capabilities. For example, the Azure Compute resource provider gives you programmatic access to the creation and management of virtual machines and their supporting resources.
@@ -40,7 +40,7 @@ The following block diagram shows the relationships between the sets of PowerShe
 
 ### Global Azure
 
-Azure PowerShell contains a set of cmdlets that use the current version of Azure Resource Manager for working with your Azure resources. Azure PowerShell uses the .NET Standard version, which means that you can use versions of PowerShell with Windows, macOS, and Linux. Azure PowerShell is also available on Azure Cloud Shell. For more information, see [Get started with Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+Azure PowerShell contains a set of cmdlets that use the current version of Azure Resource Manager for working with your Azure resources. Azure PowerShell uses the .NET Standard version, which means that you can use versions of PowerShell with Windows, macOS, and Linux. Azure PowerShell is also available on Azure Cloud Shell. For more information, see [Get started with Azure PowerShell](/powershell/azure/get-started-azureps).
 
 ### Azure Stack Hub Resource Manager
 

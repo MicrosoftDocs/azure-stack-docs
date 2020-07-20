@@ -138,7 +138,7 @@ For apps and users, the architecture of Azure Stack Hub is described by four lay
 |Layer    |Authentication between layers  |
 |---------|---------|
 |Tools and clients, such as the administrator portal     | To access or modify a resource in Azure Stack Hub, tools and clients use a [JSON Web Token](/azure/active-directory/develop/active-directory-token-and-claims) to place a call to Azure Resource Manager. <br>Azure Resource Manager validates the JSON Web Token and peeks at the *claims* in the issued token to estimate the level of authorization that user or service principal has in Azure Stack Hub. |
-|Azure Resource Manager and its core services     |Azure Resource Manager communicates with resource providers to transfer communication from users. <br> Transfers use *direct imperative* calls or *declarative* calls via [Azure Resource Manager templates](/azure-stack/user/azure-stack-arm-templates).|
+|Azure Resource Manager and its core services     |Azure Resource Manager communicates with resource providers to transfer communication from users. <br> Transfers use *direct imperative* calls or *declarative* calls via [Azure Resource Manager templates](../user/azure-stack-arm-templates.md).|
 |Resource providers     |Calls passed to resource providers are secured with certificate-based authentication. <br>Azure Resource Manager and the resource provider then stay in communication through an API. For every call that's received from Azure Resource Manager, the resource provider validates the call with that certificate.|
 |Infrastructure and business logic     |Resource providers communicate with business logic and infrastructure by using an authentication mode of their choice. The default resource providers that ship with Azure Stack Hub use Windows Authentication to secure this communication.|
 
@@ -189,7 +189,7 @@ Details about using Azure PowerShell to authenticate with Azure Stack Hub can be
 
 ### Authenticate with Azure CLI
 
-For information about using Azure PowerShell to authenticate with Azure Stack Hub, see [Install and configure Azure CLI for use with Azure Stack Hub](/azure-stack/user/azure-stack-version-profiles-azurecli2).
+For information about using Azure PowerShell to authenticate with Azure Stack Hub, see [Install and configure Azure CLI for use with Azure Stack Hub](../user/azure-stack-version-profiles-azurecli2.md).
 
 ## Next steps
 
