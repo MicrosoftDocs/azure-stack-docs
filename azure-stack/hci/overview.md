@@ -245,7 +245,7 @@ This means that you are can run the following server roles:
 - Hyper-V
 - Network controller and other components required for Software Defined Networking (SDN)
 
-But any other roles and apps must run inside of VMs. Note that you can run utilities, apps, and services necessary for running and managing VMs, for example, anti-malware apps.
+But any other roles and apps must run inside of VMs. Note that you can run utilities, apps, and services necessary for the management and health of hosted VMs.
 
 ## Video-based learning
 
