@@ -27,13 +27,13 @@ This section looks at the overall structure of the solution and major parts.
 
 ### Application layer
 
-Data can be replicated between storage accounts on separate Azure Stack Hub scale units by issuing multiple [PUT Blob](https://docs.microsoft.com/rest/api/storageservices/put-blob) or [Put Block](https://docs.microsoft.com/rest/api/storageservices/put-block) operations to write objects to multiple locations. Alternatively, the application can issue the [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/copy-blob) operation to copy the Blob to a storage account hosted on a separate scale unit after the Put operation to the primary account completes.
+Data can be replicated between storage accounts on separate Azure Stack Hub scale units by issuing multiple [PUT Blob](/rest/api/storageservices/put-blob) or [Put Block](/rest/api/storageservices/put-block) operations to write objects to multiple locations. Alternatively, the application can issue the [Copy Blob](/rest/api/storageservices/copy-blob) operation to copy the Blob to a storage account hosted on a separate scale unit after the Put operation to the primary account completes.
 
 ### Scheduled copy task
 
 AzCopy is an excellent tool that can be utilized to copy data from local filesystems, Azure Cloud Storage, Azure Stack Hub Storage, and s3. Currently, AzCopy cannot copy data between two Azure Stack Hub Storage Accounts. Copying objects from a source Azure Stack Hub Storage account to a target Azure Stack Hub Storage account requires an intermediary local filesystem.
 
-For more information, see the AzCopy in the [Use data transfer tools in Azure Stack Hub Storage](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer?view=azs-1908#azcopy) article.
+For more information, see the AzCopy in the [Use data transfer tools in Azure Stack Hub Storage](./azure-stack-storage-transfer.md?view=azs-1908#azcopy) article.
 
 ### Azure Stack Hub (source)
 
@@ -55,7 +55,7 @@ You can create a Linux or Windows server as your intermediate server. The server
 - For instruction on setting up a Linux Server, see [Create a Linux server VM by using the Azure Stack Hub portal](azure-stack-quick-linux-portal.md).  
 - For instruction on setting a Windows Server, see [Create a Windows server VM with the Azure Stack Hub portal](azure-stack-quick-windows-portal.md).  
 
-Once you have set up your Windows Server, you will need to install [Azure Stack Hub PowerShell](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install?toc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fbreadcrumb%2Ftoc.json) and [Azure Stack Hub Tools](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-download?toc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fbreadcrumb%2Ftoc.json).
+Once you have set up your Windows Server, you will need to install [Azure Stack Hub PowerShell](../operator/azure-stack-powershell-install.md?toc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fbreadcrumb%2Ftoc.json) and [Azure Stack Hub Tools](../operator/azure-stack-powershell-download.md?toc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fbreadcrumb%2Ftoc.json).
 
 ## Set up backup for storage accounts
 
@@ -113,7 +113,7 @@ Once you have set up your Windows Server, you will need to install [Azure Stack 
 
     - For a Windows server:
 
-    For information on using the Windows Task schedule, see [Task Scheduler for developers](https://docs.microsoft.com/windows/win32/taskschd/task-scheduler-start-page)
+    For information on using the Windows Task schedule, see [Task Scheduler for developers](/windows/win32/taskschd/task-scheduler-start-page)
     
 
 ## Use your storage account in a disaster
