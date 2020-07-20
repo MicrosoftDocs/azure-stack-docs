@@ -4,12 +4,12 @@ description: How to choose drives for Storage Spaces Direct in Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
-ms.date: 07/01/2020
+ms.date: 07/14/2020
 ---
 
 # Choosing drives for Azure Stack HCI
 
->Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+>Applies to: Windows Server 2019
 
 This topic provides guidance on how to choose drives for [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) to meet your performance and capacity requirements for Azure Stack HCI.
 
