@@ -61,7 +61,7 @@ When creating a **Package Validation** workflow in the VaaS portal, you need to 
 
 The minimum access level required by VaaS depends on whether you're creating a Package Validation workflow or scheduling an *interactive* test.
 
-In the case of **Private** and **Blob** access levels, you must temporarily grant access to the package blob by giving VaaS a [shared access signature](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1?) (SAS). The **Container** access level doesn't require you to generate SAS URLs but allows unauthenticated access to the container and its blobs.
+In the case of **Private** and **Blob** access levels, you must temporarily grant access to the package blob by giving VaaS a [shared access signature](/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS). The **Container** access level doesn't require you to generate SAS URLs but allows unauthenticated access to the container and its blobs.
 
 |Access level | Workflow requirement | Test requirement |
 |---|---------|---------|
@@ -120,7 +120,7 @@ Use this option if it's acceptable to allow unauthenticated clients access to in
 > [!CAUTION]
 > This option opens up your blob(s) for anonymous read-only access.
 
-1. Set the access level of the package container to **Blob** or **Container**. For more information, see [Grant anonymous users permissions to containers and blobs](https://docs.microsoft.com/azure/storage/storage-manage-access-to-resources#grant-anonymous-users-permissions-to-containers-and-blobs).
+1. Set the access level of the package container to **Blob** or **Container**. For more information, see [Grant anonymous users permissions to containers and blobs](/azure/storage/storage-manage-access-to-resources#grant-anonymous-users-permissions-to-containers-and-blobs).
 
     > [!NOTE]
     > If you're providing a package URL to an *interactive* test, you must grant **full public read access** to the container to proceed with testing.

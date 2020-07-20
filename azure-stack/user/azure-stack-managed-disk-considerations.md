@@ -202,10 +202,11 @@ $Nic = New-AzNetworkInterface -Name "MyNic" -ResourceGroupName $ResourceGroupNam
 $Image = Get-AzImage -ResourceGroupName $ImageRG -ImageName $ImageName
 
 # Create a virtual machine configuration
-$VmConfig = New-AzVMConfig -VMName $VirtualMachineName -VMSize "Standard_D1" | `
-Set-AzVMOperatingSystem -Linux -ComputerName $VirtualMachineName -Credential $Cred | `
-Set-AzVMSourceImage -Id $Image.Id | `
-Add-AzVMNetworkInterface -Id $Nic.Id
+$VmConfig = New-AzureRmVMConfig -VMName $VirtualMachineName -VMSize "Standard_D1" | `
+Set-AzureRmVMOperatingSystem -Linux -ComputerName $VirtualMachineName -Credential $Cred | `
+Set-AzureRmVMSourceImage -Id $Image.Id | `
+Set-AzureRmVMOSDisk -VM $VmConfig -CreateOption FromImage -Linux | `
+Add-AzureRmVMNetworkInterface -Id $Nic.Id
 
 # Create a virtual machine
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VmConfig
