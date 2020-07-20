@@ -238,7 +238,7 @@ Windows Admin Center, version 20H2 also provides new cluster updating UI to Wind
 
 ## Roles you can run without virtualizing
 
-Because Azure Stack HCI is intended as a virtualization host where you run all of your workloads in virtual machines, the Azure Stack HCI terms allows you to run only what's necessary for hosting virtual machines.
+Because Azure Stack HCI is intended as a virtualization host where you run all of your workloads in virtual machines, the Azure Stack HCI terms allow you to run only what's necessary for hosting virtual machines.
 
 This means that you are can run the following server roles:
 
