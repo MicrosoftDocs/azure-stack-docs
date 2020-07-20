@@ -6,8 +6,6 @@
     href: overview.md
 - name: Get started
   items:
-  - name: Use Azure Stack HCI with Windows Admin Center
-    href: get-started.md
 - name: Manage
   items:
   - name: Create volumes
@@ -26,6 +24,8 @@
     href: manage/add-cluster.md
   - name: Use Azure Site Recovery
     href: manage/azure-site-recovery.md
+  - name: Use Azure Network Adapter
+    href: manage/use-azure-network-adapter.md
   - name: Monitor with Azure Monitor
     href: manage/azure-monitor.md
   - name: Manage VMs

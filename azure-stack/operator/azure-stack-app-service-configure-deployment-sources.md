@@ -154,7 +154,7 @@ You must have a Microsoft account linked to a OneDrive account to complete this 
 
 ## Next steps
 
-Users can now use the deployment sources for things like [continuous deployment](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment), [local Git deployment](https://docs.microsoft.com/azure/app-service/deploy-local-git), and [cloud folder synchronization](https://docs.microsoft.com/azure/app-service/deploy-content-sync).
+Users can now use the deployment sources for things like [continuous deployment](/azure/app-service/deploy-continuous-deployment), [local Git deployment](/azure/app-service/deploy-local-git), and [cloud folder synchronization](/azure/app-service/deploy-content-sync).
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-configure-deployment-sources/App-service-provider-admin.png

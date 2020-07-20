@@ -71,7 +71,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 <!-- What's new, also net new experiences and features. -->
 
 - A new version (1.8.1) of the Azure Stack Hub admin PowerShell modules based on AzureRM is available.
-- A new version of the Azure Stack Hub admin REST API is available. You can find details about endpoints and breaking changes in the [API Reference](https://docs.microsoft.com/rest/api/azure-stack/).
+- A new version of the Azure Stack Hub admin REST API is available. You can find details about endpoints and breaking changes in the [API Reference](/rest/api/azure-stack/).
 - New Azure PowerShell tenant modules will be released for Azure Stack Hub on April 15, 2020. The currently used Azure RM modules will continue to work, but will no longer be updated after build 2002.
 - Added new warning alert on the Azure Stack Hub administrator portal to report on connectivity issues with the configured syslog server. Alert title is **The Syslog client encountered a networking issue while sending a Syslog message**.
 - Added new warning alert on the Azure Stack Hub administrator portal to report on connectivity issues with the Network Time Protocol (NTP) server. Alert title is **Invalid Time Source on [node name]**.
@@ -86,8 +86,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 - The Azure Stack Hub readiness checker tool now validates AD Graph integration using all TCP IP ports allocated to AD Graph.
 - The offline syndication tool has been updated with reliability improvements. The tool is no longer available on GitHub, and has been [moved to the PowerShell Gallery](https://www.powershellgallery.com/packages/Azs.Syndication.Admin/). For more information, see [Download Marketplace items to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md).
 - A new monitoring capability is being introduced. The low disk space alert for physical hosts and infrastructure VMs will be auto-remediated by the platform and only if this action fails will the alert be visible in the Azure Stack Hub administrator portal, for the operator to take action.
-- Improvements to [diagnostic log collection](azure-stack-diagnostic-log-collection-overview-tzl.md). The new experience streamlines and simplifies diagnostic log collection by removing the need to configure a blob storage account in advance. The storage environment is preconfigured so that you can send logs before opening a support case, and spend less time on a support call.
-- Time taken for both [Proactive Log Collection and the on-demand log collection](azure-stack-diagnostic-log-collection-overview-tzl.md) has been reduced by 80%. Log collection time can take longer than this expected value but doesn't require action by Azure Stack Hub operators unless the log collection fails.
+- Improvements to [diagnostic log collection](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002). The new experience streamlines and simplifies diagnostic log collection by removing the need to configure a blob storage account in advance. The storage environment is preconfigured so that you can send logs before opening a support case, and spend less time on a support call.
+- Time taken for both [Proactive Log Collection and the on-demand log collection](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002) has been reduced by 80%. Log collection time can take longer than this expected value but doesn't require action by Azure Stack Hub operators unless the log collection fails.
 - The download progress of an Azure Stack Hub update package is now visible in the update blade after an update is initiated. This only applies to connected Azure Stack Hub systems that choose to [prepare update packages via automatic download](azure-stack-update-prepare-package.md#automatic-download-and-preparation-for-update-packages).
 - Reliability improvements to the Network Controller Host agent.
 - Introduced a new micro-service called DNS Orchestrator that improves the resiliency logic for the internal DNS services during patch and update.
@@ -137,7 +137,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue causing add-on resource provider operations to fail after performing Azure Stack Hub secret rotation.
 - Fixed an issue that was a common cause of Azure Stack Hub update failures due to memory pressure on the ERCS role.
 - Fixed a bug in the update blade in which the update status showed as **Installing** instead of **Preparing** during the preparation phase of an Azure Stack Hub update.
-- Fixed an issue where the RSC feature on the physical switches was creating inconsistences and dropping the traffic flowing through a load balancer. The RSC feature is now disabled by default.
+- Fixed an issue where the RSC feature on the virtual switches was creating inconsistences and dropping the traffic flowing through a load balancer. The RSC feature is now disabled by default.
 - Fixed an issue where multiple IP configurations on a NIC was causing traffic to be misrouted and prevented outbound connectivity. 
 - Fixed an issue where the MAC address of a NIC was being cached, and assigning of that address to another resource was causing VM deployment failures.
 - Fixed an issue where Windows VM images from the RETAIL channel could not have their license activated by AVMA.
@@ -609,5 +609,3 @@ To access archived release notes for an older version, use the version selector 
 ::: moniker range="<azs-1907"
 You can access [older versions of Azure Stack Hub release notes on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived documents are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end
-
-

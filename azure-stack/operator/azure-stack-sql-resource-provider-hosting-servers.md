@@ -41,7 +41,7 @@ Before you add a SQL hosting server, review the following mandatory and general 
 
 SQL IaaS VM images are available through the Marketplace Management feature. These images are the same as the SQL VMs that are available in Azure.
 
-Make sure you always download the latest version of the **SQL IaaS Extension** before you deploy a SQL VM using a Marketplace item. The IaaS extension and corresponding portal enhancements provide additional features such as automatic patching and backup. For more information about this extension, see [Automate management tasks on Azure VMs with the SQL Server Agent Extension](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
+Make sure you always download the latest version of the **SQL IaaS Extension** before you deploy a SQL VM using a Marketplace item. The IaaS extension and corresponding portal enhancements provide additional features such as automatic patching and backup. For more information about this extension, see [Automate management tasks on Azure VMs with the SQL Server Agent Extension](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
 
 > [!NOTE]
 > The SQL IaaS Extension is _required_ for all SQL on Windows images in the marketplace; the VM will fail to deploy if you didn't download the extension. It's not used with Linux-based SQL VM images.
@@ -66,7 +66,7 @@ The following information provides additional security guidance:
 
 * All Azure Stack Hub storage is encrypted using BitLocker, so any SQL instance on Azure Stack Hub will use encrypted blob storage.
 * The SQL Resource Provider fully supports TLS 1.2. Ensure that any SQL Server that's managed through the SQL RP is configured for TLS 1.2 _only_ and the RP will default to that. All supported versions of SQL Server support TLS 1.2. For more information, see [TLS 1.2 support for Microsoft SQL Server](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server).
-* Use SQL Server Configuration Manager to set the **ForceEncryption** option to ensure all communications to the SQL server are always encrypted. For more information, see [To configure the server to force encrypted connections](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#to-configure-the-server-to-force-encrypted-connections).
+* Use SQL Server Configuration Manager to set the **ForceEncryption** option to ensure all communications to the SQL server are always encrypted. For more information, see [To configure the server to force encrypted connections](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#to-configure-the-server-to-force-encrypted-connections).
 * Ensure any client app is also communicating over an encrypted connection.
 * The RP is configured to trust the certificates used by the SQL Server instances.
 
@@ -106,15 +106,15 @@ To add a standalone hosting server that's already set up, follow these steps:
 
 Configuring SQL Always On instances requires additional steps and requires three VMs (or physical machines.) This article assumes that you already have a solid understanding of Always On availability groups. For more information, see the following articles:
 
-* [Introducing SQL Server Always On availability groups on Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
-* [Always On Availability Groups (SQL Server)](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017)
+* [Introducing SQL Server Always On availability groups on Azure virtual machines](/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
+* [Always On Availability Groups (SQL Server)](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017)
 
 > [!NOTE]
 > The SQL adapter resource provider _only_ supports SQL 2016 SP1 Enterprise or later instances for Always On Availability Groups. This adapter configuration requires new SQL features such as automatic seeding.
 
 ### Automatic seeding
 
-You must enable [Automatic Seeding](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) on each availability group for each instance of SQL Server.
+You must enable [Automatic Seeding](/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) on each availability group for each instance of SQL Server.
 
 To enable automatic seeding on all instances, edit and then run the following SQL command on the primary replica for each secondary instance:
 
@@ -136,7 +136,7 @@ On the secondary nodes, run the following SQL command:
 
 ### Configure contained database authentication
 
-Before adding a contained database to an availability group, ensure that the contained database authentication server option is set to 1 on every server instance that hosts an availability replica for the availability group. For more information, see [contained database authentication Server Configuration Option](https://docs.microsoft.com/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017).
+Before adding a contained database to an availability group, ensure that the contained database authentication server option is set to 1 on every server instance that hosts an availability replica for the availability group. For more information, see [contained database authentication Server Configuration Option](/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017).
 
 Use these commands to set the contained database authentication server option for each instance:
 

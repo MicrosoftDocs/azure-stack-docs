@@ -30,7 +30,7 @@ Microsoft Azure is an ever-expanding set of cloud services to help your organiza
 
 Global Azure offers more than 100 services available in 54 regions around the globe. For the most current list of global Azure services, see the [*Products available by region*](https://azure.microsoft.com/regions/services). The services available in Azure are listed by category and also by whether they're generally available or available through preview.
 
-For more information about global Azure services, see [Get started with Azure](https://docs.microsoft.com/azure/?pivot=get-started&panel=get-started1).
+For more information about global Azure services, see [Get started with Azure](/azure/?panel=get-started1&pivot=get-started).
 
 ## Azure Stack Hub
 
@@ -77,7 +77,7 @@ Azure Stack HCI provides validated HCI solutions powered by Hyper-V and Storage 
 - Azure Site Recovery
 - Azure Monitor and Update
 
-For an updated list of Azure services that you can connect Azure Stack HCI to, see [Connecting Windows Server to Azure hybrid services](https://docs.microsoft.com/windows-server/azure-hybrid-services/index).
+For an updated list of Azure services that you can connect Azure Stack HCI to, see [Connecting Windows Server to Azure hybrid services](/windows-server/azure-hybrid-services/index).
 
 ### Example use cases for Azure Stack HCI
 
