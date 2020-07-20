@@ -111,7 +111,7 @@ You must specify an IP for the time synchronization server. Although most of the
 
 For hybrid cloud scenarios, you'll need to plan how you want to connect Azure Stack Hub to Azure. There are two supported methods to connect virtual networks in Azure Stack Hub to virtual networks in Azure:
 
-- **Site-to-site**: A virtual private network (VPN) connection over IPsec (IKE v1 and IKE v2). This type of connection requires a VPN device or Routing and Remote Access Service (RRAS). For more information about VPN gateways in Azure, see [About VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). The communication over this tunnel is encrypted and secure. However, bandwidth is limited by the maximum throughput of the tunnel (100-200 Mbps).
+- **Site-to-site**: A virtual private network (VPN) connection over IPsec (IKE v1 and IKE v2). This type of connection requires a VPN device or Routing and Remote Access Service (RRAS). For more information about VPN gateways in Azure, see [About VPN Gateway](/azure/vpn-gateway/vpn-gateway-about-vpngateways). The communication over this tunnel is encrypted and secure. However, bandwidth is limited by the maximum throughput of the tunnel (100-200 Mbps).
 
 - **Outbound NAT**: By default, all VMs in Azure Stack Hub will have connectivity to external networks via outbound NAT. Each virtual network that's created in Azure Stack Hub gets a public IP address assigned to it. Whether the VM is directly assigned a public IP address or is behind a load balancer with a public IP address, it will have outbound access via outbound NAT using the VIP of the virtual network. This method only works for communication that's initiated by the VM and destined for external networks (either internet or intranet). It can't be used to communicate with the VM from outside.
 
@@ -139,7 +139,7 @@ The following table summarizes the hybrid connectivity scenarios with the pros, 
 
 ### Using ExpressRoute
 
-You can connect Azure Stack Hub to Azure via [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) for both single-tenant intranet and multi-tenant scenarios. You'll need a provisioned ExpressRoute circuit through [a connectivity provider](https://docs.microsoft.com/azure/expressroute/expressroute-locations).
+You can connect Azure Stack Hub to Azure via [ExpressRoute](/azure/expressroute/expressroute-introduction) for both single-tenant intranet and multi-tenant scenarios. You'll need a provisioned ExpressRoute circuit through [a connectivity provider](/azure/expressroute/expressroute-locations).
 
 The following diagram shows ExpressRoute for a single-tenant scenario (where "Customer's connection" is the ExpressRoute circuit).
 

@@ -358,7 +358,7 @@ To deploy Azure App Service in an offline environment, first create an offline i
 
 ## Post Deployment steps
 
-1. You **must** [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database). You must also synchronize the databases to prevent any loss of service in the event of a database failover.
+1. You **must** [add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database). You must also synchronize the databases to prevent any loss of service in the event of a database failover.
 
 2. You have deployed App Service into an existing virtual network and are using an internal IP address to connect to your file server, you **must** add an outbound security rule, enabling SMB traffic between the worker subnet and the file server. In the administrator portal, go to the WorkersNsg Network Security Group and add an outbound security rule with the following properties:
 
@@ -374,7 +374,7 @@ To deploy Azure App Service in an offline environment, first create an offline i
 
 ## Next steps
 
-[Add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) if you've provided the App Service resource provider with a SQL Always On Instance. Synchronize the databases to prevent any loss of service in the event of a database failover. You can also run a [script](https://blog.sqlauthority.com/2017/11/30/sql-server-alwayson-availability-groups-script-sync-logins-replicas/) to import the AppServices logins from the original primary server to a failover server.
+[Add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database) if you've provided the App Service resource provider with a SQL Always On Instance. Synchronize the databases to prevent any loss of service in the event of a database failover. You can also run a [script](https://blog.sqlauthority.com/2017/11/30/sql-server-alwayson-availability-groups-script-sync-logins-replicas/) to import the AppServices logins from the original primary server to a failover server.
 
 [Scale out App Service](azure-stack-app-service-add-worker-roles.md). You might need to add additional App Service infrastructure role workers to meet expected app demand in your environment. By default, App Service on Azure Stack Hub supports free and shared worker tiers. To add other worker tiers, you need to add more worker roles.
 

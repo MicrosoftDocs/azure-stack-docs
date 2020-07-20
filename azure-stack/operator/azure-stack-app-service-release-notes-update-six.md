@@ -77,7 +77,7 @@ Azure App Service on Azure Stack Hub update 6 includes the following improvement
 ## Post-deployment Steps
 
 > [!IMPORTANT]
-> If you've provided the App Service resource provider with a SQL Always On Instance, you MUST [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
+> If you've provided the App Service resource provider with a SQL Always On Instance, you MUST [add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
 ## Known issues (post-installation)
 
@@ -97,7 +97,7 @@ If you chose to deploy into an existing virtual network and an internal IP addre
 
 ## Known issues for cloud admins operating Azure App Service on Azure Stack Hub
 
-Refer to the documentation in the [Azure Stack Hub 1908 release notes](/azure-stack/operator/release-notes?view=azs-1908).
+Refer to the documentation in the [Azure Stack Hub 1908 release notes](./release-notes.md?view=azs-1908).
 
 ## Known issues for tenants deploying applications on Azure App Service on Azure Stack Hub
 

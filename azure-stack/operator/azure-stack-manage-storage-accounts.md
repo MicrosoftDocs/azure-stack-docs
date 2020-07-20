@@ -148,7 +148,7 @@ You can also use PowerShell to explicitly override the retention period and imme
 1. Confirm that you have Azure PowerShell installed and configured. If not,
    use the following instructions: 
    * To install the latest Azure PowerShell version and associate it with your Azure subscription, see [How to install and configure Azure
-   PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
+   PowerShell](/powershell/azure/).
    For more information about Azure Resource Manager cmdlets, see
    [Using Azure PowerShell with Azure Resource
    Manager](https://go.microsoft.com/fwlink/?LinkId=394767).
@@ -162,7 +162,7 @@ You can also use PowerShell to explicitly override the retention period and imme
     Start-AzsReclaimStorageCapacity -FarmName $farm_name
 ```
 
-For more information, see [Azure Stack Hub PowerShell documentation](https://docs.microsoft.com/powershell/azure/azure-stack/overview).
+For more information, see [Azure Stack Hub PowerShell documentation](/powershell/azure/azure-stack/overview).
  
 
 ## Next steps
