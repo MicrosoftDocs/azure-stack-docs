@@ -11,15 +11,11 @@ ms.date: 07/21/2020
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-This topic provides instructions for installing Windows Admin Center, connecting to an Azure Stack HCI cluster, and monitoring cluster and storage performance.
+This topic provides instructions for connecting to an Azure Stack HCI cluster, and for monitoring cluster and storage performance.
 
 ## Install Windows Admin Center
 
-The simplest way to install Windows Admin Center is on a local Windows 10 PC, although you must be a member of the local administrator's group to do so.
-
-1. Download [Windows Admin Center](https://www.microsoft.com/evalcenter/evaluate-windows-admin-center) from the Microsoft Evaluation Center. Even though it says "Start your evaluation," this is the generally available version for production use, included as part of your Windows Server license.
-2. Run the WindowsAdminCenter.msi file to install.
-3. When you start Windows Admin Center for the first time, you'll see an icon in the notification area of your desktop. Right-click this icon and choose Open to open the tool in your default browser. Make sure to select the Windows Admin Center Client certificate when prompted to select a certificate.
+Windows Admin Center is a locally deployed, browser-based app for managing Azure Stack HCI. The simplest way to [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) is on a local management PC, although you can also install it on a server.
 
 ## Add and connect to an Azure Stack HCI cluster
 
