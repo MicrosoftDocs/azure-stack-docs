@@ -5,7 +5,7 @@ description: Learn the differences between global Azure, Azure Stack Hub, and Az
 author: justinha
 
 ms.topic: overview
-ms.date: 05/03/2019
+ms.date: 07/10/2020
 ms.author: justinha
 ms.reviewer: unknown
 ms.lastreviewed: 03/29/2019
@@ -69,15 +69,9 @@ Learn more about Azure Stack Hub at [What is Azure Stack Hub](azure-stack-overvi
 
 ## Azure Stack HCI
 
-[Azure Stack HCI](../hci/overview.md) solutions let you run virtual machines on-premises and easily connect to Azure with a hyperconverged infrastructure (HCI) solution. Build and run cloud apps using consistent Azure services on-premises to meet regulatory or technical requirements. In addition to running virtualized apps on-premises, Azure Stack HCI lets you replace and consolidate aging server infrastructure and connect to Azure for cloud services using the Windows Admin Center.
+[Azure Stack HCI](../hci/overview.md) is a hyperconverged cluster that uses validated hardware to run virtualized Windows and Linux workloads on-premises and easily connect to Azure for cloud-based backup, recovery, and monitoring. Initially based on Windows Server 2019, Azure Stack HCI is now delivered as an Azure service with a subscription-based licensing model and hybrid capabilities built-in. Although Azure Stack HCI is based on the same core operating system components as Windows Server, it's an entirely new product line focused on being the best virtualization host.
 
-Azure Stack HCI provides validated HCI solutions powered by Hyper-V and Storage Spaces Direct with Windows Server 2019 Software-Defined Datacenter (SDDC). The Windows Admin Center is used for management and integrated access to Azure services such as:
-
-- Azure Backup
-- Azure Site Recovery
-- Azure Monitor and Update
-
-For an updated list of Azure services that you can connect Azure Stack HCI to, see [Connecting Windows Server to Azure hybrid services](/windows-server/azure-hybrid-services/index).
+Azure Stack HCI uses Microsoft-validated hardware from an OEM partner to ensure optimal performance and reliability. The solutions include support for technologies such as NVMe drives, persistent memory, and remote-direct memory access (RDMA) networking.
 
 ### Example use cases for Azure Stack HCI
 
@@ -87,7 +81,7 @@ For an updated list of Azure services that you can connect Azure Stack HCI to, s
 - Business-critical infrastructure
 - Lower-cost storage
 - High availability and disaster recovery in the cloud
-- Enterprise apps like SQL Server
+- Virtualizing enterprise apps like SQL Server
 
 Visit the [Azure Stack HCI website](https://azure.microsoft.com/overview/azure-stack/hci/) to view 70+ Azure Stack HCI solutions currently available from Microsoft partners.
 
