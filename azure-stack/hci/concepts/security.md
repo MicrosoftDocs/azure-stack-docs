@@ -28,15 +28,15 @@ The following sections recommend security tools and technologies to build a secu
 This section discusses how to protect services and virtual machines (VMs) running on the operating system:
 - **Azure Stack HCI certified hardware** provides consistent Secure Boot, UEFI, and TPM settings out of the box. Combining virtualization-based security and certified hardware helps protect security-sensitive workloads. You can also connect this trusted infrastructure to Azure Security Center to activate behavioral analytics and reporting to account for rapidly changing workloads and threats.
 
-    - *Secure boot* is a security standard developed by the PC industry to help ensure that a device boots using only software that is trusted by the Original Equipment Manufacturer (OEM). To learn more, see [Secure boot](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-secure-boot).
-    - *United Extensible Firmware Interface (UEFI)* controls the booting process of the server, and then passes control to either Windows or another operating system. To learn more, see [UEFI firmware requirements](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-uefi).
-    - *Trusted Platform Module (TPM)* technology provides hardware-based, security-related functions. A TPM chip is a secure crypto-processor that generates, stores, and limits the use of cryptographic keys. To learn more, see [Trusted Platform Module Technology Overview](https://docs.microsoft.com/windows/security/information-protection/tpm/trusted-platform-module-overview).
+    - *Secure boot* is a security standard developed by the PC industry to help ensure that a device boots using only software that is trusted by the Original Equipment Manufacturer (OEM). To learn more, see [Secure boot](/windows-hardware/design/device-experiences/oem-secure-boot).
+    - *United Extensible Firmware Interface (UEFI)* controls the booting process of the server, and then passes control to either Windows or another operating system. To learn more, see [UEFI firmware requirements](/windows-hardware/design/device-experiences/oem-uefi).
+    - *Trusted Platform Module (TPM)* technology provides hardware-based, security-related functions. A TPM chip is a secure crypto-processor that generates, stores, and limits the use of cryptographic keys. To learn more, see [Trusted Platform Module Technology Overview](/windows/security/information-protection/tpm/trusted-platform-module-overview).
 
     To learn more about Azure Stack HCI certified hardware providers, see the [Azure Stack HCI solutions](https://azure.microsoft.com/products/azure-stack/hci/) website.
 
 - **Device Guard** and **Credential Guard**. Device Guard protects against malware with no known signature, unsigned code, and malware that gains access to the kernel to either capture sensitive information or damage the system. Windows Defender Credential Guard uses virtualization-based security to isolate secrets so that only privileged system software can access them.
 
-    To learn more, see [Manage Windows Defender Credential Guard](https://docs.microsoft.com/windows/security/identity-protection/credential-guard/credential-guard-manage) and download the [Device Guard and Credential Guard hardware readiness tool](https://www.microsoft.com/en-us/download/details.aspx?id=53337).
+    To learn more, see [Manage Windows Defender Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard-manage) and download the [Device Guard and Credential Guard hardware readiness tool](https://www.microsoft.com/en-us/download/details.aspx?id=53337).
 
 - **Windows** and **firmware** updates are essential on clusters, servers (including guest VMs), and PCs to help ensure that both the operating system and system hardware are protected from attackers. You can use the Windows Admin Center **Updates** tool to apply updates to individual systems. If your hardware provider includes Windows Admin Center support for getting driver, firmware, and solution updates, you can get these updates at the same time as Windows updates, otherwise get them directly from your vendor.
 
@@ -65,7 +65,7 @@ This section discusses how to use Windows Admin Center to protect data and workl
 
     To enable SMB encryption, see [SMB security enhancements](/windows-server/storage/file-server/smb-security).
 
-- **Windows Defender Antivirus** in Windows Admin Center protects the operating system on clients and servers against viruses, malware, spyware, and other threats. To learn more, see [Microsoft Defender Antivirus on Windows Server 2016 and 2019](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-antivirus/microsoft-defender-antivirus-on-windows-server-2016).
+- **Windows Defender Antivirus** in Windows Admin Center protects the operating system on clients and servers against viruses, malware, spyware, and other threats. To learn more, see [Microsoft Defender Antivirus on Windows Server 2016 and 2019](/windows/security/threat-protection/microsoft-defender-antivirus/microsoft-defender-antivirus-on-windows-server-2016).
 
 ### Protect identities
 This section discusses how to use Windows Admin Center to protect privileged identities:
@@ -93,7 +93,7 @@ This section discusses how to use Windows Admin Center to protect privileged ide
 
 - **Role-based access control (RBAC)** in Windows Admin Center allows users limited access to the servers they need to manage instead of making them full local administrators. To use RBAC in Windows Admin Center, you configure each managed server with a PowerShell Just Enough Administration endpoint.
 
-    To learn more, see [Role-based access control](/windows-server/manage/windows-admin-center/plan/user-access-options#role-based-access-control) and [Just Enough Administration](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview?view=powershell-7).
+    To learn more, see [Role-based access control](/windows-server/manage/windows-admin-center/plan/user-access-options#role-based-access-control) and [Just Enough Administration](/powershell/scripting/learn/remoting/jea/overview?view=powershell-7).
 
 - **Security tools** in Windows Admin Center that you can use to manage and protect identities include Active Directory, Certificates, Firewall, Local Users and Groups, and more.
 
@@ -104,13 +104,13 @@ This section discusses how to use Windows Admin Center to protect privileged ide
 
 Security Center protects VMs for both Windows servers and Linux servers by installing the Log Analytics agent on these resources. Azure correlates events that the agents collect into recommendations (hardening tasks) that you perform to make your workloads secure. The hardening tasks based on security best practices include managing and enforcing security policies. You can then track the results and manage compliance and governance over time through Security Center monitoring while reducing the attack surface across all of your resources.
 
-Managing who can access your Azure resources and subscriptions is an important part of your Azure governance strategy. Azure role-based access control (RBAC) is the primary method of managing access in Azure. To learn more, see [Manage access to your Azure environment with role-based access control](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/manage-access).
+Managing who can access your Azure resources and subscriptions is an important part of your Azure governance strategy. Azure role-based access control (RBAC) is the primary method of managing access in Azure. To learn more, see [Manage access to your Azure environment with role-based access control](/azure/cloud-adoption-framework/ready/azure-setup-guide/manage-access).
 
-Working with Security Center through Windows Admin Center requires an Azure subscription. To get started, see [Integrate Azure Security Center with Windows Admin Center](https://docs.microsoft.com/azure/security-center/windows-admin-center-integration).
+Working with Security Center through Windows Admin Center requires an Azure subscription. To get started, see [Integrate Azure Security Center with Windows Admin Center](/azure/security-center/windows-admin-center-integration).
 
 After registering, access Security Center in Windows Admin Center: On the **All Connections** page, select a server or VM, under **Tools**, select **Azure Security Center**, and then select **Sign into Azure**.
 
-To learn more, see [What is Azure Security Center?](https://docs.microsoft.com/azure/security-center/security-center-intro)
+To learn more, see [What is Azure Security Center?](/azure/security-center/security-center-intro)
 
 ## Part 3: Add advanced security
 The following sections recommend advanced security tools and technologies to further harden servers running the Azure Stack HCI operating system in your environment.
@@ -128,30 +128,30 @@ on a physical server. Because virtual environments typically have multiple VMs s
 
     - **Guarded fabric and shielded VMs** strengthen the security for VMs running in Hyper-V environments by preventing attackers from modifying VM files. A *guarded fabric* consists of a Host Guardian Service (HGS) that is typically a cluster of three nodes, one or more guarded hosts, and a set of shielded VMs. The Attestation Service evaluates the validity of hosts requests, while the Key Protection Service determines whether to release keys that the guarded hosts can use to start the shielded VM.
 
-        To learn more, see [Guarded fabric and shielded VMs overview](https://docs.microsoft.com/windows-server/security/guarded-fabric-shielded-vm/guarded-fabric-and-shielded-vms).
+        To learn more, see [Guarded fabric and shielded VMs overview](/windows-server/security/guarded-fabric-shielded-vm/guarded-fabric-and-shielded-vms).
      
      - **Virtual Trusted Platform Module (vTPM)** in Windows Server supports TPM for VMs, which lets you use advanced security technologies, such as BitLocker in VMs. You can enable TPM support on any Generation 2 Hyper-V VM by using either Hyper-V Manager or the `Enable-VMTPM` Windows PowerShell cmdlet.
      
-        To learn more, see [Enable-VMTPM](https://docs.microsoft.com/powershell/module/hyper-v/enable-vmtpm?view=win10-ps).
+        To learn more, see [Enable-VMTPM](/powershell/module/hyper-v/enable-vmtpm?view=win10-ps).
      
      - **Software Defined Networking (SDN)** in Azure Stack HCI and Windows Server centrally configures and manages physical and virtual network devices, such as routers, switches, and gateways in your datacenter. Virtual network elements, such as Hyper-V Virtual Switch, Hyper-V Network Virtualization, and RAS Gateway are designed to be integral elements of your SDN infrastructure.
 
-        To learn more, see [Software Defined Networking (SDN)](https://docs.microsoft.com/windows-server/networking/sdn/).
+        To learn more, see [Software Defined Networking (SDN)](/windows-server/networking/sdn/).
 
 ### Protect identities
-- **Local Administrator Password Solution (LAPS)** is a lightweight mechanism for Active Directory domain-joined systems that periodically sets each computer’s local admin account password to a new random and unique value. Passwords are stored in a secured confidential attribute on the corresponding computer object in Active Directory, where only specifically-authorized users can retrieve them. LAPS uses local accounts for remote computer management in a way that offers some advantages over using domain accounts. To learn more, see [Remote Use of Local Accounts: LAPS Changes Everything](https://docs.microsoft.com/archive/blogs/secguide/remote-use-of-local-accounts-laps-changes-everything).
+- **Local Administrator Password Solution (LAPS)** is a lightweight mechanism for Active Directory domain-joined systems that periodically sets each computer’s local admin account password to a new random and unique value. Passwords are stored in a secured confidential attribute on the corresponding computer object in Active Directory, where only specifically-authorized users can retrieve them. LAPS uses local accounts for remote computer management in a way that offers some advantages over using domain accounts. To learn more, see [Remote Use of Local Accounts: LAPS Changes Everything](/archive/blogs/secguide/remote-use-of-local-accounts-laps-changes-everything).
 
     To get started using LAPS, download [Local Administrator Password Solution (LAPS)](https://www.microsoft.com/download/details.aspx?id=46899).
 
 - **Microsoft Advanced Threat Analytics (ATA)** is an on-premises product that you can use to help detect attackers attempting to compromise privileged identities. ATA parses network traffic for authentication, authorization, and information gathering protocols, such as Kerberos and DNS. ATA uses the data to build behavioral profiles of users and other entities on the network to detect anomalies and known attack patterns.
     
-    To learn more, see [What is Advanced Threat Analytics?](https://docs.microsoft.com/advanced-threat-analytics/what-is-ata).
+    To learn more, see [What is Advanced Threat Analytics?](/advanced-threat-analytics/what-is-ata).
 
 - **Windows Defender Remote Credential Guard** protects credentials over a Remote Desktop connection by redirecting Kerberos requests back to the device that's requesting the connection. It also provides single sign-on (SSO) for Remote Desktop sessions. During a Remote Desktop session, if the target device is compromised, your credentials are not exposed because both credential and credential derivatives are never passed over the network to the target device.
 
-    To learn more, see [Manage Windows Defender Credential Guard](https://docs.microsoft.com/windows/security/identity-protection/credential-guard/credential-guard-manage).
+    To learn more, see [Manage Windows Defender Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard-manage).
 
 ## Next steps
 For more information on security and regulatory compliance, see also:
-- [Security and Assurance](https://docs.microsoft.com/windows-server/security/security-and-assurance)
+- [Security and Assurance](/windows-server/security/security-and-assurance)
 - [Security best practices for Azure solutions](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/)

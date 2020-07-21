@@ -141,7 +141,7 @@ With the advent of the new cmdlets, we also added additional new switches to a f
 
 ### Move-ClusterGroup
 
-The new `-IgnoreAffinityRule` switch ignores the rule and moves the clustered resource group to another cluster node. For more information on this cmdlet, see [Move-ClusterGroup](https://docs.microsoft.com/powershell/module/failoverclusters/move-clustergroup?view=win10-ps).
+The new `-IgnoreAffinityRule` switch ignores the rule and moves the clustered resource group to another cluster node. For more information on this cmdlet, see [Move-ClusterGroup](/powershell/module/failoverclusters/move-clustergroup?view=win10-ps).
 
 Example:
 
@@ -154,7 +154,7 @@ Move-ClusterGroup -IgnoreAffinityRule -Cluster Cluster1
 
 ### Start-ClusterGroup
 
-The new `-IgnoreAffinityRule` switch ignores the rule and brings the clustered resource group online in its current location. For more information on this cmdlet, see [Start-ClusterGroup](https://docs.microsoft.com/powershell/module/failoverclusters/start-clustergroup?view=win10-ps).
+The new `-IgnoreAffinityRule` switch ignores the rule and brings the clustered resource group online in its current location. For more information on this cmdlet, see [Start-ClusterGroup](/powershell/module/failoverclusters/start-clustergroup?view=win10-ps).
 
 Example:
 

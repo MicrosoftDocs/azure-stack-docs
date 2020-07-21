@@ -20,7 +20,7 @@ To learn more about Azure integration with Windows Admin Center, see [Connecting
 ## How Azure Backup works with Windows Admin Center
 **Azure Backup** is a service that you can use to back up, protect, and restore your data in Azure. Azure Backup replaces either existing on-premises or off-premises backup solutions with a cloud-based solution that is reliable, secure, and cost-competitive.
 
-To learn more, see [What is the Azure Backup service?](https://docs.microsoft.com/azure/backup/backup-overview)
+To learn more, see [What is the Azure Backup service?](/azure/backup/backup-overview)
 
 Azure Backup offers multiple components that you download and deploy on the appropriate computer, server, or in the cloud. The component, or agent, that you deploy depends on what you want to protect. All Azure Backup components can back up data to a Recovery Services vault in Azure, no matter whether you're protecting data on-premises or in Azure.
 
@@ -66,7 +66,7 @@ Select the following settings for Azure Backup:
 1. Enter an **Encryption Passphrase** that has a minimum of 16 characters. Azure Backup secures your backup data with an encryption passphrase that you create and manage. The encryption passphrase is required to recover data from Azure Backup.
 
     > [!NOTE]
-    > Store the passphrase in a secure offsite location, such as another server or the [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal). Microsoft does not store the passphrase and cannot retrieve or reset the passphrase if it is lost or forgotten.
+    > Store the passphrase in a secure offsite location, such as another server or the [Azure Key Vault](/azure/key-vault/quick-create-portal). Microsoft does not store the passphrase and cannot retrieve or reset the passphrase if it is lost or forgotten.
 
 1. Review all of the settings on the wizard page, and then select **Apply**.
 
@@ -78,11 +78,11 @@ Windows Admin Center then does the following operations:
 
 ## Management and monitoring
 After successfully setting up Azure Backup, you'll see the **Backup Dashboard** when you open the **Backup** tool for an existing server connection. You can do the following tasks from the dashboard:
-- **Access the vault in Azure:** On the **Overview** tab, select  **Recovery Services Vault** to access the vault where you can do many management operations. To learn more, see [Monitor and manage Recovery Services vaults](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server).
+- **Access the vault in Azure:** On the **Overview** tab, select  **Recovery Services Vault** to access the vault where you can do many management operations. To learn more, see [Monitor and manage Recovery Services vaults](/azure/backup/backup-azure-manage-windows-server).
 - **Do an ad hoc backup:** Select **Backup Now** to make an ad hoc backup. 
-- **Monitor jobs and configure alert notifications:** Navigate to the **Jobs** tab to monitor ongoing or past jobs, and [configure alert notifications](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#configuring-notifications-for-alerts) to receive email on failed jobs and other backup alerts.
+- **Monitor jobs and configure alert notifications:** Navigate to the **Jobs** tab to monitor ongoing or past jobs, and [configure alert notifications](/azure/backup/backup-azure-manage-windows-server#configuring-notifications-for-alerts) to receive email on failed jobs and other backup alerts.
 - **View recovery points and recover data:** Select the **Recovery Points** tab to view recovery points, and select **Recover Data** for steps on how to recover your data from Azure.
 
 ## Next steps
 For more information, see also:
-- [Protect Azure Stack HCI VMs using Azure Site Recovery](https://docs.microsoft.com/azure-stack/hci/manage/azure-site-recovery)
+- [Protect Azure Stack HCI VMs using Azure Site Recovery](./azure-site-recovery.md)

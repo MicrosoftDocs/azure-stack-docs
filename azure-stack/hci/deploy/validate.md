@@ -67,7 +67,7 @@ To install and run the Validate-DCB tool:
 1. After PowerShell connects to the Microsoft network to download the tool, type `Validate-DCB` and press **Enter** to start the tool wizard.
 
     > [!NOTE]
-    > If you cannot run the Validate-DCB tool script, you might need to adjust your PowerShell execution policies. Use the Get-ExecutionPolicy cmdlet to view your current script execution policy settings. For information on setting execution policies in PowerShell, see [About Execution Policies](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7).
+    > If you cannot run the Validate-DCB tool script, you might need to adjust your PowerShell execution policies. Use the Get-ExecutionPolicy cmdlet to view your current script execution policy settings. For information on setting execution policies in PowerShell, see [About Execution Policies](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7).
 
 1. On the Welcome to the Validate-DCB configuration wizard page, select **Next**.
 1. On the Clusters and Nodes page, type the name of the server cluster that you want to validate, select **Resolve** to list it on the page, and then select **Next**.
@@ -82,7 +82,7 @@ To install and run the Validate-DCB tool:
     :::image type="content" source="../media/validate/adapters.png" alt-text="The Adapters page of the Validate-DCB configuration wizard" lightbox="../media/validate/adapters.png":::
 
     > [!NOTE]
-    > - To learn more about how SR-IOV improves network performance, see [Overview of Single Root I/O Virtualization (SR-IOV)](https://docs.microsoft.com/windows-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-).
+    > - To learn more about how SR-IOV improves network performance, see [Overview of Single Root I/O Virtualization (SR-IOV)](/windows-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-).
 
 1. On the Data Center Bridging page, modify the values to match your organization's settings for **Priority**, **Policy Name**, and **Bandwidth Reservation**, and then select **Next**.
 
@@ -177,7 +177,7 @@ $Cluster = Get-Cluster -Name 'server-cluster1'
 Test-Cluster -InputObject $Cluster -Verbose
 ```
 
-For more examples and usage information, see the [Test-Cluster](https://docs.microsoft.com/powershell/module/failoverclusters/test-cluster?view=win10-ps) reference documentation.
+For more examples and usage information, see the [Test-Cluster](/powershell/module/failoverclusters/test-cluster?view=win10-ps) reference documentation.
 
 ## Validate replication for Storage Replica
 If you're using Storage Replica to replicate volumes in a stretched cluster or cluster-to-cluster, there are there are several events and cmdlets that you can use to get the state of replication. 
@@ -241,5 +241,5 @@ Get-SRPartnership -Cluster ClusterS1
 Once successful data replication is confirmed between sites, you can create your VMs and other workloads.
 
 ## See also
-- Performance testing against synthetic workloads in a newly created storage space using DiskSpd.exe. To learn more, see [Test Storage Spaces Performance Using Synthetic Workloads in Windows Server](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn894707(v=ws.11)).
-- Windows Server Assessment is a Premier Service available for customers who want Microsoft to review their installations of Windows Server 2019. For more information, contact Microsoft Premier Support. To learn more, see [Getting Started with the Windows Server On-Demand Assessment (Server, Security, Hyper-V, Failover Cluster, IIS)](https://docs.microsoft.com/services-hub/health/getting-started-windows-server).
+- Performance testing against synthetic workloads in a newly created storage space using DiskSpd.exe. To learn more, see [Test Storage Spaces Performance Using Synthetic Workloads in Windows Server](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn894707(v=ws.11)).
+- Windows Server Assessment is a Premier Service available for customers who want Microsoft to review their installations of Windows Server 2019. For more information, contact Microsoft Premier Support. To learn more, see [Getting Started with the Windows Server On-Demand Assessment (Server, Security, Hyper-V, Failover Cluster, IIS)](/services-hub/health/getting-started-windows-server).
