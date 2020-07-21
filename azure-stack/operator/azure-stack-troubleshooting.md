@@ -92,7 +92,7 @@ For more information, see [Azure Stack Hub Diagnostics](azure-stack-get-azuresta
 
 ## Troubleshoot virtual machines (VMs)
 
-### Reset Linux VM Password
+### Reset Linux VM password
 
 If you forget the password for a Linux VM and the **Reset password** option is not working due to issues with the VMAccess extension, you can perform a reset following these steps:
 
