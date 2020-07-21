@@ -52,7 +52,7 @@ For stretched clusters, there is also additional Storage Replica traffic flowing
 
 ### Domain requirements
 
-There are no special domain functional level requirements for Azure Stack HCI - just an operating system version for your domain controller that is still supported. The servers must be members of a domain to conduct a Live Migration; otherwise, there are no Active Directory dependencies for core functionality. Some features, such as BitLocker support or a read-only domain controller, require a Windows Server 2012 or higher domain controller. We strongly recommend turning on the Active Directory Recycle Bin feature.
+There are no special domain functional level requirements for Azure Stack HCI - just an operating system version for your domain controller that's still supported. We do recommend turning on the Active Directory Recycle Bin feature as a general best practice, if you haven't already.
 
 ### Interconnect requirements between nodes
 
