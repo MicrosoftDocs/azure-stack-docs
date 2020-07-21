@@ -4,12 +4,12 @@ description: A discussion of resiliency options in Storage Spaces Direct includi
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 02/28/2020
 ---
 
 # Fault tolerance and storage efficiency in Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+>Applies to: Windows Server 2019
 
 This topic introduces the resiliency options available in Storage Spaces Direct and outlines the scale requirements, storage efficiency, and general advantages and tradeoffs of each. It also presents some usage instructions to get you started, and references some great papers, blogs, and additional content where you can learn more.
 
@@ -197,7 +197,7 @@ Over its lifetime, Storage Spaces can tolerate any number of failures, because i
 
 ## Usage
 
-Check out [Create volumes](../manage/create-volumes.md).
+Check out [Creating volumes in Storage Spaces Direct](/windows-server/storage/storage-spaces/create-volumes).
 
 ## Next steps
 
