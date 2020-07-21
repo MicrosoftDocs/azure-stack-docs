@@ -39,25 +39,25 @@ To change the language in Windows Admin Center:
 
     :::image type="content" source="media/languages/language-region.png" alt-text="The Language / Region page in Windows Admin Center":::
 
-To learn more, see [Windows Admin Center Settings](https://docs.microsoft.com/windows-server/manage/windows-admin-center/configure/settings).
+To learn more, see [Windows Admin Center Settings](/windows-server/manage/windows-admin-center/configure/settings).
 
 ## Change the language in Microsoft Edge
 You can add supported languages to Microsoft Edge, and reorder your language preferences in the browser. You also can add a foreign language translator extension to the browser to get translations.
 
-To learn more, see [Microsoft Edge language support](https://docs.microsoft.com/deployedge/microsoft-edge-supported-languages).
+To learn more, see [Microsoft Edge language support](/deployedge/microsoft-edge-supported-languages).
 
 ## Change the language in Server Core
 If you need to change the language in Server Core of the Azure Stack HCI operating system, we recommend doing so after clustering your servers. You can add supported language packs to Server Core, and then change the language and keyboard layout to the one you want to use. You can also use a Windows PowerShell command to override the current language and keyboard input method.
 
 Each language pack is installed in the directory *%SystemRoot%\System32\\%Language-ID%*. For example, *C:\Windows\System32\es-ES* is the location of the Spanish language pack. Each language pack is about 50 MB. If you want to install all 38 language packs, the size of the required image that you create is about 2 GB.
 
-To learn more, see [Available languages for Windows](https://docs.microsoft.com/windows-hardware/manufacture/desktop/available-language-packs-for-windows).
+To learn more, see [Available languages for Windows](/windows-hardware/manufacture/desktop/available-language-packs-for-windows).
 
 To manually obtain and add language packs to the operating system:
 
 1. Add a language pack to Server Core using the **DISM / Add-WindowsPackage** tool. The `Add-WindowsPackage` PowerShell command is the equivalent of the DISM executable.
 
-    To learn more, see [Add languages to Windows images](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows).
+    To learn more, see [Add languages to Windows images](/windows-hardware/manufacture/desktop/add-language-packs-to-windows).
 
 1. We recommend adding Language Features on Demand (FODs) to enable additional functionality to the language you added, as in the following example:
 
@@ -65,7 +65,7 @@ To manually obtain and add language packs to the operating system:
     dism /online /add-capability /capabilityname:Language.Basic~~~de-de~0.0.1.0
     ```
 
-    To learn more, see [Language and region Features on Demand (FOD)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-language-fod).
+    To learn more, see [Language and region Features on Demand (FOD)](/windows-hardware/manufacture/desktop/features-on-demand-language-fod).
 
 1. You can use the PowerShell **Set-WinUILanguageOverride** cmdlet to change the Windows UI language in the operating system of the current user account. In the following example, `de-DE` specifies German as the current language setting in the operating system:
 
@@ -73,9 +73,9 @@ To manually obtain and add language packs to the operating system:
     Set-WinUILanguageOverride de-DE
     ```
 
-    To learn more, see [Set-WinUILanguageOverride](https://docs.microsoft.com/powershell/module/international/set-winuilanguageoverride?view=win10-ps).
+    To learn more, see [Set-WinUILanguageOverride](/powershell/module/international/set-winuilanguageoverride?view=win10-ps).
 
 ## Next steps
 For more information, see also:
 
-- [Add or remove servers for an Azure Stack HCI cluster](https://docs.microsoft.com/azure-stack/hci/manage/add-cluster)
+- [Add or remove servers for an Azure Stack HCI cluster](./add-cluster.md)
