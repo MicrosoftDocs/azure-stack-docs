@@ -59,7 +59,11 @@ To manually obtain and add language packs to the operating system:
 
     To learn more, see [Add languages to Windows images](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows).
 
-1. We recommend adding Language Features on Demand (FODs) to enable additional functionality to the language you added, as in the following example: `dism /online /add-capability /capabilityname:Language.Basic~~~de-de~0.0.1.0`
+1. We recommend adding Language Features on Demand (FODs) to enable additional functionality to the language you added, as in the following example:
+
+    ```DOS
+    dism /online /add-capability /capabilityname:Language.Basic~~~de-de~0.0.1.0
+    ```
 
     To learn more, see [Language and region Features on Demand (FOD)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-language-fod).
 
