@@ -94,7 +94,7 @@ You can collect and review deployment logs on the VMs that support your Kubernet
 
 When you deploy your Kubernetes cluster, you can review the deployment status to check for any issues.
 
-1. Open the [Azure Stack Hub portal](https://portal.local.azurestack.external).
+1. Open the Azure Stack Hub portal `https://portal.local.azurestack.external`.
 2. Select **Resource groups**, and then select the name of the resource group that you used when deploying the Kubernetes cluster.
 3. Select **Deployments**, and then select the **Deployment name**.
 
@@ -165,4 +165,4 @@ Follow these steps to collect and download the cluster logs:
 
 [Add a Kubernetes cluster to the Marketplace (for the Azure Stack Hub operator)](../operator/azure-stack-solution-template-kubernetes-cluster-add.md)
 
-[Kubernetes on Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
+[Kubernetes on Azure](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

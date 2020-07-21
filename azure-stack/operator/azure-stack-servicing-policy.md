@@ -5,9 +5,9 @@ description: Learn about the Azure Stack Hub servicing policy and how to keep an
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/07/2020
+ms.date: 06/09/2020
 ms.author: sethm
-ms.reviewer: harik
+ms.reviewer: niy
 ms.lastreviewed: 03/18/2020
 
 # Intent: As an Azure Stack operator, I want to learn about servicing policy and how to keep an integrated system supported.
@@ -46,23 +46,23 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
-- [Azure Stack Hub 2002 update](/azure-stack/operator/release-notes?view=azs-2002)
-- [Azure Stack Hub 1910 update](/azure-stack/operator/release-notes?view=azs-1910)
-- [Azure Stack Hub 1908 update](/azure-stack/operator/release-notes?view=azs-1908)
-- [Azure Stack Hub 1907 update](/azure-stack/operator/release-notes?view=azs-1907)
+- [Azure Stack Hub 2002 update](./release-notes.md?view=azs-2002)
+- [Azure Stack Hub 1910 update](./release-notes.md?view=azs-1910)
+- [Azure Stack Hub 1908 update](./release-notes.md?view=azs-1908)
+- [Azure Stack Hub 1907 update](./release-notes.md?view=azs-1907)
 
 ## Hotfixes
 
-Occasionally, Microsoft provides hotfixes for Azure Stack Hub that address a specific issue that's often preventative or time-sensitive. Each hotfix is released with a corresponding Microsoft Knowledge Base article that details the issue, cause, and resolution.
+Occasionally, Microsoft provides hotfixes for Azure Stack Hub that address a specific issue that's often preventative or time-sensitive. Each hotfix is released with a corresponding Microsoft Knowledge Base article that details the issues addressed in that hotfix.
 
-Hotfixes are downloaded and installed just like the regular full update packages for Azure Stack Hub. However, unlike a full update, hotfixes can install in minutes. We recommend Azure Stack Hub operators set maintenance windows when installing hotfixes. Hotfixes update the version of your Azure Stack Hub cloud so you can easily determine if the hotfix has been applied. A separate hotfix is provided for each version of Azure Stack Hub that's still in support. Each fix for a specific iteration is cumulative and includes the previous updates for that same version. You can read more about the applicability of a specific hotfix in the corresponding Knowledge Base article. See the release notes links in the previous section.
+Hotfixes are downloaded and installed just like the regular full update packages for Azure Stack Hub. However, unlike a full update, hotfixes can install in minutes. We recommend Azure Stack Hub operators set maintenance windows when installing hotfixes. Hotfixes update the version of your Azure Stack Hub cloud so you can easily determine if the hotfix has been applied. A separate hotfix is provided for each version of Azure Stack Hub that's still in support. **Each hotfix for a specific iteration is cumulative and includes the previous hotfixes for that same version.** You can read more about the applicability of a specific hotfix in the corresponding Knowledge Base article. See the release notes links in the previous section.
 
 For information about currently available hotfixes, see the release notes for that update:
 
-- [Azure Stack Hub 2002 hotfix](/azure-stack/operator/release-notes?view=azs-2002#hotfixes)
-- [Azure Stack Hub 1910 hotfix](/azure-stack/operator/release-notes?view=azs-1910#hotfixes-1)
-- [Azure Stack Hub 1908 hotfix](/azure-stack/operator/release-notes?view=azs-1908#hotfixes-2)
-- [Azure Stack Hub 1907 hotfix](/azure-stack/operator/release-notes?view=azs-1907#hotfixes-3)
+- [Azure Stack Hub 2002 hotfix](./release-notes.md?view=azs-2002#hotfixes)
+- [Azure Stack Hub 1910 hotfix](./release-notes.md?view=azs-1910#hotfixes-1)
+- [Azure Stack Hub 1908 hotfix](./release-notes.md?view=azs-1908#hotfixes-2)
+- [Azure Stack Hub 1907 hotfix](./release-notes.md?view=azs-1907#hotfixes-3)
 
 ## Keep your system under support
 
@@ -89,7 +89,7 @@ For more information about resource provider compatibility, please see the relea
 
 ## Get support
 
-Azure Stack Hub follows the same support process as Azure. Enterprise customers can follow the process described in [How to create an Azure support request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). If you're a customer of a Cloud Solution Provider (CSP), contact your CSP for support. For more information, see the [Azure Support FAQs](https://azure.microsoft.com/support/faq/).
+Azure Stack Hub follows the same support process as Azure. Enterprise customers can follow the process described in [How to create an Azure support request](/azure/azure-supportability/how-to-create-azure-support-request). If you're a customer of a Cloud Solution Provider (CSP), contact your CSP for support. For more information, see the [Azure Support FAQs](https://azure.microsoft.com/support/faq/).
 
 For help troubleshooting update issues, see [Best practices for troubleshooting Azure Stack Hub patch and update issues](azure-stack-troubleshooting.md).
 

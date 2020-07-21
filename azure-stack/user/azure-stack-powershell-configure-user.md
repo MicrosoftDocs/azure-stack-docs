@@ -4,7 +4,7 @@ description: Learn how to connect to Azure Stack Hub with PowerShell.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 1/22/2020
+ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 10/02/2019
@@ -37,7 +37,7 @@ Make sure you replace the following script variables with values from your Azure
 - **Azure AD tenant name**  
   The name of your Azure AD tenant used to manage Azure Stack Hub. For example, yourdirectory.onmicrosoft.com.
 - **Azure Resource Manager endpoint**  
-  For Azure Stack Development kit, this value is set to https://management.local.azurestack.external. To get this value for Azure Stack Hub integrated systems, contact your service provider.
+  For Azure Stack Development kit, this value is set to `https://management.local.azurestack.external`. To get this value for Azure Stack Hub integrated systems, contact your service provider.
 
 ## Connect to Azure Stack Hub with Azure AD
 
@@ -87,5 +87,5 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 - [Develop templates for Azure Stack Hub](azure-stack-develop-templates.md)
 - [Deploy templates with PowerShell](azure-stack-deploy-template-powershell.md)
-- [Azure Stack Hub PowerShell Module Reference](https://docs.microsoft.com/powershell/azure/azure-stack/overview)
+- [Azure Stack Hub PowerShell Module Reference](/powershell/azure/azure-stack/overview)
 - If you want to set up PowerShell for the cloud operator environment, refer to the [Configure the Azure Stack Hub operator's PowerShell environment](../operator/azure-stack-powershell-configure-admin.md) article.

@@ -29,7 +29,7 @@ You can install Azure Stack Hub compatible PowerShell modules in internet-connec
 Before you get started with Azure Stack Hub and the PowerShell AzureRM module, you must have the following prerequisites:
 
 - **PowerShell Version 5.1** <br>
-To check your version, run **$PSVersionTable.PSVersion** and compare the **Major** version. If you don't have PowerShell 5.1, follow the [Installing Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell).
+To check your version, run **$PSVersionTable.PSVersion** and compare the **Major** version. If you don't have PowerShell 5.1, follow the [Installing Windows PowerShell](/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell).
 
   > [!Note]
   > PowerShell 5.1 requires a Windows machine.
@@ -88,7 +88,7 @@ Run the following PowerShell script to install these modules on your development
 ::: moniker range=">=azs-2002"
 For Azure Stack Hub 2002 or later:
 
-You could either user AzureRm modules or Az preview modules. The use of the Az modules requires Azure Stack Hub 2002 and the latest hotfix.
+You can use either user AzureRm modules or Az preview modules. The use of the Az modules requires Azure Stack Hub 2002 and the latest hotfix.
 
 To use Az preview modules, follow the instructions at [Install PowerShell Az module](powershell-install-az-module.md).
 
@@ -223,7 +223,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
 2. Sign in to the disconnected workstation and copy the packages from the USB device to a location on the workstation.
 
-3. Manually bootstrap the NuGet provider on your disconnected workstation. For instructions, see [Manually bootstrapping the NuGet provider on a machine that isn't connected to the internet](https://docs.microsoft.com/powershell/scripting/gallery/how-to/getting-support/bootstrapping-nuget#manually-bootstrapping-the-nuget-provider-on-a-machine-that-is-not-connected-to-the-internet).
+3. Manually bootstrap the NuGet provider on your disconnected workstation. For instructions, see [Manually bootstrapping the NuGet provider on a machine that isn't connected to the internet](/powershell/scripting/gallery/how-to/getting-support/bootstrapping-nuget#manually-bootstrapping-the-nuget-provider-on-a-machine-that-is-not-connected-to-the-internet).
 
 4. Register this location as the default repository and install the AzureRM and `AzureStack` modules from this repository:
 
@@ -266,6 +266,25 @@ In scenarios that require a proxy server to access the internet, you first confi
    #Alternatively, to prompt for separate credentials that can be used for #proxy authentication
    [System.Net.WebRequest]::DefaultWebProxy.Credentials = Get-Credential
    ```
+
+## Known issue
+
+###  Method get_SerializationSettings error 
+
+- Cause: The PowerShell Az module and PowerShell AzureRM modules are not compatible.
+
+    The following error indicates that the AzureRM modules and Az modules are loaded in the same session: 
+
+    ```powershell  
+    >  Method 'get_SerializationSettings' in type 'Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient' from assembly 'Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' does 
+    not have an implementation.
+    ```
+
+- Remediation: Uninstall the conflicting modules. 
+
+  If you would like to use the AzureRM modules, uninstall the Az modules. Or uninstall the AzureRM if you would like to use the Az modules. Close your PowerShell session and uninstall either the Az or AzureRM modules. 
+  
+  You can find instructions at [Uninstall existing versions of the Azure Stack Hub PowerShell modules](#3-uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules).
 
 ## Next steps
 

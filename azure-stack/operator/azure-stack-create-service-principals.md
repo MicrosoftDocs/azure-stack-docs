@@ -6,12 +6,12 @@ ms.author: bryanla
 ms.topic: how-to
 ms.date: 05/07/2020
 ms.lastreviewed: 05/07/2020
+ms.custom: contperfq4
 
 # Intent: As an Azure Stack operator, I want to use an app identity to access resources. 
 # Keyword: azure stack hub app identity service principal
 
 ---
-
 # Use an app identity to access Azure Stack Hub resources
 
 An application that needs to deploy or configure resources through Azure Resource Manager must be represented by its own identity. Just as a user is represented by a security principal called a user principal, an app is represented by a service principal. The service principal provides an identity for your app, allowing you to delegate only the necessary permissions to the app.  
@@ -351,5 +351,5 @@ Now that you've given your app an identity and authorized it for resource access
 ## Next steps
 
 [Manage user permissions](azure-stack-manage-permissions.md)  
-[Azure Active Directory Documentation](https://docs.microsoft.com/azure/active-directory)  
-[Active Directory Federation Services](https://docs.microsoft.com/windows-server/identity/active-directory-federation-services)
+[Azure Active Directory Documentation](/azure/active-directory)  
+[Active Directory Federation Services](/windows-server/identity/active-directory-federation-services)

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Create highly available SQL databases
 titleSuffix: Azure Stack Hub
 description: Learn how to create a SQL Server resource provider host computer and highly available SQL AlwaysOn databases with Azure Stack Hub.
@@ -20,7 +20,7 @@ ms.lastreviewed: 10/23/2019
 
 As an Azure Stack Hub Operator, you can configure server VMs to host SQL Server databases. After a SQL hosting server is created and managed by Azure Stack Hub, users who have subscribed to SQL services can easily create SQL databases.
 
-This article shows how to use an Azure Stack Hub quickstart template to create a [SQL Server AlwaysOn availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-2017), add it as an Azure Stack Hub SQL Hosting Server, and then create a highly available SQL database.
+This article shows how to use an Azure Stack Hub quickstart template to create a [SQL Server AlwaysOn availability group](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-2017), add it as an Azure Stack Hub SQL Hosting Server, and then create a highly available SQL database.
 
 What you'll learn:
 
@@ -36,9 +36,9 @@ Before starting, ensure that the [SQL Server resource provider](azure-stack-sql-
 > [!IMPORTANT]
 > All of the following are required for the Azure Stack Hub quickstart template to be used.
 
-- Windows Server 2016 Datacenter marketplace image.
-- SQL Server 2016 SP1 or SP2 (Enterprise or Developer) on Windows Server 2016 server image. This article uses the SQL Server 2016 SP2 Enterprise on Windows Server 2016 marketplace image.
-- [SQL Server IaaS Extension](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) version 1.3.20180 or higher. The SQL IaaS Extension installs necessary components that are required by the Marketplace SQL Server items for all Windows versions. It enables SQL-specific settings to be configured on SQL virtual machines (VMs). If the extension isn't installed in the local marketplace, provisioning of SQL will fail.
+- Windows Server 2016 Datacenter.
+- SQL Server 2016 SP1 or SP2 (Enterprise, Standard, or Developer) on Windows Server 2016 server image. 
+- [SQL Server IaaS Extension](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) version 1.3.20180 or higher. The SQL IaaS Extension installs necessary components that are required by the Marketplace SQL Server items for all Windows versions. It enables SQL-specific settings to be configured on SQL virtual machines (VMs). If the extension isn't installed in the local marketplace, provisioning of SQL will fail.
 - [Custom script extension for Windows](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.CustomScriptExtension) version 1.9.1 or higher. Custom Script Extension is a tool that can be used to automatically launch post-deployment VM customization tasks.
 - [PowerShell Desired State Configuration (DSC)](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.DSC-arm) version 2.76.0.0 or higher. DSC is a management platform in Windows PowerShell that enables deploying and managing configuration data for software services. The platform also manages the environment in which these services run.
 
@@ -92,7 +92,7 @@ Use the steps in this section to deploy the SQL Server AlwaysOn availability gro
 
 ### Enable automatic seeding
 
-After the template has successfully deployed and configured the SQL AlwaysON availability group, you must enable [automatic seeding](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) on each instance of SQL Server in the availability group.
+After the template has successfully deployed and configured the SQL AlwaysON availability group, you must enable [automatic seeding](/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) on each instance of SQL Server in the availability group.
 
 When you create an availability group with automatic seeding, SQL Server automatically creates the secondary replicas for every database in the group without any other manual intervention necessary. This measure ensures high availability of AlwaysOn databases.
 
@@ -125,7 +125,7 @@ On secondary SQL instances:
 
 ### Configure contained database authentication
 
-Before adding a contained database to an availability group, ensure that the contained database authentication server option is set to 1 on every server instance that hosts an availability replica for the availability group. For more information, see [contained database authentication](https://docs.microsoft.com/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017).
+Before adding a contained database to an availability group, ensure that the contained database authentication server option is set to 1 on every server instance that hosts an availability replica for the availability group. For more information, see [contained database authentication](/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017).
 
 Use these commands to set the contained database authentication server option for each SQL Server instance in the availability group:
 

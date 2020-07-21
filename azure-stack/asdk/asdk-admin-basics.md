@@ -39,7 +39,7 @@ You can use the Azure Stack administrator portal `https://adminportal.local.azur
 Azure Stack uses Azure Resource Manager as its underlying deployment, management, and organization mechanism. If you're going to manage Azure Stack and help support users, you should learn about Azure Resource Manager. You can learn more by reading the [Getting Started with Azure Resource Manager whitepaper](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf).
 
 ## Your typical responsibilities
-Your users want to use services. From their perspective, your main role is to make these services available to them. Using the ASDK, you can learn which services to offer, and how to make those services available by [creating plans, offers, and quotas](../operator/azure-stack-tutorial-tenant-vm.md). You'll also need to add items to the marketplace, such as virtual machine (VM) images. The easiest way is to [download marketplace items](../operator/azure-stack-create-and-publish-marketplace-item.md) from Azure to Azure Stack.
+Your users want to use services. From their perspective, your main role is to make these services available to them. Using the ASDK, you can learn which services to offer, and how to make those services available by [creating plans, offers, and quotas](../operator/tutorial-offer-services.md?view=azs-2002). You'll also need to add items to the marketplace, such as virtual machine (VM) images. The easiest way is to [download marketplace items](../operator/azure-stack-create-and-publish-marketplace-item.md) from Azure to Azure Stack.
 
 > [!NOTE]
 > If you want to test your plans, offers, and services, you should use the user portal `https://portal.local.azurestack.external`; not the administrator portal `https://adminportal.local.azurestack.external`.
@@ -57,8 +57,7 @@ For the ASDK, you can ask support-related questions in the [Azure Stack MSDN For
 You can also access the forums by clicking **Help** (question mark) in the upper-right corner of the administrator portal. Then click **Help + support** to open Help + Support **Overview**, which has a link to the forum. MSDN forums are regularly monitored.  
 
 > [!IMPORTANT]
-> Because the ASDK is an evaluation environment, there's no official support offered through Microsoft Customer Support Services (CSS).
+> Because the ASDK is an evaluation environment, there's no official support offered through Microsoft Support.
 
 ## Next steps
 [Deploy the ASDK](asdk-install.md)
-

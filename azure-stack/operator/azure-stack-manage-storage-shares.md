@@ -46,7 +46,7 @@ Because the storage objects (blobs, and so on) are individually contained within
 
 When an object store volume is low on free space and actions to [reclaim](#reclaim-capacity) space aren't successful or available, Azure Stack Hub cloud operators can migrate storage objects from one volume to another.
 
-For information about how tenant users work with blob storage in Azure Stack Hub, see [Azure Stack Hub Storage services](/azure-stack/user/azure-stack-storage-overview).
+For information about how tenant users work with blob storage in Azure Stack Hub, see [Azure Stack Hub Storage services](../user/azure-stack-storage-overview.md).
 
 ### Containers
 Tenant users create containers that are then used to store blob data. Although users decide in which container to place blobs, the storage service uses an algorithm to determine on which volume to put the container. The algorithm typically chooses the volume with the most available space.  
@@ -91,7 +91,7 @@ As a cloud operator, you can monitor the storage capacity of a share by using th
 ### Use the administrator portal
 As a cloud operator, you can use the administrator portal to view the storage capacity of all shares.
 
-1. Sign in to the [administrator portal](https://adminportal.local.azurestack.external).
+1. Sign in to the administrator portal `https://adminportal.local.azurestack.external`.
 2. Select **All services** > **Storage** > **File shares** to open the file share list, where you can view the usage information.
 
     ![Example: Storage file shares in Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/storage-file-shares.png)
@@ -153,7 +153,7 @@ You can reclaim the capacity that's used by tenant accounts that have been delet
 
 For more information, see the "Reclaim capacity" section of [Manage Azure Stack Hub storage accounts](azure-stack-manage-storage-accounts.md#reclaim).
 
-::: moniker range="<azs-2002"
+::: moniker range="<azs-1910"
 
 ### Migrate a container between volumes
 *This option applies only to Azure Stack Hub integrated systems.*
@@ -174,7 +174,7 @@ Migration consolidates all of a container's blobs on the new share.
 > The migration of blobs for a container is an offline operation that requires the use of PowerShell. Until the migration is complete, all blobs for the container that you're migrating remain offline and can't be used. You should also avoid upgrading Azure Stack Hub until all ongoing migration is complete.
 
 #### Migrate containers by using PowerShell
-1. Confirm that you have [Azure PowerShell installed and configured](https://azure.microsoft.com/documentation/articles/powershell-install-configure/). For more information, see [Manage Azure resources by using Azure PowerShell](https://go.microsoft.com/fwlink/?LinkId=394767).
+1. Confirm that you have [Azure PowerShell installed and configured](/powershell/azure/). For more information, see [Manage Azure resources by using Azure PowerShell](https://go.microsoft.com/fwlink/?LinkId=394767).
 2. Examine the container to understand what data is on the share that you plan to migrate. To identify the best candidate containers for migration in a volume, use the `Get-AzsStorageContainer` cmdlet:
 
    ```powershell  
@@ -243,7 +243,7 @@ Migration consolidates all of a container's blobs on the new share.
 The most extreme method for managing space involves moving VM disks. Because moving an attached container (one that contains a VM disk) is complex, contact Microsoft support to accomplish this action.
 
 ::: moniker-end
-::: moniker range=">=azs-2002"
+::: moniker range=">=azs-1910"
 
 ### Migrate a managed disk between volumes
 *This option applies only to Azure Stack Hub integrated systems.*
@@ -264,7 +264,10 @@ You can free up space on an overused volume by manually migrating some managed d
    $StorageSubSystem = (Get-AzsStorageSubSystem -ScaleUnit $ScaleUnit.Name)[0]
    $Volumes = (Get-AzsVolume -ScaleUnit $ScaleUnit.Name -StorageSubSystem $StorageSubSystem.Name | Where-Object {$_.VolumeLabel -Like "ObjStore_*"})
    $SourceVolume  = ($Volumes | Sort-Object RemainingCapacityGB)[0]
-   $Disks = Get-AzsDisk -Status All -ScaleUnit $ScaleUnit.name -VolumeLabel $SourceVolume.VolumeLabel | Select-Object -First 10
+   $VolumeName = $SourceVolume.Name.Split("/")[2]
+   $VolumeName = $VolumeName.Substring($VolumeName.IndexOf(".")+1)
+   $MigrationSource = "\\SU1FileServer."+$VolumeName+"\SU1_"+$SourceVolume.VolumeLabel
+   $Disks = Get-AzsDisk -Status All -SharePath $MigrationSource | Select-Object -First 10
    ```
    Then examine $disks:
 
@@ -278,13 +281,16 @@ You can free up space on an overused volume by manually migrating some managed d
 
    ```powershell
    $DestinationVolume  = ($Volumes | Sort-Object RemainingCapacityGB -Descending)[0]
+   $VolumeName = $DestinationVolume.Name.Split("/")[2]
+   $VolumeName = $VolumeName.Substring($VolumeName.IndexOf(".")+1)
+   $MigrationTarget = "\\SU1FileServer."+$VolumeName+"\SU1_"+$DestinationVolume.VolumeLabel
    ```
 
 4. Start migration for managed disks. Migration is asynchronous. If you start migration of additional disks before the first migration completes, use the job name to track the status of each.
 
    ```powershell
    $jobName = "MigratingDisk"
-   Start-AzsDiskMigrationJob -Disks $Disks -TargetScaleUnit $ScaleUnit.name -TargetVolumeLabel $DestinationVolume.VolumeLabel -Name $jobName
+   Start-AzsDiskMigrationJob -Disks $Disks -TargetShare $MigrationTarget -Name $jobName
    ```
 
 5. Use the job name to check on the status of the migration job. When the disk migration is complete, **MigrationStatus** is set to **Complete**.
@@ -319,4 +325,4 @@ The most extreme method for managing space involves moving unmanaged disks. If t
 ::: moniker-end
 
 ## Next steps
-To learn more about offering VMs to users, see [Manage storage capacity for Azure Stack Hub](azure-stack-tutorial-tenant-vm.md).
+To learn more about offering VMs to users, see [Manage storage capacity for Azure Stack Hub](./tutorial-offer-services.md?view=azs-2002).

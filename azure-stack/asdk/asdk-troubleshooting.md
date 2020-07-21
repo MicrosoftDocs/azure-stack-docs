@@ -17,7 +17,7 @@ ms.lastreviewed: 11/05/2019
 # Troubleshoot the ASDK
 This article provides common troubleshooting info for the Azure Stack Development Kit (ASDK). For help with Azure Stack integrated systems, see [Microsoft Azure Stack troubleshooting](../operator/azure-stack-troubleshooting.md). 
 
-Because the ASDK is an evaluation environment, Microsoft Customer Support Services (CSS) does not provide support. If you're experiencing an issue that isn't documented, you can get help from experts on the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
+Because the ASDK is an evaluation environment, Microsoft Support does not provide support. If you're experiencing an issue that isn't documented, you can get help from experts on the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
 
 
 ## Deployment
@@ -36,10 +36,10 @@ This behavior is probably just the result of the default behavior of a PowerShel
 
 If you get an error message during template validation that the parameter 'osProfile' is not allowed, make sure you are using the correct versions of the APIs for these components:
 
-- [Compute](https://docs.microsoft.com/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftcompute)
-- [Network](https://docs.microsoft.com/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftnetwork)
+- [Compute](../user/azure-stack-profiles-azure-resource-manager-versions.md#microsoftcompute)
+- [Network](../user/azure-stack-profiles-azure-resource-manager-versions.md#microsoftnetwork)
 
-To copy a VHD from Azure to Azure Stack, use [AzCopy 7.3.0](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer#download-and-install-azcopy). Work with your vendor to resolve issues with the image itself. For more information about the WALinuxAgent requirements for Azure Stack, see [Azure LinuX Agent](../operator/azure-stack-linux.md#azure-linux-agent).
+To copy a VHD from Azure to Azure Stack, use [AzCopy 7.3.0](../user/azure-stack-storage-transfer.md#download-and-install-azcopy). Work with your vendor to resolve issues with the image itself. For more information about the WALinuxAgent requirements for Azure Stack, see [Azure LinuX Agent](../operator/azure-stack-linux.md#azure-linux-agent).
 
 ### Deployment fails due to lack of external access
 When deployment fails at stages where external access is required, an exception like the following example will be returned:

@@ -3,14 +3,15 @@ title: Extend volumes in Azure Stack HCI
 description: How to resize volumes in Azure Stack HCI using Windows Admin Center and PowerShell.
 author: khdownie
 ms.author: v-kedow
-ms.topic: article
-ms.date: 03/10/2020
+ms.topic: how-to
+ms.date: 07/21/2020
 ---
 
-# Extending volumes in Storage Spaces Direct
-> Applies to: Windows Server 2019
+# Extending volumes in Azure Stack HCI
 
-This topic provides instructions for resizing volumes on a [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) cluster by using Windows Admin Center.
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+
+This topic provides instructions for resizing volumes on an Azure Stack HCI cluster by using Windows Admin Center.
 
 > [!WARNING]
 > **Not supported: resizing the underlying storage used by Storage Spaces Direct.** If you are running Storage Spaces Direct in a virtualized storage environment, including in Azure, resizing or changing the characteristics of the storage devices used by the virtual machines isn't supported and will cause data to become inaccessible. Instead, follow the instructions in the [Add servers or drives](/windows-server/storage/storage-spaces/add-nodes) section to add additional capacity before extending volumes.
@@ -21,7 +22,7 @@ Watch a quick video on how to resize a volume.
 
 ## Extending volumes using Windows Admin Center
 
-1. In Windows Admin Center, connect to a Storage Spaces Direct cluster, and then select **Volumes** from the **Tools** pane.
+1. In Windows Admin Center, connect to an Azure Stack HCI cluster, and then select **Volumes** from the **Tools** pane.
 2. On the **Volumes** page, select the **Inventory** tab, and then select the volume that you want to resize.
 
     On the volume detail page, the storage capacity for the volume is indicated. You can also open the volumes detail page directly from the Dashboard. On the Dashboard, in the Alerts pane, select the alert, which notifies you if a volume is running low on storage capacity, and then select **Go To Volume**.
@@ -56,7 +57,7 @@ To follow associations between objects in the stack, pipe one **Get-** cmdlet in
 For example, here's how to get from a virtual disk up to its volume:
 
 ```PowerShell
-Get-VirtualDisk <FriendlyName> | Get-Disk | Get-Partition | Get-Volume 
+Get-VirtualDisk <FriendlyName> | Get-Disk | Get-Partition | Get-Volume
 ```
 
 ### Step 1 – Resize the virtual disk
@@ -66,7 +67,7 @@ The virtual disk may use storage tiers, or not, depending on how it was created.
 To check, run the following cmdlet:
 
 ```PowerShell
-Get-VirtualDisk <FriendlyName> | Get-StorageTier 
+Get-VirtualDisk <FriendlyName> | Get-StorageTier
 ```
 
 If the cmdlet returns nothing, the virtual disk doesn't use storage tiers.
@@ -121,7 +122,7 @@ $VirtualDisk = Get-VirtualDisk <FriendlyName>
 # Get its partition
 $Partition = $VirtualDisk | Get-Disk | Get-Partition | Where PartitionNumber -Eq 2
 
-# Resize to its maximum supported size 
+# Resize to its maximum supported size
 $Partition | Resize-Partition -Size ($Partition | Get-PartitionSupportedSize).SizeMax
 ```
 
@@ -138,6 +139,6 @@ That's it!
 
 For step-by-step instructions on other essential storage management tasks, see also:
 
-- [Planning volumes in Storage Spaces Direct](/windows-server/storage/storage-spaces/plan-volumes)
-- [Creating volumes in Storage Spaces Direct](/windows-server/storage/storage-spaces/create-volumes)
-- [Deleting volumes in Storage Spaces Direct](/windows-server/storage/storage-spaces/delete-volumes)
+- [Plan volumes](../concepts/plan-volumes.md)
+- [Create volumes](create-volumes.md)
+- [Delete volumes](delete-volumes.md)

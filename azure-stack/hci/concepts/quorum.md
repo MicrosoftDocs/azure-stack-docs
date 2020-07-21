@@ -3,13 +3,13 @@ title: Understanding cluster and pool quorum on Azure Stack HCI
 description: Understanding cluster and pool quorum in Storage Spaces Direct on Azure Stack HCI, with specific examples to go over the intricacies.
 author: khdownie
 ms.author: v-kedow
-ms.topic: article
-ms.date: 02/28/2020
+ms.topic: conceptual
+ms.date: 07/21/2020
 ---
 
 # Understanding cluster and pool quorum on Azure Stack HCI
 
->Applies to: Windows Server 2019
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
 [Windows Server Failover Clustering](/windows-server/failover-clustering/failover-clustering-overview) provides high availability for workloads. These resources are considered highly available if the nodes that host resources are up; however, the cluster generally requires more than half the nodes to be running, which is known as having *quorum*.
 
@@ -54,7 +54,7 @@ There are two ways the cluster can make the *total number of votes* odd:
 1. First, it can go *up* one by adding a *witness* with an extra vote. This requires user set-up.
 2. Or, it can go *down* one by zeroing one unlucky node's vote (happens automatically as needed).
 
-Whenever surviving nodes successfully verify they are the *majority*, the definition of *majority* is updated to be among just the survivors. This allows the cluster to lose one node, then another, then another, and so forth. This concept of the *total number of votes* adapting after successive failures is known as ***Dynamic quorum***.  
+Whenever surviving nodes successfully verify they are the *majority*, the definition of *majority* is updated to be among just the survivors. This allows the cluster to lose one node, then another, then another, and so forth. This concept of the *total number of votes* adapting after successive failures is known as ***Dynamic quorum***.
 
 ### Dynamic witness
 
@@ -69,7 +69,7 @@ Dynamic quorum works with Dynamic witness in the way described below.
 - If you have an **even** number of nodes plus witness, *the witness votes*, so the total is odd.
 - If you have an **odd** number of nodes plus witness, *the witness doesn't vote*.
 
-Dynamic quorum enables the ability to assign a vote to a node dynamically to avoid losing the majority of votes and to allow the cluster to run with one node (known as last-man standing). Let's take a four-node cluster as an example. Assume that quorum requires 3 votes. 
+Dynamic quorum enables the ability to assign a vote to a node dynamically to avoid losing the majority of votes and to allow the cluster to run with one node (known as last-man standing). Let's take a four-node cluster as an example. Assume that quorum requires 3 votes.
 
 In this case, the cluster would have gone down if you lost two nodes.
 
@@ -135,7 +135,7 @@ All nodes votes and the witness votes, so the *majority* is determined out of a 
 
 - Can survive one server failure: **Yes**.
 - Can survive one server failure, then another: **Yes**.
-- Can survive two server failures at once: **Yes**. 
+- Can survive two server failures at once: **Yes**.
 
 #### Five nodes and beyond.
 All nodes vote, or all but one vote, whatever makes the total odd. Storage Spaces Direct cannot handle more than two nodes down anyway, so at this point, no witness is needed or useful.
@@ -144,7 +144,7 @@ All nodes vote, or all but one vote, whatever makes the total odd. Storage Space
 
 - Can survive one server failure: **Yes**.
 - Can survive one server failure, then another: **Yes**.
-- Can survive two server failures at once: **Yes**. 
+- Can survive two server failures at once: **Yes**.
 
 Now that we understand how quorum works, let's look at the types of quorum witnesses.
 
@@ -184,25 +184,25 @@ But pool quorum works differently from cluster quorum in the following ways:
 
 ### Examples
 
-#### Four nodes with a symmetrical layout. 
+#### Four nodes with a symmetrical layout.
 Each of the 16 drives has one vote and node two also has one vote (since it's the pool resource owner). The *majority* is determined out of a total of **16 votes**. If nodes three and four go down, the surviving subset has 8 drives and the pool resource owner, which is 9/16 votes. So, the pool survives.
 
 ![Pool Quorum 1](media/quorum/pool-1.png)
 
 - Can survive one server failure: **Yes**.
 - Can survive one server failure, then another: **Yes**.
-- Can survive two server failures at once: **Yes**. 
+- Can survive two server failures at once: **Yes**.
 
-#### Four nodes with a symmetrical layout and drive failure. 
+#### Four nodes with a symmetrical layout and drive failure.
 Each of the 16 drives has one vote and node 2 also has one vote (since it's the pool resource owner). The *majority* is determined out of a total of **16 votes**. First, drive 7 goes down. If nodes three and four go down, the surviving subset has 7 drives and the pool resource owner, which is 8/16 votes. So, the pool doesn't have majority and goes down.
 
 ![Pool Quorum 2](media/quorum/pool-2.png)
 
 - Can survive one server failure: **Yes**.
 - Can survive one server failure, then another: **No**.
-- Can survive two server failures at once: **No**. 
+- Can survive two server failures at once: **No**.
 
-#### Four nodes with a non-symmetrical layout. 
+#### Four nodes with a non-symmetrical layout.
 Each of the 24 drives has one vote and node two also has one vote (since it's the pool resource owner). The *majority* is determined out of a total of **24 votes**. If nodes three and four go down, the surviving subset has 8 drives and the pool resource owner, which is 9/24 votes. So, the pool doesn't have majority and goes down.
 
 ![Pool Quorum 3](media/quorum/pool-3.png)
@@ -214,7 +214,7 @@ Each of the 24 drives has one vote and node two also has one vote (since it's th
 ### Pool quorum recommendations
 
 - Ensure that each node in your cluster is symmetrical (each node has the same number of drives)
-- Enable three-way mirror or dual parity so that you can tolerate a node failures and keep the virtual disks online. 
+- Enable three-way mirror or dual parity so that you can tolerate a node failures and keep the virtual disks online.
 - If more than two nodes are down, or two nodes and a disk on another node are down, volumes may not have access to all three copies of their data, and therefore be taken offline and be unavailable. It's recommended to bring the servers back or replace the disks quickly to ensure the most resiliency for all the data in the volume.
 
 ## Next steps
@@ -222,4 +222,4 @@ Each of the 24 drives has one vote and node two also has one vote (since it's th
 For more information, see the following:
 
 - [Configure and manage quorum](/windows-server/failover-clustering/manage-cluster-quorum)
-- [Deploy a cloud witness](/windows-server/failover-clustering/deploy-cloud-witness)
+- [Set up a cluster witness](../deploy/witness.md)

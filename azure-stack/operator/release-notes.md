@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/21/2020
+ms.date: 07/21/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
@@ -71,6 +71,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 <!-- What's new, also net new experiences and features. -->
 
 - A new version (1.8.1) of the Azure Stack Hub admin PowerShell modules based on AzureRM is available.
+- A new version of the Azure Stack Hub admin REST API is available. You can find details about endpoints and breaking changes in the [API Reference](/rest/api/azure-stack/).
 - New Azure PowerShell tenant modules will be released for Azure Stack Hub on April 15, 2020. The currently used Azure RM modules will continue to work, but will no longer be updated after build 2002.
 - Added new warning alert on the Azure Stack Hub administrator portal to report on connectivity issues with the configured syslog server. Alert title is **The Syslog client encountered a networking issue while sending a Syslog message**.
 - Added new warning alert on the Azure Stack Hub administrator portal to report on connectivity issues with the Network Time Protocol (NTP) server. Alert title is **Invalid Time Source on [node name]**.
@@ -85,8 +86,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 - The Azure Stack Hub readiness checker tool now validates AD Graph integration using all TCP IP ports allocated to AD Graph.
 - The offline syndication tool has been updated with reliability improvements. The tool is no longer available on GitHub, and has been [moved to the PowerShell Gallery](https://www.powershellgallery.com/packages/Azs.Syndication.Admin/). For more information, see [Download Marketplace items to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md).
 - A new monitoring capability is being introduced. The low disk space alert for physical hosts and infrastructure VMs will be auto-remediated by the platform and only if this action fails will the alert be visible in the Azure Stack Hub administrator portal, for the operator to take action.
-- Improvements to [diagnostic log collection](azure-stack-diagnostic-log-collection-overview-tzl.md). The new experience streamlines and simplifies diagnostic log collection by removing the need to configure a blob storage account in advance. The storage environment is preconfigured so that you can send logs before opening a support case, and spend less time on a support call.
-- Time taken for both [Proactive Log Collection and the on-demand log collection](azure-stack-diagnostic-log-collection-overview-tzl.md) has been reduced by 80%. Log collection time can take longer than this expected value but doesn't require action by Azure Stack Hub operators unless the log collection fails.
+- Improvements to [diagnostic log collection](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002). The new experience streamlines and simplifies diagnostic log collection by removing the need to configure a blob storage account in advance. The storage environment is preconfigured so that you can send logs before opening a support case, and spend less time on a support call.
+- Time taken for both [Proactive Log Collection and the on-demand log collection](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002) has been reduced by 80%. Log collection time can take longer than this expected value but doesn't require action by Azure Stack Hub operators unless the log collection fails.
 - The download progress of an Azure Stack Hub update package is now visible in the update blade after an update is initiated. This only applies to connected Azure Stack Hub systems that choose to [prepare update packages via automatic download](azure-stack-update-prepare-package.md#automatic-download-and-preparation-for-update-packages).
 - Reliability improvements to the Network Controller Host agent.
 - Introduced a new micro-service called DNS Orchestrator that improves the resiliency logic for the internal DNS services during patch and update.
@@ -136,7 +137,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue causing add-on resource provider operations to fail after performing Azure Stack Hub secret rotation.
 - Fixed an issue that was a common cause of Azure Stack Hub update failures due to memory pressure on the ERCS role.
 - Fixed a bug in the update blade in which the update status showed as **Installing** instead of **Preparing** during the preparation phase of an Azure Stack Hub update.
-- Fixed an issue where the RSC feature on the physical switches was creating inconsistences and dropping the traffic flowing through a load balancer. The RSC feature is now disabled by default.
+- Fixed an issue where the RSC feature on the virtual switches was creating inconsistences and dropping the traffic flowing through a load balancer. The RSC feature is now disabled by default.
 - Fixed an issue where multiple IP configurations on a NIC was causing traffic to be misrouted and prevented outbound connectivity. 
 - Fixed an issue where the MAC address of a NIC was being cached, and assigning of that address to another resource was causing VM deployment failures.
 - Fixed an issue where Windows VM images from the RETAIL channel could not have their license activated by AVMA.
@@ -157,19 +158,21 @@ Azure Stack Hub releases hotfixes on a regular basis. Be sure to install the lat
 
 Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
 
+For more information about hotfixes, see the [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md#hotfixes).
+
 ### Prerequisites: Before applying the 2002 update
 
 The 2002 release of Azure Stack Hub must be applied on the 1910 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1910.40.138](https://support.microsoft.com/help/4558082)
+- [Azure Stack Hub hotfix 1.1910.62.184](https://support.microsoft.com/help/4571141)
 
 ### After successfully applying the 2002 update
 
-After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
+After the installation of this update, install any applicable hotfixes.
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.2002.24.85](https://support.microsoft.com/help/4558081)
+- [Azure Stack Hub hotfix 1.2002.52.142](https://support.microsoft.com/help/4571140)
 ::: moniker-end
 
 ::: moniker range="azs-1910"
@@ -222,7 +225,7 @@ For more information about update build types, see [Manage updates in Azure Stac
     - Integration with Azure Arc.
     - Integration with Azure Monitor for Containers.
   - Use Windows Containers with AKS engine.
-  - Receive CSS and engineering support for their deployments.
+  - Receive Microsoft Support and engineering support for their deployments.
 
 ### Improvements
 
@@ -319,14 +322,14 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 The 1910 release of Azure Stack Hub must be applied on the 1908 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1908.29.87](https://support.microsoft.com/help/4558083)
+- [Azure Stack Hub hotfix 1.1908.50.131](https://support.microsoft.com/help/4571142)
 
 ### After successfully applying the 1910 update
 
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1910.40.138](https://support.microsoft.com/help/4558082)
+- [Azure Stack Hub hotfix 1.1910.62.184](https://support.microsoft.com/help/4571141)
 ::: moniker-end
 
 ::: moniker range="azs-1908"
@@ -405,7 +408,7 @@ The Azure Stack Hub 1908 Update requires **Azure Stack Hub OEM version 2.1 or la
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1908.29.87](https://support.microsoft.com/help/4558083)
+- [Azure Stack Hub hotfix 1.1908.50.131](https://support.microsoft.com/help/4571142)
 ::: moniker-end
 
 ::: moniker range="azs-1907"
@@ -429,7 +432,7 @@ The Azure Stack Hub 1907 update build type is **Express**. For more information 
 
 <!-- What's new, also net new experiences and features. -->
 
-- General availability release of the Azure Stack Hub diagnostic log collection service to facilitate and improve diagnostic log collection. The Azure Stack Hub diagnostic log collection service provides a simplified way to collect and share diagnostic logs with Microsoft Customer Support Services (CSS). This diagnostic log collection service provides a new user experience in the Azure Stack Hub administrator portal that enables operators to set up the automatic upload of diagnostic logs to a storage blob when certain critical alerts are raised. The service can also be used to perform the same operation on demand. For more information, see the [Diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md) article.
+- General availability release of the Azure Stack Hub diagnostic log collection service to facilitate and improve diagnostic log collection. The Azure Stack Hub diagnostic log collection service provides a simplified way to collect and share diagnostic logs with Microsoft Support. This diagnostic log collection service provides a new user experience in the Azure Stack Hub administrator portal that enables operators to set up the automatic upload of diagnostic logs to a storage blob when certain critical alerts are raised. The service can also be used to perform the same operation on demand. For more information, see the [Diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md) article.
 
 - General availability release of the Azure Stack Hub network infrastructure validation as a part of the Azure Stack Hub validation tool **Test-AzureStack**. Azure Stack Hub network infrastructure will be a part of **Test-AzureStack**, to identify if a failure occurs on the network infrastructure of Azure Stack Hub. The test checks connectivity of the network infrastructure by bypassing the Azure Stack Hub software-defined network. It demonstrates connectivity from a public VIP to the configured DNS forwarders, NTP servers, and identity endpoints. It also checks for connectivity to Azure when using Azure AD as the identity provider, or the federated server when using ADFS. For more information, see the [Azure Stack Hub validation tool](azure-stack-diagnostic-test.md) article.
 
@@ -606,5 +609,3 @@ To access archived release notes for an older version, use the version selector 
 ::: moniker range="<azs-1907"
 You can access [older versions of Azure Stack Hub release notes on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived documents are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end
-
-

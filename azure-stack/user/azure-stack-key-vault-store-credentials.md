@@ -2,9 +2,8 @@
 title: Store service principal credentials in Azure Stack Hub Key Vault 
 description: Learn how Key Vault stores service principal credentials on Azure Stack Hub
 author: sethmanheim
-
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 06/09/2020
 ms.author: sethm
 ms.lastreviewed: 01/16/2020
 
@@ -93,6 +92,6 @@ After the secret is successfully created, the service principal information is s
 
 ## Next steps
 
-- [Use service principals](azure-stack-create-service-principals.md)
+- [Use service principals](../operator/azure-stack-create-service-principals.md?view=azs-2002)
 - [Manage Key Vault in Azure Stack Hub by the portal](azure-stack-key-vault-manage-portal.md)  
 - [Manage Key Vault in Azure Stack Hub by using PowerShell](azure-stack-key-vault-manage-powershell.md)

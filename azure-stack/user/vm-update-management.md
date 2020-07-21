@@ -14,17 +14,16 @@ ms.lastreviewed: 04/27/2020
 
 ---
 
-
 # VM update and management automation in Azure Stack Hub
 Use the following Azure Automation solution features to manage Windows and Linux virtual machines (VMs) that are deployed using Azure Stack Hub:
 
-- **[Update Management](https://docs.microsoft.com/azure/automation/automation-update-management)**: With the Update Management solution, you can quickly assess the status of available updates on all agent computers and manage the process of installing required updates for Windows and Linux VMs.
+- **[Update Management](/azure/automation/automation-update-management)**: With the Update Management solution, you can quickly assess the status of available updates on all agent computers and manage the process of installing required updates for Windows and Linux VMs.
 
-- **[Change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking)**: Changes to installed software, Windows services, Windows registry and files, and Linux daemons on the monitored servers are sent to the Azure Monitor service in the cloud for processing. Logic is applied to the received data and the cloud service records the data. By using the information on the Change Tracking dashboard, you can easily see the changes that were made to your server infrastructure.
+- **[Change Tracking](/azure/automation/automation-change-tracking)**: Changes to installed software, Windows services, Windows registry and files, and Linux daemons on the monitored servers are sent to the Azure Monitor service in the cloud for processing. Logic is applied to the received data and the cloud service records the data. By using the information on the Change Tracking dashboard, you can easily see the changes that were made to your server infrastructure.
 
-- **[Inventory](https://docs.microsoft.com/azure/automation/automation-vm-inventory)**. The Inventory tracking for an Azure Stack Hub VM provides a browser-based user interface for setting up and configuring inventory collection.
+- **[Inventory](/azure/automation/automation-vm-inventory)**. The Inventory tracking for an Azure Stack Hub VM provides a browser-based user interface for setting up and configuring inventory collection.
 
-- **[Azure Monitor for VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview)**: Azure Monitor for VMs monitors your Azure and Azure Stack Hub VMs and virtual machine scale sets at scale. It analyzes the performance and health of your Windows and Linux VMs and also monitors their processes and dependencies on other resources and external processes.
+- **[Azure Monitor for VMs](/azure/azure-monitor/insights/vminsights-overview)**: Azure Monitor for VMs monitors your Azure and Azure Stack Hub VMs and virtual machine scale sets at scale. It analyzes the performance and health of your Windows and Linux VMs and also monitors their processes and dependencies on other resources and external processes.
 
 > [!IMPORTANT]
 > These solutions are the same as the ones used to manage Azure VMs. Both Azure and Azure Stack Hub VMs are managed in the same way, from the same interface, using the same tools. The Azure Stack Hub VMs are also priced the same as Azure VMs when using the Update Management, Change Tracking, Inventory, and Azure Monitor for VMs solutions with Azure Stack Hub.
@@ -38,9 +37,9 @@ To use the Azure Monitor for VMs, Inventory, Change Tracking, and Update Managem
 > [!TIP]
 > If you've already enabled these features for Azure VMs, you can use your pre-existing LogAnalytics Workspace credentials. If you already have a LogAnalytics WorkspaceID and Primary Key that you want to use, skip ahead to [the next section](./vm-update-management.md#in-the-azure-stack-hub-administrator-portal). Otherwise, continue in this section to create a new LogAnalytics Workspace and automation account.
 
-The first step in enabling these solutions is to [create a LogAnalytics Workspace](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace) in your Azure subscription. A Log Analytics workspace is a unique Azure Monitor logs environment with its own data repository, data sources, and solutions. After you've created a workspace, note the WorkspaceID and Key. To view this information, go to the workspace blade, click on **Advanced settings**, and review the **Workspace ID** and **Primary Key** values. 
+The first step in enabling these solutions is to [create a LogAnalytics Workspace](/azure/log-analytics/log-analytics-quick-create-workspace) in your Azure subscription. A Log Analytics workspace is a unique Azure Monitor logs environment with its own data repository, data sources, and solutions. After you've created a workspace, note the WorkspaceID and Key. To view this information, go to the workspace blade, click on **Advanced settings**, and review the **Workspace ID** and **Primary Key** values. 
 
-Next, you must [create an Automation account](https://docs.microsoft.com/azure/automation/automation-create-standalone-account). An Automation account is a container for your Azure Automation resources. It provides a way to separate your environments or further organize your Automation workflows and resources. Once the Automation account is created, you need to enable the Inventory, Change Tracking, and Update Management features. To enable each feature, follow these steps:
+Next, you must [create an Automation account](/azure/automation/automation-create-standalone-account). An Automation account is a container for your Azure Automation resources. It provides a way to separate your environments or further organize your Automation workflows and resources. Once the Automation account is created, you need to enable the Inventory, Change Tracking, and Update Management features. To enable each feature, follow these steps:
 
 1. In the Azure portal, go to the Automation Account that you want to use.
 
@@ -66,7 +65,7 @@ As a solution, Azure Monitor for VMs includes support for monitoring performance
 
 3. Dependency map that displays the interconnected components with the VM from various resource groups and subscriptions.
 
-After the Log Analytics Workspace is created, enable the performance counters in the workspace for collection on Linux and Windows VMs. Then, install and enable the ServiceMap and InfrastructureInsights solution in your workspace. The process is described in the [Deploy Azure Monitor for VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview) guide.
+After the Log Analytics Workspace is created, enable the performance counters in the workspace for collection on Linux and Windows VMs. Then, install and enable the ServiceMap and InfrastructureInsights solution in your workspace. The process is described in the [Deploy Azure Monitor for VMs](/azure/azure-monitor/insights/vminsights-enable-overview) guide.
 
 ### In the Azure Stack Hub administrator portal
 After enabling the Azure Automation solutions in the Azure portal, you next need to sign in to the Azure Stack Hub administrator portal as a cloud admin and download the **Azure Monitor, Update and Configuration Management** and the **Azure Monitor, Update and Configuration Management for Linux** extension in the Azure Stack Hub Marketplace.
@@ -90,7 +89,7 @@ Follow these steps to enable update management for Azure Stack Hub VMs.
 
    [![](media//vm-update-management/4-sm.PNG "Providing the WorkspaceID and Key")](media//vm-update-management/4-lg.PNG) 
 
-4. As described in the [Update Management documentation](https://docs.microsoft.com/azure/automation/automation-update-management), you need to enable the Update Management solution for each VM that you want to manage. To enable the solution for all VMs reporting to the workspace, select **Update management**, click **Manage machines**, and then select the **Enable on all available and future machines** option.
+4. As described in the [Update Management documentation](/azure/automation/automation-update-management), you need to enable the Update Management solution for each VM that you want to manage. To enable the solution for all VMs reporting to the workspace, select **Update management**, click **Manage machines**, and then select the **Enable on all available and future machines** option.
 
    [![](media//vm-update-management/5-sm.PNG "Enable Update Management solution on all machines")](media//vm-update-management/5-lg.PNG) 
 
@@ -110,7 +109,7 @@ The Azure Stack Hub VMs can now be included in scheduled update deployments toge
 
 ##  Create an update deployment schedule
 
-To create an update deployment schedule, you must use use a PowerShell cmdlet, or the Azure REST API, to pass the machines. Use the following PowerShell example to get your machines scheduled. You can use the **[New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule)** cmdlet with the `ForUpdateConfiguration` parameter to create a schedule. Then, use the **[New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationsoftwareupdateconfiguration)** cmdlet and pass the Azure Stack Hub machines to the `NonAzureComputer` parameter. To run this script you will need to use the global [Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/).
+To create an update deployment schedule, you must use a PowerShell cmdlet, or the Azure REST API, to pass the machines. Use the following PowerShell example to get your machines scheduled. You can use the **[New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule)** cmdlet with the `ForUpdateConfiguration` parameter to create a schedule. Then, use the **[New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/az.automation/new-azautomationsoftwareupdateconfiguration)** cmdlet and pass the Azure Stack Hub machines to the `NonAzureComputer` parameter. To run this script you will need to use the global [Azure PowerShell Az module](/powershell/azure/).
 
 The following example shows how to do this:
 
@@ -125,21 +124,21 @@ New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationA
 ```
 
 ## Enable Azure Monitor for VMs running on Azure Stack Hub
-Once the VM has the **Azure Monitor, Update and Configuration Management**, and the **Azure Monitor Dependency Agent** extensions installed, it will start reporting data in the [Azure Monitor for VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview) solution. 
+Once the VM has the **Azure Monitor, Update and Configuration Management**, and the **Azure Monitor Dependency Agent** extensions installed, it will start reporting data in the [Azure Monitor for VMs](/azure/azure-monitor/insights/vminsights-overview) solution. 
 
 > [!TIP]
-> The **Azure Monitor Dependency Agent** extension doesn't require any parameters. The Azure Monitor for VMs Map Dependency agent doesn't transmit any data itself, and it doesn't require any changes to firewalls or ports. The Map data is always transmitted by the Log Analytics agent to the Azure Monitor service, either directly or through the [OMS Gateway](https://docs.microsoft.com/azure/azure-monitor/platform/gateway) if your IT security policies don't allow computers on the network to connect to the internet.
+> The **Azure Monitor Dependency Agent** extension doesn't require any parameters. The Azure Monitor for VMs Map Dependency agent doesn't transmit any data itself, and it doesn't require any changes to firewalls or ports. The Map data is always transmitted by the Log Analytics agent to the Azure Monitor service, either directly or through the [OMS Gateway](/azure/azure-monitor/platform/gateway) if your IT security policies don't allow computers on the network to connect to the internet.
 
 Azure Monitor for VMs includes a set of performance charts that target several key performance indicators (KPIs) to help you determine how well a VM is performing. The charts show resource use over a period of time so you can identify bottlenecks and anomalies. You can also switch to a perspective listing each machine to view resource use based on the metric selected. While there are many elements to consider when dealing with performance, Azure Monitor for VMs monitors key operating system performance indicators related to processor, memory, network adapter, and disk use. Performance charts complement the health monitoring feature and help expose issues that indicate a possible system component failure. Azure Monitor for VMs also supports capacity planning and tuning and optimization to achieve efficiency.
 
-   ![Azure Monitor VMs Performance tab](https://docs.microsoft.com/azure/azure-monitor/insights/media/vminsights-performance/vminsights-performance-aggview-01.png)
+   ![Azure Monitor VMs Performance tab](/azure/azure-monitor/insights/media/vminsights-performance/vminsights-performance-aggview-01.png)
 
 Viewing the discovered app components on Windows and Linux VMs running in Azure Stack Hub can be observed in two ways with Azure Monitor for VMs. The first is from a VM directly and the second is across groups of VMs from Azure Monitor.
-The [Using Azure Monitor for VMs Map to understand app components](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-maps) article will help you understand the experience between the two perspectives and how to use the Map feature.
+The [Using Azure Monitor for VMs Map to understand app components](/azure/azure-monitor/insights/vminsights-maps) article will help you understand the experience between the two perspectives and how to use the Map feature.
 
-   ![Azure Monitor VMs Map tab](https://docs.microsoft.com/azure/azure-monitor/insights/media/vminsights-maps/map-multivm-azure-monitor-01.png)
+   ![Azure Monitor VMs Map tab](/azure/azure-monitor/insights/media/vminsights-maps/map-multivm-azure-monitor-01.png)
 
-In case [Azure Monitor for VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview) is not showing you any performance data, you have to enable the collection of performance data for Windows and Linux in your [LogAnalytics Workspace](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters) Advanced Settings.
+In case [Azure Monitor for VMs](/azure/azure-monitor/insights/vminsights-overview) is not showing you any performance data, you have to enable the collection of performance data for Windows and Linux in your [LogAnalytics Workspace](/azure/azure-monitor/platform/data-sources-performance-counters) Advanced Settings.
 
 ## Enable Update Management using a Resource Manager template
 If you have a large number of Azure Stack Hub VMs, you can use [this Azure Resource Manager template](https://aka.ms/aa6zdzy) to more easily deploy the solution on VMs. The template deploys the Microsoft Monitoring Agent extension to an existing Azure Stack Hub VM and adds it to an existing Azure LogAnalytics workspace.

@@ -16,7 +16,7 @@ ms.lastreviewed: 11/11/2019
 
 # Connect Storage Explorer to an Azure Stack Hub subscription or a storage account
 
-In this article, you'll learn how to connect to your Azure Stack Hub subscriptions and storage accounts using [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer). Storage Explorer is a standalone app that enables you to easily work with Azure Stack Hub storage data on Windows, macOS, and Linux.
+In this article, you'll learn how to connect to your Azure Stack Hub subscriptions and storage accounts using [Azure Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer). Storage Explorer is a standalone app that enables you to easily work with Azure Stack Hub storage data on Windows, macOS, and Linux.
 
 > [!NOTE]  
 > There are several tools available to move data to and from Azure Stack Hub storage. For more information, see [Data transfer tools for Azure Stack Hub storage](azure-stack-storage-transfer.md).
@@ -107,7 +107,7 @@ Use the following steps to connect Storage Explorer to an Azure Stack Hub subscr
     | Field | Notes |
     | ---   | ---   |
     | Environment name | The field can be customized by user. |
-    | Azure Resource Manager endpoint | The samples of Azure Resource Manager resource endpoints of Azure Stack Development Kit.<br>For operators: https://adminmanagement.local.azurestack.external <br> For users: https://management.local.azurestack.external |
+    | Azure Resource Manager endpoint | The samples of Azure Resource Manager resource endpoints of Azure Stack Development Kit.<br>For operators: `https://adminmanagement.local.azurestack.external` <br> For users: `https://management.local.azurestack.external` |
 
     If you're working on Azure Stack Hub integrated system and don't know your management endpoint, contact your operator.
 

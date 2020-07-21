@@ -8,6 +8,7 @@ ms.date: 04/20/2020
 ms.author: justinha
 ms.reviewer: unknown
 ms.lastreviewed: 11/08/2019
+ms.custom: conteperfq4
 
 # Intent: As an Azure Stack operator, I want an overview of what Azure Stack is so I can start using it.
 # Keyword: use azure stack
@@ -67,13 +68,13 @@ Azure Stack Hub uses the same operations model as Azure. An Azure Stack Hub oper
 
 ![Diagram showing Azure Stack Hub job roles](./media/azure-stack-overview/azure-stack-job-roles.svg)
 
-You can manage Azure Stack Hub with the administrator portal, user portal, or [PowerShell](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.7.1). The Azure Stack Hub portals are each backed by separate instances of Azure Resource Manager. An **Azure Stack Hub Operator** uses the administrator portal to manage Azure Stack Hub, and to do things like create tenant offerings and maintain the health and monitor status of the integrated system. The user portal provides a self-service experience for consumption of cloud resources like virtual machines (VMs), storage accounts, and web apps.
+You can manage Azure Stack Hub with the administrator portal, user portal, or [PowerShell](/powershell/azure/azure-stack/overview?view=azurestackps-1.7.1). The Azure Stack Hub portals are each backed by separate instances of Azure Resource Manager. An **Azure Stack Hub Operator** uses the administrator portal to manage Azure Stack Hub, and to do things like create tenant offerings and maintain the health and monitor status of the integrated system. The user portal provides a self-service experience for consumption of cloud resources like virtual machines (VMs), storage accounts, and web apps.
 
 > For more information about managing Azure Stack Hub using the administrator portal, see the use the [Azure Stack Hub administration portal quickstart](azure-stack-manage-portals.md).
 
-As an Azure Stack Hub operator, you can deliver [VMs](azure-stack-tutorial-tenant-vm.md), [web apps](azure-stack-app-service-overview.md), highly available [SQL Server](azure-stack-tutorial-sql.md), and [MySQL Server](azure-stack-tutorial-mysql.md) databases. You can also use [Azure Stack Hub quickstart Azure Resource Manager templates](https://github.com/Azure/AzureStack-QuickStart-Templates) to deploy SharePoint, Exchange, and more.
+As an Azure Stack Hub operator, you can deliver [VMs](./tutorial-offer-services.md?view=azs-2002), [web apps](azure-stack-app-service-overview.md), highly available [SQL Server](azure-stack-tutorial-sql.md), and [MySQL Server](azure-stack-tutorial-mysql.md) databases. You can also use [Azure Stack Hub quickstart Azure Resource Manager templates](https://github.com/Azure/AzureStack-QuickStart-Templates) to deploy SharePoint, Exchange, and more.
 
-An operator can manage Azure Stack Hub with the [administrator portal](azure-stack-manage-portals.md) or [PowerShell](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.7.1). You can configure Azure Stack Hub to [deliver services](service-plan-offer-subscription-overview.md) to tenants using plans, quotas, offers, and subscriptions. Tenant users can subscribe to multiple offers. Offers can have one or more plans, and plans can have one or more services. Operators also manage capacity and respond to alerts.
+An operator can manage Azure Stack Hub with the [administrator portal](azure-stack-manage-portals.md) or [PowerShell](/powershell/azure/azure-stack/overview?view=azurestackps-1.7.1). You can configure Azure Stack Hub to [deliver services](service-plan-offer-subscription-overview.md) to tenants using plans, quotas, offers, and subscriptions. Tenant users can subscribe to multiple offers. Offers can have one or more plans, and plans can have one or more services. Operators also manage capacity and respond to alerts.
 
 Users consume services that the operator offers. Users can provision, monitor, and manage services that they've subscribed to, like web apps, storage, and VMs. Users can manage Azure Stack Hub with the user portal or PowerShell.
 
@@ -89,7 +90,7 @@ There are three foundational IaaS resource providers:
 
 - **Compute**: The Compute Resource Provider lets Azure Stack Hub tenants to create their own VMs. The Compute Resource Provider includes the ability to create VMs as well as VM extensions. The VM extension service helps provide IaaS capabilities for Windows and Linux VMs. As an example, you can use the Compute Resource Provider to provision a Linux VM and run Bash scripts during deployment to configure the VM.
 - **Network Resource Provider**: The Network Resource Provider delivers a series of Software Defined Networking (SDN) and Network Function Virtualization (NFV) features for the private cloud. You can use the Network Resource Provider to create resources like software load balancers, public IPs, network security groups, and virtual networks.
-- **Storage Resource Provider**: The Storage Resource Provider delivers four Azure-consistent storage services: [blob](https://docs.microsoft.com/azure/storage/common/storage-introduction#blob-storage), [queue](https://docs.microsoft.com/azure/storage/common/storage-introduction#queue-storage), [table](https://docs.microsoft.com/azure/storage/common/storage-introduction#table-storage), and [Key Vault](https://docs.microsoft.com/azure/key-vault/) account management providing management and auditing of secrets, such as passwords and certificates. The storage resource provider also offers a storage cloud administration service to facilitate service provider administration of Azure-consistent storage services. Azure Storage provides the flexibility to store and retrieve large amounts of unstructured data, like documents and media files with Azure Blobs, and structured NoSQL based data with Azure Tables.
+- **Storage Resource Provider**: The Storage Resource Provider delivers four Azure-consistent storage services: [blob](/azure/storage/common/storage-introduction#blob-storage), [queue](/azure/storage/common/storage-introduction#queue-storage), [table](/azure/storage/common/storage-introduction#table-storage), and [Key Vault](/azure/key-vault/) account management providing management and auditing of secrets, such as passwords and certificates. The storage resource provider also offers a storage cloud administration service to facilitate service provider administration of Azure-consistent storage services. Azure Storage provides the flexibility to store and retrieve large amounts of unstructured data, like documents and media files with Azure Blobs, and structured NoSQL based data with Azure Tables.
 
 ### Optional resource providers
 

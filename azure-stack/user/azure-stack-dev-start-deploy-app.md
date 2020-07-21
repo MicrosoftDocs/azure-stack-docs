@@ -4,7 +4,7 @@ description: Deploy an app to Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: overview
-ms.date: 1/22/2020
+ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/02/2019
@@ -37,4 +37,4 @@ In the following how-to articles, you set up a virtual machine (VM) in Azure Sta
 ## Next steps
 
 - Set up a [development environment in Azure Stack Hub](azure-stack-dev-start.md).
-- Set up a [continuous integration/continuous delivery (CI/CD) pipeline in Azure Stack Hub](azure-stack-solution-pipeline.md).
+- Set up a [continuous integration/continuous delivery (CI/CD) pipeline in Azure Stack Hub](https://github.com/Azure-Samples/azure-intelligent-edge-patterns/tree/master/hybrid-devops).

@@ -3,7 +3,7 @@ title: Access the Kubernetes Dashboard in Azure Stack Hub
 description: Learn how to access the Kubernetes Dashboard in Azure Stack Hub  
 author: mattbriggs  
 ms.topic: article 
-ms.date: 1/22/2020
+ms.date: 5/27/2020
 ms.author: mabrigg 
 ms.reviewer: waltero 
 ms.lastreviewed: 06/18/2019
@@ -28,7 +28,7 @@ Kubernetes includes a web dashboard that you can use for basic management operat
 
 * SSH client
 
-    You'll need an SSH client to security connect to your master node in the cluster. If you're using Windows, you can use [Putty](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm). You will need the private key used when you deployed your Kubernetes cluster.
+    You'll need an SSH client to security connect to your master node in the cluster. If you're using Windows, you can use [Putty](/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm). You will need the private key used when you deployed your Kubernetes cluster.
 
 * FTP (PSCP)
 
@@ -46,12 +46,12 @@ You can retrieve the URL for the dashboard from the master node in your cluster.
 
 1. Get the public IP address and username for your cluster master from the Azure Stack Hub dashboard. To get this information:
 
-    - Sign in to the [Azure Stack Hub portal](https://portal.local.azurestack.external/)
+    - Sign in to the Azure Stack Hub portal `https://portal.local.azurestack.external/`.
     - Select **All services** > **All resources**. Find the master in your cluster resource group. The master is named `k8s-master-<sequence-of-numbers>`. 
 
 2. Open the master node in the portal. Copy the **Public IP** address. Click **Connect** to get your user name in the  **Login using VM local account** box. This is the same user name you set when creating your cluster. Use the public IP address rather than the private IP address listed in the connect blade.
 
-3.  Open an SSH client to connect to the master. If you are working on Windows, you can use [Putty](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm) to create the connection. You will use the public IP address for the master node, the username, and add the private key you used when creating the cluster.
+3.  Open an SSH client to connect to the master. If you are working on Windows, you can use [Putty](/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm) to create the connection. You will use the public IP address for the master node, the username, and add the private key you used when creating the cluster.
 
 4.  When the terminal connects, type `kubectl` to open the Kubernetes command-line client.
 
@@ -116,7 +116,7 @@ You can retrieve the URL for the dashboard from the master node in your cluster.
     kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard 
     ``` 
 
-    The script gives `kubernetes-dashboard` Cloud administrator privileges. For more information, see [For RBAC-enabled clusters](https://docs.microsoft.com/azure/aks/kubernetes-dashboard).
+    The script gives `kubernetes-dashboard` Cloud administrator privileges. For more information, see [For RBAC-enabled clusters](/azure/aks/kubernetes-dashboard).
 
 You can use the dashboard. For more information on the Kubernetes dashboard, see [Kubernetes Web UI Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) 
 
@@ -126,7 +126,7 @@ You can use the dashboard. For more information on the Kubernetes dashboard, see
 
 ### Custom Virtual Networks
 
-If you face connectivity issues accessing the Kubernetes dashboard after you deploy Kubernetes to a [custom virtual network](https://docs.microsoft.com/azure-stack/user/kubernetes-aks-engine-custom-vnet), ensure that target subnets are linked to the route table and network security group resources that were created by the AKS engine.
+If you face connectivity issues accessing the Kubernetes dashboard after you deploy Kubernetes to a [custom virtual network](./kubernetes-aks-engine-custom-vnet.md), ensure that target subnets are linked to the route table and network security group resources that were created by the AKS engine.
 
 Make sure that the network security group rules allow communication between the master nodes and the Kubernetes dashboard pod IP. This can be validated by using the ping command from a master node.
 
@@ -136,4 +136,4 @@ Make sure that the network security group rules allow communication between the 
 
 [Add a Kubernetes cluster to the Marketplace (for the Azure Stack Hub operator)](../operator/azure-stack-solution-template-kubernetes-cluster-add.md)  
 
-[Kubernetes on Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)  
+[Kubernetes on Azure](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)  

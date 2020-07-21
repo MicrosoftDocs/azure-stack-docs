@@ -24,7 +24,7 @@ This article describes how to create a VPN connection to your Azure Stack Hub. A
 -  Access to an Azure Stack Hub integrated systems with available capacity to deploy the required compute, network, and resource requirements needed for this solution. 
 
     > [!Note]  
-    > These instructions will **not** work with an Azure Stack Development Kit (ASDK) because of the network limitions in the ASDK. For more information, see [ASDK requirements and considerations](https://docs.microsoft.com/azure-stack/asdk/asdk-deploy-considerations).
+    > These instructions will **not** work with an Azure Stack Development Kit (ASDK) because of the network limitions in the ASDK. For more information, see [ASDK requirements and considerations](../asdk/asdk-deploy-considerations.md).
 
 -  Access to a VPN device in the on-premises network that hosts the Azure Stack Hub integrated system. The device needs to create an IPSec tunnel, which meets the parameters described in the [Deployment parameters](#deployment-parameters).
 
@@ -35,7 +35,7 @@ This article describes how to create a VPN connection to your Azure Stack Hub. A
 
 -  To activate the FortiGate NVA, you will need at least one available FortiGate license file. Information on how to acquire these licenses, see the Fortinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
 
-    This procedure uses the [Single FortiGate-VM deployment](ttps://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/632940/single-FortiGate-vm-deployment). You can find steps on how to connect the FortiGate NVA to the Azure Stack Hub VNET to in your on-premises network.
+    This procedure uses the [Single FortiGate-VM deployment](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/632940/single-FortiGate-vm-deployment). You can find steps on how to connect the FortiGate NVA to the Azure Stack Hub VNET to in your on-premises network.
 
     For more information on how to deploy the FortiGate solution in an active-passive (HA) set up, see the details in the Fortinet Document Library article [HA for FortiGate-VM on Azure](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/983245/ha-for-FortiGate-vm-on-azure).
 
@@ -242,7 +242,7 @@ You can route between the VNET network and the on-premises network via the on-pr
 
 To validate the connection:
 
-1. Create a VM in the Azure Stack Hub VNETs and a system on the on-premises network. You can follow the instructions for creating a VM at [Quickstart: Create a Windows server VM with the Azure Stack Hub portal](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-windows-portal).
+1. Create a VM in the Azure Stack Hub VNETs and a system on the on-premises network. You can follow the instructions for creating a VM at [Quickstart: Create a Windows server VM with the Azure Stack Hub portal](./azure-stack-quick-windows-portal.md).
 
 2. When creating the Azure Stack Hub VM and preparing the on-premises system, check:
 

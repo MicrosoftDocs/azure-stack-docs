@@ -4,7 +4,7 @@ description: Learn how to deploy a secured Service Fabric cluster in Azure Stack
 author: mattbriggs
 
 ms.topic: tutorial
-ms.date: 1/22/2020
+ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: shnatara
 ms.lastreviewed: 09/25/2019
@@ -19,9 +19,9 @@ ms.lastreviewed: 09/25/2019
 
 Use the **Service Fabric Cluster** item from the Azure Marketplace to deploy a secured Service Fabric cluster in Azure Stack Hub. 
 
-For more information about working with Service Fabric, see [Overview of Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) and [Service Fabric cluster security scenarios](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) in the Azure documentation.
+For more information about working with Service Fabric, see [Overview of Azure Service Fabric](/azure/service-fabric/service-fabric-overview) and [Service Fabric cluster security scenarios](/azure/service-fabric/service-fabric-cluster-security) in the Azure documentation.
 
-The Service Fabric cluster in Azure Stack Hub doesn't use the resource provider Microsoft.ServiceFabric. Instead, in Azure Stack Hub, the Service Fabric cluster is a virtual machine scale set with preinstalled software using [Desired State Configuration (DSC)](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview).
+The Service Fabric cluster in Azure Stack Hub doesn't use the resource provider Microsoft.ServiceFabric. Instead, in Azure Stack Hub, the Service Fabric cluster is a virtual machine scale set with preinstalled software using [Desired State Configuration (DSC)](/powershell/scripting/dsc/overview/overview).
 
 ## Prerequisites
 
@@ -30,13 +30,13 @@ The following are required to deploy the Service Fabric cluster:
    This is the X.509 server certificate you add to Key Vault when deploying Service Fabric. 
    - The **CN** on this cert must match the Fully Qualified Domain Name (FQDN) of the Service Fabric cluster you create. 
    - The certificate format must be PFX, as both the public and private keys are required. 
-     See [requirements](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) for creating this server-side cert.
+     See [requirements](/azure/service-fabric/service-fabric-cluster-security) for creating this server-side cert.
 
      > [!NOTE]  
      > You can use a self-signed certificate inplace of the X.509 server certificate for test purposes. Self-signed certificates do not need to match the FQDN of the cluster.
 
 1. **Admin Client certificate**  
-   This is the certificate that the client uses to authenticate to the Service Fabric cluster, which can be self-signed. See [requirements](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) for creating this client cert.
+   This is the certificate that the client uses to authenticate to the Service Fabric cluster, which can be self-signed. See [requirements](/azure/service-fabric/service-fabric-cluster-security) for creating this client cert.
 
 1. **The following items must be available in the Azure Stack Hub Marketplace:**
     - **Windows Server 2016** - The template uses the Windows Server 2016 image to create the cluster.  
@@ -201,7 +201,7 @@ You can access the Service Fabric cluster by using either the Service Fabric Exp
 
 ### Use Service Fabric PowerShell
 
-1. Install the *Microsoft Azure Service Fabric SDK* from [Prepare your development environment on Windows](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started#install-the-sdk-and-tools) in the Azure Service Fabric documentation.  
+1. Install the *Microsoft Azure Service Fabric SDK* from [Prepare your development environment on Windows](/azure/service-fabric/service-fabric-get-started#install-the-sdk-and-tools) in the Azure Service Fabric documentation.  
 
 1. After the installation is complete, configure the system Environment variables to ensure that the Service Fabric cmdlets are accessible from PowerShell.  
     

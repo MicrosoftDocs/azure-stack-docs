@@ -4,7 +4,7 @@ description: Learn how to deploy Kubernetes to use containers with Azure Stack H
 author: mattbriggs
 
 ms.topic: article
-ms.date: 1/22/2020
+ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 06/18/2019
@@ -60,4 +60,4 @@ You may also find the **Helm** package manager useful for installing and deployi
 
 [Deploy Kubernetes to Azure Stack Hub using Active Directory Federated Services (AD FS)](azure-stack-solution-template-kubernetes-adfs.md)
 
-[Kubernetes on Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
+[Kubernetes on Azure](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

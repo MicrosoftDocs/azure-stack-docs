@@ -4,7 +4,7 @@ description: Learn how to connect Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: conceptual
-ms.date: 1/22/2020
+ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2020
@@ -28,7 +28,7 @@ With a Remote Desktop Connection, a single concurrent user can work with the por
 
 2. From the development kit computer, open Server Manager, click **Local Server**, turn off Internet Explorer Enhanced Security, and then close Server Manager.
 
-3. To open the portal, go to (https://portal.local.azurestack.external/) and sign in using user credentials.
+3. To open the portal, go to `https://portal.local.azurestack.external/` and sign in using user credentials.
 
 
 ## Connect to Azure Stack Hub with VPN
@@ -97,7 +97,7 @@ Connect to the Azure Stack Hub instance by using either of the following two met
 
 ### Test the VPN connectivity
 
-To test the portal connection, open a browser and go to the user portal (https://portal.local.azurestack.external/), sign in, and then create resources.  
+To test the portal connection, open a browser and go to the user portal `https://portal.local.azurestack.external/`, sign in, and then create resources.  
 
 ## Next steps
 

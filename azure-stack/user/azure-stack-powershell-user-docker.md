@@ -4,7 +4,7 @@ description: Use Docker to run PowerShell in Azure Stack Hub
 author: mattbriggs
 
 ms.topic: article
-ms.date: 1/22/2020
+ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 07/09/2019
@@ -36,7 +36,7 @@ In this article, you use Docker to create Windows-based containers on which to r
 
 To use PowerShell to access resources in Azure Stack Hub, you need a service principal in your Azure Active Directory (Azure AD) tenant. You delegate permissions with user role-based access control (RBAC).
 
-1. To set up your service principal, follow the instructions in [Give applications access to Azure Stack Hub resources by creating service principals](azure-stack-create-service-principals.md).
+1. To set up your service principal, follow the instructions in [Give applications access to Azure Stack Hub resources by creating service principals](../operator/azure-stack-create-service-principals.md?view=azs-2002).
 
 2. Note the application ID, the secret, and your tenant ID for later use.
 

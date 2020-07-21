@@ -133,7 +133,7 @@ If the Deployment virtual machine is no longer available or is inaccessible, you
 
 The simplest and most secure way to integrate Azure Stack Hub with your DNS infrastructure is to do conditional forwarding of the zone from the server that hosts the parent zone. This approach is recommended if you have direct control over the DNS servers that host the parent zone for your Azure Stack Hub external DNS namespace.
 
-If you're not familiar with how to do conditional forwarding with DNS, see the following TechNet article: [Assign a Conditional Forwarder for a Domain Name](https://technet.microsoft.com/library/cc794735), or the documentation specific to your DNS solution.
+If you're not familiar with how to do conditional forwarding with DNS, see the following TechNet article: [Assign a Conditional Forwarder for a Domain Name](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794735(v=ws.10)), or the documentation specific to your DNS solution.
 
 In scenarios where you specified your external Azure Stack Hub DNS Zone to look like a child domain of your corporate domain name, conditional forwarding can't be used. DNS delegation must be configured.
 

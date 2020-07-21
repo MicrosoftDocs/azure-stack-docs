@@ -4,7 +4,7 @@ description: Learn how to create a VPN Tunnel using GRE in Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 1/22/2020
+ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 09/19/2019
@@ -17,7 +17,7 @@ ms.lastreviewed: 09/19/2019
 
 # How to create a VPN tunnel using GRE in Azure Stack Hub
 
-You can use the Azure Stack Hub Resource Manager template in this solution to connect two Azure Stack Hub VNets within the same Azure Stack Hub environment. You [can't connect Azure Stack Hub VNets](https://docs.microsoft.com/azure-stack/user/azure-stack-network-differences) using the built-in Virtual Network Gateway. For now, you must use network virtual appliances (NVA)s to create a VPN tunnel between two Azure Stack Hub VNets. The solution template deploys two Windows Server 2016 VMs with RRAS installed. The solution configures the two RRAS servers to use a S2SVPN IKEv2 tunnel between the two VNETs. The appropriate NSG and UDR rules are created to allow routing between the subnets on each VNET designated as **internal** 
+You can use the Azure Stack Hub Resource Manager template in this solution to connect two Azure Stack Hub VNets within the same Azure Stack Hub environment. You [can't connect Azure Stack Hub VNets](./azure-stack-network-differences.md) using the built-in Virtual Network Gateway. For now, you must use network virtual appliances (NVA)s to create a VPN tunnel between two Azure Stack Hub VNets. The solution template deploys two Windows Server 2016 VMs with RRAS installed. The solution configures the two RRAS servers to use a S2SVPN IKEv2 tunnel between the two VNETs. The appropriate NSG and UDR rules are created to allow routing between the subnets on each VNET designated as **internal** 
 
 This deployment pattern is the foundation that will allow you to create VPN tunnels not only within your Azure Stack Hub instance, but also between Azure Stack Hub instances and to other resources, such as your on-premises networks with the use of the Windows RRAS S2S VPN Tunnels.
 

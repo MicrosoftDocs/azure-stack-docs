@@ -4,7 +4,7 @@ description: Learn how to connect to Azure Stack Hub with PowerShell.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 1/22/2020
+ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 09/19/2019
@@ -77,4 +77,4 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 - [Develop templates for Azure Stack Hub](../user/azure-stack-develop-templates.md).
 - [Deploy templates with PowerShell](../user/azure-stack-deploy-template-powershell.md).
-  - [Azure Stack Hub Module Reference](https://docs.microsoft.com/powershell/azure/azure-stack/overview).
+  - [Azure Stack Hub Module Reference](/powershell/azure/azure-stack/overview).
