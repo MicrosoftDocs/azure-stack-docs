@@ -157,11 +157,7 @@ To prepare for deployment, gather the following details about your environment:
 
 ## Install Windows Admin Center
 
-Windows Admin Center is a locally deployed, browser-based app for managing Azure Stack HCI. The simplest way to install Windows Admin Center is on a local Windows 10 PC, although you can also install it on a server if you want to enable multiple admins to connect to it via a web browser. When you install Windows Admin Center on Windows 10, it uses port 6516 by default, but you have the option to specify a different port.
-
-1. **Download [Windows Admin Center](https://www.microsoft.com/evalcenter/evaluate-windows-admin-center)** from the Microsoft Evaluation Center. Even though it says "Start your evaluation", this is the generally available version for production use.
-1. Run the WindowsAdminCenter.msi file to install.
-1. When you start Windows Admin Center for the first time, you'll see an icon in the notification area of your desktop. Right-click this icon and choose Open to open the tool in your default browser, or choose Exit to quit the background process.
+Windows Admin Center is a locally deployed, browser-based app for managing Azure Stack HCI. The simplest way to [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) is on a local management PC, although you can also install it on a server.
 
 ## Next steps
 

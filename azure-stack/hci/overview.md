@@ -38,7 +38,7 @@ With two-server cluster solutions starting at less than $20,000 per location, Az
 
 ### Virtual desktops
 
-Many organizations want to host virtual desktops on-premises for low latency and data sovereignty. Azure Stack HCI can provide like-local performance with cutting-edge GPU virtualization technology.
+Many organizations want to host virtual desktops on-premises for low latency and data sovereignty. Azure Stack HCI can provide like-local performance.
 
 ### High-performance virtualized workloads
 

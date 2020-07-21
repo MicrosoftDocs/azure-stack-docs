@@ -54,23 +54,26 @@ Each language pack is installed in the directory *%SystemRoot%\System32\\%Langua
 To learn more, see [Available languages for Windows](https://docs.microsoft.com/windows-hardware/manufacture/desktop/available-language-packs-for-windows).
 
 To manually obtain and add language packs to the operating system:
-1. After installing the operating system, download and install additional language packs by going to **Settings**, select **Time & language**, select **Region and language**, and then under **Options**, select **Add a language**.
+
 1. Add a language pack to Server Core using the **DISM / Add-WindowsPackage** tool. The `Add-WindowsPackage` PowerShell command is the equivalent of the DISM executable.
 
     To learn more, see [Add languages to Windows images](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows).
 
-To change the display language in the operating system:
-1. Go to **Control Panel** and select **Language**.
-1. Under **Add a language**, the list of available languages displays and the keyboard layout for each one.
-1. Next to the display language that you want to use, select **Options** to enable it if needed.
+1. We recommend adding Language Features on Demand (FODs) to enable additional functionality to the language you added, as in the following example:
 
-You can also use the PowerShell **Set-WinUILanguageOverride** cmdlet to override the Windows UI language in the operating system of the current user account. In the following example, `de-DE` specifies German to override the current language setting in the operating system:
+    ```DOS
+    dism /online /add-capability /capabilityname:Language.Basic~~~de-de~0.0.1.0
+    ```
 
-```PowerShell
-Set-WinUILanguageOverride de-DE
-```
+    To learn more, see [Language and region Features on Demand (FOD)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-language-fod).
 
-To learn more, see [Set-WinUILanguageOverride](https://docs.microsoft.com/powershell/module/international/set-winuilanguageoverride?view=win10-ps).
+1. You can use the PowerShell **Set-WinUILanguageOverride** cmdlet to change the Windows UI language in the operating system of the current user account. In the following example, `de-DE` specifies German as the current language setting in the operating system:
+
+    ```PowerShell
+    Set-WinUILanguageOverride de-DE
+    ```
+
+    To learn more, see [Set-WinUILanguageOverride](https://docs.microsoft.com/powershell/module/international/set-winuilanguageoverride?view=win10-ps).
 
 ## Next steps
 For more information, see also:
