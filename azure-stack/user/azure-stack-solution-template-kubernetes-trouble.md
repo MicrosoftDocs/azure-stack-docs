@@ -165,4 +165,4 @@ Follow these steps to collect and download the cluster logs:
 
 [Add a Kubernetes cluster to the Marketplace (for the Azure Stack Hub operator)](../operator/azure-stack-solution-template-kubernetes-cluster-add.md)
 
-[Kubernetes on Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
+[Kubernetes on Azure](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

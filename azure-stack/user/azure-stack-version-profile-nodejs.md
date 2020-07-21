@@ -73,7 +73,7 @@ Use the specific API versions defined inside the package for the specific API-ve
 
 4. Install the resource provider client library using npm. From the command line, run: `npm install <package-name>`. For example, you can run `npm install @azure/arm-authorization-profile-2019-03-01-hybrid` to install the authorization resource provider library.
 
-5.  Create a subscription and make a note of the Subscription ID when you use the SDK. For instructions, see [Create subscriptions to offers in Azure Stack Hub](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm).
+5.  Create a subscription and make a note of the Subscription ID when you use the SDK. For instructions, see [Create subscriptions to offers in Azure Stack Hub](/azure/azure-stack/azure-stack-subscribe-plan-provision-vm).
 
 6.  Create a service principal and save the client ID and the client secret. The client ID is also known as the application ID when creating a service principal. For instructions, see [Provide applications access to Azure Stack Hub](../operator/azure-stack-create-service-principals.md).
 
@@ -85,11 +85,11 @@ To use the Node.js Azure SDK with Azure Stack Hub, you must supply the following
 
 | Value | Environment variables | Description |
 | --- | --- | --- |
-| Tenant ID | TENANT\_ID | The value of your Azure Stack Hub [tenant ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-overview). |
+| Tenant ID | TENANT\_ID | The value of your Azure Stack Hub [tenant ID](/azure/azure-stack/azure-stack-identity-overview). |
 | Client ID | CLIENT\_ID | The service principal application ID saved when service principal was created on the previous section of this document.  |
-| Subscription ID | AZURE\_SUBSCRIPTION\_ID   The [subscription ID](/azure-stack/operator/service-plan-offer-subscription-overview#subscriptions) is how you access offers in Azure Stack Hub.  |
+| Subscription ID | AZURE\_SUBSCRIPTION\_ID   The [subscription ID](../operator/service-plan-offer-subscription-overview.md#subscriptions) is how you access offers in Azure Stack Hub.  |
 | Client Secret | APPLICATION\_SECRET | The service principal application Secret saved when service principal was created. |
-| Resource Manager Endpoint | ARM\_ENDPOINT | See [the Azure Stack Hub Resource Manager endpoint](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles-ruby#the-azure-stack-hub-resource-manager-endpoint). |
+| Resource Manager Endpoint | ARM\_ENDPOINT | See [the Azure Stack Hub Resource Manager endpoint](/azure/azure-stack/user/azure-stack-version-profiles-ruby#the-azure-stack-hub-resource-manager-endpoint). |
 
 #### Set your environmental variables for Node.js
 
@@ -149,7 +149,7 @@ Sample JSON file:
 
     Profile consists of latest versions of all services. Use the latest versions of all the services in Azure.
 
-For more information about Azure Stack Hub and API profiles, see a [Summary of API profiles](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles#summary-of-api-profiles).
+For more information about Azure Stack Hub and API profiles, see a [Summary of API profiles](/azure/azure-stack/user/azure-stack-version-profiles#summary-of-api-profiles).
 
 ### Azure Node.js SDK API Profile usage
 
@@ -223,7 +223,7 @@ You can use the following samples as a reference for creating solutions with Nod
     git clone https://github.com/sijuman/storage-node-resource-provider-getting-started.git
     ```
 
-2.  Create an Azure service principal and assign a role to access the subscription. For instructions, see [Use Azure PowerShell to create a service principal with a certificate](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals).
+2.  Create an Azure service principal and assign a role to access the subscription. For instructions, see [Use Azure PowerShell to create a service principal with a certificate](/azure/azure-stack/azure-stack-create-service-principals).
 
 3.  Retrieve the following required values:
     - Tenant ID
