@@ -24,7 +24,7 @@ In this article, you can use Docker to create a container on which to run the ve
 
 1. Install [Docker](https://docs.docker.com/install/).
 
-1. In a command-line program, such as Powershell or Bash, enter:
+1. In a command-line program, such as PowerShell or Bash, enter:
 
     ```bash
     docker --version
@@ -32,11 +32,11 @@ In this article, you can use Docker to create a container on which to run the ve
 
 ### Set up a service principal for using PowerShell
 
-To use PowerShell to access resources in Azure Stack Hub, you need a service principal in your Azure Active Directory (Azure AD) tenant. You delegate permissions with user role-based access control (RBAC).
+To use PowerShell to access resources in Azure Stack Hub, you need a service principal in your Azure Active Directory (Azure AD) tenant. You delegate permissions with user role-based access control (RBAC). You may need to request the service principal from your cloud operator.
 
 1. To set up your service principal, follow the instructions in [Give applications access to Azure Stack Hub resources by creating service principals](azure-stack-create-service-principals.md).
 
-2. Note the application ID, the secret, and your tenant ID for later use.
+2. Note the application ID, the secret, your tenant ID, and object ID for later use.
 
 
 ## Run PowerShell in Docker
@@ -125,60 +125,45 @@ In these instructions, you will run a Linux-based container image that contains 
     | Debian | `docker run -it mcr.microsoft.com/azurestack/powershell:debian-9` |
     | Centos | `docker run -it mcr.microsoft.com/azurestack/powershell:centos-7` |
 
-2. Check that that $HOME/.Azure is present. In the container, type:
+2. The shell is ready for your cmdlets. Test your shell connectivity by signing in and then running `Test-AzureStack.ps1`.
 
-    ```Powershell  
-    $HOME/.Azure
+    First, create your service principal credentials. You will need the **secret** and **application ID**. You will also need the **object ID** when running the `Test-AzureStack.ps1` to check your container. You may need to request a service principal from your cloud operator.
+
+    Type the following cmdlets to set up our credentials:
+
+    ```powershell  
+    $passwd = ConvertTo-SecureString <Secret> -AsPlainText -Force
+    $pscredential = New-Object System.Management.Automation.PSCredential('<ApplicationID>', $passwd)
     ```
 
-3. Grant access this location for the docker process. Type the following command:
-
-    ```PowerShell  
-    docker run -it -v ~/.Azure/AzureRmContext.json:/root/.Azure/AzureRmContext.json -v ~/.Azure/TokenCache.dat:/root/.Azure/TokenCache.dat mcr.microsoft.com/azurestack/powershell pwsh 
-    ```
-
-4. Verify the host authentication:
-
-    ```bash  
-    docker run -it --rm -v ~/.Azure/AzureRmContext.json:/root/.Azure/AzureRmContext.json -v ~/.Azure/TokenCache.dat:/root/.Azure/TokenCache.dat mcr.microsoft.com/azurestack/powershell pwsh -c Get-AzContext
-    ```
-
-5. The shell is ready for your cmdlets. Test your shell connectivity by signing in and then creating a resource group. You will need the following values:
+5. Connect to your environment:
 
     | Value | Description |
     | --- | --- |
     | The name of the environment. | The name of your Azure Stack Hub environment. |
-    | Resource Manager Endpoint | The URL for the Resource Manager. Contact your cloud operator if you don't know it. | 
+    | Resource Manager Endpoint | The URL for the Resource Manager. Contact your cloud operator if you don't know it. It will look something like `https://management.region.domain.com`. | 
     | Directory Tenant ID | The ID your Azure Stack Hub directory. | 
-    | Credential | The password for your Azure Stack Hub account. | 
-    | Subscription ID | The numeric ID of your subscription. |
+    | Credential | An object containing your service principal. In this case `$pscredential`.  |
 
     ```powershell
-    ./Login-Environment.ps1 
-    [-Name <String>]  
-    -ResourceManagerEndpoint <System.Uri>  
-    -DirectoryTenantId <String>  
-    -Credential <PSCredential>  
-    [-SubscriptionId <String>]
+    ./Login-Environment.ps1 `
+    -Name <String> `
+    -ResourceManagerEndpoint <resource manager endpoint> `
+    -DirectoryTenantId <String> `
+    -Credential $pscredential
     ```
 
-   PowerShell returns your account object:
+   PowerShell returns your account object.
+
+7. Test your environment by running the `Test-AzureStack.ps1` script in the container. Add the service principal **object ID**. If you do not add the object ID, the script will run and test tenant (user) modules, but fail on modules that require administrator privileges.
 
     ```powershell  
-    Account    SubscriptionName    TenantId    Environment
-    -------    ----------------    --------    -----------
-    <AccountID>    <SubName>       <TenantID>  AzureCloud
-    ```
-
-7. Test your connectivity by creating a resource group in Azure Stack Hub. Add your Azure Stack Hub instance location. If you are using the ASDK, use 'Local.'
-
-    ```powershell  
-    New-AzResourceGroup -Name "MyResourceGroup" -Location "Local"
+    ./Test-AzureStack.ps1 <Object ID>
     ```
 
 ## Next steps
 
 - Read an overview of [Azure Stack Hub PowerShell in Azure Stack Hub](azure-stack-powershell-overview.md).
 - Read about [API profiles for PowerShell](azure-stack-version-profiles.md) in Azure Stack Hub.
-- Install [Azure Stack Hub Powershell](../operator/azure-stack-powershell-install.md).
+- Install [Azure Stack Hub PowerShell](../operator/azure-stack-powershell-install.md).
 - Read about creating [Azure Resource Manager templates](azure-stack-develop-templates.md) for cloud consistency.
