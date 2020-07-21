@@ -38,6 +38,7 @@ To use PowerShell to access resources in Azure Stack Hub, you need a service pri
 
 2. Note the application ID, the secret, your tenant ID, and object ID for later use.
 
+1. To set up your service principal, follow the instructions in [Give applications access to Azure Stack Hub resources by creating service principals](../operator/azure-stack-create-service-principals.md?view=azs-2002).
 
 ## Run PowerShell in Docker
 

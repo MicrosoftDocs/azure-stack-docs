@@ -21,7 +21,7 @@ You can create an SSH (secure shell) key for your Linux machine on a Windows mac
 ## Open bash on Windows
 
 1. If you do not have the Windows Subsystem for Linux installed on your machine, install "[Ubuntu on Windows](https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab).  
-    For more information about using the Windows Subsystem for Linux, see [Windows Subsystem for Linux Documentation](https://docs.microsoft.com/windows/wsl/about).
+    For more information about using the Windows Subsystem for Linux, see [Windows Subsystem for Linux Documentation](/windows/wsl/about).
 
 2. Type **Ubuntu** in your toolbar and select **Open**.
 
