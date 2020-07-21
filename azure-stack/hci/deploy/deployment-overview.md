@@ -33,7 +33,7 @@ If your Azure Stack HCI deployment will stretch across multiple sites, determine
 
 ### 1. Before you begin
 
-Before you start, [determine whether your hardware meets the base requirements and gather information needed](before-you-start.md) for deploying Azure Stack HCI. Then, [install Windows Admin Center](/windows-server/manage/windows-admin-center/use/get-started) to manage your Azure Stack HCI cluster.
+Before you start, [determine whether your hardware meets the base requirements and gather information needed](before-you-start.md) for deploying Azure Stack HCI. Then, [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) to manage your Azure Stack HCI cluster.
 
 ### 2. Deploy Azure Stack HCI
 
