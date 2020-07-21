@@ -58,8 +58,9 @@ You can view and edit existing quotas using the administrator portal: select **R
 
 You can also delete some quotas using these REST APIs:
 
-- [Compute](/rest/api/azurestack/quotas%20(compute)/delete)
+- [Compute](/rest/api/azurestack/quotas/delete)
 - [Network](/rest/api/azurestack/quotas%20(network)/delete)
+- [Storage](/rest/api/azurestack/storagequotas/delete)
 
 > [!NOTE]
 > You can't delete a quota if there are any current plans that use it. You must first delete the plan that references the quota.
