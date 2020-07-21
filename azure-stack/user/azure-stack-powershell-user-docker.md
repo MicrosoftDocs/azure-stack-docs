@@ -130,33 +130,29 @@ In these instructions, you will run a Linux-based container image that contains 
 
     First, create your service principal credentials. You will need the **secret** and **application ID**. You will also need the **object ID** when running the `Test-AzureStack.ps1` to check your container. You may need to request a service principal from your cloud operator.
 
-    Type the following cmdlets to set up our credentials:
+    Type the following cmdlets to create a service principle object:
 
     ```powershell  
     $passwd = ConvertTo-SecureString <Secret> -AsPlainText -Force
     $pscredential = New-Object System.Management.Automation.PSCredential('<ApplicationID>', $passwd)
     ```
 
-5. Connect to your environment:
+5. Connect to your environment by running the following script with the following values from your Azure Stack Hub instance.
 
     | Value | Description |
     | --- | --- |
     | The name of the environment. | The name of your Azure Stack Hub environment. |
     | Resource Manager Endpoint | The URL for the Resource Manager. Contact your cloud operator if you don't know it. It will look something like `https://management.region.domain.com`. | 
-    | Directory Tenant ID | The ID your Azure Stack Hub directory. | 
+    | Directory Tenant ID | The ID of your Azure Stack Hub tenant directory. | 
     | Credential | An object containing your service principal. In this case `$pscredential`.  |
 
     ```powershell
-    ./Login-Environment.ps1 `
-    -Name <String> `
-    -ResourceManagerEndpoint <resource manager endpoint> `
-    -DirectoryTenantId <String> `
-    -Credential $pscredential
+    ./Login-Environment.ps1 -Name <String> -ResourceManagerEndpoint <resource manager endpoint> -DirectoryTenantId <String> -Credential $pscredential
     ```
 
    PowerShell returns your account object.
 
-7. Test your environment by running the `Test-AzureStack.ps1` script in the container. Add the service principal **object ID**. If you do not add the object ID, the script will run and test tenant (user) modules, but fail on modules that require administrator privileges.
+7. Test your environment by running the `Test-AzureStack.ps1` script in the container. Specify the service principal **object ID**. If you do not indicate the object ID, the script will still run but it will just test tenant (user) modules and fail on modules that require administrator privileges.
 
     ```powershell  
     ./Test-AzureStack.ps1 <Object ID>
