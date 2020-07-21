@@ -4,14 +4,14 @@ description: How to delete volumes in Azure Stack HCI using Windows Admin Center
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.date: 03/17/2020
 ---
 
 # Deleting volumes in Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Windows Server 2019
 
-This topic provides instructions for deleting volumes on an Azure Stack HCI cluster by using Windows Admin Center.
+This topic provides instructions for deleting volumes on a [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) cluster by using Windows Admin Center.
 
 Watch a quick video on how to delete a volume using Windows Admin Center.
 
@@ -53,6 +53,6 @@ You will be asked to confirm that you want to perform the action and erase all t
 
 For step-by-step instructions on other essential storage management tasks, see also:
 
-- [Plan volumes](../concepts/plan-volumes.md)
-- [Create volumes](create-volumes.md)
-- [Extend volumes](extend-volumes.md)
+- [Planning volumes in Storage Spaces Direct](../concepts/plan-volumes.md)
+- [Creating volumes in Storage Spaces Direct](create-volumes.md)
+- [Extending volumes in Storage Spaces Direct](extend-volumes.md)

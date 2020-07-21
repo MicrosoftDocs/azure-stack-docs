@@ -4,90 +4,38 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
-  - name: Known issues
-    href: known-issues.md
 - name: Get started
   items:
-  - name: Use Azure Stack HCI with Windows Admin Center
-    href: get-started.md
-- name: Deploy
-  items:
-  - name: Deployment overview
-    href: deploy/deployment-overview.md
-  - name: Before you begin
-    href: deploy/before-you-start.md
-  - name: Deploy the Azure Stack HCI OS
-    href: deploy/operating-system.md
-  - name: Create the cluster
-    href: deploy/create-cluster.md
-  - name: Create the cluster with PowerShell
-    href: deploy/create-cluster-powershell.md
-  - name: Set up a cluster witness
-    href: deploy/witness.md
-  - name: Register with Azure
-    href: deploy/register-with-azure.md
-  - name: Validate the cluster
-    href: deploy/validate.md
 - name: Manage
   items:
+  - name: Create volumes
+    href: manage/create-volumes.md
+  - name: Extend volumes
+    href: manage/extend-volumes.md
+  - name: Delete volumes
+    href: manage/delete-volumes.md
+  - name: Replace drives
+    href: manage/replace-drives.md
+  - name: Manage clusters
+    href: manage/cluster.md
+  - name: Manage clusters with PowerShell
+    href: manage/cluster-powershell.md
+  - name: Add or remove servers
+    href: manage/add-cluster.md
+  - name: Use Azure Site Recovery
+    href: manage/azure-site-recovery.md
+  - name: Use Azure Network Adapter
+    href: manage/use-azure-network-adapter.md
+  - name: Monitor with Azure Monitor
+    href: manage/azure-monitor.md
   - name: Manage VMs
-    items:
-    - name: Manage VMs
-      href: manage/vm.md
-    - name: Manage VMs with PowerShell
-      href: manage/vm-powershell.md
-    - name: Create VM affinity rules
-      href: manage/vm-affinity.md  
-    - name: Attach GPU to Linux VM
-      href: manage/attach-gpu-to-linux-vm.md
-  - name: Manage storage
-    items:
-    - name: Create volumes
-      href: manage/create-volumes.md
-    - name: Create stretched volumes
-      href: manage/create-stretched-volumes.md
-    - name: Extend volumes
-      href: manage/extend-volumes.md
-    - name: Delete volumes
-      href: manage/delete-volumes.md
-    - name: Replace drives
-      href: manage/replace-drives.md
-  - name: Manage the cluster
-    items:
-    - name: Manage the cluster
-      href: manage/cluster.md
-    - name: Manage clusters with PowerShell
-      href: manage/cluster-powershell.md
-    - name: Update the cluster
-      href: manage/update-cluster.md
-    - name: Add or remove servers
-      href: manage/add-cluster.md
-    - name: Manage Azure registration
-      href: manage/manage-azure-registration.md
-    - name: Change languages
-      href: manage/languages.md
-    - name: Troubleshoot cluster validation reporting
-      href: manage/validate-qos.md
-  - name: Manage Azure services
-    items:
-    - name: Register Windows Admin Center with Azure
-      href: manage/register-windows-admin-center.md
-    - name: Monitor with Azure Monitor
-      href: manage/azure-monitor.md
-    - name: Use Azure Site Recovery
-      href: manage/azure-site-recovery.md
-    - name: Use Azure Backup
-      href: manage/use-azure-backup.md
-    - name: Use Azure Network Adapter
-      href: manage/use-azure-network-adapter.md
+    href: manage/vm.md
+  - name: Manage VMs with PowerShell
+    href: manage/vm-powershell.md
+  - name: Attach GPU to Linux VM
+    href: manage/attach-gpu-to-linux-vm.md
 - name: Concepts
   items:
-  - name: Stretched clusters
-    href: concepts/stretched-clusters.md
-  - name: Billing
-    href: concepts/billing.md
-  - name: Updates and upgrades
-    href: concepts/updates.md
   - name: Choose drives
     href: concepts/choose-drives.md
   - name: Plan volumes
@@ -98,8 +46,6 @@
     href: concepts/fault-tolerance.md
   - name: Cluster and storage pool quorum
     href: concepts/quorum.md
-  - name: Security considerations
-    href: concepts/security.md
 - name: Reference
   items:
   - name: Hyper-V PowerShell commands
@@ -122,10 +68,22 @@
   items:
   - name: Azure Stack family
     href: ../index.yml
+  - name: Azure Stack Hub
+    href: /azure-stack/operator/azure-stack-overview?view=azs-2002
+  - name: Azure Stack Edge
+    href: /azure/databox-online/data-box-edge-overview
   - name: Windows Server
     href: /windows-server/
   - name: Windows Admin Center
     href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
+  - name: Azure Hybrid Services
+    href: /windows-server/manage/windows-admin-center/azure
+  - name: Storage Spaces Direct
+    href: /windows-server/storage/storage-spaces/storage-spaces-direct-overview
+  - name: Failover Clustering
+    href: /windows-server/failover-clustering/failover-clustering-overview
+  - name: Hyper-V
+    href: /windows-server/virtualization/hyper-v/hyper-v-on-windows-server
   - name: Software Defined Networking
     href: /windows-server/networking/sdn
   - name: System Center

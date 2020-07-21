@@ -1,21 +1,21 @@
 ---
-title: Plan volumes in Azure Stack HCI
+title: Planning volumes in Azure Stack HCI
 description: How to plan storage volumes in Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 03/06/2020
 ---
 
-# Plan volumes in Azure Stack HCI
+# Planning volumes in Storage Spaces Direct
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Windows Server 2019
 
-This topic provides guidance for how to plan volumes in Azure Stack HCI to meet the performance and capacity needs of your workloads, including choosing their filesystem, resiliency type, and size.
+This topic provides guidance for how to plan volumes in Storage Spaces Direct to meet the performance and capacity needs of your workloads, including choosing their filesystem, resiliency type, and size.
 
 ## Review: What are volumes
 
-Volumes are where you put the files your workloads need, such as VHD or VHDX files for Hyper-V virtual machines. Volumes combine the drives in the storage pool to introduce the fault tolerance, scalability, and performance benefits of [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview), the software-defined storage technology behind Azure Stack HCI.
+Volumes are where you put the files your workloads need, such as VHD or VHDX files for Hyper-V virtual machines. Volumes combine the drives in the storage pool to introduce the fault tolerance, scalability, and performance benefits of Storage Spaces Direct.
 
    >[!NOTE]
    > Throughout documentation for Storage Spaces Direct, we use term "volume" to refer jointly to the volume and the virtual disk under it, including functionality provided by other built-in Windows features such as Cluster Shared Volumes (CSV) and ReFS. Understanding these implementation-level distinctions is not necessary to plan and deploy Storage Spaces Direct successfully.
@@ -186,5 +186,6 @@ See [Creating volumes in Azure Stack HCI](../manage/create-volumes.md).
 
 For more information, see also:
 
+- [Azure Stack HCI overview](../overview.md)
 - [Choosing drives for Storage Spaces Direct](choose-drives.md)
 - [Fault tolerance and storage efficiency](fault-tolerance.md)

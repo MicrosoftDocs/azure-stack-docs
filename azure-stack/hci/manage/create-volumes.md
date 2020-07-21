@@ -1,17 +1,17 @@
 ---
-title: Create volumes in Azure Stack HCI
+title: Creating volumes in Azure Stack HCI
 description: How to create volumes in Azure Stack HCI using Windows Admin Center and PowerShell.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.date: 02/28/2020
 ---
 
-# Create volumes in Azure Stack HCI
+# Creating volumes in Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Windows Server 2019
 
-This topic describes how to create volumes on an Azure Stack HCI cluster by using Windows Admin Center and Windows PowerShell, how to work with files on the volumes, and how to enable data deduplication and compression on volumes. To learn how to create volumes and set up replication for stretched clusters, see [Create stretched volumes](create-stretched-volumes.md).
+This topic describes how to create volumes on a Storage Spaces Direct cluster by using Windows Admin Center and Windows PowerShell, how to work with files on the volumes, and how to enable Data Deduplication and compression on volumes.
 
 ## Create a three-way mirror volume
 
@@ -142,9 +142,9 @@ You're done! Repeat as needed to create more than one volume.
 
 ## Next steps
 
-For related topics and other storage management tasks, see also:
+To perform other storage management tasks in Storage Spaces Direct, see also:
 
 - [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Plan volumes](../concepts/plan-volumes.md)
-- [Extend volumes](extend-volumes.md)
-- [Delete volumes](delete-volumes.md)
+- [Planning volumes in Storage Spaces Direct](/windows-server/storage/storage-spaces/plan-volumes)
+- [Extending volumes in Storage Spaces Direct](/windows-server/storage/storage-spaces/resize-volumes)
+- [Deleting volumes in Storage Spaces Direct](/windows-server/storage/storage-spaces/delete-volumes)
