@@ -50,6 +50,10 @@ With Storage Spaces Direct, there is additional network traffic to consider:
 
 For stretched clusters, there is also additional Storage Replica traffic flowing between the sites. Storage Bus Layer (SBL) and Cluster Shared Volume (CSV) traffic does not go between sites, only between the server nodes within each site.
 
+### Domain requirements
+
+There are no special domain functional level requirements for Azure Stack HCI - just an operating system version for your domain controller that is still supported. The servers must be members of a domain to conduct a Live Migration; otherwise, there are no Active Directory dependencies for core functionality. Some features, such as BitLocker support or a read-only domain controller, require a Windows Server 2012 or higher domain controller. We strongly recommend turning on the Active Directory Recycle Bin feature.
+
 ### Interconnect requirements between nodes
 
 This section discusses specific networking requirements between server nodes in a site, called interconnects. Either switched or switchless node interconnects can be used and are supported:
