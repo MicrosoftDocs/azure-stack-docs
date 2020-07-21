@@ -38,7 +38,7 @@ With two-server cluster solutions starting at less than $20,000 per location, Az
 
 ### Virtual desktops
 
-Many organizations want to host virtual desktops on-premises for low latency and data sovereignty. Azure Stack HCI can provide like-local performance with cutting-edge GPU virtualization technology.
+Many organizations want to host virtual desktops on-premises for low latency and data sovereignty. Azure Stack HCI can provide like-local performance.
 
 ### High-performance virtualized workloads
 
@@ -65,7 +65,7 @@ You can also subscribe to additional Azure hybrid services:
 - **Azure Network Adapter** to connect resources on-premises with your VMs in Azure via a point-to-site VPN.
 - **Azure File Sync** to sync your file server with the cloud.
 
-For more information, see [Connecting Windows Server to Azure hybrid services](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/index).
+For more information, see [Connecting Windows Server to Azure hybrid services](/windows-server/manage/windows-admin-center/azure/index).
 
 ## Why Azure Stack HCI?
 
@@ -110,17 +110,17 @@ Customers can either purchase validated servers from a hardware partner with the
 
 With Azure Stack HCI, you have full admin rights on the cluster and can manage any of its technologies directly:
 
-- [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-on-windows-server)
-- [Storage Spaces Direct](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Software Defined Networking](https://docs.microsoft.com/windows-server/networking/sdn/)
-- [Failover Clustering](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
+- [Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-on-windows-server)
+- [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
+- [Software Defined Networking](/windows-server/networking/sdn/)
+- [Failover Clustering](/windows-server/failover-clustering/failover-clustering-overview)
 
 To manage these technologies, you can use the following management tools:
 
-- [Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/overview)
+- [Windows Admin Center](/windows-server/manage/windows-admin-center/overview)
 - [System Center](https://www.microsoft.com/cloud-platform/system-center)
-- [PowerShell](https://docs.microsoft.com/powershell/?view=powershell-6)
-- Other management tools, like [Server Manager](https://docs.microsoft.com/windows-server/administration/server-manager/server-manager), and MMC snap-ins
+- [PowerShell](/powershell/?view=powershell-6)
+- Other management tools, like [Server Manager](/windows-server/administration/server-manager/server-manager), and MMC snap-ins
 - Non-Microsoft tools like 5Nine Manager
 
 ## FAQ
@@ -159,14 +159,14 @@ No, but customers can migrate their workloads from Azure Stack HCI to Azure Stac
 
 ### What Azure services can I connect to Azure Stack HCI?
 
-For an updated list of Azure services that you can connect Azure Stack HCI to, see [Connecting Windows Server to Azure hybrid services](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/index).
+For an updated list of Azure services that you can connect Azure Stack HCI to, see [Connecting Windows Server to Azure hybrid services](/windows-server/manage/windows-admin-center/azure/index).
 
 ## The Azure Stack family
 
 Azure Stack HCI is part of the Azure and Azure Stack family, using the same software-defined compute, storage, and networking software as Azure Stack Hub. The following provides a quick summary of the different solutions. For more information, see [Comparing the Azure Stack ecosystem](../operator/compare-azure-azure-stack.md).
 
 - [Azure](https://azure.microsoft.com) - Use public cloud services for on-demand, self-service computing resources to migrate and modernize existing apps and to build new cloud-native apps.
-- [Azure Stack Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview) - Accelerate machine learning workloads and run containerized apps or virtualized workloads on-premises, on a cloud-managed appliance.
+- [Azure Stack Edge](/azure/databox-online/data-box-edge-overview) - Accelerate machine learning workloads and run containerized apps or virtualized workloads on-premises, on a cloud-managed appliance.
 - [Azure Stack HCI](https://azure.microsoft.com/overview/azure-stack/hci) - Run virtualized apps on-premises, replace and consolidate aging server infrastructure, and connect to Azure for cloud services.
 - [Azure Stack Hub](../operator/azure-stack-overview.md) - Run cloud apps on-premises, when disconnected, or to meet regulatory requirements, using consistent Azure services.
 
