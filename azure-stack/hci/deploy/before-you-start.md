@@ -32,7 +32,7 @@ Microsoft recommends purchasing a validated Azure Stack HCI hardware/software so
     - Hardware-assisted virtualization. This is available in processors that include a virtualization option, specifically processors with Intel Virtualization Technology (Intel VT) or AMD Virtualization (AMD-V) technology.
     - Hardware-enforced Data Execution Prevention (DEP) must be available and enabled. For Intel systems, this is the XD bit (execute disable bit). For AMD systems, this is the NX bit (no execute bit).
 - You can use any boot device supported by Windows Server, which [now includes SATADOM](https://cloudblogs.microsoft.com/windowsserver/2017/08/30/announcing-support-for-satadom-boot-drives-in-windows-server-2016/). RAID 1 mirror is **not** required, but is supported for boot. A 200 GB minimum size is recommended.
-- For additional feature-specific requirements for Hyper-V, see [System requirements for Hyper-V on Windows Server](https://docs.microsoft.com/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
+- For additional feature-specific requirements for Hyper-V, see [System requirements for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
 
 ### Networking requirements
 
@@ -49,6 +49,10 @@ With Storage Spaces Direct, there is additional network traffic to consider:
 - Health – monitoring and managing objects (nodes, drives, network cards, Cluster Service)
 
 For stretched clusters, there is also additional Storage Replica traffic flowing between the sites. Storage Bus Layer (SBL) and Cluster Shared Volume (CSV) traffic does not go between sites, only between the server nodes within each site.
+
+### Domain requirements
+
+There are no special domain functional level requirements for Azure Stack HCI - just an operating system version for your domain controller that's still supported. We do recommend turning on the Active Directory Recycle Bin feature as a general best practice, if you haven't already.
 
 ### Interconnect requirements between nodes
 
@@ -79,8 +83,8 @@ When connecting between sites for stretched clusters, interconnect requirements 
 
 - At least one 1 Gb RDMA or Ethernet/TCP connection between sites for synchronous replication. A 25 Gb RDMA connection is preferred.
 - A network between sites with enough bandwidth to contain your I/O write workload and an average of 5ms round trip latency or lower for synchronous replication. Asynchronous replication doesn't have a latency recommendation.
-- If using a single connection between sites, set SMB bandwidth limits for Storage Replica using PowerShell. For more information, see [Set-SmbBandwidthLimit](https://docs.microsoft.com/powershell/module/smbshare/set-smbbandwidthlimit?view=win10-ps).
-- If using multiple connections between sites, separate traffic between the connections. For example, put Storage Replica traffic on a separate network than Hyper-V live migration traffic using PowerShell. For more information, see [Set-SRNetworkConstraint](https://docs.microsoft.com/powershell/module/storagereplica/set-srnetworkconstraint?view=win10-ps).
+- If using a single connection between sites, set SMB bandwidth limits for Storage Replica using PowerShell. For more information, see [Set-SmbBandwidthLimit](/powershell/module/smbshare/set-smbbandwidthlimit?view=win10-ps).
+- If using multiple connections between sites, separate traffic between the connections. For example, put Storage Replica traffic on a separate network than Hyper-V live migration traffic using PowerShell. For more information, see [Set-SRNetworkConstraint](/powershell/module/storagereplica/set-srnetworkconstraint?view=win10-ps).
 
 ### Network port requirements
 
@@ -124,9 +128,9 @@ There may be additional ports required not listed above. These are the ports for
 - Each server in the cluster should have the same model, size, and number of drives, with the same sector sizes on all disks. Drives can be internal to the server, or in an external enclosure that is connected to just one server.
 - Each server in the cluster should have dedicated volumes for logs, with log storage at least as fast as data storage. Stretched clusters require at least two volumes: one for replicated data, and one for log data.
 - SCSI Enclosure Services (SES) is required for slot mapping and identification. Each external enclosure must present a unique identifier (Unique ID). **NOT SUPPORTED:** RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) storage, shared SAS enclosures connected to multiple servers, or any form of multi-path IO (MPIO) where drives are accessible by multiple paths. Host-bus adapter (HBA) cards must implement simple pass-through mode.
-- For more help, see the [Choosing drives](../concepts/choose-drives.md) topic or [Storage Spaces Direct hardware requirements](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements).
-- For available options for volumes and resiliency, see the [Planning volumes in Storage Spaces Direct](https://docs.microsoft.com/windows-server/storage/storage-spaces/plan-volumes#choosing-the-resiliency-type) topic.
-- If you're also deploying virtual machines and virtualized storage, see [Using Storage Spaces Direct in guest virtual machine clusters](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-in-vm).
+- For more help, see the [Choosing drives](../concepts/choose-drives.md) topic or [Storage Spaces Direct hardware requirements](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements).
+- For available options for volumes and resiliency, see the [Planning volumes in Storage Spaces Direct](/windows-server/storage/storage-spaces/plan-volumes#choosing-the-resiliency-type) topic.
+- If you're also deploying virtual machines and virtualized storage, see [Using Storage Spaces Direct in guest virtual machine clusters](/windows-server/storage/storage-spaces/storage-spaces-direct-in-vm).
 
 ## Review maximum supported hardware specifications
 
@@ -157,11 +161,7 @@ To prepare for deployment, gather the following details about your environment:
 
 ## Install Windows Admin Center
 
-Windows Admin Center is a locally deployed, browser-based app for managing Azure Stack HCI. The simplest way to install Windows Admin Center is on a local Windows 10 PC, although you can also install it on a server if you want to enable multiple admins to connect to it via a web browser. When you install Windows Admin Center on Windows 10, it uses port 6516 by default, but you have the option to specify a different port.
-
-1. **Download [Windows Admin Center](https://www.microsoft.com/evalcenter/evaluate-windows-admin-center)** from the Microsoft Evaluation Center. Even though it says "Start your evaluation", this is the generally available version for production use.
-1. Run the WindowsAdminCenter.msi file to install.
-1. When you start Windows Admin Center for the first time, you'll see an icon in the notification area of your desktop. Right-click this icon and choose Open to open the tool in your default browser, or choose Exit to quit the background process.
+Windows Admin Center is a locally deployed, browser-based app for managing Azure Stack HCI. The simplest way to [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) is on a local management PC, although you can also install it on a server.
 
 ## Next steps
 

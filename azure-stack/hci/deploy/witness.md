@@ -14,7 +14,7 @@ ms.reviewer: JasonGerend
 
 Setting up a witness resource is mandatory for all clusters, and should be set up right after you create a cluster. Two-node clusters need a witness so that either server going offline does not cause the other node to become unavailable as well. Three and higher-node clusters need a witness to be able to withstand two servers failing or being offline.  
 
-You can either use a file share as a witness or use an Azure cloud witness. An Azure cloud witness is recommended, provided all server nodes in the cluster have a reliable internet connection. For more information, see [Deploy a Cloud Witness for a Failover Cluster](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness).
+You can either use a file share as a witness or use an Azure cloud witness. An Azure cloud witness is recommended, provided all server nodes in the cluster have a reliable internet connection. For more information, see [Deploy a Cloud Witness for a Failover Cluster](/windows-server/failover-clustering/deploy-cloud-witness).
 
 For file-share witnesses, there are requirements for the file server. See [Before you deploy Azure Stack HCI](before-you-start.md) for more information.
 

@@ -80,7 +80,7 @@ There are five general settings that can be applied to your cluster. Here is whe
    - For **Balance virtual machines**, select the appropriate action
    - For **Aggressiveness**, select the appropriate behavior
 
-     For information on how this works, see [Virtual Machine Load Balancing overview](https://docs.microsoft.com/windows-server/failover-clustering/vm-load-balancing-overview).
+     For information on how this works, see [Virtual Machine Load Balancing overview](/windows-server/failover-clustering/vm-load-balancing-overview).
 
         :::image type="content" source="media/manage-cluster/cluster-settings-vm-load.png" alt-text="cluster Virtual machine load balancing screen" lightbox="media/manage-cluster/cluster-settings-vm-load.png":::
 
