@@ -4,7 +4,7 @@ description: An overview of Azure Stack HCI
 ms.topic: overview
 author: khdownie
 ms.author: v-kedow
-ms.date: 07/21/2020
+ms.date: 07/22/2020
 ---
 
 # Azure Stack HCI solution overview
@@ -65,7 +65,7 @@ You can also subscribe to additional Azure hybrid services:
 - **Azure Network Adapter** to connect resources on-premises with your VMs in Azure via a point-to-site VPN.
 - **Azure File Sync** to sync your file server with the cloud.
 
-For more information, see [Connecting Windows Server to Azure hybrid services](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/index).
+For more information, see [Connecting Windows Server to Azure hybrid services](/windows-server/manage/windows-admin-center/azure/index).
 
 ## Why Azure Stack HCI?
 
@@ -83,7 +83,7 @@ Azure Stack HCI is a world-class, integrated virtualization stack built on prove
 
 To get started, here's what you need:
 
-- A cluster of two or more servers from the [Azure Stack HCI Catalog](/cloud-platform/azure-stack-hci-catalog), purchased from your preferred Microsoft hardware partner
+- A cluster of two or more servers from the [Azure Stack HCI Catalog](https://azure.microsoft.com/products/azure-stack/hci/catalog/), purchased from your preferred Microsoft hardware partner
 - An [Azure subscription](https://azure.microsoft.com/)
 - An internet connection for each server in the cluster that can connect via HTTPS outbound traffic to the following endpoint at least every 30 days: *-azurestackhci-usage.azurewebsites.net
 - For clusters stretched across sites, you need at least one 1 Gb connection between sites (a 25 Gb RDMA connection is preferred), with an average latency of 5 ms round trip if you want to do synchronous replication where writes occur simultaneously in both sites
@@ -94,11 +94,11 @@ For more information, see [Before you begin](deploy/before-you-start.md).
 
 You can purchase validated Azure Stack HCI solutions from your preferred Microsoft partner to get up and running without lengthy design and build time. Microsoft partners also offer a single point of contact for implementation and support services. You can either purchase validated nodes or an integrated system, which includes the Azure Stack HCI operating system pre-installed as well as partner extensions for driver and firmware updates.
 
-Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) page or browse the [Azure Stack HCI Catalog](/cloud-platform/azure-stack-hci-catalog) to view 70+ Azure Stack HCI solutions currently available from Microsoft partners such as ASUS, Axellio, Blue Chip, DataON, Dell EMC, Fujitsu, HPE, Hitachi, Huawei, Lenovo, NEC, primeLine Solutions, QCT, SecureGUARD, and Supermicro.
+Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) page or browse the [Azure Stack HCI Catalog](https://azure.microsoft.com/products/azure-stack/hci/catalog/) to view 70+ Azure Stack HCI solutions currently available from Microsoft partners such as ASUS, Axellio, Blue Chip, DataON, Dell EMC, Fujitsu, HPE, Hitachi, Huawei, Lenovo, NEC, primeLine Solutions, QCT, SecureGUARD, and Supermicro.
 
 ## Software partners
 
-There are a variety of Microsoft partners working on software that extends the capabilities of Azure Stack HCI while allowing IT admins to use familiar tools. For example, Altaro, a worldwide provider of backup solutions and Microsoft Gold Partner, has committed to supporting Azure Stack HCI in its Altaro VM Backup solution. This will allow customers and managed service providers to back up virtual machines running on Azure Stack HCI for free until end of June 2021.
+There are a variety of Microsoft partners working on software that extends the capabilities of Azure Stack HCI while allowing IT admins to use familiar tools. For example, Altaro, a worldwide provider of backup solutions and Microsoft Gold Partner, has committed to supporting Azure Stack HCI in its Altaro VM Backup solution. This will allow customers and managed service providers to back up virtual machines running on Azure Stack HCI for free until end of June 2021. [Learn more about this announcement](http://www.altaro.com/news/single/News-Altaro-applies-its-expertise-in-Hyper-V-backup-to-support-Microsoft.php).
 
 ## Licensing, billing, and pricing
 
@@ -110,17 +110,17 @@ Customers can either purchase validated servers from a hardware partner with the
 
 With Azure Stack HCI, you have full admin rights on the cluster and can manage any of its technologies directly:
 
-- [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-on-windows-server)
-- [Storage Spaces Direct](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Software Defined Networking](https://docs.microsoft.com/windows-server/networking/sdn/)
-- [Failover Clustering](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
+- [Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-on-windows-server)
+- [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
+- [Software Defined Networking](/windows-server/networking/sdn/)
+- [Failover Clustering](/windows-server/failover-clustering/failover-clustering-overview)
 
 To manage these technologies, you can use the following management tools:
 
-- [Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/overview)
+- [Windows Admin Center](/windows-server/manage/windows-admin-center/overview)
 - [System Center](https://www.microsoft.com/cloud-platform/system-center)
-- [PowerShell](https://docs.microsoft.com/powershell/?view=powershell-6)
-- Other management tools, like [Server Manager](https://docs.microsoft.com/windows-server/administration/server-manager/server-manager), and MMC snap-ins
+- [PowerShell](/powershell/?view=powershell-6)
+- Other management tools, like [Server Manager](/windows-server/administration/server-manager/server-manager), and MMC snap-ins
 - Non-Microsoft tools like 5Nine Manager
 
 ## FAQ
@@ -135,7 +135,7 @@ Yes, the cluster must connect to Azure at least once every 30 days in order for 
 
 ### Can I upgrade from Windows Server 2019 to Azure Stack HCI?
 
-You can upgrade from Windows Server 2019 to Azure Stack HCI, but not seamlessly; there is no in-place upgrade at this time. Upgrading requires a maintenance window and a clean install on each server, rebuilding each server individually as part of a rolling cluster upgrade.
+Currently, you can only upgrade from Windows Server 2019 to Azure Stack HCI by performing a [cluster rolling upgrade](/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade); there is no in-place upgrade at this time.
 
 ### What do Azure Stack Hub and Azure Stack HCI solutions have in common?
 
@@ -159,14 +159,14 @@ No, but customers can migrate their workloads from Azure Stack HCI to Azure Stac
 
 ### What Azure services can I connect to Azure Stack HCI?
 
-For an updated list of Azure services that you can connect Azure Stack HCI to, see [Connecting Windows Server to Azure hybrid services](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/index).
+For an updated list of Azure services that you can connect Azure Stack HCI to, see [Connecting Windows Server to Azure hybrid services](/windows-server/manage/windows-admin-center/azure/index).
 
 ## The Azure Stack family
 
 Azure Stack HCI is part of the Azure and Azure Stack family, using the same software-defined compute, storage, and networking software as Azure Stack Hub. The following provides a quick summary of the different solutions. For more information, see [Comparing the Azure Stack ecosystem](../operator/compare-azure-azure-stack.md).
 
 - [Azure](https://azure.microsoft.com) - Use public cloud services for on-demand, self-service computing resources to migrate and modernize existing apps and to build new cloud-native apps.
-- [Azure Stack Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview) - Accelerate machine learning workloads and run containerized apps or virtualized workloads on-premises, on a cloud-managed appliance.
+- [Azure Stack Edge](/azure/databox-online/data-box-edge-overview) - Accelerate machine learning workloads and run containerized apps or virtualized workloads on-premises, on a cloud-managed appliance.
 - [Azure Stack HCI](https://azure.microsoft.com/overview/azure-stack/hci) - Run virtualized apps on-premises, replace and consolidate aging server infrastructure, and connect to Azure for cloud services.
 - [Azure Stack Hub](../operator/azure-stack-overview.md) - Run cloud apps on-premises, when disconnected, or to meet regulatory requirements, using consistent Azure services.
 
@@ -230,7 +230,7 @@ Clusters running Azure Stack HCI, version 20H2 have the following new features a
 - **Stretched clusters for automatic failover**: Multi-site clustering with Storage Replica replication and automatic VM failover provides native disaster recovery and business continuity to clusters that use Storage Spaces Direct.
 - **Affinity and anti-affinity rules**: These can be used similarly to how Azure uses Availability Zones to keep VMs and storage together or apart in clusters with multiple fault domains, such as stretched clusters.
 - **Azure portal integration**: The Azure portal experience for Azure Stack HCI is designed to view all of your Azure Stack HCI clusters across the globe, with new features in development.
-- **GPU acceleration for high-performance workloads**: Virtual desktops, SQL Server, and AI/ML applications can all benefit from boosting performance with GPUs.
+- **GPU acceleration for high-performance workloads**: AI/ML applications can benefit from boosting performance with GPUs.
 - **BitLocker encryption**: You can now use BitLocker to encrypt the contents of data volumes on Azure Stack HCI, helping government and other customers stay compliant with standards such as FIPS 140-2 and HIPAA.
 - **Improved Storage Spaces Direct volume repair speed**: Repair volumes quickly and seamlessly.
 

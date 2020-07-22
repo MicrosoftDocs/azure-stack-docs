@@ -18,7 +18,7 @@ Site-to-Site VPN, Azure Express Route, and Point-to-Site VPN.
 
 Windows Admin Center and Azure Network Adapter provide a one-click experience to
 connect the server with your virtual network using a [Point-to-Site
-VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
+VPN](/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
 connection. The process automates configuring the virtual network gateway and the on-premises VPN client.
 
 ## When to use Azure Network Adapter
@@ -36,7 +36,7 @@ following:
 - An existing virtual network.
 - Internet access for the target servers that you want to connect to the Azure virtual network.
 - A Windows Admin Center connection to Azure.
-  To learn more, see [Configuring Azure integration](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/azure-integration).
+  To learn more, see [Configuring Azure integration](/windows-server/manage/windows-admin-center/azure/azure-integration).
 - The latest version of Windows Admin Center.
   To learn more, see [Windows Admin Center](https://www.microsoft.com/windows-server/windows-admin-center).
 
@@ -64,7 +64,7 @@ In Windows Admin Center:
 
         Azure uses certificates to authenticate clients connecting to a virtual network over a Point-to-Site VPN connection. The public key information of the root certificate is uploaded to Azure. The root certificate is then considered “trusted” by Azure for a Point-to-Site connection to the virtual network. Client certificates must be generated from the trusted root certificate and installed on the client server. The client certificate is used to authenticate the client when it initiates a connection to the virtual network.
     
-        To learn more, see the “Configure authentication type” section of [Configure a Point-to-Site VPN connection to a VNet using native Azure certificate authentication: Azure portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal).
+        To learn more, see the “Configure authentication type” section of [Configure a Point-to-Site VPN connection to a VNet using native Azure certificate authentication: Azure portal](/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal).
 
     :::image type="content" source="media/azure-network-adapter/add-azure-network-adapter.png" alt-text="The Add Azure Network Adapter pane in Windows Admin Center.":::
 
@@ -78,4 +78,4 @@ If you don’t need the connectivity anymore, under **Networks**, select the Azu
 ## Next steps
 For more information about Azure Virtual Network, see also:
 
-- [Azure Virtual Network frequently asked questions (FAQ)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)
+- [Azure Virtual Network frequently asked questions (FAQ)](/azure/virtual-network/virtual-networks-faq)
