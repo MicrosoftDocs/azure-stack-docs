@@ -135,7 +135,7 @@ Yes, the cluster must connect to Azure at least once every 30 days in order for 
 
 ### Can I upgrade from Windows Server 2019 to Azure Stack HCI?
 
-You can upgrade from Windows Server 2019 to Azure Stack HCI, but not seamlessly; there is no in-place upgrade at this time. Upgrading requires a maintenance window and a clean install on each server, rebuilding each server individually as part of a rolling cluster upgrade.
+Currently, you can only upgrade from Windows Server 2019 to Azure Stack HCI by performing a [rolling cluster upgrade](https://docs.microsoft.com/en-us/windows-server/failover-clustering/Cluster-Operating-System-Rolling-Upgrade); there is no in-place upgrade at this time.
 
 ### What do Azure Stack Hub and Azure Stack HCI solutions have in common?
 
