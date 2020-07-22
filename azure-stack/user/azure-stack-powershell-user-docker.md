@@ -158,6 +158,8 @@ In these instructions, you will run a Linux-based container image that contains 
     ./Test-AzureStack.ps1 <Object ID>
     ```
 
+---
+
 ## Next steps
 
 - Read an overview of [Azure Stack Hub PowerShell in Azure Stack Hub](azure-stack-powershell-overview.md).

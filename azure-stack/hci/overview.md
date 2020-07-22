@@ -127,7 +127,7 @@ To manage these technologies, you can use the following management tools:
 
 ### How does Azure Stack HCI relate to Windows Server?
 
-Windows Server is the foundation of nearly every Azure product, and all the features you value continue to ship and be supported in Windows Server. The initial offering of Azure Stack HCI was based on Windows Server 2019 and used the traditional Windows Server licensing model. Today, Azure Stack HCI continues to be based on Windows Server, but has its own operating system and subscription-based licensing model. Azure Stack HCI is the recommended way to deploy HCI on-premises, using Microsoft-validated hardware from our partners.
+Windows Server is the foundation of nearly every Azure product, and all the features you value continue to ship and be supported in Windows Server. The initial offering of Azure Stack HCI was based on Windows Server 2019 and used the traditional Windows Server licensing model. Today, Azure Stack HCI has its own operating system and subscription-based licensing model. Azure Stack HCI is the recommended way to deploy HCI on-premises, using Microsoft-validated hardware from our partners.
 
 ### Does Azure Stack HCI need to connect to Azure?
 
@@ -160,6 +160,14 @@ No, but customers can migrate their workloads from Azure Stack HCI to Azure Stac
 ### What Azure services can I connect to Azure Stack HCI?
 
 For an updated list of Azure services that you can connect Azure Stack HCI to, see [Connecting Windows Server to Azure hybrid services](/windows-server/manage/windows-admin-center/azure/index).
+
+### Does Azure Stack HCI collect any data from my system?
+
+Yes - a very limited set of data is collected. This data is used to keep HCI up to date, performing properly, provide information to the Azure portal, and to assess the number of processor cores in the cluster for billing purposes.
+
+### To which endpoints is the data transmitted?  
+
+Azure Stack HCI uses the following endpoint to transmit billing data: *-azurestackhci-usage.azurewebsites.net
 
 ## The Azure Stack family
 
