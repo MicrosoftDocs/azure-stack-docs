@@ -33,7 +33,7 @@ In this article you will:
 
 3. Configure Commvault on your source Azure Stack Hub Instance and add VMs in the source Azure Stack Hub to the VM group.
 
-4. Configure Commvault's LifeSync.
+4. Configure Commvault's Live Sync.
 
 You can also download and offer compatible partner VM images to protect your Azure Stack Hub VMs to an Azure Cloud or another Azure Stack Hub. This article will illustrate VM protection with Commvault Live Sync.
 
@@ -41,7 +41,7 @@ The topology of this approach will look like the following diagram:
 
 ![](./media/azure-stack-network-howto-backup-commvault/backup-vm-commvault-diagram.svg)
 
-## Create the Commvault VM form the Commvault Marketplace Item
+## Create the Commvault VM from the Commvault Marketplace Item
 
 1. Open the Azure Stack Hub user portal.
 
@@ -56,7 +56,7 @@ The topology of this approach will look like the following diagram:
 
     a. Enter a **Name**.
 
-    b. Select **Standard HHD**.
+    b. Select **Standard HDD**.
     
     c. Enter a **Username**.
     
@@ -108,7 +108,7 @@ The topology of this approach will look like the following diagram:
 
 ## Get your service principal
 
-You will need to know if your identity manager is Azure AD or AD DFS. The following table contains the information you will need to set up the Commvault in your Azure Stack Hub.
+You will need to know if your identity manager is Azure AD or ADFS. The following table contains the information you will need to set up the Commvault in your Azure Stack Hub.
 
 | Element | Description | Source |
 |--------------------------|--------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
@@ -125,8 +125,8 @@ You will need to know if your identity manager is Azure AD or AD DFS. The follow
 
 2. Install Azure Stack Hub PowerShell and Azure Stack Hub Tools on the Commvault VM.
 
-    a. For instructions on installing Azure Stack Hub PowerShell, see [Install PowerShell for Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json).  
-    b. For instructions on installing Azure Stack Hub Tools, see [Download Azure Stack Hub tools from GitHub](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-download?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json%3Fview%3Dazs-1908&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json%3Fview%3Dazs-1908&view=azs-1908).
+    a. For instructions on installing Azure Stack Hub PowerShell, see [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json).  
+    b. For instructions on installing Azure Stack Hub Tools, see [Download Azure Stack Hub tools from GitHub](../operator/azure-stack-powershell-download.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json%3Fview%3Dazs-1908&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json%3Fview%3Dazs-1908&view=azs-1908).
 
 3. After Commvault installs on in your Commvault VM, open the Commcell Console. From Start, select **Commvault** > **Commvault Commcell Console**.
 

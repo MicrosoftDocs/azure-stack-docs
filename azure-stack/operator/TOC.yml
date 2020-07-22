@@ -298,12 +298,8 @@
         href: app-service-billing-faq.md
       - name: Prerequisites
         href: azure-stack-app-service-before-you-get-started.md
-      - name: Deployment
-        items:
-        - name: Deploy App Service
-          href: azure-stack-app-service-deploy.md
-        - name: Deploy App Service for high availability
-          href: app-service-deploy-ha.md
+      - name: Deploy App Service
+        href: azure-stack-app-service-deploy.md
       - name: Life cycle management 
         items:
         - name: Update App Service
@@ -320,26 +316,14 @@
           href: app-service-recover.md
         - name: Remove App Service
           href: app-service-remove.md
-      - name: App Service on Azure Stack Hub release notes
+      - name: Release notes
         items:
-        - name: App Service on Azure Stack Hub 2020 Q2 release notes
+        - name: 2020 Q2 release notes [May2020]
           href: app-service-release-notes-2020-Q2.md
-        - name: App Service on Azure Stack Hub update 8 release notes
+        - name: Update 8 release notes [Jan2020]
           href: azure-stack-app-service-release-notes-update-eight.md
-        - name: App Service on Azure Stack Hub update 7 release notes
+        - name: Update 7 release notes [Aug2019]
           href: azure-stack-app-service-release-notes-update-seven.md
-        - name: App Service on Azure Stack Hub update 6 release notes
-          href: azure-stack-app-service-release-notes-update-six.md
-        - name: App Service on Azure Stack Hub update 5 release notes
-          href: azure-stack-app-service-release-notes-update-five.md
-        - name: App Service on Azure Stack Hub update 4 release notes
-          href: azure-stack-app-service-release-notes-update-four.md
-        - name: App Service on Azure Stack Hub update 3 release notes
-          href: azure-stack-app-service-release-notes-update-three.md
-        - name: App Service on Azure Stack Hub update 2 release notes
-          href: azure-stack-app-service-release-notes-update-two.md
-        - name: App Service on Azure Stack Hub update 1 release notes
-          href: azure-stack-app-service-release-notes-update-one.md   
     - name: Event Hubs on Azure Stack Hub
       items:
       - name: Overview
@@ -516,8 +500,8 @@
     href: azure-stack-train-and-cert.md
   - name: Azure Stack Hub road map
     href: https://azure.microsoft.com/updates/?query=azure%20stack%20hub
-  - name: Azure Stack Hub MSDN forum
-    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack
+  - name: Azure Stack Hub Microsoft Q&A
+    href: https://docs.microsoft.com/en-us/answers/questions/topics/single/50514.html
   - name: Azure Stack Hub Documentation feedback
     href: https://feedback.azure.com/forums/344565-azure-stack?category_id=160275
   - name: Pricing information
