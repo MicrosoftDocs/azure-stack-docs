@@ -24,6 +24,8 @@ For the stretched cluster scenario, we will use ClusterS1 as the name and use th
 
 For more information about stretched clusters, see [Stretched clusters overview](../concepts/stretched-clusters.md).
 
+If you’re interested in testing Azure Stack HCI, but have limited or no spare hardware, check out the [Azure Stack HCI Evaluation Guide](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md), where we’ll walk you through experiencing Azure Stack HCI using nested virtualization, either in Azure, or on a single physical system on-premises.
+
 ## Before you begin
 
 Before you begin, make sure you:
@@ -32,6 +34,10 @@ Before you begin, make sure you:
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
 - Have an account that’s a member of the local Administrators group on each server.
 - Have rights in Active Directory to create objects.
+- Verify all network adapters are assigned to the same IP subnet and VLAN
+- Verify all adapters have physical connectivity to each other. If adapters don't have physical connectivity, assign them to separate IP subnets.
+- At least one network adapter is available and dedicated for cluster management.
+- Verify that physical switches in your network are configured to allow traffic on any VLANs you will use.
 
 ## Using Windows PowerShell
 
@@ -131,7 +137,36 @@ Restart-Computer -ComputerName $ServerList
 
 ## Step 2: Configure networking
 
-This step assumes that you have already set up RDMA and other networking for your environment previously.
+This step assumes that you have already set up RDMA and other networking for your environment previously. We will now verify network interface adapters (NICs), select a management adapter, assign IP addresses, subnet masks, and VLAN IDs for each server and create the virtual switches.
+
+### Management adapter overview
+
+It is mandatory to select at least one of the adapters for management purposes, as the wizard requires at least one dedicated physical NIC for cluster management.  Once an adapter is designated for management, it’s excluded from the rest of the wizard workflow.
+
+Management adapters have two configuration options:
+
+- Single physical adapter used for management. Both DHCP or static IP address assignment is supported.
+
+- Two physical adapters are used and teamed. When a pair of adapters are teamed, only static IP address assignment is supported. If the selected adapters use DHCP addressing (either for one or both), the DHCP IP address would be converted to static IP addresses before virtual switch creation.
+
+By using teamed adapters, you have a single connection to multiple switches but only use a single IP address. Load-balancing becomes available and fault-tolerance is instant instead of waiting for DNS records to update.
+
+### Virtual switch overview
+
+You have four options for creating virtual switches:
+
+- Create a single virtual switch for both compute and storage
+- Create a single virtual switch for compute only (none for storage)
+- Create two virtual switches - one for compute and one for storage
+- Skip virtual switch creation
+
+Not all virtual switch options are supported and enabled for all deployments. This is dependent on the networking configuration that you specify in the wizard. The following table shows which virtual switch configurations are supported and enabled for various network adapter configurations:
+
+| Option | 1-2 adapters | 3+ adapters | teamed adapters |
+| :------------- | :--------- |:--------| :---------|
+| single switch (compute + storage) | enabled | enabled  | not supported |
+| single ewitch (compute only) | not supported| enabled | enabled |
+| two switches | not supported | enabled | enabled |
 
 ### Disable unused networks
 
@@ -337,8 +372,9 @@ When creating the cluster, you'll get a warning that states - `"There were issue
 
 Congrats, your cluster has now been created.
 
-> [!NOTE]
-> After the cluster is created, it can take time for the cluster name to be replicated. If resolving the cluster isn't successful, in most cases you can substitute the computer name of a server node in the the cluster instead of the cluster name.
+After the cluster is created, it can some take time for the cluster name to be replicated across your domain, especially if workgroup servers have been newly added to Active Directory. Although the cluster might be displayed in Windows Admin Center, it might not be available to connect to yet.
+
+If resolving the cluster isn't successful after some time, in most cases you can substitute a server name in the the cluster instead of the cluster name.
 
 ## Step 5: Set up sites (stretched cluster)
 
@@ -438,7 +474,7 @@ Congrats, you have now created a bare-bones cluster.
 
 ## After you create the cluster
 
-Now that you are done, there are still some important tasks you need to complete in order to have a fully-functioning cluster:
+Now that you are done, there are still some important tasks you need to complete:
 
 - Setup a cluster witness. See [Set up a cluster witness](witness.md).
 - Create your volumes. See [Create volumes](../manage/create-volumes.md).

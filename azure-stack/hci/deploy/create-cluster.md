@@ -21,6 +21,8 @@ You have a choice between creating two cluster types:
 
 For more information about stretched clusters, see [Stretched clusters overview](../concepts/stretched-clusters.md).
 
+If you’re interested in testing Azure Stack HCI, but have limited or no spare hardware, check out the [Azure Stack HCI Evaluation Guide](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md), where we’ll walk you through experiencing Azure Stack HCI using nested virtualization, either in Azure, or on a single physical system on-premises.
+
 ## Before you run the wizard
 
 Before you run the Create Cluster wizard, make sure you:
@@ -29,6 +31,10 @@ Before you run the Create Cluster wizard, make sure you:
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
 - Install Windows Admin Center on a remote (management) computer. See [Before you deploy Azure Stack HCI](before-you-start.md). Don't run the wizard from a server in the cluster.
 - Have an account that’s a member of the local Administrators group on each server.
+- Verify all network adapters are assigned to the same IP subnet and VLAN.
+- Verify all adapters have physical connectivity to each other. If adapters don't have physical connectivity, assign them to separate IP subnets.
+- At least one network adapter is available and dedicated for cluster management.
+- Verify that physical switches in your network are configured to allow traffic on any VLANs you will use.
 
 Also, your management computer must be joined to the same Active Directory domain in which you'll create the cluster, or a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
 
@@ -85,17 +91,38 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 
 Step 2 of the wizard walks you through verifying network interface adapters (NICs), selecting a management adapter, assigning IP addresses, subnet masks, and VLAN IDs for each server and creating the virtual switches.
 
+### Management adapter overview
+
 It is mandatory to select at least one of the adapters for management purposes, as the wizard requires at least one dedicated physical NIC for cluster management.  Once an adapter is designated for management, it’s excluded from the rest of the wizard workflow.
 
 Management adapters have two configuration options:
 
-- Physical adapter - if the selected adapter uses DHCP addressing, it is used.
+- Single physical adapter used for management. Both DHCP or static IP address assignment is supported.
 
-- Teamed adapters (for virtual switch creation) - if the selected adapters use DHCP addressing (either for one or both), the DHCP IP address would be assigned as static IP addresses for these adapters.
+- Two physical adapters are used and teamed. When a pair of adapters are teamed, only static IP address assignment is supported. If the selected adapters use DHCP addressing (either for one or both), the DHCP IP address would be converted to static IP addresses before virtual switch creation.
 
-By using teamed adapters, you have a single connection to multiple physical switches but only use a single IP address. Load-balancing becomes available and fault-tolerance is instant instead of waiting for DNS records to update.
+By using teamed adapters, you have a single connection to multiple switches but only use a single IP address. Load-balancing becomes available and fault-tolerance is instant instead of waiting for DNS records to update.
 
-Let's begin:
+### Virtual switch overview
+
+You have four options for creating virtual switches:
+
+- Create a single virtual switch for both compute and storage
+- Create a single virtual switch for compute only (none for storage)
+- Create two virtual switches - one for compute and one for storage
+- Skip virtual switch creation
+
+Not all virtual switch options are supported and enabled for all deployments. This is dependent on the networking configuration that you specify in the wizard. The following table shows which virtual switch configurations are supported and enabled for various network adapter configurations:
+
+| Option | 1-2 adapters | 3+ adapters | teamed adapters |
+| :------------- | :--------- |:--------| :---------|
+| single switch (compute + storage) | enabled | enabled  | not supported |
+| single ewitch (compute only) | not supported| enabled | enabled |
+| two switches | not supported | enabled | enabled |
+
+### Resume the wizard
+
+You are now ready to configure your cluster networking. Let's begin:
 
 1. Select **Next: Networking**.
 1. Under **Verify the network adapters**, wait until green checkboxes appear next to each adapter, then select **Next**.
@@ -124,6 +151,9 @@ Let's begin:
 
 1. Change the name of a switch and other configuration settings as needed, then click **Apply and test**. The **Status** column should show **Passed** for each server after the virtual switches have been created.
 
+> [!NOTE]
+> If you see errors listed during any networking or virtual switch steps, try clicking **Apply and test** again. Network connectivity checks may fail intermittently, which can lead to the wizard experiencing server ping failures on the initial attempt.
+
 ## Step 3: Clustering
 
 Step 3 of the wizard makes sure everything thus far has been set up correctly, assigns sites in the case of stretched cluster deployments, and then actually creates the cluster.
@@ -132,6 +162,9 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
 1. Under **Validate the cluster**, select **Validate**. Validation may take several minutes.
 
     If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable CredSSP for the wizard to continue. Once your cluster is created and the wizard has completed, you'll disable CredSSP to increase security.
+
+    > [!NOTE]
+    CredSSP may report an issue if Active Directory trust is not established or is broken. This results when workgroup-based servers are used for cluster creation. In this case, try manually restarting each server in the cluster.
 
 1. Review all validation statuses, download the report to get detailed information on any failures, make changes, then click **Validate again** as needed. Repeat again as necessary until all validation checks pass.
 1. Under **Create the cluster**, enter a name for your cluster.
@@ -158,11 +191,13 @@ Step 4 of the wizard walks you through setting up Storage Spaces Direct for your
 
 Congratulations, you now have a cluster.
 
-After the cluster is created, it can take time for the cluster name to be replicated across your domain. If resolving the cluster isn't successful after some time, in most cases you can substitute the computer name of a server node in the the cluster instead of the cluster name.
+After the cluster is created, it can some take time for the cluster name to be replicated across your domain, especially if workgroup servers have been newly added to Active Directory. Although the cluster might be displayed in Windows Admin Center, it might not be available to connect to yet.
+
+If resolving the cluster isn't successful after some time, in most cases you can substitute a server name in the the cluster instead of the cluster name.
 
 ## After you run the wizard
 
-After the wizard has completed, there are still some important tasks you need to complete in order to have a fully-functioning cluster.
+After the wizard has completed, there are still some important tasks you need to complete.
 
 The first task is to disable the Credential Security Support Provider (CredSSP) protocol on each server for security purposes. Remember that CredSSP needed to be enabled for the wizard. For more information, see [CVE-2018-0886](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2018-0886).
 
