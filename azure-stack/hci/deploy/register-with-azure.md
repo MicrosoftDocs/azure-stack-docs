@@ -4,7 +4,7 @@ description: How to register Azure Stack HCI with Azure.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.date: 07/22/2020
 ---
 
 # Connect Azure Stack HCI to Azure
@@ -64,6 +64,11 @@ Register-AzStackHCI  -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" [-Re
 ```
 
 The minimum syntax requires only your Azure subscription ID. Remember that the user running the above command must have Azure Active Directory permissions, or the registration process will not complete.
+
+   > [!NOTE]
+   > If upon registering, you receive an error similar to the message below, **please try registering again in 24-48 hours**. The Azure integration is still in the process of being rolled out across regions. You can still proceed with your evaluation, and it won't affect any functionality. Just make sure you come back and register later!
+   >
+   > `Register-AzStackHCI : Azure Stack HCI is not yet available in region <regionName>`
 
 ## Authenticate with Azure
 Once dependencies have been installed and the parameters have been validated, you need to authenticate (sign in) using your Azure account. Your account needs to have access to the Azure subscription that was specified in order for registration to proceed.
