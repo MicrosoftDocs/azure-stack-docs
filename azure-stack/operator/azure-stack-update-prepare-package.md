@@ -94,7 +94,7 @@ The following procedure shows how to import and install update packages in the a
 
 8. Repeat steps 6 and 7 for the **Metadata.xml** file and any additional .zip files in the update package. Don't import the **Supplemental Notice.txt** file if included.
 
-9. When done, you can review the notifications (select thr bell icon in the top-right corner of the portal). A notification should indicate that the upload has finished.
+9. When done, you can review the notifications (select the bell icon in the top-right corner of the portal). A notification should indicate that the upload has finished.
 
 10. Go back to the **Update** blade on the dashboard. The blade should indicate that an update is available. This indicates that the update has been prepared successfully. Select the blade to review the newly added update package.
 
