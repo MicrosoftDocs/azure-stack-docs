@@ -32,7 +32,7 @@ For more information, check out [Understanding the cache in Storage Spaces Direc
 
 ## Option 1 – Maximizing performance
 
-To achieve predictable and uniform submillisecond latency across random reads and writes to any data, or to achieve extremely high IOPS (we've done [over 13 million](https://techcommunity.microsoft.com/t5/storage-at-microsoft/the-new-hci-industry-record-13-7-million-iops-with-windows/ba-p/428314)!) or IO throughput (we've done [over 1 Tb/s](https://www.youtube.com/watch?v=-LK2ViRGbWs&t=16m50s)!), you should go "all-flash."
+To achieve predictable and uniform submillisecond latency across random reads and writes to any data, or to achieve extremely high IOPS (we've done [over 13 million](https://techcommunity.microsoft.com/t5/storage-at-microsoft/the-new-hci-industry-record-13-7-million-iops-with-windows/ba-p/428314)!) or IO throughput (we've done over 500 GB/sec reads), you should go "all-flash."
 
 There are currently three ways to do so:
 
