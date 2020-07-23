@@ -14,7 +14,7 @@ ms.lastreviewed: 7/20/2020
 
 ---
 
-# Use Docker to run PowerShell in Azure Stack Hub
+# Use Docker to run PowerShell for Azure Stack Hub
 
 In this article, you can use Docker to create a container on which to run the version of PowerShell that's required for working with the various interfaces. You can find instructions for using both AzureRM modules and the latest Az modules. AzureRM requires a Windows-based container. Az uses a Linux-based container.
 
