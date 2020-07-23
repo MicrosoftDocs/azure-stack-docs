@@ -24,6 +24,8 @@ API profiles provide a way to manage version differences between Azure and Azure
 
 You can install Azure Stack Hub compatible PowerShell modules in internet-connected, partially connected, or disconnected scenarios. This article walks you through the detailed instructions for these scenarios.
 
+You can also run the AzureRM modules for Azure Stack Hub in a Docker container. For instructions, see [Use Docker to run PowerShell for Azure Stack Hub](../user/azure-stack-powershell-user-docker.md).
+
 ## 1. Verify your prerequisites
 
 Before you get started with Azure Stack Hub and the PowerShell AzureRM module, you must have the following prerequisites:
