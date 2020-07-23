@@ -34,7 +34,7 @@ Before you begin, make sure you:
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
 - Have an account that’s a member of the local Administrators group on each server.
 - Have rights in Active Directory to create objects.
-- Verify all network adapters are assigned to the same IP subnet and VLAN
+- Verify all network adapters are assigned to the appropriate IP subnet and VLAN
 - Verify all adapters have physical connectivity to each other. If adapters don't have physical connectivity, assign them to separate IP subnets.
 - At least one network adapter is available and dedicated for cluster management.
 - Verify that physical switches in your network are configured to allow traffic on any VLANs you will use.
