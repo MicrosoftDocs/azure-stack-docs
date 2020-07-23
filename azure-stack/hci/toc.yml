@@ -135,17 +135,17 @@
   - name: Azure Stack HCI product page
     href: https://azure.com/hci
   - name: Discover Azure Stack HCI video
-    href: aka.ms/discoverazurestackhci
+    href: https://azure.microsoft.com/en-us/resources/videos/discover-the-new-azure-stack-hci/
   - name: Azure Stack HCI FAQs
     href: https://azure.microsoft.com/en-us/products/azure-stack/hci/#faqs
   - name: Azure Stack HCI Eval Guide
-    href: aka.ms/evaluate-hci
+    href: https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md
   - name: Azure Stack HCI solutions
     href: https://azure.microsoft.com/en-us/products/azure-stack/hci-ws-2019/
   - name: Azure Stack HCI pricing
     href: https://azure.microsoft.com/en-us/pricing/details/azure-stack/hci/
   - name: HCI overview whitepaper
-    href: aka.ms/azurestackhcioverview
+    href: https://azure.microsoft.com/en-us/resources/azure-stack-hci-overview-white-paper/
   - name: HCI use cases whitepaper
     href: https://azure.microsoft.com/en-us/resources/azure-stack-hci-use-cases-and-scenarios/
   - name: HCI architecture whitepaper
