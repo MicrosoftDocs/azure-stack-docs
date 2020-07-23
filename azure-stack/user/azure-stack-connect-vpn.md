@@ -35,7 +35,7 @@ The following figure shows what the connection configuration should look like wh
 
 The network configuration examples table shows the values that are used for examples in this article. You can use these values, or you can refer to them to better understand the examples in this article:
 
-|   |Azure Stack Hub|Azure|
+| Value   |Azure Stack Hub|Azure|
 |---------|---------|---------|
 |Virtual network name     |Azs-VNet|AzureVNet |
 |Virtual network address space |10.1.0.0/16|10.100.0.0/16|
