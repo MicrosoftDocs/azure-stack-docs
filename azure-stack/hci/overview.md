@@ -15,7 +15,7 @@ Azure Stack HCI, version 20H2 is a new operating system now in Public Preview. I
 
 Take a few minutes to watch the video on the high-level features of Azure Stack HCI:
 
-> [!VIDEO https://www.youtube-nocookie.com/embed/fw8RVqo9dcs]
+> [!VIDEO https://www.youtube.com/embed/fw8RVqo9dcs]
 
 At its core, Azure Stack HCI is a solution that combines the following:
 
