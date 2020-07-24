@@ -47,7 +47,7 @@ Install the PowerShell Module for Azure Stack HCI by running the following Power
 Install-WindowsFeature RSAT-Azure-Stack-HCI -ComputerName Server1
 ```
 
-Install the required cmdlets on your management PC or a cluster node:
+Install the required cmdlets on a cluster node or management PC:
 
 ```PowerShell
 Install-Module Az.StackHCI
@@ -57,13 +57,19 @@ Install-Module Az.StackHCI
    > 2.	You may further be prompted "Are you sure you want to install the modules from 'PSGallery'?" to which you should answer Yes (Y).
    > 3.	Finally, you might assume that installing the entire **Az** module would include the **StackHCI** sub-module, and that will be correct long-term. However, per standard Azure PowerShell convention, sub-modules in Preview aren't included automatically; rather, you need to explicitly specify them. Thus, for now, you need to explicitly ask for **Az.StackHCI** as shown above.
 
-Run the following command (this will prompt for Azure log-in):
+For the simplest experience, run the following command on an Azure Stack HCI clustered node (this will prompt for Azure log-in):
 
 ```PowerShell
-Register-AzStackHCI  -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" [-ResourceName] [-ResourceGroupName] [-ComputerName –Credential]
+Register-AzStackHCI  -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" [-ResourceName] [-ResourceGroupName]
 ```
 
-The minimum syntax requires only your Azure subscription ID. This syntax registers the local cluster (of which the local server is a member), as the current user, with the default Azure region and cloud environment, and using smart default names for the Azure resource and resource group. For the simplest experience, run the syntax shown above directly on an Azure Stack HCI clustered node, and that's it! If you're registering the cluster using a management PC, you'll need to supply the **-ComputerName** parameter with the name of a server in the cluster and your credentials, if needed.
+The minimum syntax requires only your Azure subscription ID. This syntax registers the local cluster (of which the local server is a member), as the current user, with the default Azure region and cloud environment, and using smart default names for the Azure resource and resource group. 
+
+If you'd prefer to register the cluster using a management PC, supply the **-ComputerName** parameter with the name of a server in the cluster and your credentials, if needed:
+
+```PowerShell
+Register-AzStackHCI  -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" -ComputerName Server1 [–Credential] [-ResourceName] [-ResourceGroupName]
+```
 
 By default, the Azure resource created to represent the Azure Stack HCI cluster inherits the cluster name and is placed in a new resource group with the same name plus the suffix "-rg". You can specify a different resource name or place the resource into an existing resource group with the optional parameters listed above.
 
