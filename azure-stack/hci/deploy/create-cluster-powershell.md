@@ -34,10 +34,6 @@ Before you begin, make sure you:
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
 - Have an account that’s a member of the local Administrators group on each server.
 - Have rights in Active Directory to create objects.
-- Verify all network adapters are assigned to the appropriate IP subnet and VLAN
-- Verify all adapters have physical connectivity to each other. If adapters don't have physical connectivity, assign them to separate IP subnets.
-- At least one network adapter is available and dedicated for cluster management.
-- Verify that physical switches in your network are configured to allow traffic on any VLANs you will use.
 
 ## Using Windows PowerShell
 
@@ -104,7 +100,7 @@ The next step is to install required Windows roles and features on every server 
 - BitLocker
 - Data Center Bridging (for RoCEv2 network adapters)
 - Failover Clustering
-- File Server (for file-share witness or hosting file shares)
+- File Server
 - FS-Data-Deduplication module
 - Hyper-V
 - RSAT-AD-PowerShell module
@@ -160,7 +156,7 @@ You have four options for creating virtual switches:
 - Create two virtual switches - one for compute and one for storage
 - Skip virtual switch creation
 
-Not all virtual switch options are supported and enabled for all deployments. This is dependent on the networking configuration that you specify in the wizard. The following table shows which virtual switch configurations are supported and enabled for various network adapter configurations:
+Not all virtual switch options are supported and enabled for all deployments. This is dependent on your networking configuration. The following table shows which virtual switch configurations are supported and enabled for various network adapter configurations:
 
 | Option | 1-2 adapters | 3+ adapters | teamed adapters |
 | ------------- | --------- | -------- | --------- |

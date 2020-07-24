@@ -77,7 +77,7 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
     - BitLocker
     - Data Center Bridging (for RoCEv2 network adapters)
     - Failover Clustering
-    - File Server (for file-share witness or hosting file shares)
+    - File Server
     - FS-Data-Deduplication module
     - Hyper-V
     - RSAT-AD-PowerShell module
