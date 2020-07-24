@@ -145,7 +145,7 @@ It is mandatory to select at least one of the adapters for management purposes, 
 
 Management adapters have two configuration options:
 
-- Single physical adapter used for management. Both DHCP or static IP address assignment is supported.
+- Single physical adapter used for management. Both DHCP or static IP address assignment are supported.
 
 - Two physical adapters are used and teamed. When a pair of adapters are teamed, only static IP address assignment is supported. If the selected adapters use DHCP addressing (either for one or both), the DHCP IP address would be converted to static IP addresses before virtual switch creation.
 
