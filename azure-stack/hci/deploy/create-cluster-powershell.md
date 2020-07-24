@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a hyperconverged cluster for Azure Stack HCI using Windows PowerShell
 author: v-dasis
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.date: 07/24/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
