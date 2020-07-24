@@ -163,7 +163,7 @@ You have four options for creating virtual switches:
 Not all virtual switch options are supported and enabled for all deployments. This is dependent on the networking configuration that you specify in the wizard. The following table shows which virtual switch configurations are supported and enabled for various network adapter configurations:
 
 | Option | 1-2 adapters | 3+ adapters | teamed adapters |
-| :------------- | :--------- |:--------| :---------|
+| ------------- | --------- | -------- | --------- |
 | single switch (compute + storage) | enabled | enabled  | not supported |
 | single switch (compute only) | not supported | enabled | enabled |
 | two switches | not supported | enabled | enabled |
