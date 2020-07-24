@@ -4,7 +4,7 @@ description: Learn how to deploy Kubernetes to Azure Stack Hub using Active Dire
 author: mattbriggs
 
 ms.topic: article
-ms.date: 3/12/2020
+ms.date: 07/24/2020
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 3/12/2020
@@ -18,7 +18,7 @@ ms.lastreviewed: 3/12/2020
 # Deploy Kubernetes to Azure Stack Hub using Active Directory Federated Services
 
 > [!Note]  
-> Only use the Kubernetes Azure Stack Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack, use [the AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
+> Only use the Kubernetes Azure Stack Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack, use [the AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
 
 You can follow the steps in this article to deploy and set up the resources for Kubernetes. Use these steps when Active Directory Federated Services (AD FS) is your identity management service.
 
