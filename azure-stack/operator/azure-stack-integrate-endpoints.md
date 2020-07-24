@@ -3,16 +3,15 @@ title: Publish Azure Stack Hub services in your datacenter
 description: Learn how to publish Azure Stack Hub services in your datacenter.
 author: IngridAtMicrosoft
 ms.topic: article
-ms.date: 04/10/2020
+ms.date: 07/24/2020
 ms.author: inhenkel
 ms.reviewer: wamota
-ms.lastreviewed: 12/11/2019
+ms.lastreviewed: 07/24/2020
 
 # Intent: As an Azure Stack operator, I want to publish Azure Stack services to my datacenter so they can be available to external networks.
 # Keyword: publish azure stack services
 
 ---
-
 
 # Publish Azure Stack Hub services in your datacenter
 
@@ -94,6 +93,7 @@ SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-intercep
 |LDAP GC SSL|Active Directory Forest provided for Graph integration|TCP|3269|Public VIP - /27|
 |AD FS|AD FS metadata endpoint provided for AD FS integration|TCP|443|Public VIP - /27|
 |Diagnostic Log collection service|Azure Storage provided Blob SAS URL|HTTPS|443|Public VIP - /27|
+| Diagnostic Log Collection | https://azsdiagppelocalwestus02.blob.core.windows.net<br>https://azsdiagppewestusfrontend.westus.cloudapp.azure.com<br>https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com | https | 443 | Public VIP - /27<br>Public infrastructure Network |
 |     |     |     |     |     |
 
 Outbound URLs are load balanced using Azure traffic manager to provide the best possible connectivity based on geographic location. With load balanced URLs, Microsoft can update and change backend endpoints without affecting customers. Microsoft doesn't share the list of IP addresses for the load balanced URLs. Use a device that supports filtering by URL rather than by IP.
