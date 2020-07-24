@@ -15,7 +15,7 @@ This article describes how to create volumes and set up replication for stretche
 
 To learn how to create volumes on single-site clusters, work with files on the volumes, and how to enable data deduplication and compression on volumes, see [Create volumes](create-volumes.md).
 
-Specifically we will create volumes on four servers in two sites, two servers per site. If you want to create three-way mirror volumes, you will need six servers, three servers per site.
+This article discusses creating volumes on four servers in two sites, two servers per site as an example. If you want to create three-way mirror volumes, you need at least six servers, three servers per site.
 
 ## Stretched volumes and replication using Windows Admin Center
 
