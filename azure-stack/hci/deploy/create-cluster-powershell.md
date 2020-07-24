@@ -133,17 +133,15 @@ Restart-Computer -ComputerName $ServerList
 
 ## Step 2: Configure networking
 
-This step assumes that you have already set up RDMA and other networking for your environment previously. We will now verify network interface adapters (NICs), select a management adapter, assign IP addresses, subnet masks, and VLAN IDs for each server and create the virtual switches.
+This step configures various networking elements in your environment.
 
 ### Management adapter overview
 
-You must select at least one of the adapters for cluster management; this adapter is excluded from the rest of the wizard workflow.
+You must select at least one of the network adapters for cluster management. You have two options:
 
-Management adapters have two configuration options:
+- Specify a single physical adapter used for management. Both DHCP or static IP addresses are supported.
 
-- Single physical adapter used for management. Both DHCP or static IP address assignment are supported.
-
-- Two physical adapters are used and teamed. When a pair of adapters are teamed, only static IP address assignment is supported. If the selected adapters use DHCP addressing (either for one or both), the DHCP IP address would be converted to static IP addresses before virtual switch creation, so make sure to create an exclusion or reservation for these addresses on the DHCP server.
+- Specify two physical adapters to be teamed. When a pair of adapters are teamed, only static IP addresses are supported.
 
 By using teamed adapters, you have a single connection to multiple switches but only use a single IP address. Load-balancing becomes available and fault-tolerance is instant instead of waiting for DNS records to update.
 
@@ -156,13 +154,13 @@ You have four options for creating virtual switches:
 - Create two virtual switches - one for compute and one for storage
 - Skip virtual switch creation
 
-Not all virtual switch options are supported and enabled for all deployments. This is dependent on your networking configuration. The following table shows which virtual switch configurations are supported and enabled for various network adapter configurations:
+Not all virtual switch options are supported for all deployments. This is dependent on your networking configuration. The following table shows which virtual switch configurations are supported for various network adapter configurations:
 
 | Option | 1-2 adapters | 3+ adapters | teamed adapters |
 | ------------- | --------- | -------- | --------- |
-| single switch (compute + storage) | enabled | enabled  | not supported |
-| single switch (compute only) | not supported | enabled | enabled |
-| two switches | not supported | enabled | enabled |
+| single switch (compute + storage) | supported | supported  | not supported |
+| single switch (compute only) | not supported | supported | supported |
+| two switches | not supported | supported | supported |
 
 ### Disable unused networks
 
