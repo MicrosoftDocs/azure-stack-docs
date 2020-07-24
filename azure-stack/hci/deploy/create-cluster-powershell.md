@@ -141,7 +141,7 @@ This step assumes that you have already set up RDMA and other networking for you
 
 ### Management adapter overview
 
-It is mandatory to select at least one of the adapters for management purposes, as the wizard requires at least one dedicated physical NIC for cluster management.  Once an adapter is designated for management, it’s excluded from the rest of the wizard workflow.
+You must select at least one of the adapters for cluster management; this adapter is excluded from the rest of the wizard workflow.
 
 Management adapters have two configuration options:
 
