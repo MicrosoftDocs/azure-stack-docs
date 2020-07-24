@@ -374,7 +374,7 @@ Congrats, your cluster has now been created.
 
 After the cluster is created, it can some take time for the cluster name to be replicated across your domain, especially if workgroup servers have been newly added to Active Directory. Although the cluster might be displayed in Windows Admin Center, it might not be available to connect to yet.
 
-If resolving the cluster isn't successful after some time, in most cases you can substitute a server name in the the cluster instead of the cluster name.
+If resolving the cluster isn't successful after some time, in most cases you can connect by using the name of one of the clustered servers instead of the cluster name.
 
 ## Step 5: Set up sites (stretched cluster)
 
