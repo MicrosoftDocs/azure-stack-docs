@@ -13,6 +13,10 @@ Azure Stack HCI is a hyperconverged cluster solution that runs virtualized Windo
 
 Azure Stack HCI, version 20H2 is a new operating system now in Public Preview. It's intended for on-premises clusters running virtualized workloads, with hybrid-cloud connections built-in. As such, Azure Stack HCI is delivered as an Azure service and billed on an Azure subscription.
 
+Take a few minutes to watch the video on the high-level features of Azure Stack HCI:
+
+> [!VIDEO https://www.youtube.com/embed/fw8RVqo9dcs]
+
 At its core, Azure Stack HCI is a solution that combines the following:
 
 - Validated hardware from an OEM partner
