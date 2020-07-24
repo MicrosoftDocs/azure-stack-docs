@@ -4,7 +4,7 @@ description: An overview of Azure Stack HCI
 ms.topic: overview
 author: khdownie
 ms.author: v-kedow
-ms.date: 07/22/2020
+ms.date: 07/23/2020
 ---
 
 # Azure Stack HCI solution overview
@@ -168,6 +168,22 @@ Yes - a very limited set of data is collected. This data is used to keep HCI up 
 ### To which endpoints is the data transmitted?  
 
 Azure Stack HCI uses the following endpoint to transmit billing data: *-azurestackhci-usage.azurewebsites.net
+
+### How do I identify an Azure Stack HCI server?
+
+Windows Admin Center lists the operating system in the All Connections list and various other places, or you can use the following PowerShell command to query for the operating system name and version.
+
+```PowerShell
+Get-ComputerInfo -Property 'osName', 'osDisplayVersion'
+```
+
+Here’s some example output:
+
+```
+OsName                    OSDisplayVersion
+------                    ----------------
+Microsoft Azure Stack HCI 20H2
+```
 
 ## The Azure Stack family
 
