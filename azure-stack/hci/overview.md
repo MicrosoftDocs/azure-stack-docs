@@ -4,7 +4,7 @@ description: An overview of Azure Stack HCI
 ms.topic: overview
 author: khdownie
 ms.author: v-kedow
-ms.date: 07/22/2020
+ms.date: 07/23/2020
 ---
 
 # Azure Stack HCI solution overview
@@ -12,6 +12,10 @@ ms.date: 07/22/2020
 Azure Stack HCI is a hyperconverged cluster solution that runs virtualized Windows and Linux workloads in a hybrid on-premises environment. Azure hybrid services enhance the cluster with capabilities such as cloud-based monitoring, Site Recovery, and VM backups, as well as a central view of all of your Azure Stack HCI deployments in the Azure portal. You can manage the cluster with your existing tools including Windows Admin Center, System Center, and PowerShell.
 
 Azure Stack HCI, version 20H2 is a new operating system now in Public Preview. It's intended for on-premises clusters running virtualized workloads, with hybrid-cloud connections built-in. As such, Azure Stack HCI is delivered as an Azure service and billed on an Azure subscription.
+
+Take a few minutes to watch the video on the high-level features of Azure Stack HCI:
+
+> [!VIDEO https://www.youtube.com/embed/fw8RVqo9dcs]
 
 At its core, Azure Stack HCI is a solution that combines the following:
 
@@ -168,6 +172,22 @@ Yes - a very limited set of data is collected. This data is used to keep HCI up 
 ### To which endpoints is the data transmitted?  
 
 Azure Stack HCI uses the following endpoint to transmit billing data: *-azurestackhci-usage.azurewebsites.net
+
+### How do I identify an Azure Stack HCI server?
+
+Windows Admin Center lists the operating system in the All Connections list and various other places, or you can use the following PowerShell command to query for the operating system name and version.
+
+```PowerShell
+Get-ComputerInfo -Property 'osName', 'osDisplayVersion'
+```
+
+Here’s some example output:
+
+```
+OsName                    OSDisplayVersion
+------                    ----------------
+Microsoft Azure Stack HCI 20H2
+```
 
 ## The Azure Stack family
 
