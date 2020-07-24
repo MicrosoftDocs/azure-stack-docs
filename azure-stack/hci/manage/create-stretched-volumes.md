@@ -4,18 +4,16 @@ description: How to create volumes and set up replication for stretched clusters
 author: v-dasis
 ms.author: v-dasis
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 07/24/2020
 ---
 
 # Create stretched cluster volumes and set up replication
 
 > Applies to: Azure Stack HCI, version 20H2
 
-This article describes how to create volumes and set up replication for stretched clusters in Azure Stack HCI using Windows Admin Center and PowerShell. 
+This article describes how to create volumes and set up replication for stretched clusters in Azure Stack HCI using Windows Admin Center and PowerShell.
 
-To learn how to create volumes on single-site clusters, work with files on the volumes, and how to enable data deduplication and compression on volumes, see [Create volumes](create-volumes.md).
-
-This article discusses creating volumes on four servers in two sites, two servers per site as an example. If you want to create three-way mirror volumes, you need at least six servers, three servers per site.
+We will create volumes on four servers in two sites, two servers per site as an example. Keep in mind however, that if you want to create three-way mirror volumes, you need at least six servers, three servers per site.
 
 ## Stretched volumes and replication using Windows Admin Center
 
