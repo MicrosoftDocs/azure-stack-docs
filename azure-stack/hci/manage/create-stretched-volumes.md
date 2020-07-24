@@ -4,7 +4,7 @@ description: How to create volumes and set up replication for stretched clusters
 author: v-dasis
 ms.author: v-dasis
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.date: 07/23/2020
 ---
 
 # Create stretched cluster volumes and set up replication
@@ -73,7 +73,7 @@ Creating volumes and virtual disks for stretched clusters is a bit more involved
 
 1. And move the `Available Storage` group to `Server3` in `Site2`:
 
-    ````powershell
+    ```powershell
     Move-ClusterGroup -Name 'Available Storage' -Node Server3
     ```
 
@@ -101,7 +101,7 @@ Creating volumes and virtual disks for stretched clusters is a bit more involved
 
 1. Using the `Get-ClusterResource` cmdlet, ensure that four virtual disk volumes were created, two in each storage pool:
 
-    ````powershell
+    ```powershell
     Get-ClusterResource -Cluster ClusterS1
     ```
 
