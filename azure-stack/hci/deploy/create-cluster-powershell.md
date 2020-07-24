@@ -165,7 +165,7 @@ Not all virtual switch options are supported and enabled for all deployments. Th
 | Option | 1-2 adapters | 3+ adapters | teamed adapters |
 | :------------- | :--------- |:--------| :---------|
 | single switch (compute + storage) | enabled | enabled  | not supported |
-| single ewitch (compute only) | not supported| enabled | enabled |
+| single switch (compute only) | not supported | enabled | enabled |
 | two switches | not supported | enabled | enabled |
 
 ### Disable unused networks
