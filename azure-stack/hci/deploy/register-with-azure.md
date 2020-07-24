@@ -73,7 +73,7 @@ Register-AzStackHCI  -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" -Com
 
 By default, the Azure resource created to represent the Azure Stack HCI cluster inherits the cluster name and is placed in a new resource group with the same name plus the suffix "-rg". You can specify a different resource name or place the resource into an existing resource group with the optional parameters listed above.
 
-Remember that the user running the `Register-AzStackHCI` cmdlet must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#azure-active-directory-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin consent. Once permissions have been granted, simply re-run `Register-AzureStackHCI` to complete registration.
+Remember that the user running the `Register-AzStackHCI` cmdlet must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#azure-active-directory-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin consent. Once permissions have been granted, simply re-run `Register-AzStackHCI` to complete registration.
 
    > [!NOTE]
    > If upon registering, you receive an error similar to the message below, **please try registering again in 24-48 hours**. The Azure integration is still in the process of being rolled out across regions. You can still proceed with your evaluation, and it won't affect any functionality. Just make sure you come back and register later!
