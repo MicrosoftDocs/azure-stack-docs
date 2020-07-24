@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: List of Azure Stack Hub Marketplace FAQs for Windows Server.
 author: sethmanheim
 ms.topic: article
-ms.date: 03/19/2020
+ms.date: 07/23/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 08/29/2019
@@ -22,24 +22,24 @@ This article answers some frequently asked questions about Marketplace items in 
 
 ### Who should I contact for support issues with Azure Stack Hub Marketplace items?
 
-Azure Marketplace support guidance extends to Azure Stack Hub Marketplace items as well. Publishers are responsible for providing technical support for their products on the Azure Stack Hub Marketplace. To learn more about support guidance for Azure Marketplace items, see the [support section](/azure/marketplace/marketplace-faq-publisher-guide#customer-support) in the Azure Marketplace FAQs article.
+Azure Marketplace support guidance extends to Azure Stack Hub Marketplace items as well. Publishers are responsible for providing technical support for their products on the Azure Stack Hub Marketplace. To learn more about support guidance for Azure Marketplace items, see the [support section in the Azure Marketplace FAQs article](/azure/marketplace/marketplace-faq-publisher-guide#customer-support).
 
 ### How do I update to a newer Windows image?
 
 First, determine if any Azure Resource Manager templates refer to specific versions. If so, update those templates, or keep older image versions. It's best to use **version: latest**.
 
-Next, if any virtual machine scale sets refer to a specific version, you should think about whether these will be scaled later, and decide whether to keep older versions. If neither of these conditions apply, delete older images in Azure Stack Hub Marketplace before downloading newer ones. Use marketplace management to delete them if that's how the original was downloaded. Then download the newer version.
+Next, if any virtual machine scale sets refer to a specific version, you should think about whether these will be scaled later, and decide whether to keep older versions. If neither of these conditions apply, delete older images in Azure Stack Hub Marketplace before downloading newer ones. Use Marketplace management to delete them if that's how the original was downloaded. Then download the newer version.
 
-### What are the licensing options for Windows Server Marketplace images on Azure Stack Hub?
+### What are the licensing options for Windows Server images on Azure Stack Hub Marketplace?
 
 Microsoft offers two versions of Windows Server images through Azure Stack Hub Marketplace. Only one version of this image can be used in an Azure Stack Hub environment.  
 
-- **Pay as you go (PAYG)**: These images run the full price Windows meters.
+- **Pay as you go (PAYG)**: These images run the full-price Windows meters.
    Who should use this option: Enterprise Agreement (EA) customers who use the *Consumption billing model*; CSPs who don't want to use SPLA licensing.
 - **Bring Your Own License (BYOL)**: These images run basic meters.
    Who should use this option: EA customers with a Windows Server license; CSPs who use SPLA licensing.
 
-Azure Hybrid Use Benefit (AHUB) isn't supported on Azure Stack Hub. Customers who license through the "Capacity" model must use the BYOL image. If you're testing with the Azure Stack Development Kit (ASDK), you can use either of these options.
+Azure Hybrid Use Benefit (AHUB) is not supported on Azure Stack Hub. Customers who license through the "Capacity" model must use the BYOL image. If you're testing with the Azure Stack Development Kit (ASDK), you can use either of these options.
 
 ### What if I downloaded the wrong version to offer my tenants/users?
 
@@ -57,7 +57,7 @@ $vm.LicenseType = "None"
 Update-AzVM -ResourceGroupName "<your RG>" -VM $vm
 ```
 
-You can check the license type of your VM by running the following commands. If the license model says **Windows_Server**, you'll be charged for the BYOL price. Otherwise, you'll be charged for the Windows meter per the PAYG model:
+You can check the license type of your VM by running the following command. If the license model says **Windows_Server**, you'll be charged for the BYOL price. Otherwise, you'll be charged for the Windows meter per the PAYG model:
 
 ```powershell
 $vm | ft Name, VmId,LicenseType,ProvisioningState
@@ -77,7 +77,7 @@ Update-AzVM -ResourceGroupName "<your RG>" -VM $vm
 
 These images do apply the **licenseType** parameter, so they're PAYG. You can set this parameter (see the previous FAQ answer). This only applies to the Windows Server software, not to layered products such as SQL, which require you to bring your own license. PAYG licensing doesn't apply to layered software products.
 
-You can only change the **licenseType** property for SQL Server images from Azure Stack Hub Marketplace if the version is XX.X.20190410 or higher. If you're running an older version of the SQL Server images from Azure Stack Hub Marketplace, you can't change the **licenseType** attribute and you must redeploy using the latest SQL Server images from Azure Stack Hub Marketplace.
+You can only change the **licenseType** property for SQL Server images from Azure Stack Hub Marketplace if the version is **XX.X.20190410** or higher. If you're running an older version of the SQL Server images from Azure Stack Hub Marketplace, you can't change the **licenseType** attribute and you must redeploy using the latest SQL Server images from Azure Stack Hub Marketplace.
 
 ### I have an Enterprise Agreement (EA) and will be using my EA Windows Server license; how do I make sure images are billed correctly?
 
@@ -114,11 +114,11 @@ See the [Automatic VM Activation](/previous-versions/windows/it-pro/windows-serv
 
 It's recommended that you execute the `slmgr /ipk` command line with the appropriate key before you run the `sysprep` command. Or, include the AVMA key in any Unattend.exe setup file.
 
-### I am trying to use my Windows Server 2016 image created on Azure and it's not activating or using KMS activation.
+### I am trying to use my Windows Server 2016 image created on Azure and it's not activating or using KMS activation
 
 Run the `slmgr /ipk` command. Azure images may not correctly fall back to AVMA, but if they can reach the Azure KMS system, they will activate. It's recommended that you ensure these VMs are set to use AVMA.
 
-### I have performed all of these steps but my VMs are still not activating.
+### I have performed all of these steps but my VMs are still not activating
 
 Contact your hardware supplier to verify that the correct BIOS markers were installed.
 
