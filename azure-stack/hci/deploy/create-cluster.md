@@ -164,7 +164,7 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
     If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable CredSSP for the wizard to continue. Once your cluster is created and the wizard has completed, you'll disable CredSSP to increase security.
 
     > [!NOTE]
-    CredSSP may report an issue if Active Directory trust is not established or is broken. This results when workgroup-based servers are used for cluster creation. In this case, try manually restarting each server in the cluster.
+    CredSSP may report an issue if an Active Directory trust isn't established or is broken. This results when workgroup-based servers are used for cluster creation. In this case, try manually restarting each server in the cluster.
 
 1. Review all validation statuses, download the report to get detailed information on any failures, make changes, then click **Validate again** as needed. Repeat again as necessary until all validation checks pass.
 1. Under **Create the cluster**, enter a name for your cluster.
