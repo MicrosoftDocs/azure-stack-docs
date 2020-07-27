@@ -80,7 +80,7 @@ Remember that the user running the `Register-AzStackHCI` cmdlet must have [Azure
    >
    > `Register-AzStackHCI : Azure Stack HCI is not yet available in region <regionName>`
    >
-   > To check if Azure Stack HCI is available in your Azure region, [use this tool](https://azure.microsoft.com/en-us/global-infrastructure/services/) and search for "hci."
+   > To check if Azure Stack HCI is available in your Azure region, [use this tool](https://azure.microsoft.com/global-infrastructure/services/) and search for "hci."
 
 ## Authenticate with Azure
 Once dependencies have been installed and the parameters have been validated, you need to authenticate (sign in) using your Azure account. Your account needs to have access to the Azure subscription that was specified in order for registration to proceed.
