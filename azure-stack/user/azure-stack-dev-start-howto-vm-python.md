@@ -4,7 +4,7 @@ description: Deploy a Python web app to a virtual machine in Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: overview
-ms.date: 3/12/2020
+ms.date: 07/24/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 3/12/2020
