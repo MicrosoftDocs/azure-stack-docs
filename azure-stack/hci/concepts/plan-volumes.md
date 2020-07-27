@@ -30,7 +30,7 @@ All volumes are accessible by all servers in the cluster at the same time. Once 
 
 We recommend making the number of volumes a multiple of the number of servers in your cluster. For example, if you have 4 servers, you will experience more consistent performance with 4 total volumes than with 3 or 5. This allows the cluster to distribute volume "ownership" (one server handles metadata orchestration for each volume) evenly among servers.
 
-We recommend limiting the total number of volumes to 64 volumes per cluster for Windows Server 2019.
+We recommend limiting the total number of volumes to 64 volumes per cluster.
 
 ## Choosing the filesystem
 
