@@ -4,7 +4,7 @@ description: How to plan storage volumes in Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 07/27/2020
 ---
 
 # Plan volumes in Azure Stack HCI
@@ -30,7 +30,7 @@ All volumes are accessible by all servers in the cluster at the same time. Once 
 
 We recommend making the number of volumes a multiple of the number of servers in your cluster. For example, if you have 4 servers, you will experience more consistent performance with 4 total volumes than with 3 or 5. This allows the cluster to distribute volume "ownership" (one server handles metadata orchestration for each volume) evenly among servers.
 
-We recommend limiting the total number of volumes to 64 volumes per cluster for Windows Server 2019.
+We recommend limiting the total number of volumes to 64 volumes per cluster.
 
 ## Choosing the filesystem
 
@@ -50,13 +50,13 @@ Volumes in Storage Spaces Direct provide resiliency to protect against hardware 
 
 ### With two servers
 
-With two servers in the cluster, you can use two-way mirroring. If you're running Windows Server 2019, you can also use nested resiliency.
+With two servers in the cluster, you can use two-way mirroring or you can use nested resiliency.
 
 Two-way mirroring keeps two copies of all data, one copy on the drives in each server. Its storage efficiency is 50 percent; to write 1 TB of data, you need at least 2 TB of physical storage capacity in the storage pool. Two-way mirroring can safely tolerate one hardware failure at a time (one server or drive).
 
 ![two-way-mirror](media/plan-volumes/two-way-mirror.png)
 
-Nested resiliency (available only on Windows Server 2019) provides data resiliency between servers with two-way mirroring, then adds resiliency within a server with two-way mirroring or mirror-accelerated parity. Nesting provides data resilience even when one server is restarting or unavailable. Its storage efficiency is 25 percent with nested two-way mirroring and around 35-40 percent for nested mirror-accelerated parity. Nested resiliency can safely tolerate two hardware failures at a time (two drives, or a server and a drive on the remaining server). Because of this added data resilience, we recommend using nested resiliency on production deployments of two-server clusters, if you're running Windows Server 2019. For more info, see [Nested resiliency](/windows-server/storage/storage-spaces/nested-resiliency).
+Nested resiliency provides data resiliency between servers with two-way mirroring, then adds resiliency within a server with two-way mirroring or mirror-accelerated parity. Nesting provides data resilience even when one server is restarting or unavailable. Its storage efficiency is 25 percent with nested two-way mirroring and around 35-40 percent for nested mirror-accelerated parity. Nested resiliency can safely tolerate two hardware failures at a time (two drives, or a server and a drive on the remaining server). Because of this added data resilience, we recommend using nested resiliency on production deployments of two-server clusters. For more info, see [Nested resiliency](/windows-server/storage/storage-spaces/nested-resiliency).
 
 ![Nested mirror-accelerated parity](media/plan-volumes/nested-mirror-accelerated-parity.png)
 
