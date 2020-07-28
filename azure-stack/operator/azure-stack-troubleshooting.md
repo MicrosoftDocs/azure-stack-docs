@@ -134,7 +134,7 @@ You may also take a snapshot of the original disk and create a new disk from it 
 
 ### License activation fails for Windows Server 2012 R2 during provisioning
 
-In this case, Windows will fail to activate and you will see a watermark on the bottom right corner of the screen. The WaSetup.xml logs located under C:\Windows\Panther contains the following event:
+In this case, Windows will fail to activate and you will see a watermark on the bottom-right corner of the screen. The WaSetup.xml logs located under C:\Windows\Panther contains the following event:
 
 ```xml
 <Event time="2019-05-16T21:32:58.660Z" category="ERROR" source="Unattend">
