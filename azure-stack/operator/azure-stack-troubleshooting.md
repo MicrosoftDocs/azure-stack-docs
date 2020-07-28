@@ -98,7 +98,7 @@ If you forget the password for a Linux VM and the **Reset password** option is n
 
 1. Choose a Linux VM to use as a recovery VM.
 
-1. Sign in to the Administrator portal:
+1. Sign in to the User portal:
    1. Make a note of the VM size, NIC, Public IP, NSG and data disks.
    1. Stop the impacted VM.
    1. Remove the impacted VM.
@@ -110,15 +110,15 @@ If you forget the password for a Linux VM and the **Reset password** option is n
    sudo su –
    mkdir /tempmount
    fdisk -l
-   mount /dev/sdc2 /tempmount (adjust /dev/sdc2 as necessary)
+   mount /dev/sdc2 /tempmount /*adjust /dev/sdc2 as necessary*/
    chroot /tempmount/
-   passwd root (substitute root with the user whose password you want to reset)
-   rm -f /.autorelabel (Remove the .autorelabel file to prevent a time consuming SELinux relabel of the disk)
-   exit (to exit the chroot environment)
+   passwd root /*substitute root with the user whose password you want to reset*/
+   rm -f /.autorelabel /*Remove the .autorelabel file to prevent a time consuming SELinux relabel of the disk*/
+   exit /*to exit the chroot environment*/
    umount /tempmount
    ```
 
-1. Sign in to the Administrator portal:
+1. Sign in to the User portal:
 
    1. Detach the disk from the Recovery VM.
    1. Recreate the VM from the disk.
