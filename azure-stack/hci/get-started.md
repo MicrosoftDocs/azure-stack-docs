@@ -4,7 +4,7 @@ description: Quickly connect to an existing Azure Stack HCI cluster and use Wind
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.date: 07/28/2020
 ---
 
 # Get started with Azure Stack HCI and Windows Admin Center
@@ -15,7 +15,9 @@ This topic provides instructions for connecting to an Azure Stack HCI cluster, a
 
 ## Install Windows Admin Center
 
-Windows Admin Center is a locally deployed, browser-based app for managing Azure Stack HCI. The simplest way to [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) is on a local management PC, although you can also install it on a server.
+Windows Admin Center is a locally deployed, browser-based app for managing Azure Stack HCI. The simplest way to [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) is on a local management PC (desktop mode), although you can also install it on a server (service mode).
+
+If you install Windows Admin Center on a server, tasks that require CredSSP, such as cluster creation and installing updates and extensions, require using an account that's a member of the Gateway Administrators group on the Windows Admin Center server. For more information, see the first two sections of [Configure User Access Control and Permissions](https://docs.microsoft.com/windows-server/manage/windows-admin-center/configure/user-access-control#gateway-access-role-definitions).
 
 ## Add and connect to an Azure Stack HCI cluster
 

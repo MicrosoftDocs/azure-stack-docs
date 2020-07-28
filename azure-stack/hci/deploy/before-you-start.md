@@ -4,19 +4,19 @@ description: How to prepare to deploy Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.date: 07/28/2020
 ---
 
 # Before you deploy Azure Stack HCI
 
-> Applies to: Azure Stack HCI, v20H2
+> Applies to: Azure Stack HCI, version 20H2
 
 In this how-to guide, you learn how to:
 
 - Determine whether your hardware meets the base requirements for standard (single site) or stretched (two-site) Azure Stack HCI clusters
 - Make sure you're not exceeding the maximum supported hardware specifications
 - Gather the required information for a successful deployment
-- Install Windows Admin Center on a management PC
+- Install Windows Admin Center on a management PC or server
 
 ## Determine hardware requirements
 
@@ -158,10 +158,13 @@ To prepare for deployment, gather the following details about your environment:
 - **Static IP addresses:** Azure Stack HCI requires static IP addresses for storage and workload (VM) traffic and doesn't support dynamic IP address assignment through DHCP for this high-speed network. You can use DHCP for the management network adapter unless you're using two in a team, in which case again you need to use static IPs. Consult your network administrator about the IP address you should use for each server in the cluster.
 - **RDMA networking:** There are two types of RDMA protocols: iWarp and RoCE. Note which one your network adapters use, and if RoCE, also note the version (v1 or v2). For RoCE, also note the model of your top-of-rack switch.
 - **VLAN ID:** Note the VLAN ID to be used for the network adapters on the servers, if any. You should be able to obtain this from your network administrator.
+- **Site names:** For stretched clusters, two sites are used for disaster recovery. These sites can be set up beforehand using Active Directory Domain Services, or the Create cluster wizard can automatically set them up for you. Consult your AD administrator about setting up sites. Or to learn more, see [Active Directory Domain Services Overview](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
 ## Install Windows Admin Center
 
-Windows Admin Center is a locally deployed, browser-based app for managing Azure Stack HCI. The simplest way to [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) is on a local management PC, although you can also install it on a server.
+Windows Admin Center is a locally deployed, browser-based app for managing Azure Stack HCI. The simplest way to [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) is on a local management PC (desktop mode), although you can also install it on a server (service mode).
+
+If install Windows Admin Center on a server, tasks that require CredSSP, such as cluster creation and installing updates and extensions, require using an account that's a member of the Gateway Administrators group on the Windows Admin Center server. For more information, see the first two sections of [Configure User Access Control and Permissions](https://docs.microsoft.com/windows-server/manage/windows-admin-center/configure/user-access-control#gateway-access-role-definitions).
 
 ## Next steps
 
