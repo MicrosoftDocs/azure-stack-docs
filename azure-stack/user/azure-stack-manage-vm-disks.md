@@ -4,7 +4,7 @@ description: Create disks for virtual machines in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 04/22/2020
+ms.date: 07/27/2020
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
@@ -55,7 +55,7 @@ After you create a VM, you can use the portal to:
 * Create a new data disk and attach it to the VM.
 * Upload an existing data disk and attach it to the VM.
 
-Each unmanaged disk you add should be put in a separate container.
+Put each unmanaged disk you add into a separate container.
 
 > [!NOTE]  
 > Disks created and managed by Azure are called [managed disks](/azure/virtual-machines/windows/managed-disks-overview).

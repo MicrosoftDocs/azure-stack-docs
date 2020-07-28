@@ -4,7 +4,7 @@ description: Learn how Azure Stack Hub users are billed for resource usage, and 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 07/27/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 03/21/2019
@@ -29,7 +29,7 @@ Each resource provider in Azure Stack Hub posts usage data per resource usage. T
 
 If you've [registered your Azure Stack Hub instance with Azure](azure-stack-registration.md), Azure Stack Hub is configured to send the usage data to Azure Commerce. After the data is uploaded to Azure, you can access it through the billing portal or by using Azure resource usage APIs. For more information about what usage data is reported to Azure, see [Usage data reporting](azure-stack-usage-reporting.md).  
 
-The following image shows the key components in the usage pipeline:
+The following figure shows the key components in the usage pipeline:
 
 ![Usage pipeline](media/azure-stack-billing-and-chargeback/usagepipeline.svg)
 
