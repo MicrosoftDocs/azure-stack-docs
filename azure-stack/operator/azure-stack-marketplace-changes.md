@@ -3,7 +3,7 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 07/22/2020
+ms.date: 07/27/2020
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 05/28/2020
@@ -62,6 +62,11 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Updated marketplace items
 
+- 07/27/2020: Ubuntu Server 20.04 LTS – version 20.04.202007080
+- 07/27/2020: Ubuntu Server 20.04 LTS – version 20.04.202007160
+- 07/27/2020: Ubuntu Server 20.04 LTS – version 20.04.202004230
+- 07/27/2020: Ubuntu Server 16.04 LTS – version 16.04.202007080
+- 07/27/2020: Ubuntu Server 18.04 LTS – version 16.04.202007080
 - 07/21/2020: {WS-PAYG} Free License: SQL Server 2016 SP2 Developer on Windows Server 2016 - version 13.2.20200513
 - 07/21/2020: {WS-PAYG} Free License: SQL Server 2016 SP2 Express on Windows Server 2016 - version 13.2.20200514
 - 07/21/2020: {WS-PAYG} Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016 - version 14.0.20200513
@@ -81,8 +86,6 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 - 6/19/2020: Bitnami Gitlab CE – version 13.0.2006110322
 - 6/16/2020: SQLIaaSExtension – version 1.3.20370
 - 6/12/2020: Bitnami Grafana - version 6.7.2006040249
-- 5/21/2020: Ubuntu Server 16.04 LTS - version 16.04.202004290
-- 5/21/2020: Ubuntu Server 18.04 LTS - version 18.04.202004080
 - 5/21/2020: Windows Server 2008 R2 SP1 BYOL - version 7601.24552.2004101827
 - 5/21/2020: Windows Server 2008 R2 SP1 Pay as you use - version 7601.24552.2004101827
 - 5/21/2020: Windows Server 2012 Datacenter BYOL - version 9200.23016.2004101828
