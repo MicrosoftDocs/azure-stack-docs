@@ -31,9 +31,9 @@ Before you run the Create Cluster wizard, make sure you:
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
 - Have an account that’s a member of the local Administrators group on each server.
 - Install Windows Admin Center on a PC or server for management. See [Before you deploy Azure Stack HCI](before-you-start.md).
-- For stretched clusters, set up your two sites beforehand in Active Directory. Bur not to worry, the wizard will create them for you if they're not already set up
+- For stretched clusters, set up your two sites beforehand in Active Directory. But not to worry, the wizard can set them up for you too.
 
-If you're running Windows Admin Center on a server (instead of a PC), use an account that's a member of the Gateway administrators group, or the local administrators group on the Windows Admin Center server.
+If you're running Windows Admin Center on a server (instead of a local PC), use an account that's a member of the Gateway administrators group, or the local administrators group on the Windows Admin Center server.
 
 Also, your Windows Admin Center management computer must be joined to the same Active Directory domain in which you'll create the cluster, or a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
 
