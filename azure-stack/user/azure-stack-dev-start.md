@@ -4,7 +4,7 @@ title: Set up a development environment in Azure Stack Hub
 description: Get started developing applications for Azure Stack Hub.  
 author: mattbriggs 
 ms.topic: overview 
-ms.date: 04/20/2020
+ms.date: 7/23/2020
 ms.author: mabrigg 
 ms.reviewer: sijuman 
 ms.lastreviewed: 11/11/2019
@@ -77,7 +77,7 @@ If you're using a Windows 10 machine, you can work with PowerShell 5.0 and Visua
 
 ### Set up your tools 
 
-1. Get set up with PowerShell. For instructions, see [Install Azure Stack Hub Powershell](../operator/azure-stack-powershell-install.md). 
+1. Get set up with PowerShell. For instructions, see [Install Azure Stack Hub PowerShell](../operator/azure-stack-powershell-install.md). 
 
 2. Download Azure Stack Hub Tools. For instructions, see [Download Azure Stack Hub tools from GitHub](../operator/azure-stack-powershell-download.md). 
 

@@ -66,14 +66,14 @@ Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media
 
 ### New features
 
-- For a list of new features in this release, see [this section](/azure-stack/operator/release-notes?view=azs-1908#whats-new-2) of the Azure Stack release notes.
+- For a list of new features in this release, see [this section](../operator/release-notes.md?view=azs-1908#whats-new-2) of the Azure Stack release notes.
 
 <!-- ### Changes -->
 
 ### Fixed and known issues
 
-<!-- - For a list of Azure Stack issues fixed in this release, see [this section](/azure-stack/operator/release-notes?view=azs-1908#fixes-1) of the Azure Stack release notes. -->
-- For a list of known issues, see [this article](/azure-stack/operator/known-issues?view=azs-1908).
+<!-- - For a list of Azure Stack issues fixed in this release, see [this section](../operator/release-notes.md?view=azs-1908#fixes-1) of the Azure Stack release notes. -->
+- For a list of known issues, see [this article](../operator/known-issues.md?view=azs-1908).
 - Note that available Azure Stack hotfixes are not applicable to the ASDK.
 ::: moniker-end
 
@@ -82,14 +82,14 @@ Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media
 
 ### New features
 
-- For a list of new features in this release, see [this section](/azure-stack/operator/release-notes?view=azs-1907#whats-in-this-update) of the Azure Stack release notes.
+- For a list of new features in this release, see [this section](../operator/release-notes.md?view=azs-1907#whats-in-this-update) of the Azure Stack release notes.
 
 <!-- ### Changes -->
 
 ### Fixed and known issues
 
 - When creating VM resources using some Marketplace images, you might not be able to complete the deployment. As a workaround, you can click on the **Download template and parameters** link in the **Summary** page and click on the **Deploy** button in the **Template** blade.
-- For a list of Azure Stack issues fixed in this release, see [this section](/azure-stack/operator/release-notes?view=azs-1907#fixes-3) of the Azure Stack release notes.
-- For a list of known issues, see [this article](/azure-stack/operator/known-issues?view=azs-1907).
-- Note that [available Azure Stack hotfixes](/azure-stack/operator/release-notes?view=azs-1907#hotfixes-3) are not applicable to the Azure Stack ASDK.
+- For a list of Azure Stack issues fixed in this release, see [this section](../operator/release-notes.md?view=azs-1907#fixes-3) of the Azure Stack release notes.
+- For a list of known issues, see [this article](../operator/known-issues.md?view=azs-1907).
+- Note that [available Azure Stack hotfixes](../operator/release-notes.md?view=azs-1907#hotfixes-3) are not applicable to the Azure Stack ASDK.
 ::: moniker-end

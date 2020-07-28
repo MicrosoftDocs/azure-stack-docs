@@ -74,7 +74,7 @@ Azure App Service on Azure Stack Hub Update 7 includes the following improvement
   - [2019-08 Cumulative Update for Windows Server 2016 for x64-based Systems (KB4512495)](https://support.microsoft.com/help/4512495)
 
 - **Access restrictions now enabled in user portal**:
-  - Users can now configure access restrictions for their web/API/functions apps according to the documentation published - [Azure App Service access restrictions](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions).
+  - Users can now configure access restrictions for their web/API/functions apps according to the documentation published - [Azure App Service access restrictions](/azure/app-service/app-service-ip-restrictions).
   
   > [!NOTE]
   > Azure App Service on Azure Stack Hub does not support service endpoints.
@@ -98,7 +98,7 @@ Azure App Service on Azure Stack Hub Update 7 includes the following improvement
 ## Post-deployment steps
 
 > [!IMPORTANT]
-> If you've provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
+> If you've provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
 ## Known issues (post-installation)
 
@@ -118,7 +118,7 @@ If you chose to deploy into an existing virtual network and an internal IP addre
 
 ## Known issues for cloud admins operating Azure App Service on Azure Stack Hub
 
-Refer to the documentation in the [Azure Stack Hub 1907 release notes](azure-stack-release-notes-1907.md)
+Refer to the documentation in the [Azure Stack Hub 1907 release notes](./release-notes.md?view=azs-2002)
 
 ## Next steps
 

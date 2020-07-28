@@ -32,13 +32,13 @@ In this tutorial, you learn how to:
 
 ## Configure an Azure AD tenant
 
-An Azure AD tenant is used to register an organization and authenticate users with VaaS. The partner will use the role-based access control (RBAC) features of the tenant to manage who in the partner organization can use VaaS. For more information, see [What is Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis).
+An Azure AD tenant is used to register an organization and authenticate users with VaaS. The partner will use the role-based access control (RBAC) features of the tenant to manage who in the partner organization can use VaaS. For more information, see [What is Azure Active Directory?](/azure/active-directory/fundamentals/active-directory-whatis).
 
 ### Create a tenant
 
 Create a tenant that your organization will use to access VaaS services. Use a descriptive name (for example, `ContosoVaaS@onmicrosoft.com`).
 
-1. Create an Azure AD tenant in the [Azure portal](https://portal.azure.com), or use an existing tenant. <!-- For instructions on creating new Azure AD tenants, see [Get started with Azure AD](https://docs.microsoft.com/azure/active-directory/get-started-azure-ad). -->
+1. Create an Azure AD tenant in the [Azure portal](https://portal.azure.com), or use an existing tenant. <!-- For instructions on creating new Azure AD tenants, see [Get started with Azure AD](/azure/active-directory/get-started-azure-ad). -->
 
 2. Add members of your organization to the tenant. These users will be responsible for using the service to view or schedule tests. Once you finish registration, you'll define users' access levels.
 
@@ -70,7 +70,7 @@ This process authorizes your tenant with the **Azure Stack Hub Validation Servic
     |--------------------------------|---------------------------------------------------------------------------------------------|
     | Organization Name | The official organization name. |
     | Azure AD Tenant Directory Name | The Azure AD Tenant Directory name being registered. |
-    | Azure AD Tenant Directory ID | The Azure AD Tenant Directory GUID associated with the directory. For information on how to find your Azure AD Tenant Directory ID, see [Get tenant ID](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-values-for-signing-in). |
+    | Azure AD Tenant Directory ID | The Azure AD Tenant Directory GUID associated with the directory. For information on how to find your Azure AD Tenant Directory ID, see [Get tenant ID](/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-values-for-signing-in). |
 
 2. Wait for confirmation from the Azure Stack Hub Validation team to check that your tenant can use the Azure Stack Hub Validation portal.
 

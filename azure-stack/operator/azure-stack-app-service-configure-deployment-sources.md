@@ -39,7 +39,7 @@ In addition to local Git, the following source control providers are supported:
 
 You must have a GitHub account to complete this task. You might want to use an account for your organization rather than a personal account.
 
-1. Sign in to GitHub, go to https://www.github.com/settings/developers, and then select **Register a new application**.
+1. Sign in to GitHub, go to <https://www.github.com/settings/developers>, and then select **Register a new application**.
 
     ![GitHub - Register a new application][3]
 
@@ -95,7 +95,7 @@ You must have a Microsoft account linked to a OneDrive account to complete this 
 > [!NOTE]
 > OneDrive for business accounts are currently not supported.
 
-1. Go to https://apps.dev.microsoft.com/?referrer=https%3A%2F%2Fdev.onedrive.com%2Fapp-registration.htm and sign in using your Microsoft account.
+1. Go to <https://apps.dev.microsoft.com/?referrer=https%3A%2F%2Fdev.onedrive.com%2Fapp-registration.htm> and sign in using your Microsoft account.
 2. Under **My applications**, select **Add an app**.
 
     ![OneDrive Applications][10]
@@ -129,7 +129,7 @@ You must have a Microsoft account linked to a OneDrive account to complete this 
 > [!NOTE]
 > You must have a DropBox account to complete this task. You might want to use an account for your organization rather than a personal account.
 
-1. Go to https://www.dropbox.com/developers/apps and sign in using your DropBox account credentials.
+1. Go to <https://www.dropbox.com/developers/apps> and sign in using your DropBox account credentials.
 2. Select **Create app**.
 
     ![Dropbox apps][14]
@@ -154,7 +154,7 @@ You must have a Microsoft account linked to a OneDrive account to complete this 
 
 ## Next steps
 
-Users can now use the deployment sources for things like [continuous deployment](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment), [local Git deployment](https://docs.microsoft.com/azure/app-service/deploy-local-git), and [cloud folder synchronization](https://docs.microsoft.com/azure/app-service/deploy-content-sync).
+Users can now use the deployment sources for things like [continuous deployment](/azure/app-service/deploy-continuous-deployment), [local Git deployment](/azure/app-service/deploy-local-git), and [cloud folder synchronization](/azure/app-service/deploy-content-sync).
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-configure-deployment-sources/App-service-provider-admin.png

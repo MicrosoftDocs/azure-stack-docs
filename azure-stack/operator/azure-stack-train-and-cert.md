@@ -42,4 +42,4 @@ Want to learn about Azure Stack Hub and demonstrate your Azure Stack Hub profici
 
 ## Next steps
 
-[Azure Stack Hub documentation](/azure-stack/operator)
+[Azure Stack Hub documentation](./index.yml)
