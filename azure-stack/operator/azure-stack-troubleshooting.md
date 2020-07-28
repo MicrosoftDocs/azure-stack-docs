@@ -5,10 +5,10 @@ description: Learn how to troubleshoot Azure Stack Hub, including issues with VM
 author: justinha
 
 ms.topic: article
-ms.date: 07/13/2020
+ms.date: 07/21/2020
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/13/2020
+ms.lastreviewed: 07/21/2020
 
 # Intent: As an Azure Stack operator, I want to troubleshoot Azure Stack issues.
 # Keyword: toubleshoot azure stack
@@ -91,6 +91,46 @@ You can use PowerShell to get stamp utilization information without help from Mi
 For more information, see [Azure Stack Hub Diagnostics](azure-stack-get-azurestacklog.md).
 
 ## Troubleshoot virtual machines (VMs)
+
+### Reset Linux VM password
+
+If you forget the password for a Linux VM and the **Reset password** option is not working due to issues with the VMAccess extension, you can perform a reset following these steps:
+
+1. Choose a Linux VM to use as a recovery VM.
+
+1. Sign in to the Administrator portal:
+   1. Make a note of the VM size, NIC, Public IP, NSG and data disks.
+   1. Stop the impacted VM.
+   1. Remove the impacted VM.
+   1. Attach the disk from the impacted VM as a data disk on the recovery VM (it may take a couple of minutes for the disk to be available).
+
+1. Sign in to the recovery VM and run the following command:
+
+   ```
+   sudo su –
+   mkdir /tempmount
+   fdisk -l
+   mount /dev/sdc2 /tempmount (adjust /dev/sdc2 as necessary)
+   chroot /tempmount/
+   passwd root (substitute root with the user whose password you want to reset)
+   rm -f /.autorelabel (Remove the .autorelabel file to prevent a time consuming SELinux relabel of the disk)
+   exit (to exit the chroot environment)
+   umount /tempmount
+   ```
+
+1. Sign in to the Administrator portal:
+
+   1. Detach the disk from the Recovery VM.
+   1. Recreate the VM from the disk.
+   1. Be sure to transfer the Public IP from the previous VM, attach the data disks, etc.
+
+
+You may also take a snapshot of the original disk and create a new disk from it rather than perform the changes directly on the original disk. For more information, see these topics:
+
+- [Reset password](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/reset-password)
+- [Create a disk from a snapshot](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-portal-linux#create-a-disk-from-the-snapshot)
+- [Changing and resetting the Root password](https://access.redhat.com/documentation/red_hat_enterprise_linux/7/html/system_administrators_guide/sec-terminal_menu_editing_during_boot#sec-Changing_and_Resetting_the_Root_Password)
+
 
 ### License activation fails for Windows Server 2012 R2 during provisioning
 
