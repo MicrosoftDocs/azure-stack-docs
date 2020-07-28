@@ -112,7 +112,7 @@ Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media
 
 ### New features
 
-- For a list of new features in this release, see [this section](../operator/release-notes.md?view=azs-1907#whats-in-this-update) of the Azure Stack release notes.
+- For a list of new features in this release, see [this section](../operator/release-notes.md?view=azs-1907) of the Azure Stack release notes.
 
 <!-- ### Changes -->
 
