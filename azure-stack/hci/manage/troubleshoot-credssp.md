@@ -3,7 +3,7 @@ title: Troubleshoot CredSSP
 description: Learn how to troubleshoot CredSSP
 author: v-dasis
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 07/28/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -25,9 +25,9 @@ If you experience issues with CredSSP, the following troubleshooting tips may he
 
 - When running the Create cluster wizard, CredSSP may report an issue if an Active Directory trust isn't established or is broken. This results when workgroup-based servers are used for cluster creation. In this case, try manually restarting each server in the cluster.
 
-- When running Windows Admin Center on a server (service mode), make sure the user account is a member of the local Administrators group.
+- When running Windows Admin Center on a server (service mode), make sure the user account is a member of the Gateway administrators group.
 
-- To enable or disable CredSSP on a particular server, make sure you belong to the local Administrators group on that computer.
+- To enable or disable CredSSP on a particular server, make sure you belong to the Gateway administrators group on that computer.
 
 ## Next steps
 
