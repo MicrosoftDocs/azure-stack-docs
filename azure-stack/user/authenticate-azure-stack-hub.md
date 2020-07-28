@@ -9,8 +9,8 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/13/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub user, I want to authenticate to Azure Stack Hub so that I can modify resources in my Azure subscription.
+# Keyword: authenticate Azure Stack Hub
 
 ---
 

@@ -9,8 +9,8 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 3/12/2020
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub user, I want to deploy a Python web app to a virtual machine in Azure Stack Hub.
+# Keyword: deploy python webapp VM azure stack hub
 
 ---
 
