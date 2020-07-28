@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: v-dasis
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 07/28/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version v20H2
 
-In this article you will learn how to use Windows Admin Center to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. The Create Cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md).
+In this article you will learn how to use Windows Admin Center to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. The Create Cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md). The PowerShell article is also a good source of information for what is going on under the hood of the wizard and for troubleshooting purposes.
 
 You have a choice between creating two cluster types:
 
@@ -29,10 +29,13 @@ Before you run the Create Cluster wizard, make sure you:
 
 - Have read the hardware and other requirements in [Before you deploy Azure Stack HCI](before-you-start.md).
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
-- Install Windows Admin Center on a management PC or server. See [Before you deploy Azure Stack HCI](before-you-start.md).
 - Have an account that’s a member of the local Administrators group on each server.
+- Install Windows Admin Center on a PC or server for management. See [Before you deploy Azure Stack HCI](before-you-start.md).
+- For stretched clusters, set up your two sites beforehand in Active Directory. Bur not to worry, the wizard will create them for you if they're not already set up
 
-Also, your management computer must be joined to the same Active Directory domain in which you'll create the cluster, or a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
+If you're running Windows Admin Center on a server (instead of a PC), use an account that's a member of the Gateway administrators group, or the local administrators group on the Windows Admin Center server.
+
+Also, your Windows Admin Center management computer must be joined to the same Active Directory domain in which you'll create the cluster, or a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
 
 Here are the major steps in the Create Cluster wizard:
 
@@ -160,7 +163,7 @@ You are now ready to resume the wizard and configure your cluster networking. Le
 
 ## Step 3: Clustering
 
-Step 3 of the wizard makes sure everything thus far has been set up correctly, assigns sites in the case of stretched cluster deployments, and then actually creates the cluster.
+Step 3 of the wizard makes sure everything thus far has been set up correctly, automatically sets up two sites in the case of stretched cluster deployments, and then actually creates the cluster. You can also set up your sites beforehand in Active Directory.
 
 1. Select **Next: Clustering**.
 1. Under **Validate the cluster**, select **Validate**. Validation may take several minutes.
@@ -200,7 +203,7 @@ If resolving the cluster isn't successful after some time, in most cases you can
 
 After the wizard has completed, there are still some important tasks you need to complete.
 
-The first task is to disable the Credential Security Support Provider (CredSSP) protocol on each server for security purposes. Remember that CredSSP needed to be enabled for the wizard. For more information, see [CVE-2018-0886](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2018-0886).
+The first task is to disable the Credential Security Support Provider (CredSSP) protocol on each server for security purposes. Remember that CredSSP needed to be enabled for the wizard. If you experience issues with CredSSP, see [Troubleshoot CredSSP] for more information.
 
 1. In Windows Admin Center, under **All connections**, select the cluster you just created.
 1. Under **Tools**, select **Servers**.
