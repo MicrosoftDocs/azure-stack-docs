@@ -9,8 +9,8 @@ ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 3/19/2020
 
-# Intent: As an Azure Stack Hub user, I want to learn which AKS engine areas Microsoft supports.
-# Keyword: what areas of AKS engine does microsoft support kubernetes marketplace item 
+# Intent: As an Azure Stack Hub user, I want to learn about the limitations of the AKS engine on Azure Stack Hub.
+# Keyword: AKS engine support policies kubernetes cluster
 
 ---
 
