@@ -93,10 +93,12 @@ For rotation of internal and external secrets:
 
 1. It's highly recommended that you first update your Azure Stack Hub instance to the latest version.
 
+::: moniker range="<azs-1811"
     > [!IMPORTANT]
     > For pre-1811 versions:
     > - If secret rotation has already been performed, you must update to version 1811 or later before you perform secret rotation again. Secret Rotation must be executed via the [Privileged Endpoint](azure-stack-privileged-endpoint.md) and requires Azure Stack Hub Operator credentials. If you don't know whether secret rotation has been run on your environment, update to 1811 before performing secret rotation.
     > - You don't need to rotate secrets to add extension host certificates. You should follow the instructions in the article [Prepare for extension host for Azure Stack Hub](azure-stack-extension-host-prepare.md) to add extension host certificates.
+::: moniker-end
 
 2. Notify your users of planned maintenance operations. Schedule normal maintenance windows, as much as possible,  during non-business hours. Maintenance operations may affect both user workloads and portal operations.
 
@@ -229,14 +231,14 @@ Reference the PowerShell script in step 2 of [Rotate external secrets](#rotate-e
     > Pre-1811 versions don't require the `-Internal` flag. 
 ::: moniker-end
 
-    ```powershell
-    # Run Secret Rotation
-    ...
-    Invoke-Command -Session $PEPSession -ScriptBlock {
-        Start-SecretRotation -Internal -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCreds -CertificatePassword $using:CertPassword
-    }
-    ...
-    ```
+   ```powershell
+   # Run Secret Rotation
+   ...
+   Invoke-Command -Session $PEPSession -ScriptBlock {
+       Start-SecretRotation -Internal -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCreds -CertificatePassword $using:CertPassword
+   }
+   ...
+   ```
 
 3. After successful completion, your console will display `ActionPlanInstanceID ... CurrentStatus: Completed`, followed by a `DONE`
 
@@ -259,8 +261,8 @@ The baseboard management controller monitors the physical state of your servers.
 ::: moniker range="<azs-1910"
 1. **Versions earlier than 1910**: Update the BMC on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
 ::: moniker-end
-::: moniker range">=azs-1910"
-   **Version 1910 and later**: It's no longer required that you first update the BMC credentials on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same, and can't exceed 16 characters.
+::: moniker range=">=azs-1910"
+1. **Version 1910 and later**: It's no longer required that you first update the BMC credentials on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same, and can't exceed 16 characters.
 ::: moniker-end
     | Parameter | Description | State |
     | --- | --- | --- |
