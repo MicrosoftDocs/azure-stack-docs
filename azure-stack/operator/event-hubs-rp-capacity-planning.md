@@ -7,7 +7,7 @@ ms.service: azure-stack
 ms.topic: how-to
 ms.date: 12/09/2019
 ms.reviewer: jfggdl
-ms.lastreviewed: 12/09/2019
+ms.lastreviewed: 08/15/2020
 ---
 
 # How to do capacity planning for Event Hubs on Azure Stack Hub

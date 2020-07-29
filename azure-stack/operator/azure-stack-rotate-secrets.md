@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.date: 06/29/2020
 ms.reviewer: ppacent
 ms.author: bryanla
-ms.lastreviewed: 12/13/2019
+ms.lastreviewed: 08/15/2020
 monikerRange: '>=azs-1803'
 
 # Intent: As an Azure Stack Hub operator, I want to rotate secrets in Azure Stack Hub.
@@ -47,7 +47,9 @@ Starting with release 1811, secret rotation is separated for internal and extern
     \* Only applicable if the environment's identity provider is Active Directory Federated Services (AD FS).
 
 > [!Important]
-> All other secure keys and strings, including BMC and switch passwords as well as user and administrator account passwords are still manually updated by the administrator. In addition, this article does not address secret rotation for value-add resource providers. To rotate those secrets, refer to the following articles instead:
+> All other secure keys and strings are still manually updated by the administrator. This includes user and administrator account passwords, [network switch passwords and permissions](azure-stack-customer-defined.md), and baseboard management controller (BMC) credentials which is [covered later in this article](#update-the-bmc-credential). 
+>
+>In addition, this article does not address secret rotation for value-add resource providers. To rotate those secrets, refer to the following articles instead:
 >
 > - [Event Hubs on Azure Stack Hub secrets rotation](app-service-rotate-certificates.md)
 > - [Rotate App Service on Azure Stack Hub secrets and certificates](app-service-rotate-certificates.md)
@@ -89,16 +91,16 @@ Azure Stack Hub supports secret rotation with external certificates from a new C
 
 For rotation of internal and external secrets:
 
-1. It's highly recommended you update your Azure Stack Hub instance to the latest version.
+1. It's highly recommended that you first update your Azure Stack Hub instance to the latest version.
 
     > [!IMPORTANT]
     > For pre-1811 versions:
     > - If secret rotation has already been performed, you must update to version 1811 or later before you perform secret rotation again. Secret Rotation must be executed via the [Privileged Endpoint](azure-stack-privileged-endpoint.md) and requires Azure Stack Hub Operator credentials. If you don't know whether secret rotation has been run on your environment, update to 1811 before performing secret rotation.
     > - You don't need to rotate secrets to add extension host certificates. You should follow the instructions in the article [Prepare for extension host for Azure Stack Hub](azure-stack-extension-host-prepare.md) to add extension host certificates.
 
-2. Notify your users of any maintenance operations. Schedule normal maintenance windows, as much as possible,  during non-business hours. Maintenance operations may affect both user workloads and portal operations.
+2. Notify your users of planned maintenance operations. Schedule normal maintenance windows, as much as possible,  during non-business hours. Maintenance operations may affect both user workloads and portal operations.
 
-3. Operators may notice alerts open and automatically close during rotation of Azure Stack Hub secrets.  This behavior is expected and the alerts can be ignored. Operators can verify the validity of these alerts by running **Test-AzureStack**.  For operators using System Center Operations Manager to monitor Azure Stack Hub systems, placing a system in maintenance mode will prevent these alerts from reaching their ITSM systems but will continue to alert if the Azure Stack Hub system becomes unreachable.
+3. During rotation of secrets, operators may notice alerts open and automatically close. This behavior is expected and the alerts can be ignored. Operators can verify the validity of these alerts using the [Test-AzureStack PowerShell cmdlet](azure-stack-diagnostic-test.md). For operators using System Center Operations Manager to monitor Azure Stack Hub systems, placing a system in maintenance mode will prevent these alerts from reaching their ITSM systems but will continue to alert if the Azure Stack Hub system becomes unreachable.
 
 For rotation of external secrets, complete these additional prerequisites:
 
@@ -201,7 +203,7 @@ Complete the following steps to rotate external secrets:
 
     - Runs **Start-SecretRotation** in the PEP session, using the following parameters:
         - **PfxFilesPath**: The network path to your Certificates directory created earlier.  
-        - **PathAccessCredential**: THe PSCredential object for credentials to the share.
+        - **PathAccessCredential**: The PSCredential object for credentials to the share.
         - **CertificatePassword**: A secure string of the password used for all of the pfx certificate files created.
 
 3. External secret rotation takes approximately one hour. After successful completion, your console will display **ActionPlanInstanceID ... CurrentStatus: Completed**, followed by a **DONE**. Remove your certificates from the share created in the prerequisites section and store them in their secure backup location.
@@ -238,9 +240,9 @@ Reference the PowerShell script in step 2 of [Rotate external secrets](#rotate-e
     >
     > Contact support if you experience repeated secret rotation failures.
 
-## Update the baseboard management controller (BMC) credential
+## Update the BMC credential
 
-The baseboard management controller (BMC) monitors the physical state of your servers. Refer to your original equipment manufacturer (OEM) hardware vendor for instructions to update the user account name and password of the BMC.
+The baseboard management controller monitors the physical state of your servers. Refer to your original equipment manufacturer (OEM) hardware vendor for instructions to update the user account name and password of the BMC.
 
 >[!NOTE]
 > Your OEM may provide additional management apps. Updating the user name or password for other management apps has no effect on the BMC user name or password.
