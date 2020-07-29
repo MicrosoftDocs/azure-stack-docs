@@ -68,6 +68,8 @@
       href: manage/languages.md
     - name: Troubleshoot cluster validation reporting
       href: manage/validate-qos.md
+    - name: Troubleshoot CredSSP
+      href: manage/troubleshoot-credssp.md
   - name: Manage Azure services
     items:
     - name: Register Windows Admin Center with Azure
@@ -80,8 +82,6 @@
       href: manage/use-azure-backup.md
     - name: Use Azure Network Adapter
       href: manage/use-azure-network-adapter.md
-    - name: Troubleshoot CredSSP
-      href: manage/troubleshoot-credssp.md
 - name: Concepts
   items:
   - name: Stretched clusters

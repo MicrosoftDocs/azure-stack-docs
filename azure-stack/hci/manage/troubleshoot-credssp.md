@@ -3,7 +3,7 @@ title: Troubleshoot CredSSP
 description: Learn how to troubleshoot CredSSP
 author: v-dasis
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 07/29/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version v20H2
 
-Some Windows PowerShell scripts for Azure Stack HCI use Windows Remote Management (WinRM), which does not allow credential delegation by default. To allow delegation, the computer needs to have Credential Security Support Provider (CredSSP) enabled temporarily. CredSSP is a security support provider that allows a client to delegate credentials to a target server for remote authentication. Enabling CredSSP is a degraded security posture, and in most circumstances should be disabled after the task or operation is completed.
+Some Azure Stack HCI operations use Windows Remote Management (WinRM), which doesn't allow credential delegation by default. To allow delegation, the computer needs to have Credential Security Support Provider (CredSSP) enabled temporarily. CredSSP is a security support provider that allows a client to delegate credentials to a target server for remote authentication. Enabling CredSSP is a degraded security posture, and in most circumstances should be disabled after the task or operation is completed.
 
 Some tasks that require CredSSP to be enabled include:
 
@@ -27,8 +27,8 @@ If you experience issues with CredSSP, the following troubleshooting tips may he
 
 - When running Windows Admin Center on a server (service mode), make sure the user account is a member of the Gateway administrators group.
 
-- To enable or disable CredSSP on a particular server, make sure you belong to the Gateway administrators group on that computer.
+- To enable or disable CredSSP on a particular server, make sure you belong to the Gateway administrators group on that computer. For more information, see the first two sections of [Configure User Access Control and Permissions](/windows-server/manage/windows-admin-center/configure/user-access-control#gateway-access-role-definitions).
 
 ## Next steps
 
-For more information on CredSSP, see [Credential Security Support Provider](https://docs.microsoft.com/windows/win32/secauthn/credential-security-support-provider).
+For more information on CredSSP, see [Credential Security Support Provider](/windows/win32/secauthn/credential-security-support-provider).
