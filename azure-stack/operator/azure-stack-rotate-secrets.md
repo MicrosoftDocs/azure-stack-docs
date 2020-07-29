@@ -120,7 +120,7 @@ For rotation of external secrets, complete these additional prerequisites:
     - Full path = **\\\\\<IPAddress>\\\<ShareName>\Certificates\AAD**
 
     > [!IMPORTANT]
-    > **Start-SecretRotation** will perform validations to ensure a compliant folder structure, per step #6. A folder structure that is not compliant will throw the following error:
+    > `Start-SecretRotation` will perform validations to ensure a compliant folder structure, per step #6. A folder structure that is not compliant will throw the following error:
     >
     > ```powershell
     > Cannot bind argument to parameter 'Path' because it is null.
@@ -199,17 +199,17 @@ Complete the following steps to rotate external secrets:
 
     - Creates a PowerShell Session with the [Privileged endpoint](azure-stack-privileged-endpoint.md) using the **CloudAdmin** account, and stores the session as a variable. This variable is used as a parameter in the next step. 
 
-    - Runs **[Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/Invoke-Command?view=powershell-5.1)**, passing the PEP session variable as the **Session** parameter.
+    - Runs [Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/Invoke-Command?view=powershell-5.1), passing the PEP session variable as the `-Session` parameter.
 
-    - Runs **Start-SecretRotation** in the PEP session, using the following parameters:
-        - **PfxFilesPath**: The network path to your Certificates directory created earlier.  
-        - **PathAccessCredential**: The PSCredential object for credentials to the share.
-        - **CertificatePassword**: A secure string of the password used for all of the pfx certificate files created.
+    - Runs `Start-SecretRotation` in the PEP session, using the following parameters:
+        - `-PfxFilesPath`: The network path to your Certificates directory created earlier.  
+        - `-PathAccessCredential`: The PSCredential object for credentials to the share.
+        - `-CertificatePassword`: A secure string of the password used for all of the pfx certificate files created.
 
-3. External secret rotation takes approximately one hour. After successful completion, your console will display **ActionPlanInstanceID ... CurrentStatus: Completed**, followed by a **DONE**. Remove your certificates from the share created in the prerequisites section and store them in their secure backup location.
+3. External secret rotation takes approximately one hour. After successful completion, your console will display `ActionPlanInstanceID ... CurrentStatus: Completed`, followed by a `DONE`. Remove your certificates from the share created in the prerequisites section and store them in their secure backup location.
 
     > [!Note]
-    > If secret rotation fails, follow the instructions in the error message and re-run **Start-SecretRotation** with the **-ReRun** parameter.
+    > If secret rotation fails, follow the instructions in the error message and re-run `Start-SecretRotation` with the `-ReRun` parameter.
     >
     >```powershell
     >Start-SecretRotation -ReRun
@@ -223,22 +223,25 @@ Internal secret rotation is only required if you suspect one has been compromise
 
 Reference the PowerShell script in step 2 of [Rotate external secrets](#rotate-external-secrets). The script provides an example you can adapt for internal secret rotation, by making a few changes to run the following steps:
 
-1. In the "Run Secret Rotation" section, add the `-Internal` switch to the `Start-SecretRotation` command, for example:
+1. In the "Run Secret Rotation" section, add the `-Internal` parameter to the [Start-SecretRotation cmdlet](/azure-stack/reference/pep-2002/start-secretrotation), for example:
+::: moniker range="<azs-1811"
+    > [!Note]
+    > Pre-1811 versions don't require the `-Internal` flag. 
+::: moniker-end
 
     ```powershell
     # Run Secret Rotation
     ...
-    Invoke-Command -Session $PEPSession -ScriptBlock -Internal {
+    Invoke-Command -Session $PEPSession -ScriptBlock {
+        Start-SecretRotation -Internal -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCreds -CertificatePassword $using:CertPassword
+    }
     ...
     ```
 
-    > [!Note]
-    > Pre-1811 versions don't require the **-Internal** flag. 
-
-3. After successful completion, your console will display **ActionPlanInstanceID ... CurrentStatus: Completed**, followed by a **DONE**
+3. After successful completion, your console will display `ActionPlanInstanceID ... CurrentStatus: Completed`, followed by a `DONE`
 
     > [!Note]
-    > If secret rotation fails, follow the instructions in the error message and rerun **Start-SecretRotation** with the  **-Internal** and **-ReRun** parameters.  
+    > If secret rotation fails, follow the instructions in the error message and rerun `Start-SecretRotation` with the  `-Internal` and `-ReRun` parameters.  
     >
     >```powershell
     >Start-SecretRotation -Internal -ReRun
@@ -253,17 +256,19 @@ The baseboard management controller monitors the physical state of your servers.
 >[!NOTE]
 > Your OEM may provide additional management apps. Updating the user name or password for other management apps has no effect on the BMC user name or password.
 
+::: moniker range="<azs-1910"
 1. **Versions earlier than 1910**: Update the BMC on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
-
+::: moniker-end
+::: moniker range">=azs-1910"
    **Version 1910 and later**: It's no longer required that you first update the BMC credentials on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same, and can't exceed 16 characters.
-
+::: moniker-end
     | Parameter | Description | State |
     | --- | --- | --- |
     | BypassBMCUpdate | When you use the parameter, credentials in the BMC aren't update. Only the Azure Stack Hub internal datastore is updated. | Optional |
 
 2. Open a privileged endpoint in Azure Stack Hub sessions. For instructions, see [Using the privileged endpoint in Azure Stack Hub](azure-stack-privileged-endpoint.md).
 
-3. After your PowerShell prompt has changed to **[IP address or ERCS VM name]: PS>** or to **[azs-ercs01]: PS>**, depending on the environment, run `Set-BmcCredential` by running `Invoke-Command`. Pass your privileged endpoint session variable as a parameter. For example:
+3. After your PowerShell prompt has changed to `[IP address or ERCS VM name]: PS>` or to `[azs-ercs01]: PS>`, depending on the environment, run `Set-BmcCredential` by running `Invoke-Command`. Pass your privileged endpoint session variable as a parameter. For example:
 
     ```powershell
     # Interactive Version
@@ -303,7 +308,15 @@ The baseboard management controller monitors the physical state of your servers.
 
 ## Reference: Start-SecretRotation cmdlet
 
-Rotates the secrets of an Azure Stack Hub System. Only executed against the Azure Stack Hub privileged endpoint.
+[Start-SecretRotation cmdlet](/azure-stack/reference/pep-2002/start-secretrotation) rotates the infrastructure secrets of an Azure Stack Hub system. This cmdlet can only be executed against the Azure Stack Hub privileged endpoint, by using an  `Invoke-Command` script block passing the PEP session in the `-Session` parameter. By default, it rotates only the certificates of all external network infrastructure endpoints.
+
+| Parameter | Type | Required | Position | Default | Description |
+|--|--|--|--|--|--|
+| `PfxFilesPath` | String  | False  | Named  | None  | The fileshare path to the **\Certificates** directory containing all external network endpoint certificates. Only required when rotating external secrets. End directory must be **\Certificates**. |
+| `CertificatePassword` | SecureString | False  | Named  | None  | The password for all certificates provided in the -PfXFilesPath. Required value if PfxFilesPath is provided when external secrets are rotated. |
+| `Internal` | String | False | Named | None | Internal flag must be used anytime an Azure Stack Hub operator wishes to rotate internal infrastructure secrets. |
+| `PathAccessCredential` | PSCredential | False  | Named  | None  | The PowerShell credential for the fileshare of the **\Certificates** directory containing all external network endpoint certificates. Only required when rotating external secrets.  |
+| `ReRun` | SwitchParameter | False  | Named  | None  | Must be used anytime secret rotation is reattempted after a failed attempt. |
 
 ### Syntax
 
@@ -330,20 +343,6 @@ Start-SecretRotation [-ReRun]
 ```powershell
 Start-SecretRotation [-ReRun] [-Internal]
 ```
-
-### Description
-
-The **Start-SecretRotation** cmdlet rotates the infrastructure secrets of an Azure Stack Hub system. By default, it rotates only the certificates of all external network infrastructure endpoints. If used with the -Internal flag, internal infrastructure secrets will be rotated. When rotating external network infrastructure endpoints, **Start-SecretRotation** should be run with an **Invoke-Command** script block with the Azure Stack Hub environment's privileged endpoint session passed in as the **Session** parameter.
-
-### Parameters
-
-| Parameter | Type | Required | Position | Default | Description |
-|--|--|--|--|--|--|
-| `PfxFilesPath` | String  | False  | Named  | None  | The fileshare path to the **\Certificates** directory containing all external network endpoint certificates. Only required when rotating external secrets. End directory must be **\Certificates**. |
-| `CertificatePassword` | SecureString | False  | Named  | None  | The password for all certificates provided in the -PfXFilesPath. Required value if PfxFilesPath is provided when external secrets are rotated. |
-| `Internal` | String | False | Named | None | Internal flag must be used anytime an Azure Stack Hub operator wishes to rotate internal infrastructure secrets. |
-| `PathAccessCredential` | PSCredential | False  | Named  | None  | The PowerShell credential for the fileshare of the **\Certificates** directory containing all external network endpoint certificates. Only required when rotating external secrets.  |
-| `ReRun` | SwitchParameter | False  | Named  | None  | Must be used anytime secret rotation is reattempted after a failed attempt. |
 
 ### Examples
 
