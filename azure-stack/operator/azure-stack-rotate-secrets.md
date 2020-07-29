@@ -231,14 +231,14 @@ Reference the PowerShell script in step 2 of [Rotate external secrets](#rotate-e
     > Pre-1811 versions don't require the `-Internal` flag. 
 ::: moniker-end
 
-   ```powershell
-   # Run Secret Rotation
-   ...
-   Invoke-Command -Session $PEPSession -ScriptBlock {
-       Start-SecretRotation -Internal -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCreds -CertificatePassword $using:CertPassword
-   }
-   ...
-   ```
+    ```powershell
+    # Run Secret Rotation
+    ...
+    Invoke-Command -Session $PEPSession -ScriptBlock {
+        Start-SecretRotation -Internal -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCreds -CertificatePassword $using:CertPassword
+    }
+    ...
+    ```
 
 3. After successful completion, your console will display `ActionPlanInstanceID ... CurrentStatus: Completed`, followed by a `DONE`
 
