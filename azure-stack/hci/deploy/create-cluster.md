@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: v-dasis
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 07/29/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -30,7 +30,7 @@ Before you run the Create Cluster wizard, make sure you:
 - Have read the hardware and other requirements in [Before you deploy Azure Stack HCI](before-you-start.md).
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
 - Have an account that’s a member of the local Administrators group on each server.
-- Install Windows Admin Center on a PC or server for management. See [Before you deploy Azure Stack HCI](before-you-start.md).
+- Install Windows Admin Center on a PC or server for management. See [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
 - For stretched clusters, set up your two sites beforehand in Active Directory. But not to worry, the wizard can set them up for you too.
 
 If you're running Windows Admin Center on a server (instead of a local PC), use an account that's a member of the Gateway administrators group, or the local administrators group on the Windows Admin Center server.
