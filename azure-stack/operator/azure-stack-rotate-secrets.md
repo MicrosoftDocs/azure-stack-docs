@@ -226,10 +226,6 @@ Internal secret rotation is only required if you suspect one has been compromise
 Reference the PowerShell script in step 2 of [Rotate external secrets](#rotate-external-secrets). The script provides an example you can adapt for internal secret rotation, by making a few changes to run the following steps:
 
 1. In the "Run Secret Rotation" section, add the `-Internal` parameter to the [Start-SecretRotation cmdlet](/azure-stack/reference/pep-2002/start-secretrotation), for example:
-::: moniker range="<azs-1811"
-    > [!Note]
-    > Pre-1811 versions don't require the `-Internal` flag. 
-::: moniker-end
 
     ```powershell
     # Run Secret Rotation
@@ -239,6 +235,11 @@ Reference the PowerShell script in step 2 of [Rotate external secrets](#rotate-e
     }
     ...
     ```
+
+::: moniker range="<azs-1811"
+    > [!Note]
+    > Pre-1811 versions don't require the `-Internal` flag. 
+::: moniker-end
 
 3. After successful completion, your console will display `ActionPlanInstanceID ... CurrentStatus: Completed`, followed by a `DONE`
 
