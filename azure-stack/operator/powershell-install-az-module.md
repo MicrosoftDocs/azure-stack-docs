@@ -51,13 +51,13 @@ $PSVersionTable.PSVersion
 To use Azure PowerShell in PowerShell 5.1 on Windows:
 
 1. Update to
-   [Windows PowerShell 5.1](//powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)
+   [Windows PowerShell 5.1](/powershell/scripting/windows-powershell/install/installing-windows-powershell#upgrading-existing-windows-powershell)
    if needed. If you're on Windows 10, you already have PowerShell 5.1 installed.
-2. Install [.NET Framework 4.7.2 or later](//dotnet/framework/install).
+2. Install [.NET Framework 4.7.2 or later](/dotnet/framework/install).
 3. Make sure you have the latest version of PowerShellGet. Run `Install-Module PowerShellGet -MinimumVersion 2.2.3 -Force`. 
 
 ## 2. Prerequisites for Linux and Mac
-PowerShell Core 6.x or later version is needed. Follow the [link](//powershell/scripting/install/installing-powershell-core-on-windows) for instructions
+PowerShell Core 6.x or later version is needed. Follow the [link](/powershell/scripting/install/installing-powershell-core-on-windows) for instructions
 
 ## 3. Uninstall existing versions of the Azure Stack Hub PowerShell modules
 
