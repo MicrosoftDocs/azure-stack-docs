@@ -3,7 +3,7 @@ author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: include
-ms.date: 05/05/2020
+ms.date: 08/15/2020
 ms.reviewer: bryanla
 ms.lastreviewed: 04/14/2020
 ---
