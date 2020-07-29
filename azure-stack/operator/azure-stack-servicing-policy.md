@@ -66,12 +66,8 @@ For information about currently available hotfixes, see the release notes for th
 
 ## Keep your system under support
 
-::: moniker range="azs-2005"
-
 > [!IMPORTANT]  
-> With the Azure Stack Hub 2002 update, Microsoft is temporarily extending our Azure Stack Hub support policy statements. We are working with customers around the world who are responding to COVID-19 and who may be making important decisions about their Azure Stack Hub systems, how they are updated and managed, and as a result, ensuring their data center business operations continue to operate normally. In support of our customers, Microsoft is offering a temporary support policy change extension to include three previous update versions. As a result, the newly released 2002 update and any one of the three previous update versions (e.g. 1910, 1908, and 1907) will be supported.
-
-::: moniker-end
+> Starting with the Azure Stack Hub 2002 update, Microsoft is temporarily extending our [Azure Stack Hub support policy statements](azure-stack-servicing-policy.md).  We are working with customers around the world who are responding to COVID-19 and who may be making important decisions about their Azure Stack Hub systems, how they are updated and managed, and as a result, ensuring their data center business operations continue to operate normally. In support of our customers, Microsoft is offering a temporary support policy change extension to include three previous update versions.  As a result, the newly released 2005 update and any one of the three previous update versions (2002, 1910, and 1908) will be supported.
 
 For your Azure Stack Hub instance to remain in a supported state, the instance must run the most recently released update version or run either of the two preceding update versions.
 
