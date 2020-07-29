@@ -23,7 +23,7 @@ Start-SecretRotation [-PathAccessCredential <Object>] [-ReRun] [-CertificatePass
 ```
 
 ## Description
-Invokes the secret rotation process for infrastructure secrets of an Azure Stack Hub system. By default, it rotates only the certificates of external network infrastructure endpoints. See [Rotate secrets in Azure Stack Hub](../operator/azure-stack-rotate-secrets.md) for more details.
+Invokes the secret rotation process for infrastructure secrets of an Azure Stack Hub system. By default, it rotates only the certificates of external network infrastructure endpoints. See [Rotate secrets in Azure Stack Hub](../../operator/azure-stack-rotate-secrets.md) for more details.
 
 ## Parameters
 
