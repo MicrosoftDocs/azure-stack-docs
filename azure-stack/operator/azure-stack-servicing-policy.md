@@ -5,7 +5,7 @@ description: Learn about the Azure Stack Hub servicing policy and how to keep an
 author: sethmanheim
 
 ms.topic: article
-ms.date: 07/16/2020
+ms.date: 07/29/2020
 ms.author: sethm
 ms.reviewer: niy
 ms.lastreviewed: 03/18/2020
@@ -22,9 +22,9 @@ This article describes the servicing policy for Azure Stack Hub integrated syste
 
 ## Download update packages for integrated systems
 
-Microsoft releases both full monthly update packages as well as hotfix packages to address specific issues.
+Microsoft releases both full update packages as well as hotfix packages to address specific issues.
 
-Monthly update packages are hosted in a secure Azure endpoint. You can download them manually using the [Azure Stack Hub Updates downloader tool](https://aka.ms/azurestackupdatedownload). If your scale unit is connected, the update appears automatically in the administrator portal as **Update available**. Full, monthly update packages are well documented at each release. For more information about each release, you can click any release from the [Update package release cadence](#update-package-release-cadence) section of this article.
+Full update packages are hosted in a secure Azure endpoint. You can download them manually using the [Azure Stack Hub Updates downloader tool](https://aka.ms/azurestackupdatedownload). If your scale unit is connected, the update appears automatically in the administrator portal as **Update available**. For more information about each release, you can click any release from the [Update package release cadence](#update-package-release-cadence) section of this article.
 
 Hotfix update packages are hosted in the same secure Azure endpoint. You can download them using the embedded links in each of the respective hotfix KB articles; for example, [Azure Stack Hub Hotfix 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114). Similar to the full, monthly update packages, Azure Stack Hub operators can download the .xml, .bin, and .exe files and import them using the procedure in [Apply updates in Azure Stack Hub](azure-stack-apply-updates.md). Azure Stack Hub operators with connected scale units will see the hotfixes automatically appear in the administrator portal with the message **Update available**.
 
@@ -49,7 +49,6 @@ For information about a specific update, including how to download it, see the r
 - [Azure Stack Hub 2005 update](/azure-stack/operator/release-notes?view=azs-2005)
 - [Azure Stack Hub 2002 update](/azure-stack/operator/release-notes?view=azs-2002)
 - [Azure Stack Hub 1910 update](/azure-stack/operator/release-notes?view=azs-1910)
-- [Azure Stack Hub 1908 update](/azure-stack/operator/release-notes?view=azs-1908)
 
 ## Hotfixes
 
@@ -64,7 +63,6 @@ For information about currently available hotfixes, see the release notes for th
 - [Azure Stack Hub 2005 hotfix](/azure-stack/operator/release-notes?view=azs-2005#hotfixes)
 - [Azure Stack Hub 2002 hotfix](/azure-stack/operator/release-notes?view=azs-2002#hotfixes-1)
 - [Azure Stack Hub 1910 hotfix](/azure-stack/operator/release-notes?view=azs-1910#hotfixes-2)
-- [Azure Stack Hub 1908 hotfix](/azure-stack/operator/release-notes?view=azs-1908#hotfixes-3)
 
 ## Keep your system under support
 
@@ -77,7 +75,7 @@ For information about currently available hotfixes, see the release notes for th
 
 For your Azure Stack Hub instance to remain in a supported state, the instance must run the most recently released update version or run either of the two preceding update versions.
 
-Hotfixes aren't considered major update versions. If your Azure Stack Hub instance is behind by *more than two updates*, it's considered out of compliance. You must update to at least the minimum supported version to receive support.
+Hotfixes aren't considered major update versions. If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must update to at least the minimum supported version to receive support.
 
 For example, if the most recently available update version is 1904, and the previous two update packages were versions 1903 and 1902, both 1902 and 1903 remain in support. However, 1901 is out of support. The policy holds true when there's no release for a month or two. For example, if the current release is 1807 and there was no 1806 release, the previous two update packages of 1805 and 1804 remain in support.
 
