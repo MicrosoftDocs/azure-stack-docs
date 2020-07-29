@@ -41,7 +41,7 @@ Disk IOPS (Input/Output Operations Per Second) on Azure Stack Hub is a function 
 
 We also recommend using [Managed Disks](./azure-stack-managed-disk-considerations.md). Managed disks simplify disk management by handling the storage for you. Managed disks do not require a storage account. You simply specify the size and type of disk and it is deployed as a highly available resource.
 
-The OS disk is a VHD stored in Azure Stack Hub blob storage, so it persists even when the host machine is down. We also recommend creating one or more [data disks](./azure-stack-manage-vm-disks.md), which are persistent VHDs used for application data. When possible, install applications on a data disk, not the OS disk. Some legacy applications might need to install components on the C: drive; in that case, you can [resize the OS disk](/azure/virtual-machines/virtual-machines-windows-expand-os-disk) using PowerShell.
+The OS disk is a VHD stored in Azure Stack Hub blob storage, so it persists even when the host machine is down. We also recommend creating one or more [data disks](./azure-stack-manage-vm-disks.md), which are persistent VHDs used for application data. When possible, install applications on a data disk, not the OS disk. Some legacy applications might need to install components on the C: drive; in that case, you can [resize the OS disk](/azure/virtual-machines/windows/expand-os-disk) using PowerShell.
 
 The VM is also created with a temporary disk (the D: drive on Windows). This disk is stored on a temporary volume in the Azure Stack Hub storage infrastructure. It may be deleted during reboots and other VM lifecycle events. Use this disk only for temporary data, such as page or swap files.
 
@@ -57,7 +57,7 @@ The networking components include the following resources:
 
 -   Reserve a [static IP address](/azure/virtual-network/virtual-networks-reserved-public-ip) if you need a fixed IP address that won't change — for example, if you need to create a DNS 'A' record or add the IP address to a safe list.
 
--   You can also create a fully qualified domain name (FQDN) for the IP address. You can then register a [CNAME record](https://en.wikipedia.org/wiki/CNAME_record) in DNS that points to the FQDN. For more information, see [Create a fully qualified domain name in the Azure portal](/azure/virtual-machines/virtual-machines-windows-portal-create-fqdn).
+-   You can also create a fully qualified domain name (FQDN) for the IP address. You can then register a [CNAME record](https://en.wikipedia.org/wiki/CNAME_record) in DNS that points to the FQDN. For more information, see [Create a fully qualified domain name in the Azure portal](/azure/virtual-machines/windows/portal-create-fqdn).
 
 -   **Network security group (NSG)**. NSGs are used to allow or deny network traffic to VMs. NSGs can be associated either with subnets or with individual VM instances.
 
