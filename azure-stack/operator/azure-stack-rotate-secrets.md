@@ -47,7 +47,7 @@ Starting with release 1811, secret rotation is separated for internal and extern
     \* Only applicable if the environment's identity provider is Active Directory Federated Services (AD FS).
 
 > [!Important]
-> All other secure keys and strings are still manually updated by the administrator. This includes user and administrator account passwords, [network switch passwords and permissions](azure-stack-customer-defined.md), and baseboard management controller (BMC) credentials which is [covered later in this article](#update-the-bmc-credential). 
+> All other secure keys and strings are manually updated by the administrator. This includes user and administrator account passwords, [network switch passwords and permissions](azure-stack-customer-defined.md), and baseboard management controller (BMC) credentials which is [covered later in this article](#update-the-bmc-credential). 
 >
 >In addition, this article does not address secret rotation for value-add resource providers. To rotate those secrets, refer to the following articles instead:
 >
@@ -223,8 +223,14 @@ Internal secret rotation is only required if you suspect one has been compromise
 
 Reference the PowerShell script in step 2 of [Rotate external secrets](#rotate-external-secrets). The script provides an example you can adapt for internal secret rotation, by making a few changes to run the following steps:
 
-1. Create a PowerShell session with the [Privileged endpoint](azure-stack-privileged-endpoint.md).
-2. In the Privileged Endpoint session, run the `Start-SecretRotation` command using the `-Internal` switch.
+1. In the "Run Secret Rotation" section, add the `-Internal` switch to the `Start-SecretRotation` command, for example:
+
+    ```powershell
+    # Run Secret Rotation
+    ...
+    Invoke-Command -Session $PEPSession -ScriptBlock -Internal {
+    ...
+    ```
 
     > [!Note]
     > Pre-1811 versions don't require the **-Internal** flag. 
