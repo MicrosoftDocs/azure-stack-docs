@@ -236,10 +236,10 @@ Reference the PowerShell script in step 2 of [Rotate external secrets](#rotate-e
     ...
     ```
 
-::: moniker range="<azs-1811"
+    ::: moniker range="<azs-1811"
     > [!Note]
     > Pre-1811 versions don't require the `-Internal` flag. 
-::: moniker-end
+    ::: moniker-end
 
 3. After successful completion, your console will display `ActionPlanInstanceID ... CurrentStatus: Completed`, followed by a `DONE`
 
@@ -265,6 +265,7 @@ The baseboard management controller monitors the physical state of your servers.
 ::: moniker range=">=azs-1910"
 1. **Version 1910 and later**: It's no longer required that you first update the BMC credentials on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same, and can't exceed 16 characters.
 ::: moniker-end
+
     | Parameter | Description | State |
     | --- | --- | --- |
     | BypassBMCUpdate | When you use the parameter, credentials in the BMC aren't update. Only the Azure Stack Hub internal datastore is updated. | Optional |
