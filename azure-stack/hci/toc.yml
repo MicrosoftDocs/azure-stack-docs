@@ -122,6 +122,8 @@
   items:
   - name: Azure Stack family
     href: ../index.yml
+  - name: Azure hybrid cloud
+    href: /hybrid    
   - name: Windows Server
     href: /windows-server/
   - name: Windows Admin Center
