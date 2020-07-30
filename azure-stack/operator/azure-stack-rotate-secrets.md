@@ -263,16 +263,16 @@ The baseboard management controller monitors the physical state of your servers.
 1. **Versions earlier than 1910**: Update the BMC on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
 ::: moniker-end
 ::: moniker range=">=azs-1910"
-1. **Version 1910 and later**: It's no longer required that you first update the BMC credentials on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same, and can't exceed 16 characters.
+1. **Version 1910 and later**: It's no longer required that you first update the BMC credentials on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same, and can't exceed 16 characters. 
 ::: moniker-end
 
     | Parameter | Description | State |
     | --- | --- | --- |
     | BypassBMCUpdate | When you use the parameter, credentials in the BMC aren't update. Only the Azure Stack Hub internal datastore is updated. | Optional |
 
-2. Open a privileged endpoint in Azure Stack Hub sessions. For instructions, see [Using the privileged endpoint in Azure Stack Hub](azure-stack-privileged-endpoint.md).
+2. Open a privileged endpoint in Azure Stack Hub sessions. For instructions, see [Using the privileged endpoint in Azure Stack Hub](azure-stack-privileged-endpoint.md). 
 
-3. After your PowerShell prompt has changed to `[IP address or ERCS VM name]: PS>` or to `[azs-ercs01]: PS>`, depending on the environment, run `Set-BmcCredential` by running `Invoke-Command`. Pass your privileged endpoint session variable as a parameter. For example:
+3. After your PowerShell prompt has changed to `[IP address or ERCS VM name]: PS>` or to `[azs-ercs01]: PS>`, depending on the environment, run `Set-BmcCredential` by running `Invoke-Command`. Pass your privileged endpoint session variable as a parameter. For example: 
 
     ```powershell
     # Interactive Version
