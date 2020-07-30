@@ -93,11 +93,11 @@ For rotation of internal and external secrets:
 
 1. It's highly recommended that you first update your Azure Stack Hub instance to the latest version.
 
-::: moniker range="<azs-1811"
-    > [!IMPORTANT]
-    > For pre-1811 versions:
-    > - If secret rotation has already been performed, you must update to version 1811 or later before you perform secret rotation again. Secret Rotation must be executed via the [Privileged Endpoint](azure-stack-privileged-endpoint.md) and requires Azure Stack Hub Operator credentials. If you don't know whether secret rotation has been run on your environment, update to 1811 before performing secret rotation.
-    > - You don't need to rotate secrets to add extension host certificates. You should follow the instructions in the article [Prepare for extension host for Azure Stack Hub](azure-stack-extension-host-prepare.md) to add extension host certificates.
+::: moniker range="<azs-1811"  
+   >[!IMPORTANT]
+   > For pre-1811 versions:
+   > - If secret rotation has already been performed, you must update to version 1811 or later before you perform secret rotation again. Secret Rotation must be executed via the [Privileged Endpoint](azure-stack-privileged-endpoint.md) and requires Azure Stack Hub Operator credentials. If you don't know whether secret rotation has been run on your environment, update to 1811 before performing secret rotation.
+   > - You don't need to rotate secrets to add extension host certificates. You should follow the instructions in the article [Prepare for extension host for Azure Stack Hub](azure-stack-extension-host-prepare.md) to add extension host certificates.
 ::: moniker-end
 
 2. Notify your users of planned maintenance operations. Schedule normal maintenance windows, as much as possible,  during non-business hours. Maintenance operations may affect both user workloads and portal operations.
@@ -267,7 +267,7 @@ The baseboard management controller monitors the physical state of your servers.
 1. It's no longer required that you first update the BMC credentials on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same, and can't exceed 16 characters. 
 ::: moniker-end
 
-If you use the optional Set-BMCCredential `-BypassBMCUpdate` parameter, credentials in the BMC aren't updated. Only the Azure Stack Hub internal datastore is updated.
+   sIf you use the optional Set-BMCCredential `-BypassBMCUpdate` parameter, credentials in the BMC aren't updated. Only the Azure Stack Hub internal datastore is updated.
 
 2. Open a privileged endpoint in Azure Stack Hub sessions. For instructions, see [Using the privileged endpoint in Azure Stack Hub](azure-stack-privileged-endpoint.md). 
 
