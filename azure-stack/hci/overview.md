@@ -4,7 +4,7 @@ description: An overview of Azure Stack HCI
 ms.topic: overview
 author: khdownie
 ms.author: v-kedow
-ms.date: 07/28/2020
+ms.date: 07/29/2020
 ---
 
 # Azure Stack HCI solution overview
@@ -139,7 +139,7 @@ Yes, the cluster must connect to Azure at least once every 30 days in order for 
 
 ### Can I upgrade from Windows Server 2019 to Azure Stack HCI?
 
-There is no in-place upgrade from Windows Server to Azure Stack HCI at this time. Stay tuned for specific migration guidance for customers running hyperconverged clusters based on Windows Server 2016 and 2019, which will be published in the coming weeks.
+There is no in-place upgrade from Windows Server to Azure Stack HCI at this time. Stay tuned for specific migration guidance for customers running hyperconverged clusters based on Windows Server 2019 and 2016.
 
 ### What do Azure Stack Hub and Azure Stack HCI solutions have in common?
 
