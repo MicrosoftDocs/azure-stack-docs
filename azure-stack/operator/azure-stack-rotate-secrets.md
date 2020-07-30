@@ -260,10 +260,11 @@ The baseboard management controller monitors the physical state of your servers.
 > Your OEM may provide additional management apps. Updating the user name or password for other management apps has no effect on the BMC user name or password.
 
 ::: moniker range="<azs-1910"
-Update the BMC on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
+1. Update the BMC on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
 ::: moniker-end
+
 ::: moniker range=">=azs-1910"
-It's no longer required that you first update the BMC credentials on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same, and can't exceed 16 characters. 
+1. It's no longer required that you first update the BMC credentials on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same, and can't exceed 16 characters. 
 ::: moniker-end
 
 If you use the optional Set-BMCCredential `-BypassBMCUpdate` parameter, credentials in the BMC aren't updated. Only the Azure Stack Hub internal datastore is updated.
