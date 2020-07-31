@@ -267,7 +267,7 @@ The baseboard management controller monitors the physical state of your servers.
 1. It's no longer required that you first update the BMC credentials on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same, and can't exceed 16 characters. 
 ::: moniker-end
 
-   If you use the optional Set-BMCCredential `-BypassBMCUpdate` parameter, credentials in the BMC aren't updated. Only the Azure Stack Hub internal datastore is updated.
+    If you use the optional Set-BMCCredential `-BypassBMCUpdate` parameter, credentials in the BMC aren't updated. Only the Azure Stack Hub internal datastore is updated.
 
 2. Open a privileged endpoint in Azure Stack Hub sessions. For instructions, see [Using the privileged endpoint in Azure Stack Hub](azure-stack-privileged-endpoint.md). 
 
