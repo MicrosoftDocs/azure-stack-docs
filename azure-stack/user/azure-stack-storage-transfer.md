@@ -32,7 +32,7 @@ Your requirements determine which of the following tools works best for you:
 
     An open-source, cross-platform tool that provides a set of commands for working with the Azure and Azure Stack Hub platforms.
 
-* [Microsoft storage explorer](#microsoft-azure-storage-explorer)
+* [Microsoft Azure Storage Explorer](#microsoft-azure-storage-explorer)
 
     An easy-to-use stand-alone app with a user interface.
 
