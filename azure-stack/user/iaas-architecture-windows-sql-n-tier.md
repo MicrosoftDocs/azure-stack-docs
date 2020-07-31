@@ -170,7 +170,7 @@ Virtual networks are a traffic isolation boundary in Azure. By default, VMs in o
 
 **DMZ**. Consider adding a network virtual appliance (NVA) to create a DMZ between the Internet and the Azure virtual network. NVA is a generic term for a virtual appliance that can perform network-related tasks, such as firewall, packet inspection, auditing, and custom routing.
 
-**Encryption**. Encrypt sensitive data at rest and use [Key Vault in Azure Stack Hub](./azure-stack-key-vault-manage-portal.md) to manage the database encryption keys. For more information, see [Configure Azure Key Vault Integration for SQL Server on Azure VMs](/azure/virtual-machines/virtual-machines-windows-ps-sql-keyvault). It's also recommended to store application secrets, such as database connection strings, in Key Vault.
+**Encryption**. Encrypt sensitive data at rest and use [Key Vault in Azure Stack Hub](./azure-stack-key-vault-manage-portal.md) to manage the database encryption keys. For more information, see [Configure Azure Key Vault Integration for SQL Server on Azure VMs](/azure/azure-sql/virtual-machines/windows/azure-key-vault-integration-configure). It's also recommended to store application secrets, such as database connection strings, in Key Vault.
 
 ## Next steps
 
