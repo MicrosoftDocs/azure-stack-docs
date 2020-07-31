@@ -93,12 +93,12 @@ For rotation of internal and external secrets:
 
 1. It's highly recommended that you first update your Azure Stack Hub instance to the latest version.
 
-::: moniker range="<azs-1811"  
+    ::: moniker range="<azs-1811"  
     >[!IMPORTANT]
     > For pre-1811 versions:
     > - If secret rotation has already been performed, you must update to version 1811 or later before you perform secret rotation again. Secret Rotation must be executed via the [Privileged Endpoint](azure-stack-privileged-endpoint.md) and requires Azure Stack Hub Operator credentials. If you don't know whether secret rotation has been run on your environment, update to 1811 before performing secret rotation.
     > - You don't need to rotate secrets to add extension host certificates. You should follow the instructions in the article [Prepare for extension host for Azure Stack Hub](azure-stack-extension-host-prepare.md) to add extension host certificates.
-::: moniker-end
+    ::: moniker-end
 
 2. Notify your users of planned maintenance operations. Schedule normal maintenance windows, as much as possible,  during non-business hours. Maintenance operations may affect both user workloads and portal operations.
 
