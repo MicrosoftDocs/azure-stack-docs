@@ -257,21 +257,21 @@ Reference the PowerShell script in step 2 of [Rotate external secrets](#rotate-e
 The baseboard management controller monitors the physical state of your servers. Refer to your original equipment manufacturer (OEM) hardware vendor for instructions to update the user account name and password of the BMC.
 
 >[!NOTE]
-> Your OEM may provide additional management apps. Updating the user name or password for other management apps has no effect on the BMC user name or password.
+> Your OEM may provide additional management apps. Updating the user name or password for other management apps has no effect on the BMC user name or password. 
 
-    ::: moniker range="<azs-1910"
-    1. Update the BMC on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
-    ::: moniker-end
+::: moniker range="<azs-1910"
+1. Update the BMC on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
+::: moniker-end
 
-    ::: moniker range=">=azs-1910"
-    1. It's no longer required that you first update the BMC credentials on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same, and can't exceed 16 characters. 
-    ::: moniker-end
-
-    If you use the optional Set-BMCCredential `-BypassBMCUpdate` parameter, credentials in the BMC aren't updated. Only the Azure Stack Hub internal datastore is updated.
+::: moniker range=">=azs-1910"
+1. It's no longer required that you first update the BMC credentials on the Azure Stack Hub physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same, and can't exceed 16 characters. 
+::: moniker-end
 
 2. Open a privileged endpoint in Azure Stack Hub sessions. For instructions, see [Using the privileged endpoint in Azure Stack Hub](azure-stack-privileged-endpoint.md). 
 
-3. After your PowerShell prompt has changed to `[IP address or ERCS VM name]: PS>`, or to `[azs-ercs01]: PS>`, depending on the environment, run `Set-BmcCredential` by running `Invoke-Command`. Pass your privileged endpoint session variable as a parameter. For example: 
+3. After your PowerShell prompt has changed to `[IP address or ERCS VM name]: PS>`, or to `[azs-ercs01]: PS>`, depending on the environment, run `Set-BmcCredential` by running `Invoke-Command`. If you use the optional `-BypassBMCUpdate` parameter with `Set-BMCCredential`, credentials in the BMC aren't updated. Only the Azure Stack Hub internal datastore is updated.Pass your privileged endpoint session variable as a parameter. 
+
+    Here's an example PowerShell script that will prompt for user name and password: 
 
     ```powershell
     # Interactive Version
@@ -289,7 +289,7 @@ The baseboard management controller monitors the physical state of your servers.
     Remove-PSSession -Session $PEPSession
     ```
 
-    You can also use the static PowerShell version with the Passwords as code lines:
+    You can also encode the user name and password in variables, which may be less secure:
 
     ```powershell
     # Static Version
