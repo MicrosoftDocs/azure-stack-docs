@@ -303,6 +303,6 @@ blobEndpoint myaccount.blob.local.azurestack.external
 ## Next steps
 
 * [Connect storage explorer to an Azure Stack Hub subscription](azure-stack-storage-connect-se.md)
-* [Get started with storage explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* [Get started with Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 * [Azure-consistent storage: differences and considerations](azure-stack-acs-differences.md)
 * [Introduction to Microsoft Azure storage](/azure/storage/common/storage-introduction)
