@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: v-dasis
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 08/03/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -91,14 +91,12 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 
 ## Step 2: Networking
 
-Step 2 of the wizard walks you through verifying network interface adapters (NICs), selecting a management adapter, assigning IP addresses, subnet masks, and VLAN IDs for each server and creating the virtual switches.
+Step 2 of the wizard walks you through configuring various networking elements for your cluster.
 
 Here are some things to verify beforehand:
 
 - Verify all network adapters are assigned to the appropriate IP subnet and VLAN.
 - Verify all adapters have physical connectivity to each other. If adapters don't have physical connectivity, assign them to separate IP subnets.
-- Verify at least one network adapter is available and dedicated for cluster management.
-- Verify that physical switches in your network are configured to allow traffic on any VLANs you will use.
 
 ### Management adapter overview
 
@@ -112,34 +110,28 @@ Management adapters have two configuration options:
 
 By using teamed adapters, you have a single connection to multiple switches but only use a single IP address. Load-balancing becomes available and fault-tolerance is instant instead of waiting for DNS records to update.
 
-### Virtual switch overview
-
-You have four options for creating virtual switches:
-
-- Create a single virtual switch for both compute and storage
-- Create a single virtual switch for compute only (none for storage)
-- Create two virtual switches - one for compute and one for storage
-- Skip virtual switch creation
-
-Not all virtual switch options are supported and enabled for all deployments. This is dependent on the networking configuration that you specify in the wizard. The following table shows which virtual switch configurations are supported and enabled for various network adapter configurations:
-
-| Option | 1-2 adapters | 3+ adapters | teamed adapters |
-| :------------- | :--------- |:--------| :---------|
-| single switch (compute + storage) | enabled | enabled  | not supported |
-| single ewitch (compute only) | not supported| enabled | enabled |
-| two switches | not supported | enabled | enabled |
-
 You are now ready to resume the wizard and configure your cluster networking. Let's begin:
 
 1. Select **Next: Networking**.
 1. Under **Verify the network adapters**, wait until green checkboxes appear next to each adapter, then select **Next**.
 
-1. For **Select management adapters**, select one or two management adapters to use for each server and then do the following for each server:
+1. For **Select management adapters**, select one or two management adapters to use for each server. It is mandatory to select at least one of the adapters for management purposes, as the wizard requires at least one dedicated physical NIC for cluster management.  Once an adapter is designated for management, it’s excluded from the rest of the wizard workflow.
+
+    Management adapters have two configuration options:
+
+    - Single physical adapter used for management. Both DHCP or static IP address assignment is supported.
+
+    - Two physical adapters are used and teamed. When a pair of adapters are teamed, only static IP address assignment is supported. If the selected adapters use DHCP addressing (either for one or both), the DHCP IP address would be converted to static IP addresses before virtual switch creation.
+
+    By using teamed adapters, you have a single connection to multiple switches but only use a single IP address. Load-balancing becomes available and fault-tolerance is instant instead of waiting for DNS records to update.
+
+    Now do the following for each server:
 
     - Select the **Description** checkbox. Note that all adapters are selected and that the wizard may offer a recommendation for you.
     - Unselect the checkboxes for those adapters you don't want used for cluster management.
 
-     You can use 1 Gb adapters as management adapters, but we recommend using 10 Gb or faster adapters for carrying storage and workload (VM) traffic.
+    > [!NOTE]
+    > You can use 1 Gb adapters as management adapters, but we recommend using 10 Gb or faster adapters for carrying storage and workload (VM) traffic.
 
 1. When changes have been made, click **Apply and test**.
 1. Under **Define networks**, make sure each network adapter for each server has a unique static IP address, a subnet mask, and a VLAN ID. Hover over each table element and enter or change values as needed. When finished, click **Apply and test**.
@@ -149,12 +141,20 @@ You are now ready to resume the wizard and configure your cluster networking. Le
 
 1. Wait until the **Status** column shows **Passed** for each server, then click **Next**. This step verifies network connectivity between all adapters with the same subnet and VLAN ID. The provided IP addresses are transferred from the physical adapter to the virtual adapters once the virtual switches are created in the next step. It may take several minutes to complete depending on the number of adapters configured.
 
-1. Under **Virtual switch**, select one of the following options as applicable. Depending on how many adapters are present, not all options may show up.
+1. Under **Virtual switch**, select one of the following options as applicable. Depending on how many adapters are present, not all options may show up:
 
     - Create one virtual switch for both Hyper-V and storage use
     - Create one virtual switch for Hyper-V use only
     - Create two virtual switches, one for Hyper-V and one for storage use
     - Don't create a virtual switch
+
+    The following table shows which virtual switch configurations are supported and enabled for various network adapter configurations:
+
+    | Option | 1-2 adapters | 3+ adapters | teamed adapters |
+    | :------------- | :--------- |:--------| :---------|
+    | single switch (compute + storage) | enabled | enabled  | not supported |
+    | single switch (compute only) | not supported| enabled | enabled |
+    | two switches | not supported | enabled | enabled |
 
 1. Change the name of a switch and other configuration settings as needed, then click **Apply and test**. The **Status** column should show **Passed** for each server after the virtual switches have been created.
 

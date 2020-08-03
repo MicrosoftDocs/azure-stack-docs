@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a hyperconverged cluster for Azure Stack HCI using Windows PowerShell
 author: v-dasis
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/03/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -135,33 +135,6 @@ Restart-Computer -ComputerName $ServerList
 
 This step configures various networking elements in your environment.
 
-### Management adapter overview
-
-You must select at least one of the network adapters for cluster management. You have two options:
-
-- Specify a single physical adapter used for management. Both DHCP or static IP addresses are supported.
-
-- Specify two physical adapters to be teamed. When a pair of adapters are teamed, only static IP addresses are supported.
-
-By using teamed adapters, you have a single connection to multiple switches but only use a single IP address. Load-balancing becomes available and fault-tolerance is instant instead of waiting for DNS records to update.
-
-### Virtual switch overview
-
-You have four options for creating virtual switches:
-
-- Create a single virtual switch for both compute and storage
-- Create a single virtual switch for compute only (none for storage)
-- Create two virtual switches - one for compute and one for storage
-- Skip virtual switch creation
-
-Not all virtual switch options are supported for all deployments. This is dependent on your networking configuration. The following table shows which virtual switch configurations are supported for various network adapter configurations:
-
-| Option | 1-2 adapters | 3+ adapters | teamed adapters |
-| ------------- | --------- | -------- | --------- |
-| single switch (compute + storage) | supported | supported  | not supported |
-| single switch (compute only) | not supported | supported | supported |
-| two switches | not supported | supported | supported |
-
 ### Disable unused networks
 
 You must disable any networks disconnected or not used for management, storage or workload traffic (such as VMs). Here is how to identify unused networks:
@@ -178,7 +151,7 @@ Get-NetAdapter -CimSession $Servers | Where-Object Status -eq Disconnected | Dis
 
 ### Assign virtual network adapters
 
-Next, you will assign virtual network adapters (vNICs) for management and the rest of your traffic, as in the example:
+Next, you will assign virtual network adapters (vNICs) for management and the rest of your traffic, as in the following example. You must configure at least one network adapter for cluster management.
 
 ```powershell
 $Servers = "Server1", "Server2", "Server3", "Server4"
