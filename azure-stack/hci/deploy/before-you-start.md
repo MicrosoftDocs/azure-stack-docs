@@ -4,7 +4,7 @@ description: How to prepare to deploy Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 08/03/2020
 ---
 
 # Before you deploy Azure Stack HCI
@@ -36,7 +36,13 @@ Microsoft recommends purchasing a validated Azure Stack HCI hardware/software so
 
 ### Networking requirements
 
-An Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency network connection between each server node. There are multiple types of communication going on between server nodes:
+An Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency network connection between each server node. You should verify the following:
+
+- Verify at least one network adapter is available and dedicated for cluster management.
+- Verify that physical switches in your network are configured to allow traffic on any VLANs you will use.
+
+
+There are multiple types of communication going on between server nodes:
 
 - Cluster communication (node joins, cluster updates, registry updates)
 - Cluster Heartbeats
