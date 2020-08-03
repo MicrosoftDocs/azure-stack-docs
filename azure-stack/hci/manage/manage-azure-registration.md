@@ -4,7 +4,7 @@ description: How to manage your Azure registration for Azure Stack HCI and under
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.date: 07/29/2020
 ---
 
 # Manage Azure registration
@@ -55,11 +55,21 @@ Seeking approval from your Azure Active Directory administrator could take some 
 
 When you're ready to decommission your Azure Stack HCI cluster, use the `Unregister-AzStackHCI` cmdlet to unregister. This stops all monitoring, support, and billing functionality through Azure Arc. The Azure resource representing the cluster and the Azure Active Directory app identity are deleted, but the resource group is not, because it may contain other unrelated resources.
 
-The minimum syntax requires no parameters at all, you just need to authenticate with Azure before running the following cmdlet:
+If running the `Unregister-AzStackHCI` cmdlet on a cluster node, use this syntax and specify your Azure subscription ID as well as the resource name of the Azure Stack HCI cluster you wish to unregister:
 
 ```PowerShell
-Unregister-AzStackHCI
+Unregister-AzStackHCI -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" -ResourceName HCI001
 ```
+
+You'll be prompted to visit microsoft.com/devicelogin on another device (like your PC or phone), enter the code, and sign in there to authenticate with Azure.
+
+If running the cmdlet from a management PC, you'll also need to specify the name of a server in the cluster:
+
+```PowerShell
+Unregister-AzStackHCI -ComputerName ClusterNode1 -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" -ResourceName HCI001
+```
+
+An interactive Azure login window will pop up. The exact prompts you see will vary depending on your security settings (e.g. two-factor authentication). Follow the prompts to log in.
 
 ## Next steps
 
