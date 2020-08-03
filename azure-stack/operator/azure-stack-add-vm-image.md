@@ -313,7 +313,7 @@ Add the VM image as an Azure Stack Hub operator using the portal.
 
 To remove the VM image as an Azure Stack Hub operator using the Azure Stack Hub portal, follow these steps:
 
-1. Open the Azure Stack Hub [administrator portal](https://adminportal.local.azurestack.external).
+1. Open the Azure Stack Hub [administrator portal](https://portal.azure.com/signin/index).
 
 2. If the VM image has an associated Marketplace item, select **Marketplace management**, and then select the VM marketplace item you want to delete.
 
