@@ -91,26 +91,7 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 
 ## Step 2: Networking
 
-Step 2 of the wizard walks you through configuring various networking elements for your cluster.
-
-Here are some things to verify beforehand:
-
-- Verify all network adapters are assigned to the appropriate IP subnet and VLAN.
-- Verify all adapters have physical connectivity to each other. If adapters don't have physical connectivity, assign them to separate IP subnets.
-
-### Management adapter overview
-
-It is mandatory to select at least one of the adapters for management purposes, as the wizard requires at least one dedicated physical NIC for cluster management.  Once an adapter is designated for management, it’s excluded from the rest of the wizard workflow.
-
-Management adapters have two configuration options:
-
-- Single physical adapter used for management. Both DHCP or static IP address assignment is supported.
-
-- Two physical adapters are used and teamed. When a pair of adapters are teamed, only static IP address assignment is supported. If the selected adapters use DHCP addressing (either for one or both), the DHCP IP address would be converted to static IP addresses before virtual switch creation.
-
-By using teamed adapters, you have a single connection to multiple switches but only use a single IP address. Load-balancing becomes available and fault-tolerance is instant instead of waiting for DNS records to update.
-
-You are now ready to resume the wizard and configure your cluster networking. Let's begin:
+Step 2 of the wizard walks you through configuring various networking elements for your cluster. Let's begin:
 
 1. Select **Next: Networking**.
 1. Under **Verify the network adapters**, wait until green checkboxes appear next to each adapter, then select **Next**.
