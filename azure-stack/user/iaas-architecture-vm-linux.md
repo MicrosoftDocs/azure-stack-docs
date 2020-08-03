@@ -71,7 +71,7 @@ The networking components include the following resources:
 
 -   **Public IP address/ VIP**. A public IP address is needed to communicate with the VM — for example, via remote desktop (RDP). The public IP address can be dynamic or static. The default is dynamic. If you need multiple NICs for your VM, be aware that a maximum number of NICs is defined for each [VM size](./azure-stack-vm-sizes.md).
 
--   You can also create a fully qualified domain name (FQDN) for the IP address. You can then register a [CNAME record](https://en.wikipedia.org/wiki/CNAME_record) in DNS that points to the FQDN. For more information, see [Create a fully qualified domain name in the Azure portal](/azure/virtual-machines/linux/portal-create-fqdn).
+-   You can also create a fully qualified domain name (FQDN) for the IP address. You can then register a [CNAME record](https://en.wikipedia.org/wiki/CNAME_record) in DNS that points to the FQDN. For more information, see [Create a fully qualified domain name in the Azure portal](/azure/virtual-machines/windows/portal-create-fqdn).
 
 -   **Network security group (NSG).** Network Security Groups are used to allow or deny network traffic to VMs. NSGs can be associated either with subnets or with individual VM instances.
 
