@@ -13,13 +13,13 @@ ms.date: 08/04/2020
 
 There are three ways to monitor Azure Stack HCI clusters and its underlying components: Windows Admin Center, [Azure Monitor](azure-monitor.md), and PowerShell.
 
-## Monitor using Windows Admin Center
+## Monitor using Windows Admin Center dashboard
 
-[Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) on a management PC or server, and then add and connect to the Azure Stack HCI cluster that you wish to monitor. Critical alerts are prominently displayed at the top of the Windows Admin Center dashboard as soon as you log in. For example, the screenshot below indicates that updates need to be installed, and that the cluster has critical drive errors:
+[Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) on a management PC or server, and then add and connect to the Azure Stack HCI cluster that you wish to monitor. Critical alerts are prominently displayed at the top of the Windows Admin Center dashboard as soon as you log in. For example, the screenshot below indicates that updates need to be installed, and that the cluster has one critical drive error:
 
 :::image type="content" source="media/monitor-cluster/dashboard-alert.png" alt-text="Example of Windows Admin Center dashboard alerts":::
 
-### Monitor virtual machines
+## Monitor virtual machines
 
 It's critical to understand the health of the virtual machines (VMs) on which your applications and databases run. If a VM is not assigned enough CPU or memory for the workloads running on it, performance could slow, or the application could become unavailable.
 
@@ -36,7 +36,7 @@ To monitor virtual machines in Windows Admin Center, click **Virtual machines** 
 - **Heartbeat:** Indicates whether the cluster can communicate with the VM.
 - **Disaster recovery status:** Shows whether the VM is signed into Azure disaster recovery. **(Is this true?)**
 
-### Monitor servers
+## Monitor servers
 
 You can monitor the host servers that comprise an Azure Stack HCI cluster directly from Windows Admin Center. If host servers are not configured with sufficient CPU or memory to provide the resources VMs require, they can be a performance bottleneck.
 
@@ -51,7 +51,7 @@ To monitor servers in Windows Admin Center, click **Servers** from the **Tools**
 - **CPU usage:** The percentage of the host server's CPU that is being utilized.
 - **Memory usage:** The percentage of the host server's memory that is being utilized.
 
-### Monitor volumes
+## Monitor volumes
 
 Storage volumes can fill up quickly, making it important to monitor them on a regular basis to avoid any application impact. To monitor volumes in Windows Admin Center, click **Volumes** from the **Tools** menu at the left. To view a complete inventory of storage volumes on the cluster, click **Inventory** at the top of the page. You'll see a table with information about each volume, including:
 
@@ -64,7 +64,7 @@ Storage volumes can fill up quickly, making it important to monitor them on a re
 - **Storage usage:** The percentage of the volume's storage capacity that is being used.
 - **IOPS:** Number of input/output operations per second.
 
-### Monitor drives
+## Monitor drives
 
 Azure Stack HCI virtualizes storage in such a way that losing an individual drive will not significantly impact the cluster. However, failed drives will [need to be replaced](replace-drives.md), and drives can impact performance by filling up or introducing latency. If the operating system cannot communicate with a drive, the drive may be loose or disconnected, its connector may have failed, or the drive itself may have failed. Windows automatically retires drives after 15 minutes of lost communication.
 
@@ -81,7 +81,7 @@ To monitor drives in Windows Admin Center, click **Drives** from the **Tools** m
 - **Storage pool:** The storage pool the drive belongs to.
 - **Storage usage:** The percentage of the drive's storage capacity that is being used.
 
-### Add counters
+## Add performance counters
 
 Use the Performance Monitor tool in Windows Admin Center to view and compare performance counters for Windows, apps, or devices in real-time.
 
