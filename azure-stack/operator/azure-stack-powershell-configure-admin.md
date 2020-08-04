@@ -62,7 +62,7 @@ Connect to the Azure Stack Hub operator environment with PowerShell with Azure A
   Login-AzureRmAccount -EnvironmentName "AzureStackAdmin"
   ```
 
-![include](../includes/note-powershell-adfs.md)
+[!Include [AD FS only supports interactive authentication with user identities](../includes/note-powershell-adfs.md)]
 
 ## Test the connectivity
 
