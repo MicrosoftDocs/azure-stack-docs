@@ -4,10 +4,10 @@ description: Learn how to connect to Azure Stack Hub with PowerShell.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 5/27/2020
+ms.date: 8/4/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 10/02/2019
+ms.lastreviewed: 8/4/2020
 
 # Intent: As an Azure Stack user, I want to connect to Azure Stack with PowerShell so that I can use interactive prompt or write scripts to create and manage resources.
 # Keyword: connect Azure Stack powershell
@@ -74,6 +74,8 @@ foreach($s in (Get-AzureRmSubscription)) {
 Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider
     }
 ```
+
+![include](../includes/note-powershell-adfs.md)
 
 ## Test the connectivity
 
