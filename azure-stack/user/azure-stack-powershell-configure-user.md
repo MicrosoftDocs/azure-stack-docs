@@ -75,7 +75,7 @@ Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider
     }
 ```
 
-![include](../includes/note-powershell-adfs.md)
+[!Include [AD FS only supports interactive authentication with user identities](../includes/note-powershell-adfs.md)]
 
 ## Test the connectivity
 
