@@ -203,4 +203,4 @@ Install-NetworkController -Node @($a,$b,$c) -ClientAuthentication Kerberos -Clie
 
 ## Next steps
 
-If you are not using Kerberos with your Network Controller deployment, you must deploy certificates. For more information, see [Post-Deployment Steps for Network Controller](../technologies/network-controller/post-deploy-steps-nc.md).
+If you are not using Kerberos with your Network Controller deployment, you must deploy certificates. For more information, see [Post-Deployment Steps for Network Controller](/technologies/network-controller/post-deploy-steps-nc.md).
