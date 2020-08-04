@@ -28,27 +28,58 @@ To monitor virtual machines in Windows Admin Center, click **Virtual machines** 
 - **Name:** The name of the VM.
 - **State:** Indicates if the VM is running or stopped.
 - **Host server:** Indicates which server in the cluster the VM is running on.
-- **CPU usage:** The percentage of the host server's CPU resources that the VM is consuming. (Is this true?)
+- **CPU usage:** The percentage of the host server's CPU resources that the VM is consuming. **(Is this true?)**
 - **Memory pressure:** The percentage of available memory resources that the VM is consuming.
 - **Memory demand:** The amount of assigned memory (GB or MB) that the VM is consuming.
 - **Assigned memory:** The total amount of memory assigned to the VM.
 - **Uptime:** How long the VM has been running in days:hours:minutes:seconds.
 - **Heartbeat:** Indicates whether the cluster can communicate with the VM.
-- **Disaster recovery status:** Shows whether the VM is signed into Azure disaster recovery.
+- **Disaster recovery status:** Shows whether the VM is signed into Azure disaster recovery. **(Is this true?)**
 
 ### Monitor servers
 
 You can monitor the host servers that comprise an Azure Stack HCI cluster directly from Windows Admin Center. If host servers are not configured with sufficient CPU or memory to provide the resources VMs require, they can be a performance bottleneck.
 
-To monitor servers in Windows Admin Center, click **Servers** from the **Tools** menu at the left. To view a complete inventory of virtual machines running on the cluster, click **Inventory** at the top of the page. You'll see a table with information about each server, including:
+To monitor servers in Windows Admin Center, click **Servers** from the **Tools** menu at the left. To view a complete inventory of servers in the cluster, click **Inventory** at the top of the page. You'll see a table with information about each server, including:
+
+- **Name:** The name of the host server in the cluster.
+- **Status:** Indicates if the server is up or down.
+- **Uptime:** How long the server has been up.
+- **Manufacturer:** The hardware manufacturer of the server.
+- **Model:** The model of the server.
+- **Serial number:** The serial number of the server.
+- **CPU usage:** The percentage of the host server's CPU that is being utilized.
+- **Memory usage:** The percentage of the host server's memory that is being utilized.
 
 ### Monitor volumes
 
-Storage volumes can fill up quickly, making it important to monitor them on a regular basis to avoid any application impact.
+Storage volumes can fill up quickly, making it important to monitor them on a regular basis to avoid any application impact. To monitor volumes in Windows Admin Center, click **Volumes** from the **Tools** menu at the left. To view a complete inventory of storage volumes on the cluster, click **Inventory** at the top of the page. You'll see a table with information about each volume, including:
+
+- **Name:** The name of the volume.
+- **Status:** "OK" indicates that the volume is healthy; otherwise, a warning or error is reported.
+- **File system:** File system on the volume (ReFS, CSVFS).
+- **Resiliency:** Indicates whether the volume is a two-way mirror, three-way mirror, or mirror-accelerated parity.
+- **Size:** Size of the volume (TB/GB)
+- **Storage pool:** The storage pool the volume belongs to.
+- **Storage usage:** The percentage of the volume's storage capacity that is being used.
+- **IOPS:** Number of input/output operations per second.
 
 ### Monitor drives
 
-Azure Stack HCI virtualizes storage in such a way that losing an individual drive will not significantly impact the cluster. However, failed drives will need to be replaced, and drives can impact performance by filling up or introducing latency.
+Azure Stack HCI virtualizes storage in such a way that losing an individual drive will not significantly impact the cluster. However, failed drives will [need to be replaced](replace-drives.md), and drives can impact performance by filling up or introducing latency. If the operating system cannot communicate with a drive, the drive may be loose or disconnected, its connector may have failed, or the drive itself may have failed. Windows automatically retires drives after 15 minutes of lost communication.
+
+To monitor drives in Windows Admin Center, click **Drives** from the **Tools** menu at the left. To view a complete inventory of drives on the cluster, click **Inventory** at the top of the page. You'll see a table with information about each drive, including:
+
+- **Serial number:** The serial number of the drive.
+- **Status:** "OK" indicates that the drive is healthy; otherwise, a warning or error is reported.
+- **Model:** The model of the drive.
+- **Size:** The total capacity of the drive (TB/GB).
+- **Type:** Drive type (SSD, HDD).
+- **Used for:** Indicates whether the drive is used for cache or capacity.
+- **Location:** The storage adapter and port the drive is connected to.
+- **Server:** The name of the server the drive is connected to.
+- **Storage pool:** The storage pool the drive belongs to.
+- **Storage usage:** The percentage of the drive's storage capacity that is being used.
 
 ### Add counters
 
