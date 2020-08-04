@@ -15,15 +15,32 @@ There are three ways to monitor Azure Stack HCI clusters and its underlying comp
 
 ## Monitor using Windows Admin Center
 
-Install Windows Admin Center on a management PC and then add and connect to the Azure Stack HCI cluster that you wish to monitor. The Windows Admin Center dashboard provides alerts and health information about servers, drives, and volumes, as well as details about CPU, memory, and storage usage. The dashboard also displays cluster performance information such as IOPS and latency by hour, day, week, month, or year.
+[Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) on a management PC or server, and then add and connect to the Azure Stack HCI cluster that you wish to monitor. Critical alerts are prominently displayed at the top of the Windows Admin Center dashboard as soon as you log in. For example, the screenshot below indicates that updates need to be installed, and that the cluster has critical drive errors:
+
+:::image type="content" source="media/monitor-cluster/dashboard-alert.png" alt-text="Example of Windows Admin Center dashboard alerts":::
 
 ### Monitor virtual machines
 
 It's critical to understand the health of the virtual machines (VMs) on which your applications and databases run. If a VM is not assigned enough CPU or memory for the workloads running on it, performance could slow, or the application could become unavailable.
 
+To monitor virtual machines in Windows Admin Center, click **Virtual machines** from the **Tools** menu at the left. To view a complete inventory of virtual machines running on the cluster, click **Inventory** at the top of the page. You'll see a table with information about each VM, including:
+
+- **Name:** The name of the VM.
+- **State:** Indicates if the VM is running or stopped.
+- **Host server:** Indicates which server in the cluster the VM is running on.
+- **CPU usage:** The percentage of the host server's CPU resources that the VM is consuming. (Is this true?)
+- **Memory pressure:** The percentage of available memory resources that the VM is consuming.
+- **Memory demand:** The amount of assigned memory (GB or MB) that the VM is consuming.
+- **Assigned memory:** The total amount of memory assigned to the VM.
+- **Uptime:** How long the VM has been running in days:hours:minutes:seconds.
+- **Heartbeat:** Indicates whether the cluster can communicate with the VM.
+- **Disaster recovery status:** Shows whether the VM is signed into Azure disaster recovery.
+
 ### Monitor servers
 
 You can monitor the host servers that comprise an Azure Stack HCI cluster directly from Windows Admin Center. If host servers are not configured with sufficient CPU or memory to provide the resources VMs require, they can be a performance bottleneck.
+
+To monitor servers in Windows Admin Center, click **Servers** from the **Tools** menu at the left. To view a complete inventory of virtual machines running on the cluster, click **Inventory** at the top of the page. You'll see a table with information about each server, including:
 
 ### Monitor volumes
 
