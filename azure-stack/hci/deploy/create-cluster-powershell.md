@@ -170,7 +170,9 @@ Get-VMNetworkAdapter -CimSession $Servers -ManagementOS
 
 ### Create virtual switches
 
-A virtual switch is needed for each server node in your cluster. In the following example, a virtual switch with SR-IOV capability is created using network adapters that are connected (Status is UP). SR-IOV enabled might be useful as it's required for RDMA enabled vmNICs (vNICs for VMs).
+A virtual switch is needed for each server node in your cluster. In the following example, a virtual switch with SR-IOV capability is created using network adapters that are connected (Status is UP). SR-IOV enabled might also be useful as it's required for RDMA enabled vmNICs (vNICs for VMs).
+
+All network adapters must be identical for teaming NICs together.
 
 ```powershell
 $Servers = "Server1", "Server2", "Server3", "Server4"
