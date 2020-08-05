@@ -99,38 +99,45 @@ For example, the screenshot below shows a performance counter called "Memory usa
 
 You can also monitor Azure Stack HCI clusters using PowerShell cmdlets that return information about the cluster and its components. Here are some common scenarios and how to troubleshoot them.
 
-### CPU utilization
+### Server CPU utilization
 
-server (over 85% for 10 mins)
+No server in the cluster should use more than 85 percent of its CPU for longer than 10 minutes.
 
-### Disk capacity utilization
+### Drive capacity utilization
 
-server (over 80% for 10 mins)
+If a server utilizes 80 percent or more of its drive capacity for more than 10 minutes, you may need to add capacity.
 
 ### Memory utilization
 
-server (available memory less than 100MB for 10 mins)
+If a server has less than 100MB of memory available for 10 minutes or longer, consider adding memory to the server.
 
 ### Heartbeat (VM unavailable)
 
-server (fewer than 2 beats for 5 mins)
+If a VM responds to less than three heartbeats for a period of five minutes or longer, there may be a problem.
 
 ### System critical error
 
-(cluster) any critical alert in the cluster system event log
+Any critical alert in the cluster system event log could be cause for concern.
 
 ### Health service alert
 
-(cluster) - any health service fault on the cluster
+Any health service fault on the cluster should be investigated. 
 
 ## Query and process performance history
 
+See [Performance history for Storage Spaces Direct](/windows-server/storage/storage-spaces/performance-history).
+
 ## Use the Health Service feature in Windows Server
+
+See [Health Service in Windows Server](/windows-server/failover-clustering/health-service-overview).
 
 ## Troubleshoot health and operational states
 
+See [Troubleshoot Storage Spaces and Storage Spaces Direct health and operational states](/windows-server/storage/storage-spaces/storage-spaces-states).
+
 ## Monitor health using storage QoS
 
+See [Storage Quality of Service](/windows-server/storage/storage-qos/storage-qos-overview).
 
 ## Next steps
 
