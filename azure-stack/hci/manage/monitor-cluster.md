@@ -90,10 +90,38 @@ Use the Performance Monitor tool in Windows Admin Center to view and compare per
 3. If creating a new workspace, click the **Add counter** button and select one or more source servers to monitor, or select the entire cluster.
 4. Select the object and instance you wish to monitor, as well as the counter and graph type to view dynamic performance information.
 5. Save the workspace by choosing **Save > Save As** from the top menu.
+ 
+For example, the screenshot below shows a performance counter called "Memory usage" that displays information about memory across a two-node cluster.
+
+:::image type="content" source="media/monitor-cluster/performance-monitor.png" alt-text="Example of a real-time performance counter in Windows Admin Center":::
 
 ## Monitor using Windows PowerShell
 
-You can also monitor Azure Stack HCI clusters using PowerShell cmdlets that return information about the cluster and its components.
+You can also monitor Azure Stack HCI clusters using PowerShell cmdlets that return information about the cluster and its components. Here are some common scenarios and how to troubleshoot them.
+
+### CPU utilization
+
+server (over 85% for 10 mins)
+
+### Disk capacity utilization
+
+server (over 80% for 10 mins)
+
+### Memory utilization
+
+server (available memory less than 100MB for 10 mins)
+
+### Heartbeat (VM unavailable)
+
+server (fewer than 2 beats for 5 mins)
+
+### System critical error
+
+(cluster) any critical alert in the cluster system event log
+
+### Health service alert
+
+(cluster) - any health service fault on the cluster
 
 ## Query and process performance history
 
