@@ -81,7 +81,7 @@ This document assumes you have the Azure Stack HCI cluster deployed and VMs inst
 
 8. Find The TCP/IP address for the Ubuntu installation using the **ifconfig** command and copy the IP address for the **eth0** interface.
 
-9. Use an SSH client such as [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/) to connect to the Ubuntu VM for further configuration.
+9. Use an SSH client such as OpenSSH (ssh.exe installed with Windows 10 by default) or [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/) to connect to the Ubuntu VM for further configuration.
 
 10. Upon login through the SSH client, issue the command **lspci** and validate that the NVIDIA GPU is listed as "3D controller."
 
