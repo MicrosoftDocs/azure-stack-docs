@@ -44,7 +44,7 @@ The first thing you'll need to do is to obtain the address block you want to add
 4. Find the Resource providers tile and click on the network resource provider.
 5. Click on the Public IP pools usage tile.
 6. Click on the Add IP pool button.
-7. Provide a name for the IP pool. The name you choose helps you easily identify the IP pool. It's a good practice to make the name the same as the address range, but that isn't required.
+7. Provide a name for the IP pool. The name you choose helps you easily identify the IP pool. You can't use a special character like "/" in this field. It's a good practice to make the name the same as the address range, but that isn't required.
 8. Enter the address block you want to add in CIDR notation. For example: 192.168.203.0/24
 9. When you provide a valid CIDR range in the Address range (CIDR block) field the Start IP address, End IP address and Available IP addresses fields will automatically populate. They're read-only and automatically generated so you can't change these fields without modifying the value in the Address range field.
 10. After you review the info on the blade and confirm that everything looks correct, select **Ok** to commit the change and add the address range to Azure Stack Hub.
