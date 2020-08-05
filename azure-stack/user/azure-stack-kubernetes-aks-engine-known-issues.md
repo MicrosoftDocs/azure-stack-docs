@@ -42,11 +42,7 @@ This topic covers known issues for the AKS engine on Azure Stack Hub.
 
 ## aks-engine get-versions command limitations
 
-- Single agent pool limitation.
-
-    Azure Stack Hub only supports the Basic load balancer stock keeping unit (SKU). This SKU [limits](/azure/load-balancer/concepts#limitations) the backend pool endpoints to virtual machines in a single availability set (or virtual machine scale set). This implies that all replicas of a LoadBalancer service should be deployed on the same agent pool and it also implies that each individual cluster can either have a Linux LoadBalancer service or a Windows LoadBalancer service.
-
-- The output of the **aks-engine** `get-versions` command only relates to global Azure rather than Azure Stack Hub. For more information about the various upgrade paths, see [Steps to upgrade to a newer Kubernetes version](azure-stack-kubernetes-aks-engine-upgrade.md#steps-to-upgrade-to-a-newer-kubernetes-version).
+The output of the **aks-engine** `get-versions` command only relates to global Azure rather than Azure Stack Hub. For more information about the various upgrade paths, see [Steps to upgrade to a newer Kubernetes version](azure-stack-kubernetes-aks-engine-upgrade.md#steps-to-upgrade-to-a-newer-kubernetes-version).
 
 ## Next steps
 
