@@ -46,6 +46,8 @@
       href: manage/create-volumes.md
     - name: Create stretched volumes
       href: manage/create-stretched-volumes.md
+    - name: Enable volume encryption, deduplication, and compression
+      href: manage/volume-encryption-deduplication.md
     - name: Extend volumes
       href: manage/extend-volumes.md
     - name: Delete volumes
