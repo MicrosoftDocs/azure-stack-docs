@@ -79,6 +79,8 @@ The requirements include:
 
 Infrastructure Backup Service supports transferring backup data to an external storage location with SMB encryption enabled on the server side. If the server doesn't support SMB Encryption or doesn't have the feature enabled, Infrastructure Backup Service will fall back to unencrypted data transfer. Backup data placed on the external storage location is always encrypted at rest and isn't dependent on SMB encryption.
 
+::: moniker-end
+
 #### Storage location sizing
 
 We recommend you back up at last two times a day and keep at most seven days of backups. This is the default behavior when you enable infrastructure backups on Azure Stack Hub.
