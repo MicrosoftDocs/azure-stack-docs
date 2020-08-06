@@ -78,7 +78,7 @@ Before using either of the following sample PowerShell scripts, replace the valu
   Add-AzsScaleUnitNode -NodeList $NewNode -ScaleUnit "<name_of_scale_unit_cluster>" 
   ```  
 
-### [PowerShell AzureRM](#tab/Az)
+### [PowerShell Az](#tab/Az)
 
 Use the **Add-AzsScaleUnitNode** cmdlet to add a node.  
 
