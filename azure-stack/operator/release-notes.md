@@ -95,7 +95,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 ### Changes
 
 - Removed the actions to stop, shut down, and restart an infrastructure role instance from the admin portal. The corresponding APIs have also been removed in the Fabric Resource Provider. The following PowerShell cmdlets in the admin RM module and AZ preview for Azure Stack Hub no longer work: **Stop-AzsInfrastructureRoleInstance**, **Disable-InfrastructureRoleInstance**, and **Restart-InfrastructureRoleInstance**. These cmdlets will be removed from the next admin AZ module release for Azure Stack Hub.
-- Azure Stack Hub 2005 now only supports Azure App Service Q2 versions (87.x).
+- Azure Stack Hub 2005 now only supports Azure App Service Q2 (versions 87.x).
 
 ### Fixes
 
