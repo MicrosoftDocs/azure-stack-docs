@@ -19,7 +19,7 @@ To turn on BitLocker in Windows Admin Center:
 1. Connect to a Storage Spaces Direct cluster, and then on the **Tools** pane, select **Volumes**.
 1. On the **Volumes** page, select the **Inventory** tab, and then under **Optional features**, switch the **Encryption (BitLocker)** toggle on.
 
-        :::image type="content" source="./media/volume-encryption-deduplication/bitlocker-toggle-switch.png" alt-text="The toggle switch to enable BitLocker":::
+        :::image type="content" source="media/volume-encryption-deduplication/bitlocker-toggle-switch.png" alt-text="The toggle switch to enable BitLocker":::
 
 1. On the **Encryption (BitLocker)** pop-up, select **Start**, and then on the **Turn on Encryption** page, provide your credentials to complete the workflow.
 
