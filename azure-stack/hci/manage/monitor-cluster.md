@@ -107,9 +107,9 @@ Any Health Service fault on the cluster should be investigated. See [Health Serv
 
 To understand the health and operational states of storage pools, virtual disks, and drives, see [Troubleshoot Storage Spaces and Storage Spaces Direct health and operational states](/windows-server/storage/storage-spaces/storage-spaces-states).
 
-## Monitor health using storage QoS
+## Monitor performance using storage QoS
 
-Storage Quality of Service (QoS) provides a way to centrally monitor and manage storage performance for virtual machines to mitigate noisy neighbor issues and manage storage I/O to provide consistent performance. See [Storage Quality of Service](/windows-server/storage/storage-qos/storage-qos-overview).
+Storage Quality of Service (QoS) provides a way to centrally monitor and manage storage I/O for virtual machines to mitigate noisy neighbor issues and provide consistent performance. See [Storage Quality of Service](/windows-server/storage/storage-qos/storage-qos-overview).
 
 ## Next steps
 
