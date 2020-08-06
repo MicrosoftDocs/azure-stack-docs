@@ -11,13 +11,13 @@ ms.date: 08/6/2020
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-This topic covers how to enable volume encryption with BitLocker, and how to enable deduplication and compression on volumes in Azure Stack HCI using Windows Admin Center. To learn how to create volumes, see [Create volumes](create-volumes.md).
+This topic covers how to enable encryption with BitLocker on volumes in Azure Stack HCI using Windows Admin Center. It also covers how to enable deduplication and compression on volumes. To learn how to create volumes, see [Create volumes](create-volumes.md).
 
 ## Turn on BitLocker to protect volumes
 To turn on BitLocker in Windows Admin Center:
 
 1. Connect to a Storage Spaces Direct cluster, and then on the **Tools** pane, select **Volumes**.
-1. On the **Volumes** page, select the **Inventory** tab, and then under **Optional features**, switch the **Encryption (BitLocker)** toggle on.
+1. On the **Volumes** page, select the **Inventory** tab, and then under **Optional features**, switch on the **Encryption (BitLocker)** toggle.
 
     :::image type="content" source="media/volume-encryption-deduplication/bitlocker-toggle-switch.png" alt-text="The toggle switch to enable BitLocker":::
 
@@ -27,14 +27,14 @@ To turn on BitLocker in Windows Admin Center:
    > If the **Install BitLocker feature first** pop-up displays, follow its instructions to install the feature on each server in the cluster, and then restart your servers.
 
 ## Turn on deduplication and compression
-Deduplication and compression is managed per volume. Deduplication and compression uses a post-processing model, which means that you won't see savings until it runs. When it does, it'll work over all files, even those that were there from before.
+Deduplication and compression are managed per volume. Deduplication and compression use a post-processing model, which means that you won't see savings until it runs. When it does, it will work over all files, even files that were there from before.
 
 To turn on deduplication and compression on a volume in Windows Admin Center:
 
 1. Connect to a Storage Spaces Direct cluster, and then on the **Tools** pane, select **Volumes**.
 1. On the **Volumes** page, select the **Inventory** tab.
 1. In the list of volumes, select the name of the volume that you want to manage.
-1. On the volume details page, switch the **Deduplication and compression**  toggle on.
+1. On the volume details page, switch on the **Deduplication and compression** toggle.
 1. On the **Enable deduplication** pane, select the deduplication mode.
 
     Instead of complicated settings, Windows Admin Center lets you choose between ready-made profiles for different workloads. If you're not sure, use the default setting.
@@ -45,7 +45,7 @@ Watch a quick video on how to turn on deduplication and compression. The video d
 
 > [!VIDEO https://www.youtube-nocookie.com/embed/PRibTacyKko]
 
-Enabling volume encryption has a small impact on volume performance—typically under 10%, but the impact varies depending on your hardware and workloads. Enabling data deduplication and compression also has an impact on performance—for details, see [Determine which workloads are candidates for Data Deduplication](/windows-server/storage/data-deduplication/install-enable#enable-dedup-candidate-workloads).
+Enabling volume encryption has a small impact on volume performance—typically under 10%, but the impact varies depending on your hardware and workloads. Data deduplication and compression also has an impact on performance—for details, see [Determine which workloads are candidates for Data Deduplication](/windows-server/storage/data-deduplication/install-enable#enable-dedup-candidate-workloads).
 
 <!---Add info on greyed out ReFS option? --->
 
