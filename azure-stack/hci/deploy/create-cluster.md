@@ -149,7 +149,7 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
 1. Select **Next: Clustering**.
 1. Under **Validate the cluster**, select **Validate**. Validation may take several minutes.
 
-    If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable CredSSP for the wizard to continue. Once your cluster is created and the wizard has completed, you'll disable CredSSP to increase security. If you experience issues with CredSSP, see [Troubleshoot CredSSP](/manage/troubleshoot-credssp.md) for more information.
+    If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable CredSSP for the wizard to continue. Once your cluster is created and the wizard has completed, you'll disable CredSSP to increase security. If you experience issues with CredSSP, see [Troubleshoot CredSSP](../manage/troubleshoot-credssp.md) for more information.
 
 1. Review all validation statuses, download the report to get detailed information on any failures, make changes, then click **Validate again** as needed. Repeat again as necessary until all validation checks pass.
 1. Under **Create the cluster**, enter a name for your cluster.
@@ -184,7 +184,7 @@ If resolving the cluster isn't successful after some time, in most cases you can
 
 After the wizard has completed, there are still some important tasks you need to complete.
 
-The first task is to disable the Credential Security Support Provider (CredSSP) protocol on each server for security purposes. Remember that CredSSP needed to be enabled for the wizard. If you experience issues with CredSSP, see [Troubleshoot CredSSP](manage/troubleshoot-credssp.md) for more information.
+The first task is to disable the Credential Security Support Provider (CredSSP) protocol on each server for security purposes. Remember that CredSSP needed to be enabled for the wizard. If you experience issues with CredSSP, see [Troubleshoot CredSSP](../manage/troubleshoot-credssp.md) for more information.
 
 1. In Windows Admin Center, under **All connections**, select the cluster you just created.
 1. Under **Tools**, select **Servers**.
