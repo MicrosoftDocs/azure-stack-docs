@@ -41,7 +41,7 @@ For help with troubleshooting updates and the update process, see [Troubleshoot 
 
 ## Download the update
 
-You can download the Azure Stack Hub update package using [the Azure Stack Hub updates downloader tool](https://aka.ms/azurestackupdatedownload).
+You can download the Azure Stack Hub update package using [the Azure Stack Hub update downloader tool](https://aka.ms/azurestackupdatedownload).
 
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
