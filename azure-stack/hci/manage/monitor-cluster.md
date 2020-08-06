@@ -4,7 +4,7 @@ description: How to monitor Azure Stack HCI clusters, servers, virtual machines,
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 08/06/2020
 ---
 
 # Monitor Azure Stack HCI clusters
@@ -21,7 +21,7 @@ There are three ways to monitor Azure Stack HCI clusters and its underlying comp
 
 ## Monitor virtual machines
 
-It's critical to understand the health of the virtual machines (VMs) on which your applications and databases run. If a VM is not assigned enough CPU or memory for the workloads running on it, performance could slow, or the application could become unavailable.
+It's critical to understand the health of the virtual machines (VMs) on which your applications and databases run. If a VM is not assigned enough CPU or memory for the workloads running on it, performance could slow, or the application could become unavailable. If a VM responds to less than three heartbeats for a period of five minutes or longer, there may be a problem.
 
 To monitor virtual machines in Windows Admin Center, click **Virtual machines** from the **Tools** menu at the left. To view a complete inventory of virtual machines running on the cluster, click **Inventory** at the top of the page. You'll see a table with information about each VM, including:
 
@@ -38,7 +38,7 @@ To monitor virtual machines in Windows Admin Center, click **Virtual machines** 
 
 ## Monitor servers
 
-You can monitor the host servers that comprise an Azure Stack HCI cluster directly from Windows Admin Center. If host servers are not configured with sufficient CPU or memory to provide the resources VMs require, they can be a performance bottleneck.
+You can monitor the host servers that comprise an Azure Stack HCI cluster directly from Windows Admin Center. If host servers are not configured with sufficient CPU or memory to provide the resources VMs require, they can be a performance bottleneck. 
 
 To monitor servers in Windows Admin Center, click **Servers** from the **Tools** menu at the left. To view a complete inventory of servers in the cluster, click **Inventory** at the top of the page. You'll see a table with information about each server, including:
 
@@ -48,8 +48,8 @@ To monitor servers in Windows Admin Center, click **Servers** from the **Tools**
 - **Manufacturer:** The hardware manufacturer of the server.
 - **Model:** The model of the server.
 - **Serial number:** The serial number of the server.
-- **CPU usage:** The percentage of the host server's CPU that is being utilized.
-- **Memory usage:** The percentage of the host server's memory that is being utilized.
+- **CPU usage:** The percentage of the host server's CPU that is being utilized. No server in the cluster should use more than 85 percent of its CPU for longer than 10 minutes. 
+- **Memory usage:** The percentage of the host server's memory that is being utilized. If a server has less than 100MB of memory available for 10 minutes or longer, consider adding memory.
 
 ## Monitor volumes
 
@@ -66,7 +66,7 @@ Storage volumes can fill up quickly, making it important to monitor them on a re
 
 ## Monitor drives
 
-Azure Stack HCI virtualizes storage in such a way that losing an individual drive will not significantly impact the cluster. However, failed drives will [need to be replaced](replace-drives.md), and drives can impact performance by filling up or introducing latency. If the operating system cannot communicate with a drive, the drive may be loose or disconnected, its connector may have failed, or the drive itself may have failed. Windows automatically retires drives after 15 minutes of lost communication.
+Azure Stack HCI virtualizes storage in such a way that losing an individual drive will not significantly impact the cluster. However, failed drives will [need to be replaced](replace-drives.md), and drives can impact performance by filling up or introducing latency. If the operating system cannot communicate with a drive, the drive may be loose or disconnected, its connector may have failed, or the drive itself may have failed. Windows automatically retires drives after 15 minutes of lost communication. 
 
 To monitor drives in Windows Admin Center, click **Drives** from the **Tools** menu at the left. To view a complete inventory of drives on the cluster, click **Inventory** at the top of the page. You'll see a table with information about each drive, including:
 
@@ -86,58 +86,30 @@ To monitor drives in Windows Admin Center, click **Drives** from the **Tools** m
 Use the Performance Monitor tool in Windows Admin Center to view and compare performance counters for Windows, apps, or devices in real-time.
 
 1. Select **Performance Monitor** from the **Tools** menu on the left.
-2. Click **blank workspace** to start a new workspace, or **restore previous** to restore a previous workspace.
-3. If creating a new workspace, click the **Add counter** button and select one or more source servers to monitor, or select the entire cluster.
-4. Select the object and instance you wish to monitor, as well as the counter and graph type to view dynamic performance information.
-5. Save the workspace by choosing **Save > Save As** from the top menu.
+1. Click **blank workspace** to start a new workspace, or **restore previous** to restore a previous workspace.
+1. If creating a new workspace, click the **Add counter** button and select one or more source servers to monitor, or select the entire cluster.
+1. Select the object and instance you wish to monitor, as well as the counter and graph type to view dynamic performance information.
+1. Save the workspace by choosing **Save > Save As** from the top menu.
  
 For example, the screenshot below shows a performance counter called "Memory usage" that displays information about memory across a two-node cluster.
 
 :::image type="content" source="media/monitor-cluster/performance-monitor.png" alt-text="Example of a real-time performance counter in Windows Admin Center":::
 
-## Monitor using Windows PowerShell
+## Query and process performance history with PowerShell
 
-You can also monitor Azure Stack HCI clusters using PowerShell cmdlets that return information about the cluster and its components. Here are some common scenarios and how to troubleshoot them.
+You can also monitor Azure Stack HCI clusters using PowerShell cmdlets that return information about the cluster and its components. See [Performance history for Storage Spaces Direct](/windows-server/storage/storage-spaces/performance-history).
 
-### Server CPU utilization
+## Use the Health Service feature
 
-No server in the cluster should use more than 85 percent of its CPU for longer than 10 minutes.
-
-### Drive capacity utilization
-
-If a server utilizes 80 percent or more of its drive capacity for more than 10 minutes, you may need to add capacity.
-
-### Memory utilization
-
-If a server has less than 100MB of memory available for 10 minutes or longer, consider adding memory to the server.
-
-### Heartbeat (VM unavailable)
-
-If a VM responds to less than three heartbeats for a period of five minutes or longer, there may be a problem.
-
-### System critical error
-
-Any critical alert in the cluster system event log could be cause for concern.
-
-### Health service alert
-
-Any health service fault on the cluster should be investigated. 
-
-## Query and process performance history
-
-See [Performance history for Storage Spaces Direct](/windows-server/storage/storage-spaces/performance-history).
-
-## Use the Health Service feature in Windows Server
-
-See [Health Service in Windows Server](/windows-server/failover-clustering/health-service-overview).
+Any Health Service fault on the cluster should be investigated. See [Health Service in Windows Server](/windows-server/failover-clustering/health-service-overview) to learn how to run reports and identify faults.
 
 ## Troubleshoot health and operational states
 
-See [Troubleshoot Storage Spaces and Storage Spaces Direct health and operational states](/windows-server/storage/storage-spaces/storage-spaces-states).
+To understand the health and operational states of storage pools, virtual disks, and drives, see [Troubleshoot Storage Spaces and Storage Spaces Direct health and operational states](/windows-server/storage/storage-spaces/storage-spaces-states).
 
 ## Monitor health using storage QoS
 
-See [Storage Quality of Service](/windows-server/storage/storage-qos/storage-qos-overview).
+Storage Quality of Service (QoS) provides a way to centrally monitor and manage storage performance for virtual machines to mitigate noisy neighbor issues and manage storage I/O to provide consistent performance. See [Storage Quality of Service](/windows-server/storage/storage-qos/storage-qos-overview).
 
 ## Next steps
 
