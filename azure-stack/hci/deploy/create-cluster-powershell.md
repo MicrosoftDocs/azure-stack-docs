@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a hyperconverged cluster for Azure Stack HCI using Windows PowerShell
 author: v-dasis
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 08/04/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -54,7 +54,7 @@ To connect to the servers, you must first have network connectivity, be joined t
 Open PowerShell and use either the fully-qualified domain name or the IP address of the server you want to connect to. You'll be prompted for a password after you run the following command on each server (Server1, Server2, Server3, Server4):
 
    ```powershell
-   Enter-PSSession -ComputerName Server1 -Credential Server1\Administrator
+   Enter-PSSession -ComputerName "Server1" -Credential "Server1\Administrator"
    ```
 
 Here's another example of doing the same thing:
@@ -172,7 +172,7 @@ Get-VMNetworkAdapter -CimSession $Servers -ManagementOS
 
 A virtual switch is needed for each server node in your cluster. In the following example, a virtual switch with SR-IOV capability is created using network adapters that are connected (Status is UP). SR-IOV enabled might also be useful as it's required for RDMA enabled vmNICs (vNICs for VMs).
 
-All network adapters must be identical for teaming NICs together.
+All network adapters must be identical when teaming NICs.
 
 ```powershell
 $Servers = "Server1", "Server2", "Server3", "Server4"
@@ -323,7 +323,7 @@ Invoke-Command ($ServerList) {
 In this step, you'll ensure that the server nodes are configured correctly to create a cluster. The `Test-Cluster` cmdlet is used to run tests to verify your configuration is suitable to function as a hyperconverged cluster. The example below uses the `-Include` parameter, with the specific categories of tests specified. This ensures that the correct tests are included in the validation.
 
 ```powershell
-Test-Cluster -Cluster –Node Server1, Server2, Server3, Server4 –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
+Test-Cluster -Cluster –Node "Server1", "Server2", "Server3", "Server4" –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
 ```
 
 ## Step 4: Create the cluster
@@ -336,7 +336,7 @@ When creating the cluster, you'll get a warning that states - `"There were issue
 > If the servers are using static IP addresses, modify the following command to reflect the static IP address by adding the following parameter and specifying the IP address: `–StaticAddress <X.X.X.X>;`.
 
 ```powershell
- New-Cluster –Name Cluster1 –Node Server1, Server2, Server3, Server4 –NoStorage
+ New-Cluster –Name Cluster1 –Node "Server1", "Server2", "Server3", "Server4" –NoStorage
 ```
 
 Congrats, your cluster has now been created.
@@ -354,17 +354,17 @@ This task only applies if you are creating a stretched cluster between two sites
 In the cmdlet below, *FaultDomain* is simply another name for a site. This example uses `ClusterS1` as the name of the stretched cluster.
 
 ```powershell
-New-ClusterFaultDomain -CimSession ClusterS1 -Type Site -Name Site1
+New-ClusterFaultDomain -CimSession ClusterS1 -FaultDomainType Site -Name "Site1"
 ```
 
 ```powershell
-New-ClusterFaultDomain -CimSession ClusterS1 -Type Site -Name Site2
+New-ClusterFaultDomain -CimSession ClusterS1 -FaultDomainType Site -Name "Site2"
 ```
 
 Use the `Get-ClusterFaultDomain` cmdlet to verify that both sites have been created for the cluster.
 
 ```powershell
-Get-ClusterFaultDomain
+New-ClusterFaultDomain -CimSession ClusterS1
 ```
 
 ### Step 5.2: Assign server nodes
@@ -372,11 +372,11 @@ Get-ClusterFaultDomain
 Next, we will assign the four server nodes to their respective sites. In the example below, Server1 and Server2 are assigned to Site1, while Server3 and Server4 are assigned to Site2.
 
 ```powershell
-Set-ClusterFaultDomain -CimSession ClusterS1 -Name Server1, Server2 -Parent Site1
+Set-ClusterFaultDomain -CimSession ClusterS1 -Name "Server1", "Server2" -Parent "Site1"
 ```
 
 ```powershell
-Set-ClusterFaultDomain -CimSession ClusterS1 -Name Server3, Server4 -Parent Site2
+Set-ClusterFaultDomain -CimSession ClusterS1 -Name "Server3", "Server4" -Parent "Site2"
 ```
 
 Using the `Get-ClusterFaultDomain` cmdlet, verify the nodes are in the correct sites.
@@ -390,7 +390,7 @@ Get-ClusterFaultDomain -CimSession ClusterS1
 You can also define a global *preferred* site, which means that specified resources and groups must run on the preferred site.  This setting can be defined at the site level using the following command:  
 
 ```powershell
-(Get-Cluster).PreferredSite = Site1
+(Get-Cluster).PreferredSite = "Site1"
 ```
 
 Specifying a preferred Site for stretched clusters has the following benefits:
