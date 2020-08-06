@@ -13,7 +13,7 @@ ms.lastreviewed: 08/06/2020
 >
 > | Minimum Azure Stack Hub version | App Service RP version |
 > |-----|---|
-> | 2005 | 2020.Q2 - [release notes](../operator/app-service-release-notes-2020-Q2.md) |
-> | 2002 | [2020.Q2 release notes](../operator/app-service-release-notes-2020-Q2.md) |
-> | 1910 | [1.8 release notes](../operator/azure-stack-app-service-release-notes-update-eight.md) |
-> | 1910 | [1.7 release notes](../operator/azure-stack-app-service-release-notes-update-seven.md) |
+> | 2005 | 2020.Q2 ([release notes](../operator/app-service-release-notes-2020-Q2.md)) |
+> | 2002 | 2020.Q2 ([release notes](../operator/app-service-release-notes-2020-Q2.md)) |
+> | 1910 | 1.8 ([release notes](../operator/azure-stack-app-service-release-notes-update-eight.md)) |
+> | 1910 | 1.7 ([release notes](../operator/azure-stack-app-service-release-notes-update-seven.md)) |
