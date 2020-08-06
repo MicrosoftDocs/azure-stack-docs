@@ -47,8 +47,8 @@ You can install the latest Azure Stack PowerShell module with or without interne
   Install-Module -Name Az.BootStrapper
 
   # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
-  Use-AzProfile -Profile 2019-03-01-hybrid -Force
-  Install-Module -Name AzureStack -RequiredVersion 1.8.0
+  Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
+  Install-Module -Name AzureStack -RequiredVersion 1.8.2
   ```
 
   If the installation is successful, the Az and AzureStack modules are displayed in the output.
