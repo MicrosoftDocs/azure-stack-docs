@@ -19,7 +19,7 @@ ms.lastreviewed: 01/21/2019
 
 Whenever there are updates to virtual machine (VM) extensions you use, you should download them. Extensions shipped in the product don't update in the normal patch and update process, so check for updates frequently. Other extensions are only available through Marketplace Management.
 
-|  | Item name | Description | Publisher | OS Type |
+| Image | Item name | Description | Publisher | OS Type |
 | --- | --- | --- | --- | --- |
 |![SQL IaaS Extension (SqlIaasExtension)](media/azure-stack-marketplace-azure-items/cse.png) | [SQL IaaS Extension (SqlIaasExtension)](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)| **Download this extension to deploy any SQL Server on Windows Marketplace item - this extension is required.** | Microsoft | Windows |
 |![Custom Script Extension](media/azure-stack-marketplace-azure-items/cse.png) | [Custom Script Extension](/azure/virtual-machines/windows/extensions-customscript)| **Download this update to the in-box version of the Custom Script Extension for Windows.** | Microsoft | Windows |
@@ -40,7 +40,7 @@ Whenever there are updates to virtual machine (VM) extensions you use, you shoul
 
 Microsoft Azure Stack Hub supports the following Azure Marketplace VMs and solution templates. Download any dependencies separately, as noted. Apps such as SQL Server and Machine Learning Server require proper licensing, except where marked as Free or Trial.
 
-|  | Item name | Description | Publisher |
+| Image | Item name | Description | Publisher |
 | --- | --- | --- | --- |
 | ![SharePoint Server 2013 Trial](media/azure-stack-marketplace-azure-items/sharepoint.png) | [SharePoint Server 2013 Trial](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsharepoint.microsoftsharepointserver) | Microsoft SharePoint Server 2013 Trial on Windows Server 2012 Datacenter and Visual Studio 2019 community edition. | Microsoft |
 | ![SharePoint Server 2016 Trial](media/azure-stack-marketplace-azure-items/sharepoint.png) | [SharePoint Server 2016 Trial](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsharepoint.microsoftsharepointserver) | Microsoft SharePoint Server 2016 Trial on Windows Server 2016 Datacenter. | Microsoft |
@@ -56,7 +56,7 @@ Microsoft Azure Stack Hub supports the following Azure Marketplace VMs and solut
 
 ## Linux distributions
 
-|  | Item name | Description | Publisher |
+| Image | Item name | Description | Publisher |
 | --- | --- | --- | --- |
 | ![Clear Linux OS](media/azure-stack-marketplace-azure-items/clearlinux.png) | [Clear Linux OS](https://azuremarketplace.microsoft.com/marketplace/apps/clear-linux-project.clear-linux-os) | A reference Linux distribution optimized for Intel Architecture. | Clear Linux Project |
 | ![CoreOS Linux (Stable)](media/azure-stack-marketplace-azure-items/coreos.png) | [CoreOS Linux (Stable)](https://azuremarketplace.microsoft.com/marketplace/apps/CoreOS.CoreOS) | CoreOS is a modern and minimal Linux distribution, providing an easy way to run containers, manage clusters and seamlessly update your servers - all components that enable warehouse-scale compute. | CoreOS |
@@ -72,7 +72,7 @@ Microsoft Azure Stack Hub supports the following Azure Marketplace VMs and solut
 
 ## Third-Party BYOL, free, trial images, and solution templates
 
-|  | Item name | Description | Publisher |
+| Image | Item name | Description | Publisher |
 | --- | --- | --- | --- |
 | ![A10 vThunder ADC](media/azure-stack-marketplace-azure-items/a10.png) | [A10 vThunder ADC](https://azuremarketplace.microsoft.com/marketplace/apps/a10networks.vthunder-414-gr1) | The A10 Networks vThunder ADC (Application Delivery Controller) for Microsoft Azure is purpose-built for high performance, flexibility, and easy-to-deploy app delivery and server load balancing and optimized to run natively within the Azure cloud. | A10 Networks |
 | ![Arista vEOS Router](media/azure-stack-marketplace-azure-items/arista.png) | [Arista vEOS Router](https://azuremarketplace.microsoft.com/marketplace/apps/arista-networks.veos-router) | The Arista vEOS Router is a feature-rich, multi-cloud, and multi-hypervisor virtual router that empowers enterprises and cloud providers to build consistent, highly secure, and scalable hybrid networks. | Arista Networks |
