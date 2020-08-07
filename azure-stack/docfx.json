@@ -57,7 +57,7 @@
           "LICENSE-CODE",
           "ThirdPartyNotices"
         ]
-      },      
+      },
       {
         "group": "version-ash",
         "src" : "user",
@@ -201,7 +201,7 @@
         }
       },
       "manager":"femila",
-      "ms.service": "azure-stack"          
+      "ms.service": "azure-stack"
     },
     "fileMetadata": {
       "titleSuffix": {
@@ -209,6 +209,9 @@
         "asdk/**/*.md": "Azure Stack Development Kit (ASDK)",
         "hci/**/*.md": "Azure Stack HCI",
         "hybrid/**/*.md": "Azure Stack"
+      },
+      "ms.subservice": {
+        "hci/**/*.md": "azure-stack-hci"
       }
     },
     "template": [],
