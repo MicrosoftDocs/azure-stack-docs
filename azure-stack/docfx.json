@@ -210,10 +210,7 @@
         "hci/**/*.md": "Azure Stack HCI",
         "hybrid/**/*.md": "Azure Stack"
       },
-      "ms.prod": {
-        "hci/**/*.md": "azure-stack"
-      },
-      "ms.technology": {
+      "ms.subservice": {
         "hci/**/*.md": "azure-stack-hci"
       }
     },
