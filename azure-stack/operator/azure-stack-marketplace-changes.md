@@ -53,6 +53,11 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 ## Deprecated marketplace items
 
 - Bitnami Shopware
+- SQL Server 2017 Standard on SUSE Linux Enterprise Server (SLES) 12 SP2
+- Free License: SQL Server 2017 Developer on SUSE Linux Enterprise Server (SLES) 12 SP2
+- Free License: SQL Server 2017 Express on SUSE Linux Enterprise Server (SLES) 12 SP2
+- SQL Server 2017 Enterprise on SUSE Linux Enterprise Server (SLES) 12 SP2
+- SQL Server 2017 Web on SUSE Linux Enterprise Server (SLES) 12 SP2
 - Bitnami Codiad
 - Bitnami X2Engine Sales CRM
 - Bitnami SugarCRM
