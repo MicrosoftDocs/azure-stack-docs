@@ -17,7 +17,7 @@ This topic provides guidance on how to choose drives for [Storage Spaces Direct]
 
 Storage Spaces Direct currently works with four types of drives:
 
-|||
+| Type of drive | Description |
 |----------------------|--------------------------|
 |![PMem](media/choose-drives/pmem-100px.png)|**PMem** refers to persistent memory, a new type of low latency, high-performance storage.|
 |![NVMe](media/choose-drives/NVMe-100-px.png)|**NVMe** (Non-Volatile Memory Express) refers to solid-state drives that sit directly on the PCIe bus. Common form factors are 2.5" U.2, PCIe Add-In-Card (AIC), and M.2. NVMe offers higher IOPS and IO throughput with lower latency than any other type of drive we support today except PMem.|
