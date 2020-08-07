@@ -3,7 +3,7 @@ title: Azure Marketplace items available for Azure Stack Hub
 description: Learn which Azure Marketplace items can be used in Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/07/2020
+ms.date: 08/07/2020
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 01/21/2019
@@ -202,7 +202,6 @@ Microsoft Azure Stack Hub supports the following Azure Marketplace VMs and solut
 | ![Roundcube](media/azure-stack-marketplace-azure-items/roundcube.png) | [Roundcube](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.roundcube) | Browser-based IMAP client with functionality such as MIME support. | Bitnami |
 | ![Ruby](media/azure-stack-marketplace-azure-items/ruby.png) | [Ruby](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.rubystack) | Easy-to-use development environment for Ruby on Rails. | Bitnami |
 | ![SEO Panel](media/azure-stack-marketplace-azure-items/seopanel.png) | [SEO Panel](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.seopanel) | Open-source SEO management app for tracking multiple websites. | Bitnami |
-| ![Shopware](media/azure-stack-marketplace-azure-items/shopware.png) | [Shopware](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.shopware) | Open-source eCommerce Platform. | Bitnami |
  ![SilverStripe](media/azure-stack-marketplace-azure-items/silverstripe.png) | [SilverStripe](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.silverstripe) | SilverStripe is an open source intuitive content management system and flexible framework. This combination provides both developers and content editors the tools to create innovative web projects. | Bitnami |
 | ![Simple Machines Forum](media/azure-stack-marketplace-azure-items/simplemachinesforum.png) | [Simple Machines Forum](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.simplemachinesforum) | Simple forum software to build your own online community. | Bitnami |
 | ![SonarQube](media/azure-stack-marketplace-azure-items/sonarqube.png) | [SonarQube](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.sonarqube) | SonarQube is an open source quality management platform that analyzes and measures code's technical quality. It enables developers to detect code issues, vulnerabilities, and bugs in early stages. | Bitnami |
