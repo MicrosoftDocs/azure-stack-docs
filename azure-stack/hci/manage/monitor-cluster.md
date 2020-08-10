@@ -4,7 +4,9 @@ description: How to monitor Azure Stack HCI clusters, servers, virtual machines,
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.service: azure-stack
+ms.subservice: azure-stack-hci
+ms.date: 08/10/2020
 ---
 
 # Monitor Azure Stack HCI clusters
@@ -21,20 +23,20 @@ There are three ways to monitor Azure Stack HCI clusters and its underlying comp
 
 ## Monitor virtual machines
 
-It's critical to understand the health of the virtual machines (VMs) on which your applications and databases run. If a VM is not assigned enough CPU or memory for the workloads running on it, performance could slow, or the application could become unavailable. If a VM responds to less than three heartbeats for a period of five minutes or longer, there may be a problem.
+It's important to understand the health of the virtual machines (VMs) on which your applications and databases run. If a VM is not assigned enough CPU or memory for the workloads running on it, performance could slow, or the application could become unavailable. If a VM responds to less than three heartbeats for a period of five minutes or longer, there may be a problem.
 
-To monitor virtual machines in Windows Admin Center, click **Virtual machines** from the **Tools** menu at the left. To view a complete inventory of virtual machines running on the cluster, click **Inventory** at the top of the page. You'll see a table with information about each VM, including:
+To monitor VMs in Windows Admin Center, click **Virtual machines** from the **Tools** menu at the left. To view a complete inventory of VMs running on the cluster, click **Inventory** at the top of the page. You'll see a table with information about each VM, including:
 
 - **Name:** The name of the VM.
 - **State:** Indicates if the VM is running or stopped.
 - **Host server:** Indicates which server in the cluster the VM is running on.
-- **CPU usage:** The percentage of the host server's CPU resources that the VM is consuming. **(Is this true?)**
+- **CPU usage:** The percentage of the cluster's total CPU resources that the VM is consuming.
 - **Memory pressure:** The percentage of available memory resources that the VM is consuming.
 - **Memory demand:** The amount of assigned memory (GB or MB) that the VM is consuming.
 - **Assigned memory:** The total amount of memory assigned to the VM.
 - **Uptime:** How long the VM has been running in days:hours:minutes:seconds.
 - **Heartbeat:** Indicates whether the cluster can communicate with the VM.
-- **Disaster recovery status:** Shows whether the VM is signed into Azure disaster recovery. **(Is this true?)**
+- **Disaster recovery status:** Shows whether the VM is signed into Azure Site Recovery.
 
 ## Monitor servers
 
@@ -109,7 +111,7 @@ To understand the health and operational states of storage pools, virtual disks,
 
 ## Monitor performance using storage QoS
 
-Storage Quality of Service (QoS) provides a way to centrally monitor and manage storage I/O for virtual machines to mitigate noisy neighbor issues and provide consistent performance. See [Storage Quality of Service](/windows-server/storage/storage-qos/storage-qos-overview).
+Storage Quality of Service (QoS) provides a way to centrally monitor and manage storage I/O for VMs to mitigate noisy neighbor issues and provide consistent performance. See [Storage Quality of Service](/windows-server/storage/storage-qos/storage-qos-overview).
 
 ## Next steps
 
