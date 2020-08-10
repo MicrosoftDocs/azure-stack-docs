@@ -4,10 +4,10 @@ description: This topic contains the support policies for AKS engine on Azure St
 author: mattbriggs
 
 ms.topic: article
-ms.date: 07/24/2020
+ms.date: 08/10/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 3/19/2020
+ms.lastreviewed: 08/10/2020
 
 # Intent: As an Azure Stack Hub user, I want to learn about the limitations of the AKS engine on Azure Stack Hub.
 # Keyword: AKS engine support policies kubernetes cluster
@@ -48,7 +48,7 @@ Microsoft does not provide technical support for the following:
 -  Azure Stack Hub Kubernetes Marketplace item.
 -  Using the following AKS engine cluster definition options and addons.
     -  Not supported addons:  
-            -  AAD Pod Identity  
+            -  Azure AD Pod Identity  
             -  ACI Connector  
             -  Blobfuse Flex Volume  
             -  Cluster Autoscaler  
@@ -78,6 +78,7 @@ Microsoft does not provide technical support for the following:
                     -  scaleSetEvictionPolicy  
                     -  acceleratedNetworkingEnabled  
                     -  acceleratedNetworkingEnabledWindows
+    - Production environments should only use highly available Kubernetes clusters, that is, clusters deployed with a minimum of three masters and three agent nodes. Anything less cannot be supported in production deployments.
 
 -  Kubernetes configuration changes persisted outside the Kubernetes configuration store etcd. For example, static pods running in nodes of the cluster.
 -  Questions about how to use Kubernetes. For example, Microsoft Support doesn't provide advice on how to create custom ingress controllers, use application workloads, or apply third-party or open-source software packages or tools.
