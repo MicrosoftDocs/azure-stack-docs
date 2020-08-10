@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/07/2020
+ms.date: 08/10/2020
 ---
 
 # SDN in Azure Stack HCI
@@ -25,14 +25,14 @@ The [Network Controller](/windows-server/networking/sdn/technologies/Software-De
 
 Deploying Network Controller enables the following functionalities:
 
-- Create and manage virtual networks and subnets. Connect virtual machines to virtual subnets.
-- Configure and manage micro-segmentation for virtual machines connected to virtual networks or traditional VLAN-based networks.
+- Create and manage virtual networks and subnets. Connect virtual machines (VMs) to virtual subnets.
+- Configure and manage micro-segmentation for VMs connected to virtual networks or traditional VLAN-based networks.
 - Attach virtual appliances to your virtual networks.
-- Configure Quality of Service (QoS) policies for virtual machines attached to virtual networks or traditional VLAN-based networks.
+- Configure Quality of Service (QoS) policies for VMs attached to virtual networks or traditional VLAN-based networks.
 
 ## Software Load Balancing
 
-[Software Load Balancing](/windows-server/networking/sdn/technologies/network-function-virtualization/software-load-balancing-for-sdn) can be used to evenly distribute customer network traffic among multiple virtual machines. It enables multiple servers to host the same workload, providing high availability and scalability. SLB uses [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) to advertise virtual IP addresses to the physical network.
+[Software Load Balancing](/windows-server/networking/sdn/technologies/network-function-virtualization/software-load-balancing-for-sdn) (SLB) can be used to evenly distribute customer network traffic among multiple VMs. It enables multiple servers to host the same workload, providing high availability and scalability. SLB uses [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) to advertise virtual IP addresses to the physical network.
 
 ## Gateway
 
@@ -46,7 +46,7 @@ Gateways use [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/
 
 ## Deploying SDN on Azure Stack HCI
 
-We recommend deploying Network Controller as part of creating the Azure Stack HCI cluster, then you can add additional SDN services later. The SDN deployment wizard in Windows Admin Center will create and configure the VMs that will host your SDN infrastructure. You’ll need to provide information about the management and provider network the SDN infrastructure will use to communicate and provide each VM with a properly configured network adapter. You can then choose to deploy Software Load Balancing and/or Gateways.
+We recommend deploying Network Controller as part of creating the Azure Stack HCI cluster, then you can add additional SDN services later. The create cluster wizard in Windows Admin Center will create and configure the VMs that will host your SDN infrastructure. You’ll need to provide information about the management and provider network the SDN infrastructure will use to communicate and provide each VM with a properly configured network adapter. You can then choose to deploy Software Load Balancing and Gateways.
 
 ## Next steps
 
