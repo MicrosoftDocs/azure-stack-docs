@@ -22,7 +22,7 @@ In this article, you can learn which Graphics processing unit (GPU) models are s
 You can choose from three GPU models in the public preview period. They are available in NVIDIA V100, NVIDIA T4 and AMD Mi25 GPUs. These physical GPUs align with the following Azure N-Series virtual machine (VM) types as follows:
 - [NCv3](https://docs.microsoft.com/azure/virtual-machines/ncv3-series)
 - [NVv4 (AMD Mi25)](https://docs.microsoft.com/azure/virtual-machines/nvv4-series)
-- NCasT4_v3
+- NCas_T4_v3
 
 > [!IMPORTANT]  
 > Azure Stack Hub GPU support is currently in public preview. To participate in the preview, complete the form at [aka.ms/azurestackhubgpupreview](https://aka.ms/azurestackhubgpupreview).
@@ -47,7 +47,17 @@ The NVv4-series virtual machines are powered by [AMD Radeon Instinct MI25](https
 | --- | --- | --- | --- | --- | --- | --- | --- |   
 | Standard_NV4as_v4 |4 |14 |88 | 1/8 | 2 | 4 | 2 | 
 
-## NCasT4_v3
+## NCas_T4_v3
+
+This new NVIDIA T4 VM size allows for light ML, inference and visualization workloads to be run on Azure Stack Hub. Currently this VM size is not available on the portal for deployment and powershell/cli will need to be used instead.
+
+
+| Size | vCPU | Memory: GiB | GPU | GPU memory: GiB | Max data disks | Max NICs | 
+| --- | --- | --- | --- | --- | --- | --- |
+| Standard_NC4as_T4_v3 |4 |28 | 1 | 16 | 8 | 4 | 
+| Standard_NC8as_T4_v3 |4 |56 | 1 | 16 | 16 | 8 | 
+| Standard_NC16as_T4_v3 |4 |112 | 1 | 16 | 32 | 8 | 
+| Standard_NC64as_T4_v3 |4 |448 | 1 | 64 | 32 | 8 | 
 
 
 ## Patch and update, FRU behavior of VMs 
@@ -64,9 +74,56 @@ GPU VMs will undergo downtime during operations such as patch and update (PnU) a
 ### AMD Mi25
 The article [Install AMD GPU drivers on N-series VMs running Windows](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-amd-driver-setup) provides instructions on installing the driver for the AMD Radeon Instinct Mi25 inside the NVv4 GPU-P enabled VM along with steps on how to verify driver installation.
 
-### NVIDIA CUDA
+### NVIDIA
 
-### NVIDIA GRID
+NVIDIA drivers are required to run CUDA or GRID workloads on the VM. Please make sure that you have the apropriate GRID licenses as well as a license server set up before you use the extension to install the GRID drivers on the VM. [This](https://docs.nvidia.com/grid/ls/latest/grid-license-server-user-guide/index.html) can be used to learn how to setup the license server. CUDA drivers do not need a license server.
+
+NVIDIA CUDA Windows settings:
+```powershell
+$Settings = @{
+"DriverURL" = "http://us.download.nvidia.com/tesla/442.50/442.50-tesla-desktop-winserver-2019-2016-international.exe";
+"DriverCertificateUrl" = "https://go.microsoft.com/fwlink/?linkid=871664"; 
+“DriverType”=”CUDA” 
+}
+```
+
+NVIDIA CUDA Linux Settings:
+```powershell
+$Settings=@{
+"DRIVER_URL"="https://go.microsoft.com/fwlink/?linkid=874271";
+"CUDA_ver"="10.0.130";
+"InstallCUDA"="true";
+"PUBKEY_URL"="http://download.microsoft.com/download/F/F/A/FFAC979D-AD9C-4684-A6CE-C92BB9372A3B/7fa2af80.pub"
+}
+```
+NVIDIA GRID Windows settings:
+```powershell
+$Settings = @{
+"DriverURL" = "http://us.download.nvidia.com/tesla/442.50/442.50-tesla-desktop-winserver-2019-2016-international.exe";
+"DriverCertificateUrl" = "https://go.microsoft.com/fwlink/?linkid=871664"; 
+“DriverType”=”CUDA” 
+}
+```
+
+Driver installation:
+```powershell
+$VmName = <VM Name In Portal>
+$ResourceGroupName = <Resource Group of VM>
+$Location = "redmond"
+$driverName = <Give a name to the driver>
+$driverPublisher = "Microsoft.HpcCompute"
+$driverType = <Specify Driver Type> #GPU Driver Types: "NvidiaGpuDriverWindows"; "NvidiaGpuDriverLinux"; "AmdGpuDriverWindows"
+$driverVersion = <Specify Driver Version> #Nvidia Driver Version:"1.3"; AMD Driver Version:"1.0"
+
+Set-AzureRmVMExtension  -Location $Location `
+                            -Publisher $driverPublisher `
+                            -ExtensionType $driverType `
+                            -TypeHandlerVersion $driverVersion `
+                            -VMName $VmName `
+                            -ResourceGroupName $ResourceGroupName `
+                            -Name $driverName `
+                            -Settings $Settings -Verbose
+```
 
 ## Next steps 
 
