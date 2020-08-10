@@ -19,22 +19,36 @@ ms.lastreviewed: 07/07/2020
 
 In this article, you can learn which Graphics processing unit (GPU) models are supported on the Azure Stack Hub multinode system. You can also find instructions on installing the drivers used with the GPUs. GPU support in Azure Stack Hub enables solutions such as Artificial Intelligence, training, inference, and data visualization. The AMD Radeon Instinct Mi25 can be used to support graphic-intensive applications such as Autodesk AutoCAD.
 
-You can choose from two GPU models in the public preview period. They are available in NVIDIA V100 Tensor Core and AMD Mi25 GPUs. These physical GPUs align with the following Azure N-Series virtual machine (VM) types as follows:
+You can choose from three GPU models in the public preview period. They are available in NVIDIA V100, NVIDIA T4 and AMD Mi25 GPUs. These physical GPUs align with the following Azure N-Series virtual machine (VM) types as follows:
 - [NCv3](https://docs.microsoft.com/azure/virtual-machines/ncv3-series)
 - [NVv4 (AMD Mi25)](https://docs.microsoft.com/azure/virtual-machines/nvv4-series)
+- NCasT4_v3
 
 > [!IMPORTANT]  
 > Azure Stack Hub GPU support is currently in public preview. To participate in the preview, complete the form at [aka.ms/azurestackhubgpupreview](https://aka.ms/azurestackhubgpupreview).
 > This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities. 
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## Partitioned GPU VM size 
+## NCv3
+
+NCv3-series VMs are powered by NVIDIA Tesla V100 GPUs. Customers can take advantage of these updated GPUs for traditional HPC workloads such as reservoir modeling, DNA sequencing, protein analysis, Monte Carlo simulations, and others. 
+
+| Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | GPU | GPU memory: GiB | Max data disks | Max NICs |
+|---|---|---|---|---|---|---|---|---|
+| Standard_NC6s_v3    | 6  | 112 | 736  | 1 | 16 | 12 | 4 |
+| Standard_NC12s_v3   | 12 | 224 | 1474 | 2 | 32 | 24 | 8 |
+| Standard_NC24s_v3   | 24 | 448 | 2948 | 4 | 64 | 32 | 8 |
+
+## NVv4
 
 The NVv4-series virtual machines are powered by [AMD Radeon Instinct MI25](https://www.amd.com/en/products/professional-graphics/instinct-mi25) GPUs. With NVv4-series Azure Stack Hub is introducing virtual machines with partial GPUs. This size can be used for GPU accelerated graphics applications and virtual desktops. NVv4 virtual machines currently support only Windows guest operating system. 
 
 | Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | GPU | GPU memory: GiB | Max data disks | Max NICs | 
 | --- | --- | --- | --- | --- | --- | --- | --- |   
 | Standard_NV4as_v4 |4 |14 |88 | 1/8 | 2 | 4 | 2 | 
+
+## NCasT4_v3
+
 
 ## Patch and update, FRU behavior of VMs 
 
@@ -47,7 +61,12 @@ GPU VMs will undergo downtime during operations such as patch and update (PnU) a
 
 ## Guest driver installation 
 
+### AMD Mi25
 The article [Install AMD GPU drivers on N-series VMs running Windows](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-amd-driver-setup) provides instructions on installing the driver for the AMD Radeon Instinct Mi25 inside the NVv4 GPU-P enabled VM along with steps on how to verify driver installation.
+
+### NVIDIA CUDA
+
+### NVIDIA GRID
 
 ## Next steps 
 
