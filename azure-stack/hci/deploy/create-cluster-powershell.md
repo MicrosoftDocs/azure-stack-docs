@@ -425,13 +425,13 @@ For stretched clusters, the `Enable-ClusterStorageSpacesDirect` cmdlet will also
 The following command enables Storage Spaces Direct. You can also specify a friendly name for a storage pool, as shown here:
 
 ```powershell
-New-CimSession -Cluster Cluster1 | Enable-ClusterStorageSpacesDirect -PoolFriendlyName 'Cluster1 Storage Pool'
+$session = New-CimSession -Cluster Cluster1 | Enable-ClusterStorageSpacesDirect -PoolFriendlyName 'Cluster1 Storage Pool'
 ```
 
 To see the storage pools, use this:
 
 ```powershell
-Get-StoragePool -Cluster Cluster1
+Get-StoragePool -CimSession $session
 ```
 
 Congrats, you have now created a bare-bones cluster.
