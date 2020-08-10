@@ -78,7 +78,6 @@ Microsoft does not provide technical support for the following:
                     -  scaleSetEvictionPolicy  
                     -  acceleratedNetworkingEnabled  
                     -  acceleratedNetworkingEnabledWindows
-    - Production environments should only use highly available Kubernetes clusters, that is, clusters deployed with a minimum of three masters and three agent nodes. Anything less cannot be supported in production deployments.
 
 -  Kubernetes configuration changes persisted outside the Kubernetes configuration store etcd. For example, static pods running in nodes of the cluster.
 -  Questions about how to use Kubernetes. For example, Microsoft Support doesn't provide advice on how to create custom ingress controllers, use application workloads, or apply third-party or open-source software packages or tools.
@@ -87,6 +86,7 @@ Microsoft does not provide technical support for the following:
 -  Third-party software. This software can include security scanning tools and networking devices or software.
 -  Issues about multicloud or multivendor build-outs. For example, Microsoft doesn't support issues related to running a federated multipublic cloud vendor solution.
 -  Network customizations other than those listed in the [AKS engine supported areas](#aks-engine-supported-areas) section.
+-  Production environments should only use highly available Kubernetes clusters, that is, clusters deployed with a minimum of three masters and three agent nodes. Anything less cannot be supported in production deployments.
 
 ##  Security issues and patching
 
