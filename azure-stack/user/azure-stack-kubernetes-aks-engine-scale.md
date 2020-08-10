@@ -9,8 +9,8 @@ ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 3/19/2020
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub user, I want to scale a Kubernetes cluster using AKS on Azure Stack Hub.
+# Keyword: scale kubernetes cluster aks azure stack hub
 
 ---
 
