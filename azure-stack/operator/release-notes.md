@@ -4,10 +4,10 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 08/11/2020
 ms.author: sethm
 ms.reviewer: sranthar
-ms.lastreviewed: 08/10/2020
+ms.lastreviewed: 08/11/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -52,7 +52,7 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 The Azure Stack Hub 2005 update build number is **1.2005.6.53**.
 
 > [!IMPORTANT]  
-> Starting with the Azure Stack Hub 2002 update, Microsoft is temporarily extending our [Azure Stack Hub support policy statements](azure-stack-servicing-policy.md).  We are working with customers around the world who are responding to COVID-19 and who may be making important decisions about their Azure Stack Hub systems, how they are updated and managed, and as a result, ensuring their data center business operations continue to operate normally. In support of our customers, Microsoft is offering a temporary support policy change extension to include three previous update versions.  As a result, the newly released 2005 update and any one of the three previous update versions (2002, 1910, and 1908) will be supported.
+> Starting with the Azure Stack Hub 2002 update, Microsoft is temporarily extending our [Azure Stack Hub support policy statements](azure-stack-servicing-policy.md).  We are working with customers around the world who are responding to COVID-19 and who may be making important decisions about their Azure Stack Hub systems, how they are updated and managed, and as a result, ensuring their data center business operations continue to operate normally. In support of our customers, Microsoft is offering a temporary support policy change extension to include three previous update versions.  As a result, the newly released 2005 update and any one of the two previous update versions (2002 and 1910) will be supported.
 
 ### Update type
 
