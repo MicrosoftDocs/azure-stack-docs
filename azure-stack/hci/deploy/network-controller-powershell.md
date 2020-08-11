@@ -3,7 +3,7 @@ title: Deploy Network Controller using Windows PowerShell
 description: Learn how to deploy Network Controller using Windows PowerShell
 author: v-dasis
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 08/11/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -16,23 +16,23 @@ This topic provides instructions on using Windows PowerShell to deploy Network C
 
 ## Install the Network Controller server role
 
-You can use this procedure to install the Network Controller server role on a virtual machine (VM).
+You can use this procedure to install the Network Controller server role on a VM.
 
 >[!IMPORTANT]
->Do not deploy the Network Controller server role on physical hosts. To deploy Network Controller, you must install the Network Controller server role on a Hyper-V virtual machine (VM) that is installed on a Hyper-V host. After you have installed Network Controller on VMs on three different Hyper-V hosts, you must enable the Hyper-V hosts for Software Defined Networking (SDN) by adding the hosts to Network Controller. By doing so, you are enabling the SDN Software Load Balancer to function.
+>Do not deploy the Network Controller server role on physical hosts. To deploy Network Controller, you must install the Network Controller server role on a Hyper-V VM that is installed on a Hyper-V host. After you have installed Network Controller on VMs on three different Hyper-V hosts, you must enable the Hyper-V hosts for Software Defined Networking (SDN) by adding the hosts to Network Controller. By doing so, you are enabling the SDN Software Load Balancer to function.
 
 Membership in **Administrators**, or equivalent, is the minimum required to perform this procedure.  
 
 >[!NOTE]
 >If you want to use Server Manager instead of Windows PowerShell to install Network Controller, see [Install the Network Controller server role using Server Manager](https://technet.microsoft.com/library/mt403348.aspx)
 
-To install Network Controller by using Windows PowerShell, type the following commands at a Windows PowerShell prompt, and then press ENTER.
+To install Network Controller using Windows PowerShell, type the following commands at a Windows PowerShell prompt, and then press ENTER.
 
 ```powershell
 Install-WindowsFeature -Name NetworkController -IncludeManagementTools
 ```
 
-Installation of Network Controller requires that you restart the computer. To do so, type the following command, and then press ENTER.
+Installation of Network Controller requires that you restart the computer. To do so, type the following command:
 
 ```powershell
 Restart-Computer
@@ -43,7 +43,7 @@ Restart-Computer
 The Network Controller cluster provides high availability and scalability to the Network Controller application, which you can configure after creating the cluster, and which is  hosted on top of the cluster.
 
 >[!NOTE]
->You can perform the procedures in the following sections either directly on the VM where you installed Network Controller, or you can use the Remote Server Administration Tools for Windows Server 2016 to perform the procedures from a remote computer that is running either Windows Server 2016 or Windows 10. In addition, membership in **Administrators**, or equivalent, is the minimum required to perform this procedure. If the computer or VM upon which you installed Network Controller is joined to a domain, your user account must be a member of **Domain Users**.
+>You can perform the procedures in the following sections either directly on the VM where you installed Network Controller, or you can perform the procedures from a remote computer that is running Windows Admin Center. In addition, membership in **Administrators**, or equivalent, is the minimum required to perform this procedure. If the computer or VM upon which you installed Network Controller is joined to a domain, your user account must be a member of **Domain Users**.
 
 You can create a Network Controller cluster by creating a node object and then configuring the cluster.
 
@@ -51,10 +51,10 @@ You can create a Network Controller cluster by creating a node object and then c
 
 You need to create a node object for each VM that is a member of the Network Controller cluster.
 
-To create a node object,  type the following command at the Windows PowerShell command prompt, and then press ENTER. Ensure that you add values for each parameter that are appropriate for your deployment.  
+To create a node object,  type the following command. Ensure that you add values for each parameter that are appropriate for your deployment.  
 
 ```powershell
-New-NetworkControllerNodeObject -Name <string> -Server <String> -FaultDomain <string>-RestInterface <string> [-NodeCertificate <X509Certificate2>]
+New-NetworkControllerNodeObject -Name <string> -Server "ServerName" -FaultDomain "SiteName" -RestInterface "Name" [-NodeCertificate <X509Certificate2>]
 ```
 
 The following table provides descriptions for each parameter of the `New-NetworkControllerNodeObject` command.
@@ -69,13 +69,13 @@ The following table provides descriptions for each parameter of the `New-Network
 
 ### Configure the cluster
 
-To configure the cluster,  type the following command at the Windows PowerShell command prompt, and then press ENTER. Ensure that you add values for each parameter that are appropriate for your deployment.
+To configure the cluster,  type the following command. Ensure that you add values for each parameter that are appropriate for your deployment.
 
 ```powershell
-Install-NetworkControllerCluster -Node <NetworkControllerNode[]> -ClusterAuthentication <ClusterAuthentication> [-ManagementSecurityGroup <string>][-DiagnosticLogLocation <string>][-LogLocationCredential <PSCredential>] [-CredentialEncryptionCertificate <X509Certificate2>][-Credential <PSCredential>][-CertificateThumbprint <String>] [-UseSSL][-ComputerName <string>][-LogSizeLimitInMBs<UInt32>] [-LogTimeLimitInDays<UInt32>]
+Install-NetworkControllerCluster -Node "NetworkControllerNodeName" -ClusterAuthentication "ClusterAuthenticationType" [-ManagementSecurityGroup <string>][-DiagnosticLogLocation <string>][-LogLocationCredential <PSCredential>] [-CredentialEncryptionCertificate <X509Certificate2>][-Credential <PSCredential>][-CertificateThumbprint <String>] [-UseSSL][-ComputerName <string>][-LogSizeLimitInMBs<UInt32>] [-LogTimeLimitInDays<UInt32>]
 ```
 
-The following table provides descriptions for each parameter of the **Install-NetworkControllerCluster**  command.
+The following table provides descriptions for each parameter of the `Install-NetworkControllerCluster` command.
   
 |Parameter|Description|
 |-------------|---------------|
@@ -93,7 +93,7 @@ The following table provides descriptions for each parameter of the **Install-Ne
 |LogTimeLimitInDays|This parameter specifies the duration limit, in days, for which the logs are stored. Logs are stored in circular fashion. The default value of this parameter is 3 days.|
 
 ## Configure the Network Controller application
-To configure the Network Controller application, type the following command at the Windows PowerShell command prompt, and then press ENTER. Ensure that you add values for each parameter that are appropriate for your deployment.
+To configure the Network Controller application, type the following command. Ensure that you add values for each parameter that are appropriate for your deployment.
 
 ```powershell
 Install-NetworkController -Node <NetworkControllerNode[]> -ClientAuthentication <ClientAuthentication>  [-ClientCertificateThumbprint <string[]>]  [-ClientSecurityGroup <string>] -ServerCertificate <X509Certificate2> [-RESTIPAddress <String>] [-RESTName <String>] [-Credential <PSCredential>][-CertificateThumbprint <String> ] [-UseSSL]
@@ -120,13 +120,13 @@ After you complete the configuration of the Network Controller application, your
 
 To validate your Network Controller deployment, you can add a credential to the Network Controller and then retrieve the credential.
 
-If you are using Kerberos as the ClientAuthentication mechanism, membership in the **ClientSecurityGroup** that you created is the minimum required to perform this procedure.
+If you are using Kerberos as the ClientAuthentication type, membership in the **ClientSecurityGroup** that you created is the minimum required to perform this procedure.
 
 **Procedure:**
 
-1.  On a client computer, if you are using Kerberos as the ClientAuthentication mechanism, log on with a user account that is a member of your **ClientSecurityGroup**.
+1. On a client computer, if you are using Kerberos as the ClientAuthentication type, log on with a user account that is a member of your **ClientSecurityGroup**.
 
-2. Open Windows PowerShell, type the following commands to add a credential to Network Controller, and then press ENTER. Ensure that you add values for each parameter that are appropriate for your deployment.
+1. In PowerShell, type the following commands. Ensure that you add values for each parameter that are appropriate for your deployment.
 
     ```powershell
     $cred=New-Object Microsoft.Windows.Networkcontroller.credentialproperties
@@ -134,16 +134,16 @@ If you are using Kerberos as the ClientAuthentication mechanism, membership in t
     $cred.username="admin"
     $cred.value="abcd"
 
-    New-NetworkControllerCredential -ConnectionUri https://networkcontroller -Properties $cred -ResourceId cred1
+    New-NetworkControllerCredential -ConnectionUri "https://networkcontroller"-Properties $cred -ResourceId "cred1"
     ```
 
-3. To retrieve the credential that you added to Network Controller, type the following command, and then press ENTER. Ensure that you add values for each parameter that are appropriate for your deployment.
+1. To retrieve the credential that you added to Network Controller, type the following command. Ensure that you add values for each parameter that are appropriate for your deployment.
 
     ```powershell
     Get-NetworkControllerCredential -ConnectionUri https://networkcontroller -ResourceId cred1  
     ```
 
-4. Review the command output, which should be similar to the following example output.
+1. Review the command output, which should be similar to the following example output.
 
     ```powershell
     Tags                   :
@@ -157,7 +157,7 @@ If you are using Kerberos as the ClientAuthentication mechanism, membership in t
     ```
 
     > [!NOTE]
-    > When you run the **Get-NetworkControllerCredential** command, you can assign the output of the command to a variable by using the dot operator to list the properties of the credentials. For example: `$cred.Properties`.
+    > When you run the `Get-NetworkControllerCredential` command, you can assign the output of the command to a variable by using the dot operator to list the properties of the credentials. For example: `$cred.Properties`.
 
 ## Additional PowerShell commands for Network Controller
 
@@ -191,9 +191,9 @@ To learn more, see the Windows PowerShell reference documentation for Network Co
 The following sample configuration script shows how to create a multi-node Network Controller cluster and install the Network Controller application. In addition, the $cert variable selects a certificate from the local computer certificates store that matches the subject name string "networkController.contoso.com".
 
 ```powershell
-$a = New-NetworkControllerNodeObject -Name Node1 -Server NCNode1.contoso.com -FaultDomain fd:/rack1/host1 -RestInterface Internal
-$b = New-NetworkControllerNodeObject -Name Node2 -Server NCNode2.contoso.com -FaultDomain fd:/rack1/host2 -RestInterface Internal
-$c = New-NetworkControllerNodeObject -Name Node3 -Server NCNode3.contoso.com -FaultDomain fd:/rack1/host3 -RestInterface Internal
+$a = New-NetworkControllerNodeObject -Name "Node1" -Server "NCNode1.contoso.com" -FaultDomain "fd:/rack1/host1" -RestInterface Internal
+$b = New-NetworkControllerNodeObject -Name "Node2" -Server "NCNode2.contoso.com" -FaultDomain "fd:/rack1/host2" -RestInterface Internal
+$c = New-NetworkControllerNodeObject -Name "Node3" -Server "NCNode3.contoso.com" -FaultDomain "fd:/rack1/host3" -RestInterface Internal
 
 $cert= get-item Cert:\LocalMachine\My | get-ChildItem | where {$_.Subject -imatch "networkController.contoso.com" }
 
