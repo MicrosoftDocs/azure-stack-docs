@@ -44,7 +44,7 @@ When you use the same Azure Storage Account for configuring Cloud Witness for mu
 
 ### To create an Azure storage account
 
-1. Sign in to the [Azure Portal](https://portal.azure.com).
+1. Sign in to the [Azure portal](https://portal.azure.com).
 1. On the Hub menu, select New -> Data + Storage -> Storage account.
 1. In the Create a storage account page, do the following:
     1. Enter a name for your storage account.
@@ -62,9 +62,9 @@ When you create a Microsoft Azure Storage Account, it is associated with two Acc
 
 #### To view and copy storage access keys
 
-In the Azure Portal, navigate to your storage account, click **All settings** and then click **Access Keys** to view, copy, and regenerate your account access keys. The Access Keys blade also includes pre-configured connection strings using your primary and secondary keys that you can copy to use in your applications.
+In the Azure portal, navigate to your storage account, click **All settings** and then click **Access Keys** to view, copy, and regenerate your account access keys. The Access Keys blade also includes pre-configured connection strings using your primary and secondary keys that you can copy to use in your applications.
 
-:::image type="content" source="media/witness/CloudWitness_1.png" alt-text="Cloud Witness access keys" lightbox="media/witness/CloudWitness_1.png":::
+:::image type="content" source="media/witness/CloudWitness-1.png" alt-text="Cloud Witness access keys" lightbox="media/witness/CloudWitness-1.png":::
 
 ### View and copy endpoint URL Links
 
@@ -77,9 +77,9 @@ Cloud Witness always uses **Blob** as the storage type. Azure uses **.core.windo
 
 #### To view and copy endpoint URL links
 
-In the Azure Portal, navigate to your storage account, click **All settings** and then click **Properties** to view and copy your endpoint URLs.  
+In the Azure portal, navigate to your storage account, click **All settings** and then click **Properties** to view and copy your endpoint URLs.  
 
-:::image type="content" source="media/witness/CloudWitness_2.png" alt-text="Cloud Witness endpoint URL" lightbox="media/witness/CloudWitness_2.png":::  
+:::image type="content" source="media/witness/CloudWitness-2.png" alt-text="Cloud Witness endpoint URL" lightbox="media/witness/CloudWitness-2.png":::  
 
 ## Set up a witness using Windows PowerShell
 
