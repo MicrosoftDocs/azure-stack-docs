@@ -64,7 +64,7 @@ When you create a Microsoft Azure Storage Account, it is associated with two Acc
 
 In the Azure portal, navigate to your storage account, click **All settings** and then click **Access Keys** to view, copy, and regenerate your account access keys. The Access Keys blade also includes pre-configured connection strings using your primary and secondary keys that you can copy to use in your applications.
 
-:::image type="content" source="media/witness/CloudWitness-1.png" alt-text="Cloud Witness access keys" lightbox="media/witness/CloudWitness-1.png":::
+:::image type="content" source="media/witness/cloud-witness-1.png" alt-text="Cloud Witness access keys" lightbox="media/witness/cloud-witness-1.png":::
 
 ### View and copy endpoint URL Links
 
@@ -79,7 +79,7 @@ Cloud Witness always uses **Blob** as the storage type. Azure uses **.core.windo
 
 In the Azure portal, navigate to your storage account, click **All settings** and then click **Properties** to view and copy your endpoint URLs.  
 
-:::image type="content" source="media/witness/CloudWitness-2.png" alt-text="Cloud Witness endpoint URL" lightbox="media/witness/CloudWitness-2.png":::  
+:::image type="content" source="media/witness/cloud-witness-2.png" alt-text="Cloud Witness endpoint URL" lightbox="media/witness/cloud-witness-2.png":::  
 
 ## Set up a witness using Windows PowerShell
 
