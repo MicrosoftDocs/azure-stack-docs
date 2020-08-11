@@ -6,6 +6,7 @@ ms.author: bryanla
 ms.topic: how-to
 ms.date: 05/07/2020
 ms.lastreviewed: 05/07/2020
+ms.custom: contperfq4
 
 # Intent: As an Azure Stack operator, I want to use an app identity to access resources. 
 # Keyword: azure stack hub app identity service principal
@@ -350,5 +351,5 @@ Now that you've given your app an identity and authorized it for resource access
 ## Next steps
 
 [Manage user permissions](azure-stack-manage-permissions.md)  
-[Azure Active Directory Documentation](https://docs.microsoft.com/azure/active-directory)  
-[Active Directory Federation Services](https://docs.microsoft.com/windows-server/identity/active-directory-federation-services)
+[Azure Active Directory Documentation](/azure/active-directory)  
+[Active Directory Federation Services](/windows-server/identity/active-directory-federation-services)

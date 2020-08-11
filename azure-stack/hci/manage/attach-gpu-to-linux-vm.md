@@ -3,13 +3,13 @@ title: Attach a GPU to a Linux VM in Azure Stack HCI
 description: How to use a GPU with AI workloads running in an Ubuntu Linux VM on Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
-ms.topic: article
-ms.date: 03/24/2020
+ms.topic: how-to
+ms.date: 07/01/2020
 ---
 
 # Attaching a GPU to an Ubuntu Linux VM on Azure Stack HCI
 
-> Applies to: Windows Server 2019
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
 This topic provides step-by-step instructions on how to install and configure an NVIDIA graphics processing unit (GPU) with Azure Stack HCI using Discrete Device Assignment (DDA) technology for an Ubuntu virtual machine (VM).
 This document assumes you have the Azure Stack HCI cluster deployed and VMs installed.
@@ -81,7 +81,7 @@ This document assumes you have the Azure Stack HCI cluster deployed and VMs inst
 
 8. Find The TCP/IP address for the Ubuntu installation using the **ifconfig** command and copy the IP address for the **eth0** interface.
 
-9. Use an SSH client such as [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/) to connect to the Ubuntu VM for further configuration.
+9. Use an SSH client such as OpenSSH (ssh.exe installed with Windows 10 by default) or [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/) to connect to the Ubuntu VM for further configuration.
 
 10. Upon login through the SSH client, issue the command **lspci** and validate that the NVIDIA GPU is listed as "3D controller."
 
@@ -272,12 +272,12 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     # and any modifications thereto.  Any use, reproduction, disclosure or
     # distribution of this software and related documentation without an express
     # license agreement from NVIDIA Corporation is strictly prohibited.
-    
+
     [application]
     enable-perf-measurement=1
     perf-measurement-interval-sec=5
     #gie-kitti-output-dir=streamscl
-    
+
     [tiled-display]
     enable=1
     rows=2
@@ -291,7 +291,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     #(3): nvbuf-mem-cuda-unified - Allocate Unified cuda memory, applicable for Tesla
     #(4): nvbuf-mem-surface-array - Allocate Surface Array memory, applicable for Jetson
     nvbuf-memory-type=0
-    
+
     [source0]
     enable=1
     #Type - 1=CameraV4L2 2=URI 3=MultiURI
@@ -300,7 +300,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     num-sources=2
     gpu-id=0
     nvbuf-memory-type=0
-    
+
     [source1]
     enable=1
     #Type - 1=CameraV4L2 2=URI 3=MultiURI
@@ -309,10 +309,10 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     num-sources=2
     gpu-id=0
     nvbuf-memory-type=0
-    
+
     [sink0]
     enable=0
-    
+
     [sink3]
     enable=1
     #Type - 1=FakeSink 2=EglSink 3=File 4=RTSPStreaming
@@ -324,7 +324,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     # set below properties in case of RTSPStreaming
     rtsp-port=8554
     udp-port=5400
-    
+
     [sink1]
     enable=1
     #Type - 1=FakeSink 2=EglSink 3=File 4=UDPSink 5=nvoverlaysink 6=MsgConvBroker
@@ -339,7 +339,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     topic=mytopic
     #Optional:
     #msg-broker-config=../../../../libs/azure_protocol_adaptor/module_client/cfg_azure.txt
-    
+
     [sink2]
     enable=0
     type=3
@@ -352,7 +352,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     bitrate=2000000
     output-file=out.mp4
     source-id=0
-    
+
     [osd]
     enable=1
     gpu-id=0
@@ -367,7 +367,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     clock-text-size=12
     clock-color=1;0;0;0
     nvbuf-memory-type=0
-    
+
     [streammux]
     gpu-id=0
     ##Boolean property to inform muxer that sources are live
@@ -383,7 +383,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     ##along with width, height properties
     enable-padding=0
     nvbuf-memory-type=0
-    
+
     [primary-gie]
     enable=1
     gpu-id=0
@@ -400,7 +400,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     labelfile-path=../../../../../samples/models/Primary_Detector/labels.txt
     config-file=../../../../../samples/configs/deepstream-app/config_infer_primary.txt
     #infer-raw-output-dir=../../../../../samples/primary_detector_raw_output/
-    
+
     [tracker]
     enable=1
     tracker-width=600
@@ -412,7 +412,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     gpu-id=0
     #enable-batch-process applicable to DCF only
     enable-batch-process=0
-    
+
     [tests]
     file-loop=1
     ```

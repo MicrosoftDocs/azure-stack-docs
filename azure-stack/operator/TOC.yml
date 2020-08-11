@@ -106,8 +106,6 @@
     - name: Validate Azure registration
       href: azure-stack-validate-registration.md
       items:
-      - name: Start-AzsReadiness cmdlet reference
-        href: azure-stack-azsreadiness-cmdlet.md
       - name: View the readiness report  
         href: azure-stack-validation-report.md
     - name: External monitoring
@@ -300,12 +298,8 @@
         href: app-service-billing-faq.md
       - name: Prerequisites
         href: azure-stack-app-service-before-you-get-started.md
-      - name: Deployment
-        items:
-        - name: Deploy App Service
-          href: azure-stack-app-service-deploy.md
-        - name: Deploy App Service for high availability
-          href: app-service-deploy-ha.md
+      - name: Deploy App Service
+        href: azure-stack-app-service-deploy.md
       - name: Life cycle management 
         items:
         - name: Update App Service
@@ -322,26 +316,12 @@
           href: app-service-recover.md
         - name: Remove App Service
           href: app-service-remove.md
-      - name: App Service on Azure Stack Hub release notes
+      - name: Release notes
         items:
-        - name: App Service on Azure Stack Hub 2020 Q2 release notes
+        - name: 2020 Q2 release notes [May2020]
           href: app-service-release-notes-2020-Q2.md
-        - name: App Service on Azure Stack Hub update 8 release notes
+        - name: Update 8 release notes [Jan2020]
           href: azure-stack-app-service-release-notes-update-eight.md
-        - name: App Service on Azure Stack Hub update 7 release notes
-          href: azure-stack-app-service-release-notes-update-seven.md
-        - name: App Service on Azure Stack Hub update 6 release notes
-          href: azure-stack-app-service-release-notes-update-six.md
-        - name: App Service on Azure Stack Hub update 5 release notes
-          href: azure-stack-app-service-release-notes-update-five.md
-        - name: App Service on Azure Stack Hub update 4 release notes
-          href: azure-stack-app-service-release-notes-update-four.md
-        - name: App Service on Azure Stack Hub update 3 release notes
-          href: azure-stack-app-service-release-notes-update-three.md
-        - name: App Service on Azure Stack Hub update 2 release notes
-          href: azure-stack-app-service-release-notes-update-two.md
-        - name: App Service on Azure Stack Hub update 1 release notes
-          href: azure-stack-app-service-release-notes-update-one.md   
     - name: Event Hubs on Azure Stack Hub
       items:
       - name: Overview
@@ -359,7 +339,7 @@
         - name: Backup & restore
           href: azure-stack-backup-infrastructure-backup.md
         - name: Collect logs
-          href: azure-stack-diagnostic-log-collection-overview-tzl.md
+          href: azure-stack-diagnostic-log-collection-overview.md
         - name: Health & alerts
           href: azure-stack-monitor-health.md
         - name: Manage
@@ -477,21 +457,21 @@
     - name: Help & Support portal 
       items:
       - name: Overview      
-        href: azure-stack-help-and-support-overview-tzl.md
+        href: azure-stack-help-and-support-overview.md
       - name: Find your Cloud ID
         href: azure-stack-find-cloud-id.md  
       - name: Diagnostic log collection
         items:
         - name: Overview 
-          href: azure-stack-diagnostic-log-collection-overview-tzl.md
+          href: azure-stack-diagnostic-log-collection-overview.md
         - name: Send logs proactively
-          href: azure-stack-configure-automatic-diagnostic-log-collection-tzl.md
+          href: azure-stack-configure-automatic-diagnostic-log-collection.md
         - name: Send logs now
           items: 
           - name: Use the Administrator portal
-            href: azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md
+            href: azure-stack-configure-on-demand-diagnostic-log-collection-portal.md
           - name: Use PowerShell
-            href: azure-stack-configure-on-demand-diagnostic-log-collection-powershell-tzl.md
+            href: azure-stack-configure-on-demand-diagnostic-log-collection-powershell.md
         - name: Get-AzureStackLog (PEP)
           href: azure-stack-get-azurestacklog.md    
     - name: Validation for Azure Stack Hub  
@@ -501,27 +481,29 @@
 - name: Reference
   items:
   - name: Azure Stack Hub PowerShell
-    href: https://docs.microsoft.com/powershell/azure/azure-stack/overview
+    href: /powershell/azure/azure-stack/overview
   - name: Azure Stack Hub privileged endpoint
     href: ../reference/pep-2002/    
   - name: Azure Stack Hub administrator REST APIs
     href: /rest/api/azure-stack/
   - name: Azure CLI
-    href: https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest
+    href: /cli/azure/reference-index?view=azure-cli-latest
 - name: Related
   items:
   - name: Azure Stack Hub user documentation
-    href: /azure-stack/user/
+    href: ../user/index.yml
   - name: ASDK Documentation
-    href: /azure-stack/asdk/
+    href: ../asdk/index.yml
+  - name: Azure hybrid cloud documentation
+    href: /hybrid    
 - name: Resources
   items:
   - name: Training and certification
     href: azure-stack-train-and-cert.md
   - name: Azure Stack Hub road map
     href: https://azure.microsoft.com/updates/?query=azure%20stack%20hub
-  - name: Azure Stack Hub MSDN forum
-    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack
+  - name: Azure Stack Hub Microsoft Q&A
+    href: /answers/questions/topics/single/50514.html
   - name: Azure Stack Hub Documentation feedback
     href: https://feedback.azure.com/forums/344565-azure-stack?category_id=160275
   - name: Pricing information

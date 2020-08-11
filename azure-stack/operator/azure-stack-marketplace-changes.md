@@ -3,7 +3,7 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 06/15/2020
+ms.date: 08/07/2020
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 05/28/2020
@@ -15,7 +15,7 @@ ms.lastreviewed: 05/28/2020
 
 # Azure Stack Hub Marketplace changes
 
-This article lists recent additions, updates, changes, and removals of [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) over the last three months. The information in this section is updated frequently, so check back often for changes.
+This article lists recent additions, updates, changes, and removals of [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md). The information in this section is updated frequently, so check back often for changes.
 
 The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) article always contains the most current list of available Azure Stack Hub Marketplace items.
 
@@ -52,6 +52,12 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Deprecated marketplace items
 
+- Bitnami Shopware
+- SQL Server 2017 Standard on SUSE Linux Enterprise Server (SLES) 12 SP2
+- Free License: SQL Server 2017 Developer on SUSE Linux Enterprise Server (SLES) 12 SP2
+- Free License: SQL Server 2017 Express on SUSE Linux Enterprise Server (SLES) 12 SP2
+- SQL Server 2017 Enterprise on SUSE Linux Enterprise Server (SLES) 12 SP2
+- SQL Server 2017 Web on SUSE Linux Enterprise Server (SLES) 12 SP2
 - Bitnami Codiad
 - Bitnami X2Engine Sales CRM
 - Bitnami SugarCRM
@@ -62,9 +68,80 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Updated marketplace items
 
+- 08/04/2020: Windows Server 2008 R2 SP1-Bring your own license - version 7601.24556.2006050139
+- 08/04/2020: Windows Server 2008 R2 SP1-Pay as you go - version 7601.24556.2006050139
+- 08/04/2020: [smalldisk] Windows Server 2008 R2 SP1-Bring your own license - version 7601.24556.2006050139
+- 08/04/2020: [smalldisk] Windows Server 2008 R2 SP1-Pay as you go - version 7601.24556.2006050139
+- 08/04/2020: Windows Server 2012 Datacenter-Bring your own license - version 9200.23066.2006051749
+- 08/04/2020: Windows Server 2012 Datacenter-Pay as you go - version 9200.23066.2006051749
+- 08/04/2020: [smalldisk] Windows Server 2012 Datacenter-Bring your own license - version 9200.23066.2006051749
+- 08/04/2020: [smalldisk] Windows Server 2012 Datacenter-Pay as you go - version 9200.23066.2006051749
+- 08/04/2020: Windows Server 2012 R2 Datacenter-Bring your own license - version 9600.19728.2006050139
+- 08/04/2020: Windows Server 2012 R2 Datacenter-Pay as you go - version 9600.19728.2006050139
+- 08/04/2020: [smalldisk] Windows Server 2012 R2 Datacenter-Bring your own license - version 9600.19728.2006050139
+- 08/04/2020: [smalldisk] Windows Server 2012 R2 Datacenter-Pay as you go - version 9600.19728.2006050139
+- 08/04/2020: Windows Server 2016 Datacenter-Bring your own license - version 14393.3750.2006031549
+- 08/04/2020: Windows Server 2016 Datacenter-Pay as you go - version 14393.3750.2006031549
+- 08/04/2020: Windows Server 2016 Datacenter - Server Core-Bring your own license - version 14393.3750.2006031549
+- 08/04/2020: Windows Server 2016 Datacenter - Server Core-Pay as you go - version 14393.3750.2006031549
+- 08/04/2020: [smalldisk] Windows Server 2016 Datacenter - Server Core-Bring your own license - version 14393.3750.2006031549
+- 08/04/2020: [smalldisk] Windows Server 2016 Datacenter - Server Core-Pay as you go - version 14393.3750.2006031549
+- 08/04/2020: [smalldisk] Windows Server 2016 Datacenter-Bring your own license - version 14393.3750.2006031549
+- 08/04/2020: [smalldisk] Windows Server 2016 Datacenter-Pay as you go - version 14393.3750.2006031549
+- 08/04/2020: Windows Server 2019 Datacenter-Bring your own license - version 17763.1282.2006061952
+- 08/04/2020: Windows Server 2019 Datacenter Server Core-Bring your own license - version 17763.1282.2006061952
+- 08/04/2020: Windows Server 2019 Datacenter Server Core-Pay as you go - version 17763.1282.2006061952
+- 08/04/2020: [smalldisk] Windows Server 2019 Datacenter Server Core-Bring your own license - version 17763.1282.2006061952
+- 08/04/2020: [smalldisk] Windows Server 2019 Datacenter Server Core-Pay as you go - version 17763.1282.2006061952
+- 08/04/2020: Windows Server 2019 Datacenter Server Core with Containers-Bring your own license - version 17763.1282.2006061952
+- 08/04/2020: Windows Server 2019 Datacenter Server Core with Containers-Pay as you go - version 17763.1282.2006061952
+- 08/04/2020: [smalldisk] Windows Server 2019 Datacenter Server Core with Containers-Bring your own license - version 17763.1282.2006061952
+- 08/04/2020: [smalldisk] Windows Server 2019 Datacenter Server Core with Containers-Pay as you go - version 17763.1282.2006061952
+- 08/04/2020: Windows Server 2019 Datacenter-Pay as you go - version 17763.1282.2006061952
+- 08/04/2020: [smalldisk] Windows Server 2019 Datacenter-Bring your own license - version 17763.1282.2006061952
+- 08/04/2020: [smalldisk] Windows Server 2019 Datacenter-Pay as you go - version 17763.1282.2006061952
+- 08/04/2020: Windows Server 2019 Datacenter with Containers-Bring your own license - version 17763.1282.2006061952
+- 08/04/2020: Windows Server 2019 Datacenter with Containers-Pay as you go - version 17763.1282.2006061952
+- 08/04/2020: [smalldisk] Windows Server 2019 Datacenter with Containers-Bring your own license - version 17763.1282.2006061952
+- 08/04/2020: [smalldisk] Windows Server 2019 Datacenter with Containers-Pay as you go - version 17763.1282.2006061952
+- 08/04/2020: [smalldisk] Windows Server, version 1809 with Containers-Bring your own license - version 17763.1282.2006061952
+- 08/04/2020: [smalldisk] Windows Server, version 1809 with Containers-Pay as you go - version 17763.1282.2006061952
+- 08/04/2020: [smalldisk] Windows Server, version 1903 with Containers-Bring your own license - version 18362.900.2006061800
+- 08/04/2020: [smalldisk] Windows Server, version 1903 with Containers-Pay as you go - version 18362.900.2006061800
+- 08/04/2020: [smalldisk] Windows Server, version 2004 with Containers-Bring your own license - version 19041.329.2006042019
+- 08/04/2020: Windows 10 Enterprise 2016 LTSB-Bring your own license - version 14393.3750.2006031549
+- 08/04/2020: Windows 10 Enterprise 2019 LTSC-Bring your own license - version 17763.1282.2006061952
+- 08/04/2020: Windows 10 Enterprise, Version 1809-Bring your own license - version 17763.1282.2006061952
+- 08/04/2020: Windows 10 Pro, Version 1809-Bring your own license - version 17763.1282.2006061952
+- 08/04/2020: Windows 10 Enterprise, Version 1903-Bring your own license - version 18362.900.2006061800
+- 08/04/2020: Windows 10 Pro, Version 1903-Bring your own license - version 18362.900.2006061800
+- 08/04/2020: Windows 10 Enterprise, Version 1909-Bring your own license - version 18363.900.2006061800
+- 08/04/2020: Windows 10 Pro, Version 1909-Bring your own license - version 18363.900.2006061800
+- 08/04/2020: Windows 10 Enterprise, Version 2004-Bring your own license - version 19041.329.2006042019
+- 07/27/2020: Ubuntu Server 20.04 LTS – version 20.04.202007080
+- 07/27/2020: Ubuntu Server 20.04 LTS – version 20.04.202007160
+- 07/27/2020: Ubuntu Server 20.04 LTS – version 20.04.202004230
+- 07/27/2020: Ubuntu Server 16.04 LTS – version 16.04.202007080
+- 07/27/2020: Ubuntu Server 18.04 LTS – version 16.04.202007080
+- 07/21/2020: {WS-PAYG} Free License: SQL Server 2016 SP2 Developer on Windows Server 2016 - version 13.2.20200513
+- 07/21/2020: {WS-PAYG} Free License: SQL Server 2016 SP2 Express on Windows Server 2016 - version 13.2.20200514
+- 07/21/2020: {WS-PAYG} Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016 - version 14.0.20200513
+- 07/21/2020: {WS-PAYG} Free SQL Server License: SQL Server 2017 Express on Windows Server 2016 - version 14.0.20200514
+- 07/21/2020: {WS-PAYG} SQL Server 2016 SP2 Enterprise on Windows Server 2016 - version 13.2.20200513
+- 07/21/2020: {WS-PAYG} SQL Server 2016 SP2 Standard on Windows Server 2016 - version 13.2.20200514
+- 07/21/2020: {WS-PAYG} SQL Server 2017 Enterprise Windows Server 2016 - version 14.0.20200513
+- 07/21/2020: {WS-PAYG} SQL Server 2017 Standard on Windows Server 2016 - version 14.0.20200514
+- 07/22/2020: {WS-BYOL} Free License: SQL Server 2016 SP2 Developer on Windows Server 2016 - version 13.2.20200513
+- 07/22/2020: {WS-BYOL} Free License: SQL Server 2016 SP2 Express on Windows Server 2016 - version 13.2.20200514
+- 07/22/2020: {WS-BYOL} Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016 - version 14.0.20200513
+- 07/22/2020: {WS-BYOL} Free SQL Server License: SQL Server 2017 Express on Windows Server 2016 - version 14.0.20200514
+- 07/22/2020: {WS-BYOL} SQL Server 2016 SP2 Enterprise on Windows Server 2016 - version 13.2.20200513
+- 07/22/2020: {WS-BYOL} SQL Server 2016 SP2 Standard on Windows Server 2016 - version 13.2.20200514
+- 07/22/2020: {WS-BYOL} SQL Server 2017 Enterprise Windows Server 2016 - version 14.0.20200513
+- 07/22/2020: {WS-BYOL} SQL Server 2017 Standard on Windows Server 2016 - version 14.0.20200514
+- 6/19/2020: Bitnami Gitlab CE – version 13.0.2006110322
+- 6/16/2020: SQLIaaSExtension – version 1.3.20370
 - 6/12/2020: Bitnami Grafana - version 6.7.2006040249
-- 5/21/2020: Ubuntu Server 16.04 LTS - version 16.04.202004290
-- 5/21/2020: Ubuntu Server 18.04 LTS - version 18.04.202004080
 - 5/21/2020: Windows Server 2008 R2 SP1 BYOL - version 7601.24552.2004101827
 - 5/21/2020: Windows Server 2008 R2 SP1 Pay as you use - version 7601.24552.2004101827
 - 5/21/2020: Windows Server 2012 Datacenter BYOL - version 9200.23016.2004101828

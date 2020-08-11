@@ -4,16 +4,15 @@ description: Learn how to use a Linux machine in your Azure Stack Hub to host th
 author: mattbriggs
 
 ms.topic: article
-ms.date: 3/19/2020
+ms.date: 06/19/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 3/19/2020
+ms.lastreviewed: 06/19/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
 
 ---
-
 
 # Install the AKS engine on Linux in Azure Stack Hub
 
@@ -32,15 +31,15 @@ When choosing your client machine, consider:
 
 You can install the client VM to manage your Kubernetes cluster on an Azure Stack Hub connected to the Internet.
 
-1. Create a Linux VM in your Azure Stack Hub. For instructions, see [Quickstart: Create a Linux server VM by using the Azure Stack Hub portal](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-linux-portal).
+1. Create a Linux VM in your Azure Stack Hub. For instructions, see [Quickstart: Create a Linux server VM by using the Azure Stack Hub portal](./azure-stack-quick-linux-portal.md).
 2. Connect to your VM.
-3. Find the version of AKS engine in the [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions) table. The AKS Base Image must be available in your Azure Stack Hub Marketplace. When running the command, you must specify the version `--version v0.48.0`. If you don't specify the version, the command will install the latest version, which may need an VHD image that is not available in your marketplace.
+3. Find the version of AKS engine in the [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions) table. The AKS Base Image must be available in your Azure Stack Hub Marketplace. When running the command, you must specify the version `--version v0.51.0`. If you don't specify the version, the command will install the latest version, which may need a VHD image that is not available in your marketplace.
 4. Run the following command:
 
     ```bash  
         curl -o get-akse.sh https://raw.githubusercontent.com/Azure/aks-engine/master/scripts/get-akse.sh
         chmod 700 get-akse.sh
-        ./get-akse.sh --version v0.48.0
+        ./get-akse.sh --version v0.51.0
     ```
 
     > [!Note]  
@@ -52,9 +51,9 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
 1.  From a machine with access to the Internet, go to GitHub [Azure/aks-engine](https://github.com/Azure/aks-engine/releases/latest). Download an archive (*.tar.gz) for a Linux machine, for example, `aks-engine-v0.xx.x-linux-amd64.tar.gz`.
 
-2.  Create a storage account in your Azure Stack Hub instance to upload the archive file (*.tar.gz) with the AKS engine binary. For instructions on using the Azure Storage Explorer, see [Azure Storage Explorer with Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-connect-se).
+2.  Create a storage account in your Azure Stack Hub instance to upload the archive file (*.tar.gz) with the AKS engine binary. For instructions on using the Azure Storage Explorer, see [Azure Storage Explorer with Azure Stack Hub](./azure-stack-storage-connect-se.md).
 
-3. Create a Linux VM in your Azure Stack Hub. For instructions, see [Quickstart: Create a Linux server VM by using the Azure Stack Hub portal](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-linux-portal).
+3. Create a Linux VM in your Azure Stack Hub. For instructions, see [Quickstart: Create a Linux server VM by using the Azure Stack Hub portal](./azure-stack-quick-linux-portal.md).
 
 3.  From the Azure Stack Hub storage account blob URL where you uploaded the archive file (*.tar.gz), download the file to your management VM. Extract the archive to the directory `/usr/local/bin`.
 

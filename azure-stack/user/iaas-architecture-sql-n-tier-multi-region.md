@@ -30,15 +30,15 @@ This architecture builds on the one shown in [N-tier application with SQL Server
 
 -   **Primary and secondary regions**. Use two regions to achieve higher availability. One is the primary region. The other region is for failover.
 
--   **Azure Traffic Manager**. [Traffic Manager](https://azure.microsoft.com/services/traffic-manager) routes incoming requests to one of the regions. During normal operations, it routes requests to the primary region. If that region becomes unavailable, Traffic Manager fails over to the secondary region. For more information, see the section [Traffic Manager configuration](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server#traffic-manager-configuration).
+-   **Azure Traffic Manager**. [Traffic Manager](https://azure.microsoft.com/services/traffic-manager) routes incoming requests to one of the regions. During normal operations, it routes requests to the primary region. If that region becomes unavailable, Traffic Manager fails over to the secondary region. For more information, see the section [Traffic Manager configuration](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server#traffic-manager-configuration).
 
--   **Resource groups**. Create separate [resource groups](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) for the primary region, the secondary region. This gives you the flexibility to manage each region as a single collection of resources. For example, you could redeploy one region, without taking down the other one. [Link the resource groups](https://docs.microsoft.com/azure/resource-group-link-resources), so that you can run a query to list all the resources for the application.
+-   **Resource groups**. Create separate [resource groups](/azure/azure-resource-manager/resource-group-overview) for the primary region, the secondary region. This gives you the flexibility to manage each region as a single collection of resources. For example, you could redeploy one region, without taking down the other one. [Link the resource groups](/azure/resource-group-link-resources), so that you can run a query to list all the resources for the application.
 
 -   **Virtual networks**. Create a separate virtual network for each region. Make sure the address spaces do not overlap.
 
--   **SQL Server Always On Availability Group**. If you are using SQL Server, we recommend [SQL Always On Availability Groups](https://msdn.microsoft.com/library/hh510230.aspx) for high availability. Create a single availability group that includes the SQL Server instances in both regions.
+-   **SQL Server Always On Availability Group**. If you are using SQL Server, we recommend [SQL Always On Availability Groups](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-ver15) for high availability. Create a single availability group that includes the SQL Server instances in both regions.
 
--   **VNET to VNET VPN Connection**. As VNET Peering is not yet available on Azure Stack Hub, use VNET to VNET VPN connection in order to connect the two VNETs. Please see [VNET to VNET in Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-network-howto-vnet-to-vnet?view=azs-1908) for more information.
+-   **VNET to VNET VPN Connection**. As VNET Peering is not yet available on Azure Stack Hub, use VNET to VNET VPN connection in order to connect the two VNETs. Please see [VNET to VNET in Azure Stack Hub](./azure-stack-network-howto-vnet-to-vnet.md?view=azs-1908) for more information.
 
 ## Recommendations
 
@@ -58,9 +58,9 @@ This reference architecture focuses on active/passive with hot standby, using Tr
 
 Consider the following points when configuring Traffic Manager:
 
--   **Routing**. Traffic Manager supports several [routing algorithms](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods). For the scenario described in this article, use *priority* routing (formerly called *failover* routing). With this setting, Traffic Manager sends all requests to the primary region, unless the primary region becomes unreachable. At that point, it automatically fails over to the secondary region. See [Configure Failover routing method](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-failover-routing-method).
+-   **Routing**. Traffic Manager supports several [routing algorithms](/azure/traffic-manager/traffic-manager-routing-methods). For the scenario described in this article, use *priority* routing (formerly called *failover* routing). With this setting, Traffic Manager sends all requests to the primary region, unless the primary region becomes unreachable. At that point, it automatically fails over to the secondary region. See [Configure Failover routing method](/azure/traffic-manager/traffic-manager-configure-failover-routing-method).
 
--   **Health probe**. Traffic Manager uses an HTTP (or HTTPS) [probe](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring) to monitor the availability of each region. The probe checks for an HTTP 200 response for a specified URL path. As a best practice, create an endpoint that reports the overall health of the application, and use this endpoint for the health probe. Otherwise, the probe might report a healthy endpoint when critical parts of the application are actually failing. For more information, see [Health Endpoint Monitoring pattern](https://docs.microsoft.com/azure/architecture/patterns/health-endpoint-monitoring).
+-   **Health probe**. Traffic Manager uses an HTTP (or HTTPS) [probe](/azure/traffic-manager/traffic-manager-monitoring) to monitor the availability of each region. The probe checks for an HTTP 200 response for a specified URL path. As a best practice, create an endpoint that reports the overall health of the application, and use this endpoint for the health probe. Otherwise, the probe might report a healthy endpoint when critical parts of the application are actually failing. For more information, see [Health Endpoint Monitoring pattern](/azure/architecture/patterns/health-endpoint-monitoring).
 
 When Traffic Manager fails over there is a period of time when clients cannot reach the application. The duration is affected by the following factors:
 
@@ -68,13 +68,13 @@ When Traffic Manager fails over there is a period of time when clients cannot re
 
 -   DNS servers must update the cached DNS records for the IP address, which depends on the DNS time-to-live (TTL). The default TTL is 300 seconds (5 minutes), but you can configure this value when you create the Traffic Manager profile.
 
-For details, see [About Traffic Manager Monitoring](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring).
+For details, see [About Traffic Manager Monitoring](/azure/traffic-manager/traffic-manager-monitoring).
 
 If Traffic Manager fails over, we recommend performing a manual failback rather than implementing an automatic failback. Otherwise, you can create a situation where the application flips back and forth between regions. Verify that all application subsystems are healthy before failing back.
 
 Note that Traffic Manager automatically fails back by default. To prevent this, manually lower the priority of the primary region after a failover event. For example, suppose the primary region is priority 1 and the secondary is priority 2. After a failover, set the primary region to priority 3, to prevent automatic failback. When you are ready to switch,  back, update the priority to 1.
 
-The following [Azure CLI](https://docs.microsoft.com/cli/azure/) command updates the priority:
+The following [Azure CLI](/cli/azure/) command updates the priority:
 
 ```cli  
 az network traffic-manager endpoint update --resource-group <resource-group> --profile-name <profile>
@@ -106,15 +106,15 @@ To configure the availability group:
 
 -   Give each domain controller a static IP address.
 
--   Create [VPN](https://docs.microsoft.com/azure-stack/user/azure-stack-vpn-gateway-about-vpn-gateways) to enable communication between two virtual networks.
+-   Create [VPN](./azure-stack-vpn-gateway-about-vpn-gateways.md) to enable communication between two virtual networks.
 
--   For each virtual network, add the IP addresses of the domain controllers (from both regions) to the DNS server list. You can use the following CLI command. For more information, see [Change DNS servers](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#change-dns-servers).
+-   For each virtual network, add the IP addresses of the domain controllers (from both regions) to the DNS server list. You can use the following CLI command. For more information, see [Change DNS servers](/azure/virtual-network/manage-virtual-network#change-dns-servers).
 
     ```cli
     az network vnet update --resource-group <resource-group> --name <vnet-name> --dns-servers "10.0.0.4,10.0.0.6,172.16.0.4,172.16.0.6"
     ```
 
--   Create a [Windows Server Failover Clustering](https://msdn.microsoft.com/library/hh270278.aspx) (WSFC) cluster that includes the SQL Server instances in both regions.
+-   Create a [Windows Server Failover Clustering](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-ver15) (WSFC) cluster that includes the SQL Server instances in both regions.
 
 -   Create a SQL Server Always On Availability Group that includes the SQL Server instances in both the primary and secondary regions. See [Extending Always On Availability Group to Remote Azure Datacenter (PowerShell)](https://techcommunity.microsoft.com/t5/DataCAT/Extending-AlwaysOn-Availability-Group-to-Remote-Azure-Datacenter/ba-p/305217) for the steps.
 
@@ -135,10 +135,10 @@ Traffic Manager is a possible failure point in the system. If the Traffic Manage
 
 For the SQL Server cluster, there are two failover scenarios to consider:
 
--   All of the SQL Server database replicas in the primary region fail. For example, this could happen during a regional outage. In that case, you must manually fail over the availability group, even though Traffic Manager automatically fails over on the front end. Follow the steps in [Perform a Forced Manual Failover of a SQL Server Availability Group](https://msdn.microsoft.com/library/ff877957.aspx), which describes how to perform a forced failover by using SQL Server Management Studio, Transact-SQL, or PowerShell in SQL Server 2016.
+-   All of the SQL Server database replicas in the primary region fail. For example, this could happen during a regional outage. In that case, you must manually fail over the availability group, even though Traffic Manager automatically fails over on the front end. Follow the steps in [Perform a Forced Manual Failover of a SQL Server Availability Group](/sql/database-engine/availability-groups/windows/perform-a-forced-manual-failover-of-an-availability-group-sql-server?view=sql-server-ver15), which describes how to perform a forced failover by using SQL Server Management Studio, Transact-SQL, or PowerShell in SQL Server 2016.
 
     > [!Warning]  
-    > With forced failover, there is a risk of data loss. Once the primary region is back online, take a snapshot of the database and use [tablediff](https://msdn.microsoft.com/library/ms162843.aspx) to find the differences.
+    > With forced failover, there is a risk of data loss. Once the primary region is back online, take a snapshot of the database and use [tablediff](/sql/tools/tablediff-utility?view=sql-server-ver15) to find the differences.
 
 -   Traffic Manager fails over to the secondary region, but the primary SQL Server database replica is still available. For example, the front-end tier might fail, without affecting the SQL Server VMs. In that case, Internet traffic is routed to the secondary region, and that region can still connect to the primary replica. However, there will be increased latency, because the SQL Server connections are going across regions. In this situation, you should perform a manual failover as follows:
 
@@ -172,4 +172,4 @@ Measure the recovery times and verify they meet your business requirements. Test
 
 ## Next steps
 
-- To learn more about Azure Cloud Patterns, see [Cloud Design Patterns](https://docs.microsoft.com/azure/architecture/patterns).
+- To learn more about Azure Cloud Patterns, see [Cloud Design Patterns](/azure/architecture/patterns).

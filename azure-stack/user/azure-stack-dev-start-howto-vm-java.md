@@ -8,6 +8,7 @@ ms.date: 5/27/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 05/05/2020
+ms.custom: conteperfq4
 
 # Intent: As a developer, I want to understanding how to create a Java web app so that I can build Java apps on Azure Stack Hub
 # Keyword: Java webapp Azure Stack Hub

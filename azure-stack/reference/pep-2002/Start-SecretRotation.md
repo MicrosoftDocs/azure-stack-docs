@@ -1,10 +1,10 @@
 ---
-title: Close-PrivilegedEndpoint privileged endpoint for Azure Stack Hub
-description: Reference for PowerShell Azure Stack privileged endpoint - Close-PrivilegedEndpoint
+title: Start-SecretRotation privileged endpoint cmdlet for Azure Stack Hub
+description: Reference for PowerShell Azure Stack Hub privileged endpoint - Start-SecretRotation
 author: mattbriggs
 
 ms.topic: reference
-ms.date: 04/27/2020
+ms.date: 07/29/2020
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/27/2020
@@ -23,12 +23,12 @@ Start-SecretRotation [-PathAccessCredential <Object>] [-ReRun] [-CertificatePass
 ```
 
 ## Description
-Invokes the secret rotation process.
+Invokes the secret rotation process for infrastructure secrets of an Azure Stack Hub system. By default, it rotates only the certificates of external network infrastructure endpoints. See [Rotate secrets in Azure Stack Hub](../../operator/azure-stack-rotate-secrets.md) for more details.
 
 ## Parameters
 
 ### -Internal
- 
+Rotate secrets for internal network infrastructure endpoints.
 
 ```yaml
 Type: SwitchParameter
@@ -137,4 +137,4 @@ Accept wildcard characters: False
 
 ## Next steps
 
-For information on how to access and use the privileged endpoint, see [Use the privileged endpoint in Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint).
+For information on how to access and use the privileged endpoint, see [Use the privileged endpoint in Azure Stack Hub](../../operator/azure-stack-privileged-endpoint.md).

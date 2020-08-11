@@ -3,13 +3,13 @@ title: Fault tolerance and storage efficiency in Azure Stack HCI
 description: A discussion of resiliency options in Storage Spaces Direct including mirroring and parity.
 author: khdownie
 ms.author: v-kedow
-ms.topic: article
-ms.date: 02/28/2020
+ms.topic: conceptual
+ms.date: 07/21/2020
 ---
 
 # Fault tolerance and storage efficiency in Azure Stack HCI
 
->Applies to: Windows Server 2019
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
 This topic introduces the resiliency options available in Storage Spaces Direct and outlines the scale requirements, storage efficiency, and general advantages and tradeoffs of each. It also presents some usage instructions to get you started, and references some great papers, blogs, and additional content where you can learn more.
 
@@ -23,7 +23,7 @@ As with RAID, there are a few different ways Storage Spaces can do this, which m
 
 ## Mirroring
 
-Mirroring provides fault tolerance by keeping multiple copies of all data. This most closely resembles RAID-1. How that data is striped and placed is non-trivial (see [this blog](https://blogs.technet.microsoft.com/filecab/2016/11/21/deep-dive-pool-in-spaces-direct/) to learn more), but it is absolutely true to say that any data stored using mirroring is written, in its entirety, multiple times. Each copy is written to different physical hardware (different drives in different servers) that are assumed to fail independently.
+Mirroring provides fault tolerance by keeping multiple copies of all data. This most closely resembles RAID-1. How that data is striped and placed is non-trivial (see [this blog](https://techcommunity.microsoft.com/t5/storage-at-microsoft/deep-dive-the-storage-pool-in-storage-spaces-direct/ba-p/425959) to learn more), but it is absolutely true to say that any data stored using mirroring is written, in its entirety, multiple times. Each copy is written to different physical hardware (different drives in different servers) that are assumed to fail independently.
 
 Storage Spaces offers two flavors of mirroring – "two-way" and "three-way."
 
@@ -79,11 +79,11 @@ With hard disk drives (HDD) the group size is four symbols; with solid-state dri
 
 ![local-reconstruction-codes](media/fault-tolerance/local-reconstruction-codes-180px.png)
 
-We recommend this in-depth yet eminently readable walk-through of [how local reconstruction codes handle various failure scenarios, and why they're appealing](https://blogs.technet.microsoft.com/filecab/2016/09/06/volume-resiliency-and-efficiency-in-storage-spaces-direct/), by our very own [Claus Joergensen](https://twitter.com/clausjor).
+We recommend this in-depth yet eminently readable walk-through of [how local reconstruction codes handle various failure scenarios, and why they're appealing](https://techcommunity.microsoft.com/t5/storage-at-microsoft/bg-p/FileCAB), by our very own [Claus Joergensen](https://twitter.com/clausjor).
 
 ## Mirror-accelerated parity
 
-A Storage Spaces Direct volume can be part mirror and part parity. Writes land first in the mirrored portion and are gradually moved into the parity portion later. Effectively, this is [using mirroring to accelerate erasure coding](https://blogs.technet.microsoft.com/filecab/2016/09/06/volume-resiliency-and-efficiency-in-storage-spaces-direct/).
+A Storage Spaces Direct volume can be part mirror and part parity. Writes land first in the mirrored portion and are gradually moved into the parity portion later. Effectively, this is [using mirroring to accelerate erasure coding](https://techcommunity.microsoft.com/t5/storage-at-microsoft/bg-p/FileCAB).
 
 To mix three-way mirror and dual parity, you need at least four fault domains, meaning four servers.
 
@@ -197,14 +197,14 @@ Over its lifetime, Storage Spaces can tolerate any number of failures, because i
 
 ## Usage
 
-Check out [Creating volumes in Storage Spaces Direct](/windows-server/storage/storage-spaces/create-volumes).
+Check out [Create volumes](../manage/create-volumes.md).
 
 ## Next steps
 
 For further reading on subjects mentioned in this article, see the following:
 
 - [Erasure Coding in Azure by Microsoft Research](https://www.microsoft.com/research/publication/erasure-coding-in-windows-azure-storage/)
-- [Local Reconstruction Codes and Accelerating Parity Volumes](https://blogs.technet.microsoft.com/filecab/2016/09/06/volume-resiliency-and-efficiency-in-storage-spaces-direct/)
-- [Volumes in the Storage Management API](https://blogs.technet.microsoft.com/filecab/2016/08/29/deep-dive-volumes-in-spaces-direct/)
+- [Local Reconstruction Codes and Accelerating Parity Volumes](https://techcommunity.microsoft.com/t5/storage-at-microsoft/bg-p/FileCAB)
+- [Volumes in the Storage Management API](https://techcommunity.microsoft.com/t5/storage-at-microsoft/bg-p/FileCAB)
 - [Storage Efficiency Demo at Microsoft Ignite 2016](https://www.youtube.com/watch?v=-LK2ViRGbWs&t=36m55s)
 - [Capacity Calculator PREVIEW for Storage Spaces Direct](https://aka.ms/s2dcalc)

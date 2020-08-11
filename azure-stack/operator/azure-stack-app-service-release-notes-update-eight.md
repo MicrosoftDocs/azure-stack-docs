@@ -104,7 +104,7 @@ Take one of the following actions and select retry within the installer.
 ## Post-deployment steps
 
 > [!IMPORTANT]
-> If you've provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
+> If you've provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
 ## Known issues (post-installation)
 
@@ -129,7 +129,7 @@ Take one of the following actions and select retry within the installer.
     > [!IMPORTANT]
     > This procedure takes approximately 5-10 minutes. This procedure involves killing the existing database login sessions. Plan for downtime to migrate and validate Azure App Service on Azure Stack Hub post migration.
 
-    1. Add [AppService databases (appservice_hosting and appservice_metering) to an Availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database).
+    1. Add [AppService databases (appservice_hosting and appservice_metering) to an Availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database).
 
     1. Enable contained database.
 
@@ -297,7 +297,7 @@ Take one of the following actions and select retry within the installer.
 
 ## Known issues for cloud admins operating Azure App Service on Azure Stack Hub
 
-Refer to the documentation in the [Azure Stack Hub 1907 release notes](azure-stack-release-notes-1907.md).
+Refer to the documentation in the [Azure Stack Hub 1907 release notes](./release-notes.md?view=azs-2002).
 
 ## Next steps
 

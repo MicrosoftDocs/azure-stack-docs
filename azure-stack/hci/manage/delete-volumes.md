@@ -3,15 +3,15 @@ title: Delete volumes in Azure Stack HCI
 description: How to delete volumes in Azure Stack HCI using Windows Admin Center and PowerShell.
 author: khdownie
 ms.author: v-kedow
-ms.topic: article
-ms.date: 03/17/2020
+ms.topic: how-to
+ms.date: 07/21/2020
 ---
 
 # Deleting volumes in Azure Stack HCI
 
-> Applies to: Windows Server 2019
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-This topic provides instructions for deleting volumes on a [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) cluster by using Windows Admin Center.
+This topic provides instructions for deleting volumes on an Azure Stack HCI cluster by using Windows Admin Center.
 
 Watch a quick video on how to delete a volume using Windows Admin Center.
 
@@ -28,7 +28,7 @@ Watch a quick video on how to delete a volume using Windows Admin Center.
 
 Use the **Remove-VirtualDisk** cmdlet to delete volumes in Storage Spaces Direct. This cmdlet is used to delete the **VirtualDisk** object, and return the space it used to the storage pool that exposes the **VirtualDisk** object.
 
-First, launch PowerShell on your management PC and run the **Get-VirtualDisk** cmdlet with the **CimSession** parameter, which is the name of a Storage Spaces Direct cluster or server node, for example *clustername.microsoft.com*: 
+First, launch PowerShell on your management PC and run the **Get-VirtualDisk** cmdlet with the **CimSession** parameter, which is the name of a Storage Spaces Direct cluster or server node, for example *clustername.microsoft.com*:
 
 ```PowerShell
 Get-VirtualDisk -CimSession clustername.microsoft.com
@@ -53,6 +53,6 @@ You will be asked to confirm that you want to perform the action and erase all t
 
 For step-by-step instructions on other essential storage management tasks, see also:
 
-- [Planning volumes in Storage Spaces Direct](../concepts/plan-volumes.md)
-- [Creating volumes in Storage Spaces Direct](create-volumes.md)
-- [Extending volumes in Storage Spaces Direct](extend-volumes.md)
+- [Plan volumes](../concepts/plan-volumes.md)
+- [Create volumes](create-volumes.md)
+- [Extend volumes](extend-volumes.md)

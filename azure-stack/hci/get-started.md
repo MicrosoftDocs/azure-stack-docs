@@ -3,23 +3,21 @@ title: Get started with Azure Stack HCI and Windows Admin Center
 description: Quickly connect to an existing Azure Stack HCI cluster and use Windows Admin Center to monitor cluster and storage performance.
 author: khdownie
 ms.author: v-kedow
-ms.topic: article
-ms.date: 04/08/2020
+ms.topic: how-to
+ms.date: 07/29/2020
 ---
 
 # Get started with Azure Stack HCI and Windows Admin Center
 
-> Applies to: Windows Server 2019
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-This topic provides instructions for installing Windows Admin Center, connecting to an Azure Stack HCI cluster, and monitoring cluster and storage performance.
+This topic provides instructions for connecting to an Azure Stack HCI cluster, and for monitoring cluster and storage performance.
 
 ## Install Windows Admin Center
 
-The simplest way to install Windows Admin Center is on a local Windows 10 PC, although you must be a member of the local administrator's group to do so.
+Windows Admin Center is a locally deployed, browser-based app for managing Azure Stack HCI. The simplest way to [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) is on a local management PC (desktop mode), although you can also install it on a server (service mode).
 
-1. Download [Windows Admin Center](https://www.microsoft.com/evalcenter/evaluate-windows-admin-center) from the Microsoft Evaluation Center. Even though it says "Start your evaluation," this is the generally available version for production use, included as part of your Windows Server license.
-2. Run the WindowsAdminCenter.msi file to install.
-3. When you start Windows Admin Center for the first time, you'll see an icon in the notification area of your desktop. Right-click this icon and choose Open to open the tool in your default browser. Make sure to select the Windows Admin Center Client certificate when prompted to select a certificate.
+If you install Windows Admin Center on a server, tasks that require CredSSP, such as cluster creation and installing updates and extensions, require using an account that's a member of the Gateway Administrators group on the Windows Admin Center server. For more information, see the first two sections of [Configure User Access Control and Permissions](/windows-server/manage/windows-admin-center/configure/user-access-control#gateway-access-role-definitions).
 
 ## Add and connect to an Azure Stack HCI cluster
 
@@ -30,7 +28,7 @@ After you have completed the installation of Windows Admin Center, you can add a
     :::image type="content" source="media/get-started/addcluster.png" alt-text="[Add Cluster Screenshot":::
 
 2. Choose to add a Windows Server cluster:
-    
+
     :::image type="content" source="media/get-started/chooseconnectiontype.png" alt-text="Choose Connection Type Screenshot":::
 
 3. Type the name of the cluster to manage and click **Add**. The cluster will be added to your connection list on the overview page.
@@ -107,7 +105,7 @@ Use the Performance Monitor tool to view and compare performance counters for Wi
 
 ## Use Azure Monitor for monitoring and alerts
 
-You can also use [Azure Monitor](/windows-server/manage/windows-admin-center/azure/azure-monitor) (requires an Azure subscription) to collect events and performance counters for analysis and reporting, take action when a particular condition is detected, and receive notifications via email. Click **Azure Monitor** from the **Tools** menu to connect directly to Azure from Windows Admin Center.
+You can also use [Azure Monitor](manage/azure-monitor.md) to collect events and performance counters for analysis and reporting, take action when a particular condition is detected, and receive notifications via email. Click **Azure Monitor** from the **Tools** menu to connect directly to Azure from Windows Admin Center.
 
 ## Collect diagnostics information
 
@@ -115,7 +113,7 @@ Select **Diagnostics** from the **Tools** menu to collect information for troubl
 
 ## Next steps
 
-For a deeper dive into performance monitoring, see also:
+For a deeper dive into monitoring your Azure Stack HCI clusters, see also:
 
 - [Performance history for Storage Spaces Direct](/windows-server/storage/storage-spaces/performance-history)
 - [Monitor Azure Stack HCI with Azure Monitor](manage/azure-monitor.md)

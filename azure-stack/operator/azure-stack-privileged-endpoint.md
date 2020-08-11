@@ -1,4 +1,4 @@
-﻿---
+---
 title: Using the privileged endpoint in Azure Stack Hub 
 description: Learn how to use the privileged endpoint (PEP) in Azure Stack Hub as an operator.
 author: mattbriggs
@@ -8,6 +8,8 @@ ms.date: 04/28/2020
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/28/2020
+ms.custom: conteperfq4
+
 
 # Intent: As an Azure Stack operator, I want to use the privileged endpoint in Azure Stack so I can complete certain tasks.
 # Keyword: azure stack privileged endpoint PEP
@@ -16,7 +18,7 @@ ms.lastreviewed: 04/28/2020
 
 # Use the privileged endpoint in Azure Stack Hub
 
-As an Azure Stack Hub operator, you should use the administrator portal, PowerShell, or Azure Resource Manager APIs for most day-to-day management tasks. However, for some less common operations, you need to use the *privileged endpoint* (PEP). The PEP is a pre-configured remote PowerShell console that provides you with just enough capabilities to help you do a required task. The endpoint uses [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) to expose only a restricted set of cmdlets. To access the PEP and invoke the restricted set of cmdlets, a low-privileged account is used. No admin accounts are required. For additional security, scripting isn't allowed.
+As an Azure Stack Hub operator, you should use the administrator portal, PowerShell, or Azure Resource Manager APIs for most day-to-day management tasks. However, for some less common operations, you need to use the *privileged endpoint* (PEP). The PEP is a pre-configured remote PowerShell console that provides you with just enough capabilities to help you do a required task. The endpoint uses [PowerShell JEA (Just Enough Administration)](/powershell/scripting/learn/remoting/jea/overview) to expose only a restricted set of cmdlets. To access the PEP and invoke the restricted set of cmdlets, a low-privileged account is used. No admin accounts are required. For additional security, scripting isn't allowed.
 
 You can use the PEP to perform these tasks:
 
@@ -40,7 +42,7 @@ You may also find the IP address in the Azure Stack Hub administrator portal. Op
 You will need set your current culture setting to `en-US` when running the privileged endpoint, otherwise cmdlets such as Test-AzureStack or Get-AzureStackLog will not work as expected.
 
 > [!NOTE]
-> For security reasons, we require that you connect to the PEP only from a hardened VM running on top of the hardware lifecycle host, or from a dedicated and secure computer, such as a [Privileged Access Workstation](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations). The original configuration of the hardware lifecycle host must not be modified from its original configuration  (including installing new software) or used to connect to the PEP.
+> For security reasons, we require that you connect to the PEP only from a hardened VM running on top of the hardware lifecycle host, or from a dedicated and secure computer, such as a [Privileged Access Workstation](/windows-server/identity/securing-privileged-access/privileged-access-workstations). The original configuration of the hardware lifecycle host must not be modified from its original configuration  (including installing new software) or used to connect to the PEP.
 
 1. Establish the trust.
 
@@ -113,7 +115,7 @@ You will need set your current culture setting to `en-US` when running the privi
 
 ## How to use the privileged endpoint 
 
-As mentioned above, the PEP is a [PowerShell JEA](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) endpoint. While providing a strong security layer, a JEA endpoint reduces some of the basic PowerShell capabilities, such as scripting or tab completion. If you try any type of script operation, the operation fails with the error **ScriptsNotAllowed**. This failure is expected behavior.
+As mentioned above, the PEP is a [PowerShell JEA](/powershell/scripting/learn/remoting/jea/overview) endpoint. While providing a strong security layer, a JEA endpoint reduces some of the basic PowerShell capabilities, such as scripting or tab completion. If you try any type of script operation, the operation fails with the error **ScriptsNotAllowed**. This failure is expected behavior.
 
 For instance, to get the list of parameters for a given cmdlet, run the following command:
 
@@ -121,7 +123,7 @@ For instance, to get the list of parameters for a given cmdlet, run the followin
     Get-Command <cmdlet_name> -Syntax
 ```
 
-Alternatively, you can use the [**Import-PSSession**](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Import-PSSession?view=powershell-5.1) cmdlet to import all the PEP cmdlets into the current session on your local machine. The cmdlets and functions of the PEP are now available on your local machine, together with tab completion and, more in general, scripting. You can also run the **[Get-Help](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-help)** module to review cmdlet instructions.
+Alternatively, you can use the [**Import-PSSession**](/powershell/module/microsoft.powershell.utility/import-pssession?view=powershell-5.1) cmdlet to import all the PEP cmdlets into the current session on your local machine. The cmdlets and functions of the PEP are now available on your local machine, together with tab completion and, more in general, scripting. You can also run the **[Get-Help](/powershell/module/microsoft.powershell.core/get-help)** module to review cmdlet instructions.
 
 To import the PEP session on your local machine, do the following steps:
 
@@ -199,5 +201,5 @@ After the transcript log files are successfully transferred to the file share, t
 
 ## Next steps
 
-- [Azure Stack Hub diagnostic tools](azure-stack-diagnostic-log-collection-overview-tzl.md)
+- [Azure Stack Hub diagnostic tools](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002)
 - [Azure Stack Hub privileged endpoint reference](../reference/pep-2002/index.md)
