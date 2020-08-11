@@ -22,8 +22,6 @@ Diagnostic log collection in **Help + support** helps operators quickly coll
 
 Diagnostic log collection in Help and Support helps operators quickly collect and share diagnostic logs with Microsoft Customer Support Services (CSS), an easy user interface, which does not require PowerShell. Logs get collected even if other infrastructure services are down.  
 
-::: moniker range=">= azs-2002"
-
 It is recommended to use this approach of log collection and only resort to [using the privileged endpoint (PEP)](azure-stack-get-azurestacklog.md) if the Administrator portal or Help and Support blade is unavailable. 
 
 >[!NOTE]
