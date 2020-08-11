@@ -13,9 +13,11 @@ ms.date: 08/11/2020
 
 > Applies to: Azure Stack HCI, version 20H2
 
-This article describes the contents of Azure Stack HCI update packages. The update includes improvements and fixes for the latest release of Azure Stack HCI.
+This article describes the contents of Azure Stack HCI update packages.
 
-# August 11, 2020 Security Update (KB4574585)
+## August 11, 2020 Security Update (KB4574585)
+
+This update includes improvements and fixes for the latest release of Azure Stack HCI.
 
 ## Improvements and fixes
 This update contains miscellaneous security improvements to internal OS functionality. No additional issues were documented for this release.
