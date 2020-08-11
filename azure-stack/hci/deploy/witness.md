@@ -3,7 +3,7 @@ title: Set up a cluster witness
 description: Learn how to set up a cluster witness 
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 08/04/2020 
+ms.date: 08/11/2020 
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -25,8 +25,8 @@ For file-share witnesses, there are requirements for the file server. See [Befor
 1. Under **Tools**, select **Settings**.
 1. In the right pane, select **Witness**.
 1. For **Witness type**, select one of the following:
-      - **Cloud witness** - enter your Azure storage account name, key, and endpoint URL, as described below
-      - **File share witness** - enter the file share path (//server/share)
+      - **Cloud witness** - enter your Azure storage account name, access key, and endpoint URL, as described below
+      - **File share witness** - enter the file share path "(//server/share)"
 
 > [!NOTE]
 > The third option, **Disk witness**, is not suitable for use in stretched clusters.
@@ -88,13 +88,13 @@ To setup a cluster witness using PowerShell, run one of the following cmdlets.
 Use the following cmdlet to create an Azure cloud witness:
 
 ```powershell
-Set-ClusterQuorum –Cluster Cluster1 -CloudWitness -AccountName <AzureStorageAccountName> -AccessKey <AzureStorageAccountAccessKey>
+Set-ClusterQuorum –Cluster "Cluster1" -CloudWitness -AccountName "AzureStorageAccountName" -AccessKey "AzureStorageAccountAccessKey"
 ```
 
 Use the following cmdlet to create a file-share witness:
 
 ```powershell
-Set-ClusterQuorum -FileShareWitness \\fileserver\share -Credential (Get-Credential)
+Set-ClusterQuorum -FileShareWitness "\\fileserver\share" -Credential (Get-Credential)
 ```
 
 ## Next steps
