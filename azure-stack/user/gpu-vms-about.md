@@ -76,7 +76,7 @@ The article [Install AMD GPU drivers on N-series VMs running Windows](https://do
 
 ### NVIDIA
 
-NVIDIA drivers are required to run CUDA or GRID workloads on the VM. Please make sure that you have the apropriate GRID licenses as well as a license server set up before you use the extension to install the GRID drivers on the VM. [This](https://docs.nvidia.com/grid/ls/latest/grid-license-server-user-guide/index.html) can be used to learn how to setup the license server. CUDA drivers do not need a license server.
+NVIDIA drivers are required to run CUDA or GRID workloads on the VM. Please make sure that you have the appropriate GRID licenses as well as a license server set up before you use the extension to install the GRID drivers on the VM. [This](https://docs.nvidia.com/grid/ls/latest/grid-license-server-user-guide/index.html) can be used to learn how to setup the license server. CUDA drivers do not need a license server.
 
 NVIDIA CUDA Windows settings:
 ```powershell
