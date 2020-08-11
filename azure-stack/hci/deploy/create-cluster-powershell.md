@@ -24,6 +24,8 @@ For the stretched cluster scenario, we will use ClusterS1 as the name and use th
 
 For more information about stretched clusters, see [Stretched clusters overview](../concepts/stretched-clusters.md).
 
+If you’re interested in testing Azure Stack HCI, but have limited or no spare hardware, check out the [Azure Stack HCI Evaluation Guide](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md), where we’ll walk you through experiencing Azure Stack HCI using nested virtualization, either in Azure, or on a single physical system on-premises.
+
 ## Before you begin
 
 Before you begin, make sure you:
@@ -52,7 +54,7 @@ To connect to the servers, you must first have network connectivity, be joined t
 Open PowerShell and use either the fully-qualified domain name or the IP address of the server you want to connect to. You'll be prompted for a password after you run the following command on each server (Server1, Server2, Server3, Server4):
 
    ```powershell
-   Enter-PSSession -ComputerName "Server1" -Credential Server1\Administrator
+   Enter-PSSession -ComputerName "Server1" -Credential "Server1\Administrator"
    ```
 
 Here's another example of doing the same thing:
@@ -98,7 +100,7 @@ The next step is to install required Windows roles and features on every server 
 - BitLocker
 - Data Center Bridging (for RoCEv2 network adapters)
 - Failover Clustering
-- File Server (for file-share witness or hosting file shares)
+- File Server
 - FS-Data-Deduplication module
 - Hyper-V
 - RSAT-AD-PowerShell module
@@ -107,7 +109,7 @@ The next step is to install required Windows roles and features on every server 
 Use the following command for each server:
 
 ```powershell
-Install-WindowsFeature -ComputerName Server1 -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "Hyper-V", "Hyper-V-PowerShell", "RSAT-Clustering-PowerShell", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
+Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "Hyper-V", "Hyper-V-PowerShell", "RSAT-Clustering-PowerShell", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
 ```
 
 To run the command on all servers in the cluster at the same time, use the following script, modifying the list of variables at the beginning to fit your environment.
@@ -131,7 +133,7 @@ Restart-Computer -ComputerName $ServerList
 
 ## Step 2: Configure networking
 
-This step assumes that you have already set up RDMA and other networking for your environment previously.
+This step configures various networking elements in your environment.
 
 ### Disable unused networks
 
@@ -149,7 +151,7 @@ Get-NetAdapter -CimSession $Servers | Where-Object Status -eq Disconnected | Dis
 
 ### Assign virtual network adapters
 
-Next, you will assign virtual network adapters (vNICs) for management and the rest of your traffic, as in the example:
+Next, you will assign virtual network adapters (vNICs) for management and the rest of your traffic, as in the following example. You must configure at least one network adapter for cluster management.
 
 ```powershell
 $Servers = "Server1", "Server2", "Server3", "Server4"
@@ -168,7 +170,7 @@ Get-VMNetworkAdapter -CimSession $Servers -ManagementOS
 
 ### Create virtual switches
 
-A virtual switch is needed for each server node in your cluster. In the following example, a virtual switch with SR-IOV capability is created using network adapters that are connected (Status is UP). SR-IOV enabled might be useful as it's required for RDMA enabled vmNICs (vNICs for VMs).
+A virtual switch is needed for each server node in your cluster. In the following example, a virtual switch with SR-IOV capability is created using network adapters that are connected (Status is UP). SR-IOV enabled might also be useful as it's required for RDMA enabled vmNICs (vNICs for VMs).
 
 All network adapters must be identical for teaming NICs together.
 
@@ -339,8 +341,9 @@ When creating the cluster, you'll get a warning that states - `"There were issue
 
 Congrats, your cluster has now been created.
 
-> [!NOTE]
-> After the cluster is created, it can take time for the cluster name to be replicated. If resolving the cluster isn't successful, in most cases you can substitute the computer name of a server node in the the cluster instead of the cluster name.
+After the cluster is created, it can some take time for the cluster name to be replicated across your domain, especially if workgroup servers have been newly added to Active Directory. Although the cluster might be displayed in Windows Admin Center, it might not be available to connect to yet.
+
+If resolving the cluster isn't successful after some time, in most cases you can connect by using the name of one of the clustered servers instead of the cluster name.
 
 ## Step 5: Set up sites (stretched cluster)
 
@@ -361,7 +364,7 @@ New-ClusterFaultDomain -CimSession "ClusterS1" -FaultDomainType Site -Name "Site
 Use the `Get-ClusterFaultDomain` cmdlet to verify that both sites have been created for the cluster.
 
 ```powershell
-Get-ClusterFaultDomain
+New-ClusterFaultDomain -CimSession "ClusterS1"
 ```
 
 ### Step 5.2: Assign server nodes
@@ -440,7 +443,7 @@ Congrats, you have now created a bare-bones cluster.
 
 ## After you create the cluster
 
-Now that you are done, there are still some important tasks you need to complete in order to have a fully-functioning cluster:
+Now that you are done, there are still some important tasks you need to complete:
 
 - Setup a cluster witness. See [Set up a cluster witness](witness.md).
 - Create your volumes. See [Create volumes](../manage/create-volumes.md).
