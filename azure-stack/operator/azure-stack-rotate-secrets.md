@@ -51,7 +51,6 @@ Starting with release 1811, secret rotation is separated for internal and extern
 >
 >In addition, this article does not address secret rotation for value-add resource providers. To rotate those secrets, refer to the following articles instead:
 >
-> - [Event Hubs on Azure Stack Hub secrets rotation](app-service-rotate-certificates.md)
 > - [Rotate App Service on Azure Stack Hub secrets and certificates](app-service-rotate-certificates.md)
 > - [MySQL resource provider - Rotate secrets](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation)
 > - [SQL resource provider - Rotate secrets](azure-stack-sql-resource-provider-maintain.md#secrets-rotation)
@@ -130,7 +129,6 @@ For rotation of external secrets, complete these additional prerequisites:
     > + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Test-Certificate
     > + PSComputerName        : xxx.xxx.xxx.xxx
     > ```
-    > More information can be found in the Microsoft.AzureStack.ReadinessChecker [PublicCertHelper module](https://www.powershellgallery.com/packages/Microsoft.AzureStack.ReadinessChecker/1.1811.1101.1/Content/CertificateValidation%5CPublicCertHelper.psm1).
 
 ## Rotate external secrets
 
