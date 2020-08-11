@@ -4,10 +4,10 @@ description: Improvements, fixes, and known issues for Azure Stack Development K
 author: sethmanheim
 
 ms.topic: article
-ms.date: 04/06/2020
+ms.date: 08/10/2020
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 03/18/2020
+ms.lastreviewed: 08/10/2020
 
 # Intent: As an ASDK user, I want to know the latest changes, updates, and bug fixes to the ASDK.
 # Keyword: asdk release notes
@@ -21,6 +21,37 @@ This article provides information about changes, fixes, and known issues in the 
 
 Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media/asdk-release-notes/feed-icon-14x14.png) [RSS feed](https://docs.microsoft.com/api/search/rss?search=ASDK+release+notes&locale=en-us#).
 
+::: moniker range="azs-2005"
+## Build 1.2005.0.40
+
+### New features
+
+- For a list of fixed issues, changes, and new features in this release, see the relevant sections in the [Azure Stack release notes](../operator/release-notes.md).
+
+### Fixed and known issues
+
+- The decryption certification password is a new option to specify the password for the self-signed certificate (.pfx) that contains the private key necessary to decrypt backup data. This password is required only if the backup is encrypted using a certificate.
+- Fixed an issue that caused cloud recovery to fail if the original external certificate password changed on the multi-node source system. 
+- For a list of Azure Stack known issues in this release, see the [known issues](../operator/known-issues.md) article.
+- Note that available Azure Stack hotfixes are not applicable to the ASDK.
+
+#### Initial configuration fails in ASDK
+
+- When deploying the ASDK, you may receive the error messages **Status of 'Deployment-Phase0-DeployBareMetal' is 'Error'** and **Status of 'Deployment-InitialSteps' is 'Error'**.
+
+- As a workaround:
+
+1. Open the file at C:\CloudDeployment\Roles\PhysicalMachines\Tests\BareMetal.Tests.ps1 in any editor with a line counter, such as PowerShell ISE.
+
+2. Replace line 822 with:
+
+   ```powershell
+
+   PartNumber = if($_.PartNumber) {$_.PartNumber.Trim()} else {""};
+
+   ```  
+::: moniker-end
+
 ::: moniker range="azs-2002"
 ## Build 1.2002.0.35
 
@@ -31,7 +62,9 @@ Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media
 ### Fixed and known issues
 
 - The decryption certification password is a new option to specify the password for the self-signed certificate (.pfx) that contains the private key necessary to decrypt backup data. This password is required only if the backup is encrypted using a certificate.
+
 - For a list of Azure Stack known issues in this release, see the [known issues](../operator/known-issues.md) article.
+
 - Note that available Azure Stack hotfixes are not applicable to the ASDK.
 
 #### SQL VM provision fails in ASDK
@@ -41,6 +74,7 @@ Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media
 ::: moniker-end
 
 ::: moniker range="azs-1910"
+
 ## Build 1.1910.0.58
 
 ### New features
@@ -58,38 +92,4 @@ Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media
 - Fixed a deployment issue where a slow loading spooler service prevents the removal of some Windows features and requires a reboot.
 - For a list of Azure Stack known issues in this release, see the [known issues](../operator/known-issues.md) article.
 - Note that available Azure Stack hotfixes are not applicable to the ASDK.
-::: moniker-end
-
-::: moniker range="azs-1908"
-  
-## Build 1.1908.0.20
-
-### New features
-
-- For a list of new features in this release, see [this section](../operator/release-notes.md?view=azs-1908#whats-new-2) of the Azure Stack release notes.
-
-<!-- ### Changes -->
-
-### Fixed and known issues
-
-<!-- - For a list of Azure Stack issues fixed in this release, see [this section](../operator/release-notes.md?view=azs-1908#fixes-1) of the Azure Stack release notes. -->
-- For a list of known issues, see [this article](../operator/known-issues.md?view=azs-1908).
-- Note that available Azure Stack hotfixes are not applicable to the ASDK.
-::: moniker-end
-
-::: moniker range="azs-1907"
-## Build 1.1907.0.20
-
-### New features
-
-- For a list of new features in this release, see [this section](../operator/release-notes.md?view=azs-1907#whats-in-this-update) of the Azure Stack release notes.
-
-<!-- ### Changes -->
-
-### Fixed and known issues
-
-- When creating VM resources using some Marketplace images, you might not be able to complete the deployment. As a workaround, you can click on the **Download template and parameters** link in the **Summary** page and click on the **Deploy** button in the **Template** blade.
-- For a list of Azure Stack issues fixed in this release, see [this section](../operator/release-notes.md?view=azs-1907#fixes-3) of the Azure Stack release notes.
-- For a list of known issues, see [this article](../operator/known-issues.md?view=azs-1907).
-- Note that [available Azure Stack hotfixes](../operator/release-notes.md?view=azs-1907#hotfixes-3) are not applicable to the Azure Stack ASDK.
 ::: moniker-end
