@@ -4,9 +4,9 @@ description:  Checklist to prepare your system for the latest Azure Stack Hub up
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/04/2020
+ms.date: 08/10/2020
 ms.author: sethm
-ms.reviewer: ppacent
+ms.reviewer: TBD
 ms.lastreviewed: 01/14/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
