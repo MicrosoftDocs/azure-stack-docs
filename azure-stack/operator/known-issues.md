@@ -124,7 +124,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 - Applicable: This issue applies to release 2002.
 - Cause: If the stamp contains App Service resource provider (RP) version 1.7 and older, upon update of the stamp, the blades for App Service do not load.
-- Remediation: Update the RP to version 1.8.
+- Remediation: Update the RP to version 2002 Q2.
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
