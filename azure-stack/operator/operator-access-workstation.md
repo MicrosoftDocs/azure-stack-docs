@@ -13,7 +13,7 @@ ms.lastreviewed: 08/11/2020
 
 ---
 
-# Azure Stack Hub Operator Access Workstation (Preview Only)
+# Azure Stack Hub Operator Access Workstation (preview only)
 
 The Operator Access Workstation (OAW) is used to deploy a jump box virtual machine (VM) on the Hardware Lifecycle Host (HLH) so an Azure Stack Hub operator can access the privileged endpoint (PEP) and the Administrator portal for support scenarios. The HLH version must run version 2005 or later. 
 
@@ -39,11 +39,11 @@ The following table lists the pre-installed software on the OAW VM.
 | Software Name           | Location                                                                                       |
 |--------------------------|------------------------------------------------------------------------------------------------|
 | [Microsoft Edge for Business](https://www.microsoft.com/edge/business/)                                            | \[SystemDrive\]\Program Files (x86)\Microsoft\Edge\Application                                                                                        |
-| [Az Modules](https://review.docs.microsoft.com/azure-stack/operator/powershell-install-az-module?branch=master)                         | \[SystemDrive\]\ProgramFiles\WindowsPowerShell\Modules                                         |  
-| [Powershell 7](https://devblogs.microsoft.com/powershell/announcing-PowerShell-7-0/)| \[SystemDrive\]\Program Files\PowerShell\7                                                                       |
-| [Azure Command-Line Interface (CLI)](https://review.docs.microsoft.com/cli/azure/?view=azure-cli-latest&branch=master) | \[SystemDrive\]\Program Files (x86)\Microsoft SDKs\Azure\CLI2 |
+| [Az Modules](https://docs.microsoft.com/azure-stack/operator/powershell-install-az-module)                         | \[SystemDrive\]\ProgramFiles\WindowsPowerShell\Modules                                         |  
+| [PowerShell 7](https://devblogs.microsoft.com/powershell/announcing-PowerShell-7-0/)| \[SystemDrive\]\Program Files\PowerShell\7                                                                       |
+| [Azure Command-Line Interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | \[SystemDrive\]\Program Files (x86)\Microsoft SDKs\Azure\CLI2 |
 | [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)   | \[SystemDrive\]\Program Files (x86)\Microsoft Azure Storage Explorer                                                                       |
-| [AzCopy](https://review.docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?branch=master)                             | \[SystemDrive\]\VMSoftware\azcopy_windows_amd64_10.3.4                                         |
+| [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)                             | \[SystemDrive\]\VMSoftware\azcopy_windows_amd64_10.3.4                                         |
 | [AzureStack-Tools](https://github.com/Azure/AzureStack-Tools/tree/az)                  | \[SystemDrive\]\VMSoftware\AzureStack-Tools                                                    |
 
 ## Check HLH version
