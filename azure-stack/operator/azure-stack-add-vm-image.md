@@ -35,7 +35,7 @@ Custom images come in two forms: **generalized** and **specialized**.
 
 #### VHD is from outside Azure
 
-Follow the steps in [Upload a generalized VHD and use it to create new VMs in Azure](/azure/virtual-machines/windows/upload-generalized-managed) to correctly **Sysprep** your VHD and make it generalized.
+Follow the steps in [Prepare a Windows VHD or VHDX to upload to Azure](../azure/virtual-machines/windows/prepare-for-upload-vhd-image) to correctly generalized your VHD prior to uploading.
 
 #### VHD is from Azure
 
