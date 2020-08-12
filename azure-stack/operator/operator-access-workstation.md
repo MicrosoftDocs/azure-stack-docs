@@ -3,10 +3,10 @@ title: Azure Stack Hub Operator Access Workstation
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: asganesh
 ms.topic: article
-ms.date: 08/11/2020
+ms.date: 08/12/2020
 ms.author: justinha
 ms.reviewer: asganesh
-ms.lastreviewed: 08/11/2020
+ms.lastreviewed: 08/12/2020
 
 # Intent: As an Azure Stack operator, I want to download and configure an Azure Stack Hub Operator Access Workstation.
 # Keyword: azure stack hub operator access workstation
@@ -67,31 +67,33 @@ The following script prepares the virtual machine as the Operator Access Worksta
 1. Download OAW.zip and extract the files.
 1. Open an elevated PowerShell session.
 1. Navigate to the extracted contents of the OAW.zip file.
-1. Run the New-OAW.ps1 script. For example, to create the OAW VM on the HLH without any customization using Azure Stack Hub version 2005 or later, run the New-OAW.ps1 script with only the **-LocalAdministratorPassword** parameter:
+1. Run the New-OAW.ps1 script. 
 
-   ```powershell
-   $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
-   New-OAW.ps1 -LocalAdministratorPassword $securePassword  
-   ```
+For example, to create the OAW VM on the HLH without any customization using Azure Stack Hub version 2005 or later, run the New-OAW.ps1 script with only the **-LocalAdministratorPassword** parameter:
 
-   To create the OAW VM on a host with network connection to Azure Stack Hub:
+```powershell
+$securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
+New-OAW.ps1 -LocalAdministratorPassword $securePassword  
+```
 
-   ```powershell
-   $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
-   New-OAW.ps1 -LocalAdministratorPassword $securePassword `
-      -IPAddress '192.168.0.20' `
-      -SubnetMask '255.255.255.0' `
-      -DefaultGateway '192.168.0.1' `
-      -DNS '192.168.0.10'
-   ```
+To create the OAW VM on a host with network connection to Azure Stack Hub:
 
-   To create the OAW VM on the HLH with DeploymentData.json:
+```powershell
+$securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
+New-OAW.ps1 -LocalAdministratorPassword $securePassword `
+   -IPAddress '192.168.0.20' `
+   -SubnetMask '255.255.255.0' `
+   -DefaultGateway '192.168.0.1' `
+   -DNS '192.168.0.10'
+```
 
-   ```powershell
-   $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
-   New-OAW.ps1 -LocalAdministratorPassword $securePassword `
-      -DeploymentDataFilePath 'D:\AzureStack\DeploymentData.json'
-   ```
+To create the OAW VM on the HLH with DeploymentData.json:
+
+```powershell
+$securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
+New-OAW.ps1 -LocalAdministratorPassword $securePassword `
+   -DeploymentDataFilePath 'D:\AzureStack\DeploymentData.json'
+```
 
 Two parameter sets are available for New-OAW. Optional parameters are shown in brackets.
 
