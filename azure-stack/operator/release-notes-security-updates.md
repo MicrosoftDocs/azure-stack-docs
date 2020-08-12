@@ -4,10 +4,10 @@ description: Learn about the 1910 security updates for Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 08/11/2020
 ms.author: sethm
 ms.reviewer: fiseraci
-ms.lastreviewed: 08/10/2020
+ms.lastreviewed: 08/11/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -17,7 +17,7 @@ ms.lastreviewed: 08/10/2020
 
 # Azure Stack Hub security updates
 
-This article lists all the security updates in the last four updates of Azure Stack Hub. This information is provided for reference purposes only.
+This article lists all the security updates in the last three updates of Azure Stack Hub. This information is provided for reference purposes only.
 
 ::: moniker range="azs-2005"
 ## 2005 update
