@@ -4,7 +4,9 @@ description: How read and write caching works in Storage Spaces Direct and Azure
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.service: azure-stack
+ms.subservice: azure-stack-hci
+ms.date: 08/11/2020
 ---
 
 # Understanding the cache in Azure Stack HCI
@@ -23,7 +25,7 @@ The following video goes into details on how caching works for Storage Spaces Di
 
 Storage Spaces Direct currently works with four types of drives:
 
-|||
+| Type of drive | Description |
 |----------------------|--------------------------|
 |![PMem](media/choose-drives/pmem-100px.png)|**PMem** refers to persistent memory, a new type of low latency, high performance storage.|
 |![NVMe](media/choose-drives/NVMe-100-px.png)|**NVMe** (Non-Volatile Memory Express) refers to solid-state drives that sit directly on the PCIe bus. Common form factors are 2.5" U.2, PCIe Add-In-Card (AIC), and M.2. NVMe offers higher IOPS and IO throughput with lower latency than any other type of drive we support today except PMem.|

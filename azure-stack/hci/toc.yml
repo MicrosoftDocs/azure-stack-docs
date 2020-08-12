@@ -6,6 +6,8 @@
     href: overview.md
   - name: Known issues
     href: known-issues.md
+  - name: Release notes
+    href: release-notes.md
 - name: Get started
   items:
   - name: Use Azure Stack HCI with Windows Admin Center
@@ -68,6 +70,8 @@
       href: manage/languages.md
     - name: Troubleshoot cluster validation reporting
       href: manage/validate-qos.md
+    - name: Troubleshoot CredSSP
+      href: manage/troubleshoot-credssp.md
   - name: Manage Azure services
     items:
     - name: Register Windows Admin Center with Azure
