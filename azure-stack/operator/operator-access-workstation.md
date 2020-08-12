@@ -69,16 +69,6 @@ The following script prepares the virtual machine as the Operator Access Worksta
 1. Navigate to the extracted contents of the OAW.zip file.
 1. Run the New-OAW.ps1 script. The following two parameter sets are available for New-OAW, with optional parameters shown in brackets:
 
-```
-New-SmbShare [-Temporary] [-ContinuouslyAvailable <Boolean>] [-Description <String>]
- [-ConcurrentUserLimit <UInt32>] [-CATimeout <UInt32>] [-FolderEnumerationMode <FolderEnumerationMode>]
- [-CachingMode <CachingMode>] [-FullAccess <String[]>] [-ChangeAccess <String[]>] [-ReadAccess <String[]>]
- [-NoAccess <String[]>] [-SecurityDescriptor <String>] [-Path] <String> [-Name] <String>
- [[-ScopeName] <String>] [-EncryptData <Boolean>] [-CimSession <CimSession[]>] [-ThrottleLimit <Int32>]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-
 ```powershell
 New-OAW 
 -LocalAdministratorPassword <Security.SecureString>
@@ -196,6 +186,13 @@ To create the OAW VM on a host with network connection to Azure Stack Hub, run t
    For example:
 
    ![Screenshot of PowerShell cmdlet to check the Hardware LifeCycle Host version](./media/operator-access-workstation/check-operator-access-workstation-vm-version.png)
+
+
+## Transfer files between the HLH and OAW
+
+If you need to transfer files between the HLH and the OAW, create an SMB share by using the [New-SmbShare](https://docs.microsoft.com/powershell/module/smbshare/new-smbshare?view=win10-ps) cmdlet. New-SmbShare exposes a file system folder to remote clients as a Server Message Block (SMB) share. For example:
+
+To delete a share that was created by this cmdlet, use the [Remove-SmbShare](https://docs.microsoft.com/powershell/module/smbshare/remove-smbshare?view=win10-ps) cmdlet. For example:
 
 
 ## Remove the OAW VM
