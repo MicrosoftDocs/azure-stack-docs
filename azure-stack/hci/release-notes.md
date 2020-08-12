@@ -9,11 +9,11 @@ ms.subservice: azure-stack-hci
 ms.date: 08/11/2020
 ---
 
-# Release notes for Azure Stack HCI
+# Release notes for Azure Stack HCI Public Preview
 
 > Applies to: Azure Stack HCI, version 20H2
 
-This article describes the contents of Azure Stack HCI update packages.
+This article describes the contents of Azure Stack HCI Public Preview update packages.
 
 ## August 11, 2020 Security Update (KB4574585)
 
