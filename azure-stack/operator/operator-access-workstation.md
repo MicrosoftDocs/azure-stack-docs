@@ -105,45 +105,43 @@ New-OAW
 [-SkipNetworkConfiguration] `
 [-UseDVMConfiguration] `
 [-ImageFilePath <String>] `
-[-VirtualMachineName <String>]
-[-VirtualMachineMemory <int64>]
-[-VirtualProcessorCount <int>]
-[-VirtualMachineDiffDiskPath <String>]
-[-PhysicalAdapterMACAddress <String>]
-[-VirtualSwitchName <String>]
-[-ReCreate]
-[-AsJob]
-[-Passthru]
-[-WhatIf]
-[-Confirm]
+[-VirtualMachineName <String>] `
+[-VirtualMachineMemory <int64>] `
+[-VirtualProcessorCount <int>] `
+[-VirtualMachineDiffDiskPath <String>] `
+[-PhysicalAdapterMACAddress <String>] `
+[-VirtualSwitchName <String>] `
+[-ReCreate] `
+[-AsJob] `
+[-Passthru] `
+[-WhatIf] `
+[-Confirm] `
 [<CommonParameters>]
 ```
 
 ```powershell
 New-OAW
--LocalAdministratorPassword <Security.SecureString>
+-LocalAdministratorPassword <Security.SecureString> `
 -IPAddress <String> `
 -SubnetMask <String> `
 -DefaultGateway <String> `
--DNS <String[]>
-[-AzureStackCertificatePath <String>]
-[-ERCSVMIP <String[]>]
-[-ImageFilePath <String>]
-[-VirtualMachineName <String>]
-[-VirtualMachineMemory <int64>]
-[-VirtualProcessorCount <int>]
-[-VirtualMachineDiffDiskPath <String>]
-[-PhysicalAdapterMACAddress <String>]
-[-VirtualSwitchName <String>]
-[-ReCreate]
-[-AsJob]
-[-Passthru]
-[-WhatIf]
-[-Confirm]
+-DNS <String[]> `
+[-AzureStackCertificatePath <String>] `
+[-ERCSVMIP <String[]>] `
+[-ImageFilePath <String>] `
+[-VirtualMachineName <String>] `
+[-VirtualMachineMemory <int64>] `
+[-VirtualProcessorCount <int>] `
+[-VirtualMachineDiffDiskPath <String>] `
+[-PhysicalAdapterMACAddress <String>] `
+[-VirtualSwitchName <String>] `
+[-ReCreate] `
+[-AsJob] `
+[-Passthru] `
+[-WhatIf] `
+[-Confirm] `
 [<CommonParameters>]
 ```
-
-
 
 The following table lists the definition for each parameter.
 
@@ -167,7 +165,6 @@ SkipNetworkConfiguration     | Optional | Skips network configuration for the vi
 | PhysicalAdapterMACAddress  | Optional | The MAC address of the host's network adapter that will be used to connect the virtual machine to.<br>- If there is only one physical network adapter, this parameter is not needed and the only network adapter will be used.<br>- If there is more than one physical network adapter, this parameter is required to specify which one to use.<br> |
 | VirtualSwitchName          | Optional | The name of virtual switch that needs to be configured in Hyper-V for the virtual machine.<br>- If there is VMSwitch with the provided name, such VMSwitch will be selected.<br>- If there is only one VMSwitch with switch type External, value **DVMVirtualSwitch** can be used to select this VMSwitch without providing its name.<br>- If there is no VMSwitch with the provided name, a VMSwitch will be created with the provided name.<br> |
 | ReCreate                   | Optional | Removes and re-creates the virtual machine if there is already an existed virtual machine with the same name. |
-
 
 ## Check the OAW VM version
 
