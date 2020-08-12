@@ -51,7 +51,6 @@ Starting with release 1811, secret rotation is separated for internal and extern
 >
 >In addition, this article does not address secret rotation for value-add resource providers. To rotate those secrets, refer to the following articles instead:
 >
-> - [Event Hubs on Azure Stack Hub secrets rotation](app-service-rotate-certificates.md)
 > - [Rotate App Service on Azure Stack Hub secrets and certificates](app-service-rotate-certificates.md)
 > - [MySQL resource provider - Rotate secrets](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation)
 > - [SQL resource provider - Rotate secrets](azure-stack-sql-resource-provider-maintain.md#secrets-rotation)
@@ -109,7 +108,7 @@ For rotation of external secrets, complete these additional prerequisites:
 1. Run **[Test-AzureStack](azure-stack-diagnostic-test.md)** and confirm all test outputs are healthy before rotating secrets.
 2. Prepare a new set of replacement external certificates:
     - The new set must match the certificate specifications outlined in the [Azure Stack Hub PKI certificate requirements](azure-stack-pki-certs.md). 
-    - You can generate a certificate signing request (CSR) for purchasing or creating new certificates using the steps outlined in [Generate PKI Certificates](azure-stack-get-pki-certs.md) and prepare them for use in your Azure Stack Hub environment using the steps in [Prepare Azure Stack Hub PKI Certificates](azure-stack-prepare-pki-certs.md). 
+    - You can generate a certificate signing request (CSR) to submit to your Certificate Authority (CA) using the steps outlined in [Generate PKI Certificates](azure-stack-get-pki-certs.md) and prepare them for use in your Azure Stack Hub environment using the steps in [Prepare Azure Stack Hub PKI Certificates](azure-stack-prepare-pki-certs.md). 
     - Be sure to validate the certificates you prepare with the steps outlined in [Validate PKI Certificates](azure-stack-validate-pki-certs.md)
     - Make sure there are no special characters in the password, like `*` or `)`.
     - Make sure the PFX encryption is **TripleDES-SHA1**. If you run into an issue, see [Fix common issues with Azure Stack Hub PKI certificates](azure-stack-remediate-certs.md#pfx-encryption).
@@ -118,7 +117,7 @@ For rotation of external secrets, complete these additional prerequisites:
 5. Open a PowerShell ISE console from a computer where you have access to the fileshare. Navigate to your fileshare, where you create directories to place your external certificates.
 6. Run **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)**. The CertDirectoryMaker script will create a folder structure that adheres to ***.\Certificates\AAD*** or ***.\Certificates\ADFS***, depending on your identity provider. Your folder structure must begin with a **\\Certificates** folder, followed by ONLY an **\\AAD** or **\\ADFS** folder. All additional subdirectories are contained within the preceding structure. For example:
     - File share = **\\\\\<IPAddress>\\\<ShareName>**
-    - Certificate root older for Azure AD provider = **\\Certificates\AAD**
+    - Certificate root folder for Azure AD provider = **\\Certificates\AAD**
     - Full path = **\\\\\<IPAddress>\\\<ShareName>\Certificates\AAD**
 
     > [!IMPORTANT]
@@ -130,7 +129,6 @@ For rotation of external secrets, complete these additional prerequisites:
     > + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Test-Certificate
     > + PSComputerName        : xxx.xxx.xxx.xxx
     > ```
-    > More information can be found in the Microsoft.AzureStack.ReadinessChecker [PublicCertHelper module](https://www.powershellgallery.com/packages/Microsoft.AzureStack.ReadinessChecker/1.1811.1101.1/Content/CertificateValidation%5CPublicCertHelper.psm1).
 
 ## Rotate external secrets
 
