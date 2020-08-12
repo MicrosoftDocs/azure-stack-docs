@@ -54,7 +54,7 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure:
 2. Install the PowerShell Module for Azure Stack HCI:
 
    ```PowerShell
-   Install-WindowsFeature RSAT-Azure-Stack-HCI -ComputerName Server1
+   Install-WindowsFeature RSAT-Azure-Stack-HCI
    ```
 
 3. Install the required cmdlets:
@@ -74,13 +74,13 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure:
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" [-ResourceName] [-ResourceGroupName]
    ```
 
-This syntax registers the local cluster (of which the local server is a member), as the current user, with the default Azure region and cloud environment, and using smart default names for the Azure resource and resource group, but you can add parameters to this command to specify these values if you want.
+   This syntax registers the local cluster (of which the local server is a member), as the current user, with the default Azure region and cloud environment, and using smart default names for the Azure resource and resource group, but you can add parameters to this command to specify these values if you want.
 
-Remember that the user running the `Register-AzStackHCI` cmdlet must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#azure-active-directory-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin consent. Once permissions have been granted, simply re-run `Register-AzStackHCI` to complete registration.
+   Remember that the user running the `Register-AzStackHCI` cmdlet must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#azure-active-directory-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin consent. Once permissions have been granted, simply re-run `Register-AzStackHCI` to complete registration.
 
 5. Authenticate with Azure
 
-To complete the registration process, you need to authenticate (sign in) using your Azure account. Your account needs to have access to the Azure subscription that was specified in step 4 above in order for registration to proceed. Copy the code provided, navigate to microsoft.com/devicelogin on another device (like your PC or phone), enter the code, and sign in there. This is the same experience Microsoft uses for other devices with limited input modalities, like Xbox.
+   To complete the registration process, you need to authenticate (sign in) using your Azure account. Your account needs to have access to the Azure subscription that was specified in step 4 above in order for registration to proceed. Copy the code provided, navigate to microsoft.com/devicelogin on another device (like your PC or phone), enter the code, and sign in there. This is the same experience Microsoft uses for other devices with limited input modalities, like Xbox.
 
 The registration workflow will detect when you've logged in and proceed to completion. You should then be able to see your cluster in the Azure portal.
 
