@@ -133,11 +133,11 @@ The following table lists the definition for each parameter.
 | SubnetMask                 | Required | The IPv4 subnet mask to configure TCP/IP on the virtual machine.                                                   |
 | DefaultGateway             | Required | IPv4 address of the default gateway to configure TCP/IP on the virtual machine.                                    |
 | DNS                        | Required | DNS server(s) to configure TCP/IP on the virtual machine.                                                          |
-| ImageFilePath              | Required | Path of OAW.vhdx provided by Microsoft. Optional parameter; default value is **OAW.vhdx** under the same parent folder of this script. |
-| VirtualMachineName         | Required | The name to be assigned to the virtual machine. Optional parameter; default value is **AzSOAW**.                       |
-| VirtualMachineMemory       | Required | Memory to be assigned to the virtual machine. Optional parameter; default value is **4GB**.                            |
-| VirtualProcessorCount      | Required | Number of virtual processors to be assigned to the virtual machine. Optional parameter; default value is **8**.        |
-| VirtualMachineDiffDiskPath | Required | Path to store temporary diff disk files while the management VM was active. Optional parameter; default value is **DiffDisks** subdirectory under the same parent folder of this script. |
+| ImageFilePath              | Optional | Path of OAW.vhdx provided by Microsoft. Default value is **OAW.vhdx** under the same parent folder of this script. |
+| VirtualMachineName         | Optional | The name to be assigned to the virtual machine. Default value is **AzSOAW**.                       |
+| VirtualMachineMemory       | Optional | Memory to be assigned to the virtual machine. Default value is **4GB**.                            |
+| VirtualProcessorCount      | Optional | Number of virtual processors to be assigned to the virtual machine. Default value is **8**.        |
+| VirtualMachineDiffDiskPath | Optional | Path to store temporary diff disk files while the management VM was active. Default value is **DiffDisks** subdirectory under the same parent folder of this script. |
 | AzureStackCertificatePath  | Optional | Path of certificates to be imported to the virtual machine for Azure Stack Hub access. |
 | ERCSVMIP                   | Optional | IP of Azure Stack Hub ERCS VM(s) to be added to trusted host list of the virtual machine. Won't take effect if **-SkipNetworkConfiguration** is set. |
 SkipNetworkConfiguration     | Optional | Skips network configuration for the virtual machine so user can configure later. |
