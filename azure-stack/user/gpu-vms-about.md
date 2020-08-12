@@ -80,8 +80,6 @@ NVIDIA drivers are required to run CUDA or GRID workloads on the VM. Please make
 
 NVIDIA CUDA driers and GRID drivers will need to be manually installed on the VM. The Tesla CUDA drivers can be obtained from the NVIDIA [download website](https://www.nvidia.com/Download/index.aspx). GRID drivers can be downloaded through the NVIDIA Application Hub provided you have the required licenses.
 
-```
-
 ## Next steps 
 
 [Azure Stack VM features](azure-stack-vm-considerations.md) 
