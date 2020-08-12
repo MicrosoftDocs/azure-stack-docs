@@ -94,6 +94,7 @@ New-OAW
 ```
 
 ```powershell
+New-OAW
 -LocalAdministratorPassword <Security.SecureString>
 [-AzureStackCertificatePath <String>]
 [-ERCSVMIP <String[]>]
