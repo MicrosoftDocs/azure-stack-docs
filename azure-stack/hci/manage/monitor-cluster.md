@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/10/2020
+ms.date: 08/12/2020
 ---
 
 # Monitor Azure Stack HCI clusters
@@ -112,6 +112,10 @@ To understand the health and operational states of storage pools, virtual disks,
 ## Monitor performance using storage QoS
 
 Storage Quality of Service (QoS) provides a way to centrally monitor and manage storage I/O for VMs to mitigate noisy neighbor issues and provide consistent performance. See [Storage Quality of Service](/windows-server/storage/storage-qos/storage-qos-overview).
+
+## Set up alerts in Azure Monitor
+
+Azure Stack HCI integrates with Azure Monitor to allow users to [set up alerts](azure-monitor.md#setting-up-alerts-using-windows-admin-center) and be notified if CPU, disk capacity, and memory utilization thresholds are exceeded, if VM heartbeats are not returned, or if there is a system critical error or health service fault.
 
 ## Next steps
 
