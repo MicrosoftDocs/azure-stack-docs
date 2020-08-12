@@ -69,20 +69,69 @@ The following script prepares the virtual machine as the Operator Access Worksta
 1. Navigate to the extracted contents of the OAW.zip file.
 1. Run the New-OAW.ps1 script. The following two parameter sets are available for New-OAW, with optional parameters shown in brackets:
 
-   ```powershell
-   -LocalAdministratorPassword <Security.SecureString> [-AzureStackCertificatePath <String>] [-ERCSVMIP <String[]>] [-DNS <String[]>] [-DeploymentDataFilePath <String>] [-SkipNetworkConfiguration] [-UseDVMConfiguration] [-ImageFilePath <String>] [-VirtualMachineName <String>] [-VirtualMachineMemory <int64>] [-VirtualProcessorCount <int>] [-VirtualMachineDiffDiskPath <String>] [-PhysicalAdapterMACAddress <String>] [-VirtualSwitchName <String>] [-ReCreate] [-AsJob] [-Passthru] [-WhatIf] [-Confirm] [<CommonParameters>]
-   ```
+```
+New-SmbShare [-Temporary] [-ContinuouslyAvailable <Boolean>] [-Description <String>]
+ [-ConcurrentUserLimit <UInt32>] [-CATimeout <UInt32>] [-FolderEnumerationMode <FolderEnumerationMode>]
+ [-CachingMode <CachingMode>] [-FullAccess <String[]>] [-ChangeAccess <String[]>] [-ReadAccess <String[]>]
+ [-NoAccess <String[]>] [-SecurityDescriptor <String>] [-Path] <String> [-Name] <String>
+ [[-ScopeName] <String>] [-EncryptData <Boolean>] [-CimSession <CimSession[]>] [-ThrottleLimit <Int32>]
+ [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
 
-   ```powershell
-   -LocalAdministratorPassword <Security.SecureString> -IPAddress <String> -SubnetMask <String> -DefaultGateway <String> -DNS <String[]> [-AzureStackCertificatePath <String>] [-ERCSVMIP <String[]>] [-ImageFilePath <String>] [-VirtualMachineName <String>] [-VirtualMachineMemory <int64>] [-VirtualProcessorCount <int>] [-VirtualMachineDiffDiskPath <String>] [-PhysicalAdapterMACAddress <String>] [-VirtualSwitchName <String>] [-ReCreate] [-AsJob] [-Passthru] [-WhatIf] [-Confirm] [<CommonParameters>]
-   ```
 
-   For example, to create the OAW VM on the HLH without any customization using Azure Stack Hub version 2005 or later, run the New-OAW.ps1 script with only the **-LocalAdministratorPassword** parameter:
+```powershell
+New-OAW 
+-LocalAdministratorPassword <Security.SecureString>
+[-AzureStackCertificatePath <String>]
+[-ERCSVMIP <String[]>]
+[-DNS <String[]>]
+[-DeploymentDataFilePath <String>]
+[-SkipNetworkConfiguration]
+[-UseDVMConfiguration]
+[-ImageFilePath <String>]
+[-VirtualMachineName <String>]
+[-VirtualMachineMemory <int64>]
+[-VirtualProcessorCount <int>]
+[-VirtualMachineDiffDiskPath <String>]
+[-PhysicalAdapterMACAddress <String>]
+[-VirtualSwitchName <String>]
+[-ReCreate]
+[-AsJob]
+[-Passthru]
+[-WhatIf]
+[-Confirm]
+[<CommonParameters>]
+```
 
-   ```powershell
-   $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
-   New-OAW.ps1 -LocalAdministratorPassword $securePassword  
-   ```
+```powershell
+-LocalAdministratorPassword <Security.SecureString>
+[-AzureStackCertificatePath <String>]
+[-ERCSVMIP <String[]>]
+[-DNS <String[]>]
+[-DeploymentDataFilePath <String>]
+[-SkipNetworkConfiguration]
+[-UseDVMConfiguration]
+[-ImageFilePath <String>]
+[-VirtualMachineName <String>]
+[-VirtualMachineMemory <int64>]
+[-VirtualProcessorCount <int>]
+[-VirtualMachineDiffDiskPath <String>]
+[-PhysicalAdapterMACAddress <String>]
+[-VirtualSwitchName <String>]
+[-ReCreate]
+[-AsJob]
+[-Passthru]
+[-WhatIf]
+[-Confirm]
+[<CommonParameters>]
+```
+
+For example, to create the OAW VM on the HLH without any customization using Azure Stack Hub version 2005 or later, run the New-OAW.ps1 script with only the **-LocalAdministratorPassword** parameter:
+
+```powershell
+$securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
+New-OAW.ps1 -LocalAdministratorPassword $securePassword  
+```
 
 The following table lists the definition for each parameter.
 
