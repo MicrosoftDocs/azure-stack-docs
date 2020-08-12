@@ -5,8 +5,8 @@ author: mattbriggs
 ms.author: mabrigg
 ms.date: 5/27/2020
 ms.topic: conceptual
-ms.reviewer: xiaofmao
-ms.lastreviewed: 02/27/2019
+ms.reviewer: jiahan
+ms.lastreviewed: 08/12/2020
 
 # Intent: As an Azure Stack user, I want to get started with Azure Stack storage dev tools.
 # Keyword: azure stack storage development
