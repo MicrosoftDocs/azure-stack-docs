@@ -67,18 +67,44 @@ The following script prepares the virtual machine as the Operator Access Worksta
 1. Download OAW.zip and extract the files.
 1. Open an elevated PowerShell session.
 1. Navigate to the extracted contents of the OAW.zip file.
-1. Run the New-OAW.ps1 script. The following two parameter sets are available for New-OAW, with optional parameters shown in brackets:
+1. Run the New-OAW.ps1 script. For example, to create the OAW VM on the HLH without any customization using Azure Stack Hub version 2005 or later, run the New-OAW.ps1 script with only the **-LocalAdministratorPassword** parameter:
+
+   ```powershell
+   $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
+   New-OAW.ps1 -LocalAdministratorPassword $securePassword  
+   ```
+
+   To create the OAW VM on a host with network connection to Azure Stack Hub:
+
+   ```powershell
+   $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
+   New-OAW.ps1 -LocalAdministratorPassword $securePassword `
+      -IPAddress '192.168.0.20' `
+      -SubnetMask '255.255.255.0' `
+      -DefaultGateway '192.168.0.1' `
+      -DNS '192.168.0.10'
+   ```
+
+   To create the OAW VM on the HLH with DeploymentData.json:
+
+   ```powershell
+   $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
+   New-OAW.ps1 -LocalAdministratorPassword $securePassword `
+      -DeploymentDataFilePath 'D:\AzureStack\DeploymentData.json'
+   ```
+
+Two parameter sets are available for New-OAW. Optional parameters are shown in brackets.
 
 ```powershell
 New-OAW 
--LocalAdministratorPassword <Security.SecureString>
-[-AzureStackCertificatePath <String>]
-[-ERCSVMIP <String[]>]
-[-DNS <String[]>]
-[-DeploymentDataFilePath <String>]
-[-SkipNetworkConfiguration]
-[-UseDVMConfiguration]
-[-ImageFilePath <String>]
+-LocalAdministratorPassword <Security.SecureString> `
+[-AzureStackCertificatePath <String>] `
+[-ERCSVMIP <String[]>] `
+[-DNS <String[]>] `
+[-DeploymentDataFilePath <String>] `
+[-SkipNetworkConfiguration] `
+[-UseDVMConfiguration] `
+[-ImageFilePath <String>] `
 [-VirtualMachineName <String>]
 [-VirtualMachineMemory <int64>]
 [-VirtualProcessorCount <int>]
@@ -96,12 +122,12 @@ New-OAW
 ```powershell
 New-OAW
 -LocalAdministratorPassword <Security.SecureString>
+-IPAddress <String> `
+-SubnetMask <String> `
+-DefaultGateway <String> `
+-DNS <String[]>
 [-AzureStackCertificatePath <String>]
 [-ERCSVMIP <String[]>]
-[-DNS <String[]>]
-[-DeploymentDataFilePath <String>]
-[-SkipNetworkConfiguration]
-[-UseDVMConfiguration]
 [-ImageFilePath <String>]
 [-VirtualMachineName <String>]
 [-VirtualMachineMemory <int64>]
@@ -117,12 +143,7 @@ New-OAW
 [<CommonParameters>]
 ```
 
-For example, to create the OAW VM on the HLH without any customization using Azure Stack Hub version 2005 or later, run the New-OAW.ps1 script with only the **-LocalAdministratorPassword** parameter:
 
-```powershell
-$securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
-New-OAW.ps1 -LocalAdministratorPassword $securePassword  
-```
 
 The following table lists the definition for each parameter.
 
@@ -147,33 +168,6 @@ SkipNetworkConfiguration     | Optional | Skips network configuration for the vi
 | VirtualSwitchName          | Optional | The name of virtual switch that needs to be configured in Hyper-V for the virtual machine.<br>- If there is VMSwitch with the provided name, such VMSwitch will be selected.<br>- If there is only one VMSwitch with switch type External, value **DVMVirtualSwitch** can be used to select this VMSwitch without providing its name.<br>- If there is no VMSwitch with the provided name, a VMSwitch will be created with the provided name.<br> |
 | ReCreate                   | Optional | Removes and re-creates the virtual machine if there is already an existed virtual machine with the same name. |
 
- ### Examples
-
-To create the OAW VM on the HLH without any customization using Azure Stack Hub version 2005 or later, run the New-OAW.ps1 script with the following parameters:
-
-   ```powershell
-   $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
-   New-OAW.ps1 -LocalAdministratorPassword $securePassword   
-   ```
-
-To create the OAW VM on the HLH with DeploymentData.json, run the New-OAW.ps1 script with the following parameters:
-
-   ```powershell
-   $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
-   New-OAW.ps1 -LocalAdministratorPassword $securePassword `
-      -DeploymentDataFilePath 'D:\AzureStack\DeploymentData.json'
-   ```
-
-To create the OAW VM on a host with network connection to Azure Stack Hub, run the New-OAW.ps1 script with the following parameters:
-
-   ```powershell
-   $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
-   New-OAW.ps1 -LocalAdministratorPassword $securePassword `
-      -IPAddress '192.168.0.20' `
-      -SubnetMask '255.255.255.0' `
-      -DefaultGateway '192.168.0.1' `
-      -DNS '192.168.0.10'
-   ```
 
 ## Check the OAW VM version
 
