@@ -74,7 +74,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - There is a new option in the Azure Stack Hub admin portal for air-gapped/disconnected Azure Stack Hub customers, to save logs locally. You can store the logs in a local SMB share when Azure Stack Hub is disconnected from Azure.
 - The Azure Stack Hub admin portal now blocks certain operations if a system operation is already in progress. For example, if an update is in progress, it is not possible to add a new scale unit node.
 - This release provides more fabric consistency with Azure on VMs created pre-1910. In 1910, Microsoft announced that all newly created VMs will use the wireserver protocol, enabling customers to use the same WALA agent and Windows guest agent as Azure, making it easier to use Azure images on Azure Stack Hub. With this release, all VMs created earlier than 1910 are automatically migrated to use the wireserver protocol. This also brings more reliable VM creation, VM extension deployment, and improvements in steady state uptime.
-- Azure Stack Hub Storage now supports Azure Storage services APIs 2019-02-02. For Azure client libraries that is compatible with the new REST API version, see [Azure Stack Hub storage development tools](/azure-stack/user/azure-stack-storage-dev#azure-client-libraries).
+- Azure Stack Hub storage now supports Azure Storage services APIs version 2019-02-02. For Azure client libraries, that is compatible with the new REST API version. For more information, see [Azure Stack Hub storage development tools](../user/azure-stack-storage-dev.md#azure-client-libraries).
 - Azure Stack Hub now supports the latest version of [CreateUiDefinition (version 2)](/azure/azure-resource-manager/managed-applications/create-uidefinition-overview).
 
 ### Improvements
@@ -109,7 +109,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue in which creating a duplicate DNS zone caused the portal to hang. It should now show an appropriate error.
 - Fixed an issue in which **Get-AzureStackLogs** was not collecting the required logs to troubleshoot networking issues. 
 - Fixed an issue in which the portal allowed fewer NICs to be attached than what it actually allows. 
-- Fixed code integrity policy to not emit violation events for certain internal software. This reduces noice in code integrity violation events emitted via syslog client.
+- Fixed code integrity policy to not emit violation events for certain internal software. This reduces noise in code integrity violation events emitted via syslog client.
 - Fixed **Set-TLSPolicy** cmdlet to enforce new policy without requiring restart of the https service or the reboot of the host.
 - Fixed an issue in which using a Linux NTP server erroneously generates alerts in the administration portal.  
 - Fixed an issue where failover of Backup Controller service instance resulted in automatic backups getting disabled.
