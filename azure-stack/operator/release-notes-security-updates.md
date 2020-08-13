@@ -19,6 +19,15 @@ ms.lastreviewed: 08/11/2020
 
 This article lists all the security updates in the last three updates of Azure Stack Hub. This information is provided for reference purposes only.
 
+::: moniker range="azs-2008"
+## 2008 update
+
+Because of the cumulative nature of Windows updates, this update contains the security payloads for the previous months. This list of CVEs reflects the security payloads since the last full update.
+
+For more information about these vulnerabilities, click on the links below.
+
+::: moniker-end
+
 ::: moniker range="azs-2005"
 ## 2005 update
 
