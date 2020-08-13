@@ -4,10 +4,10 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 08/13/2020
 ms.author: sethm
 ms.reviewer: sranthar
-ms.lastreviewed: 08/10/2020
+ms.lastreviewed: 08/13/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -68,9 +68,9 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 #### DenyAllOutbound rule cannot be created
 
-- Applicable: This issue applies to all supported releases. 
-- Cause: An explicit **DenyAllOutbound** rule to Internet cannot be created in an NSG during VM creation as this will prevent the communication required for the VM deployment to complete.
-- Remediation: Allow outbound traffic to Internet during VM creation, and modify the NSG to block the required traffic after VM creation is complete. 
+- Applicable: This issue applies to all supported releases.
+- Cause: An explicit **DenyAllOutbound** rule to the internet cannot be created in an NSG during VM creation as this will prevent the communication required for the VM deployment to complete.
+- Remediation: Allow outbound traffic to the internet during VM creation, and modify the NSG to block the required traffic after VM creation is complete.
 - Occurrence: Common
 
 ### Virtual Network Gateway
@@ -88,7 +88,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
   
 ### Load Balancer
 
-#### Load Balancer directing traffic to one backend VM in specific scenarios 
+#### Load Balancer directing traffic to one backend VM in specific scenarios
 
 - Applicable: This issue applies to all supported releases. 
 - Cause: When enabling **Session Affinity** on a load balancer, the 2 tuple hash utilizes the PA IP (Physical Address IP) instead of the private IPs assigned to the VMs. In scenarios where traffic directed to the load balancer arrives through a VPN, or if all the client VMs (source IPs) reside on the same node and Session Affinity is enabled, all traffic is directed to one backend VM.
@@ -98,9 +98,8 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 - Applicable: This issue applies to all supported releases.
 - Cause: The **IdleTimeoutInMinutes** value for a public IP that is associated to a load balancer cannot be changed. The operation puts the public IP into a failed state.
-- Remediation: To bring the public IP back into a successful state, change the **IdleTimeoutInMinutes** value on the load balancer rule that references the public IP back to the original value (the default value is 4 minutes).
+- Remediation: To bring the public IP back into a successful state, change the **IdleTimeoutInMinutes** value on the load balancer rule that references the public IP back to the original value (the default is 4 minutes).
 - Occurrence: Common
-
 
 ## Compute
 
@@ -191,9 +190,9 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ### DenyAllOutbound rule cannot be created
 
-- Applicable: This issue applies to all supported releases. 
-- Cause: An explicit **DenyAllOutbound** rule to Internet cannot be created in an NSG during VM creation as this will prevent the communication required for the VM deployment to complete.
-- Remediation: Allow outbound traffic to Internet during VM creation, and modify the NSG to block the required traffic after VM creation is complete. 
+- Applicable: This issue applies to all supported releases.
+- Cause: An explicit **DenyAllOutbound** rule to the internet cannot be created in an NSG during VM creation as this will prevent the communication required for the VM deployment to complete.
+- Remediation: Allow outbound traffic to the internet during VM creation, and modify the NSG to block the required traffic after VM creation is complete.
 - Occurrence: Common
 
 ### ICMP protocol not supported for NSG rules
