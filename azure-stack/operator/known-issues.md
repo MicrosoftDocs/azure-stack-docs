@@ -4,10 +4,10 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 08/13/2020
 ms.author: sethm
 ms.reviewer: sranthar
-ms.lastreviewed: 08/10/2020
+ms.lastreviewed: 08/13/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -59,23 +59,18 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ### Network Security Groups
 
-- Applicable: This issue applies to all supported releases.
-- Cause: An explicit **DenyAllOutbound** rule cannot be created in an NSG as this will prevent all internal communication to infrastructure needed for the VM deployment to complete.
-- Occurrence: Common
-
-### Cannot delete an NSG if NICs not attached to running VM
+#### Cannot delete an NSG if NICs not attached to running VM
 
 - Applicable: This issue applies to all supported releases.
 - Cause: When disassociating an NSG and a NIC that is not attached to a running VM, the update (PUT) operation for that object fails at the network controller layer. The NSG will be updated at the network resource provider layer, but not on the network controller, so the NSG moves to a failed state.
 - Remediation: Attach the NICs associated to the NSG that needs to be removed with running VMs, and disassociate the NSG or remove all the NICs that were associated with the NSG.
 - Occurrence: Common
 
-### Network interface
-
-#### Primary network interface
+#### DenyAllOutbound rule cannot be created
 
 - Applicable: This issue applies to all supported releases.
-- Cause: The primary NIC of a VM cannot be changed. Deleting or detaching the primary NIC results in issues when starting up the VM.
+- Cause: An explicit **DenyAllOutbound** rule to the internet cannot be created in an NSG during VM creation as this will prevent the communication required for the VM deployment to complete.
+- Remediation: Allow outbound traffic to the internet during VM creation, and modify the NSG to block the required traffic after VM creation is complete.
 - Occurrence: Common
 
 ### Virtual Network Gateway
@@ -90,6 +85,21 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
   - [Configure BGP on Azure Stack Hub](../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
   - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
   - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
+  
+### Load Balancer
+
+#### Load Balancer directing traffic to one backend VM in specific scenarios
+
+- Applicable: This issue applies to all supported releases. 
+- Cause: When enabling **Session Affinity** on a load balancer, the 2 tuple hash utilizes the PA IP (Physical Address IP) instead of the private IPs assigned to the VMs. In scenarios where traffic directed to the load balancer arrives through a VPN, or if all the client VMs (source IPs) reside on the same node and Session Affinity is enabled, all traffic is directed to one backend VM.
+- Occurrence: Common
+
+#### Public IP
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The **IdleTimeoutInMinutes** value for a public IP that is associated to a load balancer cannot be changed. The operation puts the public IP into a failed state.
+- Remediation: To bring the public IP back into a successful state, change the **IdleTimeoutInMinutes** value on the load balancer rule that references the public IP back to the original value (the default is 4 minutes).
+- Occurrence: Common
 
 ## Compute
 
@@ -180,8 +190,9 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ### DenyAllOutbound rule cannot be created
 
-- Applicable: This issue applies to all supported releases. 
-- Cause: An explicit **DenyAllOutbound** rule cannot be created in an NSG as this will prevent all internal communication to infrastructure needed for the VM deployment to complete.
+- Applicable: This issue applies to all supported releases.
+- Cause: An explicit **DenyAllOutbound** rule to the internet cannot be created in an NSG during VM creation as this will prevent the communication required for the VM deployment to complete.
+- Remediation: Allow outbound traffic to the internet during VM creation, and modify the NSG to block the required traffic after VM creation is complete.
 - Occurrence: Common
 
 ### ICMP protocol not supported for NSG rules
