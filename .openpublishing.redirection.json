@@ -12,7 +12,7 @@
     },    
     { 
       "source_path": "azure-stack/operator/operator-access-workstation.md", 
-      "redirect_url": "azure-stack/operator/azure-stack-manage-basics", 
+      "redirect_url": "/azure-stack/operator/azure-stack-manage-basics", 
       "redirect_document_id": false
     },    
     { 
