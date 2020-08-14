@@ -574,6 +574,6 @@ After the installation of this update, install any applicable hotfixes. For more
 ## 1802 archived release notes
 ::: moniker-end
 
-::: moniker range="<azs-1910"
+::: moniker range="<azs-1908"
 You can access [older versions of Azure Stack Hub release notes on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived documents are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end
