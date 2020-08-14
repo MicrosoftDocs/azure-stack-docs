@@ -130,7 +130,7 @@ For rotation of external secrets, complete these additional prerequisites:
     > + PSComputerName        : xxx.xxx.xxx.xxx
     > ```
 
-7. Place the new set of replacement external certificates created in step #2, in the **\Certificates\\\<IdentityProvider>** directory. Be sure to follow the `cert.<regionName>.<externalFQDN>` format for \<CertName\>. 
+7. Place the new set of replacement external certificates created in step #2, in the **\Certificates\\\<IdentityProvider>** directory created in step #6. Be sure to follow the `cert.<regionName>.<externalFQDN>` format for \<CertName\>. 
 
     Here's an example of a folder structure for the Azure AD Identity Provider:
     ```powershell
