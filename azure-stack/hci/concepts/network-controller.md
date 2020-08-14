@@ -1,39 +1,40 @@
 ---
-title: Change languages in Azure Stack HCI
-description: This topic provides guidance on how to change languages in the Azure Stack HCI operating system.
+title: Plan to deploy the Network Controller
+description: This topic covers how to plan to deploy the Network Controller via Windows Admin Center on a set of virtual machines (VMs) running the Azure Stack HCI operating system.
 author: JohnCobb1
 ms.author: v-johcob
-ms.topic: how-to
-ms.date: 06/24/2020
+ms.topic: conceptual
+ms.date: 08/14/2020
 ---
 
-# Azure Stack HCI change languages
+# Plan to deploy the Network Controller
 
 >Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-This topic provides guidance on how to change languages in the Azure Stack HCI operating system.
+This topic covers how to plan to deploy the Network Controller via Windows Admin Center on a set of virtual machines (VMs) running the Azure Stack HCI operating system. The Network Controller is a highly available and scalable server role that requires a minimum of three VMs to provide high availability on your network.
 
-## Drive types
+
+
+
+## Network Controller requirements for Azure Stack HCI
 TBD
 
-## Built-in cache
+## Configuration requirements
 TBD
 
 <!---Example note format.--->
    >[!NOTE]
    > TBD.
 
-<!---Example figure format--->
+<!---Example figure format. Add in lightbox. See Deploy OS topic.--->
 <!---:::image type="content" source="media/attach-gpu-to-linux-vm/vlc-player.png" alt-text="VLC Player Screenshot":::--->
 
-### Cache
-TBD
-
-
 ## Next steps
-For more information, see also:
-<!---Placeholders for format examples. Replace all before initial topic review.--->
+Now you’re ready to deploy the Network Controller on VMs running the Azure Stack HCI OS.
 
-- [Azure Stack HCI overview](../overview.md)
-- [Understand the cache in Azure Stack HCI](cache.md)
-- [Storage Spaces Direct hardware requirements](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements)
+To learn more, see:
+- [Create an Azure Stack HCI cluster](../deploy/create-cluster.md)
+
+## See also
+- [Network Controller](/windows-server/networking/sdn/technologies/network-controller/network-controller)
+- [Network Controller High Availability](/windows-server/networking/sdn/technologies/network-controller/network-controller-high-availability)
