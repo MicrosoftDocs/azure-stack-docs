@@ -12,8 +12,6 @@ ms.lastreviewed: 08/15/2020
 
 # How to do capacity planning for Event Hubs on Azure Stack Hub
 
-[!INCLUDE [preview-banner](../includes/event-hubs-preview.md)]
-
 As an Operator you manage your Azure Stack Hub capacity using [quotas](azure-stack-quota-types.md) on resources. You control Event Hubs resource consumption by setting quotas on the maximum number of cores use by Event Hubs clusters. Event Hubs clusters are created by users when they deploy an Event Hubs resource. There are also various resource consumption requirements for the resource provider, which are covered in this article.
 
 ## Cluster resource consumption

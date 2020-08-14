@@ -12,8 +12,6 @@ ms.lastreviewed: 08/15/2020
 
 # Quickstart: Create an Event Hubs cluster using the Azure Stack Hub portal
 
-[!INCLUDE [preview-banner](../includes/event-hubs-preview.md)]
-
 In this quickstart, you learn how to create an Event Hubs cluster, using the Azure Stack Hub user portal. 
 
 Event Hubs clusters offer single-tenant deployments for the most demanding streaming needs. An Event Hubs cluster can ingress millions of events per second with guaranteed capacity and subsecond latency. Event Hubs clusters includes all popular features, and close parity with features offered by the Azure Event Hubs edition.
