@@ -130,11 +130,7 @@ For rotation of external secrets, complete these additional prerequisites:
     > + PSComputerName        : xxx.xxx.xxx.xxx
     > ```
 
-## Rotate external secrets
-
-Complete the following steps to rotate external secrets:
-
-1. Place the new set of replacement external certificates in the **\Certificates\\\<IdentityProvider>** directory created in the prerequisites section. Be sure to follow the `cert.<regionName>.<externalFQDN>` format for \<CertName\>. 
+7. Place the new set of replacement external certificates created in step #2, in the **\Certificates\\\<IdentityProvider>** directory. Be sure to follow the `cert.<regionName>.<externalFQDN>` format for \<CertName\>. 
 
     Here's an example of a folder structure for the Azure AD Identity Provider:
     ```powershell
@@ -177,7 +173,11 @@ Complete the following steps to rotate external secrets:
 
     ```
 
-2. Use the following PowerShell script to rotate the secrets. The script requires access to a Privileged EndPoint (PEP) session. The PEP is accessed through a remote PowerShell session on the virtual machine (VM) that hosts the PEP. If you're using an integrated system, there are three instances of the PEP, each running inside a VM (Prefix-ERCS01, Prefix-ERCS02, or Prefix-ERCS03) on different hosts. If you're using the ASDK, this VM is named AzS-ERCS01. Update the `<placeholder>` values before running:
+## Rotate external secrets
+
+Complete the following steps to rotate external secrets:
+
+1. Use the following PowerShell script to rotate the secrets. The script requires access to a Privileged EndPoint (PEP) session. The PEP is accessed through a remote PowerShell session on the virtual machine (VM) that hosts the PEP. If you're using an integrated system, there are three instances of the PEP, each running inside a VM (Prefix-ERCS01, Prefix-ERCS02, or Prefix-ERCS03) on different hosts. If you're using the ASDK, this VM is named AzS-ERCS01. Update the `<placeholder>` values before running:
 
     ```powershell
     # Create a PEP Session
@@ -206,7 +206,7 @@ Complete the following steps to rotate external secrets:
         - `-PathAccessCredential`: The PSCredential object for credentials to the share.
         - `-CertificatePassword`: A secure string of the password used for all of the pfx certificate files created.
 
-3. External secret rotation takes approximately one hour. After successful completion, your console will display `ActionPlanInstanceID ... CurrentStatus: Completed`, followed by a `DONE`. Remove your certificates from the share created in the prerequisites section and store them in their secure backup location.
+2. External secret rotation takes approximately one hour. After successful completion, your console will display `ActionPlanInstanceID ... CurrentStatus: Completed`, followed by a `DONE`. Remove your certificates from the share created in the prerequisites section and store them in their secure backup location.
 
     > [!Note]
     > If secret rotation fails, follow the instructions in the error message and re-run `Start-SecretRotation` with the `-ReRun` parameter.

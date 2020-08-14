@@ -12,8 +12,6 @@ ms.lastreviewed: 12/09/2019
 
 # How to manage Event Hubs on Azure Stack Hub
 
-[!INCLUDE [preview-banner](../includes/event-hubs-preview.md)]
-
 The Event Hubs management experience allows you to control the service and visualize its status and alerts. 
 
 ## Overview
