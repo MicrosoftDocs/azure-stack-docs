@@ -18,9 +18,9 @@ This topic covers how to plan to deploy the Network Controller via Windows Admin
 
 ## Network Controller requirements for Azure Stack HCI
 The following is required to deploy the Network Controller:
-- A VHD for the Azure Stack HCI OS to use to create the Network Controller VMs.
+- A VHD for the Azure Stack HCI operating system to create the Network Controller VMs.
 - A domain name and credentials to join the Network Controller VMs to a domain.
-- A physical network configuration that matches one of the two following topologies.
+- A physical network configuration that matches one of the two topology options in this section.
 
     Windows Admin Center creates the configuration within the Hyper-V Host. However, the Management Network must be connected to the host physical adapters according to one of the following two options:
 
