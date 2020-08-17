@@ -22,6 +22,8 @@ Before you can complete this quickstart, you must ensure the Event Hubs service 
 
 Once an offer is available, your administrator can create or update your subscription to include Event Hubs. Alternatively, you can [subscribe to the new offer and create your own subscription](azure-stack-subscribe-services.md).
 
+Your account must be assigned at least [Contributor permissions](/azure/role-based-access-control/rbac-and-directory-admin-roles#azure-roles) on the resource group you're using, to create a new cluster.
+
 ## Overview
 
 Event Hubs clusters are created by specifying Capacity Units (CUs). A CU is a pre-allocated amount of CPU, storage, and memory resources. Event Hubs clusters are billed by CPU/hr. The number of cores (CPUs) used by a cluster is displayed when selecting the number of CUs (cluster size) during the cluster creation experience. For more detailed information on cluster resource usage, see [How to do capacity planning for Event Hubs on Azure Stack Hub](../operator/event-hubs-rp-capacity-planning.md). 
@@ -44,7 +46,7 @@ An Event Hubs cluster provides a unique scoping container in which you can creat
    - **Subscription**: Select the subscription in which you want to create the cluster. 
    - **Resource group**: Create/Select the resource group in which you want to create the cluster. 
    - **Location**: You can leave the defaulted current location, or change to another.
-   - **Cluster Capacity**: For this quickstart leave the default of 1 CU.
+   - **Cluster Capacity**: For this quickstart, leave the default of 1 CU.
       [!INCLUDE [event-hubs-scale](../includes/event-hubs-scale.md)]
    - Select the **Next: Tags >** button at the bottom of the page to continue. You may have to wait for the system to fully provision resources. 
 
