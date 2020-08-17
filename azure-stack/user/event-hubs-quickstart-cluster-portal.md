@@ -22,7 +22,7 @@ Before you can complete this quickstart, you must ensure the Event Hubs service 
 
 Once an offer is available, your administrator can create or update your subscription to include Event Hubs. Alternatively, you can [subscribe to the new offer and create your own subscription](azure-stack-subscribe-services.md).
 
-Your account must be assigned at least [Contributor permissions](/azure/role-based-access-control/rbac-and-directory-admin-roles#azure-roles) on the resource group you're using, to create a new cluster.
+Your account must be assigned at least [Contributor permissions](/azure/role-based-access-control/rbac-and-directory-admin-roles#azure-roles) at the resource group scope or higher, to create a new cluster.
 
 ## Overview
 
