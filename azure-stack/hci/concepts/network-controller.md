@@ -26,14 +26,23 @@ The following is required to deploy the Network Controller:
 
     **Option 1**: A single physical switch connects the Management Network to a physical management adapter on the host, as well as a trunk on the physical adapters that the virtual switch uses:
 
-    :::image type="content" source="../media/network-controller/topology-option-1.png" alt-text="Option 1 to create a physical network for the Network Controller." lightbox="../media/network-controller/topology-option-1.png":::
+    :::image type="content" source="./media/network-controller/topology-option-1.png" alt-text="Option 1 to create a physical network for the Network Controller." lightbox="./media/network-controller/topology-option-1.png":::
 
+    **Option 2**: If the Management Network is physically separated from the workload networks, then two virtual switches are required:
+
+    :::image type="content" source="./media/network-controller/topology-option-2.png" alt-text="Option 2 to create a physical network for the Network Controller." lightbox="./media/network-controller/topology-option-1.png":::
+
+- Management Network information that the Network Controller uses to communicate with Windows Admin Center and the Hyper-V hosts.
+- Either DHCP-based or static network-based addressing for the Network Controller VMs.
+- The Representational State Transfer (REST) fully qualified domain name (FQDN) for the Network Controller that the management clients use to communicate with the Network Controller.
+
+   >[!NOTE]
+   > Windows Admin Center currently does not support Network Controller authentication, either for communication with REST clients or communication between the Network Controller VMs.
 
 ## Configuration requirements
 TBD
 
-<!---Example figure format. Add in lightbox. See Deploy OS topic.--->
-<!---:::image type="content" source="media/attach-gpu-to-linux-vm/vlc-player.png" alt-text="VLC Player Screenshot":::--->
+
 
 ## Next steps
 Now you’re ready to deploy the Network Controller on VMs running the Azure Stack HCI OS.
