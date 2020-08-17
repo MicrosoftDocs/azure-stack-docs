@@ -41,6 +41,10 @@ There's a new consideration for accurately planning Azure Stack Hub capacity. Wi
 
 If the VM scale limit is reached, the following error codes are returned as a result: `VMsPerScaleUnitLimitExceeded`, `VMsPerScaleUnitNodeLimitExceeded`.
 
+## Consideration for batch deployment of VMs
+
+In releases prior to and including 2002, 2-5 VMs per batch with 5 mins gap in between batches provided reliable VM deployments to reach a scale of 700 VMs. With the 2005 version of Azure Stack Hub, we are able to reliably provision VMs at batch sizes of 50 with 5 mins gap in between batch deployments.
+
 ## Considerations for deallocation
 
 When a VM is in the _deallocated_ state, memory resources aren't being used. This allows others VMs to be placed in the system.
