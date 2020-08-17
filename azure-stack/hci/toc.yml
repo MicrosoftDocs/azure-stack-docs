@@ -26,6 +26,8 @@
     href: deploy/create-cluster-powershell.md
   - name: Set up a cluster witness
     href: deploy/witness.md
+  - name: Deploy network controller with PowerShell
+    href: deploy/network-controller-powershell.md
   - name: Register with Azure
     href: deploy/register-with-azure.md
   - name: Validate the cluster
