@@ -11,7 +11,7 @@ ms.date: 08/18/2020
 
 # SDN in Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to Azure Stack HCI, version 20H2; Windows Server 2019
 
 Software Defined Networking (SDN) provides a way to centrally configure and manage networks and network services such as switching, routing, and load balancing in your data center. You can use SDN to dynamically create, secure, and connect your network to meet the evolving needs of your apps. Operating global-scale datacenter networks for services like Microsoft Azure, which efficiently performs tens of thousands of network changes every day, is possible only because of SDN.
 
@@ -30,6 +30,8 @@ Deploying Network Controller enables the following functionalities:
 - Attach virtual appliances to your virtual networks.
 - Configure Quality of Service (QoS) policies for VMs attached to virtual networks or traditional VLAN-based networks.
 
+We recommend [deploying the Network Controller using PowerShell](../deploy/network-controller-powershell.md) after creating an Azure Stack HCI cluster.
+
 ## Software Load Balancing
 
 [Software Load Balancing](/windows-server/networking/sdn/technologies/network-function-virtualization/software-load-balancing-for-sdn) (SLB) can be used to evenly distribute customer network traffic among multiple VMs. It enables multiple servers to host the same workload, providing high availability and scalability. SLB uses [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) to advertise virtual IP addresses to the physical network.
@@ -44,13 +46,8 @@ Gateways are used for routing network traffic between a virtual network and anot
 
 Gateways use [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) to advertise GRE endpoints and establish point-to-point connections. SDN deployment creates a default gateway pool that supports all connection types. Within this pool, you can specify how many gateways are reserved on standby in case an active gateway fails.
 
-## Deploying SDN on Azure Stack HCI
-
-We recommend deploying Network Controller as part of creating the Azure Stack HCI cluster, then you can add additional SDN services later. The create cluster wizard in Windows Admin Center will create and configure the VMs that will host your SDN infrastructure. You'll need to provide information about the management network the Network Controller will use for communication. You can then choose to deploy Software Load Balancing and Gateways.
-
 ## Next steps
 
 For related information, see also:
 
 - [SDN in Windows Server overview](/windows-server/networking/sdn/software-defined-networking)
-- [Deploy the Network Controller using PowerShell](../deploy/network-controller-powershell.md)
