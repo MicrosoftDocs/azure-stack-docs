@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/13/2020
+ms.date: 08/18/2020
 ---
 
 # SDN in Azure Stack HCI
@@ -17,7 +17,7 @@ Software Defined Networking (SDN) provides a way to centrally configure and mana
 
 Virtual network elements such as [Hyper-V Virtual Switch](/windows-server/virtualization/hyper-v-virtual-switch/hyper-v-virtual-switch), [Hyper-V Network Virtualization](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyper-v-network-virtualization), [Software Load Balancing](/windows-server/networking/sdn/technologies/network-function-virtualization/software-load-balancing-for-sdn), and [RAS Gateway](/windows-server/networking/sdn/technologies/network-function-virtualization/ras-gateway-for-sdn) are designed to be integral elements of your SDN infrastructure. You can also use your existing SDN-compatible devices to achieve deeper integration between your workloads running in virtual networks and the physical network.
 
-Azure Stack HCI makes it easy to deploy SDN components via Windows Admin Center or PowerShell. There are three major SDN components on Azure Stack HCI, and you can choose which you want to deploy: Network Controller, Software Load Balancer, and Gateway.
+There are three major SDN components on Azure Stack HCI, and you can choose which you want to deploy: Network Controller, Software Load Balancer, and Gateway.
 
 ## Network Controller
 
@@ -53,6 +53,4 @@ We recommend deploying Network Controller as part of creating the Azure Stack HC
 For related information, see also:
 
 - [SDN in Windows Server overview](/windows-server/networking/sdn/software-defined-networking)
-- Plan to deploy the Network Controller
-- Deploy the Network Controller using Windows Admin Center
-- Deploy the Network Controller using PowerShell
+- [Deploy the Network Controller using PowerShell](../deploy/network-controller-powershell.md)
