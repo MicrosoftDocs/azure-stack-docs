@@ -30,6 +30,8 @@
     href: deploy/register-with-azure.md
   - name: Validate the cluster
     href: deploy/validate.md
+  - name: Deploy Network Controller
+    href: deploy/network-controller-powershell.md
 - name: Manage
   items:
   - name: Manage VMs
