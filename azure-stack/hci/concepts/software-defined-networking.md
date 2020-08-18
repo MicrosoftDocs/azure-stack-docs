@@ -1,5 +1,5 @@
 ---
-title: Software Defined Networking (SDN) in Azure Stack HCI
+title: Software defined networking (SDN) in Azure Stack HCI
 description: An overview of SDN topics that apply to features in Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
@@ -13,7 +13,7 @@ ms.date: 08/18/2020
 
 > Applies to Azure Stack HCI, version 20H2; Windows Server 2019
 
-Software Defined Networking (SDN) provides a way to centrally configure and manage networks and network services such as switching, routing, and load balancing in your data center. You can use SDN to dynamically create, secure, and connect your network to meet the evolving needs of your apps. Operating global-scale datacenter networks for services like Microsoft Azure, which efficiently performs tens of thousands of network changes every day, is possible only because of SDN.
+Software defined networking (SDN) provides a way to centrally configure and manage networks and network services such as switching, routing, and load balancing in your data center. You can use SDN to dynamically create, secure, and connect your network to meet the evolving needs of your apps. Operating global-scale datacenter networks for services like Microsoft Azure, which efficiently performs tens of thousands of network changes every day, is possible only because of SDN.
 
 Virtual network elements such as [Hyper-V Virtual Switch](/windows-server/virtualization/hyper-v-virtual-switch/hyper-v-virtual-switch), [Hyper-V Network Virtualization](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyper-v-network-virtualization), [Software Load Balancing](/windows-server/networking/sdn/technologies/network-function-virtualization/software-load-balancing-for-sdn), and [RAS Gateway](/windows-server/networking/sdn/technologies/network-function-virtualization/ras-gateway-for-sdn) are designed to be integral elements of your SDN infrastructure. You can also use your existing SDN-compatible devices to achieve deeper integration between your workloads running in virtual networks and the physical network.
 
@@ -40,7 +40,7 @@ We recommend [deploying the Network Controller using PowerShell](../deploy/netwo
 
 Gateways are used for routing network traffic between a virtual network and another network, either local or remote. Gateways can be used to:
 
-- Create secure site-to-site IPsec connections between SDN virtual networks and external customer networks over the Internet.
+- Create secure site-to-site IPsec connections between SDN virtual networks and external customer networks over the internet.
 - Create Generic Routing Encapsulation (GRE) connections between SDN virtual networks and external networks. The difference between site-to-site connections and GRE connections is that the latter is not an encrypted connection. For more information about GRE connectivity scenarios, see [GRE Tunneling in Windows Server](/windows-server/remote/remote-access/ras-gateway/gre-tunneling-windows-server).
 - Create Layer 3 connections between SDN virtual networks and external networks. In this case, the SDN gateway simply acts as a router between your virtual network and the external network.
 
