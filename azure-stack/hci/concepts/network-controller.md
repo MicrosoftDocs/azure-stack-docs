@@ -22,17 +22,17 @@ The following is required to deploy the Network Controller:
 - A domain name and credentials to join the Network Controller VMs to a domain.
 - A physical network configuration that matches one of the two topology options in this section.
 
-    Windows Admin Center creates the configuration within the Hyper-V Host. However, the Management Network must be connected to the host physical adapters according to one of the following two options:
+    Windows Admin Center creates the configuration within the Hyper-V host. However, the management network must be connected to the host physical adapters according to one of the following two options:
 
-    **Option 1**: A single physical switch connects the Management Network to a physical management adapter on the host, as well as a trunk on the physical adapters that the virtual switch uses:
+    **Option 1**: A single physical switch connects the management network to a physical management adapter on the host, as well as a trunk on the physical adapters that the virtual switch uses:
 
     :::image type="content" source="./media/network-controller/topology-option-1.png" alt-text="Option 1 to create a physical network for the Network Controller." lightbox="./media/network-controller/topology-option-1.png":::
 
-    **Option 2**: If the Management Network is physically separated from the workload networks, then two virtual switches are required:
+    **Option 2**: If the management network is physically separated from the workload networks, then two virtual switches are required:
 
     :::image type="content" source="./media/network-controller/topology-option-2.png" alt-text="Option 2 to create a physical network for the Network Controller." lightbox="./media/network-controller/topology-option-1.png":::
 
-- Management Network information that the Network Controller uses to communicate with Windows Admin Center and the Hyper-V hosts.
+- Management network information that the Network Controller uses to communicate with Windows Admin Center and the Hyper-V hosts.
 - Either DHCP-based or static network-based addressing for the Network Controller VMs.
 - The Representational State Transfer (REST) fully qualified domain name (FQDN) for the Network Controller that the management clients use to communicate with the Network Controller.
 
