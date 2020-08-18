@@ -17,7 +17,21 @@ This topic explains how to connect to the Azure Stack HCI portion of the Azure p
 
 ## View your clusters in the Azure portal
 
-Log into the Azure portal. If you've registered your cluster, you'll see a new resource representing your cluster. You can now use the Azure portal to manage and monitor your cluster even though your physical infrastructure is hosted on premises.
+Log into the [Azure portal](https://portal.azure.com). If you've already [registered your cluster with Azure](../deploy/register-with-azure.md), you'll see a new resource representing your cluster. 
+
+You can now use the Azure portal to manage and monitor your cluster even though your physical infrastructure is hosted on premises.
+
+## Compare Azure portal and Windows Admin Center
+
+Many customers will wonder whether the Azure portal or Windows Admin Center is better suited to various tasks. The following table helps you determine which is right for your needs. Together, they offer a consistent design and are useful in complementary scenarios.
+
+| Windows Admin Center | Azure portal |
+| --------------- | --------------- |
+| Edge-local hardware and virtual machine (VM) management, always available | At-scale management, additional features |
+| Manage Azure Stack HCI infrastructure | Manage other Azure services |
+| Monitoring and updating for individual clusters | Monitoring and updating at scale |
+| Manual VM provisioning and management | Self-service VMs from Azure Arc |
+| View detailed performance, capacity, and logs | View billing information |
 
 ## Next steps
 
