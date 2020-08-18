@@ -100,6 +100,8 @@
     href: concepts/choose-drives.md
   - name: Plan volumes
     href: concepts/plan-volumes.md
+  - name: Software defined networking
+    href: concepts/software-defined-networking.md
   - name: Understand the cache
     href: concepts/cache.md
   - name: Fault tolerance and storage efficiency
