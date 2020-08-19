@@ -8,34 +8,37 @@ ms.reviewer: thoroet
 ms.lastreviewed: 08/04/2020
 ---
 
-1. Open the **Azure Stack User Portal** link  and login using the **aadUserName** user
+1. Open the **Azure Stack User Portal** link  and sign in using the **aadUserName** user
 
-2. Click the storage account used to host the VM image copied above and select the container which includes that VHD.
+2. select the storage account used to host the VM image copied above and select the container which includes that VHD.
 
 3. Set the container access level to public
 
-  > [!Note]  this is only for simplifying the exercise.
+    > [!Note]  
+    > This is only for simplifying the exercise.
 
-4. Click on the container and on the VHD copied - save the **URL** to the VHD
+4. select the container and on the VHD copied - save the **URL** to the VHD
 
-  > [!Note]  this will be used later in the exercise
+    > [!Note]  
+    > This will be used later in the exercise
 
-5. Open the **Azure Stack Admin Portal** link  and login using the **aadUserName** user
+5. Open the **Azure Stack Admin Portal** link  and sign in using the **aadUserName** user
 
-6. Click on **Region Management**, select **Compute**, click on **VM Images**, and select **Add**
+6. select **Region Management**, select **Compute**, select **VM Images**, and select **Add**
 
 7. Complete the required fields with any values you wish and specify the OS data disk URI as the path to the VHD image copied earlier
 
 
 8. The image will be creating which includes the copy of the VHD
 
-  > [!Note]  this might take a few minutes - make sure the image has a "succeeded" status before creating the VM (you can continue with the next steps to create the template, just don't start the VM creation before the VM image has a "succeeded" status)
+    > [!Note]  
+    > This might take a few minutes - make sure the image has a "succeeded" status before creating the VM (you can continue with the next steps to create the template, just don't start the VM creation before the VM image has a "succeeded" status)
 
-9. Open the Azure Stack User Portal link  and login using the aadUserName user
+9. Open the Azure Stack User Portal link  and sign in.
 
-10. Click on **Create a resource** and select **Template deployment**
+10. select **Create a resource** and select **Template deployment**
 
-11. Click on **Template**, select **Quickstart templates**, and select the "101-vm-windows-create" template
+11. select **Template**, select **Quickstart templates**, and select the "101-vm-windows-create" template
 
 12. Edit the template to use the **Publisher**, **Offer**, and **SKU** used to create the VM image earlier in the exercise
 

@@ -8,9 +8,9 @@ ms.reviewer: thoroet
 ms.lastreviewed: 08/04/2020
 ---
 
-For this next step, you will need an VHD which is sysprep'ed and prepared to be used as an image on Azure Stack. [There are multiple ways of creating this image](https://docs.microsoft.com/azure-stack/operator/azure-stack-add-vm-image), including using Azure VMs. If you are using Azure VMs, you can upload the syspreped VHD in a storage account and use it as below (if you are not, consider uploading the vhd on the ASDK on a storage account)
+For this next step, you will need a VHD which is sysprep'ed and prepared to be used as an image on Azure Stack. [There are multiple ways of creating this image](https://docs.microsoft.com/azure-stack/operator/azure-stack-add-vm-image), including using Azure VMs. If you are using Azure VMs, you can upload the syspreped VHD in a storage account and use it as below (if you are not, consider uploading the vhd on the ASDK on a storage account)
 
-The following steps assume you have used an Azure VM and uploaded the prepared VHD in a public storage account names "storageaccount", using a container named "vhdimages"
+The following steps assume you have used an Azure VM and uploaded the prepared VHD in a public storage account name "storageaccount", using a container named "vhdimages"
 
 In the ASDK, using AzCopy in a PowerShell window, download the image.
 
@@ -23,7 +23,7 @@ In the ASDK, using AzCopy in a PowerShell window, download the image.
 
 Create an image used in a single subscription:
 
-1. Open the **Azure Stack User Portal** link  and login using the **aadUserName** user
+1. Open the **Azure Stack User Portal** link  and sign in using the **aadUserName** user
 
 2. Create a new **Storage Account** and a new **Container**
 
@@ -33,14 +33,14 @@ Create an image used in a single subscription:
 
 4. Using AzCopy, upload the downloaded VHD into the new Container in the Storage Account
 
-      > [!Note] Make sure to run:
+    > [!Note] Make sure to run:
 
     ```powershell
       $env:AZCOPY_DEFAULT_SERVICE_API_VERSION="2017-11-09"
     ```
-
+      
       In the PowerShell window in order to enable azcopy to upload the file to AzStackHub
-
+      
       Also make sure to add the "container" name in the SAS key created above (highlighted in the example on the right)
 
 5. Click on **All Services**, **Images**, and create a new **Image**
@@ -49,4 +49,5 @@ Create an image used in a single subscription:
 
 7. Once the image is created, use it to create a new VM (complete all the required fields as needed)
 
-> [!Note] after the VM is provisioned, notice the VHD size and how the image was created.
+> [!Note]  
+> After the VM is provisioned, notice the VHD size and how the image was created.

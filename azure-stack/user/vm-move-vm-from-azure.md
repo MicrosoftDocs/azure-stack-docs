@@ -17,7 +17,17 @@ ms.lastreviewed: 8/18/2020
 
 You can add a virtual machine (VM) image from your on-premesis environment. You can create your image as a virtual hard disk (VHD) and upload the image to a storage account in your Azure Stack Hub instance. You can then create a VM from the VHD.
 
-## Get your VHD from Azure
+## Prepare your VHD in Azure
+
+Find the section that that is specific to your needs when preparing your VHD.
+
+#### [Windows - Specialized](#tab/win-spec)
+
+Follow the steps [here](/azure/virtual-machines/windows/create-vm-specialized#prepare-the-vm) to prepare the VHD correctly.
+
+To deploy VM extensions, make sure that the VM agent .msi available [in this article](/azure/virtual-machines/extensions/agent-windows#manual-installation) is installed in the VM before VM deployment. If the VM agent is not present in the VHD, extension deployment will fail. You do not need to set the OS profile while provisioning, or set `$vm.OSProfile.AllowExtensionOperations = $true`.
+
+#### [Windows - Generalized](#tab/win-gen)
 
 ::: moniker range="<=azs-1910"
 - When you provision the VM on Azure, use PowerShell and provision it without the `-ProvisionVMAgent` flag.
@@ -31,31 +41,6 @@ Remove-AzureRmVMExtension -ResourceGroupName winvmrg1 -VMName windowsvm -Name "C
 
 Follow the instructions in [this article](/azure/virtual-machines/windows/download-vhd) to correctly generalize and download the VHD before porting it to Azure Stack Hub.
 ::: moniker-end
-
-#### [Windows - Specialized](#tab/win-spec)
-
-Follow the steps [here](/azure/virtual-machines/windows/create-vm-specialized#prepare-the-vm) to prepare the VHD correctly.
-
-To deploy VM extensions, make sure that the VM agent .msi available [in this article](/azure/virtual-machines/extensions/agent-windows#manual-installation) is installed in the VM before VM deployment. If the VM agent is not present in the VHD, extension deployment will fail. You do not need to set the OS profile while provisioning, or set `$vm.OSProfile.AllowExtensionOperations = $true`.
-
-#### [Windows - Generalized](#tab/win-gen)
-
-Prior to generalizing the VM, make sure of the following:
-
-Before the Azure Stack 1910 release:
-
-- When you provision the VM on Azure, use PowerShell and provision it without the `-ProvisionVMAgent` flag.
-- Remove all VM extensions using the **Remove-AzureRmVMExtension** cmdlet from the VM before generalizing the VM in Azure. You can find which VM extensions are installed by going to `Windows (C:) > WindowsAzure > Logs > Plugins`.
-
-```powershell
-Remove-AzureRmVMExtension -ResourceGroupName winvmrg1 -VMName windowsvm -Name "CustomScriptExtension"
-```
-
-On or after the Azure Stack 1910 release:
-
-- The preceding steps do not apply to VHDs brought from Azure to an Azure Stack Hub that is on or beyond the 1910 release.
-
-Follow the instructions in [this article](/azure/virtual-machines/windows/download-vhd) to correctly generalize and download the VHD before porting it to Azure Stack Hub.
 
 ### Windows - Specialized
 
