@@ -135,6 +135,8 @@
           href: azure-stack-manage-vm-disks.md
         - name: Managed disks considerations
           href: azure-stack-managed-disk-considerations.md
+        - name: Managed disks templates
+          href: virtual-machines-use-managed-disks-template.md
         - name: Delete a VM with dependencies
           href: delete-vm.md
         - name: Protect VMs
