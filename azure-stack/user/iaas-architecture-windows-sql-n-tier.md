@@ -23,7 +23,7 @@ This reference architecture shows how to deploy virtual machines (VMs) and a vir
 
 The architecture has the following components.
 
-![](./media/iaas-architecture-windows-sql-n-tier/image1.png)
+![The diagram shows a virtual network comprising six subnets: Application Gateway, Management, Web tier, Business tier, Data tier, and Active Directory. The Data tier subnet uses Cloud Witness. There are three load balancers.](./media/iaas-architecture-windows-sql-n-tier/image1.png)
 
 ## General
 
