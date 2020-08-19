@@ -111,7 +111,7 @@ If the VHD is from Azure, follow these instructions to generalize and download t
    logout
    ```
 
-   The Azure Linux Agent versions that work with Azure Stack Hub [are documented here](azure-stack-linux.md#azure-linux-agent). Make sure that the sysprepped image has an Azure Linux agent version that is compatible with Azure Stack Hub.
+   The Azure Linux Agent versions that work with Azure Stack Hub [are documented here](../operator/azure-stack-linux.md#azure-linux-agent). Make sure that the sysprepped image has an Azure Linux agent version that is compatible with Azure Stack Hub.
 
 2. Stop deallocate the VM.
 
@@ -142,96 +142,11 @@ If the VHD is from Azure, follow these instructions to generalize and download t
 
 ## Upload to a storage account
 
-For this next step, you will need an VHD which is sysprep'ed and prepared to be used as an image on Azure Stack. [There are multiple ways of creating this image](https://docs.microsoft.com/azure-stack/operator/azure-stack-add-vm-image), including using Azure VMs. If you are using Azure VMs, you can upload the syspreped VHD in a storage account and use it as below (if you are not, consider uploading the vhd on the ASDK on a storage account)
-
-> the following steps assume you have used an Azure VM and uploaded the prepared VHD in a public storage account names "storageaccount", using a container named "vhdimages"
-
-In the ASDK, using AzCopy in a PowerShell window, download the image.
-
-> [!Note] if the vhd doesn't contain the MD5 data and if you run azcopy without the "--check-md5=NoCheck" option, it'll fail because the hash will not match.
-
-```powershell  
-.\\azcopy.exe copy "https://storageaccount.blob.core.windows.net/vdhimages/WS201920191230155433.vhd" "C:\\r" --check-md5=NoCheck
-```
-
-Create an image used in a single subscription:
-
-1. Open the **Azure Stack User Portal** link  and login using the **aadUserName** user
-
-2. Create a new **Storage Account** and a new **Container**
-
-3. Create a new SAS token for this storage account and note it down
-
-      > [!Note] for simplicity, leave all the permissions selected
-
-4. Using AzCopy, upload the downloaded VHD into the new Container in the Storage Account
-
-      > [!Note] make sure to run
-
-    ```powershell
-      $env:AZCOPY_DEFAULT_SERVICE_API_VERSION="2017-11-09"
-    ```
-
-      In the PowerShell window in order to enable azcopy to upload the file to AzStackHub
-
-      Also make sure to add the "container" name in the SAS key created above (highlighted in the example on the right)
-
-5. Click on **All Services**, **Images**, and create a new **Image**
-
-6. Complete the required fields and select the vhd uploaded above
-
-  ![](media/azure-stack-hub-lab-guide-operator/image6-4.png)
-
-7. Once the image is created, use it to create a new VM (complete all the required fields as needed)
-
-> [!Note] after the VM is provisioned, notice the VHD size and how the image was created.
-
-Links:
-
-Add a custom VM to Azure Stack - <https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-add-vm-image>
+[!INCLUDE [Upload to a storage account](../includes/user-compute-upload-vhd.md)]
 
 ## Create the image in Azure Stack Hub
 
-1. Open the **Azure Stack User Portal** link  and login using the **aadUserName** user
-
-2. Click the storage account used to host the VM image copied above and select the container which includes that VHD.
-
-3. Set the container access level to public
-
-  > [!Note]  this is only for simplifying the exercise.
-
-4. Click on the container and on the VHD copied - save the **URL** to the VHD
-
-  > [!Note]  this will be used later in the exercise
-
-5. Open the **Azure Stack Admin Portal** link  and login using the **aadUserName** user
-
-6. Click on **Region Management**, select **Compute**, click on **VM Images**, and select **Add**
-
-7. Complete the required fields with any values you wish and specify the OS data disk URI as the path to the VHD image copied earlier
-
-
-8. The image will be creating which includes the copy of the VHD
-
-  > [!Note]  this might take a few minutes - make sure the image has a "succeeded" status before creating the VM (you can continue with the next steps to create the template, just don't start the VM creation before the VM image has a "succeeded" status)
-
-9. Open the Azure Stack User Portal link  and login using the aadUserName user
-
-10. Click on **Create a resource** and select **Template deployment**
-
-11. Click on **Template**, select **Quickstart templates**, and select the "101-vm-windows-create" template
-
-12. Edit the template to use the **Publisher**, **Offer**, and **SKU** used to create the VM image earlier in the exercise
-
-13. Complete the required Parameters - make sure the **WindowsVersion** corresponds to the **SKU** value defined above
-
-      > [!Note]  the "windowsversion" parameter is used in the template itself. This could be changed to any other name for that parameter.
-
-14. After the VM is provisioned browse to the VM resource and notice the size of the Disk and how it's configured
-
-      > [!Note]  also notice how the VM uses a nonmanaged disk (as opposed to creating the VM from the
-
-      > [!Tip]  use a different template (which uses a windows image) to deploy different resources, using the same image.
+[!INCLUDE [Create the image in Azure Stack Hub](../includes/user-compute-create-image.md)]
 
 ## Next steps
 

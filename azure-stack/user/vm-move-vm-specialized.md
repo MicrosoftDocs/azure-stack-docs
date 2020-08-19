@@ -41,12 +41,21 @@ This is a stub.
 
 This is a stub.
 
-#### [PowerShell - Linux VM](#tab/port-linux)
+#### [PowerShell - Linux VM](#tab/ps-linux)
 
 This is a stub.
 
 ---
 
+## Upload to a storage account
+
+[!INCLUDE [Upload to a storage account](../includes/user-compute-upload-vhd.md)]
+
+## Create the image in Azure Stack Hub
+
+[!INCLUDE [Create the image in Azure Stack Hub](../includes/user-compute-create-image.md)]
+
 ## Next steps
 
 [DIntroduction to Azure Stack Hub VMs](azure-stack-compute-overview.md)
+

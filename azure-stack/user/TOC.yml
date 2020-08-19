@@ -148,11 +148,11 @@
         - name: Migrate VMs
           items:
             - name: Specialized VM on prem
-            - href: vm-move-vm-specialized.md
+              href: vm-move-vm-specialized.md
             - name: Generalized VM on prem
-            - href: vm-move-vm-generalized.md
+              href: vm-move-vm-generalized.md
             - name: VM from Azure
-            - href: vm-move-vm-from-azure.md
+              href: vm-move-vm-from-azure.md
       - name: Storage
         items:
         - name: Overview
