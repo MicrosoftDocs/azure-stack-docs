@@ -8,7 +8,7 @@ ms.reviewer: thoroet
 ms.lastreviewed: 08/04/2020
 ---
 
-1. Open the **Azure Stack User Portal** link  and sign in using the **aadUserName** user
+1. Open the **Azure Stack Hub User Portal** link  and sign in using the **aadUserName** user
 
 2. select the storage account used to host the VM image copied above and select the container which includes that VHD.
 
@@ -22,7 +22,7 @@ ms.lastreviewed: 08/04/2020
     > [!Note]  
     > This will be used later in the exercise
 
-5. Open the **Azure Stack Admin Portal** link  and sign in using the **aadUserName** user
+5. Open the **Azure Stack Hub Admin Portal** link  and sign in using the **aadUserName** user
 
 6. select **Region Management**, select **Compute**, select **VM Images**, and select **Add**
 
@@ -34,7 +34,7 @@ ms.lastreviewed: 08/04/2020
     > [!Note]  
     > This might take a few minutes - make sure the image has a "succeeded" status before creating the VM (you can continue with the next steps to create the template, just don't start the VM creation before the VM image has a "succeeded" status)
 
-9. Open the Azure Stack User Portal link  and sign in.
+9. Open the Azure Stack Hub User Portal link  and sign in.
 
 10. select **Create a resource** and select **Template deployment**
 
