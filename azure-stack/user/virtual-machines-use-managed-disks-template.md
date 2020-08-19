@@ -1,7 +1,7 @@
 ---
 title: Intent and product brand in a unique string of 43-59 chars including spaces. Do not include site identifier (it is auto-generated).
 description: 115-145 characters including spaces. This abstract displays in the search result.
-author: sethmanheimn
+author: sethmanheim
 ms.author: sethm
 ms.date: 8/19/2020
 ms.topic: conceptual
