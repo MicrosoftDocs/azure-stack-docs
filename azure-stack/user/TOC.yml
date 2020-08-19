@@ -145,6 +145,14 @@
           href: vm-update-management.md
         - name: SQL Server VM considerations
           href: azure-stack-sql-server-vm-considerations.md
+        - name: Migrate VMs
+          items:
+            - name: Specialized VM on prem
+            - href: vm-move-vm-specialized.md
+            - name: Generalized VM on prem
+            - href: vm-move-vm-generalized.md
+            - name: VM from Azure
+            - href: vm-move-vm-from-azure.md
       - name: Storage
         items:
         - name: Overview
