@@ -29,7 +29,7 @@ Create an image used in a single subscription:
 
 3. Create a new SAS token for this storage account and note it down
 
-      > [!Note] For simplicity, leave all the permissions selected
+    > [!Note] For simplicity, leave all the permissions selected
 
 4. Using AzCopy, upload the downloaded VHD into the new Container in the Storage Account
 

@@ -44,10 +44,10 @@ ms.lastreviewed: 08/04/2020
 
 13. Complete the required Parameters - make sure the **WindowsVersion** corresponds to the **SKU** value defined above
 
-      > [!Note]  The "windowsversion" parameter is used in the template itself. This could be changed to any other name for that parameter.
+    > [!Note]  The "windowsversion" parameter is used in the template itself. This could be changed to any other name for that parameter.
 
 14. After the VM is provisioned browse to the VM resource and notice the size of the Disk and how it's configured
 
-      > [!Note]  Also notice how the VM uses a nonmanaged disk (as opposed to creating the VM from the
+    > [!Note]  Also notice how the VM uses a nonmanaged disk (as opposed to creating the VM from the
 
-      > [!Tip]  use a different template (which uses a windows image) to deploy different resources, using the same image.
+    > [!Tip]  use a different template (which uses a windows image) to deploy different resources, using the same image.
