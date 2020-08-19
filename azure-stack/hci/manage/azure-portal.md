@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/18/2020
+ms.date: 08/19/2020
 ---
 
 # Use the Azure portal with Azure Stack HCI
@@ -17,7 +17,9 @@ This topic explains how to connect to the Azure Stack HCI portion of the Azure p
 
 ## View your clusters in the Azure portal
 
-Log into the [Azure portal](https://portal.azure.com). If you've already [registered your cluster with Azure](../deploy/register-with-azure.md), you'll see a new resource representing your cluster. 
+Log into the [Azure portal](https://portal.azure.com). If you've already [registered your cluster with Azure](../deploy/register-with-azure.md), you'll see a new resource group with the name of your cluster appended with "-rg".
+
+:::image type="content" source="media/azure-portal/azure-portal-login.png" alt-text="image of first screen of Azure portal":::
 
 You can now use the Azure portal to manage and monitor your cluster even though your physical infrastructure is hosted on premises.
 
