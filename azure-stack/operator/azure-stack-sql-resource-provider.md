@@ -5,7 +5,7 @@ description: Learn how to use the SQL Server resource provider to offer SQL data
 author: bryanla
 
 ms.topic: article
-ms.date: 10/02/2019
+ms.date: 8/19/2020
 ms.author: bryanla
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/25/2019
@@ -29,6 +29,7 @@ Limitations to consider before installing the SQL resource provider:
 - Your Azure Stack Hub operator is responsible for deploying, updating, securing, configuring and maintaining the SQL database servers and hosts. The RP service doesn't provide any host and database server instance management functionality.
 - Databases from different users in different subscriptions may be located on the same database server instance. The RP doesn't provide any mechanism for isolating databases on different hosts or database server instances.
 - The RP doesn't provide any reporting on tenant usage of databases.
+- You can only move a SQL hosting server to another subscription in global Azure can. Azure Stack Hub doesn't support the movement SQL hosting server between tenants.
 
 For traditional SQL Server workload on premises, SQL Server virtual machine on Azure Stack Hub is recommended.
 
