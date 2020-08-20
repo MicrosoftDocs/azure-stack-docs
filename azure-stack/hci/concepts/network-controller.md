@@ -1,10 +1,10 @@
 ---
 title: Plan to deploy the Network Controller
 description: This topic covers how to plan to deploy the Network Controller via Windows Admin Center on a set of virtual machines (VMs) running the Azure Stack HCI operating system.
-author: JohnCobb1
-ms.author: v-johcob
+author: AnirbanPaul
+ms.author: anpaul
 ms.topic: conceptual
-ms.date: 08/18/2020
+ms.date: 08/20/2020
 ---
 
 # Plan to deploy the Network Controller
@@ -42,7 +42,7 @@ The following is required to deploy the Network Controller:
 ## Configuration requirements
 You can deploy the Network Controller cluster nodes on either the same subnet or different subnets. If you plan to deploy the Network Controller cluster nodes on different subnets, you must provide the Network Controller REST DNS name during the deployment process.
 
-To learn more, see [Configure dynamic DNS registration for Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller#step-3-configure-dynamic-dns-registration-for-network-controller)
+To learn more, see [Configure dynamic DNS registration for Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller#step-3-configure-dynamic-dns-registration-for-network-controller).
 
 
 ## Next steps
