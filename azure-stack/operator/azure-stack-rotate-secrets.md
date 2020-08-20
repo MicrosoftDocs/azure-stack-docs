@@ -378,6 +378,7 @@ Remove-PSSession -Session $PEPSession
 
 This command rotates the TLS certificates used for Azure Stack Hub's external network infrastructure endpoints.
 
+::: moniker range="<azs-1811"
 #### Rotate internal and external infrastructure secrets (**pre-1811** only)
 
 > [!IMPORTANT]
@@ -403,6 +404,7 @@ Remove-PSSession -Session $PEPSession
 ```
 
 This command rotates the infrastructure secrets exposed to Azure Stack Hub internal network, and the TLS certificates used for Azure Stack Hub's external network infrastructure endpoints. Start-SecretRotation rotates all stack-generated secrets, and because there are provided certificates, external endpoint certificates will also be rotated.  
+::: moniker-end
 
 ## Next steps
 
