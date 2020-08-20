@@ -29,6 +29,18 @@ Clicking on an Azure Stack HCI resource will take you to the overview page for t
 
 :::image type="content" source="media/azure-portal/azure-portal-overview.png" alt-text="Overview summary page for Azure Stack HCI resource on Azure portal":::
 
+## View the activity log
+
+The activity log provides a list of recent operations and events on the cluster along with their status, time, associated subscription, and initiating user. Events can be filtered by subscription, severity, time span, resource group, and resource.
+
+## Configure access control
+
+Use Access control (IAM) to check user access, manage roles, and add and view role assignments and deny assignments.
+
+## Add and edit tags
+
+Tags are name/valume pairs that enable you to categorize resources and view consolidated billing by applying the same tag to multiple resources and resource groups. Tag names are case-insensitive and tag values are case-sensitive. [Learn more about tags](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments). 
+
 ## Compare Azure portal and Windows Admin Center
 
 Many customers will wonder whether the Azure portal or Windows Admin Center is better suited to various tasks. The following table helps you determine which is right for your needs. Together, they offer a consistent design and are useful in complementary scenarios.
