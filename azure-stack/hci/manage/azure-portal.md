@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/19/2020
+ms.date: 08/20/2020
 ---
 
 # Use the Azure portal with Azure Stack HCI
@@ -23,7 +23,11 @@ Log into the [Azure portal](https://portal.azure.com). If you've already [regist
 
 The home page for the Azure Stack HCI Service will list all of your clusters, along with their resource group, location, and associated subscription.
 
-:::image type="content" source="media/azure-portal/azure-portal-home.png" alt-text="Home page for Azure Stack HCI resource on Azure portal":::
+:::image type="content" source="media/azure-portal/azure-portal-home.png" alt-text="Home page for Azure Stack HCI Service on Azure portal":::
+
+Clicking on an Azure Stack HCI resource will take you to the overview page for that resource, which displays a high-level summary of the cluster and server nodes.
+
+:::image type="content" source="media/azure-portal/azure-portal-overview.png" alt-text="Overview summary page for Azure Stack HCI resource on Azure portal":::
 
 ## Compare Azure portal and Windows Admin Center
 
