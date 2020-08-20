@@ -91,28 +91,6 @@ For a disconnected or partially connected scenario, you download the packages to
 4. Verify that the installation of Event Hubs has succeeded, by returning to the **Marketplace Management**, **Resource Providers** page. The status of Event Hubs should show "Installed".
    ![Marketplace management event hubs available](media/event-hubs-rp-install/11-marketplace-management-rps-installed.png)
 
-## Register Event Hubs
-
-Now you need to register the Event Hubs resource provider. Registration allows you to use the Event Hubs administration page, to manage the service.
-
-1. In the administrator portal, select **All services** in the top left.
-2. Select **Subscriptions**. You're presented with a list of subscriptions. 
-   > [!NOTE]
-   > Be sure not to select **User Subscriptions**
-3. Select **Default Provider Subscription**, on the **Subscriptions** page.
-4. Select **Resource providers**, on the left of the **Default Provider Subscription** page.
-5. In the **Filter by name** field at the top, search for the string "EventHub".
-6. Look at the **Status** column of the "Microsoft.EventHub" and "Microsoft.EventHub.Admin" resource provider rows.
-7. If any of them have a status of "Unregistered", select each provider, then select **Register**. 
-   ![Unregistered resource providers](media/event-hubs-rp-install/12-default-subscription-rps-unregistered.png)
-8. After a few seconds, select **Refresh**. You should now see the resource provider with a status of Registered. 
-9. You should now see Microsoft.EventHub and Microsoft.EventHub.Admin, with a status of "Registered".
-   ![Registered resource providers](media/event-hubs-rp-install/13-default-subscription-rps-registered.png)
-
-10. Return to the **All services** page.
-11. Search for "Event Hubs". You should now see "Event Hubs", which is your entry point to Event Hubs administration page. 
-   ![Services available - event hubs](media/event-hubs-rp-install/14-all-service-event-hubs.png)
- 
 ## Next steps
 
 Before users can deploy Event Hubs resources, you must create one or more plans, offers, and subscriptions. 
