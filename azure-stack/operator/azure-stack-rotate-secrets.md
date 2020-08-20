@@ -108,20 +108,20 @@ For rotation of external secrets, complete these additional prerequisites:
 1. Run **[Test-AzureStack](azure-stack-diagnostic-test.md)** and confirm all test outputs are healthy before rotating secrets.
 2. Prepare a new set of replacement external certificates:
     - The new set must match the certificate specifications outlined in the [Azure Stack Hub PKI certificate requirements](azure-stack-pki-certs.md). 
-    - You can generate a certificate signing request (CSR) to submit to your Certificate Authority (CA) using the steps outlined in [Generate PKI Certificates](azure-stack-get-pki-certs.md) and prepare them for use in your Azure Stack Hub environment using the steps in [Prepare Azure Stack Hub PKI Certificates](azure-stack-prepare-pki-certs.md). 
+    - You can generate a certificate signing request (CSR) to submit to your Certificate Authority (CA) using the steps outlined in [Generate certificate signing requests](azure-stack-get-pki-certs.md) and prepare them for use in your Azure Stack Hub environment using the steps in [Prepare PKI certificates](azure-stack-prepare-pki-certs.md). 
     - Be sure to validate the certificates you prepare with the steps outlined in [Validate PKI Certificates](azure-stack-validate-pki-certs.md)
     - Make sure there are no special characters in the password, like `*` or `)`.
     - Make sure the PFX encryption is **TripleDES-SHA1**. If you run into an issue, see [Fix common issues with Azure Stack Hub PKI certificates](azure-stack-remediate-certs.md#pfx-encryption).
 3. Store a backup to the certificates used for rotation in a secure backup location. If your rotation runs and then fails, replace the certificates in the file share with the backup copies before you rerun the rotation. Keep backup copies in the secure backup location.
 4. Create a fileshare you can access from the ERCS VMs. The file share must be  readable and writable for the **CloudAdmin** identity.
 5. Open a PowerShell ISE console from a computer where you have access to the fileshare. Navigate to your fileshare, where you create directories to place your external certificates.
-6. Run **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)**. The CertDirectoryMaker script will create a folder structure that adheres to ***.\Certificates\AAD*** or ***.\Certificates\ADFS***, depending on your identity provider. Your folder structure must begin with a **\\Certificates** folder, followed by ONLY an **\\AAD** or **\\ADFS** folder. All additional subdirectories are contained within the preceding structure. For example:
+6. Download **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)** to a network file share that can be accessed during rotation, and run the script. The script will create a folder structure that adheres to ***.\Certificates\AAD*** or ***.\Certificates\ADFS***, depending on your identity provider. Your folder structure must begin with a **\\Certificates** folder, followed by ONLY an **\\AAD** or **\\ADFS** folder. All additional subdirectories are contained within the preceding structure. For example:
     - File share = **\\\\\<IPAddress>\\\<ShareName>**
     - Certificate root folder for Azure AD provider = **\\Certificates\AAD**
     - Full path = **\\\\\<IPAddress>\\\<ShareName>\Certificates\AAD**
 
     > [!IMPORTANT]
-    > `Start-SecretRotation` will perform validations to ensure a compliant folder structure, per step #6. A folder structure that is not compliant will throw the following error:
+    > When you run `Start-SecretRotation` later, it will validate the folder structure. A folder structure that is not compliant will throw the following error:
     >
     > ```powershell
     > Cannot bind argument to parameter 'Path' because it is null.
@@ -130,7 +130,7 @@ For rotation of external secrets, complete these additional prerequisites:
     > + PSComputerName        : xxx.xxx.xxx.xxx
     > ```
 
-7. Place the new set of replacement external certificates created in step #2, in the **\Certificates\\\<IdentityProvider>** directory created in step #6. Be sure to follow the `cert.<regionName>.<externalFQDN>` format for \<CertName\>. 
+7. Copy the new set of replacement external certificates created in step #2, to the **\Certificates\\\<IdentityProvider>** directory created in step #6. Be sure to follow the `cert.<regionName>.<externalFQDN>` format for \<CertName\>. 
 
     Here's an example of a folder structure for the Azure AD Identity Provider:
     ```powershell
