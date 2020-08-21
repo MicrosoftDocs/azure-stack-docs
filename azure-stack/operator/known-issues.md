@@ -105,7 +105,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ### Issues using VM extensions in Ubuntu Server 20.04
 
-- Applicable: Endorsed Linux distributions that are affected include **Ubuntu Server 20.04 LTS**.
+- Applicable: This issue applies to **Ubuntu Server 20.04 LTS**.
 - Cause: Some Linux distributions have transitioned to Python 3.8 and removed the legacy `/usr/bin/python` entrypoint for Python altogether. Linux distribution users who have transitioned to Python 3.x must ensure the legacy `/usr/bin/python` entrypoint exists before attempting to deploy those extensions to their VMs. Otherwise, the extension deployment might fail.
 - Remediation: Follow the resolution steps in [Issues using VM extensions in Python 3-enabled Linux Azure Virtual Machines systems](https://docs.microsoft.com/azure/virtual-machines/extensions/issues-using-vm-extensions-python-3) but skip step 2 because Azure Stack Hub does not have the **Run command** functionality.
 
