@@ -2,23 +2,22 @@
 title: Plan a Software Defined Network infrastructure
 description: This topic provides information on how to plan your Software Defined Network (SDN) infrastructure deployment.
 manager: grcusanz
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.assetid: ea7e53c8-11ec-410b-b287-897c7aaafb13
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 08/20/2018
+ms.date: 08/21/2018
 ---
-# Plan a Software Defined Network Infrastructure
+# Plan a Software Defined Network infrastructure
 
->Applies to: Windows Server (Semi-Annual Channel), Windows Server 2016
+>Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server (Semi-Annual Channel), Windows Server 2016
 
-Learn about deployment planning for a Software Defined Network infrastructure, including the hardware and software prerequisites.
-
+Learn about deployment planning for a Software Defined Network (SDN) infrastructure, including the hardware and software prerequisites.
 
 ## Prerequisites
 This topic describes a number of hardware and software prerequisites, including:
 
--   **Configured security groups, log file locations, and dynamic DNS registration** You must prepare your datacenter for Network Controller deployment, which requires one or more computers or VMs and one computer or VM. Before you can deploy Network Controller, you must configure the security groups, log file locations (if needed), and dynamic DNS registration.  If you have not prepared your datacenter for Network Controller deployment, see [Installation and Preparation Requirements for Deploying Network Controller](Installation-and-Preparation-Requirements-for-Deploying-Network-Controller.md) for details.
+-   **Configured security groups, log file locations, and dynamic DNS registration** You must prepare your datacenter for Network Controller deployment, which requires one or more computers or VMs and one computer or VM. Before you can deploy Network Controller, you must configure the security groups, log file locations (if needed), and dynamic DNS registration.  If you have not prepared your datacenter for Network Controller deployment, see [Installation and Preparation Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller) for details.
 
 -   **Physical network**  You need access to your physical network devices to configure VLANs, Routing, BGP, Data Center Bridging (ETS) if using an RDMA technology, and Data Center Bridging (PFC) if using a RoCE based RDMA technology. This topic shows manual switch configuration as well as BGP Peering on Layer-3 switches / routers or a Routing and Remote Access Server (RRAS) virtual machine.
 
@@ -55,7 +54,7 @@ A DHCP server can automatically assign IP addresses for the Management network, 
 
 ---
 
-For information about Hyper-V Network Virtualization (HNV), which you can use to virtualize networks in a Microsoft SDN deployment, see [Hyper-V Network Virtualization](../technologies/hyper-v-network-virtualization/Hyper-V-Network-Virtualization.md).
+For information about Hyper-V Network Virtualization (HNV), which you can use to virtualize networks in a Microsoft SDN deployment, see [Hyper-V Network Virtualization](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyper-v-network-virtualization).
 
 
 
@@ -123,7 +122,7 @@ BGP peering is typically configured in a managed switch or router as part of the
 
 You or your network administrator must configure the BGP router peer to accept connections from the ASN and IP address or subnet address of the Transit logical network that your RAS gateway and SLB/MUXes are using.
 
-For more information, see [Border Gateway Protocol (BGP)](../../../remote/remote-access/bgp/Border-Gateway-Protocol-BGP.md).
+For more information, see [Border Gateway Protocol (BGP)](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp).
 
 ## Default gateways
 Machines that are configured to connect to multiple networks, such as the physical hosts and gateway virtual machines must only have one default gateway configured. Configure the default gateway on the adapter used to reach the Internet.
@@ -131,9 +130,9 @@ Machines that are configured to connect to multiple networks, such as the physic
 For virtual machines, follow these rules to decide which network to use as the default gateway:
 
 1. Use the Transit logical network as the default gateway if a virtual machine connects to the Transit network, or if it is multi-homed to the Transit network or any other network.
-2. Use the Management network as the default gateway if a virtual machine only connects to the Management network.
-3. Use the HNV Provider network for SLB/MUXes and RAS Gateways. Do not use the HNV Provider network as a default gateway.
-4. Do not connect virtual machines directly to the Storage1, Storage2, Public VIP or Private VIP networks.
+1. Use the Management network as the default gateway if a virtual machine only connects to the Management network.
+1. Use the HNV Provider network for SLB/MUXes and RAS Gateways. Do not use the HNV Provider network as a default gateway.
+1. Do not connect virtual machines directly to the Storage1, Storage2, Public VIP or Private VIP networks.
 
 For Hyper-V hosts and storage nodes, use the Management network as the default gateway.  The storage networks must never have a default gateway assigned.
 
@@ -150,7 +149,7 @@ Remote Direct Memory Access (RDMA) is a kernel bypass technique that makes it po
 
 Switch Embedded Teaming (SET) is an alternative NIC Teaming solution that you can use in environments that include Hyper-V and the Software Defined Networking (SDN) stack in Windows Server 2016. SET integrates some NIC Teaming functionality into the Hyper-V Virtual Switch.
 
-For more information, see [Remote Direct Memory Access (RDMA) and Switch Embedded Teaming (SET)](../../../virtualization//hyper-v-virtual-switch/RDMA-and-Switch-Embedded-Teaming.md).
+For more information, see [Remote Direct Memory Access (RDMA) and Switch Embedded Teaming (SET)](/windows-server/virtualization/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming).
 
 To account for the overhead in tenant virtual network traffic caused by VXLAN or NVGRE encapsulation headers, the MTU of the Layer-2 fabric network (switches and hosts) must be set to greater than or equal to 1674 Bytes \(including Layer-2 Ethernet headers\).
 
@@ -245,7 +244,6 @@ The sizing and resource requirements for your infrastructure are dependent on th
 
 When the tenant workload virtual machines begin to consume too many resources on the physical Hyper-V hosts, you can extend your infrastructure by adding additional physical hosts. This can be done with Virtual Machine Manager or by using PowerShell scripts (depending on how you initially deployed the infrastructure) to create new server resources through the network controller. If you need to add additional IP addresses for the HNV Provider network, you can create new logical subnets (with corresponding IP Pools) that the hosts can use.
 
-
 ## See Also
-[Installation and Preparation Requirements for Deploying Network Controller](Installation-and-Preparation-Requirements-for-Deploying-Network-Controller.md)
-[Software Defined Networking &#40;SDN&#41;](../software-defined-networking.md)
+- [Requirements for Deploying Network Controller](https://docs.microsoft.com/en-us/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller)
+- [&#40;SDN&#41; in Windows Server overview](/windows-server/networking/sdn/software-defined-networking)
