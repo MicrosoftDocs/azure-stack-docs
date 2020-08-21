@@ -22,7 +22,7 @@ This topic describes a number of hardware and software prerequisites, including:
 
 - **Physical network**. You need access to your physical network devices to configure virtual local area networks (VLANs), routing, and the Border Gateway Protocol (BGP). This topic provides manual switch configuration, as well as options to use either BGP Peering on Layer-3 switches / routers, or a Routing and Remote Access Server (RRAS) VM.
 
-- **Physical compute hosts**. These hosts run Hyper-V and are required to host a SDN infrastructure and tenant VMs. Specific network hardware is required in these hosts for best performance, as described in the [Network hardware](Network-hardware) section.
+- **Physical compute hosts**. These hosts run Hyper-V and are required to host a SDN infrastructure and tenant VMs. Specific network hardware is required in these hosts for best performance, as described in the [Network hardware](#network-hardware) section.
  
 <!---Topic updated to here.--->
 
