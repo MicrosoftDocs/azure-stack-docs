@@ -245,5 +245,5 @@ The sizing and resource requirements for your infrastructure are dependent on th
 When the tenant workload virtual machines begin to consume too many resources on the physical Hyper-V hosts, you can extend your infrastructure by adding additional physical hosts. This can be done with Virtual Machine Manager or by using PowerShell scripts (depending on how you initially deployed the infrastructure) to create new server resources through the network controller. If you need to add additional IP addresses for the HNV Provider network, you can create new logical subnets (with corresponding IP Pools) that the hosts can use.
 
 ## See Also
-- [Requirements for Deploying Network Controller](https://docs.microsoft.com/en-us/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller)
-- [&#40;SDN&#41; in Windows Server overview](/windows-server/networking/sdn/software-defined-networking)
+- [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller)
+- [SDN in Windows Server overview](/windows-server/networking/sdn/software-defined-networking)
