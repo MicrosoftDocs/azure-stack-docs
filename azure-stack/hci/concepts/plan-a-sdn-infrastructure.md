@@ -12,20 +12,21 @@ ms.date: 08/21/2018
 
 >Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server (Semi-Annual Channel), Windows Server 2016
 
-Learn about deployment planning for a Software Defined Network (SDN) infrastructure, including the hardware and software prerequisites.
+Learn about deployment planning for a Software Defined Network (SDN) infrastructure, including hardware and software prerequisites.
 
 ## Prerequisites
 This topic describes a number of hardware and software prerequisites, including:
+- **Configured security groups, log file locations, and dynamic DNS registration**. You must prepare your datacenter for Network Controller deployment, which requires one or more computers or virtual machines (VMs). Before you can deploy the Network Controller, you must configure the security groups, log file locations (if needed), and dynamic DNS registration.
 
--   **Configured security groups, log file locations, and dynamic DNS registration** You must prepare your datacenter for Network Controller deployment, which requires one or more computers or VMs and one computer or VM. Before you can deploy Network Controller, you must configure the security groups, log file locations (if needed), and dynamic DNS registration.  If you have not prepared your datacenter for Network Controller deployment, see [Installation and Preparation Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller) for details.
+    To learn more about Network Controller deployment for your datacenter, see [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller).
 
--   **Physical network**  You need access to your physical network devices to configure VLANs, Routing, BGP, Data Center Bridging (ETS) if using an RDMA technology, and Data Center Bridging (PFC) if using a RoCE based RDMA technology. This topic shows manual switch configuration as well as BGP Peering on Layer-3 switches / routers or a Routing and Remote Access Server (RRAS) virtual machine.
+- **Physical network**. You need access to your physical network devices to configure virtual local area networks (VLANs), routing, and the Border Gateway Protocol (BGP). This topic provides manual switch configuration, as well as options to use either BGP Peering on Layer-3 switches / routers, or a Routing and Remote Access Server (RRAS) VM.
 
--   **Physical compute hosts**  These hosts run Hyper-V and are required to host SDN infrastructure and tenant virtual machines.  Specific network hardware is required in these hosts for best performance, which is described later in the **Network hardware** section.
+- **Physical compute hosts**. These hosts run Hyper-V and are required to host a SDN infrastructure and tenant VMs. Specific network hardware is required in these hosts for best performance, as described in the [Network hardware](Network hardware) section.
+ 
+<!---Topic updated to here.--->
 
-
-## Physical network and compute host configuration
-
+## Physical and logical network configuration
 Each physical compute host requires network connectivity through one or more network adapters attached to a physical switch port(s).  A Layer-2 [VLAN](https://en.wikipedia.org/wiki/Virtual_LAN) supports networks divided into multiple logical network segments.
 
 >[!TIP]
