@@ -32,7 +32,7 @@ Your system should meet the following prerequisites before packaging PKI certifi
 - Windows 10 or Windows Server 2016 or later
 - Use the same system that generated the Certificate Signing Request (unless you're targeting a certificate prepackaged into PFXs).
 
-## Generate certificate signing requests for new deployments
+## Prepare certificates for deployments
 
 Use these steps to package certificates for new Azure Stack Hub PKI certificates:
 
