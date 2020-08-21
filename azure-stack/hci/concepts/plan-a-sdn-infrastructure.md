@@ -16,13 +16,13 @@ Learn about deployment planning for a Software Defined Network (SDN) infrastruct
 
 ## Prerequisites
 This topic describes a number of hardware and software prerequisites, including:
-- **Configured security groups, log file locations, and dynamic DNS registration**. You must prepare your datacenter for Network Controller deployment, which requires one or more computers or virtual machines (VMs). Before you can deploy the Network Controller, you must configure the security groups, log file locations (if needed), and dynamic DNS registration.
+- **Security groups, log file locations, and dynamic DNS registration**. You must prepare your datacenter for Network Controller deployment, which requires one or more computers or virtual machines (VMs). Before you can deploy the Network Controller, you must configure security groups, log file locations (if needed), and dynamic DNS registration.
 
     To learn more about Network Controller deployment for your datacenter, see [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller).
 
 - **Physical network**. You need access to your physical network devices to configure virtual local area networks (VLANs), routing, and the Border Gateway Protocol (BGP). This topic provides manual switch configuration, as well as options to use either BGP Peering on Layer-3 switches / routers, or a Routing and Remote Access Server (RRAS) VM.
 
-- **Physical compute hosts**. These hosts run Hyper-V and are required to host a SDN infrastructure and tenant VMs. Specific network hardware is required in these hosts for best performance, as described in the [Network hardware](Network hardware) section.
+- **Physical compute hosts**. These hosts run Hyper-V and are required to host a SDN infrastructure and tenant VMs. Specific network hardware is required in these hosts for best performance, as described in the [Network hardware](Network-hardware) section.
  
 <!---Topic updated to here.--->
 
