@@ -87,13 +87,23 @@ For this procedure, use a computer in your datacenter network that can communica
 
    ```powershell  
    $creds = Get-Credential
-   Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
+   $pep = New-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
-2. Now that you're connected to the privileged endpoint, run the following command: 
+2. Now that you have a session with the privileged endpoint, run the following command: 
 
    ```powershell  
-   Register-DirectoryService -CustomADGlobalCatalog contoso.com
+    $i = @(
+           [pscustomobject]@{ 
+                     CustomADGlobalCatalog="fabrikam.com"
+                     CustomADAdminCredential= get-credential
+                     SkipRootDomainValidation = $false 
+                     ValidateParameters = $true
+                   }) 
+
+    Invoke-Command -Session $pep -ScriptBlock {Register-DirectoryService -customCatalog $using:i} 
+
+
    ```
 
    When prompted, specify the credential for the user account that you want to use for the Graph service (such as graphservice). The input for the Register-DirectoryService cmdlet must be the forest name / root domain in the forest rather than any other domain in the forest.
@@ -105,8 +115,8 @@ For this procedure, use a computer in your datacenter network that can communica
 
    |Parameter|Description|
    |---------|---------|
-   |`-SkipRootDomainValidation`|Specifies that a child domain must be used instead of the recommended root domain.|
-   |`-Force`|Bypasses all validation checks.|
+   |`SkipRootDomainValidation`|Specifies that a child domain must be used instead of the recommended root domain.|
+   |`ValidateParameters`|Bypasses all validation checks.|
 
 #### Graph protocols and ports
 
