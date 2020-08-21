@@ -31,15 +31,18 @@ This topic describes a number of hardware and software prerequisites, including:
 
 
 ## Physical and logical network configuration
-Each physical compute host requires network connectivity through one or more network adapters attached to a physical switch port(s).  A Layer-2 [VLAN](https://en.wikipedia.org/wiki/Virtual_LAN) supports networks divided into multiple logical network segments.
+Each physical compute host requires network connectivity through one or more network adapters attached to a physical switch port. A Layer-2 [VLAN](https://en.wikipedia.org/wiki/Virtual_LAN) supports networks divided into multiple logical network segments.
 
 >[!TIP]
->Use VLAN 0 for logical networks in access mode or untagged.
+>Use VLAN 0 for logical networks in either access mode or untagged.
 
 >[!IMPORTANT]
->Windows Server 2016 Software Defined Networking supports IPv4 addressing for the underlay and the overlay. IPv6 is not supported.
+>Windows Server 2016 Software Defined Networking supports IPv4 addressing for the underlay and the overlay. IPv6 is not supported. Windows Server 2019 supports both IPv4 and IPv6 addressing.
+
+<!---Topic updated to here.--->
 
 ### Logical networks
+<!---Section intro text here.--->
 
 #### Management and HNV Provider
 
