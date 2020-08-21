@@ -16,6 +16,9 @@ Learn about deployment planning for a Software Defined Network (SDN) infrastruct
 
 ## Prerequisites
 This topic describes a number of hardware and software prerequisites, including:
+
+<!---Redo intro to this section.--->
+
 - **Security groups, log file locations, and dynamic DNS registration**. You must prepare your datacenter for Network Controller deployment, which requires one or more computers or virtual machines (VMs). Before you can deploy the Network Controller, you must configure security groups, log file locations (if needed), and dynamic DNS registration.
 
     To learn more about Network Controller deployment for your datacenter, see [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller).
@@ -25,6 +28,7 @@ This topic describes a number of hardware and software prerequisites, including:
 - **Physical compute hosts**. These hosts run Hyper-V and are required to host a SDN infrastructure and tenant VMs. Specific network hardware is required in these hosts for best performance, as described in the [Network hardware](#network-hardware) section.
  
 <!---Topic updated to here.--->
+
 
 ## Physical and logical network configuration
 Each physical compute host requires network connectivity through one or more network adapters attached to a physical switch port(s).  A Layer-2 [VLAN](https://en.wikipedia.org/wiki/Virtual_LAN) supports networks divided into multiple logical network segments.
