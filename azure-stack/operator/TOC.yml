@@ -88,9 +88,10 @@
         href: azure-stack-validate-adfs.md
       - name: Validate graph integration
         href: azure-stack-validate-graph.md
-    - name: Azure Stack Hub deployment PKI requirements
-      href: azure-stack-pki-certs.md
+    - name: PKI requirements and processes
       items:
+      - name: PKI certificate requirements
+        href: azure-stack-pki-certs.md
       - name: Generate PKI certificates
         href: azure-stack-get-pki-certs.md
       - name: Prepare Azure Stack Hub PKI certificates
