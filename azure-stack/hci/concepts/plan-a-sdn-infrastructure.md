@@ -41,9 +41,9 @@ Each physical compute host requires network connectivity through one or more net
 
 #### Management and HNV provider
 
-All physical compute hosts must access the Management logical network and the HNV provider logical network. For IP address planning purposes, each physical compute host must have at least one IP address assigned from the Management logical network. The Network Controller requires a reserved IP address from this network to serve as the Representational State Transfer (REST) IP address.
+All physical compute hosts must access the Management logical network and the Hyper-V Network Virtualization (HNV) provider logical network. For IP address planning purposes, each physical compute host must have at least one IP address assigned from the Management logical network. The Network Controller requires a reserved IP address from this network to serve as the Representational State Transfer (REST) IP address.
 
-The Hyper-V Network Virtualization (HNV) provider network serves as the underlying physical network for East/West (internal-internal) tenant traffic, North/South (external-internal) tenant traffic, and to exchange BGP peering information with the physical network.
+The HNV provider network serves as the underlying physical network for East/West (internal-internal) tenant traffic, North/South (external-internal) tenant traffic, and to exchange BGP peering information with the physical network.
 
 A DHCP server can automatically assign IP addresses for the Management network, or you can manually assign static IP addresses. The SDN stack automatically assigns IP addresses for the HNV provider logical network for the individual Hyper-V hosts from an IP address pool specified through and managed by the Network Controller.
 
