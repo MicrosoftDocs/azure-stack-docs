@@ -21,11 +21,11 @@ Custom images come in two forms: **generalized** and **specialized**.
 
 - **Generalized image**
 
-  A generalized disk image is one that has been prepared with **Sysprep** to remove any unique information (such as user accounts), enabling it to be reused to create multiple VMs. This is a good option for marketplace items.
+  A generalized disk image is one that has been prepared with **Sysprep** to remove any unique information (such as user accounts), enabling it to be reused to create multiple VMs. Generalized VHDs are a good fit for when are creating images that the Azure Stack Hub cloud operator plans to use as marketplace items.
 
 - **Specialized image**
 
-  A specialized disk image is a copy of a virtual hard disk (VHD) from an existing VM that contains the user accounts, applications, and other state data from your original VM. This is typically the format in which VMs are migrated to Azure Stack Hub.
+  A specialized disk image is a copy of a virtual hard disk (VHD) from an existing VM that contains the user accounts, applications, and other state data from your original VM. This is typically the format in which VMs are migrated to Azure Stack Hub. Specialized VHDs are a good fit for when you need to migrate VMs from on-premises to Azure Stack Hub.
 
 Before you upload the image, consider the following:
 
@@ -47,7 +47,7 @@ You can manually move your VM into Azure Stack Hub with the following scenarios:
 
 You can find details, checklists, and best practices for planning and migrating your workloads in bulk to Azure Stack Hub in a guide written by the AzureCAT experts in Azure Global. The guide focuses on the migration of existing applications that run either on physical servers or on existing virtualization platforms. By moving these workloads to the Azure Stack Hub IaaS environment, teams can benefit from smoother operations, self-service deployments, standardized hardware configurations, and Azure consistency.
 
-[Get the white paper](https://azure.microsoft.com/resources/migrate-to-azure-stack-hub-patterns-and-practices-checklists/)
+[Get the white paper.](https://azure.microsoft.com/resources/migrate-to-azure-stack-hub-patterns-and-practices-checklists/)
 
 ## Next steps
 
