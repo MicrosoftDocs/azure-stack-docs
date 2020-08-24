@@ -6,7 +6,7 @@ ms.topic: conceptual
 ms.assetid: ea7e53c8-11ec-410b-b287-897c7aaafb13
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 08/21/2018
+ms.date: 08/24/2018
 ---
 # Plan a Software Defined Network infrastructure
 
@@ -26,9 +26,6 @@ This topic describes a number of hardware and software prerequisites, including:
 - **Physical network**. You need access to your physical network devices to configure virtual local area networks (VLANs), routing, and the Border Gateway Protocol (BGP). This topic provides manual switch configuration, as well as options to use either BGP Peering on Layer-3 switches / routers, or a Routing and Remote Access Server (RRAS) VM.
 
 - **Physical compute hosts**. These hosts run Hyper-V and are required to host a SDN infrastructure and tenant VMs. Specific network hardware is required in these hosts for best performance, as described in the [Network hardware](#network-hardware) section.
- 
-<!---Topic updated to here.--->
-
 
 ## Physical and logical network configuration
 Each physical compute host requires network connectivity through one or more network adapters attached to a physical switch port. A Layer-2 [VLAN](https://en.wikipedia.org/wiki/Virtual_LAN) supports networks divided into multiple logical network segments.
@@ -39,19 +36,30 @@ Each physical compute host requires network connectivity through one or more net
 >[!IMPORTANT]
 >Windows Server 2016 Software Defined Networking supports IPv4 addressing for the underlay and the overlay. IPv6 is not supported. Windows Server 2019 supports both IPv4 and IPv6 addressing.
 
-<!---Topic updated to here.--->
-
 ### Logical networks
 <!---Section intro text here.--->
 
-#### Management and HNV Provider
+#### Management and HNV provider
 
-All physical compute hosts must access the Management logical network and the HNV Provider logical network.  For IP address planning purposes, each physical compute host must have at least one IP address assigned from the Management logical network. The network controller requires a reserved IP address to serve as the REST IP address.
+All physical compute hosts must access the Management logical network and the HNV provider logical network. For IP address planning purposes, each physical compute host must have at least one IP address assigned from the Management logical network. The Network Controller requires a reserved IP address from this network to serve as the Representational State Transfer (REST) IP address.
 
-A DHCP server can automatically assign IP addresses for the Management network, or you can manually assign static IP address. The SDN stack automatically assigns IP addresses for the HNV Provider logical network for the individual Hyper-V hosts from an IP Pool specified through and managed by the Network Controller.
+The Hyper-V Network Virtualization (HNV) provider network serves as the underlying physical network for East/West (internal-internal) tenant traffic, North/South (external-internal) tenant traffic, and to exchange BGP peering information with the physical network.
+
+A DHCP server can automatically assign IP addresses for the Management network, or you can manually assign static IP addresses. The SDN stack automatically assigns IP addresses for the HNV provider logical network for the individual Hyper-V hosts from an IP address pool specified through and managed by the Network Controller.
 
 >[!NOTE]
->The Network Controller assigns an HNV Provider IP address to a physical compute host only after the Network Controller Host Agent receives network policy for a specific tenant virtual machine.
+>The Network Controller assigns an HNV provider IP address to a physical compute host only after the Network Controller Host Agent receives network policy for a specific tenant VM.
+
+| Fun                  | With                 | 
+| :------------------- | :------------------- |
+| left-aligned column  | right-aligned column |
+| $100                 | $100                 |
+| $10                  | $10                  |
+| $1                   | $1                   |
+
+
+
+
 
 
 |                                                               If...                                                               |                                                                                                                                                                          Then...                                                                                                                                                                           |
@@ -62,9 +70,9 @@ A DHCP server can automatically assign IP addresses for the Management network, 
 
 ---
 
-For information about Hyper-V Network Virtualization (HNV), which you can use to virtualize networks in a Microsoft SDN deployment, see [Hyper-V Network Virtualization](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyper-v-network-virtualization).
+For information about Hyper-V Network Virtualization (HNV) that you can use to virtualize networks in a Microsoft SDN deployment, see [Hyper-V Network Virtualization](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyper-v-network-virtualization).
 
-
+<!---Topic updated to here.--->
 
 #### Gateways and the Software Load Balancer
 
@@ -79,7 +87,6 @@ Additional logical networks need to be created and provisioned for gateway and S
 |   **GRE VIP logical network**   |                                                                                                                                           The GRE VIP network is a subnet that exists solely for defining VIPs that are assigned to gateway virtual machines running on your SDN fabric for a S2S GRE connection type. This network does not need to be pre-configured in your physical switches or router and need not have a VLAN assigned.                                                                                                                                            |
 
 ---
-
 
 #### Sample network topology
 Change the sample IP subnet prefixes and VLAN IDs for your environment.
