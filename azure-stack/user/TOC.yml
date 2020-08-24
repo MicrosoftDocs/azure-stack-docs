@@ -147,6 +147,8 @@
           href: azure-stack-sql-server-vm-considerations.md
         - name: Migrate VMs
           items:
+            - name: Migrate VMs overview
+              href: vm-move-overview.md
             - name: Specialized VM on prem
               href: vm-move-vm-specialized.md
             - name: Generalized VM on prem

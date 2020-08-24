@@ -15,27 +15,25 @@ ms.lastreviewed: 8/18/2020
 
 # Move a generalized VM from on-premises to Azure Stack Hub
 
-You can add a virtual machine (VM) image from your on-premesis environment. YOu can create your image as a virtual hard disk (VHD) and upload the image to a storage account in your Azure Stack Hub instance. You can then create a VM from the VHD.
+You can add a virtual machine (VM) image from your on-premises environment. YOu can create your image as a virtual hard disk (VHD) and upload the image to a storage account in your Azure Stack Hub instance. You can then create a VM from the VHD.
 
 ## How to move an image
 
-Custom images come in two forms: **generalized** and **specialized**.
-
-- **Generalized image**
-
-  A generalized disk image is one that has been prepared with **Sysprep** to remove any unique information (such as user accounts), enabling it to be reused to create multiple VMs. This is a good option for marketplace items.
-
-- **Specialized image**
-
-  A specialized disk image is a copy of a virtual hard disk (VHD) from an existing VM that contains the user accounts, applications, and other state data from your original VM. This is typically the format in which VMs are migrated to Azure Stack Hub.
 
 #### [Portal - Windows VM](#tab/port-win)
 
-This is a stub.
+Follow the steps in [Prepare a Windows VHD or VHDX to upload to Azure](/azure/virtual-machines/windows/prepare-for-upload-vhd-image) to correctly generalize your VHD prior to uploading.
 
 #### [Portal - Linux VM](#tab/port-linux)
 
-This is a stub.
+If the VHD is from outside Azure, follow the appropriate instructions to generalize the VHD:
+
+- [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Red Hat Enterprise Linux](azure-stack-redhat-create-upload-vhd.md)
+- [SLES or openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
 
 #### [PowerShell - Windows VM](#tab/ps-win)
 
@@ -57,4 +55,4 @@ This is a stub.
 
 ## Next steps
 
-[DIntroduction to Azure Stack Hub VMs](azure-stack-compute-overview.md)
+[Move a VM to Azure Stack Hub Overview](vm-move-overview.md)

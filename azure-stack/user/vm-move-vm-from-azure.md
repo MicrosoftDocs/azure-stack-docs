@@ -3,10 +3,10 @@ title: Move a VM from Azure to Azure Stack Hub
 description: Learn how to move a VM from Azure to Azure Stack Hub to Azure Stack Hub.
 author: mattbriggs
 ms.topic: article
-ms.date: 8/18/2020
+ms.date: 8/24/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 8/18/2020
+ms.lastreviewed: 8/24/2020
 
 # Intent: As an Azure Stack Hub user, I wan to learn about how where to find more information developing solutions.
 # Keywords: Develop solutions with Azure Stack Hub
@@ -15,17 +15,23 @@ ms.lastreviewed: 8/18/2020
 
 # Move a VM from Azure to Azure Stack Hub
 
-You can add a virtual machine (VM) image from your on-premesis environment. You can create your image as a virtual hard disk (VHD) and upload the image to a storage account in your Azure Stack Hub instance. You can then create a VM from the VHD.
+You can upload a VHD from a VM created in Azure to your Azure Stack Hub instance.
 
 ## Prepare your VHD in Azure
 
 Find the section that that is specific to your needs when preparing your VHD.
 
+Before you upload the image, it's important to consider the following:
+
+- Azure Stack Hub only supports generation 1 VMs in the fixed disk VHD format. The fixed-format structures the logical disk linearly within the file, so that disk offset **X** is stored at blob offset **X**. A small footer at the end of the blob describes the properties of the VHD. To confirm if your disk is fixed, use the **Get-VHD** PowerShell cmdlet.
+
+- Azure Stack Hub does not support dynamic disk VHDs.
+
 #### [Windows - Specialized](#tab/win-spec)
 
-Follow the steps [here](/azure/virtual-machines/windows/create-vm-specialized#prepare-the-vm) to prepare the VHD correctly.
+Follow the steps the article [Create a Windows VM from a specialized disk by using PowerShell](/azure/virtual-machines/windows/create-vm-specialized#prepare-the-vm) to prepare the VHD. <!-- Follow the steps [here](/azure/virtual-machines/windows/create-vm-specialized#prepare-the-vm) to prepare the VHD correctly. -->
 
-To deploy VM extensions, make sure that the VM agent .msi available [in this article](/azure/virtual-machines/extensions/agent-windows#manual-installation) is installed in the VM before VM deployment. If the VM agent is not present in the VHD, extension deployment will fail. You do not need to set the OS profile while provisioning, or set `$vm.OSProfile.AllowExtensionOperations = $true`.
+To deploy VM extensions, make sure that the VM agent .msi available. For information and steps, see [Azure Virtual Machine Agent overview](/azure/virtual-machines/extensions/agent-windows). Make sure the extension is installed on the VM before your move VM. If the VM agent is not present in the VHD, extension deployment will fail. You do not need to set the OS profile while provisioning, or set `$vm.OSProfile.AllowExtensionOperations = $true`.
 
 #### [Windows - Generalized](#tab/win-gen)
 
@@ -39,17 +45,12 @@ Remove-AzureRmVMExtension -ResourceGroupName winvmrg1 -VMName windowsvm -Name "C
 ::: moniker-end
 ::: moniker range=">=azs-2002"
 
-Follow the instructions in [this article](/azure/virtual-machines/windows/download-vhd) to correctly generalize and download the VHD before porting it to Azure Stack Hub.
+Follow the instructions in [this article](/azure/virtual-machines/windows/download-vhd) to correctly generalize and download the VHD before moving it to Azure Stack Hub.
 ::: moniker-end
-
-### Windows - Specialized
-
-Follow the steps [here](/azure/virtual-machines/windows/create-vm-specialized#prepare-the-vm) to prepare the VHD correctly.
-To deploy VM extensions, make sure that the VM agent .msi available [in this article](/azure/virtual-machines/extensions/agent-windows#manual-installation) is installed in the VM before VM deployment. If the VM agent is not present in the VHD, extension deployment will fail. You do not need to set the OS profile while provisioning, or set `$vm.OSProfile.AllowExtensionOperations = $true`.
 
 #### [Linux - Specialized](#tab/lin-spec)
 
-Specialized VHDs should not be used as the base VHD for a marketplace item. Use generalized VHDs for this. However, specialized VHDs are a good fit for when you need to migrate VMs from on-premises to Azure Stack Hub.
+Specialized VHDs are a good fit for when you need to migrate VMs from on-premises to Azure Stack Hub.
 
 You can use [this guidance](/azure/virtual-machines/linux/upload-vhd#requirements) to prepare the VHD.
 
@@ -75,14 +76,6 @@ Add-AzVhd -ResourceGroupName $resourceGroup -Destination $urlOfUploadedImageVhd 
 ```
 
 For a specialized VHD, make sure to use "attach" semantics using `-CreateOption Attach`, [as in this example](/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks), to create a VM from this VHD.
-
-### Considerations
-
-Before you upload the image, it's important to consider the following:
-
-- Azure Stack Hub only supports generation 1 VMs in the fixed disk VHD format. The fixed-format structures the logical disk linearly within the file, so that disk offset **X** is stored at blob offset **X**. A small footer at the end of the blob describes the properties of the VHD. To confirm if your disk is fixed, use the **Get-VHD** PowerShell cmdlet.
-
-- Azure Stack Hub does not support dynamic disk VHDs.
 
 #### [Linux - Generalized](#tab/lin-gen)
 
@@ -118,7 +111,7 @@ If the VHD is from Azure, follow these instructions to generalize and download t
 
    1. You might need to select **Save** in the browser to start the download. The default name for the VHD file is **abcd**.
 
-   1. You can now port this VHD to Azure Stack Hub.
+   1. You can now move this VHD to Azure Stack Hub.
 
 > [!IMPORTANT]  
 > You can find a script in the article [Sample script to upload a VHD to Azure and create a new VM](/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script) to upload the VHD to an Azure Stack Hub user storage account and create a VM. Make sure to provide `$urlOfUploadedImageVhd` as the Azure Stack Hub storage account+container URL. For a generalized VHD, make sure to use `FromImage` value when setting `-CreateOption FromImage`.
@@ -135,4 +128,4 @@ If the VHD is from Azure, follow these instructions to generalize and download t
 
 ## Next steps
 
-[DIntroduction to Azure Stack Hub VMs](azure-stack-compute-overview.md)
+[Move a VM to Azure Stack Hub Overview](vm-move-overview.md)
