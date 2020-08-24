@@ -50,33 +50,18 @@ A DHCP server can automatically assign IP addresses for the Management network, 
 >[!NOTE]
 >The Network Controller assigns an HNV provider IP address to a physical compute host only after the Network Controller Host Agent receives network policy for a specific tenant VM.
 
-| Fun                  | With                 | 
-| :------------------- | :------------------- |
-| left-aligned column  | right-aligned column |
-| $100                 | $100                 |
-| $10                  | $10                  |
-| $1                   | $1                   |
-
-
-
-
-
-
-|                                                               If...                                                               |                                                                                                                                                                          Then...                                                                                                                                                                           |
-|-----------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|                                                  The logical networks use VLANs,                                                  |                                                                 the physical compute host must connect to a trunked switch port that has access to these VLANs. It's important to note that the physical network adapters on the computer host must not have any VLAN filtering activated.                                                                 |
-|                Using Switched-Embedded Teaming (SET) and have multiple NIC team members, such as network adapters,                |                                                                                                                        you must connect all of the NIC team members for that particular host to the same Layer-2 broadcast domain.                                                                                                                         |
-| The physical compute host is running additional infrastructure virtual machines, such as Network Controller, SLB/MUX, or Gateway, | that host must have an additional IP address assigned from the Management logical network for each of the virtual machines hosted.<p>Also, each SLB/MUX infrastructure virtual machine must have an IP address reserved for the HNV Provider logical network. Failure to have an IP address reserved may result in duplicate IP addresses on your network. |
-
----
+| If...                                                    | Then...                                               |
+| :------------------------------------------------------- | :---------------------------------------------------- |
+| The logical networks use VLANs,                         | the physical compute host must connect to a trunked switch port that has access to the VLANs. It's important to note that the physical network adapters on the computer host must not have any VLAN filtering activated.|
+| You are using Switched-Embedded Teaming (SET) and have multiple NIC team members, such as network adapters,| you must connect all NIC team members for that particular host to the same Layer-2 broadcast domain.|
+| The physical compute host is running additional infrastructure VMs, such as Network Controller, SLB/MUX, or Gateway,                                                  | that host must have an additional IP address assigned from the Management logical network for each hosted VM. Also, each SLB/MUX infrastructure VM must have an IP address reserved for the HNV provider logical network. Failure to reserve an IP address may result in duplicate IP addresses on your network.|
 
 For information about Hyper-V Network Virtualization (HNV) that you can use to virtualize networks in a Microsoft SDN deployment, see [Hyper-V Network Virtualization](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyper-v-network-virtualization).
 
+#### Gateways and the Software Load Balancer (SLB)
+You need to create and provision additional logical networks to use gateways and the Software Load Balancer (SLB). Make sure to obtain the correct IP prefixes, VLAN IDs, and gateway IP addresses for these networks.
+
 <!---Topic updated to here.--->
-
-#### Gateways and the Software Load Balancer
-
-Additional logical networks need to be created and provisioned for gateway and SLB usage. Make sure to obtain the correct IP prefixes, VLAN IDs, and gateway IP addresses for these networks.
 
 
 |                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
