@@ -4,10 +4,10 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/13/2020
+ms.date: 08/21/2020
 ms.author: sethm
 ms.reviewer: sranthar
-ms.lastreviewed: 08/13/2020
+ms.lastreviewed: 08/21/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -102,6 +102,12 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Occurrence: Common
 
 ## Compute
+
+### Issues using VM extensions in Ubuntu Server 20.04
+
+- Applicable: This issue applies to **Ubuntu Server 20.04 LTS**.
+- Cause: Some Linux distributions have transitioned to Python 3.8 and removed the legacy `/usr/bin/python` entrypoint for Python altogether. Linux distribution users who have transitioned to Python 3.x must ensure the legacy `/usr/bin/python` entrypoint exists before attempting to deploy those extensions to their VMs. Otherwise, the extension deployment might fail.
+- Remediation: Follow the resolution steps in [Issues using VM extensions in Python 3-enabled Linux Azure Virtual Machines systems](https://docs.microsoft.com/azure/virtual-machines/extensions/issues-using-vm-extensions-python-3) but skip step 2 because Azure Stack Hub does not have the **Run command** functionality.
 
 ### NVv4 VM size on portal
 
