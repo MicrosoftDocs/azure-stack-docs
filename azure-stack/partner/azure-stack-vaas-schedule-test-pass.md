@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Learn how to schedule a test in the Azure Stack Hub Validation portal.
 author: mattbriggs
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
