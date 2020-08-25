@@ -61,27 +61,20 @@ For information about Hyper-V Network Virtualization (HNV) that you can use to v
 #### Gateways and the Software Load Balancer (SLB)
 You need to create and provision additional logical networks to use gateways and the Software Load Balancer (SLB). Make sure to obtain the correct IP prefixes, VLAN IDs, and gateway IP addresses for these networks.
 
-|                                                             |                                                            |
-| ----------------------------------------------------------- | ---------------------------------------------------------- |
-| **Public VIP logical network**                    | The Public virtual IP (VIP) logical network must use IP subnet prefixes that are routable outside of the cloud environment (typically internet routable). These are the front-end IP addresses that external clients use to access resources in the virtual networks, including the front-end VIP for the site-to-site gateway.|
-| **Private VIP logical network**                   | The Private VIP logical network is not required to be routable outside of the cloud. This is because only VIPs that can be accessed from internal cloud clients use it, such as the SLB Manager or private services.|
-| **GRE VIP logical network**                       | The Generic Routing Encapsulation (GRE) VIP network is a subnet that exists solely to define VIPs that are assigned to gateway VMs running on your SDN fabric for a site-to-site (S2S) GRE connection type. You don't need to preconfigure this network in your physical switches or router, or assign a VLAN to it.|
+|                                |                     |
+| :----------------------------- | :------------------ |
+| **Public VIP logical network** | The Public virtual IP (VIP) logical network must use IP subnet prefixes that are routable outside of the cloud environment (typically internet routable). These are the front-end IP addresses that external clients use to access resources in the virtual networks, including the front-end VIP for the site-to-site gateway. |
+| **Private VIP logical network** | The Private VIP logical network is not required to be routable outside of the cloud. This is because only VIPs that can be accessed from internal cloud clients use it, such as the SLB Manager or private services. |
+| **GRE VIP logical network** | The Generic Routing Encapsulation (GRE) VIP network is a subnet that exists solely to define VIPs that are assigned to gateway VMs running on your SDN fabric for a site-to-site (S2S) GRE connection type. You don't need to preconfigure this network in your physical switches or router, or assign a VLAN to it. |
 
 #### Sample network topology
 Change the sample IP subnet prefixes and VLAN IDs for your environment.
 
 | **Network name** | **Subnet** | **Mask** | **VLAN ID on truck** | **Gateway** | **Reservation (examples)** |
-| ----------------------- | ------------ | ------- | ---------------------------- | -------------- | ------------------------------------------- |
-| Management              | 10.184.108.0 |    24   |          7                   | 10.184.108.1   | 10.184.108.1 - Router<br>
-                                                                                                     10.184.108.4 - Network Controller <br>
-                                                                                                     10.184.108.10 - Compute host 1 <br>
-                                                                                                     10.184.108.11 - Compute host 2 <br>
-                                                                                                     10.184.108.X - Compute host X |
-| HNV Provider             |  10.10.56.0  |    23    |          11                |  10.10.56.1    | 10.10.56.1 - Router <br>
-                                                                                                     10.10.56.2 - SLB/MUX1 <br>
-                                                                                                     10.10.56.5 - Gateway1 |
-| Public VIP               |  41.40.40.0  |    27    |          NA                |  41.40.40.1    | 41.40.40.1 - Router <br>
-                                                                                                     41.40.40.3 - IPSec S2S VPN VIP |
+| :----------------------- | :------------ | :------- | :---------------------------- | :-------------- | :------------------------------------------- |
+| Management              | 10.184.108.0 |    24   |          7                   | 10.184.108.1   | 10.184.108.1 - Router<br> 10.184.108.4 - Network Controller<br> 10.184.108.10 - Compute host 1<br> 10.184.108.11 - Compute host 2<br> 10.184.108.X - Compute host X |
+| HNV Provider             |  10.10.56.0  |    23    |          11                |  10.10.56.1    | 10.10.56.1 - Router<br> 10.10.56.2 - SLB/MUX1<br> 10.10.56.5 - Gateway1 |
+| Public VIP               |  41.40.40.0  |    27    |          NA                |  41.40.40.1    | 41.40.40.1 - Router<br> 41.40.40.3 - IPSec S2S VPN VIP |
 | Private VIP              |  20.20.20.0  |    27    |          NA                |  20.20.20.1    | 20.20.20.1 - Default GW (router) |
 | GRE VIP                  |  31.30.30.0  |    24    |          NA                |  31.30.30.1    | 31.30.30.1 - Default GW |
 
