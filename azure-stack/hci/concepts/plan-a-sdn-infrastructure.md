@@ -6,7 +6,7 @@ ms.topic: conceptual
 ms.assetid: ea7e53c8-11ec-410b-b287-897c7aaafb13
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 08/24/2018
+ms.date: 08/25/2018
 ---
 # Plan a Software Defined Network infrastructure
 
@@ -61,21 +61,16 @@ For information about Hyper-V Network Virtualization (HNV) that you can use to v
 #### Gateways and the Software Load Balancer (SLB)
 You need to create and provision additional logical networks to use gateways and the Software Load Balancer (SLB). Make sure to obtain the correct IP prefixes, VLAN IDs, and gateway IP addresses for these networks.
 
-<!---Topic updated to here.--->
-
-
-|                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|   **Transit logical network**   | The RAS Gateway and SLB/MUX use the Transit logical network to exchange BGP peering information and North/South (external-internal) tenant traffic. The size of this subnet will typically be smaller than the others. Only physical compute hosts that run RAS Gateway or SLB/MUX virtual machines need to have connectivity to this subnet with these VLANs trunked and accessible on the switch ports to which the compute hosts' network adapters are connected. Each SLB/MUX or RAS Gateway virtual machine is statically assigned one IP address from the Transit logical network. |
-| **Public VIP logical network**  |                                                                                                                             The Public VIP logical network is required to have IP subnet prefixes that are routable outside of the cloud environment (typically Internet routable).  These will be the front-end IP addresses used by external clients to access resources in the virtual networks including the front end VIP for the Site-to-site gateway.                                                                                                                             |
-| **Private VIP logical network** |                                                                                                                                                                                       The Private VIP logical network is not required to be routable outside of the cloud as it is used for VIPs that are only accessed from internal cloud clients, such as the SLB Mananger or private services.                                                                                                                                                                                       |
-|   **GRE VIP logical network**   |                                                                                                                                           The GRE VIP network is a subnet that exists solely for defining VIPs that are assigned to gateway virtual machines running on your SDN fabric for a S2S GRE connection type. This network does not need to be pre-configured in your physical switches or router and need not have a VLAN assigned.                                                                                                                                            |
-
----
+|                                |                                                                       |
+| :----------------------------- | :-------------------------------------------------------------------- |
+| **Public VIP logical network** | The Public virtual IP (VIP) logical network must use IP subnet prefixes that are routable outside of the cloud environment (typically internet routable). These are the front-end IP addresses that external clients use to access resources in the virtual networks, including the front-end VIP for the site-to-site gateway.|
+| **Private VIP logical network**| The Private VIP logical network is not required to be routable outside of the cloud. This is because only VIPs that can be accessed from internal cloud clients use it, such as the SLB Manager or private services.|
+| **GRE VIP logical network**    | The Generic Routing Encapsulation (GRE) VIP network is a subnet that exists solely to define VIPs that are assigned to gateway VMs running on your SDN fabric for a site-to-site (S2S) GRE connection type. You don't need to preconfigure this network in your physical switches or router, or assign a VLAN to it.|
 
 #### Sample network topology
 Change the sample IP subnet prefixes and VLAN IDs for your environment.
 
+<!---Topic updated to here.--->
 
 | **Network name** |  **Subnet**  | **Mask** | **VLAN ID on truck** | **Gateway**  |                                                           **Reservations (examples)**                                                           |
 |------------------|--------------|----------|----------------------|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -208,7 +203,7 @@ Both the infrastructure and tenant virtual machines can be redistributed across 
 
 ## Switch configuration examples
 
-To help configure your physical switch or router, a set of sample configuration files for a variety of switch models and vendors are available at the [Microsoft SDN Github repository](https://github.com/microsoft/SDN/tree/master/SwitchConfigExamples). A detailed readme and tested command line interface (CLI) commands for specific switches are provided.
+To help configure your physical switch or router, a set of sample configuration files for a variety of switch models and vendors are available at the [Microsoft SDN GitHub repository](https://github.com/microsoft/SDN/tree/master/SwitchConfigExamples). A detailed readme and tested command line interface (CLI) commands for specific switches are provided.
 
 
 ## Compute
