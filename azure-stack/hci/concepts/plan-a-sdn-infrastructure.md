@@ -71,19 +71,19 @@ You need to create and provision additional logical networks to use gateways and
 Change the sample IP subnet prefixes and VLAN IDs for your environment.
 
 | **Network name** | **Subnet** | **Mask** | **VLAN ID on truck** | **Gateway** | **Reservation (examples)** |
-| ----------------------- | ----------- | ------- | ---------------------------- | --------------| ------------------------------------------- |
-| Management               | 10.184.108.0 |    24    |          7                  | 10.184.108.1   | 10.184.108.1 - Router <br>
-                                                                                                      10.184.108.4 - Network Controller <br>
-                                                                                                      10.184.108.10 - Compute host 1 <br>
-                                                                                                      10.184.108.11 - Compute host 2 <br>
-                                                                                                      10.184.108.X - Compute host X |
-| HNV Provider             |  10.10.56.0  |    23    |          11                 |  10.10.56.1    | 10.10.56.1 - Router <br>
-                                                                                                      10.10.56.2 - SLB/MUX1 <br>
-                                                                                                      10.10.56.5 - Gateway1 |
-| Public VIP               |  41.40.40.0  |    27    |          NA                 |  41.40.40.1    | 41.40.40.1 - Router <br>
-                                                                                                      41.40.40.3 - IPSec S2S VPN VIP |
-| Private VIP              |  20.20.20.0  |    27    |          NA                 |  20.20.20.1    | 20.20.20.1 - Default GW (router) |
-| GRE VIP                  |  31.30.30.0  |    24    |          NA                 |  31.30.30.1    | 31.30.30.1 - Default GW |
+| ----------------------- | ------------ | ------- | ---------------------------- | -------------- | ------------------------------------------- |
+| Management              | 10.184.108.0 |    24   |          7                   | 10.184.108.1   | 10.184.108.1 - Router<br>
+                                                                                                     10.184.108.4 - Network Controller <br>
+                                                                                                     10.184.108.10 - Compute host 1 <br>
+                                                                                                     10.184.108.11 - Compute host 2 <br>
+                                                                                                     10.184.108.X - Compute host X |
+| HNV Provider             |  10.10.56.0  |    23    |          11                |  10.10.56.1    | 10.10.56.1 - Router <br>
+                                                                                                     10.10.56.2 - SLB/MUX1 <br>
+                                                                                                     10.10.56.5 - Gateway1 |
+| Public VIP               |  41.40.40.0  |    27    |          NA                |  41.40.40.1    | 41.40.40.1 - Router <br>
+                                                                                                     41.40.40.3 - IPSec S2S VPN VIP |
+| Private VIP              |  20.20.20.0  |    27    |          NA                |  20.20.20.1    | 20.20.20.1 - Default GW (router) |
+| GRE VIP                  |  31.30.30.0  |    24    |          NA                |  31.30.30.1    | 31.30.30.1 - Default GW |
 
 <!---Topic updated to here.--->
 
