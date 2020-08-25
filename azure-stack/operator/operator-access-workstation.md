@@ -3,10 +3,10 @@ title: Azure Stack Hub Operator Access Workstation
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: asganesh
 ms.topic: article
-ms.date: 08/12/2020
+ms.date: 08/25/2020
 ms.author: justinha
 ms.reviewer: asganesh
-ms.lastreviewed: 08/12/2020
+ms.lastreviewed: 08/25/2020
 
 # Intent: As an Azure Stack operator, I want to download and configure an Azure Stack Hub Operator Access Workstation.
 # Keyword: azure stack hub operator access workstation
@@ -15,9 +15,23 @@ ms.lastreviewed: 08/12/2020
 
 # Azure Stack Hub Operator Access Workstation (preview only)
 
-The Operator Access Workstation (OAW) is used to deploy a jump box virtual machine (VM) on the Hardware Lifecycle Host (HLH) so an Azure Stack Hub operator can access the privileged endpoint (PEP) and the Administrator portal for support scenarios. The HLH version must run version 2005 or later. 
+The Operator Access Workstation (OAW) is used to deploy a jump box virtual machine (VM) on the Hardware Lifecycle Host (HLH) that runs version 2005 or later so an Azure Stack Hub operator can access the privileged endpoint (PEP) and the Administrator portal for support scenarios. 
 
 The OAW VM should be created when an operator performs a new task. After a required task inside the VM is completed, the VM should be shut down and removed as Azure Stack Hub doesn't need to always run it.  
+
+## OAW scenarios
+
+The following tables lists common scenarios that are well-suited for the OAW capabilities. This is not an exhaustive list of all scenarios available through the OAW.
+
+|Scenario                                    | Description                 |
+|--------------------------------------------|-----------------------------|
+|Access the Adminstration portal​ at the edge |                  |
+|[Access PEP](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint)|Log collection and upload​<br>Create SMB share at HLH for file transfer from stamp​<br>Log collection​<br>Use Azure Storage Explorer to upload logs saved at HLH SMB share |
+|[Renew Azure Stack Hub registration](https://docs.microsoft.com/azure-stack/operator/azure-stack-registration#renew-or-change-registration) |Get previous Registration Name and Resource Group from the Administration portal​ |
+|Marketplace syndication​                     |Download from Azure<br>Upload to Azure Stack Hub                                 |
+|Image sideload                              |Follow same steps as Marketplace syndication?                                    |
+
+## Download files
 
 Due to the stateless nature of the solution, there are no updates for the OAW VM. For each milestone, a new version of the VM image file will be released. Use the latest version to create a new OAW VM. The image file is based on the latest Windows Server 2019 version. After installation, you can apply updates, including any critical updates, using Windows Update. 
 
@@ -25,6 +39,7 @@ Please be sure to review the [Microsoft Privacy Statement](https://privacy.micro
 
 To get the files to create the OAW VM for the preview, [**download here**](https://aka.ms/OAWDownload).
 
+## User account policy 
 The following user account policy is applied to the OAW VM:
 
 - Built-in Administrator username: AdminUser
@@ -34,6 +49,7 @@ The following user account policy is applied to the OAW VM:
 - MaximumPasswordAge = 42 (days)
 - NewGuestName = GUser (disabled by default)
 
+## Pre-installed software
 The following table lists the pre-installed software on the OAW VM.
 
 | Software Name           | Location                                                                                       |
