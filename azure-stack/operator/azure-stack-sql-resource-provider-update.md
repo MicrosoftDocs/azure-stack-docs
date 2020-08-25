@@ -5,7 +5,7 @@ description: Learn how to update the Azure Stack Hub SQL resource provider.
 author: bryanla
 
 ms.topic: article
-ms.date: 11/11/2019
+ms.date: 8/19/2020
 ms.author: bryanla
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/11/2019
@@ -117,10 +117,9 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
   -VMLocalCredential $vmLocalAdminCreds `
   -CloudAdminCredential $cloudAdminCreds `
   -PrivilegedEndpoint $privilegedEndpoint `
-  -AzureEnvironment $AzureEnvironment ` 
+  -AzureEnvironment $AzureEnvironment `
   -DefaultSSLCertificatePassword $PfxPass `
-  -DependencyFilesLocalPath $tempDir\cert 
-
+  -DependencyFilesLocalPath $tempDir\cert
  ```
 
 When the resource provider update script finishes, close the current PowerShell session.

@@ -30,6 +30,8 @@
     href: deploy/register-with-azure.md
   - name: Validate the cluster
     href: deploy/validate.md
+  - name: Deploy Network Controller
+    href: deploy/network-controller-powershell.md
 - name: Manage
   items:
   - name: Manage VMs
@@ -62,6 +64,8 @@
       href: manage/cluster-powershell.md
     - name: Update the cluster
       href: manage/update-cluster.md
+    - name: Monitor the cluster
+      href: manage/monitor-cluster.md
     - name: Add or remove servers
       href: manage/add-cluster.md
     - name: Manage Azure registration
@@ -96,6 +100,8 @@
     href: concepts/choose-drives.md
   - name: Plan volumes
     href: concepts/plan-volumes.md
+  - name: Software defined networking
+    href: concepts/software-defined-networking.md
   - name: Understand the cache
     href: concepts/cache.md
   - name: Fault tolerance and storage efficiency
