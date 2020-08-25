@@ -16,7 +16,7 @@ This article describes the differences between managed and unmanaged disks when 
 
 ## Unmanaged disks template formatting
 
-To begin, let's take a look at how unmanaged disks are deployed. When creating unmanaged disks, you need a storage account to hold the VHD files. You can create a new storage account or use one that already exists. This article shows you how to create a new storage account. Create a storage account resource in the resources block of the template, as follows:
+To begin, let's take a look at how unmanaged disks are deployed. When creating unmanaged disks, you need a storage account to hold the VHD files. You can create a new storage account or use one that already exists. Create a new storage account resource in the resources block of the template, as follows:
 
 ```json
 {
@@ -134,7 +134,7 @@ To create a VM with managed disks, you no longer need to create the storage acco
 
 ### Use a top-level managed disk resource
 
-As an alternative to specifying the disk configuration in the virtual machine object, you can create a top-level disk resource and attach it as part of the virtual machine creation. Be sure to use `2017-03-30` as the `disks` resource API version. For example, you can create a disk resource as follows to use as a data disk:
+As an alternative to specifying the disk configuration in the virtual machine object, you can create a top-level disk resource and attach it as part of the virtual machine creation. Be sure to use `2017-03-30` as the `disks` resource API version. For example, you can create a disk resource as follows to use as a data disk. In this example, `vmName` is used as part of the disk name:
 
 ```json
 {
