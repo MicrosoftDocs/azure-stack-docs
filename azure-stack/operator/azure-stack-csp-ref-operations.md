@@ -4,7 +4,7 @@ description: Learn how to register tenants and how tenant usage is tracked in Az
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/01/2020
+ms.date: 08/24/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 10/14/2019
