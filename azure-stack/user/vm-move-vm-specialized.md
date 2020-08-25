@@ -1,5 +1,5 @@
 ---
-title: ove a specialized VM from on-premises to Azure Stack Hub
+title: Move a specialized VM from on-premises to Azure Stack Hub
 description: Learn how to move a specialized VM from on-premises to Azure Stack Hub.
 author: mattbriggs
 ms.topic: article
@@ -23,8 +23,8 @@ Find the section that that is specific to your needs when preparing your VHD.
 
 #### [Windows VM](#tab/port-win)
 
-Follow the steps [here](/azure/virtual-machines/windows/create-vm-specialized#prepare-the-vm) to prepare the VHD correctly.
-To deploy VM extensions, make sure that the VM agent .msi available [in this article](/azure/virtual-machines/extensions/agent-windows#manual-installation) is installed in the VM before VM deployment. If the VM agent is not present in the VHD, extension deployment will fail. You do not need to set the OS profile while provisioning, or set `$vm.OSProfile.AllowExtensionOperations = $true`.
+- Follow the steps in [Create a Windows VM from a specialized disk by using PowerShell](/azure/virtual-machines/windows/create-vm-specialized) to prepare the VHD correctly.
+- To deploy VM extensions, make sure that the VM agent .msi available. For guidance, see [Azure Virtual Machine Agent overview](/azure/virtual-machines/extensions/agent-windows). If the VM agent is not present in the VHD, extension deployment will fail. You do not need to set the OS profile while provisioning, or set `$vm.OSProfile.AllowExtensionOperations = $true`.
 
 
 #### [Linux VM](#tab/port-linux)

@@ -44,9 +44,8 @@ Follow the instructions in [Download a Windows VHD from Azure](/azure/virtual-ma
 
 #### [Linux - Specialized](#tab/lin-spec)
 
-You can use guidance in the article [Create a Linux VM from a custom disk](/azure/virtual-machines/linux/upload-vhd#requirements) when you are preparing a VHD.
-
-For a specialized VHD, make sure to use "attach" semantics using `-CreateOption Attach`. You can find an example in the article [Create a virtual machine using an existing managed OS disk with PowerShell (Windows)](/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks).
+- You can use guidance in the article [Create a Linux VM from a custom disk](/azure/virtual-machines/linux/upload-vhd#requirements) when you are preparing a VHD.
+- For a specialized VHD, make sure to use "attach" semantics using `-CreateOption Attach`. You can find an example in the article [Create a virtual machine using an existing managed OS disk with PowerShell (Windows)](/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks).
 
 #### [Linux - Generalized](#tab/lin-gen)
 
