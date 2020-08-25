@@ -1,6 +1,6 @@
 ---
-title: Intent and product brand in a unique string of 43-59 chars including spaces. Do not include site identifier (it is auto-generated).
-description: 115-145 characters including spaces. This abstract displays in the search result.
+title: Use resource manager templates for managed disks in Azure Stack Hub
+description: Learn about the differences between managed and unmanaged disks when using Azure Resource Manager templates.
 author: sethmanheim
 ms.author: sethm
 ms.date: 8/25/2020
@@ -10,7 +10,7 @@ ms.lastreviewed: 8/25/2020
 ---
 
 
-# Use managed disks templates in Azure Stack Hub
+# Use VM managed disks templates
 
 This article describes the differences between managed and unmanaged disks when using Azure Resource Manager templates to provision virtual machines in Azure Stack Hub. The examples help you to convert existing templates that use unmanaged disks to managed disks.
 
