@@ -4,7 +4,7 @@ description: Learn how to replicate resources using the Azure Stack Hub subscrip
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/07/2019
