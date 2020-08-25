@@ -1,5 +1,5 @@
 ---
-title: Use resource manager templates for managed disks in Azure Stack Hub
+title: Use Resource Manager templates for managed disks in Azure Stack Hub
 description: Learn about the differences between managed and unmanaged disks when using Azure Resource Manager templates.
 author: sethmanheim
 ms.author: sethm
