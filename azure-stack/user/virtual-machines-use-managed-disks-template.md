@@ -3,10 +3,10 @@ title: Intent and product brand in a unique string of 43-59 chars including spac
 description: 115-145 characters including spaces. This abstract displays in the search result.
 author: sethmanheim
 ms.author: sethm
-ms.date: 8/19/2020
+ms.date: 8/25/2020
 ms.topic: conceptual
 ms.reviewer: wellsluo
-ms.lastreviewed: 8/19/2020
+ms.lastreviewed: 8/25/2020
 ---
 
 
