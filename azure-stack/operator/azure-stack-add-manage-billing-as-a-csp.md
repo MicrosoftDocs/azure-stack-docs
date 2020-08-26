@@ -34,6 +34,10 @@ Choose the type of shared services account that you use for Azure Stack Hub. The
 - Cloud Solution Provider
 - Partner Shared Services subscription
 
+We've created a tutorial video to help you understand how to manage your multi-tenant rights:
+
+> [!VIDEO https://www.youtube.com/embed/ZP6jkbLeS34]
+
 #### Azure Partner Shared Services
 
 Azure Partner Shared Services (APSS) subscriptions are the preferred choice for registration when a direct CSP or a CSP distributor operates Azure Stack Hub.

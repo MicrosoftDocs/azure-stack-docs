@@ -23,14 +23,14 @@ This article describes how to create a VPN connection to your Azure Stack Hub. A
 
 -  Access to an Azure Stack Hub integrated systems with available capacity to deploy the required compute, network, and resource requirements needed for this solution. 
 
-    > [!Note]  
+    > [!NOTE]  
     > These instructions will **not** work with an Azure Stack Development Kit (ASDK) because of the network limitions in the ASDK. For more information, see [ASDK requirements and considerations](../asdk/asdk-deploy-considerations.md).
 
 -  Access to a VPN device in the on-premises network that hosts the Azure Stack Hub integrated system. The device needs to create an IPSec tunnel, which meets the parameters described in the [Deployment parameters](#deployment-parameters).
 
 -  A network virtual appliance (NVA) solution available in your Azure Stack Hub Marketplace. An NVA controls the flow of network traffic from a perimeter network to other networks or subnets. This procedure uses the [Fortinet FortiGate Next-Generation Firewall Single VM Solution](https://azuremarketplace.microsoft.com/marketplace/apps/fortinet.fortinet-FortiGate-singlevm).
 
-    > [!Note]  
+    > [!NOTE]  
     > If you do not have the **Fortinet FortiGate-VM For Azure BYOL** and **FortiGate NGFW - Single VM Deployment (BYOL)** available in your Azure Stack Hub Marketplace, contact your cloud operator.
 
 -  To activate the FortiGate NVA, you will need at least one available FortiGate license file. Information on how to acquire these licenses, see the Fortinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
@@ -59,7 +59,7 @@ The following table summarizes the parameters that are used in these deployments
 | Public IP address name | forti1-publicip1 |
 | Public IP address type | Static |
 
-> [!Note]
+> [!NOTE]
 > \* Choose a different address space and subnet prefixes if `172.16.0.0/16` overlaps with the on-premises network or the Azure Stack Hub VIP pool.
 
 ## Deploy the FortiGate NGFW Marketplace items
@@ -177,7 +177,7 @@ Once you've activated the NVAs, create an IPSec VPN tunnel on the NVA.
 
 16. Select **Pre-shared Key** and enter (and record) a pre-shared key. 
 
-    > [!Note]  
+    > [!NOTE]  
     > You will need this key to set up the connection on the on-premises VPN device, that is, they must match *exactly*.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image17.png)
