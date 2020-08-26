@@ -135,11 +135,11 @@ After you deploy your cluster, return to your virtual network in the Azure Stack
 3. Enter the name of your virtual network in the search box.
 4. Select **Subnets** and then select the name of the subnet that contains your cluster.
     
-    ![route table and network security group](media/kubernetes-aks-engine-custom-vnet/virtual-network-rt-nsg.png)
+    ![route table and network security group](media/kubernetes-aks-engine-custom-vnet/virtual-network-route-table.png)
     
 5. Select **Route table** and then select the route table for your cluster.
 
-> [!Note]  
+> [!NOTE]  
 > Custom virtual network for Kubernetes Windows cluster has a [known issue](https://github.com/Azure/aks-engine/issues/371).
 
 ## Next steps

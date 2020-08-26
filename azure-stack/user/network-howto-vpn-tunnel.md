@@ -4,7 +4,7 @@ description: Learn how to set up a multiple site-to-site VPN tunnel  in Azure St
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 09/19/2019
@@ -70,7 +70,7 @@ This is a multiple step process. For this solution, you're going to be using the
 
 You can use same process as the **WebTier** but different parameters as shown here:
 
-> [!Note]  
+> [!NOTE]  
 > The AppTier address space will be **10.20.0.0/16** and you can see resource group location is **WestUS2**.
 
 ![](./media/azure-stack-network-howto-vpn-tunnel/image6.png)
@@ -145,7 +145,7 @@ If you view the output from the custom script extension, you can see the tunnel 
 
 2.  If you copy the `Add-Site2SiteIKE.ps1` script from the repository and run it locally, the script installs the **WindowsFeature** and **RemoteAccess**.
 
-    > [!Note]
+    > [!NOTE]
     > Depending on your environment you may need to reboot your system.
 
     For reference refer to the on-premises machine network configuration.
@@ -194,10 +194,10 @@ If you view the output from the custom script extension, you can see the tunnel 
 
     ![](./media/azure-stack-network-howto-vpn-tunnel/image23.png)
 
-    > [!Note]  
+    > [!NOTE]  
     > You can test RDP both from one machine to the second, and from the second to the first.
 
-    > [!Note]  
+    > [!NOTE]  
     > To implement this solution on-premises you will need to deploy routes to the Azure Stack Hub remote network into you switching infrastructure or at a minimum on specific VMs
 
 ### Deploying a GRE tunnel
