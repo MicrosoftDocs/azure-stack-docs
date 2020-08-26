@@ -6,7 +6,7 @@ ms.topic: conceptual
 ms.assetid: ea7e53c8-11ec-410b-b287-897c7aaafb13
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 08/25/2018
+ms.date: 08/26/2018
 ---
 # Plan a Software Defined Network infrastructure
 
@@ -53,8 +53,8 @@ A DHCP server can automatically assign IP addresses for the Management network, 
 | If...                                                    | Then...                                               |
 | :------------------------------------------------------- | :---------------------------------------------------- |
 | The logical networks use VLANs,                          | the physical compute host must connect to a trunked switch port that has access to the VLANs. It's important to note that the physical network adapters on the computer host must not have any VLAN filtering activated.|
-| You are using Switched-Embedded Teaming (SET) and have multiple NIC team members, such as network adapters,| you must connect all NIC team members for that particular host to the same Layer-2 broadcast domain.|
-| The physical compute host is running additional infrastructure VMs, such as Network Controller, SLB/MUX, or Gateway,                                                  | that host must have an additional IP address assigned from the Management logical network for each hosted VM. Also, each SLB/MUX infrastructure VM must have an IP address reserved for the HNV provider logical network. Failure to reserve an IP address may result in duplicate IP addresses on your network.|
+| You are using Switched-Embedded Teaming (SET) and have multiple Network Interface Card (NIC) team members, such as network adapters,| you must connect all NIC team members for that particular host to the same Layer-2 broadcast domain.|
+| The physical compute host is running additional infrastructure VMs, such as Network Controller, the Software Load Balancing (SLB) Multiplexer (MUX), or Gateway, | that host must have an additional IP address assigned from the Management logical network for each hosted VM. Also, each SLB MUX infrastructure VM must have an IP address reserved for the HNV provider logical network. Failure to reserve an IP address may result in duplicate IP addresses on your network.|
 
 For information about Hyper-V Network Virtualization (HNV) that you can use to virtualize networks in a Microsoft SDN deployment, see [Hyper-V Network Virtualization](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyper-v-network-virtualization).
 
@@ -81,37 +81,30 @@ Change the sample IP subnet prefixes and VLAN IDs for your environment.
 <!---Topic updated to here.--->
 
 ## Routing infrastructure
-If you are deploying your SDN infrastructure using scripts, the Management, HNV Provider, Transit, and VIP subnets must be routable to each other on the physical network.
+Routing information \(such as next-hop\) for the VIP subnets is advertised by the SLB Multiplexer (MUX) and RAS Gateways into the physical network using internal Border Gateway Protocol (BGP) peering. The VIP logical networks do not have a VLAN assigned and they are not preconfigured in the Layer-2 switch (such as the Top-of-Rack switch).
 
-Routing information \(e.g. next-hop\) for the VIP subnets is advertised by the SLB/MUX and RAS Gateways into the physical network using internal BGP peering. The VIP logical networks do not have a VLAN assigned and is not pre-configured in the Layer-2 switch (e.g. Top-of-Rack switch).
+You need to create a BGP peer on the router that your SDN infrastructure uses to receive routes for the VIP logical networks advertised by the SLB/MUXes and RAS Gateways. BGP peering only needs to occur one way (from the SLB MUX or RAS Gateway to the external BGP peer). Above the first layer of routing, you can use static routes or another dynamic routing protocol, such as Open Shortest Path First (OSPF). However, as previously stated, the IP subnet prefix for the VIP logical networks do need to be routable from the physical network to the external BGP peer.
 
-You need to create a BGP peer on the router that is used by your SDN infrastructure to receive routes for the VIP logical networks advertised by the SLB/MUXes and RAS Gateways. BGP peering only needs to occur one way (from SLB/MUX or RAS Gateway to external BGP peer).  Above the first layer of routing you can use static routes or another dynamic routing protocol such as OSPF, however, as previously stated, the IP subnet prefix for the VIP logical networks do need to be routable from the physical network to the external BGP peer.
+BGP peering is typically configured in a managed switch or router as part of the network infrastructure. The BGP peer could also be configured on a Windows Server with the Remote Access Server (RAS) role installed in a Routing Only mode. The BGP router peer in the network infrastructure must be configured to use its own Autonomous System Numbers (ASN) and allow peering from an ASN that is assigned to the SDN components \(SLB/MUX and RAS Gateways\).
 
-BGP peering is typically configured in a managed switch or router as part of the network infrastructure. The BGP peer could also be configured on a Windows Server with the Remote Access Server (RAS) role installed in a Routing Only mode. This BGP router peer in the network infrastructure must be configured to have its own ASN and allow peering from an ASN that is assigned to the SDN components \(SLB/MUX and RAS Gateways\). You must obtain the following information from your physical router, or from the network administrator in control of that router:
-
+You must obtain the following information from your physical router, or from the network administrator in control of that router:
 - Router ASN
 - Router IP address
-- ASN for use by SDN components (can be any AS number from the private ASN range)
+- ASN that SDN components use (this can be any AS number from the private ASN range)
 
 >[!NOTE]
->Four byte ASNs are not supported by the SLB/MUX. You must allocate two byte ASNs to the SLB/MUX and the router wo which it connects. You can use 4 byte ASNs elsewhere in your environment.
+>Four byte ASNs are not supported by the SLB MUX. You must allocate two byte ASNs to the SLB MUX and the router to which it connects. You can use 4 byte ASNs elsewhere in your environment.
 
-You or your network administrator must configure the BGP router peer to accept connections from the ASN and IP address or subnet address of the Transit logical network that your RAS gateway and SLB/MUXes are using.
+You or your network administrator must configure the BGP router peer to accept connections from the ASN and IP address or subnet address of the HNV Provider logical network that your RAS gateway and SLB MUXes are using.
 
 For more information, see [Border Gateway Protocol (BGP)](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp).
 
 ## Default gateways
-Machines that are configured to connect to multiple networks, such as the physical hosts and gateway virtual machines must only have one default gateway configured. Configure the default gateway on the adapter used to reach the Internet.
-
-For virtual machines, follow these rules to decide which network to use as the default gateway:
-
-1. Use the Transit logical network as the default gateway if a virtual machine connects to the Transit network, or if it is multi-homed to the Transit network or any other network.
-1. Use the Management network as the default gateway if a virtual machine only connects to the Management network.
-1. Use the HNV Provider network for SLB/MUXes and RAS Gateways. Do not use the HNV Provider network as a default gateway.
-1. Do not connect virtual machines directly to the Storage1, Storage2, Public VIP or Private VIP networks.
-
-For Hyper-V hosts and storage nodes, use the Management network as the default gateway.  The storage networks must never have a default gateway assigned.
-
+Machines configured to connect to multiple networks, such as the physical hosts, SLB MUX, and gateway VMs must only have one default gateway configured. Use the following default gateways for the hosts and the infrastructure VMs:
+1. For Hyper-V hosts, use the Management network as the default gateway.
+1. For Network Controller VMs, use the Management network as the default gateway.
+1. For SLB MUX VMs, use the Management network as the default gateway.
+1. For the gateway VMs, use the HNV Provider network as the default gateway. This should be set on the front-end NIC of the gateway VMs.
 
 ## Network hardware
 
@@ -210,7 +203,7 @@ Role|vCPU requirements|Memory requirements|Disk requirements|
 |Network controller (three node)|4 vCPUs|4 GB min (8 GB recommended)|75 GB for the OS drive
 |SLB/MUX (three node)|8 vCPUs|8 GB recommended|75 GB for the OS drive
 |RAS Gateway<p>(single pool of three node gateways, two active, one passive)|8 vCPUs|8 GB recommended|75 GB for the OS drive
-|RAS Gateway BGP router for SLB/MUX peering<p>(alternatively use ToR switch as BGP Router)|2 vCPUs|2 GB|75 GB for the OS drive|
+|RAS Gateway BGP router for SLB MUX peering<p>(alternatively use ToR switch as BGP Router)|2 vCPUs|2 GB|75 GB for the OS drive|
 
 
 If you use VMM for deployment, additional infrastructure virtual machine resources are required for VMM and other non-SDN infrastructure. For additional information, see [Minimum Hardware Recommendations for System Center Technical Preview.](/system-center/)
