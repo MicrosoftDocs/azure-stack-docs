@@ -69,7 +69,7 @@ The following table summarizes the parameters that are used in these deployments
 | Public IP address name | Forti2-publicip1 |
 | Public IP address type | Static |
 
-> [!Note]
+> [!NOTE]
 > \* Choose a different set of address spaces and subnet prefixes if the above overlap in any way with the on-premises network environment including the VIP Pool of either Azure Stack Hub. Also ensure that the address ranges do not overlap with one another.
 
 ## Deploy the FortiGate NGFW
@@ -187,7 +187,7 @@ Following the below steps for both the forti1 NVA and forti2 NVA:
 
 16. Select **Pre-shared Key** and enter (and record) a pre-shared key. 
 
-    > [!Note]  
+    > [!NOTE]  
     > You will need this key to set up the connection on the on-premises VPN device, that is, they must match *exactly*.
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet/image17.png)
