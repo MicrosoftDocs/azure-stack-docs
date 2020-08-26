@@ -63,7 +63,7 @@ Deploy to Azure Stack Hub instance A and instance B.
 
     ![](./media/network-howto-f5/image4.png)
 
-    > [!Note]  
+    > [!NOTE]  
     > Each BIG-IP Deployment should take around 20 minutes.
 
 ## Configure BIG-IP appliances
@@ -91,7 +91,7 @@ Follow these steps needs for both Azure Stack Hub A and B.
 
 1. Sign in to the BIG-IP and create a DNS Sync Group. For instructions, see [Creating BIG-IP DNS Sync Group](https://f5-dns-automation-demo-12-1-x.readthedocs.io/en/latest/lab2/sync-group.html).
 
-    > [!Note]  
+    > [!NOTE]  
     > You can find the local IP of the BIP-IP Appliance in your **F5-GSLB** Resource Group. The Network Interface is "f5stack1-ext" and you want to connect to the Public or Private IP (depending on access).
 
     ![](./media/network-howto-f5/image5.png)
@@ -114,7 +114,7 @@ After you have installed, you'll need configure your Azure Stack Hub NSGs and lo
 
 4. Deploy a basic web application workload within your Azure Stack Hub environment to Load Balance behind the BIG-IP. You can find an example for using the NGNIX server at [Deploying NGINX and NGINX Plus on Docker](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-docker/).
 
-    > [!Note]  
+    > [!NOTE]  
     > Deploy an instance of NGNIX on both Azure Stack Hub A and Azure Stack Hub B.
 
 5. After NGINX is deployed in a docker container on an Ubuntu VM within each of the Azure Stack Hub instances, validate that you can reach the default webpage on the servers.

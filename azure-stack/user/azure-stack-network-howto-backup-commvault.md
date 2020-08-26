@@ -47,7 +47,7 @@ The topology of this approach will look like the following diagram:
 
 2. Select **Create a resource** > **Compute** > **Commvault**.
 
-    > [!Note]  
+    > [!NOTE]  
     > If Commvault is not available to you, contact your cloud operator.
 
     ![Create VM](./media/azure-stack-network-howto-backup-commvault/commvault-create-vm-01.png)
