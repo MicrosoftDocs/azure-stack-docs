@@ -46,7 +46,7 @@ You can set the following items.
 | Private Public key | To use an open SSH connection from your development machine to the server VM in your Azure Stack Hub instance that hosts your web app, you need to create a Secure Shell (SSH) public and private key pair. | Required | For instructions on generating a key, see [SSH Key Generation](./azure-stack-dev-start-howto-ssh-public-key.md).|
 
 
-> [!Note]  
+> [!NOTE]  
 > You can also create the prerequisites for the AKS engine with [Azure CLI for Azure Stack Hub](./azure-stack-version-profiles-azurecli2.md) or [Azure Stack Hub PowerShell](../operator/azure-stack-powershell-install.md).
 
 ## Matching engine to base image version

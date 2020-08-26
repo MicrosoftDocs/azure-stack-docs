@@ -17,7 +17,7 @@ ms.lastreviewed: 3/12/2020
 
 # Deploy Kubernetes to Azure Stack Hub using Azure Active Directory
 
-> [!Note]  
+> [!NOTE]  
 > Only use the Kubernetes Azure Stack Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack, use [the AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
 
 You can follow the steps in this article to deploy and set up the resources for Kubernetes, when using Azure Active Directory (Azure AD) as your identity management service, in a single, coordinated operation.
@@ -118,7 +118,7 @@ Give the service principal access to your subscription so that the principal can
 
 1. Enter the **Master Profile DNS Prefix** that is unique to the region. This must be a region-unique name, such as `k8s-12345`. Try to chose it same as the resource group name as best practice.
 
-    > [!Note]  
+    > [!NOTE]  
     > For each cluster, use a new and unique master profile DNS prefix.
 
 1. Select the **Kubernetes master pool profile count**. The count contains the number of nodes in the master pool. There can be from 1 to 7. This value should be an odd number.
