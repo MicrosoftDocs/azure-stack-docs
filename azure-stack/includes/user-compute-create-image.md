@@ -26,4 +26,4 @@ ms.lastreviewed: 08/04/2020
 
 4. Once the image is created, use the image to create a new VM. 
     1. For more information on using the portal to create a Windows VM, see [Create a Windows server VM with the Azure Stack Hub portal](/azure-stack/user/azure-stack-quick-windows-portal.md).
-    1. For more information on using the portal to create a Linux VM, see [Create a Linux server VM by using the Azure Stack Hub portal](azure-stack/user/azure-stack-quick-linux-portal.md).
+    1. For more information on using the portal to create a Linux VM, see [Create a Linux server VM by using the Azure Stack Hub portal](/azure-stack/user/azure-stack-quick-linux-portal.md).
