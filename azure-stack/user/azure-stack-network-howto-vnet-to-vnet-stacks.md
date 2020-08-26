@@ -25,7 +25,7 @@ This article addresses the current Azure Stack Hub limitation, which lets tenant
 
 -  Access to an Azure Stack Hub integrated systems with available capacity to deploy the required compute, network, and resource requirements needed for this solution. 
 
-    > [!Note]  
+    > [!NOTE]  
     > These instructions will **not** work with an Azure Stack Development Kit (ASDK) because of the network limitations in the ASDK. For more information, see [ASDK requirements and considerations](../asdk/asdk-deploy-considerations.md).
 
 -  A network virtual appliance (NVA) solution downloaded and published to the Azure Stack Hub Marketplace. An NVA controls the flow of network traffic from a perimeter network to other networks or subnets. This procedure uses the [Fortinet FortiGate Next-Generation Firewall Single VM Solution](https://azuremarketplace.microsoft.com/marketplace/apps/fortinet.fortinet-FortiGate-singlevm).
@@ -74,7 +74,7 @@ The following table summarizes the parameters that are used in these deployments
 | Public IP address name | Forti2-publicip1 |
 | Public IP address type | Static |
 
-> [!Note]
+> [!NOTE]
 > \* Choose a different set of address spaces and subnet prefixes if the above overlap in any way with the on-premises network environment including the VIP Pool of either Azure Stack Hub. Also ensure that the address ranges do not overlap with one another.**
 
 ## Deploy the FortiGate NGFW Marketplace Items
@@ -205,7 +205,7 @@ Following the below steps for both the forti1 NVA and forti2 NVA:
 
 16. Select **Pre-shared Key** and enter (and record) a pre-shared key. 
 
-    > [!Note]  
+    > [!NOTE]  
     > You will need this key to set up the connection on the on-premises VPN device, that is, they must match *exactly*.
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet/image17.png)
