@@ -223,16 +223,21 @@ You can use the following samples as a reference for creating solutions with Nod
     git clone https://github.com/sijuman/storage-node-resource-provider-getting-started.git
     ```
 
+1. `cd` into your clone of the repository.
+
 2.  Create an Azure service principal and assign a role to access the subscription. For instructions, see [Use Azure PowerShell to create a service principal with a certificate](/azure/azure-stack/azure-stack-create-service-principals).
 
 3.  Retrieve the following required values:
     - Tenant ID
-    - Client ID
+    - Client ID (application ID)
     - Client secret
     - Azure Subscription ID
     - Azure Stack Hub Resource Manager endpoint
 
 4.  Set the following environment variables using the information you retrieved from the service principal you created using the command prompt:
+
+    > [!Note]  
+    > On Windows, use **set** instead of **export**.
 
     ```bash  
     export TENANT_ID=<your tenant id>
@@ -241,9 +246,6 @@ You can use the following samples as a reference for creating solutions with Nod
     export AZURE_SUBSCRIPTION_ID=<your subscription id>
     export ARM_ENDPOINT=<your Azure Stack Hub Resource manager URL>
     ```
-
-    > [!Note]  
-    > On Windows, use **set** instead of **export**.
 
 5.  Open the `index.js` file of the sample application.
 
