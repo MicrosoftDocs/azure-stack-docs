@@ -15,7 +15,7 @@ ms.lastreviewed: 8/24/2020
 
 # Move a VM to Azure Stack Hub Overview
 
-You can move virtual machines (VM)s from your environment to Azure Stack Hub. There some limitations that you need to expect when planning to move your workloads. Azure Stack Hub requires a generation 1 virtual hard disk (VHD). Your VM will need to be either generalized or specialized. Use generalized VMs as the base-mage for VMS created in Azure Stack. Specialized VM contains user accounts. To migrate, prepare and download the VHD, upload the image to a storage account in Azure Stack Hub, and then create the VM in your cloud.
+You can move virtual machines (VM)s from your environment to Azure Stack Hub. There are some limitations that you need to expect when planning to move your workloads. Azure Stack Hub requires a generation 1 virtual hard disk (VHD). Your VM will need to be either generalized or specialized. Use generalized VMs as the base-mage for VMS created in Azure Stack. Specialized VM contains user accounts. To migrate, prepare and download the VHD, upload the image to a storage account in Azure Stack Hub, and then create the VM in your cloud.
 
 Custom images come in two forms: **generalized** and **specialized**.
 

@@ -23,13 +23,14 @@ Find the section that that is specific to your needs when preparing your VHD.
 
 #### [Windows - Specialized](#tab/win-spec)
 
-- Follow the steps in the article [Download a Windows VHD from Azure](/azure//virtual-machines/windows/download-vhd) to prepare and download the VHD.
+mdb_20200818_cloudmig01
 - To deploy VM extensions, make sure that the VM agent .msi available.
     For information and steps, see [Azure Virtual Machine Agent overview](/azure/virtual-machines/extensions/agent-windows). Make sure the extension is installed on the VM before your move VM. If the VM agent is not present in the VHD, extension deployment will fail. You do not need to set the OS profile while provisioning, or set `$vm.OSProfile.AllowExtensionOperations = $true`.
 
 #### [Windows - Generalized](#tab/win-gen)
 
 ::: moniker range="<=azs-1910"
+- Follow the instructions in [Download a Windows VHD from Azure](/azure/virtual-machines/windows/download-vhd) to correctly generalize and download the VHD before moving it to Azure Stack Hub.
 - When you provision the VM on Azure, use PowerShell. Prepare it without the `-ProvisionVMAgent` flag.
 - Remove all VM extensions using the **Remove-AzureRmVMExtension** cmdlet from the VM before generalizing the VM in Azure. You can find which VM extensions are installed by going to `Windows (C:) > WindowsAzure > Logs > Plugins`.
 
