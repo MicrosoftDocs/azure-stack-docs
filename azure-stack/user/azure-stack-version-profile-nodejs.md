@@ -56,7 +56,7 @@ To use the latest API-version of a service, use the **Latest** profile of the sp
 
 Use the specific API versions defined inside the package for the specific API-versions of a resource provider.
 
-  > [!Note]  
+  > [!NOTE]  
   > You can combine all of the options in the same application.
 
 ## Install the Node.js SDK
@@ -113,7 +113,7 @@ The Microsoft Azure Resource Manager is a management framework that allows admin
 
 You can get the metadata information from the Resource Manager endpoint. The endpoint returns a JSON file with the information required to run your code.
 
-> [!Note]  
+> [!NOTE]  
 > The **ResourceManagerUrl** in the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external`
 The **ResourceManagerUrl** in integrated systems is: `https://management.region.<fqdn>/`, where `<fqdn>` is your fully qualified domain name.
 To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
@@ -236,7 +236,7 @@ You can use the following samples as a reference for creating solutions with Nod
 
 4.  Set the following environment variables using the information you retrieved from the service principal you created using the command prompt:
 
-    > [!Note]  
+    > [!NOTE]  
     > On Windows, use **set** instead of **export**.
 
     ```bash  
