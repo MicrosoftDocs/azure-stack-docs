@@ -101,21 +101,21 @@ The value V, largest VM in the scale unit, is dynamically based on the largest t
 
 **A**: In **PowerShell** run `test-azurestack -include AzsVmPlacement -debug`, which generates an output like this:
 
+    ```console
+    Starting Test-AzureStack
+    Launching AzsVmPlacement
+     
+    Azure Stack Scale Unit VM Placement Summary Results
+     
+    Cluster Node    VM Count VMs Running Physical Core Total Virtual Co Physical Memory Total Virtual Mem
+    ------------    -------- ----------- ------------- ---------------- --------------- -----------------
+    LNV2-Node02     20       20          28            66               256             119.5            
+    LNV2-Node03     17       16          28            62               256             110              
+    LNV2-Node01     11       11          28            47               256             111              
+    LNV2-Node04     10       10          28            49               256             101              
+    
+    PASS : Azure Stack Scale Unit VM Placement Summary
     ```
-        Starting Test-AzureStack
-        Launching AzsVmPlacement
-         
-        Azure Stack Scale Unit VM Placement Summary Results
-         
-        Cluster Node    VM Count VMs Running Physical Core Total Virtual Co Physical Memory Total Virtual Mem
-        ------------    -------- ----------- ------------- ---------------- --------------- -----------------
-        LNV2-Node02     20       20          28            66               256             119.5            
-        LNV2-Node03     17       16          28            62               256             110              
-        LNV2-Node01     11       11          28            47               256             111              
-        LNV2-Node04     10       10          28            49               256             101              
-        
-        PASS : Azure Stack Scale Unit VM Placement Summary
-        ```
 
 **Q**: The number of deployed VMs on my Azure Stack Hub hasn't changed, but my capacity is fluctuating. Why?
 
