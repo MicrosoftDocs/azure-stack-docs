@@ -17,4 +17,3 @@ ms.lastreviewed: 08/04/2020
 4. Type the name of your container, and then select **Blob (anonymous read access for blobs only)**.
 
 5. Select your container and then select **Upload**. Upload your VHD.
-
