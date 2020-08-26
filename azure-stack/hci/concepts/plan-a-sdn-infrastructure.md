@@ -78,8 +78,6 @@ Change the sample IP subnet prefixes and VLAN IDs for your environment.
 | Private VIP              |  20.20.20.0  |    27    |          NA                |  20.20.20.1    | 20.20.20.1 - Default GW (router) |
 | GRE VIP                  |  31.30.30.0  |    24    |          NA                |  31.30.30.1    | 31.30.30.1 - Default GW |
 
-<!---Topic updated to here.--->
-
 ## Routing infrastructure
 Routing information \(such as next-hop\) for the VIP subnets is advertised by the SLB Multiplexer (MUX) and RAS Gateways into the physical network using internal Border Gateway Protocol (BGP) peering. The VIP logical networks do not have a VLAN assigned and they are not preconfigured in the Layer-2 switch (such as the Top-of-Rack switch).
 
@@ -107,77 +105,54 @@ Machines configured to connect to multiple networks, such as the physical hosts,
 1. For the gateway VMs, use the HNV Provider network as the default gateway. This should be set on the front-end NIC of the gateway VMs.
 
 ## Network hardware
-
 You can use the following sections to plan network hardware deployment.
 
+<!---H2 Section intro text here.--->
+
+
 ### Network Interface Cards (NICs)
+The network interface cards (NICs) that you use in your Hyper-V hosts and storage hosts require specific capabilities to achieve the best performance.
 
-The network interface cards (NICs) used in your Hyper-V hosts and storage hosts require specific capabilities to achieve the best performance.
-
-Remote Direct Memory Access (RDMA) is a kernel bypass technique that makes it possible to transfer large amounts of data without using the host CPU, which frees the CPU to perform other work.
-
-Switch Embedded Teaming (SET) is an alternative NIC Teaming solution that you can use in environments that include Hyper-V and the Software Defined Networking (SDN) stack in Windows Server 2016. SET integrates some NIC Teaming functionality into the Hyper-V Virtual Switch.
+Remote Direct Memory Access (RDMA) is a kernel bypass technique that makes it possible to transfer large amounts of data without using the host CPU, which frees the CPU to perform other work. Switch Embedded Teaming (SET) is an alternative NIC Teaming solution that you can use in environments that include Hyper-V and the SDN stack. SET integrates some NIC Teaming functionality into the Hyper-V Virtual Switch.
 
 For more information, see [Remote Direct Memory Access (RDMA) and Switch Embedded Teaming (SET)](/windows-server/virtualization/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming).
 
-To account for the overhead in tenant virtual network traffic caused by VXLAN or NVGRE encapsulation headers, the MTU of the Layer-2 fabric network (switches and hosts) must be set to greater than or equal to 1674 Bytes \(including Layer-2 Ethernet headers\).
+To account for the overhead in tenant virtual network traffic caused by VXLAN or NVGRE encapsulation headers, the maximum transmission unit (MTU) of the Layer-2 fabric network (switches and hosts) must be set to greater than or equal to 1674 bytes \(including Layer-2 Ethernet headers\).
 
-NICs that support the new *EncapOverhead* advanced adapter keyword sets the MTU  automatically through the network controller Host Agent. NICs that do not support the new *EncapOverhead* keyword need to set the MTU size manually on each physical host using the *JumboPacket* \(or equivalent\) keyword.
-
+NICs that support the new *EncapOverhead* advanced adapter keyword set the MTU  automatically through the Network Controller Host Agent. NICs that do not support the new *EncapOverhead* keyword need to set the MTU size manually on each physical host using the *JumboPacket* \(or equivalent\) keyword.
 
 ### Switches
-
 When selecting a physical switch and router for your environment, make sure it supports the following set of capabilities:
-
 - Switchport MTU settings \(required\)
-- MTU set to >= 1674 Bytes \(including L2-Ethernet Header\)
+- MTU set to >= 1674 bytes \(including L2-Ethernet Header\)
 - L3 protocols \(required\)
-- ECMP
+- Equal-cost multi-path (ECMP) routing
 - BGP \(IETF RFC 4271\)\-based ECMP
 
-Implementations should support the MUST statements in the following IETF standards.
-
+Implementations should support the MUST statements in the following IETF standards:
 - RFC 2545: "BGP-4 Multiprotocol extensions for IPv6 Inter-Domain Routing"
 - RFC 4760: "Multiprotocol Extensions for BGP-4"
 - RFC 4893: "BGP Support for Four-octet AS Number Space"
 - RFC 4456: "BGP Route Reflection: An Alternative to Full Mesh Internal BGP (IBGP)"
 - RFC 4724: "Graceful Restart Mechanism for BGP"
 
-The following tagging protocols are required.
-
+The following tagging protocols are required:
 - VLAN - Isolation of various types of traffic
 - 802.1q trunk
 
-The following items provide Link control.
-
+The following items provide Link control:
 - Quality of service \(PFC only required if using RoCE\)
 - Enhanced Traffic Selection \(802.1Qaz\)
 - Priority Based Flow Control \(802.1p/Q and 802.1Qbb\)
 
-The following items provide availability and redundancy.
-
+The following items provide availability and redundancy:
 - Switch availability (required)
-- A highly available router is required to perform gateway functions. You can do this by using a multi-chassis switch\ router or technologies like VRRP.
-
-The following items provide management capabilities.
-
-**Monitoring**
-
-- SNMP v1 or SNMP v2 (required if using Network Controller for physical switch monitoring)
-- SNMP MIBs \(required if you are using Network Controller for physical switch monitoring\)
-- MIB-II (RFC 1213), LLDP, Interface MIB \(RFC 2863\), IF-MIB, IP-MIB, IP-FORWARD-MIB, Q-BRIDGE-MIB, BRIDGE-MIB, LLDB-MIB, Entity-MIB, IEEE8023-LAG-MIB
-
-The following diagrams show a sample four-node setup. For clarity purposes, the first diagram shows just the network controller, the second shows the network controller plus the software load balancer, and the third diagram shows the network controller, software load balancer, and the gateway.
-
-These diagrams do not show storage networks and vNICs. If you plan to use SMB-based storage, these are required.
-
-Both the infrastructure and tenant virtual machines can be redistributed across any physical compute host (assuming the correct network connectivity exists for the correct logical networks).
-
-
+- A highly available router is required to perform gateway functions. You can provide this by using either a multi-chassis switch\router or technologies like the Virtual Router Redundancy Protocol (VRRP).
 
 ## Switch configuration examples
+To help configure your physical switch or router, a set of sample configuration files for a variety of switch models and vendors is available at the [Microsoft SDN GitHub repository](https://github.com/microsoft/SDN/tree/master/SwitchConfigExamples). A detailed readme and tested command line interface (CLI) commands for specific switches are provided.
 
-To help configure your physical switch or router, a set of sample configuration files for a variety of switch models and vendors are available at the [Microsoft SDN GitHub repository](https://github.com/microsoft/SDN/tree/master/SwitchConfigExamples). A detailed readme and tested command line interface (CLI) commands for specific switches are provided.
+<!---Topic updated to here.--->
 
 
 ## Compute
