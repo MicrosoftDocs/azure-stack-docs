@@ -17,13 +17,13 @@ ms.lastreviewed: 8/24/2020
 
 You can upload a virtual hard drive (VHD) from a virtual machine (VM) created in Azure to your Azure Stack Hub instance.
 
-## Prepare your VHD in Azure
+## Prepare and download your VHS from Azure
 
 Find the section that that is specific to your needs when preparing your VHD.
 
 #### [Windows - Specialized](#tab/win-spec)
 
-- Follow the steps in the article [Create a Windows VM from a specialized disk by using PowerShell](/azure/virtual-machines/windows/create-vm-specialized#prepare-the-vm) to prepare the VHD. <!-- Follow the steps [here](/azure/virtual-machines/windows/create-vm-specialized#prepare-the-vm) to prepare the VHD correctly. -->
+- Follow the steps in the article [Download a Windows VHD from Azure](/azure//virtual-machines/windows/download-vhd) to prepare and download the VHD.
 - To deploy VM extensions, make sure that the VM agent .msi available.
     For information and steps, see [Azure Virtual Machine Agent overview](/azure/virtual-machines/extensions/agent-windows). Make sure the extension is installed on the VM before your move VM. If the VM agent is not present in the VHD, extension deployment will fail. You do not need to set the OS profile while provisioning, or set `$vm.OSProfile.AllowExtensionOperations = $true`.
 
@@ -44,7 +44,8 @@ Follow the instructions in [Download a Windows VHD from Azure](/azure/virtual-ma
 
 #### [Linux - Specialized](#tab/lin-spec)
 
-- You can use guidance in the article [Create a Linux VM from a custom disk](/azure/virtual-machines/linux/upload-vhd#requirements) when you are preparing a VHD.
+- Before downloading your Linux VM, follow the guidance in the "Prepare VM" section of the article [Create a Linux VM from a custom disk with the Azure CLI](/azure/virtual-machines/linux/upload-vhd#prepare-the-vm)
+- Follow the steps in the article [Download a Linux VHD from Azure](/azure//virtual-machines/windows/download-vhd) to prepare and download the VHD.
 - For a specialized VHD, make sure to use "attach" semantics using `-CreateOption Attach`. You can find an example in the article [Create a virtual machine using an existing managed OS disk with PowerShell (Windows)](/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks).
 
 #### [Linux - Generalized](#tab/lin-gen)
@@ -85,6 +86,8 @@ Follow the instructions in [Download a Windows VHD from Azure](/azure/virtual-ma
 > You can find a script in the article [Sample script to upload a VHD to Azure and create a new VM](/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script) to upload the VHD to an Azure Stack Hub user storage account and create a VM. Make sure to provide `$urlOfUploadedImageVhd` as the Azure Stack Hub storage account+container URL. For a generalized VHD, make sure to use `FromImage` value when setting `-CreateOption FromImage`.
 
 ---
+
+When you have completed preparing and downloading your image, have your VHD file in an accessible location to your Azure Stack Hub instance.
 
 ## Upload to a storage account
 

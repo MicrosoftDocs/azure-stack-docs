@@ -37,6 +37,8 @@ Follow the appropriate instructions to generalize the VHD for your Linux OS:
 
 ---
 
+When you have completed preparing and downloading your image, have your VHD file in an accessible location to your Azure Stack Hub instance.
+
 ## Upload to a storage account
 
 [!INCLUDE [Upload to a storage account](../includes/user-compute-upload-vhd.md)]
