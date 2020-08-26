@@ -17,6 +17,12 @@ ms.lastreviewed: 8/18/2020
 
 You can add a virtual machine (VM) image from your on-premises environment. You can create your image as a virtual hard disk (VHD) and upload the image to a storage account in your Azure Stack Hub instance. You can then create a VM from the VHD.
 
+A specialized disk image is a copy of a virtual hard disk (VHD) from an existing VM that contains the user accounts, applications, and other state data from your original VM. This is typically the format in which VMs are migrated to Azure Stack Hub. Specialized VHDs are a good fit for when you need to migrate VMs from on-premises to Azure Stack Hub.
+
+Creating the VM directly off a VHD will use that VHD and create 'just that single vm' (this is the case described in the second doc, with the specialized image).
+
+Adding an image in VM Images creates that image in the user-subscription --- so only the users in that sub can use it
+
 ## How to move an image
 
 Find the section that that is specific to your needs when preparing your VHD.
@@ -26,6 +32,14 @@ Find the section that that is specific to your needs when preparing your VHD.
 - Follow the steps in [Create a Windows VM from a specialized disk by using PowerShell](/azure/virtual-machines/windows/create-vm-specialized) to prepare the VHD correctly.
 - To deploy VM extensions, make sure that the VM agent .msi available. For guidance, see [Azure Virtual Machine Agent overview](/azure/virtual-machines/extensions/agent-windows). If the VM agent is not present in the VHD, extension deployment will fail. You do not need to set the OS profile while provisioning, or set `$vm.OSProfile.AllowExtensionOperations = $true`.
 
+Tibi's additions:
+
+Prepare a Windows VHD to upload to Azure - https://docs.microsoft.com/en-us/azure/virtual-machines/windows/prepare-for-upload-vhd-image. 
+**Do not** generalize the VM by using Sysprep.
+Remove any guest virtualization tools and agents that are installed on the VM (such as VMware tools).
+Make sure the VM is configured to get the IP address and DNS settings from DHCP. This ensures that the server obtains an IP address within the virtual network when it starts up.
+Make sure the RDP/SSH is enabled and the firewall allows communication 
+Follow the https://docs.microsoft.com/en-us/azure/virtual-machines/windows/prepare-for-upload-vhd-image steps (just duplicating the first one but there's a lot of important info there)
 
 #### [Linux VM](#tab/port-linux)
 
@@ -110,7 +124,11 @@ When you have completed preparing and downloading your image, have your VHD file
 
 ## Create the image in Azure Stack Hub
 
-[!INCLUDE [Create the image in Azure Stack Hub](../includes/user-compute-create-image.md)]
+- Using a DISK (a managed disk) that is created with a 'storage blob' source
+- And the VM directly created off of it
+- With an agent, your VM properites will be:
+- Without an agent, your VM properites will be:
+- When the VM has multiple disks, those will be added as data disks - note that D: drive will need to be taken care of, preferably when preparing the VM (before copying it to the storage account).
 
 ## Next steps
 

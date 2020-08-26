@@ -18,6 +18,15 @@ In Azure Stack Hub, as an operator you can add your custom virtual machine (VM) 
 
 You can find instructions for adding generalized and specialized images in the Compute section of the user guide. For instructions see [Move a VM to Azure Stack Hub Overview](/azure-stack/user/vm-move-overview).
 
+## About creating a specialized image
+
+putting the image in the admin-portal in Compu->VM Images ---- makes it available to everyone, but they need to use an ARM template to use it
+creating the marketplace item makes it available to everyone in the marketplace
+
+## About creating on creating a generalized image
+
+yadda
+
 ## Remove using the portal
 
 To remove the VM image as an Azure Stack Hub operator using the Azure Stack Hub portal, follow these steps:
