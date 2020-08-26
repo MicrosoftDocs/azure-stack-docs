@@ -8,49 +8,22 @@ ms.reviewer: thoroet
 ms.lastreviewed: 08/04/2020
 ---
 
-1. Open the **Azure Stack Hub User Portal** link  and sign in using the **aadUserName** user
+1. Sign in to the Azure Stack Hub user portal.
 
-2. select the storage account used to host the VM image copied above and select the container which includes that VHD.
+2. In the user portal, select  **All Services** > **Images** > **Add**.
 
-3. Set the container access level to public
+3. In the Create image blade:
 
-    > [!Note]  
-    > This is only for simplifying the exercise.
+    1. Type the **Name** of your image.
+    2. Select your **Subscription**.
+    3. Create or add the image to a **Resource group**.
+    4. Select the **Location**, also referred to as the region, of your ASDK.
+    5. Select an **OS type** that matches your image.
+    6. Select **Browse** and then navigate to your Storage account, container, and VHD. Choose **Select**.
+    7. Select your disk type in **Account type**.
+    8. Select **Read/write** for host catching.
+    9. Select **Create**.
 
-4. select the container and on the VHD copied - save the **URL** to the VHD
-
-    > [!Note]  
-    > This will be used later in the exercise
-
-5. Open the **Azure Stack Hub Admin Portal** link  and sign in using the **aadUserName** user
-
-6. select **Region Management**, select **Compute**, select **VM Images**, and select **Add**
-
-7. Complete the required fields with any values you wish and specify the OS data disk URI as the path to the VHD image copied earlier
-
-
-8. The image will be creating which includes the copy of the VHD
-
-    > [!Note]  
-    > This might take a few minutes - make sure the image has a "succeeded" status before creating the VM (you can continue with the next steps to create the template, just don't start the VM creation before the VM image has a "succeeded" status)
-
-9. Open the Azure Stack Hub User Portal link  and sign in.
-
-10. select **Create a resource** and select **Template deployment**
-
-11. select **Template**, select **Quickstart templates**, and select the "101-vm-windows-create" template
-
-12. Edit the template to use the **Publisher**, **Offer**, and **SKU** used to create the VM image earlier in the exercise
-
-13. Complete the required Parameters - make sure the **WindowsVersion** corresponds to the **SKU** value defined above
-
-    > [!Note]  
-    > The "windowsversion" parameter is used in the template itself. This could be changed to any other name for that parameter.
-
-14. After the VM is provisioned browse to the VM resource and notice the size of the Disk and how it's configured
-
-> [!Note]  
-> Also notice how the VM uses a nonmanaged disk (as opposed to creating the VM from the
-
-> [!Tip]  
-> Use a different template (which uses a windows image) to deploy different resources, using the same image.
+4. Once the image is created, use the image to create a new VM. 
+    1. For more information on using the portal to create a Windows VM, see [Create a Windows server VM with the Azure Stack Hub portal](azure-stack-quick-windows-portal.md).
+    1. For more information on using the portal to create a Linux VM, see [Create a Linux server VM by using the Azure Stack Hub portal](azure-stack-quick-linux-portal.md).
