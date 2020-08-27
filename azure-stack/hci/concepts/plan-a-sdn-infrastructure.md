@@ -174,7 +174,7 @@ Role|vCPU requirements|Memory requirements|Disk requirements|
 --------|-----------------------------|-----------------------|--------------------------
 |Network Controller (three node)|4 vCPUs|4 GB minimum<br> (8 GB recommended)|75 GB for the operating system drive
 |SLB/MUX (three node)|8 vCPUs|8 GB recommended|75 GB for the operating system drive
-|RAS Gateway<br> (single pool of three node gateways, two active, one passive)|8 vCPUs|8 GB recommended|75 GB for the operating system drive
+|RAS Gateway<br> (single pool of three node gateways,<br> two active, one passive)|8 vCPUs|8 GB recommended|75 GB for the operating system drive
 |RAS Gateway BGP router for SLB MUX peering<br> (alternatively use ToR switch as BGP Router)|2 vCPUs|2 GB|75 GB for the operating system drive|
 
 If you use System Center Virtual Machine Manager (VMM) for deployment, additional infrastructure VM resources are required for VMM and other non-SDN infrastructure. For more information, see [System requirements for System Center Virtual Machine Manager](https://docs.microsoft.com/system-center/vmm/system-requirements?view=sc-vmm-2019).
