@@ -189,12 +189,12 @@ Based on your requirements, you may need to deploy a subset of the SDN infrastru
 
 Feature|Deployment requirements|Network requirements|
 --------|-------------------------|-------------------------
-|TBD |TBD |TBD |
-|TBD |TBD |TBD |
-|TBD |TBD |TBD |
-|TBD |TBD |TBD |
-|TBD |TBD |TBD |
-|TBD |TBD |TBD |
+|Logical Network management<br> Access control lists (ACLs) (for VLAN-based network)<br> Quality of Service (QoS)<br>|Network Controller|None|
+|Virtual Networking<br> User Defined Routing<br> ACLs (for virtual network)<br> Encrypted Subnets|Network Controller|HNV PA VLAN<br> Subnet<br> Router|
+|Inbound/Outbound NAT<br> Load Balancing|Network Controller<br> SLB MUX|BGP on HNV PA network<br> Private and Public VIP subnets|
+|GRE gateway connections|Network Controller<br> Gateway|BGP on HNV PA network<br> GRE VIP subnet|
+|IPSec gateway connections|Network Controller<br> SLB MUX<br> Gateway|BGP on HNV PA network<br> Public VIP subnet|
+|L3 gateway connections|Network Controller<br> Gateway|Tenant VLAN, Subnet, Router<br> BGP on tenant VLAN optional.|
 
 ## See Also
 - [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller)
