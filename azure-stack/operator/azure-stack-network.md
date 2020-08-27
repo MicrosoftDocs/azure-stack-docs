@@ -3,7 +3,7 @@ title: Network integration planning for Azure Stack Hub
 description: Learn how to plan for datacenter network integration with Azure Stack Hub integrated systems.
 author: IngridAtMicrosoft
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 08/27/2020
 ms.author: inhenkel
 ms.reviewer: wamota
 ms.lastreviewed: 06/04/2019
@@ -26,6 +26,13 @@ This article provides Azure Stack network infrastructure information to help you
 The Azure Stack solution requires a resilient and highly available physical infrastructure to support its operation and services. To integrate Azure Stack to the network it requires uplinks from the Top-of-Rack switches (ToR) to the nearest switch or router, which on this documentation is referred as Border. The ToRs can be uplinked to a single or a pair of Borders. The ToR is pre-configured by our automation tool, it expects a minimum of one connection between ToR and Border when using BGP Routing and a minimum of two connections (one per ToR) between ToR and Border when using Static Routing, with a maximum of four connections on either routing options. These connections are limited to SFP+ or SFP28 media and a minimum of one GB speed. Please check with your original equipment manufacturer (OEM) hardware vendor for availability. The following diagram presents the recommended design:
 
 ![Recommended Azure Stack network design](media/azure-stack-network/physical-network.svg)
+
+### Bandwidth Allocation
+
+Azure Stack Hub is built using Windows Server 2019 Failover Cluster and Spaces Direct technologies. A portion of the Azure Stack Hub physical network configuration is done to utilize traffic separation and bandwidth guarantees to ensure that the Spaces Direct storage communications can meet the performance and scale required of the solution. The network configuration uses traffic classes to separate the Spaces Direct, RDMA-based communications from that of the network utilization by the Azure Stack Hub infrastructure and/or tenant. To align to the current best practices defined for Windows Server 2019, Azure Stack Hub is changing to use an additional traffic class or priority to further separate server to server communication in support of the Failover Clustering control communication. This new traffic class definition will be configured to reserve 2% of the available, physical bandwidth. This traffic class and bandwidth reservation configuration is accomplished by a change on the top-of-rack (ToR) switches of the Azure Stack Hub solution and on the host or servers of Azure Stack Hub. Note that changes are not required on the customer border network devices. These changes provide better resiliency for Failover Cluster communication and is meant to avoid situations where network bandwidth is fully consumed and as a result Failover Cluster control messages are disrupted. Note that the Failover Cluster communication is a critical component of the Azure Stack Hub infrastructure and if disrupted for long periods of time, can lead to instability in the Spaces Direct storage services or other services that will eventually impact tenant or end-user workload stability.
+
+> [!NOTE]
+> The described changes are added at the host level of an Azure Stack Hub system in the 2008 release. Please contact your OEM to arrange making the required changes at the ToR network switches. This ToR change can be performed either prior to updating to the 2008 release or after updating to 2008. The configuration change to the ToR switches is required to improve the Failover Cluster communications.
 
 ## Logical Networks
 
@@ -75,6 +82,7 @@ For systems deployed before 1910, this /20 subnet will be an additional network 
 **Remediation steps**: To remediate, follow the instructions to [open a PEP Session](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Prepare a [private internal IP range](azure-stack-network.md#logical-networks) of size /20, and run the following cmdlet (only available starting with 1910) in the PEP session using the following example: `Set-AzsPrivateNetwork -UserSubnet 10.87.0.0/20`. If the operation is performed successfully, you'll receive the message **Azs Internal Network range added to the config**. If successfully completed, the alert will close in the administrator portal. The Azure Stack Hub system can now update to the next version.
 
 ### Azure Stack infrastructure network
+
 This /24 network is dedicated to internal Azure Stack components so that they can communicate and exchange data among themselves. This subnet can be routable externally of the Azure Stack solution to your datacenter, we do not recommend using Public or Internet routable IP addresses on this subnet. This network is advertised to the Border but most of its IPs are protected by Access Control Lists (ACLs). The IPs allowed for access are within a small range equivalent in size to a /27 network and host services like the [privileged end point (PEP)](azure-stack-privileged-endpoint.md) and [Azure Stack Backup](azure-stack-backup-reference.md).
 
 ### Public VIP network
