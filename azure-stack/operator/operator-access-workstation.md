@@ -3,10 +3,10 @@ title: Azure Stack Hub Operator Access Workstation
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: asganesh
 ms.topic: article
-ms.date: 08/25/2020
+ms.date: 08/27/2020
 ms.author: justinha
 ms.reviewer: asganesh
-ms.lastreviewed: 08/25/2020
+ms.lastreviewed: 08/27/2020
 
 # Intent: As an Azure Stack operator, I want to download and configure an Azure Stack Hub Operator Access Workstation.
 # Keyword: azure stack hub operator access workstation
@@ -23,13 +23,12 @@ The OAW VM should be created when an operator performs a new task. After a requi
 
 The following tables lists common scenarios that are well-suited for the OAW capabilities. This is not an exhaustive list of all scenarios available through the OAW.
 
-|Scenario                                    | Description                 |
+|Scenario                                    |Description                 |
 |--------------------------------------------|-----------------------------|
-|Access the Adminstration portal​ at the edge |                  |
-|[Access PEP](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint)|Log collection and upload​<br>Create SMB share at HLH for file transfer from stamp​<br>Log collection​<br>Use Azure Storage Explorer to upload logs saved at HLH SMB share |
-|[Renew Azure Stack Hub registration](https://docs.microsoft.com/azure-stack/operator/azure-stack-registration#renew-or-change-registration) |Get previous Registration Name and Resource Group from the Administration portal​ |
-|Marketplace syndication​                     |Download from Azure<br>Upload to Azure Stack Hub                                 |
-|Image sideload                              |Follow same steps as Marketplace syndication?                                    |
+|[Access the Adminstration portal​](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-portals)             |Perform administrative operations                 |
+|[Access PEP](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint)|Log collection and upload​:<br>-Create an SMB share on the HLH for file transfer from Azure Stack Hub​<br>-Use Azure Storage Explorer to upload logs saved to the SMB share |
+|[Register Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-registration#renew-or-change-registration) |For re-registration, get previous Registration Name and Resource Group from the Administration portal​ |
+|[Marketplace syndication​](https://docs.microsoft.com/azure-stack/operator/azure-stack-marketplace)                   |Create an SMB share on the HLH to store the downloaded image or extension                                 |
 
 ## Download files
 
