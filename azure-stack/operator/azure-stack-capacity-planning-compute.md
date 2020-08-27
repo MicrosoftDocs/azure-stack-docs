@@ -105,21 +105,21 @@ To deallocate memory for VM placement, try one or more of these three methods:
 | 10cd7b0f-68f4-40ee-9d98-b9637438ebf4  |                112  |     2.2392578125  |   LISSA01P-NODE01 |
 | 2e403868-ff81-4abb-b087-d9625ca01d84   |               112   |    2.2392578125  |   LISSA01P-NODE04 |
         
-    Reducing the size of the largest VM to the next smallest VM in stamp (24 GB) will reduce the size of the resiliency reserve.
+Reducing the size of the largest VM to the next smallest VM in stamp (24 GB) will reduce the size of the resiliency reserve.
     
-    Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 384 + 172.8 + 48 = 604.8 GB
+Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 384 + 172.8 + 48 = 604.8 GB
     
-    Total Memory: 1536 GB
+Total Memory: 1536 GB
     
-    Total GB for infra: 258 GB
+Total GB for infra: 258 GB
     
-    Total GB for Tenant: 329.25 GB
+Total GB for Tenant: 329.25 GB
     
-    Resiliency reserve: 604.8 GB  
+Resiliency reserve: 604.8 GB  
     
-    * Total memory reserved: 258  + 329.25  + 604.8 = 1168  GB
+Total memory reserved: 258  + 329.25  + 604.8 = 1168  GB
     
-    * Total GB available for placement: ~  344 GB
+Total GB available for placement: ~  344 GB
      
 
 * Add 2 identical nodes to stamp.
