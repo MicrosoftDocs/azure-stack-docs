@@ -8,8 +8,8 @@ ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 8/18/2020
 
-# Intent: As an Azure Stack Hub user, I wan to learn about how where to find more information developing solutions.
-# Keywords: Develop solutions with Azure Stack Hub
+# Intent: As an Azure Stack Hub user, I want to move my specific workload VM into Azure Stack Hub so that I can use my applications.
+# Keywords: migration workload specialized VM
 
 ---
 

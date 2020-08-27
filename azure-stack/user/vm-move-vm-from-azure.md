@@ -9,7 +9,7 @@ ms.reviewer: kivenkat
 ms.lastreviewed: 8/24/2020
 
 # Intent: As an Azure Stack Hub user, I wan to learn about how where to find more information developing solutions.
-# Keywords: Develop solutions with Azure Stack Hub
+# Keywords:  migration workload VM from Azure to Azure Stack Hub
 
 ---
 
@@ -23,9 +23,9 @@ Find the section that that is specific to your needs when preparing your VHD.
 
 #### [Windows - Specialized](#tab/win-spec)
 
-mdb_20200818_cloudmig01
-- To deploy VM extensions, make sure that the VM agent .msi available.
-    For information and steps, see [Azure Virtual Machine Agent overview](/azure/virtual-machines/extensions/agent-windows). Make sure the extension is installed on the VM before your move VM. If the VM agent is not present in the VHD, extension deployment will fail. You do not need to set the OS profile while provisioning, or set `$vm.OSProfile.AllowExtensionOperations = $true`.
+- Follow the steps in the article [Create a Windows VM from a specialized disk by using PowerShell](/azure/virtual-machines/windows/create-vm-specialized#prepare-the-vm) to prepare the VHD.
+- To deploy VM extensions, make sure that the VM agent .msi available.  
+  For information and steps, see [Azure Virtual Machine Agent overview](/azure/virtual-machines/extensions/agent-windows). Make sure the extension is installed on the VM before your move VM. If the VM agent is not present in the VHD, extension deployment will fail. You do not need to set the OS profile while provisioning, or set `$vm.OSProfile.AllowExtensionOperations = $true`.
 
 #### [Windows - Generalized](#tab/win-gen)
 

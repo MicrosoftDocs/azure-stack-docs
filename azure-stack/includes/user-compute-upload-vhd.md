@@ -17,3 +17,6 @@ ms.lastreviewed: 08/04/2020
 4. Type the name of your container, and then select **Blob (anonymous read access for blobs only)**.
 
 5. Select your container and then select **Upload**. Upload your VHD.
+
+> [!NOTE]  
+> You can use a command-line tool such as AzCopy, or other data transfer tools, to transfer your VJD from Azure to your on-premises machine or from your on-premises machine to Azure Stack Hub. For more information see [Use data transfer tools in Azure Stack Hub Storage](/azure-stack/user/azure-stack-storage-transfer)
