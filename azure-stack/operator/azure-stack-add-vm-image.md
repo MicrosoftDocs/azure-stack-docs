@@ -14,20 +14,25 @@ ms.lastreviewed: 08/26/2020
 
 # Add and remove a custom VM image to Azure Stack Hub
 
-In Azure Stack Hub, as an operator you can add your custom virtual machine (VM) image to the marketplace and make it available to your users. You can add VM images to the Azure Stack Hub Marketplace through the administrator portal or Windows PowerShell. Use either an image from the global Azure Marketplace as a base for your custom image, or create your own using Hyper-V.
+In Azure Stack Hub, as an operator you can add your custom virtual machine (VM) image to the marketplace and make it available to your users. You can add VM images to the Azure Stack Hub Marketplace through the administrator portal or Windows PowerShell. Use either an image from global Microsoft Azure Marketplace as a base for your custom image, or create your own using Hyper-V.
 
-You can find instructions for adding generalized and specialized images in the Compute section of the user guide. For instructions see [Move a VM to Azure Stack Hub Overview](/azure-stack/user/vm-move-overview).
+## Add an image
 
-## About creating a specialized image
+You can find instructions for adding generalized and specialized images in the **Compute** section of the user guide. For instructions see [Move a VM to Azure Stack Hub Overview](/azure-stack/user/vm-move-overview). When creating images available for your tenants use the Azure Stack Hub administrative portal or administrator endpoints rather than the user portal or tenant directory endpoints.
 
-putting the image in the admin-portal in Compu->VM Images ---- makes it available to everyone, but they need to use an ARM template to use it
-creating the marketplace item makes it available to everyone in the marketplace
+You have two options for making an image available to your users:
 
-## About creating on creating a generalized image
+- **Offer an image only accessible via Azure Resource Manager**  
+  If you place add the image via the Azure Stack Hub administrative portal in Compute > Images, all of your tenants can access the image. However your users will need to use an Azure Resource Manager template to access it. It won't be visible in your Azure Stack Hub Marketplace.
 
-yadda
+- **Offer an image through the Azure Stack Hub Marketplace**  
+    Once you have added your image through the Azure Stack Hub administrative portal, you can then create a marketplace offering. For instructions, see [Create and publish a custom Azure Stack Hub Marketplace item](azure-stack-create-and-publish-marketplace-item.md).
 
-## Remove using the portal
+## Remove a platform image
+
+You can remove a platform image using the portal or PowerShell.
+
+### [Portal](#tab/image-rem-portal)
 
 To remove the VM image as an Azure Stack Hub operator using the Azure Stack Hub portal, follow these steps:
 
@@ -39,7 +44,7 @@ To remove the VM image as an Azure Stack Hub operator using the Azure Stack Hub 
 
 4. Select **Delete**.
 
-## Remove using PowerShell
+### [PowerShell](#tab/image-rem-ps)
 
 To remove the VM image as an Azure Stack Hub operator using PowerShell, follow these steps:
 
@@ -72,7 +77,7 @@ To remove the VM image as an Azure Stack Hub operator using PowerShell, follow t
      The version of the VM image that users use when they deploy the VM image. This version is in the format **\#.\#.\#**. Don't include a space or other special characters in this field.  
 
      For more info about the **Remove-AzsPlatformImage** cmdlet, see the Microsoft PowerShell [Azure Stack Hub Operator module documentation](/powershell/azure/azure-stack/overview).
-
+---
 ## Next steps
 
 - [Create and publish a custom Azure Stack Hub Marketplace item](azure-stack-create-and-publish-marketplace-item.md)

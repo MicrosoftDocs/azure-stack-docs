@@ -153,9 +153,9 @@
               href: vm-move-overview.md
             - name: VM from Azure
               href: vm-move-vm-from-azure.md
-            - name: Specialized VM on prem
+            - name: Specialized VM on-prem
               href: vm-move-vm-specialized.md
-            - name: Generalized VM on prem
+            - name: Generalized VM on-prem
               href: vm-move-vm-generalized.md
 
       - name: Storage

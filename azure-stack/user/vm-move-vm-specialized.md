@@ -29,17 +29,13 @@ Find the section that that is specific to your needs when preparing your VHD.
 
 #### [Windows VM](#tab/port-win)
 
-- Follow the steps in [Create a Windows VM from a specialized disk by using PowerShell](/azure/virtual-machines/windows/create-vm-specialized) to prepare the VHD correctly.
-- To deploy VM extensions, make sure that the VM agent .msi available. For guidance, see [Azure Virtual Machine Agent overview](/azure/virtual-machines/extensions/agent-windows). If the VM agent is not present in the VHD, extension deployment will fail. You do not need to set the OS profile while provisioning, or set `$vm.OSProfile.AllowExtensionOperations = $true`.
-
-Tibi's additions:
-
-Prepare a Windows VHD to upload to Azure - https://docs.microsoft.com/en-us/azure/virtual-machines/windows/prepare-for-upload-vhd-image. 
-**Do not** generalize the VM by using Sysprep.
-Remove any guest virtualization tools and agents that are installed on the VM (such as VMware tools).
-Make sure the VM is configured to get the IP address and DNS settings from DHCP. This ensures that the server obtains an IP address within the virtual network when it starts up.
-Make sure the RDP/SSH is enabled and the firewall allows communication 
-Follow the https://docs.microsoft.com/en-us/azure/virtual-machines/windows/prepare-for-upload-vhd-image steps (just duplicating the first one but there's a lot of important info there)
+- Follow the steps in [Prepare a Windows VHD or VHDX to upload to Azure](/azure/virtual-machines/windows/prepare-for-upload-vhd-image) to prepare the VHD correctly.
+   > [!NOTE]  
+   > **Do not** generalize the VM by using Sysprep.
+- Remove any guest virtualization tools and agents that are installed on the VM (such as VMware tools).
+- Make sure the VM is configured to get the IP address and DNS settings from DHCP. This ensures that the server obtains an IP address within the virtual network when it starts up.
+- Make sure the RDP/SSH is enabled and the firewall allows communication.
+- To deploy VM extensions, make sure that the VM agent `.msi` available. For guidance, see [Azure Virtual Machine Agent overview](/azure/virtual-machines/extensions/agent-windows). If the VM agent is not present in the VHD, extension deployment will fail. You do not need to set the OS profile while provisioning, or set `$vm.OSProfile.AllowExtensionOperations = $true`.
 
 #### [Linux VM](#tab/port-linux)
 
@@ -126,8 +122,8 @@ When you have completed preparing and downloading your image, have your VHD file
 
 - Using a DISK (a managed disk) that is created with a 'storage blob' source
 - And the VM directly created off of it
-- With an agent, your VM properites will be:
-- Without an agent, your VM properites will be:
+- With an agent, your VM properties will be:
+- Without an agent, your VM properties will be:
 - When the VM has multiple disks, those will be added as data disks - note that D: drive will need to be taken care of, preferably when preparing the VM (before copying it to the storage account).
 
 ## Next steps
