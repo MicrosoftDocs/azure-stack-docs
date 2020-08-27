@@ -6,7 +6,7 @@ ms.topic: conceptual
 ms.assetid: ea7e53c8-11ec-410b-b287-897c7aaafb13
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 08/26/2018
+ms.date: 08/27/2018
 ---
 # Plan a Software Defined Network infrastructure
 
@@ -152,41 +152,42 @@ The following items provide availability and redundancy:
 ## Switch configuration examples
 To help configure your physical switch or router, a set of sample configuration files for a variety of switch models and vendors is available at the [Microsoft SDN GitHub repository](https://github.com/microsoft/SDN/tree/master/SwitchConfigExamples). A detailed readme and tested command line interface (CLI) commands for specific switches are provided.
 
-<!---Topic updated to here.--->
-
-
 ## Compute
-All Hyper-V hosts must have Windows Server 2016 installed, Hyper-V enabled, and an external Hyper-V virtual switch created with at least one physical adapter connected to the Management logical network. The host must be reachable via a Management IP address assigned to the Management Host vNIC.
+All Hyper-V hosts must have the appropriate operating system installed, be enabled for Hyper-V, and use an external Hyper-V virtual switch with at least one physical adapter connected to the Management logical network. The host must be reachable via a Management IP address assigned to the Management Host vNIC.
 
-Any storage type that is compatible with Hyper-V, shared or local may be used.
+You can use any storage type that is compatible with Hyper-V, shared or local.
 
 > [!TIP]
-> It is convenient if you use the same name for all your virtual switches, but it is not mandatory. If you plan to deploy with scripts, see the comment associated with the `vSwitchName` variable in the config.psd1 file.
+> It is convenient to use the same name for all your virtual switches, but it is not mandatory. If you plan to use scripts to deploy, see the comment associated with the `vSwitchName` variable in the config.psd1 file.
 
 **Host compute requirements**
-The following table shows the minimum hardware and software requirements for the four physical hosts used in the example deployment.
+The following shows the minimum hardware and software requirements for the four physical hosts used in the example deployment.
 
-Host|Hardware Requirements|Software Requirements|
+Host|Hardware requirements|Software requirements|
 --------|-------------------------|-------------------------
-|Physical Hyper-v host|4-Core 2.66 GHz CPU<p>32 GB of RAM<p>300 GB Disk Space<p>1 Gb/s (or faster) physical network adapter|OS: Windows Server 2016<p>Hyper-V Role installed|
+|Physical Hyper-v host|4-Core 2.66 GHz CPU<p>32 GB of RAM<p>300 GB of Disk Space<p>1 Gb/s (or faster) physical network adapter|Operating system: Operating system: As defined in the “Applies to” at top of this article.<p>Hyper-V Role installed|
 
-
-**SDN infrastructure virtual machine role requirements**
+**SDN infrastructure VM role requirements**
+The following shows the requirements for the VM roles.
 
 Role|vCPU requirements|Memory requirements|Disk requirements|
---------|---------------------|-----------------------|---------------------
-|Network controller (three node)|4 vCPUs|4 GB min (8 GB recommended)|75 GB for the OS drive
-|SLB/MUX (three node)|8 vCPUs|8 GB recommended|75 GB for the OS drive
-|RAS Gateway<p>(single pool of three node gateways, two active, one passive)|8 vCPUs|8 GB recommended|75 GB for the OS drive
-|RAS Gateway BGP router for SLB MUX peering<p>(alternatively use ToR switch as BGP Router)|2 vCPUs|2 GB|75 GB for the OS drive|
+--------|------------------------|-----------------------|--------------------------
+|Network Controller (three node)|4 vCPUs|4 GB minimum (8 GB recommended)|75 GB for the operating system drive
+|SLB/MUX (three node)|8 vCPUs|8 GB recommended|75 GB for the operating system drive
+|RAS Gateway<p>(single pool of three node gateways, two active, one passive)|8 vCPUs|8 GB recommended|75 GB for the operating system drive
+|RAS Gateway BGP router for SLB MUX peering<p>(alternatively use ToR switch as BGP Router)|2 vCPUs|2 GB|75 GB for the operating system drive|
 
-
-If you use VMM for deployment, additional infrastructure virtual machine resources are required for VMM and other non-SDN infrastructure. For additional information, see [Minimum Hardware Recommendations for System Center Technical Preview.](/system-center/)
+If you use System Center Virtual Machine Manager (VMM) for deployment, additional infrastructure VM resources are required for VMM and other non-SDN infrastructure. For more information, see [System requirements for System Center Virtual Machine Manager](https://docs.microsoft.com/system-center/vmm/system-requirements?view=sc-vmm-2019).
 
 ## Extending your infrastructure
-The sizing and resource requirements for your infrastructure are dependent on the tenant workload virtual machines that you plan to host. The CPU, memory, and disk requirements for the infrastructure virtual machines (for example: network controller, SLB, gateway, etc.) are listed in the previous table. You can add more of these infrastructure virtual machines to scale out as needed. However, any tenant virtual machines running on the Hyper-V hosts have their own CPU, memory, and disk requirements that you must consider.
+The sizing and resource requirements for your infrastructure depend on the tenant workload VMs that you plan to host. The CPU, memory, and disk requirements for the infrastructure VMs (for example: Network Controller, SLB, gateway, and so on) are defined in the previous table. You can add more infrastructure VMs to scale as needed. However, any tenant VMs running on the Hyper-V hosts have their own CPU, memory, and disk requirements that you must consider.
 
-When the tenant workload virtual machines begin to consume too many resources on the physical Hyper-V hosts, you can extend your infrastructure by adding additional physical hosts. This can be done with Virtual Machine Manager or by using PowerShell scripts (depending on how you initially deployed the infrastructure) to create new server resources through the network controller. If you need to add additional IP addresses for the HNV Provider network, you can create new logical subnets (with corresponding IP Pools) that the hosts can use.
+When the tenant workload VMs start to consume too many resources on the physical Hyper-V hosts, you can extend your infrastructure by adding additional physical hosts. You can use either VMM or PowerShell scripts to create new server resources through the Network Controller. The method to use depends on how you initially deployed the infrastructure. If you need to add additional IP addresses for the HNV Provider network, you can create new logical subnets (with corresponding IP Pools) that the hosts can use.
+
+## Phased deployment
+
+<!---Topic updated to here.--->
+
 
 ## See Also
 - [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller)
