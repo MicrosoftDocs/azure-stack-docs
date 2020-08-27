@@ -190,7 +190,7 @@ Based on your requirements, you may need to deploy a subset of the SDN infrastru
 Feature|Deployment requirements|Network requirements|
 --------|-------------------------|-------------------------
 |Logical Network management<br> Access control lists (ACLs) (for VLAN-based network)<br> Quality of Service (QoS)<br>|Network Controller|None|
-|Virtual Networking<br> User Defined Routing<br> ACLs (for virtual network)<br> Encrypted Subnets|Network Controller|HNV PA VLAN<br> Subnet<br> Router|
+|Virtual Networking<br> User Defined Routing<br> ACLs (for virtual network)<br> Encrypted Subnets|Network Controller|HNV PA VLAN,  Subnet, Router|
 |Inbound/Outbound NAT<br> Load Balancing|Network Controller<br> SLB MUX|BGP on HNV PA network<br> Private and Public VIP subnets|
 |GRE gateway connections|Network Controller<br> Gateway|BGP on HNV PA network<br> GRE VIP subnet|
 |IPSec gateway connections|Network Controller<br> SLB MUX<br> Gateway|BGP on HNV PA network<br> Public VIP subnet|
