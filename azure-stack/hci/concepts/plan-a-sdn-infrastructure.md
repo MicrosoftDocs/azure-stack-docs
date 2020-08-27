@@ -185,9 +185,16 @@ The sizing and resource requirements for your infrastructure depend on the tenan
 When the tenant workload VMs start to consume too many resources on the physical Hyper-V hosts, you can extend your infrastructure by adding additional physical hosts. You can use either VMM or PowerShell scripts to create new server resources through the Network Controller. The method to use depends on how you initially deployed the infrastructure. If you need to add additional IP addresses for the HNV Provider network, you can create new logical subnets (with corresponding IP Pools) that the hosts can use.
 
 ## Phased deployment
+Based on your requirements, you may need to deploy a subset of the SDN infrastructure. For example, if you want to simply host customer workloads in your datacenter, and external communication is not required, you can deploy Network Controller and skip deploying SLB MUX and gateway VMs. The following describes networking feature infrastructure requirements for a phased deployment of the SDN infrastructure.
 
-<!---Topic updated to here.--->
-
+Feature|Deployment requirements|Network requirements|
+--------|-------------------------|-------------------------
+|TBD |TBD |TBD |
+|TBD |TBD |TBD |
+|TBD |TBD |TBD |
+|TBD |TBD |TBD |
+|TBD |TBD |TBD |
+|TBD |TBD |TBD |
 
 ## See Also
 - [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller)
