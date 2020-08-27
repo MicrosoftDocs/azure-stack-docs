@@ -160,22 +160,22 @@ You can use any storage type that is compatible with Hyper-V, shared or local.
 > [!TIP]
 > It is convenient to use the same name for all your virtual switches, but it is not mandatory. If you plan to use scripts to deploy, see the comment associated with the `vSwitchName` variable in the config.psd1 file.
 
-**Host compute requirements**
+### Host compute requirements
 The following shows the minimum hardware and software requirements for the four physical hosts used in the example deployment.
 
 Host|Hardware requirements|Software requirements|
 --------|-------------------------|-------------------------
-|Physical Hyper-v host|4-Core 2.66 GHz CPU<p>32 GB of RAM<p>300 GB of Disk Space<p>1 Gb/s (or faster) physical network adapter|Operating system: Operating system: As defined in the “Applies to” at top of this article.<p>Hyper-V Role installed|
+|Physical Hyper-v host|4-Core 2.66 GHz CPU<br> 32 GB of RAM<br> 300 GB of Disk Space<br> 1 Gb/s (or faster) physical network adapter|Operating system: Operating system:<br> As defined in the “Applies to” at top of this article.<br> Hyper-V Role installed|
 
-**SDN infrastructure VM role requirements**
+### SDN infrastructure VM role requirements
 The following shows the requirements for the VM roles.
 
 Role|vCPU requirements|Memory requirements|Disk requirements|
---------|------------------------|-----------------------|--------------------------
-|Network Controller (three node)|4 vCPUs|4 GB minimum (8 GB recommended)|75 GB for the operating system drive
+--------|-----------------------------|-----------------------|--------------------------
+|Network Controller (three node)|4 vCPUs|4 GB minimum<br> (8 GB recommended)|75 GB for the operating system drive
 |SLB/MUX (three node)|8 vCPUs|8 GB recommended|75 GB for the operating system drive
-|RAS Gateway<p>(single pool of three node gateways, two active, one passive)|8 vCPUs|8 GB recommended|75 GB for the operating system drive
-|RAS Gateway BGP router for SLB MUX peering<p>(alternatively use ToR switch as BGP Router)|2 vCPUs|2 GB|75 GB for the operating system drive|
+|RAS Gateway<br> (single pool of three node gateways, two active, one passive)|8 vCPUs|8 GB recommended|75 GB for the operating system drive
+|RAS Gateway BGP router for SLB MUX peering<br> (alternatively use ToR switch as BGP Router)|2 vCPUs|2 GB|75 GB for the operating system drive|
 
 If you use System Center Virtual Machine Manager (VMM) for deployment, additional infrastructure VM resources are required for VMM and other non-SDN infrastructure. For more information, see [System requirements for System Center Virtual Machine Manager](https://docs.microsoft.com/system-center/vmm/system-requirements?view=sc-vmm-2019).
 
