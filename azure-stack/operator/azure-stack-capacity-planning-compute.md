@@ -91,6 +91,75 @@ Resiliency reserve = H + R * ((N-1) * H) + V * (N-2)
 
 The value V, largest VM in the scale unit, is dynamically based on the largest tenant VM memory size. For example, the largest VM value could be 7 GB or 112 GB or any other supported VM memory size in the Azure Stack Hub solution. Changing the largest VM on the Azure Stack Hub fabric will result in an increase in the resiliency reserve and also to the increase in the memory of the VM itself.
 
+### Deallocate memory for VM placement
+
+To deallocate memory for VM placement, try one or more of these three methods:
+
+* Reduce the size of the largest VM (112 GB)
+
+    Current deployed large VMs show that the allocated memory is 112 GB, but the memory demand of these VMs is about 2-3 GB.
+    
+   | Name | Memory Assigned (GB) | Memory Demand (GB) | ComputerName |  
+    
+   | ---- | -------------------- | ------------------ | ------------ |                                        
+    
+   | ca7ec2ea-40fd-4d41-9d9b-b11e7838d508 |                 112  |     2.2392578125  |  LISSA01P-NODE01 |
+    
+   | 10cd7b0f-68f4-40ee-9d98-b9637438ebf4  |                112  |     2.2392578125  |   LISSA01P-NODE01 |
+    
+   | 2e403868-ff81-4abb-b087-d9625ca01d84   |               112   |    2.2392578125  |   LISSA01P-NODE04 |
+    
+     
+    
+    Reducing the size of the largest VM to the next smallest VM in stamp (24 GB) will reduce the size of the resiliency reserve.
+    
+    Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 384 + 172.8 + 48 = 604.8 GB
+    
+    Total Memory: 1536 GB
+    
+    Total GB for infra: 258 GB
+    
+    Total GB for Tenant: 329.25 GB
+    
+    Resiliency reserve: 604.8 GB  
+    
+    Total memory reserved: 258  + 329.25  + 604.8 = 1168  GB
+    
+    Total GB available for placement: ~  344 GB
+     
+
+* Add 2 identical nodes to stamp.
+
+    Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 384 + (0.15) ((5)*384) + 112 * (3) = 1008  GB
+    
+    Total Memory: 2304 (6*384 )
+    
+    Total GB for infra: 258  GB
+    
+    Total GB for Tenant: 505.75  GB
+    
+    Resiliency reserve: 1008  GB
+    
+       Total memory reserved: 258 + 505.75 +1008 = 1771.75  GB
+    
+       Total GB available for placement: ~  532.25 GB
+
+* Increase Memory on each node to 512 GB.
+
+    Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 512 + 230.4 + 224 = 966.4 GB
+    
+    Total Memory: 2048 (4*512)
+    
+    Total GB for infra: 258 GB
+    
+    Total GB for Tenant: 505.75 GB
+    
+    Resiliency reserve: 966.4 GB
+    
+    Total memory reserved: 258 + 505.75 +966.4 = 1730.15 GB
+    
+    Total GB available for placement: ~ 318 GB
+
 ## Frequently Asked Questions
 
 **Q**: My tenant deployed a new VM, how long will it take for the capability chart on the administrator portal to show remaining capacity?
