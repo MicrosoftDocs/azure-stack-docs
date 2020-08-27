@@ -5,7 +5,7 @@ author: mattbriggs
 
 ms.topic: article
 ms.author: mabrigg
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.reviewer: waltero
 ms.lastreviewed: 11/14/2019
 
@@ -17,7 +17,7 @@ ms.lastreviewed: 11/14/2019
 
 # Troubleshoot Kubernetes deployment to Azure Stack Hub
 
-> [!Note]  
+> [!NOTE]  
 > Only use the Kubernetes Azure Stack Hub Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack Hub, use [the AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
 
 This article reviews how to troubleshoot your Kubernetes cluster. To begin troubleshooting, review the elements required for the deployment. You might need to collect the deployment logs from Azure Stack Hub or the Linux VMs that host Kubernetes. To retrieve logs from an administrative endpoint, contact your Azure Stack Hub admin.
@@ -156,7 +156,7 @@ Follow these steps to collect and download the cluster logs:
 
     The log collector script will also look for errors in the log files and include troubleshooting steps if it finds a known issue. Make sure you're running the latest version of the script to increase chances of finding known issues.
 
-> [!Note]  
+> [!NOTE]  
 > Check out this GitHub [repository](https://github.com/msazurestackworkloads/azurestack-gallery/tree/master/diagnosis) to learn more details about the log collector script.
 
 ## Next steps

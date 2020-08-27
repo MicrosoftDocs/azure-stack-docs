@@ -56,7 +56,7 @@ To use the latest API-version of a service, use the **Latest** profile of the sp
 
 Use the specific API versions defined inside the package for the specific API-versions of a resource provider.
 
-  > [!Note]  
+  > [!NOTE]  
   > You can combine all of the options in the same application.
 
 ## Install the Node.js SDK
@@ -113,7 +113,7 @@ The Microsoft Azure Resource Manager is a management framework that allows admin
 
 You can get the metadata information from the Resource Manager endpoint. The endpoint returns a JSON file with the information required to run your code.
 
-> [!Note]  
+> [!NOTE]  
 > The **ResourceManagerUrl** in the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external`
 The **ResourceManagerUrl** in integrated systems is: `https://management.region.<fqdn>/`, where `<fqdn>` is your fully qualified domain name.
 To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
@@ -223,16 +223,21 @@ You can use the following samples as a reference for creating solutions with Nod
     git clone https://github.com/sijuman/storage-node-resource-provider-getting-started.git
     ```
 
+1. `cd` into your clone of the repository.
+
 2.  Create an Azure service principal and assign a role to access the subscription. For instructions, see [Use Azure PowerShell to create a service principal with a certificate](/azure/azure-stack/azure-stack-create-service-principals).
 
 3.  Retrieve the following required values:
     - Tenant ID
-    - Client ID
+    - Client ID (application ID)
     - Client secret
     - Azure Subscription ID
     - Azure Stack Hub Resource Manager endpoint
 
 4.  Set the following environment variables using the information you retrieved from the service principal you created using the command prompt:
+
+    > [!NOTE]  
+    > On Windows, use **set** instead of **export**.
 
     ```bash  
     export TENANT_ID=<your tenant id>
@@ -241,9 +246,6 @@ You can use the following samples as a reference for creating solutions with Nod
     export AZURE_SUBSCRIPTION_ID=<your subscription id>
     export ARM_ENDPOINT=<your Azure Stack Hub Resource manager URL>
     ```
-
-    > [!Note]  
-    > On Windows, use **set** instead of **export**.
 
 5.  Open the `index.js` file of the sample application.
 

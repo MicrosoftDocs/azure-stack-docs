@@ -4,7 +4,7 @@ description: Learn how to use the cross-platform command-line interface (CLI) to
 author: mattbriggs
 
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/10/2019
