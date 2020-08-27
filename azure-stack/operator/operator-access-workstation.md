@@ -21,14 +21,14 @@ The OAW VM should be created when an operator performs a new task. After a requi
 
 ## OAW scenarios
 
-The following tables lists common scenarios that are well-suited for the OAW capabilities. This is not an exhaustive list of all scenarios available through the OAW.
+The following tables lists common scenarios for the OAW, but this is not exclusive. It is recommended to use Remote Desktop to connect to the OAW. 
 
 |Scenario                                                                                                                          |Description                 |
 |----------------------------------------------------------------------------------------------------------------------------------|-----------------------------|
 |[Access the Adminstration portal​](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-portals)                     |Perform administrative operations                                                                           |
-|[Access PEP](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint)                                     |Log collection and upload​:<br>-Create an SMB share on the HLH for file transfer from Azure Stack Hub​<br>-Use Azure Storage Explorer to upload logs saved to the SMB share |
+|[Access PEP](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint)                                     |Log collection and upload​:<br>-[Create an SMB share](#transfer-files-between-the-hlh-and-oaw) on the HLH for file transfer from Azure Stack Hub​<br>-Use Azure Storage Explorer to upload logs saved to the SMB share |
 |[Register Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-registration#renew-or-change-registration) |For re-registration, get previous Registration Name and Resource Group from the Administration portal​                               |
-|[Marketplace syndication​](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item)            |Create an SMB share on the HLH to store the downloaded image or extension                                                        |
+|[Marketplace syndication​](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item)            |[Create an SMB share](#transfer-files-between-the-hlh-and-oaw) on the HLH to store the downloaded image or extension                                                        |
 
 ## Download files
 
@@ -196,13 +196,11 @@ SkipNetworkConfiguration     | Optional | Skips network configuration for the vi
 
    ![Screenshot of PowerShell cmdlet to check the Hardware LifeCycle Host version](./media/operator-access-workstation/check-operator-access-workstation-vm-version.png)
 
-
 ## Transfer files between the HLH and OAW
 
 If you need to transfer files between the HLH and the OAW, create an SMB share by using the [New-SmbShare](https://docs.microsoft.com/powershell/module/smbshare/new-smbshare?view=win10-ps) cmdlet. New-SmbShare exposes a file system folder to remote clients as a Server Message Block (SMB) share. For example:
 
 To delete a share that was created by this cmdlet, use the [Remove-SmbShare](https://docs.microsoft.com/powershell/module/smbshare/remove-smbshare?view=win10-ps) cmdlet. For example:
-
 
 ## Remove the OAW VM
 
