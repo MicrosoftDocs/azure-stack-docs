@@ -81,6 +81,8 @@ It can be different from the original pfx password provided at initial deploymen
 We will regenerate the pfx files with correct CA password.
 
 Usage ::
+
+```console
     # Rotates external certificates only
     Start-SecretRotation -PfxFilesPath \<String\> -PathAccessCredential \<PSCredential\> -CertificatePassword \<SecureString\>
 
@@ -92,6 +94,7 @@ Usage ::
 
     # Reruns external certificates only
     Start-SecretRotation -ReRun
+```
 
 ```yaml
 Type: Object
