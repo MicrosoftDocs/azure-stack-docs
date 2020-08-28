@@ -119,7 +119,7 @@ Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 384 + 172.8 + 48 = 604.8 
 
 Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 384 + (0.15) ((5)*384) + 112 * (3) = 1008  GB
     
-| Total Memory | Total GB for infra | Total GB for Tenant | Resiliency reserve | Total memory reserved          | Total GB available for placement |
+| Total Memory | Infra GB | Tenant GB | Resiliency reserve | Total memory reserved          | Total GB available for placement |
 |--------------|--------------------|---------------------|--------------------|--------------------------------|----------------------------------|
 | 1536 GB      | 258 GB             | 329.25 GB           | 604.8 GB           | 258 + 329.25 + 604.8 = 1168 GB | **~ 344 GB**                         |
 
