@@ -19,10 +19,6 @@ You can add a virtual machine (VM) image from your on-premises environment. You 
 
 A specialized disk image is a copy of a virtual hard disk (VHD) from an existing VM that contains the user accounts, applications, and other state data from your original VM. This is typically the format in which VMs are migrated to Azure Stack Hub. Specialized VHDs are a good fit for when you need to migrate VMs from on-premises to Azure Stack Hub.
 
-Creating the VM directly off a VHD will use that VHD and create 'just that single vm' (this is the case described in the second doc, with the specialized image).
-
-Adding an image in VM Images creates that image in the user-subscription --- so only the users in that sub can use it
-
 ## How to move an image
 
 Find the section that that is specific to your needs when preparing your VHD.
@@ -116,7 +112,7 @@ In this version, currently there is no `Provisioning.Agent` option to disable pr
 
 ---
 
-Before uploading your VHD you must validate that the VHD meets the requirements or it will fail to load in Azure STack Hub. To check, see [Verify that your VHD requirements](vm-move-overview.md#verify-that-your-vhd-requirements).
+Before uploading your VHD you must validate that the VHD meets the requirements or it will fail to load in Azure STtck Hub. To check, see [Verify that your VHD requirements](vm-move-overview.md#verify-that-your-vhd-requirements).
 
 When you have completed preparing and downloading your image, have your VHD file in an accessible location to your Azure Stack Hub instance.
 
@@ -132,6 +128,9 @@ When you have completed preparing and downloading your image, have your VHD file
 - With an agent, your VM properties will be: `Agent Status: Ready` 
 - Without an agent, your VM properties will be: `Agent Status: Ready` 
 
+`TODO MDB: Sort out how images are created.
+Creating the VM from a VHD will use that VHD and create a single VM.
+Adding an image in VM Images creates that image in the user-subscription. This means that users in the tenant can use the image to create their own VM.`
 
 ## Next steps
 

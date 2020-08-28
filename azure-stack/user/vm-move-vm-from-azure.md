@@ -88,7 +88,7 @@ Follow the instructions in [Download a Windows VHD from Azure](/azure/virtual-ma
 
 ---
 
-Before uploading your VHD you must validate that the VHD meets the requirements or it will fail to load in Azure STack Hub. To check, see [Verify that your VHD requirements](vm-move-overview.md#verify-that-your-vhd-requirements).
+Before uploading your VHD you must validate that the VHD meets the requirements or it will fail to load in Azure Stack Hub. To check, see [Verify that your VHD requirements](vm-move-overview.md#verify-that-your-vhd-requirements).
 
 When you have completed preparing and downloading your image, have your VHD file in an accessible location to your Azure Stack Hub instance.
 
