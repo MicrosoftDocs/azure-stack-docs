@@ -37,11 +37,13 @@ Find the section that that is specific to your needs when preparing your VHD.
 - Make sure the RDP/SSH is enabled and the firewall allows communication.
 - To deploy VM extensions, make sure that the VM agent `.msi` available. For guidance, see [Azure Virtual Machine Agent overview](/azure/virtual-machines/extensions/agent-windows). If the VM agent is not present in the VHD, extension deployment will fail. You do not need to set the OS profile while provisioning, or set `$vm.OSProfile.AllowExtensionOperations = $true`.
 
+TODO TIBI: When the VM has multiple disks, add the additional disks as data disks. The `D:` drive will need to be `taken care of???` when preparing the VM as a VHD before you upload it.
+
 #### [Linux VM](#tab/port-linux)
 
 #### Generalize the VHD
 
-Follow the appropriate instructions to generalize the VHD for your Linux OS:
+Follow the appropriate instructions to prepare the VHD for your Linux OS:
 
 - [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -51,6 +53,8 @@ Follow the appropriate instructions to generalize the VHD for your Linux OS:
 
 > [!IMPORTANT]
 > Do not run the last step: (`sudo waagent -force -deprovision`) as this will generalize the VHD.
+
+TODO TIBI: When the VM has multiple disks, add the additional disks as data disks. The `D:` drive will need to be `taken care of???` when preparing the VM as a VHD before you upload it.
 
 #### Identify the version of the Linux Agent
 
@@ -112,6 +116,8 @@ In this version, currently there is no `Provisioning.Agent` option to disable pr
 
 ---
 
+Before uploading your VHD you must validate that the VHD meets the requirements or it will fail to load in Azure STack Hub. To check, see [Verify that your VHD requirements](vm-move-overview.md#verify-that-your-vhd-requirements).
+
 When you have completed preparing and downloading your image, have your VHD file in an accessible location to your Azure Stack Hub instance.
 
 ## Upload to a storage account
@@ -120,11 +126,12 @@ When you have completed preparing and downloading your image, have your VHD file
 
 ## Create the image in Azure Stack Hub
 
-- Using a DISK (a managed disk) that is created with a 'storage blob' source
-- And the VM directly created off of it
-- With an agent, your VM properties will be:
-- Without an agent, your VM properties will be:
-- When the VM has multiple disks, those will be added as data disks - note that D: drive will need to be taken care of, preferably when preparing the VM (before copying it to the storage account).
+[!INCLUDE [Create the image in Azure Stack Hub](../includes/user-compute-create-image.md)]
+
+`TODO TIBI: Note sure how this is set:
+- With an agent, your VM properties will be: `Agent Status: Ready` 
+- Without an agent, your VM properties will be: `Agent Status: Ready` 
+
 
 ## Next steps
 

@@ -18,5 +18,5 @@ ms.lastreviewed: 08/04/2020
 
 5. Select your container and then select **Upload**. Upload your VHD.
 
-> [!NOTE]  
-> You can use a command-line tool such as AzCopy, or other data transfer tools, to transfer your VJD from Azure to your on-premises machine or from your on-premises machine to Azure Stack Hub. For more information see [Use data transfer tools in Azure Stack Hub Storage](/azure-stack/user/azure-stack-storage-transfer)
+> [!TIP]  
+> Using Azure Storage Explorer or AzCopy will reduce that chance that your VHD will be corrupted in the upload process, and your upload will be faster. For more information see [Use data transfer tools in Azure Stack Hub Storage](/azure-stack/user/azure-stack-storage-transfer).

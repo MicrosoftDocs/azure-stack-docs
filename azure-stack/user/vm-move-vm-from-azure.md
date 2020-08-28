@@ -17,7 +17,7 @@ ms.lastreviewed: 8/24/2020
 
 You can upload a virtual hard drive (VHD) from a virtual machine (VM) created in Azure to your Azure Stack Hub instance.
 
-## Prepare and download your VHS from Azure
+## Prepare and download your VHD from Azure
 
 Find the section that that is specific to your needs when preparing your VHD.
 
@@ -87,6 +87,8 @@ Follow the instructions in [Download a Windows VHD from Azure](/azure/virtual-ma
 > You can find a script in the article [Sample script to upload a VHD to Azure and create a new VM](/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script) to upload the VHD to an Azure Stack Hub user storage account and create a VM. Make sure to provide `$urlOfUploadedImageVhd` as the Azure Stack Hub storage account+container URL. For a generalized VHD, make sure to use `FromImage` value when setting `-CreateOption FromImage`.
 
 ---
+
+Before uploading your VHD you must validate that the VHD meets the requirements or it will fail to load in Azure STack Hub. To check, see [Verify that your VHD requirements](vm-move-overview.md#verify-that-your-vhd-requirements).
 
 When you have completed preparing and downloading your image, have your VHD file in an accessible location to your Azure Stack Hub instance.
 
