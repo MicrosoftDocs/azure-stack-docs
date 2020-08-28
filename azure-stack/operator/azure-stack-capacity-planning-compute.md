@@ -45,14 +45,6 @@ If the VM scale limit is reached, the following error codes are returned as a re
 
 In releases prior to and including 2002, 2-5 VMs per batch with 5 mins gap in between batches provided reliable VM deployments to reach a scale of 700 VMs. With the 2005 version of Azure Stack Hub, we are able to reliably provision VMs at batch sizes of 40 with 5 mins gap in between batch deployments.
 
-## Considerations for deallocation
-
-When a VM is in the _deallocated_ state, memory resources aren't being used. This allows others VMs to be placed in the system.
-
-If the deallocated VM is then started again, the memory usage or allocation is treated like a new VM placed into the system and available memory is consumed.
-
-If there's no available memory, then the VM won't start.
-
 ## Azure Stack Hub memory
 
 Azure Stack Hub is designed to keep VMs running that have been successfully provisioned. For example, if a host is offline because of a hardware failure, Azure Stack Hub will attempt to restart that VM on another host. A second example during patching and updating of the Azure Stack Hub software. If there's a need to reboot a physical host, an attempt is made to move the VMs executing on that host to another available host in the solution.
@@ -91,14 +83,20 @@ Resiliency reserve = H + R * ((N-1) * H) + V * (N-2)
 
 The value V, largest VM in the scale unit, is dynamically based on the largest tenant VM memory size. For example, the largest VM value could be 7 GB or 112 GB or any other supported VM memory size in the Azure Stack Hub solution. Changing the largest VM on the Azure Stack Hub fabric will result in an increase in the resiliency reserve and also to the increase in the memory of the VM itself.
 
-### Deallocate memory for VM placement
+## Considerations for deallocation
+
+When a VM is in the _deallocated_ state, memory resources aren't being used. This allows others VMs to be placed in the system.
+
+If the deallocated VM is then started again, the memory usage or allocation is treated like a new VM placed into the system and available memory is consumed.
+
+If there's no available memory, then the VM won't start.
 
 There are three ways to deallocate memory for VM placement:
 * Reduce the size of the largest VM
 * Increase the memory of a node
 * Add a node
 
-#### Reduce the size of the largest VM 
+### Reduce the size of the largest VM 
 
 Current deployed large VMs show that the allocated memory is 112 GB, but the memory demand of these VMs is about 2-3 GB.
     
@@ -113,19 +111,11 @@ Reducing the size of the largest VM to the next smallest VM in stamp (24 GB) wil
         
 Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 384 + 172.8 + 48 = 604.8 GB
         
-Total Memory: 1536 GB
-        
-Total GB for infra: 258 GB
-        
-Total GB for Tenant: 329.25 GB
-        
-Resiliency reserve: 604.8 GB  
-        
-Total memory reserved: 258  + 329.25  + 604.8 = 1168  GB
-        
-Total GB available for placement: ~  344 GB
+| Total Memory | Total GB for infra | Total GB for Tenant | Resiliency reserve | Total memory reserved          | Total GB available for placement |
+|--------------|--------------------|---------------------|--------------------|--------------------------------|----------------------------------|
+| 1536 GB      | 258 GB             | 329.25 GB           | 604.8 GB           | 258 + 329.25 + 604.8 = 1168 GB | ~ 344 GB                         |
      
-#### Add 2 identical nodes to stamp
+### Add two nodes
 
 Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 384 + (0.15) ((5)*384) + 112 * (3) = 1008  GB
     
@@ -141,7 +131,7 @@ Total memory reserved: 258 + 505.75 +1008 = 1771.75  GB
     
 Total GB available for placement: ~  532.25 GB
 
-#### Increase memory on each node to 512 GB
+### Increase memory on each node to 512 GB
 
 Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 512 + 230.4 + 224 = 966.4 GB
     
