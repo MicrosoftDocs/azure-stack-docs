@@ -137,9 +137,9 @@ Total GB for Tenant: 505.75  GB
     
 Resiliency reserve: 1008  GB
     
-    * Total memory reserved: 258 + 505.75 +1008 = 1771.75  GB
+Total memory reserved: 258 + 505.75 +1008 = 1771.75  GB
     
-    * Total GB available for placement: ~  532.25 GB
+Total GB available for placement: ~  532.25 GB
 
 #### Increase Memory on each node to 512 GB.
 
@@ -153,9 +153,9 @@ Total GB for Tenant: 505.75 GB
     
 Resiliency reserve: 966.4 GB
     
-    * Total memory reserved: 258 + 505.75 +966.4 = 1730.15 GB
+Total memory reserved: 258 + 505.75 +966.4 = 1730.15 GB
     
-    * Total GB available for placement: ~ 318 GB
+Total GB available for placement: ~ 318 GB
 
 ## Frequently Asked Questions
 
