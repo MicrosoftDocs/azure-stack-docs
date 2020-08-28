@@ -353,10 +353,10 @@ This section assumes that you already have an ISO file from the Red Hat website 
 
         1.Install the Azure Linux Agent by running the following command:
 
-            ```bash
-            sudo yum install WALinuxAgent
-            sudo systemctl enable waagent.service
-            ```
+        ```bash
+        sudo yum install WALinuxAgent
+        sudo systemctl enable waagent.service
+        ```
 
 1. Do not create swap space on the operating system disk.
 
@@ -557,11 +557,11 @@ This section assumes that you've already installed an RHEL VM in VMware. For det
     ```
 
     1.Install the Azure Linux Agent by running the following command:
-        
-        ```bash
-        sudo yum install WALinuxAgent
-        sudo systemctl enable waagent.service
-        ```
+
+    ```bash
+    sudo yum install WALinuxAgent
+    sudo systemctl enable waagent.service
+    ```
         
 1. Do not create swap space on the operating system disk.
 
