@@ -15,12 +15,12 @@ ms.lastreviewed: 8/24/2020
 
 # Move a VM to Azure Stack Hub overview
 
-You can move virtual machines (VM)s from your environment to Azure Stack Hub. There are some limitations that you need to expect when planning to move your workloads. Azure Stack Hub requires a generation 1 virtual hard disk (VHD). Your VM will need to be either generalized or specialized. Use generalized VMs as the base-mage for VMS created in Azure Stack. Specialized VM contains user accounts. To migrate, prepare and download the VHD, upload the image to a storage account in Azure Stack Hub, and then create the VM in your cloud. If you have a more complex migration task, you can find a complete discussion in the *Migrate to Azure Stack Hub* whitepaper.
+You can move virtual machines (VM)s from your environment to Azure Stack Hub. There are some limitations that you need to expect when planning to move your workloads. This article lists the requirements for virtual hard disk (VHD)s in Azure Stack Hub. Azure Stack Hub requires a generation 1 VHD. Your VM will need to be either generalized or specialized. Use generalized VMs as the base-mage for VMS created in Azure Stack. Specialized VM contains user accounts. To migrate, prepare and download the VHD, validate that the VHD meets the requirements, upload the image to a storage account in Azure Stack Hub, and then create the VM in your cloud. If you have a more complex migration task, you can find a complete discussion in the *Migrate to Azure Stack Hub* whitepaper.
 
 Custom images come in two forms: **generalized** and **specialized**.
 
 - **Generalized image**  
-  A generalized disk image is one that has been prepared with **Sysprep** to remove any unique information (such as user accounts), enabling it to be reused to create multiple VMs. Generalized VHDs are a good fit for when are creating images that the Azure Stack Hub cloud operator plans to use as marketplace items.
+  A generalized disk image is one that has been prepared with **Sysprep** to remove any unique information (such as user accounts), enabling it to be reused to create multiple VMs. Generalized VHDs are a good fit for when are creating images that the Azure Stack Hub cloud operator plans to use as marketplace items. Images offered through the administrator portal or administrator endpoints are **platform images**.
 
 - **Specialized image**  
   A specialized disk image is a copy of a virtual hard disk (VHD) from an existing VM that contains the user accounts, applications, and other state data from your original VM. This is typically the format in which VMs are migrated to Azure Stack Hub. Specialized VHDs are a good fit for when you need to migrate VMs from on-premises to Azure Stack Hub.
