@@ -29,6 +29,72 @@ You have two options for making an image available to your users:
 - **Offer an image through the Azure Stack Hub Marketplace**  
     Once you have added your image through the Azure Stack Hub administrative portal, you can then create a marketplace offering. For instructions, see [Create and publish a custom Azure Stack Hub Marketplace item](azure-stack-create-and-publish-marketplace-item.md).
 
+
+## Add a platform image
+
+To add the a platform image to Azure Stack Hub, use the Azure Stack Hub administrator portal or endpoint using PowerShell. You will need to have created a generalized VHD. You can find instruction  [Move a VM to Azure Stack Hub Overview](/azure-stack/user/vm-move-overview).
+
+### [Portal](#tab/image-add-portal)
+
+Add the VM image as an Azure Stack Hub operator using the portal.
+
+1. Sign in to Azure Stack Hub as an operator. In the menu, select **All services** > **Compute** under **VM Images** > **Add**.
+
+   ![Custom image sideloading UI](./media/azure-stack-add-vm-image/tca4.png)
+
+2. Under **Create image**, enter the **Publisher**, **Offer**, **SKU**, **Version**, and OS disk blob URI. Then, select **Create** to begin creating the VM image.
+
+   ![Custom image sideloading UI](./media/azure-stack-add-vm-image/tca5.png)
+
+   When the image is successfully created, the VM image status changes to **Succeeded**.
+
+3. When you add an image, it is only available for Azure Resource Manager-based templates and PowerShell deployments. To make an image available to your users as a marketplace item, publish the marketplace item using the steps in the article [Create and publish a Marketplace item](azure-stack-create-and-publish-marketplace-item.md). Make sure you note the **Publisher**, **Offer**, **SKU**, and **Version** values. You will need them when you edit the Resource Manager template and Manifest.json in your custom .azpkg.
+
+### [PowerShell](#tab/image-add-ps)
+
+ Add a VM image as an Azure Stack Hub operator using PowerShell.
+
+1. [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).  
+
+2. Sign in to Azure Stack Hub as an operator. For instructions, see [Sign in to Azure Stack Hub as an operator](azure-stack-powershell-configure-admin.md).
+
+3. Open PowerShell with an elevated prompt, and run:
+
+   ```powershell
+    Add-AzsPlatformimage -publisher "<publisher>" `
+      -offer "<Offer>" `
+      -sku "<SKU>" `
+      -version "<#.#.#>" `
+      -OSType "<OS type>" `
+      -OSUri "<OS URI>"
+   ```
+
+   The **Add-AzsPlatformimage** cmdlet specifies values used by the Azure Resource Manager templates to reference the VM image. The values include:
+   - **publisher**  
+     For example: `Canonical`  
+     The **publisher** name segment of the VM image that users use when they deploy the image. Don't include a space or other special characters in this field.  
+   - **offer**  
+     For example: `UbuntuServer`  
+     The **offer** name segment of the VM image that users use when they deploy the VM image. Don't include a space or other special characters in this field.  
+   - **sku**  
+     For example: `14.04.3-LTS`  
+     The **SKU** name segment of the VM image that users use when they deploy the VM image. Don't include a space or other special characters in this field.  
+   - **version**  
+     For example: `1.0.0`  
+     The version of the VM image that users use when they deploy the VM image. This version is in the format **\#.\#.\#**. Don't include a space or other special characters in this field.  
+   - **osType**  
+     For example: `Linux`  
+     The **osType** of the image must be either **Windows** or **Linux**.  
+   - **OSUri**  
+     For example: `https://storageaccount.blob.core.windows.net/vhds/Ubuntu1404.vhd`  
+     You can specify a blob storage URI for an `osDisk`.  
+
+     For more information, see the PowerShell reference for the [Add-AzsPlatformimage](/powershell/module/azs.compute.admin/add-azsplatformimage) cmdlet.
+
+4. When you add an image, it is only available for Azure Resource Manager-based templates and PowerShell deployments. To make an image available to your users as a marketplace item, publish the marketplace item using the steps in the article [Create and publish a Marketplace item](azure-stack-create-and-publish-marketplace-item.md). Make sure you note the **Publisher**, **Offer**, **SKU**, and **Version** values. You will need them when you edit the Resource Manager template and Manifest.json in your custom .azpkg.
+
+---
+
 ## Remove a platform image
 
 You can remove a platform image using the portal or PowerShell.
