@@ -4,7 +4,7 @@ description: Learn about Azure Stack Hub Storage data transfer tools.
 author: mattbriggs
 
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/06/2019
@@ -32,7 +32,7 @@ Your requirements determine which of the following tools works best for you:
 
     An open-source, cross-platform tool that provides a set of commands for working with the Azure and Azure Stack Hub platforms.
 
-* [Microsoft storage explorer](#microsoft-azure-storage-explorer)
+* [Microsoft Azure Storage Explorer](#microsoft-azure-storage-explorer)
 
     An easy-to-use stand-alone app with a user interface.
 
@@ -276,7 +276,7 @@ Azure Storage Explorer is a standalone app from Microsoft. It allows you to easi
 
 [Blobfuse](https://github.com/Azure/azure-storage-fuse) is a virtual file system driver for Azure Blob Storage, which allows you to access your existing block blob data in your storage account through the Linux file system. Azure Blob Storage is an object storage service and therefore doesn't have a hierarchical namespace. Blobfuse provides this namespace using the virtual directory scheme with the use of forward-slash `/` as a delimiter. Blobfuse works on both Azure and Azure Stack Hub. 
 
-To learn more about mounting blob storage as a file system with Blobfuse on Linux, see [How to mount Blob storage as a file system with Blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux). 
+To learn more about mounting blob storage as a file system with Blobfuse on Linux, see [How to mount Blob storage as a file system with Blobfuse](/azure/storage/blobs/storage-how-to-mount-container-linux). 
 
 For Azure Stack Hub, *blobEndpoint* needs to be specified while configuring your storage account credentials along with accountName, accountKey/sasToken, and containerName.
 
@@ -303,6 +303,6 @@ blobEndpoint myaccount.blob.local.azurestack.external
 ## Next steps
 
 * [Connect storage explorer to an Azure Stack Hub subscription](azure-stack-storage-connect-se.md)
-* [Get started with storage explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* [Get started with Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 * [Azure-consistent storage: differences and considerations](azure-stack-acs-differences.md)
 * [Introduction to Microsoft Azure storage](/azure/storage/common/storage-introduction)

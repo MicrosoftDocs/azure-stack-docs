@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: inhenkel
 ms.reviewer: fiseraci
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 08/06/2020
 
 # Intent: As an Azure Stack operator, I want to learn to protect my data with encryption at rest.
 # Keyword: rest encryption azure stack
@@ -36,14 +36,14 @@ Retrieving the BitLocker recovery keys requires access to the [privileged endpoi
 
 ```powershell
 ##This cmdlet retrieves the recovery keys for all the volumes that are encrypted with BitLocker.
-Get-AzsRecoveryKeys
+Get-AzsRecoveryKeys -raw
 ```
 
-Optional parameters for *Get-AzsRecoveryKeys* cmdlet:
+Parameters for *Get-AzsRecoveryKeys* cmdlet:
 
 | Parameter | Description | Type | Required |
 |---------|---------|---------|---------|
-|*raw* | Returns raw data of mapping between recovery key, computer name, and password id(s) of each encrypted volume.  | Switch | No (designed for support scenarios)|
+|*raw* | Returns data mapping between recovery key, computer name, and password id(s) of each encrypted volume.  | Switch | No, but recommended |
 
 ## Troubleshoot issues
 
@@ -57,4 +57,4 @@ If you suspect your system is experiencing issues with BitLocker, such as Azure 
 ## Next steps
 
 - [Learn more about Azure Stack Hub security](azure-stack-security-foundations.md).
-- For more information on how BitLocker protects CSVs, see [protecting cluster shared volumes and storage area networks with BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/protecting-cluster-shared-volumes-and-storage-area-networks-with-bitlocker).
+- For more information on how BitLocker protects CSVs, see [protecting cluster shared volumes and storage area networks with BitLocker](/windows/security/information-protection/bitlocker/protecting-cluster-shared-volumes-and-storage-area-networks-with-bitlocker).

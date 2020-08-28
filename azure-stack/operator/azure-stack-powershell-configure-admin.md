@@ -4,10 +4,10 @@ description: Learn how to connect to Azure Stack Hub with PowerShell.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 5/27/2020
+ms.date: 8/4/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 09/19/2019
+ms.lastreviewed: 8/4/2020
 
 # Intent: As an Azure Stack operator, I want to learn how to connect to Azure Stack using Powershell.
 # Keyword: connect azure stack powershell
@@ -62,8 +62,7 @@ Connect to the Azure Stack Hub operator environment with PowerShell with Azure A
   Login-AzureRmAccount -EnvironmentName "AzureStackAdmin"
   ```
 
-> [!Note]  
-> AD FS only supports interactive authentication with user identities. If a credential object is required, you must use a service principal (SPN). For more information on setting up a service principal with Azure Stack Hub and AD FS as your identity management service, see [Manage an AD FS app identity](azure-stack-create-service-principals.md#manage-an-ad-fs-app-identity).
+[!Include [AD FS only supports interactive authentication with user identities](../includes/note-powershell-adfs.md)]
 
 ## Test the connectivity
 
@@ -77,4 +76,4 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 - [Develop templates for Azure Stack Hub](../user/azure-stack-develop-templates.md).
 - [Deploy templates with PowerShell](../user/azure-stack-deploy-template-powershell.md).
-  - [Azure Stack Hub Module Reference](https://docs.microsoft.com/powershell/azure/azure-stack/overview).
+  - [Azure Stack Hub Module Reference](/powershell/azure/azure-stack/overview).

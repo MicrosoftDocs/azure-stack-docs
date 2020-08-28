@@ -4,7 +4,7 @@ description: Learn how to Deploy highly available network virtual appliances on 
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
@@ -19,7 +19,7 @@ ms.lastreviewed: 11/01/2019
 
 This article shows you how to deploy a set of network virtual appliances (NVAs) for high availability in Azure Stack Hub. An NVA is typically used to control the flow of network traffic from a perimeter network, also known as a DMZ, to other networks or subnets. The article includes example architectures for ingress only, egress only, and both ingress and egress.
 
-There are NVAs from different vendors available on [Azure Stack Hub Marketplace](https://docs.microsoft.com/azure-stack/operator/azure-stack-marketplace-azure-items), use one of them for optimal performance.
+There are NVAs from different vendors available on [Azure Stack Hub Marketplace](../operator/azure-stack-marketplace-azure-items.md), use one of them for optimal performance.
 
 The architecture has the following components.
 
@@ -27,13 +27,13 @@ The architecture has the following components.
 
 -   **Virtual network and subnets**. Every Azure VM is deployed into a virtual network that can be segmented into subnets. Create a separate subnet for each tier.
 
--   **Layer 7 Load Balancer.** As Application Gateway is not yet available on Azure Stack Hub, there are alternatives available on [Azure Stack Hub Market place](https://docs.microsoft.com/azure-stack/operator/azure-stack-marketplace-azure-items) such as: [KEMP LoadMaster Load Balancer ADC Content Switch](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure)/ [f5 Big-IP Virtual Edition](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best) or [A10 vThunder ADC](https://azuremarketplace.microsoft.com/marketplace/apps/a10networks.vthunder-414-gr1)
+-   **Layer 7 Load Balancer.** As Application Gateway is not yet available on Azure Stack Hub, there are alternatives available on [Azure Stack Hub Market place](../operator/azure-stack-marketplace-azure-items.md) such as: [KEMP LoadMaster Load Balancer ADC Content Switch](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure)/ [f5 Big-IP Virtual Edition](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best) or [A10 vThunder ADC](https://azuremarketplace.microsoft.com/marketplace/apps/a10networks.vthunder-414-gr1)
 
--   **Load balancers**. Use [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)to distribute network traffic from the web tier to the business tier, and from the business tier to SQL Server.
+-   **Load balancers**. Use [Azure Load Balancer](/azure/load-balancer/load-balancer-overview)to distribute network traffic from the web tier to the business tier, and from the business tier to SQL Server.
 
 -   **Network security groups** (NSGs). Use NSGs to restrict network traffic within the virtual network. For example, in the three-tier architecture shown here, the database tier doesn't accept traffic from the web front end, only from the business tier and the management subnet.
 
--   **UDRs.** Use [*user-defined routes*](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview/) (UDRs) to route traffic to the specific load balancer.
+-   **UDRs.** Use [*user-defined routes*](/azure/virtual-network/virtual-networks-udr-overview/) (UDRs) to route traffic to the specific load balancer.
 
 This article assumes a basic understanding of Azure Stack Hub networking.
 
@@ -79,10 +79,10 @@ In the two ingress and egress architectures, there was a separate perimeter netw
 
 In the Ingress-egress with layer 7 NVAs architecture, the NVAs process incoming requests from a Layer 7 Load Balancer. The NVAs also process outgoing requests from the workload VMs in the back-end pool of the load balancer. Because incoming traffic is routed with a layer 7 load balancer, and outgoing traffic is routed with an SLB (Azure Stack Hub Basic Load Balancer), the NVAs are responsible for maintaining session affinity. That is, the layer 7 load balancer maintains a mapping of inbound and outbound requests so it can forward the correct response to the original requestor. However, the internal load balancer doesn't have access to the layer 7 load balancer mappings, and uses its own logic to send responses to the NVAs. It's possible the load balancer could send a response to an NVA that did not initially receive the request from the layer 7 load balancer. In this case, the NVAs must communicate and transfer the response between them so the correct NVA can forward the response to the layer 7 load balancer.
 
-> [!Note]  
+> [!NOTE]  
 > You can also solve the asymmetric routing issue by ensuring the NVAs perform inbound source network address translation (SNAT). This would replace the original source IP of the requestor to one of the IP addresses of the NVA used on the inbound flow. This ensures that you can use multiple NVAs at a time, while preserving the route symmetry.
 
 ## Next steps
 
 - To learn more about Azure Stack Hub VMs, see [Azure Stack Hub VM features](azure-stack-vm-considerations.md).  
-- To learn more about Azure Cloud Patterns, see [Cloud Design Patterns](https://docs.microsoft.com/azure/architecture/patterns).
+- To learn more about Azure Cloud Patterns, see [Cloud Design Patterns](/azure/architecture/patterns).

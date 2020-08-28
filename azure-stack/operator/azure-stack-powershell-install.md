@@ -4,10 +4,10 @@ description: Learn how to install PowerShell for Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 04/14/2020
+ms.date: 08/04/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 04/14/2020
+ms.lastreviewed: 08/04/2020
 
 # Intent: As an Azure Stack operator, I want to install Powershell for Azure Stack.
 # Keyword: install powershell azure stack AzureRM
@@ -24,12 +24,14 @@ API profiles provide a way to manage version differences between Azure and Azure
 
 You can install Azure Stack Hub compatible PowerShell modules in internet-connected, partially connected, or disconnected scenarios. This article walks you through the detailed instructions for these scenarios.
 
+You can also run the AzureRM modules for Azure Stack Hub in a Docker container. For instructions, see [Use Docker to run PowerShell for Azure Stack Hub](../user/azure-stack-powershell-user-docker.md).
+
 ## 1. Verify your prerequisites
 
 Before you get started with Azure Stack Hub and the PowerShell AzureRM module, you must have the following prerequisites:
 
 - **PowerShell Version 5.1** <br>
-To check your version, run **$PSVersionTable.PSVersion** and compare the **Major** version. If you don't have PowerShell 5.1, follow the [Installing Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell).
+To check your version, run **$PSVersionTable.PSVersion** and compare the **Major** version. If you don't have PowerShell 5.1, follow the [Installing Windows PowerShell](/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell).
 
   > [!Note]
   > PowerShell 5.1 requires a Windows machine.
@@ -98,7 +100,7 @@ Install-Module -Name AzureRM.BootStrapper
 
 # Install and import the API Version Profile required by Azure Stack Hub into the current PowerShell session.
 Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
-Install-Module -Name AzureStack -RequiredVersion 1.8.1
+Install-Module -Name AzureStack -RequiredVersion 1.8.2
 ```
 
 ::: moniker-end
@@ -174,7 +176,7 @@ Import-Module -Name PackageManagement -ErrorAction Stop
 
 $Path = "<Path that is used to save the packages>"
 Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.8.1
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.8.2
 ```
 ::: moniker-end
 
@@ -223,7 +225,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
 2. Sign in to the disconnected workstation and copy the packages from the USB device to a location on the workstation.
 
-3. Manually bootstrap the NuGet provider on your disconnected workstation. For instructions, see [Manually bootstrapping the NuGet provider on a machine that isn't connected to the internet](https://docs.microsoft.com/powershell/scripting/gallery/how-to/getting-support/bootstrapping-nuget#manually-bootstrapping-the-nuget-provider-on-a-machine-that-is-not-connected-to-the-internet).
+3. Manually bootstrap the NuGet provider on your disconnected workstation. For instructions, see [Manually bootstrapping the NuGet provider on a machine that isn't connected to the internet](/powershell/scripting/gallery/how-to/getting-support/bootstrapping-nuget#manually-bootstrapping-the-nuget-provider-on-a-machine-that-is-not-connected-to-the-internet).
 
 4. Register this location as the default repository and install the AzureRM and `AzureStack` modules from this repository:
 

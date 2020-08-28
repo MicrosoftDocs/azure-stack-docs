@@ -3,9 +3,9 @@ title: Introduction to Key Vault in Azure Stack Hub
 description: Learn how Key Vault manages keys and secrets in Azure Stack Hub.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 06/09/2020
+ms.date: 08/10/2020
 ms.author: sethm
-ms.lastreviewed: 05/21/2019
+ms.lastreviewed: 08/10/2020
 
 # Intent: As an Azure Stack user, I want an intro to using the Azure Key Vault service in Azure Stack.
 # Keyword: azure stack key vault
@@ -39,7 +39,7 @@ Anybody with an Azure Stack Hub subscription can create and use key vaults. Alth
 * Authorize users or apps to access the key vault so they can then manage or use its keys and secrets.
 * Configure key usage (for example, sign or encrypt).
 
-The operator can then provide developers with Uniform Resource Identifiers (URIs) to call from their apps. Operators can also provide security admins with key-usage logging info.
+The operator can then provide developers with Uniform Resource Identifiers (URIs) to call from their apps.
 
 Developers can also manage the keys directly by using APIs. For more info, see the [Key Vault developer's guide](/azure/key-vault/key-vault-developers-guide).
 

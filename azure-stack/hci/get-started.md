@@ -4,22 +4,22 @@ description: Quickly connect to an existing Azure Stack HCI cluster and use Wind
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.service: azure-stack
+ms.subservice: azure-stack-hci
+ms.date: 08/12/2020
 ---
 
 # Get started with Azure Stack HCI and Windows Admin Center
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-This topic provides instructions for installing Windows Admin Center, connecting to an Azure Stack HCI cluster, and monitoring cluster and storage performance.
+This topic provides instructions for connecting to an Azure Stack HCI cluster, and for monitoring cluster and storage performance. If you haven't set up a cluster yet, see [Deployment overview](deploy/deployment-overview.md) for instructions.
 
 ## Install Windows Admin Center
 
-The simplest way to install Windows Admin Center is on a local Windows 10 PC, although you must be a member of the local administrator's group to do so.
+Windows Admin Center is a locally deployed, browser-based app for managing Azure Stack HCI. The simplest way to [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) is on a local management PC (desktop mode), although you can also install it on a server (service mode).
 
-1. Download [Windows Admin Center](https://www.microsoft.com/evalcenter/evaluate-windows-admin-center) from the Microsoft Evaluation Center. Even though it says "Start your evaluation," this is the generally available version for production use, included as part of your Windows Server license.
-2. Run the WindowsAdminCenter.msi file to install.
-3. When you start Windows Admin Center for the first time, you'll see an icon in the notification area of your desktop. Right-click this icon and choose Open to open the tool in your default browser. Make sure to select the Windows Admin Center Client certificate when prompted to select a certificate.
+If you install Windows Admin Center on a server, tasks that require CredSSP, such as cluster creation and installing updates and extensions, require using an account that's a member of the Gateway Administrators group on the Windows Admin Center server. For more information, see the first two sections of [Configure User Access Control and Permissions](/windows-server/manage/windows-admin-center/configure/user-access-control#gateway-access-role-definitions).
 
 ## Add and connect to an Azure Stack HCI cluster
 

@@ -18,13 +18,13 @@ ms.lastreviewed: 12/01/2019
 
 This article provides an overview of the Azure Monitor service in Azure Stack Hub. It discusses the operation of Azure Monitor and additional information on how to use Azure Monitor on Azure Stack Hub.
 
-For an overview of Azure Monitor, see the global Azure article [Get started with Azure Monitor on Azure Stack Hub](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started).
+For an overview of Azure Monitor, see the global Azure article [Get started with Azure Monitor on Azure Stack Hub](/azure/monitoring-and-diagnostics/monitoring-get-started).
 
 ![Azure Stack Hub Monitor blade](./media/azure-stack-metrics-azure-data/azs-monitor.png)
 
 Azure Monitor is a platform service that provides a single source for monitoring Azure resources. Azure Monitor lets you visualize, query, route, archive, and take other actions on metrics and logs coming from resources in Azure. You can work with this data by using the Azure Stack Hub administrator portal, Monitor PowerShell Cmdlets, Cross-Platform CLI, or Azure Monitor REST APIs. For the specific connectivity supported by Azure Stack Hub, see [How to consume monitoring data from Azure Stack Hub](azure-stack-metrics-monitor.md).
 
-> [!Note]
+> [!NOTE]
 > Metrics and diagnostic logs aren't available for the Azure Stack Development Kit.
 
 ## Prerequisites for Azure Monitor on Azure Stack Hub
@@ -63,7 +63,7 @@ The types of measures include:
  - Crash dumps
  - Customer error logs
 
-> [!Note]  
+> [!NOTE]  
 > Linux Diagnostics Extension on Azure Stack Hub is not supported.
 
 ### Host and Guest VM metrics
@@ -72,7 +72,7 @@ The previously listed compute resources have a dedicated host VM and guest OS. T
 
 ### Activity log
 
-You can search the activity logs for information about your compute resources as seen by the Azure Stack Hub infrastructure. The log contains information such as times when resources are created or destroyed. The activity logs on Azure Stack Hub are consistent with Azure. For more information, see the description of [Activity log overview on Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). 
+You can search the activity logs for information about your compute resources as seen by the Azure Stack Hub infrastructure. The log contains information such as times when resources are created or destroyed. The activity logs on Azure Stack Hub are consistent with Azure. For more information, see the description of [Activity log overview on Azure](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). 
 
 
 ## Azure monitor sources: everything else
@@ -115,9 +115,9 @@ A few visualization methods include:
 You can work with data tracking, routing, and retrieval using one of the following methods. Not all methods are available for all actions or data types. 
 
  - [Azure Stack Hub user portal ](azure-stack-use-portal.md)
- - [PowerShell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-powershell-samples)
- - [Cross-platform Command Line Interface(CLI)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-cli-samples)
- - [REST API](https://docs.microsoft.com/rest/api/monitor)
+ - [PowerShell](/azure/monitoring-and-diagnostics/insights-powershell-samples)
+ - [Cross-platform Command Line Interface(CLI)](/azure/monitoring-and-diagnostics/insights-cli-samples)
+ - [REST API](/rest/api/monitor)
  - [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
 
 > [!Important]  

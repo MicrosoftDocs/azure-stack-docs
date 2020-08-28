@@ -4,10 +4,10 @@ description: Learn how to deploy a Kubernetes cluster to a custom virtual networ
 author: mattbriggs
 
 ms.topic: article
-ms.date: 3/19/2020
+ms.date: 08/05/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 3/19/2020
+ms.lastreviewed: 08/05/2020
 
 # Intent: As an Azure Stack Hub user, I would like to deploy a Kubernetes cluster using the AKS engine on a custom virtual network so that I can deliver my service in an environment that extends my data center or in a hybrid cloud solution with my cluster in Azure Stack Hub and Azure.
 # Keywords: virtual network ASK engine Azure Stack Hub
@@ -18,11 +18,17 @@ ms.lastreviewed: 3/19/2020
 
 You can deploy a Kubernetes cluster using the Azure Kubernetes Service (AKS) engine on a custom virtual network. This article looks at finding the information you need in your virtual network. You can find steps for calculating the IP addresses used by your cluster, setting the vales in the API Model, and setting the route table and network security group.
 
-The Kubernetes cluster in Azure Stack Hub using the AKS engine uses the kubenet network plugin. For a discussion of he kubenet network plugin networking in Azure, see [Use kubenet networking with your own IP address ranges in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/configure-kubenet).
+The Kubernetes cluster in Azure Stack Hub using the AKS engine uses the kubenet network plugin. For a discussion of he kubenet network plugin networking in Azure, see [Use kubenet networking with your own IP address ranges in Azure Kubernetes Service (AKS)](/azure/aks/configure-kubenet).
+
+## Constraints when creating a custom virtual network
+
+-  The custom VNET must be in the same subscription as all of the other components of the Kubernetes cluster.
+-  The pool of master nodes and the pool of agent nodes must be in the same virtual network. You can deploy your nodes into different subnets within the same virtual network.
+-  The Kubernetes cluster subnet must use an IP range within the space of the custom virtual network IP range, see [Get the IP address block](#get-the-ip-address-block).
 
 ## Create custom virtual network
 
-You must have a custom virtual network in your Azure Stack Hub instance. For more information, see [Quickstart: Create a virtual network using the Azure portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal).
+You must have a custom virtual network in your Azure Stack Hub instance. For more information, see [Quickstart: Create a virtual network using the Azure portal](/azure/virtual-network/quick-create-portal).
 
 Create a new subnet in your virtual network. You will need to the get the subnet Resource ID and IP address range. You will use the Resource ID and range in your API model when you deploy your cluster.
 
@@ -40,8 +46,6 @@ Create a new subnet in your virtual network. You will need to the get the subnet
     ![virtual network CIDR block](media/kubernetes-aks-engine-custom-vnet/virtual-network-cidr-block.png)
     
 6. In the subnet blade, make a note of the address range and the virtual network CIDR Block, for example: `10.1.0.0 - 10.1.0.255 (256 addresses)` and `10.1.0.0/24`.
-
-
 
 ## Get the IP address block
 
@@ -69,7 +73,6 @@ In this example, then `firstConsecutiveStaticIP` property would be `10.1.0.224`.
 
 For larger subnets, for example /16 with more than 60 thousand addresses, you may not find it to be practical to set your static IP assignments to the end of the network space. Set your cluster static IP address range away from the first 24 addresses in your IP space so that the cluster can be resilient when claiming addresses.
 
-
 ## Update the API model
 
 Update the API model used to deploy the cluster from the AKS engine to your custom virtual network.
@@ -87,6 +90,12 @@ In **agentPoolProfiles** set the following values:
 | --- | --- | --- |
 | vnetSubnetId | `/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/default` | Specify the Azure Resource Manager path ID the subnet.  |
 
+In **orchestratorProfile**, find **kubernetesConfig** and set the following value:
+
+| Field | Example | Description |
+| --- | --- | --- |
+| clusterSubnet | `172.16.244.0/24` | IP range of the cluster subnet (POD network) must use an IP range within the space of the custom VNET IP range you defined. |
+
 For example:
 
 ```json
@@ -103,6 +112,13 @@ For example:
     "vnetSubnetId": "/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/default",
     ...
   },
+    ...
+"kubernetesConfig": [
+  {
+    ...
+    "clusterSubnet": "172.16.244.0/24",
+    ...
+  },
 
 ```
 
@@ -110,7 +126,7 @@ For example:
 
 After adding the values to your API model, you can deploy your cluster from your client machine using the `deploy` command using the AKS engine. For instructions, see [Deploy a Kubernetes cluster](azure-stack-kubernetes-aks-engine-deploy-cluster.md#deploy-a-kubernetes-cluster).
 
-## Set the route table and network security group
+## Set the route table
 
 After you deploy your cluster, return to your virtual network in the Azure Stack user portal. Set both the route table and the network security group (NSG) in the subnet blade. If you're not using Azure CNI, for example, `networkPlugin`: `kubenet` in the `kubernetesConfig` API model configuration object. After you have successfully deployed a cluster to your custom virtual network, get the ID of the Route Table resource from **Network** blade in your cluster's resource group.
 
@@ -119,15 +135,14 @@ After you deploy your cluster, return to your virtual network in the Azure Stack
 3. Enter the name of your virtual network in the search box.
 4. Select **Subnets** and then select the name of the subnet that contains your cluster.
     
-    ![route table and network security group](media/kubernetes-aks-engine-custom-vnet/virtual-network-rt-nsg.png)
+    ![route table and network security group](media/kubernetes-aks-engine-custom-vnet/virtual-network-route-table.png)
     
 5. Select **Route table** and then select the route table for your cluster.
-6. Select **Network security group** and then select the NSG for your cluster.
 
-> [!Note]  
+> [!NOTE]  
 > Custom virtual network for Kubernetes Windows cluster has a [known issue](https://github.com/Azure/aks-engine/issues/371).
 
 ## Next steps
 
 - Read about the [The AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)  
-- Read about [Azure Monitor for containers overview](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)
+- Read about [Azure Monitor for containers overview](/azure/azure-monitor/insights/container-insights-overview)

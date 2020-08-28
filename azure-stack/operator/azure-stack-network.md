@@ -23,10 +23,9 @@ This article provides Azure Stack network infrastructure information to help you
 
 ## Physical network design
 
-The Azure Stack solution requires a resilient and highly available physical infrastructure to support its operation and services. To integrate Azure Stack to the network it requires uplinks from the Top-of-Rack switches (ToR) to the nearest switch or router, which on this documentation is referred as Border. The ToRs can be uplinked to a single or a pair of Borders. The ToR is pre-configured by our automation tool, it expects a minimum of one connection between ToR and Border when using BGP Routing and a minimum of two connections (one per ToR) between ToR and Border when using Static Routing, with a maximum of four connections on either routing options. These connections are limited to SFP+ or SFP28 media and one GB, 10 GB, or 25-GB speeds. Check with your original equipment manufacturer (OEM) hardware vendor for availability. The following diagram presents the recommended design:
+The Azure Stack solution requires a resilient and highly available physical infrastructure to support its operation and services. To integrate Azure Stack to the network it requires uplinks from the Top-of-Rack switches (ToR) to the nearest switch or router, which on this documentation is referred as Border. The ToRs can be uplinked to a single or a pair of Borders. The ToR is pre-configured by our automation tool, it expects a minimum of one connection between ToR and Border when using BGP Routing and a minimum of two connections (one per ToR) between ToR and Border when using Static Routing, with a maximum of four connections on either routing options. These connections are limited to SFP+ or SFP28 media and a minimum of one GB speed. Please check with your original equipment manufacturer (OEM) hardware vendor for availability. The following diagram presents the recommended design:
 
 ![Recommended Azure Stack network design](media/azure-stack-network/physical-network.svg)
-
 
 ## Logical Networks
 
@@ -92,7 +91,7 @@ This /29 (six host IPs) network is dedicated to connecting the management ports 
 
 ## Permitted networks
 
-Starting on 1910, the Deployment Worksheet will have this new field allowing the operator to change some access control list (ACL)s to allow access to network device management interfaces and the hardware lifecycle host (HLH) from a trusted datacenter network range. With the access control list change, the operator can allow their management jumpbox VMs within a specific network range to access the switch management interface, the HLH OS and the HLH BMC. The operator can provide one or multiple subnets to this list, if left blank it will default to deny access. This new functionality replaces the need for post-deployment manual intervention as it used to be described on the [Modify specific settings on your Azure Stack switch configuration](https://docs.microsoft.com/azure-stack/operator/azure-stack-customer-defined#access-control-list-updates).
+Starting on 1910, the Deployment Worksheet will have this new field allowing the operator to change some access control list (ACL)s to allow access to network device management interfaces and the hardware lifecycle host (HLH) from a trusted datacenter network range. With the access control list change, the operator can allow their management jumpbox VMs within a specific network range to access the switch management interface, the HLH OS and the HLH BMC. The operator can provide one or multiple subnets to this list, if left blank it will default to deny access. This new functionality replaces the need for post-deployment manual intervention as it used to be described on the [Modify specific settings on your Azure Stack switch configuration](./azure-stack-customer-defined.md#access-control-list-updates).
 
 ## Next steps
 

@@ -7,7 +7,7 @@ documentationcenter: ''
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/01/2020
+ms.date: 08/25/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 02/26/2019
@@ -392,7 +392,7 @@ Usage is reported for the following resource providers:
 **Unit**: GB  
 **Notes**: Total incoming request response bytes + total outgoing request bytes + total incoming FTP request response bytes + total incoming web deploy request response bytes.  
   
-## How do the Azure Stack Hub usage APIs compare to the [Azure usage API](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview#azure-resource-usage-api-preview) (currently in public preview)?
+## How do the Azure Stack Hub usage APIs compare to the [Azure usage API](/azure/billing/billing-usage-rate-card-overview#azure-resource-usage-api-preview) (currently in public preview)?
 
 * The tenant usage API is consistent with the Azure API, with one
   exception: the *showDetails* flag currently isn't supported in

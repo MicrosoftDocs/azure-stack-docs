@@ -4,7 +4,7 @@ description: Learn how to deploy Kubernetes to Azure Stack Hub using Azure Activ
 author: mattbriggs
 
 ms.topic: article
-ms.date: 3/12/2020
+ms.date: 07/24/2020
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 3/12/2020
@@ -17,7 +17,7 @@ ms.lastreviewed: 3/12/2020
 
 # Deploy Kubernetes to Azure Stack Hub using Azure Active Directory
 
-> [!Note]  
+> [!NOTE]  
 > Only use the Kubernetes Azure Stack Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack, use [the AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
 
 You can follow the steps in this article to deploy and set up the resources for Kubernetes, when using Azure Active Directory (Azure AD) as your identity management service, in a single, coordinated operation.
@@ -28,7 +28,7 @@ To get started, make sure you have the right permissions and that your Azure Sta
 
 1. Verify that you can create applications in your Azure Active Directory (Azure AD) tenant. You need these permissions for the Kubernetes deployment.
 
-    For instructions on checking your permissions, see [Check Azure Active Directory permissions](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal).
+    For instructions on checking your permissions, see [Check Azure Active Directory permissions](/azure/azure-resource-manager/resource-group-create-service-principal-portal).
 
 1. Generate an SSH public and private key pair to sign in to the Linux VM on Azure Stack Hub. You will need the public key when creating the cluster.
 
@@ -118,7 +118,7 @@ Give the service principal access to your subscription so that the principal can
 
 1. Enter the **Master Profile DNS Prefix** that is unique to the region. This must be a region-unique name, such as `k8s-12345`. Try to chose it same as the resource group name as best practice.
 
-    > [!Note]  
+    > [!NOTE]  
     > For each cluster, use a new and unique master profile DNS prefix.
 
 1. Select the **Kubernetes master pool profile count**. The count contains the number of nodes in the master pool. There can be from 1 to 7. This value should be an odd number.

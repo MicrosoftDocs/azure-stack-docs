@@ -4,20 +4,20 @@ description: Learn how to get authentication information for Azure Stack Hub
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/13/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub user, I want to authenticate to Azure Stack Hub so that I can modify resources in my Azure subscription.
+# Keyword: authenticate Azure Stack Hub
 
 ---
 
 
 # Get authentication information for Azure Stack Hub
 
-To authenticate to Azure Stack Hub requires that you provide subscription ID, tenant ID, and Location, and Azure Stack Hub Resource Manager endpoint. You can get these values from the [Azure Stack Hub Resource Manager endpoint](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles-ruby?view=azs-1910#the-azure-stack-hub-resource-manager-endpoint) for Azure Stack Hub. Or you can get them using the steps in this article.
+To authenticate to Azure Stack Hub requires that you provide subscription ID, tenant ID, and Location, and Azure Stack Hub Resource Manager endpoint. You can get these values from the [Azure Stack Hub Resource Manager endpoint](./azure-stack-version-profiles-ruby.md?view=azs-1910#the-azure-stack-hub-resource-manager-endpoint) for Azure Stack Hub. Or you can get them using the steps in this article.
 
 ## Values needed to authenticate
 
@@ -75,4 +75,4 @@ To get the metadata endpoint that points to properties such as gallery endpoint,
 
 ## Next steps
 
-Learn more about using the [Azure Stack Hub Resource Manager](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles?view=azs-1910) with Azure Stack Hub.
+Learn more about using the [Azure Stack Hub Resource Manager](./azure-stack-version-profiles.md?view=azs-1910) with Azure Stack Hub.

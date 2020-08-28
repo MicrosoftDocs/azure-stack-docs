@@ -4,7 +4,7 @@ description: Learn how to upgrade a Kubernetes cluster on Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 4/23/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 4/23/2020
@@ -43,7 +43,7 @@ When upgrading a production cluster, consider:
 
 ## Steps to upgrade to a newer Kubernetes version
 
-> [!Note]  
+> [!NOTE]  
 > The AKS base image will also be upgrade if you are using a newer version of the aks-engine and the image is available in the marketplace.
 
 The following instructions use the minimum steps to perform the upgrade. If would like additional detail, see the article [Upgrading Kubernetes Clusters](https://github.com/Azure/aks-engine/blob/master/docs/topics/upgrade.md).
@@ -66,7 +66,7 @@ For a complete mapping of AKS engine, AKS Base Image and Kubernetes versions see
     | azure-env | AzureStackCloud | To indicate to AKS engine that your target platform is Azure Stack Hub use `AzureStackCloud`. |
     | location | local | The region name for your Azure Stack Hub. For the ASDK, the region is set to `local`. |
     | resource-group | kube-rg | Enter the name of a new resource group or select an existing resource group. The resource name needs to be alphanumeric and lowercase. |
-    | subscription-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter your Subscription ID. For more information, see [Subscribe to an offer](https://docs.microsoft.com/azure-stack/user/azure-stack-subscribe-services#subscribe-to-an-offer) |
+    | subscription-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter your Subscription ID. For more information, see [Subscribe to an offer](./azure-stack-subscribe-services.md#subscribe-to-an-offer) |
     | api-model | ./kubernetes-azurestack.json | Path to the cluster configuration file, or API model. |
     | client-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter the service principal GUID. The Client ID identified as the Application ID when your Azure Stack Hub administrator created the service principal. |
     | client-secret | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter the service principal secret. This is the client secret you set up when creating your service. |

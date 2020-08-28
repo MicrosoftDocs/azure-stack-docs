@@ -1,6 +1,6 @@
 ---
-title: Get certificate signing requests for deployment in Azure Stack Hub 
-description: Learn how to get certificate signing requests for Azure Stack Hub PKI certificates in Azure Stack Hub integrated systems.
+title: Generate certificate signing requests for Azure Stack Hub 
+description: Learn how to generate certificate signing requests for Azure Stack Hub PKI certificates in Azure Stack Hub integrated systems.
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 09/10/2019
@@ -14,14 +14,15 @@ ms.lastreviewed: 09/10/2019
 ---
 
 
-# Get certificate signing requests for deployment in Azure Stack Hub
+# Generate certificate signing requests for Azure Stack Hub
 
 You can use the Azure Stack Hub Readiness Checker tool to create Certificate Signing Requests (CSRs) suitable for an Azure Stack Hub deployment. Certificates should be requested, generated, and validated with enough time to test before deployment. You can get the tool [from the PowerShell Gallery](https://aka.ms/AzsReadinessChecker).
 
 You can use the Azure Stack Hub Readiness Checker tool (AzsReadinessChecker) to request the following certificates:
 
-- **Standard Certificate Requests** according to [Generate certificate signing request](azure-stack-get-pki-certs.md).
-- **Platform-as-a-Service**: You can request platform-as-a-service (PaaS) names for certificates as specified in [Azure Stack Hub Public Key Infrastructure certificate requirements - Optional PaaS Certificates](azure-stack-pki-certs.md).
+- **Standard Certificate Requests** according to [Generate certificate signing request for new deployments](azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-new-deployments).
+- **Renewal Certificate Requests** according to [Generate certificate signing request for certificate renewal](azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-certificate-renewal).
+- **Platform-as-a-Service**: You can request platform-as-a-service (PaaS) names for certificates as specified in [Azure Stack Hub Public Key Infrastructure certificate requirements - Optional PaaS Certificates](azure-stack-pki-certs.md#optional-paas-certificates).
 
 ## Prerequisites
 
@@ -137,16 +138,16 @@ Use these steps to prepare certificate signing requests for renewal of existing 
         Install-Module Microsoft.AzureStack.ReadinessChecker
     ```
 
-2. Declare the **stampEndpoint**. For example:
+2. Declare the **stampEndpoint** in the form of regionname.domain.com of the Azure Stack Hub System. For example (if the Azure Stack Hub Tenant portal address is https://portal.east.azurestack.contoso.com):
 
     ```powershell  
-    $stampEndpoint = 'portal.east.azurestack.contoso.com'
+    $stampEndpoint = 'east.azurestack.contoso.com'
     ```
 
     > [!NOTE]  
-    > HTTPS Connectivity is required for the above endpoint.
-    > The above endpoint should match one of certificates required by the certificate type e.g. for deployment certificates portal.region.domain endpoint is required, for AppServices sso.appservices.region.domain etc.
-    > The certificate bound to the endpoint will be used to clone attributes such as subject, key length, signature algorithm.  Only one existing endpoint is required and all signing requests will created all necessary certificates.
+    > HTTPS Connectivity is required for the Azure Stack Hub system above.
+    > The Readiness Checker will use the stampendpoint (region and domain) to build a pointer to an existing certificates required by the certificate type e.g. for deployment certificates 'portal' is prepended, by the tool, so portal.east.azurestack.contoso.com is used in certificate cloning, for AppServices sso.appservices.east.azurestack.contoso.com etc.
+    > The certificate bound to the computed endpoint will be used to clone attributes such as subject, key length, signature algorithm.  If you wish to change any of these attributes you should follow the steps for [Generate certificate signing request for new deployments](azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-new-deployments) instead.
 
 3. Declare an output directory that already exists. For example:
 

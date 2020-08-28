@@ -4,20 +4,20 @@ description: Learn how to use Azure Monitor for containers on Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 3/19/2020
+ms.date: 7/24/2020
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 3/19/2020
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub user, I want to learn how to use Azure Monitor for containers on Azure Stack Hub.
+# Keyword: use Azure Monitor for containers Azure Stack Hub Azure Monitor Log Analytics 
 
 ---
 
 
 # Use Azure Monitor for containers on Azure Stack Hub
 
-You can use [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) for containers to monitor your containers in an AKS engine deployed Kubernetes cluster in Azure Stack Hub. 
+You can use [Azure Monitor](/azure/azure-monitor/) for containers to monitor your containers in an AKS engine deployed Kubernetes cluster in Azure Stack Hub. 
 
 > [!IMPORTANT]
 > Azure Monitor for containers on Azure Stack Hub is currently in public preview.
@@ -61,4 +61,4 @@ Supported API definitions for the Azure Stack Hub cluster can be found in this e
 ## Next steps
 
 - Read about the [The AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)  
-- Read about [Azure Monitor for containers overview](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)
+- Read about [Azure Monitor for containers overview](/azure/azure-monitor/insights/container-insights-overview)

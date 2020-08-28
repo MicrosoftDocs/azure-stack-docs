@@ -16,7 +16,7 @@ ms.lastreviewed: 06/13/2019
 
 # Azure Stack Hub compute capacity
 
-The [virtual machine (VM) sizes](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes) supported on Azure Stack Hub are a subset of those supported on Azure. Azure imposes resource limits along many vectors to avoid overconsumption of resources (server local and service-level). Without imposing some limits on tenant consumption, the tenant experiences will suffer when other tenants overconsume resources. For networking egress from the VM, there are bandwidth caps in place on Azure Stack Hub that match Azure limitations. For storage resources on Azure Stack Hub, storage IOPS limits avoid basic over consumption of resources by tenants for storage access.
+The [virtual machine (VM) sizes](../user/azure-stack-vm-sizes.md) supported on Azure Stack Hub are a subset of those supported on Azure. Azure imposes resource limits along many vectors to avoid overconsumption of resources (server local and service-level). Without imposing some limits on tenant consumption, the tenant experiences will suffer when other tenants overconsume resources. For networking egress from the VM, there are bandwidth caps in place on Azure Stack Hub that match Azure limitations. For storage resources on Azure Stack Hub, storage IOPS limits avoid basic over consumption of resources by tenants for storage access.
 
 >[!IMPORTANT]
 >The [Azure Stack Hub Capacity Planner](https://aka.ms/azstackcapacityplanner) does not consider or guarantee IOPS performance.
@@ -25,7 +25,7 @@ The [virtual machine (VM) sizes](https://docs.microsoft.com/azure-stack/user/azu
 
 The Azure Stack Hub placement engine places tenant VMs across the available hosts.
 
-Azure Stack Hub uses two considerations when placing VMs. One, is there enough memory on the host for that VM type? And two, are the VMs a part of an [availability set](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) or are they [virtual machine scale sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)?
+Azure Stack Hub uses two considerations when placing VMs. One, is there enough memory on the host for that VM type? And two, are the VMs a part of an [availability set](/azure/virtual-machines/windows/manage-availability) or are they [virtual machine scale sets](/azure/virtual-machine-scale-sets/overview)?
 
 To achieve high availability of a multi-VM production system in Azure Stack Hub, virtual machines (VMs) are placed in an availability set that spreads them across multiple fault domains. A fault domain in an availability set is defined as a single node in the scale unit. Azure Stack Hub supports having an availability set with a maximum of three fault domains to be consistent with Azure. VMs placed in an availability set will be physically isolated from each other by spreading them as evenly as possible over multiple fault domains (Azure Stack Hub hosts). If there's a hardware failure, VMs from the failed fault domain will be restarted in other fault domains. If possible, they'll be kept in separate fault domains from the other VMs in the same availability set. When the host comes back online, VMs will be rebalanced to maintain high availability.  
 
@@ -40,6 +40,10 @@ Since placement algorithms don't look at the existing virtual to physical core o
 There's a new consideration for accurately planning Azure Stack Hub capacity. With the 1901 update (and every update going forward), there's now a limit on the total number of VMs that can be created. This limit is intended to be temporary to avoid solution instability. The source of the stability issue at higher numbers of VMs is being addressed but a specific timeline for remediation hasn't been determined. There's now a per-server limit of 60 VMs with a total solution limit of 700. For example, an eight-server Azure Stack Hub VM limit would be 480 (8 * 60). For a 12 to 16 server Azure Stack Hub solution, the limit would be 700. This limit has been created keeping all the compute capacity considerations in mind, such as the resiliency reserve and the CPU virtual-to-physical ratio that an operator would like to maintain on the stamp. For more information, see the new release of the capacity planner.
 
 If the VM scale limit is reached, the following error codes are returned as a result: `VMsPerScaleUnitLimitExceeded`, `VMsPerScaleUnitNodeLimitExceeded`.
+
+## Consideration for batch deployment of VMs
+
+In releases prior to and including 2002, 2-5 VMs per batch with 5 mins gap in between batches provided reliable VM deployments to reach a scale of 700 VMs. With the 2005 version of Azure Stack Hub, we are able to reliably provision VMs at batch sizes of 40 with 5 mins gap in between batch deployments.
 
 ## Considerations for deallocation
 
@@ -92,6 +96,26 @@ The value V, largest VM in the scale unit, is dynamically based on the largest t
 **Q**: My tenant deployed a new VM, how long will it take for the capability chart on the administrator portal to show remaining capacity?
 
 **A**: The capacity blade refreshes every 15 minutes, so take that into consideration.
+
+**Q**: How can I see the available cores and assigned cores?
+
+**A**: In **PowerShell** run `test-azurestack -include AzsVmPlacement -debug`, which generates an output like this:
+
+    ```console
+    Starting Test-AzureStack
+    Launching AzsVmPlacement
+     
+    Azure Stack Scale Unit VM Placement Summary Results
+     
+    Cluster Node    VM Count VMs Running Physical Core Total Virtual Co Physical Memory Total Virtual Mem
+    ------------    -------- ----------- ------------- ---------------- --------------- -----------------
+    LNV2-Node02     20       20          28            66               256             119.5            
+    LNV2-Node03     17       16          28            62               256             110              
+    LNV2-Node01     11       11          28            47               256             111              
+    LNV2-Node04     10       10          28            49               256             101              
+    
+    PASS : Azure Stack Scale Unit VM Placement Summary
+    ```
 
 **Q**: The number of deployed VMs on my Azure Stack Hub hasn't changed, but my capacity is fluctuating. Why?
 

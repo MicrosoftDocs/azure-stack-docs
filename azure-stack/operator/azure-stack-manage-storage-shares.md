@@ -46,7 +46,7 @@ Because the storage objects (blobs, and so on) are individually contained within
 
 When an object store volume is low on free space and actions to [reclaim](#reclaim-capacity) space aren't successful or available, Azure Stack Hub cloud operators can migrate storage objects from one volume to another.
 
-For information about how tenant users work with blob storage in Azure Stack Hub, see [Azure Stack Hub Storage services](/azure-stack/user/azure-stack-storage-overview).
+For information about how tenant users work with blob storage in Azure Stack Hub, see [Azure Stack Hub Storage services](../user/azure-stack-storage-overview.md).
 
 ### Containers
 Tenant users create containers that are then used to store blob data. Although users decide in which container to place blobs, the storage service uses an algorithm to determine on which volume to put the container. The algorithm typically chooses the volume with the most available space.  
@@ -174,7 +174,7 @@ Migration consolidates all of a container's blobs on the new share.
 > The migration of blobs for a container is an offline operation that requires the use of PowerShell. Until the migration is complete, all blobs for the container that you're migrating remain offline and can't be used. You should also avoid upgrading Azure Stack Hub until all ongoing migration is complete.
 
 #### Migrate containers by using PowerShell
-1. Confirm that you have [Azure PowerShell installed and configured](https://azure.microsoft.com/documentation/articles/powershell-install-configure/). For more information, see [Manage Azure resources by using Azure PowerShell](https://go.microsoft.com/fwlink/?LinkId=394767).
+1. Confirm that you have [Azure PowerShell installed and configured](/powershell/azure/). For more information, see [Manage Azure resources by using Azure PowerShell](https://go.microsoft.com/fwlink/?LinkId=394767).
 2. Examine the container to understand what data is on the share that you plan to migrate. To identify the best candidate containers for migration in a volume, use the `Get-AzsStorageContainer` cmdlet:
 
    ```powershell  
@@ -325,4 +325,4 @@ The most extreme method for managing space involves moving unmanaged disks. If t
 ::: moniker-end
 
 ## Next steps
-To learn more about offering VMs to users, see [Manage storage capacity for Azure Stack Hub](azure-stack-tutorial-tenant-vm.md).
+To learn more about offering VMs to users, see [Manage storage capacity for Azure Stack Hub](./tutorial-offer-services.md?view=azs-2002).

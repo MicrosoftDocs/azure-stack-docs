@@ -19,11 +19,11 @@ Typically, you manage VMs from a remote computer, rather than on a host server i
 > [!NOTE]
 > When running PowerShell commands from a management computer, include the -ComputerName parameter with the name of the host server you are managing. NetBIOS names, IP addresses, and fully qualified domain names are allowable.
 
-For the complete reference documentation for managing VMs using PowerShell, see [Hyper-V reference](https://docs.microsoft.com/powershell/module/hyper-v/?view=win10-ps).
+For the complete reference documentation for managing VMs using PowerShell, see [Hyper-V reference](/powershell/module/hyper-v/?view=win10-ps).
 
 ## Create a VM  
 
-The `New-VM` cmdlet is used to create a new VM. For detailed usage, see the [New-VM](https://docs.microsoft.com/powershell/module/hyper-v/new-vm?view=win10-ps) reference documentation.
+The `New-VM` cmdlet is used to create a new VM. For detailed usage, see the [New-VM](/powershell/module/hyper-v/new-vm?view=win10-ps) reference documentation.
 
 Here are the settings that you can specify when creating a new VM with an existing virtual hard disk, where:
 
@@ -40,7 +40,7 @@ Here are the settings that you can specify when creating a new VM with an existi
 
 - **-Generation** is the virtual machine generation. Use generation 1 for VHD and generation 2 for VHDX.
 
-- **-Switch** is the name of the virtual switch that you want the virtual machine to use to connect to other virtual machines or the network. Get the name of the virtual switch by using [Get-VMSwitch](https://docs.microsoft.com/powershell/module/hyper-v/get-vmswitch?view=win10-ps). For example:  
+- **-Switch** is the name of the virtual switch that you want the virtual machine to use to connect to other virtual machines or the network. Get the name of the virtual switch by using [Get-VMSwitch](/powershell/module/hyper-v/get-vmswitch?view=win10-ps). For example:  
 
 The full command as follows for creating a VM called VM1:
 
@@ -62,7 +62,7 @@ To create a virtual machine with a new virtual hard disk, replace the **-VHDPath
 New-VM -ComputerName Server1 -Name VM1 -MemoryStartupBytes 4GB -BootDevice VHD -NewVHDPath .\VMs\Win10.vhdx -Path .\VMData -NewVHDSizeBytes 20GB -Generation 2 -Switch ExternalSwitch  
  ```  
 
-To create a virtual machine with a new virtual disk that boots to an operating system image, see the PowerShell example in [Create virtual machine walkthrough for Hyper-V on Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_create_vm).  
+To create a virtual machine with a new virtual disk that boots to an operating system image, see the PowerShell example in [Create virtual machine walkthrough for Hyper-V on Windows 10](/virtualization/hyper-v-on-windows/quick-start/create-virtual-machine).  
 
 ## Get a list of VMs
 
@@ -72,7 +72,7 @@ The following example returns a list of all VMs on Server1.
 Get-VM -ComputerName Server1
 ```
 
-The following example returns a list of all running VMs on a server by adding a filter using the `Where-Object` command. For more information, see [Using the Where-Object](<https://docs.microsoft.com/previous-versions/windows/it-pro/windows-powershell-1.0/ee177028(v=technet.10)>) documentation.
+The following example returns a list of all running VMs on a server by adding a filter using the `Where-Object` command. For more information, see [Using the Where-Object](/previous-versions/windows/it-pro/windows-powershell-1.0/ee177028(v=technet.10)) documentation.
 
 ```powershell
 Get-VM -ComputerName Server1 | Where-Object -Property State -eq "Running"
@@ -86,7 +86,7 @@ Get-VM -ComputerName Server1 | Where-Object -Property State -eq "Off"
 
 ## Start and stop a VM
 
-Use the `Start-VM` and `Stop-VM` commands to start or stop a VM. For detailed information, see the [Start-VM](https://docs.microsoft.com/powershell/module/hyper-v/start-vm?view=win10-ps) and [Stop-VM](https://docs.microsoft.com/powershell/module/hyper-v/stop-vm?view=win10-ps) reference documentation.
+Use the `Start-VM` and `Stop-VM` commands to start or stop a VM. For detailed information, see the [Start-VM](/powershell/module/hyper-v/start-vm?view=win10-ps) and [Stop-VM](/powershell/module/hyper-v/stop-vm?view=win10-ps) reference documentation.
 
 The following example shows how to start a VM named VM1:
 
@@ -102,7 +102,7 @@ Stop-VM -Name VM1 -ComputerName Server1
 
 ## Move a VM
 
-The `Move-VM` cmdlet moves a VM to a different server. For more information, see the [Move-VM](https://docs.microsoft.com/powershell/module/hyper-v/move-vm?view=win10-ps) reference documentation.
+The `Move-VM` cmdlet moves a VM to a different server. For more information, see the [Move-VM](/powershell/module/hyper-v/move-vm?view=win10-ps) reference documentation.
 
  The following example shows how to move a VM to Server2 when the VM is stored on an SMB share on Server1:
 
@@ -118,7 +118,7 @@ Move-VM -ComputerName Server1 -Name VM1 -DestinationHost Server2 -IncludeStorage
 
 ## Import or export a VM
 
-The `Import-VM` and `Export-VM` cmdlets import and export a VM. The following shows a couple of examples. For more information, see the [Import-VM](https://docs.microsoft.com/powershell/module/hyper-v/import-vm?view=win10-ps)  and [Export-VM](https://docs.microsoft.com/powershell/module/hyper-v/export-vm?view=win10-ps) reference documentation.
+The `Import-VM` and `Export-VM` cmdlets import and export a VM. The following shows a couple of examples. For more information, see the [Import-VM](/powershell/module/hyper-v/import-vm?view=win10-ps)  and [Export-VM](/powershell/module/hyper-v/export-vm?view=win10-ps) reference documentation.
 
 The following example shows how to import a VM from its configuration file. The VM is registered in-place, so its files are not copied:
 
@@ -134,7 +134,7 @@ Export-VM -ComputerName Server1 -Name VM1 -Path D:\
 
 ## Rename a VM
 
-The `Rename-VM` cmdlet is used to rename a VM. For detailed information, see the [Rename-VM](https://docs.microsoft.com/powershell/module/hyper-v/rename-vm?view=win10-ps) reference documentation.
+The `Rename-VM` cmdlet is used to rename a VM. For detailed information, see the [Rename-VM](/powershell/module/hyper-v/rename-vm?view=win10-ps) reference documentation.
 
 The following example renames VM1 to VM2 and displays the renamed virtual machine:
 
@@ -144,7 +144,7 @@ Rename-VM -ComputerName Server1 -Name VM1 -NewName VM2
 
 ## Create a VM checkpoint
 
-The `Checkpoint-VM` cmdlet is used to create a checkpoint for a VM. For detailed information, see the [Checkpoint-VM](https://docs.microsoft.com/powershell/module/hyper-v/checkpoint-vm?view=win10-ps) reference documentation.
+The `Checkpoint-VM` cmdlet is used to create a checkpoint for a VM. For detailed information, see the [Checkpoint-VM](/powershell/module/hyper-v/checkpoint-vm?view=win10-ps) reference documentation.
 
 The following example creates a checkpoint named BeforeInstallingUpdates for the VM named Test.
 
@@ -154,7 +154,7 @@ Checkpoint-VM -ComputerName Server1 -Name VM1 -SnapshotName BeforeInstallingUpda
 
 ## Create a VHD for a VM
 
-The `New-VHD` cmdlet is used to create a new VHD for a VM. For detailed information on how to use it, see the [New-VHD](https://docs.microsoft.com/powershell/module/hyper-v/new-vhd?view=win10-ps) reference documentation.
+The `New-VHD` cmdlet is used to create a new VHD for a VM. For detailed information on how to use it, see the [New-VHD](/powershell/module/hyper-v/new-vhd?view=win10-ps) reference documentation.
 
 The following example creates a dynamic virtual hard disk in VHDX format that is 10 GB in size. The file name extension determines the format and the default type of dynamic is used because no type is specified.
 
@@ -164,7 +164,7 @@ New-VHD -ComputerName Server1 -Name VM1 -Path c:\Base.vhdx -SizeBytes 10GB
 
 ## Add a network adapter to a VM
 
-The `Add-VMNetworkAdapter` cmdlet is used to add a virtual network adapter to a VM. The following shows a couple of examples. For detailed information on how to use it, see the [Add-VMNetworkAdapter](https://docs.microsoft.com/powershell/module/hyper-v/add-vmnetworkadapter?view=win10-ps) reference documentation.
+The `Add-VMNetworkAdapter` cmdlet is used to add a virtual network adapter to a VM. The following shows a couple of examples. For detailed information on how to use it, see the [Add-VMNetworkAdapter](/powershell/module/hyper-v/add-vmnetworkadapter?view=win10-ps) reference documentation.
 
 The following example adds a virtual network adapter named Redmond NIC1 to a virtual machine named VM1:
 
@@ -180,7 +180,7 @@ Add-VMNetworkAdapter -ComputerName Server1 -VMName VM1 -SwitchName Network
 
 ## Create a virtual switch for a VM
 
-The `New-VMSwitch` cmdlet is used to new virtual switch on a VM host. For detailed information on how to use it, see the [New-VMSwitch](https://docs.microsoft.com/powershell/module/hyper-v/new-vmswitch?view=win10-ps) reference documentation.
+The `New-VMSwitch` cmdlet is used to new virtual switch on a VM host. For detailed information on how to use it, see the [New-VMSwitch](/powershell/module/hyper-v/new-vmswitch?view=win10-ps) reference documentation.
 
 The following example creates a new switch called "QoS switch", which binds to a network adapter called Wired Ethernet Connection 3 and supports weight-based minimum bandwidth.
 
@@ -190,7 +190,7 @@ New-VMSwitch "QoS Switch" -NetAdapterName "Wired Ethernet Connection 3" -Minimum
 
 ## Set memory for a VM
 
-The `Set-VMMemory` cmdlet is used to configure the memory a VM. For detailed information on how to use it, see the [Set-VMMemory](https://docs.microsoft.com/powershell/module/hyper-v/set-vmmemory?view=win10-ps) reference documentation.
+The `Set-VMMemory` cmdlet is used to configure the memory a VM. For detailed information on how to use it, see the [Set-VMMemory](/powershell/module/hyper-v/set-vmmemory?view=win10-ps) reference documentation.
 
 The following example enables dynamic memory on a VM named VM1, sets its minimum, startup, and maximum memory, its memory priority, and its buffer.
 
@@ -200,8 +200,7 @@ Set-VMMemory -ComputerName Server1 -Name VM1 -DynamicMemoryEnabled $true -Minimu
 
 ## Set virtual processors for a VM
 
-The `Set-VMProcessor` cmdlet is used to configure the virtual processors for a VM. For detailed information on how to use it, see the [Set-VMProcessor](https://docs.microsoft.com/powershell/module/hyper-v/set-vmprocessor?view=win10-ps
-) reference documentation.
+The `Set-VMProcessor` cmdlet is used to configure the virtual processors for a VM. For detailed information on how to use it, see the [Set-VMProcessor](/powershell/module/hyper-v/set-vmprocessor?view=win10-ps) reference documentation.
 
 The following example configures a VM named VM1 with two virtual processors, a reserve of 10%, a limit of 75%, and a relative weight of 200.
 

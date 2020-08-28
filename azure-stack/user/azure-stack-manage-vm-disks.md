@@ -4,7 +4,7 @@ description: Create disks for virtual machines in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 04/22/2020
+ms.date: 07/27/2020
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
@@ -55,7 +55,7 @@ After you create a VM, you can use the portal to:
 * Create a new data disk and attach it to the VM.
 * Upload an existing data disk and attach it to the VM.
 
-Each unmanaged disk you add should be put in a separate container.
+Put each unmanaged disk you add into a separate container.
 
 > [!NOTE]  
 > Disks created and managed by Azure are called [managed disks](/azure/virtual-machines/windows/managed-disks-overview).
@@ -122,8 +122,8 @@ For more information about working with storage accounts in Azure Stack Hub, see
 1. [Prepare a .vhd file](/azure/virtual-machines/windows/classic/createupload-vhd) for use as data disk for a VM. Upload that .vhd file to a storage account that you use with the VM to which you want to attach the .vhd file.
 
     - Plan to use a different container to hold the .vhd file than the container that holds the OS disk.  
-    - Before uploading any VHD to Azure, you should follow [Prepare a Windows VHD or VHDX to upload to Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-    - Review [Plan for the migration to Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/on-prem-to-azure#plan-for-the-migration-to-managed-disks) before starting your migration to [Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
+    - Before uploading any VHD to Azure, you should follow [Prepare a Windows VHD or VHDX to upload to Azure](/azure/virtual-machines/windows/prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json).
+    - Review [Plan for the migration to Managed Disks](/azure/virtual-machines/windows/on-prem-to-azure#plan-for-the-migration-to-managed-disks) before starting your migration to [Managed Disks](/azure/virtual-machines/windows/managed-disks-overview).
 
     ![Example: Upload a VHD file](media/azure-stack-manage-vm-disks/upload-vhd.png)
 

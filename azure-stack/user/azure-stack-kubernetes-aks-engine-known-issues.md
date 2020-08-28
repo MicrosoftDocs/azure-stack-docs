@@ -4,10 +4,10 @@ description: Learn Known issues using the AKS engine on Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 07/02/2020
+ms.date: 08/05/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 07/02/2020
+ms.lastreviewed: 08/05/2020
 
 # Intent: Not done: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Not done: keyword noun phrase
@@ -40,21 +40,9 @@ This topic covers known issues for the AKS engine on Azure Stack Hub.
 
 * Kubernetes 1.17 is not supported in this release. Although there are GitHub pull requests (PR)s referencing 1.17, it is not supported.
 
-## Basic load balancer SKU limitations
+## aks-engine get-versions command limitations
 
-* Single agent pool limitation. Currently, Azure Stack Hub only supports the Basic load balancer SKU. This SKU [limits](https://docs.microsoft.com/azure/load-balancer/concepts#limitations) the backend pool endpoints to virtual machines in a single availability set (or virtual machine scale set). This implies that all replicas of a LoadBalancer service should be deployed on the same agent pool and it also implies that each individual cluster can either have a Linux LoadBalancer service or a Windows LoadBalancer service.
-
-  You can force Kubernetes to create pods in a specific agent pool by adding [node selector](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) "agentpool: MY_POOL_NAME" in your pod template.
-
-  ```json
-  nodeSelector:
-
-        agentpool: linuxpool
-  ```
-  
-  If a LoadBalancer service was already created in your cluster, you can find out which agent pool was selected as the backend pool of the load balancer by inspecting the load balancer backend pools blade in the Azure Stack Hub portal. Once you have that information, you can specify the target agent pool by updating your deployment/pod yaml (as explained in the previous paragraph).
-
-* Command scope for `get-versions`. The output of the `get-versions` command only pertains to Azure and not Azure Stack Hub clouds. For more information about the different upgrade paths, see [Steps to upgrade to a newer Kubernetes version](azure-stack-kubernetes-aks-engine-upgrade.md#steps-to-upgrade-to-a-newer-kubernetes-version).
+The output of the **aks-engine** `get-versions` command only relates to global Azure rather than Azure Stack Hub. For more information about the various upgrade paths, see [Steps to upgrade to a newer Kubernetes version](azure-stack-kubernetes-aks-engine-upgrade.md#steps-to-upgrade-to-a-newer-kubernetes-version).
 
 ## Next steps
 

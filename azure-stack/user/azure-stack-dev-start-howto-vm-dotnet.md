@@ -4,7 +4,7 @@ description: Deploy a C# ASP.NET web app to a VM in Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: overview
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 11/11/2019
@@ -98,8 +98,7 @@ This article uses a C# 6.0 app that uses ASP.NET Core 2.2 running on a Windows 2
 
 ## Create an app 
 
-You can use either your own web app or the example at [Publish an ASP.NET Core app to Azure with Visual Studio](https://docs.microsoft.com/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-2.2&tabs=visual-studio
-). The article describes how to create and publish an ASP.NET web app to an Azure virtual machine by using the Azure Virtual Machines publishing feature in Visual Studio 2017. After you've installed and made sure that your app is running locally, you'll update your publishing target to the Windows VM in your Azure Stack Hub instance.
+You can use either your own web app or the example at [Publish an ASP.NET Core app to Azure with Visual Studio](/aspnet/core/tutorials/razor-pages/razor-pages-start?tabs=visual-studio&view=aspnetcore-2.2). The article describes how to create and publish an ASP.NET web app to an Azure virtual machine by using the Azure Virtual Machines publishing feature in Visual Studio 2017. After you've installed and made sure that your app is running locally, you'll update your publishing target to the Windows VM in your Azure Stack Hub instance.
 
 ## Deploy and run the app
 
@@ -137,4 +136,4 @@ Create a publish target to your VM in Azure Stack Hub.
 
 - Learn how to [Set up a development environment in Azure Stack Hub](azure-stack-dev-start.md).
 - Learn about [common deployments for Azure Stack Hub as IaaS](azure-stack-dev-start-deploy-app.md).
-- To learn the C# programming language and find additional resources for C#, see the [C# Guide](https://docs.microsoft.com/dotnet/csharp/)
+- To learn the C# programming language and find additional resources for C#, see the [C# Guide](/dotnet/csharp/)

@@ -29,7 +29,7 @@ Azure Stack Hub uses a static MAC address pool to automatically generate and ass
 
 Depending on how the virtual networks connect with existing corporate networks, you may expect duplicated MAC addresses of VMs.
 
-More information can be found about MAC address pool utilization using the cmdlet [Get-AzsMacAddressPool](https://docs.microsoft.com/powershell/module/azs.fabric.admin/get-azsmacaddresspool) in the Azure Stack Hub administrator PowerShell module.
+More information can be found about MAC address pool utilization using the cmdlet [Get-AzsMacAddressPool](/powershell/module/azs.fabric.admin/get-azsmacaddresspool) in the Azure Stack Hub administrator PowerShell module.
 
 ## View public IP address consumption in Azure Stack Hub
 

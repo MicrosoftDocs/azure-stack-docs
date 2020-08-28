@@ -17,7 +17,7 @@ ms.lastreviewed: 06/18/2019
 
 # Deploy Kubernetes to use containers with Azure Stack Hub
 
-> [!Note]  
+> [!NOTE]  
 > Only use the Kubernetes Azure Stack Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack, use [the AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
 
 You can follow the steps in this article to deploy and set up the resources for Kubernetes in a single, coordinated operation. The steps use an Azure Resource Manager solution template. You'll need to collect the required information about your Azure Stack Hub installation, generate the template, and then deploy to your cloud. The Azure Stack Hub template doesn't use the same managed AKS service offered in global Azure.
@@ -60,4 +60,4 @@ You may also find the **Helm** package manager useful for installing and deployi
 
 [Deploy Kubernetes to Azure Stack Hub using Active Directory Federated Services (AD FS)](azure-stack-solution-template-kubernetes-adfs.md)
 
-[Kubernetes on Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
+[Kubernetes on Azure](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

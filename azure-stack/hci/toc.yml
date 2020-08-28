@@ -4,6 +4,10 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
+  - name: Known issues
+    href: known-issues.md
+  - name: Release notes
+    href: release-notes.md
 - name: Get started
   items:
   - name: Use Azure Stack HCI with Windows Admin Center
@@ -14,7 +18,7 @@
     href: deploy/deployment-overview.md
   - name: Before you begin
     href: deploy/before-you-start.md
-  - name: Deploy Azure Stack HCI
+  - name: Deploy the Azure Stack HCI OS
     href: deploy/operating-system.md
   - name: Create the cluster
     href: deploy/create-cluster.md
@@ -26,6 +30,8 @@
     href: deploy/register-with-azure.md
   - name: Validate the cluster
     href: deploy/validate.md
+  - name: Deploy Network Controller
+    href: deploy/network-controller-powershell.md
 - name: Manage
   items:
   - name: Manage VMs
@@ -58,6 +64,8 @@
       href: manage/cluster-powershell.md
     - name: Update the cluster
       href: manage/update-cluster.md
+    - name: Monitor the cluster
+      href: manage/monitor-cluster.md
     - name: Add or remove servers
       href: manage/add-cluster.md
     - name: Manage Azure registration
@@ -66,6 +74,8 @@
       href: manage/languages.md
     - name: Troubleshoot cluster validation reporting
       href: manage/validate-qos.md
+    - name: Troubleshoot CredSSP
+      href: manage/troubleshoot-credssp.md
   - name: Manage Azure services
     items:
     - name: Register Windows Admin Center with Azure
@@ -90,6 +100,8 @@
     href: concepts/choose-drives.md
   - name: Plan volumes
     href: concepts/plan-volumes.md
+  - name: Software defined networking
+    href: concepts/software-defined-networking.md
   - name: Understand the cache
     href: concepts/cache.md
   - name: Fault tolerance and storage efficiency
@@ -98,8 +110,6 @@
     href: concepts/quorum.md
   - name: Security considerations
     href: concepts/security.md
-  - name: Diagnostic data
-    href: concepts/diagnostic-data.md
 - name: Reference
   items:
   - name: Hyper-V PowerShell commands
@@ -122,6 +132,8 @@
   items:
   - name: Azure Stack family
     href: ../index.yml
+  - name: Azure hybrid cloud
+    href: /hybrid    
   - name: Windows Server
     href: /windows-server/
   - name: Windows Admin Center
@@ -130,3 +142,11 @@
     href: /windows-server/networking/sdn
   - name: System Center
     href: /system-center/
+- name: Resources
+  items:
+  - name: Azure Stack HCI product page
+    href: https://azure.com/hci
+  - name: Azure Stack HCI Eval Guide
+    href: https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md
+  - name: Azure Stack HCI pricing
+    href: https://azure.microsoft.com/en-us/pricing/details/azure-stack/hci/

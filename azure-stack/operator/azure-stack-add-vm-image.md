@@ -35,7 +35,7 @@ Custom images come in two forms: **generalized** and **specialized**.
 
 #### VHD is from outside Azure
 
-Follow the steps in [Upload a generalized VHD and use it to create new VMs in Azure](/azure/virtual-machines/windows/upload-generalized-managed) to correctly **Sysprep** your VHD and make it generalized.
+Follow the steps in [Prepare a Windows VHD or VHDX to upload to Azure](/azure/virtual-machines/windows/prepare-for-upload-vhd-image) to correctly generalize your VHD prior to uploading.
 
 #### VHD is from Azure
 
@@ -313,7 +313,7 @@ Add the VM image as an Azure Stack Hub operator using the portal.
 
 To remove the VM image as an Azure Stack Hub operator using the Azure Stack Hub portal, follow these steps:
 
-1. Open the Azure Stack Hub [administrator portal](https://adminportal.local.azurestack.external).
+1. Open the Azure Stack Hub [administrator portal](https://portal.azure.com/signin/index).
 
 2. If the VM image has an associated Marketplace item, select **Marketplace management**, and then select the VM marketplace item you want to delete.
 
