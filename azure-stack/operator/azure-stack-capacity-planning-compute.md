@@ -94,9 +94,9 @@ The value V, largest VM in the scale unit, is dynamically based on the largest t
 ### Deallocate memory for VM placement
 
 There are three ways to deallocate memory for VM placement:
-    * Reduce the size of the largest VM
-    * Increase the memory of a node
-    * Add a node
+* Reduce the size of the largest VM
+* Increase the memory of a node
+* Add a node
 
 #### Reduce the size of the largest VM 
 
@@ -141,7 +141,7 @@ Total memory reserved: 258 + 505.75 +1008 = 1771.75  GB
     
 Total GB available for placement: ~  532.25 GB
 
-#### Increase Memory on each node to 512 GB.
+#### Increase memory on each node to 512 GB
 
 Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 512 + 230.4 + 224 = 966.4 GB
     
