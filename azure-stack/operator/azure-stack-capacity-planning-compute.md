@@ -111,41 +111,25 @@ Reducing the size of the largest VM to the next smallest VM in stamp (24 GB) wil
         
 Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 384 + 172.8 + 48 = 604.8 GB
         
-| Total Memory | Total GB for infra | Total GB for Tenant | Resiliency reserve | Total memory reserved          | Total GB available for placement |
+| Total memory | Infra GB | Tenant GB | Resiliency reserve | Total memory reserved          | Total GB available for placement |
 |--------------|--------------------|---------------------|--------------------|--------------------------------|----------------------------------|
-| 1536 GB      | 258 GB             | 329.25 GB           | 604.8 GB           | 258 + 329.25 + 604.8 = 1168 GB | ~ 344 GB                         |
+| 1536 GB      | 258 GB             | 329.25 GB           | 604.8 GB           | 258 + 329.25 + 604.8 = 1168 GB | **~344 GB**                         |
      
 ### Add two nodes
 
 Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 384 + (0.15) ((5)*384) + 112 * (3) = 1008  GB
     
-Total Memory: 2304 (6*384 )
-    
-Total GB for infra: 258  GB
-    
-Total GB for Tenant: 505.75  GB
-    
-Resiliency reserve: 1008  GB
-    
-Total memory reserved: 258 + 505.75 +1008 = 1771.75  GB
-    
-Total GB available for placement: ~  532.25 GB
+| Total Memory | Total GB for infra | Total GB for Tenant | Resiliency reserve | Total memory reserved          | Total GB available for placement |
+|--------------|--------------------|---------------------|--------------------|--------------------------------|----------------------------------|
+| 1536 GB      | 258 GB             | 329.25 GB           | 604.8 GB           | 258 + 329.25 + 604.8 = 1168 GB | **~ 344 GB**                         |
 
 ### Increase memory on each node to 512 GB
 
 Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 512 + 230.4 + 224 = 966.4 GB
     
-Total Memory: 2048 (4*512)
-    
-Total GB for infra: 258 GB
-    
-Total GB for Tenant: 505.75 GB
-    
-Resiliency reserve: 966.4 GB
-    
-Total memory reserved: 258 + 505.75 +966.4 = 1730.15 GB
-    
-Total GB available for placement: ~ 318 GB
+| Total Memory    | Infra GB | Tenant GB | Resiliency reserve | Total memory reserved | Total GB available for placement |
+|-----------------|----------|-----------|--------------------|-----------------------|----------------------------------|
+| 2048 (4*512) GB | 258 GB   | 505.75 GB | 966.4 GB           | 1730.15 GB            | **~ 318 GB**                         |
 
 ## Frequently Asked Questions
 
