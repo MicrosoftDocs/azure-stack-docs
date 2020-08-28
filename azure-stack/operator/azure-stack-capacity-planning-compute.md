@@ -93,11 +93,14 @@ The value V, largest VM in the scale unit, is dynamically based on the largest t
 
 ### Deallocate memory for VM placement
 
-To deallocate memory for VM placement, try one or more of these three methods:
+There are three ways to deallocate memory for VM placement:
+    * Reduce the size of the largest VM
+    * Increase the memory of a node
+    * Add a node
 
-* Reduce the size of the largest VM (112 GB)
+#### Reduce the size of the largest VM 
 
-    Current deployed large VMs show that the allocated memory is 112 GB, but the memory demand of these VMs is about 2-3 GB.
+Current deployed large VMs show that the allocated memory is 112 GB, but the memory demand of these VMs is about 2-3 GB.
     
 | Name | Memory Assigned (GB) | Memory Demand (GB) | ComputerName |  
 | ---- | -------------------- | ------------------ | ------------ |                                        
@@ -106,50 +109,49 @@ To deallocate memory for VM placement, try one or more of these three methods:
 | 2e403868-ff81-4abb-b087-d9625ca01d84   |               112   |    2.2392578125  |   LISSA01P-NODE04 |
         
 
-    Reducing the size of the largest VM to the next smallest VM in stamp (24 GB) will reduce the size of the resiliency reserve.
+Reducing the size of the largest VM to the next smallest VM in stamp (24 GB) will reduce the size of the resiliency reserve.
         
-    Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 384 + 172.8 + 48 = 604.8 GB
+Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 384 + 172.8 + 48 = 604.8 GB
         
-    Total Memory: 1536 GB
+Total Memory: 1536 GB
         
-    Total GB for infra: 258 GB
+Total GB for infra: 258 GB
         
-    Total GB for Tenant: 329.25 GB
+Total GB for Tenant: 329.25 GB
         
-    Resiliency reserve: 604.8 GB  
+Resiliency reserve: 604.8 GB  
         
-    Total memory reserved: 258  + 329.25  + 604.8 = 1168  GB
+Total memory reserved: 258  + 329.25  + 604.8 = 1168  GB
         
-    Total GB available for placement: ~  344 GB
+Total GB available for placement: ~  344 GB
      
+#### Add 2 identical nodes to stamp
 
-* Add 2 identical nodes to stamp.
-
-    Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 384 + (0.15) ((5)*384) + 112 * (3) = 1008  GB
+Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 384 + (0.15) ((5)*384) + 112 * (3) = 1008  GB
     
-    Total Memory: 2304 (6*384 )
+Total Memory: 2304 (6*384 )
     
-    Total GB for infra: 258  GB
+Total GB for infra: 258  GB
     
-    Total GB for Tenant: 505.75  GB
+Total GB for Tenant: 505.75  GB
     
-    Resiliency reserve: 1008  GB
+Resiliency reserve: 1008  GB
     
     * Total memory reserved: 258 + 505.75 +1008 = 1771.75  GB
     
     * Total GB available for placement: ~  532.25 GB
 
-* Increase Memory on each node to 512 GB.
+#### Increase Memory on each node to 512 GB.
 
-    Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 512 + 230.4 + 224 = 966.4 GB
+Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 512 + 230.4 + 224 = 966.4 GB
     
-    Total Memory: 2048 (4*512)
+Total Memory: 2048 (4*512)
     
-    Total GB for infra: 258 GB
+Total GB for infra: 258 GB
     
-    Total GB for Tenant: 505.75 GB
+Total GB for Tenant: 505.75 GB
     
-    Resiliency reserve: 966.4 GB
+Resiliency reserve: 966.4 GB
     
     * Total memory reserved: 258 + 505.75 +966.4 = 1730.15 GB
     
