@@ -55,7 +55,7 @@ Before you upload the image, consider the following:
 
 Verify that your VHD file meets the requirements by checking the output of the PowerShell cmdlet **Get-VHD**. 
 
-The cmdlet can be found in the Hyper-V modules installed on the machine where you are using Hyper-V. For more information about Hyper-V and PowerShell, see [Working with Hyper-V and Windows PowerShell](virtualization/hyper-v-on-windows/quick-start/try-hyper-v-powershell)
+The cmdlet can be found in the Hyper-V modules installed on the machine where you are using Hyper-V. For more information about Hyper-V and PowerShell, see [Working with Hyper-V and Windows PowerShell](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/try-hyper-v-powershell)
 
 If the **connectix** string is not present, the VHD is not correctly formatted. 
 If the **connectix** string is present, that means the VHD got corrupted in the upload process. Use  Azure Storage Explorer or AzCopy will reduce that chance that your VHD will be corrupted in the upload process, and your upload will be faster. For more information, see [Use data transfer tools in Azure Stack Hub Storage](/azure-stack/user/azure-stack-storage-transfer).

@@ -40,7 +40,7 @@ Add the VM image as an Azure Stack Hub operator using the portal.
 
 1. Sign in to Azure Stack Hub as an operator. In the menu, select **All services** > **Compute** under **VM Images** > **Add**.
 
-   ![Custom image sideloading UI](./media/azure-stack-add-vm-image/tca4.png)
+   ![Add a VM image](./media/azure-stack-add-vm-image/tca4.png)
 
 2. Under **Create image**, enter the **Publisher**, **Offer**, **SKU**, **Version**, and OS disk blob URI. Then, select **Create** to begin creating the VM image.
 
