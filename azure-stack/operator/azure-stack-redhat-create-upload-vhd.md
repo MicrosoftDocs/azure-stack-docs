@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Learn to create and upload an Azure virtual hard disk (VHD) that contains a Red Hat Linux operating system.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/04/2020
+ms.date: 08/28/2020
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 12/11/2019
@@ -145,7 +145,7 @@ This section assumes that you already have an ISO file from the Red Hat website 
         waagent -version
         ```
 
-    [After 1910 release] Follow these instructions to download a compatible WALinuxAgent:
+    After the 1910 release, follow these instructions to download a compatible WALinuxAgent:
     
     1. The WALinuxAgent package, `WALinuxAgent-<version>`, has been pushed to the Red Hat extras repository. Enable the extras repository by running the following command:
 
@@ -159,7 +159,6 @@ This section assumes that you already have an ISO file from the Red Hat website 
         sudo yum install WALinuxAgent
         sudo systemctl enable waagent.service
         ```
-    
 
 1. Do not create swap space on the operating system disk.
 
@@ -354,10 +353,10 @@ This section assumes that you already have an ISO file from the Red Hat website 
 
         1.Install the Azure Linux Agent by running the following command:
 
-            ```bash
-            sudo yum install WALinuxAgent
-            sudo systemctl enable waagent.service
-            ```
+        ```bash
+        sudo yum install WALinuxAgent
+        sudo systemctl enable waagent.service
+        ```
 
 1. Do not create swap space on the operating system disk.
 
@@ -558,11 +557,11 @@ This section assumes that you've already installed an RHEL VM in VMware. For det
     ```
 
     1.Install the Azure Linux Agent by running the following command:
-        
-        ```bash
-        sudo yum install WALinuxAgent
-        sudo systemctl enable waagent.service
-        ```
+
+    ```bash
+    sudo yum install WALinuxAgent
+    sudo systemctl enable waagent.service
+    ```
         
 1. Do not create swap space on the operating system disk.
 
