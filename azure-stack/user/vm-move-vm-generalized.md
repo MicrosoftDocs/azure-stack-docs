@@ -39,9 +39,9 @@ Follow the appropriate instructions to generalize the VHD for your Linux OS:
 
 ---
 
-Before uploading your VHD you must validate that the VHD meets the requirements or it will fail to load in Azure Stack Hub. To check, see [Verify that your VHD requirements](vm-move-overview.md#verify-that-your-vhd-requirements).
+## Verify your VHD
 
-When you have completed preparing and downloading your image, have your VHD file in an accessible location to your Azure Stack Hub instance.
+[[!INCLUDE [Verify VHD](../includes/user-compute-verify-vhd.md)]]
 
 ## Upload to a storage account
 

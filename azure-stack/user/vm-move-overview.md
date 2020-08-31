@@ -40,26 +40,13 @@ When moving an image into Azure Stack Hub, consider how you would like to have t
 
 > [!IMPORTANT]  
 > When preparing your VHD, you must have the following requirements in place or your will not be able to use your VHD in Azure Stack Hub.
-
-### Azure Stack Hub VHD requirements
-
-Before you upload the image, consider the following:
-- Azure Stack Hub only supports images from generation one (1) VMs.
-- VHD is of fixed type. Azure Stack Hub does not support dynamic disk VHDs. To confirm if your disk is fixed, use the **Get-VHD** PowerShell cmdlet.
-- VHD footer cookie has first eight (8) bytes **conectix** as expected.
-- VHD has minimum virtual size of at least 20 MB.
-- VHD is aligned, that is, the virtual size must be a multiple of 1 MB.
-- VHD blob length = virtual size + vhd footer length (512). A small footer at the end of the blob describes the properties of the VHD. 
-
-### To verify that your VHD meets the requirements
-
-Verify that your VHD file meets the requirements by checking the output of the PowerShell cmdlet **Get-VHD**. 
-
-The cmdlet can be found in the Hyper-V modules installed on the machine where you are using Hyper-V. For more information about Hyper-V and PowerShell, see [Working with Hyper-V and Windows PowerShell](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/try-hyper-v-powershell)
-
-If the **connectix** string is not present, the VHD is not correctly formatted. 
-If the **connectix** string is present, that means the VHD got corrupted in the upload process. Use  Azure Storage Explorer or AzCopy will reduce that chance that your VHD will be corrupted in the upload process, and your upload will be faster. For more information, see [Use data transfer tools in Azure Stack Hub Storage](/azure-stack/user/azure-stack-storage-transfer).
-
+> Before you upload the image, consider the following:
+> - Azure Stack Hub only supports images from generation one (1) VMs.
+> - VHD is of fixed type. Azure Stack Hub does not support dynamic disk VHDs.
+> - VHD footer cookie has first eight (8) bytes **conectix** as expected.
+> - VHD has minimum virtual size of at least 20 MB.
+> - VHD is aligned, that is, the virtual size must be a multiple of 1 MB.
+> - VHD blob length = virtual size + vhd footer length (512). A small footer at the end of the blob describes the properties of the VHD. 
 
 ## Methods of moving a VM
 
