@@ -1,0 +1,21 @@
+### YamlMime:Landing
+
+title: Azure Kubernetes Service on Azure Stack HCI documentation
+summary: Azure Kubernetes Service on Azure Stack HCI allows you to quickly deploy a Kubernetes cluster in Azure Stack HCI and Windows Server. Learn how to use AKS-HCI with these quickstarts and tutorials.
+
+metadata:
+  title: Azure Kubernetes Service on Azure Stack HCI documentation
+  description: Azure Kubernetes Service on Azure Stack HCI allows you to quickly deploy a Kubernetes cluster in Azure Stack HCI and Windows Server. Learn how to use AKS-HCI with these quickstarts and tutorials.
+  ms.topic: landing-page
+  author: jasongerend
+  ms.author: jgerend
+  ms.date: 09/21/2020
+
+
+landingContent:
+  - title: Azure Kubernetes Service on Azure Stack HCI
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is Azure Kubernetes Service on Azure Stack HCI?
+            url: overview.md
