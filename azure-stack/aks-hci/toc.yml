@@ -1,0 +1,16 @@
+- name: Azure Kubernetes Service on Azure Stack HCI documentation
+  href: index.yml
+- name: Overview
+  items:
+  - name: What is Azure Kubernetes Service on Azure Stack HCI?
+    href: overview.md
+- name: Related
+  items:
+  - name: Azure Stack HCI
+    href: ../hci/index.yml
+  - name: Windows Admin Center
+    href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
+  - name: Azure hybrid cloud
+    href: /hybrid
+  - name: Windows Server
+    href: /windows-server/
