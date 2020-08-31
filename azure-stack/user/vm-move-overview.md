@@ -54,9 +54,9 @@ You can manually move your VM into Azure Stack Hub with the following scenarios:
 
 | Scenario | Instructions |
 | --- | --- |
-| global Azure to Azure Stack Hub | Prepare your VHD in global Azure and then upload to Azure Stack Hub. For more information, see [Move a VM from Azure to Azure Stack Hub](vm-move-vm-from-azure.md). |
-| local generalized to Azure Stack Hub | Prepare your VHD and generalize a VHD locally in Hyper-V and then upload to Azure Stack Hub. For more information, see [Move a generalized VM from on-premises to Azure Stack Hub](vm-move-vm-generalized.md). |
-| local specialized to Azure Stack Hub | Prepare your specialized VHD locally in Hyper-V and then upload to Azure Stack Hub. For more information, see [Move a specialized VM from on-premises to Azure Stack Hub](vm-move-vm-specialized.md). |
+| Global Azure to Azure Stack Hub | Prepare your VHD in global Azure and then upload to Azure Stack Hub. For more information, see [Move a VM from Azure to Azure Stack Hub](vm-move-vm-from-azure.md). |
+| Local generalized to Azure Stack Hub | Prepare your VHD and generalize a VHD locally in Hyper-V and then upload to Azure Stack Hub. For more information, see [Move a generalized VM from on-premises to Azure Stack Hub](vm-move-vm-generalized.md). |
+| Local specialized to Azure Stack Hub | Prepare your specialized VHD locally in Hyper-V and then upload to Azure Stack Hub. For more information, see [Move a specialized VM from on-premises to Azure Stack Hub](vm-move-vm-specialized.md). |
 
 ## Migrate to Azure Stack Hub: Patterns and practices checklists
 
