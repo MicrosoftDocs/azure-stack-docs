@@ -38,7 +38,7 @@ To add the a platform image to Azure Stack Hub, use the Azure Stack Hub administ
 
 Add the VM image as an Azure Stack Hub operator using the portal.
 
-1. Sign in to Azure Stack Hub as an operator. In the menu, select **All services** > **Compute** under **VM Images** > **Add**.
+1. Sign in to Azure Stack Hub as an operator. In the menu, select **All services** > **Compute** > **Images** > **Add**.
 
    ![Add a VM image](./media/azure-stack-add-vm-image/tca4.png)
 

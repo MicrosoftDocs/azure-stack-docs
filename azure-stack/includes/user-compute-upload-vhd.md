@@ -8,7 +8,7 @@ ms.reviewer: thoroet
 ms.lastreviewed: 08/04/2020
 ---
 
-You can upload your VHD with the portal, or with the container you created in the portal, use the AzCopy.
+You can upload your VHD with the portal, or with the container you created in the portal, use AzCopy.
 
 ### Portal to generate SAS URL and upload VHD
 
@@ -22,7 +22,7 @@ You can upload your VHD with the portal, or with the container you created in th
 
 5. If you are going to use AzCopy to upload your image rather than the portal, create a SAS token. Select **Shared access signature** in the storage account, and then select **Generate SAS and connection string**. Copy and make a note of the **Blob service SAS URL**. You will use this URL when using AzCopy to upload your VHD
 
-5. Select your container and then select **Upload**. Upload your VHD.
+6. Select your container and then select **Upload**. Upload your VHD.
 
 ### AzCopy VHD
 
