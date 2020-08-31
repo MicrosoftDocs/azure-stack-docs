@@ -36,7 +36,7 @@ When moving an image into Azure Stack Hub, consider how you would like to have t
 - **Azure Stack Hub Marketplace offering**  
     Your cloud operator can use generalized image as the basis of a marketplace offering. Once you have prepared your image, your cloud operator can use the custom image to create a marketplace offering for your Azure Stack Hub instance. Users can create their own VM from the image as they would any other offering in the Marketplace. You will need to work with your cloud operator to create this offering.
 
-## Verify that your VHD requirements
+## Verify VHD requirements
 
 > [!IMPORTANT]  
 > When preparing your VHD, you must have the following requirements in place or your will not be able to use your VHD in Azure Stack Hub.
