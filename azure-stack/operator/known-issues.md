@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 08/13/2020
@@ -140,6 +140,12 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: When creating a new virtual machine, you may receive an error such as **This subscription is at capacity for Total Regional vCPUs on this location. This subscription is using all 50 Total Regional vCPUs available.**. This indicates that the quota for total cores available to you has been reached.
 - Remediation: Ask your operator for an add-on plan with additional quota. Editing the current plan's quota will not work or reflect increased quota.
 - Occurrence: Rare
+
+### VM overview blade does not show correct computer name
+
+- Applicable: This issue applies to all releases.
+- Cause: When viewing details of a VM in the overview blade, the computer name shows as **(not available)**. This is by design for VMs created from specialized disks/disk snapshots.
+- Remediation: View the **Properties** blade under **Settings**.
 
 ### Virtual machine scale set
 
