@@ -3,10 +3,10 @@ title: Azure Stack Hub Operator Access Workstation
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: asganesh
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 08/28/2020
 ms.author: justinha
 ms.reviewer: asganesh
-ms.lastreviewed: 08/27/2020
+ms.lastreviewed: 08/28/2020
 
 # Intent: As an Azure Stack operator, I want to download and configure an Azure Stack Hub Operator Access Workstation.
 # Keyword: azure stack hub operator access workstation
@@ -32,11 +32,36 @@ The following tables lists common scenarios for the OAW, but this is not exclusi
 
 ## Download files
 
+To get the files to create the OAW VM for the preview, [**download here**](https://aka.ms/OAWDownload). Please be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](https://docs.microsoft.com/legal/azure-stack-hub/azure-stack-operator-access-workstation-legal-terms) prior to download.
+
 Due to the stateless nature of the solution, there are no updates for the OAW VM. For each milestone, a new version of the VM image file will be released. Use the latest version to create a new OAW VM. The image file is based on the latest Windows Server 2019 version. After installation, you can apply updates, including any critical updates, using Windows Update. 
 
-Please be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](https://docs.microsoft.com/legal/azure-stack-hub/azure-stack-operator-access-workstation-legal-terms) prior to download.
+Validate the hash of the downloaded OAW.zip file to make sure it has not been modified before using it to create the OAW VM. Run the following PowerShell script. If the return value is True, you can use the downloaded OAW.zip:
 
-To get the files to create the OAW VM for the preview, [**download here**](https://aka.ms/OAWDownload).
+```powershell
+param(
+    [Parameter(Mandatory=$True)]
+    [ValidateNotNullOrEmpty()]
+    [ValidateScript({Test-Path $_ -PathType Leaf})]
+    [string]
+    $DownloadedOAWZipFilePath
+)
+
+$expectedHash = '3B7A4C3F83ED05B164BA08E52360CA6889980DAE96547D6CF0AFEEAB6D1F289D'
+$actualHash = (Get-FileHash -Path $DownloadedOAWZipFilePath).Hash
+
+Write-Host "Expected hash: $expectedHash"
+
+if ($expectedHash -eq $actualHash)
+{
+    Write-Host 'SUCCESS: OAW.zip file hash matches.'
+}
+else
+{
+    Write-Error 'ERROR: OAW.zip file hash does not match! It is not safe to use it, please download it again.'
+    Write-Error "Actual hash: $actualHash"
+}
+```
 
 ## User account policy 
 The following user account policy is applied to the OAW VM:
