@@ -24,7 +24,7 @@ You can find instructions for adding generalized and specialized images in the *
 You have two options for making an image available to your users:
 
 - **Offer an image only accessible via Azure Resource Manager**  
-  If you place add the image via the Azure Stack Hub administrative portal in Compute > Images, all of your tenants can access the image. However your users will need to use an Azure Resource Manager template to access it. It won't be visible in your Azure Stack Hub Marketplace.
+  If you place add the image via the Azure Stack Hub administrative portal in **Compute** > **Images**, all of your tenants can access the image. However your users will need to use an Azure Resource Manager template to access it. It won't be visible in your Azure Stack Hub Marketplace.
 
 - **Offer an image through the Azure Stack Hub Marketplace**  
     Once you have added your image through the Azure Stack Hub administrative portal, you can then create a marketplace offering. For instructions, see [Create and publish a custom Azure Stack Hub Marketplace item](azure-stack-create-and-publish-marketplace-item.md).
