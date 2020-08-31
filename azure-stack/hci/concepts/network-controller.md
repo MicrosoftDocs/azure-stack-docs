@@ -4,7 +4,7 @@ description: This topic covers how to plan to deploy the Network Controller via 
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 08/31/2020
 ---
 
 # Plan to deploy the Network Controller
@@ -37,7 +37,7 @@ The following is required to deploy the Network Controller:
 - The Representational State Transfer (REST) fully qualified domain name (FQDN) for the Network Controller that the management clients use to communicate with the Network Controller.
 
    >[!NOTE]
-   > Windows Admin Center currently does not support Network Controller authentication, either for communication with REST clients or communication between the Network Controller VMs.
+   > Windows Admin Center currently does not support Network Controller authentication, either for communication with REST clients or communication between the Network Controller VMs. You can use Kerberos-based authentication if you use PowerShell to deploy and manage it.
 
 ## Configuration requirements
 You can deploy the Network Controller cluster nodes on either the same subnet or different subnets. If you plan to deploy the Network Controller cluster nodes on different subnets, you must provide the Network Controller REST DNS name during the deployment process.
