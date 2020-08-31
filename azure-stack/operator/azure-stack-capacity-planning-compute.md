@@ -97,7 +97,7 @@ Current deployed large VMs show that the allocated memory is 112 GB, but the mem
 | 10cd7b0f-68f4-40ee-9d98-b9637438ebf4  |                112  |     2.2392578125  |   LISSA01P-NODE01 |
 | 2e403868-ff81-4abb-b087-d9625ca01d84   |               112   |    2.2392578125  |   LISSA01P-NODE04 |
 
-There are three ways to deallocate memory for VM placement:
+There are three ways to deallocate memory for VM placement using the formula **Resiliency reserve = H + R * ((N-1) * H) + V * (N-2)**:
 * Reduce the size of the largest VM
 * Increase the memory of a node
 * Add a node
@@ -108,7 +108,7 @@ Reducing the size of the largest VM to the next smallest VM in stamp (24 GB) wil
 
 ![Reduce the VM size](media/azure-stack-capacity-planning/decrease-vm-size.png)        
         
-Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 384 + 172.8 + 48 = 604.8 GB
+ Resiliency reserve = 384 + 172.8 + 48 = 604.8 GB
         
 | Total memory | Infra GB | Tenant GB | Resiliency reserve | Total memory reserved          | Total GB available for placement |
 |--------------|--------------------|---------------------|--------------------|--------------------------------|----------------------------------|
@@ -120,7 +120,7 @@ Adding an Azure Stack Hub node will deallocate memory by equally distributing th
 
 ![Add a node](media/azure-stack-capacity-planning/add-a-node.png)
 
-Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 384 + (0.15) ((5)*384) + 112 * (3) = 1008  GB
+Resiliency reserve = 384 + (0.15) ((5)*384) + 112 * (3) = 1008  GB
     
 | Total Memory | Infra GB | Tenant GB | Resiliency reserve | Total memory reserved          | Total GB available for placement |
 |--------------|--------------------|---------------------|--------------------|--------------------------------|----------------------------------|
@@ -132,7 +132,7 @@ Increasing the memory of each node will increase the total available memory.
 
 ![Increase the size of the node](media/azure-stack-capacity-planning/increase-node-size.png)
 
-Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 512 + 230.4 + 224 = 966.4 GB
+Resiliency reserve = 512 + 230.4 + 224 = 966.4 GB
     
 | Total Memory    | Infra GB | Tenant GB | Resiliency reserve | Total memory reserved | Total GB available for placement |
 |-----------------|----------|-----------|--------------------|-----------------------|----------------------------------|
