@@ -126,6 +126,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure-stack/operator/azure-stack-create-vpn-connection-one-node.md",
+      "redirect_url": "/azure-stack/user/azure-stack-vpn-gateway-about-vpn-gateways",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-stack/user/azure-stack-solution-sql-ha.md",
       "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-sql-ha",
       "redirect_document_id": false
