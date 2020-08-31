@@ -4,7 +4,7 @@ description: Learn how to upgrade a Kubernetes cluster on Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 4/23/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 4/23/2020
@@ -43,7 +43,7 @@ When upgrading a production cluster, consider:
 
 ## Steps to upgrade to a newer Kubernetes version
 
-> [!Note]  
+> [!NOTE]  
 > The AKS base image will also be upgrade if you are using a newer version of the aks-engine and the image is available in the marketplace.
 
 The following instructions use the minimum steps to perform the upgrade. If would like additional detail, see the article [Upgrading Kubernetes Clusters](https://github.com/Azure/aks-engine/blob/master/docs/topics/upgrade.md).

@@ -27,7 +27,6 @@ The Azure Stack solution requires a resilient and highly available physical infr
 
 ![Recommended Azure Stack network design](media/azure-stack-network/physical-network.svg)
 
-
 ## Logical Networks
 
 Logical networks represent an abstraction of the underlying physical network infrastructure. They're used to organize and simplify network assignments for hosts, virtual machines (VMs), and services. As part of logical network creation, network sites are created to define the virtual local area networks (VLANs), IP subnets, and IP subnet/VLAN pairs that are associated with the logical network in each physical location.
