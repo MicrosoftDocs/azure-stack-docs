@@ -6,18 +6,18 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/24/2020
+ms.date: 08/31/2020
 ---
 
 # Use the Azure portal with Azure Stack HCI
 
 > Applies to Azure Stack HCI v20H2; Windows Server 2019
 
-This topic explains how to connect to the Azure Stack HCI portion of the Azure portal for a global view of your Azure Stack HCI clusters. You can use the Azure portal to manage and monitor your cluster even if your physical infrastructure is hosted on premises.
+This topic explains how to connect to the Azure Stack HCI portion of the Azure portal for a global view of your Azure Stack HCI clusters. You can use the Azure portal to manage and monitor your cluster even if your physical infrastructure is hosted on premises. Cloud-based monitoring eliminates the need to maintain an on-premises monitoring system and database, reducing infrastructure complexity, and increases scalability by uploading alerts and other information directly to Azure, which already manages millions of objects every day.
 
 ## View your clusters in the Azure portal
 
-Log into the [Azure portal](https://portal.azure.com). If you've already [registered your cluster with Azure](../deploy/register-with-azure.md), you should see a new resource group with the name of your cluster appended with "-rg". If your Azure Stack HCI resource group is not displayed, search for "hci" and select your cluster from the drop-down menu:
+Once an Azure Stack HCI cluster is registered, its Azure resource is visible in the Azure portal. Begin by logging into the [Azure portal](https://portal.azure.com). If you've already [registered your cluster with Azure](../deploy/register-with-azure.md), you should see a new resource group with the name of your cluster appended with "-rg". If your Azure Stack HCI resource group is not displayed, search for "hci" and select your cluster from the drop-down menu:
 
 :::image type="content" source="media/azure-portal/azure-portal-search.png" alt-text="Search Azure portal for hci to find your Azure Stack HCI resource":::
 
@@ -49,7 +49,7 @@ Tags are name/valume pairs that enable you to categorize resources and view cons
 
 ## Compare Azure portal and Windows Admin Center
 
-Many customers will wonder whether the Azure portal or Windows Admin Center is better suited to various tasks. The following table helps you determine which is right for your needs. Together, they offer a consistent design and are useful in complementary scenarios.
+Unlike Windows Admin Center, the Azure portal experience for Azure Stack HCI is designed for global-scale multi-cluster monitoring. The following table helps you determine which management tool is right for your needs. Together, they offer a consistent design and are useful in complementary scenarios.
 
 | Windows Admin Center | Azure portal |
 | --------------- | --------------- |
