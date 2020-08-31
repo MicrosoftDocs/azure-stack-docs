@@ -25,7 +25,7 @@ Find the section that that is specific to your needs when preparing your VHD.
 
 #### [Windows VM](#tab/port-win)
 
-- Follow the steps in [Prepare a Windows VHD or VHDX to upload to Azure](/azure/virtual-machines/windows/prepare-for-upload-vhd-image) to prepare the VHD correctly.
+- Follow the steps in [Prepare a Windows VHD or VHDX to upload to Azure](/azure/virtual-machines/windows/prepare-for-upload-vhd-image) to prepare the VHD correctly. You must use a VHD for Azure Stack Hub.
    > [!NOTE]  
    > **Do not** generalize the VM by using Sysprep.
 - Remove any guest virtualization tools and agents that are installed on the VM (such as VMware tools).

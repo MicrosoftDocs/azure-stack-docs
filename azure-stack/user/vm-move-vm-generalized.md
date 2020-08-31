@@ -25,7 +25,7 @@ Find the section that that is specific to your needs when preparing your VHD.
 
 #### [Windows VM](#tab/port-win)
 
-Follow the steps in [Prepare a Windows VHD or VHDX to upload to Azure](/azure/virtual-machines/windows/prepare-for-upload-vhd-image) to correctly generalize your VHD prior to uploading.
+Follow the steps in [Prepare a Windows VHD or VHDX to upload to Azure](/azure/virtual-machines/windows/prepare-for-upload-vhd-image) to correctly generalize your VHD prior to uploading. You must use a VHD for Azure Stack Hub.
 
 #### [Linux VM](#tab/port-linux)
 
