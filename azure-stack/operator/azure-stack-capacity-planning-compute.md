@@ -89,15 +89,6 @@ When a VM is in the _deallocated_ state, memory resources aren't being used. Thi
 
 If the deallocated VM is then started again, the memory usage or allocation is treated like a new VM placed into the system and available memory is consumed. If there's no available memory, then the VM won't start.
 
-There are three ways to deallocate memory for VM placement:
-* Reduce the size of the largest VM
-* Increase the memory of a node
-* Add a node
-
-### Reduce the size of the largest VM 
-
-![Reduce the VM size](media/azure-stack-capacity-planning/decrease-vm-size.png)
-
 Current deployed large VMs show that the allocated memory is 112 GB, but the memory demand of these VMs is about 2-3 GB.
     
 | Name | Memory Assigned (GB) | Memory Demand (GB) | ComputerName |  
@@ -105,9 +96,17 @@ Current deployed large VMs show that the allocated memory is 112 GB, but the mem
 | ca7ec2ea-40fd-4d41-9d9b-b11e7838d508 |                 112  |     2.2392578125  |  LISSA01P-NODE01 |
 | 10cd7b0f-68f4-40ee-9d98-b9637438ebf4  |                112  |     2.2392578125  |   LISSA01P-NODE01 |
 | 2e403868-ff81-4abb-b087-d9625ca01d84   |               112   |    2.2392578125  |   LISSA01P-NODE04 |
-        
+
+There are three ways to deallocate memory for VM placement:
+* Reduce the size of the largest VM
+* Increase the memory of a node
+* Add a node
+
+### Reduce the size of the largest VM 
 
 Reducing the size of the largest VM to the next smallest VM in stamp (24 GB) will reduce the size of the resiliency reserve.
+
+![Reduce the VM size](media/azure-stack-capacity-planning/decrease-vm-size.png)        
         
 Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 384 + 172.8 + 48 = 604.8 GB
         
@@ -117,9 +116,9 @@ Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 384 + 172.8 + 48 = 604.8 
      
 ### Add a node
 
-![Add two nodes](media/azure-stack-capacity-planning/add-a-node.png)
-
 Adding an Azure Stack Hub node will deallocate memory by equally distributing the memory between the two nodes.
+
+![Add a node](media/azure-stack-capacity-planning/add-a-node.png)
 
 Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 384 + (0.15) ((5)*384) + 112 * (3) = 1008  GB
     
@@ -129,9 +128,9 @@ Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 384 + (0.15) ((5)*384) + 
 
 ### Increase memory on each node to 512 GB
 
-![Increase the size of the node](media/azure-stack-capacity-planning/increase-node-size.png)
-
 Increasing the memory of each node will increase the total available memory.
+
+![Increase the size of the node](media/azure-stack-capacity-planning/increase-node-size.png)
 
 Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 512 + 230.4 + 224 = 966.4 GB
     
