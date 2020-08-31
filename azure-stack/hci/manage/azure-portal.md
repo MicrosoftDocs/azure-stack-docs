@@ -13,7 +13,7 @@ ms.date: 08/31/2020
 
 > Applies to Azure Stack HCI v20H2; Windows Server 2019
 
-This topic explains how to connect to the Azure Stack HCI portion of the Azure portal for a global view of your Azure Stack HCI clusters. You can use the Azure portal to manage and monitor your cluster even if your physical infrastructure is hosted on premises. Cloud-based monitoring eliminates the need to maintain an on-premises monitoring system and database, reducing infrastructure complexity, and increases scalability by uploading alerts and other information directly to Azure, which already manages millions of objects every day.
+This topic explains how to connect to the Azure Stack HCI portion of the Azure portal for a global view of your Azure Stack HCI clusters. You can use the Azure portal to manage and monitor your cluster even if your physical infrastructure is hosted on premises. Cloud-based monitoring eliminates the need to maintain an on-premises monitoring system and database, reducing infrastructure complexity. It also increases scalability by uploading alerts and other information directly to Azure, which already manages millions of objects every day.
 
 ## View your clusters in the Azure portal
 
@@ -57,7 +57,6 @@ Unlike Windows Admin Center, the Azure portal experience for Azure Stack HCI is 
 | Manage Azure Stack HCI infrastructure | Manage other Azure services |
 | Monitoring and updating for individual clusters | Monitoring and updating at scale |
 | Manual VM provisioning and management | Self-service VMs from Azure Arc |
-| View detailed performance, capacity, and logs | View billing information |
 
 ## Next steps
 
