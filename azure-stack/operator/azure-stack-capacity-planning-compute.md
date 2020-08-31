@@ -45,14 +45,6 @@ If the VM scale limit is reached, the following error codes are returned as a re
 
 In releases prior to and including 2002, 2-5 VMs per batch with 5 mins gap in between batches provided reliable VM deployments to reach a scale of 700 VMs. With the 2005 version of Azure Stack Hub, we are able to reliably provision VMs at batch sizes of 40 with 5 mins gap in between batch deployments.
 
-## Considerations for deallocation
-
-When a VM is in the _deallocated_ state, memory resources aren't being used. This allows others VMs to be placed in the system.
-
-If the deallocated VM is then started again, the memory usage or allocation is treated like a new VM placed into the system and available memory is consumed.
-
-If there's no available memory, then the VM won't start.
-
 ## Azure Stack Hub memory
 
 Azure Stack Hub is designed to keep VMs running that have been successfully provisioned. For example, if a host is offline because of a hardware failure, Azure Stack Hub will attempt to restart that VM on another host. A second example during patching and updating of the Azure Stack Hub software. If there's a need to reboot a physical host, an attempt is made to move the VMs executing on that host to another available host in the solution.
@@ -90,6 +82,61 @@ Resiliency reserve = H + R * ((N-1) * H) + V * (N-2)
 <sup>2</sup> Operating system reserve for overhead = 15% (.15) of node memory. The operating system reserve value is an estimate and will vary based on the physical memory capacity of the server and general operating system overhead.
 
 The value V, largest VM in the scale unit, is dynamically based on the largest tenant VM memory size. For example, the largest VM value could be 7 GB or 112 GB or any other supported VM memory size in the Azure Stack Hub solution. Changing the largest VM on the Azure Stack Hub fabric will result in an increase in the resiliency reserve and also to the increase in the memory of the VM itself.
+
+## Considerations for deallocation
+
+When a VM is in the _deallocated_ state, memory resources aren't being used. This allows others VMs to be placed in the system.
+
+If the deallocated VM is then started again, the memory usage or allocation is treated like a new VM placed into the system and available memory is consumed. If there's no available memory, then the VM won't start.
+
+Current deployed large VMs show that the allocated memory is 112 GB, but the memory demand of these VMs is about 2-3 GB.
+    
+| Name | Memory Assigned (GB) | Memory Demand (GB) | ComputerName |  
+| ---- | -------------------- | ------------------ | ------------ |                                        
+| ca7ec2ea-40fd-4d41-9d9b-b11e7838d508 |                 112  |     2.2392578125  |  LISSA01P-NODE01 |
+| 10cd7b0f-68f4-40ee-9d98-b9637438ebf4  |                112  |     2.2392578125  |   LISSA01P-NODE01 |
+| 2e403868-ff81-4abb-b087-d9625ca01d84   |               112   |    2.2392578125  |   LISSA01P-NODE04 |
+
+There are three ways to deallocate memory for VM placement using the formula **Resiliency reserve = H + R * ((N-1) * H) + V * (N-2)**:
+* Reduce the size of the largest VM
+* Increase the memory of a node
+* Add a node
+
+### Reduce the size of the largest VM 
+
+Reducing the size of the largest VM to the next smallest VM in stamp (24 GB) will reduce the size of the resiliency reserve.
+
+![Reduce the VM size](media/azure-stack-capacity-planning/decrease-vm-size.png)        
+        
+ Resiliency reserve = 384 + 172.8 + 48 = 604.8 GB
+        
+| Total memory | Infra GB | Tenant GB | Resiliency reserve | Total memory reserved          | Total GB available for placement |
+|--------------|--------------------|---------------------|--------------------|--------------------------------|----------------------------------|
+| 1536 GB      | 258 GB             | 329.25 GB           | 604.8 GB           | 258 + 329.25 + 604.8 = 1168 GB | **~344 GB**                         |
+     
+### Add a node
+
+Adding an Azure Stack Hub node will deallocate memory by equally distributing the memory between the two nodes.
+
+![Add a node](media/azure-stack-capacity-planning/add-a-node.png)
+
+Resiliency reserve = 384 + (0.15) ((5)*384) + 112 * (3) = 1008  GB
+    
+| Total Memory | Infra GB | Tenant GB | Resiliency reserve | Total memory reserved          | Total GB available for placement |
+|--------------|--------------------|---------------------|--------------------|--------------------------------|----------------------------------|
+| 1536 GB      | 258 GB             | 329.25 GB           | 604.8 GB           | 258 + 329.25 + 604.8 = 1168 GB | **~ 344 GB**                         |
+
+### Increase memory on each node to 512 GB
+
+Increasing the memory of each node will increase the total available memory.
+
+![Increase the size of the node](media/azure-stack-capacity-planning/increase-node-size.png)
+
+Resiliency reserve = 512 + 230.4 + 224 = 966.4 GB
+    
+| Total Memory    | Infra GB | Tenant GB | Resiliency reserve | Total memory reserved | Total GB available for placement |
+|-----------------|----------|-----------|--------------------|-----------------------|----------------------------------|
+| 2048 (4*512) GB | 258 GB   | 505.75 GB | 966.4 GB           | 1730.15 GB            | **~ 318 GB**                         |
 
 ## Frequently Asked Questions
 
