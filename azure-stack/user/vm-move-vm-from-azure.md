@@ -90,7 +90,7 @@ Follow the instructions in [Download a Windows VHD from Azure](/azure/virtual-ma
 
 ## Verify your VHD
 
-[[!INCLUDE [Verify VHD](../includes/user-compute-verify-vhd.md)]]
+[!INCLUDE [Verify VHD](../includes/user-compute-verify-vhd.md)]
 
 ## Upload to a storage account
 

@@ -41,8 +41,7 @@ Follow the appropriate instructions to generalize the VHD for your Linux OS:
 
 ## Verify your VHD
 
-[[!INCLUDE [Verify VHD](../includes/user-compute-verify-vhd.md)]]
-
+[!INCLUDE [Verify VHD](../includes/user-compute-verify-vhd.md)]
 ## Upload to a storage account
 
 [!INCLUDE [Upload to a storage account](../includes/user-compute-upload-vhd.md)]

@@ -114,7 +114,7 @@ In this version, currently there is no `Provisioning.Agent` option to disable pr
 
 ## Verify your VHD
 
-[[!INCLUDE [Verify VHD](../includes/user-compute-verify-vhd.md)]]
+[!INCLUDE [Verify VHD](../includes/user-compute-verify-vhd.md)]
 
 ## Upload to a storage account
 
