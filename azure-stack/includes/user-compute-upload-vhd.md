@@ -8,6 +8,8 @@ ms.reviewer: thoroet
 ms.lastreviewed: 08/04/2020
 ---
 
+You can upload your VHD with the portal, or with the container you created in the portal, use the AzCopy.
+
 ### Portal to generate SAS URL and upload VHD
 
 1. Sign in to the Azure Stack Hub user portal.

@@ -48,7 +48,7 @@ Before uploading your VHD, you must validate that the VHD meets the requirements
     Number                  :
     ```
 
-3. With the VHD object, check that it meets the requirements.
+3. With the VHD object, check that meets the requirements for Azure Stack Hub.
     - VHD is of fixed type.
     - VHD footer cookie has first eight (8) bytes **conectix** as expected.
     - VHD has minimum virtual size of at least 20 MB.
