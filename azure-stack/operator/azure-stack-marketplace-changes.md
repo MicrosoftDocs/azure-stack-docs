@@ -3,7 +3,7 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 08/24/2020
+ms.date: 09/01/2020
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 05/28/2020
@@ -68,6 +68,7 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Updated marketplace items
 
+- 08/31/2020: AKS Base Ubuntu 16.04-LTS Image Distro, August 2020 – version 2020.08.24
 - 08/21/2020: Windows 10 Enterprise, Version 1903-Bring your own license - version 18362.959.2007101755
 - 08/21/2020: Windows 10 Pro, Version 1903-Bring your own license - version 18362.959.2007101755
 - 08/21/2020: Windows 10 Enterprise, Version 1909-Bring your own license - version 18363.959.2007101752
