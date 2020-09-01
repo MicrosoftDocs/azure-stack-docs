@@ -98,13 +98,13 @@ Follow the instructions in [Download a Windows VHD from Azure](/azure/virtual-ma
 
 ## Create the VM
 
-Custom images come in two forms: [**generalized**](vm-move-overview.md) and [**specialized**](vm-move-overview.md).
+Custom images come in two forms: **generalized** and **specialized**.
 
-### Specialized(#tab/create-vm-spec)
+### [Specialized](#tab/create-vm-spec)
 
 [!INCLUDE [Create the disk in Azure Stack Hub](../includes/user-compute-create-disk.md)]
 
-### Generalized(#tab/create-vm-gen)
+### [Generalized](#tab/create-vm-gen)
 
 [!INCLUDE [Create the image in Azure Stack Hub](../includes/user-compute-create-image.md)]
 
