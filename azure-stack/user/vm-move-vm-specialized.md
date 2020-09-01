@@ -120,17 +120,9 @@ In this version, currently there is no `Provisioning.Agent` option to disable pr
 
 [!INCLUDE [Upload to a storage account](../includes/user-compute-upload-vhd.md)]
 
-## Create the image in Azure Stack Hub
+## Create the disk in Azure Stack Hub
 
-[!INCLUDE [Create the image in Azure Stack Hub](../includes/user-compute-create-image.md)]
-
-`TODO TIBI: Note sure how this is set:
-- With an agent, your VM properties will be: `Agent Status: Ready` 
-- Without an agent, your VM properties will be: `Agent Status: Ready` 
-
-`TODO MDB: Sort out how images are created.
-Creating the VM from a VHD will use that VHD and create a single VM.
-Adding an image in VM Images creates that image in the user-subscription. This means that users in the tenant can use the image to create their own VM.`
+[!INCLUDE [Create the disk in Azure Stack Hub](../includes/user-compute-create-disk.md)]
 
 ## Next steps
 

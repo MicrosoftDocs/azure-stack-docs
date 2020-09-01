@@ -64,6 +64,8 @@ You can find details, checklists, and best practices for planning and migrating 
 
 [Get the white paper.](https://azure.microsoft.com/resources/migrate-to-azure-stack-hub-patterns-and-practices-checklists/)
 
+You can also find guidance about migration in the Cloud Adoption Framework. For more information, see [Plan your Azure Stack Hub migration](/azure/cloud-adoption-framework/scenarios/azure-stack/plan). 
+
 ## Next steps
 
 [Introduction to Azure Stack Hub VMs](azure-stack-compute-overview.md)
