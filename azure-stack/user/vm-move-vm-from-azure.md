@@ -98,7 +98,7 @@ Follow the instructions in [Download a Windows VHD from Azure](/azure/virtual-ma
 
 ## Create the VM
 
-Custom images come in two forms: **generalized** and **specialized**.
+Custom images come in two forms: **specialized** and **generalized**.
 
 ### [Specialized](#tab/create-vm-spec)
 
