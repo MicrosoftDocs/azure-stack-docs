@@ -38,7 +38,7 @@ For example, if one server has six SSD, they should *all* have six SSD.
 
 ### Model
 
-We recommend using drives of the same model and firmware version whenever possible. If you can't, carefully select drives that are as similar as possible. We discourage mixing-and-matching drives of the same type with sharply different performance or endurance characteristics (unless one is cache and the other is capacity) because Storage Spaces Direct distributes IO evenly and doesn't discriminate based on model.
+We recommend using drives of the same model and firmware version whenever possible. If you can't, carefully select drives that are as similar as possible. We discourage mixing-and-matching drives of the same type with sharply different performance or endurance characteristics (unless one is cache and the other is capacity) because Azure Stack HCI distributes IO evenly and doesn't discriminate based on model.
 
    > [!NOTE]
    > It is okay to mix-and-match similar SATA and SAS drives.
@@ -72,14 +72,14 @@ The number of servers, the resiliency, the severity of the capacity imbalance, a
 
 ## Understand: cache imbalance
 
-Storage Spaces Direct is robust to cache imbalance across drives and across servers. Even if the imbalance is severe, everything will continue to work. Moreover, Storage Spaces Direct always uses all available cache to the fullest.
+Azure Stack HCI is robust to cache imbalance across drives and across servers. Even if the imbalance is severe, everything will continue to work. Moreover, Azure Stack HCI always uses all available cache to the fullest.
 
-However, using cache drives of different sizes may not improve cache performance uniformly or predictably: only IO to [drive bindings](understand-the-cache.md#server-side-architecture) with larger cache drives may see improved performance. Storage Spaces Direct distributes IO evenly across bindings and doesn't discriminate based on cache-to-capacity ratio.
+However, using cache drives of different sizes may not improve cache performance uniformly or predictably: only IO to [drive bindings](cache.md#server-side-architecture) with larger cache drives may see improved performance. Azure Stack HCI distributes IO evenly across bindings and doesn't discriminate based on cache-to-capacity ratio.
 
 ![Cache imbalance](media/drive-symmetry-considerations/Cache-Asymmetry.png)
 
    > [!TIP]
-   > See [Understanding the cache](understand-the-cache.md) to learn more about cache bindings.
+   > See [Understanding the cache](cache.md) to learn more about cache bindings.
 
 ## Example configurations
 
