@@ -1,24 +1,21 @@
 ---
 title: Plan a Software Defined Network infrastructure
-description: This topic provides information on how to plan your Software Defined Network (SDN) infrastructure deployment.
+description: This topic provides information on how to plan a Software Defined Network (SDN) infrastructure deployment.
 manager: grcusanz
 ms.topic: conceptual
 ms.assetid: ea7e53c8-11ec-410b-b287-897c7aaafb13
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 08/27/2018
+ms.date: 09/01/2018
 ---
 # Plan a Software Defined Network infrastructure
 
 >Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server (Semi-Annual Channel), Windows Server 2016
 
-Learn about deployment planning for a Software Defined Network (SDN) infrastructure, including hardware and software prerequisites.
+Learn about deployment planning for a Software Defined Network (SDN) infrastructure, including hardware and software prerequisites. This topic includes planning requirements for physical and logical network configuration, routing, gateways, network hardware, and more. It also includes considerations on extending an SDN infrastructure and using a phased deployment.
 
 ## Prerequisites
-This topic describes a number of hardware and software prerequisites, including:
-
-<!---Redo intro to this section.--->
-
+There are several hardware and software prerequisites for a SDN infrastructure, including:
 - **Security groups, log file locations, and dynamic DNS registration**. You must prepare your datacenter for Network Controller deployment, which requires one or more computers or virtual machines (VMs). Before you can deploy the Network Controller, you must configure security groups, log file locations (if needed), and dynamic DNS registration.
 
     To learn more about Network Controller deployment for your datacenter, see [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller).
@@ -37,11 +34,10 @@ Each physical compute host requires network connectivity through one or more net
 >Windows Server 2016 Software Defined Networking supports IPv4 addressing for the underlay and the overlay. IPv6 is not supported. Windows Server 2019 supports both IPv4 and IPv6 addressing.
 
 ### Logical networks
-<!---Section intro text here.--->
+This section covers SDN infrastructure planning requirements for the Management logical network and the Hyper-V Network Virtualization (HNV) provider logical network. It includes details on provisioning additional logical networks to use gateways and the Software Load Balancer (SLB), and a sample network topology.
 
 #### Management and HNV Provider
-
-All physical compute hosts must access the Management logical network and the Hyper-V Network Virtualization (HNV) provider logical network. For IP address planning purposes, each physical compute host must have at least one IP address assigned from the Management logical network. The Network Controller requires a reserved IP address from this network to serve as the Representational State Transfer (REST) IP address.
+All physical compute hosts must access the Management logical network and the HNV provider logical network. For IP address planning purposes, each physical compute host must have at least one IP address assigned from the Management logical network. The Network Controller requires a reserved IP address from this network to serve as the Representational State Transfer (REST) IP address.
 
 The HNV Provider network serves as the underlying physical network for East/West (internal-internal) tenant traffic, North/South (external-internal) tenant traffic, and to exchange BGP peering information with the physical network.
 
@@ -105,13 +101,10 @@ Machines configured to connect to multiple networks, such as the physical hosts,
 1. For the gateway VMs, use the HNV Provider network as the default gateway. This should be set on the front-end NIC of the gateway VMs.
 
 ## Network hardware
-You can use the following sections to plan network hardware deployment.
-
-<!---H2 Section intro text here.--->
-
+This section provides network hardware deployment requirements for network interface cards (NICs) and physical switches.
 
 ### Network Interface Cards (NICs)
-The network interface cards (NICs) that you use in your Hyper-V hosts and storage hosts require specific capabilities to achieve the best performance.
+The NICs that you use in your Hyper-V hosts and storage hosts require specific capabilities to achieve the best performance.
 
 Remote Direct Memory Access (RDMA) is a kernel bypass technique that makes it possible to transfer large amounts of data without using the host CPU, which frees the CPU to perform other work. Switch Embedded Teaming (SET) is an alternative NIC Teaming solution that you can use in environments that include Hyper-V and the SDN stack. SET integrates some NIC Teaming functionality into the Hyper-V Virtual Switch.
 
@@ -196,6 +189,7 @@ Feature|Deployment requirements|Network requirements|
 |IPSec gateway connections|Network Controller<br> SLB MUX<br> Gateway|BGP on HNV PA network<br> Public VIP subnet|
 |L3 gateway connections|Network Controller<br> Gateway|Tenant VLAN, Subnet, Router<br> BGP on tenant VLAN optional.|
 
-## See Also
+## Next steps
+For related information, see also:
 - [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller)
 - [SDN in Windows Server overview](/windows-server/networking/sdn/software-defined-networking)
