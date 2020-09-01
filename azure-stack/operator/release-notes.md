@@ -69,16 +69,21 @@ For more information about update build types, see [Manage updates in Azure Stac
 ### What's new
 
 <!-- What's new, also net new experiences and features. -->
+- Azure Stack Hub now supports VNET Peering! VNET Peering gives the ability to connect VNETs without an Network Virtual Appliance. For more details, please review VNET Peering documentation.  <!-- Need to add the link to VNET peering documentation-->
+- 
 
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
+- Implmented monitoring for Network Controller and SLB host agents so the services can be restarted automatically if they are ever in a stopped state. 
 
 ### Changes
 
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
+- Fixed an issue where deleting an NSG of a NIC that is not attached to a running VM would fail. 
+- Fixed an issue where modifying the IdleTimeoutInMinutes value for a public IP that is associated to a load balancer would put the Public IP in a failed state. 
 
 ## Security updates
 
