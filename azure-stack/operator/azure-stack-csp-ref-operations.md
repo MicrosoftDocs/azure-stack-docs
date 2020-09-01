@@ -4,7 +4,7 @@ description: Learn how to register tenants and how tenant usage is tracked in Az
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/24/2020
+ms.date: 09/01/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 10/14/2019
@@ -50,7 +50,7 @@ For more information about Azure Stack Hub and API profiles, see [Manage API ver
 
 ### PowerShell
 
-Use the **New-AzureRmResource** cmdlet to add a tenant. [Connect to Azure Stack Hub](azure-stack-powershell-configure-admin.md), and then from an elevated prompt use the following cmdlet:
+Use the **New-AzureRmResource** cmdlet to add a tenant. [Connect to Azure](/powershell/azure/get-started-azureps), and then from an elevated prompt run the following command:
 
 ```powershell  
 New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01

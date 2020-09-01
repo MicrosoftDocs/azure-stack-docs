@@ -4,7 +4,7 @@ description: Learn how to deploy a virtual machine and push a certificate onto i
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 09/01/2020
 ms.author: sethm
 ms.lastreviewed: 12/27/2019
 
@@ -45,7 +45,7 @@ The following steps describe the process required to push a certificate to the V
 
 ## Create a key vault secret
 
-The following script creates a certificate in the .pfx format, creates a key vault, and stores the certificate in the key vault as a secret.
+The following script creates a certificate in the .pfx format, creates a key vault, and stores the certificate in the key vault as a secret. The `contentType` of the secret must be set to `pfx`.
 
 > [!IMPORTANT]
 > You must use the `-EnabledForDeployment` parameter when creating the key vault. This parameter ensures that the key vault can be referenced from Azure Resource Manager templates.
