@@ -69,7 +69,6 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 ## Updated marketplace items
 
 - 08/31/2020: AKS Base Ubuntu 16.04-LTS Image Distro, August 2020 – version 2020.08.24
-- 08/31/2020: AKS Base Windows Image – version 17763.1397.200820
 - 08/21/2020: Windows 10 Enterprise, Version 1903-Bring your own license - version 18362.959.2007101755
 - 08/21/2020: Windows 10 Pro, Version 1903-Bring your own license - version 18362.959.2007101755
 - 08/21/2020: Windows 10 Enterprise, Version 1909-Bring your own license - version 18363.959.2007101752
