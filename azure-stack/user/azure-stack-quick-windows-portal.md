@@ -4,7 +4,7 @@ description: Learn how to create a Windows Server 2016 virtual machine (VM) with
 author: mattbriggs
 
 ms.topic: quickstart
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 1/10/2020

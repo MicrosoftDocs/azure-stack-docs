@@ -4,7 +4,7 @@ description: Learn how to Deploy highly available network virtual appliances on 
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
@@ -79,7 +79,7 @@ In the two ingress and egress architectures, there was a separate perimeter netw
 
 In the Ingress-egress with layer 7 NVAs architecture, the NVAs process incoming requests from a Layer 7 Load Balancer. The NVAs also process outgoing requests from the workload VMs in the back-end pool of the load balancer. Because incoming traffic is routed with a layer 7 load balancer, and outgoing traffic is routed with an SLB (Azure Stack Hub Basic Load Balancer), the NVAs are responsible for maintaining session affinity. That is, the layer 7 load balancer maintains a mapping of inbound and outbound requests so it can forward the correct response to the original requestor. However, the internal load balancer doesn't have access to the layer 7 load balancer mappings, and uses its own logic to send responses to the NVAs. It's possible the load balancer could send a response to an NVA that did not initially receive the request from the layer 7 load balancer. In this case, the NVAs must communicate and transfer the response between them so the correct NVA can forward the response to the layer 7 load balancer.
 
-> [!Note]  
+> [!NOTE]  
 > You can also solve the asymmetric routing issue by ensuring the NVAs perform inbound source network address translation (SNAT). This would replace the original source IP of the requestor to one of the IP addresses of the NVA used on the inbound flow. This ensures that you can use multiple NVAs at a time, while preserving the route symmetry.
 
 ## Next steps

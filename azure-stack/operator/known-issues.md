@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/21/2020
+ms.date: 08/31/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 08/13/2020
@@ -122,6 +122,12 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Remediation: Ask your operator for an add-on plan with additional quota. Editing the current plan's quota will not work or reflect increased quota.
 - Occurrence: Rare
 
+### VM overview blade does not show correct computer name
+
+- Applicable: This issue applies to all releases.
+- Cause: When viewing details of a VM in the overview blade, the computer name shows as **(not available)**. This is by design for VMs created from specialized disks/disk snapshots.
+- Remediation: View the **Properties** blade under **Settings**.
+
 ### Virtual machine scale set
 
 #### Create failures during patch and update on 4-node Azure Stack Hub environments
@@ -129,6 +135,16 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Applicable: This issue applies to all supported releases.
 - Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack Hub environment.
 - Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack Hub deployment.
+
+## Storage
+
+### Retention period reverts to 0
+
+- Applicable: This issue applies to releases 2002 and 2005.
+- Cause: If you specify a time period other than 0 in the retention period setting, it reverts to 0 (the default value of this setting) during the 2002 or 2005 update. The 0 days setting takes effect immediately after the update finishes, which causes all existing deleted storage accounts and any upcoming newly deleted storage accounts to be immediately out of retention and marked for periodic garbage collection (which runs hourly).
+- Remediation: Manually specify the retention period to a correct period. Any storage account that has already been garbage collected before the new retention period is specified, is not recoverable.  
+
+## Resource providers
 
 ### SQL/MySQL
 
@@ -316,6 +332,14 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Applicable: This issue applies to new installations of 2002 and later, or any previous release with TLS 1.2 enabled.
 - Cause: When configuring the automated backup of SQL VMs with an existing storage account, it fails with the error **SQL Server IaaS Agent: The underlying connection was closed: An unexpected error occurred on a send.**
 - Occurrence: Common
+
+## Storage
+
+### Retention period revert to 0
+
+- Applicable: This issue applies to release 2002 and 2005.
+- Cause: If you previously specified a time period other than 0 in retention period setting, it would be reverted back to 0 (the default value of this setting) during 2002 and 2005 update. And the 0 days setting would take effect immdiately after update finished, which causes all the existing deleted storage accounts and any upcoming newly deleted storage account being immediately out of retention and marked for periodic garbage collection (which runs hourly). 
+- Remediation: Manually specify the retention period to a proper period. However, any storage account already been garbage collected before the new retention period is specified is not recoverable.  
 
 ## Resource providers
 

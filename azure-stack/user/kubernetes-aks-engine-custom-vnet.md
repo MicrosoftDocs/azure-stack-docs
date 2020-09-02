@@ -139,7 +139,7 @@ After you deploy your cluster, return to your virtual network in the Azure Stack
     
 5. Select **Route table** and then select the route table for your cluster.
 
-> [!Note]  
+> [!NOTE]  
 > Custom virtual network for Kubernetes Windows cluster has a [known issue](https://github.com/Azure/aks-engine/issues/371).
 
 ## Next steps

@@ -4,7 +4,7 @@ description: This article contains troubleshooting steps for the AKS engine on A
 author: mattbriggs
 
 ms.topic: article
-ms.date: 4/17/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 4/17/2020
