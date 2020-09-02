@@ -45,16 +45,16 @@ Notice that additional software packages are downloaded along with Event Hubs, i
    [![Marketplace management downloaded packages](media/event-hubs-rp-install/2-marketplace-management-downloaded.png)](media/event-hubs-rp-install/2-marketplace-management-downloaded.png#lightbox)
  
 3. The Event Hubs install package page shows a blue banner across the top. Select the banner to start the installation of Event Hubs.
-   [![Marketplace management event hubs - start install](media/event-hubs-rp-install/3-marketplace-management-install-ready.png)](media/event-hubs-rp-install/3-marketplace-management-install-ready.png#lightbox)
+   [![Marketplace management event hubs - begin install](media/event-hubs-rp-install/3-marketplace-management-install-ready.png)](media/event-hubs-rp-install/3-marketplace-management-install-ready.png#lightbox)
 
 ### Install prerequisites
 
 1. Next you're transferred to the install page. Select **Install Prerequisites** to begin the installation process.
-   ![Marketplace management event hubs - prerequisites](media/event-hubs-rp-install/4-marketplace-management-install-prereqs-start.png)
+   ![Marketplace management event hubs - install prerequisites](media/event-hubs-rp-install/4-marketplace-management-install-prereqs-start.png)
  
 2. Wait until the installation of prerequisites succeeds. You should see a green checkmark next to **Install prerequisites** before proceeding to the next step.
 
-   ![Marketplace management event hubs - prerequisites](media/event-hubs-rp-install/5-marketplace-management-install-prereqs-succeeded.png)
+   ![Marketplace management event hubs - install prerequisites succeeded](media/event-hubs-rp-install/5-marketplace-management-install-prereqs-succeeded.png)
 
 ### Prepare secrets 
 
@@ -70,13 +70,13 @@ Notice that additional software packages are downloaded along with Event Hubs, i
 ### Install resource provider
 
 1. When the installation of the certificate succeeds, you should see a green checkmark next to **Prepare secrets** before proceeding to the next step. Now select the **Install** button next to **3 Install resource provider**.
-   ![Marketplace management event hubs - start install](media/event-hubs-rp-install/8-marketplace-management-install-start.png)
+   ![Marketplace management event hubs - start RP install](media/event-hubs-rp-install/8-marketplace-management-install-start.png)
  
 2. Next you'll see the following page, which indicates that Event Hubs resource provider is being installed.
-   [![Marketplace management event hubs - installing](media/event-hubs-rp-install/9-marketplace-management-install-inprogress.png)](media/event-hubs-rp-install/9-marketplace-management-install-inprogress.png#lightbox)
+   [![Marketplace management event hubs - RP installing](media/event-hubs-rp-install/9-marketplace-management-install-inprogress.png)](media/event-hubs-rp-install/9-marketplace-management-install-inprogress.png#lightbox)
  
 3. Wait for the installation complete notification. This process usually takes one or more hours, depending on your Azure Stack Hub type. 
-   [![Marketplace management event hubs - install complete](media/event-hubs-rp-install/10-marketplace-management-install-complete.png)](media/event-hubs-rp-install/10-marketplace-management-install-complete.png#lightbox)
+   [![Marketplace management event hubs - RP install complete](media/event-hubs-rp-install/10-marketplace-management-install-complete.png)](media/event-hubs-rp-install/10-marketplace-management-install-complete.png#lightbox)
 
 4. Verify that the installation of Event Hubs has succeeded, by returning to the **Marketplace Management**, **Resource Providers** page. The status of Event Hubs should show "Installed".
    ![Marketplace management event hubs available](media/event-hubs-rp-install/11-marketplace-management-rps-installed.png)
