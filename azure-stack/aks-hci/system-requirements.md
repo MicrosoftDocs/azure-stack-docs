@@ -11,9 +11,6 @@ ms.author: dawhite
 
 Before you begin setting up Azure Kubernetes Service for Azure Stack HCI, make sure your system meets the prerequisites for your desired cluster creation method.
 
-## PowerShell
-Insert text here.
-
 ## Windows Admin Center
 Windows Admin Center is the user interface for creating and managing Azure Kubernetes Service on Azure Stack HCI. To use Windows Admin Center with Azure Kubernetes Service on Azure Stack HCI, you must meet all the criteria in the list below.
 

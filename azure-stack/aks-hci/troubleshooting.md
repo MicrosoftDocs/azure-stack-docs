@@ -10,10 +10,6 @@ ms.author: dawhite
 # Troubleshooting Azure Kubernetes Service on Azure Stack HCI
 When you create or manage a Kubernetes cluster using Azure Kubernetes Service on Azure Stack HCI, you might occasionally come across problems. Below are the troubleshooting guidelines to help you resolve those issues. 
 
-## General information about debugging Kubernetes
-
-## Troubleshooting Azure Stack HCI
-
 ## Troubleshooting Windows Admin Center
 This product is currently in the public preview state, which means it is still in development. Currently there are several issues with the Windows Admin Center Azure Kubernetes Service extension: 
 * For CredSSP to function successfully within the cluster create wizard, Windows Admin Center must be installed and used by the same account. Installing with one account and then trying to use it with another will result in errors.
@@ -41,9 +37,3 @@ az login –tenant<tenant>
 ``` cmd
 kubectl –kubeconfig=$kcl get pods -A
 ```
-
-## Troubleshooting deployment errors
-
-## Troubleshooting Azure Kubernetes Service for Azure Stack HCI Azure Arc connection
-
-## Troubleshooting Windows Worker Nodes
