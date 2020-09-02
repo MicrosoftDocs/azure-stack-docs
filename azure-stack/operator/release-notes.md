@@ -70,7 +70,9 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- What's new, also net new experiences and features. -->
 - Azure Stack Hub now supports VNET Peering! VNET Peering gives the ability to connect VNETs without an Network Virtual Appliance. For more details, please review VNET Peering documentation.  <!-- Need to add the link to VNET peering documentation-->
-- 
+- Azure Stack Hub Blob storage now enable users to use immutable blob. By setting immutable policies on container, you can store business-critical data objects in a WORM (Write Once, Read Many) state. In this release, immutable setting UX is not ready. Immutable policies can only be set through REST API or client SDKs. Append blobs writes are also forbidden in this release. For more details about immutable blob, see [Store business-critical blob data with immutable storage](/azure/storage/blobs/storage-blob-immutable-storage).
+- Azure Stack Hub Storage now supports Azure Storage services APIs version 2019-07-07. For Azure client libraries that is compatible with the new REST API version, see [Azure Stack Hub storage development tools](../user/azure-stack-storage-dev.md#azure-client-libraries).
+- Azure Stack Hub Managed Disks now supports Azure Compute APIs version 2019-03-01.
 
 ### Improvements
 
@@ -78,12 +80,15 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Implmented monitoring for Network Controller and SLB host agents so the services can be restarted automatically if they are ever in a stopped state. 
 
 ### Changes
+- Unblock property **supportHttpsTrafficOnly** of storage account resource type in SRP APIs version 2016-01-01 and 2016-05-01, but this property won't take effect in Azure Stack Hub.
+- Raise volume capacity utilization alert threshold from 80% (Warning) and 90% (Critical) to 90% (Warning) and 95% (Critical). For more information, see [Storage space alerts](azure-stack-manage-storage-shares.md#storage-space-alerts)
 
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 - Fixed an issue where deleting an NSG of a NIC that is not attached to a running VM would fail. 
-- Fixed an issue where modifying the IdleTimeoutInMinutes value for a public IP that is associated to a load balancer would put the Public IP in a failed state. 
+- Fixed an issue where modifying the IdleTimeoutInMinutes value for a public IP that is associated to a load balancer would put the Public IP in a failed state.
+- Fixed **Get-AzsDisk** cmdlet to return correct status "Attached" instead of "OnlineMigration" for attached managed disks.
 
 ## Security updates
 
