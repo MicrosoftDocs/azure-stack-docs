@@ -7,7 +7,7 @@ ms.date: 09/01/2020
 ms.author: dawhite
 ---
 
-## Creating a new Kubernetes cluster
+# Creating a new Kubernetes cluster
 After you have set up your Azure Kubernetes Service host, you can create a Kubernetes cluster. Make sure you have checked the [system requirements](.\system-requirements.md) page and gone through the [Setting up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center quickstart](.\quickstart-setup-wac.md) before following this quickstart. 
 
 Let's get started: 
