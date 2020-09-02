@@ -38,7 +38,7 @@ It's recommended that you apply the MySQL resource provider hotfix 1.1.47.0 afte
 
 ## Known issues
 
-None.
+When [rotating certificate](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation) for Azure Stack Hub integrated systems, KeyVaultPfxPassword argument is mendatory, even if there's no intention to update the Key Vault certificate password.
 
 ## Next steps
 
