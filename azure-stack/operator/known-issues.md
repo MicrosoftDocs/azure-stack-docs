@@ -4,10 +4,10 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 09/02/2020
 ms.author: sethm
 ms.reviewer: sranthar
-ms.lastreviewed: 08/13/2020
+ms.lastreviewed: 09/01/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -17,7 +17,7 @@ ms.lastreviewed: 08/13/2020
 
 # Azure Stack Hub known issues
 
-This article lists known issues in releases of Azure Stack Hub. The list is updated as new issues are identified.
+This article lists known issues in Azure Stack Hub releases. The list is updated as new issues are identified.
 
 To access known issues for a different version, use the version selector dropdown above the table of contents on the left.
 
@@ -42,6 +42,36 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 ## Portal
 
 ## Networking
+
+### Network Security Groups
+
+#### DenyAllOutbound rule cannot be created
+
+- Applicable: This issue applies to all supported releases.
+- Cause: An explicit **DenyAllOutbound** rule to the internet cannot be created in an NSG during VM creation as this will prevent the communication required for the VM deployment to complete.
+- Remediation: Allow outbound traffic to the internet during VM creation, and modify the NSG to block the required traffic after VM creation is complete.
+- Occurrence: Common
+
+### Virtual Network Gateway
+
+#### Documentation
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The documentation links in the overview page of Virtual Network gateway link to Azure-specific documentation instead of Azure Stack Hub. Use the following links for the Azure Stack Hub documentation:
+
+  - [Gateway SKUs](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-skus)
+  - [Highly Available Connections](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
+  - [Configure BGP on Azure Stack Hub](../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
+  - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
+  - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
+
+### Load Balancer
+
+#### Load Balancer directing traffic to one backend VM in specific scenarios
+
+- Applicable: This issue applies to all supported releases. 
+- Cause: When enabling **Session Affinity** on a load balancer, the 2 tuple hash utilizes the PA IP (Physical Address IP) instead of the private IPs assigned to the VMs. In scenarios where traffic directed to the load balancer arrives through a VPN, or if all the client VMs (source IPs) reside on the same node and Session Affinity is enabled, all traffic is directed to one backend VM.
+- Occurrence: Common
 
 ## Compute
 
