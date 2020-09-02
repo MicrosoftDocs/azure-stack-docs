@@ -4,6 +4,8 @@
   items:
   - name: What is Azure Kubernetes Service on Azure Stack HCI?
     href: overview.md
+  - name: System requirements
+    href: system-requirements.md
 - name: Related
   items:
   - name: Azure Stack HCI
@@ -14,3 +16,18 @@
     href: /hybrid
   - name: Windows Server
     href: /windows-server/
+- name: Quickstarts
+  expanded: true
+  items:
+    - name: Set up Azure Kubernetes Service on Azure Stack HCI
+      items:
+        - name: Using Windows Admin Center
+          href: quickstart-setup-wac.md
+    - name: Create a Kubernetes cluster
+      items:
+        - name: Using Windows Admin Center
+          href: quickstart-create-wac.md
+- name: How-to guides
+  items: 
+    - name: Troubleshooting
+      href: troubleshooting.md
