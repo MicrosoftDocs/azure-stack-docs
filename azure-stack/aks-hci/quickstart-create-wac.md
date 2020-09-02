@@ -27,7 +27,7 @@ Let's get started:
 > [!NOTE] 
 > Azure Arc integration is not required, but it is recommended. 
 
-5. You may configure additional node pools to run your workloads on the **Node pools** page. During public preview, you may add up to one Windows node pool and one Linux node pool (in addition to the system node pool). WHen you're finished, click **Next**.
+5. You may configure additional node pools to run your workloads on the **Node pools** page. During public preview, you may add up to one Windows node pool and one Linux node pool (in addition to the system node pool). When you're finished, click **Next**.
 6. Specify your network configuration on the **Networking** page. If you select "Advanced," you can customize the address range used when creating a virtual network for nodes in the cluster. If you select "Basic," virtual networks for nodes in the cluster will be created with a default address range. When complete, click **Next**.
 
 > [!NOTE] 
