@@ -138,7 +138,7 @@ Use these steps to prepare certificate signing requests for renewal of existing 
         Install-Module Microsoft.AzureStack.ReadinessChecker
     ```
 
-2. Declare the **stampEndpoint** in the form of regionname.domain.com of the Azure Stack Hub System. For example (if the Azure Stack Hub Tenant portal address is<code> https://portal.east.azurestack.contoso.com):</code>
+2. Declare the **stampEndpoint** in the form of regionname.domain.com of the Azure Stack Hub System. For example (if the Azure Stack Hub Tenant portal address is <code> https://portal.east.azurestack.contoso.com</code>):
 
     ```powershell  
     $stampEndpoint = 'east.azurestack.contoso.com'
