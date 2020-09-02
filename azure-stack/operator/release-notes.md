@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/13/2020
+ms.date: 09/02/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 08/11/2020
@@ -115,6 +115,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue in which using a Linux NTP server erroneously generates alerts in the administration portal.  
 - Fixed an issue where failover of Backup Controller service instance resulted in automatic backups getting disabled.
 - Fixed an issue where internal secret rotation fails when infrastructure services do not have internet connectivity.
+- Fixed an issue in which users could not view subscription permissions using the Azure Stack Hub portals.
 
 ## Security updates
 
