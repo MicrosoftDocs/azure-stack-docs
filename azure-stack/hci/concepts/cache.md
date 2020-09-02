@@ -6,24 +6,23 @@ ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/11/2020
+ms.date: 09/01/2020
 ---
 
 # Understanding the cache in Azure Stack HCI
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-[Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) features a built-in server-side cache to maximize storage performance. It is a large, persistent, real-time read *and* write cache. The cache is configured automatically when Storage Spaces Direct is enabled. In most cases, no manual management whatsoever is required.
-How the cache works depends on the types of drives present.
+Azure Stack HCI features a built-in server-side cache to maximize storage performance. It is a large, persistent, real-time read *and* write cache. The cache is configured automatically when Azure Stack HCI is deployed. In most cases, no manual management whatsoever is required. How the cache works depends on the types of drives present.
 
-The following video goes into details on how caching works for Storage Spaces Direct, as well as other design considerations.
+The following video goes into details on how caching works for Storage Spaces Direct, the underlying storage virtualization technology behind Azure Stack HCI, as well as other design considerations.
 
 <strong>Storage Spaces Direct design considerations</strong><br>(20 minutes)<br>
 <iframe src="https://channel9.msdn.com/Blogs/windowsserver/Design-Considerations-for-Storage-Spaces-Direct/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
 ## Drive types and deployment options
 
-Storage Spaces Direct currently works with four types of drives:
+Azure Stack HCI currently works with four types of drives:
 
 | Type of drive | Description |
 |----------------------|--------------------------|
@@ -48,7 +47,7 @@ Hybrid deployments aim to balance performance and capacity or to maximize capaci
 
 ## Cache drives are selected automatically
 
-In deployments with multiple types of drives, Storage Spaces Direct automatically uses all drives of the "fastest" type for caching. The remaining drives are used for capacity.
+In deployments with multiple types of drives, Azure Stack HCI automatically uses all drives of the "fastest" type for caching. The remaining drives are used for capacity.
 
 Which type is "fastest" is determined according to the following hierarchy.
 
@@ -84,9 +83,9 @@ This results in write characteristics, such as write latency, being dictated by 
 
 When caching for hard disk drives (HDDs), both reads *and* writes are cached, to provide flash-like latency (often ~10x better) for both. The read cache stores recently and frequently read data for fast access and to minimize random traffic to the HDDs. (Because of seek and rotational delays, the latency and lost time incurred by random access to an HDD is significant.) Writes are cached to absorb bursts and, as before, to coalesce writes and re-writes and minimize the cumulative traffic to the capacity drives.
 
-Storage Spaces Direct implements an algorithm that de-randomizes writes before de-staging them, to emulate an IO pattern to disk that seems sequential even when the actual IO coming from the workload (such as virtual machines) is random. This maximizes the IOPS and throughput to the HDDs.
+Azure Stack HCI implements an algorithm that de-randomizes writes before de-staging them, to emulate an IO pattern to disk that seems sequential even when the actual IO coming from the workload (such as virtual machines) is random. This maximizes the IOPS and throughput to the HDDs.
 
-### Caching in deployments with drives of all three types
+### Caching in deployments with NVMe, SSD, and HDD
 
 When drives of all three types are present, the NVMe drives provides caching for both the SSDs and the HDDs. The behavior is as described above: only writes are cached for the SSDs, and both reads and writes are cached for the HDDs. The burden of caching for the HDDs is distributed evenly among the cache drives.
 
@@ -109,7 +108,7 @@ The cache is implemented at the drive level: individual cache drives within one 
 
 Because the cache is below the rest of the Windows software-defined storage stack, it does not have nor need any awareness of concepts such as Storage Spaces or fault tolerance. You can think of it as creating "hybrid" (part flash, part disk) drives which are then presented to Windows. As with an actual hybrid drive, the real-time movement of hot and cold data between the faster and slower portions of the physical media is nearly invisible to the outside.
 
-Given that resiliency in Storage Spaces Direct is at least server-level (meaning data copies are always written to different servers; at most one copy per server), data in the cache benefits from the same resiliency as data not in the cache.
+Given that resiliency in Azure Stack HCI is at least server-level (meaning data copies are always written to different servers; at most one copy per server), data in the cache benefits from the same resiliency as data not in the cache.
 
 ![Cache-Server-Side-Architecture](media/cache/Cache-Server-Side-Architecture.png)
 
@@ -142,9 +141,9 @@ You can then replace the cache drive just like any other drive replacement.
 
 There are several other unrelated caches in the Windows software-defined storage stack. Examples include the Storage Spaces write-back cache and the Cluster Shared Volume (CSV) in-memory read cache.
 
-With Storage Spaces Direct, the Storage Spaces write-back cache should not be modified from its default behavior. For example, parameters such as **-WriteCacheSize** on the **New-Volume** cmdlet should not be used.
+With Azure Stack HCI, the Storage Spaces write-back cache should not be modified from its default behavior. For example, parameters such as **-WriteCacheSize** on the **New-Volume** cmdlet should not be used.
 
-You may choose to use the CSV cache, or not – it's up to you. It is off by default in Storage Spaces Direct, but it does not conflict with the new cache described in this topic in any way. In certain scenarios it can provide valuable performance gains. For more information, see [How to Enable CSV Cache](/windows-server/failover-clustering/failover-cluster-csvs#enable-the-csv-cache-for-read-intensive-workloads-optional).
+You may choose to use the CSV cache, or not – it's up to you. It is on by default in Windows Server 2019, but it does not conflict with the new cache described in this topic in any way. In certain scenarios it can provide valuable performance gains. For more information, see [How to Enable CSV Cache](/windows-server/failover-clustering/failover-cluster-csvs#enable-the-csv-cache-for-read-intensive-workloads-optional).
 
 ## Manual configuration
 
@@ -156,7 +155,7 @@ If you need to make changes to the cache device model after setup, edit the Heal
 
 In deployments where all drives are of the same type, such as all-NVMe or all-SSD deployments, no cache is configured because Windows cannot distinguish characteristics like write endurance automatically among drives of the same type.
 
-To use higher-endurance drives to cache for lower-endurance drives of the same type, you can specify which drive model to use with the **-CacheDeviceModel** parameter of the **Enable-ClusterS2D** cmdlet. Once Storage Spaces Direct is enabled, all drives of that model will be used for caching.
+To use higher-endurance drives to cache for lower-endurance drives of the same type, you can specify which drive model to use with the **-CacheDeviceModel** parameter of the **Enable-ClusterS2D** cmdlet. All drives of that model will be used for caching.
 
    >[!TIP]
    > Be sure to match the model string exactly as it appears in the output of **Get-PhysicalDisk**.
@@ -196,7 +195,7 @@ Manual configuration enables the following deployment possibilities:
 
 It is possible to override the default behavior of the cache. For example, you can set it to cache reads even in an all-flash deployment. We discourage modifying the behavior unless you are certain the default does not suit your workload.
 
-To override the behavior, use **Set-ClusterStorageSpacesDirect** cmdlet and its **-CacheModeSSD** and **-CacheModeHDD** parameters. The **CacheModeSSD** parameter sets the cache behavior when caching for solid-state drives. The **CacheModeHDD** parameter sets cache behavior when caching for hard disk drives. This can be done at any time after Storage Spaces Direct is enabled.
+To override the behavior, use **Set-ClusterStorageSpacesDirect** cmdlet and its **-CacheModeSSD** and **-CacheModeHDD** parameters. The **CacheModeSSD** parameter sets the cache behavior when caching for solid-state drives. The **CacheModeHDD** parameter sets cache behavior when caching for hard disk drives.
 
 You can use **Get-ClusterStorageSpacesDirect** to verify the behavior is set.
 
