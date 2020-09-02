@@ -17,7 +17,7 @@ This article shows you how to download and install the Event Hubs resource provi
 ## Download packages
 
 > [!NOTE]
-> Support for installing the Event Hubs resource provider in a disconnected Azure Stack Hub is not yet supported.
+> Installing the Event Hubs resource provider in a disconnected Azure Stack Hub is not yet supported.
 
 Before you can install Event Hubs on Azure Stack Hub, you must download the resource provider and its dependent packages using the Marketplace Management feature. If you're not familiar with Marketplace Management, spend time reviewing [Download marketplace items from Azure and publish to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md). This section walks you through the process of downloading items from Azure to the Azure Stack Hub marketplace: 
 
