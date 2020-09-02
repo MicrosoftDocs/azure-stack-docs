@@ -4,7 +4,7 @@ description: Learn about compute capacity planning for Azure Stack Hub deploymen
 author: IngridAtMicrosoft
 ms.topic: conceptual
 ms.date: 03/04/2020
-ms.author: inhenkel
+ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 06/13/2019
 
@@ -27,7 +27,7 @@ The Azure Stack Hub placement engine places tenant VMs across the available host
 
 Azure Stack Hub uses two considerations when placing VMs. One, is there enough memory on the host for that VM type? And two, are the VMs a part of an [availability set](/azure/virtual-machines/windows/manage-availability) or are they [virtual machine scale sets](/azure/virtual-machine-scale-sets/overview)?
 
-To achieve high availability of a multi-VM production system in Azure Stack Hub, virtual machines (VMs) are placed in an availability set that spreads them across multiple fault domains. A fault domain in an availability set is defined as a single node in the scale unit. Azure Stack Hub supports having an availability set with a maximum of three fault domains to be consistent with Azure. VMs placed in an availability set will be physically isolated from each other by spreading them as evenly as possible over multiple fault domains (Azure Stack Hub hosts). If there's a hardware failure, VMs from the failed fault domain will be restarted in other fault domains. If possible, they'll be kept in separate fault domains from the other VMs in the same availability set. When the host comes back online, VMs will be rebalanced to maintain high availability.  
+To achieve high availability of a multi-VM production workload in Azure Stack Hub, virtual machines (VMs) are placed in an availability set that spreads them across multiple fault domains. A fault domain in an availability set is defined as a single node in the scale unit. Azure Stack Hub supports having an availability set with a maximum of three fault domains to be consistent with Azure. VMs placed in an availability set will be physically isolated from each other by spreading them as evenly as possible over multiple fault domains (Azure Stack Hub nodes). If there's a hardware failure, VMs from the failed fault domain will be restarted in other fault domains. If possible, they'll be kept in separate fault domains from the other VMs in the same availability set. When the host comes back online, VMs will be rebalanced to maintain high availability.  
 
 Virtual machine scale sets use availability sets on the back end and make sure each virtual machine scale set instance is placed in a different fault domain. This means they use separate Azure Stack Hub infrastructure nodes. For example, in a four-node Azure Stack Hub system, there may be a situation where a virtual machine scale set of three instances will fail at creation due to the lack of the four-node capacity to place three virtual machine scale set instances on three separate Azure Stack Hub nodes. In addition, Azure Stack Hub nodes can be filled up at varying levels before trying placement.
 
@@ -116,7 +116,7 @@ Reducing the size of the largest VM to the next smallest VM in stamp (24 GB) wil
      
 ### Add a node
 
-Adding an Azure Stack Hub node will deallocate memory by equally distributing the memory between the two nodes.
+[Adding an Azure Stack Hub node](https://docs.microsoft.com/azure-stack/operator/azure-stack-add-scale-node) will deallocate memory by equally distributing the memory between the two nodes.
 
 ![Add a node](media/azure-stack-capacity-planning/add-a-node.png)
 
@@ -128,7 +128,7 @@ Resiliency reserve = 384 + (0.15) ((5)*384) + 112 * (3) = 1008  GB
 
 ### Increase memory on each node to 512 GB
 
-Increasing the memory of each node will increase the total available memory.
+[Increasing the memory of each node](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-storage-physical-memory-capacity) will increase the total available memory.
 
 ![Increase the size of the node](media/azure-stack-capacity-planning/increase-node-size.png)
 
