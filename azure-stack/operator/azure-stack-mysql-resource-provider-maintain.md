@@ -92,7 +92,7 @@ When using the SQL and MySQL resource providers with Azure Stack Hub integrated 
 - External SSL Certificate [provided during deployment](azure-stack-pki-certs.md).
 - The resource provider VM local administrator account password provided during deployment.
 - Resource provider diagnostic user (dbadapterdiag) password.
-- Key Vault certificate generated during deployment.
+- (version >= 1.1.47.0) Key Vault certificate generated during deployment.
 
 ### PowerShell examples for rotating secrets
 

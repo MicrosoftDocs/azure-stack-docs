@@ -98,6 +98,8 @@
     href: concepts/updates.md
   - name: Choose drives
     href: concepts/choose-drives.md
+  - name: Drive symmetry considerations
+    href: concepts/drive-symmetry-considerations.md
   - name: Plan volumes
     href: concepts/plan-volumes.md
   - name: Software defined networking
