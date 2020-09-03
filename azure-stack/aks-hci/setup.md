@@ -13,7 +13,7 @@ In this quickstart, you'll:
 * Install the Azure Kubernetes Service for Azure Stack HCI extension for Windows Admin Center
 * Set up an Azure Kubernetes Service host on the system you want to deploy the Kubernetes cluster to
 
-Before getting started, make sure you have satisfied all the prerequisites on the [sytem requirements](.\system-requirements.md) page.
+Before getting started, make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page.
 
 ## Setting up Windows Admin Center
 If you haven't already installed Windows Admin Center, see [install Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/deploy/install).
