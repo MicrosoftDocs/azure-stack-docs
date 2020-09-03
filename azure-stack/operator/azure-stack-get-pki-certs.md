@@ -79,6 +79,9 @@ Use these steps to prepare certificate signing requests for new Azure Stack Hub 
     > [!NOTE]  
     > The parameter is required only for CertificateType Deployment.
 
+    > [!IMPORTANT]
+    > AD FS only supports interactive sign-in sessions. If you require a non-interactive sign-in for an automated scenario, you must use a SPN.
+
 5. Declare **region name** and an **external FQDN** intended for the Azure Stack Hub deployment.
 
     ```powershell
