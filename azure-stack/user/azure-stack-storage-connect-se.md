@@ -91,6 +91,7 @@ Use the following steps to connect Storage Explorer to an Azure Stack Hub subscr
 
 > [!NOTE]  
 > The Azure Federated Service (AD FS) sign-in experience supports Storage Explorer 1.2.0 or newer versions with Azure Stack Hub 1804 or newer update.
+
 Use the following steps to connect Storage Explorer to an Azure Stack Hub subscription which belongs to an AD FS account.
 
 1. Select **Manage Accounts**. The explorer lists the Microsoft subscriptions that you signed in to.
