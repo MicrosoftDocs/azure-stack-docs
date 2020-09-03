@@ -8,19 +8,15 @@ ms.author: dawhite
 ---
 
 # Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center
-Before creating a Kubernetes cluster using Windows Admin Center, you first have to install Windows Admin Center and the Azure Kubernetes Service on Azure Stack HCI extension. After you've followed these steps, you also need to set up an Azure Kubernetes Service host on the system you want to deploy the Kubernetes cluster to.
+In this quickstart, you'll: 
+* Set up Windows Admin Center, if you haven't done so already
+* Install the Azure Kubernetes Service for Azure Stack HCI extension for Windows Admin Center
+* Set up an Azure Kubernetes Service host on the system you want to deploy the Kubernetes cluster to
+
+Before getting started, make sure you have satisfied all the prerequisites on the [sytem requirements](.\system-requirements.md) page.
 
 ## Setting up Windows Admin Center
-The first step in setting up Azure Kubernetes Service on Azure Stack HCI is to install Windows Admin Center. Installations of Windows Admin Center on client (a Windows 10 machine) or server may be used to utilize Azure Kubernetes Service on Azure Stack HCI functionality. 
-
-Windows Admin Center can be installed in server configurations for Azure Kubernetes Service on Azure Stack HCI. The most common configurations are: 
-1. On a Windows 10 local client in desktop mode. Users on the client will be able to access the locally running WAC instance to remotely manage target servers. 
-2. On a gateway server in service mode. Users will be able to connect to the WAC instance on the gateway server to remotely manage target servers.
-3. On a managed target server as a side-by-side workload. Users will be able to connect to the WAC instance running as a workload on the target server and manage the target server. WAC does not support self-management (performing management actions on the same system it is installed on). Doing so will cause unpredictable behavior and results.
-
-The target servers can be either workgroup or domain joined. 
-
-For more information about installation, see the [Windows Admin Center installation documentation](https://docs.microsoft.com/windows-server/manage/windows-admin-center/plan/installation-options).
+If you haven't already installed Windows Admin Center, see [install Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/deploy/install).
 
 ## Installing the Azure Kubernetes Service for Azure Stack HCI extension
 Once you have obtained the Azure Kubernetes Service for Azure Stack HCI extension for Windows Admin Center, you must save the file locally or to an SMB share and add the file path to the "Feeds" list in your Windows Admin Center extension manager. 
