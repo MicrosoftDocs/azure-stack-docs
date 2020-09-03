@@ -4,10 +4,10 @@ description: This article contains troubleshooting steps for the AKS engine on A
 author: mattbriggs
 
 ms.topic: article
-ms.date: 08/24/2020
+ms.date: 09/02/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 4/17/2020
+ms.lastreviewed: 09/02/2020
 
 # Intent: As as an Azure STack Hub developer, I want to fix the AKS engine so that can my cluster without incident.
 # Keyword: Azure Stack Hub AKS engine error codes

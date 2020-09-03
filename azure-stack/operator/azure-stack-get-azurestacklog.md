@@ -4,10 +4,10 @@ description: Learn how to collect diagnostic logs on demand in Azure Stack Hub u
 author: justinha
 ms.custom: conteperfq4
 ms.topic: article
-ms.date: 06/30/2020
+ms.date: 09/02/2020
 ms.author: justinha
 ms.reviewer: shisab
-ms.lastreviewed: 06/30/2020
+ms.lastreviewed: 09/02/2020
 
 ---
 # Send Azure Stack Hub diagnostic logs by using the privileged endpoint (PEP)
@@ -78,25 +78,25 @@ if ($session) {
 * Collect logs for the value-add RPs. The general syntax is:
  
   ```powershell
-  Get-AzureStackLogs -FilterByResourceProvider <<value-add RP name>>
+  Get-AzureStackLog -FilterByResourceProvider <<value-add RP name>>
   ```
  
   To collect logs for IoT Hub: 
 
   ```powershell
-  Get-AzureStackLogs -FilterByResourceProvider IotHub
+  Get-AzureStackLog -FilterByResourceProvider IotHub
   ```
  
   To collect logs for Event Hubs:
 
   ```powershell
-  Get-AzureStackLogs -FilterByResourceProvider eventhub
+  Get-AzureStackLog -FilterByResourceProvider eventhub
   ```
  
   To collect logs for Azure Stack Edge:
 
   ```powershell
-  Get-AzureStackLogs -FilterByResourceProvide databoxedge
+  Get-AzureStackLog -FilterByResourceProvide databoxedge
   ```
 
 * Collect logs and store them in the specified Azure Storage blob container. The general syntax for this operation is as follows:

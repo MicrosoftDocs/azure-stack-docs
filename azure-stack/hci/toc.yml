@@ -50,12 +50,16 @@
       href: manage/create-volumes.md
     - name: Create stretched volumes
       href: manage/create-stretched-volumes.md
+    - name: Protect volumes
+      href: manage/volume-encryption-deduplication.md
     - name: Extend volumes
       href: manage/extend-volumes.md
     - name: Delete volumes
       href: manage/delete-volumes.md
     - name: Replace drives
       href: manage/replace-drives.md
+    - name: Use the CSV in-memory read cache
+      href: manage/use-csv-cache.md
   - name: Manage the cluster
     items:
     - name: Manage the cluster
