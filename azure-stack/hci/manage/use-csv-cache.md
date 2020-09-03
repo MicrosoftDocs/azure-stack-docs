@@ -19,6 +19,8 @@ Azure Stack HCI is compatible with the Cluster Shared Volume (CSV) in-memory rea
 
 Because the in-memory cache is server-local, it improves data locality: recent reads are cached in memory on the same host where the virtual machine is running, reducing how often reads go over the network. This results in lower latency and better storage performance.
 
+Note that the CSV in-memory read cache is different from the [server-side storage cache](../concepts/cache.md) in Azure Stack HCI.
+
 ## Planning considerations
 
 The in-memory read cache is most effective for read-intensive workloads, such as Virtual Desktop Infrastructure (VDI). Conversely, if the workload is extremely write-intensive, the cache may introduce more overhead than value and should be disabled.
@@ -34,8 +36,8 @@ The CSV in-memory read cache is available in both Windows Server 2019 and Window
 
 | OS version          | Default CSV cache size |
 |---------------------|------------------------|
-| Windows Server 2016 | 0 (disabled)           |
 | Windows Server 2019 | 1 GiB                  |
+| Windows Server 2016 | 0 (disabled)           |
 
 To see how much memory is allocated using PowerShell, run:
 
