@@ -26,9 +26,9 @@ You can upload your VHD with the portal, or with the container you created in th
 
 ### AzCopy VHD
 
-Use Azure Storage Explorer or AzCopy to reduce that chance that your VHD will be corrupted in the upload process, and your upload will be faster. The following steps use AzCopy on a Windows 10 machine. AzCopy is a command-line utility that you can use to copy blobs or files to or from a storage account. `Use a supported version of AzCopy for Azure Stack Hub on client, including required step for setting supported the Azure Stack Hub API version.`
+Use Azure Storage Explorer or AzCopy to reduce that chance that your VHD will be corrupted in the upload process, and your upload will be faster. The following steps use AzCopy on a Windows 10 machine. AzCopy is a command-line utility that you can use to copy blobs or files to or from a storage account.
 
-1. If you don't have AzCopy installed, install AzCopy. You find find instruction to download and get started with AzCopy in the article [Get started with AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10). Add AzCopy to your path. `need instructions.`
+1. If you don't have AzCopy installed, install AzCopy. You find find instruction to download and get started with AzCopy in the article [Get started with AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10). Add AzCopy to your path.
 
 2. Open PowerShell to use AzCopy from the shell.
 
@@ -36,12 +36,10 @@ Use Azure Storage Explorer or AzCopy to reduce that chance that your VHD will be
 
     ```powershell  
      $env:AZCOPY_DEFAULT_SERVICE_API_VERSION="2017-11-09"
-    azcopy copy <path to your VHD> <SAS URL> + <containername>
+    azcopy copy <path to your VHD with SAS> --blob-type=PageBlob
     ```
 
 > [!NOTE]  
-> Make sure you upload VHD using syntax similar to Upload single file to virtual directory, by adding `--blob-type=PageBlob` to make sure that the VHD is uploaded as a **Page Blob**, instead of **Block** by default.
-
-`Double check the isntructions here so that I can make it clear how to add the container name.`
+> Upload your VHD using syntax similar to uploading a single file to virtual directory. Add `--blob-type=PageBlob` to make sure that the VHD is uploaded as a **Page Blob**, instead of **Block** by default.
 
 For more information about using AzCopy and other storage tools, see [Use data transfer tools in Azure Stack Hub Storage](/azure-stack/user/azure-stack-storage-transfer).
