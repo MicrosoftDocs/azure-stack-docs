@@ -22,7 +22,7 @@ This article describes the contents of the Azure Kubernetes Service (AKS) engine
 
 ## Update planning
 
-The AKS engine upgrade command fully automates the upgrade process of your cluster, it takes care of virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the information in this article.
+The AKS engine upgrade command fully automates the upgrade process of your cluster, it takes care of virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
 
 ### Upgrade considerations
 
@@ -80,7 +80,7 @@ New versions of these are available with this update:
 
 | Azure Stack Hub version | AKS engine version |
 | ----------------------------- | ------------------------ |
-| 1910 | 0.43.0 , 0.43.1 |
+| 1910 | 0.43.0, 0.43.1 |
 | 2002 | 0.48.0, 0.51.0 |
 | 2005 | 0.48.0, 0.51.0, 0.55.0 |
 
@@ -118,6 +118,9 @@ In the API Model json file, please specify the release and version values under 
 -   Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. Deploying one service at the time if possible.
 -   Running aks-engine get-versions will produce information applicable to Azure and Azure Stack Hub, however, there is not explicit way to discern what corresponds to Azure Stack Hub. Do not use this command to figure out what versions are available to upgrade. Use the upgrade reference table described above.
 -   Since aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
+
+> [!NOTE]  
+> Windows Container and Azure CNI support is available in the private preview. If you you like to join the preview, you can request access: [https://aka.ms/ash-k8s-win-azurecni](https://aka.ms/ash-k8s-win-azurecni)
 
 ## Reference
 
