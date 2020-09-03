@@ -57,17 +57,20 @@ Before uploading your VHD, you must validate that the VHD meets the requirements
     
     In addition, Azure Stack Hub only supports images from [generation one (1) VMs.]()
 
-4. If your VHD is not compatible with Azure Stack Hub, you will need to return to the source image and Hyper-V and create a VHD that meets the requirements.
+4. If your VHD is not compatible with Azure Stack Hub, you will need to return to the source image and Hyper-V, create a VHD that meets the requirements, and upload. To minimize possible corruption in the upload process, use AzCopy.
 
 ### How to fix your VHD
 
+The following requirements must be met for compatibility of your VHD with Azure Stack Hub.
+
 #### VHD is of fixed type.
-**Identify**: VHD object returned by `get-vhd`.  
+**Identify**: Use `get-vhd` cmdlet to get the VHD object.  
 **Fix**: You can convert a VHDX file to VHD, convert a dynamically expanding disk to a fixed-size disk, but you can't change a VM's generation.
-Use Hyper-V Manager or PowerShell to convert the disk: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/prepare-for-upload-vhd-image#use-hyper-v-manager-to-convert-the-disk
+Use [Hyper-V Manager or PowerShell](/azure/virtual-machines/windows/prepare-for-upload-vhd-image#use-hyper-v-manager-to-convert-the-disk) to convert the disk.
 
 ### VHD footer cookie has first eight (8) bytes conectix as expected
-**Identify**: A message is noted in the Azure Stack Hub logs.
+**Identify**: A message is logged when the VHD doesn't pass validation in Azure Stack Hub. Your cloud operator can find the logs in Azure Stack Hub. For more information, see [Diagnostic log collection in Azure Stack Hub](/azure-stack/operator/azure-stack-diagnostic-log-collection-overview).
+
 ```text  
 Validation of blob https://storageaccount.your-azure-stack.com/container/your-vhd-upload.vhd.
 
@@ -75,30 +78,23 @@ Validation error: Only blobs formatted as VHDs can be imported.
 
 Blob footer mismatch, Field: Cookie Expected : conectix Actual :
 ```
-
-The connectix string on the blob footer is used by Microsoft to ensure that the file is a hard disk image. If the file does not have it, it means the VHD might be corrupted.
+**Fix**: The `connectix` string on the blob footer is used by Microsoft to ensure that the file is a hard disk image. If the file does not have it, it means the VHD might be corrupted.
 
 - The VHD was already updated without this string.
 - The VHD got corrupted during the upload process.
 
-You can use the DumpOffSet tool to check if your local VHD has the string.
+You can use a tool that can open the VHD binary to check if your local VHD has the string.
 
-```powershell  
-<PathToDumpOffSetTool>\DumpOffset.exe -file "C:\PathToVhd\your-vhd-upload.vhd" -dumpbytes <Size from step above> 512
-```
+If the VHD doesn't have the `connectix` string, then you will need to regenerate the VHD using Hyper-V so that it has the string.
 
-If the VHD doesn't have the string, then you will need to regenerate the VHD using Hyper-V so that it has the string.
-
-If the VHD does have the string, then it was corrupted during the upload process. You should use AzCopy or Azure Data Explorer when uploading your VHD to your storage container.
-
-**Fix**: 
+If the VHD does have the string, then it was corrupted during the upload process. Use AzCopy or Azure Data Explorer when uploading your VHD to your storage container.
 
 ### **Identify**: VHD has minimum virtual size of at least 20 MB.
-**Identify**: VHD object returned by `get-vhd`.  
+**Identify**: Use `get-vhd` cmdlet to get the VHD object.  
 **Fix**: Use [Hyper-V Manager or PowerShell](/azure/virtual-machines/windows/prepare-for-upload-vhd-image#use-hyper-v-manager-to-resize-the-disk) to resize the disk. 
 
 ### VHD is aligned
-**Identify**: VHD object returned by `get-vhd`.  
+**Identify**: Use `get-vhd` cmdlet to get the VHD object.  
 **Fix**: The virtual size must be a multiple of one (1) MB. 
 
 Disks must have a virtual size aligned to 1 MiB. If your VHD is a fraction of 1 MiB, you'll need to resize the disk to a multiple of 1 MiB. Disks that are fractions of a MiB cause errors when creating images from the uploaded VHD. 
@@ -108,11 +104,11 @@ Use [Hyper-V Manager or PowerShell](/azure/virtual-machines/windows/prepare-for-
 
 
 ### VHD blob length = virtual size + vhd footer length (512). 
-**Identify**: A small footer at the end of the blob describes the properties of the VHD.  
-**Fix**: To verify the size you can use the `get-vhd` cmdlet to show `Size`, which must be a multiple of 1 MiB in Azure, and `FileSize`, which will be equal to `Size` + 512 bytes for the VHD footer.
+**Identify**: use the `get-vhd` cmdlet to show `Size`   
+**Fix**: A small footer at the end of the blob describes the properties of the VHD. `Size` must be a multiple of 1 MiB in Azure, and `FileSize`, which will be equal to `Size` + 512 bytes for the VHD footer.
 
 Use [Hyper-V Manager or PowerShell](/azure/virtual-machines/windows/prepare-for-upload-vhd-image#use-hyper-v-manager-to-resize-the-disk) to resize the disk. 
 
 ### Generation one (1) VMs
-**Identify**: To confirm if your virtual machine is Generation 1, use the 'Get-VM | Format-Table Name, Generation' PowerShell cmdlet.  
+**Identify**: To confirm if your virtual machine is Generation 1, use the cmdlet `Get-VM | Format-Table Name, Generation`.  
 **Fix**: You will need to recreate your VM in your hypervisor (Hyper-V).
