@@ -56,6 +56,8 @@
       href: manage/delete-volumes.md
     - name: Replace drives
       href: manage/replace-drives.md
+    - name: Use the CSV in-memory read cache
+      href: manage/use-csv-cache.md
   - name: Manage the cluster
     items:
     - name: Manage the cluster
@@ -72,8 +74,6 @@
       href: manage/manage-azure-registration.md
     - name: Change languages
       href: manage/languages.md
-    - name: Use the CSV in-memory read cache
-      href: manage/use-csv-cache.md
     - name: Troubleshoot cluster validation reporting
       href: manage/validate-qos.md
     - name: Troubleshoot CredSSP
