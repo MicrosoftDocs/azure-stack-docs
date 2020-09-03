@@ -2,7 +2,7 @@
   href: index.yml
 - name: Overview
   items:
-  - name: What is Azure Kubernetes Service on Azure Stack HCI?
+  - name: Azure Kubernetes Service on Azure Stack HCI
     href: overview.md
 - name: Related
   items:
