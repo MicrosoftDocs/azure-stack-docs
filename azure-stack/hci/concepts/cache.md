@@ -143,7 +143,7 @@ There are several other unrelated caches in the Windows software-defined storage
 
 With Azure Stack HCI, the Storage Spaces write-back cache should not be modified from its default behavior. For example, parameters such as **-WriteCacheSize** on the **New-Volume** cmdlet should not be used.
 
-You may choose to use the CSV cache, or not – it's up to you. It is on by default in Windows Server 2019, but it does not conflict with the new cache described in this topic in any way. In certain scenarios it can provide valuable performance gains. For more information, see [How to Enable CSV Cache](/windows-server/failover-clustering/failover-cluster-csvs#enable-the-csv-cache-for-read-intensive-workloads-optional).
+You may choose to use the CSV cache, or not – it's up to you. It is on by default in Windows Server 2019, but it does not conflict with the cache described in this topic in any way. In certain scenarios it can provide valuable performance gains. For more information, see [How to Enable CSV Cache](/windows-server/failover-clustering/failover-cluster-csvs#enable-the-csv-cache-for-read-intensive-workloads-optional).
 
 ## Manual configuration
 
