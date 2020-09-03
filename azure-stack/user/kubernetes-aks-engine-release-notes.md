@@ -120,7 +120,7 @@ In the API Model json file, please specify the release and version values under 
 -   Since aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
 
 > [!NOTE]  
-> Windows Container and Azure CNI support is available in the private preview. If you you like to join the preview, you can request access: [https://aka.ms/ash-k8s-win-azurecni](https://aka.ms/ash-k8s-win-azurecni)
+> Windows Container and Azure CNI support is available in the private preview. If you would like to join the preview, you can request access: [https://aka.ms/ash-k8s-win-azurecni](https://aka.ms/ash-k8s-win-azurecni)
 
 ## Reference
 
