@@ -39,7 +39,7 @@ Follow the resource provider update process to apply the SQL resource provider h
 
 ## Known issues
 
-None.
+When [rotating certificate](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation) for Azure Stack Hub integrated systems, KeyVaultPfxPassword argument is mendatory, even if there's no intention to update the Key Vault certificate password.
 
 ## Next steps
 
