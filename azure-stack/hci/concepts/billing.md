@@ -4,7 +4,9 @@ description: How billing and payment works in Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.service: azure-stack
+ms.subservice: azure-stack-hci
+ms.date: 09/01/2020
 ---
 
 # Azure Stack HCI billing and payment
@@ -38,7 +40,7 @@ To manually upload core data to Azure, use the **`Sync-AzureStackHCI`** cmdlet.
 - If I have an Azure commitment to spend, can I use that toward Azure Stack HCI? **Yes**
 - If I have Azure credits (e.g. for students, or awarded as a prize) can I use that toward Azure Stack HCI? **Yes**
 - If my organization negotiated an Enterprise Agreement discount, does that apply to Azure Stack HCI? **Yes**
-- Do the the Azure portal cost management tools work for Azure Stack HCI? **Yes**
+- Do the Azure portal cost management tools work for Azure Stack HCI? **Yes**
 - Do third-party or custom tools built with the Azure billing APIs work for Azure Stack HCI? **Yes**
 
 ## Next steps
