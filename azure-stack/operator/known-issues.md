@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 09/02/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 08/13/2020
@@ -40,13 +40,6 @@ To access known issues for a different version, use the version selector dropdow
 For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
 ## Portal
-
-### Subscription permissions
-
-- Applicable: This issue applies to all supported releases.
-- Cause: You cannot view permissions to your subscription using the Azure Stack Hub portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
-- Occurrence: Common
 
 ### Administrative subscriptions
 
