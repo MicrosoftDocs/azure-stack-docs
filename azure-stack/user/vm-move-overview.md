@@ -48,6 +48,8 @@ When moving an image into Azure Stack Hub, consider how you would like to have t
 > - VHD is aligned, that is, the virtual size must be a multiple of 1 MB.
 > - VHD blob length = virtual size + vhd footer length (512). A small footer at the end of the blob describes the properties of the VHD. 
 
+You can find steps to repair your VHD at [Verify your VHD](vm-move-vm-from-azure.md#verify-your-vhd)
+
 ## Methods of moving a VM
 
 You can manually move your VM into Azure Stack Hub with the following scenarios:
