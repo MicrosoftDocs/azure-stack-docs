@@ -33,7 +33,6 @@ Let's get started:
 > [!IMPORTANT] 
 > We recommend saving your SSH Key and Kubernetes dashboard token in a secure, accessible location.
 
-## Next steps
 In this quickstart, you set up an Azure Kubernetes Service host and deployed a Kubernetes cluster. 
 
 To learn more about Azure Kubernetes Service on Azure Stack HCI, and walk through how to deploy and manage Linux applications on Azure Kubernetes Service on Azure Stack HCI, continue to this tutorial.

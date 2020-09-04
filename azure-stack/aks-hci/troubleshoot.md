@@ -37,3 +37,6 @@ az login –tenant<tenant>
 ``` cmd
 kubectl –kubeconfig=$kcl get pods -A
 ```
+
+## Next steps
+If you continue to run into issues while using Azure Kubernetes Service on Azure Stack HCI, please reach out through [Microsoft Collaborate](https://docs.microsoft.com/collaborate/intro-to-mscollaborate).  

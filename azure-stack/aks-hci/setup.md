@@ -18,12 +18,12 @@ Before getting started, make sure you have satisfied all the prerequisites on th
 ## Setting up Windows Admin Center
 If you haven't already installed Windows Admin Center, see [install Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/deploy/install).
 
-## Installing the Azure Kubernetes Service on Azure Stack HCI extension
+## Installing the Azure Kubernetes Service extension
 Once you have obtained the Azure Kubernetes Service on Azure Stack HCI extension for Windows Admin Center, you must save the file locally or to an SMB share and add the file path to the "Feeds" list in your Windows Admin Center extension manager. 
 
 To access your existing extension feed, open Windows Admin Center and select on the gear in the top right corner of the screen. This will take you to the settings menu. The extension feeds can be found under the **Gateway** section in the **Extensions** menu. Navigate to the **Feeds** tab and select **Add**. In this pane, paste the file path to your copy of the Azure Kubernetes Service on Azure Stack HCI extension and select **Add**. If your file path was added successfully, you will receive a success notification. 
 
-Now that we have added the feed, the Azure Kubernetes Service on Azure Stack HCI extension will be available in the list of available extensions. Once you have the extension selected, select “Install” at the top of the table to install this extension. Windows Admin Center will reload after installation is complete. 
+Now that we have added the feed, the Azure Kubernetes Service on Azure Stack HCI extension will be available in the list of available extensions. Once you have the extension selected, select **Install** at the top of the table to install this extension. Windows Admin Center will reload after installation is complete. 
 
 [ ![View of the available extension list in Windows Admin Center extension manager.](.\media\extension-manager.png) ](.\media\extension-manager.png#lightbox)
 
