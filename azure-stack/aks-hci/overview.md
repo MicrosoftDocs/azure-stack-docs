@@ -11,19 +11,53 @@ ms.date: 09/21/2020
 
 Azure Kubernetes Service on Azure Stack HCI is an orchestrator for running containerized applications on servers or failover clusters running Azure Stack HCI or Windows Server. Orchestrators such as the open-source Kubernetes automate much of the work involved with deploying and managing multiple containers, but can be complex to set up and maintain. Azure Kubernetes Service (AKS) on Azure Stack HCI simplifies setting up Kubernetes, making it quicker to get started hosting Linux and Windows containers on your servers and clusters.
 
-To instead use Kubernetes in Azure, see [Azure Kubernetes Service in Azure](/azure/aks/intro-kubernetes). For a background on containers, see [Windows and containers](/virtualization/windowscontainers/about/).
+To get started, see Set up Azure Kubernetes Service on Azure Stack HCI or Windows Server. To instead use Kubernetes in Azure, see [Azure Kubernetes Service in Azure](/azure/aks/intro-kubernetes).
 
-<!---Required:
-The introductory paragraph helps customers quickly determine whether an article is relevant.
-Describe in customer-friendly terms what the service is and does, and why the customer should care. Keep it short for the intro.
-You can go into more detail later in the article. Many services add artwork or videos below the introduction.
---->
+## Automate management of containerized applications with Kubernetes
 
-<!---Avoid notes, tips, and important boxes. Readers tend to skip over them. Better to put that info directly into the article text.--->
+Containers are a technology for packaging and running Windows and Linux applications across diverse environments on-premises and in the cloud. Containers provide a lightweight, isolated environment that makes apps easier to develop, deploy, and manage. Containers start and stop quickly, making them ideal for apps that need to rapidly adapt to changing demand. The lightweight nature of containers also make them a useful tool for increasing the density and utilization of your infrastructure.
 
-<!---Screenshots and videos can add another way to show and tell the overview story. But don’t overdo them. Make sure that they offer value for the overview.
-If users access your product/service via a web browser, the first screenshot should always include the full browser window in Chrome or Safari. This is to show users that the portal is browser-based - OS and browser agnostic.
---->
+While you can manage a few containers manually using Docker and Windows, apps often make use of five, ten, or even hundreds of containers, which is where the open-source Kubernetes orchestrator comes in.
+
+Kubernetes is an orchestrator-a software package for automating container deployment and management at scale-but can be complex to set up and manage. Azure Kubernetes Service simplifies using Kubernetes on a server or cluster and provides the following functionality:
+
+- Deploying containerized apps at scale to multiple VMs (called nodes) potentially running on multiple servers in a failover cluster
+- Failing over when a node in the Kubernetes cluster fails
+- Deploying and managing both Linux and Windows-based containerized apps
+- Workload scheduling
+- Health monitoring
+- Scaling up or down by adding or removing nodes
+- Networking
+- Service discovery
+- Coordinating app upgrades
+- Cluster node affinity
+
+For a little more background on containers, see [Windows and containers](/virtualization/windowscontainers/about/).
+
+## Simplify setting up Kubernetes
+
+Kubernetes is an open-source project that's freely available on a number of platforms, but setting it up can be complicated (see [Kubernetes: Creating a cluster with kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/), then [Kuberentes: Adding Windows nodes](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/adding-windows-nodes/)). 
+
+Azure Kubernetes Service on Azure Stack HCI was designed to simplify this process of setting up Kubernetes, and includes the following:
+
+- A graphical wizard to set up Azure Kubernetes Service in Windows Admin Center, setting up Kubernetes for you
+- A graphical wizard to create a Kubernetes cluster in Windows Admin Center, creating a Kubernetes cluster for running your containerized applications
+- PowerShell cmdlets for setting up Azure Kubernetes Service and creating Kubernetes clusters
+
+
+
+
+## View and manage Kubernetes using on-premises tools
+
+## View and manage Kubernetes using Azure Arc in the Azure portal
+
+## Why do you want this?
+
+- Kubernetes automates key tasks for containerized applications
+- AKS simplifies setting up Kubernetes-both the one-time Kubernetes setup and deploying Kubernetes clusters that run your containerized applications. Use a wizard in Windows Admin Center to set up, or deploy via PowerShell.
+- View and manage your Kubernetes clusters on-premises using the open-source Kubernetes dashboard.
+- View and manage Azure Kubernetes Service - including both cloud-hosted Azure Kubernetes Service and on-premises deployments - in the Azure portal using Azure Arc, which also enables you to use other Azure services such as Azure Monitor, Azure Policy, Role Based Access Control, and Azure Security Center.
+
 
 ## Where can I run Azure Kubernetes Service?
 
