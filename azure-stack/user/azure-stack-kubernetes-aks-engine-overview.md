@@ -4,10 +4,10 @@ description: Learn how to use the AKS engine command-line tool to deploy and man
 author: mattbriggs
 
 ms.topic: article
-ms.date: 07/24/2020
+ms.date: 09/02/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 3/19/2020
+ms.lastreviewed: 09/02/2020
 
 # Intent: As an Azure Stack Hub user, I want to learn how to use the AKS engine command-line so that I can deploy and manage a Kubernetes cluster on Azure and Azure Stack Hub.
 # Keyword: deploy AKS kubernetes cluster azure stack hub
