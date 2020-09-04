@@ -1,15 +1,15 @@
 ---
-title: Understanding the cache in Azure Stack HCI
+title: Understanding the storage pool cache in Azure Stack HCI
 description: How read and write caching works in Storage Spaces Direct and Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/01/2020
+ms.date: 09/04/2020
 ---
 
-# Understanding the cache in Azure Stack HCI
+# Understanding the storage pool cache in Azure Stack HCI
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
@@ -143,7 +143,7 @@ There are several other unrelated caches in the Windows software-defined storage
 
 With Azure Stack HCI, the Storage Spaces write-back cache should not be modified from its default behavior. For example, parameters such as **-WriteCacheSize** on the **New-Volume** cmdlet should not be used.
 
-You may choose to use the CSV cache, or not – it's up to you. It is on by default in Windows Server 2019, but it does not conflict with the cache described in this topic in any way. In certain scenarios it can provide valuable performance gains. For more information, see [How to Enable CSV Cache](/windows-server/failover-clustering/failover-cluster-csvs#enable-the-csv-cache-for-read-intensive-workloads-optional).
+You may choose to use the CSV cache, or not – it's up to you. It is on by default in Azure Stack HCI, but it does not conflict with the cache described in this topic in any way. In certain scenarios it can provide valuable performance gains. For more information, see [Use the CSV in-memory read cache with Azure Stack HCI](../manage/use-csv-cache.md).
 
 ## Manual configuration
 

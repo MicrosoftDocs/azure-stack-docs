@@ -108,7 +108,7 @@
     href: concepts/plan-volumes.md
   - name: Software defined networking
     href: concepts/software-defined-networking.md
-  - name: Understand the cache
+  - name: Understand the storage pool cache
     href: concepts/cache.md
   - name: Fault tolerance and storage efficiency
     href: concepts/fault-tolerance.md
