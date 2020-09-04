@@ -14,7 +14,7 @@ Let's get started:
 1. To begin creating a Kubernetes cluster in Windows Admin Center, press the **Add** button on the gateway screen.
 2. In the **Add or create resources** panel, under **Kubernetes cluster (preview)**, select **Create new** to launch the Kubernetes cluster wizard. While the “Add” button under Kubernetes clusters is present in the public preview, it is nonfunctional. At any point during the Kubernetes cluster create process you may exit the wizard, but note that your progress won't be saved. 
 
-    ![Illustrates the "Add or create resources" blade in Windows Admin Center, which now includes the new tile for Kubernetes clusters.](./media/wac-add-connection.png)
+    ![Illustrates the "Add or create resources" blade in Windows Admin Center, which now includes the new tile for Kubernetes clusters.](.\media\wac-add-connection.png)
 
 3. Review the prerequisites for the system that will host the Kubernetes cluster and those for Windows Admin Center. When finished, select **Next**. 
 4. On the **Basics** page, configure information about your cluster, such as Azure Arc integration, Azure Kubernetes Service host information, and primary node pool size.  Azure Kubernetes Service host information, and primary node pool size. The Azure Kubernetes Service host field requires the fully qualified domain name of the server, failover cluster, or Azure Stack HCI cluster that you want to deploy your Kubernetes cluster to. You must have completed the host setup for this system through the Azure Kubernetes Service tool. In public preview, the node count is uneditable and will default to 2, but node size can be configured for larger workloads. When complete, select **Next**.
@@ -29,8 +29,6 @@ Let's get started:
 7. On the **Integration** page, connect your cluster with additional services, such as the Kubernetes dashboard, persistent storage, and Azure Monitor. Persistent storage is the only service that is required to configure on this page. In public preview, the persistent storage location will default to the storage location selected during host set-up. This field is currently uneditable. When you're finished, select **Next**.
 8. Review your selections on the **Review + create** page. When you're satisfied, select **Create** to begin deployment. Your deployment progress will be shown at the top of this page. 
 9. After your deployment is complete, the **Next steps** page details how to manage your cluster. This page also contains your SSH Key and Kubernetes dashboard token. If you chose to disable the Kubernetes dashboard or Azure Arc integration in the previous step, some of the information and instructions on this page may not be available or functional.
-
-    ![Illustrates the Next steps page of the Kubernetes cluster wizard.](.\media\next-steps.png)
 
 > [!IMPORTANT] 
 > We recommend saving your SSH Key and Kubernetes dashboard token in a secure, accessible location.

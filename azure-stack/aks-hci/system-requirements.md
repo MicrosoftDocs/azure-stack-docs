@@ -22,4 +22,4 @@ For public preview, we recommend that your Windows Admin Center system and your 
 If you plan on deploying Azure Kubernetes Service on Azure Stack HCI on a single node, you will need to provide your own server and have it configured in Windows Admin Center prior to cluster creation. Similarly, if you are planning on deploying your Azure Kubernetes Service for Azure Stack HCI cluster on top of an existing cluster, it must already be configured through Windows Admin Center before starting the cluster creation wizard. 
 
 ## Next steps
-After you have satisfied all of the prerequisites above, you can set up Azure Kubernetes Service on Azure Stack HCI using [PowerShell](\quickstart-setup-ps) or [Windows Admin Center](\quickstart-setup-wac). 
+After you have satisfied all of the prerequisites above, you can set up Azure Kubernetes Service on Azure Stack HCI using PowerShell or [Windows Admin Center](.\setup.md). 
