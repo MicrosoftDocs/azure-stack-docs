@@ -21,6 +21,12 @@ ms.lastreviewed: 01/11/2020
 
 A new MySQL resource provider adapter might be released when Azure Stack Hub builds are updated. While the existing adapter continues to work, we recommend updating to the latest build as soon as possible.
 
+  |Supported Azure Stack Hub version|MySQL RP version|
+  |-----|-----|
+  |2005, 2002, 1910|[MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)|
+  |1908|[MySQL RP version 1.1.33.0](https://aka.ms/azurestackmysqlrp11330)|
+  |     |     |
+
 Starting with the MySQL resource provider version 1.1.33.0 release, updates are cumulative and don't need to be installed in the order in which they were released as long as you're starting from version 1.1.24.0 or later. For example, if you're running version 1.1.24.0 of the MySQL resource provider, then you can upgrade to version 1.1.33.0 or later without needing to first install version 1.1.30.0. To review available resource provider versions, and the version of Azure Stack Hub they're supported on, refer to the versions list in [Deploy the resource provider prerequisites](./azure-stack-mysql-resource-provider-deploy.md#prerequisites).
 
 To update of the resource provider, you use the **UpdateMySQLProvider.ps1** script. The process is similar to the process used to install a resource provider, as described in the Deploy the resource provider section of this article. The script is included with the download of the resource provider. 
