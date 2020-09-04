@@ -72,20 +72,20 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Azure Stack Hub now supports VNET peering, which gives the ability to connect VNETs without a Network Virtual Appliance (NVA). For more information, see the VNET peering documentation.
 - Azure Stack Hub blob storage now enables users to use an immutable blob. By setting immutable policies on a container, you can store business-critical data objects in a WORM (Write Once, Read Many) state. In this release, immutable policies can only be set through the REST API or client SDKs. Append blob writes are also not possible in this release. For more information about immutable blobs, see [Store business-critical blob data with immutable storage](/azure/storage/blobs/storage-blob-immutable-storage).
 - Azure Stack Hub Storage now supports Azure Storage services APIs version 2019-07-07. For Azure client libraries that is compatible with the new REST API version, see [Azure Stack Hub storage development tools](../user/azure-stack-storage-dev.md#azure-client-libraries).
-- Azure Stack Hub compute now supports Azure Compute APIs version 2020-06-01 with a subset of total available features.
+- Azure Stack Hub compute now supports Azure Compute APIs version 2020-06-01, with a subset of total available features.
 
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 - Implemented monitoring for network controller and SLB host agents, so the services can be restarted automatically if they are in a stopped state.
-- Active Directory Federation Services will now retrieve the new token signing certificate afer the customer as rotated it on their own AD FS server. To take advantage of this new capability for already configured system the ADFS integration needs to be configured again. For more details, see [Integrate AD FS identity with yout Azure Stack Hub datacenter]
-- Changes to the startup & shutdown process on infrastructure role instances and their dependencies on scale unit nodes. This does increase the reliability for Azure Stack Hub startup and shutdown.
+- Active Directory Federation Services (AD FS) now retrieves the new token signing certificate afer the customer has rotated it on their own AD FS server. To take advantage of this new capability for already configured systems, the AD FS integration must be configured again. For more information, see [Integrate AD FS identity with your Azure Stack Hub datacenter](azure-stack-integrate-identity.md).
+- Changes to the startup and shutdown process on infrastructure role instances and their dependencies on scale unit nodes. This increases the reliability for Azure Stack Hub startup and shutdown.
 
 ### Changes
 
 - The **supportHttpsTrafficOnly** storage account resource type property in SRP API version **2016-01-01** and **2016-05-01** has been enabled, but this property is not supported in Azure Stack Hub.
 - Raised volume capacity utilization alert threshold from 80% (warning) and 90% (critical) to 90% (warning) and 95% (critical). For more information, see [Storage space alerts](azure-stack-manage-storage-shares.md#storage-space-alerts)
-- The AD Graph configuration steps do change with this update release. For more information, see [Integrate AD FS identity with yout Azure Stack Hub datacenter]
+- The AD Graph configuration steps change with this release. For more information, see [Integrate AD FS identity with your Azure Stack Hub datacenter](azure-stack-integrate-identity.md).
 
 ### Fixes
 
