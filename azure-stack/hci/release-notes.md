@@ -62,7 +62,7 @@ For information on SSUs, see the following articles:
 - [Servicing stack updates](https://docs.microsoft.com/windows/deployment/update/servicing-stack-updates)
 - [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/help/4535697)
 
-Learn about the [terminology](http://support.microsoft.com/help/824684) that Microsoft uses to describe software updates.
+Learn about the [terminology](https://support.microsoft.com/help/824684) that Microsoft uses to describe software updates.
 
 ## August 11, 2020 Security Update (KB4574585)
 
