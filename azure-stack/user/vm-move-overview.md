@@ -43,7 +43,6 @@ When moving an image into Azure Stack Hub, consider how you would like to have t
 > Before you upload the image, consider the following:
 > - Azure Stack Hub only supports images from generation one (1) VMs.
 > - VHD is of fixed type. Azure Stack Hub does not support dynamic disk VHDs.
-> - VHD footer cookie has first eight (8) bytes **conectix** as expected.
 > - VHD has minimum virtual size of at least 20 MB.
 > - VHD is aligned, that is, the virtual size must be a multiple of 1 MB.
 > - VHD blob length = virtual size + vhd footer length (512). A small footer at the end of the blob describes the properties of the VHD. 
