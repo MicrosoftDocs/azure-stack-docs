@@ -4,10 +4,10 @@ description: Learn Known issues using the AKS engine on Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 08/05/2020
+ms.date: 09/02/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 08/05/2020
+ms.lastreviewed: 09/02/2020
 
 # Intent: Not done: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Not done: keyword noun phrase
