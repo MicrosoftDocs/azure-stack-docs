@@ -36,10 +36,8 @@ Use Azure Storage Explorer or AzCopy to reduce that chance that your VHD will be
 
     ```powershell  
     set AZCOPY_DEFAULT_SERVICE_API_VERSION=2017-11-09
-    azcopy copy <https://<storage>.queue.<location>.FQDN/><container><SAD> --blob-type=PageBlob
+    azcopy cp "/path/to/file.vhd" "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS] --blob-type=PageBlob
     ```
-
-    For example: `azcopy copy https://storageaccount.queue.westus.mystack.com/containername?sv=2017-04-17&<SAS-TOKEN> <path to my filename.vhd> --blob-type=PageBlob`
 
 > [!NOTE]  
 > Upload your VHD using syntax similar to uploading a single file to virtual directory. Add `--blob-type=PageBlob` to make sure that the VHD is uploaded as a **Page Blob**, instead of **Block** by default.
