@@ -33,8 +33,6 @@ Find the section that that is specific to your needs when preparing your VHD.
 - Make sure the RDP/SSH is enabled and the firewall allows communication.
 - To deploy VM extensions, make sure that the VM agent `.msi` available. For guidance, see [Azure Virtual Machine Agent overview](/azure/virtual-machines/extensions/agent-windows). If the VM agent is not present in the VHD, extension deployment will fail. You do not need to set the OS profile while provisioning, or set `$vm.OSProfile.AllowExtensionOperations = $true`.
 
-TODO TIBI: When the VM has multiple disks, add the additional disks as data disks. The `D:` drive will need to be `taken care of???` when preparing the VM as a VHD before you upload it.
-
 #### [Linux VM](#tab/port-linux)
 
 #### Generalize the VHD
@@ -50,11 +48,9 @@ Follow the appropriate instructions to prepare the VHD for your Linux OS:
 > [!IMPORTANT]
 > Do not run the last step: (`sudo waagent -force -deprovision`) as this will generalize the VHD.
 
-TODO TIBI: When the VM has multiple disks, add the additional disks as data disks. The `D:` drive will need to be `taken care of???` when preparing the VM as a VHD before you upload it.
-
 #### Identify the version of the Linux Agent
 
-1. Identify what version of Linux Agent is installed in the source VM image, run the following commands. The version number that describes the provisioning code is `WALinuxAgent-`, not the `Goal state agent`:
+Identify what version of Linux Agent is installed in the source VM image, run the following commands. The version number that describes the provisioning code is `WALinuxAgent-`, not the `Goal state agent`:
 
    ```bash  
    waagent -version

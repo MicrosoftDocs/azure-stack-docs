@@ -20,7 +20,7 @@ You can upload your VHD with the portal, or with the container you created in th
 
 4. Type the name of your container, and then select **Blob (anonymous read access for blobs only)**.
 
-5. If you are going to use AzCopy to upload your image rather than the portal, create a SAS token. Select **Shared access signature** in the storage account, and then select **Generate SAS and connection string**. Copy and make a note of the **Blob service SAS URL**. You will use this URL when using AzCopy to upload your VHD
+5. If you are going to use AzCopy to upload your image rather than the portal, create a SAS token. Select **Shared access signature** in the storage account, and then select **Generate SAS and connection string**. Copy and make a note of the **Blob service SAS URL**. You will use this URL when using AzCopy to upload your VHD.
 
 6. Select your container and then select **Upload**. Upload your VHD.
 

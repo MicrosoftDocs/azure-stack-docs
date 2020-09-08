@@ -47,7 +47,7 @@ When moving an image into Azure Stack Hub, consider how you would like to have t
 > - VHD is aligned, that is, the virtual size must be a multiple of 1 MB.
 > - VHD blob length = virtual size + vhd footer length (512). A small footer at the end of the blob describes the properties of the VHD. 
 
-You can find steps to repair your VHD at [Verify your VHD](vm-move-vm-from-azure.md#verify-your-vhd)
+You can find steps to repair your VHD at [Verify your VHD](vm-move-from-azure.md#verify-your-vhd)
 
 ## Methods of moving a VM
 
@@ -55,9 +55,9 @@ You can manually move your VM into Azure Stack Hub with the following scenarios:
 
 | Scenario | Instructions |
 | --- | --- |
-| Global Azure to Azure Stack Hub | Prepare your VHD in global Azure and then upload to Azure Stack Hub. For more information, see [Move a VM from Azure to Azure Stack Hub](vm-move-vm-from-azure.md). |
-| Local generalized to Azure Stack Hub | Prepare your VHD and generalize a VHD locally in Hyper-V and then upload to Azure Stack Hub. For more information, see [Move a generalized VM from on-premises to Azure Stack Hub](vm-move-vm-generalized.md). |
-| Local specialized to Azure Stack Hub | Prepare your specialized VHD locally in Hyper-V and then upload to Azure Stack Hub. For more information, see [Move a specialized VM from on-premises to Azure Stack Hub](vm-move-vm-specialized.md). |
+| Global Azure to Azure Stack Hub | Prepare your VHD in global Azure and then upload to Azure Stack Hub. For more information, see [Move a VM from Azure to Azure Stack Hub](vm-move-from-azure.md). |
+| Local generalized to Azure Stack Hub | Prepare your VHD and generalize a VHD locally in Hyper-V and then upload to Azure Stack Hub. For more information, see [Move a generalized VM from on-premises to Azure Stack Hub](vm-move-generalized.md). |
+| Local specialized to Azure Stack Hub | Prepare your specialized VHD locally in Hyper-V and then upload to Azure Stack Hub. For more information, see [Move a specialized VM from on-premises to Azure Stack Hub](vm-move-specialized.md). |
 
 ## Migrate to Azure Stack Hub
 
