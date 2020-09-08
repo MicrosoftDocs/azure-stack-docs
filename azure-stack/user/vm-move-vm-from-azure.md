@@ -107,7 +107,7 @@ Custom images come in two forms: **specialized** and **generalized**.
 ### [Generalized](#tab/create-vm-gen)
 
 [!INCLUDE [Create the image in Azure Stack Hub](../includes/user-compute-create-image.md)]
-
+---
 ## Next steps
 
 [Move a VM to Azure Stack Hub Overview](vm-move-overview.md)
