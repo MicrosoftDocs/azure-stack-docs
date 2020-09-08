@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/03/2020
+ms.date: 09/04/2020
 ---
 
 # Use the CSV in-memory read cache with Azure Stack HCI
@@ -15,11 +15,11 @@ ms.date: 09/03/2020
 
 This topic describes how to use system memory to boost the performance of Azure Stack HCI.
 
-Azure Stack HCI is compatible with the Cluster Shared Volume (CSV) in-memory read cache. Using system memory to cache reads can improve performance for applications like Hyper-V, which uses unbuffered I/O to access VHD or VHDX files. (Unbuffered IOs are any operations that are not cached by the Windows Cache Manager.)
+Azure Stack HCI is compatible with the Cluster Shared Volume (CSV) in-memory read cache. Using system memory to cache reads can improve performance for applications like Hyper-V, which uses unbuffered I/O to access VHD or VHDX files. (Unbuffered I/Os are any operations that are not cached by the Windows Cache Manager.)
 
 Because the in-memory cache is server-local, it improves data locality: recent reads are cached in memory on the same host where the virtual machine is running, reducing how often reads go over the network. This results in lower latency and better storage performance.
 
-Note that the CSV in-memory read cache is different from the [server-side storage cache](../concepts/cache.md) in Azure Stack HCI.
+Note that the CSV in-memory read cache is different from the [storage pool cache](../concepts/cache.md) in Azure Stack HCI.
 
 ## Planning considerations
 
@@ -32,10 +32,11 @@ You can use up to 80% of total physical memory for the CSV in-memory read cache.
 
 ## Configuring the in-memory read cache
 
-The CSV in-memory read cache is available in both Windows Server 2019 and Windows Server 2016 with the same functionality. In Windows Server 2019, it's on by default with 1 gibibyte (GiB) allocated. In Windows Server 2016, it's off by default.
+The CSV in-memory read cache is available in Azure Stack HCI, Windows Server 2019, and Windows Server 2016 with the same functionality. In Azure Stack HCI and Windows Server 2019, it's on by default with 1 gibibyte (GiB) allocated. In Windows Server 2016, it's off by default.
 
 | OS version          | Default CSV cache size |
 |---------------------|------------------------|
+| Azure Stack HCI     | 1 GiB                  |
 | Windows Server 2019 | 1 GiB                  |
 | Windows Server 2016 | 0 (disabled)           |
 
@@ -67,5 +68,5 @@ Get-ClusterSharedVolume | ForEach {
 
 For related information, see also:
 
-- [Understand the server-side cache](../concepts/cache.md)
+- [Understand the storage pool cache](../concepts/cache.md)
 - [Use Cluster Shared Volumes in a failover cluster](/windows-server/failover-clustering/failover-cluster-csvs#enable-the-csv-cache-for-read-intensive-workloads-optional)
