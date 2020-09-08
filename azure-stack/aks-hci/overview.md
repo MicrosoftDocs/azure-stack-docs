@@ -36,16 +36,13 @@ For a little more background on containers, see [Windows and containers](/virtua
 
 ## Simplify setting up Kubernetes
 
-Kubernetes is an open-source project that's freely available on a number of platforms, but setting it up can be complicated (see [Kubernetes: Creating a cluster with kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/), then [Kuberentes: Adding Windows nodes](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/adding-windows-nodes/)). 
+Kubernetes is an open-source project that's freely available on a number of platforms, but setting it up can be complicated (see [Kubernetes: Creating a cluster with kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/), then [Kuberentes: Adding Windows nodes](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/adding-windows-nodes/)).
 
 Azure Kubernetes Service on Azure Stack HCI was designed to simplify this process of setting up Kubernetes, and includes the following:
 
 - A graphical wizard to set up Azure Kubernetes Service in Windows Admin Center, setting up Kubernetes for you
-- A graphical wizard to create a Kubernetes cluster in Windows Admin Center, creating a Kubernetes cluster for running your containerized applications
+- A graphical wizard to create a Kubernetes cluster in Windows Admin Center, which creates a Kubernetes cluster that runs your containerized applications
 - PowerShell cmdlets for setting up Azure Kubernetes Service and creating Kubernetes clusters
-
-
-
 
 ## View and manage Kubernetes using on-premises tools
 
