@@ -192,15 +192,10 @@ When the resource provider installation script finishes, refresh your browser to
 
 ## Verify the deployment using the Azure Stack Hub portal
 
-You can use the following steps verify that the SQL resource provider is successfully deployed.
-
 1. Sign in to the administrator portal as the service admin.
 2. Select **Resource Groups**.
 3. Select the **system.\<location\>.sqladapter** resource group.
 4. On the summary page for Resource group Overview, there should be no failed deployments.
-
-    ![Verify deployment of the SQL resource provider in Azure Stack Hub administrator portal](./media/azure-stack-sql-rp-deploy/sqlrp-verify.png)
-
 5. Finally, select **Virtual machines** in the administrator portal to verify that the SQL resource provider VM was successfully created and is running.
 
 ## Next steps
