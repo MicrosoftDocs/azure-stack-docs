@@ -3,10 +3,10 @@ title: Move a generalized VM from on-premises to Azure Stack Hub
 description: Learn how to move a generalized VM from on-premises to Azure Stack Hub.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 9/3/2020
+ms.date: 9/8/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 9/3/2020
+ms.lastreviewed: 9/8/2020
 
 # Intent: As an Azure Stack Hub user, I want to move my generalized workload VM into Azure Stack Hub so that I can use my applications.
 # Keywords: migration workload  generalized VM

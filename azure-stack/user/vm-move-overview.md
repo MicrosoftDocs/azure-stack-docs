@@ -3,10 +3,10 @@ title: Move a VM to Azure Stack Hub
 description: Learn about the different ways that you can move a VM to Azure Stack Hub.
 author: mattbriggs
 ms.topic: conceptual
-ms.date: 9/3/2020
+ms.date: 9/8/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 9/3/2020
+ms.lastreviewed: 9/8/2020
 
 # Intent: As an Azure Stack Hub user, I wan to learn about how where to find more information developing solutions.
 # Keywords: migration VM Linux Windows
@@ -15,7 +15,7 @@ ms.lastreviewed: 9/3/2020
 
 # Move a VM to Azure Stack Hub overview
 
-You can move virtual machines (VM)s from your environment to Azure Stack Hub. There are some limitations that you need to expect when planning to move your workloads. This article lists the requirements for virtual hard disk (VHD)s in Azure Stack Hub. Azure Stack Hub requires a generation 1 VHD. Your VM will need to be either generalized or specialized. Use generalized VMs as the base-mage for VMS created in Azure Stack. Specialized VM contains user accounts. To migrate, prepare and download the VHD, validate that the VHD meets the requirements, upload the image to a storage account in Azure Stack Hub, and then create the VM in your cloud. If you have a more complex migration task, you can find a complete discussion in the *Migrate to Azure Stack Hub* whitepaper.
+You can move virtual machines (VM)s from your environment to Azure Stack Hub. There are some limitations that you need to expect when planning to move your workloads. This article lists the requirements for virtual hard disk (VHD)s in Azure Stack Hub. Azure Stack Hub requires a generation one (1) VHD. Your VM will need to be either generalized or specialized. Use generalized VMs as the base-mage for VMS created in Azure Stack. Specialized VM contains user accounts. To migrate, prepare and download the VHD, validate that the VHD meets the requirements, upload the image to a storage account in Azure Stack Hub, and then create the VM in your cloud. If you have a more complex migration task, you can find a complete discussion in the *Migrate to Azure Stack Hub* whitepaper.
 
 Custom images come in two forms: **generalized** and **specialized**.
 

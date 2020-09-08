@@ -3,10 +3,10 @@ title: Add a custom VM image to Azure Stack Hub
 description: Learn how to add or remove a custom VM image to Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 9/3/2020
+ms.date: 9/8/2020
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.lastreviewed: 9/3/2020
+ms.lastreviewed: 9/8/2020
 
 # Intent: As an Azure Stack operator, I want to add a VM image to offer to my tenants.
 # Keyword: add vm image azure stack
@@ -19,7 +19,7 @@ In Azure Stack Hub, as an operator you can add your custom virtual machine (VM) 
 
 ## Add an image
 
-You can find instructions for adding generalized and specialized images in the **Compute** section of the user guide. For instructions see [Move a VM to Azure Stack Hub Overview](/azure-stack/user/vm-move-overview). When creating images available for your tenants use the Azure Stack Hub administrative portal or administrator endpoints rather than the user portal or tenant directory endpoints.
+You can find instructions for adding generalized and specialized images in the **Compute** section of the user guide. You will want to create a generalized image before offering the image to your users. For instructions see [Move a VM to Azure Stack Hub Overview](/azure-stack/user/vm-move-overview). When creating images available for your tenants use the Azure Stack Hub administrative portal or administrator endpoints rather than the user portal or tenant directory endpoints.
 
 You have two options for making an image available to your users:
 
