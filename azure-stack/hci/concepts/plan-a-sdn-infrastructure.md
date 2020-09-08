@@ -41,7 +41,7 @@ All physical compute hosts must access the management logical network and the HN
 
 The HNV Provider network serves as the underlying physical network for East/West (internal-internal) tenant traffic, North/South (external-internal) tenant traffic, and to exchange BGP peering information with the physical network.
 
-A DHCP server can automatically assign IP addresses for the management network, or you can manually assign static IP addresses. The SDN stack automatically assigns IP addresses for the HNV Provider logical network for the individual Hyper-V hosts from an IP address pool specified through and managed by the Network Controller.
+A DHCP server can automatically assign IP addresses for the management network, or you can manually assign static IP addresses. The SDN stack automatically assigns IP addresses for the HNV Provider logical network for the individual Hyper-V hosts from an IP address pool. The Network Controller specifies and manages the IP address pool.
 
 >[!NOTE]
 >The Network Controller assigns an HNV Provider IP address to a physical compute host only after the Network Controller Host Agent receives network policy for a specific tenant VM.
@@ -59,9 +59,9 @@ You need to create and provision additional logical networks to use gateways and
 
 |                                |                     |
 | :----------------------------- | :------------------ |
-| **Public VIP<br> logical network<br>** | The Public virtual IP (VIP) logical network must use IP subnet prefixes that are routable outside of the cloud environment (typically internet routable). These are the front-end IP addresses that external clients use to access resources in the virtual networks, including the front-end VIP for the site-to-site gateway. You don’t need to assign a VLAN to this network. |
-| **Private VIP<br> logical network<br>** | The Private VIP logical network is not required to be routable outside of the cloud. This is because only VIPs that can be accessed from internal cloud clients use it, such as private services. You don’t need to assign a VLAN to this network. |
-| **GRE VIP<br> logical network<br>** | The Generic Routing Encapsulation (GRE) VIP network is a subnet that exists solely to define VIPs that are assigned to gateway VMs running on your SDN fabric for a site-to-site (S2S) GRE connection type. You don't need to preconfigure this network in your physical switches or router, or assign a VLAN to it. |
+| **Public VIP logical network** | The Public virtual IP (VIP) logical network must use IP subnet prefixes that are routable outside of the cloud environment (typically internet routable). These are the front-end IP addresses that external clients use to access resources in the virtual networks, including the front-end VIP for the site-to-site gateway. You don’t need to assign a VLAN to this network. |
+| **Private VIP logical network** | The Private VIP logical network is not required to be routable outside of the cloud. This is because only VIPs that can be accessed from internal cloud clients use it, such as private services. You don’t need to assign a VLAN to this network. |
+| **GRE VIP logical network** | The Generic Routing Encapsulation (GRE) VIP network is a subnet that exists solely to define VIPs. The VIPs are assigned to gateway VMs running on your SDN fabric for a site-to-site (S2S) GRE connection type. You don't need to preconfigure this network in your physical switches or router, or assign a VLAN to it. |
 
 #### Sample network topology
 Change the sample IP subnet prefixes and VLAN IDs for your environment.
@@ -135,19 +135,19 @@ The following tagging protocols are required:
 The following items provide Link control:
 - Quality of Service \(QoS\) \(PFC only required if using RoCE\)
 - Enhanced Traffic Selection \(802.1Qaz\)
-- Priority Based Flow Control \(802.1p/Q and 802.1Qbb\)
+- Priority-based Flow Control (PFC) \(802.1p/Q and 802.1Qbb\)
 
 The following items provide availability and redundancy:
 - Switch availability (required)
 - A highly available router is required to perform gateway functions. You can provide this by using either a multi-chassis switch\router or technologies like the Virtual Router Redundancy Protocol (VRRP).
 
 ### Switch configuration examples
-To help configure your physical switch or router, a set of sample configuration files for a variety of switch models and vendors is available at the [Microsoft SDN GitHub repository](https://github.com/microsoft/SDN/tree/master/SwitchConfigExamples). A detailed readme and tested command line interface (CLI) commands for specific switches are provided.
+To help configure your physical switch or router, a set of sample configuration files for a variety of switch models and vendors is available at the [Microsoft SDN GitHub repository](https://github.com/microsoft/SDN/tree/master/SwitchConfigExamples). A detailed readme and tested command-line interface (CLI) commands for specific switches are provided.
 
 ## Compute
 All Hyper-V hosts must have the appropriate operating system installed, be enabled for Hyper-V, and use an external Hyper-V virtual switch with at least one physical adapter connected to the management logical network. The host must be reachable via a management IP address assigned to the management host vNIC.
 
-You can use any storage type that is compatible with Hyper-V, shared or local.
+You can use any storage type that is compatible with Hyper-V, shared, or local.
 
 > [!TIP]
 > It is convenient to use the same name for all your virtual switches, but it is not mandatory. If you plan to use scripts to deploy, see the comment associated with the `vSwitchName` variable in the config.psd1 file.
@@ -157,16 +157,16 @@ The following shows the minimum hardware and software requirements for the four 
 
 Host|Hardware requirements|Software requirements|
 --------|-------------------------|-------------------------
-|Physical Hyper-v host|4-Core 2.66 GHz CPU<br> 32 GB of RAM<br> 300 GB of Disk Space<br> 1 Gb/s (or faster) physical network adapter|Operating system: As defined in<br> the “Applies to” at the start of this topic.<br> Hyper-V Role installed|
+|Physical Hyper-V host|4-Core 2.66 GHz CPU<br> 32 GB of RAM<br> 300 GB of Disk Space<br> 1 Gb/s (or faster) physical network adapter|Operating system: As defined in<br> the “Applies to” at the start of this topic.<br> Hyper-V Role installed|
 
 ### SDN infrastructure VM role requirements
 The following shows the requirements for the VM roles.
 
 Role|vCPU requirements|Memory requirements|Disk requirements|
 --------|-----------------------------|-----------------------|--------------------------
-|Network Controller (three node)|4 vCPUs|4 GB minimum<br> (8 GB recommended)|75 GB for operating system drive
-|SLB/MUX (three node)|8 vCPUs|8 GB recommended|75 GB for operating system drive
-|RAS Gateway<br> (single pool of three node<br> gateways, two active, one passive)|8 vCPUs|8 GB recommended|75 GB for operating system drive
+|Network Controller (three nodes)|4 vCPUs|4 GB minimum<br> (8 GB recommended)|75 GB for operating system drive
+|SLB/MUX (three nodes)|8 vCPUs|8 GB recommended|75 GB for operating system drive
+|RAS Gateway<br> (single pool of three nodes<br> gateways, two active, one passive)|8 vCPUs|8 GB recommended|75 GB for operating system drive
 |RAS Gateway BGP router<br> for SLB/MUX peering<br> (alternatively use ToR switch<br> as BGP Router)|2 vCPUs|2 GB|75 GB for operating system drive|
 
 If you use System Center - Virtual Machine Manager (VMM) for deployment, additional infrastructure VM resources are required for VMM and other non-SDN infrastructure. To learn more, see [System requirements for System Center Virtual Machine Manager](https://docs.microsoft.com/system-center/vmm/system-requirements?view=sc-vmm-2019).
@@ -174,10 +174,10 @@ If you use System Center - Virtual Machine Manager (VMM) for deployment, additio
 ## Extending your infrastructure
 The sizing and resource requirements for your infrastructure depend on the tenant workload VMs that you plan to host. The CPU, memory, and disk requirements for the infrastructure VMs (for example: Network Controller, SLB, gateway, and so on) are defined in the previous table. You can add more infrastructure VMs to scale as needed. However, any tenant VMs running on the Hyper-V hosts have their own CPU, memory, and disk requirements that you must consider.
 
-When the tenant workload VMs start to consume too many resources on the physical Hyper-V hosts, you can extend your infrastructure by adding additional physical hosts. You can use either Windows Admin Center, VMM or PowerShell scripts to create new server resources through the Network Controller. The method to use depends on how you initially deployed the infrastructure. If you need to add additional IP addresses for the HNV Provider network, you can create new logical subnets (with corresponding IP Pools) that the hosts can use.
+When the tenant workload VMs start to consume too many resources on the physical Hyper-V hosts, you can extend your infrastructure by adding additional physical hosts. You can use either Windows Admin Center, VMM, or PowerShell scripts to create new server resources through the Network Controller. The method to use depends on how you initially deployed the infrastructure. If you need to add additional IP addresses for the HNV Provider network, you can create new logical subnets (with corresponding IP Pools) that the hosts can use.
 
 ## Phased deployment
-Based on your requirements, you may need to deploy a subset of the SDN infrastructure. For example, if you want to simply host customer workloads in your datacenter, and external communication is not required, you can deploy Network Controller and skip deploying SLB/MUX and gateway VMs. The following describes networking feature infrastructure requirements for a phased deployment of the SDN infrastructure.
+Based on your requirements, you may need to deploy a subset of the SDN infrastructure. For example, if you want to only host customer workloads in your datacenter, and external communication is not required, you can deploy Network Controller and skip deploying SLB/MUX and gateway VMs. The following describes networking feature infrastructure requirements for a phased deployment of the SDN infrastructure.
 
 Feature|Deployment requirements|Network requirements|
 --------|-------------------------|-------------------------
