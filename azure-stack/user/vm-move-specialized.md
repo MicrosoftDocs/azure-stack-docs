@@ -56,7 +56,7 @@ Identify what version of Linux Agent is installed in the source VM image, run th
    waagent -version
    ```
     
-    For example:
+   For example:
     
    ```bash  
    waagent -version
