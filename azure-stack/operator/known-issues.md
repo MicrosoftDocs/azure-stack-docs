@@ -320,6 +320,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
   - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
 ## Compute
+
 ### Cannot create a VMSS with Standard_DS2_v2 VM size on portal
 
 - Applicable: This issue applies to the 2002 release.
