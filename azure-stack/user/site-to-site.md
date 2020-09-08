@@ -19,6 +19,9 @@ If your Azure Stack Hub issue is not addressed in this article, you can visit th
 
 You also can submit an Azure support request. Please see [Azure Stack Hub support](../operator/azure-stack-manage-basics.md#where-to-get-support).
 
+> [!NOTE]
+> Only one site-to-site VPN connection can be created between two Azure Stack Hub deployments. This is due to a limitation in the platform that only allows a single VPN connection to the same IP address. Because Azure Stack Hub leverages the multi-tenant gateway, which uses a single public IP for all VPN gateways in the Azure Stack Hub system, there can be only one VPN connection between two Azure Stack Hub systems. This limitation also applies to connecting more than one site-to-site VPN connection to any VPN gateway that uses a single IP address. Azure Stack Hub does not allow more than one local network gateway resource to be created using the same IP address.
+
 ## Initial troubleshooting steps
 
 The Azure Stack Hub default parameters for IPsec/IKEV2 have changed [starting with the 1910 build](../user/azure-stack-vpn-gateway-settings.md#ike-phase-1-main-mode-parameters) Please contact your Azure Stack Hub operator for more information on the build version.
