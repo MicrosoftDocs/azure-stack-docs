@@ -6,7 +6,7 @@ ms.topic: conceptual
 ms.assetid: ea7e53c8-11ec-410b-b287-897c7aaafb13
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 09/02/2020
+ms.date: 09/08/2020
 ---
 # Plan a Software Defined Network infrastructure
 
@@ -16,7 +16,7 @@ Learn about deployment planning for a Software Defined Network (SDN) infrastruct
 
 ## Prerequisites
 There are several hardware and software prerequisites for a SDN infrastructure, including:
-- **Security groups, log file locations, and dynamic DNS registration**. You must prepare your datacenter for Network Controller deployment, which requires a set of virtual machines (VMs). Before you can deploy the Network Controller, you must configure security groups, log file locations (if needed), and dynamic DNS registration.
+- **Security groups, log file locations, and dynamic DNS registration**. You must prepare your datacenter for Network Controller deployment, which requires a set of virtual machines (VMs). Before you can deploy the Network Controller, you must configure security groups and dynamic DNS registration.
 
     To learn more about Network Controller deployment for your datacenter, see [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller).
 
@@ -59,14 +59,14 @@ You need to create and provision additional logical networks to use gateways and
 
 |                                |                     |
 | :----------------------------- | :------------------ |
-| **Public VIP logical network** | The Public virtual IP (VIP) logical network must use IP subnet prefixes that are routable outside of the cloud environment (typically internet routable). These are the front-end IP addresses that external clients use to access resources in the virtual networks, including the front-end VIP for the site-to-site gateway. |
-| **Private VIP logical network** | The Private VIP logical network is not required to be routable outside of the cloud. This is because only VIPs that can be accessed from internal cloud clients use it, such as private services. |
+| **Public VIP logical network** | The Public virtual IP (VIP) logical network must use IP subnet prefixes that are routable outside of the cloud environment (typically internet routable). These are the front-end IP addresses that external clients use to access resources in the virtual networks, including the front-end VIP for the site-to-site gateway. You don’t need to assign a VLAN to this network. |
+| **Private VIP logical network** | The Private VIP logical network is not required to be routable outside of the cloud. This is because only VIPs that can be accessed from internal cloud clients use it, such as private services. You don’t need to assign a VLAN to this network. |
 | **GRE VIP logical network** | The Generic Routing Encapsulation (GRE) VIP network is a subnet that exists solely to define VIPs that are assigned to gateway VMs running on your SDN fabric for a site-to-site (S2S) GRE connection type. You don't need to preconfigure this network in your physical switches or router, or assign a VLAN to it. |
 
 #### Sample network topology
 Change the sample IP subnet prefixes and VLAN IDs for your environment.
 
-| Network name | Subnet | Mask | VLAN ID on truck | Gateway | Reservation (examples) |
+| Network name | Subnet | Mask | VLAN ID on trunk | Gateway | Reservation (examples) |
 | :----------------------- | :------------ | :------- | :---------------------------- | :-------------- | :------------------------------------------- |
 | Management              | 10.184.108.0 |    24   |          7                   | 10.184.108.1   | 10.184.108.1 - Router<br> 10.184.108.4 - Network Controller<br> 10.184.108.10 - Compute host 1<br> 10.184.108.11 - Compute host 2<br> 10.184.108.X - Compute host X |
 | HNV Provider             |  10.10.56.0  |    23    |          11                |  10.10.56.1    | 10.10.56.1 - Router<br> 10.10.56.2 - SLB/MUX1<br> 10.10.56.5 - Gateway1 |
@@ -84,7 +84,6 @@ BGP peering is typically configured in a managed switch or router as part of the
 You must obtain the following information from your physical router, or from the network administrator in control of that router:
 - Router ASN
 - Router IP address
-- ASN that the SDN components use (this can be any AS number from the private ASN range)
 
 >[!NOTE]
 >Four-byte ASNs are not supported by the SLB/MUX. You must allocate two-byte ASNs to the SLB/MUX and the router to which it connects. You can use four-byte ASNs elsewhere in your environment.
@@ -182,8 +181,8 @@ Based on your requirements, you may need to deploy a subset of the SDN infrastru
 
 Feature|Deployment requirements|Network requirements|
 --------|-------------------------|-------------------------
-|Logical Network management<br> Access control lists (ACLs) (for VLAN-based network)<br> Quality of Service (QoS)<br>|Network Controller|None|
-|Virtual Networking<br> User Defined Routing<br> ACLs (for virtual network)<br> Encrypted Subnets|Network Controller|HNV PA VLAN,  Subnet, Router|
+|Logical Network management<br> Access control lists (ACLs) (for VLAN-based network)<br> Quality of Service (QoS) (for VLAN-based networks)<br>|Network Controller|None|
+|Virtual Networking<br> User Defined Routing<br> ACLs (for virtual network)<br> Encrypted Subnets<br> QoS (for virtual networks)|Network Controller|HNV PA VLAN, Subnet, Router|
 |Inbound/Outbound NAT<br> Load Balancing|Network Controller<br> SLB/MUX|BGP on HNV PA network<br> Private and Public VIP subnets|
 |GRE gateway connections|Network Controller<br> Gateway|BGP on HNV PA network<br> GRE VIP subnet|
 |IPSec gateway connections|Network Controller<br> SLB/MUX<br> Gateway|BGP on HNV PA network<br> Public VIP subnet|
