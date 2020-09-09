@@ -110,7 +110,7 @@ In addition, you must configure the Azure Stack HCI hosts with the SDN-enabled H
 
 Following is an overview of the SLB infrastructure.
 
-![Software Load Balancing infrastructure](../../../media/Software-Load-Balancing--SLB--for-SDN/slb_overview1.png)
+![Software Load Balancing infrastructure](media/software-load-balancing-sdn/slb_overview1.png)
 
 The following sections provide more information about these elements of the Software Load Balancing infrastructure.
 
