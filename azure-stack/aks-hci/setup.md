@@ -3,9 +3,11 @@ title: Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Ce
 description: Learn how to set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center
 author: davannaw-msft
 ms.topic: quickstart
-ms.date: 09/01/2020
+ms.date: 09/21/2020
 ms.author: dawhite
 ---
+
+> Applies to: Azure Stack HCI
 
 # Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center
 In this quickstart, you'll: 
@@ -28,7 +30,7 @@ Now that we have added the feed, the Azure Kubernetes Service on Azure Stack HCI
 [ ![View of the available extension list in Windows Admin Center extension manager.](.\media\extension-manager.png) ](.\media\extension-manager.png#lightbox)
 
 ## Setting up an Azure Kubernetes Service host
-There is one final step that should be completed before you create a Kubernetes cluster. You need to set up an Azure Kubernetes Service host on the system you want to deploy the Kubernetes cluster to. This system can be a single server, a failover cluster, or an Azure Stack HCI cluster. 
+There is one final step that should be completed before you create a Kubernetes cluster. You need to set up an Azure Kubernetes Service host on the system you want to deploy the Kubernetes cluster to. This system must be an Azure Stack HCI cluster. 
 
 > [!NOTE] 
 > Setting up Azure Kubernetes Service hosts on two independent systems with the intention of merging them during Kubernetes cluster creation is not a supported scenario. 
@@ -39,7 +41,7 @@ This tool will install and download the necessary packages, as well as create a 
 
 Let's get started: 
 1. Select **Set up** to launch the set up wizard.
-2. Review the prerequisites for the machine you are running Windows Admin Center on, the server or cluster you're connected to, as well as the network. Additionally, make sure you're signed into an Azure account on Windows Admin Center. When finished, select **Next**.
+2. Review the prerequisites for the machine you are running Windows Admin Center on, the Azure Stack HCI cluster you're connected to, as well as the network. Additionally, make sure you're signed into an Azure account on Windows Admin Center. When finished, select **Next**.
 3. On the **System checks** page of the wizard, take any required actions, such as connecting your Windows Admin Center gateway to Azure. This step check that Windows Admin Center and the system that will host Azure Kubernetes Service have the proper configurations to continue. When you're finished taking action, select **Next**.
 4. Configure the machine that will host Azure Kubernetes Service in the **Host configuration** step. We recommend you select **automatically download updates** in this section. Select **Next** after you're finished. This step of the wizard asks you to configure the following details:
     * host details, such as a name for the management cluster and a folder to store VM images

@@ -3,7 +3,7 @@ title: Troubleshooting
 description: Guide for troubleshooting Azure Kubernetes Service on Azure Stack HCI
 author: davannaw-msft
 ms.topic: how-to
-ms.date: 09/01/2020
+ms.date: 09/21/2020
 ms.author: dawhite
 ---
 

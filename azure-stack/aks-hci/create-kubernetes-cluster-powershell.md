@@ -1,0 +1,147 @@
+---
+title: Set up an Azure Kubernetes Service target cluster on Azure Stack HCI using Windows PowerShell
+description: Learn how to create a Azure Kubernetes Service target cluster on Azure Stack HCI with Windows PowerShell
+author: jeguan
+ms.topic: quickstart
+ms.date: 09/21/2020
+ms.author: jeguan
+---
+# Create an Azure Kubernetes Service target cluster on Azure Stack HCI using Windows PowerShell
+
+> Applies to: Azure Stack HCI
+
+In this article you will learn how to use Windows PowerShell to create an Azure Kubernetes Service target cluster on Azure Stack HCI using Windows PowerShell.
+
+## Before you begin
+
+Before you begin, make sure you:
+
+- Have a 2-4 node Azure Stack HCI cluster or a Single Node Azure Stack HCI. **However, it is recommended to have a 2-4 node Azure Stack HCI cluster.** If you do not, follow instructions on how to [here](./before-you-begin.md).
+- Have an Azure Kubernetes Service host on Azure Stack HCI deployed. If you do not, follow instructions on how to [Deploy an Azure Kubernetes host on Azure Stack HCI](mgmtcluster.md)
+
+## Step 1: Create a target Kubernetes cluster
+
+After installing your Azure Kubernetes Service host, you are ready to deploy a target cluster.
+
+Open PowerShell as an administrator and run the following command.
+
+   ```powershell
+   New-AksHciCluster -clusterName
+                    [-kubernetesVersion]
+                    [-controlPlaneNodeCount]
+                    [-linuxNodeCount]
+                    [-windowsNodeCount]
+                    [-controlPlaneVmSize]
+                    [-loadBalancerVmSize]
+                    [-linuxNodeVmSize]
+                    [-windowsNodeVmSize]
+   ```
+
+### Required Parameters
+
+`-clusterName`
+
+The alphanumeric name of your target cluster.
+
+### Optional Parameters
+
+`kubernetesVersion`
+
+The version of Kubernetes that you want to deploy. Default is v1.18.6.
+
+`controlPlaneNodeCount`
+
+The number of nodes in your control plane. Default is 1.
+
+`linuxNodeCount`
+
+The number of linux nodes in your target cluster. Default is 1.
+
+`windowsNodeCount`
+
+The number of windows nodes in your target cluster. Default is 0.
+
+`controlPlaneVmSize`
+
+The size of your control plane VM. Default is Standard_A2_v2. To get a list of available VM sizes, run `Get-AksHciVmSize`.
+
+`loadBalancerVmSize`
+
+The size of your load balancer VM. Default is Standard_A2_V2. To get a list of available VM sizes, run `Get-AksHciVmSize`.
+
+`linuxNodeVmSize`
+
+The size of your Linux Node VM. Default is  Standard_K8S3_v1. To get a list of available VM sizes, run `Get-AksHciVmSize`.
+
+`windowsNodeVmSize`
+
+The size of your Windows Node VM. Default is  Standard_K8S3_v1. To get a list of available VM sizes, run `Get-AksHciVmSize`.
+
+### Check your deployed clusters
+
+To get a list of your deployed Azure Kubernetes Service host and target clusters, run the following command.
+
+```powershell
+Get-AksHciCluster
+```
+
+## Step 2: Scale a target cluster
+
+To scale control plane nodes, run the following command.
+
+```powershell
+Set-AksHciClusterNodeCount –clusterName
+                           -controlPlaneNodeCount
+```
+
+To scale the worker nodes, run the following command.
+
+```powershell
+Set-AksHciClusterNodeCount –clusterName
+                           -linuxNodeCount
+                           -windowsNodeCount
+```
+
+The control plane nodes and the worker nodes must be scaled independently because PowerShell will not allow these parameters to be specified together.
+
+## Step 3: Upgrade Kubernetes version
+
+To see the current Kubernetes version you are running, run the following command.
+
+```powershell
+Get-AksHciKubernetesVersion
+```
+
+To upgrade to the next Kubernetes version, run the following command.
+
+```powershell
+Update-AksHciCluster -clusterName
+```
+
+## Step 4: Access your clusters using kubectl
+
+To access your Azure Kubernetes Service host or target cluster using kubectl, run the following command. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl.
+
+```powershell
+Set-AksHciKubeConfig -clusterName
+```
+
+## Step 5: Delete a target cluster
+
+If you need to delete a target cluster, run the following command.
+
+```powershell
+Remove-AksHciCluster -clusterName
+```
+
+## Get logs
+
+To get logs from your all your pods, run the following command. This command will create an output zipped folder called `akshcilogs` in the path `C:\wssd\akshcilogs`.
+
+```powershell
+Get-AksHciLogs
+```
+
+## Next steps
+
+- Connect your clusters to Azure Arc for Kubernetes with [these instructions](https://docs.microsoft.com/en-us/azure/azure-arc/kubernetes/connect-cluster).
