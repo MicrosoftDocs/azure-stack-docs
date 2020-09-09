@@ -50,7 +50,7 @@ The following table shows the logical networks and associated IPv4 subnet ranges
 | | | |
 
 > [!NOTE]
-> When the system is updated to 1910 version, an alert on the portal will remind the operator to run the new PEP cmdlet **Set-AzsPrivateNetwork** to add a new /20 Private IP space. Please see the [1910 release notes](release-notes.md) for instructions on running the cmdlet. For more information and guidance on selecting the /20 private IP space, please see the [Private network](#private-network) section in this article.
+> When the system is updated to 1910 version, an alert on the portal will remind the operator to run the new PEP cmdlet **Set-AzsPrivateNetwork** to add a new /20 Private IP space. Please see the [1910 release notes](release-notes.md?view=azs-1910) for instructions on running the cmdlet. For more information and guidance on selecting the /20 private IP space, please see the [Private network](#private-network) section in this article.
 
 ## Network infrastructure
 
