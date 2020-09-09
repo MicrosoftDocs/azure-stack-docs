@@ -118,7 +118,7 @@ With System Center 2016, you can configure Network Controller on  Windows Server
 For more information about System Center 2016, see [System Center 2016](https://www.microsoft.com/server-cloud/products/system-center-2016/).
 
 > [!NOTE]
-> If you do not want to use System Center 2016, you can use Windows PowerShell or another management application to install and configure Network Controller and other SLB infrastructure. For more information, see [Deploy Network Controller using Windows PowerShell](../../../sdn/deploy/Deploy-Network-Controller-using-Windows-PowerShell.md).
+> If you do not want to use System Center 2016, you can use Windows PowerShell or another management application to install and configure Network Controller and other SLB infrastructure. For more information, see [Deploy Network Controller using Windows PowerShell](../deploy/network-controller-powershell.md).
 
 ### Network Controller
 Network Controller hosts the SLB Manager and performs the following actions for SLB.
