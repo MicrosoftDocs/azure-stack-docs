@@ -84,7 +84,7 @@ if ($session) {
   To collect logs for IoT Hub: 
 
   ```powershell
-  Get-AzureStackLog -FilterByResourceProvider IotHub
+  Get-AzureStackLog -FilterByResourceProvider iothubServiceHealth
   ```
  
   To collect logs for Event Hubs:
