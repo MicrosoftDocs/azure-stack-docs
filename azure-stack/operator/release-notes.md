@@ -117,11 +117,11 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue where internal secret rotation fails when infrastructure services do not have internet connectivity.
 - Fixed an issue in which users could not view subscription permissions using the Azure Stack Hub portals.
 
-## Security updates
+## 2005 security updates
 
 For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
 
-## Update planning
+## 2005 update planning
 
 Before applying the update, make sure to review the following information:
 
@@ -129,7 +129,7 @@ Before applying the update, make sure to review the following information:
 - [Security updates](release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](release-notes-checklist.md)
 
-## Download the update
+## Download the 2005 update
 
 You can download the Azure Stack Hub 2005 update package from [the Azure Stack Hub download page](https://aka.ms/azurestackupdatedownload).
 
@@ -258,11 +258,11 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue where we do not allow the license type to be set to "null" to switch pay-as-you-go images to BYOL.
 - Fixed an issue to allow extensions to be added to a VM scale set.
 
-## Security updates
+## 2002 security updates
 
 For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
 
-## Hotfixes
+## 2002 hotfixes
 
 Azure Stack Hub releases hotfixes on a regular basis. Be sure to install the latest Azure Stack Hub hotfix for 1910 before updating Azure Stack Hub to 2002.
 
@@ -417,13 +417,13 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue that showed an inaccurate percentage of the Gateway Pool utilization alert on the administrator portal.
 <!-- Fixed an issue where adding more than one public IP on the same NIC on a Virtual Machine resulted in internet connectivity issues. Now, a NIC with two public IPs should work as expected.[This fix actually didn't go in 1910 due to build issues, commenting out until next build (2002) ] -->
 
-## Security updates
+## 1910 security updates
 
 For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
 
 The Qualys vulnerability report for this release can be downloaded from the [Qualys website](https://www.qualys.com/azure-stack/).
 
-## Hotfixes
+## 1910 hotfixes
 
 Azure Stack Hub releases hotfixes on a regular basis. Be sure to install the latest Azure Stack Hub hotfix for 1908 before updating Azure Stack Hub to 1910.
 
@@ -493,17 +493,17 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there's an SR/ICM associated to it. -->
 
-## Security updates
+## 1908 security updates
 
 For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
 
 The Qualys vulnerability report for this release can be downloaded from the [Qualys website](https://www.qualys.com/azure-stack/).
 
-## Download the update
+## Download the 1908 update
 
 You can download the Azure Stack Hub 1908 update package from [the Azure Stack Hub download page](https://aka.ms/azurestackupdatedownload).
 
-## Hotfixes
+## 1908 hotfixes
 
 Azure Stack Hub releases hotfixes on a regular basis. Be sure to install the latest Azure Stack Hub hotfix for 1907 before updating Azure Stack Hub to 1908.
 

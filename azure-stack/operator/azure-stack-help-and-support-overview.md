@@ -73,7 +73,7 @@ You can send diagnostic logs to Microsoft in two ways:
 ::: moniker-end
 ::: moniker range="<= azs-1910"
 
-## Diagnostic log collection
+## Diagnostic log collection in 1910 and earlier
 
 Beginning with the 1907 release, there are two new ways to collect logs in **Help and support**:
 
