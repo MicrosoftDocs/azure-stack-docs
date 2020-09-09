@@ -4,10 +4,10 @@ description: Establish the requirements for running the ASK Engine on your Azure
 author: mattbriggs
 
 ms.topic: article
-ms.date: 09/02/2020
+ms.date: 09/08/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/02/2020
+ms.lastreviewed: 09/08/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -51,12 +51,12 @@ You can set the following items.
 
 ## Matching engine to base image version
 
-The AKS engine deploys a customized Ubuntu Server OS to each cluster node image, the **AKS Base Ubuntu 16.04-LTS Image Distro**. Any AKS engine version is dependent on a specific image version made available in your Azure Stack Hub by your Azure Stack Hub operator. You can find a table listing the AKS engine versions and corresponding supported Kubernetes versions at [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions). For example, AKS engine version `v0.55.0` depends on version `2020.05.13` of the AKS Base Ubuntu 16.04-LTS Image Distro. Ask your Azure Stack Hub operator to download the specific image version from the Azure Marketplace to the Azure Stack Hub Marketplace.
+The AKS engine deploys a customized Ubuntu Server OS to each cluster node image, the **AKS Base Ubuntu 16.04-LTS Image Distro**. Any AKS engine version is dependent on a specific image version made available in your Azure Stack Hub by your Azure Stack Hub operator. You can find a table listing the AKS engine versions and corresponding supported Kubernetes versions at [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions). For example, AKS engine version `v0.55.0` depends on version `2020.08.24` of the AKS Base Ubuntu 16.04-LTS Image Distro. Ask your Azure Stack Hub operator to download the specific image version from the Azure Marketplace to the Azure Stack Hub Marketplace.
 
-You will trigger and error if the image is not available in your Azure Stack Hub Marketplace. For example, if you're currently using AKS engine version v0.55.0 and AKS Base Ubuntu 16.04-LTS Image Distro version `2020.05.13` isn't available, you will see the following error when running the AKS engine: 
+You will trigger and error if the image is not available in your Azure Stack Hub Marketplace. For example, if you're currently using AKS engine version v0.55.0 and AKS Base Ubuntu 16.04-LTS Image Distro version `2020.08.24` isn't available, you will see the following error when running the AKS engine: 
 
 ```Text  
-The platform image 'microsoft-aks:aks:aks-ubuntu-1604-202003:2020.05.13' is not available. 
+The platform image 'microsoft-aks:aks:aks-ubuntu-1604-202003:2020.08.24' is not available. 
 Verify that all fields in the storage profile are correct.
 ```
 
