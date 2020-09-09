@@ -4,7 +4,7 @@ description: Learn how to add scale unit nodes to scale units in Azure Stack Hub
 author: mattbriggs
 
 ms.topic: article
-ms.date: 08/03/2020
+ms.date: 09/09/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 08/03/2020
@@ -28,14 +28,14 @@ The following flow diagram shows the general process to add a scale unit node:
 
 The operation to add a new node can take several hours or days to complete. There is no impact to any running workloads on the system while an additional scale unit node is added.
 
-> [!Note]  
+> [!NOTE]  
 > Don't attempt any of the following operations while an add scale unit node operation is already in progress:
 >
 >  - Update Azure Stack Hub
 >  - Rotate certificates
 >  - Stop Azure Stack Hub
 >  - Repair scale unit node
-
+>  - Add another node (the previous add-node action failure is also considered in progress)
 
 ## Add scale unit nodes
 
