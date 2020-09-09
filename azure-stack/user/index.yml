@@ -65,17 +65,20 @@ landingContent:
   # Card
   - title: Infrastructure-as-a-Service (IaaS) on Azure Stack Hub
     linkLists:
+      - linkListType: quickstart
+        links:
+          - text: Quickstart - Create a VM
+            url: azure-stack-quick-linux-portal.m
       - linkListType: how-to-guide
         links:
+          - text: Migrate VMs
+            url: vm-move-overview.md
           - text: Deploy a VM in IaaS with a template
             url: azure-stack-create-vm-template.md
           - text: Configure a virtual network
             url: deploy-foundational-patterns.md
-          - text: Quickstart - Create a VM
-            url: azure-stack-quick-linux-portal.md
           - text: Host Apps written in your code
             url: azure-stack-dev-start-deploy-app.md
-
 
   # Card
   - title: Platform-as-a-Service (PaaS) on Azure Stack Hub
