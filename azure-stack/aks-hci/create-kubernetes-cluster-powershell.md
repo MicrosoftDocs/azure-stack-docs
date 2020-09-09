@@ -17,7 +17,7 @@ In this article you will learn how to use Windows PowerShell to create an Azure 
 Before you begin, make sure you:
 
 - Have a 2-4 node Azure Stack HCI cluster or a Single Node Azure Stack HCI. **However, it is recommended to have a 2-4 node Azure Stack HCI cluster.** If you do not, follow instructions on how to [here](./before-you-begin.md).
-- Have an Azure Kubernetes Service host on Azure Stack HCI deployed. If you do not, follow instructions on how to [Deploy an Azure Kubernetes host on Azure Stack HCI](mgmtcluster.md)
+- Have an Azure Kubernetes Service host on Azure Stack HCI deployed. If you do not, follow instructions on how to [Deploy an Azure Kubernetes host on Azure Stack HCI](./create-host-powershell.md)
 
 ## Step 1: Create a target Kubernetes cluster
 
@@ -144,4 +144,4 @@ Get-AksHciLogs
 
 ## Next steps
 
-- Connect your clusters to Azure Arc for Kubernetes with [these instructions](https://docs.microsoft.com/en-us/azure/azure-arc/kubernetes/connect-cluster).
+- Connect your clusters to Azure Arc for Kubernetes with [these instructions](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster).

@@ -64,7 +64,7 @@ Configure your deployment with the following command.
 
 `-deploymentType`
 
-The deployment type. Accepted valuee: SingleNode, MultiNode.
+The deployment type. Accepted values: SingleNode, MultiNode.
 
 `-wssdImageDir`
 
@@ -92,7 +92,7 @@ The size of the VM to create for the Load Balancer VMs. To get a list of availab
 
 `-sshPublicKey`
 
-Path to a SSH public key file. Using this public key, you will be abe to login to any of the VMs created by the AKS-HCI deployment. If no key is provided, we will look for one under `%systemdrive%\Users\<username>\.ssh\id_rsa.pub`. If file does not exist, an SSH key pair in the above location will be generated and used.  
+Path to a SSH public key file. Using this public key, you will be able to login to any of the VMs created by the AKS-HCI deployment. If no key is provided, we will look for one under `%systemdrive%\Users\<username>\.ssh\id_rsa.pub`. If file does not exist, an SSH key pair in the above location will be generated and used.  
 
 `-vipPoolStartIp`
 
@@ -212,4 +212,4 @@ Uninstall-AksHci
 
 ## Next steps
 
-- To create a target cluster through PowerShell, follow instructions [here](targetcluster.md)
+- To create a target cluster through PowerShell, follow instructions [here](./create-kubernetes-cluster-powershell.md)

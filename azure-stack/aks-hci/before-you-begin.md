@@ -1,5 +1,5 @@
 ---
-title: Azure Kubernetes Service on Azure Stack HCI
+title: Azure Kubernetes Service on Azure Stack HCI Before You Begin
 description: Before You Begin Azure Kubernetes Service on Azure Stack HCI
 ms.topic: quickstart
 author: abhilashaagarwala
@@ -29,7 +29,7 @@ Microsoft recommends purchasing a validated Azure Stack HCI hardware/software so
 
 For Azure Kubernetes Service on Azure Stack HCI to function optimally in an Active Directory environment ensure the following requirements are fulfilled: 
 
- - Ensure time synchronization is setup and the divergence is not greater than 2 minutes across all cluster nodes and the domain controller. For information on setting time synchronization visit [Windows Time Service](https://docs.microsoft.com/en-us/windows-server/networking/windows-time-service/windows-time-service-top). 
+ - Ensure time synchronization is setup and the divergence is not greater than 2 minutes across all cluster nodes and the domain controller. For information on setting time synchronization visit [Windows Time Service](https://docs.microsoft.com/windows-server/networking/windows-time-service/windows-time-service-top). 
 
  - Ensure that the user account(s) adding, updating, and managing Azure Kubernetes Service on Azure Stack HCI clusters have the correct permissions in Active Directory. If you are using Organizational Units (OUs) to manage group policies for servers and services, the user account(s) will require list, read, modify and delete permissions on all objects in the OU. 
 
@@ -46,9 +46,9 @@ For Azure Kubernetes Service on Azure Stack HCI to function optimally in an Acti
 
  - While you can technically run Azure Kubernetes Service on a single node Azure Stack HCI Server, we do not recommend doing so.
 
- - Other compute requirements for Azure Kubernetes Service on Azure Stack HCI are in line with Azure Stack HCI’s requirements. Visit [Azure Stack HCI Requirements](https://docs.microsoft.com/en-us/azure-stack/hci/deploy/before-you-start) for more details on Azure Stack HCI’s server requirements.  
+ - Other compute requirements for Azure Kubernetes Service on Azure Stack HCI are in line with Azure Stack HCI’s requirements. Visit [Azure Stack HCI Requirements](https://docs.microsoft.com/azure-stack/hci/deploy/before-you-start) for more details on Azure Stack HCI’s server requirements.  
 
- - Verify that you have Hyper-V and Hyper-V PowerShell roles installed and functioning. For additional feature-specific requirements for Hyper-V, see [System Requirements for Hyper-V](https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
+ - Verify that you have Hyper-V and Hyper-V PowerShell roles installed and functioning. For additional feature-specific requirements for Hyper-V, see [System Requirements for Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
 
  - All nodes need to be installed with the EN-US region and language selection. It is not sufficient to add EN-US or change the region and language later in the process. 
 
@@ -59,7 +59,7 @@ For Azure Kubernetes Service on Azure Stack HCI to function optimally in an Acti
 
 Azure Kubernetes Service on Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency network connection between each server node. You should verify the following: 
 
- - Verify that you have an existing, external virtual switch configured if you’re using Windows Admin Centre. For Azure Stack HCI clusters, this switch must be the same across all cluster nodes. 
+ - Verify that you have an existing, external virtual switch configured if you’re using Windows Admin Center. For Azure Stack HCI clusters, this switch must be the same across all cluster nodes. 
 
  - Verify that you have disabled IPv6 on all network adapters. 
 
@@ -85,7 +85,7 @@ When creating an Azure Kubernetes Cluster on Azure Stack HCI, we will automatica
 
 #### Firewall ports (TCP Inbound) 
 
-|                              |              | 
+| Firewall Port               | Description         | 
 | ---------------------------- | ------------ | 
 | 45000           | wssdagent GPRC   server port           |
 | 45001             | wssdagent GPRC authentication port  | 
@@ -114,7 +114,7 @@ ecpacr.azurecr.io | 443 | Kubernetes | Downloading container images
 
 The following storage implementations are supported by Azure Kubernetes Service on Azure Stack HCI: 
 
-|                              | Storage Type | Required Capacity |
+|  Name                         | Storage Type | Required Capacity |
 | ---------------------------- | ------------ | ----------------- |
 | Azure Stack HCI Cluster          | CSV          | 1 TB              |
 
