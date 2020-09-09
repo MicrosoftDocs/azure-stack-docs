@@ -4,10 +4,10 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 09/04/2020
+ms.date: 09/09/2020
 ms.author: sethm
 ms.reviewer: sranthar
-ms.lastreviewed: 09/01/2020
+ms.lastreviewed: 09/09/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -40,6 +40,13 @@ To access known issues for a different version, use the version selector dropdow
 For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
 ## Portal
+
+### Administrative subscriptions
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The two administrative subscriptions that were introduced with version 1804 should not be used. The subscription types are **Metering** subscription, and **Consumption** subscription.
+- Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
+- Occurrence: Common
 
 ## Networking
 
