@@ -6,7 +6,7 @@ ms.topic: conceptual
 ms.assetid: ea7e53c8-11ec-410b-b287-897c7aaafb13
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 09/08/2020
+ms.date: 09/09/2020
 ---
 # Plan a Software Defined Network infrastructure
 
@@ -16,7 +16,7 @@ Learn about deployment planning for a Software Defined Network (SDN) infrastruct
 
 ## Prerequisites
 There are several hardware and software prerequisites for a SDN infrastructure, including:
-- **Security groups, log file locations, and dynamic DNS registration**. You must prepare your datacenter for Network Controller deployment, which requires a set of virtual machines (VMs). Before you can deploy the Network Controller, you must configure security groups and dynamic DNS registration.
+- **Security groups and dynamic DNS registration**. You must prepare your datacenter for Network Controller deployment, which requires a set of virtual machines (VMs). Before you can deploy the Network Controller, you must configure security groups and dynamic DNS registration.
 
     To learn more about Network Controller deployment for your datacenter, see [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller).
 
@@ -50,7 +50,7 @@ A DHCP server can automatically assign IP addresses for the management network, 
 | :------------------------------------------------------- | :---------------------------------------------------- |
 | The logical networks use VLANs,                          | the physical compute host must connect to a trunked switch port that has access to the VLANs. It's important to note that the physical network adapters on the computer host must not have any VLAN filtering activated.|
 | You are using Switched-Embedded Teaming (SET) and have multiple Network Interface Card (NIC) team members, such as network adapters,| you must connect all NIC team members for that particular host to the same Layer-2 broadcast domain.|
-| The physical compute host is running additional infrastructure VMs, such as Network Controller, the SLB/Multiplexer (MUX), or Gateway, | that host must have an additional IP address assigned from the management logical network for each hosted VM. Also, each SLB/MUX and gateway infrastructure VM must have an IP address reserved for the HNV Provider logical network. Failure to reserve an IP address may result in duplicate IP addresses on your network.|
+| The physical compute host is running additional infrastructure VMs, such as Network Controller, the SLB/Multiplexer (MUX), or Gateway, | ensure that the management logical network has sufficient IP addresses for each hosted VM. Also, ensure that the HNV Provider logical network has sufficient IP addresses to allocate to each SLB/MUX and gateway infrastructure VM. Although IP reservation is managed by the Network Controller, failure to reserve a new IP address due to unavailability may result in duplicate IP addresses on your network.|
 
 For information about Hyper-V Network Virtualization (HNV) that you can use to virtualize networks in a Microsoft SDN deployment, see [Hyper-V Network Virtualization](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyper-v-network-virtualization).
 
@@ -182,7 +182,7 @@ Based on your requirements, you may need to deploy a subset of the SDN infrastru
 Feature|Deployment requirements|Network requirements|
 --------|-------------------------|-------------------------
 |Logical Network management<br> Access control lists (ACLs) (for VLAN-based network)<br> Quality of Service (QoS) (for VLAN-based networks)<br>|Network Controller|None|
-|Virtual Networking<br> User Defined Routing<br> ACLs (for virtual network)<br> Encrypted Subnets<br> QoS (for virtual networks)|Network Controller|HNV PA VLAN, Subnet, Router|
+|Virtual Networking<br> User Defined Routing<br> ACLs (for virtual network)<br> Encrypted Subnets<br> QoS (for virtual networks)<br> Virtual network peering|Network Controller|HNV PA VLAN, Subnet, Router|
 |Inbound/Outbound NAT<br> Load Balancing|Network Controller<br> SLB/MUX|BGP on HNV PA network<br> Private and Public VIP subnets|
 |GRE gateway connections|Network Controller<br> Gateway|BGP on HNV PA network<br> GRE VIP subnet|
 |IPSec gateway connections|Network Controller<br> SLB/MUX<br> Gateway|BGP on HNV PA network<br> Public VIP subnet|
