@@ -68,7 +68,7 @@ landingContent:
       - linkListType: quickstart
         links:
           - text: Quickstart - Create a VM
-            url: azure-stack-quick-linux-portal.m
+            url: azure-stack-quick-linux-portal.md
       - linkListType: how-to-guide
         links:
           - text: Migrate VMs
