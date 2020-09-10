@@ -30,7 +30,7 @@ When the checks are finished, you will see "Done" displayed in green text.
 
 ## Step 2: Configure your deployment
 
-Then, we'll need to set the configuration settings for the Azure Kubernetes Service host. For an Azure Stach HCI cluster deployment, you must specify the `-wssdImageDir` and the `-cloudConfigLocation`. In a Single Node Azure Stack HCI deployment, all the parameters are optional and they will be set to the default value. If the deployment type is not specified, `SingleNode` is the default. **We recommend using a Azure Stack HCI cluster deployment.**
+Then, we'll need to set the configuration settings for the Azure Kubernetes Service host. For an Azure Stack HCI cluster deployment, you must specify the `-wssdImageDir` and the `-cloudConfigLocation`. In a Single Node Azure Stack HCI deployment, all the parameters are optional and they will be set to the default value. If the deployment type is not specified, `SingleNode` is the default. **We recommend using a Azure Stack HCI cluster deployment.**
 
 Configure your deployment with the following command.
 
