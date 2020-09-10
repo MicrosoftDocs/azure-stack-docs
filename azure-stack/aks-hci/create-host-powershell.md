@@ -1,6 +1,6 @@
 ---
 title: Set up an Azure Kubernetes Service host on Azure Stack HCI using Windows PowerShell
-description: Learn how to create a Azure Kubernetes Service host cluster on Azure Stack HCI with Windows PowerShell
+description: Learn how to create an Azure Kubernetes Service host cluster on Azure Stack HCI with Windows PowerShell
 author: jeguan
 ms.topic: quickstart
 ms.date: 09/21/2020
@@ -20,7 +20,7 @@ Before you begin, make sure you:
 
 ## Step 1: Prepare your machine(s) for deployment
 
-First, we will run checks on every physical node to see if all the requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI.
+First, we'll run checks on every physical node to see if all the requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI.
 
 Open PowerShell as an administrator and run the following command.
 
@@ -30,7 +30,7 @@ Open PowerShell as an administrator and run the following command.
 
 ## Step 2: Configure your deployment
 
-Then, we will need to set the configuration settings for the Azure Kubernetes Service host. For a failover cluster deployment, you must specify the `-wssdImageDir` and the `-cloudConfigLocation`. In a Single Node Azure Stack HCI deployment, all the parameters are optional and they will be set to the default value. If the deployment type is not specified, `SingleNode` is the default. **However, it is recommended to use a failover cluster.**
+Then, we'll need to set the configuration settings for the Azure Kubernetes Service host. For a failover cluster deployment, you must specify the `-wssdImageDir` and the `-cloudConfigLocation`. In a Single Node Azure Stack HCI deployment, all the parameters are optional and they will be set to the default value. If the deployment type is not specified, `SingleNode` is the default. **However, it is recommended to use a failover cluster.**
 
 Configure your deployment with the following command.
 
@@ -72,7 +72,7 @@ The path to the directory where AKS-hci will store its VHD images. Defaults to `
 
 `-cloudConfigLocation`
 
-The location where the cloud agent will store its configuration. Defaults to `%systemdrive%\wssdimagestore` for single node deployments. The location can be the same as that of `-wssdImageDir` above.  
+The location where the cloud agent will store its configuration. Defaults to `%systemdrive%\wssdimagestore` for single node deployments. The location can be the same as the path of `-wssdImageDir` above.  
 
 `-nodeConfigLocation`
 
@@ -92,7 +92,7 @@ The size of the VM to create for the Load Balancer VMs. To get a list of availab
 
 `-sshPublicKey`
 
-Path to a SSH public key file. Using this public key, you will be able to login to any of the VMs created by the AKS-HCI deployment. If no key is provided, we will look for one under `%systemdrive%\Users\<username>\.ssh\id_rsa.pub`. If file does not exist, an SSH key pair in the above location will be generated and used.  
+Path to an SSH public key file. Using this public key, you will be able to log in to any of the VMs created by the AKS-HCI deployment. If no key is provided, we will look for one under `%systemdrive%\Users\<username>\.ssh\id_rsa.pub`. If file does not exist, an SSH key pair in the above location will be generated and used.  
 
 `-vipPoolStartIp`
 
@@ -148,7 +148,7 @@ Use this flag if you want to skip any updates available.
 
 `-forceDnsReplication`
 
-DNS replication can take up to an hour on some systems. This will cause the deployment to be slow. If you hit this issue you will see that the Install-AksHci will be in a loop. To get past this issue, try to use this flag. However, this is on a best effort basis, so there is no guarantee that `-forceDnsReplication` will work. If the logic behind the flag fails, the error will be hidden and the command will carry on as if the flag was not provided.
+DNS replication can take up to an hour on some systems. This will cause the deployment to be slow. If you hit this issue you will see that the Install-AksHci will be in a loop. To get past this issue, try to use this flag. However, this is on a best effort basis, so there is no guarantee that `-forceDnsReplication` will work. If the logic behind the flag fails, the error will be hidden, and the command will carry on as if the flag was not provided.
 
 ### Reset the AKS-HCI configuration
 

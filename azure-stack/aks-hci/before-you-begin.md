@@ -31,7 +31,7 @@ For Azure Kubernetes Service on Azure Stack HCI to function optimally in an Acti
 
  - Ensure time synchronization is setup and the divergence is not greater than 2 minutes across all cluster nodes and the domain controller. For information on setting time synchronization visit [Windows Time Service](https://docs.microsoft.com/windows-server/networking/windows-time-service/windows-time-service-top). 
 
- - Ensure that the user account(s) adding, updating, and managing Azure Kubernetes Service on Azure Stack HCI clusters have the correct permissions in Active Directory. If you are using Organizational Units (OUs) to manage group policies for servers and services, the user account(s) will require list, read, modify and delete permissions on all objects in the OU. 
+ - Ensure that the user account(s) adding, updating, and managing Azure Kubernetes Service on Azure Stack HCI clusters have the correct permissions in Active Directory. If you are using Organizational Units (OUs) to manage group policies for servers and services, the user account(s) will require list, read, modify, and delete permissions on all objects in the OU. 
 
  - It is recommended to use a separate OU for the servers and services you add your Azure Kubernetes Service on Azure Stack HCI clusters to. This will allow you to control access and permission with more granularity. 
 
@@ -50,7 +50,7 @@ For Azure Kubernetes Service on Azure Stack HCI to function optimally in an Acti
 
  - Verify that you have Hyper-V and Hyper-V PowerShell roles installed and functioning. For additional feature-specific requirements for Hyper-V, see [System Requirements for Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
 
- - All nodes need to be installed with the EN-US region and language selection. It is not sufficient to add EN-US or change the region and language later in the process. 
+ - All nodes must be installed with the EN-US region and language selection. It is not sufficient to add EN-US or change the region and language later in the process. 
 
 <br>
 
@@ -65,9 +65,9 @@ Azure Kubernetes Service on Azure Stack HCI cluster requires a reliable high-ban
 
  - The network must have an available DHCP server to provide TCP/IP addresses to the VMs, and VM hosts. The DHCP server should also contain NTP and DNS host information. 
 
- - It is further recommended to have a DHCP server with a dedicated scope of IPv4 addresses accessible by the Azure Stack HCI cluster or Windows Server Failover cluster. For example, you can reserve 10.0.1.1 for the default gateway, 10.0.1.2 to 10.0.1.102 for Kubernetes services and use 10.0.1.103-10.0.1.254 for Kubernetes cluster VMs. 
+ - It is further recommended to have a DHCP server with a dedicated scope of IPv4 addresses accessible by the Azure Stack HCI cluster. For example, you can reserve 10.0.1.1 for the default gateway, 10.0.1.2 to 10.0.1.102 for Kubernetes services and use 10.0.1.103-10.0.1.254 for Kubernetes cluster VMs. 
 
- - The IPv4 addresses provided by the DHCP server should be routable and have a 7-day lease expiration to avoid loss of IP connectivity in case of VM update or re-provisioning.  
+ - The IPv4 addresses provided by the DHCP server should be routable and have a 7-day lease expiration to avoid loss of IP connectivity in case of VM update or reprovisioning.  
 
  - It is not recommended to have VLAN tags. Use access or untagged ports on your network switches. 
 
