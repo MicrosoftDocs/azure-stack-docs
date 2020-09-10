@@ -4,7 +4,7 @@ description: How to create volumes in Azure Stack HCI using Windows Admin Center
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.date: 09/10/2020
 ---
 
 # Create volumes in Azure Stack HCI
@@ -69,19 +69,7 @@ Watch a quick video on how to open a volume and add files.
 
 Deduplication and compression is managed per volume. Deduplication and compression uses a post-processing model, which means that you won't see savings until it runs. When it does, it'll work over all files, even those that were there from before.
 
-1. In Windows Admin Center, connect to a Storage Spaces Direct cluster, and then select **Volumes** from the **Tools** pane.
-2. On the **Volumes** page, select the **Inventory** tab.
-3. In the list of volumes, select the name of the volume that want to manage.
-4. On the volume details page, click the switch labeled **Deduplication and compression**.
-5. In the **Enable deduplication** pane, select the deduplication mode.
-
-    Instead of complicated settings, Windows Admin Center lets you choose between ready-made profiles for different workloads. If you're not sure, use the default setting.
-
-6. Select **Enable**.
-
-Watch a quick video on how to turn on deduplication and compression.
-
-> [!VIDEO https://www.youtube-nocookie.com/embed/PRibTacyKko]
+To learn more, see [Enable volume encryption, deduplication, and compression](volume-encryption-deduplication.md)
 
 ## Create volumes using Windows PowerShell
 
