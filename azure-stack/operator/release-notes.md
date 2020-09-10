@@ -121,7 +121,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
 
-## 2005 update planning
+## Update planning
 
 Before applying the update, make sure to review the following information:
 
