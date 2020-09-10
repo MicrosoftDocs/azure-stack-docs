@@ -66,20 +66,23 @@ For example, the backup share is AzSBackups hosted on fileserver01.contoso.com. 
 FQDN: contoso.com  
 Region: nyc
 
-
+```console
     \\fileserver01.contoso.com\AzSBackups
     \\fileserver01.contoso.com\AzSBackups\contoso.com
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\MASBackup
+```
 
 MASBackup folder is where Azure Stack Hub stores its backup data. Don't use this folder to store your own data. OEMs shouldn't use this folder to store any backup data either.
 
 OEMs are encouraged to store backup data for their components under the region folder. Each network switch, hardware lifecycle host (HLH), and so on, may be stored in its own subfolder. For example:
 
+```console
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\HLH
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\Switches
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\DeploymentData
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\Registration
+```
 
 ### Monitoring
 

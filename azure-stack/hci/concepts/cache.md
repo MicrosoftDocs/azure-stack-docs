@@ -37,13 +37,13 @@ These can be combined in various ways, which we group into two categories: "all-
 
 All-flash deployments aim to maximize storage performance and do not include rotational hard disk drives (HDD).
 
-![All-Flash-Deployment-Possibilities](media/cache/All-Flash-Deployment-Possibilities.png)
+![Diagram shows all-flash deployments, including N V M e for capacity, N V M e for cache with S S D for capacity, and S S D for capacity.](media/cache/All-Flash-Deployment-Possibilities.png)
 
 ### Hybrid deployment possibilities
 
 Hybrid deployments aim to balance performance and capacity or to maximize capacity and do include rotational hard disk drives (HDD).
 
-![Hybrid-Deployment-Possibilities](media/cache/Hybrid-Deployment-Possibilities.png)
+![Diagram shows hybrid deployments, including N V M e for cache with H D D for capacity, S S D for cache with H D D for capacity, and N V M e for cache with H D D plus S S D for capacity.](media/cache/Hybrid-Deployment-Possibilities.png)
 
 ## Cache drives are selected automatically
 
@@ -51,7 +51,7 @@ In deployments with multiple types of drives, Azure Stack HCI automatically uses
 
 Which type is "fastest" is determined according to the following hierarchy.
 
-![Drive-Type-Hierarchy](media/cache/Drive-Type-Hierarchy.png)
+![Diagram shows disk types arranged faster to slower in the order N V M e, S S D, unlabeled disk representing H D D.](media/cache/Drive-Type-Hierarchy.png)
 
 For example, if you have NVMe and SSDs, the NVMe will cache for the SSDs.
 
@@ -69,7 +69,7 @@ When all drives are of the same type, no cache is configured automatically. You 
 
 The behavior of the cache is determined automatically based on the type(s) of drives that are being cached for. When caching for solid-state drives (such as NVMe caching for SSDs), only writes are cached. When caching for hard disk drives (such as SSDs caching for HDDs), both reads and writes are cached.
 
-![Cache-Read-Write-Behavior](media/cache/Cache-Read-Write-Behavior.png)
+![Diagram comparing caching for all-flash, where writes are cached and reads are not, with hybrid, where both reads and writes are cached.](media/cache/Cache-Read-Write-Behavior.png)
 
 ### Write-only caching for all-flash deployments
 
@@ -110,7 +110,7 @@ Because the cache is below the rest of the Windows software-defined storage stac
 
 Given that resiliency in Azure Stack HCI is at least server-level (meaning data copies are always written to different servers; at most one copy per server), data in the cache benefits from the same resiliency as data not in the cache.
 
-![Cache-Server-Side-Architecture](media/cache/Cache-Server-Side-Architecture.png)
+![Diagram represents three servers joined by a three-way mirror in a storage space layer, which accesses a cache layer of N V M e drives which access unlabeled capacity drives.](media/cache/Cache-Server-Side-Architecture.png)
 
 For example, when using three-way mirroring, three copies of any data are written to different servers, where they land in cache. Regardless of whether they are later de-staged or not, three copies will always exist.
 
@@ -118,7 +118,7 @@ For example, when using three-way mirroring, three copies of any data are writte
 
 The binding between cache and capacity drives can have any ratio, from 1:1 up to 1:12 and beyond. It adjusts dynamically whenever drives are added or removed, such as when scaling up or after failures. This means you can add cache drives or capacity drives independently, whenever you want.
 
-![Dynamic-Binding](media/cache/Dynamic-Binding.gif)
+![Animated diagram shows two N V M e cache drives dynamically mapping to first four, then six, then eight capacity drives.](media/cache/Dynamic-Binding.gif)
 
 We recommend making the number of capacity drives a multiple of the number of cache drives, for symmetry. For example, if you have 4 cache drives, you will experience more even performance with 8 capacity drives (1:2 ratio) than with 7 or 9.
 
@@ -130,7 +130,7 @@ For a brief period, the capacity drives which were bound to the lost cache drive
 
 This scenario is why at minimum two cache drives are required per server to preserve performance.
 
-![Handling-Failure](media/cache/Handling-Failure.gif)
+![Animated diagram shows two S S D cache drives mapped to six capacity drives until one cache drive fails, which causes all six drives to be mapped to the remaining cache drive.](media/cache/Handling-Failure.gif)
 
 You can then replace the cache drive just like any other drive replacement.
 
@@ -189,7 +189,7 @@ You can verify that the drives you intended are being used for caching by runnin
 
 Manual configuration enables the following deployment possibilities:
 
-![Exotic-Deployment-Possibilities](media/cache/Exotic-Deployment-Possibilities.png)
+![Diagram shows deployment possibilities, including N V M e for both cache and capacity, S S D for both cache and capacity, and S S D for cache and mixed S S D and H D D for capacity.](media/cache/Exotic-Deployment-Possibilities.png)
 
 ### Set cache behavior
 
