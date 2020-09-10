@@ -19,6 +19,9 @@ ms.lastreviewed: 09/02/2020
 
 You can set up the Azure Kubernetes Services (AKS) Engine for your users. Add the items described in this article to your Azure Stack Hub. Your users can then deploy a Kubernetes cluster in a single, coordinated operation. This article walks you through the steps you need to make the AKS engine available to your users in both connected and disconnected environments. The AKS engine depends on a service principle identity, and in the marketplace, a Custom Script extension and the AKS Base Image. The AKS engine requires that you're running [Azure Stack Hub 1910](release-notes.md?view=azs-1910) or greater.
 
+> [!NOTE]  
+> You can find the mapping of Azure Stack Hub to AKS engine version number in the [AKS engine release notes](/azure-stack/user/kubernetes-aks-engine-release-notes#aks-engine-and-azure-stack-version-mapping).
+
 ## Check your user's service offering
 
 Your users will need a plan, offer, and subscription to Azure Stack Hub with enough space. Users will often want to deploy clusters of up to six virtual machines, made of three masters and three worker nodes. You will want to make sure they have a large enough quota.
