@@ -13,6 +13,8 @@ Azure Kubernetes Service on Azure Stack HCI is a Kubernetes-based orchestrator t
 
 Azure Kubernetes Service on Azure Stack HCI is in preview, and has no added cost during preview. To get started, see [Set up Azure Kubernetes Service on Azure Stack HCI](setup.md). To instead use a hosted Kubernetes service in Azure, see [Azure Kubernetes Service in Azure](/azure/aks/intro-kubernetes).
 
+The following sections discuss some of the reasons to use Azure Kubernetes Service on Azure Stack HCI, then answer some common questions about the service and how to get started.
+
 ## Automate management of containerized applications with Kubernetes
 
 Containers are a technology for packaging and running Windows and Linux applications across diverse environments on-premises and in the cloud. Containers provide a lightweight, isolated environment that makes apps easier to develop, deploy, and manage. Containers start and stop quickly, making them ideal for apps that need to rapidly adapt to changing demand. The lightweight nature of containers also make them a useful tool for increasing the density and utilization of your infrastructure.
@@ -40,9 +42,9 @@ Kubernetes is an open-source project that's freely available on a number of plat
 
 Azure Kubernetes Service on Azure Stack HCI was designed to simplify this process of setting up Kubernetes, and includes the following:
 
-- A graphical wizard to set up Azure Kubernetes Service in Windows Admin Center, which streamlines setting up Kubernetes
-- A graphical wizard to create a Kubernetes cluster in Windows Admin Center, which streamlines creating a Kubernetes cluster that runs your containerized applications
-- PowerShell cmdlets for setting up Azure Kubernetes Service and creating Kubernetes clusters, in case you'd rather script setup and Kubernetes cluster creation
+- A graphical wizard to that simplifies setting up Kubernetes
+- A graphical wizard that simplifies creating a Kubernetes cluster to run your containerized applications
+- PowerShell cmdlets for setting up Kubernetes and creating Kubernetes clusters, in case you'd rather script setup and Kubernetes cluster creation
 
 ## View and manage Kubernetes using on-premises tools or Azure Arc
 
@@ -52,10 +54,10 @@ Once you've set up Azure Kubernetes Service on your server or failover cluster a
 - **In the Azure portal using Azure Arc** - use an Azure service to manage Azure Kubernetes Service and Kubernetes clusters deployed across your cloud and on-premises environments. You can use Azure Arc to add and remove Kubernetes clusters as well as nodes to a Kubernetes cluster, change network settings, and install addons.
 <br>Azure Arc also enables you to use other Azure services to monitor and manage your Kubernetes clusters including:
 
-   - Azure Monitor
-   - Azure Policy
-   - Role-Based Access Control
-   - Azure Security Center
+  - Azure Monitor
+  - Azure Policy
+  - Role-Based Access Control
+  - Azure Security Center
 
 ## Where can I run Azure Kubernetes Service?
 
@@ -111,47 +113,17 @@ While not strictly necessary, we also recommend the following:
 
 - No VLAN tags, instead using access (untagged) ports on your network switches for the compute network used by Azure Stack HCI and the Azure Kubernetes Service VMs.
 
-### Set up a Kubernetes host
+### Set up an Azure Kubernetes Service host
 
-### Create Kubernetes clusters
+Before you can create a Kubernetes cluster, you first need to set up Azure Kubernetes Service on Azure Stack HCI. 
 
+### Create Kubernetes clusters for your containerized apps
 
-
-
-## 
-What is it?
-Why should I care?
-How can I get started?
-
+After setting up Azure Kubernetes Service on your Azure Stack HCI cluster, you can then use Windows Admin Center or PowerShell to create Kubernetes clusters that run your containerized applications.
 
 ## Next steps
 
-Review requirements
-Set up Azure Kubernetes Service on Azure Stack HCI
+To get started with Azure Kubernetes Service on Azure Stack HCI, see the following articles:
 
-## <article body>
-
-<!---
-After the intro, you can develop your overview by discussing the features that answer the "Why should I care" question with a bit more depth.
-Be sure to call out any basic requirements and dependencies, as well as limitations or overhead.
-Don't catalog every feature, and some may only need to be mentioned as available, without any discussion.
---->
-
-## <Top task>
-
-<!---Suggested:
-An effective way to structure you overview article is to create an H2 for the top customer tasks identified in milestone one of the [Content + Learning content model](contribute-get-started-mvc.md) and describe how the product/service helps customers with that task.
-Create a new H2 for each task you list.
---->
-
-## Next steps
-
-<!---Some context for the following links goes here--->
-- [link to next logical step for the customer](global-quickstart-template.md)
-
-<!--- Required:
-In Overview articles, provide at least one next step and no more than three.
-Next steps in overview articles will often link to a quickstart.
-Use regular links; do not use a blue box link. What you link to will depend on what is really a next step for the customer.
-Do not use a "More info section" or a "Resources section" or a "See also section".
---->
+- Review requirements
+- Set up Azure Kubernetes Service on Azure Stack HCI
