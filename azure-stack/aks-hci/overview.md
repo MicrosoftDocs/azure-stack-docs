@@ -82,9 +82,34 @@ Here are a couple diagrams showing how the architectures of Azure Kubernetes Ser
 
 ## What you need to get started
 
-Here's a summary of what you need to run Azure Kubernetes Service on Azure Stack HCI:
+The following sections summarize what you need to run Azure Kubernetes Service on Azure Stack HCI. For complete details, see [Before you install Azure Kubernetes Service on Azure Stack HCI](before-you-begin.md).
 
-- A cluster running Azure Stack HCI, version 20H2, with 
+### On your Windows Admin Center system
+
+Your Windows Admin Center management PC or server requires the following:
+
+- 40 GB of free space
+- Be registered with Azure
+- Be in the same domain as the Azure Stack HCI cluster
+
+### On the Azure Stack HCI cluster that hosts Azure Kubernetes Service
+
+The cluster running Azure Stack HCI, version 20H2 or later requires the following:
+
+- Between two and four servers in the cluster
+- 1 TB of available capacity in the storage pool for Azure Kubernetes Service
+- At least 30 GB of available memory for running Azure Kubernetes Service VMs
+- All servers in the cluster must use the EN-US region and language selection for this preview release
+
+### The compute network for Azure Stack HCI
+
+The network connected to VMs on the Azure Stack HCI cluster requires the following:
+
+- A dedicated scope of DHCP IPv4 addresses available for Azure Kubernetes Service and accessible by VMs on the Azure Stack HCI cluster
+
+While not strictly necessary, we also recommend the following:
+
+- No VLAN tags, instead using access (untagged) ports on your network switches for the compute network used by Azure Stack HCI and the Azure Kubernetes Service VMs.
 
 ### Set up a Kubernetes host
 
