@@ -148,7 +148,7 @@ Resiliency reserve = 512 + 230.4 + 224 = 966.4 GB
 
 **A**: In **PowerShell** run `test-azurestack -include AzsVmPlacement -debug`, which generates an output like this:
 
-    ```console
+```console
     Starting Test-AzureStack
     Launching AzsVmPlacement
      
@@ -162,7 +162,7 @@ Resiliency reserve = 512 + 230.4 + 224 = 966.4 GB
     LNV2-Node04     10       10          28            49               256             101              
     
     PASS : Azure Stack Scale Unit VM Placement Summary
-    ```
+```
 
 **Q**: The number of deployed VMs on my Azure Stack Hub hasn't changed, but my capacity is fluctuating. Why?
 
