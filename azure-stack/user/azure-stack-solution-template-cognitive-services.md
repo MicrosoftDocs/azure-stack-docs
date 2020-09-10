@@ -76,7 +76,7 @@ Create a Cognitive Service resource on Azure to preview the Face, LUIS, or Recog
 
 1. Create an Azure resource in the Azure portal. If you want to preview the Face containers, you must first create a corresponding Face resource in the Azure portal. For more information, see [Quickstart: Create a Cognitive Services account in the Azure portal](/azure/cognitive-services/cognitive-services-apis-create-account).
 
-   > [!Note]
+   > [!NOTE]
    >  The Face or Computer Vision resource must use the F0   pricing tier.
 
 2. Get the endpoint URL and subscription key for the Azure resource. Once you create the Azure resource, use the subscription key and endpoint URL from that resource to instantiate the corresponding Face, LUIS, or Recognize Text container for the preview.

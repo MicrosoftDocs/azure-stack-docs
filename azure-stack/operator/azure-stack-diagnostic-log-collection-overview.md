@@ -3,10 +3,10 @@ title: Diagnostic log collection in Azure Stack Hub
 description: Learn about diagnostic log collection in Azure Stack Hub Help + support.
 author: justinha
 ms.topic: article
-ms.date: 05/11/2020
+ms.date: 08/24/2020
 ms.author: justinha
 ms.reviewer: shisab
-ms.lastreviewed: 05/11/2020
+ms.lastreviewed: 08/24/2020
 
 # Intent: As an Azure Stack Hub operator, I want to learn about diagnostic log collection so I can share them with Microsoft Support when I need help addressing an issue.
 # Keyword: diagnostic log collection azure stack hub
@@ -86,7 +86,7 @@ By initiating diagnostic log collection from Azure Stack Hub, you acknowledge an
 
 ## Save logs locally
 
-You can save logs to a local SMB share when Azure Stack Hub is disconnected from Azure. In the **Settings** blade, enter the path and a username and password with permission to write to the share. During a support case, Microsoft CSS will provide detailed steps on how to get these local logs transferred.
+You can save logs to a local SMB share when Azure Stack Hub is disconnected from Azure. In the **Settings** blade, enter the path and a username and password with permission to write to the share. During a support case, Microsoft Support will provide detailed steps on how to get these local logs transferred. If the Administrator portal is unavailable, you can use [Get-AzureStackLog](azure-stack-get-azurestacklog.md) to save logs locally.
 
 ![Screenshot of diagnostic log collection options](media/azure-stack-help-and-support/save-logs-locally.png)
 

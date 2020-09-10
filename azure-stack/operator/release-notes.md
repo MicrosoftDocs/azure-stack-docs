@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/13/2020
+ms.date: 09/04/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 08/11/2020
@@ -107,7 +107,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue with scale-in and scale-out for the support infrastructure role that has a cascading effect on repairing scale unit nodes.
 - Fixed an issue in which the .VHD extension (instead of .vhd) was not allowed when operators added their own images to the Azure Stack Hub administrator portal on **All services > Compute > VM Images > Add**.
 - Fixed an issue in which a previous VM restart operation caused a subsequent unexpected restart after any other VM update operation (adding disks, tags, etc.).
-- Fixed an issue in which creating a duplicate DNS zone caused the portal to hang. It should now show an appropriate error.
+- Fixed an issue in which creating a duplicate DNS zone caused the portal to stop responding. It should now show an appropriate error.
 - Fixed an issue in which **Get-AzureStackLogs** was not collecting the required logs to troubleshoot networking issues. 
 - Fixed an issue in which the portal allowed fewer NICs to be attached than what it actually allows. 
 - Fixed code integrity policy to not emit violation events for certain internal software. This reduces noise in code integrity violation events emitted via syslog client.
@@ -115,6 +115,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue in which using a Linux NTP server erroneously generates alerts in the administration portal.  
 - Fixed an issue where failover of Backup Controller service instance resulted in automatic backups getting disabled.
 - Fixed an issue where internal secret rotation fails when infrastructure services do not have internet connectivity.
+- Fixed an issue in which users could not view subscription permissions using the Azure Stack Hub portals.
 
 ## Security updates
 
@@ -155,7 +156,7 @@ Starting with the 2005 release, when you update to a new major version (for exam
 
 After the installation of 2005, if any 2005 hotfixes are subsequently released, you should install them:
 
-- No Azure Stack Hub hotfix available for 2005.
+- [Azure Stack Hub hotfix 1.2005.12.66](https://support.microsoft.com/help/4580968)
 ::: moniker-end
 
 ::: moniker range="azs-2002"
