@@ -1,5 +1,5 @@
 ---
-title: How to connect two Azure Stack Hubs through VNET peering with FortiGate 
+title: Connect two Azure Stack Hubs through VNET peering with FortiGate 
 description: Learn how to use Fortinet Fortigate to connect two Azure Stack Hubs through VNET peering.
 author: mattbriggs
 

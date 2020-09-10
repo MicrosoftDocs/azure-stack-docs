@@ -1,5 +1,5 @@
 ---
-title: Release notes for the Azure Kubernetes Service (AKS) engine on Azure Stack Hub
+title: Release notes for Azure Kubernetes Service (AKS) engine on Azure Stack Hub
 description: Learn the steps you need to take with the update to AKS engine on Azure Stack Hub.
 author: mattbriggs
 
