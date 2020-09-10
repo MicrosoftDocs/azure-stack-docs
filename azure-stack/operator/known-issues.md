@@ -35,11 +35,11 @@ To access known issues for a different version, use the version selector dropdow
 <!---------------------------------------------------------->
 
 ::: moniker range="azs-2005"
-## 2005 update
+## Update
 
 For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
-## Portal issues in 2005 update
+## Portal issues
 
 ### Administrative subscriptions
 
@@ -48,7 +48,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
 - Occurrence: Common
 
-## Networking issues in 2005 update
+## Networking issues
 
 ### Network Security Groups
 
@@ -94,7 +94,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Remediation: To bring the public IP back into a successful state, change the **IdleTimeoutInMinutes** value on the load balancer rule that references the public IP back to the original value (the default is 4 minutes).
 - Occurrence: Common
 
-## Compute issues in 2005 update
+## Compute issues
 
 ### Issues using VM extensions in Ubuntu Server 20.04
 
@@ -129,7 +129,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack Hub environment.
 - Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack Hub deployment.
 
-## Storage issues in 2005 update
+## Storage issues
 
 ### Retention period reverts to 0
 
@@ -137,7 +137,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: If you specify a time period other than 0 in the retention period setting, it reverts to 0 (the default value of this setting) during the 2002 or 2005 update. The 0 days setting takes effect immediately after the update finishes, which causes all existing deleted storage accounts and any upcoming newly deleted storage accounts to be immediately out of retention and marked for periodic garbage collection (which runs hourly).
 - Remediation: Manually specify the retention period to a correct period. Any storage account that has already been garbage collected before the new retention period is specified, is not recoverable.  
 
-## Resource provider issues in 2005 update
+## Resource provider issues
 
 ### SQL/MySQL
 
@@ -160,13 +160,13 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 ::: moniker-end
 
 ::: moniker range="azs-2002"
-## 2002 update
+## Update
 
 After applying the 2002 update, an alert for an "Invalid Time Source" may incorrectly appear in the Administrator portal. This false-positive alert can be ignored and will be fixed in an upcoming release. 
 
 For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
-## Portal issues in 2002 update
+## Portal issues
 
 ### Administrative subscriptions
 
@@ -201,7 +201,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: When a cable is disconnected from a network adapter, an alert does not show in the administrator portal. This issue is caused because this fault is disabled by default in Windows Server 2019.
 - Occurrence: Common
 
-## Networking issues in 2002 update
+## Networking issues
 
 ### DenyAllOutbound rule cannot be created
 
@@ -264,7 +264,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
   - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
   - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
-## Compute issues in 2002 update
+## Compute issues
 
 ### Cannot create a VMSS with Standard_DS2_v2 VM size on portal
 
@@ -327,7 +327,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: When configuring the automated backup of SQL VMs with an existing storage account, it fails with the error **SQL Server IaaS Agent: The underlying connection was closed: An unexpected error occurred on a send.**
 - Occurrence: Common
 
-## Storage issues in 2002 update
+## Storage issues
 
 ### Retention period revert to 0
 
@@ -335,7 +335,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: If you previously specified a time period other than 0 in retention period setting, it would be reverted back to 0 (the default value of this setting) during 2002 and 2005 update. And the 0 days setting would take effect immdiately after update finished, which causes all the existing deleted storage accounts and any upcoming newly deleted storage account being immediately out of retention and marked for periodic garbage collection (which runs hourly). 
 - Remediation: Manually specify the retention period to a proper period. However, any storage account already been garbage collected before the new retention period is specified is not recoverable.  
 
-## Resource provider issues in 2002 update
+## Resource provider issues
 
 ### SQL/MySQL
 
@@ -358,11 +358,11 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 ::: moniker-end
 
 ::: moniker range="azs-1910"
-## 1910 update
+## Update
 
 For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
-## Portal issues in 1910 update
+## Portal issues
 
 ### Administrative subscriptions
 
@@ -466,7 +466,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: When accessing the activity log, the portal only shows the first page of entries. **Load more results** will not load addition entries.
 - Remediation: Adjust the time range in the filter to review entries that fall after the first page.
 
-## Networking issues in 1910 update
+## Networking issues
 
 ### Load balancer
 
@@ -551,7 +551,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
   - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
   - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
-## Compute issues in 1910 update
+## Compute issues
 
 ### VM boot diagnostics
 
@@ -598,7 +598,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Remediation: Starting with version 1901 (1.1901.0.95), you can work around this issue by clicking **Update now** again (not **Resume**). The URP then cleans up the files from the previous attempt, and restarts the download. If the problem persists, we recommend manually uploading the update package by following the [Install updates section](azure-stack-apply-updates.md#install-updates-and-monitor-progress).
 - Occurrence: Common
 
-## Portal issues in 1908 update
+## Portal issues
 
 ### Administrative subscriptions
 
@@ -646,7 +646,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: When a cable is disconnected from a network adapter, an alert does not show in the administrator portal. This issue is caused because this fault is disabled by default in Windows Server 2019.
 - Occurrence: Common
 
-## Networking issues in 1908 update
+## Networking issues
 
 ### Load Balancer
 
@@ -726,7 +726,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
   - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
   - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
-## Compute issues in 1908 update
+## Compute issues
 
 ### VM boot diagnostics
 

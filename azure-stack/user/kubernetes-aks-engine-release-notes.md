@@ -138,7 +138,7 @@ This is the complete set of release notes for Azure and Azure Stack Hub combined
 
 This article describes the contents of the Azure Kubernetes Service (AKS) engine on Azure Stack Hub update. The update includes improvements and fixes for the latest release of AKS engine targeted to the Azure Stack Hub platform. Notice that this isn't intended to document the release information for the AKS engine for global Azure.
 
-## Update planning for 1910 and earlier
+## Update planning
 
 The AKS engine upgrade command fully automates the upgrade process of your cluster, it takes care of virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the information in this article.
 
@@ -172,7 +172,7 @@ Sometimes unexpected factors interrupt the upgrade of the cluster. An interrupti
 
 The estimated time is between 12 to 15 minutes per VM in the cluster. For example, a 20-node cluster may take approximately to five (5) hours to upgrade.
 
-## Download new image and AKS engine for 1910 and earlier
+## Download new image and AKS engine
 
 Download the new versions of the AKS base Ubuntu Image and AKS engine.
 
@@ -190,7 +190,7 @@ New versions of these are available with this update:
 
 -   The Kubernetes cluster administrator will need to download the new aks-engine version 0.48.0. See instructions in this the following article, [Install the AKS engine on Linux in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-linux.md). You can follow the same process you use to install the cluster for the first time. The update will overwrite the previous binary. For example, if you used the `get-akse.sh` script, follow the same steps outlined in the article [Install in a connected environment](./azure-stack-kubernetes-aks-engine-deploy-linux.md#install-in-a-connected-environment). The same process applies if you're installing in on a Windows system, article [Install the AKS engine on Windows in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-windows.md).
 
-## Kubernetes version upgrade path for 1910 and earlier
+## Kubernetes version upgrade path
 
 You can find the current version and upgrade version in the following table for Azure Stack Hub. Don't follow the aks-engine `get-versions` command since the command one also includes the versions supported in global Azure. The following version and upgrade table applies to the AKS engine cluster in Azure Stack Hub.
 
@@ -201,7 +201,7 @@ You can find the current version and upgrade version in the following table for 
 | 1.15.4 | 1.15.10 |
 | 1.15.5 | 1.15.10 |
 
-## What's new for 1910 and earlier
+## What's new
 
 -   Support for Kubernetes version 1.15.10 ([\#2834](https://github.com/Azure/aks-engine/issues/2834)). When deploying a new cluster make sure to specify in your api model json file (a.k.s. cluster definition file) the release version number as well as the minor version number. You can find an example: [kubernetes-azurestack.json](https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-azurestack.json):
 
@@ -236,7 +236,7 @@ You can find the current version and upgrade version in the following table for 
 
 -   With this release AKS Engine cuts dependency from `k8s.gcr.io` to now use the official `Kubernetes MCR registry @ mcr.microsoft.com` when building its images ([\#2722](https://github.com/Azure/aks-engine/issues/2722)).
 
-## Known issues for 1910 and earlier
+## Known issues
 
 -  Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. Deploying one service at the time if possible.
 
@@ -244,7 +244,7 @@ You can find the current version and upgrade version in the following table for 
 
 -  Since aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, please ignore them and use the version table above as the official guide for this update.
 
-## Reference for 1910 and earlier
+## Reference
 
 Following is a list of some of the bugs fixed as well as the complete set of release notes from 0.44.0 to 0.48.0, notice that the latter list will include Azure and Azure Stack Hub items
 
