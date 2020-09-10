@@ -57,7 +57,7 @@ Network Controller allows you to automatically deploy VMs running RAS Gateway wi
 
 ## Virtual appliance chaining
 
-Anirban: Do you mean service chaining [as described here](https://docs.microsoft.com/en-us/windows-server/networking/sdn/vnet-peering/sdn-vnet-peering#service-chaining)?
+Anirban: Do you mean service chaining [as described here](/windows-server/networking/sdn/vnet-peering/sdn-vnet-peering#service-chaining)?
 
 ## Network Controller deployment considerations
 
