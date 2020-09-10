@@ -10,13 +10,11 @@ ms.author: jeguan
 
 > Applies to: Azure Stack HCI
 
-In this article, you will learn how to create an Azure Kubernetes Service host on Azure Stack HCI using Windows PowerShell.
+In this quickstart, you will learn how to create an Azure Kubernetes Service host on Azure Stack HCI using Windows PowerShell.
 
 ## Before you begin
 
-Before you begin, make sure you:
-
-- Have a 2-4 node Azure Stack HCI cluster or a Single Node Azure Stack HCI. **However, it is recommended to have a 2-4 node Azure Stack HCI cluster.** If you do not, follow instructions on how to [here](./before-you-begin.md)
+Before you begin, make sure you have a 2-4 node Azure Stack HCI cluster or a Single Node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you do not, follow instructions on how to [here](./before-you-begin.md)
 
 ## Step 1: Prepare your machine(s) for deployment
 
@@ -28,9 +26,11 @@ Open PowerShell as an administrator and run the following command.
    Initialize-AksHciNode
    ```
 
+When the checks are finished, you will see "Done" displayed in green text.
+
 ## Step 2: Configure your deployment
 
-Then, we'll need to set the configuration settings for the Azure Kubernetes Service host. For a failover cluster deployment, you must specify the `-wssdImageDir` and the `-cloudConfigLocation`. In a Single Node Azure Stack HCI deployment, all the parameters are optional and they will be set to the default value. If the deployment type is not specified, `SingleNode` is the default. **However, it is recommended to use a failover cluster.**
+Then, we'll need to set the configuration settings for the Azure Kubernetes Service host. For an Azure Stach HCI cluster deployment, you must specify the `-wssdImageDir` and the `-cloudConfigLocation`. In a Single Node Azure Stack HCI deployment, all the parameters are optional and they will be set to the default value. If the deployment type is not specified, `SingleNode` is the default. **We recommend using a Azure Stack HCI cluster deployment.**
 
 Configure your deployment with the following command.
 
@@ -68,7 +68,7 @@ The deployment type. Accepted values: SingleNode, MultiNode.
 
 `-wssdImageDir`
 
-The path to the directory where AKS-hci will store its VHD images. Defaults to `%systemdrive%\wssdimagestore` for single node deployments. For multi-node deployments, this parameter must be specified. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore` or an SMB share such as `\\FileShare\ImageStore`.
+The path to the directory where Azure Kubernetes Service on Azure Stack HCI will store its VHD images. Defaults to `%systemdrive%\wssdimagestore` for single node deployments. For multi-node deployments, this parameter must be specified. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore` or an SMB share such as `\\FileShare\ImageStore`.
 
 `-cloudConfigLocation`
 
@@ -92,7 +92,7 @@ The size of the VM to create for the Load Balancer VMs. To get a list of availab
 
 `-sshPublicKey`
 
-Path to an SSH public key file. Using this public key, you will be able to log in to any of the VMs created by the AKS-HCI deployment. If no key is provided, we will look for one under `%systemdrive%\Users\<username>\.ssh\id_rsa.pub`. If file does not exist, an SSH key pair in the above location will be generated and used.  
+Path to an SSH public key file. Using this public key, you will be able to log in to any of the VMs created by the Azure Kubernetes Service on Azure Stack HCI deployment. If no key is provided, we will look for one under `%systemdrive%\Users\<username>\.ssh\id_rsa.pub`. If file does not exist, an SSH key pair in the above location will be generated and used.  
 
 `-vipPoolStartIp`
 
@@ -116,7 +116,7 @@ This is a working directory for the module to use for storing small files. Defau
 
 `-akshciVersion`
 
-The version of AKS-HCI that you want to deploy. The default is the latest version.
+The version of Azure Kubernetes Service on Azure Stack HCI that you want to deploy. The default is the latest version.
 
 `-vnetType`
 
@@ -128,11 +128,11 @@ The TCP/IP port number that nodeagents should listen on. Defaults to 45000. 
 
 `-nodeAgentAuthorizerPort`
 
-The TCP/IP port number that nodeagents should use for their authorization port. Defaults to 45001  
+The TCP/IP port number that nodeagents should use for their authorization port. Defaults to 45001.  
 
 `-clusterRoleName`
 
-This specifies the name to use when creating cloudagent as a generic service within the failover cluster. This defaults to a unique name with a prefix of ca- and a guid suffix (for example: “ca-9e6eb299-bc0b-4f00-9fd7-942843820c26”)
+This specifies the name to use when creating cloudagent as a generic service within the cluster. This defaults to a unique name with a prefix of ca- and a guid suffix (for example: “ca-9e6eb299-bc0b-4f00-9fd7-942843820c26”)
 
 `-skipHostLimitChecks`
 
@@ -140,7 +140,7 @@ Requests the script to skip any checks it does to confirm memory and disk space 
 
 `-insecure`
 
-Deploys AKS-HCI components such as cloudagent and nodeagent(s) in insecure mode (no TLS secured connections).  It is not recommended to use insecure mode in production environments.
+Deploys Azure Kubernetes Service on Azure Stack HCI components such as cloudagent and nodeagent(s) in insecure mode (no TLS secured connections).  It is not recommended to use insecure mode in production environments.
 
 `-skipUpdates`
 
@@ -148,11 +148,11 @@ Use this flag if you want to skip any updates available.
 
 `-forceDnsReplication`
 
-DNS replication can take up to an hour on some systems. This will cause the deployment to be slow. If you hit this issue you will see that the Install-AksHci will be in a loop. To get past this issue, try to use this flag. However, this is on a best effort basis, so there is no guarantee that `-forceDnsReplication` will work. If the logic behind the flag fails, the error will be hidden, and the command will carry on as if the flag was not provided.
+DNS replication can take up to an hour on some systems. This will cause the deployment to be slow. If you hit this issue, you will see that the Install-AksHci will be stuck in a loop. To get past this issue, try to use this flag. The `-forceDnsReplication` flag is not a guaranteed fix. If the logic behind the flag fails, the error will be hidden, and the command will carry on as if the flag was not provided.
 
-### Reset the AKS-HCI configuration
+### Reset the Azure Kubernetes Service on Azure Stack HCI configuration
 
-To reset the AKS-HCI configuration, run the following command. Running this command on its own will reset the configuration to default values.
+To reset the Azure Kubernetes Service on Azure Stack HCI configuration, run the following command. Running this command on its own will reset the configuration to default values.
 
 ```powershell
 Set-AksHciConfig
@@ -160,9 +160,9 @@ Set-AksHciConfig
 
 ## Step 3: Start a new deployment
 
-This will install the Azure Kubernetes Service on Azure Stack HCI agents/services and the Azure Kubernetes Service host
+After you've configured your deployment, you must start deployment. This will install the Azure Kubernetes Service on Azure Stack HCI agents/services and the Azure Kubernetes Service host.
 
-Use the following command.
+To begin deployment, run the following command.
 
 ```powershell
 Install-AksHci
@@ -170,7 +170,7 @@ Install-AksHci
 
 ### Check your deployed clusters
 
-To get a list of your deployed Azure Kubernetes Service host run the following command. Once you deploy Kubernetes clusters, you will also be able to get target clusters using the below command.
+To get a list of your deployed Azure Kubernetes Service hosts, run the following command. Once you deploy Kubernetes clusters, you will also be able to get target clusters using the same command.
 
 ```powershell
 Get-AksHciCluster
@@ -192,19 +192,19 @@ To get logs from your all your pods, run the following command. This command wil
 Get-AksHciLogs
 ```
 
-## Reinstall AKS-HCI
+## Reinstall Azure Kubernetes Service on Azure Stack HCI
 
-Reinstalling AKS-HCI will remove all of your target clusters and the Azure Kubernetes Service host and uninstall the AKS-HCI agents and services from the nodes. It will then go back through the original install process steps until the host is recreated. The AKS-HCI configuration that you configured via `Set-AksHciConfig` and the downloaded VHDX images are preserved.
+Reinstalling Azure Kubernetes Service on Azure Stack HCI will remove all of your target clusters and the Azure Kubernetes Service host. It will also uninstall the Azure Kubernetes Service on Azure Stack HCI agents and services from the nodes. It will then go back through the original install process steps until the host is recreated. The Azure Kubernetes Service on Azure Stack HCI configuration that you configured via `Set-AksHciConfig` and the downloaded VHDX images are preserved.
 
-To reinstall AKS-HCI, run the following command.
+To reinstall Azure Kubernetes Service on Azure Stack HCI, run the following command.
 
 ```powershell
 Restart-AksHci
 ```
 
-## Remove AKS-HCI
+## Remove Azure Kubernetes Service on Azure Stack HCI
 
-To remove AKS-HCI, run the following command.
+To remove Azure Kubernetes Service on Azure Stack HCI, run the following command.
 
 ```powershell
 Uninstall-AksHci

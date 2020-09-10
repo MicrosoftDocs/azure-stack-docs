@@ -10,13 +10,13 @@ ms.author: jeguan
 
 > Applies to: Azure Stack HCI
 
-In this article you will learn how to use Windows PowerShell to create an Azure Kubernetes Service target cluster on Azure Stack HCI using Windows PowerShell.
+In this quickstart you will learn how to use Windows PowerShell to create an Azure Kubernetes Service target cluster on Azure Stack HCI.
 
 ## Before you begin
 
 Before you begin, make sure you:
 
-- Have a 2-4 node Azure Stack HCI cluster or a Single Node Azure Stack HCI. **However, it is recommended to have a 2-4 node Azure Stack HCI cluster.** If you do not, follow instructions on how to [here](./before-you-begin.md).
+- Have a 2-4 node Azure Stack HCI cluster or a Single Node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you do not, follow instructions on how to create one [here](./before-you-begin.md).
 - Have an Azure Kubernetes Service host on Azure Stack HCI deployed. If you do not, follow instructions on how to [Deploy an Azure Kubernetes host on Azure Stack HCI](./create-host-powershell.md)
 
 ## Step 1: Create a target Kubernetes cluster
@@ -55,11 +55,11 @@ The number of nodes in your control plane. Default is 1.
 
 `linuxNodeCount`
 
-The number of linux nodes in your target cluster. Default is 1.
+The number of Linux nodes in your target cluster. Default is 1.
 
 `windowsNodeCount`
 
-The number of windows nodes in your target cluster. Default is 0.
+The number of Windows nodes in your target cluster. Default is 0.
 
 `controlPlaneVmSize`
 
@@ -86,6 +86,8 @@ Get-AksHciCluster
 ```
 
 ## Step 2: Scale a target cluster
+
+If you need to scale your cluster up or down, you can change the number of control plane nodes, Linux nodes, or Windows nodes.
 
 To scale control plane nodes, run the following command.
 
@@ -118,6 +120,8 @@ To upgrade to the next Kubernetes version, run the following command.
 Update-AksHciCluster -clusterName
 ```
 
+If you want to use Windows nodes, the minimum required version is v1.1.8.6.
+
 ## Step 4: Access your clusters using kubectl
 
 To access your Azure Kubernetes Service host or target cluster using kubectl, run the following command. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl.
@@ -126,7 +130,7 @@ To access your Azure Kubernetes Service host or target cluster using kubectl, ru
 Set-AksHciKubeConfig -clusterName
 ```
 
-## Step 5: Delete a target cluster
+## Delete a target cluster
 
 If you need to delete a target cluster, run the following command.
 
@@ -141,6 +145,8 @@ To get logs from your all your pods, run the following command. This command wil
 ```powershell
 Get-AksHciLogs
 ```
+
+In this quickstart, you learned how to create, scale, and upgrade a Kubernetes target cluster with PowerShell.
 
 ## Next steps
 

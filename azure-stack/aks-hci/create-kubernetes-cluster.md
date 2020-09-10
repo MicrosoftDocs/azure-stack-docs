@@ -10,7 +10,7 @@ ms.author: dawhite
 
 > Applies to: Azure Stack HCI
 
-After you have set up your Azure Kubernetes Service host, you can create a Kubernetes cluster. Make sure you have checked the [Before You Begin](.\before-you-begin.md) page and gone through the [Setting up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center quickstart](.\setup.md) before following this quickstart. 
+After you have set up your Azure Kubernetes Service host, you can create a Kubernetes cluster. Make sure you have checked the [Before you begin](.\before-you-begin.md) page and gone through the [Setting up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center quickstart](.\setup.md) before following this quickstart. 
 
 Let's get started: 
 1. To begin creating a Kubernetes cluster in Windows Admin Center, press the **Add** button on the gateway screen.
