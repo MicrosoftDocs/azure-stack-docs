@@ -4,7 +4,7 @@ description: Learn how to use API version profiles with Python in Azure Stack Hu
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/05/2020
+ms.date: 09/03/2020
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
@@ -38,7 +38,7 @@ The Python SDK supports the following API profiles:
 
 ## Install the Azure Python SDK
 
-1. Install Git from [the official site](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+1. [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 2. For instructions on how to install the Python SDK, see [Azure for Python developers](/python/azure/python-sdk-azure-install?view=azure-python).
 3. If not available, create a subscription and save the subscription ID to use later. For instructions on creating a subscription, see [Create subscriptions to offers in Azure Stack Hub](../operator/azure-stack-subscribe-plan-provision-vm.md).
 4. Create a service principal and save its ID and secret. For instructions on how to create a service principal for Azure Stack Hub, see [Provide applications access to Azure Stack Hub](../operator/azure-stack-create-service-principals.md).
@@ -188,6 +188,6 @@ Each operation is clearly labeled with a comment and a print function. The examp
 
 ## Next steps
 
-- [Azure Python Development Center](https://azure.microsoft.com/develop/python/)
+- [Azure Python developer center](https://azure.microsoft.com/develop/python/)
 - [Azure Virtual Machines documentation](https://azure.microsoft.com/services/virtual-machines/)
 - [Learning Path for Virtual Machines](/learn/paths/deploy-a-website-with-azure-virtual-machines/)

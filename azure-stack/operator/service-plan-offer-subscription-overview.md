@@ -75,6 +75,9 @@ Plans are groupings of one or more services. As an Azure Stack Hub operator, you
 
 When creating an offer, the service administrator can include a base plan. These base plans are included by default when a user subscribes to that offer. When a user subscribes, they have access to all the resource providers specified in those base plans (with the corresponding quotas).
 
+> [!NOTE]
+> If an offer has multiple base plans, the combined storage capacity of the plans cannot exceed the storage quota.
+
 ### Add-on plans
 
 Add-on plans are optional plans you add to an offer. Add-on plans aren't included by default in the subscription. Add-on plans are additional plans (with quotas) available in an offer that a subscriber can add to their subscriptions. For example, you can offer a base plan with limited resources for a trial, and an add-on plan with more substantial resources to customers who decide to adopt the service.

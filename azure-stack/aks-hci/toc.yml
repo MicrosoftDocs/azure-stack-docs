@@ -1,0 +1,35 @@
+- name: Azure Kubernetes Service on Azure Stack HCI documentation
+  href: index.yml
+- name: Overview
+  items:
+  - name: What is Azure Kubernetes Service on Azure Stack HCI?
+    href: overview.md
+- name: Concepts
+  items: 
+  - name: System requirements
+    href: system-requirements.md
+- name: Related
+  items:
+  - name: Azure Stack HCI
+    href: ../hci/index.yml
+  - name: Windows Admin Center
+    href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
+  - name: Azure hybrid cloud
+    href: /hybrid
+  - name: Windows Server
+    href: /windows-server/
+- name: Quickstarts
+  expanded: true
+  items:
+    - name: Set up Azure Kubernetes Service on Azure Stack HCI
+      items:
+        - name: Using Windows Admin Center
+          href: setup.md
+    - name: Create a Kubernetes cluster
+      items:
+        - name: Using Windows Admin Center
+          href: create-kubernetes-cluster.md
+- name: How-to guides
+  items: 
+    - name: Troubleshoot
+      href: troubleshoot.md

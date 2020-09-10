@@ -50,12 +50,16 @@
       href: manage/create-volumes.md
     - name: Create stretched volumes
       href: manage/create-stretched-volumes.md
+    - name: Protect volumes
+      href: manage/volume-encryption-deduplication.md
     - name: Extend volumes
       href: manage/extend-volumes.md
     - name: Delete volumes
       href: manage/delete-volumes.md
     - name: Replace drives
       href: manage/replace-drives.md
+    - name: Use the CSV in-memory read cache
+      href: manage/use-csv-cache.md
   - name: Manage the cluster
     items:
     - name: Manage the cluster
@@ -98,16 +102,20 @@
     href: concepts/updates.md
   - name: Choose drives
     href: concepts/choose-drives.md
+  - name: Drive symmetry considerations
+    href: concepts/drive-symmetry-considerations.md
   - name: Plan volumes
     href: concepts/plan-volumes.md
   - name: Software defined networking
     href: concepts/software-defined-networking.md
-  - name: Understand the cache
+  - name: Understand the storage pool cache
     href: concepts/cache.md
   - name: Fault tolerance and storage efficiency
     href: concepts/fault-tolerance.md
   - name: Cluster and storage pool quorum
     href: concepts/quorum.md
+  - name: Network Controller
+    href: concepts/network-controller.md
   - name: Security considerations
     href: concepts/security.md
 - name: Reference
