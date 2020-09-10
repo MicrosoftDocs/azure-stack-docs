@@ -39,7 +39,7 @@ For Azure Kubernetes Service on Azure Stack HCI to function optimally in an Acti
 
  - While you can technically run Azure Kubernetes Service on a single node Azure Stack HCI Server, we do not recommend doing so.
 
- - Other compute requirements for Azure Kubernetes Service on Azure Stack HCI are in line with Azure Stack HCI’s requirements. Visit [Azure Stack HCI Requirements](./hci/deploy/before-you-start) for more details on Azure Stack HCI’s server requirements.  
+ - Other compute requirements for Azure Kubernetes Service on Azure Stack HCI are in line with Azure Stack HCI’s requirements. Visit [Azure Stack HCI Requirements](../hci/deploy/before-you-start.md) for more details on Azure Stack HCI’s server requirements.  
 
  - Verify that you have Hyper-V and Hyper-V PowerShell roles installed and functioning. For additional feature-specific requirements for Hyper-V, see [System Requirements for Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
 
