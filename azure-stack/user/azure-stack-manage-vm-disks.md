@@ -128,7 +128,7 @@ For more information about working with storage accounts in Azure Stack Hub, see
     ![Example: Upload a VHD file](media/azure-stack-manage-vm-disks/upload-vhd.png)
 
 2. After the .vhd file is uploaded, you're ready to attach the VHD to a VM. In the menu on the left, select  **Virtual machines**.  
- ![Example: Select a VM in the dashboard](media/azure-stack-manage-vm-disks/vm-dashboard.png)
+ ![Screenshot that shows the selected virtual machines.](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
 3. Choose the VM from the list.
 
