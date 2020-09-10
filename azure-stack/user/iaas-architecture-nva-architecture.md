@@ -41,7 +41,7 @@ This article assumes a basic understanding of Azure Stack Hub networking.
 
 An NVA can be deployed to a perimeter network in many different architectures. For example, the following figure illustrates the use of a single NVA for ingress.
 
-![A screenshot of a social media post Description automatically generated](./media/iaas-architecture-nva-architecture/iaas-architecture-nva-architecture-image1.svg)
+![Screenshot that shows the use of a single NVA for ingress.](./media/iaas-architecture-nva-architecture/iaas-architecture-nva-architecture-image1.svg)
 
 In this architecture, the NVA provides a secure network boundary by checking all inbound and outbound network traffic and passing only the traffic that meets network security rules. The fact that all network traffic must pass through the NVA means that the NVA is a single point of failure in the network. If the NVA fails, there is no other path for network traffic and all the back-end subnets are unavailable.
 
