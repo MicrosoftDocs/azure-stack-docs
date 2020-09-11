@@ -8,11 +8,11 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 09/11/2020
 ---
-# What is the Network Controller?
+# What is Network Controller?
 
 > Applies to Azure Stack HCI, version 20H2; Windows Server 2019
 
-Network Controller is the cornerstone of SDN management. It is a highly scalable server role that provides a centralized, programmable point of automation to manage, configure, monitor, and troubleshoot virtual network infrastructure.
+Network Controller is the cornerstone of software defined networking (SDN) management. It is a highly scalable server role that provides a centralized, programmable point of automation to manage, configure, monitor, and troubleshoot virtual network infrastructure.
 
 Using Network Controller, you can automate the configuration and management of network infrastructure instead of performing manual configuration of network devices and services.
 
@@ -20,7 +20,7 @@ Using Network Controller, you can automate the configuration and management of n
 
 Network Controller provides one application programming interface (API) that allows Network Controller to communicate with and manage network devices, services, and components (Southbound API), and a second API that allows management applications to tell the Network Controller what network settings and services they need (Northbound API).
 
-With the Southbound API, Network Controller can manage network devices and network services, and gather all of the information you need about the network. Network Controller continually monitors the state of network devices and services, and ensures that any configuration drift from the golden state is remediated.
+With the Southbound API, Network Controller can manage network devices and network services, and gather all of the information you need about the network. Network Controller continually monitors the state of network devices and services, and ensures that any configuration drift from that state is remediated.
 
 The Network Controller Northbound API is implemented as a REST interface. It provides the ability to manage your datacenter network from management applications. For management, users can use the REST API directly, or use Windows PowerShell built on top of the REST API, or management applications with a graphical user interface such as Windows Admin Center or System Center Virtual Machine Manager.
 
@@ -30,11 +30,11 @@ The Network Controller Northbound API is implemented as a REST interface. It pro
 
 This Network Controller feature allows you to deploy and configure Hyper-V Network Virtualization, configure virtual network adapters on individual VMs, and to store and distribute virtual network policies. With this feature, you can create virtual networks and subnets, attach virtual machines to these networks, and enable communication between VMs in the same virtual network.
 
-Network Controller supports VLAN based networks, Network Virtualization Generic Routing Encapsulation (NVGRE) and Virtual Extensible Local Area Network (VXLAN).
+Network Controller supports Virtual Local Area Network (VLAN) based networks, Network Virtualization Generic Routing Encapsulation (NVGRE) and Virtual Extensible Local Area Network (VXLAN).
 
 ## Firewall management
 
-This Network Controller feature allows you to configure and manage allow/deny firewall Access Control rules for your workload VMs for both East/West and North/South network traffic in your datacenter. The firewall rules are plumbed in the vSwitch port of workload VMs, and so they are distributed across your workloads in the datacenter and move along with your workloads.
+This Network Controller feature allows you to configure and manage allow/deny firewall Access Control rules for your workload VMs for both internal (East/West) and inbound/outbound (North/South) network traffic in your datacenter. The firewall rules are plumbed in the vSwitch port of workload VMs, and so they are distributed across your workloads in the datacenter and move along with your workloads.
 
 Using the Northbound API, you can define the firewall rules for both incoming and outgoing traffic from the workload VM(s). You can also configure each firewall rule to log the traffic that was allowed or denied by the rule.
 
@@ -64,7 +64,7 @@ Anirban: Do you mean service chaining [as described here](/windows-server/networ
 
 ## Network Controller deployment considerations
 
-- Do not deploy the Network Controller server role on physical hosts. The Network Controller should be deployed on its own dedicated VM and requires a reserved IP address to serve as the REST IP address.
+- Do not deploy the Network Controller server role on physical hosts. The Network Controller should be deployed on its own dedicated VMs and requires a reserved IP address to serve as the REST IP address.
 
 - You can deploy Network Controller in both domain and non-domain environments. In domain environments, Network Controller authenticates users and network devices by using Kerberos; in non-domain environments, you must deploy certificates for authentication.
 
