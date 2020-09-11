@@ -26,9 +26,11 @@ The Network Controller Northbound API is implemented as a REST interface. It pro
 
 ## Network Controller features
 
+Network Controller allows you to manage SDN features such as virtual networks, firewalls, Software Load Balancer, and RAS Gateway.
+
 ### Virtual network management
 
-This Network Controller feature allows you to deploy and configure Hyper-V Network Virtualization, configure virtual network adapters on individual VMs, and to store and distribute virtual network policies. With this feature, you can create virtual networks and subnets, attach virtual machines to these networks, and enable communication between VMs in the same virtual network.
+This Network Controller feature allows you to deploy and configure Hyper-V Network Virtualization, configure virtual network adapters on individual VMs, and store and distribute virtual network policies. With this feature, you can create virtual networks and subnets, attach virtual machines (VMs) to these networks, and enable communication between VMs in the same virtual network.
 
 Network Controller supports Virtual Local Area Network (VLAN) based networks, Network Virtualization Generic Routing Encapsulation (NVGRE) and Virtual Extensible Local Area Network (VXLAN).
 
@@ -36,11 +38,11 @@ Network Controller supports Virtual Local Area Network (VLAN) based networks, Ne
 
 This Network Controller feature allows you to configure and manage allow/deny firewall Access Control rules for your workload VMs for both internal (East/West) and inbound/outbound (North/South) network traffic in your datacenter. The firewall rules are plumbed in the vSwitch port of workload VMs, and so they are distributed across your workloads in the datacenter and move along with your workloads.
 
-Using the Northbound API, you can define the firewall rules for both incoming and outgoing traffic from the workload VM(s). You can also configure each firewall rule to log the traffic that was allowed or denied by the rule.
+Using the Northbound API, you can define the firewall rules for both incoming and outgoing traffic from the workload VMs. You can also configure each firewall rule to log the traffic that was allowed or denied by the rule.
 
 ## Software Load Balancer management
 
-This Network Controller feature allows you to enable multiple servers to host the same workload, providing high availability and scalability. With Software Load Balancer, you can configure and manage load balancing, inbound Network Address Translation (NAT), outbound access to Internet for workloads connected to traditional VLAN networks and virtual networks.
+This Network Controller feature allows you to enable multiple servers to host the same workload, providing high availability and scalability. With Software Load Balancer, you can configure and manage load balancing, inbound Network Address Translation (NAT), and outbound access to the Internet for workloads connected to traditional VLAN networks and virtual networks.
 
 ## Gateway management
 
@@ -50,13 +52,13 @@ Network Controller allows you to automatically deploy VMs running RAS Gateway wi
 
 1. Configure multiple gateway VMs for scalability and specify the level of redundancy required.
 
-1. The following connectivity types are supported between your virtual networks and remote networks:
+1. Use the following connectivity types that are supported between your virtual networks and remote networks:
 
    - Site-to-site virtual private network (VPN) gateway connectivity using IPsec.
    - Site-to-site VPN gateway connectivity using Generic Routing Encapsulation (GRE).
    - Layer 3 forwarding capability.
 
-1. Border Gateway Protocol (BGP) routing, which allows you to manage the routing of network traffic between your customers' VM networks and their remote sites.
+1. Use Border Gateway Protocol (BGP) routing, which allows you to manage the routing of network traffic between your customers' VM networks and their remote sites.
 
 ## Virtual appliance chaining
 
@@ -68,7 +70,7 @@ Anirban: Do you mean service chaining [as described here](/windows-server/networ
 
 - You can deploy Network Controller in both domain and non-domain environments. In domain environments, Network Controller authenticates users and network devices by using Kerberos; in non-domain environments, you must deploy certificates for authentication.
 
-- It’s critical for Network Controller deployments to provide high availability and the ability for you to easily scale up or down with your datacenter needs. Therefore, the server role requires three to five cluster VMs in order to provide high availability on your network.
+- It’s critical for Network Controller deployments to provide high availability and the ability for you to easily scale up or down with your datacenter needs. Use three to five clustered VMs in order to provide high availability on your network.
 
 - To achieve high availability and scalability, Network Controller relies on Service Fabric. Service Fabric provides a distributed systems platform to build scalable, reliable, and easily managed applications. [Learn more about Network Controller as a Service Fabric Application](/windows-server/networking/sdn/technologies/network-controller/network-controller-high-availability#network-controller-as-a-service-fabric-application).
 
