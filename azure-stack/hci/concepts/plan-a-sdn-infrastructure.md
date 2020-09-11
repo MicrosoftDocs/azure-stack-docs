@@ -94,10 +94,10 @@ For more information, see [Border Gateway Protocol (BGP)](/windows-server/remote
 
 ## Default gateways
 Machines configured to connect to multiple networks, such as the physical hosts, SLB/MUX, and gateway VMs must only have one default gateway configured. Use the following default gateways for the hosts and the infrastructure VMs:
-1. For Hyper-V hosts, use the management network as the default gateway.
-1. For Network Controller VMs, use the management network as the default gateway.
-1. For SLB/MUX VMs, use the management network as the default gateway.
-1. For the gateway VMs, use the HNV Provider network as the default gateway. This should be set on the front-end NIC of the gateway VMs.
+- For Hyper-V hosts, use the management network as the default gateway.
+- For Network Controller VMs, use the management network as the default gateway.
+- For SLB/MUX VMs, use the management network as the default gateway.
+- For the gateway VMs, use the HNV Provider network as the default gateway. This should be set on the front-end NIC of the gateway VMs.
 
 ## Network hardware
 This section provides network hardware deployment requirements for NICs and physical switches.
