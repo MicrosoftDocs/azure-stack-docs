@@ -4,10 +4,10 @@ description: Learn how to Move your Marketplace item cluster to the AKS engine o
 author: mattbriggs
 
 ms.topic: article
-ms.date: 5/27/2020
+ms.date: 09/02/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 3/19/2020
+ms.lastreviewed: 09/02/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase

@@ -4,7 +4,7 @@ description: Learn how to deploy F5 across two Azure Stack Hub instances.
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 11/06/2019
@@ -47,23 +47,23 @@ Deploy to Azure Stack Hub instance A and instance B.
 
 4. Select **F5 BIG-IP VE – ALL (BYOL, 2 Boot Locations)**.
 
-    ![](./media/network-howto-f5/image1.png)
+    ![The "Dashboard > New > Marketplace > Everything > F5 BIG-IP VE – ALL (BYOL, 2 Boot Locations)" dialog box shows f5 in the search box. The single search result is "F5 BIG-IP VE – ALL (BYOL, 2 Boot Locations)".](./media/network-howto-f5/image1.png)
 
-5. At the bottom of the next page, selected **Create**.
+5. At the bottom of the next page, select **Create**.
 
-    ![](./media/network-howto-f5/image2.png)
+    ![The "F5 BIG-IP VE – ALL (BYOL, 2 Boot Locations)" dialog box provides information on BIG-IP VE and the modules that you can deploy, depending on your license. There is a Create button.](./media/network-howto-f5/image2.png)
 
 6. Create a New Resource Group called **F5-GSLB**.
 
 7. Use the following values as an example to complete the deployment:
 
-    ![](./media/network-howto-f5/image3.png)
+    ![The Inputs page of the Microsoft.Template dialog box shows 15 text boxes, such as VIRTUALMACHINENAME and ADMINUSERNAME, that contain values for an example deployment.](./media/network-howto-f5/image3.png)
 
 8. Validate that your deployment completes successfully.
 
-    ![](./media/network-howto-f5/image4.png)
+    ![The Overview page of the Microsoft.Template dialog box reports "Your deployment is complete" and provides details about the deployment.](./media/network-howto-f5/image4.png)
 
-    > [!Note]  
+    > [!NOTE]  
     > Each BIG-IP Deployment should take around 20 minutes.
 
 ## Configure BIG-IP appliances
@@ -72,7 +72,7 @@ Follow these steps needs for both Azure Stack Hub A and B.
 
 1. Sign into the Azure Stack Hub user portal on Azure Stack Hub instance A to review the resources created from the BIG-IP template deployment.
 
-    ![](./media/network-howto-f5/image18.png)
+    ![The Overview page of the F5-GSLB dialog box lists the deployed resources, and associated information.](./media/network-howto-f5/image18.png)
 
 2. Follow the instructions at F5 for [BIG-IP Configuration items](https://clouddocs.f5.com/training/community/dns/html/class1/class1.html). 
 
@@ -91,18 +91,18 @@ Follow these steps needs for both Azure Stack Hub A and B.
 
 1. Sign in to the BIG-IP and create a DNS Sync Group. For instructions, see [Creating BIG-IP DNS Sync Group](https://f5-dns-automation-demo-12-1-x.readthedocs.io/en/latest/lab2/sync-group.html).
 
-    > [!Note]  
+    > [!NOTE]  
     > You can find the local IP of the BIP-IP Appliance in your **F5-GSLB** Resource Group. The Network Interface is "f5stack1-ext" and you want to connect to the Public or Private IP (depending on access).
 
-    ![](./media/network-howto-f5/image5.png)
+    ![The "DNS >> GSLB : Data Centers : Data Center List" dialog box lists data centers and status. There are Enable, Disable, and Delete buttons to apply against selected data centers.](./media/network-howto-f5/image5.png)
           
-    ![](./media/network-howto-f5/image6.png)
+    ![The "DNS >> GSLB : Servers : Server List" dialog box lists servers and status. There are Enable, Disable, Delete, and Reconnect buttons to apply against selected servers.](./media/network-howto-f5/image6.png)
 
 1. Select the new resource group **F5-GSLB** and select the **f5stack1** virtual machine, under **Settings** select **Networking**.
 
 ## Post install configurations
 
-After you have installed, you'll need configure your Azure Stack Hub NSGs and lock down the source IP addresses.
+After you have installed, you'll need to configure your Azure Stack Hub NSGs and lock down the source IP addresses.
 
 1. Disable the port 22 after the trust has been established.
 
@@ -110,20 +110,20 @@ After you have installed, you'll need configure your Azure Stack Hub NSGs and lo
 
 3. GTM_DNS Rule is set to allow port 53 (DNS) traffic in, and BIG-IP resolver will start working once. Listeners are created.
 
-    ![](./media/network-howto-f5/image7.png)
+    ![The fStack1-ext page of the Network Interface dialog box shows information about the fstack1-ext interface, and about its NSG, fstack1-ext-nsg. There are tabs to select viewing either the Inbound port rules or the Outbound port rules.](./media/network-howto-f5/image7.png)
 
 4. Deploy a basic web application workload within your Azure Stack Hub environment to Load Balance behind the BIG-IP. You can find an example for using the NGNIX server at [Deploying NGINX and NGINX Plus on Docker](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-docker/).
 
-    > [!Note]  
+    > [!NOTE]  
     > Deploy an instance of NGNIX on both Azure Stack Hub A and Azure Stack Hub B.
 
 5. After NGINX is deployed in a docker container on an Ubuntu VM within each of the Azure Stack Hub instances, validate that you can reach the default webpage on the servers.
 
-    ![](./media/network-howto-f5/image8.png)
+    ![The "Welcome to nginx!" page indicates that the nginx web server was successfully installed, and that further configuration is required. There are two links leading to support information.](./media/network-howto-f5/image8.png)
 
 6. Sign in to the management interface of the BIG-IP appliance. In this example,  use the **f5-stack1-ext** Public IP address.
 
-    ![](./media/network-howto-f5/image9.png)
+    ![The login screen for the BIG-IP Configuration Utility requires Username and Password.](./media/network-howto-f5/image9.png)
 
 7. Publish access to NGINX through the BIG-IP.
     
@@ -133,11 +133,11 @@ After you have installed, you'll need configure your Azure Stack Hub NSGs and lo
 
 9. Select your NGINX Network Interface.
 
-    ![](./media/network-howto-f5/image10.png)
+    ![The Overview page of the "Dashboard > Resource groups > NGINX > ubuntu2673" dialog box shows information about the ubuntu2673 network interface.](./media/network-howto-f5/image10.png)
 
 10. From the BIG-IP console, go to **Local traffic > Pools > Pool List** and Select **+**. Configure the pool using the values in the table. Leave all other fields to their defaults.
 
-    ![](./media/network-howto-f5/image11.png)
+    ![The left pane provides the ability to navigate to create a new pool. The right pane is titled "Local Traffic >> Pools: Pool List >> New Pool", and provides capabilities to specify the information about the new pool. There is a Finished button.](./media/network-howto-f5/image11.png)
     
     | Key | Value |
     | --- | --- |
@@ -149,13 +149,13 @@ After you have installed, you'll need configure your Azure Stack Hub NSGs and lo
 
 11. Select **Finished**. When configured correctly, the pool status is green.
 
-    ![](./media/network-howto-f5/image12.png)
+    ![The right pane is titled "Local Traffic >> Pools : Pool List", and the newly created pool is the only entry in the list.](./media/network-howto-f5/image12.png)
 
     You now need to configure the virtual server. To do this, you first need to find the private IP of your F5 BIG-IP.
 
 12. From the BIG-IP console, go to **Network > Self IPs** and note the IP address.
 
-    ![](./media/network-howto-f5/image13.png)
+    ![The left pane provides the ability to navigate to show Self IPs. The right pane is titled "Network >> Self IPs". Two Self IPs are listed, and the first, self_2nic, is highlighted.](./media/network-howto-f5/image13.png)
 
 13. Create a virtual server by going to **Local Traffic** > **Virtual Servers** > **Virtual Server List** and Select **+**. Configure the pool using the values in the table. Leave all other fields to their defaults.
 
@@ -167,21 +167,21 @@ After you have installed, you'll need configure your Azure Stack Hub NSGs and lo
     |SSL Profile (Client) | clientssl |
     |Source Address Translation | Auto Map |
         
-    ![](./media/network-howto-f5/image14.png)
+    ![The left pane is used to navigate the right pane to "Local Traffic >> Virtual Servers : Virtual Server List >> NGINX", where the required information is entered.](./media/network-howto-f5/image14.png)
 
-    ![](./media/network-howto-f5/image15.png)
+    ![This page provides the capability to enter additional information. There are Update and Delete buttons.](./media/network-howto-f5/image15.png)
 
 14. You have now completed the BIG-IP configuration for the NGINX application. To verify proper functionality, browse the site and verify F5 statistics.
 
 15. Open a browser to `https://<F5-public-VIP-IP>` and ensure it displays your NGINX default page.
 
-    ![](./media/network-howto-f5/image16.png)
+    ![The "Welcome to nginx!" page indicates that the nginx web server is successfully installed, and that further configuration is required. There are two links that lead to support information.](./media/network-howto-f5/image16.png)
 
 16. Now check the statistics of your virtual server to verify traffic flow, by navigating to **Statistics > Module Statistics > Local Traffic**.
 
 17. Under **Statistics Type**, select **Virtual Servers**.
 
-    ![](./media/network-howto-f5/image17.png)
+    ![The left pane has navigated the right pane to "Statistics >> Module Statistics : Local Traffic >> Virtual Servers", and the list shows the NGINX virtual server and others. NGINX is highlighted.](./media/network-howto-f5/image17.png)
 
 
 ## For more information
