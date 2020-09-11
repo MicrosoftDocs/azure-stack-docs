@@ -169,7 +169,7 @@ Role|vCPU requirements|Memory requirements|Disk requirements|
 |RAS Gateway<br> (single pool of three nodes<br> gateways, two active, one passive)|8 vCPUs|8 GB recommended|75 GB for operating system drive
 |RAS Gateway BGP router<br> for SLB/MUX peering<br> (alternatively use ToR switch<br> as BGP Router)|2 vCPUs|2 GB|75 GB for operating system drive|
 
-If you use System Center - Virtual Machine Manager (VMM) for deployment, additional infrastructure VM resources are required for VMM and other non-SDN infrastructure. To learn more, see [System requirements for System Center Virtual Machine Manager](https://docs.microsoft.com/system-center/vmm/system-requirements?view=sc-vmm-2019).
+If you use System Center - Virtual Machine Manager (VMM) for deployment, additional infrastructure VM resources are required for VMM and other non-SDN infrastructure. To learn more, see [System requirements for System Center Virtual Machine Manager](https://docs.microsoft.com/system-center/vmm/system-requirements?view=sc-vmm-2019&preserve-view=true).
 
 ## Extending your infrastructure
 The sizing and resource requirements for your infrastructure depend on the tenant workload VMs that you plan to host. The CPU, memory, and disk requirements for the infrastructure VMs (for example: Network Controller, SLB, gateway, and so on) are defined in the previous table. You can add more infrastructure VMs to scale as needed. However, any tenant VMs running on the Hyper-V hosts have their own CPU, memory, and disk requirements that you must consider.
