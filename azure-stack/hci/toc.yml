@@ -115,7 +115,7 @@
   - name: Cluster and storage pool quorum
     href: concepts/quorum.md
   - name: Plan a SDN infrastructure
-    href: concepts/plan-a-sdn-infrastructure.md
+    href: concepts/plan-software-defined-networking-infrastructure.md
   - name: Network Controller
     href: concepts/network-controller.md
   - name: Security considerations
