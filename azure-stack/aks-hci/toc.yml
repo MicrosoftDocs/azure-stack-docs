@@ -5,7 +5,9 @@
   - name: What is Azure Kubernetes Service on Azure Stack HCI?
     href: overview.md
 - name: Concepts
-  items: 
+  items:
+  - name: Azure Kubernetes on Azure Stack HCI Concepts
+    href: aks-hci-concepts.md
   - name: System requirements
     href: system-requirements.md
 - name: Related
