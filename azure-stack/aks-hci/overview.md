@@ -91,8 +91,8 @@ The following sections summarize what you need to run Azure Kubernetes Service o
 Your Windows Admin Center management PC or server has the following requirements:
 
 - 40 GB of free space
-- Be registered with Azure
-- Be in the same domain as the Azure Stack HCI cluster
+- Registered with Azure
+- In the same domain as the Azure Stack HCI cluster
 
 ### On the Azure Stack HCI cluster that hosts Azure Kubernetes Service
 
@@ -102,6 +102,8 @@ The cluster running Azure Stack HCI, version 20H2 or later has the following req
 - 1 TB of available capacity in the storage pool for Azure Kubernetes Service
 - At least 30 GB of available memory for running Azure Kubernetes Service VMs
 - All servers in the cluster must use the EN-US region and language selection for this preview release
+
+For general Azure Stack HCI requirements, see [Before you deploy Azure Stack HCI](../hci/deploy/before-you-start.md).
 
 ### The compute network for Azure Stack HCI
 
