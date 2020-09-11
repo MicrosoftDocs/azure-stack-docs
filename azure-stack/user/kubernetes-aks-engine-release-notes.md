@@ -201,7 +201,7 @@ You can find the current version and upgrade version in the following table for 
 | 1.15.4 | 1.15.10 |
 | 1.15.5 | 1.15.10 |
 
-## What's new
+## What's new 
 
 -   Support for Kubernetes version 1.15.10 ([\#2834](https://github.com/Azure/aks-engine/issues/2834)). When deploying a new cluster make sure to specify in your api model json file (a.k.s. cluster definition file) the release version number as well as the minor version number. You can find an example: [kubernetes-azurestack.json](https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-azurestack.json):
 
