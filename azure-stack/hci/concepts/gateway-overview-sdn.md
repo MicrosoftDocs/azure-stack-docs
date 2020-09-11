@@ -14,7 +14,7 @@ ms.date: 09/11/2020
 
 RAS (Remote Access Service) Gateway is a software-based Border Gateway Protocol (BGP) capable router designed for cloud service providers (CSPs) and enterprises that host multitenant virtual networks using Hyper-V Network Virtualization. It is used for routing network traffic between a virtual network and another network, either local or remote.
 
-RAS Gateway requires [Network Controller](network-controller-overview.md), which performs the deployment of gateway pools, configures tenant connections on each gateway, and switches network traffic flows to a standby gateway in the event of a gateway failure.
+RAS Gateway requires Network Controller, which performs the deployment of gateway pools, configures tenant connections on each gateway, and switches network traffic flows to a standby gateway in the event of a gateway failure.
 
   > [!NOTE]
   > Multitenancy is the ability of a cloud infrastructure to support the virtual machine (VM) workloads of multiple tenants, yet isolate them from each other, while all of the workloads run on the same infrastructure. The multiple workloads of an individual tenant can interconnect and be managed remotely, but these systems do not interconnect with the workloads of other tenants, nor can other tenants remotely manage them.
@@ -61,6 +61,6 @@ You can assign a single public IP address to all pools or to a subset of pools. 
 
 For related information, see also:
 
-- [RAS Gateway Deployment Architecture](https://docs.microsoft.com/en-us/windows-server/networking/sdn/technologies/network-function-virtualization/ras-gateway-deployment-architecture)
+- [RAS Gateway Deployment Architecture](/windows-server/networking/sdn/technologies/network-function-virtualization/ras-gateway-deployment-architecture)
 - [Plan to deploy Network Controller](network-controller.md)
 - [SDN in Azure Stack HCI](software-defined-networking.md)
