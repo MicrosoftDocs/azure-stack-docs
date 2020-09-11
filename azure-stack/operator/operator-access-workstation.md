@@ -3,10 +3,10 @@ title: Azure Stack Hub Operator Access Workstation
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: asganesh
 ms.topic: article
-ms.date: 08/28/2020
+ms.date: 09/11/2020
 ms.author: justinha
 ms.reviewer: asganesh
-ms.lastreviewed: 08/28/2020
+ms.lastreviewed: 09/11/2020
 
 # Intent: As an Azure Stack operator, I want to download and configure an Azure Stack Hub Operator Access Workstation.
 # Keyword: azure stack hub operator access workstation
@@ -135,6 +135,9 @@ New-OAW.ps1 -LocalAdministratorPassword $securePassword `
    -DeploymentDataFilePath 'D:\AzureStack\DeploymentData.json'
 ```
 
+If the DeploymentData.json file includes the Naming Prefix for OAW VM, that value will be used for the **VirtualMachineName** parameter. Otherwise, the default name is **AzSOAW** or another name specified by the user.
+
+
 Two parameter sets are available for New-OAW. Optional parameters are shown in brackets.
 
 ```powershell
@@ -195,7 +198,7 @@ The following table lists the definition for each parameter.
 | DefaultGateway             | Required | IPv4 address of the default gateway to configure TCP/IP on the virtual machine.                                    |
 | DNS                        | Required | DNS server(s) to configure TCP/IP on the virtual machine.                                                          |
 | ImageFilePath              | Optional | Path of OAW.vhdx provided by Microsoft. Default value is **OAW.vhdx** under the same parent folder of this script. |
-| VirtualMachineName         | Optional | The name to be assigned to the virtual machine. Default value is **AzSOAW**.                       |
+| VirtualMachineName         | Optional | The name to be assigned to the virtual machine. If the Naming Prefix can be found in the DeploymentData.json file, it will be used as the default name. Otherwise, **AzSOAW** will be used as the default name. You can specify another name to overwrite the default value. |
 | VirtualMachineMemory       | Optional | Memory to be assigned to the virtual machine. Default value is **4GB**.                            |
 | VirtualProcessorCount      | Optional | Number of virtual processors to be assigned to the virtual machine. Default value is **8**.        |
 | VirtualMachineDiffDiskPath | Optional | Path to store temporary diff disk files while the management VM was active. Default value is **DiffDisks** subdirectory under the same parent folder of this script. |
