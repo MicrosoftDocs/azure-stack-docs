@@ -9,17 +9,15 @@ ms.date: 09/21/2020
 ---
 # What is Azure Kubernetes Service on Azure Stack HCI?
 
-Azure Kubernetes Service on Azure Stack HCI is a Kubernetes-based orchestrator that automates running containerized applications on clusters that use Azure Stack HCI. Orchestrators such as the open-source Kubernetes automate much of the work involved with deploying and managing multiple containers, but can be complex to set up and maintain. Azure Kubernetes Service (AKS) on Azure Stack HCI simplifies setting up Kubernetes on-premises, making it quicker to get started hosting Linux and Windows containers.
+Azure Kubernetes Service on Azure Stack HCI is a Kubernetes-based orchestrator that automates running containerized applications on clusters that use Azure Stack HCI. Orchestrators such as the open-source Kubernetes automate much of the work involved with deploying and managing multiple containers. However, Kubernetes can be complex to set up and maintain. Azure Kubernetes Service (AKS) on Azure Stack HCI helps simplify setting up Kubernetes on-premises, making it quicker to get started hosting Linux and Windows containers.
 
 Azure Kubernetes Service on Azure Stack HCI is in preview, and has no added cost during preview. To get started, [register for the preview](https://aka.ms/AKS-HCI-Evaluate), then see [Set up Azure Kubernetes Service on Azure Stack HCI](setup.md). To instead use a hosted Kubernetes service in Azure, see [Azure Kubernetes Service in Azure](/azure/aks/intro-kubernetes).
 
 The following sections discuss some of the reasons to use Azure Kubernetes Service on Azure Stack HCI, then answer some common questions about the service and how to get started.
 
-[//]: # (This article should talk about what the service/feature is about. It should ideally capture the business problem this service/feature is looking to solve and some typical use cases where the service can be deployed)
-
 ## Automate management of containerized applications with Kubernetes
 
-Containers are a technology for packaging and running Windows and Linux applications across diverse environments on-premises and in the cloud. Containers provide a lightweight, isolated environment that makes apps easier to develop, deploy, and manage. Containers start and stop quickly, making them ideal for apps that need to rapidly adapt to changing demand. The lightweight nature of containers also make them a useful tool for increasing the density and utilization of your infrastructure.
+Containers are a technology for packaging and running Windows and Linux applications across diverse environments on-premises and in the cloud. Containers provide a lightweight, isolated environment that makes apps easier to develop, deploy, and manage. Containers start and stop quickly, making them ideal for apps that need to rapidly adapt to changing demand. The lightweight nature of containers also makes them a useful tool for increasing the density and utilization of your infrastructure.
 
 While you can manage a few containers manually using Docker and Windows, apps often make use of five, ten, or even hundreds of containers, which is where the open-source Kubernetes orchestrator comes in.
 
@@ -40,9 +38,9 @@ For more background on containers, see [Windows and containers](/virtualization/
 
 ## Simplify setting up Kubernetes
 
-Kubernetes is an open-source project that's freely available on a number of platforms, but setting it up can be complicated (for project documentation, see [Kubernetes: Creating a cluster with kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/), then [Kuberentes: Adding Windows nodes](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/adding-windows-nodes/)).
+Kubernetes is an open-source project that's freely available on a number of platforms, but setting it up can be complicated (for project documentation, see [Kubernetes: Creating a cluster with kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/), then [Kubernetes: Adding Windows nodes](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/adding-windows-nodes/)).
 
-Azure Kubernetes Service on Azure Stack HCI was designed to simplify this process of setting up Kubernetes, and includes the following:
+Azure Kubernetes Service on Azure Stack HCI was designed to simplify this process of setting up Kubernetes, and includes the following features:
 
 - A Windows Admin Center wizard for setting up Kubernetes including its underlying dependencies (such as kubeadm, kubelet, kubectl, and a Pod network add-on)
 - A Windows Admin Center wizard for creating Kubernetes clusters to run your containerized applications
@@ -82,7 +80,7 @@ Here are a couple simplified diagrams showing how the architectures of Azure Kub
 
 :::image type="content" source="media\overview\aks-azure-architecture.png" alt-text="Architecture of Azure Kubernetes Service hosted in Azure, showing how the platform services and most of the control plane are managed by Azure, while Kubernetes clusters to run your containerized applications are managed by the customer." lightbox="image-file-expanded.png":::
 
-:::image type="content" source="media\overview\aks-hci-architecture.png" alt-text="Architecture of Azure Kubernetes Service on Azure Stack HCI, showing how everything runs on top of your server or failover cluster. This includes the Azure Kubernetes Service platform, the control plane, and the Kubernetes clusters that run your containerized applications." lightbox="image-file-expanded.png":::
+:::image type="content" source="media\overview\aks-hci-architecture.png" alt-text="Architecture of Azure Kubernetes Service on Azure Stack HCI, showing how everything runs on top of the Azure Stack HCI cluster, including the Azure Kubernetes Service platform, the control plane, and the Kubernetes clusters that run your containerized applications." lightbox="image-file-expanded.png":::
 
 ## What you need to get started
 
@@ -90,7 +88,7 @@ The following sections summarize what you need to run Azure Kubernetes Service o
 
 ### On your Windows Admin Center system
 
-Your Windows Admin Center management PC or server requires the following:
+Your Windows Admin Center management PC or server has the following requirements:
 
 - 40 GB of free space
 - Be registered with Azure
@@ -98,7 +96,7 @@ Your Windows Admin Center management PC or server requires the following:
 
 ### On the Azure Stack HCI cluster that hosts Azure Kubernetes Service
 
-The cluster running Azure Stack HCI, version 20H2 or later requires the following:
+The cluster running Azure Stack HCI, version 20H2 or later has the following requirements:
 
 - Between two and four servers in the cluster
 - 1 TB of available capacity in the storage pool for Azure Kubernetes Service
@@ -107,13 +105,9 @@ The cluster running Azure Stack HCI, version 20H2 or later requires the followin
 
 ### The compute network for Azure Stack HCI
 
-The network connected to VMs on the Azure Stack HCI cluster requires the following:
+The network connected to VMs on the Azure Stack HCI cluster requires a dedicated scope of DHCP IPv4 addresses available for Azure Kubernetes Service and accessible by VMs on the Azure Stack HCI cluster
 
-- A dedicated scope of DHCP IPv4 addresses available for Azure Kubernetes Service and accessible by VMs on the Azure Stack HCI cluster
-
-While not strictly necessary, we also recommend the following:
-
-- No VLAN tags, instead using access (untagged) ports on your network switches for the compute network used by Azure Stack HCI and the Azure Kubernetes Service VMs.
+While not strictly necessary, we also recommend avoiding VLAN tags on your compute network, instead using access (untagged) ports on your network switches for the compute network used by Azure Stack HCI and the Azure Kubernetes Service VMs.
 
 ## Next steps
 
