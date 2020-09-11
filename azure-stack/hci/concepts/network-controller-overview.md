@@ -6,9 +6,9 @@ ms.author: v-kedow
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/10/2020
+ms.date: 09/11/2020
 ---
-# What is Network Controller?
+# What is the Network Controller?
 
 > Applies to Azure Stack HCI, version 20H2; Windows Server 2019
 
@@ -49,10 +49,13 @@ This Network Controller feature allows you to deploy, configure, and manage VMs 
 Network Controller allows you to automatically deploy VMs running RAS Gateway with the following gateway features:
 
 1. Configure multiple gateway VMs for scalability and specify the level of redundancy required.
+
 1. The following connectivity types are supported between your virtual networks and remote networks:
+
    - Site-to-site virtual private network (VPN) gateway connectivity using IPsec.
    - Site-to-site VPN gateway connectivity using Generic Routing Encapsulation (GRE).
    - Layer 3 forwarding capability.
+
 1. Border Gateway Protocol (BGP) routing, which allows you to manage the routing of network traffic between your customers' VM networks and their remote sites.
 
 ## Virtual appliance chaining
@@ -61,13 +64,13 @@ Anirban: Do you mean service chaining [as described here](/windows-server/networ
 
 ## Network Controller deployment considerations
 
-1. Do not deploy the Network Controller server role on physical hosts. The Network Controller should be deployed on its own dedicated VM and requires a reserved IP address to serve as the REST IP address.
+- Do not deploy the Network Controller server role on physical hosts. The Network Controller should be deployed on its own dedicated VM and requires a reserved IP address to serve as the REST IP address.
 
-1. You can deploy Network Controller in both domain and non-domain environments. In domain environments, Network Controller authenticates users and network devices by using Kerberos; in non-domain environments, you must deploy certificates for authentication.
+- You can deploy Network Controller in both domain and non-domain environments. In domain environments, Network Controller authenticates users and network devices by using Kerberos; in non-domain environments, you must deploy certificates for authentication.
 
-1. It’s critical for Network Controller deployments to provide high availability and the ability for you to easily scale up or down with your datacenter needs. Therefore, the server role requires three to five cluster VMs in order to provide high availability on your network.
+- It’s critical for Network Controller deployments to provide high availability and the ability for you to easily scale up or down with your datacenter needs. Therefore, the server role requires three to five cluster VMs in order to provide high availability on your network.
 
-1. To achieve high availability and scalability, Network Controller relies on Service Fabric. Service Fabric provides a distributed systems platform to build scalable, reliable, and easily managed applications. [Learn more about Network Controller as a Service Fabric Application](/windows-server/networking/sdn/technologies/network-controller/network-controller-high-availability#network-controller-as-a-service-fabric-application).
+- To achieve high availability and scalability, Network Controller relies on Service Fabric. Service Fabric provides a distributed systems platform to build scalable, reliable, and easily managed applications. [Learn more about Network Controller as a Service Fabric Application](/windows-server/networking/sdn/technologies/network-controller/network-controller-high-availability#network-controller-as-a-service-fabric-application).
 
 
 ## Next steps

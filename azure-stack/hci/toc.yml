@@ -114,7 +114,9 @@
     href: concepts/fault-tolerance.md
   - name: Cluster and storage pool quorum
     href: concepts/quorum.md
-  - name: Network Controller
+  - name: Network Controller overview
+    href: concepts/network-controller-overview.md
+  - name: Plan to deploy Network Controller
     href: concepts/network-controller.md
   - name: Security considerations
     href: concepts/security.md
