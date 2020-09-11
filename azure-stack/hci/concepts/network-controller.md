@@ -4,7 +4,7 @@ description: This topic covers how to plan to deploy the Network Controller via 
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/10/2020
 ---
 
 # Plan to deploy the Network Controller
@@ -16,7 +16,7 @@ Planning to deploy the Network Controller via Windows Admin Center requires a se
    >[!NOTE]
    > We recommend deploying the Network Controller on its own dedicated VMs.
 
-## Network Controller requirements for Azure Stack HCI
+## Network Controller requirements
 The following is required to deploy the Network Controller:
 - A VHD for the Azure Stack HCI operating system to create the Network Controller VMs.
 - A domain name and credentials to join the Network Controller VMs to a domain.
