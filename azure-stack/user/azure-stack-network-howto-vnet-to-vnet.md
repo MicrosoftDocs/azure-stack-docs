@@ -80,7 +80,7 @@ The following table summarizes the parameters that are used in these deployments
 
 2.  Select **Create a resource** and search for `FortiGate`.
 
-    !The search results list shows FortiGate NGFW - Single VM Deployment.](./media/azure-stack-network-howto-vnet-to-onprem/image6.png)
+    ![The search results list shows FortiGate NGFW - Single VM Deployment.](./media/azure-stack-network-howto-vnet-to-onprem/image6.png)
 
 3.  Select the **FortiGate NGFW** and select **Create**.
 
