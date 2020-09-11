@@ -4,7 +4,7 @@ description: Learn about Azure Stack Hub Storage data transfer tools.
 author: mattbriggs
 
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/06/2019

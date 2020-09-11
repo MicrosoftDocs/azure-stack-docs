@@ -138,16 +138,16 @@ Use these steps to prepare certificate signing requests for renewal of existing 
         Install-Module Microsoft.AzureStack.ReadinessChecker
     ```
 
-2. Declare the **stampEndpoint**. For example:
+2. Declare the **stampEndpoint** in the form of regionname.domain.com of the Azure Stack Hub System. For example (if the Azure Stack Hub Tenant portal address is <code> https://</code><code>portal.east.azurestack.contoso.com</code>):
 
     ```powershell  
-    $stampEndpoint = 'portal.east.azurestack.contoso.com'
+    $stampEndpoint = 'east.azurestack.contoso.com'
     ```
 
     > [!NOTE]  
-    > HTTPS Connectivity is required for the above endpoint.
-    > The above endpoint should match one of certificates required by the certificate type e.g. for deployment certificates portal.region.domain endpoint is required, for AppServices sso.appservices.region.domain etc.
-    > The certificate bound to the endpoint will be used to clone attributes such as subject, key length, signature algorithm.  Only one existing endpoint is required and all signing requests will created all necessary certificates.
+    > HTTPS Connectivity is required for the Azure Stack Hub system above.
+    > The Readiness Checker will use the stampendpoint (region and domain) to build a pointer to an existing certificates required by the certificate type e.g. for deployment certificates 'portal' is prepended, by the tool, so portal.east.azurestack.contoso.com is used in certificate cloning, for AppServices sso.appservices.east.azurestack.contoso.com etc.
+    > The certificate bound to the computed endpoint will be used to clone attributes such as subject, key length, signature algorithm.  If you wish to change any of these attributes you should follow the steps for [Generate certificate signing request for new deployments](azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-new-deployments) instead.
 
 3. Declare an output directory that already exists. For example:
 
