@@ -78,9 +78,9 @@ Once Azure Kubernetes Service is set up on your Azure Stack HCI cluster, it work
 
 Here are a couple simplified diagrams showing how the architectures of Azure Kubernetes Service compare when run in Azure and in Azure Stack HCI.
 
-:::image type="content" source="media\overview\aks-azure-architecture.png" alt-text="Architecture of Azure Kubernetes Service hosted in Azure, showing how the platform services and most of the control plane are managed by Azure, while Kubernetes clusters that run your containerized applications are managed by the customer." lightbox="image-file-expanded.png":::
+:::image type="content" source="media\overview\aks-azure-architecture.png" alt-text="Architecture of Azure Kubernetes Service hosted in Azure, showing how the platform services and most of the control plane are managed by Azure, while Kubernetes clusters that run your containerized applications are managed by the customer." lightbox="media\overview\aks-azure-architecture.png":::
 
-:::image type="content" source="media\overview\aks-hci-architecture.png" alt-text="Architecture of Azure Kubernetes Service on Azure Stack HCI, showing how everything runs on top of the Azure Stack HCI cluster, including the Azure Kubernetes Service platform, the control plane, and the Kubernetes clusters that run your containerized applications." lightbox="image-file-expanded.png":::
+:::image type="content" source="media\overview\aks-hci-architecture.png" alt-text="Architecture of Azure Kubernetes Service on Azure Stack HCI, showing how everything runs on top of the Azure Stack HCI cluster, including the Azure Kubernetes Service platform, the control plane, and the Kubernetes clusters that run your containerized applications." lightbox="media\overview\aks-hci-architecture.png":::
 
 ## What you need to get started
 
