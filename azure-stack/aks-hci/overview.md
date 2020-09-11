@@ -40,9 +40,9 @@ For more background on containers, see [Windows and containers](/virtualization/
 
 Kubernetes is an open-source project that's freely available on a number of platforms, but setting it up can be complicated (for project documentation, see [Kubernetes: Creating a cluster with kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/), then [Kubernetes: Adding Windows nodes](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/adding-windows-nodes/)).
 
-Azure Kubernetes Service on Azure Stack HCI was designed to simplify this process of setting up Kubernetes, and includes the following features:
+Azure Kubernetes Service on Azure Stack HCI was designed to simplify the process of setting up Kubernetes, and includes the following features:
 
-- A Windows Admin Center wizard for setting up Kubernetes including its underlying dependencies (such as kubeadm, kubelet, kubectl, and a Pod network add-on)
+- A Windows Admin Center wizard for setting up Kubernetes and its dependencies (such as kubeadm, kubelet, kubectl, and a Pod network add-on)
 - A Windows Admin Center wizard for creating Kubernetes clusters to run your containerized applications
 - PowerShell cmdlets for setting up Kubernetes and creating Kubernetes clusters, in case you'd rather script the host setup and Kubernetes cluster creation
 
@@ -71,14 +71,14 @@ Azure Kubernetes Service is available on the following platforms:
 
 Azure Kubernetes Service works a little differently when run on Azure Stack HCI  than when using it in the Azure cloud:
 
-- The Kubernetes service in Azure is a hosted service where much of the Kubernetes management infrastructure (control plane) is managed for you, and both the control plane and your containerized applications run in Azure virtual machines.
+- The Kubernetes service in Azure is a hosted service where much of the Kubernetes management infrastructure (control plane) is managed for you. Both the control plane and your containerized applications run in Azure virtual machines.
 - With Azure Kubernetes Service on Azure Stack HCI, you set up the service directly on your Azure Stack HCI cluster, putting you in control of the control plane, so to speak. The control plane, your containerized applications, and Azure Kubernetes Service itself all run in virtual machines hosted by your hyperconverged cluster.
 
 Once Azure Kubernetes Service is set up on your Azure Stack HCI cluster, it works similarly to the hosted Azure Kubernetes Service: you use the service to create Kubernetes clusters that run your containerized applications. These Kubernetes clusters are groups of VMs that act as worker nodes, running your application containers. The Kubernetes cluster also contains a control plane, which consists of Kubernetes system services used to orchestrate the application containers.
 
 Here are a couple simplified diagrams showing how the architectures of Azure Kubernetes Service compare when run in Azure and in Azure Stack HCI.
 
-:::image type="content" source="media\overview\aks-azure-architecture.png" alt-text="Architecture of Azure Kubernetes Service hosted in Azure, showing how the platform services and most of the control plane are managed by Azure, while Kubernetes clusters to run your containerized applications are managed by the customer." lightbox="image-file-expanded.png":::
+:::image type="content" source="media\overview\aks-azure-architecture.png" alt-text="Architecture of Azure Kubernetes Service hosted in Azure, showing how the platform services and most of the control plane are managed by Azure, while Kubernetes clusters that run your containerized applications are managed by the customer." lightbox="image-file-expanded.png":::
 
 :::image type="content" source="media\overview\aks-hci-architecture.png" alt-text="Architecture of Azure Kubernetes Service on Azure Stack HCI, showing how everything runs on top of the Azure Stack HCI cluster, including the Azure Kubernetes Service platform, the control plane, and the Kubernetes clusters that run your containerized applications." lightbox="image-file-expanded.png":::
 
@@ -98,7 +98,7 @@ Your Windows Admin Center management PC or server has the following requirements
 
 The cluster running Azure Stack HCI, version 20H2 or later has the following requirements:
 
-- Between two and four servers in the cluster
+- A maximum of four servers in the cluster for this preview release
 - 1 TB of available capacity in the storage pool for Azure Kubernetes Service
 - At least 30 GB of available memory for running Azure Kubernetes Service VMs
 - All servers in the cluster must use the EN-US region and language selection for this preview release
