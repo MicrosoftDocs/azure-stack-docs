@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 09/09/2020
+ms.date: 09/11/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -102,18 +102,6 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
 
-## Update planning
-
-Before applying the update, make sure to review the following information:
-
-- [Known issues](known-issues.md)
-- [Security updates](release-notes-security-updates.md)
-- [Checklist of activities before and after applying the update](release-notes-checklist.md)
-
-## Download the update
-
-You can download the Azure Stack Hub 2008 update package from [the Azure Stack Hub download page](https://aka.ms/azurestackupdatedownload).
-
 ## Hotfixes
 
 Azure Stack Hub releases hotfixes on a regular basis. Starting with the 2005 release, when you update to a new major version (for example, 1.2002.x to 1.2005.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
@@ -210,18 +198,6 @@ For more information about update build types, see [Manage updates in Azure Stac
 ## Security updates
 
 For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
-
-## Update planning
-
-Before applying the update, make sure to review the following information:
-
-- [Known issues](known-issues.md)
-- [Security updates](release-notes-security-updates.md)
-- [Checklist of activities before and after applying the update](release-notes-checklist.md)
-
-## Download the update
-
-You can download the Azure Stack Hub 2005 update package from [the Azure Stack Hub download page](https://aka.ms/azurestackupdatedownload).
 
 ## Hotfixes
 
