@@ -1,7 +1,7 @@
 ---
-title: Azure Kubernetes Service on Azure Stack HCI Before You Begin
+title: system-requirements
 description: Before You Begin Azure Kubernetes Service on Azure Stack HCI
-ms.topic: quickstart
+ms.topic: conceptual
 author: abhilashaagarwala
 ms.author: abha
 ms.date: 09/21/2020
@@ -10,12 +10,7 @@ ms.date: 09/21/2020
 
 > Applies to: Azure Stack HCI
 
-In this quickstart, you will learn how to: 
-
- - Determine whether your hardware meets the base requirements for creating Azure Kubernetes clusters on Azure Stack HCI 
- - Make sure you are not exceeding the maximum supported hardware specifications 
- - Gather the required information for a successful installation 
- - Install Windows Admin Center on a management PC or server 
+On this system requirements page, you will learn how to determine whether your hardware meets the base requirements for creating Azure Kubernetes clusters on Azure Stack HCI. Make sure you are not exceeding the maximum supported hardware specifications. Gather the required information for a successful installation. Do not forget to Install Windows Admin Center on a management PC or server.
 
 ## Determine hardware requirements
 
@@ -35,13 +30,11 @@ For Azure Kubernetes Service on Azure Stack HCI to function optimally in an Acti
 
 ### Compute requirements
 
- - A standard Azure Stack HCI Server cluster with a minimum of 2 servers and a maximum of 4 servers. We recommend the cluster to have at least 24 CPU cores in each node and at least 512 GB RAM in each node.
+ - An Azure Stack HCI cluster with a maximum of four servers in the cluster. We recommend that each server in the cluster have at least 24 CPU cores and at least 512 GB RAM.
 
  - While you can technically run Azure Kubernetes Service on a single node Azure Stack HCI Server, we do not recommend doing so.
 
  - Other compute requirements for Azure Kubernetes Service on Azure Stack HCI are in line with Azure Stack HCI’s requirements. Visit [Azure Stack HCI Requirements](../hci/deploy/before-you-start.md) for more details on Azure Stack HCI’s server requirements.  
-
- - Verify that you have Hyper-V and Hyper-V PowerShell roles installed and functioning. For additional feature-specific requirements for Hyper-V, see [System Requirements for Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
 
  - This preview release requires that you install the Azure Stack HCI operating system on each server in the cluster using the EN-US region and language selections; changing them after installation isn't sufficient at this time.
 
@@ -65,7 +58,7 @@ Azure Kubernetes Service on Azure Stack HCI requires a reliable high-bandwidth, 
 
  - DNS name resolution is required for all nodes to be able to communicate with each other. For Kubernetes external name resolution, we use the DNS servers provided by the DHCP server when the IP address is obtained. For Kubernetes internal name resolution, we use the default Kubernetes core DNS based solution. 
 
- - Ensure that there is no proxy server required to connect the WAC gateway server, Azure Stack HCI cluster nodes and Azure Kubernetes Service on Azure Stack HCI cluster nodes to the internet. We are working on removing this in subsequent versions. 
+ - For this preview release, we don't support using a proxy server to connect the Windows Admin Center, Azure Stack HCI cluster nodes, and the Azure Kubernetes Service on Azure Stack HCI cluster nodes to the internet.
 
 ### Network port and URL requirements 
 
@@ -108,7 +101,7 @@ Azure Kubernetes Service on Azure Stack HCI deployments that exceed the followin
 | Resource                     | Maximum |
 | ---------------------------- | --------|
 | Physical servers per cluster | 4       |
-| Workload Clusters            | 4       |
+| Kubernetes Clusters            | 4       |
 | Total number of VMs          | 200     |
 
 ### Windows Admin Center 

@@ -1,12 +1,12 @@
 ---
-title: Set up an Azure Kubernetes Service host on Azure Stack HCI using Windows PowerShell
+title: Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI using Windows PowerShell
 description: Learn how to create an Azure Kubernetes Service host cluster on Azure Stack HCI with Windows PowerShell
 author: jeguan
 ms.topic: quickstart
 ms.date: 09/21/2020
 ms.author: jeguan
 ---
-# Set up an Azure Kubernetes Service host on Azure Stack HCI using Windows PowerShell
+# Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI using Windows PowerShell
 
 > Applies to: Azure Stack HCI
 
@@ -14,7 +14,7 @@ In this quickstart, you will learn how to create an Azure Kubernetes Service hos
 
 ## Before you begin
 
-Before you begin, make sure you have a 2-4 node Azure Stack HCI cluster or a Single Node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you do not, follow instructions on how to [here](./before-you-begin.md)
+Before you begin, make sure you have a 2-4 node Azure Stack HCI cluster or a Single Node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you do not, follow instructions on how to [here](./system-requirements.md)
 
 ## Step 1: Prepare your machine(s) for deployment
 

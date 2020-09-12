@@ -1,12 +1,12 @@
 ---
-title: Set up an Azure Kubernetes Service target cluster on Azure Stack HCI using Windows PowerShell
+title: Quickstart: Set up an Azure Kubernetes Service target cluster on Azure Stack HCI using Windows PowerShell
 description: Learn how to create a Azure Kubernetes Service target cluster on Azure Stack HCI with Windows PowerShell
 author: jeguan
 ms.topic: quickstart
 ms.date: 09/21/2020
 ms.author: jeguan
 ---
-# Create an Azure Kubernetes Service target cluster on Azure Stack HCI using Windows PowerShell
+# Quickstart: Create an Azure Kubernetes Service target cluster on Azure Stack HCI using Windows PowerShell
 
 > Applies to: Azure Stack HCI
 
@@ -16,7 +16,7 @@ In this quickstart you will learn how to use Windows PowerShell to create an Azu
 
 Before you begin, make sure you:
 
-- Have a 2-4 node Azure Stack HCI cluster or a Single Node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you do not, follow instructions on how to create one [here](./before-you-begin.md).
+- Have a 2-4 node Azure Stack HCI cluster or a Single Node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you do not, follow instructions on how to create one [here](./system-requirements.md).
 - Have an Azure Kubernetes Service host on Azure Stack HCI deployed. If you do not, follow instructions on how to [Deploy an Azure Kubernetes host on Azure Stack HCI](./create-host-powershell.md)
 
 ## Step 1: Create a target Kubernetes cluster

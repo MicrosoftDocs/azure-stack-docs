@@ -1,16 +1,16 @@
 ---
-title: Create a Kubernetes cluster using Windows Admin Center
+title: Quickstart: Create a Kubernetes cluster using Windows Admin Center
 description: Learn how to create a Kubernetes cluster using Windows Admin Center
 author: davannaw-msft
 ms.topic: quickstart
 ms.date: 09/21/2020
 ms.author: dawhite
 ---
-# Create a Kubernetes cluster
+# Quickstart: Create a Kubernetes cluster on Azure Stack HCI using Windows Admin Center
 
 > Applies to: Azure Stack HCI
 
-After you have set up your Azure Kubernetes Service host, you can create a Kubernetes cluster. Make sure you have checked the [Before you begin](.\before-you-begin.md) page and gone through the [Setting up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center quickstart](.\setup.md) before following this quickstart. 
+After you have set up your Azure Kubernetes Service host, you can create a Kubernetes cluster. Make sure you have checked the [system requirements](.\system-requirements.md) page and gone through the [Setting up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center quickstart](.\setup.md) before following this quickstart. 
 
 Let's get started: 
 1. To begin creating a Kubernetes cluster in Windows Admin Center, press the **Add** button on the gateway screen.
