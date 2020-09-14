@@ -33,3 +33,9 @@
   items: 
     - name: Troubleshoot
       href: troubleshoot.md
+    - name: Connect Cluster to Azure Arc for Kubernetes
+      href: arc-onboard.md
+    - name: Use Windows Server containers in Azure Kubernetes Service on Azure Stack HCI
+      href: windows-container.md
+    - name: Use Linux containers in Azure Kubernetes Service on Azure Stack HCI
+      href: linux-container.md
