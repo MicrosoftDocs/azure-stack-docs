@@ -11,13 +11,17 @@ ms.reviewer:
 # Run Windows applications in Azure Kubernetes Service on Azure Stack HCI
 
 In this how-to guide, you run an ASP.NET sample application in a Windows Server container to the cluster. You then see how to test and scale your application. 
-
 This how-to guide assumes a basic understanding of Kubernetes concepts. For more information, see Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI.
 
-## Scheduling Windows Containers in Azure Kubernetes Service on Azure Stack HCI
-If you have Linux only worker nodes or Windows only worker nodes, you may skip this section.
+## Before you begin
 
-Ensure that OS specific workloads land on the appropriate container host. If you have a mixed Linux and Windows worker nodes Kubernetes cluster, you may follow the best practices in your deployments as explained below and choose either “use nodeSelector” or “taints and tolerations”. 
+Verify you have the following requirements ready:
+
+* An Azure Kubernetes Service on Azure Stack HCI cluster with atleast one Windows worker node that is up and running. 
+* You'll need a kubeconfig file to access the cluster and cluster-admin role on the cluster.
+* Have the Azure Kubernetes Service on Azure Stack HCI PowerShell module installed.
+* Run the commands in this document in a PowerShell administrative window.
+* Ensure that OS specific workloads land on the appropriate container host. If you have a mixed Linux and Windows worker nodes Kubernetes cluster, you can either use nodeSelectors or taints and tolerations. 
 
 ## Run the application
 
