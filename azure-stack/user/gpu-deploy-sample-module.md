@@ -30,7 +30,7 @@ This sample includes PyTorch and TensorFlow benchmarking sample code for CPU aga
 
 Before you begin, make sure you have:
   - A tenant subscription Azure Stack Integrated System or Azure Stack Development Kit
-  - A Linux virtual machine with IoT Edge set-up and associated to an IoT Hub. For more information, go to [Install the Azure IoT Edge runtime on Debian-based Linux systems](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-edge-linux).
+  - A Linux virtual machine with IoT Edge set-up and associated to an IoT Hub. For more information, go to [Install the Azure IoT Edge runtime on Debian-based Linux systems](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux).
 
   - An Azure subscription
       - If you don't have an Azure subscription, create a free account
