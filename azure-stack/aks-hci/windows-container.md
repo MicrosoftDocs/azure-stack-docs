@@ -29,55 +29,6 @@ kubernetes.io/os = [Windows|linux]
 
 The Kubernetes manifest file must define a `node selector` to ensure OS specific workloads land on the appropriate Windows or Linux container host.
 
-### Using Taints and Tolerations in your Azure Kubernetes Service on Azure Stack HCI cluster
-
-Sometimes, users have a large number of pre-existing deployments for Linux containers as well as an ecosystem of off-the-shelf configurations, such as community Helm charts and programmatic pod generation cases, such as  Operators. 
-
-In these situations, you may be hesitant to make configuration changes by adding a `nodeSelector`. The alternative is to use `taints`. 
-
-Windows Server nodes can be tainted with the following key-value pair
-
-```yaml
-node.kubernetes.io/os=Windowss:NoSchedule
-```
-The default Azure Kubernetes Service on Azure Stack HCI infrastructure services on Windows tolerates the above taint. We do not recommend using a different taint. 
-
-Run `kubectl get` and identify your Windows server worker nodes.
-
-```PowerShell
-kubectl get nodes --all-namespaces -o=custom-columns=NAME:.metadata.name,OS:.status.nodeInfo.operatingSystem
-```
-
-The following example output shows the Deployments and Services created successfully:
-
-```output
-NAME                                     OS
-my-aks-hci-cluster-control-plane-krx7j   linux
-my-aks-hci-cluster-md-md-1-5h4bl         windows
-my-aks-hci-cluster-md-md-1-5xlwz         windows
-```
-
-Taint all Windows server worker nodes using `kubectl taint node`
-
-```PowerShell
-kubectl taint node my-aks-hci-cluster-md-md-1-5h4bl node.kubernetes.io/os=Windows:NoSchedule
-kubectl taint node my-aks-hci-cluster-md-md-1-5xlwz node.kubernetes.io/os=Windows:NoSchedule
-```
-
-For a Windows Pod to be scheduled on a Windows node, you need both a `nodeSelector` to choose Windows OS and the matching `toleration`.
-
-```yaml
-nodeSelector:
-  kubernetes.io/os: Windows
-```
-```yaml
-tolerations:
-- effect: NoSchedule
-  key: node.kubernetes.io/os
-  operator: Equal
-  value: Windows
-```
-
 ## Run the application
 
 A Kubernetes manifest file defines a desired state for the cluster, such as what container images to run. In this article, a manifest is used to create all objects needed to run the ASP.NET sample application in a Windows Server container. This manifest includes a Kubernetes deployment for the ASP.NET sample application and an external Kubernetes service to access the application from the internet.
