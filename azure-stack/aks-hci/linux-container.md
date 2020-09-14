@@ -14,6 +14,15 @@ In this how-to guide, you run a multi-container application that includes a web 
 
 This how-to guide assumes a basic understanding of Kubernetes concepts. For more information, see Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI.
 
+## Before you begin
+
+Verify you have the following requirements ready:
+
+* An Azure Kubernetes Service on Azure Stack HCI cluster with atleast one Linux worker node that is up and running. 
+* You'll need a kubeconfig file to access the cluster and cluster-admin role on the cluster for deployment of Arc enabled Kubernetes agents.
+* Have the Azure Kubernetes Service on Azure Stack HCI PowerShell module installed.
+* Run the commands in this document in a PowerShell administrative window.
+
 ## Run the application
 
 A Kubernetes manifest file defines a desired state for the cluster, such as what container images to run. In this quickstart, a manifest is used to create all objects needed to run the [Azure Vote application](https://github.com/Azure-Samples/azure-voting-app-redis). This manifest includes two Kubernetes deployments - one for the sample Azure Vote Python applications, and the other for a Redis instance. Two Kubernetes Services are also created - an internal service for the Redis instance, and an external service to access the Azure Vote application from the internet.
