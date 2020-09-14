@@ -1,13 +1,15 @@
 ---
-title: Create a Kubernetes cluster using Windows Admin Center
+title: Quickstart to create a Kubernetes cluster using Windows Admin Center
 description: Learn how to create a Kubernetes cluster using Windows Admin Center
 author: davannaw-msft
 ms.topic: quickstart
-ms.date: 09/01/2020
+ms.date: 09/21/2020
 ms.author: dawhite
 ---
+# Quickstart: Create a Kubernetes cluster on Azure Stack HCI using Windows Admin Center
 
-# Create a Kubernetes cluster
+> Applies to: Azure Stack HCI
+
 After you have set up your Azure Kubernetes Service host, you can create a Kubernetes cluster. Make sure you have checked the [system requirements](.\system-requirements.md) page and gone through the [Setting up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center quickstart](.\setup.md) before following this quickstart. 
 
 Let's get started: 
@@ -17,7 +19,7 @@ Let's get started:
     ![Illustrates the "Add or create resources" blade in Windows Admin Center, which now includes the new tile for Kubernetes clusters.](.\media\add-connection.png)
 
 3. Review the prerequisites for the system that will host the Kubernetes cluster and those for Windows Admin Center. When finished, select **Next**. 
-4. On the **Basics** page, configure information about your cluster, such as Azure Arc integration, Azure Kubernetes Service host information, and primary node pool size.  Azure Kubernetes Service host information, and primary node pool size. The Azure Kubernetes Service host field requires the fully qualified domain name of the server, failover cluster, or Azure Stack HCI cluster that you want to deploy your Kubernetes cluster to. You must have completed the host setup for this system through the Azure Kubernetes Service tool. In public preview, the node count is uneditable and will default to 2, but node size can be configured for larger workloads. When complete, select **Next**.
+4. On the **Basics** page, configure information about your cluster, such as Azure Arc integration, Azure Kubernetes Service host information, and primary node pool size.  Azure Kubernetes Service host information, and primary node pool size. The Azure Kubernetes Service host field requires the fully qualified domain name of the Azure Stack HCI cluster that you want to deploy your Kubernetes cluster to. You must have completed the host setup for this system through the Azure Kubernetes Service tool. In public preview, the node count is uneditable and will default to 2, but node size can be configured for larger workloads. When complete, select **Next**.
 
     ![Illustrates the Basics page of the Kubernetes cluster wizard.](.\media\basics.png)
 

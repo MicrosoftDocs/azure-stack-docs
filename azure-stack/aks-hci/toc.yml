@@ -23,10 +23,14 @@
   items:
     - name: Set up Azure Kubernetes Service on Azure Stack HCI
       items:
+        - name: Using PowerShell
+          href: create-host-powershell.md
         - name: Using Windows Admin Center
           href: setup.md
     - name: Create a Kubernetes cluster
       items:
+        - name: Using PowerShell
+          href: create-kubernetes-cluster-powershell.md
         - name: Using Windows Admin Center
           href: create-kubernetes-cluster.md
 - name: How-to guides
