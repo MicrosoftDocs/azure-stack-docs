@@ -79,6 +79,8 @@ landingContent:
             url: deploy-foundational-patterns.md
           - text: Host Apps written in your code
             url: azure-stack-dev-start-deploy-app.md
+          - text: Deploy a GPU IoT module
+            url: gpu-deploy-sample-module.md
 
   # Card
   - title: Platform-as-a-Service (PaaS) on Azure Stack Hub

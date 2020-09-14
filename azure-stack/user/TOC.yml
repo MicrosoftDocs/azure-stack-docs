@@ -291,6 +291,8 @@
         href: azure-stack-dev-start-howto-vm-python.md
       - name: Deploy a NodeJS web app 
         href: azure-stack-dev-start-howto-vm-nodejs.md
+    - name: Deploy a GPU IoT module
+      href: gpu-deploy-sample-module.md
   - name: Deploy foundational patterns
     href: deploy-foundational-patterns.md
     items:
