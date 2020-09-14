@@ -6,13 +6,13 @@ ms.author: v-kedow
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/11/2020
+ms.date: 09/14/2020
 ---
 # What is RAS Gateway for SDN?
 
 > Applies to Azure Stack HCI, version 20H2; Windows Server 2019
 
-RAS (Remote Access Service) Gateway is a software-based Border Gateway Protocol (BGP) capable router designed for cloud service providers (CSPs) and enterprises that host multitenant virtual networks using Hyper-V Network Virtualization. It is used for routing network traffic between a virtual network and another network, either local or remote.
+Remote Access Service (RAS) Gateway is a software-based Border Gateway Protocol (BGP) capable router designed for cloud service providers (CSPs) and enterprises that host multitenant virtual networks using Hyper-V Network Virtualization (HNV). You can use RAS Gateway to route network traffic between a virtual network and another network, either local or remote.
 
 RAS Gateway requires Network Controller, which performs the deployment of gateway pools, configures tenant connections on each gateway, and switches network traffic flows to a standby gateway in the event of a gateway failure.
 
@@ -21,23 +21,23 @@ RAS Gateway requires Network Controller, which performs the deployment of gatewa
 
 ## RAS Gateway features
 
-RAS Gateway offers a number of features for VPN, tunneling, forwarding, and dynamic routing.
+RAS Gateway offers a number of features for virtual private network (VPN), tunneling, forwarding, and dynamic routing.
 
-### Site-to-site IPsec VPN
+### Site-to-Site IPsec VPN
 
-This RAS Gateway feature allows you to connect two networks at different physical locations across the Internet by using a site-to-site virtual private network (VPN) connection. This is an encrypted connection, using IKEv2 VPN protocol.
+This RAS Gateway feature allows you to connect two networks at different physical locations across the Internet by using a Site-to-Site (S2S) virtual private network (VPN) connection. This is an encrypted connection, using IKEv2 VPN protocol.
 
-For CSPs that host many tenants in their datacenter, RAS Gateway provides a multitenant gateway solution that allows your tenants to access and manage their resources over site-to-site VPN connections from remote sites, and that allows network traffic flow between virtual resources in your datacenter and their physical network.
+For CSPs that host many tenants in their datacenter, RAS Gateway provides a multitenant gateway solution that allows tenants to access and manage their resources over site-to-site VPN connections from remote sites. RAS Gateway allows network traffic flow between virtual resources in your datacenter and their physical network.
 
-### Site-to-Site GRE Tunnels
+### Site-to-Site GRE tunnels
 
-Generic Routing Encapsulation (GRE) based tunnels enable connectivity between tenant virtual networks and external networks. Since the GRE protocol is lightweight and support for GRE is available on most of network devices, it becomes an ideal choice for tunneling where encryption of data is not required.
+Generic Routing Encapsulation (GRE)-based tunnels enable connectivity between tenant virtual networks and external networks. Because the GRE protocol is lightweight and support for GRE is available on most network devices, it is an ideal choice for tunneling where encryption of data is not required.
 
-GRE support in Site to Site (S2S) tunnels solves the problem of forwarding between tenant virtual networks and tenant external networks using a multitenant gateway.
+GRE support in S2S tunnels solves the problem of forwarding between tenant virtual networks and tenant external networks using a multitenant gateway.
 
-### Layer 3 (L3) Forwarding
+### Layer 3 forwarding
 
-L3 forwarding enables connectivity between the physical infrastructure in the datacenter and the virtualized infrastructure in the Hyper-V network virtualization cloud. Using L3 forwarding connection, tenant network virtual machines can connect to a physical network through the SDN Gateway, which is already configured in a software defined networking (SDN) environment. In this case, the SDN gateway acts as a router between the virtualized network and the physical network.
+Layer 3 (L3) forwarding enables connectivity between the physical infrastructure in the datacenter and the virtualized infrastructure in the Hyper-V network virtualization cloud. Using L3 forwarding connection, tenant network VMs can connect to a physical network through the SDN gateway, which is already configured in a software defined networking (SDN) environment. In this case, the SDN gateway acts as a router between the virtualized network and the physical network.
 
 ### Dynamic routing with BGP
 
