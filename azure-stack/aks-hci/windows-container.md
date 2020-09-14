@@ -18,7 +18,7 @@ This how-to guide assumes a basic understanding of Kubernetes concepts. For more
 Verify you have the following requirements ready:
 
 * An Azure Kubernetes Service on Azure Stack HCI cluster with atleast one Windows worker node that is up and running. 
-* You'll need a kubeconfig file to access the cluster and cluster-admin role on the cluster.
+* A kubeconfig file to access the cluster.
 * Have the Azure Kubernetes Service on Azure Stack HCI PowerShell module installed.
 * Run the commands in this document in a PowerShell administrative window.
 * Ensure that OS specific workloads land on the appropriate container host. If you have a mixed Linux and Windows worker nodes Kubernetes cluster, you can either use nodeSelectors or taints and tolerations. 
