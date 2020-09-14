@@ -141,7 +141,7 @@ You can view your Kubernetes cluster resource on the [Azure portal](https://port
 > [!NOTE]
 > After onboarding the cluster, it takes around 5 to 10 minutes for the cluster metadata (cluster version, agent version, number of nodes) to surface on the overview page of the Azure Arc enabled Kubernetes resource in Azure portal.
 
-To delete your cluster, or to connect your cluster if it is behind an outbound proxy server, visit [Connect an Azure Arc-enabled Kubernetes cluster](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster)
+To delete your cluster, or to connect your cluster if it is behind an outbound proxy server, visit [Connect an Azure Arc-enabled Kubernetes cluster](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster).
 
 ## Next steps
 
