@@ -19,16 +19,6 @@ If you have Linux only worker nodes or Windows only worker nodes, you may skip t
 
 Ensure that OS specific workloads land on the appropriate container host. If you have a mixed Linux and Windows worker nodes Kubernetes cluster, you may follow the best practices in your deployments as explained below and choose either “use nodeSelector” or “taints and tolerations”. 
 
-### Using `nodeSelector` in your Azure Kubernetes Service on Azure Stack HCI cluster
-
-All Kubernetes nodes today have the following default label:
-
-```yaml
-kubernetes.io/os = [Windows|linux]
-```
-
-The Kubernetes manifest file must define a `node selector` to ensure OS specific workloads land on the appropriate Windows or Linux container host.
-
 ## Run the application
 
 A Kubernetes manifest file defines a desired state for the cluster, such as what container images to run. In this article, a manifest is used to create all objects needed to run the ASP.NET sample application in a Windows Server container. This manifest includes a Kubernetes deployment for the ASP.NET sample application and an external Kubernetes service to access the application from the internet.
