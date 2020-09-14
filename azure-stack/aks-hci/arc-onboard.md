@@ -118,13 +118,15 @@ az role assignment create
     --resource-group Azure Arc Test #Azure resource group that will store the cluster resource
 ```
 
-## Step 6: Use Service Principal with the Aks-Hci PowerShell module
+## Step 6: Conect to Azure Arc using service principal and the Aks-Hci PowerShell module
 
-Reference the newly created Service Principal and run the Install-AksHciArcOnboarding command available in the Aks-Hci PowerShell module.
+Next, we will connect our Kubernetes cluster to Azure using service principal and the Aks-Hci PowerShell module. This step deploys Azure Arc Agents for Kubernetes into the `azure-arc` namespace.
+
+Reference the newly created service principal and run the Install-AksHciArcOnboarding command available in the Aks-Hci PowerShell module.
 
 ```PowerShell
 Install-AksHciArcOnboarding 
-    -clusterName mynewcluster #Kubernetes cluster name
+    -clusterName "mynewcluster" #Kubernetes cluster name
     -resourcegroup "AzureArcTest" 
     -location "eastus" #resource group location
     -subscriptionid "00000000-aaaa-bbbb-cccc-000000000000"
@@ -132,8 +134,17 @@ Install-AksHciArcOnboarding
     -clientsecret  "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" #use the secret from service principal 
     -tenantid "ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj" #use the tenant from service principal
 ```
+## Verify connected cluster
+
+You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). Once you have the portal open in your browser, navigate to the resource group and the Azure Arc enabled Kubernetes resource based on the resource name and resource group name inputs used earlier in the `Install-AksHciArcOnboarding` PowerShell command.
+
+> [!NOTE]
+> After onboarding the cluster, it takes around 5 to 10 minutes for the cluster metadata (cluster version, agent version, number of nodes) to surface on the overview page of the Azure Arc enabled Kubernetes resource in Azure portal.
+
+To delete your cluster, or to connect your cluster if it is behind an outbound proxy server, visit [Connect an Azure Arc-enabled Kubernetes cluster](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster)
 
 ## Next steps
 
 * [Use GitOps in a connected cluster](https://docs.microsoft.com/azure/azure-arc/kubernetes/use-gitops-connected-cluster)
 * [Use Azure Policy to govern cluster configuration](https://docs.microsoft.com/azure/azure-arc/kubernetes/use-azure-policy)
+* [Enable Azure Monitor on an Azure Arc enabled Kubernetes cluster](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-enable-arc-enabled-clusters)
