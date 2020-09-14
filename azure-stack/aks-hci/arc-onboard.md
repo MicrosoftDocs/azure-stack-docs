@@ -18,7 +18,7 @@ To connect a Kubernetes cluster to Azure, the cluster administrator needs to dep
 
 Azure Arc enabled Kubernetes supports industry-standard SSL to secure data in transit. Also, data is stored encrypted at rest in an Azure Cosmos DB database to ensure data confidentiality.
 
-The following steps provide a walkthrough on onboarding Azure Kubernetes Service on Azure Stack HCI clusters to Azure Arc.
+The following steps provide a walkthrough on onboarding Azure Kubernetes Service on Azure Stack HCI clusters to Azure Arc. You may skip these steps if you've already onboarded your Kubernetes cluster to Azure Arc through Windows Admin Center. 
 
 ## Before you begin
 
