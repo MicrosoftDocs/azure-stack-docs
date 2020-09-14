@@ -19,7 +19,7 @@ This how-to guide assumes a basic understanding of Kubernetes concepts. For more
 Verify you have the following requirements ready:
 
 * An Azure Kubernetes Service on Azure Stack HCI cluster with atleast one Linux worker node that is up and running. 
-* You'll need a kubeconfig file to access the cluster and cluster-admin role on the cluster for deployment of Arc enabled Kubernetes agents.
+* A kubeconfig file to access the cluster.
 * Have the Azure Kubernetes Service on Azure Stack HCI PowerShell module installed.
 * Run the commands in this document in a PowerShell administrative window.
 
