@@ -60,7 +60,7 @@ Configure your deployment with the following command.
 
    ```
 
-### Optional Parameters
+### Optional parameters
 
 `-deploymentType`
 

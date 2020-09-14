@@ -37,13 +37,13 @@ Open PowerShell as an administrator and run the following command.
                     [-windowsNodeVmSize]
    ```
 
-### Required Parameters
+### Required parameters
 
 `-clusterName`
 
 The alphanumeric name of your target cluster.
 
-### Optional Parameters
+### Optional parameters
 
 `kubernetesVersion`
 
