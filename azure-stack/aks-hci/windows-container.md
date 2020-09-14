@@ -17,7 +17,7 @@ This how-to guide assumes a basic understanding of Kubernetes concepts. For more
 ## Scheduling Windows Containers in Azure Kubernetes Service on Azure Stack HCI
 If you have Linux only worker nodes or Windows only worker nodes, you may skip this section.
 
-You have to ensure that OS-specific workloads land on the appropriate container host. If you have a mixed Linux and Windows worker nodes Kubernetes cluster, you may follow the best practices in your deployments as explained below and choose either “use nodeSelector” or “taints and tolerations”. 
+Ensure that OS specific workloads land on the appropriate container host. If you have a mixed Linux and Windows worker nodes Kubernetes cluster, you may follow the best practices in your deployments as explained below and choose either “use nodeSelector” or “taints and tolerations”. 
 
 ### Using `nodeSelector` in your Azure Kubernetes Service on Azure Stack HCI cluster
 
@@ -40,7 +40,7 @@ Windows Server nodes can be tainted with the following key-value pair
 ```yaml
 node.kubernetes.io/os=Windowss:NoSchedule
 ```
-The default Azure Kubernetes Service on Azure Stack HCI infrastructure services on Windows tolerate the above taint. We do not recommending using a different taint. 
+The default Azure Kubernetes Service on Azure Stack HCI infrastructure services on Windows tolerates the above taint. We do not recommend using a different taint. 
 
 Run `kubectl get` and identify your Windows server worker nodes.
 
@@ -173,7 +173,7 @@ sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 To see the sample app in action, open a web browser to the external IP address of your service.
 
-If you receive a connection timeout when trying to load the page then verify if the sample app is ready with `kubectl get pods --watch` command. Sometimes, the external IP address is available befroe the windows container has started.
+If you receive a connection timeout when trying to load the page, verify if the sample app is ready with `kubectl get pods --watch` command. Sometimes, the external IP address is available before the windows container has started.
 
 ## Next steps
 
