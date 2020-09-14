@@ -54,10 +54,10 @@ Before you begin, make sure you have:
 1.  Clone or download the code.
 
 ```bash  
-  git clone https://github.com/Azure-Samples/azure-intelligent-edge-patterns.git
+git clone https://github.com/Azure-Samples/azure-intelligent-edge-patterns.git
 ```
 
-## Configure and Build Containers
+## Configure and build containers
 1.  Open the "GpuReferenceModules" folder in Visual Studio Code.
 1.  Fill in the values in the `.env.template` file for your ACR.
 
@@ -75,7 +75,7 @@ Before you begin, make sure you have:
     Keys section of your registry in the Azure portal.  
 
     ```bash  
-          docker login -u <REGISTRY_USER_NAME> -p <REGISTRY_PASSWORD> <REGISTRY_NAME>.azurecr.io
+    docker login -u <REGISTRY_USER_NAME> -p <REGISTRY_PASSWORD> <REGISTRY_NAME>.azurecr.io
     ```
 
 1.  In the VS Code explorer, right-click the `deployment.iotedgevm.template.json`
