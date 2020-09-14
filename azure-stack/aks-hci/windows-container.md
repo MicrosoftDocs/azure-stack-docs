@@ -167,93 +167,13 @@ sample             LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 When the *EXTERNAL-IP* address changes from *pending* to an actual public IP address, use `CTRL-C` to stop the `kubectl` watch process. The following example output shows a valid public IP address assigned to the service:
 
 ```output
+NAME    TYPE           CLUSTER-IP   EXTERNAL-IP     PORT(S)        AGE
 sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
 To see the sample app in action, open a web browser to the external IP address of your service.
 
-If you receive a connection timeout when trying to load the page then you should verify the sample app is ready with the following command [kubectl get pods --watch]. Sometimes the windows container will not be started by the time your external IP address is available.
-
-## Using Persistent Storage for your Windows Application
-
-A persistent volume represents a piece of storage that has been provisioned for use with Kubernetes pods. A persistent volume can be used by one or more pods and is meant for long term storage. It is independent of the pod or node lifecycle. 
-
-In this section, you will see how to create a persistent volume and how to use this volume in your application. 
-
-### Create a persistent volume claim
-
-A Persistent Volume Claim (PVC) is used to automatically provision storage based on a storage class. Create a file named pvc-AKS-HCI-csi.yaml and copy in the following YAML definition. The claim requests a disk that is 10GB in size with ReadWriteOnce access. The default storage class is specified as the storage class (vhdx). 
-
-```yaml
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: pvc-AKS-HCI-csi
-spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
-```
-
-Create the volume by running the following command
-
-```PowerShell
-Kubectl create -f pvc-AKS-HCI-csi.yaml
-```
-
-### Use the persistent volume
-
-Once the persistent volume claim has been created and the vhdx successfully provisioned, a pod can be created with access to the volume. 
-
-Create a file named winwebserver.yaml and copy in the following YAML definition. Please add tolerations in the YAML below if you tainted your Windows nodes.
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    app: win-webserver
-  name: win-webserver
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: win-webserver
-  template:
-    metadata:
-      labels:
-        app: win-webserver
-      name: win-webserver
-    spec:
-     containers:
-      - name: windowswebserver
-        image: mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2019
-        ports: 
-          - containerPort: 80   
-        volumeMounts:
-            - name: AKS-HCIscsi
-              mountPath: "/mnt/AKS-HCIscsi"
-     volumes:
-        - name: AKS-HCIscsi
-          persistentVolumeClaim:
-            claimName:  pvc-AKS-HCI-csi
-     nodeSelector:
-      kubernetes.io/os: windows
-```
-
-`mountPath` is the path to mount a volume inside container. You will see a subdirectory “mnt” will be created in c:\ in container, as well as a subdirectory “AKS-HCIscsi” under “mnt”. 
-
-5.	Create the pod by running the following command: 
-Kubectl create -f winwebserver.yaml
-
-6.	Make sure the pod’s status is running (it might take a few minutes until pod is in a running state, since pulling IIS image may take a while)
-Kubectl get pods -o wide
-
-7.	Once your pod is running, view pod status by running the following command:
-kubectl.exe describe pod %podName%
-
+If you receive a connection timeout when trying to load the page then verify if the sample app is ready with `kubectl get pods --watch` command. Sometimes, the external IP address is available befroe the windows container has started.
 
 ## Next steps
 
