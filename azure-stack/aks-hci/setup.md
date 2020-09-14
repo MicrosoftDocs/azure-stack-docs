@@ -1,5 +1,5 @@
 ---
-title: Quickstart: Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center
+title: Quickstart to set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center
 description: Learn how to set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center
 author: davannaw-msft
 ms.topic: quickstart

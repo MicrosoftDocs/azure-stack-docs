@@ -1,5 +1,5 @@
 ---
-title: Quickstart: Set up an Azure Kubernetes Service target cluster on Azure Stack HCI using Windows PowerShell
+title: Quickstart to set up an Azure Kubernetes Service target cluster on Azure Stack HCI using Windows PowerShell
 description: Learn how to create a Azure Kubernetes Service target cluster on Azure Stack HCI with Windows PowerShell
 author: jeguan
 ms.topic: quickstart
