@@ -45,35 +45,35 @@ The alphanumeric name of your target cluster.
 
 ### Optional parameters
 
-`kubernetesVersion`
+`-kubernetesVersion`
 
 The version of Kubernetes that you want to deploy. Default is v1.18.6.
 
-`controlPlaneNodeCount`
+`-controlPlaneNodeCount`
 
 The number of nodes in your control plane. Default is 1.
 
-`linuxNodeCount`
+`-linuxNodeCount`
 
 The number of Linux nodes in your target cluster. Default is 1.
 
-`windowsNodeCount`
+`-windowsNodeCount`
 
 The number of Windows nodes in your target cluster. Default is 0.
 
-`controlPlaneVmSize`
+`-controlPlaneVmSize`
 
 The size of your control plane VM. Default is Standard_A2_v2. To get a list of available VM sizes, run `Get-AksHciVmSize`.
 
-`loadBalancerVmSize`
+`-loadBalancerVmSize`
 
 The size of your load balancer VM. Default is Standard_A2_V2. To get a list of available VM sizes, run `Get-AksHciVmSize`.
 
-`linuxNodeVmSize`
+`-linuxNodeVmSize`
 
 The size of your Linux Node VM. Default is  Standard_K8S3_v1. To get a list of available VM sizes, run `Get-AksHciVmSize`.
 
-`windowsNodeVmSize`
+`-windowsNodeVmSize`
 
 The size of your Windows Node VM. Default is  Standard_K8S3_v1. To get a list of available VM sizes, run `Get-AksHciVmSize`.
 
