@@ -31,7 +31,7 @@ When you create an AKS HCI cluster, a management cluster is automatically create
 - *API Server* - The API server is how the underlying Kubernetes APIs are exposed. This component provides the interaction for management tools such as Windows Admin Center, PowerShell modules, or `kubectl`.
 - *Load Balancer* - The load balancer is a single dedicated Linux VM with a load balancing rule for the API server of the management cluster.
 
-### Windows Admin Center (WAC) 
+### Windows Admin Center
 Windows Admin Center offers an intuitive UI for the Kubernetes operator to manage the lifecycle of AKS HCI clusters.
 
 ### PowerShell module
