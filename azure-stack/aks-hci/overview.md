@@ -15,7 +15,7 @@ To get started with Azure Kubernetes Service on-premises, [register for the prev
 
 The following sections discuss some of the reasons to use Azure Kubernetes Service on Azure Stack HCI, then answer some common questions about the service and how to get started.
 
-## Automate management of containerized applications with Kubernetes
+## Automate management of containerized applications
 
 While you can manage a few containers manually using Docker and Windows, apps often make use of five, ten, or even hundreds of containers, which is where the Kubernetes orchestrator comes in.
 
@@ -48,20 +48,19 @@ Azure Kubernetes Service simplifies the process of setting up Kubernetes on Azur
 
 Once you've set up Azure Kubernetes Service on your Azure Stack HCI cluster and created a Kubernetes cluster, we provide a couple ways to manage and monitor your Kubernetes infrastructure:
 
-- **On-premises using popular tools like Kubectl and Kubernetes Dashboard** - use an open-source web-based interface to deploy applications to a Kubernetes cluster, manage cluster resources, troubleshoot, and view running applications.
+- **On-premises using popular tools like Kubectl and Kubernetes dashboard** - use an open-source web-based interface to deploy applications to a Kubernetes cluster, manage cluster resources, troubleshoot, and view running applications.
 - **In the Azure portal using Azure Arc** - use an Azure service to manage Azure Kubernetes Service and Kubernetes clusters deployed across your cloud and on-premises environments. You can use Azure Arc to add and remove Kubernetes clusters as well as nodes to a Kubernetes cluster, change network settings, and install add-ons.
-<br>Azure Arc also enables you to use other Azure services to monitor and manage your Kubernetes clusters including:
+<br>Azure Arc also enables you to manage your Kubernetes clusters with other Azure services including:
 
   - Azure Monitor
   - Azure Policy
   - Role-Based Access Control
-  - Azure Security Center
 
 ## Run Linux and Windows containers
 
 Azure Kubernetes Service fully supports both Linux-based and Windows-based containers. When you create a Kubernetes cluster on Azure Stack HCI, you can choose whether to create node pools (groups of identical VMs) to run Linux containers, Windows containers, or both. 
 
-Azure Kubernetes Service creates the Linx and Windows VMs for you so you don't have to directly manage the Linux or Windows operating systems.
+Azure Kubernetes Service creates the Linux and Windows VMs so that you don't have to directly manage the Linux or Windows operating systems.
 
 ## Secure your container infrastructure
 
@@ -80,7 +79,7 @@ Azure Kubernetes Service is available on the following platforms:
 - On-premises via Azure Kubernetes Service on Azure Stack HCI (what this article is all about)
 - On-premises in an Azure Stack Hub environment using the [AKS engine on Azure Stack Hub](../user/azure-stack-kubernetes-aks-engine-overview.md).
 
-## How does Azure Kubernetes Service work on Azure Stack HCI?
+## How does Kubernetes work on Azure Stack HCI?
 
 Azure Kubernetes Service works a little differently when run on Azure Stack HCI  than when using it in the Azure cloud:
 
