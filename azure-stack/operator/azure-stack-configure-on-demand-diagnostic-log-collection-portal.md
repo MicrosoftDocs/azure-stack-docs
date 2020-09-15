@@ -43,7 +43,7 @@ You can save logs to a local SMB share when Azure Stack Hub is disconnected from
 To troubleshoot a problem, Microsoft Support might request an Azure Stack Hub operator to collect diagnostic logs on demand for a specific time window from the previous week. In that case, Microsoft Support will provide the operator with a SAS URL for uploading the collection. 
 Use the following steps to configure on-demand log collection using the SAS URL from Microsoft Support:
 
-1. Open **Help and Support Overview** and click **Collect logs now**. 
+1. Open **Help + support > Log Collection > Collect logs now**. 
 1. Choose a 1-4 hour sliding window from the last seven days. 
 1. Choose the local time zone.
 1. Enter the SAS URL that Microsoft Support provided.
