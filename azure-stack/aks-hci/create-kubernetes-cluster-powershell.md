@@ -10,7 +10,7 @@ ms.author: jeguan
 
 > Applies to: Azure Stack HCI
 
-In this quickstart you will learn how to use Windows PowerShell to create an Kubernetes cluster on Azure Stack HCI.
+In this quickstart, you will learn how to use Windows PowerShell to create an Kubernetes cluster on Azure Stack HCI.
 
 ## Before you begin
 
