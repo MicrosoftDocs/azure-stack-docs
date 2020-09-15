@@ -16,7 +16,7 @@ ms.lastreviewed: 9/2/2020
 
 # Release notes for the AKS engine on Azure Stack Hub
 ::: moniker range=">=azs-2002"
-*Applies to version 0.55.0 of the ASK engine.*
+*Applies to version 0.55.0 of the AKS engine.*
 
 This article describes the contents of the Azure Kubernetes Service (AKS) engine on Azure Stack Hub update. The update includes improvements and fixes for the latest release of AKS engine targeted to the Azure Stack Hub platform. Notice that this isn't intended to document the release information for the AKS engine for global Azure.
 
@@ -134,7 +134,7 @@ This is the complete set of release notes for Azure and Azure Stack Hub combined
 
 ::: moniker-end
 ::: moniker range="<=azs-1910"
-*Applies to version 0.48.0 or earlier of the ASK engine.*
+*Applies to version 0.48.0 or earlier of the AKS engine.*
 
 This article describes the contents of the Azure Kubernetes Service (AKS) engine on Azure Stack Hub update. The update includes improvements and fixes for the latest release of AKS engine targeted to the Azure Stack Hub platform. Notice that this isn't intended to document the release information for the AKS engine for global Azure.
 
