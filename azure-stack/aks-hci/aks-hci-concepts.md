@@ -35,7 +35,7 @@ When you create an AKS HCI cluster, a management cluster is automatically create
 Windows Admin Center offers an intuitive UI for the Kubernetes operator to manage the lifecycle of AKS HCI clusters.
 
 ### PowerShell module
-The PowerShell module is an easy way to download, configure and deploy AKS HCI. The Day 2 PowerShell module also supports deploying and configuring additional target clusters as well as reconfiguring existing ones.
+The PowerShell module is an easy way to download, configure and deploy AKS HCI. The PowerShell module also supports deploying and configuring additional target clusters as well as reconfiguring existing ones.
 
 ## Target cluster
 The target (workload) cluster is a highly available deployment of Kubernetes using Linux VMs for running Kubernetes control plane components as well as Linux worker nodes. Windows Server Core based VMs are used for establishing Windows worker nodes. There can be one or more target cluster(s) managed by one management cluster.
