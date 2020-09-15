@@ -77,7 +77,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Azure Stack Hub storage now supports Azure Storage services APIs version 2019-02-02. For Azure client libraries, that is compatible with the new REST API version. For more information, see [Azure Stack Hub storage development tools](../user/azure-stack-storage-dev.md#azure-client-libraries).
 - Azure Stack Hub now supports the latest version of [CreateUiDefinition (version 2)](/azure/azure-resource-manager/managed-applications/create-uidefinition-overview).
 - New guidance for batched VM deployments. For more information [see this article](../operator/azure-stack-capacity-planning-compute.md).
-- The Azure Stack Hub Marketplace CoreOS Container Linux item [reached its end-of-life](https://azure.microsoft.com/updates/flatcar-in-azure/) on May 26, 2020, and there will be no further updates. For more information, see [Migrating from CoreOS Container Linux](https://docs.flatcar-linux.org/os/migrate-from-container-linux/).
+- The Azure Stack Hub Marketplace CoreOS Container Linux item [is approaching its end-of-life](https://azure.microsoft.com/updates/flatcar-in-azure/). For more information, see [Migrating from CoreOS Container Linux](https://docs.flatcar-linux.org/os/migrate-from-container-linux/).
 
 ### Improvements
 
