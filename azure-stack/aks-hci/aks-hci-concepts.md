@@ -160,7 +160,6 @@ When you create an AKS HCI cluster, the following namespaces are available:
 
 For more information, see [Kubernetes namespaces][kubernetes-namespaces].
 
-<!-- EXTERNAL LINKS -->
 [kubernetes-pods]: https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/
 [kubernetes-pod-lifecycle]: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
 [kubernetes-deployments]: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
