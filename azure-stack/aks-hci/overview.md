@@ -59,15 +59,18 @@ Once you've set up Azure Kubernetes Service on your Azure Stack HCI cluster and 
 
 ## Run Linux and Windows containers
 
-Azure Kubernetes Service fully supports both Linux-based and Windows-based containers. When you create a Kubernetes cluster on Azure Stack HCI, you can choose whether to create node pools to run Linux containers, Windows containers, or both. Azure Kubernetes Service then creates a 
+Azure Kubernetes Service fully supports both Linux-based and Windows-based containers. When you create a Kubernetes cluster on Azure Stack HCI, you can choose whether to create node pools (groups of identical VMs) to run Linux containers, Windows containers, or both. 
 
-to create node pools for Linux containers and Windows containers.
+Azure Kubernetes Service creates the Linx and Windows VMs for you so you don't have to directly manage the Linux or Windows operating systems.
 
-Linux virtual machines are automat
+## Secure your container infrastructure
 
-, you can choose to deploy Linux virtual machines (nodes) for your containers
+Azure Kubernetes Service includes a number of features to help secure your container infrastructure:
 
-the service deploys Linux and Windows virtual machines (nodes) for you based on 
+- **Hypervisor-based isolation for worker nodes** - Each Kubernetes cluster runs on its own dedicated and isolated set of virtual machines so tenants can share the same physical infrastructure.
+- **Microsoft-maintained Linux and Windows images for worker nodes** - Worker nodes run Linux and Windows virtual machine images created by Microsoft to adhere to security best practices. Microsoft also regularly refreshes these images with the latest security updates.
+
+Security is an ongoing area of investment for the Azure Kubernetes Service preview release on Azure Stack HCI, so stay tuned.
 
 ## Where can I run Azure Kubernetes Service?
 
