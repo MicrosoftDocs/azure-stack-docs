@@ -1,5 +1,5 @@
 ---
-title: Supported metrics for Azure Monitor on Azure Stack Hub 
+title: Azure Monitor supported metrics on Azure Stack Hub 
 description: Learn about the supported metrics for Azure Monitor on Azure Stack Hub.
 author: mattbriggs
 
