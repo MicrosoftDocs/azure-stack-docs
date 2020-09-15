@@ -1,16 +1,16 @@
 ---
-title: Quickstart to set up an Kubernetes cluster on Azure Stack HCI using Windows PowerShell
-description: Learn how to create a Kubernetes cluster on Azure Stack HCI with Windows PowerShell
+title: Quickstart to create Kubernetes clusters on Azure Stack HCI using Windows PowerShell
+description: Learn how to create Kubernetes clusters on Azure Stack HCI with Windows PowerShell
 author: jeguan
 ms.topic: quickstart
 ms.date: 09/21/2020
 ms.author: jeguan
 ---
-# Quickstart: Create a Kubernetes cluster on Azure Stack HCI using Windows PowerShell
+# Quickstart: Create Kubernetes clusters on Azure Stack HCI using Windows PowerShell
 
 > Applies to: Azure Stack HCI
 
-In this quickstart, you will learn how to use Windows PowerShell to create an Kubernetes cluster on Azure Stack HCI.
+In this quickstart, you will learn how to use Windows PowerShell to create a Kubernetes cluster on Azure Stack HCI.
 
 ## Before you begin
 
@@ -87,7 +87,7 @@ Get-AksHciCluster
 
 ## Step 2: Scale a Kubernetes cluster
 
-If you need to scale your cluster up or down, you can change the number of control plane nodes, Linux nodes, or Windows nodes.
+If you need to scale your cluster up or down, you can change the number of control plane nodes, Linux worker nodes, or Windows worker nodes.
 
 To scale control plane nodes, run the following command.
 
