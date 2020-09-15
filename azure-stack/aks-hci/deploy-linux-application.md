@@ -8,9 +8,9 @@ ms.author: abha
 ms.reviewer: 
 ---
 
-# Run Linux applications in Azure Kubernetes Service on Azure Stack HCI
+# Deploy Linux applications in Azure Kubernetes Service on Azure Stack HCI
 
-In this how-to guide, you run a multi-container application that includes a web front end and a Redis instance in your Azure Kubernetes Service on Azure Stack HCI cluster. You then see how to test and scale your application. 
+In this how-to guide, you deploy a multi-container application that includes a web front end and a Redis database instance in your Azure Kubernetes Service on Azure Stack HCI cluster. You then see how to test and scale your application. 
 
 This how-to guide assumes a basic understanding of Kubernetes concepts. For more information, see Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI.
 
@@ -18,7 +18,7 @@ This how-to guide assumes a basic understanding of Kubernetes concepts. For more
 
 Verify you have the following requirements ready:
 
-* An Azure Kubernetes Service on Azure Stack HCI cluster with atleast one Linux worker node that is up and running. 
+* An Azure Kubernetes Service on Azure Stack HCI cluster with at least one Linux worker node that is up and running. 
 * A kubeconfig file to access the cluster.
 * Have the Azure Kubernetes Service on Azure Stack HCI PowerShell module installed.
 * Run the commands in this document in a PowerShell administrative window.
