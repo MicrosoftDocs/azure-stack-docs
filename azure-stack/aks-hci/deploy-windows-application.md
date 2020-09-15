@@ -122,4 +122,4 @@ If you receive a connection timeout when trying to load the page, verify if the 
 
 ## Next steps
 
-* [Use Azure Monitor to monitor your cluster and application](/azure/azure-monitor/insights/container-insights-enable-arc-enabled-clusters)
+* [Use Azure Monitor to monitor your cluster and application](/azure/azure-monitor/insights/container-insights-enable-arc-enabled-clusters).

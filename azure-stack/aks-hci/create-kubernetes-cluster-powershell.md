@@ -151,5 +151,5 @@ In this quickstart, you learned how to create, scale, and upgrade a Kubernetes t
 ## Next steps
 
 - Connect your clusters to Azure Arc for Kubernetes with [these instructions](./connect-to-arc.md).
-- Deploy a Linux application with [these instructions](./deploy-linux-application.md)
-- Deploy a Windows application with [these instructions](./deploy-windows-application.md)
+- Deploy a Linux application with [these instructions](./deploy-linux-application.md).
+- Deploy a Windows application with [these instructions](./deploy-windows-application.md).

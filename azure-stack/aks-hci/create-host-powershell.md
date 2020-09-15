@@ -212,4 +212,4 @@ Uninstall-AksHci
 
 ## Next steps
 
-- To create a target cluster through PowerShell, follow instructions [here](./create-kubernetes-cluster-powershell.md)
+- To create a target cluster through PowerShell, follow instructions [here](./create-kubernetes-cluster-powershell.md).

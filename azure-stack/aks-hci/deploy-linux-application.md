@@ -194,4 +194,4 @@ azure-vote-front-84c8bf64fc-znc6z   1/1     Running   0          80s
 
 ## Next steps
 
-* [Use Azure Monitor to monitor your cluster and application](/azure/azure-monitor/insights/container-insights-enable-arc-enabled-clusters)
+* [Use Azure Monitor to monitor your cluster and application](/azure/azure-monitor/insights/container-insights-enable-arc-enabled-clusters).
