@@ -170,7 +170,7 @@ Install-AksHci
 
 ### Check your deployed clusters
 
-To get a list of your deployed Azure Kubernetes Service hosts, run the following command. Once you deploy Kubernetes clusters, you will also be able to get target clusters using the same command.
+To get a list of your deployed Azure Kubernetes Service hosts, run the following command. You will also be able to get Kubernetes clusters using the same command after deploying them.
 
 ```powershell
 Get-AksHciCluster
@@ -178,7 +178,7 @@ Get-AksHciCluster
 
 ## Step 4: Access your clusters using kubectl
 
-To access your Azure Kubernetes Service host or target cluster using kubectl, run the following command. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl.
+To access your Azure Kubernetes Service host or Kubernetes cluster using kubectl, run the following command. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl.
 
 ```powershell
 Set-AksHciKubeConfig -clusterName
@@ -194,7 +194,7 @@ Get-AksHciLogs
 
 ## Reinstall Azure Kubernetes Service on Azure Stack HCI
 
-Reinstalling Azure Kubernetes Service on Azure Stack HCI will remove all of your target clusters if any, and the Azure Kubernetes Service host. It will also uninstall the Azure Kubernetes Service on Azure Stack HCI agents and services from the nodes. It will then go back through the original install process steps until the host is recreated. The Azure Kubernetes Service on Azure Stack HCI configuration that you configured via `Set-AksHciConfig` and the downloaded VHDX images are preserved.
+Reinstalling Azure Kubernetes Service on Azure Stack HCI will remove all of your Kubernetes clusters if any, and the Azure Kubernetes Service host. It will also uninstall the Azure Kubernetes Service on Azure Stack HCI agents and services from the nodes. It will then go back through the original install process steps until the host is recreated. The Azure Kubernetes Service on Azure Stack HCI configuration that you configured via `Set-AksHciConfig` and the downloaded VHDX images are preserved.
 
 To reinstall Azure Kubernetes Service on Azure Stack HCI, run the following command.
 
@@ -212,4 +212,4 @@ Uninstall-AksHci
 
 ## Next steps
 
-- To create a target cluster through PowerShell, follow instructions [here](./create-kubernetes-cluster-powershell.md).
+- To create a Kubernetes cluster through PowerShell, follow instructions [here](./create-kubernetes-cluster-powershell.md).
