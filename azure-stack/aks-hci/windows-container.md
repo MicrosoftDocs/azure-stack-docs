@@ -8,16 +8,16 @@ ms.author: abha
 ms.reviewer: 
 ---
 
-# Run Windows applications in Azure Kubernetes Service on Azure Stack HCI
+# Deploy Windows applications in Azure Kubernetes Service on Azure Stack HCI
 
-In this how-to guide, you run an ASP.NET sample application in a Windows Server container to the cluster. You then see how to test and scale your application. 
+In this how-to guide, you run an ASP.NET sample application in a Windows Server container to the Kubernetes cluster. You then see how to test your application. 
 This how-to guide assumes a basic understanding of Kubernetes concepts. For more information, see Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI.
 
 ## Before you begin
 
 Verify you have the following requirements ready:
 
-* An Azure Kubernetes Service on Azure Stack HCI cluster with atleast one Windows worker node that is up and running. 
+* An Azure Kubernetes Service on Azure Stack HCI cluster with at least one Windows worker node that is up and running. 
 * A kubeconfig file to access the cluster.
 * Have the Azure Kubernetes Service on Azure Stack HCI PowerShell module installed.
 * Run the commands in this document in a PowerShell administrative window.
@@ -29,7 +29,7 @@ A Kubernetes manifest file defines a desired state for the cluster, such as what
 
 The ASP.NET sample application is provided as part of the .NET Framework Samples and runs in a Windows Server container. Azure Kubernetes Service on Azure Stack HCI requires Windows Server containers to be based on images of *Windows Server 2019*. 
 
-The Kubernetes manifest file must also define a [node selector][node-selector] to tell your AKS cluster to run your ASP.NET sample application's pod on a node that can run Windows Server containers.
+The Kubernetes manifest file must also define a node selector to tell your AKS cluster to run your ASP.NET sample application's pod on a node that can run Windows Server containers.
 
 Create a file named `sample.yaml` and copy in the following YAML definition. 
 
@@ -85,7 +85,7 @@ Deploy the application using the `kubectl apply` command and specify the name of
 kubectl apply -f sample.yaml
 ```
 
-The following example output shows the Deployment and Service created successfully:
+The following example output shows the deployment and service created successfully:
 
 ```output
 deployment.apps/sample created
@@ -105,8 +105,8 @@ kubectl get service sample --watch
 Initially the *EXTERNAL-IP* for the *sample* service is shown as *pending*.
 
 ```output
-NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
-sample             LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
+NAME    TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
+sample  LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
 When the *EXTERNAL-IP* address changes from *pending* to an actual public IP address, use `CTRL-C` to stop the `kubectl` watch process. The following example output shows a valid public IP address assigned to the service:
@@ -122,4 +122,4 @@ If you receive a connection timeout when trying to load the page, verify if the 
 
 ## Next steps
 
-* [Use Azure Monitor to monitor your cluster and application](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-enable-arc-enabled-clusters)
+* [Use Azure Monitor to monitor your cluster and application](/azure/azure-monitor/insights/container-insights-enable-arc-enabled-clusters)
