@@ -123,7 +123,7 @@ In these instructions, you will run a Linux-based container image that contains 
     docker run -it mcr.microsoft.com/azurestack/powershell
     ```
 
-    You can run Ubuntu, Debian, or Centos. You can find the following Docker files in the GitHub repository, [azurestack-powershell](https://github.com/Azure/azurestack-powershell). Refer to the GitHub repository for the latest changes to the Docker files. Each OS is tagged. Replace the tag, the section after the colon, with the tag.
+    You can run Ubuntu, Debian, or Centos. You can find the following Docker files in the GitHub repository, [azurestack-powershell](https://github.com/Azure/azurestack-powershell). Refer to the GitHub repository for the latest changes to the Docker files. Each OS is tagged. Replace the tag, the section after the colon, with the tag for the desired OS.
 
     | Linux | Docker image |
     | --- | --- |
