@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: v-dasis
 ms.topic: how-to
-ms.date: 08/11/2020
+ms.date: 09/21/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -100,9 +100,9 @@ Step 2 of the wizard walks you through configuring various networking elements f
 
     Management adapters have two configuration options:
 
-    - Single physical adapter used for management. Both DHCP or static IP address assignment is supported.
+    - **One physical network adapter for management**. For this option, both DHCP or static IP address assignment is supported.
 
-    - Two physical adapters are used and teamed. When a pair of adapters are teamed, only static IP address assignment is supported. If the selected adapters use DHCP addressing (either for one or both), the DHCP IP address would be converted to static IP addresses before virtual switch creation.
+    - **Two physical network adapters teamed for management**. When a pair of adapters are teamed, only static IP address assignment is supported. If the selected adapters use DHCP addressing (either for one or both), the DHCP IP address would be converted to static IP addresses before virtual switch creation.
 
     By using teamed adapters, you have a single connection to multiple switches but only use a single IP address. Load-balancing becomes available and fault-tolerance is instant instead of waiting for DNS records to update.
 
@@ -124,12 +124,12 @@ Step 2 of the wizard walks you through configuring various networking elements f
 
 1. Under **Virtual switch**, select one of the following options as applicable. Depending on how many adapters are present, not all options may show up:
 
-    - Create one virtual switch for both Hyper-V and storage use
-    - Create one virtual switch for Hyper-V use only
-    - Create two virtual switches, one for Hyper-V and one for storage use
-    - Don't create a virtual switch
+    - **Skip virtual switch creation**
+    - **Create one virtual switch for compute and storage together**
+    - **Create one virtual switch for compute only**
+    - **Create two virtual switches**
 
-    The following table shows which virtual switch configurations are supported and enabled for various network adapter configurations:
+The following table shows which virtual switch configurations are supported and enabled for various network adapter configurations:
 
     | Option | 1-2 adapters | 3+ adapters | teamed adapters |
     | :------------- | :--------- |:--------| :---------|
@@ -165,7 +165,6 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
 
 Step 4 of the wizard walks you through setting up Storage Spaces Direct for your cluster.
 
-
 1. Select **Next: Storage**.
 1. Under **Verify drives**, click the **>** icon next to each server to verify that the disks are working and connected, then click **Next**.
 1. Under **Clean drives**, click **Clean drives** to empty the drives of data. When ready, click **Next**.
@@ -180,7 +179,32 @@ After the cluster is created, it can some take time for the cluster name to be r
 
 If resolving the cluster isn't successful after some time, in most cases you can substitute a server name in the the cluster instead of the cluster name.
 
-## After you run the wizard
+## Step 5: SDN (optional)
+
+Step 5 of the wizard walks you through setting up Network Controller on your cluster for Software Defined Networking (SDN). Once Network Controller is set up, it can be used to configure other components of SDN such as Software Load Balancer and RAS Gateway.
+
+> [!NOTE]
+> This step of the wizard is optional.
+
+1. Select **Next: SDN**.
+1. Under **Host**, enter a name for the Network Controller.
+1. Specify a path to the Azure Stack HCI VHD file. Use **Browse** to find it quicker.
+1. Specify the number of VMs to be dedicated for Network Controller. Three to five VMS are recommended for high availability.
+1. Under **Network**, enter the VLAN ID.
+1. For **VM network addressing**, select either **DHCP** or **Static**.
+1. If you selected **DHCP**, enter the name and IP address for the Network Controller VMs.
+1. If you selected **Static**, do the following:
+    1. Specify a subnet prefix.
+    1. Specify the default gateway.
+    1. Specify one or more DNS servers. Click **Add** to add additional DNS servers.
+1. Under **Credentials**, enter the username and password used to join the Network Controller VMs to the cluster domain.
+1. Enter the local administrative password for these VMs.
+1. Under **Advanced**, enter the path to the VMs.
+1. Enter values for **MAC address pool start** and **MAC address pool end**.
+1. When finished, click **Next**.
+1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete. Then click **Finish**.
+
+## After you complete the wizard
 
 After the wizard has completed, there are still some important tasks you need to complete.
 
@@ -203,4 +227,5 @@ OK, now here are the other tasks you will need to do:
 - Register your cluster with Azure. See [Manage Azure registration](../manage/manage-azure-registration.md).
 - Do a final validation of the cluster. See [Validate an Azure Stack HCI cluster](validate.md)
 - Provision your VMs. See [Manage VMs on Azure Stack HCI using Windows Admin Center](../manage/vm.md).
-- You can also create a cluster using PowerShell. See [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md).
+- You can also deploy a cluster using PowerShell. See [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md).
+- You can also deploy Network Controller using PowerShell. See [Deploy Network Controller using PowerShell](network-controller.powershell.md).
