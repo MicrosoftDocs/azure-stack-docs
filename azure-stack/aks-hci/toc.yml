@@ -8,16 +8,6 @@
   items: 
   - name: System requirements
     href: system-requirements.md
-- name: Related
-  items:
-  - name: Azure Stack HCI
-    href: ../hci/index.yml
-  - name: Windows Admin Center
-    href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
-  - name: Azure hybrid cloud
-    href: /hybrid
-  - name: Windows Server
-    href: /windows-server/
 - name: Quickstarts
   expanded: true
   items:
@@ -35,5 +25,22 @@
           href: create-kubernetes-cluster.md
 - name: How-to guides
   items: 
+    - name: Connect Cluster to Azure Arc for Kubernetes
+      href: connect-to-arc.md
+    - name: Use Windows Server containers in Azure Kubernetes Service on Azure Stack HCI
+      href: deploy-windows-application.md
+    - name: Use Linux containers in Azure Kubernetes Service on Azure Stack HCI
+      href: deploy-linux-application.md
     - name: Troubleshoot
       href: troubleshoot.md
+- name: Related
+  items:
+  - name: Azure Stack HCI
+    href: ../hci/index.yml
+  - name: Windows Admin Center
+    href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
+  - name: Azure hybrid cloud
+    href: /hybrid
+  - name: Windows Server
+    href: /windows-server/
+
