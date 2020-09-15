@@ -14,7 +14,7 @@ In this quickstart, you will learn how to create an Azure Kubernetes Service hos
 
 ## Before you begin
 
-Before you begin, make sure you have a 2-4 node Azure Stack HCI cluster or a Single Node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you do not, follow instructions on how to [here](./system-requirements.md)
+Before you begin, make sure you have a 2-4 node Azure Stack HCI cluster or a single node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you do not, follow instructions on how to [here](./system-requirements.md).
 
 ## Step 1: Prepare your machine(s) for deployment
 
@@ -30,7 +30,7 @@ When the checks are finished, you will see "Done" displayed in green text.
 
 ## Step 2: Configure your deployment
 
-Then, we'll need to set the configuration settings for the Azure Kubernetes Service host. For an Azure Stack HCI cluster deployment, you must specify the `-wssdImageDir` and the `-cloudConfigLocation`. In a Single Node Azure Stack HCI deployment, all the parameters are optional and they will be set to the default value. If the deployment type is not specified, `SingleNode` is the default. **We recommend using a Azure Stack HCI cluster deployment.**
+Then, we'll need to set the configuration settings for the Azure Kubernetes Service host. For an Azure Stack HCI cluster deployment, you must specify the `-wssdImageDir` and the `-cloudConfigLocation`. In a single node Azure Stack HCI deployment, all the parameters are optional and they will be set to the default value. If the deployment type is not specified, `SingleNode` is the default. **We recommend using an Azure Stack HCI cluster deployment.**
 
 Configure your deployment with the following command.
 
@@ -72,7 +72,7 @@ The path to the directory where Azure Kubernetes Service on Azure Stack HCI will
 
 `-cloudConfigLocation`
 
-The location where the cloud agent will store its configuration. Defaults to `%systemdrive%\wssdimagestore` for single node deployments. The location can be the same as the path of `-wssdImageDir` above.  
+The location where the cloud agent will store its configuration. Defaults to `%systemdrive%\wssdimagestore` for single node deployments. The location can be the same as the path of `-wssdImageDir` above. For multi-node deployments, this parameter must be specified.
 
 `-nodeConfigLocation`
 
@@ -194,7 +194,7 @@ Get-AksHciLogs
 
 ## Reinstall Azure Kubernetes Service on Azure Stack HCI
 
-Reinstalling Azure Kubernetes Service on Azure Stack HCI will remove all of your target clusters and the Azure Kubernetes Service host. It will also uninstall the Azure Kubernetes Service on Azure Stack HCI agents and services from the nodes. It will then go back through the original install process steps until the host is recreated. The Azure Kubernetes Service on Azure Stack HCI configuration that you configured via `Set-AksHciConfig` and the downloaded VHDX images are preserved.
+Reinstalling Azure Kubernetes Service on Azure Stack HCI will remove all of your target clusters if any, and the Azure Kubernetes Service host. It will also uninstall the Azure Kubernetes Service on Azure Stack HCI agents and services from the nodes. It will then go back through the original install process steps until the host is recreated. The Azure Kubernetes Service on Azure Stack HCI configuration that you configured via `Set-AksHciConfig` and the downloaded VHDX images are preserved.
 
 To reinstall Azure Kubernetes Service on Azure Stack HCI, run the following command.
 
