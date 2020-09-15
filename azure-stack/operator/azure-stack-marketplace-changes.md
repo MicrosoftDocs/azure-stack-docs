@@ -3,7 +3,7 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 09/15/2020
+ms.date: 09/10/2020
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 05/28/2020
@@ -53,7 +53,6 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Deprecated marketplace items
 
-- CoreOS Container Linux
 - Bitnami Shopware
 - SQL Server 2017 Standard on SUSE Linux Enterprise Server (SLES) 12 SP2
 - Free License: SQL Server 2017 Developer on SUSE Linux Enterprise Server (SLES) 12 SP2
