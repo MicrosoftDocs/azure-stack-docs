@@ -10,7 +10,7 @@ ms.reviewer:
 
 # Deploy Windows applications in Azure Kubernetes Service on Azure Stack HCI
 
-In this how-to guide, you run an ASP.NET sample application in a Windows Server container to the Kubernetes cluster. You then see how to test your application. 
+In this how-to guide, you deploy an ASP.NET sample application in a Windows Server container to the Kubernetes cluster. You then see how to test your application. 
 This how-to guide assumes a basic understanding of Kubernetes concepts. For more information, see Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI.
 
 ## Before you begin
@@ -23,7 +23,7 @@ Verify you have the following requirements ready:
 * Run the commands in this document in a PowerShell administrative window.
 * Ensure that OS specific workloads land on the appropriate container host. If you have a mixed Linux and Windows worker nodes Kubernetes cluster, you can either use nodeSelectors or taints and tolerations. 
 
-## Run the application
+## Deploy the application
 
 A Kubernetes manifest file defines a desired state for the cluster, such as what container images to run. In this article, a manifest is used to create all objects needed to run the ASP.NET sample application in a Windows Server container. This manifest includes a Kubernetes deployment for the ASP.NET sample application and an external Kubernetes service to access the application from the internet.
 
