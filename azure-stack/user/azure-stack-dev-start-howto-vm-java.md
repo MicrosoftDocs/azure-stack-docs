@@ -1,5 +1,5 @@
 ---
-title: Deploy a Java WAR to a virtual machine in Azure Stack Hub 
+title: Deploy Java WAR to VM in Azure Stack Hub 
 description:  Deploy a Java WAR to a virtual machine in Azure Stack Hub.
 author: mattbriggs
 
