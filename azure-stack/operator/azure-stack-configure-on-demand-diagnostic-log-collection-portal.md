@@ -1,11 +1,11 @@
 ---
 title: Send Azure Stack Hub diagnostic logs now 
 description: Learn how to collect diagnostic logs on demand in Azure Stack Hub using the Administrator portal or a PowerShell script.
-author: justinha
+author: myoungerman
 
 ms.topic: article
 ms.date: 08/24/2020
-ms.author: justinha
+ms.author: v-myoung
 ms.reviewer: shisab
 ms.lastreviewed: 08/24/2020
 
