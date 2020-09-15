@@ -7,7 +7,7 @@
 - name: Concepts
   items:
   - name: Azure Kubernetes on Azure Stack HCI Concepts
-    href: aks-hci-concepts.md
+    href: kubernetes-concepts.md
   - name: System requirements
     href: system-requirements.md
 - name: Related
