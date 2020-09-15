@@ -28,9 +28,9 @@
     - name: Connect Cluster to Azure Arc for Kubernetes
       href: connect-to-arc.md
     - name: Use Windows Server containers in Azure Kubernetes Service on Azure Stack HCI
-      href: deploy-windows-container.md
+      href: deploy-windows-application.md
     - name: Use Linux containers in Azure Kubernetes Service on Azure Stack HCI
-      href: deploy-linux-container.md
+      href: deploy-linux-application.md
     - name: Troubleshoot
       href: troubleshoot.md
 - name: Related
