@@ -13,7 +13,7 @@ Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of 
 
 To get started with Azure Kubernetes Service on-premises, [register for the preview](https://aka.ms/AKS-HCI-Evaluate) (there's no added cost during preview), then see [Set up Azure Kubernetes Service on Azure Stack HCI](setup.md). To instead use Azure Kubernetes Service to orchestrate your cloud-based containers, see [Azure Kubernetes Service in Azure](/azure/aks/intro-kubernetes).
 
-The following sections discuss some of the reasons to use Azure Kubernetes Service on Azure Stack HCI, then answer some common questions about the service and how to get started.
+The following sections discuss some of the reasons to use Azure Kubernetes Service on Azure Stack HCI, then answer some common questions about the service and how to get started. For a background on containers, see [Windows and containers](/virtualization/windowscontainers/about/).
 
 ## Automate management of containerized applications
 
@@ -34,7 +34,7 @@ Here's some of the functionality provided by Azure Kubernetes Service while in p
 - Coordinate app upgrades
 - Assign pods to cluster nodes with cluster node affinity
 
-For more background on containers, see [Windows and containers](/virtualization/windowscontainers/about/). For more about Kuberentes, see [Kubernetes.io](https://kubernetes.io).
+For more about Kubernetes, see [Kubernetes.io](https://kubernetes.io).
 
 ## Simplify setting up Kubernetes
 
@@ -67,7 +67,7 @@ Azure Kubernetes Service creates the Linux and Windows VMs so that you don't hav
 Azure Kubernetes Service includes a number of features to help secure your container infrastructure:
 
 - **Hypervisor-based isolation for worker nodes** - Each Kubernetes cluster runs on its own dedicated and isolated set of virtual machines so tenants can share the same physical infrastructure.
-- **Microsoft-maintained Linux and Windows images for worker nodes** - Worker nodes run Linux and Windows virtual machine images created by Microsoft to adhere to security best practices. Microsoft also regularly refreshes these images with the latest security updates.
+- **Microsoft-maintained Linux and Windows images for worker nodes** - Worker nodes run Linux and Windows virtual machine images created by Microsoft to adhere to security best practices. Microsoft also refreshes these images monthly with the latest security updates.
 
 Security is an ongoing area of investment for the Azure Kubernetes Service preview release on Azure Stack HCI, so stay tuned.
 
