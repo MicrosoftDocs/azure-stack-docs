@@ -21,7 +21,7 @@ ms.lastreviewed: 8/28/2020
 
 ## Get tools for Azure Stack Hub AzureRM module
 
-To get these tools, clone the GitHub repository from the `master` branch or download the **AzureStack-Tools** folder by running the following script:
+To get these tools, clone the GitHub repository from the `master` branch or download the **AzureStack-Tools** folder by running the following script in an elevated PowerShell prompt:
 
 ```powershell
 # Change directory to the root directory.
