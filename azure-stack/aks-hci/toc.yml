@@ -4,10 +4,6 @@
   items:
   - name: Azure Kubernetes Service on Azure Stack HCI
     href: overview.md
-- name: Concepts
-  items: 
-  - name: System requirements
-    href: system-requirements.md
 - name: Quickstarts
   expanded: true
   items:
@@ -29,6 +25,10 @@
       href: deploy-windows-application.md
     - name: Use Linux containers
       href: deploy-linux-application.md
+- name: Concepts
+  items: 
+  - name: System requirements
+    href: system-requirements.md
 - name: How-to guides
   items: 
     - name: Connect to Azure Arc for Kubernetes
