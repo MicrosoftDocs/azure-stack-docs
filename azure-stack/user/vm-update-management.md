@@ -1,6 +1,6 @@
 ---
 title: VM update and management automation in Azure Stack Hub 
-description: Learn how to use the Azure Monitor for VMs, Update Management, Change Tracking, and Inventory solutions in Azure Automation to manage Windows and Linux VMs deployed in Azure Stack Hub. 
+description: Use the Azure Monitor for VMs, Update Management, Change Tracking, and Inventory solutions in Azure Automation to manage Windows and Linux VMs deployed in Azure Stack Hub. 
 author: mattbriggs
 
 ms.topic: article
