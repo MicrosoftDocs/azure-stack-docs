@@ -1,17 +1,11 @@
 ---
 title: Quickstart to create Kubernetes clusters on Azure Stack HCI using Windows PowerShell
 description: Learn how to create Kubernetes clusters on Azure Stack HCI with Windows PowerShell
-ms.author: jeguan
+author: jessicaguan
 ms.topic: quickstart
 ms.date: 09/21/2020
 ms.author: jeguan
 ---
-
-# Quickstart: Create a Kubernetes cluster on Azure Stack HCI using Windows PowerShell
-
-> Applies to: Azure Stack HCI
-
-In this quickstart, you will learn how to use Windows PowerShell to create an Kubernetes cluster on Azure Stack HCI.
 
 # Quickstart: Create Kubernetes clusters on Azure Stack HCI using Windows PowerShell
 
