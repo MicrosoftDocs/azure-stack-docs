@@ -46,6 +46,7 @@ Azure Stack Hub imposes resource limits to avoid over consumption of resources (
 - For networking egress from the VM, there are bandwidth caps in place. Caps in Azure Stack Hub are the same as the caps in Azure.
 - For storage resources, Azure Stack Hub implements storage IOPS (Input/Output Operations Per Second) limits to avoid basic overconsumption of resources by tenants for storage use.
 - For VM disks, disk IOPS on Azure Stack Hub is a function of VM size instead of the disk type. This means that for a Standard_Fs series VM, regardless of whether you choose SSD or HDD for the disk type, the IOPS limit for an second data disk is 2300 IOPS.
+- Temp disks attached to the VM are not persistent and can be lost on control plane operations such as resize or stop-deallocate.
 
 The following table lists the VMs that are supported on Azure Stack Hub along with their configuration:
 

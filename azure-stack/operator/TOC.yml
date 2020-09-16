@@ -88,9 +88,10 @@
         href: azure-stack-validate-adfs.md
       - name: Validate graph integration
         href: azure-stack-validate-graph.md
-    - name: Azure Stack Hub deployment PKI requirements
-      href: azure-stack-pki-certs.md
+    - name: PKI requirements and processes
       items:
+      - name: PKI certificate requirements
+        href: azure-stack-pki-certs.md
       - name: Generate PKI certificates
         href: azure-stack-get-pki-certs.md
       - name: Prepare Azure Stack Hub PKI certificates
@@ -262,8 +263,6 @@
       href: azure-stack-aks-engine.md
     - name: Offer Kubernetes marketplace item
       href: azure-stack-solution-template-kubernetes-cluster-add.md
-    - name: Create a site-to-site VPN connection
-      href: azure-stack-create-vpn-connection-one-node.md
     - name: Offer Commvault marketplace item
       href: azure-stack-network-offer-backup-commvault.md
   - name: Offer services
@@ -322,8 +321,6 @@
           href: app-service-release-notes-2020-Q2.md
         - name: Update 8 release notes [Jan2020]
           href: azure-stack-app-service-release-notes-update-eight.md
-        - name: Update 7 release notes [Aug2019]
-          href: azure-stack-app-service-release-notes-update-seven.md
     - name: Event Hubs on Azure Stack Hub
       items:
       - name: Overview

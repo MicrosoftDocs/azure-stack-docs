@@ -45,6 +45,7 @@ When using the SQL and MySQL resource providers with Azure Stack Hub integrated 
 - External SSL certificate [provided during deployment](azure-stack-pki-certs.md).
 - The resource provider VM local admin account password provided during deployment.
 - Resource provider diagnostic user (dbadapterdiag) password.
+- (version >= 1.1.47.0) Key Vault certificate generated during deployment.
 
 ### PowerShell examples for rotating secrets
 
@@ -58,7 +59,8 @@ When using the SQL and MySQL resource providers with Azure Stack Hub integrated 
     -DiagnosticsUserPassword $passwd `
     -DependencyFilesLocalPath $certPath `
     -DefaultSSLCertificatePassword $certPasswd  `
-    -VMLocalCredential $localCreds
+    -VMLocalCredential $localCreds `
+    -KeyVaultPfxPassword $keyvaultCertPasswd
 ```
 
 **Change the diagnostic user password.**
@@ -92,18 +94,30 @@ When using the SQL and MySQL resource providers with Azure Stack Hub integrated 
     -DefaultSSLCertificatePassword $certPasswd
 ```
 
+**Change the Key Vault certificate password.**
+
+```powershell
+.\SecretRotationSQLProvider.ps1 `
+    -Privilegedendpoint $Privilegedendpoint `
+    -CloudAdminCredential $cloudCreds `
+    -AzCredential $adminCreds `
+    -KeyVaultPfxPassword $keyvaultCertPasswd
+```
+
 ### SecretRotationSQLProvider.ps1 parameters
 
-|Parameter|Description|
-|-----|-----|
-|AzCredential|Azure Stack Hub service admin account credential.|
-|CloudAdminCredential|Azure Stack Hub cloud admin domain account credential.|
-|PrivilegedEndpoint|Privileged Endpoint to access Get-AzureStackStampInformation.|
-|DiagnosticsUserPassword|Diagnostics user account password.|
-|VMLocalCredential|Local admin account on the MySQLAdapter VM.|
-|DefaultSSLCertificatePassword|Default SSL certificate (*pfx) password.|
-|DependencyFilesLocalPath|Dependency files local path.|
-|     |     |
+|Parameter|Description|Comment|
+|-----|-----|-----|
+|AzureEnvironment|The Azure environment of the service admin account used for deploying Azure Stack Hub. Required only for Azure AD deployments. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or if using a China Azure Active Directory, **AzureChinaCloud**.|Optional|
+|AzCredential|Azure Stack Hub service admin account credential.|Mandatory|
+|CloudAdminCredential|Azure Stack Hub cloud admin domain account credential.|Mandatory|
+|PrivilegedEndpoint|Privileged Endpoint to access Get-AzureStackStampInformation.|Mandatory|
+|DiagnosticsUserPassword|Diagnostics user account password.|Optional|
+|VMLocalCredential|Local admin account on the MySQLAdapter VM.|Optional|
+|DefaultSSLCertificatePassword|Default SSL certificate (*.pfx) password.|Optional|
+|DependencyFilesLocalPath|Dependency files local path.|Optional|
+|KeyVaultPfxPassword|The password used for generating the Key Vault certificate for database adapter.|Optional|
+|     |     |     |
 
 ### Known issues
 

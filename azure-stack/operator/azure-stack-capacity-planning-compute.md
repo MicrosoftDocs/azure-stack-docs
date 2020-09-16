@@ -4,7 +4,7 @@ description: Learn about compute capacity planning for Azure Stack Hub deploymen
 author: IngridAtMicrosoft
 ms.topic: conceptual
 ms.date: 03/04/2020
-ms.author: inhenkel
+ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 06/13/2019
 
@@ -27,7 +27,7 @@ The Azure Stack Hub placement engine places tenant VMs across the available host
 
 Azure Stack Hub uses two considerations when placing VMs. One, is there enough memory on the host for that VM type? And two, are the VMs a part of an [availability set](/azure/virtual-machines/windows/manage-availability) or are they [virtual machine scale sets](/azure/virtual-machine-scale-sets/overview)?
 
-To achieve high availability of a multi-VM production system in Azure Stack Hub, virtual machines (VMs) are placed in an availability set that spreads them across multiple fault domains. A fault domain in an availability set is defined as a single node in the scale unit. Azure Stack Hub supports having an availability set with a maximum of three fault domains to be consistent with Azure. VMs placed in an availability set will be physically isolated from each other by spreading them as evenly as possible over multiple fault domains (Azure Stack Hub hosts). If there's a hardware failure, VMs from the failed fault domain will be restarted in other fault domains. If possible, they'll be kept in separate fault domains from the other VMs in the same availability set. When the host comes back online, VMs will be rebalanced to maintain high availability.  
+To achieve high availability of a multi-VM production workload in Azure Stack Hub, virtual machines (VMs) are placed in an availability set that spreads them across multiple fault domains. A fault domain in an availability set is defined as a single node in the scale unit. Azure Stack Hub supports having an availability set with a maximum of three fault domains to be consistent with Azure. VMs placed in an availability set will be physically isolated from each other by spreading them as evenly as possible over multiple fault domains (Azure Stack Hub nodes). If there's a hardware failure, VMs from the failed fault domain will be restarted in other fault domains. If possible, they'll be kept in separate fault domains from the other VMs in the same availability set. When the host comes back online, VMs will be rebalanced to maintain high availability.  
 
 Virtual machine scale sets use availability sets on the back end and make sure each virtual machine scale set instance is placed in a different fault domain. This means they use separate Azure Stack Hub infrastructure nodes. For example, in a four-node Azure Stack Hub system, there may be a situation where a virtual machine scale set of three instances will fail at creation due to the lack of the four-node capacity to place three virtual machine scale set instances on three separate Azure Stack Hub nodes. In addition, Azure Stack Hub nodes can be filled up at varying levels before trying placement.
 
@@ -41,13 +41,9 @@ There's a new consideration for accurately planning Azure Stack Hub capacity. Wi
 
 If the VM scale limit is reached, the following error codes are returned as a result: `VMsPerScaleUnitLimitExceeded`, `VMsPerScaleUnitNodeLimitExceeded`.
 
-## Considerations for deallocation
+## Consideration for batch deployment of VMs
 
-When a VM is in the _deallocated_ state, memory resources aren't being used. This allows others VMs to be placed in the system.
-
-If the deallocated VM is then started again, the memory usage or allocation is treated like a new VM placed into the system and available memory is consumed.
-
-If there's no available memory, then the VM won't start.
+In releases prior to and including 2002, 2-5 VMs per batch with 5 mins gap in between batches provided reliable VM deployments to reach a scale of 700 VMs. With the 2005 version of Azure Stack Hub, we are able to reliably provision VMs at batch sizes of 40 with 5 mins gap in between batch deployments.
 
 ## Azure Stack Hub memory
 
@@ -87,11 +83,86 @@ Resiliency reserve = H + R * ((N-1) * H) + V * (N-2)
 
 The value V, largest VM in the scale unit, is dynamically based on the largest tenant VM memory size. For example, the largest VM value could be 7 GB or 112 GB or any other supported VM memory size in the Azure Stack Hub solution. Changing the largest VM on the Azure Stack Hub fabric will result in an increase in the resiliency reserve and also to the increase in the memory of the VM itself.
 
+## Considerations for deallocation
+
+When a VM is in the _deallocated_ state, memory resources aren't being used. This allows others VMs to be placed in the system.
+
+If the deallocated VM is then started again, the memory usage or allocation is treated like a new VM placed into the system and available memory is consumed. If there's no available memory, then the VM won't start.
+
+Current deployed large VMs show that the allocated memory is 112 GB, but the memory demand of these VMs is about 2-3 GB.
+    
+| Name | Memory Assigned (GB) | Memory Demand (GB) | ComputerName |  
+| ---- | -------------------- | ------------------ | ------------ |                                        
+| ca7ec2ea-40fd-4d41-9d9b-b11e7838d508 |                 112  |     2.2392578125  |  LISSA01P-NODE01 |
+| 10cd7b0f-68f4-40ee-9d98-b9637438ebf4  |                112  |     2.2392578125  |   LISSA01P-NODE01 |
+| 2e403868-ff81-4abb-b087-d9625ca01d84   |               112   |    2.2392578125  |   LISSA01P-NODE04 |
+
+There are three ways to deallocate memory for VM placement using the formula **Resiliency reserve = H + R * ((N-1) * H) + V * (N-2)**:
+* Reduce the size of the largest VM
+* Increase the memory of a node
+* Add a node
+
+### Reduce the size of the largest VM 
+
+Reducing the size of the largest VM to the next smallest VM in stamp (24 GB) will reduce the size of the resiliency reserve.
+
+![Reduce the VM size](media/azure-stack-capacity-planning/decrease-vm-size.png)        
+        
+ Resiliency reserve = 384 + 172.8 + 48 = 604.8 GB
+        
+| Total memory | Infra GB | Tenant GB | Resiliency reserve | Total memory reserved          | Total GB available for placement |
+|--------------|--------------------|---------------------|--------------------|--------------------------------|----------------------------------|
+| 1536 GB      | 258 GB             | 329.25 GB           | 604.8 GB           | 258 + 329.25 + 604.8 = 1168 GB | **~344 GB**                         |
+     
+### Add a node
+
+[Adding an Azure Stack Hub node](https://docs.microsoft.com/azure-stack/operator/azure-stack-add-scale-node) will deallocate memory by equally distributing the memory between the two nodes.
+
+![Add a node](media/azure-stack-capacity-planning/add-a-node.png)
+
+Resiliency reserve = 384 + (0.15) ((5)*384) + 112 * (3) = 1008  GB
+    
+| Total Memory | Infra GB | Tenant GB | Resiliency reserve | Total memory reserved          | Total GB available for placement |
+|--------------|--------------------|---------------------|--------------------|--------------------------------|----------------------------------|
+| 1536 GB      | 258 GB             | 329.25 GB           | 604.8 GB           | 258 + 329.25 + 604.8 = 1168 GB | **~ 344 GB**                         |
+
+### Increase memory on each node to 512 GB
+
+[Increasing the memory of each node](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-storage-physical-memory-capacity) will increase the total available memory.
+
+![Increase the size of the node](media/azure-stack-capacity-planning/increase-node-size.png)
+
+Resiliency reserve = 512 + 230.4 + 224 = 966.4 GB
+    
+| Total Memory    | Infra GB | Tenant GB | Resiliency reserve | Total memory reserved | Total GB available for placement |
+|-----------------|----------|-----------|--------------------|-----------------------|----------------------------------|
+| 2048 (4*512) GB | 258 GB   | 505.75 GB | 966.4 GB           | 1730.15 GB            | **~ 318 GB**                         |
+
 ## Frequently Asked Questions
 
 **Q**: My tenant deployed a new VM, how long will it take for the capability chart on the administrator portal to show remaining capacity?
 
 **A**: The capacity blade refreshes every 15 minutes, so take that into consideration.
+
+**Q**: How can I see the available cores and assigned cores?
+
+**A**: In **PowerShell** run `test-azurestack -include AzsVmPlacement -debug`, which generates an output like this:
+
+```console
+    Starting Test-AzureStack
+    Launching AzsVmPlacement
+     
+    Azure Stack Scale Unit VM Placement Summary Results
+     
+    Cluster Node    VM Count VMs Running Physical Core Total Virtual Co Physical Memory Total Virtual Mem
+    ------------    -------- ----------- ------------- ---------------- --------------- -----------------
+    LNV2-Node02     20       20          28            66               256             119.5            
+    LNV2-Node03     17       16          28            62               256             110              
+    LNV2-Node01     11       11          28            47               256             111              
+    LNV2-Node04     10       10          28            49               256             101              
+    
+    PASS : Azure Stack Scale Unit VM Placement Summary
+```
 
 **Q**: The number of deployed VMs on my Azure Stack Hub hasn't changed, but my capacity is fluctuating. Why?
 

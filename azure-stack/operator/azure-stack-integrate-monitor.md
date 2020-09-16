@@ -69,6 +69,9 @@ The plugin is written in Python and leverages the health resource provider REST 
 
 With Version 1.2 the Azure Stack Hub – Nagios plugin leverages the Microsoft ADAL library and supports authentication using  Service Principal with a secret or certificate. Also, the configuration has been simplified using a single configuration file with new parameters. It now supports Azure Stack Hub deployments using Azure AD and AD FS as the identity system.
 
+> [!IMPORTANT]
+> AD FS only supports interactive sign-in sessions. If you require a non-interactive sign-in for an automated scenario, you must use a SPN.
+
 The plugin works with Nagios 4x and XI. To download the plugin, see [Monitoring Azure Stack Hub Alerts](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details). The download site also includes installation and configuration details.
 
 ### Requirements for Nagios

@@ -11,7 +11,7 @@ ms.reviewer: prchint
 ms.lastreviewed: 07/21/2020
 
 # Intent: As an Azure Stack operator, I want to troubleshoot Azure Stack issues.
-# Keyword: toubleshoot azure stack
+# Keyword: troubleshoot azure stack
 
 ---
 
@@ -218,3 +218,14 @@ The Azure Stack Hub patch and update process is designed to allow operators to a
 **Remediation**: You can work around this issue by clicking **Install now** again. If the problem persists, we recommend manually uploading the update package by following the [Install updates](azure-stack-apply-updates.md?#install-updates-and-monitor-progress) section.
 
 **Occurrence**: Common
+
+::: moniker range="azs-2002"
+### 2002 update failed
+
+**Applicable**: This issue applies only to the 2002 release.
+
+**Cause**: When attempting the 2002 update, the update might fail and provide this message: `The private network parameter is missing from cloud parameters. Please use set-azsprivatenetwork cmdlet to set private networkTrace`.
+
+**Remediation**: 
+[Set up a private internal network](https://docs.microsoft.com/azure-stack/operator/azure-stack-network?view=azs-2002#private-network).
+::: moniker-end

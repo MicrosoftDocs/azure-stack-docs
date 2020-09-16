@@ -133,7 +133,7 @@ During the offer creation process, you create both an offer and a plan. The plan
 1. Sign in to the administrator portal with a cloud admin account.
 
     - For an integrated system, the URL varies based on your operator's region and external domain name, using the format `https://adminportal.<region>.<FQDN>`.
-    - If you're using the Azure Stack Development Kit, the URL is <https://adminportal.local.azurestack.external>.
+    - If you're using the Azure Stack Development Kit, the URL is `https://adminportal.local.azurestack.external`.
 
     Then select **+ Create a resource** > **Offers + Plans** > **Offer**.
 

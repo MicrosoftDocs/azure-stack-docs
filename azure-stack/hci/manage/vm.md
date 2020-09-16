@@ -1,5 +1,5 @@
 ---
-title: Manage VMs on Azure Stack HCI using Windows Admin Center
+title: Manage VMs with Windows Admin Center - Azure Stack HCI
 description: Learn how to create and manage virtual machines in a cluster on Azure Stack HCI using Windows Admin Center.
 author: v-dasis
 ms.topic: how-to
@@ -153,31 +153,6 @@ generate a KP that allows running the VM on this host.
     - Under **Security Policy**, select **Enable Shielding** for additional protection options for the VM.
 
         :::image type="content" source="media/manage-vm/vm-settings-security.png" alt-text="Change VM security settings" lightbox="media/manage-vm/vm-settings-security.png":::
-
-## Create a new VM
-
-You can easily create a new virtual machine using Windows Admin Center.
-
-:::image type="content" source="media/manage-vm/new-vm.png" alt-text="New VM screen":::
-
-1. In Windows Admin Center home, under **All connections**, select the server or cluster you want to create the virtual machine on.
-1. Under **Tools**, scroll down and select **Virtual Machines**.
-1. Under **Virtual Machines**, select the **Inventory** tab, then select **New**.
-1. Under **New Virtual Machine**, enter a name for your VM.
-1. Select **Generation 2 (Recommended)**.
-1. Select a preassigned file path from the dropdown list or click **Browse** to choose the folder to save the VM configuration and virtual hard disk (VHD) files to. You can browse to any available SMB share on the network by entering the path as *\\server\share*.
-
-1. Under **Virtual processors**, select the number of virtual processors and whether you want nested virtualization enabled.
-1. Under **Memory**, select the amount of startup memory (4 GB is recommended as a minimum), and a min and max range of dynamic memory as applicable to be allocated to the VM.
-1. Under **Network**, select a network adapter from the dropdown list.
-1. Under **Storage**, click **Add** and select whether to create a new virtual hard disk or to use an existing virtual hard disk. If you're using an existing virtual hard disk, click **Browse** and select the applicable file path.
-1. Under **Operating system**, do one of the following:
-   - Select **Install an operating system later** if you want to install an operating system for the VM later.
-   - Select **Install an operating system from an image file (*.iso)**, click **Browse**, then select the applicable .iso image file to use.
-   - Select **Install an operating system from a network-based installation server** if you want to install an OS on the VM later using this method. Make sure you have selected a network adapter previously or else it won't work.
-1. When finished, click **Create** to create the VM.
-1. To start the VM, in the **Virtual Machines** list, hover over the new VM, enable the checkbox for it on the left, and select **Start**.
-1. Under **State**, verify that the VM state is **Running**.
 
 ## Move a VM to another server in the cluster
 

@@ -4,7 +4,7 @@ description: Learn the steps and tools for migrating scripts from the AzureRM mo
 author: mattbriggs
 ms.author: mabrigg
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 08/24/2020
 ms.reviewer: sijuman
 ms.lastreviewed: 04/14/2020
 ---

@@ -4,10 +4,10 @@ description: Improvements, fixes, and known issues for Azure Stack Development K
 author: sethmanheim
 
 ms.topic: article
-ms.date: 07/29/2020
+ms.date: 08/10/2020
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 07/28/2020
+ms.lastreviewed: 08/10/2020
 
 # Intent: As an ASDK user, I want to know the latest changes, updates, and bug fixes to the ASDK.
 # Keyword: asdk release notes
@@ -22,7 +22,7 @@ This article provides information about changes, fixes, and known issues in the 
 Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media/asdk-release-notes/feed-icon-14x14.png) [RSS feed](https://docs.microsoft.com/api/search/rss?search=ASDK+release+notes&locale=en-us#).
 
 ::: moniker range="azs-2005"
-## Build 1.2005.x.xx
+## Build 1.2005.0.40
 
 ### New features
 

@@ -4,7 +4,7 @@ description: Create a Linux server VM by using Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: quickstart
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 1/10/2020
@@ -80,7 +80,7 @@ The address of the Azure Stack Hub portal depends on which Azure Stack Hub produ
 
 1. Enter the VM information. Select **SSH public key** for Authentication type, and paste the SSH public key that you saved, and then select **OK**.
 
-    > [!Note]  
+    > [!NOTE]  
     > Make sure that you remove any leading or trailing white space for the key.
 
    ![Authentication](media/azure-stack-quick-linux-portal/image3.png)

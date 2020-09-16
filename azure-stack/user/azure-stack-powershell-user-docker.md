@@ -4,10 +4,10 @@ description: Use Docker to run PowerShell in Azure Stack Hub
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 7/20/2020
+ms.date: 8/17/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 7/20/2020
+ms.lastreviewed: 8/17/2020
 
 # Intent: As an Azure Stack Hub user, I want to run my Azure Stack Hub PowerShell modules in a Docker container to keep them isolated from other processes.
 # Keyword: Azure Stack Hub AzureRM Az PowerShell Docker
@@ -65,7 +65,13 @@ The Dockerfile opens the Microsoft image *microsoft/windowsservercore*, which ha
 4. When the image has been built, start an interactive container by entering:
 
     ```bash  
-        docker run -it azure-stack-powershell powershell
+    docker run -it azure-stack-powershell powershell
+    ```
+
+    Make note of your container name. You can use the same container, rather than creating a new container each time, by running the following Docker command:
+
+    ```bash  
+        docker exec -it "Container name" powershell
     ```
 
 5. The shell is ready for your cmdlets.
@@ -82,7 +88,8 @@ The Dockerfile opens the Microsoft image *microsoft/windowsservercore*, which ha
     ```powershell
     $passwd = ConvertTo-SecureString <Secret> -AsPlainText -Force
     $pscredential = New-Object System.Management.Automation.PSCredential('<ApplicationID>', $passwd)
-    Connect-AzureRmAccount -ServicePrincipal -Credential $pscredential -TenantId <TenantID>
+    Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint <Your Azure Resource Manager endoint>
+    Add-AzureRmAccount -EnvironmentName "AzureStackUser" -TenantId <TenantID> -ServicePrincipal -Credential $pscredential
     ```
 
    PowerShell returns your account object:
@@ -116,7 +123,7 @@ In these instructions, you will run a Linux-based container image that contains 
     docker run -it mcr.microsoft.com/azurestack/powershell
     ```
 
-    You can run Ubuntu, Debian, or Centos. You can find the following Docker files in the GitHub repository, [azurestack-powershell](https://github.com/Azure/azurestack-powershell). Refer to the GitHub repository for the latest changes to the Docker files. Each OS is tagged. Replace the tag, the section after the colon, with the tag.
+    You can run Ubuntu, Debian, or Centos. You can find the following Docker files in the GitHub repository, [azurestack-powershell](https://github.com/Azure/azurestack-powershell). Refer to the GitHub repository for the latest changes to the Docker files. Each OS is tagged. Replace the tag, the section after the colon, with the tag for the desired OS.
 
     | Linux | Docker image |
     | --- | --- |

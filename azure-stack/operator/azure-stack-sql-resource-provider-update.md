@@ -5,7 +5,7 @@ description: Learn how to update the Azure Stack Hub SQL resource provider.
 author: bryanla
 
 ms.topic: article
-ms.date: 11/11/2019
+ms.date: 8/19/2020
 ms.author: bryanla
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/11/2019
@@ -22,6 +22,12 @@ ms.lastreviewed: 11/11/2019
 > Before updating the resource provider, review the release notes to learn about new functionality, fixes, and any known issues that could affect your deployment. The release notes also specify the minimum Azure Stack Hub version required for the resource provider.
 
 A new SQL resource provider might be released when Azure Stack Hub is updated to a new build. Although the existing resource provider continues to work, we recommend updating to the latest build as soon as possible.
+
+ |Supported Azure Stack Hub version|SQL RP version|
+  |-----|-----|
+  |2005, 2002, 1910|[SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470)|
+  |1908|[SQL RP version 1.1.33.0](https://aka.ms/azurestacksqlrp11330)| 
+  |     |     |
 
 Starting with the SQL resource provider version 1.1.33.0 release, updates are cumulative and don't need to be installed in the order in which they were released as long as you're starting from version 1.1.24.0 or later. For example, if you're running version 1.1.24.0 of the SQL resource provider, then you can upgrade to version 1.1.33.0 or later without needing to first install version 1.1.30.0. To review available resource provider versions, and the version of Azure Stack Hub they're supported on, see the versions list in [Deploy the resource provider prerequisites](./azure-stack-sql-resource-provider-deploy.md#prerequisites).
 
@@ -69,7 +75,7 @@ If you're updating the SQL resource provider version to 1.1.33.0 or previous ver
 # Note that this might not be the most currently available version of Azure Stack Hub PowerShell.
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
-Install-Module -Name AzureStack -RequiredVersion 1.6.0
+Install-Module -Name AzureStack -RequiredVersion 1.8.2
 ```
 
 > [!NOTE]
@@ -117,10 +123,9 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
   -VMLocalCredential $vmLocalAdminCreds `
   -CloudAdminCredential $cloudAdminCreds `
   -PrivilegedEndpoint $privilegedEndpoint `
-  -AzureEnvironment $AzureEnvironment ` 
+  -AzureEnvironment $AzureEnvironment `
   -DefaultSSLCertificatePassword $PfxPass `
-  -DependencyFilesLocalPath $tempDir\cert 
-
+  -DependencyFilesLocalPath $tempDir\cert
  ```
 
 When the resource provider update script finishes, close the current PowerShell session.

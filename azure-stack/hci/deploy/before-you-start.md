@@ -1,22 +1,24 @@
 ---
-title: Getting started with Azure Stack HCI deployment
+title: Before you deploy Azure Stack HCI
 description: How to prepare to deploy Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.service: azure-stack
+ms.subservice: azure-stack-hci
+ms.date: 09/03/2020
 ---
 
 # Before you deploy Azure Stack HCI
 
-> Applies to: Azure Stack HCI, v20H2
+> Applies to: Azure Stack HCI, version 20H2
 
 In this how-to guide, you learn how to:
 
 - Determine whether your hardware meets the base requirements for standard (single site) or stretched (two-site) Azure Stack HCI clusters
 - Make sure you're not exceeding the maximum supported hardware specifications
 - Gather the required information for a successful deployment
-- Install Windows Admin Center on a management PC
+- Install Windows Admin Center on a management PC or server
 
 ## Determine hardware requirements
 
@@ -36,7 +38,13 @@ Microsoft recommends purchasing a validated Azure Stack HCI hardware/software so
 
 ### Networking requirements
 
-An Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency network connection between each server node. There are multiple types of communication going on between server nodes:
+An Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency network connection between each server node. You should verify the following:
+
+- Verify at least one network adapter is available and dedicated for cluster management.
+- Verify that physical switches in your network are configured to allow traffic on any VLANs you will use.
+
+
+There are multiple types of communication going on between server nodes:
 
 - Cluster communication (node joins, cluster updates, registry updates)
 - Cluster Heartbeats
@@ -125,7 +133,7 @@ There may be additional ports required not listed above. These are the ports for
 ### Storage requirements
 
 - Azure Stack HCI works with direct-attached SATA, SAS, NVMe, or persistent memory drives that are physically attached to just one server each.
-- Each server in the cluster should have the same model, size, and number of drives, with the same sector sizes on all disks. Drives can be internal to the server, or in an external enclosure that is connected to just one server.
+- Every server in the cluster should have the same types of drives and the same number of each type. It's also recommended (but not required) that the drives be the same size and model. Drives can be internal to the server, or in an external enclosure that is connected to just one server. To learn more, see [Drive symmetry considerations](../concepts/drive-symmetry-considerations.md).
 - Each server in the cluster should have dedicated volumes for logs, with log storage at least as fast as data storage. Stretched clusters require at least two volumes: one for replicated data, and one for log data.
 - SCSI Enclosure Services (SES) is required for slot mapping and identification. Each external enclosure must present a unique identifier (Unique ID). **NOT SUPPORTED:** RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) storage, shared SAS enclosures connected to multiple servers, or any form of multi-path IO (MPIO) where drives are accessible by multiple paths. Host-bus adapter (HBA) cards must implement simple pass-through mode.
 - For more help, see the [Choosing drives](../concepts/choose-drives.md) topic or [Storage Spaces Direct hardware requirements](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements).
@@ -158,10 +166,13 @@ To prepare for deployment, gather the following details about your environment:
 - **Static IP addresses:** Azure Stack HCI requires static IP addresses for storage and workload (VM) traffic and doesn't support dynamic IP address assignment through DHCP for this high-speed network. You can use DHCP for the management network adapter unless you're using two in a team, in which case again you need to use static IPs. Consult your network administrator about the IP address you should use for each server in the cluster.
 - **RDMA networking:** There are two types of RDMA protocols: iWarp and RoCE. Note which one your network adapters use, and if RoCE, also note the version (v1 or v2). For RoCE, also note the model of your top-of-rack switch.
 - **VLAN ID:** Note the VLAN ID to be used for the network adapters on the servers, if any. You should be able to obtain this from your network administrator.
+- **Site names:** For stretched clusters, two sites are used for disaster recovery. You can set up sites using Active Directory Domain Services, or the Create cluster wizard can automatically set them up for you. Consult your domain administrator about setting up sites. Or to learn more, see [Active Directory Domain Services Overview](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
 ## Install Windows Admin Center
 
-Windows Admin Center is a locally deployed, browser-based app for managing Azure Stack HCI. The simplest way to [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) is on a local management PC, although you can also install it on a server.
+Windows Admin Center is a locally deployed, browser-based app for managing Azure Stack HCI. The simplest way to [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) is on a local management PC (desktop mode), although you can also install it on a server (service mode).
+
+If you install Windows Admin Center on a server, tasks that require CredSSP, such as cluster creation and installing updates and extensions, require using an account that's a member of the Gateway Administrators group on the Windows Admin Center server. For more information, see the first two sections of [Configure User Access Control and Permissions](/windows-server/manage/windows-admin-center/configure/user-access-control#gateway-access-role-definitions).
 
 ## Next steps
 
