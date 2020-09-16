@@ -91,7 +91,10 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 
 ## Step 2: Networking
 
-Step 2 of the wizard walks you through configuring various networking elements for your cluster. Let's begin:
+Step 2 of the wizard walks you through configuring virtual switches and other networking elements for your cluster.
+
+> [!NOTE]
+> If you see errors listed during any networking or virtual switch steps, try clicking **Apply and test** again.
 
 1. Select **Next: Networking**.
 1. Under **Verify the network adapters**, wait until green checkboxes appear next to each adapter, then select **Next**.
@@ -118,7 +121,7 @@ Step 2 of the wizard walks you through configuring various networking elements f
 1. Under **Define networks**, make sure each network adapter for each server has a unique static IP address, a subnet mask, and a VLAN ID. Hover over each table element and enter or change values as needed. When finished, click **Apply and test**.
 
     > [!NOTE]
-    > To support VLAN ID configuration for the cluster, all networks cards in all servers must support the VLANID property.
+ To support VLAN ID configuration for the cluster, all networks cards in all servers must support the VLANID property.
 
 1. Wait until the **Status** column shows **Passed** for each server, then click **Next**. This step verifies network connectivity between all adapters with the same subnet and VLAN ID. The provided IP addresses are transferred from the physical adapter to the virtual adapters once the virtual switches are created in the next step. It may take several minutes to complete depending on the number of adapters configured.
 
@@ -129,7 +132,9 @@ Step 2 of the wizard walks you through configuring various networking elements f
     - **Create one virtual switch for compute only**
     - **Create two virtual switches**
 
-The following table shows which virtual switch configurations are supported and enabled for various network adapter configurations:
+    > [!NOTE] If you are going to deploy Network Controller for SDN (in **Step 5: SDN** of the wizard), you will need a virtual switch. So if you opt out of creating a virtual switch here and don't create one outside the wizard, the wizard won't deploy Network Controller.
+
+    The following table shows which virtual switch configurations are supported and enabled for various network adapter configurations:
 
     | Option | 1-2 adapters | 3+ adapters | teamed adapters |
     | :------------- | :--------- |:--------| :---------|
@@ -138,9 +143,6 @@ The following table shows which virtual switch configurations are supported and 
     | two switches | not supported | enabled | enabled |
 
 1. Change the name of a switch and other configuration settings as needed, then click **Apply and test**. The **Status** column should show **Passed** for each server after the virtual switches have been created.
-
-> [!NOTE]
-> If you see errors listed during any networking or virtual switch steps, try clicking **Apply and test** again. Network connectivity checks may fail intermittently, which can lead to the wizard experiencing server ping failures on the initial attempt.
 
 ## Step 3: Clustering
 
@@ -186,6 +188,8 @@ Step 5 of the wizard walks you through setting up Network Controller on your clu
 > [!NOTE]
 > This step of the wizard is optional.
 
+    :::image type="content" source="media/cluster/create-cluster-network-controller.png" alt-text="Create cluster wizard - SDN Network Controller" lightbox="media/cluster/create-cluster-network-controller.png":::
+
 1. Select **Next: SDN**.
 1. Under **Host**, enter a name for the Network Controller.
 1. Specify a path to the Azure Stack HCI VHD file. Use **Browse** to find it quicker.
@@ -203,6 +207,14 @@ Step 5 of the wizard walks you through setting up Network Controller on your clu
 1. Enter values for **MAC address pool start** and **MAC address pool end**.
 1. When finished, click **Next**.
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete. Then click **Finish**.
+ 
+If Network Controller deployment fails, do the following before you try this again:
+
+- Stop and delete any Network Controller VMs that the wizard created.  
+
+- Clean up any VHD mount points that the wizard created.  
+
+- Ensure you have at least have 50-100GB of free space on your Hyper-V hosts.  
 
 ## After you complete the wizard
 
@@ -228,4 +240,4 @@ OK, now here are the other tasks you will need to do:
 - Do a final validation of the cluster. See [Validate an Azure Stack HCI cluster](validate.md)
 - Provision your VMs. See [Manage VMs on Azure Stack HCI using Windows Admin Center](../manage/vm.md).
 - You can also deploy a cluster using PowerShell. See [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md).
-- You can also deploy Network Controller using PowerShell. See [Deploy Network Controller using PowerShell](network-controller.powershell.md).
+- You can also deploy Network Controller using PowerShell. See [Deploy Network Controller using PowerShell](network-controller-powershell.md).
