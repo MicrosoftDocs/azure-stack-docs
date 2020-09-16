@@ -11,7 +11,7 @@ ms.author: dawhite
 When you create or manage a Kubernetes cluster using Azure Kubernetes Service on Azure Stack HCI, you might occasionally come across problems. Below are the troubleshooting guidelines to help you resolve those issues. 
 
 ## Troubleshooting Azure Stack HCI
-To troubleshoot cluster validation reporting for network and storage QoS (quality of service) settings across servers in an Azure Stack HCI cluster, and verify that important rules are defined visit [Troubleshoot cluster validation reporting](/azure-stack/hci/manage/validate-qos).
+To troubleshoot cluster validation reporting for network and storage QoS (quality of service) settings across servers in an Azure Stack HCI cluster and verify that important rules are defined, visit [Troubleshoot cluster validation reporting](/azure-stack/hci/manage/validate-qos).
 
 To troubleshoot issues with CredSSP, visit [Troubleshoot CredSSP](/azure-stack/hci/manage/troubleshoot-credssp).
 
