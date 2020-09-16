@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Hub managed disks; differences and considerations 
+title: Azure Stack Hub managed disks differences and considerations 
 description: Learn about differences and considerations when working with managed disks and managed images in Azure Stack Hub.
 author: sethmanheim
 

@@ -1,6 +1,6 @@
 ---
 title: Use an app identity to access resources
-description: Learn how to use an app identity to access Azure Stack Hub resources. An app identity can be used with role-based access control for sign-in and access to resources.
+description: Learn to access Azure Stack Hub resources using an app identity, which can be used with role-based access control for sign-in and access to resources.
 author: BryanLa
 ms.author: bryanla
 ms.topic: how-to

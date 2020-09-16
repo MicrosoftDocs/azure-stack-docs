@@ -1,5 +1,5 @@
 ---
-title: Fault tolerance and storage efficiency in Azure Stack HCI
+title: Fault tolerance and storage efficiency - Azure Stack HCI
 description: A discussion of resiliency options in Storage Spaces Direct including mirroring and parity.
 author: khdownie
 ms.author: v-kedow

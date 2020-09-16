@@ -1,5 +1,5 @@
 ---
-title: Replace a hardware component on an Azure Stack Hub scale unit node
+title: Replace hardware component on Azure Stack Hub scale unit node
 titleSuffix: Azure Stack Hub
 description: Learn how to replace a hardware component on an Azure Stack Hub integrated system.
 author: IngridAtMicrosoft
