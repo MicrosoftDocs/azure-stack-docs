@@ -16,7 +16,7 @@ Ensuring Linux applications run on Linux OS Kubernetes nodes and Windows applica
 This how-to guide assumes a basic understanding of Kubernetes concepts. For more information, see Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI.
 
 ## Node Selector 
-*Node Selector* is a simple field in the pod spec that constrains pods to only be scheduled onto healthy nodes matching the operating system. In your pod specification YAML, specify a `nodeSelector` - Windows or Linux, as shown in the examples below. 
+*Node Selector* is a simple field in the podSpec that constrains pods to only be scheduled onto healthy nodes matching the operating system. In your pod specification YAML, specify a `nodeSelector` - Windows or Linux, as shown in the examples below. 
 
 ```yaml
 kubernetes.io/os = Windows
