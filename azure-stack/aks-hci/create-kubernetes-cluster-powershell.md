@@ -1,27 +1,43 @@
 ---
+<<<<<<< HEAD
 title: Quickstart to set up an Kubernetes cluster on Azure Stack HCI using Windows PowerShell
 description: Learn how to create a Kubernetes cluster on Azure Stack HCI with Windows PowerShell
+=======
+title: Quickstart to create Kubernetes clusters on Azure Stack HCI using Windows PowerShell
+description: Learn how to create Kubernetes clusters on Azure Stack HCI with Windows PowerShell
+>>>>>>> upstream/release-aks-hci-public
 author: jeguan
 ms.topic: quickstart
 ms.date: 09/21/2020
 ms.author: jeguan
 ---
+<<<<<<< HEAD
 # Quickstart: Create a Kubernetes cluster on Azure Stack HCI using Windows PowerShell
 
 > Applies to: Azure Stack HCI
 
 In this quickstart, you will learn how to use Windows PowerShell to create an Kubernetes cluster on Azure Stack HCI.
+=======
+# Quickstart: Create Kubernetes clusters on Azure Stack HCI using Windows PowerShell
+
+> Applies to: Azure Stack HCI
+
+In this quickstart, you'll learn how to use Windows PowerShell to create a Kubernetes cluster on Azure Stack HCI.
+>>>>>>> upstream/release-aks-hci-public
 
 ## Before you begin
 
 Before you begin, make sure you:
 
-- Have a 2-4 node Azure Stack HCI cluster or a single node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you do not, follow instructions on how to create one [here](./system-requirements.md).
-- Have an Azure Kubernetes Service host on Azure Stack HCI deployed. If you do not, follow instructions on how to [Deploy an Azure Kubernetes host on Azure Stack HCI](./create-host-powershell.md).
+- Have a 2-4 node Azure Stack HCI cluster or a single node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't, follow instructions on how to create one [here](./system-requirements.md).
 
 ## Step 1: Create a Kubernetes cluster
 
+<<<<<<< HEAD
 After installing your Azure Kubernetes Service host, you are ready to deploy a Kubernetes cluster.
+=======
+After installing your Azure Kubernetes Service host, you're ready to deploy a Kubernetes cluster.
+>>>>>>> upstream/release-aks-hci-public
 
 Open PowerShell as an administrator and run the following command.
 
@@ -87,7 +103,7 @@ Get-AksHciCluster
 
 ## Step 2: Scale a Kubernetes cluster
 
-If you need to scale your cluster up or down, you can change the number of control plane nodes, Linux nodes, or Windows nodes.
+If you need to scale your cluster up or down, you can change the number of control plane nodes, Linux worker nodes, or Windows worker nodes.
 
 To scale control plane nodes, run the following command.
 
@@ -104,11 +120,11 @@ Set-AksHciClusterNodeCount –clusterName
                            -windowsNodeCount
 ```
 
-The control plane nodes and the worker nodes must be scaled independently because PowerShell will not allow these parameters to be specified together.
+The control plane nodes and the worker nodes must be scaled independently.
 
 ## Step 3: Upgrade Kubernetes version
 
-To see the current Kubernetes version you are running, run the following command.
+To see the current Kubernetes version you're running, run the following command.
 
 ```powershell
 Get-AksHciKubernetesVersion

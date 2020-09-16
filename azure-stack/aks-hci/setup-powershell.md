@@ -1,6 +1,6 @@
 ---
-title: Quickstart  to set up an Azure Kubernetes Service host on Azure Stack HCI using Windows PowerShell
-description: Learn how to create an Azure Kubernetes Service host cluster on Azure Stack HCI with Windows PowerShell
+title: Quickstart to set up an Azure Kubernetes Service host on Azure Stack HCI using Windows PowerShell
+description: Learn how to set up an Azure Kubernetes Service host on Azure Stack HCI with Windows PowerShell
 author: jeguan
 ms.topic: quickstart
 ms.date: 09/21/2020
@@ -10,11 +10,17 @@ ms.author: jeguan
 
 > Applies to: Azure Stack HCI
 
-In this quickstart, you will learn how to create an Azure Kubernetes Service host on Azure Stack HCI using Windows PowerShell.
+In this quickstart, you'll learn how to set up an Azure Kubernetes Service host on Azure Stack HCI using Windows PowerShell.
 
 ## Before you begin
 
-Before you begin, make sure you have a 2-4 node Azure Stack HCI cluster or a single node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you do not, follow instructions on how to [here](./system-requirements.md).
+Before you begin, make sure you have a 2-4 node Azure Stack HCI cluster or a single node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't, follow instructions on how to [here](./system-requirements.md).
+
+You will also need to make sure that you have the AksHci PowerShell module installed. The download package that you can find [here](https://aka.ms/AKS-HCI-Evaluate) will have the module in a zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\module`), and then run the following command.
+
+   ```powershell
+   Import-Module
+   ```
 
 ## Step 1: Prepare your machine(s) for deployment
 
@@ -26,11 +32,11 @@ Open PowerShell as an administrator and run the following command.
    Initialize-AksHciNode
    ```
 
-When the checks are finished, you will see "Done" displayed in green text.
+When the checks are finished, you'll see "Done" displayed in green text.
 
 ## Step 2: Configure your deployment
 
-Then, we'll need to set the configuration settings for the Azure Kubernetes Service host. For an Azure Stack HCI cluster deployment, you must specify the `-wssdImageDir` and the `-cloudConfigLocation`. In a single node Azure Stack HCI deployment, all the parameters are optional and they will be set to the default value. If the deployment type is not specified, `SingleNode` is the default. **We recommend using an Azure Stack HCI cluster deployment.**
+Set the configuration settings for the Azure Kubernetes Service host. **For a 2-4 node Azure Stack HCI cluster, you must specify `MultiNode` in the `-deploymentType`, the `wssdImageDir` and `cloudConfigLocation` parameters.** For a 1 node Azure Stack HCI cluster, all parameters are optional and set to their default values. However, for optimal performance, **we recommend using a 2-4 node Azure Stack HCI cluster deployment.**
 
 Configure your deployment with the following command.
 
@@ -64,15 +70,15 @@ Configure your deployment with the following command.
 
 `-deploymentType`
 
-The deployment type. Accepted values: SingleNode, MultiNode.
+The deployment type. Accepted values: SingleNode, MultiNode. Defaults to SingleNode.
 
 `-wssdImageDir`
 
-The path to the directory where Azure Kubernetes Service on Azure Stack HCI will store its VHD images. Defaults to `%systemdrive%\wssdimagestore` for single node deployments. For multi-node deployments, this parameter must be specified. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore` or an SMB share such as `\\FileShare\ImageStore`.
+The path to the directory where Azure Kubernetes Service on Azure Stack HCI will store its VHD images. Defaults to `%systemdrive%\wssdimagestore` for single node deployments. *For multi-node deployments, this parameter must be specified*. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore` or an SMB share such as `\\FileShare\ImageStore`.
 
 `-cloudConfigLocation`
 
-The location where the cloud agent will store its configuration. Defaults to `%systemdrive%\wssdimagestore` for single node deployments. The location can be the same as the path of `-wssdImageDir` above. For multi-node deployments, this parameter must be specified.
+The location where the cloud agent will store its configuration. Defaults to `%systemdrive%\wssdimagestore` for single node deployments. The location can be the same as the path of `-wssdImageDir` above. For *multi-node deployments, this parameter must be specified*.
 
 `-nodeConfigLocation`
 
@@ -148,7 +154,7 @@ Use this flag if you want to skip any updates available.
 
 `-forceDnsReplication`
 
-DNS replication can take up to an hour on some systems. This will cause the deployment to be slow. If you hit this issue, you will see that the Install-AksHci will be stuck in a loop. To get past this issue, try to use this flag. The `-forceDnsReplication` flag is not a guaranteed fix. If the logic behind the flag fails, the error will be hidden, and the command will carry on as if the flag was not provided.
+DNS replication can take up to an hour on some systems. This will cause the deployment to be slow. If you hit this issue, you'll see that the Install-AksHci will be stuck in a loop. To get past this issue, try to use this flag. The `-forceDnsReplication` flag is not a guaranteed fix. If the logic behind the flag fails, the error will be hidden, and the command will carry on as if the flag was not provided.
 
 ### Reset the Azure Kubernetes Service on Azure Stack HCI configuration
 
