@@ -1,11 +1,11 @@
 ﻿---
 title: Redeploy the ASDK 
 description: Learn how to redeploy the Azure Stack Development Kit (ASDK).
-author: justinha
+author: myoungerman
 
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: justinha
+ms.author: v-myoung
 ms.reviewer: misainat
 ms.lastreviewed: 11/05/2019
 
@@ -44,6 +44,7 @@ To remove the registration resource, use the **Remove-AzsRegistration** cmdlet t
    Remove-AzsRegistration `
       -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint AzS-ERCS01
+      -RegistrationName $RegistrationName
 
    # Remove the Azure Stack resource group
    Remove-AzureRmResourceGroup -Name azurestack -Force
