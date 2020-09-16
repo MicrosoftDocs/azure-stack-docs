@@ -49,7 +49,7 @@
     href: /windows-server/
 - name: Resources
   items:
-  - name: Release Notes
+  - name: Release notes
     href: https://aka.ms/aks-hci-relnotes/
   - name: Azure Roadmap
     href: https://azure.microsoft.com/roadmap/
