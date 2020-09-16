@@ -1,18 +1,18 @@
 ---
-title: Deploy a Linux application in AKS on Azure Stack HCI
-description: Learn how to deploy a multi-container Linux application to your cluster using a custom image stored in Azure Container Registry.
+title: Tutorial - Deploy a Linux application in AKS on Azure Stack HCI
+description: In this tutorial, you deploy a multi-container Linux application to your cluster using a custom image stored in Azure Container Registry.
 author: abha
-ms.topic: how-to
+ms.topic: tutorial
 ms.date: 09/21/2020
 ms.author: abha
 ms.reviewer: 
 ---
 
-# Deploy Linux applications in Azure Kubernetes Service on Azure Stack HCI
+# Tutorial: Deploy Linux applications in Azure Kubernetes Service on Azure Stack HCI
 
-In this how-to guide, you deploy a multi-container application that includes a web front end and a Redis database instance in your Azure Kubernetes Service on Azure Stack HCI cluster. You then see how to test and scale your application. 
+In this tutorial, you deploy a multi-container application that includes a web front end and a Redis database instance in your Azure Kubernetes Service on Azure Stack HCI cluster. You then see how to test and scale your application. 
 
-This how-to guide assumes a basic understanding of Kubernetes concepts. For more information, see Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI.
+This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI.
 
 ## Before you begin
 

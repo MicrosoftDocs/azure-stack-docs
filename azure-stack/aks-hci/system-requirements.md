@@ -125,4 +125,4 @@ If you plan on deploying Azure Kubernetes Service on Azure Stack HCI on a single
 
 After you have satisfied all of the prerequisites above, you can set up a Azure Kubernetes Service host on Azure Stack HCI using:
  - [Windows Admin Center](.\setup.md)
- - [PowerShell](.\create-host-powershell.md)
+ - [PowerShell](.\setup-powershell.md)

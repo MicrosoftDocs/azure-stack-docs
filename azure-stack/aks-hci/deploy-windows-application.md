@@ -1,17 +1,17 @@
 ---
-title: Deploy a Windows application in AKS on Azure Stack HCI
-description: Learn how to deploy a Windows application to your cluster using a custom image stored in Azure Container Registry.
+title: Tutorial - Deploy a Windows application in AKS on Azure Stack HCI
+description: In this tutorial, you deploy a Windows application to your cluster using a custom image stored in Azure Container Registry.
 author: abha
-ms.topic: how-to
+ms.topic: tutorial
 ms.date: 09/21/2020
 ms.author: abha
 ms.reviewer: 
 ---
 
-# Deploy Windows applications in Azure Kubernetes Service on Azure Stack HCI
+# Tutorial: Deploy Windows applications in Azure Kubernetes Service on Azure Stack HCI
 
-In this how-to guide, you deploy an ASP.NET sample application in a Windows Server container to the Kubernetes cluster. You then see how to test your application. 
-This how-to guide assumes a basic understanding of Kubernetes concepts. For more information, see Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI.
+In this tutorial, you deploy an ASP.NET sample application in a Windows Server container to the Kubernetes cluster. You then see how to test your application. 
+This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI.
 
 ## Before you begin
 
