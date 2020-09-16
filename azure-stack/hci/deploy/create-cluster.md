@@ -121,7 +121,7 @@ Step 2 of the wizard walks you through configuring virtual switches and other ne
 1. Under **Define networks**, make sure each network adapter for each server has a unique static IP address, a subnet mask, and a VLAN ID. Hover over each table element and enter or change values as needed. When finished, click **Apply and test**.
 
     > [!NOTE]
- To support VLAN ID configuration for the cluster, all networks cards in all servers must support the VLANID property.
+    > To support VLAN ID configuration for the cluster, all networks cards in all servers must support the VLANID property.
 
 1. Wait until the **Status** column shows **Passed** for each server, then click **Next**. This step verifies network connectivity between all adapters with the same subnet and VLAN ID. The provided IP addresses are transferred from the physical adapter to the virtual adapters once the virtual switches are created in the next step. It may take several minutes to complete depending on the number of adapters configured.
 
@@ -132,7 +132,8 @@ Step 2 of the wizard walks you through configuring virtual switches and other ne
     - **Create one virtual switch for compute only**
     - **Create two virtual switches**
 
-    > [!NOTE] If you are going to deploy Network Controller for SDN (in **Step 5: SDN** of the wizard), you will need a virtual switch. So if you opt out of creating a virtual switch here and don't create one outside the wizard, the wizard won't deploy Network Controller.
+    > [!NOTE]
+    > If you are going to deploy Network Controller for SDN (in **Step 5: SDN** of the wizard), you will need a virtual switch. So if you opt out of creating a virtual switch here and don't create one outside the wizard, the wizard won't deploy Network Controller.
 
     The following table shows which virtual switch configurations are supported and enabled for various network adapter configurations:
 
@@ -188,7 +189,7 @@ Step 5 of the wizard walks you through setting up Network Controller on your clu
 > [!NOTE]
 > This step of the wizard is optional.
 
-    :::image type="content" source="media/cluster/create-cluster-network-controller.png" alt-text="Create cluster wizard - SDN Network Controller" lightbox="media/cluster/create-cluster-network-controller.png":::
+:::image type="content" source="media/cluster/create-cluster-network-controller.png" alt-text="Create cluster wizard - SDN Network Controller" lightbox="media/cluster/create-cluster-network-controller.png":::
 
 1. Select **Next: SDN**.
 1. Under **Host**, enter a name for the Network Controller.
