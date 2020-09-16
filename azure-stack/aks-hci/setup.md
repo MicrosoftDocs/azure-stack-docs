@@ -18,7 +18,7 @@ In this quickstart, you'll:
 Before getting started, make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page.
 
 ## Setting up Windows Admin Center
-If you haven't already installed Windows Admin Center, see [install Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/deploy/install).
+If you haven't already installed Windows Admin Center, see [install Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/deploy/install). For public preview of Azure Kubernetes Service on Azure Stack HCI, you must download and run Windows Admin Center on a Windows 10 machine. Only Windows Admin Center desktop mode is compatible with Azure Kubernetes Service on Azure Stack HCI.
 
 ## Installing the Azure Kubernetes Service extension
 Once you have obtained the Azure Kubernetes Service on Azure Stack HCI extension for Windows Admin Center, you must save the file locally or to an SMB share and add the file path to the "Feeds" list in your Windows Admin Center extension manager. 
@@ -27,7 +27,7 @@ To access your existing extension feed, open Windows Admin Center and select on 
 
 Now that we have added the feed, the Azure Kubernetes Service on Azure Stack HCI extension will be available in the list of available extensions. Once you have the extension selected, select **Install** at the top of the table to install this extension. Windows Admin Center will reload after installation is complete. 
 
-[ ![View of the available extension list in Windows Admin Center extension manager.](.\media\extension-manager.png) ](.\media\extension-manager.png#lightbox)
+[ ![View of the available extension list in Windows Admin Center extension manager.](.\media\setup\extension-manager.png) ](.\media\setup\extension-manager.png#lightbox)
 
 ## Setting up an Azure Kubernetes Service host
 There is one final step that should be completed before you create a Kubernetes cluster. You need to set up an Azure Kubernetes Service host on the system you want to deploy the Kubernetes cluster to. This system must be an Azure Stack HCI cluster. 
@@ -48,7 +48,7 @@ Let's get started:
     * VM networking, which will apply to all Linux and Windows VMs (nodes) that are created to run containers and orchestrate container management. 
     * load balancer settings, which define the pool of addresses used for external services
 
-    ![Illustrates the Host configuration step of the Azure Kubernetes Service host wizard.](.\media\host-configuration.png)
+    ![Illustrates the Host configuration step of the Azure Kubernetes Service host wizard.](.\media\setup\host-configuration.png)
 
 5. Register with Azure and choose to send diagnostic data to Microsoft in the **Azure registration** step. While this page asks for an Azure subscription and resource group, there is no cost for setting up and using Azure Kubernetes Service in public preview. The diagnostic data you send to Microsoft will be used to help keep the service secure and up to date, troubleshoot problems, and make product improvements. After you've made your selections, select **Next**.
 6. Review all of your selections so far in the **Review + create** step. If you're satisfied with your selections, select **Set up** to begin host setup. 
