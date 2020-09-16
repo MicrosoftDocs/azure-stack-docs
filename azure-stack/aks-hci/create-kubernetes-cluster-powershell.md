@@ -1,29 +1,23 @@
 ---
-<<<<<<< HEAD
-title: Quickstart to set up an Kubernetes cluster on Azure Stack HCI using Windows PowerShell
-description: Learn how to create a Kubernetes cluster on Azure Stack HCI with Windows PowerShell
-=======
 title: Quickstart to create Kubernetes clusters on Azure Stack HCI using Windows PowerShell
 description: Learn how to create Kubernetes clusters on Azure Stack HCI with Windows PowerShell
->>>>>>> upstream/release-aks-hci-public
-author: jeguan
+ms.author: jeguan
 ms.topic: quickstart
 ms.date: 09/21/2020
 ms.author: jeguan
 ---
-<<<<<<< HEAD
+
 # Quickstart: Create a Kubernetes cluster on Azure Stack HCI using Windows PowerShell
 
 > Applies to: Azure Stack HCI
 
 In this quickstart, you will learn how to use Windows PowerShell to create an Kubernetes cluster on Azure Stack HCI.
-=======
+
 # Quickstart: Create Kubernetes clusters on Azure Stack HCI using Windows PowerShell
 
 > Applies to: Azure Stack HCI
 
 In this quickstart, you'll learn how to use Windows PowerShell to create a Kubernetes cluster on Azure Stack HCI.
->>>>>>> upstream/release-aks-hci-public
 
 ## Before you begin
 
@@ -33,11 +27,7 @@ Before you begin, make sure you:
 
 ## Step 1: Create a Kubernetes cluster
 
-<<<<<<< HEAD
 After installing your Azure Kubernetes Service host, you are ready to deploy a Kubernetes cluster.
-=======
-After installing your Azure Kubernetes Service host, you're ready to deploy a Kubernetes cluster.
->>>>>>> upstream/release-aks-hci-public
 
 Open PowerShell as an administrator and run the following command.
 
@@ -168,8 +158,4 @@ In this quickstart, you learned how to create, scale, and upgrade a Kubernetes c
 
 - Connect your clusters to Azure Arc for Kubernetes with [these instructions](./connect-to-arc.md).
 - Deploy a Linux application with [these instructions](./deploy-linux-application.md).
-<<<<<<< HEAD
 - Deploy a Windows application with [these instructions](./deploy-windows-application.md).
-=======
-- Deploy a Windows application with [these instructions](./deploy-windows-application.md).
->>>>>>> 5c7f2be79ebb018099503728ecbe3a16e4187126
