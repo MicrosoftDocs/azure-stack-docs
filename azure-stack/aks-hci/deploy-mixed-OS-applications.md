@@ -11,12 +11,12 @@ ms.reviewer:
 # Deploying Applications in mixed OS Kubernetes Clusters
 
 ## Overview 
-Ensuring Linux applications land on Linux OS Kubernetes nodes and Windows applications land on Windows OS Kubernetes nodes is critical. In this how-to guide, you'll learn how to ensure your application gets scheduled on the right host OS using either Node Selectors or Taints and Tolerations.
+Ensuring Linux applications run on Linux OS Kubernetes nodes and Windows applications run on Windows OS Kubernetes nodes is critical. In this how-to guide, you'll learn how to ensure your application gets scheduled on the right host OS using either Node Selectors or Taints and Tolerations.
 
 This how-to guide assumes a basic understanding of Kubernetes concepts. For more information, see Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI.
 
 ## Node Selector 
-*Node Selector* is a simple field in the pod spec that constraints pods to only be scheduled onto healthy nodes matching the operating system. In your pod specification YAML, specify a `nodeSelector` - Windows or Linux, as shown in the examples below. 
+*Node Selector* is a simple field in the pod spec that constrains pods to only be scheduled onto healthy nodes matching the operating system. In your pod specification YAML, specify a `nodeSelector` - Windows or Linux, as shown in the examples below. 
 
 ```yaml
 kubernetes.io/os = Windows
@@ -29,10 +29,10 @@ kubernetes.io/os = Linux
 
 For more information on nodeSelectors, visit [node selectors](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/). 
 
-## Taints and Tolerations 
+## Taints and tolerations 
 *Taints* and *tolerations* work together to ensure that pods are not scheduled on nodes unintentionally. A node can be "tainted" to not accept pods that do not explicitly tolerate its taint through a "toleration" in the pod spec.
 
-Windows OS nodes in AKS on Azure Stack HCI can be tainted with the following key-value pair. Users should not use a different one.
+Windows OS nodes in Azure Kubernetes Service on Azure Stack HCI can be tainted with the following key-value pair. Users should not use a different one.
 
 ```yaml
 node.kubernetes.io/os=Windowss:NoSchedule
@@ -50,7 +50,7 @@ my-aks-hci-cluster-md-md-1-5h4bl         windows
 my-aks-hci-cluster-md-md-1-5xlwz         windows
 ```
 
-Taint Windows server worker nodes using `kubectl taint node`
+Taint Windows server worker nodes using `kubectl taint node`.
 
 ```PowerShell
 kubectl taint node my-aks-hci-cluster-md-md-1-5h4bl node.kubernetes.io/os=Windows:NoSchedule
