@@ -18,7 +18,7 @@ In this quickstart, you'll:
 Before getting started, make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page.
 
 ## Setting up Windows Admin Center
-If you haven't already installed Windows Admin Center, see [install Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/deploy/install). For public preview of Azure Kubernetes Serivce on Azure Stack HCI, you must download and run Windows Admin Center on a Windows 10 machine. In other words, only Windows Admin Center desktop mode is compatible with Azure Kubernetes Service on Azure Stack HCI.
+If you haven't already installed Windows Admin Center, see [install Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/deploy/install). For public preview of Azure Kubernetes Serivce on Azure Stack HCI, you must download and run Windows Admin Center on a Windows 10 machine. Only Windows Admin Center desktop mode is compatible with Azure Kubernetes Service on Azure Stack HCI.
 
 ## Installing the Azure Kubernetes Service extension
 Once you have obtained the Azure Kubernetes Service on Azure Stack HCI extension for Windows Admin Center, you must save the file locally or to an SMB share and add the file path to the "Feeds" list in your Windows Admin Center extension manager. 
