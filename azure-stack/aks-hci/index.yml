@@ -24,13 +24,13 @@ landingContent:
     linkLists:
       - linkListType: quickstart
         links:
-          - text: Set up on Azure Stack HCI - Windows Admin Center
+          - text: Set up with Windows Admin Center
             url: setup.md
-          - text: Set up on Azure Stack HCI - PowerShell
+          - text: Set up with PowerShell
             url: setup-powershell.md
-          - text: Create a Kubernetes cluster - Windows Admin Center
+          - text: Create a Kubernetes cluster with Windows Admin Center
             url: create-kubernetes-cluster.md
-          - text: Create a Kubernetes cluster - PowerShell
+          - text: Create a Kubernetes cluster with PowerShell
             url: create-kubernetes-cluster-powershell.md
 
   - title: Deploy Windows and Linux applications
