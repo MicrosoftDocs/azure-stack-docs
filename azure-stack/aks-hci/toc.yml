@@ -2,37 +2,37 @@
   href: index.yml
 - name: Overview
   items:
-  - name: Azure Kubernetes Service on Azure Stack HCI
+  - name: What is Azure Kubernetes Service on Azure Stack HCI?
     href: overview.md
+- name: Concepts
+  items: 
+  - name: System requirements
+    href: system-requirements.md
 - name: Quickstarts
   expanded: true
   items:
     - name: Set up Azure Kubernetes Service on Azure Stack HCI
       items:
+        - name: Using PowerShell
+          href: create-host-powershell.md
         - name: Using Windows Admin Center
           href: setup.md
-        - name: Using PowerShell
-          href: setup-powershell.md
     - name: Create a Kubernetes cluster
       items:
-        - name: Using Windows Admin Center
-          href: create-kubernetes-cluster.md
         - name: Using PowerShell
           href: create-kubernetes-cluster-powershell.md
-- name: Tutorials
-  items:
-    - name: Use Windows Server containers
-      href: deploy-windows-application.md
-    - name: Use Linux containers
-      href: deploy-linux-application.md
-- name: Concepts
-  items: 
-  - name: System requirements
-    href: system-requirements.md
+        - name: Using Windows Admin Center
+          href: create-kubernetes-cluster.md
 - name: How-to guides
   items: 
-    - name: Connect to Azure Arc for Kubernetes
+    - name: Connect Cluster to Azure Arc for Kubernetes
       href: connect-to-arc.md
+    - name: Deploying Applications in Linux and Windows OS Kubernetes Clusters
+      href: deploy-mixed-OS-applications.md
+    - name: Use Windows Server containers in Azure Kubernetes Service on Azure Stack HCI
+      href: deploy-windows-application.md
+    - name: Use Linux containers in Azure Kubernetes Service on Azure Stack HCI
+      href: deploy-linux-application.md
     - name: Troubleshoot
       href: troubleshoot.md
 - name: Related
@@ -45,4 +45,13 @@
     href: /hybrid
   - name: Windows Server
     href: /windows-server/
-
+- name: Resources
+  items:
+  - name: Release Notes
+    href: https://aka.ms/aks-hci-relnotes/
+  - name: Azure Roadmap
+    href: https://azure.microsoft.com/roadmap/
+  - name: AKS on Azure Stack HCI Roadmap
+    href: https://aka.ms/aks-hci-roadmap/
+  - name: File Bugs
+    href: https://aka.ms/aks-hci-issues/
