@@ -43,7 +43,7 @@ Layer 3 (L3) forwarding enables connectivity between the physical infrastructure
 
 BGP reduces the need for manual route configuration on routers because it is a dynamic routing protocol, and automatically learns routes between sites that are connected by using site-to-site VPN connections. If your organization has multiple sites that are connected using BGP-enabled routers such as RAS Gateway, BGP allows the routers to automatically calculate and use valid routes to each other in the event of network disruption or failure.
 
-The BGP Route Reflector included with RAS Gateway provides an alternative to BGP full mesh topology that is required for route synchronization between routers. For more information, see [What is the Route Reflector?](route-reflector-overview.md)
+The BGP Route Reflector included with RAS Gateway provides an alternative to BGP full mesh topology that is required for route synchronization between routers. For more information, see [What is Route Reflector?](route-reflector-overview.md)
 
 ## How RAS Gateway works
 
