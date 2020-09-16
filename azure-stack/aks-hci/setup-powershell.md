@@ -1,7 +1,7 @@
 ---
 title: Quickstart to set up an Azure Kubernetes Service host on Azure Stack HCI using Windows PowerShell
 description: Learn how to set up an Azure Kubernetes Service host on Azure Stack HCI with Windows PowerShell
-author: jeguan
+author: jessicaguan
 ms.topic: quickstart
 ms.date: 09/21/2020
 ms.author: jeguan
@@ -15,6 +15,12 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 ## Before you begin
 
 Before you begin, make sure you have a 2-4 node Azure Stack HCI cluster or a single node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't, follow instructions on how to [here](./system-requirements.md).
+
+You will also need to make sure that you have the AksHci PowerShell module installed. The download package that you can find [here](https://aka.ms/AKS-HCI-Evaluate) will have the module in a zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\module`), and then run the following command.
+
+   ```powershell
+   Import-Module
+   ```
 
 ## Step 1: Prepare your machine(s) for deployment
 
@@ -30,7 +36,7 @@ When the checks are finished, you'll see "Done" displayed in green text.
 
 ## Step 2: Configure your deployment
 
-Then, we'll need to set the configuration settings for the Azure Kubernetes Service host. For an Azure Stack HCI cluster `MultiNode` deployment, you must specify the `-wssdImageDir` and the `-cloudConfigLocation`. In a single node Azure Stack HCI deployment, all the parameters are optional and they will be set to the default value. If the deployment type is not specified, `SingleNode` is the default. **We recommend using an Azure Stack HCI cluster deployment.**
+Set the configuration settings for the Azure Kubernetes Service host. **For a 2-4 node Azure Stack HCI cluster, you must specify `MultiNode` in the `-deploymentType`, the `wssdImageDir` and `cloudConfigLocation` parameters.** For a 1 node Azure Stack HCI cluster, all parameters are optional and set to their default values. However, for optimal performance, **we recommend using a 2-4 node Azure Stack HCI cluster deployment.**
 
 Configure your deployment with the following command.
 
@@ -64,7 +70,7 @@ Configure your deployment with the following command.
 
 `-deploymentType`
 
-The deployment type. Accepted values: SingleNode, MultiNode.
+The deployment type. Accepted values: SingleNode, MultiNode. Defaults to SingleNode.
 
 `-wssdImageDir`
 
