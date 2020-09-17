@@ -1,5 +1,5 @@
 ---
-title: Deploy Applications in mixed OS Kubernetes Clusters
+title: Deploy applications in mixed OS Kubernetes clusters
 description: How to use node selectors or taints and tolerations to deploy applications in mixed OS Kubernetes clusters
 author: abha
 ms.topic: how-to
