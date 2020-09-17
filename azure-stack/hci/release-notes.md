@@ -15,7 +15,7 @@ ms.date: 09/17/2020
 
 This article describes the contents of Azure Stack HCI Public Preview update packages.
 
-## September 15, 2020 Preview Update (KB4577629)
+## September 17, 2020 Preview Update (KB4577629)
 
 This update includes improvements and fixes for the latest release of Azure Stack HCI.
 
