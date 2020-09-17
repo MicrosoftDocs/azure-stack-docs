@@ -4,7 +4,7 @@ description: How to deploy a graphic processing unit (GPU) enabled IoT Module on
 author: mattbriggs
 ms.author: mabrigg
 ms.service: azure-stack
-ms.topic: reference
+ms.topic: How-to
 ms.date: 09/25/2020
 ms.reviewer: gara
 ms.lastreviewed: 09/25/2020
@@ -16,29 +16,40 @@ ms.lastreviewed: 09/25/2020
 
 # Deploy a GPU enabled IoT module on Azure Stack Hub
 
+In this article, you will install GPU drivers for your Azure Stack virtual machines (VM)
+and begin developing modules to Linux devices running IoT Edge. IoT Edge allows
+you to remotely manage code on your devices so that you can send more of your
+workloads to the edge.
+
+This article takes advantage of GPU optimized VMs to run compute-intensive,
+graphics-intensive, and visualization workloads. GPU optimized VM sizes are
+specialized virtual machines available with single or multiple NVIDIA GPUs.
+
 In this article you'll learn how to:
   - Deploy a GPU module to an IoT Edge VM on Azure Stack Hub.
   - Benchmark processing times for GPUs and CPUs.
-
-**Included models**
-
-This sample includes PyTorch and TensorFlow benchmarking sample code for CPU against GPU.
+  - Included models:  This sample includes PyTorch and TensorFlow benchmarking sample code for CPU against GPU.
 
 ## Prerequisites
 
-Before you begin, make sure you have:
-  - A subscription as a user using Azure Active Director (Azure AD) to an Azure Stack Integrated System with an NVIDA GPU.
-  - Install the NVIDIA GPU drivers. For instructions, see [Graphics processing unit (GPU) virtual machine (VM) on Azure Stack Hub](gpu-vms-about.md).
-  - Install the latest IoT Edge runtime on a Linux VM in Azure Stack Hun. For instructions, see [Install the Azure IoT Edge runtime on Debian-based Linux systems](/azure/iot-edge/how-to-install-iot-edge-linux).
-  - Provision a device. `what is this?`
+Azure Stack Hub and Azure
 
-  - An Azure subscription
-      - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
-      - An Azure Container Registry (ACR). Make a note of the ACR sign in server, username, and password.
+  - A subscription as a user using Azure Active Directory (Azure AD) in an Azure Stack Hub Integrated System with an NVIDA GPU.
+  - A global Azure subscription.
+      - If you don't have a global Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+      - An Azure Container Registry (ACR). Make a note of the ACR sign-in server, username, and password.
+-   A free or standard-tier [IoT
+    hub](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal)
+    in Azure.
 
-  - The following development resources:
+A development machine:
+
+-   You can use your own computer or a virtual machine, depending on your
+    development preferences. Your development machine will need to support nested virtualization. This capability is necessary for running Docker, the container engine used in this article.
+
+  - Your development machine will need the following resources:
       - [Python 3.x](https://www.python.org/downloads/)
-      - [Pip](https://pypi.org/project/pip/) for installing Python packages. This is usually is installed with your Python installation. If you have Pip installed, you may want to upgrade to the latest version. You can upgrade using pip, itself. Type: `pip install --upgrade pip`.
+      - [Pip](https://pypi.org/project/pip/) for installing Python packages. This is usually been installed with your Python installation. If you have Pip installed, you may want to upgrade to the latest version. You can upgrade using pip, itself. Type: `pip install --upgrade pip`.
       - [Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest)
       - [Git](https://git-scm.com/downloads)
       - [Docker](https://docs.docker.com/get-docker/)
@@ -46,34 +57,132 @@ Before you begin, make sure you have:
       - [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) for Visual Studio Code
       - [Python Extension Pack](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python-extension-pack) for Visual Studio Code
 
+## Register an IoT Edge device
 
-## Get the code
+Use a separate device. Using a separate device will provide a separation between your development machine and IoT Edge device more accurately mirrors a deployment scenario. 
 
-1.  Clone or download the code.
+Create an IoT Edge device in Azure with a Linux virtual machine:
+
+1.  [Create an N-series Linux Server
+    VM](https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-quick-linux-portal?view=azs-1910)
+    on Azure Stack
+
+2.  [Create and register an IoT Edge
+    Device](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-register-device)
+
+3.  Install the latest IoT Edge runtime on a Linux VM in Azure Stack Hub. For instructions, see [Install the Azure IoT Edge runtime on Debian-based Linux systems](/azure/iot-edge/how-to-install-iot-edge-linux#install-the-latest-runtime-version)
+
+## Prepare a GPU enabled VM
+
+1. Deploy a GPU enabled VM in the Azure Stack Hub user portal.
+
+2. Install the NVIDA GPU Drivers using [these instructions](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup).
+
+3. Install the NVIDIA GPU drivers. For instructions, see [Graphics processing unit (GPU) virtual machine (VM) on Azure Stack Hub](gpu-vms-about.md).
+
+3. Install the latest IoT Edge Runtime on your Linux VM
+
+## Install Docker and the Nvidia driver
+
+Summary.
+
+### Install Docker
+
+1.  Update the apt index and lists.
+
+    ```bash  
+    $ sudo apt-get update
+    ```
+
+1.  Fetch the new versions of existing packages on the machine
+
+    ```bash  
+    $ sudo apt-get upgrade
+    ```
+
+2.  Install dependencies required to add Docker's apt repo
+
+    ```bash  
+    $ sudo apt-get install apt-transport-https ca-certificates curl
+    software-properties-common
+    ```
+
+3.  Add Docker's GPG key.
+
+    ```bash  
+    $ curl -fsSL <https://download.docker.com/linux/ubuntu/gpg> \| sudo apt-key
+    add -
+    ```
+
+4.  Add Docker's apt repo.
+
+    ```bash  
+    $ sudo add-apt-repository "deb [arch=amd64]
+    https://download.docker.com/linux/ubuntu \$(lsb_release -cs) stable"
+    ```
+
+5.  Update apt index and lists, and install Docker Community Edition.
+
+    ```bash  
+    $ sudo apt-get update  
+    $ sudo apt-get install docker-ce
+    ```
+
+6.  Verify install by checking the Docker version.
+
+    ```bash  
+    $ docker -v
+    ```
+
+### Install Nvidia-Docker
+
+1.  Set the GPG key and the remote repository for the nvidia-docker package.
+
+    ```bash  
+    $ curl -s -L <https://nvidia.github.io/nvidia-docker/gpgkey> \| \\ sudo
+    apt-key add -distribution=\$(. /etc/os-release;echo \$ID\$VERSION_ID)  
+    curl -s -L
+    <https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list> \|
+    \\ sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+    ```
+
+3.  Update the apt index and lists, and install nvidia-docker2 and the Docker
+    daemon configurations.
+
+    ```bash  
+    sudo apt-get update
+    sudo apt-get install -y
+    ```
+
+1.  [Install NVIDIA GPU
+    Drivers](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)
+
+### Install Nvidia driver
+
+1. Install gcc
+
+    ```bash  
+    sudo apt update
+    sudo apt install build-essential
+    ```
+
+2. Download and install driver from the following URL: [https://www.nvidia.com/Download/index.aspx?lang=en-us](https://www.nvidia.com/Download/index.aspx?lang=en-us)
+
+    ![](media/gpu-deploy-sample-module/98ef3b4f7e19d3aace32f147f7591172.png)
+
+    ```bash  
+    sudo sh NVIDIA-Linux-x86_64-440.64.00.run
+    ```
+
+3. Install cuda from the following URL: [https://developer.nvidia.com/cuda-downloads](https://developer.nvidia.com/cuda-downloads)
+
+4.    Verify install by running the following command:
 
 ```bash  
-git clone https://github.com/Azure-Samples/azure-intelligent-edge-patterns.git
+\$ sudo docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
 ```
 
-## Configure and build containers
-1.  Open the **GpuReferenceModules** folder in Visual Studio Code.
-1.  Fill in the values in the following values in the **.env.template**` file for your Azure Container Registry.
-
-    ```bash  
-    REGISTRY_NAME=<YourAcrUri>
-    REGISTRY_USER_NAME=<YourAcrUserName>
-    REGISTRY_PASSWORD=<YourAcrPassword>
-    ```
-
-1.  Rename the file to `.env`.
-1.  Sign into Docker by typing the following command in the Visual Studio Code integrated terminal. Use the username, password, and sign in server that you copied from your Azure container registry in the first section. You can also retrieve these values from the Access Keys section of your registry in the Azure portal.  
-
-    ```bash  
-    docker login -u <REGISTRY_USER_NAME> -p <REGISTRY_PASSWORD> <REGISTRY_NAME>.azurecr.io
-    ```
-
-1.  In the VS Code explorer, right-click the **deployment.iotedgevm.template.json**
-    file and select Build and Push IoT Edge solution.
+![](media/gpu-deploy-sample-module/c8c86759e86bae0c2dabe61630b07cf5.png)
 
 ## Enable monitoring
 
