@@ -16,7 +16,7 @@ ms.lastreviewed: 09/25/2020
 
 # Deploy a GPU enabled IoT module on Azure Stack Hub
 
-In this article, you will install GPU drivers for your Azure Stack virtual machines (VM)
+In this article, you will install GPU drivers for your Azure Stack Hub virtual machines (VM)
 and begin developing modules to Linux devices running IoT Edge. IoT Edge allows
 you to remotely manage code on your devices so that you can send more of your
 workloads to the edge.
@@ -59,28 +59,26 @@ A development machine:
 
 ## Register an IoT Edge device
 
-Use a separate device. Using a separate device will provide a separation between your development machine and IoT Edge device more accurately mirrors a deployment scenario. 
+Use a separate device to host your IoT Edge device. Using a separate device will provide a separation between your development machine and IoT Edge device more accurately mirrors a deployment scenario. 
 
 Create an IoT Edge device in Azure with a Linux virtual machine:
 
 1.  [Create an N-series Linux Server
     VM](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-linux-portal?view=azs-1910)
-    on Azure Stack
+    on Azure Stack Hub
 
 2.  [Create and register an IoT Edge
     Device](https://docs.microsoft.com/azure/iot-edge/how-to-register-device)
-
-3.  Install the latest IoT Edge runtime on a Linux VM in Azure Stack Hub. For instructions, see [Install the Azure IoT Edge runtime on Debian-based Linux systems](/azure/iot-edge/how-to-install-iot-edge-linux#install-the-latest-runtime-version)
 
 ## Prepare a GPU enabled VM
 
 1. Deploy a GPU enabled VM in the Azure Stack Hub user portal.
 
-2. Install the NVIDA GPU Drivers using [these instructions](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup).
+2. Install the NVIDA GPU Drivers by following the steps in the article, [Install NVIDIA GPU drivers on N-series VMs running Linux](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup).
 
 3. Install the NVIDIA GPU drivers. For instructions, see [Graphics processing unit (GPU) virtual machine (VM) on Azure Stack Hub](gpu-vms-about.md).
 
-3. Install the latest IoT Edge Runtime on your Linux VM
+4.  Install the latest IoT Edge runtime on a Linux VM in Azure Stack Hub. For instructions, see [Install the Azure IoT Edge runtime on Debian-based Linux systems](/azure/iot-edge/how-to-install-iot-edge-linux#install-the-latest-runtime-version)
 
 ## Install Docker and the Nvidia driver
 
@@ -192,25 +190,31 @@ Summary.
 
 3. Select **Start** to begin monitoring output from the IoT Edge Device.
 
-## Deploy to Azure Stack Hub
+## Monitor the module  
 
-You can also deploy modules using the Azure IoT Hub Toolkit extension, which used to be called the Azure IoT Toolkit extension, for Visual Studio Code. You have created a deployment manifest your scenario, the **deployment.json** file. Select a device to receive the deployment.
+1. In the VS Code command palette, run **Azure IoT Hub: Select IoT Hub**.
 
-1.  In the VS Code command palette, run Azure IoT Hub: **Select IoT Hub**.
+2. Choose the subscription and IoT hub that contain the IoT Edge device that you want to configure. In this case, select the subscription used to deploy the Azure Stack Edge device, and select the IoT Edge device created for your Azure Stack Edge device. This occurs when you configure compute via the Azure portal in the earlier steps.
 
-2.  Choose the subscription and IoT hub that contain the IoT Edge device that you want to configure.
+3. In the VS Code explorer, expand the Azure IoT Hub section. Under **Devices**, you should see the IoT Edge device corresponding to your Azure Stack Edge device. 
 
-3.  In the VS Code explorer, expand the Azure IoT Hub Devices section.
+    1. Select that device, right-click and select **Start Monitoring Built-in Event Endpoint**.
+  
+        ![Start monitoring](media/azure-stack-edge-gpu-deploy-sample-module/monitor-builtin-event-endpoint-1.png)  
 
-4.  Right-click the name of your IoT Edge device, then select **Create Deployment for Single Device**.
+    2. Go to **Devices > Modules** and you should see your **GPU module** running.
 
-5.  Select the **deployment.amd64.json** file in the config folder and then select **Select Edge Deployment Manifest**. Do not use the `deployment.template.json` file.
+        ![Module in IoT Hub](media/azure-stack-edge-gpu-deploy-sample-module/module-iot-hub-1.png)  
 
-6.  Select **Refresh**. You should see the GPU module running.
+    3. The VS Code terminal should also show the IoT Hub events as the monitoring output for your Azure Stack Edge device.
+
+        ![Monitoring output](media/azure-stack-edge-gpu-deploy-sample-module/monitor-events-output-1.png) 
+
+        You can see that the time taken to execute the same set of operations (5000 iterations of shape transformation) by GPU is lot lesser than it is for CPU.
 
 ## Next Steps
 
-  - Learn more about Azure Stack, Data Box Edge and the Intelligent Edge, [The future of computing: intelligent cloud and intelligent edge](https://azure.microsoft.com/overview/future-of-cloud)
+  - Learn more about Azure Stack Hub, Data Box Edge and the Intelligent Edge, [The future of computing: intelligent cloud and intelligent edge](https://azure.microsoft.com/overview/future-of-cloud)
 
   - Learn more about hybrid cloud applications, see [Hybrid Cloud Solutions](https://docs.microsoft.com/hybrid/app-solutions/)
 
