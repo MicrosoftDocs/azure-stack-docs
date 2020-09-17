@@ -1,6 +1,6 @@
 ---
-title: Deploying Applications in mixed OS Kubernetes Clusters
-description: Deploying Applications in mixed OS Kubernetes Clusters
+title: Deploy Applications in mixed OS Kubernetes Clusters
+description: Deploy Applications in mixed OS Kubernetes Clusters
 author: abha
 ms.topic: how-to
 ms.date: 09/21/2020
@@ -12,7 +12,7 @@ ms.reviewer:
 
 
 ## Overview 
-Ensuring Linux applications run on Linux OS Kubernetes nodes and Windows applications run on Windows OS Kubernetes nodes is critical. In this how-to guide, you'll learn how to ensure your application gets scheduled on the right host OS using either Node Selectors or Taints and Tolerations.
+Ensuring Linux applications run on Linux OS Kubernetes nodes and Windows applications run on Windows OS Kubernetes nodes is critical. In this how-to guide, you'll learn how to ensure your application gets scheduled on the right host OS using either node selectors or taints and tolerations.
 
 This how-to guide assumes a basic understanding of Kubernetes concepts. For more information, see Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI.
 
