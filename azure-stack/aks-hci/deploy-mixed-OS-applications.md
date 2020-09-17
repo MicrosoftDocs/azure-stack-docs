@@ -16,7 +16,7 @@ Ensuring Linux applications run on Linux OS Kubernetes nodes and Windows applica
 This how-to guide assumes a basic understanding of Kubernetes concepts. For more information, see Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI.
 
 ## Node Selector 
-*Node Selector* is a simple field in the podSpec that constrains pods to only be scheduled onto healthy nodes matching the operating system. In your pod specification YAML, specify a `nodeSelector` - Windows or Linux, as shown in the examples below. 
+*Node Selector* is a simple field in the pod specification YAML that constrains pods to only be scheduled onto healthy nodes matching the operating system. In your pod specification YAML, specify a `nodeSelector` - Windows or Linux, as shown in the examples below. 
 
 ```yaml
 kubernetes.io/os = Windows
@@ -30,7 +30,7 @@ kubernetes.io/os = Linux
 For more information on nodeSelectors, visit [node selectors](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/). 
 
 ## Taints and tolerations 
-*Taints* and *tolerations* work together to ensure that pods are not scheduled on nodes unintentionally. A node can be "tainted" to not accept pods that do not explicitly tolerate its taint through a "toleration" in the pod spec.
+*Taints* and *tolerations* work together to ensure that pods are not scheduled on nodes unintentionally. A node can be "tainted" to not accept pods that do not explicitly tolerate its taint through a "toleration" in the pod specification YAML.
 
 Windows OS nodes in Azure Kubernetes Service on Azure Stack HCI can be tainted with the following key-value pair. Users should not use a different one.
 
@@ -57,7 +57,7 @@ kubectl taint node my-aks-hci-cluster-md-md-1-5h4bl node.kubernetes.io/os=Window
 kubectl taint node my-aks-hci-cluster-md-md-1-5xlwz node.kubernetes.io/os=Windows:NoSchedule
 ```
 
-You specify a toleration for a pod in the PodSpec. The following toleration "matches" the taint created by the kubectl taint line above, and thus a pod with the toleration would be able to schedule onto my-aks-hci-cluster-md-md-1-5h4bl or my-aks-hci-cluster-md-md-1-5xlwz:
+You specify a toleration for a pod in the pod specification YAML. The following toleration "matches" the taint created by the kubectl taint line above, and thus a pod with the toleration would be able to schedule onto my-aks-hci-cluster-md-md-1-5h4bl or my-aks-hci-cluster-md-md-1-5xlwz:
 
 ```yaml
 tolerations:
