@@ -4,10 +4,10 @@ description: Learn how to upgrade a Kubernetes cluster on Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 08/24/2020
+ms.date: 09/02/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 4/23/2020
+ms.lastreviewed: 09/02/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -51,11 +51,10 @@ The following instructions use the minimum steps to perform the upgrade. If woul
 1. You need to first determine the versions you can target for the upgrade. This version depends on the version you currently have and then use that version value to perform the upgrade. The versions of Kubernetes supported in the latest update are 1.14.7 and 1.15.10. Follow this table for the upgrades available:
 
 | Current version | Upgrade available |
-| --- | --- |
-|1.14.7 | 1.15.10 |
-|1.14.8 | 1.15.10 |
-|1.15.4 | 1.15.10 |
-|1.15.5 | 1.15.10 |
+| ------------------------- | ----------------------- |
+| 1.15.10 | 1.15.12 |
+| 1.15.12, 1.16.8, 1.16.9 | 1.16.14 |
+| 1.16.8, 1.16.9, 1.16.14 | 1.17.11 |
 
 For a complete mapping of AKS engine, AKS Base Image and Kubernetes versions see [Supported AKS Engine Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions).
 

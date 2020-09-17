@@ -4,7 +4,7 @@ description: This topic provides guidance on security considerations for the Azu
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 09/10/2020
 ---
 
 # Azure Stack HCI security considerations
@@ -48,18 +48,8 @@ This section discusses how to protect services and virtual machines (VMs) runnin
 This section discusses how to use Windows Admin Center to protect data and workloads on the operating system:
 
 - **BitLocker for Storage Spaces** protects data at rest. You can use BitLocker to encrypt the contents of Storage Spaces data volumes on the operating system. Using BitLocker to protect data can help organizations stay compliant with government, regional, and industry-specific standards such as FIPS 140-2, and HIPAA.
-
-    To access BitLocker in Windows Admin Center:
-
-    1. Connect to a Storage Spaces Direct cluster, and then on the **Tools** pane, select **Volumes**.
-    1. On the **Volumes** page, select **Inventory**, and then under **Optional features**, switch the **Encryption (BitLocker)** toggle on.
-    
-        :::image type="content" source="./media/security/bitlocker-toggle-switch.png" alt-text="The toggle switch to enable BitLocker":::
-    
-    1. On the **Encryption (BitLocker)** pop-up, select **Start**, and then on the **Turn on Encryption** page, provide your credentials to complete the workflow.
-
-   >[!NOTE]
-   > If the **Install BitLocker feature first** pop-up displays, follow its instructions to install the feature on each server in the cluster, and then restart your servers.
+ 
+    To learn more about using BitLocker in Windows Admin Center, see [Enable volume encryption, deduplication, and compression](../manage/volume-encryption-deduplication.md)
 
 - **SMB** encryption for Windows networking protects data in transit. *Server Message Block (SMB)* is a network file sharing protocol that allows applications on a computer to read and write to files and to request services from server programs on a computer network.
 

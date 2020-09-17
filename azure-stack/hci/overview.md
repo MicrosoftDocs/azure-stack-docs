@@ -4,14 +4,16 @@ description: An overview of Azure Stack HCI
 ms.topic: overview
 author: khdownie
 ms.author: v-kedow
-ms.date: 07/29/2020
+ms.service: azure-stack
+ms.subservice: azure-stack-hci
+ms.date: 09/09/2020
 ---
 
 # Azure Stack HCI solution overview
 
 Azure Stack HCI is a hyperconverged cluster solution that runs virtualized Windows and Linux workloads in a hybrid on-premises environment. Azure hybrid services enhance the cluster with capabilities such as cloud-based monitoring, Site Recovery, and VM backups, as well as a central view of all of your Azure Stack HCI deployments in the Azure portal. You can manage the cluster with your existing tools including Windows Admin Center, System Center, and PowerShell.
 
-Azure Stack HCI, version 20H2 is a new operating system now in Public Preview. It's intended for on-premises clusters running virtualized workloads, with hybrid-cloud connections built-in. As such, Azure Stack HCI is delivered as an Azure service and billed on an Azure subscription.
+Azure Stack HCI, version 20H2 is a new operating system now in Public Preview and [available for download](https://azure.microsoft.com/en-us/products/azure-stack/hci/hci-download/). It's intended for on-premises clusters running virtualized workloads, with hybrid-cloud connections built-in. As such, Azure Stack HCI is delivered as an Azure service and billed on an Azure subscription.
 
 Take a few minutes to watch the video on the high-level features of Azure Stack HCI:
 
@@ -298,4 +300,5 @@ Here's a video from a Hybrid Cloud Virtual Event:
 
 ## Next steps
 
+- [Download Azure Stack HCI](https://azure.microsoft.com/en-us/products/azure-stack/hci/hci-download/)
 - [Use Azure Stack HCI with Windows Admin Center](get-started.md)

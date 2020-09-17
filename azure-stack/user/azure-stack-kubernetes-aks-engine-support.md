@@ -4,10 +4,10 @@ description: This topic contains the support policies for AKS engine on Azure St
 author: mattbriggs
 
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 09/10/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 08/10/2020
+ms.lastreviewed: 09/0102020
 
 # Intent: As an Azure Stack Hub user, I want to learn about the limitations of the AKS engine on Azure Stack Hub.
 # Keyword: AKS engine support policies kubernetes cluster
@@ -26,6 +26,10 @@ Infrastructure as a service (IaaS) cloud components, such as compute or networki
 When a cluster is created, the customer defines the Kubernetes masters and worker nodes that AKS engine creates. Customer workloads are executed on these nodes. Customers own and can view or modify the master and worker nodes. Carelessly modified nodes can cause losses of data and workloads and can render the cluster non-functional. Also, AKS engine operations such as Upgrade or Scale will overwrite any out-of-bound changes. For example, if the cluster has static pods, these will not be preserved after an AKS engine upgrade operation.
 
 Because customer cluster nodes execute private code and store sensitive data, Microsoft Support can access them in only a limited way. Microsoft Support can't sign in to, execute commands in, or view logs for these nodes without express customer permission or assistance.
+
+## Version support
+
+The AKS engine version support follows the same pattern established by the rest of the Azure Stack Hub support policy, that is support of a version of AKS engine on Azure Stack Hub is based on the n-2 formula. For example, if the latest version of AKS engine is v0.55.0, the set of supported versions are: 0.48.0, 0.51.0, 0.55.0. Also important it to follow the Azure Stack Hub update version and corresponding mapping to AKS engine supported version, this is maintained in the [AKS engine release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 
 ## AKS engine supported areas
 
