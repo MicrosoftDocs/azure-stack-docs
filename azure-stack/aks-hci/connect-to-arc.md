@@ -52,7 +52,7 @@ Azure Arc agents require the following protocols/ports/outbound URLs to function
 
 Log in to Azure and after logging in, set an Azure subscription on which you're an owner or contributor as your default subscription.
 
-```PowerShell
+```console
 az login
 az account set --subscription "00000000-aaaa-bbbb-cccc-000000000000"
 ```
@@ -62,14 +62,14 @@ az account set --subscription "00000000-aaaa-bbbb-cccc-000000000000"
 You can skip this step if you've already registered the two providers for Azure Arc enabled Kubernetes service on your subscription. 
 Registration is an asynchronous process and needs to be once per subscription. Registration may take approximately 10 minutes. 
 
-```PowerShell
+```console
 az provider register --namespace Microsoft.Kubernetes
 az provider register --namespace Microsoft.KubernetesConfiguration
 ```
 
 You can check if you're registered with the following commands:
 
-```PowerShell
+```console
 az provider show -n Microsoft.Kubernetes -o table
 az provider show -n Microsoft.KubernetesConfiguration -o table
 ```
@@ -78,7 +78,7 @@ az provider show -n Microsoft.KubernetesConfiguration -o table
 
 You need a resource group to hold the connected cluster resource. You can use an existing resource group in East US or West Europe locations. If you do not have an existing resource group in the East US or West Europe location, use the following command to create a new resource group:
 
-```PowerShell
+```console
 az group create --name AzureArcTest -l EastUS -o table
 ```
 
@@ -89,13 +89,13 @@ You can also reuse this service principal to on-board multiple clusters to Azure
 
 You can skip this step if you've already created a service principal and know the service principal's appID, password, and tenant values.
 
-```PowerShell
+```console
 az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s"
 ```
 
 **Output:**
 
-```PowerShell
+```console
 {
   "appId": "00000000-0000-0000-0000-000000000000",
   "displayName": "azure-arc-for-k8s",
@@ -111,11 +111,8 @@ After creating the new service principal, assign the `contributor` role to the n
 
 You can skip this step if you're re-using a service principal with contributor permissions, and know the service principal's appID, password, and tenant values.
 
-```PowerShell
-az role assignment create 
-    --role Contributor 
-    --assignee 00000000-0000-0000-0000-000000000000  #use the appId from the service principal
-    --resource-group Azure Arc Test #Azure resource group that will store the cluster resource
+```console
+az role assignment create --role Contributor --assignee "00000000-0000-0000-0000-000000000000" #appID from service principal -g AzureArcTest #Azure resource group that will store the cluster resource
 ```
 
 ## Step 6: Connect to Azure Arc using service principal and the Aks-Hci PowerShell module
