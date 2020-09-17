@@ -106,13 +106,12 @@ az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s"
 ```
 
 ## Step 5: Assign permissions to the service principal
-
-After creating the new service principal, assign the `contributor` role to the newly created principal. 
-
 You can skip this step if you're re-using a service principal with contributor permissions, and know the service principal's appID, password, and tenant values.
 
+Assign the `contributor` role to the newly created service principal. Parameter `--assignee` takes the `appId` value from the service principal output, as shown above.
+
 ```console
-az role assignment create --role Contributor --assignee "00000000-0000-0000-0000-000000000000" #appID from service principal -g AzureArcTest #Azure resource group that will store the cluster resource
+az role assignment create --role Contributor --assignee "00000000-0000-0000-0000-000000000000" -g AzureArcTest #Azure resource group that will store the cluster resource
 ```
 
 ## Step 6: Connect to Azure Arc using service principal and the Aks-Hci PowerShell module
