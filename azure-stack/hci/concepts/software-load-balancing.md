@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/09/2020
+ms.date: 09/17/2020
 ---
 # What Is Software Load Balancing \(SLB\) for SDN?
 
@@ -16,7 +16,7 @@ Cloud Service Providers (CSPs) and enterprises that are deploying [Software Defi
 
 Software Load Balancing includes the following capabilities:
 
-- Layer 4 (L4) load balancing services for 'North-South' and 'East-West' TCP/UDP traffic.
+- Layer 4 (L4) load balancing services for north/south and east/west TCP/UDP traffic.
 
 - Public and Internal network traffic load balancing.
 
@@ -33,7 +33,7 @@ For more information, see [Software Load Balancing Features](#bkmk_features) in 
 > [!NOTE]
 > Multitenancy for VLANs is not supported by Network Controller; however, you can use VLANs with SLB for service provider managed workloads, such as the datacenter infrastructure and high density Web servers.
 
-Using Software Load Balancing, you can scale out your load balancing capabilities using SLB VMs on the same Hyper-V compute servers that you use for your other VM workloads. Because of this, Software Load Balancing supports the rapid creation and deletion of load balancing endpoints that is required for CSP operations. In addition, Software Load Balancing supports tens of gigabytes per cluster, provides a simple provisioning model, and is easy to scale out and in.
+Using Software Load Balancing, you can scale out your load balancing capabilities using SLB virtual machines (VMs) on the same Hyper-V compute servers that you use for your other VM workloads. Because of this, Software Load Balancing supports the rapid creation and deletion of load balancing endpoints that is required for CSP operations. In addition, Software Load Balancing supports tens of gigabytes per cluster, provides a simple provisioning model, and is easy to scale out and in.
 
 ## How Software Load Balancing works
 
@@ -43,9 +43,9 @@ VIPs are single IP addresses that provide public access to a pool of load balanc
 
 DIPs are the IP addresses of the member VMs of a load balanced pool behind the VIP. DIPs are assigned within the cloud infrastructure to the tenant resources.
 
-VIPs are located in the SLB Multiplexer (MUX).  The MUX consists of one or more virtual machines (VMs).  Network Controller provides each MUX with each VIP, and each MUX in turn uses Border Gateway Protocol (BGP) to advertise each VIP to routers on the physical network as a /32 route.  BGP allows the physical network routers to:
+VIPs are located in the SLB Multiplexer (MUX).  The MUX consists of one or more VMs.  Network Controller provides each MUX with each VIP, and each MUX in turn uses Border Gateway Protocol (BGP) to advertise each VIP to routers on the physical network as a /32 route.  BGP allows the physical network routers to:
 
-- Learn that a VIP is available on each MUX, even if the MUXes are on different subnets in a layer 3 network.
+- Learn that a VIP is available on each MUX, even if the MUXes are on different subnets in a Layer 3 network.
 
 - Spread the load for each VIP across all available MUXes using Equal Cost Multi-Path (ECMP) routing.
 
@@ -53,11 +53,11 @@ VIPs are located in the SLB Multiplexer (MUX).  The MUX consists of one or more 
 
 - Spread the load from the failed or removed MUX across the healthy MUXes.
 
-When public traffic arrives from the Internet, the SLB MUX examines the traffic, which contains the VIP as a destination, and maps and rewrites the traffic so that it will arrive at an individual DIP. For inbound network traffic, this transaction is performed in a two-step process that is split between the MUX virtual machines (VMs) and the Hyper-V host where the destination DIP is located:
+When public traffic arrives from the Internet, the SLB MUX examines the traffic, which contains the VIP as a destination, and maps and rewrites the traffic so that it will arrive at an individual DIP. For inbound network traffic, this transaction is performed in a two-step process that is split between the MUX VMs and the Hyper-V host where the destination DIP is located:
 
 - Load balance - the MUX uses the VIP to select a DIP, encapsulates the packet, and forwards the traffic to the Hyper-V host where the DIP is located.
 
-- Network Address Translation (NAT) - the Hyper-V host removes encapsulation from the packet, translates the VIP to a DIP, remaps the ports, and forwards the packet  to the DIP VM.
+- Network Address Translation (NAT) - the Hyper-V host removes encapsulation from the packet, translates the VIP to a DIP, remaps the ports, and forwards the packet to the DIP VM.
 
 The MUX knows how to map VIPs to the correct DIPs because of load balancing policies that you define by using Network Controller. These rules include Protocol, Front-end Port, Back-end port, and distribution algorithm (5, 3, or 2 tuples).
 
@@ -77,7 +77,7 @@ In the following illustration, a client computer performs a DNS query for the IP
 
 - The MUX selects the DIP 10.10.10.5 and encapsulates the packets using VXLAN so it can send it to the host containing the DIP using the hosts physical network address.
 
-- The host receives the encapsulated packet and inspects it.  It removes the encapsulation and rewrites the packet so the destination is now the DIP 10.10.10.5 instead of the VIP and sends the traffic to DIP VM.
+- The host receives the encapsulated packet and inspects it. It removes the encapsulation and rewrites the packet so the destination is now the DIP 10.10.10.5 instead of the VIP and sends the traffic to DIP VM.
 
 - The request has now reached the Contoso SharePoint site in Server Farm 2. The server generates a response and sends it to the client, using its own IP address as the source.
 
@@ -85,7 +85,7 @@ In the following illustration, a client computer performs a DNS query for the IP
 
 - The host forwards the packet directly to the default gateway for the physical network which uses its standard routing table to forward the packet on to the client which eventually receives the response.
 
-![Software Load Balancing process](media/software-load-balancing-sdn/slb_process.jpg)
+:::image type="content" source="media/software-load-balancing/slb_process.jpg" alt-text="Software Load Balancing process" border="false":::
 
 ### Load balancing internal datacenter traffic
 
@@ -95,7 +95,7 @@ With internal traffic load balancing, the first request is sent to and processed
 
 ### Health probes
 
-Software Load Balancing includes health probes to validate the health of the network infrastructure, including the following.
+Software Load Balancing includes health probes to validate the health of the network infrastructure, including the following:
 
 - TCP probe to port
 
@@ -106,11 +106,11 @@ Unlike a traditional load balancer appliance where the probe originates on the a
 ## <a name="bkmk_infrastructure"></a>Software Load Balancing Infrastructure
 To deploy Software Load Balancing, you must first deploy Network Controller and one or more SLB MUX VMs.
 
-In addition, you must configure the Azure Stack HCI hosts with the SDN-enabled Hyper-V Virtual Switch and ensure that the SLB Host Agent is running. The routers that serve the hosts must support equal cost multipath (ECMP) routing and Border Gateway Protocol (BGP) and must be configured to accept BGP peering requests from the SLB MUXes.
+In addition, you must configure the Azure Stack HCI hosts with the SDN-enabled Hyper-V Virtual Switch and ensure that the SLB Host Agent is running. The routers that serve the hosts must support ECMP routing and Border Gateway Protocol (BGP) and must be configured to accept BGP peering requests from the SLB MUXes.
 
 Following is an overview of the SLB infrastructure.
 
-![Software Load Balancing infrastructure](media/software-load-balancing-sdn/slb_overview1.png)
+:::image type="content" source="media/software-load-balancing/slb_overview1.png" alt-text="Software Load Balancing infrastructure" border="false":::
 
 The following sections provide more information about these elements of the Software Load Balancing infrastructure.
 
@@ -134,7 +134,7 @@ When you deploy Software Load Balancing, you must use Windows Admin Center, Syst
 The SLB Host Agent listens for SLB policy updates from Network Controller. In addition, the host agent programs rules for SLB into the SDN-enabled Hyper-V Virtual Switches that are configured on the local computer.
 
 ### SDN Enabled Hyper-V Virtual Switch
-For a virtual switch to be compatible with SLB, you must use Hyper-V Virtual Switch Manager or Windows PowerShell commands to create the switch, and then you must enable Virtual Filtering Platform (VFP) for the virtual switch.
+For a virtual switch to be compatible with SLB, Virtual Filtering Platform (VFP) extension must be enabled on the virtual switch. This is done automatically by the SDN deployment Powershell scripts, Windows Admin Center deployment wizard, and the SCVMM deployment.
 
 For information on enabling VFP on virtual switches, see the Windows PowerShell commands [Get-VMSystemSwitchExtension](/powershell/module/hyper-v/get-vmsystemswitchextension?view=win10-ps) and [Enable-VMSwitchExtension](/powershell/module/hyper-v/enable-vmswitchextension?f=255&MSPPError=-2147217396&view=win10-ps).
 
@@ -145,8 +145,6 @@ The SDN enabled Hyper-V Virtual Switch performs the following actions for SLB.
 - Receives inbound network traffic from the MUX.
 
 - Bypasses the MUX for outbound network traffic, sending it to the router using DSR.
-
-- Runs on Nano Server instances of Hyper-V.
 
 ### BGP Enabled Router
 The BGP router performs the following actions for Software Load Balancing:
@@ -164,7 +162,7 @@ Following are some of the features and capabilities of Software Load Balancing.
 
 ### Core functionality
 
-- SLB provides Layer 4 load balancing services for 'North-South'  and 'East-West' TCP/UDP traffic
+- SLB provides Layer 4 load balancing services for north/south and east/west TCP/UDP traffic
 
 - You can use SLB on a Hyper-V Network Virtualization-based network
 
@@ -176,7 +174,7 @@ Following are some of the features and capabilities of Software Load Balancing.
 
 - SLB functions when you are also using Switch Embedded Teaming (SET) or Single Root Input/Output Virtualization (SR-IOV)
 
-- SLB includes Internet Protocol version 4 (IPv4) support
+- SLB includes Internet Protocol version 6 (IPv6) and version 4 (IPv4) support
 
 - For site-to-site gateway scenarios, SLB provides NAT functionality to enable all site-to-site connections to utilize a single public IP
 
