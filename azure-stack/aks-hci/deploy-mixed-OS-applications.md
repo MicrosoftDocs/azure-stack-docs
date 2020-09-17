@@ -71,5 +71,6 @@ For more information on taints and tolerations, visit [Taints and Tolerations](h
 In this how-to guide, you learned how to add node selectors or taints and tolerations to your Kubernetes clusters using kubectl.
 
 ## Next Steps
+In this how-to guide, you learned how to add node selectors or taints and tolerations to your Kubernetes clusters using kubectl. Next, you can:
 - Deploy a Linux application with [these instructions](./deploy-linux-application.md).
 - Deploy a Windows application with [these instructions](./deploy-windows-application.md).
