@@ -4,7 +4,7 @@ description: Learn about the 1910 security updates for Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/11/2020
+ms.date: 09/17/2020
 ms.author: sethm
 ms.reviewer: fiseraci
 ms.lastreviewed: 08/11/2020
@@ -690,15 +690,6 @@ For more information about these vulnerabilities, click on the links below, or s
 - [CVE-2019-1365](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1365)
 - [CVE-2019-1368](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1368)
 - [CVE-2019-1060](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1060)
-
-::: moniker-end
-
-::: moniker range="azs-1910"
-## 1910 update
-
-This update of Azure Stack Hub does not include security updates to the underlying operating system that hosts Azure Stack Hub. This update contains a security update for a component of the Azure Stack Hub infrastructure:
-
-- [CVE-2019-1234](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1234)
 
 ::: moniker-end
 
