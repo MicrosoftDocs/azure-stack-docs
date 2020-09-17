@@ -27,6 +27,8 @@
       href: deploy-linux-application.md
 - name: Concepts
   items: 
+  - name: Azure Kubernetes on Azure Stack HCI Concepts
+    href: kubernetes-concepts.md
   - name: System requirements
     href: system-requirements.md
 - name: How-to guides
