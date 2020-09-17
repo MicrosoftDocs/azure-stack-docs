@@ -4,7 +4,7 @@ description: How to deploy a graphic processing unit (GPU) enabled IoT Module on
 author: mattbriggs
 ms.author: mabrigg
 ms.service: azure-stack
-ms.topic: How-to
+ms.topic: how-to
 ms.date: 09/25/2020
 ms.reviewer: gara
 ms.lastreviewed: 09/25/2020
@@ -39,7 +39,7 @@ Azure Stack Hub and Azure
       - If you don't have a global Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
       - An Azure Container Registry (ACR). Make a note of the ACR sign-in server, username, and password.
 -   A free or standard-tier [IoT
-    hub](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal)
+    hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)
     in Azure.
 
 A development machine:
@@ -64,11 +64,11 @@ Use a separate device. Using a separate device will provide a separation between
 Create an IoT Edge device in Azure with a Linux virtual machine:
 
 1.  [Create an N-series Linux Server
-    VM](https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-quick-linux-portal?view=azs-1910)
+    VM](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-linux-portal?view=azs-1910)
     on Azure Stack
 
 2.  [Create and register an IoT Edge
-    Device](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-register-device)
+    Device](https://docs.microsoft.com/azure/iot-edge/how-to-register-device)
 
 3.  Install the latest IoT Edge runtime on a Linux VM in Azure Stack Hub. For instructions, see [Install the Azure IoT Edge runtime on Debian-based Linux systems](/azure/iot-edge/how-to-install-iot-edge-linux#install-the-latest-runtime-version)
 
@@ -168,7 +168,7 @@ Summary.
 
 2. Download and install driver from the following URL: [https://www.nvidia.com/Download/index.aspx?lang=en-us](https://www.nvidia.com/Download/index.aspx?lang=en-us)
 
-    ![](media/gpu-deploy-sample-module/98ef3b4f7e19d3aace32f147f7591172.png)
+    ![Nvadia install](media/gpu-deploy-sample-module/98ef3b4f7e19d3aace32f147f7591172.png)
 
     ```bash  
     sudo sh NVIDIA-Linux-x86_64-440.64.00.run
@@ -182,7 +182,7 @@ Summary.
 \$ sudo docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
 ```
 
-![](media/gpu-deploy-sample-module/c8c86759e86bae0c2dabe61630b07cf5.png)
+![a valid install](media/gpu-deploy-sample-module/c8c86759e86bae0c2dabe61630b07cf5.png)
 
 ## Enable monitoring
 
@@ -208,7 +208,7 @@ You can also deploy modules using the Azure IoT Hub Toolkit extension, which use
 
 6.  Select **Refresh**. You should see the GPU module running.
 
-# Next Steps
+## Next Steps
 
   - Learn more about Azure Stack, Data Box Edge and the Intelligent Edge, [The future of computing: intelligent cloud and intelligent edge](https://azure.microsoft.com/overview/future-of-cloud)
 
