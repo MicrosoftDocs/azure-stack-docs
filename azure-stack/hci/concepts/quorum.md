@@ -1,5 +1,5 @@
 ---
-title: Understanding cluster and pool quorum on Azure Stack HCI
+title: Understand cluster and pool quorum - Azure Stack HCI
 description: Understanding cluster and pool quorum in Storage Spaces Direct on Azure Stack HCI, with specific examples to go over the intricacies.
 author: khdownie
 ms.author: v-kedow

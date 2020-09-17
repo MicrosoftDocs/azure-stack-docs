@@ -114,7 +114,7 @@ To delete the cluster:
 1. Select **All services** from the left navigation pane again. Enter "Event Hubs Clusters" in the search bar, and select the **Event Hubs Clusters** item from results list.
 2. On the **Event Hub Clusters** page, find and select the cluster you created previously.
 
-   [![Event Hubs Clusters - delete cluster](media/event-hubs-quickstart-cluster-portal/4-delete-cluster-clusters.png)](media/event-hubs-quickstart-cluster-portal/4-delete-cluster-clusters.png#lightbox)
+   [![Event Hubs Clusters - find cluster to be deleted](media/event-hubs-quickstart-cluster-portal/4-delete-cluster-clusters.png)](media/event-hubs-quickstart-cluster-portal/4-delete-cluster-clusters.png#lightbox)
 
 3. On the **Overview** page of **Event Hubs Cluster**:
    - Select **Delete** from the top menu.  

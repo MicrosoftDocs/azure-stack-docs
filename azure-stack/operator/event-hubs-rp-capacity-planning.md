@@ -1,5 +1,5 @@
 ---
-title: How to do capacity planning for Event Hubs on Azure Stack Hub
+title: Plan capacity for Event Hubs on Azure Stack Hub
 description: Learn how to plan capacity for the Event Hubs resource provider on Azure Stack Hub. 
 author: BryanLa
 ms.author: bryanla
