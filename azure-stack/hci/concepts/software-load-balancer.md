@@ -1,6 +1,6 @@
 ---
-title: Software Load Balancing (SLB) for SDN in Azure Stack HCI
-description: Use this topic to learn about Software Load Balancing for Software Defined Networking in Azure Stack HCI.
+title: Software Load Balancer (SLB) for SDN in Azure Stack HCI
+description: Use this topic to learn about Software Load Balancer for Software Defined Networking in Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
 ms.topic: overview
@@ -8,13 +8,13 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 09/17/2020
 ---
-# What Is Software Load Balancing \(SLB\) for SDN?
+# What is Software Load Balancer \(SLB\) for SDN?
 
 > Applies to Azure Stack HCI, version 20H2; Windows Server 2019
 
-Cloud Service Providers (CSPs) and enterprises that are deploying [Software Defined Networking (SDN) in Azure Stack HCI](software-defined-networking.md) can use Software Load Balancing (SLB) to evenly distribute tenant and tenant customer network traffic among virtual network resources. SLB enables multiple servers to host the same workload, providing high availability and scalability.
+Cloud Service Providers (CSPs) and enterprises that are deploying [Software Defined Networking (SDN) in Azure Stack HCI](software-defined-networking.md) can use Software Load Balancer (SLB) to evenly distribute tenant and tenant customer network traffic among virtual network resources. SLB enables multiple servers to host the same workload, providing high availability and scalability.
 
-Software Load Balancing includes the following capabilities:
+Software Load Balancer includes the following capabilities:
 
 - Layer 4 (L4) load balancing services for north/south and east/west TCP/UDP traffic.
 
@@ -28,16 +28,16 @@ Software Load Balancing includes the following capabilities:
 
 - Provides a multitenant unified edge by seamlessly integrating with Microsoft SDN technologies such as the RAS Gateway, Datacenter Firewall, and Route Reflector.
 
-For more information, see [Software Load Balancing Features](#bkmk_features) in this topic.
+For more information, see [Software Load Balancer Features](#bkmk_features) in this topic.
 
 > [!NOTE]
 > Multitenancy for VLANs is not supported by Network Controller; however, you can use VLANs with SLB for service provider managed workloads, such as the datacenter infrastructure and high density Web servers.
 
-Using Software Load Balancing, you can scale out your load balancing capabilities using SLB virtual machines (VMs) on the same Hyper-V compute servers that you use for your other VM workloads. Because of this, Software Load Balancing supports the rapid creation and deletion of load balancing endpoints that is required for CSP operations. In addition, Software Load Balancing supports tens of gigabytes per cluster, provides a simple provisioning model, and is easy to scale out and in.
+Using Software Load Balancer, you can scale out your load balancing capabilities using SLB virtual machines (VMs) on the same Hyper-V compute servers that you use for your other VM workloads. Because of this, Software Load Balancing supports the rapid creation and deletion of load balancing endpoints that is required for CSP operations. In addition, Software Load Balancing supports tens of gigabytes per cluster, provides a simple provisioning model, and is easy to scale out and in.
 
-## How Software Load Balancing works
+## How Software Load Balancer works
 
-Software Load Balancing works by mapping virtual IP addresses (VIPs) to dynamic IP addresses (DIPs) that are part of a cloud service set of resources in the datacenter.
+Software Load Balancer works by mapping virtual IP addresses (VIPs) to dynamic IP addresses (DIPs) that are part of a cloud service set of resources in the datacenter.
 
 VIPs are single IP addresses that provide public access to a pool of load balanced VMs. For example, VIPs are IP addresses that are exposed on the Internet so that tenants and tenant customers can connect to tenant resources in the cloud datacenter.
 
@@ -95,7 +95,7 @@ With internal traffic load balancing, the first request is sent to and processed
 
 ### Health probes
 
-Software Load Balancing includes health probes to validate the health of the network infrastructure, including the following:
+Software Load Balancer includes health probes to validate the health of the network infrastructure, including the following:
 
 - TCP probe to port
 
@@ -103,25 +103,25 @@ Software Load Balancing includes health probes to validate the health of the net
 
 Unlike a traditional load balancer appliance where the probe originates on the appliance and travels across the wire to the DIP, the SLB probe originates on the host where the DIP is located and goes directly from the SLB host agent to the DIP, further distributing the work across the hosts.
 
-## <a name="bkmk_infrastructure"></a>Software Load Balancing Infrastructure
-To deploy Software Load Balancing, you must first deploy Network Controller and one or more SLB MUX VMs.
+## <a name="bkmk_infrastructure"></a>Software Load Balancer Infrastructure
+To deploy Software Load Balancer, you must first deploy Network Controller and one or more SLB MUX VMs.
 
 In addition, you must configure the Azure Stack HCI hosts with the SDN-enabled Hyper-V Virtual Switch and ensure that the SLB Host Agent is running. The routers that serve the hosts must support ECMP routing and Border Gateway Protocol (BGP) and must be configured to accept BGP peering requests from the SLB MUXes.
 
 Following is an overview of the SLB infrastructure.
 
-:::image type="content" source="media/software-load-balancing/slb_overview1.png" alt-text="Software Load Balancing infrastructure" border="false":::
+:::image type="content" source="media/software-load-balancing/slb_overview1.png" alt-text="Software Load Balancer infrastructure" border="false":::
 
-The following sections provide more information about these elements of the Software Load Balancing infrastructure.
+The following sections provide more information about these elements of the Software Load Balancer infrastructure.
 
 ### Network Controller
-Network Controller hosts the SLB Manager and performs the following actions for Software Load Balancing:
+Network Controller hosts the SLB Manager and performs the following actions for Software Load Balancer:
 
 - Processes SLB commands that come in through the Northbound API from Windows Admin Center, System Center, Windows PowerShell, or another network management application.
 
 - Calculates policy for distribution to Azure Stack HCI hosts and SLB MUXes.
 
-- Provides the health status of the Software Load Balancing infrastructure.
+- Provides the health status of the Software Load Balancer infrastructure.
 
 You can use Windows Admin Center or Windows PowerShell to install and configure Network Controller and other SLB infrastructure.
 
@@ -129,7 +129,7 @@ You can use Windows Admin Center or Windows PowerShell to install and configure 
 The SLB MUX processes inbound network traffic and maps VIPs to DIPs, then forwards the traffic to the correct DIP. Each MUX also uses BGP to publish VIP routes to edge routers. BGP Keep Alive notifies MUXes when a MUX fails, which allows active MUXes to redistribute the load in case of a MUX failure - essentially providing load balancing for the load balancers.
 
 ### SLB Host Agent
-When you deploy Software Load Balancing, you must use Windows Admin Center, System Center, Windows PowerShell, or another management application to deploy the SLB Host Agent on every host server.
+When you deploy Software Load Balancer, you must use Windows Admin Center, System Center, Windows PowerShell, or another management application to deploy the SLB Host Agent on every host server.
 
 The SLB Host Agent listens for SLB policy updates from Network Controller. In addition, the host agent programs rules for SLB into the SDN-enabled Hyper-V Virtual Switches that are configured on the local computer.
 
@@ -147,7 +147,7 @@ The SDN enabled Hyper-V Virtual Switch performs the following actions for SLB.
 - Bypasses the MUX for outbound network traffic, sending it to the router using DSR.
 
 ### BGP Enabled Router
-The BGP router performs the following actions for Software Load Balancing:
+The BGP router performs the following actions for Software Load Balancer:
 
 - Routes inbound traffic to the MUX using ECMP.
 
@@ -158,7 +158,7 @@ The BGP router performs the following actions for Software Load Balancing:
 - Removes SLB MUXes from the SLB rotation if Keep Alive fails.
 
 ## <a name="bkmk_features"></a>Software Load Balancing Features
-Following are some of the features and capabilities of Software Load Balancing.
+Following are some of the features and capabilities of Software Load Balancer.
 
 ### Core functionality
 
