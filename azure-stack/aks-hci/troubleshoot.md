@@ -46,7 +46,7 @@ az login –tenant <tenant>
 ```
 * If you have just created a new Azure account and have not logged into the account on your gateway machine, you may experience issues registering your WAC gateway with Azure. To mitigate this issue, sign into your Azure account in another browser tab or window, then register the WAC gateway to Azure.
 
-## Troubleshooting Windows Worker Nodes 
+## Troubleshooting Windows worker nodes 
 To log in to a Windows worker node, first get the IP address of your node by running `kubectl get` and note the `EXTERNAL-IP` value:
 
 ```PowerShell
