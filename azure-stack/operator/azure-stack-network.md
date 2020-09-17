@@ -32,7 +32,7 @@ The Azure Stack solution requires a resilient and highly available physical infr
 Azure Stack Hub is built using Windows Server 2019 Failover Cluster and Spaces Direct technologies. A portion of the Azure Stack Hub physical network configuration uses traffic separation and bandwidth guarantees to ensure that the Spaces Direct storage communications can meet the performance and scale required of the solution. The network configuration uses traffic classes to separate the Spaces Direct, RDMA-based communications from that of the network utilization by the Azure Stack Hub infrastructure and/or tenant.
 
 > [!NOTE]
-> The next update of Azure Stack Hub includes an additional traffic class. In preparation for this change, Microsoft recommends that you contact your OEM to arrange making the required changes at the ToR network switches. This ToR change can be performed either prior to, or after updating to the next release.
+> The next update of Azure Stack Hub includes an additional traffic class. In preparation for this change, Microsoft recommends that you contact your OEM to arrange making the required changes to the Top-of-Rack (ToR) network switches. This ToR change can be performed either prior to, or after updating to the next release.
 
 ## Logical Networks
 

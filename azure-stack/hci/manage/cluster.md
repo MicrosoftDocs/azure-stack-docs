@@ -1,6 +1,6 @@
 ---
-title: Manage Azure Stack HCI clusters using Windows Admin Center
-description: Learn how to manage your clusters on Azure Stack HCI using Windows Admin Center.
+title: Manage Azure Stack HCI clusters - Windows Admin Center
+description: Learn to manage your clusters on Azure Stack HCI using Windows Admin Center.
 ms.topic: how-to
 author: v-dasis
 ms.author: v-dasis
@@ -37,8 +37,8 @@ To view this information, select the cluster name under **All connections**, the
 
 There are two settings you can change related to Storage Spaces Direct that can be applied to your cluster.
 
-1. In Windows Admin Center, click **Cluster Manager** from the top drop-down arrow.
-1. Under **Tools**, click **Settings** at the bottom.
+1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
+1. Under **Tools**, select **Settings** at the bottom.
 1. To configure the storage cache, select **Storage Spaces Direct**, then configure the following:
 
    - for **Persistent cache**, select either **Enabled** or **Disabled**
@@ -57,8 +57,8 @@ There are two settings you can change related to Storage Spaces Direct that can 
 
 There are five general settings that can be applied to your cluster. Here is where you can set and manage access points, node shutdown behavior, traffic encryption, VM load balancing, and cluster witness.
 
-1. In Windows Admin Center, click **Cluster Manager** from the top drop-down arrow.
-1. Under **Tools**, click **Settings**.
+1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
+1. Under **Tools**, select **Settings**.
 1. To change the cluster name, select **Access point** and enter the new name.
 
     :::image type="content" source="media/manage-cluster/cluster-settings-access.png" alt-text="Active/active stretched cluster scenario" lightbox="media/manage-cluster/cluster-settings-access.png":::
@@ -98,8 +98,8 @@ There are five general settings that can be applied to your cluster. Here is whe
 
 There are five Hyper-V host settings that can be applied to your cluster.
 
-1. In Windows Admin Center, click **Cluster Manager** from the top drop-down arrow.
-1. Under **Tools**, click **Settings**.
+1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
+1. Under **Tools**, select **Settings**.
 1. Select **General** and then use the following settings:
 
    - **Virtual Hard Disks Path** - specify the default folder for storing virtual hard disk files.

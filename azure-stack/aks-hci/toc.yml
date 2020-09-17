@@ -2,14 +2,41 @@
   href: index.yml
 - name: Overview
   items:
-  - name: What is Azure Kubernetes Service on Azure Stack HCI?
+  - name: Azure Kubernetes Service on Azure Stack HCI
     href: overview.md
+- name: Quickstarts
+  expanded: true
+  items:
+    - name: Set up Azure Kubernetes Service on Azure Stack HCI
+      items:
+        - name: Using Windows Admin Center
+          href: setup.md
+        - name: Using PowerShell
+          href: setup-powershell.md
+    - name: Create a Kubernetes cluster
+      items:
+        - name: Using Windows Admin Center
+          href: create-kubernetes-cluster.md
+        - name: Using PowerShell
+          href: create-kubernetes-cluster-powershell.md
+- name: Tutorials
+  items:
+    - name: Use Windows Server containers
+      href: deploy-windows-application.md
+    - name: Use Linux containers
+      href: deploy-linux-application.md
 - name: Concepts
   items:
   - name: Azure Kubernetes on Azure Stack HCI Concepts
     href: kubernetes-concepts.md
   - name: System requirements
     href: system-requirements.md
+- name: How-to guides
+  items: 
+    - name: Connect to Azure Arc for Kubernetes
+      href: connect-to-arc.md
+    - name: Troubleshoot
+      href: troubleshoot.md
 - name: Related
   items:
   - name: Azure Stack HCI
@@ -20,18 +47,4 @@
     href: /hybrid
   - name: Windows Server
     href: /windows-server/
-- name: Quickstarts
-  expanded: true
-  items:
-    - name: Set up Azure Kubernetes Service on Azure Stack HCI
-      items:
-        - name: Using Windows Admin Center
-          href: setup.md
-    - name: Create a Kubernetes cluster
-      items:
-        - name: Using Windows Admin Center
-          href: create-kubernetes-cluster.md
-- name: How-to guides
-  items: 
-    - name: Troubleshoot
-      href: troubleshoot.md
+

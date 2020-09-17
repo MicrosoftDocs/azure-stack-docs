@@ -1,6 +1,6 @@
 ---
 title: Deploy the Azure Stack HCI operating system
-description: This article discusses different ways to deploy the Azure Stack HCI operating system, and then use Windows Admin Center to connect to your servers. Reference to related guidance on creating a server cluster is included, as well as optional steps to get the latest Windows updates and firmware for your servers.
+description: Learn to deploy the Azure Stack HCI OS, and then use Windows Admin Center to connect to your servers. Learn to create a server cluster, and understand how to get the latest Windows updates and firmware for your servers.
 author: JohnCobb1
 ms.author: v-johcob 
 ms.topic: tutorial
