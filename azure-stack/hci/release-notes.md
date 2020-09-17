@@ -19,18 +19,18 @@ This article describes the contents of Azure Stack HCI Public Preview update pac
 
 This update includes improvements and fixes for the latest release of Azure Stack HCI.
 
-## Improvements and fixes
+### Improvements and fixes
 This update contains miscellaneous security improvements to internal OS functionality. No additional issues were documented for this release.
 
 For more information about the resolved security vulnerabilities, please refer to the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance).
 
-## Known issues in this update
+### Known issues in this update
 Microsoft is not currently aware of any issues with this update.
 
-## How to get this update
+### How to get this update
 The September 8, 2020 security update (KB4577470) for [Azure Stack HCI preview](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
 
-## File information
+### File information
 For a list of the files that are provided in this update (OS Build 17784.1226), download the [file information for cumulative update 4577470](https://download.microsoft.com/download/3/c/4/3c468525-5867-4cc3-8d34-dba88989adab/4577470.csv).
 
    > [!NOTE]
@@ -40,10 +40,10 @@ For a list of the files that are provided in this update (OS Build 17784.1226), 
 
 This update includes quality improvements for the latest release of Azure Stack HCI.
 
-## Improvements and fixes
+### Improvements and fixes
 This update makes quality improvements to the servicing stack, which is the component that installs updates. Servicing stack updates (SSU) makes sure that you have a robust and reliable servicing stack so that your devices can receive and install Microsoft updates.
 
-## How to get this update
+### How to get this update
 The September 8, 2020 servicing stack update (KB4577558) for [Azure Stack HCI preview](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
 
 ### Restart information 
@@ -52,10 +52,10 @@ You don't have to restart your computer after you apply this update.
 ### Removal information
 Servicing stack updates (SSUs) make changes to how updates are installed and cannot be uninstalled from the device.
 
-## File information
+### File information
 For a list of the files that are provided in this update (OS Build 17784.1220), download the [file information for cumulative update 4577558](https://download.microsoft.com/download/8/f/6/8f612a9b-cb4e-4832-9397-156760848592/4577558.csv).
 
-## References
+### References
 
 For information on SSUs, see the following articles:
 
@@ -68,18 +68,18 @@ Learn about the [terminology](https://support.microsoft.com/help/824684) that Mi
 
 This update includes improvements and fixes for the latest release of Azure Stack HCI.
 
-## Improvements and fixes
+### Improvements and fixes
 This update contains miscellaneous security improvements to internal OS functionality. No additional issues were documented for this release.
 
 For more information about the resolved security vulnerabilities, please refer to the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance).
 
-## Known issues in this update
+### Known issues in this update
 Microsoft is not currently aware of any issues with this update.
 
-## How to get this update
+### How to get this update
 The August 11, 2020 security update (KB4574585) for [Azure Stack HCI preview](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
 
-## File information
+### File information
 For a list of the files that are provided in this update (OS Build 17784.1162), download the [file information for cumulative update 4574585](https://download.microsoft.com/download/7/f/4/7f451def-76c5-4cc0-9929-0c5efeb27d2f/4574585.csv).
 
    > [!NOTE]

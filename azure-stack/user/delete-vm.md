@@ -1,5 +1,5 @@
 ---
-title: Delete a VM (virtual machine) with dependencies on Azure Stack Hub 
+title: Delete VM with dependencies on Azure Stack Hub 
 description: How to delete a VM (virtual machine) with dependencies on Azure Stack Hub
 author: mattbriggs
 

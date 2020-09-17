@@ -1,6 +1,7 @@
 ---
-title: How to connect two Azure Stack Hubs through VNET peering 
-description: Learn how to connect two Azure Stack Hubs through VNET peering.
+
+title: Connect two virtual networks in the same Azure Stack environment
+description: Learn how to connect two virtual networks within the same Azure Stack Hub environment by using Fortinet FortiGate.
 author: mattbriggs
 
 ms.topic: how-to
@@ -15,7 +16,7 @@ ms.lastreviewed: 10/03/2019
 ---
 
 
-# Connect two VNETs through peering
+# VNET peering with FortiGate
 
 This article describes how to create a connection between two virtual networks in the same environment. When you set up the connections, you learn how VPN gateways in Azure Stack Hub work. Connect two VNETs within the same Azure Stack Hub environment using Fortinet FortiGate. This procedure deploys two VNETs with a FortiGate NVA, a network virtual appliance, in each VNET each within a separate resource group. It also details the changes required to set up an IPSec VPN between the two VNETs. Repeat the steps in this article for each VNET deployment.
 
@@ -80,7 +81,7 @@ The following table summarizes the parameters that are used in these deployments
 
 2.  Select **Create a resource** and search for `FortiGate`.
 
-    !The search results list shows FortiGate NGFW - Single VM Deployment.](./media/azure-stack-network-howto-vnet-to-onprem/image6.png)
+    ![The search results list shows FortiGate NGFW - Single VM Deployment.](./media/azure-stack-network-howto-vnet-to-onprem/image6.png)
 
 3.  Select the **FortiGate NGFW** and select **Create**.
 

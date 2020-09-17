@@ -84,6 +84,8 @@
     items:
     - name: Register Windows Admin Center with Azure
       href: manage/register-windows-admin-center.md
+    - name: Use Azure portal
+      href: manage/azure-portal.md
     - name: Monitor with Azure Monitor
       href: manage/azure-monitor.md
     - name: Use Azure Site Recovery
@@ -114,6 +116,10 @@
     href: concepts/fault-tolerance.md
   - name: Cluster and storage pool quorum
     href: concepts/quorum.md
+  - name: Plan a SDN infrastructure
+    href: concepts/plan-software-defined-networking-infrastructure.md
+  - name: Network Controller
+    href: concepts/network-controller.md
   - name: Security considerations
     href: concepts/security.md
 - name: Reference

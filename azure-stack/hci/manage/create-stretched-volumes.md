@@ -17,7 +17,7 @@ We will create volumes on four servers in two sites, two servers per site as an 
 
 ## Stretched volumes and replication using Windows Admin Center
 
-OK, let's begin:
+To create a volume and set up replication:
 
 1. In Windows Admin Center, under **Tools**, select **Volumes**.
 1. In the right pane, select the **Inventory** tab, then select **Create**.
