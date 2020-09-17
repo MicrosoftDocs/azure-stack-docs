@@ -30,7 +30,7 @@ Microsoft is not currently aware of any issues with this update.
 The September 17, 2020 security update (KB4577629) for [Azure Stack HCI preview](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
 
 ### File information
-For a list of the files that are provided in this update (OS Build 17784.1258), download the [file information for cumulative update 4577629](https://download.microsoft.com/download/9/1/a/91addcbb-2b36-408c-ab88-736de42edb98/4577629.csv)
+For a list of the files that are provided in this update (OS Build 17784.1259), download the [file information for cumulative update 4577629](https://download.microsoft.com/download/9/1/a/91addcbb-2b36-408c-ab88-736de42edb98/4577629.csv)
 
    > [!NOTE]
    > Some files erroneously have "Not applicable" in the "File version" column of the CSV file. This might lead to false positives or false negatives when using some third-party scan detection tools to validate the build.
