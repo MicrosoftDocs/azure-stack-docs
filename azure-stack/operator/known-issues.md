@@ -96,6 +96,11 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ## Compute
 
+### Issues deploying VMSS with Standard_DS2_v2 size using the portal
+- Applicable: This issue applies to only the 2002 release
+- Cause: Portal bug is causing VMSS creation with Standard_DS2_v2 size to fail
+- Remediation: Please use powershell or cli to deploy this VMSS VM size
+
 ### Issues using VM extensions in Ubuntu Server 20.04
 
 - Applicable: This issue applies to **Ubuntu Server 20.04 LTS**.
