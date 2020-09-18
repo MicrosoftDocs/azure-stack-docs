@@ -88,8 +88,8 @@ Note the following considerations:
 
 - You can provide either the storage endpoint, which includes the region and FQDN; for example, `regionname.azurestack.microsoft.com`, or the environment name of the Azure Stack Hub, such as `AzureStackTenant`. If the environment name is used, it should be listed using **Get-AzEnvironment**.
 
-- You can choose to use **AzCopy** or **AzStorageBlobCopy** to copy the VHD from Azure to Azure Stack Hub:
-  - To use **AzCopy**, provide the parameters `-AzCopyPath` and `-VhdLocalFolder` (the path where the VHDs will be copied). **AzCopy** is faster, but it must download VHD files to a local folder first.
+- You can choose to use **AzCopy** or **AzStorageBlobCopy** to copy the VHD from Azure to Azure Stack Hub. **AzCopy** is faster, but it must download VHD files to a local folder first:
+  - To use **AzCopy**, provide the parameters `-AzCopyPath` and `-VhdLocalFolder` (the path where the VHDs will be copied).
   - If there is not enough space locally, you can choose to copy the VHD directly, without **AzCopy**, by omitting the parameters `-AzCopyPath` and `-VhdLocalFolder`. By default, this command uses **AzStorageBlobCopy** to copy directly to the Azure Stack Hub storage account.
 
 ## Step 2: Generate Resource Manager templates
@@ -123,13 +123,13 @@ Note the following considerations:
 
 - The generated Resource Manager template files are placed under `-ArmTemplateDestinationPath`, and the full path of the template file or parameter file is returned.
 
-- If the `-TargetVM` parameter is provided, the cmdlet deletes the VM so that you can continue with the following steps.
+- If the `-TargetVM` parameter is provided, the cmdlet deletes the VM, so you can continue with the following steps.
 
 ## Step 3: Deploy the Resource Manager template
 
 At this point, the VHD is uploaded to Azure Stack Hub, and the Resource Manager template and respective parameter files are created. All that's left is to deploy the VM on Azure Stack Hub.
 
-In some scenarios, you might want to edit this template and add, remove, or change some names or resources. This is possible, as you can edit and adjust the template as needed.
+In some scenarios, you might want to edit this template and add, remove, or change some names or resources. This is permitted, as you can edit and adjust the template as needed.
 
 When ready, and after confirming the resources in the Resource Manager template are as expected, you can call the **New-AzResourceGroupDeployment** cmdlet to deploy the resources. For example:
 
