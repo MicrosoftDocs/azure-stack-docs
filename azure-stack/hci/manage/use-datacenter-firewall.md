@@ -17,10 +17,9 @@ This topic provides instructions for configuring access control lists (ACLs) to 
 
 ## Configure Datacenter Firewall to allow all traffic
 
-Once you deploy SDN, you should test for basic network connectivity in your new environment.  To accomplish this, create a rule for Datacenter Firewall that allows all network traffic, without restriction.
+Once you deploy SDN, you should test for basic network connectivity in your new environment. To accomplish this, create a rule for Datacenter Firewall that allows all network traffic, without restriction.
 
 Use the entries in the following table to create a set of rules that allow all inbound and outbound network traffic.
-
 
 | Source IP | Destination IP | Protocol | Source Port | Destination Port | Direction | Action | Priority |
 |:---------:|:--------------:|:--------:|:-----------:|:----------------:|:---------:|:------:|:--------:|
@@ -69,7 +68,7 @@ New-NetworkControllerAccessControlList -ResourceId "AllowAll" -Properties $aclli
 ```
 
 >[!NOTE]
->The Windows PowerShell command reference for Network Controller is located in the topic [Network Controller Cmdlets](https://technet.microsoft.com/library/mt576401.aspx).
+>The Windows PowerShell command reference for Network Controller is located in the topic [Network Controller Cmdlets](/powershell/module/networkcontroller/).
 
 ## Use ACLs to limit traffic on a subnet
 In this example, you create an ACL that prevents virtual machines (VMs) within the 192.168.0.0/24 subnet from communicating with each other. This type of ACL is useful for limiting the ability of an attacker to spread laterally within the subnet, while still allowing the VMs to receive requests from outside of the subnet, as well as to communicate with other services on other subnets.
@@ -199,7 +198,7 @@ New-NetworkControllerAccessControlList -ResourceId "Subnet-192-168-0-0" -Propert
 
 Once you've created an ACL and assigned it to a virtual subnet, you might want to override that default ACL on the virtual subnet with a specific ACL for an individual network interface. In this case, you apply specific ACLs directly to network interfaces attached to VLANs, instead of the virtual network. If you have ACLs set on the virtual subnet connected to the network interface, both ACLs are applied and prioritizes the network interface ACLs above the virtual subnet ACLs.
 
-In this example, we demonstrates how to add an ACL to a virtual network.
+In this example, we demonstrate how to add an ACL to a virtual network using Windows Powershell.
 
 >[!TIP]
 >It is also possible to add an ACL at the same time that you create the network interface.
@@ -228,13 +227,9 @@ In this example, we demonstrates how to add an ACL to a virtual network.
    new-networkcontrollernetworkinterface -ConnectionUri $uri -Properties $nic.properties -ResourceId $nic.resourceid
    ```
 
-## Example: Remove an ACL from a network interface
+## Remove an ACL from a network interface
 
-In this example, we show you how to remove an ACL. Removing an ACL applies the default set of rules to the network interface. The default set of rules allows all outbound traffic but blocks all inbound traffic.
-
->[!NOTE]
->If you want to allow all inbound traffic, you must follow the previous [example](#example-add-an-acl-to-a-network-interface) to add an ACL that allows all inbound and all outbound traffic.
-
+In this example, we show you how to remove an ACL from a network interface. Removing an ACL applies the default set of rules to the network interface. The default set of rules allows all outbound traffic but blocks all inbound traffic. If you want to allow all inbound traffic, you must follow the previous [example](#add-an-acl-to-a-network-interface) to add an ACL that allows all inbound and all outbound traffic.
 
 1. Get the network interface from which you will remove the ACL.<br>
    ```PowerShell
@@ -256,4 +251,5 @@ In this example, we show you how to remove an ACL. Removing an ACL applies the d
 For related information, see also:
 
 - Datacenter Firewall overview
-- [SDN in Azure Stack HCI](software-defined-networking.md)
+- Network Controller overview
+- [SDN in Azure Stack HCI](../concepts/software-defined-networking.md)
