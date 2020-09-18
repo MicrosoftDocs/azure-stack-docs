@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 09/17/2020
+ms.date: 09/18/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -89,11 +89,6 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 <!-- ### Identity -->
 <!-- ### Marketplace -->
 
-### VM overview blade does not show correct computer name
-
-- Applicable: This issue applies to all releases.
-- Cause: When viewing details of a VM in the overview blade, the computer name shows as **(not available)**. This is by design for VMs created from specialized disks/disk snapshots, and appears for Marketplace images as well.
-- Remediation: View the **Properties** blade under **Settings**.
 ::: moniker-end
 
 ::: moniker range="azs-2005"
