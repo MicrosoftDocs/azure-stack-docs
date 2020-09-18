@@ -24,7 +24,7 @@ An Azure Kubernetes Service cluster is divided into two main components on Azure
 - *Management* cluster provides the the core orchestration mechanism and interface for deploying and managing one or more target clusters.
 - *Target* clusters (also known as workload clusters) are where application workloads run and are managed by a management cluster.
 
-:::image type="content" source="media/architecture.png" alt-text="Azure Kubernetes Service on Azure Stack HCI Architecture":::
+![Illustrates the technical architecture of Azure Kubernetes Service on Azure Stack HCI](.\media\concepts\architecture.png)
 
 ## Management cluster
 When you create an Azure Kubernetes Service cluster on Azure Stack HCI, a management cluster is automatically created and configured. This management cluster is responsible for provisioning and managing target clusters where workloads run. A management cluster includes the following core Kubernetes components:
