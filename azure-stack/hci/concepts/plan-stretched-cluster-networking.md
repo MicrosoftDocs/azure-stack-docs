@@ -3,7 +3,7 @@ title: Plan host networking for Azure Stack HCI
 description: Learn how to plan host networking for Azure Stack HCI clusters
 author: v-dasis
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 09/18/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -75,20 +75,20 @@ The following table shows bandwidth allocations for various traffic types, where
 
 ## Non-stretched cluster scenario
 
-:::image type="content" source="media/plan-host-networking/rack-topology-non-stretched.png" alt-text="Create cluster wizard - HCI option" lightbox="media/plan-host-networking/rack-topology-non-stretched.png":::
+:::image type="content" source="media/plan-host-networking/rack-topology-non-stretched.png" alt-text="Non-stretched cluster" lightbox="media/plan-host-networking/rack-topology-non-stretched.png":::
 
 >[!NOTE]
 >
 
 ## Stretched cluster scenario
 
-:::image type="content" source="media/plan-host-networking/rack-topology-stretched.png" alt-text="Create cluster wizard - HCI option" lightbox="media/plan-host-networking/rack-topology-stretched.png":::
+:::image type="content" source="media/plan-host-networking/rack-topology-stretched.png" alt-text="Stretched cluster - simple" lightbox="media/plan-host-networking/rack-topology-stretched.png":::
 
 Simple use case.
 
-:::image type="content" source="media/plan-host-networking/simple-stretched-cluster.png" alt-text="Create cluster wizard - HCI option" lightbox="media/plan-host-networking/simple-stretched-cluster.png":::
+:::image type="content" source="media/plan-host-networking/simple-stretched-cluster.png" alt-text="Stretched cluster - advanced" lightbox="media/plan-host-networking/simple-stretched-cluster.png":::
 
 ## Next steps
 
 - See [Create a cluster using Windows Admin Center]
-- See [Create a cluster using Windows Powershell]
+- See [Create a cluster using Windows PowerShell]
