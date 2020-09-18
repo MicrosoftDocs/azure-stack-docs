@@ -151,4 +151,4 @@ Note the following considerations:
 
 - [Azure Stack Hub VM features](../user/azure-stack-vm-considerations.md)
 - [Add and remove a custom VM image to Azure Stack Hub](azure-stack-add-vm-image.md)
-- [Create a Windows VM with PowerShell in Azure Stack Hub](azure-stack-quick-create-vm-windows-powershell.md)
+- [Create a Windows VM with PowerShell in Azure Stack Hub](../user/azure-stack-quick-create-vm-windows-powershell.md)
