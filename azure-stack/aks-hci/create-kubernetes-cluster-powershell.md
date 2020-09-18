@@ -18,6 +18,7 @@ In this quickstart, you'll learn how to use Windows PowerShell to create a Kuber
 Before you begin, make sure you:
 
 - Have a 2-4 node Azure Stack HCI cluster or a single node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't, follow instructions on how to create one [here](./system-requirements.md).
+- Have an Azure Stack Kubernetes host set up. If you don't, follow instructions on how to set one up [here](./setup-powershell.md).
 
 ## Step 1: Create a Kubernetes cluster
 
