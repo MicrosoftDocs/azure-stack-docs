@@ -11,7 +11,7 @@ ms.lastreviewed: 9/18/2020
 
 ---
 
-# Azure Site Recovery failback tool user guide
+# Azure Site Recovery failback tool
 
 In a connected environment, you can use Azure Site Recovery to protect virtual machines (VMs) running on Azure Stack Hub. [This article](/azure/site-recovery/azure-stack-site-recovery) describes how to set up the environment, and how Site Recovery helps contribute to the overall business continuity and disaster recovery strategy for these workloads.
 
