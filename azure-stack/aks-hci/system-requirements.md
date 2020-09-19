@@ -10,7 +10,7 @@ ms.date: 09/22/2020
 
 > Applies to: Azure Stack HCI
 
-This article covers the requirements for setting up Azure Kubernetes Service on Azure Stack HCI and using it to create Kubernetes clusters. For an overview of Azure Kubernetes Service on Azure Stack HCI, see [What is AKS on Azure Stack HCI?](overview.md).
+This article covers the requirements for setting up Azure Kubernetes Service on Azure Stack HCI and using it to create Kubernetes clusters. For an overview of Azure Kubernetes Service on Azure Stack HCI, see [AKS on Azure Stack HCI overview](overview.md).
 
 ## Determine hardware requirements
 
