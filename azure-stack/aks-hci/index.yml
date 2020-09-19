@@ -43,7 +43,7 @@ landingContent:
             url: deploy-linux-application.md
       - linkListType: how-to-guide
         links:
-          - text: Adapt apps for mixed OS Kubernetes clusters
+          - text: Adapt apps for mixed-OS Kubernetes clusters
             url: deploy-mixed-OS-applications.md
 
   - title: Integrate with Azure
