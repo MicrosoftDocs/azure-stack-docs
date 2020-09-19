@@ -10,7 +10,7 @@ ms.author: dawhite
 
 > Applies to: Azure Stack HCI
 
-In this quickstart, you set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center. To instead use PowerShell, see [Set up with PowerShell](setup-powershell).
+In this quickstart, you set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center. To instead use PowerShell, see [Set up with PowerShell](setup-powershell.md).
 
 Setting up involves the following tasks:
 
