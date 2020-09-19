@@ -1,22 +1,20 @@
 ---
-title: Deploy applications in mixed OS Kubernetes clusters
-description: How to use node selectors or taints and tolerations to deploy applications in mixed OS Kubernetes clusters
+title: Adapt applications for use in mixed-OS Kubernetes clusters
+description: How to use node selectors or taints and tolerations on Azure Kubernetes Service to ensure applications in mixed OS Kubernetes clusters running on Azure Stack HCI are scheduled on the correct worker node operating system
 author: abha
 ms.topic: how-to
-ms.date: 09/21/2020
+ms.date: 09/22/2020
 ms.author: abha
 ms.reviewer: 
 ---
+# Adapt apps for mixed-OS Kubernetes clusters using node selectors or taints and tolerations
 
-# Deploy applications in mixed OS Kubernetes clusters
+Azure Kubernetes Service on Azure Stack HCI enables you to run Kubernetes clusters with both Linux and Windows nodes, but requires you to make small edits to your apps for use in these mixed-OS clusters. In this how-to guide, you learn how to ensure your application gets scheduled on the right host OS using either node selectors or taints and tolerations.
 
+This how-to guide assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI](kubernetes-concepts.md).
 
-## Overview 
-Ensuring Linux applications run on Linux OS Kubernetes nodes and Windows applications run on Windows OS Kubernetes nodes is critical. In this how-to guide, you'll learn how to ensure your application gets scheduled on the right host OS using either node selectors or taints and tolerations.
+## Node Selector
 
-This how-to guide assumes a basic understanding of Kubernetes concepts. For more information, see Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI.
-
-## Node Selector 
 *Node Selector* is a simple field in the pod specification YAML that constrains pods to only be scheduled onto healthy nodes matching the operating system. In your pod specification YAML, specify a `nodeSelector` - Windows or Linux, as shown in the examples below. 
 
 ```yaml
@@ -30,10 +28,11 @@ kubernetes.io/os = Linux
 
 For more information on nodeSelectors, visit [node selectors](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/). 
 
-## Taints and tolerations 
-*Taints* and *tolerations* work together to ensure that pods are not scheduled on nodes unintentionally. A node can be "tainted" to not accept pods that do not explicitly tolerate its taint through a "toleration" in the pod specification YAML.
+## Taints and tolerations
 
-Windows OS nodes in Azure Kubernetes Service on Azure Stack HCI can be tainted with the following key-value pair. Users should not use a different one.
+*Taints* and *tolerations* work together to ensure that pods aren't scheduled on nodes unintentionally. A node can be "tainted" to not accept pods that don't explicitly tolerate its taint through a "toleration" in the pod specification YAML.
+
+Windows OS nodes in Azure Kubernetes Service on Azure Stack HCI can be tainted with the following key-value pair. Users shouldn't use a different one.
 
 ```yaml
 node.kubernetes.io/os=Windowss:NoSchedule

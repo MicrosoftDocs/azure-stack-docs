@@ -4,23 +4,23 @@ description: Before you begin Azure Kubernetes Service on Azure Stack HCI
 ms.topic: conceptual
 author: abhilashaagarwala
 ms.author: abha
-ms.date: 09/21/2020
+ms.date: 09/22/2020
 ---
-# Before you install Azure Kubernetes Service on Azure Stack HCI 
+# System requirements for Azure Kubernetes Service on Azure Stack HCI
 
 > Applies to: Azure Stack HCI
 
-On this system requirements page, you will learn how to determine whether your hardware meets the base requirements for creating Azure Kubernetes clusters on Azure Stack HCI. Make sure you are not exceeding the maximum supported hardware specifications. Gather the required information for a successful installation. Do not forget to Install Windows Admin Center on a management PC or server.
+This article covers the requirements for setting up Azure Kubernetes Service on Azure Stack HCI and using it to create Kubernetes clusters. For an overview of Azure Kubernetes Service on Azure Stack HCI, see [What is AKS on Azure Stack HCI?](overview.md).
 
 ## Determine hardware requirements
 
 Microsoft recommends purchasing a validated Azure Stack HCI hardware/software solution from our partners. These solutions are designed, assembled, and validated against our reference architecture to ensure compatibility and reliability so you get up and running quickly. Check that the systems, components, devices, and drivers you are using are Windows Server 2019 Certified per the Windows Server Catalog. Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) website for validated solutions.
 
-### General requirements 
+### General requirements
 
 For Azure Kubernetes Service on Azure Stack HCI to function optimally in an Active Directory environment, ensure the following requirements are fulfilled: 
 
- - Ensure time synchronization is setup and the divergence is not greater than 2 minutes across all cluster nodes and the domain controller. For information on setting time synchronization visit [Windows Time Service](https://docs.microsoft.com/windows-server/networking/windows-time-service/windows-time-service-top). 
+ - Ensure time synchronization is setup and the divergence is not greater than 2 minutes across all cluster nodes and the domain controller. For information on setting time synchronization visit [Windows Time Service](/windows-server/networking/windows-time-service/windows-time-service-top). 
 
  - Ensure that the user account(s) adding, updating, and managing Azure Kubernetes Service on Azure Stack HCI clusters have the correct permissions in Active Directory. If you are using Organizational Units (OUs) to manage group policies for servers and services, the user account(s) will require list, read, modify, and delete permissions on all objects in the OU. 
 
@@ -124,5 +124,5 @@ If you plan on deploying Azure Kubernetes Service on Azure Stack HCI on a single
 ## Next steps 
 
 After you have satisfied all of the prerequisites above, you can set up a Azure Kubernetes Service host on Azure Stack HCI using:
- - [Windows Admin Center](.\setup.md)
- - [PowerShell](.\setup-powershell.md)
+ - [Windows Admin Center](setup.md)
+ - [PowerShell](setup-powershell.md)
