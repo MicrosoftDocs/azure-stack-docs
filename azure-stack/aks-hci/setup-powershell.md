@@ -3,14 +3,14 @@ title: Quickstart to set up an Azure Kubernetes Service host on Azure Stack HCI 
 description: Learn how to set up an Azure Kubernetes Service host on Azure Stack HCI with Windows PowerShell
 author: jessicaguan
 ms.topic: quickstart
-ms.date: 09/21/2020
+ms.date: 09/22/2020
 ms.author: jeguan
 ---
-# Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI using Windows PowerShell
+# Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI using PowerShell
 
 > Applies to: Azure Stack HCI
 
-In this quickstart, you'll learn how to set up an Azure Kubernetes Service host on Azure Stack HCI using Windows PowerShell.
+In this quickstart, you'll learn how to set up an Azure Kubernetes Service host on Azure Stack HCI using PowerShell. To instead using Windows Admin Center, see [Set up with Windows Admin Center](setup.md).
 
 ## Before you begin
 
@@ -218,4 +218,4 @@ Uninstall-AksHci
 
 ## Next steps
 
-- To create a Kubernetes cluster through PowerShell, follow instructions [here](./create-kubernetes-cluster-powershell.md).
+- [Create a Kubernetes cluster for your applications](create-kubernetes-cluster-powershell.md)

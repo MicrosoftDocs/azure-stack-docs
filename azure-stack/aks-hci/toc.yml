@@ -35,7 +35,7 @@
   items: 
     - name: Connect to Azure Arc for Kubernetes
       href: connect-to-arc.md
-    - name: Deploy applications in mixed OS Kubernetes clusters
+    - name: Adapt apps for mixed-OS Kubernetes clusters
       href: deploy-mixed-OS-applications.md
     - name: Troubleshoot
       href: troubleshoot.md

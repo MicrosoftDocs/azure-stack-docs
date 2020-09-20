@@ -3,14 +3,12 @@ title: Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure A
 description: Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc for Kubernetes
 author: abha
 ms.topic: how-to
-ms.date: 09/21/2020
+ms.date: 09/22/2020
 ms.author: abha
 ms.reviewer: 
 ---
 
 # Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc for Kubernetes
-
-## Overview
 
 When an Azure Kubernetes Service on Azure Stack HCI cluster is attached to Azure Arc, it will appear in the Azure portal. It will have an Azure Resource Manager ID and a managed identity. Clusters are attached to standard Azure subscriptions, are located in a resource group, and can receive tags just like any other Azure resource.
 

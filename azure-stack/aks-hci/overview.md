@@ -1,15 +1,15 @@
 ---
 title: What is Azure Kubernetes Service on Azure Stack HCI?
-description: An overview of Azure Kubernetes Service on Azure Stack HCI
+description: Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of Azure Kubernetes Service (AKS), which automates running containerized applications at scale.
 ms.topic: overview
 author: jasongerend
 ms.author: jgerend
-ms.date: 09/21/2020
+ms.date: 09/22/2020
 #Customer intent: As an IT Pro, I want AKS on Azure Stack HCI so that I can easily deploy Kubernetes on-premises to orchestrate my containerized workloads.
 ---
 # What is Azure Kubernetes Service on Azure Stack HCI?
 
-Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of the popular Azure Kubernetes Service (AKS), which automates running containerized applications at scale. Azure Kubernetes Service is now in preview on Azure Stack HCI,  making it quicker to get started hosting Linux and Windows containers in your datacenter.
+Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of Azure Kubernetes Service (AKS), which automates running containerized applications at scale. Azure Kubernetes Service is now in preview on Azure Stack HCI, making it quicker to get started hosting Linux and Windows containers in your datacenter.
 
 To get started with Azure Kubernetes Service on-premises, [register for the preview](https://aka.ms/AKS-HCI-Evaluate) (there's no added cost during preview), then see [Set up Azure Kubernetes Service on Azure Stack HCI](setup.md). To instead use Azure Kubernetes Service to orchestrate your cloud-based containers, see [Azure Kubernetes Service in Azure](/azure/aks/intro-kubernetes).
 
@@ -100,8 +100,9 @@ The following sections summarize what you need to run Azure Kubernetes Service o
 
 ### On your Windows Admin Center system
 
-Your Windows Admin Center management PC or server has the following requirements:
+Your Windows Admin Center management system has the following requirements:
 
+- Windows 10 (we don't support Windows Admin Center servers right now)
 - 40 GB of free space
 - Registered with Azure
 - In the same domain as the Azure Stack HCI cluster

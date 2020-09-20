@@ -9,7 +9,7 @@ metadata:
   ms.topic: landing-page
   author: jasongerend
   ms.author: jgerend
-  ms.date: 09/21/2020
+  ms.date: 09/22/2020
 
 
 landingContent:
@@ -41,6 +41,10 @@ landingContent:
             url: deploy-windows-application.md
           - text: Use Linux containers
             url: deploy-linux-application.md
+      - linkListType: how-to-guide
+        links:
+          - text: Adapt apps for mixed-OS Kubernetes clusters
+            url: deploy-mixed-OS-applications.md
 
   - title: Integrate with Azure
     linkLists:

@@ -3,11 +3,12 @@ title: Troubleshooting
 description: Guide for troubleshooting Azure Kubernetes Service on Azure Stack HCI
 author: davannaw-msft
 ms.topic: how-to
-ms.date: 09/21/2020
+ms.date: 09/22/2020
 ms.author: dawhite
 ---
 
 # Troubleshooting Azure Kubernetes Service on Azure Stack HCI
+
 When you create or manage a Kubernetes cluster using Azure Kubernetes Service on Azure Stack HCI, you might occasionally come across problems. Below are the troubleshooting guidelines to help you resolve those issues. 
 
 ## Troubleshooting Azure Stack HCI
