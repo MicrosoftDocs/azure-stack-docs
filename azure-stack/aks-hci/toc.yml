@@ -37,6 +37,8 @@
       href: connect-to-arc.md
     - name: Adapt apps for mixed-OS Kubernetes clusters
       href: deploy-mixed-OS-applications.md
+    - name: Use persistent storage and configure GMSA support in a Windows container
+      href: configure-pvc-gmsa-windows.md
     - name: Troubleshoot
       href: troubleshoot.md
 - name: Related
