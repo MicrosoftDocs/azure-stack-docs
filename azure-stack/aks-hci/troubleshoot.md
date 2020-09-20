@@ -53,7 +53,15 @@ To log in to a Windows worker node, first get the IP address of your node by run
 ```PowerShell
 kubectl get nodes -o wide
 ``` 
-SSH into the node using `ssh Administrator@ip`. Once you ssh into the node, run `net user administrator *` to update your administrator’s password. 
+SSH into the node using `ssh Administrator@ip`. Once you ssh into the node, you can run `net user administrator *` to update your administrator’s password. 
+
+## Troubleshooting Linux worker nodes 
+To log in to a Linux worker node, first get the IP address of your node by running `kubectl get` and note the `EXTERNAL-IP` value:
+
+```PowerShell
+kubectl get nodes -o wide
+``` 
+SSH into the node using `ssh clouduser@ip`. 
 
 ## Troubleshooting Azure Arc for Kubernetes
 To troubleshoot some common scenarios related to connectivity, permissions, and Arc agents, visit [Azure Arc enabled Kubernetes troubleshooting](/azure/azure-arc/kubernetes/troubleshooting).
