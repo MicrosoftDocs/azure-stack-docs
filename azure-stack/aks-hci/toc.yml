@@ -55,6 +55,8 @@
   items:
   - name: Release notes
     href: https://aka.ms/aks-hci-relnotes/
+  - name: Known issues
+    href: https://github.com/Azure/aks-hci/blob/main/known-issues.md
   - name: Azure roadmap
     href: https://azure.microsoft.com/roadmap/
   - name: AKS on Azure Stack HCI roadmap
