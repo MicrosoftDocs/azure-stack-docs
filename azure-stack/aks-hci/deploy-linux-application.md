@@ -156,6 +156,8 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 To see the Azure Vote app in action, open a web browser to the external IP address of your service.
 
+![Image of Kubernetes cluster on Azure](media/deploy-linux-application/azure-vote.png)
+
 ## Scale application pods
 
 We have created a single replica of the Azure Vote front-end and Redis instance. To see the number and state of pods in your cluster, use the `kubectl get` command as follows:
