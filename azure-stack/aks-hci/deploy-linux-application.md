@@ -144,14 +144,14 @@ Initially the *EXTERNAL-IP* for the *azure-vote-front* service is shown as *pend
 
 ```output
 NAME               TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
-azure-vote-front   LoadBalancer   10.101.26.132   <pending>     80:32510/TCP   28m
+azure-vote-front   LoadBalancer   10.0.37.27      <pending>     80:30572/TCP   22m
 ```
 
 When the *EXTERNAL-IP* address changes from *pending* to an actual public IP address, use `CTRL-C` to stop the `kubectl` watch process. The following example output shows a valid public IP address assigned to the service:
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP     PORT(S)        AGE
-azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
+azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   24m
 ```
 
 To see the Azure Vote app in action, open a web browser to the external IP address of your service.
