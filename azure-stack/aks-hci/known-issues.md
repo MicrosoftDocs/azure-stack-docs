@@ -9,7 +9,7 @@ ms.reviewer:
 ---
 
 # Known Issues for Azure Kubernetes Service on Azure Stack HCI Public Preview
-
+This article describes known issues with the public preview release of Azure Kubernetes Service on Azure Stack HCI.
 ## Recovering from a failed AKS on Azure Stack HCI deployment
 If you're experiencing deployment issues or want to reset your deployment make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running Uninstall-AksHci from a PowerShell administrative window.
 
