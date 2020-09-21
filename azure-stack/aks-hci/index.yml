@@ -24,7 +24,7 @@ landingContent:
           - text: Kubernetes core concepts for AKS
             url: kubernetes-concepts.md
             
-    - title: Get started
+  - title: Get started
     linkLists:
       - linkListType: deploy
         links:
