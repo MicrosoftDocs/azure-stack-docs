@@ -1,5 +1,5 @@
 ---
-title:  Graphics processing unit (GPU) virtual machine (VM) on Azure Stack Hub
+title:  Graphics processing unit (GPU) VM on Azure Stack Hub
 description: Reference for GPU computing in Azure Stack Hub.
 author: mattbriggs
 ms.author: mabrigg
