@@ -26,10 +26,12 @@ landingContent:
             
   - title: Get started
     linkLists:
-      - linkListType: quickstart
+      - linkListType: deploy
         links:
           - text: Check system requirements
             url: system-requirements.md
+      - linkListType: quickstart
+        links:
           - text: Set up AKS with Windows Admin Center
             url: setup.md
           - text: Set up AKS with PowerShell
