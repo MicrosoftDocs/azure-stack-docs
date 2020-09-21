@@ -11,19 +11,19 @@ ms.reviewer:
 # Known Issues for Azure Kubernetes Service on Azure Stack HCI Public Preview
 
 ## Recovering from a failed AKS on Azure Stack HCI deployment
-If you are experiencing deployment issues or want to reset your deployment make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running Uninstall-AksHci from a PowerShell administrative window.
+If you're experiencing deployment issues or want to reset your deployment make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running Uninstall-AksHci from a PowerShell administrative window.
 
 ## When using kubectl to delete a node, the associated VM might not be deleted
-You will encounter this issue if you follow these steps:
+You'll meet this issue if you follow these steps:
 * Create a Kubernetes cluster
 * Scale the cluster to more than 2 nodes
 * Use kubectl delete node <node-name> to delete a node 
-* Run kubectl get nodes. The removed node is not listed in the output
+* Run kubectl get nodes. The removed node isn't listed in the output
 * Open a PowerShell Admin Window
 * Run get-vm, The removed node is still listed
 
-This leads to the system not recognizing the node is missing and a new node will not be spun up. 
-This will be fixed in a subsequent release
+This leads to the system not recognizing the node is missing and a new node will not spin up. 
+This will be fixed in a future release
 
 ## Time synchronization must be configured across all physical cluster nodes and in Hyper-V
 To ensure gMSA and AD authentication works, ensure that the Azure Stack HCI cluster nodes are configured to synchronize their time with a domain controller or other
@@ -35,9 +35,9 @@ Users deploying and configuring Azure Kubernetes Service on Azure Stack HCI need
 ## Get-AksHciLogs command may fail
 With large clusters the Get-AksHciLogs command may throw an exception, fail to enumerate nodes or will not generate c:\wssd\wssdlogs.zip output file.
 This is because the PowerShell command to zip a file `Compress-Archive` has an output file size limit of 2 GB. 
-This issue will be fixed in a later release.
+This issue will be fixed in a future release.
 
-## Azure Kubernetes Service PowerShell deployment does not check for available memory before creating a new target cluster
+## Azure Kubernetes Service PowerShell deployment doesn't check for available memory before creating a new target cluster
 The Aks-Hci PowerShell commands does not validate the available memory on the host server before creating Kubernetes nodes. This can lead to memory exhaustion and virtual machines to not start. This failure is currently not handled gracefully and the deployment will hang with no clear error message.
 If you have a deployment that seems hung, open Eventviewer and check for Hyper-V related error messages indicating not enough memory to start the VM.
 This issue will be fixed in a future release
