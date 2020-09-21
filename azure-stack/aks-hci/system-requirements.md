@@ -112,14 +112,10 @@ Windows Admin Center is the user interface for creating and managing Azure Kuber
 
 The machine running the Windows Admin Center gateway must: 
 
-- Have 40 GB of free space to store downloaded packages 
-- Be registered with Azure 
-
-#### On your network 
-
-For public preview, it's required that your Windows Admin Center system and your target machines are in the same domain. 
-
-If you plan on deploying Azure Kubernetes Service on Azure Stack HCI on a single node, you will need to provide your own server and have it configured in Windows Admin Center prior to cluster creation. Similarly, if you are planning on deploying your Azure Kubernetes Service for Azure Stack HCI cluster on top of an existing cluster, it must already be configured through Windows Admin Center before starting the cluster creation wizard. 
+ - Windows 10 (we don't support Windows Admin Center servers right now)
+ - 60 GB of free space
+ - Registered with Azure
+ - In the same domain as the Azure Stack HCI cluster
 
 ## Next steps 
 
