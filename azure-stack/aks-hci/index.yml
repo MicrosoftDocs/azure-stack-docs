@@ -20,7 +20,7 @@ landingContent:
           - text: What is Azure Kubernetes Service on Azure Stack HCI?
             url: overview.md
 
-  - title: Get started
+  - title: Set up AKS on Azure Stack HCI
     linkLists:
       - linkListType: quickstart
         links:
@@ -28,6 +28,10 @@ landingContent:
             url: setup.md
           - text: Set up with PowerShell
             url: setup-powershell.md
+  - title: Create AKS clusters on Azure Stack HCI
+    linkLists:
+      - linkListType: quickstart
+        links:         
           - text: Create a Kubernetes cluster with Windows Admin Center
             url: create-kubernetes-cluster.md
           - text: Create a Kubernetes cluster with PowerShell
@@ -45,6 +49,8 @@ landingContent:
         links:
           - text: Adapt apps for mixed-OS Kubernetes clusters
             url: adapt-apps-mixed-os-clusters.md
+          - text: Configure persistent storage in Kubernetes clusters
+            url: configure-pvc-gmsa-windows.md
 
   - title: Integrate with Azure
     linkLists:
