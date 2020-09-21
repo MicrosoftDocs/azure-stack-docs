@@ -149,7 +149,7 @@ Note that you will be prompted to enter your **domain administrator account** cr
 add-computer --domainame "YourDomainName" -restart
 ```
 
-Once all Windows worker nodes have been joined to a domain, follow the steps detailed at [configuring gMSA](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa) to apply the Kubernetes GMSA CRD and webhooks on your Kubernetes cluster.
+Once all Windows worker nodes have been joined to a domain, follow the steps detailed at [configuring gMSA](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa) to apply the Kubernetes GMSA custom resource definitions and webhooks on your Kubernetes cluster.
 
 For more information on Windows container with gMSA, refer [Windows containers and gMSA](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts). 
 
