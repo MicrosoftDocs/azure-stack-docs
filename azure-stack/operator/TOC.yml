@@ -181,7 +181,7 @@
       href: azure-stack-change-subscription-owner.md
     - name: Start and stop Azure Stack Hub
       href: azure-stack-start-and-stop.md
-    - name: Use Azure Site Recovery tool
+    - name: Azure Site Recovery tool
       href: site-recovery-failback.md
     - name: Manage capacity
       items:
