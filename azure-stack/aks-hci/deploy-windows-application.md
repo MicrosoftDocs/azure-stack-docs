@@ -118,6 +118,8 @@ sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 To see the sample app in action, open a web browser to the external IP address of your service.
 
+![Image of browsing to ASP.NET sample application](media/deploy-windows-application/asp-net-sample-app.png)
+
 If you receive a connection timeout when trying to load the page, verify if the sample app is ready with `kubectl get pods --watch` command. Sometimes, the external IP address is available before the windows container has started.
 
 ## Next steps
