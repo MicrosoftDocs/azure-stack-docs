@@ -12,7 +12,7 @@ ms.reviewer:
 
 ## Overview
 
-A persistent volume represents a piece of storage that has been provisioned for use with Kubernetes pods. A persistent volume can be used by one or more pods and is meant for long term storage. It is also independent of pod or node lifecycle.  In this section, you will see how to create a persistent volume and how to use this volume in your Windows application.
+A persistent volume represents a piece of storage that has been provisioned for use with Kubernetes pods. A persistent volume can be used by one or more pods and is meant for long-term storage. It is also independent of pod or node lifecycle.  In this section, you'll see how to create a persistent volume and how to use this volume in your Windows application.
 
 ## Before you begin
 
@@ -24,7 +24,7 @@ Verify you've the following requirements ready:
 
 ## Create a persistent volume claim
 
-A persistent volume claim is used to automatically provision storage based on a storage class. To create a volume claim, first create a file named `pvc-akshci-csi.yaml` and copy in the following YAML definition. The claim requests a disk that is 10GB in size with *ReadWriteOnce* access. The *default* storage class is specified as the storage class (vhdx).  
+A persistent volume claim is used to automatically provision storage based on a storage class. To create a volume claim, first create a file named `pvc-akshci-csi.yaml` and copy in the following YAML definition. The claim requests a disk that is 10 GB in size with *ReadWriteOnce* access. The *default* storage class is specified as the storage class (vhdx).  
 
 ```yaml
 apiVersion: v1
@@ -116,13 +116,13 @@ kubectl exec -it %podname% cmd.exe 
 
 ## Delete a persistent volume claim
 
-Before deleting a persistent volume claim, you have to delete the app deployment by running:
+Before deleting a persistent volume claim, you've to delete the app deployment by running:
 
 ```PowerShell
 kubectl.exe delete deployments win-webserver
 ```
 
-You can then delete a persisten volume claim by running:
+You can then delete a persistent volume claim by running:
 
 ```PowerShell
 kubectl.exe delete PersistentVolumeClaim pvc-akshci-csi
@@ -132,7 +132,7 @@ kubectl.exe delete PersistentVolumeClaim pvc-akshci-csi
 
 Group Managed Service Accounts are a specific type of Active Directory account that provides automatic password management, simplified service principal name (SPN) management, and the ability to delegate the management to other administrators across multiple servers. To configure Group Managed Service Accounts (GMSA) for Pods and containers that will run on your Windows nodes, you first have to join your Windows nodes to an Active Directory domain.
 
-Note that to enable GMSA support, your Kubernetes cluster name has to be less than 4 characters. This is because the maximum supported length for a domain joined server name is 15 characters, and the AKS on Azure Stack HCI Kubernetes cluster naming convention for a worker node adds a few pre-defined characters to a node name.
+To enable GMSA support, your Kubernetes cluster name has to be fewer than 4 characters. This is because the maximum supported length for a domain joined server name is 15 characters, and the AKS on Azure Stack HCI Kubernetes cluster naming convention for a worker node adds a few pre-defined characters to a node name.
 
 To join your Windows worker nodes to a domain, log in to a Windows worker node, by running `kubectl get` and noting the `EXTERNAL-IP` value.
 
@@ -142,8 +142,7 @@ kubectl get nodes -o wide
 
 You can then SSH into the node using `ssh Administrator@ip`. 
 
-After you have successfully logged in to your Windows worker node, run the following PowerShell command to domain join the node. 
-Note that you will be prompted to enter your **domain administrator account** credentials. You can also use elevated user credentials that have been given rights to join computers to the given domain. You will then need to reboot your Windows worker node.
+After you've successfully logged in to your Windows worker node, run the following PowerShell command to domain join the node. You'll be prompted to enter your **domain administrator account** credentials. You can also use elevated user credentials that have been given rights to join computers to the given domain. You'll then need to reboot your Windows worker node.
 
 ```PowerShell
 add-computer --domainame "YourDomainName" -restart
