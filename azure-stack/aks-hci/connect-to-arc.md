@@ -16,15 +16,16 @@ To connect a Kubernetes cluster to Azure, the cluster administrator needs to dep
 
 Azure Arc enabled Kubernetes supports industry-standard SSL to secure data in transit. Also, data is stored encrypted at rest in an Azure Cosmos DB database to ensure data confidentiality.
 
-The following steps provide a walkthrough on onboarding Azure Kubernetes Service on Azure Stack HCI clusters to Azure Arc. You may skip these steps if you've already onboarded your Kubernetes cluster to Azure Arc through Windows Admin Center. 
+The following steps provide a walkthrough on onboarding Azure Kubernetes Service on Azure Stack HCI clusters to Azure Arc. **You may skip these steps if you've already onboarded your Kubernetes cluster to Azure Arc through Windows Admin Center.**
 
 ## Before you begin
 
 Verify you've the following requirements ready:
 
-* An Azure Kubernetes Service on Azure Stack HCI cluster that is up and running. 
+* An Azure Kubernetes Service on Azure Stack HCI cluster with atleast 1 Linux worker node that is up and running. 
 * You'll need a kubeconfig file to access the cluster and cluster-admin role on the cluster for deployment of Arc enabled Kubernetes agents.
 * Have the Azure Kubernetes Service on Azure Stack HCI PowerShell module installed.
+* Azure CLI version 2.3+ is required for installing the Azure Arc enabled Kubernetes CLI extensions. [Install Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) or update to the latest version to ensure that you have Azure CLI version 2.3+.
 * An Azure subscription on which you're an owner or contributor. 
 * Run the commands in this document in a PowerShell administrative window.
 
@@ -82,13 +83,13 @@ az group create --name AzureArcTest -l EastUS -o table
 
 ## Step 4: Create a new Service Principal
 
-Create a new service principal with an informative name. This name must be unique for your Azure Active Directory tenant. 
-You can also reuse this service principal to on-board multiple clusters to Azure Arc. Save the service principal's appID, password, and tenant values as you will need these details in subsequent steps.
+You can skip this step if you've already created a service principal with `contributor` role and know the service principal's appID, password, and tenant values.
 
-You can skip this step if you've already created a service principal and know the service principal's appID, password, and tenant values.
+Create a new service principal with an informative name. This name must be unique for your Azure Active Directory tenant. The default role for a service principal is `Contributor`. This role has full permissions to read and write to an Azure account. You can also reuse this service principal to on-board multiple clusters to Azure Arc. 
+Set the scope of your service principal to *subscriptions/resource-group*. *Make sure you save the service principal's appID, password, and tenant values as you will need these details in subsequent steps.*
 
 ```console
-az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s"
+az ad sp create-for-RBAC --name "azure-arc-for-k8s" --scope /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}
 ```
 
 **Output:**
@@ -102,14 +103,28 @@ az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s"
   "tenant": "ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj"
 }
 ```
+## Step 5: Save service principal details
+Save the created service principal's appId, password and tenant values and cluster name, Azure subscription ID, resource group name and location in PowerShell variables. This will ensure you can reuse the details in other tutorials. Ensure that you also save these values in a notepad in case you want to close your powerShell session.
 
-## Step 5: Assign permissions to the service principal
-You can skip this step if you're re-using a service principal with contributor permissions, and know the service principal's appID, password, and tenant values.
+```PowerShell
+$clusterName = <name of your Kubernetes cluster>
+$resourceGroup = <Azure resource group to store your connected Kubernetes cluster in Azure Arc>
+$location = <Azure resource group location. This can only be eastus or westeurope for Azure Arc for Kubernetes>
+$subscriptionId = <Azure subscription Id>
+$appId = <appID from the service principal created above>
+$password = <password from the service principal created above>
+$tenant = <tenant from the service principal created above>
+```
+Ensure that you have assigned the right values to the variables by running:
 
-Assign the `contributor` role to the newly created service principal. Parameter `--assignee` takes the `appId` value from the service principal output, as shown above.
-
-```console
-az role assignment create --role Contributor --assignee "00000000-0000-0000-0000-000000000000" -g AzureArcTest #Azure resource group that will store the cluster resource
+```PowerShell
+echo $clusterName 
+echo $resourceGroup
+echo $location 
+echo $subscriptionId 
+echo $appId 
+echo $password 
+echo $tenant 
 ```
 
 ## Step 6: Connect to Azure Arc using service principal and the Aks-Hci PowerShell module
@@ -119,14 +134,7 @@ Next, we will connect our Kubernetes cluster to Azure using service principal an
 Reference the newly created service principal and run the `Install-AksHciArcOnboarding` command available in the Aks-Hci PowerShell module.
 
 ```PowerShell
-Install-AksHciArcOnboarding 
-    -clusterName "mynewcluster" #Kubernetes cluster name
-    -resourcegroup "AzureArcTest" 
-    -location "eastus" #resource group location
-    -subscriptionid "00000000-aaaa-bbbb-cccc-000000000000"
-    -clientid "00000000-0000-0000-0000-000000000000" #use the appId from service principal 
-    -clientsecret  "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" #use the secret from service principal 
-    -tenantid "ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj" #use the tenant from service principal
+Install-AksHciArcOnboarding -clusterName $clusterName -resourcegroup $resourceGroup -location $location -subscriptionid $subscriptionId -clientid $appId -clientsecret $password -tenantid $tenant
 ```
 ## Verify connected cluster
 
@@ -136,6 +144,46 @@ You can view your Kubernetes cluster resource on the [Azure portal](https://port
 > After onboarding the cluster, it takes around 5 to 10 minutes for the cluster metadata (cluster version, agent version, number of nodes) to surface on the overview page of the Azure Arc enabled Kubernetes resource in Azure portal.
 
 To delete your cluster, or to connect your cluster if it is behind an outbound proxy server, visit [Connect an Azure Arc-enabled Kubernetes cluster](/azure/azure-arc/kubernetes/connect-cluster).
+
+## Azure Arc agents for Kubernetes
+
+Azure Arc enabled Kubernetes deploys a few operators into the `azure-arc` namespace. You can view these deployments and pods here:
+
+```console
+kubectl -n azure-arc get deployments,pods
+```
+
+**Output:**
+
+```console
+NAME										                  READY	UP-TO-DATE AVAILABLE AGE
+deployment.apps/cluster-metadata-operator	1/1		1			     1		     16h
+deployment.apps/clusteridentityoperator		1/1		1			     1	       16h
+deployment.apps/config-agent				      1/1		1			     1		     16h
+deployment.apps/controller-manager			  1/1		1			     1		     16h
+deployment.apps/flux-logs-agent				    1/1		1			     1		     16h
+deployment.apps/metrics-agent			        1/1   1          1         16h
+deployment.apps/resource-sync-agent			  1/1		1			     1		     16h
+
+NAME											                      READY	STATUS	 RESTART AGE
+pod/cluster-metadata-operator-7fb54d9986-g785b  2/2		Running  0		   16h
+pod/clusteridentityoperator-6d6678ffd4-tx8hr    3/3   Running  0       16h
+pod/config-agent-544c4669f9-4th92               3/3   Running  0       16h
+pod/controller-manager-fddf5c766-ftd96          3/3   Running  0       16h
+pod/flux-logs-agent-7c489f57f4-mwqqv            2/2   Running  0       16h
+pod/metrics-agent-58b765c8db-n5l7k              2/2   Running  0       16h
+pod/resource-sync-agent-5cf85976c7-522p5        3/3   Running  0       16h
+```
+
+Azure Arc enabled Kubernetes consists of a few agents (operators) that run in your cluster deployed to the `azure-arc` namespace.
+
+* `deployment.apps/config-agent`: watches the connected cluster for source control configuration resources applied on the cluster and updates compliance state
+* `deployment.apps/controller-manager`: is an operator of operators and orchestrates interactions between Azure Arc components
+* `deployment.apps/metrics-agent`: collects metrics of other Arc agents to ensure that these agents are exhibiting optimal performance
+* `deployment.apps/cluster-metadata-operator`: gathers cluster metadata - cluster version, node count, and Azure Arc agent version
+* `deployment.apps/resource-sync-agent`: syncs the above mentioned cluster metadata to Azure
+* `deployment.apps/clusteridentityoperator`: Azure Arc enabled Kubernetes currently supports system assigned identity. clusteridentityoperator maintains the managed service identity (MSI) certificate used by other agents for communication with Azure.
+* `deployment.apps/flux-logs-agent`: collects logs from the flux operators deployed as a part of source control configuration
 
 ## Next steps
 
