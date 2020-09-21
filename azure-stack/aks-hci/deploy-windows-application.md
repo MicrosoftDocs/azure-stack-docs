@@ -145,4 +145,4 @@ kubectl get pods -n default
 ## Next steps
 
 * [Use Azure Monitor to monitor your cluster and application](/azure/azure-monitor/insights/container-insights-enable-arc-enabled-clusters).
-* [Use persistent storage and configure GMSA support in a Windows container](configure-pvc-gmsa-windows.md).
+* [Use persistent storage and configure gMSA support in a Windows container](persistent-storage-windows-nodes.md).
