@@ -24,7 +24,7 @@ This scenario addresses recovering your entire installation if there's a failure
 
 | Scenario                                                           | Data Loss                            | Considerations                                                             |
 |--------------------------------------------------------------------|--------------------------------------|----------------------------------------------------------------------------|
-| Recover from catastrophic data loss due to disaster or product bug. | All infrastructure and user and app data. | User app and data are protected separately from infrastructure data. |
+| Recover from catastrophic data loss due to disaster or product bug. | All infrastructure and user and app data. | Can restore to different OEM.<br/> Can restore to different generation of hardware.<br/> Can restore to different count of scale-unit nodes.<br/> User app and data are protected separately from infrastructure data. |
 
 ## Workflows
 
