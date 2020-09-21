@@ -94,7 +94,7 @@ az ad sp create-for-RBAC --name "azure-arc-for-k8s" --scope /subscriptions/{Subs
 
 **Output:**
 
-```console
+```
 {
   "appId": "00000000-0000-0000-0000-000000000000",
   "displayName": "azure-arc-for-k8s",
@@ -107,13 +107,13 @@ az ad sp create-for-RBAC --name "azure-arc-for-k8s" --scope /subscriptions/{Subs
 Save the created service principal's appId, password and tenant values and cluster name, Azure subscription ID, resource group name and location in PowerShell variables. This will ensure you can reuse the details in other tutorials. Ensure that you also save these values in a notepad in case you want to close your powerShell session.
 
 ```PowerShell
-$clusterName = <name of your Kubernetes cluster>
-$resourceGroup = <Azure resource group to store your connected Kubernetes cluster in Azure Arc>
-$location = <Azure resource group location. This can only be eastus or westeurope for Azure Arc for Kubernetes>
-$subscriptionId = <Azure subscription Id>
-$appId = <appID from the service principal created above>
-$password = <password from the service principal created above>
-$tenant = <tenant from the service principal created above>
+$clusterName = #<name of your Kubernetes cluster>
+$resourceGroup = #<Azure resource group to store your connected Kubernetes cluster in Azure Arc>
+$location = #<Azure resource group location. This can only be eastus or westeurope for Azure Arc for Kubernetes>
+$subscriptionId = #<Azure subscription Id>
+$appId = #<appID from the service principal created above>
+$password = #<password from the service principal created above>
+$tenant = #<tenant from the service principal created above>
 ```
 Ensure that you have assigned the right values to the variables by running:
 
@@ -155,7 +155,7 @@ kubectl -n azure-arc get deployments,pods
 
 **Output:**
 
-```console
+```
 NAME										                  READY	UP-TO-DATE AVAILABLE AGE
 deployment.apps/cluster-metadata-operator	1/1		1			     1		     16h
 deployment.apps/clusteridentityoperator		1/1		1			     1	       16h
