@@ -56,7 +56,7 @@ landingContent:
           - text: Adapt apps for mixed-OS Kubernetes clusters
             url: adapt-apps-mixed-os-clusters.md
           - text: Use persistent storage in a Windows container and prepare for gMSA
-            url: configure-pvc-gmsa-windows.md
+            url: persistent-storage-windows-nodes.md
 
   - title: Integrate with Azure
     linkLists:
