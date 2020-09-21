@@ -34,8 +34,8 @@ landingContent:
             url: setup.md
           - text: Set up AKS with PowerShell
             url: setup-powershell.md
-       - linkListType: quickstart
-         links:         
+      - linkListType: quickstart
+        links:         
           - text: Create a Kubernetes cluster with Windows Admin Center
             url: create-kubernetes-cluster.md
           - text: Create a Kubernetes cluster with PowerShell
