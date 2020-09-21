@@ -22,7 +22,8 @@ The following steps provide a walkthrough on onboarding Azure Kubernetes Service
 
 Verify you've the following requirements ready:
 
-* An Azure Kubernetes Service on Azure Stack HCI cluster with atleast 1 Linux worker node that is up and running. 
+* An Azure Kubernetes Service on Azure Stack HCI cluster with at least one Linux worker node that is up and running. 
+
 * You'll need a kubeconfig file to access the cluster and cluster-admin role on the cluster for deployment of Arc enabled Kubernetes agents.
 * Have the Azure Kubernetes Service on Azure Stack HCI PowerShell module installed.
 * Azure CLI version 2.3+ is required for installing the Azure Arc enabled Kubernetes CLI extensions. [Install Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). You can also update to the latest version to ensure that you have Azure CLI version 2.3+.
@@ -81,7 +82,8 @@ You need a resource group to hold the connected cluster resource. You can use an
 az group create --name AzureArcTest -l EastUS -o table
 ```
 
-## Step 4: Create a new Service Principal
+## Step 4: Create a new service principal
+
 
 You can skip this step if you've already created a service principal with `contributor` role and know the service principal's appID, password, and tenant values.
 

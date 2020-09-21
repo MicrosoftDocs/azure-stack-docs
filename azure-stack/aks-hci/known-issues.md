@@ -2,7 +2,7 @@
 title: Known issues for Azure Kubernetes Service on Azure Stack HCI 
 description: Known issues for Azure Kubernetes Service on Azure Stack HCI 
 author: abha
-ms.topic: how-to
+ms.topic: troubleshooting
 ms.date: 09/22/2020
 ms.author: abha
 ms.reviewer: 
