@@ -10,17 +10,18 @@ ms.reviewer:
 
 # Known Issues for Azure Kubernetes Service on Azure Stack HCI Public Preview
 This article describes known issues with the public preview release of Azure Kubernetes Service on Azure Stack HCI.
+
 ## Recovering from a failed AKS on Azure Stack HCI deployment
 If you're experiencing deployment issues or want to reset your deployment make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running Uninstall-AksHci from a PowerShell administrative window.
 
 ## When using kubectl to delete a node, the associated VM might not be deleted
 You'll meet this issue if you follow these steps:
 * Create a Kubernetes cluster
-* Scale the cluster to more than 2 nodes
+* Scale the cluster to more than two nodes
 * Use kubectl delete node <node-name> to delete a node 
 * Run kubectl get nodes. The removed node isn't listed in the output
 * Open a PowerShell Admin Window
-* Run get-vm, The removed node is still listed
+* Run get-vm. The removed node is still listed
 
 This leads to the system not recognizing the node is missing and a new node will not spin up. 
 This will be fixed in a future release
@@ -38,7 +39,7 @@ This is because the PowerShell command to zip a file `Compress-Archive` has an o
 This issue will be fixed in a future release.
 
 ## Azure Kubernetes Service PowerShell deployment doesn't check for available memory before creating a new target cluster
-The Aks-Hci PowerShell commands does not validate the available memory on the host server before creating Kubernetes nodes. This can lead to memory exhaustion and virtual machines to not start. This failure is currently not handled gracefully and the deployment will hang with no clear error message.
+The Aks-Hci PowerShell commands do not validate the available memory on the host server before creating Kubernetes nodes. This can lead to memory exhaustion and virtual machines to not start. This failure is currently not handled gracefully and the deployment will hang with no clear error message.
 If you have a deployment that seems hung, open Eventviewer and check for Hyper-V related error messages indicating not enough memory to start the VM.
 This issue will be fixed in a future release
 
@@ -47,7 +48,7 @@ While deploying Azure Kubernetes Service on an Azure Stack HCI cluster that has 
 This issue will be fixed in a future release.
 
 ## IPv6 must be disabled in the hosting environment
-If both IPv4 and IPv6 addresses are bound to the physical NIC, the cloudagent service for clustering uses the IPv6 address for communication. Other components in the deployment framework only use IPv4. This will result in Windows Admin Center unable to connect to the cluster and will report a remoting failure when trying to connect to the machine.
+If both IPv4 and IPv6 addresses are bound to the physical NIC, the `cloudagent` service for clustering uses the IPv6 address for communication. Other components in the deployment framework only use IPv4. This will result in Windows Admin Center unable to connect to the cluster and will report a remoting failure when trying to connect to the machine.
 Workaround: Disable IPv6 on the physical network adapters.
 This issue will be fixed in a future release
 
@@ -63,5 +64,5 @@ To get around this issue, use a MAC address pool for the load balanced service e
 This issue will be fixed in a future release.
 
 ## Cannot deploy Azure Kubernetes Service to an environment that has separate storage and compute clusters
-Windows Admin Center will not deploy Azure Kubernetes Service to an environment with separate storage and compute clusters as it expects the compute and storage resources to be provided by the same cluster. In most cases, it will not find CSVs exposed by the compute cluster and will refuse to proceed with deployment.
+Windows Admin Center will not deploy Azure Kubernetes Service to an environment with separate storage and compute clusters as it expects the compute and storage resources to be provided by the same cluster. In most cases, it will not find CSVs exposed by the compute cluster and will refuse to continue with deployment.
 This issue will be fixed in a future release.
