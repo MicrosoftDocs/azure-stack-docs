@@ -21,7 +21,7 @@ Verify you have the following requirements ready:
 * A kubeconfig file to access the cluster.
 * Have the Azure Kubernetes Service on Azure Stack HCI PowerShell module installed.
 * Run the commands in this document in a PowerShell administrative window.
-* Ensure that OS specific workloads land on the appropriate container host. If you have a mixed Linux and Windows worker nodes Kubernetes cluster, you can either use node selectors or taints and tolerations. For more information, see [using node selectors and taints and tolerations](deploy-mixed-os-applications.md).
+* Ensure that OS specific workloads land on the appropriate container host. If you have a mixed Linux and Windows worker nodes Kubernetes cluster, you can either use node selectors or taints and tolerations. For more information, see [using node selectors and taints and tolerations](adapt-apps-mixed-os-clusters.md).
 
 ## Deploy the application
 
