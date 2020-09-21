@@ -128,11 +128,11 @@ You can then delete a persistent volume claim by running:
 kubectl.exe delete PersistentVolumeClaim pvc-akshci-csi
 ```
 
-## Configure GMSA support on Windows nodes
+## Configure Group Managed Service Account support on Windows nodes
 
 Group Managed Service Accounts are a specific type of Active Directory account that provides automatic password management, simplified service principal name (SPN) management, and the ability to delegate the management to other administrators across multiple servers. To configure Group Managed Service Accounts (GMSA) for Pods and containers that will run on your Windows nodes, you first have to join your Windows nodes to an Active Directory domain.
 
-To enable GMSA support, your Kubernetes cluster name has to be fewer than 4 characters. This is because the maximum supported length for a domain joined server name is 15 characters, and the AKS on Azure Stack HCI Kubernetes cluster naming convention for a worker node adds a few pre-defined characters to a node name.
+To enable Group Managed Service Account support, your Kubernetes cluster name has to be fewer than 4 characters. This is because the maximum supported length for a domain joined server name is 15 characters, and the AKS on Azure Stack HCI Kubernetes cluster naming convention for a worker node adds a few pre-defined characters to a node name.
 
 To join your Windows worker nodes to a domain, log in to a Windows worker node, by running `kubectl get` and noting the `EXTERNAL-IP` value.
 
@@ -150,7 +150,7 @@ add-computer --domainame "YourDomainName" -restart
 
 Once all Windows worker nodes have been joined to a domain, follow the steps detailed at [configuring GMSA](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa) to apply the Kubernetes GMSA custom resource definitions and webhooks on your Kubernetes cluster.
 
-For more information on Windows container with GMSA, refer [Windows containers and gMSA](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts). 
+For more information on Windows container with GMSA, refer [Windows containers and GMSA](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts). 
 
 ## Next Steps
 - [Deploy a Windows application on your Kubernetes cluster](./deploy-windows-application.md).
