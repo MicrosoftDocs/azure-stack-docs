@@ -16,10 +16,7 @@ ms.lastreviewed: 09/25/2020
 
 # Deploy a GPU enabled IoT module on Azure Stack Hub
 
-In this article, you will install GPU drivers for your Azure Stack Hub virtual machines (VM)
-and begin developing modules to Linux devices running IoT Edge. IoT Edge allows
-you to remotely manage code on your devices so that you can send more of your
-workloads to the edge.
+In this article, you will install GPU drivers for your Azure Stack Hub virtual machines (VM) and begin developing modules to Linux devices running IoT Edge. IoT Edge allows you to remotely manage code on your devices so that you can send more of your workloads to the edge.
 
 This article takes advantage of GPU optimized VMs to run compute-intensive,
 graphics-intensive, and visualization workloads. GPU optimized VM sizes are
@@ -28,11 +25,13 @@ specialized virtual machines available with single or multiple NVIDIA GPUs.
 In this article you'll learn how to:
   - Deploy a GPU module to an IoT Edge VM on Azure Stack Hub.
   - Benchmark processing times for GPUs and CPUs.
-  - Included models:  This sample includes PyTorch and TensorFlow benchmarking sample code for CPU against GPU.
+  - Included models: This sample includes PyTorch and TensorFlow benchmarking sample code for CPU against GPU.
 
 ## Prerequisites
 
-Azure Stack Hub and Azure
+You will need to have the following resources in place in your Azure Stack Hub instance, global Azure, and on your local development machine.
+
+### Azure Stack Hub and Azure
 
   - A subscription as a user using Azure Active Directory (Azure AD) in an Azure Stack Hub Integrated System with an NVIDA GPU.
   - A global Azure subscription.
@@ -42,7 +41,7 @@ Azure Stack Hub and Azure
     hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)
     in Azure.
 
-A development machine:
+### A development machine
 
 -   You can use your own computer or a virtual machine, depending on your
     development preferences. Your development machine will need to support nested virtualization. This capability is necessary for running Docker, the container engine used in this article.
@@ -64,7 +63,7 @@ Use a separate device to host your IoT Edge device. Using a separate device will
 Create an IoT Edge device in Azure with a Linux virtual machine:
 
 1.  [Create an N-series Linux Server
-    VM](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-linux-portal?view=azs-1910)
+    VM](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-linux-portal)
     on Azure Stack Hub
 
 2.  [Create and register an IoT Edge
