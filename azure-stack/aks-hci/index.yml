@@ -44,7 +44,7 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Adapt apps for mixed-OS Kubernetes clusters
-            url: deploy-mixed-OS-applications.md
+            url: adapt-apps-mixed-os-clusters.md
 
   - title: Integrate with Azure
     linkLists:
