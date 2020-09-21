@@ -3,10 +3,10 @@ title: Azure Stack Hub Operator Access Workstation
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: asganesh
 ms.topic: article
-ms.date: 09/15/2020
+ms.date: 09/21/2020
 ms.author: justinha
 ms.reviewer: asganesh
-ms.lastreviewed: 09/15/2020
+ms.lastreviewed: 09/21/2020
 
 # Intent: As an Azure Stack operator, I want to download and configure an Azure Stack Hub Operator Access Workstation.
 # Keyword: azure stack hub operator access workstation
@@ -143,7 +143,7 @@ Two parameter sets are available for New-OAW. Optional parameters are shown in b
 New-OAW 
 -LocalAdministratorPassword <Security.SecureString> `
 [-AzureStackCertificatePath <String>] `
-[-CertificatePassword] `
+[-CertificatePassword <Security.SecureString>] `
 [-ERCSVMIP <String[]>] `
 [-DNS <String[]>] `
 [-DeploymentDataFilePath <String>] `
@@ -172,7 +172,7 @@ New-OAW
 -DefaultGateway <String> `
 -DNS <String[]> `
 [-AzureStackCertificatePath <String>] `
-[-CertificatePassword] `
+[-CertificatePassword <Security.SecureString>] `
 [-ERCSVMIP <String[]>] `
 [-ImageFilePath <String>] `
 [-VirtualMachineName <String>] `
