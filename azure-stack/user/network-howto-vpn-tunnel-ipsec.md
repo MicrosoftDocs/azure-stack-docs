@@ -1,5 +1,5 @@
 ---
-title: How to create a VPN Tunnel using IPSEC  in Azure Stack Hub 
+title: Create VPN Tunnel using IPSEC in Azure Stack Hub 
 description: Learn how to create a VPN Tunnel using IPSEC  in Azure Stack Hub.
 author: mattbriggs
 
