@@ -38,7 +38,7 @@
     - name: Adapt apps for mixed-OS Kubernetes clusters
       href: adapt-apps-mixed-os-clusters.md
     - name: Use persistent storage in a Windows container and prepare for gMSA
-      href: configure-pvc-gmsa-windows.md
+      href: persistent-storage-windows-nodes.md
     - name: Troubleshoot
       href: troubleshoot.md
 - name: Related
