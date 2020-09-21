@@ -1,5 +1,14 @@
-# Known Issues for Azure Kubernetes Service on Azure Stack HCI Public Preview
+---
+title: Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc for Kubernetes
+description: Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc for Kubernetes
+author: abha
+ms.topic: how-to
+ms.date: 09/22/2020
+ms.author: abha
+ms.reviewer: 
+---
 
+# Known Issues for Azure Kubernetes Service on Azure Stack HCI Public Preview
 
 ## Recovering from a failed AKS on Azure Stack HCI deployment
 If you are experiencing deployment issues or want to reset your deployment make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running Uninstall-AksHci from a PowerShell administrative window.
