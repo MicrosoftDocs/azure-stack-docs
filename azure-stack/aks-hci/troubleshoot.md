@@ -47,6 +47,28 @@ az login –tenant <tenant>
 ```
 * If you have just created a new Azure account and have not logged into the account on your gateway machine, you may experience issues registering your WAC gateway with Azure. To mitigate this issue, sign into your Azure account in another browser tab or window, then register the WAC gateway to Azure.
 
+### Creating Windows Admin Center logs
+When reporting issues in Windows Admin Center, it is helpful to attach logs so the development team can diagnose your issue. Errors in Windows Admin Center generally come in two forms: events that show up in the event viewer on the machine running Windows Admin Center or JavaScript issues that surface in the browser console. To collect logs for Windows Admin Center, use the `Get-SMEUILogs.ps1` script provided in the public preview package. 
+ 
+To use the script, run the following command in the file directory where your script is stored: 
+ 
+```PowerShell
+./Get-SMEUILogs.ps1 -ComputerNames [comp1, comp2, etc.] -Destination [comp3] -HoursAgo [48] -NoCredentialPrompt
+```
+ 
+The command has the following parameters:
+ 
+* **-ComputerNames**: A list of machines you want to collect logs from.
+* **-Destination**: The machine you’d like to aggregate the logs to.
+* **-HoursAgo**: This parameter defines how many hours ago from the script runtime you’d like to collect logs from.
+* **-NoCredentialPrompt**: This is a switch to turn off credentials prompt and use the default credentials in your current environment.
+ 
+If you have difficulties running this script, you can run the following command to view the help text: 
+ 
+```PowerShell
+GetHelp .\Get-SMEUILogs.ps1 -Examples
+```
+
 ## Troubleshooting Windows worker nodes 
 To log in to a Windows worker node, first get the IP address of your node by running `kubectl get` and note the `EXTERNAL-IP` value:
 
