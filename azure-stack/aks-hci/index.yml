@@ -23,21 +23,19 @@ landingContent:
         links:
           - text: Kubernetes core concepts for AKS
             url: kubernetes-concepts.md
-
-  - title: Set up AKS on Azure Stack HCI
+            
+    - title: Get started
     linkLists:
       - linkListType: deploy
         links:
           - text: Check system requirements
             url: system-requirements.md
-          - text: Set up with Windows Admin Center
+          - text: Set up AKS with Windows Admin Center
             url: setup.md
-          - text: Set up with PowerShell
+          - text: Set up AKS with PowerShell
             url: setup-powershell.md
-  - title: Create AKS clusters on Azure Stack HCI
-    linkLists:
-      - linkListType: quickstart
-        links:         
+       - linkListType: quickstart
+         links:         
           - text: Create a Kubernetes cluster with Windows Admin Center
             url: create-kubernetes-cluster.md
           - text: Create a Kubernetes cluster with PowerShell
