@@ -8,19 +8,17 @@ ms.author: abha
 ms.reviewer: 
 ---
 
-# Use persistent storage in a Windows container
+# Use persistent storage in a Windows container and prepare Windows nodes for group Managed Service Accounts
 
-## Overview
-
-A persistent volume represents a piece of storage that has been provisioned for use with Kubernetes pods. A persistent volume can be used by one or more pods and is meant for long-term storage. It is also independent of pod or node lifecycle.  In this section, you'll see how to create a persistent volume and how to use this volume in your Windows application.
+A persistent volume represents a piece of storage that has been provisioned for use with Kubernetes pods. A persistent volume can be used by one or more pods and is meant for long-term storage. It's also independent of pod or node lifecycle.  In this section, you'll see how to create a persistent volume and how to use this volume in your Windows application.
 
 ## Before you begin
 
-Verify you've the following requirements ready:
+Here's what you need to get started:
 
-* A Kubernetes cluster with atleast 1 Windows worker node.
+* A Kubernetes cluster with at least one Windows worker node.
 * A kubeconfig file to access the Kubernetes cluster.
-* Run the commands in this document in a PowerShell administrative window.
+
 
 ## Create a persistent volume claim
 
@@ -38,12 +36,12 @@ spec:
   requests:
    storage: 10Gi
 ```
-Create the volume by running the following command: 
+Create the volume by running the following command from a PowerShell administrator session: 
 
 ```PowerShell
 kubectl create -f pvc-akshci-csi.yaml 
 ```
-The following output will show that your pvc has been created successfully:
+The following output will show that your persistent volume claim has been created successfully:
 
 **Output:**
 ```PowerShell
@@ -52,7 +50,7 @@ persistentvolumeclaim/pvc-akshci-csi created
 
 ## Use persistent volume
 
-To use a pvc, create a file named winwebserver.yaml and copy in the following YAML definition. You will then create a pod with access to the persistent volume claim and vhdx. 
+To use a persistent volume, create a file named winwebserver.yaml and copy in the following YAML definition. You will then create a pod with access to the persistent volume claim and vhdx. 
 
 In the yaml definition below, *mountPath* is the path to mount a volume inside a container. After a successful pod creation, you will see the subdirectory *mnt* created in *C:\\* and the subdirectory *akshciscsi* created inside *mnt*.
 
@@ -102,7 +100,7 @@ To make sure the pod is running, run the following command. Wait a few minutes u
 ```PowerShell
 kubectl get pods -o wide 
 ```
-Once your pod is running, view  the pod status by running the following command: 
+Once your pod is running, view the pod status by running the following command: 
 
 ```PowerShell
 kubectl.exe describe pod %podName% 
@@ -116,7 +114,7 @@ kubectl exec -it %podname% cmd.exe 
 
 ## Delete a persistent volume claim
 
-Before deleting a persistent volume claim, you've to delete the app deployment by running:
+Before deleting a persistent volume claim, you must delete the app deployment by running:
 
 ```PowerShell
 kubectl.exe delete deployments win-webserver
@@ -128,11 +126,11 @@ You can then delete a persistent volume claim by running:
 kubectl.exe delete PersistentVolumeClaim pvc-akshci-csi
 ```
 
-## Configure Group Managed Service Account support on Windows nodes
+## Prepare Windows nodes for group Managed Service Account support on Windows nodes
 
-Group Managed Service Accounts are a specific type of Active Directory account that provides automatic password management, simplified service principal name (SPN) management, and the ability to delegate the management to other administrators across multiple servers. To configure Group Managed Service Accounts (GMSA) for Pods and containers that will run on your Windows nodes, you first have to join your Windows nodes to an Active Directory domain.
+Group Managed Service Accounts are a specific type of Active Directory account that provides automatic password management, simplified service principal name (SPN) management, and the ability to delegate the management to other administrators across multiple servers. To configure group Managed Service Accounts (gMSA) for pods and containers that will run on your Windows nodes, you first have to join your Windows nodes to an Active Directory domain.
 
-To enable Group Managed Service Account support, your Kubernetes cluster name has to be fewer than 4 characters. This is because the maximum supported length for a domain joined server name is 15 characters, and the AKS on Azure Stack HCI Kubernetes cluster naming convention for a worker node adds a few pre-defined characters to a node name.
+To enable group Managed Service Account support, your Kubernetes cluster name has to be fewer than 4 characters. This is because the maximum supported length for a domain joined server name is 15 characters, and the AKS on Azure Stack HCI Kubernetes cluster naming convention for a worker node adds a few pre-defined characters to a node name.
 
 To join your Windows worker nodes to a domain, log in to a Windows worker node, by running `kubectl get` and noting the `EXTERNAL-IP` value.
 
@@ -148,10 +146,10 @@ After you've successfully logged in to your Windows worker node, run the followi
 add-computer --domainame "YourDomainName" -restart
 ```
 
-Once all Windows worker nodes have been joined to a domain, follow the steps detailed at [configuring GMSA](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa) to apply the Kubernetes GMSA custom resource definitions and webhooks on your Kubernetes cluster.
+Once all Windows worker nodes have been joined to a domain, follow the steps detailed at [configuring gMSA](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa) to apply the Kubernetes gMSA custom resource definitions and webhooks on your Kubernetes cluster.
 
-For more information on Windows container with GMSA, refer [Windows containers and GMSA](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts). 
+For more information on Windows container with gMSA, refer [Windows containers and gMSA](/virtualization/windowscontainers/manage-containers/manage-serviceaccounts). 
 
-## Next Steps
+## Next steps
 - [Deploy a Windows application on your Kubernetes cluster](./deploy-windows-application.md).
 - [Connect your Kubernetes cluster to Azure Arc for Kubernetes](./connect-to-arc.md).
