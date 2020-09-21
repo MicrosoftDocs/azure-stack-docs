@@ -10,8 +10,8 @@ ms.reviewer:
 
 # Tutorial: Deploy Windows applications in Azure Kubernetes Service on Azure Stack HCI
 
-In this tutorial, you deploy an ASP.NET sample application in a Windows Server container to the Kubernetes cluster. You then see how to test your application. 
-This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI.
+In this tutorial, you deploy an ASP.NET sample application in a Windows Server container to the Kubernetes cluster. You then see how to test and scale your application. 
+This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI](kubernetes-concepts.md).
 
 ## Before you begin
 
@@ -21,7 +21,7 @@ Verify you have the following requirements ready:
 * A kubeconfig file to access the cluster.
 * Have the Azure Kubernetes Service on Azure Stack HCI PowerShell module installed.
 * Run the commands in this document in a PowerShell administrative window.
-* Ensure that OS specific workloads land on the appropriate container host. If you have a mixed Linux and Windows worker nodes Kubernetes cluster, you can either use nodeSelectors or taints and tolerations. 
+* Ensure that OS specific workloads land on the appropriate container host. If you have a mixed Linux and Windows worker nodes Kubernetes cluster, you can either use node selectors or taints and tolerations. For more information, see [using node selectors and taints and tolerations](deploy-mixed-os-applications.md).
 
 ## Deploy the application
 
@@ -121,6 +121,26 @@ To see the sample app in action, open a web browser to the external IP address o
 ![Image of browsing to ASP.NET sample application](media/deploy-windows-application/asp-net-sample-app.png)
 
 If you receive a connection timeout when trying to load the page, verify if the sample app is ready with `kubectl get pods --watch` command. Sometimes, the external IP address is available before the windows container has started.
+
+## Scale application pods
+
+We have created a single replica of the application front-end. To see the number and state of pods in your cluster, use the `kubectl get` command as follows:
+
+```console
+kubectl get pods -n default
+```
+
+To change the number of pods in the *sample* deployment, use the `kubectl scale` command. The following example increases the number of front-end pods to *3*:
+
+```console
+kubectl scale --replicas=3 deployment/sample
+```
+
+Run `kubectl get pods` again to verify that additional pods have been created. After a minute or so, the additional pods are available in your cluster:
+
+```console
+kubectl get pods -n default
+```
 
 ## Next steps
 
