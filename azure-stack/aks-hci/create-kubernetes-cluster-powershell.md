@@ -11,7 +11,7 @@ ms.author: jeguan
 
 > Applies to: Azure Stack HCI
 
-In this quickstart, you learn how to use Windows PowerShell to create a Kubernetes cluster on Azure Stack HCI. To instead use Windows Admin Center, see [Create a Kubernetes cluster with Windows Admin Center](create-kubernetes-cluster.md).
+In this quickstart, you learn how to use Windows PowerShell to create a Kubernetes cluster on Azure Stack HCI. To instead use Windows Admin Center, see [Create a Kubernetes cluster with Windows Admin Center](setup.md).
 
 ## Before you begin
 
