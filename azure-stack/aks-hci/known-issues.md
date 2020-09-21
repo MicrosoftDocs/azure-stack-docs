@@ -1,6 +1,6 @@
 ---
-title: Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc for Kubernetes
-description: Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc for Kubernetes
+title: Known issues for Azure Kubernetes Service on Azure Stack HCI 
+description: Known issues for Azure Kubernetes Service on Azure Stack HCI 
 author: abha
 ms.topic: how-to
 ms.date: 09/22/2020
@@ -18,7 +18,7 @@ You will encounter this issue if you follow these steps:
 * Create a Kubernetes cluster
 * Scale the cluster to more than 2 nodes
 * Use kubectl delete node <node-name> to delete a node 
-* Run kubectl get nodes. The removed node does is not listed in the output
+* Run kubectl get nodes. The removed node is not listed in the output
 * Open a PowerShell Admin Window
 * Run get-vm, The removed node is still listed
 
@@ -34,7 +34,7 @@ Users deploying and configuring Azure Kubernetes Service on Azure Stack HCI need
 
 ## Get-AksHciLogs command may fail
 With large clusters the Get-AksHciLogs command may throw an exception, fail to enumerate nodes or will not generate c:\wssd\wssdlogs.zip output file.
-This is because the PowerShell command to zip a file `Compress-Archive` has an output file size limit of 2GB. 
+This is because the PowerShell command to zip a file `Compress-Archive` has an output file size limit of 2 GB. 
 This issue will be fixed in a later release.
 
 ## Azure Kubernetes Service PowerShell deployment does not check for available memory before creating a new target cluster
@@ -42,18 +42,18 @@ The Aks-Hci PowerShell commands does not validate the available memory on the ho
 If you have a deployment that seems hung, open Eventviewer and check for Hyper-V related error messages indicating not enough memory to start the VM.
 This issue will be fixed in a future release
 
-## Azure Kubernetes Service deployment fails on an Azure Stack HCI configured with static IPs, VLANs, SDN or proxies.
-While deploying Azure Kubernetes Service on an Azure Stack HCI cluster that has static IPs, VLANs, SDN or proxies, the deployment fails at cluster creation. 
+## Azure Kubernetes Service deployment fails on an Azure Stack HCI configured with static IPs, VLANs, SDN, or proxies.
+While deploying Azure Kubernetes Service on an Azure Stack HCI cluster that has static IPs, VLANs, SDN, or proxies, the deployment fails at cluster creation. 
 This issue will be fixed in a future release.
 
 ## IPv6 must be disabled in the hosting environment
 If both IPv4 and IPv6 addresses are bound to the physical NIC, the cloudagent service for clustering uses the IPv6 address for communication. Other components in the deployment framework only use IPv4. This will result in Windows Admin Center unable to connect to the cluster and will report a remoting failure when trying to connect to the machine.
-Workaround: Disable IPv6 on the physical network adapters
+Workaround: Disable IPv6 on the physical network adapters.
 This issue will be fixed in a future release
 
 ## Moving virtual machines between Azure Stack HCI cluster nodes quickly leads to VM startup failures
 When using the cluster administration tool to move a VM from one node (Node A) to another node (Node B) in the Azure Stack HCI cluster, the VM may fail to start on the new node. After moving the VM back to the original node it will fail to start there as well.
-This issue happens because the logic to cleanup the first migration runs asynchronously. As a result, Azure Kubernetes Service's "update VM location" logic finds the VM on the original Hyper-V on node A, and deletes it, instead of unregistering it.
+This issue happens because the logic to clean up the first migration runs asynchronously. As a result, Azure Kubernetes Service's "update VM location" logic finds the VM on the original Hyper-V on node A, and deletes it, instead of unregistering it.
 Workaround: Ensure the VM has started successfully on the new node before moving it back to the original node.
 This issue will be fixed in a future release
 
@@ -63,5 +63,5 @@ To get around this issue, use a MAC address pool for the load balanced service e
 This issue will be fixed in a future release.
 
 ## Cannot deploy Azure Kubernetes Service to an environment that has separate storage and compute clusters
-Windows Admin Center will not deploy Azure Kubernetes Service to an environment with separate storage and compute clusters as it expects the compute and storage resources to be provided by the same cluster. In most cases it will not find CSVs exposed by the compute cluster and will refuse to proceed with deployment.
+Windows Admin Center will not deploy Azure Kubernetes Service to an environment with separate storage and compute clusters as it expects the compute and storage resources to be provided by the same cluster. In most cases, it will not find CSVs exposed by the compute cluster and will refuse to proceed with deployment.
 This issue will be fixed in a future release.
