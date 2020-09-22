@@ -1,0 +1,64 @@
+### YamlMime:Landing
+
+title: Azure Kubernetes Service on Azure Stack HCI documentation
+summary: Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of the popular Azure Kubernetes Service (AKS) orchestrator, which automates running containerized applications at scale. Azure Kubernetes Service is now in preview on Azure Stack HCI, making it quicker to get started hosting Linux and Windows containers in your datacenter.
+
+metadata:
+  title: Azure Kubernetes Service on Azure Stack HCI documentation
+  description: Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of the popular Azure Kubernetes Service (AKS) orchestrator, which automates running containerized applications at scale. Azure Kubernetes Service is now in preview on Azure Stack HCI, making it quicker to get started hosting Linux and Windows containers in your datacenter.
+  ms.topic: landing-page
+  author: jasongerend
+  ms.author: jgerend
+  ms.date: 09/22/2020
+
+
+landingContent:
+  - title: About Azure Kubernetes Service
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is Azure Kubernetes Service on Azure Stack HCI?
+            url: overview.md
+      - linkListType: concept
+        links:
+          - text: Kubernetes core concepts for AKS
+            url: kubernetes-concepts.md
+            
+  - title: Get started
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text: Check system requirements
+            url: system-requirements.md
+      - linkListType: quickstart
+        links:
+          - text: Set up AKS with Windows Admin Center
+            url: setup.md
+          - text: Set up AKS with PowerShell
+            url: setup-powershell.md    
+          - text: Create a Kubernetes cluster with Windows Admin Center
+            url: create-kubernetes-cluster.md
+          - text: Create a Kubernetes cluster with PowerShell
+            url: create-kubernetes-cluster-powershell.md
+
+  - title: Deploy Windows and Linux applications
+    linkLists:
+      - linkListType: tutorial
+        links:
+          - text: Use Windows Server containers
+            url: deploy-windows-application.md
+          - text: Use Linux containers
+            url: deploy-linux-application.md
+      - linkListType: how-to-guide
+        links:
+          - text: Adapt apps for mixed-OS Kubernetes clusters
+            url: adapt-apps-mixed-os-clusters.md
+          - text: Use persistent storage in a Windows container and prepare for gMSA
+            url: persistent-storage-windows-nodes.md
+
+  - title: Integrate with Azure
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Connect to Azure Arc for Kubernetes
+            url: connect-to-arc.md
