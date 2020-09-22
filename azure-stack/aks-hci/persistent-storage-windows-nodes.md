@@ -36,7 +36,8 @@ spec:
   requests:
    storage: 10Gi
 ```
-Create the volume by running the following command from a PowerShell administrator session: 
+Create the volume by running the following commands in an administrative PowerShell session on one of the servers in the Azure Stack HCI cluster (using a method such as [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession) or Remote Desktop to connect to the server): 
+
 
 ```PowerShell
 kubectl create -f pvc-akshci-csi.yaml 
