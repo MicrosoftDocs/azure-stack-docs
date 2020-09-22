@@ -1,6 +1,6 @@
 ---
 title: Validate an Azure Stack HCI cluster
-description: This how-to article focuses on why cluster validation is important, and when to run it on an existing Azure Stack HCI cluster. The article includes validation scenarios for troubleshooting an updated server cluster.
+description: Understand cluster validation's importance, and when to run it on an existing Azure Stack HCI cluster. Explore scenarios for troubleshooting an updated server cluster.
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article

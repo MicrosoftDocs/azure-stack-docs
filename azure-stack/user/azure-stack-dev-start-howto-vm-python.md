@@ -1,5 +1,5 @@
 ---
-title: Deploy a Python web app to a virtual machine in Azure Stack Hub 
+title: Deploy Python web app to VM in Azure Stack Hub 
 description: Deploy a Python web app to a virtual machine in Azure Stack Hub.
 author: mattbriggs
 
