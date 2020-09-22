@@ -3,17 +3,17 @@ title: Azure Stack Hub Operator Access Workstation
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: asganesh
 ms.topic: article
-ms.date: 09/21/2020
+ms.date: 09/22/2020
 ms.author: justinha
 ms.reviewer: asganesh
-ms.lastreviewed: 09/21/2020
+ms.lastreviewed: 09/22/2020
 
 # Intent: As an Azure Stack operator, I want to download and configure an Azure Stack Hub Operator Access Workstation.
 # Keyword: azure stack hub operator access workstation
 
 ---
 
-# Azure Stack Hub Operator Access Workstation (preview only)
+# Azure Stack Hub Operator Access Workstation 
 
 The Operator Access Workstation (OAW) is used to deploy a jump box virtual machine (VM) on the Hardware Lifecycle Host (HLH) that runs version 2005 or later so an Azure Stack Hub operator can access the privileged endpoint (PEP) and the Administrator portal for support scenarios. 
 
@@ -32,7 +32,7 @@ The following tables lists common scenarios for the OAW, but this is not exclusi
 
 ## Download files
 
-To get the files to create the OAW VM for the preview, [**download here**](https://aka.ms/OAWDownload). Please be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](https://docs.microsoft.com/legal/azure-stack-hub/azure-stack-operator-access-workstation-legal-terms) prior to download.
+To get the files to create the OAW VM, [**download here**](https://aka.ms/OAWDownload). Please be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](https://docs.microsoft.com/legal/azure-stack-hub/azure-stack-operator-access-workstation-legal-terms) prior to download.
 
 Due to the stateless nature of the solution, there are no updates for the OAW VM. For each milestone, a new version of the VM image file will be released. Use the latest version to create a new OAW VM. The image file is based on the latest Windows Server 2019 version. After installation, you can apply updates, including any critical updates, using Windows Update. 
 
