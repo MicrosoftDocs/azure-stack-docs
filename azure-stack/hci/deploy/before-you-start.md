@@ -61,7 +61,7 @@ For stretched clusters, there is also additional Storage Replica traffic flowing
 
 When you create an Azure Stack HCI cluster, you have the option to deploy Network Controller to enable software defined networking (SDN). If you intend to use SDN, make sure the hosts have at least 50-100 GB of free space to create the Network Controller VMs. Also, you must copy a virtual hard disk (VHD) of the Azure Stack HCI operating system to the first node in the cluster in order to create the Network Controller VMs. You can prepare the VHD using Sysprep or by running the Convert-WindowsImage script to convert an .iso file into a VHD.
 
-For more information about preparing for using SDN in Azure Stack HCI, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure) and [Plan to deploy Network Controller](../concepts/network-controller).
+For more information about preparing for using SDN in Azure Stack HCI, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md) and [Plan to deploy Network Controller](../concepts/network-controller.md).
 
 ### Domain requirements
 
