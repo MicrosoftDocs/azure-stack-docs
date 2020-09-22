@@ -1,5 +1,5 @@
 ---
-title: Close-PrivilegedEndpoint privileged endpoint for Azure Stack Hub
+title: Set-Telemetry
 description: Reference for PowerShell Azure Stack privileged endpoint - Close-PrivilegedEndpoint
 author: mattbriggs
 

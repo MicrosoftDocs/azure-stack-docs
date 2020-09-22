@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/25/2020
+ms.date: 09/18/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 08/13/2020
@@ -40,13 +40,6 @@ To access known issues for a different version, use the version selector dropdow
 For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
 ## Portal
-
-### Subscription permissions
-
-- Applicable: This issue applies to all supported releases.
-- Cause: You cannot view permissions to your subscription using the Azure Stack Hub portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
-- Occurrence: Common
 
 ### Administrative subscriptions
 
@@ -103,6 +96,12 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ## Compute
 
+### Issues deploying virtual machine scale set with Standard_DS2_v2 size using the portal
+
+- Applicable: This issue applies to the 2005 release.
+- Cause: A portal bug causes scale set creation with Standard_DS2_v2 size to fail.
+- Remediation: Use PowerShell or CLI to deploy this virtual machine scale set VM size.
+
 ### Issues using VM extensions in Ubuntu Server 20.04
 
 - Applicable: This issue applies to **Ubuntu Server 20.04 LTS**.
@@ -121,6 +120,12 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: When creating a new virtual machine, you may receive an error such as **This subscription is at capacity for Total Regional vCPUs on this location. This subscription is using all 50 Total Regional vCPUs available.**. This indicates that the quota for total cores available to you has been reached.
 - Remediation: Ask your operator for an add-on plan with additional quota. Editing the current plan's quota will not work or reflect increased quota.
 - Occurrence: Rare
+
+### VM overview blade does not show correct computer name
+
+- Applicable: This issue applies to all releases.
+- Cause: When viewing details of a VM in the overview blade, the computer name shows as **(not available)**. This is by design for VMs created from specialized disks/disk snapshots, and appears for Marketplace images as well.
+- Remediation: View the **Properties** blade under **Settings**.
 
 ### Virtual machine scale set
 
@@ -266,16 +271,17 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
   - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
 ## Compute
-### Cannot create a VMSS with Standard_DS2_v2 VM size on portal
+
+### Cannot create a virtual machine scale set with Standard_DS2_v2 VM size on portal
 
 - Applicable: This issue applies to the 2002 release.
-- Cause: There is a portal bug that prevents VMSS creation with the Standard_DS2_v2 VM size. Creating one will error out with: "{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"BadRequest","message":"{\r\n \"error\": {\r\n \"code\": \"NetworkProfileValidationError\",\r\n \"message\": \"Virtual Machine size Standard_DS2_v2 is not in the allowed list of VM sizes for accelerated networking to be enabled on the VM at index 0 for VM Scale Set /subscriptions/x/resourceGroups/RGVMSS/providers/Microsoft.Compute/virtualMachineScaleSets/vmss. Allowed sizes: .\"\r\n }\r\n}"}]}"
-- Remediation: Create a VMSS with PowerShell or a resource manager template.
+- Cause: There is a portal bug that prevents virtual machine scale set creation with the Standard_DS2_v2 VM size. Creating one will error out with: "{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"BadRequest","message":"{\r\n \"error\": {\r\n \"code\": \"NetworkProfileValidationError\",\r\n \"message\": \"Virtual Machine size Standard_DS2_v2 is not in the allowed list of VM sizes for accelerated networking to be enabled on the VM at index 0 for VM Scale Set /subscriptions/x/resourceGroups/RGVMSS/providers/Microsoft.Compute/virtualMachineScaleSets/vmss. Allowed sizes: .\"\r\n }\r\n}"}]}"
+- Remediation: Create a virtual machine scale set with PowerShell or a resource manager template.
 
 ### VM overview blade does not show correct computer name
 
 - Applicable: This issue applies to all releases.
-- Cause: When viewing details of a VM in the overview blade, the computer name shows as **(not available)**. This is by design for VMs created from specialized disks/disk snapshots.
+- Cause: When viewing details of a VM in the overview blade, the computer name shows as **(not available)**. This is by design for VMs created from specialized disks/disk snapshots, and appears for Marketplace images as well.
 - Remediation: View the **Properties** blade under **Settings**.
 
 ### NVv4 VM size on portal

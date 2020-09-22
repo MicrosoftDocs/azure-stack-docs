@@ -42,7 +42,7 @@ Before you resize a volume, make sure you have enough capacity in the storage po
 
 In Storage Spaces Direct, every volume is comprised of several stacked objects: the cluster shared volume (CSV), which is a volume; the partition; the disk, which is a virtual disk; and one or more storage tiers (if applicable). To resize a volume, you will need to resize several of these objects.
 
-![volumes-in-smapi](media/extend-volumes/volumes-in-smapi.png)
+![Diagram shows the layers of a volume, including cluster shard volume, volume, partition, disk, virtual disk, and storage tiers.](media/extend-volumes/volumes-in-smapi.png)
 
 To familiarize yourself with them, try running **Get-** with the corresponding noun in PowerShell.
 
@@ -84,7 +84,7 @@ Get-VirtualDisk <FriendlyName> | Resize-VirtualDisk -Size <Size>
 
 When you resize the **VirtualDisk**, the **Disk** follows automatically and is resized too.
 
-![Resize-VirtualDisk](media/extend-volumes/Resize-VirtualDisk.gif)
+![Animated diagram shows the virtual disk of a volume becoming larger while the disk layer immediately above it automatically becomes larger as a result.](media/extend-volumes/Resize-VirtualDisk.gif)
 
 #### With storage tiers
 
@@ -107,7 +107,7 @@ Get-StorageTier <FriendlyName> | Resize-StorageTier -Size <Size>
 
 When you resize the **StorageTier**(s), the **VirtualDisk** and **Disk** follow automatically and are resized too.
 
-![Resize-StorageTier](media/extend-volumes/Resize-StorageTier.gif)
+![Animated diagram shows first one then another storage tier becoming large while the virtual disk layer and disk layer above become larger as well.](media/extend-volumes/Resize-StorageTier.gif)
 
 ### Step 2 – Resize the partition
 
@@ -128,7 +128,7 @@ $Partition | Resize-Partition -Size ($Partition | Get-PartitionSupportedSize).Si
 
 When you resize the **Partition**, the **Volume** and **ClusterSharedVolume** follow automatically and are resized too.
 
-![Resize-Partition](media/extend-volumes/Resize-Partition.gif)
+![Animated diagram shows the virtual disk layer, at the bottom of the volume, growing larger with each of the layers above it growing larger as well.](media/extend-volumes/Resize-Partition.gif)
 
 That's it!
 
