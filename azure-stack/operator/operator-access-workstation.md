@@ -15,7 +15,7 @@ ms.lastreviewed: 09/22/2020
 
 # Azure Stack Hub Operator Access Workstation 
 
-The Operator Access Workstation (OAW) is used to deploy a jump box virtual machine (VM) on the Hardware Lifecycle Host (HLH) that runs version 2005 or later so an Azure Stack Hub operator can access the privileged endpoint (PEP) and the Administrator portal for support scenarios. 
+The Operator Access Workstation (OAW) is used to deploy a jump box virtual machine (VM) on a Hardware Lifecycle Host (HLH) that runs version 2005 or later so an Azure Stack Hub operator can access the privileged endpoint (PEP) and the Administrator portal for support scenarios. 
 
 The OAW VM should be created when an operator performs a new task. After a required task inside the VM is completed, the VM should be shut down and removed as Azure Stack Hub doesn't need to always run it.  
 
