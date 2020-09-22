@@ -3,10 +3,10 @@ title: Deploy MySQL resource provider on Azure Stack Hub
 description: Learn how to deploy the MySQL resource provider adapter and MySQL databases as a service on Azure Stack Hub.  
 author: bryanla
 ms.topic: article 
-ms.date: 1/22/2020
+ms.date: 9/22/2020
 ms.author: bryanla
-ms.reviewer: xiaofmao
-ms.lastreviewed: 03/18/2019
+ms.reviewer: caoyang
+ms.lastreviewed: 9/22/2020
 
 # Intent: As an Azure Stack operator, I want to deploy the MySQL resource provider adapter and databases as a service on Azure Stack.
 # Keyword: deploy mySQL resource provider azure stack
@@ -16,7 +16,7 @@ ms.lastreviewed: 03/18/2019
 
 # Deploy the MySQL resource provider on Azure Stack Hub
 
-Use the MySQL Server resource provider to expose MySQL databases as an Azure Stack Hub service. The MySQL resource provider runs as a service on a Windows Server 2016 Server Core virtual machine (VM).
+Use the MySQL Server resource provider to expose MySQL databases as an Azure Stack Hub service. The MySQL resource provider runs as a service on a Windows Server 2016 Server Core virtual machine (for adaptor version <= 1.1.47.0>) or a special Add-on RP Windows Server (for adaptor version >= 1.1.93.0).
 
 > [!IMPORTANT]
 > Only the resource provider is supported to create items on servers that host SQL or MySQL. Items created on a host server that aren't created by the resource provider might result in a mismatched state.
@@ -27,15 +27,18 @@ There are several prerequisites that need to be in place before you can deploy t
 
 * If you haven't already, [register Azure Stack Hub](./azure-stack-registration.md) with Azure so you can download Azure Marketplace items.
 
-* Add the required Windows Server core VM to Azure Stack Hub Marketplace by downloading the **Windows Server 2016 Datacenter - Server Core** image.
+* Add the required Windows Server VM to Azure Stack Hub Marketplace.
+  * For MySQL RP version <= 1.1.47.0, download the **Windows Server 2016 Datacenter - Server Core** image.
+  * For MySQL RP version >= 1.1.93.0, download the **Microsoft AzureStack Add-On RP Windows Server INTERNAL ONLY** image. This Windows Server version is specialize for Azure Stack Add-On RP Infrastructure and it is not visible to the tenant marketplace.
 
 * Download the supported version of MySQL resource provider binary according to the version mapping table below. Run the self-extractor to extract the downloaded contents to a temporary directory. 
 
-  |Supported Azure Stack Hub version|MySQL RP version|
-  |-----|-----|
-  |2005, 2002, 1910|[MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)|
-  |1908|[MySQL RP version 1.1.33.0](https://aka.ms/azurestackmysqlrp11330)|
-  |     |     |
+  |Supported Azure Stack Hub version|MySQL RP version|Windows Server that RP service is running on
+  |-----|-----|-----|
+  |2005|[MySQL RP version 1.1.93.0](https://aka.ms/azurestackmysqlrp11930)|Microsoft AzureStack Add-on RP Windows Server INTERNAL ONLY
+  |2005, 2002, 1910|[MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)|Windows Server 2016 Datacenter - Server Core|
+  |1908|[MySQL RP version 1.1.33.0](https://aka.ms/azurestackmysqlrp11330)|Windows Server 2016 Datacenter - Server Core|
+  |     |     |     |
 
 >[!NOTE]
 >To deploy the MySQL provider on a system that doesn't have internet access, copy the [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) file to a local path. Provide the path name using the **DependencyFilesLocalPath** parameter.
@@ -95,7 +98,7 @@ After you've installed all the prerequisites, you can run the **DeployMySqlProvi
  > [!IMPORTANT]
  > Before deploying the resource provider, review the release notes to learn about new functionality, fixes, and any known issues that could affect your deployment.
 
-To deploy the MySQL resource provider, open a new elevated PowerShell window (not PowerShell ISE) and change to the directory where you extracted the MySQL resource provider binary files. 
+To deploy the MySQL resource provider, open a **new** elevated PowerShell window (not PowerShell ISE) and change to the directory where you extracted the MySQL resource provider binary files. 
 
 > [!IMPORTANT]
 > We recommend using a new PowerShell window to avoid potential problems caused by PowerShell modules that are already loaded. Or you can use clear-azurermcontext to clear the cache before running the update script.
@@ -133,7 +136,7 @@ You can specify these parameters from the command line. If you don't, or if any 
 
 ## Deploy the MySQL resource provider using a custom script
 
-If you are deploying the MySQL resource provider version 1.1.33.0 or previous versions, you need to install specific versions of AzureRm.BootStrapper and Azure Stack Hub modules in PowerShell. If you are deploying the MySQL resource provider version 1.1.47.0, the deployment script will automatically download and install the necessary PowerShell modules for you to path C:\Program Files\SqlMySqlPsh.
+If you are deploying the MySQL resource provider version 1.1.33.0 or previous versions, you need to install specific versions of AzureRm.BootStrapper and Azure Stack Hub modules in PowerShell. If you are deploying the MySQL resource provider version 1.1.47.0 or later, the deployment script will automatically download and install the necessary PowerShell modules for you to path C:\Program Files\SqlMySqlPsh.
 
 ```powershell
 # Install the AzureRM.Bootstrapper module, set the profile and install the AzureStack module
@@ -177,7 +180,7 @@ $CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domai
 # Change the following as appropriate.
 $PfxPass = ConvertTo-SecureString 'P@ssw0rd1' -AsPlainText -Force
 
-# For version 1.1.47.0, the PowerShell modules used by the RP deployment are placed in C:\Program Files\SqlMySqlPsh,
+# For version 1.1.47.0 or later, the PowerShell modules used by the RP deployment are placed in C:\Program Files\SqlMySqlPsh,
 # The deployment script adds this path to the system $env:PSModulePath to ensure correct modules are used.
 $rpModulePath = Join-Path -Path $env:ProgramFiles -ChildPath 'SqlMySqlPsh'
 $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
