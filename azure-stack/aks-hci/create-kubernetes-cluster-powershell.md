@@ -11,7 +11,7 @@ ms.author: jeguan
 
 > Applies to: Azure Stack HCI
 
-In this quickstart, you learn how to use Windows PowerShell to create a Kubernetes cluster on Azure Stack HCI. To instead use Windows Admin Center, see [Create a Kubernetes cluster with Windows Admin Center](create-kubernetes-cluster.md).
+In this quickstart, you learn how to use Windows PowerShell to create a Kubernetes cluster on Azure Stack HCI. To instead use Windows Admin Center, see [Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center](setup.md).
 
 ## Before you begin
 
@@ -151,6 +151,6 @@ In this quickstart, you learned how to create, scale, and upgrade a Kubernetes c
 
 ## Next steps
 
-- Connect your clusters to Azure Arc for Kubernetes with [these instructions](./connect-to-arc.md).
-- Deploy a Linux application with [these instructions](./deploy-linux-application.md).
-- Deploy a Windows application with [these instructions](./deploy-windows-application.md).
+- [Connect your clusters to Azure Arc for Kubernetes](./connect-to-arc.md).
+- [Deploy a Linux application on your Kubernetes cluster](./deploy-linux-application.md).
+- [Deploy a Windows application on your Kubernetes cluster](./deploy-windows-application.md).

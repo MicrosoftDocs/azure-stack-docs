@@ -36,7 +36,9 @@
     - name: Connect to Azure Arc for Kubernetes
       href: connect-to-arc.md
     - name: Adapt apps for mixed-OS Kubernetes clusters
-      href: deploy-mixed-OS-applications.md
+      href: adapt-apps-mixed-os-clusters.md
+    - name: Use persistent storage in a Windows container and prepare for gMSA
+      href: persistent-storage-windows-nodes.md
     - name: Troubleshoot
       href: troubleshoot.md
 - name: Related
@@ -53,6 +55,8 @@
   items:
   - name: Release notes
     href: https://aka.ms/aks-hci-relnotes/
+  - name: Known issues
+    href: known-issues.md
   - name: Azure roadmap
     href: https://azure.microsoft.com/roadmap/
   - name: AKS on Azure Stack HCI roadmap

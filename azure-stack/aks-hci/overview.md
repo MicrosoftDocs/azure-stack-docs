@@ -103,7 +103,7 @@ The following sections summarize what you need to run Azure Kubernetes Service o
 Your Windows Admin Center management system has the following requirements:
 
 - Windows 10 (we don't support Windows Admin Center servers right now)
-- 40 GB of free space
+- 60 GB of free space
 - Registered with Azure
 - In the same domain as the Azure Stack HCI cluster
 
@@ -118,11 +118,11 @@ The cluster running Azure Stack HCI, version 20H2 or later has the following req
 
 For general Azure Stack HCI requirements, see [Before you deploy Azure Stack HCI](../hci/deploy/before-you-start.md).
 
-### The compute network for Azure Stack HCI
+### The network configuration for Azure Stack HCI
 
 The network connected to VMs on the Azure Stack HCI cluster requires a dedicated scope of DHCP IPv4 addresses available for Azure Kubernetes Service and accessible by VMs on the Azure Stack HCI cluster
 
-While not strictly necessary, we also recommend avoiding VLAN tags on your compute network, instead using access (untagged) ports on your network switches for the compute network used by Azure Stack HCI and the Azure Kubernetes Service VMs.
+You cannot use VLAN tags on your network for Azure Kubernetes Service on Azure Stack HCI. Use access (untagged) ports on your network switches for the network used by Azure Stack HCI and the Azure Kubernetes Service VMs.
 
 ## Next steps
 
