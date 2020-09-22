@@ -1,6 +1,6 @@
 ---
-title: Use persistent storage and configure GMSA support in a Windows container
-description: Use persistent storage and configure GMSA support in a Windows container
+title: Use Use persistent storage in a Windows container
+description: Use persistent storage in a Windows container and prepare Windows nodes for group Managed Service Accounts
 author: abha
 ms.topic: how-to
 ms.date: 09/21/2020
