@@ -93,7 +93,10 @@ After you've installed all the prerequisites, run the **DeploySqlProvider.ps1** 
  > [!IMPORTANT]
  > Before deploying the resource provider, review the release notes to learn about new functionality, fixes, and any known issues that could affect your deployment.
 
-To deploy the SQL resource provider, open a **new** elevated PowerShell window (not PowerShell ISE) and change to the directory where you extracted the SQL resource provider binary files. We recommend using a new PowerShell window to avoid potential problems caused by PowerShell modules that are already loaded.
+To deploy the SQL resource provider, open a **new** elevated PowerShell window (not PowerShell ISE) and change to the directory where you extracted the SQL resource provider binary files. 
+
+> [!IMPORTANT]
+> We recommend using a new PowerShell window to avoid potential problems caused by PowerShell modules that are already loaded. Or you can use clear-azurermcontext to clear the cache before running the update script.
 
 Run the DeploySqlProvider.ps1 script, which completes the following tasks:
 
@@ -192,15 +195,10 @@ When the resource provider installation script finishes, refresh your browser to
 
 ## Verify the deployment using the Azure Stack Hub portal
 
-You can use the following steps verify that the SQL resource provider is successfully deployed.
-
 1. Sign in to the administrator portal as the service admin.
 2. Select **Resource Groups**.
 3. Select the **system.\<location\>.sqladapter** resource group.
 4. On the summary page for Resource group Overview, there should be no failed deployments.
-
-    ![Verify deployment of the SQL resource provider in Azure Stack Hub administrator portal](./media/azure-stack-sql-rp-deploy/sqlrp-verify.png)
-
 5. Finally, select **Virtual machines** in the administrator portal to verify that the SQL resource provider VM was successfully created and is running.
 
 ## Next steps
