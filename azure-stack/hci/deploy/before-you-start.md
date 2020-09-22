@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/03/2020
+ms.date: 09/22/2020
 ---
 
 # Before you deploy Azure Stack HCI
@@ -43,7 +43,6 @@ An Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency netwo
 - Verify at least one network adapter is available and dedicated for cluster management.
 - Verify that physical switches in your network are configured to allow traffic on any VLANs you will use.
 
-
 There are multiple types of communication going on between server nodes:
 
 - Cluster communication (node joins, cluster updates, registry updates)
@@ -57,6 +56,12 @@ With Storage Spaces Direct, there is additional network traffic to consider:
 - Health – monitoring and managing objects (nodes, drives, network cards, Cluster Service)
 
 For stretched clusters, there is also additional Storage Replica traffic flowing between the sites. Storage Bus Layer (SBL) and Cluster Shared Volume (CSV) traffic does not go between sites, only between the server nodes within each site.
+
+### Software defined networking requirements
+
+When you create an Azure Stack HCI cluster, you have the option to deploy Network Controller to enable software defined networking (SDN). If you intend to use SDN, make sure the hosts have at least 50-100 GB of free space to create the Network Controller VMs. Also, you must copy a virtual hard disk (VHD) of the Azure Stack HCI operating system to the first node in the cluster in order to create the Network Controller VMs. You can prepare the VHD using Sysprep or by running the Convert-WindowsImage script to convert an .iso file into a VHD.
+
+For more information about preparing for using SDN in Azure Stack HCI, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure) and [Plan to deploy Network Controller](../concepts/network-controller).
 
 ### Domain requirements
 
