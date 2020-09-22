@@ -3,7 +3,7 @@ title: Differences between Azure Stack Hub and Azure when using services and bui
 description: Understand the differences between Azure and Azure Stack Hub when using services and building apps.
 author: sethmanheim
 ms.topic: overview
-ms.date: 06/11/2020
+ms.date: 09/21/2020
 ms.author: sethm
 ms.lastreviewed: 12/27/2019
 
@@ -85,3 +85,4 @@ For more detailed information about differences at a service level, see:
 * [Considerations for VMs in Azure Stack Hub](azure-stack-vm-considerations.md)
 * [Considerations for Storage in Azure Stack Hub](azure-stack-acs-differences.md)
 * [Considerations for Azure Stack Hub networking](azure-stack-network-differences.md)
+* [Considerations for Azure Stack Hub SQL resource provider](../operator/azure-stack-sql-resource-provider.md)
