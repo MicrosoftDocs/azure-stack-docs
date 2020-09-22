@@ -452,6 +452,8 @@
   - name: Get support  
     items:
     - name: Help & Support portal 
+      href: operator-access-workstation.md
+    - name: Help & Support portal 
       items:
       - name: Overview      
         href: azure-stack-help-and-support-overview.md
