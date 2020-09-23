@@ -1,17 +1,17 @@
 ---
 
-title: Intent and product brand in a unique string of 43-59 chars including spaces. Do not include site identifier (it is auto-generated).
-description: 115-145 characters including spaces. This abstract displays in the search result.
+title: Virtual network peering in Azure Stack Hub
+description: Learn how to use Virtual network peering to conntect virtual networks in Azure Stack Hub.
 author: sethmanheim
 ms.author: sethm
-ms.date: 09/22/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
 
 ms.reviewer: sranthar
 ms.lastreviewed: 09/22/2020
 ---
 
-# Virtual network peering
+# Virtual Network peering
 
 Virtual network peering enables you to seamlessly connect virtual networks in an Azure Stack Hub environment. The virtual networks appear as one for connectivity purposes. The traffic between virtual machines uses the underlying SDN infrastructure. Like traffic between virtual machines in the same network, traffic is only routed through the Azure Stack Hub private network.
 
@@ -56,7 +56,7 @@ You can also configure the gateway in the peered virtual network as a transit po
 
 Note that a **Connection** object must be created in the VPN gateway prior to enabling the **UseRemoteGateways** options in the peering.
 
-## Virtual Network peering configuration
+## Virtual network peering configuration
 
 **Allow virtual network access:** Enabling communication between virtual networks allows resources connected to either virtual network to communicate with each other with the same bandwidth and latency as if they were connected to the same virtual network. All communication between resources in the two virtual networks is routed through the internal SDN layer.  
 
@@ -74,7 +74,7 @@ You can't use remote gateways if you already have a gateway configured in your v
 
 ## Virtual network peering frequently asked questions (FAQ)
 
-### Virtual network peering?
+### What is Virtual network peering?
 
 Virtual network peering enables you to connect virtual networks. A VNet peering connection between virtual networks enables you to route traffic between them privately through IPv4 addresses. Virtual machines in the peered VNets can communicate with each other as if they are within the same network. VNet peering connections can also be created across multiple subscriptions.
 
@@ -84,7 +84,7 @@ Azure Stack Hub does not support global peering, as the concept of "regions" doe
 
 ### On which Azure Stack Hub update will virtual network peering be available?
 
-Virtual network peering is available on Azure Stack Hub starting with the 2008 update.
+virtual network peering is available in Azure Stack Hub starting with the 2008 update.
 
 ### Can I peer my virtual network in Azure Stack Hub to a virtual network in Azure?
 
