@@ -29,7 +29,7 @@ For more information on FortiGate in Azure Marketplace, see [Fortinet FortiGate 
     - Fortinet FortiGate-VM For Azure BYOL
     - FortiGate NGFW - Single VM Deployment (BYOL)
 
-    ![Azure Stack Hub FortiGate Fortinet](./media/azure-stack-network-solutions-enable/azure-stack-marketplace-FortiGate-fortinet.png)
+    ![Screenshot that shows the available downloaded items.](./media/azure-stack-network-solutions-enable/azure-stack-marketplace-FortiGate-fortinet.png)
 
 4. Wait until your marketplace items have a status of **Downloaded**. The items may take several minutes to download.
 
