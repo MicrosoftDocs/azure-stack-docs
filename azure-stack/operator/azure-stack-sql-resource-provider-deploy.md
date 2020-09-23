@@ -107,7 +107,7 @@ Run the DeploySqlProvider.ps1 script, which completes the following tasks:
 - Uploads the certificates and other artifacts to a storage account on Azure Stack Hub.
 - Publishes gallery packages so you can deploy SQL databases using the gallery.
 - Publishes a gallery package for deploying hosting servers.
-- Deploys a VM using the Windows Server 2016 core image you downloaded, and then installs the SQL resource provider.
+- Deploys a VM using the Windows Server 2016 core image or Microsoft AzureStack Add-on RP Windows Server image you downloaded, and then installs the SQL resource provider.
 - Registers a local DNS record that maps to your resource provider VM.
 - Registers your resource provider with the local Azure Resource Manager for the operator account.
 
