@@ -148,7 +148,6 @@ New-OAW
 [-DNS <String[]>] `
 [-DeploymentDataFilePath <String>] `
 [-SkipNetworkConfiguration] `
-[-UseDVMConfiguration] `
 [-ImageFilePath <String>] `
 [-VirtualMachineName <String>] `
 [-VirtualMachineMemory <int64>] `
@@ -207,7 +206,6 @@ The following table lists the definition for each parameter.
 | CertificatePassword        | Optional | Password of certificate to be imported to the virtual machine for Azure Stack Hub access. |
 | ERCSVMIP                   | Optional | IP of Azure Stack Hub ERCS VM(s) to be added to trusted host list of the virtual machine. Won't take effect if **-SkipNetworkConfiguration** is set. |
 SkipNetworkConfiguration     | Optional | Skips network configuration for the virtual machine so user can configure later. |
-| UseDVMConfiguration        | Optional | Applies Azure Stack Hub deployment virtual machine (DVM) network configuration. Won't take effect if **-SkipNetworkConfiguration** is set.|
 | DeploymentDataFilePath     | Optional | Path of DeploymentData.json. Won't take effect if **-SkipNetworkConfiguration** is set.            |
 | PhysicalAdapterMACAddress  | Optional | The MAC address of the host's network adapter that will be used to connect the virtual machine to.<br>- If there is only one physical network adapter, this parameter is not needed and the only network adapter will be used.<br>- If there is more than one physical network adapter, this parameter is required to specify which one to use.<br> |
 | VirtualSwitchName          | Optional | The name of virtual switch that needs to be configured in Hyper-V for the virtual machine.<br>- If there is VMSwitch with the provided name, such VMSwitch will be selected.<br>- If there is only one VMSwitch with switch type External, value **DVMVirtualSwitch** can be used to select this VMSwitch without providing its name.<br>- If there is no VMSwitch with the provided name, a VMSwitch will be created with the provided name.<br> |
