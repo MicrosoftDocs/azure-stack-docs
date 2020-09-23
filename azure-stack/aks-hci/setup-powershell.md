@@ -3,7 +3,7 @@ title: Quickstart to set up an Azure Kubernetes Service host on Azure Stack HCI 
 description: Learn how to set up an Azure Kubernetes Service host on Azure Stack HCI with Windows PowerShell
 author: jessicaguan
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 09/23/2020
 ms.author: jeguan
 ---
 # Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI using PowerShell
