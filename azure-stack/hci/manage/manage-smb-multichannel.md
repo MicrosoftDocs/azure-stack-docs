@@ -29,7 +29,7 @@ SMB Multichannel provides the following capabilities:
 
 Because SMB Multichannel is enabled by default, you do not have to install additional roles, role services, or features. The SMB client automatically detects and uses multiple network connections when the configuration is identified. However, SMB Multichannel has the following requirements:
 
-1. At least two computers that run Azure Stack HCI, Windows Server, or Windows 10 operating systems.
+1. At least two computers that run Azure Stack HCI, Windows Server, or Windows 10 operating system.
 
 2. At least one of the following configurations:
 
@@ -41,7 +41,7 @@ Because SMB Multichannel is enabled by default, you do not have to install addit
 
     - One or more network adapters that support remote direct memory access (RDMA)
 
-For detailed information, see [Example configurations](#example-configurations).
+For detailed information, see [Configure SMB Multichannel](#configure-smb-multichannel).
 
 ## Disable SMB Multichannel
 Typically, you do not have to disable SMB Multichannel. However, if you want to disable SMB Multichannel, for example, in a test environment, you can use Windows PowerShell.
@@ -69,7 +69,7 @@ Set-SmbClientConfiguration -EnableMultiChannel $false
 
 ## Re-enable SMB Multichannel
 
-If you have disabled SMB Multichannel and wish to re-enable it, use the following procedures.
+If you have disabled SMB Multichannel and want to re-enable it, use the following procedures.
 
 To re-enable SMB Multichannel on the server side, use the following cmdlet:
 
@@ -86,9 +86,9 @@ Set-SmbClientConfiguration -EnableMultiChannel $true
 >[!NOTE]
 >You must re-enable SMB Multichannel on both the client and the server to start using it again.
 
-## Example configurations
+## Configure SMB Multichannel
 
-This section describes some configuration options for deploying SMB Multichannel by using an array of network adapters. These configurations are only example configurations. There are many other possible configurations that are not included in this topic.
+This section describes some configuration options for deploying SMB Multichannel using an array of network adapters. These configurations are only example configurations. There are many other possible configurations that are not included in this topic.
 
 ### Single RSS-capable network adapter
 
@@ -151,7 +151,7 @@ This section describes some scenarios for testing SMB Multichannel, which includ
 
 To measure the increased throughput that is provided by SMB Multichannel, perform the following tests. Restart both the server and the client before each test to make sure that they operate under similar conditions.
 
-1. Configure SMB Multichannel by using one the previously described configurations.
+1. Configure SMB Multichannel using one the previously described configurations.
 
 1. Measure the amount of time that it takes to perform a long-running file copy operation by using SMB Multichannel.
 
