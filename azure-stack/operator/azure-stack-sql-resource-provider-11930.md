@@ -39,7 +39,7 @@ This version of the Azure Stack Hub SQL resource provider includes the following
 
 It also supports the latest Azure Stack Hub API version profile 2019-03-01-hybrid and Azure Stack Hub PowerShell module 1.8.0. So during deployment and update, no specific history versions of modules need to be installed.
 
-It's recommended that you apply the SQL resource provider hotfix 1.1.93.0 after Azure Stack Hub is upgraded to the 2005 release.
+It's recommended that you apply the SQL resource provider 1.1.93.0 after Azure Stack Hub is upgraded to the 2005 release.
 
 ## Known issues
 
