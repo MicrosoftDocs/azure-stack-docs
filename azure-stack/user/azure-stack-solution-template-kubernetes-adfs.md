@@ -60,13 +60,13 @@ You need to work with your Azure Stack Hub administrator to set up your service 
 
 1. Select **+ Create a resource** > **Compute** > **Kubernetes Cluster**. Select **Create**.
 
-    ![Deploy Solution Template](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
+    ![Screenshot that shows the page where you create a Kubernetes cluster.](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
 ### 1. Basics
 
 1. Select **Basics** in Create Kubernetes Cluster.
 
-    ![Deploy Solution Template](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
+    ![Screenshot that shows where you add basic information about your Kubernetes cluster.](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
 
 1. Select your **Subscription** ID.
 
@@ -78,7 +78,7 @@ You need to work with your Azure Stack Hub administrator to set up your service 
 
 1. Select **Kubernetes Cluster Settings** in Create Kubernetes Cluster.
 
-    ![Deploy Solution Template](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings-adfs.png)
+    ![Screenshot that shows the step where you configure the Kubernetes cluster settings.](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings-adfs.png)
 
 1. Enter the **Linux VM admin username**. User name for the Linux Virtual Machines that are part of the Kubernetes cluster and DVM.
 
