@@ -449,6 +449,8 @@
       href: azure-stack-backup-reference.md
   - name: Get support  
     items:
+    - name: Operator Access Workstation 
+      href: operator-access-workstation.md
     - name: Help & Support portal 
       items:
       - name: Overview      
