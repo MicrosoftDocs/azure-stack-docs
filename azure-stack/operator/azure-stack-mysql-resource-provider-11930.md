@@ -37,8 +37,6 @@ This version of the Azure Stack Hub MySQL resource provider includes the followi
 - **Make KeyVaultPfxPassword an optional argument when performing secrets rotation.** Check [this document](azure-stack-sql-resource-provider-maintain.md#secrets-rotation) for details.
 - **Other bug fixes.**
 
-It also supports the latest Azure Stack Hub API version profile 2019-03-01-hybrid and Azure Stack Hub PowerShell module 1.8.0. So during deployment and update, no specific history versions of modules need to be installed.
-
 It's recommended that you apply MySQL resource provider 1.1.93.0 after Azure Stack Hub is upgraded to the 2005 release.
 
 ## Known issues
