@@ -1,6 +1,6 @@
 ---
 title: Manage SMB Multichannel
-description: Use this topic to configure and manage SMB Multichannel in Azure Stack HCI and Windows Server.
+description: Use this topic to use SMB Multichannel for increased throughput and network fault tolerance.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
@@ -27,9 +27,9 @@ SMB Multichannel provides the following capabilities:
 
 ## Requirements for SMB Multichannel
 
-SMB Multichannel has the following requirements:
+Because SMB Multichannel is enabled by default, you do not have to install additional roles, role services, or features. The SMB client automatically detects and uses multiple network connections when the configuration is identified. However, SMB Multichannel has the following requirements:
 
-1. At least two computers that run Azure Stack HCI, Windows Server, or Windows 10 operating systems are required. No additional features have to be installed, as SMB Multichannel is enabled by default.
+1. At least two computers that run Azure Stack HCI, Windows Server, or Windows 10 operating systems.
 
 2. At least one of the following configurations:
 
@@ -42,10 +42,6 @@ SMB Multichannel has the following requirements:
     - One or more network adapters that support remote direct memory access (RDMA)
 
 For detailed information, see [Example configurations](#example-configurations).
-
-## Configure SMB Multichannel
-
-Because SMB Multichannel is enabled by default, you do not have to install additional roles, role services, or features. The SMB client automatically detects and uses multiple network connections when the configuration is identified.
 
 ## Disable SMB Multichannel
 Typically, you do not have to disable SMB Multichannel. However, if you want to disable SMB Multichannel, for example, in a test environment, you can use Windows PowerShell.
