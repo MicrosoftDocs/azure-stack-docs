@@ -58,6 +58,14 @@ Import-Module -Name PackageManagement -ErrorAction Stop
 
 # path to save the packages, c:\temp\azs1.6.0 as an example here
 $Path = "c:\temp\azs1.6.0"
+```
+```powershell
+# for resource provider version <= 1.1.47.0
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.3.0
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.6.2
+```
+```powershell
+# for resource provider version >= 1.1.93.0
 Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
 Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.8.2
 ```
