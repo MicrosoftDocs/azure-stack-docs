@@ -190,7 +190,7 @@
             href: network-virtual-appliance.md
           - name: Troubleshoot site-to-site connections
             href: site-to-site.md
-        - name: Virtual network peering
+        - name: Virtual Network peering
           href: virtual-network-peering.md
         - name: iDNS for Azure Stack Hub
           href: azure-stack-understanding-dns.md
