@@ -76,6 +76,7 @@ If you're updating the SQL resource provider version to 1.1.33.0 or previous ver
 # Note that this might not be the most currently available version of Azure Stack Hub PowerShell.
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
+# For resource provider version <= 1.1.47.0, use -RequiredVersion 1.6.0.
 Install-Module -Name AzureStack -RequiredVersion 1.8.2
 ```
 

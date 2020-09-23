@@ -63,15 +63,24 @@ Import-Module -Name PackageManagement -ErrorAction Stop
 
 # path to save the packages, c:\temp\azs1.6.0 as an example here
 $Path = "c:\temp\azs1.6.0"
+```
+2. Depending on the version of resource provider that you are deploying, run one of the scripts.
+```powershell
+# for resource provider version >= 1.1.93.0
 Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
 Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.8.2
 ```
+```powershell
+# for resource provider version <= 1.1.47.0
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.3.0
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.6.0
+```
 
-2. Then you copy the downloaded packages to a USB device.
+3. Then you copy the downloaded packages to a USB device.
 
-3. Sign in to the disconnected workstation and copy the packages from the USB device to a location on the workstation.
+4. Sign in to the disconnected workstation and copy the packages from the USB device to a location on the workstation.
 
-4. Register this location as a local repository.
+5. Register this location as a local repository.
 
 ```powershell
 # requires -Version 5
@@ -108,7 +117,7 @@ Run the **DeployMySqlProvider.ps1** script, which completes the following tasks:
 * Uploads the certificates and other artifacts to a storage account on Azure Stack Hub.
 * Publishes gallery packages so that you can deploy MySQL databases using the gallery.
 * Publishes a gallery package for deploying hosting servers.
-* Deploys a VM using the Windows Server 2016 core image you downloaded, and then installs the MySQL resource provider.
+* Deploys a VM using the Windows Server 2016 core image or Microsoft AzureStack Add-on RP Windows Server image you downloaded, and then installs the MySQL resource provider.
 * Registers a local DNS record that maps to your resource provider VM.
 * Registers your resource provider with the local Azure Resource Manager for the operator account.
 

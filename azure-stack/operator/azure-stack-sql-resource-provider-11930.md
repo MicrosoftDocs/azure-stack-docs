@@ -26,7 +26,7 @@ Download the SQL resource provider binary and then run the self-extractor to ext
 > |     |     |
 
 > [!IMPORTANT]
-> Apply the minimum supported Azure Stack Hub update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Development Kit (ASDK) before deploying the latest version of the MySQL resource provider.
+> Apply the minimum supported Azure Stack Hub update to your Azure Stack Hub integrated system before deploying the latest version of the MySQL resource provider.
 
 ## New features and fixes
 
@@ -40,7 +40,7 @@ This version of the Azure Stack Hub SQL resource provider includes the following
 It's recommended that you apply SQL resource provider 1.1.93.0 after Azure Stack Hub is upgraded to the 2005 release.
 
 ## Known issues
-
+None.
 
 ## Next steps
 
