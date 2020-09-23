@@ -11,11 +11,6 @@
       "redirect_document_id": false
     },    
     { 
-      "source_path": "azure-stack/operator/operator-access-workstation.md", 
-      "redirect_url": "/azure-stack/operator/azure-stack-manage-basics", 
-      "redirect_document_id": false
-    },    
-    { 
       "source_path": "azure-stack/hybrid/overview-app-design-considerations.md", 
       "redirect_url": "/hybrid/app-solutions/overview-app-design-considerations", 
       "redirect_document_id": false

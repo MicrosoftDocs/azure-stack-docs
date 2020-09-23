@@ -66,15 +66,15 @@ Put each unmanaged disk you add into a separate container.
    ![Example: VM dashboard](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
 2. Select a VM that has previously been created.
-   ![Example: Select a VM in the dashboard](media/azure-stack-manage-vm-disks/select-a-vm.png)
+   ![Screenshot that shows a selected virtual machine.](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
 3. For the VM, select **Disks**, then **Add data disk**.
-   ![Example: Attach a new disk to the vm](media/azure-stack-manage-vm-disks/Attach-disks.png)
+   ![Screenshot that shows how to attach a new disk to the VM.](media/azure-stack-manage-vm-disks/Attach-disks.png)
 
 4. For the Data disk:
    * Enter the **LUN**. The LUN must be a valid number.
    * Select **Create disk**.
-   ![Example: Attach a new disk to the vm](media/azure-stack-manage-vm-disks/add-a-data-disk-create-disk.png)
+   ![Screenshot that shows how to create a new data disk.](media/azure-stack-manage-vm-disks/add-a-data-disk-create-disk.png)
 
 5. In the **Create managed disk** blade:
    * Enter the **Name** of the disk.
@@ -115,7 +115,7 @@ For more information about working with storage accounts in Azure Stack Hub, see
 2. Select the **Container** where you want to put the data disk. From the **Containers** blade, you can create a new container if you want. You can then change the location for the new disk to its own container. When you use a separate container for each disk, you distribute the placement of the data disk which improves performance.
 3. Choose **Select** to save the selection.
 
-    ![Example: Select a container](media/azure-stack-manage-vm-disks/select-container.png)
+    ![Screenshot that shows how to select a container.](media/azure-stack-manage-vm-disks/select-container.png)
 
 ## Attach an existing data disk to a VM
 
@@ -128,7 +128,7 @@ For more information about working with storage accounts in Azure Stack Hub, see
     ![Example: Upload a VHD file](media/azure-stack-manage-vm-disks/upload-vhd.png)
 
 2. After the .vhd file is uploaded, you're ready to attach the VHD to a VM. In the menu on the left, select  **Virtual machines**.  
- ![Example: Select a VM in the dashboard](media/azure-stack-manage-vm-disks/vm-dashboard.png)
+ ![Screenshot that shows the selected virtual machines.](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
 3. Choose the VM from the list.
 
