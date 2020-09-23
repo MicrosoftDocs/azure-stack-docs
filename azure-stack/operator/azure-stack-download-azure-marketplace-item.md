@@ -52,7 +52,7 @@ Your Azure Stack Hub deployment must have internet connectivity and be registere
 
 4. Each line item also shows the currently available version. If more than one version of a Marketplace item is available, the **Version** column shows **Multiple**. You can click on each item to view its description and additional information, including its download size:
 
-   ![Add from Azure](media/azure-stack-download-azure-marketplace-item/add-from-azure1.png)
+   ![Screenshot that shows the available versions of a Marketplace item.](media/azure-stack-download-azure-marketplace-item/add-from-azure1.png)
 
 5. If the version of an item is shown as **Multiple**, you can select that item and then choose a specific version from the resulting version selector dropdown. Note that Microsoft now has the ability to add attributes that block administrators from downloading marketplace products that are incompatible with their Azure Stack, due to various properties, such as the Azure Stack version or billing model. Only Microsoft can add these attributes:
 
@@ -137,10 +137,10 @@ Once you have registered your Azure Stack, you can disregard the following messa
 
    This displays a table that lists all the Azure Stack registrations available in the selected subscription. Choose the registration that matches the Azure Stack environment you're downloading the marketplace items for, and select **OK**.
 
-     ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/select-registration.png)
+     ![Screenshot that shows a list of all the Azure Stack registrations available in the selected subscription.](media/azure-stack-download-azure-marketplace-item/select-registration.png)
 
    You should now see a second table listing all the marketplace items available for download. Select the item that you want to download and make a note of the **Version**. You can hold the **Ctrl** key to select multiple images.
-     ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/select-products.png)
+     ![Screenshot that shows another list of all the Azure Stack registrations available in the selected subscription.](media/azure-stack-download-azure-marketplace-item/select-products.png)
   
    You can also filter the list of images by using the **Add criteria** option.
    ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/select-products-with-filter.png)
