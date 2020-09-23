@@ -189,7 +189,9 @@
           - name: Troubleshoot Network Virtual Appliance issues
             href: network-virtual-appliance.md
           - name: Troubleshoot site-to-site connections
-            href: site-to-site.md  
+            href: site-to-site.md
+        - name: Virtual network peering
+          href: virtual-network-peering.md
         - name: iDNS for Azure Stack Hub
           href: azure-stack-understanding-dns.md
         - name: DNS in Azure Stack Hub
