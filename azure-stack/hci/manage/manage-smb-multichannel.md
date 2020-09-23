@@ -13,9 +13,9 @@ ms.date: 09/23/2020
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019; Windows Server 2016; Windows Server 2012 R2; Windows Server 2012; Windows 10
 
-SMB Multichannel is included with Azure Stack HCI and Windows Server operating systems. It is part of the Server Message Block (SMB) 3.0 protocol, which increases the network performance and availability of file servers.
+SMB Multichannel is part of the Server Message Block (SMB) 3.0 protocol, which increases the network performance and availability of file servers.
 
-SMB Multichannel enables file servers to use multiple network connections simultaneously. It facilitates aggregation of network bandwidth and network fault tolerance when multiple paths are available between the SMB 3.0 client and the SMB 3.0 server. This capability allows server applications to take full advantage of all available network bandwidth and makes them resilient to network failures.
+SMB Multichannel enables file servers to use multiple network connections simultaneously. It facilitates aggregation of network bandwidth and network fault tolerance when multiple paths are available between the SMB 3.0 client and the SMB 3.0 server. This allows server applications to take full advantage of all available network bandwidth and makes them more resilient to network failures.
 
 SMB Multichannel provides the following capabilities:
 
@@ -25,11 +25,11 @@ SMB Multichannel provides the following capabilities:
 
 - **Automatic configuration.** SMB Multichannel automatically discovers multiple available network paths and dynamically adds connections as necessary.
 
-## Requirements for using SMB Multichannel
+## Requirements for SMB Multichannel
 
 SMB Multichannel has the following requirements:
 
-1. At least two computers that run Azure Stack HCI or Windows Server operating systems are required. No additional features have to be installed, as SMB Multichannel is enabled by default.
+1. At least two computers that run Azure Stack HCI, Windows Server, or Windows 10 operating systems are required. No additional features have to be installed, as SMB Multichannel is enabled by default.
 
 2. At least one of the following configurations:
 
@@ -37,7 +37,7 @@ SMB Multichannel has the following requirements:
 
     - One or more network adapters that support Receive Side Scaling (RSS)
 
-    - One of more network adapters that are configured by using NIC Teaming
+    - One or more network adapters that are configured using NIC teaming
 
     - One or more network adapters that support remote direct memory access (RDMA)
 
@@ -122,11 +122,11 @@ SMB Multichannel detects the RDMA capabilities of network adapters, which enable
 When SMB is deployed with SMB Multichannel, SMB detects the RDMA capability of a network adapter and creates multiple RDMA connections for that single session, with two RDMA connections per interface. This configuration enables SMB to take advantage of the high throughput, low latency, and low CPU utilization that is offered by the RDMA-capable network adapters. It also offers fault tolerance when you use multiple RDMA interfaces.
 
 >[!IMPORTANT]
->A team of RDMA-capable network adapters is always reported as non-RDMA capable. If you intend to use the RDMA capabilities of the network adapters, do not team them. After a RDMA connection is created, the TCP/IP connection that is used for the original protocol negotiation is no longer used. However, that connection is maintained in case the RDMA connections fail.
+>After an RDMA connection is created, the TCP/IP connection that is used for the original protocol negotiation is no longer used. However, that connection is maintained in case the RDMA connections fail.
 
 ### SMB Multichannel, RDMA-capable network adapters, and NIC Teaming compatibility
 
-The following table summarizes the different capabilities that are available when you combine SMB Multichannel, RDMA (SMB Direct), and NIC Teaming.
+The following table summarizes the different capabilities that are available when you combine SMB Multichannel, RDMA (SMB Direct), and NIC teaming.
 
 | Configuration                                       | Throughput | Fault tolerance for SMB | Fault tolerance for non-SMB | Lower CPU utilization |
 |:---------------------------------------------------:|:----------:|:-----------------------:|:---------------------------:|:---------------------:|
@@ -139,13 +139,13 @@ The following table summarizes the different capabilities that are available whe
 | Single RDMA-capable network adapter                 | *          |                         |                             | *                     |
 | Multiple RDMA-capable network adapters              | ***        | *                       |                             | *                     |
 
-For non-RDMA network adapters, the ideal solution is to combine NIC Teaming with SMB Multichannel. This combination provides the best throughput and also provides fault tolerance for applications that use SMB and other protocols.
+For non-RDMA network adapters, the ideal solution is to combine NIC teaming with SMB Multichannel. This combination provides the best throughput and also provides fault tolerance for applications that use SMB and other protocols.
 
-When you use RDMA-capable network adapters, NIC Teaming is not a good option, because it disables the RDMA capability of the network adapter.
+When you use RDMA-capable network adapters, NIC teaming is not a good option, because it disables the RDMA capability of the network adapter.
 
 ### Example configurations without SMB Multichannel
 
-If you plan to use a single network adapter without RSS, you do not benefit from multiple network connections, and therefore, SMB Multichannel is not used. Also, if you plan to use network adapters of different speeds, SMB Multichannel automatically selects the fastest network adapter because network adapters that are the same type, such as RDMA, RSS, or none, and have the same speed are simultaneously used by SMB Multichannel. The slower network adapters are idle.
+If you plan to use a single network adapter without RSS, you do not benefit from multiple network connections, and therefore, SMB Multichannel is not used. Also, if you plan to use network adapters of different speeds, SMB Multichannel automatically selects the fastest network adapter. This is because network adapters that are the same type (such as RDMA, RSS, or neither) and have the same speed are simultaneously used by SMB Multichannel. The slower network adapters are idle.
 
 ## Test SMB Multichannel
 
