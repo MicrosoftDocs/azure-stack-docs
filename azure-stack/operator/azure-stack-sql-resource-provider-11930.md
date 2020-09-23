@@ -22,7 +22,7 @@ Download the SQL resource provider binary and then run the self-extractor to ext
 
 > |Supported Azure Stack Hub version|SQL resource provider version|
 > |-----|-----|
-> |Version 2005|[SQL RP version 1.1.93.0](https://aka.ms/azurestacksqlrp11930)|  
+> |Version 2005|[SQL RP version 1.1.93.0](https://aka.ms/azshsqlrp11930)|  
 > |     |     |
 
 > [!IMPORTANT]
