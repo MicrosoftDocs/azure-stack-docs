@@ -3,8 +3,9 @@ title: SQL resource provider maintenance operations
 titleSuffix: Azure Stack Hub
 description: Learn about SQL resource provider maintenance operations on Azure Stack Hub.
 author: bryanla
+
 ms.topic: article
-ms.date: 9/22/2020
+ms.date: 10/02/2019
 ms.author: bryanla
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2020
@@ -130,7 +131,7 @@ Use the Get-AzsDBAdapterLogs cmdlet to collect all resource provider logs, inclu
 
 Use one of the following methods to update the VM operating system.
 
-- Install the latest resource provider package using a currently patched VM image.
+- Install the latest resource provider package using a currently patched Windows Server 2016 Core image.
 - Install a Windows Update package during the installation of, or update to, the resource provider.
 
 ## Update the VM Windows Defender definitions
