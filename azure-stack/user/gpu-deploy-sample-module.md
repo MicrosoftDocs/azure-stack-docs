@@ -71,64 +71,60 @@ Create an IoT Edge device in Azure with a Linux virtual machine:
 
 ## Prepare a GPU enabled VM
 
-1. Deploy a GPU enabled VM in the Azure Stack Hub user portal.
+1. Deploy a GPU enabled VM in the Azure Stack Hub user portal. `This seems to be a duplicate of step 1 above.`
 
 2. Install the NVIDA GPU Drivers by following the steps in the article, [Install NVIDIA GPU drivers on N-series VMs running Linux](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup).
 
-3. Install the NVIDIA GPU drivers. For instructions, see [Graphics processing unit (GPU) virtual machine (VM) on Azure Stack Hub](gpu-vms-about.md).
-
-4.  Install the latest IoT Edge runtime on a Linux VM in Azure Stack Hub. For instructions, see [Install the Azure IoT Edge runtime on Debian-based Linux systems](/azure/iot-edge/how-to-install-iot-edge-linux#install-the-latest-runtime-version)
+3.  Install the latest IoT Edge runtime on a Linux VM in Azure Stack Hub. For instructions, see [Install the Azure IoT Edge runtime on Debian-based Linux systems](/azure/iot-edge/how-to-install-iot-edge-linux#install-the-latest-runtime-version)
 
 ## Install Docker and the Nvidia driver
 
-Summary.
+Install Docker and the Nvidia driver on your GPU enabled VM. You are going to run module from the IoT Edge marketplace in a container on the VM.
 
 ### Install Docker
 
 1.  Update the apt index and lists.
 
     ```bash  
-    $ sudo apt-get update
+    sudo apt-get update
     ```
 
-1.  Fetch the new versions of existing packages on the machine
+1.  Fetch the new versions of existing packages on the machine.
 
     ```bash  
-    $ sudo apt-get upgrade
+    sudo apt-get upgrade
     ```
 
-2.  Install dependencies required to add Docker's apt repo
+2.  Install dependencies required to add Docker's apt repo.
 
     ```bash  
-    $ sudo apt-get install apt-transport-https ca-certificates curl
-    software-properties-common
+    sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
     ```
 
 3.  Add Docker's GPG key.
 
     ```bash  
-    $ curl -fsSL <https://download.docker.com/linux/ubuntu/gpg> \| sudo apt-key
+    curl -fsSL <https://download.docker.com/linux/ubuntu/gpg> | sudo apt-key
     add -
     ```
 
 4.  Add Docker's apt repo.
 
     ```bash  
-    $ sudo add-apt-repository "deb [arch=amd64]
-    https://download.docker.com/linux/ubuntu \$(lsb_release -cs) stable"
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
 5.  Update apt index and lists, and install Docker Community Edition.
 
     ```bash  
-    $ sudo apt-get update  
-    $ sudo apt-get install docker-ce
+    sudo apt-get update 
+    sudo apt-get install docker-ce
     ```
 
 6.  Verify install by checking the Docker version.
 
     ```bash  
-    $ docker -v
+    docker -v
     ```
 
 ### Install Nvidia-Docker
@@ -136,11 +132,8 @@ Summary.
 1.  Set the GPG key and the remote repository for the nvidia-docker package.
 
     ```bash  
-    $ curl -s -L <https://nvidia.github.io/nvidia-docker/gpgkey> \| \\ sudo
-    apt-key add -distribution=\$(. /etc/os-release;echo \$ID\$VERSION_ID)  
-    curl -s -L
-    <https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list> \|
-    \\ sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
     ```
 
 3.  Update the apt index and lists, and install nvidia-docker2 and the Docker
@@ -198,16 +191,10 @@ Summary.
 3. In the VS Code explorer, expand the Azure IoT Hub section. Under **Devices**, you should see the IoT Edge device corresponding to your Azure Stack Edge device. 
 
     1. Select that device, right-click and select **Start Monitoring Built-in Event Endpoint**.
-  
-        ![Start monitoring](media/azure-stack-edge-gpu-deploy-sample-module/monitor-builtin-event-endpoint-1.png)  
 
     2. Go to **Devices > Modules** and you should see your **GPU module** running.
 
-        ![Module in IoT Hub](media/azure-stack-edge-gpu-deploy-sample-module/module-iot-hub-1.png)  
-
     3. The VS Code terminal should also show the IoT Hub events as the monitoring output for your Azure Stack Edge device.
-
-        ![Monitoring output](media/azure-stack-edge-gpu-deploy-sample-module/monitor-events-output-1.png) 
 
         You can see that the time taken to execute the same set of operations (5000 iterations of shape transformation) by GPU is lot lesser than it is for CPU.
 
