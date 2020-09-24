@@ -6,7 +6,7 @@ ms.author: v-johcob
 ms.topic: tutorial
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/09/2020
+ms.date: 09/24/2020
 ---
 
 # Deploy the Azure Stack HCI operating system
