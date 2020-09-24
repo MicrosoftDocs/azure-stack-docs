@@ -118,7 +118,7 @@
     href: concepts/quorum.md
   - name: Plan a SDN infrastructure
     href: concepts/plan-software-defined-networking-infrastructure.md
-  - name: Network Controller
+  - name: Plan Network Controller
     href: concepts/network-controller.md
   - name: Security considerations
     href: concepts/security.md

@@ -4,7 +4,7 @@ description: This topic covers how to plan to deploy the Network Controller via 
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/24/2020
 ---
 
 # Plan to deploy the Network Controller
