@@ -83,7 +83,7 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
         | `activeDirectoryEndpointUrl` | This is the URL from loginEndpoint property. |
         | `activeDirectoryResourceId` | This is the URL from the audiences property.
         | `resourceManagerEndpointUrl` | This is the root URL for the Azure Resource Manager for Azure Stack Hub. |
-        | `validateAuthority` | You can leave out this parameter if you are using Azure AD as your identity manager. Add the parameter with a vlue of `false` if you are using AD FS. |
+        | `validateAuthority` | You can leave out this parameter if you are using Azure AD as your identity manager. Add the parameter with a value of `false` if you are using AD FS. |
 
     - JSON snippet:
 
