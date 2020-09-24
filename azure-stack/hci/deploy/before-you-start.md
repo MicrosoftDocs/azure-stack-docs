@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/23/2020
+ms.date: 09/24/2020
 ---
 
 # Before you deploy Azure Stack HCI
@@ -19,6 +19,8 @@ In this how-to guide, you learn how to:
 - Make sure you're not exceeding the maximum supported hardware specifications
 - Gather the required information for a successful deployment
 - Install Windows Admin Center on a management PC or server
+
+For Azure Kubernetes Service on Azure Stack HCI requirements, see [AKS requirements on Azure Stack HCI](../../aks-hci/overview.md#what-you-need-to-get-started).
 
 ## Determine hardware requirements
 
@@ -100,8 +102,8 @@ When connecting between sites for stretched clusters, interconnect requirements 
 
 - At least one 1 Gb RDMA or Ethernet/TCP connection between sites for synchronous replication. A 25 Gb RDMA connection is preferred.
 - A network between sites with enough bandwidth to contain your I/O write workload and an average of 5ms round trip latency or lower for synchronous replication. Asynchronous replication doesn't have a latency recommendation.
-- If using a single connection between sites, set SMB bandwidth limits for Storage Replica using PowerShell. For more information, see [Set-SmbBandwidthLimit](/powershell/module/smbshare/set-smbbandwidthlimit?view=win10-ps).
-- If using multiple connections between sites, separate traffic between the connections. For example, put Storage Replica traffic on a separate network than Hyper-V live migration traffic using PowerShell. For more information, see [Set-SRNetworkConstraint](/powershell/module/storagereplica/set-srnetworkconstraint?view=win10-ps).
+- If using a single connection between sites, set SMB bandwidth limits for Storage Replica using PowerShell. For more information, see [Set-SmbBandwidthLimit](/powershell/module/smbshare/set-smbbandwidthlimit).
+- If using multiple connections between sites, separate traffic between the connections. For example, put Storage Replica traffic on a separate network than Hyper-V live migration traffic using PowerShell. For more information, see [Set-SRNetworkConstraint](/powershell/module/storagereplica/set-srnetworkconstraint).
 
 ### Network port requirements
 
