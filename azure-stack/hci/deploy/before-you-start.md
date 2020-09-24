@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/23/2020
+ms.date: 09/24/2020
 ---
 
 # Before you deploy Azure Stack HCI
@@ -19,6 +19,8 @@ In this how-to guide, you learn how to:
 - Make sure you're not exceeding the maximum supported hardware specifications
 - Gather the required information for a successful deployment
 - Install Windows Admin Center on a management PC or server
+
+For Azure Kubernetes Service on Azure Stack HCI requirements, see [AKS requirements on Azure Stack HCI](../aks-hci/overview.md#what-you-need-to-get-started).
 
 ## Determine hardware requirements
 
