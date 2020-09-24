@@ -98,7 +98,7 @@ Now you're ready to use the Server Configuration tool (Sconfig) to perform impor
 
 From the main page of the Sconfig tool, you can perform the following initial configuration tasks:
 - Configure networking or confirm that the network was configured automatically using Dynamic Host Configuration Protocol (DHCP).
-- Rename the server if the default automatically generated server name does not suite you.
+- Rename the server if the default automatically generated server name does not suit you.
 - Join the server to an Active Directory domain.
 - Add your domain user account or designated domain group to local administrators.
 - Enable access to Windows Remote Management (WinRM) if you plan to manage the server from outside the local subnet and decided not to join domain yet. (The default Firewall rules allow management both from local subnet and from any subnet within your Active Directory domain services.)
