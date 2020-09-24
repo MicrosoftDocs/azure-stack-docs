@@ -125,7 +125,7 @@ To manage these technologies, you can use the following management tools:
 
 - [Windows Admin Center](/windows-server/manage/windows-admin-center/overview)
 - [System Center](https://www.microsoft.com/cloud-platform/system-center)
-- [PowerShell](/powershell/?view=powershell-6)
+- [PowerShell](/powershell/)
 - Other management tools, like [Server Manager](/windows-server/administration/server-manager/server-manager), and MMC snap-ins
 - Non-Microsoft tools like 5Nine Manager
 
@@ -256,7 +256,7 @@ As your organization digitally transforms, you may find you can move faster by u
 
 Windows Admin Center version 2009 adds a number of features to Azure Stack HCI, including the following:
 
-- **Azure Kubernetes Service hosting capabilities**: You can now install a preview version of Azure Kubernetes Service on Azure Stack HCI. 
+- **Azure Kubernetes Service hosting capabilities**: You can now install a preview version of [Azure Kubernetes Service on Azure Stack HCI](https://azure.microsoft.com/en-us/products/azure-stack/hci/hci-download/).
 - **Inclusion of Software Defined Networking in the Cluster Creation wizard**: The Cluster Creation wizard now includes the option to deploy the Software Defined Networking (SDN) Network Controller feature during cluster creation.
 
 For details on new features in Windows Admin Center, see the [Windows Admin Center blog](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/bg-p/Windows-Admin-Center-Blog).
