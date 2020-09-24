@@ -4,10 +4,10 @@ description: Learn about the hardware, software, and environment requirements fo
 author: myoungerman
 
 ms.topic: article
-ms.date: 05/13/2019
+ms.date: 09/23/2020
 ms.author: v-myoung
 ms.reviewer: misainat
-ms.lastreviewed: 05/13/2019
+ms.lastreviewed: 09/23/2020
 
 # Intent: As an ASDK user, I want to know the requirements for properly deploying the ASDK.
 # Keyword: asdk requirements
@@ -79,9 +79,6 @@ Example two-way mirror configuration:
 |  | **Requirements** |
 | --- | --- |
 | **OS Version** |Windows Server 2016 or later. The operating system version isn't critical before the deployment starts because you boot the host computer into the VHD that's included in the Azure Stack installation. The operating system and all required patches are already integrated into the image. Don't use any keys to activate any Windows Server instances used in the ASDK. |
-
-> [!TIP]
-> After installing the operating system, you can use the [Deployment Checker for Azure Stack](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) to confirm that your hardware meets all the requirements.
 
 ## Account requirements
 Typically, you deploy the ASDK with internet connectivity, where you can connect to Microsoft Azure. In this case, you must configure an Azure Active Directory (Azure AD) account to deploy the ASDK.
