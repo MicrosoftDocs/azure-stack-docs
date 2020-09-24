@@ -76,6 +76,8 @@
       href: manage/manage-azure-registration.md
     - name: Change languages
       href: manage/languages.md
+    - name: Change privacy settings
+      href: manage/change-privacy-settings.md
     - name: Troubleshoot cluster validation reporting
       href: manage/validate-qos.md
     - name: Troubleshoot CredSSP
