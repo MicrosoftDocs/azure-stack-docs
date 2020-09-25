@@ -12,7 +12,7 @@ ms.date: 09/23/2020
 >Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016
 
 
-Here’s how to change the privacy settings on a server running either Windows Server or Azure Stack HCI. To manage privacy settings with Group Policy on multiple servers at once or in your enterprise as a whole, see [Manage enterprise diagnostic data](https://docs.microsoft.com/windows/privacy/configure-windows-diagnostic-data-in-your-organization#manage-enterprise-diagnostic-data).
+Here’s how to change the privacy settings on a server running either Windows Server or Azure Stack HCI. To manage privacy settings with Group Policy on multiple servers at once or in your enterprise as a whole, see [Manage enterprise diagnostic data](/windows/privacy/configure-windows-diagnostic-data-in-your-organization#manage-enterprise-diagnostic-data).
 
 If the server is running Windows Server and has the Full Desktop installation option, use the following steps:
 1. Connect to the Server Manager Dashboard of the Windows Server.
