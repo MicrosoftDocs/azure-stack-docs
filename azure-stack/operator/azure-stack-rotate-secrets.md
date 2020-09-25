@@ -199,7 +199,7 @@ Complete the following steps to rotate external secrets:
 
     - Creates a PowerShell Session with the [Privileged endpoint](azure-stack-privileged-endpoint.md) using the **CloudAdmin** account, and stores the session as a variable. This variable is used as a parameter in the next step. 
 
-    - Runs [Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/Invoke-Command?view=powershell-5.1), passing the PEP session variable as the `-Session` parameter.
+    - Runs [Invoke-Command](/powershell/module/microsoft.powershell.core/Invoke-Command), passing the PEP session variable as the `-Session` parameter.
 
     - Runs `Start-SecretRotation` in the PEP session, using the following parameters:
         - `-PfxFilesPath`: The network path to your Certificates directory created earlier.  
