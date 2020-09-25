@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/23/2020
+ms.date: 09/25/2020
 ---
 
 # Manage SMB Multichannel
@@ -108,6 +108,8 @@ Azure Stack HCI and Windows Server support the ability to combine multiple netwo
 
 When SMB is deployed with SMB Multichannel, SMB creates multiple TCP/IP connections for a single session to achieve a better balance across CPU cores and better use of the available bandwidth. NIC teaming continues to offer the failover capability, which works faster than using SMB Multichannel by itself. We also recommend NIC teaming because it offers failover capabilities to other workloads that do not rely on SMB, because those workloads cannot benefit from the failover capabilities of SMB Multichannel.
 
+If you’re using a dedicated set of network adapters for Storage Spaces Direct traffic, as is sometimes done with Azure Stack HCI, teaming these storage network adapters is strictly optional—it doesn’t provide any significant benefits or drawbacks.
+
 >[!IMPORTANT]
 >A team of RDMA-capable network adapters is always reported as non-RDMA capable. If you intend to use the RDMA capabilities of the network adapters, do not team them.
 
@@ -120,7 +122,7 @@ When SMB is deployed with SMB Multichannel, SMB detects the RDMA capability of a
 >[!IMPORTANT]
 >After an RDMA connection is created, the TCP/IP connection that is used for the original protocol negotiation is no longer used. However, that connection is maintained in case the RDMA connections fail.
 
-### SMB Multichannel, RDMA-capable network adapters, and NIC Teaming compatibility
+### SMB Multichannel, RDMA-capable network adapters, and NIC teaming compatibility
 
 The following table summarizes the different capabilities that are available when you combine SMB Multichannel, RDMA (SMB Direct), and NIC teaming.
 
@@ -128,10 +130,10 @@ The following table summarizes the different capabilities that are available whe
 |:---------------------------------------------------:|:----------:|:-----------------------:|:---------------------------:|:---------------------:|
 | Single network adapter (no RSS)                     | *          |                         |                             |                       |
 | Multiple network adapters (no RSS)                  | **         | *                       |                             |                       |
-| Multiple network adapters (no RSS) with NIC Teaming | **         | **                      | *                           |                       |
+| Multiple network adapters (no RSS) with NIC teaming | **         | **                      | *                           |                       |
 | Single network adapter with RSS                     | *          |                         |                             |                       |
 | Multiple network adapters with RSS                  | **         | *                       |                             |                       |
-| Multiple network adapters with RSS and NIC Teaming  | **         | **                      | *                           |                       |
+| Multiple network adapters with RSS and NIC teaming  | **         | **                      | *                           |                       |
 | Single RDMA-capable network adapter                 | *          |                         |                             | *                     |
 | Multiple RDMA-capable network adapters              | ***        | *                       |                             | *                     |
 
