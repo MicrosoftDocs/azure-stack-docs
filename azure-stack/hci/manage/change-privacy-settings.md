@@ -46,7 +46,7 @@ If the server uses the Azure Stack HCI operating system or Windows Server with t
 
 1. At the **Enter new telemetry setting:** prompt, type the option you want and press Enter.
 
-# Next steps
+## Next steps
 
 For related information, see also:
-- [Add or remove servers](../deploy/add-cluster.md)
+- [Add or remove servers](../manage/add-cluster.md)
