@@ -426,7 +426,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 The 1910 release of Azure Stack Hub must be applied on the 1908 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1908.51.133](https://support.microsoft.com/help/4574734)
+- [Azure Stack Hub hotfix 1.1908.57.146](https://support.microsoft.com/help/4583007)
 
 ### After successfully applying the 1910 update
 
@@ -512,7 +512,7 @@ The Azure Stack Hub 1908 Update requires **Azure Stack Hub OEM version 2.1 or la
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1908.51.133](https://support.microsoft.com/help/4574734)
+- [Azure Stack Hub hotfix 1.1908.57.146](https://support.microsoft.com/help/4583007)
 ::: moniker-end
 
 <!------------------------------------------------------------>
