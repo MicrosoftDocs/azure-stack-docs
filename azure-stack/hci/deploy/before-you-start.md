@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/03/2020
+ms.date: 09/24/2020
 ---
 
 # Before you deploy Azure Stack HCI
@@ -19,6 +19,8 @@ In this how-to guide, you learn how to:
 - Make sure you're not exceeding the maximum supported hardware specifications
 - Gather the required information for a successful deployment
 - Install Windows Admin Center on a management PC or server
+
+For Azure Kubernetes Service on Azure Stack HCI requirements, see [AKS requirements on Azure Stack HCI](../../aks-hci/overview.md#what-you-need-to-get-started).
 
 ## Determine hardware requirements
 
@@ -43,7 +45,6 @@ An Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency netwo
 - Verify at least one network adapter is available and dedicated for cluster management.
 - Verify that physical switches in your network are configured to allow traffic on any VLANs you will use.
 
-
 There are multiple types of communication going on between server nodes:
 
 - Cluster communication (node joins, cluster updates, registry updates)
@@ -57,6 +58,16 @@ With Storage Spaces Direct, there is additional network traffic to consider:
 - Health – monitoring and managing objects (nodes, drives, network cards, Cluster Service)
 
 For stretched clusters, there is also additional Storage Replica traffic flowing between the sites. Storage Bus Layer (SBL) and Cluster Shared Volume (CSV) traffic does not go between sites, only between the server nodes within each site.
+
+### Software defined networking requirements
+
+When you create an Azure Stack HCI cluster using Windows Admin Center, you have the option to deploy Network Controller to enable software defined networking (SDN). If you intend to use SDN on Azure Stack HCI:
+
+- Make sure the host servers have at least 50-100 GB of free space to create the Network Controller VMs.
+
+- You must copy a virtual hard disk (VHD) of the Azure Stack HCI operating system to the first node in the cluster in order to create the Network Controller VMs. You can prepare the VHD using [Sysprep](/windows-hardware/manufacture/desktop/sysprep-process-overview) or by running the [Convert-WindowsImage](https://gallery.technet.microsoft.com/scriptcenter/Convert-WindowsImageps1-0fe23a8f) script to convert an .iso file into a VHD.
+
+For more information about preparing for using SDN in Azure Stack HCI, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md) and [Plan to deploy Network Controller](../concepts/network-controller.md).
 
 ### Domain requirements
 
@@ -91,8 +102,8 @@ When connecting between sites for stretched clusters, interconnect requirements 
 
 - At least one 1 Gb RDMA or Ethernet/TCP connection between sites for synchronous replication. A 25 Gb RDMA connection is preferred.
 - A network between sites with enough bandwidth to contain your I/O write workload and an average of 5ms round trip latency or lower for synchronous replication. Asynchronous replication doesn't have a latency recommendation.
-- If using a single connection between sites, set SMB bandwidth limits for Storage Replica using PowerShell. For more information, see [Set-SmbBandwidthLimit](/powershell/module/smbshare/set-smbbandwidthlimit?view=win10-ps).
-- If using multiple connections between sites, separate traffic between the connections. For example, put Storage Replica traffic on a separate network than Hyper-V live migration traffic using PowerShell. For more information, see [Set-SRNetworkConstraint](/powershell/module/storagereplica/set-srnetworkconstraint?view=win10-ps).
+- If using a single connection between sites, set SMB bandwidth limits for Storage Replica using PowerShell. For more information, see [Set-SmbBandwidthLimit](/powershell/module/smbshare/set-smbbandwidthlimit).
+- If using multiple connections between sites, separate traffic between the connections. For example, put Storage Replica traffic on a separate network than Hyper-V live migration traffic using PowerShell. For more information, see [Set-SRNetworkConstraint](/powershell/module/storagereplica/set-srnetworkconstraint).
 
 ### Network port requirements
 

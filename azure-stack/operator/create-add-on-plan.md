@@ -35,19 +35,19 @@ Add-on plans are [created the same way](azure-stack-create-plan.md) as a base pl
 2. Follow the same steps used to [create a new base plan](azure-stack-create-plan.md) to create a new plan offering services that weren't previously offered.
 3. In the administrator portal, select **Offers** and then select the offer to be updated with an add-on plan.
 
-   ![Select offer to update with add-on plan in Azure Stack administrator portal](media/create-add-on-plan/add-on1.png)
+   ![Screenshot that shows how to select an offer to update with add-on plan in Azure Stack administrator portal.](media/create-add-on-plan/add-on1.png)
 
 4. At the bottom of the offer properties, select **Add-on plans**. Select **Add**.
 
-    ![Select add-on plans in Azure Stack administrator portal](media/create-add-on-plan/add-on2.png)
+    ![Screenshot that shows how to select add-on plans in Azure Stack administrator portal.](media/create-add-on-plan/add-on2.png)
 
 5. Select the plan to add. In this example, the plan is called **20-storageaccounts**. After selecting the plan, click **Select** to add the plan to the offer. You should receive a notification that the plan was added to the offer successfully.
 
-    ![Select the add-on plan to add in Azure Stack administrator portal](media/create-add-on-plan/add-on3.png)
+    ![Screenshot that shows how to select the add-on plan to add in Azure Stack administrator portal.](media/create-add-on-plan/add-on3.png)
 
 6. Review the list of add-on plans included with the offer to verify that the new add-on plan is listed.
 
-    ![[Review list of add-on plans in Azure Stack administrator portal](media/create-add-on-plan/add-on4.png "Create add-on plan")](media/create-add-on-plan/add-on4lg.png#lightbox)
+    ![Screenshot that shows a list of add-on plans to review in Azure Stack administrator portal.](media/create-add-on-plan/add-on4.png "Create add-on plan")](media/create-add-on-plan/add-on4lg.png#lightbox)
 ::: moniker-end
 
 ::: moniker range="<=azs-1901"

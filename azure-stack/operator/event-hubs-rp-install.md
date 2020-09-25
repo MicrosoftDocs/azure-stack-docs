@@ -57,12 +57,12 @@ For a disconnected or partially connected scenario, you download the packages to
    [![Marketplace management downloaded packages](media/event-hubs-rp-install/2-marketplace-management-downloaded.png)](media/event-hubs-rp-install/2-marketplace-management-downloaded.png#lightbox)
  
 3. The Event Hubs install package page shows a blue banner across the top. Select the banner to start the installation of Event Hubs.
-   [![Marketplace management event hubs - start install](media/event-hubs-rp-install/3-marketplace-management-install-ready.png)](media/event-hubs-rp-install/3-marketplace-management-install-ready.png#lightbox)
+   [![Screenshot that shows how to start the installation in Marketplace management event hubs.](media/event-hubs-rp-install/3-marketplace-management-install-ready.png)](media/event-hubs-rp-install/3-marketplace-management-install-ready.png#lightbox)
 
 ### Install prerequisites
 
 1. Next you're transferred to the install page. Select **Install Prerequisites** to begin the installation process.
-   ![Marketplace management event hubs - prerequisites](media/event-hubs-rp-install/4-marketplace-management-install-prereqs-start.png)
+   ![Screenshot that shows how to install the prerequisites in Marketplace management event hubs.](media/event-hubs-rp-install/4-marketplace-management-install-prereqs-start.png)
  
 2. Wait until the installation of prerequisites succeeds. You should see a green checkmark next to **Install prerequisites** before proceeding to the next step.
 
