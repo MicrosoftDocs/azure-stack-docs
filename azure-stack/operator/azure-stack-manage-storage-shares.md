@@ -223,7 +223,7 @@ Migration consolidates all of a container's blobs on the new share.
    Get-AzsStorageContainerMigrationStatus -JobId $job_id -FarmName $farm_name
    ```
 
-   ![Example: Migration status](media/azure-stack-manage-storage-shares/migration-status1.png)
+   ![Screenshot that shows the migration status.](media/azure-stack-manage-storage-shares/migration-status1.png)
 
 6. You can cancel an in-progress migration job. Canceled migration jobs are processed asynchronously. You can track cancellations by using $jobid:
 
@@ -235,7 +235,7 @@ Migration consolidates all of a container's blobs on the new share.
 
 7. You can run the command from step 6 again, until the migration status is *Canceled*:  
 
-    ![Example: Canceled status](media/azure-stack-manage-storage-shares/cancelled.png)
+    ![Screenshot that shows an example of a canceled migration status.](media/azure-stack-manage-storage-shares/cancelled.png)
 
 ### Move VM disks
 *This option applies only to Azure Stack Hub integrated systems.*
