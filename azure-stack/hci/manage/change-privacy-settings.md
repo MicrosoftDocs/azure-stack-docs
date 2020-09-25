@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ---
 
-# Change privacy settings
+# Change privacy settings on individual servers
 
 >Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016
 
