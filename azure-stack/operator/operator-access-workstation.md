@@ -1,12 +1,12 @@
 ---
 title: Azure Stack Hub Operator Access Workstation
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
-author: asganesh
+author: ashika789
 ms.topic: article
-ms.date: 09/22/2020
+ms.date: 09/24/2020
 ms.author: justinha
 ms.reviewer: asganesh
-ms.lastreviewed: 09/22/2020
+ms.lastreviewed: 09/24/2020
 
 # Intent: As an Azure Stack operator, I want to download and configure an Azure Stack Hub Operator Access Workstation.
 # Keyword: azure stack hub operator access workstation
@@ -148,7 +148,6 @@ New-OAW
 [-DNS <String[]>] `
 [-DeploymentDataFilePath <String>] `
 [-SkipNetworkConfiguration] `
-[-UseDVMConfiguration] `
 [-ImageFilePath <String>] `
 [-VirtualMachineName <String>] `
 [-VirtualMachineMemory <int64>] `
@@ -207,10 +206,9 @@ The following table lists the definition for each parameter.
 | CertificatePassword        | Optional | Password of certificate to be imported to the virtual machine for Azure Stack Hub access. |
 | ERCSVMIP                   | Optional | IP of Azure Stack Hub ERCS VM(s) to be added to trusted host list of the virtual machine. Won't take effect if **-SkipNetworkConfiguration** is set. |
 SkipNetworkConfiguration     | Optional | Skips network configuration for the virtual machine so user can configure later. |
-| UseDVMConfiguration        | Optional | Applies Azure Stack Hub deployment virtual machine (DVM) network configuration. Won't take effect if **-SkipNetworkConfiguration** is set.|
 | DeploymentDataFilePath     | Optional | Path of DeploymentData.json. Won't take effect if **-SkipNetworkConfiguration** is set.            |
 | PhysicalAdapterMACAddress  | Optional | The MAC address of the host's network adapter that will be used to connect the virtual machine to.<br>- If there is only one physical network adapter, this parameter is not needed and the only network adapter will be used.<br>- If there is more than one physical network adapter, this parameter is required to specify which one to use.<br> |
-| VirtualSwitchName          | Optional | The name of virtual switch that needs to be configured in Hyper-V for the virtual machine.<br>- If there is VMSwitch with the provided name, such VMSwitch will be selected.<br>- If there is only one VMSwitch with switch type External, value **DVMVirtualSwitch** can be used to select this VMSwitch without providing its name.<br>- If there is no VMSwitch with the provided name, a VMSwitch will be created with the provided name.<br> |
+| VirtualSwitchName          | Optional | The name of virtual switch that needs to be configured in Hyper-V for the virtual machine.<br>- If there is VMSwitch with the provided name, such VMSwitch will be selected.<br>- If there is no VMSwitch with the provided name, a VMSwitch will be created with the provided name.<br> |
 | ReCreate                   | Optional | Removes and re-creates the virtual machine if there is already an existed virtual machine with the same name. |
 
 ## Check the OAW VM version
