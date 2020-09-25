@@ -170,5 +170,5 @@ Simple use case.
 
 ## Next steps
 
-- See [Create a cluster using Windows Admin Center](deploy/create-cluster.md)
+- See [Create a cluster using Windows Admin Center](/deploy/create-cluster.md)
 - See [Create a cluster using Windows PowerShell](/deploy/create-cluster-powershell.md)
