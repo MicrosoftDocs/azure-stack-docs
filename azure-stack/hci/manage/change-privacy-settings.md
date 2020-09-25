@@ -43,6 +43,6 @@ If the server uses the Azure Stack HCI operating system or Windows Server with t
     Available Telemetry settings: **1 Security**, **2 Basic**, **3 Enhanced**, **4 Full**
 
     >[!NOTE]
-    > Azure Stack HCI was released with the setting **1 Security** by default.
+    > The default setting for Azure Stack HCI is **1 Security**.
 
 1. At the **Enter new telemetry setting:** prompt, type the option you want and press Enter.
