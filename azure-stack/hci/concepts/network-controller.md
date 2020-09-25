@@ -4,7 +4,7 @@ description: This topic covers how to plan to deploy the Network Controller via 
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 09/25/2020
 ---
 
 # Plan to deploy the Network Controller
@@ -20,17 +20,22 @@ Planning to deploy the Network Controller via Windows Admin Center requires a se
 The following is required to deploy the Network Controller:
 - A VHD for the Azure Stack HCI operating system to create the Network Controller VMs.
 - A domain name and credentials to join the Network Controller VMs to a domain.
+- At least 1 virtual switch that you configure during the cluster creation process in Windows Admin Center.
 - A physical network configuration that matches one of the two topology options in this section.
 
-    Windows Admin Center creates the configuration within the Hyper-V host. However, the management network must connect to the host physical adapters according to one of the following two options:
+    Windows Admin Center creates the configuration within the Hyper-V host. However, the management network must connect to the host physical adapters according to one of the following three options:
 
-    **Option 1**: A single physical switch connects the management network to a physical management adapter on the host, and a trunk on the physical adapters that the virtual switch uses:
+    **Option 1**: A single physical switch connects the management network to a physical management adapter on the host, and a trunk on the physical adapters that the virtual switch uses. This option uses a single virtual switch for both compute and storage:
 
     :::image type="content" source="./media/network-controller/topology-option-1.png" alt-text="Option 1 to create a physical network for the Network Controller." lightbox="./media/network-controller/topology-option-1.png":::
 
-    **Option 2**: If the management network is physically separated from the workload networks, then two virtual switches are required:
+    **Option 2**: The management network is physically separated from the workload networks. This option uses a single virtual switch for compute only:
 
-    :::image type="content" source="./media/network-controller/topology-option-2.png" alt-text="Option 2 to create a physical network for the Network Controller." lightbox="./media/network-controller/topology-option-1.png":::
+    :::image type="content" source="./media/network-controller/topology-option-2.png" alt-text="Option 2 to create a physical network for the Network Controller." lightbox="./media/network-controller/topology-option-2.png":::
+
+    **Option 3**: The management network is physically separated from the workload networks. This option uses two virtual switches, one for compute, and one for storage:
+
+    :::image type="content" source="./media/network-controller/topology-option-3.png" alt-text="Option 2 to create a physical network for the Network Controller." lightbox="./media/network-controller/topology-option-3.png":::
 
 - Management network information that the Network Controller uses to communicate with Windows Admin Center and the Hyper-V hosts.
 - Either DHCP-based or static network-based addressing for the Network Controller VMs.
