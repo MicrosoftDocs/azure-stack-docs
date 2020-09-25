@@ -1,10 +1,10 @@
 ---
-title:  Run an N-tier application in multiple Azure Stack Hub regions for high availability 
+title:  Run N-tier application in multiple Azure Stack Hub regions for high availability 
 description: Learn how to run an N-tier application in multiple Azure Stack Hub regions for high availability.
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
@@ -19,7 +19,7 @@ ms.lastreviewed: 11/01/2019
 
 This reference architecture shows a set of proven practices for running across an N-tier application multiple Azure Stack Hub regions, in order to achieve availability and a robust disaster recovery infrastructure. In this document, Traffic Manager is used to achieve high availability, however if Traffic Manager is not a preferred choice in your environment, a pair of highly available load balancers could also be substituted in.
 
-> [!Note]  
+> [!NOTE]  
 > Please note the Traffic Manager used in the architecture below needs to be configured in Azure and the endpoints used to configure the Traffic Manager profile need to be publicly routable IPs.
 
 ## Architecture
@@ -124,7 +124,7 @@ To configure the availability group:
 
     -   Put one or more secondary replicas in the secondary region. Configure these to use *asynchronous* commit, for performance reasons. (Otherwise, all T-SQL transactions have to wait on a round trip over the network to the secondary region.)
 
-> [!Note]  
+> [!NOTE]  
 > Asynchronous commit replicas don't support automatic failover.
 
 ## Availability considerations

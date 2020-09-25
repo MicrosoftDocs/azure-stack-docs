@@ -11,11 +11,6 @@
       "redirect_document_id": false
     },    
     { 
-      "source_path": "azure-stack/operator/operator-access-workstation.md", 
-      "redirect_url": "/azure-stack/operator/azure-stack-manage-basics", 
-      "redirect_document_id": false
-    },    
-    { 
       "source_path": "azure-stack/hybrid/overview-app-design-considerations.md", 
       "redirect_url": "/hybrid/app-solutions/overview-app-design-considerations", 
       "redirect_document_id": false
@@ -123,6 +118,11 @@
     {
       "source_path": "azure-stack/operator/azure-stack-app-service-update-offline.md",
       "redirect_url": "/azure-stack/operator/azure-stack-app-service-update?pivots=state-disconnected",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-create-vpn-connection-one-node.md",
+      "redirect_url": "/azure-stack/user/azure-stack-vpn-gateway-about-vpn-gateways",
       "redirect_document_id": false
     },
     {

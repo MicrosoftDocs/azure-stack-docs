@@ -43,7 +43,7 @@ ms.lastreviewed: 12/07/2019
 | Total number of storage accounts |20 |The maximum number of storage accounts that a subscription can create in this location. |
 
 > [!NOTE]
-> When **Maximum capacity (GB)** is exceeded in one subscription, you can't create new storage resource in this subscription. But you can continually using the unmanaged disks created in this subscription in VMs, which may cause total used capacity way beyond the quota limit.<br>The maximum capacity of managed disks is separate from the total storage quota. You can set this value in **Compute quotas**.
+> When the **Maximum capacity (GB)** of a subscription is exceeded, you can't create a new storage resource in the subscription. Although you can still create VMs with unmanaged disks, doing so may cause your total used capacity to exceed the quota limit.<br>The maximum capacity of managed disks is separate from the total storage quota. You can set the total storage quota in **Compute quotas**.
 
 ## Network quota types
 

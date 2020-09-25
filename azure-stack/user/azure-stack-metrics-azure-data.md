@@ -24,7 +24,7 @@ For an overview of Azure Monitor, see the global Azure article [Get started with
 
 Azure Monitor is a platform service that provides a single source for monitoring Azure resources. Azure Monitor lets you visualize, query, route, archive, and take other actions on metrics and logs coming from resources in Azure. You can work with this data by using the Azure Stack Hub administrator portal, Monitor PowerShell Cmdlets, Cross-Platform CLI, or Azure Monitor REST APIs. For the specific connectivity supported by Azure Stack Hub, see [How to consume monitoring data from Azure Stack Hub](azure-stack-metrics-monitor.md).
 
-> [!Note]
+> [!NOTE]
 > Metrics and diagnostic logs aren't available for the Azure Stack Development Kit.
 
 ## Prerequisites for Azure Monitor on Azure Stack Hub
@@ -63,7 +63,7 @@ The types of measures include:
  - Crash dumps
  - Customer error logs
 
-> [!Note]  
+> [!NOTE]  
 > Linux Diagnostics Extension on Azure Stack Hub is not supported.
 
 ### Host and Guest VM metrics

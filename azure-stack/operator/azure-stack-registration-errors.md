@@ -3,7 +3,7 @@ title: Usage and billing registration error codes in Azure Stack Hub
 description: Learn about usage and billing registration error codes in Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/01/2020
+ms.date: 08/27/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 06/27/2019

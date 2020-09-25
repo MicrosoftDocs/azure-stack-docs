@@ -1,10 +1,10 @@
 ---
-title: How to get authentication information for Azure Stack Hub 
+title: Get authentication information for Azure Stack Hub 
 description: Learn how to get authentication information for Azure Stack Hub
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/13/2019

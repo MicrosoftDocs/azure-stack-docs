@@ -1,5 +1,5 @@
 ---
-title:  Graphics processing unit (GPU) virtual machine (VM) on Azure Stack Hub
+title:  Graphics processing unit (GPU) VM on Azure Stack Hub
 description: Reference for GPU computing in Azure Stack Hub.
 author: mattbriggs
 ms.author: mabrigg
@@ -55,9 +55,9 @@ This new NVIDIA T4 VM size allows for light ML, inference and visualization work
 | Size | vCPU | Memory: GiB | GPU | GPU memory: GiB | Max data disks | Max NICs | 
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_NC4as_v4 |4 |28 | 1 | 16 | 8 | 4 | 
-| Standard_NC8as_v4 |4 |56 | 1 | 16 | 16 | 8 | 
-| Standard_NC16as_v4 |4 |112 | 1 | 16 | 32 | 8 | 
-| Standard_NC64as_v4 |4 |448 | 4 | 64 | 32 | 8 | 
+| Standard_NC8as_v4 |8 |56 | 1 | 16 | 16 | 8 | 
+| Standard_NC16as_v4 |16 |112 | 1 | 16 | 32 | 8 | 
+| Standard_NC64as_v4 |64 |448 | 4 | 64 | 32 | 8 | 
 
 
 ## Patch and update, FRU behavior of VMs 

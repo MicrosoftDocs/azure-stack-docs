@@ -31,7 +31,7 @@ Which brings you to the scenario that you will cover below. How can you connect 
 
 The diagram depicts a scenario, where a single virtual machine, running a workload, connects to, and utilizes external (to the VM, and the Azure Stack Hub itself) storage, for purposes of data reading/writing etc. For this article, you'll focus on simple retrieval of files, but you can expand this example for more complex scenarios, such as the remote storage of database files.
 
-![](./media/azure-stack-network-howto-extend-datacenter/azure-stack-network-howto-extend-datacenter-image1.svg)
+![A workload VM on the Azure Stack Hub system accesses external storage. The VM has two NICs, each with both a public and a private IP address.](./media/azure-stack-network-howto-extend-datacenter/azure-stack-network-howto-extend-datacenter-image1.svg)
 
 In the diagram, you’ll see that the VM on the Azure Stack Hub system has been deployed with multiple NICs. From both a redundancy, but also a storage best practice, it’s important to have multiple paths between target and destination. Where things become more complex, are where VMs in Azure Stack Hub have both public and private IPs, just like in Azure. If the external storage needed to reach the VM, it can only do so via the public IP, as the Private IPs are primarily used within the Azure Stack Hub systems, within vNets and the subnets. The external storage would not be able to communicate with the private IP space of the VM, unless it passes through a Site to Site VPN, to punch into the vNet itself. So, for this example, we’ll focus on communication via the public IP space. One thing to notice with the public IP space in the diagram, is that there are 2 different public IP pool subnets. By default, Azure Stack Hub requires just one pool for public IP address purposes, but something to consider, for redundant routing, may be to add a second. However, at this time, it is not possible to select an IP address from a specific pool, so you may indeed end up with VMs with public IPs from the same pool across multiple virtual network cards.
 
@@ -45,7 +45,7 @@ In this scenario, we will deploy and configure a Windows Server 2019 virtual mac
 
 1.  From your **Azure Stack Hub administration portal**, assuming this system has been correctly registered and is connected to the marketplace, select **Marketplace Management,** then, assuming you don’t already have a Windows Server 2019 image, select **Add from Azure** and then search for **Windows Server 2019**, adding the **Windows Server 2019 Datacenter** image.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image2.png)
+    ![The "Dashboard > Marketplace management - Marketplace items > Add from Azure" dialog box shows "windows server 2019" in the search box and a list of items whose name contains that string.](./media/azure-stack-network-howto-extend-datacenter/image2.png)
 
     Downloading a Windows Server 2019 image may take some time.
 
@@ -79,13 +79,13 @@ In this scenario, we will deploy and configure a Windows Server 2019 virtual mac
 
 10. Leave the other defaults and select **OK**.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image3.png)
+    ![The "Dashboard > New > Create virtual machine > Summary" dialog box states "Validation passed" and displays information about VM001.](./media/azure-stack-network-howto-extend-datacenter/image3.png)
 
 11. Read the summary, wait for validation, then select **OK** to begin the deployment. The deployment should complete in around 10 minutes.
 
 12. Once the deployment has completed, under **Resource** select the virtual machine name, **VM001** to open **Overview**.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image4.png)
+    ![The Overview screen shows information about VM001.](./media/azure-stack-network-howto-extend-datacenter/image4.png)
 
 13. Under DNS name, select **Configure** and provide a DNS name label, **vm001** and select **Save**, then select **VM001**.
 
@@ -141,11 +141,11 @@ By default, Azure Stack Hub assigns a default gateway to the first (primary) net
 
 2.  Open **CMD** as administrator and run **route print** which should return the two interfaces (Hyper-V Network Adapters) inside this VM.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image5.png)
+    ![The "route print" output is an interface list that includes two Hyper-V network adapters: Interface 6 is Hyper-V network adapter #2, and Interface 7 is adapter #3.](./media/azure-stack-network-howto-extend-datacenter/image5.png)
 
 3.  Now run **ipconfig** to see which IP address is assigned to the secondary network interface. In this example, 10.10.11.4 is assigned to interface 6. No default gateway address is returned for the secondary network interface.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image6.png)
+    ![The partial ipconfig listing shows that Ethernet adapter Ethernet 2 has IPv4 address 10.10.11.4.](./media/azure-stack-network-howto-extend-datacenter/image6.png)
 
 4.  To route all traffic destined for addresses outside the subnet of the secondary network interface to the gateway for the subnet, run the following command from the **CMD:**.
 
@@ -155,11 +155,11 @@ By default, Azure Stack Hub assigns a default gateway to the first (primary) net
 
     The `<ipaddress>` is the .1 address of the current subnet, and `<interface>` is the interface number.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image7.png)
+    ![The route add command is issued with ipaddress value 10.10.11.1, and interface number 6.](./media/azure-stack-network-howto-extend-datacenter/image7.png)
 
 5.  To confirm the added route is in the route table, enter the **route print** command.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image8.png)
+    ![The added route is shown as a Persistent Route with Gateway Address 10.10.11.1 and Metric 5015.](./media/azure-stack-network-howto-extend-datacenter/image8.png)
 
 6.  You can also validate outbound communication by running a ping command:  
     `ping 8.8.8.8 -S 10.10.11.4`  
@@ -169,9 +169,9 @@ By default, Azure Stack Hub assigns a default gateway to the first (primary) net
 
 ### Configure the Windows Server 2019 iSCSI Target
 
-For the purpose of this scenario, you’ll be validating a configuration where the Windows Server 2019 iSCSI Target is a virtual machine running on Hyper-V, outside of the Azure Stack Hub environment. This virtual machine will be configured with 8 virtual processors, a single VHDX file, and most importantly, 2 virtual network adapters. In an ideal scenario, these network adapters will have different routable subnets, but in this validation, they will have network adapters on the same subnet.
+For the purpose of this scenario, you’ll be validating a configuration where the Windows Server 2019 iSCSI Target is a virtual machine running on Hyper-V, outside of the Azure Stack Hub environment. This virtual machine will be configured with eight virtual processors, a single VHDX file, and most importantly, two virtual network adapters. In an ideal scenario, these network adapters will have different routable subnets, but in this validation, they will have network adapters on the same subnet.
 
-![](./media/azure-stack-network-howto-extend-datacenter/image9.png)
+![The partial ipconfig command output shows two Ethernet adapters on the same subnet; the IP addresses are 10.33.131.15 and 10.33.131.16.](./media/azure-stack-network-howto-extend-datacenter/image9.png)
 
 For your iSCSI Target server, it could be Windows Server 2016 or 2019, physical or virtual, running on Hyper-V, VMware, or an alternative appliance of your choice, such as a dedicated physical iSCSI SAN. The key focus here, is connectivity into and out of the Azure Stack Hub system, however having multiple paths between the source and destination is preferably, as it provides additional redundancy, and allows the use of more advanced capabilities to drive increased performance, such as MPIO.
 
@@ -185,7 +185,7 @@ Once updated and rebooted, you can now configure this server as an iSCSI Target.
 
 3.  Expand **File and Storage Services**, expand **File & iSCSI Services** and tick the **iSCSI Target Server** box, accepting any popup prompts to add new features, then proceed through to completion.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image10.png)
+    ![The Confirmation page of the Add Roles and Features Wizard is titled "Confirm installation selections". The File and Storage Services is expanded to show File and iSCSI Services, which is expanded to show iSCSI Target Server.](./media/azure-stack-network-howto-extend-datacenter/image10.png)
 
     Once completed, close **Server Manager.**
 
@@ -201,7 +201,7 @@ Once updated and rebooted, you can now configure this server as an iSCSI Target.
 
 9.  Set the size of the virtual disk to **10GB** and select **Fixed size** and select **Next**.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image11.png)
+    ![The iSCSI Virtual Disk Size page of the New iSCSI Virtual Disk Wizard specifies a fixed size of 10GB, and the "Clear the virtual disk on allocation" option is checked.](./media/azure-stack-network-howto-extend-datacenter/image11.png)
 
 10) Since this is a new target, select **New iSCSI target** and select **Next**.
 
@@ -211,13 +211,13 @@ Once updated and rebooted, you can now configure this server as an iSCSI Target.
 
 13) In the **Add initiator ID window**, select **Enter a value for the selected type** and under **Type** ensure IQN is selected in the drop-down menu. Enter **iqn.1991-05.com.microsoft:\<computername>** where \<computername> is the **computer name** of **VM001** then select **Next**.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image12.png)
+    ![The "Add initiator ID" window shows the values to specify the initiator ID.](./media/azure-stack-network-howto-extend-datacenter/image12.png)
 
 14) On the **Enable Authentication** page, leave the boxes blank, then select **Next**.
 
 15) Confirm your selections and select **Create**, then close. You should see your iSCSI virtual disk created in Server Manager.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image13.png)
+    ![The Results page of the New iSCSI Virtual Disk Wizard shows that creation of the ISCSI virtual disk succeeded.](./media/azure-stack-network-howto-extend-datacenter/image13.png)
 
 ### Configure the Windows Server 2019 iSCSI Initiator and MPIO
 
@@ -229,7 +229,7 @@ To set up the iSCSI Initiator, firstly, log back into the **Azure Stack Hub user
 
 3.  On the **Features** page, add **Multipath I/O** and select **Next**.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image14.png)
+    ![The Features page of the Add Roles and Features Wizard shows one feature, Multipath I/O, selected.](./media/azure-stack-network-howto-extend-datacenter/image14.png)
 
 4.  Tick the **Restart the destination server automatically if required** box and select **Install**, then select **Close.** A reboot will most likely be required, so once completed, reconnect to VM001.
 
@@ -237,7 +237,7 @@ To set up the iSCSI Initiator, firstly, log back into the **Azure Stack Hub user
 
 6.  Select the **Discover Multi-Paths** tab, and tick the box to **Add support for iSCSI devices** and select **Add**, then select **Yes** to **reboot** VM001. If you don’t receive a window, select **OK,** then reboot manually.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image15.png)
+    ![The Discover Multi-Paths page of the MPIO dialog box shows that the "Add Support for iSCSI devices" option is checked. There is an Add button.](./media/azure-stack-network-howto-extend-datacenter/image15.png)
 
 7.  Once rebooted, establish a **new RDP connection to VM001**.
 
@@ -245,7 +245,7 @@ To set up the iSCSI Initiator, firstly, log back into the **Azure Stack Hub user
 
 9.  When a Microsoft iSCSI window pops up, select **Yes** to allow the iSCSI service to run by default.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image16.png)
+    ![The Microsoft iSCSI dialog box reports that the iSCSI service is not running; there is a Yes button to start the service.](./media/azure-stack-network-howto-extend-datacenter/image16.png)
 
 10. In the iSCSI Initiator properties window, select the **Discovery** tab.
 
@@ -253,7 +253,7 @@ To set up the iSCSI Initiator, firstly, log back into the **Azure Stack Hub user
 
 12. Enter the first IP address of your iSCSI Target server, and select **Advanced**.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image17.png)
+    ![The Discover Target Portal windows shows 10.33.131.15 in the "IP address or DNS name:" text box, and 3260 (the default) in the Port text box. There is an Advanced button.](./media/azure-stack-network-howto-extend-datacenter/image17.png)
 
 13. In the **Advanced Settings** window, select the following, then select **OK**.
 
@@ -273,13 +273,13 @@ To set up the iSCSI Initiator, firstly, log back into the **Azure Stack Hub user
 
 16. Your target portals should look like this, with your own iSCSI Target IPs under the **Address** column.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image18.png)
+    ![The "Target portals" dialog box shows the two portals that have just been created. The IP addresses are 10.33.131.15 and 10.33.131.16.](./media/azure-stack-network-howto-extend-datacenter/image18.png)
 
 17. Back on the **Targets** tab, select your iSCSI Target from the middle of the window, and select **Connect**.
 
 18. In the **Connect to target** window, select the **Enable multi-path** tick box, and select **Advanced**.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image19.png)
+    ![The "Connect to target" dialog box shows the specified values. There is an Advanced button and an OK button.](./media/azure-stack-network-howto-extend-datacenter/image19.png)
 
 19. Enter the following information and select **OK**, then in the **Connect to Target** window, select **OK**.
 
@@ -289,7 +289,7 @@ To set up the iSCSI Initiator, firstly, log back into the **Azure Stack Hub user
 
     c.  **Target portal IP**: \<your first iSCSI Target IP / 3260>.
 
-![](./media/azure-stack-network-howto-extend-datacenter/image20.png)
+    ![The "Connect using" dialog box shows the specified information for target portal 10.33.131.15/3260.](./media/azure-stack-network-howto-extend-datacenter/image20.png)
 
 1.  Repeat the process for the second initiator/target combination.
 
@@ -299,31 +299,31 @@ To set up the iSCSI Initiator, firstly, log back into the **Azure Stack Hub user
 
     c.  **Target portal IP**: \<your second iSCSI Target IP / 3260>.
 
-        ![](./media/azure-stack-network-howto-extend-datacenter/image21.png)
+    ![The "Connect using" dialog box shows the specified information for target portal 10.33.131.16/3260.](./media/azure-stack-network-howto-extend-datacenter/image21.png)
 
 2.  Select the **Volumes and Devices** tab, and then select **Auto Configure** – you should see an MPIO volume presented:
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image22.png)
+    ![The Volume List window shows volume name, mount point, and device for a single volume.](./media/azure-stack-network-howto-extend-datacenter/image22.png)
 
 3.  Back on the **Targets** tab, select **Devices** and you should see 2 connections to the single iSCSI VHD you created earlier.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image23.png)
+    ![The Devices dialog box shows Disk 2 listed on two lines. The target is 0 on the first line, 1 on the second.](./media/azure-stack-network-howto-extend-datacenter/image23.png)
 
 4.  Select the **MPIO button** to see more information about the load-balancing policy and paths.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image24.png)
+    ![The MPIO page of the Devices Details dialog box shows Round Robin for the "Load balance policy", and lists two devices.](./media/azure-stack-network-howto-extend-datacenter/image24.png)
 
 5.  Select **OK** three times to exit the windows and the iSCSI Initiator.
 
 6.  Open Disk Management (diskmgmt.msc) and you should be prompted with an **Initialize Disk** window.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image25.png)
+    ![The Initialize Disk dialog box shows Disk 2 checked, and MBR (Master Boot Record) selected as the partition style. There is an OK button.](./media/azure-stack-network-howto-extend-datacenter/image25.png)
 
 7.  Select **OK** to accept the defaults, then scroll down to the new disk, right-click, and select **New Simple Volume**
 
 8.  Walk through the wizard, accepting the defaults. Change the Volume label to **iSCSIdisk1** and then select **Finish**.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image26.png)
+    ![The New Simple Volume Wizard dialog box shows that the volume is to be NTFS with a default allocation unit size and a volume label of "iSCSIdisk1". Quick format is selected. There is a Next button.](./media/azure-stack-network-howto-extend-datacenter/image26.png)
 
 9.  The drive should then be formatted and presented with a drive letter.
 
@@ -346,11 +346,11 @@ To validate communication and run a rudimentary file copy test, firstly, log bac
     2. A new CMD window will open, and then enter:  
         `**Create vdisk file="c:\\test.vhd" type=fixed maximum=5120**`
     
-    ![](./media/azure-stack-network-howto-extend-datacenter/image27.png)
+    ![The CMD window shows that the specified command was issued to DiskPart which completed it successfully, creating the virtual disk file.](./media/azure-stack-network-howto-extend-datacenter/image27.png)
     
     3.  This will take a few moments to create. Once created, to validate the creation, open **File Explorer** and navigate to C:\\ - you should see the new test.vhd present, and a size of 5GB.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image28.png)
+    ![File test.vhd appears within C:\, as expected, and is the specified size.](./media/azure-stack-network-howto-extend-datacenter/image28.png)
 
     4. Close the CMD window, and return to the ISE, then enter the following command in the script Window. Replace F:\\ with the iSCSI Target drive letter that was applied earlier.
 
@@ -360,7 +360,7 @@ To validate communication and run a rudimentary file copy test, firstly, log bac
 
     7. While the command is running, observe the two network adapters and see the transfer of data taking place across both network adapters in VM001. You should also notice that each network adapter should share the load evenly.
 
-    ![](./media/azure-stack-network-howto-extend-datacenter/image29.png)
+    ![Both adapters show a load of 2.6 Mbps.](./media/azure-stack-network-howto-extend-datacenter/image29.png)
 
 This scenario was designed to highlight the connectivity between a workload running on Azure Stack Hub, and an external storage array, in this case, a Windows Server-based iSCSI Target. This wasn’t designed to be a performance test, nor be reflective of the steps you’d need to perform if you were using an alternative iSCSI-based appliance, however it does highlight some of the core considerations you’d make when deploying workloads on Azure Stack Hub, and connecting them to storage systems outside of the Azure Stack Hub environment.
 

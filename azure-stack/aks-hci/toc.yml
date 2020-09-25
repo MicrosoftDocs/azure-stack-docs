@@ -1,0 +1,65 @@
+- name: Azure Kubernetes Service on Azure Stack HCI documentation
+  href: index.yml
+- name: Overview
+  items:
+  - name: Azure Kubernetes Service on Azure Stack HCI
+    href: overview.md
+- name: Quickstarts
+  expanded: true
+  items:
+    - name: Set up Azure Kubernetes Service on Azure Stack HCI
+      items:
+        - name: Using Windows Admin Center
+          href: setup.md
+        - name: Using PowerShell
+          href: setup-powershell.md
+    - name: Create a Kubernetes cluster
+      items:
+        - name: Using Windows Admin Center
+          href: create-kubernetes-cluster.md
+        - name: Using PowerShell
+          href: create-kubernetes-cluster-powershell.md
+- name: Tutorials
+  items:
+    - name: Use Windows Server containers
+      href: deploy-windows-application.md
+    - name: Use Linux containers
+      href: deploy-linux-application.md
+- name: Concepts
+  items:
+  - name: Azure Kubernetes on Azure Stack HCI Concepts
+    href: kubernetes-concepts.md
+  - name: System requirements
+    href: system-requirements.md
+- name: How-to guides
+  items: 
+    - name: Connect to Azure Arc for Kubernetes
+      href: connect-to-arc.md
+    - name: Adapt apps for mixed-OS Kubernetes clusters
+      href: adapt-apps-mixed-os-clusters.md
+    - name: Use persistent storage in a Windows container and prepare for gMSA
+      href: persistent-storage-windows-nodes.md
+    - name: Troubleshoot
+      href: troubleshoot.md
+- name: Related
+  items:
+  - name: Azure Stack HCI
+    href: ../hci/index.yml
+  - name: Windows Admin Center
+    href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
+  - name: Azure hybrid cloud
+    href: /hybrid
+  - name: Windows Server
+    href: /windows-server/
+- name: Resources
+  items:
+  - name: Release notes
+    href: https://aka.ms/aks-hci-relnotes/
+  - name: Known issues
+    href: known-issues.md
+  - name: Azure roadmap
+    href: https://azure.microsoft.com/roadmap/
+  - name: AKS on Azure Stack HCI roadmap
+    href: https://aka.ms/aks-hci-roadmap/
+  - name: File bugs
+    href: https://aka.ms/aks-hci-issues/

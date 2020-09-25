@@ -3,7 +3,7 @@ title: Azure Stack validation best practices
 description: Learn the best practices for validation as a service.
 author: mattbriggs
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 10/28/2019

@@ -1,5 +1,5 @@
 ---
-title: Manage usage and billing for Azure Stack Hub as a Cloud Solution Provider 
+title: Manage Azure Stack Hub usage and billing as a Cloud Solution Provider 
 description: Learn how to register Azure Stack Hub as a Cloud Solution Provider (CSP) and add customers for billing.
 author: sethmanheim
 
@@ -33,6 +33,10 @@ Choose the type of shared services account that you use for Azure Stack Hub. The
 
 - Cloud Solution Provider
 - Partner Shared Services subscription
+
+We've created a tutorial video to help you understand how to manage your multi-tenant rights:
+
+> [!VIDEO https://www.youtube.com/embed/ZP6jkbLeS34]
 
 #### Azure Partner Shared Services
 
