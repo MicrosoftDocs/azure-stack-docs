@@ -48,7 +48,7 @@ You will need to have the following resources in place in your Azure Stack Hub i
 
   - Your development machine will need the following resources:
       - [Python 3.x](https://www.python.org/downloads/)
-      - [Pip](https://pypi.org/project/pip/) for installing Python packages. This is usually been installed with your Python installation. If you have Pip installed, you may want to upgrade to the latest version. You can upgrade using pip, itself. Type: `pip install --upgrade pip`.
+      - [Pip](https://pypi.org/project/pip/) for installing Python packages. This is been installed with your Python installation. If you have Pip installed, you may want to upgrade to the latest version. You can upgrade using pip, itself. Type: `pip install --upgrade pip`.
       - [Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest)
       - [Git](https://git-scm.com/downloads)
       - [Docker](https://docs.docker.com/get-docker/)
@@ -132,8 +132,11 @@ Install Docker and the Nvidia driver on your GPU enabled VM. You are going to ru
 1.  Set the GPG key and the remote repository for the nvidia-docker package.
 
     ```bash  
-curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
-curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+    curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
+      sudo apt-key add -
+    distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+    curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | \
+      sudo tee /etc/apt/sources.list.d/nvidia-docker.list
     ```
 
 3.  Update the apt index and lists, and install nvidia-docker2 and the Docker
@@ -144,35 +147,33 @@ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.li
     sudo apt-get install -y
     ```
 
-1.  [Install NVIDIA GPU
-    Drivers](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)
+### Install Nvidia-Docker
 
-### Install Nvidia driver
-
-1. Install gcc
+1. Install **gcc**.
 
     ```bash  
     sudo apt update
     sudo apt install build-essential
     ```
 
-2. Download and install driver from the following URL: [https://www.nvidia.com/Download/index.aspx?lang=en-us](https://www.nvidia.com/Download/index.aspx?lang=en-us)
+2. Install the Nvidia driver using the commands from when you prepared your GPU enabled VM. Review the steps in the article, [Install NVIDIA GPU drivers on N-series VMs running Linux](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup). For example, for Ubuntu 18.04 the commands look like:
 
-    ![Nvadia install](media/gpu-deploy-sample-module/98ef3b4f7e19d3aace32f147f7591172.png)
-
-    ```bash  
-    sudo sh NVIDIA-Linux-x86_64-440.64.00.run
+    ```bash
+    wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
+    sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
+    sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+    sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /"
+    sudo apt-get update
+    sudo apt-get -y install cuda
     ```
 
-3. Install cuda from the following URL: [https://developer.nvidia.com/cuda-downloads](https://developer.nvidia.com/cuda-downloads)
-
-4.    Verify install by running the following command:
+3. Verify install by running the following command:
 
 ```bash  
-\$ sudo docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
+sudo docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
 ```
 
-![a valid install](media/gpu-deploy-sample-module/c8c86759e86bae0c2dabe61630b07cf5.png)
+![a valid install](media/gpu-deploy-sample-module/gpu-valid-installation.png)
 
 ## Enable monitoring
 
@@ -182,6 +183,8 @@ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.li
 
 3. Select **Start** to begin monitoring output from the IoT Edge Device.
 
+![a valid install](media/gpu-deploy-sample-module/user-azure-iot-explorer-gpu.png)
+
 ## Monitor the module  
 
 1. In the VS Code command palette, run **Azure IoT Hub: Select IoT Hub**.
@@ -190,13 +193,15 @@ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.li
 
 3. In the VS Code explorer, expand the Azure IoT Hub section. Under **Devices**, you should see the IoT Edge device corresponding to your Azure Stack Edge device. 
 
-    1. Select that device, right-click and select **Start Monitoring Built-in Event Endpoint**.
+    1. Select that device, right-click, and select **Start Monitoring Built-in Event Endpoint**.
 
     2. Go to **Devices > Modules** and you should see your **GPU module** running.
 
     3. The VS Code terminal should also show the IoT Hub events as the monitoring output for your Azure Stack Edge device.
 
-        You can see that the time taken to execute the same set of operations (5000 iterations of shape transformation) by GPU is lot lesser than it is for CPU.
+    ![a valid install](media/gpu-deploy-sample-module/gpu-visual-studio-code-iot.png)
+
+    You can see that the time taken to execute the same set of operations (5000 iterations of shape transformation) by GPU is lot lesser than it is for CPU.
 
 ## Next Steps
 
