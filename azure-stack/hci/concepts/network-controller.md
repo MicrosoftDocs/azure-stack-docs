@@ -35,7 +35,7 @@ The following is required to deploy the Network Controller:
 
     **Option 3**: The management network is physically separated from the workload networks. This option uses two virtual switches, one for compute, and one for storage:
 
-    :::image type="content" source="./media/network-controller/topology-option-3.png" alt-text="Option 2 to create a physical network for the Network Controller." lightbox="./media/network-controller/topology-option-3.png":::
+    :::image type="content" source="./media/network-controller/topology-option-3.png" alt-text="Option 3 to create a physical network for the Network Controller." lightbox="./media/network-controller/topology-option-3.png":::
 
 - Management network information that the Network Controller uses to communicate with Windows Admin Center and the Hyper-V hosts.
 - Either DHCP-based or static network-based addressing for the Network Controller VMs.
