@@ -32,7 +32,7 @@ If the server is running Windows Server and has the Full Desktop installation op
     >[!NOTE]
     > On the **Settings** page, if the notice **Some settings are managed by your organization** displays, then the **Diagnotic and usage data** setting may not be available.
 ## Change privacy settings on a server using Azure Stack HCI or Server Core
-If the server uses the Server Core installation option (as is the case with servers running Azure Stack HCI, version 20H2), use the following steps:
+If the server uses the Azure Stack HCI operating system or Windows Server with the Server Core installation option, use the following steps:
 1. Log on to the server running Azure Stack HCI.
 
     You can log on locally by using a keyboard and monitor, or using a remote management (headless or BMC) controller, or Remote Desktop. The Server Configuration tool (Sconfig) opens automatically when you log on to the server.
