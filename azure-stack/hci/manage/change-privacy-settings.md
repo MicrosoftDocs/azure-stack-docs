@@ -37,7 +37,7 @@ If the server uses the Azure Stack HCI operating system or Windows Server with t
 2. If you connect to a server running Azure Stack HCI, the Server Configuration tool (Sconfig) opens automatically. If you connect to a server running Windows Server with Server Core, at the command prompt, enter `Sconfig`.
 
 
-1. On the **Welcome to Azure Stack HCI** screen, at the **Enter a number to select an option:** prompt, type **10** and press Enter.
+1. At the **Enter a number to select an option:** prompt, type **10** and press Enter.
 1. On the **Change Telemetry** confirmation prompt, select **Yes** to display the following options:
 
     Available Telemetry settings: **1 Security**, **2 Basic**, **3 Enhanced**, **4 Full**
