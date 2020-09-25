@@ -73,6 +73,9 @@ If you are updating the SQL resource provider version to 1.1.33.0 or previous ve
 
 If you are updating the SQL resource provider to version 1.1.47.0 or later, you can skip this step. The deployment script will automatically download and install the necessary PowerShell modules for you to path C:\Program Files\SqlMySqlPsh.
 
+>[!NOTE]
+>If folder C:\Program Files\SqlMySqlPsh already exists with PowerShell module downloaded, it is recommended to clean up this folder before running the update script. This is to make sure the right version of PowerShell module is downloaded and used.
+
 ```powershell
 # Run the following scripts when updating to version 1.1.33.0 only.
 # Install the AzureRM.Bootstrapper module, set the profile, and install the AzureStack module.
