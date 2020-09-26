@@ -5,9 +5,9 @@ author: mattbriggs
 ms.author: mabrigg
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 09/25/2020
+ms.date: 09/28/2020
 ms.reviewer: gara
-ms.lastreviewed: 09/25/2020
+ms.lastreviewed: 09/28/2020
 
 # Intent: As a a developer on Azure Stack Hub, I want to deploy a solution using a Graphics Processing Unit (GPU) in order to deliver an processing intensive visualization application.
 # Keyword: Graphics Processing Unit (GPU) module solution
@@ -16,30 +16,29 @@ ms.lastreviewed: 09/25/2020
 
 # Deploy a GPU enabled IoT module on Azure Stack Hub
 
-In this article, you will install GPU drivers for your Azure Stack Hub virtual machines (VM) and begin developing modules to Linux devices running IoT Edge. IoT Edge allows you to remotely manage code on your devices so that you can send more of your workloads to the edge.
+With a GPU-enabled Azure Stack Hub, you can deploy processor-intensive modules to Linux devices running at the IoT Edge. GPU optimized VM sizes are specialized VMs available with single or multiple NVIDIA GPUs. In this article, you can learn to use GPU optimized VMs to run compute-intensive, graphics-intensive, and visualization workloads.
 
-This article takes advantage of GPU optimized VMs to run compute-intensive,
-graphics-intensive, and visualization workloads. GPU optimized VM sizes are
-specialized virtual machines available with single or multiple NVIDIA GPUs.
+Before you start, you will need an Azure Active Directory (Azure AD) subscription with access to global Azure and Azure Stack Hub, an Azure Container Registry (ACR), and an IoT hub.
 
-In this article you'll learn how to:
-  - Deploy a GPU module to an IoT Edge VM on Azure Stack Hub.
-  - Benchmark processing times for GPUs and CPUs.
-  - Included models: This sample includes PyTorch and TensorFlow benchmarking sample code for CPU against GPU.
+In this article, you:
+  - Install an GPU-enabled Linux VM and install the correct drivers.
+  - Install Docker in order to run a container that will also require the correct drivers.
+  - Connect your IoT device to your iOT Hub and install from the iOT marketplace the model: Getting started with GPUs`.
+  - Install and monitor your device from local machine using Azure IoT explorer.
+  - Install and monitor your device using the Azure IoT extension in Visual Studio Code.
 
 ## Prerequisites
 
-You will need to have the following resources in place in your Azure Stack Hub instance, global Azure, and on your local development machine.
+you'll need to have the following resources in place in your Azure Stack Hub instance, global Azure, and on your local development machine.
 
 ### Azure Stack Hub and Azure
 
   - A subscription as a user using Azure Active Directory (Azure AD) in an Azure Stack Hub Integrated System with an NVIDA GPU.
-  - A global Azure subscription.
-      - If you don't have a global Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
-      - An Azure Container Registry (ACR). Make a note of the ACR sign-in server, username, and password.
+  - A global Azure subscription. If you don't have a global Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+- An Azure Container Registry (ACR). Make a note of the ACR sign-in server, username, and password.
 -   A free or standard-tier [IoT
     hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)
-    in Azure.
+    in global Azure.
 
 ### A development machine
 
@@ -60,28 +59,33 @@ You will need to have the following resources in place in your Azure Stack Hub i
 
 Use a separate device to host your IoT Edge device. Using a separate device will provide a separation between your development machine and IoT Edge device more accurately mirrors a deployment scenario. 
 
-Create an IoT Edge device in Azure with a Linux virtual machine:
+Create an IoT Edge device in Azure with a Linux VM:
 
-1.  [Create an N-series Linux Server
+1.  [Create an N-series Linux server
     VM](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-linux-portal)
-    on Azure Stack Hub
+    on Azure Stack Hub. As you install components for your server, you will interact with the server via SSH. For more information, see [Create an SSH key for Linux on Azure Stack Hub](/azure-stack/user/create-ssh-key-on-windows).
 
 2.  [Create and register an IoT Edge
     Device](https://docs.microsoft.com/azure/iot-edge/how-to-register-device)
 
-## Prepare a GPU enabled VM
+## Prepare a GPU-enabled VM
 
-1. Deploy a GPU enabled VM in the Azure Stack Hub user portal. `This seems to be a duplicate of step 1 above.`
+1. Install the NVIDA GPU Drivers on your N-series Linux server by following the steps in the article, [Install NVIDIA GPU drivers on N-series VMs running Linux](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup).
 
-2. Install the NVIDA GPU Drivers by following the steps in the article, [Install NVIDIA GPU drivers on N-series VMs running Linux](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup).
+    > [!NOTE]  
+    > you'll use the bash command line install. Make a note of the commands, since you will use the same commands to install the drivers on the container running in Docker on your GPU-enabled VM
 
-3.  Install the latest IoT Edge runtime on a Linux VM in Azure Stack Hub. For instructions, see [Install the Azure IoT Edge runtime on Debian-based Linux systems](/azure/iot-edge/how-to-install-iot-edge-linux#install-the-latest-runtime-version)
+2.  Install the latest IoT Edge runtime on your N-series Linux server in Azure Stack Hub. For instructions, see [Install the Azure IoT Edge runtime on Debian-based Linux systems](/azure/iot-edge/how-to-install-iot-edge-linux#install-the-latest-runtime-version)
 
 ## Install Docker and the Nvidia driver
 
-Install Docker and the Nvidia driver on your GPU enabled VM. You are going to run module from the IoT Edge marketplace in a container on the VM.
+Install Docker and the Nvidia driver on your GPU-enabled VM. You're going to run the module from the IoT Edge marketplace in a container on the VM.
 
 ### Install Docker
+
+Docker containers can run anywhere, on-premises in the customer datacenter, in an external service provider or in the cloud, on Azure. Docker image containers can run natively on Linux and Windows. However, Windows images can run only on Windows hosts and Linux images can run on Linux hosts and Windows hosts (using a Hyper-V Linux VM, so far), where host means a server or a VM. For more information, see [What is Docker?](https://docs.microsoft.com/dotnet/architecture/microservices/container-docker-introduction/docker-defined).
+
+1. Connect on your N-series Linux server using your SSH client.
 
 1.  Update the apt index and lists.
 
@@ -95,7 +99,7 @@ Install Docker and the Nvidia driver on your GPU enabled VM. You are going to ru
     sudo apt-get upgrade
     ```
 
-2.  Install dependencies required to add Docker's apt repo.
+2.  Install dependencies required to add Docker's apt repository.
 
     ```bash  
     sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
@@ -129,7 +133,9 @@ Install Docker and the Nvidia driver on your GPU enabled VM. You are going to ru
 
 ### Install Nvidia-Docker
 
-1.  Set the GPG key and the remote repository for the nvidia-docker package.
+The [NVIDIA Container Toolkit](https://github.com/NVIDIA/nvidia-docker) help you to build and run GPU accelerated Docker containers. The toolkit includes a container runtime library and utilities to automatically configure containers to leverage NVIDIA GPUs.
+
+1.  Set the GPG key and the remote repository for the **nvidia-docker** package.
 
     ```bash  
     curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
@@ -147,8 +153,6 @@ Install Docker and the Nvidia driver on your GPU enabled VM. You are going to ru
     sudo apt-get install -y
     ```
 
-### Install Nvidia-Docker
-
 1. Install **gcc**.
 
     ```bash  
@@ -156,7 +160,9 @@ Install Docker and the Nvidia driver on your GPU enabled VM. You are going to ru
     sudo apt install build-essential
     ```
 
-2. Install the Nvidia driver using the commands from when you prepared your GPU enabled VM. Review the steps in the article, [Install NVIDIA GPU drivers on N-series VMs running Linux](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup). For example, for Ubuntu 18.04 the commands look like:
+2. Install the Nvidia driver using the commands from when you prepared your GPU-enabled VM. Review the steps in the article, [Install NVIDIA GPU drivers on N-series VMs running Linux](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup).  
+   
+    For example, the Ubuntu 18.04 the commands look like:
 
     ```bash
     wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
@@ -167,13 +173,21 @@ Install Docker and the Nvidia driver on your GPU enabled VM. You are going to ru
     sudo apt-get -y install cuda
     ```
 
-3. Verify install by running the following command:
+3. Verify your install by running the following command:
 
-```bash  
-sudo docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
-```
+    ```bash  
+    sudo docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
+    ```
 
-![a valid install](media/gpu-deploy-sample-module/gpu-valid-installation.png)
+    ![a valid install](media/gpu-deploy-sample-module/gpu-valid-installation.png)
+
+    Your now ready to install the module using the iOT marketplace.
+
+## Get the item from the marketplace
+
+Return to Azure portal and add the the model to your edge device using the iOT marketplace. Select Marketplace Module from the menu. And search for `Getting started with GPUs`, and follow the instructions to add the module.
+
+For instructions see [Select device and add modules](/azure/iot-edge/how-to-deploy-modules-portal#select-device-and-add-modules)
 
 ## Enable monitoring
 
@@ -199,7 +213,7 @@ sudo docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
 
     3. The VS Code terminal should also show the IoT Hub events as the monitoring output for your Azure Stack Edge device.
 
-    ![a valid install](media/gpu-deploy-sample-module/gpu-visual-studio-code-iot.png)
+    ![a valid install](media/gpu-deploy-sample-module/gpu-monitor-events-output.png)
 
     You can see that the time taken to execute the same set of operations (5000 iterations of shape transformation) by GPU is lot lesser than it is for CPU.
 
