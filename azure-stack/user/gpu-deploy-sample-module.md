@@ -219,6 +219,8 @@ For instructions see [Select device and add modules](/azure/iot-edge/how-to-depl
 
 ## Next Steps
 
+  - Learn more about [Graphics processing unit (GPU) virtual machine (VM) on Azure Stack Hub](gpu-vms-about.md)
+
   - Learn more about Azure Stack Hub, Data Box Edge and the Intelligent Edge, [The future of computing: intelligent cloud and intelligent edge](https://azure.microsoft.com/overview/future-of-cloud)
 
   - Learn more about hybrid cloud applications, see [Hybrid Cloud Solutions](https://docs.microsoft.com/hybrid/app-solutions/)
