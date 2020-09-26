@@ -23,19 +23,19 @@ Before you start, you will need an Azure Active Directory (Azure AD) subscriptio
 In this article, you:
   - Install an GPU-enabled Linux VM and install the correct drivers.
   - Install Docker in order to run a container that will also require the correct drivers.
-  - Connect your IoT device to your iOT Hub and install from the iOT marketplace the model: Getting started with GPUs`.
-  - Install and monitor your device from local machine using Azure IoT explorer.
+  - Connect your IoT device to your iOT Hub and install from the iOT marketplace the model: `Getting started with GPUs`.
+  - Install and monitor your device from a local machine using Azure IoT explorer.
   - Install and monitor your device using the Azure IoT extension in Visual Studio Code.
 
 ## Prerequisites
 
-you'll need to have the following resources in place in your Azure Stack Hub instance, global Azure, and on your local development machine.
+You'll need to have the following resources in place in your Azure Stack Hub instance, global Azure, and on your local development machine.
 
 ### Azure Stack Hub and Azure
 
   - A subscription as a user using Azure Active Directory (Azure AD) in an Azure Stack Hub Integrated System with an NVIDA GPU.
   - A global Azure subscription. If you don't have a global Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
-- An Azure Container Registry (ACR). Make a note of the ACR sign-in server, username, and password.
+- An [Azure Container Registry (ACR)](azure/container-registry/container-registry-get-started-portal). Make a note of the ACR sign-in server, username, and password.
 -   A free or standard-tier [IoT
     hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)
     in global Azure.
@@ -63,7 +63,7 @@ Create an IoT Edge device in Azure with a Linux VM:
 
 1.  [Create an N-series Linux server
     VM](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-linux-portal)
-    on Azure Stack Hub. As you install components for your server, you will interact with the server via SSH. For more information, see [Create an SSH key for Linux on Azure Stack Hub](/azure-stack/user/create-ssh-key-on-windows).
+    on Azure Stack Hub. As you install components for your server, you'll interact with the server via SSH. For more information, see [Use an SSH public key](/azure-stack/user/azure-stack-dev-start-howto-ssh-public-key).
 
 2.  [Create and register an IoT Edge
     Device](https://docs.microsoft.com/azure/iot-edge/how-to-register-device)
@@ -73,7 +73,7 @@ Create an IoT Edge device in Azure with a Linux VM:
 1. Install the NVIDA GPU Drivers on your N-series Linux server by following the steps in the article, [Install NVIDIA GPU drivers on N-series VMs running Linux](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup).
 
     > [!NOTE]  
-    > you'll use the bash command line install. Make a note of the commands, since you will use the same commands to install the drivers on the container running in Docker on your GPU-enabled VM
+    > You'll use the bash command line to install your software. Make a note of the commands since you'll use the same commands to install the drivers on the container running in Docker on your GPU-enabled VM
 
 2.  Install the latest IoT Edge runtime on your N-series Linux server in Azure Stack Hub. For instructions, see [Install the Azure IoT Edge runtime on Debian-based Linux systems](/azure/iot-edge/how-to-install-iot-edge-linux#install-the-latest-runtime-version)
 
@@ -181,11 +181,11 @@ The [NVIDIA Container Toolkit](https://github.com/NVIDIA/nvidia-docker) help you
 
     ![a valid install](media/gpu-deploy-sample-module/gpu-valid-installation.png)
 
-    Your now ready to install the module using the iOT marketplace.
+    You're now ready to install the module using the iOT marketplace.
 
 ## Get the item from the marketplace
 
-Return to Azure portal and add the the model to your edge device using the iOT marketplace. Select Marketplace Module from the menu. And search for `Getting started with GPUs`, and follow the instructions to add the module.
+Return to Azure portal and add the the model to your edge device using the iOT marketplace. Select **Marketplace Module** from the menu. And search for `Getting started with GPUs`, and follow the instructions to add the module.
 
 For instructions see [Select device and add modules](/azure/iot-edge/how-to-deploy-modules-portal#select-device-and-add-modules)
 
@@ -222,5 +222,3 @@ For instructions see [Select device and add modules](/azure/iot-edge/how-to-depl
   - Learn more about Azure Stack Hub, Data Box Edge and the Intelligent Edge, [The future of computing: intelligent cloud and intelligent edge](https://azure.microsoft.com/overview/future-of-cloud)
 
   - Learn more about hybrid cloud applications, see [Hybrid Cloud Solutions](https://docs.microsoft.com/hybrid/app-solutions/)
-
-  - Modify the code to this sample on [GitHub](https://github.com/Azure-Samples/azure-intelligent-edge-patterns).
