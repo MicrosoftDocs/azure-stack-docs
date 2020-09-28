@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 09/23/2020
+ms.date: 09/28/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -131,9 +131,6 @@ After the installation of 2008, if any 2008 hotfixes are subsequently released, 
 
 The Azure Stack Hub 2005 update build number is **1.2005.6.53**.
 
-> [!IMPORTANT]  
-> With [the 2002 release](release-notes.md?view=azs-2002) of Azure Stack Hub and in support of our customers around the world who are responding to COVID-19 and who may be making important decisions about their Azure Stack Hub systems, Microsoft temporarily extended its support policy to include three previous update versions (N-3). With the 2005 release we are continuing this extension for an additional 45 days (to 25th September 2020). As a result, the newly released 2005 update and any one of the three previous update versions (2002, 1910, and 1908, or N-3) will be supported. After these 45 days (after 25th September 2020), we will return to our standard support policy, meaning the supported versions will then be 2005, 2002 and 1910, or N-2.
-
 ### Update type
 
 The Azure Stack Hub 2005 update build type is **Full**.
@@ -217,7 +214,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2005 release of Azure Stack Hub must be applied on the 2002 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2002.53.144](https://support.microsoft.com/help/4574736)
+- [Azure Stack Hub hotfix 1.2002.56.152](https://support.microsoft.com/help/4582983)
 
 ### After successfully applying the 2005 update
 
@@ -354,7 +351,7 @@ The 2002 release of Azure Stack Hub must be applied on the 1910 release with the
 After the installation of this update, install any applicable hotfixes.
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.2002.53.144](https://support.microsoft.com/help/4574736)
+- [Azure Stack Hub hotfix 1.2002.56.152](https://support.microsoft.com/help/4582983)
 ::: moniker-end
 
 <!------------------------------------------------------------>
@@ -363,6 +360,13 @@ After the installation of this update, install any applicable hotfixes.
 ::: moniker range="azs-1910"
 ## 1910 archived release notes
 ::: moniker-end
+<<<<<<< HEAD
+=======
+
+<!------------------------------------------------------------>
+<!------------------- UNSUPPORTED VERSIONS ------------------->
+<!------------------------------------------------------------>
+>>>>>>> 6f037909bf0a2f5d2ea33897bfd0b43e9068b0c8
 ::: moniker range="azs-1908"
 ## 1908 archived release notes
 ::: moniker-end
@@ -412,6 +416,10 @@ After the installation of this update, install any applicable hotfixes.
 ## 1802 archived release notes
 ::: moniker-end
 
+<<<<<<< HEAD
 ::: moniker range="<azs-2002"
+=======
+::: moniker range="<azs-1910"
+>>>>>>> 6f037909bf0a2f5d2ea33897bfd0b43e9068b0c8
 You can access [older versions of Azure Stack Hub release notes on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived documents are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end
