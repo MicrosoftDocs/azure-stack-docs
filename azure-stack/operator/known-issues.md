@@ -486,10 +486,6 @@ To access archived known issues for an older version, use the version selector d
 ## 1802 archived known issues
 ::: moniker-end
 
-<<<<<<< HEAD
 ::: moniker range="<azs-2002"
-=======
-::: moniker range="<azs-1910"
->>>>>>> 6f037909bf0a2f5d2ea33897bfd0b43e9068b0c8
 You can access [older versions of Azure Stack Hub known issues on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived documents are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end
