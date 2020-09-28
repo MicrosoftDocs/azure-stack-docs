@@ -140,7 +140,7 @@ The following table summarizes the different capabilities that are available whe
 
 If you're running Windows Server 2016 or later, the ideal solution is to use multiple RDMA-capable network adapters and combine NIC teaming with SMB Multichannel. This combination provides the best throughput, provides fault tolerance for applications that use SMB and other protocols, and has the lowest CPU impact.
 
-As mentioned above, when you use RDMA-capable network adapters on Windows Server 2012 R2 or earlier, NIC teaming is not a good option, because it disables the RDMA capability of the network adapter.
+As mentioned above, when using RDMA-capable network adapters on Windows Server 2012 R2 or earlier, NIC teaming is not a good option, because it disables the RDMA capability of the network adapter.
 
 ### Example configurations without SMB Multichannel
 
