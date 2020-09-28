@@ -1,10 +1,10 @@
 ---
 title: Publish Azure Stack Hub services in your datacenter 
 description: Learn how to publish Azure Stack Hub services in your datacenter.
-author: daniellefoto
+author: myoung
 ms.topic: article
 ms.date: 09/24/2020
-ms.author: justinha
+ms.author: v-myoung
 ms.reviewer: wamota
 ms.lastreviewed: 09/24/2020
 
@@ -92,7 +92,7 @@ SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-intercep
 |LDAP GC|Active Directory Forest provided for Graph integration|TCP|3268|Public VIP - /27|
 |LDAP GC SSL|Active Directory Forest provided for Graph integration|TCP|3269|Public VIP - /27|
 |AD FS|AD FS metadata endpoint provided for AD FS integration|TCP|443|Public VIP - /27|
-| Diagnostic log collection |https://azsdiagprdlocalwestus02.blob.core.windows.net<br>https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com<br>https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com | HTTPS | 443 | Public VIP - /27 |
+| Diagnostic log collection |https://*.blob.core.windows.net<br>https://azsdiagprdlocalwestus02.blob.core.windows.net<br>https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com<br>https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com | HTTPS | 443 | Public VIP - /27 |
 |     |     |     |     |     |
 
 Outbound URLs are load balanced using Azure traffic manager to provide the best possible connectivity based on geographic location. With load balanced URLs, Microsoft can update and change backend endpoints without affecting customers. Microsoft doesn't share the list of IP addresses for the load balanced URLs. Use a device that supports filtering by URL rather than by IP.
