@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/18/2020
+ms.date: 09/24/2020
 ---
 
 # SDN in Azure Stack HCI
@@ -50,5 +50,6 @@ Gateways use [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/
 
 For related information, see also:
 
+- [Plan a Software Defined Network infrastructure](plan-software-defined-networking-infrastructure.md)
 - [SDN in Windows Server overview](/windows-server/networking/sdn/software-defined-networking)
 - [Deploy a Software Defined Network infrastructure using scripts](/windows-server/networking/sdn/deploy/deploy-a-software-defined-network-infrastructure-using-scripts)
