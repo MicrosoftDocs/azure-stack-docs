@@ -26,7 +26,7 @@ What you'll learn:
 
 > [!div class="checklist"]
 > * Create a SQL Server AlwaysOn availability group from a template.
-> * Create an Azure Stack Hub SQL Hosting Server.
+> * Configure the SQL Server AlwaysOn availability group as an Azure Stack Hub SQL Hosting Server.
 > * Create a highly available SQL database.
 
 A two VM SQL Server AlwaysOn availability group will be created and configured using available Azure Stack Marketplace items.
@@ -138,9 +138,9 @@ Use these commands to set the contained database authentication server option fo
 
 ![Set contained database authentication](./media/azure-stack-tutorial-sqlrp/sql3.png)
 
-## Create an Azure Stack Hub SQL Hosting Server
+## Configure an Azure Stack Hub SQL Hosting Server
 
-After the SQL Server AlwayOn availability group has been created and properly configured, an Azure Stack Hub operator has to create an Azure Stack Hub SQL Hosting Server. The SQL Hosting Server makes the additional capacity available for users to create databases.
+After the SQL Server AlwayOn availability group has been created and properly configured, an Azure Stack Hub operator has to configure it as an Azure Stack Hub SQL Hosting Server. 
 
 Be sure to use the public IP or full FQDN for the public IP of the SQL load balancer recorded previously when the SQL AlwaysOn availability group's resource group was created (**SQLPIPsql\<resource group name\>**). In addition, you need to know the SQL Server authentication credentials used to access the SQL instances in the AlwaysOn availability group.
 
