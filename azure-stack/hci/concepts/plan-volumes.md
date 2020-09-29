@@ -34,7 +34,7 @@ We recommend limiting the total number of volumes to 64 volumes per cluster.
 
 ## Choosing the filesystem
 
-We recommend using the new [Resilient File System (ReFS)](/en-us/windows-server/storage/refs/refs-overview) for Storage Spaces Direct. ReFS is the premier filesystem purpose-built for virtualization and offers many advantages, including dramatic performance accelerations and built-in protection against data corruption. It supports nearly all key NTFS features, including Data Deduplication in Windows Server version 1709 and later. See the ReFS [feature comparison table](/windows-server/storage/refs/refs-overview#feature-comparison) for details.
+We recommend using the new [Resilient File System (ReFS)](/windows-server/storage/refs/refs-overview) for Storage Spaces Direct. ReFS is the premier filesystem purpose-built for virtualization and offers many advantages, including dramatic performance accelerations and built-in protection against data corruption. It supports nearly all key NTFS features, including Data Deduplication in Windows Server version 1709 and later. See the ReFS [feature comparison table](/windows-server/storage/refs/refs-overview#feature-comparison) for details.
 
 If your workload requires a feature that ReFS doesn't support yet, you can use NTFS instead.
 
