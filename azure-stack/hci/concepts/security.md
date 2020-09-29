@@ -83,7 +83,7 @@ This section discusses how to use Windows Admin Center to protect privileged ide
 
 - **Role-based access control (RBAC)** in Windows Admin Center allows users limited access to the servers they need to manage instead of making them full local administrators. To use RBAC in Windows Admin Center, you configure each managed server with a PowerShell Just Enough Administration endpoint.
 
-    To learn more, see [Role-based access control](/windows-server/manage/windows-admin-center/plan/user-access-options#role-based-access-control) and [Just Enough Administration](/powershell/scripting/learn/remoting/jea/overview?view=powershell-7).
+    To learn more, see [Role-based access control](/windows-server/manage/windows-admin-center/plan/user-access-options#role-based-access-control) and [Just Enough Administration](/powershell/scripting/learn/remoting/jea/overview).
 
 - **Security tools** in Windows Admin Center that you can use to manage and protect identities include Active Directory, Certificates, Firewall, Local Users and Groups, and more.
 
@@ -122,7 +122,7 @@ on a physical server. Because virtual environments typically have multiple VMs s
      
      - **Virtual Trusted Platform Module (vTPM)** in Windows Server supports TPM for VMs, which lets you use advanced security technologies, such as BitLocker in VMs. You can enable TPM support on any Generation 2 Hyper-V VM by using either Hyper-V Manager or the `Enable-VMTPM` Windows PowerShell cmdlet.
      
-        To learn more, see [Enable-VMTPM](/powershell/module/hyper-v/enable-vmtpm?view=win10-ps).
+        To learn more, see [Enable-VMTPM](/powershell/module/hyper-v/enable-vmtpm).
      
      - **Software Defined Networking (SDN)** in Azure Stack HCI and Windows Server centrally configures and manages physical and virtual network devices, such as routers, switches, and gateways in your datacenter. Virtual network elements, such as Hyper-V Virtual Switch, Hyper-V Network Virtualization, and RAS Gateway are designed to be integral elements of your SDN infrastructure.
 
