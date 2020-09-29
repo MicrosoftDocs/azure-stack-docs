@@ -13,7 +13,7 @@ ms.date: 09/29/2020
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019; Windows Server 2016; Windows Server 2012 R2; Windows Server 2012; Windows 10
 
-SMB Multichannel is part of the Server Message Block (SMB) 3.0 protocol, which increases the network performance and availability of file servers.
+SMB Multichannel is part of the Server Message Block (SMB) 3.0 protocol, which increases network performance and the availability of file servers.
 
 SMB Multichannel enables file servers to use multiple network connections simultaneously. It facilitates aggregation of network bandwidth and network fault tolerance when multiple paths are available between the SMB 3.0 client and the SMB 3.0 server. This allows server applications to take full advantage of all available network bandwidth and makes them more resilient to network failures.
 
@@ -37,14 +37,72 @@ Because SMB Multichannel is enabled by default, you do not have to install addit
 
     - One or more network adapters that support Receive Side Scaling (RSS)
 
-    - One or more network adapters that are configured using NIC teaming
+    - Multiple network adapters that are teamed (see [NIC teaming](#nic-teaming))
 
     - One or more network adapters that support remote direct memory access (RDMA)
 
-For detailed information, see [Configure SMB Multichannel](#configure-smb-multichannel).
+## Configure SMB Multichannel
+
+This section describes some configuration options for deploying SMB Multichannel using an array of network adapters. These configurations are only example configurations. There are many other possible configurations that are not included in this topic.
+
+### Single RSS-capable network adapter
+
+In this typical configuration, an SMB client and an SMB server are configured by using a single 10-gigabit Ethernet (10 GbE) network adapter. When SMB is deployed without SMB Multichannel, and if there is only one SMB session established, SMB creates a single TCP/IP connection. With only a single CPU core, this configuration inherently leads to congestion, especially when many small I/O operations are performed. Therefore, the potential for a performance bottleneck is significant.
+
+Most current network adapters offer a capability called Receive Side Scaling (RSS), which enables multiple connections to automatically spread across multiple CPU cores. However, if you use a single connection, RSS cannot help. When you use SMB Multichannel with a RSS-capable network adapter, SMB creates multiple TCP/IP connections for that particular session. This configuration avoids a potential bottleneck on a single CPU core if many small I/O operations are required.
+
+### Multiple network adapters
+
+In this configuration, an SMB client and SMB server are configured by using multiple 10 GbE network adapters. When SMB is deployed without SMB Multichannel, and if there is only one SMB session established, SMB uses one of the available network adapters to create a single TCP/IP connection. In this scenario, it is not possible to aggregate the bandwidth of the multiple network adapters; for example, you cannot achieve 2 gigabits per second (Gbps) when you use two 1-GbE network adapters. There is also a potential for failure if the selected network adapter is disconnected or disabled.
+
+When SMB is deployed with SMB Multichannel, SMB creates multiple TCP/IP connections for a single session with at least one or more connections per interface if the network adapters are RSS-capable. This configuration enables SMB to use the combined network adapter bandwidth that is available and makes it possible for the SMB client to continue without interruption if a network adapter fails.
+
+### NIC teaming
+
+Azure Stack HCI and Windows Server support the ability to combine multiple network adapters into one network adapter by using a feature called NIC teaming. Although a team always provides fault tolerance, when SMB is deployed without SMB Multichannel, SMB creates only one TCP/IP connection per team. This configuration leads to limitations in both the number of CPU cores that are engaged and the maximum use of the team bandwidth.
+
+When SMB is deployed with SMB Multichannel, SMB creates multiple TCP/IP connections for a single session to achieve a better balance across CPU cores and better use of the available bandwidth. NIC teaming continues to offer the failover capability, which works faster than using SMB Multichannel by itself. We also recommend NIC teaming because it offers failover capabilities to other workloads that do not rely on SMB, because those workloads cannot benefit from the failover capabilities of SMB Multichannel.
+
+If you’re using a dedicated set of network adapters for Storage Spaces Direct traffic, as is sometimes done with Azure Stack HCI, teaming these storage network adapters is strictly optional—it doesn’t provide any significant benefits or drawbacks.
+
+>[!IMPORTANT]
+>On Windows Server 2012 R2 and earlier, do not use NIC teaming if you intend to use the RDMA capabilities of the network adapters. On these operating systems, a team of RDMA-capable network adapters is always reported as non-RDMA capable because teaming disables the RDMA capability of the network adapter.
+
+### Single or multiple RDMA-capable network adapters
+
+SMB Multichannel detects the RDMA capabilities of network adapters, which enables the SMB Direct feature called SMB Direct over RDMA. Without SMB Multichannel, SMB uses regular TCP/IP connections with the RDMA-capable network adapters where all network adapters provide a TCP/IP stack that exists side-by-side with the new RDMA stack.
+
+When SMB is deployed with SMB Multichannel, SMB detects the RDMA capability of a network adapter and creates multiple RDMA connections for that single session, with two RDMA connections per interface. This configuration enables SMB to take advantage of the high throughput, low latency, and low CPU utilization that is offered by the RDMA-capable network adapters. It also offers fault tolerance when you use multiple RDMA interfaces.
+
+>[!IMPORTANT]
+>After an RDMA connection is created, the TCP/IP connection for the original protocol negotiation is no longer used. However, that connection is maintained in case a different RDMA connection fails.
+
+### SMB Multichannel, RDMA-capable network adapters, and NIC teaming compatibility
+
+The following table summarizes the different capabilities that are available when you combine SMB Multichannel, RDMA (SMB Direct), and NIC teaming.
+
+| Configuration                                           | Throughput     | Fault tolerance for SMB     | Fault tolerance for non-SMB   | Lower CPU utilization   |
+|:-------------------------------------------------------:|:--------------:|:---------------------------:|:-----------------------------:|:-----------------------:|
+| Single network adapter (no RSS)                         | good           | no                          | no                            | no                      |
+| Multiple network adapters (no RSS)                      | better         | good                        | no                            | no                      |
+| Multiple network adapters (no RSS) with NIC teaming     | better         | better                      | yes                           | no                      |
+| Single network adapter with RSS                         | good           | no                          | no                            | no                      |
+| Multiple network adapters with RSS                      | better         | good                        | no                            | no                      |
+| Multiple network adapters with RSS and NIC teaming      | better         | better                      | yes                           | no                      |
+| Single RDMA-capable network adapter                     | good           | no                          | no                            | yes                     |
+| Multiple RDMA-capable network adapters                  | best           | good                        | no                            | yes                     |
+| Multiple RDMA-capable network adapters with NIC teaming | best           | better                      | yes                           | yes                     |
+
+If you're running Windows Server 2016 or later, the ideal solution is to use multiple RDMA-capable network adapters and combine NIC teaming with SMB Multichannel. This combination provides the best throughput, provides fault tolerance for applications that use SMB and other protocols, and has the lowest CPU impact.
+
+As mentioned above, when using RDMA-capable network adapters on Windows Server 2012 R2 or earlier, NIC teaming is not a good option, because it disables the RDMA capability of the network adapter.
+
+### Example configurations without SMB Multichannel
+
+If you plan to use a single network adapter without RSS, you do not benefit from multiple network connections, and therefore, SMB Multichannel is not used. Also, if you plan to use network adapters of different speeds, SMB Multichannel automatically selects the fastest network adapter. This is because network adapters that are the same type (such as RDMA, RSS, or neither) and have the same speed are simultaneously used by SMB Multichannel. The slower network adapters are idle.
 
 ## Disable SMB Multichannel
-Typically, you do not have to disable SMB Multichannel. However, if you want to disable SMB Multichannel, for example, in a test environment, you can use Windows PowerShell.
+Typically, you don't need to disable SMB Multichannel. However, if you want to disable SMB Multichannel, for example in a test environment, use the following Windows PowerShell procedures.
 
 First, connect to one of the servers by opening a PowerShell session:
 
@@ -85,66 +143,6 @@ Set-SmbClientConfiguration -EnableMultiChannel $true
 
 >[!NOTE]
 >You must re-enable SMB Multichannel on both the client and the server to start using it again.
-
-## Configure SMB Multichannel
-
-This section describes some configuration options for deploying SMB Multichannel using an array of network adapters. These configurations are only example configurations. There are many other possible configurations that are not included in this topic.
-
-### Single RSS-capable network adapter
-
-In this typical configuration, an SMB client and an SMB server are configured by using a single 10-gigabit Ethernet (10 GbE) network adapter. When SMB is deployed without SMB Multichannel, and if there is only one SMB session established, SMB creates a single TCP/IP connection. With only a single CPU core, this configuration inherently leads to congestion, especially when many small I/O operations are performed. Therefore, the potential for a performance bottleneck is significant.
-
-Most current network adapters offer a capability called Receive Side Scaling (RSS), which enables multiple connections to automatically spread across multiple CPU cores. However, if you use a single connection, RSS cannot help. When you use SMB Multichannel with a RSS-capable network adapter, SMB creates multiple TCP/IP connections for that particular session. This configuration avoids a potential bottleneck on a single CPU core if many small I/O operations are required.
-
-### Multiple network adapters
-
-In this configuration, an SMB client and SMB server are configured by using multiple 10 GbE network adapters. When SMB is deployed without SMB Multichannel, and if there is only one SMB session established, SMB uses one of the available network adapters to create a single TCP/IP connection. In this scenario, it is not possible to aggregate the bandwidth of the multiple network adapters; for example, you cannot achieve 2 gigabits per second (Gbps) when you use two 1-GbE network adapters. There is also a potential for failure if the selected network adapter is disconnected or disabled.
-
-When SMB is deployed with SMB Multichannel, SMB creates multiple TCP/IP connections for a single session with at least one or more connections per interface if the network adapters are RSS-capable. This configuration enables SMB to use the combined network adapter bandwidth that is available and makes it possible for the SMB client to continue without interruption if a network adapter fails.
-
-### NIC teaming
-
-Azure Stack HCI and Windows Server support the ability to combine multiple network adapters into one network adapter by using a feature called NIC teaming. Although a team always provides fault tolerance, when SMB is deployed without SMB Multichannel, SMB creates only one TCP/IP connection per team. This configuration leads to limitations in both the number of CPU cores that are engaged and the maximum use of the team bandwidth.
-
-When SMB is deployed with SMB Multichannel, SMB creates multiple TCP/IP connections for a single session to achieve a better balance across CPU cores and better use of the available bandwidth. NIC teaming continues to offer the failover capability, which works faster than using SMB Multichannel by itself. We also recommend NIC teaming because it offers failover capabilities to other workloads that do not rely on SMB, because those workloads cannot benefit from the failover capabilities of SMB Multichannel.
-
-If you’re using a dedicated set of network adapters for Storage Spaces Direct traffic, as is sometimes done with Azure Stack HCI, teaming these storage network adapters is strictly optional—it doesn’t provide any significant benefits or drawbacks.
-
->[!IMPORTANT]
->On Windows Server 2012 R2 and earlier, do not use NIC teaming if you intend to use the RDMA capabilities of the network adapters. On these operating systems, a team of RDMA-capable network adapters is always reported as non-RDMA capable because teaming disables the RDMA capability of the network adapter.
-
-### Single or multiple RDMA-capable network adapters
-
-SMB Multichannel detects the RDMA capabilities of network adapters, which enables the SMB Direct feature, SMB Direct over RDMA. Without SMB Multichannel, SMB uses regular TCP/IP connections with the RDMA-capable network adapters where all network adapters provide a TCP/IP stack that exists side-by-side with the new RDMA stack.
-
-When SMB is deployed with SMB Multichannel, SMB detects the RDMA capability of a network adapter and creates multiple RDMA connections for that single session, with two RDMA connections per interface. This configuration enables SMB to take advantage of the high throughput, low latency, and low CPU utilization that is offered by the RDMA-capable network adapters. It also offers fault tolerance when you use multiple RDMA interfaces.
-
->[!IMPORTANT]
->After an RDMA connection is created, the TCP/IP connection that is used for the original protocol negotiation is no longer used. However, that connection is maintained in case the RDMA connections fail.
-
-### SMB Multichannel, RDMA-capable network adapters, and NIC teaming compatibility
-
-The following table summarizes the different capabilities that are available when you combine SMB Multichannel, RDMA (SMB Direct), and NIC teaming.
-
-| Configuration                                           | Throughput | Fault tolerance for SMB | Fault tolerance for non-SMB | Lower CPU utilization |
-|:-------------------------------------------------------:|:----------:|:-----------------------:|:---------------------------:|:---------------------:|
-| Single network adapter (no RSS)                         | *          |                         |                             |                       |
-| Multiple network adapters (no RSS)                      | **         | *                       |                             |                       |
-| Multiple network adapters (no RSS) with NIC teaming     | **         | **                      | *                           |                       |
-| Single network adapter with RSS                         | *          |                         |                             |                       |
-| Multiple network adapters with RSS                      | **         | *                       |                             |                       |
-| Multiple network adapters with RSS and NIC teaming      | **         | **                      | *                           |                       |
-| Single RDMA-capable network adapter                     | *          |                         |                             | *                     |
-| Multiple RDMA-capable network adapters                  | ***        | *                       |                             | *                     |
-| Multiple RDMA-capable network adapters with NIC teaming | ***        | **                      | *                           | *                     |
-
-If you're running Windows Server 2016 or later, the ideal solution is to use multiple RDMA-capable network adapters and combine NIC teaming with SMB Multichannel. This combination provides the best throughput, provides fault tolerance for applications that use SMB and other protocols, and has the lowest CPU impact.
-
-As mentioned above, when using RDMA-capable network adapters on Windows Server 2012 R2 or earlier, NIC teaming is not a good option, because it disables the RDMA capability of the network adapter.
-
-### Example configurations without SMB Multichannel
-
-If you plan to use a single network adapter without RSS, you do not benefit from multiple network connections, and therefore, SMB Multichannel is not used. Also, if you plan to use network adapters of different speeds, SMB Multichannel automatically selects the fastest network adapter. This is because network adapters that are the same type (such as RDMA, RSS, or neither) and have the same speed are simultaneously used by SMB Multichannel. The slower network adapters are idle.
 
 ## Test SMB Multichannel
 
