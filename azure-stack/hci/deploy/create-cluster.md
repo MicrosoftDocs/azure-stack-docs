@@ -182,7 +182,7 @@ After the cluster is created, it can some take time for the cluster name to be r
 
 If resolving the cluster isn't successful after some time, in most cases you can substitute a server name in the the cluster instead of the cluster name.
 
-## Step 5: Software Defined Networking (optional)
+## Step 5: SDN (optional)
 
 This optional step walks you through setting up the Network Controller component of [Software Defined Networking (SDN)](../concepts/software-defined-networking.md). Once the Network Controller is set up, it can be used to configure other components of SDN such as Software Load Balancer and RAS Gateway.
 
@@ -205,7 +205,7 @@ This optional step walks you through setting up the Network Controller component
 1. Enter values for **MAC address pool start** and **MAC address pool end**.
 1. When finished, click **Next**.
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete. Then click **Finish**.
- 
+
 If Network Controller deployment fails, do the following before you try this again:
 
 - Stop and delete any Network Controller VMs that the wizard created.  

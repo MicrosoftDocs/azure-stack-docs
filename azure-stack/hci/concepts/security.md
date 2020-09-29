@@ -36,7 +36,7 @@ This section discusses how to protect services and virtual machines (VMs) runnin
 
 - **Device Guard** and **Credential Guard**. Device Guard protects against malware with no known signature, unsigned code, and malware that gains access to the kernel to either capture sensitive information or damage the system. Windows Defender Credential Guard uses virtualization-based security to isolate secrets so that only privileged system software can access them.
 
-    To learn more, see [Manage Windows Defender Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard-manage) and download the [Device Guard and Credential Guard hardware readiness tool](https://www.microsoft.com/en-us/download/details.aspx?id=53337).
+    To learn more, see [Manage Windows Defender Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard-manage) and download the [Device Guard and Credential Guard hardware readiness tool](https://www.microsoft.com/download/details.aspx?id=53337).
 
 - **Windows** and **firmware** updates are essential on clusters, servers (including guest VMs), and PCs to help ensure that both the operating system and system hardware are protected from attackers. You can use the Windows Admin Center **Updates** tool to apply updates to individual systems. If your hardware provider includes Windows Admin Center support for getting driver, firmware, and solution updates, you can get these updates at the same time as Windows updates, otherwise get them directly from your vendor.
 
