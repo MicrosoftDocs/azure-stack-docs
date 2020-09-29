@@ -1,15 +1,15 @@
 ---
 title: Software defined networking (SDN) in Azure Stack HCI
-description: An overview of SDN topics that apply to features in Azure Stack HCI.
+description: Software defined networking (SDN) provides a way to centrally configure and manage networks and network services such as switching, routing, and load balancing in your data center.
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/24/2020
+ms.date: 09/29/2020
 ---
 
-# SDN in Azure Stack HCI
+# Software Defined Networking (SDN) in Azure Stack HCI
 
 > Applies to Azure Stack HCI, version 20H2; Windows Server 2019
 
@@ -30,7 +30,7 @@ Deploying Network Controller enables the following functionalities:
 - Attach virtual appliances to your virtual networks.
 - Configure Quality of Service (QoS) policies for VMs attached to virtual networks or traditional VLAN-based networks.
 
-We recommend [deploying the Network Controller using PowerShell](../deploy/network-controller-powershell.md) after creating an Azure Stack HCI cluster.
+We recommend [deploying the Network Controller during cluster creation](../deploy/create-cluster.md#step-5-sdn-optional). Alternatively, you can [deploy the Network Controller using PowerShell](../deploy/network-controller-powershell.md) after creating an Azure Stack HCI cluster.
 
 ## Software Load Balancing
 

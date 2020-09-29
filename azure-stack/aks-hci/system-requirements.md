@@ -77,7 +77,7 @@ Firewall URL exceptions are needed for the Windows Admin Center machine and all 
 
 | URL        | Port | Service | Notes |
 | ---------- | ---- | --- | ---- |
-https://get.helm.sh/  | 443 | Download Agent, WAC | Used to download the Helm binaries 
+https://helm.sh/blog/get-helm-sh/  | 443 | Download Agent, WAC | Used to download the Helm binaries 
 https://storage.googleapis.com/  | 443 | Cloud Init | Downloading Kubernetes binaries 
 https://azurecliprod.blob.core.windows.net/ | 443 | Cloud Init | Downloading binaries and containers 
 https://aka.ms/installazurecliwindows | 443 | WAC | Downloading Azure CLI 
