@@ -81,17 +81,17 @@ When SMB is deployed with SMB Multichannel, SMB detects the RDMA capability of a
 
 The following table summarizes the different capabilities that are available when you combine SMB Multichannel, RDMA (SMB Direct), and NIC teaming.
 
-| Configuration                                           | Throughput     | Fault tolerance for SMB     | Fault tolerance for non-SMB   | Lower CPU utilization   |
-|:-------------------------------------------------------:|:--------------:|:---------------------------:|:-----------------------------:|:-----------------------:|
-| Single network adapter (no RSS)                         | good           | no                          | no                            | no                      |
-| Multiple network adapters (no RSS)                      | better         | good                        | no                            | no                      |
-| Multiple network adapters (no RSS) with NIC teaming     | better         | better                      | yes                           | no                      |
-| Single network adapter with RSS                         | good           | no                          | no                            | no                      |
-| Multiple network adapters with RSS                      | better         | good                        | no                            | no                      |
-| Multiple network adapters with RSS and NIC teaming      | better         | better                      | yes                           | no                      |
-| Single RDMA-capable network adapter                     | good           | no                          | no                            | yes                     |
-| Multiple RDMA-capable network adapters                  | best           | good                        | no                            | yes                     |
-| Multiple RDMA-capable network adapters with NIC teaming | best           | better                      | yes                           | yes                     |
+| Configuration                                           | Throughput | Fault tolerance for SMB | Fault tolerance for non-SMB | Lower CPU utilization |
+|:-------------------------------------------------------:|:----------:|:-----------------------:|:---------------------------:|:---------------------:|
+| Single network adapter (no RSS)                         | *          |                         |                             |                       |
+| Multiple network adapters (no RSS)                      | **         | *                       |                             |                       |
+| Multiple network adapters (no RSS) with NIC teaming     | **         | **                      | *                           |                       |
+| Single network adapter with RSS                         | *          |                         |                             |                       |
+| Multiple network adapters with RSS                      | **         | *                       |                             |                       |
+| Multiple network adapters with RSS and NIC teaming      | **         | **                      | *                           |                       |
+| Single RDMA-capable network adapter                     | *          |                         |                             | *                     |
+| Multiple RDMA-capable network adapters                  | ***        | *                       |                             | *                     |
+| Multiple RDMA-capable network adapters with NIC teaming | ***        | **                      | *                           | *                     |
 
 If you're running Windows Server 2016 or later, the ideal solution is to use multiple RDMA-capable network adapters and combine NIC teaming with SMB Multichannel. This combination provides the best throughput, provides fault tolerance for applications that use SMB and other protocols, and has the lowest CPU impact.
 
