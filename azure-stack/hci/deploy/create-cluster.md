@@ -184,10 +184,7 @@ If resolving the cluster isn't successful after some time, in most cases you can
 
 ## Step 5: SDN (optional)
 
-Step 5 of the wizard walks you through setting up Network Controller on your cluster for Software Defined Networking (SDN). Once Network Controller is set up, it can be used to configure other components of SDN such as Software Load Balancer and RAS Gateway.
-
-> [!NOTE]
-> This step of the wizard is optional.
+This optional step walks you through setting up Network Controller on your cluster for Software Defined Networking (SDN). Once the Network Controller is set up, it can be used to configure other components of SDN such as Software Load Balancer and RAS Gateway.
 
 :::image type="content" source="media/cluster/create-cluster-network-controller.png" alt-text="Create cluster wizard - SDN Network Controller" lightbox="media/cluster/create-cluster-network-controller.png":::
 
