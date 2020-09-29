@@ -182,9 +182,9 @@ After the cluster is created, it can some take time for the cluster name to be r
 
 If resolving the cluster isn't successful after some time, in most cases you can substitute a server name in the the cluster instead of the cluster name.
 
-## Step 5: SDN (optional)
+## Step 5: Software Defined Networking (optional)
 
-This optional step walks you through setting up Network Controller on your cluster for Software Defined Networking (SDN). Once the Network Controller is set up, it can be used to configure other components of SDN such as Software Load Balancer and RAS Gateway.
+This optional step walks you through setting up the Network Controller component of [Software Defined Networking (SDN)](../concepts/software-defined-networking.md). Once the Network Controller is set up, it can be used to configure other components of SDN such as Software Load Balancer and RAS Gateway.
 
 :::image type="content" source="media/cluster/create-cluster-network-controller.png" alt-text="Create cluster wizard - SDN Network Controller" lightbox="media/cluster/create-cluster-network-controller.png":::
 
