@@ -229,7 +229,7 @@ Reference the PowerShell script in step 2 of [Rotate external secrets](#rotate-e
     # Run Secret Rotation
     ...
     Invoke-Command -Session $PEPSession -ScriptBlock {
-        Start-SecretRotation -Internal -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCreds -CertificatePassword $using:CertPassword
+        Start-SecretRotation -Internal
     }
     ...
     ```
