@@ -31,18 +31,13 @@ There are several prerequisites that need to be in place before you can deploy t
 
 - Add the required Windows Server core VM to Azure Stack Hub Marketplace by downloading the **Windows Server 2016 Datacenter - Server Core** image.
 
-- Download the SQL resource provider binary and then run the self-extractor to extract the contents to a temporary directory. The resource provider has a minimum corresponding Azure Stack Hub build.
+- Download the supported version of SQL resource provider binary according to the version mapping table below. Run the self-extractor to extract the downloaded contents to a temporary directory. 
 
-  |Minimum Azure Stack Hub version|SQL RP version|
+  |Supported Azure Stack Hub version|SQL RP version|
   |-----|-----|
-  |Version 1910 (1.1910.0.58)|[SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470)|
-  |Version 1808 (1.1808.0.97)|[SQL RP version 1.1.33.0](https://aka.ms/azurestacksqlrp11330)|  
-  |Version 1808 (1.1808.0.97)|[SQL RP version 1.1.30.0](https://aka.ms/azurestacksqlrp11300)|  
-  |Version 1804 (1.0.180513.1)|[SQL RP version 1.1.24.0](https://aka.ms/azurestacksqlrp11240)  
+  |2005, 2002, 1910|[SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470)|
+  |1908|[SQL RP version 1.1.33.0](https://aka.ms/azurestacksqlrp11330)| 
   |     |     |
-
-> [!IMPORTANT]
-> Before deploying the SQL resource provider version 1.1.47.0, you should have your Azure Stack Hub system upgraded to 1910 update or later versions. The SQL resource provider version 1.1.47.0 on previous unsupported Azure Stack Hub versions doesn't work.
 
 - Ensure datacenter integration prerequisites are met:
 
@@ -63,8 +58,8 @@ Import-Module -Name PackageManagement -ErrorAction Stop
 
 # path to save the packages, c:\temp\azs1.6.0 as an example here
 $Path = "c:\temp\azs1.6.0"
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.3.0
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.6.0
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.8.2
 ```
 
 2. Then you copy the downloaded packages to a USB device.
@@ -98,7 +93,10 @@ After you've installed all the prerequisites, run the **DeploySqlProvider.ps1** 
  > [!IMPORTANT]
  > Before deploying the resource provider, review the release notes to learn about new functionality, fixes, and any known issues that could affect your deployment.
 
-To deploy the SQL resource provider, open a **new** elevated PowerShell window (not PowerShell ISE) and change to the directory where you extracted the SQL resource provider binary files. We recommend using a new PowerShell window to avoid potential problems caused by PowerShell modules that are already loaded.
+To deploy the SQL resource provider, open a **new** elevated PowerShell window (not PowerShell ISE) and change to the directory where you extracted the SQL resource provider binary files. 
+
+> [!IMPORTANT]
+> We recommend using a new PowerShell window to avoid potential problems caused by PowerShell modules that are already loaded. Or you can use clear-azurermcontext to clear the cache before running the update script.
 
 Run the DeploySqlProvider.ps1 script, which completes the following tasks:
 
@@ -197,15 +195,10 @@ When the resource provider installation script finishes, refresh your browser to
 
 ## Verify the deployment using the Azure Stack Hub portal
 
-You can use the following steps verify that the SQL resource provider is successfully deployed.
-
 1. Sign in to the administrator portal as the service admin.
 2. Select **Resource Groups**.
 3. Select the **system.\<location\>.sqladapter** resource group.
 4. On the summary page for Resource group Overview, there should be no failed deployments.
-
-    ![Verify deployment of the SQL resource provider in Azure Stack Hub administrator portal](./media/azure-stack-sql-rp-deploy/sqlrp-verify.png)
-
 5. Finally, select **Virtual machines** in the administrator portal to verify that the SQL resource provider VM was successfully created and is running.
 
 ## Next steps

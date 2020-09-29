@@ -38,7 +38,7 @@ To achieve predictable and uniform submillisecond latency across random reads an
 
 There are multiple ways to do so:
 
-![All-Flash-Deployment-Possibilities](media/choose-drives/All-Flash-Deployment-Possibilities.png)
+![Diagram shows deployment options, including all N V M e for capacity, N V M e for cache with S S D for capacity, and all S S D for capacity.](media/choose-drives/All-Flash-Deployment-Possibilities.png)
 
 1. **All NVMe.** Using all NVMe provides unmatched performance, including the most predictable low latency. If all your drives are the same model, there is no cache. You can also mix higher-endurance and lower-endurance NVMe models, and configure the former to cache writes for the latter ([requires set-up](/windows-server/storage/storage-spaces/understand-the-cache#manual-configuration)).
 
@@ -53,7 +53,7 @@ There are multiple ways to do so:
 
 For environments with a variety of applications and workloads, some with stringent performance requirements and others requiring considerable storage capacity, you should go "hybrid" with either NVMe or SSDs caching for larger HDDs.
 
-![Hybrid-Deployment-Possibilities](media/choose-drives/Hybrid-Deployment-Possibilities.png)
+![Diagram shows deployment possibilities, including N V M e for cache with H D D for capacity, S S D for cache with H D D for capacity, and N V M E for cache with mixed S S D and H D D for capacity.](media/choose-drives/Hybrid-Deployment-Possibilities.png)
 
 1. **NVMe + HDD**. The NVMe drives will accelerate reads and writes by caching both. Caching reads allows the HDDs to focus on writes. Caching writes absorbs bursts and allows writes to coalesce and be de-staged only as needed, in an artificially serialized manner that maximizes HDD IOPS and IO throughput. This provides NVMe-like write characteristics, and for frequently or recently read data, NVMe-like read characteristics too.
 

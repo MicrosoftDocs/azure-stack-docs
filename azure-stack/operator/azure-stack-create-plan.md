@@ -25,37 +25,37 @@ ms.lastreviewed: 06/11/2019
 
 2. To create a plan and offer that users can subscribe to, select **+ Create a resource**, then **Offers + Plans**, then **Plan**.
   
-   ![Select a plan in Azure Stack Hub administrator portal](media/azure-stack-create-plan/select-plan.png)
+   ![Screenshot that shows how to select a plan in Azure Stack Hub administrator portal.](media/azure-stack-create-plan/select-plan.png)
 
 3. A tabbed user interface appears that enables you to specify the plan name, add services, and define quotas for each of the selected services. Most importantly, you can review the details of the offer you create before you decide to create it.
 
    Under the **Basics** tab of the **New plan** window, enter a **Display name** and a **Resource name**. The display name is the plan's friendly name that operators can see. In the administrator portal, plan details are only visible to operators.
 
-   ![Specify details for new plan in Azure Stack Hub](media/azure-stack-create-plan/plan-name.png)
+   ![Screenshot that shows how to specify details for new plan in Azure Stack Hub.](media/azure-stack-create-plan/plan-name.png)
 
 4. Create a new **Resource Group**, or select an existing one, as a container for the plan.
 
-   ![Specify the resource group for new plan in Azure Stack Hub](media/azure-stack-create-plan/resource-group.png)
+   ![Screenshot that shows how to specify the resource group for new plan in Azure Stack Hub.](media/azure-stack-create-plan/resource-group.png)
 
 5. Select the **Services** tab, or click the **Next : Services >** button, and then select the checkbox for **Microsoft.Compute**, **Microsoft.Network**, and **Microsoft.Storage**.
   
-   ![Select services for new plan in Azure Stack Hub](media/azure-stack-create-plan/services.png)
+   ![Screenshot that shows how to select services for new plan in Azure Stack Hub.](media/azure-stack-create-plan/services.png)
 
 6. Select the **Quotas** tab, or click the **Next : Quotas >** button. Next to **Microsoft.Storage**, choose either the default quota from the dropdown box, or select **Create New** to create a customized quota.
   
-   ![Specify quotas for new plan in Azure Stack Hub](media/azure-stack-create-plan/quotas.png)
+   ![Screenshot that shows how to specify quotas for new plan in Azure Stack Hub](media/azure-stack-create-plan/quotas.png)
 
 7. If you're creating a new quota, enter a **Name** for the quota, and then specify the quota values. Select **OK** to create the quota.
 
-   ![Create new quota for new plan in Azure Stack Hub](media/azure-stack-create-plan/new-quota.png)
+   ![Screenshot that shows how to create new quota for new plan in Azure Stack Hub.](media/azure-stack-create-plan/new-quota.png)
 
 8. Repeat steps 6 and 7 to create and assign quotas for **Microsoft.Network** and **Microsoft.Compute**. When all three services have quotas assigned, they'll look like the next example.
 
-   ![Complete quota assignments for new plan in Azure Stack Hub](media/azure-stack-create-plan/all-quotas-assigned.png)
+   ![Screenshot that shows how to complete quota assignments for new plan in Azure Stack Hub.](media/azure-stack-create-plan/all-quotas-assigned.png)
 
 9. Select **Review + create** to review the plan. Review all values and quotas to ensure they're correct. The interface enables you to expand the quotas in the chosen plans one at a time to view the details of each quota in a plan. You can also go back to make any necessary edits.
 
-   ![Create the plan in Azure Stack Hub](media/azure-stack-create-plan/create.png)
+   ![Screenshot that shows how to create the plan in Azure Stack Hub.](media/azure-stack-create-plan/create.png)
 
 10. When you're ready, select **Create** to create the plan.
 

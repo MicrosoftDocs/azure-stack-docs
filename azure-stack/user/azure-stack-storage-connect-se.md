@@ -1,5 +1,5 @@
 ---
-title: Connect Storage Explorer to an Azure Stack Hub subscription or a storage account 
+title: Connect Storage Explorer to Azure Stack Hub subscription or storage account 
 description: Learn how to connect Storage Explorer to an  Azure Stack Hub subscription
 author: mattbriggs
 
@@ -91,12 +91,13 @@ Use the following steps to connect Storage Explorer to an Azure Stack Hub subscr
 
 > [!NOTE]  
 > The Azure Federated Service (AD FS) sign-in experience supports Storage Explorer 1.2.0 or newer versions with Azure Stack Hub 1804 or newer update.
+
 Use the following steps to connect Storage Explorer to an Azure Stack Hub subscription which belongs to an AD FS account.
 
 1. Select **Manage Accounts**. The explorer lists the Microsoft subscriptions that you signed in to.
 2. Select **Add an account** to connect to the Azure Stack Hub subscription.
 
-    ![Add an account - Storage Explorer](media/azure-stack-storage-connect-se/add-an-account.png)
+    ![Screenshot that shows how to add an account in Storage Explorer.](media/azure-stack-storage-connect-se/add-an-account.png)
 
 3. Select **Next**. In the Connect to Azure Storage dialog box, under **Azure environment**, select **Use Custom Environment**, then click **Next**.
 

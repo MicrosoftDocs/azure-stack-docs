@@ -424,7 +424,7 @@ For stretched clusters, the `Enable-ClusterStorageSpacesDirect` cmdlet will also
 - Determine which nodes are in which sites
 - Determines what storage each node has available
 - Checks to see if the Storage Replica feature is installed on each node
-- Creates a storage pool for each site and identifies it with the same of the site
+- Creates a storage pool for each site and identifies it with the name of the site
 - Creates data and log volumes in each storage pool - one per site
 
 The following command enables Storage Spaces Direct. You can also specify a friendly name for a storage pool, as shown here:

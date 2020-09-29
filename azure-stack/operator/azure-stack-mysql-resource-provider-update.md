@@ -21,6 +21,12 @@ ms.lastreviewed: 01/11/2020
 
 A new MySQL resource provider adapter might be released when Azure Stack Hub builds are updated. While the existing adapter continues to work, we recommend updating to the latest build as soon as possible.
 
+  |Supported Azure Stack Hub version|MySQL RP version|
+  |-----|-----|
+  |2005, 2002, 1910|[MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)|
+  |1908|[MySQL RP version 1.1.33.0](https://aka.ms/azurestackmysqlrp11330)|
+  |     |     |
+
 Starting with the MySQL resource provider version 1.1.33.0 release, updates are cumulative and don't need to be installed in the order in which they were released as long as you're starting from version 1.1.24.0 or later. For example, if you're running version 1.1.24.0 of the MySQL resource provider, then you can upgrade to version 1.1.33.0 or later without needing to first install version 1.1.30.0. To review available resource provider versions, and the version of Azure Stack Hub they're supported on, refer to the versions list in [Deploy the resource provider prerequisites](./azure-stack-mysql-resource-provider-deploy.md#prerequisites).
 
 To update of the resource provider, you use the **UpdateMySQLProvider.ps1** script. The process is similar to the process used to install a resource provider, as described in the Deploy the resource provider section of this article. The script is included with the download of the resource provider. 
@@ -41,7 +47,7 @@ Specify the following parameters from the command line when you run the **Update
 | Parameter Name | Description | Comment or default value | 
 | --- | --- | --- | 
 | **CloudAdminCredential** | The credential for the cloud admin, necessary for accessing the privileged endpoint. | _Required_ | 
-| **AzCredential** | The credentials for the Azure Stack Hub service admin account. Use the same credentials as you used for deploying Azure Stack Hub. | _Required_ | 
+| **AzCredential** | The credentials for the Azure Stack Hub service admin account. Use the same credentials that you used for deploying Azure Stack Hub. The script will fail if the account you use with AzCredential requires multi-factor authentication (MFA). | _Required_ | 
 | **VMLocalCredential** |The credentials for the local admin account of the SQL resource provider VM. | _Required_ | 
 | **PrivilegedEndpoint** | The IP address or DNS name of the privileged endpoint. |  _Required_ | 
 | **AzureEnvironment** | The Azure environment of the service admin account used for deploying Azure Stack Hub. Required only for Azure AD deployments. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or if using a China Azure AD, **AzureChinaCloud**. | AzureCloud |
@@ -65,7 +71,7 @@ If you are updating the MySQL resource provider version to 1.1.33.0 or previous 
 # Note that this might not be the most currently available version of Azure Stack Hub PowerShell.
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
-Install-Module -Name AzureStack -RequiredVersion 1.6.0
+Install-Module -Name AzureStack -RequiredVersion 1.8.2
 ```
 
 > [!NOTE]

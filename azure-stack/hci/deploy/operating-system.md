@@ -1,17 +1,19 @@
 ---
 title: Deploy the Azure Stack HCI operating system
-description: This article discusses different ways to deploy the Azure Stack HCI operating system, and then use Windows Admin Center to connect to your servers. Reference to related guidance on creating a server cluster is included, as well as optional steps to get the latest Windows updates and firmware for your servers.
+description: Learn to deploy the Azure Stack HCI OS, and then use Windows Admin Center to connect to your servers. Learn to create a server cluster, and understand how to get the latest Windows updates and firmware for your servers.
 author: JohnCobb1
 ms.author: v-johcob 
 ms.topic: tutorial
-ms.date: 07/21/2020
+ms.service: azure-stack
+ms.subservice: azure-stack-hci
+ms.date: 09/24/2020
 ---
 
 # Deploy the Azure Stack HCI operating system
 
 > Applies to: Azure Stack HCI, version 20H2
 
-After completing the steps in [Before you deploy Azure Stack HCI](before-you-start.md#install-windows-admin-center), the first step in deploying Azure Stack HCI is to install the Azure Stack HCI operating system on each server that you want to cluster. This article discusses different ways to deploy the operating system, and using Windows Admin Center to connect to the servers.
+After completing the steps in [Before you deploy Azure Stack HCI](before-you-start.md#install-windows-admin-center), the first step in deploying Azure Stack HCI is to [download Azure Stack HCI](https://azure.microsoft.com/en-us/products/azure-stack/hci/hci-download/) and install the operating system on each server that you want to cluster. This article discusses different ways to deploy the operating system, and using Windows Admin Center to connect to the servers.
 
 After deploying the operating system, you're ready to use related guidance on creating a server cluster, and getting the latest Windows updates and firmware updates for your servers as described in [Create an Azure Stack HCI cluster](create-cluster.md).
 
@@ -96,7 +98,7 @@ Now you're ready to use the Server Configuration tool (Sconfig) to perform impor
 
 From the main page of the Sconfig tool, you can perform the following initial configuration tasks:
 - Configure networking or confirm that the network was configured automatically using Dynamic Host Configuration Protocol (DHCP).
-- Rename the server if the default automatically generated server name does not suite you.
+- Rename the server if the default automatically generated server name does not suit you.
 - Join the server to an Active Directory domain.
 - Add your domain user account or designated domain group to local administrators.
 - Enable access to Windows Remote Management (WinRM) if you plan to manage the server from outside the local subnet and decided not to join domain yet. (The default Firewall rules allow management both from local subnet and from any subnet within your Active Directory domain services.)

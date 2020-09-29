@@ -1,5 +1,5 @@
 ---
-title: MySQL resource provider maintenance operations in Azure Stack Hub 
+title: MySQL resource provider maintenance operations - Azure Stack Hub 
 description: Learn how to maintain the MySQL resource provider service in Azure Stack Hub.
 author: bryanla
 ms.topic: article
@@ -92,7 +92,7 @@ When using the SQL and MySQL resource providers with Azure Stack Hub integrated 
 - External SSL Certificate [provided during deployment](azure-stack-pki-certs.md).
 - The resource provider VM local administrator account password provided during deployment.
 - Resource provider diagnostic user (dbadapterdiag) password.
-- Key Vault certificate generated during deployment.
+- (version >= 1.1.47.0) Key Vault certificate generated during deployment.
 
 ### PowerShell examples for rotating secrets
 
