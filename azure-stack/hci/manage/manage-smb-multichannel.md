@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/29/2020
+ms.date: 09/30/2020
 ---
 
 # Manage SMB Multichannel
@@ -223,4 +223,5 @@ Use the following procedure to verify that SMB Multichannel works.
 For related information, see also:
 
 - [Overview of file sharing using the SMB 3 protocol in Windows Server](/windows-server/storage/file-server/file-server-smb-overview)
+- [Simplified SMB Multichannel and Multi-NIC Cluster Networks](/windows-server/failover-clustering/smb-multichannel)
 - [SMB Direct](/windows-server/storage/file-server/smb-direct)
