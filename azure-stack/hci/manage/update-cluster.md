@@ -82,9 +82,8 @@ Cluster-Aware Updating can coordinate the complete cluster updating operation in
   
 -   **Remote updating mode** For this mode, a remote management computer (usually a Windows 10 PC) that has network connectivity to the failover cluster but is not a member of the failover cluster is configured with the Failover Clustering Tools. From the remote management computer, called the Update Coordinator, the administrator triggers an on-demand updating run by using a default or custom updating run profile. Remote updating mode is useful for monitoring real-time progress during the updating run, and for clusters that are running on Server Core installations.  
 
-
    > [!NOTE]
-   > Starting with Windows 10 October 2018 Update, RSAT is included as a set of "Features on Demand" right from Windows 10. Simply go to **Settings > Apps > Apps & features > Optional features > Add a feature > RSAT: Failover Clustering Tools**, and select **Install**. To see installation progress, click the Back button to view status on the "Manage optional features" page. The installed feature will persist across Windows 10 version upgrades. To install RSAT for Windows 10 prior to the October 2018 Update, [download an RSAT package](https://www.microsoft.com/en-us/download/details.aspx?id=45520).
+   > Starting with Windows 10 October 2018 Update, RSAT is included as a set of "Features on Demand" right from Windows 10. Simply go to **Settings > Apps > Apps & features > Optional features > Add a feature > RSAT: Failover Clustering Tools**, and select **Install**. To see installation progress, click the Back button to view status on the "Manage optional features" page. The installed feature will persist across Windows 10 version upgrades. To install RSAT for Windows 10 prior to the October 2018 Update, [download an RSAT package](https://www.microsoft.com/download/details.aspx?id=45520).
 
 ### Add CAU cluster role to the cluster
 
@@ -100,7 +99,7 @@ If the role is not yet configured on the cluster, you will see the following err
 
 ```Get-CauClusterRole : The current cluster is not configured with a Cluster-Aware Updating clustered role.```
 
-To add the Cluster-Aware Updating cluster role for self-updating mode using PowerShell, use the **`Add-CauClusterRole`** cmdlet and supply the appropriate [parameters](/powershell/module/clusterawareupdating/add-cauclusterrole?view=win10-ps#parameters), as in the following example:
+To add the Cluster-Aware Updating cluster role for self-updating mode using PowerShell, use the **`Add-CauClusterRole`** cmdlet and supply the appropriate [parameters](/powershell/module/clusterawareupdating/add-cauclusterrole#parameters), as in the following example:
 
 ```PowerShell
 Add-CauClusterRole -ClusterName Cluster1 -MaxFailedNodes 0 -RequireAllNodesOnline -EnableFirewallRules -VirtualComputerObjectName Cluster1-CAU -Force -CauPluginName Microsoft.WindowsUpdatePlugin -MaxRetriesPerNode 3 -CauPluginArguments @{ 'IncludeRecommendedUpdates' = 'False' } -StartDate "3/2/2020 3:00:00 AM" -DaysOfWeek 4 -WeeksOfMonth @(3) -verbose

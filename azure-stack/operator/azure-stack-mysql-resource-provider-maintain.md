@@ -3,7 +3,7 @@ title: MySQL resource provider maintenance operations - Azure Stack Hub
 description: Learn how to maintain the MySQL resource provider service in Azure Stack Hub.
 author: bryanla
 ms.topic: article
-ms.date: 1/22/2020
+ms.date: 9/22/2020
 ms.author: bryanla
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2020
@@ -24,7 +24,7 @@ Because the resource provider runs on a *user* VM, you need to apply the require
 
 Update the provider VM using one of the following methods:
 
-- Install the latest resource provider package using a currently patched Windows Server 2016 Core image.
+- Install the latest resource provider package using a currently patched VM image.
 - Install a Windows Update package during the installation or update of the resource provider.
 
 ## Update the VM Windows Defender definitions
