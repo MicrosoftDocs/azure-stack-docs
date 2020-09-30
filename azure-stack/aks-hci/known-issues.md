@@ -75,3 +75,9 @@ The Azure Kubernetes Service host setup wizard will fail if the one or more serv
 
 ## Azure registration step in Azure Kubernetes Service host setup asks to try again
 When using Windows Admin Center to set up the Azure Kubernetes Service host, you may be asked to try again after entering the required information on the Azure registration page. You may need to sign into Azure again on the Windows Admin Center gateway to proceed with this step. This issue will be fixed in a future release.
+
+## Windows Admin Center doesn't have an Arc offboarding experience
+Windows Admin Center does not currently have a process to offboard a cluster from Azure Arc. To delete Arc aganets on a cluster that has been destroyed, navigate to the resource group the of the cluster in the Azure portal and manually delete the Arc content. To delete Arc agents on a cluster that is still up and running, users should run the following command:
+```PowerShell
+az connectedk8s delete
+```
