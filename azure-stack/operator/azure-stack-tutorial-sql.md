@@ -20,7 +20,7 @@ ms.lastreviewed: 10/23/2019
 
 As an Azure Stack Hub Operator, you can configure server VMs to host SQL Server databases. After a SQL hosting server is created and managed by Azure Stack Hub, users who have subscribed to SQL services can easily create SQL databases.
 
-This article shows how to use an Azure Stack Hub quickstart template to create a [SQL Server AlwaysOn availability group](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-2017), add it as an Azure Stack Hub SQL Hosting Server, and then create a highly available SQL database.
+This article shows how to use an Azure Stack Hub quickstart template to create a [SQL Server AlwaysOn availability group](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server), add it as an Azure Stack Hub SQL Hosting Server, and then create a highly available SQL database.
 
 What you'll learn:
 
@@ -125,7 +125,7 @@ On secondary SQL instances:
 
 ### Configure contained database authentication
 
-Before adding a contained database to an availability group, ensure that the contained database authentication server option is set to 1 on every server instance that hosts an availability replica for the availability group. For more information, see [contained database authentication](/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017).
+Before adding a contained database to an availability group, ensure that the contained database authentication server option is set to 1 on every server instance that hosts an availability replica for the availability group. For more information, see [contained database authentication](/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option).
 
 Use these commands to set the contained database authentication server option for each SQL Server instance in the availability group:
 
