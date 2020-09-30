@@ -39,8 +39,8 @@ This is because the PowerShell command to zip a file `Compress-Archive` has an o
 This issue will be fixed in a future release.
 
 ## Azure Kubernetes Service PowerShell deployment doesn't check for available memory before creating a new target cluster
-The Aks-Hci PowerShell commands do not validate the available memory on the host server before creating Kubernetes nodes. This can lead to memory exhaustion and virtual machines to not start. This failure is currently not handled gracefully and the deployment will hang with no clear error message.
-If you have a deployment that seems hung, open `Eventviewer` and check for Hyper-V related error messages indicating not enough memory to start the VM.
+The Aks-Hci PowerShell commands do not validate the available memory on the host server before creating Kubernetes nodes. This can lead to memory exhaustion and virtual machines to not start. This failure is currently not handled gracefully and the deployment will stop responding with no clear error message.
+If you have a deployment that stops responding, open `Eventviewer` and check for Hyper-V related error messages indicating not enough memory to start the VM.
 This issue will be fixed in a future release
 
 ## Azure Kubernetes Service deployment fails on an Azure Stack HCI configured with static IPs, VLANs, SDN, or proxies.
@@ -66,3 +66,12 @@ This issue will be fixed in a future release.
 ## Cannot deploy Azure Kubernetes Service to an environment that has separate storage and compute clusters
 Windows Admin Center will not deploy Azure Kubernetes Service to an environment with separate storage and compute clusters as it expects the compute and storage resources to be provided by the same cluster. In most cases, it will not find CSVs exposed by the compute cluster and will refuse to continue with deployment.
 This issue will be fixed in a future release.
+
+## Windows Admin Center only supports Azure Kubernetes Service for Azure Stack HCI in desktop mode
+In preview, all Azure Kubernetes Service for Azure Stack HCI functionality is only supported in Windows Admin Center desktop mode. The Windows Admin Center gateway must be installed on a Windows 10 PC. For more information about Windows Admin Center installation options, visit the [Windows Admin Center documentation](https://docs.microsoft.com/windows-server/manage/windows-admin-center/plan/installation-options). Additional scenarios will be supported in a future release.
+
+## Azure Kubernetes Service host setup fails in Windows Admin Center if reboots are required
+The Azure Kubernetes Service host setup wizard will fail if the one or more servers you are using need to be rebooted to install roles like PowerShell or Hyper-V. The current workaround is to exit the wizard and try again on the same system after the servers come back online. This issue will be fixed in a future release.
+
+## Azure registration step in Azure Kubernetes Service host setup asks to try again
+When using Windows Admin Center to set up the Azure Kubernetes Service host, you may be asked to try again after entering the required information on the Azure registration page. You may need to sign into Azure again on the Windows Admin Center gateway to proceed with this step. This issue will be fixed in a future release.
