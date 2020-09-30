@@ -165,7 +165,7 @@ Ethernet switches must comply with the IEEE 802.1Qaz specification that defines 
 
 #### Standard: IEEE 802.1AB
 
-Ethernet switches must comply with the IEEE 802.1AB specification that defines the Link Layer Discovery Protocol (LLDP). LLDP is required is required for Windows to discover switch configuration. Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled. These switches must not require additional configuration.
+Ethernet switches must comply with the IEEE 802.1AB specification that defines the Link Layer Discovery Protocol (LLDP). LLDP is required for Windows to discover switch configuration. Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled. These switches must not require additional configuration.
 
 For example, enabling 802.1 Subtype 3 should automatically advertise all VLANs available on switch ports.
 
