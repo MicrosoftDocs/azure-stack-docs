@@ -39,8 +39,8 @@ This is because the PowerShell command to zip a file `Compress-Archive` has an o
 This issue will be fixed in a future release.
 
 ## Azure Kubernetes Service PowerShell deployment doesn't check for available memory before creating a new target cluster
-The Aks-Hci PowerShell commands do not validate the available memory on the host server before creating Kubernetes nodes. This can lead to memory exhaustion and virtual machines to not start. This failure is currently not handled gracefully and the deployment will hang with no clear error message.
-If you have a deployment that seems hung, open `Eventviewer` and check for Hyper-V related error messages indicating not enough memory to start the VM.
+The Aks-Hci PowerShell commands do not validate the available memory on the host server before creating Kubernetes nodes. This can lead to memory exhaustion and virtual machines to not start. This failure is currently not handled gracefully and the deployment will stop responding with no clear error message.
+If you have a deployment that stops responding, open `Eventviewer` and check for Hyper-V related error messages indicating not enough memory to start the VM.
 This issue will be fixed in a future release
 
 ## Azure Kubernetes Service deployment fails on an Azure Stack HCI configured with static IPs, VLANs, SDN, or proxies.
