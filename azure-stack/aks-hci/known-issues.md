@@ -68,7 +68,7 @@ Windows Admin Center will not deploy Azure Kubernetes Service to an environment 
 This issue will be fixed in a future release.
 
 ## Windows Admin Center only supports Azure Kubernetes Service for Azure Stack HCI in desktop mode
-In preview, all Azure Kubernetes Service for Azure Stack HCI functionality is only supported in Windows Admin Center desktop mode. The Windows Admin Center gateway must be installed on a Windows 10 PC. For more information about Windows Admin Center installation options, visit the [Windows Admin Center documentation](../../windows-server/manage/windows-admin-center/plan/installation-options.md). Additional scenarios will be supported in a future release.
+In preview, all Azure Kubernetes Service for Azure Stack HCI functionality is only supported in Windows Admin Center desktop mode. The Windows Admin Center gateway must be installed on a Windows 10 PC. For more information about Windows Admin Center installation options, visit the [Windows Admin Center documentation](https://docs.microsoft.com/windows-server/manage/windows-admin-center/plan/installation-options). Additional scenarios will be supported in a future release.
 
 ## Azure Kubernetes Service host setup fails in Windows Admin Center if reboots are required
 The Azure Kubernetes Service host setup wizard will fail if the one or more servers you are using need to be rebooted to install roles like PowerShell or Hyper-V. The current workaround is to exit the wizard and try again on the same system after the servers come back online. This issue will be fixed in a future release.
