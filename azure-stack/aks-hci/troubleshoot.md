@@ -18,13 +18,13 @@ To learn about troubleshooting problems with CredSSP, see [Troubleshoot CredSSP]
 
 ## Troubleshooting Windows Admin Center
 This product is in public preview, which means it's still in development. There are currently some issues with the Windows Admin Center Azure Kubernetes Service extension: 
-* Currently, each server in the cluster of the system you're using to set up Azure Kubernetes Service on Azure Stack HCI must be a trusted server. So Windows Admin Center must be able to perform CredSSP operations on every server in the cluster, not just on one or a few of them. 
-* If you encounter an error that says `msft.sme.aks couldn't load`, and the error says that loading chunks failed, use the latest version of Microsoft Edge or Google Chrome and try again.
-* Before you start either the wizard for setting up Azure Kubernetes Service host or the wizard for creating a Kubernetes cluster, you should sign in to Azure through Windows Admin Center. You might need to sign in again during the workflow. If you're having difficulties signing in to Azure through Windows Admin Center, try signing in to your Azure account from another source, like the [Azure portal](https://portal.azure.com/). If you continue to encounter problems, check the [Windows Admin Center known issues](/windows-server/manage/windows-admin-center/support/known-issues) article before contacting support.
+* Currently, each server in the cluster of the system you're using to set up Azure Kubernetes Service on Azure Stack HCI must be a trusted server. So Windows Admin Center must be able to run CredSSP operations on every server in the cluster, not just on one or a few of them. 
+* If you get an error that says `msft.sme.aks couldn't load`, and the error says that loading chunks failed, use the latest version of Microsoft Edge or Google Chrome and try again.
+* Before you start either the wizard for setting up Azure Kubernetes Service host or the wizard for creating a Kubernetes cluster, you should sign in to Azure through Windows Admin Center. You might need to sign in again during the workflow. If you're having difficulties signing in to Azure through Windows Admin Center, try signing in to your Azure account from another source, like the [Azure portal](https://portal.azure.com/). If you continue to have problems, check the [Windows Admin Center known issues](/windows-server/manage/windows-admin-center/support/known-issues) article before contacting support.
 * In the current iteration of Azure Kubernetes Service on Azure Stack HCI deployment through Windows Admin Center, only the user who set up the Azure Kubernetes Service host can create Kubernetes clusters on the system. To work around this issue, copy the .wssd folder from the profile of the user who set up the Azure Kubernetes Service host to the profile of the user who will be creating the new Kubernetes cluster.
 * If you receive an error in either wizard about a wrong configuration, perform cluster cleanup operations. These operations might involve removing the C:\Program Files\AksHci\mocctl.exe file.
 * For CredSSP to function successfully in the cluster creation wizard, Windows Admin Center must be installed and used by the same account. If you install Windows Admin Center with one account and try to use it with another, you'll get errors.
-* During cluster deployment, you might encounter an problem with the helm.zip file transfer. This problem often causes an error that says the path to the helm.zip file doesn't exist or isn't valid. To resolve this problem, retry the deployment.
+* During cluster deployment, you might encounter a problem with the helm.zip file transfer. This problem often causes an error that says the path to the helm.zip file doesn't exist or isn't valid. To resolve this problem, retry the deployment.
 * If your deployment hangs for an extended period, you might be having CredSSP or connectivity problems. Try these steps to troubleshoot your deployment: 
     1.	On the machine running Windows Admin Center, run the following command in a PowerShell window: 
           ```PowerShell
@@ -32,7 +32,7 @@ This product is in public preview, which means it's still in development. There 
           ```
     2.	If this command succeeds, you can connect to the server and there's no connectivity issue.
     
-    3.	If you're encountering CredSSP problems, run this command to test the trust between the gateway machine and the target machine: 
+    3.	If you're having CredSSP problems, run this command to test the trust between the gateway machine and the target machine: 
           ```PowerShell
           Enter-PSSession –ComputerName <server> –Credential company\administrator –Authentication CredSSP
           ``` 
@@ -67,30 +67,30 @@ The command has the following parameters:
 * `-HoursAgo`: The start time for collecting logs, expressed in hours before the time you run the script.
 * `-NoCredentialPrompt`: A switch to turn off the credentials prompt and use the default credentials in your current environment.
  
-If you have difficulties running this script, you can run the following command to view the help text: 
+If you have difficulties running this script, you can run the following command to view the Help text: 
  
 ```PowerShell
 GetHelp .\Get-SMEUILogs.ps1 -Examples
 ```
 
 ## Troubleshooting Windows worker nodes 
-To log in to a Windows worker node, first get the IP address of your node by running `kubectl get` and note the `EXTERNAL-IP` value:
+To sign in to a Windows worker node, first get the IP address of your node by running `kubectl get`. Note the `EXTERNAL-IP` value.
 
 ```PowerShell
 kubectl get nodes -o wide
 ``` 
-SSH into the node using `ssh Administrator@ip`. Once you ssh into the node, you can run `net user administrator *` to update your administrator’s password. 
+SSH into the node by using `ssh Administrator@ip`. After you SSH into the node, you can run `net user administrator *` to update your administrator password. 
 
 ## Troubleshooting Linux worker nodes 
-To log in to a Linux worker node, first get the IP address of your node by running `kubectl get` and note the `EXTERNAL-IP` value:
+To sign in to a Linux worker node, first get the IP address of your node by running `kubectl get`. Note the `EXTERNAL-IP` value.
 
 ```PowerShell
 kubectl get nodes -o wide
 ``` 
-SSH into the node using `ssh clouduser@ip`. 
+SSH into the node by using `ssh clouduser@ip`. 
 
-## Troubleshooting Azure Arc for Kubernetes
-To troubleshoot some common scenarios related to connectivity, permissions, and Arc agents, visit [Azure Arc enabled Kubernetes troubleshooting](/azure/azure-arc/kubernetes/troubleshooting).
+## Troubleshooting Azure Arc Kubernetes
+To learn about troubleshooting common scenarios related to connectivity, permissions, and Arc agents, see [Azure Arc enabled Kubernetes troubleshooting](/azure/azure-arc/kubernetes/troubleshooting).
 
 ## Next steps
-If you continue to run into issues while using Azure Kubernetes Service on Azure Stack HCI, file bugs through [GitHub](https://aka.ms/aks-hci-issues).  
+If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).  
