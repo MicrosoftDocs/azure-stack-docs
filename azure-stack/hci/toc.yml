@@ -60,6 +60,8 @@
       href: manage/replace-drives.md
     - name: Use the CSV in-memory read cache
       href: manage/use-csv-cache.md
+    - name: Manage SMB Multichannel
+      href: manage/manage-smb-multichannel.md
   - name: Manage the cluster
     items:
     - name: Manage the cluster
@@ -163,4 +165,4 @@
   - name: Azure Stack HCI Eval Guide
     href: https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md
   - name: Azure Stack HCI pricing
-    href: https://azure.microsoft.com/en-us/pricing/details/azure-stack/hci/
+    href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
