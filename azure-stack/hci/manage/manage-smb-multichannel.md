@@ -29,9 +29,9 @@ SMB Multichannel provides the following capabilities:
 
 Because SMB Multichannel is enabled by default, you do not have to install additional roles, role services, or features. The SMB client automatically detects and uses multiple network connections when the configuration is identified. However, SMB Multichannel has the following requirements:
 
-1. At least two computers that run Azure Stack HCI, Windows Server, or Windows 10 operating system.
+- At least two computers that run Azure Stack HCI, Windows Server, or Windows 10 operating system.
 
-2. At least one of the following configurations:
+- At least one of the following configurations:
 
     - Multiple network adapters
 
