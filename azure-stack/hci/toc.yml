@@ -60,6 +60,8 @@
       href: manage/replace-drives.md
     - name: Use the CSV in-memory read cache
       href: manage/use-csv-cache.md
+    - name: Manage SMB Multichannel
+      href: manage/manage-smb-multichannel.md
   - name: Manage the cluster
     items:
     - name: Manage the cluster
