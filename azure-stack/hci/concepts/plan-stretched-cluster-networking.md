@@ -10,9 +10,11 @@ ms.reviewer: JasonGerend
 
 # Plan host networking for Azure Stack HCI
 
-> Applies to Azure Stack HCI version 20H2
+> Applies to Azure Stack HCI, version 20H2
 
 This topic discusses planning considerations and requirements for host networking in both non-stretched and stretched cluster environments.
+
+For interconnect requirements between nodes (along with other requirements), see [Before you deploy Azure Stack HCI](/deploy/before-you-start.md).
 
 ## RDMA considerations
 
@@ -32,7 +34,7 @@ These are the requirements for RDMA for Azure Stack HCI:
     - One or more additional vNICs should be provisioned for Storage Replica
     - Storage Replica vNICs must have RDMA disabled (using the PowerShell `Disable-NetAdapterRDMA` cmdlet) since it is by definition cross-site and cross-subnet
     - Native RDMA adapters would need a vSwitch and vNICs for Storage Replica support in order to satisfy the site/subnet requirements above
-    - Intra-site RDMA bandwidth requirements require knowing the bandwidth percentages per traffic type, as discussed in the **Traffic bandwidth allocation** section. This will ensure that appropriate bandwidth reservations and limits can be applied for east/west (node-to-node) traffic
+    - Intra-site RDMA bandwidth requirements require knowing the bandwidth percentages per traffic type, as discussed in the **Traffic bandwidth allocation** section below. This will ensure that appropriate bandwidth reservations and limits can be applied for east/west (node-to-node) traffic
 
 ## SMB traffic support
 
@@ -54,44 +56,13 @@ SMB can flow over the following protocols:
 
 ## Network adapter considerations
 
+Azure Stack HCI deployments require several the creation of virtual switches.
+
 ### Compute and storage shared virtual switch
 
 ### Compute-only virtual switch
 
 ### Compute and storage dedicated virtual switches
-
-## Interconnect requirements between nodes
-
-This section discusses specific networking requirements between server nodes in a site, called interconnects. Either switched or switchless node interconnects can be used and are supported:
-
-**Switched:** Server nodes are most commonly connected to each other via Ethernet networks that use network switches. Switches must be properly configured to handle the bandwidth and networking type. If using RDMA that implements the RoCE protocol, network device and switch configuration is important.
-
-**Switchless:** Server nodes can also be interconnected using direct Ethernet connections without a switch. In this case, each server node must have a direct connection with every other cluster node in the same site.
-
-### Interconnects for 2-3 node clusters
-
-These are the minimum interconnect requirements for single-site clusters having two or three nodes. These apply for each server node:
-
-One or more 1 Gb network adapter cards to be used for management functions
-One or more 10 Gb (or faster) network interface cards for storage and workload traffic
-Two or more network connections between each node recommended for redundancy and performance
-
-### Interconnects for 4-node and greater clusters
-
-These are the minimum interconnect requirements for clusters having four or more nodes, and for high-performance clusters. These apply for each server node:
-
-One or more 1 Gb network adapter cards to be used for management functions.
-One or more 25 Gb (or faster) network interface cards for storage and workload traffic. We recommend two or more network connections for redundancy and performance.
-Network cards that are remote-direct memory access (RDMA) capable: iWARP (recommended) or RoCE.
-
-## Site-to-site requirements (stretched cluster)
-
-When connecting between sites for stretched clusters (or between subnets), interconnect requirements within each site still apply, and have additional Storage Replica and Hyper-V live migration traffic requirements that must be considered:
-
-- At least one 1 Gb RDMA or Ethernet/TCP connection between sites for synchronous replication. A 25 Gb RDMA connection is preferred.
-- A network between sites with enough bandwidth to contain your I/O write workload and an average of 5ms round trip latency or lower for synchronous replication. Asynchronous replication doesn't have a latency recommendation.
-- If using a single connection between sites, set SMB bandwidth limits for Storage Replica using PowerShell. For more information, see [Set-SmbBandwidthLimit](https://docs.microsoft.com/powershell/module/smbshare/set-smbbandwidthlimit?view=win10-ps).
-- If using multiple connections between sites, separate traffic between the connections. For example, put Storage Replica traffic on a separate network than Hyper-V live migration traffic using PowerShell. For more information, see [Set-SRNetworkConstraint](https://docs.microsoft.com/powershell/module/storagereplica/set-srnetworkconstraint?view=win10-ps).
 
 - ## Traffic bandwidth allocation
 
