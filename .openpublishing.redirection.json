@@ -1,6 +1,21 @@
 {
   "redirections": [
     { 
+      "source_path": "azure-stack/operator/configure-automatic-diagnostic-log-collection.md", 
+      "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/configure-on-demand-diagnostic-log-collection-portal.md", 
+      "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/configure-on-demand-diagnostic-log-collection-powershell.md", 
+      "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview", 
+      "redirect_document_id": false
+    },    
+    { 
       "source_path": "azure-stack/operator/app-service-deploy-ha.md", 
       "redirect_url": "/azure-stack/operator/azure-stack-app-service-deploy", 
       "redirect_document_id": false
