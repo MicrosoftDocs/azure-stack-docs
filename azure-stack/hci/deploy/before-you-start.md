@@ -143,9 +143,9 @@ There may be additional ports required not listed above. These are the ports for
 
 ### Network switch requirements
 
-This section defines the requirements for physical switches used with Azure Stack HCI. These requirements list the industry specifications, organizational standards, and protocols that are mandatory for all Azure Stack HCI deployments. Unless noted, the latest active (non-superseded) version of the standard is required.
+This section defines the requirements for physical switches used with Azure Stack HCI. These requirements list the industry specifications, organizational standards, and protocols that are mandatory for all Azure Stack HCI deployments. Unless otherwise noted, the latest active (non-superseded) version of the standard is required.
 
-These requirements help ensure reliable communications between nodes in Azure Stack HCI cluster deployments. Reliable communications between nodes is critical. To provide the needed level of reliability for Azure Stack HCI requires that switches:
+These requirements help ensure reliable communications between nodes in Azure Stack HCI cluster deployments. Reliable communications between nodes are critical. To provide the needed level of reliability for Azure Stack HCI requires that switches:
 
 - Comply with applicable industry specifications, standards, and protocols
 - Provide visibility as to which specifications, standards, and protocols the switch supports
@@ -157,7 +157,7 @@ Make sure you ask your switch vendor if your switch supports the following:
 
 Ethernet switches must comply with the IEEE 802.1Q specification that defines VLANs. VLANs are required for several aspects of Azure Stack HCI and are required in all scenarios.
 
-#### Standard: IEEE 802.1 Qbb
+#### Standard: IEEE 802.1Qbb
 
 Ethernet switches must comply with the IEEE 802.1Qbb specification that defines Priority Flow Control (PFC). PFC is required where Data Center Bridging (DCB) is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qbb is required in all scenarios. A minimum of three Class of Service (CoS) priorities are required without downgrading the switch capabilities or port speed.
 
