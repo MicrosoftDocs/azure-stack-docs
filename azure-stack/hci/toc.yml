@@ -98,32 +98,38 @@
       href: manage/use-azure-network-adapter.md
 - name: Concepts
   items:
-  - name: Stretched clusters
-    href: concepts/stretched-clusters.md
-  - name: Billing
-    href: concepts/billing.md
-  - name: Updates and upgrades
-    href: concepts/updates.md
-  - name: Choose drives
-    href: concepts/choose-drives.md
-  - name: Drive symmetry considerations
-    href: concepts/drive-symmetry-considerations.md
-  - name: Plan volumes
-    href: concepts/plan-volumes.md
-  - name: Software defined networking
-    href: concepts/software-defined-networking.md
-  - name: Understand the storage pool cache
-    href: concepts/cache.md
-  - name: Fault tolerance and storage efficiency
-    href: concepts/fault-tolerance.md
-  - name: Cluster and storage pool quorum
-    href: concepts/quorum.md
-  - name: Plan a SDN infrastructure
-    href: concepts/plan-software-defined-networking-infrastructure.md
-  - name: Network Controller
-    href: concepts/network-controller.md
-  - name: Security considerations
-    href: concepts/security.md
+  - name: Storage and clusters
+    items:
+    - name: Choose drives
+      href: concepts/choose-drives.md
+    - name: Drive symmetry considerations
+      href: concepts/drive-symmetry-considerations.md
+    - name: Plan volumes
+      href: concepts/plan-volumes.md
+    - name: Understand the storage pool cache
+      href: concepts/cache.md
+    - name: Fault tolerance and storage efficiency
+      href: concepts/fault-tolerance.md
+    - name: Stretched clusters
+      href: concepts/stretched-clusters.md
+    - name: Cluster and storage pool quorum
+      href: concepts/quorum.md
+  - name: Networking
+    items:
+    - name: Software defined networking
+      href: concepts/software-defined-networking.md
+    - name: Plan a SDN infrastructure
+      href: concepts/plan-software-defined-networking-infrastructure.md
+    - name: Plan Network Controller
+      href: concepts/network-controller.md
+  - name: Maintenance and security
+    items:
+    - name: Billing
+      href: concepts/billing.md
+    - name: Updates and upgrades
+      href: concepts/updates.md
+    - name: Security considerations
+      href: concepts/security.md
 - name: Reference
   items:
   - name: Hyper-V PowerShell commands
