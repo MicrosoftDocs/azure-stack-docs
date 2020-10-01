@@ -39,7 +39,7 @@ Before you start, [determine whether your hardware meets the base requirements a
 
 ### 2. Deploy Azure Stack HCI
 
-[Download Azure Stack HCI](https://azure.microsoft.com/en-us/products/azure-stack/hci/hci-download/) and deploy the Azure Stack HCI [operating system](operating-system.md) on each server you want to cluster.
+[Download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) and deploy the Azure Stack HCI [operating system](operating-system.md) on each server you want to cluster.
 
 ### 3. Create the cluster
 
