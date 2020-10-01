@@ -31,11 +31,11 @@ Follow these steps to configure proactive log collection. Proactive log collecti
 1. Open **Help + support Overview**.
 1. If the banner appears, select **Enable proactive log collection**. =
 
-   ![Screenshot shows where to enable log collection in Help + support](media/azure-stack-help-and-support/banner-enable-automatic-log-collection.png)
+   :::image type="content" source="media/azure-stack-help-and-support/banner-enable-automatic-log-collection.png" alt-text="Screenshot of a support page titled Overview - Log Collection. A purple banner contains a button labeled Enable proactive log collection." border="false":::
 
    Or you can select **Settings** and set **Proactive log collection** to **Enable**, then select **Save**.
 
-   ![Screenshot shows where to enable log collection in Help + support](media/azure-stack-help-and-support/settings-enable-automatic-log-collection.png)
+   :::image type="content" source="media/azure-stack-help-and-support/settings-enable-automatic-log-collection.png" alt-text="Screenshot of the Settings page. Under Proactive log collection, the toggle is set to Enable." border="false":::
 
 ::: moniker-end
 ::: moniker range="<= azs-1910"
