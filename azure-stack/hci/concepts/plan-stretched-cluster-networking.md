@@ -50,7 +50,7 @@ These are the requirements for RDMA for Azure Stack HCI:
 - RDMA between subnets and between sites (stretched clusters) is not supported. The use of uplinks and multiple network devices means multiple failure points where this could become unstable and unsupportable
 - No additional virtual NICs are needed for SR traffic for stretched clusters. However for troubleshooting purposes, it may be useful to keep the cross-site and cross-subnet traffic separate from the east-west RDMA traffic. If SMBDirect cannot be natively disabled cross-site or cross-subnet per flow, then:
     - One or more additional vNICs should be provisioned for Storage Replica
-    - SR vNICs must have RDMA disabled using the PowerShell [Disable-NetAdapterRDMA](https://docs.microsoft.com/powershell/module/netadapter/disable-netadapterrdma?view=win10-ps) cmdlet since it is by definition cross-site and cross-subnet
+    - SR vNICs must have RDMA disabled using the PowerShell [Disable-NetAdapterRDMA](https://docs.microsoft.com/powershell/module/netadapter/disable-netadapterrdma) cmdlet since it is by definition cross-site and cross-subnet
     - Native RDMA adapters would need a vSwitch and vNICs for SR support in order to satisfy the site/subnet requirements above
     - Intra-site RDMA bandwidth requirements require knowing the bandwidth percentages per traffic type, as discussed in the **Traffic bandwidth allocation** section below. This will ensure that appropriate bandwidth reservations and limits can be applied for east/west (node-to-node) traffic
 - LM and SR traffic must be SMB bandwidth-limited, otherwise they could consume all the bandwidth, starving the storage traffic. For more information, see the [Set-SmbBandwidthLimit](https://docs.microsoft.com/powershell/module/smbshare/set-smbbandwidthlimit?view=win10-ps) and [Set-SRNetworkConstraint](https://docs.microsoft.com/powershell/module/storagereplica/set-srnetworkconstraint?view=win10-ps) PowerShell cmdlets.
@@ -123,7 +123,7 @@ The following diagram shows a standard (non-stretched) cluster configuration wit
 
 The following diagrams show stretched cluster configuration with a single cluster with server nodes located in different sites and subnets (four nodes per site). Server nodes communicate with each other in the same cluster using redundant network adapters connected to dual-connected top-of-rack (TOR) switches. Site-to-site communications go through dual routers using Storage Replica for failover.
 
-:::image type="content" source="media/plan-host-networking/rack-topology-stretched-cluster.png" alt-text="Stretched cluster - advanced" lightbox="media/plan-host-networking/rack-topology-stretched-cluster.png":::
+:::image type="content" source="media/plan-host-networking/rack-topology-stretched-cluster.png" alt-text="Stretched cluster" lightbox="media/plan-host-networking/rack-topology-stretched-cluster.png":::
 
 ### Host networking option 1
 
@@ -131,7 +131,7 @@ The following diagram shows a stretched cluster that flows management, LM, and S
 
 TCP is used for traffic between sites while RDMA is used for intra-site LM storage traffic.
 
-:::image type="content" source="media/plan-host-networking/stretched-cluster-option-1.png" alt-text="Stretched cluster - advanced" lightbox="media/plan-host-networking/stretched-cluster-option-1.png":::
+:::image type="content" source="media/plan-host-networking/stretched-cluster-option-1.png" alt-text="Host networking option 1" lightbox="media/plan-host-networking/stretched-cluster-option-1.png":::
 
 ### Host networking option 2
 
@@ -139,7 +139,7 @@ The following diagram shows a more advanced configuration for a stretched cluste
 
 TCP is used for traffic between sites while RDMA is used for intra-site storage traffic.
 
-:::image type="content" source="media/plan-host-networking/stretched-cluster-option-2.png" alt-text="Stretched cluster - advanced" lightbox="media/plan-host-networking/stretched-cluster-option-2.png":::
+:::image type="content" source="media/plan-host-networking/stretched-cluster-option-2.png" alt-text="Host networking option 2" lightbox="media/plan-host-networking/stretched-cluster-option-2.png":::
 
 ## Next steps
 
