@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/30/2020
+ms.date: 10/01/2020
 ---
 
 # Before you deploy Azure Stack HCI
@@ -151,6 +151,8 @@ These requirements help ensure reliable communications between nodes in Azure St
 - Provide visibility as to which specifications, standards, and protocols the switch supports
 - Provide information on which capabilities are enabled
 
+Make sure you ask your switch vendor if your switch supports the following:
+
 #### Standard: IEEE 802.1Q
 
 Ethernet switches must comply with the IEEE 802.1Q specification that defines VLANs. VLANs are required for several aspects of Azure Stack HCI and are required in all scenarios.
@@ -175,9 +177,10 @@ LLDP allows organizations to define and encode their own custom TLVs. These are 
 
 |Condition|Organization|TLV Subtype|
 |-|-|-|
+|Required|IEEE 802.1|VLAN Name (Subtype = 3)|
+|Required|IEEE 802.3|Maximum Frame Size (Subtype = 4)|
 |Optional|IEEE 802.1|Port VLAN ID (Subtype = 1)|
 |Optional|IEEE 802.1|Port And Protocol VLAN ID (Subtype = 2)|
-|Required|IEEE 802.1|VLAN Name (Subtype = 3)|
 |Optional|IEEE 802.1|Link Aggregation (Subtype = 7)|
 |Optional|IEEE 802.1|Congestion Notification (Subtype = 8)|
 |Optional|IEEE 802.1|ETS Configuration (Subtype = 9)|
@@ -185,7 +188,9 @@ LLDP allows organizations to define and encode their own custom TLVs. These are 
 |Optional|IEEE 802.1|PFC Configuration (Subtype = B)|
 |Optional|IEEE 802.1|EVB (Subtype = D)|
 |Optional|IEEE 802.3|Link Aggregation (Subtype = 3)|
-|Required|IEEE 802.3|Maximum Frame Size (Subtype = 4)|
+
+> [!NOTE]
+> Some of the optional features listed may be required in the future.
 
 ### Storage requirements
 
