@@ -54,7 +54,7 @@ Azure Stack Hub infrastructure uses 4096-bit RSA keys for all its internal certi
 
 ## Windows Defender Application Control
 
-Azure Stack Hub makes use of the latest Windows Server security features. One of them is Windows Defender Application Control (WDAC, formerly known as Code Integrity), which provides executables whitelisting and ensures that only authorized code runs within the Azure Stack Hub infrastructure.
+Azure Stack Hub makes use of the latest Windows Server security features. One of them is Windows Defender Application Control (WDAC, formerly known as Code Integrity), which provides executables filtering and ensures that only authorized code runs within the Azure Stack Hub infrastructure.
 
 Authorized code is signed by either Microsoft or the OEM partner. The signed authorized code is included in the list of allowed software specified in a policy defined by Microsoft. In other words, only software that has been approved to run in the Azure Stack Hub infrastructure can be executed. Any attempt to execute unauthorized code is blocked and an alert is generated. Azure Stack Hub enforces both User Mode Code Integrity (UMCI) and Hypervisor Code Integrity (HVCI).
 
@@ -82,7 +82,7 @@ Administration in Azure Stack Hub is controlled through three entry points, each
 
 - The [administrator portal](azure-stack-manage-portals.md) provides a point-and-click experience for daily management operations.
 - Azure Resource Manager exposes all the management operations of the administrator portal via a REST API, used by PowerShell and Azure CLI.
-- For specific low-level operations (for example, datacenter integration or support scenarios), Azure Stack Hub exposes a PowerShell endpoint called [privileged endpoint](azure-stack-privileged-endpoint.md). This endpoint exposes only a whitelisted set of cmdlets and it's heavily audited.
+- For specific low-level operations (for example, datacenter integration or support scenarios), Azure Stack Hub exposes a PowerShell endpoint called [privileged endpoint](azure-stack-privileged-endpoint.md). This endpoint exposes only an allowed set of cmdlets and it's heavily audited.
 
 ## Network controls
 

@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/24/2020
+ms.date: 09/30/2020
 ---
 
 # Before you deploy Azure Stack HCI
@@ -140,6 +140,52 @@ When using the Cluster Creation wizard in Windows Admin Center to create the clu
 - ICMPv4 and ICMPv6 (if using Test-SRTopology)
 
 There may be additional ports required not listed above. These are the ports for basic Azure Stack HCI functionality.
+
+### Network switch requirements
+
+This section defines the requirements for physical switches used with Azure Stack HCI. These requirements list the industry specifications, organizational standards, and protocols that are mandatory for all Azure Stack HCI deployments. Unless noted, the latest active (non-superseded) version of the standard is required.
+
+These requirements help ensure reliable communications between nodes in Azure Stack HCI cluster deployments. Reliable communications between nodes is critical. To provide the needed level of reliability for Azure Stack HCI requires that switches:
+
+- Comply with applicable industry specifications, standards, and protocols
+- Provide visibility as to which specifications, standards, and protocols the switch supports
+- Provide information on which capabilities are enabled
+
+#### Standard: IEEE 802.1Q
+
+Ethernet switches must comply with the IEEE 802.1Q specification that defines VLANs. VLANs are required for several aspects of Azure Stack HCI and are required in all scenarios.
+
+#### Standard: IEEE 802.1 Qbb
+
+Ethernet switches must comply with the IEEE 802.1Qbb specification that defines Priority Flow Control (PFC). PFC is required where Data Center Bridging (DCB) is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qbb is required in all scenarios. A minimum of three Class of Service (CoS) priorities are required without downgrading the switch capabilities or port speed.
+
+#### Standard: IEEE 802.1Qaz
+
+Ethernet switches must comply with the IEEE 802.1Qaz specification that defines Enhanced Transmission Select (ETS). ETS is required where DCB is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qaz is required in all scenarios. A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed.
+
+#### Standard: IEEE 802.1AB
+
+Ethernet switches must comply with the IEEE 802.1AB specification that defines the Link Layer Discovery Protocol (LLDP). LLDP is required for Windows to discover switch configuration. Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled. These switches must not require additional configuration.
+
+For example, enabling 802.1 Subtype 3 should automatically advertise all VLANs available on switch ports.
+
+#### TLV Requirements
+
+LLDP allows organizations to define and encode their own custom TLVs. These are called Organizationally Specific TLVs. All Organizationally Specific TLVs start with an LLDP TLV Type value of 127. The following table shows which Organizationally Specific Custom TLV (TLV Type 127) subtypes are required and which are optional:
+
+|Condition|Organization|TLV Subtype|
+|-|-|-|
+|Optional|IEEE 802.1|Port VLAN ID (Subtype = 1)|
+|Optional|IEEE 802.1|Port And Protocol VLAN ID (Subtype = 2)|
+|Required|IEEE 802.1|VLAN Name (Subtype = 3)|
+|Optional|IEEE 802.1|Link Aggregation (Subtype = 7)|
+|Optional|IEEE 802.1|Congestion Notification (Subtype = 8)|
+|Optional|IEEE 802.1|ETS Configuration (Subtype = 9)|
+|Optional|IEEE 802.1|ETS Recommendation (Subtype = A)|
+|Optional|IEEE 802.1|PFC Configuration (Subtype = B)|
+|Optional|IEEE 802.1|EVB (Subtype = D)|
+|Optional|IEEE 802.3|Link Aggregation (Subtype = 3)|
+|Required|IEEE 802.3|Maximum Frame Size (Subtype = 4)|
 
 ### Storage requirements
 
