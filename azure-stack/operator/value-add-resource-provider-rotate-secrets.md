@@ -71,4 +71,4 @@ In any case open an Service Request.
 
 ## Next steps
 
-For details on rotating your Azure Stack Hub infrastructure secrets, visit [Rotate secrets in Azure Stack Hub](azure-stack-rotate-secrets).
+For details on rotating your Azure Stack Hub infrastructure secrets, visit [Rotate secrets in Azure Stack Hub](azure-stack-rotate-secrets.md).
