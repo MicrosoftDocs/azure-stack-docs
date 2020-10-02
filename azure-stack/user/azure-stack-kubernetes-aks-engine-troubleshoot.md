@@ -4,16 +4,15 @@ description: This article contains troubleshooting steps for the AKS engine on A
 author: mattbriggs
 
 ms.topic: article
-ms.date: 09/08/2020
+ms.date: 10/02/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/08/2020
+ms.lastreviewed: 10/02/2020
 
 # Intent: As as an Azure STack Hub developer, I want to fix the AKS engine so that can my cluster without incident.
 # Keyword: Azure Stack Hub AKS engine error codes
 
 ---
-
 
 # Troubleshoot the AKS engine on Azure Stack Hub
 
@@ -85,7 +84,7 @@ You can review information created by the AKS engine. The AKS engine reports sta
 
 ## Collect Kubernetes logs
 
-In addition, to the AKS engine logs, the Kubernetes components generate status and error messages. You can collect these logs using the Bash script, [getkuberneteslogs.sh](https://github.com/msazurestackworkloads/azurestack-gallery/releases/tag/diagnosis-v0.1.3).
+In addition, to the AKS engine logs, the Kubernetes components generate status and error messages. You can collect these logs using the Bash script, [getkuberneteslogs.sh]https://github.com/msazurestackworkloads/azurestack-gallery/releases/tag/diagnosis-v0.1.5).
 
 This script automates the process of gathering the following logs: 
 
@@ -113,8 +112,8 @@ Requirements:
     ```bash  
     mkdir -p $HOME/kuberneteslogs
     cd $HOME/kuberneteslogs
-    wget https://github.com/msazurestackworkloads/azurestack-gallery/releases/download/diagnosis-v0.1.1/diagnosis-v0.1.1.tar.gz
-    tar xvf diagnosis-v0.1.1.tar.gz -C ./
+    wget https://github.com/msazurestackworkloads/azurestack-gallery/releases/download/diagnosis-v0.1.5/diagnosis-v0.1.5.tar.gz
+    tar xvf diagnosis-v0.1.5.tar.gz -C ./
     ```
 
 2. Look for the parameters required by the `getkuberneteslogs.sh` script. The script will use the following parameters:
