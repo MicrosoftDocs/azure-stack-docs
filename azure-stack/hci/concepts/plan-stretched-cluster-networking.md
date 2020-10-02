@@ -12,9 +12,11 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version 20H2
 
-This topic discusses planning considerations and requirements for host networking in both non-stretched and stretched cluster environments.
+This topic discusses planning considerations and requirements for host networking in both non-stretched and stretched Azure Stack HCI cluster environments.
 
-For interconnect requirements between nodes (along with other requirements), see [Before you deploy Azure Stack HCI](/deploy/before-you-start.md).
+For interconnect requirements, see the **Interconnect requirements between nodes** section in [Before you deploy Azure Stack HCI](/deploy/before-you-start.md#interconnect-requirements-between-nodes).
+
+For network switch requirements, see the **Network switch requirements** section in  [Before you deploy Azure Stack HCI](/deploy/before-you-start.md#network-switch-requirements)
 
 ## SMB traffic support
 
@@ -54,6 +56,9 @@ These are the requirements for RDMA for Azure Stack HCI:
     - Native RDMA adapters would need a vSwitch and vNICs for SR support in order to satisfy the site/subnet requirements above
     - Intra-site RDMA bandwidth requirements require knowing the bandwidth percentages per traffic type, as discussed in the **Traffic bandwidth allocation** section below. This will ensure that appropriate bandwidth reservations and limits can be applied for east/west (node-to-node) traffic
 - LM and SR traffic must be SMB bandwidth-limited, otherwise they could consume all the bandwidth, starving the storage traffic. For more information, see the [Set-SmbBandwidthLimit](https://docs.microsoft.com/powershell/module/smbshare/set-smbbandwidthlimit) and [Set-SRNetworkConstraint](https://docs.microsoft.com/powershell/module/storagereplica/set-srnetworkconstraint) PowerShell cmdlets.
+
+> [!NOTE]
+> You need to convert bits into bytes when using the `Set-SmbBandwidthLimit` cmdlet. 
 
 ## Traffic bandwidth allocation
 
