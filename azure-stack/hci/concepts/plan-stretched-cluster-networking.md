@@ -53,7 +53,7 @@ These are the requirements for RDMA for Azure Stack HCI:
     - SR vNICs must have RDMA disabled using the PowerShell [Disable-NetAdapterRDMA](https://docs.microsoft.com/powershell/module/netadapter/disable-netadapterrdma) cmdlet since it is by definition cross-site and cross-subnet
     - Native RDMA adapters would need a vSwitch and vNICs for SR support in order to satisfy the site/subnet requirements above
     - Intra-site RDMA bandwidth requirements require knowing the bandwidth percentages per traffic type, as discussed in the **Traffic bandwidth allocation** section below. This will ensure that appropriate bandwidth reservations and limits can be applied for east/west (node-to-node) traffic
-- LM and SR traffic must be SMB bandwidth-limited, otherwise they could consume all the bandwidth, starving the storage traffic. For more information, see the [Set-SmbBandwidthLimit](https://docs.microsoft.com/powershell/module/smbshare/set-smbbandwidthlimit?view=win10-ps) and [Set-SRNetworkConstraint](https://docs.microsoft.com/powershell/module/storagereplica/set-srnetworkconstraint?view=win10-ps) PowerShell cmdlets.
+- LM and SR traffic must be SMB bandwidth-limited, otherwise they could consume all the bandwidth, starving the storage traffic. For more information, see the [Set-SmbBandwidthLimit](https://docs.microsoft.com/powershell/module/smbshare/set-smbbandwidthlimit) and [Set-SRNetworkConstraint](https://docs.microsoft.com/powershell/module/storagereplica/set-srnetworkconstraint) PowerShell cmdlets.
 
 ## Traffic bandwidth allocation
 
@@ -127,7 +127,7 @@ The following diagrams show stretched cluster configuration with a single cluste
 
 ### Host networking option 1
 
-The following diagram shows a stretched cluster that flows management, LM, and SR traffic between sites on the same adapter. Use the [Set-SmbBandwidthLimit](https://docs.microsoft.com/powershell/module/smbshare/set-smbbandwidthlimit?view=win10-ps) and [Set-SRNetworkConstraint](https://docs.microsoft.com/powershell/module/storagereplica/set-srnetworkconstraint?view=win10-ps) PowerShell cmdlets to bandwidth-limit LM and SR traffic respectively.
+The following diagram shows a stretched cluster that flows management, LM, and SR traffic between sites on the same adapter. Use the [Set-SmbBandwidthLimit](https://docs.microsoft.com/powershell/module/smbshare/set-smbbandwidthlimit) and [Set-SRNetworkConstraint](https://docs.microsoft.com/powershell/module/storagereplica/set-srnetworkconstraint) PowerShell cmdlets to bandwidth-limit LM and SR traffic respectively.
 
 TCP is used for traffic between sites while RDMA is used for intra-site LM storage traffic.
 
@@ -135,7 +135,7 @@ TCP is used for traffic between sites while RDMA is used for intra-site LM stora
 
 ### Host networking option 2
 
-The following diagram shows a more advanced configuration for a stretched cluster that uses SMB-Multichannel for SR traffic between sites and a dedicated adapter for cluster management traffic. Use the [Set-SmbBandwidthLimit](https://docs.microsoft.com/powershell/module/smbshare/set-smbbandwidthlimit?view=win10-ps) and [Set-SRNetworkConstraint](https://docs.microsoft.com/powershell/module/storagereplica/set-srnetworkconstraint?view=win10-ps) PowerShell cmdlets to bandwidth-limit LM and SR traffic respectively.
+The following diagram shows a more advanced configuration for a stretched cluster that uses SMB-Multichannel for SR traffic between sites and a dedicated adapter for cluster management traffic. Use the [Set-SmbBandwidthLimit](https://docs.microsoft.com/powershell/module/smbshare/set-smbbandwidthlimit) and [Set-SRNetworkConstraint](https://docs.microsoft.com/powershell/module/storagereplica/set-srnetworkconstraint) PowerShell cmdlets to bandwidth-limit LM and SR traffic respectively.
 
 TCP is used for traffic between sites while RDMA is used for intra-site storage traffic.
 
