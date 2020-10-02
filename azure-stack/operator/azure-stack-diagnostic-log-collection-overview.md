@@ -45,7 +45,7 @@ The following sections explain each option and how your data is handled in each 
 
 ### Send logs proactively
 
-Proactive log collection simplifies diagnostic log collection so you can send logs to Microsoft before opening a support case. Diagnostic logs are proactively uploaded from Azure Stack Hub for analysis. These logs are only collected when a [system health alert](##proactive-diagnostic-log-collection-alerts) is raised and are only accessed by Microsoft Support in the context of a support case.
+Proactive log collection simplifies diagnostic log collection so you can send logs to Microsoft before opening a support case. Diagnostic logs are proactively uploaded from Azure Stack Hub for analysis. These logs are only collected when a [system health alert](##Proactive-diagnostic-log-collection-alerts) is raised and are only accessed by Microsoft Support in the context of a support case.
 
 Follow these steps to configure proactive log collection. Proactive log collection can be disabled and re-enabled anytime.  
 
@@ -69,9 +69,9 @@ If system health conditions need to be investigated, the logs can be uploaded au
 
 ### Send logs now
 
-[Send logs now](./azure-stack-configure-on-demand-diagnostic-log-collection-portal.md?view=azs-2002) is a manual option where diagnostic logs are uploaded from Azure Stack Hub only when you (as the customer) initiate the collection, usually before opening a support case.
+Send logs now is a manual option where diagnostic logs are uploaded from Azure Stack Hub only when you (as the customer) initiate the collection, usually before opening a support case.
 
-Azure Stack operators can send diagnostics logs on-demand to Microsoft Support by using the administrator portal or PowerShell. If Azure Stack Hub is connected to the Azure, using [Send logs now in the administrator portal](./azure-stack-configure-on-demand-diagnostic-log-collection-portal.md?view=azs-2002) is recommended because it's the simplest way to send the logs directly to Microsoft. If the portal is unavailable, operators should instead [send logs now using PowerShell](./azure-stack-configure-on-demand-diagnostic-log-collection-powershell.md?view=azs-2002).
+Azure Stack operators can send diagnostics logs on-demand to Microsoft Support by using the administrator portal or PowerShell. If Azure Stack Hub is connected to the Azure, **Send logs now** in the administrator portal is recommended because it's the simplest way to send the logs directly to Microsoft. If the portal is unavailable, you should instead send logs using PowerShell.
 
 ::: moniker range="= azs-2002"
 If you are disconnected from the internet or want to only save logs locally, use [Get-AzureStackLog](azure-stack-get-azurestacklog.md) method to send logs. The following flowchart shows which option to use for sending diagnostic logs in each case. 
@@ -174,20 +174,20 @@ The following table can help environments with limited or metered connections to
 
 ## Managing costs
 
-Azure [blob storage charges](https://azure.microsoft.com/pricing/details/storage/blobs/) depend on how much data is saved each month and other factors like data redundancy. If you don't have an existing storage account, you can sign in to the Azure portal, select **Storage accounts**, and follow the steps to [create an Azure blob container SAS URL](./azure-stack-configure-automatic-diagnostic-log-collection.md?view=azs-2002).
+Azure [blob storage charges](https://azure.microsoft.com/pricing/details/storage/blobs/) depend on how much data is saved each month and other factors like data redundancy. If you don't have an existing storage account, you can sign in to the Azure portal, select **Storage accounts**, and follow the steps to [create an Azure blob container SAS URL](##Create-a-SAS-URL).
 
-As a best practice, create an Azure Blob storage [lifecycle management policy](/azure/storage/blobs/storage-lifecycle-management-concepts) to minimize ongoing storage costs. For more information about how to set up the storage account, see [Configure automatic Azure Stack Hub diagnostic log collection](./azure-stack-configure-automatic-diagnostic-log-collection.md?view=azs-2002)
+As a best practice, create an Azure Blob storage [lifecycle management policy](/azure/storage/blobs/storage-lifecycle-management-concepts) to minimize ongoing storage costs. For more information about how to set up the storage account, see [Configure automatic Azure Stack Hub diagnostic log collection](##Collect-logs-automatically-from multiple-Azure-Stack-Hub-systems).
 
 ::: moniker range=">= azs-2002"
 
-Azure Stack operators can send diagnostics logs on-demand to Microsoft Support, before requesting support, by using the Administrator portal or PowerShell. If Azure Stack Hub is connected to the Azure, the **Send logs now** option in the Administrator portal is recommended because it's the simplest way to send the logs directly to Microsoft. If the portal is unavailable, operators should instead [send logs now using Send-AzureStackDiagnosticLog](./azure-stack-configure-on-demand-diagnostic-log-collection-powershell.md?view=azs-2002). 
+Azure Stack operators can send diagnostics logs on-demand to Microsoft Support, before requesting support, by using the Administrator portal or PowerShell. If Azure Stack Hub is connected to the Azure, the **Send logs now** option in the Administrator portal is recommended because it's the simplest way to send the logs directly to Microsoft. If the portal is unavailable, operators should instead [send logs now using Send-AzureStackDiagnosticLog](###Send-logs-now). 
 
 If you are disconnected from the internet or want to only save logs locally, use [Get-AzureStackLog](azure-stack-get-azurestacklog.md) method to send logs. The following flowchart shows which option to use for sending diagnostic logs in each case. 
 
 ![Flowchart shows how to send logs now to Microsoft](media/azure-stack-help-and-support/send-logs-now-flowchart.png)
 
 >[!NOTE]
->As an alternative to collecting logs on demand, you can streamline the troubleshooting process by [proactively collecting diagnostic logs](./azure-stack-configure-automatic-diagnostic-log-collection.md?view=azs-2002). If system health conditions need to be investigated, the logs are uploaded automatically for analysis before opening a case with Microsoft Support. If proactive log collection is enabled, **Help and Support** shows when log collection is in progress. If you click **Send logs now** to collect logs from a specific time while proactive log collection is in progress, on-demand collection begins after proactive log collection is complete.
+>As an alternative to collecting logs on demand, you can streamline the troubleshooting process by [proactively collecting diagnostic logs](###Send-logs-proactively). If system health conditions need to be investigated, the logs are uploaded automatically for analysis before opening a case with Microsoft Support. If proactive log collection is enabled, **Help and Support** shows when log collection is in progress. If you click **Send logs now** to collect logs from a specific time while proactive log collection is in progress, on-demand collection begins after proactive log collection is complete.
 
 Specify the start time and end time for log collection and click **Collect and Upload**. 
 
