@@ -478,7 +478,7 @@
     },
     { 
       "source_path": "azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection-tzl.md", 
-      "redirect_url": "/azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection", 
+      "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview", 
       "redirect_document_id": true 
     },
     { 
@@ -488,12 +488,12 @@
     },
     { 
       "source_path": "azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md", 
-      "redirect_url": "/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal", 
+      "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview",  
       "redirect_document_id": true 
     },
     { 
       "source_path": "azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-powershell-tzl.md", 
-      "redirect_url": "/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-powershell", 
+      "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview",  
       "redirect_document_id": true 
     },
     { 

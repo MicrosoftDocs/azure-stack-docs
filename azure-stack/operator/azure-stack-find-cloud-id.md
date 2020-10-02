@@ -1,11 +1,11 @@
 ---
 title: Find your cloud ID  
 description: How to find your Cloud ID in Azure Stack Hub Help + Support.
-author: justinha
+author: myoungerman
 
 ms.topic: article
 ms.date: 10/08/2019
-ms.author: justinha
+ms.author: v-myoung
 ms.reviewer: shisab
 ms.lastreviewed: 10/08/2019
 
@@ -50,5 +50,5 @@ This topic covers how to get your Cloud ID by using the Administrator portal or 
 
 ## Next steps
 
-* [Send logs proactively](./azure-stack-configure-automatic-diagnostic-log-collection.md?view=azs-2002)
-* [Send logs now](./azure-stack-configure-on-demand-diagnostic-log-collection-portal.md?view=azs-2002)
+* [Send logs proactively](./azure-stack-diagnostic-log-collection-overview.md###send-logs-proactively)
+* [Send logs now](./azure-stack-configure-on-demand-diagnostic-log-collection-portal.md?view=azs-2002###send-logs-now)

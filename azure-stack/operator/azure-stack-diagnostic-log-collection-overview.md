@@ -45,7 +45,7 @@ The following sections explain each option and how your data is handled in each 
 
 ### Send logs proactively
 
-Proactive log collection simplifies diagnostic log collection so you can send logs to Microsoft before opening a support case. Diagnostic logs are proactively uploaded from Azure Stack Hub for analysis. These logs are only collected when a [system health alert](##Proactive-diagnostic-log-collection-alerts) is raised and are only accessed by Microsoft Support in the context of a support case.
+Proactive log collection simplifies diagnostic log collection so you can send logs to Microsoft before opening a support case. Diagnostic logs are proactively uploaded from Azure Stack Hub for analysis. These logs are only collected when a [system health alert](##proactive-diagnostic-log-collection-alerts) is raised and are only accessed by Microsoft Support in the context of a support case.
 
 Follow these steps to configure proactive log collection. Proactive log collection can be disabled and re-enabled anytime.  
 
@@ -83,16 +83,6 @@ If you are disconnected from the internet or want to only save logs locally, use
 
 ::: moniker-end
 
-### How the data is handled
-
-You agree to periodic automatic log collections by Microsoft based only on Azure Stack Hub system health alerts. You also acknowledge and consent to the upload and retention of those logs in an Azure storage account managed and controlled by Microsoft.
-
-The data will be used only troubleshooting system health alerts and won't be used for marketing, advertising, or any other commercial purposes without your consent. The data can be retained for up to 90 days and any data Microsoft collects will be handled following our [standard privacy practices](https://privacy.microsoft.com/).
-
-Any data previously collected with your consent won't be affected by the revocation of your permission.
-
-Logs collected using **Proactive log collection** are uploaded to an Azure storage account managed and controlled by Microsoft. These logs may be accessed by Microsoft in the context of a support case and to improve the health of Azure Stack Hub.
-
 ::: moniker range=">= azs-2005"
 
 ## Save logs locally
@@ -120,12 +110,12 @@ The following table lists considerations for environments with limited or metere
 ::: moniker-end
 ::: moniker range="<= azs-1910"
 
-## Collect logs automatically from multiple Azure Stack Hub systems
+## Collect logs automatically for one or more Azure Stack Hub systems
 
 Before you can configure automatic log collection, you need to:
-* [create a blob storage account](##Create-a-blob-storage-account) or use an existing one
-* [create a blob storage container](##Create-a-blob-container) or use an existing one
-* [create a shared access signature (SAS) URL](##Create-a-SAS-URL)
+* [create a blob storage account](##create-a-blob-storage-account) or use an existing one
+* [create a blob storage container](##create-a-blob-container) or use an existing one
+* [create a shared access signature (SAS) URL](##create-a-sas-url)
 
 Follow these steps to add the shared access signature (SAS) URL to the log collection UI:
 
@@ -174,20 +164,20 @@ The following table can help environments with limited or metered connections to
 
 ## Managing costs
 
-Azure [blob storage charges](https://azure.microsoft.com/pricing/details/storage/blobs/) depend on how much data is saved each month and other factors like data redundancy. If you don't have an existing storage account, you can sign in to the Azure portal, select **Storage accounts**, and follow the steps to [create an Azure blob container SAS URL](##Create-a-SAS-URL).
+Azure [blob storage charges](https://azure.microsoft.com/pricing/details/storage/blobs/) depend on how much data is saved each month and other factors like data redundancy. If you don't have an existing storage account, you can sign in to the Azure portal, select **Storage accounts**, and follow the steps to [create an Azure blob container SAS URL](##create-a-sas-url).
 
 As a best practice, create an Azure Blob storage [lifecycle management policy](/azure/storage/blobs/storage-lifecycle-management-concepts) to minimize ongoing storage costs. For more information about how to set up the storage account, see [Configure automatic Azure Stack Hub diagnostic log collection](##Collect-logs-automatically-from multiple-Azure-Stack-Hub-systems).
 
 ::: moniker range=">= azs-2002"
 
-Azure Stack operators can send diagnostics logs on-demand to Microsoft Support, before requesting support, by using the Administrator portal or PowerShell. If Azure Stack Hub is connected to the Azure, the **Send logs now** option in the Administrator portal is recommended because it's the simplest way to send the logs directly to Microsoft. If the portal is unavailable, operators should instead [send logs now using Send-AzureStackDiagnosticLog](###Send-logs-now). 
+Azure Stack operators can send diagnostics logs on-demand to Microsoft Support, before requesting support, by using the Administrator portal or PowerShell. If Azure Stack Hub is connected to the Azure, the **Send logs now** option in the Administrator portal is recommended because it's the simplest way to send the logs directly to Microsoft. If the portal is unavailable, operators should instead [send logs now using Send-AzureStackDiagnosticLog](###send-logs-now). 
 
 If you are disconnected from the internet or want to only save logs locally, use [Get-AzureStackLog](azure-stack-get-azurestacklog.md) method to send logs. The following flowchart shows which option to use for sending diagnostic logs in each case. 
 
 ![Flowchart shows how to send logs now to Microsoft](media/azure-stack-help-and-support/send-logs-now-flowchart.png)
 
 >[!NOTE]
->As an alternative to collecting logs on demand, you can streamline the troubleshooting process by [proactively collecting diagnostic logs](###Send-logs-proactively). If system health conditions need to be investigated, the logs are uploaded automatically for analysis before opening a case with Microsoft Support. If proactive log collection is enabled, **Help and Support** shows when log collection is in progress. If you click **Send logs now** to collect logs from a specific time while proactive log collection is in progress, on-demand collection begins after proactive log collection is complete.
+>As an alternative to collecting logs on demand, you can streamline the troubleshooting process by [proactively collecting diagnostic logs](###send-logs-proactively). If system health conditions need to be investigated, the logs are uploaded automatically for analysis before opening a case with Microsoft Support. If proactive log collection is enabled, **Help and Support** shows when log collection is in progress. If you click **Send logs now** to collect logs from a specific time while proactive log collection is in progress, on-demand collection begins after proactive log collection is complete.
 
 Specify the start time and end time for log collection and click **Collect and Upload**. 
 
@@ -374,6 +364,16 @@ For example, **Update failed** is an alert that triggers proactive diagnostic lo
 |Node inaccessible for virtual machine placement | AzureStack.ComputeController.HostUnresponsive |
 |Backup failed  | AzureStack.BackupController.BackupFailedGeneralFault |
 |The scheduled backup was skipped due to a conflict with failed operations    | AzureStack.BackupController.BackupSkippedWithFailedOperationFault |
+
+## How the data is handled
+
+You agree to periodic automatic log collections by Microsoft based only on Azure Stack Hub system health alerts. You also acknowledge and consent to the upload and retention of those logs in an Azure storage account managed and controlled by Microsoft.
+
+The data will be used only troubleshooting system health alerts and won't be used for marketing, advertising, or any other commercial purposes without your consent. The data can be retained for up to 90 days and any data Microsoft collects will be handled following our [standard privacy practices](https://privacy.microsoft.com/).
+
+Any data previously collected with your consent won't be affected by the revocation of your permission.
+
+Logs collected using **Proactive log collection** are uploaded to an Azure storage account managed and controlled by Microsoft. These logs may be accessed by Microsoft in the context of a support case and to improve the health of Azure Stack Hub.
 
 ## See also
 
