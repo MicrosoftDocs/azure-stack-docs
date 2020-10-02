@@ -84,7 +84,7 @@ You can review information created by the AKS engine. The AKS engine reports sta
 
 ## Collect Kubernetes logs
 
-In addition, to the AKS engine logs, the Kubernetes components generate status and error messages. You can collect these logs using the Bash script, [getkuberneteslogs.sh]https://github.com/msazurestackworkloads/azurestack-gallery/releases/tag/diagnosis-v0.1.5).
+In addition, to the AKS engine logs, the Kubernetes components generate status and error messages. You can collect these logs using the Bash script, [getkuberneteslogs.sh](https://github.com/msazurestackworkloads/azurestack-gallery/releases/tag/diagnosis-v0.1.5).
 
 This script automates the process of gathering the following logs: 
 
