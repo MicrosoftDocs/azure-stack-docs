@@ -1,11 +1,11 @@
 ---
 title: Recover Azure Stack Hub data with the Infrastructure Backup Service
 description: Learn how to back up and restore configuration and service data in Azure Stack Hub using the Infrastructure Backup Service.
-author: justinha
+author: myoungerman
 
 ms.topic: article
 ms.date: 05/16/2019
-ms.author: justinha
+ms.author: v-myoung
 ms.reviewer: hectorl
 ms.lastreviewed: 05/16/2019
 
@@ -40,7 +40,7 @@ The service contains the following features:
 ## Verify requirements for the Infrastructure Backup Service
 
 - **Storage location**  
-  You need a file share accessible from Azure Stack Hub that can contain seven backups. Each backup is about 10 GB. Your share should be able to store 140 GB of backups. For more info on selecting a storage location for the Infrastructure Backup Service, see [Backup Controller requirements](azure-stack-backup-reference.md#backup-controller-requirements).
+  You need a file share accessible from Azure Stack Hub that can contain 14 backups. Each backup is about 10 GB. Your file share should be able to store 140 GB of backups. For more info on selecting a storage location for the Infrastructure Backup Service, see [Backup Controller requirements](azure-stack-backup-reference.md#backup-controller-requirements).
 - **Credentials**  
   You need a domain user account and credentials. For example, you can use your Azure Stack Hub admin credentials.
 - **Encryption certificate**  
