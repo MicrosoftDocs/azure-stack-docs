@@ -346,7 +346,7 @@
         - name: Manage
           href: event-hubs-rp-manage.md
         - name: Rotate secrets
-          href: event-hubs-rotate-secrets.md          
+          href: event-hubs-rp-rotate-secrets.md          
         - name: Service update announcements
           href: https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs
       - name: Remove
