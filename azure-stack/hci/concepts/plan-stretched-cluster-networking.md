@@ -14,9 +14,9 @@ ms.reviewer: JasonGerend
 
 This topic discusses planning considerations and requirements for host networking in both non-stretched and stretched Azure Stack HCI cluster environments.
 
-For interconnect requirements, see the **Interconnect requirements between nodes** section in [Before you deploy Azure Stack HCI](/deploy/before-you-start.md#interconnect-requirements-between-nodes).
+For interconnect requirements, see the **Interconnect requirements between nodes** section in [Before you deploy Azure Stack HCI](https://docs.microsoft.com/azure-stack/hci/deploy/before-you-start#interconnect-requirements-between-nodes).
 
-For network switch requirements, see the **Network switch requirements** section in  [Before you deploy Azure Stack HCI](/deploy/before-you-start.md#network-switch-requirements)
+For network switch requirements, see the **Network switch requirements** section in  [Before you deploy Azure Stack HCI](https://docs.microsoft.com/azure-stack/hci/deploy/before-you-start#network-switch-requirements)
 
 ## SMB traffic support
 
@@ -148,5 +148,5 @@ TCP is used for traffic between sites while RDMA is used for intra-site storage 
 
 ## Next steps
 
-- See [Create a cluster using Windows Admin Center](/deploy/create-cluster.md)
-- See [Create a cluster using Windows PowerShell](/deploy/create-cluster-powershell.md)
+- See [Create a cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster)
+- See [Create a cluster using Windows PowerShell](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster-powershell)
