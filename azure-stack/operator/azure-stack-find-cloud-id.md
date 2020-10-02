@@ -50,5 +50,5 @@ This topic covers how to get your Cloud ID by using the Administrator portal or 
 
 ## Next steps
 
-* [Send logs proactively](./azure-stack-diagnostic-log-collection-overview.md###send-logs-proactively)
-* [Send logs now](./azure-stack-configure-on-demand-diagnostic-log-collection-portal.md?view=azs-2002###send-logs-now)
+* [Send logs proactively](./azure-stack-diagnostic-log-collection-overview.md#send-logs-proactively)
+* [Send logs now](./azure-stack-configure-on-demand-diagnostic-log-collection-portal.md?view=azs-2002#send-logs-now)

@@ -199,11 +199,11 @@ If the Create-AADIdentityApp.ps1 script that's required for App Service fails, b
 
 The Azure Stack Hub patch and update process is designed to allow operators to apply update packages in a consistent, streamlined way. While uncommon, issues can occur during patch and update process. The following steps are recommended should you encounter an issue during the patch and update process:
 
-0. **Prerequisites**: Be sure that you have followed the [Update Activity Checklist](release-notes-checklist.md) and [enable proactive log collection](./azure-stack-diagnostic-log-collection-overview.md###send-logs-proactively).
+0. **Prerequisites**: Be sure that you have followed the [Update Activity Checklist](release-notes-checklist.md) and [enable proactive log collection](./azure-stack-diagnostic-log-collection-overview.md#send-logs-proactively).
 
 1. Follow the remediation steps in the failure alert created when your update failed.
 
-2. If you have been unable to resolve your issue, create an [Azure Stack Hub support ticket](./azure-stack-help-and-support-overview.md?view=azs-2002). Be sure you have [logs collected](./azure-stack-diagnostic-log-collection-overview.md##collect-diagnostic-logs-on-demand) for the time span when the issue occurred.
+2. If you have been unable to resolve your issue, create an [Azure Stack Hub support ticket](./azure-stack-help-and-support-overview.md?view=azs-2002). Be sure you have [logs collected](./azure-stack-diagnostic-log-collection-overview.md#collect-diagnostic-logs-on-demand) for the time span when the issue occurred.
 
 ## Common Azure Stack Hub patch and update issues
 
