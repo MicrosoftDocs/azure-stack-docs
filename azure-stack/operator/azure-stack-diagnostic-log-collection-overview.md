@@ -36,6 +36,10 @@ The diagnostic log collection feature offers two ways to send logs:
 
 You also can save logs locally.
 
+This shows which option to use for sending diagnostic logs in each case. 
+
+![Flowchart shows how to send logs now to Microsoft](media/azure-stack-help-and-support/send-logs-now-flowchart.png)
+
 The following sections explain each option and how your data is handled in each case. 
 
 ### Send logs proactively
@@ -70,9 +74,7 @@ To send logs now:
 1. Choose the local time zone.
 1. Select **Collect and Upload**.
 
-If you are disconnected from the internet or want to only save logs locally, use the [Get-AzureStackLog](azure-stack-get-azurestacklog.md) method to send logs. The following flowchart shows which option to use for sending diagnostic logs in each case. 
-
-![Flowchart shows how to send logs now to Microsoft](media/azure-stack-help-and-support/send-logs-now-flowchart.png)
+If you are disconnected from the internet or want to only save logs locally, use the [Get-AzureStackLog](azure-stack-get-azurestacklog.md) method to send logs. 
 
 ::: moniker range=">= azs-2005"
 
@@ -96,14 +98,14 @@ The following table lists considerations for environments with limited or metere
 | Shared connection | The upload may also impact other apps/users sharing the network connection. |
 | Metered connection | There may be an additional charge from your ISP for the extra network usage. |
 
-## Collect logs automatically for one or more Azure Stack Hub systems
+## Enable proactive log collection
 
-To configure automatic log collection:
+To configure proactive log collection:
 
 1. Sign in to the Azure Stack Hub administrator portal.
 1. Open **Help + support Overview**.
 1. Select **Automatic collection settings**.
-1. Set automatic log collection to **Enabled**. Automatic log collection can be disabled and re-enabled anytime.
+1. Set proactive log collection to **Enabled**. Proactive log collection can be disabled and re-enabled anytime.
 
 >[!NOTE]
 >If log location settings are configured for a local file share, make sure lifecycle management policies will prevent share storage from reaching its size quota. Azure Stack Hub does not monitor local file share or enforce any retention policies.
