@@ -47,6 +47,12 @@ Create a new subnet in your virtual network. You will need to the get the subnet
     
 6. In the subnet blade, make a note of the address range and the virtual network CIDR Block, for example: `10.1.0.0 - 10.1.0.255 (256 addresses)` and `10.1.0.0/24`.
 
+## Considerations for selecting an address space
+When creating a custom virtual network you will specify the IP address space of your network and for every subnet an IP address range. Please keep in mind the following considerations when choosing the address spaces and ranges for use in Kubernetes clusters:
+-  Overlapping address spaces may result in IP address clashes or communication errors; reduce the risk of overlapping by choosing a unique address space for your new virtual network.
+-  Address spaces in the 10. and 172. ranges are commonly used for private networks and may be used by your existing data center infrastructure. If your Kubernetes applications will make use of resources in your data center reduce the risk of clashes by choosing an address space different from you data center's when creating your custom virtual network.
+-  It is recommended that a Kubernetes cluster runs on its own dedicated subnet; keep this in mind when allocating subnets in your custom virtual network.
+
 ## Get the IP address block
 
 The AKS engine supports deploying into an existing virtual network. When deploying into an existing subnet, your cluster will use a block of consecutive IPs for agents and another for masters.
