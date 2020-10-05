@@ -20,11 +20,11 @@ This article will show you how to rotate the secrets used by the Event Hubs reso
 
 ## Prepare the new certificate
 
-[!INCLUDE [prepare](../includes/resource-provider-va-rotate-secrets-prereqs.md)]
+[!INCLUDE [prepare](../includes/resource-provider-va-rotate-secrets-prepare.md)]
 
 ## Rotate secrets
 
-[!INCLUDE [rotate](../includes/resource-provider-va-rotate-secrets-prereqs.md)]
+[!INCLUDE [rotate](../includes/resource-provider-va-rotate-secrets-rotate.md)]
 
 ## Troubleshooting
 
