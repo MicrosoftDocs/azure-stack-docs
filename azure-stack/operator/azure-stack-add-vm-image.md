@@ -19,7 +19,7 @@ In Azure Stack Hub, as an operator you can add your custom virtual machine (VM) 
 
 ## Add an image
 
-You can find instructions for adding generalized and specialized images in the **Compute** section of the user guide. You will want to create a generalized image before offering the image to your users. For instructions see [Move a VM to Azure Stack Hub Overview](/azure-stack/user/vm-move-overview). When creating images available for your tenants use the Azure Stack Hub administrative portal or administrator endpoints rather than the user portal or tenant directory endpoints.
+You can find instructions for adding generalized and specialized images in the **Compute** section of the user guide. You will want to create a generalized image before offering the image to your users. For instructions see [Move a VM to Azure Stack Hub Overview](../user/vm-move-overview.md). When creating images available for your tenants use the Azure Stack Hub administrative portal or administrator endpoints rather than the user portal or tenant directory endpoints.
 
 You have two options for making an image available to your users:
 
@@ -32,7 +32,7 @@ You have two options for making an image available to your users:
 
 ## Add a platform image
 
-To add the a platform image to Azure Stack Hub, use the Azure Stack Hub administrator portal or endpoint using PowerShell. You will need to have created a generalized VHD. You can find instruction  [Move a VM to Azure Stack Hub Overview](/azure-stack/user/vm-move-overview).
+To add the a platform image to Azure Stack Hub, use the Azure Stack Hub administrator portal or endpoint using PowerShell. You will need to have created a generalized VHD. You can find instruction  [Move a VM to Azure Stack Hub Overview](../user/vm-move-overview.md).
 
 ### [Portal](#tab/image-add-portal)
 

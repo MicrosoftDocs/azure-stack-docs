@@ -116,7 +116,7 @@ Reducing the size of the largest VM to the next smallest VM in stamp (24 GB) wil
      
 ### Add a node
 
-[Adding an Azure Stack Hub node](https://docs.microsoft.com/azure-stack/operator/azure-stack-add-scale-node) will deallocate memory by equally distributing the memory between the two nodes.
+[Adding an Azure Stack Hub node](./azure-stack-add-scale-node.md) will deallocate memory by equally distributing the memory between the two nodes.
 
 ![Add a node](media/azure-stack-capacity-planning/add-a-node.png)
 
@@ -128,7 +128,7 @@ Resiliency reserve = 384 + (0.15) ((5)*384) + 112 * (3) = 1008  GB
 
 ### Increase memory on each node to 512 GB
 
-[Increasing the memory of each node](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-storage-physical-memory-capacity) will increase the total available memory.
+[Increasing the memory of each node](./azure-stack-manage-storage-physical-memory-capacity.md) will increase the total available memory.
 
 ![Increase the size of the node](media/azure-stack-capacity-planning/increase-node-size.png)
 
