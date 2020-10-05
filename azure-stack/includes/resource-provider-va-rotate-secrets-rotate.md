@@ -10,7 +10,7 @@ ms.lastreviewed: 10/10/2020
 
 Complete the following steps to rotate your resource provider's secrets:
 
-1. Using [Connect to Azure Stack Hub with PowerShell](azure-stack-powershell-configure-admin.md), sign in to your Azure Stack Hub environment. Be sure to replace the placeholder values such as endpoints and directory tenant name, before running the appropriate script for your environment.
+1. Using [Connect to Azure Stack Hub with PowerShell](../operator/azure-stack-powershell-configure-admin.md), sign in to your Azure Stack Hub environment. Be sure to replace the placeholder values such as endpoints and directory tenant name, before running the appropriate script for your environment.
 
 2. After connecting to your Azure Stack Hub, use the `Set-AzsProductSecret` cmdlet to upload your new certificate to Key Vault. Replace the variable placeholder values accordingly before running the script:
 
@@ -37,13 +37,4 @@ Invoke-AzsProductRotateSecretsAction -ProductId $ProductId
 
 > [!NOTE]
 > It takes approximately 3.5 - 4 hours to complete the rotation process.
-
-
-
-
-
-
-4. Select **Event Hubs** from the list of resource providers. You may want to filter the list by entering "Event Hubs" in the search text box provided.
-
-   [![Remove event hubs 1](../operator/media/event-hubs-rp-remove/1-uninstall.png)](media/event-hubs-rp-remove/1-uninstall.png#lightbox)
 
