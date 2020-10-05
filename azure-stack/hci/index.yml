@@ -92,18 +92,6 @@ landingContent:
           - text: Change languages
             url: manage/vm-powershell.md
 
- # Card
-  - title: Software defined networking
-    linkLists:
-      - linkListType: overview
-        links:
-          - text: SDN overview
-            url: concepts/software-defined-networking.md
-          - text: Plan SDN infrastructure
-            url: concepts/plan-software-defined-networking-infrastructure.md
-          - text: Plan Network Controller
-            url: concepts/network-controller.md
-
   # Card
   - title: Azure Stack HCI concepts
     linkLists:
@@ -139,3 +127,15 @@ landingContent:
             url: manage/use-azure-network-adapter.md
           - text: Use Azure Backup
             url: manage/use-azure-backup.md
+
+ # Card
+  - title: Software defined networking
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: SDN overview
+            url: concepts/software-defined-networking.md
+          - text: Plan SDN infrastructure
+            url: concepts/plan-software-defined-networking-infrastructure.md
+          - text: Plan Network Controller
+            url: concepts/network-controller.md
