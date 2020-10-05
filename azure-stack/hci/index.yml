@@ -55,24 +55,16 @@ landingContent:
             url: manage/create-volumes.md
           - text: Create stretched volumes
             url: manage/create-stretched-volumes.md
+          - text: Protect volumes
+            url: manage/volume-encryption-deduplication.md
           - text: Extend volumes
             url: manage/extend-volumes.md
           - text: Delete volumes
             url: manage/delete-volumes.md
           - text: Replace drives
             url: manage/replace-drives.md
-
- # Card
-  - title: Manage VMs
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Manage VMs with Windows Admin Center
-            url: manage/vm.md
-          - text: Manage VMs with PowerShell
-            url: manage/vm-powershell.md
-          - text: Set up VM affinity rules
-            url: deploy/before-you-start.md 
+          - text: Manage SMB Multichannel
+            url: manage/manage-smb-multichannel.md
 
  # Card
   - title: Manage the cluster
@@ -92,6 +84,18 @@ landingContent:
           - text: Change languages
             url: manage/vm-powershell.md
 
+ # Card
+  - title: Manage VMs
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Manage VMs with Windows Admin Center
+            url: manage/vm.md
+          - text: Manage VMs with PowerShell
+            url: manage/vm-powershell.md
+          - text: Set up VM affinity rules
+            url: deploy/before-you-start.md
+
   # Card
   - title: Azure Stack HCI concepts
     linkLists:
@@ -105,6 +109,8 @@ landingContent:
             url: concepts/updates.md
           - text: Choose drives
             url: concepts/choose-drives.md
+          - text: Drive symmetry considerations
+            url: concepts/drive-symmetry-considerations.md
           - text: Plan volumes
             url: concepts/plan-volumes.md
           - text: Fault tolerance and storage efficiency
@@ -117,6 +123,8 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
+          - text: Manage Azure registration
+            url: manage/manage-azure-registration.md
           - text: Register Windows Admin Center with Azure
             url: manage/register-windows-admin-center.md
           - text: Use Azure Site Recovery
