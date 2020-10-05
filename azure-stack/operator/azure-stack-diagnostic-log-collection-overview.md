@@ -150,36 +150,6 @@ Follow these steps to add the shared access signature (SAS) URL to the log colle
 >[!NOTE]
 >If log location settings are configured for a local file share, make sure lifecycle management policies will prevent share storage from reaching its size quota. Azure Stack Hub does not monitor local file share or enforce any retention policies.
 
-## Retention policy
-
-Create an Azure Blob storage [lifecycle management rule](/azure/storage/blobs/storage-lifecycle-management-concepts) to manage the log retention policy. We suggest retaining diagnostic logs for 30 days. To create a lifecycle management rule in Azure storage, sign in to the Azure portal, select **Storage accounts**, select the blob container, and under **Blob service**, select **Lifecycle Management**.
-
-![Lifecycle Management in the Azure portal](media/azure-stack-automatic-log-collection/blob-storage-lifecycle-management.png)
-
-## Bandwidth consumption
-
-The average size of diagnostic log collection varies based on whether log collection is on-demand or automatic.
-
-For on-demand log collection, the size of the logs collection depends on how many hours are being collected. You can choose any 1-4 hour sliding window from the last seven days.
-
-When automatic diagnostic log collection is enabled, the service monitors for critical alerts. After a critical alert gets raised and persists for around 30 minutes, the service collects and uploads appropriate logs. This log collection size is around 2 GB on average. If there's a patch and update failure, automatic log collection will start only if a critical alert is raised and persists for around 30 minutes. We recommend you follow [guidance on monitoring the patch and update](azure-stack-updates.md). Alert monitoring, log collection, and upload are transparent to the user.
-
-In a healthy system, logs won't be collected at all. In an unhealthy system, log collection may run two or three times in a day, but typically only once. At most, it could potentially run up to 10 times in a day in a worst-case scenario.  
-
-The following table can help environments with limited or metered connections to Azure consider the impact of enabling automatic log collection.
-
-| Network connection | Impact |
-|---|---|
-| Low-bandwidth/high-latency connection | Log upload will take an extended amount of time to complete. | 
-| Shared connection | The upload may also impact other apps/users sharing the network connection. |
-| Metered connection | There may be an additional charge from your ISP for the extra network usage. |
-
-## Managing costs
-
-Azure [blob storage charges](https://azure.microsoft.com/pricing/details/storage/blobs/) depend on how much data is saved each month and other factors like data redundancy. If you don't have an existing storage account, you can sign in to the Azure portal, select **Storage accounts**, and follow the steps to [create an Azure blob container SAS URL](#create-a-sas-url).
-
-As a best practice, create an Azure Blob storage [lifecycle management policy](/azure/storage/blobs/storage-lifecycle-management-concepts) to minimize ongoing storage costs. For more information about how to set up the storage account, see [Create a blob storage account](#create-a-blob-storage-account).
-
 ## Parameter considerations 
 
 * The **FromDate** and **ToDate** parameters can be used to collect logs for a particular time period. If these parameters aren't specified, logs are collected for the past four hours by default.
@@ -272,29 +242,6 @@ Set up one blob container for every Azure Stack Hub scale unit you want to colle
 1. After the deployment succeeds, select **Go to resource**. You can also pin the storage account to the dashboard for easy access.
 1. Select **Storage Explorer (preview)**, right-click **Blob containers**, and select **Create blob container**.
 1. Enter a name for the new container and select **OK**.
-
-## Create a SAS URL
-
-A shared access signature (SAS) lets you grant Microsoft Support access to resources in your storage account without sharing your account keys.
-
-1. Right-click your blob container, then select **Get Shared Access Signature**.
-   
-   ![How to get the shared access signature of a blob container](media/azure-stack-automatic-log-collection/get-sas.png)
-
-1. Choose these properties:
-
-   - Start time: You can optionally move the start time back
-   - Expiry time: Two years
-   - Time zone: UTC
-   - Permissions: Read, Write, and List
-
-1. Select **Create**.  
-
-Copy the URL and enter it when you [configure automatic log collection](#collect-logs-automatically-for-one-or-more-azure-stack-hub-systems). For more information about SAS URLs, see [Using shared access signatures (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1).
-
-## SAS token expiration
-
-Set the SAS URL expiration to two years. If you ever renew your storage account keys, make sure to regenerate the SAS URL. You should manage the SAS token according to best practices. For more information, see [Best practices when using SAS](/azure/storage/common/storage-dotnet-shared-access-signature-part-1#best-practices-when-using-sas).
 
 ## View log collection
 
