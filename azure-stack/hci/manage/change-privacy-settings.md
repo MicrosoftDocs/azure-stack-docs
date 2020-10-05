@@ -14,7 +14,7 @@ ms.date: 10/05/2020
 Here’s how to change the privacy settings on a server running either the Azure Stack HCI operating system or Windows Server. To manage privacy settings with Group Policy on either multiple servers at once or in your enterprise as a whole, see [Manage enterprise diagnostic data](/windows/privacy/configure-windows-diagnostic-data-in-your-organization#manage-enterprise-diagnostic-data).
 
 ## Azure Stack HCI or Server Core
-If the server uses the Azure Stack HCI operating system or Windows Server with the Server Core installation option, use the following steps:
+If the server uses either the Azure Stack HCI operating system or Windows Server with the Server Core installation option, use the following steps:
 1. Connect to a server in the Azure Stack HCI cluster by using Remote Desktop, a remote management (headless or BMC) controller, with a KVM, or by signing on locally by using a keyboard and monitor. 
 1. If you connect to a server running Azure Stack HCI, the Server Configuration tool (Sconfig) opens automatically. If you connect to a server running Windows Server with Server Core, at the command prompt, enter `Sconfig`.
 1. At the **Enter a number to select an option:** prompt, type **10** and press Enter.
