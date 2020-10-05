@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: khdownie
   ms.author: v-kedow
-  ms.date: 07/21/2020
+  ms.date: 10/5/2020
 
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
@@ -33,17 +33,17 @@ landingContent:
     linkLists:
       - linkListType: deploy
         links:
-          - text: Before you start
+          - text: Before you begin
             url: deploy/before-you-start.md
-          - text: Deploy the Azure Stack HCI operating system
+          - text: Deploy the Azure Stack HCI OS
             url: deploy/operating-system.md
-          - text: Create cluster
+          - text: Create a cluster
             url: deploy/create-cluster.md
           - text: Setup a cluster witness
             url: deploy/witness.md
           - text: Register with Azure
             url: deploy/register-with-azure.md
-          - text: Validate an Azure Stack HCI cluster
+          - text: Validate a cluster
             url: deploy/validate.md 
 
   # Card
@@ -85,10 +85,24 @@ landingContent:
             url: manage/cluster-powershell.md
           - text: Add or remove servers
             url: manage/add-cluster.md
+          - text: Monitor cluster
+            url: manage/monitor-cluster.md
           - text: Update cluster
             url: manage/update-cluster.md
           - text: Change languages
             url: manage/vm-powershell.md
+
+ # Card
+  - title: Software defined networking
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: SDN overview
+            url: concepts/software-defined-networking.md
+          - text: Plan SDN infrastructure
+            url: concepts/plan-software-defined-networking-infrastructure.md
+          - text: Plan Network Controller
+            url: concepts/network-controller.md
 
   # Card
   - title: Azure Stack HCI concepts
