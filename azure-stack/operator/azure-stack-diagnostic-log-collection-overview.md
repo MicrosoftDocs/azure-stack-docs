@@ -13,17 +13,12 @@ ms.lastreviewed: 08/24/2020
 ---
 # Diagnostic log collection in Azure Stack Hub
 
-Azure Stack Hub is a collection of both Windows components and on-premise Azure services interacting with each other. All these components and services generate their own set of logs. Since Microsoft Support uses these logs to efficiently identify and fix your issues, we offer diagnostic log collection. Diagnostic log collection in Help and Support helps you quickly collect and share diagnostic logs with Microsoft Support in an easy user interface, which doesn't require PowerShell. Logs get collected even if other infrastructure services are down.  
+Azure Stack Hub is a collection of both Windows components and on-premise Azure services interacting with each other. All these components and services generate their own set of logs. Since Microsoft Support uses these logs to efficiently identify and fix your issues, we offer diagnostic log collection. Diagnostic log collection helps you quickly collect and share diagnostic logs with Microsoft Support in an easy user interface, which doesn't require PowerShell. Logs get collected even if other infrastructure services are down.  
 
-::: moniker range=">= azs-2002"
-
-We recommend you use this approach for log collection and only resort to [using the privileged endpoint (PEP)](azure-stack-get-azurestacklog.md) if the Administrator portal or Help and Support blade is unavailable. 
+We recommend you use this approach for log collection and only [use the privileged endpoint (PEP)](azure-stack-get-azurestacklog.md) if the Administrator portal or Help and Support blade is unavailable. 
 
 >[!NOTE]
->Azure Stack Hub must be registered to use diagnostic log collection. If Azure Stack Hub is not registered, use [Get-AzureStackLog](azure-stack-get-azurestacklog.md) to share logs. 
-::: moniker-end
-
-![Diagnostic log collection options in Azure Stack Hub](media/azure-stack-help-and-support/banner-enable-automatic-log-collection.png)
+>Azure Stack Hub must be registered to use diagnostic log collection. If Azure Stack Hub is not registered, use [the privileged endpoint (PEP)](azure-stack-get-azurestacklog.md) to share logs. 
 
 ## Collection options and data handling
 
@@ -35,13 +30,13 @@ The following sections explain each option and how your data is handled in each 
 
 ::: moniker-end
 
-::: moniker range=">= azs-2002"
-Diagnostic log collection feature offers two ways to send logs:
+The diagnostic log collection feature offers two ways to send logs:
 * Send logs proactively
 * Send logs now
 
+You also can save logs locally.
+
 The following sections explain each option and how your data is handled in each case. 
-::: moniker-end
 
 ### Send logs proactively
 
@@ -68,32 +63,16 @@ Send logs now is an option where you manually collect and upload your diagnostic
 
 You can manually send diagnostic logs to Microsoft Support by using the administrator portal or PowerShell. If Azure Stack Hub is connected to the Azure, we recommend using the administrator portal because it's the simplest way to send the logs directly to Microsoft. If the portal is unavailable, you should instead send logs using PowerShell.
 
-::: moniker range=">= azs-2005"
+To send logs now:
 
-Microsoft Support will provide you with a SAS URL for uploading your logs. 
-To upload the logs using the SAS URL:
-
-1. Open **Help + support > Log Collection > Collect logs now**. 
-1. Choose a 1-4 hour sliding window from the last seven days. 
+1. Open **Help + support > Log Collection > Send logs now**. 
+1. Specify the start time and end time for log collection. 
 1. Choose the local time zone.
-1. Enter the SAS URL that Microsoft Support provided.
+1. Select **Collect and Upload**.
 
-   ![Screenshot of on-demand log collection](media/azure-stack-automatic-log-collection/collect-logs-now.png)
-
-> [!NOTE]
-> If automatic diagnostic log collection is enabled, **Help and Support** shows when log collection is in progress. If you select **Collect logs now** to collect logs from a specific time while automatic log collection is in progress, manual collection begins after automatic log collection is complete. 
-
-::: moniker-end
-
-::: moniker range=">= azs-2002"
 If you are disconnected from the internet or want to only save logs locally, use the [Get-AzureStackLog](azure-stack-get-azurestacklog.md) method to send logs. The following flowchart shows which option to use for sending diagnostic logs in each case. 
-::: moniker-end
-
-::: moniker range=">= azs-2002"
 
 ![Flowchart shows how to send logs now to Microsoft](media/azure-stack-help-and-support/send-logs-now-flowchart.png)
-
-::: moniker-end
 
 ::: moniker range=">= azs-2005"
 
@@ -104,8 +83,6 @@ You can save logs to a local Server Message Block (SMB) share when Azure Stack H
 ![Screenshot of diagnostic log collection options](media/azure-stack-help-and-support/save-logs-locally.png)
 
 ::: moniker-end
-
-::: moniker range=">= azs-2002"
 
 ## Bandwidth considerations
 
@@ -119,33 +96,14 @@ The following table lists considerations for environments with limited or metere
 | Shared connection | The upload may also impact other apps/users sharing the network connection. |
 | Metered connection | There may be an additional charge from your ISP for the extra network usage. |
 
-::: moniker-end
-::: moniker range="<= azs-1910"
-
 ## Collect logs automatically for one or more Azure Stack Hub systems
 
-Before you can configure automatic log collection, you need to:
-* [create a blob storage account](#create-a-blob-storage-account) or use an existing one
-* [create a blob storage container](#create-a-blob-container) or use an existing one
-* [create a shared access signature (SAS) URL](#create-a-sas-url)
-
-Follow these steps to add the shared access signature (SAS) URL to the log collection UI:
+To configure automatic log collection:
 
 1. Sign in to the Azure Stack Hub administrator portal.
 1. Open **Help + support Overview**.
-1. Click **Automatic collection settings**.
-
-   ![Where to enable log collection in Help + support](media/azure-stack-automatic-log-collection/azure-stack-automatic-log-collection.png)
-
-1. Set automatic log collection to **Enabled**.
-1. Enter the SAS URL of the storage account blob container.
-
-   ![Blob SAS URL](media/azure-stack-automatic-log-collection/azure-stack-enable-automatic-log-collection.png)
-
->[!NOTE]
->Automatic log collection can be disabled and re-enabled anytime. The SAS URL configuration won't change. If automatic log collection is re-enabled, the previously entered SAS URL will undergo the same validation checks, and an expired SAS URL will be rejected.
-
-::: moniker-end
+1. Select **Automatic collection settings**.
+1. Set automatic log collection to **Enabled**. Automatic log collection can be disabled and re-enabled anytime.
 
 >[!NOTE]
 >If log location settings are configured for a local file share, make sure lifecycle management policies will prevent share storage from reaching its size quota. Azure Stack Hub does not monitor local file share or enforce any retention policies.
@@ -214,34 +172,6 @@ If system health conditions need to be investigated, the logs can be uploaded au
 
 >[!NOTE]
 >If you are disconnected from the internet or want to only save logs locally, use [Get-AzureStackLog](azure-stack-get-azurestacklog.md) method to send logs. 
-
-## Create a blob storage account
-
-For more information about types of storage accounts, see [Azure storage account overview](/azure/storage/common/storage-account-overview).
-
-1. Sign in to the [Azure portal](https://portal.azure.com).
-1. Select **Storage accounts** > **Add**.
-1. Create a blob container with these settings:
-
-   - **Subscription**: Choose your Azure subscription.
-   - **Resource group**: Specify a resource group.
-   - **Storage account name**: Specify a unique storage account name.
-   - **Location**: Choose a datacenter in accordance with your company policy.
-   - **Performance**: Standard.
-   - **Account kind** StorageV2 (general purpose v2).
-   - **Replication**: Locally redundant storage (LRS).
-   - **Access tier**: Cool.
-
-1. Select **Review + create** and then select **Create**.  
-
-## Create a blob container
-
-To create a blob container in Azure, you need at least the [storage blob contributor role](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) or the [specific permission](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). Global admins also have the necessary permission.
-Set up one blob container for every Azure Stack Hub scale unit you want to collect logs from. As a best practice, only save diagnostic logs from the same Azure Stack Hub scale unit within a single blob container.
-
-1. After the deployment succeeds, select **Go to resource**. You can also pin the storage account to the dashboard for easy access.
-1. Select **Storage Explorer (preview)**, right-click **Blob containers**, and select **Create blob container**.
-1. Enter a name for the new container and select **OK**.
 
 ## View log collection
 
