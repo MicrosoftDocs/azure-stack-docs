@@ -10,7 +10,7 @@ ms.lastreviewed: 10/10/2020
 
 Complete the following steps to rotate your resource provider's secrets:
 
-1. Using [Connect to Azure Stack Hub with PowerShell](../operator/azure-stack-powershell-configure-admin.md), sign in to your Azure Stack Hub environment. Be sure to replace the placeholder values such as endpoints and directory tenant name, before running the appropriate script for your environment.
+1. Using [Connect to Azure Stack Hub with PowerShell](../operator/azure-stack-powershell-configure-admin.md), sign in to your Azure Stack Hub environment. Be sure to replace all script placeholder values before running the appropriate script for your environment, such as endpoints and directory tenant name.
 
 2. After connecting to your Azure Stack Hub, use the `Set-AzsProductSecret` cmdlet to upload your new certificate to Key Vault. Replace the variable placeholder values accordingly before running the script:
 
