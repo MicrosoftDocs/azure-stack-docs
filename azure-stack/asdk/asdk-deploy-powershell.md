@@ -4,10 +4,10 @@ description: Learn how to deploy the ASDK from the command line using PowerShell
 author: justinha
 
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 09/23/2020
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 02/08/2019
+ms.lastreviewed: 09/23/2020
 
 # Intent: As an ASDK user, I want to deploy the ASDK using the command line in Powershell so I can evaluate Azure Stack features.
 # Keyword: deploy asdk command line
@@ -27,8 +27,6 @@ Before you deploy the ASDK, make sure your planned ASDK host computer's hardware
 
 **[Review the ASDK deployment requirements and considerations](asdk-deploy-considerations.md)**.
 
-> [!TIP]
-> You can use the [Azure Stack deployment requirements check tool](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) after installing the operating system to confirm that your hardware meets all requirements.
 
 ## Download and extract the deployment package
 After ensuring that your ASDK host computer meets the basic requirements for installing the ASDK, the next step is to download and extract the ASDK deployment package. The deployment package includes the Cloudbuilder.vhdx file, which is a virtual hard drive that includes a bootable operating system and the Azure Stack installation files.

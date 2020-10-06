@@ -1,5 +1,5 @@
 ---
-title: Enable backup for Azure Stack Hub from the administrator portal 
+title: Enable Azure Stack Hub backup from the administrator portal 
 description: Learn how to enable the Infrastructure Backup Service from the administrator portal so that Azure Stack Hub can be restored if there's a failure.
 author: justinha
 
@@ -77,7 +77,7 @@ Admins and users are responsible for backing up and restoring IaaS and PaaS reso
 ## Start backup
 To start a backup, click on **Backup now** to start an on-demand backup. An on-demand backup won't modify the time for the next scheduled backup. After the task completes, you can confirm the settings in **Essentials**:
 
-![Azure Stack Hub - on-demand backup](media/azure-stack-backup/scheduled-backup.png)
+![Screenshot that shows how to start an on-demand backup.](media/azure-stack-backup/scheduled-backup.png)
 
 You can also run the PowerShell cmdlet **Start-AzsBackup** on your Azure Stack Hub admin computer. For more info, see [Back up Azure Stack Hub](azure-stack-backup-back-up-azure-stack.md).
 

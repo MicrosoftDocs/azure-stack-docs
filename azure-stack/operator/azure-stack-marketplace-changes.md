@@ -3,12 +3,12 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 09/10/2020
+ms.date: 09/23/2020
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 05/28/2020
 
-# Intent: As an Azure Stack Hub operator, I want to know what's new in Azure Stack Hub Marketplace so I can stay up to date.
+# Intent: As an Azure Stack Hub operator, I want to know what's new or changed in Azure Stack Hub Marketplace so I can stay up to date.
 # Keyword: new marketplace items azure stack hub
 
 ---
@@ -69,6 +69,7 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Updated marketplace items
 
+- 09/21/2020: Centos Application Connection Gateway - version 7.2.0
 - 09/09/2020: FortiGate NGFW - Single VM Deployment (BYOL) – version 1.0.2
 - 09/04/2020: CentOS-based 6.10 - version 6.10.2020042900
 - 09/04/2020: CentOS-based 7.4 - version 7.4.20200220

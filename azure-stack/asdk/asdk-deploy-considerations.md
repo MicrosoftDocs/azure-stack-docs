@@ -1,13 +1,13 @@
 ---
 title: ASDK requirements and considerations 
 description: Learn about the hardware, software, and environment requirements for Azure Stack Development Kit (ASDK).
-author: justinha
+author: myoungerman
 
 ms.topic: article
-ms.date: 05/13/2019
-ms.author: justinha
+ms.date: 09/23/2020
+ms.author: v-myoung
 ms.reviewer: misainat
-ms.lastreviewed: 05/13/2019
+ms.lastreviewed: 09/23/2020
 
 # Intent: As an ASDK user, I want to know the requirements for properly deploying the ASDK.
 # Keyword: asdk requirements
@@ -21,18 +21,16 @@ Before you deploy the Azure Stack Development Kit (ASDK), make sure your ASDK ho
 
 ## Hardware
 
-| Component | Minimum | Recommended |
-| --- | --- | --- |
-| Disk drives: Operating System |1 operating system disk with minimum of 200 GB available for system partition (SSD or HDD). |1 OS disk with minimum of 200 GB available for system partition (SSD or HDD). |
-| Disk drives: General development kit data<sup>*</sup>  |4 disks. Each disk provides a minimum of 240 GB of capacity (SSD or HDD). All available disks are used. |4 disks. Each disk provides a minimum of 400 GB of capacity (SSD or HDD). All available disks are used. |
-| Compute: CPU |Dual-Socket: 16 Physical Cores (total). |Dual-Socket: 20 Physical Cores (total). |
-| Compute: Memory |192-GB RAM. |256-GB RAM. |
-| Compute: BIOS |Hyper-V Enabled (with SLAT support). |Hyper-V Enabled (with SLAT support). |
-| Network: NIC |Windows Server 2012 R2 Certification. No specialized features required. | Windows Server 2012 R2 Certification. No specialized features required. |
-| HW logo certification |[Certified for Windows Server 2012 R2](https://www.windowsservercatalog.com/content.aspx?ctf=logo.htm). 
-|[Certified for Windows Server 2016](https://www.windowsservercatalog.com/content.aspx?ctf=logo.htm). 
-|
-
+| Component                                             | Minimum                                                                                                 | Recommended                                                                                             |
+|-------------------------------------------------------|---------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
+| Disk drives: Operating System                         | 1 operating system disk with minimum of 200 GB available for system partition (SSD or HDD).             | 1 OS disk with minimum of 200 GB available for system partition (SSD or HDD).                           |
+| Disk drives: General development kit data<sup>*</sup> | 4 disks. Each disk provides a minimum of 240 GB of capacity (SSD or HDD). All available disks are used. | 4 disks. Each disk provides a minimum of 400 GB of capacity (SSD or HDD). All available disks are used. |
+| Compute: CPU                                          | Dual-Socket: 16 Physical Cores (total).                                                                 | Dual-Socket: 20 Physical Cores (total).                                                                 |
+| Compute: Memory                                       | 192-GB RAM.                                                                                             | 256-GB RAM.                                                                                             |
+| Compute: BIOS                                         | Hyper-V Enabled (with SLAT support).                                                                    | Hyper-V Enabled (with SLAT support).                                                                    |
+| Network: NIC                                          | Windows Server 2012 R2 Certification. No specialized features required.                                 | Windows Server 2012 R2 Certification. No specialized features required.                                 |
+| HW logo certification                                 | [Certified for Windows Server 2012 R2](https://www.windowsservercatalog.com/content.aspx?ctf=logo.htm). | [Certified for Windows Server 2016](https://www.windowsservercatalog.com/content.aspx?ctf=logo.htm).    |
+  
 <sup>*</sup> You need more than this recommended capacity if you plan on adding many of the [marketplace items](../operator/azure-stack-create-and-publish-marketplace-item.md) from Azure.
 
 ### Hardware notes
@@ -81,9 +79,6 @@ Example two-way mirror configuration:
 |  | **Requirements** |
 | --- | --- |
 | **OS Version** |Windows Server 2016 or later. The operating system version isn't critical before the deployment starts because you boot the host computer into the VHD that's included in the Azure Stack installation. The operating system and all required patches are already integrated into the image. Don't use any keys to activate any Windows Server instances used in the ASDK. |
-
-> [!TIP]
-> After installing the operating system, you can use the [Deployment Checker for Azure Stack](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) to confirm that your hardware meets all the requirements.
 
 ## Account requirements
 Typically, you deploy the ASDK with internet connectivity, where you can connect to Microsoft Azure. In this case, you must configure an Azure Active Directory (Azure AD) account to deploy the ASDK.

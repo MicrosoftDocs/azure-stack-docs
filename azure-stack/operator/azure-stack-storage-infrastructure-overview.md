@@ -51,12 +51,12 @@ The drives could be grouped into either an "all-flash" or "hybrid" deployment.
 
 All-flash deployments aim to maximize storage performance and don't include rotational HDDs.
 
-![Azure Stack Hub storage infrastructure](media/azure-stack-storage-infrastructure-overview/image1.png)
+![Diagram that shows an all-flash deployment grouping.](media/azure-stack-storage-infrastructure-overview/image1.png)
 
 
 Hybrid deployments aim to balance performance and capacity or to maximize capacity and do include rotational HDDs.
 
-![Azure Stack Hub storage infrastructure](media/azure-stack-storage-infrastructure-overview/image2.png)
+![Diagram that shows a hybrid deployment grouping.](media/azure-stack-storage-infrastructure-overview/image2.png)
 
 ### Caching behavior
 
@@ -66,7 +66,7 @@ Reads aren't cached. They aren't cached because reads don't significantly affect
 
 When caching for HDDs (such as SSDs caching for HDDs), both reads and writes are cached, to provide flash-like latency (often /~10x better) for both.
 
-![Azure Stack Hub storage infrastructure](media/azure-stack-storage-infrastructure-overview/image3.svg)
+![Diagram that shows Azure Stack Hub storage caching behavior.](media/azure-stack-storage-infrastructure-overview/image3.svg)
 
 For the available configuration of storage, you can check Azure Stack Hub OEM partner (https://azure.microsoft.com/overview/azure-stack/partners/) for detailed specification.
 
@@ -77,7 +77,7 @@ For the available configuration of storage, you can check Azure Stack Hub OEM pa
 
 The *storage service* partitions the available storage into separate volumes that are allocated to hold system and tenant data. Volumes combine the drives in the storage pool to provide the fault tolerance, scalability, and performance benefits of Storage Spaces Direct.
 
-![Azure Stack Hub storage infrastructure](media/azure-stack-storage-infrastructure-overview/image4.svg)
+![Diagram that shows Azure Stack Hub storage service partitions.](media/azure-stack-storage-infrastructure-overview/image4.svg)
 
 ### Volume types
 
@@ -112,7 +112,7 @@ Azure Stack Hub deployment uses three-way mirroring to ensure data resilience. T
 
 Three copies of tenant data are written to different servers, where they land in cache:
 
-![Azure Stack Hub storage infrastructure](media/azure-stack-storage-infrastructure-overview/image5.png)
+![Diagram that shows how three copies of tenant data are written to different servers.](media/azure-stack-storage-infrastructure-overview/image5.png)
 
 ## Next step
 

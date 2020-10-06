@@ -4,13 +4,13 @@ description: As a developer, connect to Azure Stack Hub using Azure Account Exte
 author: mattbriggs
 
 ms.topic: conceptual
-ms.date: 08/24/2020
+ms.date: 09/21/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 11/11/2019
+ms.lastreviewed: 09/21/2020
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As a developer, I want to use VS Code to connect to Azure Stack Hub so that I can provision resources.
+# Keyword: VS code Azure account extension
 
 ---
 
@@ -82,7 +82,8 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
         | `tenant-ID` | The value of your Azure Stack Hub [tenant ID](../operator/azure-stack-identity-overview.md). |
         | `activeDirectoryEndpointUrl` | This is the URL from loginEndpoint property. |
         | `activeDirectoryResourceId` | This is the URL from the audiences property.
-        | `resourceManagerEndpointUrl` | This is the root URL for the Azure Resource Manager for Azure Stack Hub. | 
+        | `resourceManagerEndpointUrl` | This is the root URL for the Azure Resource Manager for Azure Stack Hub. |
+        | `validateAuthority` | You can leave out this parameter if you are using Azure AD as your identity manager. Add the parameter with a value of `false` if you are using AD FS. |
 
     - JSON snippet:
 
@@ -92,6 +93,7 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
           "activeDirectoryEndpointUrl": "Login endpoint",
           "activeDirectoryResourceId": "This is the URL from the audiences property.",
           "resourceManagerEndpointUrl": "Aure Resource Management Endpoint",
+          "validateAuthority" : false, 
       },
       "azure.cloud": "AzurePPE"
       ```
