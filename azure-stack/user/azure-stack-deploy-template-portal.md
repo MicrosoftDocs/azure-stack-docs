@@ -28,7 +28,7 @@ You can use the Azure Stack Hub user portal to deploy Azure Resource Manager tem
 
    ![Deploy template in Azure Stack Hub portal](media/azure-stack-deploy-template-portal/template-deploy2.png)
 
-    [**AzureStack-QuickStart-Templates**](https://github.com/Azure/AzureStack-QuickStart-Templates) are created by a member of the Azure Stack Hub community and not by Microsoft. Each  template is licensed to you under a license agreement by its owner, not Microsoft. Microsoft is not responsible for these templates and does not screen for security, compatibility, or performance. Community templates are not supported under any Microsoft support program or service, and are made available AS IS without warranty of any kind.
+    [**AzureStack-QuickStart-Templates**](https://github.com/Azure/AzureStack-QuickStart-Templates) are created by a member of the Azure Stack Hub community and not by Microsoft. Each  template is licensed to you under a license agreement by its owner, not Microsoft. Microsoft is not responsible for these templates and does not screen for security, compatibility, or performance. Community templates are not supported under any Microsoft support program or service, and are made available *as is* without warranty of any kind.
 
 3. If you selected **Build your own template in the editor**, paste your JSON template code into the code window.
 
@@ -40,7 +40,7 @@ You can use the Azure Stack Hub user portal to deploy Azure Resource Manager tem
 
     - Select **Download** to save the Azure Resource Manager template to your local machine.
 
-    When you are done making your edits to your template, select **Save**.
+    When you are done making changes to your template, select **Save**.
 
 4. Select **Subscription**. Choose the subscription you want to use. Select **Resource group**. You can choose an existing resource group or create a new one, and then select **OK**. And then select **Review + create**.
 
