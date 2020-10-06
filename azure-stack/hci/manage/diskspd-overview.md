@@ -71,7 +71,7 @@ The performance heavily depends on your environment. So, what is our environment
 We generate the test file under the unified namespace that the Cluster Shared Volume (CSV) provides (C:\ClusteredStorage) in order to utilize the entire pool of drives.
 
 >[!NOTE]
-> The current environment does NOT have Hyper-V or a nested virtualization structure.
+> The current environment does *not* have Hyper-V or a nested virtualization structure.
 
 As you’ll see, it is entirely possible to independently hit either the IOPS or bandwidth ceiling at the VM or disk limit. And so, it is important to understand your VM size and drive type as both have a maximum IOPS limit and a bandwidth ceiling. Having this knowledge will help you locate bottlenecks and understand your performance results. You can refer to the two links below to discover what size may be appropriate for your workload.
 
@@ -93,9 +93,9 @@ Here, we have a diagram of what the DISKSPD process looks like. It depicts an ex
 Now that we have a visual understanding, let’s examine the four main sections of our txt file output.
 1.	Input settings
    
-   This section describes the command you ran, the input parameters, and additional details about the test run.
+       This section describes the command you ran, the input parameters, and additional details about the test run.
 
-   :::image type="content" source="../media/diskspd/command-input-parameters.png" alt-text="Example output shows command and input parameters." lightbox="../media/diskspd/command-input-parameters.png":::
+       :::image type="content" source="../media/diskspd/command-input-parameters.png" alt-text="Example output shows command and input parameters." lightbox="../media/diskspd/command-input-parameters.png":::
 
 
 
