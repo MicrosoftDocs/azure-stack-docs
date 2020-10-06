@@ -178,7 +178,7 @@ If enabled, proactive log collection uploads logs only when one of the following
 
 For example, **Update failed** is an alert that triggers proactive diagnostic log collection. If it's enabled, diagnostic logs are proactively captured during an update failure to help Microsoft Support troubleshoot the problem. The diagnostic logs are only collected when the alert for **Update failed** is raised.
 
-| Alert Title | FaultIdType |
+| Alert title | FaultIdType |
 |---|---|
 |Unable to connect to the remote service | UsageBridge.NetworkError|
 |Update failed | Urp.UpdateFailure |
