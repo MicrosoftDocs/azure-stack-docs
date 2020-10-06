@@ -495,14 +495,6 @@
         items:
         - name: Overview 
           href: azure-stack-diagnostic-log-collection-overview.md
-        - name: Send logs proactively
-          href: azure-stack-configure-automatic-diagnostic-log-collection.md
-        - name: Send logs now
-          items: 
-          - name: Use the Administrator portal
-            href: azure-stack-configure-on-demand-diagnostic-log-collection-portal.md
-          - name: Use PowerShell
-            href: azure-stack-configure-on-demand-diagnostic-log-collection-powershell.md
         - name: Get-AzureStackLog (PEP)
           href: azure-stack-get-azurestacklog.md    
     - name: Validation for Azure Stack Hub  
