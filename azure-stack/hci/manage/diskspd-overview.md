@@ -24,7 +24,7 @@ Without further ado, let’s get started.
 1. The first thing you need to do is log into the virtual machine that you will use for the DISKSPD test, with administrator rights. In our case, we will be running on the VM called, “node1.”
 1. Once logged in, you can download the tool from the [repository](https://github.com/microsoft/diskspd). This link contains the open source code as well as a wiki page that details all the parameters and specifications. The only file we really care about is the executable that can be downloaded as a ZIP file. Within it, you will see 3 subfolders: amd64 (64-bit systems), x86 (32-bit systems), and ARM64 (ARM systems). This will help you run the tool in every Windows version, client, or server. We will be using the amd64 version.
 
-    :::image type="content" source="/media/diskspd/download-directory.png" alt-text="Directory to download the DISKSPD .zip file." lightbox="/media/diskspd/download-directory.png":::
+    :::image type="content" source="media/diskspd/download-directory.png" alt-text="Directory to download the DISKSPD .zip file." lightbox="media/diskspd/download-directory.png":::
 
 1.	Open PowerShell as an administrator.
 <!---see Dan PW topic for example format for these steps.--->
@@ -80,7 +80,7 @@ As you’ll see, it is entirely possible to independently hit either the IOPS or
 
 Here is what our environment looks like. The green represents the IOPS limit on the VM and the red represents the IOPS limit on the hard drive.
 
-:::image type="content" source="/media/diskspd/environment.png" alt-text="The DISKSPD environment." lightbox="/media/diskspd/environment.png":::
+:::image type="content" source="media/diskspd/environment.png" alt-text="The DISKSPD environment." lightbox="media/diskspd/environment.png":::
 
 ## Understanding the output
 Armed with our understanding of the parameters and environment, let’s interpret the output. First, the goal of our test was to max out the IOPS with no regards to latency. This way, we can visually see whether we reach our artificial IOPS limit within Azure. If you wish to graphically visualize the total IOPS, you can refer to the Windows Admin Center or the task manager.
@@ -88,20 +88,20 @@ Armed with our understanding of the parameters and environment, let’s interpre
 Here, we have a diagram of what the DISKSPD process looks like. It depicts an example of a 1MiB write operation from a non-coordinator node. The three-way resiliency structure along with the operation from a non-coordinator node leads to two network hops, decreasing the performance. If you are wondering what a coordinator is, don’t worry! We will talk about this in a later section.
 <!---set up section ref to Things to consider section.--->
 
-:::image type="content" source="/media/diskspd/example-process.png" alt-text="Example diagram of the DISKSPD process that shows a 1MiB write operation from a non-coordinator node." lightbox="/media/diskspd/example-process.png":::
+:::image type="content" source="media/diskspd/example-process.png" alt-text="Example diagram of the DISKSPD process that shows a 1MiB write operation from a non-coordinator node." lightbox="media/diskspd/example-process.png":::
 
 Now that we have a visual understanding, let’s examine the four main sections of our txt file output.
 1.	Input settings
    
        This section describes the command you ran, the input parameters, and additional details about the test run.
 
-       :::image type="content" source="/media/diskspd/command-input-parameters.png" alt-text="Example output shows command and input parameters." lightbox="/media/diskspd/command-input-parameters.png":::
+       :::image type="content" source="media/diskspd/command-input-parameters.png" alt-text="Example output shows command and input parameters." lightbox="media/diskspd/command-input-parameters.png":::
 
 1.	CPU utilization details
    
        This section highlights information such as the test time, number of threads, number of available processors, and average utilization of every CPU core during the test. For example, in this case, we see our 2 CPU cores averaged around 4.67% usage.
 
-       :::image type="content" source="/media/diskspd/cpu-details.png" alt-text="Example CPU details." lightbox="/media/diskspd/cpu-details.png":::
+       :::image type="content" source="media/diskspd/cpu-details.png" alt-text="Example CPU details." lightbox="media/diskspd/cpu-details.png":::
 
 
 
