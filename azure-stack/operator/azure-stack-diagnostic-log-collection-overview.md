@@ -46,17 +46,14 @@ The following sections explain each option and how your data is handled in each 
 
 Proactive log collection automatically collects and sends diagnostic logs from Azure Stack Hub to Microsoft before you open a support case. These logs are only collected when a [system health alert](#proactive-diagnostic-log-collection-alerts) is raised and are only accessed by Microsoft Support in the context of a support case.
 
-Proactive log collection can be disabled and re-enabled anytime. Follow these steps to set up proactive log collection.   
+Proactive log collection can be disabled and re-enabled anytime. Follow these steps to set up proactive log collection.
 
 1. Sign in to the Azure Stack Hub administrator portal.
 1. Open **Help + support Overview**.
-1. If the banner appears, select **Enable proactive log collection**.
+1. If the banner appears, select **Enable proactive log collection**. Or you can select **Settings** and set **Proactive log collection** to **Enable**, then select **Save**.
 
-   :::image type="content" source="media/azure-stack-help-and-support/banner-enable-automatic-log-collection.png" alt-text="Screenshot of a support page titled Overview - Log Collection. A purple banner contains a button labeled Enable proactive log collection." border="false":::
-
-   Or you can select **Settings** and set **Proactive log collection** to **Enable**, then select **Save**.
-
-   :::image type="content" source="media/azure-stack-help-and-support/settings-enable-automatic-log-collection.png" alt-text="Screenshot of the Settings page. Under Proactive log collection, the toggle is set to Enable." border="false":::
+>[!NOTE]
+>If log location settings are configured for a local file share, make sure lifecycle management policies will prevent share storage from reaching its size quota. Azure Stack Hub does not monitor local file share or enforce any retention policies.   
 
 ### Send logs now
 
@@ -97,18 +94,6 @@ The following table lists considerations for environments with limited or metere
 | Low-bandwidth/high-latency connection | Log upload will take an extended amount of time to complete. |
 | Shared connection | The upload may also impact other apps/users sharing the network connection. |
 | Metered connection | There may be an additional charge from your ISP for the extra network usage. |
-
-## Enable proactive log collection
-
-To configure proactive log collection:
-
-1. Sign in to the Azure Stack Hub administrator portal.
-1. Open **Help + support Overview**.
-1. Select **Automatic collection settings**.
-1. Set proactive log collection to **Enabled**. Proactive log collection can be disabled and re-enabled anytime.
-
->[!NOTE]
->If log location settings are configured for a local file share, make sure lifecycle management policies will prevent share storage from reaching its size quota. Azure Stack Hub does not monitor local file share or enforce any retention policies.
 
 ## Parameter considerations 
 
