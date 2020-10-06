@@ -108,6 +108,8 @@
     href: concepts/drive-symmetry-considerations.md
   - name: Plan volumes
     href: concepts/plan-volumes.md
+  - name: Plan host networking
+    href: concepts/plan-host-networking.md
   - name: Software defined networking
     href: concepts/software-defined-networking.md
   - name: Understand the storage pool cache
