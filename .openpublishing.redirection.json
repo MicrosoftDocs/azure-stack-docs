@@ -1,6 +1,21 @@
 {
   "redirections": [
     { 
+      "source_path": "azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection.md", 
+      "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal.md", 
+      "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-powershell.md", 
+      "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview", 
+      "redirect_document_id": false
+    },    
+    { 
       "source_path": "azure-stack/operator/app-service-deploy-ha.md", 
       "redirect_url": "/azure-stack/operator/azure-stack-app-service-deploy", 
       "redirect_document_id": false
@@ -462,23 +477,8 @@
       "redirect_document_id": true 
     },
     { 
-      "source_path": "azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection-tzl.md", 
-      "redirect_url": "/azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection", 
-      "redirect_document_id": true 
-    },
-    { 
       "source_path": "azure-stack/operator/azure-stack-help-and-support-overview-tzl.md", 
       "redirect_url": "/azure-stack/operator/azure-stack-help-and-support-overview", 
-      "redirect_document_id": true 
-    },
-    { 
-      "source_path": "azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md", 
-      "redirect_url": "/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal", 
-      "redirect_document_id": true 
-    },
-    { 
-      "source_path": "azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-powershell-tzl.md", 
-      "redirect_url": "/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-powershell", 
       "redirect_document_id": true 
     },
     { 
