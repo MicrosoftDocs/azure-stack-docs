@@ -230,7 +230,7 @@ Verify your cluster by deploying MySql with Helm to check your cluster.
 
 ## Rotate your service principle secret
 
-After the deployment of the Kubernetes cluster with AKS engine, the service principal (SPN) is used for managing interactions with the Azure Resource Manager on our Azure Stack Hub instance. At some point, the secret for this the service principal may expire. If your secret expires, you can refresh the credentials by:
+After the deployment of the Kubernetes cluster with AKS engine, the service principal (SPN) is used for managing interactions with the Azure Resource Manager on your Azure Stack Hub instance. At some point, the secret for this the service principal may expire. If your secret expires, you can refresh the credentials by:
 
 - Updating each node with the new service principal secret.
 - Or updating the API model credentials and running the upgrade.
