@@ -18,7 +18,7 @@ At its core, DISKSPD is an I/O generating, command-line tool for micro-benchmark
 
 Now we know what DISKSPD is, but when should we use it? DISKSPD will have a difficult time emulating complex workloads. As a result, DISKSPD is great when your workload is not closely approximated by single-threaded file copy but you need a simple tool that produces acceptable baseline results.
 
-## Quick startup guide: from installation to running DISKSPD
+## Quick start guide: from installation to running DISKSPD
 Without further ado, let’s get started.
 
 1. The first thing you need to do is log into the virtual machine that you will use for the DISKSPD test, with administrator rights. In our case, we will be running on the VM called, “node1.”
@@ -164,7 +164,7 @@ Great, now you know how to run DISKSPD and output the results into a text file. 
 ### DISKSPD vs. real-world
 DISKSPD’s artificial test gives you relatively comparable results for your real workload. However, you need to pay close attention to the parameters you set and whether they match your real scenario. Synthetic workloads will never perfectly represent your application’s real workload during deployment (Ex. does the application require a lot of “think” time or does it continuously pound away with I/O operations).
 
-### Preparations
+### Preparation
 Before running a DISKSPD test, there are a couple recommended actions for you to perform. These include things such as verifying the health of the storage space, checking your resource usage so that another program does not interfere with the test, preparing performance manager if you wish to collect additional data, etc. However, because the goal of this article is to quickly get DISKSPD running, we will not dive into the specifics of these actions. To learn more, see [Test Storage Spaces Performance Using Synthetic Workloads in Windows Server](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn894707(v=ws.11)).
 
 ### Variables that affect performance
@@ -199,18 +199,45 @@ Here is a short summary of why using file copy to measure storage performance ma
     To learn more, see [Using file copy to measure storage performance](https://docs.microsoft.com/archive/blogs/josebda/using-file-copy-to-measure-storage-performance-why-its-not-a-good-idea-and-what-you-should-do-instead?ranMID=24542&ranEAID=je6NUbpObpQ&ranSiteID=je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q&epi=je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q&irgwc=1&OCID=AID2000142_aff_7593_1243925&tduid=%28ir__rcvu3tufjwkftzjukk0sohzizm2xiezdpnxvqy9i00%29%287593%29%281243925%29%28je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q%29%28%29&irclickid=_rcvu3tufjwkftzjukk0sohzizm2xiezdpnxvqy9i00).
 
 ## Other common examples + experiments
-TBD
+<!---High-level intro needed--->
+
+### Confirming the Coordinator Node
+As mentioned previously, if the VM you are currently testing on does not own the CSV, you will see a performance drop (IOPS, throughput, and latency) as opposed to testing it when the node owns the CSV. The reason being that every time you issue an I/O operation, the system needs to perform a network hop to the coordinator node in order to perform that operation. For a three-node, three-way mirrored situation, write operations will always make a network hop since it needs to store data on all three nodes. Therefore, write operations will need to make a network hop regardless. However, if you use a different resiliency structure, this could change. 
+
+Here is an example experiment:
+- **Running on local node:** .\DiskSpd-2.0.21a\amd64\diskspd.exe -t4 -o32 -b4k -r4k -w0 -Sh -D -L C:\ClusterStorage\test01\targetfile\IO.dat
+- **Running on nonlocal node:** .\DiskSpd-2.0.21a\amd64\diskspd.exe -t4 -o32 -b4k -r4k -w0 -Sh -D -L C:\ClusterStorage\test01\targetfile\IO.dat
+
+From this example, you can clearly see in the following example that latency decreased, IOPS increased, and throughput increased when the coordinator node owns the CSV.
+
+:::image type="content" source="media/diskspd/coordinator-node-data.png" alt-text="Example shows coordinator node data output." lightbox="media/diskspd/coordinator-node-data.png":::
 
 ### Online Transaction Processing (OLTP) workload
-TBD
+OLTP queries (Update, Insert, Delete) focus on transaction-oriented tasks. Compared to OLAP, OLTP is storage latency dependent. Because each operation issues little I/O, what we care about is how many operations per second we can sustain.
+
+An OLTP workload test can be designed with a focus on random, small I/O performance. For these tests, you should focus on how far you can push the throughput while maintaining acceptable latencies.
+
+The basic design choice should at minimum include:
+- 8KB block size => resembles the page size that SQL Server uses for its data files
+- 70% Read, 30% Write => resembles a typical OLTP behavior
 
 ### Online Analytical Processing (OLAP) workload
-TBD
+OLAP workloads focus on data retrieval and analysis, allowing users to perform complex queries to extract multidimensional data. Contrary to OLTP, these workloads are not storage latency sensitive. They emphasize queueing many operations without caring much about bandwidth. As a result, they often result in longer processing times.
 
+An OLAP workload test can be designed with a focus on sequential, large I/O performance. For these tests, you should focus on the volume of data processed per second rather than the number of IOPS. Latency requirements are also less important, but this is subjective.
+
+The basic design choice should at minimum include:
+- 512 KB block size => resembles the I/O size when the SQL Server loads a batch of 64 data pages for a table scan by using the read-ahead technique. 
+- 1 thread per file => currently, you need to limit your testing to 1 thread per file as problems may arise in DISKSPD when testing multiple sequential threads.
+    If you use more than one thread, say 2, and the -s parameter, the threads will begin to non-deterministically issue IO operations on top of each other within the same location. This is because they each track their own sequential offset. There are two “solutions” to resolve this issue.
+
+    The first solution involves using the -si parameter. With this, both threads share a single interlocked offset so that “the threads cooperatively issue a single sequential pattern of access to the target file. This allows no one point in the file to be operated on more than once. However, because they still do race each other to issue their IO operation to the queue, the operations may arrive out of order.
+
+- This solution works well if one thread becomes CPU limited. You may wish to engage a second thread on a second CPU core to deliver more storage IO to the CPU system in order to further saturate it.
+
+    The second solution involves using the -T<offset>. This allows you to specify the offset size (inter-I/O gap) between IO operations performed on the same target file by different threads. For example, threads normally start at offset 0, but this specification allows you to distance the two threads so that they will not overlap each other. In any multithreaded environment, the threads will likely be on different portions of the working target and this is a way of simulating that situation.
 
 ## Next steps
-For more information, see also:
-<!---Placeholders for format examples. Replace all before initial topic review.--->
-
-- [Azure Stack HCI overview](../overview.md)
-- [Storage Spaces Direct hardware requirements](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements)
+For more information and detailed examples on optimizing your resiliency settings, see also:
+- [OLTP and OLAP](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn894707(v=ws.11))
+- [Resiliency choice](https://techcommunity.microsoft.com/t5/storage-at-microsoft/volume-resiliency-and-efficiency-in-storage-spaces-direct/ba-p/425831)
