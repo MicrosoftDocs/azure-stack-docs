@@ -25,7 +25,7 @@ The following is required to deploy Network Controller:
 
     Windows Admin Center creates the configuration within the Hyper-V host. However, the management network must connect to the host physical adapters according to one of the following three options:
 
-    **Option 1**: The management network is physically separated from the workload networks This option uses a single virtual switch for both compute and storage:
+    **Option 1**: The management network is physically separated from the workload networks. This option uses a single virtual switch for both compute and storage:
 
     :::image type="content" source="./media/network-controller/topology-option-1.png" alt-text="Option 1 to create a physical network for the Network Controller." lightbox="./media/network-controller/topology-option-1.png":::
 
