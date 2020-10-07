@@ -4,10 +4,10 @@ description: Learn how to create a Windows Server 2016 virtual machine (VM) with
 author: mattbriggs
 
 ms.topic: quickstart
-ms.date: 08/24/2020
+ms.date: 10/06/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 1/10/2020
+ms.lastreviewed: 10/06/2020
 
 # Intent: As an Azure Stack user, I want to quickly create a VM using the Azure Stack portal so I can begin using the VM.
 # Keyword: azure stack vm windows
@@ -32,10 +32,10 @@ Sign in to the Azure Stack Hub portal. The address of the Azure Stack Hub portal
 
 ## Create a VM
 
-1. Select **Create a resource** > **Compute**. Search for` Windows Server 2016 Datacenter – Pay as you use`.
+1. Select **Create a resource** > **Compute**. Search for` Windows Server 2016 Datacenter - Pay as you use`.
     If you don't see the **Windows Server 2016 Datacenter - Pay-as-you-use** entry, contact your Azure Stack Hub cloud operator and ask for the image to be added to the Azure Stack Hub Marketplace. For instructions, your cloud operator can refer to [Create and publish a custom Azure Stack Hub Marketplace item](../operator/azure-stack-create-and-publish-marketplace-item.md).
 
-    ![Windows Server 2016 Datacenter – Pay as you use](./media/azure-stack-quick-windows-portal/image1.png)
+    ![Windows Server 2016 Datacenter - Pay as you use](./media/azure-stack-quick-windows-portal/image1.png)
 
 1. Select **Create**.
 
