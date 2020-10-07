@@ -137,11 +137,11 @@ landingContent:
             url: manage/use-azure-backup.md
 
  # Card
-  - title: Software defined networking
+  - title: Software Defined Networking
     linkLists:
       - linkListType: overview
         links:
-          - text: SDN overview
+          - text: Software Defined Networking (SDN) overview
             url: concepts/software-defined-networking.md
           - text: Plan SDN infrastructure
             url: concepts/plan-software-defined-networking-infrastructure.md
