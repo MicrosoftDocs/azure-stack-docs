@@ -130,14 +130,33 @@ Now that we have a visual understanding, let’s examine the four main sections 
        :::image type="content" source="media/diskspd/storage-performance.png" alt-text="Example shows percentile latencies per operation type of storage performance." lightbox="media/diskspd/storage-performance.png":::
 
 ## Batch test + extracting results into Excel
+Great, now you know how to run DISKSPD and output the results into a text file. However, at the current rate, you will need to run a new command for every parameter change. Luckily, with the two scripts below, you will be able to collect your output metrics into an excel sheet to analyze. Here are the following steps:
 
+1.	Download the following two scripts: “Batch-DiskSpd” and “Process-DiskSpd”
+1.	The first script you will need to run is “Batch-DiskSpd”
+    The parameters are as follows:
+    - **$param** => A mandatory string parameter. You will need to specify the parameter you wish to vary.
 
+        | Parameter to vary | String command  |
+        | :---------------- | :-------------- |
+        | Only Thread       | “t”             |
+        | Only Queue        | “o”             |
+        | Only Block        | “b”             |
+        | Thread + Queue    | “to”            |
+        | Thread + Block    | “tb”            |
+        | Queue + Block     | “ob”            |
+    
+    - **$rw** => A mandatory int parameter. Specify what percentage of write you wish to test.
+    - **$duration** => An optional int parameter. Specify the duration in seconds. Default is 120.
+    - **$f_size** => An optional string parameter. Specify the test file size. Default is ‘1G’.
+    - **$type** => An optional string parameter. If you wish to output into a text file, run “-Rtxt”. If you wish to collect the data, run “-Rxml”. The default is “Rxml”.
+    - **$path** => An optional string parameter. Specify the directory where you will create your test file. The default is the current directory.
 
+1.	At this point, you will have multiple xml output files. The next step is to run the “Process-DiskSpd” script. If your xml files are in the same directory as the current script, you can simply run it without any parameters. However, if the output files are in another directory, you will need to specify the path while running the script. Your output will be a tsv file.
 
+1.	You should now have a tsv file that you can open within Excel. Here is an example output from varying only the thread values. If you wish to test your own thread values, you can change the values at the beginning of the Batch-DiskSpd script. Have fun!
 
-
-
-
+    :::image type="content" source="media/diskspd/thread-value-output.png" alt-text="Example shows thread value output." lightbox="media/diskspd/thread-value-output.png":::
 
 ## Things to consider...
 TBD
