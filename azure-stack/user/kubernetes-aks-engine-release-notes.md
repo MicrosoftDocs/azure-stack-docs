@@ -68,7 +68,7 @@ New versions of these are available with this update:
 
 -   The Azure Stack Hub operator will need to download a new AKS base Ubuntu Image into the stamp marketplace:
 
-    -   Name: AKS Base Ubuntu 16.04-LTS Image Distro, August 2020 (2020.09.14)
+    -   Name: AKS Base Ubuntu 16.04-LTS Image Distro, September 2020 (2020.09.14)
 
     -   Version: 2020.09.14
 
