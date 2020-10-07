@@ -4,7 +4,7 @@ description: This topic provides guidance on how to use DISKSPD to test workload
 author: jasonnyi
 ms.author: jasonyi
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 10/07/2020
 ---
 
 # Use DISKSPD to test workload storage performance
@@ -103,11 +103,41 @@ Now that we have a visual understanding, let’s examine the four main sections 
 
        :::image type="content" source="media/diskspd/cpu-details.png" alt-text="Example CPU details." lightbox="media/diskspd/cpu-details.png":::
 
+1.	Total I/O
+   
+        This section has three subsections. The first section highlights the overall performance data including both read and write operations. The second and third sections split the read and write operations into separate categories.
 
+        In this example, we can see that the total I/O count was 234408 during the 120 seconds duration. Thus, IOPS = 234408 /120 = 1953.30. The average latency was 32.763 milliseconds, and the throughput was 7.63 MiB/s. From earlier, we know that the 1953.30 IOPS is near the 1920 IOPS limitation for our Standard_B2ms VM. Don’t believe it? If you were to re-run this test using different parameters such as increasing the queue depth, you will find that we are still capped at this number.
 
+        In the last three columns, we see the standard deviation of IOPS at 17.72 (from -D parameter), the standard deviation of the latency at 20.994 milliseconds (from -L parameter), and the file path.
+
+        :::image type="content" source="media/diskspd/total-io.png" alt-text="Example shows total overall I/O performance data." lightbox="media/diskspd/total-io.png":::
+
+        From the results, you will quickly realize that our cluster configuration is actually terrible. If you examine our cluster below, you can see that we hit the VM limitation of 1920 before the SSD limitation of 5000. Furthermore, if you use a big enough test file, you will be able to take advantage of up to 20000 IOPS (4 drives * 5000) by spanning the test file across multiple drives. However, we because we hit that virtual machine limit first, we only see a total IOPS of around 1920.
+
+        In the end, you will need to decide what values are acceptable for your specific workload. Here are some important relationships to help you consider the tradeoffs: 
+
+        :::image type="content" source="media/diskspd/tradeoffs.png" alt-text="Figure shows workload relationships to help you consider tradeoffs." lightbox="media/diskspd/tradeoffs.png":::
+
+        The second relationship is important, and sometimes referred to as Little’s Law. The law introduces the idea that there are three characteristics that govern process behavior and that you only need to change one to influence the other two, thus the entire process. And so, if you are unhappy with your system’s performance, you have three dimensions of freedom. In our case, IOPS is the throughput (Input output operations per second), latency is the queue time, and queue depth is the inventory.
+
+1.	Latency percentile analysis
+   
+        This last section details the percentile latencies per operation type of storage performance from the minimum value to the maximum value.
+
+        This section is important as it determines the “quality” of your IOPS. It reveals how many of the I/O operations were able to achieve a certain latency value. It is up to the user to decide the acceptable latency for that percentile. Moreover, the “nines” refer to the number of nines. For example, “3-nines” is equivalent to the 99th percentile. The number of nines will expose how many I/O operations were ran at that percentile. Eventually, you will reach a point where it no longer makes sense to take the latency values seriously. In our case, we can see that the latency values remain constant after “4-nines.” At this point, the latency value is based on only one I/O operation out of the ~230K.
+
+        :::image type="content" source="media/diskspd/storage-performance.png" alt-text="Example shows percentile latencies per operation type of storage performance." lightbox="media/diskspd/storage-performance.png":::
 
 ## Batch test + extracting results into Excel
-TBD
+
+
+
+
+
+
+
+
 
 ## Things to consider...
 TBD
