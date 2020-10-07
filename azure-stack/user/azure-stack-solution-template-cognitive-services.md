@@ -24,8 +24,9 @@ Container support is currently available for a subset of Azure Cognitive Service
 
 - Language Understanding
 - Text Analytics (Sentiment 3.0)
-- Speech-to-text (custom, standard)
-- Text-to-speech (custom, standard)
+- Speech Service
+    - Speech-to-text (custom, standard)
+    - Text-to-speech (custom, standard)
 - Anomaly detector
 
 > [!IMPORTANT]
