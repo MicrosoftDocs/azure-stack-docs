@@ -38,7 +38,7 @@ On Azure Stack Hub, virtual machine scale sets do not support autoscale. You can
    [![Select virtual machine scale sets](media/azure-stack-compute-add-scalesets/all-servicessm.png)](media/azure-stack-compute-add-scalesets/all-services.png#lightbox)
 
 2. Select ***Create Virtual machine scale sets***.
-   [![Create a virtual machine scale set](media/azure-stack-compute-add-scalesets/create-scale-setsm.png)](media/azure-stack-compute-add-scalesets/create-scale-set.png#lightbox)
+   ![Create a virtual machine scale set](media/azure-stack-compute-add-scalesets/create-scale-set.png)
 
 3. Fill in the empty fields, choose from the dropdowns for **Operating system disk image**, **Subscription**, and **Instance size**. Select **Yes** for **Use managed disks**. Then, click **Create**.
     [![Configure and create virtual machine scale sets](media/azure-stack-compute-add-scalesets/createsm.png)](media/azure-stack-compute-add-scalesets/create.png#lightbox)
