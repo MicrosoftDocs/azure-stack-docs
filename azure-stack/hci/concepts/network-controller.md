@@ -4,7 +4,7 @@ description: This topic covers how to plan to deploy Network Controller via Wind
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: conceptual
-ms.date: 10/2/2020
+ms.date: 10/7/2020
 ---
 
 # Plan to deploy Network Controller
@@ -25,7 +25,7 @@ The following is required to deploy Network Controller:
 
     Windows Admin Center creates the configuration within the Hyper-V host. However, the management network must connect to the host physical adapters according to one of the following three options:
 
-    **Option 1**: A single physical switch connects the management network to a physical management adapter on the host, and a trunk on the physical adapters that the virtual switch uses. This option uses a single virtual switch for both compute and storage:
+    **Option 1**: The management network is physically separated from the workload networks This option uses a single virtual switch for both compute and storage:
 
     :::image type="content" source="./media/network-controller/topology-option-1.png" alt-text="Option 1 to create a physical network for the Network Controller." lightbox="./media/network-controller/topology-option-1.png":::
 
@@ -37,6 +37,7 @@ The following is required to deploy Network Controller:
 
     :::image type="content" source="./media/network-controller/topology-option-3.png" alt-text="Option 3 to create a physical network for the Network Controller." lightbox="./media/network-controller/topology-option-3.png":::
 
+- You can also team the management physical adapters to use the same management switch. In this case, we still recommend using one of options in this section.
 - Management network information that Network Controller uses to communicate with Windows Admin Center and the Hyper-V hosts.
 - Either DHCP-based or static network-based addressing for Network Controller VMs.
 - The Representational State Transfer (REST) fully qualified domain name (FQDN) for Network Controller that the management clients use to communicate with the Network Controller.
