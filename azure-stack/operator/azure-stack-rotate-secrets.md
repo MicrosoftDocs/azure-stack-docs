@@ -267,7 +267,7 @@ The baseboard management controller monitors the physical state of your servers.
 
 2. Open a privileged endpoint in Azure Stack Hub sessions. For instructions, see [Using the privileged endpoint in Azure Stack Hub](azure-stack-privileged-endpoint.md). 
 
-3. After your PowerShell prompt has changed to `[IP address or ERCS VM name]: PS>`, or to `[azs-ercs01]: PS>`, depending on the environment, run `Set-BmcCredential` by running `Invoke-Command`. If you use the optional `-BypassBMCUpdate` parameter with `Set-BMCCredential`, credentials in the BMC aren't updated. Only the Azure Stack Hub internal datastore is updated.Pass your privileged endpoint session variable as a parameter. 
+3. After opening a privileged endpoint session, run one of the PowerShell scripts below, which use Invoke-Command to run Set-BmcCredential. If you use the optional -BypassBMCUpdate parameter with Set-BMCCredential, credentials in the BMC aren't updated. Only the Azure Stack Hub internal datastore is updated.Pass your privileged endpoint session variable as a parameter.
 
     Here's an example PowerShell script that will prompt for user name and password: 
 
