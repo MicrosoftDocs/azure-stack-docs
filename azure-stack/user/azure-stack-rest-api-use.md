@@ -4,7 +4,7 @@ description: Learn how to retrieve an authentication from Azure to make API requ
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/06/2020
+ms.date: 10/01/2020
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2020
