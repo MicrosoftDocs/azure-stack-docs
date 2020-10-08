@@ -66,8 +66,6 @@ The following table summarizes the parameters that are used in these deployments
 
 1. Open the Azure Stack Hub user portal.
 
-    ![The Home screen is shown, with its "+ Create a resource" selection in the left pane.](./media/azure-stack-network-howto-vnet-to-onprem/image5.png)
-
 1. Select **Create a resource** and search for `FortiGate`.
 
     ![The search results list shows FortiGate NGFW - Single VM Deployment.](./media/azure-stack-network-howto-vnet-to-onprem/image6.png)
