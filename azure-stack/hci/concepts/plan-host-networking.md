@@ -3,7 +3,7 @@ title: Plan host networking for Azure Stack HCI
 description: Learn how to plan host networking for Azure Stack HCI clusters
 author: v-dasis
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 10/086/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -143,7 +143,7 @@ The following diagram shows a more advanced configuration for a stretched cluste
 
 Remember that TCP is used for traffic between sites while RDMA is used for intra-site storage traffic.
 
-:::image type="content" source="media/plan-host-networking/stretched-cluster-option-2.png" style="float:center" alt-text="Host networking option 2" lightbox="media/plan-host-networking/stretched-cluster-option-2.png":::
+:::image type="content" source="media/plan-host-networking/stretched-cluster-option-2.png" alt-text="Host networking option 2" lightbox="media/plan-host-networking/stretched-cluster-option-2.png":::
 
 ## Next steps
 
