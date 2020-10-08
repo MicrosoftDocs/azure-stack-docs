@@ -126,6 +126,8 @@
       href: concepts/network-controller-overview.md
     - name: Plan Network Controller
       href: concepts/network-controller.md
+    - name: Software Load Balancer overview
+      href: concepts/software-load-balancer.md
   - name: Maintenance and security
     items:
     - name: Billing
