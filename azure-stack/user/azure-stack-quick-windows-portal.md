@@ -59,7 +59,7 @@ Sign in to the Azure Stack Hub portal. The address of the Azure Stack Hub portal
 
 1. Select **Virtual Machines** to review your new VM. Search for the VM name, and then select the VM in the search results.
 
-![Create a VM - Search for VM](./media/azure-stack-quick-windows-portal/image7.png)
+:::image type="content" source="./media/azure-stack-quick-windows-portal/image7-inline.png" alt-text="Create a VM - Search for VM" lightbox="./media/azure-stack-quick-windows-portal/image7.png":::
 
 ## Clean up resources
 
