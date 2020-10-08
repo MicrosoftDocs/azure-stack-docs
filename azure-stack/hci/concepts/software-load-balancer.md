@@ -134,7 +134,7 @@ When you deploy Software Load Balancer, you must use Windows Admin Center, Syste
 The SLB Host Agent listens for SLB policy updates from Network Controller. In addition, the host agent programs rules for SLB into the SDN-enabled Hyper-V virtual switches that are configured on the local computer.
 
 ### SDN-enabled Hyper-V virtual switch
-For a virtual switch to be compatible with SLB, the Virtual Filtering Platform (VFP) extension must be enabled on the virtual switch. This is done automatically by the SDN deployment Powershell scripts, Windows Admin Center deployment wizard, and System Center Virtual Machine Manager (SCVMM) deployment.
+For a virtual switch to be compatible with SLB, the Virtual Filtering Platform (VFP) extension must be enabled on the virtual switch. This is done automatically by the SDN deployment PowerShell scripts, Windows Admin Center deployment wizard, and System Center Virtual Machine Manager (SCVMM) deployment.
 
 For information on enabling VFP on virtual switches, see the Windows PowerShell commands [Get-VMSystemSwitchExtension](/powershell/module/hyper-v/get-vmsystemswitchextension?view=win10-ps) and [Enable-VMSwitchExtension](/powershell/module/hyper-v/enable-vmswitchextension?f=255&MSPPError=-2147217396&view=win10-ps).
 
