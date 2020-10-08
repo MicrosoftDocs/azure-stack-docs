@@ -63,6 +63,8 @@ landingContent:
             url: manage/delete-volumes.md
           - text: Replace drives
             url: manage/replace-drives.md
+          - text: Use the CSV cache
+            url: manage/use-csv-cache.md
           - text: Manage SMB Multichannel
             url: manage/manage-smb-multichannel.md
 
@@ -117,6 +119,10 @@ landingContent:
             url: concepts/fault-tolerance.md
           - text: Security considerations
             url: concepts/security.md
+          - text: Storage pool cache
+            url: concepts/cache.md
+          - text: Cluster and storage pool quorum
+            url: concepts/quorum.md
 
   # Card 
   - title: Connect to Azure
@@ -145,5 +151,13 @@ landingContent:
             url: concepts/software-defined-networking.md
           - text: Plan SDN infrastructure
             url: concepts/plan-software-defined-networking-infrastructure.md
+          - text: Network Controller overview
+            url: concepts/network-controller-overview.md
           - text: Plan Network Controller
             url: concepts/network-controller.md
+          - text: Software Load Balancer overview
+            url: concepts/software-load-balancer.md
+          - text: RAS Gateway overview
+            url: concepts/gateway-overview.md
+          - text: Route Reflector overview
+            url: concepts/route-reflector-overview.md
