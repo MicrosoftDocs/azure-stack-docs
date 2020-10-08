@@ -9,7 +9,7 @@ ms.reviewer: seyadava
 ms.lastreviewed: 10/07/2020
 
 # Intent: As an Azure Stack user, I want to deploy an Ethereum blockchain network ...
-# Keyword: azure stack ethereumn blockchain network
+# Keyword: azure stack ethereum blockchain network
 
 ---
 
@@ -66,28 +66,28 @@ The consortium leader template configures the first member's footprint in the ne
 1. Select **Save**.
 1. On the **Basics** tab, complete the following settings.
 
-    Parameter Name | Description | Allowed Values | Sample value
-    ---------------|-------------|----------------|-------------
-    Subscription | The subscription to which to deploy the consortium network. | | Consumption Subscription
-    Resource group | The resource group to which to deploy the consortium network. | | EthereumResources
-    Region | The Azure region for resources. | | local
-    Name prefix | String used as a base for naming the deployed resources. | Alphanumeric characters with length 1 to 6. | eth
-    Auth type | The method to authenticate to the VM. | Password or SSH public key. | Password
-    Admin username | Admin username of each deployed VM. | 1 - 64 characters. | gethadmin
-    Admin password (Authentication type = Password)| The password for the admin account for each of the VMs deployed. The password must contain 3 of the following requirements: 1 upper case character, 1 lower case character, 1 number, and 1 special character. <br />While all VMs initially have the same password, you can change the password after provisioning.|12 - 72 characters. |
-    Admin SSH key (Authentication type = sshPublicKey) | The secure shell RSA public key string used for remote login. | |
-    Genesis block | JSON string representing custom genesis block.  Specifying a value for this parameter is optional. | |
-    Ethereum account password | The admin password used to secure the Ethereum account. | |
-    Ethereum account passphrase | The passphrase used to generate private key associated with the Ethereum account. Consider a password with sufficient randomness to ensure a strong private key. | |
-    Ethereum network ID | The network ID of the consortium. | Use any value between 5 and 999,999,999. | 72
-    Consortium member ID | The ID associated with each member of the consortium network.   | This ID should be unique in the network. | 0
-    Number mining nodes | Number of mining nodes for each consortium member. | Between 2 and 15. | 2
-    Mining node VM size | VM size of the mining nodes. | | Standard_A1
-    Mining storage account type | Storage performance of the mining nodes. | | Standard_LRS
-    Number TX nodes | Number of load balanced transaction nodes. | Between 1 and 5. | 1
-    TX node VM size | VM size of the transaction nodes. | | Standard_A1
-    TX storage account type | Storage performance of the transaction nodes. | | Standard_LRS
-    Base URL | Base URL where to get the deployment templates. | Use the default value unless you want to customize the deployment templates. |
+    Parameter Name | Description | Sample value
+    ---------------|-------------|-------------
+    Subscription | The subscription to which to deploy the consortium network. | Consumption Subscription
+    Resource group | The resource group to which to deploy the consortium network. | EthereumResources
+    Region | The Azure region for resources. | local
+    Name prefix | String used as a base for naming the deployed resources. Use a maximum of six alphanumeric characters. | eth
+    Auth type | The method to authenticate to the VM. Allowed values are password or SSH public key. | Password
+    Admin username | Admin username of each deployed VM. Use from one to 64 characters. | gethadmin
+    Admin password (Authentication type = Password)| The password for the admin account for each of the VMs deployed. The password must contain 3 of the following requirements: 1 upper case character, 1 lower case character, 1 number, and 1 special character. <br />While all VMs initially have the same password, you can change the password after provisioning. Use from 12 to 72 characters. |
+    Admin SSH key (Authentication type = sshPublicKey) | The secure shell RSA public key string used for remote login. |
+    Genesis block | JSON string representing custom genesis block.  Specifying a value for this parameter is optional. |
+    Ethereum account password | The admin password used to secure the Ethereum account. |
+    Ethereum account passphrase | The passphrase used to generate private key associated with the Ethereum account. Consider a password with sufficient randomness to ensure a strong private key. |
+    Ethereum network ID | The network ID of the consortium. Use any value between 5 and 999,999,999. | 72
+    Consortium member ID | The ID associated with each member of the consortium network. This ID should be unique in the network. | 0
+    Number mining nodes | Number of mining nodes for each consortium member. Use a value between 2 and 15. | 2
+    Mining node VM size | VM size of the mining nodes. | Standard_A1
+    Mining storage account type | Storage performance of the mining nodes. | Standard_LRS
+    Number TX nodes | Number of load balanced transaction nodes. Use a value between 1 and 5. | 1
+    TX node VM size | VM size of the transaction nodes. | Standard_A1
+    TX storage account type | Storage performance of the transaction nodes. | Standard_LRS
+    Base URL | Base URL where to get the deployment templates. Use the default value unless you want to customize the deployment templates. |
 
 1. Select **Review + create**. After successful validation, select **Create**.
 
@@ -108,31 +108,31 @@ To verify leader's deployment, go to the leader's admin site. The admin site add
 1. Select **Save**.
 1. On the **Basics** tab, complete the following settings.
 
-    Parameter Name | Description | Allowed Values | Sample value
-    ---------------|-------------|----------------|-------------
-    Subscription | The subscription to which to deploy the consortium network. | | Consumption Subscription
-    Resource group | The resource group to which to deploy the consortium network. | | EthereumResources
-    Region | The Azure region for resources. | | local
-    Name prefix | String used as a base for naming the deployed resources. | Alphanumeric characters with length 1 to 6. | eth
-    Auth type | The method to authenticate to the VM. | Password or SSH public key. | Password
-    Admin username | Admin username of each deployed VM. | 1 - 64 characters. | gethadmin
-    Admin password (Authentication type = Password)| The password for the admin account for each of the VMs deployed. The password must contain 3 of the following requirements: 1 upper case character, 1 lower case character, 1 number, and 1 special character. <br />While all VMs initially have the same password, you can change the password after provisioning.|12 - 72 characters. |
-    Admin SSH key (Authentication type = sshPublicKey) | The secure shell RSA public key string used for remote login. | |
-    Genesis block | JSON string representing custom genesis block.  Specifying a value for this parameter is optional. | |
-    Ethereum account password | The admin password used to secure the Ethereum account. | |
-    Ethereum account passphrase | The passphrase used to generate private key associated with the Ethereum account. Consider a password with sufficient randomness to ensure a strong private key. | |
-    Consortium member ID | The ID associated with each member of the consortium network.   | This ID should be unique in the network. | 0
-    Number mining nodes | Number of mining nodes for each consortium member. | Between 2 and 15. | 2
-    Mining node VM size | VM size of the mining nodes. | | Standard_A1
-    Mining storage account type | Storage performance of the mining nodes. | | Standard_LRS
-    Number TX nodes | Number of load balanced transaction nodes. | Between 1 and 5. | 1
-    TX node VM size | VM size of the transaction nodes. | | Standard_A1
-    TX storage account type | Storage performance of the transaction nodes. | | Standard_LRS
-    Consortium data | The URL pointing to the relevant consortium configuration data provided by another member's deployment. This value can be found on leader's deployment output. | |
-    Remote member VNET address space | The VNET address space of the leader. This value can be found on leader's deployment output. | |
-    Remote member NVA public IP | The NVA IP address of the leader. This value can be found on leader's deployment output. | |
-    Connection shared key | A pre-established secret between the members of the consortium network that are establishing a gateway connection. | |
-    Base URL | Base URL where to get the deployment templates. | Use the default value unless you want to customize the deployment templates. |
+    Parameter Name | Description | Sample value
+    ---------------|-------------|-------------
+    Subscription | The subscription to which to deploy the consortium network. | Consumption Subscription
+    Resource group | The resource group to which to deploy the consortium network. | EthereumResources
+    Region | The Azure region for resources. | local
+    Name prefix | String used as a base for naming the deployed resources. Use a maximum of six alphanumeric characters. | eth
+    Auth type | The method to authenticate to the VM. Allowed values are Password or SSH public key. | Password
+    Admin username | Admin username of each deployed VM. Use from one to 64 characters. | gethadmin
+    Admin password (Authentication type = Password)| The password for the admin account for each of the VMs deployed. The password must contain 3 of the following requirements: 1 upper case character, 1 lower case character, 1 number, and 1 special character. <br />While all VMs initially have the same password, you can change the password after provisioning. Use from 12 to 72 characters. |
+    Admin SSH key (Authentication type = sshPublicKey) | The secure shell RSA public key string used for remote login. |
+    Genesis block | JSON string representing custom genesis block. Specifying a value for this parameter is optional. |
+    Ethereum account password | The admin password used to secure the Ethereum account. |
+    Ethereum account passphrase | The passphrase used to generate private key associated with the Ethereum account. Consider a password with sufficient randomness to ensure a strong private key. |
+    Consortium member ID | The ID associated with each member of the consortium network. This ID should be unique in the network. | 0
+    Number mining nodes | Number of mining nodes for each consortium member. Use a value between 2 and 15. | 2
+    Mining node VM size | VM size of the mining nodes. | Standard_A1
+    Mining storage account type | Storage performance of the mining nodes. | Standard_LRS
+    Number TX nodes | Number of load balanced transaction nodes. Use a value between 1 and 5. | 1
+    TX node VM size | VM size of the transaction nodes. | Standard_A1
+    TX storage account type | Storage performance of the transaction nodes. | Standard_LRS
+    Consortium data | The URL pointing to the relevant consortium configuration data provided by another member's deployment. This value can be found on leader's deployment output. |
+    Remote member VNET address space | The VNET address space of the leader. This value can be found on leader's deployment output. |
+    Remote member NVA public IP | The NVA IP address of the leader. This value can be found on leader's deployment output. |
+    Connection shared key | A pre-established secret between the members of the consortium network that are establishing a gateway connection. |
+    Base URL | Base URL where to get the deployment templates. Use the default value unless you want to customize the deployment templates. |
 1. Select **Review + create**. After successful validation, select **Create**.
 
 Deployment can take 20 minutes or longer to complete.
@@ -156,18 +156,18 @@ This template creates a connection from the leader to a remote member.
 1. Select **Save**.
 1. Complete the following settings.
 
-    Parameter Name | Description | Allowed Values | Sample value
-    ---------------|-------------|----------------|-------------
-    Subscription | The subscription to which to deploy the consortium network. | | Consumption Subscription
-    Resource group | The resource group to which to deploy the consortium network. | | EthereumResources
-    Region | The Azure region for resources. | | local
-    Member name prefix | String used as a base for naming the deployed resources. | Alphanumeric characters with length 1 to 6. | eth
-    Member route table name | Name of the leader's route table. This value can be found on leader's deployment output. |  | 
-    Remote member VNET address space | Address space of the member. This value can be found on member's deployment output. | |
-    Remote member NVA public IP | The NVA IP address to connect to. This value can be found on member's deployment output. | |
-    Connection shared key | A pre-established secret between the members of the consortium network that are establishing a connection.  | |
-    Member NVA private IP | The NVA IP address of the member. This value can be found on member's deployment output. | |
-    Base URL | Base URL where to get the deployment templates. | Use the default value unless you want to customize the deployment templates. |
+    Parameter Name | Description | Sample value
+    ---------------|-------------|-------------
+    Subscription | The subscription to which to deploy the consortium network. | Consumption Subscription
+    Resource group | The resource group to which to deploy the consortium network. | EthereumResources
+    Region | The Azure region for resources. | local
+    Member name prefix | String used as a base for naming the deployed resources. Use a maximum of six alphanumeric characters. | eth
+    Member route table name | Name of the leader's route table. This value can be found on leader's deployment output. |
+    Remote member VNET address space | Address space of the member. This value can be found on member's deployment output. |
+    Remote member NVA public IP | The NVA IP address to connect to. This value can be found on member's deployment output. |
+    Connection shared key | A pre-established secret between the members of the consortium network that are establishing a connection.  |
+    Member NVA private IP | The NVA IP address of the member. This value can be found on member's deployment output. |
+    Base URL | Base URL where to get the deployment templates. Use the default value unless you want to customize the deployment templates. |
 1. Select **Review + create**. After successful validation, select **Create**.
 
 After deployment is complete, it takes few minutes for leader and member to start communication. To verify the deployment, refresh member's admin site. Status of the member's nodes should be running.
