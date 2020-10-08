@@ -21,7 +21,7 @@ DISKSPD is a tool that you can customize to create your own synthetic workloads,
 Now you know what DISKSPD is, but when should you use it? DISKSPD has a difficult time emulating complex workloads. But DISKSPD is great when your workload is not closely approximated by a single-threaded file copy, and you need a simple tool that produces acceptable baseline results.
 
 ## Quick start guide: from installation to running DISKSPD
-Without further ado, let’s get started.
+Without further ado, let’s get started:
 
 1. The first thing to do is log on to the virtual machine (VM) as an administrator that you'll use for the DISKSPD test. In our case, we're running a VM called “node1.”
 1. After logging on, download the tool from the [repository](https://github.com/microsoft/diskspd). This link contains the open source code, as well as a wiki page that details all the parameters and specifications.
@@ -44,59 +44,58 @@ Without further ado, let’s get started.
      .\diskspd -t2 -o32 -b4k -r4k -w0 -d120 -Sh -D -L -c5G C:\ClusterStorage\test01\targetfile\IO.dat > test04.txt
     ```
 ## Choosing key parameters
-Well, that was simple right? Unfortunately, there is more to it than that - let’s unpack what we did. First, there are various parameters that you can tinker with and it can get pretty specific. However, today we used the following set of baseline parameters.
+Well, that was simple right? Unfortunately, there is more to it than that. Let’s unpack what we did. First, there are various parameters that you can tinker with and it can get pretty specific. However, we used the following set of baseline parameters:
 
 > [!NOTE]
 > DISKSPD parameters are case sensitive.
 
-**-t2** => This indicates the number of threads per target/test file. This number is often based on the number of CPU cores. In our case, we used 2 to stress all our CPU processors.
+**-t2** => This indicates the number of threads per target/test file. This number is often based on the number of CPU cores. In this case, 2 threads were used to stress all of the CPU processors.
 
-**-o32** => This indicates the number of outstanding I/O requests per target per thread. This is also known as the queue depth, and in our case, we used 32 to stress the CPU.
+**-o32** => This indicates the number of outstanding I/O requests per target per thread. This is also known as the queue depth, and in this case, 32 were used to stress the CPU.
 
-**-b4K** => This indicates the block size in bytes, KiB, MiB, or GiB. In our case, we used 4K block size to simulate a random I/O test.
+**-b4K** => This indicates the block size in bytes, KiB, MiB, or GiB. In this case, 4K block size was used to simulate a random I/O test.
 
-**-r4K** => This indicates the random I/O aligned to the specified size in bytes, KiB, MiB, Gib, or blocks (Overrides the -s parameter). We used the common 4K byte size to properly align with our block size.
+**-r4K** => This indicates the random I/O aligned to the specified size in bytes, KiB, MiB, Gib, or blocks (Overrides the **-s** parameter). The common 4K byte size was used to properly align with the block size.
 
-**-w0** => This specifies the percentage of operations that are write requests (-w0 is equivalent to 100% read). We used 0% writes for the purpose of a simple test.
+**-w0** => This specifies the percentage of operations that are write requests (-w0 is equivalent to 100% read). In this case, 0% writes were used for the purpose of a simple test.
 
-**-d120** => This specifies the duration of the test, not including cool-down or warm-up. The default value is 10 seconds, but it is recommended that you use at least 60 seconds for any serious workload. We used 120 seconds in order to minimize any outliers. 
+**-d120** => This specifies the duration of the test, not including cool-down or warm-up. The default value is 10 seconds, but we recommend using at least 60 seconds for any serious workload. In this case, 120 seconds were used to minimize any outliers.
 
-**-Suw** => Disables software and hardware write caching (equivalent to -Sh).
+**-Suw** => Disables software and hardware write caching (equivalent to **-Sh**).
 
-**-D** => Captures IOPS statistics such as standard deviation, in intervals of milliseconds (per-thread, per-target).
+**-D** => Captures IOPS statistics, such as standard deviation, in intervals of milliseconds (per-thread, per-target).
 
 **-L** => Measures latency statistics.
 
-**-c** => Sets the sample file size that will be used in the test. Can be set in bytes, KiB, MiB, GiB, or blocks. We used a 5GB target file. 
+**-c** => Sets the sample file size used in the test. It can be set in bytes, KiB, MiB, GiB, or blocks. In this case, a 5 GB target file was used.
 
 For a complete list of parameters, refer to the [Github repository](https://github.com/Microsoft/diskspd/wiki/Command-line-and-parameters).
 
 ## Understanding the environment
-The performance heavily depends on your environment. So, what is our environment? Our specification involves an Azure cluster with storage pool and Storage Spaces Direct (S2D). More specifically, we have a total of 5 virtual machines: DC, node1, node2, node3, and the mgmt node. The cluster itself is a three-node cluster with a three-way mirrored resiliency structure. Therefore, three data copies will be maintained. Each “node” in the cluster is a Standard_B2ms VM with a maximum IOPS limit of 1920. Within each node, there are four premium P30 SSD drives with a maximum IOPS limit of 5000. Finally, each SSD drive has 1 TB of memory.
+Performance heavily depends on your environment. So, what is our environment? Our specification involves an Azure Cluster with storage pool and Storage Spaces Direct (S2D). More specifically, there are 5 VMs: DC, node1, node2, node3, and the management node. The cluster itself is a three-node cluster with a three-way mirrored resiliency structure. Therefore, three data copies are maintained. Each “node” in the cluster is a Standard_B2ms VM with a maximum IOPS limit of 1920. Within each node, there are four premium P30 SSD drives with a maximum IOPS limit of 5000. Finally, each SSD drive has 1 TB of memory.
 
-We generate the test file under the unified namespace that the Cluster Shared Volume (CSV) provides (C:\ClusteredStorage) in order to utilize the entire pool of drives.
+You generate the test file under the unified namespace that the Cluster Shared Volume (CSV) provides (C:\ClusteredStorage) to use the entire pool of drives.
 
 >[!NOTE]
 > The current environment does *not* have Hyper-V or a nested virtualization structure.
 
-As you’ll see, it is entirely possible to independently hit either the IOPS or bandwidth ceiling at the VM or disk limit. And so, it is important to understand your VM size and drive type as both have a maximum IOPS limit and a bandwidth ceiling. Having this knowledge will help you locate bottlenecks and understand your performance results. You can refer to the two links below to discover what size may be appropriate for your workload.
+As you’ll see, it is entirely possible to independently hit either the IOPS or bandwidth ceiling at the VM or disk limit. And so, it is important to understand your VM size and drive type, because both have a maximum IOPS limit and a bandwidth ceiling. This knowledge helps to locate bottlenecks and understand your performance results. To learn more about what size may be appropriate for your workload, see the following resources:
 
 - [VM sizes](https://docs.microsoft.com/azure/virtual-machines/sizes-general?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)
 - [Disk types](https://azure.microsoft.com/pricing/details/managed-disks/)
 
-Here is what our environment looks like. The green represents the IOPS limit on the VM and the red represents the IOPS limit on the hard drive.
+The following figure shows what our environment looks like. The green represents the IOPS limit on the VMs and the red represents the IOPS limit on the hard drives.
 
-:::image type="content" source="media/diskspd/environment.png" alt-text="The DISKSPD environment." lightbox="media/diskspd/environment.png":::
+:::image type="content" source="media/diskspd/environment.png" alt-text="The sample environment used to test performance with DISKSPD." lightbox="media/diskspd/environment.png":::
 
 ## Understanding the output
-Armed with our understanding of the parameters and environment, let’s interpret the output. First, the goal of our test was to max out the IOPS with no regards to latency. This way, we can visually see whether we reach our artificial IOPS limit within Azure. If you wish to graphically visualize the total IOPS, you can refer to the Windows Admin Center or the task manager.
+Armed with your understanding of the parameters and environment, you're ready to interpret the output. First, the goal of the test is to max out the IOPS with no regard to latency. This way, you can visually see whether you reach the artificial IOPS limit within Azure. If you want to graphically visualize the total IOPS, use either Windows Admin Center or Task Manager.
 
-Here, we have a diagram of what the DISKSPD process looks like. It depicts an example of a 1MiB write operation from a non-coordinator node. The three-way resiliency structure along with the operation from a non-coordinator node leads to two network hops, decreasing the performance. If you are wondering what a coordinator is, don’t worry! We will talk about this in a later section.
-<!---set up section ref to Things to consider section.--->
+The following diagram shows what the DISKSPD process looks like. It depicts an example of a 1 MiB write operation from a non-coordinator node. The three-way resiliency structure, along with the operation from a non-coordinator node, leads to two network hops, decreasing performance. If you're wondering what a coordinator node is, don’t worry! You'll learn about it in the [Things to consider](#things-to-consider) section.
 
-:::image type="content" source="media/diskspd/example-process.png" alt-text="Example diagram of the DISKSPD process that shows a 1MiB write operation from a non-coordinator node." lightbox="media/diskspd/example-process.png":::
+:::image type="content" source="media/diskspd/example-process.png" alt-text="Example diagram of the DISKSPD process that shows a 1 MiB write operation from a non-coordinator node." lightbox="media/diskspd/example-process.png":::
 
-Now that we have a visual understanding, let’s examine the four main sections of our txt file output.
+Now that you've got a visual understanding, let’s examine the four main sections of the .txt file output:
 1.	Input settings
    
        This section describes the command you ran, the input parameters, and additional details about the test run.
@@ -105,7 +104,7 @@ Now that we have a visual understanding, let’s examine the four main sections 
 
 1.	CPU utilization details
    
-       This section highlights information such as the test time, number of threads, number of available processors, and average utilization of every CPU core during the test. For example, in this case, we see our 2 CPU cores averaged around 4.67% usage.
+       This section highlights information such as the test time, number of threads, number of available processors, and the average utilization of every CPU core during the test. In this case, there are 2 CPU cores that averaged around 4.67% usage.
 
        :::image type="content" source="media/diskspd/cpu-details.png" alt-text="Example CPU details." lightbox="media/diskspd/cpu-details.png":::
 
@@ -113,35 +112,37 @@ Now that we have a visual understanding, let’s examine the four main sections 
    
        This section has three subsections. The first section highlights the overall performance data including both read and write operations. The second and third sections split the read and write operations into separate categories.
 
-       In this example, we can see that the total I/O count was 234408 during the 120 seconds duration. Thus, IOPS = 234408 /120 = 1953.30. The average latency was 32.763 milliseconds, and the throughput was 7.63 MiB/s. From earlier, we know that the 1953.30 IOPS is near the 1920 IOPS limitation for our Standard_B2ms VM. Don’t believe it? If you were to re-run this test using different parameters such as increasing the queue depth, you will find that we are still capped at this number.
+       In this example, you can see that the total I/O count was 234408 during the 120 seconds duration. Thus, IOPS = 234408 /120 = 1953.30. The average latency was 32.763 milliseconds, and the throughput was 7.63 MiB/s. From earlier information, we know that the 1953.30 IOPS is near the 1920 IOPS limitation for our Standard_B2ms VM. Don’t believe it? If you rerun this test using different parameters, such as increasing the queue depth, you'll find that the results are still capped at this number.
 
-       In the last three columns, we see the standard deviation of IOPS at 17.72 (from -D parameter), the standard deviation of the latency at 20.994 milliseconds (from -L parameter), and the file path.
+       The last three columns show the standard deviation of IOPS at 17.72 (from -D parameter), the standard deviation of the latency at 20.994 milliseconds (from -L parameter), and the file path.
 
        :::image type="content" source="media/diskspd/total-io.png" alt-text="Example shows total overall I/O performance data." lightbox="media/diskspd/total-io.png":::
 
-       From the results, you will quickly realize that our cluster configuration is actually terrible. If you examine our cluster below, you can see that we hit the VM limitation of 1920 before the SSD limitation of 5000. Furthermore, if you use a big enough test file, you will be able to take advantage of up to 20000 IOPS (4 drives * 5000) by spanning the test file across multiple drives. However, we because we hit that virtual machine limit first, we only see a total IOPS of around 1920.
+       From the results, you can quickly determine that the cluster configuration is actually terrible.  You can see that it hit the VM limitation of 1920 before the SSD limitation of 5000. Furthermore, if you use a big enough test file, you can take advantage of up to 20000 IOPS (4 drives * 5000) by spanning the test file across multiple drives. However, because it hit that VM limit first, you only see a total IOPS of around 1920.
 
-       In the end, you will need to decide what values are acceptable for your specific workload. Here are some important relationships to help you consider the tradeoffs: 
+       In the end, you need to decide what values are acceptable for your specific workload. The following figure shows some important relationships to help you consider the tradeoffs:
 
-       :::image type="content" source="media/diskspd/tradeoffs.png" alt-text="Figure shows workload relationships to help you consider tradeoffs." lightbox="media/diskspd/tradeoffs.png":::
+       :::image type="content" source="media/diskspd/tradeoffs.png" alt-text="Figure shows workload relationship tradeoffs." lightbox="media/diskspd/tradeoffs.png":::
 
-       The second relationship is important, and sometimes referred to as Little’s Law. The law introduces the idea that there are three characteristics that govern process behavior and that you only need to change one to influence the other two, thus the entire process. And so, if you are unhappy with your system’s performance, you have three dimensions of freedom. In our case, IOPS is the throughput (Input output operations per second), latency is the queue time, and queue depth is the inventory.
+       The second relationship in the figure is important, and it is sometimes referred to as Little’s Law. The law introduces the idea that there are three characteristics that govern process behavior and that you only need to change one to influence the other two, and thus the entire process. And so, if you're unhappy with your system’s performance, you have three dimensions of freedom to influence it. In this case, IOPS is the throughput (Input output operations per second), latency is the queue time, and queue depth is the inventory.
 
 1.	Latency percentile analysis
    
        This last section details the percentile latencies per operation type of storage performance from the minimum value to the maximum value.
 
-       This section is important as it determines the “quality” of your IOPS. It reveals how many of the I/O operations were able to achieve a certain latency value. It is up to the user to decide the acceptable latency for that percentile. Moreover, the “nines” refer to the number of nines. For example, “3-nines” is equivalent to the 99th percentile. The number of nines will expose how many I/O operations were ran at that percentile. Eventually, you will reach a point where it no longer makes sense to take the latency values seriously. In our case, we can see that the latency values remain constant after “4-nines.” At this point, the latency value is based on only one I/O operation out of the ~230K.
+       This section is important because it determines the “quality” of your IOPS. It reveals how many of the I/O operations were able to achieve a certain latency value. It is up to you to decide the acceptable latency for that percentile. Moreover, the “nines” refer to the number of nines. For example, “3-nines” is equivalent to the 99th percentile. The number of nines exposes how many I/O operations ran at that percentile. Eventually, you'll reach a point where it no longer makes sense to take the latency values seriously. In this case, you can see that the latency values remain constant after “4-nines.” At this point, the latency value is based on only one I/O operation out of the ~230K.
 
        :::image type="content" source="media/diskspd/storage-performance.png" alt-text="Example shows percentile latencies per operation type of storage performance." lightbox="media/diskspd/storage-performance.png":::
 
 ## Batch test + extracting results into Excel
-Great, now you know how to run DISKSPD and output the results into a text file. However, at the current rate, you will need to run a new command for every parameter change. Luckily, with the two scripts below, you will be able to collect your output metrics into an excel sheet to analyze. Here are the following steps:
+Great, so now you know how to run DISKSPD and output the results into a text file. However, at the current rate, you'll need to run a new command for every parameter change. Luckily, you can use the two scripts in this section to collect your output metrics into an Excel spreadsheet to analyze them.
+
+To use the scripts:
 
 1.	Download the following two scripts: “Batch-DiskSpd” and “Process-DiskSpd”
-1.	The first script you will need to run is “Batch-DiskSpd”
+1.	The first script to run is “Batch-DiskSpd”
     The parameters are as follows:
-    - **$param** => A mandatory string parameter. You will need to specify the parameter you wish to vary.
+    - **$param** => A mandatory string parameter. You need to specify the parameter that you want to vary.
 
         | Parameter to vary | String command  |
         | :---------------- | :-------------- |
@@ -152,19 +153,19 @@ Great, now you know how to run DISKSPD and output the results into a text file. 
         | Thread + Block    | “tb”            |
         | Queue + Block     | “ob”            |
     
-    - **$rw** => A mandatory int parameter. Specify what percentage of write you wish to test.
+    - **$rw** => A mandatory int parameter. Specify what percentage of write that you want to test.
     - **$duration** => An optional int parameter. Specify the duration in seconds. Default is 120.
     - **$f_size** => An optional string parameter. Specify the test file size. Default is ‘1G’.
-    - **$type** => An optional string parameter. If you wish to output into a text file, run “-Rtxt”. If you wish to collect the data, run “-Rxml”. The default is “Rxml”.
-    - **$path** => An optional string parameter. Specify the directory where you will create your test file. The default is the current directory.
+    - **$type** => An optional string parameter. If you want to output into a text file, run “-Rtxt”. If you want to collect the data, run “-Rxml”. The default is “Rxml”.
+    - **$path** => An optional string parameter. Specify the directory in which to create your test file. The default is the current directory.
 
-1.	At this point, you will have multiple xml output files. The next step is to run the “Process-DiskSpd” script. If your xml files are in the same directory as the current script, you can simply run it without any parameters. However, if the output files are in another directory, you will need to specify the path while running the script. Your output will be a tsv file.
+1.	At this point, you'll have multiple xml output files. The next step is to run the “Process-DiskSpd” script. If your xml files are in the same directory as the current script, you can simply run it without any parameters. However, if the output files are in another directory, you need to specify the path while running the script. Your output will be a tsv file.
 
-1.	You should now have a tsv file that you can open within Excel. Here is an example output from varying only the thread values. If you wish to test your own thread values, you can change the values at the beginning of the Batch-DiskSpd script. Have fun!
+1.	You should now have a tsv file that you can open in Excel. Here is an example output from varying only the thread values. If you want to test your own thread values, you can change the values at the beginning of the Batch-DiskSpd script. Have fun!
 
     :::image type="content" source="media/diskspd/thread-value-output.png" alt-text="Example shows thread value output." lightbox="media/diskspd/thread-value-output.png":::
 
-## Things to consider...
+## Things to consider
 <!---High-level intro needed--->
 
 ### DISKSPD vs. real-world
