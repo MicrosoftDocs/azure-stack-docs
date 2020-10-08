@@ -25,7 +25,7 @@ Let's get started:
 
     ![Illustrates the Basics page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\basics.png)
 
-5. You may configure additional node pools to run your workloads on the **Node pools** page. During public preview, you may add up to one Windows node pool and one Linux node pool (in addition to the system node pool). When you're finished, select **Next**.
+5. You may configure additional node pools to run your workloads on the **Node pools** page. During public preview, you may add up to one Windows node pool and one Linux node pool (in addition to the system node pool). If you'd like to enable Azure Arc integration later in this wizard, you will need at least one Linux node pool that is not the primary node pool. When you're finished, select **Next**.
 6. Specify your network configuration on the **Networking** page. If you select "Advanced," you can customize the address range used when creating a virtual network for nodes in the cluster. If you select "Basic," virtual networks for nodes in the cluster will be created with a default address range. The Network Settings (load balancer, network policy, and HTTP application routing) cannot be changed in public preview. When complete, select **Next**.
 
     ![Illustrates the Networking page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\networking.png)

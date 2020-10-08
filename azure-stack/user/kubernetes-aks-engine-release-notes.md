@@ -4,10 +4,10 @@ description: Learn the steps you need to take with the update to AKS engine on A
 author: mattbriggs
 
 ms.topic: article
-ms.date: 09/16/2020
+ms.date: 09/28/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/16/2020
+ms.lastreviewed: 09/28/2020
 
 # Intent: As an Azure Stack Hub user, I would like to update a Kubernetes cluster using the AKS engine on a custom virtual network so that I can deliver my service in an environment that extends my data center or in a hybrid cloud solution with my cluster in Azure Stack Hub and Azure.
 # Keywords: update ASK engine Azure Stack Hub
@@ -68,7 +68,7 @@ New versions of these are available with this update:
 
 -   The Azure Stack Hub operator will need to download a new AKS base Ubuntu Image into the stamp marketplace:
 
-    -   Name: AKS Base Ubuntu 16.04-LTS Image Distro, August 2020 (2020.09.14)
+    -   Name: AKS Base Ubuntu 16.04-LTS Image Distro, September 2020 (2020.09.14)
 
     -   Version: 2020.09.14
 
@@ -103,6 +103,7 @@ In the API Model json file, please specify the release and version values under 
 
 ## What's new
 
+- Update Azure Stack's Linux VHD to 2020.09.14 #[3828](https://github.com/Azure/aks-engine/pull/3828)
 - Adds support for K8s v1.17.11 on Azure Stack [#3702](https://github.com/Azure/aks-engine/pull/3702)
 - Adds support for K8s v1.16.14 on Azure Stack [#3704](https://github.com/Azure/aks-engine/pull/3704)
 - Linux VHD update to 2020.09.14 [#3750](https://github.com/Azure/aks-engine/pull/3750)
