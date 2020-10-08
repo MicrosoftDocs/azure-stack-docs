@@ -3,10 +3,10 @@ title: Deploy Ethereum blockchain network on Azure Stack Hub
 description: Tutorial using a custom solution templates to deploy and configure a consortium Ethereum blockchain network on Azure Stack Hub.
 author: PatAltimore
 ms.author: patricka
-ms.date: 06/03/2019
+ms.date: 10/07/2020
 ms.topic: tutorial
 ms.reviewer: seyadava
-ms.lastreviewed: 06/03/2019
+ms.lastreviewed: 10/07/2020
 
 # Intent: As an Azure Stack user, I want to deploy an Ethereum blockchain network ...
 # Keyword: azure stack ethereumn blockchain network
@@ -57,49 +57,39 @@ The template can deploy Ethereum consortium for leader and member in a variety o
 The consortium leader template configures the first member's footprint in the network. 
 
 1. Download the [leader template from GitHub](https://aka.ms/aa6z619).
-2. In the Azure Stack Hub tenant portal, select **+ Create a resource > Template deployment** to deploy from a custom template.
-3. Select **Edit template** to edit the new custom template.
-4. In the editing pane on the right, copy and paste the leader template JSON you previously downloaded.
+1. In the Azure Stack Hub tenant portal, select **+ Create a resource > Template deployment** to deploy from a custom template.
+1. Select **Build your own template in the editor** to edit the new custom template.
+1. In the editing pane on the right, copy and paste the leader template JSON you previously downloaded.
     
-    ![Edit leader template](./media/azure-stack-ethereum/edit-leader-template.png)
+    ![Edit template with the leader template pasted](./media/azure-stack-ethereum/edit-leader-template.png)
 
-5. Select **Save**.
-6. Select **Edit parameters** and complete the template parameters for your deployment.
-    
-    ![Edit leader template parameters](./media/azure-stack-ethereum/edit-leader-parameters.png)
-
-    Parameter Name | Description | Allowed Values | Sample value
-    ---------------|-------------|----------------|-------------
-    NAMEPREFIX | String used as a base for naming the deployed resources. | Alphanumeric characters with length 1 to 6. | eth
-    AUTHTYPE | The method to authenticate to the VM. | Password or SSH public key. | Password
-    ADMINUSERNAME | Admin username of each deployed VM. | 1 - 64 characters. | gethadmin
-    ADMINPASSWORD (Authentication type = Password)| The password for the admin account for each of the VMs deployed. The password must contain 3 of the following requirements: 1 upper case character, 1 lower case character, 1 number, and 1 special character. <br />While all VMs initially have the same password, you can change the password after provisioning.|12 - 72 characters. |
-    ADMINSSHKEY (Authentication type = sshPublicKey) | The secure shell key used for remote login. | |
-    GENESISBLOCK | JSON string representing custom genesis block.  Specifying a value for this parameter is optional. | |
-    ETHEREUMACCOUNTPSSWD | The admin password used to secure the Ethereum account. | |
-    ETHEREUMACCOUNTPASSPHRASE | The passphrase used to generate private key associated with the Ethereum account. | |
-    ETHEREUMNETWORKID | The network ID of the consortium. | Use any value between 5 and 999,999,999. | 72
-    CONSORTIUMMEMBERID | The ID associated with each member of the consortium network.   | This ID should be unique in the network. | 0
-    NUMMININGNODES | Number of mining nodes. | Between 2 and 15. | 2
-    MNNODEVMSIZE | VM size of the mining nodes. | | Standard_A1
-    MNSTORAGEACCOUNTTYPE | Storage performance of the mining nodes. | | Standard_LRS
-    NUMTXNODES | Number of transaction nodes. | Between 1 and 5. | 1
-    TXNODEVMSIZE | VM size of the transaction nodes. | | Standard_A1
-    TXSTORAGEACCOUNTTYPE | Storage performance of the transaction nodes. | | Standard_LRS
-    BASEURL | Base URL to get the deployment templates from. | Use the default value unless you want to customize the deployment templates. | 
-
-7. Select **OK**.
-8. In **Custom deployment**, specify **Subscription**, **Resource group**, and  **Resource group location**.
-    
-    ![Leader deployment parameters](./media/azure-stack-ethereum/leader-deployment-parameters.png)
+1. Select **Save**.
+1. On the **Basics** tab, complete the following settings.
 
     Parameter Name | Description | Allowed Values | Sample value
     ---------------|-------------|----------------|-------------
     Subscription | The subscription to which to deploy the consortium network. | | Consumption Subscription
-    Resource Group | The resource group to which to deploy the consortium network. | | EthereumResources
-    Location | The Azure region for resource group. | | local
+    Resource group | The resource group to which to deploy the consortium network. | | EthereumResources
+    Region | The Azure region for resources. | | local
+    Name prefix | String used as a base for naming the deployed resources. | Alphanumeric characters with length 1 to 6. | eth
+    Auth type | The method to authenticate to the VM. | Password or SSH public key. | Password
+    Admin username | Admin username of each deployed VM. | 1 - 64 characters. | gethadmin
+    Admin password (Authentication type = Password)| The password for the admin account for each of the VMs deployed. The password must contain 3 of the following requirements: 1 upper case character, 1 lower case character, 1 number, and 1 special character. <br />While all VMs initially have the same password, you can change the password after provisioning.|12 - 72 characters. |
+    Admin SSH key (Authentication type = sshPublicKey) | The secure shell RSA public key string used for remote login. | |
+    Genesis block | JSON string representing custom genesis block.  Specifying a value for this parameter is optional. | |
+    Ethereum account password | The admin password used to secure the Ethereum account. | |
+    Ethereum account passphrase | The passphrase used to generate private key associated with the Ethereum account. Consider a password with sufficient randomness to ensure a strong private key. | |
+    Ethereum network ID | The network ID of the consortium. | Use any value between 5 and 999,999,999. | 72
+    Consortium member ID | The ID associated with each member of the consortium network.   | This ID should be unique in the network. | 0
+    Number mining nodes | Number of mining nodes for each consortium member. | Between 2 and 15. | 2
+    Mining node VM size | VM size of the mining nodes. | | Standard_A1
+    Mining storage account type | Storage performance of the mining nodes. | | Standard_LRS
+    Number TX nodes | Number of load balanced transaction nodes. | Between 1 and 5. | 1
+    TX node VM size | VM size of the transaction nodes. | | Standard_A1
+    TX storage account type | Storage performance of the transaction nodes. | | Standard_LRS
+    Base URL | Base URL where to get the deployment templates. | Use the default value unless you want to customize the deployment templates. |
 
-8. Select **Create**.
+1. Select **Review + create**. After successful validation, select **Create**.
 
 Deployment can take 20 minutes or longer to complete.
 
@@ -112,42 +102,38 @@ To verify leader's deployment, go to the leader's admin site. The admin site add
 ### Joining consortium member deployment
 
 1. Download the [consortium member template from GitHub](https://aka.ms/aa6zkua).
-2. In the Azure Stack Hub tenant portal, select **+ Create a resource > Template deployment** to deploy from a custom template.
-3. Select **Edit template** to edit the new custom template.
-4. In the editing pane on the right, copy and paste the leader template JSON you downloaded previously.
-5. Select **Save**.
-6. Select **Edit parameters** and complete the template parameters for your deployment.
-
-    Parameter Name | Description | Allowed Values | Sample value
-    ---------------|-------------|----------------|-------------
-    NAMEPREFIX | String used as a base for naming the deployed resources. | Alphanumeric characters with length 1 to 6. | eth
-    AUTHTYPE | The method to authenticate to the VM | Password or SSH public key. | Password
-    ADMINUSERNAME | Admin username of each deployed VM | 1 - 64 characters. | gethadmin
-    ADMINPASSWORD (Authentication type = Password)| The password for the admin account for each of the VMs deployed. The password must contain 3 of the following requirements: 1 upper case character, 1 lower case character, 1 number, and 1 special character. <br />While all VMs initially have the same password, you can change the password after provisioning.|12 - 72 characters. |
-    ADMINSSHKEY (Authentication type = sshPublicKey) | The secure shell key used for remote login. | |
-    CONSORTIUMMEMBERID | The ID associated with each member of the consortium network.   | This ID should be unique in the network. | 0
-    NUMMININGNODES | Number of mining nodes. | Between 2 and 15. | 2
-    MNNODEVMSIZE | VM size of the mining nodes. | | Standard_A1
-    MNSTORAGEACCOUNTTYPE | Storage performance of the mining nodes. | | Standard_LRS
-    NUMTXNODES | Number of transaction nodes. | Between 1 and 5. | 1
-    TXNODEVMSIZE | VM size of the transaction nodes. | | Standard_A1
-    TXSTORAGEACCOUNTTYPE | Storage performance of the transaction nodes. | | Standard_LRS
-    CONSORTIUMDATA | The URL pointing to the relevant consortium configuration data provided by another member's deployment. This value can be found on Leader's deployment output. | |
-    REMOTEMEMBERVNETADDRESSSPACE | The NVA IP address of the leader. This value can be found on leader's deployment output. | | 
-    REMOTEMEMBERNVAPUBLICIP | The NVA IP address of the leader. This value can be found on leader's deployment output. | | 
-    CONNECTIONSHAREDKEY | A pre-established secret between the members of the consortium network that are establishing a connection. | |
-    BASEURL | Base URL for the template. | Use the default value unless you want to customize the deployment templates. | 
-
-7. Select **OK**.
-8. In **Custom deployment**, specify **Subscription**, **Resource group**, and  **Resource group location**.
+1. In the Azure Stack Hub tenant portal, select **+ Create a resource > Template deployment** to deploy from a custom template.
+1. Select **Build your own template in the editor** to edit the new custom template.
+1. In the editing pane on the right, copy and paste the consortium member template JSON you previously downloaded.
+1. Select **Save**.
+1. On the **Basics** tab, complete the following settings.
 
     Parameter Name | Description | Allowed Values | Sample value
     ---------------|-------------|----------------|-------------
     Subscription | The subscription to which to deploy the consortium network. | | Consumption Subscription
-    Resource Group | The resource group to which to deploy the consortium network. | | MemberResources
-    Location | The Azure region for resource group. | | local
-
-8. Select **Create**.
+    Resource group | The resource group to which to deploy the consortium network. | | EthereumResources
+    Region | The Azure region for resources. | | local
+    Name prefix | String used as a base for naming the deployed resources. | Alphanumeric characters with length 1 to 6. | eth
+    Auth type | The method to authenticate to the VM. | Password or SSH public key. | Password
+    Admin username | Admin username of each deployed VM. | 1 - 64 characters. | gethadmin
+    Admin password (Authentication type = Password)| The password for the admin account for each of the VMs deployed. The password must contain 3 of the following requirements: 1 upper case character, 1 lower case character, 1 number, and 1 special character. <br />While all VMs initially have the same password, you can change the password after provisioning.|12 - 72 characters. |
+    Admin SSH key (Authentication type = sshPublicKey) | The secure shell RSA public key string used for remote login. | |
+    Genesis block | JSON string representing custom genesis block.  Specifying a value for this parameter is optional. | |
+    Ethereum account password | The admin password used to secure the Ethereum account. | |
+    Ethereum account passphrase | The passphrase used to generate private key associated with the Ethereum account. Consider a password with sufficient randomness to ensure a strong private key. | |
+    Consortium member ID | The ID associated with each member of the consortium network.   | This ID should be unique in the network. | 0
+    Number mining nodes | Number of mining nodes for each consortium member. | Between 2 and 15. | 2
+    Mining node VM size | VM size of the mining nodes. | | Standard_A1
+    Mining storage account type | Storage performance of the mining nodes. | | Standard_LRS
+    Number TX nodes | Number of load balanced transaction nodes. | Between 1 and 5. | 1
+    TX node VM size | VM size of the transaction nodes. | | Standard_A1
+    TX storage account type | Storage performance of the transaction nodes. | | Standard_LRS
+    Consortium data | The URL pointing to the relevant consortium configuration data provided by another member's deployment. This value can be found on leader's deployment output. | |
+    Remote member VNET address space | The VNET address space of the leader. This value can be found on leader's deployment output. | |
+    Remote member NVA public IP | The NVA IP address of the leader. This value can be found on leader's deployment output. | |
+    Connection shared key | A pre-established secret between the members of the consortium network that are establishing a gateway connection. | |
+    Base URL | Base URL where to get the deployment templates. | Use the default value unless you want to customize the deployment templates. |
+1. Select **Review + create**. After successful validation, select **Create**.
 
 Deployment can take 20 minutes or longer to complete.
 
@@ -164,40 +150,25 @@ As shown in the picture, member's nodes status is **Not running**. This status i
 This template creates a connection from the leader to a remote member. 
 
 1. Download the [connect member and leader template from GitHub](https://aka.ms/aa6zdyt).
-2. In the Azure Stack Hub tenant portal, select **+ Create a resource > Template deployment** to deploy from a custom template.
-3. Select **Edit template** to edit the new custom template.
-4. In the editing pane on the right, copy and paste the leader template JSON you downloaded previously.
-    
-    ![Edit connect template](./media/azure-stack-ethereum/edit-connect-template.png)
-
-5. Select **Save**.
-6. Select **Edit parameters** and complete the template parameters for your deployment.
-    
-    ![Edit connect template parameters](./media/azure-stack-ethereum/edit-connect-parameters.png)
+1. In the Azure Stack Hub tenant portal, select **+ Create a resource > Template deployment** to deploy from a custom template.
+1. Select **Build your own template in the editor** to edit the new custom template.
+1. In the editing pane on the right, copy and paste the consortium member template JSON you previously downloaded.
+1. Select **Save**.
+1. Complete the following settings.
 
     Parameter Name | Description | Allowed Values | Sample value
     ---------------|-------------|----------------|-------------
-    MEMBERNAMEPREFIX | Leader's name prefix. This value can be found on leader's deployment output.  | Alphanumeric characters with length 1 to 6. | |
-    MEMBERROUTETABLENAME | Name of the leader's route table. This value can be found on leader's deployment output. |  | 
-    REMOTEMEMBERVNETADDRESSSPACE | Address space of the member. This value can be found on member's deployment output. | |
-    CONNECTIONSHAREDKEY | A pre-established secret between the members of the consortium network that are establishing a connection.  | |
-    REMOTEMEMBERNVAPUBLICIP | The NVA IP address of the member. This value can be found on member's deployment output. | |
-    MEMBERNVAPRIVATEIP | Leader's private NVA IP address. This value can be found on leader's deployment output. | |
-    LOCATION | Location of your Azure Stack Hub environment. | | local
-    BASEURL | Base URL for the template. | Use the default value unless you want to customize the deployment templates. | 
-
-7. Select **OK**.
-8. In **Custom deployment**, specify **Subscription**, **Resource group**, and  **Resource group location**.
-    
-    ![Connect deployment parameters](./media/azure-stack-ethereum/connect-deployment-parameters.png)
-
-    Parameter Name | Description | Allowed Values | Sample value
-    ---------------|-------------|----------------|-------------
-    Subscription | The leader's subscription. | | Consumption Subscription
-    Resource Group | The leader's resource group. | | EthereumResources
-    Location | The Azure region for resource group. | | local
-
-8. Select **Create**.
+    Subscription | The subscription to which to deploy the consortium network. | | Consumption Subscription
+    Resource group | The resource group to which to deploy the consortium network. | | EthereumResources
+    Region | The Azure region for resources. | | local
+    Member name prefix | String used as a base for naming the deployed resources. | Alphanumeric characters with length 1 to 6. | eth
+    Member route table name | Name of the leader's route table. This value can be found on leader's deployment output. |  | 
+    Remote member VNET address space | Address space of the member. This value can be found on member's deployment output. | |
+    Remote member NVA public IP | The NVA IP address to connect to. This value can be found on member's deployment output. | |
+    Connection shared key | A pre-established secret between the members of the consortium network that are establishing a connection.  | |
+    Member NVA private IP | The NVA IP address of the member. This value can be found on member's deployment output. | |
+    Base URL | Base URL where to get the deployment templates. | Use the default value unless you want to customize the deployment templates. |
+1. Select **Review + create**. After successful validation, select **Create**.
 
 After deployment is complete, it takes few minutes for leader and member to start communication. To verify the deployment, refresh member's admin site. Status of the member's nodes should be running.
 
