@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/18/2020
+ms.date: 10/8/2020
 ---
 # What is Software Load Balancer \(SLB\) for SDN?
 
@@ -85,7 +85,7 @@ In the following illustration, a client computer performs a DNS query for the IP
 
 9. The host forwards the packet directly to the default gateway for the physical network which uses its standard routing table to forward the packet on to the client, which eventually receives the response.
 
-:::image type="content" source="media/software-load-balancing/slb_process.jpg" alt-text="Software Load Balancing process" border="false":::
+:::image type="content" source="media/software-load-balancing/slb-process.jpg" alt-text="Software Load Balancing process" border="false":::
 
 ### Load balancing internal datacenter traffic
 
@@ -110,7 +110,7 @@ In addition, you must configure the Azure Stack HCI hosts with the SDN-enabled H
 
 The following figure provides an overview of the SLB infrastructure.
 
-:::image type="content" source="media/software-load-balancing/slb_overview1.png" alt-text="Software Load Balancer infrastructure" border="false":::
+:::image type="content" source="media/software-load-balancing/slb-overview.png" alt-text="Software Load Balancer infrastructure" border="false":::
 
 The following sections provide more information about these elements of the Software Load Balancer infrastructure.
 
@@ -198,5 +198,6 @@ The following sections describe some of the features and capabilities of Softwar
 
 For related information, see also:
 
+- [Network Controller overview](network-controller-overview.md)
 - [Deploy Network Controller using Windows PowerShell](../deploy/network-controller-powershell.md)
 - [SDN in Azure Stack HCI](software-defined-networking.md)
