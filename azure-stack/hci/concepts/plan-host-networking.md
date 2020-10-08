@@ -143,7 +143,7 @@ The following diagram shows a more advanced configuration for a stretched cluste
 
 Remember that TCP is used for traffic between sites while RDMA is used for intra-site storage traffic.
 
-:::image type="content" source="media/plan-host-networking/stretched-cluster-option-2.png" alt-text="Host networking option 2" lightbox="media/plan-host-networking/stretched-cluster-option-2.png":::
+:::image type="content" source="media/plan-host-networking/stretched-cluster-option-2.png" style="float:center" alt-text="Host networking option 2" lightbox="media/plan-host-networking/stretched-cluster-option-2.png":::
 
 ## Next steps
 
