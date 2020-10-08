@@ -1,5 +1,5 @@
 ---
-title: How to back up your storage accounts on Azure Stack Hub 
+title: Back up your storage accounts on Azure Stack Hub 
 description: Learn how to back up your storage accounts on Azure Stack Hub.
 author: mattbriggs
 
@@ -23,7 +23,7 @@ This article looks at protection and recovery of storage accounts within an Azur
 
 This section looks at the overall structure of the solution and major parts.
 
-![Azure Stack Hub Storage Backup](./media/azure-stack-network-howto-backup-storage/azure-stack-storage-backup.png)
+![Diagram that shows the overall structure of Azure Stack Hub storage backup.](./media/azure-stack-network-howto-backup-storage/azure-stack-storage-backup.png)
 
 ### Application layer
 
@@ -61,7 +61,7 @@ Once you have set up your Windows Server, you will need to install [Azure Stack 
 
 1. Retrieve the Blob Endpoint for the source and target storage accounts.
 
-    ![Azure Stack Hub Storage Backup](./media/azure-stack-network-howto-backup-storage/back-up-step1.png)
+    ![Screenshot that shows the primary blob endpoint for the source and target storage accounts.](./media/azure-stack-network-howto-backup-storage/back-up-step1.png)
 
 2. Create and record SAS Tokens for the source and target storage accounts.
 

@@ -1,4 +1,5 @@
 ---
+
 title: Connect two virtual networks in the same Azure Stack environment
 description: Learn how to connect two virtual networks within the same Azure Stack Hub environment by using Fortinet FortiGate.
 author: mattbriggs
@@ -75,8 +76,6 @@ The following table summarizes the parameters that are used in these deployments
 ## Deploy the FortiGate NGFW
 
 1.  Open the Azure Stack Hub user portal.
-
-    ![The Home screen is shown, with its "+ Create a resource" button.](./media/azure-stack-network-howto-vnet-to-onprem/image5.png)
 
 2.  Select **Create a resource** and search for `FortiGate`.
 
