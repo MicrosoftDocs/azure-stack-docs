@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/15/2020
+ms.date: 10/8/2020
 ---
 # What is RAS Gateway for Software Defined Networking?
 
@@ -14,7 +14,7 @@ ms.date: 09/15/2020
 
 Remote Access Service (RAS) Gateway is a software-based Border Gateway Protocol (BGP) capable router designed for cloud service providers (CSPs) and enterprises that host multitenant virtual networks using Hyper-V Network Virtualization (HNV). You can use RAS Gateway to route network traffic between a virtual network and another network, either local or remote.
 
-RAS Gateway requires Network Controller, which performs the deployment of gateway pools, configures tenant connections on each gateway, and switches network traffic flows to a standby gateway in the event of a gateway failure.
+RAS Gateway requires [Network Controller](network-controller-overview), which performs the deployment of gateway pools, configures tenant connections on each gateway, and switches network traffic flows to a standby gateway in the event of a gateway failure.
 
   > [!NOTE]
   > Multitenancy is the ability of a cloud infrastructure to support the virtual machine (VM) workloads of multiple tenants, yet isolate them from each other, while all of the workloads run on the same infrastructure. The multiple workloads of an individual tenant can interconnect and be managed remotely, but these systems do not interconnect with the workloads of other tenants, nor can other tenants remotely manage them.
@@ -43,7 +43,7 @@ Layer 3 (L3) forwarding enables connectivity between the physical infrastructure
 
 BGP reduces the need for manual route configuration on routers because it is a dynamic routing protocol, and automatically learns routes between sites that are connected by using site-to-site VPN connections. If your organization has multiple sites that are connected using BGP-enabled routers such as RAS Gateway, BGP allows the routers to automatically calculate and use valid routes to each other in the event of network disruption or failure.
 
-The BGP Route Reflector included with RAS Gateway provides an alternative to BGP full mesh topology that is required for route synchronization between routers. For more information, see [What is Route Reflector?](route-reflector-overview.md)
+The BGP Route Reflector included with RAS Gateway provides an alternative to BGP full mesh topology that is required for route synchronization between routers. For more information, see [What Is Route Reflector?](route-reflector-overview.md)
 
 ## How RAS Gateway works
 
@@ -62,5 +62,6 @@ You can assign a single public IP address to all pools or to a subset of pools. 
 For related information, see also:
 
 - [RAS Gateway Deployment Architecture](/windows-server/networking/sdn/technologies/network-function-virtualization/ras-gateway-deployment-architecture)
+- [Network Controller overview](network-controller-overview.md)
 - [Plan to deploy Network Controller](network-controller.md)
 - [SDN in Azure Stack HCI](software-defined-networking.md)
