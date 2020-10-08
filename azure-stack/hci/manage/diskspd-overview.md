@@ -4,39 +4,45 @@ description: This topic provides guidance on how to use DISKSPD to test workload
 author: jasonnyi
 ms.author: jasonyi
 ms.topic: how-to
-ms.date: 10/07/2020
+ms.date: 10/08/2020
 ---
 
 # Use DISKSPD to test workload storage performance
 
 >Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-This topic provides guidance on how to use DISKSPD to test workload storage performance. You now have an Azure Stack HCI Cluster set up - all ready to go. Great, but how do you know if you are getting the promised performance metrics, whether it be latency, throughput, or IOPS? This is where you may wish turn to DISKSPD. After reading the article, we will have learned how to run DISKSPD, understand a subset of the parameters, interpret the output, and gain a general understanding of the variables that affect performance.
+This topic provides guidance on how to use DISKSPD to test workload storage performance. You have an Azure Stack HCI Cluster set up, all ready to go. Great, but how do you know if you're getting the promised performance metrics, whether it be latency, throughput, or IOPS? This is when you may wish turn to DISKSPD. After reading this topic, you'll know how to run DISKSPD, understand a subset of parameters, interpret output, and gain a general understanding of the variables that affect workload storage performance.
 
 ## What is DISKSPD?
-At its core, DISKSPD is an I/O generating, command-line tool for micro-benchmarking. Great, so what do all these terms mean? Anyone who sets up an Azure Cluster, physical server, etc. has a reason. It could be that they wish to set up a web hosting environment, run virtual desktops for the employees, etc. Whatever the real-world use case may be, you likely want to simulate a test before deploying your actual application. However, testing your application in a real scenario is often difficult – this is where DISKSPD comes in. DISKSPD is a tool to customize and create your own synthetic workloads and test your application before deployment. The cool thing about the tool is that it gives the user the freedom to configure and tweak the parameters to create a specific scenario that resembles user’s real workload. By doing so, you can get a glimpse into what your system is capable of before deployment. At its core, DISKSPD simply issues a bunch of read and write operations.
+At its core, DISKSPD is an I/O generating, command-line tool for micro-benchmarking. Great, so what do all these terms mean? Anyone who sets up an Azure Cluster or physical server has a reason. It could be to set up a web hosting environment, or run virtual desktops for employees. Whatever the real-world use case may be, you likely want to simulate a test before deploying your actual application. However, testing your application in a real scenario is often difficult – this is where DISKSPD comes in.
 
-Now we know what DISKSPD is, but when should we use it? DISKSPD will have a difficult time emulating complex workloads. As a result, DISKSPD is great when your workload is not closely approximated by single-threaded file copy but you need a simple tool that produces acceptable baseline results.
+DISKSPD is a tool that you can customize to create your own synthetic workloads, and test your application before deployment. The cool thing about the tool is that it gives you the freedom to configure and tweak the parameters to create a specific scenario that resembles the user’s real workload. DISKSPD can give you a glimpse into what your system is capable of before deployment. At its core, DISKSPD simply issues a bunch of read and write operations.
+
+Now you know what DISKSPD is, but when should you use it? DISKSPD has a difficult time emulating complex workloads. But DISKSPD is great when your workload is not closely approximated by a single-threaded file copy, and you need a simple tool that produces acceptable baseline results.
 
 ## Quick start guide: from installation to running DISKSPD
 Without further ado, let’s get started.
 
-1. The first thing you need to do is log into the virtual machine that you will use for the DISKSPD test, with administrator rights. In our case, we will be running on the VM called, “node1.”
-1. Once logged in, you can download the tool from the [repository](https://github.com/microsoft/diskspd). This link contains the open source code as well as a wiki page that details all the parameters and specifications. The only file we really care about is the executable that can be downloaded as a ZIP file. Within it, you will see 3 subfolders: amd64 (64-bit systems), x86 (32-bit systems), and ARM64 (ARM systems). This will help you run the tool in every Windows version, client, or server. We will be using the amd64 version.
+1. The first thing to do is log on to the virtual machine (VM) as an administrator that you'll use for the DISKSPD test. In our case, we're running a VM called “node1.”
+1. After logging on, download the tool from the [repository](https://github.com/microsoft/diskspd). This link contains the open source code, as well as a wiki page that details all the parameters and specifications.
+
+    The only file that you really need is the executable that you can download as a ZIP file. Within it, you'll see 3 subfolders: amd64 (64-bit systems), x86 (32-bit systems), and ARM64 (ARM systems). This will help you run the tool in every Windows client or server version. In this example, we're using the amd64 version.
 
     :::image type="content" source="media/diskspd/download-directory.png" alt-text="Directory to download the DISKSPD .zip file." lightbox="media/diskspd/download-directory.png":::
 
-1.	Open PowerShell as an administrator.
-<!---see Dan PW topic for example format for these steps.--->
+1.	Open PowerShell as an administrator, and then go to where your DISKSPD file is located.
 
-1.	Go to where your DISKSPD file is located.
+1.	Run DISKSPD with a single line command, using the following command-line format. Simply replace everything inside the square brackets, including the brackets themselves with your appropriate settings.
 
-1.	Run DISKSPD with a single line command. The command line format is listed below. Simply replace everything inside the square brackets, including the brackets themselves with your appropriate settings.
-    - .\[INSERT_DISKSPD_PATH] [INSERT_SET_OF_PARAMETERS]  [INSERT_CSV_PATH_FOR_TEST_FILE] > [INSERT_OUTPUT_FILE.txt]
+    ```powershell
+     .\[INSERT_DISKSPD_PATH] [INSERT_SET_OF_PARAMETERS]  [INSERT_CSV_PATH_FOR_TEST_FILE] > [INSERT_OUTPUT_FILE.txt]
+    ```
     
-    Here is an example command you can run:
-    - .\diskspd -t2 -o32 -b4k -r4k -w0 -d120 -Sh -D -L -c5G C:\ClusterStorage\test01\targetfile\IO.dat > test04.txt
+    Here is an example command that you can run:
 
+    ```powershell
+     .\diskspd -t2 -o32 -b4k -r4k -w0 -d120 -Sh -D -L -c5G C:\ClusterStorage\test01\targetfile\IO.dat > test04.txt
+    ```
 ## Choosing key parameters
 Well, that was simple right? Unfortunately, there is more to it than that - let’s unpack what we did. First, there are various parameters that you can tinker with and it can get pretty specific. However, today we used the following set of baseline parameters.
 
@@ -55,11 +61,11 @@ Well, that was simple right? Unfortunately, there is more to it than that - let�
 
 **-d120** => This specifies the duration of the test, not including cool-down or warm-up. The default value is 10 seconds, but it is recommended that you use at least 60 seconds for any serious workload. We used 120 seconds in order to minimize any outliers. 
 
-**-Suw** => Disables software and hardware write caching (equivalent to -Sh)
+**-Suw** => Disables software and hardware write caching (equivalent to -Sh).
 
-**-D** => Captures IOPS statistics such as standard deviation, in intervals of milliseconds (per-thread, per-target)
+**-D** => Captures IOPS statistics such as standard deviation, in intervals of milliseconds (per-thread, per-target).
 
-**-L** => Measures latency statistics
+**-L** => Measures latency statistics.
 
 **-c** => Sets the sample file size that will be used in the test. Can be set in bytes, KiB, MiB, GiB, or blocks. We used a 5GB target file. 
 
