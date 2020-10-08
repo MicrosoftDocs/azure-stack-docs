@@ -78,6 +78,8 @@
       href: manage/manage-azure-registration.md
     - name: Change languages
       href: manage/languages.md
+    - name: Change privacy settings
+      href: manage/change-privacy-settings.md
     - name: Troubleshoot cluster validation reporting
       href: manage/validate-qos.md
     - name: Troubleshoot CredSSP
@@ -116,12 +118,20 @@
       href: concepts/quorum.md
   - name: Networking
     items:
-    - name: Software defined networking
+    - name: Software Defined Networking (SDN)
       href: concepts/software-defined-networking.md
     - name: Plan a SDN infrastructure
       href: concepts/plan-software-defined-networking-infrastructure.md
+    - name: Network Controller overview
+      href: concepts/network-controller-overview.md
     - name: Plan Network Controller
       href: concepts/network-controller.md
+    - name: Software Load Balancer overview
+      href: concepts/software-load-balancer.md
+    - name: RAS Gateway overview
+      href: concepts/gateway-overview.md
+    - name: Route Reflector overview
+      href: concepts/route-reflector-overview.md
   - name: Maintenance and security
     items:
     - name: Billing

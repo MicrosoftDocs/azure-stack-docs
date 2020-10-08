@@ -4,10 +4,10 @@ description: This article contains troubleshooting steps for the AKS engine on A
 author: mattbriggs
 
 ms.topic: article
-ms.date: 10/02/2020
+ms.date: 10/07/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 10/02/2020
+ms.lastreviewed: 10/07/2020
 
 # Intent: As as an Azure STack Hub developer, I want to fix the AKS engine so that can my cluster without incident.
 # Keyword: Azure Stack Hub AKS engine error codes
@@ -88,14 +88,27 @@ In addition, to the AKS engine logs, the Kubernetes components generate status a
 
 This script automates the process of gathering the following logs: 
 
- - Microsoft Azure Linux Agent (waagent) logs
- - Custom Script Extension logs
- - Running kube-system container metadata
- - Running kube-system container logs
- - Kubelet service status and journal
- - Etcd service status and journal
- - Gallery item's DVM logs
- - kube-system Snapshot
+- Log files in directory `/var/log/azure/`
+- Log files in directory `/var/log/kubeaudit` (kube audit logs)
+- Log file `/var/log/waagent.log` (waagent)
+- Log file `/var/log/azure/deploy-script-dvm.log` (if deployed using Azure Stack Hub's Kubernetes Cluster marketplace item)
+- Static manifests in directory `/etc/kubernetes/manifests`
+- Static addons in directory` /etc/kubernetes/addons`
+- kube-system containers metadata and logs
+- kubelet status and journal
+- etcd status and journal
+- Docker status and journal
+- kube-system snapshot
+- Azure CNI config files
+
+Some additional logs are retrieved for Windows nodes:
+
+- Log file `c:\Azure\CustomDataSetupScript.log`
+- kube-proxy status and journal
+- containerd status and journal
+- azure-vnet log and azure-vnet-telemetry log
+- ETW events for docker
+- ETW events for Hyper-V
 
 Without this script, you would need to connect to each node in the cluster locate and download the logs manually. In addition, the script can, optionally, upload the collected logs to a storage account that you can use to share the logs with others.
 
