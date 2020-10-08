@@ -118,10 +118,12 @@
       href: concepts/quorum.md
   - name: Networking
     items:
-    - name: Software defined networking
+    - name: Software Defined Networking (SDN)
       href: concepts/software-defined-networking.md
     - name: Plan a SDN infrastructure
       href: concepts/plan-software-defined-networking-infrastructure.md
+    - name: Network Controller overview
+      href: concepts/network-controller-overview.md
     - name: Plan Network Controller
       href: concepts/network-controller.md
   - name: Maintenance and security
