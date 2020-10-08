@@ -235,12 +235,12 @@ After the deployment of the Kubernetes cluster with AKS engine, the service prin
 - Updating each node with the new service principal secret.
 - Or updating the API model credentials and running the upgrade.
 
-### Update each node
+### Update each node manually
 
 1. Get a new secret for your service principal from your cloud operator. For instructions for Azure Stack Hub, see [Use an app identity to access Azure Stack Hub resources](/azure-stack/operator/azure-stack-create-service-principals).
 2. Use the new credentials provided by your cloud operator to update `/etc/kubernetes/azure.json` on each node. After making the update, restart both **kubelet** and **kube-controller-manager**.
 
-### Update the API Model
+### Update the cluster with aks-engine update
 
 Alternatively, you can replace the credentials in the `apimodel.json` and run upgrade using the updated json to the same or newer Kubernetes version. For instructions on upgrading the model see [Upgrade a Kubernetes cluster on Azure Stack Hub](azure-stack-kubernetes-aks-engine-upgrade.md)
 
