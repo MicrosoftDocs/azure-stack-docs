@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 09/23/2020
+ms.date: 09/28/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 08/11/2020
@@ -20,11 +20,11 @@ This article describes the contents of Azure Stack Hub update packages. The upda
 
 To access release notes for a different version, use the version selector dropdown above the table of contents on the left.
 
-::: moniker range=">=azs-1908"
+::: moniker range=">=azs-1910"
 > [!IMPORTANT]  
 > This update package is only for Azure Stack Hub integrated systems. Do not apply this update package to the Azure Stack Development Kit (ASDK).
 ::: moniker-end
-::: moniker range="<azs-1908"
+::: moniker range="<azs-1910"
 > [!IMPORTANT]  
 > If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
 ::: moniker-end
@@ -50,9 +50,6 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 ## 2005 build reference
 
 The Azure Stack Hub 2005 update build number is **1.2005.6.53**.
-
-> [!IMPORTANT]  
-> With [the 2002 release](release-notes.md?view=azs-2002) of Azure Stack Hub and in support of our customers around the world who are responding to COVID-19 and who may be making important decisions about their Azure Stack Hub systems, Microsoft temporarily extended its support policy to include three previous update versions (N-3). With the 2005 release we are continuing this extension for an additional 45 days (to 25th September 2020). As a result, the newly released 2005 update and any one of the three previous update versions (2002, 1910, and 1908, or N-3) will be supported. After these 45 days (after 25th September 2020), we will return to our standard support policy, meaning the supported versions will then be 2005, 2002 and 1910, or N-2.
 
 ### Update type
 
@@ -137,7 +134,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2005 release of Azure Stack Hub must be applied on the 2002 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2002.53.144](https://support.microsoft.com/help/4574736)
+- [Azure Stack Hub hotfix 1.2002.56.152](https://support.microsoft.com/help/4582983)
 
 ### After successfully applying the 2005 update
 
@@ -274,7 +271,7 @@ The 2002 release of Azure Stack Hub must be applied on the 1910 release with the
 After the installation of this update, install any applicable hotfixes.
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.2002.53.144](https://support.microsoft.com/help/4574736)
+- [Azure Stack Hub hotfix 1.2002.56.152](https://support.microsoft.com/help/4582983)
 ::: moniker-end
 
 ::: moniker range="azs-1910"
@@ -436,88 +433,12 @@ After the installation of this update, install any applicable hotfixes. For more
 - [Azure Stack Hub hotfix 1.1910.63.186](https://support.microsoft.com/help/4574735)
 ::: moniker-end
 
-::: moniker range="azs-1908"
-## 1908 build reference
-
-The Azure Stack Hub 1908 update build number is **1.1908.4.33**.
-
-### Update type
-
-For 1908, the underlying operating system on which Azure Stack Hub runs has been updated to Windows Server 2019. This update enables core fundamental enhancements and the ability to bring additional capabilities to Azure Stack Hub.
-
-The Azure Stack Hub 1908 update build type is **Full**. As a result, the 1908 update has a longer runtime than express updates like 1906 and 1907. Exact runtimes for full updates typically depend on the number of nodes that your Azure Stack Hub instance contains, the capacity used on your system by tenant workloads, your system's network connectivity (if connected to the internet), and your system hardware configuration. The 1908 update has had the following expected runtimes in our internal testing: 4 nodes - 42 hours, 8 nodes - 50 hours, 12 nodes - 60 hours, 16 nodes - 70 hours. Update runtimes lasting longer than these expected values aren't uncommon and don't require action by Azure Stack Hub operators unless the update fails.
-
-For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
-
-- Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware configuration.
-- Runtimes lasting longer than expected aren't uncommon and don't require action by Azure Stack Hub operators unless the update fails.
-- This runtime approximation is specific to the 1908 update and shouldn't be compared to other Azure Stack Hub updates.
-
-<!-- ## What's in this update -->
-
-<!-- The current theme (if any) of this release. -->
-
-### What's new
-
-<!-- What's new, also net new experiences and features. -->
-
-- For 1908, note that the underlying operating system on which Azure Stack Hub runs has been updated to Windows Server 2019. This update enables core fundamental enhancements and the ability to bring additional capabilities to Azure Stack Hub.
-- All components of Azure Stack Hub infrastructure now operate in FIPS 140-2 mode.
-- Azure Stack Hub operators can now remove portal user data. For more information, see [Clear portal user data from Azure Stack Hub](azure-stack-portal-clear.md).
-
-### Improvements
-
-<!-- Changes and product improvements with tangible customer-facing value. -->
-- Improvements to data at rest encryption of Azure Stack Hub to persist secrets into the hardware Trusted Platform Module (TPM) of the physical nodes.
-
-### Changes
-
-- Hardware providers will be releasing OEM extension package 2.1 or later at the same time as Azure Stack Hub version 1908. The OEM extension package 2.1 or later is a prerequisite for Azure Stack Hub version 1908. For more information about how to download OEM extension package 2.1 or later, contact your system's hardware provider, and see the [OEM updates](azure-stack-update-oem.md#oem-contact-information) article.  
-
-### Fixes
-
-- Fixed an issue with compatibility with future Azure Stack Hub OEM updates and an issue with VM deployment using customer user images. This issue was found in 1907 and fixed in hotfix [KB4517473](https://support.microsoft.com/en-us/help/4517473/azure-stack-hotfix-1-1907-12-44)  
-- Fixed an issue with OEM Firmware update and corrected misdiagnosis in Test-AzureStack for Fabric Ring Health. This issue was found in 1907 and fixed in hotfix [KB4515310](https://support.microsoft.com/en-us/help/4515310/azure-stack-hotfix-1-1907-7-35)
-- Fixed an issue with OEM Firmware update process. This issue was found in 1907 and fixed in hotfix [KB4515650](https://support.microsoft.com/en-us/help/4515650/azure-stack-hotfix-1-1907-8-37)
-
-<!-- Product fixes that came up from customer deployments worth highlighting, especially if there's an SR/ICM associated to it. -->
-
-## Security updates
-
-For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
-
-The Qualys vulnerability report for this release can be downloaded from the [Qualys website](https://www.qualys.com/azure-stack/).
-
-## Download the update
-
-You can download the Azure Stack Hub 1908 update package from [the Azure Stack Hub download page](https://aka.ms/azurestackupdatedownload).
-
-## Hotfixes
-
-Azure Stack Hub releases hotfixes on a regular basis. Be sure to install the latest Azure Stack Hub hotfix for 1907 before updating Azure Stack Hub to 1908.
-
-Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; don't attempt to install hotfixes on the ASDK.
-
-### Prerequisites: Before applying the 1908 update
-
-The 1908 release of Azure Stack Hub must be applied on the 1907 release with the following hotfixes:
-
-<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1907.29.80](https://support.microsoft.com/help/4555650)
-
-The Azure Stack Hub 1908 Update requires **Azure Stack Hub OEM version 2.1 or later** from your system's hardware provider. OEM updates include driver and firmware updates to your Azure Stack Hub system hardware. For more information about applying OEM updates, see [Apply Azure Stack Hub original equipment manufacturer updates](azure-stack-update-oem.md)
-
-### After successfully applying the 1908 update
-
-After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
-
-<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1908.57.146](https://support.microsoft.com/help/4583007)
-::: moniker-end
-
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
+::: moniker range="azs-1908"
+## 1908 archived release notes
+::: moniker-end
 ::: moniker range="azs-1907"
 ## 1907 archived release notes
 ::: moniker-end
@@ -564,6 +485,6 @@ After the installation of this update, install any applicable hotfixes. For more
 ## 1802 archived release notes
 ::: moniker-end
 
-::: moniker range="<azs-1908"
+::: moniker range="<azs-1910"
 You can access [older versions of Azure Stack Hub release notes on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived documents are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end

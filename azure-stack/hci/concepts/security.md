@@ -36,7 +36,7 @@ This section discusses how to protect services and virtual machines (VMs) runnin
 
 - **Device Guard** and **Credential Guard**. Device Guard protects against malware with no known signature, unsigned code, and malware that gains access to the kernel to either capture sensitive information or damage the system. Windows Defender Credential Guard uses virtualization-based security to isolate secrets so that only privileged system software can access them.
 
-    To learn more, see [Manage Windows Defender Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard-manage) and download the [Device Guard and Credential Guard hardware readiness tool](https://www.microsoft.com/en-us/download/details.aspx?id=53337).
+    To learn more, see [Manage Windows Defender Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard-manage) and download the [Device Guard and Credential Guard hardware readiness tool](https://www.microsoft.com/download/details.aspx?id=53337).
 
 - **Windows** and **firmware** updates are essential on clusters, servers (including guest VMs), and PCs to help ensure that both the operating system and system hardware are protected from attackers. You can use the Windows Admin Center **Updates** tool to apply updates to individual systems. If your hardware provider includes Windows Admin Center support for getting driver, firmware, and solution updates, you can get these updates at the same time as Windows updates, otherwise get them directly from your vendor.
 
@@ -83,7 +83,7 @@ This section discusses how to use Windows Admin Center to protect privileged ide
 
 - **Role-based access control (RBAC)** in Windows Admin Center allows users limited access to the servers they need to manage instead of making them full local administrators. To use RBAC in Windows Admin Center, you configure each managed server with a PowerShell Just Enough Administration endpoint.
 
-    To learn more, see [Role-based access control](/windows-server/manage/windows-admin-center/plan/user-access-options#role-based-access-control) and [Just Enough Administration](/powershell/scripting/learn/remoting/jea/overview?view=powershell-7).
+    To learn more, see [Role-based access control](/windows-server/manage/windows-admin-center/plan/user-access-options#role-based-access-control) and [Just Enough Administration](/powershell/scripting/learn/remoting/jea/overview).
 
 - **Security tools** in Windows Admin Center that you can use to manage and protect identities include Active Directory, Certificates, Firewall, Local Users and Groups, and more.
 
@@ -122,7 +122,7 @@ on a physical server. Because virtual environments typically have multiple VMs s
      
      - **Virtual Trusted Platform Module (vTPM)** in Windows Server supports TPM for VMs, which lets you use advanced security technologies, such as BitLocker in VMs. You can enable TPM support on any Generation 2 Hyper-V VM by using either Hyper-V Manager or the `Enable-VMTPM` Windows PowerShell cmdlet.
      
-        To learn more, see [Enable-VMTPM](/powershell/module/hyper-v/enable-vmtpm?view=win10-ps).
+        To learn more, see [Enable-VMTPM](/powershell/module/hyper-v/enable-vmtpm).
      
      - **Software Defined Networking (SDN)** in Azure Stack HCI and Windows Server centrally configures and manages physical and virtual network devices, such as routers, switches, and gateways in your datacenter. Virtual network elements, such as Hyper-V Virtual Switch, Hyper-V Network Virtualization, and RAS Gateway are designed to be integral elements of your SDN infrastructure.
 
