@@ -45,14 +45,12 @@ For more info on blockchain scenarios, see [Ethereum proof-of-authority consorti
 
 This solution template can deploy a single or multi-member Ethereum consortium network. The virtual network is connected in a chain topology using Network Virtual Appliance and connection resources.
 
-## Deployment use cases
-
 The template can deploy Ethereum consortium for leader and member in a variety of ways. Here are the ones we've tested:
 
 - On a multi-node Azure Stack Hub, with Azure AD or AD FS, deploy lead and member using the same subscription or with different subscriptions.
 - On a single-node Azure Stack Hub (with Azure AD), deploy lead and member using the same subscription.
 
-### Standalone and consortium leader deployment
+## Standalone and consortium leader deployment
 
 The consortium leader template configures the first member's footprint in the network. 
 
@@ -99,7 +97,7 @@ To verify leader's deployment, go to the leader's admin site. The admin site add
 
 ![Leader deployment summary](./media/azure-stack-ethereum/ethereum-node-status.png)
 
-### Joining consortium member deployment
+## Joining consortium member deployment
 
 1. Download the [consortium member template from GitHub](https://aka.ms/aa6zkua).
 1. In the Azure Stack Hub tenant portal, select **+ Create a resource > Template deployment** to deploy from a custom template.
@@ -145,7 +143,7 @@ To verify member's deployment, browse member's admin site. You can find the admi
 
 As shown in the picture, member's nodes status is **Not running**. This status is because the connection between member and leader isn't established. The connection between member and leader is a two-way connection. When you deploy member, template automatically creates the connection from member to the leader. To create the connection from leader to member, go to the next step.
 
-### Connect member and leader
+## Connect member and leader
 
 This template creates a connection from the leader to a remote member. 
 
