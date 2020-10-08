@@ -6,13 +6,13 @@ ms.author: v-kedow
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/7/2020
+ms.date: 10/8/2020
 ---
 # What is Network Controller?
 
 > Applies to Azure Stack HCI, version 20H2; Windows Server 2019
 
-Network Controller is the cornerstone of software defined networking (SDN) management. It is a highly scalable server role that provides a centralized, programmable point of automation to manage, configure, monitor, and troubleshoot virtual network infrastructure.
+Network Controller is the cornerstone of Software Defined Networking (SDN) management. It is a highly scalable server role that provides a centralized, programmable point of automation to manage, configure, monitor, and troubleshoot virtual network infrastructure.
 
 Using Network Controller, you can automate the configuration and management of network infrastructure instead of performing manual configuration of network devices and services.
 
@@ -42,11 +42,11 @@ Using the Northbound API, you can define the firewall rules for both incoming an
 
 ## Software Load Balancer management
 
-This Network Controller feature allows you to enable multiple servers to host the same workload, providing high availability and scalability. With Software Load Balancer, you can configure and manage load balancing, inbound Network Address Translation (NAT), and outbound access to the Internet for workloads connected to traditional VLAN networks and virtual networks.
+[Software Load Balancer](software-load-balancer.md) allows you to enable multiple servers to host the same workload, providing high availability and scalability. With Software Load Balancer, you can configure and manage load balancing, inbound Network Address Translation (NAT), and outbound access to the Internet for workloads connected to traditional VLAN networks and virtual networks.
 
 ## Gateway management
 
-This Network Controller feature allows you to deploy, configure, and manage VMs that are members of a RAS Gateway pool, providing external network connectivity to your customer workloads. With gateways, the following connectivity types are supported between your virtual and remote networks:
+[Remote Access Service (RAS) Gateway](gateway-overview.md) allows you to deploy, configure, and manage VMs that are members of a gateway pool, providing external network connectivity to your customer workloads. With gateways, the following connectivity types are supported between your virtual and remote networks:
 
 - Site-to-site virtual private network (VPN) gateway connectivity using IPsec
 - Site-to-site VPN gateway connectivity using Generic Routing Encapsulation (GRE)
@@ -76,4 +76,5 @@ To learn more about user-defined routes, see [Use Network Virtual Appliances on 
 For related information, see also:
 
 - [Plan to deploy Network Controller](network-controller.md)
+- [Deploy Network Controller using Windows PowerShell](../deploy/network-controller-powershell.md)
 - [SDN in Azure Stack HCI](software-defined-networking.md)
