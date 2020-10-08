@@ -4,10 +4,10 @@ description: Use the Azure Monitor for VMs, Update Management, Change Tracking, 
 author: mattbriggs
 
 ms.topic: article
-ms.date: 04/27/2020
+ms.date: 10/08/2020
 ms.author: mabrigg
 ms.reviewer: rtiberiu
-ms.lastreviewed: 04/27/2020
+ms.lastreviewed: 10/08/2020
 
 # Intent: As an Azure Stack user, I want to update and manage my VMs using Azure Automation tools so I can keep everything running smoothly. 
 # Keyword: vm update management automation
@@ -83,7 +83,7 @@ Follow these steps to enable update management for Azure Stack Hub VMs.
 
 2. In the Azure Stack Hub user-portal, go to the Extensions blade of the VMs for which you want to enable these solutions, click **+ Add**, select the **Azure Update and Configuration Management** extension, and then click **Create**:
 
-   [![The "Azure Update and Configuration Management" dialog box has explanatory information, a Create button (highlighted) to add the extension, and a link to more information.](media//vm-update-management/3-sm.PNG "VM extension blade")](media//vm-update-management/3-lg.PNG)
+    ![The "Azure Update and Configuration Management" dialog box has explanatory information, a Create button (highlighted) to add the extension, and a link to more information.](media//vm-update-management/3-sm.PNG "VM extension blade")
 
 3. Provide the previously created WorkspaceID and Primary Key to link the agent with the LogAnalytics workspace. Then click **OK** to deploy the extension.
 
