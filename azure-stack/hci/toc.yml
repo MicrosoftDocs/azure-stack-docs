@@ -128,6 +128,10 @@
       href: concepts/network-controller.md
     - name: Software Load Balancer overview
       href: concepts/software-load-balancer.md
+    - name: RAS Gateway overview
+      href: concepts/gateway-overview.md
+    - name: Route Reflector overview
+      href: concepts/route-reflector-overview.md
   - name: Maintenance and security
     items:
     - name: Billing
