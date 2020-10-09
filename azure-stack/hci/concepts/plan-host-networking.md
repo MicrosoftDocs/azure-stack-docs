@@ -3,7 +3,7 @@ title: Plan host networking for Azure Stack HCI
 description: Learn how to plan host networking for Azure Stack HCI clusters
 author: v-dasis
 ms.topic: how-to
-ms.date: 10/086/2020
+ms.date: 10/09/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
