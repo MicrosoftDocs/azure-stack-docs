@@ -4,10 +4,10 @@ description: Learn how to deploy Azure Cognitive Services to Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 10/07/2020
+ms.date: 10/09/2020
 ms.author: mabrigg
 ms.reviewer: guanghu
-ms.lastreviewed: 10/07/2020
+ms.lastreviewed: 10/09/2020
 
 # Intent: As an Azure Stack user, I want to deploy cognitive services on Azure Stack using containers so I can use the benefits of Azure Cognitive Services. 
 # Keyword: azure stack cognitive services
@@ -22,12 +22,16 @@ Containerization is an approach to software distribution in which an app or serv
 
 Container support is currently available for a subset of Azure Cognitive Services:
 
-- Language Understanding
-- Text Analytics (Sentiment 3.0)
-- Speech Service
-    - Speech-to-text (custom, standard)
-    - Text-to-speech (custom, standard)
-- Anomaly detector
+- **Speech**
+    - Text-to-speech (standard)
+    - Text-to-speech (custom)
+    - Text-to-speech (standard)
+- **Language**
+    - Language understanding
+    - Text analytics (sentiment analysis)
+- **Decision**
+    - Anomaly detector
+
 
 > [!IMPORTANT]
 > A subset of Azure Cognitive Services for Azure Stack Hub are currently in public preview.
@@ -36,16 +40,17 @@ Container support is currently available for a subset of Azure Cognitive Service
 
 Container support is currently in public preview for a subset of Azure Cognitive Services:
 
-- Speech Service
-    - Speech Language Detection
-    - Neural Text to Speech
--Computer Vision
-    - Spatial Analysis
-    - Read (optical character recognition \[OCR]) (Read 3.0 and 3.1)
-- Language Understanding
+- **Computer vision**
+    - Read 3.0, Read 3.1
+    - Spatial analysis (new)
+- **Language**
     - Key phrase extraction
     - Language detection
-    - Form recognizer
+    - Text analytics for health
+- **Speech**
+    - Speech language detection
+    - Neural TTS
+    - Text-to-speech (custom)
 
 ## Use containers with Cognitive Services on Azure Stack Hub
 
