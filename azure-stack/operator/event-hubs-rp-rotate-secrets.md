@@ -28,7 +28,7 @@ This article will show you how to rotate the secrets used by the Event Hubs reso
 
 ## Troubleshooting
 
-Secret rotation may complete successfully without errors, but if you experience any of the following conditions in the Administrator portal, [open a support request](azure-stack-help-and-support-overview.md) for assistance:
+Secret rotation should complete successfully without errors. If you experience any of the following conditions in the administrator portal, [open a support request](azure-stack-help-and-support-overview.md) for assistance:
 
    - Authentication issues, including problems connecting to the Event Hubs resource provider.
    - Can't create an Event Hubs cluster.
