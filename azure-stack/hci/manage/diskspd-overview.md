@@ -4,7 +4,7 @@ description: This topic provides guidance on how to use DISKSPD to test workload
 author: jasonnyi
 ms.author: jasonyi
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 10/09/2020
 ---
 
 # Use DISKSPD to test workload storage performance
@@ -166,42 +166,50 @@ To use the scripts:
     :::image type="content" source="media/diskspd/thread-value-output.png" alt-text="Example shows thread value output." lightbox="media/diskspd/thread-value-output.png":::
 
 ## Things to consider
-<!---High-level intro needed--->
+Now that you've started using DISKSPD, there are several things to consider in order to get real-world test results. These include paying close attention to the parameters you set, storage space health and variables, CSV ownership, and the effective of DISKSPD versus file copy.
 
 ### DISKSPD vs. real-world
-DISKSPD’s artificial test gives you relatively comparable results for your real workload. However, you need to pay close attention to the parameters you set and whether they match your real scenario. Synthetic workloads will never perfectly represent your application’s real workload during deployment (Ex. does the application require a lot of “think” time or does it continuously pound away with I/O operations).
+DISKSPD’s artificial test gives you relatively comparable results for your real workload. However, you need to pay close attention to the parameters you set and whether they match your real scenario. Synthetic workloads will never perfectly represent your application’s real workload during deployment. For example, does the application require a lot of “think” time or does it continuously pound away with I/O operations.
 
 ### Preparation
-Before running a DISKSPD test, there are a couple recommended actions for you to perform. These include things such as verifying the health of the storage space, checking your resource usage so that another program does not interfere with the test, preparing performance manager if you wish to collect additional data, etc. However, because the goal of this article is to quickly get DISKSPD running, we will not dive into the specifics of these actions. To learn more, see [Test Storage Spaces Performance Using Synthetic Workloads in Windows Server](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn894707(v=ws.11)).
+Before running a DISKSPD test, there are a few recommended actions to perform. These include verifying the health of the storage space, checking your resource usage so that another program does not interfere with the test, and preparing performance manager if you want to collect additional data. However, because the goal of this topic is to quickly get DISKSPD running, it does not dive into the specifics of these actions. To learn more, see [Test Storage Spaces Performance Using Synthetic Workloads in Windows Server](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn894707(v=ws.11)).
 
 ### Variables that affect performance
-Storage performance is a very delicate thing. Meaning, that there are many variables that can affect performance. And so, it is highly likely you may encounter a number that is inconsistent with your expectations. The list below highlights some of the variables that affect performance (this is not a comprehensive list).
-- Network Bandwidth
-- Resiliency Choice
-- Storage Disk Configuration: NVME, SSD, HDD
+Storage performance is a very delicate thing. Meaning, there are many variables that can affect performance. And so, it is highly likely that you may encounter a number that is inconsistent with your expectations. The following highlights some of the variables that affect performance, although it is not a comprehensive list:
+- Network bandwidth
+- Resiliency choice
+- Storage disk configuration: NVME, SSD, HDD
 - I/O buffer
 - Cache
 - RAID configuration
 - Network hops
-- Hard drive Spindle Speeds
-- Etc.
+- Hard drive spindle speeds
 
 ### CSV ownership
-A node is known as a volume owner or the **coordinator** node. Every standard volume is assigned a node and the other nodes can access this standard volume through network hops, which will result in slower performance (higher latency). 
-Similarly, a Cluster Shared Volume will also have an “owner.” However, CSV is “dynamic” in the sense that it will hop around and change ownership every time you restart the system (RDP). As a result, it’s important you confirm that DISKSPD is ran from the coordinator node that owns the CSV. If not, you may need to manually change the CSV ownership. 
-This can be done as follows:
-1. Check ownership by running: Get-ClusterSharedVolume
-1. If the ownership is incorrect (Ex. You are on Node1 but Node2 owns the CSV), then move the CSV to the correct node by running:
-    Get-ClusterSharedVolume <INSERT_CSV_NAME> | Move-ClusterSharedVolume <INSERT _NODE_NAME>
+A node is known as a volume owner or the **coordinator** node. Every standard volume is assigned a node and the other nodes can access this standard volume through network hops, which results in slower performance (higher latency).
 
+Similarly, a Cluster Shared Volume (CSV) also has an “owner.” However, a CSV is “dynamic” in the sense that it will hop around and change ownership every time you restart the system (RDP). As a result, it’s important to confirm that DISKSPD is run from the coordinator node that owns the CSV. If this is not the case, you may need to manually change the CSV ownership.
+
+To confirm CSV ownership:
+1. Check ownership by running the following PowerShell command:
+
+    ```powershell
+     Get-ClusterSharedVolume
+    ```
+
+1. If the CSV ownership is incorrect (For example, you are on Node1 but Node2 owns the CSV), then move the CSV to the correct node by running the following PowerShell command:
+
+    ```powershell
+     Get-ClusterSharedVolume <INSERT_CSV_NAME> | Move-ClusterSharedVolume <INSERT _NODE_NAME>
+    ```
 ### File Copy vs. DISKSPD
-Some people believe that they can “test storage performance” by simply copying and pasting a gigantic file and measuring how long it takes. The main reason behind this approach is most likely because it is simple and fast. They are not wrong in the sense that they are testing a specific workload, but it is difficult to categorize that as “testing storage performance.”
+Some people believe that they can “test storage performance” by simply copying and pasting a gigantic file and measuring how long that process takes. The main reason behind this approach is most likely because it is simple and fast. The idea is not wrong in the sense that it tests a specific workload, but it is difficult to categorize this method as “testing storage performance.”
 
-If your real-world goal has to do with file copy performance, then this may be a perfectly valid reason to go ahead and test file copy performance. However, if your goal is to measure storage performance, it’s recommended that you do not use this method. You can think of file copy as using a different set of “parameters” (such as queue, parallelization, etc.) specific to file services.
+If your real-world goal it to test file copy performance, then this may be a perfectly valid reason to use this method. However, if your goal is to measure storage performance, we recommend to not use this method. You can think of the file copy process as using a different set of “parameters” (such as queue, parallelization, and so on) that is specific to file services.
 
-Here is a short summary of why using file copy to measure storage performance may not be something you are looking for:
-- “File copies may not be optimized.” There are two levels of parallelism that occurs, one internal and the other external. Internally, if the file copy is headed for a remote target, the CopyFileEx engine does apply some parallelization. Externally, there are different ways of invoking the CopyFileEx engine. For example, copies from file explorer is single threaded whereas Robocopy is multi-threaded.
-- “Every copy has two sides.” When you simply copy and paste a file, you may be using two disks: the source and destination. If one is slower than the other, you essentially measure the performance of the slower disk. There are other cases where the communication between the source, destination, and the copy engine may affect the performance in unique ways.
+The following provides a short summary of why using file copy to measure storage performance may not provide the results that you are looking for:
+- **File copies might not be optimized,** There are two levels of parallelism that occur, one internal and the other external. Internally, if the file copy is headed for a remote target, the CopyFileEx engine does apply some parallelization. Externally, there are different ways of invoking the CopyFileEx engine. For example, copies from file explorer are single threaded, whereas Robocopy is multi-threaded.
+- **Every copy has two sides.** When you simply copy and paste a file, you may be using two disks: the source disk and the destination disk. If one is slower than the other, you essentially measure the performance of the slower disk. There are other cases where the communication between the source, destination, and the copy engine may affect the performance in unique ways.
     
     To learn more, see [Using file copy to measure storage performance](https://docs.microsoft.com/archive/blogs/josebda/using-file-copy-to-measure-storage-performance-why-its-not-a-good-idea-and-what-you-should-do-instead?ranMID=24542&ranEAID=je6NUbpObpQ&ranSiteID=je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q&epi=je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q&irgwc=1&OCID=AID2000142_aff_7593_1243925&tduid=%28ir__rcvu3tufjwkftzjukk0sohzizm2xiezdpnxvqy9i00%29%287593%29%281243925%29%28je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q%29%28%29&irclickid=_rcvu3tufjwkftzjukk0sohzizm2xiezdpnxvqy9i00).
 
