@@ -40,7 +40,7 @@ SMB traffic can flow over the following protocols:
 
 Remote direct memory access (RDMA) is a direct memory access from the memory of one computer into that of another without involving either computer's operating system. This permits high-throughput, low-latency networking while minimizing CPU usage, which is especially useful in clusters.
 
-All host RDMA traffic takes advantage of SMB Direct. SMB Direct is SMB 3.0 traffic sent over RDMA and is multiplexed over port 445. A minimum of two Priority-based Flow Control (PFC) enabled traffic classes (TCs) must be used for RDMA traffic to remain compatible with the majority of current and future physical switches on the market.
+All host RDMA traffic takes advantage of SMB Direct. SMB Direct is SMB 3.0 traffic sent over RDMA and is multiplexed over port 445. A minimum of two Priority-based Flow Control (PFC) enabled Traffic Classes (TCs) must be used for RDMA traffic to remain compatible with the majority of current and future physical switches on the market.
 
 Internet Wide Area RDMA Protocol (iWARP) runs RDMA over TCP, while RDMA over Converged Ethernet (RoCE) avoids the use of TCP, but requires both NICs and physical switches that support it.
 
@@ -131,7 +131,7 @@ The following diagrams show stretched cluster configuration with a single cluste
 
 ### Host networking option 1
 
-The following diagram shows a stretched cluster that flows management, Live Migration, and Storage Replica traffic between sites on the same adapter. Use the [Set-SmbBandwidthLimit](https://docs.microsoft.com/powershell/module/smbshare/set-smbbandwidthlimit) and [Set-SRNetworkConstraint](https://docs.microsoft.com/powershell/module/storagereplica/set-srnetworkconstraint) PowerShell cmdlets to bandwidth-limit Live Migration and Storage Replica traffic respectively.
+The following diagram shows a stretched cluster that uses a Switch Embedded Teaming (SET) to flow management, Live Migration, and Storage Replica traffic between sites on the same vNIC. Use the [Set-SmbBandwidthLimit](https://docs.microsoft.com/powershell/module/smbshare/set-smbbandwidthlimit) and [Set-SRNetworkConstraint](https://docs.microsoft.com/powershell/module/storagereplica/set-srnetworkconstraint) PowerShell cmdlets to bandwidth-limit Live Migration and Storage Replica traffic respectively. 
 
 Remember that TCP is used for traffic between sites while RDMA is used for intra-site Live Migration storage traffic.
 
@@ -148,5 +148,6 @@ Remember that TCP is used for traffic between sites while RDMA is used for intra
 ## Next steps
 
 - Brush up on failover clustering basics. See [Failover Clustering Networking Basics](https://techcommunity.microsoft.com/t5/failover-clustering/failover-clustering-networking-basics-and-fundamentals/ba-p/1706005?s=09)
+- Brush up on using SET. See [Remote Direct Memory Access (RDMA) and Switch Embedded Teaming (SET)](https://docs.microsoft.com/windows-server/virtualization/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming)
 - For deployment, see [Create a cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster)
 - For deployment, see [Create a cluster using Windows PowerShell](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster-powershell)
