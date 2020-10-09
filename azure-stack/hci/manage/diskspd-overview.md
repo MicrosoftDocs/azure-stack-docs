@@ -20,7 +20,7 @@ DISKSPD is a tool that you can customize to create your own synthetic workloads,
 
 Now you know what DISKSPD is, but when should you use it? DISKSPD has a difficult time emulating complex workloads. But DISKSPD is great when your workload is not closely approximated by a single-threaded file copy, and you need a simple tool that produces acceptable baseline results.
 
-## Quick start guide: from installation to running DISKSPD
+## Quick start guide: install and run DISKSPD
 Without further ado, let’s get started:
 
 1. The first thing to do is log on to the virtual machine (VM) as an administrator that you'll use for the DISKSPD test. In our case, we're running a VM called “node1.”
