@@ -79,7 +79,7 @@ For a list of the files that are provided in this update (OS Build 17784.1220), 
 
 For information on SSUs, see the following articles:
 
-- [Servicing stack updates](https://docs.microsoft.com/windows/deployment/update/servicing-stack-updates)
+- [Servicing stack updates](/windows/deployment/update/servicing-stack-updates)
 - [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/help/4535697)
 
 Learn about the [terminology](https://support.microsoft.com/help/824684) that Microsoft uses to describe software updates.
