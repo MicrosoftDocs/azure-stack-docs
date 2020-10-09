@@ -40,7 +40,7 @@ SMB traffic can flow over the following protocols:
 
 Remote direct memory access (RDMA) is a direct memory access from the memory of one computer into that of another without involving either computer's operating system. This permits high-throughput, low-latency networking while minimizing CPU usage, which is especially useful in clusters.
 
-All host RDMA traffic takes advantage of SMB Direct. SMB Direct is SMB 3.0 traffic sent over RDMA, and that is multiplexed over port 445. A minimum of two Priority-based Flow Control (PFC) enabled traffic classes (TCs) must be used for RDMA traffic to remain compatible with the majority of current and future physical switches on the market.
+All host RDMA traffic takes advantage of SMB Direct. SMB Direct is SMB 3.0 traffic sent over RDMA and is multiplexed over port 445. A minimum of two Priority-based Flow Control (PFC) enabled traffic classes (TCs) must be used for RDMA traffic to remain compatible with the majority of current and future physical switches on the market.
 
 Internet Wide Area RDMA Protocol (iWARP) runs RDMA over TCP, while RDMA over Converged Ethernet (RoCE) avoids the use of TCP, but requires both NICs and physical switches that support it.
 
