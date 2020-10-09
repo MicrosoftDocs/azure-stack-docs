@@ -10,10 +10,10 @@ ms.lastreviewed: 10/10/2020
 
 Create or renew an SSL/TLS certificate for securing the resource provider endpoints:
 
-1. Complete the [Generate certificate signing requests for certificate renewal](../operator/azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-certificate-renewal) steps for your certificate. Be sure to run the correct `New-AzsHub<resource-provider>CertificateSigningRequest` cmdlet, where `<resource-provider` identifies the name of your value-add resource provider. When finished, you can submit the generated .REQ file to your Certificate Authority (CA) for the new certificate.
+1. Complete the steps in [Generate certificate signing requests (CSRs) for certificate renewal](../operator/azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-certificate-renewal) for your certificate. Here you use the Azure Stack Hub Readiness Checker tool to create the CSR. Be sure to run the correct `New-AzsHub<resource-provider>CertificateSigningRequest` cmdlet, where `<resource-provider` identifies the name of your value-add resource provider. When finished, you submit the generated .REQ file to your Certificate Authority (CA) for the new certificate.
 
-2. Once you've received your certificate file from the Certificate Authority, complete the steps in [Prepare certificates for deployment or rotation](../operator/azure-stack-prepare-pki-certs.md).
+2. Once you've received your certificate file from the CA, complete the steps in [Prepare certificates for deployment or rotation](../operator/azure-stack-prepare-pki-certs.md). Here you use the Readiness Checker tool again, to process the file returned from the CA.
 
-3. Finally, complete the steps in [Validate Azure Stack Hub PKI certificates](../operator/azure-stack-validate-pki-certs.md)
+3. Finally, complete the steps in [Validate Azure Stack Hub PKI certificates](../operator/azure-stack-validate-pki-certs.md). You use the Readiness Checker tool once more, to perform validation tests on your new certificate.
 
 
