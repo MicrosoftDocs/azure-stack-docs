@@ -21,9 +21,9 @@ This article helps Azure Stack Hub cloud operators monitor and manage the storag
 
 As a cloud operator, you have a limited amount of storage to work with. The amount of storage is defined by the solution you implement. The solution is provided by your OEM vendor when you use a multinode solution, or it's provided by the hardware on which you install the Azure Stack Development Kit (ASDK).
 
-Because Azure Stack Hub doesn't support expansion of storage capacity, it's important to [monitor](#monitor-shares) the available storage to ensure that efficient operations are maintained.
+Azure Stack Hub only support expansion of storage capacity by adding additional scale unit nodes, see [add additional scale unit nodes in Azure Stack Hub](azure-stack-add-scale-node.md). Add physcial disk to the nodes won't expand the storage capacity.
 
-When the remaining free capacity of a volume becomes limited, plan to [manage the available space](#manage-available-space) to prevent the shares from running out of capacity.
+It's important to [monitor](#monitor-shares) the available storage to ensure that efficient operations are maintained. When the remaining free capacity of a volume becomes limited, plan to [manage the available space](#manage-available-space) to prevent the shares from running out of capacity.
 
 Your options for managing capacity include:
 - Reclaiming capacity.
