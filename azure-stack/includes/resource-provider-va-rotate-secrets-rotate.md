@@ -18,42 +18,42 @@ Open an elevated PowerShell console and complete the following steps to rotate t
    - The `"name"` property contains the resource provider name in the second segment of the value: `"microsoft.eventhub"`. 
    - The `"properties"."deployment"."version"` property contains the currently deployed version number: `"1.2003.0.0"`
 
-```powershell
-PS C:\WINDOWS\system32> Get-AzsProductDeployment -AsJson
-VERBOSE: GET https://adminmanagement.myregion.mycompany.com/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productDeployments?api-version=2019-01-01 with 0-char payload
-VERBOSE: Received 2656-char response, StatusCode = OK
-{
-    "value":  [
-                  {
-                      "id":  "/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/microsoft.eventhub",
-                      "name":  "global/microsoft.eventhub",
-                      "type":  "Microsoft.Deployment.Admin/locations/productDeployments",
-                      "properties":  {
-                                         "status":  "DeploymentSucceeded",
-                                         "subscriptionId":  "b37ae55a-a6c6-4474-ba97-81519412adf5",
-                                         "deployment":  {
-                                                            "version":  "1.2003.0.0",
-                                                            "actionPlanInstanceResourceId":  "/subscriptions/9e22ca99-854f-4bcb-956a-135f68799815/providers/Microsoft.Deployment.Admin/locations/global/actionplans/ab23fcd3-fef0-41a3-885d-e6ceb0f31e34",
-                                                            "parameters":  {
-
-                                                                           }
-                                                        },
-                                         "lastSuccessfulDeployment":  {
-                                                                          "version":  "1.2003.0.0",
-                                                                          "actionPlanInstanceResourceId":  "/subscriptions/9e22ca99-854f-4bcb-956a-135f68799815/providers/Microsoft.Deployment.Admin/locations/global/actionplans/ab23fcd3-fef0-41a3-885d-e6ceb0f31e34",
-                                                                          "parameters":  {
-
-                                                                                         }
-                                                                      },
-                                         "provisioningState":  "Succeeded"
-                                     }
-                  },
-                  {
-                  ...
-                  }
-              ]
-}
-```
+   ```powershell
+   PS C:\WINDOWS\system32> Get-AzsProductDeployment -AsJson
+   VERBOSE: GET https://adminmanagement.myregion.mycompany.com/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/   providers/Microsoft.Deployment.Admin/locations/global/productDeployments?api-version=2019-01-01 with 0-char    payload
+   VERBOSE: Received 2656-char response, StatusCode = OK
+   {
+       "value":  [
+                     {
+                         "id":  "/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.   Deployment.Admin/locations/global/productDeployments/microsoft.eventhub",
+                         "name":  "global/microsoft.eventhub",
+                         "type":  "Microsoft.Deployment.Admin/locations/productDeployments",
+                         "properties":  {
+                                            "status":  "DeploymentSucceeded",
+                                            "subscriptionId":  "b37ae55a-a6c6-4474-ba97-81519412adf5",
+                                            "deployment":  {
+                                                               "version":  "1.2003.0.0",
+                                                               "actionPlanInstanceResourceId":  "/subscriptions/   9e22ca99-854f-4bcb-956a-135f68799815/providers/   Microsoft.Deployment.Admin/locations/global/   actionplans/ab23fcd3-fef0-41a3-885d-e6ceb0f31e34",
+                                                               "parameters":  {
+   
+                                                                              }
+                                                           },
+                                            "lastSuccessfulDeployment":  {
+                                                                             "version":  "1.2003.0.0",
+                                                                             "actionPlanInstanceResourceId":  "/   subscriptions/   9e22ca99-854f-4bcb-956a-135f68799815/   providers/Microsoft.Deployment.Admin/   locations/global/actionplans/   ab23fcd3-fef0-41a3-885d-e6ceb0f31e34"   ,
+                                                                             "parameters":  {
+   
+                                                                                            }
+                                                                         },
+                                            "provisioningState":  "Succeeded"
+                                        }
+                     },
+                     {
+                     ...
+                     }
+                 ]
+   }
+   ```
 
 3. Build the resource provider's package ID, by concatenating the resource provider name and version. For example, using the values derived in the previous step, the Event Hubs RP package ID is `microsoft.eventhub.1.2003.0.0`. 
 
