@@ -124,7 +124,7 @@ Open an elevated PowerShell console and complete the following steps to determin
    ```powershell
    Invoke-AzsProductRotateSecretsAction -ProductId $productId
    ```
-
-> [!NOTE]
-> It takes approximately 3.5 - 4 hours to complete the rotation process.
+   
+   > [!NOTE]
+   > It takes approximately 3.5 - 4 hours to complete the rotation process.
 
