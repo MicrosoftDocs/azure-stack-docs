@@ -8,7 +8,7 @@ ms.reviewer: bryanla
 ms.lastreviewed: 10/20/2020
 ---
 
-Finally, determine the resource provider's latest deployment properties, which are used to complete the secret rotation process.
+Finally, determine the resource provider's latest deployment properties and use them to complete the secret rotation process.
 
 ### Determine deployment properties
 
@@ -26,12 +26,12 @@ Open an elevated PowerShell console and complete the following steps to determin
 
    ```powershell
    PS C:\WINDOWS\system32> Get-AzsProductDeployment -AsJson
-   VERBOSE: GET https://adminmanagement.myregion.mycompany.com/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/   providers/Microsoft.Deployment.Admin/locations/global/productDeployments?api-version=2019-01-01 with 0-char payload
+   VERBOSE: GET https://adminmanagement.myregion.mycompany.com/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productDeployments?api-version=2019-01-01 with 0-char payload
    VERBOSE: Received 2656-char response, StatusCode = OK
    {
        "value":  [
                      {
-                         "id":  "/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.   Deployment.Admin/locations/global/productDeployments/microsoft.eventhub",
+                         "id":  "/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/microsoft.eventhub",
                          "name":  "global/microsoft.eventhub",
                          "type":  "Microsoft.Deployment.Admin/locations/productDeployments",
                          "properties":  {
@@ -63,20 +63,19 @@ Open an elevated PowerShell console and complete the following steps to determin
 
 3. Build the resource provider's package ID, by concatenating the resource provider product ID and version. For example, using the values derived in the previous step, the Event Hubs RP package ID is `microsoft.eventhub.1.2003.0.0`. 
 
-4. Run `Get-AzsProductSecret -PackageId` to retrieve the list of secret types being used by the package ID derived in the previous step. In the returned `value` collection, find the element containing a value of `"Certificate"` for the `"properties"."secretKind"` property. This element contains properties for the RP's certificate external secret. The name assigned to this secret is identified by the last segment of the `"name"` property. 
+4. Using the package ID derived in the previous step, run `Get-AzsProductSecret -PackageId` to retrieve the list of secret types being used by the resource provider. In the returned `value` collection, find the element containing a value of `"Certificate"` for the `"properties"."secretKind"` property. This element contains properties for the RP's certificate external secret. Make note of the name assigned to this certificate secret, which is identified by the last segment of the `"name"` property. 
 
    In the following example, the secrets collection returned for the Event Hubs RP contains a `"Certificate"` secret named `aseh-ssl-gateway-pfx`. 
 
    ```powershell
    PS C:\WINDOWS\system32> Get-AzsProductSecret -PackageId $packageId -AsJson
    VERBOSE: GET
-   https://adminmanagement.myregion.mycompany.com/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/   Microsoft.Deployment.Admin/locations/global/productPackages/microsoft.eventhub.1.2003.0.0/secrets?   api-version=2019-
-   01-01 with 0-char payload
+   https://adminmanagement.myregion.mycompany.com/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productPackages/microsoft.eventhub.1.2003.0.0/secrets?api-version=2019-01-01 with 0-char payload
    VERBOSE: Received 617-char response, StatusCode = OK
    {
        "value":  [
                      {
-                         "id":  "/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.   Deployment.Admin/locations/global/productPackages/microsoft.eventhub.1.2003.0.0/secrets/   aseh-ssl-gateway-pfx",
+                         "id":  "/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productPackages/microsoft.eventhub.1.2003.0.0/secrets/aseh-ssl-gateway-pfx",
                          "name":  "global/microsoft.eventhub.1.2003.0.0/aseh-ssl-gateway-pfx",
                          "type":  "Microsoft.Deployment.Admin/locations/productPackages/secrets",
                          "properties":  {
@@ -103,20 +102,20 @@ Open an elevated PowerShell console and complete the following steps to determin
 
 1. Use the `Set-AzsProductSecret` cmdlet to upload your new certificate to Key Vault, which will be used by the rotation process. Replace the variable placeholder values accordingly before running the script:
 
-| Placeholder | Description | Example value |
-| ----------- | ----------- | --------------|
-| `<product-id>` | The product ID of the latest resource provider deployment. | `microsoft.eventhub` |
-| `<installed-version>` | The version of the latest resource provider deployment. | `1.2003.0.0` |
-| `$certSecretName` | The name under which the certificate secret is stored. | `aseh-ssl-gateway-pfx` |
-| `$pfxFilePath` | The path to your certificate PFX file. | `C:\dir\eh-cert-file.pfx` |
-| `$pfxPassword` | The password assigned to your certificate .PFX file. | `strong@CertSecret6` |
+   | Placeholder | Description | Example value |
+   | ----------- | ----------- | --------------|
+   | `<product-id>` | The product ID of the latest resource provider deployment. | `microsoft.eventhub` |
+   | `<installed-version>` | The version of the latest resource provider deployment. | `1.2003.0.0` |
+   | `<cert-secret-name>` | The name under which the certificate secret is stored. | `aseh-ssl-gateway-pfx` |
+   | `<cert-pfx-file-path>` | The path to your certificate PFX file. | `C:\dir\eh-cert-file.pfx` |
+   | `<pfx-password>` | The password assigned to your certificate .PFX file. | `strong@CertSecret6` |
 
    ```powershell
    $productId = '<product-id>'
    $packageId = $productId + '.' + '<installed-version>'
    $certSecretName = '<cert-secret-name>' 
    $pfxFilePath = '<cert-pfx-file-path>'
-   $pfxPassword = ConvertTo-SecureString '<pfxpassword>' -AsPlainText -Force   
+   $pfxPassword = ConvertTo-SecureString '<pfx-password>' -AsPlainText -Force   
    Set-AzsProductSecret -PackageId $packageId -SecretName $certSecretName -PfxFileName $pfxFilePath -PfxPassword    $pfxPassword -Force
    ```
 
