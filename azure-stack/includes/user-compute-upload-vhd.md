@@ -28,7 +28,7 @@ You can upload your VHD with the portal, or with the container you created in th
 
 Use Azure Storage Explorer or AzCopy to reduce that chance that your VHD will be corrupted in the upload process, and your upload will be faster. The following steps use AzCopy on a Windows 10 machine. AzCopy is a command-line utility that you can use to copy blobs or files to or from a storage account.
 
-1. If you don't have AzCopy installed, install AzCopy. You find find instruction to download and get started with AzCopy in the article [Get started with AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10). Make a note of where you store the binary. You can [add AzCopy to your path](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/) to use it from the PowerShell command line.
+1. If you don't have AzCopy installed, install AzCopy. You find find instruction to download and get started with AzCopy in the article [Get started with AzCopy](/azure/storage/common/storage-use-azcopy-v10). Make a note of where you store the binary. You can [add AzCopy to your path](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/) to use it from the PowerShell command line.
 
 2. Open PowerShell to use AzCopy from the shell.
 
@@ -42,4 +42,4 @@ Use Azure Storage Explorer or AzCopy to reduce that chance that your VHD will be
 > [!NOTE]  
 > Upload your VHD using syntax similar to uploading a single file to virtual directory. Add `--blob-type=PageBlob` to make sure that the VHD is uploaded as a **Page Blob**, instead of **Block** by default.
 
-For more information about using AzCopy and other storage tools, see [Use data transfer tools in Azure Stack Hub Storage](/azure-stack/user/azure-stack-storage-transfer).
+For more information about using AzCopy and other storage tools, see [Use data transfer tools in Azure Stack Hub Storage](../user/azure-stack-storage-transfer.md).

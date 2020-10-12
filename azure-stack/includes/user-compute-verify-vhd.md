@@ -16,7 +16,7 @@ Before uploading your VHD, you must validate that the VHD meets the requirements
     Get-Command -Module hyper-v
     ```
 
-    If you do not have the Hyper-V commands, see, see [Working with Hyper-V and Windows PowerShell](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/try-hyper-v-powershell). 
+    If you do not have the Hyper-V commands, see, see [Working with Hyper-V and Windows PowerShell](/virtualization/hyper-v-on-windows/quick-start/try-hyper-v-powershell). 
 
 2. Get the path to your VHD on your machine. Run the following cmdlet:
 
