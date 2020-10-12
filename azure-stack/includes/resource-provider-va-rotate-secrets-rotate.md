@@ -8,19 +8,17 @@ ms.reviewer: bryanla
 ms.lastreviewed: 10/20/2020
 ---
 
-Secret rotation for a value-add resource provider consists of two processes: 
-1. Determining your resource provider's deployment properties.
-2. Using those properties to run the secret rotation process.
+Finally, determine the resource provider's latest deployment properties, which are used to complete the secret rotation process.
 
 ### Determine deployment properties
 
-Resource providers are deployed into your Azure Stack Hub environment as a versioned product package. Packages are assigned a unique package ID, in the format `'microsoft.<resource-provider>.<installed-version>'`. Where `<resource-provider>` represents the name of the resource provider, and `<installed-version>` represents a specific version. The secrets associated with each package are maintained in the Azure Stack Hub Key Vault service. 
+Resource providers are deployed into your Azure Stack Hub environment as a versioned product package. Packages are assigned a unique package ID, in the format `'microsoft.<product-id>.<installed-version>'`. Where `<product-id>` is a unique string representing the resource provider, and `<installed-version>` represents a specific version. The secrets associated with each package are stored in the Azure Stack Hub Key Vault service. 
 
-Open an elevated PowerShell console and complete the following steps to determine the properties required to rotate your resource provider's secrets:
+Open an elevated PowerShell console and complete the following steps to determine the properties required to rotate the resource provider's secrets:
 
 1. Sign in to your Azure Stack Hub environment using your operator credentials. See [Connect to Azure Stack Hub with PowerShell](../operator/azure-stack-powershell-configure-admin.md) for PowerShell sign-in script. Be sure to replace all placeholder values appropriate to your environment, such as endpoint URLs and directory tenant name.
 
-2. Run the `Get-AzsProductDeployment` cmdlet to retrieve a list of the latest resource provider deployments. The returned `"value"` collection contains an element for each deployed resource provider. Find your resource provider and make note of the values for these properties:
+2. Run the `Get-AzsProductDeployment` cmdlet to retrieve a list of the latest resource provider deployments. The returned `"value"` collection contains an element for each deployed resource provider. Find the resource provider of interest and make note of the values for these properties:
    - `"name"` - contains the resource provider product ID in the second segment of the value. 
    - `"properties"."deployment"."version"` - contains the currently deployed version number. 
 
@@ -65,7 +63,7 @@ Open an elevated PowerShell console and complete the following steps to determin
 
 3. Build the resource provider's package ID, by concatenating the resource provider product ID and version. For example, using the values derived in the previous step, the Event Hubs RP package ID is `microsoft.eventhub.1.2003.0.0`. 
 
-4. Run `Get-AzsProductSecret -PackageId` to retrieve the list of secret types being used by the package ID created in the previous step. In the returned `value` collection, find the entry containing a `"properties"."secretKind"` value of `"Certificate"`. This is the entry for your RP's certificate secret, which is identified by the last segment of the `"name"` property. 
+4. Run `Get-AzsProductSecret -PackageId` to retrieve the list of secret types being used by the package ID created in the previous step. In the returned `value` collection, find the entry containing a `"properties"."secretKind"` value of `"Certificate"`. This is the entry for the RP's certificate secret, which is identified by the last segment of the `"name"` property. 
 
    In the following example, the secrets collection returned for the Event Hubs RP contains a `"Certificate"` secret named `aseh-ssl-gateway-pfx`. 
 
@@ -105,22 +103,22 @@ Open an elevated PowerShell console and complete the following steps to determin
 
 1. Use the `Set-AzsProductSecret` cmdlet to upload your new certificate to Key Vault, which will be used by the rotation process. Replace the variable placeholder values accordingly before running the script:
 
-| Variable | Description | Example value |
-| -------- | ----------- | --------------|
-| `$productId` | The resource provider product ID. | `'microsoft.eventhub'` |
-| `$packageId` | The resource provider package ID in the format `'<rp-product-id>.<installed-version>'`. | `'microsoft.eventhub.1.2003.0.0'` |
-| `$certSecretName` | The name under which the certificate secret is stored. | `'aseh-ssl-gateway-pfx'`. |
-| `$pfxFilePath` | The path to your certificate PFX file. | `'C:\dir\eh-cert-file.pfx'` |
-| `$pfxPassword` | The password assigned to your certificate .PFX file. | `'strong@CertSecret6'` |
+| Placeholder | Description | Example value |
+| ----------- | ----------- | --------------|
+| `<product-id>` | The product ID of the latest resource provider deployment. | `microsoft.eventhub` |
+| `<installed-version>` | The version of the latest resource provider deployment. | `1.2003.0.0` |
+| `$certSecretName` | The name under which the certificate secret is stored. | `aseh-ssl-gateway-pfx` |
+| `$pfxFilePath` | The path to your certificate PFX file. | `C:\dir\eh-cert-file.pfx` |
+| `$pfxPassword` | The password assigned to your certificate .PFX file. | `strong@CertSecret6` |
 
-```powershell
-$productId = '<rp-product-id>'
-$packageId = '<rp-product-id>.<installed-version>'
-$certSecretName = '<cert-secret-name>' 
-$pfxFilePath = '<cert-pfx-file-path>'
-$pfxPassword = ConvertTo-SecureString '<pfxpassword>' -AsPlainText -Force   
-Set-AzsProductSecret -PackageId $packageId -SecretName $certSecretName -PfxFileName $pfxFilePath -PfxPassword $pfxPassword -Force
-```
+   ```powershell
+   $productId = '<product-id>'
+   $packageId = $productId + '.' + '<installed-version>'
+   $certSecretName = '<cert-secret-name>' 
+   $pfxFilePath = '<cert-pfx-file-path>'
+   $pfxPassword = ConvertTo-SecureString '<pfxpassword>' -AsPlainText -Force   
+   Set-AzsProductSecret -PackageId $packageId -SecretName $certSecretName -PfxFileName $pfxFilePath -PfxPassword    $pfxPassword -Force
+   ```
 
 2. Finally, use the `Invoke-AzsProductRotateSecretsAction` cmdlet to rotate the internal and external secrets:
 
