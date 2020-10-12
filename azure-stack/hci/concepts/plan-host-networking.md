@@ -3,7 +3,7 @@ title: Plan host networking for Azure Stack HCI
 description: Learn how to plan host networking for Azure Stack HCI clusters
 author: v-dasis
 ms.topic: how-to
-ms.date: 10/09/2020
+ms.date: 10/12/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -42,7 +42,7 @@ Remote direct memory access (RDMA) is a direct memory access from the memory of 
 
 All host RDMA traffic takes advantage of SMB Direct. SMB Direct is SMB 3.0 traffic sent over RDMA and is multiplexed over port 445. A minimum of two Priority-based Flow Control (PFC) enabled Traffic Classes (TCs) must be used for RDMA traffic to remain compatible with the majority of current and future physical switches on the market.
 
-Internet Wide Area RDMA Protocol (iWARP) runs RDMA over TCP, while RDMA over Converged Ethernet (RoCE) avoids the use of TCP, but requires both NICs and physical switches that support it.
+Internet Wide Area RDMA Protocol (iWARP) runs RDMA over TCP, while RDMA over Converged Ethernet (RoCE) avoids the use of TCP, but requires both NICs and physical switches that support it. For converged network requirements for RDMA over RoCE, see the [Windows Server 2016 and 2019 RDMA Deployment Guide](https://github.com/Microsoft/SDN/blob/master/Diagnostics/S2D%20WS2016_ConvergedNIC_Configuration.docx).
 
 RDMA is enabled by default for all east/west traffic between cluster nodes in a site on the same subnet. RDMA is disabled and not supported for north/south stretched cluster traffic between sites on different subnets.
 
@@ -117,33 +117,84 @@ When using the Cluster Creation wizard in Windows Admin Center to create the clu
 
 There may be additional ports required not listed above. These are the ports for basic Azure Stack HCI functionality.
 
-## Standard cluster scenario
+## Network switch requirements
+
+This section defines the requirements for physical switches used with Azure Stack HCI. These requirements list the industry specifications, organizational standards, and protocols that are mandatory for all Azure Stack HCI deployments. Unless otherwise noted, the latest active (non-superseded) version of the standard is required.
+
+These requirements help ensure reliable communications between nodes in Azure Stack HCI cluster deployments. Reliable communications between nodes are critical. To provide the needed level of reliability for Azure Stack HCI requires that switches:
+
+- Comply with applicable industry specifications, standards, and protocols
+- Provide visibility as to which specifications, standards, and protocols the switch supports
+- Provide information on which capabilities are enabled
+
+Make sure you ask your switch vendor if your switch supports the following:
+
+#### Standard: IEEE 802.1Q
+
+Ethernet switches must comply with the IEEE 802.1Q specification that defines VLANs. VLANs are required for several aspects of Azure Stack HCI and are required in all scenarios.
+
+#### Standard: IEEE 802.1Qbb
+
+Ethernet switches must comply with the IEEE 802.1Qbb specification that defines Priority Flow Control (PFC). PFC is required where Data Center Bridging (DCB) is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qbb is required in all scenarios. A minimum of three Class of Service (CoS) priorities are required without downgrading the switch capabilities or port speed.
+
+#### Standard: IEEE 802.1Qaz
+
+Ethernet switches must comply with the IEEE 802.1Qaz specification that defines Enhanced Transmission Select (ETS). ETS is required where DCB is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qaz is required in all scenarios. A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed.
+
+#### Standard: IEEE 802.1AB
+
+Ethernet switches must comply with the IEEE 802.1AB specification that defines the Link Layer Discovery Protocol (LLDP). LLDP is required for Windows to discover switch configuration. Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled. These switches must not require additional configuration.
+
+For example, enabling 802.1 Subtype 3 should automatically advertise all VLANs available on switch ports.
+
+#### TLV Requirements
+
+LLDP allows organizations to define and encode their own custom TLVs. These are called Organizationally Specific TLVs. All Organizationally Specific TLVs start with an LLDP TLV Type value of 127. The following table shows which Organizationally Specific Custom TLV (TLV Type 127) subtypes are required and which are optional:
+
+|Condition|Organization|TLV Subtype|
+|-|-|-|
+|Required|IEEE 802.1|VLAN Name (Subtype = 3)|
+|Required|IEEE 802.3|Maximum Frame Size (Subtype = 4)|
+|Optional|IEEE 802.1|Port VLAN ID (Subtype = 1)|
+|Optional|IEEE 802.1|Port And Protocol VLAN ID (Subtype = 2)|
+|Optional|IEEE 802.1|Link Aggregation (Subtype = 7)|
+|Optional|IEEE 802.1|Congestion Notification (Subtype = 8)|
+|Optional|IEEE 802.1|ETS Configuration (Subtype = 9)|
+|Optional|IEEE 802.1|ETS Recommendation (Subtype = A)|
+|Optional|IEEE 802.1|PFC Configuration (Subtype = B)|
+|Optional|IEEE 802.1|EVB (Subtype = D)|
+|Optional|IEEE 802.3|Link Aggregation (Subtype = 3)|
+
+> [!NOTE]
+> Some of the optional features listed may be required in the future.
+
+## Standard cluster physical network
 
 The following diagram shows a standard (non-stretched) cluster configuration with two clusters on the same subnet and same site. Server nodes communicate with each other in the same cluster using redundant network adapters connected to dual top-of-rack (TOR) switches. Cluster-to-cluster communications go through dual network spine devices.
 
 :::image type="content" source="media/plan-host-networking/rack-topology-non-stretched-cluster.png" alt-text="Non-stretched cluster" lightbox="media/plan-host-networking/rack-topology-non-stretched-cluster.png":::
 
-## Stretched cluster scenario
+## Stretched cluster physical network
 
 The following diagrams show stretched cluster configuration with a single cluster with server nodes located in different sites and subnets (four nodes per site). Server nodes communicate with each other in the same cluster using redundant network adapters connected to dual-connected TOR switches. Site-to-site communications go through dual routers using Storage Replica for failover.
 
 :::image type="content" source="media/plan-host-networking/rack-topology-stretched-cluster.png" alt-text="Stretched cluster" lightbox="media/plan-host-networking/rack-topology-stretched-cluster.png":::
 
-### Host networking option 1
+### Stretched cluster node networking option 1
 
 The following diagram shows a stretched cluster that uses a Switch Embedded Teaming (SET) to flow management, Live Migration, and Storage Replica traffic between sites on the same vNIC. Use the [Set-SmbBandwidthLimit](https://docs.microsoft.com/powershell/module/smbshare/set-smbbandwidthlimit) and [Set-SRNetworkConstraint](https://docs.microsoft.com/powershell/module/storagereplica/set-srnetworkconstraint) PowerShell cmdlets to bandwidth-limit Live Migration and Storage Replica traffic respectively. 
 
 Remember that TCP is used for traffic between sites while RDMA is used for intra-site Live Migration storage traffic.
 
-:::image type="content" source="media/plan-host-networking/stretched-cluster-option-1.png" alt-text="Host networking option 1" lightbox="media/plan-host-networking/stretched-cluster-option-1.png":::
+:::image type="content" source="media/plan-host-networking/stretched-cluster-option-1.png" alt-text="Stretched cluster node networking option 1" lightbox="media/plan-host-networking/stretched-cluster-option-1.png":::
 
-### Host networking option 2
+### Stretched cluster node networking option 2
 
 The following diagram shows a more advanced configuration for a stretched cluster that uses [SMB Multichannel](https://docs.microsoft.com/azure-stack/hci/manage/manage-smb-multichannel) for Storage Replica traffic between sites and a dedicated adapter for cluster management traffic. Use the [Set-SmbBandwidthLimit](https://docs.microsoft.com/powershell/module/smbshare/set-smbbandwidthlimit) and [Set-SRNetworkConstraint](https://docs.microsoft.com/powershell/module/storagereplica/set-srnetworkconstraint) PowerShell cmdlets to bandwidth-limit Live Migration and Storage Replica traffic respectively.
 
 Remember that TCP is used for traffic between sites while RDMA is used for intra-site storage traffic.
 
-:::image type="content" source="media/plan-host-networking/stretched-cluster-option-2.png" alt-text="Host networking option 2" lightbox="media/plan-host-networking/stretched-cluster-option-2.png":::
+:::image type="content" source="media/plan-host-networking/stretched-cluster-option-2.png" alt-text="Stretched cluster node networking option 2" lightbox="media/plan-host-networking/stretched-cluster-option-2.png":::
 
 ## Next steps
 
