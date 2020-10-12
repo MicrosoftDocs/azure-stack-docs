@@ -121,9 +121,9 @@ Open an elevated PowerShell console and complete the following steps to determin
 
 2. Finally, use the `Invoke-AzsProductRotateSecretsAction` cmdlet to rotate the internal and external secrets:
 
-```powershell
-Invoke-AzsProductRotateSecretsAction -ProductId $productId
-```
+   ```powershell
+   Invoke-AzsProductRotateSecretsAction -ProductId $productId
+   ```
 
 > [!NOTE]
 > It takes approximately 3.5 - 4 hours to complete the rotation process.
