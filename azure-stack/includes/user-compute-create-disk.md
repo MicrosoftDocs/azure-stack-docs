@@ -10,7 +10,7 @@ ms.lastreviewed: 08/04/2020
 
 1. Sign in to the Azure Stack Hub user portal.
 
-    If you are a cloud operator creating a platform disk, follow the instructions in [Add a platform image](/azure-stack/operator/azure-stack-add-vm-image#add-a-platform-image) to add the VHD through the administrator portal or with the administrator endpoints.
+    If you are a cloud operator creating a platform disk, follow the instructions in [Add a platform image](../operator/azure-stack-add-vm-image.md#add-a-platform-image) to add the VHD through the administrator portal or with the administrator endpoints.
 
 2. In the user portal, select  **All Services** > **Disks** > **Add**.
 

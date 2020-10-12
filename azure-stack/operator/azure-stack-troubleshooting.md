@@ -227,5 +227,5 @@ The Azure Stack Hub patch and update process is designed to allow operators to a
 **Cause**: When attempting the 2002 update, the update might fail and provide this message: `The private network parameter is missing from cloud parameters. Please use set-azsprivatenetwork cmdlet to set private networkTrace`.
 
 **Remediation**: 
-[Set up a private internal network](https://docs.microsoft.com/azure-stack/operator/azure-stack-network?view=azs-2002#private-network).
+[Set up a private internal network](./azure-stack-network.md?view=azs-2002#private-network).
 ::: moniker-end
