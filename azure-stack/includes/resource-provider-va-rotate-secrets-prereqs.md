@@ -5,7 +5,7 @@ ms.service: azure-stack
 ms.topic: include
 ms.date: 10/10/2020
 ms.reviewer: bryanla
-ms.lastreviewed: 10/10/2020
+ms.lastreviewed: 10/20/2020
 ---
 
 > [!NOTE]
