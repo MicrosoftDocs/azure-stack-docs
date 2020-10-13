@@ -24,7 +24,7 @@ Use the following procedures to properly pause a server in a Azure Stack HCI clu
 
 Before taking a server offline for maintenance, verify that all your volumes are healthy.
 
-To do so, open a Windows PowerShell session with administrator permissions, and then run the following command to view volume status:
+To do so, open a Windows PowerShell session with administrator permissions, and then run the following command:
 
 ```PowerShell
 Get-VirtualDisk
@@ -33,18 +33,19 @@ Get-VirtualDisk
 Here's an example of what the output might look like:
 
 ```
-FriendlyName ResiliencySettingName OperationalStatus HealthStatus IsManualAttach Size
------------- --------------------- ----------------- ------------ -------------- ----
-MyVolume1    Mirror                OK                Healthy      True           1 TB
-MyVolume2    Mirror                OK                Healthy      True           1 TB
-MyVolume3    Mirror                OK                Healthy      True           1 TB
+FriendlyName              ResiliencySettingName FaultDomainRedundancy OperationalStatus HealthStatus    Size FootprintOnPool StorageEfficiency
+------------              --------------------- --------------------- ----------------- ------------    ---- --------------- -----------------
+Mirror II                 Mirror                1                     OK                Healthy         4 TB         8.01 TB            49.99%
+Mirror-accelerated parity                                             OK                Healthy      1002 GB         1.96 TB            49.98%
+Mirror                    Mirror                1                     OK                Healthy         1 TB            2 TB            49.98%
+ClusterPerformanceHistory Mirror                1                     OK                Healthy        24 GB           49 GB            48.98%
 ```
 
-Verify that the **HealthStatus** property for every volume (virtual disk) is **Healthy**.
+Verify that the **HealthStatus** property for every volume is **Healthy**.
 
-To do this in Failover Cluster Manager, go to **Storage** > **Disks**.
+To view this in Windows Admin Center, connect to the server and select **Storage** from the **Tools** menu in Server Manager. 
 
-Verify that the **Status** column for every volume (virtual disk) shows **Online**.
+Verify that the **Status** column for every virtual disk shows **Online**.
 
 ## Pausing and draining the server
 
@@ -59,7 +60,7 @@ In PowerShell, run the following cmdlet as administrator to pause and drain.
 Suspend-ClusterNode -Drain
 ```
 
-To do this in Windows Admin Center, connect to the cluster and then select **Compute > Nodes** from the **Tools** menu at the left. Then, click on the name of the server you wish to pause and drain, and click **Pause**. You should see the following prompt:
+To do this in Windows Admin Center, connect to the cluster and then select **Compute > Nodes** from the **Tools** menu in Cluster Manager. Then, click on the name of the server you wish to pause and drain, and click **Pause**. You should see the following prompt:
 
 If you pause this node, all clustered roles move to other nodes and no roles can be added to this node until it's resumed. Are you sure you want to pause cluster node?
 
