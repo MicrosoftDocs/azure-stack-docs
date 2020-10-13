@@ -168,34 +168,6 @@ LLDP allows organizations to define and encode their own custom TLVs. These are 
 > [!NOTE]
 > Some of the optional features listed may be required in the future.
 
-## Standard cluster physical network
-
-The following diagram shows a standard (non-stretched) cluster configuration with two clusters on the same subnet and same site. Server nodes communicate with each other in the same cluster using redundant network adapters connected to dual top-of-rack (TOR) switches. Cluster-to-cluster communications go through dual network spine devices.
-
-:::image type="content" source="media/plan-host-networking/rack-topology-non-stretched-cluster.png" alt-text="Non-stretched cluster" lightbox="media/plan-host-networking/rack-topology-non-stretched-cluster.png":::
-
-## Stretched cluster physical network
-
-The following diagrams show stretched cluster configuration with a single cluster with server nodes located in different sites and subnets (four nodes per site). Server nodes communicate with each other in the same cluster using redundant network adapters connected to dual-connected TOR switches. Site-to-site communications go through dual routers using Storage Replica for failover.
-
-:::image type="content" source="media/plan-host-networking/rack-topology-stretched-cluster.png" alt-text="Stretched cluster" lightbox="media/plan-host-networking/rack-topology-stretched-cluster.png":::
-
-### Stretched cluster node networking option 1
-
-The following diagram shows a stretched cluster that uses a Switch Embedded Teaming (SET) to flow management, Live Migration, and Storage Replica traffic between sites on the same vNIC. Use the [Set-SmbBandwidthLimit](https://docs.microsoft.com/powershell/module/smbshare/set-smbbandwidthlimit) and [Set-SRNetworkConstraint](https://docs.microsoft.com/powershell/module/storagereplica/set-srnetworkconstraint) PowerShell cmdlets to bandwidth-limit Live Migration and Storage Replica traffic respectively. 
-
-Remember that TCP is used for traffic between sites while RDMA is used for intra-site Live Migration storage traffic.
-
-:::image type="content" source="media/plan-host-networking/stretched-cluster-option-1.png" alt-text="Stretched cluster node networking option 1" lightbox="media/plan-host-networking/stretched-cluster-option-1.png":::
-
-### Stretched cluster node networking option 2
-
-The following diagram shows a more advanced configuration for a stretched cluster that uses [SMB Multichannel](https://docs.microsoft.com/azure-stack/hci/manage/manage-smb-multichannel) for Storage Replica traffic between sites and a dedicated adapter for cluster management traffic. Use the [Set-SmbBandwidthLimit](https://docs.microsoft.com/powershell/module/smbshare/set-smbbandwidthlimit) and [Set-SRNetworkConstraint](https://docs.microsoft.com/powershell/module/storagereplica/set-srnetworkconstraint) PowerShell cmdlets to bandwidth-limit Live Migration and Storage Replica traffic respectively.
-
-Remember that TCP is used for traffic between sites while RDMA is used for intra-site storage traffic.
-
-:::image type="content" source="media/plan-host-networking/stretched-cluster-option-2.png" alt-text="Stretched cluster node networking option 2" lightbox="media/plan-host-networking/stretched-cluster-option-2.png":::
-
 ## Next steps
 
 - Brush up on failover clustering basics. See [Failover Clustering Networking Basics](https://techcommunity.microsoft.com/t5/failover-clustering/failover-clustering-networking-basics-and-fundamentals/ba-p/1706005?s=09)
