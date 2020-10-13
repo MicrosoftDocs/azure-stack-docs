@@ -223,7 +223,7 @@ Internal secret rotation is only required if you suspect one has been compromise
 
 Reference the PowerShell script in step 2 of [Rotate external secrets](#rotate-external-secrets). The script provides an example you can adapt for internal secret rotation, by making a few changes to run the following steps:
 
-1. In the "Run Secret Rotation" section, add the `-Internal` parameter to the [Start-SecretRotation cmdlet](/azure-stack/reference/pep-2002/start-secretrotation), for example:
+1. In the "Run Secret Rotation" section, add the `-Internal` parameter to the [Start-SecretRotation cmdlet](../reference/pep-2002/start-secretrotation.md), for example:
 
     ```powershell
     # Run Secret Rotation
@@ -309,7 +309,7 @@ The baseboard management controller monitors the physical state of your servers.
 
 ## Reference: Start-SecretRotation cmdlet
 
-[Start-SecretRotation cmdlet](/azure-stack/reference/pep-2002/start-secretrotation) rotates the infrastructure secrets of an Azure Stack Hub system. This cmdlet can only be executed against the Azure Stack Hub privileged endpoint, by using an  `Invoke-Command` script block passing the PEP session in the `-Session` parameter. By default, it rotates only the certificates of all external network infrastructure endpoints.
+[Start-SecretRotation cmdlet](../reference/pep-2002/start-secretrotation.md) rotates the infrastructure secrets of an Azure Stack Hub system. This cmdlet can only be executed against the Azure Stack Hub privileged endpoint, by using an  `Invoke-Command` script block passing the PEP session in the `-Session` parameter. By default, it rotates only the certificates of all external network infrastructure endpoints.
 
 | Parameter | Type | Required | Position | Default | Description |
 |--|--|--|--|--|--|
