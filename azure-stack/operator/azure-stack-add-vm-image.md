@@ -3,7 +3,7 @@ title: Add a custom VM image to Azure Stack Hub
 description: Learn how to add or remove a custom VM image to Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/09/2020
+ms.date: 10/12/2020
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 9/8/2020
@@ -37,13 +37,19 @@ To add a platform image to Azure Stack Hub, use the Azure Stack Hub administrato
 
 Add the VM image as an Azure Stack Hub operator using the portal.
 
-1. Sign in to Azure Stack Hub as an operator. In the menu, select **All services** > **Compute** > **Images** > **Add**.
+1. Sign in to Azure Stack Hub as an operator. Select **Dashboard** from the left-hand navigation.
 
-   ![Add a VM image](./media/azure-stack-add-vm-image/tca4.png)
+2. In the **Resource providers** list, select **Compute**.
+
+   [![Select Compute](./media/azure-stack-add-vm-image/dash-small.png)](./media/azure-stack-add-vm-image/dash.png#lightbox)
+
+3. Select **VM images**, then select **Add**.
+
+   [![Add a VM image](./media/azure-stack-add-vm-image/tca4-small.png)](./media/azure-stack-add-vm-image/tca4.png#lightbox)
 
 2. Under **Create image**, enter the **Publisher**, **Offer**, **SKU**, **Version**, and OS disk blob URI. Then, select **Create** to begin creating the VM image.
 
-   ![Custom image sideloading UI](./media/azure-stack-add-vm-image/tca5.png)
+   [![Custom image sideloading UI](./media/azure-stack-add-vm-image/tca5-small.png)](./media/azure-stack-add-vm-image/tca5.png#lightbox)
 
    When the image is successfully created, the VM image status changes to **Succeeded**.
 
