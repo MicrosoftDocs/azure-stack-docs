@@ -13,18 +13,51 @@ ms.date: 10/13/2020
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-With Azure Stack HCI, taking a server offline (bringing it down) also means taking offline portions of the storage that is shared across all servers in the cluster. Doing so requires pausing the server you want to take offline, moving roles to other servers in the cluster, and verifying that all data is available on the other servers in the cluster so that the data remains safe and accessible throughout the maintenance period.
+With Azure Stack HCI, taking a server offline for maintenance requires taking offline portions of the storage that is shared across all servers in the cluster. This requires pausing the server you want to take offline, moving roles to other servers in the cluster, and verifying that all data is available on the other servers in the cluster so that the data remains safe and accessible throughout the maintenance period.
 
-Use the following procedures to properly pause a server in a Azure Stack HCI cluster before taking it offline.
+You can either use Windows Admin Center or Powershell, and both procedures are covered here.
 
    > [!IMPORTANT]
    > To install updates on a Azure Stack HCI cluster, use Cluster-Aware Updating (CAU), which automatically performs the procedures in this topic when installing updates. For more info, see [Update Azure Stack HCI clusters](update-cluster.md).
 
-## Verifying it's safe to take the server offline
+## Take a server offline using Windows Admin Center
 
-Before taking a server offline for maintenance, verify that all your volumes are healthy.
+Use the following procedures to properly pause and resume a server in a Azure Stack HCI cluster using Windows Admin Center. 
 
-To do so, open a Windows PowerShell session with administrator permissions, and then run the following command:
+### Verifying it's safe to take the server offline
+
+Connect to the server and select **Storage > Disks** from the **Tools** menu in Server Manager, and verify that the **Status** column for every virtual disk shows **Online**.
+
+Then, go to **Storage > Volumes** and verify that the **Health** column for every volume shows **Healthy** and that the **Status** column for every volume shows **OK**.
+
+### Pause and drain the server
+
+Before restarting or shutting down the server, pause and drain (move off) any roles such as virtual machines (VMs) running on it. This gives Azure Stack HCI an opportunity to gracefully flush and commit data to ensure the shutdown is transparent to any applications running on that server. Always pause and drain clustered servers before restarting or shutting them down.
+
+Using Windows Admin Center, connect to the cluster and then select **Compute > Nodes** from the **Tools** menu in Cluster Manager. Then, click on the name of the server you wish to pause and drain, and click **Pause**. You should see the following prompt:
+
+*If you pause this node, all clustered roles move to other nodes and no roles can be added to this node until it's resumed. Are you sure you want to pause cluster node?*
+
+Click **yes**, and all VMs will begin live migrating to other servers in the cluster. This can take a few minutes.
+
+   > [!NOTE]
+   > When you pause and drain the cluster node properly, Azure Stack HCI performs an automatic safety check to ensure it is safe to proceed. If there are unhealthy volumes, it will stop and alert you that it's not safe to proceed.
+
+### Shutting down the server
+
+Once the server has completed draining, it will appear as **Paused** in Windows Admin Center. You can now safely restart or shut it down.
+
+### Resuming the server
+
+In Cluster Manager, select **Compute > Nodes** from the **Tools** menu at the left. Click on the name of the server you wish to resume, and then click **resume**.
+
+## Take a server offline using Windows PowerShell
+
+Use the following procedures to properly pause and resume server in a Azure Stack HCI cluster using Windows PowerShell. 
+
+### Verifying it's safe to take the server offline
+
+To verify that all your volumes are healthy, open a Windows PowerShell session with administrator permissions, and then run the following command:
 
 ```PowerShell
 Get-VirtualDisk
@@ -43,51 +76,24 @@ ClusterPerformanceHistory Mirror                1                     OK        
 
 Verify that the **HealthStatus** property for every volume is **Healthy**.
 
-To view this in Windows Admin Center, connect to the server and select **Storage** from the **Tools** menu in Server Manager. 
+### Pause and drain the server
 
-Verify that the **Status** column for every virtual disk shows **Online**.
-
-## Pausing and draining the server
-
-Before restarting or shutting down the server, pause and drain (move off) any roles such as virtual machines (VMs) running on it. This gives Azure Stack HCI an opportunity to gracefully flush and commit data to ensure the shutdown is transparent to any applications running on that server.
-
-   > [!IMPORTANT]
-   > Always pause and drain clustered servers before restarting or shutting them down.
-
-In PowerShell, run the following cmdlet as administrator to pause and drain.
+Run the following cmdlet as administrator to pause and drain the server.
 
 ```PowerShell
 Suspend-ClusterNode -Drain
 ```
 
-To do this in Windows Admin Center, connect to the cluster and then select **Compute > Nodes** from the **Tools** menu in Cluster Manager. Then, click on the name of the server you wish to pause and drain, and click **Pause**. You should see the following prompt:
+### Shutting down the server
 
-If you pause this node, all clustered roles move to other nodes and no roles can be added to this node until it's resumed. Are you sure you want to pause cluster node?
+Once the server has completed draining, it will show as **Paused** in PowerShell.
 
-Click **yes**, and all VMs will begin live migrating to other servers in the cluster. This can take a few minutes.
+You can now safely restart or shut it down by using the Restart-Computer or Stop-Computer PowerShell cmdlets.
 
    > [!NOTE]
-   > When you pause and drain the cluster node properly, Azure Stack HCI performs an automatic safety check to ensure it is safe to proceed. If there are unhealthy volumes, it will stop and alert you that it's not safe to proceed.
+   > When running a `Get-VirtualDisk` command on servers that are shutting down or starting/stopping the cluster service, the server's Operational Status may be reported as incomplete or degraded, and the Health Status column may list a warning. This is normal and should not cause concern. All your volumes remain online and accessible.
 
-## Shutting down the server
-
-Once the server has completed draining, it will show as **Paused** in Windows Admin Center and PowerShell.
-
-You can now safely restart or shut it down, just like you would normally (for example, by using the Restart-Computer or Stop-Computer PowerShell cmdlets).
-
-```PowerShell
-Get-VirtualDisk
-
-FriendlyName ResiliencySettingName OperationalStatus HealthStatus IsManualAttach Size
------------- --------------------- ----------------- ------------ -------------- ----
-MyVolume1    Mirror                Incomplete        Warning      True           1 TB
-MyVolume2    Mirror                Incomplete        Warning      True           1 TB
-MyVolume3    Mirror                Incomplete        Warning      True           1 TB
-```
-
-Incomplete or Degraded operational status is normal when nodes are shutting down or starting/stopping the cluster service on a node and should not cause concern. All your volumes remain online and accessible.
-
-## Resuming the server
+### Resuming the server
 
 When you are ready for the server to begin hosting workloads again, resume it.
 
@@ -102,8 +108,6 @@ To move the roles that were previously running on this server back, use the opti
 ```PowerShell
 Resume-ClusterNode –Failback Immediate
 ```
-
-To do this in Windows Admin Center, select **Compute > Nodes** from the **Tools** menu at the left in Cluster Manager. Then, click on the name of the server you wish to resume and click **resume**.
 
 ## Waiting for storage to resync
 
@@ -161,12 +165,12 @@ Use the following steps to patch your Azure Stack HCI system quickly. It involve
 
 1. Plan your maintenance window.
 2. Take the virtual disks offline.
-3. Stop the cluster to take the storage pool offline. Run the  **Stop-Cluster** cmdlet or use Failover Cluster Manager to stop the cluster.
+3. Stop the cluster to take the storage pool offline. Run the  **Stop-Cluster** cmdlet or use Windows Admin Center to stop the cluster.
 4. Set the cluster service to **Disabled** in Services.msc on each node. This prevents the cluster service from starting up while being patched.
 5. Apply the Windows Server Cumulative Update and any required Servicing Stack Updates to all nodes. (You can update all nodes at the same time, no need to wait since the cluster is down).
 6. Restart the nodes, and ensure everything looks good.
 7. Set the cluster service back to **Automatic** on each node.
-8. Start the cluster. Run the **Start-Cluster** cmdlet or use Failover Cluster Manager.
+8. Start the cluster. Run the **Start-Cluster** cmdlet or use Windows Admin Center.
 
    Give it a few minutes.  Make sure the storage pool is healthy.
 
