@@ -49,7 +49,7 @@ Once the server has completed draining, it will appear as **Paused** in Windows 
 
 ### Resuming the server
 
-In Cluster Manager, select **Compute > Nodes** from the **Tools** menu at the left. Click on the name of the server you wish to resume, and then click **resume**.
+When you are ready for the server to begin hosting workloads again, resume it. In Cluster Manager, select **Compute > Nodes** from the **Tools** menu at the left. Click on the name of the server you wish to resume, and then click **resume**.
 
 ## Take a server offline using Windows PowerShell
 
@@ -88,16 +88,14 @@ Suspend-ClusterNode -Drain
 
 Once the server has completed draining, it will show as **Paused** in PowerShell.
 
-You can now safely restart or shut it down by using the Restart-Computer or Stop-Computer PowerShell cmdlets.
+You can now safely restart or shut it down by using the `Restart-Computer` or `Stop-Computer` PowerShell cmdlets.
 
    > [!NOTE]
    > When running a `Get-VirtualDisk` command on servers that are shutting down or starting/stopping the cluster service, the server's Operational Status may be reported as incomplete or degraded, and the Health Status column may list a warning. This is normal and should not cause concern. All your volumes remain online and accessible.
 
 ### Resuming the server
 
-When you are ready for the server to begin hosting workloads again, resume it.
-
-In PowerShell, run the following cmdlet as administrator to resume.
+Run the following cmdlet as administrator to resume.
 
 ```PowerShell
 Resume-ClusterNode
@@ -115,7 +113,9 @@ When the server resumes, any new writes that happened while it was unavailable n
 
 You must wait for re-syncing to complete before taking any others servers in the cluster offline.
 
-In PowerShell, run the following cmdlet (as Administrator) to monitor progress.
+In Windows Admin Center, simply wait for the server status to appear as **Up**.
+
+In PowerShell, run the following cmdlet as administrator to monitor progress.
 
 ```PowerShell
 Get-StorageJob
@@ -160,8 +160,9 @@ MyVolume3    Mirror                OK                Healthy      True          
 
 It's now safe to pause and restart other servers in the cluster.
 
-## How to update Azure Stack HCI nodes offline
-Use the following steps to patch your Azure Stack HCI system quickly. It involves scheduling a maintenance window and taking the system down for patching. If there is a critical security update that you need applied quickly or you need to ensure patching completes in your maintenance window, this method may be for you. This process brings down the Azure Stack HCI cluster, patches it, and brings it all up again. The trade-off is downtime to the hosted resources.
+## Update Azure Stack HCI nodes offline
+
+Use the following steps to patch your Azure Stack HCI system quickly. If there is a critical security update that you need applied quickly or you need to ensure patching completes in your maintenance window, this method may be for you. This process brings down the Azure Stack HCI cluster, patches it, and brings it all up again. The trade-off is downtime to the hosted resources.
 
 1. Plan your maintenance window.
 2. Take the virtual disks offline.
