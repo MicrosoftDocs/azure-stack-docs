@@ -3,35 +3,51 @@ title: Set up VM affinity rules using Windows PowerShell
 description: Learn how to set up VM affinity rules using Windows PowerShell
 author: v-dasis
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.date: 10/14/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
 
 # Create server and site affinity rules for VMs
 
-> Applies to Azure Stack HCI version 20H2
+> Applies to Azure Stack HCI, version 20H2
 
-Using Windows PowerShell, you can easily create affinity and anti-affinity rules for your virtual machines (VMs) in a cluster.
+Using either Windows Admin Center or Windows PowerShell, you can easily create affinity and anti-affinity rules for your virtual machines (VMs) in a cluster.
 
-Affinity is a rule that establishes a relationship between two or more resource groups or roles, such as virtual machines (VMs), to keep them together in an Azure Stack HCI cluster. Anti-affinity is the opposite in that it is used to keep the specified resource groups apart from each other.
+Affinity is a rule that establishes a relationship between two or more resource groups or roles, such as virtual machines (VMs), to keep them together on the same server, cluster, or site. Anti-affinity is the opposite in that it is used to keep the specified VMs or resource groups apart from each other, such as two domain controllers placed on separate servers or in separate sites for disaster recovery.
 
 Affinity and anti-affinity rules are used similarly to the way Azure uses Availability Zones. In Azure, you can configure Availability Zones to keep VMs in separate zones and away from each other or in the same zone with each other.  
 
-Using affinity and anti-affinity rules, any clustered VM would either stay in the same cluster node or be prevented from being together in the same cluster node.  In this way, the only way to move a VM out of a node would be to do it manually.  You can also keep VMs together with the Cluster Shared Volume (CSV) that its VHDX resides on.
+Using affinity and anti-affinity rules, any clustered VM would either stay in the same cluster node or be prevented from being together in the same cluster node.  In this way, the only way to move a VM out of a node would be to do it manually.  You can also keep VMs together with its own storage, such as the Cluster Shared Volume (CSV) that its VHDX resides on.
 
-Combining affinity and anti-affinity rules, you can also configure a stretched cluster across two sites (fault domains) and keep your VMs in the site they need to be in.
+Combining affinity and anti-affinity rules, you can also configure a stretched cluster across two sites and keep your VMs in the site they need to be in.
 
-Typically, you set up your rules from a remote computer, rather than on a host server in a cluster. This remote computer is called the management computer.
+## Using Windows Admin Center
 
-> [!NOTE]
-> When running PowerShell commands from a management computer, include the -Name or -Cluster parameter with the name of the cluster you are managing. If applicable, you will also need to specify the fully qualified domain name (FQDN) when using the -ComputerName parameter for a server node
+You can create basic affinity and anti-affinity rules using Windows Admin Center.
 
-## New PowerShell cmdlets
+:::image type="content" source="media/vm-affinity/vm-affinity-rules.png" alt-text="Virtual machines screen" lightbox="media/vm-affinity/vm-affinity-rules.png":::
 
-To create affinity rules for Azure Stack HCI clusters, use the following PowerShell cmdlets.
+1. In Windows Admin Center home, under **All connections**, select the server or cluster you want to create the VM rule for.
+1. Under **Tools**, select **Settings**.
+1. Under **Settings**, select **Affinity rules**, then select **Create rule** under **Affinity rules**.
+1. Under **Rule name**, enter a name for your rule.
+1. Under Rule type, select either **Together (same server)** or **Apart (different servers)** to place your VMs on the same server or on different servers.
+1. Under **Applies to**, select the VMs that this rule will apply to. Use the **Add** button to add more VMs to the rule.
+1. When finished, click **Create rule**.
+1. To delete a rule, simply select it and click **Delete rule**.
 
-### New-ClusterAffinityRule
+## Using Windows PowerShell
+
+You can create more complex rules using Windows PowerShell than using Windows Admin Center. Typically, you set up your rules from a remote computer, rather than on a host server in a cluster. This remote computer is called the management computer.
+
+When running Windows PowerShell commands from a management computer, include the `-Name` or `-Cluster` parameter with the name of the cluster you are managing. If applicable, you will also need to specify the fully qualified domain name (FQDN) when using the `-ComputerName` parameter for a server node
+
+### New PowerShell cmdlets
+
+To create affinity rules for Azure Stack HCI clusters, use the following new PowerShell cmdlets.
+
+#### New-ClusterAffinityRule
 
 The **`New-ClusterAffinityRule`** cmdlet is used to create new rules.  With this command you would specify the name of the rule as well as the type of rule it is, where:
 
@@ -45,7 +61,7 @@ Example:
 New-ClusterAffinityRule -Name -RuleType SameFaultDomain -Cluster Cluster1
 ```
 
-### Set-ClusterAffinityRule
+#### Set-ClusterAffinityRule
 
 The **`Set-ClusterAffinityRule`** cmdlet is used to enable or disable a rule, where:
 
@@ -59,7 +75,7 @@ Example:
 Set-ClusterAffinityRule -Name -Enabled -Cluster Cluster1
 ```
 
-### Get-ClusterAffinityRule
+#### Get-ClusterAffinityRule
 
 The **`Get-ClusterAffinityRule`** cmdlet is used to display the specified rule and what type it is.  If **`-Name`** is not specified, it will list all rules.
 
@@ -69,7 +85,7 @@ Example:
 Get-ClusterAffinityRule -Name -Cluster Cluster1
 ```
 
-### Add-ClusterGroupToAffinityRule
+#### Add-ClusterGroupToAffinityRule
 
 The **`Add-ClusterGroupToAffinityRule`** cmdlet is used to add a VM role or group name to a specific affinity rule, where:
 
@@ -83,7 +99,7 @@ Example:
 Add-ClusterGroupToAffinityRule -Groups -Name -Cluster Cluster1
 ```
 
-### Add-ClusterSharedVolumeToAffinityRule
+#### Add-ClusterSharedVolumeToAffinityRule
 
 The **`Add-ClusterSharedVolumeToAffinityRule`** allows your VMs to stay together with the Cluster Shared Volume the VHDX resides on, where:
 
@@ -97,7 +113,7 @@ Example:
 Add-ClusterSharedVolumeToAffinityRule  -ClusterSharedVolumes -Name -Cluster Cluster1
 ```
 
-### Remove-ClusterAffinityRule
+#### Remove-ClusterAffinityRule
 
 The **`Remove-ClusterAffinityRule`** deletes the specified rule, where **`-Name`** is the name of the rule.
 
@@ -107,7 +123,7 @@ Example:
 Remove-ClusterAffinityRule -Name -Cluster Cluster1
 ```
 
-### Remove-ClusterGroupFromAffinityRule
+#### Remove-ClusterGroupFromAffinityRule
 
 The **`Remove-ClusterGroupFromAffinityRule`** removes a VM group or role from a specific rule but does not disable or delete the rule, where:
 
@@ -121,7 +137,7 @@ Example:
 Remove-ClusterGroupFromAffinityRule -Name -Groups -Cluster Cluster1
 ```
 
-### Remove-ClusterSharedVolumeFromAffinityRule
+#### Remove-ClusterSharedVolumeFromAffinityRule
 
 The **`Remove-ClusterSharedVolumeFromAffinityRule`** cmdlet is used to remove the Cluster Shared Volumes from a specific rule but does not disable or delete the rule, where:
 
@@ -135,11 +151,11 @@ Example:
 Remove-ClusterSharedVolumeFromAffinityRule -ClusterSharedVolumes -Name -Cluster Cluster1
 ```
 
-## Existing PowerShell cmdlets
+### Existing PowerShell cmdlets
 
 With the advent of the new cmdlets, we also added additional new switches to a few existing cmdlets.
 
-### Move-ClusterGroup
+#### Move-ClusterGroup
 
 The new `-IgnoreAffinityRule` switch ignores the rule and moves the clustered resource group to another cluster node. For more information on this cmdlet, see [Move-ClusterGroup](/powershell/module/failoverclusters/move-clustergroup?view=win10-ps).
 
@@ -152,7 +168,7 @@ Move-ClusterGroup -IgnoreAffinityRule -Cluster Cluster1
 > [!NOTE]
 > If a move rule is valid (supported), all groups and roles that are affected will also move.  If a VM move will knowingly violate a rule yet it is needed on a one-time temporary basis, use the `-IgnoreAffinityRule` switch to allow the move to occur. In this case, a violation warning for the VM will be displayed. You can then enable the rule back as necessary.
 
-### Start-ClusterGroup
+#### Start-ClusterGroup
 
 The new `-IgnoreAffinityRule` switch ignores the rule and brings the clustered resource group online in its current location. For more information on this cmdlet, see [Start-ClusterGroup](/powershell/module/failoverclusters/start-clustergroup?view=win10-ps).
 
@@ -162,7 +178,57 @@ Example:
 Start-ClusterGroup -IgnoreAffinityRule -Cluster Cluster1
 ```
 
-## Anti-affinity rules
+## Affinity rule examples
+
+Affinity rules are "together" rules that keep resources on the same server, cluster, or site. Here are a few common scenarios for setting up affinity rules.
+
+### Scenario 1
+
+Suppose you have a SQL Server VM and a Web Server VM. These two VMs need to always remain in the same site but do not necessarily need to be on the same cluster node in the site.  Using `SameFaultDomain`, this is possible, as shown below:
+
+```powershell
+New-ClusterAffinityRule -Name WebData -Ruletype SameFaultDomain -Cluster Cluster1
+
+Add-ClusterGroupToAffinityRule -Groups SQL1,WEB1 –Name WebData -Cluster Cluster1
+
+Set-ClusterAffinityRule -Name WebData -Enabled 1 -Cluster Cluster1
+```
+
+To see this rule and how it is configured, use the **`Get-ClusterAffinityRule`** cmdlet to see the output:
+
+```powershell
+Get-ClusterAffinityRule -Name WebData -Cluster Cluster1
+
+Name        RuleType          Groups        Enabled
+----        ---------         ------        -------
+WebData     SameFaultDomain   {SQL1, WEB1}     1
+```
+
+### Scenario 2
+
+Let's use the same scenario above except specify that the VMs must reside on the same cluster node but not necessarily in the same site. Using `SameNode`, you can set this as follows:
+
+```powershell
+New-ClusterAffinityRule -Name WebData1 -Ruletype SameNode -Cluster Cluster1
+
+Add-ClusterGroupToAffinityRule -Groups SQL1,WEB1 –Name WebData1 -Cluster Cluster1
+
+Set-ClusterAffinityRule -Name WebData1 -Enabled 1 -Cluster Cluster1
+```
+
+To see the rule and how it is configured, use the **`Get-ClusterAffinityRule`** cmdlet to see the output:
+
+```powershell
+Get-ClusterAffinityRule -Name WebData1 -Cluster Cluster1
+
+Name    RuleType    Groups        Enabled
+----    --------    ------        -------
+DC      SameNode    {SQL1, WEB1}     1
+```
+
+## Anti-affinity rule examples
+
+Anti-affinity rules are "apart" rules that separate resources and place them on different servers, clusters, or sites.
 
 ### Scenario 1
 You have two VMs each running SQL Server on the same Azure Stack HCI multi-site cluster.  Each VM utilizes a lot of memory, CPU, and storage resources.  If the two end up on the same node, this can cause performance issues with one or both as they compete for memory, CPU, and storage cycles.  Using an anti-affinity rule with `DifferentNode` as the rule type, these VMs will always stay on different cluster nodes.  
@@ -209,54 +275,7 @@ Name    RuleType                Groups        Enabled
 DC      DifferentFaultDomain    {DC1, DC2}       1
 ```
 
-## Affinity rules
-
-Here are a few common scenarios for setting up affinity rules.
-
-### Scenario 1
-
-Suppose you have a SQL Server VM and a Web Server VM. These two VMs need to always remain in the same site but do not necessarily need to be on the same cluster node in the site.  Using `SameFaultDomain`, this is possible, as shown below:
-
-```powershell
-New-ClusterAffinityRule -Name WebData -Ruletype SameFaultDomain -Cluster Cluster1
-
-Add-ClusterGroupToAffinityRule -Groups SQL1,WEB1 –Name WebData -Cluster Cluster1
-
-Set-ClusterAffinityRule -Name WebData -Enabled 1 -Cluster Cluster1
-```
-
-To see this rule and how it is configured, use the **`Get-ClusterAffinityRule`** cmdlet to see the output:
-
-```powershell
-Get-ClusterAffinityRule -Name WebData -Cluster Cluster1
-
-Name        RuleType          Groups        Enabled
-----        ---------         ------        -------
-WebData     SameFaultDomain   {SQL1, WEB1}     1
-```
-
-### Scenario 2
-Let's use the same scenario above except specify that the VMs must reside on the same cluster node but not necessarily in the same site. Using `SameNode`, you can set this as follows:
-
-```powershell
-New-ClusterAffinityRule -Name WebData1 -Ruletype SameNode -Cluster Cluster1
-
-Add-ClusterGroupToAffinityRule -Groups SQL1,WEB1 –Name WebData1 -Cluster Cluster1
-
-Set-ClusterAffinityRule -Name WebData1 -Enabled 1 -Cluster Cluster1
-```
-
-To see the rule and how it is configured, use the **`Get-ClusterAffinityRule`** cmdlet to see the output:
-
-```powershell
-Get-ClusterAffinityRule -Name WebData1 -Cluster Cluster1
-
-Name    RuleType    Groups        Enabled
-----    --------    ------        -------
-DC      SameNode    {SQL1, WEB1}     1
-```
-
-## Combined rules
+## Combined rule examples
 
 Combining affinity and anti-affinity rules, you can easily configure various VM combinations across a multi-site cluster.  In this scenario, each site has three VMs: SQL Server (SQL), Web Server (WEB), and domain controller (DC).  For each of the combinations, you can use affinity rules with `SameFaultDomain` to keep them all in the same site.  You can also set the domain controllers for each site with anti-affinity rules and `DifferentFaultDomain` to keep the domain controller VMs in separate sites as shown below:
 
