@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/13/2020
+ms.date: 10/14/2020
 ---
 
 # Before you deploy Azure Stack HCI
