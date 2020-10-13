@@ -45,7 +45,7 @@ When running Windows PowerShell commands from a management computer, include the
 
 ### New PowerShell cmdlets
 
-To create affinity rules for Azure Stack HCI clusters, use the following new PowerShell cmdlets.
+To create affinity rules for clusters, use the following new PowerShell cmdlets:
 
 #### New-ClusterAffinityRule
 
