@@ -5,7 +5,7 @@ description: Learn about the Azure Stack Hub servicing policy and how to keep an
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/11/2020
+ms.date: 09/25/2020
 ms.author: sethm
 ms.reviewer: niy
 ms.lastreviewed: 03/18/2020
@@ -40,15 +40,17 @@ There are two types of update packages for integrated systems:
 
 ## Update package release cadence
 
-Microsoft expects to release software update packages on a monthly cadence. However, it's possible to have multiple or no update releases in a month. OEM hardware vendors release their updates on an as-needed basis.
+Microsoft expects to release software update packages multiple times throughout the year.
+
+OEM hardware vendors release their updates on an as-needed basis. Please check with your OEM for the latest updates to hardware.
 
 Find documentation on how to plan for and manage updates, and how to determine your current version in [Manage updates overview](azure-stack-updates.md).
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
-- [Azure Stack Hub 2005 update](/azure-stack/operator/release-notes?view=azs-2005)
-- [Azure Stack Hub 2002 update](/azure-stack/operator/release-notes?view=azs-2002)
-- [Azure Stack Hub 1910 update](/azure-stack/operator/release-notes?view=azs-1910)
+- [Azure Stack Hub 2005 update](./release-notes.md?view=azs-2005)
+- [Azure Stack Hub 2002 update](./release-notes.md?view=azs-2002)
+- [Azure Stack Hub 1910 update](./release-notes.md?view=azs-1910)
 
 ## Hotfixes
 
@@ -60,9 +62,9 @@ Hotfixes are downloaded and installed just like the regular full update packages
 
 For information about currently available hotfixes, see the release notes for that update:
 
-- [Azure Stack Hub 2005 hotfix](/azure-stack/operator/release-notes?view=azs-2005#hotfixes)
-- [Azure Stack Hub 2002 hotfix](/azure-stack/operator/release-notes?view=azs-2002#hotfixes-1)
-- [Azure Stack Hub 1910 hotfix](/azure-stack/operator/release-notes?view=azs-1910#hotfixes-2)
+- [Azure Stack Hub 2005 hotfix](./release-notes.md?view=azs-2005#hotfixes)
+- [Azure Stack Hub 2002 hotfix](./release-notes.md?view=azs-2002#hotfixes-1)
+- [Azure Stack Hub 1910 hotfix](./release-notes.md?view=azs-1910#hotfixes-2)
 
 ## Keep your system under support
 

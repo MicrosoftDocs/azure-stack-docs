@@ -1,12 +1,12 @@
 ---
 title: Azure Stack Hub Operator Access Workstation
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
-author: asganesh
+author: ashika789
 ms.topic: article
-ms.date: 09/22/2020
+ms.date: 09/24/2020
 ms.author: justinha
 ms.reviewer: asganesh
-ms.lastreviewed: 09/22/2020
+ms.lastreviewed: 09/24/2020
 
 # Intent: As an Azure Stack operator, I want to download and configure an Azure Stack Hub Operator Access Workstation.
 # Keyword: azure stack hub operator access workstation
@@ -25,14 +25,14 @@ The following tables lists common scenarios for the OAW, but this is not exclusi
 
 |Scenario                                                                                                                          |Description                 |
 |----------------------------------------------------------------------------------------------------------------------------------|-----------------------------|
-|[Access the Administration portal​](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-portals)                     |Perform administrative operations                                                                           |
-|[Access PEP](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint)                                     |Log collection and upload​:<br>-[Create an SMB share](#transfer-files-between-the-hlh-and-oaw) on the HLH for file transfer from Azure Stack Hub​<br>-Use Azure Storage Explorer to upload logs saved to the SMB share |
-|[Register Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-registration#renew-or-change-registration) |For re-registration, get previous Registration Name and Resource Group from the Administration portal​                               |
-|[Marketplace syndication​](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item)            |[Create an SMB share](#transfer-files-between-the-hlh-and-oaw) on the HLH to store the downloaded image or extension                                                        |
+|[Access the Administration portal​](./azure-stack-manage-portals.md)                     |Perform administrative operations                                                                           |
+|[Access PEP](./azure-stack-privileged-endpoint.md)                                     |Log collection and upload​:<br>-[Create an SMB share](#transfer-files-between-the-hlh-and-oaw) on the HLH for file transfer from Azure Stack Hub​<br>-Use Azure Storage Explorer to upload logs saved to the SMB share |
+|[Register Azure Stack Hub](./azure-stack-registration.md#renew-or-change-registration) |For re-registration, get previous Registration Name and Resource Group from the Administration portal​                               |
+|[Marketplace syndication​](./azure-stack-download-azure-marketplace-item.md)            |[Create an SMB share](#transfer-files-between-the-hlh-and-oaw) on the HLH to store the downloaded image or extension                                                        |
 
 ## Download files
 
-To get the files to create the OAW VM, [**download here**](https://aka.ms/OAWDownload). Please be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](https://docs.microsoft.com/legal/azure-stack-hub/azure-stack-operator-access-workstation-legal-terms) prior to download.
+To get the files to create the OAW VM, [**download here**](https://aka.ms/OAWDownload). Please be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](/legal/azure-stack-hub/azure-stack-operator-access-workstation-legal-terms) prior to download.
 
 Due to the stateless nature of the solution, there are no updates for the OAW VM. For each milestone, a new version of the VM image file will be released. Use the latest version to create a new OAW VM. The image file is based on the latest Windows Server 2019 version. After installation, you can apply updates, including any critical updates, using Windows Update. 
 
@@ -79,11 +79,11 @@ The following table lists the pre-installed software on the OAW VM.
 | Software Name           | Location                                                                                       |
 |--------------------------|------------------------------------------------------------------------------------------------|
 | [Microsoft Edge for Business](https://www.microsoft.com/edge/business/)                                            | \[SystemDrive\]\Program Files (x86)\Microsoft\Edge\Application                                                                                        |
-| [Az Modules](https://docs.microsoft.com/azure-stack/operator/powershell-install-az-module)                         | \[SystemDrive\]\ProgramFiles\WindowsPowerShell\Modules                                         |  
+| [Az Modules](./powershell-install-az-module.md)                         | \[SystemDrive\]\ProgramFiles\WindowsPowerShell\Modules                                         |  
 | [PowerShell 7](https://devblogs.microsoft.com/powershell/announcing-PowerShell-7-0/)| \[SystemDrive\]\Program Files\PowerShell\7                                                                       |
-| [Azure Command-Line Interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | \[SystemDrive\]\Program Files (x86)\Microsoft SDKs\Azure\CLI2 |
+| [Azure Command-Line Interface (CLI)](/cli/azure/?view=azure-cli-latest) | \[SystemDrive\]\Program Files (x86)\Microsoft SDKs\Azure\CLI2 |
 | [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)   | \[SystemDrive\]\Program Files (x86)\Microsoft Azure Storage Explorer                                                                       |
-| [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)                             | \[SystemDrive\]\VMSoftware\azcopy_windows_amd64_10.3.4                                         |
+| [AzCopy](/azure/storage/common/storage-use-azcopy-v10)                             | \[SystemDrive\]\VMSoftware\azcopy_windows_amd64_10.3.4                                         |
 | [AzureStack-Tools](https://github.com/Azure/AzureStack-Tools/tree/az)                  | \[SystemDrive\]\VMSoftware\AzureStack-Tools                                                    |
 
 ## Check HLH version
@@ -226,9 +226,9 @@ SkipNetworkConfiguration     | Optional | Skips network configuration for the vi
 
 ## Transfer files between the HLH and OAW
 
-If you need to transfer files between the HLH and the OAW, create an SMB share by using the [New-SmbShare](https://docs.microsoft.com/powershell/module/smbshare/new-smbshare?view=win10-ps) cmdlet. New-SmbShare exposes a file system folder to remote clients as a Server Message Block (SMB) share. For example:
+If you need to transfer files between the HLH and the OAW, create an SMB share by using the [New-SmbShare](/powershell/module/smbshare/new-smbshare?view=win10-ps) cmdlet. New-SmbShare exposes a file system folder to remote clients as a Server Message Block (SMB) share. For example:
 
-To delete a share that was created by this cmdlet, use the [Remove-SmbShare](https://docs.microsoft.com/powershell/module/smbshare/remove-smbshare?view=win10-ps) cmdlet. For example:
+To delete a share that was created by this cmdlet, use the [Remove-SmbShare](/powershell/module/smbshare/remove-smbshare?view=win10-ps) cmdlet. For example:
 
 ## Remove the OAW VM
 

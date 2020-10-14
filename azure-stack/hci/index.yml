@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: khdownie
   ms.author: v-kedow
-  ms.date: 07/21/2020
+  ms.date: 10/5/2020
 
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
@@ -33,17 +33,17 @@ landingContent:
     linkLists:
       - linkListType: deploy
         links:
-          - text: Before you start
+          - text: Before you begin
             url: deploy/before-you-start.md
-          - text: Deploy the Azure Stack HCI operating system
+          - text: Deploy the Azure Stack HCI OS
             url: deploy/operating-system.md
-          - text: Create cluster
+          - text: Create a cluster
             url: deploy/create-cluster.md
           - text: Setup a cluster witness
             url: deploy/witness.md
           - text: Register with Azure
             url: deploy/register-with-azure.md
-          - text: Validate an Azure Stack HCI cluster
+          - text: Validate a cluster
             url: deploy/validate.md 
 
   # Card
@@ -55,24 +55,18 @@ landingContent:
             url: manage/create-volumes.md
           - text: Create stretched volumes
             url: manage/create-stretched-volumes.md
+          - text: Protect volumes
+            url: manage/volume-encryption-deduplication.md
           - text: Extend volumes
             url: manage/extend-volumes.md
           - text: Delete volumes
             url: manage/delete-volumes.md
           - text: Replace drives
             url: manage/replace-drives.md
-
- # Card
-  - title: Manage VMs
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Manage VMs with Windows Admin Center
-            url: manage/vm.md
-          - text: Manage VMs with PowerShell
-            url: manage/vm-powershell.md
-          - text: Set up VM affinity rules
-            url: deploy/before-you-start.md 
+          - text: Use the CSV cache
+            url: manage/use-csv-cache.md
+          - text: Manage SMB Multichannel
+            url: manage/manage-smb-multichannel.md
 
  # Card
   - title: Manage the cluster
@@ -85,10 +79,24 @@ landingContent:
             url: manage/cluster-powershell.md
           - text: Add or remove servers
             url: manage/add-cluster.md
+          - text: Monitor cluster
+            url: manage/monitor-cluster.md
           - text: Update cluster
             url: manage/update-cluster.md
           - text: Change languages
             url: manage/vm-powershell.md
+
+ # Card
+  - title: Manage VMs
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Manage VMs with Windows Admin Center
+            url: manage/vm.md
+          - text: Manage VMs with PowerShell
+            url: manage/vm-powershell.md
+          - text: Set up VM affinity rules
+            url: deploy/before-you-start.md
 
   # Card
   - title: Azure Stack HCI concepts
@@ -103,18 +111,26 @@ landingContent:
             url: concepts/updates.md
           - text: Choose drives
             url: concepts/choose-drives.md
+          - text: Drive symmetry considerations
+            url: concepts/drive-symmetry-considerations.md
           - text: Plan volumes
             url: concepts/plan-volumes.md
           - text: Fault tolerance and storage efficiency
             url: concepts/fault-tolerance.md
           - text: Security considerations
             url: concepts/security.md
+          - text: Storage pool cache
+            url: concepts/cache.md
+          - text: Cluster and storage pool quorum
+            url: concepts/quorum.md
 
   # Card 
   - title: Connect to Azure
     linkLists:
       - linkListType: how-to-guide
         links:
+          - text: Manage Azure registration
+            url: manage/manage-azure-registration.md
           - text: Register Windows Admin Center with Azure
             url: manage/register-windows-admin-center.md
           - text: Use Azure Site Recovery
@@ -125,3 +141,23 @@ landingContent:
             url: manage/use-azure-network-adapter.md
           - text: Use Azure Backup
             url: manage/use-azure-backup.md
+
+ # Card
+  - title: Software Defined Networking
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Software Defined Networking (SDN) overview
+            url: concepts/software-defined-networking.md
+          - text: Plan SDN infrastructure
+            url: concepts/plan-software-defined-networking-infrastructure.md
+          - text: Network Controller overview
+            url: concepts/network-controller-overview.md
+          - text: Plan Network Controller
+            url: concepts/network-controller.md
+          - text: Software Load Balancer overview
+            url: concepts/software-load-balancer.md
+          - text: RAS Gateway overview
+            url: concepts/gateway-overview.md
+          - text: Route Reflector overview
+            url: concepts/route-reflector-overview.md

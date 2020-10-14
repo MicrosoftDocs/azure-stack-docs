@@ -119,9 +119,9 @@ For more information on how to create an SPN, see [Use an app identity to access
 
 | Parameter | Description | Authentication |
 | --- | --- | --- |
-| **External_domain_fqdn ** | External Domain FQDN |    |
-| **region: ** | Region Name |    |
-| **tenant_id: ** | Tenant ID\* |    |
+| **External_domain_fqdn** | External Domain FQDN |    |
+| **region:** | Region Name |    |
+| **tenant_id:** | Tenant ID\* |    |
 | client_id: | Client ID | SPN with secret |
 | client_secret: | Client Password | SPN with secret |
 | client_cert\*\*: | Path to Certificate | SPN with certificate |
