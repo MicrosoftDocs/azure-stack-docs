@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/01/2020
+ms.date: 10/14/2020
 ---
 
 # Before you deploy Azure Stack HCI
@@ -59,6 +59,8 @@ With Storage Spaces Direct, there is additional network traffic to consider:
 
 For stretched clusters, there is also additional Storage Replica traffic flowing between the sites. Storage Bus Layer (SBL) and Cluster Shared Volume (CSV) traffic does not go between sites, only between the server nodes within each site.
 
+For host networking planning considerations and requirements, see [Plan host networking for Azure Stack HCI](../concepts/plan-host-networking.md).
+
 ### Software defined networking requirements
 
 When you create an Azure Stack HCI cluster using Windows Admin Center, you have the option to deploy Network Controller to enable software defined networking (SDN). If you intend to use SDN on Azure Stack HCI:
@@ -72,125 +74,6 @@ For more information about preparing for using SDN in Azure Stack HCI, see [Plan
 ### Domain requirements
 
 There are no special domain functional level requirements for Azure Stack HCI - just an operating system version for your domain controller that's still supported. We do recommend turning on the Active Directory Recycle Bin feature as a general best practice, if you haven't already.
-
-### Interconnect requirements between nodes
-
-This section discusses specific networking requirements between server nodes in a site, called interconnects. Either switched or switchless node interconnects can be used and are supported:
-
-- **Switched:** Server nodes are most commonly connected to each other via Ethernet networks that use network switches. Switches must be properly configured to handle the bandwidth and networking type. If using RDMA that implements the RoCE protocol, network device and switch configuration is important.
-- **Switchless:** Server nodes can also be interconnected using direct Ethernet connections without a switch. In this case, each server node must have a direct connection with every other cluster node in the same site.
-
-#### Interconnects for 2-3 node clusters
-
-These are the *minimum* interconnect requirements for single-site clusters having two or three nodes. These apply for each server node:
-
-- One or more 1 Gb network adapter cards to be used for management functions
-- One or more 10 Gb (or faster) network interface cards for storage and workload traffic
-- Two or more network connections between each node recommended for redundancy and performance
-
-#### Interconnects for 4-node and greater clusters
-
-These are the *minimum* interconnect requirements for clusters having four or more nodes, and for high-performance clusters. These apply for each server node:
-
-- One or more 1 Gb network adapter cards to be used for management functions.
-- One or more 25 Gb (or faster) network interface cards for storage and workload traffic. We recommend two or more network connections for redundancy and performance.
-- Network cards that are remote-direct memory access (RDMA) capable: iWARP (recommended) or RoCE.
-
-### Site-to-site requirements (stretched cluster)
-
-When connecting between sites for stretched clusters, interconnect requirements within each site still apply, and have additional Storage Replica and Hyper-V live migration traffic requirements that must be considered:
-
-- At least one 1 Gb RDMA or Ethernet/TCP connection between sites for synchronous replication. A 25 Gb RDMA connection is preferred.
-- A network between sites with enough bandwidth to contain your I/O write workload and an average of 5ms round trip latency or lower for synchronous replication. Asynchronous replication doesn't have a latency recommendation.
-- If using a single connection between sites, set SMB bandwidth limits for Storage Replica using PowerShell. For more information, see [Set-SmbBandwidthLimit](/powershell/module/smbshare/set-smbbandwidthlimit).
-- If using multiple connections between sites, separate traffic between the connections. For example, put Storage Replica traffic on a separate network than Hyper-V live migration traffic using PowerShell. For more information, see [Set-SRNetworkConstraint](/powershell/module/storagereplica/set-srnetworkconstraint).
-
-### Network port requirements
-
-Ensure that the proper network ports are open between all server nodes both within a site and between sites (for stretched clusters). You'll need appropriate firewall and router rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct), and WS-MAN (port 5985) bi-directional traffic between all servers in the cluster.
-
-When using the Cluster Creation wizard in Windows Admin Center to create the cluster, the wizard automatically opens the appropriate firewall ports on each server in the cluster for Failover Clustering, Hyper-V, and Storage Replica. If using a different software firewall on each server, open the following ports:
-
-#### Failover Clustering ports
-
-- ICMPv4 and ICMPv6
-- TCP port 445
-- RPC Dynamic Ports
-- TCP port 135
-- TCP port 137
-- TCP port 3343
-- UDP port 3343
-
-#### Hyper-V ports
-
-- TCP port 135
-- TCP port 80 (HTTP connectivity)
-- TCP port 443 (HTTPS connectivity)
-- TCP port 6600
-- TCP port 2179
-- RPC Dynamic Ports
-- RPC Endpoint Mapper
-- TCP port 445
-
-#### Storage Replica ports (stretched cluster)
-
-- TCP port 445
-- TCP 5445 (if using iWarp RDMA)
-- TCP port 5985
-- ICMPv4 and ICMPv6 (if using Test-SRTopology)
-
-There may be additional ports required not listed above. These are the ports for basic Azure Stack HCI functionality.
-
-### Network switch requirements
-
-This section defines the requirements for physical switches used with Azure Stack HCI. These requirements list the industry specifications, organizational standards, and protocols that are mandatory for all Azure Stack HCI deployments. Unless otherwise noted, the latest active (non-superseded) version of the standard is required.
-
-These requirements help ensure reliable communications between nodes in Azure Stack HCI cluster deployments. Reliable communications between nodes are critical. To provide the needed level of reliability for Azure Stack HCI requires that switches:
-
-- Comply with applicable industry specifications, standards, and protocols
-- Provide visibility as to which specifications, standards, and protocols the switch supports
-- Provide information on which capabilities are enabled
-
-Make sure you ask your switch vendor if your switch supports the following:
-
-#### Standard: IEEE 802.1Q
-
-Ethernet switches must comply with the IEEE 802.1Q specification that defines VLANs. VLANs are required for several aspects of Azure Stack HCI and are required in all scenarios.
-
-#### Standard: IEEE 802.1Qbb
-
-Ethernet switches must comply with the IEEE 802.1Qbb specification that defines Priority Flow Control (PFC). PFC is required where Data Center Bridging (DCB) is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qbb is required in all scenarios. A minimum of three Class of Service (CoS) priorities are required without downgrading the switch capabilities or port speed.
-
-#### Standard: IEEE 802.1Qaz
-
-Ethernet switches must comply with the IEEE 802.1Qaz specification that defines Enhanced Transmission Select (ETS). ETS is required where DCB is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qaz is required in all scenarios. A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed.
-
-#### Standard: IEEE 802.1AB
-
-Ethernet switches must comply with the IEEE 802.1AB specification that defines the Link Layer Discovery Protocol (LLDP). LLDP is required for Windows to discover switch configuration. Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled. These switches must not require additional configuration.
-
-For example, enabling 802.1 Subtype 3 should automatically advertise all VLANs available on switch ports.
-
-#### TLV Requirements
-
-LLDP allows organizations to define and encode their own custom TLVs. These are called Organizationally Specific TLVs. All Organizationally Specific TLVs start with an LLDP TLV Type value of 127. The following table shows which Organizationally Specific Custom TLV (TLV Type 127) subtypes are required and which are optional:
-
-|Condition|Organization|TLV Subtype|
-|-|-|-|
-|Required|IEEE 802.1|VLAN Name (Subtype = 3)|
-|Required|IEEE 802.3|Maximum Frame Size (Subtype = 4)|
-|Optional|IEEE 802.1|Port VLAN ID (Subtype = 1)|
-|Optional|IEEE 802.1|Port And Protocol VLAN ID (Subtype = 2)|
-|Optional|IEEE 802.1|Link Aggregation (Subtype = 7)|
-|Optional|IEEE 802.1|Congestion Notification (Subtype = 8)|
-|Optional|IEEE 802.1|ETS Configuration (Subtype = 9)|
-|Optional|IEEE 802.1|ETS Recommendation (Subtype = A)|
-|Optional|IEEE 802.1|PFC Configuration (Subtype = B)|
-|Optional|IEEE 802.1|EVB (Subtype = D)|
-|Optional|IEEE 802.3|Link Aggregation (Subtype = 3)|
-
-> [!NOTE]
-> Some of the optional features listed may be required in the future.
 
 ### Storage requirements
 
