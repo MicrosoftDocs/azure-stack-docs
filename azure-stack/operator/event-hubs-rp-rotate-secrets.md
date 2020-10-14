@@ -18,7 +18,7 @@ This article will show you how to rotate the secrets used by the Event Hubs reso
 
 [!INCLUDE [prereqs](../includes/resource-provider-va-rotate-secrets-prereqs.md)]
 
-## Prepare the new certificate
+## Prepare a new TLS certificate
 
 [!INCLUDE [prepare](../includes/resource-provider-va-rotate-secrets-prepare.md)]
 

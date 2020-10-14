@@ -11,7 +11,7 @@ ms.lastreviewed: 10/20/2020
 > [!NOTE]
 > Secret rotation for value-add resource providers is currently only supported via PowerShell. 
 
-Like the Azure Stack Hub infrastructure, value-add resource providers use both internal and external secrets. As an operator, you provide external secrets such as the TLS X509 certificate used to secure resource provider endpoints.
+Like the Azure Stack Hub infrastructure, value-add resource providers use both internal and external secrets. Secrets can take many forms, including passwords and the encryption keys maintained by X509 certificates. As an operator, you provide external secrets such as the TLS certificate used to secure resource provider endpoints.
 
 In preparation for the rotation process:
 
