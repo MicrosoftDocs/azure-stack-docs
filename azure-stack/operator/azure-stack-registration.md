@@ -376,7 +376,7 @@ If you want to change the subscription you use, you must first run the **Remove-
   # switch to new subscription id
   Select-AzSubscription -Subscription '<New subscription ID>'
   # register 
-  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel '<Billing model>' -RegistrationName '<Registration name>' --ResourceGroupName '<Registration resource group name>'
+  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel '<Billing model>' -RegistrationName '<Registration name>' -ResourceGroupName '<Registration resource group name>'
   ```
 
 ### Change billing model, how features are offered, or re-register your instance
