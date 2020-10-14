@@ -12,7 +12,7 @@ Finally, determine the resource provider's latest deployment properties and use 
 
 ### Determine deployment properties
 
-Resource providers are deployed into your Azure Stack Hub environment as a versioned product package. Packages are assigned a unique package ID, in the format `'microsoft.<product-id>.<installed-version>'`. Where `<product-id>` is a unique string representing the resource provider, and `<installed-version>` represents a specific version. The secrets associated with each package are stored in the Azure Stack Hub Key Vault service. 
+Resource providers are deployed into your Azure Stack Hub environment as a versioned product package. Packages are assigned a unique package ID, in the format `'<product-id>.<installed-version>'`. Where `<product-id>` is a unique string representing the resource provider, and `<installed-version>` represents a specific version. The secrets associated with each package are stored in the Azure Stack Hub Key Vault service. 
 
 Open an elevated PowerShell console and complete the following steps to determine the properties required to rotate the resource provider's secrets:
 
@@ -63,12 +63,12 @@ Open an elevated PowerShell console and complete the following steps to determin
 
 3. Build the resource provider's package ID, by concatenating the resource provider product ID and version. For example, using the values derived in the previous step, the Event Hubs RP package ID is `microsoft.eventhub.1.2003.0.0`. 
 
-4. Using the package ID derived in the previous step, run `Get-AzsProductSecret -PackageId` to retrieve the list of secret types being used by the resource provider. In the returned `value` collection, find the element containing a value of `"Certificate"` for the `"properties"."secretKind"` property. This element contains properties for the RP's certificate secret. Make note of the name assigned to this certificate secret, identified by the last segment of the `"name"` property, just above `"properties"`. 
+4. Using the package ID derived in the previous step, run `Get-AzsProductSecret -PackageId` to retrieve the list of secret types being used by the resource provider. In the returned `value` collection, find the element containing a value of `"Certificate"` for the `"properties"."secretKind"` property. This element contains properties for the RP's certificate secret. Make note of the name assigned to this certificate secret, which is identified by the last segment of the `"name"` property, just above `"properties"`. 
 
    In the following example, the secrets collection returned for the Event Hubs RP contains a `"Certificate"` secret named `aseh-ssl-gateway-pfx`. 
 
    ```powershell
-   PS C:\WINDOWS\system32> Get-AzsProductSecret -PackageId $packageId -AsJson
+   PS C:\WINDOWS\system32> Get-AzsProductSecret -PackageId 'microsoft.eventhub.1.2003.0.0' -AsJson
    VERBOSE: GET
    https://adminmanagement.myregion.mycompany.com/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productPackages/microsoft.eventhub.1.2003.0.0/secrets?api-version=2019-01-01 with 0-char payload
    VERBOSE: Received 617-char response, StatusCode = OK
