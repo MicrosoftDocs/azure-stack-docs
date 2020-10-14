@@ -8,7 +8,7 @@ ms.reviewer: bryanla
 ms.lastreviewed: 12/09/2019
 ---
 
-If you've already installed a resource provider, you've likely completed the following prerequisites, and can skip this section. Otherwise, complete these before continuing: 
+If you've already installed a resource provider, you've likely completed the following prerequisites, and can skip this section. Otherwise, complete these steps before continuing: 
 
 1. [Register your Azure Stack Hub instance with Azure](../operator/azure-stack-registration.md), if you haven't done so. This step is required as you'll be connecting to and downloading items to marketplace from Azure.
 

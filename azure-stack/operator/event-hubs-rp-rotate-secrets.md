@@ -32,7 +32,7 @@ Secret rotation should complete successfully without errors. If you experience a
 
    - Authentication issues, including problems connecting to the Event Hubs resource provider.
    - Unable to upgrade resource provider and Event Hubs clusters.
-   - Unable to edit cluster configuration parameters in the admininstrator portal.
+   - Unable to edit cluster configuration parameters in the administrator portal.
    - Usage metrics aren't showing.
    - Bills aren't being generated.
    - Backups aren't occurring.
