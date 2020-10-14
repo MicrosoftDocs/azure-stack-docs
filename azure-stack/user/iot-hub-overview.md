@@ -94,5 +94,5 @@ IoT Hub on Azure Stack Hub allows you to create hybrid IoT solutions. IoT Hub is
 
 ## Next Steps
 
-To learn how to use IoT Hub, refer to documentation of IoT Hub on Azure Cloud: https://docs.microsoft.com/azure/iot-hub/.
+To learn how to use IoT Hub, refer to [the Azure IoT Hub documentation](/azure/iot-hub/).
 
