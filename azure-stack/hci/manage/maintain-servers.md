@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/13/2020
+ms.date: 10/15/2020
 ---
 
 # Taking an Azure Stack HCI server offline for maintenance
@@ -160,9 +160,9 @@ MyVolume3    Mirror                OK                Healthy      True          
 
 It's now safe to pause and restart other servers in the cluster.
 
-## Update Azure Stack HCI nodes offline
+## Patch Azure Stack HCI nodes offline
 
-Use the following steps to patch your Azure Stack HCI system quickly. If there is a critical security update that you need applied quickly or you need to ensure patching completes in your maintenance window, this method may be for you. This process brings down the Azure Stack HCI cluster, patches it, and brings it all up again. The trade-off is downtime to the hosted resources.
+If there is a critical security update that you need applied quickly or you need to ensure patching completes in your maintenance window, this method may be for you. This process brings down the Azure Stack HCI cluster, patches the servers, and brings it all up again. The trade-off is downtime to the hosted resources.
 
 1. Plan your maintenance window.
 2. Take the virtual disks offline.
