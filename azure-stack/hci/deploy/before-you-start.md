@@ -26,6 +26,14 @@ For Azure Kubernetes Service on Azure Stack HCI requirements, see [AKS requireme
 
 Microsoft recommends purchasing a validated Azure Stack HCI hardware/software solution from our partners. These solutions are designed, assembled, and validated against our reference architecture to ensure compatibility and reliability, so you get up and running quickly. Check that the systems, components, devices, and drivers you are using are Windows Server 2019 Certified per the Windows Server Catalog. Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) website for validated solutions.
 
+At minimum, you will need two servers, a reliable high-bandwidth, low-latency network connection between servers, and SATA, SAS, NVMe, or persistent memory drives that are physically attached to just one server each.
+
+However, your hardware requirements may vary depending on the size and configuration of the cluster(s) you wish to deploy. To make sure your deployment is successful, review the following:
+
+- [Server requirements for Azure Stack HCI](../requirements/server-requirements.md)
+- [Networking requirements for Azure Stack HCI](../requirements/networking-requirements.md)
+- [Storage requirements for Azure Stack HCI](../requirements/storage-requirements.md)
+
 ## Review maximum supported hardware specifications
 
 Azure Stack HCI deployments that exceed the following specifications are not supported:
