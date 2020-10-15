@@ -16,7 +16,7 @@ Resource providers are deployed into your Azure Stack Hub environment as a versi
 
 Open an elevated PowerShell console and complete the following steps to determine the properties required to rotate the resource provider's secrets:
 
-1. Sign in to your Azure Stack Hub environment using your operator credentials. See [Connect to Azure Stack Hub with PowerShell](../operator/azure-stack-powershell-configure-admin.md) for PowerShell sign-in script. Be sure to replace all placeholder values appropriate to your environment, such as endpoint URLs and directory tenant name.
+1. Sign in to your Azure Stack Hub environment using your operator credentials. See [Connect to Azure Stack Hub with PowerShell](../operator/azure-stack-powershell-configure-admin.md) for PowerShell sign-in script. Be sure to use the PowerShell Az cmdlets (instead of AzureRM), and replace all placeholder values, such as endpoint URLs and directory tenant name.
 
 2. Run the `Get-AzsProductDeployment` cmdlet to retrieve a list of the latest resource provider deployments. The returned `"value"` collection contains an element for each deployed resource provider. Find the resource provider of interest and make note of the values for these properties:
    - `"name"` - contains the resource provider product ID in the second segment of the value. 
@@ -116,7 +116,7 @@ Open an elevated PowerShell console and complete the following steps to determin
    $certSecretName = '<cert-secret-name>' 
    $pfxFilePath = '<cert-pfx-file-path>'
    $pfxPassword = ConvertTo-SecureString '<pfx-password>' -AsPlainText -Force   
-   Set-AzsProductSecret -PackageId $packageId -SecretName $certSecretName -PfxFileName $pfxFilePath -PfxPassword    $pfxPassword -Force
+   Set-AzsProductSecret -PackageId $packageId -SecretName $certSecretName -PfxFileName $pfxFilePath -PfxPassword $pfxPassword -Force
    ```
 
 2. Finally, use the `Invoke-AzsProductRotateSecretsAction` cmdlet to rotate the internal and external secrets:
