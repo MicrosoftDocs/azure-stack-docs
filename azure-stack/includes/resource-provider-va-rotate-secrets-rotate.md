@@ -130,5 +130,5 @@ Open an elevated PowerShell console and complete the following steps to determin
    
    You can monitor secret rotation progress in either the PowerShell console, or in the administrator portal by selecting the resource provider in the Marketplace service:
 
-   ![secret-rotation-progress](media/resource-provider-va-rotate-secrets-rotate/secret-rotation-in-progress.png)
+   [![secret-rotation-progress](media/resource-provider-va-rotate-secrets-rotate/secret-rotation-in-progress.png)](media/resource-provider-va-rotate-secrets-rotate/secret-rotation-in-progress.png#lightbox)
 
