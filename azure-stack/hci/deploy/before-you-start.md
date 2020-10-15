@@ -15,8 +15,7 @@ ms.date: 10/15/2020
 
 In this how-to guide, you learn how to:
 
-- Determine whether your hardware meets the base requirements for standard (single site) or stretched (two-site) Azure Stack HCI clusters
-- Make sure you're not exceeding the maximum supported hardware specifications
+- Determine whether your hardware meets the base requirements for Azure Stack HCI clusters
 - Gather the required information for a successful deployment
 - Install Windows Admin Center on a management PC or server
 
