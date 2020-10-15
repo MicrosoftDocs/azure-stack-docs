@@ -142,6 +142,14 @@
       href: concepts/updates.md
     - name: Security considerations
       href: concepts/security.md
+- name: Requirements
+  items:
+  - name: Server requirements
+    href: /requirements/server-requirements.md
+  - name: Storage requirements
+    href: /requirements/storage-requirements.md
+  - name: Networking requirements
+    href: /requirements/networking-requirements.md
 - name: Reference
   items:
   - name: Hyper-V PowerShell commands
