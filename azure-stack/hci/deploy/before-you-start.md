@@ -34,22 +34,7 @@ However, your hardware requirements may vary depending on the size and configura
 - [Networking requirements for Azure Stack HCI](../requirements/networking-requirements.md)
 - [Storage requirements for Azure Stack HCI](../requirements/storage-requirements.md)
 
-## Review maximum supported hardware specifications
-
-Azure Stack HCI deployments that exceed the following specifications are not supported:
-
-| Resource                     | Maximum |
-| ---------------------------- | --------|
-| Physical servers per cluster | 16      |
-| VMs per host                 | 1,024   |
-| Disks per VM (SCSI)          | 256     |
-| Storage per cluster          | 4 PB    |
-| Storage per server           | 400 TB  |
-| Logical processors per host  | 512     |
-| RAM per host                 | 24 TB   |
-| RAM per VM                   | 12 TB (generation 2 VM) or 1 TB (generation 1)|
-| Virtual processors per host  | 2,048   |
-| Virtual processors per VM    | 240 (generation 2 VM) or 64 (generation 1)|
+Make sure you don't exceed the [maximum supported hardware specifications](../requirements/maximum-supported-hardware.md) for Azure Stack HCI.
 
 ## Gather information
 

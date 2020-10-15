@@ -150,6 +150,8 @@
     href: /requirements/storage-requirements.md
   - name: Networking requirements
     href: /requirements/networking-requirements.md
+  - name: Maximum supported hardware specifications
+    href: /requirements/maximum-supported-hardware.md
 - name: Reference
   items:
   - name: Hyper-V PowerShell commands
