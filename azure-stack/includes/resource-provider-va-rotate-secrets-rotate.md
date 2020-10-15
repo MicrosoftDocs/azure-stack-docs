@@ -100,7 +100,7 @@ Open an elevated PowerShell console and complete the following steps to determin
 
 ### Rotate the secrets
 
-1. Use the `Set-AzsProductSecret` cmdlet to upload your new certificate to Key Vault, which will be used by the rotation process. Replace the variable placeholder values accordingly before running the script:
+1. Use the `Set-AzsProductSecret` cmdlet to import your new certificate to Key Vault, which will be used by the rotation process. Replace the variable placeholder values accordingly before running the script:
 
    | Placeholder | Description | Example value |
    | ----------- | ----------- | --------------|
