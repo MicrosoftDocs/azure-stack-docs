@@ -121,10 +121,14 @@ Open an elevated PowerShell console and complete the following steps to determin
 
 2. Finally, use the `Invoke-AzsProductRotateSecretsAction` cmdlet to rotate the internal and external secrets:
 
+   > [!NOTE]
+   > It takes approximately 3.5 - 4 hours to complete the rotation process.
+
    ```powershell
    Invoke-AzsProductRotateSecretsAction -ProductId $productId
    ```
    
-   > [!NOTE]
-   > It takes approximately 3.5 - 4 hours to complete the rotation process.
+   You can monitor secret rotation progress in either the PowerShell console, or in the administrator portal by selecting the resource provider in the Marketplace service:
+
+   ![secret-rotation-progress](media/resource-provider-va-rotate-secrets-rotate/secret-rotation-in-progress.png)
 
