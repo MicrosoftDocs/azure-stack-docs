@@ -121,15 +121,15 @@ forwarder IP addresses.
 2.  Run the following command to review the current configured DNS forwarder. As
     an alternative, you can also use the admin portal region properties:
 
-| Get-AzsDnsForwarder |
-|---------------------|
-
+    ```powershell
+    Get-AzsDnsForwarder 
+    ```
 
 3.  Run the following command to update Azure Stack to use the new DNS
     forwarder:
 
-| Set-AzsDnsForwarder -IPAddress "IPAddress 1", "IPAddress 2" |
-|-------------------------------------------------------------|
-
+    ```powershell
+    Set-AzsDnsForwarder -IPAddress "IPAddress 1", "IPAddress 2"
+    ``` |
 
 4.  Review the output of the command for any errors.
