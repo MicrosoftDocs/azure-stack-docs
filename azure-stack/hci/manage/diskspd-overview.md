@@ -4,7 +4,7 @@ description: This topic provides guidance on how to use DISKSPD to test workload
 author: jasonnyi
 ms.author: jasonyi
 ms.topic: how-to
-ms.date: 10/09/2020
+ms.date: 10/16/2020
 ---
 
 # Use DISKSPD to test workload storage performance
@@ -30,9 +30,9 @@ Without further ado, let’s get started:
 
     :::image type="content" source="media/diskspd/download-directory.png" alt-text="Directory to download the DISKSPD .zip file." lightbox="media/diskspd/download-directory.png":::
 
-1.	Open PowerShell as an administrator, and then go to where your DISKSPD file is located.
+1. Open PowerShell as an administrator, and then go to where your DISKSPD file is located.
 
-1.	Run DISKSPD with a single-line command, using the following command-line format. Replace everything inside the square brackets, including the brackets themselves with your appropriate settings.
+1. Run DISKSPD with a single-line command, using the following command-line format. Replace everything inside the square brackets, including the brackets themselves with your appropriate settings.
 
     ```powershell
      .\[INSERT_DISKSPD_PATH] [INSERT_SET_OF_PARAMETERS]  [INSERT_CSV_PATH_FOR_TEST_FILE] > [INSERT_OUTPUT_FILE.txt]
@@ -41,7 +41,7 @@ Without further ado, let’s get started:
     Here is an example command that you can run:
 
     ```powershell
-     .\diskspd -t2 -o32 -b4k -r4k -w0 -d120 -Sh -D -L -c5G C:\ClusterStorage\test01\targetfile\IO.dat > test04.txt
+     .\diskspd -t2 -o32 -b4k -r4k -w0 -d120 -Sh -D -L -c5G <ENTER_PATH> test04.txt
     ```
 ## Choosing key parameters
 Well, that was simple right? Unfortunately, there is more to it than that. Let’s unpack what we did. First, there are various parameters that you can tinker with and it can get specific. However, we used the following set of baseline parameters:
@@ -67,7 +67,7 @@ Well, that was simple right? Unfortunately, there is more to it than that. Let�
 
 **-L** => Measures latency statistics.
 
-**-c** => Sets the sample file size used in the test. It can be set in bytes, KiB, MiB, GiB, or blocks. In this case, a 5-GB target file was used.
+**-c5g** => Sets the sample file size used in the test. It can be set in bytes, KiB, MiB, GiB, or blocks. In this case, a 5-GB target file was used.
 
 For a complete list of parameters, refer to the [GitHub repository](https://github.com/Microsoft/diskspd/wiki/Command-line-and-parameters).
 
@@ -79,7 +79,7 @@ You generate the test file under the unified namespace that the Cluster Shared V
 >[!NOTE]
 > The current environment does *not* have Hyper-V or a nested virtualization structure.
 
-As you’ll see, it is entirely possible to independently hit either the IOPS or bandwidth ceiling at the VM or disk limit. And so, it is important to understand your VM size and drive type, because both have a maximum IOPS limit and a bandwidth ceiling. This knowledge helps to locate bottlenecks and understand your performance results. To learn more about what size may be appropriate for your workload, see the following resources:
+As you’ll see, it is entirely possible to independently hit either the IOPS or bandwidth ceiling at the VM or drive limit. And so, it is important to understand your VM size and drive type, because both have a maximum IOPS limit and a bandwidth ceiling. This knowledge helps to locate bottlenecks and understand your performance results. To learn more about what size may be appropriate for your workload, see the following resources:
 
 - [VM sizes](https://docs.microsoft.com/azure/virtual-machines/sizes-general?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)
 - [Disk types](https://azure.microsoft.com/pricing/details/managed-disks/)
@@ -118,58 +118,27 @@ Now that you've got a visual understanding, let’s examine the four main sectio
 
        :::image type="content" source="media/diskspd/total-io.png" alt-text="Example shows total overall I/O performance data." lightbox="media/diskspd/total-io.png":::
 
-       From the results, you can quickly determine that the cluster configuration is terrible.  You can see that it hit the VM limitation of 1920 before the SSD limitation of 5000. Furthermore, if you use a big enough test file, you can take advantage of up to 20000 IOPS (4 drives * 5000) by spanning the test file across multiple drives. However, because it hit that VM limit first, you only see a total IOPS of around 1920.
+       From the results, you can quickly determine that the cluster configuration is terrible. You can see that it hit the VM limitation of 1920 before the SSD limitation of 5000. If you were limited by the SSD rather than the VM, you could have taken advantage of up to 20000 IOPS (4 drives * 5000) by spanning the test file across multiple drives.
 
        In the end, you need to decide what values are acceptable for your specific workload. The following figure shows some important relationships to help you consider the tradeoffs:
 
        :::image type="content" source="media/diskspd/tradeoffs.png" alt-text="Figure shows workload relationship tradeoffs." lightbox="media/diskspd/tradeoffs.png":::
 
-       The second relationship in the figure is important, and it is sometimes referred to as Little’s Law. The law introduces the idea that there are three characteristics that govern process behavior and that you only need to change one to influence the other two, and thus the entire process. And so, if you're unhappy with your system’s performance, you have three dimensions of freedom to influence it. In this case, IOPS are the throughput (Input output operations per second), latency is the queue time, and queue depth is the inventory.
+       The second relationship in the figure is important, and it is sometimes referred to as Little’s Law. The law introduces the idea that there are three characteristics that govern process behavior and that you only need to change one to influence the other two, and thus the entire process. And so, if you're unhappy with your system’s performance, you have three dimensions of freedom to influence it. Little's Law dictates that in our example, IOPS is the throughput (input output operations per second), latency is the queue time, and queue depth is the inventory.
 
 1.	Latency percentile analysis
    
        This last section details the percentile latencies per operation type of storage performance from the minimum value to the maximum value.
 
-       This section is important because it determines the “quality” of your IOPS. It reveals how many of the I/O operations were able to achieve a certain latency value. It is up to you to decide the acceptable latency for that percentile. Moreover, the “nines” refer to the number of nines. For example, “3-nines” is equivalent to the 99th percentile. The number of nines exposes how many I/O operations ran at that percentile. Eventually, you'll reach a point where it no longer makes sense to take the latency values seriously. In this case, you can see that the latency values remain constant after “4-nines.” At this point, the latency value is based on only one I/O operation out of the ~230 K.
+       This section is important because it determines the “quality” of your IOPS. It reveals how many of the I/O operations were able to achieve a certain latency value. It is up to you to decide the acceptable latency for that percentile. Moreover, the “nines” refer to the number of nines. For example, “3-nines” is equivalent to the 99th percentile. The number of nines exposes how many I/O operations ran at that percentile. Eventually, you'll reach a point where it no longer makes sense to take the latency values seriously. In this case, you can see that the latency values remain constant after “4-nines.” At this point, the latency value is based on only one I/O operation out of the 234408 operations.
 
        :::image type="content" source="media/diskspd/storage-performance.png" alt-text="Example shows percentile latencies per operation type of storage performance." lightbox="media/diskspd/storage-performance.png":::
 
-## Batch test + extracting results into Excel
-Great, so now you know how to run DISKSPD and output the results into a text file. However, at the current rate, you'll need to run a new command for every parameter change. Luckily, you can use the two scripts in this section to collect your output metrics into an Excel spreadsheet to analyze them.
-
-To use the scripts:
-
-1.	Download the following two scripts: “Batch-DiskSpd” and “Process-DiskSpd”
-1.	The first script to run is “Batch-DiskSpd”
-    The parameters are as follows:
-    - **$param** => A mandatory string parameter. You need to specify the parameter that you want to vary.
-
-        | Parameter to vary | String command  |
-        | :---------------- | :-------------- |
-        | Only Thread       | “t”             |
-        | Only Queue        | “o”             |
-        | Only Block        | “b”             |
-        | Thread + Queue    | “to”            |
-        | Thread + Block    | “tb”            |
-        | Queue + Block     | “ob”            |
-    
-    - **$rw** => A mandatory int parameter. Specify what percentage of write that you want to test.
-    - **$duration** => An optional int parameter. Specify the duration in seconds. Default is 120.
-    - **$f_size** => An optional string parameter. Specify the test file size. Default is ‘1G’.
-    - **$type** => An optional string parameter. If you want to output into a text file, run “-Rtxt”. If you want to collect the data, run “-Rxml”. The default is “Rxml”.
-    - **$path** => An optional string parameter. Specify the directory in which to create your test file. The default is the current directory.
-
-1.	At this point, you'll have multiple xml output files. The next step is to run the “Process-DiskSpd” script. If your xml files are in the same directory as the current script, you can run it without any parameters. However, if the output files are in another directory, you need to specify the path while running the script. Your output will be a tsv file.
-
-1.	You should now have a tsv file that you can open in Excel. Here is an example output from varying only the thread values. If you want to test your own thread values, you can change the values at the beginning of the Batch-DiskSpd script. Have fun!
-
-    :::image type="content" source="media/diskspd/thread-value-output.png" alt-text="Example shows thread value output." lightbox="media/diskspd/thread-value-output.png":::
-
 ## Things to consider
-Now that you've started using DISKSPD, there are several things to consider in order to get real-world test results. These include paying close attention to the parameters you set, storage space health and variables, CSV ownership, and the effective of DISKSPD versus file copy.
+Now that you've started using DISKSPD, there are several things to consider in order to get real-world test results. These include paying close attention to the parameters you set, storage space health and variables, CSV ownership, and the difference between DISKSPD and file copy.
 
 ### DISKSPD vs. real-world
-DISKSPD’s artificial test gives you relatively comparable results for your real workload. However, you need to pay close attention to the parameters you set and whether they match your real scenario. Synthetic workloads will never perfectly represent your application’s real workload during deployment. For example, does the application require a lot of “think” time or does it continuously pound away with I/O operations.
+DISKSPD’s artificial test gives you relatively comparable results for your real workload. However, you need to pay close attention to the parameters you set and whether they match your real scenario. It's important to understand that synthetic workloads will never perfectly represent your application’s real workload during deployment. For example, does the application require a lot of “think” time or does it continuously pound away with I/O operations.
 
 ### Preparation
 Before running a DISKSPD test, there are a few recommended actions to perform. These include verifying the health of the storage space, checking your resource usage so that another program does not interfere with the test, and preparing performance manager if you want to collect additional data. However, because the goal of this topic is to quickly get DISKSPD running, it does not dive into the specifics of these actions. To learn more, see [Test Storage Spaces Performance Using Synthetic Workloads in Windows Server](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn894707(v=ws.11)).
@@ -205,10 +174,10 @@ To confirm CSV ownership:
 ### File Copy vs. DISKSPD
 Some people believe that they can “test storage performance” by copying and pasting a gigantic file and measuring how long that process takes. The main reason behind this approach is most likely because it is simple and fast. The idea is not wrong in the sense that it tests a specific workload, but it is difficult to categorize this method as “testing storage performance.”
 
-If your real-world goal it to test file copy performance, then this may be a perfectly valid reason to use this method. However, if your goal is to measure storage performance, we recommend to not use this method. You can think of the file copy process as using a different set of “parameters” (such as queue, parallelization, and so on) that is specific to file services.
+If your real-world goal is to test file copy performance, then this may be a perfectly valid reason to use this method. However, if your goal is to measure storage performance, we recommend to not use this method. You can think of the file copy process as using a different set of “parameters” (such as queue, parallelization, and so on) that is specific to file services.
 
 The following short summary explains why using file copy to measure storage performance may not provide the results that you are looking for:
-- **File copies might not be optimized,** There are two levels of parallelism that occur, one internal and the other external. Internally, if the file copy is headed for a remote target, the CopyFileEx engine does apply some parallelization. Externally, there are different ways of invoking the CopyFileEx engine. For example, copies from file explorer are single threaded, whereas Robocopy is multi-threaded.
+- **File copies might not be optimized,** There are two levels of parallelism that occur, one internal and the other external. Internally, if the file copy is headed for a remote target, the CopyFileEx engine does apply some parallelization. Externally, there are different ways of invoking the CopyFileEx engine. For example, copies from file explorer are single threaded, whereas Robocopy is multi-threaded. For these reasons, it's important to understand whether the implications of the test are what you are looking for.
 - **Every copy has two sides.** When you simply copy and paste a file, you may be using two disks: the source disk and the destination disk. If one is slower than the other, you essentially measure the performance of the slower disk. There are other cases where the communication between the source, destination, and the copy engine may affect the performance in unique ways.
     
     To learn more, see [Using file copy to measure storage performance](https://docs.microsoft.com/archive/blogs/josebda/using-file-copy-to-measure-storage-performance-why-its-not-a-good-idea-and-what-you-should-do-instead?ranMID=24542&ranEAID=je6NUbpObpQ&ranSiteID=je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q&epi=je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q&irgwc=1&OCID=AID2000142_aff_7593_1243925&tduid=%28ir__rcvu3tufjwkftzjukk0sohzizm2xiezdpnxvqy9i00%29%287593%29%281243925%29%28je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q%29%28%29&irclickid=_rcvu3tufjwkftzjukk0sohzizm2xiezdpnxvqy9i00).
