@@ -23,6 +23,8 @@ ms.lastreviewed: 01/02/2020
 
 *Applies to: Azure Stack integrated systems* 
 
+This topic covers how to manage GPU VMs on Azure Stack Hub.
+
 
 ## Partitioned GPU VM size 
 
