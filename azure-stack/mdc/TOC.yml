@@ -260,8 +260,6 @@
         href: ../operator/azure-stack-security-bitlocker.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Rotate secrets
         href: ../operator/azure-stack-rotate-secrets.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Update iDRAC credentials
-        href: ../operator/integrated-dell-remote-access-controller-credentials.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Update antivirus 
         href: ../operator/azure-stack-security-av.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Log collection and data handling
@@ -271,7 +269,7 @@
       - name: Marketplace overview 
         href: ../operator/azure-stack-marketplace.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Download marketplace items 
-        href: ../operator/azure-stack-download-azure-marketplace-item-tdc.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        href: ../operator/azure-stack-download-azure-marketplace-item.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Add a custom virtual machine image
         href: ../operator/azure-stack-add-vm-image.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Create and publish a marketplace item
@@ -412,16 +410,6 @@
           href: ../operator/azure-stack-sql-resource-provider-remove.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json 
         - name: SQL resource provider 1.1.47.0 release notes
           href: ../operator/azure-stack-sql-resource-provider-11470.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json   
-    - name: Usage and billing
-      items:
-      - name: Overview
-        href: ../operator/billing-model-overview.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Usage and billing reference
-        items:
-        - name: Analyze usage and API billing reference
-          href: ../operator/analyze-usage.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json 
-        - name: Local meters 
-          href: ../operator/billing-local-meters.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Back up
       items:
       - name: Overview 
@@ -454,8 +442,6 @@
         href: ../operator/azure-stack-troubleshooting.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: Reference
     items:
-    - name: Azure Stack Hub ruggedized
-      href: ../tca/index.yml
     - name: Azure Stack PowerShell
       href: /powershell/azure/azure-stack/overview
   - name: Resources
@@ -604,9 +590,9 @@
         - name: Storage
           items:
           - name: Overview 
-            href: ../user/azure-stack-storage-overview-tdc.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+            href: ../user/azure-stack-storage-overview.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: Storage considerations 
-            href: ../user/azure-stack-acs-differences-tdc.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+            href: ../user/azure-stack-acs-differences.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: Storage development tools
             href: ../user/azure-stack-storage-dev.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: Data transfer tools
@@ -774,8 +760,6 @@
           href: ../user/iaas-architecture-nva-architecture.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: Reference
     items:
-    - name: Azure Stack Hub ruggedized
-      href: ../tca/index.yml
     - name: Azure Stack PowerShell
       href: /powershell/azure/azure-stack/overview?view=azurestackps-1.3.0
     - name: REST API Browser
