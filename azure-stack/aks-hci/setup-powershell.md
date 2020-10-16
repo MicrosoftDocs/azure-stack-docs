@@ -16,7 +16,7 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 
 Before you begin, make sure you have a 2-4 node Azure Stack HCI cluster or a single node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't, follow instructions on how to [here](./system-requirements.md).
 
-You will also need to make sure that you have the AksHci PowerShell module installed. The download package that you can find [here](https://aka.ms/AKS-HCI-Evaluate) will have the module in a zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`), and then run the following command in a PowerShell administrative window.
+You will also need to make sure that you have the AksHci PowerShell module installed. The download package that you can find [here](https://aka.ms/AKS-HCI-Evaluate) will have the module in a zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`), and then run the following command in a PowerShell administrative window. **If you have previously installed the AksHci PowerShell module, close all PowerShell windows. Delete any existing directories for AksHci, AksHci.Day2, and MSK8sDownloadAgent. Once this is done, you can extract the contents of the new zip file.**
 
    ```powershell
    Import-Module AksHci
@@ -55,6 +55,8 @@ Configure your deployment with the following command.
                     [-vipPoolEndIp]
                     [-macPoolStart]
                     [-macPoolEnd]
+                    [-vlanID]
+                    [-cloudServiceCidr]
                     [-wssdDir]
                     [-akshciVersion]
                     [-vnetType]
@@ -117,6 +119,14 @@ This is used to specify the start of the MAC address of the MAC pool that you wi
 `-macPoolEnd`
 
 This is used to specify the end of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (i.e. 00, 02, 04, 06...). The first byte of the address passed as the `-macPoolEnd` should be the same as the first byte of the address passed as the `-macPoolStart`. Default is none.
+
+`-vlandID`
+
+This can be used to specify a network VLAN ID. AKS-HCI mnagement cluster and target cluster VM network adapters will be tagged with the provided VLAN ID. Default is none.
+
+`cloudServiceCidr`
+
+This can be used to provide a static IP/network prefix to be assigned to the MOC CloudAgent service. This value should be provided using the CIDR format. (Example: 192.168.1.2/16). Default is none.
 
 `-wssdDir`
 
@@ -189,8 +199,21 @@ Get-AksHciCluster
 To access your Azure Kubernetes Service host or Kubernetes cluster using kubectl, run the following command. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl.
 
 ```powershell
-Set-AksHciKubeConfig -clusterName
+Get-AksHciCredential -clusterName
+                     [-outputLocation]
 ```
+
+### Required Parameters
+
+`clusterName`
+
+The name of the cluster.
+
+### Optional Parameters
+
+`outputLocation`
+
+The location were you want the kubeconfig downloaded. Default is `%USERPROFILE%\.kube`.
 
 ## Get logs
 

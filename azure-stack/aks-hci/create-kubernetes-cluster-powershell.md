@@ -128,8 +128,21 @@ If you want to use Windows nodes, the minimum required version is v1.1.8.6.
 To access your Azure Kubernetes Service host or Kubernetes cluster using kubectl, run the following command. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl.
 
 ```powershell
-Set-AksHciKubeConfig -clusterName
+Get-AksHciCredential -clusterName
+                     [-outputLocation]
 ```
+
+### Required Parameters
+
+`clusterName`
+
+The name of the cluster.
+
+### Optional Parameters
+
+`outputLocation`
+
+The location were you want the kubeconfig downloaded. Default is `%USERPROFILE%\.kube`.
 
 ## Delete a Kubernetes cluster
 
