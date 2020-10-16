@@ -100,8 +100,6 @@ Review the output and verify the overall heath state of the Azure Stack deployme
 
 For a more in-depth look at Azure Stack diagnostics, see [Validate Azure Stack Hub system state](../operator/azure-stack-diagnostic-test.md).
 
-Contact Microsoft Support for help with any issues.
-
 ## Technical support
 
 Contact Microsoft Support for help with any issues.
