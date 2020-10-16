@@ -215,7 +215,7 @@ From an active ssh session, run:
         
 <!-- ## Contact Dell EMC for support -->
 
-[!INCLUDE [contact-dell-emc](../includes/contact-dell-emc.md)]
+Contact Microsoft Support to get help for any issues.
 
 ## Next steps
 
