@@ -18,7 +18,7 @@ ms.lastreviewed: 06/22/2020
 
 This article explains how to install the Azure PowerShell Az and compatible Azure Stack Hub administrator modules using PowerShellGet. The Az modules can be installed on Windows, macOS, and Linux platforms.
 
-If you would like to install PowerShell AzureRM module for Azure Stack Hub, see [Install PowerShell AzureRM module for Azure Stack Hub](powershell-install-az-module.md).
+If you would like to install PowerShell AzureRM module for Azure Stack Hub, see [Install PowerShell AzureRM module for Azure Stack Hub](azure-stack-powershell-install.md).
 
 > [!IMPORTANT]
 > The PowerShell Az module is currently in public preview.

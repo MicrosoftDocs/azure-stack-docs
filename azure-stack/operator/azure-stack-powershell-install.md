@@ -4,10 +4,10 @@ description: Learn how to install PowerShell for Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 04/14/2020
+ms.date: 10/16/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 04/14/2020
+ms.lastreviewed: 10/16/2020
 
 # Intent: As an Azure Stack operator, I want to install Powershell for Azure Stack.
 # Keyword: install powershell azure stack AzureRM
@@ -17,6 +17,10 @@ ms.lastreviewed: 04/14/2020
 # Install PowerShell AzureRM module for Azure Stack Hub
 
 Azure PowerShell AzureRM provides a set of cmdlets that use the Azure Resource Manager model for managing your Azure Stack Hub resources.
+
+> [!IMPORTANT]  
+> You've reached a webpage for an outdated version of Azure PowerShell. All versions of the AzureRM powerShell module are  outdated, but not out of support. The Az PowerShell module is now the recommended PowerShell module for interacting with Azure. To get started with the Az PowerShell module, see [Install PowerShell Az preview module for Azure Stack Hub](powershell-install-az-module.md). To learn how to migrate to the Az PowerShell 
+module. see [Migrate from AzureRM to Azure PowerShell Az in Azure Stack Hub](migrate-azurerm-az.md).
 
 You also need to use *API profiles* to specify the compatible endpoints for the Azure Stack Hub resource providers.
 
