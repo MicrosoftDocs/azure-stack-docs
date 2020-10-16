@@ -45,11 +45,11 @@ Add the VM image as an Azure Stack Hub operator using the portal.
 
 3. Select **VM images**, then select **Add**.
 
-   [![Add a VM image](./media/azure-stack-add-vm-image/tca4-small.png)](./media/azure-stack-add-vm-image/tca4.png#lightbox)
+   [![Add a VM image](./media/azure-stack-add-vm-image/tca4.png)](./media/azure-stack-add-vm-image/tca4.png#lightbox)
 
 4. Under **Create image**, enter the **Publisher**, **Offer**, **SKU**, **Version**, and OS disk blob URI. Then, select **Create** to begin creating the VM image.
 
-   [![Custom image sideloading UI](./media/azure-stack-add-vm-image/tca5-small.png)](./media/azure-stack-add-vm-image/tca5.png#lightbox)
+   [![Custom image sideloading UI](./media/azure-stack-add-vm-image/tca5-small.png)](./media/azure-stack-add-vm-image/tca5-small.png)
 
    When the image is successfully created, the VM image status changes to **Succeeded**.
 
