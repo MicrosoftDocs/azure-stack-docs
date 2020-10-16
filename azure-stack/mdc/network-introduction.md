@@ -454,8 +454,3 @@ The following figure shows the MDC and Azure environments after you finish setti
 
  ![ExpressRoute network architecture](media/network-introduction/expressroute-network-architecture-60.png) 
 
-The following figure shows how multiple tenants connect from the MDC infrastructure through the ExpressRoute router to Azure:
-
- ![ExpressRoute network architecture - multi-tenant](media/network-introduction/expressroute-network-architecture-multi-tenant-60.png) 
-
-

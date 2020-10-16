@@ -76,8 +76,6 @@
           href: network-integration.md
         - name: Network configuration lifecycle
           href: network-configuration-lifecycle-management.md
-        - name: Troubleshoot
-          href: network-troubleshoot.md
         - name: Appendix
           href: network-appendix.md
       - name: Identity integration

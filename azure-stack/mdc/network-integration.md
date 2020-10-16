@@ -221,8 +221,7 @@ records and replace the NS records for the zone with the ones in Azure Stack.
 Most DNS registrars require you to provide a minimum of two DNS servers to
 complete the delegation.
 
-Firewall
---------
+### Firewall
 
 Azure Stack sets up virtual IP addresses (VIPs) for its infrastructure roles.
 These VIPs are allocated from the public IP address pool. Each VIP is secured
@@ -235,8 +234,6 @@ the DNS host entry of portal.*\<region\>.\<fqdn\>*.
 The following architectural diagram shows the different network layers and ACLs:
 
 ![architectural diagram shows the different network layers and ACLs](media/network-deployment/network-architecture.png) 
-
-
 
 ### Ports and URLs
 
