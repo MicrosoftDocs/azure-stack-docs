@@ -32,7 +32,7 @@ To remove the registration resource, use the **Remove-AzsRegistration** cmdlet t
 
    ```powershell    
    #Import the registration module that was downloaded with the GitHub tools
-   Import-Module C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1
+   Import-Module C:\AzureStack-Tools-az\Registration\RegisterWithAzure.psm1
 
    # Provide Azure subscription admin credentials
    Add-AzAccount

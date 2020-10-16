@@ -67,7 +67,7 @@ expand-archive master.zip `
   -Force
 
 # Change to the tools directory.
-cd AzureStack-Tools-master
+cd AzureStack-Tools-az
 
 ```
 For more information about using the AzureRM module for Azure Stack Hub, see [Install PowerShell AzureRM module for Azure Stack Hub](azure-stack-powershell-install.md)

@@ -53,7 +53,7 @@ Use these steps to validate templates by using the **Az.TemplateValidator** Powe
 1. Import the **Az.TemplateValidator.psm1** PowerShell module:
 
     ```powershell
-    cd "c:\AzureStack-Tools-master\TemplateValidator"
+    cd "c:\AzureStack-Tools-az\TemplateValidator"
     Import-Module .\Az.TemplateValidator.psm1
     ```
 

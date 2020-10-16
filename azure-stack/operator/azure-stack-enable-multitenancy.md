@@ -168,7 +168,7 @@ $healthReport.directoryTenants | Where status -NE 'Healthy' | Select -Property t
 
 ### Update Azure AD tenant permissions
 
-This action with clear the alert in Azure Stack Hub, indicating that a directory requires an update. Run the following commands from the **Azurestack-tools-master/identity** folder:
+This action with clear the alert in Azure Stack Hub, indicating that a directory requires an update. Run the following commands from the **AzureStack-Tools-az/identity** folder:
 
 ```powershell
 Import-Module ..\Connect\AzureStack.Connect.psm1

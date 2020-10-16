@@ -42,7 +42,7 @@ Make sure to [download the latest version of the Azure Stack Hub tools](azure-st
 
 For this procedure, use a computer that can communicate with the admin Resource Manager endpoint of Azure Stack Hub.
 
-1. Open an elevated Windows PowerShell session (run as administrator), go to the root folder in the **AzureStack-Tools-master** directory, and import the required PowerShell module:
+1. Open an elevated Windows PowerShell session (run as administrator), go to the root folder in the **AzureStack-Tools-az** directory, and import the required PowerShell module:
 
    ```powershell
    Import-Module .\DatacenterIntegration\Portal\PortalUserDataUtilities.psm1
@@ -83,7 +83,7 @@ The user must query the object ID and provide it to the Azure Stack Hub operator
 
 ### User retrieves the user object ID
 
-1. Open an elevated Windows PowerShell session (run as administrator), go to the root folder in the **AzureStack-Tools-master** directory, and then import the necessary PowerShell module.
+1. Open an elevated Windows PowerShell session (run as administrator), go to the root folder in the **AzureStack-Tools-az** directory, and then import the necessary PowerShell module.
 
    ```powershell
    Import-Module .\DatacenterIntegration\Portal\PortalUserDataUtilities.psm1
@@ -113,7 +113,7 @@ The user must query the object ID and provide it to the Azure Stack Hub operator
 
 After receiving the user object ID as an Azure Stack Hub operator, run the following commands to remove the portal user data:
 
-1. Open an elevated Windows PowerShell session (run as administrator), go to the root folder in the **AzureStack-Tools-master** directory, and then import the necessary PowerShell module.
+1. Open an elevated Windows PowerShell session (run as administrator), go to the root folder in the **AzureStack-Tools-az** directory, and then import the necessary PowerShell module.
 
    ```powershell
    Import-Module .\DatacenterIntegration\Portal\PortalUserDataUtilities.psm1
