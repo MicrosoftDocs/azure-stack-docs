@@ -196,7 +196,7 @@ The following table provides the syntax for PowerShell commands that you can use
 |Enable a Network Controller cluster node|Enable-NetworkControllerNode|`Enable-NetworkControllerNode -Name <String> [-CertificateThumbprint <String> ] [-ComputerName <String> ] [-Credential <PSCredential> ] [-PassThru] [-UseSsl]`
 |Remove a Network Controller node from a cluster|Remove-NetworkControllerNode|`Remove-NetworkControllerNode [-CertificateThumbprint <String> ] [-ComputerName <String> ] [-Credential <PSCredential> ] [-Force] [-Name <String> ] [-PassThru] [-UseSsl]`
 
-To learn more, see the Windows PowerShell reference documentation for Network Controller at [NetworkController](/powershell/module/networkcontroller/?view=win10-ps).
+To learn more, see the Windows PowerShell reference documentation for Network Controller at [NetworkController](/powershell/module/networkcontroller).
 
 ## Sample Network Controller configuration script
 
