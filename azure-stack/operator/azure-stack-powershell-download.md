@@ -4,10 +4,10 @@ description: Learn how to download tools required for working with Azure Stack H
 author: mattbriggs
 
 ms.topic: article
-ms.date: 6/13/2020
+ms.date: 10/16/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 6/13/2020
+ms.lastreviewed: 10/16/2020
 
 # Intent: As an Azure Stack operator, I want to download Azure Stack tools from GitHub so I can use them in Azure Stack.
 # Keyword: download azure stack tools
@@ -19,32 +19,9 @@ ms.lastreviewed: 6/13/2020
 
 **AzureStack-Tools** is a [GitHub repository](https://github.com/Azure/AzureStack-Tools) that hosts PowerShell modules for managing and deploying resources to Azure Stack Hub. If you're planning to establish VPN connectivity, you can download these PowerShell modules to the Azure Stack Development Kit (ASDK), or to a Windows-based external client. 
 
-## Get tools for Azure Stack Hub AzureRM module
+## Get tools for Azure Stack Hub 
 
-To get these tools, clone the GitHub repository from the `master` branch or download the **AzureStack-Tools** folder by running the following script:
-
-```powershell
-# Change directory to the root directory.
-cd \
-
-# Download the tools archive.
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-invoke-webrequest `
-  https://github.com/Azure/AzureStack-Tools/archive/master.zip `
-  -OutFile master.zip
-
-# Expand the downloaded files.
-expand-archive master.zip `
-  -DestinationPath . `
-  -Force
-
-# Change to the tools directory.
-cd AzureStack-Tools-master
-
-```
-For more information about using the AzureRM module for Azure Stack Hub, see [Install PowerShell AzureRM module for Azure Stack Hub](powershell-install-az-module.md)
-
-## Get tools for Azure Stack Hub Az (preview) module
+## [Az modules](#tab/az)
 
 To get these tools, clone the GitHub repository from the `az` branch or download the **AzureStack-Tools** folder by running the following script:
 
@@ -70,6 +47,33 @@ cd AzureStack-Tools-az
 
 For more information about using the Az module for Azure Stack Hub, see [Install PowerShell Az preview module for Azure Stack Hub](powershell-install-az-module.md).
 
+### [AzureRM modules](#tab/rm)
+
+To get these tools, clone the GitHub repository from the `master` branch or download the **AzureStack-Tools** folder by running the following script:
+
+```powershell
+# Change directory to the root directory.
+cd \
+
+# Download the tools archive.
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+invoke-webrequest `
+  https://github.com/Azure/AzureStack-Tools/archive/master.zip `
+  -OutFile master.zip
+
+# Expand the downloaded files.
+expand-archive master.zip `
+  -DestinationPath . `
+  -Force
+
+# Change to the tools directory.
+cd AzureStack-Tools-master
+
+```
+For more information about using the AzureRM module for Azure Stack Hub, see [Install PowerShell AzureRM module for Azure Stack Hub](azure-stack-powershell-install.md)
+
+---
+
 ## Functionality provided by the modules
 
 The **AzureStack-Tools** repository has PowerShell modules that support the following functionalities for Azure Stack Hub:  
@@ -80,7 +84,7 @@ The **AzureStack-Tools** repository has PowerShell modules that support the foll
 | [Resource Manager policy for Azure Stack Hub](../user/azure-stack-policy-module.md) | Use this module to configure an Azure subscription or an Azure resource group with the same versioning and service availability as Azure Stack Hub. | Cloud operators and users |
 | [Register with Azure](azure-stack-registration.md ) | Use this module to register your ASDK instance with Azure. After registering, you can download Azure Marketplace items use them in Azure Stack Hub. | Cloud operators |
 | [Azure Stack Hub deployment](../asdk/asdk-install.md) | Use this module to prepare the Azure Stack Hub host computer to deploy and redeploy by using the Azure Stack Hub virtual hard disk (VHD) image. | Cloud operators|
-| [Connecting to Azure Stack Hub](powershell-install-az-module.md) | Use this module to configure VPN connectivity to Azure Stack Hub. | Cloud operators and users |
+| [Connecting to Azure Stack Hub](azure-stack-powershell-configure-admin.md) | Use this module to configure VPN connectivity to Azure Stack Hub. | Cloud operators and users |
 | [Template validator](../user/azure-stack-validate-templates.md) | Use this module to verify if an existing or a new template can be deployed to Azure Stack Hub. | Cloud operators and users|
 
 ## Next steps
