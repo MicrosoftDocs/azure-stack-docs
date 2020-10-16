@@ -250,7 +250,7 @@ Network Switch Configuration files:
     saved.
 
 5.  Execute the container using the Invoke-SwitchConfigGenerator.ps1. This
-    script requires an elevated powershell console to execute and requires the
+    script requires an elevated PowerShell console to execute and requires the
     following parameters to execute.
 
     -   ContainerName – Name of the container that will generate the switch
