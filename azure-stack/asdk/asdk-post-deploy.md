@@ -4,10 +4,10 @@ description: Learn about the recommended configuration changes to make after ins
 author: justinha
 
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 10/16/2020
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 07/31/2019
+ms.lastreviewed: 10/16/2020
 
 # Intent: As an ASDK user, I want to know recommended configuration changes after I deploy the ASDK.
 # Keyword: asdk configuration changes

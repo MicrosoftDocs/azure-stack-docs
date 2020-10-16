@@ -3,10 +3,10 @@ title: Configure multi-tenancy in Azure Stack Hub
 description: Learn how to enable and disable multiple Azure Active Directory tenants in Azure Stack Hub.
 author: BryanLa
 ms.topic: how-to
-ms.date: 06/18/2020
+ms.date: 10/16/2020
 ms.author: bryanla
 ms.reviewer: bryanr
-ms.lastreviewed: 06/10/2019
+ms.lastreviewed: 10/16/2020
 
 # Intent: As an Azure Stack operator, I want to configure multi-tenancy so multiple tenants can access my Azure Stack.
 # Keyword: configure multi-tenancy azure stack
@@ -24,6 +24,8 @@ You can configure Azure Stack Hub to support users from multiple Azure Active Di
 
 This guide provides the steps required, in the context of this scenario, to configure multi-tenancy in Azure Stack Hub. In this scenario, you and Mary must complete steps to enable users from Fabrikam to sign in and consume services from the Azure Stack Hub deployment in Contoso.
 
+If you're a Cloud Solution Provider (CSP), you have additional ways you can [configure and manage a multi-tenant Azure Stack Hub](azure-stack-add-manage-billing-as-a-csp.md). 
+
 ## Enable multi-tenancy
 
 There are a few prerequisites to account for before you configure multi-tenancy in Azure Stack Hub:
@@ -33,7 +35,6 @@ There are a few prerequisites to account for before you configure multi-tenancy 
  - [Download the Azure Stack Hub Tools](azure-stack-powershell-download.md), and import the Connect and Identity modules:
 
     ```powershell
-    Import-Module .\Connect\AzureStack.Connect.psm1
     Import-Module .\Identity\AzureStack.Identity.psm1
     ```
 
@@ -171,7 +172,6 @@ $healthReport.directoryTenants | Where status -NE 'Healthy' | Select -Property t
 This action with clear the alert in Azure Stack Hub, indicating that a directory requires an update. Run the following commands from the **AzureStack-Tools-az/identity** folder:
 
 ```powershell
-Import-Module ..\Connect\AzureStack.Connect.psm1
 Import-Module ..\Identity\AzureStack.Identity.psm1
 
 $adminResourceManagerEndpoint = "https://adminmanagement.<region>.<domain>"

@@ -4,7 +4,7 @@ title: Troubleshoot site-to-site VPN connections in Azure Stack Hub
 description: Troubleshooting steps you can take after you configure a site-to-site VPN connection between an on-premises network and an Azure Stack Hub virtual network.
 author: sethmanheim
 ms.author: sethm
-ms.date: 05/12/2020
+ms.date: 10/01/2020
 ms.topic: article
 ms.reviewer: sranthar
 ms.lastreviewed: 05/12/2020
@@ -19,6 +19,9 @@ If your Azure Stack Hub issue is not addressed in this article, you can visit th
 
 You also can submit an Azure support request. Please see [Azure Stack Hub support](../operator/azure-stack-manage-basics.md#where-to-get-support).
 
+> [!NOTE]
+> Only one site-to-site VPN connection can be created between two Azure Stack Hub deployments. This is due to a limitation in the platform that only allows a single VPN connection to the same IP address. Because Azure Stack Hub leverages the multi-tenant gateway, which uses a single public IP for all VPN gateways in the Azure Stack Hub system, there can be only one VPN connection between two Azure Stack Hub systems. This limitation also applies to connecting more than one site-to-site VPN connection to any VPN gateway that uses a single IP address. Azure Stack Hub does not allow more than one local network gateway resource to be created using the same IP address.
+
 ## Initial troubleshooting steps
 
 The Azure Stack Hub default parameters for IPsec/IKEV2 have changed [starting with the 1910 build](../user/azure-stack-vpn-gateway-settings.md#ike-phase-1-main-mode-parameters) Please contact your Azure Stack Hub operator for more information on the build version.
@@ -26,7 +29,7 @@ The Azure Stack Hub default parameters for IPsec/IKEV2 have changed [starting wi
 > [!IMPORTANT]
 > When using an S2S tunnel, packets are further encapsulated with additional headers. This encapsulation increases the overall size of the packet. In these scenarios, you must clamp TCP **MSS** at **1350**. If your VPN devices do not support MSS clamping, you can set the MTU on the tunnel interface to **1400** bytes instead. For more information, see [Virutal Network TCPIP performance tuning](/azure/virtual-network/virtual-network-tcpip-performance-tuning).
 
-- Confirm that the VPN configure is route-based (IKEv2). Azure Stack Hub does not support policy-based (IKEv1) configurations.
+- Confirm that the VPN configuration is route-based (IKEv2). Azure Stack Hub does not support policy-based (IKEv1) configurations.
 
 - Check whether you are using a [validated VPN device and operating system version](/azure/vpn-gateway/vpn-gateway-about-vpn-devices#devicetable). If the device is not a validated VPN device, you might have to contact the device manufacturer to see if there is a compatibility issue.
 

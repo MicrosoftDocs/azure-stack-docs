@@ -4,10 +4,10 @@ description: Learn how to deploy Azure Cognitive Services to Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 05/21/2020
+ms.date: 10/09/2020
 ms.author: mabrigg
 ms.reviewer: guanghu
-ms.lastreviewed: 05/21/2020
+ms.lastreviewed: 10/09/2020
 
 # Intent: As an Azure Stack user, I want to deploy cognitive services on Azure Stack using containers so I can use the benefits of Azure Cognitive Services. 
 # Keyword: azure stack cognitive services
@@ -22,8 +22,16 @@ Containerization is an approach to software distribution in which an app or serv
 
 Container support is currently available for a subset of Azure Cognitive Services:
 
-- Language Understanding
-- Text Analytics (Sentiment 3.0)
+- **Speech**
+    - Text-to-speech (standard)
+    - Text-to-speech (custom)
+    - Text-to-speech (standard)
+- **Language**
+    - Language understanding
+    - Text analytics (sentiment analysis)
+- **Decision**
+    - Anomaly detector
+
 
 > [!IMPORTANT]
 > A subset of Azure Cognitive Services for Azure Stack Hub are currently in public preview.
@@ -32,13 +40,17 @@ Container support is currently available for a subset of Azure Cognitive Service
 
 Container support is currently in public preview for a subset of Azure Cognitive Services:
 
-- Read (optical character recognition \[OCR])
-- Key phrase extraction
-- Language detection
-- Anomaly detector
-- Form recognizer
-- Speech-to-text (custom, standard)
-- Text-to-speech (custom, standard)
+- **Computer vision**
+    - Read 3.0, Read 3.1
+    - Spatial analysis (new)
+- **Language**
+    - Key phrase extraction
+    - Language detection
+    - Text analytics for health
+- **Speech**
+    - Speech language detection
+    - Neural TTS
+    - Text-to-speech (custom)
 
 ## Use containers with Cognitive Services on Azure Stack Hub
 
@@ -54,7 +66,7 @@ Container support is currently in public preview for a subset of Azure Cognitive
 - **High throughput and low latency**  
    Provide your app users the ability to scale with spikes in traffic for high throughput and low latency. Enable Cognitive Services to run in Azure Kubernetes Service physically close to their app logic and data.
 
-With Azure Stack Hub, deploy Cognitive Services containers in a Kubernetes cluster along with your app containers for high availability and elastic scaling. You can develop your app by combining Cognitive services with components built on App Services, Functions, Blob storage, SQL, or mySQL databases.
+With Azure Stack Hub, deploy Cognitive Services containers in a Kubernetes cluster along with your app containers for high availability and elastic scaling. You can develop your app by combining Cognitive services with components built on App Services, Functions, Blob storage, SQL, or MySQL databases.
 
 For more details on Cognitive Services containers, go to [Container support in Azure Cognitive Services](/azure/cognitive-services/cognitive-services-container-support).
 
@@ -72,11 +84,11 @@ Before you get started, you'll need to:
 
 ## Create Azure resources
 
-Create a Cognitive Service resource on Azure to preview the Face, LUIS, or Recognize Text containers. You'll need to use the subscription key and endpoint URL from the resource to instantiate the cognitive service containers.
+Create a Cognitive Service resource on Azure to preview the Face, Language Understanding (LUIS), or Recognize Text containers. You'll need to use the subscription key and endpoint URL from the resource to instantiate the cognitive service containers.
 
 1. Create an Azure resource in the Azure portal. If you want to preview the Face containers, you must first create a corresponding Face resource in the Azure portal. For more information, see [Quickstart: Create a Cognitive Services account in the Azure portal](/azure/cognitive-services/cognitive-services-apis-create-account).
 
-   > [!Note]
+   > [!NOTE]
    >  The Face or Computer Vision resource must use the F0   pricing tier.
 
 2. Get the endpoint URL and subscription key for the Azure resource. Once you create the Azure resource, use the subscription key and endpoint URL from that resource to instantiate the corresponding Face, LUIS, or Recognize Text container for the preview.
@@ -169,8 +181,8 @@ Use of the following command to monitor how it deploys:
 
 The worker nodes need a proxy and SSL. To configure an HTTP proxy for making outbound requests, use these two arguments:
 
-- **HTTP_PROXY** – the proxy to use, for example `https://proxy:8888`
-- **HTTP_PROXY_CREDS** – any credentials needed to authenticate against the proxy,for example `username:password`.
+- **HTTP_PROXY** - the proxy to use, for example `https://proxy:8888`
+- **HTTP_PROXY_CREDS** - any credentials needed to authenticate against the proxy, for example `username:password`.
 
 ### Set up the proxy
 

@@ -1,14 +1,14 @@
 ---
 title: Azure Stack Hub public key infrastructure certificate requirements 
-description: Learn about the Azure Stack Hub PKI certificate deployment requirements for Azure Stack Hub integrated systems.
+description: Learn about the Azure Stack Hub PKI certificate requirements for Azure Stack Hub integrated systems.
 author: IngridAtMicrosoft
 ms.topic: conceptual
-ms.date: 3/04/2020
+ms.date: 08/19/2020
 ms.author: inhenkel
 ms.reviewer: ppacent
 ms.lastreviewed: 12/16/2019
 
-# Intent: As an Azure Stack operator, I want to learn about the Azure Stack PKI certificate deployment requirements.
+# Intent: As an Azure Stack operator, I want to learn about the Azure Stack PKI certificate requirements.
 # Keyword: azure stack pki certificate requirements
 
 ---
@@ -17,19 +17,24 @@ ms.lastreviewed: 12/16/2019
 
 Azure Stack Hub has a public infrastructure network using externally accessible public IP addresses assigned to a small set of Azure Stack Hub services and possibly tenant VMs. PKI certificates with the appropriate DNS names for these Azure Stack Hub public infrastructure endpoints are required during Azure Stack Hub deployment. This article provides information about:
 
-- What certificates are required to deploy Azure Stack Hub.
-- The process of obtaining certificates matching those specifications.
-- How to prepare, validate, and use those certificates during deployment.
+- Certificate requirements for Azure Stack Hub.
+- Mandatory certificates required for Azure Stack Hub deployment.
+- Optional certificates required when deploying value-add resource providers.
 
 > [!NOTE]
-> Azure Stack Hub by default also uses certificates issued from an internal Active Directory-integrated certificate authority (CA) for authentication between the nodes. To validate the certificate, all Azure Stack Hub infrastructure machines trust the root certificate of the internal CA by means of adding that certificate to their local certificate store. There's no pinning or whitelisting of certificates in Azure Stack Hub. The SAN of each server certificate is validated against the FQDN of the target. The entire chain of trust is also validated, along with the certificate expiration date (standard TLS server authentication without certificate pinning).
+> Azure Stack Hub by default also uses certificates issued from an internal Active Directory-integrated certificate authority (CA) for authentication between the nodes. To validate the certificate, all Azure Stack Hub infrastructure machines trust the root certificate of the internal CA by means of adding that certificate to their local certificate store. There's no pinning or filtering of certificates in Azure Stack Hub. The SAN of each server certificate is validated against the FQDN of the target. The entire chain of trust is also validated, along with the certificate expiration date (standard TLS server authentication without certificate pinning).
 
 ## Certificate requirements
-The following list describes the certificate requirements that are needed to deploy Azure Stack Hub:
+The following list describes the general certificate issuance, security, and formatting requirements:
 
 - Certificates must be issued from either an internal certificate authority or a public certificate authority. If a public certificate authority is used, it must be included in the base operating system image as part of the Microsoft Trusted Root Authority Program. For the full list, see [Microsoft Trusted Root Certificate Program: Participants](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
 - Your Azure Stack Hub infrastructure must have network access to the certificate authority's Certificate Revocation List (CRL) location published in the certificate. This CRL must be an http endpoint.
-- When rotating certificates in pre-1903 builds, certificates must be either issued from the same internal certificate authority used to sign certificates provided at deployment or any public certificate authority from above. For 1903 and later, certificates can be issued by any enterprise or public certificate authority.
+::: moniker range="< azs-1903"
+- When rotating certificates in pre-1903 builds, certificates must be either issued from the same internal certificate authority used to sign certificates provided at deployment or any public certificate authority from above.
+::: moniker-end
+::: moniker range=">= azs-1903"
+- When rotating certificates for builds 1903 and later, certificates can be issued by any enterprise or public certificate authority.
+::: moniker-end
 - The use of self-signed certificates aren't supported.
 - For deployment and rotation, you can either use a single certificate covering all name spaces in the certificate's Subject Name and Subject Alternative Name (SAN) fields OR you can use individual certificates for each of the namespaces below that the Azure Stack Hub services you plan to utilize require. Both approaches require using wild cards for endpoints where they're required, such as **KeyVault** and **KeyVaultInternal**.
 - The certificate's PFX Encryption should be 3DES.

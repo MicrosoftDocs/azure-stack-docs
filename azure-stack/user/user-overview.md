@@ -4,7 +4,7 @@ description: Learn how to use Azure Stack Hub as a developer.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 3/19/2020
+ms.date: 7/24/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 3/19/2020

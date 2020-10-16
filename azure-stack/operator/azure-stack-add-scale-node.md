@@ -4,10 +4,10 @@ description: Learn how to add scale unit nodes to scale units in Azure Stack Hub
 author: mattbriggs
 
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 09/09/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 09/17/2019
+ms.lastreviewed: 08/03/2020
 
 # Intent: As an Azure Stack operator, I want to add an additional scale unit node/physical computer to increase the overall capacity. 
 # Keyword: (add) scale unit node azure stack
@@ -28,14 +28,14 @@ The following flow diagram shows the general process to add a scale unit node:
 
 The operation to add a new node can take several hours or days to complete. There is no impact to any running workloads on the system while an additional scale unit node is added.
 
-> [!Note]  
+> [!NOTE]  
 > Don't attempt any of the following operations while an add scale unit node operation is already in progress:
 >
 >  - Update Azure Stack Hub
 >  - Rotate certificates
 >  - Stop Azure Stack Hub
 >  - Repair scale unit node
-
+>  - Add another node (the previous add-node action failure is also considered in progress)
 
 ## Add scale unit nodes
 
@@ -52,7 +52,7 @@ The following steps are a high-level overview of how to add a node. Don't follow
 
 You can use the administrator portal or PowerShell to add new nodes. The add node operation first adds the new scale unit node as available compute capacity and then automatically extends the storage capacity. The capacity expands automatically because Azure Stack Hub is a hyperconverged system where *compute* and *storage* scale together.
 
-### Use the administrator portal
+### [Administrator portal](#tab/portal)
 
 1. Sign in to the Azure Stack Hub administrator portal as an Azure Stack Hub operator.
 2. Navigate to **+ Create a resource** > **Capacity** > **Scale Unit Node**.
@@ -61,7 +61,7 @@ You can use the administrator portal or PowerShell to add new nodes. The add nod
    ![Add node details](media/azure-stack-add-scale-node/select-node2.png)
  
 
-### Use PowerShell
+### [PowerShell AzureRM](#tab/AzureRM)
 
 Use the **New-AzsScaleUnitNodeObject** cmdlet to add a node.  
 
@@ -77,6 +77,23 @@ Before using either of the following sample PowerShell scripts, replace the valu
  
   Add-AzsScaleUnitNode -NodeList $NewNode -ScaleUnit "<name_of_scale_unit_cluster>" 
   ```  
+
+### [PowerShell Az](#tab/Az)
+
+Use the **Add-AzsScaleUnitNode** cmdlet to add a node.  
+
+Before using either of the following sample PowerShell scripts, replace the values *name_of_new_node*,  *name_of_scale_unit_cluster*, *BMCIP_address_of_new_node* with values from your Azure Stack Hub environment.
+
+  > [!Note]  
+  > When naming a node you must keep the name to less than 15 characters in length. You also can't use a name that contains a space or contains any of the following characters: `\`, `/`, `:`, `*`, `?`, `"`, `<`, `>`, `|`, `\`, `~`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `(`, `)`, `{`, `}`, `_`.
+
+**Add a node:**
+  ```powershell
+  ## Add a single Node 
+    Add-AzsScaleUnitNode -BMCIPv4Address "<BMCIP_address_of_new_node>" -computername "<name_of_new_node>" -ScaleUnit "<name_of_scale_unit_cluster>" 
+  ```  
+
+---
 
 ## Monitor add node operations 
 Use the administrator portal or PowerShell to get the status of the add node operation. Add node operations can take several hours to days to complete.

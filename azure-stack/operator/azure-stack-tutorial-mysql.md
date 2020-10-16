@@ -29,7 +29,7 @@ What you'll learn:
 
 > [!div class="checklist"]
 > * Create a MySQL Server cluster from marketplace items.
-> * Create an Azure Stack Hub MySQL Hosting Server.
+> * Configure the MySQL Server cluster as an Azure Stack Hub MySQL Hosting Server.
 > * Create a highly available MySQL database.
 
 A three-VM MySQL Server cluster will be created and configured using available Azure Stack Marketplace items.
@@ -155,9 +155,9 @@ Before the MySQL cluster can be added as an Azure Stack Hub MySQL Server host, e
 
     You'll need to provide this username and password, along with the public IP address or full FQDN of the public IP for the cluster, to an Azure Stack Hub operator so they can create a MySQL hosting server using this MySQL cluster.
 
-## Create an Azure Stack Hub MySQL Hosting Server
+## Configure an Azure Stack Hub MySQL Hosting Server
 
-After the MySQL Server cluster is created and properly configured, an Azure Stack Hub operator must create an Azure Stack Hub MySQL Hosting Server to make the additional capacity available for users to create databases.
+After the MySQL Server cluster is created and properly configured, an Azure Stack Hub operator must add it as an Azure Stack Hub MySQL Hosting Server.
 
 Be sure to use the public IP or full FQDN for the public IP of the MySQL cluster primary VM recorded previously when the MySQL cluster's resource group was created (**mysqlip**). In addition, the operator needs to know the MySQL Server authentication credentials you created to remotely access the MySQL cluster database.
 

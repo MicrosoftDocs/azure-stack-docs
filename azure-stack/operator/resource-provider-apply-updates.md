@@ -1,5 +1,5 @@
 ---
-title: How to apply updates to an Azure Stack Hub resource provider.
+title: Apply updates to an Azure Stack Hub resource provider
 description: Learn how to apply a service update to a resource provider on Azure Stack Hub. 
 author: BryanLa
 ms.author: bryanla
@@ -27,7 +27,7 @@ Resource providers are updated using the same update feature that is used to app
 
 3. On the **Updates** page, you find updates for the resource providers, under the **Resource Provider** section.
 
-   [![Update available page](media/resource-provider-apply-updates/3-update-available.png)](media/resource-provider-apply-updates/3-update-available.png#lightbox)
+   [![Screenshot that shows the Resource Provider section.](media/resource-provider-apply-updates/3-update-available.png)](media/resource-provider-apply-updates/3-update-available.png#lightbox)
 
 ## Apply an update
 

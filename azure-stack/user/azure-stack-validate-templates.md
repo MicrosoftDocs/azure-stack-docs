@@ -4,7 +4,7 @@ description: Check templates for deployment to Azure Stack Hub with a template v
 author: sethmanheim
 
 ms.topic: article
-ms.date: 06/09/2020
+ms.date: 10/01/2020
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 12/27/2019
@@ -17,7 +17,7 @@ ms.lastreviewed: 12/27/2019
 
 # Use the template validation tool in Azure Stack Hub
 
-Use the template validation tool to check whether your Azure Resource Manager [templates](azure-stack-arm-templates.md) are ready to deploy to Azure Stack Hub. The template validation tool is available with the Azure Stack Hub tools GitHub repo. Download the Azure Stack Hub tools by using the steps described in [Download tools from GitHub](../operator/azure-stack-powershell-download.md).
+Use the template validation tool to check whether your Azure Resource Manager [templates](azure-stack-arm-templates.md) are ready to deploy to Azure Stack Hub. The template validation tool is available in the Azure Stack Hub tools GitHub repo. Download the Azure Stack Hub tools by using the steps described in [Download tools from GitHub](../operator/azure-stack-powershell-download.md).
 
 ## Overview
 

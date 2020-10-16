@@ -4,7 +4,7 @@ description: Learn how to run a Windows N-tier application on Azure Stack Hub wi
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
@@ -23,7 +23,7 @@ This reference architecture shows how to deploy virtual machines (VMs) and a vir
 
 The architecture has the following components.
 
-![](./media/iaas-architecture-windows-sql-n-tier/image1.png)
+![The diagram shows a virtual network comprising six subnets: Application Gateway, Management, Web tier, Business tier, Data tier, and Active Directory. The Data tier subnet uses Cloud Witness. There are three load balancers.](./media/iaas-architecture-windows-sql-n-tier/image1.png)
 
 ## General
 
@@ -115,7 +115,7 @@ Configure the SQL Server Always On Availability Group as follows:
 
 4.  Create a load balancer rule for the SQL Server listening port (TCP port 1433 by default). The load balancer rule must enable *floating IP*, also called Direct Server Return. This causes the VM to reply directly to the client, which enables a direct connection to the primary replica.
 
-> [!Note]
+> [!NOTE]
 > When floating IP is enabled, the front-end port number must be the same as the back-end port number in the load balancer rule.
 
 When a SQL client tries to connect, the load balancer routes the connection request to the primary replica. If there is a failover to another replica, the load balancer automatically routes new requests to a new primary replica. For more information, see [Configure an ILB listener for SQL Server Always On Availability Groups](/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener).
@@ -170,7 +170,7 @@ Virtual networks are a traffic isolation boundary in Azure. By default, VMs in o
 
 **DMZ**. Consider adding a network virtual appliance (NVA) to create a DMZ between the Internet and the Azure virtual network. NVA is a generic term for a virtual appliance that can perform network-related tasks, such as firewall, packet inspection, auditing, and custom routing.
 
-**Encryption**. Encrypt sensitive data at rest and use [Key Vault in Azure Stack Hub](./azure-stack-key-vault-manage-portal.md) to manage the database encryption keys. For more information, see [Configure Azure Key Vault Integration for SQL Server on Azure VMs](/azure/virtual-machines/virtual-machines-windows-ps-sql-keyvault). It's also recommended to store application secrets, such as database connection strings, in Key Vault.
+**Encryption**. Encrypt sensitive data at rest and use [Key Vault in Azure Stack Hub](./azure-stack-key-vault-manage-portal.md) to manage the database encryption keys. For more information, see [Configure Azure Key Vault Integration for SQL Server on Azure VMs](/azure/azure-sql/virtual-machines/windows/azure-key-vault-integration-configure). It's also recommended to store application secrets, such as database connection strings, in Key Vault.
 
 ## Next steps
 

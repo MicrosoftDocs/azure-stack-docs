@@ -129,10 +129,14 @@
           href: azure-stack-vm-considerations.md
         - name: VM sizes
           href: azure-stack-vm-sizes.md
+        - name: Supported GPU VMs
+          href: gpu-vms-about.md
         - name: Manage VM disks
           href: azure-stack-manage-vm-disks.md
         - name: Managed disks considerations
           href: azure-stack-managed-disk-considerations.md
+        - name: Managed disks templates
+          href: virtual-machines-use-managed-disks-template.md
         - name: Delete a VM with dependencies
           href: delete-vm.md
         - name: Protect VMs
@@ -143,6 +147,17 @@
           href: vm-update-management.md
         - name: SQL Server VM considerations
           href: azure-stack-sql-server-vm-considerations.md
+        - name: Migrate VMs
+          items:
+            - name: Migrate VMs overview
+              href: vm-move-overview.md
+            - name: VM from Azure
+              href: vm-move-from-azure.md
+            - name: Specialized VM on-prem
+              href: vm-move-specialized.md
+            - name: Generalized VM on-prem
+              href: vm-move-generalized.md
+
       - name: Storage
         items:
         - name: Overview
@@ -332,7 +347,7 @@
 - name: Reference
   items:
   - name: Azure Stack Hub PowerShell
-    href: https://docs.microsoft.com/powershell/azure/azure-stack/overview 
+    href: /powershell/azure/azure-stack/overview
   - name: Azure Stack Hub administrator REST APIs
     href: /rest/api/azure-stack/
   - name: Azure CLI
@@ -343,12 +358,14 @@
     href: ../operator/index.yml
   - name: ASDK Documentation
     href: ../asdk/index.yml
+  - name: Azure hybrid cloud documentation
+    href: /hybrid    
 - name: Resources
   items:
   - name: Azure Stack Hub road map
     href: https://azure.microsoft.com/updates/?query=azure%20stack%20hub
   - name: Azure Stack Hub Microsoft Q&A
-    href: https://docs.microsoft.com/en-us/answers/questions/topics/single/50514.html
+    href: /answers/questions/topics/single/50514.html
   - name: Azure Stack Hub Documentation feedback
     href: https://feedback.azure.com/forums/344565-azure-stack?category_id=160275
   - name: Pricing information

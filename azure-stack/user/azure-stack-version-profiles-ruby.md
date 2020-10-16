@@ -4,7 +4,7 @@ description: Learn how to use API version profiles with Ruby in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/05/2020
+ms.date: 09/03/2020
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
@@ -39,7 +39,7 @@ An API profile is a combination of resource providers and service versions. You 
   - When prompted during Ruby installation, install the development kit.
   - Next, install the bundler using the following command: 
 
-       ```Ruby
+       ```ruby
        Gem install bundler
        ```
 
@@ -51,7 +51,7 @@ An API profile is a combination of resource providers and service versions. You 
 
 You can install the Azure RubyGem packages directly.
 
-```Ruby  
+```ruby  
 gem install azure_mgmt_compute
 gem install azure_mgmt_storage
 gem install azure_mgmt_resources
@@ -60,7 +60,7 @@ gem install azure_mgmt_network
 
 Or, use them in your Gemfile.
 
-```Ruby
+```ruby
 gem 'azure_mgmt_storage'
 gem 'azure_mgmt_compute'
 gem 'azure_mgmt_resources'
@@ -75,7 +75,7 @@ The **azure_sdk** gem is a rollup of all the supported gems in the Ruby SDK. Thi
 
 You can install the azure_sdk rollup gem with the following command:  
 
-```Ruby  
+```ruby  
 gem install 'azure_sdk'
 ```
 
@@ -122,7 +122,7 @@ You can get the metadata info from the Resource Manager endpoint. The endpoint r
 
 To set the environment variables, use the following format in a Windows command prompt:
 
-```shell
+```console
 set AZURE_TENANT_ID=<YOUR_TENANT_ID>
 ```
 
@@ -148,7 +148,7 @@ For more info on Azure Stack Hub and API profiles, see the [Summary of API profi
 
 Use the following code to instantiate a profile client. This parameter is only required for Azure Stack Hub or other private clouds. Global Azure already has these settings by default.
 
-```Ruby  
+```ruby  
 active_directory_settings = get_active_directory_settings(ENV['ARM_ENDPOINT'])
 
 provider = MsRestAzure::ApplicationTokenProvider.new(
@@ -171,7 +171,7 @@ client = Azure::Resources::Profiles::V2019_03_01_Hybrid::Mgmt::Client.new(option
 
 The profile client can be used to access individual resource providers, such as Compute, Storage, and Network:
 
-```Ruby  
+```ruby  
 # To access the operations associated with Compute
 profile_client.compute.virtual_machines.get 'RESOURCE_GROUP_NAME', 'VIRTUAL_MACHINE_NAME'
 
@@ -187,7 +187,7 @@ purchase_plan_obj = Azure::Profiles::V2019_03_01_Hybrid::Compute::Mgmt::Models::
 
 To authenticate the service principal to the Azure Stack Hub environment, define the endpoints using `get_active_directory_settings()`. This method uses the **ARM_Endpoint** environment variable that you set previously:
 
-```Ruby  
+```ruby  
 # Get Authentication endpoints using Arm Metadata Endpoints
 def get_active_directory_settings(armEndpoint)
   settings = MsRestAzure::ActiveDirectoryServiceSettings.new
@@ -222,13 +222,13 @@ To run the sample, ensure that you've installed Ruby. If you're using Visual Stu
 
 1. Clone the repository:
 
-   ```bash
+   ```console
    git clone https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Resources-And-Groups.git
    ```
 
 2. Install the dependencies using bundle:
 
-   ```Bash
+   ```console
    cd Hybrid-Resource-Manager-Ruby-Resources-And-Groups
    bundle install
    ```
@@ -260,7 +260,7 @@ To run the sample, ensure that you've installed Ruby. If you're using Visual Stu
 
 5. To target the correct active directory endpoints, add the following line of code if you're using Azure Stack Hub or other private clouds:
 
-   ```Ruby  
+   ```ruby  
    active_directory_settings = get_active_directory_settings(ENV['ARM_ENDPOINT'])
    ```
 
@@ -302,7 +302,7 @@ To run the sample, ensure that you've installed Ruby. If you're using Visual Stu
 
 9. Run the sample.
 
-   ```Ruby
+   ```ruby
    bundle exec ruby example.rb
    ```
 

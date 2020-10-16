@@ -1,12 +1,12 @@
 ---
-title: Deploy a Kubernetes cluster to a custom virtual network on Azure Stack Hub  
-description: Learn how to deploy a Kubernetes cluster to a custom virtual network on Azure Stack Hub.
+title: Create an SSH key for Linux on Azure Stack Hub  
+description: Learn how to create an SSH key for Linux on Azure Stack Hub
 author: mattbriggs
 
 ms.topic: article
-ms.date: 2/28/2020
+ms.date: 7/24/2020
 ms.author: mabrigg
-ms.reviewer: waltero
+ms.reviewer: sijuman
 ms.lastreviewed: 2/28/2020
 
 # Intent: As an Azure Stack Hub user, I would like to create a public/private ssh key pair to use when creating Linux VMs.

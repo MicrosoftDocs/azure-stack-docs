@@ -62,7 +62,7 @@ invoke-webrequest `
   -OutFile master.zip
 
 # Expand the downloaded files.
-expand-archive master.zip `
+expand-archive az.zip `
   -DestinationPath . `
   -Force
 

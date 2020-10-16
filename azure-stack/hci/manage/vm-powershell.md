@@ -1,5 +1,5 @@
 --- 
-title: Manage VMs on Azure Stack HCI using Windows PowerShell 
+title: Manage VMs using Windows PowerShell - Azure Stack HCI
 description: How to manage virtual machines on Azure Stack HCI using Windows PowerShell 
 author: v-dasis 
 ms.topic: how-to 
@@ -72,7 +72,7 @@ The following example returns a list of all VMs on Server1.
 Get-VM -ComputerName Server1
 ```
 
-The following example returns a list of all running VMs on a server by adding a filter using the `Where-Object` command. For more information, see [Using the Where-Object](<https://docs.microsoft.com/previous-versions/windows/it-pro/windows-powershell-1.0/ee177028(v=technet.10)>) documentation.
+The following example returns a list of all running VMs on a server by adding a filter using the `Where-Object` command. For more information, see [Using the Where-Object](/previous-versions/windows/it-pro/windows-powershell-1.0/ee177028(v=technet.10)) documentation.
 
 ```powershell
 Get-VM -ComputerName Server1 | Where-Object -Property State -eq "Running"

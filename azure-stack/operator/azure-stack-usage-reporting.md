@@ -7,7 +7,7 @@ documentationcenter: ''
 author: sethmanheim
 
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 07/27/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/07/2019
@@ -27,11 +27,11 @@ Azure Stack Hub multi-node systems that use the consumption-based billing model 
 > [!IMPORTANT]
 > All workloads [must be deployed under tenant subscriptions](#are-users-charged-for-the-infrastructure-vms) to comply with the licensing terms of Azure Stack Hub.
 
-Usage data reporting is required for the Azure Stack Hub multi-node users who license under the pay-as-you-use model. It's optional for customers who license under the capacity model (see the [How to buy](https://azure.microsoft.com/overview/azure-stack/how-to-buy/) page). For Azure Stack Development Kit (ASDK) users, Azure Stack Hub operators can report usage data and test the feature. However, users won't be charged for any usage they incur.
+Usage data reporting is required for Azure Stack Hub multi-node users who license under the pay-as-you-use model. It's optional for customers who license under the capacity model (see the [How to buy](https://azure.microsoft.com/overview/azure-stack/how-to-buy/) page). For Azure Stack Development Kit (ASDK) users, Azure Stack Hub operators can report usage data and test the feature. However, users won't be charged for any usage they incur.
 
 ![billing flow for usage data in Azure Stack Hub](media/azure-stack-usage-reporting/billing-flow.svg)
 
-Usage data is sent from Azure Stack Hub to Azure through the Azure Bridge. In Azure, the commerce system processes the usage data and generates the bill. After the bill is generated, the Azure subscription owner can view and download it from the [Azure Account Center](https://account.windowsazure.com/subscriptions). To learn about how Azure Stack Hub is licensed, see the [Azure Stack Hub packaging and pricing document](https://go.microsoft.com/fwlink/?LinkId=842847).
+Usage data is sent from Azure Stack Hub to Azure through the Azure Bridge. In Azure, the commerce system processes the usage data and generates the bill. After the bill is generated, the Azure subscription owner can view and download it from the [Azure Account Center](https://account.windowsazure.com/subscriptions). To learn about how Azure Stack Hub is licensed, see the [Azure Stack Hub packaging and pricing](https://go.microsoft.com/fwlink/?LinkId=842847) document.
 
 ## Set up usage data reporting
 
@@ -42,7 +42,7 @@ To set up usage data reporting, you must [register your Azure Stack Hub instance
 - **Location** - Location where the current Azure Stack Hub resource is deployed.
 - **Resource URI** - Fully qualified URI of the resource for which usage is being reported.
 - **Subscription ID** - Subscription ID of the Azure Stack Hub user, which is the local (Azure Stack Hub) subscription.
-- **Time** - Start and end time of the usage data. There's some delay between the time when these resources are consumed in Azure Stack Hub and when the usage data is reported to commerce. Azure Stack Hub aggregates usage data for every 24 hours, and reporting usage data to the commerce pipeline in Azure takes another few hours. Therefore, usage that happens shortly before midnight can appear in Azure the following day.
+- **Time** - Start and end time of the usage data. There is some delay between the time when these resources are consumed in Azure Stack Hub and when the usage data is reported to commerce. Azure Stack Hub aggregates usage data for every 24 hours, and reporting usage data to the commerce pipeline in Azure takes another few hours. Therefore, usage that happens shortly before midnight can appear in Azure the following day.
 
 ## Generate usage data reporting
 

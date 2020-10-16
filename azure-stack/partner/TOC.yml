@@ -53,7 +53,7 @@
   - name: Azure Stack Hub road map
     href: https://azure.microsoft.com/updates/?query=azure%20stack%20hub
   - name: Azure Stack Hub Microsoft Q&A
-    href: https://docs.microsoft.com/en-us/answers/questions/topics/single/50514.html
+    href: /answers/questions/topics/single/50514.html
   - name: Azure Stack Hub Documentation feedback
     href: https://feedback.azure.com/forums/344565-azure-stack?category_id=160275
   - name: Pricing information

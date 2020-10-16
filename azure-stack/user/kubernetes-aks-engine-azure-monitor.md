@@ -4,13 +4,13 @@ description: Learn how to use Azure Monitor for containers on Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 3/19/2020
+ms.date: 9/2/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 3/19/2020
+ms.lastreviewed: 9/2/2020
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub user, I want to learn how to use Azure Monitor for containers on Azure Stack Hub.
+# Keyword: use Azure Monitor for containers Azure Stack Hub Azure Monitor Log Analytics 
 
 ---
 

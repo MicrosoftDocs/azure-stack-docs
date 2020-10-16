@@ -1,21 +1,23 @@
 ---
-title: Create volumes and set up replication for stretched clusters in Azure Stack HCI
+title: Create stretched cluster volumes and set up replication
 description: How to create volumes and set up replication for stretched clusters in Azure Stack HCI using Windows Admin Center and PowerShell.
-author: khdownie
-ms.author: v-kedow
+author: v-dasis
+ms.author: v-dasis
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.date: 07/24/2020
 ---
 
-# Create volumes and set up replication for stretched clusters
+# Create stretched cluster volumes and set up replication
 
 > Applies to: Azure Stack HCI, version 20H2
 
-This topic describes how to create volumes and set up replication for stretched clusters in Azure Stack HCI using Windows Admin Center and PowerShell. To learn how to create volumes on single-site clusters, work with files on the volumes, and how to enable data deduplication and compression on volumes, see [Create volumes](create-volumes.md).
+This article describes how to create volumes and set up replication for stretched clusters in Azure Stack HCI using Windows Admin Center and PowerShell.
 
-## Create volumes and set up replication for stretched clusters using Windows Admin Center
+We will create volumes on four servers in two sites, two servers per site as an example. Keep in mind however, that if you want to create three-way mirror volumes, you need at least six servers, three servers per site.
 
-OK, let's begin:
+## Stretched volumes and replication using Windows Admin Center
+
+To create a volume and set up replication:
 
 1. In Windows Admin Center, under **Tools**, select **Volumes**.
 1. In the right pane, select the **Inventory** tab, then select **Create**.
@@ -37,85 +39,85 @@ OK, let's begin:
 
 Afterwards, you should verify successful data replication between sites before deploying VMs and other workloads. See the Verifying replication section in [Validate the cluster](../deploy/validate.md) for more information.
 
-## Create volumes for stretched clusters using PowerShell
+## Create stretched volumes using PowerShell
 
 Volume creation is different for single-site standard clusters versus stretched (two-site) clusters. For both scenarios however, you use the `New-Volume` cmdlet to create a virtual disk, partition and format it, create a volume with matching name, and add it to cluster shared volumes (CSV).
 
-Creating volumes and virtual disks for stretched clusters is a bit more involved than for single-site clusters. Stretched clusters require a minimum of four volumes - two data volumes and two log volumes, with a data/log volume pair residing in each site. Then you will create a replication group for each site, and set up replication between them.
+Creating volumes and virtual disks for stretched clusters is a bit more involved than for single-site clusters. Stretched clusters require a minimum of four volumes - two data volumes and two log volumes, with a data/log volume pair residing in each site. Then you will create a replication group for each site, and set up replication between them. We need to move resource groups around from server to server. The `Move-ClusterGroup` cmdlet is used to this.
 
-We first need to move resource groups around from node to node. The `Move-ClusterGroup` cmdlet is used to this.
+1. First we move the `Available Storage` storage pool resource group to `Server1` in `Site1` using the `Move-ClusterGroup` cmdlet:
 
-First we move the "Available Storage" storage pool resource group to node Server1 in Site1 using the `Move-ClusterGroup` cmdlet:
+    ```powershell
+    Move-ClusterGroup -Cluster ClusterS1 -Name ‘Available Storage’ -Node Server1
+    ```
 
-```powershell
-Move-ClusterGroup -Cluster ClusterS1 -Name ‘Available Storage’ -Node Server1
-```
+1. Next, create the first virtual disk (`Disk1`) for `Server1` in `Site1`:
 
-Next, create the first virtual disk (Disk1) for node Server1 on site Site1:
+    ```powershell
+    New-Volume -CimSession Server1 -FriendlyName Disk1 -FileSystem REFS -DriveLetter F -ResiliencySettingName Mirror -Size 10GB -StoragePoolFriendlyName "Storage Pool for Site 1"
+    ```
 
-```powershell
-New-Volume -CimSession Server1 -FriendlyName Disk1 -FileSystem REFS -DriveLetter F -ResiliencySettingName Mirror -Size 10GB -StoragePoolFriendlyName "Storage Pool for Site 1"
-```
+1. Create a second virtual disk (`Disk2`) for `Server1` in `Site1`:
 
-Create a second virtual disk (Disk2) for node Server1:
+    ```powershell
+    New-Volume -CimSession Server1 -FriendlyName Disk2 -FileSystem REFS -DriveLetter G -ResiliencySettingName Mirror -Size 10GB -StoragePoolFriendlyName "Storage Pool for Site 1"
+    ```
 
-```powershell
-New-Volume -CimSession Server1 -FriendlyName Disk2 -FileSystem REFS -DriveLetter G -ResiliencySettingName Mirror -Size 10GB -StoragePoolFriendlyName "Storage Pool for Site 1"
-```
+1. Now, take the `Available Storage` group offline:
 
-Now, take the "Available Storage" group offline:
+    ```powershell
+    Stop-ClusterGroup -Cluster ClusterS1 -Name 'Available Storage'
+    ```
 
-```powershell
-Stop-ClusterGroup -Cluster ClusterS1 -Name 'Available Storage'
-```
+1. And move the `Available Storage` group to `Server3` in `Site2`:
 
-And move the "Available Storage" group to node Server3 in Site2:
+    ```powershell
+    Move-ClusterGroup -Name 'Available Storage' -Node Server3
+    ```
 
-```powershell
-Move-ClusterGroup -Name 'Available Storage' -Node Server3
-```
+1. Create the first virtual disk (`Disk3`) on `Server3` in `Site2`:
 
-Create the first virtual disk (Disk3) on node Server3 in Site2:
+    ```powershell
+    New-Volume -CimSession Server3 -FriendlyName Disk3 -FileSystem REFS -DriveLetter H -ResiliencySettingName Mirror -Size 10GB -StoragePoolFriendlyName "Storage Pool for Site 2"
+    ```
 
-```powershell
-New-Volume -CimSession Server3 -FriendlyName Disk3 -FileSystem REFS -DriveLetter H -ResiliencySettingName Mirror -Size 10GB -StoragePoolFriendlyName "Storage Pool for Site 2"
-```
+1. And create a second virtual disk (`Disk4`) on `Server3` in `Site2`:
 
-And create a second virtual disk (Disk4) on node Server3:
+    ```powershell
+    New-Volume -CimSession Server3 -FriendlyName Disk4 -FileSystem REFS -DriveLetter I -ResiliencySettingName Mirror -Size 10GB -StoragePoolFriendlyName "Storage Pool for Site 2"
+    ```
 
-```powershell
-New-Volume -CimSession Server3 -FriendlyName Disk4 -FileSystem REFS -DriveLetter I -ResiliencySettingName Mirror -Size 10GB -StoragePoolFriendlyName "Storage Pool for Site 2"
-```
+1. Now take the `Available Storage` group offline and then move it back to one of the servers in `Site1`:
 
-Now take the `Available Storage` group offline and then move it back to one of the nodes in Site1:
+    ```powershell
+    Stop-ClusterGroup -Cluster ClusterS1 -Name 'Available Storage'
+    ```
 
-```powershell
-Stop-ClusterGroup -Cluster ClusterS1 -Name 'Available Storage'
-```
+    ```powershell
+    Move-ClusterGroup -Cluster ClusterS1 -Name 'Available Storage' -Node Server1
+    ```
 
-```powershell
-Move-ClusterGroup -Cluster ClusterS1 -Name 'Available Storage' -Node Server1
-```
+1. Using the `Get-ClusterResource` cmdlet, ensure that four virtual disk volumes were created, two in each storage pool:
 
-Using the `Get-ClusterResource` cmdlet, ensure that four virtual disk volumes were created, two in each storage pool:
+    ```powershell
+    Get-ClusterResource -Cluster ClusterS1
+    ```
 
-```powershell
-Get-ClusterResource -Cluster ClusterS1
-```
+1. Now add `Disk1` to Cluster Shared Volumes:
 
-Now add Disk1 to Cluster Shared Volumes:
+    ```powershell
+    Add-ClusterSharedVolume -Name 'Cluster Virtual Disk (Disk1)'
+    ```
 
-```powershell
-Add-ClusterSharedVolume -Name 'Cluster Virtual Disk (Disk1)'
-```
+You are done creating volumes, and ready to set up Storage Replica for replication.
 
-## Setup replication for stretched clusters using PowerShell
+## Set up replication using PowerShell
 
 When using PowerShell to set up Storage Replica for a stretched cluster, the disk that will be used for the source data will need to be added as a Cluster Shared Volume (CSV). All other disks must remain as non-CSV drives in the Available Storage group. These disks will then be added as Cluster Shared Volumes during the Storage Replica creation process.
 
 In the previous step, the virtual disks were added using drive letters to make the identification of them easier. Storage Replica is a one-to-one replication, meaning a single disk can replicate to another single disk.
 
-### Validate the topology for replication
+### Step 1: Validate the topology for replication
 
 Before starting, you should run the `Test-SRTopology` cmdlet for an extended period (like several hours). The `Test-SRTopology` cmdlet validates a potential replication partnership and validates the local host to the destination server or remotely between source and destination servers.
 
@@ -143,7 +145,7 @@ An example command that would run for 5 hours would be:
 Test-SRTopology -SourceComputerName Server1 -SourceVolumeName W: -SourceLogVolumeName X: -DestinationComputerName Server3 -DestinationVolumeName Y: -DestinationLogVolumeName Z: -DurationInMinutes 300 -ResultPath c:\temp
 ```
 
-### Create the replication partnership
+### Step 2: Create the replication partnership
 
 Now that you completed the `Test-SRTopology` tests, you are ready to configure Storage Replica and create the replication partnership. In a nutshell, we will configure Storage Replica by creating replication groups (RG) for each site and specifying the data volumes and log volumes for both the source server nodes in Site1 (Server1, Server2) and the destination (replicated) server nodes in Site2 (Server3, Server4).
 

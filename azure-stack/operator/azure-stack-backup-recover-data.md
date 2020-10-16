@@ -24,7 +24,7 @@ This scenario addresses recovering your entire installation if there's a failure
 
 | Scenario                                                           | Data Loss                            | Considerations                                                             |
 |--------------------------------------------------------------------|--------------------------------------|----------------------------------------------------------------------------|
-| Recover from catastrophic data loss due to disaster or product bug. | All infrastructure and user and app data. | User app and data are protected separately from infrastructure data. |
+| Recover from catastrophic data loss due to disaster or product bug. | All infrastructure and user and app data. | Can restore to different OEM.<br/> Can restore to different generation of hardware.<br/> Can restore to different count of scale-unit nodes.<br/> User app and data are protected separately from infrastructure data. |
 
 ## Workflows
 
@@ -52,10 +52,10 @@ If there's a disaster that renders the hardware unusable, redeployment is only p
 Azure Stack Hub supports a type of deployment called cloud recovery mode. This mode is used only if you choose to recover Azure Stack Hub after a disaster or product bug rendered the solution unrecoverable. This deployment mode doesn't recover any of the user data stored in the solution. The scope of this deployment mode is limited to restoring the following data:
 
  - Deployment inputs
- - Internal identity service data (ADFS deployments).
+ - Internal identity service data
  - Federated identify configuration (ADFS deployments).
  - Root certificates used by internal certificate authority.
- - Azure Resource Manager configuration user data, such as subscriptions, plans, offers, storage quotas, network quotas, and compute resources.
+ - Azure Resource Manager configuration user data, such as subscriptions, plans, offers, resource groups, tags, storage quotas, network quotas, and compute resources.
  - Key Vault secrets and vaults.
  - RBAC policy assignments and role assignments.
 

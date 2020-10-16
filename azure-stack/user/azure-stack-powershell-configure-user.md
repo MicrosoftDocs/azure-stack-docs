@@ -1,13 +1,13 @@
 ---
 title: Connect to Azure Stack Hub with PowerShell as a user 
-description: Learn how to connect to Azure Stack Hub with PowerShell. 
+description: Learn how to connect to Azure Stack Hub with PowerShell to use the interactive prompt or write scripts.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 5/27/2020
+ms.date: 8/4/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 10/02/2019
+ms.lastreviewed: 8/4/2020
 
 # Intent: As an Azure Stack user, I want to connect to Azure Stack with PowerShell so that I can use interactive prompt or write scripts to create and manage resources.
 # Keyword: connect Azure Stack powershell
@@ -74,6 +74,8 @@ foreach($s in (Get-AzSubscription)) {
 Get-AzResourceProvider -ListAvailable | Register-AzResourceProvider
     }
 ```
+
+[!Include [AD FS only supports interactive authentication with user identities](../includes/note-powershell-adfs.md)]
 
 ## Test the connectivity
 

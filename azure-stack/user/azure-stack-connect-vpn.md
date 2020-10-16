@@ -4,9 +4,9 @@ description: How to connect virtual networks in Azure Stack Hub to virtual netwo
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 04/07/2020
+ms.date: 07/23/2020
 ms.author: sethm
-ms.reviewer: scottnap
+ms.reviewer: TBD
 ms.lastreviewed: 10/24/2019
 
 # Intent: As an Azure Stack user, I want to connect Azure Stack to Azure using VPN so I can have a site-to-site connection.
@@ -35,7 +35,7 @@ The following figure shows what the connection configuration should look like wh
 
 The network configuration examples table shows the values that are used for examples in this article. You can use these values, or you can refer to them to better understand the examples in this article:
 
-|   |Azure Stack Hub|Azure|
+| Value   |Azure Stack Hub|Azure|
 |---------|---------|---------|
 |Virtual network name     |Azs-VNet|AzureVNet |
 |Virtual network address space |10.1.0.0/16|10.100.0.0/16|
@@ -112,16 +112,16 @@ First, create the network resources for Azure. The following instructions show h
 
 10. Review the **Summary** section, and then select **OK**.
 
-## Create a Custom IPSec Policy
+## Create a custom IPSec policy
 
 Since the Azure Stack Hub default parameters for IPSec policies have changed for [builds 1910 and later](azure-stack-vpn-gateway-settings.md#ipsecike-parameters), a custom IPSec policy is needed in order for Azure to match Azure Stack Hub.
 
 1. Create a custom policy:
 
    ```powershell
-     $IPSecPolicy = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup ECP384  `
-     -IpsecEncryption GCMAES256 -IpsecIntegrity GCMAES256 -PfsGroup ECP384 -SALifeTimeSeconds 27000 `
-     -SADataSizeKilobytes 102400000 
+   $IPSecPolicy = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup ECP384  `
+   -IpsecEncryption GCMAES256 -IpsecIntegrity GCMAES256 -PfsGroup ECP384 -SALifeTimeSeconds 27000 `
+   -SADataSizeKilobytes 102400000
    ```
 
 2. Apply the policy to the connection:
@@ -202,7 +202,7 @@ A service admin can sign in as a user to test the plans, offers, and subscriptio
 
 ### Create the local network gateway
 
-The concept of a *local network gateway* in Azure Stack Hub is a bit different than in an Azure deployment.
+The concept of a *local network gateway* in Azure Stack Hub is different than in an Azure deployment.
 
 In an Azure deployment, a local network gateway represents an on-premises (at the user location) physical device that you connect to a virtual network gateway in Azure. However, in Azure Stack Hub both ends of the connection are virtual network gateways.
 
@@ -256,8 +256,8 @@ After the site-to-site connection is established, you should verify that you can
 * Sign in to the VM you created in Azure Stack Hub and ping the VM in Azure.
 * Sign in to the VM you created in Azure and ping the VM in Azure Stack Hub.
 
->[!NOTE]
->To make sure that you're sending traffic through the site-to-site connection, ping the Direct IP (DIP)
+> [!NOTE]
+> To make sure that you're sending traffic through the site-to-site connection, ping the Direct IP (DIP)
 address of the VM on the remote subnet, not the VIP.
 
 ### Sign in to the user VM in Azure Stack Hub

@@ -4,10 +4,10 @@ title: Set up a development environment in Azure Stack Hub
 description: Get started developing applications for Azure Stack Hub.  
 author: mattbriggs 
 ms.topic: overview 
-ms.date: 04/20/2020
+ms.date: 10/16/2020
 ms.author: mabrigg 
 ms.reviewer: sijuman 
-ms.lastreviewed: 11/11/2019
+ms.lastreviewed: 10/16/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -107,7 +107,7 @@ If you're using a Windows 10 machine, you can work with PowerShell 5.0 and Visua
 
 If you're using a Linux machine, you can work with the Azure CLI, Visual Studio Code, or your own preferred integrated development environment. 
 
-> [!Note]   
+> [!NOTE]   
 > If you're using a Linux machine with the ASDK, your remote machine needs to be in the same network as the ASDK. You won't be able to connect using a Virtual Private Network connection. 
 
 ### Set up your tools 
@@ -136,7 +136,7 @@ If you're using a Linux machine, you can work with the Azure CLI, Visual Studio 
 
 A macOS machine will allow you to work with the Azure CLI and Visual Studio Code, or your own preferred integrated development environment. 
 
-> [!Note]   
+> [!NOTE]   
 > If you're using a macOS machine with the ASDK, your remote machine needs to be in the same network as the ASDK. You won't be able to connect using a Virtual Private Network connection. 
 
 ### Set up your tools 

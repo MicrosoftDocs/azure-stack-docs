@@ -1,6 +1,6 @@
 ---
-title: Event Hubs on Azure Stack Hub for the user overview
-description: Learn about the Event Hubs resource provider on Azure Stack Hub. 
+title: Overview of Event Hubs on Azure Stack Hub
+description: Learn about Event Hubs on Azure Stack Hub. See how to build hybrid solutions. Compare features of Azure Event Hubs and Event Hubs on Azure Stack Hub. 
 author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
@@ -10,7 +10,7 @@ ms.reviewer: jfggdl
 ms.lastreviewed: 11/27/2019
 ---
 
-# Event Hubs on Azure Stack Hub for the user overview
+# Overview of Event Hubs on Azure Stack Hub
 
 [!INCLUDE [preview-banner](../includes/event-hubs-preview.md)]
 

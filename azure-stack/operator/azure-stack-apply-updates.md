@@ -1,13 +1,12 @@
 ---
 title: Install Azure Stack Hub Updates 
 description: Learn how to install Azure Stack Hub Updates.
-author: IngridAtMicrosoft
-
+author: sethmanheim
 ms.topic: how-to
-ms.date: 03/04/2020
-ms.author: inhenkel
+ms.date: 07/22/2020
+ms.author: sethm
 ms.lastreviewed: 09/10/2019
-ms.reviewer: ppace
+ms.reviewer: sranthar
 
 # Intent: As an Azure Stack operator, I want to install OEM updates to keep my system up to date.
 # Keyword: install oem updates azure stack
@@ -17,7 +16,7 @@ ms.reviewer: ppace
 
 # Install Azure Stack Hub Updates
 
-You can install update packages using the **Update** blade in the Azure Stack Hub. This article walks you through the steps to update, monitor, and troubleshoot the update process. Use the Update blade to view update info, install updates, monitor update progress, review update history, and view the current Azure Stack Hub and OEM package version.
+You can install update packages using the **Update** blade in the Azure Stack Hub administrator portal. This article describes the steps to update, monitor, and troubleshoot the update process. Use the **Update** blade to view update info, install updates, monitor update progress, review update history, and view the current Azure Stack Hub and OEM package version.
 
 You can manage updates from the administrator portal and use the **Updates** section of the dashboard to:
 
@@ -30,42 +29,40 @@ You can manage updates from the administrator portal and use the **Updates** sec
 
 You can view the current version of Azure Stack Hub in the **Updates** blade. To open:
 
-1.  Open the Azure Stack Hub administrator portal.
+1. Open the Azure Stack Hub administrator portal.
 
-2.  Select **Dashboard**. In the **Updates** blade, the current version is listed.
+2. Select **Dashboard**. In the **Updates** blade, the current version is listed. For example, in this image the version is 1.1903.0.35:
 
     ![Updates tile on default dashboard](./media/azure-stack-update-apply/image1.png)
 
-    For example, in this image the version is 1.1903.0.35.
-
 ## Install updates and monitor progress
 
-> [!Important]
-> Before applying updates in Azure Stack Hub, ensure you have completed **ALL** steps in the [Pre-Update Checklist](release-notes-checklist.md) and have scheduled an appropriate maintenance window for the update type that you are applying.
+> [!IMPORTANT]
+> Before applying updates in Azure Stack Hub, ensure you have completed all steps in the [pre-update checklist](release-notes-checklist.md) and have scheduled an appropriate maintenance window for the update type that you are applying.
 
 1. Open the Azure Stack Hub administrator portal.
 
 2. Select **Dashboard**. Select **Update**.
 
-3. Select the available update that you wish to install. If you don't have an update marked as **Available**, you need to [Prepare the Update Package](azure-stack-update-prepare-package.md)
+3. Select the available update that you wish to install. If you don't have an update marked as **Available**, [prepare the update package](azure-stack-update-prepare-package.md).
 
 4. Select **Update now**.
 
-    ![Azure Stack Hub update run details](./media/azure-stack-update-apply/image2.png)
+    ![Screenshot that shows how to start an update in Azure Stack Hub.](./media/azure-stack-update-apply/image2.png)
 
 5. You can view high-level status as the update process iterates through various subsystems in Azure Stack Hub. Example subsystems include physical hosts, Service Fabric, infrastructure virtual machines, and services that provide both the admin and user portals. Throughout the update process, the update resource provider reports additional details about the update, such as the number of steps that have succeeded, and the number in progress.
 
-6. Select the **Download summary** from the Update run details blade to download full logs.
+6. Select the **Download summary** from the update run details blade to download full logs.
 
-    If you run into an issue while monitoring the update, you can use the [privileged endpoint](./azure-stack-privileged-endpoint.md) to monitor the progress of an Azure Stack Hub update run. You can also use the privileged endpoint to resume a failed update run from the last successful step if the Azure Stack Hub portal becomes unavailable. For instructions, see [Monitor updates in Azure Stack Hub using PowerShell](azure-stack-update-monitor.md).
+    If you experience an issue while monitoring the update, you can use the [privileged endpoint](./azure-stack-privileged-endpoint.md) to monitor the progress of an Azure Stack Hub update run. You can also use the privileged endpoint to resume a failed update run from the last successful step if the Azure Stack Hub portal becomes unavailable. For instructions, see [Monitor updates in Azure Stack Hub using PowerShell](azure-stack-update-monitor.md).
 
     ![Azure Stack Hub update run details](./media/azure-stack-update-apply/image3.png)
 
-7. Once completed, the update resource provider provides a **Succeeded** confirmation to show that the update process has finished and how long it took. From there, you can view info on all updates, available updates, or installed updates using the filter.
+7. When complete, the update resource provider displays a **Succeeded** confirmation to show that the update process has finished, and how long it took. From there, you can view info on all updates, available updates, or installed updates using the filter.
 
     ![azure-stack-update-apply](./media/azure-stack-update-apply/image4.png)
 
-    If the update fails, the **Update** blade reports **Needs attention**. Use the **Download full logs** option to get a high-level status of where the update failed. The Azure Stack Hub log collection helps with diagnostics and troubleshooting.
+    If the update fails, the **Update** blade reports **Needs attention**. Use the **Download full logs** option to get a high-level status of where the update failed. Azure Stack Hub log collection helps with diagnostics and troubleshooting.
 
 ## Review update history
 
@@ -79,5 +76,5 @@ You can view the current version of Azure Stack Hub in the **Updates** blade. To
 
 ## Next steps
 
--   [Manage updates in Azure Stack Hub overview](./azure-stack-updates.md)  
--   [Azure Stack Hub servicing policy](./azure-stack-servicing-policy.md)  
+- [Manage updates in Azure Stack Hub overview](./azure-stack-updates.md)  
+- [Azure Stack Hub servicing policy](./azure-stack-servicing-policy.md)  

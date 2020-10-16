@@ -1,10 +1,10 @@
 ---
-title: How to replicate resources across multiple Azure Stack Hub subscriptions 
+title: Replicate resources across multiple Azure Stack Hub subscriptions 
 description: Learn how to replicate resources using the Azure Stack Hub subscription replicator set of scripts.
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/07/2019
@@ -81,7 +81,7 @@ To run the Azure subscription replicator (v3) tool you’ll need to kick off res
 
 When the script is finished executing, there will be three new folders, **Deployment_Files**, **Parameter_Files**, and **Custom_ARM_Templates**.
 
- > [!Note]  
+ > [!NOTE]  
  > Before you run any of the generated scripts, you must set the right environment and login to the target subscription (in the new Azure Stack Hub for ex) and set the working directory to the **Deployment_Files** folder.
 
 Deployment_Files will hold two files **DeployResourceGroups.ps1** and **DeployResources.ps1**. Executing DeployResourceGroups.ps1 will deploy the resource groups. Executing DeployResources.ps1 will deploy all of the resources that were processed. In the case that the tool was executed with **All** or **Microsoft.Compute/virtualMachines** as the resource type, DeployResources.ps1 will prompt the user to input a virtual machine admin password that will be used to create all of the virtual machines.
@@ -92,7 +92,7 @@ Deployment_Files will hold two files **DeployResourceGroups.ps1** and **DeployRe
 
     ![Run the script](./media/azure-stack-network-howto-backup-replicator/image2.png)
 
-    > [!Note]  
+    > [!NOTE]  
     > Don't forget to configure the source evironment and the subscription context for the PS instance. 
 
 2.  Review the newly created folders:
@@ -183,7 +183,7 @@ When running the tool with **All** as the resource type, the following order wil
             - Network Security Group configuration  
             - Availability set configuration  
 
-> [!Note]  
+> [!NOTE]  
 > Only creates managed disks for OS disk and data disks. Currently, there isn't support for using storage accounts 
 
 ### Limitations
