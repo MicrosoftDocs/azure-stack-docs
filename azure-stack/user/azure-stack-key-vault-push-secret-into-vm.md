@@ -40,7 +40,7 @@ The following steps describe the process required to push a certificate to the V
 ## Prerequisites
 
 * You must subscribe to an offer that includes the Key Vault service.
-* [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md).
+* [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md).
 * [Configure the Azure Stack Hub user's PowerShell environment](azure-stack-powershell-configure-user.md).
 
 ## Create a key vault secret

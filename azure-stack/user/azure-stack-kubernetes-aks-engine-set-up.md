@@ -47,7 +47,7 @@ You can set the following items.
 
 
 > [!Note]  
-> You can also create the prerequisites for the AKS engine with [Azure CLI for Azure Stack Hub](./azure-stack-version-profiles-azurecli2.md) or [Azure Stack Hub PowerShell](../operator/azure-stack-powershell-install.md).
+> You can also create the prerequisites for the AKS engine with [Azure CLI for Azure Stack Hub](./azure-stack-version-profiles-azurecli2.md) or [Azure Stack Hub PowerShell](../operator/powershell-install-az-module.md).
 
 ## Matching engine to base image version
 

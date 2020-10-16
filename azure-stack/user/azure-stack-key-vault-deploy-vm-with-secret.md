@@ -28,7 +28,7 @@ You can store values such as a password as a secret in an Azure Stack Hub key va
 ## Prerequisites
 
 * You must subscribe to an offer that includes the Key Vault service.
-* [Install PowerShell for Azure Stack Hub.](../operator/azure-stack-powershell-install.md)
+* [Install PowerShell for Azure Stack Hub.](../operator/powershell-install-az-module.md)
 * [Configure your PowerShell environment.](azure-stack-powershell-configure-user.md)
 
 The following steps describe the process required to create a VM by retrieving the password stored in a Key Vault:

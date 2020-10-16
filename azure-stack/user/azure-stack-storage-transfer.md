@@ -111,13 +111,13 @@ Azure PowerShell is a module that provides cmdlets for managing services on both
 
 ### Install and Configure PowerShell for Azure Stack Hub
 
-Azure Stack Hub compatible Azure PowerShell modules are required to work with Azure Stack Hub. For more information, see [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md) and [Configure the Azure Stack Hub user's PowerShell environment](azure-stack-powershell-configure-user.md).
+Azure Stack Hub compatible Azure PowerShell modules are required to work with Azure Stack Hub. For more information, see [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md) and [Configure the Azure Stack Hub user's PowerShell environment](azure-stack-powershell-configure-user.md).
 
 ### PowerShell Sample script for Azure Stack Hub 
 
-This sample assumes you have successfully [Installed PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md). This script will help you complete the configuration and ask your Azure Stack Hub tenant credentials to add your account to the local PowerShell environment. The script will then set the default Azure subscription, create a new storage account in Azure, create a new container in this new storage account, and upload an existing image file (blob) to that container. After the script lists all blobs in that container, it will create a new destination directory on your local computer and download the image file.
+This sample assumes you have successfully [Installed PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md). This script will help you complete the configuration and ask your Azure Stack Hub tenant credentials to add your account to the local PowerShell environment. The script will then set the default Azure subscription, create a new storage account in Azure, create a new container in this new storage account, and upload an existing image file (blob) to that container. After the script lists all blobs in that container, it will create a new destination directory on your local computer and download the image file.
 
-1. Install [Azure Stack Hub-compatible Azure PowerShell modules](../operator/azure-stack-powershell-install.md).
+1. Install [Azure Stack Hub-compatible Azure PowerShell modules](../operator/powershell-install-az-module.md).
 2. Download the [tools required to work with Azure Stack Hub](../operator/azure-stack-powershell-download.md).
 3. Open **Windows PowerShell ISE** and **Run as Administrator**, then click **File** > **New** to create a new script file.
 4. Copy the script below and paste it to the new script file.

@@ -63,7 +63,7 @@ This can happen when the Fabric Resource Provider Role cache did not refresh aft
 
 Before applying the following steps ensure that no operation is currently in progress. Update the endpoint to match your environment.
 
-1. Open PowerShell and add your Azure Stack Hub environment. This requires [Azure Stack Hub PowerShell to be installed](./azure-stack-powershell-install.md) on your computer.
+1. Open PowerShell and add your Azure Stack Hub environment. This requires [Azure Stack Hub PowerShell to be installed](./powershell-install-az-module.md) on your computer.
 
    ```powershell
    Add-AzEnvironment -Name AzureStack -ARMEndpoint https://adminmanagement.local.azurestack.external
@@ -96,7 +96,7 @@ When you view information about a scale unit node, you can also perform node act
 
 The operational state of the node determines which options are available.
 
-You need to install Azure Stack Hub PowerShell modules. These cmdlets are in the **Azs.Fabric.Admin** module. To install or verify your installation of PowerShell for Azure Stack Hub, see [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
+You need to install Azure Stack Hub PowerShell modules. These cmdlets are in the **Azs.Fabric.Admin** module. To install or verify your installation of PowerShell for Azure Stack Hub, see [Install PowerShell for Azure Stack Hub](powershell-install-az-module.md).
 
 ## Stop
 
@@ -205,6 +205,6 @@ To run the shutdown action, open an elevated PowerShell prompt, and run the foll
 
 ## Next steps
 
-- [Install Azure Stack PowerShell](./azure-stack-powershell-install.md)
+- [Install Azure Stack PowerShell](./powershell-install-az-module.md)
 - [Learn about the Azure Stack Hub Fabric operator module](/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0)
 - [Monitor Add node operations](./azure-stack-add-scale-node.md#monitor-add-node-operations)

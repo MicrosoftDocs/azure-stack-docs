@@ -39,7 +39,7 @@ The following prerequisites are required:
 
 #### AzureRM PowerShell modules
 
-You will need to have the Az PowerShell modules installed. For instructions, see [Install PowerShell AzureRM module](azure-stack-powershell-install.md).
+You will need to have the Az PowerShell modules installed. For instructions, see [Install PowerShell AzureRM module](powershell-install-az-module.md).
 
 #### The computer on which the tool runs
 
@@ -48,7 +48,7 @@ You will need to have the Az PowerShell modules installed. For instructions, see
   ```powershell
   $PSVersionTable.PSVersion
   ```
-- [PowerShell configured for Azure Stack Hub](azure-stack-powershell-install.md).
+- [PowerShell configured for Azure Stack Hub](powershell-install-az-module.md).
 - The latest version of [Microsoft Azure Stack Hub Readiness Checker](https://aka.ms/AzsReadinessChecker) tool.
 
 #### Azure AD environment

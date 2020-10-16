@@ -137,7 +137,7 @@
     - name: Set up management environment
       items:
       - name: Install PowerShell AzureRM
-        href: azure-stack-powershell-install.md
+        href: powershell-install-az-module.md
       - name: Install PowerShell Az
         href: powershell-install-az-module.md
       - name: Migrate PowerShell AzureRM to Az

@@ -308,5 +308,5 @@ To run the sample, ensure that you've installed Ruby. If you're using Visual Stu
 
 ## Next steps
 
-- [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md)
+- [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md)
 - [Configure the Azure Stack Hub user's PowerShell environment](azure-stack-powershell-configure-user.md)  

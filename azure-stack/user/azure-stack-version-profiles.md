@@ -77,7 +77,7 @@ Use the .NET API profile to get the latest, most stable version of each resource
 <<<<<<< HEAD
 Use the  **Az.Bootstrapper** module available through the PowerShell Gallery to get the PowerShell cmdlets required to work with API version profiles. For information, see [Use API version profiles for PowerShell](azure-stack-version-profiles-powershell.md).
 =======
-Use the  **AzureRM.Bootstrapper** module available through the PowerShell Gallery to get the PowerShell cmdlets required to work with API version profiles. For information, see [Use API version profiles for PowerShell](../operator/azure-stack-powershell-install.md?view=azs-2002).
+Use the  **AzureRM.Bootstrapper** module available through the PowerShell Gallery to get the PowerShell cmdlets required to work with API version profiles. For information, see [Use API version profiles for PowerShell](../operator/powershell-install-az-module.md?view=azs-2002).
 >>>>>>> f30b91d840a68d506d456d5b045401a1737fd4a1
 - **Azure CLI**  
 Update your environment configuration to use the Azure Stack Hub specific API version profile. For information, see [Use API version profiles for Azure CLI](azure-stack-version-profiles-azurecli2.md).
@@ -92,6 +92,6 @@ The Node.js SDK for the Azure Stack Hub Resource Manager provides tools to help 
 
 ## Next steps
 
-- [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md)
+- [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md)
 - [Configure the Azure Stack Hub user's PowerShell environment](azure-stack-powershell-configure-user.md)
 - [Review details about resource provider API versions supported by the profiles](azure-stack-profiles-azure-resource-manager-versions.md).

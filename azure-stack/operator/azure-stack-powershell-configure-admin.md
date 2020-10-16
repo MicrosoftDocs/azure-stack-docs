@@ -23,7 +23,7 @@ You can configure Azure Stack Hub to use PowerShell to manage resources like cre
 
 Run the following prerequisites either from the [Azure Stack Development Kit (ASDK)](../asdk/asdk-connect.md#connect-with-rdp) or from a Windows-based external client if you're [connected to the ASDK through VPN](../asdk/asdk-connect.md#connect-with-vpn).
 
-- Install [Azure Stack Hub-compatible Azure PowerShell modules](azure-stack-powershell-install.md).  
+- Install [Azure Stack Hub-compatible Azure PowerShell modules](powershell-install-az-module.md).  
 - Download the [tools required to work with Azure Stack Hub](azure-stack-powershell-download.md).  
 
 ## Connect with Azure AD

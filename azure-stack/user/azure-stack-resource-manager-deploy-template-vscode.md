@@ -37,7 +37,7 @@ The Azure Stack Hub deployment schema supports hybrid profiles through Azure Res
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - Access to Azure Stack Hub
-- [Azure Stack Hub PowerShell installed](../operator/azure-stack-powershell-install.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json) on a machine that reaches the management endpoints
+- [Azure Stack Hub PowerShell installed](../operator/powershell-install-az-module.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json) on a machine that reaches the management endpoints
 
 ## Install Resource Manager Tools extension
 

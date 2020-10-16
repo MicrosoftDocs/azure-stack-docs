@@ -222,7 +222,7 @@ Before you upload the image, it's important to consider the following:
 
 Upload the VM Image to a storage account as an Azure Stack Hub operator.
 
-1. [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).  
+1. [Install PowerShell for Azure Stack Hub](powershell-install-az-module.md).  
 
 2. Sign in to Azure Stack Hub as an operator. For instructions, see [Sign in to Azure Stack Hub as an operator](azure-stack-powershell-configure-admin.md).
 
@@ -270,7 +270,7 @@ Add the VM image as an Azure Stack Hub operator using the portal.
 
  Add a VM image as an Azure Stack Hub operator using PowerShell.
 
-1. [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).  
+1. [Install PowerShell for Azure Stack Hub](powershell-install-az-module.md).  
 
 2. Sign in to Azure Stack Hub as an operator. For instructions, see [Sign in to Azure Stack Hub as an operator](azure-stack-powershell-configure-admin.md).
 
@@ -325,7 +325,7 @@ To remove the VM image as an Azure Stack Hub operator using the Azure Stack Hub 
 
 To remove the VM image as an Azure Stack Hub operator using PowerShell, follow these steps:
 
-1. [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
+1. [Install PowerShell for Azure Stack Hub](powershell-install-az-module.md).
 
 2. Sign in to Azure Stack Hub as an operator.
 

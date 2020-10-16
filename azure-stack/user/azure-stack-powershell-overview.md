@@ -48,7 +48,7 @@ Azure Stack Hub PowerShell provides a set of cmdlets that use previous versions 
 
 ### Azure Stack Hub administrator
 
-Azure Stack Hub exposes a set of resource providers to the cloud operator so that the operator can install and maintain Azure Stack Hub. In global Azure, this interaction is abstracted from the user and handled behind the scenes as part of Azure. With Azure Stack Hub, however, enterprises can support a private cloud. To do these tasks, the operator interacts with the Azure Stack Hub Admin APIs. For more information, see [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md).
+Azure Stack Hub exposes a set of resource providers to the cloud operator so that the operator can install and maintain Azure Stack Hub. In global Azure, this interaction is abstracted from the user and handled behind the scenes as part of Azure. With Azure Stack Hub, however, enterprises can support a private cloud. To do these tasks, the operator interacts with the Azure Stack Hub Admin APIs. For more information, see [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md).
 
 ### Azure Stack Hub privileged endpoint
 
@@ -70,5 +70,5 @@ You can use Docker containers to isolate each version of PowerShell on your loca
 ## Next steps
 
 - Read about [API profiles for PowerShell](azure-stack-version-profiles.md) in Azure Stack Hub.
-- Install [Azure Stack Hub PowerShell](../operator/azure-stack-powershell-install.md).
+- Install [Azure Stack Hub PowerShell](../operator/powershell-install-az-module.md).
 - Read about creating [Azure Resource Manager templates](azure-stack-develop-templates.md) for cloud consistency.

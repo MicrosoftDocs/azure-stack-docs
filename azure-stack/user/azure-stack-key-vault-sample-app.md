@@ -22,7 +22,7 @@ The steps in this article describe how to run the sample app **HelloKeyVault** t
 
 You can install the following prerequisites from the [Azure Stack Development Kit](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp), or from a Windows-based external client if you're [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn):
 
-* Install [Azure Stack Hub-compatible Azure PowerShell modules](../operator/azure-stack-powershell-install.md).
+* Install [Azure Stack Hub-compatible Azure PowerShell modules](../operator/powershell-install-az-module.md).
 * Download the [tools required to work with Azure Stack Hub](../operator/azure-stack-powershell-download.md).
 
 ## Create a key vault and register an app

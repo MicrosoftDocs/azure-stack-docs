@@ -77,7 +77,7 @@ If you're using a Windows 10 machine, you can work with PowerShell 5.0 and Visua
 
 ### Set up your tools 
 
-1. Get set up with PowerShell. For instructions, see [Install Azure Stack Hub Powershell](../operator/azure-stack-powershell-install.md). 
+1. Get set up with PowerShell. For instructions, see [Install Azure Stack Hub Powershell](../operator/powershell-install-az-module.md). 
 
 2. Download Azure Stack Hub Tools. For instructions, see [Download Azure Stack Hub tools from GitHub](../operator/azure-stack-powershell-download.md). 
 

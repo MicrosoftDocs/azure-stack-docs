@@ -64,7 +64,7 @@ landingContent:
           - text: Download Azure Stack Hub tools from GitHub 
             url: azure-stack-powershell-download.md
           - text: Install Azure Stack PowerShell 
-            url: azure-stack-powershell-install.md
+            url: powershell-install-az-module.md
           - text: Connect with Azure Stack PowerShell
             url: azure-stack-powershell-configure-admin.md
           - text: Download the Azure Stack Development Kit (ASDK) 

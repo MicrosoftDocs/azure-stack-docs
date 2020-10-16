@@ -31,7 +31,7 @@ You can use Visual Studio to write and deploy Azure Resource Manager [templates]
 
     ![Screenshot of WebPI install steps](./media/azure-stack-install-visual-studio/image1.png)
 
-5. [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md).
+5. [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md).
 
 6. Restart the computer after the installation completes.
 

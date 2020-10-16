@@ -29,7 +29,7 @@ To get setup:
 
 Configure these prerequisites from the [development kit](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp), or from a Windows-based external client if you're [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn):
 
-* Install [Azure Stack Hub-compatible Azure PowerShell modules](../operator/azure-stack-powershell-install.md).
+* Install [Azure Stack Hub-compatible Azure PowerShell modules](../operator/powershell-install-az-module.md).
 * Download the [tools required to work with Azure Stack Hub](../operator/azure-stack-powershell-download.md).
 
 Make sure you replace the following script variables with values from your Azure Stack Hub configuration:

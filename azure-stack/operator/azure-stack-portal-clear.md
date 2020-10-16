@@ -26,7 +26,7 @@ Removing portal user settings should only be done after the user subscription ha
 
 ## Requirements
 
-- [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
+- [Install PowerShell for Azure Stack Hub](powershell-install-az-module.md).
 - [Download the latest Azure Stack Hub tools](azure-stack-powershell-download.md) from GitHub.
 - The user account must still exist in the directory.
 - Azure Stack Hub admin credentials to access the admin Resource Manager endpoint.

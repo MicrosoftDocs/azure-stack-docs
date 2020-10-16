@@ -300,5 +300,5 @@ Some of the code samples available for Azure Stack Hub using the Go SDK are:
 
 ## Next steps
 
-- [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md)
+- [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md)
 - [Configure the Azure Stack Hub user's PowerShell environment](azure-stack-powershell-configure-user.md)

@@ -105,7 +105,7 @@ The following prerequisites must be in place on the computer on which the tool r
    $PSVersionTable.PSVersion
    ```
 
-- Configure [PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
+- Configure [PowerShell for Azure Stack Hub](powershell-install-az-module.md).
 - Download the latest version of the [Azure Stack Hub readiness checker](https://aka.ms/AzsReadinessChecker) tool.
 
 ### Import and export an existing PFX File

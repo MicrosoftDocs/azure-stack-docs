@@ -42,7 +42,7 @@ expand-archive master.zip `
 cd AzureStack-Tools-master
 
 ```
-For more information about using the AzureRM module for Azure Stack Hub, see [Install PowerShell AzureRM module for Azure Stack Hub](azure-stack-powershell-install.md)
+For more information about using the AzureRM module for Azure Stack Hub, see [Install PowerShell AzureRM module for Azure Stack Hub](powershell-install-az-module.md)
 
 ## Get tools for Azure Stack Hub Az (preview) module
 
@@ -80,7 +80,7 @@ The **AzureStack-Tools** repository has PowerShell modules that support the foll
 | [Resource Manager policy for Azure Stack Hub](../user/azure-stack-policy-module.md) | Use this module to configure an Azure subscription or an Azure resource group with the same versioning and service availability as Azure Stack Hub. | Cloud operators and users |
 | [Register with Azure](azure-stack-registration.md ) | Use this module to register your ASDK instance with Azure. After registering, you can download Azure Marketplace items use them in Azure Stack Hub. | Cloud operators |
 | [Azure Stack Hub deployment](../asdk/asdk-install.md) | Use this module to prepare the Azure Stack Hub host computer to deploy and redeploy by using the Azure Stack Hub virtual hard disk (VHD) image. | Cloud operators|
-| [Connecting to Azure Stack Hub](azure-stack-powershell-install.md) | Use this module to configure VPN connectivity to Azure Stack Hub. | Cloud operators and users |
+| [Connecting to Azure Stack Hub](powershell-install-az-module.md) | Use this module to configure VPN connectivity to Azure Stack Hub. | Cloud operators and users |
 | [Template validator](../user/azure-stack-validate-templates.md) | Use this module to verify if an existing or a new template can be deployed to Azure Stack Hub. | Cloud operators and users|
 
 ## Next steps

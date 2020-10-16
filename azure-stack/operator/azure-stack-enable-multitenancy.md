@@ -29,7 +29,7 @@ This guide provides the steps required, in the context of this scenario, to conf
 There are a few prerequisites to account for before you configure multi-tenancy in Azure Stack Hub:
   
  - You and Mary must coordinate administrative steps across both the directory Azure Stack Hub is installed in (Contoso), and the guest directory (Fabrikam).
- - Make sure you've [installed](azure-stack-powershell-install.md) and [configured](azure-stack-powershell-configure-admin.md) PowerShell for Azure Stack Hub.
+ - Make sure you've [installed](powershell-install-az-module.md) and [configured](azure-stack-powershell-configure-admin.md) PowerShell for Azure Stack Hub.
  - [Download the Azure Stack Hub Tools](azure-stack-powershell-download.md), and import the Connect and Identity modules:
 
     ```powershell

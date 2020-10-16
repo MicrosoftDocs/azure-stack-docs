@@ -28,7 +28,7 @@ This article describes how to create and manage a key vault in Azure Stack Hub u
 ## Prerequisites
 
 * You must subscribe to an offer that includes the Azure Key Vault service.
-* [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md).
+* [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md).
 * [Configure the Azure Stack Hub PowerShell environment](azure-stack-powershell-configure-user.md).
 
 ## Enable your tenant subscription for Key Vault operations
