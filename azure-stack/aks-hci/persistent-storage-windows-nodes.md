@@ -141,7 +141,7 @@ kubectl get nodes -o wide
 
 You can then SSH into the node using `ssh Administrator@ip`. 
 
-After you've successfully logged in to your Windows worker node, run the following PowerShell command to domain join the node. You'll be prompted to enter your **domain administrator account** credentials. You can also use elevated user credentials that have been given rights to join computers to the given domain. You'll then need to reboot your Windows worker node.
+After you've successfully logged in to your Windows worker node, run the following PowerShell command to join the node to a domain. You'll be prompted to enter your **domain administrator account** credentials. You can also use elevated user credentials that have been given rights to join computers to the given domain. You'll then need to reboot your Windows worker node.
 
 ```PowerShell
 add-computer --domainame "YourDomainName" -restart

@@ -181,6 +181,8 @@
       href: azure-stack-change-subscription-owner.md
     - name: Start and stop Azure Stack Hub
       href: azure-stack-start-and-stop.md
+    - name: Azure Site Recovery tool
+      href: site-recovery-failback.md
     - name: Manage capacity
       items:
         - name: Manage storage resources
@@ -369,6 +371,8 @@
         href: azure-stack-mysql-resource-provider-remove.md
       - name: MySQL resource provider release notes
         items:
+        - name: MySQL resource provider 1.1.93.0 release notes
+          href: azure-stack-mysql-resource-provider-11930.md
         - name: MySQL resource provider 1.1.47.0 release notes
           href: azure-stack-mysql-resource-provider-11470.md
         - name: MySQL resource provider 1.1.33.0 release notes
@@ -395,6 +399,8 @@
         href: azure-stack-sql-resource-provider-remove.md 
       - name: SQL resource provider release notes
         items:
+        - name: SQL resource provider 1.1.93.0 release notes
+          href: azure-stack-sql-resource-provider-11930.md   
         - name: SQL resource provider 1.1.47.0 release notes
           href: azure-stack-sql-resource-provider-11470.md   
         - name: SQL resource provider 1.1.33.0 release notes
@@ -463,14 +469,6 @@
         items:
         - name: Overview 
           href: azure-stack-diagnostic-log-collection-overview.md
-        - name: Send logs proactively
-          href: azure-stack-configure-automatic-diagnostic-log-collection.md
-        - name: Send logs now
-          items: 
-          - name: Use the Administrator portal
-            href: azure-stack-configure-on-demand-diagnostic-log-collection-portal.md
-          - name: Use PowerShell
-            href: azure-stack-configure-on-demand-diagnostic-log-collection-powershell.md
         - name: Get-AzureStackLog (PEP)
           href: azure-stack-get-azurestacklog.md    
     - name: Validation for Azure Stack Hub  

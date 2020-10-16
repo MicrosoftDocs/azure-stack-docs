@@ -140,7 +140,7 @@ To upgrade App Service in a disconnected environment, you must first create an o
 
 2. Click **Advanced** > **Complete offline installation or upgrade**.
 
-    ![Screenshot that shows how to an offline installation or upgrade in the App Service installer.][12]
+    ![Screenshot that shows how to complete an offline installation or upgrade in the App Service installer.][12]
 
 3. Browse to the location of the offline upgrade package you previously created and then click **Next**.
 
