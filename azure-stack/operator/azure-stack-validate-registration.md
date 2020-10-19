@@ -4,10 +4,10 @@ titleSuffix: Azure Stack Hub
 description: Learn how to validate Azure registration with the Azure Stack Hub Readiness Checker tool.
 author: IngridAtMicrosoft
 ms.topic: how-to
-ms.date: 06/25/2020
+ms.date: 10/19/2020
 ms.author: inhenkel
 ms.reviewer: jerskine
-ms.lastreviewed: 06/25/2020
+ms.lastreviewed: 10/19/2020
 
 # Intent: As an Azure Stack Hub operator, I want to validate Azure registration with the Azure Stack Hub 
 # Keyword: azure stack hub validate registration
@@ -114,7 +114,7 @@ You will need to have the Az PowerShell modules installed. For instructions, see
 1. On a computer that meets the prerequisites, open an elevated PowerShell prompt, and then run the following command to install **AzsReadinessChecker**:
 
    ```powershell
-   Install-Module Microsoft.AzureStack.ReadinessChecker -Force
+   Install-Module Microsoft.AzureStack.ReadinessChecker -Force -AllowPrerelease
    ```
 
 2. From the PowerShell prompt, run the following command to set `$registrationCredential` as the account that's the subscription owner. Replace `subscriptionowner@contoso.onmicrosoft.com` with your account and tenant name:

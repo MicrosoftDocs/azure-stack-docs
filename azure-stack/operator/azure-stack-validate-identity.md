@@ -4,10 +4,10 @@ titleSuffix: Azure Stack Hub
 description: Use the Azure Stack Hub Readiness Checker to validate Azure identity.
 author: BryanLa
 ms.topic: how-to
-ms.date: 06/25/2020
+ms.date: 10/19/2020
 ms.author: bryanla
 ms.reviewer: jerskine
-ms.lastreviewed: 06/25/2020
+ms.lastreviewed: 10/19/2020
 
 # Intent: As an Azure Stack Hub operator, I want to use the Azure Stack Hub Readiness Checker to validate Azure identity.
 # Keyword:  azure stack hub azure identity readiness checker
@@ -30,71 +30,6 @@ Validation ensures your environment is ready for Azure Stack Hub to store inform
 Download the latest version of the Azure Stack Hub Readiness Checker tool (AzsReadinessChecker) from the [PowerShell Gallery](https://aka.ms/AzsReadinessChecker).
 
 ## Install and configure
-
-### [AzureRM PowerShell](#tab/rm)
-
-## Prerequisites
-
-The following prerequisites are required:
-
-#### AzureRM PowerShell modules
-
-You will need to have the Az PowerShell modules installed. For instructions, see [Install PowerShell AzureRM module](powershell-install-az-module.md).
-
-#### The computer on which the tool runs
-
-- Windows 10 or Windows Server 2016 with internet connectivity.
-- PowerShell 5.1 or later. To check your version, run the following PowerShell command, and then review the **Major** version and **Minor** versions:  
-  ```powershell
-  $PSVersionTable.PSVersion
-  ```
-- [PowerShell configured for Azure Stack Hub](powershell-install-az-module.md).
-- The latest version of [Microsoft Azure Stack Hub Readiness Checker](https://aka.ms/AzsReadinessChecker) tool.
-
-#### Azure AD environment
-
-- Identify the Azure AD account to use for Azure Stack Hub and ensure it's an Azure AD global administrator.
-- Identify your Azure AD tenant name. The tenant name must be the primary domain name for your Azure AD. For example, **contoso.onmicrosoft.com**.
-- Identify the Azure environment you'll use. Supported values for the environment name parameter are **AzureCloud**, **AzureChinaCloud**, or **AzureUSGovernment**, depending on which Azure subscription you use.
-
-## Steps to validate Azure identity
-
-1. On a computer that meets the prerequisites, open an elevated PowerShell command prompt, and then run the following command to install **AzsReadinessChecker**:  
-
-   ```powershell
-   Install-Module Microsoft.AzureStack.ReadinessChecker -Force
-   ```
-
-2. From the PowerShell prompt, run the following command to set `$serviceAdminCredential` as the service administrator for your Azure AD tenant.  Replace `serviceadmin\@contoso.onmicrosoft.com` with your account and tenant name:
-
-   ```powershell
-   $serviceAdminCredential = Get-Credential serviceadmin@contoso.onmicrosoft.com -Message "Enter credentials for service administrator of Azure Active Directory tenant"
-   ```
-
-3. From the PowerShell prompt, run the following command to start validation of your Azure AD:
-
-   - Specify the environment name value for **AzureEnvironment**. Supported values for the environment name parameter are **AzureCloud**, **AzureChinaCloud**, or **AzureUSGovernment**, depending on which Azure subscription you use.
-   - Replace `contoso.onmicrosoft.com` with your Azure AD tenant name.
-
-   ```powershell
-   Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment <environment name> -AADDirectoryTenantName contoso.onmicrosoft.com
-   ```
-
-4. After the tool runs, review the output. Confirm the status is **OK** for installation requirements. A successful validation appears like the following example:
-
-   ```powershell
-   Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
-   Starting Azure Identity Validation
-
-   Checking Installation Requirements: OK
-
-   Finished Azure Identity Validation
-
-   Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
-   Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
-   Invoke-AzsAzureIdentityValidation Completed
-   ```
-
 
 ### [Az PowerShell](#tab/az)
 
@@ -148,6 +83,70 @@ You will need to have the Az PowerShell modules installed. For instructions, see
    Invoke-AzsAzureIdentityValidation Completed
    ```
 
+
+### [AzureRM PowerShell](#tab/rm)
+
+## Prerequisites
+
+The following prerequisites are required:
+
+#### AzureRM PowerShell modules
+
+You will need to have the Az PowerShell modules installed. For instructions, see [Install PowerShell AzureRM module](powershell-install-az-module.md).
+
+#### The computer on which the tool runs
+
+- Windows 10 or Windows Server 2016 with internet connectivity.
+- PowerShell 5.1 or later. To check your version, run the following PowerShell command, and then review the **Major** version and **Minor** versions:  
+  ```powershell
+  $PSVersionTable.PSVersion
+  ```
+- [PowerShell configured for Azure Stack Hub](powershell-install-az-module.md).
+- The latest version of [Microsoft Azure Stack Hub Readiness Checker](https://aka.ms/AzsReadinessChecker) tool.
+
+#### Azure AD environment
+
+- Identify the Azure AD account to use for Azure Stack Hub and ensure it's an Azure AD global administrator.
+- Identify your Azure AD tenant name. The tenant name must be the primary domain name for your Azure AD. For example, **contoso.onmicrosoft.com**.
+- Identify the Azure environment you'll use. Supported values for the environment name parameter are **AzureCloud**, **AzureChinaCloud**, or **AzureUSGovernment**, depending on which Azure subscription you use.
+
+## Steps to validate Azure identity
+
+1. On a computer that meets the prerequisites, open an elevated PowerShell command prompt, and then run the following command to install **AzsReadinessChecker**:  
+
+   ```powershell
+   Install-Module Microsoft.AzureStack.ReadinessChecker -Force -AllowPrerelease
+   ```
+
+2. From the PowerShell prompt, run the following command to set `$serviceAdminCredential` as the service administrator for your Azure AD tenant.  Replace `serviceadmin\@contoso.onmicrosoft.com` with your account and tenant name:
+
+   ```powershell
+   $serviceAdminCredential = Get-Credential serviceadmin@contoso.onmicrosoft.com -Message "Enter credentials for service administrator of Azure Active Directory tenant"
+   ```
+
+3. From the PowerShell prompt, run the following command to start validation of your Azure AD:
+
+   - Specify the environment name value for **AzureEnvironment**. Supported values for the environment name parameter are **AzureCloud**, **AzureChinaCloud**, or **AzureUSGovernment**, depending on which Azure subscription you use.
+   - Replace `contoso.onmicrosoft.com` with your Azure AD tenant name.
+
+   ```powershell
+   Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment <environment name> -AADDirectoryTenantName contoso.onmicrosoft.com
+   ```
+
+4. After the tool runs, review the output. Confirm the status is **OK** for installation requirements. A successful validation appears like the following example:
+
+   ```powershell
+   Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
+   Starting Azure Identity Validation
+
+   Checking Installation Requirements: OK
+
+   Finished Azure Identity Validation
+
+   Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+   Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+   Invoke-AzsAzureIdentityValidation Completed
+   ```
 --- 
 
 

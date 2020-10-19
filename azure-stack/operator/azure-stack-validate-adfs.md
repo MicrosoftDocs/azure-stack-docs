@@ -6,10 +6,10 @@ services: azure-stack
 documentationcenter: ''
 author: BryanLa
 ms.topic: how-to
-ms.date: 03/04/2020
+ms.date: 10/19/2020
 ms.author: bryanla
 ms.reviewer: jerskine
-ms.lastreviewed: 06/10/2019
+ms.lastreviewed: 10/19/2020
 
 # Intent: As an Azure Stack Hub operator, I want to use the Azure Stack Hub Readiness Checker to validate AD FS integration for Azure Stack Hub.
 # Keyword: azure stack hub readiness checker ad fs
@@ -58,7 +58,7 @@ You need at least one of the following forms of metadata:
 1. On a computer that meets the prerequisites, open an administrative PowerShell prompt and then run the following command to install AzsReadinessChecker:
 
     ```powershell
-    Install-Module Microsoft.AzureStack.ReadinessChecker -Force
+    Install-Module Microsoft.AzureStack.ReadinessChecker -Force -AllowPrerelease
     ```
 
 1. From the PowerShell prompt, run the following command to start validation. Specify the value for **-CustomADFSFederationMetadataEndpointUri** as the URI for the federation metadata.
