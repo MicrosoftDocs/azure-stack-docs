@@ -14,19 +14,19 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 
 ## Before you begin
 
-Before you begin, make sure you have a 2-4 node Azure Stack HCI cluster or a single node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't, follow instructions on the preview registration page [here](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
+Before you begin, make sure you have a 2-4 node Azure Stack HCI cluster or a single node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
 
-## Step 1: Install the AksHci PowerShell module
+## Step 1: Download and install the AksHci PowerShell module
 
-You will need to install the AksHci PowerShell module. The download package that you can find [here](https://aka.ms/AKS-HCI-Evaluate) will have the module in a zip file.
+Download the `AKS-HCI-Public=Preview-2.0` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module.
 
-If you have previously installed the AksHci PowerShell module, run the following command before proceeding.
+If you have previously installed Azure Kubernetes Service on Azure Stack HCI using PowerShell or Windows Admin Center, run the following command before proceeding.
 
    ```powershell
    Uninstall-AksHci
    ```
 
-Close all PowerShell windows. Delete any existing directories for AksHci, AksHci.Day2, and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once this is done, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`).
+**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.Day2, and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once this is done, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`).
 
    ```powershell
    Import-Module AksHci
@@ -196,9 +196,9 @@ To begin deployment, run the following command.
 Install-AksHci
 ```
 
-### Verify your deployed host
+### Verify your deployed Azure Kubernetes Service host
 
-To ensure that your host was deployed, run the following command. You will also be able to get Kubernetes clusters using the same command after deploying them.
+To ensure that your Azure Kubernetes Service host was deployed, run the following command. You will also be able to get Kubernetes clusters using the same command after deploying them.
 
 ```powershell
 Get-AksHciCluster
