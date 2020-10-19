@@ -36,7 +36,7 @@ In this section, you install an IoT Hub root CA in the edge device's trusted sto
 
 2. Copy the IoT Hub hostname and paste it in a new tab in Microsoft Edge or Google Chrome. Select the lock icon next to the website link in the address bar, then **Certificate**, then the **Certification path** tab. Select the top-most certificate in the path, then select the **View Certificate** button. Select the **Details** tab, then the **Copy to File...** button and export the certificate as a .CRT file in base-64 format, for example, **root.crt**.
 
-3. Transfer the certificate on to the Edge device.
+3. Transfer the certificate to the Edge device.
 
 4. Verify the TLS connection is successful from the Edge device using the following script:
 
@@ -64,35 +64,33 @@ At this point, everything is ready to install and configure the IoT Edge runtime
 
 ### Set up the certificate generation tool
 
-1. Download the artifacts necessary to generate device certificates using one of the following methods:
+Download the artifacts necessary to generate device certificates using one of the following methods:
 
-   **Use cURL script**
+**Use cURL script**
+```bash
+# navigate to edge device data directory
+cd /home/edgeadmin/edged1
 
-   ```bash
-   # navigate to edge device data directory
-   cd /home/edgeadmin/edged1
-   
-   # download script and configs
-   curl -Lo certGen.sh https://raw.githubusercontent.com/Azure/iotedge/master/tools/CACertificates/certGen.sh
-   curl -Lo openssl_root_ca.cnf https://raw.githubusercontent.com/Azure/iotedge/master/tools/CACertificates/   openssl_root_ca.cnf
-   ```
+# download script and configs
+curl -Lo certGen.sh https://raw.githubusercontent.com/Azure/iotedge/master/tools/CACertificates/ertGen.sh
+curl -Lo openssl_root_ca.cnf https://raw.githubusercontent.com/Azure/iotedge/master/tools/ACertificates/   openssl_root_ca.cnf
+```
+**Clone the IoT Edge repository and use tools to generate certificates**
 
-   **Clone the IoT Edge repository and use tools to generate certificates**
-   
-   ```bash
-   # navigate to home directory
-   cd /home/edgeadmin
-   
-   # clone iotedge repo
-   git clone https://github.com/Azure/iotedge.git
-   
-   # navigate to edge device data directory
-   cd /home/edgeadmin/edged1
-   
-   # Copy the config and script files from the cloned IoT Edge repo into your working directory.
-   cp /home/edgeadmin/iotedge/tools/CACertificates/*.cnf .
-   cp /home/edgeadmin/iotedge/tools/CACertificates/certGen.sh .
-   ```
+```bash
+# navigate to home directory
+cd /home/edgeadmin
+
+# clone iotedge repo
+git clone https://github.com/Azure/iotedge.git
+
+# navigate to edge device data directory
+cd /home/edgeadmin/edged1
+
+# Copy the config and script files from the cloned IoT Edge repo into your working directory.
+cp /home/edgeadmin/iotedge/tools/CACertificates/*.cnf .
+cp /home/edgeadmin/iotedge/tools/CACertificates/certGen.sh .
+```
 
 ### Create a root CA certificate
 
