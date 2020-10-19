@@ -20,6 +20,8 @@ Ensure the IoT Hub service is available in your subscription. If it isn't, work 
 
 Once an offer is available, your administrator can create or update your subscription to include IoT Hub. Alternatively, you can [subscribe to the new offer and create your own subscription](azure-stack-subscribe-services.md).
 
+[TODO - is a Windows client required?]
+
 ## Deploy a new Linux VM on Azure Stack Hub [TODO]
 
 Use the [Create a Linux server VM by using the Azure Stack Hub portal](azure-stack-quick-linux-portal.md) quick start, to install a Linux VM on your Azure Stack Hub instance. When the installation is complete, create a user account named **edgeadmin**.
@@ -95,6 +97,7 @@ At this point, everything is ready to install and configure the IoT Edge runtime
 ### Create a root CA certificate
 
 This script creates several certificate and key files, but when articles ask for the root CA certificate, use the following file: `/home/edgeadmin/edged1/certs/azure-iot-test-only.root.ca.cert.pem`
+[TODO - need more clarity on "but when articles ask for the root CA certificate"...]
 
 ```bash
 ./certGen.sh create_root_and_intermediate
@@ -104,17 +107,20 @@ This script creates several certificate and key files, but when articles ask for
 
 Production IoT Edge devices need a device CA certificate, referenced from the config.yaml file. The device CA certificate is responsible for creating certificates for the modules running on the device. It's also necessary for gateway scenarios, as the device CA certificate is use by the IoT Edge device to verify its identity to downstream devices.
 
-```bash
-# navigate to home directory
-cd /home/edgeadmin/edged1
+1. Run the following script, which creates several certificate and key files. 
 
-# generate IoT Edge device CA certificates 
-./certGen.sh create_edge_device_certificate edged1cert
-```
+   ```bash
+   # navigate to home directory
+   cd /home/edgeadmin/edged1
+   
+   # generate IoT Edge device CA certificates 
+   ./certGen.sh create_edge_device_certificate edged1cert
+   ```
 
-This command creates several certificate and key files. The following certificate and key pair must be copied over to an IoT Edge device and referenced in the config.yaml file:
-* `/home/edgeadmin/edged1/certs/iot-edge-device-edged1cert-full-chain.cert.pem`
-* `/home/edgeadmin/edged1/private/iot-edge-device-edged1cert.key.pem`
+2.  Copy the following certificate and key pair files to the IoT Edge device. Later they will be referenced in the config.yaml file:
+
+- `/home/edgeadmin/edged1/certs/iot-edge-device-edged1cert-full-chain.cert.pem`
+- `/home/edgeadmin/edged1/private/iot-edge-device-edged1cert.key.pem`
 
 ### Append IoT Hub root CA to the device root CA
 
@@ -130,30 +136,33 @@ cat root.crt >> certs/azure-iot-test-only.root.ca.cert.pem
 
 ## Install IoT Edge and container runtimes
 
-Register Microsoft key and software repository feed
-```bash
-# Install the repository configuration. 
-curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
+1. Run the following script to register the Microsoft key and software repository feed:
 
-# Copy the generated list.
-sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+   ```bash
+   # Install the repository configuration. 
+   curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
+   
+   # Copy the generated list.
+   sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+   
+   # Install Microsoft GPG public key.
+   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+   sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+   ```
 
-# Install Microsoft GPG public key.
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
-```
+2. Install the container runtime:
 
-Install a container runtime
-```bash
-sudo apt-get update
-sudo apt-get install moby-engine moby-cli
-```
+   ```bash
+   sudo apt-get update
+   sudo apt-get install moby-engine moby-cli
+   ```
 
-Install the Azure IoT Edge Security Daemon
-```bash
-sudo apt-get update
-sudo apt-get install iotedge
-```
+3. Install the Azure IoT Edge Security Daemon:
+
+   ```bash
+   sudo apt-get update
+   sudo apt-get install iotedge
+   ```
 
 ## Configure the security daemon
 
@@ -173,33 +182,36 @@ sudo apt-get install iotedge
 
 ### Configure Edge device
 
-Open the configuration file on Edge device
-```bash
-sudo nano /etc/iotedge/config.yaml
-```
+1. Open the configuration file on Edge device:
 
-Put Edge device connection string
-```yaml
-# Manual provisioning configuration
-provisioning:
-  source: "manual"
-  device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
-```
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
 
-Uncomment the `certificates` section and provide the file URIs to certificates, for example:
+2. Set the Edge device connection string by updating the \<`ADD DEVICE CONNECTION STRING HERE`\> placeholder:
 
-```yaml
-certificates:
-  device_ca_cert: "/home/edgeadmin/edged1/certs/iot-edge-device-edged1cert-full-chain.cert.pem"
-  device_ca_pk: "/home/edgeadmin/edged1/private/iot-edge-device-edged1cert.key.pem"
-  trusted_ca_certs: "/home/edgeadmin/edged1/certs/azure-iot-test-only.root.ca.cert.pem"
-```
+  ```yaml
+  # Manual provisioning configuration
+  provisioning:
+    source: "manual"
+    device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+  ```
 
-To paste clipboard contents into Nano, press and hold the **Shift** key and click the right mouse button. Or, press the **Shift** and **Insert** keys simultaneously.
+3. Uncomment the `certificates` section and provide the file URIs to certificates, for example:
 
-Save and close the file using **CTRL** + **X**, then **Y**, then **Enter**.
+> [!NOTE]
+> To paste clipboard contents into Nano, press and hold the **Shift** key and click the right mouse button. Or, press the **Shift** and **Insert** keys simultaneously.
 
-After entering the provisioning information in the configuration file, restart the daemon:
+   ```yaml
+   certificates:
+     device_ca_cert: "/home/edgeadmin/edged1/certs/iot-edge-device-edged1cert-full-chain.cert.pem"
+     device_ca_pk: "/home/edgeadmin/edged1/private/iot-edge-device-edged1cert.key.pem"
+     trusted_ca_certs: "/home/edgeadmin/edged1/certs/azure-iot-test-only.root.ca.cert.pem"
+   ```
+
+4. Save and close the file using **CTRL** + **X**, then **Y**, then **Enter**.
+
+5. Restart the daemon:
 
 ```bash
 sudo systemctl restart iotedge
@@ -207,30 +219,32 @@ sudo systemctl restart iotedge
 
 ## Verify successful installation
 
-First check the status of the IoT Edge Daemon:
+1. Check the status of the IoT Edge Daemon:
 
-```bash
-systemctl status iotedge
-```
-Examine daemon logs:
+   ```bash
+   systemctl status iotedge
+   ```
 
-```bash
-journalctl -u iotedge --no-pager --no-full
-```
+2. Examine the daemon logs:
 
-Run the troubleshooting tool to check for the most common configuration and networking errors:
+   ```bash
+   journalctl -u iotedge --no-pager --no-full
+   ```
 
-```bash
-sudo iotedge check
-```
+3. Run the troubleshooting tool to check for the most common configuration and networking errors:
 
-Until you deploy your first module to IoT Edge on your device, the `$edgeHub` system module won't be deployed to the device. As a result, the automated check will return an error for the Edge Hub can bind to ports on host connectivity check. This error can be ignored unless it occurs after deploying a module to the device.
+  ```bash
+  sudo iotedge check
+  ```
 
-Finally, list running modules:
+> [!NOTE]
+> The `$edgeHub` system module won't be deployed to the device until you deploy your first module to IoT Edge on your device. As a result, the automated check will return an error for the Edge Hub can bind to ports on host connectivity check. This error can be ignored unless it occurs after deploying a module to the device. [TODO - need clarity on the 2nd sentence above]
 
-```bash
-sudo iotedge list
-```
+4. Finally, list the running modules:
+
+   ```bash
+   sudo iotedge list
+   ```
 
 ## Next steps
 
