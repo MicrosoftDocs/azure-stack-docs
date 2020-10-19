@@ -97,7 +97,7 @@ At this point, everything is ready to install and configure the IoT Edge runtime
 ### Create a root CA certificate
 
 This script creates several certificate and key files, but when articles ask for the root CA certificate, use the following file: `/home/edgeadmin/edged1/certs/azure-iot-test-only.root.ca.cert.pem`
-[TODO - need more clarity on "but when articles ask for the root CA certificate"...]
+[TODO - need more clarity on "but when articles ask for the root CA certificate". Was this just a note for internal use?]
 
 ```bash
 ./certGen.sh create_root_and_intermediate
@@ -119,8 +119,8 @@ Production IoT Edge devices need a device CA certificate, referenced from the co
 
 2.  Copy the following certificate and key pair files to the IoT Edge device. Later they will be referenced in the config.yaml file:
 
-- `/home/edgeadmin/edged1/certs/iot-edge-device-edged1cert-full-chain.cert.pem`
-- `/home/edgeadmin/edged1/private/iot-edge-device-edged1cert.key.pem`
+    - `/home/edgeadmin/edged1/certs/iot-edge-device-edged1cert-full-chain.cert.pem`  
+    - `/home/edgeadmin/edged1/private/iot-edge-device-edged1cert.key.pem`
 
 ### Append IoT Hub root CA to the device root CA
 
@@ -190,17 +190,17 @@ cat root.crt >> certs/azure-iot-test-only.root.ca.cert.pem
 
 2. Set the Edge device connection string by updating the \<`ADD DEVICE CONNECTION STRING HERE`\> placeholder:
 
-  ```yaml
-  # Manual provisioning configuration
-  provisioning:
-    source: "manual"
-    device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
-  ```
+   ```yaml
+   # Manual provisioning configuration
+   provisioning:
+     source: "manual"
+     device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+   ```
 
 3. Uncomment the `certificates` section and provide the file URIs to certificates, for example:
 
-> [!NOTE]
-> To paste clipboard contents into Nano, press and hold the **Shift** key and click the right mouse button. Or, press the **Shift** and **Insert** keys simultaneously.
+   > [!NOTE]
+   > To paste clipboard contents into Nano, press and hold the **Shift** key and click the right mouse button. Or, press the **Shift** and **Insert** keys simultaneously.
 
    ```yaml
    certificates:
@@ -212,10 +212,10 @@ cat root.crt >> certs/azure-iot-test-only.root.ca.cert.pem
 4. Save and close the file using **CTRL** + **X**, then **Y**, then **Enter**.
 
 5. Restart the daemon:
-
-```bash
-sudo systemctl restart iotedge
-```
+   
+   ```bash
+   sudo systemctl restart iotedge
+   ```
 
 ## Verify successful installation
 
@@ -233,12 +233,12 @@ sudo systemctl restart iotedge
 
 3. Run the troubleshooting tool to check for the most common configuration and networking errors:
 
-  ```bash
-  sudo iotedge check
-  ```
+   ```bash
+   sudo iotedge check
+   ```
 
-> [!NOTE]
-> The `$edgeHub` system module won't be deployed to the device until you deploy your first module to IoT Edge on your device. As a result, the automated check will return an error for the Edge Hub can bind to ports on host connectivity check. This error can be ignored unless it occurs after deploying a module to the device. [TODO - need clarity on the 2nd sentence above]
+   > [!NOTE]
+   > The `$edgeHub` system module won't be deployed to the device until you deploy your first module to    IoT Edge on your device. As a result, the automated check will return an error for the Edge Hub can    bind to ports on host connectivity check. This error can be ignored unless it occurs after deploying a    module to the device. [TODO - need clarity on the 2nd sentence above.]
 
 4. Finally, list the running modules:
 
