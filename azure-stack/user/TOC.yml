@@ -217,7 +217,9 @@
       - name: IoT Hub
         items:
         - name: Overview
-          href: iot-hub-overview.md          
+          href: iot-hub-overview.md
+        - name: Connect an IoT Edge device
+          href: iot-hub-connect-an-iot-edge-device.md
       - name: Azure Monitor
         href: azure-stack-metrics-azure-data.md
         items: 
