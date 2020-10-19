@@ -10,13 +10,23 @@ ms.author: jeguan
 
 > Applies to: Azure Stack HCI
 
-In this quickstart, you'll learn how to set up an Azure Kubernetes Service host on Azure Stack HCI using PowerShell. To instead using Windows Admin Center, see [Set up with Windows Admin Center](setup.md).
+In this quickstart, you'll learn how to set up an Azure Kubernetes Service host on Azure Stack HCI using PowerShell. To instead use Windows Admin Center, see [Set up with Windows Admin Center](setup.md).
 
 ## Before you begin
 
-Before you begin, make sure you have a 2-4 node Azure Stack HCI cluster or a single node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't, follow instructions on how to [here](./system-requirements.md).
+Before you begin, make sure you have a 2-4 node Azure Stack HCI cluster or a single node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't, follow instructions on the preview registration page [here](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
 
-You will also need to make sure that you have the AksHci PowerShell module installed. The download package that you can find [here](https://aka.ms/AKS-HCI-Evaluate) will have the module in a zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`), and then run the following command in a PowerShell administrative window. **If you have previously installed the AksHci PowerShell module, close all PowerShell windows. Delete any existing directories for AksHci, AksHci.Day2, and MSK8sDownloadAgent. Once this is done, you can extract the contents of the new zip file.**
+## Step 1: Install the AksHci PowerShell module
+
+You will need to install the AksHci PowerShell module. The download package that you can find [here](https://aka.ms/AKS-HCI-Evaluate) will have the module in a zip file.
+
+If you have previously installed the AksHci PowerShell module, run the following command before proceeding.
+
+   ```powershell
+   Uninstall-AksHci
+   ```
+
+Close all PowerShell windows. Delete any existing directories for AksHci, AksHci.Day2, and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once this is done, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`).
 
    ```powershell
    Import-Module AksHci
@@ -24,9 +34,9 @@ You will also need to make sure that you have the AksHci PowerShell module insta
 
 After running the above command, close all PowerShell windows and reopen an administrative session to run the commands in the following steps.
 
-## Step 1: Prepare your machine(s) for deployment
+## Step 2: Prepare your machine(s) for deployment
 
-First, we'll run checks on every physical node to see if all the requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI.
+Run checks on every physical node to see if all the requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI.
 
 Open PowerShell as an administrator and run the following command.
 
@@ -36,7 +46,7 @@ Open PowerShell as an administrator and run the following command.
 
 When the checks are finished, you'll see "Done" displayed in green text.
 
-## Step 2: Configure your deployment
+## Step 3: Configure your deployment
 
 Set the configuration settings for the Azure Kubernetes Service host. **For a 2-4 node Azure Stack HCI cluster, you must specify `MultiNode` in the `-deploymentType`, the `wssdImageDir` and `cloudConfigLocation` parameters.** For a 1 node Azure Stack HCI cluster, all parameters are optional and set to their default values. However, for optimal performance, **we recommend using a 2-4 node Azure Stack HCI cluster deployment.**
 
@@ -122,7 +132,7 @@ This is used to specify the end of the MAC address of the MAC pool that you wish
 
 `-vlandID`
 
-This can be used to specify a network VLAN ID. AKS-HCI mnagement cluster and target cluster VM network adapters will be tagged with the provided VLAN ID. Default is none.
+This can be used to specify a network VLAN ID. Azure Kubernetes Service host and Kubernetes cluster VM network adapters will be tagged with the provided VLAN ID. Default is none.
 
 `cloudServiceCidr`
 
@@ -176,7 +186,7 @@ To reset the Azure Kubernetes Service on Azure Stack HCI configuration, run the 
 Set-AksHciConfig
 ```
 
-## Step 3: Start a new deployment
+## Step 4: Start a new deployment
 
 After you've configured your deployment, you must start deployment. This will install the Azure Kubernetes Service on Azure Stack HCI agents/services and the Azure Kubernetes Service host.
 
@@ -186,15 +196,15 @@ To begin deployment, run the following command.
 Install-AksHci
 ```
 
-### Check your deployed clusters
+### Verify your deployed host
 
-To get a list of your deployed Azure Kubernetes Service hosts, run the following command. You will also be able to get Kubernetes clusters using the same command after deploying them.
+To ensure that your host was deployed, run the following command. You will also be able to get Kubernetes clusters using the same command after deploying them.
 
 ```powershell
 Get-AksHciCluster
 ```
 
-## Step 4: Access your clusters using kubectl
+## Step 5: Access your clusters using kubectl
 
 To access your Azure Kubernetes Service host or Kubernetes cluster using kubectl, run the following command. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl.
 
