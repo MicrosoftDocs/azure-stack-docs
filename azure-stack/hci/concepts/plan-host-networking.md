@@ -30,7 +30,6 @@ SMB traffic can flow over the following protocols:
 
 - Transport Control Protocol (TCP) - used between sites
 - Remote direct memory access (RDMA)
-- QUIC - future
 
 ## Traffic bandwidth allocation
 

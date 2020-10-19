@@ -4,7 +4,7 @@ description: Understand cluster validation's importance, and when to run it on a
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 10/2/2020
+ms.date: 10/16/2020
 ---
 
 # Validate an Azure Stack HCI cluster
@@ -45,7 +45,7 @@ This section describes scenarios in which validation is also needed or useful.
 ## Validate networking
 The Microsoft Validate-DCB tool is designed to validate the Data Center Bridging (DCB) configuration on the cluster. To do this, the tool takes an expected configuration as input, and then tests each server in the cluster. This section covers how to install and run the Validate-DCB tool, review results, and resolve networking errors that the tool identifies.
 
-On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE) requires DCB technologies to make the network fabric lossless. And while iWARP doesn't require DCB, it's still recommended. However, configuring DCB can be complex, with exact configuration required across:
+On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE) requires DCB technologies to make the network fabric lossless. With iWARP, DCB is optional. However, configuring DCB can be complex, with exact configuration required across:
 - Each server in the cluster
 - Each network port that RDMA traffic passes through on the fabric
 
