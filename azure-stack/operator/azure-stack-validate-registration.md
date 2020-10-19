@@ -29,6 +29,60 @@ Download the latest version of **AzsReadinessChecker** from the [PowerShell Gall
 
 ## Install and configure
 
+### [Az PowerShell](#tab/az)
+
+### Prerequisites
+
+The following prerequisites are required:
+
+#### Az PowerShell modules
+
+You will need to have the Az PowerShell modules installed. For instructions, see [Install PowerShell Az preview module](powershell-install-az-module.md).
+
+#### Azure Active Directory (AAD) environment
+
+- Identify the username and password for an account that's an owner for the Azure subscription you'll use with Azure Stack Hub.  
+- Identify the subscription ID for the Azure subscription you'll use.
+
+### Steps to validate the Azure registration
+
+1. Open an elevated PowerShell prompt, and then run the following command to install **AzsReadinessChecker**:
+
+   ```powershell
+   Install-Module -Name Az.BootStrapper -Force -AllowPrerelease
+   Install-AzProfile -Profile 2019-03-01-hybrid -Force
+   Install-Module -Name Microsoft.AzureStack.ReadinessChecker -AllowPrerelease
+   ```
+
+2. From the PowerShell prompt, run the following command to set `$subscriptionID` as the Azure subscription to use. Replace `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` with your own subscription ID:
+
+   ```powershell
+   $subscriptionID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+   ```
+
+3. From the PowerShell prompt, run the following command: 
+
+   ```powershell
+   Connect-AzAccount -subscription $subscriptionID
+   ```
+
+4. From the PowerShell prompt, run the following command to start validation of your subscription. Provide your Azure AD administrator and your Azure AD tenant name:
+
+   ```powershell
+   Invoke-AzsRegistrationValidation  -RegistrationSubscriptionID $subscriptionID
+   ```
+
+5. After the tool runs, review the output. Confirm the status is correct for both sign-in and the registration requirements. Successful validation output appears similar to the following example:
+
+   ```powershell
+   Invoke-AzsRegistrationValidation v1.2005.1269 started.
+   Checking Registration Requirements: OK
+
+   Log location (contains PII): C:\Users\[*redacted*]\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+   Report location (contains PII): C:\Users\[*redacted*]\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+   Invoke-AzsRegistrationValidation Completed
+   ```
+
 ### [AzureRM PowerShell](#tab/rm)
 
 ### Prerequisites
@@ -93,60 +147,6 @@ You will need to have the Az PowerShell modules installed. For instructions, see
    Checking Registration Requirements: OK
    Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
    Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
-   Invoke-AzsRegistrationValidation Completed
-   ```
-
-### [Az PowerShell](#tab/az)
-
-### Prerequisites
-
-The following prerequisites are required:
-
-#### Az PowerShell modules
-
-You will need to have the Az PowerShell modules installed. For instructions, see [Install PowerShell Az preview module](powershell-install-az-module.md).
-
-#### Azure Active Directory (AAD) environment
-
-- Identify the username and password for an account that's an owner for the Azure subscription you'll use with Azure Stack Hub.  
-- Identify the subscription ID for the Azure subscription you'll use.
-
-### Steps to validate the Azure registration
-
-1. Open an elevated PowerShell prompt, and then run the following command to install **AzsReadinessChecker**:
-
-   ```powershell
-   Install-Module -Name Az.BootStrapper -Force -AllowPrerelease
-   Install-AzProfile -Profile 2019-03-01-hybrid -Force
-   Install-Module -Name Microsoft.AzureStack.ReadinessChecker -AllowPrerelease
-   ```
-
-2. From the PowerShell prompt, run the following command to set `$subscriptionID` as the Azure subscription to use. Replace `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` with your own subscription ID:
-
-   ```powershell
-   $subscriptionID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-   ```
-
-3. From the PowerShell prompt, run the following command: 
-
-   ```powershell
-   Connect-AzAccount -subscription $subscriptionID
-   ```
-
-4. From the PowerShell prompt, run the following command to start validation of your subscription. Provide your Azure AD administrator and your Azure AD tenant name:
-
-   ```powershell
-   Invoke-AzsRegistrationValidation  -RegistrationSubscriptionID $subscriptionID
-   ```
-
-5. After the tool runs, review the output. Confirm the status is correct for both sign-in and the registration requirements. Successful validation output appears similar to the following example:
-
-   ```powershell
-   Invoke-AzsRegistrationValidation v1.2005.1269 started.
-   Checking Registration Requirements: OK
-
-   Log location (contains PII): C:\Users\[*redacted*]\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
-   Report location (contains PII): C:\Users\[*redacted*]\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
    Invoke-AzsRegistrationValidation Completed
    ```
 ---
