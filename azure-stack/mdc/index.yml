@@ -1,0 +1,61 @@
+### YamlMime:Landing
+
+title: Azure Modular Data Center (MDC) Operator and User Documentation
+summary: Learn how to operate and use the Azure Modular Data Center (MDC).
+
+metadata:
+  title: Azure Modular Data Center (MDC) Operator and User Documentation - Tutorials, Concepts, How to articles # Required; page title displayed in search results. Include the brand. < 60 chars.
+  description: The Azure Modular Data Center (MDC) is a modular data center that contains Azure Stack Hub solutions and storage. You can provide Azure services and host large scale compute and storage on-premises or at the edge, either disconnected from Azure or connected to it. It’s optimized for use cases that require data sovereignty and on-premises control.
+  ms.service: azure-stack
+  ms.subservice: asdk 
+  ms.topic: landing-page
+  author: justinha
+  ms.author: justinha
+  ms.date: 07/23/2020
+
+# linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
+
+landingContent:
+# Cards and links should be based on top customer tasks or top subjects
+# Start card title with a verb
+  # Card (optional)
+  - title: Deploy the MDC
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text: MDC deployment overview
+            url: deployment-overview.md
+      - linkListType: deploy
+        links:
+          - text: Capacity planner
+            url: azure-stack-capacity-planner.md
+
+  - title: Get started
+    linkLists:
+      - linkListType: get-started
+        links:
+          - text: Add an Azure Stack Hub Marketplace item
+            url: ../operator/azure-stack-create-and-publish-marketplace-item.md
+      - linkListType: tutorial
+        links:
+          - text: Offer IaaS services
+            url: ../operator/tutorial-offer-services.md
+
+  # Card
+  - title: How to use
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Subscribe to an offer
+            url: ../user/azure-stack-subscribe-services.md
+          - text: Create a virtual machine from a template
+            url: ../user/azure-stack-create-vm-template.md
+      - linkListType: how-to-guide
+        links:
+          - text: Update firmware
+            url: extended-storage-firmware-updates.md
+          - text: Check health
+            url: extended-storage-health-checks.md
+
+
+  

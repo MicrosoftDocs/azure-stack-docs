@@ -5,7 +5,7 @@ description: Learn how to manage storage infrastructure for Azure Stack Hub. See
 author: IngridAtMicrosoft
 
 ms.topic: article
-ms.date: 5/4/2020
+ms.date: 10/19/2020
 ms.author: inhenkel
 ms.lastreviewed: 5/4/2020
 ms.reviewer: jiaha
@@ -93,7 +93,7 @@ The following sections describe the health states a drive can be in:
 | OK | The volume is healthy. |
 | In service | The drive is doing some internal housekeeping operations. When the action is complete, the drive should return to the OK health state. |
 
-### Drive health state: Healthy
+### Drive health state: Warning
 
 A drive in the Warning state can read and write data successfully but has an issue.
 
