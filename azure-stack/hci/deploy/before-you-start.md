@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/15/2020
+ms.date: 10/19/2020
 ---
 
 # Before you deploy Azure Stack HCI
@@ -27,13 +27,7 @@ Microsoft recommends purchasing a validated Azure Stack HCI hardware/software so
 
 At minimum, you will need two servers, a reliable high-bandwidth, low-latency network connection between servers, and SATA, SAS, NVMe, or persistent memory drives that are physically attached to just one server each.
 
-However, your hardware requirements may vary depending on the size and configuration of the cluster(s) you wish to deploy. To make sure your deployment is successful, review the following:
-
-- [Server requirements for Azure Stack HCI](../requirements/server-requirements.md)
-- [Networking requirements for Azure Stack HCI](../requirements/networking-requirements.md)
-- [Storage requirements for Azure Stack HCI](../requirements/storage-requirements.md)
-
-Make sure you don't exceed the [maximum supported hardware specifications](../requirements/maximum-supported-hardware.md) for Azure Stack HCI.
+However, your hardware requirements may vary depending on the size and configuration of the cluster(s) you wish to deploy. To make sure your deployment is successful, review the Azure Stack HCI [system requirements](../concepts/system-requirements.md).
 
 ## Gather information
 
