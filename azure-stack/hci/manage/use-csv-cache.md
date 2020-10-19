@@ -6,14 +6,14 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/04/2020
+ms.date: 10/16/2020
 ---
 
 # Use the CSV in-memory read cache with Azure Stack HCI
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-This topic describes how to use system memory to boost the performance of Azure Stack HCI.
+This topic describes how to use system memory to boost the performance of Azure Stack HCI by caching frequent reads. Writes cannot be cached in memory.
 
 Azure Stack HCI is compatible with the Cluster Shared Volume (CSV) in-memory read cache. Using system memory to cache reads can improve performance for applications like Hyper-V, which uses unbuffered I/O to access VHD or VHDX files. (Unbuffered I/Os are any operations that are not cached by the Windows Cache Manager.)
 
@@ -39,6 +39,8 @@ The CSV in-memory read cache is available in Azure Stack HCI, Windows Server 201
 | Azure Stack HCI     | 1 GiB                  |
 | Windows Server 2019 | 1 GiB                  |
 | Windows Server 2016 | 0 (disabled)           |
+
+To configure the cache using Windows Admin Center, select **Settings** at the very bottom of the **Tools** menu on the left. Then go to **Storage > In-memory cache**. A checkbox enables or disables the cache, and you can also specify the maximum memory per server to be allocated to the cache. Be sure to click **Save** at the bottom of the page after making your changes.
 
 To see how much memory is allocated using PowerShell, run:
 
