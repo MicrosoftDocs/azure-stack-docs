@@ -30,7 +30,6 @@ SMB traffic can flow over the following protocols:
 
 - Transport Control Protocol (TCP) - used between sites
 - Remote direct memory access (RDMA)
-- QUIC - future
 
 ## Traffic bandwidth allocation
 
@@ -45,7 +44,7 @@ The following table shows bandwidth allocations for various traffic types, where
 - Heartbeat (HB) traffic gets 1% of the remaining 50% allocation
 - *= should use compression rather than RDMA if bandwidth allocation for LM traffic is <5 Gbps
 
-|NIC Speed|Teamed NIC Speed|SMB 50% Reservation|SBL/CSV %|SBL/CSV Bandwidth|LM %|LM Bandwidth|SR % |SR Bandwidth|HB %|HB Bandwidth|
+|NIC Speed|Teamed Bandwidth|SMB 50% Reservation|SBL/CSV %|SBL/CSV Bandwidth|LM %|LM Bandwidth|SR % |SR Bandwidth|HB %|HB Bandwidth|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 |10|20|10|70%|7|14%*|1.4*|14%|1.4|2%|0.2|
 |25|50|25|70%|17.5|15%*|3.75*|14%|3.5|1%|0.25|
