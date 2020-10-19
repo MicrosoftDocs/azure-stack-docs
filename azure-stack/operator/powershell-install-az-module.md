@@ -26,7 +26,7 @@ If you would like to install PowerShell AzureRM module for Azure Stack Hub, see 
 > The PowerShell Az module is currently in public preview.
 > This preview version may have breaking changes in the upcoming releases
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> There will likely not be new AzureRM module releases. The AzureRM modules are under support for critical fixes only. Going forward there will only be Az releases for Azurestack
+> There will likely not be new AzureRM module releases. The AzureRM modules are under support for critical fixes only. Going forward there will only be Az releases for Azure Stack Hub.
 
 You can use *API profiles* to specify the compatible endpoints for the Azure Stack Hub resource providers.
 
