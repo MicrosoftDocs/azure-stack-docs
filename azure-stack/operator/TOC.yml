@@ -372,7 +372,7 @@
         - name: Manage 
           href: iot-hub-rp-manage.md
         - name: Rotate secrets
-          href: azure-stack-rotate-secrets.md
+          href: iot-hub-rp-rotate-secrets.md
         - name: Service update announcements
           href: https://azure.microsoft.com/updates/?query=IoT%20Hub
       - name: Remove 
