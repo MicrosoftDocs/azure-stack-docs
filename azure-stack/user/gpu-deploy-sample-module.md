@@ -39,7 +39,7 @@ You'll need to have the following resources in place in your Azure Stack Hub ins
 
     For more information about GPUs on Azure Stack Hub, see [Graphics processing unit (GPU) VM on Azure Stack Hub](gpu-vms-about.md).
   - A global Azure subscription. If you don't have a global Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
-- An [Azure Container Registry (ACR)](azure/container-registry/container-registry-get-started-portal). Make a note of the ACR sign-in server, username, and password.
+- An [Azure Container Registry (ACR)](/). Make a note of the ACR sign-in server, username, and password.
 -   A free or standard-tier [IoT
     hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)
     in global Azure.
