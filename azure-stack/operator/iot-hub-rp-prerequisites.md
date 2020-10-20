@@ -34,9 +34,9 @@ The following prerequisites must be completed before you can install IoT Hub on 
 
 ## Certificate requirements
 
-IoT Hub on Azure Stack Hub needs Public key infrastructure (PKI) SSL certificates. The Subject Alternate Name (SAN) must adhere to the following naming pattern: `CN=*.mgmtiothub.<region>.<fqdn>.`
+IoT Hub on Azure Stack Hub needs Public key infrastructure (PKI) SSL certificates. The Subject Alternatative Name (SAN) must adhere to the following naming pattern: `CN=*.mgmtiothub.<region>.<fqdn>`.
 
-Subject Name may be specified, but it's not used by IoT Hub when handling certificates. Only the Subject Alternate Name is used. See [PKI certificate requirements](azure-stack-pki-certs.md) for the full list of detailed requirements.
+Subject Name may be specified, but it's not used by IoT Hub when handling certificates. Only the Subject Alternative Name is used. See [PKI certificate requirements](azure-stack-pki-certs.md) for the full list of detailed requirements.
 
 [![iot hub certificate example](media\iot-hub-rp-prerequisites\certificate.png)](media/iot-hub-rp-prerequisites/certificate.png#lightbox)
 
