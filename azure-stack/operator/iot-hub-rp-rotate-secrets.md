@@ -31,8 +31,7 @@ This article will show you how to rotate the secrets used by the IoT Hub resourc
 Secret rotation should complete successfully without errors. If you experience any of the following conditions in the administrator portal, [open a support request](azure-stack-manage-basics.md#where-to-get-support) for assistance:
 
    - Authentication issues, including problems connecting to the IoT Hub resource provider.
-   - Unable to upgrade resource provider 
-   - Unable to edit configuration parameters in the administrator portal.
+   - Unable to upgrade resource provider, or edit configuration parameters.
    - Usage metrics aren't showing.
    - Bills aren't being generated.
    - Backups aren't occurring.
