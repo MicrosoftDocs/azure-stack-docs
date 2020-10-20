@@ -14,7 +14,7 @@ ms.date: 1/6/2020
 
 The IoT Hub management experience allows you to visualize its status and alerts.
 
-[![dashboard](media\iot-hub-rp-manage\dashboard.png)](media/iot-hub-rp-manage\dashboard.png#lightbox)
+[![dashboard screenshot](media\iot-hub-rp-manage\dashboard.png)](media/iot-hub-rp-manage\dashboard.png#lightbox)
 
 ## Alerts
 

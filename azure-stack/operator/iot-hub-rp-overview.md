@@ -25,7 +25,7 @@ IoT Hub on Azure Stack Hub allows you to create hybrid IoT solutions. IoT Hub is
 
 IoT Hub throttles in the following aspects to ensure the performance of the service on Azure Stack Hub.
 
-| IoT Hub on Azure Stack Hub| |
+| Aspect | Throttled to |
 |-|-|
 | SKU | S2 only|
 | Number of devices | 10,000 |

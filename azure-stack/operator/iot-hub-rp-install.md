@@ -74,7 +74,7 @@ Follow these steps to install the IoT Hub package:
 
     [![Install IoT Hub 6](../operator/media/iot-hub-rp-install//install6.png)](../operator/media/iot-hub-rp-install//install6.png#lightbox)
 
-    [![Install IoT Hub 6(1)](../operator/media/iot-hub-rp-install//install61.png)](../operator/media/iot-hub-rp-install//install61.png#lightbox)
+    [![Install IoT Hub 61](../operator/media/iot-hub-rp-install//install61.png)](../operator/media/iot-hub-rp-install//install61.png#lightbox)
 
 7. Click on **Install** under **Install Resource Provider**.
 
@@ -86,9 +86,9 @@ Follow these steps to install the IoT Hub package:
 
 9. Installation can take between 90 – 120 minutes. Wait for the installation to complete.
 
-    [![Install IoT Hub 9](../operator/media/iot-hub-rp-install//install91.png)](../operator/media/iot-hub-rp-install//install91.png#lightbox)
+    [![Install IoT Hub 91](../operator/media/iot-hub-rp-install//install91.png)](../operator/media/iot-hub-rp-install//install91.png#lightbox)
 
-    [![Install IoT Hub 9](../operator/media/iot-hub-rp-install//install92.png)](../operator/media/iot-hub-rp-install//install92.png#lightbox)
+    [![Install IoT Hub 92](../operator/media/iot-hub-rp-install//install92.png)](../operator/media/iot-hub-rp-install//install92.png#lightbox)
 
 Your IoT hub is installed successfully! To get started, complete the following steps:
 
@@ -98,7 +98,7 @@ Your IoT hub is installed successfully! To get started, complete the following s
 
 3. Add **Microsoft.Devices Service** and click **Save**.
 
-    [![add service](../operator/media/iot-hub-rp-install//pd2.png)](../operator/media/iot-hub-rp-install//pd2.png#lightbox)
+    [![add service](../operator/media/iot-hub-rp-install/pd2.png)](../operator/media/iot-hub-rp-install/pd2.png#lightbox)
 
 4. You are all set! IoT hubs can now be created.
 

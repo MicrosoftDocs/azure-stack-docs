@@ -21,11 +21,11 @@ This article provides instructions on how to remove IoT Hub resource provider on
 
 1) Go to **Marketplace management**. IoT Hub will be in the list and marked as installed. Click on **IoT Hub**.
 
-    [![uninstall1](../operator/media/iot-hub-rp-remove/uninstall1.png)](../operator/media/iot-hub-rp-remove/uninstall1.png#lightbox)
+    [![Resource provider list](../operator/media/iot-hub-rp-remove/uninstall1.png)](../operator/media/iot-hub-rp-remove/uninstall1.png#lightbox)
 
 2) Click **Uninstall** under **IoT Hub**, provide the resource provider name **microsoft.iothub**, then click **Uninstall** button under it.
 
-    [![uninstall2](../operator/media/iot-hub-rp-remove/uninstall2.png)](../operator/media/iot-hub-rp-remove/uninstall2.png#lightbox)
+    [![Uninstall IoT Hub and confirm](../operator/media/iot-hub-rp-remove/uninstall2.png)](../operator/media/iot-hub-rp-remove/uninstall2.png#lightbox)
 
 3) Wait for the uninstall to complete. Before trying to install IoT Hub again, wait for at least 10 minutes.
 
