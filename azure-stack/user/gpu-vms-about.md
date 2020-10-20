@@ -82,9 +82,5 @@ NVIDIA CUDA driers and GRID drivers will need to be manually installed on the VM
 
 ## Next steps 
 
-<<<<<<< HEAD
 - [Azure Stack VM features](azure-stack-vm-considerations.md)  
 - [Deploy a GPU enabled IoT module on Azure Stack Hub](gpu-deploy-sample-module.md)
-=======
-[Azure Stack VM features](azure-stack-vm-considerations.md)
->>>>>>> a022dba2350e1633fd5b159fe3470f46582f378e
