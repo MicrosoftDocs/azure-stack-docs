@@ -10,6 +10,8 @@ ms.date: 1/6/2020
 
 # IoT Hub on Azure Stack Hub overview
 
+[!INCLUDE [preview-banner](../includes/iot-hub-preview.md)]
+
 IoT Hub on Azure Stack Hub allows you to create hybrid IoT solutions. IoT Hub is a managed service, acts as a central message hub for bi-directional communication between your IoT application and the devices it manages. You can use IoT Hub on Azure Stack Hub to build IoT solutions with reliable and secure communications between IoT devices and a on-prem solution backend. 
 
 ## Differences between Azure IoT Hub and IoT Hub on Azure Stack Hub

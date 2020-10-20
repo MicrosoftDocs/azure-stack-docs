@@ -10,6 +10,8 @@ ms.date: 1/6/2020
 
 # How to manage IoT Hub on Azure Stack Hub
 
+[!INCLUDE [preview-banner](../includes/iot-hub-preview.md)]
+
 The IoT Hub management experience allows you to visualize its status and alerts.
 
 [![dashboard](media\iot-hub-rp-manage\dashboard.png)](media/iot-hub-rp-manage\dashboard.png#lightbox)

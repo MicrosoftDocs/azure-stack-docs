@@ -10,6 +10,8 @@ ms.date: 1/6/2020
 
 # How to install IoT Hub on Connected Azure Stack Hub
 
+[!INCLUDE [preview-banner](../includes/iot-hub-preview.md)]
+
 This article shows you how to download and install the IoT Hub resource provider, making it available to offer to customers for subscription. The installation process of IoT Hub takes about 2 hours.
 
 ## Download IoT Hub

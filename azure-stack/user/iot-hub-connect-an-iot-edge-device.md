@@ -12,6 +12,8 @@ ms.lastreviewed: 10/20/2020
 
 # Connect an IoT Edge device to IoT Hub on Azure Stack Hub
 
+[!INCLUDE [preview-banner](../includes/iot-hub-preview.md)]
+
 This article shows you how to connect an IoT Edge device to the IoT Hub service running on Azure Stack Hub.
 
 ## Prerequisites
