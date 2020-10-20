@@ -5,10 +5,10 @@ description: Learn how to register Azure Stack Hub integrated systems with Azure
 author: IngridAtMicrosoft
 
 ms.topic: how-to
-ms.date: 04/06/2020
+ms.date: 10/16/2020
 ms.author: inhenkel
 ms.reviewer: avishwan
-ms.lastreviewed: 03/04/2019
+ms.lastreviewed: 10/16/2020
 ms.custom: contperfq4
 zone_pivot_groups: state-connected-disconnected
 
@@ -16,7 +16,6 @@ zone_pivot_groups: state-connected-disconnected
 # Keyword: register azure stack (registration)
 
 ---
-
 
 # Register Azure Stack Hub with Azure
 
@@ -76,7 +75,7 @@ Ensure the output returns **FullLanguageMode**. If any other language mode is re
 
 Use the latest PowerShell for Azure Stack Hub to register with Azure.
 
-If the latest version isn't already installed, see [install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
+If the latest version isn't already installed, see [install PowerShell for Azure Stack Hub](powershell-install-az-module.md).
 
 ### Download the Azure Stack Hub tools
 
@@ -139,7 +138,7 @@ Connected environments can access the internet and Azure. For these environments
    Register-AzResourceProvider -ProviderNamespace Microsoft.AzureStack
    ```
 
-5. Start PowerShell ISE as an administrator and navigate to the **Registration** folder in the **AzureStack-Tools-master** directory created when you downloaded the Azure Stack Hub tools. Import the **RegisterWithAzure.psm1** module using PowerShell:
+5. Start PowerShell ISE as an administrator and navigate to the **Registration** folder in the **AzureStack-Tools-az** directory created when you downloaded the Azure Stack Hub tools. Import the **RegisterWithAzure.psm1** module using PowerShell:
 
    ```powershell  
    Import-Module .\RegisterWithAzure.psm1
@@ -203,7 +202,7 @@ Connected environments can access the internet and Azure. For these environments
    Register-AzResourceProvider -ProviderNamespace Microsoft.AzureStack
    ```
 
-5. Start PowerShell ISE as an administrator and navigate to the **Registration** folder in the **AzureStack-Tools-master** directory created when you downloaded the Azure Stack Hub tools. Import the **RegisterWithAzure.psm1** module using PowerShell:
+5. Start PowerShell ISE as an administrator and navigate to the **Registration** folder in the **AzureStack-Tools-az** directory created when you downloaded the Azure Stack Hub tools. Import the **RegisterWithAzure.psm1** module using PowerShell:
 
    ```powershell  
    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
@@ -228,7 +227,7 @@ If you're registering Azure Stack Hub in a disconnected environment (with no int
 
 ### Get a registration token from the Azure Stack Hub environment
 
-1. Start PowerShell ISE as an administrator and navigate to the **Registration** folder in the **AzureStack-Tools-master** directory created when you downloaded the Azure Stack Hub tools. Import the **RegisterWithAzure.psm1** module:  
+1. Start PowerShell ISE as an administrator and navigate to the **Registration** folder in the **AzureStack-Tools-az** directory created when you downloaded the Azure Stack Hub tools. Import the **RegisterWithAzure.psm1** module:  
 
    ```powershell  
    Import-Module .\RegisterWithAzure.psm1
@@ -253,7 +252,7 @@ On the computer that is connected to the internet, do the same steps to import t
 
 You need your registration token and a unique token name.
 
-1. Start PowerShell ISE as an administrator and navigate to the **Registration** folder in the **AzureStack-Tools-master** directory created when you downloaded the Azure Stack Hub tools. Import the **RegisterWithAzure.psm1** module:  
+1. Start PowerShell ISE as an administrator and navigate to the **Registration** folder in the **AzureStack-Tools-az** directory created when you downloaded the Azure Stack Hub tools. Import the **RegisterWithAzure.psm1** module:  
 
    ```powershell  
    Import-Module .\RegisterWithAzure.psm1
@@ -271,7 +270,7 @@ Optionally, you can use the Get-Content cmdlet to point to a file that contains 
 
 You need your registration token and a unique token name.
 
-1. Start PowerShell ISE as an administrator and navigate to the **Registration** folder in the **AzureStack-Tools-master** directory created when you downloaded the Azure Stack Hub tools. Import the **RegisterWithAzure.psm1** module:  
+1. Start PowerShell ISE as an administrator and navigate to the **Registration** folder in the **AzureStack-Tools-az** directory created when you downloaded the Azure Stack Hub tools. Import the **RegisterWithAzure.psm1** module:  
 
     ```powershell  
     Import-Module .\RegisterWithAzure.psm1

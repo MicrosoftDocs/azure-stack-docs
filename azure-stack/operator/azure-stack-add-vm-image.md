@@ -47,13 +47,13 @@ Add the VM image as an Azure Stack Hub operator using the portal.
 
    [![Add a VM image](./media/azure-stack-add-vm-image/tca4-small.png)](./media/azure-stack-add-vm-image/tca4.png#lightbox)
 
-4. Under **Create image**, enter the **Publisher**, **Offer**, **SKU**, **Version**, and OS disk blob URI. Then, select **Create** to begin creating the VM image.
+2. Under **Create image**, enter the **Publisher**, **Offer**, **SKU**, **Version**, and OS disk blob URI. Then, select **Create** to begin creating the VM image.
 
    [![Custom image sideloading UI](./media/azure-stack-add-vm-image/tca5-small.png)](./media/azure-stack-add-vm-image/tca5.png#lightbox)
 
    When the image is successfully created, the VM image status changes to **Succeeded**.
 
-5. When you add an image, it is only available for Azure Resource Manager-based templates and PowerShell deployments. To make an image available to your users as a marketplace item, publish the marketplace item using the steps in the article [Create and publish a Marketplace item](azure-stack-create-and-publish-marketplace-item.md). Make sure you note the **Publisher**, **Offer**, **SKU**, and **Version** values. You will need them when you edit the Resource Manager template and Manifest.json in your custom .azpkg.
+3. When you add an image, it is only available for Azure Resource Manager-based templates and PowerShell deployments. To make an image available to your users as a marketplace item, publish the marketplace item using the steps in the article [Create and publish a Marketplace item](azure-stack-create-and-publish-marketplace-item.md). Make sure you note the **Publisher**, **Offer**, **SKU**, and **Version** values. You will need them when you edit the Resource Manager template and Manifest.json in your custom .azpkg.
 
 ### [PowerShell](#tab/image-add-ps)
 

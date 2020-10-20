@@ -62,7 +62,7 @@ To create a VPN connection to the ASDK, open PowerShell as an admin on your loca
 
 ```powershell
 # Change directories to the default Azure Stack tools directory
-cd C:\AzureStack-Tools-master
+cd C:\AzureStack-Tools-az
 
 # Configure Windows Remote Management (WinRM), if it's not already configured.
 winrm quickconfig  

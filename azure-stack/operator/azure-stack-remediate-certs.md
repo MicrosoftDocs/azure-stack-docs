@@ -4,10 +4,10 @@ titleSuffix: Azure Stack Hub
 description: Fix common issues with Azure Stack Hub PKI certificates using the Azure Stack Hub Readiness Checker.
 author: IngridAtMicrosoft
 ms.topic: how-to
-ms.date: 03/04/2020
+ms.date: 10/19/2020
 ms.author: inhenkel
 ms.reviewer: unknown
-ms.lastreviewed: 11/19/2019
+ms.lastreviewed: 10/19/2020
 
 # Intent: As an Azure Stack operator, I want to fix common issues with PKI certificates.
 # Keyword: fix issues pki certificates
@@ -105,7 +105,7 @@ The following prerequisites must be in place on the computer on which the tool r
    $PSVersionTable.PSVersion
    ```
 
-- Configure [PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
+- Configure [PowerShell for Azure Stack Hub](powershell-install-az-module.md).
 - Download the latest version of the [Azure Stack Hub readiness checker](https://aka.ms/AzsReadinessChecker) tool.
 
 ### Import and export an existing PFX File
@@ -113,7 +113,7 @@ The following prerequisites must be in place on the computer on which the tool r
 1. On a computer that meets the prerequisites, open an elevated PowerShell prompt, and then run the following command to install the Azure Stack Hub readiness checker:
 
    ```powershell
-   Install-Module Microsoft.AzureStack.ReadinessChecker -Force
+   Install-Module Microsoft.AzureStack.ReadinessChecker -Force -AllowPrerelease
    ```
 
 2. From the PowerShell prompt, run the following cmdlet to set the PFX password. Replace `PFXpassword` with the actual password:

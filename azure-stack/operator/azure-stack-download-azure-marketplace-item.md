@@ -83,7 +83,7 @@ There are two parts to this scenario:
 
   - Your Azure Stack Hub deployment must be registered with Azure.
 
-  - The computer that has internet connectivity must have **Azure Stack Hub PowerShell Module version 1.2.11** or later. If not already present, [install Azure Stack Hub-specific PowerShell modules](azure-stack-powershell-install.md).
+  - The computer that has internet connectivity must have **Azure Stack Hub PowerShell Module version 1.2.11** or later. If not already present, [install Azure Stack Hub-specific PowerShell modules](powershell-install-az-module.md).
 
   - To enable import of a downloaded Marketplace item, the [PowerShell environment for the Azure Stack Hub operator](azure-stack-powershell-configure-admin.md) must be configured.
 

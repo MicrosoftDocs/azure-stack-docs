@@ -20,7 +20,7 @@ The Azure Stack Hub policy module enables you to configure an Azure subscription
 
 ## Install the module
 
-1. Install the required version of the Az PowerShell module, as described in Step 1 of [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md).
+1. Install the required version of the Az PowerShell module, as described in Step 1 of [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md).
 2. [Download the Azure Stack Hub tools from GitHub](../operator/azure-stack-powershell-download.md).
 3. [Configure PowerShell for use with Azure Stack Hub](azure-stack-powershell-configure-user.md).
 4. Import the **AzureStack.Policy.psm1** module:

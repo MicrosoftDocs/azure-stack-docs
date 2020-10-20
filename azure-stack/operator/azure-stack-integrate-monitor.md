@@ -201,7 +201,7 @@ Troubleshooting the plugin is done by calling the plugin manually in a terminal.
 
 If you're not using Operations Manager, Nagios, or a Nagios-based solution, you can use PowerShell to enable a broad range of monitoring solutions to integrate with Azure Stack Hub.
 
-1. To use PowerShell, make sure that you have [PowerShell installed and configured](azure-stack-powershell-install.md) for an Azure Stack Hub operator environment. Install PowerShell on a local computer that can reach the Resource Manager (administrator) endpoint (https://adminmanagement.[region].[External_FQDN]).
+1. To use PowerShell, make sure that you have [PowerShell installed and configured](powershell-install-az-module.md) for an Azure Stack Hub operator environment. Install PowerShell on a local computer that can reach the Resource Manager (administrator) endpoint (https://adminmanagement.[region].[External_FQDN]).
 
 2. Run the following commands to connect to the Azure Stack Hub environment as an Azure Stack Hub operator:
 

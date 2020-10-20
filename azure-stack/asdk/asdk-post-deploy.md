@@ -4,10 +4,10 @@ description: Learn about the recommended configuration changes to make after ins
 author: justinha
 
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 10/16/2020
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 07/31/2019
+ms.lastreviewed: 10/16/2020
 
 # Intent: As an ASDK user, I want to know recommended configuration changes after I deploy the ASDK.
 # Keyword: asdk configuration changes
@@ -34,7 +34,7 @@ Use API version profiles to specify Azure Stack compatible Az modules.  API vers
 You can install the latest Azure Stack PowerShell module with or without internet connectivity to the ASDK host computer:
 
 > [!IMPORTANT]
-> Before installing the required version, make sure that you [uninstall any existing Azure PowerShell modules](../operator/azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules).
+> Before installing the required version, make sure that you [uninstall any existing Azure PowerShell modules](../operator/powershell-install-az-module.md#3-uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules).
 
 - **With an internet connection** from the ASDK host computer: Run the following PowerShell script to install these modules on your ASDK installation:
 
@@ -47,8 +47,8 @@ You can install the latest Azure Stack PowerShell module with or without interne
   Install-Module -Name Az.BootStrapper
 
   # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
-  Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
-  Install-Module -Name AzureStack -RequiredVersion 1.8.2
+  Use-AzProfile -Profile 2019-03-01-hybrid -Force
+  Install-Module -Name AzureStack -RequiredVersion 2.0.2-preview -AllowPrerelease
   ```
 
   If the installation is successful, the Az and AzureStack modules are displayed in the output.
@@ -80,23 +80,25 @@ You can install the latest Azure Stack PowerShell module with or without interne
 
 ## Download the Azure Stack tools
 
-[AzureStack-Tools](https://github.com/Azure/AzureStack-Tools) is a GitHub repository that hosts PowerShell modules for managing and deploying resources to Azure Stack. To obtain these tools, clone the GitHub repository or download the AzureStack-Tools folder by running the following script:
+[AzureStack-Tools](https://github.com/Azure/AzureStack-Tools) is a GitHub repository that hosts PowerShell modules for managing and deploying resources to Azure Stack. To obtain these tools, clone the GitHub repository or download the AzureStack-Tools-az folder by running the following script:
 
   ```powershell
-  # Change directory to the root directory.
-  cd \
+# Change directory to the root directory.
+cd \
 
-  # Enforce usage of TLSv1.2 to download the Azure Stack tools archive from GitHub
-  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-  Invoke-WebRequest `
-    -Uri https://github.com/Azure/AzureStack-Tools/archive/master.zip `
-    -OutFile master.zip
+# Download the tools archive.
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
+invoke-webrequest `
+  https://github.com/Azure/AzureStack-Tools/archive/az.zip `
+  -OutFile az.zip
 
-  # Expand the downloaded files.
-  Expand-Archive -Path master.zip -DestinationPath . -Force
+# Expand the downloaded files.
+expand-archive az.zip `
+  -DestinationPath . `
+  -Force
 
-  # Change to the tools directory.
-  cd AzureStack-Tools-master
+# Change to the tools directory.
+cd AzureStack-Tools-az
   ```
 
 ## Validate the ASDK installation

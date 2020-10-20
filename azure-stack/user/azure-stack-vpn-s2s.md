@@ -46,7 +46,7 @@ Before you begin, make sure you have the following prerequisites:
 
 - An Azure subscription. If you don't already have an Azure subscription, you can activate your [MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), or sign up for a [free account](https://azure.microsoft.com/pricing/free-trial/).
 
-- The Azure Resource Manager PowerShell cmdlets. For more info about installing the PowerShell cmdlets, see [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md).
+- The Azure Resource Manager PowerShell cmdlets. For more info about installing the PowerShell cmdlets, see [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md).
 
 ## Part 1 - Create and set IPsec/IKE policy
 
