@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: v-dasis
 ms.topic: how-to
-ms.date: 09/21/2020
+ms.date: 10/17/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -184,10 +184,10 @@ If resolving the cluster isn't successful after some time, in most cases you can
 
 ## Step 5: SDN (optional)
 
-Step 5 of the wizard walks you through setting up Network Controller on your cluster for Software Defined Networking (SDN). Once Network Controller is set up, it can be used to configure other components of SDN such as Software Load Balancer and RAS Gateway.
+This optional step walks you through setting up the Network Controller component of [Software Defined Networking (SDN)](../concepts/software-defined-networking.md). Once the Network Controller is set up, it can be used to configure other components of SDN such as Software Load Balancer and RAS Gateway.
 
 > [!NOTE]
-> This step of the wizard is optional.
+> SDN is not supported or available for stretched clusters.
 
 :::image type="content" source="media/cluster/create-cluster-network-controller.png" alt-text="Create cluster wizard - SDN Network Controller" lightbox="media/cluster/create-cluster-network-controller.png":::
 
@@ -208,7 +208,7 @@ Step 5 of the wizard walks you through setting up Network Controller on your clu
 1. Enter values for **MAC address pool start** and **MAC address pool end**.
 1. When finished, click **Next**.
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete. Then click **Finish**.
- 
+
 If Network Controller deployment fails, do the following before you try this again:
 
 - Stop and delete any Network Controller VMs that the wizard created.  

@@ -20,8 +20,8 @@ ms.lastreviewed: 07/07/2020
 In this article, you can learn which graphics processing unit (GPU) models are supported on the Azure Stack Hub multinode system. You can also find instructions on installing the drivers used with the GPUs. GPU support in Azure Stack Hub enables solutions such as Artificial Intelligence, training, inference, and data visualization. The AMD Radeon Instinct MI25 can be used to support graphic-intensive applications such as Autodesk AutoCAD.
 
 You can choose from three GPU models in the public preview period. They are available in NVIDIA V100, NVIDIA T4 and AMD MI25 GPUs. These physical GPUs align with the following Azure N-Series virtual machine (VM) types as follows:
-- [NCv3](https://docs.microsoft.com/azure/virtual-machines/ncv3-series)
-- [NVv4 (AMD MI25)](https://docs.microsoft.com/azure/virtual-machines/nvv4-series)
+- [NCv3](/azure/virtual-machines/ncv3-series)
+- [NVv4 (AMD MI25)](/azure/virtual-machines/nvv4-series)
 - NCas_v4
 
 > [!IMPORTANT]  
@@ -72,7 +72,7 @@ GPU VMs will undergo downtime during operations such as patch and update (PnU) a
 ## Guest driver installation 
 
 ### AMD MI25
-The article [Install AMD GPU drivers on N-series VMs running Windows](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-amd-driver-setup) provides instructions on installing the driver for the AMD Radeon Instinct MI25 inside the NVv4 GPU-P enabled VM along with steps on how to verify driver installation. This extension only works in connected mode.
+The article [Install AMD GPU drivers on N-series VMs running Windows](/azure/virtual-machines/windows/n-series-amd-driver-setup) provides instructions on installing the driver for the AMD Radeon Instinct MI25 inside the NVv4 GPU-P enabled VM along with steps on how to verify driver installation. This extension only works in connected mode.
 
 ### NVIDIA
 
@@ -82,5 +82,9 @@ NVIDIA CUDA driers and GRID drivers will need to be manually installed on the VM
 
 ## Next steps 
 
+<<<<<<< HEAD
 - [Azure Stack VM features](azure-stack-vm-considerations.md)  
 - [Deploy a GPU enabled IoT module on Azure Stack Hub](gpu-deploy-sample-module.md)
+=======
+[Azure Stack VM features](azure-stack-vm-considerations.md)
+>>>>>>> a022dba2350e1633fd5b159fe3470f46582f378e

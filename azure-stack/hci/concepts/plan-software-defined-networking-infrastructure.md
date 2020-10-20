@@ -6,13 +6,16 @@ ms.topic: conceptual
 ms.assetid: ea7e53c8-11ec-410b-b287-897c7aaafb13
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 09/11/2020
+ms.date: 10/16/2020
 ---
 # Plan a Software Defined Network infrastructure
 
 >Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server (Semi-Annual Channel), Windows Server 2016
 
 Learn about deployment planning for a Software Defined Network (SDN) infrastructure, including hardware and software prerequisites. This topic includes planning requirements for physical and logical network configuration, routing, gateways, network hardware, and more. It also includes considerations on extending a SDN infrastructure and using a phased deployment.
+
+   > [!NOTE]
+   > SDN is not supported on stretched (multi-site) clusters.
 
 ## Prerequisites
 There are several hardware and software prerequisites for a SDN infrastructure, including:
@@ -169,7 +172,7 @@ Role|vCPU requirements|Memory requirements|Disk requirements|
 |RAS Gateway<br> (single pool of three nodes<br> gateways, two active, one passive)|8 vCPUs|8 GB recommended|75 GB for operating system drive
 |RAS Gateway BGP router<br> for SLB/MUX peering<br> (alternatively use ToR switch<br> as BGP Router)|2 vCPUs|2 GB|75 GB for operating system drive|
 
-If you use System Center - Virtual Machine Manager (VMM) for deployment, additional infrastructure VM resources are required for VMM and other non-SDN infrastructure. To learn more, see [System requirements for System Center Virtual Machine Manager](https://docs.microsoft.com/system-center/vmm/system-requirements?view=sc-vmm-2019&preserve-view=true).
+If you use System Center - Virtual Machine Manager (VMM) for deployment, additional infrastructure VM resources are required for VMM and other non-SDN infrastructure. To learn more, see [System requirements for System Center Virtual Machine Manager](/system-center/vmm/system-requirements?preserve-view=true&view=sc-vmm-2019).
 
 ## Extending your infrastructure
 The sizing and resource requirements for your infrastructure depend on the tenant workload VMs that you plan to host. The CPU, memory, and disk requirements for the infrastructure VMs (for example: Network Controller, SLB, gateway, and so on) are defined in the previous table. You can add more infrastructure VMs to scale as needed. However, any tenant VMs running on the Hyper-V hosts have their own CPU, memory, and disk requirements that you must consider.
@@ -191,4 +194,4 @@ Feature|Deployment requirements|Network requirements|
 ## Next steps
 For related information, see also:
 - [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller)
-- [SDN in Azure Stack HCI](https://docs.microsoft.com/azure-stack/hci/concepts/software-defined-networking)
+- [SDN in Azure Stack HCI](./software-defined-networking.md)
