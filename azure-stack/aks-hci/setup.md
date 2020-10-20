@@ -14,11 +14,16 @@ In this quickstart, you set up Azure Kubernetes Service on Azure Stack HCI using
 
 Setting up involves the following tasks:
 
+* Download Azure Kubernetes Service on Azure Stack HCI
 * Set up Windows Admin Center, if you haven't done so already
 * Install the Azure Kubernetes Service for Azure Stack HCI extension for Windows Admin Center
 * Set up an Azure Kubernetes Service host on the system you want to deploy the Kubernetes cluster to
 
 Before getting started, make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page.
+
+## Download Azure Kubernetes Service on Azure Stack HCI
+
+If you haven't already downloaded the preview software, see [evaluate AKS on Azure Stack HCI](https://aka.ms/AKS-HCI-Evaluate). You will be asked to download AKS on Azure Stack HCI as well as Windows Admin Center.
 
 ## Setting up Windows Admin Center
 
