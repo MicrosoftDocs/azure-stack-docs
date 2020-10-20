@@ -13,10 +13,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2020
+ms.date: 10/20/2020
 ms.author: justinha
 ms.reviewer: asganesh
-ms.lastreviewed: 04/09/2020
+ms.lastreviewed: 10/20/2020
 ---
  
 # MDC deployment overview
@@ -30,8 +30,6 @@ The objectives of this guide include:
 - Introduce the key components of a MDC.
 - Describe how to install and configure the key components.
 - Validate the customer deployment.
-
-This deployment guide is intended for the Microsoft field professional team that are responsible for deployment of the MDC at the customer site.
 
 Technical experience with virtualization, servers, operating systems, networking, and storage solutions is required to fully understand the content of this guide. 
 The Deployment Engineer must have knowledge of Microsoft Windows Server 2019 with Hyper-V, Azure Stack Hub, Azure, and Microsoft PowerShell.
