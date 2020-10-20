@@ -22,7 +22,7 @@ This article describes which graphics processing unit (GPU) models are supported
 You can choose from three GPU models in the public preview period. They are available in NVIDIA V100, NVIDIA T4 and AMD MI25 GPUs. These physical GPUs align with the following Azure N-Series virtual machine (VM) types as follows:
 - [NCv3](/azure/virtual-machines/ncv3-series)
 - [NVv4 (AMD MI25)](/azure/virtual-machines/nvv4-series)
-- [NCas_v4](/azure/virtual-machines/nct4-v3-series)
+- [NCasT4_v3](/azure/virtual-machines/nct4-v3-series)
 
 > [!IMPORTANT]  
 > Azure Stack Hub GPU support is currently in public preview. To participate in the preview, complete the form at [aka.ms/azurestackhubgpupreview](https://aka.ms/azurestackhubgpupreview).
@@ -46,17 +46,6 @@ The NVv4-series virtual machines are powered by [AMD Radeon Instinct MI25](https
 | Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | GPU | GPU memory: GiB | Max data disks | Max NICs | 
 | --- | --- | --- | --- | --- | --- | --- | --- |   
 | Standard_NV4as_v4 |4 |14 |88 | 1/8 | 2 | 4 | 2 | 
-
-## NCas_v4
-
-This new NVIDIA T4 VM size allows for light ML, inference and visualization workloads to be run on Azure Stack Hub. Currently this VM size is *not* available on the portal for deployment and powershell/cli will need to be used instead.
-
-| Size | vCPU | Memory: GiB | GPU | GPU memory: GiB | Max data disks | Max NICs | 
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_NC4as_v4 |4 |28 | 1 | 16 | 8 | 4 | 
-| Standard_NC8as_v4 |8 |56 | 1 | 16 | 16 | 8 | 
-| Standard_NC16as_v4 |16 |112 | 1 | 16 | 32 | 8 | 
-| Standard_NC64as_v4 |64 |448 | 4 | 64 | 32 | 8 | 
 
 ## NCasT4_v3
 
@@ -96,4 +85,5 @@ NVIDIA CUDA driers and GRID drivers will need to be manually installed on the VM
 
 ## Next steps
 
-[Azure Stack VM features](azure-stack-vm-considerations.md)
+- [Install NVIDIA GPU drivers on N-series VMs running Linux](/azure/virtual-machines/linux/n-series-driver-setup)
+- [Azure Stack VM features](azure-stack-vm-considerations.md)
