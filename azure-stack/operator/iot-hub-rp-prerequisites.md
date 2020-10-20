@@ -40,6 +40,10 @@ Subject Name may be specified, but it's not used by IoT Hub when handling certif
 
 [![iot hub certificate example](media\iot-hub-rp-prerequisites\certificate.png)](media/iot-hub-rp-prerequisites/certificate.png#lightbox)
 
+## DNS configuration requirements
+ 
+For IoT hub to work on the network properly on Azure Stack Hub, the network administrator needs to configure DNS. Find the DNS conditional forwarding setting in the DNS management tool, and add a conditional forwarding rule to allow traffic for: `<region>.cloudapp.<externaldomainname>`. For example, `ussouth.cloudapp.contoso.com`.
+
 ## Next steps
 
 Next, install the IoT Hub resource provider on [connected Azure Stack](iot-hub-rp-install.md).
