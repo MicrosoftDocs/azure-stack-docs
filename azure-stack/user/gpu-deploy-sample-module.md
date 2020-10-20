@@ -136,7 +136,7 @@ Docker containers can run anywhere, on-premises in the customer datacenter, in a
     docker -v
     ```
 
-7. Validate that you can access the NIVIDA runtime in Docker:
+7. Expose the available GPU resources in Docker.
 
     ```bash
     docker run -it --rm --gpus all ubuntu nvidia-smi
