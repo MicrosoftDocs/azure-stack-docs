@@ -37,7 +37,7 @@ The following prerequisites must be completed before you can install IoT Hub on 
 
    Subject Name may be specified, but it's not used by IoT Hub when handling certificates. Only the Subject Alternative Name is used. See [PKI certificate requirements](azure-stack-pki-certs.md) for the full list of detailed requirements.
 
-   [![iot hub certificate example](media\iot-hub-rp-prerequisites\certificate.png)](media/iot-hub-rp-prerequisites/certificate.png#lightbox)
+   ![iot hub certificate example](media\iot-hub-rp-prerequisites\certificate.png)
 
 2. Be sure to review [Validate your certificate](azure-stack-validate-pki-certs.md). The article shows you how to prepare and validate the certificates you use for the IoT Hub resource provider. 
 
