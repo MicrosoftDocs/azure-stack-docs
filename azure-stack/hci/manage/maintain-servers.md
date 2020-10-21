@@ -38,7 +38,7 @@ Before either shutting down or restarting a server, you should pause the server 
 
 2. Click on the name of the server you wish to pause and drain, and select **Pause**. You should see the following prompt:
 
-*If you pause this node, all clustered roles move to other nodes and no roles can be added to this node until it's resumed. Are you sure you want to pause cluster node?*
+   *If you pause this node, all clustered roles move to other nodes and no roles can be added to this node until it's resumed. Are you sure you want to pause cluster node?*
 
 3. Select **yes** to pause the server and initiate the drain process. Hosted VMs and data will immediately begin live migrating to other server(s) in the cluster. This can take a few minutes.
 
