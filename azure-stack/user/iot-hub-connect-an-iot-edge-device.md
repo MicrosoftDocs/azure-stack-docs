@@ -170,17 +170,24 @@ cat root.crt >> certs/azure-iot-test-only.root.ca.cert.pem
 
 1. Sign in to the Azure Stack Hub user portal, then navigate to the **IoT Hub** service.
 2. Select your IoT Hub resource, then select the **IoT Edge** page, then **Add an IoT Edge device**.
+
    [![iot hub resource](media\iot-hub-connect-an-iot-edge-device\add-an-iot-edge-device.png)](media\iot-hub-connect-an-iot-edge-device\add-an-iot-edge-device.png#lightbox)
+
 3. On the **Create a device** page, enter the **Device ID**, for example "edged1".
 4. When finished, select **Save**.
+
    [![iot edge - create a device](media\iot-hub-connect-an-iot-edge-device\create-iot-edge-device.png)](media\iot-hub-connect-an-iot-edge-device\create-iot-edge-device.png#lightbox)
+
 5. Wait for the portal to return to the **IoT Edge** page, and your new device is added to the devices list.
 
 ### Obtain the Edge device connection string
 
 1. On the **IoT Edge** page, you'll see your newly created device in devices list. Select your device.
+
    [![iot edge - view devices](media\iot-hub-connect-an-iot-edge-device\view-iot-edge-devices.png)](media\iot-hub-connect-an-iot-edge-device\view-iot-edge-devices.png#lightbox)
+
 2. On your device details page, use the "Copy" button at the right of **Primary Connection String** to copy the string to the clipboard.
+
    [![iot edge - device details](media\iot-hub-connect-an-iot-edge-device\iot-edge-device-details.png)](media\iot-hub-connect-an-iot-edge-device\iot-edge-device-details.png#lightbox)
 
 ### Configure the Edge device
