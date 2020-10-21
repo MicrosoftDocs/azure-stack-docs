@@ -66,7 +66,7 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure:
    > [!NOTE]
    > 1.	You may see a prompt such as "Do you want PowerShellGet to install and import the NuGet provider now?" to which you should answer Yes (Y).
    > 2.	You may further be prompted "Are you sure you want to install the modules from 'PSGallery'?" to which you should answer Yes (Y).
-   > 3.	Finally, you might assume that installing the entire **Az** module would include the **StackHCI** sub-module, and that will be correct long-term. However, per standard Azure PowerShell convention, sub-modules in Preview aren't included automatically; rather, you need to explicitly specify them. Thus, for now, you need to explicitly ask for **Az.StackHCI** as shown above.
+   > 3.	Finally, you may assume that installing the entire **Az** module would include the **StackHCI** sub-module but that is not the case. Sub-modules in Preview aren't included automatically according to the standard Azure PowerShell convention so you need to explicitly request for **Az.StackHCI** as shown above.
 
 4. Perform the actual registration:
 
