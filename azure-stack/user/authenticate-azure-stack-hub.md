@@ -47,7 +47,7 @@ To get the subscription ID:
 
 2.  Select **All Services**.
 
-    > ![Azure Stack Hub auth info subscription ID tenant ID](./media/authenticate-azure-stack-hub/azure-stack-hub-auth-info.png)
+    > ![Azure Stack Hub auth info subscription ID tenant ID](./media/authenticate-azure-stack-hub/azure-stack-hub-auth-infoa.png)
 
 3.  Select **Subscriptions**.
 
