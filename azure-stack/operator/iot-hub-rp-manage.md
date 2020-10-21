@@ -22,7 +22,7 @@ Currently, the IoT Hub resource provider supports the following alerts:
 
 |Category|Alert|Type|Description|
 |-|-|-|-|
-|Performance|IoT Hub CPU usage needs attention.|Warning|The average of % CPU usage of IoT hub resource provider in the last 6 hours is over 75%.|
+|Performance|IoT Hub CPU usage needs attention.|Warning|The average of % CPU usage of IoT Hub resource provider in the last 6 hours is over 75%.|
 |Performance|IoT Hub memory usage needs attention.|Warning|The remaining memory usage of IoT Hub resource provider in the last 6 hours is less than 1024 MB.|
 |Performance|Low disk space for IoT Hub resource provider.|Warning|The remaining disk space is less than 10%.|
 |Resource|Creating or updating IoT Hub resource failed.|Warning|IoT Hub Resource Provider Create or Update IoT Hub Failure Count is no less than 1 in 15 minutes.|

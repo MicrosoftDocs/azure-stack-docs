@@ -18,7 +18,7 @@ IoT Hub on Azure Stack Hub allows you to create hybrid IoT solutions. IoT Hub is
 
 | Feature | Azure IoT Hub | IoT Hub on Azure Stack Hub |
 |-|-|-|
-| Scale | https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling | Only S2 IoT hubs are supported|
+| Scale | https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling | Only S2 IoT Hubs are supported|
 | Service Update | Automatic | Manual |
 
 ## IoT Hub throttling

@@ -90,7 +90,7 @@ Follow these steps to install the IoT Hub package:
 
     [![Install IoT Hub 92](../operator/media/iot-hub-rp-install//install92.png)](../operator/media/iot-hub-rp-install//install92.png#lightbox)
 
-Your IoT hub is installed successfully! To get started, complete the following steps:
+The IoT Hub resource provider is installed successfully! To get started, complete the following steps:
 
 1. If necessary, follow the instruction to [create a plan, offers, and subscription](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview).
 
@@ -100,7 +100,7 @@ Your IoT hub is installed successfully! To get started, complete the following s
 
     [![add service](../operator/media/iot-hub-rp-install/pd2.png)](../operator/media/iot-hub-rp-install/pd2.png#lightbox)
 
-4. You are all set! IoT hubs can now be created.
+4. You are all set! IoT Hubs can now be created.
 
 ## Using IoT Hub
 

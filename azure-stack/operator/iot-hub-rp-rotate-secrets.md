@@ -10,7 +10,7 @@ ms.reviewer: bryanla
 ms.lastreviewed: 10/20/2020
 ---
 
-# How to rotate secrets for Iot Hub on Azure Stack Hub
+# How to rotate secrets for IoT Hub on Azure Stack Hub
 
 This article will show you how to rotate the secrets used by the IoT Hub resource provider.
 
