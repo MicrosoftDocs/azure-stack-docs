@@ -157,16 +157,16 @@ cat root.crt >> certs/azure-iot-test-only.root.ca.cert.pem
    sudo apt-get install moby-engine moby-cli
    ```
 
-3. Install the Azure IoT Edge Security Daemon:
+3. Install the Azure IoT Edge security daemon:
 
    ```bash
    sudo apt-get update
    sudo apt-get install iotedge
    ```
 
-## Configure the security daemon
+## Configure the IoT Edge security daemon
 
-### Add a new IoT Edge device 
+### Add a new IoT Edge device to the IoT Hub service
 
 1. Sign in to the Azure Stack Hub user portal, then navigate to the **IoT Hub** service.
 2. Select your IoT Hub resource, then select the **IoT Edge** page, then **Add an IoT Edge device**.
@@ -174,9 +174,9 @@ cat root.crt >> certs/azure-iot-test-only.root.ca.cert.pem
 3. On the **Create a device** page, enter the **Device ID**, for example "edged1".
 4. When finished, select **Save**.
    [![iot edge - create a device](media\iot-hub-connect-an-iot-edge-device\create-iot-edge-device.png)](media\iot-hub-connect-an-iot-edge-device\create-iot-edge-device.png#lightbox)
-5. Wait for the portal to return to the **IoT Edge** page, and your new device is shown in the list.
+5. Wait for the portal to return to the **IoT Edge** page, and your new device is added to the devices list.
 
-### Obtain a Connection String for Edge device
+### Obtain the Edge device connection string
 
 1. On the **IoT Edge** page, you'll see your newly created device in devices list. Select your device.
    [![iot edge - view devices](media\iot-hub-connect-an-iot-edge-device\view-iot-edge-devices.png)](media\iot-hub-connect-an-iot-edge-device\view-iot-edge-devices.png#lightbox)
@@ -191,7 +191,7 @@ cat root.crt >> certs/azure-iot-test-only.root.ca.cert.pem
    sudo nano /etc/iotedge/config.yaml
    ```
 
-2. Set the Edge device connection string by updating the \<`ADD DEVICE CONNECTION STRING HERE`\> placeholder, using the connection string you copied to the clipboard in the previous section:
+2. Set the Edge device connection string. Update the \<`ADD DEVICE CONNECTION STRING HERE`\> placeholder, using the connection string you copied to the clipboard in the previous section:
 
    > [!NOTE]
    > To paste clipboard contents into Nano, press and hold the **Shift** key and click the right mouse button. Or, press the **Shift** and **Insert** keys simultaneously.
@@ -220,7 +220,7 @@ cat root.crt >> certs/azure-iot-test-only.root.ca.cert.pem
    sudo systemctl restart iotedge
    ```
 
-## Verify successful installation
+## Verify the successful installation
 
 1. Check the status of the IoT Edge Daemon:
 
