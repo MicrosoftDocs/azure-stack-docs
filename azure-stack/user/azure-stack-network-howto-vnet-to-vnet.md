@@ -114,7 +114,7 @@ Perform these steps for both deployments, forti1-rg1 and forti2-rg1.
 
 1. Select Resource groups. Type `forti1-rg1` in the filter and double-click the forti1-rg1 resource group.
 
-    ![Ten resources are listed for the forti1-rg1 resource group.]](./media/azure-stack-network-howto-vnet-to-onprem/image9a.png)
+    ![Ten resources are listed for the forti1-rg1 resource group.](./media/azure-stack-network-howto-vnet-to-onprem/image9a.png)
 
 1. Select the **forti1-forti1-InsideSubnet-routes-xxxx** resource.
 
