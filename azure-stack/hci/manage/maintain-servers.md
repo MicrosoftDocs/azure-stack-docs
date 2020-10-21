@@ -22,7 +22,7 @@ You can either use either Windows Admin Center or PowerShell to take a server of
 
 ## Take a server offline using Windows Admin Center
 
-Use the following procedures to properly pause, drain, and resume a server (cluster node) in an Azure Stack HCI cluster using Windows Admin Center.
+The simplest way to prepare to take a server in an Azure Stack HCI cluster offline is by using Windows Admin Center.
 
 ### Verifying it's safe to take the server offline
 
@@ -51,7 +51,7 @@ Once the server has completed draining, it will appear as **Paused** in Windows 
 
 ### Resuming the server
 
-When you are ready for the server to begin hosting VMs again, simply resume the cluster node. 
+When you are ready for the server to begin hosting VMs again, simply turn the server on, wait for it to boot up, and resume the cluster node using the following steps.
 
 1. In Cluster Manager, select **Compute > Nodes** from the **Tools** menu at the left.
 
