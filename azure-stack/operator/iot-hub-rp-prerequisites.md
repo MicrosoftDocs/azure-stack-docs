@@ -35,7 +35,7 @@ The following prerequisites must be completed before you can install IoT Hub on 
 
 1. Procure a public key infrastructure (PKI) TLS/SSL certificate for Event Hubs. The Subject Alternative Name (SAN) must adhere to the following naming pattern: `CN=*.mgmtiothub.<region>.<fqdn>`.
 
-Subject Name may be specified, but it's not used by IoT Hub when handling certificates. Only the Subject Alternative Name is used. See [PKI certificate requirements](azure-stack-pki-certs.md) for the full list of detailed requirements.
+   Subject Name may be specified, but it's not used by IoT Hub when handling certificates. Only the Subject Alternative Name is used. See [PKI certificate requirements](azure-stack-pki-certs.md) for the full list of detailed requirements.
 
    [![iot hub certificate example](media\iot-hub-rp-prerequisites\certificate.png)](media/iot-hub-rp-prerequisites/certificate.png#lightbox)
 
