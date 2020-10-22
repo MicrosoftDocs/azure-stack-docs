@@ -22,13 +22,13 @@ You can either use either Windows Admin Center or PowerShell to take a server of
 
 ## Take a server offline using Windows Admin Center
 
-The simplest way to prepare to take a server in an Azure Stack HCI cluster offline is by using Windows Admin Center.
+The simplest way to prepare to take a server node in an Azure Stack HCI cluster offline is by using Windows Admin Center.
 
-### Verifying it's safe to take the server offline
+### Verify it's safe to take the server offline
 
-1. Connect to the server you want to take offline using Server Manager. Select **Storage > Disks** from the **Tools** menu, and verify that the **Status** column for every virtual disk shows **Online**.
+1. Using Windows Admin Center, connect to the server you want to take offline. Select **Storage > Disks** from the **Tools** menu, and verify that the **Status** column for every virtual disk shows **Online**.
 
-2. Then, go to **Storage > Volumes** and verify that the **Health** column for every volume shows **Healthy** and that the **Status** column for every volume shows **OK**.
+2. Then, select **Storage > Volumes** and verify that the **Health** column for every volume shows **Healthy** and that the **Status** column for every volume shows **OK**.
 
 ### Pause and drain the server
 
@@ -45,11 +45,11 @@ Before either shutting down or restarting a server, you should pause the server 
    > [!NOTE]
    > When you pause and drain the cluster node properly, Azure Stack HCI performs an automatic safety check to ensure it is safe to proceed. If there are unhealthy volumes, it will stop and alert you that it's not safe to proceed.
 
-### Shutting down the server
+### Shut down the server
 
 Once the server has completed draining, it status will show as **Paused** in Windows Admin Center. You can now safely shut the server down for maintenance or reboot it.
 
-### Resuming the server
+### Resume the server
 
 When you are ready for the server to begin hosting clustered roles and VMs again, simply turn the server on, wait for it to boot up, and resume the cluster node using the following steps.
 
@@ -63,11 +63,20 @@ When you are ready for the server to begin hosting clustered roles and VMs again
 
 If you checked the box in step 3 above, clustered roles and VMs will immediately begin live migrating back to the server. This can take a few minutes.
 
+### Wait for storage to resync
+
+When the server resumes, any new writes that happened while it was unavailable need to resync. This happens automatically, using intelligent change tracking. It's not necessary for *all* data to be scanned or synchronized; only the changes. This process is throttled to mitigate impact to production workloads. Depending on how long the server was paused and how much new data was written, it may take many minutes to complete.
+
+   > [!IMPORTANT]
+   > You must wait for re-syncing to complete before taking any other servers in the cluster offline.
+
+To check if resyncing has completed, connect to the server using Windows Admin Center and select **Storage > Volumes** from the **Tools** menu at the left, then select **Volumes** near the top of the page. If the **Health** column for every volume shows **Healthy** and the **Status** column for every volume shows **OK**, then re-syncing has completed, and it's now safe to take other servers in the cluster offline.
+
 ## Take a server offline using PowerShell
 
-Use the following procedures to properly pause, drain, and resume a server in an Azure Stack HCI cluster using PowerShell.
+Use the following procedures to properly pause, drain, and resume a server node in an Azure Stack HCI cluster using PowerShell.
 
-### Verifying it's safe to take the server offline
+### Verify it's safe to take the server offline
 
 To verify that all your volumes are healthy, run the following cmdlet as an administrator:
 
@@ -96,7 +105,7 @@ Run the following cmdlet as an administrator to pause and drain the server:
 Suspend-ClusterNode -Drain
 ```
 
-### Shutting down the server
+### Shut down the server
 
 Once the server has completed draining, it will show as **Paused** in PowerShell.
 
@@ -105,7 +114,7 @@ You can now safely shut the server down or restart it by using the `Stop-Compute
    > [!NOTE]
    > When running a `Get-VirtualDisk` command on servers that are shutting down or starting/stopping the cluster service, the server's Operational Status may be reported as incomplete or degraded, and the Health Status column may list a warning. This is normal and should not cause concern. All your volumes remain online and accessible.
 
-### Resuming the server
+### Resume the server
 
 Run the following cmdlet as an administrator to resume the server into the cluster. To return the clustered roles and VMs that were previously running on the server, use the optional **-Failback** flag:
 
@@ -115,22 +124,19 @@ Resume-ClusterNode –Failback Immediate
 
 Once the server has resumed, it will show as **Up** in PowerShell.
 
-## Waiting for storage to resync
+### Wait for storage to resync
 
-When the server resumes, any new writes that happened while it was unavailable need to resync. This happens automatically. Using intelligent change tracking, it's not necessary for *all* data to be scanned or synchronized; only the changes. This process is throttled to mitigate impact to production workloads. Depending on how long the server was paused, and how much new data as written, it may take many minutes to complete.
+When the server resumes, you must wait for re-syncing to complete before taking any other servers in the cluster offline.
 
-   > [!NOTE]
-   > You must wait for re-syncing to complete before taking any other servers in the cluster offline.
-
-In Windows Admin Center, simply wait for the server status to appear as **Up**.
-
-In PowerShell, run the following cmdlet as an administrator to monitor progress:
+Run the following cmdlet as administrator to monitor progress:
 
 ```PowerShell
 Get-StorageJob
 ```
 
-Here's some example output, showing the resync (repair) jobs:
+If re-syncing has already completed, you won't get any output.
+
+Here's some example output showing resync (repair) jobs still running:
 
 ```
 Name   IsBackgroundTask ElapsedTime JobState  PercentComplete BytesProcessed BytesTotal
@@ -140,14 +146,14 @@ Repair True             00:06:40    Running   66              15987900416    238
 Repair True             00:06:52    Running   68              20104802841    22104819713
 ```
 
-The **BytesTotal** shows how much storage needs to resync. The **PercentComplete** displays progress.
+The **BytesTotal** column shows how much storage needs to resync. The **PercentComplete** column displays progress.
 
    > [!WARNING]
    > It's not safe to take another server offline until these repair jobs finish.
 
 During this time, under **HealthStatus**, your volumes will continue to show as **Warning**, which is normal.
 
-For example, if you use the `Get-VirtualDisk` cmdlet, you might see the following output:
+For example, if you use the `Get-VirtualDisk` cmdlet while storage is re-syncing, you might see the following output:
 
 ```
 FriendlyName ResiliencySettingName OperationalStatus HealthStatus IsManualAttach Size
