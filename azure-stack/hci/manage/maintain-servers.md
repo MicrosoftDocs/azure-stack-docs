@@ -13,12 +13,12 @@ ms.date: 10/22/2020
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-With Azure Stack HCI, taking a server offline for maintenance requires taking portions of storage offline that are shared across all servers in the cluster. This requires pausing the server that you want to take offline, moving roles to other servers in the cluster, and verifying that all data is available on the other servers in the cluster. This process ensures that the data remains safe and accessible throughout the maintenance period.
+With Azure Stack HCI, taking a server offline for maintenance requires taking portions of storage offline that are shared across all servers in the cluster. This requires pausing the server that you want to take offline, moving roles and virtual machines (VMs) to other servers in the cluster, and verifying that all data is available on the other servers in the cluster. This process ensures that the data remains safe and accessible throughout the maintenance period.
 
 You can either use either Windows Admin Center or PowerShell to take a server offline for maintenance. This topic covers both methods.
 
    > [!IMPORTANT]
-   > To install updates on an Azure Stack HCI cluster, use Cluster-Aware Updating (CAU), which automatically performs the procedures in this topic when installing updates. For more information, see [Update Azure Stack HCI clusters](update-cluster.md).
+   > This topic assumes that you need to power down a physical server down to perform maintenance, or restart it for some other reason. To install updates on an Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](update-cluster.md), which explains how to use Cluster-Aware Updating (CAU) to automatically perform all the steps in this topic while also updating servers and restarting them if necessary.
 
 ## Take a server offline using Windows Admin Center
 
@@ -26,21 +26,21 @@ The simplest way to prepare to take a server in an Azure Stack HCI cluster offli
 
 ### Verifying it's safe to take the server offline
 
-1. Connect to the server and select **Storage > Disks** from the **Tools** menu in Server Manager, and verify that the **Status** column for every virtual disk shows **Online**.
+1. Connect to the server you want to take offline using Server Manager. Select **Storage > Disks** from the **Tools** menu, and verify that the **Status** column for every virtual disk shows **Online**.
 
 2. Then, go to **Storage > Volumes** and verify that the **Health** column for every volume shows **Healthy** and that the **Status** column for every volume shows **OK**.
 
 ### Pause and drain the server
 
-Before either shutting down or restarting a server, you should pause the server and drain (move off) any clustered roles such as virtual machines (VMs) running on it to ensure that the server shutdown does not affect application state. Always pause and drain clustered servers before taking them offline for maintenance.
+Before either shutting down or restarting a server, you should pause the server and drain (move off) any clustered roles such as VMs running on it to ensure that the server shutdown does not affect application state. Always pause and drain clustered servers before taking them offline for maintenance.
 
 1. Using Windows Admin Center, connect to the cluster and then select **Compute > Nodes** from the **Tools** menu in Cluster Manager.
 
-2. Click on the name of the server you wish to pause and drain, and select **Pause**. You should see the following prompt:
+2. Click on the name of the cluster node you wish to pause and drain, and select **Pause**. You should see the following prompt:
 
    *If you pause this node, all clustered roles move to other nodes and no roles can be added to this node until it's resumed. Are you sure you want to pause cluster node?*
 
-3. Select **yes** to pause the server and initiate the drain process. The cluster node status will show as **Draining**, and clustered roles such as Hyper-V and VMs will immediately begin live migrating to other cluster node(s). This can take a few minutes.
+3. Select **yes** to pause the server and initiate the drain process. The cluster node status will show as **Draining**, and roles such as Hyper-V and VMs will immediately begin live migrating to other cluster node(s). This can take a few minutes.
 
    > [!NOTE]
    > When you pause and drain the cluster node properly, Azure Stack HCI performs an automatic safety check to ensure it is safe to proceed. If there are unhealthy volumes, it will stop and alert you that it's not safe to proceed.
@@ -86,7 +86,7 @@ Mirror                    Mirror                1                     OK        
 ClusterPerformanceHistory Mirror                1                     OK                Healthy        24 GB           49 GB            48.98%
 ```
 
-Verify that the **HealthStatus** property for every volume is **Healthy**.
+Verify that the **HealthStatus** property for every volume is **Healthy** and the **OperationalStatus** shows OK.
 
 ### Pause and drain the server
 
@@ -112,6 +112,8 @@ Run the following cmdlet as an administrator to resume the server into the clust
 ```PowerShell
 Resume-ClusterNode –Failback Immediate
 ```
+
+Once the server has resumed, it will show as **Up** in PowerShell.
 
 ## Waiting for storage to resync
 
