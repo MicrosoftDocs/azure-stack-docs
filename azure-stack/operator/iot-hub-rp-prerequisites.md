@@ -1,6 +1,6 @@
 ---
 title: Prerequisites for installing IoT Hub on Azure Stack Hub
-description: Learn about the required prerequisites, before installing IoT Hub resource provider on Azure Stack.
+description: Learn about the required prerequisites, before installing IoT Hub resource provider on Azure Stack Hub.
 author: yiyiguo
 ms.author: yiygu
 ms.service: azure-stack

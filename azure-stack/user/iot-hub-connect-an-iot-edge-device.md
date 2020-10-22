@@ -182,11 +182,11 @@ cat root.crt >> certs/azure-iot-test-only.root.ca.cert.pem
 
 ### Obtain the Edge device connection string
 
-1. On the **IoT Edge** page, you'll see your newly created device in devices list. Select your device.
+1. On the **IoT Edge** page, select your device.
 
    [![iot edge - view devices](media\iot-hub-connect-an-iot-edge-device\view-iot-edge-devices.png)](media\iot-hub-connect-an-iot-edge-device\view-iot-edge-devices.png#lightbox)
 
-2. On your device details page, use the "Copy" button at the right of **Primary Connection String** to copy the string to the clipboard.
+2. On the device details page, use the "Copy" button at the right of **Primary Connection String** to copy the string to the clipboard.
 
    [![iot edge - device details](media\iot-hub-connect-an-iot-edge-device\iot-edge-device-details.png)](media\iot-hub-connect-an-iot-edge-device\iot-edge-device-details.png#lightbox)
 
