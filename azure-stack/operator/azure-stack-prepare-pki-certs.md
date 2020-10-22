@@ -4,10 +4,10 @@ titleSuffix: Azure Stack Hub
 description: Learn how to prepare PKI certificates for Azure Stack Hub deployment or for rotating secrets.
 author: IngridAtMicrosoft
 ms.topic: how-to
-ms.date: 03/04/2020
+ms.date: 10/19/2020
 ms.author: inhenkel
 ms.reviewer: ppacent
-ms.lastreviewed: 09/16/2019
+ms.lastreviewed: 10/19/2020
 
 # Intent: As an Azure Stack operator, I want to prepare my PKI certificates for Azure Stack deployment.
 # Keyword: prepare PKI certificates azure stack
@@ -38,7 +38,7 @@ Use these steps to package certificates using the Azure Stack readiness checker 
 1. Install the Azure Stack readiness checker module from a PowerShell prompt (5.1 or above), by running the following cmdlet:
 
     ```powershell  
-        Install-Module Microsoft.AzureStack.ReadinessChecker
+        Install-Module Microsoft.AzureStack.ReadinessChecker -Force -AllowPrerelease
     ```
 2. Specify the **Path** to the certificate files. For example:
 

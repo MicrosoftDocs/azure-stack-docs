@@ -4,10 +4,10 @@ description: Learn how to install PowerShell for Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 06/22/2020
+ms.date: 10/19/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 06/22/2020
+ms.lastreviewed: 10/19/2020
 
 # Intent: As an Azure Stack operator, I want to install Powershell Az for Azure Stack.
 # Keyword: install powershell azure stack Az
@@ -26,7 +26,7 @@ If you would like to install PowerShell AzureRM module for Azure Stack Hub, see 
 > The PowerShell Az module is currently in public preview.
 > This preview version may have breaking changes in the upcoming releases
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> There will likely not be new AzureRM module releases. The AzureRM modules are under support for critical fixes only. Going forward there will only be Az releases for Azurestack
+> There will likely not be new AzureRM module releases. The AzureRM modules are under support for critical fixes only. Going forward there will only be Az releases for Azure Stack Hub.
 
 You can use *API profiles* to specify the compatible endpoints for the Azure Stack Hub resource providers.
 
@@ -111,7 +111,7 @@ Installation has five steps:
 ::: moniker range=">=azs-2002"
 Azure Stack Hub 2002 or later.
 
-You could either use AzureRM or Az preview modules. For RM modules, see the instructions at [Install PowerShell AzureRM module](azure-stack-powershell-install.md). The following code saves modules from trustworthy online repository https://www.powershellgallery.com/.
+You could either use AzureRM or Az preview modules. For RM modules, see the instructions at [Install PowerShell AzureRM module](powershell-install-az-module.md). The following code saves modules from trustworthy online repository https://www.powershellgallery.com/.
 
 ```powershell
 

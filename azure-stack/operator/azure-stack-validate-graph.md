@@ -4,10 +4,10 @@ titleSuffix: Azure Stack Hub
 description: Use the Azure Stack Hub Readiness Checker to validate graph integration for Azure Stack Hub.
 author: BryanLa
 ms.topic: how-to
-ms.date: 03/04/2020
+ms.date: 10/19/2020
 ms.author: bryanla
 ms.reviewer: jerskine
-ms.lastreviewed: 06/10/2019
+ms.lastreviewed: 10/19/2020
 
 # Intent: As an Azure Stack Hub operator, I want to use the Readiness Checker to validate graph integration for Azure Stack Hub.
 # Keyword: azure stack hub graph integration readiness checker
@@ -56,7 +56,7 @@ The following prerequisites must be in place.
 1. On a computer that meets the prerequisites, open an administrative PowerShell prompt and then run the following command to install the AzsReadinessChecker:
 
     ```powershell
-    Install-Module Microsoft.AzureStack.ReadinessChecker -Force
+    Install-Module Microsoft.AzureStack.ReadinessChecker -Force -AllowPrerelease
     ```
 
 1. From the PowerShell prompt, run the following command to set the *$graphCredential* variable to the graph account. Replace `contoso\graphservice` with your account by using the `domain\username` format.

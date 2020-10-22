@@ -107,18 +107,18 @@ Once you have a certificate, use the PowerShell script below to register your ap
     $Session | Remove-PSSession
 
     # Using the stamp info for your Azure Stack Hub instance, populate the following variables:
-    # - AzureRM endpoint used for Azure Resource Manager operations 
+    # - Az endpoint used for Azure Resource Manager operations 
     # - Audience for acquiring an OAuth token used to access Graph API 
     # - GUID of the directory tenant
     $ArmEndpoint = $AzureStackInfo.TenantExternalEndpoints.TenantResourceManager
     $GraphAudience = "https://graph." + $AzureStackInfo.ExternalDomainFQDN + "/"
     $TenantID = $AzureStackInfo.AADTenantID
 
-    # Register and set an AzureRM environment that targets your Azure Stack Hub instance
-    Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint $ArmEndpoint
+    # Register and set an Az environment that targets your Azure Stack Hub instance
+    Add-AzEnvironment -Name "AzureStackUser" -ArmEndpoint $ArmEndpoint
 
     # Sign in using the new service principal
-    $SpSignin = Connect-AzureRmAccount -Environment "AzureStackUser" `
+    $SpSignin = Connect-AzAccount -Environment "AzureStackUser" `
     -ServicePrincipal `
     -CertificateThumbprint $SpObject.Thumbprint `
     -ApplicationId $SpObject.ClientId `
@@ -217,20 +217,20 @@ Now you create another app registration, but this time specify a client secret c
      $Session | Remove-PSSession
 
      # Using the stamp info for your Azure Stack Hub instance, populate the following variables:
-     # - AzureRM endpoint used for Azure Resource Manager operations 
+     # - Az endpoint used for Azure Resource Manager operations 
      # - Audience for acquiring an OAuth token used to access Graph API 
      # - GUID of the directory tenant
      $ArmEndpoint = $AzureStackInfo.TenantExternalEndpoints.TenantResourceManager
      $GraphAudience = "https://graph." + $AzureStackInfo.ExternalDomainFQDN + "/"
      $TenantID = $AzureStackInfo.AADTenantID
 
-     # Register and set an AzureRM environment that targets your Azure Stack Hub instance
-     Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint $ArmEndpoint
+     # Register and set an Az environment that targets your Azure Stack Hub instance
+     Add-AzEnvironment -Name "AzureStackUser" -ArmEndpoint $ArmEndpoint
 
      # Sign in using the new service principal
      $securePassword = $SpObject.ClientSecret | ConvertTo-SecureString -AsPlainText -Force
      $credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $SpObject.ClientId, $securePassword
-     $SpSignin = Connect-AzureRmAccount -Environment "AzureStackUser" -ServicePrincipal -Credential $credential -TenantId $TenantID
+     $SpSignin = Connect-AzAccount -Environment "AzureStackUser" -ServicePrincipal -Credential $credential -TenantId $TenantID
 
      # Output the service principal details
      $SpObject
