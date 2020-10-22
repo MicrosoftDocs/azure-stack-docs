@@ -4,14 +4,14 @@ description: This topic provides guidance on how to use DISKSPD to test workload
 author: jasonnyi
 ms.author: jasonyi
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 10/22/2020
 ---
 
 # Use DISKSPD to test workload storage performance
 
 >Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-This topic provides guidance on how to use DISKSPD to test workload storage performance. You have an Azure Stack HCI cluster set up, all ready to go. Great, but how do you know if you're getting the promised performance metrics, whether it be latency, throughput, or IOPS? This is when you may want to turn to DISKSPD. After reading this topic, you'll know how to run DISKSPD, understand a subset of parameters, interpret output, and gain a general understanding of the variables that affect workload storage performance.
+This topic provides guidance on how to use DISKSPD to test workload storage performance. You have an Azure Stack HCI cluster set up in Windows Admin Center, all ready to go. Great, but how do you know if you're getting the promised performance metrics, whether it be latency, throughput, or IOPS? This is when you may want to turn to DISKSPD. After reading this topic, you'll know how to run DISKSPD, understand a subset of parameters, interpret output, and gain a general understanding of the variables that affect workload storage performance.
 
 ## What is DISKSPD?
 At its core, DISKSPD is an I/O generating, command-line tool for micro-benchmarking. Great, so what do all these terms mean? Anyone who sets up an Azure cluster or physical server has a reason. It could be to set up a web hosting environment, or run virtual desktops for employees. Whatever the real-world use case may be, you likely want to simulate a test before deploying your actual application. However, testing your application in a real scenario is often difficult – this is where DISKSPD comes in.
@@ -20,13 +20,18 @@ DISKSPD is a tool that you can customize to create your own synthetic workloads,
 
 Now you know what DISKSPD is, but when should you use it? DISKSPD has a difficult time emulating complex workloads. But DISKSPD is great when your workload is not closely approximated by a single-threaded file copy, and you need a simple tool that produces acceptable baseline results.
 
-## Quick start guide: install and run DISKSPD
+## Quick start: install and run DISKSPD
 Without further ado, let’s get started:
 
-1. The first thing to do is log on to the virtual machine (VM) as an administrator that you'll use for the DISKSPD test. In our case, we're running a VM called “node1.”
-1. After logging on, download the tool from the [repository](https://github.com/microsoft/diskspd). This link contains the open-source code, and a wiki page that details all the parameters and specifications.
+1. In Windows Admin Center, access the virtual machine (VM) that you want to use DISKSPD to test, ensure that the VM is running, select (...) to expand **More** options, and then select **Download RDP file** to open a secure connection through Windows Remote Desktop to the VM.
 
-    The only file that you really need is the executable that you can download as a ZIP file. Within it, you'll see three subfolders: amd64 (64-bit systems), x86 (32-bit systems), and ARM64 (ARM systems). This will help you run the tool in every Windows client or server version. In this example, we're using the amd64 version.
+    In our case, we're running a VM called “node1.”
+
+1. Download the DISKSPD tool from the [repository](https://github.com/microsoft/diskspd) that contains the open-source code, and a wiki page that details all the parameters and specifications. In the repository, under **Releases**, select the link to automatically download the ZIP file.
+
+    In the ZIP file. you'll see three subfolders: amd64 (64-bit systems), x86 (32-bit systems), and ARM64 (ARM systems). These options enable you to run the tool in every Windows client or server version.
+
+    In this example, we're using the amd64 version.
 
     :::image type="content" source="media/diskspd/download-directory.png" alt-text="Directory to download the DISKSPD .zip file." lightbox="media/diskspd/download-directory.png":::
 
@@ -187,7 +192,7 @@ The following short summary explains why using file copy to measure storage perf
 ## Other common examples + experiments
 This section includes a few other examples, experiments, and workload types.
 
-### Confirming the Coordinator node
+### Confirming the coordinator node
 As mentioned previously, if the VM you are currently testing does not own the CSV, you'll see a performance drop (IOPS, throughput, and latency) as opposed to testing it when the node owns the CSV. This is because every time you issue an I/O operation, the system does a network hop to the coordinator node to perform that operation.
 
 For a three-node, three-way mirrored situation, write operations always make a network hop because it needs to store data on all three nodes. Therefore, write operations make a network hop regardless. However, if you use a different resiliency structure, this could change.
