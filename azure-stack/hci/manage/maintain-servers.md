@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/21/2020
+ms.date: 10/22/2020
 ---
 
 # Taking an Azure Stack HCI server offline for maintenance
@@ -32,7 +32,7 @@ The simplest way to prepare to take a server in an Azure Stack HCI cluster offli
 
 ### Pause and drain the server
 
-Before either shutting down or restarting a server, you should pause the server and drain (move off) any roles such as virtual machines (VMs) running on it to ensure that the server shutdown does not affect application state. Always pause and drain clustered servers before taking them offline for maintenance.
+Before either shutting down or restarting a server, you should pause the server and drain (move off) any clustered roles such as virtual machines (VMs) running on it to ensure that the server shutdown does not affect application state. Always pause and drain clustered servers before taking them offline for maintenance.
 
 1. Using Windows Admin Center, connect to the cluster and then select **Compute > Nodes** from the **Tools** menu in Cluster Manager.
 
@@ -40,24 +40,28 @@ Before either shutting down or restarting a server, you should pause the server 
 
    *If you pause this node, all clustered roles move to other nodes and no roles can be added to this node until it's resumed. Are you sure you want to pause cluster node?*
 
-3. Select **yes** to pause the server and initiate the drain process. Hosted VMs and data will immediately begin live migrating to other server(s) in the cluster. This can take a few minutes.
+3. Select **yes** to pause the server and initiate the drain process. The cluster node status will show as **Draining**, and clustered roles such as Hyper-V and VMs will immediately begin live migrating to other cluster node(s). This can take a few minutes.
 
    > [!NOTE]
    > When you pause and drain the cluster node properly, Azure Stack HCI performs an automatic safety check to ensure it is safe to proceed. If there are unhealthy volumes, it will stop and alert you that it's not safe to proceed.
 
 ### Shutting down the server
 
-Once the server has completed draining, it will appear as **Paused** in Windows Admin Center. You can now safely shut the server down for maintenance or reboot it.
+Once the server has completed draining, it status will show as **Paused** in Windows Admin Center. You can now safely shut the server down for maintenance or reboot it.
 
 ### Resuming the server
 
-When you are ready for the server to begin hosting VMs again, simply turn the server on, wait for it to boot up, and resume the cluster node using the following steps.
+When you are ready for the server to begin hosting clustered roles and VMs again, simply turn the server on, wait for it to boot up, and resume the cluster node using the following steps.
 
 1. In Cluster Manager, select **Compute > Nodes** from the **Tools** menu at the left.
 
-2. Select the name of the server you wish to resume, and then click **Resume**.
+2. Select the name of the server you wish to resume, and then click **Resume**. You should see the following prompt:
 
-VMs will immediately begin live migrating back to the server. This can take a few minutes.
+   *Are you sure you want to resume cluster node?*
+
+3. In most situations, you should select the checkbox that says *Transfer clustered roles back to this node*. Select **yes** to resume the cluster node.
+
+If you checked the box in step 3 above, clustered roles and VMs will immediately begin live migrating back to the server. This can take a few minutes.
 
 ## Take a server offline using PowerShell
 
@@ -86,7 +90,7 @@ Verify that the **HealthStatus** property for every volume is **Healthy**.
 
 ### Pause and drain the server
 
-Run the following cmdlet as an administrator to pause (suspend) and drain the server:
+Run the following cmdlet as an administrator to pause and drain the server:
 
 ```PowerShell
 Suspend-ClusterNode -Drain
@@ -103,7 +107,7 @@ You can now safely shut the server down or restart it by using the `Stop-Compute
 
 ### Resuming the server
 
-Run the following cmdlet as an administrator to resume the server into the cluster. To return the roles and VMs that were previously running on the server, use the optional **-Failback** flag:
+Run the following cmdlet as an administrator to resume the server into the cluster. To return the clustered roles and VMs that were previously running on the server, use the optional **-Failback** flag:
 
 ```PowerShell
 Resume-ClusterNode –Failback Immediate
