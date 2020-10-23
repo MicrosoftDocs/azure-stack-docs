@@ -35,8 +35,8 @@ Using Azure AD for your identity store requires two Azure AD accounts: a global 
     - As the Service Administrator account. This account is the owner of the default provider subscription (which you can later change). You can log into the Azure Stack Hub administrator portal with this account, and can use it to create offers and plans, set quotas, and perform other administrative functions in Azure Stack Hub.
 
 > [!IMPORTANT]
-> - The global admin account is not required to run Azure Stack Hub and can be disabled post deployment
-> - Secure the global admin account following the best practices documented here: (https://docs.microsoft.com/en-us/azure/security/fundamentals/identity-management-best-practices)
+> - The global administrator account is not required to run Azure Stack Hub and can be disabled post-deployment.
+> - Secure the global administrator account following the [best practices documented here](/azure/security/fundamentals/identity-management-best-practices).
 
 
 2. **Billing account** (required for both connected and disconnected deployments). This Azure account is used to establish the billing relationship between your Azure Stack Hub integrated system and the Azure commerce backend. This is the account that's billed for Azure Stack Hub fees. This account will also be used for offering items in the marketplace and other hybrid scenarios.
