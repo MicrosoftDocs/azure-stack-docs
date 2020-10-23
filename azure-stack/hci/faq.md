@@ -10,7 +10,7 @@ ms.date: 10/23/2020
 ---
 
 # Azure Stack HCI FAQ
-<!---Group into H2 subject area buckets. Add Cosmos FAQ buckets after these sections.--->
+<!---Group into H2 subject area buckets. Intro the general area buckets. Add Cosmos FAQ buckets after these sections.--->
 
 ## Azure Stack HCI and Windows Server
 ### How does Azure Stack HCI relate to Windows Server?
