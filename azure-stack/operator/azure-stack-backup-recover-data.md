@@ -63,7 +63,7 @@ None of the user Infrastructure as a Service (IaaS) or Platform as a Service (Pa
 
 ## Validate backups 
 
-You can use ASDK to test a backup to confirm that the data is valid and usable. For more information, see [Use the ASDK to validate an Azure Stack backup](../asdk/asdk-validate-backup).
+You can use ASDK to test a backup to confirm that the data is valid and usable. For more information, see [Use the ASDK to validate an Azure Stack backup](../asdk/asdk-validate-backup.md).
 
 ## Next steps
 
