@@ -4,10 +4,10 @@ description: Learn how to recover and restore your infrastructure data in Azure 
 author: justinha
 
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 10/23/2020
 ms.author: justinha
 ms.reviewer: hectorl
-ms.lastreviewed: 11/05/2019
+ms.lastreviewed: 10/23/2020
 
 # Intent: As an Azure Stack operator, I want to recover from catastrophic data loss so I can restore some user data.
 # Keyword: recover data loss azure stack
@@ -60,6 +60,10 @@ Azure Stack Hub supports a type of deployment called cloud recovery mode. This m
  - RBAC policy assignments and role assignments.
 
 None of the user Infrastructure as a Service (IaaS) or Platform as a Service (PaaS) resources are recovered during deployment. These losses include IaaS VMs, storage accounts, blobs, tables, network configuration, and so on. The purpose of cloud recovery is to ensure your operators and users can sign back in to the portal after deployment is complete. Users signing back in won't see any of their resources. Users have their subscriptions restored and along with that the original plans, offers, and policies defined by the admin. Users signing back in to the system operate under the same constraints imposed by the original solution before the disaster. After cloud recovery completes, the operator can manually restore value-add and third-party RPs and associated data.
+
+## Validate backups 
+
+You can use ASDK to test a backup to confirm that the data is valid and usable. For more information, see [Use the ASDK to validate an Azure Stack backup](../asdk/asdk-validate-backup).
 
 ## Next steps
 
