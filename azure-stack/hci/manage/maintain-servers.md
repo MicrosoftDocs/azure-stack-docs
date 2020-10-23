@@ -1,6 +1,6 @@
 ---
 title: Taking an Azure Stack HCI server offline for maintenance
-description: This topic provides guidance on how to properly pause and resume servers running the Azure Stack HCI operating system using Windows PowerShell and Windows Admin Center.
+description: This topic provides guidance on how to properly pause, drain, and resume servers running the Azure Stack HCI operating system using Windows Admin Center and PowerShell.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
@@ -174,26 +174,6 @@ MyVolume3    Mirror                OK                Healthy      True          
 ```
 
 It's now safe to pause and restart other servers in the cluster.
-
-## Perform a fast, offline update of all servers in a cluster
-
-This method allows you to take all the servers in a cluster down at once and update them all at the same time. This saves time during the updating process, but the trade-off is downtime for the hosted resources.
-
-If there is a critical security update that you need to apply quickly, or you need to ensure that updates complete within your maintenance window, this method may be for you. This process brings down the Azure Stack HCI cluster, updates the servers, and brings it all up again.
-
-1. Plan your maintenance window.
-2. Take the virtual disks offline.
-3. Stop the cluster to take the storage pool offline. Run the  **Stop-Cluster** cmdlet or use Windows Admin Center to stop the cluster.
-4. Set the cluster service to **Disabled** in Services.msc on each server. This prevents the cluster service from starting up while being updated.
-5. Apply the Windows Server Cumulative Update and any required Servicing Stack Updates to all servers. You can update all servers at the same time - there's no need to wait, because the cluster is down.
-6. Restart the servers, and ensure everything looks good.
-7. Set the cluster service back to **Automatic** on each server.
-8. Start the cluster. Run the **Start-Cluster** cmdlet or use Windows Admin Center.
-
-   Give it a few minutes.  Make sure the storage pool is healthy.
-
-9. Bring the virtual disks back online.
-10. Monitor the status of the virtual disks by running the **Get-Volume** and **Get-VirtualDisk** cmdlets.
 
 ## Next steps
 
