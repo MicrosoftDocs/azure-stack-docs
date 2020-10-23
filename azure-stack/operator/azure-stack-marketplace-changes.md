@@ -69,6 +69,7 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Updated marketplace items
 
+- 10/22/2020: Azure Monitor, Update and Configuration Management – version 1.13.27
 - 10/22/2020: Windows Server 2008 R2 SP1-Pay as you go - version 7601.24560.2009040118
 - 10/22/2020: Windows Server 2008 R2 SP1-Bring your own license - version 7601.24560.2009040118
 - 10/22/2020: [smalldisk] Windows Server 2008 R2 SP1-Pay as you go - version 7601.24560.2009040118
