@@ -74,6 +74,8 @@
       href: manage/monitor-cluster.md
     - name: Add or remove servers
       href: manage/add-cluster.md
+    - name: Take a server offline for maintenance
+      href: manage/maintain-servers.md
     - name: Manage Azure registration
       href: manage/manage-azure-registration.md
     - name: Change languages
