@@ -1,5 +1,5 @@
 ---
-title: Capacity management for IoT Hub on Azure Stack Hub
+title: Manage capacity for IoT Hub on Azure Stack Hub
 description: Learn how to manage capacity for the IoT Hub resource provider on Azure Stack Hub.
 author: BryanLa
 ms.author: bryanla
@@ -7,7 +7,7 @@ ms.service: azure-stack
 ms.topic: how-to
 ms.date: 10/30/2020 
 ---
-# Capacity management for IoT Hub on Azure Stack Hub
+# Manage capacity for IoT Hub on Azure Stack Hub
 
 [!INCLUDE [preview-banner](../includes/iot-hub-preview.md)]
 
@@ -35,15 +35,11 @@ Here are the steps to increase the capacity:
 
 1. From Admin portal (https://adminportal.redmond.ext-s46r0607.masd.stbtest.microsoft.com/#blade/Microsoft_Azure_IoTHub_Admin/IoTHubAdminMenuBlade/overview), operators can see overview such as alerts, the quotas created on the stamp, and total capacity allocated for IoT Hub. 
 
-   ![iot hub dashboard - event hubs rp](media\iot-hub-rp-capacity-management\dashboard-rp-iot-hub.png)
+   ![iot hub dashboard - overview](media\iot-hub-rp-capacity-management\dashboard-rp-iot-hub-overview.png)
 
-2. Operators can view the capacity by clicking “Capacity”. The number of nodes is number of nodes allocated to IoT Hub. 
+2. Operators can view the capacity by clicking “Capacity”. The number of nodes is number of nodes allocated to IoT Hub. To increase capacity by clicking the Name and then change the number. The number can only go up.
 
-   ![iot hub dashboard - event hubs rp](media\iot-hub-rp-capacity-management\dashboard-rp-iot-hub-capacity.png)
-
-3.	Operators can increase capacity by clicking the Name and then change the number. The number can only go up.
- 
-   ![iot hub dashboard - event hubs rp](media\iot-hub-rp-capacity-management\dashboard-rp-iot-hub-capacity-edit.png)
+   ![iot hub dashboard - capacity](media\iot-hub-rp-capacity-management\dashboard-rp-iot-hub-capacity.png)
 
 ## How to monitor alerts and quotas
 
@@ -51,14 +47,14 @@ Operators can also monitor the alerts and quotas:
 
 1. Operators can click Alerts to see details. 
  
-   ![iot hub dashboard - event hubs rp](media\iot-hub-rp-capacity-management\dashboard-rp-iot-hub-alerts.png)
+   ![iot hub dashboard - alerts](media\iot-hub-rp-capacity-management\dashboard-rp-iot-hub-alerts.png)
 
 2.	Operators can also click Quotas to see the list of quotas. 
 
 > [!NOTE]
-> For public preview, “Create” is disabled. It will be enabled when GA. The default quota is unlimited. 
+> For public preview, “Create” is disabled. It will be enabled for GA. The default quota is unlimited. 
  
-   ![iot hub dashboard - event hubs rp](media\iot-hub-rp-capacity-management\dashboard-rp-iot-hub-quotas.png)
+   ![iot hub dashboard - quotas](media\iot-hub-rp-capacity-management\dashboard-rp-iot-hub-quotas.png)
 
 
 ## Next steps
