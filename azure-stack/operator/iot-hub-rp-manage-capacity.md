@@ -19,16 +19,16 @@ Operators manage and operate their Azure Stack Hub instances in the same manner 
 
 ## Azure Stack Hub capacity management
 
-In addition to managing IoT Hub capacity, you may also want to plan for and calculate the required capacity of your Azure Stack Hub instance. Refer to [Azure Stack Hub Capacity Planner](azure-stack-capacity-planner.md)
+In addition to managing IoT Hub capacity, you may also want to plan for and calculate the required capacity of your Azure Stack Hub instance. To determine the required capacity for IoT Hub, you'll need to estimate the workload, mainly the number of devices and the message throughput. To assist with planning, we have conducted the following tests on a 4-node environment for reference:
 
-To determine the required capacity for IoT Hub, you'll need to estimate the workload, mainly the number of devices and the message throughput. To assist with planning, we have conducted the following tests on a 4-node environment for reference:
-
-| Scenario | VMs | Vcores | Devices/hub | [SKU](https://azure.microsoft.com/pricing/details/iot-hub) | Hubs | hub units/hub | Total devices | Total hub units | Millions of messages/day |
+| Scenario | VMs | Vcores | Devices/hub | [Hub edition](https://azure.microsoft.com/pricing/details/iot-hub) | Hubs | Units/hub | Total devices | Total hub units | Millions of messages/day |
 |----------|---------------|------------------|-----------------------|-------------------|-|-|-|-|-|
-|Minimum (post preview)|3|12|120,000|S2|4|200|480,000|800|4800|
-|Default|5|20|300,000|S2|4|200|1,200,000|800|4800|
-|12 VMs|12|48|500,000|S2|4|200|2,000,000|800|4800|
-|18 VMs|18|72|400,000|S3|4|10|1,600,000|40|12000|
+|Minimum (post preview)|3|12|120,000|S2|4|200|480,000|800|4,800|
+|Default|5|20|300,000|S2|4|200|1,200,000|800|4,800|
+|12 VMs|12|48|500,000|S2|4|200|2,000,000|800|4,800|
+|18 VMs|18|72|400,000|S3|4|10|1,600,000|40|12,000|
+
+Refer to [Azure Stack Hub Capacity Planner](azure-stack-capacity-planner.md) for more details.
 
 ## IoT Hub service capacity management
 
@@ -43,29 +43,29 @@ Operators can access the following capacity management features:
 - Monitor current capacity status, specifically, the number of VMs provisioned with IoT Hub and their resource utilization.
 - Increase capacity by adding as many VMs available resources allow. 
 
-> [!IMPORANT]
+> [!IMPORTANT]
 > The ability to decrease capacity is not supported in the IoT Hub preview.
 
-## Increase capacity
+### Increase capacity
 
-> [!IMPORTANT]
-> Only IoT Hub cluster scale-out (smaller-to-larger) is supported for preview. Scale-in (larger-to-smaller) will be supported in the General Availability (GA) version of IoT Hub.
+To increase the capacity of your IoT Hub cluster:
 
-To increase the capacity:
-
-1. Sign in to the Azure Stack Hub administrator portal, then select the **IoT Hub** resource provider.
+1. Sign in to the Azure Stack Hub administrator portal, select the **Dashboard** view on the left, then select the **IoT Hub** resource provider.
 
    ![operator dashboard](media\iot-hub-rp-manage-capacity\dashboard.png)
 
-2. The IoT Hub overview page provides a summary view, showing current alerts, quotas created on the stamp, and the total capacity allocated for IoT Hub. 
+2. The IoT Hub overview page provides a summary view, showing current alerts, quotas created on the stamp, and the total number of IoT Hub clusters in your subscription. 
 
    ![iot hub dashboard - overview](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-overview.png)
 
 3. Select the **capacity** view on the left. The number of nodes shown is the current number of nodes allocated to IoT Hub. To increase capacity, select the IoT Hub cluster name, change the number of nodes, then select **Update Scale**. 
 
+   > [!IMPORTANT]
+   > Only IoT Hub cluster scale-out (smaller-to-larger) is supported for preview. Scale-in (larger-to-smaller) will be supported in the General Availability (GA) version of IoT Hub.
+
    ![iot hub dashboard - capacity](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-capacity.png)
 
-## Monitor alerts and quotas
+### Monitor alerts and quotas
 
 Operators can also monitor the alerts and quotas:
 
