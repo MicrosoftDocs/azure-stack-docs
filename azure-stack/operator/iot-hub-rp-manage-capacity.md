@@ -67,17 +67,17 @@ To increase the capacity of your IoT Hub cluster:
 
 Operators can also monitor the alerts and quotas:
 
-1. Operators can click Alerts to see details. 
+1. Select **Alerts** to view the alert history.
  
    [![iot hub dashboard - alerts](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-alerts.png)](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-alerts.png#lightbox)
 
-2.	Operators can also click Quotas to see the list of quotas. 
+2.	Select **Quotas** to see the list of quotas in effect. 
 
    > [!NOTE]
-   > The **Create** feature is disabled for preview, and a default quota is provided which is unlimited. **Create** will be enabled for GA. 
+   > The **Create** feature is disabled for preview, and a single default quota is provided which is unlimited. **Create** will be enabled for GA. 
 
    [![iot hub dashboard - quotas](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-quotas.png)](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-quotas.png#lightbox)
 
-
 ## Next steps
 
+For additional IoT Hub management features, see [How to manage IoT Hub on Azure Stack Hub](iot-hub-rp-manage.md).
