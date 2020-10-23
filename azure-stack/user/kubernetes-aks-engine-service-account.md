@@ -37,6 +37,9 @@ To enable service account token volume projection, add the following settings in
 }
 ```
 
+> [!Note]  
+> You may have to adjust `--service-account-api-audiences` and `--service-account-issuer` to your specific use case.
+
 For a full example API model, refer to [istio.json](https://github.com/Azure/aks-engine/blob/master/examples/service-mesh/istio.json).
 
 ## Next steps
