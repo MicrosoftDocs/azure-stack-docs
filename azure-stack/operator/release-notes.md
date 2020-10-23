@@ -93,6 +93,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 
   Note that these changes are added at the host level of an Azure Stack Hub system. Please contact your OEM to arrange making the required changes at the top-of-rack (ToR) network switches. This ToR change can be performed either prior to updating to the 2008 release or after updating to 2008. For more information, see the [Network Integration documentation](azure-stack-network.md).
 
+  - The GPU capable VM sizes **NCas_v4 (NVIDIA T4)** have been replaced in this build with the VM sizes **NCasT4_v3**, to be consistent with Azure. Note that those are not visible in the portal yet, and can only be used via Azure Resouce Manager templates.
+
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
