@@ -15,13 +15,13 @@ This article provides the guidance and instructions necessary to perform capacit
 
 ## Overview
 
-Operators manage and operate their Azure Stack Hub instances in the same manner as any cloud operator. They make sure instances are installed properly, configured correctly and securely, and operated for high availability (HA), coherently and efficiently. Operators are provided tools to perform those tasks, which are documented in the [Azure Stack Hub Operator Documentation](./operator). 
+As an operator, you manage and operate your Azure Stack Hub instance in the same manner as any cloud operator. You make sure software is installed properly, configured correctly and securely, and operated for high availability (HA), coherently and efficiently. In addition, you will need to apply capacity management principles in operating both the Azure Stack Hub instance and the IoT Hub resource provider.
 
 ## Azure Stack Hub capacity management
 
-In addition to managing IoT Hub capacity, you may also want to plan for and calculate the required capacity of your Azure Stack Hub instance. To determine the required capacity for IoT Hub, you'll need to estimate the workload, mainly the number of devices and the message throughput. To assist with planning, we have conducted the following tests on a 4-node environment for reference:
+You will need to plan for and calculate the required capacity of your Azure Stack Hub instance. To determine the required capacity for IoT Hub, you'll need to estimate the workload, mainly the number of devices and the message throughput. To assist with planning, we have conducted the following tests on a 4-node environment for reference:
 
-| Scenario | VMs | Vcores | Devices/hub | [Hub edition](https://azure.microsoft.com/pricing/details/iot-hub) | Hubs | Units/hub | Total devices | Total hub units | Millions of messages/day |
+| Scenario | VMs | Vcores | Devices/ hub | [Hub edition](https://azure.microsoft.com/pricing/details/iot-hub) | Hubs | Units/ hub | Total devices | Total hub units | Millions of messages/ day |
 |----------|---------------|------------------|-----------------------|-------------------|-|-|-|-|-|
 |Minimum (post preview)|3|12|120,000|S2|4|200|480,000|800|4,800|
 |Default|5|20|300,000|S2|4|200|1,200,000|800|4,800|
@@ -32,16 +32,14 @@ Refer to [Azure Stack Hub Capacity Planner](azure-stack-capacity-planner.md) for
 
 ## IoT Hub service capacity management
 
-The IoT Hub service provides operators with the ability to manage the capacity of the service.
+Because Azure Stack Hub is deployed in an on-premises data center with limited resources, all services running on Azure Stack Hub share and compete for the same resource pool. Operators need to plan and manage the capacity based on the business needs. The IoT Hub resource provider gives operators the ability to manage the capacity requirements for the service.
 
-Azure Stack Hub is on-prem data center with limited resources. All services running on Azure Stack Hub share and compete the same resource pool. Operators need plan and manage the capacity based on the business need.
-
-IoT Hub has a single VM type. As part of IoT Hub deployment, the system provisions a set of VMs on Azure Stack Hub. The VMs can support a certain number of devices and message throughput. The default setting should meet most requirements. However, if you need more devices or higher message throughput, you can increase the capacity using the administrator portal, CLI, or PowerShell. 
+IoT Hub has a single VM type. As part of IoT Hub deployment, the system provisions a set of these VMs on Azure Stack Hub. The VMs can support a certain number of devices and message throughput. The default setting should meet most requirements. However, if you need more devices or higher message throughput, you can increase the capacity using the administrator portal, CLI, or PowerShell. 
 
 Operators can access the following capacity management features:
 
-- Monitor current capacity status, specifically, the number of VMs provisioned with IoT Hub and their resource utilization.
-- Increase capacity by adding as many VMs available resources allow. 
+- Monitor current capacity status, specifically, the number of VMs provisioned in an IoT Hub cluster and their resource utilization.
+- Increase capacity by adding as many VMs as available resources allow. 
 
 > [!IMPORTANT]
 > The ability to decrease capacity is not supported in the IoT Hub preview.
@@ -52,18 +50,18 @@ To increase the capacity of your IoT Hub cluster:
 
 1. Sign in to the Azure Stack Hub administrator portal, select the **Dashboard** view on the left, then select the **IoT Hub** resource provider.
 
-   ![operator dashboard](media\iot-hub-rp-manage-capacity\dashboard.png)
+   [![operator dashboard](media\iot-hub-rp-manage-capacity\dashboard.png)](media\iot-hub-rp-manage-capacity\dashboard.png#lightbox)
 
 2. The IoT Hub overview page provides a summary view, showing current alerts, quotas created on the stamp, and the total number of IoT Hub clusters in your subscription. 
 
-   ![iot hub dashboard - overview](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-overview.png)
+   [![iot hub dashboard - overview](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-overview.png)](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-overview.png#lightbox)
 
 3. Select the **capacity** view on the left. The number of nodes shown is the current number of nodes allocated to IoT Hub. To increase capacity, select the IoT Hub cluster name, change the number of nodes, then select **Update Scale**. 
 
    > [!IMPORTANT]
    > Only IoT Hub cluster scale-out (smaller-to-larger) is supported for preview. Scale-in (larger-to-smaller) will be supported in the General Availability (GA) version of IoT Hub.
 
-   ![iot hub dashboard - capacity](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-capacity.png)
+   [![iot hub dashboard - capacity](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-capacity.png)](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-capacity.png#lightbox)
 
 ### Monitor alerts and quotas
 
@@ -71,14 +69,14 @@ Operators can also monitor the alerts and quotas:
 
 1. Operators can click Alerts to see details. 
  
-   ![iot hub dashboard - alerts](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-alerts.png)
+   [![iot hub dashboard - alerts](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-alerts.png)](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-alerts.png#lightbox)
 
 2.	Operators can also click Quotas to see the list of quotas. 
 
    > [!NOTE]
    > The **Create** feature is disabled for preview, and a default quota is provided which is unlimited. **Create** will be enabled for GA. 
 
-   ![iot hub dashboard - quotas](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-quotas.png)
+   [![iot hub dashboard - quotas](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-quotas.png)](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-quotas.png#lightbox)
 
 
 ## Next steps
