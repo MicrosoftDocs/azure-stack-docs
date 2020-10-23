@@ -5,10 +5,10 @@ author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 01/09/2020
+ms.date: 10/23/2020
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 01/09/2020
+ms.lastreviewed: 10/23/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -23,7 +23,7 @@ These release notes describe the improvements and fixes in Azure App Service on 
 
 ## Build reference
 
-The App Service on Azure Stack Hub 2020 Q3 build number is **89.0.2.9**
+The App Service on Azure Stack Hub 2020 Q3 build number is **89.0.2.15**
 
 ## Prerequisites
 
@@ -47,71 +47,50 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 2020 Q3:
 
 - Syndicate the **Custom Script Extension** version **1.9.3** from the Marketplace
 
-
-
 ## Updates
 
 Azure App Service on Azure Stack Update Q3 includes the following improvements and fixes:
 
 - Updates to **App Service Tenant, Admin, Functions portals and Kudu tools**. Consistent with Azure Stack Portal SDK version.
 
-- Updates **Azure Functions runtime** to **v1.0.13021**.
+- Updates **Azure Functions runtime** to **v1.0.13154**.
 
 - Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.
 
 - **Updates to the following application frameworks and tools**:
-  - ASP.NET Framework 4.7.2
-  - ASP.NET Core 3.1.3
+  - ASP.NET Core 2.1.22
+  - ASP.NET Core 2.2.14
+  - ASP.NET Core 3.1.8
   - ASP.NET Core Module v2 13.1.19331.0
-  - PHP 7.4.2
-  - Updated Kudu to 86.20224.4450
-  - NodeJS 
-    - 8.17.0
-    - 10.19.0
-    - 12.13.0
-    - 12.15.0
+  - Azul OpenJDK
+    - 8.42.0.23
+    - 8.44.0.11
+    - 11.35.15
+    - 11.37.17
+  - Curl 7.55.1
+  - Git for Windows 2.28.0.1
+  - MSDeploy 3.5.90702.36
+  - NodeJS
+    - 14.10.1
   - NPM
-    - 5.6.0
-    - 6.1.0
-    - 6.12.0
-    - 6.13.4
-  
+    - 6.14.8
+  - PHP 7.4.5
+  - Tomcat
+    - 8.5.47
+    - 8.5.51
+    - 9.0.273
+    - 9.0.31
+  - Updated Kudu to 90.21005.4823
+
 - **Updates to underlying operating system of all roles**:
-  - [2020-04 Cumulative Update for Windows Server 2016 for x64-based Systems (KB4550929)](https://support.microsoft.com/help/4550929)
-  - [2020-04 Servicing Stack Update for Windows Server 2016 for x64-based Systems (KB4550994)](https://support.microsoft.com/help/4550994)
+  - [2020-10 Cumulative Update for Windows Server 2016 for x64-based Systems (KB4580346)](https://support.microsoft.com/help/4580346)
+  - [2020-09 Servicing Stack Update for Windows Server 2016 for x64-based Systems (KB4576750)](https://support.microsoft.com/help/4576750)
+  - Defender Definition 1.325.755.0
 
 - **Cumulative Updates for Windows Server are now applied to Controller roles as part of deployment and upgrade**
 
-- **Updated default Virtual Machine and Scale set skus for new deployments**:
-To maintain consistency with our public cloud service, new deployments of Azure App Service on Azure Stack Hub will use the following SKUs for the underlying machines and scale sets used to operate the resource provider
-  
-  | Role | Minimum SKU |
-  | --- | --- |
-  | Controller | Standard_A4_v2 - (4 cores, 8192 MB) |
-  | Management | Standard_D3_v2 - (4 cores, 14336 MB) |
-  | Publisher | Standard_A2_v2 - (2 cores, 4096 MB) |
-  | FrontEnd | Standard_A4_v2 - (4 cores, 8192 MB) |
-  | Shared Worker | Standard_A4_v2 - (4 cores, 8192 MB) |
-  | Small dedicated worker | Standard_A1_v2 - (1 cores, 2048 MB) |
-  | Medium dedicated worker | Standard_A2_v2 - (2 cores, 4096 MB) |
-  | Large dedicated worker | Standard_A4_v2 - (4 cores, 8192 MB) |
-
-For ASDK deployments, you can scale the instances down to lower SKUs to reduce the core and memory commit but you will experience a performance degradation.
-
 ## Issues fixed in this release
 
-- Upgrades will now complete if SQL Always On Cluster has failed over to secondary node
-- New deployments of Azure App Service on Azure Stack Hub no longer require databases to be manually converted to contained databases
-- Adding additional workers or infrastructure role instances will complete correctly without manual intervention
-- Adding custom worker tiers will complete correctly without manual intervention
-- Removal of custom worker tiers now completes without portal errors
-- Workers are no longer marked as ready if the local disk is out of space
-- Time out increased for retrieving the Azure Resource Manager Certificate
-- The number of messages retrieved, from server logs and displayed in the Admin Portal, is limited to stay underneath the max Azure Resource Manager Request size
-- Time out issue causing usage service startup issues
-- Resolved database deployment issue when creating Orchard CMS sites
-- Controllers are now updated with Windows Cumulative Updates as part of deployment and upgrade
-- App Service no longer locks operations when custom domain verification fails
 
 ## Pre-Update steps
 
