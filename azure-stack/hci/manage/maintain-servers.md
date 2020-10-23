@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/22/2020
+ms.date: 10/23/2020
 ---
 
 # Taking an Azure Stack HCI server offline for maintenance
@@ -22,7 +22,7 @@ You can either use either Windows Admin Center or PowerShell to take a server of
 
 ## Take a server offline using Windows Admin Center
 
-The simplest way to prepare to take a server node in an Azure Stack HCI cluster offline is by using Windows Admin Center.
+The simplest way to prepare to take a server in an Azure Stack HCI cluster offline is by using Windows Admin Center.
 
 ### Verify it's safe to take the server offline
 
@@ -36,14 +36,14 @@ Before either shutting down or restarting a server, you should pause the server 
 
 1. Using Windows Admin Center, connect to the cluster and then select **Compute > Nodes** from the **Tools** menu in Cluster Manager.
 
-2. Click on the name of the cluster node you wish to pause and drain, and select **Pause**. You should see the following prompt:
+2. Click on the name of the server you wish to pause and drain, and select **Pause**. You should see the following prompt:
 
    *If you pause this node, all clustered roles move to other nodes and no roles can be added to this node until it's resumed. Are you sure you want to pause cluster node?*
 
-3. Select **yes** to pause the server and initiate the drain process. The cluster node status will show as **Draining**, and roles such as Hyper-V and VMs will immediately begin live migrating to other cluster node(s). This can take a few minutes.
+3. Select **yes** to pause the server and initiate the drain process. The cluster node status will show as **Draining**, and roles such as Hyper-V and VMs will immediately begin live migrating to other server(s) in the cluster. This can take a few minutes.
 
    > [!NOTE]
-   > When you pause and drain the cluster node properly, Azure Stack HCI performs an automatic safety check to ensure it is safe to proceed. If there are unhealthy volumes, it will stop and alert you that it's not safe to proceed.
+   > When you pause and drain the server properly, Azure Stack HCI performs an automatic safety check to ensure it is safe to proceed. If there are unhealthy volumes, it will stop and alert you that it's not safe to proceed.
 
 ### Shut down the server
 
@@ -51,7 +51,7 @@ Once the server has completed draining, it status will show as **Paused** in Win
 
 ### Resume the server
 
-When you are ready for the server to begin hosting clustered roles and VMs again, simply turn the server on, wait for it to boot up, and resume the cluster node using the following steps.
+When you are ready for the server to begin hosting clustered roles and VMs again, simply turn the server on, wait for it to boot up, and resume the server using the following steps.
 
 1. In Cluster Manager, select **Compute > Nodes** from the **Tools** menu at the left.
 
@@ -59,7 +59,7 @@ When you are ready for the server to begin hosting clustered roles and VMs again
 
    *Are you sure you want to resume cluster node?*
 
-3. In most situations, you should select the checkbox that says *Transfer clustered roles back to this node*. Select **yes** to resume the cluster node.
+3. In most situations, you should select the checkbox that says *Transfer clustered roles back to this node*. Select **yes** to resume the server.
 
 If you checked the box in step 3 above, clustered roles and VMs will immediately begin live migrating back to the server. This can take a few minutes.
 
@@ -74,7 +74,7 @@ To check if resyncing has completed, connect to the server using Windows Admin C
 
 ## Take a server offline using PowerShell
 
-Use the following procedures to properly pause, drain, and resume a server node in an Azure Stack HCI cluster using PowerShell.
+Use the following procedures to properly pause, drain, and resume a server in an Azure Stack HCI cluster using PowerShell.
 
 ### Verify it's safe to take the server offline
 
@@ -175,17 +175,19 @@ MyVolume3    Mirror                OK                Healthy      True          
 
 It's now safe to pause and restart other servers in the cluster.
 
-## Patch Azure Stack HCI nodes offline
+## Perform a fast, offline update of all servers in a cluster
 
-If there is a critical security update that you need to apply quickly or you need to ensure patching completes in your maintenance window, this method may be for you. This process brings down the Azure Stack HCI cluster, patches the servers, and brings it all up again. The trade-off is downtime to the hosted resources.
+This method allows you to take all the servers in a cluster down at once and update them all at the same time. This saves time during the updating process, but the trade-off is downtime for the hosted resources.
+
+If there is a critical security update that you need to apply quickly, or you need to ensure that updates complete within your maintenance window, this method may be for you. This process brings down the Azure Stack HCI cluster, updates the servers, and brings it all up again.
 
 1. Plan your maintenance window.
 2. Take the virtual disks offline.
 3. Stop the cluster to take the storage pool offline. Run the  **Stop-Cluster** cmdlet or use Windows Admin Center to stop the cluster.
-4. Set the cluster service to **Disabled** in Services.msc on each node. This prevents the cluster service from starting up while being patched.
-5. Apply the Windows Server Cumulative Update and any required Servicing Stack Updates to all nodes. (You can update all nodes at the same time, no need to wait since the cluster is down).
-6. Restart the nodes, and ensure everything looks good.
-7. Set the cluster service back to **Automatic** on each node.
+4. Set the cluster service to **Disabled** in Services.msc on each server. This prevents the cluster service from starting up while being updated.
+5. Apply the Windows Server Cumulative Update and any required Servicing Stack Updates to all servers. You can update all servers at the same time - there's no need to wait, because the cluster is down.
+6. Restart the servers, and ensure everything looks good.
+7. Set the cluster service back to **Automatic** on each server.
 8. Start the cluster. Run the **Start-Cluster** cmdlet or use Windows Admin Center.
 
    Give it a few minutes.  Make sure the storage pool is healthy.
