@@ -73,7 +73,7 @@ Operators can also monitor the alerts and quotas:
 
 2.	Select **Quotas** to see the list of quotas in effect.  
 
-   [![iot hub dashboard - quotas](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-quotas.png)](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-quotas.png#lightbox)  
+
 
 3. This is a test
 
