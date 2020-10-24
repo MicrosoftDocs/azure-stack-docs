@@ -71,7 +71,6 @@ Operators can also monitor the alerts and quotas:
  
    [![iot hub dashboard - alerts](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-alerts.png)](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-alerts.png#lightbox)  
 
-
 2.	Select **Quotas** to see the list of quotas in effect.  
 
    > [!NOTE]
@@ -79,7 +78,10 @@ Operators can also monitor the alerts and quotas:
    
    [![iot hub dashboard - quotas](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-quotas.png)](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-quotas.png#lightbox)  
 
+3. This is a test
 
+   > [!IMPORTANT]
+   > Only IoT Hub cluster scale-out (smaller-to-larger) is supported for preview. Scale-in (larger-to-smaller) will be supported in the General Availability (GA) version of IoT Hub.
 
 ## Next steps
 
