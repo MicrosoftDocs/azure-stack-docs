@@ -83,6 +83,8 @@ Operators can also monitor the alerts and quotas:
    > [!IMPORTANT]
    > Only IoT Hub cluster scale-out (smaller-to-larger) is supported for preview. Scale-in (larger-to-smaller) will be supported in the General Availability (GA) version of IoT Hub.
 
+   [![iot hub dashboard - quotas](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-quotas.png)](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-quotas.png#lightbox) 
+
 ## Next steps
 
 For additional IoT Hub management features, see [How to manage IoT Hub on Azure Stack Hub](iot-hub-rp-manage.md).
