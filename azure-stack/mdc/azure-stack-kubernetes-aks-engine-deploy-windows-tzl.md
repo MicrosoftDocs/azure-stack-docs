@@ -4,10 +4,10 @@ description: Learn how to use a Windows machine in your Azure Stack Hub to host 
 author: mattbriggs
 
 ms.topic: article
-ms.date: 09/16/2020
+ms.date: 10/26/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/16/2020
+ms.lastreviewed: 10/26/2020
 
 # Intent: As an Azure Stack Hub user, I want to learn how to host the AKS engine on a Windows VM so that I can deploy the AKS engine on Windows in Azure Stack Hub.
 # Keyword: host aks on windows vm in azure stack hub 
@@ -34,7 +34,7 @@ When choosing your client machine, consider:
 
 You can install the client VM to manage your Kubernetes cluster on an Azure Stack Hub connected to the Internet.
 
-1. Create a Windows VM in your Azure Stack Hub. For instructions, see [Quickstart: Create a Windows server VM by using the Azure Stack Hub portal](./azure-stack-quick-windows-portal.md).
+1. Create a Windows VM in your Azure Stack Hub. For instructions, see [Quickstart: Create a Windows server VM by using the Azure Stack Hub portal](../user/azure-stack-quick-windows-portal.md).
 2. Connect to your VM.
 3. [Install Chocolatey using the PowerShell instructions.](https://chocolatey.org/install#install-with-powershellexe). 
 
@@ -47,7 +47,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
     ```
 
 > [!NOTE]  
-> If this method for installation fails, you can try the steps in the [disconnected environment](#install-in-a-disconnected-environment), or [Try GoFish](azure-stack-kubernetes-aks-engine-troubleshoot.md#try-gofish), an alternate package manager.
+> If this method for installation fails, you can try the steps in the [disconnected environment](#install-in-a-disconnected-environment), or [Try GoFish](../user/azure-stack-kubernetes-aks-engine-troubleshoot.md#try-gofish), an alternate package manager.
 
 ## Install in a disconnected environment
 
@@ -57,7 +57,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
 2.  Create a storage account in your Azure Stack Hub instance to upload the archive file (*.tar.gz) with the AKS engine binary. For instructions on using the Azure Storage Explorer, see [Azure Storage Explorer with Azure Stack Hub](./azure-stack-storage-connect-se.md).
 
-3. Create a Windows VM in your Azure Stack Hub. For instructions, see [Quickstart: Create a Windows server VM by using the Azure Stack Hub portal](./azure-stack-quick-windows-portal.md)
+3. Create a Windows VM in your Azure Stack Hub. For instructions, see [Quickstart: Create a Windows server VM by using the Azure Stack Hub portal](../user/azure-stack-quick-windows-portal.md)
 
 4.  From the Azure Stack Hub storage account blob URL where you uploaded the archive file (*.tar.gz), download the file to your management VM. Extract the archive to a directory that you have access to from your command prompt.
 
@@ -82,9 +82,9 @@ Once your client VM is set up, check that you have installed the AKS engine.
     aks-engine version
     ```
 
-If you are unable to verify that you have installed the AKS engine on your client VM, see [Troubleshoot AKS engine install](azure-stack-kubernetes-aks-engine-troubleshoot.md).
+If you are unable to verify that you have installed the AKS engine on your client VM, see [Troubleshoot AKS engine install](../user/azure-stack-kubernetes-aks-engine-troubleshoot.md).
 
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Deploy a Kubernetes cluster with the AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-deploy-cluster.md)
+> [Deploy a Kubernetes cluster with the AKS engine on Azure Stack Hub](../user/azure-stack-kubernetes-aks-engine-deploy-cluster.md)

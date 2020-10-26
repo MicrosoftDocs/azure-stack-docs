@@ -11,10 +11,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/9/2020
+ms.date: 10/26/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 1/9/2020
+ms.lastreviewed: 10/26/2020
 
 ---
 # Manage and deploy resources to Azure Stack Hub with Azure CLI
@@ -90,7 +90,7 @@ This section walks you through setting up CLI if you're using Azure AD as your i
     az cloud update --profile 2019-03-01-hybrid
    ```
  
-1. Sign in to your Azure Stack Hub environment by using the `az login` command. Sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
+1. Sign in to your Azure Stack Hub environment by using the `az login` command. Sign in to the Azure Stack Hub environment either as a user or as a service principal. 
 
    - Sign in as a *user*: 
 
@@ -105,7 +105,7 @@ This section walks you through setting up CLI if you're using Azure AD as your i
 
    - Sign in as a *service principal*: 
     
-     Before you sign in, [create a service principal through the Azure portal](azure-stack-create-service-principals.md) or CLI and assign it a role. Now, sign in by using the following command:
+     Before you sign in, [create a service principal through the Azure portal](../operator/azure-stack-create-service-principals.md) or CLI and assign it a role. Now, sign in by using the following command:
 
      ```azurecli  
      az login --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com> --service-principal -u <Application Id of the Service Principal> -p <Key generated for the Service Principal>
@@ -121,7 +121,7 @@ az group create -n MyResourceGroup -l local
 
 If the resource group is created successfully, the previous command outputs the following properties of the newly created resource:
 
-![Resource group create output](media/azure-stack-connect-cli/image1.png)
+![Resource group create output](media/azure-stack-connect-cli/output.png)
 
 ## Windows/Linux (AD FS)
 
@@ -158,7 +158,7 @@ This section walks you through setting up CLI if you're using Active Directory F
     az cloud update --profile 2019-03-01-hybrid
    ```
 
-1. Sign in to your Azure Stack Hub environment by using the `az login` command. You can sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
+1. Sign in to your Azure Stack Hub environment by using the `az login` command. You can sign in to the Azure Stack Hub environment either as a user or as a service principal. 
 
    - Sign in as a *user*:
 
