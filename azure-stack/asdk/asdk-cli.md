@@ -40,7 +40,7 @@ To export the ASDK root certificate in PEM format:
     - On the Certificate Window, click **Certification Path** tab.
     - Note down the name of your Azure Stack Hub Root Cert.
 
-    ![Azure Stack Hub Root Certificate](media/azure-stack-version-profiles-azurecli2/root-cert-name.png)
+    ![Azure Stack Hub Root Certificate](../user/media/azure-stack-version-profiles-azurecli2/root-cert-name.png)
 
 2. [Create a Windows VM on Azure Stack Hub](azure-stack-quick-windows-portal.md).
 
@@ -153,3 +153,6 @@ Trust the Azure Stack Hub CA root certificate by appending it to the existing Py
      ```
 
 
+## Next steps
+
+[Install Azure CLI on Azure Stack Hub](../user/azure-stack-version-profiles-azurecli2.md)

@@ -266,7 +266,7 @@ If the resource group is created successfully, the previous command outputs the 
 
 ![Resource group create output](media/azure-stack-connect-cli/image1.png)
 
-### [AD FS Linux](#tab/ad-lin)
+### [AD FS Linux](#tab/adfs-lin)
 
 This section walks you through setting up CLI if you're using Active Directory Federated Services (AD FS) as your management service, and are using CLI on a Linux machine.
 
