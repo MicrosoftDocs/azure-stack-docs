@@ -1,25 +1,27 @@
 ---
-title: What is the Azure Stack Development Kit (ASDK)? | Microsoft Docs
-description: Learn about the Azure Stack Development Kit and how it's used to evaluate Azure Stack Hub.
+title: Setting up certificates for Azure CLI on the Azure Stack Development Kit (ASDK)? | Microsoft Docs
+description: Learn about setting up certificates for Azure CLI on the Azure Stack Development Kit Azure Stack Development Kit.
 author: mattbriggs
-ms.topic: overview
-ms.date: 11/27/2019
+ms.topic: how-to
+ms.date: 10/26/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 11/27/2019
+ms.lastreviewed: 10/26/2020
 
-# Intent: As a potential ASDK user, I want to know what the ASDK is.
-# Keyword: what is the asdk
+# Intent: As an Azure Stack user, I want to use cross-platform CLI to manage and deploy resources on Azure Stack.
+# Keyword: manage azure stack CLI
 
 ---
 
-# Manage and deploy resources to Azure Stack Hub with Azure CLI
+# Setting up certificates for Azure CLI on Azure Stack Development Kit
 
 Follow the steps in this article to set up the Azure Command-Line Interface (CLI) to manage Azure Stack Development Kit (ASDK) resources from Linux, Mac, and Windows client platforms.
 
+This article addresses getting your certificates and trusting them on your remote management machine. To install the Azure CLI and connect to your environment, see [Install Azure CLI on Azure Stack Hub](/azure-stack-version-profiles-azurecli2).
+
 ## Prepare for Azure CLI
 
-If you're using the ASDK, you need the CA root certificate for Azure Stack Hub to use Azure CLI on your development machine. You use the certificate to manage resources through the CLI.
+For the ASDK, you need the CA root certificate for Azure Stack Hub to use Azure CLI on your development machine. You use the certificate to manage resources through the CLI.
 
  - **The Azure Stack Hub CA root certificate** is required if you're using the CLI from a workstation outside the ASDK.  
 
@@ -27,22 +29,22 @@ If you're using the ASDK, you need the CA root certificate for Azure Stack Hub t
 
 The following sections describe how to get these values.
 
-### Export the Azure Stack Hub CA root certificate
+## Export the Azure Stack Hub CA root certificate
 
-If you're using an integrated system, you don't need to export the CA root certificate. If you're using the ASDK, export the CA root certificate on an ASDK.
+To use the Azure CLI with the ASDK, export the CA root certificate.
 
 To export the ASDK root certificate in PEM format:
 
 1. Get the name of your Azure Stack Hub Root Cert:
     - Sign in to the Azure Stack Hub User or Administrator portal.
-    - Click on **Secure** near the address bar.
-    - On the pop-up window, Click **Valid**.
-    - On the Certificate Window, click **Certification Path** tab.
+    - Select on **Secure** near the address bar.
+    - On the pop-up window, Select **Valid**.
+    - On the Certificate Window, select **Certification Path** tab.
     - Note down the name of your Azure Stack Hub Root Cert.
 
     ![Azure Stack Hub Root Certificate](../user/media/azure-stack-version-profiles-azurecli2/root-cert-name.png)
 
-2. [Create a Windows VM on Azure Stack Hub](azure-stack-quick-windows-portal.md).
+2. [Create a Windows VM on Azure Stack Hub](../user/azure-stack-quick-windows-portal.md).
 
 3. Sign in to the VM, open an elevated PowerShell prompt, and then run the following script:
 
@@ -66,7 +68,7 @@ To export the ASDK root certificate in PEM format:
 4. Copy the certificate to your local machine.
 
 
-### Set up the virtual machine aliases endpoint
+## Set up the virtual machine aliases endpoint
 
 You can set up a publicly accessible endpoint that hosts a VM alias file. The VM alias file is a JSON file that provides a common name for an image. You use the name when you deploy a VM as an Azure CLI parameter.
 
@@ -79,9 +81,11 @@ You can set up a publicly accessible endpoint that hosts a VM alias file. The VM
 4. Upload the JSON file to the new container. When that's done, you can view the URL of the blob. Select the blob name and then selecting the URL from the blob properties.
 
 
-### Trust the Azure Stack Hub CA root certificate
+## Trust the certificate
 
-If you're using the ASDK, you need to trust the CA root certificate on your remote machine. This step isn't needed with the integrated systems.
+To use Azure CLI with the aSDK, you must trust the CA root certificate on your remote machine.
+
+### [Windows](#tab/lin)
 
 1. Find the certificate location on your machine. The location may vary depending on where you've installed Python. Open a cmd prompt or an elevated PowerShell prompt, and type the following command:
 
@@ -122,13 +126,11 @@ If you're using the ASDK, you need to trust the CA root certificate on your remo
     Write-Host "Python Cert store was updated to allow the Azure Stack Hub CA root certificate"
     ```
 
-## Linux CA
+For instructions on Installing and connecting with Azure CLI see [Install Azure CLI on Azure Stack Hub](/azure-stack/user/azure-stack-version-profiles-azurecli2).
 
-### Trust the Azure Stack Hub CA root certificate
+### [Linux](#tab/lin)
 
-If you're using the ASDK, you need to trust the CA root certificate on your remote machine. This step isn't needed with the integrated systems.
-
-Trust the Azure Stack Hub CA root certificate by appending it to the existing Python certificate.
+When setting up CLI, trust the Azure Stack Hub CA root certificate by appending it to the existing Python certificate.
 
 1. Find the certificate location on your machine. The location may vary depending on where you've installed Python. You need to have pip and the certifi module installed. Use the following Python command from the bash prompt:
 
@@ -152,6 +154,9 @@ Trust the Azure Stack Hub CA root certificate by appending it to the existing Py
      sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
      ```
 
+For instructions on Installing and connecting with Azure CLI see [Install Azure CLI on Azure Stack Hub](/azure-stack/user/azure-stack-version-profiles-azurecli2).
+
+---
 
 ## Next steps
 

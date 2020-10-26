@@ -34,7 +34,7 @@ Summary about Azure CLI on Azure Stack Hub
 
     ![Azure CLI on Azure Stack Hub Python location](media/azure-stack-version-profiles-azurecli2/cli-python-location.png)
 
-2. Make a note of the CLI's Python location. If you're running the ASDK, you need to use this location to add your certificate.
+2. Make a note of the CLI's Python location. If you're running the ASDK, you need to use this location to add your certificate. For instructions on setting up certificates for installing the CLI on the ASDK, see [Setting up certificates for Azure CLI on Azure Stack Development Kit](../asdk/asdk-cli.md).
 
 ## Set up Azure CLI
 
@@ -44,9 +44,11 @@ This section walks you through setting up CLI if you're using Azure AD as your i
 
 #### Connect to Azure Stack Hub
 
-1. Register your Azure Stack Hub environment by running the `az cloud register` command.
+1. If you are using the ASDK, trust the Azur Stack Hub CA root certificate. For instruction, see [Trust the certificate](../asdk/asdk-cli.md#trust-the-certificate).
 
-2. Register your environment. Use the following parameters when running `az cloud register`:
+2. Register your Azure Stack Hub environment by running the `az cloud register` command.
+
+3. Register your environment. Use the following parameters when running `az cloud register`:
 
     | Value | Example | Description |
     | --- | --- | --- |
@@ -60,13 +62,13 @@ This section walks you through setting up CLI if you're using Azure AD as your i
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>
     ```
 
-1. Set the active environment by using the following commands.
+4. Set the active environment by using the following commands.
 
       ```azurecli
       az cloud set -n <environmentname>
       ```
 
-1. Update your environment configuration to use the Azure Stack Hub specific API version profile. To update the configuration, run the following command:
+5. Update your environment configuration to use the Azure Stack Hub specific API version profile. To update the configuration, run the following command:
 
     ```azurecli
     az cloud update --profile 2019-03-01-hybrid
@@ -75,7 +77,7 @@ This section walks you through setting up CLI if you're using Azure AD as your i
     >[!NOTE]  
     >If you're running a version of Azure Stack Hub before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You also need to use a recent version of the Azure CLI.
  
-1. Sign in to your Azure Stack Hub environment by using the `az login` command. Sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
+6. Sign in to your Azure Stack Hub environment by using the `az login` command. Sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
 
    - Sign in as a *user*: 
 
@@ -114,9 +116,12 @@ This section walks you through setting up CLI if you're using Active Directory F
 
 #### Connect to Azure Stack Hub
 
-1. Register your Azure Stack Hub environment by running the `az cloud register` command.
 
-2. Register your environment. Use the following parameters when running `az cloud register`:
+1. If you are using the ASDK, trust the Azur Stack Hub CA root certificate. For instruction, see [Trust the certificate](../asdk/asdk-cli.md#trust-the-certificate).
+
+2. Register your Azure Stack Hub environment by running the `az cloud register` command.
+
+3. Register your environment. Use the following parameters when running `az cloud register`:
 
     | Value | Example | Description |
     | --- | --- | --- |
@@ -130,13 +135,13 @@ This section walks you through setting up CLI if you're using Active Directory F
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>
     ```
 
-1. Set the active environment by using the following commands.
+4. Set the active environment by using the following commands.
 
       ```azurecli
       az cloud set -n <environmentname>
       ```
 
-1. Update your environment configuration to use the Azure Stack Hub specific API version profile. To update the configuration, run the following command:
+5. Update your environment configuration to use the Azure Stack Hub specific API version profile. To update the configuration, run the following command:
 
     ```azurecli
     az cloud update --profile 2019-03-01-hybrid
@@ -145,7 +150,7 @@ This section walks you through setting up CLI if you're using Active Directory F
     >[!NOTE]  
     >If you're running a version of Azure Stack Hub before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You also need to use a recent version of the Azure CLI.
 
-1. Sign in to your Azure Stack Hub environment by using the `az login` command. You can sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
+6. Sign in to your Azure Stack Hub environment by using the `az login` command. You can sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
 
    - Sign in as a *user*:
 
@@ -196,9 +201,12 @@ This section walks you through setting up CLI if you're using Azure AD as your i
 
 Use the following steps to connect to Azure Stack Hub:
 
-1. Register your Azure Stack Hub environment by running the `az cloud register` command.
 
-2. Register your environment. Use the following parameters when running `az cloud register`:
+1. If you are using the ASDK, trust the Azur Stack Hub CA root certificate. For instruction, see [Trust the certificate](../asdk/asdk-cli.md#trust-the-certificate).
+
+2. Register your Azure Stack Hub environment by running the `az cloud register` command.
+
+3. Register your environment. Use the following parameters when running `az cloud register`:
 
     | Value | Example | Description |
     | --- | --- | --- |
@@ -212,13 +220,13 @@ Use the following steps to connect to Azure Stack Hub:
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>
     ```
 
-3. Set the active environment. 
+4. Set the active environment. 
 
       ```azurecli
         az cloud set -n <environmentname>
       ```
 
-4. Update your environment configuration to use the Azure Stack Hub specific API version profile. To update the configuration, run the following command:
+5. Update your environment configuration to use the Azure Stack Hub specific API version profile. To update the configuration, run the following command:
 
     ```azurecli
       az cloud update --profile 2019-03-01-hybrid
@@ -227,7 +235,7 @@ Use the following steps to connect to Azure Stack Hub:
     >[!NOTE]  
     >If you're running a version of Azure Stack Hub before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You also need to use a recent version of the Azure CLI.
 
-5. Sign in to your Azure Stack Hub environment by using the `az login` command. You can sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
+6. Sign in to your Azure Stack Hub environment by using the `az login` command. You can sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
 
    * Sign in as a *user*:
 
@@ -274,9 +282,11 @@ This section walks you through setting up CLI if you're using Active Directory F
 
 Use the following steps to connect to Azure Stack Hub:
 
-1. Register your Azure Stack Hub environment by running the `az cloud register` command.
+1. If you are using the ASDK, trust the Azur Stack Hub CA root certificate. For instruction, see [Trust the certificate](../asdk/asdk-cli.md#trust-the-certificate).
 
-2. Register your environment. Use the following parameters when running `az cloud register`.
+2. Register your Azure Stack Hub environment by running the `az cloud register` command.
+
+3. Register your environment. Use the following parameters when running `az cloud register`.
 
     | Value | Example | Description |
     | --- | --- | --- |
@@ -290,13 +300,13 @@ Use the following steps to connect to Azure Stack Hub:
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>
     ```
 
-3. Set the active environment. 
+4. Set the active environment. 
 
       ```azurecli
         az cloud set -n <environmentname>
       ```
 
-4. Update your environment configuration to use the Azure Stack Hub specific API version profile. To update the configuration, run the following command:
+5. Update your environment configuration to use the Azure Stack Hub specific API version profile. To update the configuration, run the following command:
 
     ```azurecli
       az cloud update --profile 2019-03-01-hybrid
@@ -305,9 +315,9 @@ Use the following steps to connect to Azure Stack Hub:
     >[!NOTE]  
     >If you're running a version of Azure Stack Hub before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You also need to use a recent version of the Azure CLI.
 
-5. Sign in to your Azure Stack Hub environment by using the `az login` command. You can sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
+6. Sign in to your Azure Stack Hub environment by using the `az login` command. You can sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
 
-6. Sign in: 
+7. Sign in: 
 
    *  As a **user** using a web browser with a device code:  
 
