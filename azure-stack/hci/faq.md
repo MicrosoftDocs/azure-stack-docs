@@ -6,13 +6,15 @@ author: JohnCobb1
 ms.author: v-johcob
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/23/2020
+ms.date: 10/26/2020
 ---
 
 # Azure Stack HCI FAQ
-<!---Group into H2 subject area buckets. Intro the general area buckets. Add Cosmos FAQ buckets after these sections.--->
+The Azure Stack HCI FAQ includes the following subject areas, as well as a section that focuses on Azure Stack HCI connectivity.
 
 ## Azure Stack HCI and Windows Server
+This FAQ area provides the following information.
+
 ### How does Azure Stack HCI relate to Windows Server?
 Windows Server is the foundation of nearly every Azure product, and all the features you value continue to ship and be supported in Windows Server. The initial offering of Azure Stack HCI was based on Windows Server 2019 and used the traditional Windows Server licensing model. Today, Azure Stack HCI has its own operating system and subscription-based licensing model. Azure Stack HCI is the recommended way to deploy HCI on-premises, using Microsoft-validated hardware from our partners.
 
@@ -20,6 +22,8 @@ Windows Server is the foundation of nearly every Azure product, and all the feat
 There is no in-place upgrade from Windows Server to Azure Stack HCI at this time. Stay tuned for specific migration guidance for customers running hyperconverged clusters based on Windows Server 2019 and 2016.
 
 ## Azure Stack HCI and Azure
+This FAQ area provides the following information.
+
 ### Does Azure Stack HCI need to connect to Azure?
 Yes, the cluster must connect to Azure at least once every 30 days in order for the number of cores to be assessed for billing purposes. You can also take advantage of integration with Azure for hybrid scenarios like off-site backup and disaster recovery, and cloud-based monitoring and update management, but they're optional. It's no problem to run disconnected from the internet for extended periods.
 
@@ -27,6 +31,8 @@ Yes, the cluster must connect to Azure at least once every 30 days in order for 
 For an updated list of Azure services that you can connect Azure Stack HCI to, see [Connecting Windows Server to Azure hybrid services](/windows-server/manage/windows-admin-center/azure/index).
 
 ## Azure Stack HCI and the Azure Stack family
+This FAQ area provides the following information.
+
 ### Why is Microsoft bringing its HCI offering to the Azure Stack family?
 Microsoft's hyperconverged technology is already the foundation of Azure Stack Hub.
 
@@ -44,6 +50,8 @@ With Azure Stack HCI, you run virtualized workloads on-premises, managed with Wi
 No, but customers can migrate their workloads from Azure Stack HCI to Azure Stack Hub or Azure.
 
 ## Azure Stack HCI and data collection
+This FAQ area provides the following information.
+
 ### Does Azure Stack HCI collect any data from my system?
 Yes - a very limited set of data is collected. This data is used to keep HCI up to date, performing properly, provide information to the Azure portal, and to assess the number of processor cores in the cluster for billing purposes.
 
@@ -64,5 +72,13 @@ OsName                    OSDisplayVersion
 ------                    ----------------
 Microsoft Azure Stack HCI 20H2
 ```
+## Azure Stack HCI Connectivity
+Azure Stack HCI is an on-premises hyperconverged infrastructure stack delivered as an Azure hybrid service. You install the Azure Stack HCI software on physical servers that you control on your premises, and connect to Azure for cloud-based monitoring, support, billing, and optional management and security features. The following FAQ areas clarify how Azure Stack HCI uses the cloud by addressing frequently asked questions about connectivity requirements and behavior.
 
-<!---Cosmos FAQ buckets from here.--->
+## Your data stays on-premises
+This FAQ area includes the following information.
+
+### Does my data stored on Azure Stack HCI get sent to the cloud?
+Generally, no. The names, metadata, configuration, and contents of your on-premises virtual machines (VMs) is never sent to the cloud unless you turn on additional services expressly for that purpose, like Azure Backup or Azure Site Recovery, or unless you enroll those VMs individually into cloud management services like Azure Arc.
+
+
