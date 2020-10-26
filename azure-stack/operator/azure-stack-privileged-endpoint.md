@@ -198,6 +198,55 @@ After the transcript log files are successfully transferred to the file share, t
 > [!NOTE]
 > If you close the PEP session by using the cmdlets `Exit-PSSession` or `Exit`, or you just close the PowerShell console, the transcript logs don't transfer to a file share. They remain in the PEP. The next time you run `Close-PrivilegedEndpoint` and include a file share, the transcript logs from the previous session(s) will also transfer. Don't use `Exit-PSSession` or `Exit` to close the PEP session; use `Close-PrivilegedEndpoint` instead.
 
+## Unlocking the privileged endpoint for support scenarios
+
+ During a support scenario, the Microsoft support engineer might need to elevate the privileged endpoint PowerShell session to access the internals of the Azure Stack Hub infrastructure. This process is sometimes informally referred to as "break the glass" or "unlock the PEP". The PEP session elevation process is a two step, two people, two organization authentication process. 
+ The unlock procedure is initiated by the Azure Stack Hub operator, who retains control of their environment at all times. The operator access the PEP and executes this cmdlet:
+ 
+ ```powershell  
+      Get-SupportSessionToken
+  ```
+ The cmdlet returns the support session request token, a very long alphanumeric string. The operator then passes the request token to the Microsoft support engineer via a a medium of their choise (e.g. chat, email, etc). The Microsoft support engineer uses the request token to generate, if valid, an support session authorization token and sends it back to the Azure Stack Hub operator. On the same PEP PowerShell session, the operator then passes the authorization token as input to this cmdlet:
+
+ ```powershell  
+      unlock-supportsession
+      cmdlet Unlock-SupportSession at command pipeline position 1
+      Supply values for the following parameters:
+      ResponseToken:
+  ```
+
+If the authorization token is valid, the PEP PowerShell session is elevated by providing full admin capabilities and full reachability into the infrastructure. 
+
+> [!NOTE]
+> All the operations and cmdlets executed in an elevated PEP session must be performed under strict supervision of the Microsoft support engineer. Failure to do so could result in serious downtime, data loss and could require a full redeployment of the Azure Stack Hub environment.
+
+ Once the support session is terminated, it is very important to close back the elevated PEP session by using the **Close-PrivilegedEndpoint** cmdlet as explained in the section above. One the PEP session is terminated, the unlock token is no longer valid and cannot be reused to unlock the PEP session again.
+An elevated PEP session has a validity of 8 hours, after which, if not terminated, the elevated PEP session will automatically lock back to a regular PEP session.
+
+## Content of the privileged endpoint tokens
+
+ The PEP support session request and authorization tokens leverage cryptography to protect access and ensure that only authorized tokens can unlock the PEP session. The tokens are designed to cryptographically guarantee that a response token can only be accepted by the PEP session that generated the request token. 
+ PEP tokens do not contain any kind of information that could uniquely identify an Azure Stack Hub environment or a customer. They are completely anonymous. Below the details of the content of each token are provided.
+ 
+### Support session request token
+
+ The PEP support session request token is composed of three objects:
+
+      - A randomly generated Session ID.
+      - A self-signed certificate, generated for the purpose of having a one-time public/private key pair. The certificate does not contain any information on the environment. 
+      - A time stamp that indicates the request token expiration.
+      
+  The request token is then encrypted with the public key of the Azure cloud against which the Azure Stack Hub environment is registered to.
+ 
+ ### Support session authorization response token
+
+The PEP support authorization response token is composed of two objects:
+
+      - The randomly generated session ID extracted from the request token.
+      - A time stamp that indicates the response token expiration.
+      
+ The response token is then encrypted with the self-signed certificate contained in the request token. The self-signed certificate was decrypted with the private key associated with the Azure cloud against which the Azure Stack Hub environment is registered to.
+
 
 ## Next steps
 
