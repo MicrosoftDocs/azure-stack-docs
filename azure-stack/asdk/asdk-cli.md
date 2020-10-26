@@ -36,11 +36,11 @@ To use the Azure CLI with the ASDK, export the CA root certificate.
 To export the ASDK root certificate in PEM format:
 
 1. Get the name of your Azure Stack Hub Root Cert:
-    - Sign in to the Azure Stack Hub User or Administrator portal.
-    - Select on **Secure** near the address bar.
-    - On the pop-up window, Select **Valid**.
-    - On the Certificate Window, select **Certification Path** tab.
-    - Note down the name of your Azure Stack Hub Root Cert.
+    1. Sign in to the Azure Stack Hub User or Administrator portal.
+    2. Select on **Secure** near the address bar.
+    3. On the pop-up window, Select **Valid**.
+    4. On the Certificate Window, select **Certification Path** tab.
+    5. Note down the name of your Azure Stack Hub Root Cert.
 
     ![Azure Stack Hub Root Certificate](../user/media/azure-stack-version-profiles-azurecli2/root-cert-name.png)
 
@@ -67,8 +67,7 @@ To export the ASDK root certificate in PEM format:
 
 4. Copy the certificate to your local machine.
 
-
-## Set up the virtual machine aliases endpoint
+## Set up the virtual machine alias endpoint
 
 You can set up a publicly accessible endpoint that hosts a VM alias file. The VM alias file is a JSON file that provides a common name for an image. You use the name when you deploy a VM as an Azure CLI parameter.
 

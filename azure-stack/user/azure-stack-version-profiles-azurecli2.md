@@ -16,8 +16,6 @@ ms.lastreviewed: 10/26/2020
 
 # Install Azure CLI on Azure Stack Hub
 
-Summary about Azure CLI on Azure Stack Hub
-
 ## Install Azure CLI
 
 1. Sign in to your development workstation and install CLI. Azure Stack Hub requires version 2.0 or later of Azure CLI. 
@@ -44,7 +42,7 @@ This section walks you through setting up CLI if you're using Azure AD as your i
 
 #### Connect to Azure Stack Hub
 
-1. If you are using the ASDK, trust the Azur Stack Hub CA root certificate. For instruction, see [Trust the certificate](../asdk/asdk-cli.md#trust-the-certificate).
+1. If you are using the ASDK, trust the Azure Stack Hub CA root certificate. For instruction, see [Trust the certificate](../asdk/asdk-cli.md#trust-the-certificate).
 
 2. Register your Azure Stack Hub environment by running the `az cloud register` command.
 
@@ -117,7 +115,7 @@ This section walks you through setting up CLI if you're using Active Directory F
 #### Connect to Azure Stack Hub
 
 
-1. If you are using the ASDK, trust the Azur Stack Hub CA root certificate. For instruction, see [Trust the certificate](../asdk/asdk-cli.md#trust-the-certificate).
+1. If you are using the ASDK, trust the Azure Stack Hub CA root certificate. For instruction, see [Trust the certificate](../asdk/asdk-cli.md#trust-the-certificate).
 
 2. Register your Azure Stack Hub environment by running the `az cloud register` command.
 
@@ -202,7 +200,7 @@ This section walks you through setting up CLI if you're using Azure AD as your i
 Use the following steps to connect to Azure Stack Hub:
 
 
-1. If you are using the ASDK, trust the Azur Stack Hub CA root certificate. For instruction, see [Trust the certificate](../asdk/asdk-cli.md#trust-the-certificate).
+1. If you are using the ASDK, trust the Azure Stack Hub CA root certificate. For instruction, see [Trust the certificate](../asdk/asdk-cli.md#trust-the-certificate).
 
 2. Register your Azure Stack Hub environment by running the `az cloud register` command.
 
@@ -282,7 +280,7 @@ This section walks you through setting up CLI if you're using Active Directory F
 
 Use the following steps to connect to Azure Stack Hub:
 
-1. If you are using the ASDK, trust the Azur Stack Hub CA root certificate. For instruction, see [Trust the certificate](../asdk/asdk-cli.md#trust-the-certificate).
+1. If you are using the ASDK, trust the Azure Stack Hub CA root certificate. For instruction, see [Trust the certificate](../asdk/asdk-cli.md#trust-the-certificate).
 
 2. Register your Azure Stack Hub environment by running the `az cloud register` command.
 
