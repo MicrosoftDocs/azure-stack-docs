@@ -17,7 +17,7 @@ ms.lastreviewed: 10/26/2020
 
 Follow the steps in this article to set up the Azure Command-Line Interface (CLI) to manage Azure Stack Development Kit (ASDK) resources from Linux, Mac, and Windows client platforms.
 
-This article addresses getting your certificates and trusting them on your remote management machine. To install the Azure CLI and connect to your environment, see [Install Azure CLI on Azure Stack Hub](/azure-stack-version-profiles-azurecli2).
+This article addresses getting your certificates and trusting them on your remote management machine. To install the Azure CLI and connect to your environment, see [Install Azure CLI on Azure Stack Hub](/azure-stack/user/azure-stack-version-profiles-azurecli2).
 
 ## Prepare for Azure CLI
 
@@ -85,7 +85,7 @@ You can set up a publicly accessible endpoint that hosts a VM alias file. The VM
 
 To use Azure CLI with the aSDK, you must trust the CA root certificate on your remote machine.
 
-### [Windows](#tab/lin)
+### [Windows](#tab/win)
 
 1. Find the certificate location on your machine. The location may vary depending on where you've installed Python. Open a cmd prompt or an elevated PowerShell prompt, and type the following command:
 
