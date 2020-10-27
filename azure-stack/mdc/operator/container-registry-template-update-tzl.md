@@ -76,30 +76,30 @@ Azure Stack Hub users can update their container registry deployment to a more r
 
 2.  Specify the latest SKU output from the `Get-VMImage` script and use a unique **dnsname** parameter from the initial install in the virtual machine configuration, use the same service principal and secret as the initial install.
 
-    ![Container registry template](./media/container-registry-template-updating-tzl/image4.png)
+    ![Specify SKU](./media/container-registry-template-updating-tzl/sku.png)
 
 3.  Use the same storage and Key Vault parameters as the initial install for the storage and Key Vault configuration.
 
-    ![Container registry template](./media/container-registry-template-updating-tzl/image5.png)
+    ![Add Storage](./media/container-registry-template-updating-tzl/storage.png)
 
 1.  Once the new container registry template has been deployed, navigate to the initial resource group and select the public IP address resource.
 
-    ![Container registry template](./media/container-registry-template-updating-tzl/image6.png)
+    ![Select IP](./media/container-registry-template-updating-tzl/ip.png)
 
 1.  In the public IP address resource navigate to Configuration and modify the DNS Name label so it can be used for the newly deploy resource. Note once you modify the DNS Name label and select **Save** calls to the Container Registry will begin to fail.
 
-    ![Container registry template](./media/container-registry-template-updating-tzl/image7.png)
+    ![Change DNS label](./media/container-registry-template-updating-tzl/dns.png)
     
-    ![Container registry template](./media/container-registry-template-updating-tzl/image8.png)
+    ![Save change](./media/container-registry-template-updating-tzl/save.png)
 
 2.  Navigate to the new resource group used to deploy the new instance of the container registry template, select the public IP resource, configuration, and update the DNS name label to the correct name used in the original deployment, in this example `myreg`, and select **Save**.
 
-    ![Container registry template](./media/container-registry-template-updating-tzl/image9.png)
+    ![Select configuration](./media/container-registry-template-updating-tzl/select-configuration.png)
     
-    ![Container registry template](./media/container-registry-template-updating-tzl/image10.png)
+    ![Save configuration](./media/container-registry-template-updating-tzl/save-configuration.png)
 
 3.  For the next 30 minutes there will be intermittent access to the container registry as the DNS record is propagated. Validate connection by logging into the Docker registry and pulling / pushing an image.
 
 ## Next steps
 
-[Azure Stack Marketplace overview](azure-stack-marketplace.md)
+[Azure Stack Marketplace overview](../../operator/azure-stack-marketplace.md)
