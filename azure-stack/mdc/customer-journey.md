@@ -13,10 +13,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/09/2020
+ms.date: 10/27/2020
 ms.author: justinha
 ms.reviewer: asganesh
-ms.lastreviewed: 09/09/2020
+ms.lastreviewed: 10/27/2020
 ---
  
 
@@ -43,42 +43,6 @@ Once you place the order, Microsoft will have 15 days to deliver the MDC to your
 
 >[!NOTE] 
 >Billing starts 14 days after the hardware has shipped.
-
-To create an Azure Stack Hub resource, take the following steps in the Azure portal.
-
-1. Use your Microsoft Azure credentials to sign in to the Azure portal at this URL: [https://portal.azure.com](https://portal.azure.com).
-1. In the left-pane, select **+ Create a resource**. Search for and select **Modular Data Center**. Select **Create**.
-1. Pick the subscription that you want to use for the Azure Stack Hub device. Select the country to where you want to ship this physical device. Select **Show devices**.
-1. A short form is displayed. Fill out the form and select **Submit**. Microsoft will enable your subscription.
-1. After the subscription is enabled, you should be able to able to proceed with the resource creation. In the **Select device type** blade, choose **Select**. 
-1. On the **Basics** tab, enter or select the following **Project details**.
-    
-    |Setting  |Value  |
-    |---------|---------|
-    |Subscription    |This is automatically populated based on the earlier selection. Subscription is linked to your billing account. |
-    |Resource group  |Select an existing group or create a new group.   |
-
-1. Enter or select the following **Instance details**.
-
-    |Setting  |Value  |
-    |---------|---------|
-    |Name   | A friendly name to identify the resource.<br>The name has between 2 and 50 characters containing letter, numbers, and hyphens.<br> Name starts and ends with a letter or a number.        |
-    |Region     |For a list of all the regions where the Azure Stack Hub resource is available, see [Azure products available by region](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). If using Azure Government, all the government regions are available as shown in the [Azure regions](https://azure.microsoft.com/global-infrastructure/regions/).<br> Choose a location closest to the geographical region where you want to deploy your device.|
-
-
-1. Select **Next: Shipping address**.
-
-    - If you already have a device, select the combo box for **I have a Azure Stack Hub device**.
-
-    - If this is the new device that you are ordering, enter the contact name, company, address to ship the device, and contact information.
-
-1. Select **Next: Review + create**.
-1. On the **Review + create** tab, review the **Pricing details**, **Terms of use**, and the details for your resource. Select the combo box for **I have reviewed the privacy terms**.
-1. Select **Create**.
-
-The resource creation takes a few minutes. After the resource is successfully created and deployed, you're notified. Select **Go to resource**.
-
-After the order is placed, Microsoft reviews the order and reaches out to you (via email) with shipping details.
 
 ## Pre-Deployment
 
@@ -148,5 +112,5 @@ Actions that should be taken by the Microsoft deployment engineer:
 
 ## Next steps
 
-Learn more about [steps to install and configure Modular Data Center](deployment-overview.md).
+Learn more about [steps to install and configure a Modular Data Center](deployment-overview.md).
 
