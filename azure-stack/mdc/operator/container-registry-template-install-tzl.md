@@ -36,12 +36,12 @@ You will need to have the following items before adding the Container Registry M
 
 | Item | Type | Details |
 | --- | --- | --- |
-| Azure Stack Hub PowerShell modules (Azs.Gallery.Admin) | PowerShell Modules | Only required if side loading the container registry template gallery item, the Azure Stack Hub PowerShell Modules are used to add and remove gallery items.<br>[Install Azure Stack PowerShell modules](azure-stack-powershell-install.md) |
+| Azure Stack Hub PowerShell modules (Azs.Gallery.Admin) | PowerShell Modules | Only required if side loading the container registry template gallery item, the Azure Stack Hub PowerShell Modules are used to add and remove gallery items.<br>[Install Azure Stack PowerShell modules](../../operator/azure-stack-powershell-install.md) |
 | Container Registry Template | Marketplace item | In order to deploy the container registry as an Azure Stack Hub user, the Container registry template Marketplace item must be available in your subscription, or manually added (side loaded), into your Azure Stack Hub Marketplace. If side loading, follow the instructions to side load the package in the `readme.md` in the [GitHub repository](https://github.com/msazurestackworkloads/azurestack-gallery/releases/tag/registry-v1.0.1). |
 | AKS Base Ubuntu 16.04-LTS Image, September 2019 minimum release version | Marketplace item | For your Azure Stack Hub users to deploy the container registry, you must make the AKS Base Image available in the Marketplace. The Container registry template uses the image when an Ubuntu VM that hosts the Docker container registry binaries. |
 | Linux Custom Script Extension 2.0 | Marketplace item | For your Azure Stack Hub users to deploy the container registry, you must make the Linux Custom Script Extension available in the Marketplace. The Container registry template deployment uses the extension to configure the registry. |
-| SSL Certificate | Certificate | Users deploying the Container registry template need to provide a PFX certificate used when configuring SSL encryption for the registry service. If you are using the  script, you will need to run the PowerShell session from an elevated prompt. This should not be run on the DVM or HLH.<br>For general guidance on PKI certificate requirements for Azure Stack Hub using public or private/enterprise certificates view this documentation, see [Azure Stack Hub public key infrastructure (PKI) certificate requirements](azure-stack-pki-certs.md)<br>The FQDN for the certificate should follow this pattern `<vmname>.<location>.cloudapp.<fqdn>` unless using a custom domain/dns entry for the endpoint. The name should start with a letter and contain at least two letters, only use lowercase letters, and at least three characters long. |
-| Service Principle (SPN) | App Registration | To deploy and configure the container registry an Application Registration, also referred to as a Service Principal (SPN), must be created. This SPN is used during configuration of the VM and registry to access Microsoft Azure Key Vault and Storage Account resources created prior to deploying the Marketplace item.<br>The SPN should be created in AAD within the tenant you are logging into in the user portal of Azure Stack Hub. If using AD FS, it will be created within the local directory.<br>For details on how to create an SPN for both AAD and AD FS authentication methods please review [the following guidance](azure-stack-create-service-principals.md).<br> **Important**: You will need to save the SPN App ID and Secret for deploying any updates.<br> |
+| SSL Certificate | Certificate | Users deploying the Container registry template need to provide a PFX certificate used when configuring SSL encryption for the registry service. If you are using the  script, you will need to run the PowerShell session from an elevated prompt. This should not be run on the DVM or HLH.<br>For general guidance on PKI certificate requirements for Azure Stack Hub using public or private/enterprise certificates view this documentation, see [Azure Stack Hub public key infrastructure (PKI) certificate requirements](../../operator/azure-stack-pki-certs.md)<br>The FQDN for the certificate should follow this pattern `<vmname>.<location>.cloudapp.<fqdn>` unless using a custom domain/dns entry for the endpoint. The name should start with a letter and contain at least two letters, only use lowercase letters, and at least three characters long. |
+| Service Principle (SPN) | App Registration | To deploy and configure the container registry an Application Registration, also referred to as a Service Principal (SPN), must be created. This SPN is used during configuration of the VM and registry to access Microsoft Azure Key Vault and Storage Account resources created prior to deploying the Marketplace item.<br>The SPN should be created in AAD within the tenant you are logging into in the user portal of Azure Stack Hub. If using AD FS, it will be created within the local directory.<br>For details on how to create an SPN for both AAD and AD FS authentication methods please review [the following guidance](../../operator/azure-stack-create-service-principals.md).<br> **Important**: You will need to save the SPN App ID and Secret for deploying any updates.<br> |
 | Registry username and password | Credentials | The open-source docker container registry is deployed and configured with basic authentication enabled. To access the registry using docker commands to push and pull images, a username and password is required. The username and password are securely stored in a Key Vault store.<br>**Important**: You will need to save the Registry Username and Password to sign in to the registry and push/pull images. |
 | SSH Public / Private Key | Credentials | To troubleshoot issues with the deployment or runtime issues with the VM, an SSH public key needs to be provided for the deployment and the corresponding private key accessible. It is recommended to use openssh format, ssh-keygen, to generate the private/public key pair as the diagnostic scripts to collect logs require this format.<br>**Important**: You will need to have access to the public and private keys in order to access the deployed VM for troubleshooting. |
 | Access to admin and user portals and management endpoints | Connectivity | This guide assumes you are deploying and configuring the registry from a system with connectivity to the Azure Stack Hub system. |
@@ -52,7 +52,7 @@ The script `Pre-reqs` creates the other inputs required to deploy the Marketplac
 
 Installation of the Container registry template requires several resources to be created before deployment.
 
-1. Connect to Azure Stack Hub as a user using PowerShell and select a subscription using the cmdlet `Select-AzureRmSubscription –Subscription <subscription guid>`. For more information on connecting as a user to Azure Stack Hub PowerShell, see [Connect to Azure Stack with PowerShell as a user](../user/azure-stack-powershell-configure-user.md).
+1. Connect to Azure Stack Hub as a user using PowerShell and select a subscription using the cmdlet `Select-AzureRmSubscription –Subscription <subscription guid>`. For more information on connecting as a user to Azure Stack Hub PowerShell, see [Connect to Azure Stack with PowerShell as a user](../../user/azure-stack-powershell-configure-user.md).
 
 2. Run `Import-Modules .\\pre-reqs.ps1` to import the modules within the `pre-reqs.ps1` script. The script will create a resource group, storage account, blob container, Key Vault store, assign access permissions to the SPN, and copy certificates and username and password for the registry to Key Vault store.
 
@@ -114,15 +114,15 @@ Installation of the Container registry template requires several resources to be
 
 2. Select **Create** > **Compute** > **Container Registry Template**.
 
-    ![Container registry template](./media/container-registry-template-install-tzl/image1.png)
+    ![Container registry template](./media/container-registry-template-install-tzl/template.png)
 
 3. Select the subscription, resource group, and location to deploy the container registry template.
 
-    ![Container registry template](./media/container-registry-template-install-tzl/image2.png)
+    ![Select subscription](./media/container-registry-template-install-tzl/subscription.png)
 
 4. Complete the virtual machine configuration details. The image SKU defaults to **aks-ubuntu-1604-201909**; however, the output of the `Set-ContainerRegistryPrerequisites` function includes a list of available SKUs to use for deployment. If more than one SKU exists choose the most recent SKU for deployment.
 
-    ![Container registry template](./media/container-registry-template-install-tzl/image3.png)
+    ![VM configuration details](./media/container-registry-template-install-tzl/details.png)
 
     | Parameter | Details |
     | --- | --- |
@@ -223,4 +223,4 @@ The version of the Docker Container Registry service deployed by this template i
 
 ## Next steps
 
-[Azure Stack Marketplace overview](azure-stack-marketplace.md)
+[Azure Stack Marketplace overview](../../operator/azure-stack-marketplace.md)
