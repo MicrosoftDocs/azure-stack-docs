@@ -73,7 +73,7 @@ Azure Stack Hub uses Azure Resource Manager as its underlying deployment, manage
 
 ## Your typical responsibilities
 
-Your users want to use services. From their perspective, your main role is to make these services available to them. Decide which services to offer and make those services available by creating plans, offers, and quotas. For more information, see [Overview of offering services in Azure Stack Hub](service-plan-offer-subscription-overview.md).
+Your users want to use services. From their perspective, your main role is to make these services available to them. Decide which services to offer and make those services available by creating plans, offers, and quotas. For more information, see [Overview of offering services in Azure Stack Hub](../../operator/service-plan-offer-subscription-overview.md).
 
 You'll also need to add items to [Azure Stack Hub Marketplace](../../operator/azure-stack-marketplace.md). The easiest way is to [download marketplace items from Azure to Azure Stack Hub](../../operator/azure-stack-download-azure-marketplace-item.md).
 
