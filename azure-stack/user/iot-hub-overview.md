@@ -39,9 +39,9 @@ IoT Hub on Azure Stack Hub allows you to create hybrid IoT solutions. IoT Hub is
 |Failover <sub>5</sub>| ✔ | ✘ |
 
 <sub>1</sub> For operators to manage IoT Hub on ASH.  
-<sub>2</sub> For public preview, customers can only backup but restore will be supported in GA.  
+<sub>2</sub> For preview only backup is available. Restore will be supported in GA.  
 <sub>3</sub> Depends on other services that are not available on Azure Stack Hub yet.  
-<sub>4</sub> Preview recently released features. In our roadmap to bring over to Azure Stack Hub.  
+<sub>4</sub> In our roadmap to bring over to Azure Stack Hub.  
 <sub>5</sub> Not applicable on Azure Stack Hub.  
 
 ## API available for IoT Hub on Azure Stack Hub
