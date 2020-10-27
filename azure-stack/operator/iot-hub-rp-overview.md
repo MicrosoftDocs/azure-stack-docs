@@ -18,19 +18,12 @@ IoT Hub on Azure Stack Hub allows you to create hybrid IoT solutions. IoT Hub is
 
 | Feature | Azure IoT Hub | IoT Hub on Azure Stack Hub |
 |-|-|-|
-| Scale | https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling | Only S2 IoT Hubs are supported|
+| Scale | https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling | S2 and S3 IoT Hubs are supported|
 | Service Update | Automatic | Manual |
 
 ## IoT Hub throttling
 
-IoT Hub throttles in the following aspects to ensure the performance of the service on Azure Stack Hub.
-
-| Aspect | Throttled to |
-|-|-|
-| SKU | S2 only|
-| Number of devices | 10,000 |
-| Throughput units | 1 - 20 |
-| Throughput | Sustained throughput: 120 messages/sec/unit, Maximum: 6 million messages/day/unit |
+The throttling and quotas for IoT Hub on Azure Stack Hub S2 and S3 SKUs, is same as IoT Hub on Azure. Please refer to [Azure IoT Hub quotas and throttling](/azure/iot-hub/iot-hub-devguide-quotas-throttling#quotas-and-throttling) for more details.
 
 ## Next steps
 

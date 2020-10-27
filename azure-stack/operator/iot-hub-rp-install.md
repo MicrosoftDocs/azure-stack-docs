@@ -1,14 +1,15 @@
 ---
-title: How to install IoT Hub on connected Azure Stack Hub
-description: Learn how to install the IoT Hub resource provider on connected Azure Stack Hub.
+title: How to install IoT Hub on Azure Stack Hub
+description: Learn how to install the IoT Hub resource provider on Azure Stack Hub.
 author: yiyiguo
 ms.author: yiygu
 ms.service: azure-stack
 ms.topic: how-to
 ms.date: 1/6/2020 
+zone_pivot_groups: state-connected-disconnected
 ---
 
-# How to install IoT Hub on Connected Azure Stack Hub
+# How to install IoT Hub on Azure Stack Hub
 
 [!INCLUDE [preview-banner](../includes/iot-hub-preview.md)]
 
@@ -16,35 +17,41 @@ This article shows you how to download and install the IoT Hub resource provider
 
 ## Download IoT Hub
 
-### Connected Scenario
+<!-- ### Connected Scenario -->
+::: zone pivot="state-connected"
+If your Azure Stack Hub can access the Azure Marketplace, follow the steps in this section to download and install IoT Hub and its dependencies. 
 
-If your Azure Stack can access the Azure Marketplace, follow the steps in this section to download and install IoT Hub and its dependencies. 
+To download IoT Hub for a connected deployment, complete the following steps:
 
-To download IoT Hub, complete the following steps:
-
-1. Sign in to Azure Stack Hub administrator portal. Click on **+ Add from Azure** and search for IoT.
+1. Sign in to Azure Stack Hub administrator portal. 
+2. Select **Marketplace Management** on the left.
+3. Select **Resource providers**.
+4. Click on **+ Add from Azure**.
+5. Search for "IoT Hub".
 
     [![Download IoT Hub 1](../operator/media/iot-hub-rp-install//download1.png)](../operator/media/iot-hub-rp-install//download1.png#lightbox)
 
-2. Select the **IoT Hub** package.
+6. Select the **IoT Hub** package.
 
     [![Download IoT Hub 2](../operator/media/iot-hub-rp-install//download2.png)](../operator/media/iot-hub-rp-install//download2.png#lightbox)
 
-3. Click **Download**. Wait for the package to be downloaded. This step might take up to 10 minutes.
+7. Click **Download**. Wait for the package to be downloaded. This step might take up to 10 minutes.
 
     [![Download IoT Hub 3](../operator/media/iot-hub-rp-install//download3.png)](../operator/media/iot-hub-rp-install//download3.png#lightbox)
 
-4. Once the package is downloaded, the status will show up as **Not installed** in the Marketplace.
+8. Once the package is downloaded, the status will show up as **Not installed** in the Marketplace.
 
     [![Download IoT Hub 4](../operator/media/iot-hub-rp-install//download4.png)](../operator/media/iot-hub-rp-install//download4.png#lightbox)
+::: zone-end
 
-### Download IoT Hub - disconnected or partially connected scenario
-
-First you download the packages to your local machine, then you import them into your Azure Stack Hub instance.
+<!-- ### Disconnected or partially connected scenario -->
+::: zone pivot="state-disconnected"
+To download IoT Hub for a disconnected or partially connected deployment, first you download the packages to your local machine. After the download completes, you then import them into your Azure Stack Hub instance.
 
 1. If you haven't already, follow the instructions in [Download Marketplace items - Disconnected or partially connected scenarios](azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected). Here you download and run the Marketplace Syndication tool, which allows you to download the IoT Hub packages.
 2. After the syndication tool's "Azure Marketplace Items" window opens, find and select "IoT Hub" to download the required packages to your local machine.
 3. Once the download finishes, you import the packages to your Azure Stack Hub instance and publish to Marketplace.
+::: zone-end
 
 ## Install IoT Hub
 

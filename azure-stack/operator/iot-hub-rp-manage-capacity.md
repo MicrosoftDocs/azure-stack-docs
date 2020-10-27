@@ -23,7 +23,6 @@ You will need to plan for and calculate the required capacity of your Azure Stac
 
 | Scenario | VMs | Vcores | Devices/ hub | [Hub edition](https://azure.microsoft.com/pricing/details/iot-hub) | Hubs | Units/ hub | Total devices | Total hub units | Millions of messages/ day |
 |----------|---------------|------------------|-----------------------|-------------------|-|-|-|-|-|
-|Minimum (post preview)|3|12|120,000|S2|4|200|480,000|800|4,800|
 |Default|5|20|300,000|S2|4|200|1,200,000|800|4,800|
 |12 VMs|12|48|500,000|S2|4|200|2,000,000|800|4,800|
 |18 VMs|18|72|400,000|S3|4|10|1,600,000|40|12,000|
