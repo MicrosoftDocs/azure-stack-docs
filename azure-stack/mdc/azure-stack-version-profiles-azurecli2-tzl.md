@@ -212,6 +212,6 @@ There are known issues when using CLI in Azure Stack Hub:
 
 ## Next steps
 
-- [Deploy templates with Azure CLI](../operator/azure-stack-deploy-template-command-line.md)
+- [Deploy templates with Azure CLI](../user/azure-stack-deploy-template-command-line.md)
 - [Enable Azure CLI for Azure Stack Hub users (Operator)](../operator/azure-stack-cli-admin.md)
 - [Manage user permissions](../operator/azure-stack-manage-permissions.md) 
