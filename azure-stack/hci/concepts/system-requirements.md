@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/19/2020
+ms.date: 10/27/2020
 ---
 
 # System requirements for Azure Stack HCI
@@ -73,7 +73,7 @@ For stretched clusters, there is also additional Storage Replica traffic flowing
 
 For host networking planning considerations and requirements, see [Plan host networking for Azure Stack HCI](plan-host-networking.md).
 
-### Software Defined Networking requirements
+## Software Defined Networking (SDN) requirements
 
 When you create an Azure Stack HCI cluster using Windows Admin Center, you have the option to deploy Network Controller to enable Software Defined Networking (SDN). If you intend to use SDN on Azure Stack HCI:
 
@@ -85,6 +85,35 @@ For more information about preparing for using SDN in Azure Stack HCI, see [Plan
 
    > [!NOTE]
    > SDN is not supported on stretched (multi-site) clusters.
+
+### SDN switch requirements
+
+When selecting a physical switch and router for your SDN environment, make sure it supports the following set of capabilities:
+- Switchport MTU settings \(required\)
+- MTU set to >= 1674 bytes \(including L2-Ethernet Header\)
+- L3 protocols \(required\)
+- Equal-cost multi-path (ECMP) routing
+- BGP \(IETF RFC 4271\)\-based ECMP
+
+Implementations should support the MUST statements in the following IETF standards:
+- RFC 2545: [BGP-4 Multiprotocol extensions for IPv6 Inter-Domain Routing](https://tools.ietf.org/html/rfc2545)
+- RFC 4760: [Multiprotocol Extensions for BGP-4](https://tools.ietf.org/html/rfc4760)
+- RFC 4893: [BGP Support for Four-octet AS Number Space](https://tools.ietf.org/html/rfc4893)
+- RFC 4456: [BGP Route Reflection: An Alternative to Full Mesh Internal BGP (IBGP)](https://tools.ietf.org/html/rfc4456)
+- RFC 4724: [Graceful Restart Mechanism for BGP](https://tools.ietf.org/html/rfc4724)
+
+The following tagging protocols are required:
+- VLAN - Isolation of various types of traffic
+- 802.1q trunk
+
+The following items provide Link control:
+- Quality of Service \(QoS\) \(PFC only required if using RoCE\)
+- Enhanced Traffic Selection \(802.1Qaz\)
+- Priority-based Flow Control (PFC) \(802.1p/Q and 802.1Qbb\)
+
+The following items provide availability and redundancy:
+- Switch availability (required)
+- A highly available router is required to perform gateway functions. You can provide this by using either a multi-chassis switch\router or technologies like the Virtual Router Redundancy Protocol (VRRP).
 
 ### Domain requirements
 
