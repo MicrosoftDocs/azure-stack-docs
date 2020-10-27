@@ -12,10 +12,10 @@ ms.workload: tzl
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/02/2020
+ms.date: 10/26/2020
 ms.author: sethm
 ms.reviewer: avishwan
-ms.lastreviewed: 01/02/2020
+ms.lastreviewed: 10/26/2020
 ---
 
 # Download Marketplace items to Azure Stack Hub 
@@ -27,7 +27,7 @@ There are two scenarios for downloading Marketplace products:
 - **Connected scenario**: Requires your Azure Stack Hub environment to be connected to the internet. You use the Azure Stack Hub administrator portal to locate and download items.
 - **Disconnected or partially connected scenario**: Requires you to access the internet using the Marketplace syndication tool to download Marketplace items. Then, you transfer your downloads to your disconnected Azure Stack installation. This scenario uses PowerShell.
 
-See [Azure Marketplace items for Azure Stack](azure-stack-marketplace-azure-items.md) for a complete list of the marketplace items you can download. See the [Azure Stack Marketplace changes](azure-stack-marketplace-changes.md) article for a list of recent additions, deletions, and updates to Azure Stack Marketplace.
+See [Azure Marketplace items for Azure Stack](../../operator/azure-stack-marketplace-azure-items.md) for a complete list of the marketplace items you can download. See the [Azure Stack Marketplace changes](../../operator/azure-stack-marketplace-changes.md) article for a list of recent additions, deletions, and updates to Azure Stack Marketplace.
 
 > [!NOTE]
 > The catalog will be different based on the cloud your Azure Stack Hub system is connected to. The cloud environment is determined by the Azure subscription you use for registering your Azure Stack Hub.
@@ -44,7 +44,7 @@ Your Azure Stack Hub deployment must have internet connectivity and be [registe
 
 1. Sign into the Azure Stack Hub administrator portal.
 
-2. Review the available storage space before downloading marketplace items. Later, when you select items for download, you can compare the download size to your available storage capacity. If capacity is limited, consider options for [managing available space](azure-stack-manage-storage-shares.md#manage-available-space).
+2. Review the available storage space before downloading marketplace items. Later, when you select items for download, you can compare the download size to your available storage capacity. If capacity is limited, consider options for [managing available space](../../operator/azure-stack-manage-storage-shares.md#manage-available-space).
 
    To review available space: in **Region management**, select the region you want to explore and then go to **Resource Providers** > **Storage**:
 
@@ -56,11 +56,11 @@ Your Azure Stack Hub deployment must have internet connectivity and be [registe
 
 4. Each line item also shows the currently available version. If more than one version of a Marketplace item is available, the **Version** column shows **Multiple**. You can click on each item to view its description and additional information, including its download size:
 
-   ![Add from Azure](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure1.png)
+   ![Add from Azure](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure-1.png)
 
 5. If the version of an item is shown as **Multiple**, you can select that item and then choose a specific version from the resulting version selector dropdown:
 
-   ![Add from Azure](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure3.png)
+   ![Add from Azure](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure-3.png)
 
 6. Select the item you want, and then select **Download**. Download times vary and depends on the network connectivity. After the download completes, you can deploy the new marketplace item as either an Azure Stack operator or a user.
 
