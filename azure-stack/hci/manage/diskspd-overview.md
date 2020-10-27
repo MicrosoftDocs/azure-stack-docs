@@ -23,7 +23,7 @@ Now you know what DISKSPD is, but when should you use it? DISKSPD has a difficul
 ## Quick start: install and run DISKSPD
 Without further ado, let’s get started:
 
-1. In Windows Admin Center, access the virtual machine (VM) that you want to use DISKSPD to test, ensure that the VM is running, select (...) to expand **More** options, and then select **Download RDP file** to open a secure connection through Windows Remote Desktop to the virtual machine (VM).
+1. In Windows Admin Center, access the virtual machine (VM) that you want to use DISKSPD to test, ensure that the VM is running, select (...) to expand **More** options, and then select **Download RDP file** to open a secure connection through Windows Remote Desktop to the VM.
 
     In our case, we're running a VM called “node1.”
 
@@ -103,43 +103,43 @@ The following diagram shows what the DISKSPD process looks like. It shows an exa
 Now that you've got a visual understanding, let’s examine the four main sections of the .txt file output:
 1. Input settings
    
-       This section describes the command you ran, the input parameters, and additional details about the test run.
+    This section describes the command you ran, the input parameters, and additional details about the test run.
 
-       :::image type="content" source="media/diskspd/command-input-parameters.png" alt-text="Example output shows command and input parameters." lightbox="media/diskspd/command-input-parameters.png":::
+    :::image type="content" source="media/diskspd/command-input-parameters.png" alt-text="Example output shows command and input parameters." lightbox="media/diskspd/command-input-parameters.png":::
 
 1. CPU utilization details
    
-       This section highlights information such as the test time, number of threads, number of available processors, and the average utilization of every CPU core during the test. In this case, there are two CPU cores that averaged around 4.67% usage.
+    This section highlights information such as the test time, number of threads, number of available processors, and the average utilization of every CPU core during the test. In this case, there are two CPU cores that averaged around 4.67% usage.
 
-       :::image type="content" source="media/diskspd/cpu-details.png" alt-text="Example CPU details." lightbox="media/diskspd/cpu-details.png":::
+    :::image type="content" source="media/diskspd/cpu-details.png" alt-text="Example CPU details." lightbox="media/diskspd/cpu-details.png":::
 
 1. Total I/O
    
-       This section has three subsections. The first section highlights the overall performance data including both read and write operations. The second and third sections split the read and write operations into separate categories.
+    This section has three subsections. The first section highlights the overall performance data including both read and write operations. The second and third sections split the read and write operations into separate categories.
 
-       In this example, you can see that the total I/O count was 234408 during the 120-second duration. Thus, IOPS = 234408 /120 = 1953.30. The average latency was 32.763 milliseconds, and the throughput was 7.63 MiB/s. From earlier information, we know that the 1953.30 IOPS are near the 1920 IOPS limitation for our Standard_B2ms VM. Don’t believe it? If you rerun this test using different parameters, such as increasing the queue depth, you'll find that the results are still capped at this number.
+    In this example, you can see that the total I/O count was 234408 during the 120-second duration. Thus, IOPS = 234408 /120 = 1953.30. The average latency was 32.763 milliseconds, and the throughput was 7.63 MiB/s. From earlier information, we know that the 1953.30 IOPS are near the 1920 IOPS limitation for our Standard_B2ms VM. Don’t believe it? If you rerun this test using different parameters, such as increasing the queue depth, you'll find that the results are still capped at this number.
 
-       The last three columns show the standard deviation of IOPS at 17.72 (from -D parameter), the standard deviation of the latency at 20.994 milliseconds (from -L parameter), and the file path.
+    The last three columns show the standard deviation of IOPS at 17.72 (from -D parameter), the standard deviation of the latency at 20.994 milliseconds (from -L parameter), and the file path.
 
-       :::image type="content" source="media/diskspd/total-io.png" alt-text="Example shows total overall I/O performance data." lightbox="media/diskspd/total-io.png":::
+      :::image type="content" source="media/diskspd/total-io.png" alt-text="Example shows total overall I/O performance data." lightbox="media/diskspd/total-io.png":::
 
-       From the results, you can quickly determine that the cluster configuration is terrible. You can see that it hit the VM limitation of 1920 before the SSD limitation of 5000. If you were limited by the SSD rather than the VM, you could have taken advantage of up to 20000 IOPS (4 drives * 5000) by spanning the test file across multiple drives.
+    From the results, you can quickly determine that the cluster configuration is terrible. You can see that it hit the VM limitation of 1920 before the SSD limitation of 5000. If you were limited by the SSD rather than the VM, you could have taken advantage of up to 20000 IOPS (4 drives * 5000) by spanning the test file across multiple drives.
 
-       In the end, you need to decide what values are acceptable for your specific workload. The following figure shows some important relationships to help you consider the tradeoffs:
+    In the end, you need to decide what values are acceptable for your specific workload. The following figure shows some important relationships to help you consider the tradeoffs:
 
-       :::image type="content" source="media/diskspd/tradeoffs.png" alt-text="Figure shows workload relationship tradeoffs." lightbox="media/diskspd/tradeoffs.png":::
+    :::image type="content" source="media/diskspd/tradeoffs.png" alt-text="Figure shows workload relationship tradeoffs." lightbox="media/diskspd/tradeoffs.png":::
 
-       The second relationship in the figure is important, and it's sometimes referred to as Little’s Law. The law introduces the idea that there are three characteristics that govern process behavior and that you only need to change one to influence the other two, and thus the entire process. And so, if you're unhappy with your system’s performance, you have three dimensions of freedom to influence it. Little's Law dictates that in our example, IOPS is the throughput (input output operations per second), latency is the queue time, and queue depth is the inventory.
+    The second relationship in the figure is important, and it's sometimes referred to as Little’s Law. The law introduces the idea that there are three characteristics that govern process behavior and that you only need to change one to influence the other two, and thus the entire process. And so, if you're unhappy with your system’s performance, you have three dimensions of freedom to influence it. Little's Law dictates that in our example, IOPS is the throughput (input output operations per second), latency is the queue time, and queue depth is the inventory.
 
 1. Latency percentile analysis
    
-       This last section details the percentile latencies per operation type of storage performance from the minimum value to the maximum value.
+    This last section details the percentile latencies per operation type of storage performance from the minimum value to the maximum value.
 
-       This section is important because it determines the “quality” of your IOPS. It reveals how many of the I/O operations were able to achieve a certain latency value. It's up to you to decide the acceptable latency for that percentile.
+    This section is important because it determines the “quality” of your IOPS. It reveals how many of the I/O operations were able to achieve a certain latency value. It's up to you to decide the acceptable latency for that percentile.
 
-       Moreover, the “nines” refer to the number of nines. For example, “3-nines” is equivalent to the 99th percentile. The number of nines exposes how many I/O operations ran at that percentile. Eventually, you'll reach a point where it no longer makes sense to take the latency values seriously. In this case, you can see that the latency values remain constant after “4-nines.” At this point, the latency value is based on only one I/O operation out of the 234408 operations.
+    Moreover, the “nines” refer to the number of nines. For example, “3-nines” is equivalent to the 99th percentile. The number of nines exposes how many I/O operations ran at that percentile. Eventually, you'll reach a point where it no longer makes sense to take the latency values seriously. In this case, you can see that the latency values remain constant after “4-nines.” At this point, the latency value is based on only one I/O operation out of the 234408 operations.
 
-       :::image type="content" source="media/diskspd/storage-performance.png" alt-text="Example shows percentile latencies per operation type of storage performance." lightbox="media/diskspd/storage-performance.png":::
+    :::image type="content" source="media/diskspd/storage-performance.png" alt-text="Example shows percentile latencies per operation type of storage performance." lightbox="media/diskspd/storage-performance.png":::
 
 ## Things to consider
 Now that you've started using DISKSPD, there are several things to consider to get real-world test results. These include paying close attention to the parameters you set, storage space health and variables, CSV ownership, and the difference between DISKSPD and file copy.
