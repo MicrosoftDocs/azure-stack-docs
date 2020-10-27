@@ -28,19 +28,19 @@ To download IoT Hub for a connected deployment, complete the following steps:
 
     [![Marketplace RP search](media/iot-hub-rp-install/marketplace-rp-add-from-azure.png)](media/iot-hub-rp-install/marketplace-rp-add-from-azure.png#lightbox)
 
-3. Search for "IoT Hub".
+3. Filter for "IoT Hub" if necessary, then select the **IoT Hub** package.
 
     [![Marketplace IoT Hub RP](../operator/media/iot-hub-rp-install/download1.png)](../operator/media/iot-hub-rp-install/download1.png#lightbox)
 
-4. Select the **IoT Hub** package.
+4. On the **IoT Hub** package page, select **Download**
 
     [![IoT Hub package details](../operator/media/iot-hub-rp-install/download2.png)](../operator/media/iot-hub-rp-install/download2.png#lightbox)
 
-5. Click **Download**. Wait for the package to be downloaded. This step can take up to 10 minutes.
+5. Wait for the package download to complete. The status will show **Downloading**, and can take up to 10 minutes.
 
     [![IoT Hub package downloading status](../operator/media/iot-hub-rp-install/download3.png)](../operator/media/iot-hub-rp-install/download3.png#lightbox)
 
-6. Once the package is downloaded, the status will show as **Not installed** in the Marketplace.
+6. Once the package is downloaded, the status will change to **Not installed** in the **Marketplace management** page.
 
     [![IoT Hub package downloaded not installed](../operator/media/iot-hub-rp-install/download4.png)](../operator/media/iot-hub-rp-install/download4.png#lightbox)
 ::: zone-end
@@ -56,9 +56,9 @@ To download IoT Hub for a disconnected or partially connected deployment, first 
 
 ## Install IoT Hub
 
-Follow these steps to install the IoT Hub package:
+From the **Marketplace management** page, follow these steps to install the IoT Hub package:
 
-1. Click on **IoT Hub** and **Start Installation**.
+1. Click on the **IoT Hub** row, then **Start Installation**.
 
     [![IoT Hub RP waiting for install](../operator/media/iot-hub-rp-install/install1.png)](../operator/media/iot-hub-rp-install/install1.png#lightbox)
 
