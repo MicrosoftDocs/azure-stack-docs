@@ -178,13 +178,13 @@ To confirm CSV ownership:
     ```powershell
      Get-ClusterSharedVolume <INSERT_CSV_NAME> | Move-ClusterSharedVolume <INSERT _NODE_NAME>
     ```
-### File Copy vs. DISKSPD
+### File copy vs. DISKSPD
 Some people believe that they can “test storage performance” by copying and pasting a gigantic file and measuring how long that process takes. The main reason behind this approach is most likely because it's simple and fast. The idea is not wrong in the sense that it tests a specific workload, but it's difficult to categorize this method as “testing storage performance.”
 
 If your real-world goal is to test file copy performance, then this may be a perfectly valid reason to use this method. However, if your goal is to measure storage performance, we recommend to not use this method. You can think of the file copy process as using a different set of “parameters” (such as queue, parallelization, and so on) that is specific to file services.
 
 The following short summary explains why using file copy to measure storage performance may not provide the results that you're looking for:
-- **File copies might not be optimized,** There are two levels of parallelism that occur, one internal and the other external. Internally, if the file copy is headed for a remote target, the CopyFileEx engine does apply some parallelization. Externally, there are different ways of invoking the CopyFileEx engine. For example, copies from file explorer are single threaded, but Robocopy is multi-threaded. For these reasons, it's important to understand whether the implications of the test are what you are looking for.
+- **File copies might not be optimized,** There are two levels of parallelism that occur, one internal and the other external. Internally, if the file copy is headed for a remote target, the CopyFileEx engine does apply some parallelization. Externally, there are different ways of invoking the CopyFileEx engine. For example, copies from File Explorer are single threaded, but Robocopy is multi-threaded. For these reasons, it's important to understand whether the implications of the test are what you are looking for.
 - **Every copy has two sides.** When you simply copy and paste a file, you may be using two disks: the source disk and the destination disk. If one is slower than the other, you essentially measure the performance of the slower disk. There are other cases where the communication between the source, destination, and the copy engine may affect the performance in unique ways.
     
     To learn more, see [Using file copy to measure storage performance](https://docs.microsoft.com/archive/blogs/josebda/using-file-copy-to-measure-storage-performance-why-its-not-a-good-idea-and-what-you-should-do-instead?ranMID=24542&ranEAID=je6NUbpObpQ&ranSiteID=je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q&epi=je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q&irgwc=1&OCID=AID2000142_aff_7593_1243925&tduid=%28ir__rcvu3tufjwkftzjukk0sohzizm2xiezdpnxvqy9i00%29%287593%29%281243925%29%28je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q%29%28%29&irclickid=_rcvu3tufjwkftzjukk0sohzizm2xiezdpnxvqy9i00).
