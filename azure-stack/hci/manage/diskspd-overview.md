@@ -4,32 +4,32 @@ description: This topic provides guidance on how to use DISKSPD to test workload
 author: jasonnyi
 ms.author: jasonyi
 ms.topic: how-to
-ms.date: 10/23/2020
+ms.date: 10/27/2020
 ---
 
 # Use DISKSPD to test workload storage performance
 
 >Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-This topic provides guidance on how to use DISKSPD to test workload storage performance. You have an Azure Stack HCI cluster set up in Windows Admin Center, all ready to go. Great, but how do you know if you're getting the promised performance metrics, whether it be latency, throughput, or IOPS? This is when you may want to turn to DISKSPD. After reading this topic, you'll know how to run DISKSPD, understand a subset of parameters, interpret output, and gain a general understanding of the variables that affect workload storage performance.
+This topic provides guidance on how to use DISKSPD to test workload storage performance. You have an Azure Stack HCI cluster set up, all ready to go. Great, but how do you know if you're getting the promised performance metrics, whether it be latency, throughput, or IOPS? This is when you may want to turn to DISKSPD. After reading this topic, you'll know how to run DISKSPD, understand a subset of parameters, interpret output, and gain a general understanding of the variables that affect workload storage performance.
 
 ## What is DISKSPD?
-At its core, DISKSPD is an I/O generating, command-line tool for micro-benchmarking. Great, so what do all these terms mean? Anyone who sets up an Azure cluster or physical server has a reason. It could be to set up a web hosting environment, or run virtual desktops for employees. Whatever the real-world use case may be, you likely want to simulate a test before deploying your actual application. However, testing your application in a real scenario is often difficult – this is where DISKSPD comes in.
+DISKSPD is an I/O generating, command-line tool for micro-benchmarking. Great, so what do all these terms mean? Anyone who sets up an Azure Stack HCI cluster or physical server has a reason. It could be to set up a web hosting environment, or run virtual desktops for employees. Whatever the real-world use case may be, you likely want to simulate a test before deploying your actual application. However, testing your application in a real scenario is often difficult – this is where DISKSPD comes in.
 
-DISKSPD is a tool that you can customize to create your own synthetic workloads, and test your application before deployment. The cool thing about the tool is that it gives you the freedom to configure and tweak the parameters to create a specific scenario that resembles the user’s real workload. DISKSPD can give you a glimpse into what your system is capable of before deployment. At its core, DISKSPD simply issues a bunch of read and write operations.
+DISKSPD is a tool that you can customize to create your own synthetic workloads, and test your application before deployment. The cool thing about the tool is that it gives you the freedom to configure and tweak the parameters to create a specific scenario that resembles your real workload. DISKSPD can give you a glimpse into what your system is capable of before deployment. At its core, DISKSPD simply issues a bunch of read and write operations.
 
 Now you know what DISKSPD is, but when should you use it? DISKSPD has a difficult time emulating complex workloads. But DISKSPD is great when your workload is not closely approximated by a single-threaded file copy, and you need a simple tool that produces acceptable baseline results.
 
 ## Quick start: install and run DISKSPD
 Without further ado, let’s get started:
 
-1. In Windows Admin Center, access the virtual machine (VM) that you want to use DISKSPD to test, ensure that the VM is running, select (...) to expand **More** options, and then select **Download RDP file** to open a secure connection through Windows Remote Desktop to the VM.
+1. In Windows Admin Center, access the virtual machine (VM) that you want to use DISKSPD to test, ensure that the VM is running, select (...) to expand **More** options, and then select **Download RDP file** to open a secure connection through Windows Remote Desktop to the virtual machine (VM).
 
     In our case, we're running a VM called “node1.”
 
-1. Download the DISKSPD tool from the [repository](https://github.com/microsoft/diskspd) that contains the open-source code, and a wiki page that details all the parameters and specifications. In the repository, under **Releases**, select the link to automatically download the ZIP file.
+1. Download the DISKSPD tool from the [GitHub repository](https://github.com/microsoft/diskspd) that contains the open-source code, and a wiki page that details all the parameters and specifications. In the repository, under **Releases**, select the link to automatically download the ZIP file.
 
-    In the ZIP file. you'll see three subfolders: amd64 (64-bit systems), x86 (32-bit systems), and ARM64 (ARM systems). These options enable you to run the tool in every Windows client or server version.
+    In the ZIP file, you'll see three subfolders: amd64 (64-bit systems), x86 (32-bit systems), and ARM64 (ARM systems). These options enable you to run the tool in every Windows client or server version.
 
     In this example, we're using the amd64 version.
 
@@ -48,41 +48,41 @@ Without further ado, let’s get started:
     ```powershell
      .\diskspd -t2 -o32 -b4k -r4k -w0 -d120 -Sh -D -L -c5G <ENTER_PATH> > test04.txt
     ```
-## Choosing key parameters
+## Specify key parameters
 Well, that was simple right? Unfortunately, there is more to it than that. Let’s unpack what we did. First, there are various parameters that you can tinker with and it can get specific. However, we used the following set of baseline parameters:
 
 > [!NOTE]
 > DISKSPD parameters are case sensitive.
 
-**-t2** => This indicates the number of threads per target/test file. This number is often based on the number of CPU cores. In this case, two threads were used to stress all of the CPU processors.
+**-t2**: This indicates the number of threads per target/test file. This number is often based on the number of CPU cores. In this case, two threads were used to stress all of the CPU cores.
 
-**-o32** => This indicates the number of outstanding I/O requests per target per thread. This is also known as the queue depth, and in this case, 32 were used to stress the CPU.
+**-o32**: This indicates the number of outstanding I/O requests per target per thread. This is also known as the queue depth, and in this case, 32 were used to stress the CPU.
 
-**-b4K** => This indicates the block size in bytes, KiB, MiB, or GiB. In this case, 4K block size was used to simulate a random I/O test.
+**-b4K**: This indicates the block size in bytes, KiB, MiB, or GiB. In this case, 4K block size was used to simulate a random I/O test.
 
-**-r4K** => This indicates the random I/O aligned to the specified size in bytes, KiB, MiB, Gib, or blocks (Overrides the **-s** parameter). The common 4K byte size was used to properly align with the block size.
+**-r4K**: This indicates the random I/O aligned to the specified size in bytes, KiB, MiB, Gib, or blocks (Overrides the **-s** parameter). The common 4K byte size was used to properly align with the block size.
 
-**-w0** => This specifies the percentage of operations that are write requests (-w0 is equivalent to 100% read). In this case, 0% writes were used for the purpose of a simple test.
+**-w0**: This specifies the percentage of operations that are write requests (-w0 is equivalent to 100% read). In this case, 0% writes were used for the purpose of a simple test.
 
-**-d120** => This specifies the duration of the test, not including cool-down or warm-up. The default value is 10 seconds, but we recommend using at least 60 seconds for any serious workload. In this case, 120 seconds were used to minimize any outliers.
+**-d120**: This specifies the duration of the test, not including cool-down or warm-up. The default value is 10 seconds, but we recommend using at least 60 seconds for any serious workload. In this case, 120 seconds were used to minimize any outliers.
 
-**-Suw** => Disables software and hardware write caching (equivalent to **-Sh**).
+**-Suw**: Disables software and hardware write caching (equivalent to **-Sh**).
 
-**-D** => Captures IOPS statistics, such as standard deviation, in intervals of milliseconds (per-thread, per-target).
+**-D**: Captures IOPS statistics, such as standard deviation, in intervals of milliseconds (per-thread, per-target).
 
-**-L** => Measures latency statistics.
+**-L**: Measures latency statistics.
 
-**-c5g** => Sets the sample file size used in the test. It can be set in bytes, KiB, MiB, GiB, or blocks. In this case, a 5-GB target file was used.
+**-c5g**: Sets the sample file size used in the test. It can be set in bytes, KiB, MiB, GiB, or blocks. In this case, a 5 GB target file was used.
 
 For a complete list of parameters, refer to the [GitHub repository](https://github.com/Microsoft/diskspd/wiki/Command-line-and-parameters).
 
-## Understanding the environment
-Performance heavily depends on your environment. So, what is our environment? Our specification involves an Azure Cluster with storage pool and Storage Spaces Direct (S2D). More specifically, there are five VMs: DC, node1, node2, node3, and the management node. The cluster itself is a three-node cluster with a three-way mirrored resiliency structure. Therefore, three data copies are maintained. Each “node” in the cluster is a Standard_B2ms VM with a maximum IOPS limit of 1920. Within each node, there are four premium P30 SSD drives with a maximum IOPS limit of 5000. Finally, each SSD drive has 1 TB of memory.
+## Understand the environment
+Performance heavily depends on your environment. So, what is our environment? Our specification involves an Azure Stack HCI cluster with storage pool and Storage Spaces Direct (S2D). More specifically, there are five VMs: DC, node1, node2, node3, and the management node. The cluster itself is a three-node cluster with a three-way mirrored resiliency structure. Therefore, three data copies are maintained. Each “node” in the cluster is a Standard_B2ms VM with a maximum IOPS limit of 1920. Within each node, there are four premium P30 SSD drives with a maximum IOPS limit of 5000. Finally, each SSD drive has 1 TB of memory.
 
 You generate the test file under the unified namespace that the Cluster Shared Volume (CSV) provides (C:\ClusteredStorage) to use the entire pool of drives.
 
 >[!NOTE]
-> The current environment does *not* have Hyper-V or a nested virtualization structure.
+> The example environment does *not* have Hyper-V or a nested virtualization structure.
 
 As you’ll see, it's entirely possible to independently hit either the IOPS or bandwidth ceiling at the VM or drive limit. And so, it is important to understand your VM size and drive type, because both have a maximum IOPS limit and a bandwidth ceiling. This knowledge helps to locate bottlenecks and understand your performance results. To learn more about what size may be appropriate for your workload, see the following resources:
 
@@ -93,7 +93,7 @@ The following figure shows what our environment looks like. The green represents
 
 :::image type="content" source="media/diskspd/environment.png" alt-text="The sample environment used to test performance with DISKSPD." lightbox="media/diskspd/environment.png":::
 
-## Understanding the output
+## Understand the output
 Armed with your understanding of the parameters and environment, you're ready to interpret the output. First, the goal of the test is to max out the IOPS with no regard to latency. This way, you can visually see whether you reach the artificial IOPS limit within Azure. If you want to graphically visualize the total IOPS, use either Windows Admin Center or Task Manager.
 
 The following diagram shows what the DISKSPD process looks like. It shows an example of a 1 MiB write operation from a non-coordinator node. The three-way resiliency structure, along with the operation from a non-coordinator node, leads to two network hops, decreasing performance. If you're wondering what a coordinator node is, don’t worry! You'll learn about it in the [Things to consider](#things-to-consider) section.
@@ -101,19 +101,19 @@ The following diagram shows what the DISKSPD process looks like. It shows an exa
 :::image type="content" source="media/diskspd/example-process.png" alt-text="Example diagram of the DISKSPD process that shows a 1 MiB write operation from a non-coordinator node." lightbox="media/diskspd/example-process.png":::
 
 Now that you've got a visual understanding, let’s examine the four main sections of the .txt file output:
-1.	Input settings
+1. Input settings
    
        This section describes the command you ran, the input parameters, and additional details about the test run.
 
        :::image type="content" source="media/diskspd/command-input-parameters.png" alt-text="Example output shows command and input parameters." lightbox="media/diskspd/command-input-parameters.png":::
 
-1.	CPU utilization details
+1. CPU utilization details
    
        This section highlights information such as the test time, number of threads, number of available processors, and the average utilization of every CPU core during the test. In this case, there are two CPU cores that averaged around 4.67% usage.
 
        :::image type="content" source="media/diskspd/cpu-details.png" alt-text="Example CPU details." lightbox="media/diskspd/cpu-details.png":::
 
-1.	Total I/O
+1. Total I/O
    
        This section has three subsections. The first section highlights the overall performance data including both read and write operations. The second and third sections split the read and write operations into separate categories.
 
@@ -131,11 +131,11 @@ Now that you've got a visual understanding, let’s examine the four main sectio
 
        The second relationship in the figure is important, and it's sometimes referred to as Little’s Law. The law introduces the idea that there are three characteristics that govern process behavior and that you only need to change one to influence the other two, and thus the entire process. And so, if you're unhappy with your system’s performance, you have three dimensions of freedom to influence it. Little's Law dictates that in our example, IOPS is the throughput (input output operations per second), latency is the queue time, and queue depth is the inventory.
 
-1.	Latency percentile analysis
+1. Latency percentile analysis
    
        This last section details the percentile latencies per operation type of storage performance from the minimum value to the maximum value.
 
-       This section is important because it determines the “quality” of your IOPS. It reveals how many of the I/O operations were able to achieve a certain latency value. It's up to you to decide the acceptable latency for that percentile
+       This section is important because it determines the “quality” of your IOPS. It reveals how many of the I/O operations were able to achieve a certain latency value. It's up to you to decide the acceptable latency for that percentile.
 
        Moreover, the “nines” refer to the number of nines. For example, “3-nines” is equivalent to the 99th percentile. The number of nines exposes how many I/O operations ran at that percentile. Eventually, you'll reach a point where it no longer makes sense to take the latency values seriously. In this case, you can see that the latency values remain constant after “4-nines.” At this point, the latency value is based on only one I/O operation out of the 234408 operations.
 
@@ -145,10 +145,10 @@ Now that you've got a visual understanding, let’s examine the four main sectio
 Now that you've started using DISKSPD, there are several things to consider to get real-world test results. These include paying close attention to the parameters you set, storage space health and variables, CSV ownership, and the difference between DISKSPD and file copy.
 
 ### DISKSPD vs. real-world
-DISKSPD’s artificial test gives you relatively comparable results for your real workload. However, you need to pay close attention to the parameters you set and whether they match your real scenario. It's important to understand that synthetic workloads will never perfectly represent your application’s real workload during deployment. For example, does the application require a lot of “think” time or does it continuously pound away with I/O operations.
+DISKSPD’s artificial test gives you relatively comparable results for your real workload. However, you need to pay close attention to the parameters you set and whether they match your real scenario. It's important to understand that synthetic workloads will never perfectly represent your application’s real workload during deployment.
 
 ### Preparation
-Before running a DISKSPD test, there are a few recommended actions to do. These include verifying the health of the storage space, checking your resource usage so that another program doesn't interfere with the test, and preparing performance manager if you want to collect additional data. However, because the goal of this topic is to quickly get DISKSPD running, it doesn't dive into the specifics of these actions. To learn more, see [Test Storage Spaces Performance Using Synthetic Workloads in Windows Server](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn894707(v=ws.11)).
+Before running a DISKSPD test, there are a few recommended actions. These include verifying the health of the storage space, checking your resource usage so that another program doesn't interfere with the test, and preparing performance manager if you want to collect additional data. However, because the goal of this topic is to quickly get DISKSPD running, it doesn't dive into the specifics of these actions. To learn more, see [Test Storage Spaces Performance Using Synthetic Workloads in Windows Server](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn894707(v=ws.11)).
 
 ### Variables that affect performance
 Storage performance is a delicate thing. Meaning, there are many variables that can affect performance. And so, it's likely you may encounter a number that is inconsistent with your expectations. The following highlights some of the variables that affect performance, although it's not a comprehensive list:
@@ -162,7 +162,7 @@ Storage performance is a delicate thing. Meaning, there are many variables that 
 - Hard drive spindle speeds
 
 ### CSV ownership
-A node is known as a volume owner or the **coordinator** node. Every standard volume is assigned a node and the other nodes can access this standard volume through network hops, which results in slower performance (higher latency).
+A node is known as a volume owner or the **coordinator** node (a non-coordinator node would be the node that does not own a specific volume). Every standard volume is assigned a node and the other nodes can access this standard volume through network hops, which results in slower performance (higher latency).
 
 Similarly, a Cluster Shared Volume (CSV) also has an “owner.” However, a CSV is “dynamic” in the sense that it will hop around and change ownership every time you restart the system (RDP). As a result, it’s important to confirm that DISKSPD is run from the coordinator node that owns the CSV. If not, you may need to manually change the CSV ownership.
 
@@ -189,7 +189,7 @@ The following short summary explains why using file copy to measure storage perf
     
     To learn more, see [Using file copy to measure storage performance](https://docs.microsoft.com/archive/blogs/josebda/using-file-copy-to-measure-storage-performance-why-its-not-a-good-idea-and-what-you-should-do-instead?ranMID=24542&ranEAID=je6NUbpObpQ&ranSiteID=je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q&epi=je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q&irgwc=1&OCID=AID2000142_aff_7593_1243925&tduid=%28ir__rcvu3tufjwkftzjukk0sohzizm2xiezdpnxvqy9i00%29%287593%29%281243925%29%28je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q%29%28%29&irclickid=_rcvu3tufjwkftzjukk0sohzizm2xiezdpnxvqy9i00).
 
-## Other common examples + experiments
+## Experiments + common workloads
 This section includes a few other examples, experiments, and workload types.
 
 ### Confirming the coordinator node
@@ -197,7 +197,7 @@ As mentioned previously, if the VM you are currently testing does not own the CS
 
 For a three-node, three-way mirrored situation, write operations always make a network hop because it needs to store data on all three nodes. Therefore, write operations make a network hop regardless. However, if you use a different resiliency structure, this could change.
 
-Here is an example experiment:
+Here is an example:
 - **Running on local node:** .\DiskSpd-2.0.21a\amd64\diskspd.exe -t4 -o32 -b4k -r4k -w0 -Sh -D -L C:\ClusterStorage\test01\targetfile\IO.dat
 - **Running on nonlocal node:** .\DiskSpd-2.0.21a\amd64\diskspd.exe -t4 -o32 -b4k -r4k -w0 -Sh -D -L C:\ClusterStorage\test01\targetfile\IO.dat
 
@@ -211,7 +211,7 @@ Online Transactional Processing (OLTP) workload queries (Update, Insert, Delete)
 You can design an OLTP workload test to focus on random, small I/O performance. For these tests, focus on how far you can push the throughput while maintaining acceptable latencies.
 
 The basic design choice for this workload test should at a minimum include:
-- 8-KB block size => resembles the page size that SQL Server uses for its data files
+- 8 KB block size => resembles the page size that SQL Server uses for its data files
 - 70% Read, 30% Write => resembles typical OLTP behavior
 
 ### Online Analytical Processing (OLAP) workload
@@ -220,7 +220,7 @@ OLAP workloads focus on data retrieval and analysis, allowing users to perform c
 You can design an OLAP workload test to focus on sequential, large I/O performance. For these tests, focus on the volume of data processed per second rather than the number of IOPS. Latency requirements are also less important, but this is subjective.
 
 The basic design choice for this workload test should at a minimum include:
-- 512-KB block size => resembles the I/O size when the SQL Server loads a batch of 64 data pages for a table scan by using the read-ahead technique.
+- 512 KB block size => resembles the I/O size when the SQL Server loads a batch of 64 data pages for a table scan by using the read-ahead technique.
 - 1 thread per file => currently, you need to limit your testing to one thread per file as problems may arise in DISKSPD when testing multiple sequential threads.
     If you use more than one thread, say two, and the **-s** parameter, the threads will begin non-deterministically to issue I/O operations on top of each other within the same location. This is because they each track their own sequential offset.
 
