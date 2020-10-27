@@ -20,9 +20,9 @@ ms.lastreviewed: 10/27/2020
 ---
  
 
-# Customer journey
+# MDC integration overview
 
-This article describes the end-to-end process for Azure Stack Hub datacenter integration, from purchasing to post-deployment. 
+This article describes the end-to-end process for MDC integration, from purchasing to post-deployment. 
 The integration is a collaborative project between the customer and Microsoft. 
 The following sections cover different phases for the project timeline and specific steps for project members.
 
@@ -32,17 +32,15 @@ The following table depicts what can be expected during the various phases of de
 
 |	|Order Process	|Pre-Deployment	|Integration, Validation, Transport	|Onsite Deployment	|Post-Deployment |
 |---|---------------|---------------|-----------------------------------|--------------------|----------------|
-|Microsoft	|- Signal to delivery to US location<br>- Modular Data Center (MDC) = 15 Days	|Provide required tooling and documentation to collect datacenter requirements	|- Validate configuration artifacts and check validation results<br>- Ensure hardware is delivered	|- Rack and stack<br>- Network integration<br>- Azure Stack Hub deployment<br>- Hand off to customer	|Registration and Marketplace syndication|
+|Microsoft	|- Signal to delivery to US location	|Provide required tooling and documentation to collect datacenter requirements	|- Validate configuration artifacts and check validation results<br>- Ensure hardware is delivered	|- Rack and stack<br>- Network integration<br>- Azure Stack Hub deployment<br>- Hand off to customer	|Registration and Marketplace syndication|
 |Customer	|Signals purchase	|- Fills out network details in deployment worksheet<br>- Collects certificates<br>- Obtains Azure AD accounts<br>- Runs any validation tooling provided	|Ensure the site is ready with network, power, cooling prerequisites	|- Be prepared with deployment configuration artifacts<br>- Customer’s network engineer available	|     |
 
 
 ## Order Process
 
 Your organization will work with Microsoft to place an order for an allocated number of systems. 
-Once you place the order, Microsoft will have 15 days to deliver the MDC to your US location. Microsoft will ensure that all secure supply chain requirements are met. 
+Once you place the order, Microsoft will deliver the MDC to your US location. Microsoft will ensure that all secure supply chain requirements are met. 
 
->[!NOTE] 
->Billing starts 14 days after the hardware has shipped.
 
 ## Pre-Deployment
 
@@ -63,6 +61,10 @@ You'll choose the following items:
 - **Certificate requirements.** It's critical that all [required certificates](../operator/azure-stack-pki-certs.md) are available before an onsite engineer arrives at your datacenter for deployment.
 
 Once all the pre-requisite information is gathered through the deployment worksheet, Microsoft will ensure that we verify all validation tools have been run and assist with any further questions that you may have. 
+
+## Site preparation
+
+For more information about requirements for site preparation, see the Quick Start Guide.
 
 ## Hardware Delivery
 
@@ -88,12 +90,12 @@ The following checks are what you should expect from the onsite engineer during 
 - Unboxing and inventory of hardware
 - Connecting power and powering on the solution
 - Validating physical hardware health
-- Check all the cabling and border connectivity to ensure the solution is properly put together and meets your requirements.
-- Configure the solution HLH (Hardware Lifecycle Host).
+- Check all the cabling and border connectivity to ensure the solution is properly put together and meets your requirements
+- Configure the solution HLH (Hardware Lifecycle Host)
 - Datacenter network integration
-- Check to make sure all physical hardware settings are correct.
-- Make sure firmware for all components is at the latest approved version by the solution.
-- Start the deployment. 
+- Check to make sure all physical hardware settings are correct
+- Make sure firmware for all components is at the latest approved version by the solution
+- Start the deployment
 
 ## Post Deployment
 
@@ -102,13 +104,13 @@ In this phase, validation is important to ensure the system is deployed and perf
 
 Actions that should be taken by the Microsoft deployment engineer:
 
-- Enable value-add resource providers (RPs).
-- Run [test-azurestack](../operator/azure-stack-diagnostic-test.md).
-- [Registration](../operator/azure-stack-registration-role.md) with Azure.
-- [Marketplace syndication](../operator/azure-stack-marketplace.md).
-- Backup switch configuration and HLH configuration files.
-- Prepare a customer summary for deployment.
-- [Check updates](../operator/azure-stack-updates.md) to make sure the solution software is updated to the latest version.
+- Enable value-add resource providers (RPs)
+- Run [test-azurestack](../operator/azure-stack-diagnostic-test.md)
+- [Registration](azure-stack-registration-tzl.md) with Azure
+- [Marketplace syndication](../operator/azure-stack-marketplace.md)
+- Backup switch configuration and HLH configuration files
+- Prepare a customer summary for deployment
+- [Check updates](../operator/azure-stack-updates.md) to make sure the solution software is updated to the latest version
 
 ## Next steps
 
