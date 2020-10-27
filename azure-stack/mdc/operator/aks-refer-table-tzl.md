@@ -38,7 +38,7 @@ ms.reviewer: efemmano
 | `https://aka.ms/azurestackupdatedirectory` | [https://github.com/Azure/AzureStack-Tools/tree/master/Identity#updating-the-azure-stack-aad-home-directory-after-installing-updates-or-new-resource-providers](https://aka.ms/aa700j2) |
 | `https://aka.ms/backupazurestack` | [Recover data in Azure Stack with the Infrastructure Backup Service](../../operator/azure-stack-backup-infrastructure-backup.md) |
 | `https://aka.ms/migratecontainer` | [Manage available space](../../operator/azure-stack-manage-storage-shares.md#manage-available-space) |
-| `https://aka.ms/reclaimcapacity` | [Reclaim capacity](../../operator/azure-stack-manage-storage-accounts.md#reclaim-capacity) |
+| `https://aka.ms/reclaimcapacity` | [Reclaim capacity](../../operator/azure-stack-manage-storage-shares.md#reclaim-capacity) |
 | `https://aka.ms/validateazurestackbackupsettings` | [Run validation tool to test network infrastructure](../../operator/azure-stack-diagnostic-test.md#run-validation-tool-to-test-infrastructure-backup-settings) |
 | `https://aka.ms/virtualdiskhealth` | [Replace a physical disk in Azure Stack](../../operator/azure-stack-replace-disk.md) |
 | `https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints` | [Publish Azure Stack services in your datacenter](../../operator/azure-stack-integrate-endpoints.md) |
