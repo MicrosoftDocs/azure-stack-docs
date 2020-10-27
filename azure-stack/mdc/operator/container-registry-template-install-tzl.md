@@ -138,7 +138,7 @@ Installation of the Container registry template requires several resources to be
 
 1. Complete the Storage and Key Vault configuration.
 
-    ![Container registry template](./media/container-registry-template-install-tzl/image4.png)
+    ![Storage and Key Vault configuration](./media/container-registry-template-install-tzl/storage.png)
 
     | Parameter | Details |
     | --- | --- |
@@ -150,7 +150,7 @@ Installation of the Container registry template requires several resources to be
 
 1. Once all values are provided and the deployment of the solution template begins it will take 10-15 minutes for the VM to deploy and configure the registry service.
 
-    ![Container registry template](./media/container-registry-template-install-tzl/image5.png)
+    ![VM deployment](./media/container-registry-template-install-tzl/deploy.png)
 
 2. To test out the registry open a docker CLI instance from a machine / VM with access to the registry URL.
 
