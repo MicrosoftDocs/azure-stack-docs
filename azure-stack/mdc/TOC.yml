@@ -506,7 +506,7 @@
             - name: Use the Azure Stack Policy module
               href: ../user/azure-stack-policy-module.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: Use Azure CLI with MDC
-            href: ../user/azure-stack-version-profiles-azurecli2.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+            href: azure-stack-version-profiles-azurecli-2.md
           - name: Use Visual Studio Code
             href: ../user/azure-stack-dev-start-vscode-azure.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: Use Visual Studio
