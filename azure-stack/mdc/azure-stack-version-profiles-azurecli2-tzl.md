@@ -199,7 +199,7 @@ az group create -n MyResourceGroup -l local
 
 If the resource group is created successfully, the previous command outputs the following properties of the newly created resource:
 
-![Resource group create output](media/azure-stack-connect-cli/image1.png)
+![Resource group create output](media/azure-stack-connect-cli/output.png)
 
 
 ## Known issues
@@ -212,6 +212,6 @@ There are known issues when using CLI in Azure Stack Hub:
 
 ## Next steps
 
-- [Deploy templates with Azure CLI](azure-stack-deploy-template-command-line.md)
+- [Deploy templates with Azure CLI](../operator/azure-stack-deploy-template-command-line.md)
 - [Enable Azure CLI for Azure Stack Hub users (Operator)](../operator/azure-stack-cli-admin.md)
-- [Manage user permissions](azure-stack-manage-permissions.md) 
+- [Manage user permissions](../operator/azure-stack-manage-permissions.md) 
