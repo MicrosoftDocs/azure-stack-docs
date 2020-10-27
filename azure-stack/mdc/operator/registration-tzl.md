@@ -303,7 +303,7 @@ You can use the **Region management** tile to verify that the Azure Stack Hub re
 
 4. You can use the Azure portal to view Azure Stack Hub registration resources, and then verify that the registration succeeded. Sign in to the [Azure portal](https://portal.azure.com/) using an account associated with the subscription you used to register Azure Stack Hub. Select **All resources**, enable the **Show hidden types** checkbox, and then select the registration name.
 
-5. If the registration did not succeed, you must re-register by [Change the subscription you use](../../operator/azure-stack-registration#change-the-subscription-you-use) to resolve the issue.
+5. If the registration did not succeed, you must re-register by [Change the subscription you use](../../operator/azure-stack-registration.md#change-the-subscription-you-use) to resolve the issue.
 
 Alternatively, you can verify if your registration was successful by using the Marketplace management feature. If you see a list of Marketplace items in the **Marketplace management** blade, your registration was successful. However, in disconnected environments, you can't see Marketplace items in Marketplace management.
 
