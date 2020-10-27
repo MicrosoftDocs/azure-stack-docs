@@ -4,10 +4,10 @@ description: Learn about scale unit node actions, including power on, power off,
 author: IngridAtMicrosoft
 
 ms.topic: article
-ms.date: 03/10/2020
-ms.author: inhenkel
+ms.date: 10/26/2020
+ms.author: justinha
 ms.reviewer: thoroet
-ms.lastreviewed: 03/10/2020
+ms.lastreviewed: 10/26/2020
 
 # Intent: As an Azure Stack operator, I want to learn about the scale unit node actions I can take.
 # Keyword: azure stack scale unit node actions
@@ -67,7 +67,7 @@ When you view information about a scale unit node, you can also perform node act
 
 The operational state of the node determines which options are available.
 
-You need to install Azure Stack Hub PowerShell modules. These cmdlets are in the **Azs.Fabric.Admin** module. To install or verify your installation of PowerShell for Azure Stack Hub, see [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
+You need to install Azure Stack Hub PowerShell modules. These cmdlets are in the **Azs.Fabric.Admin** module. To install or verify your installation of PowerShell for Azure Stack Hub, see [Install PowerShell for Azure Stack Hub](../../operator/azure-stack-powershell-install.md).
 
 ## Stop
 
@@ -133,7 +133,7 @@ For more information, see [Enable-AzsScaleUnitNode](https://docs.microsoft.com/p
 The **repair** action repairs a node. Use it only for either of the following scenarios:
 
 - Full node replacement (with or without new data disks).
-- After hardware component failure and replacement (if advised in the field replaceable unit [FRU] documentation).
+- After hardware component failure and replacement (if advised in the field replaceable unit (FRU) documentation).
 
 > [!Important]  
 > See your OEM hardware vendor's FRU documentation for exact steps when you need to replace a node or individual hardware components. The FRU documentation will specify whether you need to run the repair action after replacing a hardware component.
