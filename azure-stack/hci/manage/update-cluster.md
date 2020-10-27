@@ -11,10 +11,12 @@ ms.date: 10/27/2020
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-When updating Azure Stack HCI clusters, the goal is to maintain availability by updating only one server in the cluster at a time. Many operating system updates require taking the server offline, for example to do a restart or to update software such as the network stack. We recommend using Cluster-Aware Updating (CAU), a feature that makes it easier to install Windows updates to every server in your cluster while keeping your applications running by automating the software updating process. Cluster-Aware Updating is the default updating method in Windows Admin Center and can also be initiated using PowerShell.
+When updating Azure Stack HCI clusters, the goal is to maintain availability by updating only one server in the cluster at a time. Many operating system updates require taking the server offline, for example to do a restart or to update software such as the network stack. We recommend using Cluster-Aware Updating (CAU), a feature that makes it easy to install updates on every server in your cluster while keeping your applications running. Cluster-Aware Updating automates taking the server in and out of maintenance mode while installing updates and restarting the server, if necessary. Cluster-Aware Updating is the default updating method used by Windows Admin Center and can also be initiated using PowerShell.
 
    > [!IMPORTANT]
-   > The October 20, 2020 Preview Update (KB4580388) for Azure Stack HCI may cause a Cluster Aware Updating operation to fail if any of the virtual machines are expected to perform Live Migration during CAU. See the [Release notes](release-notes.md#october-20-2020-preview-update-kb4580388) for a workaround.
+   > The October 20, 2020 Preview Update (KB4580388) for Azure Stack HCI may cause a Cluster Aware Updating operation to fail if any of the virtual machines are expected to perform Live Migration during CAU. See the [Release notes](../release-notes.md#october-20-2020-preview-update-kb4580388) for a workaround.
+
+This topic focuses on operating system and software updates. If you need to take a server offline to perform maintenance on the hardware, see [Take a server offline for maintenance](maintain-servers.md).
 
 ## Update a cluster using Windows Admin Center
 
