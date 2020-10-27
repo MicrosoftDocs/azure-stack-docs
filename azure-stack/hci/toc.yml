@@ -74,6 +74,8 @@
       href: manage/monitor-cluster.md
     - name: Add or remove servers
       href: manage/add-cluster.md
+    - name: Take a server offline for maintenance
+      href: manage/maintain-servers.md
     - name: Manage Azure registration
       href: manage/manage-azure-registration.md
     - name: Change languages
@@ -146,6 +148,10 @@
       href: concepts/security.md
 - name: Reference
   items:
+  - name: Azure registration Azure CLI commands
+    href: https://docs.microsoft.com/cli/azure/ext/stack-hci/stack-hci
+  - name: Azure registration PowerShell commands
+    href: https://docs.microsoft.com/powershell/module/az.stackhci
   - name: Hyper-V PowerShell commands
     href: /powershell/module/hyper-v
   - name: Storage PowerShell commands

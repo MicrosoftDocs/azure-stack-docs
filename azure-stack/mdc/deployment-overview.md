@@ -13,10 +13,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2020
+ms.date: 10/20/2020
 ms.author: justinha
 ms.reviewer: asganesh
-ms.lastreviewed: 04/09/2020
+ms.lastreviewed: 10/20/2020
 ---
  
 # MDC deployment overview
@@ -30,8 +30,6 @@ The objectives of this guide include:
 - Introduce the key components of a MDC.
 - Describe how to install and configure the key components.
 - Validate the customer deployment.
-
-This deployment guide is intended for the Microsoft field professional team that are responsible for deployment of the MDC at the customer site.
 
 Technical experience with virtualization, servers, operating systems, networking, and storage solutions is required to fully understand the content of this guide. 
 The Deployment Engineer must have knowledge of Microsoft Windows Server 2019 with Hyper-V, Azure Stack Hub, Azure, and Microsoft PowerShell.
@@ -63,10 +61,6 @@ The following table lists some of the terms used in this guide.
 |Scale unit    |A core component of Azure Stack Hub that provides compute and storage resources to Azure Stack Hub fabric infrastructure and workloads. Each pod includes eight MDC R840 servers also called nodes.|
 |Isilon storage |    An Azure Stack Hub component that is specific to the MDC solution. Isilon provides additional blob and file storage for Azure Stack Hub workloads. Each pod includes 48 Isilon storage nodes.|
 |Pod    |In the context of MDC, a pod is an independent logical unit consisting of two interconnected physical racks. A complete solution includes three pods installed in a single container.|
-
-
-
-
 
 ## Deployment workflow
 
