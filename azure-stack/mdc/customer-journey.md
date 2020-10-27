@@ -106,7 +106,7 @@ Actions that should be taken by the Microsoft deployment engineer:
 
 - Enable value-add resource providers (RPs)
 - Run [test-azurestack](../operator/azure-stack-diagnostic-test.md)
-- [Registration](azure-stack-registration-tzl.md) with Azure
+- [Registration](../operator/azure-stack-registration-role.md) with Azure
 - [Marketplace syndication](../operator/azure-stack-marketplace.md)
 - Backup switch configuration and HLH configuration files
 - Prepare a customer summary for deployment
