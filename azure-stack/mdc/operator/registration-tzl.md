@@ -3,10 +3,10 @@ title: Register Azure Stack Hub with Azure
 description: Learn how to register Azure Stack Hub with Azure so you can download Azure Marketplace items and set up data reporting. 
 author: sethmanheim
 ms.topic: article
-ms.date: 7/29/2020
+ms.date: 10/26/2020
 ms.author: sethm
 ms.reviewer: avishwan
-ms.lastreviewed: 7/29/2020
+ms.lastreviewed: 10/26/2020
 
 ---
 
@@ -52,7 +52,7 @@ Before registering Azure Stack Hub with Azure, you must have:
     > The subscription you use for registration must be approved for JEDI services. This ensures that the device that you register will be entitled to unlimited usage of resources, with no reporting of the usage to Azure. In order to approve your subscription, send an email to azshregistration@microsoft.com with the subscription ID that needs to be approved along with the Azure Stack Hub ruggedized or Modular Data Center (MDC) you are registering.
 
 - The username and password for an account that's an owner for the subscription. 
-- The user account needs to have access to the Azure subscription and have permissions to create identity apps and service principals in the directory associated with that subscription. We recommend that you register Azure Stack Hub with Azure using least-privilege administration. For more information about how to create a custom role definition that limits access to your subscription for registration, see [Create a registration role for Azure Stack Hub](azure-stack-registration-role.md).
+- The user account needs to have access to the Azure subscription and have permissions to create identity apps and service principals in the directory associated with that subscription. We recommend that you register Azure Stack Hub with Azure using least-privilege administration. For more information about how to create a custom role definition that limits access to your subscription for registration, see [Create a registration role for Azure Stack Hub](../../operator/azure-stack-registration-role.md).
 - Register the Azure Stack Hub resource provider (see the following sections for details).
 
 After registration, Azure Active Directory (Azure AD) global administrator permission is not required. However, some operations might require the global admin credential (for example, a resource provider installer script or a new feature requiring a permission to be granted). You can either temporarily reinstate the account's global admin permissions, or use a separate global admin account that is an owner of the *default provider subscription*.
@@ -75,7 +75,7 @@ Ensure that the output returns **FullLanguageMode**. If any other language mode 
 
 Use the latest PowerShell for Azure Stack Hub to register with Azure.
 
-If the latest version isn't already installed, see [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
+If the latest version isn't already installed, see [Install PowerShell for Azure Stack Hub](../../operator/azure-stack-powershell-install.md).
 
 ### Install the Azure Stack Hub tools module
 
@@ -114,7 +114,7 @@ Get-AzureStackStampInformation
 Use the following steps to register an Azure Stack Hub system that has connectivity to Azure.
 
 > [!NOTE]  
-> All these steps must be run from a computer that has access to the privileged endpoint (PEP). For details about the PEP, see [Using the privileged endpoint in Azure Stack Hub](azure-stack-privileged-endpoint.md).
+> All these steps must be run from a computer that has access to the privileged endpoint (PEP). For details about the PEP, see [Using the privileged endpoint in Azure Stack Hub](../../operator/azure-stack-privileged-endpoint.md).
 
 Connected environments can access the internet and Azure. For these environments, register the Azure Stack Hub resource provider with Azure and then configure your billing model.
 
@@ -303,7 +303,7 @@ You can use the **Region management** tile to verify that the Azure Stack Hub re
 
 4. You can use the Azure portal to view Azure Stack Hub registration resources, and then verify that the registration succeeded. Sign in to the [Azure portal](https://portal.azure.com/) using an account associated with the subscription you used to register Azure Stack Hub. Select **All resources**, enable the **Show hidden types** checkbox, and then select the registration name.
 
-5. If the registration did not succeed, you must re-register by [Change the subscription you use](https://docs.microsoft.com/azure-stack/operator/azure-stack-registration#change-the-subscription-you-use) to resolve the issue.
+5. If the registration did not succeed, you must re-register by [Change the subscription you use](../../operator/azure-stack-registration#change-the-subscription-you-use) to resolve the issue.
 
 Alternatively, you can verify if your registration was successful by using the Marketplace management feature. If you see a list of Marketplace items in the **Marketplace management** blade, your registration was successful. However, in disconnected environments, you can't see Marketplace items in Marketplace management.
 
@@ -315,4 +315,4 @@ Alternatively, you can verify if your registration was successful by using the M
 
 ## Next steps
 
-[Azure Stack Hub administration basics](azure-stack-manage-basics.md)  
+[Azure Stack Hub administration basics](azure-stack-manage-basics-tzl.md)  

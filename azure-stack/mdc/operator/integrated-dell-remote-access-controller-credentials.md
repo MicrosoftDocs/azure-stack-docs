@@ -5,9 +5,9 @@ author: troettinger
 ms.author: thoroet
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/28/2020
+ms.date: 10/27/2020
 ms.reviewer: justinha
-ms.lastreviewed: 04/28/2020
+ms.lastreviewed: 10/27/2020
 ---
 
 # Update credentials for the Integrated Dell Remote Access Controller
@@ -36,4 +36,4 @@ To update the iDRAC credentials for all PowerEdge servers (HLH and scale unit no
 
 ## Next steps
 
-[Rotate secrets in Azure Stack Hub](azure-stack-rotate-secrets.md)
+[Rotate secrets in Azure Stack Hub](../../operator/azure-stack-rotate-secrets.md)
