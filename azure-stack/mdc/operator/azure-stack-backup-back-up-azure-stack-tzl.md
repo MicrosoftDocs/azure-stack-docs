@@ -121,7 +121,7 @@ Tags              : {}
 
 Use the Azure Stack administrator portal to verify that backup has completed successfully by following these steps:
 
-1. Open the [Azure Stack administrator portal](../../operatr/azure-stack-manage-portals.md).
+1. Open the [Azure Stack administrator portal](../../operator/azure-stack-manage-portals.md).
 
 2. Select **All services**, and then under the **Administration** category select **Infrastructure backup**. Choose **Configuration** in the **Infrastructure backup** blade.
 
