@@ -21,7 +21,7 @@ IoT Hub on Azure Stack Hub allows you to create hybrid IoT solutions. IoT Hub is
 |Device-to-cloud telemetry| ✔ | ✔ |
 |Cloud-to-device messaging| ✔ | ✔ |
 |Per-device identity| ✔ | ✔ |
-|Message routing| ✔ | ✔ |
+|Message routing <sub>1</sub>| ✔ | ✔ |
 |HTTP, AMQP, MQTT protocols| ✔ | ✔ |
 |Multi-tenancy| ✔ | ✔ |
 |Monitoring and diagnostics| ✔ | ✔ |
@@ -29,20 +29,22 @@ IoT Hub on Azure Stack Hub allows you to create hybrid IoT solutions. IoT Hub is
 |Device management, device twin, module twin| ✔ | ✔ |
 |Twin notifications, device life cycle events| ✔ | ✔ |
 |Edge layered deployment| ✔ | coming |
-|Administrator portal <sub>1</sub>| ✘ | ✔ |
-|Secret rotation <sub>1</sub>| ✘ | ✔ |
-|Capacity management <sub>1</sub>| ✘ | ✔ |
-|Backup & restore <sub>2</sub>| ✘ | ✘ |
-|DeviceConnected, DeviceDisconnected, ASC <sub>3</sub>| ✔ | ✘ |
+|Administrator portal <sub>2</sub>| ✘ | ✔ |
+|Secret rotation <sub>2</sub>| ✘ | ✔ |
+|Capacity management <sub>2</sub>| ✘ | ✔ |
+|Backup & restore <sub>3</sub>| ✘ | ✘ |
+|DeviceConnected, DeviceDisconnected, ASC <sub>4</sub>| ✔ | ✘ |
 |Device module configuration| ✔ | coming |
-|Device streaming, IoT plug and play, jobs, file upload <sub>4</sub>| ✔ | ✘ |
-|Failover <sub>5</sub>| ✔ | ✘ |
+|Device streaming, IoT plug and play, jobs, file upload <sub>5</sub>| ✔ | ✘ |
+|Monitor device connection status using Event Grid | ✔ | ✘ |
+|Failover <sub>6</sub>| ✔ | ✘ |
 
-<sub>1</sub> For operators to manage IoT Hub on ASH.  
-<sub>2</sub> For preview only backup is available. Restore will be supported in GA.  
-<sub>3</sub> Depends on other services that are not available on Azure Stack Hub yet.  
-<sub>4</sub> In our roadmap to bring over to Azure Stack Hub.  
-<sub>5</sub> Not applicable on Azure Stack Hub.  
+<sub>1</sub> Limited to built-in endpoints, Event Hubs and Storage, as Service Bus is not available on Azure Stack Hub.
+<sub>2</sub> For operators to manage IoT Hub on ASH.  
+<sub>3</sub> For preview only backup is available. Restore will be supported in GA.  
+<sub>4</sub> Depends on other services that are not available on Azure Stack Hub yet.  
+<sub>5</sub> In our roadmap to bring over to Azure Stack Hub.  
+<sub>6</sub> Not applicable on Azure Stack Hub.  
 
 ## API available for IoT Hub on Azure Stack Hub
 

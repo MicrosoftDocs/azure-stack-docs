@@ -371,8 +371,6 @@
           href: azure-stack-monitor-health.md
         - name: Manage 
           href: iot-hub-rp-manage.md
-        - name: Manage capacity
-          href: iot-hub-rp-manage-capacity.md          
         - name: Rotate secrets
           href: iot-hub-rp-rotate-secrets.md
         - name: Service update announcements

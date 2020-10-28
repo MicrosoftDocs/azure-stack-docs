@@ -55,7 +55,7 @@ To monitor alerts and quotas:
 2. Select **Quotas** to see the list of quotas in effect:  
 
    > [!NOTE]
-   > The **Create** feature is disabled for preview, and a single default quota is provided which is unlimited. **Create** will be enabled for GA.
+   > During preview, the **Create** feature is disabled and an unlimited default quota is provided. **Create** will be enabled for GA.
 
    [![iot hub dashboard - quotas](media\iot-hub-rp-manage\dashboard-rp-iot-hub-quotas.png)](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-quotas.png#lightbox) 
 
