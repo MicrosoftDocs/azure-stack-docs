@@ -10,19 +10,19 @@ ms.date: 1/6/2020
 
 # How to manage IoT Hub on Azure Stack Hub
 
-[!INCLUDE [preview-banner](../includes/iot-hub-preview.md)]
-
-## Overview
-
 The IoT Hub management experience allows you to visualize and manage overall status, alerts, and capacity.
 
-To access the IoT Hub management features:
+[!INCLUDE [preview-banner](../includes/iot-hub-preview.md)]
 
-1. Sign in to the Azure Stack Hub administrator portal, select the **Dashboard** view on the left, then select the **IoT Hub** resource provider.
+## IoT Hub management dashboard
+
+To access the IoT Hub management dashboard:
+
+1. Sign in to the Azure Stack Hub administrator portal, select the **Dashboard** view on the left, then select the **IoT Hub** resource provider:
 
    [![operator dashboard](media\iot-hub-rp-manage\dashboard.png)](media\iot-hub-rp-manage-capacity\dashboard.png#lightbox)
 
-2. The IoT Hub overview page provides a summary view, showing current alerts, quotas created on the stamp, and the total number of IoT Hub clusters in your subscription. 
+2. The IoT Hub dashboard provides a summary view, showing current alerts, quotas created on the stamp, and the total number of IoT Hub clusters in your subscription: 
 
    [![iot hub dashboard - overview](media\iot-hub-rp-manage\dashboard-rp-iot-hub-overview.png)](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-overview.png#lightbox)
 
@@ -46,13 +46,13 @@ The IoT Hub resource provider supports the following alerts:
 |Service|IoT Hub Container failure occurred.|Warning|IoT Hub container failure has occurred. Device authentication may fail. |
 |Service|IoT Hub device management container failure occurred.|Warning|IoT Hub device management container failure has occurred. Device twin, direct method functionalities may be degraded.|
 
-Operators can monitor the alerts and quotas by:
+To monitor alerts and quotas:
 
-1. Selecting **Alerts** to view the alert history.  
+1. Select **Alerts** to view the alert history: 
  
    [![iot hub dashboard - alerts](media\iot-hub-rp-manage\dashboard-rp-iot-hub-alerts.png)](media\iot-hub-rp-manage-capacity\dashboard-rp-iot-hub-alerts.png#lightbox)  
 
-2. Selecting **Quotas** to see the list of quotas in effect.  
+2. Select **Quotas** to see the list of quotas in effect:  
 
    > [!NOTE]
    > The **Create** feature is disabled for preview, and a single default quota is provided which is unlimited. **Create** will be enabled for GA.
@@ -75,7 +75,7 @@ To determine the required capacity for IoT Hub, you'll need to estimate the work
 
 Refer to [Azure Stack Hub Capacity Planner](azure-stack-capacity-planner.md) for more details.
 
-### IoT Hub service capacity management
+### IoT Hub capacity management
 
 Because Azure Stack Hub is deployed in an on-premises data center with limited resources, all services running on Azure Stack Hub share and compete for the same resource pool. Operators need to plan and manage the capacity based on the business needs. The IoT Hub resource provider gives operators the ability to manage the capacity requirements for the service.
 
