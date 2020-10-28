@@ -21,7 +21,7 @@ IoT Hub on Azure Stack Hub allows you to create hybrid IoT solutions. IoT Hub is
 |Device-to-cloud telemetry| ✔ | ✔ |
 |Cloud-to-device messaging| ✔ | ✔ |
 |Per-device identity| ✔ | ✔ |
-|Message routing <sub>1</sub>| ✔ | ✔ |
+|Message routing <sub>1</sub><sub>4</sub>| ✔ | ✔ |
 |HTTP, AMQP, MQTT protocols| ✔ | ✔ |
 |Multi-tenancy| ✔ | ✔ |
 |Monitoring and diagnostics| ✔ | ✔ |
@@ -36,14 +36,14 @@ IoT Hub on Azure Stack Hub allows you to create hybrid IoT solutions. IoT Hub is
 |DeviceConnected, DeviceDisconnected, ASC <sub>4</sub>| ✔ | ✘ |
 |Device module configuration| ✔ | coming |
 |Device streaming, IoT plug and play, jobs, file upload <sub>5</sub>| ✔ | ✘ |
-|Monitor device connection status using Event Grid | ✔ | ✘ |
+|Monitor device connection state using Event Grid <sub>4</sub>| ✔ | ✘ |
 |Failover <sub>6</sub>| ✔ | ✘ |
 
-<sub>1</sub> Limited to built-in endpoints, Event Hubs and Storage, as Service Bus is not available on Azure Stack Hub.
+<sub>1</sub> Limited to built-in endpoints, Event Hubs and Storage, as Service Bus is not available on Azure Stack Hub.  
 <sub>2</sub> For operators to manage IoT Hub on ASH.  
-<sub>3</sub> For preview only backup is available. Restore will be supported in GA.  
+<sub>3</sub> Backup is available in preview release. Restore will be supported in GA.  
 <sub>4</sub> Depends on other services that are not available on Azure Stack Hub yet.  
-<sub>5</sub> In our roadmap to bring over to Azure Stack Hub.  
+<sub>5</sub> In the roadmap to bring to Azure Stack Hub.  
 <sub>6</sub> Not applicable on Azure Stack Hub.  
 
 ## API available for IoT Hub on Azure Stack Hub
