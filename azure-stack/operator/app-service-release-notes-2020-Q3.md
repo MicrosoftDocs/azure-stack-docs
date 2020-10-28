@@ -5,7 +5,7 @@ author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 10/23/2020
+ms.date: 10/28/2020
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 10/23/2020
@@ -53,6 +53,10 @@ Azure App Service on Azure Stack Update Q3 includes the following improvements a
 
 - Updates to **App Service Tenant, Admin, Functions portals and Kudu tools**. Consistent with Azure Stack Portal SDK version.
 
+- Addition of Full Screen Create experience for Web and Function Apps
+
+- New Azure Functions Portal Experience to be consistent with Web Apps
+
 - Updates **Azure Functions runtime** to **v1.0.13154**.
 
 - Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.
@@ -91,6 +95,13 @@ Azure App Service on Azure Stack Update Q3 includes the following improvements a
 
 ## Issues fixed in this release
 
+- Tenants can now create App Service Plan using new on App Service Plan view in tenant portal
+
+- Tenants can manage certificates for their applications in the tenant portal
+
+- Functions monitoring can now retrieve data from storage endpoints enforcing TLS 1.2
+
+- Moved wait for Management Servers step outside of Deploy Cloud step during installation to improve reliability of deployment and upgrade
 
 ## Pre-Update steps
 
@@ -194,10 +205,6 @@ This script must be run under the following conditions
   - Name: Outbound_Allow_SMB445
 
 ### Known issues for Cloud Admins operating Azure App Service on Azure Stack
-
-- Tenants unable to create App Service Plan using new on App Service Plan view in tenant portal
-
-When creating a new application, tenants can create App Service Plans during the create app workflow, or when changing the App Service Plan for a current app, or via the App Service Plan marketplace item
 
 - Custom domains are not supported in disconnected environments
 
