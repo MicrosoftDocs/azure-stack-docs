@@ -179,5 +179,5 @@ To recap, every server in the cluster should have the same types of drives and t
 
 For related information, see also:
 
-- [Before you deploy Azure Stack HCI](../deploy/before-you-start.md)
+- [System requirements](system-requirements.md)
 - [Choose drives](choose-drives.md)

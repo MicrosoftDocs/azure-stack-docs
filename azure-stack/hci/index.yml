@@ -94,7 +94,7 @@ landingContent:
           - text: Manage VMs with PowerShell
             url: manage/vm-powershell.md
           - text: Set up VM affinity rules
-            url: deploy/before-you-start.md
+            url: manage/vm-affinity.md
 
   # Card
   - title: Azure Stack HCI concepts
