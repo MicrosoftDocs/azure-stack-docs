@@ -21,7 +21,7 @@ IoT Hub on Azure Stack Hub allows you to create hybrid IoT solutions. IoT Hub is
 |Device-to-cloud telemetry| ✔ | ✔ |
 |Cloud-to-device messaging| ✔ | ✔ |
 |Per-device identity| ✔ | ✔ |
-|Message routing <sub>1</sub>,<sub>4</sub>| ✔ | ✔ |
+|Message routing <sub>1</sub><sub>, 4</sub>| ✔ | ✔ |
 |HTTP, AMQP, MQTT protocols| ✔ | ✔ |
 |Multi-tenancy| ✔ | ✔ |
 |Monitoring and diagnostics| ✔ | ✔ |
