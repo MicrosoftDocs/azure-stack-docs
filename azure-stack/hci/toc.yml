@@ -16,22 +16,22 @@
   items:
   - name: Deployment overview
     href: deploy/deployment-overview.md
-  - name: Before you begin
-    href: deploy/before-you-start.md
   - name: Deploy the Azure Stack HCI OS
     href: deploy/operating-system.md
   - name: Create the cluster
     href: deploy/create-cluster.md
-  - name: Create the cluster with PowerShell
-    href: deploy/create-cluster-powershell.md
   - name: Set up a cluster witness
     href: deploy/witness.md
   - name: Register with Azure
     href: deploy/register-with-azure.md
   - name: Validate the cluster
     href: deploy/validate.md
-  - name: Deploy Network Controller
-    href: deploy/network-controller-powershell.md
+  - name: Deploy with PowerShell
+    items:
+    - name: Create a cluster with PowerShell
+      href: deploy/create-cluster-powershell.md
+    - name: Deploy Network Controller with PowerShell
+      href: deploy/network-controller-powershell.md
 - name: Manage
   items:
   - name: Manage VMs

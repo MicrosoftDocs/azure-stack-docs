@@ -102,50 +102,10 @@ Machines configured to connect to multiple networks, such as the physical hosts,
 - For SLB/MUX VMs, use the management network as the default gateway.
 - For the gateway VMs, use the HNV Provider network as the default gateway. This should be set on the front-end NIC of the gateway VMs.
 
-## Network hardware
-This section provides network hardware deployment requirements for NICs and physical switches.
+## Switches and routers
+To help configure your physical switch or router, a set of sample configuration files for a variety of switch models and vendors is available at the [Microsoft SDN GitHub repository](https://github.com/microsoft/SDN/tree/master/SwitchConfigExamples). A readme file and tested command-line interface (CLI) commands for specific switches are provided.
 
-### Network Interface Cards (NICs)
-The NICs that you use in your Hyper-V hosts and storage hosts require specific capabilities to achieve the best performance.
-
-Remote Direct Memory Access (RDMA) is a kernel bypass technique that makes it possible to transfer large amounts of data without using the host CPU, which frees the CPU to perform other work. Switch Embedded Teaming (SET) is an alternative NIC Teaming solution that you can use in environments that include Hyper-V and the SDN stack. SET integrates some NIC Teaming functionality into the Hyper-V Virtual Switch.
-
-For more information, see [Remote Direct Memory Access (RDMA) and Switch Embedded Teaming (SET)](/windows-server/virtualization/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming).
-
-To account for the overhead in tenant virtual network traffic caused by VXLAN or NVGRE encapsulation headers, the maximum transmission unit (MTU) of the Layer-2 fabric network (switches and hosts) must be set to greater than or equal to 1674 bytes \(including Layer-2 Ethernet headers\).
-
-NICs that support the new *EncapOverhead* advanced adapter keyword set the MTU automatically through the Network Controller Host Agent. NICs that do not support the new *EncapOverhead* keyword need to set the MTU size manually on each physical host using the *JumboPacket* \(or equivalent\) keyword.
-
-### Switches
-When selecting a physical switch and router for your environment, make sure it supports the following set of capabilities:
-- Switchport MTU settings \(required\)
-- MTU set to >= 1674 bytes \(including L2-Ethernet Header\)
-- L3 protocols \(required\)
-- Equal-cost multi-path (ECMP) routing
-- BGP \(IETF RFC 4271\)\-based ECMP
-
-Implementations should support the MUST statements in the following IETF standards:
-- RFC 2545: [BGP-4 Multiprotocol extensions for IPv6 Inter-Domain Routing](https://tools.ietf.org/html/rfc2545)
-- RFC 4760: [Multiprotocol Extensions for BGP-4](https://tools.ietf.org/html/rfc4760)
-- RFC 4893: [BGP Support for Four-octet AS Number Space](https://tools.ietf.org/html/rfc4893)
-- RFC 4456: [BGP Route Reflection: An Alternative to Full Mesh Internal BGP (IBGP)](https://tools.ietf.org/html/rfc4456)
-- RFC 4724: [Graceful Restart Mechanism for BGP](https://tools.ietf.org/html/rfc4724)
-
-The following tagging protocols are required:
-- VLAN - Isolation of various types of traffic
-- 802.1q trunk
-
-The following items provide Link control:
-- Quality of Service \(QoS\) \(PFC only required if using RoCE\)
-- Enhanced Traffic Selection \(802.1Qaz\)
-- Priority-based Flow Control (PFC) \(802.1p/Q and 802.1Qbb\)
-
-The following items provide availability and redundancy:
-- Switch availability (required)
-- A highly available router is required to perform gateway functions. You can provide this by using either a multi-chassis switch\router or technologies like the Virtual Router Redundancy Protocol (VRRP).
-
-### Switch configuration examples
-To help configure your physical switch or router, a set of sample configuration files for a variety of switch models and vendors is available at the [Microsoft SDN GitHub repository](https://github.com/microsoft/SDN/tree/master/SwitchConfigExamples). A detailed readme and tested command-line interface (CLI) commands for specific switches are provided.
+For detailed switch and router requirements, see [SDN hardware requirements](system-requirements.md#sdn-hardware-requirements).
 
 ## Compute
 All Hyper-V hosts must have the appropriate operating system installed, be enabled for Hyper-V, and use an external Hyper-V virtual switch with at least one physical adapter connected to the management logical network. The host must be reachable via a management IP address assigned to the management host vNIC.

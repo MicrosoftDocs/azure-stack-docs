@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/27/2020
+ms.date: 10/28/2020
 ---
 
 # System requirements for Azure Stack HCI
@@ -15,7 +15,7 @@ ms.date: 10/27/2020
 
 Use this topic to choose servers, storage, and networking components for Azure Stack HCI.
 
-## Server requirements for Azure Stack HCI
+## Server requirements
 
 A standard Azure Stack HCI cluster requires a minimum of two servers and a maximum of 16 servers; however, clusters can be combined using cluster sets to create an HCI platform of hundreds of nodes.
 
@@ -35,7 +35,7 @@ Keep the following in mind for various types of Azure Stack HCI deployments:
 
 - For additional feature-specific requirements for Hyper-V, see [System requirements for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
 
-## Storage requirements for Azure Stack HCI
+## Storage requirements
 
 Azure Stack HCI works with direct-attached SATA, SAS, NVMe, or persistent memory drives that are physically attached to just one server each.
 
@@ -50,7 +50,7 @@ For best results, adhere to the following:
    > [!IMPORTANT]
    > **NOT SUPPORTED:** RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) storage, shared SAS enclosures connected to multiple servers, or any form of multi-path IO (MPIO) where drives are accessible by multiple paths. Host-bus adapter (HBA) cards must implement simple pass-through mode.
 
-## Networking requirements for Azure Stack HCI
+## Networking requirements
 
 An Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency network connection between each server node.
 
@@ -86,7 +86,23 @@ For more information about preparing for using SDN in Azure Stack HCI, see [Plan
    > [!NOTE]
    > SDN is not supported on stretched (multi-site) clusters.
 
-### SDN switch requirements
+### SDN hardware requirements
+
+This section provides network hardware requirements for NICs and physical switches when planning for a SDN environment.
+
+#### Network interface cards (NICs)
+
+The NICs that you use in your Hyper-V hosts and storage hosts require specific capabilities to achieve the best performance.
+
+Remote Direct Memory Access (RDMA) is a kernel bypass technique that makes it possible to transfer large amounts of data without using the host CPU, which frees the CPU to perform other work. Switch Embedded Teaming (SET) is an alternative NIC Teaming solution that you can use in environments that include Hyper-V and the SDN stack. SET integrates some NIC Teaming functionality into the Hyper-V Virtual Switch.
+
+For more information, see [Remote Direct Memory Access (RDMA) and Switch Embedded Teaming (SET)](/windows-server/virtualization/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming).
+
+To account for the overhead in tenant virtual network traffic caused by VXLAN or NVGRE encapsulation headers, the maximum transmission unit (MTU) of the Layer-2 fabric network (switches and hosts) must be set to greater than or equal to 1674 bytes \(including Layer-2 Ethernet headers\).
+
+NICs that support the new *EncapOverhead* advanced adapter keyword set the MTU automatically through the Network Controller Host Agent. NICs that do not support the new *EncapOverhead* keyword need to set the MTU size manually on each physical host using the *JumboPacket* \(or equivalent\) keyword.
+
+#### Switches and routers
 
 When selecting a physical switch and router for your SDN environment, make sure it supports the following set of capabilities:
 - Switchport MTU settings \(required\)
