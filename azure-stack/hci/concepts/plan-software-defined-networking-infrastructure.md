@@ -6,7 +6,7 @@ ms.topic: conceptual
 ms.assetid: ea7e53c8-11ec-410b-b287-897c7aaafb13
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 10/16/2020
+ms.date: 10/28/2020
 ---
 # Plan a Software Defined Network infrastructure
 
@@ -25,7 +25,7 @@ There are several hardware and software prerequisites for a SDN infrastructure, 
 
 - **Physical network**. You need access to your physical network devices to configure virtual local area networks (VLANs), routing, and the Border Gateway Protocol (BGP). This topic provides instructions for manual switch configuration, as well as options to use either BGP peering on Layer-3 switches / routers, or a Routing and Remote Access Server (RRAS) VM.
 
-- **Physical compute hosts**. These hosts run Hyper-V and are required to host a SDN infrastructure and tenant VMs. Specific network hardware is required in these hosts for best performance, as described in the [Network hardware](#network-hardware) section.
+- **Physical compute hosts**. These hosts run Hyper-V and are required to host a SDN infrastructure and tenant VMs. Specific network hardware is required in these hosts for best performance, as described in [SDN hardware requirements](system-requirements.md#sdn-hardware-requirements).
 
 ## Physical and logical network configuration
 Each physical compute host requires network connectivity through one or more network adapters attached to a physical switch port. A Layer-2 [VLAN](https://en.wikipedia.org/wiki/Virtual_LAN) supports networks divided into multiple logical network segments.
