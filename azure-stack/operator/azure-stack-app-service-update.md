@@ -195,7 +195,7 @@ Prepare for additional admin operations for Azure App Service on Azure Stack Hub
 [2]: ./media/azure-stack-app-service-update/app-service-azure-stack-arm-endpoints.png
 [3]: ./media/azure-stack-app-service-update/app-service-azure-stack-subscription-information.png
 [4]: ./media/azure-stack-app-service-update/app-service-azure-stack-deployment-summary.png
-[5]: ./media/azure-stack-app-service-update/app-service-upgrade-complete.png
+[5]: ./media/azure-stack-app-service-update/app-service-upgrade-summary-complete.png
 
 [6]: ./media/azure-stack-app-service-update/app-service-installer-exe.png
 [7]: ./media/azure-stack-app-service-update/app-service-exe-advanced-create-package.png
