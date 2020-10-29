@@ -21,6 +21,8 @@ ms.reviewer: efemmano
 
 # Alerts aka.ms link reference for Azure Stack Hub
 
+This topic lists cross-references for links that appear within alerts in the Administrator portal. 
+
 ## Link cross reference
 
 | Aka.ms link | Article |
