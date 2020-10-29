@@ -294,7 +294,7 @@ You can use the **Region management** tile to verify that the Azure Stack Hub re
 
 3. Select **Properties**. This blade shows the status and details of your environment. The status can be **Registered**, **Not registered**, or **Expired**.
 
-   [![Region management tile in Azure Stack Hub administrator portal](media/registration-tzl/admin1sm.png "Region management tile")](media/registration-tzl/admin1.png#lightbox)
+   [![Region management tile in Azure Stack Hub administrator portal](media/registration-tzl/admin-1-sm.png "Region management tile")](media/registration-tzl/admin-1.png#lightbox)
 
    If registered, the properties include:
 
