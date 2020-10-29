@@ -30,7 +30,7 @@
         href: ../operator/azure-stack-app-service-capacity-planning.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Capacity planner tool
         href: azure-stack-capacity-planner.md
-    - name: Customer journey 
+    - name: Integration overview 
       href: customer-journey.md
     - name: Connection models
       href: ../operator/azure-stack-connection-models.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
