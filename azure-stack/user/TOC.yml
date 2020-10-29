@@ -147,6 +147,17 @@
           href: vm-update-management.md
         - name: SQL Server VM considerations
           href: azure-stack-sql-server-vm-considerations.md
+        - name: Migrate VMs
+          items:
+            - name: Migrate VMs overview
+              href: vm-move-overview.md
+            - name: VM from Azure
+              href: vm-move-from-azure.md
+            - name: Specialized VM on-prem
+              href: vm-move-specialized.md
+            - name: Generalized VM on-prem
+              href: vm-move-generalized.md
+
       - name: Storage
         items:
         - name: Overview
@@ -240,6 +251,8 @@
             href: azure-stack-kubernetes-aks-engine-scale.md
           - name: Upgrade a cluster
             href: azure-stack-kubernetes-aks-engine-upgrade.md
+          - name: Enable service account token volume projection
+            href: kubernetes-aks-engine-service-account.md
           - name: Troubleshoot AKS engine
             href: azure-stack-kubernetes-aks-engine-troubleshoot.md
           - name: Use Azure Monitor for containers

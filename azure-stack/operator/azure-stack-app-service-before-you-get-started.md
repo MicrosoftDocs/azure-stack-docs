@@ -1,5 +1,5 @@
 ---
-title: Prerequisites for deploying Azure App Service on Azure Stack Hub 
+title: Prerequisites to deploy Azure App Service on Azure Stack Hub 
 description: Learn the prerequisite steps to complete before you deploy Azure App Service on Azure Stack Hub.
 author: BryanLa
 
@@ -27,7 +27,7 @@ This section lists the prerequisites for both integrated system and Azure Stack 
 
 ### Resource provider prerequisites
 
-[!INCLUDE [Common RP prerequisites](../includes/marketplace-resource-provider-prerequisites.md)]
+[!INCLUDE [Common RP prerequisites](../includes/resource-provider-prerequisites.md)]
 
 ### Installer and helper scripts
 

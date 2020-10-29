@@ -50,7 +50,7 @@ If you don't have an existing test pass available, follow the directions for [sc
     > [!Note]  
     > The version of the test will increment as improvements to the test collateral are made. The highest version should always be used unless Microsoft indicates otherwise.
 
-    ![Disk Identification Test—Interactive testing in Azure Stack Hub](media/azure-stack-vaas-interactive-feature-verification/image4.png)
+    ![Screenshot that shows Disk Identification Test—Interactive testing in Azure Stack Hub.](media/azure-stack-vaas-interactive-feature-verification/image4.png)
 
 2. Select **Edit** and provide the domain admin username and password.
 

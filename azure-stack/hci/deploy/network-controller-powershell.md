@@ -3,7 +3,7 @@ title: Deploy Network Controller using Windows PowerShell
 description: Learn how to deploy Network Controller using Windows PowerShell
 author: v-dasis
 ms.topic: how-to
-ms.date: 08/17/2020
+ms.date: 10/16/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -12,7 +12,12 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI version 20H2; Windows Server 2019
 
-This topic provides instructions on using Windows PowerShell to deploy Network Controller on one or more virtual machines (VMs) that are running on an Azure Stack HCI cluster. Network Controller is a component of Software Defined Networking (SDN).
+This topic provides instructions on using Windows PowerShell to deploy Network Controller feature on one or more virtual machines (VMs) that are running on an Azure Stack HCI cluster. Network Controller is a component of Software Defined Networking (SDN).
+
+You can also deploy Network Controller using the Create Cluster wizard in Windows Admin Center. For more information, see [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md).
+
+> [!NOTE]
+> SDN is not supported or available for stretched clusters.
 
 ## Using Windows PowerShell
 
@@ -32,7 +37,7 @@ Use this procedure to install the Network Controller server role on a virtual ma
 Membership in the **Administrators** group, or equivalent, is required to perform this procedure.  
 
 >[!NOTE]
->If you want to use Server Manager instead of Windows PowerShell to install Network Controller, see [Install the Network Controller server role using Server Manager](https://technet.microsoft.com/library/mt403348.aspx)
+>If you want to use Server Manager instead of Windows PowerShell to install Network Controller, see [Install the Network Controller server role using Server Manager](/windows-server/networking/sdn/technologies/network-controller/install-the-network-controller-server-role-using-server-manager)
 
 To install Network Controller, type the following commands:
 
@@ -191,7 +196,7 @@ The following table provides the syntax for PowerShell commands that you can use
 |Enable a Network Controller cluster node|Enable-NetworkControllerNode|`Enable-NetworkControllerNode -Name <String> [-CertificateThumbprint <String> ] [-ComputerName <String> ] [-Credential <PSCredential> ] [-PassThru] [-UseSsl]`
 |Remove a Network Controller node from a cluster|Remove-NetworkControllerNode|`Remove-NetworkControllerNode [-CertificateThumbprint <String> ] [-ComputerName <String> ] [-Credential <PSCredential> ] [-Force] [-Name <String> ] [-PassThru] [-UseSsl]`
 
-To learn more, see the Windows PowerShell reference documentation for Network Controller at [NetworkController](/powershell/module/networkcontroller/?view=win10-ps).
+To learn more, see the Windows PowerShell reference documentation for Network Controller at [NetworkController](/powershell/module/networkcontroller).
 
 ## Sample Network Controller configuration script
 
@@ -210,4 +215,4 @@ Install-NetworkController -Node @($a,$b,$c) -ClientAuthentication Kerberos -Clie
 
 ## Next steps
 
-If you are not using Kerberos with your Network Controller deployment, you must deploy certificates. For more information, see [Post-Deployment Steps for Network Controller](https://docs.microsoft.com/windows-server/networking/sdn/technologies/network-controller/post-deploy-steps-nc).
+If you are not using Kerberos with your Network Controller deployment, you must deploy certificates. For more information, see [Post-Deployment Steps for Network Controller](/windows-server/networking/sdn/technologies/network-controller/post-deploy-steps-nc).

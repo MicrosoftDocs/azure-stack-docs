@@ -4,7 +4,7 @@ description: Learn how to manage updates in Azure Stack Hub
 author: sethmanheim
 
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 09/25/2020
 ms.author: sethm
 ms.lastreviewed: 07/16/2020
 ms.reviewer: niy
@@ -44,7 +44,7 @@ There are three types of update packages for integrated systems:
 
 The three types of updates are released with the following cadence:
 
-- **Azure Stack Hub software updates**. Microsoft typically releases software update packages each month.
+- **Azure Stack Hub software updates**. Microsoft releases multiple full and express software update packages per year.
 
 - **Azure Stack Hub hotfixes**. Hotfixes are time-sensitive releases that can be released at any time. If you are upgrading from one major version to another (for example, 1.2002.x to 1.2005.x), the latest hotfixes (if any) in the new major version are installed automatically.
 

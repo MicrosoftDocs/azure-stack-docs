@@ -100,12 +100,7 @@ When you run the registration script, you must provide a unique registration nam
 > [!NOTE]
 > Azure Stack Hub registrations using the capacity-based billing model will need to change the unique name when re-registering after those yearly subscriptions expire unless you [delete the expired registration](#renew-or-change-registration) and re-register with Azure.
 
-To determine the Cloud ID for your Azure Stack Hub deployment, open PowerShell as an admin on a computer that can access the Privileged Endpoint, run the following commands, and then record the **CloudID** value:
-
-```powershell
-Run: Enter-PSSession -ComputerName <privileged endpoint computer name> -ConfigurationName PrivilegedEndpoint
-Run: Get-AzureStackStampInformation
-```
+To determine the Cloud ID for your Azure Stack Hub deployment, see [Find your cloud ID](azure-stack-find-cloud-id.md).
 
 ::: zone pivot="state-connected"
 ## Register with pay-as-you-use billing
@@ -381,7 +376,7 @@ If you want to change the subscription you use, you must first run the **Remove-
   # switch to new subscription id
   Select-AzureRmSubscription -Subscription '<New subscription ID>'
   # register 
-  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel '<Billing model>' -RegistrationName '<Registration name>' --ResourceGroupName '<Registration resource group name>'
+  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel '<Billing model>' -RegistrationName '<Registration name>' -ResourceGroupName '<Registration resource group name>'
   ```
 
 ### Change billing model, how features are offered, or re-register your instance

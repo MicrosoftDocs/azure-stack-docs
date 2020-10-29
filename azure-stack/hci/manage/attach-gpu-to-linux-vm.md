@@ -92,7 +92,7 @@ This document assumes you have the Azure Stack HCI cluster deployed and VMs inst
     :::image type="content" source="media/attach-gpu-to-linux-vm/driver-install.png" alt-text="Driver Install Screenshot":::
 
 12. Restart the Ubuntu VM after the driver installation completes. Once the VM starts, connect through the SSH client and issue the command **nvidia-smi** to verify that the NVIDIA GPU driver installation completed successfully. The output should be similar to the screenshot below:
-    :::image type="content" source="media/attach-gpu-to-linux-vm/nvidia-smi.png" alt-text="nvidia-smi screenshot":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/nvidia-smi.png" alt-text="Screenshot that shows the output from the nvidia-smi command.":::
 
 13. Using the SSH client, set up the repository and install the Docker CE Engine:
 
@@ -485,7 +485,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     sudo iotedge list
     ```
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/verify-modules-sudo.png" alt-text="iotedge list screenshot":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/verify-modules-sudo.png" alt-text="Screenshot that shows the output from the iotedge list.":::
 
     ```shell
     nvidia-smi
@@ -502,19 +502,19 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     sudo iotedge list
     ```
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/verify1.png" alt-text="iotedge list screenshot":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/verify1.png" alt-text="Screenshot of output that shows the NvdiaDeepStreem Container is operational.":::
 
     ```shell
     sudo iotedge logs -f NVIDIADeepStreamSDK
     ```
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/verify2.png" alt-text="iotedge list screenshot":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/verify2.png" alt-text="Screenshot that shows output for the iotedge logs -f NVIDIADeepStreamSDK command.":::
 
     ```shell
     nvidia-smi
     ```
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/verify3.png" alt-text="iotedge list screenshot":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/verify3.png" alt-text="Screenshot that shows additional output for the nvidia-smi command.":::
 
 21. Confirm the TCP/IP address for your Ubuntu VM using the **ifconfig** command and look for the TCP/IP address next to the **eth0** interface.
 

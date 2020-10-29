@@ -4,10 +4,10 @@ description: Learn how to scale a Kubernetes cluster on Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 07/24/2020
+ms.date: 09/02/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 3/19/2020
+ms.lastreviewed: 09/02/2020
 
 # Intent: As an Azure Stack Hub user, I want to scale a Kubernetes cluster using AKS on Azure Stack Hub.
 # Keyword: scale kubernetes cluster aks azure stack hub
@@ -36,8 +36,8 @@ The following parameters are used by the scale command to find your cluster defi
 | client-id |  | The client ID of the service principal used in creating your cluster from the AKS engine. | 
 | client-secret |  | The service principal secret used when creating your cluster. | 
 | api-model | kube-rg/apimodel.json | The path to your cluster definition file (apimodel.json). This may be at:  _output/\<dnsPrefix>/apimodel.json | 
-| -new-node-count | 9 | Desired node count. | 
-| -master-FQDN |  | Master FQDN. Needed when scaling down. |
+| new-node-count | 9 | Desired node count. | 
+| apiserver |  | Master FQDN. Needed when scaling down. |
 | identity-system | adfs | Optional. Specify your identity management solution if you are using Active Directory Federated Services (AD FS). |
 
 You must specify the **--azure-env** parameter when scaling a cluster in Azure Stack Hub. For more information about parameters and their values used in the **scale** command for the AKS engine, see [Scale - parameters](https://github.com/Azure/aks-engine/blob/master/docs/topics/scale.md#parameters).
@@ -56,7 +56,7 @@ aks-engine scale \
     --client-secret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
     --api-model <path to your apomodel.json file>
     --new-node-count <desired node count> \
-    --master-FQDN <master FQDN> \
+    --apiserver <master FQDN> \
     --identity-system adfs # required if using AD FS
 ```
 
