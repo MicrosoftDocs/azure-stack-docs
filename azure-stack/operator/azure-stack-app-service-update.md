@@ -4,10 +4,10 @@ description: Learn how to update Azure App Service on Azure Stack Hub.
 author: BryanLa
 
 ms.topic: article
-ms.date: 05/05/2019
+ms.date: 10/28/2020
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 01/13/2019
+ms.lastreviewed: 10/28/2020
 zone_pivot_groups: state-connected-disconnected
 # Intent: As an Azure Stack operator, I want to update my App Service so I'm up to date.
 # Keyword: update app service azure stack
@@ -40,7 +40,7 @@ During this process, the upgrade will:
 
 To upgrade your deployment of Azure App Service on Azure Stack Hub, follow these steps:
 
-1. Download the [Azure App Service Installer](https://aka.ms/appsvcupdateQ2installer).
+1. Download the [Azure App Service Installer](https://aka.ms/appsvcupdateQ3installer).
 
 2. Run appservice.exe as an admin.
 
