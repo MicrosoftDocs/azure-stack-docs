@@ -15,4 +15,4 @@ ms.lastreviewed: 10/28/2020
 > |-----|---|
 > | 2008 | 2020.Q3 [Installer](https://aka.ms/appsvcupdateq3installer) ([release notes](../operator/app-service-release-notes-2020-Q3.md)) |
 > | 2005 | 2020.Q2 [Installer](https://aka.ms/appsvcupdateq2installer) ([release notes](../operator/app-service-release-notes-2020-Q2.md)) |
-> | 2002 | 2020.Q2 [Installer](https://aka.ms/appsvcupdateq3installer) ([release notes](../operator/app-service-release-notes-2020-Q2.md)) |
+> | 2002 | 2020.Q2 [Installer](https://aka.ms/appsvcupdateq2installer) ([release notes](../operator/app-service-release-notes-2020-Q2.md)) |
