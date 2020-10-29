@@ -43,7 +43,7 @@ To view the status of a scale unit:
    - Total number of cores.
    - Total amount of memory.
 
-![status of a scale unit](media/azure-stack-node-actions/multinodeactions.png)
+     ![status of a scale unit](media/azure-stack-node-actions/multinode-actions.png)
 
 ### Node operational states
 

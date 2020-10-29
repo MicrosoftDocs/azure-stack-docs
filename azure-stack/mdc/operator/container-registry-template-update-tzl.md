@@ -28,9 +28,9 @@ Azure Stack Hub users can update their container registry deployment to a more r
 
 ### Operator
 
-1.  Syndicate the latest AKS Base Image from the Azure Stack Marketplace. The AKS Base Image is updated on a monthly cadence.
+- Syndicate the latest AKS Base Image from the Azure Stack Marketplace. The AKS Base Image is updated on a monthly cadence.
 
-> ![AKS base image](./media/container-registry-template-updating-tzl/aks-base-image.png)
+  ![AKS base image](./media/container-registry-template-updating-tzl/aks-base-image.png)
 
 ### User
 
