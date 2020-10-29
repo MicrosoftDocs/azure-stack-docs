@@ -6,7 +6,7 @@ author: JohnCobb1
 ms.author: v-johcob
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/26/2020
+ms.date: 10/29/2020
 ---
 
 # Azure Stack HCI FAQ
@@ -81,4 +81,50 @@ This FAQ area includes the following information.
 ### Does my data stored on Azure Stack HCI get sent to the cloud?
 Generally, no. The names, metadata, configuration, and contents of your on-premises virtual machines (VMs) is never sent to the cloud unless you turn on additional services expressly for that purpose, like Azure Backup or Azure Site Recovery, or unless you enroll those VMs individually into cloud management services like Azure Arc.
 
+## Edge-local management and control
+This FAQ area includes the following information.
 
+### Does the control plane for Azure Stack HCI go through the cloud?
+Generally no, although it depends on which features you’re using. You can use edge-local tools, such as Windows Admin Center, PowerShell, or System Center, to directly manage the host infrastructure and VMs even if your network connection to the cloud is down or severely limited. Common everyday operations, such as moving a VM between hosts, replacing a failed drive, or configuring IP addresses don’t rely on the cloud. However, cloud connectivity is required to obtain over-the-air software updates, change your Azure registration, or use features that directly rely on cloud services for backup, monitoring, and more.
+
+### Are there bandwidth or latency requirements between Azure Stack HCI and the cloud?
+Generally no, although it depends on which features you’re using. Limited-bandwidth connections like rural T1 lines or satellite/cellular connections are adequate for Azure Stack HCI to sync. The minimum required connectivity is just several kilobytes per day. Additional services may require additional bandwidth, especially to replicate or back up whole VMs, download large software updates, or upload verbose logs for analysis and monitoring in the cloud.
+
+## Designed for intermittent and limited connectivity
+This FAQ area includes the following information.
+
+### Does Azure Stack HCI require continuous connectivity to the cloud?
+No. Azure Stack HCI is designed to handle periods of limited or zero connectivity.
+
+### What happens if my network connection to the cloud temporarily goes down?
+While your connection is down, all host infrastructure and VMs continue to run normally, and you can use edge-local tools for management. You would not be able to use features that directly rely on cloud services, and information in the Azure Portal would become out-of-date until Azure Stack HCI is able to sync again.
+
+### How long can Azure Stack HCI run with the connection down?
+At the minimum, Azure Stack HCI needs to sync successfully with Azure once per 30 consecutive days.
+
+### What happens if the 30-day limit is exceeded?
+If Azure Stack HCI hasn’t synced with Azure in more than 30 consecutive days, the cluster’s connection status will show **Out of policy** in the Azure Portal and other tools, and the cluster will enter a reduced functionality mode. In this mode, the host infrastructure stays up and all current VMs continue to run normally, but new VMs can’t be created until Azure Stack HCI is able to sync again. The internal technical reason is that the cluster’s cloud-generated license has expired and needs to be renewed by syncing with Azure.
+
+## Understanding sync
+This FAQ area includes the following information.
+
+### What content does Azure Stack HCI sync with the cloud?
+This depends on which features you’re using. At the minimum, Azure Stack HCI syncs basic cluster information to display in the Azure Portal (like the list of clustered nodes, hardware model, and software version); billing information that summarizes accrued core-days since the last sync; and minimal required diagnostic information that helps Microsoft keep your Azure Stack HCI secure, up-to-date, and working properly. The total size is very small – a few kilobytes. If you turn on additional services, they may upload more: for example, Azure Log Analytics would upload logs and performance counters for monitoring.
+
+### How often does Azure Stack HCI sync with the cloud?
+This depends on which features you’re using. At the minimum, Azure Stack HCI will try to sync every 12 hours. If sync doesn’t succeed, the content is simply retained locally and sent with the next successful sync. In addition to this regular timer, you can manually sync any time, using either the `Sync-AzureStackHCI` PowerShell cmdlet or from Windows Admin Center. If you turn on additional services, they may upload more frequently: for example, Azure Log Analytics would upload every 5 minutes for monitoring.
+
+## Data residency
+This FAQ area includes the following information.
+
+### Where does the synced information actually go?
+Azure Stack HCI syncs with the Azure region you chose during initial registration. The default is East US. Azure Stack HCI is also available in West Europe and we’re working to expand to more regions. For example, if you registered with East US, then your information is synced only to that region and stored only within the United States, in a secure Microsoft-operated datacenter. To learn more, see [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
+
+## Disconnected or “air-gapped”
+This FAQ area includes the following information.
+
+### Can I use Azure Stack HCI and never connect to Azure?
+No. Azure Stack HCI needs to sync successfully with Azure once per 30 consecutive days.
+
+### Can I transfer data offline between an "air-gapped" Azure Stack HCI and Azure?
+No. There is currently no mechanism to register and sync between on-premises and Azure without network connectivity. For example, you cannot transport certificates or billing data using removable storage. If there is sufficient customer demand, we are open to exploring such a feature in the future. Let us know in the [Azure Stack HCI feedback forum](https://feedback.azure.com/forums/929833-azure-stack-hci).
