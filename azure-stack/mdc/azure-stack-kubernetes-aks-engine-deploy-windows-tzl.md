@@ -27,8 +27,8 @@ The AKS engine is a command-line tool used to deploy and manage your Kubernetes 
 
 When choosing your client machine, consider:
 
-1. If the client machine should be recoverable in case of a disaster.
-3. How you will connect to the client machine and how the machine will interact with your cluster.
+- If the client machine should be recoverable in case of a disaster.
+- How you will connect to the client machine and how the machine will interact with your cluster.
 
 ## Install in a connected environment
 
