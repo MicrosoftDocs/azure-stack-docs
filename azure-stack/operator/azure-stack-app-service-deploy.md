@@ -96,11 +96,7 @@ To deploy App Service resource provider, follow these steps:
    >[!NOTE]
    >The installer tries to test connectivity to the file share before proceeding. But, if you're deploying to an existing virtual network, this connectivity test might fail. You're given a warning and a prompt to continue. If the file share info is correct, continue the deployment.
 
-<<<<<<< HEAD
    ![App Service Installer][5]
-=======
-   ![Screenshot that shows the fileshare configuration in the App Service installer.][7]
->>>>>>> master
 
 9. On the next App Service Installer page, follow these steps:
 
@@ -114,11 +110,7 @@ To deploy App Service resource provider, follow these steps:
 
    e. Select **Next**.
 
-<<<<<<< HEAD
    ![App Service Installer][6]
-=======
-   ![Screenshot that shows where to type the Identity App information in the App Service installer.][9]
->>>>>>> master
 
 10. For each of the three certificate file boxes, select **Browse** and navigate to the appropriate certificate file. You must provide the password for each certificate. These certificates are the ones that you created in [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md). Select **Next** after entering all the information.
 
@@ -130,19 +122,11 @@ To deploy App Service resource provider, follow these steps:
 
     If you used a different domain suffix when you created the certificates, your certificate file names don't use *local.AzureStack.external*. Instead, use your custom domain info.
 
-<<<<<<< HEAD
     ![App Service Installer][7]
 
 11. Enter the SQL Server details for the server instance used to host the App Service resource provider database and then select **Next**. The installer validates the SQL connection properties.<br><br>The App Service installer tries to test connectivity to the SQL Server before proceeding. If you're deploying to an existing virtual network, this connectivity test might fail. You're given a warning and a prompt to continue. If the SQL Server info is correct, continue the deployment.
 
     ![App Service Installer][8]
-=======
-    ![Screenshot that shows where to type the certificate locations and passwords in the App Service installer.][10]
-
-11. Enter the SQL Server details for the server instance used to host the App Service resource provider database and then select **Next**. The installer validates the SQL connection properties.<br><br>The App Service installer tries to test connectivity to the SQL Server before proceeding. If you're deploying to an existing virtual network, this connectivity test might fail. You're given a warning and a prompt to continue. If the SQL Server info is correct, continue the deployment.
-
-    ![Screenshot that shows where to type the SQL configuration information in the App Service installer.][11]
->>>>>>> master
 
 12. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in a production deployment.  For ASDK deployment, you can scale the instances down to lower SKUs to reduce the core and memory commit but you will experience a performance degradation. A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, select **Next**.
 
@@ -157,11 +141,7 @@ To deploy App Service resource provider, follow these steps:
     | FrontEnd | 1 | Standard_A4_v2 - (4 cores, 8192 MB) | Routes requests to App Service apps. |
     | Shared Worker | 1 | Standard_A4_v2 - (4 cores, 8192 MB) | Hosts web or API apps and Azure Functions apps. You might want to add more instances. As an operator, you can define your offering and choose any SKU tier. The tiers must have a minimum of one vCPU. |
 
-<<<<<<< HEAD
     ![App Service Installer][9]
-=======
-    ![Screenshot that shows where you configure worker roles in the App Service installer.][13]
->>>>>>> master
 
     > [!NOTE]
     > **Windows Server 2016 Core isn't a supported platform image for use with Azure App Service on Azure Stack Hub.  Don't use evaluation images for production deployments.**
@@ -176,11 +156,7 @@ To deploy App Service resource provider, follow these steps:
 
      c. Select **Next**.
 
-<<<<<<< HEAD
     ![App Service Installer][10]
-=======
-    ![Screenshot that shows where to configure worker role credentials in the App Service installer.][15]
->>>>>>> master
 
 15. On the App Service Installer summary page, follow these steps:
 
@@ -190,11 +166,7 @@ To deploy App Service resource provider, follow these steps:
 
     c. To start the deployment, select **Next**.
 
-<<<<<<< HEAD
     ![App Service Installer][11]
-=======
-    ![Screenshot that shows the stack deployment summary information in the App Service installer.][16]
->>>>>>> master
 
 16. On the next App Service Installer page, follow these steps:
 
@@ -202,11 +174,7 @@ To deploy App Service resource provider, follow these steps:
 
     b. After the installer successfully finishes, select  **Exit**.
 
-<<<<<<< HEAD
     ![App Service Installer][12]
-=======
-    ![Screenshot that shows the deployment progress in the App Service installer.][17]
->>>>>>> master
 
 ## Post-deployment Steps
 
