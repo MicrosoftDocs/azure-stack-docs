@@ -56,7 +56,7 @@ You can easily see all VMs on a server or in your cluster.
     - Replicate a VM using Azure Site Recovery.
     - For operations that can be run on multiple VMs, such as Start, Shut down, Save, Pause, Delete, or Reset, you can select multiple VMs and run the operation once.
 
-## View VM metrics
+## View VM details
 
 You can view detailed information and performance charts for a specific VM from its dedicated page.
 
@@ -166,6 +166,8 @@ You can easily move a virtual machine to another server in the cluster as follow
 1. Under **Move Virtual Machine**, select **Failover cluster**, then enter the cluster name and cluster node to move the VM to.
 1. After a successful move, you will see the name updated in the list under **Host server**.
 
+:::image type="content" source="media/manage-vm/vm-move-storage.png" alt-text="Move VM Storage screen" lightbox="media/manage-vm/vm-move-storage.png":::
+
 ## Import or Export a VM
 
 You can easily import or export a VM. The following procedure describes the import process.
@@ -180,6 +182,8 @@ You can easily import or export a VM. The following procedure describes the impo
 1. When finished, select **Import**.
 
 For exporting a VM, the process is very similar. simply select **More > Export** instead.
+
+:::image type="content" source="media/manage-vm/vm-export.png" alt-text="Export VM screen" lightbox="media/manage-vm/vm-export.png":::
 
 ## View VM event logs
 
