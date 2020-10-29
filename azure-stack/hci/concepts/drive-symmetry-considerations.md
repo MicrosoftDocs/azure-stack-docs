@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/01/2020
+ms.date: 10/29/2020
 ---
 
 # Drive symmetry considerations for Azure Stack HCI
@@ -20,6 +20,8 @@ In reality, we recognize this is not always practical, because Azure Stack HCI i
 This topic explains the constraints and provides examples of supported and unsupported configurations.
 
 ## Constraints
+
+This section explains constraints in terms of drive type, model, size, and number of drives.
 
 ### Type
 

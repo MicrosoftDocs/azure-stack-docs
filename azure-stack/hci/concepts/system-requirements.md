@@ -6,14 +6,14 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/28/2020
+ms.date: 10/29/2020
 ---
 
 # System requirements for Azure Stack HCI
 
 > Applies to: Azure Stack HCI, version 20H2
 
-Use this topic to choose servers, storage, and networking components for Azure Stack HCI.
+Use this topic to assess system requirements for servers, storage, and networking for Azure Stack HCI.
 
 ## Server requirements
 
