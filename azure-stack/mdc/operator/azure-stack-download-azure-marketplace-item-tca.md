@@ -96,7 +96,7 @@ You can [download the offline syndication tools here](https://aka.ms/azsSyndicat
        -TenantName mytenant.onmicrosoft.com -DownloadFolder 'F:\offlineSyndication'
     ```
 
-    Alternatively, if you've already logged in through Azure Powershell, you can pass in the Azure context:
+    Alternatively, if you've already logged in through Azure PowerShell, you can pass in the Azure context:
 
     ```powershell
     Add-AzureRmAccount -Environment AzureCloud -Tenant mytenant.onmicrosoft.com 
@@ -127,7 +127,7 @@ You can [download the offline syndication tools here](https://aka.ms/azsSyndicat
     .\Invoke-AzsMarketplaceUpload.ps1 -AzureStackCloudName "AzureStack-Admin" -AzureStackAdminARMEndpoint https://adminmanagement.<region>.<fqdn> -TenantName mytenant.onmicrosoft.com -DownloadFolder F:\offlineSyndication
     ```
 
-    Alternatively, you can set up the Azure Stack environment yourself in Azure Powershell, authenticate to the admin Resource Manager endpoint, and pass the context to the script:
+    Alternatively, you can set up the Azure Stack environment yourself in Azure PowerShell, authenticate to the admin Resource Manager endpoint, and pass the context to the script:
 
     ```powershell
     Add-AzureRmEnvironment -Name Redmond-Admin -ARMEndpoint https://adminmanagement.redmond.azurestack.corp.microsoft.com
