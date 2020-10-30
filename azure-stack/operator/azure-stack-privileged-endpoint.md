@@ -31,6 +31,8 @@ The PEP logs every action (and its corresponding output) that you perform in the
 > [!NOTE]
 > In the Azure Stack Development Kit (ASDK), you can run some of the commands available in the PEP directly from a PowerShell session on the development kit host. However, you may want to test some operations using the PEP, such as log collection, because this is the only method available to perform certain operations in an integrated systems environment.
 
+[!INCLUDE [Azure Stack Hub Operator Access Workstation](../includes/azure-stack\includes\operator-note-owa.md)]
+
 ## Access the privileged endpoint
 
 You access the PEP through a remote PowerShell session on the virtual machine (VM) that hosts the PEP. In the ASDK, this VM is named **AzS-ERCS01**. If you're using an integrated system, there are three instances of the PEP, each running inside a VM (*Prefix*-ERCS01, *Prefix*-ERCS02, or *Prefix*-ERCS03) on different hosts for resiliency.
