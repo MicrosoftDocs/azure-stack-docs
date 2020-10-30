@@ -490,6 +490,11 @@
       "source_path": "azure-stack/operator/azure-stack-update-servicing-policy.md", 
       "redirect_url": "/azure-stack/operator/azure-stack-servicing-policy", 
       "redirect_document_id": true 
-    }
+    },
+    { 
+      "source_path": "azure-stack/hci/deploy/before-you-start.md", 
+      "redirect_url": "/azure-stack/hci/concepts/system-requirements", 
+      "redirect_document_id": false 
+    }    
   ]
 }

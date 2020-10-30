@@ -27,7 +27,7 @@ If you’re interested in testing Azure Stack HCI, but have limited or no spare 
 
 Before you run the Create Cluster wizard, make sure you:
 
-- Have read the hardware and other requirements in [Before you deploy Azure Stack HCI](before-you-start.md).
+- Have read the hardware and other requirements in [System requirements](../concepts/system-requirements.md).
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
 - Have an account that’s a member of the local Administrators group on each server.
 - Install Windows Admin Center on a PC or server for management. See [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).

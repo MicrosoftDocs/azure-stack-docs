@@ -62,10 +62,6 @@ The following table lists some of the terms used in this guide.
 |Isilon storage |    An Azure Stack Hub component that is specific to the MDC solution. Isilon provides additional blob and file storage for Azure Stack Hub workloads. Each pod includes 48 Isilon storage nodes.|
 |Pod    |In the context of MDC, a pod is an independent logical unit consisting of two interconnected physical racks. A complete solution includes three pods installed in a single container.|
 
-
-
-
-
 ## Deployment workflow
 
 At a high level, the MDC deployment process consists of the following steps:
