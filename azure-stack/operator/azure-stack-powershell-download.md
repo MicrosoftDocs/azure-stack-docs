@@ -19,7 +19,7 @@ ms.lastreviewed: 8/28/2020
 
 **AzureStack-Tools** is a [GitHub repository](https://github.com/Azure/AzureStack-Tools) that hosts PowerShell modules for managing and deploying resources to Azure Stack Hub. If you're planning to establish VPN connectivity, you can download these PowerShell modules to the Azure Stack Development Kit (ASDK), or to a Windows-based external client. 
 
-[!INCLUDE [Azure Stack Hub Operator Access Workstation](../includes/azure-stack\includes\operator-note-owa.md)]
+[!INCLUDE [Azure Stack Hub Operator Access Workstation](../includes/operator-note-owa.md)]
 
 ## Get the tools
 

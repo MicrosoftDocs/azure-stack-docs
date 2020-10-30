@@ -31,7 +31,7 @@ The PEP logs every action (and its corresponding output) that you perform in the
 > [!NOTE]
 > In the Azure Stack Development Kit (ASDK), you can run some of the commands available in the PEP directly from a PowerShell session on the development kit host. However, you may want to test some operations using the PEP, such as log collection, because this is the only method available to perform certain operations in an integrated systems environment.
 
-[!INCLUDE [Azure Stack Hub Operator Access Workstation](../includes/azure-stack\includes\operator-note-owa.md)]
+[!INCLUDE [Azure Stack Hub Operator Access Workstation](../includes/operator-note-owa.md)]
 
 ## Access the privileged endpoint
 

@@ -84,7 +84,7 @@ The Azure Stack Hub tools GitHub repository contains PowerShell modules that sup
 
 To ensure you're using the latest version, delete any existing versions of the Azure Stack Hub tools and [download the latest version from GitHub](azure-stack-powershell-download.md) before registering with Azure.
 
-[!INCLUDE [Azure Stack Hub Operator Access Workstation](../includes/azure-stack\includes\operator-note-owa.md)]
+[!INCLUDE [Azure Stack Hub Operator Access Workstation](../includes/operator-note-owa.md)]
 
 ### Determine your billing model
 ::: zone pivot="state-connected"

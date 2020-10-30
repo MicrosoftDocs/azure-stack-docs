@@ -31,7 +31,7 @@ To access the administrator portal, browse to the portal URL and sign in by usin
 > [!TIP]
 > For an ASDK environment, you need to first make sure that you can [connect to the development kit host](../asdk/asdk-connect.md) through Remote Desktop Connection or through a virtual private network (VPN).
 
-[!INCLUDE [Azure Stack Hub Operator Access Workstation](../includes/azure-stack\includes\operator-note-owa.md)]
+[!INCLUDE [Azure Stack Hub Operator Access Workstation](../includes/operator-note-owa.md)]
 
  ![Azure Stack Hub administrator portal](media/azure-stack-manage-portals/admin-portal.png)
 
