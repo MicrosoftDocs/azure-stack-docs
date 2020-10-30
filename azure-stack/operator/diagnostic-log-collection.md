@@ -13,7 +13,7 @@ ms.lastreviewed: 10/30/2020
 ---
 # Diagnostic log collection
 
-Azure Stack Hub is a collection of both Windows components and on-premise Azure services interacting with each other. All these components and services generate their own set of logs. Since Microsoft Support uses these logs to identify and fix your issues, we offer diagnostic log collection. Diagnostic log collection helps you quickly collect and share diagnostic logs with Microsoft Support.
+Azure Stack Hub is a collection of both Windows components and on-premises Azure services interacting with each other. All these components and services generate their own set of logs. Since Microsoft Support uses these logs to identify and fix your issues, we offer diagnostic log collection. Diagnostic log collection helps you quickly collect and share diagnostic logs with Microsoft Support.
 
 > [!IMPORTANT]
 > You have to register Azure Stack Hub to use diagnostic log collection. If you haven't registered Azure Stack Hub, use [the privileged endpoint (PEP)](azure-stack-get-azurestacklog.md) to share logs. 
@@ -62,8 +62,8 @@ Logs collected using **Proactive log collection** are uploaded to an Azure stora
 Send logs now is an option where you manually collect and upload your diagnostic logs from Azure Stack Hub, usually before opening a support case.
 
 There are two ways you can manually send diagnostic logs to Microsoft Support:
-1. [the Administrator portal (recommended)](#send-logs-now-with-the-administrator-portal)
-2. [PowerShell](#send-logs-now-with-powershell)
+* [Administrator portal (recommended)](#send-logs-now-with-the-administrator-portal)
+* [PowerShell](#send-logs-now-with-powershell)
 
 If Azure Stack Hub is connected to Azure, we recommend using the administrator portal because it's the simplest way to send the logs directly to Microsoft. If the portal is unavailable, you should instead send logs using PowerShell.
 
