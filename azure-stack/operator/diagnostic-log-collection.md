@@ -44,6 +44,16 @@ Proactive log collection can be disabled and re-enabled anytime. Follow these st
 > [!NOTE]
 > If log location settings are configured for a local file share, make sure lifecycle management policies will prevent share storage from reaching its size quota. Azure Stack Hub does not monitor local file share or enforce any retention policies.   
 
+### How the data is handled
+
+You agree to periodic automatic log collections by Microsoft based only on Azure Stack Hub system health alerts. You also acknowledge and consent to the upload and retention of those logs in an Azure storage account managed and controlled by Microsoft.
+
+The data will be used only troubleshooting system health alerts and won't be used for marketing, advertising, or any other commercial purposes without your consent. The data can be retained for up to 90 days and any data Microsoft collects will be handled following our [standard privacy practices](https://privacy.microsoft.com/).
+
+Any data previously collected with your consent won't be affected by the revocation of your permission.
+
+Logs collected using **Proactive log collection** are uploaded to an Azure storage account managed and controlled by Microsoft. These logs may be accessed by Microsoft in the context of a support case and to improve the health of Azure Stack Hub.
+
 ## Send logs now
 
 > [!TIP]
@@ -66,7 +76,7 @@ To send logs now using the administrator portal:
 1. Choose the local time zone.
 1. Select **Collect and Upload**.
 
-If you are disconnected from the internet or want to only save logs locally, use the [Get-AzureStackLog](azure-stack-get-azurestacklog.md) method to send logs. 
+If you are disconnected from the internet or want to only save logs locally, use the [Get-AzureStackLog](azure-stack-get-azurestacklog.md) method to send logs.
 
 ### Send logs now with PowerShell
 
@@ -131,6 +141,9 @@ If you're using the **Send logs now** method and want to use PowerShell instead 
 > [!NOTE]
 > If you are disconnected from the internet or want to only save logs locally, use [Get-AzureStackLog](azure-stack-get-azurestacklog.md) method to send logs. 
 
+### How the data is handled
+
+By initiating diagnostic log collection from Azure Stack Hub, you acknowledge and consent to uploading those logs and retaining them in an Azure storage account managed and controlled by Microsoft. Microsoft Support can access these logs right away with the support case without having to engage with the customer for log collection.
 
 ::: moniker range=">= azs-2005"
 
@@ -197,14 +210,6 @@ For example, **Update failed** is an alert that triggers proactive diagnostic lo
 |Node inaccessible for virtual machine placement | AzureStack.ComputeController.HostUnresponsive |
 |Backup failed  | AzureStack.BackupController.BackupFailedGeneralFault |
 |The scheduled backup was skipped due to a conflict with failed operations    | AzureStack.BackupController.BackupSkippedWithFailedOperationFault |
-
-## How the data is handled
-
-If you enable **Send logs proactively**, you agree to periodic automatic log collections by Microsoft based only on Azure Stack Hub system health alerts. You also acknowledge and consent to the upload and retention of those logs in an Azure storage account managed and controlled by Microsoft.
-
-The data will be used only troubleshooting system health alerts and won't be used for marketing, advertising, or any other commercial purposes without your consent. The data can be retained for up to 90 days and any data Microsoft collects will be handled following our [standard privacy practices](https://privacy.microsoft.com/).
-
-Any data previously collected with your consent won't be affected by the revocation of your permission.
 
 ## See also
 
