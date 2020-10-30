@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/09/2020
+ms.date: 10/28/2020
 ---
 
 # What is the deployment process for Azure Stack HCI?
@@ -33,41 +33,39 @@ If your Azure Stack HCI deployment will stretch across multiple sites, determine
 
 ## Deploy
 
-### 1. Before you begin
+Before you deploy the OS, determine whether your hardware meets the [system requirements](../concepts/system-requirements.md) for Azure Stack HCI. Then, [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) to manage your Azure Stack HCI cluster.
 
-Before you start, [determine whether your hardware meets the base requirements and gather information needed](before-you-start.md) for deploying Azure Stack HCI. Then, [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) to manage your Azure Stack HCI cluster.
+### 1. Deploy Azure Stack HCI
 
-### 2. Deploy Azure Stack HCI
+[Download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) and deploy the Azure Stack HCI [operating system](operating-system.md) on each server you want to cluster. If you've purchased Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://azure.microsoft.com/en-us/products/azure-stack/hci/catalog/) through your preferred Microsoft hardware partner, the Azure Stack HCI operating system should be pre-installed. In that case, you can skip this step and move on to #2.
 
-[Download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) and deploy the Azure Stack HCI [operating system](operating-system.md) on each server you want to cluster.
-
-### 3. Create the cluster
+### 2. Create the cluster
 
 Create a failover cluster using [Windows Admin Center](create-cluster.md) or [PowerShell](create-cluster-powershell.md). For native disaster recovery and business continuity, you can deploy a [stretched cluster](../concepts/stretched-clusters.md) that spans two geographically separate sites.
 
-### 4. Set up a cluster witness
+### 3. Set up a cluster witness
 
 [Setting up a witness resource](witness.md) is mandatory for all clusters. Two-node clusters need a witness so that either server going offline does not cause the other node to become unavailable as well. Three and higher-node clusters need a witness to be able to withstand two servers failing or being offline. 
 
-### 5. Register with Azure
+### 4. Register with Azure
 
 Azure Stack HCI requires a connection to Azure. To connect your cluster to Azure, see [register Azure Stack HCI with Azure](register-with-azure.md). Once registered, the cluster connects automatically in the background.
 
-### 6. Validate the cluster
+### 5. Validate the cluster
 
 After creating and registering the cluster, [run cluster validation tests](validate.md) to catch hardware or configuration problems before the cluster goes into production.
 
-### 7. Deploy storage
+### 6. Deploy storage
 
 [Create volumes](../manage/create-volumes.md) on a single-site cluster, or [create volumes and set up replication on a stretched cluster](../manage/create-stretched-volumes.md).
 
-### 8. Deploy workloads
+### 7. Deploy workloads
 
 You are now ready to [create virtual machines](../manage/vm.md) and deploy workloads on Azure Stack HCI using Windows Admin Center.
 
 ## Next steps
 
-Learn what you need to do before deploying Azure Stack HCI.
+Learn how to deploy the Azure Stack HCI operating system.
 
 > [!div class="nextstepaction"]
-> [Before you begin](before-you-start.md)
+> [Deploy the Azure Stack HCI operating system](operating-system.md)
