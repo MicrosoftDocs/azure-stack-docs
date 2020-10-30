@@ -39,7 +39,7 @@ The following diagram shows both Site 1 and Site 2 as being active sites, with b
 
 ## Next steps
 
-- Learn about hardware and other requirements for stretched clusters. See [Before you start](../deploy/before-you-start.md).
+- Learn about hardware and other requirements for stretched clusters. See [System requirements](system-requirements.md).
 - Learn how to deploy a stretched cluster using Windows Admin Center. See [Create a cluster using Windows Admin Center](../deploy/create-cluster.md).
 - Learn how to deploy a stretched cluster using PowerShell. See [Create a cluster using PowerShell](../deploy/create-cluster-powershell.md).
 - Learn how to create volumes and set up replication for stretched clusters. See [Create volumes and set up replication for stretched clusters](../manage/create-stretched-volumes.md).

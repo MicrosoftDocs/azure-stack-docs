@@ -16,7 +16,7 @@ Setting up a witness resource is mandatory for all clusters, and should be set u
 
 You can either use an SMB file share as a witness or use an Azure cloud witness. An Azure cloud witness is recommended, provided all server nodes in the cluster have a reliable internet connection. For more information, see [Deploy a Cloud Witness for a Failover Cluster](/windows-server/failover-clustering/deploy-cloud-witness).
 
-For file-share witnesses, there are requirements for the file server. See [Before you deploy Azure Stack HCI](before-you-start.md) for more information.
+For file-share witnesses, there are requirements for the file server. See [System requirements](../concepts/system-requirements.md) for more information.
 
 ## Set up a witness using Windows Admin Center
 
