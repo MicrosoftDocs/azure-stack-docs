@@ -116,7 +116,7 @@ The cluster running Azure Stack HCI, version 20H2 or later has the following req
 - At least 30 GB of available memory for running Azure Kubernetes Service VMs
 - All servers in the cluster must use the EN-US region and language selection for this preview release
 
-For general Azure Stack HCI requirements, see [Before you deploy Azure Stack HCI](../hci/deploy/before-you-start.md).
+For general Azure Stack HCI system requirements, see [Azure Stack HCI system requirements](../hci/concepts/system-requirements.md).
 
 ### The network configuration for Azure Stack HCI
 

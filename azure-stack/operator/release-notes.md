@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 10/08/2020
+ms.date: 10/26/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 08/11/2020
@@ -96,6 +96,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Removed the actions to stop, shut down, and restart an infrastructure role instance from the admin portal. The corresponding APIs have also been removed in the Fabric Resource Provider. The following PowerShell cmdlets in the admin RM module and AZ preview for Azure Stack Hub no longer work: **Stop-AzsInfrastructureRoleInstance**, **Disable-InfrastructureRoleInstance**, and **Restart-InfrastructureRoleInstance**. These cmdlets will be removed from the next admin AZ module release for Azure Stack Hub.
 - Azure Stack Hub 2005 now only supports [App Service on Azure Stack Hub 2020 (versions 87.x)](app-service-release-notes-2020-Q2.md).
+- The user encryption setting that is required for hardware monitoring was changed from DES to AES to increase security. Please reach out to your hardware partner to learn how to change the setting in the base board management controller (BMC). After the change is made in the BMC, it may require you to run the command **Set-BmcCredential** again using the priviledged endpoint. For more information, see [Rotate secrets in Azure Stack Hub](azure-stack-rotate-secrets.md)
 
 ### Fixes
 
@@ -142,7 +143,7 @@ Starting with the 2005 release, when you update to a new major version (for exam
 
 After the installation of 2005, if any 2005 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2005.18.78](https://support.microsoft.com/help/4584238)
+- [Azure Stack Hub hotfix 1.2005.19.80](https://support.microsoft.com/help/4591132)
 ::: moniker-end
 
 ::: moniker range="azs-2002"
@@ -264,7 +265,7 @@ For more information about hotfixes, see the [Azure Stack Hub servicing policy](
 The 2002 release of Azure Stack Hub must be applied on the 1910 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1910.63.186](https://support.microsoft.com/help/4574735)
+- [Azure Stack Hub hotfix 1.1910.81.224](https://support.microsoft.com/help/4583406)
 
 ### After successfully applying the 2002 update
 
@@ -423,14 +424,14 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 The 1910 release of Azure Stack Hub must be applied on the 1908 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1908.51.133](https://support.microsoft.com/help/4574734)
+- [Azure Stack Hub hotfix 1.1908.57.146](https://support.microsoft.com/help/4583007)
 
 ### After successfully applying the 1910 update
 
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1910.63.186](https://support.microsoft.com/help/4574735)
+- [Azure Stack Hub hotfix 1.1910.81.224](https://support.microsoft.com/help/4583406)
 ::: moniker-end
 
 <!------------------------------------------------------------>
