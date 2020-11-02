@@ -39,6 +39,13 @@ To access known issues for a different version, use the version selector dropdow
 
 For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
+### Update failed to install package Microsoft.AzureStack.Compute.Installer to CA VM
+
+- Applicable: This issue applies to all supported releases.
+- Cause: During update, a process takes a lock on the new content that needs to be copied to CA VM. When the update fails, the lock is released.
+- Remediation: Resume the update.
+- Occurrence: Rare
+
 ## Portal
 
 ### Administrative subscriptions
@@ -88,14 +95,6 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 <!-- ## Usage -->
 <!-- ### Identity -->
 <!-- ### Marketplace -->
-
-### Update failed to install package Microsoft.AzureStack.Compute.Installer to CA VM
-
-- Applicable: This issue applies to all supported releases.
-- Cause: During update, a process takes a lock on the new content that needs to be copied to CA VM. When the update fails, the lock is released.
-- Remediation: Resume the update.
-- Occurrence: Rare
-
 ::: moniker-end
 
 ::: moniker range="azs-2005"
