@@ -91,7 +91,7 @@ You must install Docker 19.02 or greater. The Docker runtime now supports the NV
 
 Docker containers can run anywhere, on-premises in the customer datacenter, in an external service provider or in the cloud, on Azure. Docker image containers can run natively on Linux and Windows. However, Windows images can run only on Windows hosts and Linux images can run on Linux hosts and Windows hosts (using a Hyper-V Linux VM, so far), where host means a server or a VM. For more information, see [What is Docker?](https://docs.microsoft.com/dotnet/architecture/microservices/container-docker-introduction/docker-defined).
 
-1. Connect on your N-series Linux server using your SSH client.
+1. Connect to your N-series Linux server using your SSH client.
 
 1.  Update the apt index and lists.
 
@@ -144,7 +144,7 @@ Docker containers can run anywhere, on-premises in the customer datacenter, in a
 
 ## Get the item from the marketplace
 
-Return to Azure portal and add the the model to your edge device using the iOT marketplace. Select **Marketplace Module** from the menu. And search for `Getting started with GPUs`, and follow the instructions to add the module.
+Return to the Azure portal and add the the model to your edge device using the iOT marketplace. Select **Marketplace Module** from the menu. And search for `Getting started with GPUs`, and follow the instructions to add the module.
 
 For instructions see [Select device and add modules](/azure/iot-edge/how-to-deploy-modules-portal#select-device-and-add-modules)
 
