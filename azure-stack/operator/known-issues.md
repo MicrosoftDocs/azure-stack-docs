@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 09/28/2020
+ms.date: 11/02/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -88,6 +88,13 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 <!-- ## Usage -->
 <!-- ### Identity -->
 <!-- ### Marketplace -->
+
+### Update failed to install package Microsoft.AzureStack.Compute.Installer to CA VM
+
+- Applicable: This issue applies to all supported releases.
+- Cause: During update, a process takes a lock on the new content that needs to be copied to CA VM. When the update fails, the lock is released.
+- Remediation: Resume the update.
+- Occurrence: Rare
 
 ::: moniker-end
 
