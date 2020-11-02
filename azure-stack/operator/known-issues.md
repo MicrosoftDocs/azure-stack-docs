@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 09/28/2020
+ms.date: 11/02/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 08/13/2020
@@ -126,6 +126,13 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Applicable: This issue applies to all releases.
 - Cause: When viewing details of a VM in the overview blade, the computer name shows as **(not available)**. This is by design for VMs created from specialized disks/disk snapshots, and appears for Marketplace images as well.
 - Remediation: View the **Properties** blade under **Settings**.
+
+### Update failed to install package Microsoft.AzureStack.Compute.Installer to CA VM
+
+- Applicable: This issue applies to all supported releases.
+- Cause: During update, a process takes a lock on the new content that needs to be copied to CA VM. When the update fails, the lock is released.
+- Remediation: Resume the update.
+- Occurrence: Rare
 
 ### Virtual machine scale set
 
@@ -309,6 +316,13 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Applicable: This issue applies to all supported releases.
 - Cause: When creating a new virtual machine, you may receive an error such as **This subscription is at capacity for Total Regional vCPUs on this location. This subscription is using all 50 Total Regional vCPUs available.**. This indicates that the quota for total cores available to you has been reached.
 - Remediation: Ask your operator for an add-on plan with additional quota. Editing the current plan's quota will not work or reflect increased quota.
+- Occurrence: Rare
+
+### Update failed to install package Microsoft.AzureStack.Compute.Installer to CA VM
+
+- Applicable: This issue applies to all supported releases.
+- Cause: During update, a process takes a lock on the new content that needs to be copied to CA VM. When the update fails, the lock is released.
+- Remediation: Resume the update.
 - Occurrence: Rare
 
 ### Virtual machine scale set
@@ -578,6 +592,13 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Applicable: This issue applies to 1910 and earlier releases.
 - Cause: Unable to connect to the Privileged Endpoint (ERC VMs) from a computer running a non-English version of Windows.
 - Remediation: This is a known issue that has been fixed in releases later than 1910. As a workaround you can run the **New-PSSession** and **Enter-PSSession** PowerShell cmdlets using the **en-US** culture; for examples, set the culture using this script: https://resources.oreilly.com/examples/9780596528492/blob/master/Use-Culture.ps1.
+- Occurrence: Rare
+
+### Update failed to install package Microsoft.AzureStack.Compute.Installer to CA VM
+
+- Applicable: This issue applies to all supported releases.
+- Cause: During update, a process takes a lock on the new content that needs to be copied to CA VM. When the update fails, the lock is released.
+- Remediation: Resume the update.
 - Occurrence: Rare
 
 ### Virtual machine scale set
