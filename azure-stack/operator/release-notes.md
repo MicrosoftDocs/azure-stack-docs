@@ -96,6 +96,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Removed the actions to stop, shut down, and restart an infrastructure role instance from the admin portal. The corresponding APIs have also been removed in the Fabric Resource Provider. The following PowerShell cmdlets in the admin RM module and AZ preview for Azure Stack Hub no longer work: **Stop-AzsInfrastructureRoleInstance**, **Disable-InfrastructureRoleInstance**, and **Restart-InfrastructureRoleInstance**. These cmdlets will be removed from the next admin AZ module release for Azure Stack Hub.
 - Azure Stack Hub 2005 now only supports [App Service on Azure Stack Hub 2020 (versions 87.x)](app-service-release-notes-2020-Q2.md).
+- The user encryption setting that is required for hardware monitoring was changed from DES to AES to increase security. Please reach out to your hardware partner to learn how to change the setting in the base board management controller (BMC). After the change is made in the BMC, it may require to run the command Set-BmcCredential again using the priviledged endpoint. For more details see [Rotate secrets in Azure Stack Hub](azure-stack-rotate-secrets.md)
 
 ### Fixes
 
