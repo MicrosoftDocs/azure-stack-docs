@@ -25,7 +25,7 @@ The Azure Stack Hub health and monitoring system monitors the status of the stor
 - Boot drives
 
 > [!NOTE]
-> Before you enable this feature, you must validate with your hardware partner that they're ready. Your hardware partner will also provide the detailed steps for enabling this feature in the baseboard management controller (BMC).
+> Before you enable this feature, you must validate with your hardware partner that they're ready. Your hardware partner will also provide the detailed steps for enabling this feature in the baseboard management controller (BMC). The user encryption in the base board management controller must be set to AES for build 2005 and later. 
 
 ## SNMP listener scenario
 
