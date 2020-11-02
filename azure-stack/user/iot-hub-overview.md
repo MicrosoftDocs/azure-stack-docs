@@ -100,5 +100,7 @@ IoT Hub on Azure Stack Hub allows you to create hybrid IoT solutions. IoT Hub is
 
 ## Next Steps
 
+If IoT Hub isn't available in your subscription, work with your administrator to [install the IoT Hub on Azure Stack Hub resource provider](../operator/iot-hub-rp-overview.md).
+
 To learn how to use IoT Hub, refer to [the Azure IoT Hub documentation](/azure/iot-hub/).
 
