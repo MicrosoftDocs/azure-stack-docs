@@ -46,7 +46,10 @@ Review this checklist in order to prepare for an Azure Stack Hub update. This ar
 | Resume updates | After remediating a failed update, [resume updates in Azure Stack Hub using the privileged endpoint](azure-stack-monitor-update.md). |
 
 > [!IMPORTANT]  
-> Do not run **Test-AzureStack** during an update, as this will cause the update to stall.
+> Do not run **Test-AzureStack** during an update, as this causes the update to stall.
+>
+>Do not run node repair during an update regardless of its state.
+>Please contact Microsoft Support if node repair is needed during update.
 
 ## After Azure Stack Hub update
 
