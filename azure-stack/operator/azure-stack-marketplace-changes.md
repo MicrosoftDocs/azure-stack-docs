@@ -3,7 +3,7 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 10/23/2020
+ms.date: 11/02/2020
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 05/28/2020
@@ -69,6 +69,64 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Updated marketplace items
 
+- 10/29/2020: [smalldisk] Windows Server 2008 R2 SP1-Pay as you go - version 7601.24561.2010082056
+- 10/29/2020: [smalldisk] Windows Server 2008 R2 SP1-Bring your own license - version 7601.24561.2010082056
+- 10/29/2020: Windows Server 2008 R2 SP1-Pay as you go - version 7601.24561.2010082056
+- 10/29/2020: Windows Server 2008 R2 SP1-Bring your own license - version 7601.24561.2010082056
+- 10/29/2020: Windows Server 2012 Datacenter-Pay as you go - version 9200.23179.2010090042
+- 10/29/2020: Windows Server 2012 Datacenter-Bring your own license - version 9200.23179.2010090042
+- 10/29/2020: [smalldisk] Windows Server 2012 Datacenter-Pay as you go - version 9200.23179.2010090042
+- 10/29/2020: [smalldisk] Windows Server 2012 Datacenter-Bring your own license - version 9200.23179.2010090042
+- 10/29/2020: [smalldisk] Windows Server 2012 R2 Datacenter-Pay as you go - version 9600.19847.2010090140
+- 10/29/2020: [smalldisk] Windows Server 2012 R2 Datacenter-Bring your own license - version 9600.19847.2010090140
+- 10/29/2020: Windows Server 2012 R2 Datacenter-Pay as you go - version 9600.19847.2010090140
+- 10/29/2020: Windows Server 2012 R2 Datacenter-Bring your own license - version 9600.19847.2010090140
+- 10/29/2020: Windows 10 Enterprise 2016 LTSB-Bring your own license - version 14393.3986.2010070045
+- 10/29/2020: Windows 10 Enterprise N 2016 LTSB-Bring your own license - version 14393.3986.2010070045
+- 10/29/2020: Windows Server 2016 Datacenter-Pay as you go - version 14393.3986.2010070045
+- 10/29/2020: Windows Server 2016 Datacenter-Bring your own license - version 14393.3986.2010070045
+- 10/29/2020: Windows Server 2016 Datacenter - Server Core-Pay as you go - version 14393.3986.2010070045
+- 10/29/2020: Windows Server 2016 Datacenter - Server Core-Bring your own license - version 14393.3986.2010070045
+- 10/29/2020: [smalldisk] Windows Server 2016 Datacenter-Pay as you go - version 14393.3986.2010070045
+- 10/29/2020: [smalldisk] Windows Server 2016 Datacenter-Bring your own license - version 14393.3986.2010070045
+- 10/29/2020: [smalldisk] Windows Server 2016 Datacenter - Server Core-Pay as you go - version 14393.3986.2010070045
+- 10/29/2020: [smalldisk] Windows Server 2016 Datacenter - Server Core-Bring your own license - version 14393.3986.2010070045
+- 10/29/2020: Windows Server 2019 Datacenter-Pay as you go - version 17763.1518.2010132039
+- 10/29/2020: Windows Server 2019 Datacenter-Bring your own license - version 17763.1518.2010132039
+- 10/29/2020: [smalldisk] Windows Server 2019 Datacenter Server Core-Pay as you go - version 17763.1518.2010132039
+- 10/29/2020: [smalldisk] Windows Server 2019 Datacenter Server Core-Bring your own license - version 17763.1518.2010132039
+- 10/29/2020: Windows Server 2019 Datacenter Server Core-Pay as you go - version 17763.1518.2010132039
+- 10/29/2020: Windows Server 2019 Datacenter Server Core-Bring your own license - version 17763.1518.2010132039
+- 10/29/2020: Windows Server 2019 Datacenter with Containers-Pay as you go - version 17763.1518.2010132039
+- 10/29/2020: Windows Server 2019 Datacenter with Containers-Bring your own license - version 17763.1518.2010132039
+- 10/29/2020: [smalldisk] Windows Server 2019 Datacenter Server Core with Containers-Pay as you go - version 17763.1518.2010132039
+- 10/29/2020: [smalldisk] Windows Server 2019 Datacenter Server Core with Containers-Bring your own license - version 17763.1518.2010132039
+- 10/29/2020: [smalldisk] Windows Server 2019 Datacenter with Containers-Pay as you go - version 17763.1518.2010132039
+- 10/29/2020: [smalldisk] Windows Server 2019 Datacenter with Containers-Bring your own license - version 17763.1518.2010132039
+- 10/29/2020: [smalldisk] Windows Server 2019 Datacenter-Pay as you go - version 17763.1518.2010132039
+- 10/29/2020: [smalldisk] Windows Server 2019 Datacenter-Bring your own license - version 17763.1518.2010132039
+- 10/29/2020: [smalldisk] Windows Server, version 1809 with Containers-Pay as you go - version 17763.1518.2010132039
+- 10/29/2020: [smalldisk] Windows Server, version 1809 with Containers-Bring your own license - version 17763.1518.2010132039
+- 10/29/2020: Windows Server 2019 Datacenter Server Core with Containers-Pay as you go - version 17763.1518.2010132039
+- 10/29/2020: Windows Server 2019 Datacenter Server Core with Containers-Bring your own license - version 17763.1518.2010132039
+- 10/29/2020: Windows 10 Pro, Version 1903-Bring your own license - version 18362.1139.2010070045
+- 10/29/2020: Windows 10 Enterprise multi-session, Version 1903-Bring your own license - version 18362.1139.2010070045
+- 10/29/2020: Windows 10 Pro N, Version 1903-Bring your own license - version 18362.1139.2010070045
+- 10/29/2020: Windows 10 Enterprise, Version 1903-Bring your own license - version 18362.1139.2010070045
+- 10/29/2020: Windows 10 Enterprise N, Version 1903-Bring your own license - version 18362.1139.2010070045
+- 10/29/2020: [smalldisk] Windows Server, version 1903 with Containers-Pay as you go - version 18362.1139.2010070045
+- 10/29/2020: [smalldisk] Windows Server, version 1903 with Containers-Bring your own license - version 18362.1139.2010070045
+- 10/29/2020: Windows 10 Enterprise, Version 1909-Bring your own license - version 18363.1139.2010080514
+- 10/29/2020: Windows 10 Pro N, Version 1909-Bring your own license - version 18363.1139.2010080514
+- 10/29/2020: Windows 10 Pro, Version 1909-Bring your own license - version 18363.1139.2010080514
+- 10/29/2020: Windows 10 Enterprise multi-session, Version 1909-Bring your own license - version 18363.1139.2010080514
+- 10/29/2020: Windows 10 Enterprise N, Version 1909-Bring your own license - version 18363.1139.2010080514
+- 10/29/2020: [smalldisk] Windows Server, version 1909 with Containers-Pay as you go - version 18363.1139.2010080514
+- 10/29/2020: [smalldisk] Windows Server, version 1909 with Containers-Bring your own license - version 18363.1139.2010080514
+- 10/29/2020: Windows 10 Enterprise, Version 2004-Bring your own license - version 19041.572.2010091946
+- 10/29/2020: Windows 10 Enterprise multi-session, Version 2004-Bring your own license - version 19041.572.2010091946
+- 10/29/2020: [smalldisk] Windows Server, version 2004 with Containers-Pay as you go - version 19041.572.2010091946
+- 10/29/2020: [smalldisk] Windows Server, version 2004 with Containers-Bring your own license - version 19041.572.2010091946
 - 10/22/2020: Azure Monitor, Update and Configuration Management – version 1.13.27
 - 10/22/2020: Windows Server 2008 R2 SP1-Pay as you go - version 7601.24560.2009040118
 - 10/22/2020: Windows Server 2008 R2 SP1-Bring your own license - version 7601.24560.2009040118
