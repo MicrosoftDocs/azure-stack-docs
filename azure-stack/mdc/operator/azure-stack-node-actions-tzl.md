@@ -36,8 +36,8 @@ To view the status of a scale unit:
    View the following information:
 
    - The list of individual nodes
-   - Operational Status (see list below)
-   - Power Status (running or stopped)
+   - Operational State (see list below)
+   - Power State (Running or Stopped)
    - Server model
    - IP address of the baseboard management controller (BMC)
    - Total number of cores
