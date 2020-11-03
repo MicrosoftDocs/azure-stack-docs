@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 09/28/2020
+ms.date: 11/02/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 08/13/2020
@@ -38,6 +38,13 @@ To access known issues for a different version, use the version selector dropdow
 ## Update
 
 For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
+
+### Update failed to install package Microsoft.AzureStack.Compute.Installer to CA VM
+
+- Applicable: This issue applies to all supported releases.
+- Cause: During update, a process takes a lock on the new content that needs to be copied to CA VM. When the update fails, the lock is released.
+- Remediation: Resume the update.
+- Occurrence: Rare
 
 ## Portal
 
@@ -171,6 +178,13 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 After applying the 2002 update, an alert for an "Invalid Time Source" may incorrectly appear in the Administrator portal. This false-positive alert can be ignored and will be fixed in an upcoming release. 
 
 For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
+
+### Update failed to install package Microsoft.AzureStack.Compute.Installer to CA VM
+
+- Applicable: This issue applies to all supported releases.
+- Cause: During update, a process takes a lock on the new content that needs to be copied to CA VM. When the update fails, the lock is released.
+- Remediation: Resume the update.
+- Occurrence: Rare
 
 ## Portal
 
@@ -367,6 +381,13 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 ## Update
 
 For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
+
+### Update failed to install package Microsoft.AzureStack.Compute.Installer to CA VM
+
+- Applicable: This issue applies to all supported releases.
+- Cause: During update, a process takes a lock on the new content that needs to be copied to CA VM. When the update fails, the lock is released.
+- Remediation: Resume the update.
+- Occurrence: Rare
 
 ## Portal
 
