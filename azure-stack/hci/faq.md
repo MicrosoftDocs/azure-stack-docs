@@ -13,7 +13,7 @@ ms.date: 11/03/2020
 The Azure Stack HCI FAQ includes a section on Azure Stack HCI connectivity and a general FAQ section.
 
 ## Azure Stack HCI connectivity
-Azure Stack HCI is an on-premises hyperconverged infrastructure stack delivered as an Azure hybrid service. You install the Azure Stack HCI software on physical servers that you control on your premises Then you connect to Azure for cloud-based monitoring, support, billing, and optional management and security features. This FAQ section clarifies how Azure Stack HCI uses the cloud by addressing frequently asked questions about connectivity requirements and behavior.
+Azure Stack HCI is an on-premises hyperconverged infrastructure stack delivered as an Azure hybrid service. You install the Azure Stack HCI software on physical servers that you control on your premises. Then you connect to Azure for cloud-based monitoring, support, billing, and optional management and security features. This FAQ section clarifies how Azure Stack HCI uses the cloud by addressing frequently asked questions about connectivity requirements and behavior.
 
 ### Your data stays on-premises
 
