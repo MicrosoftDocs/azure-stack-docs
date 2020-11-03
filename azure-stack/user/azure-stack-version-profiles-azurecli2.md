@@ -16,7 +16,7 @@ ms.lastreviewed: 10/26/2020
 
 # Install Azure CLI on Azure Stack Hub
 
-You can install the Azure CLI on Azure Stack Hub for use with Windows or Linux machines. This article walks you through the steps of installing and using installing and setting up Azure CLI.
+You can install the Azure CLI to manage Azure Stack Hub with a Windows or Linux machines. This article walks you through the steps of installing and setting up Azure CLI.
 
 ## Install Azure CLI
 
