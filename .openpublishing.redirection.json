@@ -1,18 +1,23 @@
 {
   "redirections": [
     { 
+      "source_path": "azure-stack/operator/azure-stack-diagnostic-log-collection-overview.md", 
+      "redirect_url": "/azure-stack/operator/diagnostic-log-collection", 
+      "redirect_document_id": false
+    },    
+    { 
       "source_path": "azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection.md", 
-      "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview", 
+      "redirect_url": "/azure-stack/operator/diagnostic-log-collection", 
       "redirect_document_id": false
     },
     { 
       "source_path": "azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal.md", 
-      "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview", 
+      "redirect_url": "/azure-stack/operator/diagnostic-log-collection", 
       "redirect_document_id": false
     },
     { 
       "source_path": "azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-powershell.md", 
-      "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview", 
+      "redirect_url": "/azure-stack/operator/diagnostic-log-collection", 
       "redirect_document_id": false
     },    
     { 
@@ -473,7 +478,7 @@
     },
     { 
       "source_path": "azure-stack/operator/azure-stack-diagnostic-log-collection-overview-tzl.md", 
-      "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview", 
+      "redirect_url": "/azure-stack/operator/diagnostic-log-collection", 
       "redirect_document_id": true 
     },
     { 
@@ -490,6 +495,11 @@
       "source_path": "azure-stack/operator/azure-stack-update-servicing-policy.md", 
       "redirect_url": "/azure-stack/operator/azure-stack-servicing-policy", 
       "redirect_document_id": true 
-    }
+    },
+    { 
+      "source_path": "azure-stack/hci/deploy/before-you-start.md", 
+      "redirect_url": "/azure-stack/hci/concepts/system-requirements", 
+      "redirect_document_id": false 
+    }    
   ]
 }

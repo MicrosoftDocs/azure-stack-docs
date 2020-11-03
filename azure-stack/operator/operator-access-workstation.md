@@ -47,7 +47,7 @@ param(
     $DownloadedOAWZipFilePath
 )
 
-$expectedHash = '97022E2FB06D4448A78E987ED3513831741BA89100B5972ABDAD629A93E01648'
+$expectedHash = 'CADAD42A1316C3E19819B8E197CEC279964805677D528F4CCFE2FC16D3119136'
 $actualHash = (Get-FileHash -Path $DownloadedOAWZipFilePath).Hash
 
 Write-Host "Expected hash: $expectedHash"
