@@ -39,7 +39,7 @@ No. Azure Stack HCI is designed to handle periods of limited or zero connectivit
 
 **What happens if my network connection to the cloud temporarily goes down?**
 
-While your connection is down, all host infrastructure and VMs continue to run normally, and you can use edge-local tools for management. You would not be able to use features that directly rely on cloud services, and information in the Azure Portal would become out-of-date until Azure Stack HCI is able to sync again.
+While your connection is down, all host infrastructure and VMs continue to run normally, and you can use edge-local tools for management. You would not be able to use features that directly rely on cloud services, and information in the Azure portal would become out-of-date until Azure Stack HCI is able to sync again.
 
 **How long can Azure Stack HCI run with the connection down?**
 
@@ -47,17 +47,17 @@ At the minimum, Azure Stack HCI needs to sync successfully with Azure once per 3
 
 **What happens if the 30-day limit is exceeded?**
 
-If Azure Stack HCI hasn’t synced with Azure in more than 30 consecutive days, the cluster’s connection status will show **Out of policy** in the Azure Portal and other tools, and the cluster will enter a reduced functionality mode. In this mode, the host infrastructure stays up and all current VMs continue to run normally, but new VMs can’t be created until Azure Stack HCI is able to sync again. The internal technical reason is that the cluster’s cloud-generated license has expired and needs to be renewed by syncing with Azure.
+If Azure Stack HCI hasn’t synced with Azure in more than 30 consecutive days, the cluster’s connection status will show **Out of policy** in the Azure portal and other tools, and the cluster will enter a reduced functionality mode. In this mode, the host infrastructure stays up and all current VMs continue to run normally, but new VMs can’t be created until Azure Stack HCI is able to sync again. The internal technical reason is that the cluster’s cloud-generated license has expired and needs to be renewed by syncing with Azure.
 
 ### Understanding sync
 
 **What content does Azure Stack HCI sync with the cloud?**
 
-This depends on which features you’re using. At the minimum, Azure Stack HCI syncs basic cluster information to display in the Azure Portal (like the list of clustered nodes, hardware model, and software version); billing information that summarizes accrued core-days since the last sync; and minimal required diagnostic information that helps Microsoft keep your Azure Stack HCI secure, up-to-date, and working properly. The total size is very small – a few kilobytes. If you turn on additional services, they may upload more: for example, Azure Log Analytics would upload logs and performance counters for monitoring.
+This depends on which features you’re using. At the minimum, Azure Stack HCI syncs basic cluster information to display in the Azure portal (like the list of clustered nodes, hardware model, and software version); billing information that summarizes accrued core-days since the last sync; and minimal required diagnostic information that helps Microsoft keep your Azure Stack HCI secure, up-to-date, and working properly. The total size is small – a few kilobytes. If you turn on additional services, they may upload more: for example, Azure Log Analytics would upload logs and performance counters for monitoring.
 
 **How often does Azure Stack HCI sync with the cloud?**
 
-This depends on which features you’re using. At the minimum, Azure Stack HCI will try to sync every 12 hours. If sync doesn’t succeed, the content is simply retained locally and sent with the next successful sync. In addition to this regular timer, you can manually sync any time, using either the `Sync-AzureStackHCI` PowerShell cmdlet or from Windows Admin Center. If you turn on additional services, they may upload more frequently: for example, Azure Log Analytics would upload every 5 minutes for monitoring.
+This depends on which features you’re using. At the minimum, Azure Stack HCI will try to sync every 12 hours. If sync doesn’t succeed, the content is retained locally and sent with the next successful sync. In addition to this regular timer, you can manually sync any time, using either the `Sync-AzureStackHCI` PowerShell cmdlet or from Windows Admin Center. If you turn on additional services, they may upload more frequently: for example, Azure Log Analytics would upload every 5 minutes for monitoring.
 
 ### Data residency
 
