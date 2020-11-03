@@ -64,13 +64,13 @@ If you don't have an Azure subscription that meets these requirements, you can [
 
 ### Set the PowerShell language mode
 
-To successfully register Azure Stack Hub, the PowerShell language mode must be set to **FullLanguageMode**.  To verify that the current language mode is set to full, open an elevated PowerShell window and run the following PowerShell cmdlets:
+To successfully register Azure Stack Hub, the PowerShell language mode must be set to **FullLanguage**.  To verify that the current language mode is set to full, open an elevated PowerShell window and run the following PowerShell cmdlets:
 
 ```powershell  
 $ExecutionContext.SessionState.LanguageMode
 ```
 
-Ensure the output returns **FullLanguageMode**. If any other language mode is returned, registration needs to be run on another machine or the language mode needs to be set to **FullLanguageMode** before continuing.
+Ensure the output returns **FullLanguage**. If any other language mode is returned, registration needs to be run on another machine or the language mode needs to be set to **FullLanguage** before continuing.
 
 ### Install PowerShell for Azure Stack Hub
 
