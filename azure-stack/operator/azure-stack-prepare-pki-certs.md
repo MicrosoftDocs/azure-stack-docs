@@ -18,7 +18,7 @@ ms.lastreviewed: 09/16/2019
 # Prepare Azure Stack Hub PKI certificates for deployment or rotation
 
 > [!NOTE]
-> This article pertains to the preparation of external certificates only, which are used to secure endpoints on external infrastructure and services. Internal certificates are managed separately, by the [certificate rotation process](azure-stack/operator/azure-stack-rotate-secrets.md)
+> This article pertains to the preparation of external certificates only, which are used to secure endpoints on external infrastructure and services. Internal certificates are managed separately, by the [certificate rotation process](azure-stack-rotate-secrets.md)
 
 The certificate files [obtained from the certificate authority (CA)](azure-stack-get-pki-certs.md) must be imported and exported with properties matching Azure Stack Hub's certificate requirements.
 
