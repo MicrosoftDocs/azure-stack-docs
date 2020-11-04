@@ -192,7 +192,7 @@ The PowerShell snippets used in the Azure Stack Hub content use the AzureRM modu
 
 ### Known issues
 
-![Include[Known issue for install](../includes/known-issue-az-install.md)]
+[!Include[Known issue for install](../includes/known-issue-az-install.md)]
 
 ## Next steps
 
