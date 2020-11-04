@@ -13,10 +13,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2020
+ms.date: 11/04/2020
 ms.author: justinha
 ms.reviewer: asganesh
-ms.lastreviewed: 10/27/2020
+ms.lastreviewed: 11/04/2020
 ---
  
 
@@ -41,6 +41,19 @@ The following table depicts what can be expected during the various phases of de
 Your organization will work with Microsoft to place an order for an allocated number of systems. 
 Once you place the order, Microsoft will deliver the MDC to your US location. Microsoft will ensure that all secure supply chain requirements are met. 
 
+## Hardware Delivery
+
+Microsoft will work with you to ensure all required hardware arrives at the US Location within the allocated time given.  
+
+It's **crucial** that all prerequisite data is locked and available *before the onsite Microsoft deployment engineer arrives to deploy the solution.*
+
+- Deployment Worksheet has all data filled out. 
+- All certificates must be validated and ready.
+- Region name must be decided on.
+- All network integration parameters are finalized.
+
+>[!Tip]
+>If any of this information has changed, make sure to work with your internal organization to ensure the information is updated prior to the arrival of the onsite deployment engineer. This will prevent any delays in the deployment process.
 
 ## Pre-Deployment
 
@@ -61,24 +74,6 @@ You'll choose the following items:
 - **Certificate requirements.** It's critical that all [required certificates](../operator/azure-stack-pki-certs.md) are available before an onsite engineer arrives at your datacenter for deployment.
 
 Once all the pre-requisite information is gathered through the deployment worksheet, Microsoft will ensure that we verify all validation tools have been run and assist with any further questions that you may have. 
-
-## Site preparation
-
-For more information about requirements for site preparation, see the Quick Start Guide.
-
-## Hardware Delivery
-
-Microsoft will work with you to ensure all required hardware arrives at the US Location within the allocated time given.  
-
-It's **crucial** that all prerequisite data is locked and available *before the onsite Microsoft deployment engineer arrives to deploy the solution.*
-
-- Deployment Worksheet has all data filled out. 
-- All certificates must be validated and ready.
-- Region name must be decided on.
-- All network integration parameters are finalized.
-
->[!Tip]
->If any of this information has changed, make sure to work with your internal organization to ensure the information is updated prior to the arrival of the onsite deployment engineer. This will prevent any delays in the deployment process.
 
 ## Onsite Deployment
 

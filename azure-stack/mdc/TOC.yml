@@ -152,7 +152,7 @@
         href: ../operator/azure-stack-azsreadiness-cmdlet.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: View the readiness report  
         href: ../operator/azure-stack-validation-report.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-    - name: Datacenter integration
+    - name: Datacenter configuration
       items: 
       - name: Configure DNS forwarder
         href: ../operator/azure-stack-configure-dns.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
