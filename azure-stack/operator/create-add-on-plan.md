@@ -47,7 +47,7 @@ Add-on plans are [created the same way](azure-stack-create-plan.md) as a base pl
 
 6. Review the list of add-on plans included with the offer to verify that the new add-on plan is listed.
 
-    ![[Screenshot that shows a list of add-on plans to review in Azure Stack administrator portal.](media/create-add-on-plan/add-on4.png)](media/create-add-on-plan/add-on4lg.png#lightbox)
+    [![Screenshot that shows a list of add-on plans to review in Azure Stack administrator portal.](media/create-add-on-plan/add-on4.png)](media/create-add-on-plan/add-on4lg.png#lightbox)
 ::: moniker-end
 
 ::: moniker range="<=azs-1901"
