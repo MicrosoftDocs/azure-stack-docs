@@ -20,7 +20,7 @@ ms.lastreviewed: 11/04/2020
 ---
  
 
-# MDC integration overview
+# Modular Data Center integration overview
 
 This article describes the end-to-end process for MDC integration, from purchasing to post-deployment. 
 The integration is a collaborative project between the customer and Microsoft. 
