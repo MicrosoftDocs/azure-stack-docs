@@ -182,8 +182,8 @@ New-OAW
 -DefaultGateway <String> `
 -DNS <String[]> `
 [-AzureStackCertificatePath <String>] `
-[-CertificatePassword <Security.SecureString>] `
 [-AzSStampInfoFilePath <String>] `
+[-CertificatePassword <Security.SecureString>] `
 [-ERCSVMIP <String[]>] `
 [-ImageFilePath <String>] `
 [-VirtualMachineName <String>] `
