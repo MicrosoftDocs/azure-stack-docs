@@ -17,17 +17,16 @@ monikerRange: '>=azs-1803'
 
 # Rotate secrets in Azure Stack Hub
 
-*These instructions apply only to Azure Stack Hub Integrated Systems version 1803 and Later. Don't attempt secret rotation on pre-1803 versions*
-
-This article provides guidance and PowerShell script for secret rotation, to help maintain secure communication with Azure Stack Hub infrastructure resources and services. 
+This article provides guidance for performing secret rotation, to help maintain secure communication with Azure Stack Hub infrastructure resources and services. 
 
 ## Overview
 
 Azure Stack Hub uses secrets to maintain secure communication with infrastructure resources and services. To maintain the integrity of the Azure Stack Hub infrastructure, operators need the ability to rotate secrets at frequencies that are consistent with their organization's security requirements.
 
+::: moniker range=">=azs-1811"
 ### Internal vs external secrets
 
-Starting with release 1811, secret rotation is separated for internal and external certificates:
+Secret rotation is separated for internal and external certificates:
 
 - **Internal secrets**: Certificates, passwords, secure strings, and keys used by the Azure Stack Hub infrastructure without intervention of the Azure Stack Hub Operator.
 
@@ -45,6 +44,7 @@ Starting with release 1811, secret rotation is separated for internal and extern
     - Graph*
     
     \* Only applicable if the environment's identity provider is Active Directory Federated Services (AD FS).
+::: moniker-end
 
 > [!Important]
 > All other secure keys and strings are manually updated by the administrator. This includes user and administrator account passwords, [network switch passwords and permissions](azure-stack-customer-defined.md), and baseboard management controller (BMC) credentials which is [covered later in this article](#update-the-bmc-credential). 
@@ -65,8 +65,10 @@ When secrets are within 30 days of expiration, the following alerts are generate
 
 Completing the secret rotation steps in the following sections will resolve these alerts.
 
+::: moniker range="<azs-1811"  
 > [!Note]
 > Azure Stack Hub environments on pre-1811 versions may see alerts for pending internal certificate or secret expirations. These alerts are inaccurate and should be ignored without running internal secret rotation. Inaccurate internal secret expiration alerts are a known issue that's resolved in 1811. Internal secrets won't expire unless the environment has been active for two years.
+::: moniker-end
 
 ### External certificates from a new Certificate Authority
 
@@ -88,8 +90,6 @@ Azure Stack Hub supports secret rotation with external certificates from a new C
 
 ## Prerequisites
 
-For rotation of internal and external secrets:
-
 1. It's highly recommended that you first update your Azure Stack Hub instance to the latest version.
 
     ::: moniker range="<azs-1811"  
@@ -102,6 +102,10 @@ For rotation of internal and external secrets:
 2. Notify your users of planned maintenance operations. Schedule normal maintenance windows, as much as possible,  during non-business hours. Maintenance operations may affect both user workloads and portal operations.
 
 3. During rotation of secrets, operators may notice alerts open and automatically close. This behavior is expected and the alerts can be ignored. Operators can verify the validity of these alerts using the [Test-AzureStack PowerShell cmdlet](azure-stack-diagnostic-test.md). For operators using System Center Operations Manager to monitor Azure Stack Hub systems, placing a system in maintenance mode will prevent these alerts from reaching their ITSM systems but will continue to alert if the Azure Stack Hub system becomes unreachable.
+
+## Rotate external secrets
+
+### Prerequisites
 
 For rotation of external secrets, complete these additional prerequisites:
 
@@ -173,7 +177,7 @@ For rotation of external secrets, complete these additional prerequisites:
 
     ```
 
-## Rotate external secrets
+### Rotation
 
 Complete the following steps to rotate external secrets:
 
@@ -219,7 +223,10 @@ Complete the following steps to rotate external secrets:
 
 ## Rotate internal secrets
 
-Internal secret rotation is only required if you suspect one has been compromised, or you've received an expiration alert. Pre-1811 versions may see alerts for pending internal certificate or secret expirations. These alerts are inaccurate and should be ignored, and are a known issue resolved in 1811. Internal secrets won't expire unless the environment has been active for two years.
+Internal secret rotation is only required if you suspect one has been compromised, or you've received an expiration alert. Internal secrets won't expire unless the environment has been active for two years.
+::: moniker range="<azs-1811"  
+Pre-1811 deployments may see alerts for pending internal certificate or secret expirations. These alerts are inaccurate and should be ignored, and are a known issue resolved in 1811.
+::: moniker-end
 
 Reference the PowerShell script in step 2 of [Rotate external secrets](#rotate-external-secrets). The script provides an example you can adapt for internal secret rotation, by making a few changes to run the following steps:
 
