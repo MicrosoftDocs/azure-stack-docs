@@ -6,7 +6,7 @@ author: JohnCobb1
 ms.author: v-johcob
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/03/2020
+ms.date: 11/04/2020
 ---
 
 # Azure Stack HCI FAQ
@@ -19,17 +19,17 @@ Azure Stack HCI is an on-premises hyperconverged infrastructure stack delivered 
 
 **Does my data stored on Azure Stack HCI get sent to the cloud?**
 
-Generally, no. The names, metadata, configuration, and contents of your on-premises virtual machines (VMs) is never sent to the cloud unless you turn on additional services expressly for that purpose, like Azure Backup or Azure Site Recovery. Or unless you enroll those VMs individually into cloud management services like Azure Arc.
+No. The names, metadata, configuration, and contents of your on-premises virtual machines (VMs) is never sent to the cloud unless you turn on additional services expressly for that purpose, like Azure Backup or Azure Site Recovery. Or unless you enroll those VMs individually into cloud management services like Azure Arc.
 
 ### Edge-local management and control
 
 **Does the control plane for Azure Stack HCI go through the cloud?**
 
-Generally no, although it depends on which features you’re using. You can use edge-local tools, such as Windows Admin Center, PowerShell, or System Center, to manage directly the host infrastructure and VMs even if your network connection to the cloud is down or severely limited. Common everyday operations, such as moving a VM between hosts, replacing a failed drive, or configuring IP addresses don’t rely on the cloud. However, cloud connectivity is required to obtain over-the-air software updates, change your Azure registration, or use features that directly rely on cloud services for backup, monitoring, and more.
+No. You can use edge-local tools, such as Windows Admin Center, PowerShell, or System Center, to manage directly the host infrastructure and VMs even if your network connection to the cloud is down or severely limited. Common everyday operations, such as moving a VM between hosts, replacing a failed drive, or configuring IP addresses don’t rely on the cloud. However, cloud connectivity is required to obtain over-the-air software updates, change your Azure registration, or use features that directly rely on cloud services for backup, monitoring, and more.
 
 **Are there bandwidth or latency requirements between Azure Stack HCI and the cloud?**
 
-Generally no, although it depends on which features you’re using. Limited-bandwidth connections like rural T1 lines or satellite/cellular connections are adequate for Azure Stack HCI to sync. The minimum required connectivity is just several kilobytes per day. Additional services may require additional bandwidth, especially to replicate or back up whole VMs, download large software updates, or upload verbose logs for analysis and monitoring in the cloud.
+No. Limited-bandwidth connections like rural T1 lines or satellite/cellular connections are adequate for Azure Stack HCI to sync. The minimum required connectivity is just several kilobytes per day. Additional services may require additional bandwidth, especially to replicate or back up whole VMs, download large software updates, or upload verbose logs for analysis and monitoring in the cloud.
 
 ### Designed for intermittent and limited connectivity
 
