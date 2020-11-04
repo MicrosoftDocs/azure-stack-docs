@@ -3,7 +3,7 @@ title: Customer journey from purchasing to Azure Stack Hub post-deployment | Mic
 description: Learn what to expect for a successful on-site deployment of a Modular Data Center (MDC), from planning to post-deployment.
 services: azure-stack
 documentationcenter: ''
-author: asganesh
+author: ashika789
 manager: femila
 editor: ''
 
@@ -13,14 +13,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2020
+ms.date: 11/04/2020
 ms.author: justinha
 ms.reviewer: asganesh
-ms.lastreviewed: 10/27/2020
+ms.lastreviewed: 11/04/2020
 ---
  
 
-# MDC integration overview
+# Modular Data Center integration overview
 
 This article describes the end-to-end process for MDC integration, from purchasing to post-deployment. 
 The integration is a collaborative project between the customer and Microsoft. 
@@ -28,7 +28,7 @@ The following sections cover different phases for the project timeline and speci
 
 ## Introduction
 
-The following table depicts what can be expected during the various phases of deployment.
+The following table lists what can be expected during the various phases of deployment.
 
 |	|Order Process	|Pre-Deployment	|Integration, Validation, Transport	|Onsite Deployment	|Post-Deployment |
 |---|---------------|---------------|-----------------------------------|--------------------|----------------|
@@ -36,13 +36,26 @@ The following table depicts what can be expected during the various phases of de
 |Customer	|Signals purchase	|- Fills out network details in deployment worksheet<br>- Collects certificates<br>- Obtains Azure AD accounts<br>- Runs any validation tooling provided	|Ensure the site is ready with network, power, cooling prerequisites	|- Be prepared with deployment configuration artifacts<br>- Customer’s network engineer available	|     |
 
 
-## Order Process
+## Order process
 
 Your organization will work with Microsoft to place an order for an allocated number of systems. 
 Once you place the order, Microsoft will deliver the MDC to your US location. Microsoft will ensure that all secure supply chain requirements are met. 
 
+## Hardware delivery
 
-## Pre-Deployment
+Microsoft will work with you to ensure all required hardware arrives at the US Location within the allocated time given.  
+
+It's **crucial** that all prerequisite data is locked and available *before the onsite Microsoft deployment engineer arrives to deploy the solution.*
+
+- Deployment Worksheet has all data filled out. 
+- All certificates must be validated and ready.
+- Region name must be decided on.
+- All network integration parameters are finalized.
+
+>[!Tip]
+>If any of this information has changed, make sure to work with your internal organization to ensure the information is updated prior to the arrival of the onsite deployment engineer. This will prevent any delays in the deployment process.
+
+## Pre-deployment
 
 You decide how to integrate Azure Stack Hub into your datacenter. 
 Microsoft has published a [deployment worksheet](../operator/azure-stack-deployment-worksheet.md) that guides you through gathering all necessary information needed to integrate successfully into your datacenter. 
@@ -62,25 +75,7 @@ You'll choose the following items:
 
 Once all the pre-requisite information is gathered through the deployment worksheet, Microsoft will ensure that we verify all validation tools have been run and assist with any further questions that you may have. 
 
-## Site preparation
-
-For more information about requirements for site preparation, see the Quick Start Guide.
-
-## Hardware Delivery
-
-Microsoft will work with you to ensure all required hardware arrives at the US Location within the allocated time given.  
-
-It's **crucial** that all prerequisite data is locked and available *before the onsite Microsoft deployment engineer arrives to deploy the solution.*
-
-- Deployment Worksheet has all data filled out. 
-- All certificates must be validated and ready.
-- Region name must be decided on.
-- All network integration parameters are finalized.
-
->[!Tip]
->If any of this information has changed, make sure to work with your internal organization to ensure the information is updated prior to the arrival of the onsite deployment engineer. This will prevent any delays in the deployment process.
-
-## Onsite Deployment
+## Onsite deployment
 
 To deploy Azure Stack Hub, a Microsoft deployment engineer will be present to kick off the deployment. 
 We require that a Network Engineer from your organization also be available during the period of the onsite deployment.
@@ -97,7 +92,7 @@ The following checks are what you should expect from the onsite engineer during 
 - Make sure firmware for all components is at the latest approved version by the solution
 - Start the deployment
 
-## Post Deployment
+## Post-deployment
 
 Several steps must be performed by the Microsoft deployment engineer before the solution is handed off to the customer. 
 In this phase, validation is important to ensure the system is deployed and performing correctly.
@@ -114,5 +109,5 @@ Actions that should be taken by the Microsoft deployment engineer:
 
 ## Next steps
 
-Learn more about [steps to install and configure a Modular Data Center](deployment-overview.md).
+[Modular Data Center deployment overview](deployment-overview.md).
 
