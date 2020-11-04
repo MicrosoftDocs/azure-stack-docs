@@ -215,7 +215,7 @@ The following table lists the definition for each parameter.
 | VirtualProcessorCount      | Optional | Number of virtual processors to be assigned to the virtual machine. Default value is **8**.        |
 | VirtualMachineDiffDiskPath | Optional | Path to store temporary diff disk files while the management VM was active. Default value is **DiffDisks** subdirectory under the same parent folder of this script. |
 | AzureStackCertificatePath  | Optional | Path of certificates to be imported to the virtual machine for Azure Stack Hub access. |
-| AzSStampInfoFilePath       | Optional | Path of AzureStackStampInformation.json file where user can retrieve the IPs of the ERCS VM. |
+| AzSStampInfoFilePath       | Optional | Path of AzureStackStampInformation.json file where the script can retrieve the IPs of the ERCS VM. |
 | CertificatePassword        | Optional | Password of certificate to be imported to the virtual machine for Azure Stack Hub access. |
 | ERCSVMIP                   | Optional | IP of Azure Stack Hub ERCS VM(s) to be added to trusted host list of the virtual machine. Won't take effect if **-SkipNetworkConfiguration** is set. |
 SkipNetworkConfiguration     | Optional | Skips network configuration for the virtual machine so user can configure later. |
