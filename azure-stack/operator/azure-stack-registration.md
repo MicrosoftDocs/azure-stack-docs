@@ -42,10 +42,16 @@ Complete the following prerequisites before you register:
 
 Before registering Azure Stack Hub with Azure, you must have:
 
+::: zone pivot="state-connected"
 - The subscription ID for an Azure subscription. Only EA, CSP, or CSP shared services subscriptions are supported for registration. CSPs need to decide whether to [use a CSP or APSS subscription](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription).<br><br>To get the ID, sign in to Azure, click **All services**. Then, under the **GENERAL** category, select **Subscriptions**, click the subscription you want to use, and under **Essentials** you can find the Subscription ID. As a best practice, use separate subscriptions for production and dev or test environments. 
+::: zone-end
+::: zone pivot="state-disconnected"
+- The subscription ID for an Azure subscription. Only EA subscriptions are supported for registration. 
 
-  > [!Note]  
-  > Germany cloud subscriptions aren't currently supported.
+    To get the ID, sign in to Azure, click **All services**. Then, under the **GENERAL** category, select **Subscriptions**, click the subscription you want to use, and under **Essentials** you can find the Subscription ID. As a best practice, use separate subscriptions for production and dev or test environments. 
+::: zone-end
+   > [!Note]  
+   > Germany cloud subscriptions aren't currently supported.  
 
 - The username and password for an account that's an owner for the subscription.
 
