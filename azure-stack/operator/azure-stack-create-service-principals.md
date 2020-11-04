@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.lastreviewed: 05/07/2020
 ms.custom: contperfq4
+zone_pivot_groups: state-connected-disconnected
 
 # Intent: As an Azure Stack operator, I want to use an app identity to access resources. 
 # Keyword: azure stack hub app identity service principal
@@ -40,6 +41,7 @@ This article begins with the process of creating and managing a service principa
 
 Then you learn how to assign the service principal to a role, limiting its resource access.
 
+::: zone pivot="state-connected"
 ## Manage an Azure AD app identity
 
 If you deployed Azure Stack Hub with Azure AD as your identity management service, you create service principals just like you do for Azure. This section shows you how to perform the steps through the Azure portal. Check that you have the [required Azure AD permissions](/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) before beginning.
@@ -63,6 +65,7 @@ In this section, you register your app using the Azure portal, which creates the
     ![Saved key in client secrets](./media/azure-stack-create-service-principal/create-service-principal-in-azure-stack-secret.png)
 
 Now proceed to [Assign a role](#assign-a-role) to learn how to establish role-based access control for the app's identity.
+::: zone-end
 
 ## Manage an AD FS app identity
 
