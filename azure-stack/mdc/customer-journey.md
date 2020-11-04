@@ -28,7 +28,7 @@ The following sections cover different phases for the project timeline and speci
 
 ## Introduction
 
-The following table depicts what can be expected during the various phases of deployment.
+The following table lists what can be expected during the various phases of deployment.
 
 |	|Order Process	|Pre-Deployment	|Integration, Validation, Transport	|Onsite Deployment	|Post-Deployment |
 |---|---------------|---------------|-----------------------------------|--------------------|----------------|
