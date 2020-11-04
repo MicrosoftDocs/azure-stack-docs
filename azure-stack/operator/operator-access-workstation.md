@@ -3,10 +3,10 @@ title: Azure Stack Hub Operator Access Workstation
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: ashika789
 ms.topic: article
-ms.date: 09/24/2020
+ms.date: 11/04/2020
 ms.author: justinha
 ms.reviewer: asganesh
-ms.lastreviewed: 09/24/2020
+ms.lastreviewed: 11/04/2020
 
 # Intent: As an Azure Stack operator, I want to download and configure an Azure Stack Hub Operator Access Workstation.
 # Keyword: azure stack hub operator access workstation
@@ -127,6 +127,16 @@ New-OAW.ps1 -LocalAdministratorPassword $securePassword `
    -DNS '192.168.0.10'
 ```
 
+To retrieve the IP address of the ERCS VM from the AzureStackStampInformation.json file:
+
+```powershell
+$securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
+New-OAW.ps1 -LocalAdministratorPassword $securePassword `
+   -AzureStackCertificatePath 'F:\certroot.cer' `
+   -DeploymentDataFilePath 'F:\DeploymentData.json' `
+   -AzSStampInfoFilePath 'F:\AzureStackStampInformation.json'
+```
+
 To create the OAW VM on the HLH with DeploymentData.json:
 
 ```powershell
@@ -143,6 +153,7 @@ Two parameter sets are available for New-OAW. Optional parameters are shown in b
 New-OAW 
 -LocalAdministratorPassword <Security.SecureString> `
 [-AzureStackCertificatePath <String>] `
+[-AzSStampInfoFilePath <String>] `
 [-CertificatePassword <Security.SecureString>] `
 [-ERCSVMIP <String[]>] `
 [-DNS <String[]>] `
@@ -172,6 +183,7 @@ New-OAW
 -DNS <String[]> `
 [-AzureStackCertificatePath <String>] `
 [-CertificatePassword <Security.SecureString>] `
+[-AzSStampInfoFilePath <String>] `
 [-ERCSVMIP <String[]>] `
 [-ImageFilePath <String>] `
 [-VirtualMachineName <String>] `
@@ -203,6 +215,7 @@ The following table lists the definition for each parameter.
 | VirtualProcessorCount      | Optional | Number of virtual processors to be assigned to the virtual machine. Default value is **8**.        |
 | VirtualMachineDiffDiskPath | Optional | Path to store temporary diff disk files while the management VM was active. Default value is **DiffDisks** subdirectory under the same parent folder of this script. |
 | AzureStackCertificatePath  | Optional | Path of certificates to be imported to the virtual machine for Azure Stack Hub access. |
+| AzSStampInfoFilePath       | Optional | Path of AzureStackStampInformation.json file where user can retrieve the IPs of the ERCS VM. |
 | CertificatePassword        | Optional | Password of certificate to be imported to the virtual machine for Azure Stack Hub access. |
 | ERCSVMIP                   | Optional | IP of Azure Stack Hub ERCS VM(s) to be added to trusted host list of the virtual machine. Won't take effect if **-SkipNetworkConfiguration** is set. |
 SkipNetworkConfiguration     | Optional | Skips network configuration for the virtual machine so user can configure later. |
