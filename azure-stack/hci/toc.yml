@@ -8,6 +8,8 @@
     href: known-issues.md
   - name: Release notes
     href: release-notes.md
+  - name: FAQ
+    href: faq.md
 - name: Get started
   items:
   - name: Use Azure Stack HCI with Windows Admin Center
