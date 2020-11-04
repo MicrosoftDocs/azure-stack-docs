@@ -106,6 +106,8 @@ As an Azure Stack Hub operator, you can see information about tenant subscriptio
 
 The exception to this case is a situation in which the subscription owner is unable to provide the operator with access to the subscription, which requires the administrator to take ownership of the subscription as discussed in [Change the billing owner for an Azure Stack Hub user subscription](azure-stack-change-subscription-owner.md).
 
+If your Azure Stack Hub instance is disconnected and you have two different domains where users in domain 1 create subscriptions that users in domain 2 consume, some subscriptions may appear in the admin portal but not appear in the user portal. To fix this, have the users in domain 1 set the correct RBAC for the subscriptions in domain 2.
+
 ### Default provider subscription
 
 The default provider subscription is automatically created when you deploy the ASDK. This subscription can be used to manage Azure Stack Hub, deploy additional resource providers, and create plans and offers for users. For security and licensing reasons, it shouldn't be used to run customer workloads and apps. The quota of the default provider subscription can't be changed.
