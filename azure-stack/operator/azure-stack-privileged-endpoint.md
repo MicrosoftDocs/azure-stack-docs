@@ -203,12 +203,12 @@ After the transcript log files are successfully transferred to the file share, t
 ## Unlocking the privileged endpoint for support scenarios
 
  During a support scenario, the Microsoft support engineer might need to elevate the privileged endpoint PowerShell session to access the internals of the Azure Stack Hub infrastructure. This process is sometimes informally referred to as "break the glass" or "unlock the PEP". The PEP session elevation process is a two step, two people, two organization authentication process. 
- The unlock procedure is initiated by the Azure Stack Hub operator, who retains control of their environment at all times. The operator access the PEP and executes this cmdlet:
+ The unlock procedure is initiated by the Azure Stack Hub operator, who retains control of their environment at all times. The operator accesses the PEP and executes this cmdlet:
  
  ```powershell  
       Get-SupportSessionToken
   ```
- The cmdlet returns the support session request token, a very long alphanumeric string. The operator then passes the request token to the Microsoft support engineer via a a medium of their choise (e.g. chat, email, etc). The Microsoft support engineer uses the request token to generate, if valid, an support session authorization token and sends it back to the Azure Stack Hub operator. On the same PEP PowerShell session, the operator then passes the authorization token as input to this cmdlet:
+ The cmdlet returns the support session request token, a very long alphanumeric string. The operator then passes the request token to the Microsoft support engineer via a medium of their choice (e.g., chat, email). The Microsoft support engineer uses the request token to generate, if valid, a support session authorization token and sends it back to the Azure Stack Hub operator. On the same PEP PowerShell session, the operator then passes the authorization token as input to this cmdlet:
 
  ```powershell  
       unlock-supportsession
