@@ -29,6 +29,8 @@ See [Azure Marketplace items for Azure Stack Hub](azure-stack-marketplace-azure-
 > [!NOTE]
 > The catalog will be different based on the cloud your Azure Stack Hub system is connected to. The cloud environment is determined by the Azure subscription you use for registering your Azure Stack Hub.
 
+[!INCLUDE [Azure Stack Hub Operator Access Workstation](../includes/operator-note-owa.md)]
+
 ::: zone pivot="state-connected"
 A connected deployment allows you to use the administrator portal to download marketplace items.
 

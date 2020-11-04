@@ -19,9 +19,13 @@ ms.lastreviewed: 10/16/2020
 
 **AzureStack-Tools** is a [GitHub repository](https://github.com/Azure/AzureStack-Tools) that hosts PowerShell modules for managing and deploying resources to Azure Stack Hub. If you're planning to establish VPN connectivity, you can download these PowerShell modules to the Azure Stack Development Kit (ASDK), or to a Windows-based external client. 
 
-## Get tools for Azure Stack Hub 
+[!INCLUDE [Azure Stack Hub Operator Access Workstation](../includes/operator-note-owa.md)]
 
-## [Az modules](#tab/az)
+## Get the tools
+
+You use the tools using the Az PowerShell modules, or the AzureRM modules.
+
+### [Az modules](#tab/az)
 
 To get these tools, clone the GitHub repository from the `az` branch or download the **AzureStack-Tools** folder by running the following script:
 
@@ -33,10 +37,10 @@ cd \
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
 invoke-webrequest `
   https://github.com/Azure/AzureStack-Tools/archive/az.zip `
-  -OutFile master.zip
+  -OutFile az.zip
 
 # Expand the downloaded files.
-expand-archive master.zip `
+expand-archive az.zip `
   -DestinationPath . `
   -Force
 
@@ -44,12 +48,9 @@ expand-archive master.zip `
 cd AzureStack-Tools-az
 
 ```
+### [AzureRM modules](#tab/azurerm)
 
-For more information about using the Az module for Azure Stack Hub, see [Install PowerShell Az preview module for Azure Stack Hub](powershell-install-az-module.md).
-
-### [AzureRM modules](#tab/rm)
-
-To get these tools, clone the GitHub repository from the `master` branch or download the **AzureStack-Tools** folder by running the following script:
+To get these tools, clone the GitHub repository from the `master` branch or download the **AzureStack-Tools** folder by running the following script in an elevated PowerShell prompt:
 
 ```powershell
 # Change directory to the root directory.
@@ -62,15 +63,19 @@ invoke-webrequest `
   -OutFile master.zip
 
 # Expand the downloaded files.
-expand-archive az.zip `
+expand-archive master.zip `
   -DestinationPath . `
   -Force
 
 # Change to the tools directory.
-cd AzureStack-Tools-az
+cd AzureStack-Tools-master
 
 ```
 For more information about using the AzureRM module for Azure Stack Hub, see [Install PowerShell AzureRM module for Azure Stack Hub](azure-stack-powershell-install.md)
+
+
+
+---
 
 ---
 

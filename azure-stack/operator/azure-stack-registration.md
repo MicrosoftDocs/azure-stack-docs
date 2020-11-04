@@ -41,10 +41,16 @@ Complete the following prerequisites before you register:
 
 Before registering Azure Stack Hub with Azure, you must have:
 
+::: zone pivot="state-connected"
 - The subscription ID for an Azure subscription. Only EA, CSP, or CSP shared services subscriptions are supported for registration. CSPs need to decide whether to [use a CSP or APSS subscription](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription).<br><br>To get the ID, sign in to Azure, click **All services**. Then, under the **GENERAL** category, select **Subscriptions**, click the subscription you want to use, and under **Essentials** you can find the Subscription ID. As a best practice, use separate subscriptions for production and dev or test environments. 
+::: zone-end
+::: zone pivot="state-disconnected"
+- The subscription ID for an Azure subscription. Only EA subscriptions are supported for registration. 
 
-  > [!Note]  
-  > Germany cloud subscriptions aren't currently supported.
+    To get the ID, sign in to Azure, click **All services**. Then, under the **GENERAL** category, select **Subscriptions**, click the subscription you want to use, and under **Essentials** you can find the Subscription ID. As a best practice, use separate subscriptions for production and dev or test environments. 
+::: zone-end
+   > [!Note]  
+   > Germany cloud subscriptions aren't currently supported.  
 
 - The username and password for an account that's an owner for the subscription.
 
@@ -82,6 +88,8 @@ If the latest version isn't already installed, see [install PowerShell for Azure
 The Azure Stack Hub tools GitHub repository contains PowerShell modules that support Azure Stack Hub functionality, including registration functionality. During the registration process, you need to import and use the **RegisterWithAzure.psm1** PowerShell module (found in the Azure Stack Hub tools repository) to register your Azure Stack Hub instance with Azure.
 
 To ensure you're using the latest version, delete any existing versions of the Azure Stack Hub tools and [download the latest version from GitHub](azure-stack-powershell-download.md) before registering with Azure.
+
+[!INCLUDE [Azure Stack Hub Operator Access Workstation](../includes/operator-note-owa.md)]
 
 ### Determine your billing model
 ::: zone pivot="state-connected"
