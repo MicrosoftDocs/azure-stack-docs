@@ -3,7 +3,7 @@ title: Customer journey from purchasing to Azure Stack Hub post-deployment | Mic
 description: Learn what to expect for a successful on-site deployment of a Modular Data Center (MDC), from planning to post-deployment.
 services: azure-stack
 documentationcenter: ''
-author: asganesh
+author: ashika789
 manager: femila
 editor: ''
 
