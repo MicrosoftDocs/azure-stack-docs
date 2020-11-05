@@ -237,7 +237,7 @@ After the deployment of the Kubernetes cluster with AKS engine, the service prin
 
 ### Update each node manually
 
-1. Get a new secret for your service principal from your cloud operator. For instructions for Azure Stack Hub, see [Use an app identity to access Azure Stack Hub resources](/azure-stack/operator/azure-stack-create-service-principals).
+1. Get a new secret for your service principal from your cloud operator. For instructions for Azure Stack Hub, see [Use an app identity to access Azure Stack Hub resources](../operator/azure-stack-create-service-principals.md).
 2. Use the new credentials provided by your cloud operator to update `/etc/kubernetes/azure.json` on each node. After making the update, restart both **kubelet** and **kube-controller-manager**.
 
 ### Update the cluster with aks-engine update
