@@ -97,6 +97,7 @@ Prior to rotation of external secrets:
        |From Public<sup>*</sup>|To Enterprise|Supported|1903 & Later|
        |From Public<sup>*</sup>|To Self-Signed|Not Supported||
        |From Public<sup>*</sup>|To Public<sup>*</sup>|Supported|1803 & Later|
+       
        <sup>*</sup>Indicates that the Public Certificate Authorities are part of the Windows Trusted Root Program. You can find the full list in the article [List of Participants - Microsoft Trusted Root Program](/security/trusted-root/participants-list).
 
     - Be sure to validate the certificates you prepare with the steps outlined in [Validate PKI Certificates](azure-stack-validate-pki-certs.md)
