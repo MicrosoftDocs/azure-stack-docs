@@ -67,12 +67,12 @@ This section covers rotation of certificates used to secure external-facing serv
 - ADFS*
 - Graph*
 
-\* Only applicable if the environment's identity provider is Active Directory Federated Services (AD FS).
+\* Applicable when identity provider is Active Directory Federated Services (AD FS).
 
 > [!Important]
 > All other secure keys and strings are manually updated by the administrator. This includes user and administrator account passwords, [network switch passwords and permissions](azure-stack-customer-defined.md), and baseboard management controller (BMC) credentials which is [covered later in this article](#update-the-bmc-credential). 
 >
->In addition, this article does not address secret rotation for value-add resource providers. To rotate those secrets, refer to the following resource provider articles instead:
+>In addition, this article does not address secret rotation for value-add resource providers. To rotate those external secrets, refer to the following resource provider articles instead:
 >
 > - [App Service on Azure Stack Hub](app-service-rotate-certificates.md)
 > - [IoT Hub on Azure Stack Hub](iot-hub-rp-rotate-secrets.md)
@@ -219,17 +219,24 @@ Internal secrets include certificates, passwords, secure strings, and keys used 
 Pre-1811 deployments may see alerts for pending internal certificate or secret expirations. These alerts are inaccurate and should be ignored, and are a known issue resolved in 1811.
 ::: moniker-end
 
-Reference the PowerShell script in the [Rotate external secrets](#rotation) section. The script provides an example you can adapt for internal secret rotation, by making a few changes to run the following steps:
+Complete the following steps to rotate external secrets:
 
-1. In the "Run Secret Rotation" section, add the `-Internal` parameter to the [Start-SecretRotation cmdlet](../reference/pep-2002/start-secretrotation.md), for example:
+1. Run the following PowerShell script. Notice for internal secret rotation, the "Run Secret Rotation" section uses only the `-Internal` parameter to the [Start-SecretRotation cmdlet](../reference/pep-2002/start-secretrotation.md):
 
     ```powershell
+    # Create a PEP Session
+    winrm s winrm/config/client '@{TrustedHosts= "<IP_address_of_ERCS>"}'
+    $PEPCreds = Get-Credential
+    $PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS_Machine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
+
     # Run Secret Rotation
-    ...
+    $CertPassword = ConvertTo-SecureString "<Cert_Password>" -AsPlainText -Force
+    $CertShareCreds = Get-Credential
+    $CertSharePath = "<Network_Path_Of_CertShare>"
     Invoke-Command -Session $PEPSession -ScriptBlock {
         Start-SecretRotation -Internal
     }
-    ...
+    Remove-PSSession -Session $PEPSession
     ```
 
     ::: moniker range="<azs-1811"
@@ -237,7 +244,8 @@ Reference the PowerShell script in the [Rotate external secrets](#rotation) sect
     > Pre-1811 versions don't require the `-Internal` flag. 
     ::: moniker-end
 
-3. After successful completion, your console will display `ActionPlanInstanceID ... CurrentStatus: Completed`, followed by a `DONE`
+
+2. After successful completion, your console will display `ActionPlanInstanceID ... CurrentStatus: Completed`, followed by a `DONE`
 
     > [!Note]
     > If secret rotation fails, follow the instructions in the error message and rerun `Start-SecretRotation` with the  `-Internal` and `-ReRun` parameters.  
