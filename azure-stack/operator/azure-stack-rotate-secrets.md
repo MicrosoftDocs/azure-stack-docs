@@ -219,7 +219,7 @@ Internal secrets include certificates, passwords, secure strings, and keys used 
 Pre-1811 deployments may see alerts for pending internal certificate or secret expirations. These alerts are inaccurate and should be ignored, and are a known issue resolved in 1811.
 ::: moniker-end
 
-Reference the PowerShell script in step 2 of [Rotate external secrets](#rotate-external-secrets). The script provides an example you can adapt for internal secret rotation, by making a few changes to run the following steps:
+Reference the PowerShell script in the [Rotate external secrets](#rotation) section. The script provides an example you can adapt for internal secret rotation, by making a few changes to run the following steps:
 
 1. In the "Run Secret Rotation" section, add the `-Internal` parameter to the [Start-SecretRotation cmdlet](../reference/pep-2002/start-secretrotation.md), for example:
 
