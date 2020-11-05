@@ -62,43 +62,48 @@ Anytime you add or remove servers from a cluster, be sure and run a cluster vali
 
 Stretched clusters require the same number of server nodes and same number of drives in each site.  When adding server pairs to a stretched cluster, its drives are immediately added to the storage pool for each site. If the storage pool at each site is not the same size at the time of addition, it is rejected. This is because the size of the storage pool must be the same between sites.
 
-Unlike for non-stretched servers, you can only add or remove servers to a stretched cluster using Windows PowerShell. Specifically, you use the [Get-ClusterFaultDomainXML](https://docs.microsoft.com/powershell/module/failoverclusters/get-clusterfaultdomainxml) and [Set-ClusterFaultDomainXML](https://docs.microsoft.com/powershell/module/failoverclusters/set-clusterfaultdomainxml) cmdlets. This lets you modify the site (faultdomain) information prior to adding the servers. 
+Unlike for non-stretched servers, you can only add or remove servers to a stretched cluster using Windows PowerShell. Using the [Get-ClusterFaultDomainXML](https://docs.microsoft.com/powershell/module/failoverclusters/get-clusterfaultdomainxml) and [Set-ClusterFaultDomainXML](https://docs.microsoft.com/powershell/module/failoverclusters/set-clusterfaultdomainxml) cmdlets, you first modify the site (faultdomain) information prior to adding the servers.
 
-Once done, you can successfully add the server nodes to both sites simultaneously using the [Add-ClusterNode](https://docs.microsoft.com/powershell/module/failoverclusters/add-clusternode) cmdlet, allowing each new server's drives to be added at the same time.
+Once done, you can add the server node pair to each site simultaneously using the [Add-ClusterNode](https://docs.microsoft.com/powershell/module/failoverclusters/add-clusternode) cmdlet, allowing each new server's drives to be added at the same time also.
 
-Ok, let's begin, using an example stretched cluster named `ClusterS1`.
+Typically, you manage clusters from a remote computer, rather than on a server in a cluster. This remote computer is called the management computer.
+
+> [!NOTE]
+> When running PowerShell commands from a management computer, include the `-Cluster` parameter with the name of the cluster you are managing.
+
+Ok, let's begin:
 
 1. Use the following PowerShell cmdlets to determine the state of the cluster:
 
     Returns the list of active server nodes in the cluster:
 
      ```powershell
-    Get-ClusterNode -Name ClusterS1
+    Get-ClusterNode
     ```
 
     Returns the stats for the cluster storage pool:
 
     ```powershell
-    Get-StoragePool pool* -Name ClusterS1
+    Get-StoragePool pool*
     ```
 
     Lists which server nodes are on which site (faultdomain):
 
     ```powershell
-    Get-ClusterFaultDomain -Name ClusterS1
+    Get-ClusterFaultDomain
     ```
 
 1. Open the `Sites.xml` file in Notepad or other text editor:
 
     ```powershell
-    Get-clusterfaultdomainxml | out-file Sites.xml
+    Get-ClusterFaultDomainXML | out-file sites.xml
     ```
  
     ```powershell
     notepad
     ```
 
-1. In Notepad, navigate to where the sites.xml file is located and open the file. The sites.xml file will look similar to this:
+1. Navigate to where the `Sites.xml` file is located locally on your management PC and open the file. The `Sites.xml` file will look similar to this:
 
     ```
     <Topology>
@@ -113,7 +118,7 @@ Ok, let's begin, using an example stretched cluster named `ClusterS1`.
     <Topology>
     ```
 
-1. Using this example, you would add a third server node to each site as follows:
+1. Using this example, you would add a server to each site (`Server5`, `Server6`) as follows:
 
     ```
     <Topology>
@@ -130,55 +135,55 @@ Ok, let's begin, using an example stretched cluster named `ClusterS1`.
     <Topology>
     ```
 
-1. Modify the current site (fault domain) information.  The first command sets a variable to obtain the contents of the `Sites.xml` file and output it. The second command sets the new modification based on the variable `$XML`.
+1. Modify the current site (fault domain) information.  The first command sets a variable to obtain the contents of the `Sites.xml` file and output it. The second command sets the modification based on the variable `$XML`.
 
     ```
     $XML = Get-Content .\sites.xml | out-string
     Set-ClusterFaultDomainXML -xml $XML
     ```
 
-1. Verify that the modifications you made are correct.
+1. Verify that the modifications you made are correct:
 
     ```
     Get-ClusterFaultDomain
     ```
 
-1. Add the servers to your cluster using the `Add-ClusterNode` cmdlet:
+1. Add the server pair to your cluster using the `Add-ClusterNode` cmdlet:
 
 ```
 Add-ClusterNode -Name Server5,Server6
 ```
 
-Once the server nodes have been successfully added, the associated drives are automatically added to the site pools. Lastly, the Health Service creates a storage job to include the new drives.
+Once the server nodes have been successfully added, the associated drives are automatically added to each site's storage pools. Lastly, the Health service creates a storage job to include the new drives.
 
 ## Remove server pairs from a stretched cluster
 
-Removing server pairs from a stretched cluster is a very similar process to adding server pairs, but using the [Remove-ClusterNode](https://docs.microsoft.com/powershell/module/failoverclusters/remove-clusternode) cmdlet.
+Removing server pairs from a stretched cluster is a very similar process to adding server pairs, but using the [Remove-ClusterNode](https://docs.microsoft.com/powershell/module/failoverclusters/remove-clusternode) cmdlet instead.
 
 1. Use the following PowerShell cmdlets to determine the state of the cluster:
 
     Returns the list of active server nodes in the cluster:
 
      ```powershell
-    Get-ClusterNode -Name ClusterS1
+    Get-ClusterNode
     ```
 
     Returns the stats for the cluster storage pool:
 
     ```powershell
-    Get-StoragePool pool* -Name ClusterS1
+    Get-StoragePool pool*
     ```
 
     Lists which server nodes are on which site (faultdomain):
 
     ```powershell
-    Get-ClusterFaultDomain -Name ClusterS1
+    Get-ClusterFaultDomain
     ```
 
 1. Open the `Sites.xml` file in Notepad or other text editor:
 
     ```powershell
-    Get-clusterfaultdomainxml | out-file Sites.xml
+    Get-ClusterFaultDomainXML | out-file sites.xml
     ```
  
     ```powershell
@@ -186,14 +191,14 @@ Removing server pairs from a stretched cluster is a very similar process to addi
     ```
 
 1. Using the previous example, in the `Sites.xml` file, remove the `<Node Name="Server5" Description="" Location="">` and the  `<Node Name="Server6" Description="" Location="">` XML entry for each site.
-1. Modify the current site (fault domain) information using the following two cmdlets.
+1. Modify the current site (fault domain) information using the following two cmdlets:
 
     ```
     $XML = Get-Content .\sites.xml | out-string
     Set-ClusterFaultDomainXML -xml $XML
     ```
 
-1. Verify that the modifications you made are correct.
+1. Verify that the modifications you made are correct:
 
     ```
     Get-ClusterFaultDomain
