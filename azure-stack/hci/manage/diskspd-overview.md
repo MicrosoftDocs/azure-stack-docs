@@ -4,7 +4,7 @@ description: This topic provides guidance on how to use DISKSPD to test workload
 author: jasonnyi
 ms.author: jasonyi
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 11/05/2020
 ---
 
 # Use DISKSPD to test workload storage performance
@@ -23,31 +23,46 @@ Now you know what DISKSPD is, but when should you use it? DISKSPD has a difficul
 ## Quick start: install and run DISKSPD
 Without further ado, let’s get started:
 
-1. In Windows Admin Center, access the virtual machine (VM) that you want to use DISKSPD to test, ensure that the VM is running, select (...) to expand **More** options, and then select **Download RDP file** to open a secure connection through Windows Remote Desktop to the VM.
+1. From your management PC, open PowerShell as an administrator to connect to the target computer that you want to test using DISKSPD, and then type the following command and press Enter.
 
-    In our case, we're running a VM called “node1.”
+     ```powershell
+     Enter-PSSession -ComputerName <TARGET_COMPUTER_NAME>
+    ```
 
-1. Download the DISKSPD tool from the [GitHub repository](https://github.com/microsoft/diskspd) that contains the open-source code, and a wiki page that details all the parameters and specifications. In the repository, under **Releases**, select the link to automatically download the ZIP file.
+    In this example, we're running a virtual machine (VM) called “node1.”
 
-    In the ZIP file, you'll see three subfolders: amd64 (64-bit systems), x86 (32-bit systems), and ARM64 (ARM systems). These options enable you to run the tool in every Windows client or server version.
+1. To download the DISKSPD tool, type the following commands and press Enter:
+
+     ```powershell
+     $client = new-object System.Net.WebClient
+    ```
+
+     ```powershell
+     $client.DownloadFile("https://github.com/Microsoft/diskspd/releases/download/v2.0.21a/DiskSpd-2.0.21a.zip","<ENTER_PATH>\DiskSpd-2.0.21a.zip")
+    ```
+1. Change directory to the DISKSPD directory and locate the appropriate executable file for the Windows operating system that the target computer is running.
 
     In this example, we're using the amd64 version.
 
+    > [!NOTE]
+    > You can also download the DISKSPD tool directly from the [GitHub repository](https://github.com/microsoft/diskspd) that contains the open-source code, and a wiki page that details all the parameters and specifications. In the repository, under **Releases**, select the link to automatically download the ZIP file.
+
+    In the ZIP file, you'll see three subfolders: amd64 (64-bit systems), x86 (32-bit systems), and ARM64 (ARM systems). These options enable you to run the tool in every Windows client or server version.
+
     :::image type="content" source="media/diskspd/download-directory.png" alt-text="Directory to download the DISKSPD .zip file." lightbox="media/diskspd/download-directory.png":::
 
-1. Open PowerShell as an administrator, and then go to where your DISKSPD file is located.
-
-1. Run DISKSPD with a single-line command, using the following command-line format. Replace everything inside the square brackets, including the brackets themselves with your appropriate settings.
+1. Run DISKSPD with the following PowerShell command. Replace everything inside the square brackets, including the brackets themselves with your appropriate settings.
 
     ```powershell
-     .\[INSERT_DISKSPD_PATH] [INSERT_SET_OF_PARAMETERS]  [INSERT_CSV_PATH_FOR_TEST_FILE] > [INSERT_OUTPUT_FILE.txt]
+     .\[INSERT_DISKSPD_PATH] [INSERT_SET_OF_PARAMETERS] [INSERT_CSV_PATH_FOR_TEST_FILE] > [INSERT_OUTPUT_FILE.txt]
     ```
-    
+
     Here is an example command that you can run:
 
     ```powershell
      .\diskspd -t2 -o32 -b4k -r4k -w0 -d120 -Sh -D -L -c5G <ENTER_PATH> > test04.txt
     ```
+
 ## Specify key parameters
 Well, that was simple right? Unfortunately, there is more to it than that. Let’s unpack what we did. First, there are various parameters that you can tinker with and it can get specific. However, we used the following set of baseline parameters:
 
@@ -189,7 +204,7 @@ The following short summary explains why using file copy to measure storage perf
     
     To learn more, see [Using file copy to measure storage performance](https://docs.microsoft.com/archive/blogs/josebda/using-file-copy-to-measure-storage-performance-why-its-not-a-good-idea-and-what-you-should-do-instead?ranMID=24542&ranEAID=je6NUbpObpQ&ranSiteID=je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q&epi=je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q&irgwc=1&OCID=AID2000142_aff_7593_1243925&tduid=%28ir__rcvu3tufjwkftzjukk0sohzizm2xiezdpnxvqy9i00%29%287593%29%281243925%29%28je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q%29%28%29&irclickid=_rcvu3tufjwkftzjukk0sohzizm2xiezdpnxvqy9i00).
 
-## Experiments + common workloads
+## Experiments and common workloads
 This section includes a few other examples, experiments, and workload types.
 
 ### Confirming the coordinator node
