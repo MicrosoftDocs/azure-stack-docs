@@ -70,24 +70,6 @@ Completing the secret rotation steps in the following sections will resolve thes
 > Azure Stack Hub environments on pre-1811 versions may see alerts for pending internal certificate or secret expirations. These alerts are inaccurate and should be ignored without running internal secret rotation. Inaccurate internal secret expiration alerts are a known issue that's resolved in 1811. Internal secrets won't expire unless the environment has been active for two years.
 ::: moniker-end
 
-### External certificates from a new Certificate Authority
-
-Azure Stack Hub supports secret rotation with external certificates from a new Certificate Authority (CA) in the following contexts:
-
-|Installed Certificate CA|CA to Rotate To|Supported|Azure Stack Hub versions supported|
-|-----|-----|-----|-----|
-|From Self-Signed|To Enterprise|Supported|1903 & Later|
-|From Self-Signed|To Self-Signed|Not Supported||
-|From Self-Signed|To Public<sup>*</sup>|Supported|1803 & Later|
-|From Enterprise|To Enterprise|Supported. From 1803-1903: supported so long as customers use the SAME enterprise CA as used at deployment|1803 & Later|
-|From Enterprise|To Self-Signed|Not Supported||
-|From Enterprise|To Public<sup>*</sup>|Supported|1803 & Later|
-|From Public<sup>*</sup>|To Enterprise|Supported|1903 & Later|
-|From Public<sup>*</sup>|To Self-Signed|Not Supported||
-|From Public<sup>*</sup>|To Public<sup>*</sup>|Supported|1803 & Later|
-
-<sup>*</sup>Indicates that the Public Certificate Authorities are part of the Windows Trusted Root Program. You can find the full list in the article [List of Participants - Microsoft Trusted Root Program](/security/trusted-root/participants-list).
-
 ## Prerequisites
 
 1. It's highly recommended that you first update your Azure Stack Hub instance to the latest version.
@@ -107,7 +89,23 @@ Azure Stack Hub supports secret rotation with external certificates from a new C
 
 ### Prerequisites
 
-For rotation of external secrets, complete these additional prerequisites:
+Azure Stack Hub supports secret rotation with external certificates from a new Certificate Authority (CA) in the following contexts:
+
+|Installed Certificate CA|CA to Rotate To|Supported|Azure Stack Hub versions supported|
+|-----|-----|-----|-----|
+|From Self-Signed|To Enterprise|Supported|1903 & Later|
+|From Self-Signed|To Self-Signed|Not Supported||
+|From Self-Signed|To Public<sup>*</sup>|Supported|1803 & Later|
+|From Enterprise|To Enterprise|Supported. From 1803-1903: supported so long as customers use the SAME enterprise CA as used at deployment|1803 & Later|
+|From Enterprise|To Self-Signed|Not Supported||
+|From Enterprise|To Public<sup>*</sup>|Supported|1803 & Later|
+|From Public<sup>*</sup>|To Enterprise|Supported|1903 & Later|
+|From Public<sup>*</sup>|To Self-Signed|Not Supported||
+|From Public<sup>*</sup>|To Public<sup>*</sup>|Supported|1803 & Later|
+
+<sup>*</sup>Indicates that the Public Certificate Authorities are part of the Windows Trusted Root Program. You can find the full list in the article [List of Participants - Microsoft Trusted Root Program](/security/trusted-root/participants-list).
+
+Prior to rotation of external secrets, complete these additional prerequisites:
 
 1. Run the **[`Test-AzureStack`](azure-stack-diagnostic-test.md)** PowerShell cmdlet using the `-group SecretRotationReadiness` parameter, to confirm all test outputs are healthy before rotating secrets.
 2. Prepare a new set of replacement external certificates:
