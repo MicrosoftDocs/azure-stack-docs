@@ -84,26 +84,27 @@ Prior to rotation of external secrets:
 1. Run the **[`Test-AzureStack`](azure-stack-diagnostic-test.md)** PowerShell cmdlet using the `-group SecretRotationReadiness` parameter, to confirm all test outputs are healthy before rotating secrets.
 2. Prepare a new set of replacement external certificates:
     - The new set must match the certificate specifications outlined in the [Azure Stack Hub PKI certificate requirements](azure-stack-pki-certs.md). 
-    - Generate a certificate signing request (CSR) to submit to your Certificate Authority (CA) using the steps outlined in [Generate certificate signing requests](azure-stack-get-pki-certs.md) and prepare them for use in your Azure Stack Hub environment using the steps in [Prepare PKI certificates](azure-stack-prepare-pki-certs.md). 
-    
+    - Generate a certificate signing request (CSR) to submit to your Certificate Authority (CA) using the steps outlined in [Generate certificate signing requests](azure-stack-get-pki-certs.md) and prepare them for use in your Azure Stack Hub environment using the steps in [Prepare PKI certificates](azure-stack-prepare-pki-certs.md).
+
       Azure Stack Hub supports secret rotation for external certificates from a new Certificate Authority (CA) in the following contexts:
 
-|Installed Certificate CA|CA to Rotate To|Supported|Azure Stack Hub versions supported|
-|-----|-----|-----|-----|
-|From Self-Signed|To Enterprise|Supported|1903 & Later|
-|From Self-Signed|To Self-Signed|Not Supported||
-|From Self-Signed|To Public<sup>*</sup>|Supported|1803 & Later|
-|From Enterprise|To Enterprise|Supported. From 1803-1903: supported so long as customers use the SAME enterprise CA as used at deployment|1803 & Later|
-|From Enterprise|To Self-Signed|Not Supported||
-|From Enterprise|To Public<sup>*</sup>|Supported|1803 & Later|
-|From Public<sup>*</sup>|To Enterprise|Supported|1903 & Later|
-|From Public<sup>*</sup>|To Self-Signed|Not Supported||
-|From Public<sup>*</sup>|To Public<sup>*</sup>|Supported|1803 & Later|  
-<sup>*</sup>Indicates that the Public Certificate Authorities are part of the Windows Trusted Root Program. You can find the full list in the article [List of Participants - Microsoft Trusted Root Program](/security/trusted-root/participants-list).  
+     |Installed Certificate CA|CA to Rotate To|Supported|Azure Stack Hub versions supported|
+     |-----|-----|-----|-----|
+     |From Self-Signed|To Enterprise|Supported|1903 & Later|
+     |From Self-Signed|To Self-Signed|Not Supported||
+     |From Self-Signed|To Public<sup>*</sup>|Supported|1803 & Later|
+     |From Enterprise|To Enterprise|Supported. From 1803-1903: supported so long as customers use the SAME enterprise CA as used at deployment|1803 & Later|
+     |From Enterprise|To Self-Signed|Not Supported||
+     |From Enterprise|To Public<sup>*</sup>|Supported|1803 & Later|
+     |From Public<sup>*</sup>|To Enterprise|Supported|1903 & Later|
+     |From Public<sup>*</sup>|To Self-Signed|Not Supported||
+     |From Public<sup>*</sup>|To Public<sup>*</sup>|Supported|1803 & Later|
+     <sup>*</sup>Indicates that the Public Certificate Authorities are part of the Windows Trusted Root Program. You can find the full list in the article [List of Participants - Microsoft Trusted Root Program](/security/trusted-root/participants-list).
+
     - Be sure to validate the certificates you prepare with the steps outlined in [Validate PKI Certificates](azure-stack-validate-pki-certs.md)
     - Make sure there are no special characters in the password, like `*` or `)`.
     - Make sure the PFX encryption is **TripleDES-SHA1**. If you run into an issue, see [Fix common issues with Azure Stack Hub PKI certificates](azure-stack-remediate-certs.md#pfx-encryption).
-    
+
 3. Store a backup to the certificates used for rotation in a secure backup location. If your rotation runs and then fails, replace the certificates in the file share with the backup copies before you rerun the rotation. Keep backup copies in the secure backup location.
 4. Create a fileshare you can access from the ERCS VMs. The file share must be  readable and writable for the **CloudAdmin** identity.
 5. Open a PowerShell ISE console from a computer where you have access to the fileshare. Navigate to your fileshare, where you create directories to place your external certificates.
