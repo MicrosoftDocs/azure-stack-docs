@@ -1,5 +1,5 @@
 ---
-title: How to back up your VM on Azure Stack Hub with Commvault 
+title: Back up VM on Azure Stack Hub with Commvault 
 description: Learn how to Back up your VM on Azure Stack Hub with Commvault.
 author: mattbriggs
 
@@ -23,7 +23,7 @@ This article walks through the configuration of Commvault Live Sync to update a 
 
 The following diagram shows you the overall solution when using Commvault to back up your VMs.
 
-![](./media/azure-stack-network-howto-backup-commvault/bcdr-commvault-overall-arc.png)
+![The diagram shows how Commvault can be used to replicate data from an Azure stack to another stack or to Azure Cloud.](./media/azure-stack-network-howto-backup-commvault/bcdr-commvault-overall-arc.png)
 
 In this article you will:
 
@@ -39,7 +39,7 @@ You can also download and offer compatible partner VM images to protect your Azu
 
 The topology of this approach will look like the following diagram:
 
-![](./media/azure-stack-network-howto-backup-commvault/backup-vm-commvault-diagram.svg)
+![The diagram shows a data path from a COMMVAULT VSA Proxy on Azure Stack Hub 1 to Azure Stack Hub 2, which has a recovery VM that can be brought online when needed to back up Hub 1.](./media/azure-stack-network-howto-backup-commvault/backup-vm-commvault-diagram.svg)
 
 ## Create the Commvault VM from the Commvault Marketplace Item
 
@@ -47,7 +47,7 @@ The topology of this approach will look like the following diagram:
 
 2. Select **Create a resource** > **Compute** > **Commvault**.
 
-    > [!Note]  
+    > [!NOTE]  
     > If Commvault is not available to you, contact your cloud operator.
 
     ![Create VM](./media/azure-stack-network-howto-backup-commvault/commvault-create-vm-01.png)
@@ -72,11 +72,11 @@ The topology of this approach will look like the following diagram:
     
     i. Select **OK**.
 
-    ![](./media/azure-stack-network-howto-backup-commvault/commvault-create-vm-02.png)
+    ![The "Dashboard > New > Create virtual machine > Choose a size" dialog box shows a list of size possibilities for the virtual machine.](./media/azure-stack-network-howto-backup-commvault/commvault-create-vm-02.png)
 
 4. Choose the size of the Commvault VM. The VM size for backup should be at least 10 GB of RAM and 100 GB of storage.
 
-    ![](./media/azure-stack-network-howto-backup-commvault/commvault-create-vm-03.png).
+    ![The "Dashboard > New > Create virtual machine > Settings" dialog box shows the settings to be used to create the virtual machine.](./media/azure-stack-network-howto-backup-commvault/commvault-create-vm-03.png).
 
 5. Choose the settings for the Commvault VM.
 
@@ -130,7 +130,7 @@ You will need to know if your identity manager is Azure AD or ADFS. The followin
 
 3. After Commvault installs on in your Commvault VM, open the Commcell Console. From Start, select **Commvault** > **Commvault Commcell Console**.
 
-    ![](./media/azure-stack-network-howto-backup-commvault/commcell-console.png)
+    ![The Commcell console has a navigation pane on the left, titled Commcell Browser. The right pane shows a Getting Started tabbed page.](./media/azure-stack-network-howto-backup-commvault/commcell-console.png)
 
 4. Configure your backup repositories to use storage external to the Azure Stack Hub in the Commvault Commcell Console. In the CommCell Browser, select Storage Resources > Storage Pools. Right-click and select **Add Storage Pool.** Select **Cloud**.
 
@@ -138,7 +138,7 @@ You will need to know if your identity manager is Azure AD or ADFS. The followin
 
 6. Select **Create** > **Cloud Storage**.
 
-    ![](./media/azure-stack-network-howto-backup-commvault/commcell-storage-add-storage-device.png)
+    ![The StorageDevice# dialog box displays the General tabbed page, with various list and text boxes for specifying the storage device to be created.](./media/azure-stack-network-howto-backup-commvault/commcell-storage-add-storage-device.png)
 
 7. Select your cloud service provider. In this procedure, we will use a second Azure Stack Hub in a different location. Select Microsoft Azure Storage.
 
@@ -158,7 +158,7 @@ You will need to know if your identity manager is Azure AD or ADFS. The followin
 
 10. Create a Microsoft Azure Stack Hub Client by following the instructions at [Creating a Microsoft Azure Stack Hub Client](https://documentation.commvault.com/commvault/v11_sp13/article?p=86495.htm)
 
-    ![](./media/azure-stack-network-howto-backup-commvault/commcell-ceate-client.png)
+    ![The Create Azure Stack Client dialog box has list and text boxes for specifying the characteristics of the client.](./media/azure-stack-network-howto-backup-commvault/commcell-ceate-client.png)
 
 11. Select the VMs or Resource Groups to protect and attach a backup policy.
 
@@ -174,21 +174,21 @@ Two options are available. You can choose to replicate changes from the primary 
 
 2. For the steps to configure Commvault Live Sync, see [Live Sync Replication for Microsoft Azure Stack Hub](https://documentation.commvault.com/commvault/v11_sp13/article?p=94386.htm).
 
-    ![](./media/azure-stack-network-howto-backup-commvault/live-sync-1.png)
+    ![The Commcell console shows the tabbed page "vm-kr-cvlt > Client Computers > ASIC Azure Stack > Virtual Server > Azure Stack > defaultBackupSet". A context menu for the Off Stack Protection on the page has a Live Sync > Configuration option.](./media/azure-stack-network-howto-backup-commvault/live-sync-1.png)
  
 3. During the configuration of Live Sync, you will need to provide the target Azure Stack Hub and Virtual Server Agent details.
 
-    ![](./media/azure-stack-network-howto-backup-commvault/live-sync-2.png)
+    ![The Destination step of the Live Sync Options for Subclient Off Stack Protection wizard has list boxes for specifying the Virtualization Client and the Proxy Client.](./media/azure-stack-network-howto-backup-commvault/live-sync-2.png)
 
 4. Continue the configuration and add the target storage account where the replica disks will be hosted, the resource group(s) where the replica VMs will be placed, and the name you would like attached to the replica VMs.
 
-    ![](./media/azure-stack-network-howto-backup-commvault/live-sync-3.png)
+    ![The Virtual Machines step of the Live Sync Options for Subclient Off Stack Protection wizard allows you to add and remove VMs.](./media/azure-stack-network-howto-backup-commvault/live-sync-3.png)
 
 5. You can also change the VM size and configure network settings by selecting  **Configure** next to each VM.
 
 6. Set the frequency of replication to the target Azure Stack Hub
 
-    ![](./media/azure-stack-network-howto-backup-commvault/live-sync-5.png)
+    ![The Job Options step of the Live Sync Options for Subclient Off Stack Protection wizard is for specifying a backup schedule.](./media/azure-stack-network-howto-backup-commvault/live-sync-5.png)
 
 7. Review your settings to save the configuration. The recovery environment will then be created and replication will begin at the chosen interval.
 
@@ -197,15 +197,15 @@ Two options are available. You can choose to replicate changes from the primary 
 
 Commvault Live Sync allows you to failover machines from one Azure Stack Hub to another and failback to resume operations on the original Azure Stack Hub. The workflow is automated and logged.
 
-![](./media/azure-stack-network-howto-backup-commvault/back-up-live-sync-panel.png)
+![The Replication Monitor page of the Admin Console shows no data available for various subpanes of the Replication RPO pane. The Replication Monitor pane shows two VMs listed. For each of them there is a row of replication information.](./media/azure-stack-network-howto-backup-commvault/back-up-live-sync-panel.png)
 
 Select the VMs you wish to failover to your Recovery Azure Stack Hub and choose a planned or unplanned failover. A planned failover is appropriate when there is time to gracefully shut down the production environment before resuming operations in the recovery site. Planned failover shuts down the production VMs, replicates final changes to the recovery site, and brings the recovery VMs online with the latest data and applies the VM size and network configuration specified during the Live Sync configuration. An unplanned failover will attempt to shut down the production VMs, but will proceed if the production environment is unavailable and simply bring the recovery VMs online with the last received replication data set applied to the VM and the size and network configuration previously chosen. The images below illustrate an unplanned failover where the recovery VMs have been brought online by Commvault Live Sync.
 
-![](./media/azure-stack-network-howto-backup-commvault/unplanned-failover.png)
+![The "Job summary" shows information about the disaster recovery event, including Type, Priority, "Start time", and "End time".](./media/azure-stack-network-howto-backup-commvault/unplanned-failover.png)
 
-![](./media/azure-stack-network-howto-backup-commvault/fail-over-2.png)
+![A list titled Events shows a single event, described as "DR Orchestration job has completed." There is other information for that event.](./media/azure-stack-network-howto-backup-commvault/fail-over-2.png)
 
-![](./media/azure-stack-network-howto-backup-commvault/fail-over-3.png)
+![A list titled Phase Details shows six events for four machines. For each there is a phase name, status, start time, and end time. The phase names are Power Off, Power On, Disable Synch, and Post Operation.](./media/azure-stack-network-howto-backup-commvault/fail-over-3.png)
 
 ## Next steps
 

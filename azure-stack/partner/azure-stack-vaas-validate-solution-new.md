@@ -3,7 +3,7 @@ title: Validate a solution in Azure Stack Hub
 description: Learn how to validate a new Azure Stack Hub solution with the solution validation workflow.
 author: mattbriggs
 ms.topic: quickstart
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019

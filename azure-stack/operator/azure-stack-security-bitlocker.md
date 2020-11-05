@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: inhenkel
 ms.reviewer: fiseraci
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 08/06/2020
 
 # Intent: As an Azure Stack operator, I want to learn to protect my data with encryption at rest.
 # Keyword: rest encryption azure stack
@@ -18,7 +18,7 @@ ms.lastreviewed: 03/11/2019
 
 # Data at rest encryption in Azure Stack Hub
 
-Azure Stack Hub protects user and infrastructure data at the storage subsystem level using encryption at rest. Azure Stack Hub's storage subsystem is encrypted using BitLocker with 128-bit AES encryption. BitLocker keys are persisted in an internal secret store.
+Azure Stack Hub protects user and infrastructure data at the storage subsystem level using encryption at rest. By default, Azure Stack Hub's storage subsystem is encrypted using BitLocker with 128-bit AES encryption. BitLocker keys are persisted in an internal secret store. At deployment time, it is also possible to configure BitLocker to use 256-bit AES encryption.
 
 Data at rest encryption is a common requirement for many of the major compliance standards (for example, PCI-DSS, FedRAMP, HIPAA). Azure Stack Hub enables you to meet those requirements with no extra work or configurations required. For more information on how Azure Stack Hub helps you meet compliance standards, see the [Microsoft Service Trust Portal](https://aka.ms/AzureStackCompliance).
 
@@ -36,14 +36,14 @@ Retrieving the BitLocker recovery keys requires access to the [privileged endpoi
 
 ```powershell
 ##This cmdlet retrieves the recovery keys for all the volumes that are encrypted with BitLocker.
-Get-AzsRecoveryKeys
+Get-AzsRecoveryKeys -raw
 ```
 
-Optional parameters for *Get-AzsRecoveryKeys* cmdlet:
+Parameters for *Get-AzsRecoveryKeys* cmdlet:
 
 | Parameter | Description | Type | Required |
 |---------|---------|---------|---------|
-|*raw* | Returns raw data of mapping between recovery key, computer name, and password id(s) of each encrypted volume.  | Switch | No (designed for support scenarios)|
+|*raw* | Returns data mapping between recovery key, computer name, and password id(s) of each encrypted volume.  | Switch | No, but recommended |
 
 ## Troubleshoot issues
 

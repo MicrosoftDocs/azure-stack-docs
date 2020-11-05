@@ -42,10 +42,16 @@ Complete the following prerequisites before you register:
 
 Before registering Azure Stack Hub with Azure, you must have:
 
+::: zone pivot="state-connected"
 - The subscription ID for an Azure subscription. Only EA, CSP, or CSP shared services subscriptions are supported for registration. CSPs need to decide whether to [use a CSP or APSS subscription](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription).<br><br>To get the ID, sign in to Azure, click **All services**. Then, under the **GENERAL** category, select **Subscriptions**, click the subscription you want to use, and under **Essentials** you can find the Subscription ID. As a best practice, use separate subscriptions for production and dev or test environments. 
+::: zone-end
+::: zone pivot="state-disconnected"
+- The subscription ID for an Azure subscription. Only EA subscriptions are supported for registration. 
 
-  > [!Note]  
-  > Germany cloud subscriptions aren't currently supported.
+    To get the ID, sign in to Azure, click **All services**. Then, under the **GENERAL** category, select **Subscriptions**, click the subscription you want to use, and under **Essentials** you can find the Subscription ID. As a best practice, use separate subscriptions for production and dev or test environments. 
+::: zone-end
+   > [!Note]  
+   > Germany cloud subscriptions aren't currently supported.  
 
 - The username and password for an account that's an owner for the subscription.
 
@@ -84,6 +90,8 @@ The Azure Stack Hub tools GitHub repository contains PowerShell modules that sup
 
 To ensure you're using the latest version, delete any existing versions of the Azure Stack Hub tools and [download the latest version from GitHub](azure-stack-powershell-download.md) before registering with Azure.
 
+[!INCLUDE [Azure Stack Hub Operator Access Workstation](../includes/operator-note-owa.md)]
+
 ### Determine your billing model
 ::: zone pivot="state-connected"
  A connected deployment allows Azure Stack Hub to connect to the internet, and to Azure. You can also use either Azure AD or Active Directory Federation Services (AD FS) as your identity store, and choose from two billing models: pay-as-you-use or capacity-based. You specify the billing model later, while running the registration script.
@@ -100,12 +108,7 @@ When you run the registration script, you must provide a unique registration nam
 > [!NOTE]
 > Azure Stack Hub registrations using the capacity-based billing model will need to change the unique name when re-registering after those yearly subscriptions expire unless you [delete the expired registration](#renew-or-change-registration) and re-register with Azure.
 
-To determine the Cloud ID for your Azure Stack Hub deployment, open PowerShell as an admin on a computer that can access the Privileged Endpoint, run the following commands, and then record the **CloudID** value:
-
-```powershell
-Run: Enter-PSSession -ComputerName <privileged endpoint computer name> -ConfigurationName PrivilegedEndpoint
-Run: Get-AzureStackStampInformation
-```
+To determine the Cloud ID for your Azure Stack Hub deployment, see [Find your cloud ID](azure-stack-find-cloud-id.md).
 
 ::: zone pivot="state-connected"
 ## Register with pay-as-you-use billing
@@ -381,7 +384,7 @@ If you want to change the subscription you use, you must first run the **Remove-
   # switch to new subscription id
   Select-AzureRmSubscription -Subscription '<New subscription ID>'
   # register 
-  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel '<Billing model>' -RegistrationName '<Registration name>' --ResourceGroupName '<Registration resource group name>'
+  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel '<Billing model>' -RegistrationName '<Registration name>' -ResourceGroupName '<Registration resource group name>'
   ```
 
 ### Change billing model, how features are offered, or re-register your instance

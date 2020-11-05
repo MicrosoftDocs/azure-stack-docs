@@ -1,6 +1,6 @@
 ---
-title: Troubleshooting known issues virtual machines on Azure Stack Hub
-description: Learn how to troubleshoot known issues virtual machines on Azure Stack Hub
+title: Troubleshooting VM known issues on Azure Stack Hub
+description: Learn how to troubleshoot virtual machine known issues on Azure Stack Hub
 author: mattbriggs
 
 ms.topic: troubleshooting
@@ -32,7 +32,7 @@ You can find known issues for troubleshooting the Azure Stack Hub compute resour
 - **Applicable**  
     This issue applies to Azure Stack Hub release 2002 and later.  
 - **Cause**  
-    When going through the VM creation experience, you will see the VM size: NV4as_v4. Customers who have the hardware required for the AMD Mi25-based Azure Stack Hub GPU preview are able to have a successful VM deployment. All other customers will have a failed VM deployment with this VM size.  
+    When going through the VM creation experience, you will see the VM size: NV4as_v4. Customers who have the hardware required for the AMD MI25-based Azure Stack Hub GPU preview are able to have a successful VM deployment. All other customers will have a failed VM deployment with this VM size.  
 - **Remediation**  
     None.  
 - **Occurrence**  

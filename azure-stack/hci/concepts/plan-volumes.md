@@ -20,11 +20,11 @@ Volumes are where you put the files your workloads need, such as VHD or VHDX fil
    >[!NOTE]
    > Throughout documentation for Storage Spaces Direct, we use term "volume" to refer jointly to the volume and the virtual disk under it, including functionality provided by other built-in Windows features such as Cluster Shared Volumes (CSV) and ReFS. Understanding these implementation-level distinctions is not necessary to plan and deploy Storage Spaces Direct successfully.
 
-![what-are-volumes](media/plan-volumes/what-are-volumes.png)
+![Diagram shows three folders labeled as volumes each associated with a virtual disk labeled as volumes, all associated with a common storage pool of disks.](media/plan-volumes/what-are-volumes.png)
 
 All volumes are accessible by all servers in the cluster at the same time. Once created, they show up at **C:\ClusterStorage\\** on all servers.
 
-![csv-folder-screenshot](media/plan-volumes/csv-folder-screenshot.png)
+![Screen capture shows a file explorer window titled ClusterStorage that contains volumes named Volume1, Volume2, and Volume3.](media/plan-volumes/csv-folder-screenshot.png)
 
 ## Choosing how many volumes to create
 
@@ -34,7 +34,7 @@ We recommend limiting the total number of volumes to 64 volumes per cluster.
 
 ## Choosing the filesystem
 
-We recommend using the new [Resilient File System (ReFS)](/en-us/windows-server/storage/refs/refs-overview) for Storage Spaces Direct. ReFS is the premier filesystem purpose-built for virtualization and offers many advantages, including dramatic performance accelerations and built-in protection against data corruption. It supports nearly all key NTFS features, including Data Deduplication in Windows Server version 1709 and later. See the ReFS [feature comparison table](/windows-server/storage/refs/refs-overview#feature-comparison) for details.
+We recommend using the new [Resilient File System (ReFS)](/windows-server/storage/refs/refs-overview) for Storage Spaces Direct. ReFS is the premier filesystem purpose-built for virtualization and offers many advantages, including dramatic performance accelerations and built-in protection against data corruption. It supports nearly all key NTFS features, including Data Deduplication in Windows Server version 1709 and later. See the ReFS [feature comparison table](/windows-server/storage/refs/refs-overview#feature-comparison) for details.
 
 If your workload requires a feature that ReFS doesn't support yet, you can use NTFS instead.
 
@@ -54,17 +54,17 @@ With two servers in the cluster, you can use two-way mirroring or you can use ne
 
 Two-way mirroring keeps two copies of all data, one copy on the drives in each server. Its storage efficiency is 50 percent; to write 1 TB of data, you need at least 2 TB of physical storage capacity in the storage pool. Two-way mirroring can safely tolerate one hardware failure at a time (one server or drive).
 
-![two-way-mirror](media/plan-volumes/two-way-mirror.png)
+![Diagram shows volumes labeled data and copy connected by circular arrows and both volumes are associated with a bank of disks in servers.](media/plan-volumes/two-way-mirror.png)
 
 Nested resiliency provides data resiliency between servers with two-way mirroring, then adds resiliency within a server with two-way mirroring or mirror-accelerated parity. Nesting provides data resilience even when one server is restarting or unavailable. Its storage efficiency is 25 percent with nested two-way mirroring and around 35-40 percent for nested mirror-accelerated parity. Nested resiliency can safely tolerate two hardware failures at a time (two drives, or a server and a drive on the remaining server). Because of this added data resilience, we recommend using nested resiliency on production deployments of two-server clusters. For more info, see [Nested resiliency](/windows-server/storage/storage-spaces/nested-resiliency).
 
-![Nested mirror-accelerated parity](media/plan-volumes/nested-mirror-accelerated-parity.png)
+![Diagram shows nested mirror accelerated parity with two-way mirror between servers associated with a two-way mirror within each server corresponding to a parity layer within each server.](media/plan-volumes/nested-mirror-accelerated-parity.png)
 
 ### With three servers
 
 With three servers, you should use three-way mirroring for better fault tolerance and performance. Three-way mirroring keeps three copies of all data, one copy on the drives in each server. Its storage efficiency is 33.3 percent – to write 1 TB of data, you need at least 3 TB of physical storage capacity in the storage pool. Three-way mirroring can safely tolerate [at least two hardware problems (drive or server) at a time](/windows-server/storage/storage-spaces/storage-spaces-fault-tolerance#examples). If 2 nodes become unavailable the storage pool will lose quorum, since 2/3 of the disks are not available, and the virtual disks will be unaccessible. However, a node can be down and one or more disks on another node can fail and the virtual disks will remain online. For example, if you're rebooting one server when suddenly another drive or server fails, all data remains safe and continuously accessible.
 
-![three-way-mirror](media/plan-volumes/three-way-mirror.png)
+![Diagram shows a volume labeled data and two labeled copy connected by circular arrows with each volume associated with a server containing physical disks.](media/plan-volumes/three-way-mirror.png)
 
 ### With four or more servers
 
@@ -72,7 +72,7 @@ With four or more servers, you can choose for each volume whether to use three-w
 
 Dual parity provides the same fault tolerance as three-way mirroring but with better storage efficiency. With four servers, its storage efficiency is 50.0 percent; to store 2 TB of data, you need 4 TB of physical storage capacity in the storage pool. This increases to 66.7 percent storage efficiency with seven servers, and continues up to 80.0 percent storage efficiency. The tradeoff is that parity encoding is more compute-intensive, which can limit its performance.
 
-![dual-parity](media/plan-volumes/dual-parity.png)
+![Diagram shows two volumes labeled data and two labeled parity connected by circular arrows with each volume associated with a server containing physical disks.](media/plan-volumes/dual-parity.png)
 
 Which resiliency type to use depends on the needs of your workload. Here's a table that summarizes which workloads are a good fit for each resiliency type, as well as the performance and storage efficiency of each resiliency type.
 
@@ -126,7 +126,7 @@ Size is distinct from volume's *footprint*, the total physical storage capacity 
 
 The footprints of your volumes need to fit in the storage pool.
 
-![size-versus-footprint](media/plan-volumes/size-versus-footprint.png)
+![Diagram shows a 2 TB volume compared to a 6 TB footprint in the storage pool with a multiplier of three specified.](media/plan-volumes/size-versus-footprint.png)
 
 ### Reserve capacity
 
@@ -134,7 +134,7 @@ Leaving some capacity in the storage pool unallocated gives volumes space to rep
 
 We recommend reserving the equivalent of one capacity drive per server, up to 4 drives. You may reserve more at your discretion, but this minimum recommendation guarantees an immediate, in-place, parallel repair can succeed after the failure of any drive.
 
-![reserve](media/plan-volumes/reserve.png)
+![Diagram shows a volume associated with several disks in a storage pool and unassociated disks marked as reserve.](media/plan-volumes/reserve.png)
 
 For example, if you have 2 servers and you are using 1 TB capacity drives, set aside 2 x 1 = 2 TB of the pool as reserve. If you have 3 servers and 1 TB capacity drives, set aside 3 x 1 = 3 TB as reserve. If you have 4 or more servers and 1 TB capacity drives, set aside 4 x 1 = 4 TB as reserve.
 
@@ -171,7 +171,7 @@ We aren't required to make all volumes the same size, but for simplicity, let's 
 
 The four volumes fit exactly on the physical storage capacity available in our pool. Perfect!
 
-![example](media/plan-volumes/example.png)
+![Diagram shows two 12 TB three-way mirror volumes each associated with 36 TB of storage and two 12 TB dual parity volumes each associated with 24 TB, all taking up 120 TB in a storage pool.](media/plan-volumes/example.png)
 
    >[!TIP]
    > You don't need to create all the volumes right away. You can always extend volumes or create new volumes later.

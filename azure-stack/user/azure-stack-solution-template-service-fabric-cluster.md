@@ -190,7 +190,7 @@ You can access the Service Fabric cluster by using either the Service Fabric Exp
 
 1. To find the URL for the Service Fabric Explorer, and the Client connection endpoint, review the results of the Template deployment.
 
-1. In your browser, go to <https://*FQDN*:19080>. Replace *FQDN* with the FQDN of your Service Fabric cluster from step 2.   
+1. In your browser, go to `https://*FQDN*:19080`. Replace *FQDN* with the FQDN of your Service Fabric cluster from step 2.   
    If you've used a self-signed certificate, you'll get a warning that the connection isn't secure. To continue to the web site, select **More Information**, and then **Go on to the webpage**. 
 
 1. To authenticate to the site, you must select a certificate to use. Select **More choices**, pick the appropriate certificate, and then click **OK** to connect to the Service Fabric Explorer. 

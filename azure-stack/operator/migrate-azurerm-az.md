@@ -4,7 +4,7 @@ description: Learn the steps and tools for migrating scripts from the AzureRM mo
 author: mattbriggs
 ms.author: mabrigg
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 10/05/2020
 ms.reviewer: sijuman
 ms.lastreviewed: 04/14/2020
 ---
@@ -21,8 +21,7 @@ To see the full list of breaking changes between AzureRM and Az, see the [Migrat
 
 ## Check for installed versions of AzureRM
 
-The Az module can be installed side-by-side with the AzureRM module, but this is not recommended. Before
-taking any migration steps, check which versions of AzureRM are installed on your system. Doing so
+Before taking any migration steps, check which versions of AzureRM are installed on your system. Doing so
 allows you to make sure scripts are already running on the latest release, and let you know
 if you can enable command aliases without uninstalling AzureRM.
 

@@ -1,6 +1,26 @@
 {
   "redirections": [
     { 
+      "source_path": "azure-stack/operator/azure-stack-diagnostic-log-collection-overview.md", 
+      "redirect_url": "/azure-stack/operator/diagnostic-log-collection", 
+      "redirect_document_id": false
+    },    
+    { 
+      "source_path": "azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection.md", 
+      "redirect_url": "/azure-stack/operator/diagnostic-log-collection", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal.md", 
+      "redirect_url": "/azure-stack/operator/diagnostic-log-collection", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-powershell.md", 
+      "redirect_url": "/azure-stack/operator/diagnostic-log-collection", 
+      "redirect_document_id": false
+    },    
+    { 
       "source_path": "azure-stack/operator/app-service-deploy-ha.md", 
       "redirect_url": "/azure-stack/operator/azure-stack-app-service-deploy", 
       "redirect_document_id": false
@@ -118,6 +138,11 @@
     {
       "source_path": "azure-stack/operator/azure-stack-app-service-update-offline.md",
       "redirect_url": "/azure-stack/operator/azure-stack-app-service-update?pivots=state-disconnected",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-create-vpn-connection-one-node.md",
+      "redirect_url": "/azure-stack/user/azure-stack-vpn-gateway-about-vpn-gateways",
       "redirect_document_id": false
     },
     {
@@ -453,12 +478,7 @@
     },
     { 
       "source_path": "azure-stack/operator/azure-stack-diagnostic-log-collection-overview-tzl.md", 
-      "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview", 
-      "redirect_document_id": true 
-    },
-    { 
-      "source_path": "azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection-tzl.md", 
-      "redirect_url": "/azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection", 
+      "redirect_url": "/azure-stack/operator/diagnostic-log-collection", 
       "redirect_document_id": true 
     },
     { 
@@ -467,19 +487,19 @@
       "redirect_document_id": true 
     },
     { 
-      "source_path": "azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md", 
-      "redirect_url": "/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal", 
-      "redirect_document_id": true 
-    },
-    { 
-      "source_path": "azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-powershell-tzl.md", 
-      "redirect_url": "/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-powershell", 
-      "redirect_document_id": true 
-    },
-    { 
       "source_path": "azure-stack/operator/azure-stack-azsreadiness-cmdlet.md", 
       "redirect_url": "/azure-stack/operator/azure-stack-validate-identity", 
       "redirect_document_id": true 
-    }
+    },
+    { 
+      "source_path": "azure-stack/operator/azure-stack-update-servicing-policy.md", 
+      "redirect_url": "/azure-stack/operator/azure-stack-servicing-policy", 
+      "redirect_document_id": true 
+    },
+    { 
+      "source_path": "azure-stack/hci/deploy/before-you-start.md", 
+      "redirect_url": "/azure-stack/hci/concepts/system-requirements", 
+      "redirect_document_id": false 
+    }    
   ]
 }

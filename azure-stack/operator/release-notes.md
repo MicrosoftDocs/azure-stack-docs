@@ -4,10 +4,10 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 07/23/2020
+ms.date: 11/03/2020
 ms.author: sethm
 ms.reviewer: sranthar
-ms.lastreviewed: 03/18/2020
+ms.lastreviewed: 08/11/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -20,11 +20,11 @@ This article describes the contents of Azure Stack Hub update packages. The upda
 
 To access release notes for a different version, use the version selector dropdown above the table of contents on the left.
 
-::: moniker range=">=azs-1907"
+::: moniker range=">=azs-1910"
 > [!IMPORTANT]  
 > This update package is only for Azure Stack Hub integrated systems. Do not apply this update package to the Azure Stack Development Kit (ASDK).
 ::: moniker-end
-::: moniker range="<azs-1907"
+::: moniker range="<azs-1910"
 > [!IMPORTANT]  
 > If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
 ::: moniker-end
@@ -41,11 +41,111 @@ For help with troubleshooting updates and the update process, see [Troubleshoot 
 
 ## Download the update
 
-You can download the Azure Stack Hub update package from [the Azure Stack Hub download page](https://aka.ms/azurestackupdatedownload).
+You can download the Azure Stack Hub update package using [the Azure Stack Hub update downloader tool](https://aka.ms/azurestackupdatedownload).
 
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
+::: moniker range="azs-2005"
+## 2005 build reference
+
+The Azure Stack Hub 2005 update build number is **1.2005.6.53**.
+
+### Update type
+
+The Azure Stack Hub 2005 update build type is **Full**.
+
+The 2005 update package is larger in size compared to previous updates. The increased size results in longer download times. The update will remain in the **Preparing** state for a long time, and operators can expect this process to take longer than with previous updates. The 2005 update has had the following expected runtimes in our internal testing- 4 nodes: 13-20 hours, 8 nodes: 16-26 hours, 12 nodes: 19-32 hours, 16 nodes: 22-38 hours. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2005 update and should not be compared to other Azure Stack Hub updates.
+
+For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
+
+<!-- ## What's in this update -->
+
+<!-- The current theme (if any) of this release. -->
+
+### What's new
+
+<!-- What's new, also net new experiences and features. -->
+- This build offers support for 3 new GPU VM types: NCv3 (Nvidia V100), NVv4 (AMD MI25), and NCas_v4 (NVIDIA T4) VM sizes. VM deployments will be successful for those who have the right hardware and are onboarded to the Azure Stack Hub GPU preview program. If you are interested, sign up for the GPU preview program at https://aka.ms/azurestackhubgpupreview. For more information, [see](../user/gpu-vms-about.md).
+- This release provides a new feature that enables an autonomous healing capability, which detects faults, assesses impact, and safely mitigates system issues. With this feature, we are working towards increased availability of the system without manual intervention. With release 2005 and later, customers will experience a reduction in the number of alerts. Any failure in this pipeline doesn't require action by Azure Stack Hub operators unless notified.
+- There is a new option in the Azure Stack Hub admin portal for air-gapped/disconnected Azure Stack Hub customers, to save logs locally. You can store the logs in a local SMB share when Azure Stack Hub is disconnected from Azure.
+- The Azure Stack Hub admin portal now blocks certain operations if a system operation is already in progress. For example, if an update is in progress, it is not possible to add a new scale unit node.
+- This release provides more fabric consistency with Azure on VMs created pre-1910. In 1910, Microsoft announced that all newly created VMs will use the wireserver protocol, enabling customers to use the same WALA agent and Windows guest agent as Azure, making it easier to use Azure images on Azure Stack Hub. With this release, all VMs created earlier than 1910 are automatically migrated to use the wireserver protocol. This also brings more reliable VM creation, VM extension deployment, and improvements in steady state uptime.
+- Azure Stack Hub storage now supports Azure Storage services APIs version 2019-02-02. For Azure client libraries, that is compatible with the new REST API version. For more information, see [Azure Stack Hub storage development tools](../user/azure-stack-storage-dev.md#azure-client-libraries).
+- Azure Stack Hub now supports the latest version of [CreateUiDefinition (version 2)](/azure/azure-resource-manager/managed-applications/create-uidefinition-overview).
+- New guidance for batched VM deployments. For more information [see this article](../operator/azure-stack-capacity-planning-compute.md).
+- The Azure Stack Hub Marketplace CoreOS Container Linux item [is approaching its end-of-life](https://azure.microsoft.com/updates/flatcar-in-azure/). For more information, see [Migrating from CoreOS Container Linux](https://docs.flatcar-linux.org/os/migrate-from-container-linux/).
+
+### Improvements
+
+<!-- Changes and product improvements with tangible customer-facing value. -->
+
+- Improvements to Storage infrastructure cluster service logs and events. Logs and events of Storage infrastructure cluster service will be kept for up to 14 days, for better diagnostics and troubleshooting.
+- Improvements that increase reliability of starting and stopping Azure Stack Hub.
+- Improvements that reduce the update runtime by using decentralization and removing dependencies. Compared to the 2002 update, the 4 nodes stamp update time is reduced from 15-42 hours to 13-20 hours. 8 nodes is reduced from 20-50 hours to 16-26 hours. 12 nodes is reduced from 20-60 hours to 19-32 hours. 16 nodes is reduced from 25-70 hours to 22-38 hours. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications.
+- The update now fails early if there are certain unrecoverable errors.
+- Improved resiliency of the update package while downloading from the internet.
+- Improved resiliency of stop-deallocating a VM.
+- Improved resiliency of the Network Controller Host Agent.
+- Added additional fields to the CEF payload of the syslog messages to report the source IP and the account used to connect to the privileged endpoint and the recovery endpoint. See [Integrate Azure Stack Hub with monitoring solutions using syslog forwarding](azure-stack-integrate-security.md) for details.
+- Added Windows Defender events (Event IDs 5001, 5010, 5012) to the list of events emitted via the syslog client.
+- Added alerts in the Azure Stack Administrator portal for Windows Defender-related events, to report on Defender platform and signatures version inconsistencies and failure to take actions on detected malware.
+- Added support for 4 Border Devices when integrating Azure Stack Hub into your datacenter.
+
+### Changes
+
+- Removed the actions to stop, shut down, and restart an infrastructure role instance from the admin portal. The corresponding APIs have also been removed in the Fabric Resource Provider. The following PowerShell cmdlets in the admin RM module and AZ preview for Azure Stack Hub no longer work: **Stop-AzsInfrastructureRoleInstance**, **Disable-InfrastructureRoleInstance**, and **Restart-InfrastructureRoleInstance**. These cmdlets will be removed from the next admin AZ module release for Azure Stack Hub.
+- Azure Stack Hub 2005 now only supports [App Service on Azure Stack Hub 2020 (versions 87.x)](app-service-release-notes-2020-Q2.md).
+- The user encryption setting that is required for hardware monitoring was changed from DES to AES to increase security. Please reach out to your hardware partner to learn how to change the setting in the base board management controller (BMC). After the change is made in the BMC, it may require you to run the command **Set-BmcCredential** again using the priviledged endpoint. For more information, see [Rotate secrets in Azure Stack Hub](azure-stack-rotate-secrets.md)
+
+### Fixes
+
+<!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
+
+- Fixed an issue that could cause a repair scale unit node to fail because it could not find the path to the base OS image.
+- Fixed an issue with scale-in and scale-out for the support infrastructure role that has a cascading effect on repairing scale unit nodes.
+- Fixed an issue in which the .VHD extension (instead of .vhd) was not allowed when operators added their own images to the Azure Stack Hub administrator portal on **All services > Compute > VM Images > Add**.
+- Fixed an issue in which a previous VM restart operation caused a subsequent unexpected restart after any other VM update operation (adding disks, tags, etc.).
+- Fixed an issue in which creating a duplicate DNS zone caused the portal to stop responding. It should now show an appropriate error.
+- Fixed an issue in which **Get-AzureStackLogs** was not collecting the required logs to troubleshoot networking issues. 
+- Fixed an issue in which the portal allowed fewer NICs to be attached than what it actually allows. 
+- Fixed code integrity policy to not emit violation events for certain internal software. This reduces noise in code integrity violation events emitted via syslog client.
+- Fixed **Set-TLSPolicy** cmdlet to enforce new policy without requiring restart of the https service or the reboot of the host.
+- Fixed an issue in which using a Linux NTP server erroneously generates alerts in the administration portal.  
+- Fixed an issue where failover of Backup Controller service instance resulted in automatic backups getting disabled.
+- Fixed an issue where internal secret rotation fails when infrastructure services do not have internet connectivity.
+- Fixed an issue in which users could not view subscription permissions using the Azure Stack Hub portals.
+
+## Security updates
+
+For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
+
+## Hotfixes
+
+Azure Stack Hub releases hotfixes on a regular basis. Starting with the 2005 release, when you update to a new major version (for example, 1.2002.x to 1.2005.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+> [!NOTE]
+> Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
+
+For more information, see our [servicing policy](azure-stack-servicing-policy.md).
+
+Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
+
+### Prerequisites: Before applying the 2005 update
+
+The 2005 release of Azure Stack Hub must be applied on the 2002 release with the following hotfixes:
+
+- [Azure Stack Hub hotfix 1.2002.56.152](https://support.microsoft.com/help/4582983)
+
+### After successfully applying the 2005 update
+
+Starting with the 2005 release, when you update to a new major version (for example, 1.2002.x to 1.2005.x), the latest hotfixes (if any) in the new major version are installed automatically.
+
+After the installation of 2005, if any 2005 hotfixes are subsequently released, you should install them:
+
+- [Azure Stack Hub hotfix 1.2005.20.82](https://support.microsoft.com/help/4592228)
+::: moniker-end
+
 ::: moniker range="azs-2002"
 ## 2002 build reference
 
@@ -165,14 +265,14 @@ For more information about hotfixes, see the [Azure Stack Hub servicing policy](
 The 2002 release of Azure Stack Hub must be applied on the 1910 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1910.63.186](https://support.microsoft.com/help/4574735)
+- [Azure Stack Hub hotfix 1.1910.81.224](https://support.microsoft.com/help/4583406)
 
 ### After successfully applying the 2002 update
 
 After the installation of this update, install any applicable hotfixes.
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.2002.53.144](https://support.microsoft.com/help/4574736)
+- [Azure Stack Hub hotfix 1.2002.56.152](https://support.microsoft.com/help/4582983)
 ::: moniker-end
 
 ::: moniker range="azs-1910"
@@ -207,6 +307,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Azure Stack Hub now supports all Windows Azure Linux Agent versions as Azure.
 
 - A new version of Azure Stack Hub admin PowerShell modules is available. <!-- For more information, see -->
+
+- New Azure PowerShell tenant modules were released for Azure Stack Hub on April 15, 2020. The currently used Azure RM modules will continue to work, but will no longer be updated after build 2002.
 
 - Added the **Set-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to configure the manual update for Windows Defender definitions in the Azure Stack Hub infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack Hub](azure-stack-security-av.md).
 
@@ -322,247 +424,25 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 The 1910 release of Azure Stack Hub must be applied on the 1908 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1908.51.133](https://support.microsoft.com/help/4574734)
+- [Azure Stack Hub hotfix 1.1908.57.146](https://support.microsoft.com/help/4583007)
 
 ### After successfully applying the 1910 update
 
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1910.63.186](https://support.microsoft.com/help/4574735)
-::: moniker-end
-
-::: moniker range="azs-1908"
-## 1908 build reference
-
-The Azure Stack Hub 1908 update build number is **1.1908.4.33**.
-
-### Update type
-
-For 1908, the underlying operating system on which Azure Stack Hub runs has been updated to Windows Server 2019. This update enables core fundamental enhancements and the ability to bring additional capabilities to Azure Stack Hub.
-
-The Azure Stack Hub 1908 update build type is **Full**. As a result, the 1908 update has a longer runtime than express updates like 1906 and 1907. Exact runtimes for full updates typically depend on the number of nodes that your Azure Stack Hub instance contains, the capacity used on your system by tenant workloads, your system's network connectivity (if connected to the internet), and your system hardware configuration. The 1908 update has had the following expected runtimes in our internal testing: 4 nodes - 42 hours, 8 nodes - 50 hours, 12 nodes - 60 hours, 16 nodes - 70 hours. Update runtimes lasting longer than these expected values aren't uncommon and don't require action by Azure Stack Hub operators unless the update fails.
-
-For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
-
-- Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware configuration.
-- Runtimes lasting longer than expected aren't uncommon and don't require action by Azure Stack Hub operators unless the update fails.
-- This runtime approximation is specific to the 1908 update and shouldn't be compared to other Azure Stack Hub updates.
-
-<!-- ## What's in this update -->
-
-<!-- The current theme (if any) of this release. -->
-
-### What's new
-
-<!-- What's new, also net new experiences and features. -->
-
-- For 1908, note that the underlying operating system on which Azure Stack Hub runs has been updated to Windows Server 2019. This update enables core fundamental enhancements and the ability to bring additional capabilities to Azure Stack Hub.
-- All components of Azure Stack Hub infrastructure now operate in FIPS 140-2 mode.
-- Azure Stack Hub operators can now remove portal user data. For more information, see [Clear portal user data from Azure Stack Hub](azure-stack-portal-clear.md).
-
-### Improvements
-
-<!-- Changes and product improvements with tangible customer-facing value. -->
-- Improvements to data at rest encryption of Azure Stack Hub to persist secrets into the hardware Trusted Platform Module (TPM) of the physical nodes.
-
-### Changes
-
-- Hardware providers will be releasing OEM extension package 2.1 or later at the same time as Azure Stack Hub version 1908. The OEM extension package 2.1 or later is a prerequisite for Azure Stack Hub version 1908. For more information about how to download OEM extension package 2.1 or later, contact your system's hardware provider, and see the [OEM updates](azure-stack-update-oem.md#oem-contact-information) article.  
-
-### Fixes
-
-- Fixed an issue with compatibility with future Azure Stack Hub OEM updates and an issue with VM deployment using customer user images. This issue was found in 1907 and fixed in hotfix [KB4517473](https://support.microsoft.com/en-us/help/4517473/azure-stack-hotfix-1-1907-12-44)  
-- Fixed an issue with OEM Firmware update and corrected misdiagnosis in Test-AzureStack for Fabric Ring Health. This issue was found in 1907 and fixed in hotfix [KB4515310](https://support.microsoft.com/en-us/help/4515310/azure-stack-hotfix-1-1907-7-35)
-- Fixed an issue with OEM Firmware update process. This issue was found in 1907 and fixed in hotfix [KB4515650](https://support.microsoft.com/en-us/help/4515650/azure-stack-hotfix-1-1907-8-37)
-
-<!-- Product fixes that came up from customer deployments worth highlighting, especially if there's an SR/ICM associated to it. -->
-
-## Security updates
-
-For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
-
-The Qualys vulnerability report for this release can be downloaded from the [Qualys website](https://www.qualys.com/azure-stack/).
-
-## Download the update
-
-You can download the Azure Stack Hub 1908 update package from [the Azure Stack Hub download page](https://aka.ms/azurestackupdatedownload).
-
-## Hotfixes
-
-Azure Stack Hub releases hotfixes on a regular basis. Be sure to install the latest Azure Stack Hub hotfix for 1907 before updating Azure Stack Hub to 1908.
-
-Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; don't attempt to install hotfixes on the ASDK.
-
-### Prerequisites: Before applying the 1908 update
-
-The 1908 release of Azure Stack Hub must be applied on the 1907 release with the following hotfixes:
-
-<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1907.29.80](https://support.microsoft.com/help/4555650)
-
-The Azure Stack Hub 1908 Update requires **Azure Stack Hub OEM version 2.1 or later** from your system's hardware provider. OEM updates include driver and firmware updates to your Azure Stack Hub system hardware. For more information about applying OEM updates, see [Apply Azure Stack Hub original equipment manufacturer updates](azure-stack-update-oem.md)
-
-### After successfully applying the 1908 update
-
-After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
-
-<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1908.51.133](https://support.microsoft.com/help/4574734)
-::: moniker-end
-
-::: moniker range="azs-1907"
-## 1907 build reference
-
-The Azure Stack Hub 1907 update build number is **1.1907.0.20**.
-
-### Update type
-
-The Azure Stack Hub 1907 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack Hub](azure-stack-updates.md) article. Based on internal testing, the expected time it takes for the 1907 update to complete is approximately 13 hours.
-
-- Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware configuration.
-- Runtimes lasting longer than expected aren't uncommon and don't require action by Azure Stack Hub operators unless the update fails.
-- This runtime approximation is specific to the 1907 update and shouldn't be compared to other Azure Stack Hub updates.
-
-## What's in this update
-
-<!-- The current theme (if any) of this release. -->
-
-### What's new
-
-<!-- What's new, also net new experiences and features. -->
-
-- General availability release of the Azure Stack Hub diagnostic log collection service to facilitate and improve diagnostic log collection. The Azure Stack Hub diagnostic log collection service provides a simplified way to collect and share diagnostic logs with Microsoft Support. This diagnostic log collection service provides a new user experience in the Azure Stack Hub administrator portal that enables operators to set up the automatic upload of diagnostic logs to a storage blob when certain critical alerts are raised. The service can also be used to perform the same operation on demand. For more information, see the [Diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md) article.
-
-- General availability release of the Azure Stack Hub network infrastructure validation as a part of the Azure Stack Hub validation tool **Test-AzureStack**. Azure Stack Hub network infrastructure will be a part of **Test-AzureStack**, to identify if a failure occurs on the network infrastructure of Azure Stack Hub. The test checks connectivity of the network infrastructure by bypassing the Azure Stack Hub software-defined network. It demonstrates connectivity from a public VIP to the configured DNS forwarders, NTP servers, and identity endpoints. It also checks for connectivity to Azure when using Azure AD as the identity provider, or the federated server when using ADFS. For more information, see the [Azure Stack Hub validation tool](azure-stack-diagnostic-test.md) article.
-
-- Added an internal secret rotation procedure to rotate internal SQL TLS certificates as required during a system update.
-
-### Improvements
-
-<!-- Changes and product improvements with tangible customer-facing value. -->
-
-- The Azure Stack Hub update blade now displays a **Last Step Completed** time for active updates. This addition can be seen by going to the update blade and clicking on a running update. **Last Step Completed** is then available in the **Update run details** section.
-
-- Improvements to **Start-AzureStack** and **Stop-AzureStack** operator actions. The time to start Azure Stack Hub has been reduced by an average of 50%. The time to shut down Azure Stack Hub has been reduced by an average of 30%. The average startup and shutdown times remain the same as the number of nodes increases in a scale-unit.
-
-- Improved error handling for the disconnected Marketplace tool. If a download fails or partially succeeds when using **Export-AzSOfflineMarketplaceItem**, a detailed error message displays with more details about the error and any possible mitigation steps.
-
-- Improved the performance of managed disk creation from a large page blob/snapshot. Previously, it triggered a timeout when creating a large disk.  
-
-<!-- https://icm.ad.msft.net/imp/v3/incidents/details/127669774/home -->
-- Improved virtual disk health check before shutting down a node to avoid unexpected virtual disk detaching.
-
-- Improved storage of internal logs for administrator operations. This addition results in improved performance and reliability during administrator operations by minimizing the memory and storage consumption of internal log processes. You might also notice improved page load times of the update blade in the administrator portal. As part of this improvement, update logs older than six months will no longer be available in the system. If you require logs for these updates, be sure to [Download the summary](azure-stack-apply-updates.md) for all update runs older than six months before performing the 1907 update.
-
-### Changes
-
-- Azure Stack Hub version 1907 contains a warning alert that instructs operators to be sure to update their system's OEM package to version 2.1 or later before updating to version 1908. For more information about how to apply Azure Stack Hub OEM updates, see [Apply an Azure Stack Hub original equipment manufacturer update](azure-stack-update-oem.md).
-
-- Added a new outbound rule (HTTPS) to enable communication for Azure Stack Hub diagnostic log collection service. For more information, see [Azure Stack Hub datacenter integration - Publish endpoints](azure-stack-integrate-endpoints.md#ports-and-urls-outbound).
-
-- The infrastructure backup service now deletes partially uploaded backups if the external storage location runs out of capacity.
-
-- Infrastructure backups no longer include a backup of domain services data. This change only applies to systems using Azure Active Directory as the identity provider.
-
-- We now validate that an image being ingested into the **Compute -> VM images** blade is of type page blob.
-
-- The privileged endpoint command **Set-BmcCredential** now updates the credential in the Baseboard Management Controller.
-
-### Fixes
-
-<!-- Product fixes that came up from customer deployments worth highlighting, especially if there's an SR/ICM associated to it. -->
-- Fixed an issue in which the publisher, offer, and SKU were treated as case sensitive in a Resource Manager template: the image wasn't fetched for deployment unless the image parameters were the same case as that of the publisher, offer, and SKU.
-
-<!-- https://icm.ad.msft.net/imp/v3/incidents/details/129536438/home -->
-- Fixed an issue with backups failing with a **PartialSucceeded** error message, due to timeouts during backup of storage service metadata.  
-
-- Fixed an issue in which deleting user subscriptions resulted in orphaned resources.
-
-- Fixed an issue in which the description field wasn't saved when creating an offer.
-
-- Fixed an issue in which a user with **Read only** permissions was able to create, edit, and delete resources. Now the user is only able to create resources when the **Contributor** permission is assigned. 
-
-<!-- https://icm.ad.msft.net/imp/v3/incidents/details/127772311/home -->
-- Fixed an issue in which the update fails due to a DLL file locked by the WMI provider host.
-
-- Fixed an issue in the update service that prevented available updates from displaying in the update tile or resource provider. This issue was found in 1906 and fixed in hotfix [KB4511282](https://support.microsoft.com/help/4511282/).
-
-- Fixed an issue that could cause updates to fail due to the management plane becoming unhealthy due to a bad configuration. This issue was found in 1906 and fixed in hotfix [KB4512794](https://support.microsoft.com/help/4512794/).
-
-- Fixed an issue that prevented users from completing deployment of third-party images from the marketplace. This issue was found in 1906 and fixed in hotfix [KB4511259](https://support.microsoft.com/help/4511259/).
-
-- Fixed an issue that could cause VM creation from managed images to fail due to our user image manager service crashing. This issue was found in 1906 and fixed in hotfix [KB4512794](https://support.microsoft.com/help/4512794/)
-
-- Fixed an issue in which VM CRUD operations could fail due to the app gateway cache not being refreshed as expected. This issue was found in 1906 and fixed in hotfix [KB4513119](https://support.microsoft.com/en-us/help/4513119/)
-
-- Fixed an issue in the health resource provider which impacted the availability of the region and alert blades in the administrator portal. This issue was found in 1906 and fixed in hotfix [KB4512794](https://support.microsoft.com/help/4512794).
-
-## Security updates
-
-For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
-
-The Qualys vulnerability report for this release can be downloaded from the [Qualys website](https://www.qualys.com/azure-stack/).
-
-## Update planning
-
-Before applying the update, make sure to review the following information:
-
-- [Known issues](known-issues.md)
-- [Security updates](release-notes-security-updates.md)
-- [Checklist of activities before and after applying the update](release-notes-checklist.md)
-
-## Download the update
-
-You can download the Azure Stack Hub 1907 update package from [the Azure Stack Hub download page](https://aka.ms/azurestackupdatedownload).
-
-## Hotfixes
-
-Azure Stack Hub releases hotfixes on a regular basis. Be sure to install the latest Azure Stack Hub hotfix for 1906 before updating Azure Stack Hub to 1907.
-
-Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; don't attempt to install hotfixes on the ASDK.
-
-### Before applying the 1907 update
-
-The 1907 release of Azure Stack Hub must be applied on the 1906 release with the following hotfixes:
-
-<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1906.15.60](https://support.microsoft.com/help/4524559)
-
-### After successfully applying the 1907 update
-
-After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
-
-<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1907.29.80](https://support.microsoft.com/help/4555650)
-::: moniker-end
-
-::: moniker range=">=azs-1907"
-## Automatic update notifications
-
-Systems that can access the internet from the infrastructure network will see the **Update available** message in the operator portal. Systems without internet access can download and import the .zip file with the corresponding .xml.
-
-> [!TIP]  
-> Subscribe to the following *RSS* or *Atom* feeds to keep up with Azure Stack Hub hotfixes:
->
-> - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
-> - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
-
-## Archive
-
-To access archived release notes for an older version, use the version selector dropdown above the table of contents on the left and select the version you want to see.
-
-## Next steps
-
-- For an overview of the update management in Azure Stack Hub, see [Manage updates in Azure Stack Hub overview](azure-stack-updates.md).  
-- For more information about how to apply updates with Azure Stack Hub, see [Apply updates in Azure Stack Hub](azure-stack-apply-updates.md).
-- To review the servicing policy for Azure Stack Hub and what you must do to keep your system in a supported state, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md).  
-- To use the privileged endpoint (PEP) to monitor and resume updates, see [Monitor updates in Azure Stack Hub using the privileged endpoint](azure-stack-monitor-update.md).
+- [Azure Stack Hub hotfix 1.1910.81.224](https://support.microsoft.com/help/4583406)
 ::: moniker-end
 
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
+::: moniker range="azs-1908"
+## 1908 archived release notes
+::: moniker-end
+::: moniker range="azs-1907"
+## 1907 archived release notes
+::: moniker-end
 ::: moniker range="azs-1906"
 ## 1906 archived release notes
 ::: moniker-end
@@ -606,6 +486,6 @@ To access archived release notes for an older version, use the version selector 
 ## 1802 archived release notes
 ::: moniker-end
 
-::: moniker range="<azs-1907"
+::: moniker range="<azs-1910"
 You can access [older versions of Azure Stack Hub release notes on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived documents are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end

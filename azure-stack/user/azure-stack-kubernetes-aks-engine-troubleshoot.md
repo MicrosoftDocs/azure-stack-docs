@@ -4,16 +4,15 @@ description: This article contains troubleshooting steps for the AKS engine on A
 author: mattbriggs
 
 ms.topic: article
-ms.date: 4/17/2020
+ms.date: 10/07/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 4/17/2020
+ms.lastreviewed: 10/07/2020
 
 # Intent: As as an Azure STack Hub developer, I want to fix the AKS engine so that can my cluster without incident.
 # Keyword: Azure Stack Hub AKS engine error codes
 
 ---
-
 
 # Troubleshoot the AKS engine on Azure Stack Hub
 
@@ -71,40 +70,53 @@ For more information, see the [Troubleshooting](https://github.com/Azure/aks-eng
 
 ## Collect AKS engine logs
 
-You can access review information created by the AKS engine. The AKS engine reports status,  and errors as the application runs. You can either pipe the output to a text file or copy it directly from the command-line console. Refer to a list of error codes triggered by the AKS engine at [Review custom script extension error codes](#review-custom-script-extension-error-codes).
+You can review information created by the AKS engine. The AKS engine reports status and errors as the application runs. You can either pipe the output to a text file or copy it directly from the command-line console. Refer to a list of error codes triggered by the AKS engine at [Review custom script extension error codes](#review-custom-script-extension-error-codes).
 
 1.  Gather standard output and error from information displayed in the AKS engine command-line tool.
 
-2. Get logs from a local file. You can set the output directory with the **--output-directory** parameter.
+2. Get logs from a local file. You can set the output directory with the `get-logs` command by setting **--output-directory** flag.
 
     To set the local path for the logs:
 
     ```bash  
-    aks-engine --output-directory <path to the directory>
+    aks-engine get-logs --output-directory <path to the directory>
     ```
 
 ## Collect Kubernetes logs
 
-In addition to the AKS engine logs, the Kubernetes components generate status  and error messages. You can collect these logs using the Bash script, [getkuberneteslogs.sh](https://github.com/msazurestackworkloads/azurestack-gallery/releases/tag/diagnosis-v0.1.3).
+In addition, to the AKS engine logs, the Kubernetes components generate status and error messages. You can collect these logs using the Bash script, [getkuberneteslogs.sh](https://github.com/msazurestackworkloads/azurestack-gallery/releases/tag/diagnosis-v0.1.5).
 
 This script automates the process of gathering the following logs: 
 
- - Microsoft Azure Linux Agent (waagent) logs
- - Custom Script Extension logs
- - Running kube-system container metadata
- - Running kube-system container logs
- - Kubelet service status and journal
- - Etcd service status and journal
- - Gallery item's DVM logs
- - kube-system Snapshot
+- Log files in directory `/var/log/azure/`
+- Log files in directory `/var/log/kubeaudit` (kube audit logs)
+- Log file `/var/log/waagent.log` (waagent)
+- Log file `/var/log/azure/deploy-script-dvm.log` (if deployed using Azure Stack Hub's Kubernetes Cluster marketplace item)
+- Static manifests in directory `/etc/kubernetes/manifests`
+- Static addons in directory` /etc/kubernetes/addons`
+- kube-system containers metadata and logs
+- kubelet status and journal
+- etcd status and journal
+- Docker status and journal
+- kube-system snapshot
+- Azure CNI config files
+
+Some additional logs are retrieved for Windows nodes:
+
+- Log file `c:\Azure\CustomDataSetupScript.log`
+- kube-proxy status and journal
+- containerd status and journal
+- azure-vnet log and azure-vnet-telemetry log
+- ETW events for docker
+- ETW events for Hyper-V
 
 Without this script, you would need to connect to each node in the cluster locate and download the logs manually. In addition, the script can, optionally, upload the collected logs to a storage account that you can use to share the logs with others.
 
 Requirements:
 
  - A Linux VM, Git Bash or Bash on Windows.
- - [Azure CLI](azure-stack-version-profiles-azurecli2.md) installed in the machine from where the script will be run.
- - Service principal identity signed into an Azure CLI session to Azure Stack Hub. Since the script has the capability of discovering and creating ARM resources to do its work, it requires the Azure CLI and a service principal identity.
+ - [Azure CLI](azure-stack-version-profiles-azurecli2.md) installed on the machine where the script will be run.
+ - Service principal identity signed into an Azure CLI session to Azure Stack Hub. Since the script has the capability of discovering and creating Azure Stack Resource Manager resources to do its work, it requires the Azure CLI and a service principal identity.
  - User account (subscription) where the Kubernetes cluster is already selected in the environment. 
 1. Download the latest release of the script tar file into your client VM, a machine that has access to your Kubernetes cluster or the same machine you used to deploy your cluster with the AKS engine.
 
@@ -113,8 +125,8 @@ Requirements:
     ```bash  
     mkdir -p $HOME/kuberneteslogs
     cd $HOME/kuberneteslogs
-    wget https://github.com/msazurestackworkloads/azurestack-gallery/releases/download/diagnosis-v0.1.1/diagnosis-v0.1.1.tar.gz
-    tar xvf diagnosis-v0.1.1.tar.gz -C ./
+    wget https://github.com/msazurestackworkloads/azurestack-gallery/releases/download/diagnosis-v0.1.5/diagnosis-v0.1.5.tar.gz
+    tar xvf diagnosis-v0.1.5.tar.gz -C ./
     ```
 
 2. Look for the parameters required by the `getkuberneteslogs.sh` script. The script will use the following parameters:

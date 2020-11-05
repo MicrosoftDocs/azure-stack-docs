@@ -4,7 +4,7 @@ description: Learn about Azure Stack Hub Storage data transfer tools.
 author: mattbriggs
 
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 08/24/2020
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/06/2019
@@ -32,7 +32,7 @@ Your requirements determine which of the following tools works best for you:
 
     An open-source, cross-platform tool that provides a set of commands for working with the Azure and Azure Stack Hub platforms.
 
-* [Microsoft storage explorer](#microsoft-azure-storage-explorer)
+* [Microsoft Azure Storage Explorer](#microsoft-azure-storage-explorer)
 
     An easy-to-use stand-alone app with a user interface.
 
@@ -303,6 +303,6 @@ blobEndpoint myaccount.blob.local.azurestack.external
 ## Next steps
 
 * [Connect storage explorer to an Azure Stack Hub subscription](azure-stack-storage-connect-se.md)
-* [Get started with storage explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* [Get started with Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 * [Azure-consistent storage: differences and considerations](azure-stack-acs-differences.md)
 * [Introduction to Microsoft Azure storage](/azure/storage/common/storage-introduction)

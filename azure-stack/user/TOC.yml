@@ -129,10 +129,14 @@
           href: azure-stack-vm-considerations.md
         - name: VM sizes
           href: azure-stack-vm-sizes.md
+        - name: Supported GPU VMs
+          href: gpu-vms-about.md
         - name: Manage VM disks
           href: azure-stack-manage-vm-disks.md
         - name: Managed disks considerations
           href: azure-stack-managed-disk-considerations.md
+        - name: Managed disks templates
+          href: virtual-machines-use-managed-disks-template.md
         - name: Delete a VM with dependencies
           href: delete-vm.md
         - name: Protect VMs
@@ -143,6 +147,17 @@
           href: vm-update-management.md
         - name: SQL Server VM considerations
           href: azure-stack-sql-server-vm-considerations.md
+        - name: Migrate VMs
+          items:
+            - name: Migrate VMs overview
+              href: vm-move-overview.md
+            - name: VM from Azure
+              href: vm-move-from-azure.md
+            - name: Specialized VM on-prem
+              href: vm-move-specialized.md
+            - name: Generalized VM on-prem
+              href: vm-move-generalized.md
+
       - name: Storage
         items:
         - name: Overview
@@ -199,6 +214,10 @@
         items:
         - name: Overview
           href: event-hubs-overview.md
+      - name: IoT Hub
+        items:
+        - name: Overview
+          href: iot-hub-overview.md
       - name: Azure Monitor
         href: azure-stack-metrics-azure-data.md
         items: 
@@ -236,6 +255,8 @@
             href: azure-stack-kubernetes-aks-engine-scale.md
           - name: Upgrade a cluster
             href: azure-stack-kubernetes-aks-engine-upgrade.md
+          - name: Enable service account token volume projection
+            href: kubernetes-aks-engine-service-account.md
           - name: Troubleshoot AKS engine
             href: azure-stack-kubernetes-aks-engine-troubleshoot.md
           - name: Use Azure Monitor for containers
@@ -343,6 +364,8 @@
     href: ../operator/index.yml
   - name: ASDK Documentation
     href: ../asdk/index.yml
+  - name: Azure hybrid cloud documentation
+    href: /hybrid    
 - name: Resources
   items:
   - name: Azure Stack Hub road map

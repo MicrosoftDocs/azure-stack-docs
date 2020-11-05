@@ -1,12 +1,12 @@
 ---
-title: Integrate Azure Stack Hub with monitoring solutions using syslog forwarding 
+title: Integrate Azure Stack Hub with monitoring solutions via syslog forwarding 
 description: Learn how to integrate Azure Stack Hub with monitoring solutions using syslog forwarding.
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: inhenkel
 ms.reviewer: fiseraci
-ms.lastreviewed: 01/10/2019
+ms.lastreviewed: 06/15/2020
 
 # Intent: As an Azure Stack operator, I want to integrate Azure Stack with monitoring solutions with syslog forwarding
 # Keyword: azure stack syslog forwarding
@@ -234,6 +234,8 @@ Prefix fields
 * Signature ID: Microsoft-AzureStack-PrivilegedEndpoint: <PEP Event ID>
 * Name: <PEP Task Name>
 * Severity: mapped from PEP Level (details see the PEP Severity table below)
+* Who: account used to connect to the PEP
+* WhichIP: IP address of the device used to connect to the PEP
 ```
 
 Table of events for the privileged endpoint:
@@ -271,6 +273,8 @@ Prefix fields
 * Signature ID: Microsoft-AzureStack-PrivilegedEndpoint: <REP Event ID>
 * Name: <REP Task Name>
 * Severity: mapped from REP Level (details see the REP Severity table below)
+* Who: account used to connect to the REP
+* WhichIP: IP address of the device used to connect to the REP
 ```
 
 Table of events for the recovery endpoint:

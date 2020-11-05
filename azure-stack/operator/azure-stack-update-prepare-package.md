@@ -44,7 +44,7 @@ Review the package contents. An update package typically consists of the followi
 
 ### Automatic download and preparation for update packages
 
-Azure Stack Hub software updates and hotfixes are prepared automatically for systems with connectivity to the **Azure Stack Hub automatic update endpoints**: <https://*.azureedge.net> and <https://aka.ms/azurestackautomaticupdate>. For more information about setting up connectivity to the **Azure Stack Hub automatic update endpoints**, see the **Patch and Update** endpoints described in [Azure Stack Hub firewall integration](./azure-stack-integrate-endpoints.md#ports-and-urls-outbound).
+Azure Stack Hub software updates and hotfixes are prepared automatically for systems with connectivity to the **Azure Stack Hub automatic update endpoints**: `https://*.azureedge.net` and `https://aka.ms/azurestackautomaticupdate`. For more information about setting up connectivity to the **Azure Stack Hub automatic update endpoints**, see the **Patch and Update** endpoints described in [Azure Stack Hub firewall integration](./azure-stack-integrate-endpoints.md#ports-and-urls-outbound).
 
 ### Where to download Azure Stack Hub update packages
 
