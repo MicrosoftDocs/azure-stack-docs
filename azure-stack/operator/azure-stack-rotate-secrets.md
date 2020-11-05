@@ -19,17 +19,6 @@ monikerRange: '>=azs-1803'
 
 This article provides guidance for performing secret rotation, to help maintain secure communication with Azure Stack Hub infrastructure resources and services. 
 
-> [!Important]
-> Rotation of the following secret types is not covered by this article:
-> - **Non-certificate secrets such as secure keys and strings.** - These must be manually updated by the administrator, including user and administrator account passwords, and [network switch passwords and permissions](azure-stack-customer-defined.md)
-> - **Value-add resource providers (RPs) secrets** - Separate guidance is provided for rotation of RP-specific secrets:
->    - [App Service on Azure Stack Hub](app-service-rotate-certificates.md)
->    - [IoT Hub on Azure Stack Hub](iot-hub-rp-rotate-secrets.md)
->    - [MySQL on Azure Stack Hub](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation)
->    - [SQL on Azure Stack Hub](azure-stack-sql-resource-provider-maintain.md#secrets-rotation)
->
-> Rotation of baseboard management controller (BMC) credentials is also a manual process, and is [covered later in this article](#update-the-bmc-credential). 
-
 ## Overview
 
 Azure Stack Hub uses secrets to maintain secure communication with infrastructure resources and services. To maintain the integrity of the Azure Stack Hub infrastructure, operators need the ability to rotate secrets at frequencies that are consistent with their organization's security requirements.
@@ -64,6 +53,16 @@ Completing secret rotation will resolve these alerts.
 
 ::: moniker range=">=azs-1811"
 ## Rotate external secrets
+
+> [!Important]
+> External secret rotation for:
+> - **Non-certificate secrets such as secure keys and strings** must be done manually by the administrator. This includes user and administrator account passwords, and [network switch passwords](azure-stack-customer-defined.md).
+> - **Value-add resource provider (RP) secrets** is covered under seperate guidance:
+>    - [App Service on Azure Stack Hub](app-service-rotate-certificates.md)
+>    - [IoT Hub on Azure Stack Hub](iot-hub-rp-rotate-secrets.md)
+>    - [MySQL on Azure Stack Hub](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation)
+>    - [SQL on Azure Stack Hub](azure-stack-sql-resource-provider-maintain.md#secrets-rotation)
+> - **Baseboard management controller (BMC) credentials** is also a manual process, [covered later in this article](#update-the-bmc-credential). 
 
 This section covers rotation of certificates used to secure external-facing services. These certificates are provided by the Azure Stack Hub Operator, for the following services:
 
