@@ -25,10 +25,10 @@ The following tables lists common scenarios for the OAW, but this is not exclusi
 
 |Scenario                                                                                                                          |Description                 |
 |----------------------------------------------------------------------------------------------------------------------------------|-----------------------------|
-|[Access the Administration portal​](./azure-stack-manage-portals.md)                     |Perform administrative operations                                                                           |
-|[Access PEP](./azure-stack-privileged-endpoint.md)                                     |Log collection and upload​:<br>-[Create an SMB share](#transfer-files-between-the-hlh-and-oaw) on the HLH for file transfer from Azure Stack Hub​<br>-Use Azure Storage Explorer to upload logs saved to the SMB share |
-|[Register Azure Stack Hub](./azure-stack-registration.md#renew-or-change-registration) |For re-registration, get previous Registration Name and Resource Group from the Administration portal​                               |
-|[Marketplace syndication​](./azure-stack-download-azure-marketplace-item.md)            |[Create an SMB share](#transfer-files-between-the-hlh-and-oaw) on the HLH to store the downloaded image or extension                                                        |
+|[Access the Administration portal](./azure-stack-manage-portals.md)                     |Perform administrative operations                                                                           |
+|[Access PEP](./azure-stack-privileged-endpoint.md)                                     |Log collection and upload:<br>-[Create an SMB share](#transfer-files-between-the-hlh-and-oaw) on the HLH for file transfer from Azure Stack Hub<br>-Use Azure Storage Explorer to upload logs saved to the SMB share |
+|[Register Azure Stack Hub](./azure-stack-registration.md#renew-or-change-registration) |For re-registration, get previous Registration Name and Resource Group from the Administration portal                               |
+|[Marketplace syndication](./azure-stack-download-azure-marketplace-item.md)            |[Create an SMB share](#transfer-files-between-the-hlh-and-oaw) on the HLH to store the downloaded image or extension                                                        |
 
 ## Download files
 
