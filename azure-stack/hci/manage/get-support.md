@@ -17,7 +17,7 @@ This topic provides guidance on how to get support for the Azure Stack HCI opera
 TBD
 
    >[!IMPORTANT]
-   > TBD.
+   > Continuous Microsoft software support requires that you adhere to the Microsoft Azure Stack Servicing Policy. For more information, see [servicing policy](https://docs.microsoft.com/azure-stack/operator/azure-stack-servicing-policy?view=azs-2005).
 
 ## Next steps
 For more information, see also:
