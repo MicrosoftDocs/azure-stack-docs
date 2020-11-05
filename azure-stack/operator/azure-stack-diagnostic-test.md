@@ -131,7 +131,7 @@ The following cloud scenarios are tested by the validation tool:
 - **DetailedResults** can be used to get pass/fail/warning information for each test, as well as the overall run. When not specified, **Test-AzureStack** returns **$true** if there are no failures, and **$false** if there are failures.
 - **TimeoutSeconds** can be used to set a specific time for each group to complete.
 
-- The validation tool also supports common PowerShell parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see [About Common Parameters](https://go.microsoft.com/fwlink/?LinkID=113216).  
+- The validation tool also supports common PowerShell parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see [About Common Parameters](/powershell/module/microsoft.powershell.core/about/about_commonparameters).  
 
 ## Use case examples
 
