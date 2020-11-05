@@ -219,6 +219,6 @@ Accept wildcard characters: False
 
 ## Next steps
 
-[https://go.microsoft.com/fwlink/?LinkId=216212](https://go.microsoft.com/fwlink/?LinkId=216212)
+[https://go.microsoft.com/fwlink/?LinkId=216212](/powershell/module/failoverclusters/get-clusterlog)
 
 For information on how to access and use the privileged endpoint, see [Use the privileged endpoint in Azure Stack Hub](../../operator/azure-stack-privileged-endpoint.md).
