@@ -29,7 +29,7 @@ When secrets are within 30 days of expiration, the following alerts are generate
 - Pending internal certificate expiration
 - Pending external certificate expiration
 
-Completing the secret rotation will resolve these alerts.
+Completing secret rotation will resolve these alerts.
 
 ::: moniker range="<azs-1811"  
 > [!Note]
@@ -56,27 +56,28 @@ Completing the secret rotation will resolve these alerts.
 
 This section covers rotation of certificates used to secure external-facing services. These certificates are provided by the Azure Stack Hub Operator, for the following services:
 
-    - Administrator portal
-    - Public portal
-    - Administrator Azure Resource Manager
-    - Global Azure Resource Manager
-    - Administrator Key Vault
-    - Key Vault
-    - Admin Extension Host
-    - ACS (including blob, table, and queue storage)
-    - ADFS*
-    - Graph*
-    
-    \* Only applicable if the environment's identity provider is Active Directory Federated Services (AD FS).
+- Administrator portal
+- Public portal
+- Administrator Azure Resource Manager
+- Global Azure Resource Manager
+- Administrator Key Vault
+- Key Vault
+- Admin Extension Host
+- ACS (including blob, table, and queue storage)
+- ADFS*
+- Graph*
+
+\* Only applicable if the environment's identity provider is Active Directory Federated Services (AD FS).
 
 > [!Important]
 > All other secure keys and strings are manually updated by the administrator. This includes user and administrator account passwords, [network switch passwords and permissions](azure-stack-customer-defined.md), and baseboard management controller (BMC) credentials which is [covered later in this article](#update-the-bmc-credential). 
 >
->In addition, this article does not address secret rotation for value-add resource providers. To rotate those secrets, refer to the following articles instead:
+>In addition, this article does not address secret rotation for value-add resource providers. To rotate those secrets, refer to the following resource provider articles instead:
 >
-> - [Rotate App Service on Azure Stack Hub secrets and certificates](app-service-rotate-certificates.md)
-> - [MySQL resource provider - Rotate secrets](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation)
-> - [SQL resource provider - Rotate secrets](azure-stack-sql-resource-provider-maintain.md#secrets-rotation)
+> - [App Service on Azure Stack Hub](app-service-rotate-certificates.md)
+> - [IoT Hub on Azure Stack Hub](iot-hub-rp-rotate-secrets.md)
+> - [MySQL on Azure Stack Hub](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation)
+> - [SQL on Azure Stack Hub](azure-stack-sql-resource-provider-maintain.md#secrets-rotation)
 
 ### Prerequisites
 
