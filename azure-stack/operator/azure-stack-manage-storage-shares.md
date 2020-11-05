@@ -190,7 +190,7 @@ Migration consolidates all of a container's blobs on the new share.
 
 #### Migrate containers by using PowerShell
 
-1. Confirm that you have [Azure PowerShell installed and configured](/powershell/azure/). For more information, see [Manage Azure resources by using Azure PowerShell](https://go.microsoft.com/fwlink/?LinkId=394767).
+1. Confirm that you have [Azure PowerShell installed and configured](/powershell/azure/). For more information, see [Manage Azure resources by using Azure PowerShell](/azure/azure-resource-manager/management/manage-resources-powershell).
 2. Examine the container to understand what data is on the share that you plan to migrate. To identify the best candidate containers for migration in a volume, use the `Get-AzsStorageContainer` cmdlet:
 
    ```powershell  
