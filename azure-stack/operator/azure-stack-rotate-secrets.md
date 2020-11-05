@@ -17,19 +17,17 @@ monikerRange: '>=azs-1803'
 
 # Rotate secrets in Azure Stack Hub
 
-This article provides guidance for performing secret rotation, to help maintain secure communication with Azure Stack Hub infrastructure resources and services. 
+This article provides guidance for performing secret rotation, to help maintain secure communication with Azure Stack Hub infrastructure resources and services.
 
 ## Overview
 
 Azure Stack Hub uses secrets to maintain secure communication with infrastructure resources and services. To maintain the integrity of the Azure Stack Hub infrastructure, operators need the ability to rotate secrets at frequencies that are consistent with their organization's security requirements.
 
-When secrets are within 30 days of expiration, the following alerts are generated in the administrator portal:
+When secrets are within 30 days of expiration, the following alerts are generated in the administrator portal. Completing secret rotation will resolve these alerts:
 
 - Pending service account password expiration
 - Pending internal certificate expiration
 - Pending external certificate expiration
-
-Completing secret rotation will resolve these alerts.
 
 ::: moniker range="<azs-1811"  
 > [!Note]
@@ -79,8 +77,6 @@ This section covers rotation of certificates used to secure external-facing serv
 
 \* Applicable when identity provider is Active Directory Federated Services (AD FS).
 
-### Prerequisites
-
 Azure Stack Hub supports secret rotation for external certificates from a new Certificate Authority (CA) in the following contexts:
 
 |Installed Certificate CA|CA to Rotate To|Supported|Azure Stack Hub versions supported|
@@ -97,7 +93,9 @@ Azure Stack Hub supports secret rotation for external certificates from a new Ce
 
 <sup>*</sup>Indicates that the Public Certificate Authorities are part of the Windows Trusted Root Program. You can find the full list in the article [List of Participants - Microsoft Trusted Root Program](/security/trusted-root/participants-list).
 
-Prior to rotation of external secrets, complete these additional prerequisites:
+### Preparation
+
+Prior to rotation of external secrets:
 
 1. Run the **[`Test-AzureStack`](azure-stack-diagnostic-test.md)** PowerShell cmdlet using the `-group SecretRotationReadiness` parameter, to confirm all test outputs are healthy before rotating secrets.
 2. Prepare a new set of replacement external certificates:
