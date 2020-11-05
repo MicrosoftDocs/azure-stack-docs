@@ -26,7 +26,7 @@ In simple terms, an *active* site is one that has resources and is providing rol
 Sites can be in two different states, different cities, different floors, or different rooms. Stretched clusters using two sites provides disaster recovery and business continuity should a site suffer an outage or failure.
 
 Take a few minutes to watch the video on stretched clustering with Azure Stack HCI:
-> [!VIDEO https://www.youtube-nocookie.com/embed/rYnZL1wMiqU]
+> [!VIDEO https://www.youtube.com/embed/rYnZL1wMiqU]
 
 ## Active-passive stretched cluster
 
