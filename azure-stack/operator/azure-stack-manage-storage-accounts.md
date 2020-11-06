@@ -151,7 +151,7 @@ You can also use PowerShell to explicitly override the retention period and imme
    PowerShell](/powershell/azure/).
    For more information about Azure Resource Manager cmdlets, see
    [Using Azure PowerShell with Azure Resource
-   Manager](https://go.microsoft.com/fwlink/?LinkId=394767).
+   Manager](/azure/azure-resource-manager/management/manage-resources-powershell).
 2. Run the following cmdlets:
 
 > [!NOTE]  
