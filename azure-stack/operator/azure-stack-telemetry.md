@@ -94,7 +94,7 @@ All data necessary to identify and help to fix problems, plus data from the **Se
 > [!IMPORTANT]
 > These telemetry levels only apply to Microsoft Azure Stack Hub components. Non-Microsoft software components and services that are running in the Hardware Lifecycle Host from Azure Stack Hub hardware partners may communicate with their cloud services outside of these telemetry levels. You should work with your Azure Stack Hub hardware solution provider to understand their telemetry policy, and how you can opt in or opt out.
 
-Turning off Windows and Azure Stack Hub telemetry also disables SQL telemetry. For more information about the implications of the Windows Server telemetry settings, see the [Windows Telemetry Whitepaper](https://aka.ms/winservtelemetry).
+Turning off Windows and Azure Stack Hub telemetry also disables SQL telemetry. For more information about the implications of the Windows Server telemetry settings, see the [Windows Telemetry Whitepaper](/windows/privacy/configure-windows-diagnostic-data-in-your-organization).
 
 ### ASDK: set the telemetry level in the Windows registry
 

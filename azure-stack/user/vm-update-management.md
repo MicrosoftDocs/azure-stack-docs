@@ -17,7 +17,7 @@ ms.lastreviewed: 10/08/2020
 # VM update and management automation in Azure Stack Hub
 Use the following Azure Automation solution features to manage Windows and Linux virtual machines (VMs) that are deployed using Azure Stack Hub:
 
-- **[Update Management](/azure/automation/automation-update-management)**: With the Update Management solution, you can quickly assess the status of available updates on all agent computers and manage the process of installing required updates for Windows and Linux VMs.
+- **[Update Management](/azure/automation/update-management/overview)**: With the Update Management solution, you can quickly assess the status of available updates on all agent computers and manage the process of installing required updates for Windows and Linux VMs.
 
 - **[Change Tracking](/azure/automation/automation-change-tracking)**: Changes to installed software, Windows services, Windows registry and files, and Linux daemons on the monitored servers are sent to the Azure Monitor service in the cloud for processing. Logic is applied to the received data and the cloud service records the data. By using the information on the Change Tracking dashboard, you can easily see the changes that were made to your server infrastructure.
 
@@ -89,7 +89,7 @@ Follow these steps to enable update management for Azure Stack Hub VMs.
 
    [![The "Install extension" dialog box has text boxes for the Azure WorkspaceID and the WorkspaceKey.](media//vm-update-management/4-sm.PNG "Providing the WorkspaceID and Key")](media//vm-update-management/4-lg.PNG) 
 
-4. As described in the [Update Management documentation](/azure/automation/automation-update-management), you need to enable the Update Management solution for each VM that you want to manage. To enable the solution for all VMs reporting to the workspace, select **Update management**, click **Manage machines**, and then select the **Enable on all available and future machines** option.
+4. As described in the [Update Management documentation](/azure/automation/update-management/overview), you need to enable the Update Management solution for each VM that you want to manage. To enable the solution for all VMs reporting to the workspace, select **Update management**, click **Manage machines**, and then select the **Enable on all available and future machines** option.
 
    [![The Manage Machines - Update Management dialog box shows the machines that don't have Update Management enabled. Three enabling options are provided, and "enable on all available and future machines" is selected and highlighted. There is an Enable button.](media//vm-update-management/5-sm.PNG "Enable Update Management solution on all machines")](media//vm-update-management/5-lg.PNG) 
 

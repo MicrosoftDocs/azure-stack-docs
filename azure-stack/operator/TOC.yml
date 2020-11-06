@@ -340,7 +340,7 @@
         - name: Backup & restore
           href: azure-stack-backup-infrastructure-backup.md
         - name: Collect logs
-          href: azure-stack-diagnostic-log-collection-overview.md
+          href: diagnostic-log-collection.md
         - name: Health & alerts
           href: azure-stack-monitor-health.md
         - name: Manage
@@ -350,7 +350,33 @@
         - name: Service update announcements
           href: https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs
       - name: Remove
-        href: event-hubs-rp-remove.md   
+        href: event-hubs-rp-remove.md 
+    - name: IoT Hub on Azure Stack Hub
+      items:
+      - name: Overview 
+        href: iot-hub-rp-overview.md
+      - name: Prerequisites
+        href: iot-hub-rp-prerequisites.md
+      - name: Install 
+        href: iot-hub-rp-install.md
+      - name: Lifecycle management
+        items:
+        - name: Apply updates
+          href: resource-provider-apply-updates.md
+        - name: Backup & restore
+          href: azure-stack-backup-infrastructure-backup.md
+        - name: Collect logs
+          href: azure-stack-diagnostic-log-collection-overview.md
+        - name: Health & alerts
+          href: azure-stack-monitor-health.md
+        - name: Manage 
+          href: iot-hub-rp-manage.md
+        - name: Rotate secrets
+          href: iot-hub-rp-rotate-secrets.md
+        - name: Service update announcements
+          href: https://azure.microsoft.com/updates/?query=IoT%20Hub
+      - name: Remove 
+        href: iot-hub-rp-remove.md
     - name: MySQL on Azure Stack Hub
       items:
       - name: Overview 
@@ -466,11 +492,9 @@
       - name: Find your Cloud ID
         href: azure-stack-find-cloud-id.md  
       - name: Diagnostic log collection
-        items:
-        - name: Overview 
-          href: azure-stack-diagnostic-log-collection-overview.md
-        - name: Get-AzureStackLog (PEP)
-          href: azure-stack-get-azurestacklog.md    
+        href: diagnostic-log-collection.md
+      - name: Get-AzureStackLog (PEP)
+        href: azure-stack-get-azurestacklog.md    
     - name: Validation for Azure Stack Hub  
       href: azure-stack-diagnostic-test.md
     - name: Troubleshooting
