@@ -62,7 +62,7 @@ Anytime you add or remove servers from a cluster, be sure and run a cluster vali
 
 Stretched clusters require the same number of server nodes and the same number of drives in each site. When adding a server pair to a stretched cluster, their drives are immediately added to the storage pool of both sites in the stretched cluster. If the storage pool at each site is not the same size at the time of addition, it is rejected. This is because the size of the storage pool must be the same between sites.
 
-Unlike for non-stretched clusters, you can only add or remove servers to a stretched cluster using Windows PowerShell. Using the [Get-ClusterFaultDomainXML](https://docs.microsoft.com/powershell/module/failoverclusters/get-clusterfaultdomainxml) and [Set-ClusterFaultDomainXML](https://docs.microsoft.com/powershell/module/failoverclusters/set-clusterfaultdomainxml) cmdlets, you first modify the site (faultdomain) information prior to adding the servers.
+Unlike for non-stretched clusters, you can only add or remove servers to a stretched cluster using Windows PowerShell. Using the [Get-ClusterFaultDomainXML](https://docs.microsoft.com/powershell/module/failoverclusters/get-clusterfaultdomainxml) and [Set-ClusterFaultDomainXML](https://docs.microsoft.com/powershell/module/failoverclusters/set-clusterfaultdomainxml) cmdlets, you first modify the site (fault domain) information prior to adding the servers.
 
 Then, you can add the server pair to each site simultaneously using the [Add-ClusterNode](https://docs.microsoft.com/powershell/module/failoverclusters/add-clusternode) cmdlet, allowing each new server's drives to be added at the same time also.
 
