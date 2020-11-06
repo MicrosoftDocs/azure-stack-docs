@@ -75,7 +75,7 @@ This section covers rotation of certificates used to secure external-facing serv
 - ADFS<sup>*</sup>
 - Graph<sup>*</sup>
 
-<sup>*</sup>Applicable when identity provider is Active Directory Federated Services (AD FS).
+<sup>*</sup>Applicable when using Active Directory Federated Services (AD FS).
 
 ### Preparation
 
