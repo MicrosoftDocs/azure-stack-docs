@@ -60,11 +60,11 @@ Anytime you add or remove servers from a cluster, be sure and run a cluster vali
 
 ## Add server pairs to a stretched cluster
 
-Stretched clusters require the same number of server nodes and same number of drives in each site.  When adding server pairs to a stretched cluster, its drives are immediately added to the storage pool for each site. If the storage pool at each site is not the same size at the time of addition, it is rejected. This is because the size of the storage pool must be the same between sites.
+Stretched clusters require the same number of server nodes and the same number of drives in each site. When adding a server pair to a stretched cluster, their drives are immediately added to the storage pool of both sites in the stretched cluster. If the storage pool at each site is not the same size at the time of addition, it is rejected. This is because the size of the storage pool must be the same between sites.
 
-Unlike for non-stretched servers, you can only add or remove servers to a stretched cluster using Windows PowerShell. Using the [Get-ClusterFaultDomainXML](https://docs.microsoft.com/powershell/module/failoverclusters/get-clusterfaultdomainxml) and [Set-ClusterFaultDomainXML](https://docs.microsoft.com/powershell/module/failoverclusters/set-clusterfaultdomainxml) cmdlets, you first modify the site (faultdomain) information prior to adding the servers.
+Unlike for non-stretched clusters, you can only add or remove servers to a stretched cluster using Windows PowerShell. Using the [Get-ClusterFaultDomainXML](https://docs.microsoft.com/powershell/module/failoverclusters/get-clusterfaultdomainxml) and [Set-ClusterFaultDomainXML](https://docs.microsoft.com/powershell/module/failoverclusters/set-clusterfaultdomainxml) cmdlets, you first modify the site (faultdomain) information prior to adding the servers.
 
-Once done, you can add the server node pair to each site simultaneously using the [Add-ClusterNode](https://docs.microsoft.com/powershell/module/failoverclusters/add-clusternode) cmdlet, allowing each new server's drives to be added at the same time also.
+Then, you can add the server pair to each site simultaneously using the [Add-ClusterNode](https://docs.microsoft.com/powershell/module/failoverclusters/add-clusternode) cmdlet, allowing each new server's drives to be added at the same time also.
 
 Typically, you manage clusters from a remote computer, rather than on a server in a cluster. This remote computer is called the management computer.
 
@@ -75,7 +75,7 @@ Ok, let's begin:
 
 1. Use the following PowerShell cmdlets to determine the state of the cluster:
 
-    Returns the list of active server nodes in the cluster:
+    Returns the list of active servers in the cluster:
 
      ```powershell
     Get-ClusterNode
@@ -87,7 +87,7 @@ Ok, let's begin:
     Get-StoragePool pool*
     ```
 
-    Lists which server nodes are on which site (faultdomain):
+    Lists which servers are on which site (fault domain):
 
     ```powershell
     Get-ClusterFaultDomain
@@ -150,19 +150,19 @@ Ok, let's begin:
 
 1. Add the server pair to your cluster using the `Add-ClusterNode` cmdlet:
 
-```
-Add-ClusterNode -Name Server5,Server6
-```
+    ```
+    Add-ClusterNode -Name Server5,Server6
+    ```
 
-Once the server nodes have been successfully added, the associated drives are automatically added to each site's storage pools. Lastly, the Health service creates a storage job to include the new drives.
+Once the servers have been successfully added, the associated drives are automatically added to each site's storage pools. Lastly, the Health Service creates a storage job to include the new drives.
 
 ## Remove server pairs from a stretched cluster
 
-Removing server pairs from a stretched cluster is a very similar process to adding server pairs, but using the [Remove-ClusterNode](https://docs.microsoft.com/powershell/module/failoverclusters/remove-clusternode) cmdlet instead.
+Removing a server pair from a stretched cluster is a similar process to adding a server pair, but using the [Remove-ClusterNode](https://docs.microsoft.com/powershell/module/failoverclusters/remove-clusternode) cmdlet instead.
 
 1. Use the following PowerShell cmdlets to determine the state of the cluster:
 
-    Returns the list of active server nodes in the cluster:
+    Returns the list of active servers in the cluster:
 
      ```powershell
     Get-ClusterNode
@@ -174,7 +174,7 @@ Removing server pairs from a stretched cluster is a very similar process to addi
     Get-StoragePool pool*
     ```
 
-    Lists which server nodes are on which site (faultdomain):
+    Lists which servers are on which site (fault domain):
 
     ```powershell
     Get-ClusterFaultDomain
@@ -209,8 +209,8 @@ Removing server pairs from a stretched cluster is a very similar process to addi
     Remove-ClusterNode -Name Server5,Server6
     ```
 
-Once the server nodes have been successfully removed, the associated drives are automatically removed from the site pools. Lastly, the Health Service creates a storage job to remove these drives.
+Once the servers have been successfully removed, the associated drives are automatically removed from the site pools. Lastly, the Health Service creates a storage job to remove these drives.
 
 ## Next steps
 
-- You should validate the cluster after adding or removing a server. See [Validate the cluster](../deploy/validate.md) for more information.
+- You should validate the cluster after adding or removing a server. For more information, see [Validate the cluster](../deploy/validate.md) for more information.
