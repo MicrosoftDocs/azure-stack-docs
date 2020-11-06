@@ -355,7 +355,7 @@ Alternatively, you can verify if your registration was successful by using the M
 ## Renew or change registration
 
 ::: zone pivot="state-connected"
-You need to update or renew your registration in the following circumstances:
+You need to update your registration in the following circumstances:
 
 - After you renew your capacity-based yearly subscription.
 - When you change your billing model.
