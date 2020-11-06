@@ -122,8 +122,8 @@ The fully qualified domain name (FQDN) of your MDC deployment and endpoints is t
 
 As such, examples of some of the endpoints for this deployment would look like the following URLs:
 
-- https://portal.east.cloud.fabrikam.com
-- https://adminportal.east.cloud.fabrikam.com
+- `https://portal.east.cloud.fabrikam.com`
+- `https://adminportal.east.cloud.fabrikam.com`
 
 To use this example DNS namespace for a MDC deployment, the following conditions are required:
 
