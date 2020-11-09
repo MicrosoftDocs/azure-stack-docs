@@ -98,7 +98,7 @@ Before the MySQL server can be added as an Azure Stack Hub MySQL Server host, ex
 Make sure you have the credentials for an account with system admin privileges.
 
 > [!NOTE]
-> For MySQL 8.0 and above versions, the remote access isn't enabled by default. You need to create a new user account and grant the previledge of remote access to this user account before adding it as a hosting server.
+> For MySQL 8.0 and above versions, the remote access isn't enabled by default. You need to create a new user account and grant the privilege of remote access to this user account before adding it as a hosting server.
 
 To add a hosting server, follow these steps:
 
