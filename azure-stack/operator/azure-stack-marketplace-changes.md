@@ -3,7 +3,7 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 11/06/2020
+ms.date: 11/09/2020
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 05/28/2020
@@ -165,21 +165,21 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Updated marketplace items
 
-- 11/05/2020: SQL Server 2017 Standard on Windows Server 2016 - Bring your own license - version 14.0.20201015
+-11/05/2020: SQL Server 2017 Standard on Windows Server 2016 - Bring your own license - version 14.0.20201015
 - 11/05/2020: SQL Server 2017 Standard on Windows Server 2016 - Pay as you go - version 14.0.20201015
 - 11/05/2020: SQL Server 2017 Enterprise Windows Server 2016 - Bring your own license - version 14.0.20201015
-- 11/05/2020: SQL Server 2017 Enterprise Windows Server 2016 - Bring your own license - version 14.0.20201015
+- 11/05/2020: SQL Server 2017 Enterprise Windows Server 2016 - Pay as you go - version 14.0.20201015
 - 11/05/2020: SQL Server 2016 SP2 Standard on Windows Server 2016 - Bring your own license - version 13.2.20201015
-- 11/05/2020: SQL Server 2016 SP2 Standard on Windows Server 2016 - Bring your own license - version 13.2.20201015
-- 11/05/2020: SQL Server 2016 SP2 Enterprise on Windows Server 2016 - Bring your own license - version 13.2.20201015
+- 11/05/2020: SQL Server 2016 SP2 Standard on Windows Server 2016 - Pay as you go - version 13.2.20201015
+- 11/05/2020: SQL Server 2016 SP2 Enterprise on Windows Server 2016 - Pay as you go - version 13.2.20201015
 - 11/05/2020: Free SQL Server License: SQL Server 2017 Express on Windows Server 2016 - Bring your own license - version 14.0.20201015
-- 11/05/2020: Free SQL Server License: SQL Server 2017 Express on Windows Server 2016 - Bring your own license - version 14.0.20201015
+- 11/05/2020: Free SQL Server License: SQL Server 2017 Express on Windows Server 2016 - Pay as you go - version 14.0.20201015
 - 11/05/2020: Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016 - Bring your own license - version 14.0.20201015
-- 11/05/2020: Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016 - Bring your own license - version 14.0.20201015
+- 11/05/2020: Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016 - Pay as you go - version 14.0.20201015
 - 11/05/2020: Free License: SQL Server 2016 SP2 Express on Windows Server 2016 - Bring your own license - version 13.2.20201015
-- 11/05/2020: {WS-PAYG} Free License: SQL Server 2016 SP2 Express on Windows Server 2016 - Bring your own license - version 13.2.20201015
+- 11/05/2020: Free License: SQL Server 2016 SP2 Express on Windows Server 2016 - Pay as you go - version 13.2.20201015
 - 11/05/2020: Free License: SQL Server 2016 SP2 Developer on Windows Server 2016 - Bring your own license - version 13.2.20201015
-- 11/05/2020: Free License: SQL Server 2016 SP2 Developer on Windows Server 2016 - Bring your own license - version 13.2.20201015
+- 11/05/2020: Free License: SQL Server 2016 SP2 Developer on Windows Server 2016 - Pay as you go - version 13.2.20201015
 - 11/05/2020: SQL Server 2016 SP2 Enterprise on Windows Server 2016 - Bring your own license - version 13.2.20201015
 - 11/04/2020: Teradici Cloud Access for Azure Stack nonGPU - version 1.0.2
 - 10/29/2020: [smalldisk] Windows Server 2008 R2 SP1-Pay as you go - version 7601.24561.2010082056
