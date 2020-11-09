@@ -1,5 +1,5 @@
 ---
-title: Modular Data Center  overview | 
+title: Modular Data Center overview | 
 description: The Modular Data Center  is a portable, rapidly deployable datacenter appropriate for supporting large-scale combat operations in temporary and fixed command posts.
 author: BryanLa
 ms.author: bryanla
@@ -42,7 +42,7 @@ Remote assisted administration by Microsoft or a Microsoft-managed offering in t
 
 MDC supports a consistent environment with Azure in disadvantaged communications environments:
  - Static, modular, rapidly deployable data centers with Azure cloud services to power large analytics apps in Modular Operations Centers (TOC).
- - Azure's modular edge offerings maintain consistency between the cloud and the edge, through A singular approach for supporting IaaS primitives such as virtual machines, storage, and virtual networking
+ - Azure's modular edge offerings maintain consistency between the cloud and the edge, through a singular approach for supporting IaaS primitives such as virtual machines, storage, and virtual networking
  - Azure Active Directory and role-based access control support
  - Common administrative interfaces
  - API symmetry and support for Microsoft, third party and open-source DevOps tools
