@@ -11,6 +11,11 @@
       "redirect_document_id": false
     },
     { 
+      "source_path": "azure-stack/mdc/extended-storage-firmware-updates.md", 
+      "redirect_url": "/azure-stack/mdc/extended-storage-health-checks", 
+      "redirect_document_id": false
+    },
+    { 
       "source_path": "azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal.md", 
       "redirect_url": "/azure-stack/operator/diagnostic-log-collection", 
       "redirect_document_id": false
