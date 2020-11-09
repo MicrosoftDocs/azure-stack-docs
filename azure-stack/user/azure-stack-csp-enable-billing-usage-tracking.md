@@ -4,7 +4,7 @@ description: Learn how to let your Cloud Solution Provider (CSP) manage your Azu
 author: sethmanheim
 
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 11/09/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/20/2019
