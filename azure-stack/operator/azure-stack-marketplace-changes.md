@@ -165,7 +165,7 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Updated marketplace items
 
--11/05/2020: SQL Server 2017 Standard on Windows Server 2016 - Bring your own license - version 14.0.20201015
+- 11/05/2020: SQL Server 2017 Standard on Windows Server 2016 - Bring your own license - version 14.0.20201015
 - 11/05/2020: SQL Server 2017 Standard on Windows Server 2016 - Pay as you go - version 14.0.20201015
 - 11/05/2020: SQL Server 2017 Enterprise Windows Server 2016 - Bring your own license - version 14.0.20201015
 - 11/05/2020: SQL Server 2017 Enterprise Windows Server 2016 - Pay as you go - version 14.0.20201015
