@@ -1,13 +1,13 @@
 ---
-title: Modular Data Center  overview | 
+title: Modular Data Center overview | 
 description: The Modular Data Center  is a portable, rapidly deployable datacenter appropriate for supporting large-scale combat operations in temporary and fixed command posts.
 author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: overview
-ms.date: 01/13/2020
+ms.date: 11/06/2020
 ms.reviewer: prchint
-ms.lastreviewed: 01/13/2020
+ms.lastreviewed: 11/06/2020
 ---
 
 # Modular Data Center overview 
@@ -22,7 +22,7 @@ Azure Stack delivers on four core principles that are consistent with and extend
 
 ### Develop and deliver apps with a common DevOps model including API symmetry with Azure
 
-The consistency between Azure and Azure Stack means solutions for the war fighter are developed once, deployed to support a variety of use cases, and secured and sustained using a common set of tools like Azure Key Vault for key management and Azure Monitor for resource monitoring and management. Azure Stack is interoperable with on-premises data, apps, and tools for DevOps and secure operations, for example, key management.
+The consistency between Azure and Azure Stack means solutions are developed once, deployed to support a variety of use cases, and secured and sustained using a common set of tools like Azure Key Vault for key management and Azure Monitor for resource monitoring and management. Azure Stack is interoperable with on-premises data, apps, and tools for DevOps and secure operations, for example, key management.
 
 ### Deliver Azure services on-premises
 
@@ -30,7 +30,7 @@ Azure Stack runs in disadvantaged (contested, congested, or denied) communicatio
 
 ### Use Integrated hardware and software delivery experience
 
-The modular edge requires a range of capabilities that provide not only baseline compute and storage services but also advanced capability for machine learning, AI, and analytics. The ability to connect to your secure cloud from the modular edge when able, or conversely, to operate independently from it in austere environments, is critical to provide war fighters access to data needed for decisions.
+The modular edge requires a range of capabilities that provide not only baseline compute and storage services but also advanced capability for machine learning, AI, and analytics. The ability to connect to your secure cloud from the modular edge when able, or conversely, to operate independently from it in austere environments, is critical to provide access to data needed for decisions.
 
 ### Keep your datacenter secure and available with hybrid cloud security operations
 
@@ -42,7 +42,7 @@ Remote assisted administration by Microsoft or a Microsoft-managed offering in t
 
 MDC supports a consistent environment with Azure in disadvantaged communications environments:
  - Static, modular, rapidly deployable data centers with Azure cloud services to power large analytics apps in Modular Operations Centers (TOC).
- - Azure's modular edge offerings maintain consistency between the cloud and the edge, through A singular approach for supporting IaaS primitives such as virtual machines, storage, and virtual networking
+ - Azure's modular edge offerings maintain consistency between the cloud and the edge, through a singular approach for supporting IaaS primitives such as virtual machines, storage, and virtual networking
  - Azure Active Directory and role-based access control support
  - Common administrative interfaces
  - API symmetry and support for Microsoft, third party and open-source DevOps tools
