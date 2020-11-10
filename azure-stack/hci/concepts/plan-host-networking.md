@@ -3,7 +3,7 @@ title: Plan host networking for Azure Stack HCI
 description: Learn how to plan host networking for Azure Stack HCI clusters
 author: v-dasis
 ms.topic: how-to
-ms.date: 10/13/2020
+ms.date: 11/09/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -14,72 +14,9 @@ ms.reviewer: JasonGerend
 
 This topic discusses host networking planning considerations and requirements in both non-stretched and stretched Azure Stack HCI cluster environments.
 
-## Traffic types supported
-
-Azure Stack HCI uses Server Message Block (SMB). SMB on Azure Stack HCI supports the following traffic types:
-
-- Storage Bus Layer (SBL) - used by Storage Spaces Direct; highest priority traffic
-- Cluster Shared Volumes (CSV)
-- Live Migration (LM)
-- Storage Replica (SR) - used in stretched clusters
-- File Shares (FS) - FS traditional and Scale-Out File Server (SOFS)
-- Cluster heartbeat (HB)
-- Cluster communication (node joins, cluster updates, registry updates)
-
-SMB traffic can flow over the following protocols:
-
-- Transport Control Protocol (TCP) - used between sites
-- Remote direct memory access (RDMA)
-
-## Traffic bandwidth allocation
-
-The following table shows bandwidth allocations for various traffic types, where:
-
-- All units are in Gbps
-- Values apply to both stretched and non-stretched clusters
-- SMB traffic gets 50% of the total bandwidth allocation
-- Storage Bus Layer/Cluster Shared Volume (SBL/CSV) traffic gets 70% of the remaining 50% allocation
-- Live Migration (LM) traffic gets 15% of the remaining 50% allocation
-- Storage Replica (SR) traffic gets 14% of the remaining 50% allocation
-- Heartbeat (HB) traffic gets 1% of the remaining 50% allocation
-- *= should use compression rather than RDMA if bandwidth allocation for LM traffic is <5 Gbps
-
-|NIC Speed|Teamed Bandwidth|SMB 50% Reservation|SBL/CSV %|SBL/CSV Bandwidth|LM %|LM Bandwidth|SR % |SR Bandwidth|HB %|HB Bandwidth|
-|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-|10|20|10|70%|7|14%*|1.4*|14%|1.4|2%|0.2|
-|25|50|25|70%|17.5|15%*|3.75*|14%|3.5|1%|0.25|
-|40|80|	40|70%|28|15%|6|14%|5.6|1%|0.4|
-|50|100|50|70%|35|15%|7.5|14%|7|1%|0.5|
-|100|200|100|70%|70|15%|15|14%|14|1%|1|
-|200|400|200|70%|140|15%|30|14%|28|1%|2|
-
-## RDMA considerations
-
-Remote direct memory access (RDMA) is a direct memory access from the memory of one computer into that of another without involving either computer's operating system. This permits high-throughput, low-latency networking while minimizing CPU usage, which is especially useful in clusters.
-
-All host RDMA traffic takes advantage of SMB Direct. SMB Direct is SMB 3.0 traffic sent over RDMA and is multiplexed over port 445. A minimum of two Priority-based Flow Control (PFC) enabled Traffic Classes (TCs) must be used for RDMA traffic to remain compatible with the majority of current and future physical switches on the market.
-
-Internet Wide Area RDMA Protocol (iWARP) runs RDMA over TCP, while RDMA over Converged Ethernet (RoCE) avoids the use of TCP, but requires both NICs and physical switches that support it. For converged network requirements for RDMA over RoCE, see the [Windows Server 2016 and 2019 RDMA Deployment Guide](https://github.com/Microsoft/SDN/blob/master/Diagnostics/S2D%20WS2016_ConvergedNIC_Configuration.docx).
-
-RDMA is enabled by default for all east/west traffic between cluster nodes in a site on the same subnet. RDMA is disabled and not supported for north/south stretched cluster traffic between sites on different subnets.
-
-These are the requirements for RDMA for Azure Stack HCI:
-
-- All traffic between subnets and between sites (stretched clusters) must use WinSock TCP. Any intermediate network hops are outside of the view and control of Azure Stack HCI.
-- RDMA between subnets and between sites (stretched clusters) is not supported. The use of uplinks and multiple network devices means multiple failure points where this could become unstable and unsupportable.
-- No additional virtual NICs are needed for Storage Replica traffic for stretched clusters. However for troubleshooting purposes, it may be useful to keep the cross-site and cross-subnet traffic separate from the east-west RDMA traffic. If SMB Direct cannot be natively disabled cross-site or cross-subnet per flow, then:
-    - One or more additional vNICs should be provisioned for Storage Replica
-    - Storage Replica vNICs must have RDMA disabled using the PowerShell [Disable-NetAdapterRDMA](https://docs.microsoft.com/powershell/module/netadapter/disable-netadapterrdma) cmdlet because it is by definition cross-site and cross-subnet
-    - Native RDMA adapters would need a vSwitch and vNICs for Storage Replica support in order to satisfy the site/subnet requirements above
-    - Intra-site RDMA bandwidth requirements require knowing the bandwidth percentages per traffic type, as discussed in the **Traffic bandwidth allocation** section. This will ensure that appropriate bandwidth reservations and limits can be applied for east/west (node-to-node) traffic
-- Live Migration and Storage Replica traffic must be SMB bandwidth-limited, otherwise they could consume all the bandwidth, starving the high-priority storage traffic. For more information, see the [Set-SmbBandwidthLimit](https://docs.microsoft.com/powershell/module/smbshare/set-smbbandwidthlimit) and [Set-SRNetworkConstraint](https://docs.microsoft.com/powershell/module/storagereplica/set-srnetworkconstraint) PowerShell cmdlets.
-
-> [!NOTE]
-> You need to convert bits into bytes when using the `Set-SmbBandwidthLimit` cmdlet.
-
 ## Node interconnect requirements
 
-This section discusses specific networking requirements between server nodes in a site, called interconnects. Either switched or switchless node interconnects can be used and are supported:
+This section discusses specific networking requirements between servers in a site, called interconnects. Either switched or switchless node interconnects can be used and are supported:
 
 - **Switched:** Server nodes are most commonly connected to each other via Ethernet networks that use network switches. Switches must be properly configured to handle the bandwidth and networking type. If using RDMA that implements the RoCE protocol, network device and switch configuration is important.
 - **Switchless:** Server nodes can also be interconnected using direct Ethernet connections without a switch. In this case, each server node must have a direct connection with every other cluster node in the same site.
@@ -108,6 +45,52 @@ When connecting between sites for stretched clusters, interconnect requirements 
 - A network between sites with enough bandwidth to contain your I/O write workload and an average of 5ms round trip latency or lower for synchronous replication. Asynchronous replication doesn't have a latency recommendation.
 - If using a single connection between sites, set SMB bandwidth limits for Storage Replica using PowerShell. For more information, see [Set-SmbBandwidthLimit](/powershell/module/smbshare/set-smbbandwidthlimit).
 - If using multiple connections between sites, separate traffic between the connections. For example, put Storage Replica traffic on a separate network than Hyper-V live migration traffic using PowerShell. For more information, see [Set-SRNetworkConstraint](/powershell/module/storagereplica/set-srnetworkconstraint).
+
+## RDMA considerations
+
+Remote direct memory access (RDMA) is a direct memory access from the memory of one computer into that of another without involving either computer's operating system. This permits high-throughput, low-latency networking while minimizing CPU usage, which is especially useful in clusters.
+
+All host RDMA traffic takes advantage of SMB Direct. SMB Direct is SMB 3.0 traffic sent over RDMA and is multiplexed over port 445. A minimum of two Priority-based Flow Control (PFC) enabled Traffic Classes (TCs) must be used for RDMA traffic to remain compatible with the majority of current and future physical switches on the market.
+
+Internet Wide Area RDMA Protocol (iWARP) runs RDMA over TCP, while RDMA over Converged Ethernet (RoCE) avoids the use of TCP, but requires both NICs and physical switches that support it. For converged network requirements for RDMA over RoCE, see the [Windows Server 2016 and 2019 RDMA Deployment Guide](https://github.com/Microsoft/SDN/blob/master/Diagnostics/S2D%20WS2016_ConvergedNIC_Configuration.docx).
+
+RDMA is enabled by default for all east/west traffic between cluster nodes in a site on the same subnet. RDMA is disabled and not supported for north/south stretched cluster traffic between sites on different subnets.
+
+These are the requirements for RDMA for Azure Stack HCI:
+
+- All traffic between subnets and between sites (stretched clusters) must use WinSock TCP. Any intermediate network hops are outside of the view and control of Azure Stack HCI.
+- RDMA between subnets and between sites (stretched clusters) is not supported. The use of uplinks and multiple network devices means multiple failure points where this could become unstable and unsupportable.
+- No additional virtual NICs are needed for Storage Replica traffic for stretched clusters. However for troubleshooting purposes, it may be useful to keep the cross-site and cross-subnet traffic separate from the east-west RDMA traffic. If SMB Direct cannot be natively disabled cross-site or cross-subnet per flow, then:
+    - One or more additional vNICs should be provisioned for Storage Replica
+    - Storage Replica vNICs must have RDMA disabled using the PowerShell [Disable-NetAdapterRDMA](https://docs.microsoft.com/powershell/module/netadapter/disable-netadapterrdma) cmdlet because it is by definition cross-site and cross-subnet
+    - Native RDMA adapters would need a vSwitch and vNICs for Storage Replica support in order to satisfy the site/subnet requirements above
+    - Intra-site RDMA bandwidth requirements require knowing the bandwidth percentages per traffic type, as discussed in the **Traffic bandwidth allocation** section. This will ensure that appropriate bandwidth reservations and limits can be applied for east/west (node-to-node) traffic
+- Live Migration and Storage Replica traffic must be SMB bandwidth-limited, otherwise they could consume all the bandwidth, starving the high-priority storage traffic. For more information, see the [Set-SmbBandwidthLimit](https://docs.microsoft.com/powershell/module/smbshare/set-smbbandwidthlimit) and [Set-SRNetworkConstraint](https://docs.microsoft.com/powershell/module/storagereplica/set-srnetworkconstraint) PowerShell cmdlets.
+
+> [!NOTE]
+> You need to convert bits into bytes when using the `Set-SmbBandwidthLimit` cmdlet.
+
+## Traffic bandwidth allocation
+
+The following table shows bandwidth allocations for various traffic types, where:
+
+- All units are in Gbps
+- Values apply to both stretched and non-stretched clusters
+- SMB traffic gets 50% of the total bandwidth allocation
+- Storage Bus Layer/Cluster Shared Volume (SBL/CSV) traffic gets 70% of the remaining 50% allocation
+- Live Migration (LM) traffic gets 15% of the remaining 50% allocation
+- Storage Replica (SR) traffic gets 14% of the remaining 50% allocation
+- Heartbeat (HB) traffic gets 1% of the remaining 50% allocation
+- *= should use compression rather than RDMA if bandwidth allocation for LM traffic is <5 Gbps
+
+|NIC Speed|Teamed Bandwidth|SMB 50% Reservation|SBL/CSV %|SBL/CSV Bandwidth|LM %|LM Bandwidth|SR % |SR Bandwidth|HB %|HB Bandwidth|
+|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+|10|20|10|70%|7|14%*|1.4*|14%|1.4|2%|0.2|
+|25|50|25|70%|17.5|15%*|3.75*|14%|3.5|1%|0.25|
+|40|80|	40|70%|28|15%|6|14%|5.6|1%|0.4|
+|50|100|50|70%|35|15%|7.5|14%|7|1%|0.5|
+|100|200|100|70%|70|15%|15|14%|14|1%|1|
+|200|400|200|70%|140|15%|30|14%|28|1%|2|
 
 ## Network port requirements
 
@@ -195,6 +178,24 @@ LLDP allows organizations to define and encode their own custom TLVs. These are 
 
 > [!NOTE]
 > Some of the optional features listed may be required in the future.
+
+## Traffic types supported
+
+Azure Stack HCI uses Server Message Block (SMB). SMB on Azure Stack HCI supports the following traffic types:
+
+- Storage Bus Layer (SBL) - used by Storage Spaces Direct; highest priority traffic
+- Cluster Shared Volumes (CSV)
+- Live Migration (LM)
+- Storage Replica (SR) - used in stretched clusters
+- File Shares (FS) - FS traditional and Scale-Out File Server (SOFS)
+- Cluster heartbeat (HB)
+- Cluster communication (node joins, cluster updates, registry updates)
+
+SMB traffic can flow over the following protocols:
+
+- Transport Control Protocol (TCP) - used between sites
+- Remote direct memory access (RDMA)
+
 
 ## Next steps
 
