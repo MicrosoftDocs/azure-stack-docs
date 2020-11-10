@@ -425,13 +425,23 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/set-modules.png" alt-text="Set Modules Screenshot":::
 
-14. Under IoT Edge Modules, click and choose Marketplace Module:
+14. Under IoT Edge Modules, click and choose IoT Edge Module:
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/marketplace-module.png" alt-text="Marketplace Module Screenshot":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/marketplace-module.png" alt-text="Add IoT Edge Module Screenshot":::
 
-15. Search for NVIDIA and choose DeepStream SDK like displayed below:
+15. In the **Add IoT Edge Module** prompt, provide the following values for the indicated fields under **Module Settings**, then select **Add**:
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/deepstream.png" alt-text="DeepStream SDK Screenshot":::
+    `IoT Edge Module Name`: NVIDIADeepStreamSDK
+
+    `Image URI`: marketplace.azurecr.io/nvidia/deepstream-iot2
+
+    `Restart Policy`: always
+
+    `Desired Status`: running
+
+    `Image Pull Policy`: {empty}
+
+    :::image type="content" source="media/attach-gpu-to-linux-vm/deepstream-module-settings.png" alt-text="DeepStream SDK Screenshot":::
 
 16. Ensure NvidiaDeepStreamSDK module is listed under IoT Edge Modules:
 
