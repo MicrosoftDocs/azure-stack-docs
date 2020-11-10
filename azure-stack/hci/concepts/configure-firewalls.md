@@ -74,8 +74,10 @@ This section provides an example of how to use Windows PowerShell to configure t
     New-NetFirewallRule -DisplayName "Allow Azure Resource Manager" -RemoteAddress $IpList -Direction Outbound -LocalPort 443 -Protocol TCP -Action Allow -Profile Any -Enabled True
     ```
 
+<!---Add step 5 on setting allow access on enterprise firewall. See Jason's OneNote.--->
+
 ## Additional endpoint for one-time Azure registration
-During the registration process, when you run either `Register-AzStackHCI` or use Windows Admin Center, the cmdlet tries to contact the PowerShell Gallery to verify that you have the latest version of required PowerShell modules, such as Az and AzureAD. Although the PowerShell Gallery is hosted on Azure, currently there is not a service tag for it. If you cannot run the cmdlet from a machine that has permissive outbound internet access, we recommend downloading the modules and then manually transferring them to the node where you will run the `Register-AzStackHCI` command.
+During the Azure registration process, when you run either `Register-AzStackHCI` or use Windows Admin Center, the cmdlet tries to contact the PowerShell Gallery to verify that you have the latest version of required PowerShell modules, such as Az and AzureAD. Although the PowerShell Gallery is hosted on Azure, currently there is not a service tag for it. If you can't run the cmdlet from a machine that has permissive outbound internet access, we recommend downloading the modules, and then manually transferring them to the node where you want to run the `Register-AzStackHCI` command.
 
 <!---Use note to explain how to get this without using a service tag.--->
    >[!NOTE]
