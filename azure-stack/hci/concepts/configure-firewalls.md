@@ -4,7 +4,7 @@ description: This topic provides guidance on how to configure firewalls for the 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 11/09/2020
+ms.date: 11/10/2020
 ---
 
 # Configure firewalls for Azure Stack HCI
@@ -25,36 +25,36 @@ Azure Stack HCI needs to periodically connect to the Azure public cloud. The con
 - Outbound direction
 - Port 443 (HTTPS)
 
-The following diagram shows how the process works.
-<!---See Cosmos's mail for table content--->
+For more information, see the Azure Stack HCI connectivity section of [Azure Stack HCI FAQ](faq.md)
 
-:::image type="content" source="./media/configure-firewalls/firewalls-diagram.png" alt-text="TBD TBD TBD." lightbox="./media/configure-firewalls/firewalls-diagram.png":::
+The following diagram shows how the process works.
+
+:::image type="content" source="./media/configure-firewalls/firewalls-diagram.png" alt-text="Diagram shows Azure Stack HCI accessing service tag endpoints through Port 443 (HTTPS) of firewalls." lightbox="./media/configure-firewalls/firewalls-diagram.png":::
 
 ## Required endpoint day-to-day access (after Azure registration)
 Azure maintains well-known IP addresses that Azure services uses. Azure Stack HCI needs access to IP addresses and URLs that Azure maintains. The IP addresses are organized using what are called service tags.
 
-Azure publishes a weekly JSON file of all the IP addresses for every service. The IP addresses don’t change often, but they do change a few times per year. The following table shows the service tag endpoints that Azure Stack HCI needs access to.
+Azure publishes a weekly JSON file of all the IP addresses for every service. The IP addresses don’t change often, but they do change a few times per year. The following table shows the service tag endpoints that Azure Stack HCI needs to access.
 
-<!---See Cosmos's mail for table content--->
-| Purpose                       | Service tag for IP range  | URL                                               |
-| :-----------------------------| :-----------------------  | :------------------------------------------------ |
-| Azure Active Directory        | AzureActiveDirectory      | right-aligned column                              |
-| Azure Resource Manager        | AzureResourceManager      | $100                                              |
-| Azure Stack HCI Cloud Service | AzureFrontDoor.Frontend   | $10                                               |
-| Azure Arc                     | AzureArcInfrastructure<br> AzureTrafficManager | $10                          |
-
+| Purpose                       | Service tag for IP range  | URL                                                                                 |
+| :-----------------------------| :-----------------------  | :---------------------------------------------------------------------------------- |
+| Azure Active Directory        | AzureActiveDirectory      | [https://login.microsoftonline.com](https://login.microsoftonline.com)<br> [https://graph.microsoft.com](https://graph.microsoft.com)               |
+| Azure Resource Manager        | AzureResourceManager      | [https://management.azure.com](https://management.azure.com)                        |
+| Azure Stack HCI Cloud Service | AzureFrontDoor.Frontend   | Depends on the region you registered with:<br> East US: [https://eus-azurestackhci-usage.azurewebsites.net](https://eus-azurestackhci-usage.azurewebsites.net)<br> West Europe: [https://weu-azurestackhci-usage.azurewebsites.net](https://weu-azurestackhci-usage.azurewebsites.net) |
+| Azure Arc                     | AzureArcInfrastructure<br> AzureTrafficManager | Depends on the functionality you want to use:<br> Hybrid Identity Service: [*.his.arc.azure.com](*.his.arc.azure.com)<br> Guest Configuration: [*.guestconfiguration.azure.com](*.guestconfiguration.azure.com)<br> **Note:** Please expect more URLs as we enable more functionality. |
 
 ## Service tags and how they work
-TBD
+A *service tag* represents a group of IP addresses from a given Azure service. Microsoft manages the IP addresses included in the service tag, and automatically updates the service tag as IP addresses change to keep updates to a minimum. To learn more, see [Virtual network service tags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview).
 
-<!---See Cosmos' RE: Firewall Endpoints for AAD App Registration mail for topic structure. Virtual network service tags: https://docs.microsoft.com/en-us/azure/virtual-network/service-tags-overview
-
-See OneNote direction from Cosmos on adding link to related Overview topic.--->
+<!---See OneNote direction from Cosmos on adding link to related Overview topic.--->
 
 
 ## How to update Microsoft Defender firewall
-TBD
-<!---See Cosmos' RE: Firewall Endpoints for AAD App Registration mail for JSON and PS steps for this section--->
+This section provides an example of how to use Windows PowerShell to configure the Microsoft Defender firewall in the operating system to allow the IP addresses associated with a service tag:
+
+1. Download the JSON file from the following resource to the target computer running the operating system: [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519).
+
+<!---See Dan's latest topic for PS formate. See Cosmos' RE: Firewall Endpoints for AAD App Registration mail for JSON and PS steps for this section--->
 
 
 ## Additional endpoint for one-time Azure registration
@@ -67,7 +67,4 @@ TBD
 
 ## Next steps
 For more information, see also:
-<!---Placeholders for format examples. Replace all before initial topic review.--->
-
-- [TBD](../overview.md)
-- [TBD](cache.md)
+- The connectivity section of the [Azure Stack HCI FAQ](faq.md)
