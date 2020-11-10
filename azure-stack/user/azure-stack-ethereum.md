@@ -59,12 +59,12 @@ The consortium leader template configures the first member's footprint in the ne
 1. Select **Build your own template in the editor** to edit the new custom template.
 1. In the editing pane on the right, copy and paste the leader template JSON you previously downloaded.
     
-    ![Edit template with the leader template pasted](./media/azure-stack-ethereum/edit-leader-template.png)
+    [![Edit template with the leader template pasted](./media/azure-stack-ethereum/edit-leader-template.png)](./media/azure-stack-ethereum/edit-leader-template.png#lightbox)
 
 1. Select **Save**.
 1. On the **Basics** tab, complete the following settings.
 
-    Parameter Name | Description | Sample value
+    Parameter name | Description | Sample value
     ---------------|-------------|-------------
     Subscription | The subscription to which to deploy the consortium network. | Consumption Subscription
     Resource group | The resource group to which to deploy the consortium network. | EthereumResources
@@ -106,7 +106,7 @@ To verify leader's deployment, go to the leader's admin site. The admin site add
 1. Select **Save**.
 1. On the **Basics** tab, complete the following settings.
 
-    Parameter Name | Description | Sample value
+    Parameter name | Description | Sample value
     ---------------|-------------|-------------
     Subscription | The subscription to which to deploy the consortium network. | Consumption Subscription
     Resource group | The resource group to which to deploy the consortium network. | EthereumResources
@@ -154,7 +154,7 @@ This template creates a connection from the leader to a remote member.
 1. Select **Save**.
 1. Complete the following settings.
 
-    Parameter Name | Description | Sample value
+    Parameter name | Description | Sample value
     ---------------|-------------|-------------
     Subscription | The subscription to which to deploy the consortium network. | Consumption Subscription
     Resource group | The resource group to which to deploy the consortium network. | EthereumResources
