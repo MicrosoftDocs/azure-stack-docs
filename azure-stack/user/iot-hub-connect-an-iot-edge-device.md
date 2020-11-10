@@ -67,7 +67,7 @@ In this section, you install an IoT Hub root CA in the edge device's trusted sto
 
 ## Generate device certificates
 
-In this section section, you set up the certificate generation tool, then generate the certificates required for the device. Following that, you install, configure, and test the IoT Edge and container runtimes.
+In this section, you set up the certificate generation tool, then generate the certificates required for the device. Following that, you install, configure, and test the IoT Edge and container runtimes.
 
 Be sure to change all `\<WORK-DIR\>` placeholders to the path to your working directory, for example `/home/edgeadmin/edged1`.
 
