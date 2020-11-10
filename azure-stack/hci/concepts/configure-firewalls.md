@@ -20,12 +20,12 @@ This topic provides guidance on how to configure firewalls for the Azure Stack H
 2 See OneNote Jason's input on need to align enterprise firewall with Defender firewall ports for same access to updates. Step 5 to add to Cosmos' other 4 JSON steps.--->
 
 ## Connectivity requirements
-Azure Stack HCI needs to periodically connect to the Azure public cloud. The connectivity requirements for this are far from unrestricted internet access. Access is limited to only:
+Azure Stack HCI needs to periodically connect to the Azure public cloud. The connectivity requirements are far from unrestricted internet access. Access is limited to only:
 - Well-known Azure IPs
 - Outbound direction
 - Port 443 (HTTPS)
 
-For more information, see the Azure Stack HCI connectivity section of [Azure Stack HCI FAQ](faq.md)
+For more information, see the Azure Stack HCI connectivity section of the [Azure Stack HCI FAQ](../faq.md)
 
 The following diagram shows how the process works.
 
@@ -46,25 +46,41 @@ Azure publishes a weekly JSON file of all the IP addresses for every service. Th
 ## Service tags and how they work
 A *service tag* represents a group of IP addresses from a given Azure service. Microsoft manages the IP addresses included in the service tag, and automatically updates the service tag as IP addresses change to keep updates to a minimum. To learn more, see [Virtual network service tags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview).
 
+<!---wild card link show as invalid in GitHub build. Ask Jason about them at handoff.--->
+
 <!---See OneNote direction from Cosmos on adding link to related Overview topic.--->
 
 
-## How to update Microsoft Defender firewall
-This section provides an example of how to use Windows PowerShell to configure the Microsoft Defender firewall in the operating system to allow the IP addresses associated with a service tag:
+## How to update Microsoft Defender Firewall
+This section provides an example of how to use Windows PowerShell to configure the Microsoft Defender Firewall to allow the IP addresses associated with a service tag to connect with the operating system:
 
 1. Download the JSON file from the following resource to the target computer running the operating system: [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519).
 
-<!---See Dan's latest topic for PS formate. See Cosmos' RE: Firewall Endpoints for AAD App Registration mail for JSON and PS steps for this section--->
+1. Use the following PowerShell command to open the JSON file:
 
+    ```powershell
+    $json = Get-Content -Path .\ServiceTags_Public_20201012.json | ConvertFrom-Json
+    ```
+
+1. Get the list of IP address ranges for a given service tag, such as the “AzureResourceManager” service tag:
+
+    ```powershell
+    $IpList = ($json.values | where Name -Eq "AzureResourceManager").properties.addressPrefixes
+    ```
+
+1. Create a firewall rule to allow outbound 443 (HTTPS) traffic to the list of IP address ranges:
+
+    ```powershell
+    New-NetFirewallRule -DisplayName "Allow Azure Resource Manager" -RemoteAddress $IpList -Direction Outbound -LocalPort 443 -Protocol TCP -Action Allow -Profile Any -Enabled True
+    ```
 
 ## Additional endpoint for one-time Azure registration
-<!---Cosmos's mail explains need for this--->
+During the registration process, when you run either `Register-AzStackHCI` or use Windows Admin Center, the cmdlet tries to contact the PowerShell Gallery to verify that you have the latest version of required PowerShell modules, such as Az and AzureAD. Although the PowerShell Gallery is hosted on Azure, currently there is not a service tag for it. If you cannot run the cmdlet from a machine that has permissive outbound internet access, we recommend downloading the modules and then manually transferring them to the node where you will run the `Register-AzStackHCI` command.
 
 <!---Use note to explain how to get this without using a service tag.--->
    >[!NOTE]
    > TBD.
 
-
 ## Next steps
 For more information, see also:
-- The connectivity section of the [Azure Stack HCI FAQ](faq.md)
+- The connectivity section of the [Azure Stack HCI FAQ](../faq.md)
