@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: v-dasis
 ms.topic: how-to
-ms.date: 09/21/2020
+ms.date: 10/17/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -27,7 +27,7 @@ If you’re interested in testing Azure Stack HCI, but have limited or no spare 
 
 Before you run the Create Cluster wizard, make sure you:
 
-- Have read the hardware and other requirements in [Before you deploy Azure Stack HCI](before-you-start.md).
+- Have read the hardware and other requirements in [System requirements](../concepts/system-requirements.md).
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
 - Have an account that’s a member of the local Administrators group on each server.
 - Install Windows Admin Center on a PC or server for management. See [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
@@ -185,6 +185,9 @@ If resolving the cluster isn't successful after some time, in most cases you can
 ## Step 5: SDN (optional)
 
 This optional step walks you through setting up the Network Controller component of [Software Defined Networking (SDN)](../concepts/software-defined-networking.md). Once the Network Controller is set up, it can be used to configure other components of SDN such as Software Load Balancer and RAS Gateway.
+
+> [!NOTE]
+> SDN is not supported or available for stretched clusters.
 
 :::image type="content" source="media/cluster/create-cluster-network-controller.png" alt-text="Create cluster wizard - SDN Network Controller" lightbox="media/cluster/create-cluster-network-controller.png":::
 

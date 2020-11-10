@@ -27,7 +27,7 @@ This section lists the prerequisites for both integrated system and Azure Stack 
 
 ### Resource provider prerequisites
 
-[!INCLUDE [Common RP prerequisites](../includes/marketplace-resource-provider-prerequisites.md)]
+[!INCLUDE [Common RP prerequisites](../includes/resource-provider-prerequisites.md)]
 
 ### Installer and helper scripts
 

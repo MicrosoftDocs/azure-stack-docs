@@ -94,7 +94,7 @@ We recommend limiting the total storage capacity per server to approximately 400
 For more information, see also:
 
 - [Understand the cache](cache.md)
-- [Determine hardware requirements](../deploy/before-you-start.md#determine-hardware-requirements)
+- [System requirements](system-requirements.md)
 - [Drive symmetry considerations](drive-symmetry-considerations.md)
 - [Plan volumes](plan-volumes.md)
 - [Fault tolerance and storage efficiency](fault-tolerance.md)
