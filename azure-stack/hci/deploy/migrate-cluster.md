@@ -12,9 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version 20H2
 
-This topic describes how to migrate a cluster from Windows Server to Azure Stack HCI using a Windows PowerShell script and Robocopy. Robocopy is a robust method for copying files from one server to another. It will also resume if disconnected and continue to work from its last known state. Robocopy supports multi-threaded file copy over Server Message Block (SMB).
-
-For more information on Robocopy, see [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy).
+This topic describes how to migrate a cluster from Windows Server to Azure Stack HCI using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one server to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy).
 
 ## Before you begin
 
@@ -22,7 +20,7 @@ There are several requirements and things to consider before you begin migration
 
 - Make sure you have domain credentials with administrator permissions for both source and destination clusters.
 
-- Check if Azure Stack HCI supports your version of VMs to import. Azure Stack HCI supports all versions from Windows Server 2012 R2 version 5 through version 9 of Azure Stack HCI version 20H2. Use the Windows PowerShell `Get-VMHostSupportedVersion` and `Get-VM` cmdlets to get this information.
+- Check if Azure Stack HCI supports your version of virtual machines (VMs) to import. Azure Stack HCI supports all versions of VMs from Windows Server 2012 R2 (version 5.0) to Azure Stack HCI version 20H2 (version 9.0). Use the PowerShell `Get-VMHostSupportedVersion` and `Get-VM` cmdlets to get VM version information.
 
 - Backup all VMs on your Windows Server cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases.
 
@@ -30,13 +28,13 @@ There are several requirements and things to consider before you begin migration
 
 - Ensure the maximum Jumbo frame sizes are the same between source and destination cluster storage networks - this is typically 9014.
 
-- Remove reference to all ISOs on your source VMs. 
+- Remove reference to all ISOs on your source VMs.
 
-- Shutdown all virtual machines (VMs) on the existing Windows Server cluster. This is required to ensure version control and state are maintained throughout the migration process.
+- Shutdown all virtual machines (VMs) on the Windows Server cluster. This is required to ensure version control and state are maintained throughout the migration process.
 
 ## RDMA recommendations
 
-If you are using Remote Direct Memory Access (RDMA), Robocopy can leverage it for migration of your virtual machines (VMs). Here are some recommendations for using RDMA:
+If you are using Remote Direct Memory Access (RDMA), Robocopy can leverage it for migration of your VMs. Here are some recommendations for using RDMA:
 
 - Configure RDMA storage networks so they are routable between the source and destination clusters.
 
@@ -46,12 +44,12 @@ If the RDMA standard is different between clusters (ROCE vs iWARP), Robocopy wil
 
 ## Create the new cluster
 
-Before you can create the cluster, you need to install the Azure Stack HCI OS on each server that will be in the new cluster. For information on how to do this, see [Deploy the Azure Stack HCI operating system](operating-system.md).
+Before you can create the new cluster, you need to install the Azure Stack HCI OS on each server that will be in the new cluster. For information on how to do this, see [Deploy the Azure Stack HCI operating system](operating-system.md).
 
-Use Windows Admin Center or Windows PowerShell to create the new Azure Stack HCI cluster. For information on how to do this, see [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md) and [Create an Azure Stack HCI cluster using Windows PowerShell](create-cluster-powershell.md).
+Use Windows Admin Center or Windows PowerShell to create the new cluster. For information on how to do this, see [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md) and [Create an Azure Stack HCI cluster using Windows PowerShell](create-cluster-powershell.md).
 
 > [!NOTE]
-> Make sure during virtual switch creation that the names match the switch names on the source cluster.
+> Make sure during virtual switch creation that the names specified match the switch names on the source cluster.
 
 ## Run the migration script
 
@@ -59,17 +57,17 @@ The following PowerShell script `Robocopy_Remote_Server_.ps1` uses Robocopy to c
 
 The script creates a folder named `ISO` on the `C:` drive of each destination cluster server node. The script also copies all VHD, VHDX, and VMCX files from the source cluster to your destination cluster for each Cluster Shared Volume (CSV).
 
-1. Run the script on each source cluster node.
+1. Run the following script on each Windows Server source cluster node.
 
 1. Make sure each destination cluster node is set to the CSV owner for the destination CSV.
 
-1. change the following three variables to match your source cluster VM path with your destination cluster VM path:
+1. Change the following three variables to match the source cluster VM path with the destination cluster VM path:
 
     - `$Dest_PC = "destination_cluster_server_node"`
     - `$source  = "C:\Clusterstorage\Volume01"`
     - `$dest = "\\$Dest_PC\C$\Clusterstorage\Volume01"`
 
-1. Run the script in a Powershell session window:
+Here is the script:
 
 ```powershell
 <#
@@ -121,7 +119,7 @@ Write-host " Copy Virtual Machines to $Dest_PC took $Time        ......" -fore C
 
 ## Post-migration tasks
 
-After the script has completed for each CSV, you will have an even distribution of CSVs to a node by default. After a few minutes, these will balance on each server node. For example, with four nodes and four CSVs, each node will own one CSV.
+After the script has completed for each server node, you will have an even distribution of CSVs by default. After a few minutes, these will balance on each destination server node. For example, with four nodes and four CSVs, each node will own one CSV. Perform the following steps on your Azure Stack HCI cluster:
 
 1. Run the following cmdlet to show all CSVs and node owners:
 
@@ -129,9 +127,9 @@ After the script has completed for each CSV, you will have an even distribution 
     Get-ClusterSharedVolume
     ```
 
-1. For each node, go to `C:\Clusterstorage\Volume` and set the path for all VMs, for example `C:\ClusterStorage\volume01`.
+1. For each server node, go to `C:\Clusterstorage\Volume` and set the path for all VMs - for example `C:\ClusterStorage\volume01`.
 
-1. Run the following cmdlet on each CSV owner node to ensure the path is found to all VMCX files per volume. Modify the path to match your environment.
+1. Run the following cmdlet on each CSV owner node to ensure the path is found to all VMCX files per volume. Modify the path to match your environment:
 
     ```powershell
     Get-ChildItem -Path "c:\clusterstorage\volume01\*.vmcx"-Recurse

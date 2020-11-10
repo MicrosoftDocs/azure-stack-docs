@@ -26,6 +26,8 @@
     href: deploy/witness.md
   - name: Register with Azure
     href: deploy/register-with-azure.md
+  - name: Migrate a cluster
+    href: deploy/migrate-cluster.md
   - name: Validate the cluster
     href: deploy/validate.md
   - name: Deploy with PowerShell
