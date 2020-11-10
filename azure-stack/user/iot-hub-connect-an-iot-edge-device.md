@@ -14,62 +14,94 @@ ms.lastreviewed: 10/20/2020
 
 [!INCLUDE [preview-banner](../includes/iot-hub-preview.md)]
 
-This article shows you how to connect an IoT Edge device to the IoT Hub service running on Azure Stack Hub.
+This article shows you how to connect a virtual IoT Edge device to the IoT Hub service running on Azure Stack Hub. You can use the same process to connect a physical device to your IoT Hub.
 
 ## Prerequisites
 
-Ensure the IoT Hub service is available in your subscription. If it isn't, work with your administrator to [install the IoT Hub on Azure Stack Hub resource provider](../operator/iot-hub-rp-overview.md). The installation steps also cover the creation of an offer that includes the IoT Hub service. 
+Complete the following prerequisites before continuing:
 
-Once an offer is available, your administrator can create or update your subscription to include IoT Hub. Alternatively, you can [subscribe to the new offer and create your own subscription](azure-stack-subscribe-services.md).
+- Work with your administrator to [install the IoT Hub on Azure Stack Hub resource provider](../operator/iot-hub-rp-overview.md). The installation steps also cover the creation of an offer that includes the IoT Hub service. 
 
-## Deploy a new Linux VM on Azure Stack Hub 
+- Once an offer is available, your administrator can create or update your Azure Stack Hub subscription to include IoT Hub. Alternatively, you can [subscribe to the new offer and create your own subscription](azure-stack-subscribe-services.md).
+
+- You'll need an account that can access the [Azure Stack Hub user portal](../user/azure-stack-use-portal.md), with at least ["contributor" permissions](../user/azure-stack-manage-permissions.md).
+
+## Create Azure Stack Hub resources
+
+First you create the necessary Azure Stack Hub resources, including an IoT Hub and a Linux VM. The Linux VM will serve at a virtual IoT Edge device. You use the Azure Stack Hub [user portal](../user/azure-stack-use-portal.md) to create these resources, from either a [Microsoft Edge](https://www.microsoft.com/edge) or [Google Chrome](https://www.google.com/chrome/index.html) browser. 
+
+### Create an IoT Hub resource and export its root CA
+
+1. Sign in to the Azure Stack Hub [user portal](../user/azure-stack-use-portal.md) from a computer that has access to your Azure Stack Hub instance.
+2. If you haven't created one already, follow the instructions in [Create an IoT hub using the Azure portal](/azure/iot-hub/iot-hub-create-through-portal) to create an IoT Hub resource. 
+
+   > [!IMPORTANT]
+   > Be sure to use the Azure Stack Hub [user portal](../user/azure-stack-use-portal.md) when following the steps in the article, and NOT the Azure portal. Also note that some screenshots and instructions may be slightly different, as not all Azure features are available on Azure Stack Hub. 
+
+3. Export a root CA from your IoT Hub and store it in PEM format:
+
+   1. Using the "Copy to clipboard" button, copy your IoT Hub hostname from the IoT Hub resource you created in the Azure Stack Hub user portal:  
+      [![iot hub host name](media\iot-hub-connect-an-iot-edge-device\copy-iot-hub-host-name.png)](media\iot-hub-connect-an-iot-edge-device\copy-iot-hub-host-name.png#lightbox)
+   1. Open a new tab in a Microsoft Edge or Google Chrome browser, and paste the IoT Hub hostname copied in step #1. 
+   1. Select the lock icon next to the website link in the address bar, then **Certificate**, then the **Certification path** tab. 
+   1. Select the top-most certificate in the path, then select the **View Certificate** button. 
+   1. Select the **Details** tab, then the **Copy to File...** button and export the certificate as a .CRT file in base-64 format, for example, **root.crt**. You use this file in the next section, so export it to a location that can be accessed from, or copied to, the Linux VM.
+
+### Deploy a new Linux VM 
 
 1. Use the [Create a Linux server VM by using the Azure Stack Hub portal](azure-stack-quick-linux-portal.md) quick start, to install a Linux VM on your Azure Stack Hub instance. 
 
    > [!NOTE]
-   > You use the Azure Stack Hub [user portal](../user/azure-stack-use-portal.md) to create the VM. Also, don't complete the **Clean up resources** section, as you'll use the Linux VM for the remainder of this article.
+   > Don't complete the **Clean up resources** section, as you'll use the Linux VM for the remainder of this article.
 
 2. After you've created and connected to the VM, create a user account. For the purposes of this article, we'll assume an account named **edgeadmin**.
 
 ## Install an IoT Hub root certificate authority (CA) on the Edge device 
 
-In this section, you install an IoT Hub root CA in the edge device's trusted store. To complete the following steps, you need to use either the [Microsoft Edge](https://www.microsoft.com/edge) or Google Chrome browser:
+In this section, you install an IoT Hub root CA in the Edge device's trusted store. 
+
+Be sure to change all script placeholders accordingly for your environment, before running the script:
+
+| Placeholder | Example | Note |
+|-------------|---------|------|
+| `<IOT-HUB-HOSTNAME>`| `test-hub-1.mgmtiothub.region.mydomain.com`| The IoT Hub host name you copied in the previous section. |
+| `<IOT-HUB-ROOT-CA>`| `root.crt`| The name of the IoT Hub root CA you exported in [Create an IoT Hub resource and export its root CA](#create-an-iot-hub-resource-and-export-its-root-ca). |
 
 1. Return to your Linux VM remote session.
-2. Obtain a root CA from IoT Hub and store it in PEM format, using the following steps:
 
-   1. Copy the IoT Hub hostname and paste it in a new tab in Microsoft Edge or Google Chrome. 
-   1. Select the lock icon next to the website link in the address bar, then **Certificate**, then the **Certification path** tab. 
-   1. Select the top-most certificate in the path, then select the **View Certificate** button. 
-   1. Select the **Details** tab, then the **Copy to File...** button and export the certificate as a .CRT file in base-64 format, for example, **root.crt**.
-
-3. Transfer the certificate to the Edge device using the following script. The script will will:
+2. Transfer the IoT Hub root CA to the Edge device using the following script. The script will:
    - Verify that the Edge device TLS connection is successful.
    - Install the root CA in the Edge device's trusted store.
 
    ```bash
    # verify connection failed first
    # expected response: Verify return code: 2 (unable to get issuer certificate)
-   openssl s_client -connect $IOTHUB_HOSTNAME:443
+   openssl s_client -connect <IOT-HUB-HOSTNAME>:443
    
    # verify connection succeeded when root CA provided
    # expected response: Verify return code: 0 (ok)
-   openssl s_client -connect $IOTHUB_HOSTNAME:443 -CAfile root.crt
+   openssl s_client -connect <IOT-HUB-HOSTNAME>:443 -CAfile <IOT-HUB-ROOT-CA>
    
    # install root CA in the trusted store on Edge device
-   sudo cp root.crt /usr/local/share/ca-certificates/
+   sudo cp <IOT-HUB-ROOT-CA> /usr/local/share/ca-certificates/
    sudo update-ca-certificates
    
    # verify connection succeeded even when no root CA provided
    # expected response: Verify return code: 0 (ok)
-   openssl s_client -connect $IOTHUB_HOSTNAME:443
+   openssl s_client -connect <IOT-HUB-HOSTNAME>:443
    ```
 
 ## Generate device certificates
 
 In this section, you set up the certificate generation tool, then generate the certificates required for the device. Following that, you install, configure, and test the IoT Edge and container runtimes.
 
-Be sure to change all `\<WORK-DIR\>` placeholders to the path to your working directory, for example `/home/edgeadmin/edged1`.
+Be sure to change all script placeholders accordingly for your environment, before running the script:
+
+| Placeholder | Example | Note |
+|-------------|---------|------|
+| `<WORK-DIR>`| `/home/edgeadmin/edged1`| The path to your local working directory. |
+| `<DEVICE-CA-CERT-NAME>` | `edged1cert`| The IoT Edge device CA certificate name. |
+| `<IOT-HUB-ROOT-CA>`| `root.crt`| The name of the IoT Hub root CA you exported in [Create an IoT Hub resource and export its root CA](#create-an-iot-hub-resource-and-export-its-root-ca). |
 
 ### Set up the certificate generation tool
 
@@ -103,7 +135,7 @@ cp /home/edgeadmin/iotedge/tools/CACertificates/certGen.sh .
 
 ### Create a root CA certificate
 
-Now you'll several certificate and key files: 
+Now you'll create several certificate and key files: 
 
 1. Open a Bash command prompt.
 2. Navigate to the working directory where you placed the certificate generation scripts in the previous section.
@@ -128,13 +160,13 @@ To create the IoT Edge device CA certificate files:
    cd <WORK-DIR>
    
    # generate IoT Edge device CA certificate 
-   ./certGen.sh create_edge_device_certificate edged1cert
+   ./certGen.sh create_edge_device_ca_certificate <DEVICE-CA-CERT-NAME>
    ```
 
-2.  Copy the following certificate and key pair files to the IoT Edge device. They will be referenced later in the config.yaml file:
+2.  Copy the following certificate and key pair files to the IoT Edge device. They'll be referenced later in the config.yaml file:
 
-    `<WORK-DIR>/certs/iot-edge-device-edged1cert-full-chain.cert.pem`  
-    `<WORK-DIR>/private/iot-edge-device-edged1cert.key.pem`
+    `<WORK-DIR>/certs/iot-edge-device-<DEVICE-CA-CERT-NAME>-full-chain.cert.pem`  
+    `<WORK-DIR>/private/iot-edge-device-<DEVICE-CA-CERT-NAME>.key.pem`
 
 ### Append the IoT Hub root CA to the device root CA
 
@@ -145,7 +177,7 @@ Run the following script to append the IoT Hub root CA to the device root CA:
 cd /home/edgeadmin
 
 # append IoT Hub root CA to the device root CA
-cat root.crt >> certs/azure-iot-test-only.root.ca.cert.pem
+cat <IOT-HUB-ROOT-CA> >> certs/azure-iot-test-only.root.ca.cert.pem
 ```
 
 ## Install IoT Edge and container runtimes
@@ -229,8 +261,8 @@ cat root.crt >> certs/azure-iot-test-only.root.ca.cert.pem
 
    ```yaml
    certificates:
-     device_ca_cert: "<WORK-DIR>/certs/iot-edge-device-edged1cert-full-chain.cert.pem"
-     device_ca_pk: "<WORK-DIR>/private/iot-edge-device-edged1cert.key.pem"
+     device_ca_cert: "<WORK-DIR>/certs/iot-edge-device-<DEVICE-CA-CERT-NAME>-full-chain.cert.pem"
+     device_ca_pk: "<WORK-DIR>/private/iot-edge-device-<DEVICE-CA-CERT-NAME>.key.pem"
      trusted_ca_certs: "<WORK-DIR>/certs/azure-iot-test-only.root.ca.cert.pem"
    ```
 
