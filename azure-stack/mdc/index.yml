@@ -16,46 +16,97 @@ metadata:
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
 landingContent:
-# Cards and links should be based on top customer tasks or top subjects
-# Start card title with a verb
-  # Card (optional)
-  - title: Deploy the MDC
-    linkLists:
-      - linkListType: deploy
-        links:
-          - text: MDC deployment overview
-            url: deployment-overview.md
-      - linkListType: deploy
-        links:
-          - text: Capacity planner
-            url: azure-stack-capacity-planner.md
+  
+  # Cards and links should be based on top customer tasks or top subjects
+  # Start card title with a verb
 
-  - title: Get started
+  - title: About Azure Modular Data Center
     linkLists:
-      - linkListType: get-started
+      - linkListType: overview
         links:
-          - text: Add an Azure Stack Hub Marketplace item
-            url: ../operator/azure-stack-create-and-publish-marketplace-item.md
-      - linkListType: tutorial
+          - text: What is a Modular Data Center?
+            url: mdc-overview.md
+          - text: Model specifications
+            url: azure-stack-capacity-planning-overview.md
+      - linkListType: whats-new
         links:
-          - text: Offer IaaS services
+          - text: Security updates
+            url: ../operator/release-notes-security-updates.md
+          - text: Release notes
+            url: ../operator/release-notes.md
+
+  - title: Get started with Azure Modular Data Center 
+    linkLists:
+      - linkListType: learn
+        links:
+          - text: Use the Administrator portal 
+            url: ../operator/azure-stack-manage-portals.md
+          - text: Offer a service to users 
             url: ../operator/tutorial-offer-services.md
+          - text: Test a service offering
+            url: ../operator/tutorial-test-offer.md
+      - linkListType: concept
+        links:
+          - text: Compare connection models
+            url: ../operator/azure-stack-connection-models.md
+          - text: Connected deployment 
+            url: ../operator/azure-stack-connected-deployment.md
+          - text: Disconnected deployment  
+            url: ../operator/azure-stack-disconnected-deployment.md
+
+  # Card          
+  - title: Azure Stack Hub tools
+    linkLists:
+      - linkListType: download
+        links:
+          - text: Download Azure Stack Hub tools from GitHub 
+            url: ../operator/azure-stack-powershell-download.md
+          - text: Install Azure Stack PowerShell 
+            url: ../operator/azure-stack-powershell-install.md
+          - text: Use Docker to run PowerShell
+            url: ../user/azure-stack-powershell-user-docker.md
+          - text: Connect with Azure Stack PowerShell
+            url: ../operator/azure-stack-powershell-configure-admin.md
 
   # Card
-  - title: How to use
+  - title: Offer Azure Stack Hub services
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text: Create an offer for a virtual machine
+            url: ../operator/tutorial-offer-services.md
+          - text: Create a highly available MySQL database
+            url: ../operator/azure-stack-tutorial-mysql.md
+          - text: Create apps for any platform
+            url: ../operator/azure-stack-app-service-overview.md
+
+  # Card
+  - title: Manage an Azure Modular Data Center
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Subscribe to an offer
-            url: ../user/azure-stack-subscribe-services.md
-          - text: Create a virtual machine from a template
-            url: ../user/azure-stack-create-vm-template.md
+          - text: Monitor health and alerts 
+            url: operator/azure-stack-monitor-health-tzl.md
+          - text: Install updates and monitor progress
+            url: ../operator/azure-stack-apply-updates.md
+          - text: Best practices for backup and restore 
+            url: operator/azure-stack-backup-best-practices-tzl.md
+
+  # Card
+  - title: Infrastructure-as-a-Service (IaaS) on Azure Stack Hub
+    linkLists:
+      - linkListType: quickstart
+        links:
+          - text: Quickstart - Create a VM
+            url: ../user/azure-stack-quick-linux-portal.md
       - linkListType: how-to-guide
         links:
-          - text: Update firmware
-            url: extended-storage-firmware-updates.md
-          - text: Check health
-            url: extended-storage-health-checks.md
+          - text: Migrate VMs
+            url: ../user/vm-move-overview.md
+          - text: Deploy a VM in IaaS with a template
+            url: ../user/azure-stack-create-vm-template.md
+          - text: Configure a virtual network
+            url: ../user/deploy-foundational-patterns.md
+          - text: Host Apps written in your code
+            url: ../user/azure-stack-dev-start-deploy-app.md
 
-
-  
