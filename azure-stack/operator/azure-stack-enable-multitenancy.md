@@ -3,10 +3,10 @@ title: Configure multi-tenancy in Azure Stack Hub
 description: Learn how to enable and disable multiple Azure Active Directory tenants in Azure Stack Hub.
 author: BryanLa
 ms.topic: how-to
-ms.date: 06/18/2020
+ms.date: 10/16/2020
 ms.author: bryanla
 ms.reviewer: bryanr
-ms.lastreviewed: 06/10/2019
+ms.lastreviewed: 10/16/2020
 
 # Intent: As an Azure Stack operator, I want to configure multi-tenancy so multiple tenants can access my Azure Stack.
 # Keyword: configure multi-tenancy azure stack
@@ -31,8 +31,8 @@ If you're a Cloud Solution Provider (CSP), you have additional ways you can [con
 There are a few prerequisites to account for before you configure multi-tenancy in Azure Stack Hub:
   
  - You and Mary must coordinate administrative steps across both the directory Azure Stack Hub is installed in (Contoso), and the guest directory (Fabrikam).
- - Make sure you've [installed](azure-stack-powershell-install.md) and [configured](azure-stack-powershell-configure-admin.md) PowerShell for Azure Stack Hub.
- - [Download the Azure Stack Hub Tools](azure-stack-powershell-download.md), and import the Identity modules:
+ - Make sure you've [installed](powershell-install-az-module.md) and [configured](azure-stack-powershell-configure-admin.md) PowerShell for Azure Stack Hub.
+ - [Download the Azure Stack Hub Tools](azure-stack-powershell-download.md), and import the Connect and Identity modules:
 
     ```powershell
     Import-Module .\Identity\AzureStack.Identity.psm1
