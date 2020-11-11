@@ -35,7 +35,7 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
 
 1. Run the **Identity** script from Azure Stack Hub Tools in GitHub.
 
-    - Before you run the script, you will need to have PowerShell installed and configured for your environment. For instructions see [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md).
+    - Before you run the script, you will need to have PowerShell installed and configured for your environment. For instructions see [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md).
 
     - For the **Identity** script instructions and script, see [AzureStack-Tools/Identity](https://aka.ms/aa6z611).
 

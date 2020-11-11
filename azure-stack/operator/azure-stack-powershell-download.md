@@ -4,10 +4,10 @@ description: Learn how to download tools required for working with Azure Stack H
 author: mattbriggs
 
 ms.topic: article
-ms.date: 8/28/2020
+ms.date: 10/16/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 8/28/2020
+ms.lastreviewed: 10/16/2020
 
 # Intent: As an Azure Stack operator, I want to download Azure Stack tools from GitHub so I can use them in Azure Stack.
 # Keyword: download azure stack tools
@@ -75,7 +75,7 @@ For more information about using the AzureRM module for Azure Stack Hub, see [In
 
 
 
-For more information about using the Az module for Azure Stack Hub, see [Install PowerShell Az preview module for Azure Stack Hub](powershell-install-az-module.md).
+---
 
 ---
 
@@ -89,7 +89,7 @@ The **AzureStack-Tools** repository has PowerShell modules that support the foll
 | [Resource Manager policy for Azure Stack Hub](../user/azure-stack-policy-module.md) | Use this module to configure an Azure subscription or an Azure resource group with the same versioning and service availability as Azure Stack Hub. | Cloud operators and users |
 | [Register with Azure](azure-stack-registration.md ) | Use this module to register your ASDK instance with Azure. After registering, you can download Azure Marketplace items use them in Azure Stack Hub. | Cloud operators |
 | [Azure Stack Hub deployment](../asdk/asdk-install.md) | Use this module to prepare the Azure Stack Hub host computer to deploy and redeploy by using the Azure Stack Hub virtual hard disk (VHD) image. | Cloud operators|
-| [Connecting to Azure Stack Hub](azure-stack-powershell-install.md) | Use this module to configure VPN connectivity to Azure Stack Hub. | Cloud operators and users |
+| [Connecting to Azure Stack Hub](azure-stack-powershell-configure-admin.md) | Use this module to configure VPN connectivity to Azure Stack Hub. | Cloud operators and users |
 | [Template validator](../user/azure-stack-validate-templates.md) | Use this module to verify if an existing or a new template can be deployed to Azure Stack Hub. | Cloud operators and users|
 
 ## Next steps
