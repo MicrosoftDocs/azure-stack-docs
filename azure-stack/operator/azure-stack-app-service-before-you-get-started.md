@@ -4,10 +4,10 @@ description: Learn the prerequisite steps to complete before you deploy Azure Ap
 author: BryanLa
 
 ms.topic: article
-ms.date: 05/05/2020
+ms.date: 10/28/2020
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 04/13/2019
+ms.lastreviewed: 10/28/2019
 zone_pivot_groups: state-connected-disconnected
 
 # Intent: As an Azure Stack operator, I want to know the prerequisites steps to complete before deploying App Service.
@@ -46,7 +46,7 @@ This section lists the prerequisites for both integrated system and Azure Stack 
 <!-- MultiNode Only --->
 ## Certificates and server configuration (Integrated Systems)
 
-This section lists the prerequisites for integrated system deployments. 
+This section lists the prerequisites for integrated system deployments.
 
 ### Certificate requirements
 
