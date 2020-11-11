@@ -4,7 +4,7 @@ description: Learn about the 1910 security updates for Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 09/17/2020
+ms.date: 11/11/2020
 ms.author: sethm
 ms.reviewer: fiseraci
 ms.lastreviewed: 08/11/2020
