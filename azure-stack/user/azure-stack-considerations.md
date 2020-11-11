@@ -54,7 +54,7 @@ Microsoft provides tools and guidance that help you develop for Azure Stack Hub.
 
 | Recommendation | References |
 | -------- | ------------- |
-| Install the correct tools on your developer workstation. | - [Install PowerShell](../operator/azure-stack-powershell-install.md)<br>- [Download tools](../operator/azure-stack-powershell-download.md)<br>- [Configure PowerShell](azure-stack-powershell-configure-user.md)<br>- [Install Visual Studio](azure-stack-install-visual-studio.md)
+| Install the correct tools on your developer workstation. | - [Install PowerShell](../operator/powershell-install-az-module.md)<br>- [Download tools](../operator/azure-stack-powershell-download.md)<br>- [Configure PowerShell](azure-stack-powershell-configure-user.md)<br>- [Install Visual Studio](azure-stack-install-visual-studio.md)
 | Review information about the following items:<br>- Azure Resource Manager template considerations.<br>- How to find quickstart templates.<br>- Use a policy module to help you use Azure to develop for Azure Stack Hub. | [Develop for Azure Stack Hub](azure-stack-developer.md) |
 | Review and follow the best practices for templates. | [Resource Manager Quickstart Templates](https://aka.ms/aa6yz42)
 | | |
@@ -68,15 +68,15 @@ To make sure that you use a correct version of Azure PowerShell, use [API versio
 > [!NOTE]
 > If you're using the Azure Stack Development Kit, and you have administrative access, see the [Determine the current version](../operator/azure-stack-updates.md) section to determine the Azure Stack Hub build.
 
-For other APIs, run the following PowerShell command to output the namespaces, resource types, and API versions that are supported in your Azure Stack Hub subscription (there may still be differences at a property level). For this command to work, you must have already [installed](../operator/azure-stack-powershell-install.md) and [configured](azure-stack-powershell-configure-user.md) PowerShell for an Azure Stack Hub environment. You must also have a subscription to an Azure Stack Hub offer.
+For other APIs, run the following PowerShell command to output the namespaces, resource types, and API versions that are supported in your Azure Stack Hub subscription (there may still be differences at a property level). For this command to work, you must have already [installed](../operator/powershell-install-az-module.md) and [configured](azure-stack-powershell-configure-user.md) PowerShell for an Azure Stack Hub environment. You must also have a subscription to an Azure Stack Hub offer.
 
 ```powershell
-Get-AzureRmResourceProvider | Select ProviderNamespace -Expand ResourceTypes | Select * -Expand ApiVersions | `
+Get-AzResourceProvider | Select ProviderNamespace -Expand ResourceTypes | Select * -Expand ApiVersions | `
 Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} 
 ```
 
 Example output (truncated):
-![Example output of Get-AzureRmResourceProvider command](media/azure-stack-considerations/image1.png)
+![Example output of Get-AzResourceProvider command](media/azure-stack-considerations/image1.png)
 
 ## Next steps
 

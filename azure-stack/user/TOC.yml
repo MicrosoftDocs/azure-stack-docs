@@ -48,7 +48,7 @@
           - name: Azure Stack Hub PowerShell overview
             href: azure-stack-powershell-overview.md
           - name: Install Azure Stack Hub PowerShell
-            href: ../operator/azure-stack-powershell-install.md?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+            href: ../operator/powershell-install-az-module.md?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
             maintainContext: true
           - name: Connect with PowerShell
             href: azure-stack-powershell-configure-user.md

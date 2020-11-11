@@ -28,7 +28,7 @@ You can store values such as a password as a secret in an Azure Stack Hub key va
 ## Prerequisites
 
 * You must subscribe to an offer that includes the Key Vault service.
-* [Install PowerShell for Azure Stack Hub.](../operator/azure-stack-powershell-install.md)
+* [Install PowerShell for Azure Stack Hub.](../operator/powershell-install-az-module.md)
 * [Configure your PowerShell environment.](azure-stack-powershell-configure-user.md)
 
 The following steps describe the process required to create a VM by retrieving the password stored in a Key Vault:
@@ -51,11 +51,11 @@ $resourceGroup = "contosovaultrg"
 $location = "local"
 $secretName = "MySecret"
 
-New-AzureRmResourceGroup `
+New-AzResourceGroup `
   -Name $resourceGroup `
   -Location $location
 
-New-AzureRmKeyVault `
+New-AzKeyVault `
   -VaultName $vaultName `
   -ResourceGroupName $resourceGroup `
   -Location $location
@@ -110,7 +110,7 @@ Update the `azuredeploy.parameters.json` file with the KeyVault URI, secretName,
 Now deploy the template by using the following PowerShell script:
 
 ```powershell  
-New-AzureRmResourceGroupDeployment `
+New-AzResourceGroupDeployment `
   -Name KVPwdDeployment `
   -ResourceGroupName $resourceGroup `
   -TemplateFile "<Fully qualified path to the azuredeploy.json file>" `
