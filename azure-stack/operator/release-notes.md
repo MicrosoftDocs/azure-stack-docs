@@ -49,7 +49,7 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 ::: moniker range="azs-2008"
 ## 2008 build reference
 
-The Azure Stack Hub 2005 update build number is **1.2008.13.88**.
+The Azure Stack Hub 2008 update build number is **1.2008.13.88**.
 
 ### Update type
 
