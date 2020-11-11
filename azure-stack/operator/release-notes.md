@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/06/2020
+ms.date: 11/10/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -49,7 +49,7 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 ::: moniker range="azs-2008"
 ## 2008 build reference
 
-The Azure Stack Hub 2005 update build number is **1.2008.x.xx**.
+The Azure Stack Hub 2005 update build number is **1.2008.4.xx**.
 
 ### Update type
 
