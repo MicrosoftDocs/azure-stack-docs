@@ -3,7 +3,7 @@ title: Migrate a cluster to Azure Stack HCI
 description: Learn how to migrate a cluster to Azure Stack HCI 
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 11/11/2020 
+ms.date: 11/13/2020 
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -20,7 +20,7 @@ There are several requirements and things to consider before you begin migration
 
 - Make sure you have domain credentials with administrator permissions for both source and destination clusters.
 
-- Check if Azure Stack HCI supports your version of virtual machines (VMs) to import. Azure Stack HCI supports all versions of VMs from Windows Server 2012 R2 (version 5.0) to Azure Stack HCI version 20H2 (version 9.0). Use the PowerShell `Get-VMHostSupportedVersion` and `Get-VM` cmdlets to get VM version information.
+- Check if Azure Stack HCI supports your version of virtual machines (VMs) to import. Azure Stack HCI supports all versions of VMs from Windows Server 2012 R2 (Hyper-V version 5.0) to Azure Stack HCI version 20H2 (Hyper-V version 9.0). Use the PowerShell `Get-VMHostSupportedVersion` and `Get-VM` cmdlets to get VM version information.
 
 - Backup all VMs on your Windows Server cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases.
 
@@ -28,7 +28,9 @@ There are several requirements and things to consider before you begin migration
 
 - Ensure the maximum Jumbo frame sizes are the same between source and destination cluster storage networks - this is typically 9014.
 
-- Remove reference to all ISOs on your source VMs.
+- Remove any references to ISOs for your source VMs.
+
+- Take a checkpoint snapshot of your source cluster (VMs and domain controller) in case you have to roll back to a prior state.
 
 - Shutdown all virtual machines (VMs) on the Windows Server cluster. This is required to ensure version control and state are maintained throughout the migration process.
 
@@ -53,7 +55,7 @@ Use Windows Admin Center or Windows PowerShell to create the new cluster. For in
 
 ## Run the migration script
 
-The following PowerShell script `Robocopy_Remote_Server_.ps1` uses Robocopy to copy files from the source cluster to the destination cluster.
+The following PowerShell script `Robocopy_Remote_Server_.ps1` uses Robocopy to copy files from the source cluster to the destination cluster. This script has been modified from  from the original script on TechNet at: [Robocopy Files to Remote Server Using PowerShell and RoboCopy](https://gallery.technet.microsoft.com/scriptcenter/Robocoy-Files-to-Remote-bdfc5154).
 
 The script creates a folder named `ISO` on the `C:` drive of each destination cluster server node. The script also copies all VHD, VHDX, and VMCX files from the source cluster to your destination cluster for each Cluster Shared Volume (CSV).
 
@@ -65,7 +67,7 @@ The script creates a folder named `ISO` on the `C:` drive of each destination cl
 
     - `$Dest_PC = "destination_cluster_server_node"`
     - `$source  = "C:\Clusterstorage\Volume01"`
-    - `$dest = "\\$Dest_PC\C$\Clusterstorage\Volume01"`
+    - `$dest = "\\$Dest_Server\C$\Clusterstorage\Volume01"`
 
 Here is the script:
 
@@ -77,15 +79,15 @@ Here is the script:
 .DESCRIPTION:
 Change the following variables to match your source cluster VM path with the destination cluster VM path. Then run this script on each source Cluster Node CSV owner and make sure the destination cluster node is set to the CSV owner for the destination CSV.
 
-        Change $Dest_PC = "destination_cluster_server_node"
+        Change $Dest_Server = "destination_cluster_server_node"
         Change $source  = "C:\Clusterstorage\Volume01"
-        Change $dest = "\\$Dest_PC\C$\Clusterstorage\Volume01"
+        Change $dest = "\\$Dest_Server\C$\Clusterstorage\Volume01"
 #>
 
 $Space       = Write-host ""
-$Dest_PC     = "Destination Cluster Node"
-$source      = "C:\ClusterStorage\Volume01"
-$dest        = "\\$Dest_PC\c$\clusterstorage\volume01"
+$Dest_Server = "Destination Cluster Node"
+$source      = "C:\Clusterstorage\Volume01"
+$dest        = "\\$Dest_Server\c$\Clusterstorage\Volume01"
 $Logfile     = "c:\temp\Robocopy1-$date.txt"
 $date        = Get-Date -UFormat "%Y%m%d"
 $cmdArgs     = @("$source","$dest",$what,$options)  
@@ -96,7 +98,7 @@ $options     = @("/E","/MT:32","/R:0","/W:1","/NFL","/NDL","/LOG:$logfile","/xf"
 $startDTM = (Get-Date)
  
 $Dest_PC     = "Destination Cluster Node"
-$TARGETDIR   = \\$Dest_PC\c$\clusterstorage\volume01
+$TARGETDIR   = \\$Dest_Server\c$\Clusterstorage\Volume01
 $Space
 Clear
 ## Provide Information
@@ -113,32 +115,32 @@ $endDTM = (Get-Date)
 $Time = "Elapsed Time: = $(($endDTM-$startDTM).totalminutes) minutes"  
 ## Provide time it took
 Write-host ""
-Write-host " Copy Virtual Machines to $Dest_PC has been completed......" -fore Green -back black
-Write-host " Copy Virtual Machines to $Dest_PC took $Time        ......" -fore Cyan
+Write-host " Copy Virtual Machines to $Dest_Server has been completed......" -fore Green -back black
+Write-host " Copy Virtual Machines to $Dest_Server took $Time        ......" -fore Cyan
 ```
 
 ## Post-migration tasks
 
 After the script has completed for each server node, you will have an even distribution of CSVs by default. After a few minutes, these will balance on each destination server node. For example, with four nodes and four CSVs, each node will own one CSV. Perform the following steps on your Azure Stack HCI cluster:
 
-1. Run the following cmdlet to show all CSVs and node owners:
+1. Run the following cmdlet to show all CSV owner nodes:
 
     ```powershell
     Get-ClusterSharedVolume
     ```
 
-1. For each server node, go to `C:\Clusterstorage\Volume` and set the path for all VMs - for example `C:\ClusterStorage\volume01`.
+1. For each server node, go to `C:\Clusterstorage\Volume` and set the path for all VMs - for example `C:\Clusterstorage\volume01`.
 
 1. Run the following cmdlet on each CSV owner node to ensure the path is found to all VMCX files per volume. Modify the path to match your environment:
 
     ```powershell
-    Get-ChildItem -Path "c:\clusterstorage\volume01\*.vmcx"-Recurse
+    Get-ChildItem -Path "C:\Clusterstorage\Volume01\*.vmcx" -Recurse
     ```
 
-1. Run the following cmdlet to import and register all VMs and make them highly available on each CSV owner node. This ensures an even distribution of VMs for optimal processor and memory:
+1. Run the following cmdlet to import and register all VMs and make them highly available on each CSV owner node. This ensures an even distribution of VMs for optimal processor and memory allocation:
 
     ```powershell
-    Get-ChildItem -Path "c:\clusterstorage\volume01\*.vmcx" -Recurse    | Import-VM -Register | Get-VM | Add-ClusterVirtualMachineRole 
+    Get-ChildItem -Path "C:\Clusterstorage\Volume01\*.vmcx" -Recurse | Import-VM -Register | Get-VM | Add-ClusterVirtualMachineRole 
     ```
 
 ## Next steps
