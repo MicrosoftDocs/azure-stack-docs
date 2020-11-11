@@ -72,6 +72,10 @@ peering, it does not create any user-defined routes or network virtual appliance
 
 You can't use remote gateways if you already have a gateway configured in your virtual network.
 
+### Permissions
+
+Please ensure that when creating peerings with VNETs in different subscriptions and Azure AD tenants, the accounts have the **Contributor** role is assigned. Additionally, a user interface capability for peering between different Azure AD tenants is not available. You can use Azure CLI and PowerShell to create the peerings.
+
 ## Virtual network peering frequently asked questions (FAQ)
 
 ### What is Virtual network peering?
