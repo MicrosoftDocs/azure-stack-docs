@@ -82,8 +82,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Implemented internal monitoring for Network Controller and SLB host agents, so the services are auto-remediated if they ever enter into a stopped state.
 - Active Directory Federation Services (AD FS) now retrieves the new token signing certificate afer the customer has rotated it on their own AD FS server. To take advantage of this new capability for already configured systems, the AD FS integration must be configured again. For more information, see [Integrate AD FS identity with your Azure Stack Hub datacenter](azure-stack-integrate-identity.md).
 - Changes to the startup and shutdown process on infrastructure role instances and their dependencies on scale unit nodes. This increases the reliability for Azure Stack Hub startup and shutdown.
--The **AzSScenarios** suite of the **Test-AzureStack** validation tool has been updated to enable Cloud Service Providers to run this suite successfully with multi-factor authentication enforced on all customer accounts.
--Improved **alert reliability** by adding suppression logic for **29 customer facing alerts** during life-cycle operations.
+- The **AzSScenarios** suite of the **Test-AzureStack** validation tool has been updated to enable Cloud Service Providers to run this suite successfully with multi-factor authentication enforced on all customer accounts.
+- Improved alert reliability by adding suppression logic for 29 customer facing alerts during lifecycle operations.
 
 ### Changes
 
