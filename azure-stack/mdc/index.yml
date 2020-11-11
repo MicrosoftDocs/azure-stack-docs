@@ -98,3 +98,16 @@ landingContent:
           - text: Host Apps written in your code
             url: ../user/azure-stack-dev-start-deploy-app.md
 
+  # Card
+  - title: Offer Azure Stack Hub services
+    linkLists:
+      - linkListType: tutorial
+        links:
+          - text: Create an offer for a virtual machine
+            url: ../operator/tutorial-offer-services.md
+      - linkListType: how-to-guide
+        links:
+          - text: Create a highly available MySQL database
+            url: ../operator/azure-stack-tutorial-mysql.md
+          - text: Create apps for any platform
+            url: ../operator/azure-stack-app-service-overview.md
