@@ -4,7 +4,7 @@ description: Create disks for virtual machines in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 11/11/2020
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
@@ -21,7 +21,7 @@ This article describes how to create virtual machine (VM) disk storage by using 
 
 ## Overview
 
-Beginning with version 1808, Azure Stack Hub supports the use of managed disks and unmanaged disks in VMs, as both an operating system (OS) and a data disk. Before version 1808, only unmanaged disks are supported.
+Azure Stack Hub supports the use of managed disks and unmanaged disks in VMs, as both an operating system (OS) and a data disk.
 
 [Managed disks](/azure/virtual-machines/windows/managed-disks-overview) simplify disk management for Azure IaaS VMs by managing the storage accounts associated with the VM disks. You only have to specify the size of disk you need, and Azure Stack Hub creates and manages the disk for you.
 
@@ -57,12 +57,9 @@ After you create a VM, you can use the portal to:
 
 Put each unmanaged disk you add into a separate container.
 
-> [!NOTE]  
-> Disks created and managed by Azure are called [managed disks](/azure/virtual-machines/windows/managed-disks-overview).
-
 ### Use the portal to create and attach a new data disk
 
-1. In the portal, select **All services**, then **Virtual machines**.
+1. In the portal, select **All services**, then **Compute**, then **Virtual machines**.
    ![Example: VM dashboard](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
 2. Select a VM that has previously been created.
@@ -71,7 +68,7 @@ Put each unmanaged disk you add into a separate container.
 3. For the VM, select **Disks**, then **Add data disk**.
    ![Screenshot that shows how to attach a new disk to the VM.](media/azure-stack-manage-vm-disks/Attach-disks.png)
 
-4. For the Data disk:
+4. For the data disk:
    * Enter the **LUN**. The LUN must be a valid number.
    * Select **Create disk**.
    ![Screenshot that shows how to create a new data disk.](media/azure-stack-manage-vm-disks/add-a-data-disk-create-disk.png)
