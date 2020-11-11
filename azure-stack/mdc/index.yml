@@ -54,6 +54,18 @@ landingContent:
           - text: Disconnected deployment  
             url: ../operator/azure-stack-disconnected-deployment.md
 
+  # Card
+  - title: Manage an Azure Modular Data Center
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Monitor health and alerts 
+            url: operator/azure-stack-monitor-health-tzl.md
+          - text: Install updates and monitor progress
+            url: ../operator/azure-stack-apply-updates.md
+          - text: Best practices for backup and restore 
+            url: operator/azure-stack-backup-best-practices-tzl.md
+
   # Card          
   - title: Azure Stack Hub tools
     linkLists:
@@ -67,30 +79,6 @@ landingContent:
             url: ../user/azure-stack-powershell-user-docker.md
           - text: Connect with Azure Stack PowerShell
             url: ../operator/azure-stack-powershell-configure-admin.md
-
-  # Card
-  - title: Offer Azure Stack Hub services
-    linkLists:
-      - linkListType: deploy
-        links:
-          - text: Create an offer for a virtual machine
-            url: ../operator/tutorial-offer-services.md
-          - text: Create a highly available MySQL database
-            url: ../operator/azure-stack-tutorial-mysql.md
-          - text: Create apps for any platform
-            url: ../operator/azure-stack-app-service-overview.md
-
-  # Card
-  - title: Manage an Azure Modular Data Center
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Monitor health and alerts 
-            url: operator/azure-stack-monitor-health-tzl.md
-          - text: Install updates and monitor progress
-            url: ../operator/azure-stack-apply-updates.md
-          - text: Best practices for backup and restore 
-            url: operator/azure-stack-backup-best-practices-tzl.md
 
   # Card
   - title: Infrastructure-as-a-Service (IaaS) on Azure Stack Hub
