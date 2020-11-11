@@ -194,5 +194,5 @@ The Storage Resource Provider (SRP) lets you manage your storage account and key
 
 ## Next steps
 
-- [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md)
+- [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md)
 - [Configure the Azure Stack Hub PowerShell environment](azure-stack-powershell-configure-user.md)  

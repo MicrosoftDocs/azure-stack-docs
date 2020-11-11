@@ -15,7 +15,7 @@ ms.lastreviewed: 09/19/2019
 ---
 
 
-# How to set up a multiple site-to-site VPN tunnel in Azure Stack Hub
+# How to set up multiple site-to-site VPN tunnels in Azure Stack Hub
 
 This article shows you how to use an Azure Stack Hub Resource Manager template to deploy the solution. The solution creates multiple resource groups with associated virtual networks and how to connect these systems.
 

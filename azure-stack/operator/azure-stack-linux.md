@@ -109,7 +109,7 @@ Currently, using cloud-init for VM deployment is only supported on REST, Powersh
 You can follow [these instructions](../user/azure-stack-quick-create-vm-linux-powershell.md) to create the Linux VM using PowerShell, but make sure to reference the cloud-init.txt as a part of the `-CustomData` flag:
 
 ```powershell
-$VirtualMachine =Set-AzureRmVMOperatingSystem -VM $VirtualMachine `
+$VirtualMachine =Set-AzVMOperatingSystem -VM $VirtualMachine `
   -Linux `
   -ComputerName "MainComputer" `
   -Credential $cred -CustomData "#include https://cloudinitstrg.blob.core.windows.net/strg/cloud-init.txt"

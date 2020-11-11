@@ -31,7 +31,7 @@ There are two types of *Owners* that are assigned to a subscription:
 
 ## Change the billing owner
 
-Run the following script to change the billing owner of a user subscription. The computer that you use to run the script must connect to Azure Stack Hub and run the Azure Stack Hub PowerShell module 1.3.0 or later. For more information, see [Install Azure Stack Hub PowerShell](azure-stack-powershell-install.md).
+Run the following script to change the billing owner of a user subscription. The computer that you use to run the script must connect to Azure Stack Hub and run the Azure Stack Hub PowerShell module 1.3.0 or later. For more information, see [Install Azure Stack Hub PowerShell](powershell-install-az-module.md).
 
 >[!NOTE]
 >In a multi-tenant Azure Stack Hub, the new owner must be in the same directory as the existing owner. Before you can provide ownership of the subscription to a user that's in another directory, you must first [invite that user as a guest into your directory](/azure/active-directory/b2b/add-users-administrator).
@@ -45,13 +45,13 @@ Replace the following values in the script before it runs:
 
 ```powershell
 # Set up Azure Stack Hub admin environment
-Add-AzureRmEnvironment -ARMEndpoint $ArmEndpoint -Name AzureStack-admin
-Add-AzureRmAccount -Environment AzureStack-admin -TenantId $TenantId
+Add-AzEnvironment -ARMEndpoint $ArmEndpoint -Name AzureStack-admin
+Add-AzAccount -Environment AzureStack-admin -TenantId $TenantId
 
 # Select admin subscription
-$providerSubscriptionId = (Get-AzureRmSubscription -SubscriptionName "Default Provider Subscription").Id
+$providerSubscriptionId = (Get-AzSubscription -SubscriptionName "Default Provider Subscription").Id
 Write-Output "Setting context to the Default Provider Subscription: $providerSubscriptionId"
-Set-AzureRmContext -Subscription $providerSubscriptionId
+Set-AzContext -Subscription $providerSubscriptionId
 
 # Change user subscription owner
 $subscription = Get-AzsUserSubscription -SubscriptionId $SubscriptionId

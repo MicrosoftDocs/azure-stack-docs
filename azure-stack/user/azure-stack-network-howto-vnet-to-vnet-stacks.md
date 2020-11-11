@@ -15,7 +15,7 @@ ms.lastreviewed: 10/03/2019
 ---
 
 
-# Establish a VNET to VNET connection in Azure Stack Hub with Fortinet FortiGate NVA
+# VNet to VNet connectivity between Azure Stack Hub instances with Fortinet FortiGate NVA
 
 In this article, you'll connect a VNET in one Azure Stack Hub to a VNET in another Azure Stack Hub using Fortinet FortiGate NVA, a network virtual appliance.
 
