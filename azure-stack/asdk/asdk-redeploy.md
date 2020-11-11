@@ -24,7 +24,7 @@ In this article, you'll learn how to redeploy the Azure Stack Development Kit (A
 ## Remove Azure registration 
 If you've previously registered your ASDK installation with Azure, you should remove the registration resource before redeploying the ASDK. Re-register the ASDK to enable the availability of items in the marketplace when you redeploy the ASDK. If you haven't previously registered the ASDK with your Azure subscription, you can skip this section.
 
-To remove the registration resource, use the **Remove-AzsRegistration** cmdlet to unregister Azure Stack. Then, use the **Remove-AzureRMResourceGroup** cmdlet to delete the Azure Stack resource group from your Azure subscription:
+To remove the registration resource, use the **Remove-AzsRegistration** cmdlet to unregister Azure Stack. Then, use the **Remove-AzResourceGroup** cmdlet to delete the Azure Stack resource group from your Azure subscription:
 
 1. Open a PowerShell console as an admin on a computer that has access to the privileged endpoint. For the ASDK, that's the ASDK host computer.
 
@@ -32,10 +32,10 @@ To remove the registration resource, use the **Remove-AzsRegistration** cmdlet t
 
    ```powershell    
    #Import the registration module that was downloaded with the GitHub tools
-   Import-Module C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1
+   Import-Module C:\AzureStack-Tools-az\Registration\RegisterWithAzure.psm1
 
    # Provide Azure subscription admin credentials
-   Add-AzureRmAccount
+   Add-AzAccount
 
    # Provide ASDK admin credentials
    $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the cloud domain credentials to access the privileged endpoint"
@@ -47,7 +47,7 @@ To remove the registration resource, use the **Remove-AzsRegistration** cmdlet t
       -RegistrationName $RegistrationName
 
    # Remove the Azure Stack resource group
-   Remove-AzureRmResourceGroup -Name azurestack -Force
+   Remove-AzResourceGroup -Name azurestack -Force
    ```
 
 3. You're prompted to sign in to both your Azure subscription and the local ASDK installation when the script runs.

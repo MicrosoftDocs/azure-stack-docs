@@ -4,10 +4,10 @@ description: Establish the requirements for running the ASK Engine on your Azure
 author: mattbriggs
 
 ms.topic: article
-ms.date: 09/08/2020
+ms.date: 10/16/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/08/2020
+ms.lastreviewed: 10/16/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -46,8 +46,8 @@ You can set the following items.
 | Private Public key | To use an open SSH connection from your development machine to the server VM in your Azure Stack Hub instance that hosts your web app, you need to create a Secure Shell (SSH) public and private key pair. | Required | For instructions on generating a key, see [SSH Key Generation](./azure-stack-dev-start-howto-ssh-public-key.md).|
 
 
-> [!NOTE]  
-> You can also create the prerequisites for the AKS engine with [Azure CLI for Azure Stack Hub](./azure-stack-version-profiles-azurecli2.md) or [Azure Stack Hub PowerShell](../operator/azure-stack-powershell-install.md).
+> [!Note]  
+> You can also create the prerequisites for the AKS engine with [Azure CLI for Azure Stack Hub](./azure-stack-version-profiles-azurecli2.md) or [Azure Stack Hub PowerShell](../operator/powershell-install-az-module.md).
 
 ## Matching engine to base image version
 

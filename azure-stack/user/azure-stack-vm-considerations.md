@@ -76,9 +76,9 @@ Azure Stack Hub includes a small set of extensions. Updates and additional exten
 Use the following PowerShell script to get the list of VM extensions that are available in your Azure Stack Hub environment:
 
 ```powershell
-Get-AzureRmVmImagePublisher -Location local | `
-  Get-AzureRmVMExtensionImageType | `
-  Get-AzureRmVMExtensionImage | `
+Get-AzVmImagePublisher -Location local | `
+  Get-AzVMExtensionImageType | `
+  Get-AzVMExtensionImage | `
   Select Type, Version | `
   Format-Table -Property * -AutoSize
 ```
@@ -97,7 +97,7 @@ VM features in Azure Stack Hub support the following API versions:
 You can use the following PowerShell script to get the API versions for the VM features that are available in your Azure Stack Hub environment:
 
 ```powershell
-Get-AzureRmResourceProvider | `
+Get-AzResourceProvider | `
   Select ProviderNamespace -Expand ResourceTypes | `
   Select * -Expand ApiVersions | `
   Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} | `
