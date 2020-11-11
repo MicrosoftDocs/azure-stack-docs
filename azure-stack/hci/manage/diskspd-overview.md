@@ -4,7 +4,7 @@ description: This topic provides guidance on how to use DISKSPD to test workload
 author: jasonnyi
 ms.author: jasonyi
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 11/11/2020
 ---
 
 # Use DISKSPD to test workload storage performance
@@ -40,6 +40,13 @@ Without further ado, let’s get started:
      ```powershell
      $client.DownloadFile("https://github.com/Microsoft/diskspd/releases/download/v2.0.21a/DiskSpd-2.0.21a.zip","<ENTER_PATH>\DiskSpd-2.0.21a.zip")
     ```
+
+1. Use the following command to unzip the downloaded file:
+
+     ```powershell
+     Expand-Archive -LiteralPath <ENTERPATH>\DiskSpd-2.0.21a.zip -DestinationPath C:\DISKSPD
+    ```
+
 1. Change directory to the DISKSPD directory and locate the appropriate executable file for the Windows operating system that the target computer is running.
 
     In this example, we're using the amd64 version.
