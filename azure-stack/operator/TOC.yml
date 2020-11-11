@@ -319,6 +319,8 @@
           href: app-service-remove.md
       - name: Release notes
         items:
+        - name: 2020 Q3 release notes [September 2020]
+          href: app-service-release-notes-2020-Q3.md
         - name: 2020 Q2 release notes [May2020]
           href: app-service-release-notes-2020-Q2.md
         - name: Update 8 release notes [Jan2020]

@@ -4,10 +4,10 @@ description: Learn how to install PowerShell for Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 10/22/2020
+ms.date: 11/11/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/22/2020
+ms.lastreviewed: 11/11/2020
 
 # Intent: As an Azure Stack operator, I want to install Powershell Az for Azure Stack.
 # Keyword: install powershell azure stack Az
@@ -78,6 +78,8 @@ The Azure Stack Az module will work Azure Stack Hub 2002 or later. In addition, 
 Run the following command from a PowerShell session:
 
 ```powershell  
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
 Install-Module -Name Az.BootStrapper -Force -AllowPrerelease
 Install-AzProfile -Profile 2019-03-01-hybrid -Force
 Install-Module -Name AzureStack -RequiredVersion 2.0.2-preview -AllowPrerelease
@@ -111,6 +113,7 @@ Azure Stack Hub 2002 or later.
 You could either use Azure Resource Modules or Az modules. For Azure Resource Modules, see the instructions at [Install PowerShell AzureRM module](powershell-install-az-module.md). The following code saves modules from trustworthy online repository https://www.powershellgallery.com/.
 
 ```powershell
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 Install-module -Name PowerShellGet -MinimumVersion 2.2.3 -Force
 Import-Module -Name PackageManagement -ErrorAction Stop
@@ -145,6 +148,8 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
    $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
    $RepoName = "MyNuGetSource"
+
+   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
    Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
 
