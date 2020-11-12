@@ -4,10 +4,10 @@ description: Learn the prerequisite steps to complete before you deploy Azure Ap
 author: BryanLa
 
 ms.topic: article
-ms.date: 05/05/2020
+ms.date: 10/28/2020
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 04/13/2019
+ms.lastreviewed: 10/28/2019
 zone_pivot_groups: state-connected-disconnected
 
 # Intent: As an Azure Stack operator, I want to know the prerequisites steps to complete before deploying App Service.
@@ -27,7 +27,7 @@ This section lists the prerequisites for both integrated system and Azure Stack 
 
 ### Resource provider prerequisites
 
-[!INCLUDE [Common RP prerequisites](../includes/marketplace-resource-provider-prerequisites.md)]
+[!INCLUDE [Common RP prerequisites](../includes/resource-provider-prerequisites.md)]
 
 ### Installer and helper scripts
 
@@ -46,7 +46,7 @@ This section lists the prerequisites for both integrated system and Azure Stack 
 <!-- MultiNode Only --->
 ## Certificates and server configuration (Integrated Systems)
 
-This section lists the prerequisites for integrated system deployments. 
+This section lists the prerequisites for integrated system deployments.
 
 ### Certificate requirements
 
@@ -377,7 +377,7 @@ Follow these steps to create the service principal in your Azure AD tenant:
 
 1. Open a PowerShell instance as azurestack\AzureStackAdmin.
 1. Go to the location of the scripts that you downloaded and extracted in the [prerequisite step](azure-stack-app-service-before-you-get-started.md).
-1. [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
+1. [Install PowerShell for Azure Stack Hub](powershell-install-az-module.md).
 1. Run the **Create-AADIdentityApp.ps1** script. When you're prompted, enter the Azure AD tenant ID that you're using for your Azure Stack Hub deployment. For example, enter **myazurestack.onmicrosoft.com**.
 1. In the **Credential** window, enter your Azure AD service admin account and password. Select **OK**.
 1. Enter the certificate file path and certificate password for the [certificate created earlier](azure-stack-app-service-before-you-get-started.md). The certificate created for this step by default is **sso.appservice.local.azurestack.external.pfx**.
@@ -409,7 +409,7 @@ Follow these steps to create the service principal in your Azure AD tenant:
 
 1. Open a PowerShell instance as azurestack\AzureStackAdmin.
 1. Go to the location of the scripts that you downloaded and extracted in the [prerequisite step](azure-stack-app-service-before-you-get-started.md).
-1. [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
+1. [Install PowerShell for Azure Stack Hub](powershell-install-az-module.md).
 1. Run the **Create-ADFSIdentityApp.ps1** script.
 1. In the **Credential** window, enter your AD FS cloud admin account and password. Select **OK**.
 1. Provide the certificate file path and certificate password for the [certificate created earlier](azure-stack-app-service-before-you-get-started.md). The certificate created for this step by default is **sso.appservice.local.azurestack.external.pfx**.

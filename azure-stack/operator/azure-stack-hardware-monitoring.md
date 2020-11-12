@@ -3,7 +3,7 @@ title: Monitor hardware health in Azure Stack Hub
 description: Learn how to monitor the health of Azure Stack Hub hardware components.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 06/15/2020
+ms.date: 10/01/2020
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 11/21/2019
@@ -25,7 +25,7 @@ The Azure Stack Hub health and monitoring system monitors the status of the stor
 - Boot drives
 
 > [!NOTE]
-> Before you enable this feature, you must validate with your hardware partner that they're ready. Your hardware partner will also provide the detailed steps for enabling this feature in the baseboard management controller (BMC).
+> Before you enable this feature, you must validate with your hardware partner that they're ready. Your hardware partner will also provide the detailed steps for enabling this feature in the baseboard management controller (BMC). The user encryption in the base board management controller must be set to AES for build 2005 and later. 
 
 ## SNMP listener scenario
 

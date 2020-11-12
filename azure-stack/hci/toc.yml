@@ -8,6 +8,8 @@
     href: known-issues.md
   - name: Release notes
     href: release-notes.md
+  - name: FAQ
+    href: faq.md
 - name: Get started
   items:
   - name: Use Azure Stack HCI with Windows Admin Center
@@ -16,22 +18,22 @@
   items:
   - name: Deployment overview
     href: deploy/deployment-overview.md
-  - name: Before you begin
-    href: deploy/before-you-start.md
   - name: Deploy the Azure Stack HCI OS
     href: deploy/operating-system.md
   - name: Create the cluster
     href: deploy/create-cluster.md
-  - name: Create the cluster with PowerShell
-    href: deploy/create-cluster-powershell.md
   - name: Set up a cluster witness
     href: deploy/witness.md
   - name: Register with Azure
     href: deploy/register-with-azure.md
   - name: Validate the cluster
     href: deploy/validate.md
-  - name: Deploy Network Controller
-    href: deploy/network-controller-powershell.md
+  - name: Deploy with PowerShell
+    items:
+    - name: Create a cluster with PowerShell
+      href: deploy/create-cluster-powershell.md
+    - name: Deploy Network Controller with PowerShell
+      href: deploy/network-controller-powershell.md
 - name: Manage
   items:
   - name: Manage VMs
@@ -60,6 +62,8 @@
       href: manage/replace-drives.md
     - name: Use the CSV in-memory read cache
       href: manage/use-csv-cache.md
+    - name: Manage SMB Multichannel
+      href: manage/manage-smb-multichannel.md
   - name: Manage the cluster
     items:
     - name: Manage the cluster
@@ -72,10 +76,14 @@
       href: manage/monitor-cluster.md
     - name: Add or remove servers
       href: manage/add-cluster.md
+    - name: Take a server offline for maintenance
+      href: manage/maintain-servers.md
     - name: Manage Azure registration
       href: manage/manage-azure-registration.md
     - name: Change languages
       href: manage/languages.md
+    - name: Change privacy settings
+      href: manage/change-privacy-settings.md
     - name: Troubleshoot cluster validation reporting
       href: manage/validate-qos.md
     - name: Troubleshoot CredSSP
@@ -96,34 +104,56 @@
       href: manage/use-azure-network-adapter.md
 - name: Concepts
   items:
-  - name: Stretched clusters
-    href: concepts/stretched-clusters.md
-  - name: Billing
-    href: concepts/billing.md
-  - name: Updates and upgrades
-    href: concepts/updates.md
-  - name: Choose drives
-    href: concepts/choose-drives.md
-  - name: Drive symmetry considerations
-    href: concepts/drive-symmetry-considerations.md
-  - name: Plan volumes
-    href: concepts/plan-volumes.md
-  - name: Software defined networking
-    href: concepts/software-defined-networking.md
-  - name: Understand the storage pool cache
-    href: concepts/cache.md
-  - name: Fault tolerance and storage efficiency
-    href: concepts/fault-tolerance.md
-  - name: Cluster and storage pool quorum
-    href: concepts/quorum.md
-  - name: Plan a SDN infrastructure
-    href: concepts/plan-software-defined-networking-infrastructure.md
-  - name: Network Controller
-    href: concepts/network-controller.md
-  - name: Security considerations
-    href: concepts/security.md
+  - name: Storage and clusters
+    items:
+    - name: System requirements
+      href: concepts/system-requirements.md
+    - name: Choose drives
+      href: concepts/choose-drives.md
+    - name: Drive symmetry considerations
+      href: concepts/drive-symmetry-considerations.md
+    - name: Plan volumes
+      href: concepts/plan-volumes.md
+    - name: Understand the storage pool cache
+      href: concepts/cache.md
+    - name: Fault tolerance and storage efficiency
+      href: concepts/fault-tolerance.md
+    - name: Stretched clusters
+      href: concepts/stretched-clusters.md
+    - name: Cluster and storage pool quorum
+      href: concepts/quorum.md
+  - name: Networking
+    items:
+    - name: Plan host networking
+      href: concepts/plan-host-networking.md
+    - name: Software Defined Networking (SDN)
+      href: concepts/software-defined-networking.md
+    - name: Plan a SDN infrastructure
+      href: concepts/plan-software-defined-networking-infrastructure.md
+    - name: Network Controller overview
+      href: concepts/network-controller-overview.md
+    - name: Plan Network Controller
+      href: concepts/network-controller.md
+    - name: Software Load Balancer overview
+      href: concepts/software-load-balancer.md
+    - name: RAS Gateway overview
+      href: concepts/gateway-overview.md
+    - name: Route Reflector overview
+      href: concepts/route-reflector-overview.md
+  - name: Maintenance and security
+    items:
+    - name: Billing
+      href: concepts/billing.md
+    - name: Updates and upgrades
+      href: concepts/updates.md
+    - name: Security considerations
+      href: concepts/security.md
 - name: Reference
   items:
+  - name: Azure registration Azure CLI commands
+    href: https://docs.microsoft.com/cli/azure/ext/stack-hci/stack-hci
+  - name: Azure registration PowerShell commands
+    href: https://docs.microsoft.com/powershell/module/az.stackhci
   - name: Hyper-V PowerShell commands
     href: /powershell/module/hyper-v
   - name: Storage PowerShell commands
@@ -142,6 +172,8 @@
     href: /powershell/module/dcbqos
 - name: Related
   items:
+  - name: Azure Kubernetes Service on Azure Stack HCI
+    href: ../aks-hci/overview.md
   - name: Azure Stack family
     href: ../index.yml
   - name: Azure hybrid cloud
@@ -161,4 +193,4 @@
   - name: Azure Stack HCI Eval Guide
     href: https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md
   - name: Azure Stack HCI pricing
-    href: https://azure.microsoft.com/en-us/pricing/details/azure-stack/hci/
+    href: https://azure.microsoft.com/pricing/details/azure-stack/hci/

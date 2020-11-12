@@ -4,7 +4,7 @@ description: Learn how to connect virtual networks in Azure Stack Hub to virtual
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 10/20/2020
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/22/2019
@@ -597,8 +597,6 @@ If you want to know how much traffic is passing through your connection, you can
 1. Navigate to the resource group for your VPN Gateway and select the **Connection** object type.
 1. Select the **ConnectToAzure** connection from the list.
 1. Under **Connections** > **Overview**, you can see statistics for **Data in** and **Data out**. You should see some non-zero values.
-
-   ![Data In and Data Out](media/azure-stack-connect-expressroute/DataInDataOut.png)
 
 ## Next steps
 

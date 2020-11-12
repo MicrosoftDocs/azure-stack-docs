@@ -31,7 +31,7 @@ You can create a Windows Server 2016 virtual machine (VM) by using Azure Stack H
 
 * Make sure that your Azure Stack Hub operator has added the **Windows Server 2016** image to the Azure Stack Hub Marketplace.
 
-* Azure Stack Hub requires a specific version of Azure PowerShell to create and manage the resources. If you don't have PowerShell configured for Azure Stack Hub, follow the steps to [install](../operator/azure-stack-powershell-install.md) PowerShell.
+* Azure Stack Hub requires a specific version of Azure PowerShell to create and manage the resources. If you don't have PowerShell configured for Azure Stack Hub, follow the steps to [install](../operator/powershell-install-az-module.md) PowerShell.
 
 * With the Azure Stack Hub PowerShell set up, you'll need to connect to your Azure Stack Hub environment. For instruction, see [Connect to Azure Stack Hub with PowerShell as a user](azure-stack-powershell-configure-user.md).
 
@@ -47,7 +47,7 @@ A resource group is a logical container into which Azure Stack Hub resources are
 $location = "local"
 $ResourceGroupName = "myResourceGroup"
 
-New-AzureRmResourceGroup `
+New-AzResourceGroup `
   -Name $ResourceGroupName `
   -Location $location
 ```
@@ -62,13 +62,13 @@ $StorageAccountName = "mystorageaccount"
 $SkuName = "Standard_LRS"
 
 # Create a new storage account
-$StorageAccount = New-AzureRMStorageAccount `
+$StorageAccount = New-AzStorageAccount `
   -Location $location `
   -ResourceGroupName $ResourceGroupName `
   -Type $SkuName `
   -Name $StorageAccountName
 
-Set-AzureRmCurrentStorageAccount `
+Set-AzCurrentStorageAccount `
   -StorageAccountName $storageAccountName `
   -ResourceGroupName $resourceGroupName
 
@@ -80,12 +80,12 @@ Create a virtual network, subnet, and a public IP address. These resources are u
 
 ```powershell
 # Create a subnet configuration
-$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfig = New-AzVirtualNetworkSubnetConfig `
   -Name mySubnet `
   -AddressPrefix 192.168.1.0/24
 
 # Create a virtual network
-$vnet = New-AzureRmVirtualNetwork `
+$vnet = New-AzVirtualNetwork `
   -ResourceGroupName $ResourceGroupName `
   -Location $location `
   -Name MyVnet `
@@ -93,7 +93,7 @@ $vnet = New-AzureRmVirtualNetwork `
   -Subnet $subnetConfig
 
 # Create a public IP address and specify a DNS name
-$pip = New-AzureRmPublicIpAddress `
+$pip = New-AzPublicIpAddress `
   -ResourceGroupName $ResourceGroupName `
   -Location $location `
   -AllocationMethod Static `
@@ -107,7 +107,7 @@ The network security group secures the VM by using inbound and outbound rules. L
 
 ```powershell
 # Create an inbound network security group rule for port 3389
-$nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig `
+$nsgRuleRDP = New-AzNetworkSecurityRuleConfig `
   -Name myNetworkSecurityGroupRuleRDP `
   -Protocol Tcp `
   -Direction Inbound `
@@ -119,7 +119,7 @@ $nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig `
   -Access Allow
 
 # Create an inbound network security group rule for port 80
-$nsgRuleWeb = New-AzureRmNetworkSecurityRuleConfig `
+$nsgRuleWeb = New-AzNetworkSecurityRuleConfig `
   -Name myNetworkSecurityGroupRuleWWW `
   -Protocol Tcp `
   -Direction Inbound `
@@ -131,7 +131,7 @@ $nsgRuleWeb = New-AzureRmNetworkSecurityRuleConfig `
   -Access Allow
 
 # Create a network security group
-$nsg = New-AzureRmNetworkSecurityGroup `
+$nsg = New-AzNetworkSecurityGroup `
   -ResourceGroupName $ResourceGroupName `
   -Location $location `
   -Name myNetworkSecurityGroup `
@@ -144,7 +144,7 @@ The network card connects the VM to a subnet, network security group, and public
 
 ```powershell
 # Create a virtual network card and associate it with public IP address and NSG
-$nic = New-AzureRmNetworkInterface `
+$nic = New-AzNetworkInterface `
   -Name myNic `
   -ResourceGroupName $ResourceGroupName `
   -Location $location `
@@ -166,17 +166,17 @@ $Credential=New-Object PSCredential($UserName,$Password)
 # Create the VM configuration object
 $VmName = "VirtualMachinelatest"
 $VmSize = "Standard_A1"
-$VirtualMachine = New-AzureRmVMConfig `
+$VirtualMachine = New-AzVMConfig `
   -VMName $VmName `
   -VMSize $VmSize
 
-$VirtualMachine = Set-AzureRmVMOperatingSystem `
+$VirtualMachine = Set-AzVMOperatingSystem `
   -VM $VirtualMachine `
   -Windows `
   -ComputerName "MainComputer" `
   -Credential $Credential -ProvisionVMAgent
 
-$VirtualMachine = Set-AzureRmVMSourceImage `
+$VirtualMachine = Set-AzVMSourceImage `
   -VM $VirtualMachine `
   -PublisherName "MicrosoftWindowsServer" `
   -Offer "WindowsServer" `
@@ -184,16 +184,16 @@ $VirtualMachine = Set-AzureRmVMSourceImage `
   -Version "latest"
 
 # Sets the operating system disk properties on a VM.
-$VirtualMachine = Set-AzureRmVMOSDisk `
+$VirtualMachine = Set-AzVMOSDisk `
   -VM $VirtualMachine `
   -CreateOption FromImage | `
-  Set-AzureRmVMBootDiagnostics -ResourceGroupName $ResourceGroupName `
+  Set-AzVMBootDiagnostics -ResourceGroupName $ResourceGroupName `
   -StorageAccountName $StorageAccountName -Enable |`
-  Add-AzureRmVMNetworkInterface -Id $nic.Id
+  Add-AzVMNetworkInterface -Id $nic.Id
 
 
 # Create the VM.
-New-AzureRmVM `
+New-AzVM `
   -ResourceGroupName $ResourceGroupName `
   -Location $location `
   -VM $VirtualMachine
@@ -204,7 +204,7 @@ New-AzureRmVM `
 To remote into the VM that you created in the previous step, you need its public IP address. Run the following command to get the public IP address of the VM:
 
 ```powershell
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
   -ResourceGroupName $ResourceGroupName | Select IpAddress
 ```
 
@@ -233,7 +233,7 @@ With IIS installed, and with port 80 open on your VM, you can use any browser to
 When no longer needed, use the following command to remove the resource group that contains the VM and its related resources:
 
 ```powershell
-Remove-AzureRmResourceGroup `
+Remove-AzResourceGroup `
   -Name $ResourceGroupName
 ```
 

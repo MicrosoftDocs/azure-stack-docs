@@ -22,7 +22,7 @@ The steps in this article describe how to run the sample app **HelloKeyVault** t
 
 You can install the following prerequisites from the [Azure Stack Development Kit](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp), or from a Windows-based external client if you're [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn):
 
-* Install [Azure Stack Hub-compatible Azure PowerShell modules](../operator/azure-stack-powershell-install.md).
+* Install [Azure Stack Hub-compatible Azure PowerShell modules](../operator/powershell-install-az-module.md).
 * Download the [tools required to work with Azure Stack Hub](../operator/azure-stack-powershell-download.md).
 
 ## Create a key vault and register an app
@@ -63,7 +63,7 @@ $tenantARM = "https://management.local.azurestack.external"
 $aadTenantName = "FILL THIS IN WITH YOUR AAD TENANT NAME. FOR EXAMPLE: myazurestack.onmicrosoft.com"
 
 # Configure the Azure Stack Hub operator's PowerShell environment.
-Add-AzureRMEnvironment `
+Add-AzEnvironment `
   -Name "AzureStackUser" `
   -ArmEndpoint $tenantARM
 
@@ -72,7 +72,7 @@ $TenantID = Get-AzsDirectoryTenantId `
   -EnvironmentName AzureStackUser
 
 # Sign in to the user portal.
-Add-AzureRmAccount `
+Add-AzAccount `
   -EnvironmentName "AzureStackUser" `
   -TenantId $TenantID `
 
@@ -86,7 +86,7 @@ $identifierUri = [string]::Format("http://localhost:8080/{0}",[Guid]::NewGuid().
 $homePage = "https://contoso.com"
 
 Write-Host "Creating a new AAD Application"
-$ADApp = New-AzureRmADApplication `
+$ADApp = New-AzADApplication `
   -DisplayName $applicationName `
   -HomePage $homePage `
   -IdentifierUris $identifierUri `
@@ -95,23 +95,23 @@ $ADApp = New-AzureRmADApplication `
   -Password $applicationPassword
 
 Write-Host "Creating a new AAD service principal"
-$servicePrincipal = New-AzureRmADServicePrincipal `
+$servicePrincipal = New-AzADServicePrincipal `
   -ApplicationId $ADApp.ApplicationId
 
 # Create a new resource group and a key vault in that resource group.
-New-AzureRmResourceGroup `
+New-AzResourceGroup `
   -Name $resourceGroupName `
   -Location $location
 
 Write-Host "Creating vault $vaultName"
-$vault = New-AzureRmKeyVault -VaultName $vaultName `
+$vault = New-AzKeyVault -VaultName $vaultName `
   -ResourceGroupName $resourceGroupName `
   -Sku standard `
   -Location $location
 
 # Specify full privileges to the vault for the application.
 Write-Host "Setting access policy"
-Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName `
+Set-AzKeyVaultAccessPolicy -VaultName $vaultName `
   -ObjectId $servicePrincipal.Id `
   -PermissionsToKeys all `
   -PermissionsToSecrets all

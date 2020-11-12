@@ -132,8 +132,9 @@ Customers must execute the following script against the SQL Server hosting appse
 
 This script must be run under the following conditions
 
-1. By a user that has the system administrator privilege, for example the SQL SA Account;
-1. If using SQL Always on, ensure the script is run from the SQL instance that contains all App Service logins in the form:
+- By a user that has the system administrator privilege, for example the SQL SA Account;
+- If using SQL Always on, ensure the script is run from the SQL instance that contains all App Service logins in the form:
+
     - appservice_hosting_FileServer
     - appservice_hosting_HostingAdmin
     - appservice_hosting_LoadBalancer

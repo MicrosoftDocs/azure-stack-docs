@@ -6,13 +6,16 @@ ms.topic: conceptual
 ms.assetid: ea7e53c8-11ec-410b-b287-897c7aaafb13
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 09/11/2020
+ms.date: 10/28/2020
 ---
 # Plan a Software Defined Network infrastructure
 
 >Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server (Semi-Annual Channel), Windows Server 2016
 
 Learn about deployment planning for a Software Defined Network (SDN) infrastructure, including hardware and software prerequisites. This topic includes planning requirements for physical and logical network configuration, routing, gateways, network hardware, and more. It also includes considerations on extending a SDN infrastructure and using a phased deployment.
+
+   > [!NOTE]
+   > SDN is not supported on stretched (multi-site) clusters.
 
 ## Prerequisites
 There are several hardware and software prerequisites for a SDN infrastructure, including:
@@ -22,7 +25,7 @@ There are several hardware and software prerequisites for a SDN infrastructure, 
 
 - **Physical network**. You need access to your physical network devices to configure virtual local area networks (VLANs), routing, and the Border Gateway Protocol (BGP). This topic provides instructions for manual switch configuration, as well as options to use either BGP peering on Layer-3 switches / routers, or a Routing and Remote Access Server (RRAS) VM.
 
-- **Physical compute hosts**. These hosts run Hyper-V and are required to host a SDN infrastructure and tenant VMs. Specific network hardware is required in these hosts for best performance, as described in the [Network hardware](#network-hardware) section.
+- **Physical compute hosts**. These hosts run Hyper-V and are required to host a SDN infrastructure and tenant VMs. Specific network hardware is required in these hosts for best performance, as described in [SDN hardware requirements](system-requirements.md#sdn-hardware-requirements).
 
 ## Physical and logical network configuration
 Each physical compute host requires network connectivity through one or more network adapters attached to a physical switch port. A Layer-2 [VLAN](https://en.wikipedia.org/wiki/Virtual_LAN) supports networks divided into multiple logical network segments.
@@ -99,50 +102,10 @@ Machines configured to connect to multiple networks, such as the physical hosts,
 - For SLB/MUX VMs, use the management network as the default gateway.
 - For the gateway VMs, use the HNV Provider network as the default gateway. This should be set on the front-end NIC of the gateway VMs.
 
-## Network hardware
-This section provides network hardware deployment requirements for NICs and physical switches.
+## Switches and routers
+To help configure your physical switch or router, a set of sample configuration files for a variety of switch models and vendors is available at the [Microsoft SDN GitHub repository](https://github.com/microsoft/SDN/tree/master/SwitchConfigExamples). A readme file and tested command-line interface (CLI) commands for specific switches are provided.
 
-### Network Interface Cards (NICs)
-The NICs that you use in your Hyper-V hosts and storage hosts require specific capabilities to achieve the best performance.
-
-Remote Direct Memory Access (RDMA) is a kernel bypass technique that makes it possible to transfer large amounts of data without using the host CPU, which frees the CPU to perform other work. Switch Embedded Teaming (SET) is an alternative NIC Teaming solution that you can use in environments that include Hyper-V and the SDN stack. SET integrates some NIC Teaming functionality into the Hyper-V Virtual Switch.
-
-For more information, see [Remote Direct Memory Access (RDMA) and Switch Embedded Teaming (SET)](/windows-server/virtualization/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming).
-
-To account for the overhead in tenant virtual network traffic caused by VXLAN or NVGRE encapsulation headers, the maximum transmission unit (MTU) of the Layer-2 fabric network (switches and hosts) must be set to greater than or equal to 1674 bytes \(including Layer-2 Ethernet headers\).
-
-NICs that support the new *EncapOverhead* advanced adapter keyword set the MTU automatically through the Network Controller Host Agent. NICs that do not support the new *EncapOverhead* keyword need to set the MTU size manually on each physical host using the *JumboPacket* \(or equivalent\) keyword.
-
-### Switches
-When selecting a physical switch and router for your environment, make sure it supports the following set of capabilities:
-- Switchport MTU settings \(required\)
-- MTU set to >= 1674 bytes \(including L2-Ethernet Header\)
-- L3 protocols \(required\)
-- Equal-cost multi-path (ECMP) routing
-- BGP \(IETF RFC 4271\)\-based ECMP
-
-Implementations should support the MUST statements in the following IETF standards:
-- RFC 2545: [BGP-4 Multiprotocol extensions for IPv6 Inter-Domain Routing](https://tools.ietf.org/html/rfc2545)
-- RFC 4760: [Multiprotocol Extensions for BGP-4](https://tools.ietf.org/html/rfc4760)
-- RFC 4893: [BGP Support for Four-octet AS Number Space](https://tools.ietf.org/html/rfc4893)
-- RFC 4456: [BGP Route Reflection: An Alternative to Full Mesh Internal BGP (IBGP)](https://tools.ietf.org/html/rfc4456)
-- RFC 4724: [Graceful Restart Mechanism for BGP](https://tools.ietf.org/html/rfc4724)
-
-The following tagging protocols are required:
-- VLAN - Isolation of various types of traffic
-- 802.1q trunk
-
-The following items provide Link control:
-- Quality of Service \(QoS\) \(PFC only required if using RoCE\)
-- Enhanced Traffic Selection \(802.1Qaz\)
-- Priority-based Flow Control (PFC) \(802.1p/Q and 802.1Qbb\)
-
-The following items provide availability and redundancy:
-- Switch availability (required)
-- A highly available router is required to perform gateway functions. You can provide this by using either a multi-chassis switch\router or technologies like the Virtual Router Redundancy Protocol (VRRP).
-
-### Switch configuration examples
-To help configure your physical switch or router, a set of sample configuration files for a variety of switch models and vendors is available at the [Microsoft SDN GitHub repository](https://github.com/microsoft/SDN/tree/master/SwitchConfigExamples). A detailed readme and tested command-line interface (CLI) commands for specific switches are provided.
+For detailed switch and router requirements, see [SDN hardware requirements](system-requirements.md#sdn-hardware-requirements).
 
 ## Compute
 All Hyper-V hosts must have the appropriate operating system installed, be enabled for Hyper-V, and use an external Hyper-V virtual switch with at least one physical adapter connected to the management logical network. The host must be reachable via a management IP address assigned to the management host vNIC.
@@ -169,7 +132,7 @@ Role|vCPU requirements|Memory requirements|Disk requirements|
 |RAS Gateway<br> (single pool of three nodes<br> gateways, two active, one passive)|8 vCPUs|8 GB recommended|75 GB for operating system drive
 |RAS Gateway BGP router<br> for SLB/MUX peering<br> (alternatively use ToR switch<br> as BGP Router)|2 vCPUs|2 GB|75 GB for operating system drive|
 
-If you use System Center - Virtual Machine Manager (VMM) for deployment, additional infrastructure VM resources are required for VMM and other non-SDN infrastructure. To learn more, see [System requirements for System Center Virtual Machine Manager](https://docs.microsoft.com/system-center/vmm/system-requirements?view=sc-vmm-2019&preserve-view=true).
+If you use System Center - Virtual Machine Manager (VMM) for deployment, additional infrastructure VM resources are required for VMM and other non-SDN infrastructure. To learn more, see [System requirements for System Center Virtual Machine Manager](/system-center/vmm/system-requirements?preserve-view=true&view=sc-vmm-2019).
 
 ## Extending your infrastructure
 The sizing and resource requirements for your infrastructure depend on the tenant workload VMs that you plan to host. The CPU, memory, and disk requirements for the infrastructure VMs (for example: Network Controller, SLB, gateway, and so on) are defined in the previous table. You can add more infrastructure VMs to scale as needed. However, any tenant VMs running on the Hyper-V hosts have their own CPU, memory, and disk requirements that you must consider.
@@ -191,4 +154,4 @@ Feature|Deployment requirements|Network requirements|
 ## Next steps
 For related information, see also:
 - [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller)
-- [SDN in Azure Stack HCI](https://docs.microsoft.com/azure-stack/hci/concepts/software-defined-networking)
+- [SDN in Azure Stack HCI](./software-defined-networking.md)

@@ -31,7 +31,7 @@ You can use Visual Studio to write and deploy Azure Resource Manager [templates]
 
     ![Screenshot of WebPI install steps](./media/azure-stack-install-visual-studio/image1.png)
 
-5. [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md).
+5. [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md).
 
 6. Restart the computer after the installation completes.
 
@@ -43,7 +43,7 @@ You can use Visual Studio to write and deploy Azure Resource Manager [templates]
 
 3. Select **Manage Accounts**, then in the new pane, sign in with your Azure Active Directory (Azure AD) credentials.  
 
-    ![Screenshot of Cloud Explorer once logged in and connected to Azure Stack Hub](./media/azure-stack-install-visual-studio/image2.png)
+    ![Screenshot thas shows Cloud Explorer once logged in and connected to Azure Stack Hub](./media/azure-stack-install-visual-studio/image2.png)
 
 Once logged in, you can [deploy templates](azure-stack-deploy-template-visual-studio.md) or browse available resource types and resource groups to create your own templates.  
 
@@ -63,7 +63,7 @@ Once logged in, you can [deploy templates](azure-stack-deploy-template-visual-st
 
     Visual Studio calls Azure Resource Manger and discovers the endpoints, including the authentication endpoint, for Azure Directory Federated Services (AD FS).
 
-    ![Screenshot of Cloud Explorer once logged in and connected to Azure Stack Hub](./media/azure-stack-install-visual-studio/image6.png)
+    ![Screenshot that shows the endpoints for Azure Directory Federated Services.](./media/azure-stack-install-visual-studio/image6.png)
 
 6. Select **Cloud Explorer** from the **View** menu.
 

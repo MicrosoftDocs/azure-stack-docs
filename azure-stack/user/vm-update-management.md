@@ -4,10 +4,10 @@ description: Use the Azure Monitor for VMs, Update Management, Change Tracking, 
 author: mattbriggs
 
 ms.topic: article
-ms.date: 04/27/2020
+ms.date: 10/08/2020
 ms.author: mabrigg
 ms.reviewer: rtiberiu
-ms.lastreviewed: 04/27/2020
+ms.lastreviewed: 10/08/2020
 
 # Intent: As an Azure Stack user, I want to update and manage my VMs using Azure Automation tools so I can keep everything running smoothly. 
 # Keyword: vm update management automation
@@ -17,7 +17,7 @@ ms.lastreviewed: 04/27/2020
 # VM update and management automation in Azure Stack Hub
 Use the following Azure Automation solution features to manage Windows and Linux virtual machines (VMs) that are deployed using Azure Stack Hub:
 
-- **[Update Management](/azure/automation/automation-update-management)**: With the Update Management solution, you can quickly assess the status of available updates on all agent computers and manage the process of installing required updates for Windows and Linux VMs.
+- **[Update Management](/azure/automation/update-management/overview)**: With the Update Management solution, you can quickly assess the status of available updates on all agent computers and manage the process of installing required updates for Windows and Linux VMs.
 
 - **[Change Tracking](/azure/automation/automation-change-tracking)**: Changes to installed software, Windows services, Windows registry and files, and Linux daemons on the monitored servers are sent to the Azure Monitor service in the cloud for processing. Logic is applied to the received data and the cloud service records the data. By using the information on the Change Tracking dashboard, you can easily see the changes that were made to your server infrastructure.
 
@@ -83,13 +83,13 @@ Follow these steps to enable update management for Azure Stack Hub VMs.
 
 2. In the Azure Stack Hub user-portal, go to the Extensions blade of the VMs for which you want to enable these solutions, click **+ Add**, select the **Azure Update and Configuration Management** extension, and then click **Create**:
 
-   [![The "Azure Update and Configuration Management" dialog box has explanatory information, a Create button (highlighted) to add the extension, and a link to more information.](media//vm-update-management/3-sm.PNG "VM extension blade")](media//vm-update-management/3-lg.PNG)
+    ![The "Azure Update and Configuration Management" dialog box has explanatory information, a Create button (highlighted) to add the extension, and a link to more information.](media//vm-update-management/3-sm.PNG "VM extension blade")
 
 3. Provide the previously created WorkspaceID and Primary Key to link the agent with the LogAnalytics workspace. Then click **OK** to deploy the extension.
 
    [![The "Install extension" dialog box has text boxes for the Azure WorkspaceID and the WorkspaceKey.](media//vm-update-management/4-sm.PNG "Providing the WorkspaceID and Key")](media//vm-update-management/4-lg.PNG) 
 
-4. As described in the [Update Management documentation](/azure/automation/automation-update-management), you need to enable the Update Management solution for each VM that you want to manage. To enable the solution for all VMs reporting to the workspace, select **Update management**, click **Manage machines**, and then select the **Enable on all available and future machines** option.
+4. As described in the [Update Management documentation](/azure/automation/update-management/overview), you need to enable the Update Management solution for each VM that you want to manage. To enable the solution for all VMs reporting to the workspace, select **Update management**, click **Manage machines**, and then select the **Enable on all available and future machines** option.
 
    [![The Manage Machines - Update Management dialog box shows the machines that don't have Update Management enabled. Three enabling options are provided, and "enable on all available and future machines" is selected and highlighted. There is an Enable button.](media//vm-update-management/5-sm.PNG "Enable Update Management solution on all machines")](media//vm-update-management/5-lg.PNG) 
 

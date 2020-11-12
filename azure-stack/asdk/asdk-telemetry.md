@@ -93,7 +93,7 @@ The telemetry levels are cumulative and categorized into four levels (0-3):
 > [!NOTE]
 > The default telemetry level value is 2 (enhanced).
 
-Turning off Windows and Azure Stack telemetry disables SQL telemetry. For additional info on the implications of the Windows Server telemetry settings, reference the [Windows Telemetry Whitepaper](https://aka.ms/winservtelemetry).
+Turning off Windows and Azure Stack telemetry disables SQL telemetry. For additional info on the implications of the Windows Server telemetry settings, reference the [Windows Telemetry Whitepaper](/windows/privacy/configure-windows-diagnostic-data-in-your-organization).
 
 > [!IMPORTANT]
 > These telemetry levels only apply to Microsoft Azure Stack components. Non-Microsoft software components and services that are running in the Hardware Lifecycle Host from Azure Stack hardware partners may communicate with their cloud services outside of these telemetry levels. You should work with your Azure Stack hardware solution provider to understand their telemetry policy, and how you can opt in or opt out.

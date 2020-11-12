@@ -4,10 +4,10 @@ description: Learn about the hardware, software, and environment requirements fo
 author: myoungerman
 
 ms.topic: article
-ms.date: 05/13/2019
+ms.date: 09/23/2020
 ms.author: v-myoung
 ms.reviewer: misainat
-ms.lastreviewed: 05/13/2019
+ms.lastreviewed: 09/23/2020
 
 # Intent: As an ASDK user, I want to know the requirements for properly deploying the ASDK.
 # Keyword: asdk requirements
@@ -80,9 +80,6 @@ Example two-way mirror configuration:
 | --- | --- |
 | **OS Version** |Windows Server 2016 or later. The operating system version isn't critical before the deployment starts because you boot the host computer into the VHD that's included in the Azure Stack installation. The operating system and all required patches are already integrated into the image. Don't use any keys to activate any Windows Server instances used in the ASDK. |
 
-> [!TIP]
-> After installing the operating system, you can use the [Deployment Checker for Azure Stack](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) to confirm that your hardware meets all the requirements.
-
 ## Account requirements
 Typically, you deploy the ASDK with internet connectivity, where you can connect to Microsoft Azure. In this case, you must configure an Azure Active Directory (Azure AD) account to deploy the ASDK.
 
@@ -110,9 +107,9 @@ After deployment, Azure AD global admin permission isn't required. However, some
 
 ## Network
 ### Switch
-One available port on a switch for the ASDK  machine.  
+One available port on a switch for the ASDK machine.  
 
-The ASDK machine supports connecting to a switch access port or trunk port. No specialized features are required on the switch. If you're using a trunk port or if you need to configure a VLAN ID, you have to provide the VLAN ID as a deployment parameter.
+The ASDK machine supports connecting to a switch access port or trunk port. No specialized features are required on the switch.
 
 ### Subnet
 Don't connect the ASDK machine to the following subnets:
@@ -133,7 +130,7 @@ Only IPv4 is supported. You can't create IPv6 networks.
 Make sure there's a DHCP server available on the network that the NIC connects to. If DHCP isn't available, you must prepare an additional static IPv4 network besides the one used by host. You must provide that IP address and gateway as a deployment parameter.
 
 ### Internet access
-Azure Stack requires access to the internet, either directly or through a transparent proxy. Azure Stack doesn't support the configuration of a web proxy to enable internet access. Both the host IP and the new IP assigned to the AzS-BGPNAT01 (by DHCP or static IP) must be able to access the internet. Ports 80 and 443 are used under the graph.windows.net and login.microsoftonline.com domains.
+Azure Stack requires access to the internet, either directly or through a transparent proxy. Azure Stack doesn't support the configuration of a web proxy to enable internet access. Ports 80 and 443 are used under the graph.windows.net and login.microsoftonline.com domains.
 
 
 ## Next steps
