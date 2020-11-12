@@ -61,5 +61,5 @@ A [sample alias file](https://raw.githubusercontent.com/Azure/azure-rest-api-spe
 ## Next steps
 
 - [Deploy templates with Azure CLI](../user/azure-stack-deploy-template-command-line.md )
-- [Connect with PowerShell](azure-stack-powershell-install.md)
+- [Connect with PowerShell](powershell-install-az-module.md)
 - [Manage user permissions](azure-stack-manage-permissions.md)

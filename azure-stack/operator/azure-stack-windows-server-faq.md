@@ -52,9 +52,9 @@ If you download both versions of the image, only the latest version is visible t
 You can change the license model attribute to switch from BYOL to the PAYG model by running the following script:
 
 ```powershell
-$vm= Get-Azurermvm -ResourceGroup "<your RG>" -Name "<your VM>"
+$vm= Get-Azvm -ResourceGroup "<your RG>" -Name "<your VM>"
 $vm.LicenseType = "None"
-Update-AzureRmVM -ResourceGroupName "<your RG>" -VM $vm
+Update-AzVM -ResourceGroupName "<your RG>" -VM $vm
 ```
 
 You can check the license type of your VM by running the following command. If the license model says **Windows_Server**, you'll be charged for the BYOL price. Otherwise, you'll be charged for the Windows meter per the PAYG model:
@@ -68,9 +68,9 @@ $vm | ft Name, VmId,LicenseType,ProvisioningState
 You can change the license model attribute to the BYOL model by running the following commands:
 
 ```powershell
-$vm= Get-Azurermvm -ResourceGroup "<your RG>" -Name "<your VM>"
+$vm= Get-Azvm -ResourceGroup "<your RG>" -Name "<your VM>"
 $vm.LicenseType = "Windows_Server"
-Update-AzureRmVM -ResourceGroupName "<your RG>" -VM $vm
+Update-AzVM -ResourceGroupName "<your RG>" -VM $vm
 ```
 
 ### What about other VMs that use Windows Server, such as SQL or Machine Learning Server?

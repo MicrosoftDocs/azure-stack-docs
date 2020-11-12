@@ -28,7 +28,7 @@ You can access the PowerShell cmdlets to enable backup, start backup, and get ba
 
 ## Prepare PowerShell environment
 
-For instructions on configuring the PowerShell environment, see [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md). To sign in to Azure Stack Hub, see [Configure the operator environment and sign in to Azure Stack Hub](azure-stack-powershell-configure-admin.md).
+For instructions on configuring the PowerShell environment, see [Install PowerShell for Azure Stack Hub](powershell-install-az-module.md). To sign in to Azure Stack Hub, see [Configure the operator environment and sign in to Azure Stack Hub](azure-stack-powershell-configure-admin.md).
 
 ## Provide the backup share, credentials, and encryption key to enable backup
 
@@ -134,7 +134,7 @@ The result should look like the following example output:
 The PowerShell cmdlet to configure infrastructure backup is Set-AzsBackupConfiguration. In previous releases, the cmdlet was Set-AzsBackupShare. This cmdlet requires providing a certificate. If infrastructure backup is configured with an encryption key, you can't update the encryption key or view the property. You need to use version 1.6 of the Admin PowerShell.
 
 If infrastructure backup was configured before updating to 1901, you can use version 1.6 of the admin PowerShell to set and view the encryption key. Version 1.6 won't allow you to update from encryption key to a certificate file.
-Refer to [Install Azure Stack Hub PowerShell](azure-stack-powershell-install.md) for more info on installing the correct version of the module.
+Refer to [Install Azure Stack Hub PowerShell](powershell-install-az-module.md) for more info on installing the correct version of the module.
 
 
 ## Next steps
