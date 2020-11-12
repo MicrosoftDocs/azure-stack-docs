@@ -18,7 +18,8 @@ This topic provides guidance on how to configure firewalls for the Azure Stack H
 1 A polished-up version of my response to Matt in the attached thread, showing URLs and IP service tags we need.
 2 See OneNote direction from Cosmos on adding link to related Overview topic. Point to Networking configuration section of resource.
 3 See OneNote Jason's input on need to align enterprise firewall with Defender firewall ports for same access to updates. Step 5 to add to Cosmos' other 4 JSON steps.
-4 Update intro to mention why it's important to also update external firewall allow lists to match those of WDF.--->
+4 Update intro to mention why it's important to also update external firewall allow lists to match those of WDF.
+5 Format service tag URLs correctly.--->
 
 ## Connectivity requirements
 Azure Stack HCI needs to periodically connect to the Azure public cloud. The connectivity requirements are far from unrestricted internet access. Access is limited to only:
