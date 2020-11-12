@@ -4,7 +4,7 @@ description: This topic provides guidance on how to use DISKSPD to test workload
 author: jasonnyi
 ms.author: jasonyi
 ms.topic: how-to
-ms.date: 11/11/2020
+ms.date: 11/12/2020
 ---
 
 # Use DISKSPD to test workload storage performance
@@ -67,8 +67,11 @@ Without further ado, let’s get started:
     Here is an example command that you can run:
 
     ```powershell
-     .\diskspd -t2 -o32 -b4k -r4k -w0 -d120 -Sh -D -L -c5G <ENTER_PATH> > test04.txt
+     .\diskspd -t2 -o32 -b4k -r4k -w0 -d120 -Sh -D -L -c5G C:\ClusterStorage\test01\targetfile\IO.dat > test04.txt
     ```
+
+    > [!NOTE]
+    > If you do not have a test file, use the **-c** parameter to create one. If you use this parameter, ensure to include the test file name when you define your path. For example: [INSERT_CSV_PATH_FOR_TEST_FILE] = C:\ClusterStorage\CSV01\IO.dat. In the example command, test01.txt is the test file name, and test04.txt is the DISKSPD output file name.
 
 ## Specify key parameters
 Well, that was simple right? Unfortunately, there is more to it than that. Let’s unpack what we did. First, there are various parameters that you can tinker with and it can get specific. However, we used the following set of baseline parameters:
