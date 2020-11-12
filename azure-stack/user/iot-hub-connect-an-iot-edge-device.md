@@ -33,17 +33,19 @@ First you create the necessary Azure Stack Hub resources, including an IoT Hub a
 ### Create an IoT Hub resource and export its root CA
 
 1. Sign in to the [Azure Stack Hub user portal](../user/azure-stack-use-portal.md) from a computer that has access to your Azure Stack Hub instance.
-2. If you haven't created one already, follow the instructions in [Create an IoT hub using the Azure portal](/azure/iot-hub/iot-hub-create-through-portal) to create an IoT Hub resource. 
+2. If you haven't created one already, follow the instructions in the [Create an IoT Hub](/azure/iot-hub/iot-hub-create-through-portal#create-an-iot-hub) section of **Create an IoT hub using the Azure portal**, to create an IoT Hub resource. 
 
    > [!IMPORTANT]
    > Be sure to use the [Azure Stack Hub user portal](../user/azure-stack-use-portal.md) when following the steps in the article, and NOT the Azure portal. Also note that some screenshots and instructions may be slightly different, as not all Azure features are available on Azure Stack Hub. 
 
 3. Export a root CA from your IoT Hub and store it in PEM format:
 
-   1. On the IoT Hub page, use the **Copy** button to the right of **Hostname** to copy the IoT Hub hostname to the clipboard:  
+[TODO - Can we leave off "and store it in PEM format"]
+
+   1. On the**Overview** page of your IoT Hub, use the **Copy** button to the right of the **Hostname** property to copy the IoT Hub hostname to the clipboard:  
       [![iot hub host name](media\iot-hub-connect-an-iot-edge-device\copy-iot-hub-host-name.png)](media\iot-hub-connect-an-iot-edge-device\copy-iot-hub-host-name.png#lightbox)
-   1. Open a new tab in a Microsoft Edge or Google Chrome browser, enter `https://`, paste the IoT Hub hostname copied in the previous step, and press **Enter**. 
-   1. Select the lock icon to the left of the address bar, then click **Certificate**.
+   1. Open a new tab in a Microsoft Edge or Google Chrome browser, enter `https://`, then paste the IoT Hub hostname copied in the previous step, and press **Enter**. 
+   1. After the error message is returned, select the lock icon to the left of the address bar, then click **Certificate**.
       [![certificate secure connection](media\iot-hub-connect-an-iot-edge-device\iot-hub-root-ca-connection.png)](media\iot-hub-connect-an-iot-edge-device\iot-hub-root-ca-connection.png#lightbox)
 
    1. When the SSL/TLS certificate shows, select the **Certification path** tab. Then select the top-most certificate in the path, and select the **View Certificate** button. 
@@ -52,16 +54,21 @@ First you create the necessary Azure Stack Hub resources, including an IoT Hub a
    1. When the root CA certificate shows, select the **Details** tab, then the **Copy to File...** button.
       [![certificate secure connection - root CA cert](media\iot-hub-connect-an-iot-edge-device\iot-hub-root-ca-cert-ssl-root-ca.png)](media\iot-hub-connect-an-iot-edge-device\iot-hub-root-ca-cert-ssl-root-ca.png#lightbox) 
 
-   1. Using the **Certificate Export Wizard**, export the certificate as a .CRT file in base-64 format, for example, **root.crt**. You use this file in the next section, so export it to a location that can be accessed from, or copied to, the Linux VM.  
+   1. When the **Certificate Export Wizard** shows, export the certificate to a **Base-64 encoded X.509 format** file, for example, **root.cer**. You use this file in the next section, so export it to a location that can be accessed from, or copied to, the Linux VM.  [TODO - Verify w/Denis this is a .cer file, NOT .crt]
 
 ### Deploy a new Linux VM 
 
-1. Use the [Create a Linux server VM by using the Azure Stack Hub portal](azure-stack-quick-linux-portal.md) quick start, to install a Linux VM on your Azure Stack Hub instance. 
+1. Use the [Create a Linux server VM by using the Azure Stack Hub portal](azure-stack-quick-linux-portal.md) quick start, to install a Linux VM on your Azure Stack Hub instance. Be sure to enable port **SSH (22)** on the **Select public inbound ports** property of the **Settings** page. [TODO - NEED TO CONFIRM WHETHER THEY ONLY NEED TO DO FIRST 5 SECTIONS of VM Creation (through Connect to the VM)]
 
    > [!NOTE]
    > Don't complete the **Clean up resources** section, as you'll use the Linux VM for the remainder of this article.
 
-2. After you've created and connected to the VM, create a user account. For the purposes of this article, we'll assume an account named **edgeadmin**.
+2. After you've created and connected to the VM using PuTTY, create a user account. For the purposes of this article, we'll assume an account named **edgeadmin**.
+
+   ```bash
+   # add user "edgeadmin'
+   sudo adduser edgeadmin
+   ```
 
 ## Configure certificates for the IoT Edge device
 
@@ -71,14 +78,14 @@ In this section, you'll complete the VM configuration for the certificates requi
 |-------------|---------|------|
 | `<DEVICE-CA-CERT-NAME>` | `edged1cert`| A name you provide for the IoT Edge device CA certificate. |
 | `<IOT-HUB-HOSTNAME>`| `test-hub-1.mgmtiothub.region.mydomain.com`| The IoT Hub host name you copied in the previous section. |
-| `<IOT-HUB-ROOT-CA>`| `root.crt`| The name you gave the IoT Hub root CA you exported earlier in [Create an IoT Hub resource and export its root CA](#create-an-iot-hub-resource-and-export-its-root-ca). |
+| `<IOT-HUB-ROOT-CA>`| `root.cer`| The name you gave the IoT Hub root CA you exported earlier in [Create an IoT Hub resource and export its root CA](#create-an-iot-hub-resource-and-export-its-root-ca). [TODO - Verify w/Denis this is a .cer file, NOT .crt] |
 | `<WORK-DIR>`| `/home/edgeadmin/edged1`| The path to your local working directory. |
 
 ### Install an IoT Hub root certificate authority (CA) 
 
 First you install an IoT Hub root CA in the Edge device's trusted store. 
 
-1. Return to your Linux VM remote session.
+1. Return to your Linux VM PuTTY session.
 
 2. Transfer the IoT Hub root CA to the Edge device using the following script. The script will:
    - Verify that the Edge device TLS connection is successful.
@@ -185,7 +192,7 @@ Now complete the IoT Hub and VM configuration required by the virtual IoT Edge d
 
 ### Install IoT Edge and container runtimes on the VM
 
-1. Return to the VM remote session and run the following script to register the Microsoft key and software repository feed:
+1. Return to the VM PuTTY session and run the following script to register the Microsoft key and software repository feed:
 
    ```bash
    # Install the repository configuration. 
@@ -238,7 +245,7 @@ Now complete the IoT Hub and VM configuration required by the virtual IoT Edge d
 
 ### Configure the virtual IoT Edge device on the VM
 
-1. Return to the VM remote session, and open the configuration file on the virtual Edge device:
+1. Return to the VM PuTTY session, and open the configuration file on the virtual Edge device:
 
    ```bash
    sudo nano /etc/iotedge/config.yaml
@@ -275,7 +282,7 @@ Now complete the IoT Hub and VM configuration required by the virtual IoT Edge d
 
 ## Verify a successful installation
 
-1. Return to the VM remote session, and check the status of the IoT Edge Daemon:
+1. Return to the VM PuTTY session, and check the status of the IoT Edge Daemon:
 
    ```bash
    systemctl status iotedge
