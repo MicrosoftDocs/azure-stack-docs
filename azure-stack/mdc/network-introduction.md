@@ -107,7 +107,7 @@ To access MDC endpoints (*portal*, *adminportal*, *management*, and *adminmana
 
 ### MDC DNS namespace
 
-You're required to provide some important information related to DNS when you deploy the MDC.
+You're required to provide some important information related to DNS when you deploy the MDC solution.
 
 | **Field** | **Description** | **Example** |
 |-----------|-----------------|-------------|
@@ -140,7 +140,7 @@ If a tenant specifies **MyApp** in the DNS name label field of a public IP add
 
 If you want to take advantage of this functionality and use this namespace, you must integrate the DNS servers. Include servers that host the external DNS zone for MDC and the DNS servers that host the parent zone you want to use as well. This namespace is different from the one used for the MDC service endpoints, so you must create an additional delegation or conditional forwarding rule.
 
-For more information about how the DNS Name label works, see "Using DNS" in the MDC.
+For more information about how the DNS name label works, see "Using DNS" in the MDC documentation.
 
 ### Resolution and delegation
 
@@ -183,7 +183,7 @@ Currently, we recommend that you disable any SSL interception (for example, decr
 
 ### Edge deployment firewall scenario
 
-In an edge deployment, MDC is deployed directly behind the edge router or the firewall. In these scenarios, it's supported for the firewall to be above the border (Scenario 1) where it supports both active-active and active-passive firewall configurations. It can also act as the border device (Scenario 2), where it only supports active-active firewall configuration. Scenario 2 relies on equal-cost multi-path with either BGP or static routing for failover.
+In an edge deployment, MDC is deployed directly behind the edge router or the firewall. In these scenarios, it's supported for the firewall to be above the border (Scenario 1) where it supports both active-active and active-passive firewall configurations. It can also act as the border device (Scenario 2), where it only supports active-active firewall configuration. Scenario 2 relies on equal-cost multipath with either BGP or static routing for failover.
 
 Public routable IP addresses are specified for the public VIP pool from the external network at deployment time. For security purposes, public routable IPs *aren't* recommended on any other network in an edge scenario. This scenario enables a user to experience the full self-controlled cloud experience as in a public cloud like Azure.
 
