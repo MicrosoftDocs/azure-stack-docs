@@ -4,12 +4,12 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/11/2020
+ms.date: 11/12/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Intent: As an Azure Stack Hub user, I want to know what's new in the latest release so that I can plan my update.
 # Keyword: Notdone: keyword noun phrase
 
 ---
@@ -84,6 +84,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Changes to the startup and shutdown process on infrastructure role instances and their dependencies on scale unit nodes. This increases the reliability for Azure Stack Hub startup and shutdown.
 - The **AzSScenarios** suite of the **Test-AzureStack** validation tool has been updated to enable Cloud Service Providers to run this suite successfully with multi-factor authentication enforced on all customer accounts.
 - Improved alert reliability by adding suppression logic for 29 customer facing alerts during lifecycle operations.
+- You can now view a detailed log collection HTML report which provides details on the roles, duration, and status of the log collection. The purpose of this report is to help users provide a summary of the logs collected. Microsoft Customer Support Services can then quickly assess the report to evaluate the log data, and help to troubleshoot and mitigate system issues.
+- The infrastructure fault detection coverage has been expanded with the addition of 7 new monitors across user scenarios such as CPU utilization and memory consumption, which helps to increase the reliability of fault detection.
 
 ### Changes
 
