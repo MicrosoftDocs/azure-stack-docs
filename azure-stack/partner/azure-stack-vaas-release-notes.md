@@ -24,6 +24,38 @@ ms.lastreviewed: 10/28/2019
 
 This article has the release notes for Azure Stack Validation as a Service.
 
+## Version 4.4.4.2
+
+2020 November 11
+
+- CSE Validation workflow is now updated to be able to install a test signed OEM extension package automatically post a full AzureStack update.
+  - Prior to this fix, VaaS would fail to install a Test-Signed OEM extension package on a stamp post AzureStack Full update. VaaS would apply AzureStack update and then quit the run.
+  - This has been fixed and you should see CSE Validation Workflow installing the provided AzureStack update and test-signed OEM extension package.
+- Added OEM package validation extension to ‘OEM Validation Workflow’
+  - This extension will run before kicking off any updates on the stamp.
+  - The extension will validate the OEM extension package contents and the elements of the oemMetadata.xml
+  - If there were any errors/issues with the OEM extension package, we will catch it before the VaaS tests get kicked off.
+  - These validations previous ran at the time of signing the package, post the VaaS test run.  
+- VaaS pre-reqs updated to install newer version of AzureStack and AzureRM PowerShell modules
+  - AzureStack PS module version 1.8.2
+  - AzureRM PS module version 2.5.0
+- Minor service updates.
+
+## Version 4.4.3.112
+
+2020 August 23
+
+- Service updates.
+  - Updates to service deployment.
+  - Updated service authentication methods.
+
+## Version 4.4.3.68
+
+2020 June 30
+
+- Service updates.
+  - Moved the service to run in Service Fabric.
+
 ## Version 4.4.2.1
 
 2019 December 3
@@ -37,7 +69,6 @@ This article has the release notes for Azure Stack Validation as a Service.
   - Contact vaashelp@microsoft.com if the following test cases fail to run during OEM Validation Workflow:
     - Test101LinuxEmptyAttachedDiskManagedDisk
     - Test101WindowsEmptyAttachedDiskManagedDisk
-
 
 ## Version 4.3.5.3
 
