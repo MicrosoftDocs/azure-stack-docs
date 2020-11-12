@@ -9,7 +9,7 @@ ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Intent: As an Azure Stack Hub user, I want to know about known issues in the latest release so that I can plan my update and be aware of any issues.
 # Keyword: Notdone: keyword noun phrase
 
 ---
