@@ -4,7 +4,7 @@ description: This topic provides guidance on how to configure firewalls for the 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 11/11/2020
+ms.date: 11/12/2020
 ---
 
 # Configure firewalls for Azure Stack HCI
@@ -13,13 +13,10 @@ ms.date: 11/11/2020
 
 This topic provides guidance on how to configure firewalls for the Azure Stack HCI operating system.
 
-
 <!---See Cosmos' RE: Firewall Endpoints for AAD App Registration mail for topic structure.
 1 A polished-up version of my response to Matt in the attached thread, showing URLs and IP service tags we need.
-2 See OneNote direction from Cosmos on adding link to related Overview topic. Point to Networking configuration section of resource.
-3 See OneNote Jason's input on need to align enterprise firewall with Defender firewall ports for same access to updates. Step 5 to add to Cosmos' other 4 JSON steps.
-4 Update intro to mention why it's important to also update external firewall allow lists to match those of WDF.
-5 Format service tag URLs correctly.--->
+2 Update intro to mention why it's important to also update external firewall allow lists to match those of WDF.
+3 Fix WDF product name capping in diagram.--->
 
 ## Connectivity requirements
 Azure Stack HCI needs to periodically connect to the Azure public cloud. The connectivity requirements are far from unrestricted internet access. Access is limited to only:
@@ -28,6 +25,10 @@ Azure Stack HCI needs to periodically connect to the Azure public cloud. The con
 - Port 443 (HTTPS)
 
 For more information, see the Azure Stack HCI connectivity section of the [Azure Stack HCI FAQ](../faq.md)
+
+   >[!IMPORTANT]
+   > If outbound connectivity is restricted by your external corporate firewall or proxy server, ensure that the URLs listed below are not blocked. For related information, see the "Networking configuration" section of [Overview of Azure Arc enabled servers agent](https://docs.microsoft.com/azure/azure-arc/servers/agent-overview#networking-configuration).
+
 
 The following diagram shows how the process works.
 
@@ -40,18 +41,13 @@ Azure publishes a weekly JSON file of all the IP addresses for every service. Th
 
 | Description                   | Service tag for IP range  | URL                                                                                 |
 | :-----------------------------| :-----------------------  | :---------------------------------------------------------------------------------- |
-| Azure Active Directory        | AzureActiveDirectory      | https://login.microsoftonline.com<br> https://graph.microsoft.com                   |
-| Azure Resource Manager        | AzureResourceManager      | https://management.azure.com                        |
-| Azure Stack HCI Cloud Service | AzureFrontDoor.Frontend   | Depends on the region you registered with:<br> East US: https://eus-azurestackhci-usage.azurewebsites.net<br> West Europe: https://weu-azurestackhci-usage.azurewebsites.net |
-| Azure Arc                     | AzureArcInfrastructure<br> AzureTrafficManager | Depends on the functionality you want to use:<br> Hybrid Identity Service: *.his.arc.azure.com<br> Guest Configuration: *.guestconfiguration.azure.com<br> **Note:** Please expect more URLs as we enable more functionality. |
+| Azure Active Directory        | AzureActiveDirectory      | `https://login.microsoftonline.com`<br> `https://graph.microsoft.com`                   |
+| Azure Resource Manager        | AzureResourceManager      | `https://management.azure.com`                        |
+| Azure Stack HCI Cloud Service | AzureFrontDoor.Frontend   | Depends on the region you registered with:<br> East US: `https://eus-azurestackhci-usage.azurewebsites.net`<br> West Europe: `https://weu-azurestackhci-usage.azurewebsites.net` |
+| Azure Arc                     | AzureArcInfrastructure<br> AzureTrafficManager | Depends on the functionality you want to use:<br> Hybrid Identity Service: `*.his.arc.azure.com`<br> Guest Configuration: `*.guestconfiguration.azure.com`<br> **Note:** Please expect more URLs as we enable more functionality. |
 
 ## Service tags and how they work
 A *service tag* represents a group of IP addresses from a given Azure service. Microsoft manages the IP addresses included in the service tag, and automatically updates the service tag as IP addresses change to keep updates to a minimum. To learn more, see [Virtual network service tags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview).
-
-<!---remove links in table per other Cosmos resource example.--->
-
-<!---See OneNote direction from Cosmos on adding link to related Overview topic.--->
-
 
 ## How to update the firewalls
 This section provides an example of how to configure the Microsoft Defender Firewall and your external corporate firewall to allow IP addresses associated with a service tag to connect with the operating system:
@@ -78,14 +74,8 @@ This section provides an example of how to configure the Microsoft Defender Fire
     New-NetFirewallRule -DisplayName "Allow Azure Resource Manager" -RemoteAddress $IpList -Direction Outbound -LocalPort 443 -Protocol TCP -Action Allow -Profile Any -Enabled True
     ```
 
-<!---Added step 4 on setting allow access on enterprise firewall from Jason's OneNote.--->
-
 ## Additional endpoint for one-time Azure registration
 During the Azure registration process, when you run either `Register-AzStackHCI` or use Windows Admin Center, the cmdlet tries to contact the PowerShell Gallery to verify that you have the latest version of required PowerShell modules, such as Az and AzureAD. Although the PowerShell Gallery is hosted on Azure, currently there is not a service tag for it. If you can't run the cmdlet from a machine that has permissive outbound internet access, we recommend downloading the modules, and then manually transferring them to the node where you want to run the `Register-AzStackHCI` command.
-
-<!---Use note to explain how to get this without using a service tag.--->
-   >[!NOTE]
-   > TBD.
 
 ## Next steps
 For more information, see also:
