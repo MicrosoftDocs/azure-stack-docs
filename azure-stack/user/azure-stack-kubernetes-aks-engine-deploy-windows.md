@@ -4,10 +4,10 @@ description: Learn how to use a Windows machine in your Azure Stack Hub to host 
 author: mattbriggs
 
 ms.topic: article
-ms.date: 09/02/2020
+ms.date: 09/16/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/02/2020
+ms.lastreviewed: 09/16/2020
 
 # Intent: As an Azure Stack Hub user, I want to learn how to host the AKS engine on a Windows VM so that I can deploy the AKS engine on Windows in Azure Stack Hub.
 # Keyword: host aks on windows vm in azure stack hub 
@@ -41,7 +41,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 5. Run the following command from an elevated prompt and include the version number:
 
     ```PowerShell  
-        choco install aks-engine --version 0.55.0 -y
+        choco install aks-engine --version 0.55.4 -y
     ```
 
 > [!NOTE]  
@@ -66,7 +66,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 7.  Run the following command from an elevated prompt. Include the right version number:
 
     ```PowerShell  
-        choco install aks-engine --version 0.55.0 -y
+        choco install aks-engine --version 0.55.4 -y
     ```
 
 ## Verify the installation
@@ -89,8 +89,8 @@ You will need to add a certificate when running the client VM for the AKS engine
 
 When you are using an ASDK your Azure Resource Manager endpoint is using a self-signed certificate, you need to explicitly add this certificate to the machine's trusted certificate store. You can find the ASDK root certificate in any VM you deploy in the ASDK.
 
-1. Export the CA root certificate. For instructions, see [Export the Azure Stack Hub CA root certificate](./azure-stack-version-profiles-azurecli2.md#export-the-azure-stack-hub-ca-root-certificate).
-2. Trust the Azure Stack Hub CA root certificate. For instructions, see [Trust the Azure Stack Hub CA root certificate](./azure-stack-version-profiles-azurecli2.md#trust-the-azure-stack-hub-ca-root-certificate).
+1. Export the CA root certificate. For instructions, see [Export the Azure Stack Hub CA root certificate](../asdk/asdk-cli.md#export-the-azure-stack-hub-ca-root-certificate).
+2. Trust the Azure Stack Hub CA root certificate. For instructions, see [Trust the Azure Stack Hub CA root certificate](../asdk/asdk-cli.md#trust-the-certificate).
 
 ## Next steps
 

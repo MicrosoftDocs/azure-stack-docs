@@ -4,22 +4,21 @@ description: Learn how to add scale unit nodes to scale units in Azure Stack Hub
 author: mattbriggs
 
 ms.topic: article
-ms.date: 09/09/2020
+ms.date: 11/05/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 08/03/2020
+ms.lastreviewed: 11/05/2020
 
 # Intent: As an Azure Stack operator, I want to add an additional scale unit node/physical computer to increase the overall capacity. 
 # Keyword: (add) scale unit node azure stack
 
 ---
 
-
 # Add additional scale unit nodes in Azure Stack Hub
 
-Azure Stack Hub operators can increase the overall capacity of an existing scale unit by adding an additional physical computer. The physical computer is also referred to as a scale unit node. Each new scale unit node you add must be homogeneous in CPU type, memory, and disk number and size to the nodes that are already present in the scale unit.
+You can increase the overall capacity of an existing scale unit by adding an additional physical computer. The physical computer is also referred to as a scale unit node. Each new scale unit node you add must be homogeneous in CPU type, memory, and disk number and size to the nodes that are already present in the scale unit.
 
-To add a scale unit node, you act in Azure Stack Hub and run tooling from your hardware equipment manufacturer (OEM). The OEM tooling runs on the hardware lifecycle host (HLH) to make sure the new physical computer matches the same firmware level as existing nodes.
+To add a scale unit node, sign into  in Azure Stack Hub and run tooling from your hardware equipment manufacturer (OEM). The OEM tooling runs on the hardware lifecycle host (HLH) to make sure the new physical computer matches the same firmware level as existing nodes.
 
 The following flow diagram shows the general process to add a scale unit node:
 
@@ -61,6 +60,21 @@ You can use the administrator portal or PowerShell to add new nodes. The add nod
    ![Add node details](media/azure-stack-add-scale-node/select-node2.png)
  
 
+### [PowerShell Az](#tab/Az)
+
+Use the **Add-AzsScaleUnitNode** cmdlet to add a node.  
+
+Before using either of the following sample PowerShell scripts, replace the values *name_of_new_node*,  *name_of_scale_unit_cluster*, *BMCIP_address_of_new_node* with values from your Azure Stack Hub environment.
+
+  > [!Note]  
+  > When naming a node you must keep the name to less than 15 characters in length. You also can't use a name that contains a space or contains any of the following characters: `\`, `/`, `:`, `*`, `?`, `"`, `<`, `>`, `|`, `\`, `~`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `(`, `)`, `{`, `}`, `_`.
+
+**Add a node:**
+  ```powershell
+  ## Add a single Node 
+    Add-AzsScaleUnitNode -BMCIPv4Address "<BMCIP_address_of_new_node>" -computername "<name_of_new_node>" -ScaleUnit "<name_of_scale_unit_cluster>" 
+  ```  
+
 ### [PowerShell AzureRM](#tab/AzureRM)
 
 Use the **New-AzsScaleUnitNodeObject** cmdlet to add a node.  
@@ -76,21 +90,6 @@ Before using either of the following sample PowerShell scripts, replace the valu
   $NewNode=New-AzsScaleUnitNodeObject -computername "<name_of_new_node>" -BMCIPv4Address "<BMCIP_address_of_new_node>" 
  
   Add-AzsScaleUnitNode -NodeList $NewNode -ScaleUnit "<name_of_scale_unit_cluster>" 
-  ```  
-
-### [PowerShell Az](#tab/Az)
-
-Use the **Add-AzsScaleUnitNode** cmdlet to add a node.  
-
-Before using either of the following sample PowerShell scripts, replace the values *name_of_new_node*,  *name_of_scale_unit_cluster*, *BMCIP_address_of_new_node* with values from your Azure Stack Hub environment.
-
-  > [!Note]  
-  > When naming a node you must keep the name to less than 15 characters in length. You also can't use a name that contains a space or contains any of the following characters: `\`, `/`, `:`, `*`, `?`, `"`, `<`, `>`, `|`, `\`, `~`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `(`, `)`, `{`, `}`, `_`.
-
-**Add a node:**
-  ```powershell
-  ## Add a single Node 
-    Add-AzsScaleUnitNode -BMCIPv4Address "<BMCIP_address_of_new_node>" -computername "<name_of_new_node>" -ScaleUnit "<name_of_scale_unit_cluster>" 
   ```  
 
 ---

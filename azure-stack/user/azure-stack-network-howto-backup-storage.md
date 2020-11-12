@@ -23,7 +23,7 @@ This article looks at protection and recovery of storage accounts within an Azur
 
 This section looks at the overall structure of the solution and major parts.
 
-![Azure Stack Hub Storage Backup](./media/azure-stack-network-howto-backup-storage/azure-stack-storage-backup.png)
+![Diagram that shows the overall structure of Azure Stack Hub storage backup.](./media/azure-stack-network-howto-backup-storage/azure-stack-storage-backup.png)
 
 ### Application layer
 
@@ -55,13 +55,13 @@ You can create a Linux or Windows server as your intermediate server. The server
 - For instruction on setting up a Linux Server, see [Create a Linux server VM by using the Azure Stack Hub portal](azure-stack-quick-linux-portal.md).  
 - For instruction on setting a Windows Server, see [Create a Windows server VM with the Azure Stack Hub portal](azure-stack-quick-windows-portal.md).  
 
-Once you have set up your Windows Server, you will need to install [Azure Stack Hub PowerShell](../operator/azure-stack-powershell-install.md?toc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fbreadcrumb%2Ftoc.json) and [Azure Stack Hub Tools](../operator/azure-stack-powershell-download.md?toc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fbreadcrumb%2Ftoc.json).
+Once you have set up your Windows Server, you will need to install [Azure Stack Hub PowerShell](../operator/powershell-install-az-module.md?toc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fbreadcrumb%2Ftoc.json) and [Azure Stack Hub Tools](../operator/azure-stack-powershell-download.md?toc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fbreadcrumb%2Ftoc.json).
 
 ## Set up backup for storage accounts
 
 1. Retrieve the Blob Endpoint for the source and target storage accounts.
 
-    ![Azure Stack Hub Storage Backup](./media/azure-stack-network-howto-backup-storage/back-up-step1.png)
+    ![Screenshot that shows the primary blob endpoint for the source and target storage accounts.](./media/azure-stack-network-howto-backup-storage/back-up-step1.png)
 
 2. Create and record SAS Tokens for the source and target storage accounts.
 

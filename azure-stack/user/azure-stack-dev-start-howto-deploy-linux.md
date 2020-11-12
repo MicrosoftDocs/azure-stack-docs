@@ -47,7 +47,7 @@ To deploy the VM, follow the instructions in the next several sections.
 1. Create a Secure Shell (SSH) public key for your server. For more information, see [How to use an SSH public key](azure-stack-dev-start-howto-ssh-public-key.md).
 1. In the Azure Stack Hub portal, select **Create a resource** > **Compute** > **Ubuntu Server 16.04 LTS**.
 
-    ![Deploy a web app to an Azure Stack Hub VM](media/azure-stack-dev-start-howto-deploy-linux/001-portal-compute.png)
+    ![Deploy a web app to an Azure Stack Hub VM](media/azure-stack-dev-start-howto-deploy-linux/001-portal-computea.png)
 
 4. In the **Create a virtual machine** pane, for **1. Configure basic settings**:
 

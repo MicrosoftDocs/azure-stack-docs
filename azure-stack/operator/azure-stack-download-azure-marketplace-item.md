@@ -3,10 +3,10 @@ title: Download marketplace items from Azure and publish to Azure Stack Hub
 description: Learn how to download marketplace items from Azure and publish to Azure Stack Hub.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 08/19/2020
+ms.date: 10/16/2020
 ms.author: sethm
 ms.reviewer: avishwan
-ms.lastreviewed: 12/23/2019
+ms.lastreviewed: 10/16/2020
 zone_pivot_groups: state-connected-disconnected
 
 # Intent: As an Azure Stack operator, I want to download marketplace items from Azure Marketplace and publish them to my Azure Stack.
@@ -28,6 +28,8 @@ See [Azure Marketplace items for Azure Stack Hub](azure-stack-marketplace-azure-
 
 > [!NOTE]
 > The catalog will be different based on the cloud your Azure Stack Hub system is connected to. The cloud environment is determined by the Azure subscription you use for registering your Azure Stack Hub.
+
+[!INCLUDE [Azure Stack Hub Operator Access Workstation](../includes/operator-note-owa.md)]
 
 ::: zone pivot="state-connected"
 A connected deployment allows you to use the administrator portal to download marketplace items.
@@ -52,7 +54,7 @@ Your Azure Stack Hub deployment must have internet connectivity and be registere
 
 4. Each line item also shows the currently available version. If more than one version of a Marketplace item is available, the **Version** column shows **Multiple**. You can click on each item to view its description and additional information, including its download size:
 
-   ![Add from Azure](media/azure-stack-download-azure-marketplace-item/add-from-azure1.png)
+   ![Screenshot that shows the available versions of a Marketplace item.](media/azure-stack-download-azure-marketplace-item/add-from-azure1.png)
 
 5. If the version of an item is shown as **Multiple**, you can select that item and then choose a specific version from the resulting version selector dropdown. Note that Microsoft now has the ability to add attributes that block administrators from downloading marketplace products that are incompatible with their Azure Stack, due to various properties, such as the Azure Stack version or billing model. Only Microsoft can add these attributes:
 
@@ -83,14 +85,14 @@ There are two parts to this scenario:
 
   - Your Azure Stack Hub deployment must be registered with Azure.
 
-  - The computer that has internet connectivity must have **Azure Stack Hub PowerShell Module version 1.2.11** or later. If not already present, [install Azure Stack Hub-specific PowerShell modules](azure-stack-powershell-install.md).
+  - The computer that has internet connectivity must have **Azure Stack Hub PowerShell Module version 1.2.11** or later. If not already present, [install Azure Stack Hub-specific PowerShell modules](powershell-install-az-module.md).
 
   - To enable import of a downloaded Marketplace item, the [PowerShell environment for the Azure Stack Hub operator](azure-stack-powershell-configure-admin.md) must be configured.
 
 - Download the **Azs.Syndication.Admin** module from the PowerShell Gallery using the following command:
 
   ```powershell
-  Install-Module -Name Azs.Syndication.Admin
+  Install-Module -Name Azs.Syndication.Admin -AllowPrerelease -PassThru
   ```
   
 - .NET Framework 4.7 or later.
@@ -109,7 +111,7 @@ Once you have registered your Azure Stack, you can disregard the following messa
 2. Sign in to the appropriate Azure cloud and AzureAD directory tenant using the Azure account that you've used to register Azure Stack Hub. To add the account, in PowerShell run `Add-AzureRmAccount`:
 
    ```powershell  
-   Login-AzureRmAccount -Environment AzureCloud -Tenant '<mydirectory>.onmicrosoft.com'
+   Login-AzAccount -Environment AzureCloud -Tenant '<mydirectory>.onmicrosoft.com'
    ```
 
    You are prompted to enter your Azure account credentials and you might have to use two-factor authentication, depending on your account configuration.
@@ -120,13 +122,13 @@ Once you have registered your Azure Stack, you can disregard the following messa
 3. If you have multiple subscriptions, run the following command to select the one you used for registration:
 
    ```powershell  
-   Get-AzureRmSubscription -SubscriptionID 'Your Azure Subscription GUID' | Select-AzureRmSubscription
+   Get-AzSubscription -SubscriptionID 'Your Azure Subscription GUID' | Select-AzSubscription
    ```
 
 4. If you haven't done it in the pre-requisites step already, download the latest version of the Marketplace syndication tool:
 
    ```powershell
-   Install-Module -Name Azs.Syndication.Admin
+   Install-Module -Name Azs.Syndication.Admin -AllowPrerelease -PassThru
    ```
 
 5. To select the Marketplace items such as VM images, extensions, or solution templates to download, run the following command:
@@ -137,10 +139,10 @@ Once you have registered your Azure Stack, you can disregard the following messa
 
    This displays a table that lists all the Azure Stack registrations available in the selected subscription. Choose the registration that matches the Azure Stack environment you're downloading the marketplace items for, and select **OK**.
 
-     ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/select-registration.png)
+     ![Screenshot that shows a list of all the Azure Stack registrations available in the selected subscription.](media/azure-stack-download-azure-marketplace-item/select-registration.png)
 
    You should now see a second table listing all the marketplace items available for download. Select the item that you want to download and make a note of the **Version**. You can hold the **Ctrl** key to select multiple images.
-     ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/select-products.png)
+     ![Screenshot that shows another list of all the Azure Stack registrations available in the selected subscription.](media/azure-stack-download-azure-marketplace-item/select-products.png)
   
    You can also filter the list of images by using the **Add criteria** option.
    ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/select-products-with-filter.png)

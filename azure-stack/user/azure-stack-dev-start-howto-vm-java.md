@@ -177,7 +177,7 @@ You can create a virtual machine (VM) to host your Java web app in Azure Stack H
 
 1. Open a browser in the same network as your Azure Stack Hub, and then open your server, *yourmachine.local.cloudapp.azurestack.external:8080*.
 
-    ![Apache Tomcat on an Azure Stack Hub VM](media/azure-stack-dev-start-howto-vm-java/apache-tomcat.png)
+    ![Screenshot that shows the Apache Tomcat page.](media/azure-stack-dev-start-howto-vm-java/apache-tomcat.png)
 
     The Apache Tomcat page on your server loads. Next, you configure the server to allow you to access the Server Status, Manager App, and Host Manager.
 

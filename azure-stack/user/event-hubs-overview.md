@@ -1,6 +1,6 @@
 ---
-title: Event Hubs on Azure Stack Hub overview
-description: Learn about the Event Hubs resource provider on Azure Stack Hub. 
+title: Overview of Event Hubs on Azure Stack Hub
+description: Learn about Event Hubs on Azure Stack Hub. See how to build hybrid solutions. Compare features of Azure Event Hubs and Event Hubs on Azure Stack Hub. 
 author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
@@ -10,7 +10,7 @@ ms.reviewer: jfggdl
 ms.lastreviewed: 11/27/2019
 ---
 
-# Event Hubs on Azure Stack Hub overview
+# Overview of Event Hubs on Azure Stack Hub
 
 [!INCLUDE [preview-banner](../includes/event-hubs-preview.md)]
 
@@ -48,7 +48,7 @@ The Event Hubs editions (on Azure Stack Hub and on Azure) offer a high degree of
 | Azure Monitor | ✔ | ✔ |
 | Auto-inflate feature | ✘ | ✔ |
 
-Azure Resource Management operations can also be accomplished using Azure Resource Manager templates, [PowerShell](/powershell/module/azurerm.eventhub/), and [Azure CLI](/cli/azure/eventhubs/eventhub/). Currently, there's no support for Operator Administration operations in PowerShell and Azure CLI.
+Azure Resource Management operations can also be accomplished using Azure Resource Manager templates, [PowerShell](/powershell/module/Az.eventhub/), and [Azure CLI](/cli/azure/eventhubs/eventhub/). Currently, there's no support for Operator Administration operations in PowerShell and Azure CLI.
 
 ## Feature documentation
 

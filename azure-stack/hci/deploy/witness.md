@@ -16,7 +16,7 @@ Setting up a witness resource is mandatory for all clusters, and should be set u
 
 You can either use an SMB file share as a witness or use an Azure cloud witness. An Azure cloud witness is recommended, provided all server nodes in the cluster have a reliable internet connection. For more information, see [Deploy a Cloud Witness for a Failover Cluster](/windows-server/failover-clustering/deploy-cloud-witness).
 
-For file-share witnesses, there are requirements for the file server. See [Before you deploy Azure Stack HCI](before-you-start.md) for more information.
+For file-share witnesses, there are requirements for the file server. See [System requirements](../concepts/system-requirements.md) for more information.
 
 ## Set up a witness using Windows Admin Center
 
@@ -101,4 +101,4 @@ Set-ClusterQuorum -FileShareWitness "\\fileserver\share" -Credential (Get-Creden
 
 - For more information on cluster quorum, see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).
 
-- For more information about creating and managing Azure Storage Accounts, see [About Azure Storage Accounts](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/).
+- For more information about creating and managing Azure Storage Accounts, see [About Azure Storage Accounts](/azure/storage/common/storage-account-create).

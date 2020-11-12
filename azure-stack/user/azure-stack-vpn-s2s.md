@@ -46,7 +46,7 @@ Before you begin, make sure you have the following prerequisites:
 
 - An Azure subscription. If you don't already have an Azure subscription, you can activate your [MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), or sign up for a [free account](https://azure.microsoft.com/pricing/free-trial/).
 
-- The Azure Resource Manager PowerShell cmdlets. For more info about installing the PowerShell cmdlets, see [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md).
+- The Azure Resource Manager PowerShell cmdlets. For more info about installing the PowerShell cmdlets, see [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md).
 
 ## Part 1 - Create and set IPsec/IKE policy
 
@@ -165,9 +165,9 @@ Make sure you switch to PowerShell mode to use the Resource Manager cmdlets. For
 Open your PowerShell console and connect to your account; for example:
 
 ```powershell
-Connect-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionName $Sub1
-New-AzureRmResourceGroup -Name $RG1 -Location $Location1
+Connect-AzAccount
+Select-AzSubscription -SubscriptionName $Sub1
+New-AzResourceGroup -Name $RG1 -Location $Location1
 ```
 
 #### 3. Create the virtual network, VPN gateway, and local network gateway
@@ -175,27 +175,27 @@ New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 The following example creates the virtual network, **TestVNet1**, along with three subnets and the VPN gateway. When substituting values, it's important that you specifically name your gateway subnet **GatewaySubnet**. If you name it something else, your gateway creation fails.
 
 ```powershell
-$fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
-$besub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
-$gwsub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWSubPrefix1
+$fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
+$besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
+$gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWSubPrefix1
 
-New-AzureRmVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
+New-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
 
-$gw1pip1 = New-AzureRmPublicIpAddress -Name $GW1IPName1 -ResourceGroupName $RG1 -Location $Location1 -AllocationMethod Dynamic
+$gw1pip1 = New-AzPublicIpAddress -Name $GW1IPName1 -ResourceGroupName $RG1 -Location $Location1 -AllocationMethod Dynamic
 
-$vnet1 = Get-AzureRmVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1
+$vnet1 = Get-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1
 
-$subnet1 = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" `
+$subnet1 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" `
 -VirtualNetwork $vnet1
 
-$gw1ipconf1 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GW1IPconf1 `
+$gw1ipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GW1IPconf1 `
 -Subnet $subnet1 -PublicIpAddress $gw1pip1
 
-New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 `
+New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 `
 -Location $Location1 -IpConfigurations $gw1ipconf1 -GatewayType Vpn `
 -VpnType RouteBased -GatewaySku VpnGw1
 
-New-AzureRmLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 `
+New-AzLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 `
 -Location $Location1 -GatewayIpAddress $LNGIP6 -AddressPrefix `
 $LNGPrefix61,$LNGPrefix62
 ```
@@ -210,7 +210,7 @@ This sample script creates an IPsec/IKE policy with the following algorithms and
 - IPsec: AES256, SHA256, none, SA Lifetime 14400 seconds, and 102400000KB
 
 ```powershell
-$ipsecpolicy6 = New-AzureRmIpsecPolicy -IkeEncryption AES128 -IkeIntegrity SHA1 -DhGroup DHGroup14 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup none -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
+$ipsecpolicy6 = New-AzIpsecPolicy -IkeEncryption AES128 -IkeIntegrity SHA1 -DhGroup DHGroup14 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup none -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
 ```
 
 If you use GCMAES for IPsec, you must use the same GCMAES algorithm and key length for both IPsec encryption and integrity.
@@ -220,10 +220,10 @@ If you use GCMAES for IPsec, you must use the same GCMAES algorithm and key leng
 Create a site-to-site VPN connection and apply the IPsec/IKE policy you created previously:
 
 ```powershell
-$vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
-$lng6 = Get-AzureRmLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1
+$vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
+$lng6 = Get-AzLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1
 
-New-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng6 -Location $Location1 -ConnectionType IPsec -IpsecPolicies $ipsecpolicy6 -SharedKey 'Azs123'
+New-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng6 -Location $Location1 -ConnectionType IPsec -IpsecPolicies $ipsecpolicy6 -SharedKey 'Azs123'
 ```
 
 > [!IMPORTANT]
@@ -247,7 +247,7 @@ The following example shows how to get the IPsec/IKE policy configured on a conn
 ```powershell
 $RG1 = "TestPolicyRG1"
 $Connection16 = "VNet1toSite6"
-$connection6 = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
+$connection6 = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
 $connection6.IpsecPolicies
 ```
 
@@ -273,19 +273,19 @@ The steps to add a new policy or update an existing policy on a connection are t
 ```powershell
 $RG1 = "TestPolicyRG1"
 $Connection16 = "VNet1toSite6"
-$connection6 = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
+$connection6 = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
 
-$newpolicy6 = New-AzureRmIpsecPolicy -IkeEncryption AES128 -IkeIntegrity SHA1 -DhGroup DHGroup14 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup None -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
+$newpolicy6 = New-AzIpsecPolicy -IkeEncryption AES128 -IkeIntegrity SHA1 -DhGroup DHGroup14 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup None -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
 
 $connection6.SharedKey = "AzS123"
 
-Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -IpsecPolicies $newpolicy6
+Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -IpsecPolicies $newpolicy6
 ```
 
 You can get the connection again to check if the policy is updated:
 
 ```powershell
-$connection6 = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
+$connection6 = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
 $connection6.IpsecPolicies
 ```
 
@@ -309,12 +309,12 @@ After you remove the custom policy from a connection, the Azure VPN gateway reve
 ```powershell
 $RG1 = "TestPolicyRG1"
 $Connection16 = "VNet1toSite6"
-$connection6 = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
+$connection6 = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
 $connection6.SharedKey = "AzS123"
 $currentpolicy = $connection6.IpsecPolicies[0]
 $connection6.IpsecPolicies.Remove($currentpolicy)
 
-Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6
+Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6
 ```
 
 You can use the same script to check if the policy has been removed from the connection.

@@ -4,7 +4,7 @@ title: Troubleshoot site-to-site VPN connections in Azure Stack Hub
 description: Troubleshooting steps you can take after you configure a site-to-site VPN connection between an on-premises network and an Azure Stack Hub virtual network.
 author: sethmanheim
 ms.author: sethm
-ms.date: 05/12/2020
+ms.date: 10/01/2020
 ms.topic: article
 ms.reviewer: sranthar
 ms.lastreviewed: 05/12/2020
@@ -29,7 +29,7 @@ The Azure Stack Hub default parameters for IPsec/IKEV2 have changed [starting wi
 > [!IMPORTANT]
 > When using an S2S tunnel, packets are further encapsulated with additional headers. This encapsulation increases the overall size of the packet. In these scenarios, you must clamp TCP **MSS** at **1350**. If your VPN devices do not support MSS clamping, you can set the MTU on the tunnel interface to **1400** bytes instead. For more information, see [Virutal Network TCPIP performance tuning](/azure/virtual-network/virtual-network-tcpip-performance-tuning).
 
-- Confirm that the VPN configure is route-based (IKEv2). Azure Stack Hub does not support policy-based (IKEv1) configurations.
+- Confirm that the VPN configuration is route-based (IKEv2). Azure Stack Hub does not support policy-based (IKEv1) configurations.
 
 - Check whether you are using a [validated VPN device and operating system version](/azure/vpn-gateway/vpn-gateway-about-vpn-devices#devicetable). If the device is not a validated VPN device, you might have to contact the device manufacturer to see if there is a compatibility issue.
 
@@ -52,7 +52,7 @@ The Azure Stack Hub default parameters for IPsec/IKEV2 have changed [starting wi
   - **Azure PowerShell**: Use the following PowerShell command:
 
       ```powershell
-      Get-AzureRMVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group>
+      Get-AzVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group>
       ```
 
 ## Status "Connected" – traffic not flowing

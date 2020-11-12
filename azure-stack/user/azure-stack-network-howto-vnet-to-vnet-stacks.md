@@ -15,7 +15,7 @@ ms.lastreviewed: 10/03/2019
 ---
 
 
-# Establish a VNET to VNET connection in Azure Stack Hub with Fortinet FortiGate NVA
+# VNet to VNet connectivity between Azure Stack Hub instances with Fortinet FortiGate NVA
 
 In this article, you'll connect a VNET in one Azure Stack Hub to a VNET in another Azure Stack Hub using Fortinet FortiGate NVA, a network virtual appliance.
 
@@ -82,8 +82,6 @@ The following table summarizes the parameters that are used in these deployments
 Repeat these steps for both Azure Stack Hub environments. 
 
 1. Open the Azure Stack Hub user portal. Be sure to use credentials that have at least Contributor rights to a subscription.
-
-    ![The screenshot shows the portal.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image5.png)
 
 1. Select **Create a resource** and search for `FortiGate`.
 
@@ -171,19 +169,19 @@ Following the below steps for both the forti1 NVA and forti2 NVA:
 
 1. Get the assigned Public IP address by navigating to the fortiX VM Overview page:
 
-    ![The forti1 overview page shows the resource group, status, and so on.](./media/azure-stack-network-howto-vnet-to-vnet/image13.png)
+    ![The forti1 overview page shows the resource group, status, and so on.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image13.png)
 
 1. Copy the assigned IP address, open a browser, and paste the address into the address bar. Your browser may warn you that the security certificate is not trusted. Continue anyway.
 
 1. Enter the FortiGate administrative user name and password you provided during the deployment.
 
-    ![The screenshot is of the login screen, which has a Login button and text boxes for user name and password.](./media/azure-stack-network-howto-vnet-to-vnet/image14.png)
+    ![The screenshot is of the login screen, which has a Login button and text boxes for user name and password.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image14.png)
 
 1. Select **System** > **Firmware**.
 
 1. Select the box showing the latest firmware, for example, `FortiOS v6.2.0 build0866`.
 
-    ![The screenshot for the "FortiOS v6.2.0 build0866" firmware has a link to release notes, and two buttons: "Backup config and upgrade", and "Upgrade".](./media/azure-stack-network-howto-vnet-to-vnet/image15.png)
+    ![The screenshot for the "FortiOS v6.2.0 build0866" firmware has a link to release notes, and two buttons: "Backup config and upgrade", and "Upgrade".](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image15.png)
 
 1. Select **Backup config and upgrade** and Continue when prompted.
 
@@ -195,7 +193,7 @@ Following the below steps for both the forti1 NVA and forti2 NVA:
 
 1. Select **This site is behind NAT**.
 
-    ![The screenshot of the VPN Creation Wizard shows it to be on the first step, VPN Setup. The following values are selected: "Site to Site" for Template Type, "FortiGate" for Remote Device Type, and "This site is behind NAT" for NAT Configuration.](./media/azure-stack-network-howto-vnet-to-vnet/image16.png)
+    ![The screenshot of the VPN Creation Wizard shows it to be on the first step, VPN Setup. The following values are selected: "Site to Site" for Template Type, "FortiGate" for Remote Device Type, and "This site is behind NAT" for NAT Configuration.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image16.png)
 
 1. Select **Next**.
 
@@ -208,7 +206,7 @@ Following the below steps for both the forti1 NVA and forti2 NVA:
     > [!NOTE]  
     > You will need this key to set up the connection on the on-premises VPN device, that is, they must match *exactly*.
 
-    ![The screenshot of the VPN Creation Wizard shows it to be on the second step, Authentication, and the selected values are highlighted.](./media/azure-stack-network-howto-vnet-to-vnet/image17.png)
+    ![The screenshot of the VPN Creation Wizard shows it to be on the second step, Authentication, and the selected values are highlighted.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image17.png)
 
 1. Select **Next**.
 
@@ -226,13 +224,13 @@ Following the below steps for both the forti1 NVA and forti2 NVA:
 
     Use your IP range if you are using a different IP range.
 
-    ![The screenshot of the VPN Creation Wizard shows it to be on the third step, Policy & Routing, showing the selected and entered values.](./media/azure-stack-network-howto-vnet-to-vnet/image18.png)
+    ![The screenshot of the VPN Creation Wizard shows it to be on the third step, Policy & Routing, showing the selected and entered values.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image18.png)
 
 1. Select **Create**
 
 1. Select **Network** > **Interfaces**.  
 
-    ![The interface list shows two interfaces: port1, which has been configured, and port2, which hasn't. There are buttons to create, edit, and delete interfaces.](./media/azure-stack-network-howto-vnet-to-vnet/image19.png)
+    ![The interface list shows two interfaces: port1, which has been configured, and port2, which hasn't. There are buttons to create, edit, and delete interfaces.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image19.png)
 
 1. Double-click **port2**.
 
@@ -249,11 +247,11 @@ Once the above has been completed for **both** NVAs:
 
 1.  On the forti2 FortiGate web console, select to **Monitor** > **IPsec Monitor**. 
 
-    ![The monitor for VPN connection conn1 is listed. It is shown as being down, as is the corresponding Phase 2 Selector.](./media/azure-stack-network-howto-vnet-to-vnet/image20.png)
+    ![The monitor for VPN connection conn1 is listed. It is shown as being down, as is the corresponding Phase 2 Selector.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image20.png)
 
 2.  Highlight `conn1` and select the **Bring Up** > **All Phase 2 Selectors**.
 
-    ![The monitor and Phase 2 Selector are both shown as up.](./media/azure-stack-network-howto-vnet-to-vnet/image21.png)
+    ![The monitor and Phase 2 Selector are both shown as up.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image21.png)
 
 
 ## Test and validate connectivity

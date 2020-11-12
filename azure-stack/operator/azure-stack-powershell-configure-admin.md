@@ -4,10 +4,10 @@ description: Learn how to connect to Azure Stack Hub with PowerShell.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 8/4/2020
+ms.date: 10/19/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 8/4/2020
+ms.lastreviewed: 10/19/2020
 
 # Intent: As an Azure Stack operator, I want to learn how to connect to Azure Stack using Powershell.
 # Keyword: connect azure stack powershell
@@ -23,7 +23,7 @@ You can configure Azure Stack Hub to use PowerShell to manage resources like cre
 
 Run the following prerequisites either from the [Azure Stack Development Kit (ASDK)](../asdk/asdk-connect.md#connect-with-rdp) or from a Windows-based external client if you're [connected to the ASDK through VPN](../asdk/asdk-connect.md#connect-with-vpn).
 
-- Install [Azure Stack Hub-compatible Azure PowerShell modules](azure-stack-powershell-install.md).  
+- Install [Azure Stack Hub-compatible Azure PowerShell modules](powershell-install-az-module.md).  
 - Download the [tools required to work with Azure Stack Hub](azure-stack-powershell-download.md).  
 
 ## Connect with Azure AD
@@ -34,7 +34,7 @@ To configure the Azure Stack Hub operator environment with PowerShell, run one o
 
 ```powershell  
     # Register an Azure Resource Manager environment that targets your Azure Stack Hub instance. Get your Azure Resource Manager endpoint value from your service provider.
-    Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanagement.local.azurestack.external" `
+    Add-AzEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanagement.local.azurestack.external" `
       -AzureKeyVaultDnsSuffix adminvault.local.azurestack.external `
       -AzureKeyVaultServiceEndpointResourceId https://adminvault.local.azurestack.external
 
@@ -54,7 +54,7 @@ Connect to the Azure Stack Hub operator environment with PowerShell with Azure A
 
   ```powershell  
   # Register an Azure Resource Manager environment that targets your Azure Stack Hub instance. Get your Azure Resource Manager endpoint value from your service provider.
-    Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanagement.local.azurestack.external" `
+    Add-AzEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanagement.local.azurestack.external" `
       -AzureKeyVaultDnsSuffix adminvault.local.azurestack.external `
       -AzureKeyVaultServiceEndpointResourceId https://adminvault.local.azurestack.external
 
