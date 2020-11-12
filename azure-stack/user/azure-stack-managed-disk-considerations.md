@@ -54,8 +54,19 @@ There are also differences with storage metrics:
 
 Azure Stack Hub managed disks support the following API versions:
 
+::: moniker range=">=azs-2008"
+- 2019-03-01
+- 2018-09-30
+- 2018-06-01
+- 2018-04-01
+- 2017-03-30
+::: moniker-end
+
+::: moniker range="<=azs-2005"
+
 - 2017-03-30
 - 2017-12-01 (Managed images only, no disks, no snapshots)
+::: moniker-end
 
 ## Convert to managed disks
 
