@@ -234,7 +234,7 @@ Starting with the 2005 release, when you update to a new major version (for exam
 
 After the installation of 2005, if any 2005 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2005.20.82](https://support.microsoft.com/help/4592228)
+- [Azure Stack Hub hotfix 1.2005.21.84](https://support.microsoft.com/help/4592779)
 ::: moniker-end
 
 ::: moniker range="azs-2002"
