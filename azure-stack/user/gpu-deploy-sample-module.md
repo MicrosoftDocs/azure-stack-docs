@@ -5,9 +5,9 @@ author: mattbriggs
 ms.author: mabrigg
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 10/20/2020
+ms.date: 11/13/2020
 ms.reviewer: gara
-ms.lastreviewed: 10/20/2020
+ms.lastreviewed: 11/13/2020
 
 # Intent: As a a developer on Azure Stack Hub, I want to deploy a solution using a Graphics Processing Unit (GPU) in order to deliver an processing intensive visualization application.
 # Keyword: Graphics Processing Unit (GPU) module solution
@@ -114,7 +114,7 @@ Docker containers can run anywhere, on-premises in the customer datacenter, in a
 3.  Add Docker's GPG key.
 
     ```bash  
-    curl -fsSL <https://download.docker.com/linux/ubuntu/gpg> | sudo apt-key add -
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     ```
 
 4.  Add Docker's apt repo.
