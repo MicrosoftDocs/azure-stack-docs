@@ -64,8 +64,8 @@ Azure Stack supports synchronizing time with only one time server (NTP). You can
     Set-AzsTimeSource -Timeserver NEWTIMESERVER -resync
     ```
 
-    >[!NOTE]
-    >This procedure doesn't update the time server on the physical switches.
+>[!NOTE]
+>This procedure doesn't update the time server on the physical switches.
 
 ## DNS
 

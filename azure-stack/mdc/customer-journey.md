@@ -28,9 +28,9 @@ This article describes the end-to-end process for Azure Modular Datacenter (MDC)
 
 The following table lists what can be expected during the various phases of deployment.
 
-|	|Order process	|Predeployment	|Integration, validation, transport	|Onsite deployment	|Post deployment |
+| Participant |Order process |Predeployment	|Integration, validation, transport	|Onsite deployment |Post deployment |
 |---|---------------|---------------|-----------------------------------|--------------------|----------------|
-|Microsoft	|- Signal to delivery to US location.	|Provide required tooling and documentation to collect datacenter requirements.	|- Validate configuration artifacts and check validation results.<br>- Ensure hardware is delivered.	|- Rack and stack.<br>- Network integration.<br>- Azure Stack Hub deployment.<br>- Hand off to customer.	|Registration and Azure Stack Hub Marketplace syndication.|
+|Microsoft	| Signal to delivery to US location.	|Provide required tooling and documentation to collect datacenter requirements.	|- Validate configuration artifacts and check validation results.<br>- Ensure hardware is delivered.	|- Rack and stack.<br>- Network integration.<br>- Azure Stack Hub deployment.<br>- Hand off to customer.	|Registration and Azure Stack Hub Marketplace syndication.|
 |Customer	|Signal purchase.	|- Fill out network details in deployment worksheet.<br>- Collect certificates.<br>- Obtain Azure Active Directory (Azure AD) accounts.<br>- Run any validation tooling provided.	|Ensure the site is ready with network, power, and cooling prerequisites.	|- Be prepared with deployment configuration artifacts.<br>- Ensure customer's network engineer is available.	|     |
 
 
