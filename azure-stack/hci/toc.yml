@@ -144,6 +144,8 @@
     items:
     - name: Billing
       href: concepts/billing.md
+    - name: Configure firewalls
+      href: concepts/configure-firewalls.md
     - name: Updates and upgrades
       href: concepts/updates.md
     - name: Security considerations
