@@ -298,7 +298,9 @@ The following table shows the gateway types and the estimated aggregate throughp
 Table notes:
 
 (1) VPN throughput isn't a guaranteed throughput for cross-premises connections across the internet. It's the maximum possible throughput measurement.
+
 (2) Maximum tunnels is the total per MDC deployment for all subscriptions.
+
 (3) BGP routing isn't supported for the Basic SKU.
 
 >[!IMPORTANT]
