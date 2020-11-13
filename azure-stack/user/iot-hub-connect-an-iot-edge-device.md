@@ -77,7 +77,7 @@ In this section, you deploy a new Linux VM, which will serve as the virtual IoT 
 ## Transfer IoT Hub root CA to IoT Edge device (internal CA only)
 
 > [!IMPORTANT]
-> You only need to complete this section if you're using your own internal CA for certificate generation. If you're using a public CA, you can skip this section and [proceed to the next section](#configure-certificates-for-the-ioT-edge-device).
+> You only need to complete this section if you're using your own internal CA for certificate generation. If you're using a public CA, you can skip this section and [proceed to the next section](#configure-certificates-for-the-iot-edge-device).
 
 | Placeholder | Example | Note |
 |-------------|---------|------|
@@ -91,7 +91,7 @@ In this section, you deploy a new Linux VM, which will serve as the virtual IoT 
 Complete these steps from a machine that has access to your Azure Stack Hub instance, to export your root CA certificate from your IoT Hub, in PEM format. This example will show how to export the root CA certificate using either a [Microsoft Edge](https://www.microsoft.com/edge) or [Google Chrome](https://www.google.com/chrome/index.html) browser: 
 
    1. On the**Overview** page of your IoT Hub, use the **Copy** button to the right of the **Hostname** property to copy the IoT Hub hostname to the clipboard:  
-   
+
       [![iot hub host name](media\iot-hub-connect-an-iot-edge-device\copy-iot-hub-host-name.png)](media\iot-hub-connect-an-iot-edge-device\copy-iot-hub-host-name.png#lightbox)
    1. Open a new tab in a Microsoft Edge or Google Chrome browser, enter `https://`, paste the IoT Hub hostname copied in the previous step, and press **Enter**. 
 
@@ -204,7 +204,7 @@ To create the IoT Edge device CA certificate files:
 ### Append the IoT Hub root CA to the device root CA (internal CA only)
 
 > [!IMPORTANT]
-> You only need to complete this section if you're using your own internal CA for certificate generation. If you're using a public CA, you can skip this section and [proceed to the next section](#configure-software-and-services-for-the-ioT-edge-device).
+> You only need to complete this section if you're using your own internal CA for certificate generation. If you're using a public CA, you can skip this section and [proceed to the next section](#configure-software-and-services-for-the-iot-edge-device).
 
 Run the following script to append the IoT Hub root CA to the device root CA:
 
