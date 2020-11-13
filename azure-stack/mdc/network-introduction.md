@@ -124,7 +124,7 @@ Examples of some of the endpoints for this deployment would look like the follow
 - `https://portal.east.cloud.fabrikam.com`
 - `https://adminportal.east.cloud.fabrikam.com`
 
-To use this example DNS namespace for a MDC deployment, the following conditions are required:
+To use this example DNS namespace for an MDC deployment, the following conditions are required:
 
 - The zone fabrikam.com is registered with a domain registrar, internal corporate DNS server, or both. Registration depends on your name resolution requirements.
 - The child domain cloud.fabrikam.com exists under the zone fabrikam.com.
