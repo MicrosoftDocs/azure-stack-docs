@@ -1,6 +1,6 @@
 ---
 title: Modular Datacenter network integration
-description: Learn about Azure Stack network integration for the Azure Modular Datacenter.
+description: Learn about Azure Stack network integration for Azure Modular Datacenter.
 author: justinha
 ms.author: justinha
 ms.service: azure-stack
@@ -11,7 +11,7 @@ ms.lastreviewed: 01/02/2020
 
 # Network integration
 
-This article covers Azure Stack network integration for the Azure Modular Datacenter.
+This article covers Azure Stack network integration for Azure Modular Datacenter.
 
 ## Border connectivity (uplink)
 
@@ -23,7 +23,7 @@ The edge switches require Layer 3 uplinks with point-to-point IPs (/30 networks)
 
 Using a dynamic routing protocol like BGP guarantees that your system is always aware of network changes and facilitates administration. For enhanced security, you can set a password on the BGP peering between the edge and the border.
 
-As shown in the following diagram, advertising of the private IP space on the TOR switch is blocked by using a prefix list. The prefix list denies the advertisement of the private network, and it's applied as a route map on the connection between the TOR and the edge.
+As shown in the following diagram, advertising of the private IP space on the top-of-rack (TOR) switch is blocked by using a prefix list. The prefix list denies the advertisement of the private network, and it's applied as a route map on the connection between the TOR and the edge.
 
 The software load balancer (SLB) running inside the Azure Stack solution peers to the TOR devices so it can dynamically advertise the VIP addresses.
 

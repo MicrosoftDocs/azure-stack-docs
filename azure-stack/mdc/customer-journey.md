@@ -1,6 +1,6 @@
 ---
-title: Customer journey from purchasing to Azure Stack Hub post-deployment | Microsoft Docs
-description: Learn what to expect for a successful onsite deployment of an Azure Modular Datacenter (MDC), from planning to post-deployment.
+title: Customer journey from purchasing to Azure Stack Hub post deployment | Microsoft Docs
+description: Learn what to expect for a successful onsite deployment of Azure Modular Datacenter (MDC), from planning to post deployment.
 services: azure-stack
 documentationcenter: ''
 author: ashika789
@@ -22,13 +22,13 @@ ms.lastreviewed: 11/04/2020
 
 # Modular Datacenter integration overview
 
-This article describes the end-to-end process for Azure Modular Datacenter (MDC) integration, from purchasing to post-deployment. The integration is a collaborative project between the customer and Microsoft. The following sections cover different phases of the project timeline and specific steps for project members.
+This article describes the end-to-end process for Azure Modular Datacenter (MDC) integration, from purchasing to post deployment. The integration is a collaborative project between the customer and Microsoft. The following sections cover different phases of the project timeline and specific steps for project members.
 
 ## Introduction
 
 The following table lists what can be expected during the various phases of deployment.
 
-|	|Order process	|Pre-deployment	|Integration, validation, transport	|Onsite deployment	|Post-deployment |
+|	|Order process	|Predeployment	|Integration, validation, transport	|Onsite deployment	|Post deployment |
 |---|---------------|---------------|-----------------------------------|--------------------|----------------|
 |Microsoft	|- Signal to delivery to US location.	|Provide required tooling and documentation to collect datacenter requirements.	|- Validate configuration artifacts and check validation results.<br>- Ensure hardware is delivered.	|- Rack and stack.<br>- Network integration.<br>- Azure Stack Hub deployment.<br>- Hand off to customer.	|Registration and Azure Stack Hub Marketplace syndication.|
 |Customer	|Signal purchase.	|- Fill out network details in deployment worksheet.<br>- Collect certificates.<br>- Obtain Azure Active Directory (Azure AD) accounts.<br>- Run any validation tooling provided.	|Ensure the site is ready with network, power, and cooling prerequisites.	|- Be prepared with deployment configuration artifacts.<br>- Ensure customer's network engineer is available.	|     |
@@ -36,7 +36,7 @@ The following table lists what can be expected during the various phases of depl
 
 ## Order process
 
-Your organization will work with Microsoft to place an order for an allocated number of systems. After you place the order, Microsoft will deliver the MDC to your US location. Microsoft will ensure that all secure supply chain requirements are met.
+Your organization will work with Microsoft to place an order for an allocated number of systems. After you place the order, Microsoft will deliver MDC to your US location. Microsoft will ensure that all secure supply chain requirements are met.
 
 ## Hardware delivery
 
@@ -52,7 +52,7 @@ It's *crucial* that all prerequisite data is locked and available *before the on
 >[!Tip]
 >If any of this information has changed, make sure to work with your internal organization to ensure the information is updated prior to the arrival of the onsite deployment engineer. Updating your information will prevent any delays in the deployment process.
 
-## Pre-deployment
+## Predeployment
 
 You decide how to integrate Azure Stack Hub into your datacenter. Microsoft has published a [deployment worksheet](../operator/azure-stack-deployment-worksheet.md) that guides you through gathering all necessary information needed to integrate successfully into your datacenter. In addition, a certain set of certificates is required at the time of deployment. To help you obtain these certificates, Microsoft provides you with the [Azure Stack Hub Readiness Checker](../operator/azure-stack-validation-report.md). This tool will help you create Certificate Signing Requests (CSRs) to provide to your internal certificate authority.
 
@@ -84,7 +84,7 @@ The following checks are what you should expect from the onsite engineer during 
 - Make sure firmware for all components is at the latest approved version by the solution.
 - Start the deployment.
 
-## Post-deployment
+## Post deployment
 
 Several steps must be performed by the Microsoft deployment engineer before the solution is handed off to the customer. In this phase, validation is important to ensure the system is deployed and performing correctly.
 

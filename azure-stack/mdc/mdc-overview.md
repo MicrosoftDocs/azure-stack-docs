@@ -1,6 +1,6 @@
 ---
 title: Modular Datacenter overview | 
-description: The Azure Modular Datacenter is a portable, rapidly deployable datacenter appropriate for supporting large-scale combat operations in temporary and fixed command posts.
+description: Azure Modular Datacenter is a portable, rapidly deployable datacenter appropriate for supporting large-scale combat operations in temporary and fixed command posts.
 author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
@@ -12,13 +12,13 @@ ms.lastreviewed: 11/06/2020
 
 # Modular Datacenter overview
 
-The Azure Modular Datacenter (MDC) is based on Azure Stack Hub. The MDC is a portable, rapidly deployable datacenter appropriate for supporting large-scale combat operations in temporary and fixed command posts.
+Azure Modular Datacenter (MDC) is based on Azure Stack Hub. MDC is a portable, rapidly deployable datacenter appropriate for supporting large-scale combat operations in temporary and fixed command posts.
 
 Azure Stack Hub is a horizontally and vertically scalable solution that provides multitenant, native hybrid cloud capabilities for information as a service (IaaS) and platform as a service (PaaS) services to environments at the edge. Azure Stack Hub supports a variety of modular scenarios for temporary and fixed command posts and expeditionary forces.
 
 Azure Stack Hub is an integrated hardware and software appliance that's commercially available in a variety of capacities based on scaling through node scale-units. Azure Stack Hub is available with extensions, which include general-purpose graphics processing unit (GPU)-enabled configurations and expandable external storage.
 
-## Use the MDC
+## Use MDC
 
 Azure Stack delivers on four core principles that are consistent with and extend Azure's capabilities for modular edge scenarios.
 
@@ -40,9 +40,9 @@ The cloud native design of Azure Stack removes the operational complexities of t
 
 Remote assisted administration by Microsoft or a Microsoft-managed offering in the field for Azure Stack devices can be enabled by providing users with the appropriate access through role-based access control (RBAC) to perform actions through the administrative portal, privileged management endpoint, or command-line interface (CLI). This capability enables all patching and other administrative and monitoring activities to be performed by Microsoft. Azure Stack is field upgradable and updatable through secure administration portal or CLI commands that both apply security updates and IaaS and PaaS feature updates to maintain commercial parity with Azure, where appropriate, from local or remote networks.
 
-## Benefits of using the MDC
+## Benefits of using MDC
 
-The MDC supports a consistent environment with Azure in disadvantaged communications environments:
+MDC supports a consistent environment with Azure in disadvantaged communications environments:
 
  - Static, modular, rapidly deployable datacenters with Azure cloud services to power large analytics apps in modular operations centers.
  - Azure's modular edge offerings maintain consistency between the cloud and the edge through a singular approach for supporting IaaS primitives such as virtual machines, storage, and virtual networking.
