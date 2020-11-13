@@ -172,7 +172,7 @@ For instructions see [Select device and add modules](/azure/iot-edge/how-to-depl
 
     3. The VS Code terminal should also show the IoT Hub events as the monitoring output for your Azure Stack Edge device.
 
-    ![a valid install](media/gpu-deploy-sample-module/gpu-monitor-events-output.png)
+    ![a valid install is](media/gpu-deploy-sample-module/gpu-monitor-events-output.png)
 
     You can see that the time taken to execute the same set of operations (5000 iterations of shape transformation) by GPU is lot lesser than it is for CPU.
 
