@@ -74,7 +74,7 @@ In this section, you deploy a new Linux VM, which will serve as the virtual IoT 
    sudo adduser edgeadmin
    ```
 
-## Transfer the IoT Hub root CA to IoT Edge device (internal CA only)
+## Transfer IoT Hub root CA to IoT Edge device (internal CA only)
 
 > [!IMPORTANT]
 > You only need to complete this section if you're using your own internal CA for certificate generation. If you're using a public CA, you can skip this section and [proceed to the next section](#configure-certificates-for-the-ioT-edge-device).
@@ -91,12 +91,14 @@ In this section, you deploy a new Linux VM, which will serve as the virtual IoT 
 Complete these steps from a machine that has access to your Azure Stack Hub instance, to export your root CA certificate from your IoT Hub, in PEM format. This example will show how to export the root CA certificate using either a [Microsoft Edge](https://www.microsoft.com/edge) or [Google Chrome](https://www.google.com/chrome/index.html) browser: 
 
    1. On the**Overview** page of your IoT Hub, use the **Copy** button to the right of the **Hostname** property to copy the IoT Hub hostname to the clipboard:  
+   
       [![iot hub host name](media\iot-hub-connect-an-iot-edge-device\copy-iot-hub-host-name.png)](media\iot-hub-connect-an-iot-edge-device\copy-iot-hub-host-name.png#lightbox)
    1. Open a new tab in a Microsoft Edge or Google Chrome browser, enter `https://`, paste the IoT Hub hostname copied in the previous step, and press **Enter**. 
+
    1. After the error message is returned, select the lock icon to the left of the address bar, then click **Certificate**.
       [![certificate secure connection](media\iot-hub-connect-an-iot-edge-device\iot-hub-root-ca-connection.png)](media\iot-hub-connect-an-iot-edge-device\iot-hub-root-ca-connection.png#lightbox)
 
-   1. When the SSL/TLS certificate shows, select the **Certification path** tab. Then select the top-most certificate in the path, and select the **View Certificate** button. 
+   1. When the SSL/TLS certificate shows, select the **Certification path** tab. Then select the top-most certificate in the path, and select the **View Certificate** button.  
       [![certificate secure connection - SSL cert](media\iot-hub-connect-an-iot-edge-device\iot-hub-root-ca-cert-ssl.png)](media\iot-hub-connect-an-iot-edge-device\iot-hub-root-ca-cert-ssl.png#lightbox) 
 
    1. When the root CA certificate shows, select the **Details** tab, then the **Copy to File...** button.
