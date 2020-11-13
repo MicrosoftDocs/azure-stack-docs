@@ -29,7 +29,7 @@ To get setup:
 
 Configure these prerequisites from the [development kit](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp), or from a Windows-based external client if you're [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn):
 
-* Install [Azure Stack Hub-compatible Azure PowerShell modules](../operator/azure-stack-powershell-install.md).
+* Install [Azure Stack Hub-compatible Azure PowerShell modules](../operator/powershell-install-az-module.md).
 * Download the [tools required to work with Azure Stack Hub](../operator/azure-stack-powershell-download.md).
 
 Make sure you replace the following script variables with values from your Azure Stack Hub configuration:
@@ -42,25 +42,25 @@ Make sure you replace the following script variables with values from your Azure
 ## Connect to Azure Stack Hub with Azure AD
 
 ```powershell  
-    Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
+    Add-AzEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
     # Set your tenant name
-    $AuthEndpoint = (Get-AzureRmEnvironment -Name "AzureStackUser").ActiveDirectoryAuthority.TrimEnd('/')
+    $AuthEndpoint = (Get-AzEnvironment -Name "AzureStackUser").ActiveDirectoryAuthority.TrimEnd('/')
     $AADTenantName = "<myDirectoryTenantName>.onmicrosoft.com"
     $TenantId = (invoke-restmethod "$($AuthEndpoint)/$($AADTenantName)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
 
     # After signing in to your environment, Azure Stack Hub cmdlets
     # can be easily targeted at your Azure Stack Hub instance.
-    Add-AzureRmAccount -EnvironmentName "AzureStackUser" -TenantId $TenantId
+    Add-AzAccount -EnvironmentName "AzureStackUser" -TenantId $TenantId
 ```
 
 ## Connect to Azure Stack Hub with AD FS
 
   ```powershell  
   # Register an Azure Resource Manager environment that targets your Azure Stack Hub instance
-  Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
+  Add-AzEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
 
   # Sign in to your environment
-  Login-AzureRmAccount -EnvironmentName "AzureStackUser"
+  Login-AzAccount -EnvironmentName "AzureStackUser"
   ```
 
 ## Register resource providers
@@ -68,10 +68,10 @@ Make sure you replace the following script variables with values from your Azure
 Resource providers aren't automatically registered for new user subscriptions that don't have any resources deployed through the portal. You can explicitly register a resource provider by running the following script:
 
 ```powershell  
-foreach($s in (Get-AzureRmSubscription)) {
-        Select-AzureRmSubscription -SubscriptionId $s.SubscriptionId | Out-Null
+foreach($s in (Get-AzSubscription)) {
+        Select-AzSubscription -SubscriptionId $s.SubscriptionId | Out-Null
         Write-Progress $($s.SubscriptionId + " : " + $s.SubscriptionName)
-Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider
+Get-AzResourceProvider -ListAvailable | Register-AzResourceProvider
     }
 ```
 
@@ -82,7 +82,7 @@ Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider
 When you've got everything setup, test connectivity by using PowerShell to create resources in Azure Stack Hub. As a test, create a resource group for an application and add a VM. Run the following command to create a resource group named "MyResourceGroup":
 
 ```powershell  
-New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
+New-AzResourceGroup -Name "MyResourceGroup" -Location "Local"
 ```
 
 ## Next steps

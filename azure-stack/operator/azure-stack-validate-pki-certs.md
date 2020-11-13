@@ -6,10 +6,10 @@ services: azure-stack
 documentationcenter: ''
 author: IngridAtMicrosoft
 ms.topic: how-to
-ms.date:  03/04/2020
+ms.date:  10/19/2020
 ms.author: inhenkel
 ms.reviewer: ppacent
-ms.lastreviewed: 01/08/2019
+ms.lastreviewed: 10/19/2020
 
 # Intent: As an Azure Stack Hub operator, I want to validate PKI certificates for Azure Stack Hub integrated systems using the Readiness Checker tool.
 # Keyword: azure stack hub validate pki certificates readiness checker
@@ -63,7 +63,7 @@ Use these steps to validate the Azure Stack Hub PKI certificates for deployment 
 1. Install **AzsReadinessChecker** from a PowerShell prompt (5.1 or above) by running the following cmdlet:
 
     ```powershell  
-        Install-Module Microsoft.AzureStack.ReadinessChecker -force 
+        Install-Module Microsoft.AzureStack.ReadinessChecker -Force -AllowPrerelease
     ```
 
 2. Create the certificate directory structure. In the example below, you can change `<C:\Certificates\Deployment>` to a new directory path of your choice.
