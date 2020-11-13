@@ -4,12 +4,12 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/11/2020
+ms.date: 11/12/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Intent: As an Azure Stack Hub user, I want to know what's new in the latest release so that I can plan my update.
 # Keyword: Notdone: keyword noun phrase
 
 ---
@@ -70,12 +70,17 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Azure Stack Hub blob storage now enables users to use an immutable blob. By setting immutable policies on a container, you can store business-critical data objects in a WORM (Write Once, Read Many) state. In this release, immutable policies can only be set through the REST API or client SDKs. Append blob writes are also not possible in this release. For more information about immutable blobs, see [Store business-critical blob data with immutable storage](/azure/storage/blobs/storage-blob-immutable-storage).
 - Azure Stack Hub Storage now supports Azure Storage services APIs version 2019-07-07. For Azure client libraries that is compatible with the new REST API version, see [Azure Stack Hub storage development tools](../user/azure-stack-storage-dev.md#azure-client-libraries).
 - Azure Stack Hub compute now supports Azure Compute APIs version 2020-06-01, with a subset of total available features.
-- Azure Stack Hub managed disk now supports Azure Disk APIs version 2019-03-01, with a subset of total available features. 
+- Azure Stack Hub managed disks now support Azure Disk APIs version **2019-03-01**, with a subset of the available features.
 - Preview of Windows Admin Center that can now connect to Azure Stack Hub to provide in-depth insights into the infrastructure during support operations (break-glass required).
 - Ability to add login banner to the privileged endpoint (PEP) at deployment time.
 - Released more **Exclusive Operations** banners, which improve the visibility of operations that are currently happening on the system, and disable users from initiating (and subsequently failing) any other exclusive operation.
 - Introduced two new banners in each Azure Stack Hub Marketplace item's product page. If there is a Marketplace download failure, operators can view error details and attempt recommended steps to resolve the issue.
 - Released a rating tool for customers to provide feedback. This will enable Azure Stack Hub to measure and optimize the customer experience.
+- This release of Azure Stack Hub includes a private preview of Azure Kubernetes Service (AKS) and Azure Container Registry (ACR). The purpose of the private preview is to collect feedback about the quality, features, and user experience of AKS and ACR on Azure Stack Hub.
+- This release includes a public preview of Azure CNI and Windows Containers using [AKS Engine v0.55.4](../user/kubernetes-aks-engine-release-notes.md). For an example of how to use them in your API model, [see this example on GitHub](https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-windows.json).
+- There is now support for [Istio 1.3 deployment](https://github.com/Azure/aks-engine/tree/master/examples/service-mesh) on clusters deployed by [AKS Engine v0.55.4](../user/kubernetes-aks-engine-release-notes.md). For more information, [see the instructions here](../user/kubernetes-aks-engine-service-account.md).
+- There is now support for deployment of [private clusters](https://github.com/Azure/aks-engine/blob/master/docs/topics/features.md#private-cluster) using [AKS Engine v0.55.4](../user/kubernetes-aks-engine-release-notes.md).
+- This release includes support for [sourcing Kubernetes configuration secrets](https://github.com/Azure/aks-engine/blob/master/docs/topics/keyvault-secrets.md#use-key-vault-as-the-source-of-cluster-configuration-secrets) from Azure and Azure Stack Hub Key Vault instances.
 
 ### Improvements
 
@@ -85,6 +90,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Changes to the startup and shutdown process on infrastructure role instances and their dependencies on scale unit nodes. This increases the reliability for Azure Stack Hub startup and shutdown.
 - The **AzSScenarios** suite of the **Test-AzureStack** validation tool has been updated to enable Cloud Service Providers to run this suite successfully with multi-factor authentication enforced on all customer accounts.
 - Improved alert reliability by adding suppression logic for 29 customer facing alerts during lifecycle operations.
+- You can now view a detailed log collection HTML report which provides details on the roles, duration, and status of the log collection. The purpose of this report is to help users provide a summary of the logs collected. Microsoft Customer Support Services can then quickly assess the report to evaluate the log data, and help to troubleshoot and mitigate system issues.
+- The infrastructure fault detection coverage has been expanded with the addition of 7 new monitors across user scenarios such as CPU utilization and memory consumption, which helps to increase the reliability of fault detection.
 
 ### Changes
 
@@ -227,7 +234,7 @@ Starting with the 2005 release, when you update to a new major version (for exam
 
 After the installation of 2005, if any 2005 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2005.20.82](https://support.microsoft.com/help/4592228)
+- [Azure Stack Hub hotfix 1.2005.21.84](https://support.microsoft.com/help/4592779)
 ::: moniker-end
 
 ::: moniker range="azs-2002"
