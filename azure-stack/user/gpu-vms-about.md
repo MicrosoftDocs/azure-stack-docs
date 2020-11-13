@@ -5,7 +5,7 @@ author: mattbriggs
 ms.author: mabrigg
 ms.service: azure-stack
 ms.topic: reference
-ms.date: 07/07/2020
+ms.date: 10/20/2020
 ms.reviewer: kivenkat
 ms.lastreviewed: 07/07/2020
 
@@ -17,16 +17,16 @@ ms.lastreviewed: 07/07/2020
 
 *Applies to: Azure Stack integrated systems*
 
-In this article, you can learn which graphics processing unit (GPU) models are supported on the Azure Stack Hub multinode system. You can also find instructions on installing the drivers used with the GPUs. GPU support in Azure Stack Hub enables solutions such as Artificial Intelligence, training, inference, and data visualization. The AMD Radeon Instinct MI25 can be used to support graphic-intensive applications such as Autodesk AutoCAD.
+This article describes which graphics processing unit (GPU) models are supported on an Azure Stack Hub multinode system. You can also find instructions on installing the drivers used with the GPUs. GPU support in Azure Stack Hub enables solutions such as Artificial Intelligence, training, inference, and data visualization. The AMD Radeon Instinct MI25 can be used to support graphic-intensive applications such as Autodesk AutoCAD.
 
 You can choose from three GPU models in the public preview period. They are available in NVIDIA V100, NVIDIA T4 and AMD MI25 GPUs. These physical GPUs align with the following Azure N-Series virtual machine (VM) types as follows:
 - [NCv3](/azure/virtual-machines/ncv3-series)
 - [NVv4 (AMD MI25)](/azure/virtual-machines/nvv4-series)
-- NCas_v4
+- [NCasT4_v3](/azure/virtual-machines/nct4-v3-series)
 
 > [!IMPORTANT]  
 > Azure Stack Hub GPU support is currently in public preview. To participate in the preview, complete the form at [aka.ms/azurestackhubgpupreview](https://aka.ms/azurestackhubgpupreview).
-> This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities. 
+> This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities.
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## NCv3
@@ -47,18 +47,14 @@ The NVv4-series virtual machines are powered by [AMD Radeon Instinct MI25](https
 | --- | --- | --- | --- | --- | --- | --- | --- |   
 | Standard_NV4as_v4 |4 |14 |88 | 1/8 | 2 | 4 | 2 | 
 
-## NCas_v4
-
-This new NVIDIA T4 VM size allows for light ML, inference and visualization workloads to be run on Azure Stack Hub. Currently this VM size is *not* available on the portal for deployment and powershell/cli will need to be used instead.
-
+## NCasT4_v3
 
 | Size | vCPU | Memory: GiB | GPU | GPU memory: GiB | Max data disks | Max NICs | 
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NC4as_v4 |4 |28 | 1 | 16 | 8 | 4 | 
-| Standard_NC8as_v4 |8 |56 | 1 | 16 | 16 | 8 | 
-| Standard_NC16as_v4 |16 |112 | 1 | 16 | 32 | 8 | 
-| Standard_NC64as_v4 |64 |448 | 4 | 64 | 32 | 8 | 
-
+| Standard_NC4as_T4_v3 |4 |28 | 1 | 16 | 8 | 4 | 
+| Standard_NC8as_T4_v3 |8 |56 | 1 | 16 | 16 | 8 | 
+| Standard_NC16as_T4_v3 |16 |112 | 1 | 16 | 32 | 8 | 
+| Standard_NC64as_T4_v3 |64 |448 | 4 | 64 | 32 | 8 |
 
 ## Patch and update, FRU behavior of VMs 
 
@@ -69,18 +65,30 @@ GPU VMs will undergo downtime during operations such as patch and update (PnU) a
 | VM state  | Unavailable during and post update without manual start operation | Unavailable during update. Available post update with manual operation | Unavailable during update. Available post update with manual operation| 
 | Manual operation | If the VM needs to be made available during the update, if there are available GPU partitions, the VM can be restarted from the portal by clicking the **Restart** button. Restart the VM after the update from the portal using the **Restart** button | VM cannot be made available during the update. Post update completion, VM needs to be stop-deallocated using the **Stop** button and started back up using the "Start" button | VM cannot be made available during the update.Post update completion, VM needs to be stop-deallocated using the **Stop** button and started back up using the **Start** button.| 
 
-## Guest driver installation 
+## Guest driver installation
 
 ### AMD MI25
+
 The article [Install AMD GPU drivers on N-series VMs running Windows](/azure/virtual-machines/windows/n-series-amd-driver-setup) provides instructions on installing the driver for the AMD Radeon Instinct MI25 inside the NVv4 GPU-P enabled VM along with steps on how to verify driver installation. This extension only works in connected mode.
 
 ### NVIDIA
 
-NVIDIA drivers are required to run CUDA or GRID workloads on the VM. Please make sure that you have the appropriate GRID licenses as well as a license server set up before you use the extension to install the GRID drivers on the VM. [This](https://docs.nvidia.com/grid/ls/latest/grid-license-server-user-guide/index.html) can be used to learn how to setup the license server. CUDA drivers do not need a license server.
+NVIDIA drivers must be installed inside the virtual machine for  CUDA or GRID workloads using the GPU.
 
-NVIDIA CUDA driers and GRID drivers will need to be manually installed on the VM. The Tesla CUDA drivers can be obtained from the NVIDIA [download website](https://www.nvidia.com/Download/index.aspx). GRID drivers can be downloaded through the NVIDIA Application Hub provided you have the required licenses.
+#### Use case: graphics/visualization
 
-## Next steps 
+This scenario requires the use of GRID drivers. GRID drivers can be downloaded through the NVIDIA Application Hub provided you have the required licenses. The GRID drivers also require a GRID license server with appropriate GRID licenses before using the GRID drivers on the VM. This can be used to learn how to setup the license server.
 
+#### Use case: compute/CUDA
+
+NVIDIA CUDA driers and GRID drivers will need to be manually installed on the VM. The Tesla CUDA drivers can be obtained from the NVIDIA [download website](https://www.nvidia.com/Download/index.aspx). CUDA drivers do not need a license server.
+
+## Next steps
+
+<<<<<<< HEAD
 - [Azure Stack VM features](azure-stack-vm-considerations.md)  
 - [Deploy a GPU enabled IoT module on Azure Stack Hub](gpu-deploy-sample-module.md)
+=======
+- [Install NVIDIA GPU drivers on N-series VMs running Linux](/azure/virtual-machines/linux/n-series-driver-setup)
+- [Azure Stack VM features](azure-stack-vm-considerations.md)
+>>>>>>> 337c4b28fe08aae5337228a8afb2fddabc8dad8b

@@ -81,7 +81,7 @@ Use the following script to create the Key Vault and add the *cluster certificat
             $pfxCertObject = Get-ThumbprintFromPfx -PfxFilePath $PfxFilePath -Password $Password
     
             Write-Host "KeyVault id: " -ForegroundColor Green
-            (Get-AzureRmKeyVault -VaultName $KeyVaultName).ResourceId
+            (Get-AzKeyVault -VaultName $KeyVaultName).ResourceId
             
             Write-Host "Secret Id: " -ForegroundColor Green
             (Get-AzureKeyVaultSecret -VaultName $KeyVaultName -Name $keyVaultSecretName).id
@@ -98,15 +98,15 @@ Use the following script to create the Key Vault and add the *cluster certificat
     $clusterCertPfxPassword = "Your_password_for_ClusterCert.pfx"
     #==============================================================================
     
-    Add-AzureRmEnvironment -Name AzureStack -ARMEndpoint $armEndpoint
-    Login-AzureRmAccount -Environment AzureStack -TenantId $tenantId
+    Add-AzEnvironment -Name AzureStack -ARMEndpoint $armEndpoint
+    Login-AzAccount -Environment AzureStack -TenantId $tenantId
     
     $rgName = "sfvaultrg"
     Write-Host "Creating Resource Group..." -ForegroundColor Yellow
-    New-AzureRmResourceGroup -Name $rgName -Location $location
+    New-AzResourceGroup -Name $rgName -Location $location
     
     Write-Host "Creating Key Vault..." -ForegroundColor Yellow
-    $Vault = New-AzureRmKeyVault -VaultName sfvault -ResourceGroupName $rgName -Location $location -EnabledForTemplateDeployment -EnabledForDeployment -EnabledForDiskEncryption
+    $Vault = New-AzKeyVault -VaultName sfvault -ResourceGroupName $rgName -Location $location -EnabledForTemplateDeployment -EnabledForDeployment -EnabledForDiskEncryption
     
     Write-Host "Publishing certificate to Vault..." -ForegroundColor Yellow
     Publish-SecretToKeyVault -PfxFilePath $clusterCertPfxPath -Password $clusterCertPfxPassword -KeyVaultName $vault.VaultName
