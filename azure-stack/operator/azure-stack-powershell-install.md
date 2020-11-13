@@ -1,13 +1,13 @@
 ---
 title: Install PowerShell AzureRM module for Azure Stack Hub 
-description: Learn how to install PowerShell for Azure Stack Hub.
+description: Learn how to install PowerShell for Azure Stack Hub. See how to install the PowerShell AzureRM module and required API profiles.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 08/04/2020
+ms.date: 10/22/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 08/04/2020
+ms.lastreviewed: 10/22/2020
 
 # Intent: As an Azure Stack operator, I want to install Powershell for Azure Stack.
 # Keyword: install powershell azure stack AzureRM
@@ -16,7 +16,12 @@ ms.lastreviewed: 08/04/2020
 
 # Install PowerShell AzureRM module for Azure Stack Hub
 
-Azure PowerShell AzureRM provides a set of cmdlets that use the Azure Resource Manager model for managing your Azure Stack Hub resources.
+Azure PowerShell Azure Resource Manager (AzureRM) provides a set of cmdlets that use the Azure Resource Manager model for managing your Azure Stack Hub resources.
+
+::: moniker range=">=azs-2002"
+> [!IMPORTANT]  
+> You've reached a webpage for an outdated version of Azure PowerShell. All versions of the Azure Resource Manager (AzureRM) PowerShell module are  outdated, but not out of support. The Az PowerShell module is now the recommended PowerShell module for interacting with Azure. To get started with the Az PowerShell module, see [Install PowerShell Az preview module for Azure Stack Hub](powershell-install-az-module.md). To learn how to migrate to the Az PowerShell module. see [Migrate from AzureRM to Azure PowerShell Az in Azure Stack Hub](migrate-azurerm-az.md).
+::: moniker-end
 
 You also need to use *API profiles* to specify the compatible endpoints for the Azure Stack Hub resource providers.
 
@@ -24,11 +29,11 @@ API profiles provide a way to manage version differences between Azure and Azure
 
 You can install Azure Stack Hub compatible PowerShell modules in internet-connected, partially connected, or disconnected scenarios. This article walks you through the detailed instructions for these scenarios.
 
-You can also run the AzureRM modules for Azure Stack Hub in a Docker container. For instructions, see [Use Docker to run PowerShell for Azure Stack Hub](../user/azure-stack-powershell-user-docker.md).
+You can also run the Azure Resource Manager modules for Azure Stack Hub in a Docker container. For instructions, see [Use Docker to run PowerShell for Azure Stack Hub](../user/azure-stack-powershell-user-docker.md).
 
 ## 1. Verify your prerequisites
 
-Before you get started with Azure Stack Hub and the PowerShell AzureRM module, you must have the following prerequisites:
+Before you get started with Azure Stack Hub and the PowerShell Azure Resource Manager module, you must have the following prerequisites:
 
 - **PowerShell Version 5.1** <br>
 To check your version, run **$PSVersionTable.PSVersion** and compare the **Major** version. If you don't have PowerShell 5.1, follow the [Installing Windows PowerShell](/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell).
@@ -65,9 +70,9 @@ Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 
 ## 3. Uninstall existing versions of the Azure Stack Hub PowerShell modules
 
-Before installing the required version, make sure that you uninstall any previously installed Azure Stack Hub AzureRM PowerShell modules. Uninstall the modules by using one of the following two methods:
+Before installing the required version, make sure that you uninstall any previously installed Azure Stack Hub Azure Resource Manager PowerShell modules. Uninstall the modules by using one of the following two methods:
 
-1. To uninstall the existing AzureRM and Az PowerShell modules, close all the active PowerShell sessions, and run the following cmdlets:
+1. To uninstall the existing Azure Resource Manager and Az PowerShell modules, close all the active PowerShell sessions, and run the following cmdlets:
 
     ```powershell
     Get-Module -Name Azure* -ListAvailable | Uninstall-Module -Force -Verbose -ErrorAction Continue
@@ -167,7 +172,7 @@ Installation has five steps:
 ::: moniker range=">=azs-2002"
 Azure Stack Hub 2002 or later.
 
-You could either use AzureRM or Az preview modules. For Az modules, see instructions at [Install PowerShell Az module](powershell-install-az-module.md).
+You could either use Azure Resource Manager or Az preview modules. For Az modules, see instructions at [Install PowerShell Az module](powershell-install-az-module.md).
 
 ```powershell
 
@@ -227,7 +232,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
 3. Manually bootstrap the NuGet provider on your disconnected workstation. For instructions, see [Manually bootstrapping the NuGet provider on a machine that isn't connected to the internet](/powershell/scripting/gallery/how-to/getting-support/bootstrapping-nuget#manually-bootstrapping-the-nuget-provider-on-a-machine-that-is-not-connected-to-the-internet).
 
-4. Register this location as the default repository and install the AzureRM and `AzureStack` modules from this repository:
+4. Register this location as the default repository and install the Azure Resource Manager and `AzureStack` modules from this repository:
 
    ```powershell
    # requires -Version 5
@@ -273,9 +278,9 @@ In scenarios that require a proxy server to access the internet, you first confi
 
 ###  Method get_SerializationSettings error 
 
-- Cause: The PowerShell Az module and PowerShell AzureRM modules are not compatible.
+- Cause: The PowerShell Az module and PowerShell Azure Resource Manager modules are not compatible.
 
-    The following error indicates that the AzureRM modules and Az modules are loaded in the same session: 
+    The following error indicates that the Azure Resource Manager modules and Az modules are loaded in the same session: 
 
     ```powershell  
     >  Method 'get_SerializationSettings' in type 'Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient' from assembly 'Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' does 
@@ -284,7 +289,7 @@ In scenarios that require a proxy server to access the internet, you first confi
 
 - Remediation: Uninstall the conflicting modules. 
 
-  If you would like to use the AzureRM modules, uninstall the Az modules. Or uninstall the AzureRM if you would like to use the Az modules. Close your PowerShell session and uninstall either the Az or AzureRM modules. 
+  If you would like to use the Azure Resource Manager modules, uninstall the Az modules. Or uninstall the Azure Resource Manager if you would like to use the Az modules. Close your PowerShell session and uninstall either the Az or Azure Resource Manager modules. 
   
   You can find instructions at [Uninstall existing versions of the Azure Stack Hub PowerShell modules](#3-uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules).
 

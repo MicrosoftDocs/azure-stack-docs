@@ -16,11 +16,11 @@ ms.lastreviewed: 03/26/2019
 
 # Manage Azure policy using the Azure Stack Hub policy module
 
-The Azure Stack Hub policy module enables you to configure an Azure subscription with the same versioning and service availability as Azure Stack Hub. The module uses the [**New-AzureRmPolicyDefinition**](/powershell/module/azurerm.resources/new-azurermpolicydefinition) PowerShell cmdlet to create an Azure policy, which limits the resource types and services available in a subscription. You then create a policy assignment within the appropriate scope by using the [**New-AzureRmPolicyAssignment**](/powershell/module/azurerm.resources/new-azurermpolicyassignment) cmdlet. After configuring the policy, you can use your Azure subscription to develop apps targeted for Azure Stack Hub.
+The Azure Stack Hub policy module enables you to configure an Azure subscription with the same versioning and service availability as Azure Stack Hub. The module uses the [**New-AzPolicyDefinition**](/powershell/module/Az.resources/new-Azpolicydefinition) PowerShell cmdlet to create an Azure policy, which limits the resource types and services available in a subscription. You then create a policy assignment within the appropriate scope by using the [**New-AzPolicyAssignment**](/powershell/module/Az.resources/new-Azpolicyassignment) cmdlet. After configuring the policy, you can use your Azure subscription to develop apps targeted for Azure Stack Hub.
 
 ## Install the module
 
-1. Install the required version of the AzureRM PowerShell module, as described in Step 1 of [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md).
+1. Install the required version of the Az PowerShell module, as described in Step 1 of [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md).
 2. [Download the Azure Stack Hub tools from GitHub](../operator/azure-stack-powershell-download.md).
 3. [Configure PowerShell for use with Azure Stack Hub](azure-stack-powershell-configure-user.md).
 4. Import the **AzureStack.Policy.psm1** module:
@@ -34,11 +34,11 @@ The Azure Stack Hub policy module enables you to configure an Azure subscription
 You can use the following commands to apply a default Azure Stack Hub policy to your Azure subscription. Before running these commands, replace `Azure subscription name` with the name of your Azure subscription:
 
 ```powershell
-Add-AzureRmAccount
-$s = Select-AzureRmSubscription -SubscriptionName "Azure subscription name"
-$policy = New-AzureRmPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
+Add-AzAccount
+$s = Select-AzSubscription -SubscriptionName "Azure subscription name"
+$policy = New-AzPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
 $subscriptionID = $s.Subscription.SubscriptionId
-New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /subscriptions/$subscriptionID
+New-AzPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /subscriptions/$subscriptionID
 ```
 
 ## Apply policy to a resource group
@@ -46,12 +46,12 @@ New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /s
 You might want to apply policies that are more granular. For example, you might have other resources running in the same subscription. You can scope the policy application to a specific resource group, which enables you to test your apps for Azure Stack Hub using Azure resources. Before running the following commands, replace `Azure subscription name` with the name of your Azure subscription:
 
 ```powershell
-Add-AzureRmAccount
+Add-AzAccount
 $rgName = 'myRG01'
-$s = Select-AzureRmSubscription -SubscriptionName "Azure subscription name"
-$policy = New-AzureRmPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
+$s = Select-AzSubscription -SubscriptionName "Azure subscription name"
+$policy = New-AzPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
 $subscriptionID = $s.Subscription.SubscriptionId
-New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /subscriptions/$subscriptionID/resourceGroups/$rgName
+New-AzPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /subscriptions/$subscriptionID/resourceGroups/$rgName
 ```
 
 ## Policy in action

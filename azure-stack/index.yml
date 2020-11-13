@@ -53,38 +53,38 @@ conceptualContent:
     # Card
     - title: Learn about hybrid
       links:
-        - url: /azure-stack/hybrid/overview-patterns-solution-examples
+        - url: /hybrid/app-solutions/overview-patterns-solution-examples
           itemType: overview
           text: What are patterns and solution examples?
-        - url: /azure-stack/hybrid/overview-app-design-considerations
+        - url: /hybrid/app-solutions/overview-app-design-considerations
           itemType: concept
           text: Hybrid app design considerations
     - title: Explore hybrid patterns
       links:
-        - url: /azure-stack/hybrid/pattern-cross-cloud-scale
+        - url: /hybrid/app-solutions/pattern-cross-cloud-scale
           itemType: architecture
           text: Cross-cloud scaling
-        - url: /azure-stack/hybrid/pattern-cicd-pipeline
+        - url: /hybrid/app-solutions/pattern-cicd-pipeline
           itemType: architecture
           text: DevOps hybrid CI/CD
-        - url: /azure-stack/hybrid/pattern-retail-footfall-detection
+        - url: /hybrid/app-solutions/pattern-retail-footfall-detection
           itemType: architecture
           text: Footfall detection (retail)
-        - url: /azure-stack/hybrid/pattern-geo-distributed
+        - url: /hybrid/app-solutions/pattern-geo-distributed
           itemType: architecture
           text: Geo-distributed app
     - title: Deploy hybrid solution examples
       links:
-        - url: /azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling
+        - url: /hybrid/app-solutions/solution-deployment-guide-cross-cloud-scaling
           itemType: tutorial
           text: Cross-cloud scaling
         - url: https://aka.ms/hybriddevopsdeploy 
           itemType: tutorial
           text: DevOps hybrid CI/CD
-        - url: /azure-stack/hybrid/solution-deployment-guide-retail-footfall-detection
+        - url: /hybrid/app-solutions/solution-deployment-guide-retail-footfall-detection
           itemType: tutorial
           text: Footfall detection (retail)
-        - url: /azure-stack/hybrid/solution-deployment-guide-geo-distributed
+        - url: /hybrid/app-solutions/solution-deployment-guide-geo-distributed
           itemType: tutorial
           text: Geo-distributed app
 

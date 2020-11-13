@@ -4,7 +4,7 @@ description: Understand cluster validation's importance, and when to run it on a
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 07/21/2020
+ms.date: 10/16/2020
 ---
 
 # Validate an Azure Stack HCI cluster
@@ -12,10 +12,12 @@ ms.date: 07/21/2020
 >Applies to: Azure Stack HCI, version v20H2; Windows Server 2019
 
 This how-to article focuses on why cluster validation is important, and when to run it on an existing Azure Stack HCI cluster. We recommend performing cluster validation for the following primary scenarios:
-- After deploying a server cluster, run the Validate-DCB tool to test networking, and run cluster validation in Windows Admin Center.
+- After deploying a server cluster, run the Validate-DCB tool to test networking.
 - After updating a server cluster, depending on your scenario, run both validation options to troubleshoot cluster issues.
 - After setting up replication with Storage Replica, validate that the replication is proceeding normally by checking some specific events and running a couple commands.
-To learn about how to deploy an Azure Stack HCI cluster, see [Deploy Storage Spaces Direct](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct).
+- After creating a server cluster, run the Validate-DCB tool before placing it into production.
+
+    To learn more about how to deploy an Azure Stack HCI cluster, see the [Deployment overview](deployment-overview.md).
 
 ## What is cluster validation?
 Cluster validation is intended to catch hardware or configuration problems before a cluster goes into production. Cluster validation helps to ensure that the Azure Stack HCI solution that you're about to deploy is truly dependable. You can also use cluster validation on configured failover clusters as a diagnostic tool.
@@ -43,7 +45,7 @@ This section describes scenarios in which validation is also needed or useful.
 ## Validate networking
 The Microsoft Validate-DCB tool is designed to validate the Data Center Bridging (DCB) configuration on the cluster. To do this, the tool takes an expected configuration as input, and then tests each server in the cluster. This section covers how to install and run the Validate-DCB tool, review results, and resolve networking errors that the tool identifies.
 
-On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE) requires DCB technologies to make the network fabric lossless. And while iWARP doesn't require DCB, it's still recommended. However, configuring DCB can be complex, with exact configuration required across:
+On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE) requires DCB technologies to make the network fabric lossless. With iWARP, DCB is optional. However, configuring DCB can be complex, with exact configuration required across:
 - Each server in the cluster
 - Each network port that RDMA traffic passes through on the fabric
 

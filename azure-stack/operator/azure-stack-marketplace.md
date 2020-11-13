@@ -3,7 +3,7 @@ title: Azure Stack Hub Marketplace overview
 description: An overview of Azure Stack Hub Marketplace and marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 11/09/2020
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 05/07/2019

@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.lastreviewed: 05/07/2020
 ms.custom: contperfq4
+zone_pivot_groups: state-connected-disconnected
 
 # Intent: As an Azure Stack operator, I want to use an app identity to access resources. 
 # Keyword: azure stack hub app identity service principal
@@ -40,6 +41,7 @@ This article begins with the process of creating and managing a service principa
 
 Then you learn how to assign the service principal to a role, limiting its resource access.
 
+::: zone pivot="state-connected"
 ## Manage an Azure AD app identity
 
 If you deployed Azure Stack Hub with Azure AD as your identity management service, you create service principals just like you do for Azure. This section shows you how to perform the steps through the Azure portal. Check that you have the [required Azure AD permissions](/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) before beginning.
@@ -63,6 +65,7 @@ In this section, you register your app using the Azure portal, which creates the
     ![Saved key in client secrets](./media/azure-stack-create-service-principal/create-service-principal-in-azure-stack-secret.png)
 
 Now proceed to [Assign a role](#assign-a-role) to learn how to establish role-based access control for the app's identity.
+::: zone-end
 
 ## Manage an AD FS app identity
 
@@ -107,18 +110,18 @@ Once you have a certificate, use the PowerShell script below to register your ap
     $Session | Remove-PSSession
 
     # Using the stamp info for your Azure Stack Hub instance, populate the following variables:
-    # - AzureRM endpoint used for Azure Resource Manager operations 
+    # - Az endpoint used for Azure Resource Manager operations 
     # - Audience for acquiring an OAuth token used to access Graph API 
     # - GUID of the directory tenant
     $ArmEndpoint = $AzureStackInfo.TenantExternalEndpoints.TenantResourceManager
     $GraphAudience = "https://graph." + $AzureStackInfo.ExternalDomainFQDN + "/"
     $TenantID = $AzureStackInfo.AADTenantID
 
-    # Register and set an AzureRM environment that targets your Azure Stack Hub instance
-    Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint $ArmEndpoint
+    # Register and set an Az environment that targets your Azure Stack Hub instance
+    Add-AzEnvironment -Name "AzureStackUser" -ArmEndpoint $ArmEndpoint
 
     # Sign in using the new service principal
-    $SpSignin = Connect-AzureRmAccount -Environment "AzureStackUser" `
+    $SpSignin = Connect-AzAccount -Environment "AzureStackUser" `
     -ServicePrincipal `
     -CertificateThumbprint $SpObject.Thumbprint `
     -ApplicationId $SpObject.ClientId `
@@ -217,20 +220,20 @@ Now you create another app registration, but this time specify a client secret c
      $Session | Remove-PSSession
 
      # Using the stamp info for your Azure Stack Hub instance, populate the following variables:
-     # - AzureRM endpoint used for Azure Resource Manager operations 
+     # - Az endpoint used for Azure Resource Manager operations 
      # - Audience for acquiring an OAuth token used to access Graph API 
      # - GUID of the directory tenant
      $ArmEndpoint = $AzureStackInfo.TenantExternalEndpoints.TenantResourceManager
      $GraphAudience = "https://graph." + $AzureStackInfo.ExternalDomainFQDN + "/"
      $TenantID = $AzureStackInfo.AADTenantID
 
-     # Register and set an AzureRM environment that targets your Azure Stack Hub instance
-     Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint $ArmEndpoint
+     # Register and set an Az environment that targets your Azure Stack Hub instance
+     Add-AzEnvironment -Name "AzureStackUser" -ArmEndpoint $ArmEndpoint
 
      # Sign in using the new service principal
      $securePassword = $SpObject.ClientSecret | ConvertTo-SecureString -AsPlainText -Force
      $credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $SpObject.ClientId, $securePassword
-     $SpSignin = Connect-AzureRmAccount -Environment "AzureStackUser" -ServicePrincipal -Credential $credential -TenantId $TenantID
+     $SpSignin = Connect-AzAccount -Environment "AzureStackUser" -ServicePrincipal -Credential $credential -TenantId $TenantID
 
      # Output the service principal details
      $SpObject

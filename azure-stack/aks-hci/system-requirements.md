@@ -34,7 +34,7 @@ For Azure Kubernetes Service on Azure Stack HCI to function optimally in an Acti
 
  - While you can technically run Azure Kubernetes Service on a single node Azure Stack HCI Server, we do not recommend doing so.
 
- - Other compute requirements for Azure Kubernetes Service on Azure Stack HCI are in line with Azure Stack HCI’s requirements. Visit [Azure Stack HCI Requirements](../hci/deploy/before-you-start.md) for more details on Azure Stack HCI’s server requirements.  
+ - Other compute requirements for Azure Kubernetes Service on Azure Stack HCI are in line with Azure Stack HCI’s requirements. Visit [Azure Stack HCI system requirements](../hci/concepts/system-requirements.md#server-requirements) for more details on Azure Stack HCI server requirements.
 
  - This preview release requires that you install the Azure Stack HCI operating system on each server in the cluster using the EN-US region and language selections; changing them after installation isn't sufficient at this time.
 
@@ -77,7 +77,7 @@ Firewall URL exceptions are needed for the Windows Admin Center machine and all 
 
 | URL        | Port | Service | Notes |
 | ---------- | ---- | --- | ---- |
-https://get.helm.sh/  | 443 | Download Agent, WAC | Used to download the Helm binaries 
+https://helm.sh/blog/get-helm-sh/  | 443 | Download Agent, WAC | Used to download the Helm binaries 
 https://storage.googleapis.com/  | 443 | Cloud Init | Downloading Kubernetes binaries 
 https://azurecliprod.blob.core.windows.net/ | 443 | Cloud Init | Downloading binaries and containers 
 https://aka.ms/installazurecliwindows | 443 | WAC | Downloading Azure CLI 

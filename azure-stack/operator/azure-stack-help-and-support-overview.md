@@ -35,7 +35,7 @@ At the top of **Help + support** are things you should try first, like read abou
 
 - **Learn about billing**. Get tips on [usage and billing](azure-stack-billing-and-chargeback.md).
 
-- **Support options**. Azure Stack Hub operators can choose from a range of [Azure support options](https://aka.ms/azstacksupport) that can fit the needs of any enterprise.
+- **Support options**. Azure Stack Hub operators can choose from a range of [Azure support options](./azure-stack-manage-basics.md) that can fit the needs of any enterprise.
 
 ### Get expert help
 
@@ -65,8 +65,8 @@ This set of tutorials is customized depending on whether you're running the ASDK
 
 You can send diagnostic logs to Microsoft in two ways:
 
-- [Send logs proactively](./azure-stack-configure-automatic-diagnostic-log-collection.md?view=azs-2002): If enabled, log collection is triggered by specific health alerts.
-- [Send logs now](./azure-stack-configure-on-demand-diagnostic-log-collection-portal.md?view=azs-2002): You can manually choose a specific sliding window as the time frame for log collection.
+- [Send logs proactively](./azure-stack-diagnostic-log-collection-overview.md#send-logs-proactively): If enabled, log collection is triggered by specific health alerts.
+- [Send logs now](./azure-stack-diagnostic-log-collection-overview.md#send-logs-now): You can manually choose a specific sliding window as the time frame for log collection.
 
 ![Screenshot that shows how to start collecting diagnostic logs.](media/azure-stack-help-and-support/banner-enable-automatic-log-collection.png)
 
@@ -86,7 +86,7 @@ Integrated systems can share the diagnostic logs with Microsoft Support. Because
 
 ## Help and support for earlier releases Azure Stack Hub (pre-1905)
 
-Previous Azure Stack Hub releases also have a link to **Help + support** that redirects to the [Azure Stack Hub Operator Documentation](https://aka.ms/adminportaldocs).
+Previous Azure Stack Hub releases also have a link to **Help + support** that redirects to the [Azure Stack Hub Operator Documentation](./index.yml).
 
 ![Get support tutorials](media/azure-stack-help-and-support/get-support-previous.png)
 

@@ -48,9 +48,9 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
+- [Azure Stack Hub 2008 update](/azure-stack/operator/release-notes?view=azs-2008)
 - [Azure Stack Hub 2005 update](/azure-stack/operator/release-notes?view=azs-2005)
 - [Azure Stack Hub 2002 update](/azure-stack/operator/release-notes?view=azs-2002)
-- [Azure Stack Hub 1910 update](/azure-stack/operator/release-notes?view=azs-1910)
 
 ## Hotfixes
 
@@ -64,12 +64,8 @@ For information about currently available hotfixes, see the release notes for th
 
 - [Azure Stack Hub 2005 hotfix](/azure-stack/operator/release-notes?view=azs-2005#hotfixes)
 - [Azure Stack Hub 2002 hotfix](/azure-stack/operator/release-notes?view=azs-2002#hotfixes-1)
-- [Azure Stack Hub 1910 hotfix](/azure-stack/operator/release-notes?view=azs-1910#hotfixes-2)
 
 ## Keep your system under support
-
-> [!IMPORTANT]  
-> With [the 2002 release](release-notes.md?view=azs-2002) of Azure Stack Hub and in support of our customers around the world who are responding to COVID-19 and who may be making important decisions about their Azure Stack Hub systems, Microsoft temporarily extended its support policy to include three previous update versions (N-3). With the 2005 release we are continuing this extension for an additional 45 days (to 25th September 2020). As a result, the newly released 2005 update and any one of the three previous update versions (2002, 1910, and 1908, or N-3) will be supported. After these 45 days (after 25th September 2020), we will return to our standard support policy, meaning the supported versions will then be 2005, 2002 and 1910, or N-2.
 
 For your Azure Stack Hub instance to remain in a supported state, the instance must run the most recently released update version or run either of the two preceding update versions.
 
