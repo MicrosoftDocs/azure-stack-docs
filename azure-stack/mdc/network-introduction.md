@@ -289,8 +289,8 @@ There are three multitenant gateway infrastructure VMs in MDC. Two of these VMs 
 
 The following table shows the gateway types and the estimated aggregate throughput by gateway SKU.
 
-| Gateway type  | **VPN gateway throughput (1)** | **VPN gateway maximum IPsec tunnels (2)** |
-|---------------|--------------------------------|---------------------------------------|
+| **Gateway type** | **VPN gateway throughput (1)** | **VPN gateway maximum IPsec tunnels (2)** |
+|------------------|--------------------------------|-------------------------------------------|
 | Basic SKU (3) | 100 Mbps | 20 |
 | Standard SKU | 100 Mbps | 20 |
 | High-Performance SKU | 200 Mbps | 10 |
