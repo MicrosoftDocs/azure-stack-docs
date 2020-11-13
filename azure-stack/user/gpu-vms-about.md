@@ -85,5 +85,5 @@ NVIDIA CUDA driers and GRID drivers will need to be manually installed on the VM
 
 ## Next steps
 
-- [Install NVIDIA GPU drivers on N-series VMs running Linux](/azure/virtual-machines/linux/n-series-driver-setup)
-- [Azure Stack VM features](azure-stack-vm-considerations.md)
+- [Azure Stack VM features](azure-stack-vm-considerations.md)  
+- [Deploy a GPU enabled IoT module on Azure Stack Hub](gpu-deploy-sample-module.md)
