@@ -8,8 +8,9 @@ ms.author: v-myoung
 ms.reviewer: shisab
 ms.lastreviewed: 10/30/2020
 
-# Intent: As an Azure Stack Hub operator, I want to learn about diagnostic log collection so I can share them with Microsoft Support when I need help addressing an issue.
-# Keyword: diagnostic log collection azure stack hub
+#Intent: As an Azure Stack Hub operator, I want to learn about diagnostic log collection so I can share them with Microsoft Support when I need help addressing an issue.
+#Keyword: diagnostic log collection azure stack hub
+
 ---
 # Diagnostic log collection
 

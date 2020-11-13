@@ -54,13 +54,24 @@ There are also differences with storage metrics:
 
 Azure Stack Hub managed disks support the following API versions:
 
+::: moniker range=">=azs-2008"
+- 2019-03-01
+- 2018-09-30
+- 2018-06-01
+- 2018-04-01
+- 2017-03-30
+::: moniker-end
+
+::: moniker range="<=azs-2005"
+
 - 2017-03-30
 - 2017-12-01 (Managed images only, no disks, no snapshots)
+::: moniker-end
 
 ## Convert to managed disks
 
 > [!NOTE]  
-> The Azure PowerShell cmdlet **ConvertTo-AzureRmVMManagedDisk** cannot be used to convert an unmanaged disk to a managed disk in Azure Stack Hub. Azure Stack Hub does not currently support this cmdlet.
+> The Azure PowerShell cmdlet **ConvertTo-AzVMManagedDisk** cannot be used to convert an unmanaged disk to a managed disk in Azure Stack Hub. Azure Stack Hub does not currently support this cmdlet.
 
 You can use the following script to convert a currently provisioned VM from unmanaged to managed disks. Replace the placeholders with your own values:
 
@@ -94,36 +105,36 @@ $VirtualNetworkName = "unmngdrg-vnet"
 $NicName = "unmngdvm"
 
 # Set the context to the subscription ID in which the managed disk will be created.
-Select-AzureRmSubscription -SubscriptionId $SubscriptionId
+Select-AzSubscription -SubscriptionId $SubscriptionId
 
 # Delete old VM, but keep the OS disk.
-Remove-AzureRmVm -Name $VirtualMachineName -ResourceGroupName $ResourceGroupName
+Remove-AzVm -Name $VirtualMachineName -ResourceGroupName $ResourceGroupName
 
 # Create the managed disk configuration.
-$DiskConfig = New-AzureRmDiskConfig -AccountType $AccountType -Location $Location -DiskSizeGB $DiskSize -SourceUri $VhdUri -CreateOption Import
+$DiskConfig = New-AzDiskConfig -AccountType $AccountType -Location $Location -DiskSizeGB $DiskSize -SourceUri $VhdUri -CreateOption Import
 
 # Create managed disk.
-New-AzureRmDisk -DiskName $DiskName -Disk $DiskConfig -ResourceGroupName $resourceGroupName
-$Disk = Get-AzureRmDisk -DiskName $DiskName -ResourceGroupName $ResourceGroupName
-$VirtualMachine = New-AzureRmVMConfig -VMName $VirtualMachineName -VMSize $VirtualMachineSize
+New-AzDisk -DiskName $DiskName -Disk $DiskConfig -ResourceGroupName $resourceGroupName
+$Disk = Get-AzDisk -DiskName $DiskName -ResourceGroupName $ResourceGroupName
+$VirtualMachine = New-AzVMConfig -VMName $VirtualMachineName -VMSize $VirtualMachineSize
 
 # Use the managed disk resource ID to attach it to the virtual machine.
 # Change the OS type to "-Windows" if the OS disk has the Windows OS.
-$VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -ManagedDiskId $Disk.Id -CreateOption Attach -Linux
+$VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -ManagedDiskId $Disk.Id -CreateOption Attach -Linux
 
 # Create a public IP for the VM.
-$PublicIp = Get-AzureRmPublicIpAddress -Name $PIpName -ResourceGroupName $ResourceGroupName
+$PublicIp = Get-AzPublicIpAddress -Name $PIpName -ResourceGroupName $ResourceGroupName
 
 # Get the virtual network where the virtual machine will be hosted.
-$VNet = Get-AzureRmVirtualNetwork -Name $VirtualNetworkName -ResourceGroupName $ResourceGroupName
+$VNet = Get-AzVirtualNetwork -Name $VirtualNetworkName -ResourceGroupName $ResourceGroupName
 
 # Create NIC in the first subnet of the virtual network.
-$Nic = Get-AzureRmNetworkInterface -Name $NicName -ResourceGroupName $ResourceGroupName
+$Nic = Get-AzNetworkInterface -Name $NicName -ResourceGroupName $ResourceGroupName
 
-$VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $Nic.Id
+$VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $Nic.Id
 
 # Create the virtual machine with managed disk.
-New-AzureRmVM -VM $VirtualMachine -ResourceGroupName $ResourceGroupName -Location $Location
+New-AzVM -VM $VirtualMachine -ResourceGroupName $ResourceGroupName -Location $Location
 ```
 
 ## Managed images
@@ -172,33 +183,33 @@ $ImageName = "simplelinuxvmm-image-2019122"
 $Cred = Get-Credential -Message "Enter a username and password for the virtual machine."
 
 # Create a resource group
-New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
+New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 
 # Create a subnet configuration
-$SubnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name "MySubnet" -AddressPrefix "192.168.1.0/24"
+$SubnetConfig = New-AzVirtualNetworkSubnetConfig -Name "MySubnet" -AddressPrefix "192.168.1.0/24"
 
 # Create a virtual network
-$VNet = New-AzureRmVirtualNetwork -ResourceGroupName $ResourceGroupName -Location $Location `
+$VNet = New-AzVirtualNetwork -ResourceGroupName $ResourceGroupName -Location $Location `
   -Name "MyVNet" -AddressPrefix "192.168.0.0/16" -Subnet $SubnetConfig
 
 # Create a public IP address and specify a DNS name
-$PIp = New-AzureRmPublicIpAddress -ResourceGroupName $ResourceGroupName -Location $Location `
+$PIp = New-AzPublicIpAddress -ResourceGroupName $ResourceGroupName -Location $Location `
   -Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
 
 # Create an inbound network security group rule for port 3389
-$NsgRuleSSH = New-AzureRmNetworkSecurityRuleConfig -Name "MyNetworkSecurityGroupRuleSSH"  -Protocol Tcp `
+$NsgRuleSSH = New-AzNetworkSecurityRuleConfig -Name "MyNetworkSecurityGroupRuleSSH"  -Protocol Tcp `
   -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
   -DestinationPortRange 22 -Access Allow
 
 # Create a network security group
-$Nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $ResourceGroupName -Location $Location `
+$Nsg = New-AzNetworkSecurityGroup -ResourceGroupName $ResourceGroupName -Location $Location `
   -Name "MyNetworkSecurityGroup" -SecurityRules $NsgRuleSSH
 
 # Create a virtual network card and associate with public IP address and NSG
-$Nic = New-AzureRmNetworkInterface -Name "MyNic" -ResourceGroupName $ResourceGroupName -Location $Location `
+$Nic = New-AzNetworkInterface -Name "MyNic" -ResourceGroupName $ResourceGroupName -Location $Location `
   -SubnetId $VNet.Subnets[0].Id -PublicIpAddressId $PIp.Id -NetworkSecurityGroupId $Nsg.Id
 
-$Image = Get-AzureRmImage -ResourceGroupName $ImageRG -ImageName $ImageName
+$Image = Get-AzImage -ResourceGroupName $ImageRG -ImageName $ImageName
 
 # Create a virtual machine configuration
 $VmConfig = New-AzureRmVMConfig -VMName $VirtualMachineName -VMSize "Standard_D1" | `
@@ -208,7 +219,7 @@ Set-AzureRmVMOSDisk -VM $VmConfig -CreateOption FromImage -Linux | `
 Add-AzureRmVMNetworkInterface -Id $Nic.Id
 
 # Create a virtual machine
-New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VmConfig
+New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VmConfig
 ```
 
 You can also use the portal to create a VM from a managed image. For more information, see the Azure managed image articles [Create a managed image of a generalized VM in Azure](/azure/virtual-machines/windows/capture-image-resource) and [Create a VM from a managed image](/azure/virtual-machines/windows/create-vm-generalized-managed).
