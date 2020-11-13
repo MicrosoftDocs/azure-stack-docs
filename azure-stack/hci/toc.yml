@@ -72,6 +72,8 @@
       href: manage/update-cluster.md
     - name: Monitor the cluster
       href: manage/monitor-cluster.md
+      href: manage/diskspd-overview.md
+    - name: Use DISKSPD to test workloads
     - name: Add or remove servers
       href: manage/add-cluster.md
     - name: Manage Azure registration
