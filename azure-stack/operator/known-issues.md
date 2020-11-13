@@ -9,7 +9,7 @@ ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Intent: As an Azure Stack Hub user, I want to know about known issues in the latest release so that I can plan my update and be aware of any issues.
 # Keyword: Notdone: keyword noun phrase
 
 ---
@@ -87,7 +87,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: When enabling **Session Affinity** on a load balancer, the 2 tuple hash utilizes the PA IP (Physical Address IP) instead of the private IPs assigned to the VMs. In scenarios where traffic directed to the load balancer arrives through a VPN, or if all the client VMs (source IPs) reside on the same node and Session Affinity is enabled, all traffic is directed to one backend VM.
 - Occurrence: Common
 
-## Compute
+<!-- ## Compute -->
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
