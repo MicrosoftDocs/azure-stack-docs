@@ -289,17 +289,17 @@ There are three multitenant gateway infrastructure VMs in MDC. Two of these VMs 
 
 The following table shows the gateway types and the estimated aggregate throughput by gateway SKU.
 
-| | **VPN gateway throughput (1)** | **VPN gateway maximum IPsec tunnels (2)** |
-|-|--------------------------------|---------------------------------------|
+| Gateway type  | **VPN gateway throughput (1)** | **VPN gateway maximum IPsec tunnels (2)** |
+|---------------|--------------------------------|---------------------------------------|
 | Basic SKU (3) | 100 Mbps | 20 |
 | Standard SKU | 100 Mbps | 20 |
 | High-Performance SKU | 200 Mbps | 10 |
 
 Table notes:
 
-(1) - VPN throughput isn't a guaranteed throughput for cross-premises connections across the internet. It's the maximum possible throughput measurement.
-(2) - Maximum tunnels is the total per MDC deployment for all subscriptions.
-(3) - BGP routing isn't supported for the Basic SKU.
+(1) VPN throughput isn't a guaranteed throughput for cross-premises connections across the internet. It's the maximum possible throughput measurement.
+(2) Maximum tunnels is the total per MDC deployment for all subscriptions.
+(3) BGP routing isn't supported for the Basic SKU.
 
 >[!IMPORTANT]
 > Only one site-to-site VPN connection can be created between two MDC deployments. This restriction is because a limitation in the platform only allows a single VPN connection to the same IP address. Because MDC uses the multitenant gateway, which uses a single public IP for all VPN gateways in the MDC system, there can be only one VPN connection between two MDC systems.
@@ -372,18 +372,18 @@ The following table lists the supported cryptographic algorithms and key strengt
 | IPsec integrity | GCMASE256, GCMAES192, GCMAES128, SHA256, SHA1, MD5 |
 | PFS Group | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, None |
 | QM SA lifetime | (Optional: Default values are used if not specified.) |
-| | Seconds (integer; min. 300/default 27,000 seconds) |
-| | KBytes (integer; min. 1024/default 102,400,000 KBytes) |
+| | Seconds (integer, min. 300/default 27,000 seconds) |
+| | KBytes (integer, min. 1024/default 102,400,000 KBytes) |
 | Traffic selector | Policy-based traffic selectors aren't supported in MDC. |
 
 Your on-premises VPN device configuration must match or contain the following algorithms and parameters that you specify on the Azure IPsec/IKE policy:
 
-- IKE encryption algorithm (Main Mode / Phase 1).
-- IKE integrity algorithm (Main Mode / Phase 1).
-- DH Group (Main Mode / Phase 1).
-- IPsec encryption algorithm (Quick Mode / Phase 2).
-- IPsec integrity algorithm (Quick Mode / Phase 2).
-- PFS Group (Quick Mode / Phase 2).
+- IKE encryption algorithm (Main Mode/Phase 1).
+- IKE integrity algorithm (Main Mode/Phase 1).
+- DH Group (Main Mode/Phase 1).
+- IPsec encryption algorithm (Quick Mode/Phase 2).
+- IPsec integrity algorithm (Quick Mode/Phase 2).
+- PFS Group (Quick Mode/Phase 2).
 - The SA lifetimes are local specifications only. They don't need to match.
 
 If GCMAES is used as for the IPsec encryption algorithm, you must select the same GCMAES algorithm and key length for IPsec integrity. For example, use GCMAES128 for both.
