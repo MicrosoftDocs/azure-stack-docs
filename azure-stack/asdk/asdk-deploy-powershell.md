@@ -4,10 +4,10 @@ description: Learn how to deploy the ASDK from the command line using PowerShell
 author: justinha
 
 ms.topic: article
-ms.date: 09/23/2020
+ms.date: 10/14/2020
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 09/23/2020
+ms.lastreviewed: 10/14/2020
 
 # Intent: As an ASDK user, I want to deploy the ASDK using the command line in Powershell so I can evaluate Azure Stack features.
 # Keyword: deploy asdk command line
@@ -97,7 +97,7 @@ To deploy the ASDK  **using AD FS as the identity provider**, run the following 
 
 In AD FS deployments, the default stamp Directory Service is used as the identity provider. The default account to sign in with is azurestackadmin@azurestack.local, and the password is set to what you provided as part of the PowerShell setup commands.
 
-The deployment process can take a few hours, during which time the system automatically reboots once. When the deployment succeeds, the PowerShell console displays: **COMPLETE: Action ‘Deployment'**. If the deployment fails, try running the script again using the -rerun parameter. Or, you can [redeploy ASDK](asdk-redeploy.md) from scratch.
+The deployment process can take a few hours, during which time the system automatically reboots once. When the deployment succeeds, the PowerShell console displays: **COMPLETE: Action 'Deployment'**. If the deployment fails, try running the script again using the -rerun parameter. Or, you can [redeploy ASDK](asdk-redeploy.md) from scratch.
 
 > [!IMPORTANT]
 > If you want to monitor the deployment progress after the ASDK host reboots, you must sign in as AzureStack\AzureStackAdmin. If you sign in as a local admin after the host computer is restarted (and joined to the azurestack.local domain), you won't see the deployment progress. Don't rerun deployment, instead sign in as AzureStack\AzureStackAdmin with the same password as the local admin to validate that the setup is running.
@@ -107,6 +107,7 @@ The deployment process can take a few hours, during which time the system automa
 You can script the entire Azure AD deployment. Here are a few commented examples that include some optional parameters.
 
 If your Azure AD identity is only associated with **one** Azure AD directory:
+
 ```powershell
 cd C:\CloudDeployment\Setup 
 $adminpass = Get-Credential Administrator 
