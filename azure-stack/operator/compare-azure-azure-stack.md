@@ -22,7 +22,7 @@ Microsoft provides Azure and the Azure Stack Hub family of services in one Azure
 
 This article describes the differences between global Azure, Azure Stack Hub, and Azure Stack HCI capabilities. It provides common scenario recommendations to help you make the best choice for delivering Microsoft cloud-based services for your organization.
 
-![Azure ecosystem overview](./media/compare-azure-azure-stack/azure-family.svg)
+![Azure ecosystem overview](./media/compare-azure-azure-stack/azure-family-updated.png)
 
 ## Global Azure
 
