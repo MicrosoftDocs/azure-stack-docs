@@ -4,10 +4,10 @@ description: Learn how to create a VPN Tunnel using IPSEC  in Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 5/27/2020
+ms.date: 11/13/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 09/19/2019
+ms.lastreviewed: 11/13/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -51,7 +51,7 @@ You can find the templates in the [Azure Intelligent Edge Patterns](https://gith
 
 This template provides default values for VNet naming and IP addressing.  It requires a password for the administrator (rrasadmin) and also offers the ability to use your own storage blob with SAS token.  Be careful to keep these values within legal ranges as deployment may fail.  The powershell DSC package is executed on each RRAS VM and installing routing and all required dependent services and features.  This DSC can be customized further if needed.  The custom script extension run the following script and Add-Site2SiteIKE.ps1 configures the VPNS2S tunnel between the two RRAS servers with a shared key.  You can view the detailed output from the custom script extension to see the results of the VPN tunnel configuration
 
-![The diagram, titled S2SVPNTunnel, shows two VNETs connected by a site-to-site VPN tunnel.](./media/azure-stack-network-howto-vpn-tunnel-ipsec/s2svpntunnel.png)
+![The diagram, titled S2SVPNTunnel, shows two VNETs connected by a site-to-site VPN tunnel.](./media/azure-stack-network-howto-vpn-tunnel-ipsec/s2svpntunnel.svg)
 
 ## Next steps
 
