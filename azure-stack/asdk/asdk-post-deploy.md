@@ -88,16 +88,16 @@ If the installation is successful, the AureRM and AzureStack modules are display
 
   Next, copy the downloaded packages to the ASDK computer and register the location as the default repository and install the Az and AzureStack modules from this repository:
 
-    ```powershell  
-    $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
-    $RepoName = "MyNuGetSource"
+  ```powershell  
+  $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
+  $RepoName = "MyNuGetSource"
 
-    Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
+  Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
 
-    Install-Module Az -Repository $RepoName
+  Install-Module Az -Repository $RepoName
 
-    Install-Module AzureStack -Repository $RepoName
-    ```
+  Install-Module AzureStack -Repository $RepoName
+  ```
 
 ### [AzureRM modules](#tab/azurerm2)
 
@@ -113,16 +113,16 @@ If the installation is successful, the AureRM and AzureStack modules are display
 
   Next, copy the downloaded packages to the ASDK computer and register the location as the default repository and install the AzureRM and AzureStack modules from this repository:
 
-    ```powershell  
-    $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
-    $RepoName = "MyNuGetSource"
+  ```powershell  
+  $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
+  $RepoName = "MyNuGetSource"
 
-    Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
+  Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
 
-    Install-Module AzureRM -Repository $RepoName
+  Install-Module AzureRM -Repository $RepoName
 
-    Install-Module AzureStack -Repository $RepoName
-    ```
+  Install-Module AzureStack -Repository $RepoName
+  ```
 
 ---
 
@@ -176,7 +176,7 @@ expand-archive master.zip `
 cd AzureStack-Tools-master
 
 ```
-For more information about using the AzureRM module for Azure Stack Hub, see [Install PowerShell AzureRM module for Azure Stack Hub](azure-stack-powershell-install.md)
+For more information about using the AzureRM module for Azure Stack Hub, see [Install PowerShell AzureRM module for Azure Stack Hub](../operator/azure-stack-powershell-install.md)
 
 ---
 

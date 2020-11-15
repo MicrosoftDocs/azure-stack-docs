@@ -98,7 +98,7 @@ Follow these steps to register the ASDK with Azure.
   $RegistrationName = "<unique-registration-name>"
   Set-AzureRMsRegistration `
   -PrivilegedEndpointCredential $CloudAdminCred `
-  -PrivilegedEndpoint AzureRMS-ERCS01 `
+  -PrivilegedEndpoint AzS-ERCS01 `
   -BillingModel Development `
   -RegistrationName $RegistrationName `
   -UsageReportingEnabled:$true
