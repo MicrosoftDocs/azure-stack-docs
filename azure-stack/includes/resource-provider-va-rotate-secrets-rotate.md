@@ -24,8 +24,6 @@ Open an elevated PowerShell console and complete the following steps to determin
 
    In the following example, notice the Event Hubs RP deployment in the first element in the collection, which has a product ID of `"microsoft.eventhub"`, and version `"1.2003.0.0"`:
 
-### [Az modules](#tab/az1)
-
    ```powershell
    PS C:\WINDOWS\system32> Get-AzsProductDeployment -AsJson
    VERBOSE: GET https://adminmanagement.myregion.mycompany.com/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productDeployments?api-version=2019-01-01 with 0-char payload
@@ -62,46 +60,7 @@ Open an elevated PowerShell console and complete the following steps to determin
                  ]
    }
    ```
-### [AzureRM modules](#tab/azurerm1)
 
-   ```powershell
-   PS C:\WINDOWS\system32> Get-AzureRMsProductDeployment -AsJson
-   VERBOSE: GET https://adminmanagement.myregion.mycompany.com/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productDeployments?api-version=2019-01-01 with 0-char payload
-   VERBOSE: Received 2656-char response, StatusCode = OK
-   {
-       "value":  [
-                     {
-                         "id":  "/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/microsoft.eventhub",
-                         "name":  "global/microsoft.eventhub",
-                         "type":  "Microsoft.Deployment.Admin/locations/productDeployments",
-                         "properties":  {
-                                            "status":  "DeploymentSucceeded",
-                                            "subscriptionId":  "b37ae55a-a6c6-4474-ba97-81519412adf5",
-                                            "deployment":  {
-                                                               "version":  "1.2003.0.0",
-                                                               "actionPlanInstanceResourceId":"/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/actionplans/abcdfcd3-fef0-z1a3-z85d-z6ceb0f31e36",
-                                                               "parameters":  {
-   
-                                                                              }
-                                                           },
-                                            "lastSuccessfulDeployment":  {
-                                                                             "version":  "1.2003.0.0",
-                                                                             "actionPlanInstanceResourceId":"/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/actionplans/abcdfcd3-fef0-z1a3-z85d-z6ceb0f31e36",
-                                                                             "parameters":  {
-   
-                                                                                            }
-                                                                         },
-                                            "provisioningState":  "Succeeded"
-                                        }
-                     },
-                     {
-                     ...
-                     }
-                 ]
-   }
-   ```
-
----
 3. Build the resource provider's package ID, by concatenating the resource provider product ID and version. For example, using the values derived in the previous step, the Event Hubs RP package ID is `microsoft.eventhub.1.2003.0.0`. 
 
 4. Using the package ID derived in the previous step, run `Get-AzsProductSecret -PackageId` to retrieve the list of secret types being used by the resource provider. In the returned `value` collection, find the element containing a value of `"Certificate"` for the `"properties"."secretKind"` property. This element contains properties for the RP's certificate secret. Make note of the name assigned to this certificate secret, which is identified by the last segment of the `"name"` property, just above `"properties"`. 
