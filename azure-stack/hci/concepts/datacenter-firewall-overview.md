@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/12/2020
+ms.date: 11/16/2020
 ---
 
 # What is Datacenter Firewall?
@@ -17,13 +17,13 @@ Datacenter Firewall is a network layer, 5-tuple (protocol, source and destinatio
 
 ## How Datacenter Firewall works
 
-You enable and configure Datacenter Firewall by creating access control lists (ACLs) that get applied to a virtual subnet or a network interface. Firewall policies are enforced at the vSwitch port of each tenant virtual machine (VM). The policies are pushed through the tenant portal, and the Network Controller distributes them to all applicable hosts.
+You enable and configure Datacenter Firewall by creating access control lists (ACLs) that get applied to a subnet or a network interface. Firewall policies are enforced at the vSwitch port of each tenant virtual machine (VM). The policies are pushed through the tenant portal, and [Network Controller](network-controller-overview.md) distributes them to all applicable hosts. You can also use Windows Admin Center to configure and manage ACLs.
 
-When deployed and offered as a service by a Cloud Service Provider (CSP), tenant administrators can install and configure firewall policies to help protect their virtual networks from unwanted traffic originating from Internet and intranet networks.
+When deployed and offered as a service by a Cloud Service Provider (CSP), tenant administrators can install and configure firewall policies to help protect their virtual networks from unwanted traffic originating from internet and intranet networks.
 
 :::image type="content" source="media/datacenter-firewall/multitenantfirewalloverview2.png" alt-text="Datacenter Firewall in the network stack" border="false":::
 
-The service provider administrator or the tenant administrator can manage Datacenter Firewall policies via the Network Controller and the northbound APIs.
+The service provider administrator or the tenant administrator can manage Datacenter Firewall policies via Network Controller and the northbound APIs.
 
 ## Advantages for Cloud Service Providers
 
