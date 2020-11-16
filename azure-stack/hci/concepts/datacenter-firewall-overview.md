@@ -13,21 +13,21 @@ ms.date: 11/16/2020
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-Datacenter Firewall is a network layer, 5-tuple (protocol, source and destination port numbers, source and destination IP addresses), stateful, multitenant Software Defined Networking (SDN) firewall. The Datacenter Firewall protects east-west and north-south traffic flows across the network layer of virtual networks.
+Datacenter Firewall is a network layer, 5-tuple (protocol, source and destination port numbers, source and destination IP addresses), stateful, multitenant Software Defined Networking (SDN) firewall. The Datacenter Firewall protects east-west and north-south traffic flows across the network layer of virtual networks and traditional VLAN networks.
 
 ## How Datacenter Firewall works
 
-You enable and configure Datacenter Firewall by creating access control lists (ACLs) that get applied to a subnet or a network interface. Firewall policies are enforced at the vSwitch port of each tenant virtual machine (VM). The policies are pushed through the tenant portal, and [Network Controller](network-controller-overview.md) distributes them to all applicable hosts. You can also use Windows Admin Center to configure and manage ACLs.
+You enable and configure Datacenter Firewall by creating access control lists (ACLs) that get applied to a subnet or a network interface. Firewall policies are enforced at the vSwitch port of each tenant virtual machine (VM). The policies are pushed through the tenant portal, and [Network Controller](network-controller-overview.md) distributes them to all applicable hosts.
 
-When deployed and offered as a service by a Cloud Service Provider (CSP), tenant administrators can install and configure firewall policies to help protect their virtual networks from unwanted traffic originating from internet and intranet networks.
+Tenant administrators can install and configure firewall policies to help protect their networks from unwanted traffic originating from internet and intranet networks.
 
 :::image type="content" source="media/datacenter-firewall/multitenantfirewalloverview2.png" alt-text="Datacenter Firewall in the network stack" border="false":::
 
-The service provider administrator or the tenant administrator can manage Datacenter Firewall policies via Network Controller and the northbound APIs.
+The service provider administrator or the tenant administrator can manage Datacenter Firewall policies via Network Controller and the northbound APIs. You can also configure and manage Datacenter Firewall policies using Windows Admin Center.
 
 ## Advantages for Cloud Service Providers
 
-The Datacenter Firewall offers the following advantages for CSPs:
+Datacenter Firewall offers the following advantages for CSPs:
 
 - A highly scalable, manageable, and diagnosable software-based firewall solution that can be offered to tenants
 
@@ -45,11 +45,13 @@ The Datacenter Firewall offers the following advantages for CSPs:
 
 The Datacenter Firewall offers the following advantages for tenants:
 
-- Ability to define firewall rules to help protect Internet facing workloads on virtual networks
+- Ability to define firewall rules to help protect internet-facing workloads and internal workloads on networks
 
-- Ability to define firewall rules to help protect traffic between VMs on the same Layer 2 (L2) virtual subnet as well as between VMs on different L2 virtual subnets
+- Ability to define firewall rules to help protect traffic between VMs on the same Layer 2 (L2) subnet as well as between VMs on different L2 subnets
 
 - Ability to define firewall rules to help protect and isolate network traffic between tenant on-premises networks and their virtual networks at the service provider
+
+- Ability to apply firewall policies to traditional VLAN networks and overlay-based virtual networks
 
 ## Next steps
 
