@@ -158,8 +158,8 @@ To create a custom marketplace item, do the following:
 
     ```powershell
     $ArmEndpoint = "https://adminmanagement.local.azurestack.external"
-    Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint $ArmEndpoint
-    Add-AzureRmAccount -EnvironmentName "AzureStackAdmin"
+    Add-AzEnvironment -Name "AzureStackAdmin" -ArmEndpoint $ArmEndpoint
+    Add-AzAccount -EnvironmentName "AzureStackAdmin"
     ```
 
 4. Run the following script to import the resource into your gallery:
@@ -182,7 +182,7 @@ To create a custom marketplace item, do the following:
    - `https://galleryartifacts.adminhosting.[Region].[externalFQDN]/artifact/20161101/[TemplateName]/DeploymentTemplates/Template.json`
    - `https://galleryartifacts.hosting.[Region].[externalFQDN]/artifact/20161101/[TemplateName]/DeploymentTemplates/Template.json`
 
-7. You can remove a Marketplace item by using the **Remove-AzureRMGalleryItem** cmdlet. For example:
+6. You can remove a Marketplace item by using the **Remove-AzGalleryItem** cmdlet. For example:
 
    ```powershell
    Remove-AzsGalleryItem -Name <Gallery package name> -Verbose

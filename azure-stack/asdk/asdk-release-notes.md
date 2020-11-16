@@ -4,7 +4,7 @@ description: Improvements, fixes, and known issues for Azure Stack Development K
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 11/16/2020
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 08/10/2020
@@ -19,7 +19,18 @@ ms.lastreviewed: 08/10/2020
 
 This article provides information about changes, fixes, and known issues in the Azure Stack Development Kit (ASDK). If you're not sure which version you're running, [use the portal to check](../operator/azure-stack-updates.md).
 
-Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media/asdk-release-notes/feed-icon-14x14.png) [RSS feed](https://docs.microsoft.com/api/search/rss?search=ASDK+release+notes&locale=en-us#).
+<!-- Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media/asdk-release-notes/feed-icon-14x14.png) [RSS feed](https://docs.microsoft.com/api/search/rss?search=ASDK+release+notes&locale=en-us#). -->
+
+::: moniker range="azs-2008"
+## Build 1.2008.13.88
+
+### New features
+
+- For a list of fixed issues, changes, and new features in this release, see the relevant sections in the [Azure Stack release notes](../operator/release-notes.md).
+
+### Fixed and known issues
+
+::: moniker-end
 
 ::: moniker range="azs-2005"
 ## Build 1.2005.0.40
@@ -74,7 +85,6 @@ Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media
 ::: moniker-end
 
 ::: moniker range="azs-1910"
-
 ## Build 1.1910.0.58
 
 ### New features

@@ -102,12 +102,12 @@
           href: ../operator/azure-stack-validate-pki-certs.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Remediate PKI certificates
           href: ../operator/azure-stack-remediate-certs.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-    - name: Provisioning
+    - name: Registration and readiness 
       items: 
-      - name: Validate Azure registration 
-        href: ../operator/azure-stack-validate-registration.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json 
       - name: Register         
         href: operator/registration-tzl.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+      - name: Validate Azure registration 
+        href: ../operator/azure-stack-validate-registration.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json 
       - name: Value-add resource providers
         items:
         - name: App Service
@@ -178,12 +178,8 @@
           href: ../operator/azure-stack-enable-multitenancy.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: How-to guides
     items:
-    - name: Extended storage
-      items:
-      - name: OneFS and firmware updates
-        href: extended-storage-firmware-updates.md
-      - name: Health checks
-        href: extended-storage-health-checks.md
+    - name: Extended storage health checks
+      href: extended-storage-health-checks.md
     - name: Manage 
       items:
       - name: Administration basics

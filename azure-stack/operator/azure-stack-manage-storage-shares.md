@@ -4,10 +4,10 @@ description: Learn how to monitor and manage storage capacity and availability i
 author: IngridAtMicrosoft
 
 ms.topic: conceptual
-ms.date: 10/09/2020
+ms.date: 10/16/2020
 ms.author: inhenkel
 ms.reviewer: xiaofmao
-ms.lastreviewed: 03/19/2019
+ms.lastreviewed: 10/16/2020
 
 # Intent: As an Azure Stack operator, I want to learn how to manage storage capacity so I can increase total available capacity. 
 # Keyword: azure stack storage capacity
@@ -21,7 +21,7 @@ This article helps Azure Stack Hub cloud operators monitor and manage the storag
 
 As a cloud operator, you have a limited amount of storage to work with. The amount of storage is defined by the solution you implement. The solution is provided by your OEM vendor when you use a multinode solution, or it's provided by the hardware on which you install the Azure Stack Development Kit (ASDK).
 
-Azure Stack Hub only supports the expansion of storage capacity by adding additional scale unit nodes. For more information, see [add additional scale unit nodes in Azure Stack Hub](azure-stack-add-scale-node.md). Adding physcial disks to the nodes won't expand the storage capacity.
+Azure Stack Hub only supports the expansion of storage capacity by adding additional scale unit nodes. For more information, see [add additional scale unit nodes in Azure Stack Hub](azure-stack-add-scale-node.md). Adding physical disks to the nodes won't expand the storage capacity.
 
 It's important to [monitor](#monitor-shares) the available storage to ensure that efficient operations are maintained. When the remaining free capacity of a volume becomes limited, plan to [manage the available space](#manage-available-space) to prevent the shares from running out of capacity.
 
@@ -70,7 +70,7 @@ Azure Stack Hub supports the use of managed disks and unmanaged disks in VMs, as
 
 It is recommended that you use Managed Disks for VM for easier management and capacity balance. You don't have to prepare a storage account and containers before using Managed Disks. When creating multiple managed disks, the disks are distributed into multiple volumes, which helps to balance the capacity of volumes.  
 
-**Unmanaged disks** are VHD files that are stored as page blobs in Azure storage accounts. The page blobs created by tenants are referred to as VM disks and are stored in containers in the storage accounts. We recommend you use Unmanaged Disks only for VMs that need to compatible with 3rd party tools only support Azure Unmanaged Disks.
+**Unmanaged disks** are VHD files that are stored as page blobs in Azure storage accounts. The page blobs created by tenants are referred to as VM disks and are stored in containers in the storage accounts. We recommend you use Unmanaged Disks only for VMs that need to compatible with third party tools only support Azure-Unmanaged Disks.
 
 The guidance to tenants is to place each disk into a separate container to improve performance of the VM.
 
@@ -190,7 +190,7 @@ Migration consolidates all of a container's blobs on the new share.
 
 #### Migrate containers by using PowerShell
 
-1. Confirm that you have [Azure PowerShell installed and configured](/powershell/azure/). For more information, see [Manage Azure resources by using Azure PowerShell](https://go.microsoft.com/fwlink/?LinkId=394767).
+1. Confirm that you have [Azure PowerShell installed and configured](/powershell/azure/). For more information, see [Manage Azure resources by using Azure PowerShell](/azure/azure-resource-manager/management/manage-resources-powershell).
 2. Examine the container to understand what data is on the share that you plan to migrate. To identify the best candidate containers for migration in a volume, use the `Get-AzsStorageContainer` cmdlet:
 
    ```powershell  
@@ -340,7 +340,7 @@ You can free up space on an overused volume by manually migrating some managed d
 
 *This option applies only to Azure Stack Hub integrated systems.*
 
-The most extreme method for managing space involves moving unmanaged disks. If the tenant add numbers of unmanaged disks to one container, the total used capacity of the container could grow beyond the available capacity of the volume that holds it before the container entering *overflow* mode. To avoid single container exhaust the space of a volume, the tenant could distribute the existing unmanaged disks of one container to different containers. Because distributing an attached container (one that contains a VM disk) is complex, contact Microsoft Support to accomplish this action.
+The most extreme method for managing space involves moving unmanaged disks. If the tenant adds numbers of unmanaged disks to one container, the total used capacity of the container could grow beyond the available capacity of the volume that holds it before the container entering *overflow* mode. To avoid single container exhaust the space of a volume, the tenant could distribute the existing unmanaged disks of one container to different containers. Because distributing an attached container (one that contains a VM disk) is complex, contact Microsoft Support to accomplish this action.
 
 ::: moniker-end
 

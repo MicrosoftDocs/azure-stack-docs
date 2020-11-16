@@ -3,10 +3,10 @@ title: Generate certificate signing requests for Azure Stack Hub
 description: Learn how to generate certificate signing requests for Azure Stack Hub PKI certificates in Azure Stack Hub integrated systems.
 author: IngridAtMicrosoft
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 10/19/2020
 ms.author: inhenkel
 ms.reviewer: ppacent
-ms.lastreviewed: 09/10/2019
+ms.lastreviewed: 10/19/2020
 
 # Intent: As an Azure Stack operator, I want to generate CSRs before deploying Azure Stack so my identity system is ready.
 # Keyword: azure stack certificate signing request 
@@ -135,7 +135,7 @@ Use these steps to prepare certificate signing requests for renewal of existing 
 1. Install AzsReadinessChecker from a PowerShell prompt (5.1 or above), by running the following cmdlet:
 
     ```powershell  
-        Install-Module Microsoft.AzureStack.ReadinessChecker
+        Install-Module Microsoft.AzureStack.ReadinessChecker -Force -AllowPrerelease
     ```
 
 2. Declare the **stampEndpoint** in the form of regionname.domain.com of the Azure Stack Hub System. For example (if the Azure Stack Hub Tenant portal address is <code> https://</code><code>portal.east.azurestack.contoso.com</code>):

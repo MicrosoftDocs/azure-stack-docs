@@ -226,7 +226,7 @@ RequiredModules = @(@{ModuleName="AzureRM.Profile"; ModuleVersion="5.8.2"})
 Must be changed to:
 
 ```powershell
-RequiredModules = @(@{ModuleName="Az.Profile"; ModuleVersion="1.0.0"})
+RequiredModules = @(@{ModuleName="Az.Accounts"; ModuleVersion="1.0.0"})
 ```
 
 ### Removed modules

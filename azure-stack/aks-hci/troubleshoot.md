@@ -93,4 +93,4 @@ SSH into the node by using `ssh clouduser@ip`.
 To learn about troubleshooting common scenarios related to connectivity, permissions, and Arc agents, see [Azure Arc enabled Kubernetes troubleshooting](/azure/azure-arc/kubernetes/troubleshooting).
 
 ## Next steps
-If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).  
+If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
