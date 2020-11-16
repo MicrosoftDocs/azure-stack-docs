@@ -23,7 +23,9 @@ Azure Stack Hub provides different kinds of networking capabilities that can be 
 - **Internet connectivity**  
     Communicate to and from Azure Stack Hub resources over the internet.
 - **On-premises connectivity**  
-    Connect an on-premises network to Azure Stack Hub resources through a virtual private network (VPN) over the internet, or through a dedicated connection to Azure Stack Hub.
+    Connect an on-premises network to Azure Stack Hub resources through a virtual private network (VPN) over the internet, or through a dedicated connection to Azure Stack Hub. 
+    > [!IMPORTANT]
+    > You must create a VPN or public IP connection in order to access on-premises resources.
 - **Load balancing and traffic direction**  
     Load balance traffic to servers in the same location and direct traffic to servers in different locations.
 - **Security**  
