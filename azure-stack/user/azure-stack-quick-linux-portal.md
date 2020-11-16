@@ -87,6 +87,9 @@ The address of the Azure Stack Hub portal depends on which Azure Stack Hub produ
 
 1. Select **D1_v2** for the VM size.
 
+> [!Note]  
+> If you are creating a GPU enabled VM, select GPU VM **NC_v3** or **NC4as_T4_v3** for the VM size.
+
    ![Create Linux Server - Size](media/azure-stack-quick-linux-portal/image4a.png)
 
 1. Enter your changes to the defaults on the **Settings** blade,  Use Managed disks. If you need to allow SSH access, select **SSH (22)** to open the port. When your configurations are ready, select **OK**.
