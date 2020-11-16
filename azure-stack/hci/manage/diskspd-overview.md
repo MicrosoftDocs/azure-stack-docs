@@ -4,7 +4,7 @@ description: This topic provides guidance on how to use DISKSPD to test workload
 author: jasonnyi
 ms.author: jasonyi
 ms.topic: how-to
-ms.date: 11/13/2020
+ms.date: 11/16/2020
 ---
 
 # Use DISKSPD to test workload storage performance
@@ -114,16 +114,12 @@ As you’ll see, it's entirely possible to independently hit either the IOPS or 
 - [VM sizes](https://docs.microsoft.com/azure/virtual-machines/sizes-general?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)
 - [Disk types](https://azure.microsoft.com/pricing/details/managed-disks/)
 
-The following figure shows what our environment looks like. The green represents the IOPS limit on the VMs and the red represents the IOPS limit on the hard drives.
+## Understand the output
+Armed with your understanding of the parameters and environment, you're ready to interpret the output. First, the goal of the test was to max out the IOPS with no regard to latency. This way, you can visually see whether you reach the artificial IOPS limit within Azure. If you want to graphically visualize the total IOPS, use either Windows Admin Center or Task Manager.
+
+The following diagram shows what the DISKSPD process looks like in our example environment. It shows an example of a 1 MiB write operation from a non-coordinator node. The three-way resiliency structure, along with the operation from a non-coordinator node, leads to two network hops, decreasing performance. If you're wondering what a coordinator node is, don’t worry! You'll learn about it in the [Things to consider](#things-to-consider) section. The red squares represent the VM and drive bottlenecks.
 
 :::image type="content" source="media/diskspd/environment.png" alt-text="The sample environment used to test performance with DISKSPD." lightbox="media/diskspd/environment.png":::
-
-## Understand the output
-Armed with your understanding of the parameters and environment, you're ready to interpret the output. First, the goal of the test is to max out the IOPS with no regard to latency. This way, you can visually see whether you reach the artificial IOPS limit within Azure. If you want to graphically visualize the total IOPS, use either Windows Admin Center or Task Manager.
-
-The following diagram shows what the DISKSPD process looks like. It shows an example of a 1 MiB write operation from a non-coordinator node. The three-way resiliency structure, along with the operation from a non-coordinator node, leads to two network hops, decreasing performance. If you're wondering what a coordinator node is, don’t worry! You'll learn about it in the [Things to consider](#things-to-consider) section.
-
-:::image type="content" source="media/diskspd/example-process.png" alt-text="Example diagram of the DISKSPD process that shows a 1 MiB write operation from a non-coordinator node." lightbox="media/diskspd/example-process.png":::
 
 Now that you've got a visual understanding, let’s examine the four main sections of the .txt file output:
 1. Input settings
@@ -154,7 +150,7 @@ Now that you've got a visual understanding, let’s examine the four main sectio
 
     :::image type="content" source="media/diskspd/tradeoffs.png" alt-text="Figure shows workload relationship tradeoffs." lightbox="media/diskspd/tradeoffs.png":::
 
-    The second relationship in the figure is important, and it's sometimes referred to as Little’s Law. The law introduces the idea that there are three characteristics that govern process behavior and that you only need to change one to influence the other two, and thus the entire process. And so, if you're unhappy with your system’s performance, you have three dimensions of freedom to influence it. Little's Law dictates that in our example, IOPS is the throughput (input output operations per second), latency is the queue time, and queue depth is the inventory.
+    The second relationship in the figure is important, and it's sometimes referred to as Little’s Law. The law introduces the idea that there are three characteristics that govern process behavior and that you only need to change one to influence the other two, and thus the entire process. And so, if you're unhappy with your system’s performance, you have three dimensions of freedom to influence it. Little's Law dictates that in our example, IOPS is the "throughput" (input output operations per second), latency is the "queue time", and "queue depth" is the inventory.
 
 1. Latency percentile analysis
    
@@ -220,7 +216,7 @@ This section includes a few other examples, experiments, and workload types.
 ### Confirming the coordinator node
 As mentioned previously, if the VM you are currently testing does not own the CSV, you'll see a performance drop (IOPS, throughput, and latency) as opposed to testing it when the node owns the CSV. This is because every time you issue an I/O operation, the system does a network hop to the coordinator node to perform that operation.
 
-For a three-node, three-way mirrored situation, write operations always make a network hop because it needs to store data on all three nodes. Therefore, write operations make a network hop regardless. However, if you use a different resiliency structure, this could change.
+For a three-node, three-way mirrored situation, write operations always make a network hop because it needs to store data on all the drives across the three nodes. Therefore, write operations make a network hop regardless. However, if you use a different resiliency structure, this could change.
 
 Here is an example:
 - **Running on local node:** .\DiskSpd-2.0.21a\amd64\diskspd.exe -t4 -o32 -b4k -r4k -w0 -Sh -D -L C:\ClusterStorage\test01\targetfile\IO.dat
