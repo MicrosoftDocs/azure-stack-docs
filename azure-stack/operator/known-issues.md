@@ -441,7 +441,9 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ## PowerShell
 
-[!Include[Known issue for install](../includes/known-issue-az-install.md)]
+[!Include[Known issue for install - one](../includes/known-issue-az-install-1.md)]
+
+[!Include[Known issue for install - two](../includes/known-issue-az-install-2.md)]
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
