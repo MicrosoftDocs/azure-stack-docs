@@ -30,7 +30,7 @@ Run the following prerequisites either from the [Azure Stack Development Kit (AS
 
 To configure the Azure Stack Hub operator environment with PowerShell, run one of the scripts below. Replace the Azure Active Directory (Azure AD) tenantName and Azure Resource Manager endpoint values with your own environment configuration.
 
-[!include[Remove Account](../../includes/remove-account.md)]
+[!include[Remove Account](../includes/remove-account-azurerm.md)]
 
 ```powershell  
     # Register an Azure Resource Manager environment that targets your Azure Stack Hub instance. Get your Azure Resource Manager endpoint value from your service provider.
