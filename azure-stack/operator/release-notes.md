@@ -129,9 +129,12 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 ### Hotfix prerequisites: before applying the 2008 update
 
-When you update to a new major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+The 2008 release of Azure Stack Hub must be applied on the 2005 release with the following hotfixes:
+- [Azure Stack Hub hotfix 1.2005.21.84](https://support.microsoft.com/help/4592779)
 
 ### After successfully applying the 2008 update
+
+When you update to a new major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
 
 After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
 
