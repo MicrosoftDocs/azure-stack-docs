@@ -67,73 +67,37 @@ Open an elevated PowerShell console and complete the following steps to determin
 
    In the following example, the secrets collection returned for the Event Hubs RP contains a `"Certificate"` secret named `aseh-ssl-gateway-pfx`. 
 
-### [Az modules](#tab/az2)
+    ```powershell
+    PS C:\WINDOWS\system32> Get-AzsProductSecret -PackageId 'microsoft.eventhub.1.2003.0.0' -AsJson
+    VERBOSE: GET
+    https://adminmanagement.myregion.mycompany.com/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productPackages/microsoft.eventhub.1.2003.0.0/secrets?api-version=2019-01-01 with 0-char payload
+    VERBOSE: Received 617-char response, StatusCode = OK
+    {
+        "value":  [
+                        {
+                            "id":  "/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productPackages/microsoft.eventhub.1.2003.0.0/secrets/aseh-ssl-gateway-pfx",
+                            "name":  "global/microsoft.eventhub.1.2003.0.0/aseh-ssl-gateway-pfx",
+                            "type":  "Microsoft.Deployment.Admin/locations/productPackages/secrets",
+                            "properties":  {
+                                            "secretKind":  "Certificate",
+                                            "description":  "Event Hubs gateway SSL certificate.",
+                                            "expiresAfter":  "P730D",
+                                            "secretDescriptor":  {
+    
+                                                                    },
+                                            "secretState":  {
+                                                                "status":  "Deployed",
+                                                                "rotationStatus":  "None",
+                                                                "expirationDate":  "2022-03-31T00:16:05.3068718Z"
+                                                            },
+                                            "provisioningState":  "Succeeded"
+                                        }
+                        },
+                        ...
+                    ]
+    }
+    ```
 
-```powershell
-PS C:\WINDOWS\system32> Get-AzsProductSecret -PackageId 'microsoft.eventhub.1.2003.0.0' -AsJson
-VERBOSE: GET
-https://adminmanagement.myregion.mycompany.com/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productPackages/microsoft.eventhub.1.2003.0.0/secrets?api-version=2019-01-01 with 0-char payload
-VERBOSE: Received 617-char response, StatusCode = OK
-{
-    "value":  [
-                    {
-                        "id":  "/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productPackages/microsoft.eventhub.1.2003.0.0/secrets/aseh-ssl-gateway-pfx",
-                        "name":  "global/microsoft.eventhub.1.2003.0.0/aseh-ssl-gateway-pfx",
-                        "type":  "Microsoft.Deployment.Admin/locations/productPackages/secrets",
-                        "properties":  {
-                                        "secretKind":  "Certificate",
-                                        "description":  "Event Hubs gateway SSL certificate.",
-                                        "expiresAfter":  "P730D",
-                                        "secretDescriptor":  {
-
-                                                                },
-                                        "secretState":  {
-                                                            "status":  "Deployed",
-                                                            "rotationStatus":  "None",
-                                                            "expirationDate":  "2022-03-31T00:16:05.3068718Z"
-                                                        },
-                                        "provisioningState":  "Succeeded"
-                                    }
-                    },
-                    ...
-                ]
-}
-```
-
-### [AzureRM modules](#tab/azurerm2)
-
-```powershell
-PS C:\WINDOWS\system32> Get-AzureRMsProductSecret -PackageId 'microsoft.eventhub.1.2003.0.0' -AsJson
-VERBOSE: GET
-https://adminmanagement.myregion.mycompany.com/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productPackages/microsoft.eventhub.1.2003.0.0/secrets?api-version=2019-01-01 with 0-char payload
-VERBOSE: Received 617-char response, StatusCode = OK
-{
-    "value":  [
-                    {
-                        "id":  "/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productPackages/microsoft.eventhub.1.2003.0.0/secrets/aseh-ssl-gateway-pfx",
-                        "name":  "global/microsoft.eventhub.1.2003.0.0/aseh-ssl-gateway-pfx",
-                        "type":  "Microsoft.Deployment.Admin/locations/productPackages/secrets",
-                        "properties":  {
-                                        "secretKind":  "Certificate",
-                                        "description":  "Event Hubs gateway SSL certificate.",
-                                        "expiresAfter":  "P730D",
-                                        "secretDescriptor":  {
-
-                                                                },
-                                        "secretState":  {
-                                                            "status":  "Deployed",
-                                                            "rotationStatus":  "None",
-                                                            "expirationDate":  "2022-03-31T00:16:05.3068718Z"
-                                                        },
-                                        "provisioningState":  "Succeeded"
-                                    }
-                    },
-                    ...
-                ]
-}
-```
-
----
 ### Rotate the secrets
 
 1. Use the `Set-AzsProductSecret` cmdlet to import your new certificate to Key Vault, which will be used by the rotation process. Replace the variable placeholder values accordingly before running the script:
