@@ -6,14 +6,14 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/12/2020
+ms.date: 11/16/2020
 ---
 
 # Use Datacenter Firewall for Software-Defined Networking in Azure Stack HCI
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-This topic provides instructions for configuring access control lists (ACLs) to manage data traffic flow using Datacenter Firewall for Software-Defined Networking (SDN) in Azure Stack HCI using Windows PowerShell. You enable and configure Datacenter Firewall by creating ACLs that get applied to a virtual subnet or a network interface. The example scripts in this topic use Windows PowerShell commands exported from the **NetworkController** module.
+This topic provides instructions for configuring access control lists (ACLs) to manage data traffic flow using Datacenter Firewall for Software Defined Networking (SDN) in Azure Stack HCI using Windows PowerShell. You enable and configure Datacenter Firewall by creating ACLs that get applied to a subnet or a network interface. The example scripts in this topic use Windows PowerShell commands exported from the **NetworkController** module. You can also use Windows Admin Center to configure and manage ACLs.
 
 ## Configure Datacenter Firewall to allow all traffic
 
@@ -257,5 +257,5 @@ In this example, we show you how to remove an ACL from a network interface. Remo
 For related information, see also:
 
 - Datacenter Firewall overview
-- Network Controller overview
+- [Network Controller overview](../concepts/network-controller-overview.md)
 - [SDN in Azure Stack HCI](../concepts/software-defined-networking.md)
