@@ -20,15 +20,11 @@ This article describes the contents of Azure Stack HCI Public Preview update pac
 This update includes improvements and fixes for the latest release of Azure Stack HCI. 
 
    > [!IMPORTANT]
-   > If you have an Azure Stack HCI cluster configured and registered using the Public Preview image, then you must repair your Azure registration after the KB4586852 update is installed in order to use the new features that the update offers. After installing the update, follow these steps:
+   > If you have Azure Stack HCI clusters configured and registered using the Public Preview image, then you must repair your Azure registration after the KB4586852 update is installed in order to use the new features that the update offers. After installing the update, follow these steps for each cluster:
    >
    > 1. Make sure that all servers in the cluster have been updated to KB4586852. If they have not, then the repair will fail and indicate the node(s) that need to be updated.
    >
-   > 2. Connect to one of the cluster nodes by opening a PowerShell session and entering the following command:
-   > 
-   >   ```PowerShell
-   >   Enter-PSSession <server-name>
-   >   ```
+   > 2. Connect to one of the cluster nodes either locally or using `Enter-PSSession <server-name>`
    >
    > 3. Download the AzStackHCI v0.4.0 registration module from PowerShell Gallery. Run `Install-Module Az.StackHCI` to get the latest module.
    >
