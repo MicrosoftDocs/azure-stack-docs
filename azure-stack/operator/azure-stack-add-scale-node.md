@@ -60,6 +60,21 @@ You can use the administrator portal or PowerShell to add new nodes. The add nod
    ![Add node details](media/azure-stack-add-scale-node/select-node2.png)
  
 
+### [PowerShell Az](#tab/Az)
+
+Use the **Add-AzsScaleUnitNode** cmdlet to add a node.  
+
+Before using either of the following sample PowerShell scripts, replace the values *name_of_new_node*,  *name_of_scale_unit_cluster*, *BMCIP_address_of_new_node* with values from your Azure Stack Hub environment.
+
+  > [!Note]  
+  > When naming a node you must keep the name to less than 15 characters in length. You also can't use a name that contains a space or contains any of the following characters: `\`, `/`, `:`, `*`, `?`, `"`, `<`, `>`, `|`, `\`, `~`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `(`, `)`, `{`, `}`, `_`.
+
+**Add a node:**
+  ```powershell
+  ## Add a single Node 
+    Add-AzsScaleUnitNode -BMCIPv4Address "<BMCIP_address_of_new_node>" -computername "<name_of_new_node>" -ScaleUnit "<name_of_scale_unit_cluster>" 
+  ```  
+
 ### [PowerShell AzureRM](#tab/AzureRM)
 
 Use the **New-AzsScaleUnitNodeObject** cmdlet to add a node.  
@@ -75,21 +90,6 @@ Before using either of the following sample PowerShell scripts, replace the valu
   $NewNode=New-AzsScaleUnitNodeObject -computername "<name_of_new_node>" -BMCIPv4Address "<BMCIP_address_of_new_node>" 
  
   Add-AzsScaleUnitNode -NodeList $NewNode -ScaleUnit "<name_of_scale_unit_cluster>" 
-  ```  
-
-### [PowerShell Az](#tab/Az)
-
-Use the **Add-AzsScaleUnitNode** cmdlet to add a node.  
-
-Before using either of the following sample PowerShell scripts, replace the values *name_of_new_node*,  *name_of_scale_unit_cluster*, *BMCIP_address_of_new_node* with values from your Azure Stack Hub environment.
-
-  > [!Note]  
-  > When naming a node you must keep the name to less than 15 characters in length. You also can't use a name that contains a space or contains any of the following characters: `\`, `/`, `:`, `*`, `?`, `"`, `<`, `>`, `|`, `\`, `~`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `(`, `)`, `{`, `}`, `_`.
-
-**Add a node:**
-  ```powershell
-  ## Add a single Node 
-    Add-AzsScaleUnitNode -BMCIPv4Address "<BMCIP_address_of_new_node>" -computername "<name_of_new_node>" -ScaleUnit "<name_of_scale_unit_cluster>" 
   ```  
 
 ---
