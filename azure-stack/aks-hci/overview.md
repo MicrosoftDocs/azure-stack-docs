@@ -15,7 +15,7 @@ To get started with Azure Kubernetes Service on-premises, [register for the prev
 
 The following sections discuss some of the reasons to use Azure Kubernetes Service on Azure Stack HCI, then answer some common questions about the service and how to get started. For a background on containers, see [Windows and containers](/virtualization/windowscontainers/about/).
 
-## Automate management of containerized applications
+## Use AKS to automate management of containerized applications
 
 While you can manage a few containers manually using Docker and Windows, apps often make use of five, ten, or even hundreds of containers, which is where the Kubernetes orchestrator comes in.
 
