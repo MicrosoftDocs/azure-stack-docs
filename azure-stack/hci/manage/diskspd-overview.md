@@ -253,6 +253,6 @@ The basic design choice for this workload test should at a minimum include:
     - The second solution involves using the -T\<offset>\. This allows you to specify the offset size (inter-I/O gap) between I/O operations performed on the same target file by different threads. For example, threads normally start at offset 0, but this specification allows you to distance the two threads so that they will not overlap each other. In any multithreaded environment, the threads will likely be on different portions of the working target, and this is a way of simulating that situation.
 
 ## Next steps
-For more information and detailed examples on optimizing your resiliency settings, see also:
+For more information and detailed examples on optimizing your resiliency settings, see:
 - [OLTP and OLAP](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn894707(v=ws.11))
 - [Resiliency choice](https://techcommunity.microsoft.com/t5/storage-at-microsoft/volume-resiliency-and-efficiency-in-storage-spaces-direct/ba-p/425831)
