@@ -57,5 +57,5 @@ The Datacenter Firewall offers the following advantages for tenants:
 
 For related information, see also:
 
-- [Use access control lists (ACLs) to manage datacenter network traffic flow](/windows-server/networking/sdn/manage/use-acls-for-traffic-flow)
+- [Use Datacenter Firewall for Software-Defined Networking in Azure Stack HCI](../manage/use-datacenter-firewall.md)
 - [SDN in Azure Stack HCI](software-defined-networking.md)
