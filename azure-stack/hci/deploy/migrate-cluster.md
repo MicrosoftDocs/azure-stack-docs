@@ -3,7 +3,7 @@ title: Migrate a cluster to Azure Stack HCI
 description: Learn how to migrate a cluster to Azure Stack HCI 
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 11/13/2020 
+ms.date: 11/17/2020 
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -12,13 +12,10 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version 20H2
 
-This topic describes how to migrate a cluster from Windows Server 2016 or Windows Server 2019 to Azure Stack HCI using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one server to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy).
+This article describes how to migrate a cluster from Windows Server 2016 or Windows Server 2019 to Azure Stack HCI using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one server to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy).
 
 > [!NOTE]
-> You can also migrate from Windows Server 2008 R2 and Windows Server 2012 R2 but you will need to download and install Robocopy on each source server node, then run the following PowerShell cmdlet to handle the XML files:
-
-> [!NOTE]
-> Migrating stretched clusters is not supported.
+> Migrating stretched clusters is not covered in this article.
 
 ## Before you begin
 
@@ -26,42 +23,46 @@ There are several requirements and things to consider before you begin migration
 
 - Check if Azure Stack HCI supports your version of virtual machines (VMs) to import. Use the PowerShell `Get-VMHostSupportedVersion` and `Get-VM` cmdlets to get your VM version information.
 
-- Make sure you have domain credentials with administrator permissions for both source and destination clusters, with rights to the CNO OU for both clusters.
+- Make sure you have domain credentials with administrator permissions for both source and destination clusters, with full rights to the source and destination Organizational Unit (OU) that contains both clusters.
 
-- Both clusters should be in the same Active Directory forest and domain. This enables cluster named objects to share the same OU to ensure no domain level GPOs impact the migration.  
+- Both clusters must be in the same Active Directory forest and domain to facilitate Kerberos authentication between clusters for migration of VMs.
 
-- Both clusters need to be in the same time zone and time source to ensure Kerberos authentication can occur between clusters.
+- Both clusters must reside in an Active Directory OU with Group Policy Object (GPO) Block inheritance set on this OU. This ensures no domain-level GPOs and security policies can impact the migration.
+
+- Both clusters must be connected to the same time source to support consistent Kerberos authentication between clusters.
 
 - If possible, physically locate the source and destination clusters as close together as possible to facilitate the fastest transfer of VMs.
 
 - Backup all VMs on your Windows Server cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases.
 
-- Make note of the virtual switch names used for your Windows Server nodes. You will need to use the same names for the Azure Stack HCI cluster virtual switches.
+- Make note of the Hyper-V virtual switch name used by VMs on the source cluster. You must create the same virtual switch name for the Azure Stack HCI destination cluster "virtual machine network" prior to importing VMs.
 
 - Ensure the maximum Jumbo frame sizes are the same between source and destination cluster storage networks, specifically the RDMA network adapters and their respective switch network ports to provide the most efficient end-to-end transfer packet size.
 
 - Remove any ISO image files for your source VMs. This is done using Hyper-V Manager in **VM Properties** in the **Hardware section**. Click **Remove** for any virtual CD/DVD drives.
 
-- Take a checkpoint snapshot of your source cluster (VMs and domain controller) in case you have to roll back to a prior state.
+- Take a checkpoint snapshot of your source cluster VMs and domain controller in case you have to roll back to a prior state. This is not applicable for physical servers.
 
-- Shutdown all virtual machines (VMs) on the Windows Server cluster. This is required to ensure version control and state are maintained throughout the migration process.
+- You must shutdown all VMs on the source cluster. This is required to ensure version control and state are maintained throughout the migration process.
 
 ## RDMA recommendations
 
-If you are using Remote Direct Memory Access (RDMA), Robocopy can leverage it for migration of your VMs. Here are some recommendations for using RDMA:
+If you are using Remote Direct Memory Access (RDMA), Robocopy can leverage it for copying your VMs between clusters. Here are some recommendations for using RDMA:
 
-- Configure RDMA storage networks so they are routable between the source and destination clusters.
+- Connect both clusters to the same top of rack (ToR) switch to use the fastest network path between source and destination clusters. For the storage network path this typically supports 10Gbe/25Gbe or higher speeds and leverages RDMA.
 
-- Connect both clusters to the same top of rack (ToR) switch to use the fastest network path between clusters. This network path typically supports 10Gbe/25Gbe speeds and leverages RDMA. If the RDMA adapter or standard is different between clusters (ROCE vs iWARP), Robocopy will instead leverage SMB over TCP/IP via the fastest available network. This will typically be a dual 10Gbe/25Gbe network, providing the most optimal way to copy VM VHDX files between clusters.
+- If the RDMA adapter or standard is different between source and destination clusters (ROCE vs iWARP), Robocopy will instead leverage SMB over TCP/IP via the fastest available network. This will typically be a dual 10Gbe/25Gbe or higher speed for the East-West network, providing the most optimal way to copy VM VHDX files between clusters.
 
-## Create the new cluster
+- To ensure Robocopy can leverage RDMA between clusters (East-West network), configure RDMA storage networks so they are routable between the source and destination clusters.
 
-Before you can create the new cluster, you need to install the Azure Stack HCI OS on each server that will be in the new cluster. For information on how to do this, see [Deploy the Azure Stack HCI operating system](operating-system.md).
+## Create the destination cluster
+
+Before you can create the destination cluster, you need to install the Azure Stack HCI OS on each server that will be in the new cluster. For information on how to do this, see [Deploy the Azure Stack HCI operating system](operating-system.md).
 
 Use Windows Admin Center or Windows PowerShell to create the new cluster. For information on how to do this, see [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md) and [Create an Azure Stack HCI cluster using Windows PowerShell](create-cluster-powershell.md).
 
 > [!NOTE]
-> Make sure during virtual switch creation that the names specified match the switch names on the source cluster.
+> Make sure the Hyper-V virtual switch name created on the destination cluster matches the Hyper-V virtual switch name on the source cluster.
 
 ## Run the migration script
 
@@ -77,7 +78,7 @@ The migration script is run locally on each source cluster node to leverage the 
 
 1. Change the following three variables to match the source cluster VM path with the destination cluster VM path:
 
-    - `$Dest_Server = "Node01.contoso.com"`
+    - `$Dest_Server = "Node01"`
     - `$source  = "C:\Clusterstorage\Volume01"`
     - `$dest = "\\$Dest_Server\C$\Clusterstorage\Volume01"`
 
@@ -91,13 +92,13 @@ Here is the script:
 .DESCRIPTION:
 Change the following variables to match your source cluster VM path with the destination cluster VM path. Then run this script on each source Cluster Node CSV owner and make sure the destination cluster node is set to the CSV owner for the destination CSV.
 
-        Change $Dest_Server = "Node01.contoso.com"
+        Change $Dest_Server = "Node01"
         Change $source  = "C:\Clusterstorage\Volume01"
         Change $dest = "\\$Dest_Server\C$\Clusterstorage\Volume01"
 #>
 
 $Space       = Write-host ""
-$Dest_Server = "Node01.contoso.com"
+$Dest_Server = "Node01"
 $source      = "C:\Clusterstorage\Volume01"
 $dest        = "\\$Dest_Server\C$\Clusterstorage\Volume01"
 $Logfile     = "c:\temp\Robocopy1-$date.txt"
@@ -109,7 +110,7 @@ $options     = @("/E","/MT:32","/R:0","/W:1","/NFL","/NDL","/LOG:$logfile","/xf"
 ## Get Start Time
 $startDTM = (Get-Date)
  
-$Dest_Server     = "Node01.contoso.com"
+$Dest_Server     = "Node01"
 $TARGETDIR   = \\$Dest_Server\C$\Clusterstorage\Volume01
 $Space
 Clear
@@ -133,9 +134,9 @@ Write-host " Copy Virtual Machines to $Dest_Server took $Time        ......" -fo
 
 ## Post-migration tasks
 
-A best practice is to create at least one Cluster Shared Volume (CSV) per cluster node to enable an even balance of VMs to each CSV owner for increased resiliency, performance, and scale of VM workloads. By default this balance occurs automatically every five minutes and needs to be considered when using Robocopy between a source cluster node and the destination cluster node to ensure source and destination CSV owners match to provide the most optimal transfer path and speed.
+A best practice is to create at least one Cluster Shared Volume (CSV) per cluster node to enable an even balance of VMs for each CSV owner for increased resiliency, performance, and scale of VM workloads. By default, this balance occurs automatically every five minutes and needs to be considered when using Robocopy between a source cluster node and the destination cluster node to ensure source and destination CSV owners match to provide the most optimal transfer path and speed.
 
-After the script has completed for each server node, you will have an even distribution of CSVs by default. After five minutes, these will balance on each destination server node. For example, with four nodes and four CSVs, each node will own one CSV.
+After the Robocopy script has completed the fast copy of VMs from source to destination cluster for each server node and volume, check the Robocopy log file for any errors listed and to verify that all VMS are copied successfully.
 
 Perform the following steps on your Azure Stack HCI cluster to import, register, and start the VMs:
 
@@ -165,7 +166,7 @@ Perform the following steps on your Azure Stack HCI cluster to import, register,
     Start-VM -Name
     ```
 
-    and verify they are all running:
+1. Login and verify that all VMs are running and that all your apps and data are there:
 
     ```powershell
     Get-VM -ComputerName Server01 | Where-Object {$_.State -eq 'Running'}
