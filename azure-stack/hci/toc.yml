@@ -136,6 +136,8 @@
       href: concepts/network-controller-overview.md
     - name: Plan Network Controller
       href: concepts/network-controller.md
+    - name: Datacenter Firewall overview
+      href: concepts/datacenter-firewall-overview.md
     - name: Software Load Balancer overview
       href: concepts/software-load-balancer.md
     - name: RAS Gateway overview
