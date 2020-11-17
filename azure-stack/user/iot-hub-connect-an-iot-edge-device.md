@@ -26,24 +26,24 @@ Complete the following prerequisites before continuing:
 
 - Once an offer is available, your administrator can create or update your Azure Stack Hub subscription to include IoT Hub. Alternatively, you can [subscribe to the new offer and create your own subscription](azure-stack-subscribe-services.md).
 
-- It's helpful to have a basic understanding of Public Key Encryption (PKI). Specifically, how a Certificate Authority (CA) and X509 certificates are use to build a chain of trust, allowing two network nodes (such as your IoT Hub service and IoT Edge device) to securely authenticate and communicate with each other. 
+- It's helpful to have a basic understanding of Public Key Encryption (PKI). Specifically, how a Certificate Authority (CA) and X509 certificates are use to build a chain of trust, allowing network nodes (such as your IoT Hub service and IoT Edge device) to securely authenticate and communicate with each other. 
 
 ## Overview
 
 The general steps you'll complete in the following sections include:
 
-1. Creating resources on your Azure Stack Hub instance, including an IoT Hub and a Linux VM. The Linux VM will serve as a virtual IoT Edge device. 
+1. Create IoT Hub and Linux VM resources on your Azure Stack Hub instance. The Linux VM serves as a virtual IoT Edge device. 
 2. Configure the certificates required for the Edge device.
 3. Configure the software and services required for the Edge device.
-4. Test the Edge device to make sure it's working properly.
+4. Test the Edge device to make sure it's working properly and communicating with your IoT Hub.
 
-Be sure to change all script placeholders accordingly for your environment, before running the script in the subsections that follow:
+Be sure to update any script placeholders to match your environment, before running the script in each subsection:
 
 | Placeholder | Example | Note |
 |-------------|---------|------|
-| `<DEVICE-CA-CERT-NAME>` | `edged1cert`| A name you provide for the IoT Edge device CA certificate. |
+| `<DEVICE-CA-CERT-NAME>` | `edged1cert`| The name you give the IoT Edge device CA certificate. |
 | `<IOT-HUB-HOSTNAME>`| `test-hub-1.mgmtiothub.region.mydomain.com`| Your IoT Hub host name. |
-| `<IOT-HUB-ROOT-CA>`| `root.cer`| The name you'll give to the IoT Hub root CA. |
+| `<IOT-HUB-ROOT-CA>`| `root.cer`| The filename you give to the IoT Hub root CA. |
 | `<WORK-DIR>`| `/home/edgeadmin/edged1`| The path to your local working directory the Linux VM. |
 
 ## Create Azure Stack Hub resources
