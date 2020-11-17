@@ -14,6 +14,8 @@ ms.reviewer: JasonGerend
 
 This article describes how to migrate a cluster from Windows Server 2016 or Windows Server 2019 to Azure Stack HCI using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one server to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy).
 
+You can expect RoboCopy to copy approximately 1TB to 1.5TB in one hour assuming a 40 GB connection using RDMA.
+
 > [!NOTE]
 > Migrating stretched clusters is not covered in this article.
 
@@ -21,21 +23,21 @@ This article describes how to migrate a cluster from Windows Server 2016 or Wind
 
 There are several requirements and things to consider before you begin migration:
 
-- Check if Azure Stack HCI supports your version of virtual machines (VMs) to import. Use the PowerShell `Get-VMHostSupportedVersion` and `Get-VM` cmdlets to get your VM version information.
+- You must have domain credentials with administrator permissions for both source and destination clusters, with full rights to the source and destination Organizational Unit (OU) that contains both clusters.
 
-- Make sure you have domain credentials with administrator permissions for both source and destination clusters, with full rights to the source and destination Organizational Unit (OU) that contains both clusters.
-
-- Both clusters must be in the same Active Directory forest and domain to facilitate Kerberos authentication between clusters for migration of VMs.
+- Both clusters must be in the same Active Directory forest and domain to facilitate Kerberos authentication between clusters for migration of virtual machines (VMs).
 
 - Both clusters must reside in an Active Directory OU with Group Policy Object (GPO) Block inheritance set on this OU. This ensures no domain-level GPOs and security policies can impact the migration.
 
 - Both clusters must be connected to the same time source to support consistent Kerberos authentication between clusters.
 
-- If possible, physically locate the source and destination clusters as close together as possible to facilitate the fastest transfer of VMs.
-
-- Backup all VMs on your Windows Server cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases.
-
 - Make note of the Hyper-V virtual switch name used by VMs on the source cluster. You must create the same virtual switch name for the Azure Stack HCI destination cluster "virtual machine network" prior to importing VMs.
+
+- You must shutdown all VMs on the source cluster. This is required to ensure version control and state are maintained throughout the migration process.
+
+- Check if Azure Stack HCI supports your version of VMs to import. Use the PowerShell `Get-VMHostSupportedVersion` and `Get-VM` cmdlets to get your VM version information.
+
+- Backup all VMs on your source cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases.
 
 - Ensure the maximum Jumbo frame sizes are the same between source and destination cluster storage networks, specifically the RDMA network adapters and their respective switch network ports to provide the most efficient end-to-end transfer packet size.
 
@@ -43,7 +45,7 @@ There are several requirements and things to consider before you begin migration
 
 - Take a checkpoint snapshot of your source cluster VMs and domain controller in case you have to roll back to a prior state. This is not applicable for physical servers.
 
-- You must shutdown all VMs on the source cluster. This is required to ensure version control and state are maintained throughout the migration process.
+- If possible, physically locate the source and destination clusters as close together as possible to facilitate the fastest transfer of VMs.
 
 ## RDMA recommendations
 
@@ -68,7 +70,7 @@ Use Windows Admin Center or Windows PowerShell to create the new cluster. For in
 
 The following PowerShell script `Robocopy_Remote_Server_.ps1` uses Robocopy to copy VM files and their dependent directories and metadata from the source cluster to the destination cluster. This script has been modified from  from the original script on TechNet at: [Robocopy Files to Remote Server Using PowerShell and RoboCopy](https://gallery.technet.microsoft.com/scriptcenter/Robocoy-Files-to-Remote-bdfc5154).
 
-The script creates a folder named `ISO` on the `C:` drive of each destination cluster server node, then copies all VM VHD, VHDX, and VMCX files to your destination cluster for each Cluster Shared Volume (CSV).
+The script creates a folder named `ISO` on the `C:` drive of each destination cluster server node, then copies all VM VHD, VHDX, and VMCX files to your destination cluster for each Cluster Shared Volume (CSV). One CSV is migrated at a time.
 
 The migration script is run locally on each source cluster node to leverage the benefit of RDMA and fast network transfer. Let's begin:
 
@@ -175,7 +177,7 @@ Perform the following steps on your Azure Stack HCI cluster to import, register,
 1. Update your VMs to the latest version to take advantage of all the advancements:
 
     ```powershell
-    Get-VM | Update-Version -Force
+    Get-VM | Update-VMVersion -Force
     ```
 
 1. Check the Robocopy log file for any errors listed and to verify that all VMS are copied successfully. 
