@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/16/2020
+ms.date: 11/17/2020
 ---
 
 # What is Datacenter Firewall?
