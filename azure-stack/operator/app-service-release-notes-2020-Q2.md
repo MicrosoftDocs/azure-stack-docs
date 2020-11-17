@@ -1,6 +1,6 @@
 ---
-title: App Service on Azure Stack Hub 2002 Q2 release notes 
-description: Learn about what's in the 2002 Q2 release for App Service on Azure Stack Hub, the known issues, and where to download the update.
+title: App Service on Azure Stack Hub 2020 Q2 release notes 
+description: Learn about what's in the 2020 Q2 release for App Service on Azure Stack Hub, the known issues, and where to download the update.
 author: apwestgarth
 manager: stefsch
 
