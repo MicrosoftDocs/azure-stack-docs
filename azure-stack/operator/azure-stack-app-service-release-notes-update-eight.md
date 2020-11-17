@@ -297,7 +297,7 @@ Take one of the following actions and select retry within the installer.
 
 ## Known issues for cloud admins operating Azure App Service on Azure Stack Hub
 
-Refer to the documentation in the [Azure Stack Hub 1907 release notes](./release-notes.md?view=azs-2002).
+Refer to the documentation in the [Azure Stack Hub 1907 release notes](./release-notes.md?view=azs-1907).
 
 - Tenants unable to create App Service Plan using new on App Service Plan view in tenant portal
 
