@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/24/2020
+ms.date: 11/17/2020
 ---
 
 # Connect Azure Stack HCI to Azure
@@ -60,7 +60,7 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure:
 3. Install the required cmdlets:
 
    ```PowerShell
-   Install-Module Az.StackHCI
+   Install-Module -Name Az.StackHCI -RequiredVersion 0.3.1
    ```
 
    > [!NOTE]
