@@ -3,10 +3,10 @@ title: Create and publish a Marketplace item in Azure Stack Hub
 description: Learn how to create and publish an Azure Stack Hub Marketplace item.
 author: sethmanheim
 ms.topic: article
-ms.date: 08/18/2020
+ms.date: 11/16/2020
 ms.author: sethm
 ms.reviewer: avishwan
-ms.lastreviewed: 05/07/2019
+ms.lastreviewed: 11/16/2020
 
 # Intent: As an Azure Stack operator, I want to create and publish a Marketplace items so my users can use them.
 # Keyword: create marketplace item azure stack
@@ -50,7 +50,7 @@ To create a custom marketplace item, do the following:
    > [!NOTE]  
    > Never hard code any secrets such as product keys, password, or any customer identifiable information in the Azure Resource Manager template. Template JSON files are accessible without the need for authentication once published in the gallery. Store all secrets in [Key Vault](/azure/azure-resource-manager/resource-manager-keyvault-parameter) and call them from within the template.
 
-   It's recommended that before publishing your own custom template, you try to publish the sample as-is and make sure it works in your environment. Once you’ve verified this step works, then delete the sample from gallery and make iterative changes until you are satisfied with the result.
+   It's recommended that before publishing your own custom template, you try to publish the sample as-is and make sure it works in your environment. Once you've verified this step works, then delete the sample from gallery and make iterative changes until you are satisfied with the result.
 
    The following template is a sample of the Manifest.json file:
 
@@ -156,11 +156,21 @@ To create a custom marketplace item, do the following:
 
 3. Add a context:
 
+### [Az modules](#tab/az)
     ```powershell
     $ArmEndpoint = "https://adminmanagement.local.azurestack.external"
     Add-AzEnvironment -Name "AzureStackAdmin" -ArmEndpoint $ArmEndpoint
     Add-AzAccount -EnvironmentName "AzureStackAdmin"
     ```
+### [AzureRM modules](#tab/azurerm)
+
+    ```powershell
+    $ArmEndpoint = "https://adminmanagement.local.azurestack.external"
+    Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint $ArmEndpoint
+    Add-AzureRMAccount -EnvironmentName "AzureStackAdmin"
+    ```
+
+---
 
 4. Run the following script to import the resource into your gallery:
 
@@ -188,10 +198,8 @@ To create a custom marketplace item, do the following:
    Remove-AzsGalleryItem -Name <Gallery package name> -Verbose
    ```
 
-   > [!NOTE]
-   > The Marketplace UI may show an error after you remove an item. To fix the error, click **Settings** in the portal. Then, select **Discard modifications** under **Portal customization**.
-   >
-   >
+> [!Note]
+> The Marketplace UI may show an error after you remove an item. To fix the error, click **Settings** in the portal. Then, select **Discard modifications** under **Portal customization**.
 
 ## Reference: Marketplace item manifest.json
 
