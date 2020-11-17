@@ -4,14 +4,14 @@ description: This topic provides guidance on how to configure firewalls for the 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 11/12/2020
+ms.date: 11/17/2020
 ---
 
 # Configure firewalls for Azure Stack HCI
 
 >Applies to: Azure Stack HCI, version 20H2
 
-This topic provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes connectivity requirements, and IP addresses and URLs in Azure that the operating system needs to access. The topic then briefly dicusses the concept of service tags, and concludes with steps to update Microsoft Defender Firewall and the external corporate firewall in your organization.
+This topic provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes connectivity requirements, briefly discusses how service tags group IP addresses in Azure that the operating system needs to access. The topic then provides steps to update Microsoft Defender Firewall.
 
 ## Connectivity requirements
 Azure Stack HCI needs to periodically connect to the Azure public cloud. The connectivity requirements are far from unrestricted internet access. Access is limited to only:
@@ -22,17 +22,18 @@ Azure Stack HCI needs to periodically connect to the Azure public cloud. The con
 For more information, see the Azure Stack HCI connectivity section of the [Azure Stack HCI FAQ](../faq.md)
 
    >[!IMPORTANT]
-   > If outbound connectivity is restricted by your external corporate firewall or proxy server, ensure that the URLs listed below are not blocked. For related information, see the "Networking configuration" section of [Overview of Azure Arc enabled servers agent](https://docs.microsoft.com/azure/azure-arc/servers/agent-overview#networking-configuration).
+   > If outbound connectivity is restricted by your external corporate firewall or proxy server, ensure that the URLs listed in the table below are not blocked. For related information, see the "Networking configuration" section of [Overview of Azure Arc enabled servers agent](https://docs.microsoft.com/azure/azure-arc/servers/agent-overview#networking-configuration).
 
 
-The following diagram shows how the process works.
+The following diagram indicates how the operating system needs to be allowed through potentially more than one firewall layer to access various parts of the Azure cloud.
 
 :::image type="content" source="./media/configure-firewalls/firewalls-diagram.png" alt-text="Diagram shows Azure Stack HCI accessing service tag endpoints through Port 443 (HTTPS) of firewalls." lightbox="./media/configure-firewalls/firewalls-diagram.png":::
 
-## Required endpoint day-to-day access (after Azure registration)
-Azure maintains well-known IP addresses for Azure services. Azure Stack HCI needs access to IP addresses and URLs that Azure maintains. The IP addresses are organized using what are called service tags.
+## How aervice tags work
+A *service tag* represents a group of IP addresses from a given Azure service. Microsoft manages the IP addresses included in the service tag, and automatically updates the service tag as IP addresses change to keep updates to a minimum. To learn more, see [Virtual network service tags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview).
 
-Azure publishes a weekly JSON file of all the IP addresses for every service. The IP addresses don’t change often, but they do change a few times per year. The following table shows the service tag endpoints that Azure Stack HCI needs to access.
+## Required endpoint day-to-day access (after Azure registration)
+Azure maintains well-known IP addresses for Azure services that are organized using service tags. Azure publishes a weekly JSON file of all the IP addresses for every service. The IP addresses don’t change often, but they do change a few times per year. The following table shows the service tag endpoints that Azure Stack HCI needs to access.
 
 | Description                   | Service tag for IP range  | URL                                                                                 |
 | :-----------------------------| :-----------------------  | :---------------------------------------------------------------------------------- |
@@ -41,11 +42,8 @@ Azure publishes a weekly JSON file of all the IP addresses for every service. Th
 | Azure Stack HCI Cloud Service | AzureFrontDoor.Frontend   | Depends on the region you registered with:<br> East US: `https://eus-azurestackhci-usage.azurewebsites.net`<br> West Europe: `https://weu-azurestackhci-usage.azurewebsites.net` |
 | Azure Arc                     | AzureArcInfrastructure<br> AzureTrafficManager | Depends on the functionality you want to use:<br> Hybrid Identity Service: `*.his.arc.azure.com`<br> Guest Configuration: `*.guestconfiguration.azure.com`<br> **Note:** Expect more URLs as we enable more functionality. |
 
-## Service tags and how they work
-A *service tag* represents a group of IP addresses from a given Azure service. Microsoft manages the IP addresses included in the service tag, and automatically updates the service tag as IP addresses change to keep updates to a minimum. To learn more, see [Virtual network service tags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview).
-
-## How to update the firewalls
-This section shows how to configure the Microsoft Defender Firewall and your external corporate firewall to allow IP addresses associated with a service tag to connect with the operating system:
+## How to update Microsoft Defender Firewall
+This section shows how to configure Microsoft Defender Firewall to allow IP addresses associated with a service tag to connect with the operating system:
 
 1. Download the JSON file from the following resource to the target computer running the operating system: [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519).
 
