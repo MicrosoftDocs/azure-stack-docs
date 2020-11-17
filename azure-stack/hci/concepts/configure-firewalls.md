@@ -68,7 +68,7 @@ This section shows how to configure Microsoft Defender Firewall to allow IP addr
     ```
 
 ## Additional endpoint for one-time Azure registration
-During the Azure registration process, when you run either `Register-AzStackHCI` or use Windows Admin Center, the cmdlet tries to contact the PowerShell Gallery to verify that you have the latest version of required PowerShell modules, such as Az and AzureAD. Although the PowerShell Gallery is hosted on Azure, currently there is not a service tag for it. If you can't run the cmdlet from a machine that has permissive outbound internet access, we recommend downloading the modules, and then manually transferring them to the node where you want to run the `Register-AzStackHCI` command.
+During the Azure registration process, when you run either `Register-AzStackHCI` or use Windows Admin Center, the cmdlet tries to contact the PowerShell Gallery to verify that you have the latest version of required PowerShell modules, such as Az and AzureAD. Although the PowerShell Gallery is hosted on Azure, currently there isn't a service tag for it. If you can't run the cmdlet from a machine that has permissive outbound internet access, we recommend downloading the modules, and then manually transferring them to the node where you want to run the `Register-AzStackHCI` command.
 
 ## Next steps
 For more information, see also:
