@@ -227,7 +227,11 @@ App Service performs domain ownership verification against public DNS endpoints,
 
 - In some cases workers fail to satisfy health checks (insufficient disk space)
 
-In some cases, where a high number of sites are allocated to a worker or a site is handling a large number of requests, the worker will generate a large number of runtime log files in C:\DWAS\LogFiles.  This is due to a bug in the cleanup logic for these log files.  This has been fixed in App Service on Azure Stack Hub 2020 Q3, we encourage customers to upgrade to the 2020 Q3 release as soon as possible.
+In some cases, where a high number of sites are allocated to a worker or a site is handling a large number of requests, the worker will generate a large number of runtime log files in C:\DWAS\LogFiles.  This is due to a bug in the cleanup logic for these log files.  
+
+To mitigate this issue remote to the individual worker and clear out the contents of the folder.
+
+This has been fixed in [App Service on Azure Stack Hub 2020 Q3](app-service-release-notes-2020-Q3.md), we encourage customers to upgrade to the 2020 Q3 release as soon as possible.
 
 > [!NOTE]
 > In order to update to Azure App Service on Azure Stack Hub 2020 Q3 you **must** upgrade to Azure Stack Hub 2008
