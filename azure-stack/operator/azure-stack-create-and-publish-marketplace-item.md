@@ -103,13 +103,13 @@ To create a custom marketplace item, do the following:
 
     The following list explains the preceding numbered values in the example template:
 
-    - (1) – The name of the offer.
-    - (2) – The name of the publisher, without a space.
-    - (3) – The version of your template, without a space.
-    - (4) – The name that customers see.
-    - (5) – The publisher name that customers see.
-    - (6) – The publisher legal name.
-    - (7) – The path and name for each icon.
+    - (1) - The name of the offer.
+    - (2) - The name of the publisher, without a space.
+    - (3) - The version of your template, without a space.
+    - (4) - The name that customers see.
+    - (5) - The publisher name that customers see.
+    - (6) - The publisher legal name.
+    - (7) - The path and name for each icon.
 
 5. For all fields referring to **ms-resource**, you must change the appropriate values inside the **strings/resources.json** file:
 
@@ -157,18 +157,19 @@ To create a custom marketplace item, do the following:
 3. Add a context:
 
 ### [Az modules](#tab/az)
-    ```powershell
-    $ArmEndpoint = "https://adminmanagement.local.azurestack.external"
-    Add-AzEnvironment -Name "AzureStackAdmin" -ArmEndpoint $ArmEndpoint
-    Add-AzAccount -EnvironmentName "AzureStackAdmin"
-    ```
+
+```powershell
+$ArmEndpoint = "https://adminmanagement.local.azurestack.external"
+Add-AzEnvironment -Name "AzureStackAdmin" -ArmEndpoint $ArmEndpoint
+Add-AzAccount -EnvironmentName "AzureStackAdmin"
+```
 ### [AzureRM modules](#tab/azurerm)
 
-    ```powershell
-    $ArmEndpoint = "https://adminmanagement.local.azurestack.external"
-    Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint $ArmEndpoint
-    Add-AzureRMAccount -EnvironmentName "AzureStackAdmin"
-    ```
+```powershell
+$ArmEndpoint = "https://adminmanagement.local.azurestack.external"
+Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint $ArmEndpoint
+Add-AzureRMAccount -EnvironmentName "AzureStackAdmin"
+```
 
 ---
 
