@@ -115,7 +115,7 @@ As you’ll see, it's entirely possible to independently hit either the IOPS or 
 - [Disk types](https://azure.microsoft.com/pricing/details/managed-disks/)
 
 ## Understand the output
-Armed with your understanding of the parameters and environment, you're ready to interpret the output. First, the goal of the test was to max out the IOPS with no regard to latency. This way, you can visually see whether you reach the artificial IOPS limit within Azure. If you want to graphically visualize the total IOPS, use either Windows Admin Center or Task Manager.
+Armed with your understanding of the parameters and environment, you're ready to interpret the output. First, the goal of the earlier test was to max out the IOPS with no regard to latency. This way, you can visually see whether you reach the artificial IOPS limit within Azure. If you want to graphically visualize the total IOPS, use either Windows Admin Center or Task Manager.
 
 The following diagram shows what the DISKSPD process looks like in our example environment. It shows an example of a 1 MiB write operation from a non-coordinator node. The three-way resiliency structure, along with the operation from a non-coordinator node, leads to two network hops, decreasing performance. If you're wondering what a coordinator node is, don’t worry! You'll learn about it in the [Things to consider](#things-to-consider) section. The red squares represent the VM and drive bottlenecks.
 
@@ -150,7 +150,7 @@ Now that you've got a visual understanding, let’s examine the four main sectio
 
     :::image type="content" source="media/diskspd/tradeoffs.png" alt-text="Figure shows workload relationship tradeoffs." lightbox="media/diskspd/tradeoffs.png":::
 
-    The second relationship in the figure is important, and it's sometimes referred to as Little’s Law. The law introduces the idea that there are three characteristics that govern process behavior and that you only need to change one to influence the other two, and thus the entire process. And so, if you're unhappy with your system’s performance, you have three dimensions of freedom to influence it. Little's Law dictates that in our example, IOPS is the "throughput" (input output operations per second), latency is the "queue time", and "queue depth" is the inventory.
+    The second relationship in the figure is important, and it's sometimes referred to as Little’s Law. The law introduces the idea that there are three characteristics that govern process behavior and that you only need to change one to influence the other two, and thus the entire process. And so, if you're unhappy with your system’s performance, you have three dimensions of freedom to influence it. Little's Law dictates that in our example, IOPS is the "throughput" (input output operations per second), latency is the "queue time", and queue depth is the "inventory".
 
 1. Latency percentile analysis
    
