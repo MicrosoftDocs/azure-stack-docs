@@ -99,6 +99,8 @@ Export the IoT Hub root CA certificate in PEM format, from a machine that has ac
 
    1. When the **Certificate Export Wizard** shows, export the certificate to a **Base-64 encoded X.509 format** file, for example, **root.cer**. You use this file in the next section, so export it to a location that can be accessed from, or copied to, the Linux VM.
 
+   1. After the export finishes successfully, you can close the browser tab.
+
 ### Install the IoT Hub root CA on the Edge device
 
 Now install the IoT Hub root CA you exported in the previous section, into the Edge device's trusted store. 
