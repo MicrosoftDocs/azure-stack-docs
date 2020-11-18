@@ -69,7 +69,7 @@ The **Alerts** blade supports the ability to filter both on state (Active or Clo
 
 The **View API** action displays the REST API that was used to generate the list view. This action provides a quick way to become familiar with the REST API syntax that you can use to query alerts. You can use this API in automation or for integration with your existing datacenter monitoring, reporting, and ticketing solutions.
 
-You can click a specific alert to view the alert details. The alert details show all fields that are associated with the alert and enable quick navigation to the affected component and source of the alert. For example, the following alert occurs if one of the infrastructure role instances goes offline or isn't accessible. You can lookup the pointers to the aka.ms links in the remediation section of the alert detail in [Alerts aka.ms link reference](aks-refer-table-tzl.md).
+You can click a specific alert to view the alert details. The alert details show all fields that are associated with the alert and enable quick navigation to the affected component and source of the alert. For example, the following alert occurs if one of the infrastructure role instances goes offline or isn't accessible. You can look up the [cross-reference link](aks-refer-table-tzl.md) in the **Remediation** section of the alert details to view the article.
 
 ![The Alert details blade in Azure Stack administrator portal](media/azure-stack-monitor-health/alert-detail.png)
 
