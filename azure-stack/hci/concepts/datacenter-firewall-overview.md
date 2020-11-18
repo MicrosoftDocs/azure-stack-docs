@@ -25,7 +25,7 @@ Tenant administrators can install and configure firewall policies to help protec
 
 The service provider administrator or the tenant administrator can manage Datacenter Firewall policies via Network Controller and the northbound APIs. You can also configure and manage Datacenter Firewall policies using Windows Admin Center.
 
-## Advantages for Cloud Service Providers
+## Advantages for cloud service providers
 
 Datacenter Firewall offers the following advantages for CSPs:
 

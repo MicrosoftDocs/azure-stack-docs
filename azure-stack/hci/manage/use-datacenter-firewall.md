@@ -31,7 +31,7 @@ Use the entries in the following table to create a set of rules that allow all i
 In this example, you create an ACL with two rules:
 
 1. **AllowAll_Inbound** - allows all network traffic to pass into the network interface where this ACL is configured.
-2. **AllowAllOutbound** - allows all traffic to pass out of the network interface. This ACL, identified by the resource id "AllowAll-1" is now ready to be used in virtual subnets and network interfaces.
+2. **AllowAllOutbound** - allows all traffic to pass out of the network interface. This ACL, identified by the resource ID "AllowAll-1" is now ready to be used in virtual subnets and network interfaces.
 
 First, connect to one of the cluster nodes by opening a PowerShell session:
 
@@ -90,7 +90,7 @@ In this example, you create an ACL that prevents virtual machines (VMs) within t
 
 ---
 
-The ACL created by the example script below, identified by the resource id **Subnet-192-168-0-0**, can now be applied to a virtual network subnet that uses the "192.168.0.0/24" subnet address. Any network interface that is attached to that virtual network subnet automatically gets the above ACL rules applied.
+The ACL created by the example script below, identified by the resource ID **Subnet-192-168-0-0**, can now be applied to a virtual network subnet that uses the "192.168.0.0/24" subnet address. Any network interface that is attached to that virtual network subnet automatically gets the above ACL rules applied.
 
 The following is an example script to create this ACL using the Network Controller REST API:
 
