@@ -37,7 +37,7 @@ The general steps you'll complete in the following sections include:
 3. Configure the software and services required for the Edge device.
 4. Test the Edge device to make sure it's working properly and communicating with your IoT Hub.
 
-Be sure to update any script placeholders to match your environment, before running the script in each subsection:
+Be sure to update any script placeholders to match your environment, before running the script in each section:
 
 | Placeholder | Example | Note |
 |-------------|---------|------|
@@ -62,10 +62,10 @@ First you create the necessary Azure Stack Hub resources, including an IoT Hub a
 
 In this section, you deploy a new Linux VM, which will serve as the virtual IoT Edge device:
 
-1. Use the [Create a Linux server VM by using the Azure Stack Hub portal](azure-stack-quick-linux-portal.md) quick start, to install a Linux VM on your Azure Stack Hub instance. Be sure to enable port **SSH (22)** on the **Select public inbound ports** property of the **Settings** page. [TODO - NEED TO CONFIRM WHETHER THEY ONLY NEED TO DO FIRST 5 SECTIONS of VM Creation (through Connect to the VM)]
+1. Using the [Create a Linux server VM by using the Azure Stack Hub portal](azure-stack-quick-linux-portal.md) quick start, install a Linux VM on your Azure Stack Hub instance. Be sure to enable port **SSH (22)** on the **Select public inbound ports** property of the **Settings** page. 
 
    > [!NOTE]
-   > Don't complete the **Clean up resources** section, as you'll use the Linux VM for the remainder of this article.
+   > You only need to complete the first 5 sections, up through **Connect to the VM**, as you won't need the NGINX web server. Also, don't complete the **Clean up resources** section, as you'll use the Linux VM for the remainder of this article.
 
 2. After you've created and connected to the VM using PuTTY, create a user account. For the purposes of this article, we'll assume an account named **edgeadmin**.
 
