@@ -5,7 +5,7 @@ author: sethmanheim
 ms.topic: article
 ms.date: 09/09/2020
 ms.author: sethm
-ms.reviewer: ihcherie
+ms.reviewer: gara
 ms.lastreviewed: 01/21/2019
 
 # Intent: As an Azure Stack operator, I want to know which Azure Marketplace items can be used in Azure Stack.
