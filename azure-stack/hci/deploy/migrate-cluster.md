@@ -12,9 +12,13 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version 20H2
 
-This article describes how to migrate a cluster from Windows Server 2016 or Windows Server 2019 to Azure Stack HCI using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one server to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy).
+This topic describes how to migrate a cluster from Windows Server 2016 or Windows Server 2019 to Azure Stack HCI using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one server to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy).
 
-You can expect RoboCopy to copy approximately 1TB to 1.5TB in one hour assuming a 40 GB connection using RDMA.
+The following diagram shows a Windows Server source cluster and an Azure Stack HCI destination cluster:
+
+:::image type="content" source="media/migrate/migrate-cluster.png" alt-text="Migrate cluster to Azure Stack HCI" lightbox="media/migrate/migrate-cluster.png":::
+
+In terms of expected downtime, using a single NIC with a dual 40 GB RDMA East-West network between clusters, and Robocopy configured for 32 multithreads, transfer speeds of 1.9 TB per hour can be realized.
 
 > [!NOTE]
 > Migrating stretched clusters is not covered in this article.
@@ -138,8 +142,6 @@ Write-host " Copy Virtual Machines to $Dest_Server took $Time        ......" -fo
 
 A best practice is to create at least one Cluster Shared Volume (CSV) per cluster node to enable an even balance of VMs for each CSV owner for increased resiliency, performance, and scale of VM workloads. By default, this balance occurs automatically every five minutes and needs to be considered when using Robocopy between a source cluster node and the destination cluster node to ensure source and destination CSV owners match to provide the most optimal transfer path and speed.
 
-After the Robocopy script has completed the fast copy of VMs from source to destination cluster for each server node and volume, check the Robocopy log file for any errors listed and to verify that all VMS are copied successfully.
-
 Perform the following steps on your Azure Stack HCI cluster to import, register, and start the VMs:
 
 1. Run the following cmdlet to show all CSV owner nodes:
@@ -180,7 +182,7 @@ Perform the following steps on your Azure Stack HCI cluster to import, register,
     Get-VM | Update-VMVersion -Force
     ```
 
-1. Check the Robocopy log file for any errors listed and to verify that all VMS are copied successfully. 
+1. After the script has completed, check the Robocopy log file for any errors listed and to verify that all VMS are copied successfully.
 
 ## Next steps
 
