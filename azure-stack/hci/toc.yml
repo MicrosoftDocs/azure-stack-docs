@@ -74,6 +74,8 @@
       href: manage/update-cluster.md
     - name: Monitor the cluster
       href: manage/monitor-cluster.md
+    - name: Use Datacenter Firewall
+      href: manage/use-datacenter-firewall.md
     - name: Use DISKSPD to test workloads
       href: manage/diskspd-overview.md
     - name: Add or remove servers
