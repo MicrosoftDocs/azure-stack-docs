@@ -3,7 +3,7 @@ title: Plan host networking for Azure Stack HCI
 description: Learn how to plan host networking for Azure Stack HCI clusters
 author: v-dasis
 ms.topic: how-to
-ms.date: 11/09/2020
+ms.date: 11/18/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -12,65 +12,241 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version 20H2
 
-This topic discusses host networking planning considerations and requirements in both non-stretched and stretched Azure Stack HCI cluster environments.
+This topic discusses the host networking considerations and requirements for Azure Stack HCI.
 
-## Node interconnect requirements
+## Host network designs
 
-This section discusses specific networking requirements between servers in a site, called interconnects. Either switched or switchless node interconnects can be used and are supported:
+This section discusses the logical network design of Azure Stack HCI cluster nodes.
+For information on data center architectures and the interconnects between cluster nodes, please see [Plan physical networking for Azure Stack HCI] which discusses the concepts of North/South vs East/West traffic; switched vs switchless; and other physical networking topic.
 
-- **Switched:** Server nodes are most commonly connected to each other via Ethernet networks that use network switches. Switches must be properly configured to handle the bandwidth and networking type. If using RDMA that implements the RoCE protocol, network device and switch configuration is important.
-- **Switchless:** Server nodes can also be interconnected using direct Ethernet connections without a switch. In this case, each server node must have a direct connection with every other cluster node in the same site.
+## Types of network traffic
 
-### Interconnects for 2-3 node clusters
+Network traffic can be classified by its intended purpose:
 
-These are the *minimum* interconnect requirements for single-site clusters having two or three nodes. These apply for each server node:
+- **Management traffic**: Traffic used by the administrator. This type of traffic is used for administration including connections to Active Directory, Remote Desktop, for Remote Administration (for example: PowerShell or Windows Admin Center), etc.
+- **Compute traffic**: Traffic originating from or destined for a virtual machine
+- **Storage traffic**: Traffic for Storage Spaces Direct using SMB
 
-- One or more 1 Gb network adapter cards to be used for management functions
-- One or more 10 Gb (or faster) network interface cards for storage and workload traffic
-- Two or more network connections between each node recommended for redundancy and performance
+## Selecting a network adapter
 
-### Interconnects for 4-node and greater clusters
+For Azure Stack HCI, Microsoft requires choosing a network adapter that has achieved the Windows Server SDDC Premium or Standard AQ (Additional Qualification). These adapters support the most advanced platform features and have undergone the most testing by our hardware partners. Typically, this level of scrutiny leads to a reduction in hardware and driver related quality issues.
 
-These are the *minimum* interconnect requirements for clusters having four or more nodes, and for high-performance clusters. These apply for each server node:
+You can identify an adapter that has the Premium AQ by reviewing the Windows Server Catalog entry for that adapter and the applicable operating system version. Below is an example of the notation for a Premium AQ.
 
-- One or more 1 Gb network adapter cards to be used for management functions.
-- One or more 25 Gb (or faster) network interface cards for storage and workload traffic. We recommend two or more network connections for redundancy and performance.
-- Network cards that are remote-direct memory access (RDMA) capable: iWARP (recommended) or RoCE.
+:::image type="content" source="media/plan-networking/windows-certified.png" alt-text="Windows Certified" lightbox="media/plan-networking/windows-certified.png":::
 
-### Site-to-site requirements (stretched cluster)
+### Key Azure Stack HCI network adapter capabilities
 
-When connecting between sites for stretched clusters, interconnect requirements within each site still apply, and have additional Storage Replica and Hyper-V live migration traffic requirements that must be considered:
+#### Remote Direct Memory Access (RDMA)
 
-- At least one 1 Gb RDMA or Ethernet/TCP connection between sites for synchronous replication. A 25 Gb connection is preferred.
-- A network between sites with enough bandwidth to contain your I/O write workload and an average of 5ms round trip latency or lower for synchronous replication. Asynchronous replication doesn't have a latency recommendation.
-- If using a single connection between sites, set SMB bandwidth limits for Storage Replica using PowerShell. For more information, see [Set-SmbBandwidthLimit](/powershell/module/smbshare/set-smbbandwidthlimit).
-- If using multiple connections between sites, separate traffic between the connections. For example, put Storage Replica traffic on a separate network than Hyper-V live migration traffic using PowerShell. For more information, see [Set-SRNetworkConstraint](/powershell/module/storagereplica/set-srnetworkconstraint).
+**Applicable traffic types**: Host Storage or Guest Compute
+**Certifications required**: Standard (Host) or Premium (Guest)
+All adapters with the Standard or Premium certifications support RDMA (Remote Direct Memory Access). RDMA is the recommended deployment choice for Storage workloads in Azure Stack HCI and can optionally be enabled for storage workloads (SMB) into a Virtual Machine.
 
-## RDMA considerations
+RDMA enables high-throughput, low-latency networking while using minimal host CPU resources. These host CPU resources can then be used to run additional Virtual Machines or Containers.
 
-Remote direct memory access (RDMA) is a direct memory access from the memory of one computer into that of another without involving either computer's operating system. This permits high-throughput, low-latency networking while minimizing CPU usage, which is especially useful in clusters.
+RDMA is a direct memory access technology from the memory of one computer into that of another without involving either operating system. That is, RDMA is a network stack offload to the network adapter allowing the applicable network traffic to bypass the operating system for processing by the consuming application. In Azure Stack HCI, the consuming application is SMB. Teaming of RDMA adapters requires Switch Embedded Teaming (SET).
 
-All host RDMA traffic takes advantage of SMB Direct. SMB Direct is SMB 3.0 traffic sent over RDMA and is multiplexed over port 445. A minimum of two Priority-based Flow Control (PFC) enabled Traffic Classes (TCs) must be used for RDMA traffic to remain compatible with the majority of current and future physical switches on the market.
+Azure Stack HCI supports RDMA with either of the following two protocol implementations:
+-	Internet Wide Area RDMA Protocol (iWARP)
+    - Uses TCP
+    - Can be optionally enhanced with Data Center Bridging (PFC and ETS)
+-	RDMA over Converged Ethernet (RoCE)
+    - Uses UDP
+    - Requires Data Center Bridging (PFC and ETS) to provide reliability
 
-Internet Wide Area RDMA Protocol (iWARP) runs RDMA over TCP, while RDMA over Converged Ethernet (RoCE) avoids the use of TCP, but requires both NICs and physical switches that support it. For converged network requirements for RDMA over RoCE, see the [Windows Server 2016 and 2019 RDMA Deployment Guide](https://github.com/Microsoft/SDN/blob/master/Diagnostics/S2D%20WS2016_ConvergedNIC_Configuration.docx).
-
-RDMA is enabled by default for all east/west traffic between cluster nodes in a site on the same subnet. RDMA is disabled and not supported for north/south stretched cluster traffic between sites on different subnets.
-
-These are the requirements for RDMA for Azure Stack HCI:
-
-- All traffic between subnets and between sites (stretched clusters) must use WinSock TCP. Any intermediate network hops are outside of the view and control of Azure Stack HCI.
-- RDMA between subnets and between sites (stretched clusters) is not supported. The use of uplinks and multiple network devices means multiple failure points where this could become unstable and unsupportable.
-- No additional virtual NICs are needed for Storage Replica traffic for stretched clusters. However for troubleshooting purposes, it may be useful to keep the cross-site and cross-subnet traffic separate from the east-west RDMA traffic. If SMB Direct cannot be natively disabled cross-site or cross-subnet per flow, then:
-    - One or more additional vNICs should be provisioned for Storage Replica
-    - Storage Replica vNICs must have RDMA disabled using the PowerShell [Disable-NetAdapterRDMA](https://docs.microsoft.com/powershell/module/netadapter/disable-netadapterrdma) cmdlet because it is by definition cross-site and cross-subnet
-    - Native RDMA adapters would need a vSwitch and vNICs for Storage Replica support in order to satisfy the site/subnet requirements above
-    - Intra-site RDMA bandwidth requirements require knowing the bandwidth percentages per traffic type, as discussed in the **Traffic bandwidth allocation** section. This will ensure that appropriate bandwidth reservations and limits can be applied for east/west (node-to-node) traffic
-- Live Migration and Storage Replica traffic must be SMB bandwidth-limited, otherwise they could consume all the bandwidth, starving the high-priority storage traffic. For more information, see the [Set-SmbBandwidthLimit](https://docs.microsoft.com/powershell/module/smbshare/set-smbbandwidthlimit) and [Set-SRNetworkConstraint](https://docs.microsoft.com/powershell/module/storagereplica/set-srnetworkconstraint) PowerShell cmdlets.
 
 > [!NOTE]
-> You need to convert bits into bytes when using the `Set-SmbBandwidthLimit` cmdlet.
+> Infiniband is not supported with Azure Stack HCI
+
+> [!IMPORTANT]
+> RDMA adapters can only interoperate with other RDMA adapters that implement the same RDMA protocol (iWARP or RoCE).
+
+The following table shows vendors (in alphabetical order) that offer Premium certified RDMA adapters by RDMA protocol type. Note, there are hardware vendors not included in this list that do support RDMA. Please use the Windows Server Catalog to verify RDMA support.
+
+|NIC Vendor|iWARP|RoCE|
+|----|----|----|
+|Broadcom|No|Yes|
+|Chelsio|Yes|No|
+|Intel|Yes|Yes (some models)|
+|Marvell (Qlogic/Cavium)|Yes|Yes|
+|Nvidia (Mellanox)|No|Yes|
+
+> [!NOTE]
+> Not all adapters from the vendors support RDMA. Please verify RDMA support with your network card vendor.
+
+Microsoft recommends that you use iWARP if:
+
+- You have little or no network experience or are uncomfortable managing network switches
+- You do not control your ToR switches
+- You are unsure which option to choose
+- You will not be managing the solution after deployment
+- You already have deployments with iWARP
+
+Microsoft recommends that you use RoCE if:
+
+- You already have deployments with RoCE in your data center
+- You are familiar with the physical network requirements
+For more information, please see the section below labelled RDMA Considerations
+
+#### Dynamic VMMQ
+
+**Applicable traffic types**: Compute
+
+**Certifications required**: Premium
+
+All adapters with Premium certifications support Dynamic Virtual Machine Multi-Queue (d.VMMQ).  Dynamic VMMQ is an intelligent receive-side technology that builds upon its predecessors of VMQ, VRSS, and VMMQ to provide three primary improvements:
+
+- Optimizes the host’s efficiency (use of CPU cores)
+- Automatic tuning of network traffic processing to CPU cores (enabling the VM to meet and maintain the expected throughput)
+- Enables “bursty” workloads to receive the expected amount of traffic
+Dynamic VMMQ requires Switch Embedded Teaming.
+
+For more information on Dynamic VMMQ, please see the following [link].
+
+#### Guest RDMA
+
+**Applicable traffic types**: Compute
+
+**Certifications required**: Premium
+
+Guest RDMA enables SMB workloads into a virtual machine to gain the same benefits of RDMA on the host. The primary benefits are:
+
+- CPU offload (to the NIC) of network traffic processing
+- Extremely low latency
+- High throughput
+For more information including how to deploy Guest RDMA, please see the Guest RDMA section of the [RDMA deployment guide].
+
+## Teaming in Azure Stack HCI
+
+**Applicable traffic types**: Compute, Management, and Storage
+
+**Certifications required:** None (built into the OS)
+
+Switch Embedded Teaming (SET) is a software-based teaming mechanism included in the operating system. It is not dependent on the network adapters used. SET has been included in the Windows Server operating system since Windows Server 2016.
+
+SET is the only teaming mechanism supported by Azure Stack HCI. LBFO is commonly used with Windows Server but is not supported with Azure Stack HCI. See the blog post [Teaming in Azure Stack HCI](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642) for more information on LBFO in Azure Stack HCI. SET works well with Management, Compute, and Storage traffic alike.
+
+SET is important for Azure Stack HCI as it is the only teaming technology that enables:
+
+- Teaming of RDMA adapters (if needed)
+- Dynamic VMMQ (see Dynamic VMMQ)
+- Guest RDMA (see Guest RDMA)
+- Several other key Azure Stack HCI features (outlined here)
+
+Requirements: Switch Embedded Teaming provides many additional features including quality and performance improvements over its predecessor, LBFO. To do this, SET requires the use of symmetric adapters – teaming of asymmetric adapters is not supported. Symmetric adapters are those that have the same:
+
+- Make (vendor)
+- Model (version)
+- Speed (throughput)
+- Configuration
+
+> [!IMPORTANT]
+>The easiest way to identify if adapters can be symmetric are if the interface descriptions match (they can deviate only in the number proceeding the description) and the speed is the same. From there, ensure that the configuration reported on `Get-NetAdapterAdvancedProperty` report the same values for the available properties.
+
+## RDMA Considerations
+
+If you implement Data Center Bridging (required for RoCE; optional for iWARP) you must ensure that PFC and ETS configuration is implemented properly across every network port (including network switches).
+
+For more information on deploying RDMA, please see the [RDMA Deployment Guide].
+
+### Traffic Classes
+
+RoCE-based Azure Stack HCI implementations requires the configuration of three PFC traffic classes (including the default traffic class) across the hosts and fabric. More information is found in the RDMA Deployment Guide linked above.
+
+#### Cluster traffic class
+
+This traffic class ensures that cluster heartbeats have bandwidth reserved for cluster heartbeats
+- Required: Yes
+- Flow Control (PFC) Enabled: No
+- Recommended Traffic Class: Priority 7
+- Recommended Bandwidth Reservation
+    - 10 GbE or lower RDMA networks: 2%
+    - 25 GbE or higher RDMA networks: 1%
+
+#### RDMA traffic class
+
+This traffic class ensures the lossless communication of RDMA (SMBDirect) and reserves the necessary bandwidth.
+
+- Required: Yes
+- Flow Control (PFC) Enabled: Yes
+- Recommended Traffic class: Priority 3 or 4
+- Recommended Bandwidth Reservation: 50%
+
+#### Default traffic class
+This traffic class carries all other traffic not defined in the cluster or RDMA traffic classes including management traffic, virtual machine traffic, etc.
+
+- Required: By default – No configuration necessary on the host
+- Flow Control (PFC) Enabled: No
+- Recommended Traffic Class: Default – Traffic Class 0
+- Recommended Bandwidth Reservation: Default; no host configuration required
+
+## Storage Design Patterns
+
+Microsoft highly recommends using multiple Subnets and VLANs to separate storage traffic in Azure Stack HCI.
+
+SMB provides many benefits as the storage protocol for Azure Stack HCI including SMB Multichannel. While multichannel is out-of-scope for this document, it is important to understand that traffic can is multiplexed across every possible link that SMB Multichannel can use.
+
+Consider the following example of a 4-node cluster. Each node has a redundant storage port (blue and green). Because every adapter is on the same subnet and VLAN, SMB Multichannel will spread connections across all available links. Therefore, the blue port on the first node (192.168.1.1) will make a connection to the second node blue port (192.168.1.2) and the second node green port (192.168.1.12) – it does the same for the 3rd and 4th nodes. This creates unnecessary connections and causes congestion at the interlink (MC-LAG) that connects the TORs (marked with Red X’s).
+
+:::image type="content" source="media/plan-networking/four-node-cluster-1.png" alt-text="Windows Certified" lightbox="media/plan-networking/four-node-cluster-1.png":::
+
+The recommended approach is to use separate subnets and VLANs for each group of adapters. In this picture, the green ports have been changed to the subnet 192.168.2.x /24 and VLAN 2. This allows the traffic on the blue ports to remain on TOR1 and the traffic on the green ports to remain on TOR2.
+
+:::image type="content" source="media/plan-networking/four-node-cluster-2.png" alt-text="Windows Certified" lightbox="media/plan-networking/four-node-cluster-2.png":::
+
+## Stretched cluster requirements
+
+Stretched clusters provide disaster recovery that spans multiple data centers. In its simplest form, a stretched cluster network looks like this:
+
+:::image type="content" source="media/plan-networking/stretched-cluster.png" alt-text="Stretched cluster" lightbox="media/plan-networking/stretched-cluster.png":::
+
+The following lists requirements and characteristics of a stretched cluster:
+
+- All nodes in the same site are within the same rack and layer-2 boundary
+- Communication between sites crosses a layer-3 boundary; stretch clustering does not support stretched layer-2 topologies
+- RDMA is not supported between stretch cluster sites
+- If the local site uses RDMA for its storage adapters, you must use adapters on a separate subnet and VLAN for Stretch S2D in order to prevent Storage Replica from using RDMA across sites. These adapters:
+
+    - Can be physical or virtual (Host vNIC). If virtual, provision one virtual NIC in its own subnet and VLAN per physical NIC.
+    - Must disable RDMA using the `Disable-NetAdapterRDMA` cmdlet. It is recommended that you explicitly require storage replica to use specific interfaces through the `Set-SRNetworkConstraint` cmdlet
+    - Must be on their own subnet and VLAN that can route between sites
+    - Should enforce the bandwidth limits outlined in the section Traffic Bandwidth Allocation using the `Set-SmbBandwidthLimit` cmdlet
+    - Must meet the additional requirements for Storage Replica
+-	In the event of a failover to another site, ensure that enough bandwidth is available to run the workloads at the alternate site. A good rule of thumb is to provision sites at 50% of their available capacity however this is not a requirement if you are able to tolerate lower performance during a failover.
 
 ## Traffic bandwidth allocation
+
+The following table shows an example for bandwidth allocations of various traffic types in Azure Stack HCI. Note that this is an example of a converged solution where all traffic types (Management, Compute, and Storage) run over the same physical adapters and are teamed with SET.
+
+Since this scenario poses the most constraints on the solution, it represents a good baseline. However, considering the permutations including number of adapters, speed, etc., this should be considered an example and not a support requirement.
+The following shows examples using common adapter speeds. The following assumptions are made for this example:
+
+- There are two adapters in the team
+- Storage Spaces Direct (SBL), Failover Clustering (CSV), Hyper-V (Live Migration) and Storage Replica are all:
+    - Using the SMB
+    - Using the same physical adapters
+    - SMB has been given a 50% bandwidth allocation using Data Center Bridging (NetQos)
+    - SBL/CSV is the highest priority traffic and receives 70% of the SMB bandwidth reservation
+    - Live Migration is limited using the Set-SMBBandwidthLimit cmdlet and receives between 14% and 15% of the remaining bandwidth
+        - If the available bandwidth for live migration is >= 5 Gbps, and the network adapters are capable, use RDMA. For example, use this cmdlet or your user interface of choice:
+Set-VMHost VirtualMachineMigrationPerformanceOption SMB
+        - If the available bandwidth for live migration is < 5 Gbps use compression to reduce blackout times. For example, use this cmdlet or your user interface of choice:
+
+```Powershell
+Set-VMHost -VirtualMachineMigrationPerformanceOption Compression
+```
+
+ - If using RDMA with Data Center Bridging, ensure that Live Migration cannot consume the entire bandwidth allocated to the RDMA traffic class by use an SMB Bandwith Limit. Be careful as this cmdlet takes entry as Bytes where as network adapters are in bits. For example, use the `Set-SMBBandwidthLimit` cmdlet to set a bandwidth limit of 6 Gbps:
+
+```Powershell
+Set-SMBBandwidthLimit -Category LiveMigration -BytesPerSecond 750MB
+```
+
+> [!NOTE]
+>750 MBps converts to 6 Gbps
+
+- Storage Replica (if used) is limited using the `Set-SMBBandwidthLimit` cmdlet and receives 14% of the remaining bandwidth.
 
 The following table shows bandwidth allocations for various traffic types, where:
 
@@ -81,7 +257,7 @@ The following table shows bandwidth allocations for various traffic types, where
 - Live Migration (LM) traffic gets 15% of the remaining 50% allocation
 - Storage Replica (SR) traffic gets 14% of the remaining 50% allocation
 - Heartbeat (HB) traffic gets 1% of the remaining 50% allocation
-- *= should use compression rather than RDMA if bandwidth allocation for LM traffic is <5 Gbps
+
 
 |NIC Speed|Teamed Bandwidth|SMB 50% Reservation|SBL/CSV %|SBL/CSV Bandwidth|LM %|LM Bandwidth|SR % |SR Bandwidth|HB %|HB Bandwidth|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
@@ -92,110 +268,7 @@ The following table shows bandwidth allocations for various traffic types, where
 |100|200|100|70%|70|15%|15|14%|14|1%|1|
 |200|400|200|70%|140|15%|30|14%|28|1%|2|
 
-## Network port requirements
-
-Ensure that the proper network ports are open between all server nodes both within a site and between sites (for stretched clusters). You'll need appropriate firewall and router rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct), and WS-MAN (port 5985) bi-directional traffic between all servers in the cluster.
-
-When using the Cluster Creation wizard in Windows Admin Center to create the cluster, the wizard automatically opens the appropriate firewall ports on each server in the cluster for Failover Clustering, Hyper-V, and Storage Replica. If using a different firewall on each server, open the following ports:
-
-### Failover Clustering ports
-
-- ICMPv4 and ICMPv6
-- TCP port 445
-- RPC Dynamic Ports
-- TCP port 135
-- TCP port 137
-- TCP port 3343
-- UDP port 3343
-
-### Hyper-V ports
-
-- TCP port 135
-- TCP port 80 (HTTP connectivity)
-- TCP port 443 (HTTPS connectivity)
-- TCP port 6600
-- TCP port 2179
-- RPC Dynamic Ports
-- RPC Endpoint Mapper
-- TCP port 445
-
-### Storage Replica ports (stretched cluster)
-
-- TCP port 445
-- TCP 5445 (if using iWarp RDMA)
-- TCP port 5985
-- ICMPv4 and ICMPv6 (if using the `Test-SRTopology` PowerShell cmdlet)
-
-There may be additional ports required not listed above. These are the ports for basic Azure Stack HCI functionality.
-
-## Network switch requirements
-
-This section defines the requirements for physical switches used with Azure Stack HCI. These requirements list the industry specifications, organizational standards, and protocols that are mandatory for all Azure Stack HCI deployments. Unless otherwise noted, the latest active (non-superseded) version of the standard is required.
-
-These requirements help ensure reliable communications between nodes in Azure Stack HCI cluster deployments. Reliable communications between nodes are critical. To provide the needed level of reliability for Azure Stack HCI requires that switches:
-
-- Comply with applicable industry specifications, standards, and protocols
-- Provide visibility as to which specifications, standards, and protocols the switch supports
-- Provide information on which capabilities are enabled
-
-Make sure you ask your switch vendor if your switch supports the following:
-
-#### Standard: IEEE 802.1Q
-
-Ethernet switches must comply with the IEEE 802.1Q specification that defines VLANs. VLANs are required for several aspects of Azure Stack HCI and are required in all scenarios.
-
-#### Standard: IEEE 802.1Qbb
-
-Ethernet switches must comply with the IEEE 802.1Qbb specification that defines Priority Flow Control (PFC). PFC is required where Data Center Bridging (DCB) is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qbb is required in all scenarios. A minimum of three Class of Service (CoS) priorities are required without downgrading the switch capabilities or port speed.
-
-#### Standard: IEEE 802.1Qaz
-
-Ethernet switches must comply with the IEEE 802.1Qaz specification that defines Enhanced Transmission Select (ETS). ETS is required where DCB is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qaz is required in all scenarios. A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed.
-
-#### Standard: IEEE 802.1AB
-
-Ethernet switches must comply with the IEEE 802.1AB specification that defines the Link Layer Discovery Protocol (LLDP). LLDP is required for Windows to discover switch configuration. Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled. These switches must not require additional configuration.
-
-For example, enabling 802.1 Subtype 3 should automatically advertise all VLANs available on switch ports.
-
-#### TLV Requirements
-
-LLDP allows organizations to define and encode their own custom TLVs. These are called Organizationally Specific TLVs. All Organizationally Specific TLVs start with an LLDP TLV Type value of 127. The following table shows which Organizationally Specific Custom TLV (TLV Type 127) subtypes are required and which are optional:
-
-|Condition|Organization|TLV Subtype|
-|-|-|-|
-|Required|IEEE 802.1|VLAN Name (Subtype = 3)|
-|Required|IEEE 802.3|Maximum Frame Size (Subtype = 4)|
-|Optional|IEEE 802.1|Port VLAN ID (Subtype = 1)|
-|Optional|IEEE 802.1|Port And Protocol VLAN ID (Subtype = 2)|
-|Optional|IEEE 802.1|Link Aggregation (Subtype = 7)|
-|Optional|IEEE 802.1|Congestion Notification (Subtype = 8)|
-|Optional|IEEE 802.1|ETS Configuration (Subtype = 9)|
-|Optional|IEEE 802.1|ETS Recommendation (Subtype = A)|
-|Optional|IEEE 802.1|PFC Configuration (Subtype = B)|
-|Optional|IEEE 802.1|EVB (Subtype = D)|
-|Optional|IEEE 802.3|Link Aggregation (Subtype = 3)|
-
-> [!NOTE]
-> Some of the optional features listed may be required in the future.
-
-## Traffic types supported
-
-Azure Stack HCI uses Server Message Block (SMB). SMB on Azure Stack HCI supports the following traffic types:
-
-- Storage Bus Layer (SBL) - used by Storage Spaces Direct; highest priority traffic
-- Cluster Shared Volumes (CSV)
-- Live Migration (LM)
-- Storage Replica (SR) - used in stretched clusters
-- File Shares (FS) - FS traditional and Scale-Out File Server (SOFS)
-- Cluster heartbeat (HB)
-- Cluster communication (node joins, cluster updates, registry updates)
-
-SMB traffic can flow over the following protocols:
-
-- Transport Control Protocol (TCP) - used between sites
-- Remote direct memory access (RDMA)
-
+*- should use compression rather than RDMA if bandwidth allocation for LM traffic is <5 Gbps
 
 ## Next steps
 
