@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/13/2020
+ms.date: 11/18/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -367,7 +367,7 @@ The 2002 release of Azure Stack Hub must be applied on the 1910 release with the
 After the installation of this update, install any applicable hotfixes.
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.2002.61.163](https://support.microsoft.com/help/4592241)
+- [Azure Stack Hub hotfix 1.2002.62.165](https://support.microsoft.com/help/4594758)
 ::: moniker-end
 
 <!------------------------------------------------------------>
