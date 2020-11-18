@@ -25,7 +25,7 @@ Tenant administrators can install and configure firewall policies to help protec
 
 The service provider administrator or the tenant administrator can manage Datacenter Firewall policies via Network Controller and the northbound APIs. You can also configure and manage Datacenter Firewall policies using Windows Admin Center.
 
-## Advantages for Cloud Service Providers
+## Advantages for cloud service providers
 
 Datacenter Firewall offers the following advantages for CSPs:
 
@@ -57,5 +57,5 @@ The Datacenter Firewall offers the following advantages for tenants:
 
 For related information, see also:
 
-- [Use access control lists (ACLs) to manage datacenter network traffic flow](/windows-server/networking/sdn/manage/use-acls-for-traffic-flow)
+- [Use Datacenter Firewall for Software-Defined Networking in Azure Stack HCI](../manage/use-datacenter-firewall.md)
 - [SDN in Azure Stack HCI](software-defined-networking.md)
