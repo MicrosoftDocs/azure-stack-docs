@@ -62,7 +62,7 @@ First you create the necessary Azure Stack Hub resources, including an IoT Hub a
 
 In this section, you deploy a new Linux VM, which will serve as the virtual IoT Edge device:
 
-1. Using the [Create a Linux server VM by using the Azure Stack Hub portal](azure-stack-quick-linux-portal.md) quick start, install a Linux VM on your Azure Stack Hub instance. Be sure to enable port **SSH (22)** on the **Select public inbound ports** property of the **Settings** page. 
+1. Using the [Create a Linux server VM by using the Azure Stack Hub portal](azure-stack-quick-linux-portal.md) quick start, install a Linux VM on your Azure Stack Hub instance. Be sure to enable port **SSH (22)** on the **Select public inbound ports** property, when you get to the **Settings** page. 
 
    > [!NOTE]
    > You only need to complete the first 5 sections, up through **Connect to the VM**, as you won't need the NGINX web server. Also, don't complete the **Clean up resources** section, as you'll use the Linux VM for the remainder of this article.
@@ -70,14 +70,14 @@ In this section, you deploy a new Linux VM, which will serve as the virtual IoT 
 2. After you've created and connected to the VM using PuTTY, create a user account. For the purposes of this article, we'll assume an account named **edgeadmin**.
 
    ```bash
-   # add user "edgeadmin'
+   # add user account "edgeadmin'
    sudo adduser edgeadmin
    ```
 
 ## Transfer IoT Hub root CA to IoT Edge device (internal CA only)
 
 > [!IMPORTANT]
-> You only need to complete this section if you're using your own internal CA for certificate generation. If you're using a public CA, you can skip this section and [proceed to the next section](#configure-certificates-for-the-iot-edge-device).
+> You only need to complete this section if you're using your own internal CA for certificate generation. If you're using a public CA, you can skip this section and proceed [Configure certificates for the IoT Edge device](#configure-certificates-for-the-iot-edge-device).
 
 ### Export the root CA from your IoT Hub
 
