@@ -153,6 +153,8 @@ landingContent:
             url: concepts/network-controller-overview.md
           - text: Plan Network Controller
             url: concepts/network-controller.md
+          - text: Datacenter Firewall overview
+            url: concepts/datacenter-firewall-overview.md
           - text: Software Load Balancer overview
             url: concepts/software-load-balancer.md
           - text: RAS Gateway overview
