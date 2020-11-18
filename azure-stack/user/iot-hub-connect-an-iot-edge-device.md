@@ -67,19 +67,21 @@ In this section, you deploy a new Linux VM, which will serve as the virtual IoT 
    > [!NOTE]
    > You only need to complete the first 5 sections, up through **Connect to the VM**, as you won't need the NGINX web server. Also, don't complete the **Clean up resources** section, as you'll use the Linux VM for the remainder of this article.
 
-2. After you've created and connected to the VM using PuTTY, create a user account. For the purposes of this article, we'll assume an account named **edgeadmin**.
+2. After you've created and connected to the VM using PuTTY, create a user account. For the purposes of this article, we'll assume an account named **edgeadmin**. [TODO - remove this? or clarify how to establish SSH keys for sign in?]
 
    ```bash
    # add user account "edgeadmin'
    sudo adduser edgeadmin
    ```
 
-## Transfer IoT Hub root CA to IoT Edge device (internal CA only)
+## Transfer the IoT Hub root CA certificate to the IoT Edge device (internal CA only)
+
+Both your IoT Hub service and the IoT Edge device require X509 certificates, that use the same root CA certificate in their trust chain.
 
 > [!IMPORTANT]
-> You only need to complete this section if you're using your own internal CA for certificate generation. If you're using a public CA, you can skip this section and proceed [Configure certificates for the IoT Edge device](#configure-certificates-for-the-iot-edge-device).
+> You only need to complete this section if you're using your own internal CA for certificate generation. If your IoT Hub root CA certificate was issued by a public CA, you can skip this section and proceed to [Configure certificates for the IoT Edge device](#configure-certificates-for-the-iot-edge-device).
 
-### Export the root CA from your IoT Hub
+### Export the root CA certificate from your IoT Hub
 
 Export the IoT Hub root CA certificate in PEM format, from a machine that has access to your Azure Stack Hub instance. This example will show how to export the certificate using either a [Microsoft Edge](https://www.microsoft.com/edge) or [Google Chrome](https://www.google.com/chrome/index.html) browser: 
 
@@ -101,13 +103,12 @@ Export the IoT Hub root CA certificate in PEM format, from a machine that has ac
 
    1. After the export finishes successfully, you can close the browser tab.
 
-### Install the IoT Hub root CA on the Edge device
+### Install the IoT Hub root CA certificate on the Edge device
 
-Now install the IoT Hub root CA you exported in the previous section, into the Edge device's trusted store. 
+Now install the IoT Hub root CA certificate you exported in the previous section, into the Edge device's trusted store. 
 
-1. Transfer the IoT Hub root CA file to the Edge device. 
-2. Return to your Linux VM PuTTY session.
-3. Run the following script to verify that the Edge device TLS connection is successful, and install the root CA in the Edge device's trusted store:
+1. Transfer the IoT Hub root CA file you exported in the previous section, to the Edge device. Since we're using a Linux VM as the Edge device, you'll need to copy it to the Linux VM. Depending on your environment, consider using either PuTTY with the PSCP command, or the WinSCP program to copy the file to the Linux VM.
+2. Run the following script from your Linux VM PuTTY session, where you've stored the IoT Hub root CA file. The script will verify that the Edge device TLS connection is successful, and install the root CA in the Edge device's trusted store:
 
    ```bash
    # verify connection failed first
