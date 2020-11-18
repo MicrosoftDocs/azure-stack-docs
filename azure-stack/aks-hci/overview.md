@@ -73,11 +73,12 @@ Azure Kubernetes Service is available on the following platforms:
 
 - In the Azure cloud via [Azure Kubernetes Service in Azure](/azure/aks/intro-kubernetes)
 - On-premises via Azure Kubernetes Service on Azure Stack HCI (what this article is all about)
+- On-premises via Azure Kubernetes Service runtime on Windows Server (this article also applies to AKSr on Windows Server)
 - On-premises in an Azure Stack Hub environment using the [AKS engine on Azure Stack Hub](../user/azure-stack-kubernetes-aks-engine-overview.md).
 
 ## How does Kubernetes work on Azure Stack HCI?
 
-Azure Kubernetes Service works a little differently when run on Azure Stack HCI  than when using it in the Azure cloud:
+Azure Kubernetes Service works a little differently when run on Azure Stack HCI than when using it in the Azure cloud:
 
 - The Kubernetes service in Azure is a hosted service where much of the Kubernetes management infrastructure (control plane) is managed for you. Both the control plane and your containerized applications run in Azure virtual machines.
 - With Azure Kubernetes Service on Azure Stack HCI, you set up the service directly on your Azure Stack HCI cluster, putting you in control of the control plane, so to speak. The control plane, your containerized applications, and Azure Kubernetes Service itself all run in virtual machines hosted by your hyperconverged cluster.
@@ -96,16 +97,16 @@ The following sections summarize what you need to run Azure Kubernetes Service o
 
 ### On your Windows Admin Center system
 
-Your Windows Admin Center management system has the following requirements:
+Your computer running the Windows Admin Center gateway has the following requirements:
 
-- Windows 10 (we don't support Windows Admin Center servers right now)
+- A Windows 10 or Windows Server computer (we don't support running Windows Admin Center on the Azure Stack HCI or Windows Server 2019 Datacenter right now)
 - 60 GB of free space
 - Registered with Azure
-- In the same domain as the Azure Stack HCI cluster
+- In the same domain as the Azure Stack HCI or Windows Server 2019 Datacenter cluster
 
 ### On the Azure Stack HCI cluster that hosts Azure Kubernetes Service
 
-The cluster running Azure Stack HCI, version 20H2 or later has the following requirements:
+The Azure Stack HCI cluster or Windows Server 2019 Datacenter failover cluster has the following requirements:
 
 - A maximum of four servers in the cluster for this preview release
 - 1 TB of available capacity in the storage pool for Azure Kubernetes Service
@@ -116,9 +117,7 @@ For general Azure Stack HCI system requirements, see [Azure Stack HCI system req
 
 ### The network configuration for Azure Stack HCI
 
-The network connected to VMs on the Azure Stack HCI cluster requires a dedicated scope of DHCP IPv4 addresses available for Azure Kubernetes Service and accessible by VMs on the Azure Stack HCI cluster
-
-You cannot use VLAN tags on your network for Azure Kubernetes Service on Azure Stack HCI. Use access (untagged) ports on your network switches for the network used by Azure Stack HCI and the Azure Kubernetes Service VMs.
+The network connected to VMs on the Azure Stack HCI or Windows Server 2019 Datacenter cluster requires a dedicated scope of DHCP IPv4 addresses available for Azure Kubernetes Service and accessible by VMs on the Azure Stack HCI or Windows Server 2019 Datacenter cluster.
 
 ## Next steps
 
