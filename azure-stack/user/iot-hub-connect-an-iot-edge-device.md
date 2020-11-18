@@ -26,7 +26,7 @@ Complete the following prerequisites before continuing:
 
 - Once an offer is available, your administrator can create or update your Azure Stack Hub subscription to include IoT Hub. Alternatively, you can [subscribe to the new offer and create your own subscription](azure-stack-subscribe-services.md).
 
-- It's helpful to have a basic understanding of Public Key Encryption (PKI). Specifically, how a Certificate Authority (CA) and X509 certificates are use to build a chain of trust, allowing network nodes (such as your IoT Hub service and IoT Edge device) to securely authenticate and communicate with each other. 
+- It's helpful to have a basic understanding of Public Key Encryption (PKI). Specifically, how a Certificate Authority (CA) and X509 certificates are used to build a chain of trust, allowing network nodes (such as your IoT Hub service and IoT Edge device) to securely authenticate and communicate with each other. 
 
 ## Overview
 
@@ -37,14 +37,14 @@ The general steps you'll complete in the following sections include:
 3. Configure the software and services required for the Edge device.
 4. Test the Edge device to make sure it's working properly and communicating with your IoT Hub.
 
-Be sure to update any script placeholders to match your environment, before running the script in each section:
+Be sure to update the following script placeholders to match your environment, before running the script in each of the following sections:
 
 | Placeholder | Example | Note |
 |-------------|---------|------|
 | `<DEVICE-CA-CERT-NAME>` | `edged1cert`| The name you give the IoT Edge device CA certificate. |
 | `<IOT-HUB-HOSTNAME>`| `test-hub-1.mgmtiothub.region.mydomain.com`| Your IoT Hub host name. |
-| `<IOT-HUB-ROOT-CA>`| `root.cer`| The filename you give to the IoT Hub root CA. |
-| `<WORK-DIR>`| `/home/edgeadmin/edged1`| The path to your local working directory the Linux VM. |
+| `<IOT-HUB-ROOT-CA>`| `root.cer`| The filename you give to the exported IoT Hub root CA. |
+| `<WORK-DIR>`| `/home/edgeadmin/edged1`| The path to your local working directory on the Linux VM. |
 
 ## Create Azure Stack Hub resources
 
@@ -79,18 +79,11 @@ In this section, you deploy a new Linux VM, which will serve as the virtual IoT 
 > [!IMPORTANT]
 > You only need to complete this section if you're using your own internal CA for certificate generation. If you're using a public CA, you can skip this section and [proceed to the next section](#configure-certificates-for-the-iot-edge-device).
 
-| Placeholder | Example | Note |
-|-------------|---------|------|
-| `<DEVICE-CA-CERT-NAME>` | `edged1cert`| A name you provide for the IoT Edge device CA certificate. |
-| `<IOT-HUB-HOSTNAME>`| `test-hub-1.mgmtiothub.region.mydomain.com`| The IoT Hub host name you copied in the previous section. |
-| `<IOT-HUB-ROOT-CA>`| `root.cer`| A name for your IoT Hub root CA. |
-| `<WORK-DIR>`| `/home/edgeadmin/edged1`| The path to your local working directory. |
-
 ### Export the root CA from your IoT Hub
 
-Complete these steps from a machine that has access to your Azure Stack Hub instance, to export your root CA certificate from your IoT Hub, in PEM format. This example will show how to export the root CA certificate using either a [Microsoft Edge](https://www.microsoft.com/edge) or [Google Chrome](https://www.google.com/chrome/index.html) browser: 
+Export the IoT Hub root CA certificate in PEM format, from a machine that has access to your Azure Stack Hub instance. This example will show how to export the certificate using either a [Microsoft Edge](https://www.microsoft.com/edge) or [Google Chrome](https://www.google.com/chrome/index.html) browser: 
 
-   1. On the**Overview** page of your IoT Hub, use the **Copy** button to the right of the **Hostname** property to copy the IoT Hub hostname to the clipboard:  
+   1. On the **Overview** page of your IoT Hub, use the **Copy** button to the right of the **Hostname** property to copy the IoT Hub hostname to the clipboard:  
 
       [![iot hub host name](media\iot-hub-connect-an-iot-edge-device\copy-iot-hub-host-name.png)](media\iot-hub-connect-an-iot-edge-device\copy-iot-hub-host-name.png#lightbox)
    1. Open a new tab in a Microsoft Edge or Google Chrome browser, enter `https://`, paste the IoT Hub hostname copied in the previous step, and press **Enter**. 
