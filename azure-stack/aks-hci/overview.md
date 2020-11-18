@@ -11,7 +11,7 @@ ms.date: 09/22/2020
 
 Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of Azure Kubernetes Service (AKS), which automates running containerized applications at scale. Azure Kubernetes Service is now in preview on Azure Stack HCI and Windows Server 2019 Datacenter, making it quicker to get started hosting Linux and Windows containers in your datacenter.
 
-To get started with Azure Kubernetes Service on-premises, [register for the preview](https://aka.ms/AKS-HCI-Evaluate) (there's no added cost during preview), then see [Set up Azure Kubernetes Service on Azure Stack HCI](setup.md). To instead use Azure Kubernetes Service to orchestrate your cloud-based containers, see [Azure Kubernetes Service in Azure](/azure/aks/intro-kubernetes).
+To get started with Azure Kubernetes Service on-premises, [register for the preview](https://aka.ms/AKS-HCI-Evaluate) (there's no added cost during the preview), then see [Set up Azure Kubernetes Service on Azure Stack HCI](setup.md). To instead use Azure Kubernetes Service to orchestrate your cloud-based containers, see [Azure Kubernetes Service in Azure](/azure/aks/intro-kubernetes).
 
 The following sections discuss some of the reasons to use Azure Kubernetes Service on Azure Stack HCI, then answer some common questions about the service and how to get started. For a background on containers, see [Windows and containers](/virtualization/windowscontainers/about/) and for a background on Kubernetes, see [Kubernetes core concepts](kubernetes-concepts.md) or [Kubernetes.io](https://kubernetes.io).
 
@@ -29,8 +29,8 @@ Here's some of the functionality provided by Azure Kubernetes Service while in p
 - Scale up or down by adding or removing nodes to the Kubernetes cluster
 - Manage storage and networking on your Kubernetes cluster
 - Automatic updates for your Kubernetes deployment
-- Upgrade to the most recent Kubernetes version
-- Through Azure Arc for Kubernetes, use the popular Azure services
+- Upgrade to the latest available Kubernetes version
+- Use the popular Azure services through Azure Arc for Kubernetes
 
 ## Simplify setting up Kubernetes
 
@@ -44,8 +44,8 @@ Azure Kubernetes Service simplifies the process of setting up Kubernetes on Azur
 
 Once you've set up Azure Kubernetes Service on-premises and created a Kubernetes cluster, we provide a couple ways to manage and monitor your Kubernetes infrastructure:
 
-- **On-premises using popular tools like Kubectl and Kubernetes dashboard** - use an open-source, web-based interface to deploy applications to a Kubernetes cluster, manage cluster resources, troubleshoot, and view running applications.
-- **In the Azure portal using Azure Arc** - use Azure Arc to manage applications deployed on Kubernetes clusters across your cloud and on-premises environments. Azure Kubernetes Service and Kubernetes clusters deployed across your cloud and on-premises environments. 
+- **On-premises using popular tools like Kubectl and Kubernetes dashboard** - Use an open-source, web-based interface to deploy applications to a Kubernetes cluster, manage cluster resources, troubleshoot, and view running applications.
+- **In the Azure portal using Azure Arc** - Use Azure Arc to manage applications deployed on top of Kubernetes clusters across your cloud and on-premises environments. 
 <br>Azure Arc also enables you to manage your Kubernetes clusters with other Azure services including:
 
   - Azure Monitor
@@ -97,9 +97,9 @@ The following sections summarize what you need to run Azure Kubernetes Service o
 
 ### On your Windows Admin Center system
 
-Your computer running the Windows Admin Center gateway has the following requirements:
+Your machine running the Windows Admin Center gateway has the following requirements:
 
-- A Windows 10 or Windows Server computer (we don't support running Windows Admin Center on the Azure Stack HCI or Windows Server 2019 Datacenter right now)
+- A Windows 10 or Windows Server machine (we don't support running Windows Admin Center on the Azure Stack HCI or Windows Server 2019 Datacenter right now)
 - 60 GB of free space
 - Registered with Azure
 - In the same domain as the Azure Stack HCI or Windows Server 2019 Datacenter cluster

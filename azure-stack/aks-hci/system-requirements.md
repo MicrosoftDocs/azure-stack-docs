@@ -52,13 +52,13 @@ The following requirements apply to an Azure Stack HCI cluster as well as a Wind
 
  - For a successful deployment, the Azure Stack HCI cluster nodes and the Kubernetes cluster VMs must have external internet connectivity.
 
- - The IPv4 addresses provided by the DHCP server should be routable and have a 30-day lease expiration to avoid loss of IP connectivity in the event of an VM update or reprovisioning.  
+ - The IPv4 addresses provided by the DHCP server should be routable and have a 30-day lease expiration to avoid loss of IP connectivity in the event of a VM update or reprovisioning.  
 
- - DNS name resolution is required for all nodes to be able to communicate with each other. For Kubernetes external name resolution, use the DNS servers provided by the DHCP server when the IP address is obtained. For Kubernetes internal name resolution, use the default Kubernetes core DNS based solution. 
+ - DNS name resolution is required for all nodes to be able to communicate with each other. For Kubernetes external name resolution, use the DNS servers provided by the DHCP server when the IP address is obtained. For Kubernetes internal name resolution, use the default Kubernetes core DNS-based solution. 
  
  - For this preview release, we provide only single VLAN support for the entire deployment.
 
- - For this preview release, we don't support using a proxy server to connect the Windows Admin Center, Azure Stack HCI cluster nodes, and the Azure Kubernetes Service on Azure Stack HCI cluster nodes to the internet.
+ - For this preview release, we have proxy support thats limited to the following scenarios:
 
 ### Network port and URL requirements 
 
@@ -111,12 +111,12 @@ Azure Kubernetes Service on Azure Stack HCI deployments that exceed the followin
 
 Windows Admin Center is the user interface for creating and managing Azure Kubernetes Service on Azure Stack HCI. To use Windows Admin Center with Azure Kubernetes Service on Azure Stack HCI, you must meet all the criteria in the list below. 
 
-The machine running the Windows Admin Center gateway must have the following requirements: 
+Here are the requirements for the machine running the Windows Admin Center gateway: 
 
  - Windows 10 or Windows Server machine (we don't support running Windows Admin Center on the Azure Stack HCI or Windows Server 2019 Datacenter cluster right now)
  - 60 GB of free space
  - Registered with Azure
- - In the same domain as the Azure Stack HCI cluster or Windows Server 2019 Datacenter cluster
+ - In the same domain as the Azure Stack HCI or Windows Server 2019 Datacenter cluster
 
 ## Next steps 
 
