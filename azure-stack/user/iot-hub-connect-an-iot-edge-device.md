@@ -30,26 +30,16 @@ Complete the following prerequisites before continuing:
 
 ## Overview
 
-The general steps you'll complete in the following sections include:
+This article will show you how to complete the following general steps:
 
 1. Create IoT Hub and Linux VM resources on your Azure Stack Hub instance. The Linux VM serves as a virtual IoT Edge device. 
 2. Configure the certificates required for the Edge device.
 3. Configure the software and services required for the Edge device.
 4. Test the Edge device to make sure it's working properly and communicating with your IoT Hub.
 
-Update the following script placeholders to match your environment, before running the script in each of the following sections:
-
-| Placeholder | Example | Note |
-|-------------|---------|------|
-| `<DEVICE-CA-CERT-NAME>` | `edged1cert`| The name you give the IoT Edge device CA certificate. |
-| `<IOT-HUB-HOSTNAME>`| `test-hub-1.mgmtiothub.region.mydomain.com`| Your IoT Hub host name. |
-| `<IOT-HUB-ROOT-CA>`| `root.cer`| The filename you give to the exported IoT Hub root CA. |
-| `<DATA-DIR>`| `/home/edgeadmin/edged1`| The path to the data directory on the Linux VM. |
-| `<USER-ACCOUNT>`| `edgeadmin`| The account used for sign in to the Linux VM. |
-
 ## Create Azure Stack Hub resources
 
-First you create the necessary Azure Stack Hub resources, including an IoT Hub and a Linux VM. You'll use the [Azure Stack Hub user portal](../user/azure-stack-use-portal.md) to create these resources:
+First you create the necessary Azure Stack Hub resources, including an IoT Hub and a Linux VM. You'll use the [Azure Stack Hub user portal](../user/azure-stack-use-portal.md) to create these resources.
 
 ### Create an IoT Hub resource
 
@@ -68,7 +58,11 @@ In this section, you deploy a new Linux VM, which will serve as the virtual IoT 
    > [!NOTE]
    > You only need to complete the first 5 sections, up through **Connect to the VM**, as you won't need the NGINX web server. Also, don't complete the **Clean up resources** section, as you'll use the Linux VM for the remainder of this article.
 
-2. After you've created the VM and its running, connect to the VM using PuTTY and the user account you specified. 
+2. After you've created the VM and its running, connect to the VM using PuTTY and the user account you specified during VM provisioning. Once connected, create a data subdirectory off of your user account home directory:
+
+   ```bash
+   mkdir edged1
+   ```
 
 3. Set up the certificate generation tool using one of the following methods. Either will download files from the IoT Edge GitHub repository, required later for generating device certificates:
 
@@ -103,6 +97,16 @@ In this section, you deploy a new Linux VM, which will serve as the virtual IoT 
 In this section, you'll complete the VM certificate configuration required by the virtual IoT Edge device.
 
 Your IoT Hub service and the IoT Edge device are secured with X509 certificates, which must use the same root CA certificate in their trust chain. Select the appropriate tab below to complete certificate configuration, based on the root CA type being used by your IoT Hub.
+
+Before running the script in each of the following sections, be sure to update the following script placeholders to match your environment's configuration:
+
+| Placeholder | Example | Note |
+|-------------|---------|------|
+| `<DEVICE-CA-CERT-NAME>` | `edged1cert`| The name you give the IoT Edge device CA certificate. |
+| `<IOT-HUB-HOSTNAME>`| `test-hub-1.mgmtiothub.region.mydomain.com`| Your IoT Hub host name. |
+| `<IOT-HUB-ROOT-CA>`| `root.cer`| The filename you give to the exported IoT Hub root CA. |
+| `<DATA-DIR>`| `/home/edgeadmin/edged1`| The full path to the data directory on the Linux VM. |
+| `<USER-ACCOUNT>`| `edgeadmin`| The account used for sign in to the Linux VM. |
 
 # [Public CA](#tab/public-ca)
 
