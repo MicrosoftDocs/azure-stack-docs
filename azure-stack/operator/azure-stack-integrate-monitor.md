@@ -3,10 +3,10 @@ title: Integrate external monitoring solution with Azure Stack Hub
 description: Learn how to integrate Azure Stack Hub with an external monitoring solution in your datacenter.
 author: IngridAtMicrosoft
 ms.topic: article
-ms.date: 04/10/2020
+ms.date: 11/18/2020
 ms.author: inhenkel
 ms.reviewer: thoroet
-ms.lastreviewed: 06/05/2019
+ms.lastreviewed: 11/18/2020
 
 # Intent: As an Azure Stack operator, I want to integrate an external monitoring solution with Azure Stack so I can monitor system health information.
 # Keyword: azure stack monitoring solution
@@ -205,6 +205,8 @@ If you're not using Operations Manager, Nagios, or a Nagios-based solution, you 
 
 2. Run the following commands to connect to the Azure Stack Hub environment as an Azure Stack Hub operator:
 
+### [Az modules](#tab/az)
+
    ```powershell
    Add-AzEnvironment -Name "AzureStackAdmin" -ArmEndpoint https://adminmanagement.[Region].[External_FQDN] `
       -AzureKeyVaultDnsSuffix adminvault.[Region].[External_FQDN] `
@@ -212,6 +214,17 @@ If you're not using Operations Manager, Nagios, or a Nagios-based solution, you 
 
    Connect-AzAccount -EnvironmentName "AzureStackAdmin"
    ```
+
+### [AzureRM modules](#tab/azurerm)
+
+   ```powershell
+   Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint https://adminmanagement.[Region].[External_FQDN] `
+      -AzureKeyVaultDnsSuffix adminvault.[Region].[External_FQDN] `
+      -AzureKeyVaultServiceEndpointResourceId https://adminvault.[Region].[External_FQDN]
+
+   Connect-AzureRMAccount -EnvironmentName "AzureStackAdmin"
+   ```
+---
 
 3. Use commands such as the following examples to work with alerts:
    ```powershell
