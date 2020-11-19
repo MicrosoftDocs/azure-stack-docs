@@ -164,7 +164,7 @@ Now install the IoT Hub root CA certificate you exported in the previous section
 
 [!INCLUDE [common-cert-config](../includes/iot-hub-connect-an-iot-edge-device-cert-common.md)]
 
-### Append the IoT Hub root CA to the device root CA (private CA only)
+### Append the IoT Hub root CA to the device root CA
 
 Run the following script to append the IoT Hub root CA to the device root CA:
 
