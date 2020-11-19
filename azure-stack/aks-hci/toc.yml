@@ -37,8 +37,8 @@
       href: connect-to-arc.md
     - name: Adapt apps for mixed-OS Kubernetes clusters
       href: adapt-apps-mixed-os-clusters.md
-    - name: Use persistent storage in a Windows container and prepare for gMSA
-      href: persistent-storage-windows-nodes.md
+    - name: Use persistent volume in an AKS on Azure Stack HCI cluster
+      href: persistent-volume.md
     - name: Troubleshoot
       href: troubleshoot.md
 - name: Related
