@@ -10,6 +10,8 @@ ms.reviewer:
 
 # Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc for Kubernetes
 
+> Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
+
 When an Azure Kubernetes Service on Azure Stack HCI cluster is attached to Azure Arc, it will appear in the Azure portal. It will have an Azure Resource Manager ID and a managed identity. Clusters are attached to standard Azure subscriptions, are located in a resource group, and can receive tags just like any other Azure resource.
 
 To connect a Kubernetes cluster to Azure, the cluster administrator needs to deploy agents. These agents run in a Kubernetes namespace named `azure-arc` and are standard Kubernetes deployments. The agents are responsible for connectivity to Azure, collecting Azure Arc logs and metrics, and watching for configuration requests.

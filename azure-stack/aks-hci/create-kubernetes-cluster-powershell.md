@@ -9,13 +9,13 @@ ms.author: jeguan
 
 # Quickstart: Create Kubernetes clusters on Azure Stack HCI using Windows PowerShell
 
-> Applies to: Azure Stack HCI
+> Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
 
-In this quickstart, you learn how to use Windows PowerShell to create a Kubernetes cluster on Azure Stack HCI. To instead use Windows Admin Center, see [Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center](setup.md).
+In this quickstart, you learn how to use Windows PowerShell to create a Kubernetes cluster on Azure Stack HCI. You then learn how to scale your Kubernetes cluster and upgrade the Kubernetes version of your cluster. To instead use Windows Admin Center, see [Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center](setup.md).
 
 ## Before you begin
 
-Before you begin, make sure you:
+Before you begin, make sure you have an Azure Stack Kubernetes host set up. If you don't, follow instructions on how to set one up [here](./setup-powershell.md).
 
 - Have a 2-4 node Azure Stack HCI cluster or a single node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't, follow instructions on how to create one [here](./system-requirements.md).
 - Have an Azure Stack Kubernetes host set up. If you don't, follow instructions on how to set one up [here](./setup-powershell.md).
@@ -48,7 +48,7 @@ The alphanumeric name of your Kubernetes cluster.
 
 `-kubernetesVersion`
 
-The version of Kubernetes that you want to deploy. Default is v1.18.6. To get a list of available versions, run `Get-AksHciKubernetesVersion`.
+The version of Kubernetes that you want to deploy. Default is v1.18.8. To get a list of available versions, run `Get-AksHciKubernetesVersion`.
 
 `-controlPlaneNodeCount`
 
@@ -121,7 +121,7 @@ To upgrade to the next Kubernetes version, run the following command.
 Update-AksHciCluster -clusterName
 ```
 
-If you want to use Windows nodes, the minimum required version is v1.1.8.6.
+If you want to use Windows nodes, the minimum required version is v1.18.6.
 
 ## Step 4: Access your clusters using kubectl
 
@@ -160,7 +160,7 @@ To get logs from your all your pods, run the following command. This command wil
 Get-AksHciLogs
 ```
 
-In this quickstart, you learned how to create, scale, and upgrade a Kubernetes cluster with PowerShell.
+In this quickstart, you learned how to create, scale, and upgrade the Kubernetes version of a cluster using PowerShell.
 
 ## Next steps
 

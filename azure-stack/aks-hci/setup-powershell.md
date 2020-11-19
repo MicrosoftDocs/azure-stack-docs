@@ -8,7 +8,7 @@ ms.author: jeguan
 ---
 # Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI using PowerShell
 
-> Applies to: Azure Stack HCI
+> Applies to: Azure Stack HCI, Windows Server 2019 Datacenter
 
 In this quickstart, you'll learn how to set up an Azure Kubernetes Service host on Azure Stack HCI using PowerShell. To instead use Windows Admin Center, see [Set up with Windows Admin Center](setup.md).
 
