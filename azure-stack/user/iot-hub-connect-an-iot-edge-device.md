@@ -30,10 +30,10 @@ Complete the following prerequisites before continuing:
 
 ## Overview
 
-This article will show you how to complete the following general steps:
+Below is a summary of the steps you'll complete to connect an IoT Edge device to your IoT Hub on Azure Stack Hub:
 
 1. Create IoT Hub and Linux VM resources on your Azure Stack Hub instance. The Linux VM serves as a virtual IoT Edge device. 
-2. Configure the certificates required for the Edge device.
+2. Configure the certificates required for the Edge device. The number of steps required will depend on the type of CA that issued your IoT Hub root CA certificate.
 3. Configure the software and services required for the Edge device.
 4. Test the Edge device to make sure it's working properly and communicating with your IoT Hub.
 
@@ -92,9 +92,9 @@ In this section, you deploy a new Linux VM, which will serve as the virtual IoT 
    cp /home/<USER-ACCOUNT>/iotedge/tools/CACertificates/certGen.sh .
    ```
 
-## Configure certificates for the IoT Edge device
+## Configure IoT Edge device certificates
 
-In this section, you'll complete the VM certificate configuration required by the virtual IoT Edge device. Before running the script in each of the following sections, be sure to update the following script placeholders to match your environment's configuration:
+In this section, you'll complete the VM certificate configuration required by the virtual IoT Edge device. Before running the script in each of the following sections, be sure to update the script placeholders to match your environment's configuration:
 
 | Placeholder | Example | Note |
 |-------------|---------|------|
@@ -102,9 +102,9 @@ In this section, you'll complete the VM certificate configuration required by th
 | `<IOT-HUB-HOSTNAME>`| `test-hub-1.mgmtiothub.region.mydomain.com`| Your IoT Hub host name. |
 | `<IOT-HUB-ROOT-CA>`| `root.cer`| The filename you give to the exported IoT Hub root CA. |
 | `<DATA-DIR>`| `/home/edgeadmin/edged1`| The full path to the data directory on the Linux VM. |
-| `<USER-ACCOUNT>`| `edgeadmin`| The account used for sign in to the Linux VM. |
+| `<USER-ACCOUNT>`| `edgeadmin`| The account used to sign in to the Linux VM. |
 
-Your IoT Hub service and the IoT Edge device are secured with X509 certificates, which must use the same root CA certificate in their trust chain. Select the appropriate tab below to complete certificate configuration, based on the root CA type being used by your IoT Hub.
+Your IoT Hub service and the IoT Edge device are secured with X509 certificates. The IoT Edge device must use a root CA certificate issued by the CA that issue the root CA for your IoT Hub service. Select the appropriate tab below to complete certificate configuration, based on the root CA type being used by your IoT Hub.
 
 # [Public CA](#tab/public-ca)
 
@@ -124,7 +124,7 @@ Using a machine that has access to your Azure Stack Hub instance, export the IoT
       [![iot hub host name](media\iot-hub-connect-an-iot-edge-device\copy-iot-hub-host-name.png)](media\iot-hub-connect-an-iot-edge-device\copy-iot-hub-host-name.png#lightbox)
    1. Open a new tab in a Microsoft Edge or Google Chrome browser, enter `https://`, paste the IoT Hub hostname copied in the previous step, and press **Enter**. 
 
-   1. After the error message is returned, select the lock icon to the left of the address bar, then click **Certificate**.
+   1. After the error message is returned, select the lock icon to the left of the address bar, then select **Certificate**.
       [![certificate secure connection](media\iot-hub-connect-an-iot-edge-device\iot-hub-root-ca-connection.png)](media\iot-hub-connect-an-iot-edge-device\iot-hub-root-ca-connection.png#lightbox)
 
    1. When the SSL/TLS certificate shows, select the **Certification path** tab. Then select the top-most certificate in the path, and select the **View Certificate** button.  
@@ -166,7 +166,7 @@ Now install the IoT Hub root CA certificate you exported in the previous section
 
 ### Append the IoT Hub root CA to the device root CA
 
-Run the following script to append the IoT Hub root CA to the device root CA:
+Now append the IoT Hub root CA you exported and copied to the Edge device, to the device root CA you generated earlier:
 
 ```bash
 # navigate to home directory
@@ -177,9 +177,9 @@ cat <IOT-HUB-ROOT-CA> >> certs/azure-iot-test-only.root.ca.cert.pem
 ```
 -----
 
-## Configure software and services for the IoT Edge device
+## Configure IoT Edge device software and services
 
-Now complete the IoT Hub and VM configuration required by the virtual IoT Edge device.
+In this section, you'll complete the IoT Hub and VM configuration required by the virtual IoT Edge device.
 
 ### Install IoT Edge and container runtimes on the VM
 
@@ -224,13 +224,11 @@ Now complete the IoT Hub and VM configuration required by the virtual IoT Edge d
 
    [![iot edge - create a device](media\iot-hub-connect-an-iot-edge-device\create-iot-edge-device.png)](media\iot-hub-connect-an-iot-edge-device\create-iot-edge-device.png#lightbox)
 
-5. Wait for the portal to return to the **IoT Edge** page, and your new device is added to the devices list.
-
-6. On the **IoT Edge** page, select your device.
+5. Wait for the portal to return to the **IoT Edge** page. Select your new device from the devices list.
 
    [![iot edge - view devices](media\iot-hub-connect-an-iot-edge-device\view-iot-edge-devices.png)](media\iot-hub-connect-an-iot-edge-device\view-iot-edge-devices.png#lightbox)
 
-7. On the device details page, use the "Copy" button at the right of **Primary Connection String** to copy the string to the clipboard.
+6. On the device details page, use the **Copy** button at the right of **Primary Connection String** to copy the string to the clipboard.
 
    [![iot edge - device details](media\iot-hub-connect-an-iot-edge-device\iot-edge-device-details.png)](media\iot-hub-connect-an-iot-edge-device\iot-edge-device-details.png#lightbox)
 
@@ -242,7 +240,7 @@ Now complete the IoT Hub and VM configuration required by the virtual IoT Edge d
    sudo nano /etc/iotedge/config.yaml
    ```
 
-2. Set the Edge device connection string. Update the \<`ADD DEVICE CONNECTION STRING HERE`\> placeholder, using the connection string you copied to the clipboard in the previous section:
+2. Set the Edge device connection string, by replacing the `<ADD DEVICE CONNECTION STRING HERE>` placeholder with the connection string you copied to the clipboard in the previous section:
 
    > [!NOTE]
    > To paste clipboard contents into Nano, press and hold the **Shift** key and click the right mouse button. Or, press the **Shift** and **Insert** keys simultaneously.
