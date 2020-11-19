@@ -28,7 +28,7 @@ Here's some of the functionality provided by Azure Kubernetes Service while in p
 - Deploy AKS on Azure Stack HCI using Windows Admin Center or PowerShell
 - Scale up or down by adding or removing nodes to the Kubernetes cluster
 - Manage storage and networking on your Kubernetes cluster
-- Automatic updates for your Kubernetes deployment
+- Provide automatic updates for your Kubernetes deployment
 - Upgrade to the latest available Kubernetes version
 - Use the popular Azure services through Azure Arc for Kubernetes
 
