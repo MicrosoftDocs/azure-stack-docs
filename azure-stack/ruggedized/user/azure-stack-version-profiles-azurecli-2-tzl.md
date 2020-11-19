@@ -53,7 +53,7 @@ az --version
 
 You should see the version of Azure CLI and other dependent libraries that are installed on your computer.
     
-![Azure CLI on Azure Stack Hub Python location](media/azure-stack-version-profiles-azurecli2/cli-python-location.png)
+![Azure CLI on Azure Stack Hub Python location](media/azure-stack-version-profiles-azurecli-2/cli-python-location.png)
 
 
 ## Windows/Linux (Azure AD)
@@ -121,7 +121,7 @@ az group create -n MyResourceGroup -l local
 
 If the resource group is created successfully, the previous command outputs the following properties of the newly created resource:
 
-![Resource group create output](media/azure-stack-connect-cli/image1.png)
+![Resource group create output](media/azure-stack-connect-cli/image-1.png)
 
 ## Windows/Linux (AD FS)
 
@@ -199,7 +199,7 @@ az group create -n MyResourceGroup -l local
 
 If the resource group is created successfully, the previous command outputs the following properties of the newly created resource:
 
-![Resource group create output](media/azure-stack-connect-cli/image1.png)
+![Resource group create output](media/azure-stack-connect-cli/image-1.png)
 
 
 ## Known issues
