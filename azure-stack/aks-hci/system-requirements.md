@@ -16,7 +16,7 @@ This article covers the requirements for setting up Azure Kubernetes Service on 
 
 Microsoft recommends purchasing a validated Azure Stack HCI hardware/software solution from our partners. These solutions are designed, assembled, and validated against our reference architecture to ensure compatibility and reliability so you get up and running quickly. Check that the systems, components, devices, and drivers you are using are Windows Server 2019 Certified per the Windows Server Catalog. Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) website for validated solutions.
 
-### General requirements
+## General requirements
 
 For Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter to function optimally in an Active Directory environment, ensure the following requirements are fulfilled: 
 
@@ -28,7 +28,7 @@ For Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacente
 
  - If you are using GPO templates on containers in Active Directory, ensure deploying AKS-HCI is exempt from that policy. Server hardening will be available in a subsequent preview release.
 
-### Compute requirements
+## Compute requirements
 
  - An Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster with a maximum of four servers in the cluster. We recommend that each server in the cluster have at least 24 CPU cores and at least 256 GB RAM.
 
@@ -38,7 +38,7 @@ For Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacente
 
  - This preview release requires that you install the Azure Stack HCI operating system on each server in the cluster using the EN-US region and language selections; changing them after installation isn't sufficient at this time.
 
-### Network requirements 
+## Network requirements 
 
 The following requirements apply to an Azure Stack HCI cluster as well as a Windows Server 2019 Datacenter failover cluster: 
 
@@ -87,7 +87,7 @@ https://:443 | 443 | TCP | Used to support Azure Arc agents
 ecpacr.azurecr.io | 443 | Kubernetes | Downloading container images 
 git://:9418 | 9418 | TCP | Used to support Azure Arc agents 
 
-### Storage requirements 
+## Storage requirements 
 
 The following storage implementations are supported by Azure Kubernetes Service on Azure Stack HCI: 
 
@@ -97,7 +97,7 @@ The following storage implementations are supported by Azure Kubernetes Service 
 | Windows Server 2019 Datacenter failover cluster          | CSV          | 1 TB              |
 | Single Node Windows Server 2019 Datacenter | Direct Attached Storage | 500 GB|
 
-### Review maximum supported hardware specifications 
+## Review maximum supported hardware specifications 
 
 Azure Kubernetes Service on Azure Stack HCI deployments that exceed the following specifications are not supported: 
 
@@ -107,7 +107,7 @@ Azure Kubernetes Service on Azure Stack HCI deployments that exceed the followin
 | Kubernetes Clusters            | 4       |
 | Total number of VMs          | 200     |
 
-### Windows Admin Center requirements
+## Windows Admin Center requirements
 
 Windows Admin Center is the user interface for creating and managing Azure Kubernetes Service on Azure Stack HCI. To use Windows Admin Center with Azure Kubernetes Service on Azure Stack HCI, you must meet all the criteria in the list below. 
 
