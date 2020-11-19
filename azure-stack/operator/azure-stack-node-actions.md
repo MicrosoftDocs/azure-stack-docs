@@ -4,10 +4,10 @@ description: Learn about scale unit node actions, including power on, power off,
 author: IngridAtMicrosoft
 
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 11/19/2020
 ms.author: inhenkel
 ms.reviewer: thoroet
-ms.lastreviewed: 11/11/2019
+ms.lastreviewed: 11/19/2020
 
 # Intent: As an Azure Stack operator, I want to learn about the scale unit node actions I can take.
 # Keyword: azure stack scale unit node actions
@@ -65,10 +65,20 @@ Before applying the following steps ensure that no operation is currently in pro
 
 1. Open PowerShell and add your Azure Stack Hub environment. This requires [Azure Stack Hub PowerShell to be installed](./powershell-install-az-module.md) on your computer.
 
-   ```powershell
-   Add-AzEnvironment -Name AzureStack -ARMEndpoint https://adminmanagement.local.azurestack.external
-   Add-AzAccount -Environment AzureStack
-   ```
+### [Az modules](#tab/az1)
+
+```powershell
+Add-AzEnvironment -Name AzureStack -ARMEndpoint https://adminmanagement.local.azurestack.external
+Add-AzAccount -Environment AzureStack
+```
+### [AzureRM modules](#tab/azurerm1)
+
+```powershell
+Add-AzureRMEnvironment -Name AzureStack -ARMEndpoint https://adminmanagement.local.azurestack.external
+Add-AzureRMAccount -Environment AzureStack
+```
+
+---
 
 2. Run the following command to restart the Fabric Resource Provider Role.
 
