@@ -12,16 +12,22 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version 20H2
 
-This topic discusses considerations and requirements for the physical network (fabric) in Azure Stack HCI environments.
+This topic discusses physical (fabric) networking considerations and requirements for Azure Stack HCI, particularly for network switches. Work with your network vendor or support team to ensure your network switches are adequately sized for the workloads you intend to run.
 
-## Network Switches for Azure Stack HCI
+> [!NOTE]
+> Requirements for future Azure Stack HCI versions may change.
 
-Microsoft tests Azure Stack HCI with the technologies and protocols identified in the section Network Switch Requirements. Microsoft does not certify network switches; however, we have worked with vendors to identify devices that support the Azure Stack HCI required technologies and protocols.
+
+## Supported network switches
+
+Microsoft tests Azure Stack HCI to the standards and protocols identified in the **Network Switch Requirements** section. While Microsoft does not certify network switches, we do work with vendors to identify devices that support Azure Stack HCI requirements.
+
+These requirements are also published in [Windows Hardware Compatibility Program Specifications and Policies](https://docs.microsoft.com/windows-hardware/design/compatibility/whcp-specifications-policies) page in the **Components and Peripherals Specification** section under **Device.Network.Switch.SDDC**.
 
 > [!IMPORTANT]
-> While other network devices using technologies and protocols not listed here may work, Microsoft cannot guarantee they will work with Azure Stack HCI and may be unable to assist in troubleshooting the issues that occur.
+> While other network switches using technologies and protocols not listed here may work, Microsoft cannot guarantee they will work with Azure Stack HCI and may be unable to assist in troubleshooting the issues that occur.
 
-When making a purchase of network switches, please contact your network switch vendor and ensure that the devices meet the Azure Stack HCI requirements (in the section Network Switch Requirements). The following vendors (in alphabetical order) have confirmed that the switches below support the Azure Stack HCI requirements:
+When purchasing network switches, contact your switch vendor and ensure that the devices meet all Azure Stack HCI requirements. The following vendors (in alphabetical order) have confirmed that their switches support Azure Stack HCI requirements:
 
 |Vendor|10 GbE|25 GbE|100 GbE|
 |-----|-----|-----|-----|
@@ -33,22 +39,24 @@ When making a purchase of network switches, please contact your network switch v
 |Lenovo| | |NE10032|
 
 > [!IMPORTANT]
-> Microsoft will add or remove vendors from the list as they are informed of changes in support by network switch vendors.
+> Microsoft will add or remove vendors from this list as they are informed of changes by network switch vendors.
 
-## Network Switch Requirements
+If your switch is not included, contact your switch vendor to ensure your switch model and switch operating system version support the required IEEE standards in the next section.
 
-This section defines the requirements for physical switches used with Azure Stack HCI and lists the industry specifications, organizational standards, and protocols that are mandatory for all Azure Stack HCI deployments. These requirements help ensure reliable communications between nodes in Azure Stack HCI cluster deployments. Reliable communications between nodes is critical.
+## Network switch requirements
 
-To provide the needed level of reliability for Azure Stack HCI requires that switches:
+This section lists industry specifications, organizational standards, and protocols that are mandatory for network switched used in all Azure Stack HCI deployments. These requirements help ensure reliable communications between nodes in Azure Stack HCI cluster deployments. Reliable communications between cluster nodes is critical.
+
+To provide the needed level of reliability for Azure Stack HCI requires that all switches:
 
 - Comply with applicable industry specifications, standards, and protocols.
-    - Only mandatory portions of the standard is required
-    - Unless noted, compliance with the latest active (non-superseded) version of the standard is required
-- Provide visibility as to which specifications, standards, and protocols the switch supports and which capabilities are enabled
-If your switch is not included in the table of switches that support Azure Stack HCI Network Requirements (see section Network Switches for Azure Stack HCI), please contact your network switch vendor to ensure that your switch model and switch operating system version support the following technologies.
+- Unless noted, compliance with the latest active (non-superseded) version of the standard is required. Only mandatory portions of a standard are required.
+- Provide visibility as to which specifications, standards, and protocols the switch supports and which capabilities are enabled.
 
 > [!NOTE]
-> Though not listed here, Network Adapters used for Azure Stack HCI Management, Compute, and Storage, require Ethernet. For more information on the requirements for Network Adapters, see Plan Host Networking).
+> Network adapters used for compute, storage, and management traffic require Ethernet. For more information on network adapters, see [Plan Host Networking].
+
+Here are the mandatory IEEE standards and specifications:
 
 ### Standard: IEEE 802.1Q
 
@@ -63,11 +71,11 @@ Ethernet switches must comply with the IEEE 802.1Qbb specification that defines 
 Ethernet switches must comply with the IEEE 802.1Qaz specification that defines Enhanced Transmission Select (ETS). ETS is required where DCB is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qaz is required in all scenarios. A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed.
 
 > [!NOTE]
-> Microsoft does not test Azure Stack HCI with DSCP. Hyper-converged infrastructure has a high reliance on East/West Layer-2 communication within the same rack and therefore requires ETS.
+> Hyper-converged infrastructure has a high reliance on East-West Layer-2 communication within the same rack and therefore requires ETS. Microsoft does not test Azure Stack HCI with Differentiated Services Code Point (DSCP). 
 
 ### Standard: IEEE 802.1AB
 
-Ethernet switches must comply with the IEEE 802.1AB specification that defines the Link Layer Discovery Protocol (LLDP). LLDP is required for Azure Stack HCI and support teams to discover switch configuration.
+Ethernet switches must comply with the IEEE 802.1AB specification that defines the Link Layer Discovery Protocol (LLDP). LLDP is required for Azure Stack HCI and supports teaming to discover switch configuration.
 
 Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled. These switches must not require additional configuration beyond enablement of a specific TLV. For example, enabling 802.1 Subtype 3 should automatically advertise all VLANs available on switch ports.
 
@@ -80,67 +88,64 @@ LLDP allows organizations to define and encode their own custom TLVs. These are 
 |20H2 and later|IEEE 802.1|VLAN Name (Subtype = 3)|
 |20H2 and later|IEEE 802.3|Maximum Frame Size (Subtype = 4)|
 
-## Publication and Changes to Requirements
+## Network traffic and architecture
 
-These requirements are also published in [Windows Hardware Compatibility Program Specifications and Policies](https://docs.microsoft.com/windows-hardware/design/compatibility/whcp-specifications-policies) page in the **Components and Peripherals Specification** under **Device.Network.Switch.SDDC**.
+Network traffic can be classified by its direction. Traditional Storage Area Network (SAN) environments are heavily North-South where traffic flows from a compute tier to a storage tier across Layer-3 (IP) boundaries. This is a 3-Tier core-aggregation-access architecture.
 
-Requirements for future Azure Stack HCI versions may change.
+Hyper-converged infrastructure is more heavily East-West where a substantial portion of data traffic stays within a Layer-2 (VLAN) boundary. This is a 2-Tier spine-leaf architecture.
 
-## Network Architectures
+Azure Stack HCI works in both spine-leaf and core-aggregation-access data center architectures.
 
-Azure Stack HCI can function in various data center architectures including 2-tier (Spine-Leaf) or 3-tier (Core-Aggregation-Access) architectures.
+Here is some more information on network traffic by direction in Azure Stack HCI:
 
-In the following sections, we will more generally refer to concepts from the Spine/Leaf topology - which is commonly used with workloads that like Hyper-converged infrastructure which are heavily East/West - such as Top-of-Rack (ToR) switch however this should not be misconstrued as a support requirement.
+### North-South traffic
+
+North-South traffic has the following characteristics:
+
+- Traffic flows out of a ToR switch to the spine or in from the spine to a ToR switch
+- Traffic leaves the physical rack or crosses a Layer-3 boundary (IP)
+- Includes management (PowerShell, Windows Admin Center), compute (VM), and storage (inter-site for stretched clusters) traffic
+- Uses an Ethernet switch for connectivity to the physical network
+
+### East-West traffic
+
+East-West traffic has the following characteristics:
+
+- Traffic remains within the ToR switch or switches
+- Traffic stays within the same rack and Layer-2 boundary (VLAN)
+- Includes storage traffic or Live Migration traffic between nodes in the same cluster and (if using stretched cluster) within the same site
+- May use an Ethernet switch (switched) or a direct (switchless) connection, as described in the next two sections.
 
 > [!NOTE]
->We highly recommend that all cluster nodes in the same site are physically located in the same rack and connected to the same ToR(s).
+>We highly recommend that all cluster nodes within a site are physically located in the same rack and connected to the same ToR switch or switches.
 
-## Network Traffic Patterns
+## Using switched connections
 
-Network traffic can be classified by its direction. Whereas traditional SAN environments are heavily North/South where traffic flows from a compute tier to the storage tier across layer-3 (IP) boundaries (Core/Aggregation), Hyper-Converged Infrastructure is more heavily East/West where a substantial portion of data stays within a layer-2 (VLAN) boundary (ToR/Leaf).
+North-South traffic requires the use of switched connections. Besides using an Ethernet switch that supports the required protocols for Azure Stack HCI, the most important aspect is the proper sizing of the network fabric.
 
-The following defines network traffic by direction in Azure Stack HCI:
+It is imperative to understand the "non-blocking" fabric bandwidth that your Ethernet switches can support and that you minimize (or preferably eliminate) oversubscription of the network.
 
-- **North/South**: Traffic that flows into or out of the cluster crossing a layer-3 (IP) boundary. This type of traffic has the following characteristics:
-    - Traffic that flows out of the ToR to the spine or in from the spine to a ToR.
-    - Management (Remote Desktop, PowerShell, etc.), virtual machine, and (if using a stretch cluster) storage traffic between sites
-    - Traffic that that leaves the physical rack and/or crosses a layer-3 boundary (IP)
-    - Must use an Ethernet switch for connectivity to the physical network
+Common congestion points and oversubscription, such as the [Multi-Chassis Link Aggregation Group](https://en.wikipedia.org/wiki/Multi-chassis_link_aggregation_group) used for path redundancy, can be eliminated through proper use of subnets and VLANs. For more information, see [Plan Host Networking] topic.
 
-- **East/West**: Traffic that flows in between nodes in the same cluster and stays within a layer-2 (VLAN) boundary. This type of traffic has the following characteristics:
+## Using switchless connections
 
-    - Traffic remains within the ToR(s)
-    - Includes storage traffic or live migration traffic between nodes in the same cluster and (if using stretch cluster) within the same site
-    - Traffic that stays within the same rack and layer-2 boundary (VLAN).
-    - May use an ethernet switch (switched) or direct (switchless) connection:
-        - **Switched connections**: Ensure the fabric bandwidth (including Multi-Chassis Link Aggregation Group used for path redundancy) is sufficient to minimize network congestion. This is typically referred to as the “non-blocking” bandwidth of the fabric by switch vendors.
-        - **Switchless connections**: Connections must be “full-mesh.” That is, every node must have a direct connection to every other node in the cluster.
+Azure Stack HCI supports switchless (direct) connections for all cluster sizes so long as each node in the cluster has a redundant connection to every node in the cluster. This is called a "full-mesh" connection.
 
-### Switched Design Requirements and Limitations
+Generally speaking, using a direct switchless connection is more beneficial for smaller two-node and three-node clusters.
 
-Besides using a network device that supports the required protocols for Azure Stack HCI, the most important aspect is proper sizing of the fabric.
+East-West traffic can use switchless connections between nodes in the cluster.
 
-It is imperative to understand the fabric bandwidth (non-blocking) that your switches can support and ensure that you minimize (or preferably eliminate) oversubscription of the network. Depending on your design, common congestion points and oversubscription (such as the [Multi-Chassis Link Aggregation Group](https://en.wikipedia.org/wiki/Multi-chassis_link_aggregation_group) used for path redundancy) can be eliminated through proper use of Subnets and VLANs. For more information, see [Plan Host Networking] topic.
+### Advantages of switchless connections
 
-Work with your network vendor or network support team to ensure you network switches have been properly sized for the workload you are intending to run.
+- No switch purchase is necessary for East-West traffic. A switch is required for North-South traffic. This may result in lower capital expenditures (Capex) costs but is dependent on the number of nodes in the cluster.
+- Since there is no switch, configuration is limited to the host, which may reduce the potential number of configuration steps needed. This value diminishes as the cluster size increases.
 
-### Switchless Design Requirements and Limitations
+### Disadvantages of switchless connections
 
-East/West traffic can use a direct or back-to-back connection between nodes in the cluster.
-
-Azure Stack HCI supports switchless for all cluster sizes so long as each node in the cluster has a redundant connection to every node in the cluster. However, generally switchless is more beneficial for smaller (2 to 3 node) clusters.
-
-#### Advantages of switchless connections
-
-- No Switch purchase is necessary for East/West Communication (still required for North/South traffic). This may result in lower CAPEX cost but is dependent on the number of nodes in the cluster.
-- Since there is no switch, configuration is limited to the host which may reduce the potential number of configuration steps needed – As mentioned above, this value diminishes as the cluster size increases.
-
-#### Disadvantages of switchless connections
-
-- More network adapters are required to provide redundancy; as the number of nodes in the cluster grows, this may result in a higher CAPEX cost.
-- More planning required for IP and Subnet addressing schemes
-- Provides only local storage access; virtual machines, management, and other traffic requiring north/south access cannot share these adapters.
-- Generally does not scale well beyond 3 node clusters.
+- More network adapters are required to provide redundancy. As the number of nodes in the cluster grows, this may result in a higher Capex cost.
+- More planning is required for IP and subnet addressing schemes
+- Provides only local storage access. VM traffic, management traffic, and other traffic requiring North-South access cannot use these adapters.
+- Generally does not scale well beyond three-node clusters.
 
 ## Next steps
 
