@@ -94,11 +94,7 @@ In this section, you deploy a new Linux VM, which will serve as the virtual IoT 
 
 ## Configure certificates for the IoT Edge device
 
-In this section, you'll complete the VM certificate configuration required by the virtual IoT Edge device.
-
-Your IoT Hub service and the IoT Edge device are secured with X509 certificates, which must use the same root CA certificate in their trust chain. Select the appropriate tab below to complete certificate configuration, based on the root CA type being used by your IoT Hub.
-
-Before running the script in each of the following sections, be sure to update the following script placeholders to match your environment's configuration:
+In this section, you'll complete the VM certificate configuration required by the virtual IoT Edge device. Before running the script in each of the following sections, be sure to update the following script placeholders to match your environment's configuration:
 
 | Placeholder | Example | Note |
 |-------------|---------|------|
@@ -107,6 +103,8 @@ Before running the script in each of the following sections, be sure to update t
 | `<IOT-HUB-ROOT-CA>`| `root.cer`| The filename you give to the exported IoT Hub root CA. |
 | `<DATA-DIR>`| `/home/edgeadmin/edged1`| The full path to the data directory on the Linux VM. |
 | `<USER-ACCOUNT>`| `edgeadmin`| The account used for sign in to the Linux VM. |
+
+Your IoT Hub service and the IoT Edge device are secured with X509 certificates, which must use the same root CA certificate in their trust chain. Select the appropriate tab below to complete certificate configuration, based on the root CA type being used by your IoT Hub.
 
 # [Public CA](#tab/public-ca)
 
