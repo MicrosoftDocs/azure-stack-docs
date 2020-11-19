@@ -92,6 +92,6 @@ This article describes using the PEP to update the DNS forwarder in Azure Stack.
 
     ```powershell
     Set-AzsDnsForwarder -IPAddress "IPAddress 1", "IPAddress 2"
-    ``` |
+    ```
 
 1. Review the output of the command for any errors.
