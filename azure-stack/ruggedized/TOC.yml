@@ -90,8 +90,6 @@
       items: 
       - name: Validate Azure registration 
         href: ../operator/azure-stack-validate-registration.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json 
-      - name: Register 
-        href: ../operator/registration-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Value-add resource providers
         items:
         - name: App Service
@@ -168,8 +166,6 @@
         href: ../operator/azure-stack-manage-basics.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Configure telemetry collection
         href: ../operator/azure-stack-telemetry.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Register
-        href: ../operator/registration-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Region management
         href: ../operator/azure-stack-region-management.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Enable CLI for users
@@ -244,9 +240,6 @@
         href: ../operator/azure-stack-security-bitlocker.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Rotate secrets
         href: ../operator/azure-stack-rotate-secrets.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Update iDRAC credentials
-        href: ../operator/integrated-dell-remote-access-controller-credentials.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-
       - name: Update antivirus 
         href: ../operator/azure-stack-security-av.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Log collection and data handling
@@ -257,8 +250,6 @@
         href: ../operator/azure-stack-marketplace.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Azure Marketplace items
         href: ../operator/azure-stack-marketplace-azure-items.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Download marketplace items 
-        href: ../operator/azure-stack-download-azure-marketplace-item-tca.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Add a custom virtual machine image
         href: ../operator/azure-stack-add-vm-image.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Create and publish a marketplace item
@@ -267,8 +258,6 @@
         href: ../operator/azure-stack-supported-os.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Offer a virtual machine scale set
         href: ../operator/azure-stack-compute-add-scalesets.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Windows Server in Marketplace FAQ 
-        href: ../operator/azure-stack-windows-server-faq-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Offer Linux virtual machines
         href: ../operator/azure-stack-linux.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Add a Red Hat virtual machine
@@ -277,16 +266,6 @@
         href: ../operator/azure-stack-aks-engine.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Offer Kubernetes marketplace item
         href: ../operator/azure-stack-solution-template-kubernetes-cluster-add.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Offer a Container registry
-        items:
-        - name: Add a container registry
-          href: ../operator/container-registry-template-install-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-        - name: Update the container registry
-          href: ../operator/container-registry-template-update-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-        - name: Rotate container registry secrets
-          href: ../operator/container-registry-template-rotate-secrets-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Offer Commvault marketplace item
-        href: ../operator/azure-stack-commvault-offer-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Offer services
       items:
       - name: Service, plan, offer, subscription overview
@@ -355,12 +334,8 @@
           items:
           - name: Apply updates
             href: ../operator/resource-provider-apply-updates.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-          - name: Backup & restore
-            href: ../operator/azure-stack-backup-infrastructure-backup-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: Collect logs
             href: ../operator/azure-stack-diagnostic-log-collection-overview.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-          - name: Health & alerts
-            href: ../operator/azure-stack-monitor-health-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: Manage
             href: ../operator/event-hubs-rp-manage.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json 
           - name: Rotate secrets
@@ -409,28 +384,6 @@
           href: ../operator/azure-stack-sql-resource-provider-remove.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json 
         - name: SQL resource provider 1.1.47.0 release notes
           href: ../operator/azure-stack-sql-resource-provider-11470.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json   
-    - name: Usage and billing
-      items:
-      - name: Overview
-        href: ../operator/billing-model-overview-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Usage and billing reference
-        items:
-        - name: Analyze usage and API billing reference
-          href: ../operator/analyze-usage-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json  
-        - name: Local meters 
-          href: ../operator/billing-local-meters-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-    - name: Back up 
-      items:
-      - name: Overview 
-        href: ../operator/azure-stack-backup-infrastructure-backup-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Configure backup using portal
-        href: ../operator/azure-stack-backup-enable-backup-console-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Configure backup using PowerShell
-        href: ../operator/azure-stack-backup-enable-backup-powershell-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Back up
-        href: ../operator/azure-stack-backup-back-up-azure-stack-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Backup best practices
-        href: ../operator/azure-stack-backup-best-practices-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Get support  
       items:
       - name: Help & Support portal 
@@ -449,9 +402,6 @@
         href: ../operator/azure-stack-diagnostic-test.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Troubleshooting
         href: ../operator/azure-stack-troubleshooting.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Support link reference 
-        href: ../operator/aks-refer-table-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-
   - name: Reference
     items:
     - name: Azure Stack Hub Operator 
