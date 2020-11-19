@@ -122,7 +122,6 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 ---
 
 
-
 ## Next steps
 
 - [Develop templates for Azure Stack Hub](../user/azure-stack-develop-templates.md).
