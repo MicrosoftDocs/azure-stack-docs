@@ -44,7 +44,7 @@ Be sure to update the following script placeholders to match your environment, b
 | `<DEVICE-CA-CERT-NAME>` | `edged1cert`| The name you give the IoT Edge device CA certificate. |
 | `<IOT-HUB-HOSTNAME>`| `test-hub-1.mgmtiothub.region.mydomain.com`| Your IoT Hub host name. |
 | `<IOT-HUB-ROOT-CA>`| `root.cer`| The filename you give to the exported IoT Hub root CA. |
-| `<WORK-DIR>`| `/home/edgeadmin/edged1`| The path to your local working directory on the Linux VM. |
+| `<DATA-DIR>`| `/home/edgeadmin/edged1`| The path to the data directory on the Linux VM. |
 
 ## Create Azure Stack Hub resources
 
@@ -67,19 +67,60 @@ In this section, you deploy a new Linux VM, which will serve as the virtual IoT 
    > [!NOTE]
    > You only need to complete the first 5 sections, up through **Connect to the VM**, as you won't need the NGINX web server. Also, don't complete the **Clean up resources** section, as you'll use the Linux VM for the remainder of this article.
 
-2. After you've created and connected to the VM using PuTTY, create a user account. For the purposes of this article, we'll assume an account named **edgeadmin**. [TODO - remove this? or clarify how to establish SSH keys for sign in?]
+2. After you've created and connected to the VM using PuTTY, create a user account. For the purposes of this article, we'll assume an account named **edgeadmin**. [TODO - remove this and place comment in overview that this article assumes "edgeadmin" user account? or clarify how to establish SSH keys for sign in?]
 
    ```bash
    # add user account "edgeadmin'
    sudo adduser edgeadmin
    ```
 
-## Transfer the IoT Hub root CA certificate to the IoT Edge device (internal CA only)
+3. Set up the certificate generation tool using one of the following methods. Either will download files from the IoT Edge GitHub repository, required later for generating device certificates:
 
-Both your IoT Hub service and the IoT Edge device require X509 certificates, that use the same root CA certificate in their trust chain.
+   **Use cURL script:**
+   ```bash
+   # navigate to edge device data directory
+   cd <DATA-DIR>
+   
+   # download script and configs
+   curl -Lo certGen.sh https://raw.githubusercontent.com/Azure/iotedge/master/tools/CACertificates/certGen.sh
+   curl -Lo openssl_root_ca.cnf https://raw.githubusercontent.com/Azure/iotedge/master/tools/CACertificates/openssl_root_ca.cnf
+   ```
+   **Use Git to clone the repository:**
+   
+   ```bash
+   # navigate to home directory
+   cd /home/edgeadmin
+   
+   # clone iotedge repo
+   git clone https://github.com/Azure/iotedge.git
+   
+   # navigate to edge device data directory
+   cd <DATA-DIR>
+   
+   # Copy the config and script files from the cloned IoT Edge repo into your working directory.
+   cp /home/edgeadmin/iotedge/tools/CACertificates/*.cnf .
+   cp /home/edgeadmin/iotedge/tools/CACertificates/certGen.sh .
+   ```
+
+## Transfer the IoT Hub root CA certificate to the IoT Edge device (private CA only)
 
 > [!IMPORTANT]
-> You only need to complete this section if you're using your own internal CA for certificate generation. If your IoT Hub root CA certificate was issued by a public CA, you can skip this section and proceed to [Configure certificates for the IoT Edge device](#configure-certificates-for-the-iot-edge-device).
+>Your IoT Hub service and the IoT Edge device are secured with X509 certificates, which must use the same root CA certificate in their trust chain. 
+> You only need to complete this section if you're using your own private CA for certificate generation. If your IoT Hub root CA certificate was issued by a public CA, you can skip this section and proceed to [Configure certificates for the IoT Edge device](#configure-certificates-for-the-iot-edge-device).
+
+# [Public CA](#tab/public-ca)
+ 
+Instructions for Public CA
+ 
+# [Private CA](#tab/private-ca)
+
+Instructions for Private CA
+
+# [Ulra Private CA](#tab/ultra-private-ca/private-ca)
+
+Instructions for Ultra Private CA
+
+-----
 
 ### Export the root CA certificate from your IoT Hub
 
@@ -132,36 +173,6 @@ Now install the IoT Hub root CA certificate you exported in the previous section
 
 In this section, you'll complete the VM configuration for the certificates required by the virtual IoT Edge device. 
 
-### Set up the certificate generation tool
-
-Set up the certificate generation tool using one of the following methods. Either will download files from the IoT Edge GitHub repository, required for generating device certificates:
-
-**Use cURL script:**
-```bash
-# navigate to edge device data directory
-cd <WORK-DIR>
-
-# download script and configs
-curl -Lo certGen.sh https://raw.githubusercontent.com/Azure/iotedge/master/tools/CACertificates/ertGen.sh
-curl -Lo openssl_root_ca.cnf https://raw.githubusercontent.com/Azure/iotedge/master/tools/ACertificates/openssl_root_ca.cnf
-```
-**Use Git to clone the repository:**
-
-```bash
-# navigate to home directory
-cd /home/edgeadmin
-
-# clone iotedge repo
-git clone https://github.com/Azure/iotedge.git
-
-# navigate to edge device data directory
-cd <WORK-DIR>
-
-# Copy the config and script files from the cloned IoT Edge repo into your working directory.
-cp /home/edgeadmin/iotedge/tools/CACertificates/*.cnf .
-cp /home/edgeadmin/iotedge/tools/CACertificates/certGen.sh .
-```
-
 ### Create a device root CA certificate
 
 Create the device root CA certificate and key files required for your device: 
@@ -174,7 +185,7 @@ Create the device root CA certificate and key files required for your device:
    ./certGen.sh create_root_and_intermediate
    ```
 
-4. The root CA certificate is stored in the following file: `<WORK-DIR>/certs/azure-iot-test-only.root.ca.cert.pem`.
+4. The root CA certificate is stored in the following file: `<DATA-DIR>/certs/azure-iot-test-only.root.ca.cert.pem`.
 
 ### Create the IoT Edge device CA certificate
 
@@ -185,8 +196,8 @@ To create the IoT Edge device CA certificate files:
 1. Run the following script, which creates several device CA certificate and key files: 
 
    ```bash
-   # navigate to home directory
-   cd <WORK-DIR>
+   # navigate to data directory
+   cd <DATA-DIR>
    
    # generate IoT Edge device CA certificate 
    ./certGen.sh create_edge_device_ca_certificate <DEVICE-CA-CERT-NAME>
@@ -194,13 +205,13 @@ To create the IoT Edge device CA certificate files:
 
 2.  Copy the following certificate and key pair files to the IoT Edge device. They're referenced later in the config.yaml file:
 
-    `<WORK-DIR>/certs/iot-edge-device-<DEVICE-CA-CERT-NAME>-full-chain.cert.pem`  
-    `<WORK-DIR>/private/iot-edge-device-<DEVICE-CA-CERT-NAME>.key.pem`
+    `<DATA-DIR>/certs/iot-edge-device-<DEVICE-CA-CERT-NAME>-full-chain.cert.pem`  
+    `<DATA-DIR>/private/iot-edge-device-<DEVICE-CA-CERT-NAME>.key.pem`
 
-### Append the IoT Hub root CA to the device root CA (internal CA only)
+### Append the IoT Hub root CA to the device root CA (private CA only)
 
 > [!IMPORTANT]
-> You only need to complete this section if you're using your own internal CA for certificate generation. If you're using a public CA, you can skip this section and [proceed to the next section](#configure-software-and-services-for-the-iot-edge-device).
+> You only need to complete this section if you're using your own private CA for certificate generation. If you're using a public CA, you can skip this section and [proceed to the next section](#configure-software-and-services-for-the-iot-edge-device).
 
 Run the following script to append the IoT Hub root CA to the device root CA:
 
@@ -293,9 +304,9 @@ Now complete the IoT Hub and VM configuration required by the virtual IoT Edge d
 
    ```yaml
    certificates:
-     device_ca_cert: "<WORK-DIR>/certs/iot-edge-device-<DEVICE-CA-CERT-NAME>-full-chain.cert.pem"
-     device_ca_pk: "<WORK-DIR>/private/iot-edge-device-<DEVICE-CA-CERT-NAME>.key.pem"
-     trusted_ca_certs: "<WORK-DIR>/certs/azure-iot-test-only.root.ca.cert.pem"
+     device_ca_cert: "<DATA-DIR>/certs/iot-edge-device-<DEVICE-CA-CERT-NAME>-full-chain.cert.pem"
+     device_ca_pk: "<DATA-DIR>/private/iot-edge-device-<DEVICE-CA-CERT-NAME>.key.pem"
+     trusted_ca_certs: "<DATA-DIR>/certs/azure-iot-test-only.root.ca.cert.pem"
    ```
 
 4. Save and close the file using **CTRL** + **X**, then **Y**, then **Enter**.
