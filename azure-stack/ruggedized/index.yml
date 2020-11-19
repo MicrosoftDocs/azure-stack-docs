@@ -82,12 +82,8 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Monitor health and alerts 
-            url: operator/azure-stack-monitor-health-tzl.md
           - text: Install updates and monitor progress
             url: ../operator/azure-stack-apply-updates.md
-          - text: Best practices for backup and restore 
-            url: operator/azure-stack-backup-best-practices-tzl.md
 
   # Card
   - title: Infrastructure-as-a-Service (IaaS) on Azure Stack Hub
