@@ -8,7 +8,7 @@ ms.author: dawhite
 ---
 # Quickstart: Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center
 
-> Applies to: Azure Stack HCI
+> Applies to: Azure Stack HCI, Windows Server 2019 Datacenter
 
 In this quickstart, you set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center. To instead use PowerShell, see [Set up with PowerShell](setup-powershell.md).
 
@@ -41,7 +41,7 @@ Now that we have added the feed, the Azure Kubernetes Service extension will be 
 
 ## Setting up an Azure Kubernetes Service host
 
-There is one final step that should be completed before you create a Kubernetes cluster. You need to set up an Azure Kubernetes Service host on the system you want to deploy the Kubernetes cluster to. This system can be a Windows Server 2019 Datacenter cluster, a single node Windows Server 2019 Datacenter cluster, or an Azure Stack HCI cluster. 
+There is one final step that should be completed before you create a Kubernetes cluster. You need to set up an Azure Kubernetes Service host on the system you want to deploy the Kubernetes cluster to. This system can be a Windows Server 2019 Datacenter cluster, a single node Windows Server 2019 Datacenter cluster, or a 2-4 node Azure Stack HCI cluster. 
 
 > [!NOTE] 
 > Setting up Azure Kubernetes Service hosts on two independent systems with the intention of merging them during Kubernetes cluster creation is not a supported scenario. 
