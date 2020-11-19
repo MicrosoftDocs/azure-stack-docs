@@ -58,7 +58,7 @@ First you create the necessary Azure Stack Hub resources, including an IoT Hub a
    > [!IMPORTANT]
    > Be sure to use the [Azure Stack Hub user portal](../user/azure-stack-use-portal.md) when following the steps in the article, and NOT the Azure portal. Also note that some screenshots and instructions may be slightly different, as not all Azure features are available on Azure Stack Hub. 
 
-### Deploy a new Linux VM 
+### Deploy and configure a Linux VM 
 
 In this section, you deploy a new Linux VM, which will serve as the virtual IoT Edge device:
 
@@ -102,27 +102,22 @@ In this section, you deploy a new Linux VM, which will serve as the virtual IoT 
    cp /home/edgeadmin/iotedge/tools/CACertificates/certGen.sh .
    ```
 
-## Transfer the IoT Hub root CA certificate to the IoT Edge device (private CA only)
+## Configure certificates for the IoT Edge device
 
-> [!IMPORTANT]
->Your IoT Hub service and the IoT Edge device are secured with X509 certificates, which must use the same root CA certificate in their trust chain. 
-> You only need to complete this section if you're using your own private CA for certificate generation. If your IoT Hub root CA certificate was issued by a public CA, you can skip this section and proceed to [Configure certificates for the IoT Edge device](#configure-certificates-for-the-iot-edge-device).
+In this section, you'll complete the VM certificate configuration required by the virtual IoT Edge device.
+
+### Transfer the IoT Hub root CA certificate to the IoT Edge device
+
+Your IoT Hub service and the IoT Edge device are secured with X509 certificates, which must use the same root CA certificate in their trust chain.
 
 # [Public CA](#tab/public-ca)
  
-Instructions for Public CA
- 
 # [Private CA](#tab/private-ca)
 
-Instructions for Private CA
+> [!IMPORTANT]
+> If you're using a private CA, you must transfer the IoT Hub root CA certificate to the IoT Edge device. Complete these steps ***only*** if you're using your own private CA for certificate generation. If your IoT Hub root CA certificate was issued by a public CA, select the preceding **Public CA** tab. 
 
-# [Ulra Private CA](#tab/ultra-private-ca/private-ca)
-
-Instructions for Ultra Private CA
-
------
-
-### Export the root CA certificate from your IoT Hub
+#### Export the root CA certificate from your IoT Hub
 
 Export the IoT Hub root CA certificate in PEM format, from a machine that has access to your Azure Stack Hub instance. This example will show how to export the certificate using either a [Microsoft Edge](https://www.microsoft.com/edge) or [Google Chrome](https://www.google.com/chrome/index.html) browser: 
 
@@ -144,7 +139,7 @@ Export the IoT Hub root CA certificate in PEM format, from a machine that has ac
 
    1. After the export finishes successfully, you can close the browser tab.
 
-### Install the IoT Hub root CA certificate on the Edge device
+#### Install the IoT Hub root CA certificate on the Edge device
 
 Now install the IoT Hub root CA certificate you exported in the previous section, into the Edge device's trusted store. 
 
@@ -169,9 +164,7 @@ Now install the IoT Hub root CA certificate you exported in the previous section
    openssl s_client -connect <IOT-HUB-HOSTNAME>:443
    ```
 
-## Configure certificates for the IoT Edge device
-
-In this section, you'll complete the VM configuration for the certificates required by the virtual IoT Edge device. 
+-----
 
 ### Create a device root CA certificate
 
