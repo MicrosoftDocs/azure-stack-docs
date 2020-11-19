@@ -40,7 +40,7 @@ You can install the latest Azure Stack PowerShell module with or without interne
 
 
   ```powershell  
-  # Update the current PowerShellGet module to latest versionrequired to support PreRelease modules
+  # Update the current PowerShellGet module to latest version, required to support PreRelease modules
   Install-Module -Name PowerShellGet -Force
 
   Get-Module -Name Azs.* -ListAvailable | Uninstall-Module -Force -Verbose
