@@ -26,7 +26,7 @@ Your Azure Stack Hub users can rotate the secrets (certificates, username, and p
 
 ## Prerequisites for the user
 
- - The user will need to have the Azure Stack Hub Powershell modules installed. For more information, see [Install PowerShell for Azure Stack](../../operator/azure-stack-powershell-install.md).
+ - The user will need to have the Azure Stack Hub PowerShell modules installed. For more information, see [Install PowerShell for Azure Stack](../../operator/azure-stack-powershell-install.md).
 
  - Get the update secrets for the container registry template. You can use a new SSL certificate or a new username and password combination for accessing the Docker registry.
 

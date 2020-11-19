@@ -21,7 +21,7 @@ ms.lastreviewed: 01/18/2019
 
 Azure Stack includes infrastructure monitoring capabilities that help you view health and alerts for an Azure Stack region. The **Region management** tile lists all the deployed regions of Azure Stack. It's pinned by default in the administrator portal for the Default Provider Subscription. The tile shows the number of active critical and warning alerts for each region. The tile is your entry point into the health and alert functionality of Azure Stack.
 
-![The Region Management tile in Azure Stack administrator portal](media/azure-stack-monitor-health/image1.png)
+![The Region Management tile in Azure Stack administrator portal](media/azure-stack-monitor-health/image-1.png)
 
 ## Understand health in Azure Stack
 
@@ -44,7 +44,7 @@ You can view the health state of components in the administrator portal and thro
 
 To view the health state in the portal, click the region that you want to view in the **Region management** tile. You can view the health state of infrastructure roles and of resource providers.
 
-![List of infrastructure roles](media/azure-stack-monitor-health/image2.png)
+![List of infrastructure roles](media/azure-stack-monitor-health/image-2.png)
 
 You can click a resource provider or infrastructure role to view more detailed information.
 
@@ -56,7 +56,7 @@ You can click a resource provider or infrastructure role to view more detailed i
 
 The list of active alerts for each Azure Stack region is available directly from the **Region management** blade. The first tile in the default configuration is the **Alerts** tile, which displays a summary of the critical and warning alerts for the region. You can pin the Alerts tile, like any other tile on this blade, to the dashboard for quick access.
 
-![Alerts tile that shows a warning in Azure Stack administrator portal](media/azure-stack-monitor-health/image3.png)
+![Alerts tile that shows a warning in Azure Stack administrator portal](media/azure-stack-monitor-health/image-3.png)
 
  To view a list of all active alerts for the region, select the top part of the **Alerts** tile. To view a filtered list of alerts (Critical or Warning), select either the **Critical** or **Warning** line item within the tile.
 

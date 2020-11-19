@@ -56,11 +56,11 @@ Your Azure Stack Hub deployment must have internet connectivity and be [registe
 
 4. Each line item also shows the currently available version. If more than one version of a Marketplace item is available, the **Version** column shows **Multiple**. You can click on each item to view its description and additional information, including its download size:
 
-   ![Add from Azure](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure1.png)
+   ![Add from Azure](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure-1.png)
 
 5. If the version of an item is shown as **Multiple**, you can select that item and then choose a specific version from the resulting version selector dropdown:
 
-   ![Add from Azure](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure3.png)
+   ![Add from Azure](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure-3.png)
 
 6. Select the item you want, and then select **Download**. Download times vary and depends on the network connectivity. After the download completes, you can deploy the new marketplace item as either an Azure Stack operator or a user.
 
@@ -96,7 +96,7 @@ You can [download the offline syndication tools here](https://aka.ms/azsSyndicat
        -TenantName mytenant.onmicrosoft.com -DownloadFolder 'F:\offlineSyndication'
     ```
 
-    Alternatively, if you've already logged in through Azure Powershell, you can pass in the Azure context:
+    Alternatively, if you've already logged in through Azure PowerShell, you can pass in the Azure context:
 
     ```powershell
     Add-AzureRmAccount -Environment AzureCloud -Tenant mytenant.onmicrosoft.com 
@@ -127,7 +127,7 @@ You can [download the offline syndication tools here](https://aka.ms/azsSyndicat
     .\Invoke-AzsMarketplaceUpload.ps1 -AzureStackCloudName "AzureStack-Admin" -AzureStackAdminARMEndpoint https://adminmanagement.<region>.<fqdn> -TenantName mytenant.onmicrosoft.com -DownloadFolder F:\offlineSyndication
     ```
 
-    Alternatively, you can set up the Azure Stack environment yourself in Azure Powershell, authenticate to the admin Resource Manager endpoint, and pass the context to the script:
+    Alternatively, you can set up the Azure Stack environment yourself in Azure PowerShell, authenticate to the admin Resource Manager endpoint, and pass the context to the script:
 
     ```powershell
     Add-AzureRmEnvironment -Name Redmond-Admin -ARMEndpoint https://adminmanagement.redmond.azurestack.corp.microsoft.com
