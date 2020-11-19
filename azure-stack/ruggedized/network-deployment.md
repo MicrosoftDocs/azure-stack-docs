@@ -24,7 +24,7 @@ To protect the Azure Stack solution, we have implemented access control lists (A
 This section describes how this security is implemented. 
 The table below shows the sources and destinations of every network inside the Azure Stack solution:
 
-![A diagram of access control lists on the TOR switches](media/network-deployment/acls.png)
+[![A diagram of access control lists on the TOR switches](media/network-deployment/acls.png)](media/network-deployment/acls.png#lightbox)
 
 The table below correlates the ACL references with the Azure Stack networks.
 
