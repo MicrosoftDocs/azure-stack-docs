@@ -14,7 +14,7 @@ ms.lastreviewed: 11/06/2020
 
 Azure Modular Datacenter (MDC) is based on Azure Stack Hub. MDC is a portable, rapidly deployable datacenter appropriate for supporting large-scale combat operations in temporary and fixed command posts.
 
-Azure Stack Hub is a horizontally and vertically scalable solution that provides multitenant, native hybrid cloud capabilities for information as a service (IaaS) and platform as a service (PaaS) services to environments at the edge. Azure Stack Hub supports a variety of modular scenarios for temporary and fixed command posts and expeditionary forces.
+Azure Stack Hub is a horizontally and vertically scalable solution that provides multitenant, native hybrid cloud capabilities for infrastructure as a service (IaaS) and platform as a service (PaaS) services to environments at the edge. Azure Stack Hub supports a variety of modular scenarios for temporary and fixed command posts and expeditionary forces.
 
 Azure Stack Hub is an integrated hardware and software appliance that's commercially available in a variety of capacities based on scaling through node scale-units. Azure Stack Hub is available with extensions, which include general-purpose graphics processing unit (GPU)-enabled configurations and expandable external storage.
 
