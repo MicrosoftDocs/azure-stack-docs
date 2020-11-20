@@ -76,6 +76,7 @@ If you user your own domain, run this command on the domain controller. If you'r
     Net use  \\baksdc1\adsso
     Xcopy  \\baksdc1\adsso\ktpass.exe 
 
+**Example**:
 ktpass /out <current.keytab> /princ <service/principal@CONTOSO.COM> /mapuser <Domain\account> /crypto all /pass <password> /ptype <KRB5_NT_PRINCIPAL>
 
 - <current.keytab> is file name of the keytab file, make sure you always name your keytab file as current.keytab
@@ -94,15 +95,61 @@ ktpass /out current.keytab /princ k8s/apiserver@BAKSDOM.NTTEST.MICROSOFT.COM /ma
     Note: if the target cluster is not created with the -enableADAuth option, installation of AD Authentication feature will fail.
 
     **Example**:
-    New-AksHciCluster -clusterName mynewcluster1 -kubernetesVersion v1.18.8 -controlPlaneNodeCount 1 -linuxNodeCount 1 -windowsNodeCount 0 -controlPlaneVmSize Standard_A2_v2 -loadBalancerVmSize Standard_A2_v2 -linuxNodeVmSize Standard_K8S3_v1 -windowsNodeVmSize Standard_K8S3_v1 -enableADAuth
+    ```powershell
+       New-AksHciCluster -clusterName mynewcluster1 -kubernetesVersion v1.18.8 -controlPlaneNodeCount 1 -linuxNodeCount 1 -windowsNodeCount 0 -controlPlaneVmSize Standard_A2_v2 -loadBalancerVmSize Standard_A2_v2 -linuxNodeVmSize Standard_K8S3_v1 -windowsNodeVmSize Standard_K8S3_v1 -enableADAuth
+       ```
 
-2. Install the AD Authentication feature. **Option 1**: If the cluster machine is domain-joined to the domain of the admin user, type the following:
-    Install-AksHciAdAuth -clusterName <mynewcluster> -keytab <.\current.keytab> -SPN <service/principal@CONTOSO.COM> -adminUser <CONTOSO\Bob>
-
-    <mynewcluster> : name of the target cluster created in your previous step
-    <adminUser> : The user name to be given cluster-admin permissions, replace CONTOSO with the name of your domain. Machine must be domain joined.
-    The name or AD group of the admin user
+2. You have two options to install the AD Authentication feature. **Option 1**: If the cluster machine is domain-joined to the domain of the admin user, type the following:
+    ```powershell
+     Install-AksHciAdAuth -clusterName <mynewcluster> -keytab <.\current.keytab> -SPN <service/principal@CONTOSO.COM> -adminUser <CONTOSO\Bob>
+   ```
+    * <mynewcluster> is the name of the target cluster created in your previous step
+    * <adminUser> is the user name to be given cluster-admin permissions, replace CONTOSO with the name of your domain. The machine must be domain-joined.
+    * The name or AD group of the admin user
 
     **Example**:
-
+    Install-AksHciAdAuth -clusterName mynewcluster1 -keytab .\current.keytab -SPN k8s/apiserver@BAKSDOM.NTTEST.MICROSOFT.COM  -adminUser BAKSDOM\abby
+   
     **Option 2**: If your cluster machine is not domain-joined, do the following:
+    ```powershell
+     Install-AksHciAdAuth -clusterName <mynewcluster> -keytab <.\current.keytab> -SPN <service/principal@CONTOSO.COM> -adminUserSID <SID of CONTOSO\Bob>
+   ```
+
+    * <mynewcluster> is the name of the target cluster created in your previous step
+    * <adminUserSID> is the SID of the user to be given cluster-admin permissions. To get the SID value, on a domain-joined machine, log on with the user and in an admin command prompt, and run whoami /user:
+    ```
+    C:\>whoami /user
+
+    USER INFORMATION
+    ----------------
+    User Name    SID
+    ============ =============================================
+    baksdom\abby S-1-5-21-3902202350-2488124873-408292158-1000
+```
+    **Example**:
+    ```powershell
+       Install-AksHciAdAuth -clusterName mynewcluster1 -keytab .\current.keytab -SPN k8s/apiserver@BAKSDOM.NTTEST.MICROSOFT.COM  -adminUserSID S-1-5-21-3902202350-2488124873-408292158-1000
+       ```
+**Note**: The Install-AksHciAdAuth command also supports user group and user group SID. Below is the list of supported options.
+-adminUser <String>
+ The user name to be given cluster-admin permissions. Machine must be domain joined.
+ 
+-adminGroup <String>
+ The group name to be given cluster-admin permissions. Machine must be domain joined.
+ 
+-adminUserSID <String>
+ The user SID to be given cluster-admin permissions.
+ 
+-adminGroupSID <String>
+ The group SID to be given cluster-admin permissions.
+
+## Step 3: Install the AD Authentication feature
+
+Run the following command to verify the webhook is successfully created
+.\kubectl.exe -kubeconfig.\ <mynewcluster> get pods -n=kube-system 
+Check for ad-auth webhook that it’s running.
+
+Run the following command to verify the secret is successfully created
+.\kubectl.exe -kubeconfig.\ <mynewcluster> get sectets -n=kube-system 
+
+Then, check for secret named “keytab”.
