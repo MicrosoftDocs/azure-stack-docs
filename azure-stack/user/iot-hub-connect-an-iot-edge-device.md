@@ -96,8 +96,8 @@ In this section, you deploy a new Linux VM, which will serve as the virtual IoT 
 
 In this section, you'll complete the VM certificate configuration required by the virtual IoT Edge device. Before running the script in each of the following sections, be sure to update the script placeholders to match your environment's configuration:
 
-| Placeholder | Example | Note |
-|-------------|---------|------|
+| Placeholder | Example | Description |
+|-------------|---------|-------------|
 | `<DEVICE-CA-CERT-NAME>` | `edged1cert`| The name you give the IoT Edge device CA certificate. |
 | `<IOT-HUB-HOSTNAME>`| `test-hub-1.mgmtiothub.region.mydomain.com`| Your IoT Hub host name. |
 | `<IOT-HUB-ROOT-CA>`| `root.cer`| The filename you give to the exported IoT Hub root CA. |
@@ -299,6 +299,8 @@ In this section, you'll complete the IoT Hub and VM configuration required by th
    ```
 
 ## Next steps
+
+The following are supplemental resources:
 
 - [Install the Azure IoT Edge runtime on Debian-based Linux systems](/azure/iot-edge/how-to-install-iot-edge-linux)
 - [Configure an IoT Edge device to act as a transparent gateway](/azure/iot-edge/how-to-create-transparent-gateway)
