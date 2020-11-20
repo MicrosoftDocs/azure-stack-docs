@@ -3,7 +3,7 @@ title: Migrate a cluster to Azure Stack HCI
 description: Learn how to migrate a cluster to Azure Stack HCI 
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 11/17/2020 
+ms.date: 11/20/2020 
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -37,17 +37,19 @@ There are several requirements and things to consider before you begin migration
 
 - Make note of the Hyper-V virtual switch name used by VMs on the source cluster. You must create the same virtual switch name for the Azure Stack HCI destination cluster "virtual machine network" prior to importing VMs.
 
+- Remove any ISO image files for your source VMs. This is done using Hyper-V Manager in **VM Properties** in the **Hardware section**. Click **Remove** for any virtual CD/DVD drives.
+
 - You must shutdown all VMs on the source cluster. This is required to ensure version control and state are maintained throughout the migration process.
 
 - Check if Azure Stack HCI supports your version of VMs to import. Use the PowerShell `Get-VMHostSupportedVersion` and `Get-VM` cmdlets to get your VM version information.
 
 - Backup all VMs on your source cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases.
 
+- Make a checkpoint of your source cluster VMs and domain controller in case you have to roll back to a prior state. This is not applicable for physical servers.
+
 - Ensure the maximum Jumbo frame sizes are the same between source and destination cluster storage networks, specifically the RDMA network adapters and their respective switch network ports to provide the most efficient end-to-end transfer packet size.
 
-- Remove any ISO image files for your source VMs. This is done using Hyper-V Manager in **VM Properties** in the **Hardware section**. Click **Remove** for any virtual CD/DVD drives.
 
-- Take a checkpoint snapshot of your source cluster VMs and domain controller in case you have to roll back to a prior state. This is not applicable for physical servers.
 
 - If possible, physically locate the source and destination clusters as close together as possible to facilitate the fastest transfer of VMs.
 
@@ -74,7 +76,7 @@ Use Windows Admin Center or Windows PowerShell to create the new cluster. For in
 
 The following PowerShell script `Robocopy_Remote_Server_.ps1` uses Robocopy to copy VM files and their dependent directories and metadata from the source cluster to the destination cluster. This script has been modified from  from the original script on TechNet at: [Robocopy Files to Remote Server Using PowerShell and RoboCopy](https://gallery.technet.microsoft.com/scriptcenter/Robocoy-Files-to-Remote-bdfc5154).
 
-The script creates a folder named `ISO` on the `C:` drive of each destination cluster server node, then copies all VM VHD, VHDX, and VMCX files to your destination cluster for each Cluster Shared Volume (CSV). One CSV is migrated at a time.
+The script copies all VM VHD, VHDX, and VMCX files to your destination cluster for a given Cluster Shared Volume (CSV). One CSV is migrated at a time.
 
 The migration script is run locally on each source cluster node to leverage the benefit of RDMA and fast network transfer. Let's begin:
 
@@ -142,7 +144,7 @@ Write-host " Copy Virtual Machines to $Dest_Server took $Time        ......" -fo
 
 A best practice is to create at least one Cluster Shared Volume (CSV) per cluster node to enable an even balance of VMs for each CSV owner for increased resiliency, performance, and scale of VM workloads. By default, this balance occurs automatically every five minutes and needs to be considered when using Robocopy between a source cluster node and the destination cluster node to ensure source and destination CSV owners match to provide the most optimal transfer path and speed.
 
-Perform the following steps on your Azure Stack HCI cluster to import, register, and start the VMs:
+Perform the following steps on your Azure Stack HCI cluster to import, make highly available, and start the VMs:
 
 1. Run the following cmdlet to show all CSV owner nodes:
 
