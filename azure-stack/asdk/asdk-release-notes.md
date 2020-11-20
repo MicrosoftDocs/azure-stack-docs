@@ -22,7 +22,7 @@ This article provides information about changes, fixes, and known issues in the 
 Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media/asdk-release-notes/feed-icon-14x14.png) [RSS feed](https://aka.ms/asdkrss).
 
 ::: moniker range="azs-2008"
-## Build 1.2008.13.88
+## Build 1.2008.0.59
 
 ### New features
 
