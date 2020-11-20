@@ -48,7 +48,7 @@ You can skip this step if the keytab file corresponding to the api-server AD acc
     * You can download the RSAT for Windows 10 package at [Microsoft](https://www.microsoft.com/en-us/download/details.aspx?id=45520). Select the package related to your current build, such as WindowsTH-RSAT_WS_1803-x64.msu.
     * Or, if your client machine is newer than Windows 10 October 2018 Update, you have an option to go to **Manage optional features** in **Settings** and click **Add a feature** to see the list of available RSAT tools. 
     * Select and install **RSAT: Server Manager** and **RSAT: Active Directory Domain Services and Lightweight Directory Services Tools**.
-    * Once you complete the installation, New-ADUser command will be available in your Powershell window.
+    * Once you complete the installation, the New-ADUser command will be available in your Powershell window.
 
  ```powershell
    New-ADUser -Name "<apiserver>" 
@@ -78,8 +78,10 @@ You should create one keytab file for each target cluster. Use the example below
 
 If you user your own domain, run this command on the domain controller. If you're using the provided test domain, you need to log on to the domain-joined client machine and copy ktpass.exe from (\\baksdc1\adsso).  
 
-    Net use  \\baksdc1\adsso
-    Xcopy  \\baksdc1\adsso\ktpass.exe 
+```markdown
+Net use  \\baksdc1\adsso
+Xcopy  \\baksdc1\adsso\ktpass.exe 
+```
 
 **Example**:
 ```yml
@@ -100,16 +102,18 @@ ktpass /out current.keytab /princ k8s/apiserver@BAKSDOM.NTTEST.MICROSOFT.COM /ma
 
 ### Step 1: Create the target cluster
 
-To create the target cluster using the -enableADAuth option, type the following:  
-* Deploy AKSHCI clusters with instructions at [Cosine MsK8s - Deploying Kubernetes Clusters](https://osgwiki.com/wiki/Cosine_MsK8s_-_Deploying_Kubernetes_Clusters).
+You create the target cluster using the -enableADAuth option.
+  
+* To deploy AKSHCI clusters, see the instructions at [Cosine MsK8s - Deploying Kubernetes Clusters](https://osgwiki.com/wiki/Cosine_MsK8s_-_Deploying_Kubernetes_Clusters).  
 * Create a target cluster with 
 
 Note: If the target cluster is not created with the -enableADAuth option, installation of AD Authentication feature will fail.
 
 **Example**:
-    ```powershell
-       New-AksHciCluster -clusterName mynewcluster1 -kubernetesVersion v1.18.8 -controlPlaneNodeCount 1 -linuxNodeCount 1 -windowsNodeCount 0 -controlPlaneVmSize Standard_A2_v2 -loadBalancerVmSize Standard_A2_v2 -linuxNodeVmSize Standard_K8S3_v1 -windowsNodeVmSize Standard_K8S3_v1 -enableADAuth
-       ```
+
+```powershell
+New-AksHciCluster -clusterName mynewcluster1 -kubernetesVersion v1.18.8 -controlPlaneNodeCount 1 -linuxNodeCount 1 -windowsNodeCount 0 -controlPlaneVmSize Standard_A2_v2 -loadBalancerVmSize Standard_A2_v2 -linuxNodeVmSize Standard_K8S3_v1 -windowsNodeVmSize Standard_K8S3_v1 -enableADAuth
+```
 
 ### Step 2: Install the AD Authentication feature
 
@@ -121,9 +125,9 @@ You have two options to install the AD Authentication feature.
      Install-AksHciAdAuth -clusterName <mynewcluster> -keytab <.\current.keytab> -SPN <service/principal@CONTOSO.COM> -adminUser <CONTOSO\Bob>
    ```
     
-* <mynewcluster> is the name of the target cluster created in your previous step
- * <adminUser> is the user name to be given cluster-admin permissions, replace CONTOSO with the name of your domain. The machine must be domain-joined.
- * The name or AD group of the admin user
+* **mynewcluster** is the name of the target cluster created in your previous step.
+* **adminUser** is the user name to be given cluster-admin permissions. Replace CONTOSO with the name of your domain. The machine must be domain-joined.
+ *** adminUser** is the name or AD group of the admin user.
 
 **Example**:
 ```powershell
@@ -135,47 +139,51 @@ Install-AksHciAdAuth -clusterName mynewcluster1 -keytab .\current.keytab -SPN k8
      Install-AksHciAdAuth -clusterName <mynewcluster> -keytab <.\current.keytab> -SPN <service/principal@CONTOSO.COM> -adminUserSID <SID of CONTOSO\Bob>
 ```
 
-* <mynewcluster> is the name of the target cluster created in your previous step
-* <adminUserSID> is the SID of the user to be given cluster-admin permissions. To get the SID value, on a domain-joined machine, log on with the user and in an admin command prompt, and run whoami /user:
+* **mynewcluster** is the name of the target cluster created in your previous step.
+* **adminUserSID** is the SID of the user to be given cluster-admin permissions. To get the SID value, on a domain-joined machine, log on with the user and in an admin command prompt, and run whoami /user:
 
-    C:\>whoami /user
+```markdown
+C:\>whoami /user
     ----------------
     User Name    SID
     ============ =============================================
     baksdom\abby S-1-5-21-3902202350-2488124873-408292158-1000
+```
 
-    **Example**:
-    ```powershell
-       Install-AksHciAdAuth -clusterName mynewcluster1 -keytab .\current.keytab -SPN k8s/apiserver@BAKSDOM.NTTEST.MICROSOFT.COM  -adminUserSID S-1-5-21-3902202350-2488124873-408292158-1000
-       ```
+**Example**:
+```powershell
+ Install-AksHciAdAuth -clusterName mynewcluster1 -keytab .\current.keytab -SPN k8s/apiserver@BAKSDOM.NTTEST.MICROSOFT.COM  -adminUserSID S-1-5-21-3902202350-2488124873-408292158-1000
+```
 
-**Note**: The Install-AksHciAdAuth command also supports user group and user group SID. Below is the list of supported options.  
+**Note**: The Install-AksHciAdAuth command also supports user group and user group SID. The supported options are listed below.  
 
--adminUser <String>
+* -adminUser <String>
  The user name to be given cluster-admin permissions. Machine must be domain joined.
  
--adminGroup <String>
+* -adminGroup <String>
  The group name to be given cluster-admin permissions. Machine must be domain joined.
  
--adminUserSID <String>
+* -adminUserSID <String>
  The user SID to be given cluster-admin permissions.
  
--adminGroupSID <String>
+* -adminGroupSID <String>
  The group SID to be given cluster-admin permissions.
 
 ### Step 3: Verify the webhook and the secret are successfully created
 
 Run the following command to verify the webhook is successfully created: 
 
-.\kubectl.exe -kubeconfig.\ <mynewcluster> get pods -n=kube-system 
-
-Check the ad-auth webhook to make sure it’s running.
+```markdown
+.\kubectl.exe -kubeconfig.\ <mynewcluster> get pods -n=kube-system
+```
+Then, check the ad-auth webhook to make sure it’s running.
 
 Run the following command to verify the secret is successfully created:
 
-.\kubectl.exe -kubeconfig.\ <mynewcluster> get sectets -n=kube-system 
-
-Check that the secret is named "keytab".
+```markdown
+.\kubectl.exe -kubeconfig.\ <mynewcluster> get sectets -n=kube-system
+```
+Then, check that the secret is named "keytab".
 
 ### Step 4: Generate the AD kubeconfig and copy the AD kubeconfig and required binaries to your client machine
 
@@ -204,13 +212,15 @@ Create a local folder, for example, c:\adsso, and then copy the 3 required files
 In the previously created local folder, run:
 
  .\kubectl.exe get pods –kubeconfig=.\mynewcluster1config --all-namespaces
+
 If the AD SSO is properly set up, you’ll see the list of pods within the target cluster, for example:
 
-NAMESPACE     NAME                                           READY   STATUS    RESTARTS   AGE
-kube-system   ad-auth-webhook-9nd6r                          1/1     Running   0          21h
-kube-system   coredns-66bff467f8-btcmn                       1/1     Running   0          25h
-kube-system   coredns-66bff467f8-cj4wn                       1/1     Running   0          25h
-kube-system   csi-msk8scsi-controller-6dd6d85dd5-vdt7s       5/5     Running   0          25h
+|Namespace |Name                  |Ready| Status | Restarts | Age |
+|----------|-----------|------------|----------|-----------|------------|
+|kube-system |ad-auth-webhook-9nd6r           |1/1 | Running | 0 | 21h|
+|kube-system| coredns-66bff467f8-btcmn        |1/1 | Running | 0 | 25h |
+|kube-system| coredns-66bff467f8-cj4wn        |1/1 | Running | 0 | 25h |
+|kube-system| csi-msk8scsi-controller-6dd6d85dd5-vdt7s  |5/5 | Running | 0 | 25h|
 
 At the end of these steps, the AD Authentication webhook and AD client plug-ins are installed on the cluster, and you can manage the target cluster from the domain-joined client machine using the mapped SSO credential. 
 
@@ -238,16 +248,20 @@ apiVersion: rbac.authorization.k8s.io/v1
 In this example, we are creating a role binding for admin user “Bob”, which could also be an admin group. A prefix microsoft:activedirectory is added for AD names and groups, which is used to convert the AD group names to SIDs.
 
 2. Convert the yaml from name to SID and deploy yaml.
-1. 
-kubectl-adsso.exe nametosid <rbac.yml>
 
-Note: For modifying the yaml, run the toll in reverse to convert SIDs to names:  
+    ```markdown
+    kubectl-adsso.exe nametosid <rbac.yml>
+```
 
-kubectl-adsso.exe sidtoname <rbac.yml>
+    Note: For modifying the yaml, run the toll in reverse to convert SIDs to names:  
+
+    ```markdown
+    kubectl-adsso.exe sidtoname <rbac.yml>
+```
 
 3. Log into client machine as Bob and connect to the api-server.
 
-Run kubectl get pods –n=kube-system –kubeconfig=.\mynewcluster1config
+    Run kubectl get pods –n=kube-system –kubeconfig=.\mynewcluster1config
 
 ### (Optional) Bind AD Group or AD Name to a Namespace
 
