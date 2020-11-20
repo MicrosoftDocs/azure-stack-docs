@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ---
 
 # Release notes for Azure Stack HCI Public Preview
@@ -49,7 +49,7 @@ Microsoft is not currently aware of any issues with this update.
 The November 17, 2020 security update (KB4586852) for [Azure Stack HCI preview](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
 
 ### File information
-For a list of the files that are provided in this update (OS Build 17784.1379), download the file information for cumulative update 4586852.
+For a list of the files that are provided in this update (OS Build 17784.1381), download the [file information for cumulative update 4586852](https://download.microsoft.com/download/5/c/6/5c6f8c37-3e0b-4239-a6d9-9c709e18e869/4586852.csv).
 
    > [!NOTE]
    > Some files erroneously have "Not applicable" in the "File version" column of the CSV file. This might lead to false positives or false negatives when using some third-party scan detection tools to validate the build.
