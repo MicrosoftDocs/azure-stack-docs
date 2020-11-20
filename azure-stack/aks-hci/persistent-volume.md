@@ -95,8 +95,8 @@ To create a pod with the above yaml definition, run:
 
 Kubectl create -f winwebserver.yaml 
 ```
-
-To make sure the pod is running, run the following command. Wait a few minutes until the pod is in a running state, since pulling the image takes time.
+ 
+To make sure the pod is running, run the following command. Wait a few minutes until the pod is in a running state, since pulling the image takes time. 
 
 kubectl get pods -o wide 
 ```
