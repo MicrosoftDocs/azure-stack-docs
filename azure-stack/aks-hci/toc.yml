@@ -25,8 +25,6 @@
       href: deploy-windows-application.md
     - name: Use Linux containers
       href: deploy-linux-application.md
-    - name: Use Active Directory single sign-on in AKS for Azure Stack HCI
-      href: setup-AD-SSO.md
 - name: Concepts
   items:
   - name: Azure Kubernetes on Azure Stack HCI Concepts
