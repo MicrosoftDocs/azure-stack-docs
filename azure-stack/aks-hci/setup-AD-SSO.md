@@ -33,18 +33,18 @@ On the domain, bAKSDom.nttest.microsoft.com, do the following:
 2.	Click **Join this device to a local Active Directory domain**.
 3.	Enter “BAKSDOM.nttest.microsoft.com” in the **Domain name** and click **Next**.
 4.	Enter “bugbash” as the user name and “Sec!ADSSO1” as the password. Click **OK**.
-5.	Restart the client machine and log on with BAKSDOM\bugbash account.
+5.	Restart the client machine and log on with BAKSDOM\bugbash account.  
 
 ## Part 1: Create the AD account and generate a keytab file
 
-YOu can skip this step if the keytab file corresponding to the api-server AD account is already available.
+You can skip this step if the keytab file corresponding to the api-server AD account is already available.
 
 ### Step 1: Create the AD account for the api-server
 
-**Note**: There needs to be one account for each target cluster.
+**Note**: You must have one AD account for each target cluster.
 
-1. If you have access to your domain controller, log on to your domain server and run the New-ADUser command.
-2. If you use the provided test domain and your client machine is not a Server SKU, you need to log on to your client machine and enable the optional feature, RSAT for Windows 10. 
+1. If you have access to your domain controller, log in to your domain server and run the New-ADUser command.
+2. If you use the provided test domain and your client machine is not a Server SKU, you need to log in to your client machine and enable the optional feature, RSAT for Windows 10. 
     * You can download the RSAT for Windows 10 package at [Microsoft](https://www.microsoft.com/en-us/download/details.aspx?id=45520). Select the package related to your current build, such as WindowsTH-RSAT_WS_1803-x64.msu.
     * Or, if your client machine is newer than Windows 10 October 2018 Update, you have an option to go to **Manage optional features** in **Settings** and click **Add a feature** to see the list of available RSAT tools. 
     * Select and install **RSAT: Server Manager** and **RSAT: Active Directory Domain Services and Lightweight Directory Services Tools**.
@@ -58,10 +58,10 @@ YOu can skip this step if the keytab file corresponding to the api-server AD acc
         -Enabled 1
    ```
 
-“<apiserver>” is the name of the AD account for your api-server
-“<K8s/apiserver>” is the a service principal name corresponding to the api-server AD account
-“<password>” is the password in plain text
-The encryption type can be either AES128 bit or AES 256 bit.
+* **apiserver** is the name of the AD account for your api-server  
+* **K8s/apiserver** is the a service principal name corresponding to the api-server AD account  
+* **password** is the password in plain text  
+* **encryption type** can be either AES128 bit or AES 256 bit  
 
 **Example**:
 ```powershell
@@ -69,33 +69,41 @@ New-ADUser -Name "apiserver_acct" -ServicePrincipalNames "k8s/apiserver" -Accoun
 ```
 
 You can verify the SPN for the created user account with the following command:
+
 setspn -l baksdom\apiserver_acct
 
 ### Step 2: Generate the keytab file
 
-You should create one keytab file for each target cluster. Here's an example for using ktpass to generate the keytab file.
-If you user your own domain, run this command on the domain controller. If you're using the provided test domain, you need to log on to the domain-joined client machine and copy ktpass.exe from (\\baksdc1\adsso).
+You should create one keytab file for each target cluster. Use the example below for using ktpass to generate the keytab file. 
+
+If you user your own domain, run this command on the domain controller. If you're using the provided test domain, you need to log on to the domain-joined client machine and copy ktpass.exe from (\\baksdc1\adsso).  
+
     Net use  \\baksdc1\adsso
     Xcopy  \\baksdc1\adsso\ktpass.exe 
 
 **Example**:
+```yml
 ktpass /out <current.keytab> /princ <service/principal@CONTOSO.COM> /mapuser <Domain\account> /crypto all /pass <password> /ptype <KRB5_NT_PRINCIPAL>
+```
 
-- <current.keytab> is file name of the keytab file, make sure you always name your keytab file as current.keytab
-- Replace principal with principal created in the previous step and @CONTOSO.COM with your domain name, keep the rest as-is and make sure the FQDN domain name is all caps
-- Replace account with the name of the api-server account created in the previous step
-- Password is same password that was used to create the AD account
+* **current.keytab** is file name of the keytab file, make sure you always name your keytab file as current.keytab
+* Replace principal with principal created in the previous step and @CONTOSO.COM with your domain name, keep the rest as-is and make sure the FQDN domain name is all caps
+* Replace account with the name of the api-server account created in the previous step
+* **Password** is same password that was used to create the AD account
 
-**Example**:
+**Example**: 
+```yml
 ktpass /out current.keytab /princ k8s/apiserver@BAKSDOM.NTTEST.MICROSOFT.COM /mapuser baksdom\apiserver_acct /crypto all /pass p@$$w0rd /ptype KRB5_NT_PRINCIPAL
-
+```
+  
 ## Part 2: Install the AD Authentication feature
 
 ### Step 1: Create the target cluster
 
-To create the target cluster using the -enableADAuth option, type the following:
+To create the target cluster using the -enableADAuth option, type the following:  
 * Deploy AKSHCI clusters with instructions at [Cosine MsK8s - Deploying Kubernetes Clusters](https://osgwiki.com/wiki/Cosine_MsK8s_-_Deploying_Kubernetes_Clusters).
 * Create a target cluster with 
+
 Note: If the target cluster is not created with the -enableADAuth option, installation of AD Authentication feature will fail.
 
 **Example**:
@@ -131,8 +139,6 @@ Install-AksHciAdAuth -clusterName mynewcluster1 -keytab .\current.keytab -SPN k8
 * <adminUserSID> is the SID of the user to be given cluster-admin permissions. To get the SID value, on a domain-joined machine, log on with the user and in an admin command prompt, and run whoami /user:
 
     C:\>whoami /user
-
-    USER INFORMATION
     ----------------
     User Name    SID
     ============ =============================================
@@ -142,7 +148,9 @@ Install-AksHciAdAuth -clusterName mynewcluster1 -keytab .\current.keytab -SPN k8
     ```powershell
        Install-AksHciAdAuth -clusterName mynewcluster1 -keytab .\current.keytab -SPN k8s/apiserver@BAKSDOM.NTTEST.MICROSOFT.COM  -adminUserSID S-1-5-21-3902202350-2488124873-408292158-1000
        ```
-**Note**: The Install-AksHciAdAuth command also supports user group and user group SID. Below is the list of supported options.
+
+**Note**: The Install-AksHciAdAuth command also supports user group and user group SID. Below is the list of supported options.  
+
 -adminUser <String>
  The user name to be given cluster-admin permissions. Machine must be domain joined.
  
@@ -157,12 +165,14 @@ Install-AksHciAdAuth -clusterName mynewcluster1 -keytab .\current.keytab -SPN k8
 
 ### Step 3: Verify the webhook and the secret are successfully created
 
-Run the following command to verify the webhook is successfully created:
+Run the following command to verify the webhook is successfully created: 
+
 .\kubectl.exe -kubeconfig.\ <mynewcluster> get pods -n=kube-system 
 
 Check the ad-auth webhook to make sure it’s running.
 
 Run the following command to verify the secret is successfully created:
+
 .\kubectl.exe -kubeconfig.\ <mynewcluster> get sectets -n=kube-system 
 
 Check that the secret is named "keytab".
@@ -170,9 +180,13 @@ Check that the secret is named "keytab".
 ### Step 4: Generate the AD kubeconfig and copy the AD kubeconfig and required binaries to your client machine
 
 To generate the AD kubeconfig, type the following:
+
+```powershell
 Get-AksHciCredential -clusterName <mynewcluster> -outputLocation <outputfilepath> -adAuth
+```
 
 Copy the following three files to your domain-joined client machine:
+
 * The AD kubeconfig file in $HOME/.kube/ or at the specified outputfilepath
 * kubectl.exe under $env:ProgramFiles\AksHci
 * kubectl-adsso.exe under $env:ProgramFiles\AksHci
@@ -182,10 +196,13 @@ AD kubeconfig is now a secret and can be safely saved and transported in clearte
 ## Part 3: Client Machine Setup
 
 **Step 1**: Copy the AD kubeconfig and required binaries to your client machine:
-Create a local folder, for example, c:\adsso, and then copy the 3 required files. The 3 files are kubectl.exe, kubectl-adsso.exe, and AD kubeconfig file (such as, mynewcluster1config)
 
-**Step 2**: Test the connection to the api-server via kubectl using a SSO credential
+Create a local folder, for example, c:\adsso, and then copy the 3 required files. The 3 files are kubectl.exe, kubectl-adsso.exe, and AD kubeconfig file (such as, mynewcluster1config).
+
+**Step 2**: Test the connection to the api-server via kubectl using a SSO credential.
+
 In the previously created local folder, run:
+
  .\kubectl.exe get pods –kubeconfig=.\mynewcluster1config --all-namespaces
 If the AD SSO is properly set up, you’ll see the list of pods within the target cluster, for example:
 
@@ -221,9 +238,11 @@ apiVersion: rbac.authorization.k8s.io/v1
 In this example, we are creating a role binding for admin user “Bob”, which could also be an admin group. A prefix microsoft:activedirectory is added for AD names and groups, which is used to convert the AD group names to SIDs.
 
 2. Convert the yaml from name to SID and deploy yaml.
+1. 
 kubectl-adsso.exe nametosid <rbac.yml>
 
-Note: For modifying the yaml, run the toll in reverse to convert SIDs to names
+Note: For modifying the yaml, run the toll in reverse to convert SIDs to names:  
+
 kubectl-adsso.exe sidtoname <rbac.yml>
 
 3. Log into client machine as Bob and connect to the api-server.
@@ -231,11 +250,12 @@ kubectl-adsso.exe sidtoname <rbac.yml>
 Run kubectl get pods –n=kube-system –kubeconfig=.\mynewcluster1config
 
 ### (Optional) Bind AD Group or AD Name to a Namespace
+
 * SREGroup is a pre-existing group in CONTOSO Active Directory
 * A namespace called myTest namespace exists
 * The role bindings are valid only within the myTest namespace
 
-1. Create a new role in myTest namespace. To do this, type:
+1. To create a new role in myTest namespace, type:
 
 ```yaml
 kind: Role
@@ -273,6 +293,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 ```
 
 ### Install and reinstall AD SSO
+
 Note that this step doesn’t require the cluster to restart.
 
 ```powershell
