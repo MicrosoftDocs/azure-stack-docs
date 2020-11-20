@@ -8,6 +8,7 @@ ms.date: 09/22/2020
 #Customer intent: As an IT Pro, I want AKS on Azure Stack HCI so that I can easily deploy Kubernetes on-premises to orchestrate my containerized workloads.
 ---
 # What is Azure Kubernetes Service on Azure Stack HCI?
+> Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
 
 Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of Azure Kubernetes Service (AKS), which automates running containerized applications at scale. Azure Kubernetes Service is now in preview on Azure Stack HCI and Windows Server 2019 Datacenter, making it quicker to get started hosting Linux and Windows containers in your datacenter.
 
@@ -104,7 +105,7 @@ Your machine running the Windows Admin Center gateway has the following requirem
 - Registered with Azure
 - In the same domain as the Azure Stack HCI or Windows Server 2019 Datacenter cluster
 
-### On the Azure Stack HCI cluster that hosts Azure Kubernetes Service
+### On the Azure Stack HCI cluster or Windows Server 2019 Datacenter failover cluster that hosts Azure Kubernetes Service
 
 The Azure Stack HCI cluster or Windows Server 2019 Datacenter failover cluster has the following requirements:
 

@@ -58,7 +58,7 @@ The following requirements apply to an Azure Stack HCI cluster as well as a Wind
  
  - For this preview release, we provide only single VLAN support for the entire deployment.
 
- - For this preview release, we have proxy support thats limited to the following scenarios:
+ - For this preview release, we have limited proxy support for Kubernetes clusters created through PowerShell.
 
 ### Network port and URL requirements 
 
