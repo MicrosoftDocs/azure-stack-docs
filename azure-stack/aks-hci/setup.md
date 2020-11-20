@@ -50,10 +50,6 @@ This set up can be done using the new Azure Kubernetes Service tool.
 
 This tool will install and download the necessary packages, as well as create a management cluster that provides core Kubernetes services and orchestrates application workloads. 
 
-Before using this tool, open PowerShell and run the following command on each node to ensure Azure sign-in is not blocked by any machine settings:
-```PowerShell
-az login
-```
 
 Now that we've verified our system settings, let's get started: 
 1. Select **Set up** to launch the set up wizard.
@@ -66,10 +62,9 @@ Now that we've verified our system settings, let's get started:
 
     ![Illustrates the Host configuration step of the Azure Kubernetes Service host wizard.](.\media\setup\host-configuration.png)
 
-5. Register with Azure and choose to send diagnostic data to Microsoft in the **Azure registration** step. While this page asks for an Azure subscription and resource group, there is no cost for setting up and using Azure Kubernetes Service in public preview. The diagnostic data you send to Microsoft will be used to help keep the service secure and up to date, troubleshoot problems, and make product improvements. After you've made your selections, select **Next**.
-6. Review all of your selections so far in the **Review + create** step. If you're satisfied with your selections, select **Set up** to begin host setup. 
-7. On the **Setup progress** page, you can watch the progress of your host setup. At this point, you are welcome to open Windows Admin Center in a new tab and continue your management tasks. 
-8. If the deployment succeeds, you will be presented with a management dashboard where you can create and manage your Kubernetes clusters. 
+5. Review all of your selections so far in the **Review + create** step. If you're satisfied with your selections, select **Set up** to begin host setup. 
+6. On the **Setup progress** page, you can watch the progress of your host setup. At this point, you are welcome to open Windows Admin Center in a new tab and continue your management tasks. 
+7. If the deployment succeeds, you will be presented with a management dashboard where you can create and manage your Kubernetes clusters. 
 
 ## Next steps
 
