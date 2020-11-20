@@ -78,11 +78,9 @@ You should create one keytab file for each target cluster. Use the example below
 
 If you user your own domain, run this command on the domain controller. If you're using the provided test domain, you need to log on to the domain-joined client machine and copy ktpass.exe from (\\baksdc1\adsso).  
 
+
 Net use  \\baksdc1\adsso 
-```
-
 Xcopy  \\baksdc1\adsso\ktpass.exe 
-
 ```
 
 **Example**:
@@ -144,7 +142,7 @@ Install-AksHciAdAuth -clusterName <mynewcluster> -keytab <.\current.keytab> -SPN
 * **mynewcluster** is the name of the target cluster created in your previous step.
 * **adminUserSID** is the SID of the user to be given cluster-admin permissions. To get the SID value, on a domain-joined machine, log on with the user and in an admin command prompt, and run whoami /user:
 
-```markdown
+```
 C:\>whoami /user
     ----------------
     User Name    SID
@@ -177,12 +175,14 @@ Run the following command to verify the webhook is successfully created:
 
 .\kubectl.exe -kubeconfig.\ <mynewcluster> get pods -n=kube-system
 ```
+ 
 Then, check the ad-auth webhook to make sure it’s running.
-
+ 
 Run the following command to verify the secret is successfully created:
-
+ 
 .\kubectl.exe -kubeconfig.\ <mynewcluster> get sectets -n=kube-system
 ```
+ 
 Then, check that the secret is named "keytab".
 
 ### Step 4: Generate the AD kubeconfig and copy the AD kubeconfig and required binaries to your client machine
@@ -226,9 +226,9 @@ At the end of these steps, the AD Authentication webhook and AD client plug-ins 
 
 ### Modify role bindings
 
-By default, the command, Install-AksHciAdAuth, will generate the role binding for the specified user. But users can further modify the role bindings for more users or user groups using the following steps:
+By default, the command, `Install-AksHciAdAut`, will generate the role binding for the specified user. But users can further modify the role bindings for more users or user groups using the following steps:
 
-1. Create a role binding for the admin user or admin group.
+1. Create a role binding for the admin user or admin group. 
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -250,11 +250,12 @@ In this example, we are creating a role binding for admin user “Bob”, which 
 2. Convert the yaml from name to SID and deploy yaml.
 
     ```
-    kubectl-adsso.exe nametosid <rbac.yml>
+    kubectl-adsso.exe nametosid <rbac.yml> 
 ```
+ 
 
 For modifying the yaml, run the toll in reverse to convert SIDs to names:  
-
+ 
     ```
     kubectl-adsso.exe sidtoname <rbac.yml>
 ```
