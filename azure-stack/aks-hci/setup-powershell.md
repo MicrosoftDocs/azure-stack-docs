@@ -357,16 +357,10 @@ Get-AksHciLogs
 
 ## Update to the latest version of Azure Kubernetes Service on Azure Stack HCI
 
-To update to the latest version of Azure Kubernets Service on Azure Stack HCI, run the following command. This update command will only update the Azure Kubernetes Service host and the platform.
+To update to the latest version of Azure Kubernets Service on Azure Stack HCI, run the following command. The update command only works if you have installed the Oct release. It will not work for releases older than the Oct release. This update command updates the Azure Kubernetes Service host and the on premise Microsoft operated cloud platform. For this preview release, the Kubernetes version and AKS host OS version still remain the same. This command does not upgrade any existing workload clusters. New workload clusters created after updating the AKS host will differ from existing workload clusters in terms of Windows node OS version and Kubernetes version.
 
    ```powershell
    Update-AksHci
-   ```
-
-To update your deployed Kubernetes clusters, run the following command.
-
-   ```powershell
-   Update-AksHciCluster -clusterName <String>
    ```
 
 ## Reinstall Azure Kubernetes Service on Azure Stack HCI
