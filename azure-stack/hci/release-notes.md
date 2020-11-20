@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/20/2020
+ms.date: 11/23/2020
 ---
 
 # Release notes for Azure Stack HCI Public Preview
@@ -15,7 +15,7 @@ ms.date: 11/20/2020
 
 This article describes the contents of Azure Stack HCI Public Preview update packages.
 
-## November 17, 2020 Preview Update (KB4586852)
+## November 23, 2020 Preview Update (KB4586852)
 
 This update includes improvements and fixes for the latest release of Azure Stack HCI. 
 
@@ -46,7 +46,7 @@ This non-security update includes quality improvements. Key changes include:
 Microsoft is not currently aware of any issues with this update.
 
 ### How to get this update 
-The November 17, 2020 security update (KB4586852) for [Azure Stack HCI preview](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
+The November 23, 2020 security update (KB4586852) for [Azure Stack HCI preview](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
 
 ### File information
 For a list of the files that are provided in this update (OS Build 17784.1381), download the [file information for cumulative update 4586852](https://download.microsoft.com/download/5/c/6/5c6f8c37-3e0b-4239-a6d9-9c709e18e869/4586852.csv).
