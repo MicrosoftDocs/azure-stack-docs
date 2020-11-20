@@ -49,6 +49,8 @@ landingContent:
             url: deploy-windows-application.md
           - text: Use Linux containers
             url: deploy-linux-application.md
+          - text: Use Active Directory credentials in AKS for Azure Stack HCI
+            url: setup-AD-SSO.md
       - linkListType: how-to-guide
         links:
           - text: Adapt apps for mixed-OS Kubernetes clusters
