@@ -109,19 +109,31 @@ The control plane nodes and the worker nodes must be scaled independently.
 
 ## Step 3: Upgrade Kubernetes version
 
-To see the current Kubernetes version you're running, run the following command.
+To see the list of available Kubernetes versions, run the following command.
 
 ```powershell
 Get-AksHciKubernetesVersion
 ```
 
-To upgrade to the next Kubernetes version, run the following command.
+To update to the next Kubernetes version, run the following command.
 
 ```powershell
 Update-AksHciCluster -clusterName
+                     [-patch]
 ```
+Every Kubernetes version has a major release, a minor version and a patch version. For example, in v1.18.6, 1 is the major release, 18 is the minor version and 6 is the patch version. Over time, AKS-HCI will support 1 major release, 3 minor releases and 2 patches per minor release for a total of 6 supported versions. However, for this preview release, AKS-HCI supports a total of 4 versions - v1.16.10, v1.16.15, v1.17.11, v1.18.8. 
+When the parameter `patch` is added while running `Update-AksHciCluster`, the command upgrades to the next patch version (if any) for the minor version. When the command is run without the parameter `patch`, the default upgrade experience is to the next minor release. To make this easier, following is a table that contains all possible update experiences:
 
-If you want to use Windows nodes, the minimum required version is v1.18.6.
+| Current release           | Kubernetes updated version without -patch         | Kubernetes updated version with -patch
+| ---------------------------- | ------------ | -------------------------------- |
+| v1.16.10           |     v1.17.11      | v1.16.15
+| v1.16.15            | v1.17.11 | in place addon upgrade
+| v1.17.11           |  v1.18.8          | in place addon upgrade
+| v1.18.8             | in place addon upgrade   | in place addon upgrade
+
+In place addon upgrade updates all the Kubernetes addons like CSI that AKS-HCI manages for you. This upgrade does not change the OS version of the node. It also does not change the Kubernetes version.
+
+It is important to note here that if you want to use Windows nodes, the minimum required version is v1.18.8. 
 
 ## Step 4: Access your clusters using kubectl
 
