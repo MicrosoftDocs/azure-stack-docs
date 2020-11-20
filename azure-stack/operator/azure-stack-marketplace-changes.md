@@ -3,9 +3,9 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 11/09/2020
+ms.date: 11/19/2020
 ms.author: sethm
-ms.reviewer: ihcherie
+ms.reviewer: gara
 ms.lastreviewed: 05/28/2020
 
 # Intent: As an Azure Stack Hub operator, I want to know what's new or changed in Azure Stack Hub Marketplace so I can stay up to date.
@@ -165,6 +165,16 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Updated marketplace items
 
+- 11/18/2020: SQL Server 2019 Standard on Windows Server 2019 - Bring your own license - version 15.0.20201015
+- 11/18/2020: SQL Server 2019 Standard on Windows Server 2019 - Pay as you go - version 15.0.20201015
+- 11/18/2020: Free SQL Server License: SQL 2019 Developer on Windows Server 2019 - Bring your own license - version 15.0.20201015
+- 11/18/2020: Free SQL Server License: SQL 2019 Developer on Windows Server 2019 - Pay as you go - version 15.0.20201015
+- 11/18/2020: SQL Server 2019 Enterprise on Windows Server 2019 - Bring your own license - version 15.0.20201015
+- 11/18/2020: SQL Server 2019 Enterprise on Windows Server 2019 - Pay as you go - version 15.0.20201015
+- 11/17/2020: Azure Monitor, Update and Configuration Management - version 1.13.27
+- 11/17/2020: Azure Monitor Dependency Agent - version 9.10.6.11730
+- 11/17/2020: Azure Monitor Dependency Agent for Linux VMs - version 9.10.6.11730
+- 11/17/2020: Azure Monitor, Update and Configuration Management - version 1.0.18053.0
 - 11/05/2020: SQL Server 2017 Standard on Windows Server 2016 - Bring your own license - version 14.0.20201015
 - 11/05/2020: SQL Server 2017 Standard on Windows Server 2016 - Pay as you go - version 14.0.20201015
 - 11/05/2020: SQL Server 2017 Enterprise Windows Server 2016 - Bring your own license - version 14.0.20201015
