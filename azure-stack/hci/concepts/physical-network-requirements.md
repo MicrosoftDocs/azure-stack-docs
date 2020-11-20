@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version 20H2
 
-This topic discusses physical (fabric) networking considerations and requirements for Azure Stack HCI, particularly for network switches.
+This topic discusses physical (fabric) network considerations and requirements for Azure Stack HCI, particularly for network switches.
 
 > [!NOTE]
 > Requirements for future Azure Stack HCI versions may change.
