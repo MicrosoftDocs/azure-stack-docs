@@ -78,9 +78,11 @@ You should create one keytab file for each target cluster. Use the example below
 
 If you user your own domain, run this command on the domain controller. If you're using the provided test domain, you need to log on to the domain-joined client machine and copy ktpass.exe from (\\baksdc1\adsso).  
 
-```markdown
-Net use  \\baksdc1\adsso
+Net use  \\baksdc1\adsso 
+```
+
 Xcopy  \\baksdc1\adsso\ktpass.exe 
+
 ```
 
 **Example**:
@@ -122,7 +124,7 @@ You have two options to install the AD Authentication feature.
 **Option 1**: If the cluster machine is domain-joined to the domain of the admin user, type the following:
     
 ```powershell
-     Install-AksHciAdAuth -clusterName <mynewcluster> -keytab <.\current.keytab> -SPN <service/principal@CONTOSO.COM> -adminUser <CONTOSO\Bob>
+Install-AksHciAdAuth -clusterName <mynewcluster> -keytab <.\current.keytab> -SPN <service/principal@CONTOSO.COM> -adminUser <CONTOSO\Bob>
    ```
     
 * **mynewcluster** is the name of the target cluster created in your previous step.
@@ -136,7 +138,7 @@ Install-AksHciAdAuth -clusterName mynewcluster1 -keytab .\current.keytab -SPN k8
    
 **Option 2**: If your cluster machine is not domain-joined, do the following:
 ```powershell
-     Install-AksHciAdAuth -clusterName <mynewcluster> -keytab <.\current.keytab> -SPN <service/principal@CONTOSO.COM> -adminUserSID <SID of CONTOSO\Bob>
+Install-AksHciAdAuth -clusterName <mynewcluster> -keytab <.\current.keytab> -SPN <service/principal@CONTOSO.COM> -adminUserSID <SID of CONTOSO\Bob>
 ```
 
 * **mynewcluster** is the name of the target cluster created in your previous step.
@@ -173,14 +175,12 @@ C:\>whoami /user
 
 Run the following command to verify the webhook is successfully created: 
 
-```markdown
 .\kubectl.exe -kubeconfig.\ <mynewcluster> get pods -n=kube-system
 ```
 Then, check the ad-auth webhook to make sure it’s running.
 
 Run the following command to verify the secret is successfully created:
 
-```markdown
 .\kubectl.exe -kubeconfig.\ <mynewcluster> get sectets -n=kube-system
 ```
 Then, check that the secret is named "keytab".
@@ -249,13 +249,13 @@ In this example, we are creating a role binding for admin user “Bob”, which 
 
 2. Convert the yaml from name to SID and deploy yaml.
 
-    ```markdown
+    ```
     kubectl-adsso.exe nametosid <rbac.yml>
 ```
 
-    Note: For modifying the yaml, run the toll in reverse to convert SIDs to names:  
+For modifying the yaml, run the toll in reverse to convert SIDs to names:  
 
-    ```markdown
+    ```
     kubectl-adsso.exe sidtoname <rbac.yml>
 ```
 
