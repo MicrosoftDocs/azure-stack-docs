@@ -17,7 +17,7 @@ In this quickstart, you'll learn how to deploy a two-server, single-site Azure S
 
 ## Before you start
 
-Before deploying, do the following:
+Before creating a cluster, do the following:
 
 * Purchase two servers from the [Azure Stack HCI Catalog](https://azure.microsoft.com/products/azure-stack/hci/catalog/) through your preferred Microsoft hardware partner with the Azure Stack HCI operating system pre-installed. Review the [system requirements](../concepts/system-requirements.md) to make sure the hardware you select will support the workloads you plan to run on the cluster.
 * Create a user account that’s a member of the local Administrators group on each server.
