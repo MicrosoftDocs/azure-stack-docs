@@ -52,7 +52,7 @@ landingContent:
       - linkListType: get-started
         links:
           - text: Install Azure Stack Hub PowerShell
-            url: ../operator/azure-stack-powershell-install.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2Ftoc.json%3Fview%3Dazs-2002&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json%3Fview%3Dazs-2002&view=azs-2002
+            url: ../operator/powershell-install-az-module.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2Ftoc.json%3Fview%3Dazs-2002&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json%3Fview%3Dazs-2002&view=azs-2002
           - text: Install CLI for Azure Stack Hub
             url: azure-stack-version-profiles-azurecli2.md
       - linkListType: sample
@@ -79,6 +79,8 @@ landingContent:
             url: deploy-foundational-patterns.md
           - text: Host Apps written in your code
             url: azure-stack-dev-start-deploy-app.md
+          - text: Deploy a GPU IoT module
+            url: gpu-deploy-sample-module.md
 
   # Card
   - title: Platform-as-a-Service (PaaS) on Azure Stack Hub

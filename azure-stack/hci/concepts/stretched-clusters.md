@@ -3,7 +3,7 @@ title: Stretched clusters overview
 description: Learn about stretched clusters
 author: v-dasis
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.date: 11/05/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -24,6 +24,9 @@ There are two types of stretched clusters, active-passive and active-active. You
 In simple terms, an *active* site is one that has resources and is providing roles and workloads for clients to connect to. A *passive* site is one that does not provide any roles or workloads for clients and is waiting for a failover from the active site for disaster recovery.
 
 Sites can be in two different states, different cities, different floors, or different rooms. Stretched clusters using two sites provides disaster recovery and business continuity should a site suffer an outage or failure.
+
+Take a few minutes to watch the video on stretched clustering with Azure Stack HCI:
+> [!VIDEO https://www.youtube.com/embed/rYnZL1wMiqU]
 
 ## Active-passive stretched cluster
 

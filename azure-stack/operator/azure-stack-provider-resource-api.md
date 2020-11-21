@@ -4,7 +4,7 @@ description: Reference for the resource usage API, which retrieves Azure Stack H
 author: sethmanheim
 
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 11/09/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 01/25/2019
@@ -98,7 +98,7 @@ meterID1",
 
 To generate the usage data, you should have resources that are running and actively using the system; for example, an active virtual machine (VM), or a storage account containing some data. If you're not sure whether you have any resources running in the Azure Stack Hub Marketplace, deploy a VM, and verify the VM monitoring blade to make sure it's running. Use the following PowerShell cmdlets to view the usage data:
 
-1. [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
+1. [Install PowerShell for Azure Stack Hub](powershell-install-az-module.md).
 2. [Configure the Azure Stack Hub user](../user/azure-stack-powershell-configure-user.md) or the [Azure Stack Hub operator](azure-stack-powershell-configure-admin.md) PowerShell environment.
 3. To retrieve the usage data, call the [Get-AzsSubscriberUsage](/powershell/module/azs.commerce.admin/get-azssubscriberusage) PowerShell cmdlet:
 

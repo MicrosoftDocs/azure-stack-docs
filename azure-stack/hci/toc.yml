@@ -8,6 +8,8 @@
     href: known-issues.md
   - name: Release notes
     href: release-notes.md
+  - name: FAQ
+    href: faq.md
 - name: Get started
   items:
   - name: Use Azure Stack HCI with Windows Admin Center
@@ -72,6 +74,10 @@
       href: manage/update-cluster.md
     - name: Monitor the cluster
       href: manage/monitor-cluster.md
+    - name: Use Datacenter Firewall
+      href: manage/use-datacenter-firewall.md
+    - name: Use DISKSPD to test workloads
+      href: manage/diskspd-overview.md
     - name: Add or remove servers
       href: manage/add-cluster.md
     - name: Take a server offline for maintenance
@@ -132,6 +138,8 @@
       href: concepts/network-controller-overview.md
     - name: Plan Network Controller
       href: concepts/network-controller.md
+    - name: Datacenter Firewall overview
+      href: concepts/datacenter-firewall-overview.md
     - name: Software Load Balancer overview
       href: concepts/software-load-balancer.md
     - name: RAS Gateway overview

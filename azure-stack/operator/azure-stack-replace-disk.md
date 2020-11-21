@@ -49,7 +49,7 @@ After you replace the disk, Azure Stack Hub automatically discovers the new disk
 
 After you replace the disk, you can monitor the virtual disk health status and repair job progress by using Azure Stack Hub PowerShell.
 
-1. Check that you have Azure Stack Hub PowerShell installed. For more information, see [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
+1. Check that you have Azure Stack Hub PowerShell installed. For more information, see [Install PowerShell for Azure Stack Hub](powershell-install-az-module.md).
 2. Connect to Azure Stack Hub with PowerShell as an operator. For more information, see [Connect to Azure Stack Hub with PowerShell as an operator](azure-stack-powershell-configure-admin.md).
 3. Run the following cmdlets to verify the virtual disk health and repair status:
 

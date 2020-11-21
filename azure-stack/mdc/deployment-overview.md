@@ -19,30 +19,26 @@ ms.reviewer: asganesh
 ms.lastreviewed: 10/20/2020
 ---
  
-# MDC deployment overview
+# MDC requirements overview
 
-This deployment guide describes the steps to install and configure a Modular Data Center (MDC). 
-This guide also describes the automated process for setting up the Azure Stack Hub Hardware Lifecycle Host (HLH) management server for the Azure Stack Hub deployment.
+This guide describes the requirements needed to install and configure a Modular Data Center (MDC). 
 
 The objectives of this guide include:
 
 - Provide a pre-deployment checklist to verify that all prerequisites have been met before installation of the components.
 - Introduce the key components of a MDC.
-- Describe how to install and configure the key components.
 - Validate the customer deployment.
 
 Technical experience with virtualization, servers, operating systems, networking, and storage solutions is required to fully understand the content of this guide. 
-The Deployment Engineer must have knowledge of Microsoft Windows Server 2019 with Hyper-V, Azure Stack Hub, Azure, and Microsoft PowerShell.
 
 This guide focuses on deployment of core components of Microsoft Azure Stack Hub, and the specifics of the MDC solution. 
 The guide does not explain the operating procedures of Azure Stack Hub and does not cover all the features available in Azure Stack Hub. 
-For more information, see [Azure Stack Hub Operator's Guide](https://docs.microsoft.com/azure-stack/operator/).
 
 ## Introduction
 
 The MDC is an integrated offering for Azure Stack Hub packaged in a standard 40-foot metal shipping container. 
 The container includes a climate control unit, lighting and alerting system. 
-The core Azure Stack Hub components, such as servers and switches, are installed in six physical racks that are logically organized in three independent pods.
+The core Azure Stack Hub components are installed as three independent pods: Pod 1, Rack 1 and Rack 2, Pod 2, Rack 1 and Rack 2, and Pod 3, Rack 1 and Rack 2.
 
 Each pod consists of two 42U racks. A pod includes the top-of-rack (ToR) switches, edge switches, and a baseboard management controller (BMC) switch. Additionally, each pod includes a hardware lifecycle host (HLH) and a serial port concentrator. 
 Core compute and storage capacity is provided by Azure Stack Hub scale units (SU) consisting of eight Rugged Edge Appliance (REA) R840 servers. Additional storage capacity is provided by 48 Isilon storage nodes. Physical configuration of all pods is identical.
@@ -90,6 +86,4 @@ At a high level, the MDC deployment process consists of the following steps:
 1. Validation phase – separately for each of the three pods:
    1. Post-deployment health validation.
    1. Registering Azure Stack Hub with Microsoft.
-   1. Azure Stack Hub operator hand-off.
-  
-Each of the above topics is explained in detail further in this guide.
+   1. Azure Stack Hub customer hand-off.

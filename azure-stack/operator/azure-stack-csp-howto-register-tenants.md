@@ -53,22 +53,22 @@ Update your registration with the new customer subscription. Azure reports the c
 1. Open Windows PowerShell in an elevated prompt, and run:  
 
    ```powershell
-   Add-AzureRmAccount
+   Add-AzAccount
    ```
 
    >[!NOTE]
-   > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using **Add-AzureRmAccount**: `Remove-AzureRmAccount-Scope Process`.
+   > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using **Add-AzAccount**: `Remove-AzAccount-Scope Process`.
 
 2. Type your Azure credentials.
 3. In the PowerShell session, run:
 
    ```powershell
-   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
+   New-AzResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
    ```
 
-### New-AzureRmResource PowerShell parameters
+### New-AzResource PowerShell parameters
 
-The following section describes the parameters for the **New-AzureRmResource** cmdlet:
+The following section describes the parameters for the **New-AzResource** cmdlet:
 
 | Parameter | Description |
 | --- | --- |
