@@ -362,6 +362,8 @@ To update to the latest version of Azure Kubernets Service on Azure Stack HCI, r
    ```powershell
    Update-AksHci
    ```
+   
+We recommend updating workload clusters immediately after updating the management cluster to prevent running unsupported Windows Server OS versions in your Kubernetes clusters with Windows nodes. To update your workload cluster, visit [update your workload cluster](create-kubernetes-cluster-powershell.md).
 
 ## Reinstall Azure Kubernetes Service on Azure Stack HCI
 
