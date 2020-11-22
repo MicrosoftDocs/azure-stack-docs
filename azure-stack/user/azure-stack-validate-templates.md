@@ -4,10 +4,10 @@ description: Check templates for deployment to Azure Stack Hub with a template v
 author: sethmanheim
 
 ms.topic: article
-ms.date: 10/01/2020
+ms.date: 11/22/2020
 ms.author: sethm
 ms.reviewer: sijuman
-ms.lastreviewed: 12/27/2019
+ms.lastreviewed: 11/22/2020
 
 # Intent: As an Azure Stack user, I want to use the template validation tool so I can see if my templates are ready to deploy.
 # Keyword: azure stack template validation tool
@@ -42,9 +42,18 @@ Before you use the template validator, run the **Az.CloudCapabilities** PowerShe
 
 3. Use the **Get-CloudCapabilities** cmdlet to retrieve service versions and create a cloud capabilities JSON file. If you do not specify `-OutputPath`, the file **AzureCloudCapabilities.json** is created in the current directory. Use your actual Azure location:
 
-    ```powershell
-    Get-AzCloudCapability -Location <your location> -Verbose
-    ```
+### [Az modules](#tab/az1)
+
+```powershell
+Get-AzCloudCapability -Location <your location> -Verbose
+```
+### [AzureRM modules](#tab/azurerm1)
+
+```powershell
+Get-AzureRMCloudCapability -Location <your location> -Verbose
+```
+---
+
 
 ## Validate templates
 
@@ -59,11 +68,21 @@ Use these steps to validate templates by using the **Az.TemplateValidator** Powe
 
 2. Run the template validator:
 
-    ```powershell
-    Test-AzTemplate -TemplatePath <path to template.json or template folder> `
-    -CapabilitiesPath <path to cloudcapabilities.json> `
-    -Verbose
-    ```
+### [Az modules](#tab/az2)
+
+```powershell
+Test-AzTemplate -TemplatePath <path to template.json or template folder> `
+-CapabilitiesPath <path to cloudcapabilities.json> `
+-Verbose
+```
+### [AzureRM modules](#tab/azurerm2)
+
+```powershell
+Test-AzureRMTemplate -TemplatePath <path to template.json or template folder> `
+-CapabilitiesPath <path to cloudcapabilities.json> `
+-Verbose
+```
+---
 
 Template validation warnings or errors are displayed in the PowerShell console and written to an HTML file in the source directory. The following screenshot is an example of a validation report:
 
@@ -85,7 +104,9 @@ The template validator cmdlet supports the following parameters.
 
 ### Examples
 
-This example validates all of the [Azure Stack Hub Quickstart templates](https://github.com/Azure/AzureStack-QuickStart-Templates) downloaded to local storage. The example also validates virtual machine (VM) sizes and extensions against ASDK capabilities:
+This example validates all of the [Azure Stack Hub Quickstart templates](https://github.com/Azure/AzureStack-QuickStart-Templates) downloaded to local storage. The example also validates virtual machine (VM) sizes and extensions against ASDK capabilities.
+
+### [Az modules](#tab/az3)
 
 ```powershell
 test-AzTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
@@ -94,6 +115,16 @@ test-AzTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
 -IncludeComputeCapabilities `
 -Report TemplateReport.html
 ```
+### [AzureRM modules](#tab/azurerm3)
+
+```powershell
+test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
+-CapabilitiesPath .\TemplateValidator\AzureStackCloudCapabilities_with_AddOns_20170627.json `
+-TemplatePattern MyStandardTemplateName.json `
+-IncludeComputeCapabilities `
+-Report TemplateReport.html
+```
+---
 
 ## Next steps
 

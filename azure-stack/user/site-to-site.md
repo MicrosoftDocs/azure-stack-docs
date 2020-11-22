@@ -4,10 +4,10 @@ title: Troubleshoot site-to-site VPN connections in Azure Stack Hub
 description: Troubleshooting steps you can take after you configure a site-to-site VPN connection between an on-premises network and an Azure Stack Hub virtual network.
 author: sethmanheim
 ms.author: sethm
-ms.date: 10/01/2020
+ms.date: 11/22/2020
 ms.topic: article
 ms.reviewer: sranthar
-ms.lastreviewed: 05/12/2020
+ms.lastreviewed: 11/22/2020
 
 ---
 
@@ -51,11 +51,21 @@ The Azure Stack Hub default parameters for IPsec/IKEV2 have changed [starting wi
 
   - **Azure PowerShell**: Use the following PowerShell command:
 
-      ```powershell
-      Get-AzVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group>
-      ```
+### [Az modules](#tab/az)
 
-## Status "Connected" – traffic not flowing
+```powershell
+Get-AzVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group>
+```
+### [AzureRM modules](#tab/azurerm)
+
+```powershell
+Get-AzurerMVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group>
+```
+
+---
+
+
+## Status "Connected" - traffic not flowing
 
 - Check for, and remove the user-defined routing (UDR) and network security groups (NSGs) on the gateway subnet, and then test the result. If the problem is resolved, validate the settings that UDR or NSG applied.
 
