@@ -366,6 +366,8 @@ If there's no IPsec/IKE policy configured, the command `$connection6.policy` get
 
 The steps to add a new policy or update an existing policy on a connection are the same: create a new policy, then apply the new policy to the connection:
 
+### [Az modules](#tab/az8)
+
 ```powershell
 $RG1 = "TestPolicyRG1"
 $Connection16 = "VNet1toSite6"
@@ -377,6 +379,22 @@ $connection6.SharedKey = "AzS123"
 
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -IpsecPolicies $newpolicy6
 ```
+### [AzureRM modules](#tab/azurerm8)
+
+```powershell
+$RG1 = "TestPolicyRG1"
+$Connection16 = "VNet1toSite6"
+$connection6 = Get-AzureRMVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
+
+$newpolicy6 = New-AzureRMIpsecPolicy -IkeEncryption AES128 -IkeIntegrity SHA1 -DhGroup DHGroup14 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup None -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
+
+$connection6.SharedKey = "AzS123"
+
+Set-AzureRMVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -IpsecPolicies $newpolicy6
+```
+---
+
+
 
 You can get the connection again to check if the policy is updated:
 

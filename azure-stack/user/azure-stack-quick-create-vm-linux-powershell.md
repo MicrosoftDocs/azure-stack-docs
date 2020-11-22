@@ -37,12 +37,7 @@ You can create an Ubuntu Server 16.04 LTS virtual machine (VM) by using Azure St
 A resource group is a logical container where you can deploy and manage Azure Stack Hub resources. To create a resource group, run the following code block: 
 
 > [!NOTE]
-### [Az modules](#tab/az)
-
-
-### [AzureRM modules](#tab/azurerm)
- 
----> We've assigned values for all variables in the following code examples. However, you can assign your own values.
+> We've assigned values for all variables in the following code examples. However, you can assign your own values.
 
 ```powershell  
 # Create variables to store the location and resource group names.

@@ -43,7 +43,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.KeyVault | ft -Autosize
  
 
  ```powershell  
-GetAzureRMResourceProvider -ProviderNamespace Microsoft.KeyVault | ft -Autosize
+Get-AzureRMResourceProvider -ProviderNamespace Microsoft.KeyVault | ft -Autosize
 ```
 ---
 
