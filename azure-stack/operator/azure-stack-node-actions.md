@@ -216,5 +216,5 @@ To run the shutdown action, open an elevated PowerShell prompt, and run the foll
 ## Next steps
 
 - [Install Azure Stack PowerShell](./powershell-install-az-module.md)
-- [Learn about the Azure Stack Hub Fabric operator module](/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0)
+- [Learn about the Azure Stack Hub Fabric operator module](/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0&preserve-view=true)
 - [Monitor Add node operations](./azure-stack-add-scale-node.md#monitor-add-node-operations)

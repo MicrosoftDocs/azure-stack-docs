@@ -25,7 +25,8 @@ In the event of an outage, the Azure Stack Hub operator goes through the *failov
 
 As this process can be error prone and time consuming, we've built scripts to help accelerate and automate this process.
 
-> [!Note] The Azure Site Recovery tool requires the Azure Stack Hub Az modules. If you are running the Azure Stack Hub AzureRM modules, you will need to upgrade your workstation or use the Azure Site Recovery failback tool in an isolated environment with the Az modules. For more information see [Install PowerShell Az module for Azure Stack Hub](powershell-install-az-module.md).
+> [!Note]  
+> The Azure Site Recovery tool requires the Azure Stack Hub Az modules. If you are running the Azure Stack Hub AzureRM modules, you will need to upgrade your workstation or use the Azure Site Recovery failback tool in an isolated environment with the Az modules. For more information see [Install PowerShell Az module for Azure Stack Hub](powershell-install-az-module.md).
 
 ## Failback procedure
 
