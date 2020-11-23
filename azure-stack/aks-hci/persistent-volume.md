@@ -21,7 +21,6 @@ Here's what you need to get started:
 * A Kubernetes cluster with at least one Windows worker node.
 * A kubeconfig file to access the Kubernetes cluster.
 
-
 ## Create a persistent volume claim
 
 A persistent volume claim is used to automatically provision storage based on a storage class. To create a volume claim, first create a file named `pvc-akshci-csi.yaml` and copy in the following YAML definition. The claim requests a disk that is 10 GB in size with *ReadWriteOnce* access. The *default* storage class is specified as the storage class (vhdx).  
@@ -40,13 +39,13 @@ spec:
 ```
 Create the volume by running the following commands in an administrative PowerShell session on one of the servers in the Azure Stack HCI cluster (using a method such as [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession) or Remote Desktop to connect to the server): 
 
-
+```
 kubectl create -f pvc-akshci-csi.yaml 
 ```
 The following output will show that your persistent volume claim has been created successfully:
 
 **Output:**
-
+```
 persistentvolumeclaim/pvc-akshci-csi created
 ```
 
@@ -92,33 +91,33 @@ spec:
 ```
 
 To create a pod with the above yaml definition, run:
-
+```
 Kubectl create -f winwebserver.yaml 
 ```
  
 To make sure the pod is running, run the following command. Wait a few minutes until the pod is in a running state, since pulling the image takes time. 
-
+```
 kubectl get pods -o wide 
 ```
 Once your pod is running, view the pod status by running the following command: 
-
+```
 kubectl.exe describe pod %podName% 
 ```
 
 To verify your volume has been mounted in the pod, run the following command:
-
+```
 kubectl exec -it %podname% cmd.exe 
 ```
 
 ## Delete a persistent volume claim
 
 Before deleting a persistent volume claim, you must delete the app deployment by running:
-
+```
 kubectl.exe delete deployments win-webserver
 ```
 
 You can then delete a persistent volume claim by running:
-
+```
 kubectl.exe delete PersistentVolumeClaim pvc-akshci-csi
 ```
 
