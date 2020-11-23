@@ -211,7 +211,6 @@
         "hybrid/**/*.md": "Azure Stack"
       },
       "ms.subservice": {
-        "aks-hci/**/*.md": "aks-hci",
         "asdk/**/*.md": "azure-stack-hub-asdk",
         "hci/**/*.md": "azure-stack-hci",
         "mdc/**/*.md": "azure-stack-hub-mdc",
