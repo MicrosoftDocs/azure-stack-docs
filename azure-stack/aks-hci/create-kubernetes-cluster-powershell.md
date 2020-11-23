@@ -15,10 +15,8 @@ In this quickstart, you learn how to use Windows PowerShell to create a Kubernet
 
 ## Before you begin
 
-Before you begin, make sure you have an Azure Stack Kubernetes host set up. If you don't, follow instructions on how to set one up [here](./setup-powershell.md).
-
-- Have a 2-4 node Azure Stack HCI cluster or a single node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't, follow instructions on how to create one [here](./system-requirements.md).
-- Have an Azure Stack Kubernetes host set up. If you don't, follow instructions on how to set one up [here](./setup-powershell.md).
+ - Make sure you have an Azure Stack Kubernetes host set up. If you don't, follow instructions on how to set one up [here](./setup-powershell.md).
+ - Make sure you have the latest Aks-Hci PowerShell module installed. If don't, follow instructions on how to get it [here](./setup-powershell.md).
 
 ## Step 1: Create a Kubernetes cluster
 
@@ -60,7 +58,7 @@ The number of Linux nodes in your Kubernetes cluster. Default is 1.
 
 `-windowsNodeCount`
 
-The number of Windows nodes in your Kubernetes cluster. Default is 0.
+The number of Windows nodes in your Kubernetes cluster. Default is 0. You can only deploy Windows nodes if you are running Kubernetes v1.18.8.
 
 `-controlPlaneVmSize`
 
@@ -121,7 +119,8 @@ To update to the next Kubernetes version, run the following command.
 Update-AksHciCluster -clusterName
                      [-patch]
 ```
-Every Kubernetes version has a major release, a minor version and a patch version. For example, in v1.18.6, 1 is the major release, 18 is the minor version and 6 is the patch version. Over time, AKS-HCI will support 1 major release, 3 minor releases and 2 patches per minor release for a total of 6 supported versions. However, for this preview release, AKS-HCI supports a total of 4 versions - v1.16.10, v1.16.15, v1.17.11, v1.18.8. 
+Every Kubernetes version has a major release, a minor version and a patch version. For example, in v1.18.6, 1 is the major release, 18 is the minor version and 6 is the patch version. Over time, AKS-HCI will support 1 major release, 3 minor releases and 2 patches per minor release for a total of 6 supported versions. However, for this preview release, we support a total of 4 releases - v1.16.10, v1.16.15, v1.17.11, v1.18.8. 
+
 When the parameter `patch` is added while running `Update-AksHciCluster`, the command upgrades to the next patch version (if any) for the minor version. When the command is run without the parameter `patch`, the default upgrade experience is to the next minor release. To make this easier, following is a table that contains all possible update experiences:
 
 | Current release           | Kubernetes updated version without -patch         | Kubernetes updated version with -patch
@@ -132,8 +131,6 @@ When the parameter `patch` is added while running `Update-AksHciCluster`, the co
 | v1.18.8             | in place addon upgrade   | in place addon upgrade
 
 In place addon upgrade updates all the Kubernetes addons like CSI that AKS-HCI manages for you. This upgrade does not change the OS version of the node. It also does not change the Kubernetes version.
-
-It is important to note here that if you want to use Windows nodes, the minimum required version is v1.18.8. 
 
 ## Step 4: Access your clusters using kubectl
 
