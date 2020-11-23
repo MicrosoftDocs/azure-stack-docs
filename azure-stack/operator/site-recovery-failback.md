@@ -4,10 +4,10 @@ title: Azure Site Recovery failback tool user guide
 description: Learn how to use the Azure Site Recovery failback tool to protect virtual machines (VMs).
 author: sethmanheim
 ms.author: sethm
-ms.date: 9/18/2020
+ms.date: 11/19/2020
 ms.topic: how-to
 ms.reviewer: rtiberiu
-ms.lastreviewed: 9/18/2020
+ms.lastreviewed: 11/19/2020
 
 ---
 
@@ -17,13 +17,16 @@ In a connected environment, you can use Azure Site Recovery to protect virtual m
 
 In the event of an outage, the Azure Stack Hub operator goes through the *failover* procedure; once Azure Stack Hub is up and running again, they go through a *failback* process. The failover process is described in [this Site Recovery article](/azure/site-recovery/azure-stack-site-recovery), but the failback process involves several manual steps:
 
-- Stop the VM running in Azure.
-- Download the VHDs.
-- Upload the VHDs to Azure Stack Hub.
-- Recreate the VMs.
-- Finally, start that VM running on Azure Stack Hub. 
+1. Stop the VM running in Azure.
+2. Download the VHDs.
+3. Upload the VHDs to Azure Stack Hub.
+4. Recreate the VMs.
+5. Finally, start that VM running on Azure Stack Hub. 
 
 As this process can be error prone and time consuming, we've built scripts to help accelerate and automate this process.
+
+> [!Note]  
+> The Azure Site Recovery tool requires the Azure Stack Hub Az modules. If you are running the Azure Stack Hub AzureRM modules, you will need to upgrade your workstation or use the Azure Site Recovery failback tool in an isolated environment with the Az modules. For more information see [Install PowerShell Az module for Azure Stack Hub](powershell-install-az-module.md).
 
 ## Failback procedure
 
@@ -80,7 +83,7 @@ Note the following considerations:
 
 - The `-SourceVM` parameter is a VM object retrieved by `Get-AzVM`.
   - This is the protected VM from Azure Stack Hub that was failed over on Azure.
-  - It doesn’t matter if the VM is running, as the script shuts down the VM. However, it is recommended that you explicitly shut it down and stop the services inside the VM accordingly.
+  - It doesn't matter if the VM is running, as the script shuts down the VM. However, it is recommended that you explicitly shut it down and stop the services inside the VM accordingly.
 
 - You can provide either an account key (using `TargetStorageAccountKey`) or the SAS token (using `TargetStorageAccountSasToken`) of the storage account on the Azure Stack Hub side. The SAS token must be created at the storage account level, with at least the following permissions:
 

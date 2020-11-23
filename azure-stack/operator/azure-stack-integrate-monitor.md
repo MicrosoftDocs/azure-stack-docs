@@ -3,10 +3,10 @@ title: Integrate external monitoring solution with Azure Stack Hub
 description: Learn how to integrate Azure Stack Hub with an external monitoring solution in your datacenter.
 author: IngridAtMicrosoft
 ms.topic: article
-ms.date: 04/10/2020
+ms.date: 11/18/2020
 ms.author: inhenkel
 ms.reviewer: thoroet
-ms.lastreviewed: 06/05/2019
+ms.lastreviewed: 11/18/2020
 
 # Intent: As an Azure Stack operator, I want to integrate an external monitoring solution with Azure Stack so I can monitor system health information.
 # Keyword: azure stack monitoring solution
@@ -67,7 +67,7 @@ A Nagios monitoring plugin was developed together with partner Cloudbase Solutio
 
 The plugin is written in Python and leverages the health resource provider REST API. It offers basic functionality to retrieve and close alerts in Azure Stack Hub. Like the System Center management pack, it enables you to add multiple Azure Stack Hub deployments and to send notifications.
 
-With Version 1.2 the Azure Stack Hub – Nagios plugin leverages the Microsoft ADAL library and supports authentication using  Service Principal with a secret or certificate. Also, the configuration has been simplified using a single configuration file with new parameters. It now supports Azure Stack Hub deployments using Azure AD and AD FS as the identity system.
+With Version 1.2 the Azure Stack Hub - Nagios plugin leverages the Microsoft ADAL library and supports authentication using  Service Principal with a secret or certificate. Also, the configuration has been simplified using a single configuration file with new parameters. It now supports Azure Stack Hub deployments using Azure AD and AD FS as the identity system.
 
 > [!IMPORTANT]
 > AD FS only supports interactive sign-in sessions. If you require a non-interactive sign-in for an automated scenario, you must use a SPN.
@@ -151,7 +151,7 @@ The other configuration files contain optional configuration settings as they ca
 
 ### Update Nagios configuration
 
-The Nagios configuration needs to be updated to ensure the Azure Stack Hub – Nagios Plugin is loaded.
+The Nagios configuration needs to be updated to ensure the Azure Stack Hub - Nagios Plugin is loaded.
 
 1. Open the following file:
 
@@ -201,6 +201,8 @@ Troubleshooting the plugin is done by calling the plugin manually in a terminal.
 
 If you're not using Operations Manager, Nagios, or a Nagios-based solution, you can use PowerShell to enable a broad range of monitoring solutions to integrate with Azure Stack Hub.
 
+### [Az modules](#tab/az)
+
 1. To use PowerShell, make sure that you have [PowerShell installed and configured](powershell-install-az-module.md) for an Azure Stack Hub operator environment. Install PowerShell on a local computer that can reach the Resource Manager (administrator) endpoint (https://adminmanagement.[region].[External_FQDN]).
 
 2. Run the following commands to connect to the Azure Stack Hub environment as an Azure Stack Hub operator:
@@ -214,26 +216,66 @@ If you're not using Operations Manager, Nagios, or a Nagios-based solution, you 
    ```
 
 3. Use commands such as the following examples to work with alerts:
+
+```powershell
+# Retrieve all alerts
+$Alerts = Get-AzsAlert
+$Alerts
+
+# Filter for active alerts
+$Active = $Alerts | Where-Object { $_.State -eq "active" }
+$Active
+
+# Close alert
+Close-AzsAlert -AlertID "ID"
+
+#Retrieve resource provider health
+$RPHealth = Get-AzsRPHealth
+$RPHealth
+
+# Retrieve infrastructure role instance health
+$FRPID = $RPHealth | Where-Object { $_.DisplayName -eq "Capacity" }
+   Get-AzsRegistrationHealth -ServiceRegistrationId $FRPID.RegistrationId
+```
+
+### [AzureRM modules](#tab/azurerm)
+
+1. To use PowerShell, make sure that you have [PowerShell installed and configured](powershell-install-az-module.md) for an Azure Stack Hub operator environment. Install PowerShell on a local computer that can reach the Resource Manager (administrator) endpoint (https://adminmanagement.[region].[External_FQDN]).
+
+2. Run the following commands to connect to the Azure Stack Hub environment as an Azure Stack Hub operator:
+
    ```powershell
-    # Retrieve all alerts
-    $Alerts = Get-AzsAlert
-    $Alerts
+   Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint https://adminmanagement.[Region].[External_FQDN] `
+      -AzureKeyVaultDnsSuffix adminvault.[Region].[External_FQDN] `
+      -AzureKeyVaultServiceEndpointResourceId https://adminvault.[Region].[External_FQDN]
 
-    # Filter for active alerts
-    $Active = $Alerts | Where-Object { $_.State -eq "active" }
-    $Active
+   Connect-AzureRMAccount -EnvironmentName "AzureStackAdmin"
+   ```
 
-    # Close alert
-    Close-AzsAlert -AlertID "ID"
+3. Use commands such as the following examples to work with alerts:
 
-    #Retrieve resource provider health
-    $RPHealth = Get-AzsRPHealth
-    $RPHealth
+```powershell
+# Retrieve all alerts
+$Alerts = Get-AzsAlert
+$Alerts
 
-    # Retrieve infrastructure role instance health
-    $FRPID = $RPHealth | Where-Object { $_.DisplayName -eq "Capacity" }
-    Get-AzsRegistrationHealth -ServiceRegistrationId $FRPID.RegistrationId
-    ```
+# Filter for active alerts
+$Active = $Alerts | Where-Object { $_.State -eq "active" }
+$Active
+
+# Close alert
+Close-AzsAlert -AlertID "ID"
+
+#Retrieve resource provider health
+$RPHealth = Get-AzsRPHealth
+$RPHealth
+
+# Retrieve infrastructure role instance health
+$FRPID = $RPHealth | Where-Object { $_.DisplayName -eq "Capacity" }
+Get-AzsRegistrationHealth -ServiceRegistrationId $FRPID.RegistrationId
+```
+
+---
 
 ## Learn more
 
