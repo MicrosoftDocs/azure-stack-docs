@@ -63,22 +63,16 @@ This can happen when the Fabric Resource Provider Role cache did not refresh aft
 
 Before applying the following steps ensure that no operation is currently in progress. Update the endpoint to match your environment.
 
-1. Open PowerShell and add your Azure Stack Hub environment. This requires [Azure Stack Hub PowerShell to be installed](./powershell-install-az-module.md) on your computer.
+
 
 ### [Az modules](#tab/az1)
 
-```powershell
-Add-AzEnvironment -Name AzureStack -ARMEndpoint https://adminmanagement.local.azurestack.external
-Add-AzAccount -Environment AzureStack
-```
-### [AzureRM modules](#tab/azurerm1)
+1. Open PowerShell and add your Azure Stack Hub environment. This requires [Azure Stack Hub PowerShell to be installed](./powershell-install-az-module.md) on your computer.
 
-```powershell
-Add-AzureRMEnvironment -Name AzureStack -ARMEndpoint https://adminmanagement.local.azurestack.external
-Add-AzureRMAccount -Environment AzureStack
-```
-
----
+    ```powershell
+    Add-AzEnvironment -Name AzureStack -ARMEndpoint https://adminmanagement.local.azurestack.external
+    Add-AzAccount -Environment AzureStack
+    ```
 
 2. Run the following command to restart the Fabric Resource Provider Role.
 
@@ -93,6 +87,32 @@ Add-AzureRMAccount -Environment AzureStack
    ```
 
 4. If the node operational status is still shown as **Adding** continue to open a support incident.
+
+### [AzureRM modules](#tab/azurerm1)
+
+1. Open PowerShell and add your Azure Stack Hub environment. This requires [Azure Stack Hub PowerShell to be installed](./powershell-install-az-module.md) on your computer.
+
+    ```powershell
+    Add-AzureRMEnvironment -Name AzureStack -ARMEndpoint https://adminmanagement.local.azurestack.external
+    Add-AzureRMAccount -Environment AzureStack
+    ```
+
+2. Run the following command to restart the Fabric Resource Provider Role.
+
+   ```powershell
+   Restart-AzsInfrastructureRole -Name FabricResourceProvider
+   ```
+
+3. Validate the operational status of the impacted scale unit node changed to **Running**. You can use the Administrator portal or the following PowerShell command:
+
+   ```powershell
+   Get-AzsScaleUnitNode |ft name,scaleunitnodestatus,powerstate
+   ```
+
+4. If the node operational status is still shown as **Adding** continue to open a support incident.
+
+---
+
 
 
 ## Scale unit node actions

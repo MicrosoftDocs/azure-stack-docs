@@ -30,72 +30,79 @@ Azure App Service on Azure Stack Hub deploys all roles using Virtual Machine Sca
 
 ## Add additional workers with PowerShell
 
+
+
+### [Az modules](#tab/az)
+
 1. [Set up the Azure Stack Hub admin environment in PowerShell](azure-stack-powershell-configure-admin.md)
 
 2. Use this example to scale out the scale set.
 
-### [Az modules](#tab/az)
+    ```powershell
+    
+    ##### Scale out the AppService Role instances ######
+    
+    # Set context to AzureStack admin.
+    Login-AzAccount -EnvironmentName AzureStackAdmin
+                                                    
+    ## Name of the Resource group where AppService is deployed.
+    $AppServiceResourceGroupName = "AppService.local"
+    
+    ## Name of the ScaleSet : e.g. FrontEndsScaleSet, ManagementServersScaleSet, PublishersScaleSet , LargeWorkerTierScaleSet,      MediumWorkerTierScaleSet, SmallWorkerTierScaleSet, SharedWorkerTierScaleSet
+    $ScaleSetName = "SharedWorkerTierScaleSet"
+    
+    ## TotalCapacity is sum of the instances needed at the end of operation. 
+    ## e.g. if your VMSS has 1 instance(s) currently and you need 1 more the TotalCapacity should be set to 2
+    $TotalCapacity = 2  
+    
+    # Get current scale set
+    $vmss = Get-AzVmss -ResourceGroupName $AppServiceResourceGroupName -VMScaleSetName $ScaleSetName
+    
+    # Set and update the capacity
+    $vmss.sku.capacity = $TotalCapacity
+    Update-AzVmss -ResourceGroupName $AppServiceResourceGroupName -Name $ScaleSetName -VirtualMachineScaleSet $vmss 
+    ```    
 
-```powershell
-
-##### Scale out the AppService Role instances ######
-
-# Set context to AzureStack admin.
-Login-AzAccount -EnvironmentName AzureStackAdmin
-                                                
-## Name of the Resource group where AppService is deployed.
-$AppServiceResourceGroupName = "AppService.local"
-
-## Name of the ScaleSet : e.g. FrontEndsScaleSet, ManagementServersScaleSet, PublishersScaleSet , LargeWorkerTierScaleSet,      MediumWorkerTierScaleSet, SmallWorkerTierScaleSet, SharedWorkerTierScaleSet
-$ScaleSetName = "SharedWorkerTierScaleSet"
-
-## TotalCapacity is sum of the instances needed at the end of operation. 
-## e.g. if your VMSS has 1 instance(s) currently and you need 1 more the TotalCapacity should be set to 2
-$TotalCapacity = 2  
-
-# Get current scale set
-$vmss = Get-AzVmss -ResourceGroupName $AppServiceResourceGroupName -VMScaleSetName $ScaleSetName
-
-# Set and update the capacity
-$vmss.sku.capacity = $TotalCapacity
-Update-AzVmss -ResourceGroupName $AppServiceResourceGroupName -Name $ScaleSetName -VirtualMachineScaleSet $vmss 
-```    
-
-### [AzureRM modules](#tab/azurerm)
-
-```powershell
-
-##### Scale out the AppService Role instances ######
-
-# Set context to AzureRMureStack admin.
-Login-AzureRMAccount -EnvironmentName AzureRMureStackAdmin
-                                                
-## Name of the Resource group where AppService is deployed.
-$AppServiceResourceGroupName = "AppService.local"
-
-## Name of the ScaleSet : e.g. FrontEndsScaleSet, ManagementServersScaleSet, PublishersScaleSet , LargeWorkerTierScaleSet,      MediumWorkerTierScaleSet, SmallWorkerTierScaleSet, SharedWorkerTierScaleSet
-$ScaleSetName = "SharedWorkerTierScaleSet"
-
-## TotalCapacity is sum of the instances needed at the end of operation. 
-## e.g. if your VMSS has 1 instance(s) currently and you need 1 more the TotalCapacity should be set to 2
-$TotalCapacity = 2  
-
-# Get current scale set
-$vmss = Get-AzureRMVmss -ResourceGroupName $AppServiceResourceGroupName -VMScaleSetName $ScaleSetName
-
-# Set and update the capacity
-$vmss.sku.capacity = $TotalCapacity
-Update-AzureRMVmss -ResourceGroupName $AppServiceResourceGroupName -Name $ScaleSetName -VirtualMachineScaleSet $vmss 
-```   
-
----
-
-   > [!NOTE]
-   > This step can take a number of hours to complete depending on the type of role and the number of instances.
-   >
-   >
+    > [!NOTE]
+    > This step can take a number of hours to complete depending on the type of role and the number of instances.
 
 3. Monitor the status of the new role instances in the App Service administration. To check the status of an individual role instance, click the role type in the list.
+### [AzureRM modules](#tab/azurerm)
+
+1. [Set up the Azure Stack Hub admin environment in PowerShell](azure-stack-powershell-configure-admin.md)
+
+2. Use this example to scale out the scale set.
+
+    ```powershell
+    
+    ##### Scale out the AppService Role instances ######
+    
+    # Set context to AzureRMureStack admin.
+    Login-AzureRMAccount -EnvironmentName AzureRMureStackAdmin
+                                                    
+    ## Name of the Resource group where AppService is deployed.
+    $AppServiceResourceGroupName = "AppService.local"
+    
+    ## Name of the ScaleSet : e.g. FrontEndsScaleSet, ManagementServersScaleSet, PublishersScaleSet , LargeWorkerTierScaleSet,      MediumWorkerTierScaleSet, SmallWorkerTierScaleSet, SharedWorkerTierScaleSet
+    $ScaleSetName = "SharedWorkerTierScaleSet"
+    
+    ## TotalCapacity is sum of the instances needed at the end of operation. 
+    ## e.g. if your VMSS has 1 instance(s) currently and you need 1 more the TotalCapacity should be set to 2
+    $TotalCapacity = 2  
+    
+    # Get current scale set
+    $vmss = Get-AzureRMVmss -ResourceGroupName $AppServiceResourceGroupName -VMScaleSetName $ScaleSetName
+    
+    # Set and update the capacity
+    $vmss.sku.capacity = $TotalCapacity
+    Update-AzureRMVmss -ResourceGroupName $AppServiceResourceGroupName -Name $ScaleSetName -VirtualMachineScaleSet $vmss 
+    ```   
+
+    > [!NOTE]
+    > This step can take a number of hours to complete depending on the type of role and the number of instances.
+
+3. Monitor the status of the new role instances in the App Service administration. To check the status of an individual role instance, click the role type in the list.
+---
 
 ## Add additional workers using the administrator portal
 

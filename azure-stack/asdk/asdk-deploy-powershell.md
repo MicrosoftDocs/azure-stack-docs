@@ -15,7 +15,7 @@ ms.lastreviewed: 10/14/2020
 ---
 
 
-# Deploy ASDK from the command line using Powershell
+# Deploy ASDK from the command line using PowerShell
 
 The Azure Stack Development Kit (ASDK) is a testing and development environment that you can deploy to evaluate and demonstrate Azure Stack features and services. To get it up and running, you need to prepare the environment hardware and run some scripts. The scripts take several hours to run. After that, you can sign in to the admin and user portals to start using Azure Stack.
 

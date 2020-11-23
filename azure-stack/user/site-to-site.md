@@ -43,6 +43,8 @@ The Azure Stack Hub default parameters for IPsec/IKEV2 have changed [starting wi
 
 ## Status "Not Connected" - intermittent disconnects
 
+### [Az modules](#tab/az)
+
 - Compare the shared key for the on-premises VPN device to the AzSH virtual network VPN to make sure that the keys match. To view the shared key for the AzSH VPN connection, use one of the following methods:
 
   - **Azure Stack Hub tenant portal**: Go to the VPN gateway site-to-site connection that you created. In the **Settings** section, select **Shared key**.
@@ -51,19 +53,25 @@ The Azure Stack Hub default parameters for IPsec/IKEV2 have changed [starting wi
 
   - **Azure PowerShell**: Use the following PowerShell command:
 
-### [Az modules](#tab/az)
-
 ```powershell
 Get-AzVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group>
 ```
+
 ### [AzureRM modules](#tab/azurerm)
 
+- Compare the shared key for the on-premises VPN device to the AzSH virtual network VPN to make sure that the keys match. To view the shared key for the AzSH VPN connection, use one of the following methods:
+
+  - **Azure Stack Hub tenant portal**: Go to the VPN gateway site-to-site connection that you created. In the **Settings** section, select **Shared key**.
+
+      :::image type="content" source="media/site-to-site/vpn-connection.png" alt-text="VPN connection":::
+
+  - **Azure PowerShell**: Use the following PowerShell command:
+
 ```powershell
-Get-AzurerMVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group>
+Get-AzurerRMVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group>
 ```
 
 ---
-
 
 ## Status "Connected" - traffic not flowing
 

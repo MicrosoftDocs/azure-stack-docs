@@ -42,73 +42,81 @@ Follow these steps to register the ASDK with Azure.
 > [!NOTE]
 > All these steps must be run from a computer that has access to the privileged endpoint. For the ASDK, that's the ASDK host computer.
 
+
+
+### [Az modules](#tab/az1)
+
 1. Open a PowerShell console as an admin.  
 
 2. Run the following PowerShell commands to register your ASDK installation with Azure. Sign in to both your Azure billing Subscription ID and the local ASDK installation. If you don't have an Azure billing subscription ID yet, you can [create a free Azure account here](https://azure.microsoft.com/free/?b=17.06). Registering Azure Stack incurs no cost on your Azure subscription.<br><br>Set a unique name for the registration when you run the **Set-AzsRegistration** cmdlet. The **RegistrationName** parameter has a default value of **AzureStackRegistration**. However, if you use the same name on more than one instance of Azure Stack, the script will fail.
 
-### [Az modules](#tab/az1)
-
-  ```powershell  
-  # Add the Azure cloud subscription environment name. 
-  # Supported environment names are AzureCloud, AzureChinaCloud, or AzureUSGovernment depending which Azure subscription you're using.
-  Add-AzAccount -EnvironmentName "<environment name>"
-
-  # Register the Azure Stack resource provider in your Azure subscription
-  Register-AzResourceProvider -ProviderNamespace Microsoft.AzureStack
-
-  # Import the registration module that was downloaded with the GitHub tools
-  Import-Module C:\AzureStack-Tools-az\Registration\RegisterWithAzure.psm1
-
-  # If you have multiple subscriptions, run the following command to select the one you want to use:
-  # Get-AzSubscription -SubscriptionID "<subscription ID>" | Select-AzSubscription
-  
-  # Register Azure Stack
-  $AzureContext = Get-AzContext
-  $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
-  $RegistrationName = "<unique-registration-name>"
-  Set-AzsRegistration `
-  -PrivilegedEndpointCredential $CloudAdminCred `
-  -PrivilegedEndpoint AzS-ERCS01 `
-  -BillingModel Development `
-  -RegistrationName $RegistrationName `
-  -UsageReportingEnabled:$true
-  ```
-
-
-
-### [AzureRM modules](#tab/azurerm1)
-
-  ```powershell  
-  # Add the AzureRMure cloud subscription environment name. 
-  # Supported environment names are AzureRMureCloud, AzureRMureChinaCloud, or AzureRMureUSGovernment depending which AzureRMure subscription you're using.
-  Add-AzureRMAccount -EnvironmentName "<environment name>"
-
-  # Register the AzureRMure Stack resource provider in your AzureRMure subscription
-  Register-AzureRMResourceProvider -ProviderNamespace Microsoft.AzureRMureStack
-
-  # Import the registration module that was downloaded with the GitHub tools
-  Import-Module C:\zureRMureStack-Tools-AzureRM-master\Registration\RegisterWithAzureRMure.psm1
-
-  # If you have multiple subscriptions, run the following command to select the one you want to use:
-  # Get-AzureRMSubscription -SubscriptionID "<subscription ID>" | Select-AzureRMSubscription
-  
-  # Register AzureRMure Stack
-  $AzureRMureContext = Get-AzureRMContext
-  $CloudAdminCred = Get-Credential -UserName AzureRMURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
-  $RegistrationName = "<unique-registration-name>"
-  Set-AzureRMsRegistration `
-  -PrivilegedEndpointCredential $CloudAdminCred `
-  -PrivilegedEndpoint AzS-ERCS01 `
-  -BillingModel Development `
-  -RegistrationName $RegistrationName `
-  -UsageReportingEnabled:$true
-  ```
-
----
+    ```powershell  
+    # Add the Azure cloud subscription environment name. 
+    # Supported environment names are AzureCloud, AzureChinaCloud, or AzureUSGovernment depending which Azure subscription you're using.
+    Add-AzAccount -EnvironmentName "<environment name>"
+    
+    # Register the Azure Stack resource provider in your Azure subscription
+    Register-AzResourceProvider -ProviderNamespace Microsoft.AzureStack
+    
+    # Import the registration module that was downloaded with the GitHub tools
+    Import-Module C:\AzureStack-Tools-az\Registration\RegisterWithAzure.psm1
+    
+    # If you have multiple subscriptions, run the following command to select the one you want to use:
+    # Get-AzSubscription -SubscriptionID "<subscription ID>" | Select-AzSubscription
+    
+    # Register Azure Stack
+    $AzureContext = Get-AzContext
+    $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
+    $RegistrationName = "<unique-registration-name>"
+    Set-AzsRegistration `
+    -PrivilegedEndpointCredential $CloudAdminCred `
+    -PrivilegedEndpoint AzS-ERCS01 `
+    -BillingModel Development `
+    -RegistrationName $RegistrationName `
+    -UsageReportingEnabled:$true
+    ```
 
 3. When the script completes, you should see this message: **Your environment is now registered and activated using the provided parameters.**
 
-    ![Your environment is now registered](media/asdk-register/1.PNG)
+### [AzureRM modules](#tab/azurerm1)
+
+1. Open a PowerShell console as an admin.  
+
+2. Run the following PowerShell commands to register your ASDK installation with Azure. Sign in to both your Azure billing Subscription ID and the local ASDK installation. If you don't have an Azure billing subscription ID yet, you can [create a free Azure account here](https://azure.microsoft.com/free/?b=17.06). Registering Azure Stack incurs no cost on your Azure subscription.<br><br>Set a unique name for the registration when you run the **Set-AzsRegistration** cmdlet. The **RegistrationName** parameter has a default value of **AzureStackRegistration**. However, if you use the same name on more than one instance of Azure Stack, the script will fail.
+
+    ```powershell  
+    # Add the AzureRMure cloud subscription environment name. 
+    # Supported environment names are AzureRMureCloud, AzureRMureChinaCloud, or AzureRMureUSGovernment depending which AzureRMure subscription you're using.
+    Add-AzureRMAccount -EnvironmentName "<environment name>"
+    
+    # Register the AzureRMure Stack resource provider in your AzureRMure subscription
+    Register-AzureRMResourceProvider -ProviderNamespace Microsoft.AzureRMureStack
+    
+    # Import the registration module that was downloaded with the GitHub tools
+    Import-Module C:\zureRMureStack-Tools-AzureRM-master\Registration\RegisterWithAzureRMure.psm1
+    
+    # If you have multiple subscriptions, run the following command to select the one you want to use:
+    # Get-AzureRMSubscription -SubscriptionID "<subscription ID>" | Select-AzureRMSubscription
+    
+    # Register AzureRMure Stack
+    $AzureRMureContext = Get-AzureRMContext
+    $CloudAdminCred = Get-Credential -UserName AzureRMURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
+    $RegistrationName = "<unique-registration-name>"
+    Set-AzureRMsRegistration `
+    -PrivilegedEndpointCredential $CloudAdminCred `
+    -PrivilegedEndpoint AzS-ERCS01 `
+    -BillingModel Development `
+    -RegistrationName $RegistrationName `
+    -UsageReportingEnabled:$true
+    ```
+
+3. When the script completes, you should see this message: **Your environment is now registered and activated using the provided parameters.**
+
+---
+
+
+
+![Your environment is now registered](media/asdk-register/1.PNG)
 
 ## Register in disconnected environments
 

@@ -14,7 +14,6 @@ ms.lastreviewed: 11/22/2020
 
 ---
 
-
 # Use the template validation tool in Azure Stack Hub
 
 Use the template validation tool to check whether your Azure Resource Manager [templates](azure-stack-arm-templates.md) are ready to deploy to Azure Stack Hub. The template validation tool is available in the Azure Stack Hub tools GitHub repo. Download the Azure Stack Hub tools by using the steps described in [Download tools from GitHub](../operator/azure-stack-powershell-download.md).
@@ -33,6 +32,9 @@ Before you use the template validator, run the **Az.CloudCapabilities** PowerShe
 > [!NOTE]
 > If you update your integrated system, or add any new services or virtual extensions, you should run this module again.
 
+
+### [Az modules](#tab/az1)
+
 1. Make sure you have connectivity to Azure Stack Hub. These steps can be done from the Azure Stack Development Kit (ASDK) host, or you can use a [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn) to connect from your workstation.
 2. Import the **Az.CloudCapabilities** PowerShell module:
 
@@ -42,22 +44,32 @@ Before you use the template validator, run the **Az.CloudCapabilities** PowerShe
 
 3. Use the **Get-CloudCapabilities** cmdlet to retrieve service versions and create a cloud capabilities JSON file. If you do not specify `-OutputPath`, the file **AzureCloudCapabilities.json** is created in the current directory. Use your actual Azure location:
 
-### [Az modules](#tab/az1)
-
 ```powershell
 Get-AzCloudCapability -Location <your location> -Verbose
 ```
+
 ### [AzureRM modules](#tab/azurerm1)
+
+1. Make sure you have connectivity to Azure Stack Hub. These steps can be done from the Azure Stack Development Kit (ASDK) host, or you can use a [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn) to connect from your workstation.
+2. Import the **Az.CloudCapabilities** PowerShell module:
+
+    ```powershell
+    Import-Module .\CloudCapabilities\Az.CloudCapabilities.psm1
+    ```
+
+3. Use the **Get-CloudCapabilities** cmdlet to retrieve service versions and create a cloud capabilities JSON file. If you do not specify `-OutputPath`, the file **AzureCloudCapabilities.json** is created in the current directory. Use your actual Azure location:
 
 ```powershell
 Get-AzureRMCloudCapability -Location <your location> -Verbose
 ```
----
 
+---
 
 ## Validate templates
 
 Use these steps to validate templates by using the **Az.TemplateValidator** PowerShell module. You can use your own templates, or use the [Azure Stack Hub Quickstart templates](https://github.com/Azure/AzureStack-QuickStart-Templates).
+
+### [Az modules](#tab/az2)
 
 1. Import the **Az.TemplateValidator.psm1** PowerShell module:
 
@@ -68,20 +80,29 @@ Use these steps to validate templates by using the **Az.TemplateValidator** Powe
 
 2. Run the template validator:
 
-### [Az modules](#tab/az2)
-
 ```powershell
 Test-AzTemplate -TemplatePath <path to template.json or template folder> `
 -CapabilitiesPath <path to cloudcapabilities.json> `
 -Verbose
 ```
+
 ### [AzureRM modules](#tab/azurerm2)
+
+1. Import the **Az.TemplateValidator.psm1** PowerShell module:
+
+    ```powershell
+    cd "c:\AzureStack-Tools-az\TemplateValidator"
+    Import-Module .\Az.TemplateValidator.psm1
+    ```
+
+2. Run the template validator:
 
 ```powershell
 Test-AzureRMTemplate -TemplatePath <path to template.json or template folder> `
 -CapabilitiesPath <path to cloudcapabilities.json> `
 -Verbose
 ```
+
 ---
 
 Template validation warnings or errors are displayed in the PowerShell console and written to an HTML file in the source directory. The following screenshot is an example of a validation report:

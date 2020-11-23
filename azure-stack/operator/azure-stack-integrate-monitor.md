@@ -67,7 +67,7 @@ A Nagios monitoring plugin was developed together with partner Cloudbase Solutio
 
 The plugin is written in Python and leverages the health resource provider REST API. It offers basic functionality to retrieve and close alerts in Azure Stack Hub. Like the System Center management pack, it enables you to add multiple Azure Stack Hub deployments and to send notifications.
 
-With Version 1.2 the Azure Stack Hub – Nagios plugin leverages the Microsoft ADAL library and supports authentication using  Service Principal with a secret or certificate. Also, the configuration has been simplified using a single configuration file with new parameters. It now supports Azure Stack Hub deployments using Azure AD and AD FS as the identity system.
+With Version 1.2 the Azure Stack Hub - Nagios plugin leverages the Microsoft ADAL library and supports authentication using  Service Principal with a secret or certificate. Also, the configuration has been simplified using a single configuration file with new parameters. It now supports Azure Stack Hub deployments using Azure AD and AD FS as the identity system.
 
 > [!IMPORTANT]
 > AD FS only supports interactive sign-in sessions. If you require a non-interactive sign-in for an automated scenario, you must use a SPN.
@@ -151,7 +151,7 @@ The other configuration files contain optional configuration settings as they ca
 
 ### Update Nagios configuration
 
-The Nagios configuration needs to be updated to ensure the Azure Stack Hub – Nagios Plugin is loaded.
+The Nagios configuration needs to be updated to ensure the Azure Stack Hub - Nagios Plugin is loaded.
 
 1. Open the following file:
 
@@ -201,11 +201,11 @@ Troubleshooting the plugin is done by calling the plugin manually in a terminal.
 
 If you're not using Operations Manager, Nagios, or a Nagios-based solution, you can use PowerShell to enable a broad range of monitoring solutions to integrate with Azure Stack Hub.
 
+### [Az modules](#tab/az)
+
 1. To use PowerShell, make sure that you have [PowerShell installed and configured](powershell-install-az-module.md) for an Azure Stack Hub operator environment. Install PowerShell on a local computer that can reach the Resource Manager (administrator) endpoint (https://adminmanagement.[region].[External_FQDN]).
 
 2. Run the following commands to connect to the Azure Stack Hub environment as an Azure Stack Hub operator:
-
-### [Az modules](#tab/az)
 
    ```powershell
    Add-AzEnvironment -Name "AzureStackAdmin" -ArmEndpoint https://adminmanagement.[Region].[External_FQDN] `
@@ -215,7 +215,34 @@ If you're not using Operations Manager, Nagios, or a Nagios-based solution, you 
    Connect-AzAccount -EnvironmentName "AzureStackAdmin"
    ```
 
+3. Use commands such as the following examples to work with alerts:
+
+```powershell
+# Retrieve all alerts
+$Alerts = Get-AzsAlert
+$Alerts
+
+# Filter for active alerts
+$Active = $Alerts | Where-Object { $_.State -eq "active" }
+$Active
+
+# Close alert
+Close-AzsAlert -AlertID "ID"
+
+#Retrieve resource provider health
+$RPHealth = Get-AzsRPHealth
+$RPHealth
+
+# Retrieve infrastructure role instance health
+$FRPID = $RPHealth | Where-Object { $_.DisplayName -eq "Capacity" }
+   Get-AzsRegistrationHealth -ServiceRegistrationId $FRPID.RegistrationId
+```
+
 ### [AzureRM modules](#tab/azurerm)
+
+1. To use PowerShell, make sure that you have [PowerShell installed and configured](powershell-install-az-module.md) for an Azure Stack Hub operator environment. Install PowerShell on a local computer that can reach the Resource Manager (administrator) endpoint (https://adminmanagement.[region].[External_FQDN]).
+
+2. Run the following commands to connect to the Azure Stack Hub environment as an Azure Stack Hub operator:
 
    ```powershell
    Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint https://adminmanagement.[Region].[External_FQDN] `
@@ -224,29 +251,31 @@ If you're not using Operations Manager, Nagios, or a Nagios-based solution, you 
 
    Connect-AzureRMAccount -EnvironmentName "AzureStackAdmin"
    ```
----
 
 3. Use commands such as the following examples to work with alerts:
-   ```powershell
-    # Retrieve all alerts
-    $Alerts = Get-AzsAlert
-    $Alerts
 
-    # Filter for active alerts
-    $Active = $Alerts | Where-Object { $_.State -eq "active" }
-    $Active
+```powershell
+# Retrieve all alerts
+$Alerts = Get-AzsAlert
+$Alerts
 
-    # Close alert
-    Close-AzsAlert -AlertID "ID"
+# Filter for active alerts
+$Active = $Alerts | Where-Object { $_.State -eq "active" }
+$Active
 
-    #Retrieve resource provider health
-    $RPHealth = Get-AzsRPHealth
-    $RPHealth
+# Close alert
+Close-AzsAlert -AlertID "ID"
 
-    # Retrieve infrastructure role instance health
-    $FRPID = $RPHealth | Where-Object { $_.DisplayName -eq "Capacity" }
-    Get-AzsRegistrationHealth -ServiceRegistrationId $FRPID.RegistrationId
-    ```
+#Retrieve resource provider health
+$RPHealth = Get-AzsRPHealth
+$RPHealth
+
+# Retrieve infrastructure role instance health
+$FRPID = $RPHealth | Where-Object { $_.DisplayName -eq "Capacity" }
+Get-AzsRegistrationHealth -ServiceRegistrationId $FRPID.RegistrationId
+```
+
+---
 
 ## Learn more
 
