@@ -41,6 +41,10 @@ This article begins with the process of creating and managing a service principa
 
 Then you learn how to assign the service principal to a role, limiting its resource access.
 
+::: zone pivot="state-disconnected"
+<!-- this is intentionally a noop -->
+::: zone-end
+
 ::: zone pivot="state-connected"
 ## Manage an Azure AD app identity
 
