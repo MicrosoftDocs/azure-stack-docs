@@ -59,7 +59,9 @@ For a list of the files that are provided in this update (OS Build 17784.1381), 
 This update includes improvements and fixes for the latest release of Azure Stack HCI.
 
 ### Improvements and fixes
-This update contains miscellaneous security improvements to internal OS functionality. No additional issues were documented for this release.
+This update contains miscellaneous security improvements to internal OS functionality. It addresses a security vulnerability by preventing applications that run as a SYSTEM account from printing to local ports that point to a file. Failing print jobs log error 50, “The request is not supported” in event ID 372 in the PrintService\Admin event log. To address this issue in the future, make sure your applications or services run as a specific user or service account.
+
+No additional issues were documented for this release.
 
 For more information about the resolved security vulnerabilities, please refer to the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance).
 
