@@ -4,10 +4,10 @@ description: Learn how to deploy a VM using a password stored in an Azure Stack 
 author: mattbriggs
 
 ms.topic: conceptual
-ms.date: 5/27/2020
+ms.date: 11/20/2020
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.lastreviewed: 01/14/2020
+ms.lastreviewed: 11/20/2020
 
 # Intent: As an Azure Stack user, I want to deploy a VM on Azure Stack with a securely-stored password in Key Vault so it's more secure.
 # Keyword: deploy vm password key vault
@@ -44,6 +44,8 @@ The following steps describe the process required to create a VM by retrieving t
 
 The following script creates a key vault and stores a password in the key vault as a secret. Use the `-EnabledForDeployment` parameter when you're creating the key vault. This parameter makes sure that the key vault can be referenced from Azure Resource Manager templates.
 
+### [Az modules](#tab/az1)
+
 ```powershell
 
 $vaultName = "contosovault"
@@ -69,6 +71,35 @@ Set-AzureKeyVaultSecret `
   -SecretValue $secretValue
 
 ```
+
+### [AzureRM modules](#tab/azurerm1)
+
+```powershell
+
+$vaultName = "contosovault"
+$resourceGroup = "contosovaultrg"
+$location = "local"
+$secretName = "MySecret"
+
+New-AzureRMResourceGroup `
+  -Name $resourceGroup `
+  -Location $location
+
+New-AzureRMKeyVault `
+  -VaultName $vaultName `
+  -ResourceGroupName $resourceGroup `
+  -Location $location
+  -EnabledForTemplateDeployment
+
+$secretValue = ConvertTo-SecureString -String '<Password for your virtual machine>' -AsPlainText -Force
+
+Set-AzureKeyVaultSecret `
+  -VaultName $vaultName `
+  -Name $secretName `
+  -SecretValue $secretValue
+
+```
+---
 
 When you run the previous script, the output includes the secret URI (Uniform Resource Identifier). Make a note of this URI. You have to reference it in the [Deploy Windows VM with password in key vault](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv) template. Download the [101-vm-secure-password](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv) folder onto your development computer. This folder contains the `azuredeploy.json` and `azuredeploy.parameters.json` files, which you'll need in the next steps.
 
@@ -109,6 +140,8 @@ Update the `azuredeploy.parameters.json` file with the KeyVault URI, secretName,
 
 Now deploy the template by using the following PowerShell script:
 
+### [Az modules](#tab/az2)
+
 ```powershell  
 New-AzResourceGroupDeployment `
   -Name KVPwdDeployment `
@@ -116,6 +149,18 @@ New-AzResourceGroupDeployment `
   -TemplateFile "<Fully qualified path to the azuredeploy.json file>" `
   -TemplateParameterFile "<Fully qualified path to the azuredeploy.parameters.json file>"
 ```
+### [AzureRM modules](#tab/azurerm2)
+
+```powershell  
+New-AzureRMResourceGroupDeployment `
+  -Name KVPwdDeployment `
+  -ResourceGroupName $resourceGroup `
+  -TemplateFile "<Fully qualified path to the azuredeploy.json file>" `
+  -TemplateParameterFile "<Fully qualified path to the azuredeploy.parameters.json file>"
+```
+
+---
+
 
 When the template is deployed successfully, it results in the following output:
 

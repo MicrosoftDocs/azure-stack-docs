@@ -32,7 +32,15 @@ Find the section that that is specific to your needs when preparing your VHD.
 ::: moniker range="<=azs-1910"
 - Follow the instructions in [Download a Windows VHD from Azure](/azure/virtual-machines/windows/download-vhd) to correctly generalize and download the VHD before moving it to Azure Stack Hub.
 - When you provision the VM on Azure, use PowerShell. Prepare it without the `-ProvisionVMAgent` flag.
-- Remove all VM extensions using the **Remove-AzureRmVMExtension** cmdlet from the VM before generalizing the VM in Azure. You can find which VM extensions are installed by going to `Windows (C:) > WindowsAzure > Logs > Plugins`.
+- Remove all VM extensions using the cmdlet from the VM before generalizing the VM in Azure. You can find which VM extensions are installed by going to `Windows (C:) > WindowsAzure > Logs > Plugins`.
+
+Use the Az PowerShell module:
+
+```powershell  
+Remove-AzVMExtension -ResourceGroupName winvmrg1 -VMName windowsvm -Name "CustomScriptExtension"
+```
+
+Use the AzureRM PowerShell module:
 
 ```powershell  
 Remove-AzureRmVMExtension -ResourceGroupName winvmrg1 -VMName windowsvm -Name "CustomScriptExtension"
