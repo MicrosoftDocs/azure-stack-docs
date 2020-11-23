@@ -4,9 +4,9 @@ description: Learn how to run a sample app that retrieves keys and secrets from 
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 06/15/2020
+ms.date: 11/20/2020
 ms.author: sethm
-ms.lastreviewed: 04/08/2019
+ms.lastreviewed: 11/20/2020
 
 # Intent: As an Azure Stack user, I want to create an app that accesses key vault secrets
 # Keyword: access key vault secrets
@@ -38,6 +38,8 @@ Use the Azure portal or PowerShell to prepare for the sample app.
 > By default, the PowerShell script creates a new app in Active Directory. However, you can register one of your existing applications.
 
 Before running the following script, make sure you provide values for the `aadTenantName` and `applicationPassword` variables. If you don't specify a value for `applicationPassword`, this script generates a random password.
+
+### [Az modules](#tab/az)
 
 ```powershell
 $vaultName           = 'myVault'
@@ -122,6 +124,95 @@ Write-Host "Paste the following settings into the app.config file for the HelloK
 '<add key="AuthClientSecret" value="' + $applicationPassword + '"/>'
 Write-Host
 ```
+### [AzureRM modules](#tab/azurerm)
+
+```powershell
+$vaultName           = 'myVault'
+$resourceGroupName   = 'myResourceGroup'
+$applicationName     = 'myApp'
+$location            = 'local'
+
+# Password for the application. If not specified, this script generates a random password during app creation.
+$applicationPassword = ''
+
+# Function to generate a random password for the application.
+Function GenerateSymmetricKey()
+{
+    $key = New-Object byte[](32)
+    $rng = [System.Security.Cryptography.RNGCryptoServiceProvider]::Create()
+    $rng.GetBytes($key)
+    return [System.Convert]::ToBase64String($key)
+}
+
+Write-Host 'Please log into your Azure Stack Hub user environment' -foregroundcolor Green
+
+$tenantARM = "https://management.local.azurestack.external"
+$aadTenantName = "FILL THIS IN WITH YOUR AAD TENANT NAME. FOR EXAMPLE: myazurestack.onmicrosoft.com"
+
+# Configure the Azure Stack Hub operator's PowerShell environment.
+Add-AzureRMEnvironment `
+  -Name "AzureStackUser" `
+  -ArmEndpoint $tenantARM
+
+$TenantID = Get-AzsDirectoryTenantId `
+  -AADTenantName $aadTenantName `
+  -EnvironmentName AzureStackUser
+
+# Sign in to the user portal.
+Add-AzureRMAccount `
+  -EnvironmentName "AzureStackUser" `
+  -TenantId $TenantID `
+
+$now = [System.DateTime]::Now
+$oneYearFromNow = $now.AddYears(1)
+
+$applicationPassword = GenerateSymmetricKey
+
+# Create a new Azure AD application.
+$identifierUri = [string]::Format("http://localhost:8080/{0}",[Guid]::NewGuid().ToString("N"))
+$homePage = "https://contoso.com"
+
+Write-Host "Creating a new AAD Application"
+$ADApp = New-AzureRMADApplication `
+  -DisplayName $applicationName `
+  -HomePage $homePage `
+  -IdentifierUris $identifierUri `
+  -StartDate $now `
+  -EndDate $oneYearFromNow `
+  -Password $applicationPassword
+
+Write-Host "Creating a new AAD service principal"
+$servicePrincipal = New-AzureRMADServicePrincipal `
+  -ApplicationId $ADApp.ApplicationId
+
+# Create a new resource group and a key vault in that resource group.
+New-AzureRMResourceGroup `
+  -Name $resourceGroupName `
+  -Location $location
+
+Write-Host "Creating vault $vaultName"
+$vault = New-AzureRMKeyVault -VaultName $vaultName `
+  -ResourceGroupName $resourceGroupName `
+  -Sku standard `
+  -Location $location
+
+# Specify full privileges to the vault for the application.
+Write-Host "Setting access policy"
+Set-AzureRMKeyVaultAccessPolicy -VaultName $vaultName `
+  -ObjectId $servicePrincipal.Id `
+  -PermissionsToKeys all `
+  -PermissionsToSecrets all
+
+Write-Host "Paste the following settings into the app.config file for the HelloKeyVault project:"
+'<add key="VaultUrl" value="' + $vault.VaultUri + '"/>'
+'<add key="AuthClientId" value="' + $servicePrincipal.ApplicationId + '"/>'
+'<add key="AuthClientSecret" value="' + $applicationPassword + '"/>'
+Write-Host
+```
+
+---
+
+
 
 The following image shows the output from the script used to create the key vault:
 
