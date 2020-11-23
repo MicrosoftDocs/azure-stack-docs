@@ -4,10 +4,10 @@ titleSuffix: Azure Stack Hub
 description: List of Azure Stack Hub Marketplace FAQs for Windows Server.
 author: sethmanheim
 ms.topic: article
-ms.date: 11/09/2020
+ms.date: 11/19/2020
 ms.author: sethm
 ms.reviewer: avishwan
-ms.lastreviewed: 08/29/2019
+ms.lastreviewed: 11/19/2020
 
 # Intent: As an Azure Stack Hub operator, I want to view Azure Stack Hub Marketplace FAQs for Windows Server.
 # Keyword: azure stack hub windows server marketplace FAQ
@@ -50,28 +50,44 @@ If you download both versions of the image, only the latest version is visible t
 ### What if my user incorrectly checked the "I have a license" box in previous Windows builds, and they don't have a license?
 
 You can change the license model attribute to switch from BYOL to the PAYG model by running the following script:
+### [Az modules](#tab/az1)
 
 ```powershell
 $vm= Get-Azvm -ResourceGroup "<your RG>" -Name "<your VM>"
 $vm.LicenseType = "None"
 Update-AzVM -ResourceGroupName "<your RG>" -VM $vm
 ```
+### [AzureRM modules](#tab/azurerm1)
+ ```powershell
+$vm= Get-AzureRMvm -ResourceGroup "<your RG>" -Name "<your VM>"
+$vm.LicenseType = "None"
+Update-AzureRMVM -ResourceGroupName "<your RG>" -VM $vm
+```
+---
 
 You can check the license type of your VM by running the following command. If the license model says **Windows_Server**, you'll be charged for the BYOL price. Otherwise, you'll be charged for the Windows meter per the PAYG model:
 
 ```powershell
 $vm | ft Name, VmId,LicenseType,ProvisioningState
 ```
-
 ### What if I have an older image and my user forgot to check the "I have a license" box, or we use our own images and we do have Enterprise Agreement entitlement?
 
 You can change the license model attribute to the BYOL model by running the following commands:
+### [Az modules](#tab/az2)
 
 ```powershell
 $vm= Get-Azvm -ResourceGroup "<your RG>" -Name "<your VM>"
 $vm.LicenseType = "Windows_Server"
 Update-AzVM -ResourceGroupName "<your RG>" -VM $vm
 ```
+### [AzureRM modules](#tab/azurerm2)
+
+ ```powershell
+$vm= Get-AzureRMvm -ResourceGroup "<your RG>" -Name "<your VM>"
+$vm.LicenseType = "Windows_Server"
+Update-AzureRMVM -ResourceGroupName "<your RG>" -VM $vm
+```
+---
 
 ### What about other VMs that use Windows Server, such as SQL or Machine Learning Server?
 
