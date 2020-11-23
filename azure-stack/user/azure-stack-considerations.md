@@ -3,9 +3,9 @@ title: Differences between Azure Stack Hub and Azure when using services and bui
 description: Understand the differences between Azure and Azure Stack Hub when using services and building apps.
 author: sethmanheim
 ms.topic: overview
-ms.date: 09/21/2020
+ms.date: 11/20/2020
 ms.author: sethm
-ms.lastreviewed: 12/27/2019
+ms.lastreviewed: 11/20/2020
 
 # Intent: As an Azure Stack user, I want to know the differences between Azure and Azure stack when using services and building apps.
 # Keyword: azure stack building apps
@@ -70,10 +70,23 @@ To make sure that you use a correct version of Azure PowerShell, use [API versio
 
 For other APIs, run the following PowerShell command to output the namespaces, resource types, and API versions that are supported in your Azure Stack Hub subscription (there may still be differences at a property level). For this command to work, you must have already [installed](../operator/powershell-install-az-module.md) and [configured](azure-stack-powershell-configure-user.md) PowerShell for an Azure Stack Hub environment. You must also have a subscription to an Azure Stack Hub offer.
 
+### [Az modules](#tab/az)
+
 ```powershell
 Get-AzResourceProvider | Select ProviderNamespace -Expand ResourceTypes | Select * -Expand ApiVersions | `
 Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} 
 ```
+### [AzureRM modules](#tab/azurerm)
+
+```powershell
+Get-AzureRMResourceProvider | Select ProviderNamespace -Expand ResourceTypes | Select * -Expand ApiVersions | `
+Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} 
+```
+
+---
+
+
+
 
 Example output (truncated):
 ![Example output of Get-AzResourceProvider command](media/azure-stack-considerations/image1.png)
