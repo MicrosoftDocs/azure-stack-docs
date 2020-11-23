@@ -4,10 +4,10 @@ title: Troubleshoot network virtual appliance problems on Azure Stack Hub
 description: Troubleshoot VM or VPN connectivity problems when using a network virtual appliance (NVA) in Microsoft Azure Stack Hub.
 author: sethmanheim
 ms.author: sethm
-ms.date: 09/08/2020
+ms.date: 11/22/2020
 ms.topic: article
 ms.reviewer: sranthar
-ms.lastreviewed: 05/12/2020
+ms.lastreviewed: 11/22/2020
 
 ---
 
@@ -52,13 +52,13 @@ Each NVA must meet basic configuration requirements to function correctly on Azu
 
 ### Check whether IP forwarding is enabled on the NVA
 
-#### Use the Azure Stack Hub portal
+### [Portal](#tab/portal)
 
 1. Locate the NVA resource in the Azure Stack Hub portal, select **Networking**, and then select the network interface.
 2. On the **Network interface** page, select **IP configuration**.
 3. Make sure that IP forwarding is enabled.
 
-#### Use PowerShell
+### [PowerShell Az](#tab/az)
 
 1. Run the following command. Replace the values in angle brackets with your information.
 
@@ -78,6 +78,29 @@ Each NVA must meet basic configuration requirements to function correctly on Azu
    EnableIPForwarding   : True
    NetworkSecurityGroup : null
    ```
+
+### [PowerShell AzureRM](#tab/azurerm)
+
+1. Run the following command. Replace the values in angle brackets with your information.
+
+   ```powershell
+   Get-AzureRMNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NIC name>
+   ```
+
+2. Check the **EnableIPForwarding** property.
+
+3. If IP forwarding isn't enabled, run the following commands to enable it:
+
+   ```powershell
+   $nic2 = Get-AzureRMNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NIC name>
+   $nic2.EnableIPForwarding = 1
+   Set-AzureRMNetworkInterface -NetworkInterface $nic2
+   Execute: $nic2 #and check for an expected output:
+   EnableIPForwarding   : True
+   NetworkSecurityGroup : null
+   ```
+
+---
 
 ### Check whether traffic can be routed to the NVA
 
