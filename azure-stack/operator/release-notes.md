@@ -139,7 +139,7 @@ When you update to a new major version (for example, 1.2005.x to 1.2008.x), the 
 
 After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
 
-- No Azure Stack Hub hotfix available for 2008.
+- [Azure Stack Hub hotfix 1.2008.15.92](https://support.microsoft.com/help/4595069)
 ::: moniker-end
 
 ::: moniker range="azs-2005"
