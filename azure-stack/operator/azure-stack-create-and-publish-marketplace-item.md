@@ -190,7 +190,7 @@ To create a custom marketplace item, do the following:
    Remove-AzsGalleryItem -Name <Gallery package name> -Verbose
    ```
 
-> [!Note]
+> [!Note]  
 > The Marketplace UI may show an error after you remove an item. To fix the error, click **Settings** in the portal. Then, select **Discard modifications** under **Portal customization**.
 
 ### [AzureRM modules](#tab/azurerm)
@@ -233,11 +233,10 @@ To create a custom marketplace item, do the following:
    Remove-AzsGalleryItem -Name <Gallery package name> -Verbose
    ```
 
-> [!Note]
+> [!Note]  
 > The Marketplace UI may show an error after you remove an item. To fix the error, click **Settings** in the portal. Then, select **Discard modifications** under **Portal customization**.
+
 ---
-
-
 
 ## Reference: Marketplace item manifest.json
 
