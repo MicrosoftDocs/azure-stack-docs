@@ -68,7 +68,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- What's new, also net new experiences and features. -->
 
-The Azure Stack Hub Infrastructure Backup service now supports progressive backup. This helps reduce storage requirements on the external backup location. The way files are organized on the external backup store is changed for this feature, it is recommended to not manipulate files under the backup root directory.
+- The Azure Stack Hub Infrastructure Backup service now supports progressive backup. This feature helps reduce storage requirements on the external backup location, and changes the way files are organized on the external backup store. It is recommended that you not manipulate files under the backup root directory.
 
 ### Improvements
 
