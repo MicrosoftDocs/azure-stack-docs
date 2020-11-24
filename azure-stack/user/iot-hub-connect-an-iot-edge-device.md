@@ -14,7 +14,7 @@ ms.lastreviewed: 11/20/2020
 
 [!INCLUDE [preview-banner](../includes/iot-hub-preview.md)]
 
-This article shows you how to connect a virtual IoT Edge device to the IoT Hub service running on Azure Stack Hub. You can use the same general process to connect a physical device to your IoT Hub.
+This article shows you how to connect a virtual IoT Edge device to an IoT Hub service running on Azure Stack Hub. You can use the same general process to connect a physical device to your IoT Hub.
 
 ## Prerequisites
 
@@ -37,7 +37,7 @@ Here's a summary of the steps you'll complete, to connect an IoT Edge device to 
 3. Configure the software and services required for the Edge device.
 4. Test the Edge device to make sure it's working properly and communicating with your IoT Hub.
 
-Before running the script in each of the following sections, be sure to update the script placeholders to match your environment's configuration:
+Before running the script in each of the following sections, be sure to update the script placeholders to match your environment's configuration. Make note of the values you use, as you'll need them in later sections:
 
 | Placeholder | Example | Description |
 |-------------|---------|-------------|
@@ -66,9 +66,9 @@ In this section, you deploy a new Linux VM, which will serve as the virtual IoT 
 1. Using the [Create a Linux server VM by using the Azure Stack Hub portal](azure-stack-quick-linux-portal.md) quick start, install a Linux VM on your Azure Stack Hub instance. Be sure to enable port **SSH (22)** on the **Select public inbound ports** property, when you get to the **Settings** page. 
 
    > [!NOTE]
-   > You only need to complete the first 5 sections, up through **Connect to the VM**, as you won't need the NGINX web server. Also, don't complete the **Clean up resources** section, as you'll use the Linux VM for the remainder of this article.
+   > You only need to complete the first 5 sections, up through **Connect to the VM**, as you won't need the NGINX web server. 
 
-2. After you've created the VM and its running, connect to the VM using PuTTY and the user account you specified during VM provisioning. Once connected, create a data subdirectory off of your user account home directory, for example:
+2. After you've created and connected to the VM using PuTTY, create a data subdirectory off of your user account home directory, for example:
 
    ```bash
    mkdir edged1
@@ -78,26 +78,26 @@ In this section, you deploy a new Linux VM, which will serve as the virtual IoT 
 
    **Use cURL script:**
    ```bash
-   # navigate to edge device data directory
+   # Navigate to the edge device data directory
    cd <DATA-DIR>
    
-   # download script and configs
+   # Download certGen.sh script file, and openssl_root_ca.cnf config file
    curl -Lo certGen.sh https://raw.githubusercontent.com/Azure/iotedge/master/tools/CACertificates/certGen.sh
    curl -Lo openssl_root_ca.cnf https://raw.githubusercontent.com/Azure/iotedge/master/tools/CACertificates/openssl_root_ca.cnf
    ```
    **Use Git to clone the repository:**
    
    ```bash
-   # navigate to home directory
+   # Navigate to the home directory
    cd /home/<USER-ACCOUNT>
    
-   # clone iotedge repo
+   # Clone the iotedge repo, which contains the certGen.sh script file and openssl_root_ca.cnf config file
    git clone https://github.com/Azure/iotedge.git
    
-   # navigate to edge device data directory
+   # Navigate to the edge device data directory
    cd <DATA-DIR>
    
-   # Copy the config and script files from the cloned IoT Edge repo into your working directory.
+   # Copy certGen.sh and openssl_root_ca.cnf into your working directory
    cp /home/<USER-ACCOUNT>/iotedge/tools/CACertificates/*.cnf .
    cp /home/<USER-ACCOUNT>/iotedge/tools/CACertificates/certGen.sh .
    ```
@@ -147,20 +147,20 @@ Now install the IoT Hub root CA certificate you exported in the previous section
 2. Run the following script from your Linux VM PuTTY session, where you've stored the IoT Hub root CA file. The script will verify that the Edge device TLS connection is successful, and install the root CA in the Edge device's trusted store:
 
    ```bash
-   # verify connection failed first
-   # expected response: Verify return code: 2 (unable to get issuer certificate)
+   # Verify connection failed first
+   # Expected response: Verify return code: 2 (unable to get issuer certificate)
    openssl s_client -connect <IOT-HUB-HOSTNAME>:443
    
-   # verify connection succeeded when root CA provided
-   # expected response: Verify return code: 0 (ok)
+   # Verify connection succeeded when root CA provided
+   # Expected response: Verify return code: 0 (ok)
    openssl s_client -connect <IOT-HUB-HOSTNAME>:443 -CAfile <IOT-HUB-ROOT-CA>
    
-   # install root CA in the trusted store on Edge device
+   # Install root CA in the trusted store on Edge device
    sudo cp <IOT-HUB-ROOT-CA> /usr/local/share/ca-certificates/
    sudo update-ca-certificates
    
-   # verify connection succeeded even when no root CA provided
-   # expected response: Verify return code: 0 (ok)
+   # Verify connection succeeded even when no root CA provided
+   # Expected response: Verify return code: 0 (ok)
    openssl s_client -connect <IOT-HUB-HOSTNAME>:443
    ```
 
@@ -171,10 +171,10 @@ Now install the IoT Hub root CA certificate you exported in the previous section
 Now append the IoT Hub root CA you exported and copied to the Edge device, to the device root CA you generated earlier:
 
 ```bash
-# navigate to home directory
+# Navigate to home directory
 cd /home/<USER-ACCOUNT>
 
-# append IoT Hub root CA to the device root CA
+# Append IoT Hub root CA to the device root CA
 cat <IOT-HUB-ROOT-CA> >> certs/azure-iot-test-only.root.ca.cert.pem
 ```
 -----
@@ -188,6 +188,9 @@ In this section, you'll complete the IoT Hub and VM configuration required by th
 1. Return to the VM PuTTY session and run the following script to register the Microsoft key and software repository feed:
 
    ```bash
+   # Navigate to the home directory
+   cd /home/<USER-ACCOUNT>
+
    # Install the repository configuration. 
    curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
    
@@ -213,9 +216,12 @@ In this section, you'll complete the IoT Hub and VM configuration required by th
    sudo apt-get install iotedge
    ```
 
+> [!NOTE]
+> You can ignore the **IMPORTANT: Please update the configuration file** notice for now, as you'll update it in a later section.
+
 ### Create an IoT Edge device in IoT Hub
 
-1. Sign in to the [Azure Stack Hub user portal](../user/azure-stack-use-portal.md), then navigate to the **IoT Hub** service.
+1. Return to the [Azure Stack Hub user portal](../user/azure-stack-use-portal.md), and navigate to the **IoT Hub** service.
 
 2. Select your IoT Hub resource, then select the **IoT Edge** page, then **Add an IoT Edge device**.
 
@@ -226,46 +232,53 @@ In this section, you'll complete the IoT Hub and VM configuration required by th
 
    [![iot edge - create a device](media\iot-hub-connect-an-iot-edge-device\create-iot-edge-device.png)](media\iot-hub-connect-an-iot-edge-device\create-iot-edge-device.png#lightbox)
 
-5. Wait for the portal to return to the **IoT Edge** page. Select your new device from the devices list.
+5. When the portal returns to the **IoT Edge** page, select your new device from the devices list.
 
    [![iot edge - view devices](media\iot-hub-connect-an-iot-edge-device\view-iot-edge-devices.png)](media\iot-hub-connect-an-iot-edge-device\view-iot-edge-devices.png#lightbox)
 
-6. On the device details page, use the **Copy** button at the right of **Primary Connection String** to copy the string to the clipboard.
+6. On the device details page, use the **Copy** button at the right of **Primary Connection String** to copy the string to the clipboard. You'll use the connection string in the next section.
 
    [![iot edge - device details](media\iot-hub-connect-an-iot-edge-device\iot-edge-device-details.png)](media\iot-hub-connect-an-iot-edge-device\iot-edge-device-details.png#lightbox)
 
 ### Configure the virtual IoT Edge device on the VM
 
-1. Return to the VM PuTTY session, and open the configuration file on the virtual Edge device:
+1. Return to the VM PuTTY session. Using Bash, open the configuration file in Nano on the virtual Edge device:
 
    ```bash
    sudo nano /etc/iotedge/config.yaml
    ```
 
-2. Set the Edge device connection string, by replacing the `<ADD DEVICE CONNECTION STRING HERE>` placeholder with the connection string you copied to the clipboard in the previous section:
+2. Locate the `provisioning` property under comment **# Manual provisioning configuration using a connection string**, in the **Provisioning mode and settings** section. Update the Edge device connection string, by replacing the `<ADD DEVICE CONNECTION STRING HERE>` placeholder with the connection string you copied to the clipboard in the previous section:
 
    > [!NOTE]
-   > To paste clipboard contents into Nano, press and hold the **Shift** key and click the right mouse button. Or, press the **Shift** and **Insert** keys simultaneously.
+   > To paste clipboard contents into Nano, press and hold the **Shift** key and click the right mouse button. Or, press the **Shift** and **Insert** keys simultaneously. If the paste operation shifts your cursor to the rightmost end of the connection string, hit the **Home** key to return to the leftmost end.
 
    ```yaml
-   # Manual provisioning configuration
+   # Manual provisioning configuration using a connection string
    provisioning:
      source: "manual"
      device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
    ```
 
-3. Uncomment the `certificates` section and provide the file URIs to certificates, for example:
+3. Locate and uncomment the `certificates` property in the **Certificate settings** section. Uncomment and replace the file URIs with the paths to the 3 certificates you created earlier, for example:
 
    ```yaml
    certificates:
-     device_ca_cert: "<DATA-DIR>/certs/iot-edge-device-<DEVICE-CA-CERT-NAME>-full-chain.cert.pem"
-     device_ca_pk: "<DATA-DIR>/private/iot-edge-device-<DEVICE-CA-CERT-NAME>.key.pem"
+     device_ca_cert: "<DATA-DIR>/certs/iot-edge-device-ca-<DEVICE-CA-CERT-NAME>-full-chain.cert.pem"
+     device_ca_pk: "<DATA-DIR>/private/iot-edge-device-ca-<DEVICE-CA-CERT-NAME>.key.pem"
      trusted_ca_certs: "<DATA-DIR>/certs/azure-iot-test-only.root.ca.cert.pem"
    ```
 
-4. Save and close the file using **CTRL** + **X**, then **Y**, then **Enter**.
+4. When completed, the `provisioning` and `certificates` properties should look similar to the following:
 
-5. Restart the daemon:
+   [![Nano editor - provisioning property](media\iot-hub-connect-an-iot-edge-device\nano-edit-config-yml-connection-string.png)](media\iot-hub-connect-an-iot-edge-device\nano-edit-config-yml-connection-string.png#lightbox)
+
+   [![Nano editor - certificates property](media\iot-hub-connect-an-iot-edge-device\nano-edit-config-yml-certificates.png)](media\iot-hub-connect-an-iot-edge-device\nano-edit-config-yml-certificates#lightbox)
+
+
+5. Save and close the file using **CTRL** + **X**, then **Y**, then **Enter**.
+
+6. Restart the daemon:
    
    ```bash
    sudo systemctl restart iotedge
@@ -300,9 +313,11 @@ In this section, you'll complete the IoT Hub and VM configuration required by th
    sudo iotedge list
    ```
 
-## Next steps
+## Clean up resources
 
-If necessary, return to the [Create a Linux server VM by using the Azure Stack Hub portal](azure-stack-quick-linux-portal.md) quick start, and complete the **Clean up resources** section.
+If you'll no longer be using them, return to the [Azure Stack Hub user portal](../user/azure-stack-use-portal.md) and delete the VM and IoT Hub resources you created earlier.
+
+## Next steps
 
 The following are supplemental resources:
 
