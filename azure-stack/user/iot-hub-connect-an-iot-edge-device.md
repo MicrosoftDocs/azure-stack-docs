@@ -278,7 +278,7 @@ In this section, you'll complete the IoT Hub and VM configuration required by th
 
 5. Save and close the file using **CTRL** + **X**, then **Y**, then **Enter**.
 
-6. Once you return to Bash, restart the daemon:
+6. After you return to Bash, restart the daemon:
    
    ```bash
    sudo systemctl restart iotedge
@@ -286,7 +286,7 @@ In this section, you'll complete the IoT Hub and VM configuration required by th
 
 ## Verify a successful installation
 
-1. Return to the VM PuTTY session, and check the status of the IoT Edge Daemon:
+1. Check the status of the IoT Edge Daemon:
 
    ```bash
    systemctl status iotedge
