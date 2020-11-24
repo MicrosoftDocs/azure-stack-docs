@@ -10,22 +10,25 @@ ms.author: jeguan
 
 > Applies to: Azure Stack HCI, Windows Server 2019 Datacenter
 
-In this quickstart, you'll learn how to set up an Azure Kubernetes Service host. To instead use Windows Admin Center, see [Set up with Windows Admin Center](setup.md).
+In this quickstart, you'll learn how to set up an Azure Kubernetes Service host using PowerShell. To instead use Windows Admin Center, see [Set up with Windows Admin Center](setup.md).
 
 ## Before you begin
 
-Before you begin, make sure you have one of the following:
+Make sure you have one of the following:
  - 2-4 node Azure Stack HCI cluster
  - Windows Server 2019 Datacenter failover cluster
  - Single node Windows Server 2019 Datacenter 
-  
+ 
+Before getting started, make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page. 
 **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
 
 ## Step 1: Download and install the AksHci PowerShell module
 
-Download the `AKS-HCI-Public=Preview-Nov-2020` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module.
+Download the `AKS-HCI-Public-Preview-Nov-2020` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module.
 
-If you have previously installed Azure Kubernetes Service on Azure Stack HCI using PowerShell or Windows Admin Center, there are two installation flows for the new PowerShell module. If you want a clean install where your you begin with a clean system and your previously deployed workloads are removed, go to Step 1.1 to follow the clean install flow. If you want to keep your system and workloads as is, skip to Step 1.2 to follow the upgrade flow.
+If you have previously installed Azure Kubernetes Service on Azure Stack HCI using PowerShell or Windows Admin Center, there are two installation flows for the new PowerShell module:
+ - Clean install where begin with a clean system and your previously deployed workloads are removed, go to Step 1.1 
+ - Upgrade flow if you want to keep your system and workloads as is, go to Step 1.2
 
 ### Step 1.1: Clean install of the AksHci PowerShell module
 
@@ -40,7 +43,7 @@ Run the following command before proceeding.
    Import-Module AksHci
    ```
 
-After running the above command, close all PowerShell windows and reopen an administrative session to run the commands in Step 2.
+Close all PowerShell windows again and reopen an administrative session and proceed to Step 1.3 - validate upgraded PowerShell module.
 
 ### Step 1.2: Upgrade the AksHci PowerShell module
 
@@ -49,36 +52,44 @@ After running the above command, close all PowerShell windows and reopen an admi
    ```powershell
    Import-Module AksHci
    ```
+  
+After running the above commands, close all PowerShell windows and reopen an administrative session to validate PowerShell module upgrade as detailed below and then run the `Update-AksHci` command as instructed later in the document.
 
-To check if you have the latest version of the PowerShell module, run the following command in a new PowerShell administrative window.
+## Step 1.3: Validate upgraded PowerShell module
+
+**Close all PowerShell windows** and reopen a new administrative session to check if you have the latest version of the PowerShell module.  
 
    ```powershell
    Get-Command -Module AksHci
    ```
-
-If you have the latest version, you will see an output like this:
-
-| CommandType  |   Name                                          | Version  |  Source |
------------    | ----                                            | -------  |  ------ |
-| Alias        |   Get-AksHciConfig                              |    0.2.9 |  AksHci |
-| Alias        |   Initialize-AksHciNode                         |    0.2.9 |  AksHci |
-| Alias        |   Set-AksHciConfig                              |    0.2.9 |  AksHci |
-| Function     |   Get-AksHciCluster                             |    0.2.9 |  AksHci |
-| Function     |   Get-AksHciCredential                          |    0.2.9 |  AksHci |
-| Function     |   Get-AksHciKubernetesVersion                   |    0.2.9 |  AksHci |
-| Function     |   Get-AksHciLogs                                |    0.2.9 |  AksHci |
-| Function     |   Get-AksHciVmSize                              |    0.2.9 |  AksHci |
-| Function     |   Install-AksHci                                |    0.2.9 |  AksHci |
-| Function     |   Install-AksHciArcOnboarding                   |    0.2.9 |  AksHci |
-| Function     |   New-AksHciCluster                             |    0.2.9 |  AksHci |
-| Function     |   Remove-AksHciCluster                          |    0.2.9 |  AksHci |
-| Function     |   Restart-AksHci                                |    0.2.9 |  AksHci |
-| Function     |   Set-AksHciClusterNodeCount                    |    0.2.9 |  AksHci |
-| Function     |   Uninstall-AksHci                              |    0.2.9 |  AksHci |
-| Function     |   Uninstall-AksHciArcOnboarding                 |    0.2.9 |  AksHci |
-| Function     |   Update-AksHciCluster                          |    0.2.9 |  AksHci |
-
-After running the above commands, close all PowerShell windows and reopen an administrative session to run the `Update-AksHci` command as instructed after Step 5.
+ 
+**Output:**
+```
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Alias           Initialize-AksHciNode                              0.2.11     AksHci
+Function        Get-AksHciCluster                                  0.2.11     AksHci
+Function        Get-AksHciConfig                                   0.2.11     AksHci
+Function        Get-AksHciCredential                               0.2.11     AksHci
+Function        Get-AksHciKubernetesVersion                        0.2.11     AksHci
+Function        Get-AksHciLogs                                     0.2.11     AksHci
+Function        Get-AksHciUpdates                                  0.2.11     AksHci
+Function        Get-AksHciVersion                                  0.2.11     AksHci
+Function        Get-AksHciVmSize                                   0.2.11     AksHci
+Function        Install-AksHci                                     0.2.11     AksHci
+Function        Install-AksHciAdAuth                               0.2.11     AksHci
+Function        Install-AksHciArcOnboarding                        0.2.11     AksHci
+Function        New-AksHciCluster                                  0.2.11     AksHci
+Function        Remove-AksHciCluster                               0.2.11     AksHci
+Function        Restart-AksHci                                     0.2.11     AksHci
+Function        Set-AksHciClusterNodeCount                         0.2.11     AksHci
+Function        Set-AksHciConfig                                   0.2.11     AksHci
+Function        Uninstall-AksHci                                   0.2.11     AksHci
+Function        Uninstall-AksHciAdAuth                             0.2.11     AksHci
+Function        Uninstall-AksHciArcOnboarding                      0.2.11     AksHci
+Function        Update-AksHci                                      0.2.11     AksHci
+Function        Update-AksHciCluster                               0.2.11     AksHci
+```
 
 ## Step 2: Prepare your machine(s) for deployment
 
@@ -94,7 +105,7 @@ When the checks are finished, you'll see "Done" displayed in green text.
 
 ## Step 3: Configure your deployment
 
-Set the configuration settings for the Azure Kubernetes Service host. **If you're deploying on a  2-4 node Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster, you must specify the `imageDir` and `cloudConfigLocation` parameters.** For a single node Windows Server 2019 Datacenter, all parameters are optional and set to their default values. However, for optimal performance, **we recommend using a 2-4 node Azure Stack HCI cluster deployment.**
+Set the configuration settings for the Azure Kubernetes Service host. **If you're deploying on a 2-4 node Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster, you must specify the `imageDir` and `cloudConfigLocation` parameters.** For a single node Windows Server 2019 Datacenter, all parameters are optional and set to their default values. However, for optimal performance, **we recommend using a 2-4 node Azure Stack HCI cluster deployment.**
 
 Configure your deployment with the following command.
 
@@ -124,10 +135,9 @@ Configure your deployment with the following command.
                     [-nodeAgentPort <int>]
                     [-nodeAgentAuthorizerPort <int>]
                     [-clusterRoleName <String>]
+                    [-cloudLocation <String>]
                     [-skipHostLimitChecks]
                     [-insecure]
-                    [-stagingShare <String>]
-                    [-useStagingCR]
                     [-skipUpdates]
                     [-forceDnsReplication]
 
@@ -165,11 +175,11 @@ Path to an SSH public key file. Using this public key, you will be able to log i
 
 `-vipPoolStartIp`
 
-When using VIP pools for your deployment, this parameter specifies the network start of the pool. You should use VIP pools for long-lived deployments to guarantee that a pool of IP addresses remain consistent. This is useful when you have workloads that always need to reachable. Default is none.
+When using VIP pools for your deployment, this parameter specifies the network start of the pool. You should use VIP pools for long-lived deployments to guarantee that a pool of IP addresses remain consistent. This is useful when you have workloads that always need to be reachable. Default is none.
 
 `-vipPoolEndIp`
 
-When using VIP pools for your deployment, this parameter specifies the network end of the pool. You should use VIP pools for long-lived deployments to guarantee that a pool of IP addresses remain consistent. This is useful when you have workloads that always need to reachable. Default is none.
+When using VIP pools for your deployment, this parameter specifies the network end of the pool. You should use VIP pools for long-lived deployments to guarantee that a pool of IP addresses remain consistent. This is useful when you have workloads that always need to be reachable. Default is none.
 
 `-macPoolStart` 
 
@@ -193,23 +203,23 @@ This takes in either `unstacked_haproxy` or `stacked_kube_vip`. `unstacked_hapro
 
 This specifies the static IP address to use as the Azure Kubernetes Service Host API server address when the `kvaLoadBalancerType` parameter is set to `stacked_kube_vip`. If `stacked_kube_vip` is used, this parameter must be specified.
 
-`proxyServerHTTP`
+`-proxyServerHTTP`
 
 This provides a proxy server URI that should be used by all components that need to reach HTTP endpoints. The URI format includes the URI schema, server address, and port (i.e. https://server.com:8888). Default is none.
 
-`proxyServerHTTPS`
+`-proxyServerHTTPS`
 
 This provides a proxy server URI that should be used by all components that need to reach HTTPS endpoints. The URI format includes the URI schema, server address, and port (i.e. https://server.com:8888). Default is none.
 
-`proxyServerNoProxy`
+`-proxyServerNoProxy`
 
 This is a comma-delimited string of addresses that will be exempt from the proxy. Default is none.
 
-`proxyServerCredential`
+`-proxyServerCredential`
 
 This provides the username and password to authenticate to your HTTP/HTTPS proxy servers. You can use `Get-Credential` to generate a PSCredential object to pass to this parameter. Default is none.
 
-`cloudServiceCidr`
+`-cloudServiceCidr`
 
 This can be used to provide a static IP/network prefix to be assigned to the MOC CloudAgent service. This value should be provided using the CIDR format. (Example: 192.168.1.2/16). You may want to specify this to ensure that anything important on the network is always accessible because the IP address will not change. Default is none.
 
@@ -237,6 +247,10 @@ The TCP/IP port number that nodeagents should use for their authorization port. 
 
 This specifies the name to use when creating cloudagent as a generic service within the cluster. This defaults to a unique name with a prefix of ca- and a guid suffix (for example: “ca-9e6eb299-bc0b-4f00-9fd7-942843820c26”). We do not recommend changing the default.
 
+`-cloudLocation` 
+
+This parameter provides a custom Microsoft Operated Cloud location name. The default name is "MocLocation". We do not recommend changing the default.
+
 `-skipHostLimitChecks`
 
 Requests the script to skip any checks it does to confirm memory and disk space is available before allowing the deployment to proceed. We do not recommend using this setting.
@@ -247,19 +261,11 @@ Deploys Azure Kubernetes Service on Azure Stack HCI components such as cloudag
 
 `-skipUpdates`
 
-Use this flag if you want to skip any updates available.
-
-`stagingShare`
-
-This is used to copy Azure Kubernetes Service on Azure Stack HCI deployment files from a local server instead of our SFS server. This is not recommended and should only be used for private testing.
-
-`useStagingCR`
-
-This is a private testing feature that is used with `stagingShare`
+Use this flag if you want to skip any updates available. We do not recommend using this setting.
 
 `-forceDnsReplication`
 
-DNS replication can take up to an hour on some systems. This will cause the deployment to be slow. If you hit this issue, you'll see that the Install-AksHci will be stuck in a loop. To get past this issue, try to use this flag. The `-forceDnsReplication` flag is not a guaranteed fix. If the logic behind the flag fails, the error will be hidden, and the command will carry on as if the flag was not provided.
+DNS replication can take up to an hour on some systems. This will cause the deployment to be slow. If you hit this issue, you'll see that the Install-AksHci will be stuck in a loop. To get past this issue, try to use this flag. The `-forceDnsReplication` flag is not a guaranteed fix. If the logic behind the flag fails, the error will be hidden, and the command will carry on as if the flag was not provided. 
 
 ### Reset the Azure Kubernetes Service on Azure Stack HCI configuration
 
@@ -318,17 +324,13 @@ Get-AksHciLogs
 
 ## Update to the latest version of Azure Kubernetes Service on Azure Stack HCI
 
-To update to the latest version of Azure Kubernets Service on Azure Stack HCI, run the following command. This update command will only update the Azure Kubernetes Service host and the platform.
+To update to the latest version of Azure Kubernetes Service on Azure Stack HCI, run the following command. The update command only works if you have installed the Oct release. It will not work for releases older than the Oct release. This update command updates the Azure Kubernetes Service host and the on premise Microsoft operated cloud platform. For this preview release, the Kubernetes version and AKS host OS version still remain the same. This command does not upgrade any existing workload clusters. New workload clusters created after updating the AKS host will differ from existing workload clusters in terms of Windows node OS version and Kubernetes version.
 
    ```powershell
    Update-AksHci
    ```
-
-To update your deployed Kubernetes clusters, run the following command.
-
-   ```powershell
-   Update-AksHciCluster -clusterName <String>
-   ```
+   
+We recommend updating workload clusters immediately after updating the management cluster to prevent running unsupported Windows Server OS versions in your Kubernetes clusters with Windows nodes. To update your workload cluster, visit [update your workload cluster](create-kubernetes-cluster-powershell.md).
 
 ## Reinstall Azure Kubernetes Service on Azure Stack HCI
 

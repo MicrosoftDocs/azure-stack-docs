@@ -12,7 +12,7 @@ ms.reviewer:
 
 > Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
 
-A persistent volume represents a piece of storage that has been provisioned for use with Kubernetes pods. A persistent volume can be used by one or more pods and is meant for long-term storage. It's also independent of pod or node lifecycle. In this section, you'll see how to create a persistent volume and how to use this volume in your Windows application. For more information, see [Persistent volumes in Kubernetes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
+A persistent volume represents a piece of storage that has been provisioned for use with Kubernetes pods. A persistent volume can be used by one or more pods and is meant for long-term storage. It's also independent of pod or node lifecycle. While you can provision a PVC for both Windows and Linux nodes, in this section, you'll see how to create a persistent volume and how to use this volume in your Windows application. For more information, see [Persistent volumes in Kubernetes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
 
 ## Before you begin
 
@@ -20,7 +20,6 @@ Here's what you need to get started:
 
 * A Kubernetes cluster with at least one Windows worker node.
 * A kubeconfig file to access the Kubernetes cluster.
-
 
 ## Create a persistent volume claim
 
@@ -40,13 +39,13 @@ spec:
 ```
 Create the volume by running the following commands in an administrative PowerShell session on one of the servers in the Azure Stack HCI cluster (using a method such as [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession) or Remote Desktop to connect to the server): 
 
-
+```
 kubectl create -f pvc-akshci-csi.yaml 
 ```
 The following output will show that your persistent volume claim has been created successfully:
 
 **Output:**
-
+```
 persistentvolumeclaim/pvc-akshci-csi created
 ```
 
@@ -92,34 +91,34 @@ spec:
 ```
 
 To create a pod with the above yaml definition, run:
-
-Kubectl create -f winwebserver.yaml 
 ```
- 
-To make sure the pod is running, run the following command. Wait a few minutes until the pod is in a running state, since pulling the image takes time. 
+kubectl create -f winwebserver.yaml 
+```
 
+To make sure the pod is running, run the following command. Wait a few minutes until the pod is in a running state, since pulling the image takes time. 
+```
 kubectl get pods -o wide 
 ```
 Once your pod is running, view the pod status by running the following command: 
-
+```
 kubectl.exe describe pod %podName% 
 ```
 
 To verify your volume has been mounted in the pod, run the following command:
-
+```
 kubectl exec -it %podname% cmd.exe 
 ```
 
 ## Delete a persistent volume claim
 
 Before deleting a persistent volume claim, you must delete the app deployment by running:
-
-kubectl.exe delete deployments win-webserver
+```
+kubectl delete deployments win-webserver
 ```
 
 You can then delete a persistent volume claim by running:
-
-kubectl.exe delete PersistentVolumeClaim pvc-akshci-csi
+```
+kubectl delete PersistentVolumeClaim pvc-akshci-csi
 ```
 
 ## Next steps
