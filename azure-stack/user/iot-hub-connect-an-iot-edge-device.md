@@ -292,20 +292,32 @@ In this section, you'll complete the IoT Hub and VM configuration required by th
    systemctl status iotedge
    ```
 
-2. Examine the daemon logs:
+2. You should see that the IoT Edge service started successfully, similar to the following. If so, you can jump to step #4.
 
-   ```bash
-   journalctl -u iotedge --no-pager --no-full
-   ```
-
-3. Run the troubleshooting tool to check for the most common configuration and networking errors:
-
-   ```bash
-   sudo iotedge check
-   ```
+   [![IoT Edge service running successfully](media\iot-hub-connect-an-iot-edge-device\iotedge-service-running.png)](media\iot-hub-connect-an-iot-edge-device\iotedge-service-running.png#lightbox)
 
    > [!NOTE]
-   > The `$edgeHub` system module is optional, and isn't deployed to the device until you deploy your first IoT Edge module. As such, `iotedge check` will return an error indicating that `$edgeHub` cannot bind to ports during a host connectivity check. This error can be ignored if `$edgeHub` is not required in your deployment.  
+   > The `$edgeHub` system module is optional, and isn't deployed to the device until you deploy your first IoT Edge module. As such, `iotedge check` may return an error indicating that `$edgeHub` cannot bind to ports during a host connectivity check. This error can be ignored if `$edgeHub` is not required in your deployment.  
+
+3. If the IoT Edge service failed:
+   - You'll see something similar to the following:
+   [![IoT Edge service running successfully](media\iot-hub-connect-an-iot-edge-device\iotedge-service-failed.png)](media\iot-hub-connect-an-iot-edge-device\iotedge-service-failed.png#lightbox)   
+   - To troubleshoot, you can:
+     - Examine the daemon logs:
+
+         ```bash
+         journalctl -u iotedge --no-pager --no-full
+         ```
+     - Run the troubleshooting tool to check for the most common configuration and networking errors:
+
+         ```bash
+         sudo iotedge check
+         ```
+
+   - If you find that you have a malformed .YML file as in the example above, simply:
+      - fix the .YML file
+      - repeat the steps in [Configure the virtual IoT Edge device on the VM](#configure-the-virtual-IoT-Edge-device-on-the-VM)
+      - repeat the steps in [this section](#verify-a-successful-installation)
 
 4. Finally, list the running modules:
 
