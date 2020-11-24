@@ -41,7 +41,7 @@ node.kubernetes.io/os=Windows:NoSchedule
 ```
 Run `kubectl get` and identify the Windows worker nodes you want to taint.
 
-```PowerShell
+```
 kubectl get nodes --all-namespaces -o=custom-columns=NAME:.metadata.name,OS:.status.nodeInfo.operatingSystem
 ```
 Output:
@@ -54,7 +54,7 @@ my-aks-hci-cluster-md-md-1-5xlwz         windows
 
 Taint Windows server worker nodes using `kubectl taint node`.
 
-```PowerShell
+```
 kubectl taint node my-aks-hci-cluster-md-md-1-5h4bl node.kubernetes.io/os=Windows:NoSchedule
 kubectl taint node my-aks-hci-cluster-md-md-1-5xlwz node.kubernetes.io/os=Windows:NoSchedule
 ```
