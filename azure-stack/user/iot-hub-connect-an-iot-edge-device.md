@@ -43,7 +43,7 @@ Before running the script in each of the following sections, be sure to update t
 |-------------|---------|-------------|
 | `<DEVICE-CA-CERT-NAME>` | `edged1cert`| The name you give the IoT Edge device CA certificate. |
 | `<IOT-HUB-HOSTNAME>`| `test-hub-1.mgmtiothub.region.mydomain.com`| Your IoT Hub host name. |
-| `<IOT-HUB-ROOT-CA>`| `root.cer`| The filename you give to the exported IoT Hub root CA. |
+| `<IOT-HUB-ROOT-CA>`| `root.cer`| The filename you give to the exported IoT Hub root CA (if using a private CA). |
 | `<DATA-DIR>`| `/home/edgeadmin/edged1`| The full path to the data directory you create on the Linux VM. |
 | `<USER-ACCOUNT>`| `edgeadmin`| The account you use to sign in to the Linux VM. |
 
