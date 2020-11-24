@@ -38,7 +38,7 @@ There are several prerequisites that need to be in place before you can deploy t
 
   |Supported Azure Stack Hub version|SQL RP version|Windows Server that RP service is running on
   |-----|-----|-----|
-  |2005|[SQL RP version 1.1.93.0](https://aka.ms/azshsqlrp11930)|Microsoft AzureStack Add-on RP Windows Server INTERNAL ONLY
+  |2008, 2005|[SQL RP version 1.1.93.0](https://aka.ms/azshsqlrp11930)|Microsoft AzureStack Add-on RP Windows Server INTERNAL ONLY
   |2005, 2002, 1910|[SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470)|Windows Server 2016 Datacenter - Server Core|
   |1908|[SQL RP version 1.1.33.0](https://aka.ms/azurestacksqlrp11330)|Windows Server 2016 Datacenter - Server Core|
   |     |     |     |
