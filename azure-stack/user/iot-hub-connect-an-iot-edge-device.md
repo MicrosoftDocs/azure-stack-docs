@@ -30,12 +30,22 @@ Complete the following prerequisites before continuing:
 
 ## Overview
 
-Below is a summary of the steps you'll complete to connect an IoT Edge device to your IoT Hub on Azure Stack Hub:
+Here's a summary of the steps you'll complete, to connect an IoT Edge device to your IoT Hub on Azure Stack Hub:
 
-1. Create IoT Hub and Linux VM resources on your Azure Stack Hub instance. The Linux VM serves as a virtual IoT Edge device. 
+1. Create IoT Hub and Linux VM resources on your Azure Stack Hub instance. The Linux VM will serve as a virtual IoT Edge device. 
 2. Configure the certificates required for the Edge device. The number of steps required will depend on the type of CA that issued your IoT Hub root CA certificate.
 3. Configure the software and services required for the Edge device.
 4. Test the Edge device to make sure it's working properly and communicating with your IoT Hub.
+
+Before running the script in each of the following sections, be sure to update the script placeholders to match your environment's configuration:
+
+| Placeholder | Example | Description |
+|-------------|---------|-------------|
+| `<DEVICE-CA-CERT-NAME>` | `edged1cert`| The name you give the IoT Edge device CA certificate. |
+| `<IOT-HUB-HOSTNAME>`| `test-hub-1.mgmtiothub.region.mydomain.com`| Your IoT Hub host name. |
+| `<IOT-HUB-ROOT-CA>`| `root.cer`| The filename you give to the exported IoT Hub root CA. |
+| `<DATA-DIR>`| `/home/edgeadmin/edged1`| The full path to the data directory you create on the Linux VM. |
+| `<USER-ACCOUNT>`| `edgeadmin`| The account you use to sign in to the Linux VM. |
 
 ## Create Azure Stack Hub resources
 
@@ -58,7 +68,7 @@ In this section, you deploy a new Linux VM, which will serve as the virtual IoT 
    > [!NOTE]
    > You only need to complete the first 5 sections, up through **Connect to the VM**, as you won't need the NGINX web server. Also, don't complete the **Clean up resources** section, as you'll use the Linux VM for the remainder of this article.
 
-2. After you've created the VM and its running, connect to the VM using PuTTY and the user account you specified during VM provisioning. Once connected, create a data subdirectory off of your user account home directory:
+2. After you've created the VM and its running, connect to the VM using PuTTY and the user account you specified during VM provisioning. Once connected, create a data subdirectory off of your user account home directory, for example:
 
    ```bash
    mkdir edged1
@@ -94,15 +104,7 @@ In this section, you deploy a new Linux VM, which will serve as the virtual IoT 
 
 ## Configure IoT Edge device certificates
 
-In this section, you'll complete the VM certificate configuration required by the virtual IoT Edge device. Before running the script in each of the following sections, be sure to update the script placeholders to match your environment's configuration:
-
-| Placeholder | Example | Description |
-|-------------|---------|-------------|
-| `<DEVICE-CA-CERT-NAME>` | `edged1cert`| The name you give the IoT Edge device CA certificate. |
-| `<IOT-HUB-HOSTNAME>`| `test-hub-1.mgmtiothub.region.mydomain.com`| Your IoT Hub host name. |
-| `<IOT-HUB-ROOT-CA>`| `root.cer`| The filename you give to the exported IoT Hub root CA. |
-| `<DATA-DIR>`| `/home/edgeadmin/edged1`| The full path to the data directory on the Linux VM. |
-| `<USER-ACCOUNT>`| `edgeadmin`| The account used to sign in to the Linux VM. |
+In this section, you'll complete the VM certificate configuration required by the virtual IoT Edge device. 
 
 Your IoT Hub service and the IoT Edge device are secured with X509 certificates. The IoT Edge device must use a root CA certificate issued by the CA that issue the root CA for your IoT Hub service. Select the appropriate tab below to complete certificate configuration, based on the root CA type being used by your IoT Hub.
 
@@ -299,6 +301,8 @@ In this section, you'll complete the IoT Hub and VM configuration required by th
    ```
 
 ## Next steps
+
+If necessary, return to the [Create a Linux server VM by using the Azure Stack Hub portal](azure-stack-quick-linux-portal.md) quick start, and complete the **Clean up resources** section.
 
 The following are supplemental resources:
 
