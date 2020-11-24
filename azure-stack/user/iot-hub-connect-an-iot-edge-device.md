@@ -273,12 +273,12 @@ In this section, you'll complete the IoT Hub and VM configuration required by th
 
    [![Nano editor - provisioning property](media\iot-hub-connect-an-iot-edge-device\nano-edit-config-yml-connection-string.png)](media\iot-hub-connect-an-iot-edge-device\nano-edit-config-yml-connection-string.png#lightbox)
 
-   [![Nano editor - certificates property](media\iot-hub-connect-an-iot-edge-device\nano-edit-config-yml-certificates.png)](media\iot-hub-connect-an-iot-edge-device\nano-edit-config-yml-certificates#lightbox)
+   [![Nano editor - certificates property](media\iot-hub-connect-an-iot-edge-device\nano-edit-config-yml-certificates.png)](media\iot-hub-connect-an-iot-edge-device\nano-edit-config-yml-certificates.png#lightbox)
 
 
 5. Save and close the file using **CTRL** + **X**, then **Y**, then **Enter**.
 
-6. Restart the daemon:
+6. Once you return to Bash, restart the daemon:
    
    ```bash
    sudo systemctl restart iotedge
