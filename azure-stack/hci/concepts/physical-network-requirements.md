@@ -3,7 +3,7 @@ title: Physical network requirements for Azure Stack HCI
 description: Learn the physical network requirements for Azure Stack HCI
 author: v-dasis
 ms.topic: how-to
-ms.date: 11/20/2020
+ms.date: 11/24/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -19,26 +19,22 @@ This topic discusses physical (fabric) network considerations and requirements f
 
 ## Network switches for Azure Stack HCI
 
-Microsoft tests Azure Stack HCI to the standards and protocols identified in the **Network Switch Requirements** section. While Microsoft does not certify network switches, we do work with vendors to identify devices that support Azure Stack HCI requirements.
+Microsoft tests Azure Stack HCI to the standards and protocols identified in the **Network switch requirements** section below. While Microsoft does not certify network switches, we do work with vendors to identify devices that support Azure Stack HCI requirements.
 
-These requirements are also published on [Windows Hardware Compatibility Program Specifications and Policies](https://docs.microsoft.com/windows-hardware/design/compatibility/whcp-specifications-policies).  Select **Download Specifications and Policies, version 1809**, open the ZIP file, open **WHCP-Components-Peripherals-Specification-1809.pdf**, then see the **Device.Network.Switch.SDDC** section.
+These requirements are also published in [Windows Hardware Compatibility Program Specifications and Policies](https://docs.microsoft.com/windows-hardware/design/compatibility/whcp-specifications-policies).  Select **Download Specifications and Policies, version 1809**, open the ZIP file, open **WHCP-Components-Peripherals-Specification-1809.pdf**, then see the **Device.Network.Switch.SDDC** section.
 
 > [!IMPORTANT]
-> While other network switches using technologies and protocols not listed here may work, Microsoft cannot guarantee they will work with Azure Stack HCI and may be unable to assist in troubleshooting the issues that occur.
+> While other network switches using technologies and protocols not listed here may work, Microsoft cannot guarantee they will work with Azure Stack HCI and may be unable to assist in troubleshooting issues that occur.
 
 When purchasing network switches, contact your switch vendor and ensure that the devices meet all Azure Stack HCI requirements. The following vendors (in alphabetical order) have confirmed that their switches support Azure Stack HCI requirements:
 
 |Vendor|10 GbE|25 GbE|100 GbE|
 |-----|-----|-----|-----|
-|Dell|[S41xx series](https://www.dell.com/learn/us/en/45/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf)| | |
-|Dell| |[S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf)|[S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf)|
-|Lenovo|[G8272](https://lenovopress.com/tips1267-lenovo-rackswitch-g8272)| | |
-|Lenovo|[NE1032](https://lenovopress.com/lp0605-thinksystem-ne1032-rackswitch)| | |
-|Lenovo| |[NE2572](https://lenovopress.com/lp0608-lenovo-thinksystem-ne2572-rackswitch)| |
-|Lenovo| | |[NE10032](https://lenovopress.com/lp0609-lenovo-thinksystem-ne10032-rackswitch)|
+|Dell|[S41xx series](https://www.dell.com/learn/us/en/45/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf)|[S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf)|[S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf)|
+|Lenovo|[G8272](https://lenovopress.com/tips1267-lenovo-rackswitch-g8272), [NE1032](https://lenovopress.com/lp0605-thinksystem-ne1032-rackswitch)|[NE2572](https://lenovopress.com/lp0608-lenovo-thinksystem-ne2572-rackswitch) |[NE10032](https://lenovopress.com/lp0609-lenovo-thinksystem-ne10032-rackswitch) |
 
 > [!IMPORTANT]
-> Microsoft will add or remove vendors from this list as they are informed of changes by network switch vendors.
+> Microsoft updates this list as we are informed of changes by network switch vendors.
 
 If your switch is not included, contact your switch vendor to ensure your switch model and switch operating system version support the requirements in the next section.
 
@@ -72,7 +68,7 @@ Ethernet switches must comply with the IEEE 802.1AB specification that defines t
 
 Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled. These switches must not require additional configuration beyond enablement of a specific TLV. For example, enabling 802.1 Subtype 3 should automatically advertise all VLANs available on switch ports.
 
-### Custom TLV Requirements
+### Custom TLV requirements
 
 LLDP allows organizations to define and encode their own custom TLVs. These are called Organizationally Specific TLVs. All Organizationally Specific TLVs start with an LLDP TLV Type value of 127. The following table shows which Organizationally Specific Custom TLV (TLV Type 127) subtypes are required:
 
@@ -89,7 +85,7 @@ Azure Stack HCI can function in various data center architectures including 2-ti
 
 ## Network models
 
-Network traffic can be classified by its direction. Traditional Storage Area Network (SAN) environments are heavily North-South where traffic flows from a compute tier to a storage tier across a Layer-3 (IP) boundary. Hyper-converged infrastructure is more heavily East-West where a substantial portion of traffic stays within a Layer-2 (VLAN) boundary.
+Network traffic can be classified by its direction. Traditional Storage Area Network (SAN) environments are heavily North-South where traffic flows from a compute tier to a storage tier across a Layer-3 (IP) boundary. Hyperconverged infrastructure is more heavily East-West where a substantial portion of traffic stays within a Layer-2 (VLAN) boundary.
 
 > [!IMPORTANT]
 >We highly recommend that all cluster nodes in a site are physically located in the same rack and connected to the same top-of-rack (ToR) switches.
@@ -108,7 +104,7 @@ North-South traffic has the following characteristics:
 East-West traffic has the following characteristics:
 
 - Traffic remains within the ToR switches and Layer-2 boundary (VLAN)
-- Includes storage traffic or Live Migration traffic between nodes in the same cluster and (if using stretched cluster) within the same site
+- Includes storage traffic or Live Migration traffic between nodes in the same cluster and (if using a stretched cluster) within the same site
 - May use an Ethernet switch (switched) or a direct (switchless) connection, as described in the next two sections.
 
 ## Using switches
@@ -119,7 +115,7 @@ It is imperative to understand the "non-blocking" fabric bandwidth that your Eth
 
 Common congestion points and oversubscription, such as the [Multi-Chassis Link Aggregation Group](https://en.wikipedia.org/wiki/Multi-chassis_link_aggregation_group) used for path redundancy, can be eliminated through proper use of subnets and VLANs. For more information, see [Plan Host Networking] topic.
 
-Work with your network vendor or network support team to ensure you network switches have been properly sized for the workload you are intending to run.
+Work with your network vendor or network support team to ensure your network switches have been properly sized for the workload you are intending to run.
 
 ## Using switchless
 
@@ -131,19 +127,19 @@ Azure Stack HCI supports switchless (direct) connections for East-West traffic f
 ### Advantages of switchless connections
 
 - No switch purchase is necessary for East-West traffic. A switch is required for North-South traffic. This may result in lower capital expenditure (CAPEX) costs but is dependent on the number of nodes in the cluster.
-- Since there is no switch, configuration is limited to the host, which may reduce the potential number of configuration steps needed. This value diminishes as the cluster size increases.
+- Because there is no switch, configuration is limited to the host, which may reduce the potential number of configuration steps needed. This value diminishes as the cluster size increases.
 
 ### Disadvantages of switchless connections
 
-- As the number of nodes in the cluster grows the cost of network adapters could exceed the cost of using network switches.
-- More planning is required for IP and subnet addressing schemes
+- As the number of nodes in the cluster grows, the cost of network adapters could exceed the cost of using network switches.
+- More planning is required for IP and subnet addressing schemes.
 - Provides only local storage access. VM traffic, management traffic, and other traffic requiring North-South access cannot use these adapters.
 - Generally does not scale well beyond three-node clusters.
 
 ## Next steps
 
-- Plan networking for the Hyper-V host. See [Plan Host Networking]
-- Brush up on failover clustering basics. See [Failover Clustering Networking Basics](https://techcommunity.microsoft.com/t5/failover-clustering/failover-clustering-networking-basics-and-fundamentals/ba-p/1706005?s=09)
-- Brush up on using SET. See [Remote Direct Memory Access (RDMA) and Switch Embedded Teaming (SET)](https://docs.microsoft.com/windows-server/virtualization/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming)
-- For deployment, see [Create a cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster)
-- For deployment, see [Create a cluster using Windows PowerShell](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster-powershell)
+- Learn about network adapter and host requirements. See [Host network requirements](physical-network-requirements.md).
+- Brush up on failover clustering basics. See [Failover Clustering Networking Basics](https://techcommunity.microsoft.com/t5/failover-clustering/.failover-clustering-networking-basics-and-fundamentals/ba-p/1706005?s=09).
+- Brush up on using SET. See [Remote Direct Memory Access (RDMA) and Switch Embedded Teaming (SET)](https://docs.microsoft.com/windows-server/virtualization/.hyper-v-virtual-switch/rdma-and-switch-embedded-teaming).
+- For deployment, see [Create a cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster).
+- For deployment, see [Create a cluster using Windows PowerShell](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster-powershell).
