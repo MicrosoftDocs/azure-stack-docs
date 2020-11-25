@@ -74,20 +74,44 @@ GetHelp .\Get-SMEUILogs.ps1 -Examples
 ```
 
 ## Troubleshooting Windows worker nodes 
-To sign in to a Windows worker node, first get the IP address of your node by running `kubectl get`. Note the `EXTERNAL-IP` value.
+To sign in to a Windows worker node using SSH, first get the IP address of your node by running `kubectl get` and capture the `EXTERNAL-IP` value.
+
+**Note**: You must pass the right location to your SSH private key. The following example uses the default location of %systemdrive%\akshci\.ssh\akshci_rsa, but you may need to change this location if you requested a different path by specifying the `-sshPublicKey` parameter for `Set-AksHciConfig`.
+
+To get the IP address of the Windows worker node:  
 
 ```PowerShell
-kubectl get nodes -o wide
+kubectl --kubeconfig=yourkubeconfig get nodes -o wide
 ``` 
-SSH into the node by using `ssh Administrator@ip`. After you SSH into the node, you can run `net user administrator *` to update your administrator password. 
+
+
+Use `ssh Administrator@ip` to SSH in to a Windows node:  
+
+```PowerShell
+ssh -i $env:SYSTEMDRIVE\AksHci\.ssh\akshci_rsa administrator@<IP Address of the Node>
+``` 
+
+After you SSH in to the node, you can run `net user administrator *` to update your administrator password. 
+
 
 ## Troubleshooting Linux worker nodes 
-To sign in to a Linux worker node, first get the IP address of your node by running `kubectl get`. Note the `EXTERNAL-IP` value.
+To sign in to a Linux worker node using SSH, first get the IP address of your node by running `kubectl get` and capture the `EXTERNAL-IP` value.
+
+**Note**: You must pass the right location to your SSH private key. The following example uses the default location of %systemdrive%\akshci\.ssh\akshci_rsa, but you may need to change this location if you requested a different path by specifying the `-sshPublicKey` parameter for `Set-AksHciConfig`.
+
+TO get the IP address of the Linux worker node:  
 
 ```PowerShell
-kubectl get nodes -o wide
+kubectl --kubeconfig=yourkubeconfig get nodes -o wide
+```   
+
+Use `ssh clouduser@ip` to SSH in to the Linux node: 
+
+```PowerShell
+ssh -i $env:SYSTEMDRIVE\AksHci\.ssh\akshci_rsa clouduser@<IP Address of the Node>
 ``` 
-SSH into the node by using `ssh clouduser@ip`. 
+
+After you SSH in to the node, you can run `net user administrator *` to update your administrator password. 
 
 ## Troubleshooting Azure Arc Kubernetes
 To learn about troubleshooting common scenarios related to connectivity, permissions, and Arc agents, see [Azure Arc enabled Kubernetes troubleshooting](/azure/azure-arc/kubernetes/troubleshooting).

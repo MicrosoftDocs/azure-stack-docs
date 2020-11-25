@@ -108,7 +108,7 @@ az ad sp create-for-RBAC --name "azure-arc-for-k8s" --scope /subscriptions/{Subs
 }
 ```
 ## Step 5: Save service principal details
-Save the created service principal's appId, password and tenant values and cluster name, Azure subscription ID, resource group name and location in PowerShell variables. This will ensure you can reuse the details in other tutorials. Ensure that you also save these values in a notepad in case you want to close your powerShell session.
+Save the created service principal's appId, password and tenant values, and cluster name, Azure subscription ID, resource group name, and location in PowerShell variables. This will ensure you can reuse the details in other tutorials. Ensure that you also save these values in a notepad in case you want to close your PowerShell session.
 
 ```PowerShell
 $clusterName = #<name of your Kubernetes cluster>
@@ -142,7 +142,7 @@ Install-AksHciArcOnboarding -clusterName $clusterName -resourcegroup $resourceGr
 ```
 ## Verify connected cluster
 
-You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). Once you've the portal open in your browser, navigate to the resource group and the Azure Arc enabled Kubernetes resource based on the resource name and resource group name inputs used earlier in the `Install-AksHciArcOnboarding` PowerShell command.
+You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). Once you have the portal open in your browser, navigate to the resource group and the Azure Arc-enabled Kubernetes resource that's based on the resource name and resource group name inputs used earlier in the `Install-AksHciArcOnboarding` PowerShell command.
 
 > [!NOTE]
 > After onboarding the cluster, it takes around 5 to 10 minutes for the cluster metadata (cluster version, agent version, number of nodes) to surface on the overview page of the Azure Arc enabled Kubernetes resource in Azure portal.
