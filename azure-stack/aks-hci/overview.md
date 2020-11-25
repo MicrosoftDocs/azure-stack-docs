@@ -12,7 +12,7 @@ ms.date: 09/22/2020
 
 Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of Azure Kubernetes Service (AKS), which automates running containerized applications at scale. Azure Kubernetes Service is now in preview on Azure Stack HCI and Windows Server 2019 Datacenter, making it quicker to get started hosting Linux and Windows containers in your datacenter.
 
-To get started with Azure Kubernetes Service on-premises, [register for the preview](https://aka.ms/AKS-HCI-Evaluate) (there's no added cost during the preview), then see [Set up Azure Kubernetes Service on Azure Stack HCI](setup.md). To instead use Azure Kubernetes Service to orchestrate your cloud-based containers, see [Azure Kubernetes Service in Azure](/azure/aks/intro-kubernetes).
+To get started with Azure Kubernetes Service on-premises, [register for the preview](https://aka.ms/AKS-HCI-Evaluate) (there's no added cost during the preview), then [set up Azure Kubernetes Service on Azure Stack HCI](setup.md). To instead use Azure Kubernetes Service to orchestrate your cloud-based containers, see [Azure Kubernetes Service in Azure](/azure/aks/intro-kubernetes).
 
 The following sections discuss some of the reasons to use Azure Kubernetes Service on Azure Stack HCI, then answer some common questions about the service and how to get started. For a background on containers, see [Windows and containers](/virtualization/windowscontainers/about/) and for a background on Kubernetes, see [Kubernetes core concepts](kubernetes-concepts.md) or [Kubernetes.io](https://kubernetes.io).
 

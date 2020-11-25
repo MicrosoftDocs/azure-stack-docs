@@ -27,7 +27,7 @@ Before getting started, make sure you have satisfied all the prerequisites on th
 Download the `AKS-HCI-Public-Preview-Nov-2020` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module.
 
 If you have previously installed Azure Kubernetes Service on Azure Stack HCI using PowerShell or Windows Admin Center, there are two installation flows for the new PowerShell module:
- - Perform a clean installalation of the PowerShell module, so you start with a clean system and your previously deployed workloads are removed. To do this, go to Step 1.1.
+ - Perform a clean installation of the PowerShell module, so you start with a clean system and your previously deployed workloads are removed. To do this, go to Step 1.1.
  - Upgrade the PowerShell module if you want to keep your system and workloads in place. To do this, go to Step 1.2.
 
 ### Step 1.1: Clean install of the AksHci PowerShell module
@@ -141,6 +141,12 @@ Configure your deployment with the following command.
                     [-skipUpdates]
                     [-forceDnsReplication]
 
+   ```
+
+### Example
+
+   ```powershell
+   Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config
    ```
 
 ### Optional parameters
@@ -269,7 +275,11 @@ DNS replication can take up to an hour on some systems. This will cause the depl
 
 ### Reset the Azure Kubernetes Service on Azure Stack HCI configuration
 
-To reset the Azure Kubernetes Service on Azure Stack HCI configuration, run the following command. Running this command on its own will reset the configuration to default values.
+To reset the Azure Kubernetes Service on Azure Stack HCI configuration, run the following commands. Running this command on its own will reset the configuration to default values.
+
+```powershell
+Uninstall-AksHci
+```
 
 ```powershell
 Set-AksHciConfig
@@ -300,6 +310,12 @@ To access your Azure Kubernetes Service host or Kubernetes cluster using kubectl
 ```powershell
 Get-AksHciCredential -clusterName <String>
                      [-outputLocation <String>]
+```
+
+### Example
+
+```powershell
+Get-AksHciCredential -clusterName mynewcluster
 ```
 
 ### Required Parameters
@@ -349,6 +365,16 @@ To remove Azure Kubernetes Service on Azure Stack HCI, run the following command
 ```powershell
 Uninstall-AksHci
 ```
+
+After running the above command, you can run the `Install-AksHci` command to install the Azure Kubernetes Service host with the same configuration as before. If you want to change the configuration, run `Set-AksHciConfig` with the changes you want to make before running the install command.
+
+If you don't want to retain the old configuration, run the following command.
+
+```powershell
+Uninstall-AksHci -Force
+```
+
+If PowerShell commands are run on a cluster where Windows Admin Center was previously used to deploy, the PowerShell module checks the existence of the Windows Admin Center configuration file. Windows Admin Center places the Windows Admin Center configuration file across all nodes. If you use the uninstall command and go back to Windows Admin Center, run the above uninstall command with the `-Force` flag. If this is not done, PowerShell and Windows Admin Center will be out of sync.
 
 ## Next steps
 
