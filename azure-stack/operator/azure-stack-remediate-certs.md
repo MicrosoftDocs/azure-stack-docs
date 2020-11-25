@@ -19,6 +19,18 @@ ms.lastreviewed: 10/19/2020
 
 The information in this article helps you understand and resolve common issues with Azure Stack Hub PKI certificates. You can discover issues when you use the Azure Stack Hub Readiness Checker tool to [validate Azure Stack Hub PKI certificates](azure-stack-validate-pki-certs.md). The tool checks if the certificates meet the PKI requirements of an Azure Stack Hub deployment and Azure Stack Hub secret rotation, and then logs the results to a [report.json file](azure-stack-validation-report.md).  
 
+## HTTP CRL - Warning
+
+**Issue** - Certificate does not contain HTTP CRL in CDP Extension.
+
+**Fix** - This is a non-blocking issue. Azure Stack requires HTTP CRL for revocation checking as per https://aka.ms/azspki.  A HTTP CRL was not detected on the certificate.  To ensure certificate revocation checking works, the Certificate Authority should issue a certificate with a HTTP CRL in the CDP extension.
+
+## HTTP CRL - Fail
+
+**Issue** - Cannot connect to HTTP CRL in CDP Extension.
+
+**Fix** - This is a blocking issue. Azure Stack requires connectivity to a HTTP CRL for revocation checking as per Publishing Azure Stack Hub Ports and URLs (outbound) https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-integrate-endpoints#ports-and-urls-outbound.
+
 ## PFX Encryption
 
 **Issue** - PFX encryption isn't TripleDES-SHA1.
