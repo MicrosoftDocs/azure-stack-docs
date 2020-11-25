@@ -39,9 +39,6 @@ Important network adapter capabilities leveraged by Azure Stack HCI include:
 - Guest RDMA
 - Switch Embedded Teaming (SET)
 
-> [!NOTE]
-> InfiniBand (IB) is not supported with Azure Stack HCI.
-
 ### Dynamic VMMQ
 
 All network adapters with the Premium AQ support Dynamic VMMQ. Dynamic VMMQ requires the use of Switch Embedded Teaming.
@@ -76,6 +73,9 @@ Azure Stack HCI supports RDMA using either the iWARP or RoCE protocol implementa
 > RDMA adapters only work with other RDMA adapters that implement the same RDMA protocol (iWARP or RoCE).
 
 Not all network adapters from vendors support RDMA. The following table lists those vendors (in alphabetical order) that offer Premium certified RDMA adapters. However, there are hardware vendors not included in this list that also support RDMA. See the [Windows Server Catalog](https://www.windowsservercatalog.com/) to verify RDMA support.
+
+> [!NOTE]
+> InfiniBand (IB) is not supported with Azure Stack HCI.
 
 |NIC vendor|iWARP|RoCE|
 |----|----|----|
@@ -142,7 +142,7 @@ SET is important for Azure Stack HCI as it is the only teaming technology that e
 - Teaming of RDMA adapters (if needed)
 - Guest RDMA
 - Dynamic VMMQ
-- Other key Azure Stack HCI features (see [Azure Stack HCI solution overview](https://docs.microsoft.com/azure-stack/hci/overview))
+- Other key Azure Stack HCI features (see [Teaming in Azure Stack HCI](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642))
 
 SET provides additional features over LBFO including quality and performance improvements. To do this, SET requires the use of symmetric (identical) adapters – teaming of asymmetric adapters is not supported. Symmetric network adapters are those that have the same:
 
@@ -155,12 +155,12 @@ The easiest way to identify if adapters are symmetric is if the speeds are the s
 
 See the following table for an example of the interface descriptions deviating only by numeral (#):
 
-|Name|Interface Description|
-|----|----|
-|NIC1|Network Adapter #1|
-|NIC2|Network Adapter #2|
-|NIC3|Network Adapter #3|
-|NIC4|Network Adapter #4|
+|Name|Interface Description|Link Speed|
+|----|----|----|
+|NIC1|Network Adapter #1|25 Gbps|
+|NIC2|Network Adapter #2|25 Gbps|
+|NIC3|Network Adapter #3|25 Gbps|
+|NIC4|Network Adapter #4|25 Gbps|
 
 ### RDMA traffic considerations
 
@@ -216,26 +216,6 @@ The recommended approach is to use separate subnets and VLANs for each set of ad
 
 :::image type="content" source="media/plan-networking/four-node-cluster-2.png" alt-text="four-node cluster different subnets" lightbox="media/plan-networking/four-node-cluster-2.png":::
 
-## Stretched cluster considerations
-
-Stretched clusters provide disaster recovery that spans multiple data centers. In its simplest form, a stretched Azure Stack HCI cluster network looks like this:
-
-:::image type="content" source="media/plan-networking/stretched-cluster.png" alt-text="Stretched cluster" lightbox="media/plan-networking/stretched-cluster.png":::
-
-Stretched clusters have the following requirements and characteristics:
-
-- RDMA is limited to a single site, and is not supported across different sites or subnets.
-- Servers in the same site must reside in the same rack and Layer-2 boundary.
-- Communication between sites cross a Layer-3 boundary; stretched Layer-2 topologies are not supported.
-
-- If a site uses RDMA for its storage adapters, these adapters must be on a separate subnet and VLAN that cannot route between sites. This prevents Storage Replica from using RDMA across sites.
-- Adapters used for communication between sites:
-
-    - Can be physical or virtual (host vNIC). If virtual, you must provision one vNIC in its own subnet and VLAN per physical NIC.
-    - Must be on their own subnet and VLAN that can route between sites
-    - RDMA must be disabled using the `Disable-NetAdapterRDMA` cmdlet. We recommend that you explicitly require Storage Replica to use specific interfaces using the `Set-SRNetworkConstraint` cmdlet.
-    - Must meet any additional requirements for Storage Replica.
--	In the event of a failover to another site, you must ensure that enough bandwidth is available to run the workloads at the other site. A safe option is to provision sites at 50% of their available capacity. This is not a hard requirement if you are able to tolerate lower performance during a failover.
 
 ## Traffic bandwidth allocation
 
@@ -288,6 +268,27 @@ The following table shows bandwidth allocations for various traffic types:
 *- should use compression rather than RDMA as the bandwidth allocation for Live Migration traffic is <5 Gbps
 
 **- 50% is an example bandwidth reservation for this example
+
+## Stretched cluster considerations
+
+Stretched clusters provide disaster recovery that spans multiple data centers. In its simplest form, a stretched Azure Stack HCI cluster network looks like this:
+
+:::image type="content" source="media/plan-networking/stretched-cluster.png" alt-text="Stretched cluster" lightbox="media/plan-networking/stretched-cluster.png":::
+
+Stretched clusters have the following requirements and characteristics:
+
+- RDMA is limited to a single site, and is not supported across different sites or subnets.
+- Servers in the same site must reside in the same rack and Layer-2 boundary.
+- Communication between sites cross a Layer-3 boundary; stretched Layer-2 topologies are not supported.
+
+- If a site uses RDMA for its storage adapters, these adapters must be on a separate subnet and VLAN that cannot route between sites. This prevents Storage Replica from using RDMA across sites.
+- Adapters used for communication between sites:
+
+    - Can be physical or virtual (host vNIC). If virtual, you must provision one vNIC in its own subnet and VLAN per physical NIC.
+    - Must be on their own subnet and VLAN that can route between sites
+    - RDMA must be disabled using the `Disable-NetAdapterRDMA` cmdlet. We recommend that you explicitly require Storage Replica to use specific interfaces using the `Set-SRNetworkConstraint` cmdlet.
+    - Must meet any additional requirements for Storage Replica.
+-	In the event of a failover to another site, you must ensure that enough bandwidth is available to run the workloads at the other site. A safe option is to provision sites at 50% of their available capacity. This is not a hard requirement if you are able to tolerate lower performance during a failover.
 
 ## Next steps
 
