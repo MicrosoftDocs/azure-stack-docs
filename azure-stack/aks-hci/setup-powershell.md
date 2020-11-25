@@ -37,7 +37,7 @@ Run the following command before proceeding.
    Uninstall-AksHci
    ```
 
-**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.UI, MOC and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once this is done, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`). Then, run the following commands.
+**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.UI, MOC, and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once these directories are removed, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`). Then, run the following commands.
 
    ```powershell
    Import-Module AksHci
@@ -47,7 +47,7 @@ Close all PowerShell windows again and reopen an administrative session and proc
 
 ### Step 1.2: Upgrade the AksHci PowerShell module
 
-**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.UI, MOC and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once this is done, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`). Then, run the following commands.
+**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.UI, MOC, and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once these directories are removed, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`). Then, run the following commands.
 
    ```powershell
    Import-Module AksHci
@@ -193,7 +193,7 @@ This is used to specify the start of the MAC address of the MAC pool that you wi
 
 `-macPoolEnd`
 
-This is used to specify the end of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (i.e. 00, 02, 04, 06...). The first byte of the address passed as the `-macPoolEnd` should be the same as the first byte of the address passed as the `-macPoolStart`. You should use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. This is useful if you have a requirement that the VMs have specific MAC addresses. Default is none.
+This is used to specify the end of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires the least significant bit of the first byte should always be 0, and the first byte should always be an even number (i.e. 00, 02, 04, 06...). The first byte of the address passed as the `-macPoolEnd` should be the same as the first byte of the address passed as the `-macPoolStart`. You should use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. This is useful if you have a requirement that the VMs have specific MAC addresses. Default is none.
 
 `-vlandID`
 
@@ -201,7 +201,7 @@ This can be used to specify a network VLAN ID. Azure Kubernetes Service host and
 
 `-kvaLoadBalancerType`
 
-This takes in either `unstacked_haproxy` or `stacked_kube_vip`. `unstacked_haproxy` is the default where a separate load balancer VM is deployed with HAProxy as the Azure Kubernets Service host's API server endpoint. `stacked_kube_vip`is a load balancer solution, [Kubevip](https://kube-vip.io/), for the Azure Kubernetes Service host. It allows you to specify a static IP address in the host as a floating IP across the control plane nodes to keep the API server highly available through that IP. If this option is chosen, you must specify the static IP address in the `kvaControlPlaneEndpoint` parameter, and no separate load balancer VM is deployed.
+This takes in either `unstacked_haproxy` or `stacked_kube_vip`. `unstacked_haproxy` is the default where a separate load balancer VM is deployed with HAProxy as the Azure Kubernetes Service host's API server endpoint. `stacked_kube_vip`is a load balancer solution, [Kubevip](https://kube-vip.io/), for the Azure Kubernetes Service host. It allows you to specify a static IP address in the host as a floating IP across the control plane nodes to keep the API server highly available through the IP. If this option is chosen, you must specify the static IP address in the `kvaControlPlaneEndpoint` parameter, and no separate load balancer VM is deployed.
 
 `stacked_kube_vip` requires an IP address and is more resource friendly by saving memory, CPU, and deployment time. If you do not have an IP address to use as the floating IP, you should use `unstacked_haproxy`. The latter option requires a a load balancer VM. 
 
@@ -243,15 +243,15 @@ The type of virtual switch to connect to or create. This defaults to “External
 
 `-nodeAgentPort`
 
-The TCP/IP port number that nodeagents should listen on. Defaults to 45000. We do not recommend changing the default. 
+The TCP/IP port number that node agents should listen on. Defaults to 45000. We do not recommend changing the default. 
 
 `-nodeAgentAuthorizerPort`
 
-The TCP/IP port number that nodeagents should use for their authorization port. Defaults to 45001. We do not recommend changing the default.  
+The TCP/IP port number that node agents should use for their authorization port. Defaults to 45001. We do not recommend changing the default.  
 
 `-clusterRoleName`
 
-This specifies the name to use when creating cloudagent as a generic service within the cluster. This defaults to a unique name with a prefix of ca- and a guid suffix (for example: “ca-9e6eb299-bc0b-4f00-9fd7-942843820c26”). We do not recommend changing the default.
+This specifies the name to use when creating cloud agent as a generic service within the cluster. This defaults to a unique name with a prefix of ca- and a guid suffix (for example: “ca-9e6eb299-bc0b-4f00-9fd7-942843820c26”). We do not recommend changing the default.
 
 `-cloudLocation` 
 
@@ -263,7 +263,7 @@ Requests the script to skip any checks it does to confirm memory and disk space 
 
 `-insecure`
 
-Deploys Azure Kubernetes Service on Azure Stack HCI components such as cloudagent and nodeagent(s) in insecure mode (no TLS secured connections).  We do not recommend using insecure mode in production environments.
+Deploys Azure Kubernetes Service on Azure Stack HCI components, such as cloud agent and node agent(s), in insecure mode (no TLS secured connections). We do not recommend using insecure mode in production environments.
 
 `-skipUpdates`
 

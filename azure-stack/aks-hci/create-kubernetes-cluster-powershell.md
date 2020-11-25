@@ -119,7 +119,7 @@ To update to the next Kubernetes version, run the following command.
 Update-AksHciCluster -clusterName
                      [-patch]
 ```
-Every Kubernetes version has a major release, a minor version and a patch version. For example, in v1.18.6, 1 is the major release, 18 is the minor version and 6 is the patch version. Over time, AKS-HCI will support 1 major release, 3 minor releases and 2 patches per minor release for a total of 6 supported versions. However, for this preview release, we support a total of 4 releases - v1.16.10, v1.16.15, v1.17.11, v1.18.8. 
+Every Kubernetes version has a major release, a minor version, and a patch version. For example, in v1.18.6, 1 is the major release, 18 is the minor version, and 6 is the patch version. Over time, AKS-HCI will support one major release, 3 minor releases and 2 patches per minor release for a total of 6 supported versions. However, for this preview release, we support a total of four releases - v1.16.10, v1.16.15, v1.17.11, v1.18.8. 
 
 When the parameter `patch` is added while running `Update-AksHciCluster`, the command upgrades to the next patch version (if any) for the minor version. When the command is run without the parameter `patch`, the default upgrade experience is to the next minor release. To make this easier, the following table contains all possible update experiences:
 
