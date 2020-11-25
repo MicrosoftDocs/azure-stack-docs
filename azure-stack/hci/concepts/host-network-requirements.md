@@ -244,7 +244,7 @@ The following assumptions are made for this example:
             Set-VMHost -VirtualMachineMigrationPerformanceOption Compression
             ```
 
- - If using RDMA with Live Migration, ensure that Live Migration cannot consume the entire bandwidth allocated to the RDMA traffic class by using an SMB bandwidth limit. Be careful as this cmdlet takes entry in bytes per second (Bps) whereas network adapters are listed in bits per second (bps). Use the following cmdlet to set a bandwidth limit of 6 Gbps for example:
+ - If using RDMA with Live Migration, ensure that Live Migration traffic cannot consume the entire bandwidth allocated to the RDMA traffic class by using an SMB bandwidth limit. Be careful as this cmdlet takes entry in bytes per second (Bps) whereas network adapters are listed in bits per second (bps). Use the following cmdlet to set a bandwidth limit of 6 Gbps for example:
 
     ```Powershell
     Set-SMBBandwidthLimit -Category LiveMigration -BytesPerSecond 750MB
