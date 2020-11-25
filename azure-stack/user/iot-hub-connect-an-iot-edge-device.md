@@ -292,15 +292,12 @@ In this section, you'll complete the IoT Hub and VM configuration required by th
    systemctl status iotedge
    ```
 
-2. You should see that the IoT Edge service started successfully, similar to the following. If so, you can jump ahead to step #4.
+2. You should see that the IoT Edge service is running and active, with a response similar to the following. If so, you can jump ahead to step #4.
 
    [![IoT Edge service running successfully](media\iot-hub-connect-an-iot-edge-device\iotedge-service-running.png)](media\iot-hub-connect-an-iot-edge-device\iotedge-service-running.png#lightbox)
 
-   > [!NOTE]
-   > The `$edgeHub` system module is optional, and isn't deployed to the device until you deploy your first IoT Edge module. As such, `iotedge check` may return an error indicating that `$edgeHub` cannot bind to ports during a host connectivity check. This error can be ignored if `$edgeHub` is not required in your deployment.  
-
 3. If the IoT Edge service failed:
-   - You'll see a response similar to the following:
+   - You'll see a response similar showing "failed", similar to the following:
    [![IoT Edge service failed](media\iot-hub-connect-an-iot-edge-device\iotedge-service-failed.png)](media\iot-hub-connect-an-iot-edge-device\iotedge-service-failed.png#lightbox)   
    - To troubleshoot, you can:
      - Examine the daemon logs:
@@ -308,7 +305,7 @@ In this section, you'll complete the IoT Hub and VM configuration required by th
          ```bash
          journalctl -u iotedge --no-pager --no-full
          ```
-     - Run the troubleshooting tool to check for the most common configuration and networking errors:
+     - Run the troubleshooting tool to check for the most common configuration and networking errors. In this example, a malformed `/etc/iotedge/config.yaml` file is detected:
 
          ```bash
          sudo iotedge check
@@ -316,10 +313,12 @@ In this section, you'll complete the IoT Hub and VM configuration required by th
 
          [![IoT Edge service check](media\iot-hub-connect-an-iot-edge-device\iotedge-service-check.png)](media\iot-hub-connect-an-iot-edge-device\iotedge-service-check.png#lightbox)
 
+         > [!NOTE]
+         > The `$edgeHub` system module is optional, and isn't deployed to the device until you deploy your first IoT Edge module. As such, `iotedge check` may return an error indicating that `$edgeHub` cannot bind to ports during a host connectivity check. This error can be ignored if `$edgeHub` is not required in your deployment.           
+
    - If you find that you have a malformed .YML file as in the example above, simply:
-      - fix the .YML file
-      - repeat the steps in [Configure the virtual IoT Edge device on the VM](#configure-the-virtual-IoT-Edge-device-on-the-VM)
-      - repeat the steps in [this section](#verify-a-successful-installation)
+      - Repeat the steps in [Configure the virtual IoT Edge device on the VM] (#configure-the-virtual-iot-edge-device-on-the-vm) to fix the .YML file.
+      - Repeat the steps in [this section](#verify-a-successful-installation).
 
 4. Once you determine that the IoT Edge service started successfully, list the running modules. You should see the service `edgeAgent` with a status of `running`:
 
