@@ -3,7 +3,7 @@ title: Host network requirements for Azure Stack HCI
 description: Learn the host network requirements for Azure Stack HCI
 author: v-dasis
 ms.topic: how-to
-ms.date: 11/24/2020
+ms.date: 11/25/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -16,7 +16,7 @@ This topic discusses Azure Stack HCI host networking considerations and requirem
 
 ## Network traffic types
 
-Azure Stack HCI Network traffic can be classified by its intended purpose:
+Azure Stack HCI network traffic can be classified by its intended purpose:
 
 - **Compute traffic** - traffic originating from or destined for a virtual machine (VM)
 - **Storage traffic** - traffic for Storage Spaces Direct (S2D) using Server Message Block (SMB)
@@ -49,7 +49,7 @@ All network adapters with the Premium AQ support Dynamic VMMQ. Dynamic VMMQ requ
 
 Dynamic VMMQ is an intelligent receive-side technology that builds upon its predecessors of Virtual Machine Queue (VMQ), Virtual Receive Side Scaling (vRSS), and VMMQ to provide three primary improvements:
 
-- Optimizes host efficiency by use use of CPU cores
+- Optimizes host efficiency by use of CPU cores
 - Automatic tuning of network traffic processing to CPU cores, thus enabling VMs to meet and maintain expected throughput
 - Enables “bursty” workloads to receive the expected amount of traffic
 
@@ -65,7 +65,7 @@ RDMA enables high-throughput, low-latency networking while using minimal host CP
 
 **Certifications required**: Standard
 
-All adapters with Standard or Premium AQ support RDMA (Remote Direct Memory Access). RDMA is the recommended deployment choice for storage workloads in Azure Stack HCI and can be optionally enabled for storage workloads (using SMB) for virtual machines (VMs). See the **Guest RDMA** section later.
+All adapters with Standard or Premium AQ support RDMA (Remote Direct Memory Access). RDMA is the recommended deployment choice for storage workloads in Azure Stack HCI and can be optionally enabled for storage workloads (using SMB) for VMs. See the **Guest RDMA** section later.
 
 Azure Stack HCI supports RDMA using either the iWARP or RoCE protocol implementations.
 
@@ -175,7 +175,7 @@ RoCE-based Azure Stack HCI implementations requires the configuration of three P
 This traffic class ensures there is enough bandwidth reserved for cluster heartbeats:
 
 - Required: Yes
-- Flow control (PFC) enabled: No
+- PFC enabled: No
 - Recommended traffic priority: Priority 7
 - Recommended bandwidth reservation:
     - 10 GbE or lower RDMA networks = 2%
@@ -183,16 +183,16 @@ This traffic class ensures there is enough bandwidth reserved for cluster heartb
 
 #### RDMA traffic class
 
-This traffic class there is enough bandwidth reserved for lossless RDA communications using SMB Direct:
+This traffic class ensures there is enough bandwidth reserved for lossless RDA communications using SMB Direct:
 
 - Required: Yes
-- Flow control (PFC) enabled: Yes
+- PFC enabled: Yes
 - Recommended traffic priority: Priority 3 or 4
 - Recommended bandwidth reservation: 50%
 
 #### Default traffic class
 
-This traffic class carries all other traffic not defined in the cluster or RDMA traffic classes including VM traffic and management traffic:
+This traffic class carries all other traffic not defined in the cluster or RDMA traffic classes, including VM traffic and management traffic:
 
 - Required: By default (no configuration necessary on the host)
 - Flow control (PFC) enabled: No
@@ -216,22 +216,21 @@ The recommended approach is to use separate subnets and VLANs for each set of ad
 
 :::image type="content" source="media/plan-networking/four-node-cluster-2.png" alt-text="four-node cluster different subnets" lightbox="media/plan-networking/four-node-cluster-2.png":::
 
-
 ## Traffic bandwidth allocation
 
-The following table shows bandwidth allocations of various traffic types in Azure Stack HCI. Note that this is an example of a converged solution where all traffic types (compute, storage, and management) run over the same physical adapters and are teamed using SET.
+The table below shows example bandwidth allocations of various traffic types, using common adapter speeds, in Azure Stack HCI. Note that this is an example of a converged solution where all traffic types (compute, storage, and management) run over the same physical adapters and are teamed using SET.
 
 Since this use case poses the most constraints, it represents a good baseline. However, considering the permutations for number of adapters and speeds, this should be considered an example and not a support requirement.
 
-The table shows examples using common adapter speeds. The following assumptions are made for this example:
+The following assumptions are made for this example:
 
 - There are two adapters per team
-- Storage Spaces Direct (SBL), Failover Clustering (CSV), Hyper-V (Live Migration), and Storage Replica traffic:
+- Storage Bus Layer (SBL), Cluster Shared Volume (CSV), and Hyper-V (Live Migration) traffic:
 
     - Use the same physical adapters
     - Use SMB
-- SMB is given a 50% bandwidth allocation using Data Center Bridging (NetQos)
-    - Storage Bus Layer/Cluster Shared Volume (SBL/CSV) is the highest priority traffic and receives 70% of the SMB bandwidth reservation, and:
+- SMB is given a 50% bandwidth allocation using Data Center Bridging
+    - SBL/CSV is the highest priority traffic and receives 70% of the SMB bandwidth reservation, and:
     - Live Migration (LM) is limited using the `Set-SMBBandwidthLimit` cmdlet and receives 29% of the remaining bandwidth
         - If the available bandwidth for Live Migration is >= 5 Gbps, and the network adapters are capable, use RDMA. Use the following cmdlet to do so:
 
@@ -245,7 +244,7 @@ The table shows examples using common adapter speeds. The following assumptions 
             Set-VMHost -VirtualMachineMigrationPerformanceOption Compression
             ```
 
- - If using RDMA with Live Migration, ensure that Live Migration cannot consume the entire bandwidth allocated to the RDMA traffic class by use an SMB bandwidth limit. Be careful as this cmdlet takes entry in bytes per second (Bps) whereas network adapters are listed in bits per second (bps). Use the following cmdlet to set a bandwidth limit of 6 Gbps for example:
+ - If using RDMA with Live Migration, ensure that Live Migration cannot consume the entire bandwidth allocated to the RDMA traffic class by using an SMB bandwidth limit. Be careful as this cmdlet takes entry in bytes per second (Bps) whereas network adapters are listed in bits per second (bps). Use the following cmdlet to set a bandwidth limit of 6 Gbps for example:
 
     ```Powershell
     Set-SMBBandwidthLimit -Category LiveMigration -BytesPerSecond 750MB
@@ -254,7 +253,7 @@ The table shows examples using common adapter speeds. The following assumptions 
     > [!NOTE]
     >750 MBps in this example equates to 6 Gbps
 
-The following table shows bandwidth allocations for various traffic types:
+Here is the example bandwidth allocation table:
 
 |NIC Speed|Teamed Bandwidth|SMB Bandwidth Reservation**|SBL/CSV %|SBL/CSV Bandwidth|Live Migration %|Max Live Migration Bandwidth|Heartbeat %|Heartbeat Bandwidth|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
@@ -285,7 +284,7 @@ Stretched clusters have the following requirements and characteristics:
 - Adapters used for communication between sites:
 
     - Can be physical or virtual (host vNIC). If virtual, you must provision one vNIC in its own subnet and VLAN per physical NIC.
-    - Must be on their own subnet and VLAN that can route between sites
+    - Must be on their own subnet and VLAN that can route between sites.
     - RDMA must be disabled using the `Disable-NetAdapterRDMA` cmdlet. We recommend that you explicitly require Storage Replica to use specific interfaces using the `Set-SRNetworkConstraint` cmdlet.
     - Must meet any additional requirements for Storage Replica.
 -	In the event of a failover to another site, you must ensure that enough bandwidth is available to run the workloads at the other site. A safe option is to provision sites at 50% of their available capacity. This is not a hard requirement if you are able to tolerate lower performance during a failover.
