@@ -3,7 +3,7 @@ title: Physical network requirements for Azure Stack HCI
 description: Learn the physical network requirements for Azure Stack HCI
 author: v-dasis
 ms.topic: how-to
-ms.date: 11/24/2020
+ms.date: 11/30/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -43,7 +43,7 @@ If your switch is not included, contact your switch vendor to ensure your switch
 This section lists industry standards that are mandatory for network switches used in all Azure Stack HCI deployments. These standards help ensure reliable communications between nodes in Azure Stack HCI cluster deployments.
 
 > [!NOTE]
-> Network adapters used for compute, storage, and management traffic require Ethernet. For more information on network adapters, see [Plan Host Networking].
+> Network adapters used for compute, storage, and management traffic require Ethernet.
 
 Here are the mandatory IEEE standards and specifications:
 
@@ -113,7 +113,7 @@ North-South traffic requires the use of switches. Besides using an Ethernet swit
 
 It is imperative to understand the "non-blocking" fabric bandwidth that your Ethernet switches can support and that you minimize (or preferably eliminate) oversubscription of the network.
 
-Common congestion points and oversubscription, such as the [Multi-Chassis Link Aggregation Group](https://en.wikipedia.org/wiki/Multi-chassis_link_aggregation_group) used for path redundancy, can be eliminated through proper use of subnets and VLANs. For more information, see [Plan Host Networking] topic.
+Common congestion points and oversubscription, such as the [Multi-Chassis Link Aggregation Group](https://en.wikipedia.org/wiki/Multi-chassis_link_aggregation_group) used for path redundancy, can be eliminated through proper use of subnets and VLANs.
 
 Work with your network vendor or network support team to ensure your network switches have been properly sized for the workload you are intending to run.
 
