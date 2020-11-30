@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version 20H2
 
-This topic discusses Azure Stack HCI host networking considerations and requirements. For information on data center architectures and the physical connections between servers, see [Physical network requirements](host-network-requirements.md).
+This topic discusses Azure Stack HCI host networking considerations and requirements. For information on data center architectures and the physical connections between servers, see [Physical network requirements](physical-network-requirements.md).
 
 ## Network traffic types
 
@@ -291,7 +291,7 @@ Stretched clusters have the following requirements and characteristics:
 
 ## Next steps
 
-- Learn about network switch and physical network requirements. See [Physical network requirements](host-network-requirements.md).
+- Learn about network switch and physical network requirements. See [Physical network requirements](physical-network-requirements.md).
 - Brush up on failover clustering basics. See [Failover Clustering Networking Basics](https://techcommunity.microsoft.com/t5/failover-clustering/failover-clustering-networking-basics-and-fundamentals/ba-p/1706005?s=09)
 - Brush up on using SET. See [Remote Direct Memory Access (RDMA) and Switch Embedded Teaming (SET)](https://docs.microsoft.com/windows-server/virtualization/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming)
 - For deployment, see [Create a cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster)
