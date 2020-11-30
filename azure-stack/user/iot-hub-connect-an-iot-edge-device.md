@@ -318,7 +318,7 @@ In this section, you'll complete the IoT Hub and VM configuration required by th
 
    - If you find that you have a malformed .YML file as in the example above, simply:
       - Repeat the steps in [Configure the virtual IoT Edge device on the VM](#configure-the-virtual-iot-edge-device-on-the-vm) to fix the .YML file.
-      - Repeat the steps in [this section](#verify-a-successful-installation).
+      - Repeat the steps in [Verify a successful installation](#verify-a-successful-installation).
 
 4. Once you determine that the IoT Edge service started successfully, list the running modules. You should see the service `edgeAgent` with a status of `running`:
 
