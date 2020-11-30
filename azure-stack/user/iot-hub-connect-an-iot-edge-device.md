@@ -26,7 +26,7 @@ Complete the following prerequisites before continuing:
 
 - Once an offer is available, your administrator can create or update your Azure Stack Hub subscription to include IoT Hub. Alternatively, you can [subscribe to the new offer and create your own subscription](azure-stack-subscribe-services.md).
 
-- It's helpful to have a basic understanding of Public Key Encryption (PKI). Specifically, how a Certificate Authority (CA) and X509 certificates are used to build a chain of trust, allowing network nodes (such as your IoT Hub service and IoT Edge device) to securely authenticate and communicate with each other. 
+- It's helpful to have a basic understanding of Public Key Encryption (PKI). Specifically, how a Certificate Authority (CA) and X509 certificates are used to build a chain of trust. This trust allows network nodes to securely authenticate and communicate with each other, such as your IoT Hub service and Edge device. 
 
 ## Overview
 
@@ -106,7 +106,7 @@ In this section, you deploy a new Linux VM, which will serve as the virtual IoT 
 
 In this section, you'll complete the VM certificate configuration required by the virtual IoT Edge device. 
 
-Your IoT Hub service and the IoT Edge device are secured with X509 certificates. The IoT Edge device must use a root CA certificate issued by the CA that issue the root CA for your IoT Hub service. Select the appropriate tab below to complete certificate configuration, based on the root CA type being used by your IoT Hub.
+Your IoT Hub service and the IoT Edge device are secured with X509 certificates. Both must use a root CA certificate issued by the same CA. Select the appropriate tab below to complete certificate configuration, based on the root CA type being used by your IoT Hub.
 
 # [Public CA](#tab/public-ca)
 
@@ -119,7 +119,7 @@ Your IoT Hub service and the IoT Edge device are secured with X509 certificates.
 
 ### Export the root CA certificate from your IoT Hub
 
-Using a machine that has access to your Azure Stack Hub instance, export the IoT Hub root CA certificate in PEM format. The following example shows how to export the certificate using either a [Microsoft Edge](https://www.microsoft.com/edge) or [Google Chrome](https://www.google.com/chrome/index.html) browser: 
+Using a machine with access to your Azure Stack Hub instance, export the IoT Hub root CA certificate in PEM format. The following example shows how to export the certificate using either a [Microsoft Edge](https://www.microsoft.com/edge) or [Google Chrome](https://www.google.com/chrome/index.html) browser: 
 
    1. On the **Overview** page of your IoT Hub, use the **Copy** button to the right of the **Hostname** property to copy the IoT Hub hostname to the clipboard:  
 
@@ -260,7 +260,7 @@ In this section, you'll complete the IoT Hub and VM configuration required by th
      device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
    ```
 
-3. Locate and uncomment the `certificates` property in the **Certificate settings** section. Uncomment and replace the file URIs with the paths to the 3 certificates you created earlier, for example:
+3. Locate and uncomment the `certificates` property in the **Certificate settings** section. Uncomment and replace the file URIs with the paths to the three certificates you created earlier, for example:
 
    ```yaml
    certificates:
@@ -269,7 +269,7 @@ In this section, you'll complete the IoT Hub and VM configuration required by th
      trusted_ca_certs: "<DATA-DIR>/certs/azure-iot-test-only.root.ca.cert.pem"
    ```
 
-4. When completed, the `provisioning` and `certificates` properties should look similar to the following:
+4. When completed, the `provisioning` and `certificates` properties should look similar to the following responses:
 
    [![Nano editor - provisioning property](media\iot-hub-connect-an-iot-edge-device\nano-edit-config-yml-connection-string.png)](media\iot-hub-connect-an-iot-edge-device\nano-edit-config-yml-connection-string.png#lightbox)
 
