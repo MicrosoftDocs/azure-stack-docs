@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/23/2020
+ms.date: 12/10/2020
 ---
 
 # Connect Azure Stack HCI to Azure
@@ -26,6 +26,8 @@ The Azure Stack HCI nodes need connectivity to the cloud in order to connect to 
 ```PowerShell
 C:\> ping bing.com
 ```
+
+You'll also need to ensure that your corporate firewall does not block outbound connectivity to Azure. See Configure firewalls for more information.
 
 ### Azure subscription
 
