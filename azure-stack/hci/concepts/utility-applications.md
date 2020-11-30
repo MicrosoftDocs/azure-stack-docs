@@ -57,6 +57,4 @@ Datadog is a fully unified platform encompassing infrastructure monitoring, appl
 
 ## Next steps
 For more information, see also:
-<!---TBD from Burcu.--->
-
-- [Azure Stack HCI overview](../overview.md)
+- [Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/)
