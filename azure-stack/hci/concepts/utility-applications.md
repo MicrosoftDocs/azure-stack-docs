@@ -1,8 +1,8 @@
 ---
 title: Utility applications for Azure Stack HCI
 description: This topic spotlights utility applications from Microsoft partners that support the Azure Stack HCI operating system.
-author: JohnCobb1
-ms.author: v-johcob
+author: burcuerdemir
+ms.author: burcue
 ms.topic: conceptual
 ms.date: 12/10/2020
 ---
@@ -31,10 +31,8 @@ Veeam Backup & Replication is the one solution for simple, reliable, and flexibl
 
 Commvault is a complete data management platform to store, protect, manage, and use data across on-premises and cloud locations.
 
-- Application listing: [Commvault TBD](https://www.commvault.com/azurestack)
+- Application listing: [Microsoft Azure Stack](https://www.commvault.com/supported-technologies/microsoft/azurestack)
 - Application support: [Azure Stack HCI](https://documentation.commvault.com/11.21/essential/132799_microsoft_azure_stack_hci.html)
-
-<!---Page not found - [Commvault TBD](https://www.commvault.com/azurestack)--->
 
 :::image type="content" source="./media/utility-applications/veritas-logo.png" alt-text="Veritas company logo":::
 
