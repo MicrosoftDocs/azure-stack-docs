@@ -195,7 +195,7 @@ This optional step walks you through setting up the Network Controller component
 :::image type="content" source="media/cluster/create-cluster-network-controller.png" alt-text="Create cluster wizard - SDN Network Controller" lightbox="media/cluster/create-cluster-network-controller.png":::
 
 1. Select **Next: SDN**.
-1. Under **Host**, enter a name for the Network Controller. This is the DNS name used by management clients to communicate with the Network Controller.
+1. Under **Host**, enter a name for the Network Controller. This is the DNS name used by management clients (such as Windows Admin Center) to communicate with the Network Controller.
 1. Specify a path to the Azure Stack HCI VHD file. Use **Browse** to find it quicker.
 1. Specify the number of VMs to be dedicated for Network Controller. At least three VMS are recommended for high availability.
 1. Under **Network**, enter the VLAN ID of the management network. Network Controller needs connectivity to the same management network as the hosts to communicate and configure the hosts.
