@@ -177,7 +177,7 @@ The path to the directory where Azure Kubernetes Service on Azure Stack HCI will
 
 `-cloudConfigLocation`
 
-The location where the cloud agent will store its configuration. Defaults to `%systemdrive%\wssdcloudagent` for single node deployments. The location can be the same as the path of `-imageDir` above. For *multi-node deployments, this parameter must be specified*. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore` or an SMB share such as `\\FileShare\ImageStore`. This needs to be on a highly available share so that the storage will always be accessible.
+The location where the cloud agent will store its configuration. Defaults to `%systemdrive%\wssdcloudagent` for single node deployments. The location can be the same as the path of `-imageDir` above. For *multi-node deployments, this parameter must be specified*. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore` or an SMB share such as `\\FileShare\ImageStore`. The location needs to be on a highly available share so that the storage will always be accessible.
 
 `-nodeConfigLocation`
 
@@ -223,7 +223,7 @@ This can be used to specify a network VLAN ID. Azure Kubernetes Service host and
 
 This takes in either `unstacked_haproxy` or `stacked_kube_vip`. `unstacked_haproxy` is the default where a separate load balancer VM is deployed with HAProxy as the Azure Kubernetes Service host's API server endpoint. `stacked_kube_vip`is a load balancer solution, [Kubevip](https://kube-vip.io/), for the Azure Kubernetes Service host. It allows you to specify a static IP address in the host as a floating IP across the control plane nodes to keep the API server highly available through the IP. If this option is chosen, you must specify the static IP address in the `kvaControlPlaneEndpoint` parameter, and no separate load balancer VM is deployed.
 
-`stacked_kube_vip` requires an IP address and is more resource friendly by saving memory, CPU, and deployment time. If you do not have an IP address to use as the floating IP, you should use `unstacked_haproxy`. The latter option requires a a load balancer VM. 
+`stacked_kube_vip` requires an IP address and is more resource friendly by saving memory, CPU, and deployment time. If you do not have an IP address to use as the floating IP, you should use `unstacked_haproxy`. The latter option requires a load balancer VM. 
 
 `-kvaControlPlaneEndpoint`
 
@@ -356,7 +356,7 @@ The name of the cluster.
 
 `outputLocation`
 
-The location were you want the kubeconfig downloaded. Default is `%USERPROFILE%\.kube`.
+The location where you want the kubeconfig downloaded. Default is `%USERPROFILE%\.kube`.
 
 ## Get logs
 
@@ -368,7 +368,7 @@ Get-AksHciLogs
 
 ## Update to the latest version of Azure Kubernetes Service on Azure Stack HCI
 
-To update to the latest version of Azure Kubernetes Service on Azure Stack HCI, run the following command. The update command only works if you have installed the Oct release. It will not work for releases older than the Oct release. This update command updates the Azure Kubernetes Service host and the on premise Microsoft operated cloud platform. For this preview release, the Kubernetes version and AKS host OS version still remain the same. This command does not upgrade any existing workload clusters. New workload clusters created after updating the AKS host will differ from existing workload clusters in terms of Windows node OS version and Kubernetes version.
+To update to the latest version of Azure Kubernetes Service on Azure Stack HCI, run the following command. The update command only works if you have installed the Oct release. It will not work for releases older than the October release. This update command updates the Azure Kubernetes Service host and the on-premise Microsoft operated cloud platform. For this preview release, the Kubernetes version and AKS host OS version still remain the same. This command does not upgrade any existing workload clusters. New workload clusters created after updating the AKS host will differ from existing workload clusters in terms of Windows node OS version and Kubernetes version.
 
    ```powershell
    Update-AksHci
