@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/20/2020
+ms.date: 11/30/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -131,7 +131,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2008 release of Azure Stack Hub must be applied on the 2005 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2005.23.88](https://support.microsoft.com/help/4595068)
+- [Azure Stack Hub hotfix 1.2005.24.90](https://support.microsoft.com/help/4595070)
 
 ### After successfully applying the 2008 update
 
@@ -139,7 +139,7 @@ When you update to a new major version (for example, 1.2005.x to 1.2008.x), the 
 
 After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2008.15.92](https://support.microsoft.com/help/4595069)
+- [Azure Stack Hub hotfix 1.2008.16.94](https://support.microsoft.com/help/4595071)
 ::: moniker-end
 
 ::: moniker range="azs-2005"
@@ -239,7 +239,7 @@ Starting with the 2005 release, when you update to a new major version (for exam
 
 After the installation of 2005, if any 2005 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2005.23.88](https://support.microsoft.com/help/4595068)
+- [Azure Stack Hub hotfix 1.2005.24.90](https://support.microsoft.com/help/4595070)
 ::: moniker-end
 
 ::: moniker range="azs-2002"
