@@ -14,7 +14,7 @@ ms.lastreviewed: 11/20/2020
 
 [!INCLUDE [preview-banner](../includes/iot-hub-preview.md)]
 
-This article shows you how to connect a virtual IoT Edge device to an IoT Hub service running on Azure Stack Hub. You can use the same general process to connect a physical device to your IoT Hub.
+This article shows you how to connect a virtual IoT Edge device to IoT Hub running on Azure Stack Hub. You can use the same general process to connect a physical device to your IoT Hub.
 
 ## Prerequisites
 
@@ -26,18 +26,18 @@ Complete the following prerequisites before continuing:
 
 - Once an offer is available, your administrator can create or update your Azure Stack Hub subscription to include IoT Hub. Alternatively, you can [subscribe to the new offer and create your own subscription](azure-stack-subscribe-services.md).
 
-- It's helpful to have a basic understanding of Public Key Encryption (PKI). Specifically, how a Certificate Authority (CA) and X509 certificates are used to build a chain of trust. This trust allows network nodes to securely authenticate and communicate with each other, such as your IoT Hub service and Edge device. 
+- It's helpful to have a basic understanding of Public Key Encryption (PKI). Specifically, how a Certificate Authority (CA) and X509 certificates are used to build a chain of trust. This trust allows network nodes to securely authenticate and communicate with each other, such as your IoT Hub service and IoT Edge device. 
 
 ## Overview
 
 Here's a summary of the steps you'll complete, to connect an IoT Edge device to your IoT Hub on Azure Stack Hub:
 
 1. Create IoT Hub and Linux VM resources on your Azure Stack Hub instance. The Linux VM will serve as a virtual IoT Edge device. 
-2. Configure the certificates required for the Edge device. The number of steps required will depend on the type of CA that issued your IoT Hub root CA certificate.
-3. Configure the software and services required for the Edge device.
-4. Test the Edge device to make sure it's working properly and communicating with your IoT Hub.
+2. Configure the certificates required for the IoT Edge device. The number of steps required will depend on the type of CA that issued your IoT Hub root CA certificate.
+3. Configure the software and services required for the IoT Edge device.
+4. Test the IoT Edge device to make sure it's working properly and communicating with your IoT Hub.
 
-Before running the script in each of the following sections, be sure to update the script placeholders to match your environment's configuration. Make note of the values you use, as you'll need them in later sections:
+Before running the script in each section, be sure to update the script placeholders to match your environment's configuration. Make note of the values you use, as you'll need them in later sections:
 
 | Placeholder | Example | Description |
 |-------------|---------|-------------|
@@ -119,7 +119,7 @@ Your IoT Hub service and the IoT Edge device are secured with X509 certificates.
 
 ### Export the root CA certificate from your IoT Hub
 
-Using a machine with access to your Azure Stack Hub instance, export the IoT Hub root CA certificate in PEM format. The following example shows how to export the certificate using either a [Microsoft Edge](https://www.microsoft.com/edge) or [Google Chrome](https://www.google.com/chrome/index.html) browser: 
+Using a machine with access to your Azure Stack Hub, export the IoT Hub root CA certificate in PEM format. The following example shows how to export the certificate using either a [Microsoft Edge](https://www.microsoft.com/edge) or [Google Chrome](https://www.google.com/chrome/index.html) browser: 
 
    1. On the **Overview** page of your IoT Hub, use the **Copy** button to the right of the **Hostname** property to copy the IoT Hub hostname to the clipboard:  
 
@@ -139,12 +139,12 @@ Using a machine with access to your Azure Stack Hub instance, export the IoT Hub
 
    1. After the export finishes successfully, you can close the browser tab.
 
-### Install the IoT Hub root CA certificate on the Edge device
+### Install the IoT Hub root CA certificate on the IoT Edge device
 
-Now install the IoT Hub root CA certificate you exported in the previous section, into the Edge device's trusted store. 
+Now install the IoT Hub root CA certificate you exported in the previous section, into the IoT Edge device's trusted store. 
 
-1. Transfer the IoT Hub root CA file you exported in the previous section, to the Edge device. Since we're using a Linux VM as the Edge device, you'll need to copy it to the Linux VM. Depending on your environment, consider using either PuTTY with the PSCP command, or the WinSCP program to copy the file to the Linux VM.
-2. Run the following script from your Linux VM PuTTY session, where you've stored the IoT Hub root CA file. The script will verify that the Edge device TLS connection is successful, and install the root CA in the Edge device's trusted store:
+1. Transfer the IoT Hub root CA file you exported in the previous section, to the IoT Edge device. Since we're using a Linux VM as the IoT Edge device, you'll need to copy it to the Linux VM. Depending on your environment, consider using either PuTTY with the PSCP command, or the WinSCP program to copy the file to the Linux VM.
+2. Run the following script from your Linux VM PuTTY session, where you've stored the IoT Hub root CA file. The script will verify that the TLS connection is successful, and install the root CA in the IoT Edge device's trusted store:
 
    ```bash
    # Verify connection failed first
@@ -168,7 +168,7 @@ Now install the IoT Hub root CA certificate you exported in the previous section
 
 ### Append the IoT Hub root CA to the device root CA
 
-Now append the IoT Hub root CA you exported and copied to the Edge device, to the device root CA you generated earlier:
+Now append the IoT Hub root CA you exported and copied to the IoT Edge device, to the device root CA you generated earlier:
 
 ```bash
 # Navigate to home directory
@@ -242,13 +242,13 @@ In this section, you'll complete the IoT Hub and VM configuration required by th
 
 ### Configure the virtual IoT Edge device on the VM
 
-1. Return to the VM PuTTY session. Using Bash, open the configuration file in Nano on the virtual Edge device:
+1. Return to the VM PuTTY session. Using Bash, open the configuration file in Nano on the virtual IoT Edge device:
 
    ```bash
    sudo nano /etc/iotedge/config.yaml
    ```
 
-2. Locate the `provisioning` property under comment **# Manual provisioning configuration using a connection string**, in the **Provisioning mode and settings** section. Update the Edge device connection string, by replacing the `<ADD DEVICE CONNECTION STRING HERE>` placeholder with the connection string you copied to the clipboard in the previous section:
+2. Locate the `provisioning` property under comment **# Manual provisioning configuration using a connection string**, in the **Provisioning mode and settings** section. Update the IoT Edge device connection string, by replacing the `<ADD DEVICE CONNECTION STRING HERE>` placeholder with the connection string you copied to the clipboard in the previous section:
 
    > [!NOTE]
    > To paste clipboard contents into Nano, press and hold the **Shift** key and click the right mouse button. Or, press the **Shift** and **Insert** keys simultaneously. If the paste operation shifts your cursor to the rightmost end of the connection string, hit the **Home** key to return to the leftmost end.
@@ -297,7 +297,7 @@ In this section, you'll complete the IoT Hub and VM configuration required by th
    [![IoT Edge service running successfully](media\iot-hub-connect-an-iot-edge-device\iotedge-service-running.png)](media\iot-hub-connect-an-iot-edge-device\iotedge-service-running.png#lightbox)
 
 3. If the IoT Edge service failed:
-   - You'll see a response similar showing "failed", similar to the following:
+   - You'll see a response similar showing "failed", similar to the following example:
    [![IoT Edge service failed](media\iot-hub-connect-an-iot-edge-device\iotedge-service-failed.png)](media\iot-hub-connect-an-iot-edge-device\iotedge-service-failed.png#lightbox)   
    - To troubleshoot, you can:
      - Examine the daemon logs:
