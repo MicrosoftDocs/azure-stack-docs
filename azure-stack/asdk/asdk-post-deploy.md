@@ -4,7 +4,7 @@ description: Learn about the recommended configuration changes to make after ins
 author: justinha
 
 ms.topic: article
-ms.date: 11/14/2020
+ms.date: 12/01/2020
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 11/14/2020
