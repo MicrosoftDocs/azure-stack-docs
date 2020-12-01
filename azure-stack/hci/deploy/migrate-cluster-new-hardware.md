@@ -1,6 +1,6 @@
 --- 
-title: Migrate a cluster to Azure Stack HCI using new hardware
-description: Learn how to Migrate a cluster to Azure Stack HCI using new hardware 
+title: Migrate clustered VMs to new Azure Stack HCI hardware
+description: Learn how to migrate clustered VMs to new Azure Stack HCI hardware 
 author: v-dasis 
 ms.topic: how-to 
 ms.date: 12/01/2020 
@@ -8,11 +8,11 @@ ms.author: v-dasis
 ms.reviewer: JasonGerend 
 ---
 
-# Migrate a cluster to Azure Stack HCI using new hardware
+# Migrate clustered VMs to Azure Stack HCI on new hardware
 
 > Applies to Azure Stack HCI, version 20H2
 
-This topic describes how to migrate a cluster from Windows Server 2016 or Windows Server 2019 to Azure Stack HCI using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one server to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy).
+This topic describes how to migrate VMS on a Windows Server 2016 or Windows Server 2019 cluster to new Azure Stack HCI server hardware using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one server to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy).
 
 The following diagram shows a Windows Server source cluster and an Azure Stack HCI destination cluster:
 
