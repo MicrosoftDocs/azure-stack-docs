@@ -21,7 +21,8 @@ There are two ways to create a Kubernetes cluster in Windows Admin Center. One o
 1. To begin creating a Kubernetes cluster in Windows Admin Center, press the **Add** button on the gateway screen. 
 2. In the **Add or create resources** panel, under **Kubernetes cluster (preview)**, select **Create new** to launch the Kubernetes cluster wizard. While the “Add” button under Kubernetes clusters is present in the public preview, it is nonfunctional. At any point during the Kubernetes cluster create process, you may exit the wizard, but note that your progress won't be saved. 
 
-    ![Illustrates the "Add or create resources" blade in Windows Admin Center, which now includes the new tile for Kubernetes clusters.](.\media\create-kubernetes-cluster\add-connection.png)
+
+    ![Illustrates the Add or create resources blade in Windows Admin Center, which now includes the new tile for Kubernetes clusters.](.\media\create-kubernetes-cluster\add-connection.png)
   
 ## Creating a Kubernetes cluster from the Azure Kubernetes Service host dashboard  
 
