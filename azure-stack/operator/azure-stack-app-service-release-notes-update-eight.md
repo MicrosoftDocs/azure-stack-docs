@@ -4,7 +4,7 @@ description: Update 8 release notes for App Service on Azure Stack Hub, includin
 author: apwestgarth
 manager: stefsch
 ms.topic: article
-ms.date: 05/05/2020
+ms.date: 11/17/2020
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/25/2019
@@ -297,7 +297,26 @@ Take one of the following actions and select retry within the installer.
 
 ## Known issues for cloud admins operating Azure App Service on Azure Stack Hub
 
-Refer to the documentation in the [Azure Stack Hub 1907 release notes](./release-notes.md?view=azs-2002).
+Refer to the documentation in the [Azure Stack Hub 1907 release notes](./release-notes.md?view=azs-1907&preserve-view=true).
+
+- Tenants unable to create App Service Plan using new on App Service Plan view in tenant portal
+
+When creating a new application, tenants can create App Service Plans during the create app workflow, or when changing the App Service Plan for a current app, or via the App Service Plan marketplace item
+
+- Custom domains are not supported in disconnected environments
+
+App Service performs domain ownership verification against public DNS endpoints, as a result custom domains are not supported in disconnected scenarios.
+
+- In some cases workers fail to satisfy health checks (insufficient disk space)
+
+In some cases, where a high number of sites are allocated to a worker or a site is handling a large number of requests, the worker will generate a large number of runtime log files in C:\DWAS\LogFiles.  This is due to a bug in the clean-up logic for these log files.  
+
+To mitigate this issue remote to the individual worker and clear out the contents of the folder.
+
+This issue has been fixed in [App Service on Azure Stack Hub 2020 Q3](app-service-release-notes-2020-Q3.md), we encourage customers to upgrade to the 2020 Q3 release as soon as possible.
+
+> [!IMPORTANT]
+> In order to update to Azure App Service on Azure Stack Hub 2020 Q3 you **must** upgrade to Azure Stack Hub 2008
 
 ## Next steps
 
