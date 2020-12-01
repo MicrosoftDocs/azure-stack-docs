@@ -37,7 +37,7 @@
       href: adapt-apps-mixed-os-clusters.md
     - name: Use Windows Server containers
       items:
-          - name: Deploy NET applications in Azure Kubernetes Service on Azure Stack HCI
+          - name: Deploy .NET applications in AKS on Azure Stack HCI
             href: deploy-windows-application.md
           - name: Prepare Windows nodes for group Managed Service Account support
             href: prepare-windows-nodes-gmsa.md
