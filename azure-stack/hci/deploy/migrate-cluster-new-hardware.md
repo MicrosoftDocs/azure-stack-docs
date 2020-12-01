@@ -1,14 +1,14 @@
 --- 
-title: Migrate a cluster to Azure Stack HCI 
-description: Learn how to migrate a cluster to Azure Stack HCI 
+title: Migrate a cluster to Azure Stack HCI using new hardware
+description: Learn how to Migrate a cluster to Azure Stack HCI using new hardware 
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 11/20/2020 
+ms.date: 12/01/2020 
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
 
-# Migrate a cluster to Azure Stack HCI
+# Migrate a cluster to Azure Stack HCI using new hardware
 
 > Applies to Azure Stack HCI, version 20H2
 
