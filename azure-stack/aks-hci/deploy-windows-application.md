@@ -8,7 +8,7 @@ ms.author: abha
 ms.reviewer: 
 ---
 
-# Tutorial: Deploy Windows applications in Azure Kubernetes Service on Azure Stack HCI
+# Deploy Windows applications in Azure Kubernetes Service on Azure Stack HCI
 
 > Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
 

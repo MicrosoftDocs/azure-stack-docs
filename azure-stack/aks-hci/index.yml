@@ -45,6 +45,8 @@ landingContent:
     linkLists:
       - linkListType: tutorial
         links:
+          - text: Deploy Windows .NET applications
+            url: deploy-windows-application.md
           - text: Use Linux containers
             url: deploy-linux-application.md
       - linkListType: how-to-guide
