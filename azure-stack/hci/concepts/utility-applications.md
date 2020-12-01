@@ -20,35 +20,35 @@ We recommend using Microsoft Defender Antivirus with the operating system. Oth
 ## Partner spotlight
 Utility applications that support the operating system are available from the following Microsoft partners.
 
-:::image type="content" source="./media/utility-applications/veeam-logo.png" alt-text="Veeam company logo":::
+:::image type="content" source="./media/utility-applications/veeam-logo.png" alt-text="Veeam company logo" border="false":::
 
 Veeam Backup & Replication is the one solution for simple, reliable, and flexible protection of all your cloud, virtual, and physical workloads. Take the stress out of managing your data protection, ransomware prevention, and compliance challenges.
 
 - Application listing: [Veeam Backup & Replication](https://www.veeam.com/vm-backup-recovery-replication-software.html)
 - Application support: [Veeam Support for Azure Stack HCI](https://www.veeam.com/kb4047)
 
-:::image type="content" source="./media/utility-applications/commvault-logo.png" alt-text="Commvault company logo":::
+:::image type="content" source="./media/utility-applications/commvault-logo.png" alt-text="Commvault company logo "border="false":::
 
 Commvault is a complete data management platform to store, protect, manage, and use data across on-premises and cloud locations.
 
 - Application listing: [Microsoft Azure Stack](https://www.commvault.com/supported-technologies/microsoft/azurestack)
 - Application support: [Azure Stack HCI](https://documentation.commvault.com/11.21/essential/132799_microsoft_azure_stack_hci.html)
 
-:::image type="content" source="./media/utility-applications/veritas-logo.png" alt-text="Veritas company logo":::
+:::image type="content" source="./media/utility-applications/veritas-logo.png" alt-text="Veritas company logo" "border="false":::
 
 Veritas Backup Exec is an easy-to-use backup and recovery solution that helps protect your environment’s  virtual, physical, and cloud resources.
 
 - Application listing: [Backup Exec](https://www.veritas.com/protection/backup-exec)
 - Application support: [Protect Azure Stack HCI with Backup Exec](https://www.veritas.com/support/en_US/article.100048860)
 
-:::image type="content" source="./media/utility-applications/altaro-logo.png" alt-text="Altaro company logo":::
+:::image type="content" source="./media/utility-applications/altaro-logo.png" alt-text="Altaro company logo" "border="false":::
 
 Altaro VM Backup is an award-winning VM backup and replication solution for Hyper-V and VMware environments. Designed for IT departments, IT resellers and consultants, and Managed Service Providers (MSPs), the solution provides robust, streamlined, enterprise-level functionality.
 
 - Application listing: [Virtual Machine Backup and Replication for Hyper-V and VMware](https://www.altaro.com/vm-backup/)
 - Application support: [Altaro support for Azure Stack HCI](https://www.altaro.com/news/single/News-Altaro-applies-its-expertise-in-Hyper-V-backup-to-support-Microsoft.php)
 
-:::image type="content" source="./media/utility-applications/datadog-logo.png" alt-text="Datadag company logo":::
+:::image type="content" source="./media/utility-applications/datadog-logo.png" alt-text="Datadag company logo" "border="false":::
 
 Datadog is a fully unified platform encompassing infrastructure monitoring, application performance monitoring, log management, user-experience monitoring, and more.
 
