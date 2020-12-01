@@ -4,7 +4,7 @@ description: This topic provides guidance on how to get support for the Azure St
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 12/01/2020
 ---
 
 # Get support for Azure Stack HCI
@@ -18,4 +18,4 @@ This topic provides guidance on how to get support for the Azure Stack HCI opera
 
 ## Next steps
 For more information, see also:
-- [TBD]()
+- [Azure Stack HCI FAQ](./faq)
