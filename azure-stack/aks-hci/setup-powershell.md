@@ -239,7 +239,8 @@ This provides a proxy server URI that should be used by all components that need
 
 `-proxyServerNoProxy`
 
-This is a comma-delimited string of addresses that will be exempt from the proxy. Default value is `localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16`. This excludes  the localhost traffic (localhost, 127.0.0.1), internal Kubernetes service traffic (.svc), the Kubernetes Service CIDR (10.96.0.0/12), and the Kubernetes POD CIDR (10.244.0.0/16) from the proxy server. You can use this parameter to add more subnet ranges or name exemptions.
+This is a comma-delimited string of addresses that will be exempt from the proxy. Default value is `localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16`. This excludes  the localhost traffic (localhost, 127.0.0.1), internal Kubernetes service traffic (.svc), the Kubernetes Service CIDR (10.96.0.0/12), and the Kubernetes POD CIDR (10.244.0.0/16) from the proxy server. You can use this parameter to add more subnet ranges or name exemptions. **The settings for this parameter are very important because, if it's not correctly configured, you may unexpectedly route internal Kubernetes cluster traffic to your proxy. This can cause various failures in network communication.**
+
 
 `-proxyServerCredential`
 
