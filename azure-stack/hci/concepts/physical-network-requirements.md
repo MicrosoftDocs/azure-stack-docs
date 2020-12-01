@@ -43,7 +43,7 @@ If your switch is not included, contact your switch vendor to ensure your switch
 This section lists industry standards that are mandatory for network switches used in all Azure Stack HCI deployments. These standards help ensure reliable communications between nodes in Azure Stack HCI cluster deployments.
 
 > [!NOTE]
-> Network adapters used for compute, storage, and management traffic require Ethernet.
+> Network adapters used for compute, storage, and management traffic require Ethernet. For more information, see [Host network requirements](host-network-requirements.md).
 
 Here are the mandatory IEEE standards and specifications:
 
@@ -113,7 +113,7 @@ North-South traffic requires the use of switches. Besides using an Ethernet swit
 
 It is imperative to understand the "non-blocking" fabric bandwidth that your Ethernet switches can support and that you minimize (or preferably eliminate) oversubscription of the network.
 
-Common congestion points and oversubscription, such as the [Multi-Chassis Link Aggregation Group](https://en.wikipedia.org/wiki/Multi-chassis_link_aggregation_group) used for path redundancy, can be eliminated through proper use of subnets and VLANs.
+Common congestion points and oversubscription, such as the [Multi-Chassis Link Aggregation Group](https://en.wikipedia.org/wiki/Multi-chassis_link_aggregation_group) used for path redundancy, can be eliminated through proper use of subnets and VLANs. Also see [Host network requirements](host-network-requirements.md).
 
 Work with your network vendor or network support team to ensure your network switches have been properly sized for the workload you are intending to run.
 
@@ -138,7 +138,7 @@ Azure Stack HCI supports switchless (direct) connections for East-West traffic f
 
 ## Next steps
 
-- Learn about network adapter and host requirements. See [Host network requirements](physical-network-requirements.md).
+- Learn about network adapter and host requirements. See [Host network requirements](host-network-requirements.md).
 - Brush up on failover clustering basics. See [Failover Clustering Networking Basics](https://techcommunity.microsoft.com/t5/failover-clustering/.failover-clustering-networking-basics-and-fundamentals/ba-p/1706005?s=09).
 - Brush up on using SET. See [Remote Direct Memory Access (RDMA) and Switch Embedded Teaming (SET)](https://docs.microsoft.com/windows-server/virtualization/.hyper-v-virtual-switch/rdma-and-switch-embedded-teaming).
 - For deployment, see [Create a cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster).
