@@ -25,10 +25,9 @@ You can then SSH into the node using `ssh Administrator@ip`.
 
 After you've successfully logged in to your Windows worker node, run the following PowerShell command to join the node to a domain. You'll be prompted to enter your **domain administrator account** credentials. You can also use elevated user credentials that have been given rights to join computers to the given domain. You'll then need to reboot your Windows worker node. 
 
-```
+```powershell
 add-computer --domainame "YourDomainName" -restart
 ```
-
 
 Once all Windows worker nodes have been joined to a domain, follow the steps detailed at [configuring gMSA](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa/) to apply the Kubernetes gMSA custom resource definitions and webhooks on your Kubernetes cluster.
 
