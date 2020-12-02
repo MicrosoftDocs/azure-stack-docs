@@ -18,7 +18,7 @@ Before you begin, make sure you have a 2-4 node Azure Stack HCI cluster or a sin
 
 ## Step 1: Download and install the AksHci PowerShell module
 
-Download the `AKS-HCI-Public=Preview-Oct-2020` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module.
+Download the `AKS-HCI-Public-Preview-Dec-2020` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module.
 
 If you have previously installed Azure Kubernetes Service on Azure Stack HCI using PowerShell or Windows Admin Center, run the following command before proceeding.
 
