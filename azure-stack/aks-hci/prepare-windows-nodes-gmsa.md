@@ -34,3 +34,8 @@ After you've successfully logged in to your Windows worker node, run the followi
 Once all Windows worker nodes have been joined to a domain, follow the steps detailed at [configuring gMSA](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa/) to apply the Kubernetes gMSA custom resource definitions and webhooks on your Kubernetes cluster.
 
 For more information on Windows container with gMSA, refer to [Windows containers and gMSA](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts). For troubleshooting information, see the [Troubleshooting](troubleshoot.md) page. 
+
+## Next steps
+
+* [Use Azure Monitor to monitor your cluster and application](/azure/azure-monitor/insights/container-insights-enable-arc-enabled-clusters).
+* [Use persistent volume on a Kubernetes cluster](persistent-volume.md).

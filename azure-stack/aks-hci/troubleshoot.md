@@ -80,17 +80,16 @@ To sign in to a Windows worker node using SSH, first get the IP address of your 
 
 To get the IP address of the Windows worker node:  
 
-```PowerShell
+```
 kubectl --kubeconfig=yourkubeconfig get nodes -o wide
-``` 
-
+```  
 
 Use `ssh Administrator@ip` to SSH in to a Windows node:  
 
-```PowerShell
+```
 ssh -i $env:SYSTEMDRIVE\AksHci\.ssh\akshci_rsa administrator@<IP Address of the Node>
-``` 
-
+```
+  
 After you SSH in to the node, you can run `net user administrator *` to update your administrator password. 
 
 
@@ -99,17 +98,17 @@ To sign in to a Linux worker node using SSH, first get the IP address of your no
 
 **Note**: You must pass the right location to your SSH private key. The following example uses the default location of %systemdrive%\akshci\.ssh\akshci_rsa, but you may need to change this location if you requested a different path by specifying the `-sshPublicKey` parameter for `Set-AksHciConfig`.
 
-TO get the IP address of the Linux worker node:  
+To get the IP address of the Linux worker node:  
 
-```PowerShell
+```
 kubectl --kubeconfig=yourkubeconfig get nodes -o wide
-```   
+```  
 
 Use `ssh clouduser@ip` to SSH in to the Linux node: 
 
-```PowerShell
+```
 ssh -i $env:SYSTEMDRIVE\AksHci\.ssh\akshci_rsa clouduser@<IP Address of the Node>
-``` 
+```  
 
 After you SSH in to the node, you can run `net user administrator *` to update your administrator password. 
 
