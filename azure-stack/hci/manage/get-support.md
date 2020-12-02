@@ -4,7 +4,7 @@ description: This topic provides guidance on how to get support for the Azure St
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 12/01/2020
+ms.date: 12/02/2020
 ---
 
 # Get support for Azure Stack HCI
@@ -24,7 +24,7 @@ For information about other Azure Stack HCI support resources available through 
 - [Azure Community Support](https://azure.microsoft.com/support/community/)
 - [Knowledge Center](https://azure.microsoft.com/resources/knowledge-center/)
 
-## Partner resources for Azure Stack HCI
+## Partner support resources for Azure Stack HCI
 Azure Stack HCI Integrated System solution hardware from your preferred hardware partner supports enterprise deployment of the operating system. Solution hardware arrives with the operating system preinstalled, and the hardware supports using Windows Admin Center to deploy and update drivers and firmware from the hardware manufacturer.
 
 To learn more about Integrated System partners and their solutions and support offerings, see the [Azure Stack HCI Catalog](https://azure.microsoft.com/products/azure-stack/hci/catalog/).
