@@ -3,10 +3,10 @@ title: Setting up certificates for Azure CLI on the Azure Stack Development Kit 
 description: Learn about setting up certificates for Azure CLI on the Azure Stack Development Kit Azure Stack Development Kit.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 10/26/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/26/2020
+ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack user, I want to use cross-platform CLI to manage and deploy resources on Azure Stack.
 # Keyword: manage azure stack CLI
