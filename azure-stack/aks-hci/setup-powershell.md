@@ -67,28 +67,28 @@ After running the above commands, close all PowerShell windows and reopen an adm
 ```
 CommandType     Name                                               Version    Source
 -----------     ----                                               -------    ------
-Alias           Initialize-AksHciNode                              0.2.11     AksHci
-Function        Get-AksHciCluster                                  0.2.11     AksHci
-Function        Get-AksHciConfig                                   0.2.11     AksHci
-Function        Get-AksHciCredential                               0.2.11     AksHci
-Function        Get-AksHciKubernetesVersion                        0.2.11     AksHci
-Function        Get-AksHciLogs                                     0.2.11     AksHci
-Function        Get-AksHciUpdates                                  0.2.11     AksHci
-Function        Get-AksHciVersion                                  0.2.11     AksHci
-Function        Get-AksHciVmSize                                   0.2.11     AksHci
-Function        Install-AksHci                                     0.2.11     AksHci
-Function        Install-AksHciAdAuth                               0.2.11     AksHci
-Function        Install-AksHciArcOnboarding                        0.2.11     AksHci
-Function        New-AksHciCluster                                  0.2.11     AksHci
-Function        Remove-AksHciCluster                               0.2.11     AksHci
-Function        Restart-AksHci                                     0.2.11     AksHci
-Function        Set-AksHciClusterNodeCount                         0.2.11     AksHci
-Function        Set-AksHciConfig                                   0.2.11     AksHci
-Function        Uninstall-AksHci                                   0.2.11     AksHci
-Function        Uninstall-AksHciAdAuth                             0.2.11     AksHci
-Function        Uninstall-AksHciArcOnboarding                      0.2.11     AksHci
-Function        Update-AksHci                                      0.2.11     AksHci
-Function        Update-AksHciCluster                               0.2.11     AksHci
+Alias           Initialize-AksHciNode                              0.2.12     AksHci
+Function        Get-AksHciCluster                                  0.2.12     AksHci
+Function        Get-AksHciConfig                                   0.2.12     AksHci
+Function        Get-AksHciCredential                               0.2.12     AksHci
+Function        Get-AksHciKubernetesVersion                        0.2.12     AksHci
+Function        Get-AksHciLogs                                     0.2.12     AksHci
+Function        Get-AksHciUpdates                                  0.2.12     AksHci
+Function        Get-AksHciVersion                                  0.2.12     AksHci
+Function        Get-AksHciVmSize                                   0.2.12     AksHci
+Function        Install-AksHci                                     0.2.12     AksHci
+Function        Install-AksHciAdAuth                               0.2.12     AksHci
+Function        Install-AksHciArcOnboarding                        0.2.12     AksHci
+Function        New-AksHciCluster                                  0.2.12     AksHci
+Function        Remove-AksHciCluster                               0.2.12     AksHci
+Function        Restart-AksHci                                     0.2.12     AksHci
+Function        Set-AksHciClusterNodeCount                         0.2.12     AksHci
+Function        Set-AksHciConfig                                   0.2.12     AksHci
+Function        Uninstall-AksHci                                   0.2.12     AksHci
+Function        Uninstall-AksHciAdAuth                             0.2.12     AksHci
+Function        Uninstall-AksHciArcOnboarding                      0.2.12     AksHci
+Function        Update-AksHci                                      0.2.12     AksHci
+Function        Update-AksHciCluster                               0.2.12     AksHci
 ```
 
 ## Step 2: Prepare your machine(s) for deployment
