@@ -34,15 +34,9 @@ There are several requirements and things to consider before you begin migration
 
 ## VM version support and update
 
-This table lists the Windows Server OS versions and their VM versions.
+The following table lists supported Windows Server OS versions and their VM versions for in-place migration on the same hardware.
 
 Regardless of the OS version a VM may be running on, the minimum VM version supported for migration to Azure Stack HCI is version 5.0. So any VMs running at version 2.0, 3.0, or 4.0 on your Windows Server 2016 or Windows Server 2019 cluster must be updated to version 5.0 before migration.
-
-Use the following cmdlet to update the VM version:
-
-    ```powershell
-    Get-VM | Update-VMVersion -Force
-    ```
 
 |OS version|VM version|
 |---|---|
