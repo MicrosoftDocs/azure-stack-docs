@@ -1,6 +1,11 @@
 {
   "redirections": [
     { 
+      "source_path": "azure-stack/aks-hci/persistent-storage-windows-nodes.md", 
+      "redirect_url": "/azure-stack/aks-hci/persistent-volume", 
+      "redirect_document_id": false
+    },   
+    { 
       "source_path": "azure-stack/operator/azure-stack-diagnostic-log-collection-overview.md", 
       "redirect_url": "/azure-stack/operator/diagnostic-log-collection", 
       "redirect_document_id": false
