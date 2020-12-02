@@ -41,9 +41,9 @@ There are several requirements and things to consider before you begin migration
 
 - Remove any ISO image files for your source VMs. This is done using Hyper-V Manager in **VM Properties** in the **Hardware section**. Click **Remove** for any virtual CD/DVD drives.
 
-- You must shutdown all VMs on the source cluster. This is required to ensure version control and state are maintained throughout the migration process.
+- Shutdown all VMs on the source cluster. This is required to ensure version control and state are maintained throughout the migration process.
 
-- Check if Azure Stack HCI supports your version of VMs to import. Use the PowerShell `Get-VMHostSupportedVersion` and `Get-VM` cmdlets to get your VM version information. See the **VM version support** table below.
+- Check if Azure Stack HCI supports your version of VMs to import and update your VMs as needed. See the **VM version support and update** section below on how to do this.
 
 - Backup all VMs on your source cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases.
 
@@ -53,11 +53,11 @@ There are several requirements and things to consider before you begin migration
 
 - If possible, physically locate the source and destination clusters as close together as possible to facilitate the fastest transfer of VMs.
 
-## VM version support
+## VM version support and update
 
-This table lists all Windows Server VM versions.
+This table lists the Windows Server OS versions and their VM versions.
 
-For Windows Server 2012 R2 and later, ensure all VMs you plan to migrate are updated to the highest VM version prior to running the Robocopy migration script and prior to import the VMs to Azure Stack HCI.
+Regardless of the OS version a VM may be running on, the minimum VM version supported for migration to Azure Stack HCI is version 5.0. This represents the default version for VMs on Windows Server 2012 R2. So any VMs running at version 2.0, 3.0, or 4.0 for example must be updated to version 5.0 before migration.
 
 |OS version|VM version|
 |---|---|
@@ -69,22 +69,30 @@ For Windows Server 2012 R2 and later, ensure all VMs you plan to migrate are upd
 |Windows Server 2016 Technical Preview 4|7.0|
 |Windows Server 2016 Technical Preview 5|7.1|
 |Windows Server 2016|8.0|
-|Windows Server 2-19/1709|9.0|
+|Windows Server 2019/1709|9.0|
 |Azure Stack HCI|9.0|
 
-Use the following command to show all VM versions on a single Windows Server 2012 R2 server:
+For VMs on Windows Server 2012 R2, Windows Server 2016, and Windows Server 2019 clusters, update the VMs to the latest version supported on the OS first before running the migration script.
+
+For VMs on Windows Server 2008 SP1, Windows Server 2008 R2-SP1, and Windows 2012 clusters, migration is not supported as the VM version is less than 5.0. In these cases, you have two options:
+
+- Migrate these VMs to Windows Server 2012 R2 first, then updating the VM version to 5.0. Then run the migration script.
+
+- Use Robocopy to copy all VM VHDs to Azure Stack HCI. Then create new VMs and attach the copied VHDs to their respective VMs in Azure Stack HCI. This bypasses the VM version limitation for these older VMs.
+
+Use the following command to show all VM versions on a single Windows Server 2012 R2 and later server:
 
 ```powershell
 Get-VM * | Format-Table Name,Version
 ```
 
-To show all VM versions across all nodes a the Windows Server 2012 R2 cluster:
+To show all VM versions across all nodes on a Windows Server 2012 R2 and later cluster:
 
 ```powershell
 Get-VM –ComputerName (Get-ClusterNode)
 ```
 
-To update all VMs to the latest supported version  (version 5.0) on all Windows Server 201R 2 server nodes prior to copying VMs to Azure Stack HCI:
+To update all VMs to the latest supported version (version 5.0) on all Windows Server 2012 R2 and later server nodes:
 
 ```powershell
 Get-VM –ComputerName (Get-ClusterNode) | Update-VMVersion -Force
@@ -215,7 +223,7 @@ Perform the following steps on your Azure Stack HCI cluster to import, make high
     Get-VM -ComputerName Server01 | Where-Object {$_.State -eq 'Running'}
     ```
 
-1. Update your VMs to the latest version to take advantage of all the advancements:
+1. Update your VMs to the latest version for Azure Stack HCI to take advantage of all the advancements:
 
     ```powershell
     Get-VM | Update-VMVersion -Force

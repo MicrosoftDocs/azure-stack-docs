@@ -31,6 +31,51 @@ There are several requirements and things to consider before you begin migration
     - Check that the block inherited policy has been set on the OU
     - Set the required policy for Azure Stack HCI on this OU
 
+## VM version support and update
+
+This table lists the Windows Server OS versions and their VM versions.
+
+Regardless of the OS version a VM may be running on, the minimum VM version supported for same-hardware migration to Azure Stack HCI is version 5.0. This represents the default version for VMs on Windows Server 2012 R2. So any VMs running at version 2.0, 3.0, or 4.0 for example must be updated to version 5.0 before migration.
+
+|OS version|VM version|
+|---|---|
+|Windows Server 2008 SP1|2.0|
+|Windows Server 2008 R2|3.0|
+|Windows Server 2012|4.0|
+|Windows Server 2012 R2|5.0|
+|Windows Server 2016 Technical Preview 3|6.2|
+|Windows Server 2016 Technical Preview 4|7.0|
+|Windows Server 2016 Technical Preview 5|7.1|
+|Windows Server 2016|8.0|
+|Windows Server 2019/1709|9.0|
+|Azure Stack HCI|9.0|
+
+For VMs on Windows Windows Server 2016 and Windows Server 2019 clusters, update the VMs to the latest version supported on the OS first before running the migration script.
+
+For VMs on Windows Server 2008 SP1, Windows Server 2008 R2-SP1, and Windows 2012 clusters, direct migration to Azure Stack HCI is not supported. In these cases, you have two options:
+
+- Migrate these VMs to Windows Server 2016 or Windows Server 2019 first, update the VM version, then run the migration script.
+
+- Use Robocopy to copy all VM VHDs to Azure Stack HCI. Then create new VMs and attach the copied VHDs to their respective VMs in Azure Stack HCI. This bypasses the VM version limitation for these older VMs.
+
+Use the following command to show all VM versions on a single Windows Server 2016 or Windows Server 2016 server:
+
+```powershell
+Get-VM * | Format-Table Name,Version
+```
+
+To show all VM versions across all nodes on a Windows Server 2016 or Windows Server 2016 cluster:
+
+```powershell
+Get-VM –ComputerName (Get-ClusterNode)
+```
+
+To update all VMs to the latest supported version on all Windows Windows Server 2016 or Windows Server 2016 server nodes:
+
+```powershell
+Get-VM –ComputerName (Get-ClusterNode) | Update-VMVersion -Force
+```
+
 ## Update the servers and cluster
 
 Install Azure Stack HCI on each Windows Server 2016/2019 server node that will be in the upgraded cluster. Select **Custom: Install the newer version of Azure Stack HCI only (Advanced)** during setup. This replaces your current operating system with Azure Stack HCI. For information on how to do this, see [Deploy the Azure Stack HCI operating system](operating-system.md).
