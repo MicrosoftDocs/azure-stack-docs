@@ -27,7 +27,7 @@ If you haven't already downloaded the preview software, see [evaluate AKS on Azu
 
 ## Setting up Windows Admin Center
 
-If you haven't already installed Windows Admin Center, see [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install). For public preview of Azure Kubernetes Service on Azure Stack HCI, you must download and run Windows Admin Center on a Windows 10 or Windows Server machine. Azure Kubernetes Service on Azure Stack HCI functionality is only available on Windows Admin Center builds 2009 or later.
+If you haven't already installed Windows Admin Center, see [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install). For public preview of Azure Kubernetes Service on Azure Stack HCI, you must download and run Windows Admin Center on a Windows 10 machine. Azure Kubernetes Service on Azure Stack HCI functionality is only available on Windows Admin Center builds 2009 or later.
 
 ## Installing the Azure Kubernetes Service extension
 
