@@ -4,10 +4,10 @@ description: PowerShell in Azure Stack Hub has a number of modules and contexts.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 10/16/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/16/2020
+ms.lastreviewed: 12/2/2020
 
 # Intent: As a developer or system admin, I want to write scripts to work with Azure Stack Hub so that I can automate my workflows. I need to understand the various version of PowerShell used in Azure Stack Hub.
 # Keyword: Azure Stack Hub PowerShell PS
