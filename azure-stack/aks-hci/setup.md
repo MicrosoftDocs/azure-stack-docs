@@ -66,6 +66,8 @@ Now that we've verified our system settings, let's get started:
 6. On the **Setup progress** page, you can watch the progress of your host setup. At this point, you are welcome to open Windows Admin Center in a new tab and continue your management tasks. 
 7. If the deployment succeeds, you will be presented with a management dashboard where you can create and manage your Kubernetes clusters. This dashboard, like the rest of Azure Kubernetes Services on Azure Stack HCI, is in a preview release and will be updated with additional functionality in future releases. 
  
+  ![Illustrates the Azure Kubernetes Services on Azure Stack HCI management dashboard.](.\media\setup\dashboard.png)
+ 
 ## Next steps
 
 In this quickstart, you installed Windows Admin Center and the Azure Kubernetes Service extension. You also configured an Azure Kubernetes Service host on the system you are going to deploy a Kubernetes cluster to.
