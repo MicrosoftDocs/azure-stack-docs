@@ -30,18 +30,12 @@ You may also create a Kubernetes cluster through the Azure Kubernetes Service ho
 
 1. Connect to the system where you wish to create your Kubernetes cluster and navigate to the **Azure Kubernetes Service** tool. This system should already have an Azure Kubernetes Service host set up.
 2. Select the **Add cluster** button under the **Kubernetes cluster** heading.
-
-    ![Illustrates the Azure Kubernetes Service tool dashboard that appears after you set up an Azure Kubernetes Service host.](.\media\setup\dashboard.png)  
-
+  
 ## The Kubernetes cluster create wizard
 You've reached the Kubernetes cluster create wizard through the **All Connections** page or the Azure Kubernetes Service tool. Let's get started:  
 
 1. Review the prerequisites for the system that will host the Kubernetes cluster and those for Windows Admin Center. When finished, select **Next**. 
 2. On the **Basics** page, configure information about your cluster, such as Azure Arc integration, Azure Kubernetes Service host information, and primary node pool size. The Azure Kubernetes Service host field requires the fully qualified domain name of the Azure Stack HCI or Windows Server 2019 Datacenter cluster that you used when walking through the [setup](setup.md) page. You must have completed the host setup for this system through the Azure Kubernetes Service tool. In public preview, the node count is not editable and will default to 2, but node size can be configured for larger workloads. When complete, select **Next**.
-
-     [ ![Illustrates the Basics page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\basics.png) ](.\media\create-kubernetes-cluster\basics.png#lightbox)
-
-
 3. You may configure additional node pools to run your workloads on the **Node pools** page. During public preview, you may add up to one Windows node pool and one Linux node pool (in addition to the system node pool). If you'd like to enable Azure Arc integration later in this wizard, you will need at least one Linux node pool that is not the primary node pool. When you're finished, select **Next**.
 4. Specify your network configuration on the **Networking** page. If you select "Advanced," you can customize the address range used when creating a virtual network for nodes in the cluster. If you select "Basics," virtual networks for nodes in the cluster will be created with a default address range. The Network Settings (load balancer, network policy, and HTTP application routing) cannot be changed in public preview. When complete, select **Next**.
 
