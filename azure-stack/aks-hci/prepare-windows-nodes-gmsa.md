@@ -20,6 +20,8 @@ To configure group Managed Service Accounts (gMSA) for pods and containers that 
 
 To enable group Managed Service Account support, your Kubernetes cluster name has to be fewer than four characters. It needs to be fewer than four characters because the maximum supported length for a domain joined server name is 15 characters. The AKS on Azure Stack HCI Kubernetes cluster name convention for a worker node adds a few pre-defined characters to a node name.
 
+## Join the worker nodes to a domain
+
 To join your Windows worker nodes to a domain, log in to a Windows worker node, by running `kubectl` get and noting the `EXTERNAL-IP` value.
 
 ```
