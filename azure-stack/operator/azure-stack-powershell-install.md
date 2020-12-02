@@ -4,10 +4,10 @@ description: Learn how to install PowerShell for Azure Stack Hub. See how to ins
 author: mattbriggs
 
 ms.topic: article
-ms.date: 10/22/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/22/2020
+ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack operator, I want to install Powershell for Azure Stack.
 # Keyword: install powershell azure stack AzureRM
