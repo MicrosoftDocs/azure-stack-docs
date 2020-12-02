@@ -26,7 +26,7 @@
     href: deploy/witness.md
   - name: Register with Azure
     href: deploy/register-with-azure.md
-  - name: Migrate clustered VMs to new hardware
+  - name: Migrate a cluster to new hardware
     href: deploy/migrate-cluster-new-hardware.md
   - name: Migrate a cluster on same hardware
     href: deploy/migrate-cluster-same-hardware.md

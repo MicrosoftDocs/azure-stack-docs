@@ -1,18 +1,20 @@
 --- 
-title: Migrate clustered VMs to new Azure Stack HCI hardware
-description: Learn how to migrate clustered VMs to new Azure Stack HCI hardware 
+title: Migrate to Azure Stack HCI on new hardware
+description: Learn how to migrate to Azure Stack HCI on new hardware 
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 12/01/2020 
+ms.date: 12/02/2020 
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
 
-# Migrate clustered VMs to Azure Stack HCI on new hardware
+# Migrate to Azure Stack HCI on new hardware
 
-> Applies to Azure Stack HCI, version 20H2
+> Applies to Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 
-This topic describes how to migrate VMS on a Windows Server 2016 or Windows Server 2019 cluster to new Azure Stack HCI server hardware using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one server to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy).
+This topic describes how to migrate VMS on a Windows Server 2012 R2, Windows Server 2016, or Windows Server 2019 cluster to new Azure Stack HCI server hardware using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one server to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy).
+
+To migrate to Azure Stack HCI using the same hardware, see [Migrate to Azure Stack HCI on the same hardware](migrate-cluster-same-hardware.md).
 
 The following diagram shows a Windows Server source cluster and an Azure Stack HCI destination cluster:
 
@@ -41,7 +43,7 @@ There are several requirements and things to consider before you begin migration
 
 - You must shutdown all VMs on the source cluster. This is required to ensure version control and state are maintained throughout the migration process.
 
-- Check if Azure Stack HCI supports your version of VMs to import. Use the PowerShell `Get-VMHostSupportedVersion` and `Get-VM` cmdlets to get your VM version information.
+- Check if Azure Stack HCI supports your version of VMs to import. Use the PowerShell `Get-VMHostSupportedVersion` and `Get-VM` cmdlets to get your VM version information. See the **VM version support** table below.
 
 - Backup all VMs on your source cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases.
 
@@ -49,9 +51,44 @@ There are several requirements and things to consider before you begin migration
 
 - Ensure the maximum Jumbo frame sizes are the same between source and destination cluster storage networks, specifically the RDMA network adapters and their respective switch network ports to provide the most efficient end-to-end transfer packet size.
 
-
-
 - If possible, physically locate the source and destination clusters as close together as possible to facilitate the fastest transfer of VMs.
+
+## VM version support
+
+This table lists all Windows Server VM versions.
+
+For Windows Server 2012 R2 and later, ensure all VMs you plan to migrate are updated to the highest VM version prior to running the Robocopy migration script and prior to import the VMs to Azure Stack HCI.
+
+|OS version|VM version|
+|---|---|
+|Windows Server 2008 SP1|2.0|
+|Windows Server 2008 R2|3.0|
+|Windows Server 2012|4.0|
+|Windows Server 2012 R2|5.0|
+|Windows Server 2016 Technical Preview 3|6.2|
+|Windows Server 2016 Technical Preview 4|7.0|
+|Windows Server 2016 Technical Preview 5|7.1|
+|Windows Server 2016|8.0|
+|Windows Server 2-19/1709|9.0|
+|Azure Stack HCI|9.0|
+
+Use the following command to show all VM versions on a single Windows Server 2012 R2 server:
+
+```powershell
+Get-VM * | Format-Table Name,Version
+```
+
+To show all VM versions across all nodes a the Windows Server 2012 R2 cluster:
+
+```powershell
+Get-VM –ComputerName (Get-ClusterNode)
+```
+
+To update all VMs to the latest supported version  (version 5.0) on all Windows Server 201R 2 server nodes prior to copying VMs to Azure Stack HCI:
+
+```powershell
+Get-VM –ComputerName (Get-ClusterNode) | Update-VMVersion -Force
+```
 
 ## RDMA recommendations
 

@@ -1,20 +1,20 @@
 ---
-title: Migrate a cluster to Azure Stack HCI on the same hardware
+title: Migrate to Azure Stack HCI on same hardware
 description: Learn how to migrate a cluster to Azure Stack HCI on the same hardware
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 12/01/2020 
+ms.date: 12/02/2020 
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
 
-# Migrate a cluster to Azure Stack HCI on the same hardware
+# Migrate to Azure Stack HCI on same hardware
 
-> Applies to Azure Stack HCI, version 20H2
+> Applies to Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 
-This topic describes how to migrate a Windows Server 2016 or Windows Server 2019 cluster to Azure Stack HCI using your existing server hardware. This process installs the new Azure Stack HCI operating system and retains your existing cluster settings, storage, and VMs.
+This topic describes how to migrate a Windows Server 2012 R2, Windows Server 2016, or Windows Server 2019 cluster to Azure Stack HCI using your existing server hardware. This process installs the new Azure Stack HCI operating system and retains your existing cluster settings, storage, and VMs.
 
-To migrate Windows Server VMs to new Azure Stack HCI hardware, see [Migrate VMs to new hardware]
+To migrate your VMs to new Azure Stack HCI hardware, see [Migrate to Azure Stack HCI on new hardware](migrate-cluster-new-hardware.md).
 
 > [!NOTE]
 > Migrating stretched clusters is not covered in this article.
