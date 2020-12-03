@@ -128,8 +128,10 @@
       href: concepts/quorum.md
   - name: Networking
     items:
-    - name: Plan host networking
-      href: concepts/plan-host-networking.md
+    - name: Physical network requirements
+      href: concepts/physical-network-requirements.md
+    - name: Host network requirements
+      href: concepts/host-network-requirements.md
     - name: Software Defined Networking (SDN)
       href: concepts/software-defined-networking.md
     - name: Plan a SDN infrastructure
@@ -168,6 +170,8 @@
     href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python
   - name: Azure Stack HCI JavaScript package
     href: /javascript/api/overview/azure/azurestack/stackhci?view=azure-node-latest
+  - name: .NET Namespaces for Azure Stack HCI
+    href: /dotnet/api/overview/azure/stackhci/management
   - name: Hyper-V PowerShell commands
     href: /powershell/module/hyper-v
   - name: Storage PowerShell commands

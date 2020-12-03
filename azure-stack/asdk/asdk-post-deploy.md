@@ -4,7 +4,7 @@ description: Learn about the recommended configuration changes to make after ins
 author: justinha
 
 ms.topic: article
-ms.date: 11/14/2020
+ms.date: 12/01/2020
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 11/14/2020
@@ -41,6 +41,9 @@ You can install the latest Azure Stack PowerShell module with or without interne
 ### [Az modules](#tab/az1)
 
   ```powershell  
+  # Update the current PowerShellGet module to latest version, required to support PreRelease modules
+  Install-Module -Name PowerShellGet -Force
+
   Get-Module -Name Azs.* -ListAvailable | Uninstall-Module -Force -Verbose
   Get-Module -Name Azure* -ListAvailable | Uninstall-Module -Force -Verbose
 
