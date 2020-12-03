@@ -5,7 +5,7 @@ description: Learn how to update the Azure Stack Hub SQL resource provider.
 author: bryanla
 
 ms.topic: article
-ms.date: 11/11/2019
+ms.date: 8/19/2020
 ms.author: bryanla
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/11/2019
@@ -23,18 +23,27 @@ ms.lastreviewed: 11/11/2019
 
 A new SQL resource provider might be released when Azure Stack Hub is updated to a new build. Although the existing resource provider continues to work, we recommend updating to the latest build as soon as possible.
 
-Starting with the SQL resource provider version 1.1.33.0 release, updates are cumulative and don't need to be installed in the order in which they were released as long as you're starting from version 1.1.24.0 or later. For example, if you're running version 1.1.24.0 of the SQL resource provider, then you can upgrade to version 1.1.33.0 or later without needing to first install version 1.1.30.0. To review available resource provider versions, and the version of Azure Stack Hub they're supported on, see the versions list in [Deploy the resource provider prerequisites](./azure-stack-sql-resource-provider-deploy.md#prerequisites).
+|Supported Azure Stack Hub version|SQL RP version|Windows Server that RP service is running on
+  |-----|-----|-----|
+  |2008, 2005|[SQL RP version 1.1.93.0](https://aka.ms/azshsqlrp11930)|Microsoft AzureStack Add-on RP Windows Server INTERNAL ONLY
+  |2005, 2002, 1910|[SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470)|Windows Server 2016 Datacenter - Server Core|
+  |1908|[SQL RP version 1.1.33.0](https://aka.ms/azurestacksqlrp11330)|Windows Server 2016 Datacenter - Server Core|
+  |     |     |     |
 
-To update the resource provider, use the *UpdateSQLProvider.ps1* script. Use your service account with local administrative rights and is an **owner** of the subscription. This script is included with the download of the new SQL resource provider. The update process is similar to the process used to [Deploy the resource provider](./azure-stack-sql-resource-provider-deploy.md). The update script uses the same arguments as the DeploySqlProvider.ps1 script, and you'll need to provide certificate information.
+SQL resource provider update is cumulative. When updating from an old version, you can directly update to the latest version. 
+
+To update the resource provider, use the **UpdateSQLProvider.ps1** script. Use your service account with local administrative rights and is an **owner** of the subscription. This update script is included with the download of the resource provider. 
+
+The update process is similar to the process used to [Deploy the resource provider](./azure-stack-sql-resource-provider-deploy.md). The update script uses the same arguments as the DeploySqlProvider.ps1 script, and you'll need to provide certificate information.
 
 ## Update script processes
 
-The *UpdateSQLProvider.ps1* script creates a new virtual machine (VM) with the latest resource provider code.
+The **UpdateSQLProvider.ps1** script creates a new virtual machine (VM) with the latest OS image, deploy the latest resource provider code, and migrates the settings from the old resource provider to the new resource provider. 
 
 > [!NOTE]
-> We recommend that you download the latest Windows Server 2016 Core image from Marketplace Management. If you need to install an update, you can place a **single** MSU package in the local dependency path. The script will fail if there's more than one MSU file in this location.
+>We recommend that you download the latest Windows Server 2016 Core image or Microsoft AzureStack Add-on RP Windows Server image from Marketplace Management. If you need to install an update, you can place a **single** MSU package in the local dependency path. The script will fail if there's more than one MSU file in this location.
 
-After the *UpdateSQLProvider.ps1* script creates a new VM, the script migrates the following settings from the old provider VM:
+After the *UpdateSQLProvider.ps1* script creates a new VM, the script migrates the following settings from the old resource provider VM:
 
 * database information
 * hosting server information
@@ -59,12 +68,16 @@ You can specify the following parameters from the command line when you run the 
 | **DebugMode** | Prevents automatic cleanup on failure. | No |
 
 ## Update script PowerShell example
-> [!NOTE]
-> This update process only applies to Azure Stack Hub integrated systems.
 
-If you're updating the SQL resource provider version to 1.1.33.0 or previous versions, you need to install specific versions of AzureRm.BootStrapper and Azure Stack Hub modules in PowerShell. If you're updating to the SQL resource provider version 1.1.47.0, the deployment script will automatically download and install the necessary PowerShell modules for you to path C:\Program Files\SqlMySqlPsh.
+If you are updating the SQL resource provider version to 1.1.33.0 or previous versions, you need to install specific versions of AzureRm.BootStrapper and Azure Stack Hub modules in PowerShell. 
+
+If you are updating the SQL resource provider to version 1.1.47.0 or later, you can skip this step. The deployment script will automatically download and install the necessary PowerShell modules for you to path C:\Program Files\SqlMySqlPsh.
+
+>[!NOTE]
+>If folder C:\Program Files\SqlMySqlPsh already exists with PowerShell module downloaded, it is recommended to clean up this folder before running the update script. This is to make sure the right version of PowerShell module is downloaded and used.
 
 ```powershell
+# Run the following scripts when updating to version 1.1.33.0 only.
 # Install the AzureRM.Bootstrapper module, set the profile, and install the AzureStack module.
 # Note that this might not be the most currently available version of Azure Stack Hub PowerShell.
 Install-Module -Name AzureRm.BootStrapper -Force
@@ -106,7 +119,7 @@ $CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domai
 # Change the following as appropriate.
 $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
-# For version 1.1.47.0, the PowerShell modules used by the RP deployment are placed in C:\Program Files\SqlMySqlPsh
+# For version 1.1.47.0 or later, the PowerShell modules used by the RP deployment are placed in C:\Program Files\SqlMySqlPsh
 # The deployment script adds this path to the system $env:PSModulePath to ensure correct modules are used.
 $rpModulePath = Join-Path -Path $env:ProgramFiles -ChildPath 'SqlMySqlPsh'
 $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
@@ -117,10 +130,9 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
   -VMLocalCredential $vmLocalAdminCreds `
   -CloudAdminCredential $cloudAdminCreds `
   -PrivilegedEndpoint $privilegedEndpoint `
-  -AzureEnvironment $AzureEnvironment ` 
+  -AzureEnvironment $AzureEnvironment `
   -DefaultSSLCertificatePassword $PfxPass `
-  -DependencyFilesLocalPath $tempDir\cert 
-
+  -DependencyFilesLocalPath $tempDir\cert
  ```
 
 When the resource provider update script finishes, close the current PowerShell session.

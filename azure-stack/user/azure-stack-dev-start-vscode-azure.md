@@ -4,13 +4,13 @@ description: As a developer, connect to Azure Stack Hub using Azure Account Exte
 author: mattbriggs
 
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 11/11/2019
+ms.lastreviewed: 12/2/2020
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As a developer, I want to use VS Code to connect to Azure Stack Hub so that I can provision resources.
+# Keyword: VS code Azure account extension
 
 ---
 
@@ -21,7 +21,7 @@ In this article, we will walk you through how to connect to Azure Stack Hub usin
 
 VS Code is a light-weight editor for building and debug web and cloud applications. ASP.NET Core, Python, NodeJS, Go, and other developers use VS Code. With the Azure Account extension, you can use a single Azure sign-in with subscription filtering for additional Azure extensions. The extension makes the Azure Cloud Shell available in the VS Code-integrated terminal. Using the extension, you can connect to your Azure Stack Hub subscription using both Azure AD (Azure AD) and Active Directory Federated Services (AD FS) for your identity manager. You can sign in to Azure Stack Hub, select your subscription, and open a new command line in a cloud shell. 
 
-> [!Note]  
+> [!NOTE]  
 > You can use the steps in this article for an Active Directory Federated Services (AD FS) environment. Use your AD FS credentials and endpoints.
 
 ## Pre-requisites for the Azure Account Extension
@@ -35,7 +35,7 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
 
 1. Run the **Identity** script from Azure Stack Hub Tools in GitHub.
 
-    - Before you run the script, you will need to have PowerShell installed and configured for your environment. For instructions see [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md).
+    - Before you run the script, you will need to have PowerShell installed and configured for your environment. For instructions see [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md).
 
     - For the **Identity** script instructions and script, see [AzureStack-Tools/Identity](https://aka.ms/aa6z611).
 
@@ -82,7 +82,8 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
         | `tenant-ID` | The value of your Azure Stack Hub [tenant ID](../operator/azure-stack-identity-overview.md). |
         | `activeDirectoryEndpointUrl` | This is the URL from loginEndpoint property. |
         | `activeDirectoryResourceId` | This is the URL from the audiences property.
-        | `resourceManagerEndpointUrl` | This is the root URL for the Azure Resource Manager for Azure Stack Hub. | 
+        | `resourceManagerEndpointUrl` | This is the root URL for the Azure Resource Manager for Azure Stack Hub. |
+        | `validateAuthority` | You can leave out this parameter if you are using Azure AD as your identity manager. Add the parameter with a value of `false` if you are using AD FS. |
 
     - JSON snippet:
 
@@ -92,6 +93,7 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
           "activeDirectoryEndpointUrl": "Login endpoint",
           "activeDirectoryResourceId": "This is the URL from the audiences property.",
           "resourceManagerEndpointUrl": "Aure Resource Management Endpoint",
+          "validateAuthority" : false, 
       },
       "azure.cloud": "AzurePPE"
       ```

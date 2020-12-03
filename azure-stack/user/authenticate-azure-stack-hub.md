@@ -1,13 +1,13 @@
 ---
-title: How to get authentication information for Azure Stack Hub 
+title: Get authentication information for Azure Stack Hub 
 description: Learn how to get authentication information for Azure Stack Hub
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 12/13/2019
+ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack Hub user, I want to authenticate to Azure Stack Hub so that I can modify resources in my Azure subscription.
 # Keyword: authenticate Azure Stack Hub
@@ -47,7 +47,7 @@ To get the subscription ID:
 
 2.  Select **All Services**.
 
-    > ![Azure Stack Hub auth info subscription ID tenant ID](./media/authenticate-azure-stack-hub/azure-stack-hub-auth-info.png)
+    > ![Azure Stack Hub auth info subscription ID tenant ID](./media/authenticate-azure-stack-hub/azure-stack-hub-auth-infoa.png)
 
 3.  Select **Subscriptions**.
 

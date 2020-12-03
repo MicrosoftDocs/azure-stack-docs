@@ -1,13 +1,13 @@
 ---
-title: Use the privileged endpoint (PEP) to collect diagnostic logs
-description: Learn how to collect diagnostic logs on demand in Azure Stack Hub using the Administrator portal or a PowerShell script.
+title: Collect diagnostic logs via the privileged endpoint (PEP) 
+description: Learn how to collect diagnostic logs on demand in Azure Stack Hub by using the Administrator portal or a PowerShell script.
 author: justinha
 ms.custom: conteperfq4
 ms.topic: article
-ms.date: 06/30/2020
+ms.date: 09/02/2020
 ms.author: justinha
 ms.reviewer: shisab
-ms.lastreviewed: 06/30/2020
+ms.lastreviewed: 09/02/2020
 
 ---
 # Send Azure Stack Hub diagnostic logs by using the privileged endpoint (PEP)
@@ -78,25 +78,25 @@ if ($session) {
 * Collect logs for the value-add RPs. The general syntax is:
  
   ```powershell
-  Get-AzureStackLogs -FilterByResourceProvider <<value-add RP name>>
+  Get-AzureStackLog -FilterByResourceProvider <<value-add RP name>>
   ```
  
   To collect logs for IoT Hub: 
 
   ```powershell
-  Get-AzureStackLogs -FilterByResourceProvider IotHub
+  Get-AzureStackLog -FilterByResourceProvider iothubServiceHealth
   ```
  
   To collect logs for Event Hubs:
 
   ```powershell
-  Get-AzureStackLogs -FilterByResourceProvider eventhub
+  Get-AzureStackLog -FilterByResourceProvider eventhub
   ```
  
   To collect logs for Azure Stack Edge:
 
   ```powershell
-  Get-AzureStackLogs -FilterByResourceProvide databoxedge
+  Get-AzureStackLog -FilterByResourceProvide databoxedge
   ```
 
 * Collect logs and store them in the specified Azure Storage blob container. The general syntax for this operation is as follows:
@@ -132,12 +132,10 @@ if ($session) {
   9. Select **Create**.
   10. You'll get a Shared Access Signature. Copy the URL portion and provide it to the `-OutputSasUri` parameter.
 
-### Parameter considerations 
+### Parameter considerations
 
 * The parameters **OutputSharePath** and **OutputShareCredential** are used to store logs in a user specified location.
-
 * The **FromDate** and **ToDate** parameters can be used to collect logs for a particular time period. If these parameters aren't specified, logs are collected for the past four hours by default.
-
 * Use the **FilterByNode** parameter to filter logs by computer name. For example:
 
     ```powershell
@@ -154,28 +152,175 @@ if ($session) {
 * Dump file log collection is disabled by default. To enable it, use the **IncludeDumpFile** switch parameter.
 * Currently, you can use the **FilterByRole** parameter to filter log collection by the following roles:
 
-  |   |   |   |    |     |
-  | - | - | - | -  |  -  |
-  |ACS                   |CA                             |HRP                            |OboService                |VirtualMachines|
-  |ACSBlob               |CacheService                   |IBC                            |OEM                       |WAS            |
-  |ACSDownloadService    |Compute                        |InfraServiceController         |OnboardRP                 |WASPUBLIC|
-  |ACSFabric             |CPI                            |KeyVaultAdminResourceProvider  |PXE                       |         |
-  |ACSFrontEnd           |CRP                            |KeyVaultControlPlane           |QueryServiceCoordinator   |         | 
-  |ACSMetrics            |DeploymentMachine              |KeyVaultDataPlane              |QueryServiceWorker        |         |
-  |ACSMigrationService   |DiskRP                         |KeyVaultInternalControlPlane   |SeedRing                  |         |
-  |ACSMonitoringService  |Domain                         |KeyVaultInternalDataPlane      |SeedRingServices          |         |
-  |ACSSettingsService    |ECE                            |KeyVaultNamingService          |SLB                       |         |
-  |ACSTableMaster        |EventAdminRP                   |MDM                            |SQL                       |         |
-  |ACSTableServer        |EventRP                        |MetricsAdminRP                 |SRP                       |         |
-  |ACSWac                |ExternalDNS                    |MetricsRP                      |Storage                   |         |
-  |ADFS                  |FabricRing                     |MetricsServer                  |StorageController         |         |
-  |ApplicationController |FabricRingServices             |MetricsStoreService            |URP                       |         |
-  |ASAppGateway          |FirstTierAggregationService    |MonAdminRP                     |SupportBridgeController   |         |
-  |AzureBridge           |FRP                            |MonRP                          |SupportRing               |         |
-  |AzureMonitor          |Gateway                        |NC                             |SupportRingServices       |         |
-  |BareMetal             |HealthMonitoring               |NonPrivilegedAppGateway        |SupportBridgeRP           |         |
-  |BRP                   |HintingServiceV2               |NRP                            |UsageBridge               |         |
-  |   |   |   |    |     | 
+:::row:::
+   :::column span="":::
+
+      ACS
+
+      ACSBlob
+
+      ACSDownloadService
+
+      ACSFabric
+
+      ACSFrontEnd
+
+      ACSMetrics
+
+      ACSMigrationService
+
+      ACSMonitoringService
+
+      ACSSettingsService
+
+      ACSTableMaster
+
+      ACSTableServer
+
+      ACSWac
+
+      ADFS
+
+      ApplicationController
+
+      ASAppGateway
+
+      AzureBridge
+
+      AzureMonitor
+
+      BareMetal
+
+      BRP
+
+      CA
+
+      CacheService
+
+      Compute
+
+      CPI
+
+      CRP
+
+      DeploymentMachine
+
+      DiskRP
+
+      Domain
+
+   :::column-end:::
+   :::column span="":::
+
+      ECE
+
+      EventAdminRP
+
+      EventRP
+
+      ExternalDNS
+
+      FabricRing
+
+      FabricRingServices
+
+      FirstTierAggregationService
+
+      FRP
+
+      Gateway
+
+      HealthMonitoring
+
+      HintingServiceV2
+
+      HRP
+
+      IBC
+
+      InfraServiceController
+
+      KeyVaultAdminResourceProvider
+
+      KeyVaultControlPlane
+
+      KeyVaultDataPlane
+
+      KeyVaultInternalControlPlane
+
+      KeyVaultInternalDataPlane
+
+      KeyVaultNamingService
+
+      MDM
+
+      MetricsAdminRP
+
+      MetricsRP
+
+      MetricsServer
+
+      MetricsStoreService
+
+      MonAdminRP
+
+      MonRP
+
+   :::column-end:::
+   :::column span="":::
+
+      NC
+
+      NonPrivilegedAppGateway
+
+      NRP
+
+      OboService
+
+      OEM
+
+      OnboardRP
+
+      PXE
+
+      QueryServiceCoordinator
+
+      QueryServiceWorker
+
+      SeedRing
+
+      SeedRingServices
+
+      SLB
+
+      SQL
+
+      SRP
+
+      Storage
+
+      StorageController
+
+      URP
+
+      SupportBridgeController
+
+      SupportRing
+
+      SupportRingServices
+
+      SupportBridgeRP
+
+      UsageBridge
+
+      VirtualMachines
+
+      WAS
+
+      WASPUBLIC
+   
+   :::column-end:::
+:::row-end:::
 
 ### Additional considerations on diagnostic logs
 

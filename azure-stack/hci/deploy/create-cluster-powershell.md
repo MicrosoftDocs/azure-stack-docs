@@ -30,7 +30,7 @@ If you’re interested in testing Azure Stack HCI, but have limited or no spare 
 
 Before you begin, make sure you:
 
-- Have read the hardware and other requirements in [Before you deploy Azure Stack HCI](before-you-start.md).
+- Have read the [Azure Stack HCI system requirements](../concepts/system-requirements.md).
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
 - Have an account that’s a member of the local Administrators group on each server.
 - Have rights in Active Directory to create objects.
@@ -424,7 +424,7 @@ For stretched clusters, the `Enable-ClusterStorageSpacesDirect` cmdlet will also
 - Determine which nodes are in which sites
 - Determines what storage each node has available
 - Checks to see if the Storage Replica feature is installed on each node
-- Creates a storage pool for each site and identifies it with the same of the site
+- Creates a storage pool for each site and identifies it with the name of the site
 - Creates data and log volumes in each storage pool - one per site
 
 The following command enables Storage Spaces Direct. You can also specify a friendly name for a storage pool, as shown here:

@@ -4,9 +4,9 @@ description: Learn the steps and tools for migrating scripts from the AzureRM mo
 author: mattbriggs
 ms.author: mabrigg
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 12/2/2020
 ms.reviewer: sijuman
-ms.lastreviewed: 04/14/2020
+ms.lastreviewed: 12/2/2020
 ---
 
 # Migrate from AzureRM to Azure PowerShell Az in Azure Stack Hub
@@ -21,8 +21,7 @@ To see the full list of breaking changes between AzureRM and Az, see the [Migrat
 
 ## Check for installed versions of AzureRM
 
-The Az module can be installed side-by-side with the AzureRM module, but this is not recommended. Before
-taking any migration steps, check which versions of AzureRM are installed on your system. Doing so
+Before taking any migration steps, check which versions of AzureRM are installed on your system. Doing so
 allows you to make sure scripts are already running on the latest release, and let you know
 if you can enable command aliases without uninstalling AzureRM.
 
@@ -227,7 +226,7 @@ RequiredModules = @(@{ModuleName="AzureRM.Profile"; ModuleVersion="5.8.2"})
 Must be changed to:
 
 ```powershell
-RequiredModules = @(@{ModuleName="Az.Profile"; ModuleVersion="1.0.0"})
+RequiredModules = @(@{ModuleName="Az.Accounts"; ModuleVersion="1.0.0"})
 ```
 
 ### Removed modules

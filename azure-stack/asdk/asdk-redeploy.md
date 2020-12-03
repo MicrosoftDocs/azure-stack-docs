@@ -1,19 +1,18 @@
 ﻿---
 title: Redeploy the ASDK 
 description: Learn how to redeploy the Azure Stack Development Kit (ASDK).
-author: justinha
+author: myoungerman
 
 ms.topic: article
-ms.date: 02/12/2019
-ms.author: justinha
+ms.date: 11/14/2020
+ms.author: v-myoung
 ms.reviewer: misainat
-ms.lastreviewed: 11/05/2019
+ms.lastreviewed: 11/14/2020
 
 # Intent: As an ASDK user, I want to redeploy the ASDK so I can upgrade to and evalutate a newer version of Azure Stack.
 # Keyword: redeploy ASDK
 
 ---
-
 
 # Redeploy the ASDK
 In this article, you'll learn how to redeploy the Azure Stack Development Kit (ASDK) in a non-production environment. Because upgrading the ASDK isn't supported, you need to completely redeploy it to move to a newer version. You can also redeploy the ASDK whenever you want to start from scratch.
@@ -24,7 +23,44 @@ In this article, you'll learn how to redeploy the Azure Stack Development Kit (A
 ## Remove Azure registration 
 If you've previously registered your ASDK installation with Azure, you should remove the registration resource before redeploying the ASDK. Re-register the ASDK to enable the availability of items in the marketplace when you redeploy the ASDK. If you haven't previously registered the ASDK with your Azure subscription, you can skip this section.
 
-To remove the registration resource, use the **Remove-AzsRegistration** cmdlet to unregister Azure Stack. Then, use the **Remove-AzureRMResourceGroup** cmdlet to delete the Azure Stack resource group from your Azure subscription:
+To remove the registration resource, use the **Remove-AzsRegistration** cmdlet to unregister Azure Stack. Then, use the **Remove-AzResourceGroup** cmdlet to delete the Azure Stack resource group from your Azure subscription.
+
+### [Az modules](#tab/az)
+
+1. Open a PowerShell console as an admin on a computer that has access to the privileged endpoint. For the ASDK, that's the ASDK host computer.
+
+2. Run the following PowerShell commands to unregister your ASDK installation and delete the **azurestack** resource group from your Azure subscription:
+
+   ```powershell    
+   #Import the registration module that was downloaded with the GitHub tools
+   Import-Module C:\AzureStack-Tools-az\Registration\RegisterWithAzure.psm1
+
+   # Provide Azure subscription admin credentials
+   Add-AzAccount
+
+   # Provide ASDK admin credentials
+   $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the cloud domain credentials to access the privileged endpoint"
+
+   # Unregister Azure Stack
+   Remove-AzsRegistration `
+      -PrivilegedEndpointCredential $CloudAdminCred `
+      -PrivilegedEndpoint AzS-ERCS01
+      -RegistrationName $RegistrationName
+
+   # Remove the Azure Stack resource group
+   Remove-AzResourceGroup -Name azurestack -Force
+   ```
+
+3. You're prompted to sign in to both your Azure subscription and the local ASDK installation when the script runs.
+4. When the script completes, you should see messages similar to the following examples:
+
+    `De-Activating Azure Stack (this may take up to 10 minutes to complete).`
+    `Your environment is now unable to syndicate items and is no longer reporting usage data.`
+    `Remove registration resource from Azure...`
+    `"Deleting the resource..." on target "/subscriptions/<subscription information>"`
+    `********** End Log: Remove-AzsRegistration *********`
+
+### [AzureRM modules](#tab/azurerm)
 
 1. Open a PowerShell console as an admin on a computer that has access to the privileged endpoint. For the ASDK, that's the ASDK host computer.
 
@@ -58,7 +94,7 @@ To remove the registration resource, use the **Remove-AzsRegistration** cmdlet t
     `"Deleting the resource..." on target "/subscriptions/<subscription information>"`
     `********** End Log: Remove-AzsRegistration *********`
 
-
+---
 
 Azure Stack should now successfully be unregistered from your Azure subscription. The azurestack resource group should also be deleted. This resource group is the one created when you first registered the ASDK with Azure.
 

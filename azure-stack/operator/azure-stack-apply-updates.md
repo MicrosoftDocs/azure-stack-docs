@@ -48,7 +48,7 @@ You can view the current version of Azure Stack Hub in the **Updates** blade. To
 
 4. Select **Update now**.
 
-    ![Azure Stack Hub update run details](./media/azure-stack-update-apply/image2.png)
+    ![Screenshot that shows how to start an update in Azure Stack Hub.](./media/azure-stack-update-apply/image2.png)
 
 5. You can view high-level status as the update process iterates through various subsystems in Azure Stack Hub. Example subsystems include physical hosts, Service Fabric, infrastructure virtual machines, and services that provide both the admin and user portals. Throughout the update process, the update resource provider reports additional details about the update, such as the number of steps that have succeeded, and the number in progress.
 

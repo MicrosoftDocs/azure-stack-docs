@@ -4,7 +4,7 @@ description: Learn about Azure Stack Hub VMs.
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 06/15/2020
+ms.date: 10/01/2020
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/05/2020
@@ -16,7 +16,7 @@ ms.lastreviewed: 01/05/2020
 
 # Introduction to Azure Stack Hub VMs
 
-Azure Stack Hub offers virtual machines (VMs) as a type of on-demand and scalable computing resource. You can choose a VM when you need more control over the computing environment. This article provides details before you create your first VM.
+Azure Stack Hub offers virtual machines (VMs) as a type of on-demand and scalable computing resource. You can choose a VM when you need more control over the computing environment. This article provides details about creating your first VM.
 
 An Azure Stack Hub VM gives you the flexibility of virtualization without the need to manage clusters or individual machines. However, you still need to maintain the VM by doing tasks such as configuring, patching/updating, and installing the software that runs on it.
 
@@ -41,7 +41,7 @@ There are always design considerations when you build out an application infrast
 - The configuration of the VM after it starts.
 - The related resources that the VM needs.
 
-### Naming
+### Names
 
 A VM has a name assigned to it and it has a computer name configured as part of the operating system. The name of a VM can be up to 15 characters.
 
@@ -64,7 +64,7 @@ The following table shows how to find the information for an image:
 |Method|Description|
 |---------|---------|
 |Azure Stack Hub portal|The values are automatically specified for you when you select an image to use.|
-|Azure Stack Hub PowerShell|`Get-AzureRMVMImagePublisher -Location "location"`<br>`Get-AzureRMVMImageOffer -Location "location" -Publisher "publisherName"`<br>`Get-AzureRMVMImageSku -Location "location" -Publisher "publisherName" -Offer "offerName"`|
+|Azure Stack Hub PowerShell|`Get-AzVMImagePublisher -Location "location"`<br>`Get-AzVMImageOffer -Location "location" -Publisher "publisherName"`<br>`Get-AzVMImageSku -Location "location" -Publisher "publisherName" -Offer "offerName"`|
 |REST APIs     |[List image publishers](/rest/api/compute/platformimages/platformimages-list-publishers)<br>[List image offers](/rest/api/compute/platformimages/platformimages-list-publisher-offers)<br>[List image SKUs](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus)|
 
 You can choose to upload and use your own image. If you do, the publisher name, offer, and SKU aren't used.
@@ -107,10 +107,10 @@ There are several ways to create a VM. Your choice depends on your environment. 
 
 You can manage VMs using a browser-based portal, command-line tools with support for scripting, or directly through APIs. Some typical management tasks are:
 
-- Getting information about a VM
-- Connecting to a VM
-- Managing availability
-- Making backups
+- Getting information about a VM.
+- Connecting to a VM.
+- Managing availability.
+- Making backups.
 
 ### Get information about your VM
 

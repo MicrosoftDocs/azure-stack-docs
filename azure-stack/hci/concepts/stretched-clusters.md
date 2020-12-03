@@ -3,7 +3,7 @@ title: Stretched clusters overview
 description: Learn about stretched clusters
 author: v-dasis
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.date: 11/05/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -25,6 +25,9 @@ In simple terms, an *active* site is one that has resources and is providing rol
 
 Sites can be in two different states, different cities, different floors, or different rooms. Stretched clusters using two sites provides disaster recovery and business continuity should a site suffer an outage or failure.
 
+Take a few minutes to watch the video on stretched clustering with Azure Stack HCI:
+> [!VIDEO https://www.youtube.com/embed/rYnZL1wMiqU]
+
 ## Active-passive stretched cluster
 
 The following diagram shows Site 1 as the active site with replication to Site 2, a unidirectional replication.
@@ -39,7 +42,7 @@ The following diagram shows both Site 1 and Site 2 as being active sites, with b
 
 ## Next steps
 
-- Learn about hardware and other requirements for stretched clusters. See [Before you start](../deploy/before-you-start.md).
+- Learn about hardware and other requirements for stretched clusters. See [System requirements](system-requirements.md).
 - Learn how to deploy a stretched cluster using Windows Admin Center. See [Create a cluster using Windows Admin Center](../deploy/create-cluster.md).
 - Learn how to deploy a stretched cluster using PowerShell. See [Create a cluster using PowerShell](../deploy/create-cluster-powershell.md).
 - Learn how to create volumes and set up replication for stretched clusters. See [Create volumes and set up replication for stretched clusters](../manage/create-stretched-volumes.md).

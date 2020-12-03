@@ -4,10 +4,10 @@ description: Create a Linux server VM by using Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: quickstart
-ms.date: 04/20/2020
+ms.date: 10/06/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 1/10/2020
+ms.lastreviewed: 10/06/2020
 
 # Intent: As an Azure Stack user, I want to create a Linux virtual machine in Azure Stack so that I can install an app.
 # Keyword: Azure Stack Linux Server
@@ -50,7 +50,7 @@ To create an SSH key pair:
 
 1. In the **PuTTY Key Generator** window, set **Type of key to generate** to **RSA**, and set **Number of bits in a generated key** to **2048**.
 
-   ![PuTTY Key Generator configuration](media/azure-stack-quick-linux-portal/Putty01a.png)
+   ![PuTTY Key Generator configuration](media/azure-stack-quick-linux-portal/Putty01aa.png)
 
 1. Select **Generate**.
 
@@ -58,7 +58,7 @@ To create an SSH key pair:
 
 1. When the key generation has finished, select **Save public key**, and then select **Save private key** to save your keys to files.
 
-   ![PuTTY Key Generator results](media/azure-stack-quick-linux-portal/Putty02a.png)
+   ![PuTTY Key Generator results](media/azure-stack-quick-linux-portal/Putty02aa.png)
 
 ## Sign in to the Azure Stack Hub portal
 
@@ -72,30 +72,33 @@ The address of the Azure Stack Hub portal depends on which Azure Stack Hub produ
 
 1. Select **Create a resource** > **Compute**. Search for `Ubuntu Server 16.04 LTS`. Select the name.
 
-   ![Create Linux Server](media/azure-stack-quick-linux-portal/image1.png)
+   ![Create Linux Server](media/azure-stack-quick-linux-portal/image1a.png)
 
 1. Select **Create**.
 
-   ![Create Linux Server - Create](media/azure-stack-quick-linux-portal/image2.png)
+   ![Create Linux Server - Create](media/azure-stack-quick-linux-portal/image2a.png)
 
 1. Enter the VM information. Select **SSH public key** for Authentication type, and paste the SSH public key that you saved, and then select **OK**.
 
-    > [!Note]  
+    > [!NOTE]  
     > Make sure that you remove any leading or trailing white space for the key.
 
-   ![Authentication](media/azure-stack-quick-linux-portal/image3.png)
+   ![Authentication](media/azure-stack-quick-linux-portal/image3a.png)
 
 1. Select **D1_v2** for the VM size.
 
-   ![Create Linux Server - Size](media/azure-stack-quick-linux-portal/image4.png)
+> [!Note]  
+> If you are creating a GPU enabled VM, select GPU VM **NC_v3** or **NC4as_T4_v3** for the VM size.
+
+   ![Create Linux Server - Size](media/azure-stack-quick-linux-portal/image4a.png)
 
 1. Enter your changes to the defaults on the **Settings** blade,  Use Managed disks. If you need to allow SSH access, select **SSH (22)** to open the port. When your configurations are ready, select **OK**.
 
-   ![Create Linux Server - Settings](media/azure-stack-quick-linux-portal/image5.png)
+   ![Create Linux Server - Settings](media/azure-stack-quick-linux-portal/image5a.png)
 
 1. Select **OK** in the Summary to start the VM deployment. Select **Virtual Machines** to see your new VM, search for the VM name, and then select the VM in the search results.
 
-![Create Linux Server - Summary](media/azure-stack-quick-linux-portal/image5.png)
+![Create Linux Server - Summary](media/azure-stack-quick-linux-portal/image5a.png)
 
 ## Connect to the VM
 
@@ -103,7 +106,7 @@ The address of the Azure Stack Hub portal depends on which Azure Stack Hub produ
 
 1. On the **PuTTY Configuration** page, in the **Category** pane, scroll down to and expand **SSH**, and then select **Auth**. 
 
-   ![Connect VM](media/azure-stack-quick-linux-portal/putty03a.png)
+   ![Connect VM](media/azure-stack-quick-linux-portal/putty03aa.png)
 
 1. Select **Browse**, and then select the private key file that you saved.
 
@@ -113,7 +116,7 @@ The address of the Azure Stack Hub portal depends on which Azure Stack Hub produ
 
 1. Select **Open** to open a session for the VM.
 
-   ![Linux session](media/azure-stack-quick-linux-portal/Putty05a.png)
+   ![Linux session](media/azure-stack-quick-linux-portal/Putty05aa.png)
 
 ## Install the NGINX web server
 
@@ -155,7 +158,7 @@ With NGINX installed and port 80 open on your VM, you can access the web server 
 
 Open a web browser, and go to *http://\<public IP address>*.
 
-![The NGINX web server Welcome page](media/azure-stack-quick-linux-portal/linux-05a.png)
+![The NGINX web server Welcome page](media/azure-stack-quick-linux-portal/linux-05aa.png)
 
 ## Clean up resources
 

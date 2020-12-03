@@ -4,10 +4,10 @@ description: Learn how to connect to iSCSI storage with Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/28/2019
+ms.lastreviewed: 12/2/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -25,7 +25,7 @@ You can find the template in the **lucidqdreams** fork of [Azure Intelligent Edg
 
 The diagram shows a VM hosted on Azure Stack Hub with an iSCSI mounted disk from a Windows machine on premises (physical or virtual) allowing storage external to Azure Stack Hub to mount inside your Azure Stack Hub hosted VM over the iSCSI protocol.
 
-![alt text](./media/azure-stack-network-howto-iscsi-storage/overview-iscsi2.svg)
+![The diagram shows a VM hosted on Azure Stack Hub accessing an external iSCSI mounted disk.](./media/azure-stack-network-howto-iscsi-storage/overview-iscsi2.svg)
 
 ### Requirements
 
@@ -58,7 +58,7 @@ The diagram shows a VM hosted on Azure Stack Hub with an iSCSI mounted disk from
 
 The diagram shows the resources deployed from the template to create the iSCSI client you can use to connect to the iSCSI target. This template will deploy the VM and other resources, In addition, it will run the prepare-iSCSIClient.ps1 and reboot the VM.
 
-![alt text](./media/azure-stack-network-howto-iscsi-storage/iscsi-file-server.svg)
+![The diagram shows resources deployed from the template to create the iSCSI client to connect to the iSCSI target. It shows a file server with an internal subnet and NIC (network card), internal PIP (Private Internet Protocol), and NSG (Network Security Group).](./media/azure-stack-network-howto-iscsi-storage/iscsi-file-server.svg)
 
 ### The Deployment process
 
@@ -69,7 +69,7 @@ The resource group template generates output, which is meant to be the input for
 3. Run `Create-iSCSITarget.ps1` using the IP address and server name outputs from the template as in-out parameters for the script on the iSCSI target, which can be a virtual machine or physical server.
 4. Use the external IP address or addresses of the iSCSI Target server as inputs to run the `Connect-toiSCSITarget.ps1` script. 
 
-![alt text](./media/azure-stack-network-howto-iscsi-storage/process.svg)
+![The diagram shows the first three of the four steps listed above, and includes inputs and outputs. The steps are: Deploy Infrastructure, Create iSCSI Target, and Connect to iSCSI.](./media/azure-stack-network-howto-iscsi-storage/process.svg)
 
 ### Inputs for azuredeploy.json
 
@@ -98,7 +98,7 @@ The resource group template generates output, which is meant to be the input for
 
 You can also run the scripts on an existing Virtual Machine to connect from the iSCSI client to a iSCSI target. This flow is if you are creating the iSCSI target yourself. This diagram shows the execution flow of the PowerShell scripts. These scripts can be found in the Script directory:
 
-![alt text](./media/azure-stack-network-howto-iscsi-storage/script-flow.svg)
+![The diagram shows the three scripts that are discussed below. In order of execution, they are: Prepare-iSCSIClient.ps1, (executes on the client), Create iSCSITarget.ps1 (executes on the targets), and Connect-toiSCSITarget.ps1 (exectutes on the client).](./media/azure-stack-network-howto-iscsi-storage/script-flow.svg)
 
 ### Prepare-iSCSIClient.ps1
 
@@ -113,7 +113,7 @@ It is important to reboot the system after installation of these prerequisites. 
 
 ### Create-iSCSITarget.ps1
 
-The `Create-iSCSITarget.ps1 `script is to be run on the system, which is serving the storage. You can create multiple disks and targets restricted by initiators. You can run this script multiple times to create many virtual disks you can attach to different targets. You can connect multi-disks to one target. 
+The `Create-iSCSITarget.ps1` script is to be run on the  storage server. You can create multiple disks and targets restricted by initiators. You can run this script multiple times to create many virtual disks you can attach to different targets. You can connect multi-disks to one target. 
 
 |**Input**|**default**|**description**|
 |------------------|---------------|------------------------------|

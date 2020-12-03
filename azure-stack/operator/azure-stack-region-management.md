@@ -5,7 +5,7 @@ description: Overview of region management in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/04/2020
+ms.date: 08/27/2020
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/27/2019
@@ -24,7 +24,7 @@ One integrated system deployment (referred to as an *Azure Stack Hub cloud*) mak
 
 ## Information available through the region management tile
 
-Azure Stack Hub has a set of region management capabilities available in the **Region management** tile. This tile is available to an Azure Stack Hub operator on the default dashboard in the administrator portal. In this tile, you can monitor and update your Azure Stack Hub region and its components, which are region-specific.
+Azure Stack Hub has a set of region management capabilities available in the **Region management** tile. This tile is available to an Azure Stack Hub operator on the default dashboard in the administrator portal. In this screen, you can monitor and update your Azure Stack Hub region and its components, which are region-specific.
 
 ![The region management tile in Azure Stack Hub administrator portal](media/azure-stack-region-management/image1.png)
 

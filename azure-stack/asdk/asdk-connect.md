@@ -4,10 +4,10 @@ description: Learn how to connect to the Azure Stack Development Kit (ASDK).
 author: justinha
 
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 11/14/2020
 ms.author: justinha
 ms.reviewer: knithinc
-ms.lastreviewed: 10/25/2019
+ms.lastreviewed: 11/14/2020
 
 # Intent: As an ASDK user, I want to connect to the ASDK so I can manage resources.
 # Keyword: connect to asdk
@@ -58,11 +58,13 @@ Before setting up a VPN connection to the ASDK, ensure you've met the following 
 
 ### Set up VPN connectivity
 
-To create a VPN connection to the ASDK, open PowerShell as an admin on your local Windows-based computer. Then, run the following script (update the IP address and password values for your environment):
+To create a VPN connection to the ASDK, open PowerShell as an admin on your local Windows-based computer. Then, run the following script (update the IP address and password values for your environment).
+
+### [Az modules](#tab/az)
 
 ```powershell
 # Change directories to the default Azure Stack tools directory
-cd C:\AzureStack-Tools-master
+cd C:\AzureStack-Tools-az
 
 # Configure Windows Remote Management (WinRM), if it's not already configured.
 winrm quickconfig  
@@ -74,7 +76,7 @@ Import-Module .\Connect\AzureStack.Connect.psm1
 
 # Add the ASDK host computer's IP address as the ASDK certificate authority (CA) to the list of trusted hosts. Make sure you update the IP address and password values for your environment.
 
-$hostIP = "<Azure Stack host IP address>"
+$hostIP = "<Azure Stack Hub host IP address>"
 
 $Password = ConvertTo-SecureString `
   "<operator's password provided when deploying Azure Stack>" `
@@ -92,6 +94,40 @@ Add-AzsVpnConnection `
 
 ```
 
+### [AzureRM modules](#tab/azurerm)
+
+```powershell
+# Change directories to the default Azure Stack tools directory
+cd C:\AzureStack-Tools-master
+
+# Configure Windows Remote Management (WinRM), if it's not already configured.
+winrm quickconfig  
+
+Set-ExecutionPolicy RemoteSigned
+
+# Import the Connect module.
+Import-Module .\Connect\AzureStack.Connect.psm1
+
+# Add the ASDK host computer's IP address as the ASDK certificate authority (CA) to the list of trusted hosts. Make sure you update the IP address and password values for your environment.
+
+$hostIP = "<Azure Stack Hub host IP address>"
+
+$Password = ConvertTo-SecureString `
+  "<operator's password provided when deploying Azure Stack>" `
+  -AsPlainText `
+  -Force
+
+Set-Item wsman:\localhost\Client\TrustedHosts `
+  -Value $hostIP `
+  -Concatenate
+
+# Create a VPN connection entry for the local user.
+Add-AzsVpnConnection `
+  -ServerAddress $hostIP `
+  -Password $Password
+
+```
+---
 If the setup succeeds, **Azure Stack** appears in your list of VPN connections:
 
 ![Network connections](media/asdk-connect/vpn.png)  

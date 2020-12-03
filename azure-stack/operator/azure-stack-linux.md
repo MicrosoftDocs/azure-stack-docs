@@ -3,20 +3,19 @@ title: Add Linux images to the Azure Stack Hub Marketplace
 description: Learn how to add Linux images to the Azure Stack Hub Marketplace.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/07/2020
+ms.date: 11/18/2020
 ms.author: sethm
-ms.reviewer: 
-ms.lastreviewed: 11/16/2019
+ms.reviewer: thoroet
+ms.lastreviewed: 11/18/2020
 
 # Intent: As an Azure Stack operator, I want to add Linux images to Azure Stack so my users can deploy Linux VMs.
 # Keyword: azure stack add linux image marketplace
 
 ---
 
-
 # Add Linux images to the Azure Stack Hub Marketplace
 
-You can deploy Linux virtual machines (VMs) on Azure Stack Hub by adding a Linux-based image into Azure Stack Hub Marketplace. The easiest way to add a Linux image to Azure Stack Hub is through marketplace management. These images have been prepared and tested for compatibility with Azure Stack Hub.
+You can deploy Linux virtual machines (VMs) on Azure Stack Hub by adding a Linux-based image to the Azure Stack Hub Marketplace. The easiest way to add a Linux image to Azure Stack Hub is through marketplace management. These images have been prepared and tested for compatibility with Azure Stack Hub.
 
 ## Marketplace management
 
@@ -30,7 +29,7 @@ Wherever possible, download the images available through marketplace management.
 
 ### Azure Linux Agent
 
-The Azure Linux Agent (typically called **WALinuxAgent** or **walinuxagent**) is required, and not all versions of the agent work on Azure Stack Hub. Versions between 2.2.21 and 2.2.34 (inclusive) are not supported on Azure Stack Hub. To use the latest agent versions above 2.2.35, apply the 1901 hotfix/1902 hotfix, or update your Azure Stack Hub to the 1903 release (or above). Note that [cloud-init](https://cloud-init.io/) is supported on Azure Stack Hub releases beyond 1910.
+The Azure Linux Agent (typically called **WALinuxAgent** or **walinuxagent**) is required, and not all versions of the agent work on Azure Stack Hub. Versions between 2.2.21 and 2.2.34 (inclusive) are not supported on Azure Stack Hub. To use the latest agent versions above 2.2.35, apply the 1901 hotfix/1902 hotfix, or update your Azure Stack Hub to the 1903 release (or later). Note that [cloud-init](https://cloud-init.io/) is supported on Azure Stack Hub releases later than 1910.
 
 | Azure Stack Hub build | Azure Linux Agent build |
 | ------------- | ------------- |
@@ -53,7 +52,7 @@ You can prepare your own Linux image using the following instructions:
 
 ## Cloud-init
 
-[Cloud-init](https://cloud-init.io/) is supported on Azure Stack Hub releases beyond 1910. To use cloud-init to customize your Linux VM, you can use the following PowerShell instructions.
+[Cloud-init](https://cloud-init.io/) is supported on Azure Stack Hub releases later than 1910. To use cloud-init to customize your Linux VM, you can use the following PowerShell instructions.
 
 ### Step 1: Create a cloud-init.txt file with your cloud-config
 
@@ -104,16 +103,27 @@ runcmd:
 ### Step 2: Reference cloud-init.txt during the Linux VM deployment
 
 Upload the file to an Azure storage account, Azure Stack Hub storage account, or GitHub repository reachable by your Azure Stack Hub Linux VM.
-Currently, using cloud-init for VM deployment is only supported on REST, Powershell, and CLI, and does not have an associated portal UI on Azure Stack Hub.
+Currently, using cloud-init for VM deployment is only supported on REST, PowerShell, and CLI, and does not have an associated portal UI on Azure Stack Hub.
 
-You can follow [these instructions](../user/azure-stack-quick-create-vm-linux-powershell.md) to create the Linux VM using powershell, but make sure to reference the cloud-init.txt as a part of the `-CustomData` flag:
+You can follow [these instructions](../user/azure-stack-quick-create-vm-linux-powershell.md) to create the Linux VM using PowerShell, but make sure to reference the cloud-init.txt as a part of the `-CustomData` flag:
+
+### [Az modules](#tab/az)
 
 ```powershell
-$VirtualMachine =Set-AzureRmVMOperatingSystem -VM $VirtualMachine `
+$VirtualMachine =Set-AzVMOperatingSystem -VM $VirtualMachine `
   -Linux `
   -ComputerName "MainComputer" `
   -Credential $cred -CustomData "#include https://cloudinitstrg.blob.core.windows.net/strg/cloud-init.txt"
 ```
+### [AzureRM modules](#tab/azurerm)
+
+```powershell
+$VirtualMachine =Set-AzureRMVMOperatingSystem -VM $VirtualMachine `
+  -Linux `
+  -ComputerName "MainComputer" `
+  -Credential $cred -CustomData "#include https://cloudinitstrg.blob.core.windows.net/strg/cloud-init.txt"
+```
+---
 
 ## Add your image to Marketplace
 

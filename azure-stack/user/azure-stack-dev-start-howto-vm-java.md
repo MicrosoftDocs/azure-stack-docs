@@ -1,13 +1,13 @@
 ---
-title: Deploy a Java WAR to a virtual machine in Azure Stack Hub 
+title: Deploy Java WAR to VM in Azure Stack Hub 
 description:  Deploy a Java WAR to a virtual machine in Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 5/27/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 05/05/2020
+ms.lastreviewed: 12/2/2020
 ms.custom: conteperfq4
 
 # Intent: As a developer, I want to understanding how to create a Java web app so that I can build Java apps on Azure Stack Hub
@@ -177,7 +177,7 @@ You can create a virtual machine (VM) to host your Java web app in Azure Stack H
 
 1. Open a browser in the same network as your Azure Stack Hub, and then open your server, *yourmachine.local.cloudapp.azurestack.external:8080*.
 
-    ![Apache Tomcat on an Azure Stack Hub VM](media/azure-stack-dev-start-howto-vm-java/apache-tomcat.png)
+    ![Screenshot that shows the Apache Tomcat page.](media/azure-stack-dev-start-howto-vm-java/apache-tomcat.png)
 
     The Apache Tomcat page on your server loads. Next, you configure the server to allow you to access the Server Status, Manager App, and Host Manager.
 

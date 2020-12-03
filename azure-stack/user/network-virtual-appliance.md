@@ -4,10 +4,10 @@ title: Troubleshoot network virtual appliance problems on Azure Stack Hub
 description: Troubleshoot VM or VPN connectivity problems when using a network virtual appliance (NVA) in Microsoft Azure Stack Hub.
 author: sethmanheim
 ms.author: sethm
-ms.date: 05/12/2020
+ms.date: 11/22/2020
 ms.topic: article
 ms.reviewer: sranthar
-ms.lastreviewed: 05/12/2020
+ms.lastreviewed: 11/22/2020
 
 ---
 
@@ -15,7 +15,7 @@ ms.lastreviewed: 05/12/2020
 
 You might experience connectivity problems with virtual machines or VPNs that use a network virtual appliance (NVA) in Azure Stack Hub.
 
-This article shows steps to help you validate basic platform requirements of Azure Stack Hub for NVA configurations.
+This article helps you validate basic platform requirements of Azure Stack Hub for NVA configurations.
 
 An NVA's vendor provides technical support for the NVA and its integration with the Azure Stack Hub platform.
 
@@ -36,8 +36,8 @@ If this article doesn't address your NVA problem with Azure Stack Hub, create an
 ## Basic troubleshooting steps
 
 1. Check the basic configuration.
-1. Check NVA performance.
-1. Do advanced network troubleshooting.
+2. Check NVA performance.
+3. Do advanced network troubleshooting.
 
 ## Check the minimum configuration requirements for NVAs on Azure
 
@@ -52,13 +52,34 @@ Each NVA must meet basic configuration requirements to function correctly on Azu
 
 ### Check whether IP forwarding is enabled on the NVA
 
-#### Use the Azure Stack Hub portal
+### [Portal](#tab/portal)
 
 1. Locate the NVA resource in the Azure Stack Hub portal, select **Networking**, and then select the network interface.
-1. On the **Network interface** page, select **IP configuration**.
-1. Make sure that IP forwarding is enabled.
+2. On the **Network interface** page, select **IP configuration**.
+3. Make sure that IP forwarding is enabled.
 
-#### Use PowerShell
+### [PowerShell Az](#tab/az)
+
+1. Run the following command. Replace the values in angle brackets with your information.
+
+   ```powershell
+   Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NIC name>
+   ```
+
+2. Check the **EnableIPForwarding** property.
+
+3. If IP forwarding isn't enabled, run the following commands to enable it:
+
+   ```powershell
+   $nic2 = Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NIC name>
+   $nic2.EnableIPForwarding = 1
+   Set-AzNetworkInterface -NetworkInterface $nic2
+   Execute: $nic2 #and check for an expected output:
+   EnableIPForwarding   : True
+   NetworkSecurityGroup : null
+   ```
+
+### [PowerShell AzureRM](#tab/azurerm)
 
 1. Run the following command. Replace the values in angle brackets with your information.
 
@@ -66,8 +87,9 @@ Each NVA must meet basic configuration requirements to function correctly on Azu
    Get-AzureRMNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NIC name>
    ```
 
-1. Check the **EnableIPForwarding** property.
-1. If IP forwarding isn't enabled, run the following commands to enable it:
+2. Check the **EnableIPForwarding** property.
+
+3. If IP forwarding isn't enabled, run the following commands to enable it:
 
    ```powershell
    $nic2 = Get-AzureRMNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NIC name>
@@ -78,10 +100,12 @@ Each NVA must meet basic configuration requirements to function correctly on Azu
    NetworkSecurityGroup : null
    ```
 
+---
+
 ### Check whether traffic can be routed to the NVA
 
 1. Locate a VM that is configured to redirect traffic to the NVA.
-1. To check that the NVA is the next hop, run **Tracert \<Private IP of NVA\>** for Windows or **Traceroute \<Private IP of NVA\>**.
+1. To check that the NVA is the next hop, run `Tracert <Private IP of NVA>` for Windows or `Traceroute <Private IP of NVA>`.
 1. If the NVA isn't listed as the next hop, check and update the Azure Stack Hub route tables.
 
 Some guest-level operating systems might have firewall policies in place to block ICMP traffic. Update these firewall rules for the preceding commands to work.
@@ -89,7 +113,7 @@ Some guest-level operating systems might have firewall policies in place to bloc
 ### Check whether traffic can reach the NVA
 
 1. Locate a VM that should have connectivity to the NVA.
-1. Check whether any network security groups (NSGs) block traffic. For Windows, run **ping** (ICMP) or **Test-NetConnection \<Private IP of NVA\>** (TCP). For Linux, run **Tcpping \<Private IP of NVA\>**.
+1. Check whether any network security groups (NSGs) block traffic. For Windows, run `ping` (ICMP) or `Test-NetConnection <Private IP of NVA>` (TCP). For Linux, run `Tcpping <Private IP of NVA>`.
 1. If your NSGs block traffic, modify them to allow traffic.
 
 ### Check whether the NVA and VMs are listening for expected traffic
@@ -130,7 +154,7 @@ If the VM network use spikes or shows periods of high usage, consider increasing
 
 ### Capture a network trace
 
-While you run [**PsPing**](/sysinternals/downloads/psping) or **Nmap**, capture a simultaneous network trace on the source and destination VMs and on the NVA. Then stop the trace.
+While you run [`PsPing`](/sysinternals/downloads/psping) or `Nmap`, capture a simultaneous network trace on the source and destination VMs and on the NVA. Then stop the trace.
 
 1. To capture a simultaneous network trace, run the following command:
 
@@ -146,9 +170,9 @@ While you run [**PsPing**](/sysinternals/downloads/psping) or **Nmap**, capture 
    sudo tcpdump -s0 -i eth0 -X -w vmtrace.cap
    ```
 
-2. Use **PsPing** or **Nmap** from the source VM to the destination VM. Examples are **PsPing 10.0.0.4:80** or **Nmap -p 80 10.0.0.4**.
+2. Use `PsPing` or `Nmap` from the source VM to the destination VM. Examples are `PsPing 10.0.0.4:80` or `Nmap -p 80 10.0.0.4`.
 
-3. Open the network trace from the destination VM by using **tcpdump** or a packet analyzer of your choice. Apply a display filter for the IP of the source VM you ran **PsPing** or **Nmap** from. A Windows **netmon** example is **IPv4.address==10.0.0.4**. Linux examples are **tcpdump -nn -r vmtrace.cap src** and **dst host 10.0.0.4**.
+3. Open the network trace from the destination VM by using **tcpdump** or a packet analyzer of your choice. Apply a display filter for the IP of the source VM you ran `PsPing` or `Nmap` from. A Windows **netmon** example is `IPv4.address==10.0.0.4`. Linux examples are `tcpdump -nn -r vmtrace.cap src` and `dst host 10.0.0.4`.
 
 ### Analyze traces
 

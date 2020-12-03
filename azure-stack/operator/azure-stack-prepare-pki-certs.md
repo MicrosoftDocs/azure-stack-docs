@@ -1,13 +1,13 @@
 ---
 title: Prepare Azure Stack Hub PKI certificates for deployment or rotation 
 titleSuffix: Azure Stack Hub
-description: Learn how to prepare PKI certificates for Azure Stack Hub integrated systems deployment or for rotating secrets in an existing Azure Stack Hub environment.
+description: Learn how to prepare PKI certificates for Azure Stack Hub deployment or for rotating secrets.
 author: IngridAtMicrosoft
 ms.topic: how-to
-ms.date: 03/04/2020
+ms.date: 10/19/2020
 ms.author: inhenkel
 ms.reviewer: ppacent
-ms.lastreviewed: 09/16/2019
+ms.lastreviewed: 10/19/2020
 
 # Intent: As an Azure Stack operator, I want to prepare my PKI certificates for Azure Stack deployment.
 # Keyword: prepare PKI certificates azure stack
@@ -17,31 +17,33 @@ ms.lastreviewed: 09/16/2019
 
 # Prepare Azure Stack Hub PKI certificates for deployment or rotation
 
-The certificate files [obtained from your certificate authority (CA) of choice](azure-stack-get-pki-certs.md) must be imported and exported with properties matching Azure Stack Hub's certificate requirements.
+> [!NOTE]
+> This article pertains to the preparation of external certificates only, which are used to secure endpoints on external infrastructure and services. Internal certificates are managed separately, during the [certificate rotation process](azure-stack-rotate-secrets.md).
 
-## Prepare certificates for deployment with Azure Stack Readiness Checker
+The certificate files [obtained from the certificate authority (CA)](azure-stack-get-pki-certs.md) must be imported and exported with properties matching Azure Stack Hub's certificate requirements.
 
-Use the Azure Stack Hub Readiness Checker tool to import, package and validate certificates ready for deployment or rotation.
+In this article you learn how to import, package, and validate external certificates, to prepare for Azure Stack Hub deployment or secrets rotation. 
 
 ## Prerequisites
 
 Your system should meet the following prerequisites before packaging PKI certificates for an Azure Stack Hub deployment:
 
-- Microsoft Azure Stack Hub Readiness Checker
-- Certificates returned from Certificate Authority in a single directory in .cer format (other configurable formats .cert, .sst or .pfx).
-- Windows 10 or Windows Server 2016 or later
+- Certificates returned from Certificate Authority are stored in a single directory, in .cer format (other configurable formats such as .cert, .sst or .pfx).
+- Windows 10, or Windows Server 2016 or later
 - Use the same system that generated the Certificate Signing Request (unless you're targeting a certificate prepackaged into PFXs).
 
-## Generate certificate signing requests for new deployments
+Continue to the appropriate [Prepare certificates (Azure Stack readiness checker)](#prepare-certificates-azure-stack-readiness-checker) or [Prepare certificates (manual steps)](#prepare-certificates-manual-steps) section.
 
-Use these steps to package certificates for new Azure Stack Hub PKI certificates:
+## Prepare certificates (Azure Stack readiness checker)
 
-1. Install AzsReadinessChecker from a PowerShell prompt (5.1 or above), by running the following cmdlet:
+Use these steps to package certificates using the Azure Stack readiness checker PowerShell cmdlets:
+
+1. Install the Azure Stack readiness checker module from a PowerShell prompt (5.1 or above), by running the following cmdlet:
 
     ```powershell  
-        Install-Module Microsoft.AzureStack.ReadinessChecker
+        Install-Module Microsoft.AzureStack.ReadinessChecker -Force -AllowPrerelease
     ```
-2. Declare the **Path** where the certificates reside on disk. For example:
+2. Specify the **Path** to the certificate files. For example:
 
     ```powershell  
         $Path = "$env:USERPROFILE\Documents\AzureStack"
@@ -124,9 +126,9 @@ Use these steps to package certificates for new Azure Stack Hub PKI certificates
 
     Following a successful validation certificates can be presented for Deployment or Rotation without any additional steps.
 
-## Prepare certificates for deployment (manual steps)
+## Prepare certificates (manual steps)
 
-Use the following steps to prepare and validate the Azure Stack Hub PKI certificates that will be used for deploying a new Azure Stack Hub environment or for rotating secrets in an existing Azure Stack Hub environment.
+Use these steps to package certificates for new Azure Stack Hub PKI certificates using manual steps.
 
 ### Import the certificate
 
@@ -144,7 +146,7 @@ Use the following steps to prepare and validate the Azure Stack Hub PKI certific
 
    ![Configure the certificate store for certificate import](./media/prepare-pki-certs/3.png)
 
-   a. If you're importing a PFX, you'll be presented with an additional dialog. On the **Private key protection** page, enter the password for your certificate files and then enable the **Mark this key as exportable. This allows you to back up or transport your keys at a later time** option. Select **Next**.
+   a. If you're importing a PFX, you'll be presented with an additional dialog. On the **Private key protection** page, enter the password for your certificate files and then enable the **Mark this key as exportable.** option, allowing you to back up or transport your keys later. Select **Next**.
 
    ![Mark key as exportable](./media/prepare-pki-certs/2.png)
 
@@ -157,7 +159,7 @@ Use the following steps to prepare and validate the Azure Stack Hub PKI certific
 
 Open Certificate Manager MMC console and connect to the Local Machine certificate store.
 
-1. Open the Microsoft Management Console. To open the console in Windows 10, right click on the **Start Menu**, select **Run**, then type **mmc** and press enter.
+1. Open the Microsoft Management Console. To open the console in Windows 10, right-click on the **Start Menu**, select **Run**, then type **mmc** and press enter.
 
 2. Select **File** > **Add/Remove Snap-In**, then select **Certificates** and select **Add**.
 
@@ -174,21 +176,21 @@ Open Certificate Manager MMC console and connect to the Local Machine certificat
    > [!NOTE]
    > Depending on how many Azure Stack Hub certificates you have, you may need to complete this process more than once.
 
-6. Select **Yes, Export the Private Key**, and then click **Next**.
+6. Select **Yes, Export the Private Key**, and then select **Next**.
 
 7. In the Export File Format section:
     
    - Select **Include all certificates in the certificate if possible**.  
    - Select **Export all Extended Properties**.  
    - Select **Enable certificate privacy**.  
-   - Click **Next**.  
+   - Select **Next**.  
     
      ![Certificate export wizard with selected options](./media/prepare-pki-certs/azure-stack-save-cert.png)
 
 8. Select **Password** and provide a password for the certificates. Create a password that meets the following password complexity requirements:
 
     * A minimum length of eight characters.
-    * At least three of the following: uppercase letter, lowercase letter, numbers from 0-9, special characters, alphabetical character that's not uppercase or lowercase.
+    * At least three of the following characters: uppercase letter, lowercase letter, numbers from 0-9, special characters, alphabetical character that's not uppercase or lowercase.
 
     Make note of this password. You'll use it as a deployment parameter.
 

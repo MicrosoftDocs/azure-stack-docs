@@ -4,12 +4,14 @@ description: How to register Azure Stack HCI with Azure.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.service: azure-stack
+ms.subservice: azure-stack-hci
+ms.date: 11/23/2020
 ---
 
 # Connect Azure Stack HCI to Azure
 
-> Applies to Azure Stack HCI v20H2; Windows Server 2019
+> Applies to: Azure Stack HCI v20H2
 
 Azure Stack HCI is delivered as an Azure service and needs to register within 30 days of installation per the Azure Online Services Terms. This topic explains how to register your Azure Stack HCI cluster with [Azure Arc](https://azure.microsoft.com/services/azure-arc/) for monitoring, support, billing, and hybrid services. Upon registration, an Azure Resource Manager resource is created to represent each on-premises Azure Stack HCI cluster, effectively extending the Azure management plane to Azure Stack HCI. Information is periodically synced between the Azure resource and the on-premises cluster. 
 
@@ -41,53 +43,50 @@ You'll need Azure Active Directory permissions to complete the registration proc
 
 ## Register using PowerShell
 
-Install the PowerShell Module for Azure Stack HCI by running the following PowerShell command on one or more servers in a cluster running the Azure Stack HCI operating system:
+Use the following procedure to register an Azure Stack HCI cluster with Azure:
 
-```PowerShell
-Install-WindowsFeature RSAT-Azure-Stack-HCI -ComputerName Server1
-```
+1. Connect to one of the cluster nodes by opening a PowerShell session and entering the following command:
 
-Install the required cmdlets on a cluster node or management PC:
+   ```PowerShell
+   Enter-PSSession <server-name>
+   ```
 
-```PowerShell
-Install-Module Az.StackHCI
-```
+2. Install the PowerShell Module for Azure Stack HCI:
+
+   ```PowerShell
+   Install-WindowsFeature RSAT-Azure-Stack-HCI
+   ```
+
+3. Install the required cmdlets. If you're deploying Azure Stack HCI from the Public Preview image, you'll need to use version 0.3.1 of the Az.StackHCI PowerShell module:
+
+   ```PowerShell
+   Install-Module -Name Az.StackHCI -RequiredVersion 0.3.1
+   ```
+
+   If you've already installed the [November 23, 2020 Preview Update (KB4586852)](../release-notes.md) on every server in your cluster and are just now registering your cluster with Azure, then you can safely use the latest version of Az.StackHCI:
+
+   ```PowerShell
+   Install-Module -Name Az.StackHCI
+   ```
+
    > [!NOTE]
    > 1.	You may see a prompt such as "Do you want PowerShellGet to install and import the NuGet provider now?" to which you should answer Yes (Y).
    > 2.	You may further be prompted "Are you sure you want to install the modules from 'PSGallery'?" to which you should answer Yes (Y).
-   > 3.	Finally, you might assume that installing the entire **Az** module would include the **StackHCI** sub-module, and that will be correct long-term. However, per standard Azure PowerShell convention, sub-modules in Preview aren't included automatically; rather, you need to explicitly specify them. Thus, for now, you need to explicitly ask for **Az.StackHCI** as shown above.
+   > 3.	Finally, you may assume that installing the entire **Az** module would include the **StackHCI** sub-module but that is not the case. Sub-modules in Preview aren't included automatically according to the standard Azure PowerShell convention so you need to explicitly request for **Az.StackHCI** as shown above.
 
-For the simplest experience, run the following command on an Azure Stack HCI clustered node (this will prompt for Azure log-in):
+4. Perform the actual registration:
 
-```PowerShell
-Register-AzStackHCI  -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" [-ResourceName] [-ResourceGroupName]
-```
+   ```PowerShell
+   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" [-ResourceName] [-ResourceGroupName]
+   ```
 
-The minimum syntax requires only your Azure subscription ID. This syntax registers the local cluster (of which the local server is a member), as the current user, with the default Azure region and cloud environment, and using smart default names for the Azure resource and resource group. 
+   This syntax registers the local cluster (of which the local server is a member), as the current user, with the default Azure region and cloud environment, and using smart default names for the Azure resource and resource group, but you can add parameters to this command to specify these values if you want.
 
-If you'd prefer to register the cluster using a management PC, supply the **-ComputerName** parameter with the name of a server in the cluster and your credentials, if needed:
+   Remember that the user running the `Register-AzStackHCI` cmdlet must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#azure-active-directory-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin consent. Once permissions have been granted, simply re-run `Register-AzStackHCI` to complete registration.
 
-```PowerShell
-Register-AzStackHCI  -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" -ComputerName Server1 [–Credential] [-ResourceName] [-ResourceGroupName]
-```
+5. Authenticate with Azure
 
-By default, the Azure resource created to represent the Azure Stack HCI cluster inherits the cluster name and is placed in a new resource group with the same name plus the suffix "-rg". You can specify a different resource name or place the resource into an existing resource group with the optional parameters listed above.
-
-Remember that the user running the `Register-AzStackHCI` cmdlet must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#azure-active-directory-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin consent. Once permissions have been granted, simply re-run `Register-AzStackHCI` to complete registration.
-
-   > [!NOTE]
-   > If upon registering, you receive an error similar to the message below, **please try registering again in 24-48 hours**. The Azure integration is still in the process of being rolled out across regions. You can still proceed with your evaluation, and it won't affect any functionality. Just make sure you come back and register later!
-   >
-   > `Register-AzStackHCI : Azure Stack HCI is not yet available in region <regionName>`
-   >
-   > To check if Azure Stack HCI is available in your Azure region, [use this tool](https://azure.microsoft.com/global-infrastructure/services/) and search for "hci."
-
-## Authenticate with Azure
-Once dependencies have been installed and the parameters have been validated, you need to authenticate (sign in) using your Azure account. Your account needs to have access to the Azure subscription that was specified in order for registration to proceed.
-
-If you ran `Register-AzStackHCI` locally on the Azure Stack HCI operating system, which is unable to render an interactive Azure login window, you’ll be prompted to visit microsoft.com/devicelogin on another device (like your PC or phone), enter the code, and sign in there. This is the same experience Microsoft uses for other devices with limited input modalities, like Xbox.
-
-If you ran `Register-AzStackHCI` remotely from a management PC with Desktop experience, such as Windows 10, an interactive Azure login window will pop up. The exact prompts you see will vary depending on your security settings (e.g. two-factor authentication). Follow the prompts to log in.
+   To complete the registration process, you need to authenticate (sign in) using your Azure account. Your account needs to have access to the Azure subscription that was specified in step 4 above in order for registration to proceed. Copy the code provided, navigate to microsoft.com/devicelogin on another device (like your PC or phone), enter the code, and sign in there. This is the same experience Microsoft uses for other devices with limited input modalities, like Xbox.
 
 The registration workflow will detect when you've logged in and proceed to completion. You should then be able to see your cluster in the Azure portal.
 

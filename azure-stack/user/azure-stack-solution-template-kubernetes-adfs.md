@@ -17,7 +17,7 @@ ms.lastreviewed: 3/12/2020
 
 # Deploy Kubernetes to Azure Stack Hub using Active Directory Federated Services
 
-> [!Note]  
+> [!NOTE]  
 > Only use the Kubernetes Azure Stack Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack, use [the AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
 
 You can follow the steps in this article to deploy and set up the resources for Kubernetes. Use these steps when Active Directory Federated Services (AD FS) is your identity management service.
@@ -60,13 +60,13 @@ You need to work with your Azure Stack Hub administrator to set up your service 
 
 1. Select **+ Create a resource** > **Compute** > **Kubernetes Cluster**. Select **Create**.
 
-    ![Deploy Solution Template](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
+    ![Screenshot that shows the page where you create a Kubernetes cluster.](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
 ### 1. Basics
 
 1. Select **Basics** in Create Kubernetes Cluster.
 
-    ![Deploy Solution Template](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
+    ![Screenshot that shows where you add basic information about your Kubernetes cluster.](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
 
 1. Select your **Subscription** ID.
 
@@ -78,7 +78,7 @@ You need to work with your Azure Stack Hub administrator to set up your service 
 
 1. Select **Kubernetes Cluster Settings** in Create Kubernetes Cluster.
 
-    ![Deploy Solution Template](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings-adfs.png)
+    ![Screenshot that shows the step where you configure the Kubernetes cluster settings.](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings-adfs.png)
 
 1. Enter the **Linux VM admin username**. User name for the Linux Virtual Machines that are part of the Kubernetes cluster and DVM.
 
@@ -86,7 +86,7 @@ You need to work with your Azure Stack Hub administrator to set up your service 
 
 1. Enter the **Master Profile DNS Prefix** that is unique to the region. This must be a region-unique name, such as `k8s-12345`. Try to chose it same as the resource group name as best practice.
 
-    > [!Note]  
+    > [!NOTE]  
     > For each cluster, use a new and unique master profile DNS prefix.
 
 1. Select the **Kubernetes master pool profile count**. The count contains the number of nodes in the master pool. There can be from 1 to 7. This value should be an odd number.

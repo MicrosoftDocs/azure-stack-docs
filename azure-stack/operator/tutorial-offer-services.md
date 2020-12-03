@@ -80,23 +80,23 @@ During the offer creation process, you create both an offer and a plan. The plan
 
     Then select **+ Create a resource** > **Offers + Plans** > **Offer**.
 
-    ![New offer in Azure Stack Hub administration portal](media/tutorial-offer-services/1-create-resource-offer.png)
+    ![Screenshot that shows how to create a new offer in Azure Stack Hub administration portal.](media/tutorial-offer-services/1-create-resource-offer.png)
 
 1. In **Create a new offer** under the **Basics** tab, enter a **Display name**, **Resource name**, and select an existing or create a new **Resource group**. The Display name is the offer's friendly name. Only the cloud operator can see the Resource name, which is the name that admins use to work with the offer as an Azure Resource Manager resource.
 
-   ![Display name in Azure Stack Hub administration portal](media/tutorial-offer-services/2-create-new-offer.png)
+   ![Screenshot that shows where to add basic information in Azure Stack Hub administration portal.](media/tutorial-offer-services/2-create-new-offer.png)
 
 1. Select the **Base plans** tab, then select **Create new plan** to create a new plan. The plan will also be added to the offer as a base plan.
 
-   ![Add a plan in Azure Stack Hub administration portal](media/tutorial-offer-services/3-create-new-offer-base-plans.png)
+   ![Screenshot that shows how to add a plan in Azure Stack Hub administration portal.](media/tutorial-offer-services/3-create-new-offer-base-plans.png)
 
 1. In **New plan** under the **Basics** tab, enter a **Display name** and **Resource name**. The Display name is the plan's friendly name that users see. Only the cloud operator can see the Resource name, which is the name that cloud operators use to work with the plan as an Azure Resource Manager resource. **Resource group** will be set to the one specified for the Offer.
 
-   ![Plan display name in Azure Stack Hub administration portal](media/tutorial-offer-services/4-create-new-plan-basics.png)
+   ![Screenshot that shows the plan display name in Azure Stack Hub administration portal.](media/tutorial-offer-services/4-create-new-plan-basics.png)
 
 1. Select the **Services** tab, and you see a list of services available from the installed resource providers. Select **Microsoft.Compute**, **Microsoft.Network**, and **Microsoft.Storage**.
 
-   ![Plan services in Azure Stack Hub administration portal](media/tutorial-offer-services/5-create-new-plan-services.png)
+   ![Screenshot that shows plan services in Azure Stack Hub administration portal.](media/tutorial-offer-services/5-create-new-plan-services.png)
 
 1. Select the **Quotas** tab, and you see the list of services you enabled for this plan. Select  **Create New** to specify a custom quota for **Microsoft.Compute**. Quota **Name** is required; you can accept or change each quota value. Select **OK** when finished, then repeat these steps for the remaining services.
 
@@ -133,7 +133,7 @@ During the offer creation process, you create both an offer and a plan. The plan
 1. Sign in to the administrator portal with a cloud admin account.
 
     - For an integrated system, the URL varies based on your operator's region and external domain name, using the format `https://adminportal.<region>.<FQDN>`.
-    - If you're using the Azure Stack Development Kit, the URL is <https://adminportal.local.azurestack.external>.
+    - If you're using the Azure Stack Development Kit, the URL is `https://adminportal.local.azurestack.external`.
 
     Then select **+ Create a resource** > **Offers + Plans** > **Offer**.
 

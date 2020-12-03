@@ -5,7 +5,7 @@ description: Learn about the Azure Stack Hub servicing policy and how to keep an
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/11/2020
+ms.date: 09/25/2020
 ms.author: sethm
 ms.reviewer: niy
 ms.lastreviewed: 03/18/2020
@@ -26,7 +26,7 @@ Microsoft releases both full update packages as well as hotfix packages to addre
 
 Full update packages are hosted in a secure Azure endpoint. You can download them manually using the [Azure Stack Hub Updates downloader tool](https://aka.ms/azurestackupdatedownload). If your scale unit is connected, the update appears automatically in the administrator portal as **Update available**. For more information about each release, you can click any release from the [Update package release cadence](#update-package-release-cadence) section of this article.
 
-Hotfix update packages are hosted in the same secure Azure endpoint. You can download them using the embedded links in each of the respective hotfix KB articles; for example, [Azure Stack Hub Hotfix 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114). Similar to the full, monthly update packages, Azure Stack Hub operators can download the .xml, .bin, and .exe files and import them using the procedure in [Apply updates in Azure Stack Hub](azure-stack-apply-updates.md). Azure Stack Hub operators with connected scale units will see the hotfixes automatically appear in the administrator portal with the message **Update available**.
+Hotfix update packages are hosted in the same secure Azure endpoint. You can download them using the embedded links in each of the respective hotfix KB articles; for example, [Azure Stack Hub Hotfix 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114). Similar to the full, monthly update packages, Azure Stack Hub operators can download the .xml and .zip files and import them using the procedure in [Apply updates in Azure Stack Hub](azure-stack-apply-updates.md). Azure Stack Hub operators with connected scale units will see the hotfixes automatically appear in the administrator portal with the message **Update available**.
 
 If your scale unit isn't connected and you want to be notified about each hotfix release, subscribe to the [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss) or [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom) feed noted in each release.
 
@@ -40,15 +40,17 @@ There are two types of update packages for integrated systems:
 
 ## Update package release cadence
 
-Microsoft expects to release software update packages on a monthly cadence. However, it's possible to have multiple or no update releases in a month. OEM hardware vendors release their updates on an as-needed basis.
+Microsoft expects to release software update packages multiple times throughout the year.
+
+OEM hardware vendors release their updates on an as-needed basis. Please check with your OEM for the latest updates to hardware.
 
 Find documentation on how to plan for and manage updates, and how to determine your current version in [Manage updates overview](azure-stack-updates.md).
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
+- [Azure Stack Hub 2008 update](/azure-stack/operator/release-notes?view=azs-2008)
 - [Azure Stack Hub 2005 update](/azure-stack/operator/release-notes?view=azs-2005)
 - [Azure Stack Hub 2002 update](/azure-stack/operator/release-notes?view=azs-2002)
-- [Azure Stack Hub 1910 update](/azure-stack/operator/release-notes?view=azs-1910)
 
 ## Hotfixes
 
@@ -62,12 +64,8 @@ For information about currently available hotfixes, see the release notes for th
 
 - [Azure Stack Hub 2005 hotfix](/azure-stack/operator/release-notes?view=azs-2005#hotfixes)
 - [Azure Stack Hub 2002 hotfix](/azure-stack/operator/release-notes?view=azs-2002#hotfixes-1)
-- [Azure Stack Hub 1910 hotfix](/azure-stack/operator/release-notes?view=azs-1910#hotfixes-2)
 
 ## Keep your system under support
-
-> [!IMPORTANT]  
-> With [the 2002 release](release-notes.md?view=azs-2002) of Azure Stack Hub and in support of our customers around the world who are responding to COVID-19 and who may be making important decisions about their Azure Stack Hub systems, Microsoft temporarily extended its support policy to include three previous update versions (N-3). With the 2005 release we are continuing this extension for an additional 45 days (to 25th September 2020). As a result, the newly released 2005 update and any one of the three previous update versions (2002, 1910, and 1908, or N-3) will be supported. After these 45 days (after 25th September 2020), we will return to our standard support policy, meaning the supported versions will then be 2005, 2002 and 1910, or N-2.
 
 For your Azure Stack Hub instance to remain in a supported state, the instance must run the most recently released update version or run either of the two preceding update versions.
 

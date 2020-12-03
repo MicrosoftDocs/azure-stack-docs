@@ -4,10 +4,10 @@ description: Learn how to add a tenant for usage and billing to Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 5/28/2020
+ms.date: 11/17/2020
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 5/28/2020
+ms.lastreviewed: 11/17/2020
 
 # Intent: As an Azure Stack operator, I want to add tenants to Azure Stack for usage and billing.
 # Keyword: add tenants azure stack
@@ -50,32 +50,66 @@ By default, you, as the CSP, do not have access to the end customer's Azure Stac
 
 Update your registration with the new customer subscription. Azure reports the customer usage using the customer identity from Partner Center. This step ensures that each customer's usage is reported under that customer's individual CSP subscription. This makes tracking usage and billing easier. To perform this step, you must first [register Azure Stack Hub](azure-stack-registration.md).
 
+### [Az modules](#tab/az)
+
 1. Open Windows PowerShell in an elevated prompt, and run:  
 
    ```powershell
-   Add-AzureRmAccount
+   Add-AzAccount
    ```
 
    >[!NOTE]
-   > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using **Add-AzureRmAccount**: `Remove-AzureRmAccount-Scope Process`.
+   > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using **Add-AzAccount**: `Remove-AzAccount-Scope Process`.
 
 2. Type your Azure credentials.
 3. In the PowerShell session, run:
 
    ```powershell
-   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
+   New-AzResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
    ```
 
-### New-AzureRmResource PowerShell parameters
+**New-AzResource PowerShell parameters**
 
-The following section describes the parameters for the **New-AzureRmResource** cmdlet:
+The following section describes the parameters for the **New-AzResource** cmdlet:
 
 | Parameter | Description |
 | --- | --- |
 |registrationSubscriptionID | The Azure subscription that was used for the initial registration of the Azure Stack Hub.|
 | customerSubscriptionID | The Azure subscription (not Azure Stack Hub) belonging to the customer to be registered. Must be created in the CSP offer. In practice, this means through Partner Center. If a customer has more than one Azure Active Directory tenant, this subscription must be created in the tenant that will be used to log into Azure Stack Hub. The customer subscription ID is case sensitive. |
 | resourceGroup | The resource group in Azure in which your registration is stored. |
-| registrationName | The name of the registration of your Azure Stack Hub. It's an object stored in Azure. 
+| registrationName | The name of the registration of your Azure Stack Hub. It's an object stored in Azure.
+
+### [AzureRM modules](#tab/azurerm)
+
+1. Open Windows PowerShell in an elevated prompt, and run:  
+
+   ```powershell
+   Add-AzureRMAccount
+   ```
+
+   >[!NOTE]
+   > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using **Add-AzAccount**: `Remove-AzAccount-Scope Process`.
+
+2. Type your Azure credentials.
+3. In the PowerShell session, run:
+
+   ```powershell
+   New-AzureRMResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
+   ```
+
+**New-AzureRMResource PowerShell parameters**
+
+The following section describes the parameters for the **New-AzureRMResource** cmdlet:
+
+| Parameter | Description |
+| --- | --- |
+|registrationSubscriptionID | The Azure subscription that was used for the initial registration of the Azure Stack Hub.|
+| customerSubscriptionID | The Azure subscription (not Azure Stack Hub) belonging to the customer to be registered. Must be created in the CSP offer. In practice, this means through Partner Center. If a customer has more than one Azure Active Directory tenant, this subscription must be created in the tenant that will be used to log into Azure Stack Hub. The customer subscription ID is case sensitive. |
+| resourceGroup | The resource group in Azure in which your registration is stored. |
+| registrationName | The name of the registration of your Azure Stack Hub. It's an object stored in Azure.
+
+---
+
 
 > [!NOTE]  
 > Tenants must be registered with each Azure Stack Hub they use. If you have two Azure Stack Hub deployments, and a tenant uses both of them, you must update the initial registrations of each deployment with the tenant subscription.

@@ -15,7 +15,7 @@ ms.lastreviewed: 06/18/2019
  
 # Access the Kubernetes Dashboard in Azure Stack Hub 
 
-> [!Note]   
+> [!NOTE]   
 > Only use the Kubernetes Azure Stack Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack, use [the AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
 
 Kubernetes includes a web dashboard that you can use for basic management operations. This dashboard lets you view basic health status and metrics for your applications, create and deploy services, and edit existing applications. This article shows you how to set up the Kubernetes dashboard on Azure Stack Hub.
@@ -28,7 +28,7 @@ Kubernetes includes a web dashboard that you can use for basic management operat
 
 * SSH client
 
-    You'll need an SSH client to security connect to your master node in the cluster. If you're using Windows, you can use [Putty](/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm). You will need the private key used when you deployed your Kubernetes cluster.
+    You'll need an SSH client to security connect to your master node in the cluster. If you're using Windows, you can use [Putty](https://www.ssh.com/ssh/putty/download). You will need the private key used when you deployed your Kubernetes cluster.
 
 * FTP (PSCP)
 
@@ -51,7 +51,7 @@ You can retrieve the URL for the dashboard from the master node in your cluster.
 
 2. Open the master node in the portal. Copy the **Public IP** address. Click **Connect** to get your user name in the  **Login using VM local account** box. This is the same user name you set when creating your cluster. Use the public IP address rather than the private IP address listed in the connect blade.
 
-3.  Open an SSH client to connect to the master. If you are working on Windows, you can use [Putty](/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm) to create the connection. You will use the public IP address for the master node, the username, and add the private key you used when creating the cluster.
+3.  Open an SSH client to connect to the master. If you are working on Windows, you can use [Putty](https://www.ssh.com/ssh/putty/download) to create the connection. You will use the public IP address for the master node, the username, and add the private key you used when creating the cluster.
 
 4.  When the terminal connects, type `kubectl` to open the Kubernetes command-line client.
 

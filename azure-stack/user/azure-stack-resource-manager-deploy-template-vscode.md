@@ -1,15 +1,15 @@
 ---
 title: Deploy with Visual Studio Code to Azure Stack Hub 
-description: As a user, I want to create an Azure Resource Manager template in Visual Studio Code and use the deployment schema to prepare a template that is compatible with my version of Azure Stack Hub.
+description: Create an Azure Resource Manager template in Visual Studio Code, and use the deployment schema to prepare a template compatible with my version of Azure Stack Hub.
 author: mattbriggs
 ms.topic: article
-ms.date: 5/27/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 09/30/2019
+ms.lastreviewed: 12/2/2020
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: Notdone: As a user, I want to create an Azure Resource Manager template in Visual Studio Code and use the deployment schema to prepare a template that is compatible with my version of Azure Stack Hub.
+# Keyword: create Azure Resource Manager template Visual Studio Code
 
 ---
 
@@ -37,7 +37,7 @@ The Azure Stack Hub deployment schema supports hybrid profiles through Azure Res
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - Access to Azure Stack Hub
-- [Azure Stack Hub PowerShell installed](../operator/azure-stack-powershell-install.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json) on a machine that reaches the management endpoints
+- [Azure Stack Hub PowerShell installed](../operator/powershell-install-az-module.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json) on a machine that reaches the management endpoints
 
 ## Install Resource Manager Tools extension
 

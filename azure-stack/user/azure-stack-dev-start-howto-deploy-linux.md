@@ -1,13 +1,13 @@
 ---
 title: Deploy a Linux VM to Azure Stack Hub 
-description: Deploy an app to Azure Stack Hub.
+description: Deploy a Linux virtual machine with an Ubuntu image to host a web app in Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: overview
-ms.date: 5/27/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/02/2019
+ms.lastreviewed: 12/2/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -47,7 +47,7 @@ To deploy the VM, follow the instructions in the next several sections.
 1. Create a Secure Shell (SSH) public key for your server. For more information, see [How to use an SSH public key](azure-stack-dev-start-howto-ssh-public-key.md).
 1. In the Azure Stack Hub portal, select **Create a resource** > **Compute** > **Ubuntu Server 16.04 LTS**.
 
-    ![Deploy a web app to an Azure Stack Hub VM](media/azure-stack-dev-start-howto-deploy-linux/001-portal-compute.png)
+    ![Deploy a web app to an Azure Stack Hub VM](media/azure-stack-dev-start-howto-deploy-linux/001-portal-computea.png)
 
 4. In the **Create a virtual machine** pane, for **1. Configure basic settings**:
 

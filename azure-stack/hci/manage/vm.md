@@ -1,14 +1,14 @@
 ---
-title: Manage VMs on Azure Stack HCI using Windows Admin Center
+title: Manage VMs with Windows Admin Center
 description: Learn how to create and manage virtual machines in a cluster on Azure Stack HCI using Windows Admin Center.
 author: v-dasis
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.date: 11/06/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
 
-# Manage VMs on Azure Stack HCI using Windows Admin Center
+# Manage VMs with Windows Admin Center
 
 > Applies to Azure Stack HCI, version 20H2; Windows Server 2019
 
@@ -16,25 +16,25 @@ Windows Admin Center can be used to create and manage your virtual machines (VMs
 
 ## Create a new VM
 
-You can easily create a new virtual machine using Windows Admin Center.
+You can easily create a new VM using Windows Admin Center.
 
 :::image type="content" source="media/manage-vm/new-vm.png" alt-text="New VM screen" lightbox="media/manage-vm/new-vm.png":::
 
-1. In Windows Admin Center home, under **All connections**, select the server or cluster you want to create the virtual machine on.
-1. Under **Tools**, scroll down and select **Virtual Machines**.
-1. Under **Virtual Machines**, select the **Inventory** tab, then select **New**.
-1. Under **New Virtual Machine**, enter a name for your VM.
+1. On the Windows Admin Center home screen, under **All connections**, select the server or cluster you want to create the VM on.
+1. Under **Tools**, scroll down and select **Virtual machines**.
+1. Under **Virtual machines**, select the **Inventory** tab, then select **Add** and **New**.
+1. Under **New virtual machine**, enter a name for your VM.
 1. Select **Generation 2 (Recommended)**.
-1. Select a preassigned file path from the dropdown list or click **Browse** to choose the folder to save the VM configuration and virtual hard disk (VHD) files to. You can browse to any available SMB share on the network by entering the path as *\\server\share*.
+1. Under **Host**, select the server you want the VM to reside on.
+1. Under **Path**, select a preassigned file path from the dropdown list or click **Browse** to choose the folder to save the VM configuration and virtual hard disk (VHD) files to. You can browse to any available SMB share on the network by entering the path as *\\server\share*.
 
-1. Under **Virtual processors**, select the number of virtual processors and whether you want nested virtualization enabled.
+1. Under **Virtual processors**, select the number of virtual processors and whether you want nested virtualization enabled for the VM.
 1. Under **Memory**, select the amount of startup memory (4 GB is recommended as a minimum), and a min and max range of dynamic memory as applicable to be allocated to the VM.
 1. Under **Network**, select a network adapter from the dropdown list.
-1. Under **Storage**, click **Add** and select whether to create a new virtual hard disk or to use an existing virtual hard disk. If you're using an existing virtual hard disk, click **Browse** and select the applicable file path.  
+1. Under **Storage**, click **Add** and select whether to create a new empty virtual hard disk or to use an existing virtual hard disk. If you're using an existing virtual hard disk, click **Browse** and select the applicable file path.  
 1. Under **Operating system**, do one of the following:
-   - Select **Install an operating system later** if you want to install an operating system for the VM later.
+   - Select **Install an operating system later** if you want to install an operating system for the VM after the VM is created.
    - Select **Install an operating system from an image file (*.iso)**, click **Browse**, then select the applicable .iso image file to use.
-   - Select **Install an operating system from a network-based installation server** if you want to install an OS on the VM later using this method. Make sure you have selected a network adapter previously or else it won't work.
 1. When finished, click **Create** to create the VM.
 1. To start the VM, in the **Virtual Machines** list, hover over the new VM, enable the checkbox for it on the left, and select **Start**.
 1. Under **State**, verify that the VM state is **Running**.
@@ -56,20 +56,20 @@ You can easily see all VMs on a server or in your cluster.
     - Replicate a VM using Azure Site Recovery.
     - For operations that can be run on multiple VMs, such as Start, Shut down, Save, Pause, Delete, or Reset, you can select multiple VMs and run the operation once.
 
-## View VM metrics
+## View VM details
 
 You can view detailed information and performance charts for a specific VM from its dedicated page.
 
 :::image type="content" source="media/manage-vm/vm-details.png" alt-text="Virtual machines detailed info screen" lightbox="media/manage-vm/vm-details.png":::
 
-1. Under **Tools**, scroll down and select **Virtual Machines**.
+1. Under **Tools**, scroll down and select **Virtual machines**.
 1. Click the **Inventory** tab on the right, then select the VM. On the subsequent page, you can do the following:
 
    - View live and historical data line charts for CPU, memory, network, IOPS and IO throughput (historical data is only available for hyperconverged clusters)
    - View, create, apply, rename, and delete checkpoints.
    - View details for the virtual hard disk (.vhd) files, network adapters, and host server.
    - View the state of the VM.
-   - Save the VM, delete a saved state, or create a checkpoint.
+   - Save the VM, delete a saved state, export, or clone the VM.
    - Change settings for the VM.
    - Connect to the VM console using VMConnect via the Hyper-V host.
    - Replicate the VM using Azure Site Recovery.
@@ -80,7 +80,7 @@ You can view resources usage and performance metrics for all VMs in your cluster
 
 :::image type="content" source="media/manage-vm/host-metrics.png" alt-text="host metrics screen" lightbox="media/manage-vm/host-metrics.png":::
 
-1. Under **Tools**, scroll down and select **Virtual Machines**.
+1. Under **Tools**, scroll down and select **Virtual machines**.
 1. The **Summary** tab on the right provides a holistic view of Hyper-V host resources and performance for a selected server or cluster, including the following:
     - The number of VMs that are running, stopped, paused, and saved
     - Recent health alerts or Hyper-V event log events for clusters
@@ -94,7 +94,7 @@ There are a variety of settings that you can change for a VM.
 > [!NOTE]
 > Some settings cannot be changed for a VM that is running and you will need to stop the VM first.
 
-1. Under **Tools**, scroll down and select **Virtual Machines**.
+1. Under **Tools**, scroll down and select **Virtual machines**.
 1. Click the **Inventory** tab on the right, select the VM, then click **Settings**.
 
 1. To change VM start/stop actions and general settings, select **General** and do the following:
@@ -112,7 +112,7 @@ There are a variety of settings that you can change for a VM.
 
     :::image type="content" source="media/manage-vm/vm-settings-processor.png" alt-text="Change VM processor settings screen" lightbox="media/manage-vm/vm-settings-processor.png":::
 
-1. To add a new virtual disk, select **Disks** and then select whether to create an empty virtual disk or to use an existing virtual disk or ISO (.iso) image file. Click **Browse** and select the path to the virtual disk or image file.
+1. To change the size of an existing disk, modify the value in **Size (GB)**. To add a new virtual disk, select **Disks** and then select whether to create an empty virtual disk or to use an existing virtual disk or ISO (.iso) image file. Click **Browse** and select the path to the virtual disk or image file.
 
     :::image type="content" source="media/manage-vm/vm-settings-disk.png" alt-text="Change VM disk settings screen" lightbox="media/manage-vm/vm-settings-disk.png":::
 
@@ -129,15 +129,20 @@ There are a variety of settings that you can change for a VM.
 
     :::image type="content" source="media/manage-vm/vm-settings-boot.png" alt-text="Change VM boot order screen" lightbox="media/manage-vm/vm-settings-boot.png":::
 
-1. Select **Checkpoints** to enable VM checkpoints, select checkpoint type, and select checkpoint location.
+1. Select **Checkpoints** to enable VM checkpoints, select checkpoint type, and specify checkpoint file location.
 
     > [!NOTE]
     > The **Production** checkpoint setting is recommended and uses backup technology in the guest operating system to create data-consistent checkpoints. The **Standard** setting uses VHD snapshots to create checkpoints with application and service state.
 
      :::image type="content" source="media/manage-vm/vm-settings-checkpoint.png" alt-text="Change VM checkpoints screen" lightbox="media/manage-vm/vm-settings-checkpoint.png":::
 
+1. Select **Affinity rules** to create an affinity rule for a VM. For more information on creating affinity rules, see [Create server and site affinity rules for VMs](vm-affinity.md).
+
+    :::image type="content" source="media/manage-vm/vm-affinity.png" alt-text="VM affinity rule screen" lightbox="media/manage-vm/vm-affinity.png":::
+
 1. To change VM security settings, select **Security** and do the following:
     - Select **Enable Secure Boot** to help prevent unauthorized code from running at boot time (recommended). Also select a Microsoft or open-source template from the drop-down box
+    - For **Template**, select a security template to use
 
     - Under **Encryption Support**, you can
 
@@ -154,63 +159,71 @@ generate a KP that allows running the VM on this host.
 
         :::image type="content" source="media/manage-vm/vm-settings-security.png" alt-text="Change VM security settings" lightbox="media/manage-vm/vm-settings-security.png":::
 
-## Create a new VM
+## Move a VM to another server or cluster
 
-You can easily create a new virtual machine using Windows Admin Center.
+You can easily move a virtual machine to another server or another cluster as follows:
 
-:::image type="content" source="media/manage-vm/new-vm.png" alt-text="New VM screen":::
-
-1. In Windows Admin Center home, under **All connections**, select the server or cluster you want to create the virtual machine on.
-1. Under **Tools**, scroll down and select **Virtual Machines**.
-1. Under **Virtual Machines**, select the **Inventory** tab, then select **New**.
-1. Under **New Virtual Machine**, enter a name for your VM.
-1. Select **Generation 2 (Recommended)**.
-1. Select a preassigned file path from the dropdown list or click **Browse** to choose the folder to save the VM configuration and virtual hard disk (VHD) files to. You can browse to any available SMB share on the network by entering the path as *\\server\share*.
-
-1. Under **Virtual processors**, select the number of virtual processors and whether you want nested virtualization enabled.
-1. Under **Memory**, select the amount of startup memory (4 GB is recommended as a minimum), and a min and max range of dynamic memory as applicable to be allocated to the VM.
-1. Under **Network**, select a network adapter from the dropdown list.
-1. Under **Storage**, click **Add** and select whether to create a new virtual hard disk or to use an existing virtual hard disk. If you're using an existing virtual hard disk, click **Browse** and select the applicable file path.
-1. Under **Operating system**, do one of the following:
-   - Select **Install an operating system later** if you want to install an operating system for the VM later.
-   - Select **Install an operating system from an image file (*.iso)**, click **Browse**, then select the applicable .iso image file to use.
-   - Select **Install an operating system from a network-based installation server** if you want to install an OS on the VM later using this method. Make sure you have selected a network adapter previously or else it won't work.
-1. When finished, click **Create** to create the VM.
-1. To start the VM, in the **Virtual Machines** list, hover over the new VM, enable the checkbox for it on the left, and select **Start**.
-1. Under **State**, verify that the VM state is **Running**.
-
-## Move a VM to another server in the cluster
-
-You can easily move a virtual machine to another server in the cluster as follows:
-
-:::image type="content" source="media/manage-vm/vm-more-move.png" alt-text="Move VM screen" lightbox="media/manage-vm/vm-more-move.png":::
-
-1. Under **Tools**, scroll down and select **Virtual Machines**.
-1. Select the **Inventory** tab on the right. Choose a virtual machine from the list and select **More > Move**.
+1. Under **Tools**, scroll down and select **Virtual machines**.
+1. Under the **Inventory** tab, select a VM from the list and select **Manage > Move**.
 1. Choose a server from the list and select **Move**.
-1. Under **Move Virtual Machine**, select **Failover cluster**, then enter the cluster name and cluster node to move the VM to.
-1. After a successful move, you will see the name updated in the list under **Host server**.
+1. If you want to move both the VM and it's storage, choose whether to move it to another cluster or to another server in the same cluster.
 
-## Import or Export a VM
+    :::image type="content" source="media/manage-vm/vm-more-move.png" alt-text="Move VM screen" lightbox="media/manage-vm/vm-more-move.png":::
+
+1. If you want to move just the VM's storage, select either to move it to the same path or select different paths for configuration, checkpoint, or smart paging.
+
+    :::image type="content" source="media/manage-vm/vm-move-storage.png" alt-text="Move VM Storage screen" lightbox="media/manage-vm/vm-move-storage.png":::
+
+## Join a VM to a domain
+
+You can easily join a VM to a domain as follows:
+
+:::image type="content" source="media/manage-vm/vm-domain-join.png" alt-text="Move VM Domain join screen" lightbox="media/manage-vm/vm-domain-join.png":::
+
+1. Under **Tools**, scroll down and select **Virtual machines**.
+1. Under the **Inventory** tab, select a VM from the list and select **Manage > Domain join**.
+1. Enter the name of the domain to join to, along with the domain user name and password.
+1. Enter the VM user name and password.
+1. When finished, click **Join**.
+
+## Clone a VM
+
+You can easily clone a VM as follows:
+
+1. Under **Tools**, scroll down and select **Virtual machines**.
+1. Select the **Inventory** tab on the right. Choose a VM from the list and select **Manage > Clone**.
+1. Specify a name and path to the cloned VM.
+1. Run Sysprep on your VM if you haven't already done so.
+
+:::image type="content" source="media/manage-vm/vm-clone.png" alt-text="Clone VM screen" lightbox="media/manage-vm/vm-clone.png":::
+
+## Import or export a VM
 
 You can easily import or export a VM. The following procedure describes the import process.
 
 :::image type="content" source="media/manage-vm/vm-more-import.png" alt-text="Import VM screen" lightbox="media/manage-vm/vm-more-import.png":::
 
-1. Under **Tools**, scroll down and select **Virtual Machines**.
-1. Select the **Inventory** tab on the right. Choose a clustered virtual machine from the list and select **More > Import**.
+1. Under **Tools**, scroll down and select **Virtual machines**.
+1. On the **Inventory** tab, select **Add > Import**.
 1. Enter the folder name containing the VM or click **Browse** and select a folder.
 1. Select the VM you want to import.
 1. Create a unique ID for the VM if needed.
 1. When finished, select **Import**.
 
-For exporting a VM, the process is very similar. simply select **More > Export** instead.
+For exporting a VM, the process is similar:
+
+1. Under **Tools**, scroll down and select **Virtual machines**.
+1. On the **Inventory** tab, select the VM to export in the list.
+1. Select **Manage > Export**.
+1. Enter the path to export the VM to.
+
+:::image type="content" source="media/manage-vm/vm-export.png" alt-text="Export VM screen" lightbox="media/manage-vm/vm-export.png":::
 
 ## View VM event logs
 
 You can view VM event logs as follows:
 
-1. Under **Tools**, scroll down and select **Virtual Machines**.
+1. Under **Tools**, scroll down and select **Virtual machines**.
 1. On the **Summary** tab on the right, select **View all events**.
 1. Select an event category and expand the view.
 
@@ -218,8 +231,8 @@ You can view VM event logs as follows:
 
 Instead of using Windows Admin Center, you can also manage your VMs through a Hyper-V host using a Remote Desktop Protocol (RDP) connection.
 
-1. Under **Tools**, scroll down and select **Virtual Machines**.
-1. Select the **Inventory** tab on the right. Choose a virtual machine from the list and select **More > Connect** or **More > Download RDP file** option. Both options use the VMConnect tool to connect to the guest VM through the Hyper-V host and requires you to enter your administrator username and password credentials for the Hyper-V host.
+1. Under **Tools**, scroll down and select **Virtual machines**.
+1. On the **Inventory** tab, select Choose a virtual machine from the list and select the **Connect > Connect** or **Connect > Download RDP file** option. Both options use the VMConnect tool to connect to the guest VM through the Hyper-V host and requires you to enter your administrator username and password credentials for the Hyper-V host.
 
     - The **Connect** option connects to the VM using Remote Desktop in your web browser.
 

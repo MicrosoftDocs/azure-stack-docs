@@ -3,10 +3,10 @@ title: Add Fortinet FortiGate to Azure Stack Hub Marketplace
 description: Learn how to add Fortinet FortiGate to your Azure Stack Hub Marketplace, enabling users to create network solutions.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 5/27/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 09/30/2019
+ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack Hub operator, I want to add Fortinet FortiGate to Azure Stack Hub Marketplace so my users can create network solutions.
 # Keyword: fortinet fortigate azure stack hub network solutions
@@ -29,7 +29,7 @@ For more information on FortiGate in Azure Marketplace, see [Fortinet FortiGate 
     - Fortinet FortiGate-VM For Azure BYOL
     - FortiGate NGFW - Single VM Deployment (BYOL)
 
-    ![Azure Stack Hub FortiGate Fortinet](./media/azure-stack-network-solutions-enable/azure-stack-marketplace-FortiGate-fortinet.png)
+    ![Screenshot that shows the available downloaded items.](./media/azure-stack-network-solutions-enable/azure-stack-marketplace-FortiGate-fortinet.png)
 
 4. Wait until your marketplace items have a status of **Downloaded**. The items may take several minutes to download.
 

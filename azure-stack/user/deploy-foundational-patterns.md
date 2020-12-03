@@ -4,10 +4,10 @@ description: Learn how to Deploy foundational patterns with Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 11/06/2019
+ms.lastreviewed: 12/2/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase

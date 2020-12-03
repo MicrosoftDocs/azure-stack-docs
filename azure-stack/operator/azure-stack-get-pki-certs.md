@@ -3,10 +3,10 @@ title: Generate certificate signing requests for Azure Stack Hub
 description: Learn how to generate certificate signing requests for Azure Stack Hub PKI certificates in Azure Stack Hub integrated systems.
 author: IngridAtMicrosoft
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 10/19/2020
 ms.author: inhenkel
 ms.reviewer: ppacent
-ms.lastreviewed: 09/10/2019
+ms.lastreviewed: 10/19/2020
 
 # Intent: As an Azure Stack operator, I want to generate CSRs before deploying Azure Stack so my identity system is ready.
 # Keyword: azure stack certificate signing request 
@@ -135,19 +135,19 @@ Use these steps to prepare certificate signing requests for renewal of existing 
 1. Install AzsReadinessChecker from a PowerShell prompt (5.1 or above), by running the following cmdlet:
 
     ```powershell  
-        Install-Module Microsoft.AzureStack.ReadinessChecker
+        Install-Module Microsoft.AzureStack.ReadinessChecker -Force -AllowPrerelease
     ```
 
-2. Declare the **stampEndpoint**. For example:
+2. Declare the **stampEndpoint** in the form of regionname.domain.com of the Azure Stack Hub System. For example (if the Azure Stack Hub Tenant portal address is <code> https://</code><code>portal.east.azurestack.contoso.com</code>):
 
     ```powershell  
-    $stampEndpoint = 'portal.east.azurestack.contoso.com'
+    $stampEndpoint = 'east.azurestack.contoso.com'
     ```
 
     > [!NOTE]  
-    > HTTPS Connectivity is required for the above endpoint.
-    > The above endpoint should match one of certificates required by the certificate type e.g. for deployment certificates portal.region.domain endpoint is required, for AppServices sso.appservices.region.domain etc.
-    > The certificate bound to the endpoint will be used to clone attributes such as subject, key length, signature algorithm.  Only one existing endpoint is required and all signing requests will created all necessary certificates.
+    > HTTPS Connectivity is required for the Azure Stack Hub system above.
+    > The Readiness Checker will use the stampendpoint (region and domain) to build a pointer to an existing certificates required by the certificate type e.g. for deployment certificates 'portal' is prepended, by the tool, so portal.east.azurestack.contoso.com is used in certificate cloning, for AppServices sso.appservices.east.azurestack.contoso.com etc.
+    > The certificate bound to the computed endpoint will be used to clone attributes such as subject, key length, signature algorithm.  If you wish to change any of these attributes you should follow the steps for [Generate certificate signing request for new deployments](azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-new-deployments) instead.
 
 3. Declare an output directory that already exists. For example:
 

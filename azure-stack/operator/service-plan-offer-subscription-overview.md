@@ -75,6 +75,9 @@ Plans are groupings of one or more services. As an Azure Stack Hub operator, you
 
 When creating an offer, the service administrator can include a base plan. These base plans are included by default when a user subscribes to that offer. When a user subscribes, they have access to all the resource providers specified in those base plans (with the corresponding quotas).
 
+> [!NOTE]
+> If an offer has multiple base plans, the combined storage capacity of the plans cannot exceed the storage quota.
+
 ### Add-on plans
 
 Add-on plans are optional plans you add to an offer. Add-on plans aren't included by default in the subscription. Add-on plans are additional plans (with quotas) available in an offer that a subscriber can add to their subscriptions. For example, you can offer a base plan with limited resources for a trial, and an add-on plan with more substantial resources to customers who decide to adopt the service.
@@ -102,6 +105,8 @@ Users create new subscriptions and get access to existing subscriptions by signi
 As an Azure Stack Hub operator, you can see information about tenant subscriptions, but you can't access the contents of those subscriptions unless you are explicitly added through RBAC by a tenant administrator of that subscription. This allows tenants to enforce separation of power and responsibilities between Azure Stack Hub operator and tenant spaces. 
 
 The exception to this case is a situation in which the subscription owner is unable to provide the operator with access to the subscription, which requires the administrator to take ownership of the subscription as discussed in [Change the billing owner for an Azure Stack Hub user subscription](azure-stack-change-subscription-owner.md).
+
+If your Azure Stack Hub instance is disconnected and you have two different domains where users in domain 1 create subscriptions that users in domain 2 consume, some subscriptions may appear in the admin portal but not appear in the user portal. To fix this, have the users in domain 1 set the correct RBAC for the subscriptions in domain 2.
 
 ### Default provider subscription
 

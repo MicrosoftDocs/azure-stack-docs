@@ -4,10 +4,10 @@ description: Learn how to create a Windows Server 2016 virtual machine (VM) with
 author: mattbriggs
 
 ms.topic: quickstart
-ms.date: 04/20/2020
+ms.date: 10/06/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 1/10/2020
+ms.lastreviewed: 10/06/2020
 
 # Intent: As an Azure Stack user, I want to quickly create a VM using the Azure Stack portal so I can begin using the VM.
 # Keyword: azure stack vm windows
@@ -32,34 +32,34 @@ Sign in to the Azure Stack Hub portal. The address of the Azure Stack Hub portal
 
 ## Create a VM
 
-1. Select **Create a resource** > **Compute**. Search for` Windows Server 2016 Datacenter – Pay as you use`.
+1. Select **Create a resource** > **Compute**. Search for` Windows Server 2016 Datacenter - Pay as you use`.
     If you don't see the **Windows Server 2016 Datacenter - Pay-as-you-use** entry, contact your Azure Stack Hub cloud operator and ask for the image to be added to the Azure Stack Hub Marketplace. For instructions, your cloud operator can refer to [Create and publish a custom Azure Stack Hub Marketplace item](../operator/azure-stack-create-and-publish-marketplace-item.md).
 
-    ![Windows Server 2016 Datacenter – Pay as you use](./media/azure-stack-quick-windows-portal/image1.png)
+    ![Windows Server 2016 Datacenter - Pay as you use](./media/azure-stack-quick-windows-portal/image1a.png)
 
 1. Select **Create**.
 
-    ![Create a resource](./media/azure-stack-quick-windows-portal/image2.png)
+    ![Create a resource](./media/azure-stack-quick-windows-portal/image2a.png)
 
 1. Enter a **Name**, **Disk Type**, **User name**, and **Password** under **Basics**. Choose a **Subscription**. Create a **Resource group**, or select an existing one, select a **Location**, and then select **OK**.
 
-    ![Create a VM - Basics](./media/azure-stack-quick-windows-portal/image3.png)
+    ![Create a VM - Basics](./media/azure-stack-quick-windows-portal/image3a.png)
 
 1. Select **D1_v2** under **Size**,  and then choose on **Select**.
 
-    ![Create a VM - Size](./media/azure-stack-quick-windows-portal/image4.png)
+    ![Create a VM - Size](./media/azure-stack-quick-windows-portal/image4a.png)
 
 1. On the **Settings** page, make any desired changes to the defaults. You must configure the desired public inbound ports from the related drop-down. When you are finished, select **OK**.
 
-    ![Create a VM - Settings](./media/azure-stack-quick-windows-portal/image5.png)
+    ![Create a VM - Settings](./media/azure-stack-quick-windows-portal/image5a.png)
 
 1. Select **OK** under **Summary** to create the VM.
 
-    ![Create a VM - Summary](./media/azure-stack-quick-windows-portal/image6.png)
+    ![Create a VM - Summary](./media/azure-stack-quick-windows-portal/image6a.png)
 
 1. Select **Virtual Machines** to review your new VM. Search for the VM name, and then select the VM in the search results.
 
-![Create a VM - Search for VM](./media/azure-stack-quick-windows-portal/image7.png)
+![Create a VM - Search for VM](./media/azure-stack-quick-windows-portal/image7a.png)
 
 ## Clean up resources
 

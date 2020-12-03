@@ -1,13 +1,13 @@
 ---
-title: Deploy a Ruby app to a virtual machine in Azure Stack Hub 
+title: Deploy Ruby app to VM in Azure Stack Hub 
 description: Deploy a Ruby app to a virtual machine in Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: overview
-ms.date: 5/27/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/02/2019
+ms.lastreviewed: 12/2/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -66,7 +66,7 @@ This article uses Ruby and a Ruby on Rails web framework.
     sudo gem install bundler
     ```
 
-    > [!Note]  
+    > [!NOTE]  
     > While you're installing Ruby on Rails dependencies, you might need to repeatedly run `sudo gem install bundler`. If the installation fails, review the error logs and resolve the issues.
 
 4. Validate your installation. While you're still connected to your VM in your SSH session, enter the following command:
