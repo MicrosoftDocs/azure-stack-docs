@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/28/2020
+ms.date: 12/03/2020
 ---
 
 # What is the deployment process for Azure Stack HCI?
