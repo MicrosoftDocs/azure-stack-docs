@@ -22,7 +22,7 @@ Download the MySQL resource provider binary and then run the self-extractor to e
 
 > |Supported Azure Stack Hub version|MySQL resource provider version|
 > |-----|-----|
-> |Version 2005|[MySQL RP version 1.1.93.0](https://aka.ms/azshmysqlrp11930)|  
+> |Version 2008, 2005|[MySQL RP version 1.1.93.0](https://aka.ms/azshmysqlrp11930)|  
 > |     |     |
 
 > [!IMPORTANT]
