@@ -9,16 +9,14 @@ ms.author: jeguan
 
 # Quickstart: Create Kubernetes clusters on Azure Stack HCI using Windows PowerShell
 
-> Applies to: Azure Stack HCI
+> Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
 
-In this quickstart, you learn how to use Windows PowerShell to create a Kubernetes cluster on Azure Stack HCI. To instead use Windows Admin Center, see [Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center](setup.md).
+In this quickstart, you learn how to use Windows PowerShell to create a Kubernetes cluster on Azure Stack HCI. You then learn how to scale your Kubernetes cluster and upgrade the Kubernetes version of your cluster. To instead use Windows Admin Center, see [Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center](setup.md).
 
 ## Before you begin
 
-Before you begin, make sure you:
-
-- Have a 2-4 node Azure Stack HCI cluster or a single node Azure Stack HCI. **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't, follow instructions on how to create one [here](./system-requirements.md).
-- Have an Azure Stack Kubernetes host set up. If you don't, follow instructions on how to set one up [here](./setup-powershell.md).
+ - Make sure you have an Azure Stack Kubernetes host set up. If you don't, see [Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI using PowerShell](./setup-powershell.md).
+ - Make sure you have the latest Aks-Hci PowerShell module installed. If don't, see [Download and install the AksHci PowerShell module](./setup-powershell.md#step-1-download-and-install-the-akshci-powershell-module).
 
 ## Step 1: Create a Kubernetes cluster
 
@@ -27,15 +25,21 @@ After installing your Azure Kubernetes Service host, you are ready to deploy a K
 Open PowerShell as an administrator and run the following command.
 
    ```powershell
-   New-AksHciCluster -clusterName
-                    [-kubernetesVersion]
-                    [-controlPlaneNodeCount]
-                    [-linuxNodeCount]
-                    [-windowsNodeCount]
-                    [-controlPlaneVmSize]
-                    [-loadBalancerVmSize]
-                    [-linuxNodeVmSize]
-                    [-windowsNodeVmSize]
+   New-AksHciCluster -clusterName <String>
+                    [-kubernetesVersion <String>]
+                    [-controlPlaneNodeCount <int>]
+                    [-linuxNodeCount <int>]
+                    [-windowsNodeCount <int>]
+                    [-controlPlaneVmSize <VmSize>]
+                    [-loadBalancerVmSize <VmSize>]
+                    [-linuxNodeVmSize <VmSize>]
+                    [-windowsNodeVmSize <VmSize>]
+   ```
+
+### Example
+
+   ```powershell
+   New-AksHciCluster -clusterName mynewcluster -kubernetesVersion v1.18.8 -controlPlaneNodeCount 1 -linuxNodeCount 1 -windowsNodeCount 0 
    ```
 
 ### Required parameters
@@ -48,7 +52,7 @@ The alphanumeric name of your Kubernetes cluster.
 
 `-kubernetesVersion`
 
-The version of Kubernetes that you want to deploy. Default is v1.18.6. To get a list of available versions, run `Get-AksHciKubernetesVersion`.
+The version of Kubernetes that you want to deploy. Default is v1.18.8. To get a list of available versions, run `Get-AksHciKubernetesVersion`.
 
 `-controlPlaneNodeCount`
 
@@ -60,7 +64,7 @@ The number of Linux nodes in your Kubernetes cluster. Default is 1.
 
 `-windowsNodeCount`
 
-The number of Windows nodes in your Kubernetes cluster. Default is 0.
+The number of Windows nodes in your Kubernetes cluster. Default is 0. You can only deploy Windows nodes if you are running Kubernetes v1.18.8.
 
 `-controlPlaneVmSize`
 
@@ -93,43 +97,83 @@ If you need to scale your cluster up or down, you can change the number of contr
 To scale control plane nodes, run the following command.
 
 ```powershell
-Set-AksHciClusterNodeCount –clusterName
-                           -controlPlaneNodeCount
+Set-AksHciClusterNodeCount –clusterName <String>
+                           -controlPlaneNodeCount <int>
 ```
 
 To scale the worker nodes, run the following command.
 
 ```powershell
-Set-AksHciClusterNodeCount –clusterName
-                           -linuxNodeCount
-                           -windowsNodeCount
+Set-AksHciClusterNodeCount –clusterName <String>
+                           -linuxNodeCount <int>
+                           -windowsNodeCount <int>
 ```
 
 The control plane nodes and the worker nodes must be scaled independently.
 
+### Example
+
+```powershell
+Set-AksHciClusterNodeCount –clusterName mynewcluster -controlPlaneNodeCount 3
+```
+
+```powershell
+Set-AksHciClusterNodeCount –clusterName mynewcluster -linuxNodeCount 2 -windowsNodeCount 2 
+```
+
 ## Step 3: Upgrade Kubernetes version
 
-To see the current Kubernetes version you're running, run the following command.
+To see the list of available Kubernetes versions, run the following command.
 
 ```powershell
 Get-AksHciKubernetesVersion
 ```
 
-To upgrade to the next Kubernetes version, run the following command.
+To update to the next Kubernetes version, run the following command.
 
 ```powershell
-Update-AksHciCluster -clusterName
+Update-AksHciCluster -clusterName <String>
+                     [-patch]
+```
+Every Kubernetes version has a major release, a minor version, and a patch version. For example, in v1.18.6, 1 is the major release, 18 is the minor version, and 6 is the patch version. Over time, AKS-HCI will support one major release, three minor releases, and two patches per minor release for a total of 6 supported versions. However, for this preview release, we support a total of 4 releases - v1.16.10, v1.16.15, v1.17.11, v1.18.8. 
+
+When the parameter `patch` is added while running `Update-AksHciCluster`, the command upgrades to the next patch version (if any) for the minor version. When the command is run without the parameter `patch`, the default upgrade experience is to the next minor release. To make this easier, the following table contains all possible update experiences:
+
+| Current release           | Kubernetes updated version without -patch         | Kubernetes updated version with -patch
+| ---------------------------- | ------------ | -------------------------------- |
+| v1.16.10           |     v1.17.11      | v1.16.15
+| v1.16.15            | v1.17.11 | in place add-on upgrade
+| v1.17.11           |  v1.18.8          | in place add-on upgrade
+| v1.18.8             | in place add-on upgrade   | in place add-on upgrade
+
+In place add-on upgrade updates all the Kubernetes add-ons like CSI that AKS-HCI manages for you. This upgrade does not change the OS version of the node. It also does not change the Kubernetes version.
+
+### Example - Upgrade Kubernetes version to the next minor version
+
+```powershell
+Update-AksHciCluster -clusterName mynewcluster
 ```
 
-If you want to use Windows nodes, the minimum required version is v1.1.8.6.
+### Example - Upgrade Kubernetes version to the next patch version
+
+```powershell
+Update-AksHciCluster -clusterName mynewcluster -patch
+```
+
 
 ## Step 4: Access your clusters using kubectl
 
 To access your Kubernetes clusters using kubectl, run the following command. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl.
 
 ```powershell
-Get-AksHciCredential -clusterName
-                     [-outputLocation]
+Get-AksHciCredential -clusterName <String>
+                     [-outputLocation <String>]
+```
+
+### Example
+
+```powershell
+Get-AksHciCredential -clusterName mynewcluster
 ```
 
 ### Required Parameters
@@ -152,6 +196,12 @@ If you need to delete a Kubernetes cluster, run the following command.
 Remove-AksHciCluster -clusterName
 ```
 
+### Example
+
+```powershell
+Remove-AksHciCluster -clusterName mynewcluster
+```
+
 ## Get logs
 
 To get logs from your all your pods, run the following command. This command will create an output zipped folder called `akshcilogs` in the path `C:\wssd\akshcilogs`.
@@ -160,7 +210,7 @@ To get logs from your all your pods, run the following command. This command wil
 Get-AksHciLogs
 ```
 
-In this quickstart, you learned how to create, scale, and upgrade a Kubernetes cluster with PowerShell.
+In this quickstart, you learned how to create, scale, and upgrade the Kubernetes version of a cluster using PowerShell.
 
 ## Next steps
 
