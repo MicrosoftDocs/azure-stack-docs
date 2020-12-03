@@ -80,6 +80,8 @@ For VMs on Windows Server 2008 SP1, Windows Server 2008 R2-SP1, and Windows 2012
 
 - Use Robocopy to copy all VM VHDs to Azure Stack HCI. Then create new VMs and attach the copied VHDs to their respective VMs in Azure Stack HCI. This bypasses the VM version limitation for these older VMs.
 
+### Updating the VM version
+
 Use the following command to show all VM versions on a single Windows Server 2012 R2 and later server:
 
 ```powershell
@@ -96,6 +98,24 @@ To update all VMs to the latest supported version (version 5.0) on all Windows S
 
 ```powershell
 Get-VM –ComputerName (Get-ClusterNode) | Update-VMVersion -Force
+```
+
+### Migrating VMs on Windows Server 2012
+
+Windows Server 2012 R2 and earlier uses an XML file format for its VMs, which is different than what is used for Windows Server 2016 and later. Run the following cmd:
+
+```powershell
+Get-ChildItem -Path "c:\clusterstorage\volume01\Hyper-V\*.xml"-Recurse
+```
+
+### Copying older VHD files to Azure Stack HCI
+
+This method uses Robocopy to copy all VM VHDs to Azure Stack HCI. Then it creates new VMs and attachs the copied VHDs to their respective VMs in Azure Stack HCI. This bypasses the VM version limitation for these older VMs.
+
+To copy a Windows Server 2008 R2 VM on a Windows Server 2012 R2 host to Azure Stack HCI, use the following commands. This emulates the commands used to migrate from  Windows Server 2016 and Windows Server 2019 to Azure Stack HCI:
+
+```powershell
+Robocopy \\2012R2-Clus01\c$\clusterstorage\volume01\Hyper-V\   \\20H2-Clus01\c$\clusterstorage\volume01\Hyper-V\ /Copyall /E /MT:32 /R:0 /w:1 /NFL /NDL /log:c:\log.txt /xf
 ```
 
 ## RDMA recommendations
