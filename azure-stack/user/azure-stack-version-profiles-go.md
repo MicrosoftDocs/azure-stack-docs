@@ -4,10 +4,10 @@ description: Learn how to use API version profiles with GO in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 09/02/2020
+ms.date: 12/2/2020
 ms.author: sethm
 ms.reviewer: sijuman
-ms.lastreviewed: 05/26/2019
+ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack user, I want to use API version profiles with Go in Azure Stack so I can benefit from the use of profiles.
 # Keyword: azure stack API profiles Go
