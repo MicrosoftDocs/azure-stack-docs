@@ -3,10 +3,10 @@ title: Add Commvault to Azure Stack Hub Marketplace
 description: Learn how to add Commvault to Azure Stack Hub Marketplace.
 author: mattbriggs
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/28/2019
+ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack Hub operator, I want to add Commvault to Azure Stack Hub Marketplace so I can offer it as a backup and replication solution for my users.
 # Keyword: add commvault azure stack hub marketplace
