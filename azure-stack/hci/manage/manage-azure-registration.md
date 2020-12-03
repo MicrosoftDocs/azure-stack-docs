@@ -11,7 +11,7 @@ ms.date: 12/10/2020
 
 > Applies to Azure Stack HCI v20H2
 
-Once you've created an Azure Stack HCI cluster, you must [register the cluster with Azure Arc](../deploy/register-with-azure.md). Once the cluster is registered, it periodically syncs information between the on-premises cluster and the cloud. This topic explains how to understand your registration status and unregister your cluster when you're ready to decommission it.
+Once you've created an Azure Stack HCI cluster, you must [register the cluster with Azure Arc](../deploy/register-with-azure.md). Once the cluster is registered, it periodically syncs information between the on-premises cluster and the cloud. This topic explains how to understand your registration status, grant Azure Active Directory permissions, and unregister your cluster when you're ready to decommission it.
 
 ## Understanding registration status
 
@@ -39,16 +39,21 @@ If the user who runs `Register-AzureStackHCI` is an Azure Active Directory admin
 
 :::image type="content" source="media/manage-azure-registration/aad-permissions.png" alt-text="Azure Active Directory permissions and identity diagram" border="false":::
 
-To grant consent, open portal.azure.com and sign in with an Azure account that has sufficient permissions on the Azure Active Directory. Navigate to **Azure Active Directory**, then **App registrations**. Select the app identity named after your cluster and navigate to **API permissions**.
+To grant consent, open [portal.azure.com](https://portal.azure.com) and sign in with an Azure account that has sufficient permissions on the Azure Active Directory. Navigate to **Azure Active Directory**, then **App registrations**. Select the app identity named after your cluster and navigate to **API permissions**.
 
 For the General Availability (GA) release of Azure Stack HCI, the app requires the following permissions:
 
-AzureStackHCI.Cluster.Read
-AzureStackHCI.Cluster.ReadWrite
-AzureStackHCI.ClusterNode.Read
-AzureStackHCI.ClusterNode.ReadWrite
+```http
+https://azurestackhci-usage.trafficmanager.net/AzureStackHCI.Cluster.Read
 
-For public preview the app permissions were (these will be deprecated):
+https://azurestackhci-usage.trafficmanager.net/AzureStackHCI.Cluster.ReadWrite
+
+https://azurestackhci-usage.trafficmanager.net/AzureStackHCI.ClusterNode.Read
+
+https://azurestackhci-usage.trafficmanager.net/AzureStackHCI.ClusterNode.ReadWrite
+```
+
+For Public Preview, the app permissions were (these are now deprecated):
 
 ```http
 https://azurestackhci-usage.trafficmanager.net/AzureStackHCI.Census.Sync

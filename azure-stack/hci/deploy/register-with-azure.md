@@ -20,15 +20,18 @@ Azure Stack HCI is delivered as an Azure service and needs to register within 30
 
 ## Prerequisites for registration
 
-You won’t be able to register with Azure until you've created an Azure Stack HCI cluster. The nodes can be physical machines or virtual machines, but they must have Unified Extensible Firmware Interface (UEFI), meaning you can’t use Hyper-V Generation 1 virtual machines. Azure Arc registration is a native capability of Azure Stack HCI, so there is no agent required.
+You won't be able to register with Azure until you've created an Azure Stack HCI cluster. In order for the cluster to be supported, the cluster nodes must be physical servers. Virtual machines can be used for testing, but they must support Unified Extensible Firmware Interface (UEFI), meaning you can't use Hyper-V Generation 1 virtual machines. Azure Arc registration is a native capability of the Azure Stack HCI operating system, so there is no agent needed to register.
 
 ### Internet access
 
 Azure Stack HCI needs to periodically connect to the Azure public cloud. If outbound connectivity is restricted by your external corporate firewall or proxy server, they must be configured to allow outbound access to port 443 (HTTPS) on a limited number of well-known Azure IPs. For more information on how to prepare your firewalls, see Configure firewalls for Azure Stack HCI.
 
-### Azure subscription
+   > [!NOTE]
+   > The registration process tries to contact the PowerShell Gallery to verify that you have the latest version of the necessary PowerShell modules such as Az and AzureAD. Although the PowerShell Gallery is hosted on Azure, it does not currently have a service tag. If you cannot run the above cmdlet from a management machine that has outbound internet access, we recommend downloading the modules and manually transferring them to a cluster node where you will run the `Register-AzStackHCI` command. Alternatively, you can [install the modules in a disconnected scenario](/powershell/scripting/gallery/how-to/working-with-local-psrepositories?view=powershell-7.1#installing-powershellget-on-a-disconnected-system).
 
-If you don’t already have an Azure account, [create one](https://azure.microsoft.com/). 
+### Azure subscription and permissions
+
+If you don’t already have an Azure account, [create one](https://azure.microsoft.com/).
 
 You can use an existing subscription of any type:
 - Free account with Azure credits [for students](https://azure.microsoft.com/free/students/) or [Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
@@ -36,15 +39,60 @@ You can use an existing subscription of any type:
 - Subscription obtained through an Enterprise Agreement (EA)
 - Subscription obtained through the Cloud Solution Provider (CSP) program
 
+The user registering the cluster must have Azure subscription permissions to:
+
+- Register a resource provider
+- Create/Get/Delete Azure resources and resource groups
+
+If your Azure subscription is through an EA or CSP, the easiest way is to ask your Azure subscription admin to assign a built-in "Owner" or "Contributor" Azure role to your subscription. However, some admins may prefer a more restrictive option. In this case, it's possible to create a custom Azure role specific for Azure Stack HCI registration by following these steps:
+
+1. Create a json file called **customHCIRole.json** with following content. Make sure to change <subscriptionID> to your Azure subscription ID. To get your subscription ID, visit [portal.azure.com](https://portal.azure.com), navigate to Subscriptions, and copy/paste your ID from the list.
+
+```json
+{
+  "Name": "Azure Stack HCI registration role”,
+  "Id": null,
+  "IsCustom": true,
+  "Description": "Custom Azure role to allow subscription-level access to register Azure Stack HCI",
+  "Actions": [
+    "Microsoft.Resources/subscriptions/resourceGroups/write",
+    "Microsoft.Resources/subscriptions/resourceGroups/read",
+    "Microsoft.Resources/subscriptions/resourceGroups/delete",
+    "Microsoft.AzureStackHCI/register/action",
+    "Microsoft.AzureStackHCI/Unregister/Action",
+    "Microsoft.AzureStackHCI/clusters/*"
+  ],
+  "NotActions": [
+  ],
+"AssignableScopes": [
+    "/subscriptions/<subscriptionId>"
+  ]
+}
+```
+
+2. Create the custom role:
+
+```powershell
+New-AzRoleDefinition -InputFile <path to customHCIRole.json>
+```
+
+3. Assign the custom role to the user:
+
+```powershell
+$user = get-AzAdUser -DisplayName <userdisplayname>
+$role = Get-AzRoleDefinition -Name "Azure Stack HCI registration role"
+New-AzRoleAssignment -ObjectId $user.Id -RoleDefinitionId $role.Id -Scope /subscriptions/<subscriptionid>
+```
+
 ### Azure Active Directory permissions
 
-You'll need Azure Active Directory permissions to complete the registration process. If you don't already have them, ask your Azure AD administrator to grant consent or delegate the permissions to you. See [Manage Azure registration](../manage/manage-azure-registration.md#azure-active-directory-permissions) for more information.
+You'll also need appropriate Azure Active Directory permissions to complete the registration process. If you don't already have them, ask your Azure AD administrator to grant consent or delegate the permissions to you. See [Manage Azure registration](../manage/manage-azure-registration.md#azure-active-directory-permissions) for more information.
 
 ## Register using PowerShell
 
 Use the following procedure to register an Azure Stack HCI cluster with Azure using a management PC.
 
-1. Install the required cmdlets on your management PC. 
+1. Install the required cmdlets on your management PC. If you are registering a cluster deployed from the General Availability (GA) image of Azure Stack HCI, run the following command. If your cluster was deployed from the Public Preview image, make sure you have applied the [November 23, 2020 Preview Update (KB4586852)](../release-notes.md) to each server in the cluster before attempting to register.
 
    ```PowerShell
    Install-Module -Name Az.StackHCI
