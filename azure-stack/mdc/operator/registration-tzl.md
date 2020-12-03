@@ -3,7 +3,7 @@ title: Register Azure Stack Hub with Azure
 description: Learn how to register Azure Stack Hub with Azure so you can download Azure Marketplace items and set up data reporting. 
 author: sethmanheim
 ms.topic: article
-ms.date: 10/26/2020
+ms.date: 12/03/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 10/26/2020
@@ -46,10 +46,8 @@ Before registering Azure Stack Hub with Azure, you must have:
 
 - The subscription ID for an Azure subscription.  
 
-    > [!Note]  
+    > [!NOTE]  
     > Azure subscriptions are associated to Azure cloud environments (Azure commercial, Azure government etc.) This determines which cloud you will connect to access Marketplace content.
-    > 
-    > The subscription you use for registration must be approved for JEDI services. This ensures that the device that you register will be entitled to unlimited usage of resources, with no reporting of the usage to Azure. In order to approve your subscription, send an email to azshregistration@microsoft.com with the subscription ID that needs to be approved along with the Azure Stack Hub ruggedized or Modular Data Center (MDC) you are registering.
 
 - The username and password for an account that's an owner for the subscription. 
 - The user account needs to have access to the Azure subscription and have permissions to create identity apps and service principals in the directory associated with that subscription. We recommend that you register Azure Stack Hub with Azure using least-privilege administration. For more information about how to create a custom role definition that limits access to your subscription for registration, see [Create a registration role for Azure Stack Hub](../../operator/azure-stack-registration-role.md).
@@ -128,7 +126,7 @@ Connected environments can access the internet and Azure. For these environments
 
    | Parameter | Description |  
    |-----|-----|
-   | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud** or **AzureUSGovernment**.  |
+   | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or **AzureUSSec**.  |
 
    >[!NOTE]
    > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using **Add-AzureRmAccount**: **Remove-AzureRmAccount-Scope Process**.
@@ -141,7 +139,7 @@ Connected environments can access the internet and Azure. For these environments
 
    | Parameter | Description |  
    |-----|-----|
-   | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud** or **AzureUSGovernment**.  |
+   | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or **AzureUSSec**.  |
 
 4. If you have multiple subscriptions, run the following command to select the one you want to use:
 
@@ -159,7 +157,6 @@ Connected environments can access the internet and Azure. For these environments
 
    ![Register Azure Stack Hub Resource Provider](./media/registration-tzl/register-azure-resource-provider-portal.png)
 
-
 6. In the same PowerShell session, run the **Set-AzsRegistration** cmdlet:
 
    ```powershell  
@@ -170,13 +167,14 @@ Connected environments can access the internet and Azure. For these environments
    Set-AzsRegistration `
       -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
-      -BillingModel Custom `
+      -BillingModel Ruggedized `
       -RegistrationName $RegistrationName `
       -msAssetTag $msAssetTagName `
       -UsageReportingEnabled: $false
    ```
-   The MS Asset tag (`msAssetTag`) is a mandatory for Custom billing model registration and is printed on the product.
-    
+
+   The MS Asset tag (`msAssetTag`) is mandatory for Ruggedized billing model registration and is printed on the product.
+
    The process takes between 10 and 15 minutes. When the command completes, you see the message. **Your environment is now registered and activated using the provided parameters.**
 
 ## Registration and activation for systems not connected to the Azure cloud 
@@ -204,7 +202,7 @@ Get a registration token from the Azure Stack Hub environment. Then, use that to
       -PrivilegedEndpointCredential $YourCloudAdminCredential `
       -UsageReportingEnabled:$False `
       -PrivilegedEndpoint $YourPrivilegedEndpoint `
-      -BillingModel Custom -msAssetTag '<MS Asset tag>' `
+      -BillingModel Ruggedized -msAssetTag '<MS Asset tag>' `
       -TokenOutputFilePath $FilePathForRegistrationToken 
    ```
 
@@ -288,7 +286,7 @@ New-AzsActivationResource -PrivilegedEndpointCredential $YourCloudAdminCredentia
 
 You can use the **Region management** tile to verify that the Azure Stack Hub registration was successful. This tile is available on the default dashboard in the administrator portal. The status can be registered, or not registered. If registered, it also shows the Azure subscription ID that you used to register your Azure Stack Hub along with the registration resource group and name.
 
-1. Sign in to the Azure Stack Hub administrator portal (`https://adminportal.local.azurestack.external`).
+1. Sign in to the Azure Stack Hub administrator portal. The URL varies based on your operator's region and external domain name, and will be in the format `https://adminportal.<region>.<FQDN>`.
 
 2. From the Dashboard, select **Region management**.
 
@@ -309,9 +307,6 @@ Alternatively, you can verify if your registration was successful by using the M
 
 > [!NOTE]
 > After registration is complete, the active warning for not registering no longer appears.
-
-> [!NOTE]
-> The error message **[InvalidRegistrationToken]:BillingModel 'Custom' is not supported by subscription** indicates that the subscription you are using for registration has not been approved for Azure Stack Hub ruggedized or MDC use. Please contact azshregistration@microsoft.com to have a subscription approved along with the type of product (Azure Stack Hub ruggedized or MDC) you are registering.
 
 ## Next steps
 
