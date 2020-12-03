@@ -19,7 +19,7 @@ You can use PowerShell to configure and deliver services by using offers, plans,
 
 ## Create a plan
 
-Quotas are required when creating a plan. You can use an existing quotas or create new quotas. For example, to create a storage, compute and network quota, you can use the [New-AzsStorageQuota](/powershell/module/azs.subscriptions.admin/new-azsstoragequota), [New-AzsComputeQuota](/powershell/module/azs.subscriptions.admin/new-azscomputequota), and [New-AzsNetworkQuota](/powershell/module/azs.subscriptions.admin/new-azsnetworkquota) cmdlets:
+Quotas are required when creating a plan. You can use an existing quotas or create new quotas. For example, to create a storage, compute and network quota, you can use the [New-AzsStorageQuota](/powershell/module/azs.storage.admin/new-azsstoragequota), [New-AzsComputeQuota](/powershell/module/azs.storage.admin/new-azscomputequota), and [New-AzsNetworkQuota](/powershell/module/azs.storage.admin/new-azsnetworkquota) cmdlets:
 
 ```powershell
 $serviceQuotas  = @()
