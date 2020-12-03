@@ -12,7 +12,7 @@ ms.lastreviewed: 10/26/2020
 
 # Register Azure Stack Hub with Azure
 
-To set up Marketplace syndication, you must register and activate your Modular Data Center (MDC) or Azure Stack Hub ruggedized, based on Azure Stack Hub, after deployment completes. With Marketplace syndication, an administrator populates the local Azure Stack Hub Marketplace with images downloaded from the Azure Marketplace.
+To set up Marketplace syndication and use PaaS services, you must register and activate your Modular Data Center (MDC) or Azure Stack Hub ruggedized, based on Azure Stack Hub, after deployment completes. With Marketplace syndication, an administrator populates the local Azure Stack Hub Marketplace with images downloaded from the Azure Marketplace.
 
 Registration is required for systems that will connect to the Azure cloud as well as for systems that will be disconnected.
 
@@ -94,7 +94,7 @@ Your Azure Stack Hub deployment may be *connected* or *disconnected*.
 
 - **Connected**: Connected means you've deployed Azure Stack Hub so that it can connect to the internet and to Azure. You can either have Azure AD or Active Directory Federation Services (AD FS) for your identity store.
 
-- **Disconnected**: With the disconnected from Azure deployment option, you can deploy and use Azure Stack Hub without a connection to the internet.
+- **Disconnected**: With the disconnected from Azure deployment option, you can deploy and use Azure Stack Hub without a connection to the internet. Because disconnected systems can't report PaaS usage back to Azure, they must register as the **Capacity** billing model in order to use PaaS services.
 
 ### Determine a unique registration name to use
 
@@ -197,12 +197,12 @@ Get a registration token from the Azure Stack Hub environment. Then, use that to
 
    ```PowerShell
     $FilePathForRegistrationToken = "$env:SystemDrive\RegistrationToken.txt" 
-    
+
     $RegistrationToken = Get-AzsRegistrationToken `
       -PrivilegedEndpointCredential $YourCloudAdminCredential `
       -UsageReportingEnabled:$False `
       -PrivilegedEndpoint $YourPrivilegedEndpoint `
-      -BillingModel Ruggedized -msAssetTag '<MS Asset tag>' `
+      -BillingModel Capacity -AgreementNumber '<EA agreement number>' -msAssetTag '<MS Asset tag>' `
       -TokenOutputFilePath $FilePathForRegistrationToken 
    ```
 
