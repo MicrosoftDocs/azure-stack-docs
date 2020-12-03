@@ -4,7 +4,7 @@ description: How to manage your Azure registration for Azure Stack HCI and under
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 12/10/2020
 ---
 
 # Manage Azure registration
@@ -41,7 +41,14 @@ If the user who runs `Register-AzureStackHCI` is an Azure Active Directory admin
 
 To grant consent, open portal.azure.com and sign in with an Azure account that has sufficient permissions on the Azure Active Directory. Navigate to **Azure Active Directory**, then **App registrations**. Select the app identity named after your cluster and navigate to **API permissions**.
 
-The app requires two permissions:
+For the General Availability (GA) release of Azure Stack HCI, the app requires the following permissions:
+
+AzureStackHCI.Cluster.Read
+AzureStackHCI.Cluster.ReadWrite
+AzureStackHCI.ClusterNode.Read
+AzureStackHCI.ClusterNode.ReadWrite
+
+For public preview the app permissions were (these will be deprecated):
 
 ```http
 https://azurestackhci-usage.trafficmanager.net/AzureStackHCI.Census.Sync
