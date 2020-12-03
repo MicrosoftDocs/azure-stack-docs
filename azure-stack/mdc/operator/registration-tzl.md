@@ -133,7 +133,8 @@ Connected environments can access the internet and Azure. For these environments
 
 3. In the same PowerShell session, ensure you're signed in to the correct Azure PowerShell context. This context is the Azure account that was used to register the Azure Stack Hub resource provider previously:
 
-   ```powershell  
+   ```powershell
+   Initialize-AzureRmEnvironment -CloudManifestFilePath $CloudManifestFilePath
    Connect-AzureRmAccount -Environment "<environment name>"
    ```
 
