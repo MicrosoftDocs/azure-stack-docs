@@ -75,7 +75,7 @@ Ensure that the output returns **FullLanguageMode**. If any other language mode 
 
 Use the latest PowerShell for Azure Stack Hub to register with Azure.
 
-If the latest version isn't already installed, see [Install PowerShell for Azure Stack Hub](../../operator/azure-stack-powershell-install.md).
+If the latest version isn't already installed, see [Install PowerShell for Azure Stack Hub](../../operator/powershell-install-az-module.md).
 
 ### Install the Azure Stack Hub tools module
 
