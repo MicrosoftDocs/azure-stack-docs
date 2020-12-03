@@ -2,12 +2,12 @@
 title: Fix common issues with PKI certificates
 titleSuffix: Azure Stack Hub
 description: Fix common issues with Azure Stack Hub PKI certificates using the Azure Stack Hub Readiness Checker.
-author: IngridAtMicrosoft
+author: BryanLa
 ms.topic: how-to
-ms.date: 03/04/2020
-ms.author: inhenkel
+ms.date: 11/10/2020
+ms.author: bryanla
 ms.reviewer: unknown
-ms.lastreviewed: 11/19/2019
+ms.lastreviewed: 10/19/2020
 
 # Intent: As an Azure Stack operator, I want to fix common issues with PKI certificates.
 # Keyword: fix issues pki certificates
@@ -18,6 +18,18 @@ ms.lastreviewed: 11/19/2019
 # Fix common issues with Azure Stack Hub PKI certificates
 
 The information in this article helps you understand and resolve common issues with Azure Stack Hub PKI certificates. You can discover issues when you use the Azure Stack Hub Readiness Checker tool to [validate Azure Stack Hub PKI certificates](azure-stack-validate-pki-certs.md). The tool checks if the certificates meet the PKI requirements of an Azure Stack Hub deployment and Azure Stack Hub secret rotation, and then logs the results to a [report.json file](azure-stack-validation-report.md).  
+
+## HTTP CRL - Warning
+
+**Issue** - Certificate does not contain HTTP CRL in CDP Extension.
+
+**Fix** - This is a non-blocking issue. Azure Stack requires HTTP CRL for revocation checking as per [Azure Stack Hub public key infrastructure (PKI) certificate requirements](https://aka.ms/azspki).  A HTTP CRL was not detected on the certificate.  To ensure certificate revocation checking works, the Certificate Authority should issue a certificate with a HTTP CRL in the CDP extension.
+
+## HTTP CRL - Fail
+
+**Issue** - Cannot connect to HTTP CRL in CDP Extension.
+
+**Fix** - This is a blocking issue. Azure Stack requires connectivity to a HTTP CRL for revocation checking as per [Publishing Azure Stack Hub Ports and URLs (outbound)](https://docs.microsoft.com/azure-stack/operator/azure-stack-integrate-endpoints#ports-and-urls-outbound).
 
 ## PFX Encryption
 
@@ -105,7 +117,7 @@ The following prerequisites must be in place on the computer on which the tool r
    $PSVersionTable.PSVersion
    ```
 
-- Configure [PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
+- Configure [PowerShell for Azure Stack Hub](powershell-install-az-module.md).
 - Download the latest version of the [Azure Stack Hub readiness checker](https://aka.ms/AzsReadinessChecker) tool.
 
 ### Import and export an existing PFX File
@@ -113,13 +125,13 @@ The following prerequisites must be in place on the computer on which the tool r
 1. On a computer that meets the prerequisites, open an elevated PowerShell prompt, and then run the following command to install the Azure Stack Hub readiness checker:
 
    ```powershell
-   Install-Module Microsoft.AzureStack.ReadinessChecker -Force
+   Install-Module Microsoft.AzureStack.ReadinessChecker -Force -AllowPrerelease
    ```
 
-2. From the PowerShell prompt, run the following cmdlet to set the PFX password. Replace `PFXpassword` with the actual password:
+2. From the PowerShell prompt, run the following cmdlet to set the PFX password. Enter the password when prompted:
 
    ```powershell
-   $password = Read-Host -Prompt PFXpassword -AsSecureString
+   $password = Read-Host -Prompt "Enter password" -AsSecureString
    ```
 
 3. From the PowerShell prompt, run the following command to export a new PFX file:

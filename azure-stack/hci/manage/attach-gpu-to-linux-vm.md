@@ -32,7 +32,7 @@ This document assumes you have the Azure Stack HCI cluster deployed and VMs inst
 
 ## Create and configure an Ubuntu virtual machine
 
-1. Download [Ubuntu desktop release 18.04.02 ISO](http://cdimage.ubuntu.com/lubuntu/releases/18.04.2/release/lubuntu-18.04.2-desktop-amd64.iso).
+1. Download [Ubuntu desktop release 18.04.02 ISO](http://old-releases.ubuntu.com/releases/18.04.2/).
 2. Open **Hyper-V Manager** on the node of the system with the GPU installed.
    > [!NOTE]
    > [DDA doesn't support failover](/windows-server/virtualization/hyper-v/plan/plan-for-deploying-devices-using-discrete-device-assignment). This is a virtual machine limitation with DDA. Therefore, we recommend using **Hyper-V Manager** to deploy the VM on the node instead of **Failover Cluster Manager**. Use of **Failover Cluster Manager** with DDA will fail with an error message indicating that the VM has a device that doesn't support high availability.
@@ -425,13 +425,25 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/set-modules.png" alt-text="Set Modules Screenshot":::
 
-14. Under IoT Edge Modules, click and choose Marketplace Module:
+14. Under IoT Edge Modules, click and choose IoT Edge Module:
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/marketplace-module.png" alt-text="Marketplace Module Screenshot":::
+    :::image type="content" source="media/attach-gpu-to-linux-vm/marketplace-module.png" alt-text="Add IoT Edge Module Screenshot":::
 
-15. Search for NVIDIA and choose DeepStream SDK like displayed below:
+15. In the **Add IoT Edge Module** pane, select the **Module Settings** tab, and then enter or select the following values:
 
-    :::image type="content" source="media/attach-gpu-to-linux-vm/deepstream.png" alt-text="DeepStream SDK Screenshot":::
+    - **IoT Edge Module Name**: NVIDIADeepStreamSDK
+
+    - **Image URI**: marketplace.azurecr.io/nvidia/deepstream-iot2
+
+    - **Restart Policy**: always
+
+    - **Desired Status**: running
+
+    - **Image Pull Policy**: *blank*
+    
+    Select **Add**.
+
+    :::image type="content" source="media/attach-gpu-to-linux-vm/deepstream-module-settings.png" alt-text="DeepStream SDK Screenshot":::
 
 16. Ensure NvidiaDeepStreamSDK module is listed under IoT Edge Modules:
 

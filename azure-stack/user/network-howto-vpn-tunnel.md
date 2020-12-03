@@ -4,10 +4,10 @@ description: Learn how to set up a multiple site-to-site VPN tunnel  in Azure St
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 08/24/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 09/19/2019
+ms.lastreviewed: 12/2/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -15,7 +15,7 @@ ms.lastreviewed: 09/19/2019
 ---
 
 
-# How to set up a multiple site-to-site VPN tunnel in Azure Stack Hub
+# How to set up multiple site-to-site VPN tunnels in Azure Stack Hub
 
 This article shows you how to use an Azure Stack Hub Resource Manager template to deploy the solution. The solution creates multiple resource groups with associated virtual networks and how to connect these systems.
 
@@ -23,11 +23,11 @@ You can find the templates in the [Azure Intelligent Edge Patterns](https://gith
 
 ## Scenarios
 
-![Five VPN scenarios are diagrammed: between two resource groups within a single subscription; between two groups each in its own subscription; between two groups in separate stack instances; between a group and local resources on-premises; and multiple VPN tunnels.](./media/azure-stack-network-howto-vpn-tunnel/scenarios.png)
+![Five VPN scenarios are diagrammed: between two resource groups within a single subscription; between two groups each in its own subscription; between two groups in separate stack instances; between a group and local resources on-premises; and multiple VPN tunnels.](./media/azure-stack-network-howto-vpn-tunnel/scenarios.svg)
 
 ## Create multiple VPN tunnels
 
-![The diagram shows two resource groups, each in its own subscription and stack instance, connected by VPN; and one of these two groups connected to on-premises local resources by VPN.](./media/azure-stack-network-howto-vpn-tunnel/image1.png)
+![The diagram shows two resource groups, each in its own subscription and stack instance, connected by VPN; and one of these two groups connected to on-premises local resources by VPN.](./media/azure-stack-network-howto-vpn-tunnel/azure-stack-network-vpn-tunnel1.svg)
 
 -  Deploy a three tier application, Web, App, and DB.
 
@@ -43,7 +43,7 @@ You can find the templates in the [Azure Intelligent Edge Patterns](https://gith
 
 This is a multiple step process. For this solution, you're going to be using the Azure Stack Hub portal. However, you can use PowerShell, Azure CLI, or other infrastructure-as-code tool chains to capture the outputs and use then as inputs.
 
-![The diagram shows five steps to deploy VPN tunnels between two infrastructures. The first two steps create two infrastructures from a template. The next two steps create two VPN tunnels from a template, and the final step connects the tunnels.](./media/azure-stack-network-howto-vpn-tunnel/image2.png)
+![The diagram shows five steps to deploy VPN tunnels between two infrastructures. The first two steps create two infrastructures from a template. The next two steps create two VPN tunnels from a template, and the final step connects the tunnels.](./media/azure-stack-network-howto-vpn-tunnel/azure-stack-network-vpn-tunnel2.svg)
 
 ## Walkthrough
 

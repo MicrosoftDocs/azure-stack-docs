@@ -4,10 +4,10 @@ title: Troubleshoot site-to-site VPN connections in Azure Stack Hub
 description: Troubleshooting steps you can take after you configure a site-to-site VPN connection between an on-premises network and an Azure Stack Hub virtual network.
 author: sethmanheim
 ms.author: sethm
-ms.date: 10/01/2020
+ms.date: 11/22/2020
 ms.topic: article
 ms.reviewer: sranthar
-ms.lastreviewed: 05/12/2020
+ms.lastreviewed: 11/22/2020
 
 ---
 
@@ -43,6 +43,8 @@ The Azure Stack Hub default parameters for IPsec/IKEV2 have changed [starting wi
 
 ## Status "Not Connected" - intermittent disconnects
 
+### [Az modules](#tab/az)
+
 - Compare the shared key for the on-premises VPN device to the AzSH virtual network VPN to make sure that the keys match. To view the shared key for the AzSH VPN connection, use one of the following methods:
 
   - **Azure Stack Hub tenant portal**: Go to the VPN gateway site-to-site connection that you created. In the **Settings** section, select **Shared key**.
@@ -51,11 +53,27 @@ The Azure Stack Hub default parameters for IPsec/IKEV2 have changed [starting wi
 
   - **Azure PowerShell**: Use the following PowerShell command:
 
-      ```powershell
-      Get-AzureRMVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group>
-      ```
+```powershell
+Get-AzVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group>
+```
 
-## Status "Connected" – traffic not flowing
+### [AzureRM modules](#tab/azurerm)
+
+- Compare the shared key for the on-premises VPN device to the AzSH virtual network VPN to make sure that the keys match. To view the shared key for the AzSH VPN connection, use one of the following methods:
+
+  - **Azure Stack Hub tenant portal**: Go to the VPN gateway site-to-site connection that you created. In the **Settings** section, select **Shared key**.
+
+      :::image type="content" source="media/site-to-site/vpn-connection.png" alt-text="VPN connection":::
+
+  - **Azure PowerShell**: Use the following PowerShell command:
+
+```powershell
+Get-AzurerRMVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group>
+```
+
+---
+
+## Status "Connected" - traffic not flowing
 
 - Check for, and remove the user-defined routing (UDR) and network security groups (NSGs) on the gateway subnet, and then test the result. If the problem is resolved, validate the settings that UDR or NSG applied.
 

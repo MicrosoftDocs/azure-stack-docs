@@ -45,7 +45,7 @@ landingContent:
     linkLists:
       - linkListType: tutorial
         links:
-          - text: Use Windows Server containers
+          - text: Deploy Windows .NET applications
             url: deploy-windows-application.md
           - text: Use Linux containers
             url: deploy-linux-application.md
@@ -53,8 +53,10 @@ landingContent:
         links:
           - text: Adapt apps for mixed-OS Kubernetes clusters
             url: adapt-apps-mixed-os-clusters.md
-          - text: Use persistent storage in a Windows container and prepare for gMSA
-            url: persistent-storage-windows-nodes.md
+          - text: Prepare Windows nodes for group Managed Service Account support
+            url: prepare-windows-nodes-gmsa.md
+          - text: Use persistent volume in an AKS on Azure Stack HCI cluster
+            url: persistent-volume.md
 
   - title: Integrate with Azure
     linkLists:

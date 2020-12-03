@@ -88,7 +88,7 @@
         href: azure-stack-validate-adfs.md
       - name: Validate graph integration
         href: azure-stack-validate-graph.md
-    - name: PKI requirements and processes
+    - name: External PKI certificates
       items:
       - name: PKI certificate requirements
         href: azure-stack-pki-certs.md
@@ -137,10 +137,10 @@
       href: azure-stack-cli-admin.md
     - name: Set up management environment
       items:
-      - name: Install PowerShell AzureRM
-        href: azure-stack-powershell-install.md
       - name: Install PowerShell Az
         href: powershell-install-az-module.md
+      - name: Install PowerShell AzureRM
+        href: azure-stack-powershell-install.md
       - name: Migrate PowerShell AzureRM to Az
         href: migrate-azurerm-az.md
       - name: Download tools
@@ -319,6 +319,8 @@
           href: app-service-remove.md
       - name: Release notes
         items:
+        - name: 2020 Q3 release notes [September 2020]
+          href: app-service-release-notes-2020-Q3.md
         - name: 2020 Q2 release notes [May2020]
           href: app-service-release-notes-2020-Q2.md
         - name: Update 8 release notes [Jan2020]

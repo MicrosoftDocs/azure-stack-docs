@@ -211,14 +211,13 @@
         "hybrid/**/*.md": "Azure Stack"
       },
       "ms.subservice": {
-        "aks-hci/**/*.md": "azure-stack-hci",
         "asdk/**/*.md": "azure-stack-hub-asdk",
         "hci/**/*.md": "azure-stack-hci",
         "mdc/**/*.md": "azure-stack-hub-mdc",
         "operator/**/*.md": "azure-stack-hub",
         "partner/**/*.md": "azure-stack-hub",
-        "reference/**/*.md": "azure-stack-hub", 
-        "user/**/*.md": "azure-stack-hub"       
+        "reference/**/*.md": "azure-stack-hub",
+        "user/**/*.md": "azure-stack-hub"
       }
     },
     "template": [],
