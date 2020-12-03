@@ -1,5 +1,5 @@
 ---
-title: Manage subscriptions, plans, and offers with PowerShell in Azure Stack Hub
+title: Use PowerShell to manage subscriptions, plans, and offers in Azure Stack Hub
 description: How to manage subscriptions, plans, and offers with PowerShell in Azure Stack Hub.
 author: PatAltimore
 ms.topic: how-to
@@ -9,17 +9,17 @@ ms.lastreviewed: 12/01/2020
 ms.reviewer: bganapa
 
 # Intent: As an Azure Stack Hub operator, I want to use PowerShell so I can manage offers.
-# Keyword: subscription plan offfer powershell azure stack hub
+# Keyword: subscription plan offer powershell azure stack hub
 
 ---
 
-# Manage Subscriptions, plans, and offers with PowerShell in Azure Stack Hub
+# Use PowerShell to manage subscriptions, plans, and offers in Azure Stack Hub
 
-You can use PowerShell to configure and deliver services by using offers, plans, and subscriptions. using PowerShell. For instructions on getting set up with PowerShell on Azure Stack Hub, see [Install PowerShell Azure Az module for Azure Stack Hub](azure-stack-powershell-install-az-module.md).
+You can use PowerShell to configure and deliver services by using offers, plans, and subscriptions. using PowerShell. For instructions on getting set up with PowerShell on Azure Stack Hub, see [Install PowerShell module for Azure Stack Hub](azure-stack-powershell-install.md).
 
 ## Create a plan
 
-Quotas are required when creating a plan. You can use an existing quotas or create new quotas. For example, to create a storage, compute and network quota, you can use the [New-AzsStorageQuota](/powershell/module/azs.storage.admin/new-azsstoragequota), [New-AzsComputeQuota](/powershell/module/azs.storage.admin/new-azscomputequota), and [New-AzsNetworkQuota](/powershell/module/azs.storage.admin/new-azsnetworkquota) cmdlets:
+Quotas are required when creating a plan. You can use an existing quotas or create new quotas. For example, to create a storage, compute and network quota, you can use the [New-AzsStorageQuota](/powershell/module/azs.storage.admin/new-azsstoragequota), [New-AzsComputeQuota](/powershell/module/azs.compute.admin/new-azscomputequota), and [New-AzsNetworkQuota](/powershell/module/azs.network.admin/new-azsnetworkquota) cmdlets:
 
 ```powershell
 $serviceQuotas  = @()
@@ -68,7 +68,7 @@ New-AzsUserSubscription -Owner "user@contoso.com" -OfferId "/subscriptions/<Subs
 
 There are companion PowerShell cmdlets to delete Azure Stack Hub quotas, plans, offers, and subscriptions. The following show examples for each.
 
-To remove quotas, use [Remove-AzsStorageQuota](/powershell/module/azs.subscriptions.admin/remove-azsstoragequota), [Remove-AzsComputeQuota](/powershell/module/azs.subscriptions.admin/remove-azscomputequota), [Remove-AzsNetworkQuota](/powershell/module/azs.subscriptions.admin/remove-azsnetworkquota) .
+To remove quotas, use [Remove-AzsStorageQuota](/powershell/module/azs.storage.admin/remove-azsstoragequota), [Remove-AzsComputeQuota](/powershell/module/azs.compute.admin/remove-azscomputequota), [Remove-AzsNetworkQuota](/powershell/module/azs.network.admin/remove-azsnetworkquota) .
 
 ```powershell
 Remove-AzsStorageQuota -Name "Example storage quota with defaults"
