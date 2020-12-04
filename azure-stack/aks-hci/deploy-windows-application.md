@@ -3,7 +3,7 @@ title: Deploy a Windows .NET application in AKS on Azure Stack HCI
 description: Learn how to deploy a Windows .NET application to your cluster using a custom image stored in Azure Container Registry.
 author: abha
 ms.topic: tutorial
-ms.date: 09/22/2020
+ms.date: 12/02/2020
 ms.author: abha
 ms.reviewer: 
 ---
