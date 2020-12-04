@@ -3,7 +3,7 @@ title: Migrate to Azure Stack HCI on new hardware
 description: Learn how to migrate to Azure Stack HCI on new hardware 
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 12/02/2020 
+ms.date: 12/03/2020 
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -98,24 +98,6 @@ To update all VMs to the latest supported version (version 5.0) on all Windows S
 
 ```powershell
 Get-VM –ComputerName (Get-ClusterNode) | Update-VMVersion -Force
-```
-
-### Migrating VMs on Windows Server 2012
-
-Windows Server 2012 R2 and earlier uses an XML file format for its VMs, which is different than what is used for Windows Server 2016 and later. Run the following cmd:
-
-```powershell
-Get-ChildItem -Path "c:\clusterstorage\volume01\Hyper-V\*.xml"-Recurse
-```
-
-### Copying older VHD files to Azure Stack HCI
-
-This method uses Robocopy to copy all VM VHDs to Azure Stack HCI. Then it creates new VMs and attachs the copied VHDs to their respective VMs in Azure Stack HCI. This bypasses the VM version limitation for these older VMs.
-
-To copy a Windows Server 2008 R2 VM on a Windows Server 2012 R2 host to Azure Stack HCI, use the following commands. This emulates the commands used to migrate from  Windows Server 2016 and Windows Server 2019 to Azure Stack HCI:
-
-```powershell
-Robocopy \\2012R2-Clus01\c$\clusterstorage\volume01\Hyper-V\   \\20H2-Clus01\c$\clusterstorage\volume01\Hyper-V\ /Copyall /E /MT:32 /R:0 /w:1 /NFL /NDL /log:c:\log.txt /xf
 ```
 
 ## RDMA recommendations
@@ -225,6 +207,9 @@ Perform the following steps on your Azure Stack HCI cluster to import, make high
     Get-ChildItem -Path "C:\Clusterstorage\Volume01\*.vmcx" -Recurse
     ```
 
+> [!NOTE]
+    > For older VMs, see the section **Migrating older VMs**.
+
 1. Run the following cmdlet for each server node to import and register all VMs and make them highly available on each CSV owner node. This ensures an even distribution of VMs for optimal processor and memory allocation:
 
     ```powershell
@@ -251,6 +236,48 @@ Perform the following steps on your Azure Stack HCI cluster to import, make high
 
 1. After the script has completed, check the Robocopy log file for any errors listed and to verify that all VMS are copied successfully.
 
+## Migrating older VMs
+
+### Migrating VMs on Windows Server 2012 R2
+
+Windows Server 2012 R2 and earlier uses an XML file format for its VMs, which is different than the VCM and VCMX files used for Windows Server 2016 and later. Run the following cmd:
+
+Then run the following:
+
+```powershell
+Get-ChildItem -Path "c:\clusterstorage\volume01\Hyper-V\*.xml"-Recurse
+```
+
+Then import all Virtual machines and make highly available:
+
+```powershell
+Get-ChildItem -Path "c:\clusterstorage\volume01\image\*.xml" -Recurse    | Import-VM -Register | Get-VM | Add-ClusterVirtualMachineRolehildItem -Path "c:\clusterstorage\volume01\Hyper-V\*.xml"-Recurse
+```
+
+### Migrating VMs on Windows Server 2008 R2
+
+This method uses Robocopy to copy all VM VHDs to Azure Stack HCI. Then it creates new VMs and attachs the copied VHDs to their respective VMs in Azure Stack HCI. This bypasses the VM version limitation for these older VMs.
+
+To copy a Windows Server 2008 R2 VM on a Windows Server 2012 R2 host to Azure Stack HCI, use the following commands. This emulates the commands used to migrate from  Windows Server 2016 and Windows Server 2019 to Azure Stack HCI:
+
+```powershell
+Robocopy \\2012R2-Clus01\c$\clusterstorage\volume01\Hyper-V\   \\20H2-Clus01\c$\clusterstorage\volume01\Hyper-V\ /Copyall /E /MT:32 /R:0 /w:1 /NFL /NDL /log:c:\log.txt /xf
+```
+
+Then run the following:
+
+```powershell
+Get-ChildItem -Path "c:\clusterstorage\volume01\Hyper-V\*.xml"-Recurse
+```
+
+Then import all Virtual machines and make highly available:
+
+```powershell
+Get-ChildItem -Path "c:\clusterstorage\volume01\image\*.xml" -Recurse    | Import-VM -Register | Get-VM | Add-ClusterVirtualMachineRole
+```
+
 ## Next steps
 
-Validate the cluster after migration. See [Validate an Azure Stack HCI cluster](validate.md).
+- Validate the cluster after migration. See [Validate an Azure Stack HCI cluster](validate.md).
+
+- To migrate to Azure Stack HCI using the same hardware, see [Migrate to Azure Stack HCI on the same hardware](migrate-cluster-same-hardware.md).
