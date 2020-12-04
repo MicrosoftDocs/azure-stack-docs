@@ -57,6 +57,8 @@ For VMs on Windows Server 2008 SP1, Windows Server 2008 R2-SP1, and Windows 2012
 
 - Use Robocopy to copy all VM VHDs to Azure Stack HCI. Then create new VMs and attach the copied VHDs to their respective VMs in Azure Stack HCI. This bypasses the VM version limitation for these older VMs.
 
+## Updating the VM version
+
 Use the following command to show all VM versions on a single server:
 
 ```powershell
@@ -75,7 +77,7 @@ To update all VMs to the latest version on all Windows Server nodes:
 Get-VM –ComputerName (Get-ClusterNode) | Update-VMVersion -Force
 ```
 
-## Update the servers and cluster
+## Updating the servers and cluster
 
 First, install the Azure Stack HCI operating system on each Windows Server node. You use Windows Admin Center to do this.
 
