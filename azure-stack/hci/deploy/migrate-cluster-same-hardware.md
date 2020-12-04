@@ -3,7 +3,7 @@ title: Migrate to Azure Stack HCI on same hardware
 description: Learn how to migrate a cluster to Azure Stack HCI on the same hardware
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 12/03/2020 
+ms.date: 12/04/2020 
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -24,7 +24,7 @@ To migrate your VMs to new Azure Stack HCI hardware, see [Migrate to Azure Stack
 There are several requirements and things to consider before you begin migration:
 
 - You must have domain credentials with administrator permissions for Azure Stack HCI.
-- Backup all VMs on your source cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases.
+- Backup all VMs on your source cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases.  To backup to Azure, see [Use Azure Backup](https://docs.microsoft.com/azure-stack/hci/manage/use-azure-backup).
 - Collect inventory and configuration of all cluster nodes and cluster naming, network configuration, Cluster Shared Volume (CSV) resiliency and capacity, and quorum witness.
 - Shutdown your cluster VMs, offline CSVs, offline storage pools, and the cluster service.
 - Disable the Cluster Name Object (CNO) (it is reused later) and:
@@ -201,7 +201,7 @@ These enhancements require a new ReFS volume to be created using the `New-Volume
 > [!NOTE]
 > For Windows Server 2016 Mirror Accelerated Parity Volumes, ReFS compaction, was not available, so re-attaching these volumes is OK but will be less performant compared to creating a new MAP volume on Azure Stack HCI cluster.
 
-## Post-migration tasks
+## Import the VMs
 
 A best practice is to create at least one Cluster Shared Volume (CSV) per cluster node to enable an even balance of VMs for each CSV owner for increased resiliency, performance, and scale of VM workloads. By default, this balance occurs automatically every five minutes and needs to be considered when using Robocopy between a source cluster node and the destination cluster node to ensure source and destination CSV owners match to provide the most optimal transfer path and speed.
 

@@ -3,7 +3,7 @@ title: Migrate to Azure Stack HCI on new hardware
 description: Learn how to migrate to Azure Stack HCI on new hardware 
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 12/03/2020 
+ms.date: 12/04/2020 
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 
-This topic describes how to migrate VMS on a Windows Server 2012 R2, Windows Server 2016, or Windows Server 2019 cluster to new Azure Stack HCI server hardware using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one server to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy).
+This topic describes how to migrate virtual machines (VMs) on a Windows Server 2012 R2, Windows Server 2016, or Windows Server 2019 cluster to new Azure Stack HCI server hardware using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one server to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy).
 
 To migrate to Azure Stack HCI using the same hardware, see [Migrate to Azure Stack HCI on the same hardware](migrate-cluster-same-hardware.md).
 
@@ -45,13 +45,15 @@ There are several requirements and things to consider before you begin migration
 
 - Check if Azure Stack HCI supports your version of VMs to import and update your VMs as needed. See the **VM version support and update** section below on how to do this.
 
-- Backup all VMs on your source cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases.
+- Backup all VMs on your source cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases. To backup to Azure, see [Use Azure Backup](https://docs.microsoft.com/azure-stack/hci/manage/use-azure-backup).
 
 - Make a checkpoint of your source cluster VMs and domain controller in case you have to roll back to a prior state. This is not applicable for physical servers.
 
 - Ensure the maximum Jumbo frame sizes are the same between source and destination cluster storage networks, specifically the RDMA network adapters and their respective switch network ports to provide the most efficient end-to-end transfer packet size.
 
-- If possible, physically locate the source and destination clusters as close together as possible to facilitate the fastest transfer of VMs.
+- The Azure Stack HCI hardware should have at least equal capacity and configuration as the source hardware.
+
+- Minimize the number of network hops or physical distance between the source and destination clusters to facilitate the fastest file transfer.
 
 ## VM version support and update
 
@@ -125,7 +127,7 @@ The following PowerShell script `Robocopy_Remote_Server_.ps1` uses Robocopy to c
 
 The script copies all VM VHD, VHDX, and VMCX files to your destination cluster for a given Cluster Shared Volume (CSV). One CSV is migrated at a time.
 
-The migration script is run locally on each source cluster node to leverage the benefit of RDMA and fast network transfer. Let's begin:
+The migration script is run locally on each source cluster node to leverage the benefit of RDMA and fast network transfer. Do the following:
 
 1. Run the following script on each Windows Server source cluster node.
 
@@ -187,7 +189,7 @@ Write-host " Copy Virtual Machines to $Dest_Server has been completed......" -fo
 Write-host " Copy Virtual Machines to $Dest_Server took $Time        ......" -fore Cyan
 ```
 
-## Post-migration tasks
+## Import the VMs
 
 A best practice is to create at least one Cluster Shared Volume (CSV) per cluster node to enable an even balance of VMs for each CSV owner for increased resiliency, performance, and scale of VM workloads. By default, this balance occurs automatically every five minutes and needs to be considered when using Robocopy between a source cluster node and the destination cluster node to ensure source and destination CSV owners match to provide the most optimal transfer path and speed.
 
@@ -207,10 +209,10 @@ Perform the following steps on your Azure Stack HCI cluster to import, make high
     Get-ChildItem -Path "C:\Clusterstorage\Volume01\*.vmcx" -Recurse
     ```
 
-> [!NOTE]
+    > [!NOTE]
     > For older VMs, see the section **Migrating older VMs**.
 
-1. Run the following cmdlet for each server node to import and register all VMs and make them highly available on each CSV owner node. This ensures an even distribution of VMs for optimal processor and memory allocation:
+1. Run the following cmdlet for each server node to import, register, and make the VMs highly available on each CSV owner node. This ensures an even distribution of VMs for optimal processor and memory allocation:
 
     ```powershell
     Get-ChildItem -Path "C:\Clusterstorage\Volume01\*.vmcx" -Recurse | Import-VM -Register | Get-VM | Add-ClusterVirtualMachineRole
@@ -240,7 +242,7 @@ Perform the following steps on your Azure Stack HCI cluster to import, make high
 
 ### Migrating VMs on Windows Server 2012 R2
 
-Windows Server 2012 R2 and earlier uses an XML file format for its VMs, which is different than the VCM and VCMX files used for Windows Server 2016 and later. Run the following cmd:
+Windows Server 2012 R2 and earlier uses an XML file format for its VM configuration, which is different than the VCM and VCMX files used for Windows Server 2016 and later. Run the following cmd:
 
 Then run the following:
 
@@ -256,7 +258,7 @@ Get-ChildItem -Path "c:\clusterstorage\volume01\image\*.xml" -Recurse    | Impor
 
 ### Migrating VMs on Windows Server 2008 R2
 
-This method uses Robocopy to copy all VM VHDs to Azure Stack HCI. Then it creates new VMs and attachs the copied VHDs to their respective VMs in Azure Stack HCI. This bypasses the VM version limitation for these older VMs.
+This method uses Robocopy to copy all VM VHDs to Azure Stack HCI. Then it creates new VMs and attaches the copied VHDs to their respective VMs in Azure Stack HCI. This bypasses the VM version limitation for these older VMs.
 
 To copy a Windows Server 2008 R2 VM on a Windows Server 2012 R2 host to Azure Stack HCI, use the following commands. This emulates the commands used to migrate from  Windows Server 2016 and Windows Server 2019 to Azure Stack HCI:
 
