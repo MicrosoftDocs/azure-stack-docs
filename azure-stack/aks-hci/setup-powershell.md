@@ -22,8 +22,9 @@ Make sure you have one of the following:
 Before getting started, make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page. 
 **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).    
 
-> [!IMPORTANT]
-> When removing Azure Kubernetes Service on Azure Stack HCI, see [Remove Azure Kubernetes Service on Azure Stack HCI](#remove-azure-kubernetes-service-on-azure-stack-hci) and carefully follow the instructions. 
+
+   > [!IMPORTANT]
+   > When removing Azure Kubernetes Service on Azure Stack HCI, see [Remove Azure Kubernetes Service on Azure Stack HCI](#remove-azure-kubernetes-service-on-azure-stack-hci) and carefully follow the instructions. 
 
 ## Step 1: Download and install the AksHci PowerShell module
 
