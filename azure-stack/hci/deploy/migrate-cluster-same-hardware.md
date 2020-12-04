@@ -3,14 +3,14 @@ title: Migrate to Azure Stack HCI on same hardware
 description: Learn how to migrate a cluster to Azure Stack HCI on the same hardware
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 12/02/2020 
+ms.date: 12/03/2020 
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
 
 # Migrate to Azure Stack HCI on same hardware
 
-> Applies to Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016, Windows Server 2008 R2
+> Applies to Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 
 This topic describes how to migrate a Windows Server 2016 or Windows Server 2019 cluster to Azure Stack HCI using your existing server hardware. This process installs the new Azure Stack HCI operating system and retains your existing cluster settings and storage, and imports your VMs.
 
@@ -53,7 +53,7 @@ Regardless of the OS version a VM may be running on, the minimum VM version supp
 
 For VMs on Windows Server 2008 SP1, Windows Server 2008 R2-SP1, and Windows 2012 clusters, direct migration to Azure Stack HCI is not supported. In these cases, you have two options:
 
-- Migrate these VMs to Windows Server 2016 or Windows Server 2019 first, update the VM version, then begin the migration process.
+- Migrate these VMs to Windows Server 2012 R2, Windows Server 2016, or Windows Server 2019 first, update the VM version, then begin the migration process.
 
 - Use Robocopy to copy all VM VHDs to Azure Stack HCI. Then create new VMs and attach the copied VHDs to their respective VMs in Azure Stack HCI. This bypasses the VM version limitation for these older VMs.
 
@@ -77,14 +77,50 @@ Get-VM –ComputerName (Get-ClusterNode) | Update-VMVersion -Force
 
 ## Update the servers and cluster
 
-First, install the Azure Stack HCI operating system on each Windows Server node. You can use Windows Admin Center to do this. During setup, select **Custom: Install the newer version of Azure Stack HCI only (Advanced)**. This replaces your current operating system with Azure Stack HCI. For detailed information, see [Deploy the Azure Stack HCI operating system](operating-system.md).
+First, install the Azure Stack HCI operating system on each Windows Server node. You use Windows Admin Center to do this.
 
-Next, create the new Azure Stack HCI cluster. You can use Windows Admin Center or Windows PowerShell to do this, If using Windows Admin Center, start the [Create Cluster wizard](create-cluster.md). When you get to **Step 4: Storage**:
+During setup, select **Custom: Install the newer version of Azure Stack HCI only (Advanced)**. This replaces your current operating system with Azure Stack HCI. For detailed information, see [Deploy the Azure Stack HCI operating system](operating-system.md).
+
+Next, create the new Azure Stack HCI cluster. You can use Windows Admin Center or Windows PowerShell to do this.  
+
+### Using Windows Admin Center
+
+If using Windows Admin Center to create the Azure Stack HCI cluster, the Create Cluster wizard automatically installs all required roles and features on each server node.
+
+For detailed information on how to create the cluster, see [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md).
+
+1. Start the Create Cluster wizard. When you get to **Step 4: Storage**:
 
 1. Skip step **4.1 Clean drives**. Otherwise you will delete your existing VMs and storage.
-2. In step **4.2 Verify drives**, verify that all drives are listed without warnings or errors.
 
-If using [Windows PowerShell](create-cluster-powershell.md) to create the cluster, use the same name for the previously disabled Cluster Name Object, then:
+1. Step away from the wizard.
+
+1. Open PowerShell, and run the following cmdlet to create the new `Storagesubsystem Object` ID, rediscover all storage enclosures, and assign SES drive numbers:
+
+    ```powershell
+    Enable-ClusterS2D -Verbose
+    ```
+
+    If migrating from Windows Server 2016, this also creates a new `ClusterperformanceHistory` ReFS volume and assigns it to the SDDC Cluster Resource Group.
+
+    If migrating from Windows Server 2019, this also adds the existing `ClusterperformanceHistory` ReFS volume and assigns it to the SDDC Cluster Resource Group.
+
+1. Go back to the wizard. In step **4.2 Verify drives**, verify that all drives are listed without warnings or errors.
+
+1. Complete the wizard.
+
+### Using Windows PowerShell
+
+If using PowerShell to create the Azure Stack HCI cluster, the following roles and features must be installed on each Azure Stack HCI cluster node using the following cmdlet:
+
+```powershell
+Install-WindowsFeature -Name Hyper-V, Failover-Clustering, FS-Data-Deduplication, Bitlocker, Data-Center-Bridging -IncludeAllSubFeature -IncludeManagementTools -Verbose
+```
+
+For more information on how to create the cluster using PowerShell, see [Create an Azure Stack HCI cluster using Windows PowerShell](create-cluster-powershell.md).
+
+> [!NOTE]
+> Re-use the same name for the previously disabled Cluster Name Object.
 
 1. Run the following cmdlet to create the cluster:
 
@@ -92,27 +128,34 @@ If using [Windows PowerShell](create-cluster-powershell.md) to create the cluste
     New-cluster –name "clustername" –node Server01,Server02 –staticaddress xx.xx.xx.xx –nostorage
     ```
 
+1. Run the following cmdlet to create the new `Storagesubsystem Object` ID, rediscover all storage enclosures, and assign SES drive numbers:
+
+    ```powershell
+    Enable-ClusterS2D -Verbose
+    ```
+
+1. If migrating from Windows Server 2016, this also creates a new `ClusterperformanceHistory` ReFS volume and assigns it to the SDDC Cluster Resource Group.
+
+> [!NOTE]
+> If a storage pool shows Minority Disk errors (viewable in Cluster Manager), re-run the `Enable-ClusterS2D -verbose` cmdlet.
+
+1. Using Cluster Manager, enable every CSV except the `ClusterperformanceHistory` volume, which is a ReFS volume (make sure this is not an ReFS CSV).
+
+1. If migrating from Windows Server 2019, re-run the `Enable-ClusterS2D -verbose` cmdlet. This will associate the `ClusterperformanceHistory` ReFS volume with the SDDC Cluster Resource Group.
+
+1. Determine your current storage pool name and version by running the following:
+
+    ```powershell
+    Get-StoragePool | ? IsPrimordial -eq $false | ft FriendlyName,Version
+    ```
+
+1. Now determine your new storage pool name and version:
+
+    ```powershell
+    Get-StoragePool | ? IsPrimordial -eq $false | ft FriendlyName,Version
+    ```
+
 1. Create the quorum witness. For information on how, see [Set up a cluster witness](https://docs.microsoft.com/azure-stack/hci/deploy/witness)
-
-1. Run the following cmdlet to to create the new `Storagesubsystem` Object ID, rediscover all storage enclosures, and assign SES drive numbers. Do this prior to verifying the drives:
-
-    ```powershell
-    Run Enable-ClusterS2D -Verbose
-    ```
-
-    > [!NOTE]
-    > For Windows Server 2016, the `ClusterperformanceHistory` volume is automatically created and assigned to the Cluster group.
-
-1. If a storage pool shows errors, re-run the following:
-
-    ```powershell
-    Enable-ClusterS2D
-    ```
-
-1. Enable every CSV except the cluster performance history volume, which is a ReFS volume (make sure this is not an ReFS CSV).
-
-    > [!NOTE]
-    > For windows Server 2019, re-run `Enable-ClusterS2D -verbose` to associate the cluster performance history ReFS volume with the Cluster group.
 
 1. Verify that storage repair jobs are completed using the following:
 
@@ -120,7 +163,8 @@ If using [Windows PowerShell](create-cluster-powershell.md) to create the cluste
     Get-StorageJob
     ```
 
-    This could take considerable time depending on the number of VMs running during the upgrade.
+    > [!NOTE]
+    >This could take considerable time depending on the number of VMs running during the upgrade.
 
 1. Verify that all disks are healthy:
 
@@ -137,22 +181,10 @@ If using [Windows PowerShell](create-cluster-powershell.md) to create the cluste
     > [!NOTE]
     > `ClusterFunctionalLevel` is automatically set to `10` and does not require updating due to new OS and cluster creation.
 
-1. Determine your current storage pool version by running the following:
-
-    ```powershell
-    Get-StoragePool | ? IsPrimordial -eq $false | ft FriendlyName,Version
-    ```
-
 1. Update your storage pool as follows:
 
     ```powershell
     Get-StoragePool | Update-StoragePool
-    ```
-
-1. Now determine your new storage pool version:
-
-    ```powershell
-    Get-StoragePool | ? IsPrimordial -eq $false | ft FriendlyName,Version
     ```
 
 ## ReFS volumes
@@ -214,4 +246,4 @@ Perform the following steps on your Azure Stack HCI cluster to import, make high
 ## Next steps
 
 - Validate the cluster after migration. See [Validate an Azure Stack HCI cluster](validate.md).
-- To migrate Windows Server VMs to new Azure Stack HCI hardware, see [Migrate VMs to new hardware].
+- To migrate Windows Server VMs to new Azure Stack HCI hardware, see [Migrate to Azure Stack HCI on new hardware](migrate-cluster-new-hardware.md).
