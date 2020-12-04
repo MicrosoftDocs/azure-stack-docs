@@ -40,7 +40,7 @@ Run the following command before proceeding.
    Uninstall-AksHci
    ```
 
-**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.UI, MOC and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once this is done, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`). Then, run the following commands.
+**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.UI, MOC, and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once this is done, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`). Then, run the following commands.
 
    ```powershell
    Import-Module AksHci
@@ -50,7 +50,7 @@ Close all PowerShell windows again and reopen an administrative session and proc
 
 ### Step 1.2: Upgrade the AksHci PowerShell module
 
-**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.UI, MOC and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once these directories are removed, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`). Then, run the following commands.
+**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.UI, MOC, and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once these directories are removed, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`). Then, run the following commands.
 
    ```powershell
    Import-Module AksHci
@@ -212,7 +212,7 @@ When using VIP pools for your deployment, this parameter specifies the network e
 
 `-macPoolStart` 
 
-This is used to specify the start of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (i.e. 00, 02, 04, 06...). A typical MAC address can look like: 02:1E:2B:78:00:00. Use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. This is useful if you have a requirement that the VMs have specific MAC addresses. Default is none.
+This is used to specify the start of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (that is, 00, 02, 04, 06...). A typical MAC address can look like: 02:1E:2B:78:00:00. Use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. This is useful if you have a requirement that the VMs have specific MAC addresses. Default is none.
 
 `-macPoolEnd`
 
@@ -234,11 +234,11 @@ This specifies the static IP address to use as the Azure Kubernetes Service Host
 
 `-proxyServerHTTP`
 
-This provides a proxy server URI that should be used by all components that need to reach HTTP endpoints. The URI format includes the URI schema, server address, and port (i.e. https://server.com:8888). Default is none.
+This provides a proxy server URI that should be used by all components that need to reach HTTP endpoints. The URI format includes the URI schema, server address, and port (that is, https://server.com:8888). Default is none.
 
 `-proxyServerHTTPS`
 
-This provides a proxy server URI that should be used by all components that need to reach HTTPS endpoints. The URI format includes the URI schema, server address, and port (i.e. https://server.com:8888). Default is none.
+This provides a proxy server URI that should be used by all components that need to reach HTTPS endpoints. The URI format includes the URI schema, server address, and port (that is, https://server.com:8888). Default is none.
 
 `-proxyServerNoProxy`
 
