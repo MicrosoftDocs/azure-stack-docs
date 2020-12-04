@@ -41,7 +41,7 @@ Now that we have added the feed, the Azure Kubernetes Service extension will be 
 
 ## Setting up an Azure Kubernetes Service host
 
-There is one final step that should be completed before you create a Kubernetes cluster. You need to set up an Azure Kubernetes Service host on the system you want to deploy the Kubernetes cluster to. This system can be a Windows Server 2019 Datacenter cluster, a single node Windows Server 2019 Datacenter cluster, or a 2-4 node Azure Stack HCI cluster. 
+There is one final step that should be completed before you create a Kubernetes cluster. You need to set up an Azure Kubernetes Service host on the system you want to deploy the Kubernetes cluster to. This system can be a Windows Server 2019 Datacenter cluster, a single node Windows Server 2019 Datacenter, or a 2-4 node Azure Stack HCI cluster. 
 
 > [!NOTE] 
 > Setting up Azure Kubernetes Service hosts on two independent systems with the intention of merging them during Kubernetes cluster creation is not a supported scenario. 
@@ -62,7 +62,7 @@ Now that we've verified our system settings, let's get started:
 
     ![Illustrates the Host configuration step of the Azure Kubernetes Service host wizard.](.\media\setup\host-configuration.png)
 
-5. Review all of your selections in the **Review + create** step. If you're satisfied with your selections, select **Set up** to begin host setup. 
+5. Review all of your selections in the **Review + create** step. If you're satisfied with your selections, select **Next** to begin host setup. 
 6. On the **Setup progress** page, you can watch the progress of your host setup. At this point, you are welcome to open Windows Admin Center in a new tab and continue your management tasks. 
 7. If the deployment succeeds, you will be presented with a management dashboard where you can create and manage your Kubernetes clusters. This dashboard, like the rest of Azure Kubernetes Services on Azure Stack HCI, is in a preview release and will be updated with additional functionality in future releases. 
  
