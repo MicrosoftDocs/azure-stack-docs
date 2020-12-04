@@ -22,7 +22,6 @@ Make sure you have one of the following:
 Before getting started, make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page. 
 **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).    
 
-
    > [!IMPORTANT]
    > When removing Azure Kubernetes Service on Azure Stack HCI, see [Remove Azure Kubernetes Service on Azure Stack HCI](#remove-azure-kubernetes-service-on-azure-stack-hci) and carefully follow the instructions. 
 
@@ -413,7 +412,7 @@ Install-AksHci
 
 ## Remove Azure Kubernetes Service on Azure Stack HCI
 
-To remove Azure Kubernetes Service on Azure Stack HCI, run the following command. **If you are using PowerShell to uninstall a Windows Admin Center deployment, you just run the command with the `-Force` flag.**
+To remove Azure Kubernetes Service on Azure Stack HCI, run the following command. **If you are using PowerShell to uninstall a Windows Admin Center deployment, you must run the command with the `-Force` flag.**
 
 ```powershell
 Uninstall-AksHci
