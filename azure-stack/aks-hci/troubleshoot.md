@@ -3,7 +3,7 @@ title: Troubleshooting AKS
 description: This article provides information about troubleshooting Azure Kubernetes Service (AKS) on Azure Stack HCI.
 author: davannaw-msft
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 12/02/2020
 ms.author: dawhite
 ---
 
