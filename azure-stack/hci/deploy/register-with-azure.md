@@ -48,41 +48,41 @@ If your Azure subscription is through an EA or CSP, the easiest way is to ask yo
 
 1. Create a json file called **customHCIRole.json** with following content. Make sure to change <subscriptionID> to your Azure subscription ID. To get your subscription ID, visit [portal.azure.com](https://portal.azure.com), navigate to Subscriptions, and copy/paste your ID from the list.
 
-```json
-{
-  "Name": "Azure Stack HCI registration role”,
-  "Id": null,
-  "IsCustom": true,
-  "Description": "Custom Azure role to allow subscription-level access to register Azure Stack HCI",
-  "Actions": [
-    "Microsoft.Resources/subscriptions/resourceGroups/write",
-    "Microsoft.Resources/subscriptions/resourceGroups/read",
-    "Microsoft.Resources/subscriptions/resourceGroups/delete",
-    "Microsoft.AzureStackHCI/register/action",
-    "Microsoft.AzureStackHCI/Unregister/Action",
-    "Microsoft.AzureStackHCI/clusters/*"
-  ],
-  "NotActions": [
-  ],
-"AssignableScopes": [
-    "/subscriptions/<subscriptionId>"
-  ]
-}
-```
+   ```json
+   {
+     "Name": "Azure Stack HCI registration role”,
+     "Id": null,
+     "IsCustom": true,
+     "Description": "Custom Azure role to allow subscription-level access to register Azure Stack HCI",
+     "Actions": [
+       "Microsoft.Resources/subscriptions/resourceGroups/write",
+       "Microsoft.Resources/subscriptions/resourceGroups/read",
+       "Microsoft.Resources/subscriptions/resourceGroups/delete",
+       "Microsoft.AzureStackHCI/register/action",
+       "Microsoft.AzureStackHCI/Unregister/Action",
+       "Microsoft.AzureStackHCI/clusters/*"
+     ],
+     "NotActions": [
+     ],
+   "AssignableScopes": [
+       "/subscriptions/<subscriptionId>"
+     ]
+   }
+   ```
 
 2. Create the custom role:
 
-```powershell
-New-AzRoleDefinition -InputFile <path to customHCIRole.json>
-```
+   ```powershell
+   New-AzRoleDefinition -InputFile <path to customHCIRole.json>
+   ```
 
 3. Assign the custom role to the user:
 
-```powershell
-$user = get-AzAdUser -DisplayName <userdisplayname>
-$role = Get-AzRoleDefinition -Name "Azure Stack HCI registration role"
-New-AzRoleAssignment -ObjectId $user.Id -RoleDefinitionId $role.Id -Scope /subscriptions/<subscriptionid>
-```
+   ```powershell
+   $user = get-AzAdUser -DisplayName <userdisplayname>
+   $role = Get-AzRoleDefinition -Name "Azure Stack HCI registration role"
+   New-AzRoleAssignment -ObjectId $user.Id -RoleDefinitionId $role.Id -Scope /subscriptions/<subscriptionid>
+   ```
 
 ### Azure Active Directory permissions
 
