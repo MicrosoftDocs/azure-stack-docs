@@ -27,7 +27,7 @@ You can configure the Infrastructure Backup Service to export infrastructure bac
 
 ## Prepare PowerShell environment
 
-For instructions on configuring the PowerShell environment, see [Install PowerShell for Azure Stack](../../operator/azure-stack-powershell-install.md). To sign in to Azure Stack, see [Configure the operator environment and sign in to Azure Stack](../../operator/azure-stack-powershell-configure-admin.md).
+For instructions on configuring the PowerShell environment, see [Install PowerShell for Azure Stack](../../operator/powershell-install-az-module.md). To sign in to Azure Stack, see [Configure the operator environment and sign in to Azure Stack](../../operator/azure-stack-powershell-configure-admin.md).
 
 ## Provide the backup share, credentials, and encryption key to enable backup
 
