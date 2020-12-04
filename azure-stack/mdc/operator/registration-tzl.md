@@ -174,7 +174,7 @@ Connected environments can access the internet and Azure. For these environments
       -UsageReportingEnabled: $false
    ```
 
-   The MS Asset tag (`msAssetTag`) is a mandatory for Custom billing model registration and is printed on the product.
+   The MS Asset tag (`msAssetTag`) is mandatory for Ruggedized billing model registration and is printed on the product.
 
    The process takes between 10 and 15 minutes. When the command completes, you see the message. **Your environment is now registered and activated using the provided parameters.**
 
