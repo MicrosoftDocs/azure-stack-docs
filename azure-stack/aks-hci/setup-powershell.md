@@ -30,8 +30,8 @@ Before getting started, make sure you have satisfied all the prerequisites on th
 Download the `AKS-HCI-Public-Preview-Dec-2020` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module.
 
 If you have previously installed Azure Kubernetes Service on Azure Stack HCI using PowerShell or Windows Admin Center, there are two installation flows for the new PowerShell module:
- - Perform a clean installation of the PowerShell module, so you start with a clean system and your previously deployed workloads are removed. To do this, go to Step 1.1.
- - Upgrade the PowerShell module if you want to keep your system and workloads in place. To do this, go to Step 1.2.
+ - Perform a clean installation of the PowerShell module, so you start with a clean system and your previously deployed workloads are removed. To perform a clean installation, go to [Step 1.1](#clean-install-of-the-akshci-powershell-module).
+ - Upgrade the PowerShell module if you want to keep your system and workloads in place. To upgrade the PowerShell module, go to [Step 1.2](#upgrade-the-akshci-powershell-module).
 
 ### Step 1.1: Clean install of the AksHci PowerShell module
 
@@ -40,7 +40,7 @@ Run the following command before proceeding.
    Uninstall-AksHci
    ```
 
-**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.UI, MOC, and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once this is done, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`). Then, run the following commands.
+**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.UI, MOC, and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once the existing directories are deleted, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`). Then, run the following commands.
 
    ```powershell
    Import-Module AksHci

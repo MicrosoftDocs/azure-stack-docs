@@ -28,9 +28,9 @@ To join your Windows worker nodes to a domain, log in to a Windows worker node b
 kubectl get nodes -o wide
 ```  
 
-You can then SSH into the node using `ssh Administrator@ip`. For more information on how to log in using SSH, see [Troubleshooting Windows worker nodes using SSH](troubleshoot.md#troubleshooting-windows-worker-nodes)
+You can then SSH into the node using `ssh Administrator@ip`. For more information on how to log in using SSH, see [Troubleshooting Windows worker nodes using SSH](troubleshoot.md#troubleshooting-windows-worker-nodes).
 
-After you've successfully logged in to your Windows worker node using SSH, run the following command to join the node to a domain. Then, you need to reboot your Windows worker node. 
+After you've successfully logged in to your Windows worker node using SSH, run the following command to join the node to a domain. Then, you need to reboot the Windows worker node. 
 
 ```
 netdom.exe join %computername% /domain:DomainName /UserD:DomainName\UserName /PasswordD:Password
