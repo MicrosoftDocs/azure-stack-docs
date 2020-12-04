@@ -25,7 +25,7 @@ To enable group Managed Service Account support, your Kubernetes cluster name ha
 To join your Windows worker nodes to a domain, log in to a Windows worker node by running `kubectl get` and noting the `EXTERNAL-IP` value.
 
 ```
-   kubectl get nodes -o wide
+kubectl get nodes -o wide
 ```  
 
 You can then SSH into the node using `ssh Administrator@ip`. For more information on how to log in using SSH, see [Troubleshooting Windows worker nodes using SSH](troubleshoot.md#troubleshooting-windows-worker-nodes)
@@ -33,7 +33,7 @@ You can then SSH into the node using `ssh Administrator@ip`. For more informatio
 After you've successfully logged in to your Windows worker node using SSH, run the following command to join the node to a domain. Then, you need to reboot your Windows worker node. 
 
 ```
-    netdom.exe join %computername% /domain:DomainName /UserD:DomainName\UserName /PasswordD:Password
+netdom.exe join %computername% /domain:DomainName /UserD:DomainName\UserName /PasswordD:Password
 ```  
 
 Once all Windows worker nodes have been joined to a domain, follow the steps detailed at [configuring gMSA](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa/). Those steps will help you apply the Kubernetes gMSA custom resource definitions and webhooks on your Kubernetes cluster.
