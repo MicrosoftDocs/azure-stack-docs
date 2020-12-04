@@ -92,7 +92,7 @@ There are two parts to this scenario:
 - Download the **Azs.Syndication.Admin** module from the PowerShell Gallery using the following command:
 
   ```powershell
-  Install-Module -Name Azs.Syndication.Admin -AllowPrerelease -PassThru
+  Install-Module -Name Azs.Syndication.Admin -RequiredVersion 0.1.140
   ```
   
 - .NET Framework 4.7 or later.
@@ -130,7 +130,7 @@ Once you have registered your Azure Stack, you can disregard the following messa
 4. If you haven't done it in the pre-requisites step already, download the latest version of the Marketplace syndication tool:
 
    ```powershell
-   Install-Module -Name Azs.Syndication.Admin -AllowPrerelease -PassThru
+   Install-Module -Name Azs.Syndication.Admin -RequiredVersion 0.1.140
    ```
 
 5. To select the Marketplace items such as VM images, extensions, or solution templates to download, run the following command:
@@ -198,7 +198,7 @@ Once you have registered your Azure Stack, you can disregard the following messa
 4. If you haven't done it in the pre-requisites step already, download the latest version of the Marketplace syndication tool:
 
    ```powershell
-   Install-Module -Name Azs.Syndication.Admin -AllowPrerelease -PassThru
+   Install-Module -Name Azs.Syndication.Admin -PassThru
    ```
 
 5. To select the Marketplace items such as VM images, extensions, or solution templates to download, run the following command:
