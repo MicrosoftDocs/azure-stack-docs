@@ -45,17 +45,17 @@ landingContent:
     linkLists:
       - linkListType: tutorial
         links:
-          - text: Deploy Windows .NET applications
-            url: deploy-windows-application.md
           - text: Use Linux containers
             url: deploy-linux-application.md
       - linkListType: how-to-guide
         links:
           - text: Adapt apps for mixed-OS Kubernetes clusters
             url: adapt-apps-mixed-os-clusters.md
-          - text: Prepare Windows nodes for group Managed Service Account support
+          - text: Deploy Windows applications
+            url: deploy-windows-application.md
+          - text: Prepare Windows nodes for gMSA support
             url: prepare-windows-nodes-gmsa.md
-          - text: Use persistent volume in an AKS on Azure Stack HCI cluster
+          - text: Use persistent volumes
             url: persistent-volume.md
 
   - title: Integrate with Azure
@@ -64,3 +64,4 @@ landingContent:
         links:
           - text: Connect to Azure Arc for Kubernetes
             url: connect-to-arc.md
+
