@@ -137,6 +137,13 @@ Connected environments can access the internet and Azure. For these environments
    Connect-AzureRmAccount -Environment "<environment name>"
    ```
 
+   For **AzureUSSec**, you must first initialize the `CustomCloud` environment and then call **Connect-AzureRmAccount**:
+
+   ```powershell
+   Initialize-AzureRmEnvironment -Name ‘CustomCloud’ -CloudManifestFilePath $CloudManifestFilePath
+   Connect-AzureRmAccount -Environment ‘CustomCloud’
+   ```
+
    | Parameter | Description |  
    |-----|-----|
    | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or **AzureUSSec**. |
