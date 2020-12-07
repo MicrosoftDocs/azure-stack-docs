@@ -4,7 +4,7 @@ description: Learn the basic cluster and workload components of Kubernetes and h
 author: daschott
 ms.author: daschott
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 12/02/2020
 ---
 
 # Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI
