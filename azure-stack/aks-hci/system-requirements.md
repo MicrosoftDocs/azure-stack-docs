@@ -67,7 +67,7 @@ If you are planning to use DHCP for assigning IP address throughout the cluster:
 
 At a minimum, you should reserve the following number of DHCP addresses:
   
-| User Supplied Value | Required IPs |
+| User-supplied value | Required IPs |
 |----------|------------------|
 | IP Pool Range | At least 3 IP addresses in range, recommended 16 or higher |
 | MAC Pool Range | At least 16 IP addresses in the range to allow for multi/single node configurations |
@@ -95,7 +95,7 @@ At a minimum, you should reserve the following number of DHCP addresses:
 
 If you are planning to use static IP address assignments throughout the cluster, you need to ensure the available ranges contain the following minimum amount of IP addresses.
   
-| User Supplied Value | Required IPs |
+| User-supplied value | Required IPs |
 |----------|------------------|
 | Subnet Prefix | Classless Interdomain Routing (CIDR) |
 | Gateway | one IP |
@@ -104,18 +104,18 @@ If you are planning to use static IP address assignments throughout the cluster,
 | MAC Pool Range | At least 16 IPs in the range to allow for multi/single node configurations |
 
 
-_Management cluster:_  
+*Management cluster* 
     - One IP for the management node VM   
     - One IP for the load balancer VM  
     - One IP for the API server    
 
-_Workload cluster_  
+*Workload cluster*  
 Control plane cluster:  
     - +1*n IP for each control plane node  
     - +1 for the kubeapi server VIP  
     - +1 for the the load balancer VM 
 
-Target cluster:
+*Target cluster*
     - 1*n for each worker node 
  
 > [!NOTE]
@@ -126,7 +126,7 @@ Target cluster:
 When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following firewall ports are automatically opened on each server in the cluster. 
 
 
-| Firewall Port               | Description         | 
+| Firewall port               | Description         | 
 | ---------------------------- | ------------ | 
 | 45000           | wssdagent GPRC   server port           |
 | 45001             | wssdagent GPRC authentication port  | 
@@ -152,7 +152,7 @@ git://:9418 | 9418 | TCP | Used to support Azure Arc agents
 
 The following storage implementations are supported by Azure Kubernetes Service on Azure Stack HCI: 
 
-|  Name                         | Storage Type | Required Capacity |
+|  Name                         | Storage type | Required capacity |
 | ---------------------------- | ------------ | ----------------- |
 | Azure Stack HCI Cluster          | CSV          | 1 TB              |
 | Windows Server 2019 Datacenter failover cluster          | CSV          | 1 TB              |
