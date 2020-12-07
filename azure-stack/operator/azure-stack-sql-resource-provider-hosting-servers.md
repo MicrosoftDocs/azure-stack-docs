@@ -3,12 +3,11 @@ title: Add hosting servers for the SQL resource provider
 titleSuffix: Azure Stack Hub
 description: Learn how to add hosting servers for provisioning through the SQL resource provider adapter.
 author: bryanla
-
 ms.topic: article
-ms.date: 10/02/2019
+ms.date: 12/07/2020
 ms.author: bryanla
 ms.reviewer: xiaofmao
-ms.lastreviewed: 10/16/2019
+ms.lastreviewed: 12/07/2020
 
 # Intent: As an Azure Stack operator, I want to add hosting servers to provision through SQL resource provider adapter.
 # Keyword: add hosting servers sql resource provider
@@ -72,7 +71,7 @@ The following information provides additional security guidance:
 
 ## Provide capacity by connecting to a standalone hosting SQL server
 
-You can use standalone (non-HA) SQL servers using any edition of SQL Server 2014 or SQL Server 2016. Make sure you have the credentials for an account with sysadmin privileges.
+You can use standalone (non-HA) SQL servers using any edition of SQL Server 2014 or SQL Server 2016. Make sure you have the credentials for an account with sysadmin privileges. 
 
 To add a standalone hosting server that's already set up, follow these steps:
 
@@ -82,11 +81,14 @@ To add a standalone hosting server that's already set up, follow these steps:
 
    ![SQL Hosting Servers in Azure Stack Hub administrator portal](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
 
-   Under **SQL Hosting Servers**,  you can connect the SQL resource provider to instances of SQL Server that will serve as the resource provider's backend.
+   Under **SQL Hosting Servers**, you can connect the SQL resource provider to instances of SQL Server that will serve as the resource provider's backend.
 
    ![SQL Adapter dashboard in Azure Stack Hub administrator portal](./media/azure-stack-sql-rp-deploy/sql-rp-hosting-server.png)
 
 3. Click **Add** and then provide the connection details for your SQL Server instance on the **Add a SQL Hosting Server** blade.
+
+   > [!IMPORTANT]
+   > Do not choose **Resource group** `system.<region>.sqladapter`, which was created by the SQL resource provider installer during deployment. You must provide a different resource group for the standalone hosting server. 
 
    ![Add a SQL Hosting Server in Azure Stack Hub administrator portal](./media/azure-stack-sql-rp-deploy/sql-rp-new-hosting-server.png)
 
@@ -156,6 +158,9 @@ Use these commands to set the contained database authentication server option fo
    Under **SQL Hosting Servers**, you can connect the SQL Server Resource Provider to actual instances of SQL Server that serve as the resource provider's backend.
 
 3. Fill out the form with the connection details for your SQL Server instance. Make sure that you use the FQDN address of the Always On Listener (and optional port number and instance name). Provide the information for the account you configured with sysadmin privileges.
+
+   > [!IMPORTANT]
+   > Do not choose **Resource group** `system.<region>.sqladapter`, which was created by the SQL resource provider installer during deployment. You must provide a different resource group for the standalone hosting server. 
 
 4. Check the Always On Availability Group box to enable support for SQL Always On Availability Group instances.
 
