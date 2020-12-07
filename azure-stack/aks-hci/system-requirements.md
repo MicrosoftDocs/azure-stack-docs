@@ -70,7 +70,7 @@ At a minimum, you should reserve the following number of DHCP addresses:
 | User-supplied value | Required IPs |
 |----------|------------------|
 | IP pool range | At least three IP addresses in range, however, 16 or higher IP addresses are recommended |
-| MAC pool range | At least 16 IP addresses in the range to allow for multi/single node configurations |
+| MAC pool range | At least 16 IP addresses in the range to allow for multiple/single node configurations |
 
 For the management cluster:  
 - One IP for the management node VM (assigned by DHCP)  
@@ -100,8 +100,8 @@ If you are planning to use static IP address assignments throughout the cluster,
 | Subnet prefix | Classless Interdomain Routing (CIDR) |
 | Gateway | One IP address |
 | DNS servers | Up to three IP addresses |
-| IP range | At least 12 IP addresses in the range to allow for multi/single node configurations, it's recommended to have 32 or higher |
-| MAC pool range | At least 16 IP addresses in the range to allow for multi/single node configurations |
+| IP range | At least 12 IP addresses in the range to allow for multiple/single node configurations, it's recommended to have 32 or higher |
+| MAC pool range | At least 16 IP addresses in the range to allow for multiple/single node configurations |
 
 
 For the management cluster: 
