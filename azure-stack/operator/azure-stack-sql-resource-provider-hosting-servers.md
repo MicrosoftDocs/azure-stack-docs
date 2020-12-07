@@ -3,12 +3,11 @@ title: Add hosting servers for the SQL resource provider
 titleSuffix: Azure Stack Hub
 description: Learn how to add hosting servers for provisioning through the SQL resource provider adapter.
 author: bryanla
-
 ms.topic: article
-ms.date: 10/02/2019
+ms.date: 12/07/2020
 ms.author: bryanla
 ms.reviewer: xiaofmao
-ms.lastreviewed: 10/16/2019
+ms.lastreviewed: 12/07/2020
 
 # Intent: As an Azure Stack operator, I want to add hosting servers to provision through SQL resource provider adapter.
 # Keyword: add hosting servers sql resource provider
@@ -66,13 +65,13 @@ The following information provides additional security guidance:
 
 * All Azure Stack Hub storage is encrypted using BitLocker, so any SQL instance on Azure Stack Hub will use encrypted blob storage.
 * The SQL Resource Provider fully supports TLS 1.2. Ensure that any SQL Server that's managed through the SQL RP is configured for TLS 1.2 _only_ and the RP will default to that. All supported versions of SQL Server support TLS 1.2. For more information, see [TLS 1.2 support for Microsoft SQL Server](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server).
-* Use SQL Server Configuration Manager to set the **ForceEncryption** option to ensure all communications to the SQL server are always encrypted. For more information, see [To configure the server to force encrypted connections](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#to-configure-the-server-to-force-encrypted-connections).
+* Use SQL Server Configuration Manager to set the **ForceEncryption** option to ensure all communications to the SQL server are always encrypted. For more information, see [To configure the server to force encrypted connections](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017&preserve-view=true#to-configure-the-server-to-force-encrypted-connections).
 * Ensure any client app is also communicating over an encrypted connection.
 * The RP is configured to trust the certificates used by the SQL Server instances.
 
 ## Provide capacity by connecting to a standalone hosting SQL server
 
-You can use standalone (non-HA) SQL servers using any edition of SQL Server 2014 or SQL Server 2016. Make sure you have the credentials for an account with sysadmin privileges.
+You can use standalone (non-HA) SQL servers using any edition of SQL Server 2014 or SQL Server 2016. Make sure you have the credentials for an account with sysadmin privileges. 
 
 To add a standalone hosting server that's already set up, follow these steps:
 
@@ -82,11 +81,14 @@ To add a standalone hosting server that's already set up, follow these steps:
 
    ![SQL Hosting Servers in Azure Stack Hub administrator portal](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
 
-   Under **SQL Hosting Servers**,  you can connect the SQL resource provider to instances of SQL Server that will serve as the resource provider's backend.
+   Under **SQL Hosting Servers**, you can connect the SQL resource provider to instances of SQL Server that will serve as the resource provider's backend.
 
    ![SQL Adapter dashboard in Azure Stack Hub administrator portal](./media/azure-stack-sql-rp-deploy/sql-rp-hosting-server.png)
 
 3. Click **Add** and then provide the connection details for your SQL Server instance on the **Add a SQL Hosting Server** blade.
+
+   > [!IMPORTANT]
+   > Do not choose **Resource group** `system.<region>.sqladapter`, which was created by the SQL resource provider installer during deployment. You must provide a different resource group for the standalone hosting server. 
 
    ![Add a SQL Hosting Server in Azure Stack Hub administrator portal](./media/azure-stack-sql-rp-deploy/sql-rp-new-hosting-server.png)
 
@@ -107,7 +109,7 @@ To add a standalone hosting server that's already set up, follow these steps:
 Configuring SQL Always On instances requires additional steps and requires three VMs (or physical machines.) This article assumes that you already have a solid understanding of Always On availability groups. For more information, see the following articles:
 
 * [Introducing SQL Server Always On availability groups on Azure virtual machines](/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
-* [Always On Availability Groups (SQL Server)](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017)
+* [Always On Availability Groups (SQL Server)](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017&preserve-view=true)
 
 > [!NOTE]
 > The SQL adapter resource provider _only_ supports SQL 2016 SP1 Enterprise or later instances for Always On Availability Groups. This adapter configuration requires new SQL features such as automatic seeding.
@@ -136,7 +138,7 @@ On the secondary nodes, run the following SQL command:
 
 ### Configure contained database authentication
 
-Before adding a contained database to an availability group, ensure that the contained database authentication server option is set to 1 on every server instance that hosts an availability replica for the availability group. For more information, see [contained database authentication Server Configuration Option](/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017).
+Before adding a contained database to an availability group, ensure that the contained database authentication server option is set to 1 on every server instance that hosts an availability replica for the availability group. For more information, see [contained database authentication Server Configuration Option](/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017&preserve-view=true).
 
 Use these commands to set the contained database authentication server option for each instance:
 
@@ -156,6 +158,9 @@ Use these commands to set the contained database authentication server option fo
    Under **SQL Hosting Servers**, you can connect the SQL Server Resource Provider to actual instances of SQL Server that serve as the resource provider's backend.
 
 3. Fill out the form with the connection details for your SQL Server instance. Make sure that you use the FQDN address of the Always On Listener (and optional port number and instance name). Provide the information for the account you configured with sysadmin privileges.
+
+   > [!IMPORTANT]
+   > Do not choose **Resource group** `system.<region>.sqladapter`, which was created by the SQL resource provider installer during deployment. You must provide a different resource group for the standalone hosting server. 
 
 4. Check the Always On Availability Group box to enable support for SQL Always On Availability Group instances.
 
