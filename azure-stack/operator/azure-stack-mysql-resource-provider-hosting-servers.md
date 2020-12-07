@@ -3,16 +3,15 @@ title: Add MySQL hosting servers in Azure Stack Hub
 description: Learn how to add MySQL hosting servers for provisioning through the MySQL Adapter Resource Provider.
 author: bryanla
 ms.topic: article
-ms.date: 11/06/2019
+ms.date: 12/07/2020
 ms.author: bryanla
 ms.reviewer: xiaofmao
-ms.lastreviewed: 11/06/2019
+ms.lastreviewed: 12/07/2020
 
 # Intent: As an Azure Stack operator, I want to add MySQL hosting servers so I can provision them through the MySQL resource provider.
 # Keyword: add mySQL hosting servers azure stack
 
 ---
-
 
 # Add MySQL hosting servers in Azure Stack Hub
 
@@ -116,6 +115,9 @@ To add a hosting server, follow these steps:
    * A default MySQL instance isn't provided, so you have to specify the **Size of Hosting Server in GB**. Enter a size that's close to the capacity of the database server.
    * Keep the default setting for **Subscription**.
    * For **Resource group**, create a new one, or use an existing group.
+
+   > [!IMPORTANT]
+   > Do not choose **Resource group** `system.<region>.sqladapter`, which was created by the MySQL resource provider installer during deployment. You must provide a different resource group for the hosting server.    
 
    > [!NOTE]
    > If the MySQL instance can be accessed by the tenant and the admin Azure Resource Manager, you can put it under the control of the resource provider. But, the MySQL instance **must** be allocated exclusively to the resource provider.
