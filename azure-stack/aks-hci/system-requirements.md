@@ -54,7 +54,7 @@ The following requirements apply to an Azure Stack HCI cluster as well as a Wind
 
  - For this preview release, we have limited proxy support for Kubernetes clusters created through PowerShell. 
  
- ### IP Address assignment  
+### IP Address assignment  
  
 There are two options for assigning IP addresses in an AKA HCI cluster: a DHCP automatic assignment or a static IP address assignment. Each one has it's own set of requirements.
 
@@ -66,27 +66,30 @@ If you are planning to use DHCP for IP address assignment throughout the cluster
  - We also recommend having a DHCP server with a dedicated scope of IPv4 addresses accessible by the Azure Stack HCI cluster. For example, you can reserve 10.0.1.1 for the default gateway, reserve 10.0.1.2 to 10.0.1.102 for Kubernetes services (using -vipPoolStartIp and -vipPoolEndIp in Set-AksHciConfig), and use 10.0.1.103-10.0.1.254 for Kubernetes cluster VMs. 
 
 How many DHCP addresses to reserve? (minimum)  
-
+  
 | User Supplied Value | Required IPs |
 |----------|------------------|
 | IP Pool Range | At least 3 IP addresses in range, recommended 16 or higher |
 | MAC Pool Range | At least 16 IP addresses in the range to allow for multi/single node configurations |
 
-_Management cluster:_  
+*Management cluster*  
     - One IP for the management node VM (assigned by DHCP)  
     - One IP for the load balancer VM (assigned by DHCP)  
     - One IP for the API server (from above IP address pool)  
 
-_Workload cluster_  
+*Workload cluster*    
     Control plane cluster:
     - +1*n IP for each control plane node (assigned by DHCP)  
     - +1 for the load balancer VM (assigned by DHCP)  
     - +1 for the kubeapi server VIP (from pool)  
      
-Target cluster:
+*Target cluster*  
     - 1*n for each worker node (assigned by DHCP)  
 
-    N for each service (minimum 1)  
+> [!NOTE]
+> N for each service (minimum 1)
+
+
 
  The IPv4 addresses provided by the DHCP server should be routable and have a 30-day lease expiration to avoid loss of IP connectivity in the event of a VM update or reprovisioning.    
 
@@ -94,7 +97,6 @@ Target cluster:
 
 If you are planning to use static IP address assignments throughout the cluster, you need to ensure the ranges that are made available contain the following minimum amount of IP addresses.
   
-
 | User Supplied Value | Required IPs |
 |----------|------------------|
 | Subnet Prefix | CIDR |
@@ -119,8 +121,7 @@ Target cluster:
     - 1*n for each worker node 
 
 N for each service (minimum 1)
-
-
+  
 ### Network port and URL requirements 
 
 When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following firewall ports are automatically opened on each server in the cluster. 
