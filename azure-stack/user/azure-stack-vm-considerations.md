@@ -71,7 +71,7 @@ VM sizes and their associated resource quantities are consistent between Azure S
 
 ## VM extensions
 
-Azure Stack Hub includes a small set of extensions. Updates and additional extensions are available through Marketplace syndication.
+Azure Stack Hub includes a small set of extensions. Updates and additional extensions are available through Marketplace syndication. Bringing custom extensions into Azure Stack Hub is not a supported scenario; an extension must first be onboarded to Azure to be made available in Azure Stack Hub.
 
 Use the following PowerShell script to get the list of VM extensions that are available in your Azure Stack Hub environment.
 
