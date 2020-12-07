@@ -3,10 +3,10 @@ title: Deploy MySQL resource provider on Azure Stack Hub
 description: Learn how to deploy the MySQL resource provider adapter and MySQL databases as a service on Azure Stack Hub.  
 author: bryanla
 ms.topic: article 
-ms.date: 9/22/2020
+ms.date: 12/07/2020
 ms.author: bryanla
 ms.reviewer: caoyang
-ms.lastreviewed: 9/22/2020
+ms.lastreviewed: 12/07/2020
 
 # Intent: As an Azure Stack operator, I want to deploy the MySQL resource provider adapter and databases as a service on Azure Stack.
 # Keyword: deploy mySQL resource provider azure stack
@@ -16,22 +16,28 @@ ms.lastreviewed: 9/22/2020
 
 # Deploy the MySQL resource provider on Azure Stack Hub
 
-Use the MySQL Server resource provider to expose MySQL databases as an Azure Stack Hub service. The MySQL resource provider runs as a service on a Windows Server 2016 Server Core virtual machine (for adaptor version <= 1.1.47.0>) or a special Add-on RP Windows Server (for adaptor version >= 1.1.93.0).
+Use the MySQL Server resource provider to expose MySQL databases as an Azure Stack Hub service. The MySQL resource provider runs as a service on a Windows Server 2016 Server Core virtual machine (for adapter version <= 1.1.47.0>) or a special Add-on RP Windows Server (for adapter version >= 1.1.93.0).
 
 > [!IMPORTANT]
-> Only the resource provider is supported to create items on servers that host SQL or MySQL. Items created on a host server that aren't created by the resource provider might result in a mismatched state.
+> Only the resource provider should create items on servers that host SQL or MySQL. Items created on a host server that aren't created by the resource provider are unsupported, and may result in a mismatched state.
 
 ## Prerequisites
 
-There are several prerequisites that need to be in place before you can deploy the Azure Stack Hub MySQL resource provider. To meet these requirements, complete the steps in this article on a computer that can access the privileged endpoint VM.
+There are several prerequisites that need to be in place before you can deploy the Azure Stack Hub MySQL resource provider:
 
-* If you haven't already, [register Azure Stack Hub](./azure-stack-registration.md) with Azure so you can download Azure Marketplace items.
+- You'll need a computer and account that can access:
+   - the [Azure Stack Hub administrator portal](azure-stack-manage-portals.md).
+   - the [privileged endpoint](azure-stack-privileged-endpoint.md).
+   - the Azure Resource Manager admin endpoint, `https://management.region.<fqdn>`, where `<fqdn>` is your fully qualified domain name (or `https://management.local.azurestack.external` if using the ASDK)
+   - the Internet, if your Azure Stack Hub was deployed to use Azure Active Directory (AD) as your identity provider.
 
-* Add the required Windows Server VM to Azure Stack Hub Marketplace.
-  * For MySQL RP version <= 1.1.47.0, download the **Windows Server 2016 Datacenter - Server Core** image.
-  * For MySQL RP version >= 1.1.93.0, download the **Microsoft AzureStack Add-On RP Windows Server INTERNAL ONLY** image. This Windows Server version is specialize for Azure Stack Add-On RP Infrastructure and it is not visible to the tenant marketplace.
+- If you haven't already, [register Azure Stack Hub](azure-stack-registration.md) with Azure so you can download Azure Marketplace items.
 
-* Download the supported version of MySQL resource provider binary according to the version mapping table below. Run the self-extractor to extract the downloaded contents to a temporary directory. 
+- Add the required Windows Server VM to Azure Stack Hub Marketplace.
+  - For MySQL RP version <= 1.1.47.0, download the **Windows Server 2016 Datacenter - Server Core** image.
+  - For MySQL RP version >= 1.1.93.0, download the **Microsoft AzureStack Add-On RP Windows Server INTERNAL ONLY** image. This Windows Server version is specialize for Azure Stack Add-On RP Infrastructure and it is not visible to the tenant marketplace.
+
+- Download the supported version of MySQL resource provider binary according to the version mapping table below. Run the self-extractor to extract the downloaded contents to a temporary directory. 
 
   |Supported Azure Stack Hub version|MySQL RP version|Windows Server that RP service is running on
   |-----|-----|-----|
@@ -44,7 +50,7 @@ There are several prerequisites that need to be in place before you can deploy t
 >To deploy the MySQL provider on a system that doesn't have internet access, copy the [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) file to a local path. Provide the path name using the **DependencyFilesLocalPath** parameter.
 
 
-* Ensure datacenter integration prerequisites are met:
+- Ensure datacenter integration prerequisites are met:
 
     |Prerequisite|Reference|
     |-----|-----|
@@ -104,7 +110,7 @@ _For integrated systems installations only_. You must provide the SQL PaaS PKI c
 
 ## Deploy the resource provider
 
-After you've installed all the prerequisites, you can run the **DeployMySqlProvider.ps1** script from a computer that can access both the Azure Stack Hub Admin Azure Resource Management Endpoint and Privileged Endpoint to deploy the MySQL resource provider. The DeployMySqlProvider.ps1 script is extracted as part of the MySQL resource provider installation files that you downloaded for your version of Azure Stack Hub.
+After you've completed all of the prerequisites, you can run the **DeployMySqlProvider.ps1** script from a computer that can access both the Azure Stack Hub Azure Resource Manager admin endpoint and the privileged endpoint, to deploy the MySQL resource provider. The DeployMySqlProvider.ps1 script is extracted as part of the MySQL resource provider installation files that you downloaded for your version of Azure Stack Hub.
 
  > [!IMPORTANT]
  > Before deploying the resource provider, review the release notes to learn about new functionality, fixes, and any known issues that could affect your deployment.
