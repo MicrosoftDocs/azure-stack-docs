@@ -72,19 +72,19 @@ At a minimum, you should reserve the following number of DHCP addresses:
 | IP Pool Range | At least three IP addresses in range, however, 16 or higher IP addresses are recommended |
 | MAC Pool Range | At least 16 IP addresses in the range to allow for multi/single node configurations |
 
-*Management cluster*  
-    - One IP for the management node VM (assigned by DHCP)  
-    - One IP for the load balancer VM (assigned by DHCP)  
-    - One IP for the API server (from the IP address pool)  
+*For the management cluster:*  
+- One IP for the management node VM (assigned by DHCP)  
+- One IP for the load balancer VM (assigned by DHCP)  
+- One IP for the API server (from the IP address pool)  
 
-*Workload cluster*    
-    Control plane cluster:
-    - +1*n IP for each control plane node (assigned by DHCP)  
-    - +1 for the load balancer VM (assigned by DHCP)  
-    - +1 for the kubeapi server VIP (from the IP address pool)  
+*For the workload cluster:*  
+Control plane cluster:    
+- +1*n IP for each control plane node (assigned by DHCP)  
+- +1 for the load balancer VM (assigned by DHCP)  
+- +1 for the kubeapi server VIP (from the IP address pool)  
      
-*Target cluster*  
-    - 1*n for each worker node (assigned by DHCP)  
+*For the target cluster:*  
+- 1*n for each worker node (assigned by DHCP)  
  
 > [!NOTE]
 > N is for each service (with a minimum of one).
@@ -104,19 +104,19 @@ If you are planning to use static IP address assignments throughout the cluster,
 | MAC Pool Range | At least 16 IP addresses in the range to allow for multi/single node configurations |
 
 
-*Management cluster* 
-    - One IP for the management node VM   
-    - One IP for the load balancer VM  
-    - One IP for the API server    
+*For the management cluster:* 
+- One IP for the management node VM   
+- One IP for the load balancer VM  
+- One IP for the API server    
 
-*Workload cluster*  
+*For the workload cluster:*  
 Control plane cluster:  
-    - +1*n IP for each control plane node  
-    - +1 for the kubeapi server VIP  
-    - +1 for the the load balancer VM 
+- +1*n IP for each control plane node  
+- +1 for the kubeapi server VIP  
+- +1 for the the load balancer VM 
 
-*Target cluster*
-    - 1*n for each worker node 
+*For the target cluster:*
+- 1*n for each worker node 
  
 > [!NOTE]
 > N is for each service (with a minimum of one).
