@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/30/2020
+ms.date: 12/07/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -139,7 +139,7 @@ When you update to a new major version (for example, 1.2005.x to 1.2008.x), the 
 
 After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2008.16.94](https://support.microsoft.com/help/4595071)
+- [Azure Stack Hub hotfix 1.2008.19.100](https://support.microsoft.com/help/4595073)
 ::: moniker-end
 
 ::: moniker range="azs-2005"
