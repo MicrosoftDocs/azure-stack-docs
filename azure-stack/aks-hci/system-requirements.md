@@ -69,7 +69,7 @@ At a minimum, you should reserve the following number of DHCP addresses:
   
 | User-supplied value | Required IPs |
 |----------|------------------|
-| IP Pool Range | At least 3 IP addresses in range, recommended 16 or higher |
+| IP Pool Range | At least three IP addresses in range, however, 16 or higher IP addresses are recommended |
 | MAC Pool Range | At least 16 IP addresses in the range to allow for multi/single node configurations |
 
 *Management cluster*  
@@ -87,7 +87,7 @@ At a minimum, you should reserve the following number of DHCP addresses:
     - 1*n for each worker node (assigned by DHCP)  
  
 > [!NOTE]
-> N is for each service (with a minimum of one)
+> N is for each service (with a minimum of one).
 
  The IPv4 addresses provided by the DHCP server should be routable and have a 30-day lease expiration to avoid loss of IP connectivity in the event of a VM update or reprovisioning.    
 
@@ -98,10 +98,10 @@ If you are planning to use static IP address assignments throughout the cluster,
 | User-supplied value | Required IPs |
 |----------|------------------|
 | Subnet Prefix | Classless Interdomain Routing (CIDR) |
-| Gateway | one IP |
-| DNS Servers | up to three IPs |
+| Gateway | One IP address |
+| DNS Servers | Up to three IP addresses |
 | IP Range | At least 12 IP addresses in the range to allow for multi/single node configurations, it's recommended to have 32 or higher |
-| MAC Pool Range | At least 16 IPs in the range to allow for multi/single node configurations |
+| MAC Pool Range | At least 16 IP addresses in the range to allow for multi/single node configurations |
 
 
 *Management cluster* 
@@ -119,7 +119,7 @@ Control plane cluster:
     - 1*n for each worker node 
  
 > [!NOTE]
-> N is for each service (with a minimum of one)
+> N is for each service (with a minimum of one).
   
 ### Network port and URL requirements 
 
