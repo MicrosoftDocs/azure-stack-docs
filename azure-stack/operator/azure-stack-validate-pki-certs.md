@@ -239,6 +239,12 @@ Use these steps to validate the Azure Stack Hub PKI certificates for deployment 
 
 **Resolution**: Follow the tool's guidance in the details section under each set of tests for each certificate.
 
+**Symptom**: HTTP CRL Checking fails despite having a HTTP CDP written to x509 extensions.
+
+**Cause**: AzsReadinessChecker currently cannot check for HTTP CDP in some languages
+
+**Resolution**: Run validation with OS language set EN-US.
+
 ## Certificates
 
 | Directory | Certificate |
