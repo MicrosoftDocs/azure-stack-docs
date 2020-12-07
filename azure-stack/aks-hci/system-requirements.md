@@ -63,7 +63,7 @@ If you are planning to use DHCP for assigning IP address throughout the cluster:
 
  - The network must have an available DHCP server to provide TCP/IP addresses to the VMs and the VM hosts. The DHCP server should also contain network time protocol (NTP) and DNS host information. 
 
- - We also recommend having a DHCP server with a dedicated scope of IPv4 addresses accessible by the Azure Stack HCI cluster. For example, you can reserve 10.0.1.1 for the default gateway, reserve 10.0.1.2 to 10.0.1.102 for Kubernetes services (using -vipPoolStartIp and -vipPoolEndIp in Set-AksHciConfig), and use 10.0.1.103-10.0.1.254 for Kubernetes cluster VMs. 
+ - We also recommend having a DHCP server with a dedicated scope of IPv4 addresses accessible by the Azure Stack HCI cluster. For example, you can reserve 10.0.1.1 for the default gateway, reserve 10.0.1.2 to 10.0.1.102 for Kubernetes services (using `-vipPoolStartIp` and `-vipPoolEndIp` in `Set-AksHciConfig`), and use 10.0.1.103-10.0.1.254 for Kubernetes cluster VMs. 
 
 At a minimum, you should reserve the following number of DHCP addresses:
   
