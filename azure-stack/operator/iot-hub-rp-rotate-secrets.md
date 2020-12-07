@@ -5,9 +5,9 @@ author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 10/20/2020
+ms.date: 11/15/2020
 ms.reviewer: bryanla
-ms.lastreviewed: 10/20/2020
+ms.lastreviewed: 11/15/2020
 ---
 
 # How to rotate secrets for IoT Hub on Azure Stack Hub

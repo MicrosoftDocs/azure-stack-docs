@@ -5,8 +5,8 @@ description: Learn how to deploy the SQL Server resource provider on Azure Stack
 author: bryanla
 
 ms.topic: article
-ms.date: 10/02/2019
-ms.lastreviewed: 03/18/2019
+ms.date: 12/07/2020
+ms.lastreviewed: 12/07/2020
 ms.author: bryanla
 ms.reviewer: xiao
 
@@ -18,27 +18,32 @@ ms.reviewer: xiao
 
 # Deploy the SQL Server resource provider on Azure Stack Hub
 
-Use the Azure Stack Hub SQL Server resource provider to expose SQL databases as an Azure Stack Hub service. The SQL resource provider runs as a service on a Windows Server 2016 Server Core virtual machine (for adaptor version <= 1.1.47.0>) or a special Add-on RP Windows Server (for adaptor version >= 1.1.93.0).
+Use the Azure Stack Hub SQL Server resource provider to expose SQL databases as an Azure Stack Hub service. The SQL resource provider runs as a service on a Windows Server 2016 Server Core virtual machine (for adapter version <= 1.1.47.0>) or a special Add-on RP Windows Server (for adapter version >= 1.1.93.0).
 
 > [!IMPORTANT]
-> Only the resource provider is supported to create items on servers that host SQL or MySQL. Items created on a host server that aren't created by the resource provider might result in a mismatched state.
+> Only the resource provider should create items on servers that host SQL or MySQL. Items created on a host server that aren't created by the resource provider are unsupported, and may result in a mismatched state.
 
 ## Prerequisites
 
-There are several prerequisites that need to be in place before you can deploy the Azure Stack Hub SQL resource provider. To meet these requirements, complete the following steps on a computer that can access the privileged endpoint VM:
+There are several prerequisites that need to be in place before you can deploy the Azure Stack Hub SQL resource provider:
+
+- You'll need a computer and account that can access:
+   - the [Azure Stack Hub administrator portal](azure-stack-manage-portals.md).
+   - the [privileged endpoint](azure-stack-privileged-endpoint.md).
+   - the Azure Resource Manager admin endpoint, `https://management.region.<fqdn>`, where `<fqdn>` is your fully qualified domain name (or `https://management.local.azurestack.external` if using the ASDK)
+   - the Internet, if your Azure Stack Hub was deployed to use Azure Active Directory (AD) as your identity provider.
 
 - If you haven't already, [register Azure Stack Hub](azure-stack-registration.md) with Azure so you can download Azure Marketplace items.
 
 - Add the required Windows Server VM to Azure Stack Hub Marketplace.
-  * For SQL RP version <= 1.1.47.0, download the **Windows Server 2016 Datacenter - Server Core** image.
-  * For SQL RP version >= 1.1.93.0, download the **Microsoft AzureStack Add-On RP Windows Server INTERNAL ONLY** image. This Windows Server version is specialize for Azure Stack Add-On RP Infrastructure and it is not visible to the tenant marketplace.
-
+  - For SQL RP version <= 1.1.47.0, download the **Windows Server 2016 Datacenter - Server Core** image.
+  - For SQL RP version >= 1.1.93.0, download the **Microsoft AzureStack Add-On RP Windows Server INTERNAL ONLY** image. This Windows Server version is specialize for Azure Stack Add-On RP Infrastructure and it is not visible to the tenant marketplace.
 
 - Download the supported version of SQL resource provider binary according to the version mapping table below. Run the self-extractor to extract the downloaded contents to a temporary directory. 
 
   |Supported Azure Stack Hub version|SQL RP version|Windows Server that RP service is running on
   |-----|-----|-----|
-  |2005|[SQL RP version 1.1.93.0](https://aka.ms/azshsqlrp11930)|Microsoft AzureStack Add-on RP Windows Server INTERNAL ONLY
+  |2008, 2005|[SQL RP version 1.1.93.0](https://aka.ms/azshsqlrp11930)|Microsoft AzureStack Add-on RP Windows Server INTERNAL ONLY
   |2005, 2002, 1910|[SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470)|Windows Server 2016 Datacenter - Server Core|
   |1908|[SQL RP version 1.1.33.0](https://aka.ms/azurestacksqlrp11330)|Windows Server 2016 Datacenter - Server Core|
   |     |     |     |
@@ -103,7 +108,7 @@ _For integrated systems installations only_. You must provide the SQL PaaS PKI c
 
 ## Deploy the SQL resource provider
 
-After you've installed all the prerequisites, run the **DeploySqlProvider.ps1** script from a computer that can access both the Azure Stack Hub Admin Azure Resource Management Endpoint and Privileged Endpoint to deploy the SQL resource provider. The DeploySqlProvider.ps1 script is extracted as part of the SQL resource provider binary that you downloaded for your version of Azure Stack Hub.
+After you've completed all of the prerequisites, run the **DeploySqlProvider.ps1** script from a computer that can access both the Azure Stack Hub Azure Resource Manager admin endpoint and the privileged endpoint, to deploy the SQL resource provider. The DeploySqlProvider.ps1 script is extracted as part of the SQL resource provider binary that you downloaded for your version of Azure Stack Hub.
 
  > [!IMPORTANT]
  > Before deploying the resource provider, review the release notes to learn about new functionality, fixes, and any known issues that could affect your deployment.
@@ -111,7 +116,7 @@ After you've installed all the prerequisites, run the **DeploySqlProvider.ps1** 
 To deploy the SQL resource provider, open a **new** elevated PowerShell window (not PowerShell ISE) and change to the directory where you extracted the SQL resource provider binary files. 
 
 > [!IMPORTANT]
-> We recommend using a new PowerShell window to avoid potential problems caused by PowerShell modules that are already loaded. Or you can use clear-azurermcontext to clear the cache before running the update script.
+> We strongly recommend using **Clear-AzureRmContext -Scope CurrentUser** and **Clear-AzureRmContext -Scope Process** to clear the cache before running the update script.
 
 Run the DeploySqlProvider.ps1 script, which completes the following tasks:
 
@@ -135,7 +140,7 @@ You can specify the following parameters from the command line. If you don't, or
 | **AzCredential** | The credentials for the Azure Stack Hub service admin account. Use the same credentials that you used for deploying Azure Stack Hub. The script will fail if the account you use with AzCredential requires multi-factor authentication (MFA).| _Required_ |
 | **VMLocalCredential** | The credentials for the local admin account of the SQL resource provider VM. | _Required_ |
 | **PrivilegedEndpoint** | The IP address or DNS name of the privileged endpoint. |  _Required_ |
-| **AzureEnvironment** | The Azure environment of the service admin account used for deploying Azure Stack Hub. Required only for Azure AD deployments. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or if using a China Azure Active Directory, **AzureChinaCloud**. | AzureCloud |
+| **AzureEnvironment** | The Azure environment of the service admin account used for deploying Azure Stack Hub. Required only for Azure AD deployments. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or if using a China Azure AD, **AzureChinaCloud**. | AzureCloud |
 | **DependencyFilesLocalPath** | For integrated systems only, your certificate .pfx file must be placed in this directory. You can optionally copy one Windows Update MSU package here. | _Optional_ (_mandatory_ for integrated systems) |
 | **DefaultSSLCertificatePassword** | The password for the .pfx certificate. | _Required_ |
 | **MaxRetryCount** | The number of times you want to retry each operation if there's a failure.| 2 |

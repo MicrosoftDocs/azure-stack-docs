@@ -4,10 +4,10 @@ description: How to delete a VM (virtual machine) with dependencies on Azure Sta
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 07/15/2020
+ms.date: 12/7/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 07/15/2020
+ms.lastreviewed: 12/7/2020
 
 # Intent: As an Azure Stack user, I want to delete a VM with dependencies in Azure Stack Hub.
 # Keyword: virtual machine delete
@@ -52,7 +52,81 @@ In the case where you cannot delete the resource group, either the dependencies 
     2. Wait for the resource to be completely deleted.
     3. You can then delete the next dependency.
 
-### [With PowerShell](#tab/ps)
+### [With PowerShell](#tab/ps-az)
+
+In the case where you cannot delete the resource group, either the dependencies are not in the same resource group, or there are other resources, follow these steps.
+
+Connect to the your Azure Stack Hub environment, and then update the following variables with your VM name and resource group. For instructions on connecting to your PowerShell session to Azure Stack Hub, see [Connect to Azure Stack Hub with PowerShell as a user](azure-stack-powershell-configure-user.md).
+
+```powershell
+$machineName = 'VM_TO_DELETE'
+$resGroupName = 'RESOURCE_GROUP'
+$machine = Get-AzVM -Name $machineName -ResourceGroupName $resGroupName
+```
+
+Retrieve the VM information and name of dependencies. In the same session, run the following cmdlets:
+
+```powershell
+ $azResParams = @{
+ 'ResourceName' = $machineName
+ 'ResourceType' = 'Microsoft.Compute/virtualMachines'
+     'ResourceGroupName' = $resGroupName
+ }
+ $vmRes = Get-AzResource @azResParams
+ $vmId = $vmRes.Properties.VmId
+```
+
+Delete the boot diagnostic storage container. If your machine name is shorter than 9 characters, you will need to change the index to your string length in the substring when creating the `$diagContainer` variable. 
+
+In the same session, run the following cmdlets:
+
+```powershell
+$container = [regex]::match($machine.DiagnosticsProfile.bootDiagnostics.storageUri, '^http[s]?://(.+?)\.').groups[1].value
+$diagContainer = ('bootdiagnostics-{0}-{1}' -f $machine.Name.ToLower().Substring(0, 9), $vmId)
+$containerRg = (Get-AzStorageAccount | where { $_.StorageAccountName -eq $container }).ResourceGroupName
+$storeParams = @{
+    'ResourceGroupName' = $containerRg
+    'Name' = $container }
+Get-AzStorageAccount @storeParams | Get-AzureStorageContainer | where { $_.Name-eq $diagContainer } | Remove-AzureStorageContainer -Force
+```
+
+Remove the the virtual network interface.
+
+```powershell
+$machine | Remove-AzNetworkInterface -Force
+```
+
+Delete the operating system disk.
+
+```powershell
+$osVhdUri = $machine.StorageProfile.OSDisk.Vhd.Uri
+$osDiskConName = $osVhdUri.Split('/')[-2]
+$osDiskStorageAcct = Get-AzStorageAccount | where { $_.StorageAccountName -eq $osVhdUri.Split('/')[2].Split('.')[0] }
+$osDiskStorageAcct | Remove-AzureStorageBlob -Container $osDiskConName -Blob $osVhdUri.Split('/')[-1]
+```
+
+Remove the data disks attached to your VM.
+
+```powershell
+if ($machine.DataDiskNames.Count -gt 0)
+ {
+    Write-Verbose -Message 'Deleting disks...'
+        foreach ($uri in $machine.StorageProfile.DataDisks.Vhd.Uri )
+        {
+            $dataDiskStorageAcct = Get-AzStorageAccount -Name $uri.Split('/')[2].Split('.')[0]
+             $dataDiskStorageAcct | Remove-AzureStorageBlob -Container $uri.Split('/')[-2] -Blob $uri.Split('/')[-1] -ea Ignore
+        }
+ }
+```
+
+Finally, delete the VM. The cmdlet takes some time to run. You can audit the components attached to the VM by reviewing the VM object in PowerShell. To review the object, just refer to the variable that contains the VM object. Type `$machine`.
+
+To delete the VM, in the same session, run the following cmdlets:
+
+```powershell
+$machine | Remove-AzVM -Force
+```
+### [With PowerShell](#tab/ps-azureRM)
 
 In the case where you cannot delete the resource group, either the dependencies are not in the same resource group, or there are other resources, follow these steps.
 
@@ -126,7 +200,7 @@ To delete the VM, in the same session, run the following cmdlets:
 ```powershell
 $machine | Remove-AzureRmVM -Force
 ```
-
+---
 ## Next steps
 
 [Azure Stack Hub VM features](azure-stack-vm-considerations.md)

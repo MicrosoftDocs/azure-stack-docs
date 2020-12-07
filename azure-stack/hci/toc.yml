@@ -32,8 +32,6 @@
     items:
     - name: Create a cluster with PowerShell
       href: deploy/create-cluster-powershell.md
-    - name: Deploy Network Controller with PowerShell
-      href: deploy/network-controller-powershell.md
 - name: Manage
   items:
   - name: Manage VMs
@@ -74,6 +72,10 @@
       href: manage/update-cluster.md
     - name: Monitor the cluster
       href: manage/monitor-cluster.md
+    - name: Use Datacenter Firewall
+      href: manage/use-datacenter-firewall.md
+    - name: Use DISKSPD to test workloads
+      href: manage/diskspd-overview.md
     - name: Add or remove servers
       href: manage/add-cluster.md
     - name: Take a server offline for maintenance
@@ -124,8 +126,10 @@
       href: concepts/quorum.md
   - name: Networking
     items:
-    - name: Plan host networking
-      href: concepts/plan-host-networking.md
+    - name: Physical network requirements
+      href: concepts/physical-network-requirements.md
+    - name: Host network requirements
+      href: concepts/host-network-requirements.md
     - name: Software Defined Networking (SDN)
       href: concepts/software-defined-networking.md
     - name: Plan a SDN infrastructure
@@ -134,6 +138,8 @@
       href: concepts/network-controller-overview.md
     - name: Plan Network Controller
       href: concepts/network-controller.md
+    - name: Datacenter Firewall overview
+      href: concepts/datacenter-firewall-overview.md
     - name: Software Load Balancer overview
       href: concepts/software-load-balancer.md
     - name: RAS Gateway overview
@@ -154,6 +160,16 @@
     href: https://docs.microsoft.com/cli/azure/ext/stack-hci/stack-hci
   - name: Azure registration PowerShell commands
     href: https://docs.microsoft.com/powershell/module/az.stackhci
+  - name: Go package for ARM Azure Stack HCI service API
+    href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
+  - name: Azure Stack HCI Java service classes and interfaces
+    href: /java/api/com.microsoft.azure.management.azurestackhci.v2020_10_01
+  - name: Azure Stack HCI management service Python package
+    href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python
+  - name: Azure Stack HCI JavaScript package
+    href: /javascript/api/overview/azure/azurestack/stackhci?view=azure-node-latest
+  - name: .NET Namespaces for Azure Stack HCI
+    href: /dotnet/api/overview/azure/stackhci/management
   - name: Hyper-V PowerShell commands
     href: /powershell/module/hyper-v
   - name: Storage PowerShell commands

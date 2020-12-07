@@ -4,10 +4,10 @@ description: Learn how to install PowerShell for Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 11/11/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 11/11/2020
+ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack operator, I want to install Powershell Az for Azure Stack.
 # Keyword: install powershell azure stack Az
@@ -33,9 +33,9 @@ You can install Azure Stack Hub compatible PowerShell Az modules in Internet-con
 
 ## 1. Verify your prerequisites
 
-Az modules are supported only on [Azure Stack Hub with Update 2002](./release-notes.md?view=azs-2002#2002-build-reference) and the latest [hotfix](./release-notes.md?view=azs-2002#hotfixes).
+Az modules are supported on Azure Stack Hub with Update 2002 or later and with the current hotfixes installed. Please see the [Azure Stack Hub release notes](release-notes.md) for more information.
 
-Azure PowerShell works with PowerShell 5.1 or higher on Windows, or PowerShell Core 6.x and later on all platforms. You should install the
+The Azure PowerShell Az modules work with PowerShell 5.1 or higher on Windows, or PowerShell Core 6.x and later on all platforms. You should install the
 [latest version of PowerShell Core](/powershell/scripting/install/installing-powershell#powershell-core) available for your operating system. Azure PowerShell has no additional requirements when run on PowerShell Core.
 
 To check your PowerShell version, run the command:
