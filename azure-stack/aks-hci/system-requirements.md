@@ -72,18 +72,18 @@ At a minimum, you should reserve the following number of DHCP addresses:
 | IP pool range | At least three IP addresses in range, however, 16 or higher IP addresses are recommended |
 | MAC pool range | At least 16 IP addresses in the range to allow for multi/single node configurations |
 
-*For the management cluster:*  
+For the management cluster:  
 - One IP for the management node VM (assigned by DHCP)  
 - One IP for the load balancer VM (assigned by DHCP)  
 - One IP for the API server (from the IP address pool)  
 
-*For the workload cluster:*  
-Control plane cluster:    
+For the workload cluster:  
+Control plane cluster -    
 - +1*n IP for each control plane node (assigned by DHCP)  
 - +1 for the load balancer VM (assigned by DHCP)  
 - +1 for the kubeapi server VIP (from the IP address pool)  
      
-*For the target cluster:*  
+For the target cluster:  
 - 1*n IP for each worker node (assigned by DHCP)  
  
 > [!NOTE]
@@ -104,18 +104,18 @@ If you are planning to use static IP address assignments throughout the cluster,
 | MAC pool range | At least 16 IP addresses in the range to allow for multi/single node configurations |
 
 
-*For the management cluster:* 
+For the management cluster: 
 - One IP for the management node VM   
 - One IP for the load balancer VM  
 - One IP for the API server    
 
-*For the workload cluster:*  
+For the workload cluster: 
 Control plane cluster:  
 - +1*n IP for each control plane node  
 - +1 for the kubeapi server VIP  
 - +1 for the the load balancer VM 
 
-*For the target cluster:*
+For the target cluster:
 - 1*n for each worker node 
  
 > [!NOTE]
