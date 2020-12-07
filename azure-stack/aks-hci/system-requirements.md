@@ -24,9 +24,9 @@ For Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacente
 
  - Ensure the user account(s) that adds updates, and manages Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter clusters has the correct permissions in Active Directory. If you are using Organizational Units (OUs) to manage group policies for servers and services, the user account(s) will require list, read, modify, and delete permissions on all objects in the OU. 
 
- - We recommend using a separate OU for the servers and services you add your Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter clusters to. This will allow you to control access and permissions with more granularity.
+ - We recommend using a separate OU for the servers and services to which you add your Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter clusters. Using a separate OU allows you to control access and permissions with more granularity.
 
- - If you are using GPO templates on containers in Active Directory, ensure deploying AKS-HCI is exempt from that policy. Server hardening will be available in a subsequent preview release.
+ - If you are using GPO templates on containers in Active Directory, ensure deploying AKS-HCI is exempt from the policy. Server hardening will be available in a subsequent preview release.
 
 ## Compute requirements
 
@@ -54,18 +54,18 @@ The following requirements apply to an Azure Stack HCI cluster as well as a Wind
 
  - For this preview release, we have limited proxy support for Kubernetes clusters created through PowerShell. 
  
-### IP Address assignment  
+### IP address assignment  
  
-There are two options for assigning IP addresses in an AKA HCI cluster: a DHCP automatic assignment or a static IP address assignment. Each one has it's own set of requirements.
+There are two options for assigning IP addresses in an AKA HCI cluster: an automatic DHCP assignment or a static IP address assignment. Each one has it's own set of requirements.
 
 #### DHCP
-If you are planning to use DHCP for IP address assignment throughout the cluster:  
+If you are planning to use DHCP for assigning IP address throughout the cluster:  
 
- - The network must have an available DHCP server to provide TCP/IP addresses to the VMs and VM hosts. The DHCP server should also contain NTP and DNS host information. 
+ - The network must have an available DHCP server to provide TCP/IP addresses to the VMs and the VM hosts. The DHCP server should also contain network time protocol (NTP) and DNS host information. 
 
  - We also recommend having a DHCP server with a dedicated scope of IPv4 addresses accessible by the Azure Stack HCI cluster. For example, you can reserve 10.0.1.1 for the default gateway, reserve 10.0.1.2 to 10.0.1.102 for Kubernetes services (using -vipPoolStartIp and -vipPoolEndIp in Set-AksHciConfig), and use 10.0.1.103-10.0.1.254 for Kubernetes cluster VMs. 
 
-How many DHCP addresses to reserve? (minimum)  
+At a minimum, you should reserve the following number of DHCP addresses:
   
 | User Supplied Value | Required IPs |
 |----------|------------------|
@@ -75,35 +75,33 @@ How many DHCP addresses to reserve? (minimum)
 *Management cluster*  
     - One IP for the management node VM (assigned by DHCP)  
     - One IP for the load balancer VM (assigned by DHCP)  
-    - One IP for the API server (from above IP address pool)  
+    - One IP for the API server (from the IP address pool)  
 
 *Workload cluster*    
     Control plane cluster:
     - +1*n IP for each control plane node (assigned by DHCP)  
     - +1 for the load balancer VM (assigned by DHCP)  
-    - +1 for the kubeapi server VIP (from pool)  
+    - +1 for the kubeapi server VIP (from the IP address pool)  
      
 *Target cluster*  
     - 1*n for each worker node (assigned by DHCP)  
-
+ 
 > [!NOTE]
-> N for each service (minimum 1)
-
-
+> N is for each service (with a minimum of one)
 
  The IPv4 addresses provided by the DHCP server should be routable and have a 30-day lease expiration to avoid loss of IP connectivity in the event of a VM update or reprovisioning.    
 
-#### Static ip  
+#### Static IP  
 
-If you are planning to use static IP address assignments throughout the cluster, you need to ensure the ranges that are made available contain the following minimum amount of IP addresses.
+If you are planning to use static IP address assignments throughout the cluster, you need to ensure the available ranges contain the following minimum amount of IP addresses.
   
 | User Supplied Value | Required IPs |
 |----------|------------------|
-| Subnet Prefix | CIDR |
-| Gateway | 1 IP |
-| DNS Servers | Up to 3 IPs |
-| IP Range | At least 12 IP addresses in the range to allow for multi/single node configurations, recommended 32 or higher |
-| MAC Pool Range | At least 16 IPs in range to allow for multi/single node configurations |
+| Subnet Prefix | Classless Interdomain Routing (CIDR) |
+| Gateway | one IP |
+| DNS Servers | up to three IPs |
+| IP Range | At least 12 IP addresses in the range to allow for multi/single node configurations, it's recommended to have 32 or higher |
+| MAC Pool Range | At least 16 IPs in the range to allow for multi/single node configurations |
 
 
 _Management cluster:_  
@@ -112,15 +110,16 @@ _Management cluster:_
     - One IP for the API server    
 
 _Workload cluster_  
-Control Plane cluster:  
-    - +1*n ip for each control plane node  
-    - +1 for the kubeapi server vip  
+Control plane cluster:  
+    - +1*n IP for each control plane node  
+    - +1 for the kubeapi server VIP  
     - +1 for the the load balancer VM 
 
 Target cluster:
     - 1*n for each worker node 
-
-N for each service (minimum 1)
+ 
+> [!NOTE]
+> N is for each service (with a minimum of one)
   
 ### Network port and URL requirements 
 
