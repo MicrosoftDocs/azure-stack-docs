@@ -3,7 +3,7 @@ title: Register Azure Stack Hub with Azure
 description: Learn how to register Azure Stack Hub with Azure so you can download Azure Marketplace items and set up data reporting. 
 author: sethmanheim
 ms.topic: article
-ms.date: 12/04/2020
+ms.date: 12/07/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 10/26/2020
@@ -118,20 +118,7 @@ Connected environments can access the internet and Azure. For these environments
 
 1. To register the Azure Stack Hub resource provider with Azure, start PowerShell ISE as an administrator and use the following PowerShell cmdlets with the **EnvironmentName** parameter set to the appropriate Azure subscription type (see parameters as follows).
 
-2. Add the Azure account that you used to register Azure Stack Hub. To add the account, run the **Add-AzureRmAccount** cmdlet. You are prompted to enter your Azure account credentials, and you may have to use two-factor authentication based on your account configuration.
-
-   ```powershell
-   Add-AzureRmAccount -EnvironmentName "<environment name>"
-   ```
-
-   | Parameter | Description |  
-   |-----|-----|
-   | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or **AzureUSSec**.   |
-
-   >[!NOTE]
-   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using **Add-AzureRmAccount**: **Remove-AzureRmAccount-Scope Process**.
-
-3. In the same PowerShell session, ensure you're signed in to the correct Azure PowerShell context. This context is the Azure account that was used to register the Azure Stack Hub resource provider previously:
+2. In the same PowerShell session, ensure you're signed in to the correct Azure PowerShell context. This context is the Azure account that was used to register the Azure Stack Hub resource provider previously:
 
    ```powershell
    Connect-AzureRmAccount -Environment "<environment name>"
@@ -148,13 +135,16 @@ Connected environments can access the internet and Azure. For these environments
    |-----|-----|
    | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or **AzureUSSec**. |
 
-4. If you have multiple subscriptions, run the following command to select the one you want to use:
+   >[!NOTE]
+   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using **Add-AzureRmAccount**: **Remove-AzureRmAccount-Scope Process**.
+
+3. If you have multiple subscriptions, run the following command to select the one you want to use:
 
    ```powershell  
    Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
    ```
 
-5. Run the following command to register the Azure Stack Hub resource provider with your Azure subscription:
+4. Run the following command to register the Azure Stack Hub resource provider with your Azure subscription:
 
    ```powershell  
    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
@@ -164,7 +154,7 @@ Connected environments can access the internet and Azure. For these environments
 
    ![Register Azure Stack Hub Resource Provider](./media/registration-tzl/register-azure-resource-provider-portal.png)
 
-6. In the same PowerShell session, run the **Set-AzsRegistration** cmdlet:
+5. In the same PowerShell session, run the **Set-AzsRegistration** cmdlet:
 
    ```powershell  
    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
