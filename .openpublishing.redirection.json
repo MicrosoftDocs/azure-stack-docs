@@ -1,6 +1,11 @@
 {
   "redirections": [
     { 
+      "source_path": "azure-stack/mdc/customer-journey.md", 
+      "redirect_url": "/azure-stack/mdc/integration-overview", 
+      "redirect_document_id": false
+    }, 
+    { 
       "source_path": "azure-stack/aks-hci/persistent-storage-windows-nodes.md", 
       "redirect_url": "/azure-stack/aks-hci/persistent-volume", 
       "redirect_document_id": false
