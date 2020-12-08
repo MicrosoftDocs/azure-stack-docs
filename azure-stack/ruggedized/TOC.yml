@@ -8,6 +8,10 @@
       href: ruggedized-overview.md
     - name: Known issues in Azure Stack Hub ruggedized
       href: known-issues.md
+    - name: TCA OEM release notes
+      href: oem-release-notes-tca.md
+    - name: TDC OEM release notes
+      href: oem-release-notes-tdc.md  
   - name: Quickstarts
     items:
     - name: Use the administrator portal
