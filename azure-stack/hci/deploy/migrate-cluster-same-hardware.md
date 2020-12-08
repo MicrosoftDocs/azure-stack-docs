@@ -3,7 +3,7 @@ title: Migrate to Azure Stack HCI on same hardware
 description: Learn how to migrate a cluster to Azure Stack HCI on the same hardware
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 12/04/2020 
+ms.date: 12/08/2020 
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---

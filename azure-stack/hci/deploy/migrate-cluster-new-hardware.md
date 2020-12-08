@@ -44,7 +44,7 @@ There are several requirements and things to consider before you begin migration
 
 - Both clusters must be connected to the same time source to support consistent Kerberos authentication between clusters.
 
-- Make note of the Hyper-V virtual switch name used by VMs on the source cluster. You must use the same virtual switch name for the Azure Stack HCI destination cluster `virtual machine network` prior to importing VMs.
+- Make note of the Hyper-V virtual switch name used by VMs on the source cluster. You must use the same virtual switch name for the Azure Stack HCI destination cluster "virtual machine network" prior to importing VMs.
 
 - Remove any ISO image files for your source VMs. This is done using Hyper-V Manager in **VM Properties** in the **Hardware section**. Click **Remove** for any virtual CD/DVD drives.
 
@@ -95,13 +95,13 @@ The following commands apply to Windows Server 2012 R2 and later. Use the follow
 Get-VM * | Format-Table Name,Version
 ```
 
-To show all VM versions across all nodes on a cluster:
+To show all VM versions across all servers on a cluster:
 
 ```powershell
 Get-VM –ComputerName (Get-ClusterNode)
 ```
 
-To update all VMs to the latest supported version on all server nodes:
+To update all VMs to the latest supported version on all servers:
 
 ```powershell
 Get-VM –ComputerName (Get-ClusterNode) | Update-VMVersion -Force
@@ -138,10 +138,10 @@ The migration script is run locally on each source server to leverage the benefi
 
 1. Make sure each destination cluster node is set to the CSV owner for the destination CSV.
 
-1. To determine the location of all VM VHD and VHDX files to be copied, use the following cmdlet. This also ensures only VM data is copied.
+1. To determine the location of all VM VHD and VHDX files to be copied, use the following cmdlet. Review the `C:\vmpaths.txt` file to determine the topmost source file path for Robocopy to start from for step 4:
 
     ```powershell  
-    Get-ChildItem -Path "C:\Clusterstorage\Volume01\*.vhd*" -Recurse
+    Get-ChildItem -Path "C:\Clusterstorage\Volume01\*.vhd*" -Recurse > c:\vmpaths.txt
     ```
 
     > [!NOTE]
@@ -153,7 +153,7 @@ The migration script is run locally on each source server to leverage the benefi
     - `$source  = "C:\Clusterstorage\Volume01"`
     - `$dest = "\\$Dest_Server\C$\Clusterstorage\Volume01"`
 
-Here is the script:
+You are ready to run the script:
 
 ```powershell
 <#
@@ -254,7 +254,11 @@ Perform the following steps on your Azure Stack HCI cluster to import, make high
 
 ## Migrating older VMs
 
-If you have Windows Server 2008 SP1, Windows Server 2008 R2-SP1, Windows Server 2012, or Windows Server 2012 R2 VMs, this section applies to you. You have two options for handling these VMs.
+If you have Windows Server 2008 SP1, Windows Server 2008 R2-SP1, Windows Server 2012, or Windows Server 2012 R2 VMs, this section applies to you. You have two options for handling these VMs:
+
+- Migrate these VMs to Windows Server 2012 R2, Windows Server 2016, or Windows Server 2019 first, update the VM version, then begin the migration process.
+
+- Use Robocopy to copy all VM VHDs to Azure Stack HCI. Then create new VMs and attach the copied VHDs to the VMs in Azure Stack HCI. This bypasses the VM version limitation for these older VMs.
 
 Windows Server 2012 R2 and older Hyper-V hosts use an XML file format for their VM configuration, which is different than the VCMX file format used for Windows Server 2016 and later Hyper-V hosts. This requires a different Robocopy command to copy these VMs to Azure Stack HCI.
 
@@ -287,12 +291,12 @@ This is a two-stage migration used for VMs hosted on Windows Server 2008 SP1, Wi
 
 ### Option 2: Direct VHD copy
 
-This method uses Robocopy to copy VM VHDs that are hosted on Windows 2008 SP1, Windows 2008 R2-SP1, and Windows 2012 to Azure Stack HCI. This bypasses the minimum supported VM version limitation for these older VMs.
+This method uses Robocopy to copy VM VHDs that are hosted on Windows 2008 SP1, Windows 2008 R2-SP1, and Windows 2012 to Azure Stack HCI. This bypasses the minimum supported VM version limitation for these older VMs. We recommend this option for VMs hosted on Windows Server 2008 SP1 and Windows Server 2008 R2-SP1.
 
-VMs hosted on Windows 2008 SP1, Windows 2008 R2-SP1, and Windows 2012 are Generation 1 VMs with Generation 1 VHDs. As such, corresponding Generation 1 VMs are created on Azure Stack HCI so that the copied VHDs can be attached to the new VMs. Note that these VHDs cannot be upgraded to Generation 2 VHDs.
+VMs hosted on Windows 2008 SP1 and Windows 2008 R2-SP1 support only Generation 1 VMs with Generation 1 VHDs. As such, corresponding Generation 1 VMs need to be created on Azure Stack HCI so that the copied VHDs can be attached to the new VMs. Note that these VHDs cannot be upgraded to Generation 2 VHDs.
 
 > [!NOTE]
-> We recommend option 2 for VMs hosted on Windows Server 2008 SP1 and Windows Server 2008 R2-SP1.
+> Windows Server 2012 supports both Generation 1 and Generation 2 VMs.
 
 Here is the process you use:
 
