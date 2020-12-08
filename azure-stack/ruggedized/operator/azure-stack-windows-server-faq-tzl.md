@@ -21,7 +21,7 @@ ms.lastreviewed: 12/16/2019
 
 # Windows Server in Azure Stack marketplace FAQ
 
-This article answers some frequently asked questions about Windows Server images in the [Azure Stack Hub marketplace](azure-stack-marketplace.md).
+This article answers some frequently asked questions about Windows Server images in the [Azure Stack Hub marketplace](../../operator/azure-stack-marketplace.md).
 
 ## What are the licensing options for Windows Server Marketplace images on Azure Stack?
 
@@ -95,5 +95,5 @@ Contact Microsoft support to verify that the correct BIOS markers were installed
 
 For more information, see the following articles:
 
-- [Azure Stack Marketplace overview](azure-stack-marketplace.md)
-- [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md)
+- [Azure Stack Marketplace overview](../../operator/azure-stack-marketplace.md)
+- [Download marketplace items from Azure to Azure Stack](../..operator/azure-stack-download-azure-marketplace-item-tca.md)

@@ -26,7 +26,7 @@ You can back up infrastructure service metadata using the Azure Stack Infrastruc
 
 By default, infrastructure backup is enabled at deployment time. These backups are stored internal to the system and only accessible during advanced support cases. If the system has access to an external storage location, the infrastructure backup service can be instructed to export a backup to that storage location as a secondary copy.
 
-Before you enable your backup service, make sure you have the [requirements in place](azure-stack-backup-reference.md#backup-controller-requirements).
+Before you enable your backup service, make sure you have the [requirements in place](../..operator/azure-stack-backup-reference.md#backup-controller-requirements).
 
 > [!NOTE]
 > The Infrastructure Backup Service doesn't include user data and apps. For more info about how to protect IaaS VM-based apps, see the following articles:
@@ -48,13 +48,13 @@ The service contains the following features:
 ## Verify requirements for the Infrastructure Backup Service
 
 - **Storage location**
-  If there is reliable access to an external storage location, you need a file share accessible from the Azure Stack infrastructure that can store multiple backups. For more information about selecting a storage location for the Infrastructure Backup Service, see [Backup Controller requirements](azure-stack-backup-reference.md#backup-controller-requirements).
+  If there is reliable access to an external storage location, you need a file share accessible from the Azure Stack infrastructure that can store multiple backups. For more information about selecting a storage location for the Infrastructure Backup Service, see [Backup Controller requirements](../..operator/azure-stack-backup-reference.md#backup-controller-requirements).
 
 - **Credentials**
   You need user account credentials that can access the storage location.
 
 ## Next steps
 
-- Learn how to [Enable Backup for Azure Stack from the administrator portal](azure-stack-backup-enable-backup-console.md).
+- Learn how to [Enable Backup for Azure Stack from the administrator portal](../..operator/azure-stack-backup-enable-backup-console.md).
 
-- Learn how to [Enable Backup for Azure Stack with PowerShell](azure-stack-backup-enable-backup-powershell.md).
+- Learn how to [Enable Backup for Azure Stack with PowerShell](../..operator/azure-stack-backup-enable-backup-powershell.md).

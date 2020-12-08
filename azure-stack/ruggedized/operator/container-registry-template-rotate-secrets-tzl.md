@@ -280,4 +280,4 @@ Follow the instructions below to set new secrets in Key Vault.
 
 ## Next steps
 
-[Azure Stack Marketplace overview](azure-stack-marketplace.md)
+[Azure Stack Marketplace overview](../..operator/azure-stack-marketplace.md)

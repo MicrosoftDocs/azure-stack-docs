@@ -59,7 +59,7 @@ Azure Stack Hub operators can download items to the local Azure Stack Marketplac
 
 ## Upload and publish manually
 
-In disconnected environments, the item must be downloaded from Azure, and then uploaded to Azure Stack Hub manually. For more information, see the [full instructions for connected and disconnected environments](azure-stack-download-azure-marketplace-item.md).
+In disconnected environments, the item must be downloaded from Azure, and then uploaded to Azure Stack Hub manually. For more information, see the [full instructions for connected and disconnected environments](../..operator/azure-stack-download-azure-marketplace-item.md).
 
 ## Deployment considerations
 

@@ -63,7 +63,7 @@ The list of active alerts for each Azure Stack region is available directly from
 The **Alerts** blade supports the ability to filter both on status (Active or Closed) and severity (Critical or Warning). The default view displays all active alerts. All closed alerts are removed from the system after seven days.
 
 >[!Note]
->If an alert remains active but hasn't been updated in over a day, you can run [Test-AzureStack](azure-stack-diagnostic-test.md) and close the alert if no problems are reported.
+>If an alert remains active but hasn't been updated in over a day, you can run [Test-AzureStack](../..operator/azure-stack-diagnostic-test.md) and close the alert if no problems are reported.
 
 ![Filter pane to filter by critical or warning status in Azure Stack administrator portal](media/azure-stack-monitor-health/alert-view.png)
 
@@ -89,6 +89,6 @@ After the infrastructure role instance is back online, this alert automatically 
 
 ## Next steps
 
-[Manage updates in Azure Stack](azure-stack-updates.md)
+[Manage updates in Azure Stack](../..operator/azure-stack-updates.md)
 
-[Region management in Azure Stack](azure-stack-region-management.md)
+[Region management in Azure Stack](../..operator/azure-stack-region-management.md)
