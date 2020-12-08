@@ -118,6 +118,7 @@ Use the following steps to register an Azure Stack Hub system that has connectiv
 
 Connected environments can access the internet and Azure. For these environments, register the Azure Stack Hub resource provider with Azure and then configure your billing model.
 
+
 ### [Az modules](#tab/az1)
 
 1. To register the Azure Stack Hub resource provider with Azure, start PowerShell ISE as an administrator and use the following PowerShell cmdlets with the **EnvironmentName** parameter set to the appropriate Azure subscription type (see parameters as follows).
@@ -184,20 +185,20 @@ Connected environments can access the internet and Azure. For these environments
 ### [AzureRM modules](#tab/azurerm1)
 
 1. To register the Azure Stack Hub resource provider with Azure, start PowerShell ISE as an administrator and use the following PowerShell cmdlets with the **EnvironmentName** parameter set to the appropriate Azure subscription type (see parameters as follows).
-
+  
 2. Add the Azure account that you used to register Azure Stack Hub. To add the account, run the **Add-AzureRmAccount** cmdlet. You are prompted to enter your Azure account credentials, and you may have to use two-factor authentication based on your account configuration.
-
+   
    ```powershell
    Add-AzureRmAccount -EnvironmentName "<environment name>"
    ```
-
+   
    | Parameter | Description |  
    |-----|-----|
    | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud** or **AzureUSGovernment**.  |
-
+   
    >[!NOTE]
    > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using **Add-AzureRmAccount**: **Remove-AzureRmAccount-Scope Process**.
-
+   
 3. In the same PowerShell session, ensure you're signed in to the correct Azure PowerShell context. This context is the Azure account that was used to register the Azure Stack Hub resource provider previously:
 
    ```powershell  
