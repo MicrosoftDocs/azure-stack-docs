@@ -116,15 +116,88 @@ Use the following steps to register an Azure Stack Hub system that has connectiv
 
 Connected environments can access the internet and Azure. For these environments, register the Azure Stack Hub resource provider with Azure and then configure your billing model.
 
+
+### [Az modules](#tab/az1)
+
 1. To register the Azure Stack Hub resource provider with Azure, start PowerShell ISE as an administrator and use the following PowerShell cmdlets with the **EnvironmentName** parameter set to the appropriate Azure subscription type (see parameters as follows).
 
-2. In the same PowerShell session, ensure you're signed in to the correct Azure PowerShell context. This context is the Azure account that was used to register the Azure Stack Hub resource provider previously:
+2. Add the Azure account that you used to register Azure Stack Hub. To add the account, run the **Add-AzAccount** cmdlet. You are prompted to enter your Azure account credentials, and you may have to use two-factor authentication based on your account configuration.
 
    ```powershell
-   Connect-AzureRmAccount -Environment "<environment name>"
+   Add-AzAccount -EnvironmentName "<environment name>"
    ```
 
-   For **AzureUSSec**, you must first initialize the `CustomCloud` environment and then call **Connect-AzureRmAccount**:
+   | Parameter | Description |  
+   |-----|-----|
+   | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud** or **AzureUSGovernment**.  |
+
+   >[!NOTE]
+   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using **Add-AzAccount**: **Remove-AzAccount-Scope Process**.
+
+3. In the same PowerShell session, ensure you're signed in to the correct Azure PowerShell context. This context is the Azure account that was used to register the Azure Stack Hub resource provider previously:
+
+   ```powershell  
+   Connect-AzAccount -Environment "<environment name>"
+   ```
+
+   | Parameter | Description |  
+   |-----|-----|
+   | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud** or **AzureUSGovernment**.  |
+
+4. If you have multiple subscriptions, run the following command to select the one you want to use:
+
+   ```powershell  
+   Get-AzSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzSubscription
+   ```
+
+5. Run the following command to register the Azure Stack Hub resource provider with your Azure subscription:
+
+   ```powershell  
+   Register-AzResourceProvider -ProviderNamespace Microsoft.AzureStack
+   ```
+
+   Alternatively, you can register the Azure Stack Hub resource provider in your Azure Subscription using the Azure portal. Log into the Azure portal using the account associated with Azure subscription. Go to **Categories** > **General** > **Subscriptions** and select the subscription ID that you need to register the Azure Stack Hub resource provider to. On the left-hand pane, navigate to **Settings** > **Resource Providers**. Select **Microsoft.AzureStack** resource provider and select **Register**.
+
+   ![Register Azure Stack Hub Resource Provider](./media/registration-tzl/register-azure-resource-provider-portal.png)
+
+
+6. In the same PowerShell session, run the **Set-AzsRegistration** cmdlet:
+
+   ```powershell  
+   $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
+   $msAssetTag = "Enter the value printed on the product"
+   $RegistrationName = "<unique-registration-name>"
+
+   Set-AzsRegistration `
+      -PrivilegedEndpointCredential $CloudAdminCred `
+      -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
+      -BillingModel Custom `
+      -RegistrationName $RegistrationName `
+      -msAssetTag $msAssetTagName `
+      -UsageReportingEnabled: $false
+   ```
+   The MS Asset tag (`msAssetTag`) is a mandatory for Custom billing model registration and is printed on the product.
+    
+   The process takes between 10 and 15 minutes. When the command completes, you see the message. **Your environment is now registered and activated using the provided parameters.**
+
+### [AzureRM modules](#tab/azurerm1)
+
+1. To register the Azure Stack Hub resource provider with Azure, start PowerShell ISE as an administrator and use the following PowerShell cmdlets with the **EnvironmentName** parameter set to the appropriate Azure subscription type (see parameters as follows).
+  
+2. Add the Azure account that you used to register Azure Stack Hub. To add the account, run the **Add-AzureRmAccount** cmdlet. You are prompted to enter your Azure account credentials, and you may have to use two-factor authentication based on your account configuration.
+   
+   ```powershell
+   Add-AzureRmAccount -EnvironmentName "<environment name>"
+   ```
+   
+   | Parameter | Description |  
+   |-----|-----|
+   | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud** or **AzureUSGovernment**.  |
+   
+   >[!NOTE]
+   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using **Add-AzureRmAccount**: **Remove-AzureRmAccount-Scope Process**.
+   
+3. In the same PowerShell session, ensure you're signed in to the correct Azure PowerShell context. This context is the Azure account that was used to register the Azure Stack Hub resource provider previously:
 
    ```powershell
    Initialize-AzureRmEnvironment -Name 'CustomCloud' -CloudManifestFilePath $CloudManifestFilePath
@@ -174,6 +247,9 @@ Connected environments can access the internet and Azure. For these environments
 
    The process takes between 10 and 15 minutes. When the command completes, you see the message. **Your environment is now registered and activated using the provided parameters.**
 
+---
+
+
 ## Registration and activation for systems not connected to the Azure cloud 
 
 If you're registering Azure Stack Hub in a disconnected environment (with no internet connectivity), perform the following steps:
@@ -214,6 +290,43 @@ On the computer that is connected to the internet, sign-in to the correct Azure 
 
 You need your registration token and a unique token name.
 
+### [Az modules](#tab/az2)
+
+1. From an elevated PowerShell prompt, run the following cmdlets to make sure your are using the right subscription.
+
+    ```powershell  
+    Get-AzSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzSubscription
+    ```
+
+2. Then, run the following PowerShell cmdlets:
+
+    ```powershell  
+    $RegistrationToken = "<Your Registration Token>"
+    $RegistrationName = "<unique-registration-name>"
+    Register-AzsEnvironment -RegistrationToken $RegistrationToken -RegistrationName $RegistrationName
+    ```
+
+3. Optionally, you can use the **Get-Content** cmdlet to point to a file that contains your registration token.
+
+   You need your registration token and a unique token name.
+
+   1. Start PowerShell ISE as an administrator and navigate to the **Registration** folder in the **AzureStack-Tools-master** directory created when you downloaded the Azure Stack Hub tools. Import the **RegisterWithAzure.psm1** module:
+
+      ```powershell  
+      Import-Module .\RegisterWithAzure.psm1
+      ```
+
+   2. Then, run the following PowerShell cmdlets:
+
+      ```powershell  
+      $RegistrationToken = Get-Content -Path '<Path>\<Registration Token File>'
+      Register-AzsEnvironment -RegistrationToken $RegistrationToken -RegistrationName $RegistrationName
+      ```
+
+> [!NOTE]  
+> Save the registration resource name and the registration token for future reference.
+### [AzureRM modules](#tab/azurerm2)
+
 1. From an elevated PowerShell prompt, run the following cmdlets to make sure your are using the right subscription.
 
     ```powershell  
@@ -247,6 +360,8 @@ You need your registration token and a unique token name.
 
 > [!NOTE]  
 > Save the registration resource name and the registration token for future reference.
+
+---
 
 ### Retrieve an activation key from Azure registration resource
 
