@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/24/2020
+ms.date: 12/8/2020
 ---
 
 # Release notes for Azure Stack HCI Public Preview
@@ -14,6 +14,29 @@ ms.date: 11/24/2020
 > Applies to: Azure Stack HCI, version 20H2
 
 This article describes the contents of Azure Stack HCI Public Preview update packages.
+
+## December 8, 2020 Security Update (KB4592441)
+
+This update includes improvements and fixes for the latest release of Azure Stack HCI. 
+
+### Improvements and fixes
+This update contains miscellaneous security improvements to internal OS functionality. It addresses a security vulnerability by preventing applications that run as a SYSTEM account from printing to "FILE:" ports. To address this issue in the future, make sure your applications or services run as a specific user or service account.
+
+No additional issues were documented for this release.
+
+For more information about the resolved security vulnerabilities, please refer to the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance).
+
+### Known issues in this update
+Microsoft is not currently aware of any issues with this update.
+
+### How to get this update
+The December 8, 2020 security update (KB4592441) for [Azure Stack HCI preview](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
+
+### File information
+For a list of the files that are provided in this update (OS Build 17784.1408), download the [file information for cumulative update 4592441](https://download.microsoft.com/download/2/7/2/272ea75f-1657-43ce-a7a4-a17d51463a94/4592441.csv).
+
+   > [!NOTE]
+   > Some files erroneously have "Not applicable" in the "File version" column of the CSV file. This might lead to false positives or false negatives when using some third-party scan detection tools to validate the build.
 
 ## November 23, 2020 Preview Update (KB4586852)
 
