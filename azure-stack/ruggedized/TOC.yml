@@ -121,7 +121,7 @@
           - name: Deploy App Service
             href: ../operator/azure-stack-app-service-deploy.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: Deploy App Service for high availability
-            href:  ../operator/app-service-deploy-ha.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+            href: ../operator/app-service-deploy-ha.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: Deploy App Service offline
             href: ../operator/azure-stack-app-service-deploy-offline.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Event Hubs
