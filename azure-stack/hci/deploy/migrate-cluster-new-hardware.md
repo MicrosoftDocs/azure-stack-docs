@@ -3,7 +3,7 @@ title: Migrate to Azure Stack HCI on new hardware
 description: Learn how to migrate to Azure Stack HCI on new hardware 
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 12/08/2020 
+ms.date: 12/10/2020 
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -14,10 +14,8 @@ ms.reviewer: JasonGerend
 
 This topic describes how to migrate virtual machine (VM) files on Windows Server 2012 R2, Windows Server 2016, or Windows Server 2019 to new Azure Stack HCI server hardware using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one server to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy).
 
-Robocopy also supports file copy over SMB with compression using the `/compress` switch for Windows Server 2019 and later. When compression is used, inline whitespace compression to file transfers is applied, removing congestion and copy time. Depending on the file format and I/O pattern, the performance increase can be up to fourfold. For more information, see the [Windows Blogs](https://blogs.windows.com/windowsexperience/2020/09/02/announcing-windows-server-vnext-preview-build-20206/) post and [KB4571748](https://support.microsoft.com/help/4571748/windows-10-update-kb4571748).
-
 > [!NOTE]
-> Hyper-V Live or Storage migration to Azure Stack HCI is not supported.
+> Hyper-V Live Migration and Hyper-V Replica migration from Windows Server to Azure Stack HCI is not supported.
 
 If you have VMs on Windows 2012 R2 or older that you want to migrate, see [Migrating older VMs](#migrating-older-vms).
 
@@ -129,6 +127,8 @@ Use Windows Admin Center or Windows PowerShell to create the new cluster. For in
 ## Run the migration script
 
 The following PowerShell script `Robocopy_Remote_Server_.ps1` uses Robocopy to copy VM files and their dependent directories and metadata from the source to the destination cluster. This script has been modified from  from the original script on TechNet at: [Robocopy Files to Remote Server Using PowerShell and RoboCopy](https://gallery.technet.microsoft.com/scriptcenter/Robocoy-Files-to-Remote-bdfc5154).
+
+Robocopy supports file copy over SMB with compression using the `/compress` switch for Windows Server 2019 and later. When compression is used, inline whitespace compression to file transfers is applied, removing congestion and copy time. Depending on the file format and I/O pattern, the performance increase can be up to fourfold. For more information, see the [Windows Blogs](https://blogs.windows.com/windowsexperience/2020/09/02/announcing-windows-server-vnext-preview-build-20206/) post and [KB4571748](https://support.microsoft.com/help/4571748/windows-10-update-kb4571748).
 
 The script copies all VM VHD, VHDX, and VMCX files to your destination cluster for a given Cluster Shared Volume (CSV). One CSV is migrated at a time.
 

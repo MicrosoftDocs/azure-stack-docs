@@ -3,7 +3,7 @@ title: Migrate to Azure Stack HCI on same hardware
 description: Learn how to migrate a cluster to Azure Stack HCI on the same hardware
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 12/08/2020 
+ms.date: 12/10/2020 
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -79,11 +79,15 @@ Get-VM –ComputerName (Get-ClusterNode) | Update-VMVersion -Force
 
 ## Updating the servers and cluster
 
-First, install the Azure Stack HCI operating system on each Windows Server node. You use Windows Admin Center to do this.
+Migration consists of running Azure Stack HCI setup on your Windows Server deployment for a clean OS install. This replaces the current operating system with Azure Stack HCI. For detailed information, see [Deploy the Azure Stack HCI operating system](operating-system.md). Afterwards, you create a new Azure Stack HCI cluster and import the VMs over.
 
-During setup, select **Custom: Install the newer version of Azure Stack HCI only (Advanced)**. This replaces your current operating system with Azure Stack HCI. For detailed information, see [Deploy the Azure Stack HCI operating system](operating-system.md).
+1. Shutdown your existing cluster VMs, offline CSVs, offline storage pools, and the cluster service.
 
-Next, create the new Azure Stack HCI cluster. You can use Windows Admin Center or Windows PowerShell to do this.  
+1. Go to the location where you downloaded the Azure Stack HCI bits, then run Azure Stack HCI setup on each Windows Server node.
+
+1. During setup, select **Custom: Install the newer version of Azure Stack HCI only (Advanced)**. Repeat for each server.
+
+1. Create the new Azure Stack HCI cluster. You can use Windows Admin Center or Windows PowerShell to do this.  
 
 ### Using Windows Admin Center
 
@@ -91,9 +95,12 @@ If using Windows Admin Center to create the Azure Stack HCI cluster, the Create 
 
 For detailed information on how to create the cluster, see [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md).
 
+> [!IMPORTANT]
+> Skip step **4.1 Clean drives** in the Create cluster wizard. Otherwise you will delete your existing VMs and storage.
+
 1. Start the Create Cluster wizard. When you get to **Step 4: Storage**:
 
-1. Skip step **4.1 Clean drives**. Otherwise you will delete your existing VMs and storage.
+1. Skip step **4.1 Clean drives**. Do not do this.
 
 1. Step away from the wizard.
 
