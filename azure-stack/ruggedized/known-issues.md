@@ -24,7 +24,7 @@ This article lists known issues in Azure Stack Hub ruggedized. The list is updat
 
 ## Update
 
-For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
+For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](../operator/azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
 ### Update failed to install package Microsoft.AzureStack.Compute.Installer to CA VM
 
