@@ -83,4 +83,4 @@ New backups will start to use the public key in the new certificate. There is no
 
 ## Next steps
 
-To verify that your backup ran, see [Confirm backup completed in administrator portal]((../../operator/azure-stack-backup-back-up-azure-stack.md).
+To verify that your backup ran, see [Confirm backup completed in administrator portal](../../operator/azure-stack-backup-back-up-azure-stack.md).

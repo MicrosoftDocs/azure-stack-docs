@@ -52,7 +52,7 @@ The script `Pre-reqs` creates the other inputs required to deploy the Marketplac
 
 Installation of the Container registry template requires several resources to be created before deployment.
 
-1. Connect to Azure Stack Hub as a user using PowerShell and select a subscription using the cmdlet `Select-AzureRmSubscription –Subscription <subscription guid>`. For more information on connecting as a user to Azure Stack Hub PowerShell, see [Connect to Azure Stack with PowerShell as a user](../..user/azure-stack-powershell-configure-user.md).
+1. Connect to Azure Stack Hub as a user using PowerShell and select a subscription using the cmdlet `Select-AzureRmSubscription –Subscription <subscription guid>`. For more information on connecting as a user to Azure Stack Hub PowerShell, see [Connect to Azure Stack with PowerShell as a user](../../user/azure-stack-powershell-configure-user.md).
 
 2. Run `Import-Modules .\\pre-reqs.ps1` to import the modules within the `pre-reqs.ps1` script. The script will create a resource group, storage account, blob container, Key Vault store, assign access permissions to the SPN, and copy certificates and username and password for the registry to Key Vault store.
 
