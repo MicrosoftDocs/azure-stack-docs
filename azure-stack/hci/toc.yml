@@ -32,8 +32,6 @@
     items:
     - name: Create a cluster with PowerShell
       href: deploy/create-cluster-powershell.md
-    - name: Deploy Network Controller with PowerShell
-      href: deploy/network-controller-powershell.md
 - name: Manage
   items:
   - name: Manage VMs
@@ -156,6 +154,8 @@
       href: concepts/updates.md
     - name: Security considerations
       href: concepts/security.md
+    - name: Utility applications
+      href: concepts/utility-applications.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
