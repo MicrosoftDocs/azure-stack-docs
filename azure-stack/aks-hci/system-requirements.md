@@ -56,7 +56,7 @@ The following requirements apply to an Azure Stack HCI cluster as well as a Wind
  
 ### IP address assignment  
  
-There are two options for assigning IP addresses in an AKA HCI cluster: an automatic DHCP assignment or a static IP address assignment. Each one has it's own set of requirements.
+There are two options for assigning IP addresses in an AKA-HCI cluster: an automatic DHCP assignment or a static IP address assignment. Each one has it's own set of requirements.
 
 #### DHCP
 If you are planning to use DHCP for assigning IP address throughout the cluster:  
@@ -69,8 +69,9 @@ At a minimum, you should reserve the following number of DHCP addresses:
   
 | User-supplied value | Required IPs |
 |----------|------------------|
-| IP pool range | At least three IP addresses in range, however, 16 or higher IP addresses are recommended |
-| MAC pool range | At least 16 IP addresses in the range to allow for multiple/single node configurations |
+| IP pool range | We recommend having 16 or more IP addresses in the range. However, you need at least three IP addresses in the range to create the management cluster.
+ |
+| MAC pool range | We recommend having 16 or more IP addresses in the range to allow for multiple/single node configurations. |
 
 For the management cluster:  
 - One IP for the management node VM (assigned by DHCP)  
@@ -100,8 +101,8 @@ If you are planning to use static IP address assignments throughout the cluster,
 | Subnet prefix | Classless Interdomain Routing (CIDR) |
 | Gateway | One IP address |
 | DNS servers | Up to three IP addresses |
-| IP range | At least 12 IP addresses in the range to allow for multiple/single node configurations, it's recommended to have 32 or higher |
-| MAC pool range | At least 16 IP addresses in the range to allow for multiple/single node configurations |
+| IP range | We recommend having 32 or higher IP addresses in the range. However, you need at least 12 IP addresses in the range to allow for multiple/single node configurations. |
+| MAC pool range | We recommend having at least 16 IP addresses in the range to allow for multiple/single node configurations. |
 
 
 For the management cluster: 
