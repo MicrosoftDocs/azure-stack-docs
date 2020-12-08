@@ -4,10 +4,10 @@ description: Deploy a template using PowerShell in Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 11/20/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 11/20/2020
+ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack user, I want to deploy a template using PowerShell in Azure Stack so I can manage resources efficiently. 
 # Keyword: deploy template powershell

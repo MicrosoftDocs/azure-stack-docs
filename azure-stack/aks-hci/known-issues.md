@@ -81,3 +81,6 @@ Windows Admin Center does not currently have a process to offboard a cluster fro
 ```PowerShell
 az connectedk8s delete
 ```
+
+## When setting up an Azure Kubernetes Service host using Windows Admin Center, setup may fail if File Explorer is open
+If File Explorer is open and in the **C:\Program Files\AksHci** directory when you reach the "Review + create" step, your creation may fail with the error "The process could not access the file 'C:\Program Files\AksHci\wssdcloudagent.exe'. This is because it's being used by another process. To avoid this error, close File Explorer or navigate to a different directory before reaching this step. 

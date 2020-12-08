@@ -4,9 +4,9 @@ description: Learn the steps and tools for migrating scripts from the AzureRM mo
 author: mattbriggs
 ms.author: mabrigg
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 12/2/2020
 ms.reviewer: sijuman
-ms.lastreviewed: 04/14/2020
+ms.lastreviewed: 12/2/2020
 ---
 
 # Migrate from AzureRM to Azure PowerShell Az in Azure Stack Hub

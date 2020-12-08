@@ -1,8 +1,7 @@
 ### YamlMime:Landing
 
 title: Azure Kubernetes Service on Azure Stack HCI documentation
-summary: Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of the popular Azure Kubernetes Service (AKS) orchestrator, which automates running containerized applications at scale. Azure Kubernetes Service is now in preview on Azure Stack HCI, making it quicker to get started hosting Linux and Windows containers in your datacenter.
-
+summary: Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of the popular Azure Kubernetes Service (AKS) orchestrator, which automates running containerized applications at scale. Azure Kubernetes Service is now in preview on Azure Stack HCI and on Windows Server 2019 Datacenter, making it quicker to get started hosting Linux and Windows containers in your datacenter.
 metadata:
   title: Azure Kubernetes Service on Azure Stack HCI documentation
   description: Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of the popular Azure Kubernetes Service (AKS) orchestrator, which automates running containerized applications at scale. Azure Kubernetes Service is now in preview on Azure Stack HCI, making it quicker to get started hosting Linux and Windows containers in your datacenter.
@@ -45,16 +44,18 @@ landingContent:
     linkLists:
       - linkListType: tutorial
         links:
-          - text: Use Windows Server containers
-            url: deploy-windows-application.md
           - text: Use Linux containers
             url: deploy-linux-application.md
       - linkListType: how-to-guide
         links:
           - text: Adapt apps for mixed-OS Kubernetes clusters
             url: adapt-apps-mixed-os-clusters.md
-          - text: Use persistent storage in a Windows container and prepare for gMSA
-            url: persistent-storage-windows-nodes.md
+          - text: Deploy Windows applications
+            url: deploy-windows-application.md
+          - text: Prepare Windows nodes for gMSA support
+            url: prepare-windows-nodes-gmsa.md
+          - text: Use persistent volumes
+            url: persistent-volume.md
 
   - title: Integrate with Azure
     linkLists:
@@ -62,3 +63,4 @@ landingContent:
         links:
           - text: Connect to Azure Arc for Kubernetes
             url: connect-to-arc.md
+
