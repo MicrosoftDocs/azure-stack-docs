@@ -31,7 +31,7 @@ Before you enable your backup service, make sure you have the [requirements in 
 > [!NOTE]
 > The Infrastructure Backup Service doesn't include user data and apps. For more info about how to protect IaaS VM-based apps, see the following articles:
 >
-> - [Protect VMs deployed on Azure Stack](../user/azure-stack-manage-vm-protect.md)
+> - [Protect VMs deployed on Azure Stack](../..user/azure-stack-manage-vm-protect.md)
 > - Protect Event Hubs time series data on Azure Stack
 > - Protect blob data on Azure Stack
 
