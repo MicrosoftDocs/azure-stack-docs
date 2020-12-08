@@ -180,6 +180,7 @@ Connected environments can access the internet and Azure. For these environments
    The MS Asset tag (`msAssetTag`) is a mandatory for Custom billing model registration and is printed on the product.
     
    The process takes between 10 and 15 minutes. When the command completes, you see the message. **Your environment is now registered and activated using the provided parameters.**
+
 ### [AzureRM modules](#tab/azurerm1)
 
 1. To register the Azure Stack Hub resource provider with Azure, start PowerShell ISE as an administrator and use the following PowerShell cmdlets with the **EnvironmentName** parameter set to the appropriate Azure subscription type (see parameters as follows).
