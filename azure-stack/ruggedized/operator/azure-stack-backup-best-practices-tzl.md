@@ -51,7 +51,7 @@ The certificate must be stored in a secure location. The CER format of the certi
 
 - Infrastructure creates MASBACKUP folder automatically. This is a Microsoft-managed share. You can create shares at the same level as MASBACKUP. It\'s not recommended to create folders or storage data inside of MASBACKUP that Azure Stack doesn\'t create.
 
-- User FQDN and region in your folder name to differentiate backup data from different clouds. The FQDN of your Azure Stack deployment and endpoints is the combination of the Region parameter and the External Domain Name parameter. For more info, see [Azure Stack datacenter integration - DNS](../..operator/azure-stack-integrate-dns.md).
+- User FQDN and region in your folder name to differentiate backup data from different clouds. The FQDN of your Azure Stack deployment and endpoints is the combination of the Region parameter and the External Domain Name parameter. For more info, see [Azure Stack datacenter integration - DNS]((../../operator/azure-stack-integrate-dns.md).
 
 For example, the backup share is AzSBackups hosted on fileserver01.contoso.com. In that file share there may be a folder per Azure Stack deployment using the external domain name and a subfolder that uses the region name.
 
@@ -191,4 +191,4 @@ Consider these limits as you plan, deploy, and operate your Microsoft Azure Stac
 
 ## Next steps
 
-- Learn more about the [Infrastructure Backup Service](../..operator/azure-stack-backup-reference.md).
+- Learn more about the [Infrastructure Backup Service]((../../operator/azure-stack-backup-reference.md).

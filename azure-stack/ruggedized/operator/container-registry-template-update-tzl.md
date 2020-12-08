@@ -102,4 +102,4 @@ Azure Stack Hub users can update their container registry deployment to a more r
 
 ## Next steps
 
-[Azure Stack Marketplace overview](../..operator/azure-stack-marketplace.md)
+[Azure Stack Marketplace overview]((../../operator/azure-stack-marketplace.md)
