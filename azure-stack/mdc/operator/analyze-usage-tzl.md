@@ -112,7 +112,7 @@ To generate the usage data, you should have resources that are running and activ
    ```
 ### [AzureRM modules](#tab/azurerm1)
 
-1. [Install PowerShell for Azure Stack](../../operator/azure-stack-powershell-install.md).
+1. [Install PowerShell for Azure Stack](../../operator/powershell-install-az-module.md).
 2. [Configure the Azure Stack user](../../user/azure-stack-powershell-configure-user.md) or the [Azure Stack operator](../../operator/azure-stack-powershell-configure-admin.md) PowerShell environment.
 3. To retrieve the usage data, call the [Get-AzsSubscriberUsage](/powershell/module/azs.commerce.admin/get-azssubscriberusage) PowerShell cmdlet:
 
