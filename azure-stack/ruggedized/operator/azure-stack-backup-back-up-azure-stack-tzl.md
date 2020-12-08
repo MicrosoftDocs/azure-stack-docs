@@ -131,4 +131,4 @@ Use the Azure Stack administrator portal to verify that backup has completed suc
 
 ## Next steps
 
-Learn more about [infrastructure backup best practices](../..operator/azure-stack-backup-best-practices-tzl.md).
+Learn more about [infrastructure backup best practices](../../operator/azure-stack-backup-best-practices-tzl.md).
