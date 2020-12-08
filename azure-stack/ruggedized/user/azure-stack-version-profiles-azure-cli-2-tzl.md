@@ -53,7 +53,7 @@ az --version
 
 You should see the version of Azure CLI and other dependent libraries that are installed on your computer.
     
-![Azure CLI on Azure Stack Hub Python location](media/azure-stack-version-profiles-azurecli-2/cli-python-location.png)
+![Azure CLI on Azure Stack Hub Python location](media/azure-stack-version-profiles-azure-cli-2/cli-python-location.png)
 
 
 ## Windows/Linux (Azure AD)
