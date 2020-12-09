@@ -11,9 +11,9 @@ ms.date: 12/10/2020
 
 # Azure Stack HCI solution overview
 
-Azure Stack HCI is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid on-premises environment. Azure hybrid services enhance the cluster with capabilities such as cloud-based monitoring, Site Recovery, and VM backups, as well as a central view of all of your Azure Stack HCI deployments in the Azure portal. You can manage the cluster with your existing tools including Windows Admin Center, System Center, and PowerShell.
+Azure Stack HCI is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid, on-premises environment. Azure hybrid services enhance the cluster with capabilities such as cloud-based monitoring, Site Recovery, and VM backups, as well as a central view of all of your Azure Stack HCI deployments in the Azure portal. You can manage the cluster with your existing tools including Windows Admin Center, System Center, and PowerShell.
 
-Azure Stack HCI, version 20H2 is now in general availability and [available for download](https://azure.microsoft.com/products/azure-stack/hci/hci-download/). It's intended for on-premises clusters running virtualized workloads, with hybrid-cloud connections built-in. As such, Azure Stack HCI is delivered as an Azure service and billed on an Azure subscription. Azure Stack HCI also now includes the ability to host the Azure Kubernetes Service; for details, see [Azure Kubernetes Service on Azure Stack HCI](../aks-hci/overview.md).
+Azure Stack HCI, version 20H2 is now [available for download](https://azure.microsoft.com/products/azure-stack/hci/hci-download/). It's intended for on-premises clusters running virtualized workloads, with hybrid-cloud connections built-in. As such, Azure Stack HCI is delivered as an Azure service and billed on an Azure subscription. Azure Stack HCI also now includes the ability to host the Azure Kubernetes Service; for details, see [Azure Kubernetes Service on Azure Stack HCI](../aks-hci/overview.md).
 
 Take a few minutes to watch the video on the high-level features of Azure Stack HCI:
 
@@ -105,7 +105,7 @@ Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure
 
 ## Software partners
 
-There are a variety of Microsoft partners working on software that extends the capabilities of Azure Stack HCI while allowing IT admins to use familiar tools. For example, Altaro, a worldwide provider of backup solutions and Microsoft Gold Partner, has committed to supporting Azure Stack HCI in its Altaro VM Backup solution. This will allow customers and managed service providers to back up virtual machines running on Azure Stack HCI for free until end of June 2021. [Learn more about this announcement](http://www.altaro.com/news/single/News-Altaro-applies-its-expertise-in-Hyper-V-backup-to-support-Microsoft.php).
+There is a variety of Microsoft partners working on software that extends the capabilities of Azure Stack HCI while allowing IT admins to use familiar tools. To learn more, see [Utility applications for Azure Stack HCI](concepts/utility-applications.md).
 
 ## Licensing, billing, and pricing
 
@@ -192,12 +192,11 @@ As your organization digitally transforms, you may find you can move faster by u
 
 ## What's new in Azure Stack HCI
 
-Windows Admin Center version 2012 adds a number of features to Azure Stack HCI, including the following:
+Windows Admin Center version 2009 adds a number of features to Azure Stack HCI, including the following:
 
 - **Azure Kubernetes Service hosting capabilities**: You can now install a preview version of [Azure Kubernetes Service on Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
 - **Inclusion of Software Defined Networking in the Cluster Creation wizard**: The Cluster Creation wizard now includes the option to deploy the [Software Defined Networking (SDN)](concepts/software-defined-networking.md) Network Controller feature during [cluster creation](deploy/create-cluster.md#step-5-sdn-optional).
-- **Remote direct memory access (RDMA) enhancements in the Cluster Creation wizard**: Cluster Creation wizard can now configure RDMA for iWARP and RoCE network adapters, including Data Center Bridging (DCB).
-- **Additional performance and security improvements**
+- **Remote direct memory access (RDMA) enhancements in the Cluster Creation wizard**: The Cluster Creation wizard can now configure RDMA for iWARP and RoCE network adapters, including Data Center Bridging (DCB).
 
 For details on new features in Windows Admin Center, see the [Windows Admin Center blog](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/bg-p/Windows-Admin-Center-Blog).
 
@@ -211,7 +210,7 @@ Clusters running Azure Stack HCI, version 20H2 have the following new features a
 - **BitLocker encryption**: You can now use BitLocker to encrypt the contents of data volumes on Azure Stack HCI, helping government and other customers stay compliant with standards such as FIPS 140-2 and HIPAA.
 - **Improved Storage Spaces Direct volume repair speed**: Repair volumes quickly and seamlessly.
 
-Windows Admin Center, version 20H2 also provides new cluster updating UI to Windows Server-based clusters, including the original Azure Stack HCI solutions. And while you can use the new cluster creation wizard with Windows Server, it can't create Windows Server clusters with Storage Spaces Direct; you need the Azure Stack HCI operating system for that.
+Windows Admin Center, version 20H2 also provides new cluster updating UI to Windows Server-based clusters, including the original Azure Stack HCI solutions. And while you can use the new Cluster Creation wizard with Windows Server, it can't create Windows Server clusters with Storage Spaces Direct; you need the Azure Stack HCI operating system for that.
 
 ## Roles you can run without virtualizing
 
@@ -220,7 +219,7 @@ Because Azure Stack HCI is intended as a virtualization host where you run all o
 This means that you can run the following server roles:
 
 - Hyper-V
-- Network controller and other components required for Software Defined Networking (SDN)
+- Network Controller and other components required for Software Defined Networking (SDN)
 
 But any other roles and apps must run inside of VMs. Note that you can run utilities, apps, and services necessary for the management and health of hosted VMs.
 
