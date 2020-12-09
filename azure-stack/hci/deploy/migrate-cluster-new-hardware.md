@@ -276,7 +276,17 @@ This is a two-stage migration used for VMs hosted on Windows Server 2008 SP1, Wi
 
     `Robocopy \\2012R2-Clus01\c$\clusterstorage\volume01\Hyper-V\   \\20H2-Clus01\c$\clusterstorage\volume01\Hyper-V\ /Copyall /E /MT:32 /R:0 /w:1 /NFL /NDL /log:c:\log.txt /xf`
 
-1. Verify the virtual switch name on used on the Windows Server 2012 R2 server is the same as the switch name used on the Windows 2008 R2 or Windows Server 2008 R2-SP1 source server. Rename the switch on Windows Server 20212 R2 as needed.
+1. Verify the virtual switch (`VMSwitch`) name on used on the Windows Server 2012 R2 cluster is the same as the switch name used on the Windows 2008 R2 or Windows Server 2008 R2-SP1 source. To display the switch names used across all servers in a cluster, use this:
+
+     ```powershell
+    Get-VMSwitch -CimSession $Servers | Select-Object Name
+    ```
+
+    Rename the switch name on Windows Server 20212 R2 as needed. To rename the switch name across all servers in the cluster, use this:
+
+    ```powershell
+    Invoke-Command -ComputerName $Servers -ScriptBlock {rename-VMSwitch -Name $using:vSwitcholdName -NewName $using:vSwitchnewname}
+    ```
 
 1. Copy and import the VMs to Windows Server 2012 R2:
 
