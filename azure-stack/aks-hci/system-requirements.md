@@ -73,6 +73,8 @@ At a minimum, you should reserve the following number of DHCP addresses in each 
 
 - **MAC pool range**: We recommend having 16 or more IP addresses in the range to allow for multiple/single node configurations.
   
+Multiple pool ranges are required: one for the API server, one for AKS, and one for VMs.
+    
 #### Static IP 
 
 If you are planning to use static IP address assignments throughout the cluster, you need to ensure the available ranges contain the following minimum amount of IP addresses:  
