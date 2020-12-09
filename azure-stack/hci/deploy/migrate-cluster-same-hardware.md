@@ -24,9 +24,13 @@ To migrate your VMs to new Azure Stack HCI hardware, see [Migrate to Azure Stack
 There are several requirements and things to consider before you begin migration:
 
 - All Windows PowerShell commands must be run As Administrator.
+
 - You must have domain credentials with administrator permissions for Azure Stack HCI.
+
 - Backup all VMs on your source cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases.  To backup to Azure, see [Use Azure Backup](https://docs.microsoft.com/azure-stack/hci/manage/use-azure-backup).
+
 - Collect inventory and configuration of all cluster nodes and cluster naming, network configuration, Cluster Shared Volume (CSV) resiliency and capacity, and quorum witness.
+
 - Shutdown your cluster VMs, offline CSVs, offline storage pools, and the cluster service.
 - Disable the Cluster Name Object (CNO) (it is reused later) and:
     - Check that the CNO has Create Object rights to its own Organizational Unit (OU)
@@ -88,7 +92,7 @@ Migration consists of running Azure Stack HCI setup on your Windows Server deplo
 1. Create the new Azure Stack HCI cluster. You can use Windows Admin Center or Windows PowerShell to do this, as described below.  
 
 > [!IMPORTANT]
-> Hyper-V virtual switch (`VMSwitch`) names between clusters must be the same. Make sure that virtual switch names used on the Azure Stack HCI cluster match those used on your source cluster across all servers. Verify the switch names for the same before you import the VMs.
+> Hyper-V virtual switch (`VMSwitch`) name must be the same name captured in the cluster configuration inventory. Make sure the virtual switch name used on the Azure Stack HCI cluster matches the original source virtual switch name before you import the VMs.
 
 > [!NOTE]
 > You must register the Azure Stack HCI cluster with Azure before you can create new VMs on it. For more information, see [Register with Azure](register-with-azure.md).
