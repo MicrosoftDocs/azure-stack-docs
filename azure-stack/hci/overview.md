@@ -105,7 +105,7 @@ Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure
 
 ## Software partners
 
-There are a variety of Microsoft partners working on software that extends the capabilities of Azure Stack HCI while allowing IT admins to use familiar tools. For example, Altaro, a worldwide provider of backup solutions and Microsoft Gold Partner, has committed to supporting Azure Stack HCI in its Altaro VM Backup solution. This will allow customers and managed service providers to back up virtual machines running on Azure Stack HCI for free until end of June 2021. [Learn more about this announcement](http://www.altaro.com/news/single/News-Altaro-applies-its-expertise-in-Hyper-V-backup-to-support-Microsoft.php).
+There is a variety of Microsoft partners working on software that extends the capabilities of Azure Stack HCI while allowing IT admins to use familiar tools. To learn more, see [Utility applications for Azure Stack HCI](concepts/utility-applications.md).
 
 ## Licensing, billing, and pricing
 
