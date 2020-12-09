@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/28/2020
+ms.date: 12/7/2020
 ---
 
 # What is the deployment process for Azure Stack HCI?
@@ -37,7 +37,7 @@ Before you deploy the OS, determine whether your hardware meets the [system requ
 
 ### 1. Deploy Azure Stack HCI
 
-[Download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) and deploy the Azure Stack HCI [operating system](operating-system.md) on each server you want to cluster. If you've purchased Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://azure.microsoft.com/en-us/products/azure-stack/hci/catalog/) through your preferred Microsoft hardware partner, the Azure Stack HCI operating system should be pre-installed. In that case, you can skip this step and move on to #2.
+[Download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) and deploy the Azure Stack HCI [operating system](operating-system.md) on each server you want to cluster. If you've purchased Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://aka.ms/azurestackhcicatalog) through your preferred Microsoft hardware partner, the Azure Stack HCI operating system should be pre-installed. In that case, you can skip this step and move on to #2.
 
 ### 2. Create the cluster
 
@@ -61,7 +61,9 @@ After creating and registering the cluster, [run cluster validation tests](valid
 
 ### 7. Deploy workloads
 
-You are now ready to [create virtual machines](../manage/vm.md) and deploy workloads on Azure Stack HCI using Windows Admin Center.
+You are now ready to deploy workloads on Azure Stack HCI using Windows Admin Center.
+
+For details on how to get started deploying an Azure Kubernetes Service workload on Azure Stack HCI, see the following overview: [What is Azure Kubernetes Service on Azure Stack HCI?](https://docs.microsoft.com/azure-stack/aks-hci/overview)
 
 ## Next steps
 

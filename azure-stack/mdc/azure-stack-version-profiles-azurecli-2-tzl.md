@@ -11,10 +11,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/26/2020
+ms.lastreviewed: 12/2/2020
 
 ---
 # Manage and deploy resources to Azure Stack Hub with Azure CLI

@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/18/2020
+ms.date: 12/07/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -69,8 +69,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 <!-- What's new, also net new experiences and features. -->
 - Azure Stack Hub now supports VNET peering, which gives the ability to connect VNETs without a Network Virtual Appliance (NVA). For more information, see the [new VNET peering documentation](../user/virtual-network-peering.md).
 - Azure Stack Hub blob storage now enables users to use an immutable blob. By setting immutable policies on a container, you can store business-critical data objects in a WORM (Write Once, Read Many) state. In this release, immutable policies can only be set through the REST API or client SDKs. Append blob writes are also not possible in this release. For more information about immutable blobs, see [Store business-critical blob data with immutable storage](/azure/storage/blobs/storage-blob-immutable-storage).
-- Azure Stack Hub Storage now supports Azure Storage services APIs version 2019-07-07. For Azure client libraries that is compatible with the new REST API version, see [Azure Stack Hub storage development tools](../user/azure-stack-storage-dev.md#azure-client-libraries).
-- Azure Stack Hub compute now supports Azure Compute APIs version 2020-06-01, with a subset of total available features.
+- Azure Stack Hub Storage now supports Azure Storage services APIs version **2019-07-07**. For Azure client libraries that is compatible with the new REST API version, see [Azure Stack Hub storage development tools](../user/azure-stack-storage-dev.md#azure-client-libraries). For Azure Storage services management APIs, **2018-02-01** has been add of support, with a subset of total available features.
+- Azure Stack Hub compute now supports Azure Compute APIs version **2020-06-01**, with a subset of total available features.
 - Azure Stack Hub managed disks now support Azure Disk APIs version **2019-03-01**, with a subset of the available features.
 - Preview of Windows Admin Center that can now connect to Azure Stack Hub to provide in-depth insights into the infrastructure during support operations (break-glass required).
 - Ability to add login banner to the privileged endpoint (PEP) at deployment time.
@@ -103,7 +103,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
   Note that these changes are added at the host level of an Azure Stack Hub system. Please contact your OEM to arrange making the required changes at the top-of-rack (ToR) network switches. This ToR change can be performed either prior to updating to the 2008 release or after updating to 2008. For more information, see the [Network Integration documentation](azure-stack-network.md).
 
-  - The GPU capable VM sizes **NCas_v4 (NVIDIA T4)** have been replaced in this build with the VM sizes **NCasT4_v3**, to be consistent with Azure. Note that those are not visible in the portal yet, and can only be used via Azure Resouce Manager templates.
+- The GPU capable VM sizes **NCas_v4 (NVIDIA T4)** have been replaced in this build with the VM sizes **NCasT4_v3**, to be consistent with Azure. Note that those are not visible in the portal yet, and can only be used via Azure Resouce Manager templates.
 
 ### Fixes
 
@@ -130,7 +130,8 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 ### Hotfix prerequisites: before applying the 2008 update
 
 The 2008 release of Azure Stack Hub must be applied on the 2005 release with the following hotfixes:
-- [Azure Stack Hub hotfix 1.2005.21.84](https://support.microsoft.com/help/4592779)
+
+- [Azure Stack Hub hotfix 1.2005.24.90](https://support.microsoft.com/help/4595070)
 
 ### After successfully applying the 2008 update
 
@@ -138,7 +139,7 @@ When you update to a new major version (for example, 1.2005.x to 1.2008.x), the 
 
 After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
 
-- No Azure Stack Hub hotfix available for 2008.
+- [Azure Stack Hub hotfix 1.2008.19.100](https://support.microsoft.com/help/4595073)
 ::: moniker-end
 
 ::: moniker range="azs-2005"
@@ -230,7 +231,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2005 release of Azure Stack Hub must be applied on the 2002 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2002.61.163](https://support.microsoft.com/help/4592241)
+- [Azure Stack Hub hotfix 1.2002.63.167](https://support.microsoft.com/help/4595072)
 
 ### After successfully applying the 2005 update
 
@@ -238,7 +239,7 @@ Starting with the 2005 release, when you update to a new major version (for exam
 
 After the installation of 2005, if any 2005 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2005.21.84](https://support.microsoft.com/help/4592779)
+- [Azure Stack Hub hotfix 1.2005.24.90](https://support.microsoft.com/help/4595070)
 ::: moniker-end
 
 ::: moniker range="azs-2002"
@@ -367,7 +368,7 @@ The 2002 release of Azure Stack Hub must be applied on the 1910 release with the
 After the installation of this update, install any applicable hotfixes.
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.2002.62.165](https://support.microsoft.com/help/4594758)
+- [Azure Stack Hub hotfix 1.2002.63.167](https://support.microsoft.com/help/4595072)
 ::: moniker-end
 
 <!------------------------------------------------------------>

@@ -73,10 +73,6 @@ cd AzureStack-Tools-master
 ```
 For more information about using the AzureRM module for Azure Stack Hub, see [Install PowerShell AzureRM module for Azure Stack Hub](azure-stack-powershell-install.md)
 
-
-
----
-
 ---
 
 ## Functionality provided by the modules

@@ -4,9 +4,9 @@ description: Learn the steps and tools for migrating scripts from the AzureRM mo
 author: mattbriggs
 ms.author: mabrigg
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 12/2/2020
 ms.reviewer: sijuman
-ms.lastreviewed: 04/14/2020
+ms.lastreviewed: 12/2/2020
 ---
 
 # Migrate from AzureRM to Azure PowerShell Az in Azure Stack Hub
@@ -45,7 +45,7 @@ scripts and enable compatibility for old cmdlet names.
 
 To install the Azure PowerShell Az module, follow these steps:
 
-* __RECOMMENDED__: [Uninstall the AzureRM module](/powershell/azure/uninstall-az-ps#uninstall-the-azurerm-module).
+* **Recommended**: [Uninstall the AzureRM module](/powershell/azure/uninstall-az-ps#uninstall-the-azurerm-module).
   Make sure that you remove _all_ installed versions of AzureRM, not just the most recent version.
 * [Install the Az module](/powershell/azure/install-az-ps)
 

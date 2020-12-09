@@ -4,10 +4,13 @@ description: Learn the basic cluster and workload components of Kubernetes and h
 author: daschott
 ms.author: daschott
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 12/02/2020
 ---
 
 # Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI
+
+> Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
+
 Azure Kubernetes Service on Azure Stack HCI is an enterprise-grade Kubernetes container platform powered by Azure Stack HCI. It includes Microsoft supported core Kubernetes, add-ons, a purpose-built Windows container host and a Microsoft-supported Linux container host with a goal to have a **simple deployment and life cycle management experience**.
 
 This article introduces the core Kubernetes infrastructure components such as the control plane, nodes, and node pools. Workload resources such as pods, deployments, and sets are also introduced, along with how to group resources into namespaces.

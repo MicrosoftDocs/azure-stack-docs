@@ -3,10 +3,10 @@ title: Download marketplace items from Azure and publish to Azure Stack Hub
 description: Learn how to download marketplace items from Azure and publish to Azure Stack Hub.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 12/9/2020
 ms.author: sethm
 ms.reviewer: avishwan
-ms.lastreviewed: 10/16/2020
+ms.lastreviewed: 12/9/2020
 zone_pivot_groups: state-connected-disconnected
 
 # Intent: As an Azure Stack operator, I want to download marketplace items from Azure Marketplace and publish them to my Azure Stack.
@@ -88,14 +88,23 @@ There are two parts to this scenario:
   - The computer that has internet connectivity must have **Azure Stack Hub PowerShell Module version 1.2.11** or later. If not already present, [install Azure Stack Hub-specific PowerShell modules](powershell-install-az-module.md).
 
   - To enable import of a downloaded Marketplace item, the [PowerShell environment for the Azure Stack Hub operator](azure-stack-powershell-configure-admin.md) must be configured.
+  - .NET Framework 4.7 or later.
 
-- Download the **Azs.Syndication.Admin** module from the PowerShell Gallery using the following command:
+Download the **Azs.Syndication.Admin** module from the PowerShell Gallery using the following command:
+
+### [Az modules](#tab/az1)
 
   ```powershell
   Install-Module -Name Azs.Syndication.Admin -AllowPrerelease -PassThru
   ```
-  
-- .NET Framework 4.7 or later.
+
+### [AzureRM modules](#tab/azurerm1)
+
+  ```powershell
+  Install-Module -Name Azs.Syndication.Admin -RequiredVersion 0.1.140
+  ```
+
+---
 
 Once you have registered your Azure Stack, you can disregard the following message that appears on the Marketplace management blade, as this is not relevant for the disconnected use case:
 
@@ -105,6 +114,8 @@ Once you have registered your Azure Stack, you can disregard the following messa
 
 > [!IMPORTANT]
 > Be sure to download the marketplace syndication tool each time you download marketplace items in a disconnected scenario. Frequent changes are made to this tool and the most current version should be used for each download.
+
+### [Az modules](#tab/az2)
 
 1. On a computer with an Internet connection, open a PowerShell console as an administrator.
 
@@ -117,7 +128,7 @@ Once you have registered your Azure Stack, you can disregard the following messa
    You are prompted to enter your Azure account credentials and you might have to use two-factor authentication, depending on your account configuration.
 
    > [!NOTE]
-   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using `Add-AzureRmAccount`: `Remove-AzureRmAccount -Scope Process`.
+   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using `Add-AzRmAccount`: `RemoveAzAccount -Scope Process`.
 
 3. If you have multiple subscriptions, run the following command to select the one you used for registration:
 
@@ -171,6 +182,78 @@ Once you have registered your Azure Stack, you can disregard the following messa
     ```powershell
     Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Azs.Syndication.Admin -Path "Destination folder path in quotes" -Force
     ```
+
+### [AzureRM modules](#tab/azurerm2)
+
+1. On a computer with an Internet connection, open a PowerShell console as an administrator.
+
+2. Sign in to the appropriate Azure cloud and AzureAD directory tenant using the Azure account that you've used to register Azure Stack Hub. To add the account, in PowerShell run `Add-AzureRMureRmAccount`:
+
+   ```powershell  
+   Login-AzureRMAccount -Environment AzureCloud -Tenant '<mydirectory>.onmicrosoft.com'
+   ```
+
+   You are prompted to enter your Azure account credentials and you might have to use two-factor authentication, depending on your account configuration.
+
+   > [!NOTE]
+   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using `Add-AzureRMRmAccount`: `RemoveAzAccount -Scope Process`.
+
+3. If you have multiple subscriptions, run the following command to select the one you used for registration:
+
+   ```powershell  
+   Get-AzureRMSubscription -SubscriptionID 'Your Azure Subscription GUID' | Select-AzureRMSubscription
+   ```
+
+4. If you haven't done it in the pre-requisites step already, download the latest version of the Marketplace syndication tool:
+
+   ```powershell
+   Install-Module -Name Azs.Syndication.Admin -RequiredVersion 0.1.140
+   ```
+
+5. To select the Marketplace items such as VM images, extensions, or solution templates to download, run the following command:
+
+   ```powershell
+   $products = Select-AzureRMsMarketplaceItem
+   ```
+
+   This displays a table that lists all the Azure Stack registrations available in the selected subscription. Choose the registration that matches the Azure Stack environment you're downloading the marketplace items for, and select **OK**.
+
+     ![Screenshot that shows a list of all the Azure Stack registrations available in the selected subscription.](media/azure-stack-download-azure-marketplace-item/select-registration.png)
+
+   You should now see a second table listing all the marketplace items available for download. Select the item that you want to download and make a note of the **Version**. You can hold the **Ctrl** key to select multiple images.
+     ![Screenshot that shows another list of all the Azure Stack registrations available in the selected subscription.](media/azure-stack-download-azure-marketplace-item/select-products.png)
+  
+   You can also filter the list of images by using the **Add criteria** option.
+   ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/select-products-with-filter.png)
+
+   Once you've made your selections, select OK.
+
+6. The IDs for the Marketplace items you've selected for download are saved in the  `$products` variable. Use the command below to begin downloading the selected items. Replace the destination folder path with a location to store the files you download from Azure Marketplace:
+
+    ```powershell
+    $products | Export-AzsMarketplaceItem  -RepositoryDir "Destination folder path in quotes"
+    ```
+
+7. The time that the download takes depends on the size of the item. After the download completes, the item is available in the folder that you specified in the script. The download includes a VHD file (for virtual machines), or a .zip file (for virtual machine extensions and resource providers). It might also include a gallery package in the *.azpkg* format, which is a .zip file.
+
+8. If the download fails, you can try again by re-running the following PowerShell cmdlet:
+
+    ```powershell
+    $products | Export-AzsMarketplaceItem  -RepositoryDir "Destination folder path in quotes"
+    ```
+
+9. You should also export the **Azs.Syndication.Admin** module locally so that you can copy it over to the machine from which you are importing Marketplace items to Azure Stack Hub.
+
+   > [!NOTE]
+   > The destination folder for exporting this module should be different from the location to which you have exported the marketplace items.
+
+    ```powershell
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Azs.Syndication.Admin -Path "Destination folder path in quotes" -Force
+    ```
+
+---
+
+
 
 ## Import the download and publish to Azure Stack Hub Marketplace using PowerShell
 
