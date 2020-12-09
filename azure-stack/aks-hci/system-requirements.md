@@ -81,16 +81,15 @@ If you are planning to use static IP address assignments throughout the cluster,
   
 | User-provided value | Required IPs |
 |----------|------------------|
-| Subnet prefix   | Classless Interdomain Routing (CIDR) address |
+| Subnet prefix   | Classless Inter-Domain Routing (CIDR) address |
 | Gateway   | One IP address |
 | DNS servers   | Up to three IP addresses |
-| IP pool range   | We recommend having 32 or higher IP addresses in the range. 
-However, you need at least 12 IP addresses in the range to allow for multiple/single node configurations. |
+| IP pool range   | We recommend having 32 or higher IP addresses in the range. However, you need at least 12 IP addresses in the range to allow for multiple/single node configurations. |
 | MAC pool range   | We recommend having at least 16 IP addresses in the range to allow for multiple/single node configurations. |  
 
 #### DHCP and static IP requirements  
 
-For both DHCP and static IPs, follow the requirements in the table below. For DHCP, the IP addresses are assigned by DHCP unless otherwise noted. Note that *N* indicates the number of nodes of the cluster. 
+For both DHCP and static IPs, follow the requirements in the table below. For DHCP, the IP addresses are assigned by DHCP unless otherwise noted. Note that *n* indicates the number of nodes of the cluster. 
 
 | Cluster         | Node | Required IP addresses | Notes |
 |---------|-------|-----------|-----------|
