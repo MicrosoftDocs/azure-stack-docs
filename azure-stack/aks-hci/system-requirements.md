@@ -58,7 +58,7 @@ The following requirements apply to an Azure Stack HCI cluster as well as a Wind
  
 There are two options for assigning IP addresses in an AKA-HCI cluster: an automatic DHCP assignment or a static IP address assignment. Each one has it's own set of requirements.
 
-#### DHCP
+#### DHCP addresses
 If you are planning to use DHCP for assigning IP addresses throughout the cluster:  
 
  - The network must have an available DHCP server to provide TCP/IP addresses to the VMs and the VM hosts. The DHCP server should also contain network time protocol (NTP) and DNS host information. 
@@ -69,7 +69,7 @@ If you are planning to use DHCP for assigning IP addresses throughout the cluste
 
 At a minimum, you should reserve the following number of DHCP addresses in each pool range. 
   
-| User-supplied value | Required IPs |
+| Value provided by user | Required IPs |
 |----------|------------------|
 | IP pool range | We recommend having 16 or more IP addresses in the range. However, you need at least three IP addresses in the range to create the management cluster.
  |
@@ -79,7 +79,7 @@ At a minimum, you should reserve the following number of DHCP addresses in each 
 
 If you are planning to use static IP address assignments throughout the cluster, you need to ensure the available ranges contain the following minimum amount of IP addresses.  
   
-| User-supplied value | Required IPs |
+| Value provided by user | Required IPs |
 |----------|------------------|
 | Subnet prefix   | Classless Interdomain Routing (CIDR) address |
 | Gateway   | One IP address |
@@ -95,7 +95,7 @@ For both DHCP and static IPs, follow the requirements in the table below. For DH
 |---------|-------|-----------|-----------|
 | Management | | One IP each for the management node VM, the load balancer VM, and the API server | For DHCP, the API server IP is assigned from the IP address pool |
 | Target (workload) | Control plane | +1*n IP for each control plane node, and +1 IP each for the load balancer VM and the kubeapi server VIP | For DHCP, the kubeapi server VIP is assigned from the IP address pool |
-| | Worker | 1*n IP for each worker node |  |
+| | Worker | 1*n IP for each node |  |
 
   
 ### Network port and URL requirements 
