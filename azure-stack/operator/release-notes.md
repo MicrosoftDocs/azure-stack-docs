@@ -71,6 +71,9 @@ For more information about update build types, see [Manage updates in Azure Stac
 - The Azure Stack Hub Infrastructure Backup service now supports progressive backup. This feature helps reduce storage requirements on the external backup location, and changes the way files are organized on the external backup store. It is recommended that you not manipulate files under the backup root directory.
 
 ### Improvements
+- Increased Network Controller log retention period, so the logs will be available for longer to aid engineers in effective troubleshooting even after an issue has been mitigated. 
+- Made improvements to preserve the Network Controller, Gateway VM, Load Balancer and Host Agent logs during an update. 
+- Improved the deletion logic for networking resources that are blocked by a failed provisioning state. 
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
@@ -78,7 +81,9 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 
 ### Fixes
-
+- Fixed an issue where internal DNS zones are becoming out of sync during update and causing the update to fail. This fix has been backported to 2008 and 2005 via hotfixes. 
+- Fixed an issue where disk space was exhausted by logs on physical hosts, Network Controllers, Gateways and Load Balancers. This fix has been backported to 2008. 
+- Fixed an issue where deletion of Resource Groups or Virtual Networks fails due to an orphaned resource in the Network Controller layer. 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
 ## Security updates
