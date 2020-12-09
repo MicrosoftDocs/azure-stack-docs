@@ -12,6 +12,8 @@ ms.lastreviewed: 12/08/2020
 
 # Tactical Data Center 2008 release notes
 
+This article contains release and version information for the Tactical Data Center.
+
 ## Overview
 
 This document describes the contents of Azure Stack Hub Tactical Data Center first party updates for firmware and drivers.  This update includes improvements and fixes for the latest release of Azure Stack Hub.  Below are the download links:
