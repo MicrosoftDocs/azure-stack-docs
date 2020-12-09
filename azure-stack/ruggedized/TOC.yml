@@ -80,6 +80,8 @@
           href: network-integration.md
         - name: Network configuration lifecycle
           href: network-configuration-lifecycle-management.md
+#        - name: Troubleshoot
+#          href: network-troubleshoot.md
         - name: Appendix
           href: network-appendix.md
       - name: Identity integration
@@ -197,7 +199,7 @@
       - name: Set up management environment
         items:
         - name: Install Azure Stack PowerShell
-          href: ../operator/powershell-install-az-module.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: ../operator/azure-stack-powershell-install.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Connect with PowerShell
           href: ../operator/azure-stack-powershell-configure-admin.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Access privileged endpoint
@@ -264,6 +266,8 @@
         href: ../operator/azure-stack-security-bitlocker.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Rotate secrets
         href: ../operator/azure-stack-rotate-secrets.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+      - name: Update iDRAC credentials
+        href: operator/integrated-dell-remote-access-controller-credentials.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Update switch credentials
         href: switch-credentials.md
       - name: Update antivirus 
@@ -468,6 +472,15 @@
         href: ../operator/azure-stack-diagnostic-test.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Troubleshooting
         href: ../operator/azure-stack-troubleshooting.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+      - name: Support link reference 
+        href: operator/aks-refer-table-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+#      - name: Tactical Cloud Appliance safety guide (V1)
+#        href: tca-safety-guide-version-one.md
+#      - name: Tactical Cloud Appliance safety guide (V2)
+#        href: tca-safety-guide-version-two.md
+#      - name: Tactical Cloud Appliance service manual (V2)
+#        href: tca-service-manual-version-two.md
+
   - name: Reference
     items:
     - name: Azure Stack Hub Operator 
@@ -531,7 +544,7 @@
             - name: Azure Stack PowerShell overview
               href: ../user/azure-stack-powershell-overview.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
             - name: Install Azure Stack PowerShell
-              href: /azure-stack/operator/powershell-install-az-module?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+              href: /azure-stack/operator/azure-stack-powershell-install?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
               maintainContext: true
             - name: Connect with PowerShell
               href: ../user/azure-stack-powershell-configure-user.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
@@ -790,6 +803,8 @@
     items:
     - name: Azure Stack PowerShell
       href: /powershell/azure/azure-stack/overview?view=azurestackps-1.3.0
+    - name: Alerts aka.ms link reference
+      href: operator/aks-refer-table-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: REST API Browser
       href: /rest/api/
     - name: Azure CLI
