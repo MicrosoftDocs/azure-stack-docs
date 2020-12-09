@@ -157,7 +157,7 @@ For more information on RDMA and Hyper-V host networking for Azure Stack HCI, se
 
     :::image type="content" source="media/cluster/create-cluster-rdma.png" alt-text="Create cluster wizard - configure RDMA" lightbox="media/cluster/create-cluster-rdma.png":::
 
-    For information on assigning bandwidth reservations, see the [Traffic bandwidth allocation](../concepts/host-network-requirements.md#traffic-bandwidth-allocation) section in [Host network requirements](../concepts/host-network-requirement.md).
+    For information on assigning bandwidth reservations, see the [Traffic bandwidth allocation](../concepts/host-network-requirements.md#traffic-bandwidth-allocation) section in [Host network requirements](../concepts/host-network-requirements.md).
 
 1. Select **Advanced**, then select the **Data Center Bridging (DCB)** checkbox.
 
