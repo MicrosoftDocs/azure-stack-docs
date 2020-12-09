@@ -27,7 +27,8 @@ If you’re interested in testing Azure Stack HCI, but have limited or no spare 
 
 Before you run the Create Cluster wizard, make sure you:
 
-- Have read the hardware and other requirements in [System requirements](../concepts/system-requirements.md).
+- Have read the hardware and related requirements in [System requirements](../concepts/system-requirements.md).
+- Have read the [Physical network requirements](../concepts/physical-network-requirements) and [Host network requirements](../concepts/host-network-requirements) for Azure Stack HCI.
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
 - Have an account that’s a member of the local Administrators group on each server.
 - Install Windows Admin Center on a PC or server for management. See [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
@@ -94,6 +95,8 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 
 Step 2 of the wizard walks you through configuring virtual switches, network adapters, and other networking elements for your cluster. RDMA (both iWARP and RoCE ) network adapters are supported.
 
+For more information on RDMA and Hyper-V host networking for Azure Stack HCI, see [Host network requirements](../concepts/host-network-requirements).
+
 > [!NOTE]
 > If you see errors listed during any networking or virtual switch steps, select **Apply and test** again.
 
@@ -108,14 +111,14 @@ Step 2 of the wizard walks you through configuring virtual switches, network ada
 
     - **One physical network adapter for management**. For this option, both DHCP or static IP address assignment is supported.
 
-    - **Two physical network adapters teamed for management**. When a pair of adapters are teamed, only static IP address assignment is supported. If the selected adapters use DHCP addressing (either for one or both), the DHCP IP address would be converted to static IP addresses before virtual switch creation.
+    - **Two physical network adapters teamed for management**. When a pair of adapters are teamed, only static IP address assignment is supported. If the selected adapters use DHCP addressing (either for one or both), the DHCP IP addresses would be converted to static IP addresses before virtual switch creation.
 
     By using teamed adapters, you have a single connection to multiple switches but only use a single IP address. Load-balancing becomes available and fault-tolerance is instant instead of waiting for DNS records to update.
 
     Now do the following for each server:
 
     - Select the **Description** checkbox. Note that all adapters are selected and that the wizard may offer a recommendation for you.
-    - Unselect the checkboxes for those adapters you don't want used for cluster management.
+    - Clear the checkboxes for those adapters you don't want used for cluster management.
 
     > [!NOTE]
     > You can use 1 Gb adapters as management adapters, but we recommend using 10 Gb or faster adapters for carrying storage and workload (VM) traffic.
@@ -128,12 +131,12 @@ Step 2 of the wizard walks you through configuring virtual switches, network ada
 
 1. Wait until the **Status** column shows **Passed** for each server, then click **Next**. This step verifies network connectivity between all adapters with the same subnet and VLAN ID. The provided IP addresses are transferred from the physical adapter to the virtual adapters once the virtual switches are created in the next step. It may take several minutes to complete depending on the number of adapters configured.
 
-1. Under **2.3 Virtual switch**, select one of the following options as applicable. Depending on how many adapters are present, not all options may show up:
+1. Under **2.3 Virtual switch**, select one of the following options as applicable. Depending on how many network adapters there are, not all options may be available:
 
-    - **Skip virtual switch creation**
-    - **Create one virtual switch for compute and storage together**
-    - **Create one virtual switch for compute only**
-    - **Create two virtual switches**
+    - **Skip virtual switch creation** - choose if you want set up virtual switches later.
+    - **Create one virtual switch for compute and storage together** - choose if you want to use the same virtual switch for your VMs and Storage Spaces Direct. This is the "converged" option.
+    - **Create one virtual switch for compute only** - choose if you want to use a virtual switch for your VMs only.
+    - **Create two virtual switches** - choose if you want a dedicated virtual switch each for VMs and for Storage Spaces Direct.
 
         :::image type="content" source="media/cluster/create-cluster-virtual-switches.png" alt-text="Create cluster wizard - virtual switches" lightbox="media/cluster/create-cluster-virtual-switches.png":::
 
@@ -154,7 +157,7 @@ Step 2 of the wizard walks you through configuring virtual switches, network ada
 
     :::image type="content" source="media/cluster/create-cluster-rdma.png" alt-text="Create cluster wizard - configure RDMA" lightbox="media/cluster/create-cluster-rdma.png":::
 
-    For information on assigning bandwidth reservations, see the [Traffic bandwidth allocation](https://docs.microsoft.com/azure-stack/hci/concepts/host-network-requirements#traffic-bandwidth-allocation) section in [Host network requirements](https://docs.microsoft.com/azure-stack/hci/concepts/host-network-requirements#traffic-bandwidth-allocation).
+    For information on assigning bandwidth reservations, see the [Traffic bandwidth allocation](../concepts/host-network-requirements#traffic-bandwidth-allocation) section in [Host network requirements](../concepts/host-network-requirement).
 
 1. Select **Advanced**, then select the **Data Center Bridging (DCB)** checkbox.
 
@@ -179,7 +182,7 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
 
     If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable CredSSP for the wizard to continue. Once your cluster is created and the wizard has completed, you'll disable CredSSP to increase security. If you experience issues with CredSSP, see [Troubleshoot CredSSP](../manage/troubleshoot-credssp.md) for more information.
 
-1. Review all validation statuses, download the report to get detailed information on any failures, make changes, then click **Validate again** as needed. You can **Download report** as well.Repeat again as necessary until all validation checks pass. When all is OK, click **Next**.
+1. Review all validation statuses, download the report to get detailed information on any failures, make changes, then click **Validate again** as needed. You can **Download report** as well. Repeat again as necessary until all validation checks pass. When all is OK, click **Next**.
 1. On **3.2 Create cluster**, enter a name for your cluster.
 
     :::image type="content" source="media/cluster/create-cluster.png" alt-text="Create cluster wizard - Create cluster" lightbox="media/cluster/create-cluster.png":::
@@ -212,16 +215,16 @@ Step 4 of the wizard walks you through setting up Storage Spaces Direct for your
 1. Select **Go to connections list**.
 1. After a few minutes, you should see your cluster in the list. Select it to view the cluster overview page.
 
-It can some take time for the cluster name to be replicated across your domain, especially if workgroup servers have been newly added to Active Directory. Although the cluster might be displayed in Windows Admin Center, it might not be available to connect to yet.
+It can take some time for the cluster name to be replicated across your domain, especially if workgroup servers have been newly added to Active Directory. Although the cluster might be displayed in Windows Admin Center, it might not be available to connect to yet.
 
-If resolving the cluster isn't successful after some time, in most cases you can substitute a server name in the the cluster instead of the cluster name.
+If resolving the cluster isn't successful after some time, in most cases you can substitute a server name instead of the cluster name.
 
 ## Step 5: SDN (optional)
 
 This optional step walks you through setting up the Network Controller component of [Software Defined Networking (SDN)](../concepts/software-defined-networking.md). Once the Network Controller is set up, you can configure other components of SDN such as Software Load Balancer (SLB) and RAS Gateway as needed.
 
 > [!NOTE]
-> The wizard does not configure SLB And RAS Gateway for SDN. You can use SDN Express scripts to configure these components. For information on how to do this, see the [SDNExpress GitHub repo](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts).
+> The wizard does not configure SLB and RAS Gateway for SDN. You can use SDN Express scripts to configure these components. For information on how to do this, see the [SDNExpress GitHub repo](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts).
 
 > [!NOTE]
 > SDN is not supported for stretched clusters.
@@ -236,15 +239,15 @@ This optional step walks you through setting up the Network Controller component
 1. Under **Network**, enter the VLAN ID of the management network. Network Controller needs connectivity to the same management network as the hosts to communicate and configure the hosts.
 
     > [!NOTE]
-    > Network Controller VMs use the virtual switch used for cluster management if available, otherwise they use the "Compute" virtual switch like the rest of the cluster VMs. For more information, see the [Network Controller requirements](https://docs.microsoft.com/azure-stack/hci/concepts/network-controller#network-controller-requirements) section in [Plan to deploy Network Controller](https://docs.microsoft.com/azure-stack/hci/concepts/network-controller).
+    > Network Controller VMs use the virtual switch used for cluster management if available, otherwise they use the "Compute" virtual switch like the rest of the cluster VMs. For more information, see the [Network Controller requirements](../concepts/network-controller#network-controller-requirements) section in [Plan to deploy Network Controller](../concepts/network-controller).
 
 1. For **VM network addressing**, select either **DHCP** or **Static**.
 1. If you selected **DHCP**, enter the name for the Network Controller VMs.
-1. If you selected **Static**, do the following:
-    1. Specify an IP address
-    1. Specify a subnet prefix.
-    1. Specify the default gateway.
-    1. Specify one or more DNS servers. Click **Add** to add additional DNS servers.
+1. If you selected **Static**, specify the following:
+    1. IP address.
+    1. Subnet prefix.
+    1. Default gateway.
+    1. One or more DNS servers. Click **Add** to add additional DNS servers.
 1. Under **Credentials**, enter the username and password used to join the Network Controller VMs to the cluster domain.
 1. Enter the local administrative password for these VMs.
 1. Under **Advanced**, enter the path to the VMs.
@@ -260,7 +263,7 @@ This optional step walks you through setting up the Network Controller component
 
 - Clean up any VHD mount points that the wizard created.  
 
-- Ensure you have at least have 50-100GB of free space on your Hyper-V hosts.  
+- Ensure you have at least 50-100GB of free space on your Hyper-V hosts.  
 
 ## After you complete the wizard
 
@@ -278,7 +281,7 @@ OK, now here are the other tasks you will need to do:
 
 - Setup a cluster witness. See [Set up a cluster witness](witness.md).
 - Create your volumes. See [Create volumes](../manage/create-volumes.md).
-- For stretched clusters, create volumes and setup replication using Storage Replica. See [Create volumes and set up replication for stretched clusters](../manage/create-stretched-volumes.md).
+- For stretched clusters, create your volumes and setup replication. See [Create stretched cluster volumes and set up replication](../manage/create-stretched-volumes.md).
 
 ## Next steps
 
