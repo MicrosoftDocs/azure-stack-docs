@@ -92,7 +92,7 @@ You'll also need appropriate Azure Active Directory permissions to complete the 
 
 Use the following procedure to register an Azure Stack HCI cluster with Azure using a management PC.
 
-1. Install the required cmdlets on your management PC. If you are registering a cluster deployed from the General Availability (GA) image of Azure Stack HCI, run the following command. If your cluster was deployed from the Public Preview image, make sure you have applied the [November 23, 2020 Preview Update (KB4586852)](../release-notes.md) to each server in the cluster before attempting to register.
+1. Install the required cmdlets on your management PC. If you are registering a cluster deployed from the General Availability (GA) image of Azure Stack HCI, simply run the following command. If your cluster was deployed from the Public Preview image, make sure you have applied the November 23, 2020 Preview Update (KB4586852) to each server in the cluster before attempting to register.
 
    ```PowerShell
    Install-Module -Name Az.StackHCI
