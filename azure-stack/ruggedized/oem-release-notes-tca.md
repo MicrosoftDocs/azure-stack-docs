@@ -16,7 +16,7 @@ This article contains release and version information for the Tactical Cloud App
 
 ## Overview
 
-This document describes the contents of Azure Stack Hub Tactical Data Center first party updates for firmware and drivers.  This update includes improvements and fixes for the latest release of Azure Stack Hub.  Below are the download links:
+This document describes the contents of Azure Stack Hub Tactical Cloud Appliance first party updates for firmware and drivers.  This update includes improvements and fixes for the latest release of Azure Stack Hub.  Below are the download links:
 
 * https://aka.ms/azshwpackage
 * https://aka.ms/azshwmanifest
