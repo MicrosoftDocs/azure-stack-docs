@@ -79,6 +79,7 @@ At a minimum, you should reserve the following number of DHCP addresses in each 
 
 If you are planning to use static IP address assignments throughout the cluster, you need to ensure the available ranges contain the following minimum amount of IP addresses.
   
+[!div class="mx-tdBreakAll"]
 | User-supplied value | Required IPs |
 |----------|------------------|
 | Subnet prefix   | Classless Interdomain Routing (CIDR) address |
@@ -93,9 +94,9 @@ For both DHCP and static IPs, follow the requirements in the table below. For DH
 
 | Cluster         | Node | Required IP | Notes |
 |---------|-------|-----------|-----------|
-| Management |--- | One IP each for the management node VM, the load balancer VM, and the API server | For DHCP, the API server IP is assigned from the IP address pool |
+| Management | | One IP each for the management node VM, the load balancer VM, and the API server | For DHCP, the API server IP is assigned from the IP address pool |
 | Target (workload) | Control plane | +1*n IP for each control plane node, and +1 IP each for the load balancer VM and the kubeapi server VIP | For DHCP, the kubeapi server VIP is assigned from the IP address pool |
-| ------ | Worker | 1*n IP for each worker node | ------ |
+| | Worker | 1*n IP for each worker node |  |
 
   
 ### Network port and URL requirements 
