@@ -58,6 +58,8 @@
         href: ../operator/azure-stack-app-service-overview.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Event Hubs 
         href: ../operator/event-hubs-rp-overview.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+      - name: IoT Hub 
+        href: ../operator/iot-hub-rp-overview.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json        
       - name: MySQL 
         href: ../operator/azure-stack-mysql-resource-provider.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: SQL Server 
