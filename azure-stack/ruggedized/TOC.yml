@@ -197,7 +197,7 @@
       - name: Set up management environment
         items:
         - name: Install Azure Stack PowerShell
-          href: ../operator/azure-stack-powershell-install.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: ../operator/powershell-install-az-module.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Connect with PowerShell
           href: ../operator/azure-stack-powershell-configure-admin.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Access privileged endpoint
@@ -531,7 +531,7 @@
             - name: Azure Stack PowerShell overview
               href: ../user/azure-stack-powershell-overview.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
             - name: Install Azure Stack PowerShell
-              href: /azure-stack/operator/azure-stack-powershell-install?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+              href: /azure-stack/operator/powershell-install-az-module?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
               maintainContext: true
             - name: Connect with PowerShell
               href: ../user/azure-stack-powershell-configure-user.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json

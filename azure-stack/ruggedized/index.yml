@@ -59,7 +59,7 @@ landingContent:
           - text: Download Azure Stack Hub tools from GitHub 
             url: ../operator/azure-stack-powershell-download.md
           - text: Install Azure Stack PowerShell 
-            url: ../operator/azure-stack-powershell-install.md
+            url: ../operator/powershell-install-az-module.md
           - text: Use Docker to run PowerShell
             url: ../user/azure-stack-powershell-user-docker.md
           - text: Connect with Azure Stack PowerShell
