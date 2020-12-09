@@ -24,7 +24,7 @@ You won't be able to register with Azure until you've created an Azure Stack HCI
 
 ### Internet access
 
-Azure Stack HCI needs to periodically connect to the Azure public cloud. If outbound connectivity is restricted by your external corporate firewall or proxy server, they must be configured to allow outbound access to port 443 (HTTPS) on a limited number of well-known Azure IPs. For more information on how to prepare your firewalls, see Configure firewalls for Azure Stack HCI.
+Azure Stack HCI needs to periodically connect to the Azure public cloud. If outbound connectivity is restricted by your external corporate firewall or proxy server, they must be configured to allow outbound access to port 443 (HTTPS) on a limited number of well-known Azure IPs. For more information on how to prepare your firewalls, see [Configure firewalls for Azure Stack HCI](../concepts/configure-firewalls.md).
 
    > [!NOTE]
    > The registration process tries to contact the PowerShell Gallery to verify that you have the latest version of the necessary PowerShell modules such as Az and AzureAD. Although the PowerShell Gallery is hosted on Azure, it does not currently have a service tag. If you cannot run the above cmdlet from a management machine that has outbound internet access, we recommend downloading the modules and manually transferring them to a cluster node where you will run the `Register-AzStackHCI` command. Alternatively, you can [install the modules in a disconnected scenario](/powershell/scripting/gallery/how-to/working-with-local-psrepositories?view=powershell-7.1#installing-powershellget-on-a-disconnected-system).
@@ -123,4 +123,4 @@ The registration workflow will detect when you've logged in and proceed to compl
 You are now ready to:
 
 - [Validate the cluster](validate.md)
-- [Create volumes](../manage/create-volumes.md)
+
