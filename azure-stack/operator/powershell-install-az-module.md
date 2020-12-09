@@ -4,10 +4,10 @@ description: Learn how to install PowerShell for Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 12/2/2020
+ms.date: 12/9/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 12/2/2020
+ms.lastreviewed: 12/9/2020
 
 # Intent: As an Azure Stack operator, I want to install Powershell Az for Azure Stack.
 # Keyword: install powershell azure stack Az
@@ -187,6 +187,16 @@ In scenarios that require a proxy server to access the internet, you first confi
 You can use the cmdlets and code samples based on Azure Resource Modules. However, you will want to change the name of the modules and cmdlets. The module names have been changed so that `AzureRM` and Azure become `Az`, and the same for cmdlets. For example, the `AzureRM.Compute` module has been renamed to `Az.Compute`.` New-AzureRMVM` has become ` New-AzVM`, and `Get-AzureStorageBlob` is now `Get-AzStorageBlob`.
 
 For a more thorough discussion and guidance for moving AzurRM script to Az and breaking changes in Azure Stack Hub's Az module, see [Migrate from AzureRM to Azure PowerShell Az](migrate-azurerm-az.md).
+
+The PowerShell snippets used in the Azure Stack Hub content use the AzureRM module. The Az module is a preview release. You can refactor the snippets to use with the Az module by following the guidance in the migration guide, [Migrate from AzureRM to Azure PowerShell Az in Azure Stack Hub](powershell-install-az-module.md).
+
+## Known issues for Az module installation
+
+### Known issues
+
+[!Include[Known issue for install - one](../includes/known-issue-az-install-1.md)]
+
+[!Include[Known issue for install - two](../includes/known-issue-az-install-2.md)]
 
 ## Next steps
 
