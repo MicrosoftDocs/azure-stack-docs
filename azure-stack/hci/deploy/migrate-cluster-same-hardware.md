@@ -164,7 +164,7 @@ For more information on how to create the cluster using PowerShell, see [Create 
     Get-StoragePool | ? IsPrimordial -eq $false | ft FriendlyName,Version
     ```
 
-1. Create the quorum witness. For information on how, see [Set up a cluster witness](https://docs.microsoft.com/azure-stack/hci/deploy/witness)
+1. Create the quorum witness. For information on how, see [Set up a cluster witness](https://docs.microsoft.com/azure-stack/hci/deploy/witness).
 
 1. Verify that storage repair jobs are completed using the following:
 
@@ -188,7 +188,7 @@ For more information on how to create the cluster using PowerShell, see [Create 
     ```
 
     > [!NOTE]
-    > `ClusterFunctionalLevel` is automatically set to `10` and does not require updating due to new OS and cluster creation.
+    > `ClusterFunctionalLevel` is automatically set to `10` and does not require updating due to new the operating system and cluster creation.
 
 1. Update your storage pool as follows:
 
@@ -206,13 +206,13 @@ If migrating from Windows Server 2016, Resilient File System (ReFS) volumes are 
 These enhancements require a new ReFS volume to be created using the `New-Volume` cmdlet.
 
 > [!NOTE]
-> For Windows Server 2016 Mirror Accelerated Parity Volumes, ReFS compaction, was not available, so re-attaching these volumes is OK but will be less performant compared to creating a new MAP volume on Azure Stack HCI cluster.
+> For Windows Server 2016 Mirror Accelerated Parity Volumes, ReFS compaction was not available, so re-attaching these volumes is OK but will be less performant compared to creating a new MAP volume on an Azure Stack HCI cluster.
 
 ## Import the VMs
 
 A best practice is to create at least one Cluster Shared Volume (CSV) per cluster node to enable an even balance of VMs for each CSV owner for increased resiliency, performance, and scale of VM workloads. By default, this balance occurs automatically every five minutes and needs to be considered when using Robocopy between a source cluster node and the destination cluster node to ensure source and destination CSV owners match to provide the most optimal transfer path and speed.
 
-Perform the following steps on your Azure Stack HCI cluster to import, make highly available, and start the VMs:
+Perform the following steps on your Azure Stack HCI cluster to import the VMs, make them highly available, and start them:
 
 1. Run the following cmdlet to show all CSV owner nodes:
 

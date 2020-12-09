@@ -25,7 +25,7 @@ The following diagram shows a Windows Server source cluster and an Azure Stack H
 
 :::image type="content" source="media/migrate/migrate-cluster.png" alt-text="Migrate cluster to Azure Stack HCI" lightbox="media/migrate/migrate-cluster.png":::
 
-In terms of expected downtime, using a single NIC with a dual 40 GB RDMA East-West network between clusters, and Robocopy configured for 32 multithreads, transfer speeds of 1.9 TB per hour can be realized.
+In terms of expected downtime, using a single NIC with a dual 40 GB RDMA East-West network between clusters, and Robocopy configured for 32 multithreads, you can realize transfer speeds of 1.9 TB per hour.
 
 > [!NOTE]
 > Migrating VMs for stretched clusters is not covered in this article.
@@ -36,19 +36,19 @@ There are several requirements and things to consider before you begin migration
 
 - You must have domain credentials with administrator permissions for both source and destination clusters, with full rights to the source and destination Organizational Unit (OU) that contains both clusters.
 
-- Both clusters must be in the same Active Directory forest and domain to facilitate Kerberos authentication between clusters for migration of virtual machines (VMs).
+- Both clusters must be in the same Active Directory forest and domain to facilitate Kerberos authentication between clusters for migration of VMs.
 
 - Both clusters must reside in an Active Directory OU with Group Policy Object (GPO) Block inheritance set on this OU. This ensures no domain-level GPOs and security policies can impact the migration.
 
 - Both clusters must be connected to the same time source to support consistent Kerberos authentication between clusters.
 
-- Make note of the Hyper-V virtual switch name used by VMs on the source cluster. You must use the same virtual switch name for the Azure Stack HCI destination cluster "virtual machine network" prior to importing VMs.
+- Make note of the Hyper-V virtual switch name used by the VMs on the source cluster. You must use the same virtual switch name for the Azure Stack HCI destination cluster "virtual machine network" prior to importing VMs.
 
-- Remove any ISO image files for your source VMs. This is done using Hyper-V Manager in **VM Properties** in the **Hardware section**. Click **Remove** for any virtual CD/DVD drives.
+- Remove any ISO image files for your source VMs. This is done using Hyper-V Manager in **VM Properties** in the **Hardware section**. Select **Remove** for any virtual CD/DVD drives.
 
 - Shutdown all VMs on the source cluster. This is required to ensure version control and state are maintained throughout the migration process.
 
-- Check if Azure Stack HCI supports your version of VMs to import and update your VMs as needed. See the [VM version support and update](#vm-version-support-and-update) section on how to do this.
+- Check if Azure Stack HCI supports your version of the VMs to import and update your VMs as needed. See the [VM version support and update](#vm-version-support-and-update) section on how to do this.
 
 - Backup all VMs on your source cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases. To backup to Azure, see [Use Azure Backup](https://docs.microsoft.com/azure-stack/hci/manage/use-azure-backup).
 
@@ -81,7 +81,7 @@ Regardless of the OS version a VM may be running on, the minimum VM version supp
 |Windows Server 2019/1709|9.0|
 |Azure Stack HCI|9.0|
 
-For VMs on Windows Server 2012 R2, Windows Server 2016, and Windows Server 2019, update all VMs to the latest VM version supported on the source hardware first before running the Robocopy migration script. This ensures all VM are at least at version 5.0 for a successful VM import.
+For VMs on Windows Server 2012 R2, Windows Server 2016, and Windows Server 2019, update all VMs to the latest VM version supported on the source hardware first before running the Robocopy migration script. This ensures all VMs are at least at version 5.0 for a successful VM import.
 
 For VMs on Windows Server 2008 SP1, Windows Server 2008 R2-SP1, and Windows 2012, the VM version will be less than version 5.0. These VMs also use an .xml file for configuration instead of an .vcmx file. As such, a direct import of the VM to Azure Stack HCI is not supported. In these cases, you have two options, as detailed in [Migrating older VMs](#migrating-older-vms).
 
@@ -109,15 +109,15 @@ Get-VM –ComputerName (Get-ClusterNode) | Update-VMVersion -Force
 
 If you are using Remote Direct Memory Access (RDMA), Robocopy can leverage it for copying your VMs between clusters. Here are some recommendations for using RDMA:
 
-- Connect both clusters to the same top of rack (ToR) switch to use the fastest network path between source and destination clusters. For the storage network path this typically supports 10Gbe/25Gbe or higher speeds and leverages RDMA.
+- Connect both clusters to the same top of rack (ToR) switch to use the fastest network path between source and destination clusters. For the storage network path this typically supports 10GbE/25GbE or higher speeds and leverages RDMA.
 
 - If the RDMA adapter or standard is different between source and destination clusters (ROCE vs iWARP), Robocopy will instead leverage SMB over TCP/IP via the fastest available network. This will typically be a dual 10Gbe/25Gbe or higher speed for the East-West network, providing the most optimal way to copy VM VHDX files between clusters.
 
 - To ensure Robocopy can leverage RDMA between clusters (East-West network), configure RDMA storage networks so they are routable between the source and destination clusters.
 
-## Create the destination cluster
+## Create the new cluster
 
-Before you can create the destination cluster, you need to install the Azure Stack HCI OS on each new server that will be in the cluster. For information on how to do this, see [Deploy the Azure Stack HCI operating system](operating-system.md).
+Before you can create the Azure Stack HCI cluster, you need to install the Azure Stack HCI OS on each new server that will be in the cluster. For information on how to do this, see [Deploy the Azure Stack HCI operating system](operating-system.md).
 
 Use Windows Admin Center or Windows PowerShell to create the new cluster. For information on how to do this, see [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md) and [Create an Azure Stack HCI cluster using Windows PowerShell](create-cluster-powershell.md).
 
@@ -126,15 +126,13 @@ Use Windows Admin Center or Windows PowerShell to create the new cluster. For in
 
 ## Run the migration script
 
-The following PowerShell script `Robocopy_Remote_Server_.ps1` uses Robocopy to copy VM files and their dependent directories and metadata from the source to the destination cluster. This script has been modified from  from the original script on TechNet at: [Robocopy Files to Remote Server Using PowerShell and RoboCopy](https://gallery.technet.microsoft.com/scriptcenter/Robocoy-Files-to-Remote-bdfc5154).
+The following PowerShell script `Robocopy_Remote_Server_.ps1` uses Robocopy to copy VM files and their dependent directories and metadata from the source to the destination cluster. This script has been modified from the original script on TechNet at: [Robocopy Files to Remote Server Using PowerShell and RoboCopy](https://gallery.technet.microsoft.com/scriptcenter/Robocoy-Files-to-Remote-bdfc5154).
 
-Robocopy supports file copy over SMB with compression using the `/compress` switch for Windows Server 2019 and later. When compression is used, inline whitespace compression to file transfers is applied, removing congestion and copy time. Depending on the file format and I/O pattern, the performance increase can be up to fourfold. For more information, see the [Windows Blogs](https://blogs.windows.com/windowsexperience/2020/09/02/announcing-windows-server-vnext-preview-build-20206/) post and [KB4571748](https://support.microsoft.com/help/4571748/windows-10-update-kb4571748).
+Robocopy supports file copy over SMB with compression using the `/compress` switch for Windows Server 2019 and later. When compression is used, inline whitespace compression to file transfers is applied, reducing congestion and copy time. Depending on the file format and I/O pattern, the performance increase can be up to fourfold. For more information, see the [Windows Blogs](https://blogs.windows.com/windowsexperience/2020/09/02/announcing-windows-server-vnext-preview-build-20206/) post and [KB4571748](https://support.microsoft.com/help/4571748/windows-10-update-kb4571748).
 
 The script copies all VM VHD, VHDX, and VMCX files to your destination cluster for a given Cluster Shared Volume (CSV). One CSV is migrated at a time.
 
-The migration script is run locally on each source server to leverage the benefit of RDMA and fast network transfer. Do the following:
-
-1. Run the following script on each Windows Server source server.
+The migration script is run locally on each source server to leverage the benefit of RDMA and fast network transfer. To do this:
 
 1. Make sure each destination cluster node is set to the CSV owner for the destination CSV.
 
@@ -153,7 +151,7 @@ The migration script is run locally on each source server to leverage the benefi
     - `$source  = "C:\Clusterstorage\Volume01"`
     - `$dest = "\\$Dest_Server\C$\Clusterstorage\Volume01"`
 
-You are ready to run the script:
+1. Run the following script on each Windows Server source server:
 
 ```powershell
 <#
@@ -207,7 +205,7 @@ Write-host " Copy Virtual Machines to $Dest_Server took $Time        ......" -fo
 
 A best practice is to create at least one Cluster Shared Volume (CSV) per cluster node to enable an even balance of VMs for each CSV owner for increased resiliency, performance, and scale of VM workloads. By default, this balance occurs automatically every five minutes and needs to be considered when using Robocopy between a source cluster node and the destination cluster node to ensure source and destination CSV owners match to provide the most optimal transfer path and speed.
 
-Perform the following steps on your Azure Stack HCI cluster to import, make highly available, and start the VMs:
+Perform the following steps on your Azure Stack HCI cluster to import the VMs, make them highly available, and start them:
 
 1. Run the following cmdlet to show all CSV owner nodes:
 
@@ -238,7 +236,7 @@ Perform the following steps on your Azure Stack HCI cluster to import, make high
     Start-VM -Name
     ```
 
-1. Login and verify that all VMs are running and that all your apps and data are there:
+1. Log on and verify that all VMs are running and that all your apps and data are there:
 
     ```powershell
     Get-VM -ComputerName Server01 | Where-Object {$_.State -eq 'Running'}
@@ -250,7 +248,7 @@ Perform the following steps on your Azure Stack HCI cluster to import, make high
     Get-VM | Update-VMVersion -Force
     ```
 
-1. After the script has completed, check the Robocopy log file for any errors listed and to verify that all VMS are copied successfully.
+1. After the script has completed, check the Robocopy log file for any errors listed and to verify that all VMs are copied successfully.
 
 ## Migrating older VMs
 
@@ -304,7 +302,7 @@ Here is the process you use:
 
     `Robocopy \\2012R2-Clus01\c$\clusterstorage\volume01\Hyper-V\   \\20H2-Clus01\c$\clusterstorage\volume01\Hyper-V\ /Copyall /E /MT:32 /R:0 /w:1 /NFL /NDL /log:c:\log.txt /xf`
 
-1. Create new Generation 1 VMs. For detailed information, see [Manage VMs](https://docs.microsoft.com/azure-stack/hci/manage/vm) on how to do this.
+1. Create new Generation 1 VMs. For detailed information on how to do this, see [Manage VMs](https://docs.microsoft.com/azure-stack/hci/manage/vm).
 
 1. Attach the copied VHD files to the new VMs. For detailed information, see [Manage Virtual Hard Disks (VHD)](https://docs.microsoft.com/windows-server/storage/disk-management/manage-virtual-hard-disks)
 
@@ -317,7 +315,7 @@ As an FYI, the following Windows Server guest operating systems support Generati
 - Windows 10
 - 64-bit versions of Windows 8.1 (64-bit)
 - 64-bit versions of Windows 8 (64-bit)
-- Linux (See [Supported Linux and FreeBSD VMs](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Linux-and-FreeBSD-virtual-machines-for-Hyper-V-on-Windows)
+- Linux (See [Supported Linux and FreeBSD VMs](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Linux-and-FreeBSD-virtual-machines-for-Hyper-V-on-Windows))
 
 ## Next steps
 
