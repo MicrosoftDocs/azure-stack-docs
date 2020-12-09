@@ -4,7 +4,7 @@ description: This topic provides guidance on how to configure firewalls for the 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 12/10/2020
 ---
 
 # Configure firewalls for Azure Stack HCI
@@ -20,6 +20,8 @@ Azure Stack HCI needs to periodically connect to Azure. Access is limited to onl
 - Port 443 (HTTPS)
 
 For more information, see the "Azure Stack HCI connectivity" section of the [Azure Stack HCI FAQ](../faq.md)
+
+This topic describes how to optionally use a highly locked-down firewall configuration to block all traffic to all destinations except those included on your allow list.
 
    >[!IMPORTANT]
    > If outbound connectivity is restricted by your external corporate firewall or proxy server, ensure that the URLs listed in the table below are not blocked. For related information, see the "Networking configuration" section of [Overview of Azure Arc enabled servers agent](https://docs.microsoft.com/azure/azure-arc/servers/agent-overview#networking-configuration).
