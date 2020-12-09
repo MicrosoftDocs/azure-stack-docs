@@ -76,7 +76,7 @@ Azure Stack includes a small set of extensions. Updates and additional extension
 
 Use the following PowerShell script to get the list of VM extensions that are available in your Azure Stack environment:
 
-If provisioning an extension on a VM deployment takes too long, let the provisioning timeout instead of trying to stop the process to deallocate or delete the VM.
+If provisioning an extension on a VM deployment takes too long, let the provisioning time out instead of trying to stop the process to deallocate or delete the VM.
 
 ### [Az modules](#tab/az1)
 
