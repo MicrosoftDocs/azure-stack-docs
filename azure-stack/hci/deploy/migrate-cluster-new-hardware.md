@@ -15,7 +15,7 @@ ms.reviewer: JasonGerend
 This topic describes how to migrate virtual machine (VM) files on Windows Server 2012 R2, Windows Server 2016, or Windows Server 2019 to new Azure Stack HCI server hardware using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one server to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy).
 
 > [!NOTE]
-> Hyper-V Live Migration and Hyper-V Replica migration from Windows Server to Azure Stack HCI is not supported.
+> Hyper-V Live Migration and Hyper-V Replica from Windows Server to Azure Stack HCI is not supported.
 
 If you have VMs on Windows 2012 R2 or older that you want to migrate, see [Migrating older VMs](#migrating-older-vms).
 
@@ -34,9 +34,7 @@ In terms of expected downtime, using a single NIC with a dual 40 GB RDMA East-We
 
 There are several requirements and things to consider before you begin migration:
 
-- You must register the Azure Stack HCI cluster with Azure before you can create new VMs. You can do this using Windows Admin Center or PowerShell.
-
-- All Windows PowerShell commands must be Run As Administrator.
+- All Windows PowerShell commands must be run As Administrator.
 
 - You must have domain credentials with administrator permissions for both source and destination clusters, with full rights to the source and destination Organizational Unit (OU) that contains both clusters.
 
@@ -78,11 +76,8 @@ Regardless of the OS version a VM may be running on, the minimum VM version supp
 |Windows Server 2008 R2|3.0|
 |Windows Server 2012|4.0|
 |Windows Server 2012 R2|5.0|
-|Windows Server 2016 Technical Preview 3|6.2|
-|Windows Server 2016 Technical Preview 4|7.0|
-|Windows Server 2016 Technical Preview 5|7.1|
 |Windows Server 2016|8.0|
-|Windows Server 2019/1709|9.0|
+|Windows Server 2019|9.0|
 |Azure Stack HCI|9.0|
 
 For VMs on Windows Server 2012 R2, Windows Server 2016, and Windows Server 2019, update all VMs to the latest VM version supported on the source hardware first before running the Robocopy migration script. This ensures all VMs are at least at version 5.0 for a successful VM import.
@@ -117,16 +112,19 @@ If you are using Remote Direct Memory Access (RDMA), Robocopy can leverage it fo
 
 - If the RDMA adapter or standard is different between source and destination clusters (ROCE vs iWARP), Robocopy will instead leverage SMB over TCP/IP via the fastest available network. This will typically be a dual 10Gbe/25Gbe or higher speed for the East-West network, providing the most optimal way to copy VM VHDX files between clusters.
 
-- To ensure Robocopy can leverage RDMA between clusters (East-West network), configure RDMA storage networks so they are routable between the source and destination clusters.
+- To ensure Robocopy can leverage RDMA between clusters (East-West network), configure RDMA storage networks so they are routeable between the source and destination clusters.
 
 ## Create the new cluster
 
 Before you can create the Azure Stack HCI cluster, you need to install the Azure Stack HCI OS on each new server that will be in the cluster. For information on how to do this, see [Deploy the Azure Stack HCI operating system](operating-system.md).
 
-Use Windows Admin Center or Windows PowerShell to create the new cluster. For information on how to do this, see [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md) and [Create an Azure Stack HCI cluster using Windows PowerShell](create-cluster-powershell.md).
+Use Windows Admin Center or Windows PowerShell to create the new cluster. For detailed information on how to do this, see [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md) and [Create an Azure Stack HCI cluster using Windows PowerShell](create-cluster-powershell.md).
 
 > [!IMPORTANT]
-> Make sure the Hyper-V virtual switch name created on the destination cluster matches the Hyper-V virtual switch name on the source cluster.
+> Hyper-V virtual switch (`VMSwitch`) names between clusters must be the same. Make sure that virtual switch names created on the destination cluster match those used on the source cluster across all servers. This must be verified before you import the VMs.
+
+> [!NOTE]
+> You must register the Azure Stack HCI cluster with Azure before you can create new VMs on it. For more information, see [Register with Azure](register-with-azure.md).
 
 ## Run the migration script
 
