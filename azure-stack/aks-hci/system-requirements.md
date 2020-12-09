@@ -68,6 +68,10 @@ If you are planning to use DHCP for assigning IP addresses throughout the cluste
  - The IPv4 addresses provided by the DHCP server should be routable and have a 30-day lease expiration to avoid loss of IP connectivity in the event of a VM update or reprovisioning.  
 
 At a minimum, you should reserve the following number of DHCP addresses in each pool range. Multiple pool ranges are required: one for the API server, one for VMs, and one for Azure Kubernetes Service on Azure Stack HCI.
+
+**IP pool range**: We recommend having 16 or more IP addresses in the range. However, you need at least three IP addresses in the range to create the management cluster.
+
+**MAC pool range**: We recommend having 16 or more IP addresses in the range to allow for multiple/single node configurations.
   
 | User-provided value | Required IPs |
 |----------|------------------|
