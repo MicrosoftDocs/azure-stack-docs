@@ -26,7 +26,7 @@ Your Azure Stack Hub users can rotate the secrets (certificates, username, and p
 
 ## Prerequisites for the user
 
- - The user will need to have the Azure Stack Hub Powershell modules installed. For more information, see [Install PowerShell for Azure Stack]((../../operator/azure-stack-powershell-install.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fazure-stack%2Fbreadcrumb%2Ftoc.json).
+ - The user will need to have the Azure Stack Hub Powershell modules installed. For more information, see [Install PowerShell for Azure Stack](../../operator/azure-stack-powershell-install.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fazure-stack%2Fbreadcrumb%2Ftoc.json).
 
  - Get the update secrets for the container registry template. You can use a new SSL certificate or a new username and password combination for accessing the Docker registry.
 
@@ -280,4 +280,4 @@ Follow the instructions below to set new secrets in Key Vault.
 
 ## Next steps
 
-[Azure Stack Marketplace overview]((../../operator/azure-stack-marketplace.md)
+[Azure Stack Marketplace overview](../../operator/azure-stack-marketplace.md)

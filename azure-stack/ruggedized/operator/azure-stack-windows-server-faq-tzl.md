@@ -96,4 +96,4 @@ Contact Microsoft support to verify that the correct BIOS markers were installed
 For more information, see the following articles:
 
 - [Azure Stack Marketplace overview](../../operator/azure-stack-marketplace.md)
-- [Download marketplace items from Azure to Azure Stack]((../../operator/azure-stack-download-azure-marketplace-item-tca.md)
+- [Download marketplace items from Azure to Azure Stack](../../operator/azure-stack-download-azure-marketplace-item-tca.md)

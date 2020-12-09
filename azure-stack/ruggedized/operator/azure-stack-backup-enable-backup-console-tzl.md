@@ -27,7 +27,7 @@ You can configure the Infrastructure Backup Service from the administrator porta
 
 ## Configure backup
 
-1. Open the [Azure Stack administrator portal]((../../operator/azure-stack-manage-portals.md).
+1. Open the [Azure Stack administrator portal](../../operator/azure-stack-manage-portals.md).
 
 2. Select **All services**, and then under the **Administration** category select **Infrastructure backup**. Choose **Configuration** in the **Infrastructure backup** blade.
 

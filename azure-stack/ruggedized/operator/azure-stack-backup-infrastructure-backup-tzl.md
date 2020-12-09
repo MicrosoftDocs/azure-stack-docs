@@ -48,7 +48,7 @@ The service contains the following features:
 ## Verify requirements for the Infrastructure Backup Service
 
 - **Storage location**
-  If there is reliable access to an external storage location, you need a file share accessible from the Azure Stack infrastructure that can store multiple backups. For more information about selecting a storage location for the Infrastructure Backup Service, see [Backup Controller requirements]((../../operator/azure-stack-backup-reference.md#backup-controller-requirements).
+  If there is reliable access to an external storage location, you need a file share accessible from the Azure Stack infrastructure that can store multiple backups. For more information about selecting a storage location for the Infrastructure Backup Service, see [Backup Controller requirements](../../operator/azure-stack-backup-reference.md#backup-controller-requirements).
 
 - **Credentials**
   You need user account credentials that can access the storage location.

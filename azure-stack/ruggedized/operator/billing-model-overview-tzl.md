@@ -29,6 +29,4 @@ Billing starts 14 days after an order for an appliance is shipped. For Azure Sta
 
 When the appliance is returned to Microsoft, billing stops as soon as the appliance is received back at the Microsoft warehouse.
 
-## Next steps
 
-[Usage API reference](analyze-usage-tzl.md)
