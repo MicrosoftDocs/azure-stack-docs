@@ -15,7 +15,7 @@ ms.topic: article
 ms.date: 12/20/2019
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 12/20/2019
+ms.lastreviewed: 12/20/2020
 
 # Intent: As an Azure Stack operator, I want to learn about the scale unit node actions I can take.
 # Keyword: azure stack scale unit node actions
