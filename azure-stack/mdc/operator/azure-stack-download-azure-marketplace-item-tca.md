@@ -86,6 +86,33 @@ You can [download the offline syndication tools here](https://aka.ms/azsSyndicat
 
 #### Download items
 
+
+
+### [Az modules](#tab/az1)
+
+1. Open PowerShell and go to the extracted folder.
+
+2. Run the **Invoke-AzSMarketplaceDownload.ps1** PowerShell script:
+
+    ```powershell
+    .\Invoke-AzSMarketplaceDownload.ps1 -RegistrationSubscriptionId '<subscription ID>' ` 
+       -RegistrationResourceGroup 'azurestack' -RegistrationName '<registration name>' `
+       -TenantName mytenant.onmicrosoft.com -DownloadFolder 'F:\offlineSyndication'
+    ```
+
+    Alternatively, if you've already logged in through Azure PowerShell, you can pass in the Azure context:
+
+    ```powershell
+    Add-AzAccount -Environment AzureCloud -Tenant mytenant.onmicrosoft.com 
+    .\Invoke-AzSMarketplaceDownload.ps1 -RegistrationResourceGroup 'azurestack' -RegistrationName '<registration name>' -DownloadFolder 'F:\offlineSyndication' -AzureContext $(Get-AzureRMContext)
+    ```
+    If you do not pass in the Azure context, it will ask you to sign in.
+
+3. A window appears in which you can select the product you would like to download. You can Ctrl + click to select multiple items.
+
+4. Select **OK**. This downloads the marketplace item and its dependencies, if any.
+### [AzureRM modules](#tab/azurerm1)
+
 1. Open PowerShell and go to the extracted folder.
 
 2. Run the **Invoke-AzSMarketplaceDownload.ps1** PowerShell script:
@@ -102,12 +129,13 @@ You can [download the offline syndication tools here](https://aka.ms/azsSyndicat
     Add-AzureRmAccount -Environment AzureCloud -Tenant mytenant.onmicrosoft.com 
     .\Invoke-AzSMarketplaceDownload.ps1 -RegistrationResourceGroup 'azurestack' -RegistrationName '<registration name>' -DownloadFolder 'F:\offlineSyndication' -AzureContext $(Get-AzureRMContext)
     ```
-
     If you do not pass in the Azure context, it will ask you to sign in.
 
 3. A window appears in which you can select the product you would like to download. You can Ctrl + click to select multiple items.
 
 4. Select **OK**. This downloads the marketplace item and its dependencies, if any.
+
+---
 
 ### Upload Marketplace items to Azure Stack Hub
 
@@ -118,6 +146,30 @@ You can [download the offline syndication tools here](https://aka.ms/azsSyndicat
 - Access to the offline Marketplace items.
 
 #### Upload items
+
+### [Az modules](#tab/az2)
+
+1. Open PowerShell and go to the extracted folder.
+
+2. Run the **Invoke-AzSMarketplaceUpload.ps1** PowerShell script:
+
+    ```powershell
+    .\Invoke-AzsMarketplaceUpload.ps1 -AzureStackCloudName "AzureStack-Admin" -AzureStackAdminARMEndpoint https://adminmanagement.<region>.<fqdn> -TenantName mytenant.onmicrosoft.com -DownloadFolder F:\offlineSyndication
+    ```
+
+    Alternatively, you can set up the Azure Stack environment yourself in Azure PowerShell, authenticate to the admin Resource Manager endpoint, and pass the context to the script:
+
+    ```powershell
+    Add-AzEnvironment -Name Redmond-Admin -ARMEndpoint https://adminmanagement.redmond.azurestack.corp.microsoft.com
+
+    Add-AzAccount -Environment Redmond-Admin
+
+    .\Invoke-AzsMarketplaceUpload.ps1 -DownloadFolder F:\Downloads\offlining -AzureContext $(GetAzContext)
+    ```
+
+    This procedure uploads the marketplace items to the specified Azure Stack Hub.
+
+### [AzureRM modules](#tab/azurerm2)
 
 1. Open PowerShell and go to the extracted folder.
 
@@ -138,3 +190,5 @@ You can [download the offline syndication tools here](https://aka.ms/azsSyndicat
     ```
 
     This procedure uploads the marketplace items to the specified Azure Stack Hub.
+
+---
