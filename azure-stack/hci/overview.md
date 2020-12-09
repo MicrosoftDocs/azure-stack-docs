@@ -6,7 +6,7 @@ author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/7/2020
+ms.date: 12/10/2020
 ---
 
 # Azure Stack HCI solution overview
@@ -197,6 +197,7 @@ Windows Admin Center version 2009 adds a number of features to Azure Stack HCI, 
 
 - **Azure Kubernetes Service hosting capabilities**: You can now install a preview version of [Azure Kubernetes Service on Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
 - **Inclusion of Software Defined Networking in the Cluster Creation wizard**: The Cluster Creation wizard now includes the option to deploy the [Software Defined Networking (SDN)](concepts/software-defined-networking.md) Network Controller feature during [cluster creation](deploy/create-cluster.md#step-5-sdn-optional).
+- **Remote direct memory access (RDMA) enhancements in the Cluster Creation wizard**: Cluster Creation wizard can now configure RDMA for iWARP and RoCE network adapters, including Data Center Bridging (DCB).
 
 For details on new features in Windows Admin Center, see the [Windows Admin Center blog](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/bg-p/Windows-Admin-Center-Blog).
 
