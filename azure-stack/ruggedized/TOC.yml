@@ -56,6 +56,8 @@
         href: ../operator/azure-stack-app-service-overview.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Event Hubs 
         href: ../operator/event-hubs-rp-overview.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+      - name: IoT Hub 
+        href: ../operator/iot-hub-rp-overview.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json        
       - name: MySQL 
         href: ../operator/azure-stack-mysql-resource-provider.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: SQL Server 
@@ -136,6 +138,14 @@
             href: ../operator/event-hubs-rp-prerequisites.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: Install
             href: ../operator/event-hubs-rp-install.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        - name: IoT Hub
+          items:
+          - name: Capacity planning
+            href: ../operator/iot-hub-rp-manage.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json#capacity-management
+          - name: Prerequisites
+            href: ../operator/iot-hub-rp-prerequisites.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Install
+            href: ../operator/iot-hub-rp-install.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json            
         - name: MySQL
           items: 
           - name: Deploy the MySQL Server resource provider
@@ -393,7 +403,33 @@
           - name: Service update announcements
             href: https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs
         - name: Remove
-          href: ../operator/event-hubs-rp-remove.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json   
+          href: ../operator/event-hubs-rp-remove.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+      - name: IoT Hub on Azure Stack Hub
+        items:
+        - name: Overview 
+          href: ../operator/iot-hub-rp-overview.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        - name: Prerequisites
+          href: ../operator/iot-hub-rp-prerequisites.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        - name: Install 
+          href: ../operator/iot-hub-rp-install.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        - name: Lifecycle management
+          items:
+          - name: Apply updates
+            href: ../operator/resource-provider-apply-updates.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Backup & restore
+            href: ../operator/azure-stack-backup-infrastructure-backup.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Collect logs
+            href: ../operator/azure-stack-diagnostic-log-collection-overview.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Health & alerts
+            href: ../operator/azure-stack-monitor-health.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Manage 
+            href: ../operator/iot-hub-rp-manage.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Rotate secrets
+            href: ../operator/iot-hub-rp-rotate-secrets.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Service update announcements
+            href: https://azure.microsoft.com/updates/?query=IoT%20Hub
+        - name: Remove 
+          href: ../operator/iot-hub-rp-remove.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json        
       - name: MySQL 
         items:
         - name: Overview 
