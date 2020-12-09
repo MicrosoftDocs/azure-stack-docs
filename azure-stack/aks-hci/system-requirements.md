@@ -59,68 +59,47 @@ The following requirements apply to an Azure Stack HCI cluster as well as a Wind
 There are two options for assigning IP addresses in an AKA-HCI cluster: an automatic DHCP assignment or a static IP address assignment. Each one has it's own set of requirements.
 
 #### DHCP
-If you are planning to use DHCP for assigning IP address throughout the cluster:  
+If you are planning to use DHCP for assigning IP addresses throughout the cluster:  
 
  - The network must have an available DHCP server to provide TCP/IP addresses to the VMs and the VM hosts. The DHCP server should also contain network time protocol (NTP) and DNS host information. 
 
  - We also recommend having a DHCP server with a dedicated scope of IPv4 addresses accessible by the Azure Stack HCI cluster. For example, you can reserve 10.0.1.1 for the default gateway, reserve 10.0.1.2 to 10.0.1.102 for Kubernetes services (using `-vipPoolStartIp` and `-vipPoolEndIp` in `Set-AksHciConfig`), and use 10.0.1.103-10.0.1.254 for Kubernetes cluster VMs. 
+ 
+ - •	The IPv4 addresses provided by the DHCP server should be routable and have a 30-day lease expiration to avoid loss of IP connectivity in the event of a VM update or reprovisioning.  
 
-At a minimum, you should reserve the following number of DHCP addresses:
+At a minimum, you should reserve the following number of DHCP addresses in each pool range. 
   
 | User-supplied value | Required IPs |
 |----------|------------------|
 | IP pool range | We recommend having 16 or more IP addresses in the range. However, you need at least three IP addresses in the range to create the management cluster.
  |
-| MAC pool range | We recommend having 16 or more IP addresses in the range to allow for multiple/single node configurations. |
+| MAC pool range | We recommend having 16 or more IP addresses in the range to allow for multiple/single node configurations. |  
 
-For the management cluster:  
-- One IP for the management node VM (assigned by DHCP)  
-- One IP for the load balancer VM (assigned by DHCP)  
-- One IP for the API server (from the IP address pool)  
-
-For the workload cluster:  
-Control plane cluster -    
-- +1*n IP for each control plane node (assigned by DHCP)  
-- +1 for the load balancer VM (assigned by DHCP)  
-- +1 for the kubeapi server VIP (from the IP address pool)  
-     
-For the target cluster:  
-- 1*n IP for each worker node (assigned by DHCP)  
- 
-> [!NOTE]
-> `N` is for each service (with a minimum of one).
-
- The IPv4 addresses provided by the DHCP server should be routable and have a 30-day lease expiration to avoid loss of IP connectivity in the event of a VM update or reprovisioning.    
-
-#### Static IP  
+#### Static IP addresses 
 
 If you are planning to use static IP address assignments throughout the cluster, you need to ensure the available ranges contain the following minimum amount of IP addresses.
   
 | User-supplied value | Required IPs |
 |----------|------------------|
-| Subnet prefix | Classless Interdomain Routing (CIDR) |
+| Subnet prefix | Classless Interdomain Routing (CIDR) address |
 | Gateway | One IP address |
 | DNS servers | Up to three IP addresses |
 | IP range | We recommend having 32 or higher IP addresses in the range. However, you need at least 12 IP addresses in the range to allow for multiple/single node configurations. |
-| MAC pool range | We recommend having at least 16 IP addresses in the range to allow for multiple/single node configurations. |
+| MAC pool range | We recommend having at least 16 IP addresses in the range to allow for multiple/single node configurations. |  
 
+#### DHCP and static IP requirements  
 
-For the management cluster: 
-- One IP for the management node VM   
-- One IP for the load balancer VM  
-- One IP for the API server    
+For both DHCP and static IPs, follow the requirements in the table below. N indicates the number of nodes of the cluster.  
 
-For the workload cluster: 
-Control plane cluster:  
-- +1*n IP for each control plane node  
-- +1 for the kubeapi server VIP  
-- +1 for the the load balancer VM 
-
-For the target cluster:
-- 1*n for each worker node 
- 
 > [!NOTE]
-> `N` is for each service (with a minimum of one).
+> For DHCP, the IP addresses are assigned by DHCP unless otherwise noted.
+
+|         | Node | Required IP | Notes |
+|---------|-------|-----------|-----------|
+| Management cluster |--- | One IP each for the management node VM, the load balancer VM, and the API server | For DHCP, the API server IP is assigned from the IP address pool |
+| Workload cluster | Control plane | +1*n IP for each control plane node, and +1 IP each for the load balancer VM and the kubeapi server VIP | For DHCP, the kubeapi server VIP is assigned from the IP address pool |
+| ------ | Worker | 1*n IP for each worker node | ------ |
+
   
 ### Network port and URL requirements 
 
