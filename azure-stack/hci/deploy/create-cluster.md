@@ -28,7 +28,7 @@ If you’re interested in testing Azure Stack HCI, but have limited or no spare 
 Before you run the Create Cluster wizard, make sure you:
 
 - Have read the hardware and related requirements in [System requirements](../concepts/system-requirements.md).
-- Have read the [Physical network requirements](../concepts/physical-network-requirements) and [Host network requirements](../concepts/host-network-requirements) for Azure Stack HCI.
+- Have read the [Physical network requirements](../concepts/physical-network-requirements.md) and [Host network requirements](../concepts/host-network-requirements.md) for Azure Stack HCI.
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
 - Have an account that’s a member of the local Administrators group on each server.
 - Install Windows Admin Center on a PC or server for management. See [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
@@ -95,7 +95,7 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 
 Step 2 of the wizard walks you through configuring virtual switches, network adapters, and other networking elements for your cluster. RDMA (both iWARP and RoCE ) network adapters are supported.
 
-For more information on RDMA and Hyper-V host networking for Azure Stack HCI, see [Host network requirements](../concepts/host-network-requirements).
+For more information on RDMA and Hyper-V host networking for Azure Stack HCI, see [Host network requirements](../concepts/host-network-requirements.md).
 
 > [!NOTE]
 > If you see errors listed during any networking or virtual switch steps, select **Apply and test** again.
@@ -157,7 +157,7 @@ For more information on RDMA and Hyper-V host networking for Azure Stack HCI, se
 
     :::image type="content" source="media/cluster/create-cluster-rdma.png" alt-text="Create cluster wizard - configure RDMA" lightbox="media/cluster/create-cluster-rdma.png":::
 
-    For information on assigning bandwidth reservations, see the [Traffic bandwidth allocation](../concepts/host-network-requirements#traffic-bandwidth-allocation) section in [Host network requirements](../concepts/host-network-requirement).
+    For information on assigning bandwidth reservations, see the [Traffic bandwidth allocation](../concepts/host-network-requirements.md#traffic-bandwidth-allocation) section in [Host network requirements](../concepts/host-network-requirement.md).
 
 1. Select **Advanced**, then select the **Data Center Bridging (DCB)** checkbox.
 
@@ -239,7 +239,7 @@ This optional step walks you through setting up the Network Controller component
 1. Under **Network**, enter the VLAN ID of the management network. Network Controller needs connectivity to the same management network as the hosts to communicate and configure the hosts.
 
     > [!NOTE]
-    > Network Controller VMs use the virtual switch used for cluster management if available, otherwise they use the "Compute" virtual switch like the rest of the cluster VMs. For more information, see the [Network Controller requirements](../concepts/network-controller#network-controller-requirements) section in [Plan to deploy Network Controller](../concepts/network-controller).
+    > Network Controller VMs use the virtual switch used for cluster management if available, otherwise they use the "Compute" virtual switch like the rest of the cluster VMs. For more information, see the [Network Controller requirements](../concepts/network-controller.md#network-controller-requirements) section in [Plan to deploy Network Controller](../concepts/network-controller.md).
 
 1. For **VM network addressing**, select either **DHCP** or **Static**.
 1. If you selected **DHCP**, enter the name for the Network Controller VMs.
@@ -255,7 +255,7 @@ This optional step walks you through setting up the Network Controller component
 1. When finished, click **Next**.
 1. On **Deploy the Network Controller**, wait until the wizard completes its job. Stay on this page until all progress tasks are complete. Then click **Finish**.
 
-1. After Network Controller VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For information on how to do this, see [Configure dynamic DNS registration for Network Controller](https://docs.microsoft.com/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller#step-3-configure-dynamic-dns-registration-for-network-controller).
+1. After Network Controller VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For information on how to do this, see [Configure dynamic DNS registration for Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller#step-3-configure-dynamic-dns-registration-for-network-controller).
 
 1. If Network Controller deployment fails, do the following before you try this again:
 
