@@ -45,7 +45,7 @@ scripts and enable compatibility for old cmdlet names.
 
 To install the Azure PowerShell Az module, follow these steps:
 
-* __RECOMMENDED__: [Uninstall the AzureRM module](/powershell/azure/uninstall-az-ps#uninstall-the-azurerm-module).
+* **Recommended**: [Uninstall the AzureRM module](/powershell/azure/uninstall-az-ps#uninstall-the-azurerm-module).
   Make sure that you remove _all_ installed versions of AzureRM, not just the most recent version.
 * [Install the Az module](/powershell/azure/install-az-ps)
 
