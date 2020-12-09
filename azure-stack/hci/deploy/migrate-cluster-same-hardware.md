@@ -88,7 +88,7 @@ Migration consists of running Azure Stack HCI setup on your Windows Server deplo
 1. Create the new Azure Stack HCI cluster. You can use Windows Admin Center or Windows PowerShell to do this, as described below.  
 
 > [!IMPORTANT]
-> Hyper-V virtual switch (`VMSwitch`) names between clusters must be the same. Make sure that virtual switch names used on the Azure Stack HCI cluster match those used on your source cluster across all servers. This must be verified before you import the VMs.
+> Hyper-V virtual switch (`VMSwitch`) names between clusters must be the same. Make sure that virtual switch names used on the Azure Stack HCI cluster match those used on your source cluster across all servers. Verify the switch names for the same before you import the VMs.
 
 > [!NOTE]
 > You must register the Azure Stack HCI cluster with Azure before you can create new VMs on it. For more information, see [Register with Azure](register-with-azure.md).

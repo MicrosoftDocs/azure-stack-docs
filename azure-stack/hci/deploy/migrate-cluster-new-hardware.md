@@ -121,7 +121,7 @@ Before you can create the Azure Stack HCI cluster, you need to install the Azure
 Use Windows Admin Center or Windows PowerShell to create the new cluster. For detailed information on how to do this, see [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md) and [Create an Azure Stack HCI cluster using Windows PowerShell](create-cluster-powershell.md).
 
 > [!IMPORTANT]
-> Hyper-V virtual switch (`VMSwitch`) names between clusters must be the same. Make sure that virtual switch names created on the destination cluster match those used on the source cluster across all servers. This must be verified before you import the VMs.
+> Hyper-V virtual switch (`VMSwitch`) names between clusters must be the same. Make sure that virtual switch names created on the destination cluster match those used on the source cluster across all servers. Verify the switch names for the same before you import the VMs.
 
 > [!NOTE]
 > You must register the Azure Stack HCI cluster with Azure before you can create new VMs on it. For more information, see [Register with Azure](register-with-azure.md).
@@ -129,8 +129,6 @@ Use Windows Admin Center or Windows PowerShell to create the new cluster. For de
 ## Run the migration script
 
 The following PowerShell script `Robocopy_Remote_Server_.ps1` uses Robocopy to copy VM files and their dependent directories and metadata from the source to the destination cluster. This script has been modified from the original script on TechNet at: [Robocopy Files to Remote Server Using PowerShell and RoboCopy](https://gallery.technet.microsoft.com/scriptcenter/Robocoy-Files-to-Remote-bdfc5154).
-
-Robocopy supports file copy over SMB with compression using the `/compress` switch for Windows Server 2019 and later. When compression is used, inline whitespace compression to file transfers is applied, reducing congestion and copy time. Depending on the file format and I/O pattern, the performance increase can be up to fourfold. For more information, see the [Windows Blogs](https://blogs.windows.com/windowsexperience/2020/09/02/announcing-windows-server-vnext-preview-build-20206/) post and [KB4571748](https://support.microsoft.com/help/4571748/windows-10-update-kb4571748).
 
 The script copies all VM VHD, VHDX, and VMCX files to your destination cluster for a given Cluster Shared Volume (CSV). One CSV is migrated at a time.
 
@@ -274,7 +272,7 @@ This is a two-stage migration used for VMs hosted on Windows Server 2008 SP1, Wi
 
 1. Use the following example Robocopy command to copy VMs to Windows Server 2012 R2 first using the topmost path determined in step 1:
 
-    `Robocopy \\2012R2-Clus01\c$\clusterstorage\volume01\Hyper-V\   \\20H2-Clus01\c$\clusterstorage\volume01\Hyper-V\ /Copyall /E /MT:32 /R:0 /w:1 /NFL /NDL /log:c:\log.txt /xf`
+    `Robocopy \\2012R2-Clus01\c$\clusterstorage\volume01\Hyper-V\ \\20H2-Clus01\c$\clusterstorage\volume01\Hyper-V\ /E /MT:32 /R:0 /w:1 /NFL /NDL /copyall /log:c:\log.txt /xf`
 
 1. Verify the virtual switch (`VMSwitch`) name on used on the Windows Server 2012 R2 cluster is the same as the switch name used on the Windows 2008 R2 or Windows Server 2008 R2-SP1 source. To display the switch names used across all servers in a cluster, use this:
 
@@ -331,7 +329,7 @@ Here is the process you use:
 
 1. Use the example Robocopy to copy VMs VHDs directly to Azure Stack HCI:
 
-    `Robocopy \\2012R2-Clus01\c$\clusterstorage\volume01\Hyper-V\   \\20H2-Clus01\c$\clusterstorage\volume01\Hyper-V\ /Copyall /E /MT:32 /R:0 /w:1 /NFL /NDL /log:c:\log.txt /xf`
+    `Robocopy \\2012R2-Clus01\c$\clusterstorage\volume01\Hyper-V\ \\20H2-Clus01\c$\clusterstorage\volume01\Hyper-V\ /E /MT:32 /R:0 /w:1 /NFL /NDL /copyall /log:c:\log.txt /xf`
 
 1. Create new Generation 1 VMs. For detailed information on how to do this, see [Manage VMs](https://docs.microsoft.com/azure-stack/hci/manage/vm).
 
