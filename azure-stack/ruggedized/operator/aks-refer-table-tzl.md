@@ -21,6 +21,8 @@ ms.reviewer: efemmano
 
 # Alerts aka.ms link reference for Azure Stack Hub
 
+This article provides a cross reference for the vanity aka.ms links, and their corresponding redirected links.
+
 ## Link cross reference
 
 | Aka.ms link | Article |
