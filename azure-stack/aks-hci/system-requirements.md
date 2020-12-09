@@ -81,23 +81,20 @@ If you are planning to use static IP address assignments throughout the cluster,
   
 | User-supplied value | Required IPs |
 |----------|------------------|
-| Subnet prefix | Classless Interdomain Routing (CIDR) address |
-| Gateway | One IP address |
-| DNS servers | Up to three IP addresses |
-| IP range | We recommend having 32 or higher IP addresses in the range. However, you need at least 12 IP addresses in the range to allow for multiple/single node configurations. |
-| MAC pool range | We recommend having at least 16 IP addresses in the range to allow for multiple/single node configurations. |  
+| Subnet prefix   | Classless Interdomain Routing (CIDR) address |
+| Gateway   | One IP address |
+| DNS servers   | Up to three IP addresses |
+| IP range   | We recommend having 32 or higher IP addresses in the range. However, you need at least 12 IP addresses in the range to allow for multiple/single node configurations. |
+| MAC pool range   | We recommend having at least 16 IP addresses in the range to allow for multiple/single node configurations. |  
 
 #### DHCP and static IP requirements  
 
-For both DHCP and static IPs, follow the requirements in the table below. N indicates the number of nodes of the cluster.  
+For both DHCP and static IPs, follow the requirements in the table below. For DHCP, the IP addresses are assigned by DHCP unless otherwise noted. Note that *N* indicates the number of nodes of the cluster. 
 
-> [!NOTE]
-> For DHCP, the IP addresses are assigned by DHCP unless otherwise noted.
-
-|         | Node | Required IP | Notes |
+| Cluster         | Node | Required IP | Notes |
 |---------|-------|-----------|-----------|
-| Management cluster |--- | One IP each for the management node VM, the load balancer VM, and the API server | For DHCP, the API server IP is assigned from the IP address pool |
-| Workload cluster | Control plane | +1*n IP for each control plane node, and +1 IP each for the load balancer VM and the kubeapi server VIP | For DHCP, the kubeapi server VIP is assigned from the IP address pool |
+| Management |--- | One IP each for the management node VM, the load balancer VM, and the API server | For DHCP, the API server IP is assigned from the IP address pool |
+| Target (workload) | Control plane | +1*n IP for each control plane node, and +1 IP each for the load balancer VM and the kubeapi server VIP | For DHCP, the kubeapi server VIP is assigned from the IP address pool |
 | ------ | Worker | 1*n IP for each worker node | ------ |
 
   
