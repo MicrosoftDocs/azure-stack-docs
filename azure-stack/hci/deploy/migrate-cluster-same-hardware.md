@@ -23,6 +23,9 @@ To migrate your VMs to new Azure Stack HCI hardware, see [Migrate to Azure Stack
 
 There are several requirements and things to consider before you begin migration:
 
+- You must register the Azure Stack HCI cluster with Azure before you can create new VMs. You can do this using Windows Admin Center or PowerShell.
+
+- All Windows PowerShell commands must be Run As Administrator.
 - You must have domain credentials with administrator permissions for Azure Stack HCI.
 - Backup all VMs on your source cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases.  To backup to Azure, see [Use Azure Backup](https://docs.microsoft.com/azure-stack/hci/manage/use-azure-backup).
 - Collect inventory and configuration of all cluster nodes and cluster naming, network configuration, Cluster Shared Volume (CSV) resiliency and capacity, and quorum witness.
@@ -79,7 +82,7 @@ Get-VM –ComputerName (Get-ClusterNode) | Update-VMVersion -Force
 
 ## Updating the servers and cluster
 
-Migration consists of running Azure Stack HCI setup on your Windows Server deployment for a clean OS install. This replaces the current operating system with Azure Stack HCI. For detailed information, see [Deploy the Azure Stack HCI operating system](operating-system.md). Afterwards, you create a new Azure Stack HCI cluster and import the VMs over.
+Migration consists of running Azure Stack HCI setup on your Windows Server deployment for a clean OS install with your VMs and storage intact. This replaces the current operating system with Azure Stack HCI. For detailed information, see [Deploy the Azure Stack HCI operating system](operating-system.md). Afterwards, you create a new Azure Stack HCI cluster, reattach your storage and import the VMs over.
 
 1. Shutdown your existing cluster VMs, offline CSVs, offline storage pools, and the cluster service.
 
@@ -145,8 +148,8 @@ For more information on how to create the cluster using PowerShell, see [Create 
 
 1. If migrating from Windows Server 2016, this also creates a new `ClusterperformanceHistory` ReFS volume and assigns it to the SDDC Cluster Resource Group.
 
-> [!NOTE]
-> If a storage pool shows Minority Disk errors (viewable in Cluster Manager), re-run the `Enable-ClusterS2D -verbose` cmdlet.
+    > [!NOTE]
+    > If a storage pool shows Minority Disk errors (viewable in Cluster Manager), re-run the `Enable-ClusterS2D -verbose` cmdlet.
 
 1. Using Cluster Manager, enable every CSV except the `ClusterperformanceHistory` volume, which is a ReFS volume (make sure this is not an ReFS CSV).
 

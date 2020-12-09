@@ -34,6 +34,10 @@ In terms of expected downtime, using a single NIC with a dual 40 GB RDMA East-We
 
 There are several requirements and things to consider before you begin migration:
 
+- You must register the Azure Stack HCI cluster with Azure before you can create new VMs. You can do this using Windows Admin Center or PowerShell.
+
+- All Windows PowerShell commands must be Run As Administrator.
+
 - You must have domain credentials with administrator permissions for both source and destination clusters, with full rights to the source and destination Organizational Unit (OU) that contains both clusters.
 
 - Both clusters must be in the same Active Directory forest and domain to facilitate Kerberos authentication between clusters for migration of VMs.
@@ -264,9 +268,27 @@ Windows Server 2012 R2 and older Hyper-V hosts use an XML file format for their 
 
 This is a two-stage migration used for VMs hosted on Windows Server 2008 SP1, Windows Server 2008 R2-SP, and Windows Server 2012. Here is the process you use:
 
-1. Use the following example Robocopy command to copy VMs to Windows Server 2012 R2 first:
+1. Discover the location of all VM VHD and VHDX files to be copied, then review the `vmpaths.txt` file to determine the topmost source file path for Robocopy to start from. Use the following cmdlet:
+
+    ```powershell
+    Get-ChildItem -Path "C:\Clusterstorage\Volume01\*.vhd*" -Recurse > c:\vmpaths.txt
+    ```
+
+1. Use the following example Robocopy command to copy VMs to Windows Server 2012 R2 first using the topmost path determined in step 1:
 
     `Robocopy \\2012R2-Clus01\c$\clusterstorage\volume01\Hyper-V\   \\20H2-Clus01\c$\clusterstorage\volume01\Hyper-V\ /Copyall /E /MT:32 /R:0 /w:1 /NFL /NDL /log:c:\log.txt /xf`
+
+1. Verify the virtual switch name on used on the Windows Server 2012 R2 server is the same as the switch name used on the Windows 2008 R2 or Windows Server 2008 R2-SP1 source server. Rename the switch on Windows Server 20212 R2 as needed.
+
+1. Copy and import the VMs to Windows Server 2012 R2:
+
+     ```powershell
+    Get-ChildItem -Path "c:\clusterstorage\volume01\Hyper-V\*.xml"-Recurse
+    ```
+
+    ```powershell
+    Get-ChildItem -Path "c:\clusterstorage\volume01\image\*.xml" -Recurse    | Import-VM -Register | Get-VM | Add-ClusterVirtualMachineRole  
+    ```
 
 1. On Windows Server 2012 R2, update the VM version to 5.0 for all VMs:
 
@@ -275,7 +297,8 @@ This is a two-stage migration used for VMs hosted on Windows Server 2008 SP1, Wi
     ```
 
 1. [Run the migration script](#run-the-migration-script) to copy VMs to Azure Stack HCI.
-1. Follow the process in [Import the VMs](#import-the-vms), replacing Step 3 and Step 4 with the following to handle the XML files and to import the VMs:
+
+1. Follow the process in [Import the VMs](#import-the-vms), replacing Step 3 and Step 4 with the following to handle the XML files and to import the VMs to Azure Stack HCI:
 
     ```powershell
     Get-ChildItem -Path "c:\clusterstorage\volume01\Hyper-V\*.xml"-Recurse
