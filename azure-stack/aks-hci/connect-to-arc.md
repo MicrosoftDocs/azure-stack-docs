@@ -3,12 +3,14 @@ title: Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure A
 description: Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc for Kubernetes
 author: abha
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 12/02/2020
 ms.author: abha
 ms.reviewer: 
 ---
 
 # Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc for Kubernetes
+
+> Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
 
 When an Azure Kubernetes Service on Azure Stack HCI cluster is attached to Azure Arc, it will appear in the Azure portal. It will have an Azure Resource Manager ID and a managed identity. Clusters are attached to standard Azure subscriptions, are located in a resource group, and can receive tags just like any other Azure resource.
 
@@ -26,7 +28,7 @@ Verify you've the following requirements ready:
 
 * You'll need a kubeconfig file to access the cluster and cluster-admin role on the cluster for deployment of Arc enabled Kubernetes agents.
 * Have the Azure Kubernetes Service on Azure Stack HCI PowerShell module installed.
-* Azure CLI version 2.3+ is required for installing the Azure Arc enabled Kubernetes CLI extensions. [Install Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). You can also update to the latest version to ensure that you have Azure CLI version 2.3+.
+* Azure CLI version 2.3+ is required for installing the Azure Arc enabled Kubernetes CLI extensions. [Install Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true). You can also update to the latest version to ensure that you have Azure CLI version 2.3+.
 * An Azure subscription on which you're an owner or contributor. 
 * Run the commands in this document in a PowerShell administrative window.
 
@@ -106,7 +108,7 @@ az ad sp create-for-RBAC --name "azure-arc-for-k8s" --scope /subscriptions/{Subs
 }
 ```
 ## Step 5: Save service principal details
-Save the created service principal's appId, password and tenant values and cluster name, Azure subscription ID, resource group name and location in PowerShell variables. This will ensure you can reuse the details in other tutorials. Ensure that you also save these values in a notepad in case you want to close your powerShell session.
+Save the created service principal's appId, password and tenant values, and cluster name, Azure subscription ID, resource group name, and location in PowerShell variables. This will ensure you can reuse the details in other tutorials. Ensure that you also save these values in a notepad in case you want to close your PowerShell session.
 
 ```PowerShell
 $clusterName = #<name of your Kubernetes cluster>
@@ -140,7 +142,7 @@ Install-AksHciArcOnboarding -clusterName $clusterName -resourcegroup $resourceGr
 ```
 ## Verify connected cluster
 
-You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). Once you've the portal open in your browser, navigate to the resource group and the Azure Arc enabled Kubernetes resource based on the resource name and resource group name inputs used earlier in the `Install-AksHciArcOnboarding` PowerShell command.
+You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). Once you have the portal open in your browser, navigate to the resource group and the Azure Arc-enabled Kubernetes resource that's based on the resource name and resource group name inputs used earlier in the `Install-AksHciArcOnboarding` PowerShell command.
 
 > [!NOTE]
 > After onboarding the cluster, it takes around 5 to 10 minutes for the cluster metadata (cluster version, agent version, number of nodes) to surface on the overview page of the Azure Arc enabled Kubernetes resource in Azure portal.

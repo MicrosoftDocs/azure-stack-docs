@@ -19,7 +19,7 @@ ms.lastreviewed: 01/14/2019
 
 A tenant can use the tenant APIs to view the tenant's own resource usage data. These APIs are consistent with the Azure usage APIs.
 
-You can use the Windows PowerShell cmdlet [Get-UsageAggregates](/powershell/module/Az.usageaggregates/get-usageaggregates) to get usage data, just like in Azure.
+You can use the Windows PowerShell cmdlet [Get-UsageAggregates](/powershell/module/azurerm.usageaggregates/get-usageaggregates) to get usage data, just like in Azure.
 
 ## API call
 

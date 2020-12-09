@@ -4,10 +4,10 @@ description: As a developer, connect to Azure Stack Hub using Azure Account Exte
 author: mattbriggs
 
 ms.topic: conceptual
-ms.date: 09/21/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 09/21/2020
+ms.lastreviewed: 12/2/2020
 
 # Intent: As a developer, I want to use VS Code to connect to Azure Stack Hub so that I can provision resources.
 # Keyword: VS code Azure account extension

@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/10/2020
+ms.date: 12/8/2020
 ---
 
 # Release notes for Azure Stack HCI Public Preview
@@ -15,12 +15,76 @@ ms.date: 11/10/2020
 
 This article describes the contents of Azure Stack HCI Public Preview update packages.
 
+## December 8, 2020 Security Update (KB4592441)
+
+This update includes improvements and fixes for the latest release of Azure Stack HCI. 
+
+### Improvements and fixes
+This update contains miscellaneous security improvements to internal OS functionality. It addresses a security vulnerability by preventing applications that run as a SYSTEM account from printing to "FILE:" ports. To address this issue in the future, make sure your applications or services run as a specific user or service account.
+
+No additional issues were documented for this release.
+
+For more information about the resolved security vulnerabilities, please refer to the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance).
+
+### Known issues in this update
+Microsoft is not currently aware of any issues with this update.
+
+### How to get this update
+The December 8, 2020 security update (KB4592441) for [Azure Stack HCI preview](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
+
+### File information
+For a list of the files that are provided in this update (OS Build 17784.1408), download the [file information for cumulative update 4592441](https://download.microsoft.com/download/2/7/2/272ea75f-1657-43ce-a7a4-a17d51463a94/4592441.csv).
+
+   > [!NOTE]
+   > Some files erroneously have "Not applicable" in the "File version" column of the CSV file. This might lead to false positives or false negatives when using some third-party scan detection tools to validate the build.
+
+## November 23, 2020 Preview Update (KB4586852)
+
+This update includes improvements and fixes for the latest release of Azure Stack HCI. 
+
+   > [!IMPORTANT]
+   > If you have Azure Stack HCI clusters configured and registered using the Public Preview image, then you must repair your Azure registration after the KB4586852 update is installed in order to use the new features that the update offers. After installing the update, follow these steps for each cluster:
+   >
+   > 1. Make sure that all servers in the cluster have been updated to KB4586852. If they have not, then the repair will fail and indicate the node(s) that need to be updated.
+   >
+   > 2. Connect to one of the cluster nodes either locally or using `Enter-PSSession <server-name>`
+   >
+   > 3. Download the AzStackHCI v0.4.1 registration module from PowerShell Gallery. Run `Install-Module -Name Az.StackHCI` to get the latest module.
+   >
+   > 4. Run the following command to repair your registration. Use the subscription ID that was used to register the cluster originally. `Get-AzureStackHCI` shows the current ARM Uri, which has the subscription information.
+   >
+   >   ```PowerShell
+   >   Register-AzStackHCI -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -RepairRegistration
+   >   ```
+   > 
+
+### Improvements and fixes
+This non-security update includes quality improvements. Key changes include: 
+
+- With this update, Azure Stack HCI customers who hold valid Windows Server 2019 Datacenter edition license(s) can use them to conveniently activate virtual machines (VMs) hosted on Azure Stack HCI without having to manage product keys for each individual VM. Specifically, you can use Windows Admin Center or PowerShell to input an unused Windows Server 2019 Datacenter edition activation key directly into the Azure Stack HCI host to enable Automatic VM Activation (AVMA). VMs running Windows Server 2019 or earlier can then inherit activation from the host. The inputted key can be a Multiple Activation Key (MAK) obtained from the volume licensing center, the key printed on the Certificate of Authenticity (COA) sticker applied to an OEM server, or the key from a retail boxed copy of Windows Server 2019 Datacenter edition. In this release, Generic Volume License Keys (GVLK) are not supported.
+
+- Azure Stack HCI now collects required diagnostic data, which is the minimum data required to keep the device secure, up to date, and performing as expected. Required diagnostic data gathers a limited set of data that’s critical for understanding the device and its configuration. This data helps to identify problems that can occur on a specific hardware or software configuration.  
+
+### Known issues in this update
+Microsoft is not currently aware of any issues with this update.
+
+### How to get this update 
+The November 23, 2020 security update (KB4586852) for [Azure Stack HCI preview](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
+
+### File information
+For a list of the files that are provided in this update (OS Build 17784.1381), download the [file information for cumulative update 4586852](https://download.microsoft.com/download/5/c/6/5c6f8c37-3e0b-4239-a6d9-9c709e18e869/4586852.csv).
+
+   > [!NOTE]
+   > Some files erroneously have "Not applicable" in the "File version" column of the CSV file. This might lead to false positives or false negatives when using some third-party scan detection tools to validate the build.
+
 ## November 10, 2020 Security Update (KB4586811)
 
 This update includes improvements and fixes for the latest release of Azure Stack HCI.
 
 ### Improvements and fixes
-This update contains miscellaneous security improvements to internal OS functionality. No additional issues were documented for this release.
+This update contains miscellaneous security improvements to internal OS functionality. It addresses a security vulnerability by preventing applications that run as a SYSTEM account from printing to local ports that point to a file. Failing print jobs log error 50, “The request is not supported” in event ID 372 in the PrintService\Admin event log. To address this issue in the future, make sure your applications or services run as a specific user or service account.
+
+No additional issues were documented for this release.
 
 For more information about the resolved security vulnerabilities, please refer to the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance).
 

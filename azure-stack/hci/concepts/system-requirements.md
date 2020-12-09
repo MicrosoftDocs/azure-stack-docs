@@ -71,7 +71,7 @@ With Storage Spaces Direct, there is additional network traffic to consider:
 
 For stretched clusters, there is also additional Storage Replica traffic flowing between the sites. Storage Bus Layer (SBL) and Cluster Shared Volume (CSV) traffic does not go between sites, only between the server nodes within each site.
 
-For host networking planning considerations and requirements, see [Plan host networking for Azure Stack HCI](plan-host-networking.md).
+For host networking considerations and requirements, see [Host network requirements](host-network-requirements.md).
 
 ## Software Defined Networking (SDN) requirements
 

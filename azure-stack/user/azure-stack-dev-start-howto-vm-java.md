@@ -4,10 +4,10 @@ description:  Deploy a Java WAR to a virtual machine in Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 5/27/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 05/05/2020
+ms.lastreviewed: 12/2/2020
 ms.custom: conteperfq4
 
 # Intent: As a developer, I want to understanding how to create a Java web app so that I can build Java apps on Azure Stack Hub

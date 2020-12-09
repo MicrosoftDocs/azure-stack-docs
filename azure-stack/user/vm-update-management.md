@@ -4,10 +4,10 @@ description: Use the Azure Monitor for VMs, Update Management, Change Tracking, 
 author: mattbriggs
 
 ms.topic: article
-ms.date: 10/08/2020
+ms.date: 11/22/2020
 ms.author: mabrigg
 ms.reviewer: rtiberiu
-ms.lastreviewed: 10/08/2020
+ms.lastreviewed: 11/22/2020
 
 # Intent: As an Azure Stack user, I want to update and manage my VMs using Azure Automation tools so I can keep everything running smoothly. 
 # Keyword: vm update management automation
@@ -113,6 +113,8 @@ To create an update deployment schedule, you must use a PowerShell cmdlet, or th
 
 The following example shows how to do this:
 
+### [Az modules](#tab/az)
+
 ```Powershell  
 $nonAzurecomputers = @("server-01", "server-02")
 
@@ -122,6 +124,21 @@ $s = New-AzAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName 
 
 New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
+### [AzureRM modules](#tab/azurerm)
+
+```Powershell  
+$nonAzurecomputers = @("server-01", "server-02")
+
+$startTime = ([DateTime]::Now).AddMinutes(10)
+
+$s = New-AzureRMAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdateConfiguration
+
+New-AzureRMAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+```
+
+---
+
+
 
 ## Enable Azure Monitor for VMs running on Azure Stack Hub
 Once the VM has the **Azure Monitor, Update and Configuration Management**, and the **Azure Monitor Dependency Agent** extensions installed, it will start reporting data in the [Azure Monitor for VMs](/azure/azure-monitor/insights/vminsights-overview) solution. 
@@ -131,12 +148,12 @@ Once the VM has the **Azure Monitor, Update and Configuration Management**, and 
 
 Azure Monitor for VMs includes a set of performance charts that target several key performance indicators (KPIs) to help you determine how well a VM is performing. The charts show resource use over a period of time so you can identify bottlenecks and anomalies. You can also switch to a perspective listing each machine to view resource use based on the metric selected. While there are many elements to consider when dealing with performance, Azure Monitor for VMs monitors key operating system performance indicators related to processor, memory, network adapter, and disk use. Performance charts complement the health monitoring feature and help expose issues that indicate a possible system component failure. Azure Monitor for VMs also supports capacity planning and tuning and optimization to achieve efficiency.
 
-   ![Azure Monitor VMs Performance tab](/azure/azure-monitor/insights/media/vminsights-performance/vminsights-performance-aggview-01.png)
+   ![Azure Monitor VMs Performance tab](http:/docs.microsoft.com/azure/azure-monitor/insights/media/vminsights-performance/vminsights-performance-aggview-01.png)
 
 Viewing the discovered app components on Windows and Linux VMs running in Azure Stack Hub can be observed in two ways with Azure Monitor for VMs. The first is from a VM directly and the second is across groups of VMs from Azure Monitor.
 The [Using Azure Monitor for VMs Map to understand app components](/azure/azure-monitor/insights/vminsights-maps) article will help you understand the experience between the two perspectives and how to use the Map feature.
 
-   ![Azure Monitor VMs Map tab](/azure/azure-monitor/insights/media/vminsights-maps/map-multivm-azure-monitor-01.png)
+   ![Azure Monitor VMs Map tab]((http:/docs.microsoft.com/azure/azure-monitor/insights/media/vminsights-maps/map-multivm-azure-monitor-01.png)
 
 In case [Azure Monitor for VMs](/azure/azure-monitor/insights/vminsights-overview) is not showing you any performance data, you have to enable the collection of performance data for Windows and Linux in your [LogAnalytics Workspace](/azure/azure-monitor/platform/data-sources-performance-counters) Advanced Settings.
 

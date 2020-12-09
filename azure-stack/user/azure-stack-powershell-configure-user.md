@@ -4,10 +4,10 @@ description: Learn how to connect to Azure Stack Hub with PowerShell to use the 
 author: mattbriggs
 
 ms.topic: article
-ms.date: 8/4/2020
+ms.date: 11/22/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 8/4/2020
+ms.lastreviewed: 11/22/2020
 
 # Intent: As an Azure Stack user, I want to connect to Azure Stack with PowerShell so that I can use interactive prompt or write scripts to create and manage resources.
 # Keyword: connect Azure Stack powershell
@@ -41,6 +41,8 @@ Make sure you replace the following script variables with values from your Azure
 
 ## Connect to Azure Stack Hub with Azure AD
 
+### [Az modules](#tab/az1)
+
 ```powershell  
     Add-AzEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
     # Set your tenant name
@@ -52,8 +54,26 @@ Make sure you replace the following script variables with values from your Azure
     # can be easily targeted at your Azure Stack Hub instance.
     Add-AzAccount -EnvironmentName "AzureStackUser" -TenantId $TenantId
 ```
+### [AzureRM modules](#tab/azurerm1)
+ 
+```powershell  
+    Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
+    # Set your tenant name
+    $AuthEndpoint = (Get-AzureRMEnvironment -Name "AzureStackUser").ActiveDirectoryAuthority.TrimEnd('/')
+    $AADTenantName = "<myDirectoryTenantName>.onmicrosoft.com"
+    $TenantId = (invoke-restmethod "$($AuthEndpoint)/$($AADTenantName)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
+
+    # After signing in to your environment, Azure Stack Hub cmdlets
+    # can be easily targeted at your Azure Stack Hub instance.
+    Add-AzureRMAccount -EnvironmentName "AzureStackUser" -TenantId $TenantId
+```
+
+---
+
 
 ## Connect to Azure Stack Hub with AD FS
+
+### [Az modules](#tab/az2)
 
   ```powershell  
   # Register an Azure Resource Manager environment that targets your Azure Stack Hub instance
@@ -62,10 +82,24 @@ Make sure you replace the following script variables with values from your Azure
   # Sign in to your environment
   Login-AzAccount -EnvironmentName "AzureStackUser"
   ```
+### [AzureRM modules](#tab/azurerm2)
+ 
+  ```powershell  
+  # Register an Azure Resource Manager environment that targets your Azure Stack Hub instance
+  Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
+
+  # Sign in to your environment
+  Login-AzureRMAccount -EnvironmentName "AzureStackUser"
+  ```
+
+---
+
 
 ## Register resource providers
 
 Resource providers aren't automatically registered for new user subscriptions that don't have any resources deployed through the portal. You can explicitly register a resource provider by running the following script:
+
+### [Az modules](#tab/az3)
 
 ```powershell  
 foreach($s in (Get-AzSubscription)) {
@@ -74,6 +108,18 @@ foreach($s in (Get-AzSubscription)) {
 Get-AzResourceProvider -ListAvailable | Register-AzResourceProvider
     }
 ```
+### [AzureRM modules](#tab/azurerm3)
+ 
+```powershell  
+foreach($s in (Get-AzureRMSubscription)) {
+        Select-AzureRMSubscription -SubscriptionId $s.SubscriptionId | Out-Null
+        Write-Progress $($s.SubscriptionId + " : " + $s.SubscriptionName)
+Get-AzureRMResourceProvider -ListAvailable | Register-AzureRMResourceProvider
+    }
+```
+
+---
+
 
 [!Include [AD FS only supports interactive authentication with user identities](../includes/note-powershell-adfs.md)]
 
@@ -81,9 +127,19 @@ Get-AzResourceProvider -ListAvailable | Register-AzResourceProvider
 
 When you've got everything setup, test connectivity by using PowerShell to create resources in Azure Stack Hub. As a test, create a resource group for an application and add a VM. Run the following command to create a resource group named "MyResourceGroup":
 
+### [Az modules](#tab/az4)
 ```powershell  
 New-AzResourceGroup -Name "MyResourceGroup" -Location "Local"
 ```
+
+### [AzureRM modules](#tab/azurerm4)
+ 
+```powershell  
+New-AzureRMResourceGroup -Name "MyResourceGroup" -Location "Local"
+```
+
+---
+
 
 ## Next steps
 

@@ -4,10 +4,10 @@ description: Learn about different features and considerations when working with
 author: mattbriggs
 
 ms.topic: article
-ms.date: 5/27/2020
+ms.date: 11/22/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 10/09/2019
+ms.lastreviewed: 11/22/2020
 
 # Intent: As an Azure Stack user, I want to know what I need to do to move them to Azure Stack or work with them in Azure Stack.
 # Keyword: Azure Stack VM
@@ -71,9 +71,11 @@ VM sizes and their associated resource quantities are consistent between Azure S
 
 ## VM extensions
 
-Azure Stack Hub includes a small set of extensions. Updates and additional extensions are available through Marketplace syndication.
+Azure Stack Hub includes a small set of extensions. Updates and additional extensions are available through Marketplace syndication. Bringing custom extensions into Azure Stack Hub is not a supported scenario; an extension must first be onboarded to Azure to be made available in Azure Stack Hub.
 
-Use the following PowerShell script to get the list of VM extensions that are available in your Azure Stack Hub environment:
+Use the following PowerShell script to get the list of VM extensions that are available in your Azure Stack Hub environment.
+
+### [Az modules](#tab/az1)
 
 ```powershell
 Get-AzVmImagePublisher -Location local | `
@@ -82,6 +84,16 @@ Get-AzVmImagePublisher -Location local | `
   Select Type, Version | `
   Format-Table -Property * -AutoSize
 ```
+### [AzureRM modules](#tab/azurerm1)
+
+```powershell
+Get-AzureRMVmImagePublisher -Location local | `
+  Get-AzVMExtensionImageType | `
+  Get-AzVMExtensionImage | `
+  Select Type, Version | `
+  Format-Table -Property * -AutoSize
+``` 
+---
 
 If provisioning an extension on a VM deployment takes too long, let the provisioning timeout instead of trying to stop the process to deallocate or delete the VM.
 
@@ -96,6 +108,8 @@ VM features in Azure Stack Hub support the following API versions:
 
 You can use the following PowerShell script to get the API versions for the VM features that are available in your Azure Stack Hub environment:
 
+### [Az modules](#tab/az2)
+
 ```powershell
 Get-AzResourceProvider | `
   Select ProviderNamespace -Expand ResourceTypes | `
@@ -103,6 +117,19 @@ Get-AzResourceProvider | `
   Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} | `
   where-Object {$_.ProviderNamespace -like "Microsoft.compute"}
 ```
+
+### [AzureRM modules](#tab/azurerm2)
+
+```powershell
+Get-AzureRMResourceProvider | `
+  Select ProviderNamespace -Expand ResourceTypes | `
+  Select * -Expand ApiVersions | `
+  Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} | `
+  where-Object {$_.ProviderNamespace -like "Microsoft.compute"}
+```
+
+---
+
 
 The list of supported resource types and API versions may vary if the cloud operator updates your Azure Stack Hub environment to a newer version.
 

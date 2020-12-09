@@ -4,10 +4,10 @@ description: Learn about using API version profiles with Node.js in Azure Stack 
 author: mattbriggs
 
 ms.topic: article
-ms.date: 04/30/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 04/30/2020
+ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack Hub developer, I want to use NodeJS to create a VM.
 # Keyword: Azure Stack NodeJS
