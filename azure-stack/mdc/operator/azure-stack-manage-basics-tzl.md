@@ -150,7 +150,7 @@ The information in these articles summarizes the differences between a service i
 
 Your users will want to know how to [access the user portal](../../user/azure-stack-use-portal.md) or how to connect through PowerShell. In an integrated systems environment, the user portal address varies per deployment. You'll need to provide your users with the correct URL.
 
-If using PowerShell, users may have to register resource providers before they can use services. A resource provider manages a service. For example, the networking resource provider manages resources like virtual networks, network interfaces, and load balancers. They must [install](../../operator/azure-stack-powershell-install.md) PowerShell, [download](../../operator/azure-stack-powershell-download.md) additional modules,
+If using PowerShell, users may have to register resource providers before they can use services. A resource provider manages a service. For example, the networking resource provider manages resources like virtual networks, network interfaces, and load balancers. They must [install](../../operator/powershell-install-az-module.md) PowerShell, [download](../../operator/azure-stack-powershell-download.md) additional modules,
 and [configure](../../user/azure-stack-powershell-configure-user.md) PowerShell (which includes resource provider registration).
 
 ### Subscribe to an offer
