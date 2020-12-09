@@ -1,6 +1,6 @@
 ---
-title: Tactical Cloud Appliance 2008 release notes
-description: Tactical Cloud Appliance 2008 release notes
+title: Azure Stack Hub Ruggedized OEM Release Notes
+description: Azure Stack Hub Ruggedized OEM Release Notes
 author: sethmanheim
 ms.topic: article
 ms.date: 12/08/2020
@@ -10,13 +10,13 @@ ms.lastreviewed: 12/08/2020
 
 ---
 
-# Tactical Cloud Appliance 2008 release notes
+# Azure Stack Hub Ruggedized 2008 OEM release notes
 
-This article contains release and version information for the Tactical Cloud Appliance.
+This article contains release and version information for the Ruggedized Cloud Appliance.
 
 ## Overview
 
-This document describes the contents of Azure Stack Hub Tactical Cloud Appliance first party updates for firmware and drivers.  This update includes improvements and fixes for the latest release of Azure Stack Hub.  Below are the download links:
+This document describes the contents of Azure Stack Hub Ruggedized Cloud Appliance first party updates for firmware and drivers. This update includes improvements and fixes for the latest release of Azure Stack Hub. Below are the download links:
 
 * https://aka.ms/azshwpackage
 * https://aka.ms/azshwmanifest
