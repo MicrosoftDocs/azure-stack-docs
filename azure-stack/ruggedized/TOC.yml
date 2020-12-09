@@ -8,7 +8,7 @@
       href: ruggedized-overview.md
     - name: Known issues in Azure Stack Hub ruggedized
       href: known-issues.md
-    - name: Azure Stack Hub Ruggedized OEM release notes
+    - name: Azure Stack Hub ruggedized OEM release notes
       href: oem-release-notes-rca.md
   - name: Quickstarts
     items:

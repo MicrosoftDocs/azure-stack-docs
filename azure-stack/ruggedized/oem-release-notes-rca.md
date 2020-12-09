@@ -10,13 +10,13 @@ ms.lastreviewed: 12/08/2020
 
 ---
 
-# Azure Stack Hub Ruggedized 2008 OEM release notes
+# Azure Stack Hub ruggedized 2008 OEM release notes
 
-This article contains release and version information for the Ruggedized Cloud Appliance.
+This article contains release and version information for Azure Stack Hub ruggedized.
 
 ## Overview
 
-This document describes the contents of Azure Stack Hub Ruggedized Cloud Appliance first party updates for firmware and drivers. This update includes improvements and fixes for the latest release of Azure Stack Hub. Below are the download links:
+This document describes the contents of Azure Stack Hub ruggedized first party updates for firmware and drivers. This update includes improvements and fixes for the latest release of Azure Stack Hub. Below are the download links:
 
 * https://aka.ms/azshwpackage
 * https://aka.ms/azshwmanifest
