@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version v20H2
 
-In this article you will learn how to use Windows Admin Center to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. The Create Cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md). The PowerShell article is also a good source of information for what is going on under the hood of the wizard and for troubleshooting purposes.
+In this article you will learn how to use Windows Admin Center to create an Azure Stack HCI cluster that uses Storage Spaces Direct. The Create cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md). The PowerShell article is also a good source of information for what is going on under the hood of the wizard and for troubleshooting purposes.
 
 You have a choice between creating two cluster types:
 
@@ -92,7 +92,7 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 
 ## Step 2: Networking
 
-Step 2 of the wizard walks you through configuring virtual switches, network adapters, and other networking elements for your cluster.
+Step 2 of the wizard walks you through configuring virtual switches, network adapters, and other networking elements for your cluster. RDMA (both iWARP and RoCE ) network adapters are supported.
 
 > [!NOTE]
 > If you see errors listed during any networking or virtual switch steps, select **Apply and test** again.
@@ -152,11 +152,11 @@ Step 2 of the wizard walks you through configuring virtual switches, network ada
 
 1. Step **2.4 RDMA** is optional. If you are using RDMA, select the **Configure RDMA (Recommended)** checkbox and click **Next**.
 
-    :::image type="content" source="media/cluster/create-cluster-rdma.png" alt-text="Create cluster wizard - virtual switches" lightbox="media/cluster/create-cluster-rdma.png":::
+    :::image type="content" source="media/cluster/create-cluster-rdma.png" alt-text="Create cluster wizard - configure RDMA" lightbox="media/cluster/create-cluster-rdma.png":::
 
-    For information on assigning bandwidth reservations, see the [Traffic bandwidth allocation](https://docs.microsoft.com/azure-stack/hci/concepts/host-network-requirements#traffic-bandwidth-allocation) section in [Host network requirements](https://docs.microsoft.com/en-us/azure-stack/hci/concepts/host-network-requirements#traffic-bandwidth-allocation).
+    For information on assigning bandwidth reservations, see the [Traffic bandwidth allocation](https://docs.microsoft.com/azure-stack/hci/concepts/host-network-requirements#traffic-bandwidth-allocation) section in [Host network requirements](https://docs.microsoft.com/azure-stack/hci/concepts/host-network-requirements#traffic-bandwidth-allocation).
 
-1. Select **Advanced**, then select the **Data Center Bridging (DCB)** checkbox if applicable.
+1. Select **Advanced**, then select the **Data Center Bridging (DCB)** checkbox.
 
 1. Under **Cluster heartbeat**, assign a priority level and a bandwidth reservation percentage.
 
