@@ -3,7 +3,7 @@ title: Troubleshoot CredSSP
 description: Learn how to troubleshoot CredSSP
 author: v-dasis
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 12/10/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -27,11 +27,19 @@ Some tasks that require CredSSP to be enabled include:
 
 If you experience issues with CredSSP, the following troubleshooting tips may help:
 
+- To use the Create Cluster wizard when running Windows Admin Center on a server instead of a PC, you must be a member of the Gateway Administrators group on the Windows Admin Center server. For more information, see [User access options with Windows Admin Center](/windows-server/manage/windows-admin-center/plan/user-access-options).
+
 - When running the Create cluster wizard, CredSSP may report an issue if an Active Directory trust isn't established or is broken. This results when workgroup-based servers are used for cluster creation. In this case, try manually restarting each server in the cluster.
 
 - When running Windows Admin Center on a server (service mode), make sure the user account is a member of the Gateway administrators group.
 
+- We recommend running Windows Admin Center on a computer that is a member of the same domain as the managed servers.
+
 - To be able to enable or disable CredSSP on a server, make sure you belong to the Gateway administrators group on that computer. For more information, see the first two sections of [Configure User Access Control and Permissions](/windows-server/manage/windows-admin-center/configure/user-access-control#gateway-access-role-definitions).
+
+- Restarting the Windows Remote Management (WinRM) service on the servers in the cluster might prompt you to re-establish the WinRM connection between each cluster server and Windows Admin Center.
+
+    One way to do this is by going to each cluster server, and in Windows Admin Center on the **Tools** menu, select **Services**, select **WinRM**, select **Restart**, and then on the **Restart Service** prompt, select **Yes**.
 
 ## Next steps
 
