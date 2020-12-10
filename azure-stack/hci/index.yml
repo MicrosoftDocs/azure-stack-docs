@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: khdownie
   ms.author: v-kedow
-  ms.date: 10/28/2020
+  ms.date: 12/10/2020
 
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
@@ -33,6 +33,8 @@ landingContent:
     linkLists:
       - linkListType: deploy
         links:
+          - text: Deployment quickstart
+            url: deploy/deployment-quickstart.md
           - text: Deploy the Azure Stack HCI OS
             url: deploy/operating-system.md
           - text: Create a cluster
