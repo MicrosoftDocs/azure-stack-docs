@@ -521,9 +521,9 @@
       - name: Tactical Cloud Appliance CRU guide
         items:
         - name: Handling precautions
-          href: ../tca-cru/handling-precautions.md
+          href: ./tca-cru/handling-precautions.md
         - name: Required knowledge to work with the Hardware Lifecycle Host
-          href: ../tca-cru/required-knowledge-working-with-hlh.md
+          href: /tca-cru/required-knowledge-working-with-hlh.md
         - name: Verify Hardware Lifecycle Host access and health
           href: ../tca-cru/verify-hlh-access-and-health.md
         - name: Required knowledge to work with Scale Unit nodes
