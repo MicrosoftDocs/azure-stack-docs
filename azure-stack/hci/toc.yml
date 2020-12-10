@@ -16,6 +16,8 @@
     href: get-started.md
 - name: Deploy
   items:
+  - name: Deployment quickstart
+    href: deploy/deployment-quickstart.md
   - name: Deployment overview
     href: deploy/deployment-overview.md
   - name: Deploy the Azure Stack HCI OS
