@@ -41,7 +41,7 @@ After you have completed the installation of Windows Admin Center, you can add a
 
 The Windows Admin Center dashboard provides alerts and health information about servers, drives, and volumes, as well as details about CPU, memory, and storage usage. The bottom of the dashboard displays cluster performance information such as IOPS and latency by hour, day, week, month, or year.
 
-:::image type="content" source="media/get-started/dashboard.png" alt-text="Windows Admin Center Dashboard Screen Shot":::
+:::image type="content" source="media/get-started/dashboard.png" alt-text="Windows Admin Center Dashboard Screenshot":::
 
 ## Monitor performance of individual components
 
