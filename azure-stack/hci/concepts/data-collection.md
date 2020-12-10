@@ -87,7 +87,7 @@ Azure Stack HCI collects:
  
 The output should look something like this:
 
-```
+```shell
 TimeCreated            EventName                                                  Value
 -----------            ---------                                                  -----
 11/16/2020 10:36:28 AM Microsoft.AzureStack.HCI.Diagnostic.Core                   {"OEMName":"Microsoft Corporation"...
