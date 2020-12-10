@@ -162,6 +162,8 @@
       href: concepts/security.md
     - name: Utility applications
       href: concepts/utility-applications.md
+    - name: Data collection
+      href: concepts/data-collection.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
