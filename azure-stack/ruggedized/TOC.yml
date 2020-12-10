@@ -521,57 +521,57 @@
       - name: Tactical Cloud Appliance CRU guide
         items:
         - name: Handling precautions
-          href: ./tca-cru/handling-precautions.md
+          href: /tca-cru/handling-precautions.md
         - name: Required knowledge to work with the Hardware Lifecycle Host
           href: /tca-cru/required-knowledge-working-with-hlh.md
         - name: Verify Hardware Lifecycle Host access and health
-          href: ../tca-cru/verify-hlh-access-and-health.md
+          href: /tca-cru/verify-hlh-access-and-health.md
         - name: Required knowledge to work with Scale Unit nodes
-          href: ../tca-cru/required-knowledge-working-with-scu.md
+          href: /tca-cru/required-knowledge-working-with-scu.md
         - name: Verify Scale Unit node access and health
-          href: ../tca-cru/verify-scale-unit-node-access-and-health.md
+          href: /tca-cru/verify-scale-unit-node-access-and-health.md
         - name: Power off Hardware Lifecycle Host
-          href: ../tca-cru/power-off-hlh.md
+          href: /tca-cru/power-off-hlh.md
         - name: Power off Scale Unit nodes
-          href: ../tca-cru/power-off-scu.md
+          href: /tca-cru/power-off-scu.md
         - name: Replace DIMM
-          href: ../tca-cru/replace-dimm.md
+          href: /tca-cru/replace-dimm.md
         - name: Replace failed external storage disk
-          href: ../tca-cru/replace-failed-external-storage-disk.md
+          href: /tca-cru/replace-failed-external-storage-disk.md
         - name: Replace cooling fan
-          href: ../tca-cru/replace-cooling-fan.md
+          href: /tca-cru/replace-cooling-fan.md
         - name: Replace network daughter card
-          href: ../tca-cru/replace-network-daughter-card.md
+          href: /tca-cru/replace-network-daughter-card.md
         - name: Replace power supply unit
-          href: ../tca-cru/replace-power-supply-unit.md
+          href: /tca-cru/replace-power-supply-unit.md
         - name: Replace operating system disk
-          href: ../tca-cru/replace-operating-system-disk.md
+          href: /tca-cru/replace-operating-system-disk.md
         - name: Unpack heater and plan heater installation
-          href: ../tca-cru/unpack-heater-and-plan-installation.md
+          href: /tca-cru/unpack-heater-and-plan-installation.md
         - name: Replace heater
-          href: ../tca-cru/replace-heater.md
+          href: /tca-cru/replace-heater.md
         - name: Power on Scale Unit node
-          href: ../tca-cru/power-on-scale-unit-node.md
+          href: /tca-cru/power-on-scale-unit-node.md
         - name: Repair Scale Unit node
-          href: ../tca-cru/repair-scale-unit-node.md
+          href: /tca-cru/repair-scale-unit-node.md
         - name: Verify Hardware Lifecyle Host health
-          href: ../tca-cru/verify-hlh-health.md
+          href: /tca-cru/verify-hlh-health.md
         - name: Verify Scale Unit node health
-          href: ../tca-cru/verify-scale-unit-node-health.md
+          href: /tca-cru/verify-scale-unit-node-health.md
         - name: Verify Scale Unit node disk health
-          href: ../tca-cru/verify-scale-unit-node-disk-health.md
+          href: /tca-cru/verify-scale-unit-node-disk-health.md
         - name: Azure Stack Hub hardware diagram
-          href: ../tca-cru/azure-stack-hub-hardware-diagram.md
+          href: /tca-cru/azure-stack-hub-hardware-diagram.md
         - name: EMC PowerEdge Tactical R640 server overview
-          href: ../tca-cru/emc-poweredge-tactical-r640-server-overview.md
+          href: /tca-cru/emc-poweredge-tactical-r640-server-overview.md
         - name: EMC PowerEdge Tactical indicators and codes
-          href: ../tca-cru/emc-poweredge-tactical-indicators-and-codes.md
+          href: /tca-cru/emc-poweredge-tactical-indicators-and-codes.md
         - name: Access iDRAC interface via direct USB connection
-          href: ../tca-cru/access-idrac-over-usb-connection.md
+          href: /tca-cru/access-idrac-over-usb-connection.md
         - name: Install firmware via iDRAC interface
-          href: ../tca-cru/install-firmware-using-idrac.md
+          href: /tca-cru/install-firmware-using-idrac.md
         - name: Privileged Access Workstation and privileged endpoint access
-          href: ../tca-cru/privileged-access-workstation.md
+          href: /tca-cru/privileged-access-workstation.md
 
 
   - name: Reference
