@@ -19,7 +19,7 @@ In this quickstart, you'll learn how to deploy a two-server, single-site Azure S
 
 Before creating a cluster, do the following:
 
-* Purchase two servers from the [Azure Stack HCI Catalog](https://azure.microsoft.com/products/azure-stack/hci/catalog/) through your preferred Microsoft hardware partner with the Azure Stack HCI operating system pre-installed. Review the [system requirements](../concepts/system-requirements.md) to make sure the hardware you select will support the workloads you plan to run on the cluster.
+* Purchase two servers from the [Azure Stack HCI Catalog](https://azure.microsoft.com/products/azure-stack/hci/catalog/) through your preferred Microsoft hardware partner with the Azure Stack HCI operating system pre-installed. Review the [system requirements](../concepts/system-requirements.md) to make sure the hardware you select will support the workloads you plan to run on the cluster. We recommend using a system with high-speed network adapters that use iWARP for simple configuration.
 * Create a user account that’s a member of the local Administrators group on each server.
 * [Get an Azure subscription](https://azure.microsoft.com/), if you don't already have one.
 * [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) on a management PC and [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md). Note that your management computer must be joined to the same Active Directory domain in which you'll create the cluster, or a fully trusted domain.
@@ -38,7 +38,7 @@ Follow these steps to create a simple two-node, single-site cluster. For more de
 The Create Cluster wizard has five sections, each with several steps.
 
 1. **Get started.** In this section, you'll check the prerequisites, add servers, join a domain, install required features and updates, and restart the servers. 
-2. **Networking.** This section of the wizard verifies that the correct networking adapters are enabled and disables any you're not using. You'll select management adapters, set up a virtual switch configuration, and define your network by supplying IP addresses. To keep things simple, don't select RDMA for this cluster. 
+2. **Networking.** This section of the wizard verifies that the correct networking adapters are enabled and disables any you're not using. You'll select management adapters, set up a virtual switch configuration, and define your network by supplying IP addresses.
 3. **Clustering.** This section validates that your servers have a consistent configuration and are suitable for clustering, and creates the actual cluster.
 4. **Storage.** Next, you'll clean and check drives, validate your storage, and enable Storage Spaces Direct.
 5. **SDN.** You can skip Section 5 because we won't be using Software Defined Networking (SDN) for this cluster.
