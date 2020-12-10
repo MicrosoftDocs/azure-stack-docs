@@ -235,7 +235,7 @@ This optional step walks you through setting up the Network Controller component
 
 1. On **5.1 Define the Network Controller cluster**, under **Host**, enter a name for the Network Controller. This is the DNS name used by management clients (such as Windows Admin Center) to communicate with the Network Controller.
 1. Specify a path to the Azure Stack HCI VHD file. Use **Browse** to find it quicker.
-1. Specify the number of VMs to be dedicated for Network Controller. At least three VMS are recommended for high availability.
+1. Specify the number of VMs to be dedicated for Network Controller. At least three VMs are recommended for high availability.
 1. Under **Network**, enter the VLAN ID of the management network. Network Controller needs connectivity to the same management network as the hosts to communicate and configure the hosts.
 
     > [!NOTE]

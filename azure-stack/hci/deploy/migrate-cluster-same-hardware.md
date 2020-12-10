@@ -131,7 +131,7 @@ For detailed information on how to create the cluster, see [Create an Azure Stac
 If using PowerShell to create the Azure Stack HCI cluster, the following roles and features must be installed on each Azure Stack HCI cluster node using the following cmdlet:
 
 ```powershell
-Install-WindowsFeature -Name Hyper-V, Failover-Clustering, FS-Data-Deduplication, Bitlocker, Data-Center-Bridging -IncludeAllSubFeature -IncludeManagementTools -Verbose
+Install-WindowsFeature -Name Hyper-V, Failover-Clustering, FS-Data-Deduplication, Bitlocker, Data-Center-Bridging, RSAT-AD-PowerShell -IncludeAllSubFeature -IncludeManagementTools -Verbose
 ```
 
 For more information on how to create the cluster using PowerShell, see [Create an Azure Stack HCI cluster using Windows PowerShell](create-cluster-powershell.md).
