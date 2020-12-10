@@ -20,6 +20,13 @@ We recommend using Microsoft Defender Antivirus with the operating system. Oth
 ## Partner spotlight
 Utility applications that support the operating system are available from the following Microsoft partners.
 
+:::image type="content" source="./media/utility-applications/altaro-logo.png" alt-text="Altaro company logo" border="false":::
+
+Altaro VM Backup is an award-winning VM backup and replication solution for Hyper-V and VMware environments. Designed for IT departments, IT resellers and consultants, and Managed Service Providers (MSPs), the solution provides robust, streamlined, enterprise-level functionality.
+
+- Application listing: [Virtual Machine Backup and Replication for Hyper-V and VMware](https://www.altaro.com/vm-backup/)
+- Application support: [Altaro support for Azure Stack HCI](https://www.altaro.com/news/single/News-Altaro-applies-its-expertise-in-Hyper-V-backup-to-support-Microsoft.php)
+
 :::image type="content" source="./media/utility-applications/veeam-logo.png" alt-text="Veeam company logo" border="false":::
 
 Veeam Backup & Replication is the one solution for simple, reliable, and flexible protection of all your cloud, virtual, and physical workloads. Take the stress out of managing your data protection, ransomware prevention, and compliance challenges.
@@ -40,13 +47,6 @@ Veritas Backup Exec is an easy-to-use backup and recovery solution that helps pr
 
 - Application listing: [Backup Exec](https://www.veritas.com/protection/backup-exec)
 - Application support: [Protect Azure Stack HCI with Backup Exec](https://www.veritas.com/support/en_US/article.100048860)
-
-:::image type="content" source="./media/utility-applications/altaro-logo.png" alt-text="Altaro company logo" border="false":::
-
-Altaro VM Backup is an award-winning VM backup and replication solution for Hyper-V and VMware environments. Designed for IT departments, IT resellers and consultants, and Managed Service Providers (MSPs), the solution provides robust, streamlined, enterprise-level functionality.
-
-- Application listing: [Virtual Machine Backup and Replication for Hyper-V and VMware](https://www.altaro.com/vm-backup/)
-- Application support: [Altaro support for Azure Stack HCI](https://www.altaro.com/news/single/News-Altaro-applies-its-expertise-in-Hyper-V-backup-to-support-Microsoft.php)
 
 :::image type="content" source="./media/utility-applications/datadog-logo.png" alt-text="Datadag company logo" border="false":::
 

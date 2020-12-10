@@ -4,20 +4,20 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
-  - name: Known issues
-    href: known-issues.md
+  - name: Release information
+    href: release-information.md
   - name: Release notes
-    href: release-notes.md
+    href: https://support.microsoft.com/help/4595086
   - name: FAQ
     href: faq.md
-- name: Get started
+- name: Quickstarts
   items:
   - name: Use Azure Stack HCI with Windows Admin Center
     href: get-started.md
+  - name: Create an Azure Stack HCI cluster
+    href: deploy/deployment-quickstart.md
 - name: Deploy
   items:
-  - name: Deployment quickstart
-    href: deploy/deployment-quickstart.md
   - name: Deployment overview
     href: deploy/deployment-overview.md
   - name: Deploy the Azure Stack HCI OS
@@ -162,6 +162,8 @@
       href: concepts/security.md
     - name: Utility applications
       href: concepts/utility-applications.md
+    - name: Data collection
+      href: concepts/data-collection.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
@@ -218,3 +220,5 @@
     href: https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md
   - name: Azure Stack HCI pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
+  - name: Azure Stack HCI support
+    href: manage/get-support.md
