@@ -13,7 +13,7 @@ ms.date: 12/10/2020
 
 > Applies to: Azure Stack HCI, version 20H2
 
-Feature updates for Azure Stack HCI are released periodically to enhance the customer experience. This page provides a listing of the Azure Stack HCI releases and corresponding OS builds. We recommend keeping your system up to date to enable access to new features, experiences, and integrated security.
+Feature updates for Azure Stack HCI are released periodically to enhance the customer experience. This page provides a list of the Azure Stack HCI releases and corresponding OS builds. We recommend keeping your system up to date to enable access to new features, experiences, and integrated security.
 
 ## Release information tables
 
