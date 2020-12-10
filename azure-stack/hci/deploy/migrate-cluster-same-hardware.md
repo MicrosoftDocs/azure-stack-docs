@@ -14,6 +14,10 @@ ms.reviewer: JasonGerend
 
 This topic describes how to migrate a Windows Server 2016 or Windows Server 2019 cluster to Azure Stack HCI using your existing server hardware. This process installs the new Azure Stack HCI operating system and retains your existing cluster settings and storage, and imports your VMs.
 
+The following diagram depicts migrating your Windows Server cluster in-place using the same server hardware. After shutting your cluster down, Azure Stack HCI is installed, storage is reattached, and your VMs are imported and made highly available (HA).
+
+:::image type="content" source="media/migrate/migrate-cluster-same-hardware.png" alt-text="Migrate cluster to Azure Stack HCI on the same hardware" lightbox="media/migrate/migrate-cluster-same-hardware.png":::
+
 To migrate your VMs to new Azure Stack HCI hardware, see [Migrate to Azure Stack HCI on new hardware](migrate-cluster-new-hardware.md).
 
 > [!NOTE]
