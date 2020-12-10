@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/20/2020
+ms.date: 12/10/2020
 ---
 
 # Quickstart: Create an Azure Stack HCI cluster and register it with Azure
@@ -27,14 +27,21 @@ Before creating a cluster, do the following:
 
 ## Create the cluster
 
-Follow these steps to create a simple two-node cluster. For more details, see [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md).
+Follow these steps to create a simple two-node, single-site cluster. For more details or to create a stretched cluster, see [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md).
 
 1. In Windows Admin Center, under **All connections**, click **Add**.
 1. In the **Add resources** panel, under **Windows Server cluster**, select **Create new**.
 1. Under **Choose cluster type**, select **Azure Stack HCI**.
 1. Under **Select server locations**, select **All servers in one site**.
-1. Click **Create**. You will now see the Create Cluster wizard.
-1. Complete the wizard. If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable it. You can skip Step 5 because we won't be using Software Defined Networking (SDN) for this cluster.
+1. Click **Create**. You will now see the Create Cluster wizard. If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable it. 
+
+The Create Cluster wizard has five sections, each with several steps.
+
+1. **Get started.** In this section, you'll check the prerequisites, add servers, join a domain, install required features and updates, and restart the servers. 
+2. **Networking.** This section of the wizard verifies that the correct networking adapters are enabled and disables any you're not using. You'll select management adapters, set up a virtual switch configuration, and define your network by supplying IP addresses. To keep things simple, don't select RDMA for this cluster. 
+3. **Clustering.** This section validates that your servers have a consistent configuration and are suitable for clustering, and creates the actual cluster.
+4. **Storage.** Next, you'll clean and check drives, validate your storage, and enable Storage Spaces Direct.
+5. **SDN.** You can skip Section 5 because we won't be using Software Defined Networking (SDN) for this cluster.
 
 If you enabled the CredSSP protocol in the wizard, you'll want to disable it on each server for security purposes.
 
@@ -60,10 +67,6 @@ Setting up a witness resource is required so that if one of the servers in the c
 
 Azure Stack HCI requires a connection to Azure, and you'll need Azure Active Directory permissions to complete the registration. If you don't already have them, ask your Azure AD administrator to either grant permissions or delegate them to you. See [Connect Azure Stack HCI to Azure](register-with-azure.md) for more information. Once registered, the cluster connects automatically in the background.
 
-## Validate the cluster
-
-After registering the cluster, you should [run cluster validation tests](validate.md) to catch any hardware or configuration issues.
-
 ## Next steps
 
-In this quickstart, you created an Azure Stack HCI cluster, registered it with Azure, and validated that the cluster is ready to go into production. You are now ready to [Create volumes](../manage/create-volumes.md) and then [Create virtual machines](../manage/vm.md).
+In this quickstart, you created an Azure Stack HCI cluster and registered it with Azure. You are now ready to [Create volumes](../manage/create-volumes.md) and then [Create virtual machines](../manage/vm.md).
