@@ -20,7 +20,7 @@
     href: deploy/deployment-overview.md
   - name: Deploy the Azure Stack HCI OS
     href: deploy/operating-system.md
-  - name: Create the cluster
+  - name: Create a cluster
     href: deploy/create-cluster.md
   - name: Set up a cluster witness
     href: deploy/witness.md
