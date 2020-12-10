@@ -16,6 +16,8 @@
     href: get-started.md
 - name: Deploy
   items:
+  - name: Deployment quickstart
+    href: deploy/deployment-quickstart.md
   - name: Deployment overview
     href: deploy/deployment-overview.md
   - name: Deploy the Azure Stack HCI OS
@@ -158,6 +160,8 @@
       href: concepts/updates.md
     - name: Security considerations
       href: concepts/security.md
+    - name: Utility applications
+      href: concepts/utility-applications.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands

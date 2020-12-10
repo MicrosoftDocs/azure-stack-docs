@@ -9,11 +9,11 @@ ms.subservice: azure-stack-hci
 ms.date: 12/8/2020
 ---
 
-# Release notes for Azure Stack HCI Public Preview
+# Release notes for Azure Stack HCI
 
 > Applies to: Azure Stack HCI, version 20H2
 
-This article describes the contents of Azure Stack HCI Public Preview update packages.
+This article describes the contents of Azure Stack HCI update packages.
 
 ## December 8, 2020 Security Update (KB4592441)
 
@@ -92,7 +92,7 @@ For more information about the resolved security vulnerabilities, please refer t
 Microsoft is not currently aware of any issues with this update.
 
 ### How to get this update
-The November 10, 2020 security update (KB4586811) for [Azure Stack HCI preview](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
+The November 10, 2020 security update (KB4586811) for [Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
 
 ### File information
 For a list of the files that are provided in this update (OS Build 17784.1345), download the [file information for cumulative update 4586811](https://download.microsoft.com/download/8/f/2/8f2ce4bb-e113-4abc-b3ff-f0f4c4c71403/4586811.csv).
@@ -108,7 +108,7 @@ This update includes quality improvements for the latest release of Azure Stack 
 This update makes quality improvements to the servicing stack, which is the component that installs updates. Servicing stack updates (SSU) makes sure that you have a robust and reliable servicing stack so that your devices can receive and install Microsoft updates.
 
 ### How to get this update
-The November, 2020 servicing stack update (KB4590242) for [Azure Stack HCI preview](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
+The November, 2020 servicing stack update (KB4590242) for [Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
 
 ### Restart information
 You don't have to restart your computer after you apply this update.
@@ -161,7 +161,7 @@ It's recommended that you revert back to the previous `MoveTypeThreshold` value 
 For more information, see [Configuring How VMs Are Moved when a Node is Drained](https://techcommunity.microsoft.com/t5/failover-clustering/configuring-how-vms-are-moved-when-a-node-is-drained/ba-p/371848).
 
 ### How to get this update
-The October 20, 2020 security update (KB4580388) for [Azure Stack HCI preview](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
+The October 20, 2020 security update (KB4580388) for [Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
 
 ### File information
 For a list of the files that are provided in this update (OS Build 17784.1321), download the [file information for cumulative update 4580388](https://download.microsoft.com/download/2/f/b/2fb766d3-c4c8-4279-8718-8efbd0b6f211/4580388.csv).
@@ -182,7 +182,7 @@ For more information about the resolved security vulnerabilities, please refer t
 Microsoft is not currently aware of any issues with this update.
 
 ### How to get this update
-The October 13, 2020 security update (KB4580363) for [Azure Stack HCI preview](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
+The October 13, 2020 security update (KB4580363) for [Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
 
 ### File information
 For a list of the files that are provided in this update (OS Build 17784.1288), download the [file information for cumulative update 4580363](https://download.microsoft.com/download/f/7/8/f78801f0-e7e5-4a3d-a971-f642ccd24ee4/4580363.csv).
@@ -198,7 +198,7 @@ This update includes quality improvements for the latest release of Azure Stack 
 This update makes quality improvements to the servicing stack, which is the component that installs updates. Servicing stack updates (SSU) makes sure that you have a robust and reliable servicing stack so that your devices can receive and install Microsoft updates.
 
 ### How to get this update
-The October 13, 2020 servicing stack update (KB4583287) for [Azure Stack HCI preview](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
+The October 13, 2020 servicing stack update (KB4583287) for [Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
 
 ### Restart information
 You don't have to restart your computer after you apply this update.
@@ -230,7 +230,7 @@ This nonsecurity update includes quality improvements. Key changes include:
 Microsoft is not currently aware of any issues with this update.
 
 ### How to get this update
-The September 17, 2020 security update (KB4577629) for [Azure Stack HCI preview](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
+The September 17, 2020 security update (KB4577629) for [Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
 
 ### File information
 For a list of the files that are provided in this update (OS Build 17784.1259), download the [file information for cumulative update 4577629](https://download.microsoft.com/download/9/1/a/91addcbb-2b36-408c-ab88-736de42edb98/4577629.csv)
@@ -251,7 +251,7 @@ For more information about the resolved security vulnerabilities, please refer t
 Microsoft is not currently aware of any issues with this update.
 
 ### How to get this update
-The September 8, 2020 security update (KB4577470) for [Azure Stack HCI preview](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
+The September 8, 2020 security update (KB4577470) for [Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
 
 ### File information
 For a list of the files that are provided in this update (OS Build 17784.1226), download the [file information for cumulative update 4577470](https://download.microsoft.com/download/3/c/4/3c468525-5867-4cc3-8d34-dba88989adab/4577470.csv).
@@ -267,7 +267,7 @@ This update includes quality improvements for the latest release of Azure Stack 
 This update makes quality improvements to the servicing stack, which is the component that installs updates. Servicing stack updates (SSU) makes sure that you have a robust and reliable servicing stack so that your devices can receive and install Microsoft updates.
 
 ### How to get this update
-The September 8, 2020 servicing stack update (KB4577558) for [Azure Stack HCI preview](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
+The September 8, 2020 servicing stack update (KB4577558) for [Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
 
 ### Restart information 
 You don't have to restart your computer after you apply this update.
@@ -300,7 +300,7 @@ For more information about the resolved security vulnerabilities, please refer t
 Microsoft is not currently aware of any issues with this update.
 
 ### How to get this update
-The August 11, 2020 security update (KB4574585) for [Azure Stack HCI preview](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
+The August 11, 2020 security update (KB4574585) for [Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) is delivered via Windows Update. To install it on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
 
 ### File information
 For a list of the files that are provided in this update (OS Build 17784.1162), download the [file information for cumulative update 4574585](https://download.microsoft.com/download/7/f/4/7f451def-76c5-4cc0-9929-0c5efeb27d2f/4574585.csv).
