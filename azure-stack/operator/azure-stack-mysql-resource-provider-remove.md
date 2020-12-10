@@ -37,7 +37,7 @@ Removing the MySQL resource provider will delete the associated plans and quotas
     - **PrivilegedEndpoint**: The IP address or DNS name of the privileged endpoint.
     - **AzureEnvironment**: The Azure environment used for deploying Azure Stack Hub. Required only for Azure AD deployments.
     - **CloudAdminCredential**: The credential for the cloud administrator, necessary to access the privileged endpoint.
-    - **AzCredential**: The credential for the Azure Stack Hub service admin account. Use the same credentials that you used for deploying Azure Stack Hub.
+    - **AzCredential**: The credential for the Azure Stack Hub service admin account. Use the same credentials that you used for deploying Azure Stack Hub. The script will fail if the account you use with AzCredential requires multi-factor authentication (MFA).
 
 ## Next steps
 
