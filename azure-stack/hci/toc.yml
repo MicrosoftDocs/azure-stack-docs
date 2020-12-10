@@ -218,3 +218,5 @@
     href: https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md
   - name: Azure Stack HCI pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
+  - name: Azure Stack HCI support
+    href: manage/get-support.md
