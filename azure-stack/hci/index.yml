@@ -27,14 +27,14 @@ landingContent:
         links:
           - text: Use Azure Stack HCI with Windows Admin Center
             url: get-started.md
+          - text: Create an Azure Stack HCI cluster
+            url: deploy/deployment-quickstart.md
 
   # Card 
   - title: Deploy Azure Stack HCI
     linkLists:
       - linkListType: deploy
         links:
-          - text: Deployment quickstart
-            url: deploy/deployment-quickstart.md
           - text: Deploy the Azure Stack HCI OS
             url: deploy/operating-system.md
           - text: Create a cluster
@@ -103,6 +103,8 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
+          - text: System requirements
+            url: concepts/system-requirements.md
           - text: Stretched clusters
             url: concepts/stretched-clusters.md
           - text: Billing
@@ -123,6 +125,8 @@ landingContent:
             url: concepts/cache.md
           - text: Cluster and storage pool quorum
             url: concepts/quorum.md
+          - text: Utility applications
+            url: concepts/utility-applications.md
 
   # Card 
   - title: Connect to Azure
