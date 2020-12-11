@@ -74,6 +74,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Increased Network Controller log retention period, so the logs will be available for longer to aid engineers in effective troubleshooting even after an issue has been mitigated. 
 - Made improvements to preserve the Network Controller, Gateway VM, Load Balancer and Host Agent logs during an update. 
 - Improved the deletion logic for networking resources that are blocked by a failed provisioning state. 
+- Reduced the XRP memory to 14GB per VM and WAS memory to 10GB per VM. By avoiding the increase in total VM memory footprint, more tenant VMs will be deployable. 
+
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
