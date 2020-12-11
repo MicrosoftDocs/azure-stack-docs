@@ -11,6 +11,8 @@ ms.date: 12/11/2020
 
 # Azure Stack HCI solution overview
 
+> Applies to: Azure Stack HCI, version 20H2
+
 Azure Stack HCI is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid, on-premises environment. Azure hybrid services enhance the cluster with capabilities such as cloud-based monitoring, Site Recovery, and VM backups, as well as a central view of all of your Azure Stack HCI deployments in the Azure portal. You can manage the cluster with your existing tools including Windows Admin Center, System Center, and PowerShell.
 
 Azure Stack HCI, version 20H2 is now [available for download](https://azure.microsoft.com/products/azure-stack/hci/hci-download/). It's intended for on-premises clusters running virtualized workloads, with hybrid-cloud connections built-in. As such, Azure Stack HCI is delivered as an Azure service and billed on an Azure subscription. Azure Stack HCI also now includes the ability to host the Azure Kubernetes Service; for details, see [Azure Kubernetes Service on Azure Stack HCI](../aks-hci/overview.md).
@@ -111,23 +113,7 @@ There is a variety of Microsoft partners working on software that extends the ca
 
 Azure Stack HCI billing is based on a monthly subscription fee per physical processor core, not a perpetual license. When customers connect to Azure, the number of cores used is automatically uploaded and assessed for billing purposes. Cost doesn’t vary with consumption beyond the physical processor cores, meaning that more VMs don’t cost more, and customers who are able to run denser virtual environments are rewarded.
 
-Customers can either purchase validated servers from a hardware partner with the Azure Stack HCI operating system pre-installed, or they can buy validated bare metal servers from an OEM and then subscribe to the Azure Stack HCI service and download the Azure Stack HCI operating system from the [Azure portal](https://azure.microsoft.com/products/azure-stack/hci/).
-
-## Management tools
-
-With Azure Stack HCI, you have full admin rights on the cluster and can manage any of its technologies directly:
-
-- [Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-on-windows-server)
-- [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Software Defined Networking](/windows-server/networking/sdn/)
-- [Failover Clustering](/windows-server/failover-clustering/failover-clustering-overview)
-
-To manage these technologies, you can use the following management tools:
-
-- [Windows Admin Center](/windows-server/manage/windows-admin-center/overview)
-- [System Center](https://www.microsoft.com/cloud-platform/system-center)
-- [PowerShell](/powershell/)
-- Other management tools, like [Server Manager](/windows-server/administration/server-manager/server-manager), and MMC snap-ins
+Customers can either purchase validated servers from a hardware partner with the Azure Stack HCI operating system pre-installed, or they can buy validated bare metal servers from an OEM and then subscribe to the Azure Stack HCI service and [download the Azure Stack HCI operating system](https://azure.microsoft.com/products/azure-stack/hci/).
 
 ## The Azure Stack family
 
@@ -197,4 +183,5 @@ Here's a video from a Hybrid Cloud Virtual Event:
 ## Next steps
 
 - [Download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/)
+- [Create an Azure Stack HCI cluster and register it with Azure](deploy/deployment-quickstart.md)
 - [Use Azure Stack HCI with Windows Admin Center](get-started.md)
