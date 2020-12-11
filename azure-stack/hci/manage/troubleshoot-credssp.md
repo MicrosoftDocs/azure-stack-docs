@@ -3,7 +3,7 @@ title: Troubleshoot CredSSP
 description: Learn how to troubleshoot CredSSP
 author: v-dasis
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 12/11/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -40,6 +40,11 @@ If you experience issues with CredSSP, the following troubleshooting tips may he
 - Restarting the Windows Remote Management (WinRM) service on the servers in the cluster might prompt you to re-establish the WinRM connection between each cluster server and Windows Admin Center.
 
     One way to do this is by going to each cluster server, and in Windows Admin Center on the **Tools** menu, select **Services**, select **WinRM**, select **Restart**, and then on the **Restart Service** prompt, select **Yes**.
+
+## Manual troubleshooting
+
+If you receive the following error message, try using the manual verification steps in this section to resolve the error.
+
 
 ## Next steps
 
