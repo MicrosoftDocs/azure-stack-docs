@@ -18,7 +18,7 @@ ms.lastreviewed:
 
 Read the following sections before you remove the old heater and install the new heater. 
 
-### Unpacking and taking inventory of the heater 
+## Unpacking and taking inventory of the heater 
 
 The Tactical 1U Heater – V2 (the heater) typically ships as a pre-installed sub-component of the Tactical Cloud Appliance system. When shipped separately, the heater is shipped in a standard commercial shipping carton with protective packing material. 
 
@@ -26,7 +26,7 @@ Carefully remove the heater from the shipping carton. When packed in a shipping 
 
 Do an inventory check to ensure that everything is accounted for. For discrepancies, contact Microsoft. 
 
-### Heater installation planning 
+## Heater installation planning 
 
 Before you begin your installation, ensure that you are familiar with the configuration requirements of the heater unit. Before you begin the installation: 
 
@@ -40,7 +40,7 @@ Before you begin your installation, ensure that you are familiar with the config
     
 3. Ensure that cables or cords are not in the way of installation. 
 
-### Heater installation notes 
+## Heater installation notes 
 
 The heater is mounted into a transit case capable of holding the unit. 
 
