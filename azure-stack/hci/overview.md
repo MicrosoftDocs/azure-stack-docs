@@ -6,7 +6,7 @@ author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/10/2020
+ms.date: 12/11/2020
 ---
 
 # Azure Stack HCI solution overview
@@ -89,7 +89,7 @@ Azure Stack HCI is a world-class, integrated virtualization stack built on prove
 
 To get started, here's what you need:
 
-- A cluster of two or more servers from the [Azure Stack HCI Catalog](https://aka.ms/azurestackhcicatalog), purchased from your preferred Microsoft hardware partner
+- A cluster of two or more servers from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net), purchased from your preferred Microsoft hardware partner
 - An [Azure subscription](https://azure.microsoft.com/)
 - An internet connection for each server in the cluster that can connect via HTTPS outbound traffic to well-known Azure endpoints at least every 30 days
 - For clusters stretched across sites, you need at least one 1 Gb connection between sites (a 25 Gb RDMA connection is preferred), with an average latency of 5 ms round trip if you want to do synchronous replication where writes occur simultaneously in both sites
@@ -101,7 +101,7 @@ For more information, see [System requirements](concepts/system-requirements.md)
 
 You can purchase validated Azure Stack HCI solutions from your preferred Microsoft partner to get up and running without lengthy design and build time. Microsoft partners also offer a single point of contact for implementation and support services. You can either purchase validated nodes or an integrated system, which includes the Azure Stack HCI operating system pre-installed as well as partner extensions for driver and firmware updates.
 
-Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) page or browse the [Azure Stack HCI Catalog](https://aka.ms/azurestackhcicatalog) to view 70+ Azure Stack HCI solutions currently available from Microsoft partners such as ASUS, Axellio, Blue Chip, DataON, Dell EMC, Fujitsu, HPE, Hitachi, Huawei, Lenovo, NEC, primeLine Solutions, QCT, SecureGUARD, and Supermicro.
+Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) page or browse the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net) to view 70+ Azure Stack HCI solutions currently available from Microsoft partners such as ASUS, Axellio, Blue Chip, DataON, Dell EMC, Fujitsu, HPE, Hitachi, Huawei, Lenovo, NEC, primeLine Solutions, QCT, SecureGUARD, and Supermicro.
 
 ## Software partners
 
@@ -198,7 +198,7 @@ Windows Admin Center version 2009 adds a number of features to Azure Stack HCI, 
 - **Inclusion of Software Defined Networking in the Cluster Creation wizard**: The Cluster Creation wizard now includes the option to deploy the [Software Defined Networking (SDN)](concepts/software-defined-networking.md) Network Controller feature during [cluster creation](deploy/create-cluster.md#step-5-sdn-optional).
 - **Remote direct memory access (RDMA) enhancements in the Cluster Creation wizard**: The Cluster Creation wizard can now configure RDMA for iWARP and RoCE network adapters, including Data Center Bridging (DCB).
 
-For details on new features in Windows Admin Center, see the [Windows Admin Center blog](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/bg-p/Windows-Admin-Center-Blog).
+For details on new features, see [Announcing general availability of the cluster creation extension in Windows Admin Center](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/announcing-general-availability-of-the-cluster-creation/ba-p/1978332).
 
 Clusters running Azure Stack HCI, version 20H2 have the following new features as compared to Windows Server 2019-based solutions:
 

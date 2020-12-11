@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/10/2020
+ms.date: 12/11/2020
 ---
 
 # Quickstart: Create an Azure Stack HCI cluster and register it with Azure
@@ -19,7 +19,7 @@ In this quickstart, you'll learn how to deploy a two-server, single-site Azure S
 
 Before creating a cluster, do the following:
 
-* Purchase two servers from the [Azure Stack HCI Catalog](https://azure.microsoft.com/products/azure-stack/hci/catalog/) through your preferred Microsoft hardware partner with the Azure Stack HCI operating system pre-installed. Review the [system requirements](../concepts/system-requirements.md) to make sure the hardware you select will support the workloads you plan to run on the cluster. We recommend using a system with high-speed network adapters that use iWARP for simple configuration.
+* Purchase two servers from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net) through your preferred Microsoft hardware partner with the Azure Stack HCI operating system pre-installed. Review the [system requirements](../concepts/system-requirements.md) to make sure the hardware you select will support the workloads you plan to run on the cluster. We recommend using a system with high-speed network adapters that use iWARP for simple configuration.
 * Create a user account that’s a member of the local Administrators group on each server.
 * [Get an Azure subscription](https://azure.microsoft.com/), if you don't already have one.
 * [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) on a management PC and [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md). Note that your management computer must be joined to the same Active Directory domain in which you'll create the cluster, or a fully trusted domain.
