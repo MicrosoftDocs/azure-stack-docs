@@ -16,8 +16,6 @@ ms.lastreviewed:
 
 # Verifying Scale Unit node disk health
 
-**Steps**
-
 1.  Connect to the privileged endpoint (PEP).
 
     1.  See Privileged Access Workstation and privileged endpoint access for instructions for connecting to the PEP.

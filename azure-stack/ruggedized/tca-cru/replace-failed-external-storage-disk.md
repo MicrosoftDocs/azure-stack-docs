@@ -18,7 +18,7 @@ ms.lastreviewed:
 
 Use the following procedure to replace a failed external disk.
 
-Prerequisites
+## Prerequisites
 
 1.  Review *Notes, cautions, and warnings* at the beginning of this
     guide
@@ -48,7 +48,7 @@ Prerequisites
     -   Powering off the Hardware Lifecycle
         Host if you are working with the Hardware Lifecycle Host
 
-**Steps**
+## Steps
 
 1.  Locate the physical node in the rack.
 

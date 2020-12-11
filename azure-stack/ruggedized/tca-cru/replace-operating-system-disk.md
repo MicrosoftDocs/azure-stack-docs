@@ -19,28 +19,28 @@ ms.lastreviewed:
 Use the following procedure to replace a failed operating system disk
 in a Scale Unit node.
 
-Prerequisites
+## Prerequisites
 
-1.  Review *Notes, cautions, and warnings* at the beginning of this guide
+1.  Review *Notes, cautions, and warnings* at the beginning of this guide.
 
-2.  Review [Handling precautions]
+2.  Review Handling precautions.
 
 3.  Required knowledge for working with Scale Unit nodes in a Tactical
 Cloud
-Appliance if you are working with a Scale Unit node
+Appliance if you are working with a Scale Unit node.
 
 4.  Complete Verifying Scale Unit node access and
-health
+health.
 
 5.  Complete Powering off Scale Unit
-    nodes
+    nodes.
 
     For the Azure Stack Hub Scale Unit nodes, the operating system runs
     from a mirrored pair of M.2 SSD modules residing on the Dell PowerEdge
     Boot Optimized Storage Solution (BOSS) card. The system must be
     powered off to replace an operating system disk.
     
-**Steps**
+## Steps
 
 1.  Locate the physical node in the rack.
 

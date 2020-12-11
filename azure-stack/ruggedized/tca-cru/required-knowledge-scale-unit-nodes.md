@@ -19,7 +19,7 @@ ms.lastreviewed:
 To complete FRU procedures, you must be familiar with and able to
 access the following concepts, guides, and web sites.
 
-### Privileged Access Workstation and the privileged endpoint
+## Privileged Access Workstation and the privileged endpoint
 
 The Privileged Access Workstation (PAW) is a dedicated workstation
 protected from the Internet and external threat vectors. It can reside
@@ -34,7 +34,7 @@ For more information about the Privileged Access Workstation as well
 as the PEP, see Privileged Access Workstation and privileged endpoint
 access.
 
-### Azure Stack Hub Administrator Portal
+## Azure Stack Hub Administrator Portal
 
 Obtain the Administrator Portal credentials and URL from the customer.
 For more information see [Use the administrator
@@ -42,7 +42,7 @@ portal](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-porta
 [in Azure Stack
 Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-portals).
 
-### Dell EMC PowerEdge R640 Installation and Service Manual
+## Dell EMC PowerEdge R640 Installation and Service Manual
 
 For details on physically replacing the relevant hardware, refer to
 the installing and removing PowerEdge R640 system component procedures
@@ -54,13 +54,13 @@ removing](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_is
 components](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/installing-and-removing-system-components?guid=guid-5a5943c4-fe26-4faa-a10c-2afa4c1993ff&lang=en-us)
 section.
 
-### Microsoft Azure Stack Hub Tactical Cloud Appliance Service Manual
+## Microsoft Azure Stack Hub Tactical Cloud Appliance Service Manual
 
 The Microsoft Azure Stack Hub Tactical Cloud Appliance Service Manual
 contains instructions for removing Scale Unit node servers from the
 Tracewell Tactical Pods.
 
-### Dell EMC PowerEdge iDRAC
+## Dell EMC PowerEdge iDRAC
 
 You must understand how to navigate and use the Dell EMC PowerEdge
 iDRAC web interface. For more information on using the iDRAC, refer to

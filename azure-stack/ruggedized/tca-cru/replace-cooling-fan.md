@@ -18,7 +18,7 @@ ms.lastreviewed:
 
 Use the following procedure to replace a cooling fan or fans.
 
-Prerequisites
+## Prerequisites
 
 1.  Review *Notes, cautions, and warnings* at the beginning of this
     guide
@@ -46,7 +46,7 @@ Prerequisites
         Host if
         you are working with the Hardware Lifecycle Host
 
-**Steps**
+## Steps
 
 1.  Locate the physical node in the rack.
 

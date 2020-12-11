@@ -18,7 +18,7 @@ ms.lastreviewed:
 
 Use the following procedure to replace a DIMM.
 
-Prerequisites
+## Prerequisites
 
 1.  Review *Notes, cautions, and warnings* at the beginning of this
     guide
@@ -49,7 +49,7 @@ Prerequisites
         Host if
         you are working with the Hardware Lifecycle Host
 
-**Steps**
+## Steps
 
 1.  Locate the physical node in the rack.
 
@@ -74,12 +74,10 @@ Prerequisites
 
 If you are working with a Scale Unit node:
 
-1.  Complete [Powering on a Scale Unit
-    node]
+1.  Complete Powering on a Scale Unit
+    node.
 
-2.  Complete [Verifying Scale Unit node
+2.  Complete Verifying Scale Unit node
     health. If you are
-    working with the Hardware Lifecycle Host:
-
-    -   Complete Verifying Hardware Lifecycle Host health
+    working with the Hardware Lifecycle Host, complete Verifying Hardware Lifecycle Host health.
     

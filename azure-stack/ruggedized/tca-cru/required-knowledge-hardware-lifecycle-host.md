@@ -19,7 +19,7 @@ ms.lastreviewed:
 To complete FRU procedures, you must be familiar with and able to
 access the following concepts and guides.
 
-### Hardware Lifecycle Host
+## Hardware Lifecycle Host
 
 The Hardware Lifecycle Host (HLH) is a physical management server
 located at top of the Azure Stack Hub rack. To access the host, you
@@ -43,7 +43,7 @@ network and management workstation to the iDRAC IP.
 were previously added to the switch ACLs can connect directly to the
 HLH iDRAC.
 
-### Credentials
+## Credentials
 
 Work with the customer to obtain the credentials for the following:
 
@@ -57,7 +57,7 @@ If not connecting directly to the server using a crash cart, then you
 will need the iDRAC account credentials to gain access to the virtual
 KVM.
 
-### Dell EMC PowerEdge R640 Installation and Service Manual
+## Dell EMC PowerEdge R640 Installation and Service Manual
 
 For details on physically replacing the relevant hardware, refer to
 the PowerEdge R640 FRU replacement procedures in the
@@ -68,13 +68,13 @@ Browse to the [Installing and removing system
 components](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/installing-and-removing-system-components?guid=guid-5a5943c4-fe26-4faa-a10c-2afa4c1993ff&lang=en-us)
 section.
 
-### Microsoft Azure Stack Hub Tactical Cloud Appliance Service Manual
+## Microsoft Azure Stack Hub Tactical Cloud Appliance Service Manual
 
 The Microsoft Azure Stack Hub Tactical Cloud Appliance Service Manual
 contains instructions for removing the Hardware Lifecycle Host from
 the Tracewell Tactical Pods.
 
-### Dell EMC PowerEdge iDRAC
+## Dell EMC PowerEdge iDRAC
 
 You must understand how to navigate and use the Dell EMC PowerEdge
 iDRAC web interface.

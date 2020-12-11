@@ -23,26 +23,23 @@ Portal, verify the system health, obtain the privileged endpoint IP
 addresses, and identify which nodes will need to be drained or
 resumed.
 
-**Steps**
-
 1.  Using Remote Desktop, connect to the Privileged Access Workstation.
 
 2.  Access the Azure Stack Hub Administrator Portal.
 
     Log in to the Azure Stack Hub Administrator Portal with the
     credentials obtained from the customer.
-    
-    ![](media/image-17.png)
-    
+        
 3.  Obtain the privileged endpoint IP addresses.
 
-    ![](media/image-18.png)
 
     Select the **Region Management** tile and
     select **Properties**. Scroll to the bottom of the pane and locate the
     IP addresses in the **Privileged endpoint IP addresses** field. Take
     note of these as may be needed later in this procedure or will be
     needed by support in the event of any issues.
+
+    [![](media/image-18-inline.png)](media/image-18-expanded.png)
     
 4.  Review any current alerts.
 
@@ -50,7 +47,7 @@ resumed.
     alerts. If any unexpected alerts are present, verify with Dell
     Technologies Support that they can be cleared or safely ignored.
     
-    ![](media/image-19.png)
+    [![](media/image-19-inline.png)](media/image-19-expanded.png)
     
 5.  Identify the Scale Unit nodes.
 
@@ -67,7 +64,7 @@ resumed.
         on the **BMC** IP address link, which opens the server's iDRAC web
         interface in a new tab or window.
 
-        ![](media/image-20.png) 
+        [![](media/image-20-inline.png)](media/image-20-expanded.png) 
     
     1.  Log in to the iDRAC interface and verify the service tag of the node
         in the **System Information** pane.
@@ -76,12 +73,5 @@ resumed.
         and correlate these service tags with the scheduled hardware
         replacement to determine which node or nodes need to be serviced.
 
-        ![](media/image-21.png)
+        [![](media/image-21-inline.png)](media/image-21-expanded.png)
     
-**Powering Off Hardware**
-
-This chapter describes how to safely power off the Hardware Lifecycle
-Host and Scale Unit nodes. These procedures are performed before a
-component is replaced. See Component Replacement
-Procedures for the list
-of CRU procedures.

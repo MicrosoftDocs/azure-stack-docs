@@ -20,7 +20,7 @@ This section describes the precautions that you must take and the
 general procedures that you must follow when removing and storing any
 field replaceable unit (FRU) or customer replaceable unit (CRU).
 
-### Handling field and customer replaceable units
+## Handling field and customer replaceable units
 
 You should not remove a faulty FRU or CRU until you have a replacement
 available.
@@ -56,7 +56,7 @@ equipment.
 -   If an emergency arises and the ESD kit is not available, follow the
     procedures below.
 
-### Emergency procedures when an ESD kit is not available
+## Emergency procedures when an ESD kit is not available
 
 In an emergency when an ESD kit is not available, use the following
 procedures to reduce the possibility of an electrostatic discharge by
@@ -84,13 +84,4 @@ kit. Follow them only in the event of an emergency.
     installing a unit, first place the unit back in the antistatic bag.
     When you are ready again to install the unit, repeat these
     procedures.
-
-**CRU Prerequisites and Required Knowledge**
-
-This chapter covers prerequisites for working with field replaceable
-units. The prerequisites include collecting hardware information,
-retrieving resources for replacement instructions, verifying hardware
-health status, and collecting recovery passwords. See Component
-Replacement Procedures
-for the list of CRU procedures.
 

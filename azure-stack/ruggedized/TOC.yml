@@ -523,11 +523,11 @@
         - name: Handling precautions
           href: /tca-cru/handling-precautions.md
         - name: Required knowledge to work with the Hardware Lifecycle Host
-          href: /tca-cru/required-knowledge-working-with-hlh.md
+          href: /tca-cru/required-knowledge-hardware-lifecycle-host.md
         - name: Verify Hardware Lifecycle Host access and health
-          href: /tca-cru/verify-hlh-access-and-health.md
+          href: /tca-cru/verify-hardware-lifecycle-host-access-and-health.md
         - name: Required knowledge to work with Scale Unit nodes
-          href: /tca-cru/required-knowledge-working-with-scu.md
+          href: /tca-cru/required-knowledge-scale-unit-nodes.md
         - name: Verify Scale Unit node access and health
           href: /tca-cru/verify-scale-unit-node-access-and-health.md
         - name: Power off Hardware Lifecycle Host
@@ -554,8 +554,8 @@
           href: /tca-cru/power-on-scale-unit-node.md
         - name: Repair Scale Unit node
           href: /tca-cru/repair-scale-unit-node.md
-        - name: Verify Hardware Lifecyle Host health
-          href: /tca-cru/verify-hlh-health.md
+        - name: Verify Hardware Lifecycle Host health
+          href: /tca-cru/verify-hardware-lifecycle-host-health.md
         - name: Verify Scale Unit node health
           href: /tca-cru/verify-scale-unit-node-health.md
         - name: Verify Scale Unit node disk health

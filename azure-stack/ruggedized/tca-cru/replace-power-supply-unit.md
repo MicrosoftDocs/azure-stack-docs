@@ -18,7 +18,7 @@ ms.lastreviewed:
 
 Use the following procedure to replace a power supply unit (PSU).
 
-Prerequisites
+## Prerequisites
 
 1.  Review *Notes, cautions, and warnings* at the beginning of this
     guide
@@ -40,7 +40,7 @@ Prerequisites
     -   Verifying Hardware Lifecycle Host access and
         health if you are working with the Hardware Lifecycle Host
 
-**Steps**
+## Steps
 
 1.  Locate the physical node in the rack.
 

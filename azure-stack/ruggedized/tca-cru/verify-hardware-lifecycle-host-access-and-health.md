@@ -16,12 +16,8 @@ ms.lastreviewed:
 
 # Verifying Hardware Lifecycle Host access and health
 
-
-
 Log in to the iDRAC and the Hardware Lifecycle Host (HLH) OS and
 verify the system health.
-
-**Steps**
 
 1.  Connect to the iDRAC.
 

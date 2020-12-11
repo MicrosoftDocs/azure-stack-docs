@@ -16,20 +16,14 @@ ms.lastreviewed:
 
 # Verifying Scale Unit node health
 
-**Steps**
-
 1.  In the **Administration Portal**, verify the **Cores** and
-    **Memory** are populated for the node as expected.
-
-    ![](media/image-56.png)
+    **Memory** columns are populated for the node as expected.
     
     If you see dashes, continue to wait
     until the correct numbers are displayed. If an hour passes and the
-    dashes still remain, please engage Dell Technologies Support for
+    dashes still remain, please contact Microsoft Support for
     assistance.
     
-2.  In **Region Management**, select **Alerts** and confirm there are no
+2.  In **Region Management**, under the **General** tab, select **Alerts** and confirm there are no
     new alerts.
-
-    ![](media/image-19.png)
     

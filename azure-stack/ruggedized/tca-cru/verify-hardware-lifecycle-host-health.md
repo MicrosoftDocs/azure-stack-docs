@@ -21,7 +21,6 @@ ms.lastreviewed:
 When the hardware replacement is complete and BEFORE you leave the
 site, use the iDRAC to verify the Hardware Lifecycle Host health.
 
-**Steps**
 
 1.  Verify the system health in the iDRAC web interface and check that
 the issue you worked on has cleared, if it was present in the web

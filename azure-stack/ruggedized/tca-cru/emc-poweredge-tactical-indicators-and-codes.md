@@ -19,7 +19,7 @@ ms.lastreviewed:
 The features described in this section are the same for the Hardware
 Lifecycle Host and Scale Unit node servers.
 
-### System information label
+## System information label
 
 The following figure shows the system information label, which is on
 the front panel.
@@ -29,7 +29,7 @@ Figure 10. LED behavior
 
 ![](media/image-75.png)
 
-### iDRAC Direct LED indicator codes
+## iDRAC Direct LED indicator codes
 
 The iDRAC Direct LED indicator lights up to indicate that the port is
 connected and is being used as a part of the iDRAC subsystem.
@@ -47,7 +47,7 @@ Table 4. LED indicator codes
 | Flashing green (on for two seconds and off for two seconds) | Indicates that the laptop or tablet connected is recognized. |
 | Not illuminated                                             | Indicates that the laptop or tablet is unplugged.            |
 
-### Left control panel
+## Left control panel
 
 The following figure shows the left control panel status and health
 indicators.
@@ -78,12 +78,12 @@ Table 6. PowerEdge status LED indicators
 | <br>Icon | <br>Description           | <br>Condition                                                                                                                                                                       | <br>Corrective action                                                                                                                                                                                                                                                                                                    |
 |----------|---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |          | <br>Drive indicator       | <br>The indicator turns solid amber if there is a drive error.                                                                                                                      | 1. Check the System Event Log to determine if the drive has an error.<br>2. Run the appropriate Online Diagnostics test.<br>3. Restart the system and run embedded diagnostics (ePSA).<br>4. If the drives are configured in a RAID array, restart the system, and enter the host adapter configuration utility program. |
-|          | <br>Temperature indicator | <br>The   indicator turns solid amber if the system experiences a thermal error (for   example, the ambient temperature is out of range or there is a fan failure).                 | Ensure that none of the following conditions exist:<br>1. A cooling fan has been removed or has failed. <br>2. System cover, air shroud, memory module blank, or back filler bracket is removed.<br>3. Ambient temperature is too high.<br>4. External airflow is obstructed.                                                 |
+|          | <br>Temperature indicator | <br>The   indicator turns solid amber if the system experiences a thermal error (for   example, the ambient temperature is out of range or there is a fan failure).                 | Ensure that none of the following conditions exist:<br>* A cooling fan has been removed or has failed. <br>* System cover, air shroud, memory module blank, or back filler bracket is removed.<br>* Ambient temperature is too high.<br>* External airflow is obstructed.                                                 |
 |          | <br>Electrical indicator  | <br>The   indicator turns solid amber if the system experiences an electrical error   (for example, voltage out of range, or a failed power supply unit (PSU) or voltage regulator. | 1. Check the System Event Log or system messages for the specific issue.<br>2. If the log indicates a problem with the PSU, check the LED on the PSU.<br>3. Reseat the PSU.                                                                                                                                              |
 |          | <br>Memory indicator      | <br>The indicator turns solid amber if a memory error occurs.                                                                                                                       | 1. Check the System Event Log or system messages for the location of the failed memory.<br>2. Reseat the memory module.                                                                                                                                                                                                  |
 |          | <br>PCIe   indicator      | <br>The   indicator turns solid amber if a PCIe card experiences an error.                                                                                                          | 1. Restart the system.<br>2. Update any required drivers for the PCIe card.<br>3. Reinstall the card.                                                                                                                                                                                                                    |
 
-### Power supply unit indicator codes
+## Power supply unit indicator codes
 
 AC power supply units (PSUs) have an illuminated translucent handle
 that serves as an indicator. DC PSUs have an LED that serves as an
