@@ -43,11 +43,11 @@ If you experience issues with CredSSP, the following troubleshooting tips may he
 
 ## Manual troubleshooting
 
-If you receive the following error message, try using the manual verification steps in this section to resolve the error.
+If you receive the following WinRM error message, try using the manual verification steps in this section to resolve the error.
 
 Example error message:
 
-`Connecting to remote <sever name> failed with the following error message : The WinRM client cannot process the request. A computer policy does not allow the delegation of the user credentials to the target computer because the computer is not trusted. The identity of the target computer can be verified if you configure the WSMAN service to use a valid certificate.`
+`Connecting to remote <sever name> failed with the following error message: The WinRM client cannot process the request. A computer policy does not allow the delegation of the user credentials to the target computer because the computer is not trusted. The identity of the target computer can be verified if you configure the WSMAN service to use a valid certificate.`
 
 The manual verification steps in this section require you to configure the following computers:
 - The computer running Windows Admin Center
@@ -56,11 +56,38 @@ The manual verification steps in this section require you to configure the follo
 To resolve the error, try the following remedy steps as needed:
 
 **Remedy 1:**
-1 Restart the computer running Windows Admin Center and the primary target computer.
-1 Try running the Cluster creation wizard again.
-For details on running the wizard, see [Create an Azure Stack HCI cluster using Windows Admin Center](../deploy/create-cluster.md)
+1. Restart the computer running Windows Admin Center and the primary target computer.
+1. Try running the Cluster creation wizard again.
+
+    For details on running the wizard, see [Create an Azure Stack HCI cluster using Windows Admin Center](../deploy/create-cluster.md)
 
 **Remedy 2:**
+1. Use the Remote Desktop Protocol (RDP) feature to connect to the computer running Windows Admin Center.
+1. Open Windows PowerShell as an administrator and run the following commands:
+
+    ```powershell
+    Disable-WsmanCredSSP -Role Client  
+    ```
+
+    ```powershell  
+    Enable-WsmanCredSSP -Role Client -DelagateComputer <Target computer FQDN Name>  
+    ```
+
+1. Use the RDP feature to connect to the target server, and then run the following PowerShell commands:
+
+    ```powershell  
+    Disable-WsmanCredSSP -Role Server  
+    ```
+
+    ```powershell  
+    Enable-WsmanCredSSP -Role Server  
+    ```
+    
+1. Try running the Cluster creation wizard again.
+
+    For details on running the wizard, see [Create an Azure Stack HCI cluster using Windows Admin Center](../deploy/create-cluster.md)
+
+**Remedy 3:**
 
 
 
