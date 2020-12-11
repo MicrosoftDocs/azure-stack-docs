@@ -27,14 +27,14 @@ landingContent:
         links:
           - text: Use Azure Stack HCI with Windows Admin Center
             url: get-started.md
+          - text: Create an Azure Stack HCI cluster
+            url: deploy/deployment-quickstart.md
 
   # Card 
   - title: Deploy Azure Stack HCI
     linkLists:
       - linkListType: deploy
         links:
-          - text: Deployment quickstart
-            url: deploy/deployment-quickstart.md
           - text: Deploy the Azure Stack HCI OS
             url: deploy/operating-system.md
           - text: Create a cluster

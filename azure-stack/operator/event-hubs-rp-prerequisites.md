@@ -12,8 +12,6 @@ ms.lastreviewed: 12/09/2019
 
 # Prerequisites for installing Event Hubs on Azure Stack Hub
 
-[!INCLUDE [preview-banner](../includes/event-hubs-preview.md)]
-
 The following prerequisites must be completed before you can install Event Hubs on Azure Stack Hub. **Several days or weeks of lead time may be required** to complete all steps.
 
 > [!IMPORTANT]
@@ -28,7 +26,7 @@ The following prerequisites must be completed before you can install Event Hubs 
 
 ## Event Hubs prerequisites
 
-1. Procure public key infrastructure (PKI) SSL certificates for Event Hubs. The Subject Alternate Name (SAN) must adhere to the following naming pattern: `CN=*.eventhub.<region>.<fqdn>`. Subject Name may be specified, but it's not used by Event Hubs when handling certificates. Only the Subject Alternate Name is used. See [PKI certificate requirements](azure-stack-pki-certs.md) for the full list of detailed requirements.  
+1. Procure public key infrastructure (PKI) SSL certificates for Event Hubs. The Subject Alternative Name (SAN) must adhere to the following naming pattern: `CN=*.eventhub.<region>.<fqdn>`. Subject Name may be specified, but it's not used by Event Hubs when handling certificates. Only the Subject Alternative Name is used. See [PKI certificate requirements](azure-stack-pki-certs.md) for the full list of detailed requirements.  
 
    ![example certificate](media/event-hubs-rp-prerequisites/certificate-example.png)
 
