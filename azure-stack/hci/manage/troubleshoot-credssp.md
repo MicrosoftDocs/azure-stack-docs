@@ -55,12 +55,13 @@ To resolve the error, try the following remedy steps as needed:
 
 **Remedy 1:**
 1. Restart the computer running Windows Admin Center and the primary target server.
-1. Try running the Cluster creation wizard again.
+1. Try running the Create cluster wizard again.
 
     For details on running the wizard, see [Create an Azure Stack HCI cluster using Windows Admin Center](../deploy/create-cluster.md)
 
 **Remedy 2:**
 1. Use the Remote Desktop Protocol (RDP) feature to connect to the computer running Windows Admin Center.
+
 1. Open Windows PowerShell as an administrator and run the following commands:
 
     ```powershell
@@ -68,7 +69,7 @@ To resolve the error, try the following remedy steps as needed:
     ```
 
     ```powershell  
-    Enable-WsmanCredSSP -Role Client -DelagateComputer <Target server FQDN Name>  
+    Enable-WsmanCredSSP -Role Client -DelagateComputer <Target Server FQDN Name>
     ```
 
 1. Use the RDP feature to connect to the target server, and then run the following PowerShell commands:
@@ -81,7 +82,7 @@ To resolve the error, try the following remedy steps as needed:
     Enable-WsmanCredSSP -Role Server  
     ```
     
-1. Try running the Cluster creation wizard again.
+1. Try running the Create cluster wizard again.
 
     For details on running the wizard, see [Create an Azure Stack HCI cluster using Windows Admin Center](../deploy/create-cluster.md)
 
@@ -100,7 +101,7 @@ To resolve the error, try the following remedy steps as needed:
 
     `WSMAN/<Windows Admin Center Computer FQDN Name>`
 
-1. If the results are not listed, run the following PowerShell commands to register them:
+1. If the results are not listed, run the following PowerShell commands to register the SPN:
 
     ```powershell
     setspn -S WSMAN/<Windows Admin Center Computer Name> <Windows Admin Center Computer Name>  
@@ -122,7 +123,7 @@ To resolve the error, try the following remedy steps as needed:
 
     `WSMAN/<Target Server FQDN Name>`
 
-1. If the results are not listed, run the following PowerShell commands to register the target server:
+1. If the results are not listed, run the following PowerShell commands to register the SPN:
 
     ```powershell
     setspn -S WSMAN/<Target Server Name> <Target Server Name>  
@@ -132,14 +133,14 @@ To resolve the error, try the following remedy steps as needed:
     setspn -S WSMAN/<Target Server Name> <Target Server FQDN Name>  
     ```
 
-1. Try running the Cluster creation wizard again.
+1. Try running the Create cluster wizard again.
 
     For details on running the wizard, see [Create an Azure Stack HCI cluster using Windows Admin Center](../deploy/create-cluster.md)
 
 
 **Remedy 4:**
 
-If any of the previous remedy steps failed or did not complete, this might indicate a record conflict in n Active Directory. You can use a different computer name to reset a new record in Active Directory.
+If any of the previous remedy steps failed or did not complete, this might indicate a record conflict in Active Directory. You can use a different computer name to reset the record as a new record in Active Directory.
 
 To reset the record in Active Directory, reinstall the Azure Stack HCI operating system with a new computer name.
 
