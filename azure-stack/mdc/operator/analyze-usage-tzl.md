@@ -99,15 +99,28 @@ meterID1",
 
 ### PowerShell
 
-To generate the usage data, you should have resources that are running and actively using the system; for example, an active virtual machine (VM), or a storage account containing some data. If you're not sure whether you have any resources running in the Azure Stack marketplace, deploy a VM, and verify the VM monitoring blade to make sure it's running. Use the following PowerShell cmdlets to view the usage data:
+To generate the usage data, you should have resources that are running and actively using the system; for example, an active virtual machine (VM), or a storage account containing some data. If you're not sure whether you have any resources running in the Azure Stack marketplace, deploy a VM, and verify the VM monitoring blade to make sure it's running. Use the following PowerShell cmdlets to view the usage data.
 
-1. [Install PowerShell for Azure Stack](../../operator/azure-stack-powershell-install.md).
+### [Az modules](#tab/az1)
+
+1. [Install PowerShell for Azure Stack](../../operator/powershell-install-az-module.md).
 2. [Configure the Azure Stack user](../../user/azure-stack-powershell-configure-user.md) or the [Azure Stack operator](../../operator/azure-stack-powershell-configure-admin.md) PowerShell environment.
 3. To retrieve the usage data, call the [Get-AzsSubscriberUsage](/powershell/module/azs.commerce.admin/get-azssubscriberusage) PowerShell cmdlet:
 
    ```powershell
    Get-AzsSubscriberUsage -ReportedStartTime "2017-09-06T00:00:00Z" -ReportedEndTime "2017-09-07T00:00:00Z"
    ```
+### [AzureRM modules](#tab/azurerm1)
+
+1. [Install PowerShell for Azure Stack](../../operator/powershell-install-az-module.md).
+2. [Configure the Azure Stack user](../../user/azure-stack-powershell-configure-user.md) or the [Azure Stack operator](../../operator/azure-stack-powershell-configure-admin.md) PowerShell environment.
+3. To retrieve the usage data, call the [Get-AzsSubscriberUsage](/powershell/module/azs.commerce.admin/get-azssubscriberusage) PowerShell cmdlet:
+
+   ```powershell
+   Get-AzsSubscriberUsage -ReportedStartTime "2017-09-06T00:00:00Z" -ReportedEndTime "2017-09-07T00:00:00Z"
+   ```
+
+---
 
 ### REST API
 

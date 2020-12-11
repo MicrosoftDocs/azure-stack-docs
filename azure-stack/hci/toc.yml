@@ -4,26 +4,32 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
-  - name: Known issues
-    href: known-issues.md
+  - name: Release information
+    href: release-information.md
   - name: Release notes
-    href: release-notes.md
+    href: https://support.microsoft.com/help/4595086
   - name: FAQ
     href: faq.md
-- name: Get started
+- name: Quickstarts
   items:
   - name: Use Azure Stack HCI with Windows Admin Center
     href: get-started.md
+  - name: Create an Azure Stack HCI cluster
+    href: deploy/deployment-quickstart.md
 - name: Deploy
   items:
   - name: Deployment overview
     href: deploy/deployment-overview.md
   - name: Deploy the Azure Stack HCI OS
     href: deploy/operating-system.md
-  - name: Create the cluster
+  - name: Create a cluster
     href: deploy/create-cluster.md
   - name: Set up a cluster witness
     href: deploy/witness.md
+  - name: Migrate to new hardware
+    href: deploy/migrate-cluster-new-hardware.md
+  - name: Migrate on same hardware
+    href: deploy/migrate-cluster-same-hardware.md
   - name: Register with Azure
     href: deploy/register-with-azure.md
   - name: Validate the cluster
@@ -110,6 +116,8 @@
     items:
     - name: System requirements
       href: concepts/system-requirements.md
+    - name: Compare to Windows Server
+      href: concepts/compare-windows-server.md
     - name: Choose drives
       href: concepts/choose-drives.md
     - name: Drive symmetry considerations
@@ -154,6 +162,10 @@
       href: concepts/updates.md
     - name: Security considerations
       href: concepts/security.md
+    - name: Utility applications
+      href: concepts/utility-applications.md
+    - name: Data collection
+      href: concepts/data-collection.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
@@ -210,3 +222,5 @@
     href: https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md
   - name: Azure Stack HCI pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
+  - name: Azure Stack HCI support
+    href: manage/get-support.md
