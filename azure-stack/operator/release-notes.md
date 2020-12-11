@@ -106,7 +106,8 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 ### Hotfix prerequisites: before applying the 2011 update
 
 The 2011 release of Azure Stack Hub must be applied on the 2008 release with the following hotfixes:
-- [Azure Stack Hub hotfix 1.2005.21.84](https://support.microsoft.com/help/4592779)
+
+- [Azure Stack Hub hotfix 1.2008.20.102](https://support.microsoft.com/help/4595075)
 
 ### After successfully applying the 2011 update
 
