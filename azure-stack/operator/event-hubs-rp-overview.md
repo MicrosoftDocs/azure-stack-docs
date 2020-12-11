@@ -5,9 +5,9 @@ author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 12/09/2019
+ms.date: 12/11/2020
 ms.reviewer: jfggdl
-ms.lastreviewed: 12/09/2019
+ms.lastreviewed: 12/11/2020
 ---
 
 # Event Hubs on Azure Stack Hub operator overview
