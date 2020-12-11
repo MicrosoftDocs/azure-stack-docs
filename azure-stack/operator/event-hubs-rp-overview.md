@@ -1,5 +1,5 @@
 ---
-title: Event Hubs on Azure Stack Hub overview
+title: Event Hubs on Azure Stack Hub operator overview
 description: Learn about the Event Hubs resource provider on Azure Stack Hub. 
 author: BryanLa
 ms.author: bryanla
@@ -10,9 +10,7 @@ ms.reviewer: jfggdl
 ms.lastreviewed: 12/09/2019
 ---
 
-# Event Hubs on Azure Stack Hub overview
-
-[!INCLUDE [preview-banner](../includes/event-hubs-preview.md)]
+# Event Hubs on Azure Stack Hub operator overview
 
 Event Hubs on Azure Stack Hub allows you to realize hybrid cloud scenarios. Streaming and event-based solutions are supported, for both on-premises and Azure cloud processing. Whether your scenario is hybrid (connected), or disconnected, your solution can support processing of events/streams at large scale. Your scenario is bound only by cluster size, which you can provision according to your needs. 
 

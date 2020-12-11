@@ -340,15 +340,15 @@
         - name: Apply updates
           href: resource-provider-apply-updates.md
         - name: Backup & restore
-          href: azure-stack-backup-infrastructure-backup.md
+          href: azure-stack-backup-enable-backup-console.md
         - name: Collect logs
           href: diagnostic-log-collection.md
         - name: Health & alerts
           href: azure-stack-monitor-health.md
         - name: Manage
-          href: event-hubs-rp-manage.md 
+          href: event-hubs-rp-manage.md
         - name: Rotate secrets
-          href: azure-stack-rotate-secrets.md
+          href: event-hubs-rp-rotate-secrets.md          
         - name: Service update announcements
           href: https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs
       - name: Remove
