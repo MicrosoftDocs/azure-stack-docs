@@ -111,7 +111,7 @@ For this procedure, use a computer in your datacenter network that can communica
 - **Run the below script for Azure Stack Hub build prior to 2008** <br>
 
        ```powershell  
-       Invoke-Command -Session $pep -ScriptBlock {Register-DirectoryService -CustomADGlobalCatalog contoso.com} 
+        Invoke-Command -Session $pep -ScriptBlock {Register-DirectoryService -CustomADGlobalCatalog contoso.com} 
 
 
        ```
