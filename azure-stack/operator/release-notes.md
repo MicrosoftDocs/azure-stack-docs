@@ -29,6 +29,9 @@ To access release notes for a different version, use the version selector dropdo
 > If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
 ::: moniker-end
 
+> [!IMPORTANT]  
+> If your Azure Stack Hub instance does not have an active support contract with the hardware partner, it's considered out of compliance. You must [have an active support contract for the hardware to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
+
 ## Update planning
 
 Before applying the update, make sure to review the following information:
