@@ -92,6 +92,8 @@ For this procedure, use a computer in your datacenter network that can communica
 
 2. Now that you have a session with the privileged endpoint, run the following command: 
 
+  a) Run the below script for Azure Stack Hub build 2008 and newer
+
    ```powershell  
     $i = @(
            [pscustomobject]@{ 
@@ -105,6 +107,13 @@ For this procedure, use a computer in your datacenter network that can communica
 
 
    ```
+
+   b) Run the below script for Azure Stack Hub builds prior to 2008
+
+    ```powershell  
+    Invoke-Command -Session $pep -ScriptBlock {Register-DirectoryService -CustomADGlobalCatalog contoso.com}
+    
+    ```
 
    When prompted, specify the credential for the user account that you want to use for the Graph service (such as graphservice). The input for the Register-DirectoryService cmdlet must be the forest name / root domain in the forest rather than any other domain in the forest.
 
