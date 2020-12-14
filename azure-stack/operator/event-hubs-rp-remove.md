@@ -12,8 +12,6 @@ ms.lastreviewed: 12/09/2019
 
 # How to remove Event Hubs on Azure Stack Hub
 
-[!INCLUDE [preview-banner](../includes/event-hubs-preview.md)]
-
 > [!WARNING]
 > Uninstalling Event Hubs will remove (erase) the resource provider, and all user-created Event Hubs clusters, namespaces, and event hubs resources. It will also remove their associated event data.  
 > Please proceed with extreme caution before deciding to uninstall Event Hubs. 

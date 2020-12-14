@@ -2,13 +2,13 @@
 title: Troubleshoot Azure Stack Hub
 titleSuffix: Azure Stack
 description: Learn how to troubleshoot Azure Stack Hub, including issues with VMs, storage, and App Service.
-author: myoungerman
+author: PatAltimore
 
 ms.topic: article
-ms.date: 07/21/2020
+ms.date: 12/10/2020
 ms.author: v-myoung
 ms.reviewer: prchint
-ms.lastreviewed: 07/21/2020
+ms.lastreviewed: 12/10/2020
 
 # Intent: As an Azure Stack operator, I want to troubleshoot Azure Stack issues.
 # Keyword: troubleshoot azure stack
@@ -216,6 +216,16 @@ The Azure Stack Hub patch and update process is designed to allow operators to a
 **Cause**: When attempting to install the Azure Stack Hub update, the status for the update might fail and change state to `PreparationFailed`. For internet-connected systems this is usually indicative of the update package being unable to download properly due to a weak internet connection. 
 
 **Remediation**: You can work around this issue by clicking **Install now** again. If the problem persists, we recommend manually uploading the update package by following the [Install updates](azure-stack-apply-updates.md?#install-updates-and-monitor-progress) section.
+
+**Occurrence**: Common
+
+### Warnings and errors reported while update is in progress
+
+**Applicable**: This issue applies to all supported releases.
+
+**Cause**: When Azure Stack Hub update is in status **In progress**, warnings and errors may be reported in the portal. Components may timeout waiting for other components during upgrade resulting in an error. Azure Stack Hub has mechanism to retry or remediate some of the tasks due to intermittent errors.
+
+**Remediation**: While the Azure Stack Hub update is in status **In progress**, warnings and errors reported in the portal can be ignored.
 
 **Occurrence**: Common
 

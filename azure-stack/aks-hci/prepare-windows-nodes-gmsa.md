@@ -22,23 +22,23 @@ To enable group Managed Service Account support, your Kubernetes cluster name ha
 
 ## Join the worker nodes to a domain
 
-To join your Windows worker nodes to a domain, log in to a Windows worker node, by running `kubectl` get and noting the `EXTERNAL-IP` value.
+To join your Windows worker nodes to a domain, log in to a Windows worker node by running `kubectl get` and noting the `EXTERNAL-IP` value.
 
 ```
-   kubectl get nodes -o wide
+kubectl get nodes -o wide
 ```  
 
-You can then SSH into the node using `ssh Administrator@ip`.
+You can then SSH into the node using `ssh Administrator@ip`. For more information on how to log in using SSH, see [Troubleshooting Windows worker nodes using SSH](troubleshoot.md#troubleshooting-windows-worker-nodes).
 
-After you've successfully logged in to your Windows worker node, run the following PowerShell command to join the node to a domain. There will be a prompt to enter your **domain administrator account** credentials. You can also use elevated user credentials that have been given rights to join computers to the given domain. Then, you need to reboot your Windows worker node. 
+After you've successfully logged in to your Windows worker node using SSH, run the following command to join the node to a domain. Then, you need to reboot the Windows worker node. 
 
-```powershell
-add-computer --domainame "YourDomainName" -restart
 ```
+netdom.exe join %computername% /domain:DomainName /UserD:DomainName\UserName /PasswordD:Password
+```  
 
 Once all Windows worker nodes have been joined to a domain, follow the steps detailed at [configuring gMSA](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa/). Those steps will help you apply the Kubernetes gMSA custom resource definitions and webhooks on your Kubernetes cluster.
 
-For more information on Windows container with gMSA, see [Windows containers and gMSA](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts). For troubleshooting information, see the [Troubleshooting](troubleshoot.md) page. 
+For more information on Windows container with gMSA, see [Windows containers and gMSA](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts). 
 
 ## Next steps
 
