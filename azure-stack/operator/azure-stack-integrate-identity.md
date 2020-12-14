@@ -92,7 +92,7 @@ For this procedure, use a computer in your datacenter network that can communica
 
 2. Now that you have a session with the privileged endpoint, run the following command: 
 
-- **Run the below script for Azure Stack Hub build 2008 and newer** <br>
+   **Run the below script for Azure Stack Hub build 2008 and newer** <br>
 
    ```powershell  
     $i = @(
@@ -108,10 +108,10 @@ For this procedure, use a computer in your datacenter network that can communica
 
    ```
 
-- **Run the below script for Azure Stack Hub build prior to 2008** <br>
+   **Run the below script for Azure Stack Hub build prior to 2008** <br>
 
-    ```powershell  
-    Invoke-Command -Session $pep -ScriptBlock {Register-DirectoryService -CustomADGlobalCatalog contoso.com} 
+   ```powershell  
+   Invoke-Command -Session $pep -ScriptBlock {Register-DirectoryService -CustomADGlobalCatalog contoso.com} 
    
    
     ```
