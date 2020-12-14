@@ -294,11 +294,11 @@ In this section, you'll complete the IoT Hub and VM configuration required by th
 
 2. You should see that the IoT Edge service is running and "active", with a response similar to the following. If so, you can jump ahead to step #4.
 
-   [![IoT Edge service running successfully](media\iot-hub-connect-an-iot-edge-device\iotedge-service-running.png)](media\iot-hub-connect-an-iot-edge-device\iotedge-service-running.png#lightbox)
+   [![IoT Edge service running successfully](media\iot-hub-connect-an-iot-edge-device\iot-edge-service-running.png)](media\iot-hub-connect-an-iot-edge-device\iot-edge-service-running.png#lightbox)
 
 3. If the IoT Edge service failed:
    - You'll see a response similar showing "failed", similar to the following example:
-   [![IoT Edge service failed](media\iot-hub-connect-an-iot-edge-device\iotedge-service-failed.png)](media\iot-hub-connect-an-iot-edge-device\iotedge-service-failed.png#lightbox)   
+   [![IoT Edge service failed](media\iot-hub-connect-an-iot-edge-device\iot-edge-service-failed.png)](media\iot-hub-connect-an-iot-edge-device\iot-edge-service-failed.png#lightbox)   
    - To troubleshoot, you can:
      - Examine the daemon logs:
 
@@ -311,7 +311,7 @@ In this section, you'll complete the IoT Hub and VM configuration required by th
          sudo iotedge check
          ```
 
-         [![IoT Edge service check](media\iot-hub-connect-an-iot-edge-device\iotedge-service-check.png)](media\iot-hub-connect-an-iot-edge-device\iotedge-service-check.png#lightbox)
+         [![IoT Edge service check](media\iot-hub-connect-an-iot-edge-device\iot-edge-service-check.png)](media\iot-hub-connect-an-iot-edge-device\iot-edge-service-check.png#lightbox)
 
          > [!NOTE]
          > The `$edgeHub` system module is optional, and isn't deployed to the device until you deploy your first IoT Edge module. As such, `iotedge check` may return an error indicating that `$edgeHub` cannot bind to ports during a host connectivity check. This error can be ignored if `$edgeHub` is not required in your deployment.           
