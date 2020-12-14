@@ -1,7 +1,7 @@
 ---
-title: Rotate container registry secrets in Azure Stack Hub | Microsoft Docs
+title: Rotate container registry secrets in Azure Stack Hub - MDC
 titleSuffix: Azure Stack Hub
-description: Learn how to rotate container registry secrets in Azure Stack Hub.
+description: Learn how to rotate container registry secrets in Azure Stack Hub for a modular data center.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -20,7 +20,7 @@ ms.lastreviewed: 10/26/2020
 
 ---
 
-# Rotate container registry secrets in Azure Stack Hub
+# Rotate container registry secrets in Azure Stack Hub (MDC)
 
 Your Azure Stack Hub users can rotate the secrets (certificates, username, and password) for a container registry template deployment. You can run a script to populate new secret values in Microsoft Azure Key Vault and **redeploy** the existing Container registry template instance. Rotating secrets by themselves doesn't require a new deployment.
 

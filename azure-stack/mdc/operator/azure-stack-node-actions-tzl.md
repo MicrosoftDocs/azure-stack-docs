@@ -1,6 +1,6 @@
 ---
 title: Scale unit node actions in Azure Stack Hub for an MDC
-description: Learn about scale unit node actions, including power on, power off, disable, resume, and how to view node status in Azure Stack Hub integrated systems.
+description: Learn how to scale unit node actions, including power on, power off, disable, resume, and view node status in Azure Stack Hub integrated systems.
 author: IngridAtMicrosoft
 
 ms.topic: article

@@ -1,6 +1,6 @@
 ---
 title: Register Azure Stack Hub with Azure (MDC)
-description: Learn how to register Azure Stack Hub with Azure so you can download Azure Marketplace items and set up data reporting. 
+description: Learn how to register Azure Stack Hub with Azure so you can download Azure Marketplace items and set up data reporting for an MDC. 
 author: sethmanheim
 ms.topic: article
 ms.date: 12/07/2020

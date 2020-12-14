@@ -1,7 +1,7 @@
 ---
 title: Azure Stack Hub administration basics - MDC
 titleSuffix: Azure Stack Hub
-description: Learn the basics to Azure Stack Hub administration.
+description: Learn about the basics of Azure Stack Hub administration. See additional support information and view next steps.
 author: justinha
 ms.topic: article
 ms.date: 10/26/2020
