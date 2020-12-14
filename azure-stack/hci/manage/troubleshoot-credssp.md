@@ -3,7 +3,7 @@ title: Troubleshoot CredSSP
 description: Learn how to troubleshoot CredSSP
 author: v-dasis
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 12/14/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version v20H2
 
-Some Azure Stack HCI operations use Windows Remote Management (WinRM), which doesn't allow credential delegation by default. To allow delegation, the computer needs to have Credential Security Support Provider (CredSSP) enabled temporarily. CredSSP is a security support provider that allows a client to delegate credentials to a target server for remote authentication.
+Some Azure Stack HCI operations use Windows Remote Management (WinRM), which doesn't allow credential delegation by default. To allow delegation, the computer needs to have Credential Security Support Provider (CredSSP) enabled temporarily. CredSSP is a security support provider that allows a client to delegate credentials to a server for remote authentication.
 
 Enabling CredSSP is a degraded security posture, and in most circumstances should be disabled after the task or operation is completed.
 
@@ -49,30 +49,28 @@ If you receive the following WinRM error message, try using the manual verificat
 
 The manual verification steps in this section require you to configure the following computers:
 - The computer running Windows Admin Center
-- The primary target server where you received the error message
+- The server where you received the error message
 
 To resolve the error, try the following remedy steps as needed:
 
 **Remedy 1:**
-1. Restart the computer running Windows Admin Center and the primary target server.
+1. Restart the computer running Windows Admin Center and the server.
 1. Try running the Create Cluster wizard again.
 
     For details on running the wizard, see [Create an Azure Stack HCI cluster using Windows Admin Center](../deploy/create-cluster.md).
 
 **Remedy 2:**
-1. Use the Remote Desktop Protocol (RDP) feature to connect to the computer running Windows Admin Center.
-
-1. Open Windows PowerShell as an administrator and run the following commands:
+1. On the computer running Windows Admin Center, open Windows PowerShell as an administrator and run the following commands:
 
     ```powershell
     Disable-WsmanCredSSP -Role Client  
     ```
 
     ```powershell  
-    Enable-WsmanCredSSP -Role Client -DelagateComputer <Target Server FQDN Name>
+    Enable-WsmanCredSSP -Role Client -DelagateComputer <Server FQDN Name>
     ```
 
-1. Use the RDP feature to connect to the target server, and then run the following PowerShell commands:
+1. Use the RDP feature to connect to the server, and then run the following PowerShell commands:
 
     ```powershell  
     Disable-WsmanCredSSP -Role Server  
@@ -87,9 +85,7 @@ To resolve the error, try the following remedy steps as needed:
     For details on running the wizard, see [Create an Azure Stack HCI cluster using Windows Admin Center](../deploy/create-cluster.md).
 
 **Remedy 3:**
-1. Use the RDP feature to connect to the computer running Windows Admin Center.
-
-1. Run the following PowerShell command to check the Service Principal Name (SPN):
+1. On the computer running Windows Admin Center, run the following PowerShell command to check the Service Principal Name (SPN):
 
     ```powershell
     setspn -Q WSMAN/<Windows Admin Center Computer Name>  
@@ -111,26 +107,26 @@ To resolve the error, try the following remedy steps as needed:
     setspn -S WSMAN/<Windows Admin Center Computer Name> <Windows Admin Center Computer FQDN Name>  
     ```
 
-1. Use the RDP feature to connect to the target server, and then run the following PowerShell command to check the SPN:
+1. Use the RDP feature to connect to the server, and then run the following PowerShell command to check the SPN:
 
     ```powershell
-    setspn -Q WSMAN/<Target Server Name>  
+    setspn -Q WSMAN/<Server Name>  
     ```
 
     The result should list the following output:
 
-    `WSMAN/<Target Server Name>`
+    `WSMAN/<Server Name>`
 
-    `WSMAN/<Target Server FQDN Name>`
+    `WSMAN/<Server FQDN Name>`
 
 1. If the results are not listed, run the following PowerShell commands to register the SPN:
 
     ```powershell
-    setspn -S WSMAN/<Target Server Name> <Target Server Name>  
+    setspn -S WSMAN/<Server Name> <Server Name>  
     ```
 
     ```powershell
-    setspn -S WSMAN/<Target Server Name> <Target Server FQDN Name>  
+    setspn -S WSMAN/<Server Name> <Server FQDN Name>  
     ```
 
 1. Try running the Create Cluster wizard again.
