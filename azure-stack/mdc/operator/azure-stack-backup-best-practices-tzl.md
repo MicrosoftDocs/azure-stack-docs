@@ -19,7 +19,7 @@ ms.lastreviewed: 10/26/2020
 
 ---
 
-# Infrastructure Backup Service best practices
+# Infrastructure Backup Service best practices (MDC)
 
 *Applies to: Modular Data Center, Azure Stack Hub ruggedized*
 

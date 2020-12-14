@@ -1,5 +1,5 @@
 ---
-title: Register Azure Stack Hub with Azure
+title: Register Azure Stack Hub with Azure (MDC)
 description: Learn how to register Azure Stack Hub with Azure so you can download Azure Marketplace items and set up data reporting. 
 author: sethmanheim
 ms.topic: article
@@ -10,7 +10,7 @@ ms.lastreviewed: 10/26/2020
 
 ---
 
-# Register Azure Stack Hub with Azure
+# Register Azure Stack Hub with Azure (MDC)
 
 To set up Marketplace syndication and use PaaS services, you must register and activate your Modular Data Center (MDC) or Azure Stack Hub ruggedized, based on Azure Stack Hub, after deployment completes. With Marketplace syndication, an administrator populates the local Azure Stack Hub Marketplace with images downloaded from the Azure Marketplace.
 

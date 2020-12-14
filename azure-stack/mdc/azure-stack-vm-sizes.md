@@ -1,6 +1,6 @@
 ---
-title: VM sizes supported in Azure Stack | Microsoft Docs
-description: Reference for the supported VM sizes in a MDC.
+title: VM sizes supported in Azure Stack for an MDC | Microsoft Docs
+description: Reference for the supported VM sizes in an MDC.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -18,7 +18,7 @@ ms.lastreviewed: 12/20/2019
 
 ---
 
-# VM sizes supported in Azure Stack
+# VM sizes supported in Azure Stack (MDC)
 
 This article lists the virtual machine (VM) sizes that are available in Azure Stack. You can use this article to help you make your selection of a VM to support your Azure Stack solution.
 

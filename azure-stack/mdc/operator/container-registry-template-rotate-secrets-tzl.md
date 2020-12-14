@@ -254,11 +254,11 @@ Follow the instructions below to set new secrets in Key Vault.
 
 3. Select the deployments under **Deployments**.
 
-    ![Deployments](./media/container-registry-template-rotating-secrets-tzl/deployments.png)
+    ![Screenshot that shows 'Deployments' page.](./media/container-registry-template-rotating-secrets-tzl/deployments.png)
 
 4.  If rotating secrets for the first time, select the original deployment. If this isn't the first time rotating secrets, select the most recent deployment and then select **Redeploy**.
 
-    ![Redeploy](./media/container-registry-template-rotating-secrets-tzl/redeploy.png)
+    ![Screenshot that shows the 'Overview' page with the 'Redeploy' action selected.](./media/container-registry-template-rotating-secrets-tzl/redeploy.png)
 
 5.  In **Deploy Solution Template**, select **Use Existing Resource Group** and select the resource group that was used to originally deploy the container registry template. In order for a redeployment to be successful, it must use the same resource group.
 
@@ -270,7 +270,7 @@ Follow the instructions below to set new secrets in Key Vault.
 
     - If you're rotating the certificate, you'll need to input the new values for the PFXKeyVaultSecretURL and PFXThumbprint that were output from setting the new secrets.
 
-    ![Parameters](./media/container-registry-template-rotating-secrets-tzl/parameters.png)
+    ![Screenshot that shows the 'Parameters' window.](./media/container-registry-template-rotating-secrets-tzl/parameters.png)
 
 7.  Select **OK** and then **Create**. The redeployment will proceed. Registry functionality will continue to function during redeployment.
 

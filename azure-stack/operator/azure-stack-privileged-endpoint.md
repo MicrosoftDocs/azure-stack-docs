@@ -234,18 +234,18 @@ An elevated PEP session has a validity of 8 hours, after which, if not terminate
 
  The PEP support session request token is composed of three objects:
 
-      - A randomly generated Session ID.
-      - A self-signed certificate, generated for the purpose of having a one-time public/private key pair. The certificate does not contain any information on the environment. 
-      - A time stamp that indicates the request token expiration.
-      
-  The request token is then encrypted with the public key of the Azure cloud against which the Azure Stack Hub environment is registered to.
+- A randomly generated Session ID.
+- A self-signed certificate, generated for the purpose of having a one-time public/private key pair. The certificate does not contain any information on the environment.
+- A time stamp that indicates the request token expiration.
+
+The request token is then encrypted with the public key of the Azure cloud against which the Azure Stack Hub environment is registered to.
  
  ### Support session authorization response token
 
 The PEP support authorization response token is composed of two objects:
 
-      - The randomly generated session ID extracted from the request token.
-      - A time stamp that indicates the response token expiration.
+- The randomly generated session ID extracted from the request token.
+- A time stamp that indicates the response token expiration.
       
  The response token is then encrypted with the self-signed certificate contained in the request token. The self-signed certificate was decrypted with the private key associated with the Azure cloud against which the Azure Stack Hub environment is registered to.
 

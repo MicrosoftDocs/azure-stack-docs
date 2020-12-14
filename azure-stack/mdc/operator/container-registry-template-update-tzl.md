@@ -36,7 +36,7 @@ Azure Stack Hub users can update their container registry deployment to a more r
 
 1.  Check the SKU of the AKS Base Image that was used to deploy the container registry template by browsing to the deployment record in the resource group and select **Inputs**.
 
-    ![Inputs](./media/container-registry-template-updating-tzl/inputs.png)
+    ![Screenshot that shows the 'Inputs' page.](./media/container-registry-template-updating-tzl/inputs.png)
 
 2.  Determine if there are newer SKUs of the AKS Base Image available using the **Get-VMImageSku** function, requires `Import-Module .\pre-reqs.ps1` from the container registry template scripts.
 

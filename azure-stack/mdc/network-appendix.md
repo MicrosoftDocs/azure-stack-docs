@@ -48,22 +48,22 @@ The appendix provides device parameter and identity information for MDC hardware
 
 ### Juniper MX204
 
-|  |  |  |
+|  | Property | Value |
 |--|--|--|
-| Layout | System capacity | 3 Tbps |
+| **Layout** | System capacity | 3 Tbps |
 |        | Slot orientation | NA |
 |        | Mounting | Front or center |
-| Physical Specification | Dimensions (W x H x D) | 17.45" x 8.71" x 24.5" (44.3 x 22.1 x 62.2 cm) |
+| **Physical Specification** | Dimensions (W x H x D) | 17.45" x 8.71" x 24.5" (44.3 x 22.1 x 62.2 cm) |
 |                        | Weight fully loaded | 130 lb/59 kg |
 |                        | Weight unloaded | 52 lbs/23.6 kg |
-| Routing Engine | Default memory | 2x16 MB NOR flash storage; 64 GB of DDR4 RAM; 2x50 GB SSD |
+| **Routing Engine** | Default memory | 2x16 MB NOR flash storage; 64 GB of DDR4 RAM; 2x50 GB SSD |
 |                | Number of cores | 6 cores |
-| Redundancy | Components | Power supplies, REs, fans |
-| Environmental | Air flow | Side to side |
+| **Redundancy** | Components | Power supplies, REs, fans |
+| **Environmental** | Air flow | Side to side |
 |               | Operating temperature | 32° to 115° F (0° to 46° C) at sea level |
 |               | Operating humidity | 5% to 90% |
 |               | Operating altitude | 10,000 ft (3048 m) |
-| Certifications | NEBS | • GR-1089-Core EMC and Electrical Safety |
+| **Certifications** | NEBS | • GR-1089-Core EMC and Electrical Safety |
 |                | | • Common Bonding Network (CBN) |
 |                | | • National Electrical Code (NEC) |
 |                | | • GR-63-Core Physical Protection |

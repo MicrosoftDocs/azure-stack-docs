@@ -18,7 +18,7 @@ ms.reviewer: avishwan
 ms.lastreviewed: 10/26/2020
 ---
 
-# Download Marketplace items to Azure Stack Hub 
+# Download Marketplace items to Azure Stack Hub (MDC) 
 
 As a cloud operator, you can download items to Azure Stack Hub from the Marketplace and make them available to all users using the Azure Stack Hub environment. The items you can choose are from a curated list of Azure Marketplace items that are pre-tested and supported to work with Azure Stack. Additional items are frequently added to this list, so continue to check back for new content.
 
@@ -56,11 +56,11 @@ Your Azure Stack Hub deployment must have internet connectivity and be [registe
 
 4. Each line item also shows the currently available version. If more than one version of a Marketplace item is available, the **Version** column shows **Multiple**. You can click on each item to view its description and additional information, including its download size:
 
-   ![Add from Azure](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure-1.png)
+   ![Screenshot that shows the 'Add from Azure' page.](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure-1.png)
 
 5. If the version of an item is shown as **Multiple**, you can select that item and then choose a specific version from the resulting version selector dropdown:
 
-   ![Add from Azure](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure-3.png)
+   ![Screnshot that shows the 'Administration' page with the version selector dropdown highlighted.](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure-3.png)
 
 6. Select the item you want, and then select **Download**. Download times vary and depends on the network connectivity. After the download completes, you can deploy the new marketplace item as either an Azure Stack operator or a user.
 
