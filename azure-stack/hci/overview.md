@@ -6,14 +6,16 @@ author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/7/2020
+ms.date: 12/11/2020
 ---
 
 # Azure Stack HCI solution overview
 
-Azure Stack HCI is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid on-premises environment. Azure hybrid services enhance the cluster with capabilities such as cloud-based monitoring, Site Recovery, and VM backups, as well as a central view of all of your Azure Stack HCI deployments in the Azure portal. You can manage the cluster with your existing tools including Windows Admin Center, System Center, and PowerShell.
+> Applies to: Azure Stack HCI, version 20H2
 
-Azure Stack HCI, version 20H2 is a new operating system now in Public Preview and [available for download](https://azure.microsoft.com/products/azure-stack/hci/hci-download/). It's intended for on-premises clusters running virtualized workloads, with hybrid-cloud connections built-in. As such, Azure Stack HCI is delivered as an Azure service and billed on an Azure subscription. Azure Stack HCI also now includes the ability to host the Azure Kubernetes Service; for details, see [Azure Kubernetes Service on Azure Stack HCI](../aks-hci/overview.md).
+Azure Stack HCI is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid, on-premises environment. Azure hybrid services enhance the cluster with capabilities such as cloud-based monitoring, Site Recovery, and VM backups, as well as a central view of all of your Azure Stack HCI deployments in the Azure portal. You can manage the cluster with your existing tools including Windows Admin Center, System Center, and PowerShell.
+
+Azure Stack HCI, version 20H2 is now [available for download](https://azure.microsoft.com/products/azure-stack/hci/hci-download/). It's intended for on-premises clusters running virtualized workloads, with hybrid-cloud connections built-in. As such, Azure Stack HCI is delivered as an Azure service and billed on an Azure subscription. Azure Stack HCI also now includes the ability to host the Azure Kubernetes Service; for details, see [Azure Kubernetes Service on Azure Stack HCI](../aks-hci/overview.md).
 
 Take a few minutes to watch the video on the high-level features of Azure Stack HCI:
 
@@ -57,7 +59,7 @@ Azure Stack HCI is uniquely positioned for hybrid infrastructure, allowing you t
 After you register your Azure Stack HCI cluster with Azure, you can use the Azure portal initially for:
 
 - **Monitoring:** View all of your Azure Stack HCI clusters in a single, global view where you can group them by resource group and tag them.
-- **Billing:** Pay for Azure Stack HCI through your Azure subscription (note that there's no cost during the Public Preview).
+- **Billing:** Pay for Azure Stack HCI through your Azure subscription.
 
 We're working hard on creating additional capabilities, so stay tuned for more.
 
@@ -89,9 +91,9 @@ Azure Stack HCI is a world-class, integrated virtualization stack built on prove
 
 To get started, here's what you need:
 
-- A cluster of two or more servers from the [Azure Stack HCI Catalog](https://aka.ms/azurestackhcicatalog), purchased from your preferred Microsoft hardware partner
+- A cluster of two or more servers from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net), purchased from your preferred Microsoft hardware partner
 - An [Azure subscription](https://azure.microsoft.com/)
-- An internet connection for each server in the cluster that can connect via HTTPS outbound traffic to the following endpoint at least every 30 days: *-azurestackhci-usage.azurewebsites.net
+- An internet connection for each server in the cluster that can connect via HTTPS outbound traffic to well-known Azure endpoints at least every 30 days
 - For clusters stretched across sites, you need at least one 1 Gb connection between sites (a 25 Gb RDMA connection is preferred), with an average latency of 5 ms round trip if you want to do synchronous replication where writes occur simultaneously in both sites
 - If you plan to use Software Defined Networking (SDN), you'll need a virtual hard disk (VHD) for the Azure Stack HCI operating system to create Network Controller VMs (see [Plan to deploy Network Controller](concepts/network-controller.md))
 
@@ -101,34 +103,17 @@ For more information, see [System requirements](concepts/system-requirements.md)
 
 You can purchase validated Azure Stack HCI solutions from your preferred Microsoft partner to get up and running without lengthy design and build time. Microsoft partners also offer a single point of contact for implementation and support services. You can either purchase validated nodes or an integrated system, which includes the Azure Stack HCI operating system pre-installed as well as partner extensions for driver and firmware updates.
 
-Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) page or browse the [Azure Stack HCI Catalog](https://aka.ms/azurestackhcicatalog) to view 70+ Azure Stack HCI solutions currently available from Microsoft partners such as ASUS, Axellio, Blue Chip, DataON, Dell EMC, Fujitsu, HPE, Hitachi, Huawei, Lenovo, NEC, primeLine Solutions, QCT, SecureGUARD, and Supermicro.
+Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) page or browse the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net) to view 70+ Azure Stack HCI solutions currently available from Microsoft partners such as ASUS, Axellio, Blue Chip, DataON, Dell EMC, Fujitsu, HPE, Hitachi, Huawei, Lenovo, NEC, primeLine Solutions, QCT, SecureGUARD, and Supermicro.
 
 ## Software partners
 
-There are a variety of Microsoft partners working on software that extends the capabilities of Azure Stack HCI while allowing IT admins to use familiar tools. For example, Altaro, a worldwide provider of backup solutions and Microsoft Gold Partner, has committed to supporting Azure Stack HCI in its Altaro VM Backup solution. This will allow customers and managed service providers to back up virtual machines running on Azure Stack HCI for free until end of June 2021. [Learn more about this announcement](http://www.altaro.com/news/single/News-Altaro-applies-its-expertise-in-Hyper-V-backup-to-support-Microsoft.php).
+There is a variety of Microsoft partners working on software that extends the capabilities of Azure Stack HCI while allowing IT admins to use familiar tools. To learn more, see [Utility applications for Azure Stack HCI](concepts/utility-applications.md).
 
 ## Licensing, billing, and pricing
 
 Azure Stack HCI billing is based on a monthly subscription fee per physical processor core, not a perpetual license. When customers connect to Azure, the number of cores used is automatically uploaded and assessed for billing purposes. Cost doesn’t vary with consumption beyond the physical processor cores, meaning that more VMs don’t cost more, and customers who are able to run denser virtual environments are rewarded.
 
-Customers can either purchase validated servers from a hardware partner with the Azure Stack HCI operating system pre-installed, or they can buy validated bare metal servers from an OEM and then subscribe to the Azure Stack HCI service and download the Azure Stack HCI operating system from the [Azure portal](https://azure.microsoft.com/products/azure-stack/hci/).
-
-## Management tools
-
-With Azure Stack HCI, you have full admin rights on the cluster and can manage any of its technologies directly:
-
-- [Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-on-windows-server)
-- [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Software Defined Networking](/windows-server/networking/sdn/)
-- [Failover Clustering](/windows-server/failover-clustering/failover-clustering-overview)
-
-To manage these technologies, you can use the following management tools:
-
-- [Windows Admin Center](/windows-server/manage/windows-admin-center/overview)
-- [System Center](https://www.microsoft.com/cloud-platform/system-center)
-- [PowerShell](/powershell/)
-- Other management tools, like [Server Manager](/windows-server/administration/server-manager/server-manager), and MMC snap-ins
-- Non-Microsoft tools like 5Nine Manager
+Customers can either purchase validated servers from a hardware partner with the Azure Stack HCI operating system pre-installed, or they can buy validated bare metal servers from an OEM and then subscribe to the Azure Stack HCI service and [download the Azure Stack HCI operating system](https://azure.microsoft.com/products/azure-stack/hci/).
 
 ## The Azure Stack family
 
@@ -141,76 +126,27 @@ Azure Stack HCI is part of the Azure and Azure Stack family, using the same soft
 
 :::image type="content" source="media/overview/azure-family-updated.png" alt-text="Azure Stack family solution diagram" border="false":::
 
-## Compare Windows Server and Azure Stack HCI
-
-Many customers will wonder whether Windows Server or Azure Stack HCI is a better fit for their needs. The following table helps you determine which is right for your organization. Both Windows Server and Azure Stack HCI provide the same high-quality user experience with a road map of new releases.
-
-| Windows Server | Azure Stack HCI |
-| --------------- | --------------- |
-| Best guest and traditional server | Best virtualization host for a software-defined data center, including Storage Spaces Direct |
-| Runs anywhere, using a traditional software licensing model | Runs on hardware from your preferred vendor, but is delivered as an Azure service and billed to your Azure account |
-| Two installation options: Server with desktop experience or Server Core | Based on a lightly customized Server Core |
-
-### When to use Windows Server
-
-| Windows Server | Azure Stack HCI |
-| --------------- | --------------- |
-| Windows Server is a highly versatile, multi-purpose operating system, with dozens of roles and hundreds of features, including guest rights. | Azure Stack HCI doesn't include guest rights and is intended to be used for a modern, hyperconverged architecture. |
-| Use Windows Server to run VMs or for bare metal installations encompassing all traditional server roles, including Active Directory, file services, DNS, DHCP, Internet Information Services (IIS), container host/guest, SQL Server, Exchange Server, Host Guardian Service (HGS), and many more. | Intended as a Hyper-V virtualization host, Azure Stack HCI is only licensed to run a small number of server roles directly; any other roles must run inside of VMs. |
-
-### When to use Azure Stack HCI
-
-| Windows Server | Azure Stack HCI |
-| --------------- | --------------- |
-| Windows Server can run on-premises or in the cloud, but isn't itself a complete hyperconverged offering.| Use Azure Stack HCI to run VMs on-premises, optionally stretched across two sites and with connections to Azure hybrid services. It's an easy way to modernize and secure your data centers and branch offices, achieve industry-best performance for SQL Server databases, and run virtual desktops on-premises for low latency and data sovereignty|
-| Windows Server is a great multi-purpose "Swiss Army knife" for all Windows Server roles, virtualized or not. | Use Azure Stack HCI to virtualize classic enterprise apps like Exchange, SharePoint, and SQL Server, and to virtualize Windows Server roles like File Server, DNS, DHCP, IIS, and AD. Includes unrestricted access to all Hyper-V features like Shielded VMs.|
-| Many Windows Server deployments run on aging hardware. | Use Azure Stack HCI to use software-defined infrastructure in place of aging storage arrays or network appliances, without major rearchitecture. Built-in Hyper-V, Storage Spaces Direct, and Software-Defined Networking (SDN) are directly accessible and manageable. Run apps inside Windows or Linux VMs.|
-
-## Compare Azure Stack Hub and Azure Stack HCI
-
-As your organization digitally transforms, you may find you can move faster by using public cloud services to build on modern architectures and refresh legacy apps. However, for reasons that include technological and regulatory obstacles, many workloads must remain on-premises. Use this table to help determine which Microsoft hybrid cloud strategy provides what you need where you need it, delivering cloud innovation for workloads wherever they are.
-
-| Azure Stack Hub | Azure Stack HCI |
-| --------------- | --------------- |
-| New skills, innovative processes | Same skills, familiar processes |
-| Azure services in your datacenter | Connect your datacenter to Azure services |
-
-### When to use Azure Stack Hub
-
-| Azure Stack Hub | Azure Stack HCI |
-| --------------- | --------------- |
-| Use Azure Stack Hub for self-service Infrastructure-as-a-Service (IaaS), with strong isolation and precise usage tracking and chargeback for multiple colocated tenants. Ideal for service providers and enterprise private clouds. Templates from the Azure Marketplace. | Azure Stack HCI doesn't natively enforce or provide for multi-tenancy. |
-| Use Azure Stack Hub to develop and run apps that rely on Platform-as-a-Service (PaaS) services like Web Apps, Functions, or Event Hubs on-premises. These services run on Azure Stack Hub exactly like they do in Azure, providing a consistent hybrid development and runtime environment. | Azure Stack HCI doesn't run PaaS services on-premises. |
-| Use Azure Stack Hub to modernize app deployment and operation with DevOps practices like infrastructure as code, continuous integration and continuous deployment (CI/CD), and convenient features like Azure-consistent VM extensions. Ideal for Dev and DevOps teams. | Azure Stack HCI doesn't natively include any DevOps tooling. |
-
-### When to use Azure Stack HCI
-
-| Azure Stack Hub | Azure Stack HCI |
-| --------------- | --------------- |
-| Azure Stack Hub requires minimum 4 nodes and its own network switches. | Use Azure Stack HCI for the minimum footprint for remote offices and branches. Start with just 2 server nodes and switchless back-to-back networking for peak simplicity and affordability. Hardware offers start at 4 drives, 64 GB of memory, well under $10k/node. |
-| Azure Stack Hub constrains Hyper V configurability and feature set for consistency with Azure. | Use Azure Stack HCI for no-frills Hyper-V virtualization for classic enterprise apps like Exchange, SharePoint, and SQL Server, and to virtualize Windows Server roles like File Server, DNS, DHCP, IIS, and AD. Unrestricted access to all Hyper-V features like Shielded VMs.|
-| Azure Stack Hub doesn't expose these infrastructural technologies. | Use Azure Stack HCI to use software-defined infrastructure in place of aging storage arrays or network appliances, without major rearchitecture. Built-in Hyper-V, Storage Spaces Direct, and Software-Defined Networking (SDN) are directly accessible and manageable. |
-
 ## What's new in Azure Stack HCI
 
 Windows Admin Center version 2009 adds a number of features to Azure Stack HCI, including the following:
 
 - **Azure Kubernetes Service hosting capabilities**: You can now install a preview version of [Azure Kubernetes Service on Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
 - **Inclusion of Software Defined Networking in the Cluster Creation wizard**: The Cluster Creation wizard now includes the option to deploy the [Software Defined Networking (SDN)](concepts/software-defined-networking.md) Network Controller feature during [cluster creation](deploy/create-cluster.md#step-5-sdn-optional).
+- **Remote direct memory access (RDMA) enhancements in the Cluster Creation wizard**: The Cluster Creation wizard can now configure RDMA for iWARP and RoCE network adapters, including Data Center Bridging (DCB).
 
-For details on new features in Windows Admin Center, see the [Windows Admin Center blog](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/bg-p/Windows-Admin-Center-Blog).
+For details on new features, see [Announcing general availability of the cluster creation extension in Windows Admin Center](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/announcing-general-availability-of-the-cluster-creation/ba-p/1978332).
 
 Clusters running Azure Stack HCI, version 20H2 have the following new features as compared to Windows Server 2019-based solutions:
 
 - **New capabilities in Windows Admin Center**: With the ability to create and update hyperconverged clusters via an intuitive UI, Azure Stack HCI is easier than ever to use.
-- **Stretched clusters for automatic failover**: Multi-site clustering with Storage Replica replication and automatic VM failover provides native disaster recovery and business continuity to clusters that use Storage Spaces Direct.
+- **Stretched clusters for automatic failover**: Multi-site clustering with Storage Replica replication and automatic VM failover provides native disaster recovery and business continuity.
 - **Affinity and anti-affinity rules**: These can be used similarly to how Azure uses Availability Zones to keep VMs and storage together or apart in clusters with multiple fault domains, such as stretched clusters.
 - **Azure portal integration**: The Azure portal experience for Azure Stack HCI is designed to view all of your Azure Stack HCI clusters across the globe, with new features in development.
 - **GPU acceleration for high-performance workloads**: AI/ML applications can benefit from boosting performance with GPUs.
 - **BitLocker encryption**: You can now use BitLocker to encrypt the contents of data volumes on Azure Stack HCI, helping government and other customers stay compliant with standards such as FIPS 140-2 and HIPAA.
 - **Improved Storage Spaces Direct volume repair speed**: Repair volumes quickly and seamlessly.
 
-Windows Admin Center, version 20H2 also provides new cluster updating UI to Windows Server-based clusters, including the original Azure Stack HCI solutions. And while you can use the new cluster creation wizard with Windows Server, it can't create Windows Server clusters with Storage Spaces Direct; you need the Azure Stack HCI operating system for that.
+Windows Admin Center, version 20H2 also provides new cluster updating UI to Windows Server-based clusters, including the original Azure Stack HCI solutions. And while you can use the new Cluster Creation wizard with Windows Server, it can't create Windows Server clusters with Storage Spaces Direct; you need the Azure Stack HCI operating system for that.
 
 ## Roles you can run without virtualizing
 
@@ -219,7 +155,7 @@ Because Azure Stack HCI is intended as a virtualization host where you run all o
 This means that you can run the following server roles:
 
 - Hyper-V
-- Network controller and other components required for Software Defined Networking (SDN)
+- Network Controller and other components required for Software Defined Networking (SDN)
 
 But any other roles and apps must run inside of VMs. Note that you can run utilities, apps, and services necessary for the management and health of hosted VMs.
 
@@ -247,4 +183,5 @@ Here's a video from a Hybrid Cloud Virtual Event:
 ## Next steps
 
 - [Download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/)
+- [Create an Azure Stack HCI cluster and register it with Azure](deploy/deployment-quickstart.md)
 - [Use Azure Stack HCI with Windows Admin Center](get-started.md)
