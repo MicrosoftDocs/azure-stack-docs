@@ -69,6 +69,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 <!-- What's new, also net new experiences and features. -->
 
 - The Azure Stack Hub Infrastructure Backup service now supports progressive backup. This feature helps reduce storage requirements on the external backup location, and changes the way files are organized on the external backup store. It is recommended that you not manipulate files under the backup root directory.
+- Azure Stack Hub managed disks now support Azure Disk APIs version 2019-11-01, with a subset of the available features.
 
 ### Improvements
 - Increased Network Controller log retention period, so the logs will be available for longer to aid engineers in effective troubleshooting even after an issue has been mitigated. 
