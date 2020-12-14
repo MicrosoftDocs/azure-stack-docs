@@ -215,7 +215,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2008 release of Azure Stack Hub must be applied on the 2005 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2005.24.90](https://support.microsoft.com/help/4595070)
+- [Azure Stack Hub hotfix 1.2005.25.92](https://support.microsoft.com/help/4595074)
 
 ### After successfully applying the 2008 update
 
@@ -323,7 +323,7 @@ Starting with the 2005 release, when you update to a new major version (for exam
 
 After the installation of 2005, if any 2005 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2005.24.90](https://support.microsoft.com/help/4595070)
+- [Azure Stack Hub hotfix 1.2005.25.92](https://support.microsoft.com/help/4595074)
 ::: moniker-end
 
 <!------------------------------------------------------------>
