@@ -208,7 +208,7 @@
         "**/*.md": "Azure Stack Hub",
         "asdk/**/*.md": "Azure Stack Development Kit (ASDK)",
         "hci/**/*.md": "Azure Stack HCI",
-        "aks-hci/**/*.md": "Azure Kubernetes Services on Azure Stack HCI (AKS-HCI)",
+        "aks-hci/**/*.md": "AKS-HCI",
         "hybrid/**/*.md": "Azure Stack"
       },
       "ms.subservice": {
