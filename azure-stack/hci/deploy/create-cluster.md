@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: v-dasis
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 12/11/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -47,7 +47,14 @@ Here are the major steps in the Create Cluster wizard:
 
 After the wizard completes, you set up the cluster witness, register with Azure, and create volumes (which also sets up replication between sites if you're creating a stretched cluster).
 
-OK, let's begin:
+Before you start the wizard, make sure you have the latest Windows Admin Center extensions installed, particularly the Cluster Creation extension. To do so:
+
+1. Open Windows Admin Center and click Settings (gear icon) at the upper right.
+1. Under **Settings**, select **Extensions**.
+1. Select **Cluster Creation** and then click **Install**.
+1. Select **Cluster Manager** and click **Install** also while you are at it.
+
+Now you are ready, so let's begin:
 
 1. In Windows Admin Center, under **All connections**, click **Add**.
 1. In the **Add or create resources** panel, under **Server clusters**, select **Create new**.
