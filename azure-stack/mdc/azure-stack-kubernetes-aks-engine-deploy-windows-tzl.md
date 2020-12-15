@@ -15,7 +15,7 @@ ms.lastreviewed: 10/26/2020
 ---
 
 
-# Install the AKS engine on Windows in Azure Stack Hub (MDC)
+# Install the AKS engine on Windows in Azure Stack Hub - Modular Data Center (MDC)
 
 You can use a Windows machine in your Azure Stack Hub to host the AKS engine in order to deploy and manage a Kubernetes cluster. In this article, you prepare the client VM to manage your cluster for connected and disconnected Azure Stack Hub instances, and verify the installation.
 <!-- TZLASDKFIX2 Line above was previously:

@@ -20,7 +20,7 @@ ms.lastreviewed: 12/17/2019
 
 ---
 
-# Update the container registry in Azure Stack Hub (MDC)
+# Update the container registry in Azure Stack Hub - Modular Data Center (MDC)
 
 Azure Stack Hub users can update their container registry deployment to a more recent AKS Base Image SKU using the instructions below. The container registry template VM and service are stateless as all the state and container images are stored in blob storage. An update is as simple as deploying the Container registry template with a more recent version of the AKS Base Image VHD and repointing DNS to the new VM. The action of updating the DNS value for the old and new Container registry template VMs will result in small window of intermittent registry connectivity while the values propagate.
 

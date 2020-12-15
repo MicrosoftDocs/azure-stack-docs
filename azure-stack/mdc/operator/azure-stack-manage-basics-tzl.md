@@ -14,7 +14,7 @@ ms.lastreviewed: 10/26/2020
 
 ---
 
-# Azure Stack Hub administration basics (MDC)
+# Azure Stack Hub administration basics - Modular Data Center (MDC)
 
 If you're new to Azure Stack Hub administration, there are several things you need to know. This article provides an overview of your role as an Azure Stack Hub operator and what you need to tell your users to help them become productive.
 

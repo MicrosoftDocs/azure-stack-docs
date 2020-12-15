@@ -18,7 +18,7 @@ ms.reviewer: avishwan
 ms.lastreviewed: 10/26/2020
 ---
 
-# Download Marketplace items to Azure Stack Hub (MDC) 
+# Download Marketplace items to Azure Stack Hub - Modular Data Center (MDC) 
 
 As a cloud operator, you can download items to Azure Stack Hub from the Marketplace and make them available to all users using the Azure Stack Hub environment. The items you can choose are from a curated list of Azure Marketplace items that are pre-tested and supported to work with Azure Stack. Additional items are frequently added to this list, so continue to check back for new content.
 

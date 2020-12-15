@@ -18,7 +18,7 @@ ms.lastreviewed: 12/20/2019
 
 ---
 
-# VM sizes supported in Azure Stack (MDC)
+# VM sizes supported in Azure Stack - Modular Data Center (MDC)
 
 This article lists the virtual machine (VM) sizes that are available in Azure Stack. You can use this article to help you make your selection of a VM to support your Azure Stack solution.
 

@@ -18,7 +18,7 @@ ms.reviewer: hectorl
 ms.lastreviewed: 3/19/2018
 ---
 
-# Protect VMs deployed on Azure Stack Hub (MDC)
+# Protect VMs deployed on Azure Stack Hub - Modular Data Center (MDC)
 
 Use this article as a guide to develop a plan for protecting virtual machines (VMs) that your users deploy on Azure Stack Hub.
 

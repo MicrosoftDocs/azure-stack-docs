@@ -19,7 +19,7 @@ ms.reviewer: prchint
 ms.lastreviewed: 01/10/2020
 ---
 
-# Overview of Azure Stack Hub capacity planning (MDC)
+# Overview of Azure Stack Hub capacity planning - Modular Data Center (MDC)
 
 When you're evaluating an Azure Stack Hub solution, consider the hardware configuration choices that have a direct impact on the overall capacity of the Azure Stack Hub cloud. 
 

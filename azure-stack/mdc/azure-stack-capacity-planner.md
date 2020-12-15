@@ -19,7 +19,7 @@ ms.reviewer: prchint
 ms.lastreviewed: 05/31/2019
 ---
 
-# Azure Stack Hub Capacity Planner (MDC)
+# Azure Stack Hub Capacity Planner - Modular Data Center (MDC)
 
 The Azure Stack Hub Capacity Planner is a spreadsheet that shows how different allocations of computing resources would fit across a selection of hardware offerings. 
 
