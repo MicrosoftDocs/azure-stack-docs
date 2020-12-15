@@ -226,7 +226,7 @@ When you update to a new major version (for example, 1.2005.x to 1.2008.x), the 
 
 After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2008.19.100](https://support.microsoft.com/help/4595073)
+- [Azure Stack Hub hotfix 1.2008.20.102](https://support.microsoft.com/help/4595075)
 ::: moniker-end
 
 ::: moniker range="azs-2005"
