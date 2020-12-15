@@ -23,9 +23,9 @@ Quotas are required when creating a plan. You can use an existing quotas or crea
 
 ```powershell
 $serviceQuotas  = @()
-$serviceQuotas += New-AzsStorageQuota -Name "Example storage quota with defaults"
-$serviceQuotas += New-AzsComputeQuota -Name "Example compute quota with defaults"
-$serviceQuotas += New-AzsNetworkQuota -Name "Example network quota with defaults"
+$serviceQuotas += (New-AzsStorageQuota -Name "Example storage quota with defaults").Id
+$serviceQuotas += (New-AzsComputeQuota -Name "Example compute quota with defaults").Id
+$serviceQuotas += (New-AzsNetworkQuota -Name "Example network quota with defaults").Id
 ```
 
 To create or update a base or add-on plan, use [New-AzsPlan](/powershell/module/azs.subscriptions.admin/new-azsplan).
@@ -68,12 +68,10 @@ New-AzsUserSubscription -Owner "user@contoso.com" -DisplayName "User subscriptio
 
 There are companion PowerShell cmdlets to delete Azure Stack Hub quotas, plans, offers, and subscriptions. The following show examples for each.
 
-To remove quotas, use [Remove-AzsStorageQuota](/powershell/module/azs.storage.admin/remove-azsstoragequota), [Remove-AzsComputeQuota](/powershell/module/azs.compute.admin/remove-azscomputequota), [Remove-AzsNetworkQuota](/powershell/module/azs.network.admin/remove-azsnetworkquota) .
+Use [Remove-AzsUserSubscription](/powershell/module/azs.subscriptions.admin/remove-azsusersubscription) to remove a subscription from an offer.
 
 ```powershell
-Remove-AzsStorageQuota -Name "Example storage quota with defaults"
-Remove-AzsComputeQuota -Name "Example compute quota with defaults"
-Remove-AzsNetworkQuota -Name "Example network quota with defaults"
+Remove-AzsUserSubscription -TargetSubscriptionId "c90173b1-de7a-4b1d-8600-b8325ca1eab1e"
 ```
 
 To remove a plan from an offer, use [Remove-AzsPlanFromOffer](/powershell/module/azs.subscriptions.admin/remove-azsplanfromoffer).
@@ -89,16 +87,18 @@ Use [Remove-AzsPlan](/powershell/module/azs.subscriptions.admin/remove-azsplan) 
 Remove-AzsPlan -Name "testplan" -ResourceGroupName "testrg"
 ```
 
-Use [Remove-AzsUserSubscription](/powershell/module/azs.subscriptions.admin/remove-azsusersubscription) to remove a subscription from an offer.
-
-```powershell
-Remove-AzsUserSubscription -TargetSubscriptionId "c90173b1-de7a-4b1d-8600-b8325ca1eab1e"
-```
-
 Use [Remove-AzsOffer](/powershell/module/azs.subscriptions.admin/remove-azsoffer) to remove an offer.
 
 ```powershell
 Remove-AzsOffer -Name "testoffer" -ResourceGroupName "testrg"
+```
+
+To remove quotas, use [Remove-AzsStorageQuota](/powershell/module/azs.storage.admin/remove-azsstoragequota), [Remove-AzsComputeQuota](/powershell/module/azs.compute.admin/remove-azscomputequota), [Remove-AzsNetworkQuota](/powershell/module/azs.network.admin/remove-azsnetworkquota) .
+
+```powershell
+Remove-AzsStorageQuota -Name "Example storage quota with defaults"
+Remove-AzsComputeQuota -Name "Example compute quota with defaults"
+Remove-AzsNetworkQuota -Name "Example network quota with defaults"
 ```
 
 ## Next steps
