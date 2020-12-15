@@ -3,9 +3,9 @@ title: Use PowerShell to manage subscriptions, plans, and offers in Azure Stack 
 description: How to manage subscriptions, plans, and offers with PowerShell in Azure Stack Hub.
 author: PatAltimore
 ms.topic: how-to
-ms.date: 12/01/2020
+ms.date: 12/14/2020
 ms.author: patricka
-ms.lastreviewed: 12/01/2020
+ms.lastreviewed: 12/14/2020
 ms.reviewer: bganapa
 
 # Intent: As an Azure Stack Hub operator, I want to use PowerShell so I can manage offers.
@@ -15,7 +15,7 @@ ms.reviewer: bganapa
 
 # Use PowerShell to manage subscriptions, plans, and offers in Azure Stack Hub
 
-You can use PowerShell to configure and deliver services by using offers, plans, and subscriptions. using PowerShell. For instructions on getting set up with PowerShell on Azure Stack Hub, see [Install PowerShell module for Azure Stack Hub](azure-stack-powershell-install.md).
+You can use PowerShell to configure and deliver services by using offers, plans, and subscriptions. using PowerShell. For instructions on getting set up with PowerShell on Azure Stack Hub, see [Install PowerShell Az module for Azure Stack Hub](powershell-install-az-module.md).
 
 ## Create a plan
 
@@ -51,7 +51,7 @@ Add-AzsPlanToOffer -PlanName "addonplan" -PlanLinkType Addon -OfferName "testoff
 If you want to change the state of an offer, use the [Set-AzsOffer](/powershell/module/azs.subscriptions.admin/set-azsoffer) cmdlet.
 
 ```powershell
-$offer = Get-AzsAdminManagedOffer -Name $tenantOfferName -ResourceGroupName $subscriptionRGName
+$offer = Get-AzsAdminManagedOffer -Name "testoffer" -ResourceGroupName "testrg"
 $offer.state = "Public"
 $offer | Set-AzsOffer -Confirm:$false
 ```
@@ -61,7 +61,7 @@ $offer | Set-AzsOffer -Confirm:$false
 To subscribe to an offer, use [New-AzsUserSubscription](/powershell/module/azs.subscriptions.admin/new-azsusersubscription).
 
 ```powershell
-New-AzsUserSubscription -Owner "user@contoso.com" -OfferId "/subscriptions/<Subscription ID>/resourceGroups/TenantResourceGroup/providers/Microsoft.Subscriptions.Admin/offers/TenantOffer" | fl *
+New-AzsUserSubscription -Owner "user@contoso.com" -DisplayName "User subscription" -OfferId "/subscriptions/<Subscription ID>/resourceGroups/testrg/providers/Microsoft.Subscriptions.Admin/offers/testoffer"
 ```
 
 ## Delete quotas, plans, offers, and subscriptions
@@ -79,7 +79,8 @@ Remove-AzsNetworkQuota -Name "Example network quota with defaults"
 To remove a plan from an offer, use [Remove-AzsPlanFromOffer](/powershell/module/azs.subscriptions.admin/remove-azsplanfromoffer).
 
 ```powershell
-Remove-AzsPlanFromOffer -PlanName "addonplan" -PlanLinkType Addon -OfferName "testoffer" -ResourceGroupName "testrg" -MaxAcquisitionCount 18
+Remove-AzsPlanFromOffer -PlanName "addonplan" -PlanLinkType Addon -OfferName "testoffer" -ResourceGroupName "testrg"
+Remove-AzsPlanFromOffer -PlanName "testplan" -PlanLinkType Base -OfferName "testoffer" -ResourceGroupName "testrg"
 ```
 
 Use [Remove-AzsPlan](/powershell/module/azs.subscriptions.admin/remove-azsplan) to remove a plan.
@@ -88,16 +89,16 @@ Use [Remove-AzsPlan](/powershell/module/azs.subscriptions.admin/remove-azsplan) 
 Remove-AzsPlan -Name "testplan" -ResourceGroupName "testrg"
 ```
 
+Use [Remove-AzsUserSubscription](/powershell/module/azs.subscriptions.admin/remove-azsusersubscription) to remove a subscription from an offer.
+
+```powershell
+Remove-AzsUserSubscription -TargetSubscriptionId "c90173b1-de7a-4b1d-8600-b8325ca1eab1e"
+```
+
 Use [Remove-AzsOffer](/powershell/module/azs.subscriptions.admin/remove-azsoffer) to remove an offer.
 
 ```powershell
 Remove-AzsOffer -Name "testoffer" -ResourceGroupName "testrg"
-```
-
-Use [Remove-AzsUserSubscription](/powershell/module/azs.subscriptions.admin/remove-azsusersubscription) to remove a subscription.
-
-```powershell
-Remove-AzsUserSubscription -SubscriptionId "c90173b1-de7a-4b1d-8600-b832b0e65946"
 ```
 
 ## Next steps
