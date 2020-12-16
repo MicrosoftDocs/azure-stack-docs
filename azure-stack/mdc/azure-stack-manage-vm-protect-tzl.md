@@ -1,6 +1,6 @@
 ---
-title: Protect VMs deployed on Azure Stack | Microsoft Docs
-description: Learn how to build a recovery plan to protect VMs deployed on Azure Stack against data loss and unplanned downtime.
+title: Protect VMs deployed on Azure Stack - MDC | Microsoft Docs
+description: Learn how to build a recovery plan to protect VMs deployed on Azure Stack against data loss and unplanned downtime for an MDC.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -18,7 +18,7 @@ ms.reviewer: hectorl
 ms.lastreviewed: 3/19/2018
 ---
 
-# Protect VMs deployed on Azure Stack Hub
+# Protect VMs deployed on Azure Stack Hub - Modular Data Center (MDC)
 
 Use this article as a guide to develop a plan for protecting virtual machines (VMs) that your users deploy on Azure Stack Hub.
 
