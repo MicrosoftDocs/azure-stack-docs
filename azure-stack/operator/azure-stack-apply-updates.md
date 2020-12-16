@@ -31,7 +31,7 @@ You can view the current version of Azure Stack Hub in the **Updates** blade. To
 
 1. Open the Azure Stack Hub administrator portal.
 
-2. Select **Dashboard**. In the **Updates** blade, the current version is listed. For example, in this image the version is 1.1903.0.35:
+2. Select **Dashboard**. In the **Updates** pane, the current version is listed:
 
     ![Updates tile on default dashboard](./media/azure-stack-apply-updates/dashboard.png)
 
@@ -44,7 +44,7 @@ You can view the current version of Azure Stack Hub in the **Updates** blade. To
 
 2. Select **Dashboard**. Select **Update**.
 
-3. Select the available update that you wish to install. If you don't have an update marked as **Available**, [prepare the update package](azure-stack-update-prepare-package.md).
+3. Select the available update that you want to install. If you don't have an update marked as **Available**, [prepare the update package](azure-stack-update-prepare-package.md).
 
 4. Select **Update now**.
 
