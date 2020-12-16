@@ -56,30 +56,32 @@ The following requirements apply to an Azure Stack HCI cluster as well as a Wind
  
 ### IP address assignment  
  
-There are two options for assigning IP addresses in an AKA-HCI cluster: an automatic DHCP assignment or a static IP address assignment. Each one has it's own set of requirements.
+There are two options for assigning IP addresses in an Azure Stack HCI cluster: an automatic DHCP assignment or a static IP address assignment. Each one has it's own set of requirements. It's also recommended that you configure three to five control plane nodes that are highly available.
+
+> [!NOTE]
+> Using static IP address assignments alone is not supported. You must use either DHCP only or a combination of DHCP and static IP address assignments.
 
 #### DHCP
-If you are planning to use DHCP for assigning IP addresses throughout the cluster:  
+If you are planning to use DHCP for assigning IP addresses throughout the cluster, follow these requirements:  
 
  - The network must have an available DHCP server to provide TCP/IP addresses to the VMs and the VM hosts. The DHCP server should also contain network time protocol (NTP) and DNS host information. 
 
- - We also recommend having a DHCP server with a dedicated scope of IPv4 addresses accessible by the Azure Stack HCI cluster. For example, you can reserve 10.0.1.1 for the default gateway, reserve 10.0.1.2 to 10.0.1.102 for Kubernetes services (using `-vipPoolStartIp` and `-vipPoolEndIp` in `Set-AksHciConfig`), and use 10.0.1.103-10.0.1.254 for Kubernetes cluster VMs. 
+ - A DHCP server with a dedicated scope of IPv4 addresses accessible by the Azure Stack HCI cluster. For example, you can reserve 10.0.1.1 for the default gateway, reserve 10.0.1.2 to 10.0.1.102 for Kubernetes services, and use 10.0.1.103-10.0.1.254 for Kubernetes cluster VMs. 
  
  - The IPv4 addresses provided by the DHCP server should be routable and have a 30-day lease expiration to avoid loss of IP connectivity in the event of a VM update or reprovisioning.  
 
 At a minimum, you should reserve the following number of DHCP addresses in each pool range: 
 
-- **IP pool range**: We recommend having 16 or more IP addresses in the range. However, you need at least three IP addresses in the range to create the management cluster.
+- **IP pool range**: We recommend having 16 or more IP addresses in the range. However, you need at least three IP addresses in the range to create the management cluster. When setting up the management cluster, use `-vipPoolStartIp` and `-vipPoolEndIp` in `Set-AksHciConfig` to reserve IP addresses from the DHCP IP pool for Kubernetes services.
 
-- **MAC pool range**: We recommend having 16 or more IP addresses in the range to allow for multiple/single node configurations.
+- **MAC pool range**: We recommend having 16 or more MAC addresses in the range to allow for multiple/single node configurations. When setting up the management cluster, use `-macPoolStart` and `-macPoolEnd` in `Set-AksHciConfig` to reserve MAC addresses from the DHCP MAC pool for Kubernetes services.
   
-Multiple pool ranges are required: one for the API server, one for AKS, and one for VMs.
     
 #### Static IP 
 
-If you are planning to use static IP address assignments throughout the cluster, you need to ensure the available ranges contain the following minimum amount of IP addresses:  
+If you're planning to use static IP address assignments in combination with DHCP, you need to ensure the available ranges contain the following minimum amount of IP addresses:  
 
-- **Subnet prefix**: Use a Classless Inter-Domain Routing (CIDR) address  
+- **Subnet prefix**: To configure the Classless Inter-Domain Routing (CIDR) address, use `-cloudServiceCidr` in `Set-AksHciConfig`.   
 
 - **Gateway**: Use one IP address
 
@@ -87,16 +89,16 @@ If you are planning to use static IP address assignments throughout the cluster,
 
 - **IP pool range**: We recommend having 32 or higher IP addresses in the range. However, you need at least 12 IP addresses in the range to allow for multiple/single node configurations.
 
-- **MAC pool range**: We recommend having at least 16 IP addresses in the range to allow for multiple/single node configurations.
+- **MAC pool range**: We recommend having at least 16 MAC addresses in the range to allow for multiple/single node configurations.
 
 #### DHCP and static IP requirements  
 
-For both DHCP and static IPs, follow the requirements in the table below. For DHCP, the IP addresses are assigned by DHCP unless otherwise noted. Note that *n* indicates the number of nodes of the cluster. 
+For both DHCP and static IPs, follow the requirements in the table below. For DHCP, the IP addresses are assigned by DHCP unless otherwise noted. Note that *N* indicates the number of nodes of the cluster. 
 
 | Cluster         | Node | Required IP addresses | Notes |
 |---------|-------|-----------|-----------|
 | Management | | One IP each for the management node VM, the load balancer VM, and the API server | For DHCP, the API server IP is assigned from the IP address pool |
-| Target (workload) | Control plane | +1*n IP for each control plane node, and +1 IP each for the load balancer VM and the kubeapi server VIP | For DHCP, the kubeapi server VIP is assigned from the IP address pool |
+| Target (workload) | Control plane | *N* IP for each control plane node, and +1 IP each for the load balancer VM and the kubeapi server VIP | For DHCP, the kubeapi server VIP is assigned from the IP address pool |
 | | Worker | 1*n IP for each node |  |
 
   
