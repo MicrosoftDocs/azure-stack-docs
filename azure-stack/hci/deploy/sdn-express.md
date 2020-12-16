@@ -14,7 +14,7 @@ ms.reviewer: JasonGerend
 
 In this topic, you deploy an end-to-end Software Defined Network (SDN) infrastructure using SDN Express PowerShell scripts. The infrastructure includes a highly available (HA) network controller, a highly available Software Load Balancer (SLB) and a highly available gateway.  
 
-The scripts also support a phased deployment, where you deploy just the network controller to achieve a core set of functionality with minimal network requirements.
+The scripts support a phased deployment, where you can deploy just the Network Controller to achieve a core set of functionality with minimal network requirements. You can can also deploy Network Controller using the Create Cluster wizard in Windows Admin Center. To deploy other SDN components such as SLB and Gateway however, you must use the SDN Express scripts.
 
 You can also deploy an SDN infrastructure using System Center Virtual Machine Manager (VMM). For more information, see [Manage SDN resources in the VMM fabric](https://docs.microsoft.com/system-center/vmm/network-sdn).
 
