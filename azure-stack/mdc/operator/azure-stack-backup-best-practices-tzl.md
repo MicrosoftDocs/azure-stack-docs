@@ -1,6 +1,6 @@
 ---
-title: Infrastructure Backup Service best practices for Azure Stack | Microsoft Docs
-description: Follow these best practices when you deploy and manage Azure Stack to help mitigate data loss if there's a catastrophic failure.
+title: Infrastructure Backup Service best practices for Azure Stack - MDC | Microsoft Docs
+description: Follow these best practices when you deploy and manage Azure Stack for an MDC to help mitigate data loss if there's a catastrophic failure.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -19,7 +19,7 @@ ms.lastreviewed: 10/26/2020
 
 ---
 
-# Infrastructure Backup Service best practices
+# Infrastructure Backup Service best practices - Modular Data Center (MDC)
 
 *Applies to: Modular Data Center, Azure Stack Hub ruggedized*
 
