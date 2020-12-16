@@ -20,7 +20,7 @@ You can also deploy an SDN infrastructure using System Center Virtual Machine Ma
 
 ## Before you begin
 
-Before you begin SDN deployment, plan out and configure your hosts and physical network infrastructure. For information on how to do this, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure). You do not have to deploy all SDN components described. See the [Phased deployment](../concepts/plan-software-defined-networking-infrastructure.md#phased-deployment.md) section to determine which infrastructure components you need, and then run the scripts accordingly.
+Before you begin SDN deployment, plan out and configure your hosts and physical network infrastructure. For information on how to do this, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md). You do not have to deploy all SDN components described. See the [Phased deployment](../concepts/plan-software-defined-networking-infrastructure.md#phased-deployment) section to determine which infrastructure components you need, and then run the scripts accordingly.
 
 Make sure all host servers have the Azure Stack HCI operating system installed. See [Deploy the Azure Stack HCI operating system](operating-system.md) on how to do this.
 
