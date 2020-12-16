@@ -64,6 +64,12 @@ To subscribe to an offer, use [New-AzsUserSubscription](/powershell/module/azs.s
 New-AzsUserSubscription -Owner "user@contoso.com" -DisplayName "User subscription" -OfferId "/subscriptions/<Subscription ID>/resourceGroups/testrg/providers/Microsoft.Subscriptions.Admin/offers/testoffer"
 ```
 
+To subscribe to an offer as a user, use [New-AzsSubscription](/powershell/module/azs.subscriptions.admin/new-azssubscription).
+
+```powershell
+New-AzsSubscription -OfferId "User subscription" -OfferId "/subscriptions/<Subscription ID>/resourceGroups/testrg/providers/Microsoft.Subscriptions.Admin/offers/testoffer" -DisplayName "User subscription"
+```
+
 ## Delete quotas, plans, offers, and subscriptions
 
 There are companion PowerShell cmdlets to delete Azure Stack Hub quotas, plans, offers, and subscriptions. The following show examples for each.
