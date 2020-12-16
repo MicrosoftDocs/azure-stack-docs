@@ -50,23 +50,25 @@ This section walks you through setting up CLI if you're using Azure AD as your i
 
 3. Register your environment. Use the following parameters when running `az cloud register`:
 
-    | Value | Example | Description |
-    | --- | --- | --- |
-    | Environment name | AzureStackUser | Use `AzureStackUser`  for the user environment. If you're operator, specify `AzureStackAdmin`. |
-    | Resource Manager endpoint | `https://management.contoso.onmicrosoft.com` | The **ResourceManagerUrl** in the ASDK is: `https://management.contoso.onmicrosoft.com/` The **ResourceManagerUrl** in integrated systems is: `https://management.<region>.<fqdn>/` If you have a question about the integrated system endpoint, contact your cloud operator. |
-    | Storage endpoint | local.contoso.onmicrosoft.com | `local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
-    | Keyvault suffix | .vault.contoso.onmicrosoft.com | `.vault.local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
-    | Endpoint active directory graph resource ID | https://graph.windows.net/ | The Active Directory resource ID. |
-      You can find a reference for the [register command](https://docs.microsoft.com/cli/azure/cloud?view=azure-cli-latest#az_cloud_register) in the Azure CLI reference documentation.
+      | Value | Example | Description |
+      | --- | --- | --- |
+      | Environment name | AzureStackUser | Use `AzureStackUser`  for the user environment. If you're operator, specify `AzureStackAdmin`. |
+      | Resource Manager endpoint | `https://management.contoso.onmicrosoft.com` | The **ResourceManagerUrl** in the ASDK is: `https://management.contoso.onmicrosoft.com/` The **ResourceManagerUrl** in integrated systems is: `https://management.<region>.<fqdn>/` If you have a question about the integrated system endpoint, contact your cloud operator. |
+      | Storage endpoint | local.contoso.onmicrosoft.com | `local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
+      | Keyvault suffix | .vault.contoso.onmicrosoft.com | `.vault.local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
+      | Endpoint active directory graph resource ID | https://graph.windows.net/ | The Active Directory resource ID. |
+    
+      ```azurecli  
+      az cloud register `
+          -n <environmentname> `
+          --endpoint-resource-manager "https://management.<region>.<fqdn>" `
+          --suffix-storage-endpoint "<fqdn>" `
+          --suffix-keyvault-dns ".vault.<fqdn>" `
+          --endpoint-active-directory-graph-resource-id "https://graph.windows.net/"
+      ```
 
-    ```azurecli  
-    az cloud register `
-        -n <environmentname> `
-        --endpoint-resource-manager "https://management.<region>.<fqdn>" `
-        --suffix-storage-endpoint "<fqdn>" `
-        --suffix-keyvault-dns ".vault.<fqdn>" `
-        --endpoint-active-directory-graph-resource-id "https://graph.windows.net/"
-    ```
+    You can find a reference for the [register command](https://docs.microsoft.com/cli/azure/cloud?view=azure-cli-latest#az_cloud_register) in the Azure CLI reference documentation.
+
 
 4. Set the active environment by using the following commands.
 
