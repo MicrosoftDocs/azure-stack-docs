@@ -16,11 +16,11 @@ In this topic, you deploy an end-to-end Software Defined Network (SDN) infrastru
 
 You can also do a phased deployment starting with just the network controller to achieve a core set of functionality with minimal network requirements. For more information, see section [Step 5: SDN](create-cluster.md#step-5-sdn-optional) of [Create a cluster using Windows Admin Center](create-cluster.md).
 
-You can also deploy an SDN infrastructure using System Center Virtual Machine Manager (VMM). For more information, see [Manage SDN resources in the VMM fabric](https://docs.microsoft.com/system-center/vmm/network-sdn?redirectedfrom=MSDN&view=sc-vmm-2019).
+You can also deploy an SDN infrastructure using System Center Virtual Machine Manager (VMM). For more information, see [Manage SDN resources in the VMM fabric](https://docs.microsoft.com/system-center/vmm/network-sdn).
 
 ## Before you begin
 
-Before you begin SDN deployment, plan out and configure your hosts and physical network infrastructure. For information on how to do this, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure). You do not have to deploy all SDN components described. See the [Phased deployment](../concepts/plan-software-defined-networking-infrastructure.md#phased-deployment) section to determine which infrastructure components you need, and then run the scripts accordingly.
+Before you begin SDN deployment, plan out and configure your hosts and physical network infrastructure. For information on how to do this, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure). You do not have to deploy all SDN components described. See the [Phased deployment](../concepts/plan-software-defined-networking-infrastructure.md#phased-deployment.md) section to determine which infrastructure components you need, and then run the scripts accordingly.
 
 Make sure all host servers have the Azure Stack HCI operating system installed. See [Deploy the Azure Stack HCI operating system](operating-system.md) on how to do this.
 
@@ -120,7 +120,7 @@ Use the following steps to validate that host networking is setup correctly.
 
 1. Use a VHDX containing the Azure Stack HCI OS as a source for creating the SDN VMs. If you've downloaded and installed the Azure Stack HCI OS from an ISO, you can create this VHDX using the `convert-windowsimage` utility as described in the documentation.
 
-1. Customize the `SDNExpress\scripts\MultiNodeSampleConfig.psd1` file by changing the specific values to fit your infrastructure including host names, domain names, usernames and passwords, and network information for the networks listed as discussed in the [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure) topic. This file has specific information about what needs to be filled out based on whether you are deploying only the network controller component, or the software load balancer and gateway components as well.
+1. Customize the `SDNExpress\scripts\MultiNodeSampleConfig.psd1` file by changing the specific values to fit your infrastructure including host names, domain names, usernames and passwords, and network information for the networks listed as discussed in the [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md) topic. This file has specific information about what needs to be filled out based on whether you are deploying only the network controller component, or the software load balancer and gateway components as well.
 
 1. Run the following script from a user account with Administrator credentials on the Hyper-V hosts:
 
@@ -132,4 +132,4 @@ Use the following steps to validate that host networking is setup correctly.
 
 ## Next steps
 
-Use SC VMM to deploy a SDN infrastructure. See [Manage SDN resources in the VMM fabric](https://docs.microsoft.com/system-center/vmm/network-sdn?redirectedfrom=MSDN&view=sc-vmm-2019).
+Use SC VMM to deploy a SDN infrastructure. See [Manage SDN resources in the VMM fabric](https://docs.microsoft.com/system-center/vmm/network-sdn).
