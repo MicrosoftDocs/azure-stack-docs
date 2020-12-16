@@ -1,6 +1,6 @@
 ---
 title: Register-CustomDnsServer
-description: Reference for PowerShell Azure Stack privileged endpoint - Close-PrivilegedEndpoint
+description: Learn about the script to register custom DNS servers with Azure Stack Hub DNS - Register-CustomDnsServer.
 author: mattbriggs
 
 ms.topic: reference
