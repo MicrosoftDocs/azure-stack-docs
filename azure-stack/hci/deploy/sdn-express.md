@@ -1,6 +1,6 @@
 --- 
-title: Deploy a SDN infrastructure using SDN Express
-description: Learn to deploy a SDN infrastructure using SDN Express
+title: Deploy an SDN infrastructure using SDN Express
+description: Learn to deploy an SDN infrastructure using SDN Express
 author: v-dasis 
 ms.topic: how-to 
 ms.date: 12/16/2020 
@@ -8,7 +8,7 @@ ms.author: v-dasis
 ms.reviewer: JasonGerend 
 ---
 
-# Deploy a SDN infrastructure using SDN Express
+# Deploy an SDN infrastructure using SDN Express
 
 > Applies to Azure Stack HCI, version 20H2
 
