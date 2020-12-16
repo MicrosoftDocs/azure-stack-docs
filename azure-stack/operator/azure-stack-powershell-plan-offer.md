@@ -56,7 +56,7 @@ $offer.state = "Public"
 $offer | Set-AzsOffer -Confirm:$false
 ```
 
-## Create a subscription to an offer
+## Create subscription to an offer
 
 After you create an offer, users need a subscription to that offer before they can use it. There are two ways that users can subscribe to an offer:
 
@@ -69,7 +69,7 @@ To create a subscription for a user as a cloud operator, use [New-AzsUserSubscri
 New-AzsUserSubscription -Owner "user@contoso.com" -DisplayName "User subscription" -OfferId "/subscriptions/<Subscription ID>/resourceGroups/testrg/providers/Microsoft.Subscriptions.Admin/offers/testoffer"
 ```
 
-To subscribe to a public offer as a tenant user, use [New-AzsSubscription](/powershell/module/azs.subscriptions.admin/new-azssubscription).
+To subscribe to a public offer as a tenant user, use [New-AzsSubscription](/powershell/module/azs.subscriptions/new-azssubscription).
 
 ```powershell
 New-AzsSubscription -OfferId "User subscription" -OfferId "/delegatedProviders/default/offers/testoffer" -DisplayName "My subscription"
