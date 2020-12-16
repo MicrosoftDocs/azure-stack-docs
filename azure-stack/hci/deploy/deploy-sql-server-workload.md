@@ -53,14 +53,14 @@ There are several Azure hybrid services that you can use to help keep your SQL S
 
 [Azure Backup](https://azure.microsoft.com/services/backup/) lets you define backup policies to protect enterprise workloads and supports backing up and restoring SQL Server consistency. For more information about how to back up your on-premises SQL data, see [Install Azure Backup Server](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup).
 
-Alternatively, you can use the [SQL Server Managed Backup](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?view=sql-server-ver15) feature in SQL Server to manage Azure Blob Storage backups.
+Alternatively, you can use the [SQL Server Managed Backup](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?view=sql-server-ver15&preserve-view=true) feature in SQL Server to manage Azure Blob Storage backups.
 
 For more information about using this option that is suitable for off-site archiving, see: 
 
-- [Tutorial: Use Azure Blob storage service with SQL Server 2016](https://docs.microsoft.com/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016?view=sql-server-ver15)
-- [Quickstart: SQL backup and restore to Azure Blob storage service](https://docs.microsoft.com/sql/relational-databases/tutorial-sql-server-backup-and-restore-to-azure-blob-storage-service?view=sql-server-ver15&tabs=SSMS)
+- [Tutorial: Use Azure Blob storage service with SQL Server 2016](https://docs.microsoft.com/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016?view=sql-server-ver15&preserve-view=true)
+- [Quickstart: SQL backup and restore to Azure Blob storage service](https://docs.microsoft.com/sql/relational-databases/tutorial-sql-server-backup-and-restore-to-azure-blob-storage-service?view=sql-server-ver15&tabs=SSMS&preserve-view=true)
 
-In addition to these backup scenarios, you can set up other database services that SQL Server offers, including [Azure Data Factory](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-sql-azure-adf) and [Azure Feature Pack for Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-ver15).
+In addition to these backup scenarios, you can set up other database services that SQL Server offers, including [Azure Data Factory](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-sql-azure-adf) and [Azure Feature Pack for Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-ver15&preserve-view=true).
 
 ## Next steps
 For more information about working with SQL Server, see:
