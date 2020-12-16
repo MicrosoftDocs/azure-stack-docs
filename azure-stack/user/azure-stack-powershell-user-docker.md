@@ -20,7 +20,6 @@ In this article, you can use Docker to create a container on which to run the ve
 
 ## Docker prerequisites
 
-If you plan to run Docker with Windows, you will need to run Docker on a physical machine. Nested virtualization is not supported on Hyper-V.
 ### Install Docker
 
 1. Install [Docker](https://docs.docker.com/install/).
@@ -100,7 +99,7 @@ In these instructions, you will run a Linux-based container image that contains 
 
 ### [AzureRM modules](#tab/rm)
 
-In these instructions, you will run a Windows-based container image and install the PowerShell and the required modules for Azure Stack Hub.
+In these instructions, you will run a Windows-based container image and install the PowerShell and the required modules for Azure Stack Hub. If you plan to run Docker with Windows, you will need to run Docker on a physical machine. Nested virtualization is not supported on Hyper-V.
 
 1. You need to run Docker by using Windows containers that require Windows 10. When you run Docker, switch to Windows containers. The images supporting the Az module will require Docker 17.05 or newer.
 
