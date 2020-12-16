@@ -5,7 +5,7 @@ description: Learn about the Azure Stack Hub servicing policy and how to keep an
 author: sethmanheim
 
 ms.topic: article
-ms.date: 09/25/2020
+ms.date: 12/15/2020
 ms.author: sethm
 ms.reviewer: niy
 ms.lastreviewed: 03/18/2020
@@ -68,6 +68,8 @@ For information about currently available hotfixes, see the release notes for th
 ## Keep your system under support
 
 For your Azure Stack Hub instance to remain in a supported state, the instance must run the most recently released update version or run either of the two preceding update versions.
+
+You must also have an active support agreement with the hardware partner that manufactured the system. Microsoft is not able to support you without a hardware support agreement in place.
 
 Hotfixes aren't considered major update versions. If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must update to at least the minimum supported version to receive support.
 

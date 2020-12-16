@@ -4,10 +4,10 @@ description: How to delete a VM (virtual machine) with dependencies on Azure Sta
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 12/7/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 12/7/2020
+ms.lastreviewed: 12/16/2020
 
 # Intent: As an Azure Stack user, I want to delete a VM with dependencies in Azure Stack Hub.
 # Keyword: virtual machine delete
@@ -52,7 +52,7 @@ In the case where you cannot delete the resource group, either the dependencies 
     2. Wait for the resource to be completely deleted.
     3. You can then delete the next dependency.
 
-### [With PowerShell](#tab/ps-az)
+### [Az modules](#tab/ps-az)
 
 In the case where you cannot delete the resource group, either the dependencies are not in the same resource group, or there are other resources, follow these steps.
 
@@ -126,7 +126,7 @@ To delete the VM, in the same session, run the following cmdlets:
 ```powershell
 $machine | Remove-AzVM -Force
 ```
-### [With PowerShell](#tab/ps-azureRM)
+### [AzureRM modules](#tab/ps-azureRM)
 
 In the case where you cannot delete the resource group, either the dependencies are not in the same resource group, or there are other resources, follow these steps.
 

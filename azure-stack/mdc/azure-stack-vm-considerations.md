@@ -1,6 +1,6 @@
 ---
-title: Azure Stack VM features | Microsoft Docs
-description: Learn about different features and considerations when working with VMs in a MDC.
+title: Azure Stack virtual machine (VM) features | Microsoft Docs
+description: Learn about different features and considerations when working with virtual machines (VMs) in an MDC.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -19,7 +19,7 @@ ms.lastreviewed: 12/20/2019
 
 ---
 
-# Azure Stack VM features
+# Azure Stack VM features - Modular Data Center (MDC)
 
 Azure Stack virtual machines (VMs) provide on-demand, scalable computing resources. Before you deploy VMs, you should learn the differences between the VM features available in Azure Stack and Microsoft Azure. This article describes these differences and identifies key considerations for planning VM deployments. To learn about high-level differences between Azure Stack and Azure, see the [Key considerations](../user/azure-stack-considerations.md) article.
 
