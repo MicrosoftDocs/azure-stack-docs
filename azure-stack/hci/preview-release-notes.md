@@ -49,7 +49,7 @@ This update includes improvements and fixes for the latest release of Azure Stac
    >
    > 2. Connect to one of the cluster nodes either locally or using `Enter-PSSession <server-name>`
    >
-   > 3. Download the AzStackHCI v0.4.1 registration module from PowerShell Gallery. Run `Install-Module -Name Az.StackHCI` to get the latest module.
+   > 3. Download the AzStackHCI v0.4.1 (or later) registration module from PowerShell Gallery. Run `Install-Module -Name Az.StackHCI` to get the latest module.
    >
    > 4. Run the following command to repair your registration. Use the subscription ID that was used to register the cluster originally. `Get-AzureStackHCI` shows the current ARM Uri, which has the subscription information.
    >
