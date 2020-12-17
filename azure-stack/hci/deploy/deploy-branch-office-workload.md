@@ -13,10 +13,19 @@ ms.date: 12/17/2020
 
 This topic provides guidance on how to plan, configure, and deploy Branch office and edge scenarios on the Azure Stack HCI operating system.
 
-## Drive types
+## Deploy Branch office and edge
 TBD
 
-## Built-in cache
+### Step 1: Get hardware for Branch office and edge on Azure Stack HCI
+TBD
+
+
+
+### Step 2: Set up Azure Monitor in Windows Admin Center
+TBD
+
+
+### Step 3: Enable Branch office and edge modern application support
 TBD
 
 <!---Example note format.--->
@@ -26,23 +35,8 @@ TBD
 <!---Example figure format--->
 <!---:::image type="content" source="./media/network-controller/topology-option-1.png" alt-text="Option 1 to create a physical network for the Network Controller." lightbox="./media/network-controller/topology-option-1.png":::--->
 
-### Cache
-TBD
-
-<!---Example table format.--->
-| Fun                                      | Table                                   |
-| :--------------------------------------- | :-------------------------------------- |
-| left-aligned column                      | right-aligned column                    |
-| $100                                     | $100                                    |
-| $10                                      | $10                                     |
-
-
-
 
 ## Next steps
-For more information, see also:
-<!---Placeholders for format examples. Replace all before initial topic review.--->
-
-- [Azure Stack HCI overview](../overview.md)
-- [Understand the cache in Azure Stack HCI](cache.md)
-- [Storage Spaces Direct hardware requirements](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements)
+For more information about Branch office and edge, and Azure IoT Edge, see:
+- [Quickstart: Deploy your first IoT Edge module to a virtual Linux device](https://docs.microsoft.com/azure/iot-edge/quickstart-linux?view=iotedge-2018-06)
+- [Quickstart: Deploy your first IoT Edge module to a virtual Windows device](https://docs.microsoft.com/azure/iot-edge/quickstart?view=iotedge-2018-06)
