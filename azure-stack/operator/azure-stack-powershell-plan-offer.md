@@ -15,7 +15,7 @@ ms.reviewer: bganapa
 
 # Use PowerShell to manage subscriptions, plans, and offers in Azure Stack Hub
 
-You can use PowerShell to configure and deliver services by using offers, plans, and subscriptions. using PowerShell. For instructions on getting set up with PowerShell on Azure Stack Hub, see [Install PowerShell Az module for Azure Stack Hub](powershell-install-az-module.md).
+You can use PowerShell to configure and deliver services by using offers, plans, and subscriptions. using PowerShell. For instructions on getting set up with PowerShell on Azure Stack Hub, see [Install PowerShell Az module for Azure Stack Hub](powershell-install-az-module.md). For information on connecting to Azure Stack Hub using PowerShell, see [Connect to Azure Stack Hub with PowerShell](azure-stack-powershell-configure-admin).
 
 ## Create a plan
 
@@ -61,7 +61,7 @@ $offer | Set-AzsOffer -Confirm:$false
 After you create an offer, users need a subscription to that offer before they can use it. There are two ways that users can subscribe to an offer:
 
 * As a cloud operator, you can create a subscription for a user. Subscriptions you create can be for both public and private offers.
-* As a tenant user, you can subscribe to a public offer.
+* As a user, you can subscribe to a public offer.
 
 To create a subscription for a user as a cloud operator, use [New-AzsUserSubscription](/powershell/module/azs.subscriptions.admin/new-azsusersubscription).
 
@@ -69,10 +69,11 @@ To create a subscription for a user as a cloud operator, use [New-AzsUserSubscri
 New-AzsUserSubscription -Owner "user@contoso.com" -DisplayName "User subscription" -OfferId "/subscriptions/<Subscription ID>/resourceGroups/testrg/providers/Microsoft.Subscriptions.Admin/offers/testoffer"
 ```
 
-To subscribe to a public offer as a tenant user, use [New-AzsSubscription](/powershell/module/azs.subscriptions/new-azssubscription).
+To subscribe to a public offer as a user, use [New-AzsSubscription](/powershell/module/azs.subscriptions/new-azssubscription). *New-AzsSubscription* requires connection to the user Azure Resource Manager environment. Use *Add-AzEnvironment* to add endpoint. For example, `Add-AzEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"`.
 
 ```powershell
-New-AzsSubscription -OfferId "User subscription" -OfferId "/delegatedProviders/default/offers/testoffer" -DisplayName "My subscription"
+$testOffer = Get-AzsOffer | Where-Object Name -eq "testoffer"
+New-AzsSubscription -OfferId "User subscription" -OfferId $testOffer.Id -DisplayName "My subscription"
 ```
 
 ## Delete quotas, plans, offers, and subscriptions
