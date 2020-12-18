@@ -48,11 +48,28 @@ Primary features of Azure IoT Edge:
 - Offline and intermittent connectivity support
 - Native management from Azure IoT Hub
 
-To learn more, see [What is Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/about-iot-edge)
+To learn more, see [What is Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/about-iot-edge).
 
 To deploy Azure IoT Edge on Azure Stack HCI:
-1. 
+1. Use Windows Admin Center to [create a new VM in Azure Stack HCI](https://docs.microsoft.com/windows-server/manage/windows-admin-center/use/manage-virtual-machines#create-a-new-virtual-machine).
 
+    For information on supported operating system versions, VM types, processor architectures, and system requirements, see [Azure IoT Edge supported systems](https://docs.microsoft.com/azure/iot-edge/support).
+
+1. If you don’t already have an Azure account, start a [free account](https://azure.microsoft.com/free).
+1. In the Azure portal, [create an Azure IoT Hub](https://docs.microsoft.com/azure/iot-edge/quickstart#create-an-iot-hub).
+1.	In the Azure portal, [register an IoT Edge device](https://docs.microsoft.com/azure/iot-edge/quickstart#register-an-iot-edge-device).
+
+    >[!NOTE]
+    > The IoT Edge device is on a VM running either Windows or Linux on Azure Stack HCI.
+
+1. On the VM that you created in Step 1, [install and start the IoT Edge runtime](https://docs.microsoft.com/azure/iot-edge/quickstart#install-and-start-the-iot-edge-runtime).
+
+   >[!IMPORTANT]
+   > You need the device string that you created in Step 4 to connect the runtime to Azure IoT Hub.
+
+1. [Deploy a module](https://docs.microsoft.com/azure/iot-edge/quickstart#deploy-a-module) to Azure IoT Edge.
+
+    You can source and deploy pre-built modules from the [IoT Edge Modules](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) section of Azure Marketplace.
 
 ## Next steps
 For more information about Branch office and edge, and Azure IoT Edge, see:
