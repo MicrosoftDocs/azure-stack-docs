@@ -51,7 +51,7 @@ This update includes improvements and fixes for the latest release of Azure Stac
    >
    > 3. Download the AzStackHCI v0.4.1 (or later) registration module from PowerShell Gallery. Run `Install-Module -Name Az.StackHCI` to get the latest module.
    >
-   > 4. Run the following command to repair your registration. Use the subscription ID that was used to register the cluster originally. `Get-AzureStackHCI` shows the current Azure Resource Manager (ARM) Uri, which has the subscription information.
+   > 4. Run the following command to repair your registration. Use the subscription ID that was used to register the cluster originally. `Get-AzureStackHCI` shows the current Azure Resource Manager Uri, which has the subscription information.
    >
    >   ```PowerShell
    >   Register-AzStackHCI -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -RepairRegistration
