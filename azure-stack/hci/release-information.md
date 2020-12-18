@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/17/2020
+ms.date: 12/18/2020
 ---
 
 # Azure Stack HCI release information
