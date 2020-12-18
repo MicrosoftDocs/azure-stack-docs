@@ -4,7 +4,7 @@ description: This topic spotlights utility applications from Microsoft partners 
 author: burcuerdemir
 ms.author: burcue
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 12/18/2020
 ---
 
 # Utility applications for Azure Stack HCI
@@ -53,7 +53,7 @@ Veritas Backup Exec is an easy-to-use backup and recovery solution that helps pr
 Datadog is a fully unified platform encompassing infrastructure monitoring, application performance monitoring, log management, user-experience monitoring, and more.
 
 - Application listing: [Modern monitoring & security](https://www.datadoghq.com/)
-- Application support: [Supported OS versions](https://docs.datadoghq.com/agent/basic_agent_usage/?tab=agentv6v7#supported-os-versions)
+- Application support: [Monitor Microsoft Azure Stack HCI with Datadog](https://www.datadoghq.com/blog/monitor-azure-stack-hci-datadog)
 
 ## Next steps
 For more information, see also:
