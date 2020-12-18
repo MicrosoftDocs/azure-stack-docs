@@ -17,6 +17,8 @@ ms.reviewer: bganapa
 
 You can use PowerShell to configure and deliver services by using offers, plans, and subscriptions. using PowerShell. For instructions on getting set up with PowerShell on Azure Stack Hub, see [Install PowerShell Az module for Azure Stack Hub](powershell-install-az-module.md). For information on connecting to Azure Stack Hub using PowerShell, see [Connect to Azure Stack Hub with PowerShell](azure-stack-powershell-configure-admin.md).
 
+Before you begin, verify the Azure Stack Hub PowerShell module is loaded. In a PowerShell console, type `Import-Module AzureStack`.
+
 ## Create a plan
 
 Quotas are required when creating a plan. You can use an existing quotas or create new quotas. For example, to create a storage, compute and network quota, you can use the [New-AzsStorageQuota](/powershell/module/azs.storage.admin/new-azsstoragequota), [New-AzsComputeQuota](/powershell/module/azs.compute.admin/new-azscomputequota), and [New-AzsNetworkQuota](/powershell/module/azs.network.admin/new-azsnetworkquota) cmdlets:
@@ -69,7 +71,7 @@ To create a subscription for a user as a cloud operator, use [New-AzsUserSubscri
 New-AzsUserSubscription -Owner "user@contoso.com" -DisplayName "User subscription" -OfferId "/subscriptions/<Subscription ID>/resourceGroups/testrg/providers/Microsoft.Subscriptions.Admin/offers/testoffer"
 ```
 
-To subscribe to a public offer as a user, use [New-AzsSubscription](/powershell/module/azs.subscriptions/new-azssubscription). *New-AzsSubscription* requires connection to the user Azure Resource Manager environment. Use *Add-AzEnvironment* to add endpoint. For example, `Add-AzEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"`.
+To subscribe to a public offer as a user, use [New-AzsSubscription](/powershell/module/azs.subscriptions/new-azssubscription). *New-AzsSubscription* requires connection to the user Azure Resource Manager environment. Use the steps in [Connect to Azure Stack Hub with PowerShell](azure-stack-powershell-configure-admin.md) but use the user Azure Resource Manager endpoint. For example, `Add-AzEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"`.
 
 ```powershell
 $testOffer = Get-AzsOffer | Where-Object Name -eq "testoffer"
