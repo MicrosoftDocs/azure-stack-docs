@@ -1,23 +1,23 @@
 ---
-title: Azure Stack HCI preview release note
-description: Release notes for Azure Stack HCI, version 20H2 preview releases.
+title: Azure Stack HCI release notes archive
+description: Archived release notes for Azure Stack HCI, version 20H2 Public Preview releases.
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/18/2020
+ms.date: 12/21/2020
 ---
 
-# Release notes for Azure Stack HCI, version 20H2 preview releases
+# Archived release notes for Azure Stack HCI, version 20H2 Public Preview
 
 > Applies to: Azure Stack HCI, version 20H2
 
-This article describes the contents of update packages for Azure Stack HCI, version 20H2 preview releases prior to the General Availability (GA) release on December 10, 2020. You can also view the current [Release notes for Azure Stack HCI](https://support.microsoft.com/help/4595086/).
+This article describes the contents of update packages for Azure Stack HCI, version 20H2 Public Preview releases prior to the General Availability (GA) release on December 10, 2020. You can also view the current [Release notes for Azure Stack HCI](https://support.microsoft.com/help/4595086/).
 
 ## December 8, 2020 Security Update (KB4592441)
 
-This update includes improvements and fixes for the latest release of Azure Stack HCI. 
+This update includes improvements and fixes for the Public Preview release of Azure Stack HCI. 
 
 ### Improvements and fixes
 This update contains miscellaneous security improvements to internal OS functionality. It addresses a security vulnerability by preventing applications that run as a SYSTEM account from printing to "FILE:" ports. To address this issue in the future, make sure your applications or services run as a specific user or service account.
@@ -40,7 +40,7 @@ For a list of the files that are provided in this update (OS Build 17784.1408), 
 
 ## November 23, 2020 Preview Update (KB4586852)
 
-This update includes improvements and fixes for the latest release of Azure Stack HCI. 
+This update includes improvements and fixes for the Public Preview release of Azure Stack HCI. 
 
    > [!IMPORTANT]
    > If you have Azure Stack HCI clusters configured and registered using the Public Preview image, then you must repair your Azure registration after the KB4586852 update is installed in order to use the new features that the update offers. After installing the update, follow these steps for each cluster:
@@ -79,7 +79,7 @@ For a list of the files that are provided in this update (OS Build 17784.1381), 
 
 ## November 10, 2020 Security Update (KB4586811)
 
-This update includes improvements and fixes for the latest release of Azure Stack HCI.
+This update includes improvements and fixes for the Public Preview release of Azure Stack HCI.
 
 ### Improvements and fixes
 This update contains miscellaneous security improvements to internal OS functionality. It addresses a security vulnerability by preventing applications that run as a SYSTEM account from printing to local ports that point to a file. Failing print jobs log error 50, “The request is not supported” in event ID 372 in the PrintService\Admin event log. To address this issue in the future, make sure your applications or services run as a specific user or service account.
@@ -102,7 +102,7 @@ For a list of the files that are provided in this update (OS Build 17784.1345), 
 
 ## November 10, 2020 Servicing Stack Update (KB4590242)
 
-This update includes quality improvements for the latest release of Azure Stack HCI.
+This update includes quality improvements for the Public Preview release of Azure Stack HCI.
 
 ### Improvements and fixes
 This update makes quality improvements to the servicing stack, which is the component that installs updates. Servicing stack updates (SSU) makes sure that you have a robust and reliable servicing stack so that your devices can receive and install Microsoft updates.
@@ -130,7 +130,7 @@ Learn about the [terminology](https://support.microsoft.com/help/824684) that Mi
 
 ## October 20, 2020 Preview Update (KB4580388)
 
-This update includes improvements and fixes for the latest release of Azure Stack HCI.
+This update includes improvements and fixes for the Public Preview release of Azure Stack HCI.
 
 ### Improvements and fixes
 This nonsecurity update includes quality improvements. Key changes include:
@@ -171,7 +171,7 @@ For a list of the files that are provided in this update (OS Build 17784.1321), 
 
 ## October 13, 2020 Security Update (KB4580363)
 
-This update includes improvements and fixes for the latest release of Azure Stack HCI.
+This update includes improvements and fixes for the Public Preview release of Azure Stack HCI.
 
 ### Improvements and fixes
 This update contains miscellaneous security improvements to internal OS functionality. No additional issues were documented for this release.
@@ -192,7 +192,7 @@ For a list of the files that are provided in this update (OS Build 17784.1288), 
 
 ## October 13, 2020 Servicing Stack Update (KB4583287)
 
-This update includes quality improvements for the latest release of Azure Stack HCI.
+This update includes quality improvements for the Public Preview release of Azure Stack HCI.
 
 ### Improvements and fixes
 This update makes quality improvements to the servicing stack, which is the component that installs updates. Servicing stack updates (SSU) makes sure that you have a robust and reliable servicing stack so that your devices can receive and install Microsoft updates.
@@ -220,7 +220,7 @@ Learn about the [terminology](https://support.microsoft.com/help/824684) that Mi
 
 ## September 17, 2020 Preview Update (KB4577629)
 
-This update includes improvements and fixes for the latest release of Azure Stack HCI.
+This update includes improvements and fixes for the Public Preview release of Azure Stack HCI.
 
 ### Improvements and fixes
 This nonsecurity update includes quality improvements. Key changes include:
@@ -240,7 +240,7 @@ For a list of the files that are provided in this update (OS Build 17784.1259), 
 
 ## September 8, 2020 Security Update (KB4577470)
 
-This update includes improvements and fixes for the latest release of Azure Stack HCI.
+This update includes improvements and fixes for the Public Preview release of Azure Stack HCI.
 
 ### Improvements and fixes
 This update contains miscellaneous security improvements to internal OS functionality. No additional issues were documented for this release.
@@ -261,7 +261,7 @@ For a list of the files that are provided in this update (OS Build 17784.1226), 
 
 ## September 8, 2020 Servicing Stack Update (KB4577558)
 
-This update includes quality improvements for the latest release of Azure Stack HCI.
+This update includes quality improvements for the Public Preview release of Azure Stack HCI.
 
 ### Improvements and fixes
 This update makes quality improvements to the servicing stack, which is the component that installs updates. Servicing stack updates (SSU) makes sure that you have a robust and reliable servicing stack so that your devices can receive and install Microsoft updates.
@@ -289,7 +289,7 @@ Learn about the [terminology](https://support.microsoft.com/help/824684) that Mi
 
 ## August 11, 2020 Security Update (KB4574585)
 
-This update includes improvements and fixes for the latest release of Azure Stack HCI.
+This update includes improvements and fixes for the Public Preview release of Azure Stack HCI.
 
 ### Improvements and fixes
 This update contains miscellaneous security improvements to internal OS functionality. No additional issues were documented for this release.
