@@ -116,41 +116,37 @@ Use the following steps to register an Azure Stack Hub system that has connectiv
 
 Connected environments can access the internet and Azure. For these environments, register the Azure Stack Hub resource provider with Azure and then configure your billing model.
 
-
 ### [Az modules](#tab/az1)
 
 1. To register the Azure Stack Hub resource provider with Azure, start PowerShell ISE as an administrator and use the following PowerShell cmdlets with the **EnvironmentName** parameter set to the appropriate Azure subscription type (see parameters as follows).
 
-2. Add the Azure account that you used to register Azure Stack Hub. To add the account, run the **Add-AzAccount** cmdlet. You are prompted to enter your Azure account credentials, and you may have to use two-factor authentication based on your account configuration.
-
-   ```powershell
-   Add-AzAccount -EnvironmentName "<environment name>"
-   ```
-
-   | Parameter | Description |  
-   |-----|-----|
-   | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud** or **AzureUSGovernment**.  |
-
-   >[!NOTE]
-   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using **Add-AzAccount**: **Remove-AzAccount-Scope Process**.
-
-3. In the same PowerShell session, ensure you're signed in to the correct Azure PowerShell context. This context is the Azure account that was used to register the Azure Stack Hub resource provider previously:
+2. In the same PowerShell session, ensure you're signed in to the correct Azure PowerShell context. This context is the Azure account that was used to register the Azure Stack Hub resource provider previously:
 
    ```powershell  
    Connect-AzAccount -Environment "<environment name>"
    ```
 
+   For **AzureUSSec**, you must first initialize the `CustomCloud` environment and then call **Connect-AzureRmAccount**:
+
+   ```powershell
+   Initialize-AzureRmEnvironment -Name 'CustomCloud' -CloudManifestFilePath $CloudManifestFilePath
+   Connect-AzureRmAccount -Environment 'CustomCloud'
+   ```
+
    | Parameter | Description |  
    |-----|-----|
-   | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud** or **AzureUSGovernment**.  |
+   | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or **AzureUSSec**.   |
 
-4. If you have multiple subscriptions, run the following command to select the one you want to use:
+   >[!NOTE]
+   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using **Add-AzureRmAccount**: **Remove-AzureRmAccount-Scope Process**.
 
-   ```powershell  
+3. If you have multiple subscriptions, run the following command to select the one you want to use:
+
+   ```powershell
    Get-AzSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzSubscription
    ```
 
-5. Run the following command to register the Azure Stack Hub resource provider with your Azure subscription:
+4. Run the following command to register the Azure Stack Hub resource provider with your Azure subscription:
 
    ```powershell  
    Register-AzResourceProvider -ProviderNamespace Microsoft.AzureStack
@@ -160,8 +156,7 @@ Connected environments can access the internet and Azure. For these environments
 
    ![Register Azure Stack Hub Resource Provider](./media/registration-tzl/register-azure-resource-provider-portal.png)
 
-
-6. In the same PowerShell session, run the **Set-AzsRegistration** cmdlet:
+5. In the same PowerShell session, run the **Set-AzsRegistration** cmdlet:
 
    ```powershell  
    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
@@ -176,8 +171,9 @@ Connected environments can access the internet and Azure. For these environments
       -msAssetTag $msAssetTagName `
       -UsageReportingEnabled: $false
    ```
+
    The MS Asset tag (`msAssetTag`) is a mandatory for Custom billing model registration and is printed on the product.
-    
+
    The process takes between 10 and 15 minutes. When the command completes, you see the message. **Your environment is now registered and activated using the provided parameters.**
 
 ### [AzureRM modules](#tab/azurerm1)
@@ -185,18 +181,18 @@ Connected environments can access the internet and Azure. For these environments
 1. To register the Azure Stack Hub resource provider with Azure, start PowerShell ISE as an administrator and use the following PowerShell cmdlets with the **EnvironmentName** parameter set to the appropriate Azure subscription type (see parameters as follows).
   
 2. Add the Azure account that you used to register Azure Stack Hub. To add the account, run the **Add-AzureRmAccount** cmdlet. You are prompted to enter your Azure account credentials, and you may have to use two-factor authentication based on your account configuration.
-   
+
    ```powershell
    Add-AzureRmAccount -EnvironmentName "<environment name>"
    ```
-   
+
    | Parameter | Description |  
    |-----|-----|
-   | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud** or **AzureUSGovernment**.  |
-   
+   | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or **AzureUSSec**. 
+
    >[!NOTE]
    > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using **Add-AzureRmAccount**: **Remove-AzureRmAccount-Scope Process**.
-   
+
 3. In the same PowerShell session, ensure you're signed in to the correct Azure PowerShell context. This context is the Azure account that was used to register the Azure Stack Hub resource provider previously:
 
    ```powershell
