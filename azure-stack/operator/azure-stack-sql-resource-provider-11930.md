@@ -32,7 +32,7 @@ Download the SQL resource provider binary and then run the self-extractor to ext
 
 This version of the Azure Stack Hub SQL resource provider includes the following improvements and fixes:
 
-- **Update the base VM to a specialized Windows Server.** This Windows Server version is specialize for Azure Stack Hub Add-On RP Infrastructure and it is not visible to the tenant marketplace. Make sure to download the **Microsoft AzureStack Add-On RP Windows Server INTERNAL ONLY** image before deploying or upgrading to this version of the SQL resource provider.
+- **Update the base VM to a specialized Windows Server.** This Windows Server version is specialize for Azure Stack Hub Add-On RP Infrastructure and it is not visible to the tenant marketplace. Make sure to download the **Microsoft AzureStack Add-On RP Windows Server** image before deploying or upgrading to this version of the SQL resource provider.
 - **Support removing orphaned database metadata and hosting server metadata.** When a hosting server cannot be connected anymore, the tenant will have an option to remove the orphaned database metadata from the portal. When there is no orphaned database metadata linked to the hosting server, the operator will be able to remove the orphaned hosting server metadata from the admin portal.
 - **Make KeyVaultPfxPassword an optional argument when performing secrets rotation.** Check [this document](azure-stack-sql-resource-provider-maintain.md#secrets-rotation) for details.
 - **Other bug fixes.**
