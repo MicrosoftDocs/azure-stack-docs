@@ -19,9 +19,9 @@ ms.lastreviewed: 12/20/2019
 
 ---
 
-# Register Azure Stack Hub with Azure
+# Register Azure Stack Hub with Azure - Azure Stack Hub ruggedized
 
-To set up Marketplace syndicationand use PaaS services, you must register and activate your Modular Data Center (MDC) or Azure Stack Hub ruggedized, based on Azure Stack Hub, after deployment completes. With Marketplace syndication, an administrator populates the local Azure Stack Hub Marketplace with images downloaded from the Azure Marketplace.
+To set up Marketplace syndication and use PaaS services, you must register and activate your Modular Data Center (MDC) or Azure Stack Hub ruggedized, based on Azure Stack Hub, after deployment completes. With Marketplace syndication, an administrator populates the local Azure Stack Hub Marketplace with images downloaded from the Azure Marketplace.
 
 Registration is required for systems that will connect to the Azure cloud as well as for systems that will be disconnected.
 
