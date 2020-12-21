@@ -84,9 +84,9 @@ To install the most recent Azure Stack Hubs tool:
 1. Open an elevated PowerShell prompt.
 2. Run the following cmdlet:
 
-    ```powershell  
-        Install-Module -Name Azs.Tools.Admin
-    ```
+   ```powershell  
+   Install-Module -Name Azs.Tools.Admin
+   ```
 
 ### Determine your registration scenario
 
