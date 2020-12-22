@@ -4,14 +4,16 @@ description: This topic provides guidance on how to plan, configure, and deploy 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 12/21/2020
+ms.date: 12/22/2020
 ---
 
 # Deploy branch office and edge on Azure Stack HCI
 
 >Applies to: Azure Stack HCI, version 20H2
 
-This topic provides guidance on how to plan, configure, and deploy branch office and edge scenarios on the Azure Stack HCI operating system. Use Azure Stack HCI to run virtualized applications and workloads with high availability on recommended hardware. The hardware supports clusters consisting of two servers configured with nested resiliency for storage, a simple, low-cost USB thumb drive cluster witness, and administration via the browser-based Windows Admin Center.
+This topic provides guidance on how to plan, configure, and deploy branch office and edge scenarios on the Azure Stack HCI operating system. The guidance positions your organization to run complex, highly available workloads in virtual machines (VMs) and containers in remote branch office and edge deployments. Computing at the edge shifts most data processing from a centralized system to the edge of the network, closer to a device or system that requires data quickly.
+
+Use Azure Stack HCI to run virtualized applications and workloads with high availability on recommended hardware. The hardware supports clusters consisting of two servers configured with nested resiliency for storage, a simple, low-cost USB thumb drive cluster witness, and administration via the browser-based Windows Admin Center.
 
 Azure IoT Edge moves cloud analytics and custom business logic to devices so that you can focus on business insights instead of data management. Azure IoT Edge combines AI, cloud, and edge computing in containerized cloud workloads, such as Azure Cognitive Services, Machine Learning, Stream Analytics, and Functions. Workloads can run on devices ranging from a Raspberry Pi to a converged edge server. You use [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) to manage your edge applications and devices.
 
@@ -30,7 +32,7 @@ Primary features of Azure IoT Edge:
 To learn more, see [What is Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/about-iot-edge).
 
 ## Deploy branch office and edge
-This section describes at a high level how to acquire hardware for branch office and edge on Azure Stack HCI and use Windows Admin Center for management. It also covers enabling branch office and edge support, and deploying Azure IoT Edge to manage containers in the cloud.
+This section describes at a high level how to acquire hardware for branch office and edge deployments on Azure Stack HCI and use Windows Admin Center for management. It also covers deploying Azure IoT Edge to manage containers in the cloud.
 
 ### Step 1: Acquire hardware from the Azure Stack HCI Catalog
 Refer to your specific hardware instructions for this step. For more information, reference your preferred Microsoft hardware partner in the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net).
@@ -47,8 +49,8 @@ To learn more, see [Monitor Azure Stack HCI with Azure Monitor](../manage/azure-
 
 You can also use Windows Admin Center to set up additional Azure hybrid services, such as Backup, File Sync, Site Recovery, Point-to-Site VPN, Update Management, and Security Center.
 
-### Step 3: Enable branch office and edge modern application support
-After setting up branch office and edge on Azure Stack HCI, you’re ready to enable your environment to support modern container-based application development and IoT data processing. Use Windows Admin Center for the steps in this section to deploy a virtual machine (VM) running Azure IoT Edge.
+### Step 3: Use container-based apps and IoT data processing
+Now you’re ready to use modern container-based application development and IoT data processing. Use Windows Admin Center for the steps in this section to deploy a VM running Azure IoT Edge.
 
 To learn more, see [What is Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/about-iot-edge).
 
