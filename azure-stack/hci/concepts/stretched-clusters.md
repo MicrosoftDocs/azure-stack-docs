@@ -46,7 +46,7 @@ The following diagram shows both Site 1 and Site 2 as being active sites, with b
 ## Next steps
 
 - Learn more about Storage Replica. See [Storage Replica overview](https://docs.microsoft.com/windows-server/storage/storage-replica/storage-replica-overview).
-- Learn even more about using Storage Replica. See [Configure a Hyper-V Failover Cluster or a File Server for a General Use Cluster](https://docs.microsoft.com/en-us/windows-server/storage/storage-replica/stretch-cluster-replication-using-shared-storage#configure-a-hyper-v-failover-cluster-or-a-file-server-for-a-general-use-cluster).
+- Learn even more about using Storage Replica. See [Configure a Hyper-V Failover Cluster or a File Server for a General Use Cluster](https://docs.microsoft.com/windows-server/storage/storage-replica/stretch-cluster-replication-using-shared-storage#configure-a-hyper-v-failover-cluster-or-a-file-server-for-a-general-use-cluster).
 - Learn about hardware and other requirements for stretched clusters. See [System requirements](system-requirements.md).
 - Learn how to deploy a stretched cluster using Windows Admin Center. See [Create a cluster using Windows Admin Center](../deploy/create-cluster.md).
 - Learn how to deploy a stretched cluster using PowerShell. See [Create a cluster using PowerShell](../deploy/create-cluster-powershell.md).
