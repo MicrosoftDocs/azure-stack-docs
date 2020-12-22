@@ -228,5 +228,5 @@
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
   - name: Azure Stack HCI support
     href: manage/get-support.md
-  - name: Azure Stack HCI preview release notes
+  - name: Azure Stack HCI archived release notes
     href: preview-release-notes.md
