@@ -3,7 +3,7 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 12/07/2020
+ms.date: 12/22/2020
 ms.author: sethm
 ms.reviewer: gara
 ms.lastreviewed: 05/28/2020
@@ -165,6 +165,7 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Updated marketplace items
 
+- 12/22/2020: Rogue Wave Software Centos 7.8 – version 7.8.2020062400
 - 12/07/2020: Bitnami Elasticsearch Cluster - version 1.0.2
 - 12/07/2020: Bitnami Cassandra Cluster - version 1.0.21
 - 12/07/2020: Bitnami etcd Cluster - version 1.0.16
