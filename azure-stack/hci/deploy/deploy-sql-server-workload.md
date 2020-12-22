@@ -4,7 +4,7 @@ description: This topic provides guidance on how to deploy SQL Server on Azure S
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 12/16/2020
+ms.date: 12/21/2020
 ---
 
 # Deploy SQL Server on Azure Stack HCI
@@ -19,9 +19,9 @@ Azure Stack HCI provides a highly available, cost efficient, flexible platform t
 The platform’s flexibility is especially important for mission critical databases. You can run SQL Server on virtual machines (VMs) that use either Windows Server or Linux, which allows you to consolidate multiple database workloads and add more VMs to your Azure Stack HCI environment as needed. Azure Stack HCI also enables you to integrate SQL Server with Azure Site Recovery to provide a cloud-based migration, restoration, and protection solution for your organization’s data that is reliable and secure.
 
 ## Deploy SQL Server
-This section describes at a high level how to get hardware for SQL Server on Azure Stack HCI, and use Windows Admin Center to manage the operating system on your servers. Information on setting up SQL Server, monitoring and performance tuning, and using High Availability (HA) and Azure hybrid services is included.
+This section describes at a high level how to acquire hardware for SQL Server on Azure Stack HCI, and use Windows Admin Center to manage the operating system on your servers. Information on setting up SQL Server, monitoring and performance tuning, and using High Availability (HA) and Azure hybrid services is included.
 
-### Step 1: Get hardware for SQL Server on Azure Stack HCI
+### Step 1: Acquire hardware from the Azure Stack HCI Catalog
 Refer to your specific hardware instructions for this step. For more information, reference your preferred Microsoft hardware partner in the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net).
 
 > [!NOTE]
