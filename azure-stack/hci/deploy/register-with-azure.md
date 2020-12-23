@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/16/2020
+ms.date: 12/23/2020
 ---
 
 # Connect Azure Stack HCI to Azure
@@ -16,7 +16,9 @@ ms.date: 12/16/2020
 Azure Stack HCI is delivered as an Azure service and needs to register within 30 days of installation per the Azure Online Services Terms. This topic explains how to register your Azure Stack HCI cluster with [Azure Arc](https://azure.microsoft.com/services/azure-arc/) for monitoring, support, billing, and hybrid services. Upon registration, an Azure Resource Manager resource is created to represent each on-premises Azure Stack HCI cluster, effectively extending the Azure management plane to Azure Stack HCI. Information is periodically synced between the Azure resource and the on-premises cluster(s).
 
    > [!IMPORTANT]
-   > Registering with Azure is required. Until your cluster is registered with Azure, the Azure Stack HCI operating system is not validly licensed, is not supported, and has reduced functionality (for example, you won't be able to create virtual machines).
+   > Registering with Azure is required. Until your cluster is registered with Azure, the Azure Stack HCI operating system is not validly licensed, is not supported, and has reduced functionality (for example, you won't be able to create virtual machines). 
+   > If you do not register your cluster with Azure, you will see the following license quota exceeded error message when attempting to create VMs: *There was a failure configuring the virtual machine role for 'vmname'. Job failed. Error opening "vmname" clustered roles. The service being accessed is licensed for a particular number of connections. No more connections can be made to the service at this time because there are already as many connections as the service can accept.*
+   > The solution is to register the system with Azure as described in this topic.
 
 ## Prerequisites for registration
 
