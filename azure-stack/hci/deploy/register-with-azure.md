@@ -20,7 +20,7 @@ Azure Stack HCI is delivered as an Azure service and needs to register within 30
    > 
    > *There was a failure configuring the virtual machine role for 'vmname'. Job failed. Error opening "vmname" clustered roles. The service being accessed is licensed for a particular number of connections. No more connections can be made to the service at this time because there are already as many connections as the service can accept.*
    > 
-   > The solution is to register your cluster with Azure as described in this topic.
+   > The solution is to allow outbound connectivity to Azure and register your cluster with Azure as described in this topic.
 
 ## Prerequisites for registration
 
