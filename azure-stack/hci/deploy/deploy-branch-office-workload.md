@@ -4,7 +4,7 @@ description: This topic provides guidance on how to plan, configure, and deploy 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 12/22/2020
+ms.date: 12/23/2020
 ---
 
 # Deploy branch office and edge on Azure Stack HCI
@@ -13,7 +13,7 @@ ms.date: 12/22/2020
 
 This topic provides guidance on how to plan, configure, and deploy branch office and edge scenarios on the Azure Stack HCI operating system. The guidance positions your organization to run complex, highly available workloads in virtual machines (VMs) and containers in remote branch office and edge deployments. Computing at the edge shifts most data processing from a centralized system to the edge of the network, closer to a device or system that requires data quickly.
 
-Use Azure Stack HCI to run virtualized applications and workloads with high availability on recommended hardware. The hardware supports clusters consisting of two servers configured with nested resiliency for storage, a simple, low-cost USB thumb drive cluster witness, and administration via the browser-based Windows Admin Center.
+Use Azure Stack HCI to run virtualized applications and workloads with high availability on recommended hardware. The hardware supports clusters consisting of two servers configured with nested resiliency for storage, a simple, low-cost USB thumb drive cluster witness, and administration via the browser-based Windows Admin Center. For details on creating a USB device cluster witness, see [Deploy a file share witness](https://docs.microsoft.com/windows-server/failover-clustering/file-share-witness).
 
 Azure IoT Edge moves cloud analytics and custom business logic to devices so that you can focus on business insights instead of data management. Azure IoT Edge combines AI, cloud, and edge computing in containerized cloud workloads, such as Azure Cognitive Services, Machine Learning, Stream Analytics, and Functions. Workloads can run on devices ranging from a Raspberry Pi to a converged edge server. You use [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) to manage your edge applications and devices.
 
@@ -37,10 +37,10 @@ This section describes at a high level how to acquire hardware for branch office
 ### Step 1: Acquire hardware from the Azure Stack HCI Catalog
 Refer to your specific hardware instructions for this step. For more information, reference your preferred Microsoft hardware partner in the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net).
 
-   >[!NOTE]
-   > In the catalog, you can filter to see branch office and edge hardware vendors.
+You use Windows Admin Center to [create an Azure Stack HCI cluster](./create-cluster.md) on an Integrated System from the catalog that has the operating system preinstalled. Otherwise, you'll need to deploy the operating system on your hardware. For details on Azure Stack HCI deployment options and installing Windows Admin Center, see [Deploy the Azure Stack HCI operating system](./operating-system.md).
 
-For details on Azure Stack HCI deployment options and installing Windows Admin Center, see [Deploy the Azure Stack HCI operating system](./operating-system.md).
+   >[!NOTE]
+   > In the catalog, you can filter to see vendor hardware that is optimized for this workload.
 
 ### Step 2: Set up Azure Monitor in Windows Admin Center
 In Windows Admin Center, set up Azure Monitor to gain insight into the application, network, and server health of your Azure Stack HCI branch office and edge deployment.
