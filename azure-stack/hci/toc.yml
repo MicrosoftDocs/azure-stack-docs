@@ -4,6 +4,8 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
+  - name: Compare to Windows Server
+    href: concepts/compare-windows-server.md
   - name: Release information
     href: release-information.md
   - name: Release notes
@@ -118,8 +120,6 @@
     items:
     - name: System requirements
       href: concepts/system-requirements.md
-    - name: Compare to Windows Server
-      href: concepts/compare-windows-server.md
     - name: Choose drives
       href: concepts/choose-drives.md
     - name: Drive symmetry considerations
