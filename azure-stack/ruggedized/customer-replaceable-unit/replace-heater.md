@@ -156,17 +156,17 @@ The heater is mounted into a transit case capable of holding the unit.
 
 1. At the back of the case, fully loosen the two captive screws holding the right filler bracket in place.
 
-    ![](media/image-105.png)
+    ![Diagram that shows the back of the case, with the captive screws on the right side highlighted.](media/image-105.png)
 
-    ![](media/image-106.png)
+    ![Diagram that shows the captive screws being turned.](media/image-106.png)
 
 1. Pull the right filler bracket towards center of case to remove it. 
 
 1. At the back of the case, fully loosen the two captive screws holding the left cableway bracket in place. 
 
-    ![](media/image-107.png)
+    ![Diagram that shows the back of the case, with the captive screws on the left side highlighted.](media/image-107.png)
 
-    ![](media/image-108.png)
+    ![Diagram that shows the captive screws being turned and the cableway bracket being removed.](media/image-108.png)
 
 
 1. Pull the left cableway bracket towards center of case to remove it. 
@@ -175,52 +175,52 @@ The heater is mounted into a transit case capable of holding the unit.
 
 1. At the back of the case, remove the one Cat 6 blue and two 25 Gbps black ethernet cables from the management or bottom Scale Unit node server. 
 
-    ![](media/image-109.png)
+    ![Diagram that shows the location of the Cat 6 blue and 25 Gbps black ethernet cable locations on the back of the case.](media/image-109.png)
 
 
 1. Place the cables in safe location for reinstallation. 
 
 1. At the back of the case, fully loosen the two captive screws holding the left inner cableway bracket in place. 
 
-    ![](media/image-110.png)
+    ![Diagram that shows the back of the case, with the captive screws on the left side highlighted.](media/image-110.png)
 
-    ![](media/image-111.png)
+    ![Diagram that shows the captive screws being turned and the cableway bracket being removed.](media/image-111.png)
 
 
 1. Pull the left inner cableway bracket towards center of case to remove it. 
 
 1. At the back of the case, unscrew the six hinge screws from the top of the heater, leaving the door and hinge pin together as one unit. 
 
-    ![](media/image-112.png)
+    ![Diagram that shows the six hinge screws being removed.](media/image-112.png)
 
 1. Place the bracket and screws in a safe location for reinstallation. 
 
 1. At the back of the pod, remove the two 10-32 rail screws, lock washers, and flat washers that secure the server rail to the pod rack.
 
-    ![](media/image-113.png)
+    ![Diagram that shows the location of the screws that secure the server rail.](media/image-113.png)
 
-    ![](media/image-114.png)
+    ![Diagram that shows the screws on the left and right sides of the case that secure the server rail being removed.](media/image-114.png)
 
 
 1. At the back of the pod, remove the four 10-32 screws, lock washers, and flat washers that secure the heater to the pod rack. 
 
-    ![](media/image-115.png)
+    ![Diagram that shows the location of the four screws that secure the heater.](media/image-115.png)
 
-    ![](media/image-116.png)
+    ![Diagram that shows a close up of the four screws that secure the heater.](media/image-116.png)
 
 
 1. Ensure all cables are unplugged and hanging freely out of the way. 
 
 1. At the front of the pod, carefully slide the server out. Hold the center of the server for even weight distribution as it is moved outward. 
 
-    ![](media/image-117.png)
+    ![Diagram that shows the server being removed from the pod.](media/image-117.png)
 
 
 1. Place the server on an electrostatic discharge-safe location. 
 
 1. At the front of the pod, pull the heater from the bottom of the rack. Hold the center of the heater for even weight distribution as it is moved outward. 
 
-    ![](media/image-118.png)
+    ![Diagram that shows the heater being removed from the pod.](media/image-118.png)
 
 
 ## Installing the heater
@@ -237,41 +237,41 @@ The heater is mounted into a transit case capable of holding the unit.
 
 1. At the front of the pod, slide a new zip tie though the loop in the bottom front of the Tactical 1U Heater - V2, but do not zip the tie into place. 
 
-    ![](media/image-119.png)
+    ![Diagram that shows the loop on the bottom front of the heater.](media/image-119.png)
 
 
 1. At the front of the pod, insert the Tactical 1U Heater - V2 by sliding it in from front to back. Ensure that the zip tie does not fall out. 
 
 1. At the front of the pod, install the two .064 inch shims between the rack and the Tactical 1U Heater - V2. 
 
-    ![](media/image-120.png)
+    ![Diagram that shows the location of the shims on the front of the pod.](media/image-120.png)
 
 
 1. At the back of the pod, install the two .064 inch shims between the rack and the Tactical 1U Heater - V2. 
 
-    ![](media/image-121.png)
+    ![Diagram that shows the location of the shims on the back of the pod.](media/image-121.png)
 
 
 1. At the front of the pod, reattach the four 10-32 screws, lock washers, and flat washers. Apply primer and low strength threadlocker to the screw threads, and torque the screws to 27 inch-pounds. 
 
-    ![](media/image-122.png)
+    ![Diagram that shows the screws being reattached.](media/image-122.png)
 
 
 1. At the front of the pod, install the management server or lower Scale Unit node server, sliding it in from front to rear. Ensure there are no loose cables in the way of the server. 
 
 1. At the front of the pod, reattach the four 10-32 screws, lock washers, and flat washers. Apply primer and low strength threadlocker to the screw threads, and torque the screws to 27 inch-pounds. 
 
-    ![](media/image-123.png)
+    ![Diagram that shows the server screws being reattached.](media/image-123.png)
 
 
 1. At the back of the pod, reattach the two server rear mounting 10-32 screws, lock washers, and flat washers. Apply primer and low strength threadlocker to the screw threads, and torque to 27 inch-pounds. 
 
-    ![](media/image-124.png)
+    ![Diagram that shows the two server rear mounting screws being reattached.](media/image-124.png)
 
 
 1. At the back of the pod, install the Tactical 1U Heater - V2 four rear mounting 10-32 screws, lock washers, and flat washers. Apply primer and low strength threadlocker to the screw threads, and torque the screws to 27 inch-pounds. 
 
-    ![](media/image-125.png)
+    ![Diagram that shows the four screws for the heater being reattached.](media/image-125.png)
 
 
 1. At the back of the pod, remove the two shims from below the Tactical 1U Heater - V2 and place them in the Heater Kit for future use. 
@@ -311,14 +311,14 @@ The heater is mounted into a transit case capable of holding the unit.
 
     Hold the plenum door steady while adjusting the arm behind the ball detents. 
     
-    ![](media/image-126.png)
+    ![Diagram that shows the ball detents being adjusted.](media/image-126.png)
     
-    ![](media/image-127.png)
+    ![Close up of the ball detents.](media/image-127.png)
     
 
 1. At the back of the pod, press either location A or B with both thumbs (simultaneously press both left and right or upper and lower) until an audible click is heard from the linkage engaging the plenum. 
 
-    ![](media/image-128.png)
+    ![Diagram that shows the locations to press and engage the plenum.](media/image-128.png)
 
 
 1. At the back of the pod, wind the six ethernet cables (two blue Cat 6 and four black 25 Gbps cables) around the cable stowage spooling brackets and tighten the six Velcro straps around the cables. 
@@ -327,12 +327,12 @@ The heater is mounted into a transit case capable of holding the unit.
 
 1. At the front of the pod, route the cable under the loop, wrap the zip tie around cable, and zip it into place. Clip the excess zip tie. 
 
-    ![](media/image-129.png)
+    ![Diagram that shows the loop for the zip tie and the server inlet temp sensor.](media/image-129.png)
 
 
 1. At the front of the pod, install the front plenum, by holding the plenum at approximately a forty degree angle (minimum) while placing your index fingers on the front angled flat section. Guide the folded metal of the plenum onto the chassis rack folded metal. 
 
-    ![](media/image-130.png)
+    ![Diagram that shows the front plenum being installed.](media/image-130.png)
 
 
 1. When aligned properly, use the release tabs to place the plenum into position. 
