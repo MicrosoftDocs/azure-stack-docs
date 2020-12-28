@@ -81,6 +81,18 @@ if ($session) {
   Get-AzureStackLog -FilterByResourceProvider <<value-add RP name>>
   ```
  
+  To collect logs for SQL RP: 
+
+  ```powershell
+  Get-AzureStackLog -FilterByResourceProvider SQLAdapter
+  ```
+
+  To collect logs for MySQL RP: 
+
+  ```powershell
+  Get-AzureStackLog -FilterByResourceProvider MySQLAdapter
+  ```
+
   To collect logs for IoT Hub: 
 
   ```powershell
