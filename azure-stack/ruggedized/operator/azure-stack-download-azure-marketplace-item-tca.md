@@ -56,7 +56,7 @@ Your Azure Stack Hub deployment must have internet connectivity and be [registe
 
 4. Each line item also shows the currently available version. If more than one version of a Marketplace item is available, the **Version** column shows **Multiple**. You can click on each item to view its description and additional information, including its download size:
 
-   ![Add from Azure](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure1.png)
+   ![Screenshot that shows the 'Add from Azure' page with 'Multiple' version entries highlighted.](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure1.png)
 
 5. If the version of an item is shown as **Multiple**, you can select that item and then choose a specific version from the resulting version selector dropdown:
 

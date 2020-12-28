@@ -33,7 +33,7 @@ the iDRAC web interface.
 1.  Go to **Maintenance** \**System
     Update**. The **Firmware Update** page is displayed.
 
-    ![](media/image-85.png)
+    ![Screenshot that shows the 'Maintenance' page for an 'Integrated Dell Remote Access Controller 9 | Enterprise'.](media/image-85.png)
 
 2.  In the **Update** tab, select **Local** as the File Location.
 

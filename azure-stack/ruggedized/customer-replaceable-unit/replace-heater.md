@@ -61,74 +61,74 @@ The heater is mounted into a transit case capable of holding the unit.
 
 1. Starting with the front pod cover, turn the eight cover latches counterclockwise to release the cover from the pod. Hold or secure the cover as you release all eight latches. 
 
-    ![](media/image-86.png)
+    ![Diagram that shows the front pod cover with the cover latches highlighted.](media/image-86.png)
 
 1. Remove the pod cover. 
 
-    ![](media/image-87.png)
+    ![Removing the front pod cover.](media/image-87.png)
 
 1. Repeat steps 1 and 2 to remove the rear pod cover. Now you can access the components inside the pods. 
 
 1. Fully loosen the screws and then pull the filter assembly away from the server, as shown in the following figures. 
 
-    ![](media/image-88.png)
+    ![Diagram that shows the location of the screws on the filter assembly.](media/image-88.png)
 
-    ![](media/image-89.png)
+    ![Pulling away the filter assembly.](media/image-89.png)
 
 1. Pull the release tabs away from the Tactical 1U Heater - V2 until the cover releases and then move the cover outward from the chassis rack in the pod. 
 
-    ![](media/image-90.png)
+    ![Diagram that shows the release tabs.](media/image-90.png)
 
 1. When the lower section of the plenum clears the base, pull outward to approximately forty degrees. The angle allows you to move the top of the plenum toward the server or switches, and then up and away before pulling the plenum out of the pod. 
 
-    ![](media/image-91.png)
+    ![Diagram that shows the plenum being removed.](media/image-91.png)
 
 1. In the front of the case, remove the zip tie from under the Tactical 1U Heater - V2. Use the diagonal cutters if necessary. 
 
-    ![](media/image-92.png)
+    ![Diagram that shows the bracket for the zip tie and the micro connector for the temperature inlet sensor highlighted.](media/image-92.png)
 
 1. Squeeze the micro-connector front tab with your thumb and index finger and pull downward until the connection is free from the bottom of heater. Move the cable out of the way of the heater. 
 
-    ![](media/image-93.png)
+    ![Diagram that shows the server inlet temp sensor with the cable attached.](media/image-93.png)
 
 1. At the front of the case, remove the four 10-32 screws, lock washers, and flat washers from the management server or bottom Scale Unit node server. 
 
-    ![](media/image-94.png)
+    ![Diagram that shows the location of the screws at the front of the case.](media/image-94.png)
 
-    ![](media/image-95.png)
+    ![Two diagrams that show the screws being removed from each side of the case.](media/image-95.png)
 
 1. At the front of the case, remove the front four 10-32 screws, lock washers, and flat washers from the heater.
 
-    ![](media/image-96.png)
+    ![Diagram that shows the location of the four screws on the front of the heater.](media/image-96.png)
 
-    ![](media/image-97.png)
+    ![Two diagrams that show the screws being removed from each side of the heater.](media/image-97.png)
 
 1. Unwind ethernet cables from the rear plenum, then remove any cable connected to the management server or bottom Scale Unit node server. 
 
 1. At the back of the case, loosen the six Velcro straps and pull the cables out from the Velcro. 
 
-    ![](media/image-98.png)
+    ![Diagram that shows the location of the six Velcro straps on the back of the case.](media/image-98.png)
 
 
 1. At the back of the case, after the Velcro is loosened, remove the cables from around the cable stowage brackets. 
 
 1. Allow all cables to hang out and away from the plenum. Hanging cables are not shown in following figure. 
 
-    ![](media/image-99.png)
+    ![Diagram that shows the cable way for power and Ethernet cables.](media/image-99.png)
 
 
 1. At the back of the case, quickly pull the plenum door down using the top lip of the plenum door. The plenum door should be disconnected from the linkage, allowing the door to hang freely. 
 
 1. Pull the plenum downward if the linkage is still attached. 
 
-    ![](media/image-100.png)
+    ![Diagram that shows the plenum at the back of the case being pulled downward.](media/image-100.png)
 
-    ![](media/image-101.png)
+    ![Diagram that shows the plenum being pulled down from the left-back side.](media/image-101.png)
 
 
 1. At the back of the case, unplug the server power cables from the Tactical 1U Heater - V2 and allow them to hang freely. 
 
-    ![](media/image-102.png)
+    ![Diagram that shows the location of the server power cables at the back of the case.](media/image-102.png)
 
 
 1. Unplug the power cables from the server and allow them to hang freely. 
@@ -147,9 +147,9 @@ The heater is mounted into a transit case capable of holding the unit.
     
     1. two washers 
 
-    ![](media/image-103.png)
+    ![Diagram that shows the location of the connection terminal ring.](media/image-103.png)
 
-    ![](media/image-104.png)
+    ![Diagram that shows the individual hardware for the connection terminal ring.](media/image-104.png)
 
 
 1. Place the hex nut and washers back on the grounding post or in safe location for reinstallation. 

@@ -114,15 +114,15 @@ Installation of the Container registry template requires several resources to be
 
 2. Select **Create** > **Compute** > **Container Registry Template**.
 
-    ![Container registry template](./media/container-registry-template-install-tzl/image1.png)
+    ![Screenshot that shows the 'Dashboard > New' page with 'Compute' selected and the 'Container Registry Template' selection displayed.](./media/container-registry-template-install-tzl/image1.png)
 
 3. Select the subscription, resource group, and location to deploy the container registry template.
 
-    ![Container registry template](./media/container-registry-template-install-tzl/image2.png)
+    ![Screenshot that shows the 'Create Container Registry Template - Basics' page.](./media/container-registry-template-install-tzl/image2.png)
 
 4. Complete the virtual machine configuration details. The image SKU defaults to **aks-ubuntu-1604-201909**; however, the output of the `Set-ContainerRegistryPrerequisites` function includes a list of available SKUs to use for deployment. If more than one SKU exists choose the most recent SKU for deployment.
 
-    ![Container registry template](./media/container-registry-template-install-tzl/image3.png)
+    ![Screenshot that shows the 'Create Container Registry Template - Virtual machine configuration' page.](./media/container-registry-template-install-tzl/image3.png)
 
     | Parameter | Details |
     | --- | --- |
@@ -138,7 +138,7 @@ Installation of the Container registry template requires several resources to be
 
 1. Complete the Storage and Key Vault configuration.
 
-    ![Container registry template](./media/container-registry-template-install-tzl/image4.png)
+    ![Screenshot that shows the "Create Container Registry Template - Storage and Key Vault configuration" page.](./media/container-registry-template-install-tzl/image4.png)
 
     | Parameter | Details |
     | --- | --- |
