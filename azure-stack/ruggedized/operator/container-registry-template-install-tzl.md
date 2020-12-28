@@ -1,7 +1,7 @@
 ---
-title: Add a container registry to Azure Stack Hub | Microsoft Docs
+title: Add a container registry - Azure Stack Hub | Microsoft Docs
 titleSuffix: Azure Stack
-description: Learn how to add a container registry to Azure Stack Hub Marketplace.
+description: Learn how to add a container registry to Azure Stack Hub Marketplace (Ruggedized).
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -20,7 +20,7 @@ ms.lastreviewed: 12/17/2019
 
 ---
 
-# Add a container registry to Azure Stack Hub
+# Add a container registry to Azure Stack Hub (Ruggedized)
 
 You can add the container registry to your Azure Stack Hub Marketplace so that your users can deploy and maintain their own container registry. This solution template installs and configures the open-source Docker Container Registry in a user subscription running on the AKS Base Ubuntu 16.04-LTS Image. The template supports both connected and disconnected (air-gapped) deployments and supports both Azure Active Directory (AAD) and Active Directory Federated Services (AD FS) deployed Azure Stack Hubs.
 

@@ -166,7 +166,7 @@ The heater is mounted into a transit case capable of holding the unit.
 
     ![Diagram that shows the back of the case, with the captive screws on the left side highlighted.](media/image-107.png)
 
-    ![Diagram that shows the captive screws being turned and the cableway bracket being removed.](media/image-108.png)
+    ![Diagram that shows the captive screws turned and the cableway bracket being removed.](media/image-108.png)
 
 
 1. Pull the left cableway bracket towards center of case to remove it. 
@@ -182,7 +182,7 @@ The heater is mounted into a transit case capable of holding the unit.
 
 1. At the back of the case, fully loosen the two captive screws holding the left inner cableway bracket in place. 
 
-    ![Diagram that shows the back of the case, with the captive screws on the left side highlighted.](media/image-110.png)
+    ![Diagram that shows the back of the case, and the captive screws on the left side highlighted.](media/image-110.png)
 
     ![Diagram that shows the captive screws being turned and the cableway bracket being removed.](media/image-111.png)
 
