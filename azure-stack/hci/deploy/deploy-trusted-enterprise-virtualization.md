@@ -28,7 +28,7 @@ This section describes at a high level how to acquire hardware to deploy a highl
 ### Step 1: Acquire hardware for trusted enterprise virtualization on Azure Stack HCI
 Refer to your specific hardware instructions for this step. For more information, reference your preferred Microsoft hardware partner in the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net).
 
-You use Windows Admin Center to [create an Azure Stack HCI cluster](deploy/create-cluster.md) on an Integrated System from the catalog that has the operating system preinstalled. Otherwise, you'll need to deploy the operating system on your hardware. For details on Azure Stack HCI deployment options and installing Windows Admin Center, see [Deploy the Azure Stack HCI operating system](deploy/operating-system.md).
+You use Windows Admin Center to [create an Azure Stack HCI cluster](./create-cluster.md) on an Integrated System from the catalog that has the operating system preinstalled. Otherwise, you'll need to deploy the operating system on your hardware. For details on Azure Stack HCI deployment options and installing Windows Admin Center, see [Deploy the Azure Stack HCI operating system](./operating-system.md).
 
    >[!NOTE]
    > In the catalog, you can filter to see vendor hardware that is optimized for this workload.
