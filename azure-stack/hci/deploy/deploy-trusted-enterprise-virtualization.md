@@ -4,14 +4,14 @@ description: This topic provides guidance on how to plan, configure, and deploy 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 12/29/2020
+ms.date: 12/30/2020
 ---
 
 # Deploy trusted enterprise virtualization on Azure Stack HCI
 
 >Applies to: Azure Stack HCI, version 20H2
 
-This topic provides guidance on how to plan, configure, and deploy a highly secure infrastructure that uses trusted enterprise virtualization on the Azure Stack HCI operating system. Leverage your Azure Stack HCI investment to run secure workloads on hardware designed for trusted enterprise virtualization that uses [virtualization-based security (VBS)](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-vbs) and hybrid cloud services through Windows Admin Center and the Azure portal.
+This topic provides guidance on how to plan, configure, and deploy a highly secure infrastructure that uses trusted enterprise virtualization on the Azure Stack HCI operating system. Leverage your Azure Stack HCI investment to run secure workloads on hardware that uses [virtualization-based security (VBS)](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-vbs) and hybrid cloud services through Windows Admin Center and the Azure portal.
 
 ## Overview
 VBS is a key component of the [security investments in Azure Stack HCI](/windows-server/get-started-19/whats-new-19#security) to protect hosts and virtual machines (VMs) from security threats. For example, the [Security Technical Implementation Guide (STIG)](https://nvd.nist.gov/ncp/checklist/914), which is published as a tool to improve the security of Department of Defense (DoD) information systems, lists VBS and [Hypervisor-Protected Code Integrity (HVCI)](https://docs.microsoft.com/windows-hardware/drivers/bringup/device-guard-and-credential-guard) as general security requirements. It is imperative to use host hardware that is enabled for VBS and HVCI to protect workloads on VMs, because a compromised host cannot guarantee VM protection.
@@ -28,12 +28,14 @@ This section describes at a high level how to acquire hardware to deploy a highl
 ### Step 1: Acquire hardware for trusted enterprise virtualization on Azure Stack HCI
 Refer to your specific hardware instructions for this step. For more information, reference your preferred Microsoft hardware partner in the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net).
 
-You use Windows Admin Center to [create an Azure Stack HCI cluster](./create-cluster.md) on an Integrated System from the catalog that has the operating system preinstalled. Otherwise, you'll need to deploy the operating system on your hardware. For details on Azure Stack HCI deployment options and installing Windows Admin Center, see [Deploy the Azure Stack HCI operating system](./operating-system.md).
+You use Windows Admin Center to [create an Azure Stack HCI cluster](./create-cluster.md) on an integrated system that has the operating system preinstalled from a variety of vendors in the catalog. For more information, see [Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci).
+
+Otherwise, you'll need to deploy the operating system on your hardware. For details on Azure Stack HCI deployment options and installing Windows Admin Center, see [Deploy the Azure Stack HCI operating system](./operating-system.md).
 
    >[!NOTE]
    > In the catalog, you can filter to see vendor hardware that is optimized for this workload.
 
-All partner hardware for Azure Stack HCI is certified with the Hardware Assurance Additional Qualification. The qualification process tests for all required [VBS](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-vbs) functionality. However, VBS and HVCI are not automatically enabled in Azure Stack HCI.
+All partner hardware for Azure Stack HCI is certified with the Hardware Assurance Additional Qualification. The qualification process tests for all required [VBS](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-vbs) functionality. However, VBS and HVCI are not automatically enabled in Azure Stack HCI. For more information about the the Hardware Assurance Additional Qualification, see "Hardware Assurance" under **Systems** in the [Windows Server Catalog](https://www.windowsservercatalog.com/content.aspx?ctf=AQinfo-systems.htm#:~:text=Hardware%20Assurance%20Windows%20Server%20systems%20that%20are%20awarded,of%20Windows%20Server%2C%20starting%20with%20Windows%20Server%202016). 
 
    >[!WARNING]
    > HVCI may be incompatible with hardware devices not listed in the Azure Stack HCI Catalog. We strongly recommend using Azure Stack HCI validated hardware from our partners for trusted enterprise virtualization infrastructure.
