@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Hub help links cross-reference
-description: Look up portal reference links for Azure Stack Hub.
+title: Azure Stack Hub help links cross-reference - MDC
+description: Look up portal reference links for Azure Stack Hub when operating from a Modular Data Center (MDC).
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -19,7 +19,7 @@ ms.reviewer: efemmano
 
 --- 
 
-# Alerts aka.ms link reference for Azure Stack Hub
+# Alerts aka.ms link reference for Azure Stack Hub - Modular Data Center (MDC)
 
 This topic lists cross-references for links that appear within alerts in the Administrator portal. 
 

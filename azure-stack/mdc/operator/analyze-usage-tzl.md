@@ -1,6 +1,6 @@
 ---
-title: Analyze Azure Stack usage and resource usage API | Microsoft Docs
-description: Analyzing Azure Stack usage and reference for the resource usage API, which retrieves Azure Stack usage information.
+title: Analyze Azure Stack usage and resource usage API - MDC
+description: Analyzing Azure Stack usage and reference for the resource usage API, which retrieves Azure Stack usage information. For modular data centers (MDC).
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -19,7 +19,7 @@ ms.lastreviewed: 10/27/2020
 
 ---
 
-# Analyze Azure Stack usage with local usage meters
+# Analyze Azure Stack usage with local usage meters - Modular Data Center (MDC)
 
 Information about which subscriptions use which resources is stored in a local usage database. Administrators can retrieve this data to analyze which users are consuming resources.
 
