@@ -4,10 +4,10 @@ description: Learn how to use the cross-platform command-line interface (CLI) to
 author: mattbriggs
 
 ms.topic: article
-ms.date: 10/26/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/26/2020
+ms.lastreviewed: 12/16/2020
 
 # Intent: As an Azure Stack user, I want to use cross-platform CLI to manage and deploy resources on Azure Stack.
 # Keyword: manage azure stack CLI
@@ -36,7 +36,7 @@ You can install the Azure CLI to manage Azure Stack Hub with a Windows or Linux 
 
 2. Make a note of the CLI's Python location. If you're running the ASDK, you need to use this location to add your certificate. For instructions on setting up certificates for installing the CLI on the ASDK, see [Setting up certificates for Azure CLI on Azure Stack Development Kit](../asdk/asdk-cli.md).
 
-## Set up Azure CLI
+## Connect with Azure CLI
 
 ### [Azure AD on Windows](#tab/ad-win)
 
@@ -50,17 +50,25 @@ This section walks you through setting up CLI if you're using Azure AD as your i
 
 3. Register your environment. Use the following parameters when running `az cloud register`:
 
-    | Value | Example | Description |
-    | --- | --- | --- |
-    | Environment name | AzureStackUser | Use `AzureStackUser`  for the user environment. If you're operator, specify `AzureStackAdmin`. |
-    | Resource Manager endpoint | `https://management.local.azurestack.external` | The **ResourceManagerUrl** in the ASDK is: `https://management.local.azurestack.external/` The **ResourceManagerUrl** in integrated systems is: `https://management.<region>.<fqdn>/` If you have a question about the integrated system endpoint, contact your cloud operator. |
-    | Storage endpoint | local.azurestack.external | `local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
-    | Keyvault suffix | .vault.local.azurestack.external | `.vault.local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
-    | VM image alias doc endpoint- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | URI of the document, which contains VM image aliases. For more info, see [Set up the virtual machine alias endpoint](../asdk/asdk-cli.md#set-up-the-virtual-machine-alias-endpoint). |
+      | Value | Example | Description |
+      | --- | --- | --- |
+      | Environment name | AzureStackUser | Use `AzureStackUser`  for the user environment. If you're operator, specify `AzureStackAdmin`. |
+      | Resource Manager endpoint | `https://management.contoso.onmicrosoft.com` | The **ResourceManagerUrl** in the ASDK is: `https://management.contoso.onmicrosoft.com/` The **ResourceManagerUrl** in integrated systems is: `https://management.<region>.<fqdn>/` If you have a question about the integrated system endpoint, contact your cloud operator. |
+      | Storage endpoint | local.contoso.onmicrosoft.com | `local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
+      | Keyvault suffix | .vault.contoso.onmicrosoft.com | `.vault.local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
+      | Endpoint active directory graph resource ID | https://graph.windows.net/ | The Active Directory resource ID. |
+    
+      ```azurecli  
+      az cloud register `
+          -n <environmentname> `
+          --endpoint-resource-manager "https://management.<region>.<fqdn>" `
+          --suffix-storage-endpoint "<fqdn>" `
+          --suffix-keyvault-dns ".vault.<fqdn>" `
+          --endpoint-active-directory-graph-resource-id "https://graph.windows.net/"
+      ```
 
-    ```azurecli  
-    az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>
-    ```
+    You can find a reference for the [register command](https://docs.microsoft.com/cli/azure/cloud?view=azure-cli-latest#az_cloud_register) in the Azure CLI reference documentation.
+
 
 4. Set the active environment by using the following commands.
 
@@ -73,18 +81,17 @@ This section walks you through setting up CLI if you're using Azure AD as your i
     ```azurecli
     az cloud update --profile 2019-03-01-hybrid
    ```
-
-    >[!NOTE]  
-    >If you're running a version of Azure Stack Hub before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You also need to use a recent version of the Azure CLI.
  
-6. Sign in to your Azure Stack Hub environment by using the `az login` command. Sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
+6. Sign in to your Azure Stack Hub environment by using the `az login` command.
+
+    You can sign in to the Azure Stack Hub environment using your user credentials, or with a [service principal](/azure/active-directory/develop/app-objects-and-service-principals) (SPN) provided to you by your cloud operator. 
 
    - Sign in as a *user*: 
 
      You can either specify the username and password directly within the `az login` command, or authenticate by using a browser. You must do the latter if your account has multi-factor authentication enabled:
 
      ```azurecli
-     az login -u <Active directory global administrator or user account. For example: username@<aadtenant>.onmicrosoft.com> --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com>
+     az login -u "user@contoso.onmicrosoft.com" -p 'Password123!' --tenant contoso.onmicrosoft.com
      ```
 
      > [!NOTE]
@@ -92,11 +99,34 @@ This section walks you through setting up CLI if you're using Azure AD as your i
 
    - Sign in as a *service principal*: 
     
-     Before you sign in, [create a service principal through the Azure portal](../operator/azure-stack-create-service-principals.md?view=azs-2002) or CLI and assign it a role. Now, sign in by using the following command:
+        Before you sign in, [create a service principal through the Azure portal](../operator/azure-stack-create-service-principals.md?view=azs-2002) or CLI and assign it a role. Now, sign in by using the following command:
+    
+        ```azurecli  
+        az login `
+          --tenant <Azure Active Directory Tenant name. `
+                    For example: myazurestack.onmicrosoft.com> `
+        --service-principal `
+          -u <Application Id of the Service Principal> `
+          -p <Key generated for the Service Principal>
+        ```
+    
+7. Verify that your environment is set correctly and that your environment is the active cloud.
 
-     ```azurecli  
-     az login --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com> --service-principal -u <Application Id of the Service Principal> -p <Key generated for the Service Principal>
-     ```
+      ```azurecli
+          az cloud list --output table
+      ```
+
+You should see that your environment is listed and **IsActive** is `true`. For example:
+
+```azurecli  
+IsActive    Name               Profile
+----------  -----------------  -----------------
+False       AzureCloud         2019-03-01-hybrid
+False       AzureChinaCloud    latest
+False       AzureUSGovernment  latest
+False       AzureGermanCloud   latest
+True        AzureStackUser     2019-03-01-hybrid
+```
 
 #### Test the connectivity
 

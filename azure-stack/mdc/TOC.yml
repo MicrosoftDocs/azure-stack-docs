@@ -31,7 +31,7 @@
       - name: Capacity planner tool
         href: azure-stack-capacity-planner.md
     - name: Integration overview 
-      href: customer-journey.md
+      href: integration-overview.md
     - name: Connection models
       href: ../operator/azure-stack-connection-models.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Connected deployment
@@ -102,12 +102,12 @@
           href: ../operator/azure-stack-validate-pki-certs.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Remediate PKI certificates
           href: ../operator/azure-stack-remediate-certs.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-    - name: Provisioning
+    - name: Registration and readiness 
       items: 
-      - name: Validate Azure registration 
-        href: ../operator/azure-stack-validate-registration.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json 
       - name: Register         
         href: operator/registration-tzl.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+      - name: Validate Azure registration 
+        href: ../operator/azure-stack-validate-registration.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json 
       - name: Value-add resource providers
         items:
         - name: App Service
@@ -178,12 +178,8 @@
           href: ../operator/azure-stack-enable-multitenancy.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: How-to guides
     items:
-    - name: Extended storage
-      items:
-      - name: OneFS and firmware updates
-        href: extended-storage-firmware-updates.md
-      - name: Health checks
-        href: extended-storage-health-checks.md
+    - name: Extended storage health checks
+      href: extended-storage-health-checks.md
     - name: Manage 
       items:
       - name: Administration basics
@@ -197,7 +193,7 @@
       - name: Set up management environment
         items:
         - name: Install Azure Stack PowerShell
-          href: ../operator/azure-stack-powershell-install.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: ../operator/powershell-install-az-module.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Connect with PowerShell
           href: ../operator/azure-stack-powershell-configure-admin.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Access privileged endpoint
@@ -523,7 +519,7 @@
             - name: Azure Stack PowerShell overview
               href: ../user/azure-stack-powershell-overview.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
             - name: Install Azure Stack PowerShell
-              href: /azure-stack/operator/azure-stack-powershell-install?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+              href: /azure-stack/operator/powershell-install-az-module?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
               maintainContext: true
             - name: Connect with PowerShell
               href: ../user/azure-stack-powershell-configure-user.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json

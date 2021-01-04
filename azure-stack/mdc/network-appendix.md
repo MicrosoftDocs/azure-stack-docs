@@ -48,25 +48,115 @@ The appendix provides device parameter and identity information for MDC hardware
 
 ### Juniper MX204
 
-|  |  |  |
-|--|--|--|
-| Layout | System capacity | 3 Tbps |
-|        | Slot orientation | NA |
-|        | Mounting | Front or center |
-| Physical Specification | Dimensions (W x H x D) | 17.45" x 8.71" x 24.5" (44.3 x 22.1 x 62.2 cm) |
-|                        | Weight fully loaded | 130 lb/59 kg |
-|                        | Weight unloaded | 52 lbs/23.6 kg |
-| Routing Engine | Default memory | 2x16 MB NOR flash storage; 64 GB of DDR4 RAM; 2x50 GB SSD |
-|                | Number of cores | 6 cores |
-| Redundancy | Components | Power supplies, REs, fans |
-| Environmental | Air flow | Side to side |
-|               | Operating temperature | 32° to 115° F (0° to 46° C) at sea level |
-|               | Operating humidity | 5% to 90% |
-|               | Operating altitude | 10,000 ft (3048 m) |
-| Certifications | NEBS | • GR-1089-Core EMC and Electrical Safety |
-|                | | • Common Bonding Network (CBN) |
-|                | | • National Electrical Code (NEC) |
-|                | | • GR-63-Core Physical Protection |
+:::row:::
+    :::column:::
+        **Layout**
+    :::column-end:::
+    :::column:::
+        System capacity
+
+        Slot Orientation
+
+        Mounting
+    :::column-end:::
+    :::column span="2":::
+        3 Tbps
+
+        NA
+
+        Front or center
+    :::column-end:::
+:::row-end:::
+
+:::row:::
+    :::column:::
+        **Physical Specification**
+    :::column-end:::
+    :::column:::
+        Dimensions (W x H x D)
+
+        Weight fully loaded
+
+        Weight unloaded
+    :::column-end:::
+    :::column span="2":::
+        17.45" x 8.71" x 24.5" (44.3 x 22.1 x 62.2 cm)
+
+        130 lb/59 kg
+
+        52 lbs/23.6 kg
+    :::column-end:::
+:::row-end:::
+
+:::row:::
+    :::column:::
+        **Routing Engine**
+    :::column-end:::
+    :::column:::
+        Default memory
+
+        Number of cores
+    :::column-end:::
+    :::column span="2":::
+        2x16 MB NOR flash storage; 64 GB of DDR4 RAM; 2x50 GB SSD
+
+        6 cores
+    :::column-end:::
+:::row-end:::
+
+:::row:::
+    :::column:::
+        **Redundancy**
+    :::column-end:::
+    :::column:::
+        Components
+    :::column-end:::
+    :::column span="2":::
+        Power supplies, REs, fans
+    :::column-end:::
+:::row-end:::
+
+:::row:::
+    :::column:::
+        **Environmental**
+    :::column-end:::
+    :::column:::
+        Air flow
+
+        Operating temperature
+
+        Operating humidity
+
+        Operating altitude
+    :::column-end:::
+    :::column span="2":::
+        Side to side
+
+        32° to 115° F (0° to 46° C) at sea level
+
+        5% to 90%
+
+        10,000 ft (3048 m)
+    :::column-end:::
+:::row-end:::
+
+:::row:::
+    :::column:::
+        **Certifications**
+    :::column-end:::
+    :::column:::
+        NEBS
+    :::column-end:::
+    :::column span="2":::
+        • GR-1089-Core EMC and Electrical Safety
+
+        • Common Bonding Network (CBN)
+
+        • National Electrical Code (NEC)
+
+        • GR-63-Core Physical Protection
+    :::column-end:::
+:::row-end:::
 
 ### Dell EMC S4148F-ON
 

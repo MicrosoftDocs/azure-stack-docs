@@ -57,7 +57,24 @@ The following versions are supported with Azure Stack Hub Storage:
 
 Azure Storage services APIs:
 
-2005 update or newer versions:
+::: moniker range=">=azs-2008"
+
+2008 update or newer versions:
+- [2019-07-07](/rest/api/storageservices/version-2019-07-07)
+- [2019-02-02](/rest/api/storageservices/version-2019-02-02)
+- [2018-11-09](/rest/api/storageservices/version-2018-11-09)
+- [2018-03-28](/rest/api/storageservices/version-2018-03-28)
+- [2017-11-09](/rest/api/storageservices/version-2017-11-09)
+- [2017-07-29](/rest/api/storageservices/version-2017-07-29)
+- [2017-04-17](/rest/api/storageservices/version-2017-04-17)
+- [2016-05-31](/rest/api/storageservices/version-2016-05-31)
+- [2015-12-11](/rest/api/storageservices/version-2015-12-11)
+- [2015-07-08](/rest/api/storageservices/version-2015-07-08)
+- [2015-04-05](/rest/api/storageservices/version-2015-04-05)
+
+::: moniker-end
+
+2005 update:
 
 - [2019-02-02](/rest/api/storageservices/version-2019-02-02)
 - [2018-11-09](/rest/api/storageservices/version-2018-11-09)
@@ -82,7 +99,21 @@ Previous versions:
 
 Azure Storage services management APIs:
 
-1811 update or newer versions:
+::: moniker range=">=azs-2008"
+
+2008 update or newer versions:
+- [2018-02-01](/rest/api/storagerp/)
+- [2017-10-01](/rest/api/storagerp/)
+- [2017-06-01](/rest/api/storagerp/)
+- [2016-12-01](/rest/api/storagerp/)
+- [2016-05-01](/rest/api/storagerp/)
+- [2016-01-01](/rest/api/storagerp/)
+- [2015-06-15](/rest/api/storagerp/)
+- [2015-05-01-preview](/rest/api/storagerp/)
+
+::: moniker-end
+
+1811 update to 2005 update:
 
 - [2017-10-01](/rest/api/storagerp/)
 - [2017-06-01](/rest/api/storagerp/)
@@ -105,7 +136,7 @@ For the storage module PowerShell, be aware of the version that's compatible wit
 | Module | Supported version | Usage |
 |---|---|---|
 | Azure.Storage | [4.5.0](https://www.powershellgallery.com/packages/Azure.Storage/4.5.0) | Manages blobs, queues, tables in Azure Stack Hub storage accounts. |
-| AzureRM.Storage | [5.0.4](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.4) | Creates and manages storage accounts in Azure Stack Hub. |
+| Az.Storage | [5.0.4](https://www.powershellgallery.com/packages/Az.Storage/5.0.4) | Creates and manages storage accounts in Azure Stack Hub. |
 
 For more information about Azure Stack Hub supported storage client libraries, see: [Get started with Azure Stack Hub storage development tools](azure-stack-storage-dev.md).
 

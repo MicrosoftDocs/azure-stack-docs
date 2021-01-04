@@ -1,6 +1,6 @@
 ---
-title: Protect VMs deployed on Azure Stack | Microsoft Docs
-description: Learn how to build a recovery plan to protect VMs deployed on Azure Stack against data loss and unplanned downtime.
+title: Protect VMs deployed on Azure Stack - MDC | Microsoft Docs
+description: Learn how to build a recovery plan to protect VMs deployed on Azure Stack against data loss and unplanned downtime for an MDC.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,17 +12,17 @@ ms.workload: tzl
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 11/09/2020
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 3/19/2018
 ---
 
-# Protect VMs deployed on Azure Stack Hub
+# Protect VMs deployed on Azure Stack Hub - Modular Data Center (MDC)
 
 Use this article as a guide to develop a plan for protecting virtual machines (VMs) that your users deploy on Azure Stack Hub.
 
-To protect against data loss and unplanned downtime, implement a data protection and disaster recovery plan for VM-based applications on Azure Stack Hub. The protection plan implemented will depend on business requirements and design of the application. This plan should follow the framework established by your organization\'s comprehensive business continuity and disaster recovery (BC/DR) strategy. For a high level overview of the BC/DR considerations for Azure Stack Hub, see Azure Stack: Considerations for business continuity and disaster recovery.
+To protect against data loss and unplanned downtime, implement a data protection and disaster recovery plan for VM-based applications on Azure Stack Hub. The protection plan implemented will depend on business requirements and design of the application. This plan should follow the framework established by your organization's comprehensive business continuity and disaster recovery (BC/DR) strategy. For a high level overview of the BC/DR considerations for Azure Stack Hub, see Azure Stack: Considerations for business continuity and disaster recovery.
 
 ## Application recovery objectives
 
@@ -36,7 +36,7 @@ Determine the amount of downtime and data loss your organization can tolerate fo
 
 Conduct an assessment to define the RTO and RPO for each application.
 
-Another important metric to consider is **Mean Time to Recover** (MTTR), which is the average time that it takes to restore the application after a failure. MTTR is an empirical value for a system. If MTTR exceeds the RTO, then a failure in the system will cause an unacceptable business disruption because it won\'t be possible to restore the system within the defined RTO.
+Another important metric to consider is **Mean Time to Recover** (MTTR), which is the average time that it takes to restore the application after a failure. MTTR is an empirical value for a system. If MTTR exceeds the RTO, then a failure in the system will cause an unacceptable business disruption because it won't be possible to restore the system within the defined RTO.
 
 ## Protection options for IaaS VMs
 

@@ -67,24 +67,24 @@ Open an elevated PowerShell console and complete the following steps to determin
 
    In the following example, the secrets collection returned for the Event Hubs RP contains a `"Certificate"` secret named `aseh-ssl-gateway-pfx`. 
 
-   ```powershell
-   PS C:\WINDOWS\system32> Get-AzsProductSecret -PackageId 'microsoft.eventhub.1.2003.0.0' -AsJson
-   VERBOSE: GET
-   https://adminmanagement.myregion.mycompany.com/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productPackages/microsoft.eventhub.1.2003.0.0/secrets?api-version=2019-01-01 with 0-char payload
-   VERBOSE: Received 617-char response, StatusCode = OK
-   {
-       "value":  [
-                     {
-                         "id":  "/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productPackages/microsoft.eventhub.1.2003.0.0/secrets/aseh-ssl-gateway-pfx",
-                         "name":  "global/microsoft.eventhub.1.2003.0.0/aseh-ssl-gateway-pfx",
-                         "type":  "Microsoft.Deployment.Admin/locations/productPackages/secrets",
-                         "properties":  {
+    ```powershell
+    PS C:\WINDOWS\system32> Get-AzsProductSecret -PackageId 'microsoft.eventhub.1.2003.0.0' -AsJson
+    VERBOSE: GET
+    https://adminmanagement.myregion.mycompany.com/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productPackages/microsoft.eventhub.1.2003.0.0/secrets?api-version=2019-01-01 with 0-char payload
+    VERBOSE: Received 617-char response, StatusCode = OK
+    {
+        "value":  [
+                        {
+                            "id":  "/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productPackages/microsoft.eventhub.1.2003.0.0/secrets/aseh-ssl-gateway-pfx",
+                            "name":  "global/microsoft.eventhub.1.2003.0.0/aseh-ssl-gateway-pfx",
+                            "type":  "Microsoft.Deployment.Admin/locations/productPackages/secrets",
+                            "properties":  {
                                             "secretKind":  "Certificate",
                                             "description":  "Event Hubs gateway SSL certificate.",
                                             "expiresAfter":  "P730D",
                                             "secretDescriptor":  {
-   
-                                                                 },
+    
+                                                                    },
                                             "secretState":  {
                                                                 "status":  "Deployed",
                                                                 "rotationStatus":  "None",
@@ -92,11 +92,11 @@ Open an elevated PowerShell console and complete the following steps to determin
                                                             },
                                             "provisioningState":  "Succeeded"
                                         }
-                     },
-                     ...
-                 ]
-   }
-   ```
+                        },
+                        ...
+                    ]
+    }
+    ```
 
 ### Rotate the secrets
 

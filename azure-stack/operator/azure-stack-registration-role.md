@@ -65,13 +65,13 @@ To create a custom role, you must have the `Microsoft.Authorization/roleDefiniti
 3. In PowerShell, connect to Azure to use Azure Resource Manager. When prompted, authenticate using an account with sufficient permissions such as [Owner](/azure/role-based-access-control/built-in-roles#owner) or [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator).
 
     ```azurepowershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
-4. To create the custom role, use **New-AzureRmRoleDefinition** specifying the JSON template file.
+4. To create the custom role, use **New-AzRoleDefinition** specifying the JSON template file.
 
     ``` azurepowershell
-    New-AzureRmRoleDefinition -InputFile "C:\CustomRoles\registrationrole.json"
+    New-AzRoleDefinition -InputFile "C:\CustomRoles\registrationrole.json"
     ```
 
 ## Assign a user to registration role

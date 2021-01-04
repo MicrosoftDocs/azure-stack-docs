@@ -1,6 +1,6 @@
 ---
-title: Scale unit node actions in Azure Stack Hub 
-description: Learn about scale unit node actions, including power on, power off, disable, resume, and how to view node status in Azure Stack Hub integrated systems.
+title: Scale unit node actions in Azure Stack Hub for an MDC
+description: Learn how to scale unit node actions, including power on, power off, disable, resume, and view node status in Azure Stack Hub integrated systems.
 author: IngridAtMicrosoft
 
 ms.topic: article
@@ -15,7 +15,7 @@ ms.lastreviewed: 10/26/2020
 ---
 
 
-# Scale unit node actions in Azure Stack Hub
+# Scale unit node actions in Azure Stack Hub - Modular Data Center (MDC)
 
 This article describes how to view the status of a scale unit. You can view the unit's nodes. You can run node actions like power on, power off, shut down, drain, resume, and repair. Typically, you use these node actions during field replacement of parts, or to help recover a node.
 
@@ -67,7 +67,7 @@ When you view information about a scale unit node, you can also perform node act
 
 The operational state of the node determines which options are available.
 
-You need to install Azure Stack Hub PowerShell modules. These cmdlets are in the **Azs.Fabric.Admin** module. To install or verify your installation of PowerShell for Azure Stack Hub, see [Install PowerShell for Azure Stack Hub](../../operator/azure-stack-powershell-install.md).
+You need to install Azure Stack Hub PowerShell modules. These cmdlets are in the **Azs.Fabric.Admin** module. To install or verify your installation of PowerShell for Azure Stack Hub, see [Install PowerShell for Azure Stack Hub](../../operator/powershell-install-az-module.md).
 
 ## Stop
 

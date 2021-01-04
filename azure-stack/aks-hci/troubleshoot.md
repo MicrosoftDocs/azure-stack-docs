@@ -3,7 +3,7 @@ title: Troubleshooting AKS
 description: This article provides information about troubleshooting Azure Kubernetes Service (AKS) on Azure Stack HCI.
 author: davannaw-msft
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 12/02/2020
 ms.author: dawhite
 ---
 
@@ -74,23 +74,49 @@ GetHelp .\Get-SMEUILogs.ps1 -Examples
 ```
 
 ## Troubleshooting Windows worker nodes 
-To sign in to a Windows worker node, first get the IP address of your node by running `kubectl get`. Note the `EXTERNAL-IP` value.
+To sign in to a Windows worker node using SSH, first get the IP address of your node by running `kubectl get` and capturing the `EXTERNAL-IP` value.
 
-```PowerShell
-kubectl get nodes -o wide
-``` 
-SSH into the node by using `ssh Administrator@ip`. After you SSH into the node, you can run `net user administrator *` to update your administrator password. 
+   > [!NOTE]
+   > You must pass the right location to your SSH private key. The following example uses the default location of %systemdrive%\akshci\.ssh\akshci_rsa, but you may need to change this location if you requested a different path by specifying the `-sshPublicKey` parameter for `Set-AksHciConfig`.
+
+To get the IP address of the Windows worker node:  
+
+```
+kubectl --kubeconfig=yourkubeconfig get nodes -o wide
+```  
+
+Use `ssh Administrator@ip` to SSH in to a Windows node:  
+
+```
+ssh -i $env:SYSTEMDRIVE\AksHci\.ssh\akshci_rsa administrator@<IP Address of the Node>
+```
+  
+After you SSH in to the node, you can run `net user administrator *` to update your administrator password. 
+
 
 ## Troubleshooting Linux worker nodes 
-To sign in to a Linux worker node, first get the IP address of your node by running `kubectl get`. Note the `EXTERNAL-IP` value.
+To sign in to a Linux worker node using SSH, first get the IP address of your node by running `kubectl get` and capture the `EXTERNAL-IP` value.
 
-```PowerShell
-kubectl get nodes -o wide
-``` 
-SSH into the node by using `ssh clouduser@ip`. 
+
+   > [!NOTE]
+   > You must pass the right location to your SSH private key. The following example uses the default location of %systemdrive%\akshci\.ssh\akshci_rsa, but you may need to change this location if you requested a different path by specifying the `-sshPublicKey` parameter for `Set-AksHciConfig`.
+
+To get the IP address of the Linux worker node:  
+
+```
+kubectl --kubeconfig=yourkubeconfig get nodes -o wide
+```  
+
+Use `ssh clouduser@ip` to SSH in to the Linux node: 
+
+```
+ssh -i $env:SYSTEMDRIVE\AksHci\.ssh\akshci_rsa clouduser@<IP Address of the Node>
+```  
+
+After you SSH in to the node, you can run `net user administrator *` to update your administrator password. 
 
 ## Troubleshooting Azure Arc Kubernetes
 To learn about troubleshooting common scenarios related to connectivity, permissions, and Arc agents, see [Azure Arc enabled Kubernetes troubleshooting](/azure/azure-arc/kubernetes/troubleshooting).
 
 ## Next steps
-If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).  
+If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).

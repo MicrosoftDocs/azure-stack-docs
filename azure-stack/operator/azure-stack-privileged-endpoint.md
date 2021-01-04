@@ -48,51 +48,50 @@ You will need set your current culture setting to `en-US` when running the privi
 
 1. Establish the trust.
 
-      - On an integrated system, run the following command from an elevated Windows PowerShell session to add the PEP as a trusted host on the hardened VM running on the hardware lifecycle host or the Privileged Access Workstation.
+   - On an integrated system, run the following command from an elevated Windows PowerShell session to add the PEP as a trusted host on the hardened VM running on the hardware lifecycle host or the Privileged Access Workstation.
 
       ```powershell  
-    Set-Item WSMan:\localhost\Client\TrustedHosts -Value '<IP Address of Privileged Endpoint>' -Concatenate
+      Set-Item WSMan:\localhost\Client\TrustedHosts -Value '<IP Address of Privileged Endpoint>' -Concatenate
       ```
+      
+   - If you're running the ASDK, sign in to the development kit host.
 
-      - If you're running the ASDK, sign in to the development kit host.
-
-2. On the hardened VM running on the hardware lifecycle host or the Privileged Access Workstation, open a Windows PowerShell session. Run the following commands to establish a remote session on the VM that hosts the PEP:
+1. On the hardened VM running on the hardware lifecycle host or the Privileged Access Workstation, open a Windows PowerShell session. Run the following commands to establish a remote session on the VM that hosts the PEP:
  
-  - On an integrated system:
+   - On an integrated system:
 
-    ```powershell  
-    $cred = Get-Credential
+      ```powershell  
+      $cred = Get-Credential
 
-    $pep = New-PSSession -ComputerName <IP_address_of_ERCS> -ConfigurationName PrivilegedEndpoint -Credential $cred -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
-    Enter-PSSession $pep
-    ```
+      $pep = New-PSSession -ComputerName <IP_address_of_ERCS> -ConfigurationName PrivilegedEndpoint -Credential $cred -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
+      Enter-PSSession $pep
+      ```
     
-    The `ComputerName` parameter can be either the IP address or the DNS name of one of the VMs that hosts the PEP.
+      The `ComputerName` parameter can be either the IP address or the DNS name of one of the VMs that hosts the PEP.
 
-    > [!NOTE]  
-    >Azure Stack Hub doesn't make a remote call when validating the PEP credential. It relies on a locally-stored RSA public key to do that.
+      > [!NOTE]  
+      > Azure Stack Hub doesn't make a remote call when validating the PEP credential. It relies on a locally-stored RSA public key to do that.
 
    - If you're running the ASDK:
 
-     ```powershell  
+      ```powershell  
       $cred = Get-Credential
     
       $pep = New-PSSession -ComputerName azs-ercs01 -ConfigurationName PrivilegedEndpoint -Credential $cred -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
       Enter-PSSession $pep
-     ```
+      ```
     
-   - When prompted, use the following credentials:
+   When prompted, use the following credentials:
    
-       - **User name**: Specify the CloudAdmin account, in the format **&lt;*Azure Stack Hub domain*&gt;\cloudadmin**. (For ASDK, the user name is **azurestack\cloudadmin**.)
-  
-        - **Password**: Enter the same password that was provided during installation for the AzureStackAdmin domain administrator account.
+   -  **User name**: Specify the CloudAdmin account, in the format **&lt;*Azure Stack Hub domain*&gt;\cloudadmin**. (For ASDK, the user name is **azurestack\cloudadmin**)
+   - **Password**: Enter the same password that was provided during installation for the AzureStackAdmin domain administrator account.
 
-      > [!NOTE]
-      > If you're unable to connect to the ERCS endpoint, retry steps one and two with another ERCS VM IP address.
+   > [!NOTE]
+   > If you're unable to connect to the ERCS endpoint, retry steps one and two with another ERCS VM IP address.
 
-3. After you connect, the prompt will change to **[*IP address or ERCS VM name*]: PS>** or to **[azs-ercs01]: PS>**, depending on the environment. From here, run `Get-Command` to view the list of available cmdlets.
+1. After you connect, the prompt will change to **[*IP address or ERCS VM name*]: PS>** or to **[azs-ercs01]: PS>**, depending on the environment. From here, run `Get-Command` to view the list of available cmdlets.
 
-    You can find a reference for cmdlets in at [Azure Stack Hub privileged endpoint reference](../reference/pep-2002/index.md)
+   You can find a reference for cmdlets in at [Azure Stack Hub privileged endpoint reference](../reference/pep-2002/index.md)
 
    Many of these cmdlets are intended only for integrated system environments (such as the cmdlets related to datacenter integration). In the ASDK, the following cmdlets have been validated:
 
@@ -131,61 +130,63 @@ To import the PEP session on your local machine, do the following steps:
 
 1. Establish the trust.
 
-    - On an integrated system, run the following command from an elevated Windows PowerShell session to add the PEP as a trusted host on the hardened VM running on the hardware lifecycle host or the Privileged Access Workstation.
+   - On an integrated system, run the following command from an elevated Windows PowerShell session to add the PEP as a trusted host on the hardened VM running on the hardware lifecycle host or the Privileged Access Workstation.
 
-    ```powershell
-    winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
-    ```
+      ```powershell
+      winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
+      ```
 
-    - If you're running the ASDK, sign in to the development kit host.
+   - If you're running the ASDK, sign in to the development kit host.
 
-2. On the hardened VM running on the hardware lifecycle host or the Privileged Access Workstation, open a Windows PowerShell session. Run the following commands to establish a remote session on the virtual machine that hosts the PEP:
+1. On the hardened VM running on the hardware lifecycle host or the Privileged Access Workstation, open a Windows PowerShell session. Run the following commands to establish a remote session on the virtual machine that hosts the PEP:
 
-    - On an integrated system:
+   - On an integrated system:
     
       ```powershell  
-        $cred = Get-Credential
+      $cred = Get-Credential
       
-        $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
-          -ConfigurationName PrivilegedEndpoint -Credential $cred
+      $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
+        -ConfigurationName PrivilegedEndpoint -Credential $cred
       ```
     
       The `ComputerName` parameter can be either the IP address or the DNS name of one of the VMs that hosts the PEP.
 
-    - If you're running the ASDK:
+   - If you're running the ASDK:
      
-        ```powershell  
-          $cred = Get-Credential
+      ```powershell  
+      $cred = Get-Credential
     
-          $session = New-PSSession -ComputerName azs-ercs01 `
-             -ConfigurationName PrivilegedEndpoint -Credential $cred
-        ```
+      $session = New-PSSession -ComputerName azs-ercs01 `
+        -ConfigurationName PrivilegedEndpoint -Credential $cred
+      ```
 
-     When prompted, use the following credentials:
+   When prompted, use the following credentials:
 
-     - **User name**: Specify the CloudAdmin account, in the format **&lt;*Azure Stack Hub domain*&gt;\cloudadmin**. (For ASDK, the user name is **azurestack\cloudadmin**.)
-     - **Password**: Enter the same password that was provided during installation for the AzureStackAdmin domain administrator account.
+   - **User name**: Specify the CloudAdmin account, in the format **&lt;*Azure Stack Hub domain*&gt;\cloudadmin**. (For ASDK, the user name is **azurestack\cloudadmin**.)
+      
+   - **Password**: Enter the same password that was provided during installation for the AzureStackAdmin domain administrator account.
 
-3. Import the PEP session into your local machine:
+1. Import the PEP session into your local machine:
 
-    ```powershell 
-      Import-PSSession $session
-    ```
+   ```powershell 
+   Import-PSSession $session
+   ```
 
-4. Now, you can use tab-completion and do scripting as usual on your local PowerShell session with all the functions and cmdlets of the PEP, without decreasing the security posture of Azure Stack Hub. Enjoy!
+1. Now, you can use tab-completion and do scripting as usual on your local PowerShell session with all the functions and cmdlets of the PEP, without decreasing the security posture of Azure Stack Hub. Enjoy!
+
 
 ## Close the privileged endpoint session
 
- As mentioned earlier, the PEP logs every action (and its corresponding output) that you do in the PowerShell session. You must close the session by using the  `Close-PrivilegedEndpoint` cmdlet. This cmdlet correctly closes the endpoint, and transfers the log files to an external file share for retention.
+As mentioned earlier, the PEP logs every action (and its corresponding output) that you do in the PowerShell session. You must close the session by using the  `Close-PrivilegedEndpoint` cmdlet. This cmdlet correctly closes the endpoint, and transfers the log files to an external file share for retention.
 
 To close the endpoint session:
 
 1. Create an external file share that's accessible by the PEP. In a development kit environment, you can just create a file share on the development kit host.
-2. Run the following cmdlet:
+1. Run the following cmdlet:
 
-  ```powershell  
-     Close-PrivilegedEndpoint -TranscriptsPathDestination "\\fileshareIP\SharedFolder" -Credential Get-Credential
-  ```
+   ```powershell  
+   Close-PrivilegedEndpoint -TranscriptsPathDestination "\\fileshareIP\SharedFolder" -Credential Get-Credential
+   ```
 
    The cmdlet uses the parameters in the following table:
 
@@ -202,52 +203,53 @@ After the transcript log files are successfully transferred to the file share, t
 
 ## Unlocking the privileged endpoint for support scenarios
 
- During a support scenario, the Microsoft support engineer might need to elevate the privileged endpoint PowerShell session to access the internals of the Azure Stack Hub infrastructure. This process is sometimes informally referred to as "break the glass" or "unlock the PEP". The PEP session elevation process is a two step, two people, two organization authentication process. 
- The unlock procedure is initiated by the Azure Stack Hub operator, who retains control of their environment at all times. The operator accesses the PEP and executes this cmdlet:
+During a support scenario, the Microsoft support engineer might need to elevate the privileged endpoint PowerShell session to access the internals of the Azure Stack Hub infrastructure. This process is sometimes informally referred to as "break the glass" or "unlock the PEP". The PEP session elevation process is a two step, two people, two organization authentication process. 
+The unlock procedure is initiated by the Azure Stack Hub operator, who retains control of their environment at all times. The operator accesses the PEP and executes this cmdlet:
  
  ```powershell  
       Get-SupportSessionToken
-  ```
- The cmdlet returns the support session request token, a very long alphanumeric string. The operator then passes the request token to the Microsoft support engineer via a medium of their choice (e.g., chat, email). The Microsoft support engineer uses the request token to generate, if valid, a support session authorization token and sends it back to the Azure Stack Hub operator. On the same PEP PowerShell session, the operator then passes the authorization token as input to this cmdlet:
+ ```
 
- ```powershell  
+The cmdlet returns the support session request token, a very long alphanumeric string. The operator then passes the request token to the Microsoft support engineer via a medium of their choice (e.g., chat, email). The Microsoft support engineer uses the request token to generate, if valid, a support session authorization token and sends it back to the Azure Stack Hub operator. On the same PEP PowerShell session, the operator then passes the authorization token as input to this cmdlet:
+
+```powershell  
       unlock-supportsession
       cmdlet Unlock-SupportSession at command pipeline position 1
       Supply values for the following parameters:
       ResponseToken:
-  ```
+ ```
 
 If the authorization token is valid, the PEP PowerShell session is elevated by providing full admin capabilities and full reachability into the infrastructure. 
 
 > [!NOTE]
 > All the operations and cmdlets executed in an elevated PEP session must be performed under strict supervision of the Microsoft support engineer. Failure to do so could result in serious downtime, data loss and could require a full redeployment of the Azure Stack Hub environment.
 
- Once the support session is terminated, it is very important to close back the elevated PEP session by using the **Close-PrivilegedEndpoint** cmdlet as explained in the section above. One the PEP session is terminated, the unlock token is no longer valid and cannot be reused to unlock the PEP session again.
+Once the support session is terminated, it is very important to close back the elevated PEP session by using the **Close-PrivilegedEndpoint** cmdlet as explained in the section above. One the PEP session is terminated, the unlock token is no longer valid and cannot be reused to unlock the PEP session again.
 An elevated PEP session has a validity of 8 hours, after which, if not terminated, the elevated PEP session will automatically lock back to a regular PEP session.
 
 ## Content of the privileged endpoint tokens
 
- The PEP support session request and authorization tokens leverage cryptography to protect access and ensure that only authorized tokens can unlock the PEP session. The tokens are designed to cryptographically guarantee that a response token can only be accepted by the PEP session that generated the request token. 
- PEP tokens do not contain any kind of information that could uniquely identify an Azure Stack Hub environment or a customer. They are completely anonymous. Below the details of the content of each token are provided.
+The PEP support session request and authorization tokens leverage cryptography to protect access and ensure that only authorized tokens can unlock the PEP session. The tokens are designed to cryptographically guarantee that a response token can only be accepted by the PEP session that generated the request token. 
+PEP tokens do not contain any kind of information that could uniquely identify an Azure Stack Hub environment or a customer. They are completely anonymous. Below the details of the content of each token are provided.
  
 ### Support session request token
 
- The PEP support session request token is composed of three objects:
+The PEP support session request token is composed of three objects:
 
-      - A randomly generated Session ID.
-      - A self-signed certificate, generated for the purpose of having a one-time public/private key pair. The certificate does not contain any information on the environment. 
-      - A time stamp that indicates the request token expiration.
-      
-  The request token is then encrypted with the public key of the Azure cloud against which the Azure Stack Hub environment is registered to.
+- A randomly generated Session ID.
+- A self-signed certificate, generated for the purpose of having a one-time public/private key pair. The certificate does not contain any information on the environment.
+- A time stamp that indicates the request token expiration.
+
+The request token is then encrypted with the public key of the Azure cloud against which the Azure Stack Hub environment is registered to.
  
- ### Support session authorization response token
+### Support session authorization response token
 
 The PEP support authorization response token is composed of two objects:
 
-      - The randomly generated session ID extracted from the request token.
-      - A time stamp that indicates the response token expiration.
+- The randomly generated session ID extracted from the request token.
+- A time stamp that indicates the response token expiration.
       
- The response token is then encrypted with the self-signed certificate contained in the request token. The self-signed certificate was decrypted with the private key associated with the Azure cloud against which the Azure Stack Hub environment is registered to.
+The response token is then encrypted with the self-signed certificate contained in the request token. The self-signed certificate was decrypted with the private key associated with the Azure cloud against which the Azure Stack Hub environment is registered to.
 
 
 ## Next steps

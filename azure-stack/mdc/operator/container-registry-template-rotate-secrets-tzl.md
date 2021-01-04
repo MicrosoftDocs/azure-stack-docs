@@ -1,7 +1,7 @@
 ---
-title: Rotate container registry secrets in Azure Stack Hub | Microsoft Docs
+title: Rotate container registry secrets in Azure Stack Hub - MDC
 titleSuffix: Azure Stack Hub
-description: Learn how to rotate container registry secrets in Azure Stack Hub.
+description: Learn how to rotate container registry secrets in Azure Stack Hub for a modular data center.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -20,13 +20,13 @@ ms.lastreviewed: 10/26/2020
 
 ---
 
-# Rotate container registry secrets in Azure Stack Hub
+# Rotate container registry secrets in Azure Stack Hub - Modular Data Center (MDC)
 
 Your Azure Stack Hub users can rotate the secrets (certificates, username, and password) for a container registry template deployment. You can run a script to populate new secret values in Microsoft Azure Key Vault and **redeploy** the existing Container registry template instance. Rotating secrets by themselves doesn't require a new deployment.
 
 ## Prerequisites for the user
 
- - The user will need to have the Azure Stack Hub PowerShell modules installed. For more information, see [Install PowerShell for Azure Stack](../../operator/azure-stack-powershell-install.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fazure-stack%2Fbreadcrumb%2Ftoc.json).
+ - The user will need to have the Azure Stack Hub PowerShell modules installed. For more information, see [Install PowerShell for Azure Stack](../../operator/powershell-install-az-module.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fazure-stack%2Fbreadcrumb%2Ftoc.json).
 
  - Get the update secrets for the container registry template. You can use a new SSL certificate or a new username and password combination for accessing the Docker registry.
 
@@ -254,11 +254,11 @@ Follow the instructions below to set new secrets in Key Vault.
 
 3. Select the deployments under **Deployments**.
 
-    ![Deployments](./media/container-registry-template-rotating-secrets-tzl/deployments.png)
+    ![Screenshot that shows 'Deployments' page.](./media/container-registry-template-rotating-secrets-tzl/deployments.png)
 
 4.  If rotating secrets for the first time, select the original deployment. If this isn't the first time rotating secrets, select the most recent deployment and then select **Redeploy**.
 
-    ![Redeploy](./media/container-registry-template-rotating-secrets-tzl/redeploy.png)
+    ![Screenshot that shows the 'Overview' page with the 'Redeploy' action selected.](./media/container-registry-template-rotating-secrets-tzl/redeploy.png)
 
 5.  In **Deploy Solution Template**, select **Use Existing Resource Group** and select the resource group that was used to originally deploy the container registry template. In order for a redeployment to be successful, it must use the same resource group.
 
@@ -270,7 +270,7 @@ Follow the instructions below to set new secrets in Key Vault.
 
     - If you're rotating the certificate, you'll need to input the new values for the PFXKeyVaultSecretURL and PFXThumbprint that were output from setting the new secrets.
 
-    ![Parameters](./media/container-registry-template-rotating-secrets-tzl/parameters.png)
+    ![Screenshot that shows the 'Parameters' window.](./media/container-registry-template-rotating-secrets-tzl/parameters.png)
 
 7.  Select **OK** and then **Create**. The redeployment will proceed. Registry functionality will continue to function during redeployment.
 

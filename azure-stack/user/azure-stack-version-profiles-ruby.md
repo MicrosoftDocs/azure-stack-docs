@@ -4,10 +4,10 @@ description: Learn how to use API version profiles with Ruby in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 09/03/2020
+ms.date: 12/2/2020
 ms.author: sethm
 ms.reviewer: sijuman
-ms.lastreviewed: 05/16/2019
+ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack user, I want to use API version profiles with Ruby in Azure Stack so I can benefit from the use of profiles.
 # Keyword: azure stack api profiles ruby
@@ -308,5 +308,5 @@ To run the sample, ensure that you've installed Ruby. If you're using Visual Stu
 
 ## Next steps
 
-- [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md)
+- [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md)
 - [Configure the Azure Stack Hub user's PowerShell environment](azure-stack-powershell-configure-user.md)  

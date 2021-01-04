@@ -1,6 +1,6 @@
 ---
-title: Azure Stack VM features | Microsoft Docs
-description: Learn about different features and considerations when working with VMs in a MDC.
+title: Azure Stack virtual machine (VM) features | Microsoft Docs
+description: Learn about different features and considerations when working with virtual machines (VMs) in an MDC.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -19,7 +19,7 @@ ms.lastreviewed: 12/20/2019
 
 ---
 
-# Azure Stack VM features
+# Azure Stack VM features - Modular Data Center (MDC)
 
 Azure Stack virtual machines (VMs) provide on-demand, scalable computing resources. Before you deploy VMs, you should learn the differences between the VM features available in Azure Stack and Microsoft Azure. This article describes these differences and identifies key considerations for planning VM deployments. To learn about high-level differences between Azure Stack and Azure, see the [Key considerations](../user/azure-stack-considerations.md) article.
 
@@ -28,7 +28,7 @@ Azure Stack virtual machines (VMs) provide on-demand, scalable computing resourc
 | Feature | Azure (global) | Azure Stack |
 | --- | --- | --- |
 | Virtual machine images | The Azure Marketplace has images that you can use to create a VM. See the [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) page to view the list of images that are available in the Azure Marketplace. | By default, there aren't any images available in the Azure Stack marketplace. The Azure Stack cloud admin must publish or download images to the Azure Stack marketplace before users can use them. |
-| Virtual machine sizes | Azure supports a wide variety of sizes for VMs. To learn about the available sizes and options, refer to the [Windows VMs sizes](/azure/virtual-machines/virtual-machines-windows-sizes) and [Linux VM sizes](/azure/virtual-machines/linux/sizes) topics. | Azure Stack supports a subset of VM sizes that are available in Azure. To view the list of supported sizes, refer to the [VM sizes](#vm-sizes) section of this article. |
+| Virtual machine sizes | Azure supports a wide variety of sizes for VMs. To learn about the available sizes and options, refer to the [Windows VMs sizes](/azure/virtual-machines/sizes) and [Linux VM sizes](/azure/virtual-machines/linux/sizes) topics. | Azure Stack supports a subset of VM sizes that are available in Azure. To view the list of supported sizes, refer to the [VM sizes](#vm-sizes) section of this article. |
 | Virtual machine quotas | [Quota limits](/azure/azure-subscription-service-limits#service-specific-limits) are set by Microsoft. | The Azure Stack cloud admin must assign quotas before they offer VM to their users. |
 | Virtual machine extensions |Azure supports a wide variety of VM extensions. To learn about the available extensions, refer to the [VM extensions and features](/azure/virtual-machines/windows/extensions-features) article.| Azure Stack supports a subset of extensions that are available in Azure and each of the extensions have specific versions. The Azure Stack cloud admin can choose which extensions to be made available to for their users. To view the list of supported extensions, refer to the [VM extensions](#vm-extensions) section of this article. |
 | Virtual machine network | Public IP addresses assigned to a tenant VM are accessible over the Internet.<br><br><br>Azure VMs have a fixed DNS name. | Public IP addresses assigned to a tenant VM are accessible within the Azure Stack Development Kit environment only. A user must have access to the Azure Stack Development Kit via [RDP](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp) or [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn) to connect to a VM that is created in Azure Stack.<br><br>VMs created within a specific Azure Stack instance have a DNS name based on the value that is configured by the cloud admin. |
@@ -77,6 +77,17 @@ Azure Stack includes a small set of extensions. Updates and additional extension
 
 Use the following PowerShell script to get the list of VM extensions that are available in your Azure Stack environment:
 
+### [Az modules](#tab/az1)
+
+```powershell
+Get-AzVmImagePublisher -Location local | `
+  Get-AzVMExtensionImageType | `
+  Get-AzVMExtensionImage | `
+  Select Type, Version | `
+  Format-Table -Property * -AutoSize
+```
+### [AzureRM modules](#tab/azurerm1)
+
 ```powershell
 Get-AzureRmVmImagePublisher -Location local | `
   Get-AzureRmVMExtensionImageType | `
@@ -84,6 +95,8 @@ Get-AzureRmVmImagePublisher -Location local | `
   Select Type, Version | `
   Format-Table -Property * -AutoSize
 ```
+
+---
 
 If provisioning an extension on a VM deployment takes too long, let the provisioning timeout instead of trying to stop the process to deallocate or delete the VM.
 
@@ -98,6 +111,17 @@ VM features in Azure Stack support the following API versions:
 
 You can use the following PowerShell script to get the API versions for the VM features that are available in your Azure Stack environment:
 
+### [Az modules](#tab/az)
+
+```powershell
+Get-AzResourceProvider | `
+  Select ProviderNamespace -Expand ResourceTypes | `
+  Select * -Expand ApiVersions | `
+  Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} | `
+  where-Object {$_.ProviderNamespace -like "Microsoft.compute"}
+```
+### [AzureRM modules](#tab/azurerm)
+
 ```powershell
 Get-AzureRmResourceProvider | `
   Select ProviderNamespace -Expand ResourceTypes | `
@@ -105,6 +129,8 @@ Get-AzureRmResourceProvider | `
   Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} | `
   where-Object {$_.ProviderNamespace -like "Microsoft.compute"}
 ```
+
+---
 
 The list of supported resource types and API versions may vary if the cloud operator updates your Azure Stack environment to a newer version.
 

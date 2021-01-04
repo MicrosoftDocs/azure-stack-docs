@@ -3,9 +3,9 @@ author: mattbriggs
 ms.author: mabrigg
 ms.service: azure-stack
 ms.topic: include
-ms.date: 10/30/2020
+ms.date: 12/2/2020
 ms.reviewer: sijuman
-ms.lastreviewed: 10/30/2020
+ms.lastreviewed: 12/2/2020
 
 ---
 

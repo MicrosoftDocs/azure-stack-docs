@@ -40,7 +40,7 @@ You can establish a split tunnel VPN connection to an Azure Stack Development Ki
 
 ### Prerequisites
 
-* Install [Azure Stack Hub compatible Azure PowerShell](../operator/azure-stack-powershell-install.md) on your local computer.  
+* Install [Azure Stack Hub compatible Azure PowerShell](../operator/powershell-install-az-module.md) on your local computer.  
 * Download the [tools required to work with Azure Stack Hub](../operator/azure-stack-powershell-download.md). 
 
 ### Configure VPN connectivity

@@ -4,10 +4,10 @@ description: Learn how to back up your storage accounts on Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 5/27/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/19/2019
+ms.lastreviewed: 12/2/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -55,7 +55,7 @@ You can create a Linux or Windows server as your intermediate server. The server
 - For instruction on setting up a Linux Server, see [Create a Linux server VM by using the Azure Stack Hub portal](azure-stack-quick-linux-portal.md).  
 - For instruction on setting a Windows Server, see [Create a Windows server VM with the Azure Stack Hub portal](azure-stack-quick-windows-portal.md).  
 
-Once you have set up your Windows Server, you will need to install [Azure Stack Hub PowerShell](../operator/azure-stack-powershell-install.md?toc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fbreadcrumb%2Ftoc.json) and [Azure Stack Hub Tools](../operator/azure-stack-powershell-download.md?toc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fbreadcrumb%2Ftoc.json).
+Once you have set up your Windows Server, you will need to install [Azure Stack Hub PowerShell](../operator/powershell-install-az-module.md?toc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fbreadcrumb%2Ftoc.json) and [Azure Stack Hub Tools](../operator/azure-stack-powershell-download.md?toc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fbreadcrumb%2Ftoc.json).
 
 ## Set up backup for storage accounts
 

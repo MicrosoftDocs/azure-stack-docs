@@ -5,14 +5,12 @@ author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 11/27/2019
+ms.date: 12/11/2020
 ms.reviewer: jfggdl
-ms.lastreviewed: 11/27/2019
+ms.lastreviewed: 12/11/2020
 ---
 
 # Overview of Event Hubs on Azure Stack Hub
-
-[!INCLUDE [preview-banner](../includes/event-hubs-preview.md)]
 
 Event Hubs on Azure Stack Hub allows you to realize hybrid cloud scenarios. Streaming and event-based solutions are supported, for both on-premises and Azure cloud processing. Whether your scenario is hybrid (connected), or disconnected, your solution can support processing of events/streams at large scale. Your scenario is only bound by the Event Hubs Cluster size, which you can provision according to your needs. 
 
@@ -48,7 +46,7 @@ The Event Hubs editions (on Azure Stack Hub and on Azure) offer a high degree of
 | Azure Monitor | ✔ | ✔ |
 | Auto-inflate feature | ✘ | ✔ |
 
-Azure Resource Management operations can also be accomplished using Azure Resource Manager templates, [PowerShell](/powershell/module/azurerm.eventhub/), and [Azure CLI](/cli/azure/eventhubs/eventhub/). Currently, there's no support for Operator Administration operations in PowerShell and Azure CLI.
+Azure Resource Management operations can also be accomplished using Azure Resource Manager templates, [PowerShell](/powershell/module/Az.eventhub/), and [Azure CLI](/cli/azure/eventhubs/eventhub/). Currently, there's no support for Operator Administration operations in PowerShell and Azure CLI.
 
 ## Feature documentation
 

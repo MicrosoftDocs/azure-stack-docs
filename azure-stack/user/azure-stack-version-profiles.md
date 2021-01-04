@@ -4,10 +4,10 @@ description: Learn about API version profiles in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/28/2020
+ms.date: 12/2/2020
 ms.author: sethm
 ms.reviewer: sijuman
-ms.lastreviewed: 07/24/2019
+ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack user, I want to create API version profiles so I can create custom clients. 
 # Keyword: azure stack api version profiles
@@ -74,7 +74,8 @@ You can find code samples to help you integrate your solution with your preferre
 - **.NET** <br>
 Use the .NET API profile to get the latest, most stable version of each resource type in a resource provider package. For more information, see [Use API version profiles with .NET in Azure Stack Hub](azure-stack-version-profiles-net.md).
 - **PowerShell**  
-Use the  **AzureRM.Bootstrapper** module available through the PowerShell Gallery to get the PowerShell cmdlets required to work with API version profiles. For information, see [Use API version profiles for PowerShell](../operator/azure-stack-powershell-install.md?view=azs-2002).
+Use the  **Az.Bootstrapper** module available through the PowerShell Gallery to get the PowerShell cmdlets required to work with API version profiles. For information, see [Use API version profiles for PowerShell](azure-stack-version-profiles-powershell.md).
+Use the  **AzureRM.Bootstrapper** module available through the PowerShell Gallery to get the PowerShell cmdlets required to work with API version profiles. For information, see [Use API version profiles for PowerShell](../operator/powershell-install-az-module.md?view=azs-2002).
 - **Azure CLI**  
 Update your environment configuration to use the Azure Stack Hub specific API version profile. For information, see [Use API version profiles for Azure CLI](azure-stack-version-profiles-azurecli2.md).
 - **Go**  
@@ -88,6 +89,6 @@ The Node.js SDK for the Azure Stack Hub Resource Manager provides tools to help 
 
 ## Next steps
 
-- [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md)
+- [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md)
 - [Configure the Azure Stack Hub user's PowerShell environment](azure-stack-powershell-configure-user.md)
 - [Review details about resource provider API versions supported by the profiles](azure-stack-profiles-azure-resource-manager-versions.md).

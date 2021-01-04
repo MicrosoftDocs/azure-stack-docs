@@ -29,7 +29,7 @@ Each Azure Stack Hub virtual network supports a single virtual network gateway, 
 When you create a virtual network gateway, you must make sure that the gateway type is correct for your configuration. A VPN gateway requires the `-GatewayType Vpn` flag; for example:
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
+New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn `
 -VpnType RouteBased
 ```
@@ -40,7 +40,7 @@ When you create a virtual network gateway, you must specify the gateway SKU that
 
 Azure Stack Hub offers the VPN gateway SKUs shown in the following table:
 
-| | VPN gateway throughput |VPN gateway maximum IPsec tunnels |
+| | Tunnel throughput |VPN gateway maximum IPsec tunnels |
 |-------|-------|-------|
 |**Basic SKU**  | 100 Mbps    | 20    |
 |**Standard SKU**   | 100 Mbps  | 20 |
@@ -63,7 +63,7 @@ If you use the Azure Stack Hub portal to create a Resource Manager virtual netwo
 The following PowerShell example specifies the `-GatewaySku` parameter as **Standard**:
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
+New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -Location 'West US' -IpConfigurations $gwipconfig -GatewaySku Standard `
 -GatewayType Vpn -VpnType RouteBased
 ```
@@ -75,7 +75,7 @@ In the Resource Manager deployment model, each configuration requires a specific
 In the following PowerShell example, a S2S connection is created that requires the IPsec connection type:
 
 ```powershell
-New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
+New-AzVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
 -Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
 -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
 ```
@@ -99,7 +99,7 @@ When you create the virtual network gateway for a VPN gateway configuration, you
 The following PowerShell example specifies the `-VpnType` as **RouteBased**. When you create a gateway, you must make sure that the `-VpnType` is correct for your configuration.
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
+New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -Location 'West US' -IpConfigurations $gwipconfig `
 -GatewayType Vpn -VpnType RouteBased
 ```
@@ -129,7 +129,7 @@ Additionally, you should make sure your gateway subnet has enough IP addresses t
 The following Resource Manager PowerShell example shows a gateway subnet named **GatewaySubnet**. You can see the CIDR notation specifies a /27, which allows for enough IP addresses for most configurations that currently exist.
 
 ```powershell
-Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
+Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
 ```
 
 > [!IMPORTANT]
@@ -144,7 +144,7 @@ You give the local network gateway a name, the public IP address of the VPN devi
 This PowerShell example creates a new local network gateway:
 
 ```powershell
-New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
+New-AzLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 -Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.5.51.0/24'
 ```
 

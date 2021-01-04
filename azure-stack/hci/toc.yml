@@ -4,26 +4,36 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
-  - name: Known issues
-    href: known-issues.md
+  - name: Compare to Windows Server
+    href: concepts/compare-windows-server.md
+  - name: Release information
+    href: release-information.md
   - name: Release notes
-    href: release-notes.md
+    href: https://support.microsoft.com/help/4595086
   - name: FAQ
     href: faq.md
-- name: Get started
+- name: Quickstarts
   items:
   - name: Use Azure Stack HCI with Windows Admin Center
     href: get-started.md
+  - name: Create an Azure Stack HCI cluster
+    href: deploy/deployment-quickstart.md
 - name: Deploy
   items:
   - name: Deployment overview
     href: deploy/deployment-overview.md
   - name: Deploy the Azure Stack HCI OS
     href: deploy/operating-system.md
-  - name: Create the cluster
+  - name: Create a cluster
     href: deploy/create-cluster.md
   - name: Set up a cluster witness
     href: deploy/witness.md
+  - name: Deploy an SDN infrastructure
+    href: deploy/sdn-express.md
+  - name: Migrate to new hardware
+    href: deploy/migrate-cluster-new-hardware.md
+  - name: Migrate on same hardware
+    href: deploy/migrate-cluster-same-hardware.md
   - name: Register with Azure
     href: deploy/register-with-azure.md
   - name: Validate the cluster
@@ -32,8 +42,6 @@
     items:
     - name: Create a cluster with PowerShell
       href: deploy/create-cluster-powershell.md
-    - name: Deploy Network Controller with PowerShell
-      href: deploy/network-controller-powershell.md
 - name: Manage
   items:
   - name: Manage VMs
@@ -74,6 +82,10 @@
       href: manage/update-cluster.md
     - name: Monitor the cluster
       href: manage/monitor-cluster.md
+    - name: Use Datacenter Firewall
+      href: manage/use-datacenter-firewall.md
+    - name: Use DISKSPD to test workloads
+      href: manage/diskspd-overview.md
     - name: Add or remove servers
       href: manage/add-cluster.md
     - name: Take a server offline for maintenance
@@ -124,8 +136,10 @@
       href: concepts/quorum.md
   - name: Networking
     items:
-    - name: Plan host networking
-      href: concepts/plan-host-networking.md
+    - name: Physical network requirements
+      href: concepts/physical-network-requirements.md
+    - name: Host network requirements
+      href: concepts/host-network-requirements.md
     - name: Software Defined Networking (SDN)
       href: concepts/software-defined-networking.md
     - name: Plan a SDN infrastructure
@@ -134,6 +148,8 @@
       href: concepts/network-controller-overview.md
     - name: Plan Network Controller
       href: concepts/network-controller.md
+    - name: Datacenter Firewall overview
+      href: concepts/datacenter-firewall-overview.md
     - name: Software Load Balancer overview
       href: concepts/software-load-balancer.md
     - name: RAS Gateway overview
@@ -144,16 +160,32 @@
     items:
     - name: Billing
       href: concepts/billing.md
+    - name: Configure firewalls
+      href: concepts/configure-firewalls.md
     - name: Updates and upgrades
       href: concepts/updates.md
     - name: Security considerations
       href: concepts/security.md
+    - name: Utility applications
+      href: concepts/utility-applications.md
+    - name: Data collection
+      href: concepts/data-collection.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
     href: https://docs.microsoft.com/cli/azure/ext/stack-hci/stack-hci
   - name: Azure registration PowerShell commands
     href: https://docs.microsoft.com/powershell/module/az.stackhci
+  - name: Go package for ARM Azure Stack HCI service API
+    href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
+  - name: Azure Stack HCI Java service classes and interfaces
+    href: /java/api/com.microsoft.azure.management.azurestackhci.v2020_10_01
+  - name: Azure Stack HCI management service Python package
+    href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python
+  - name: Azure Stack HCI JavaScript package
+    href: /javascript/api/overview/azure/azurestack/stackhci?view=azure-node-latest
+  - name: .NET Namespaces for Azure Stack HCI
+    href: /dotnet/api/overview/azure/stackhci/management
   - name: Hyper-V PowerShell commands
     href: /powershell/module/hyper-v
   - name: Storage PowerShell commands
@@ -194,3 +226,7 @@
     href: https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md
   - name: Azure Stack HCI pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
+  - name: Azure Stack HCI support
+    href: manage/get-support.md
+  - name: Azure Stack HCI archived release notes
+    href: preview-release-notes.md

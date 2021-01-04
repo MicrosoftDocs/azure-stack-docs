@@ -1,13 +1,13 @@
 ---
-title: Connect two Azure Stack Hubs through VNET peering 
-description: Learn how to connect two Azure Stack Hubs through VNET peering.
+title: Connect two Azure Stack Hub VNETs 
+description: Learn how to connect two Azure Stack Hubs.
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 5/27/2020
+ms.date: 12/2/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/03/2019
+ms.lastreviewed: 12/2/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -15,7 +15,7 @@ ms.lastreviewed: 10/03/2019
 ---
 
 
-# VNET Peering in Azure Stack Hub with VMs
+# VNet to VNet connectivity with RRAS
 
 You can connect two Azure Stack Hub VNets to one another within the same Azure Stack Hub environment. It is not currently possible to connect Azure Stack Hub VNets using the built-in [Virtual Network Gateway](./azure-stack-network-differences.md). You must use NVA appliances to create a VPN tunnel between two Azure Stack Hub VNets. In the template references in this article, two Windows Server 2016 VMs are deployed with RRAS installed. The two RRAS servers are configured to implement a S2SVPN IKEv2 tunnel between two VNETs. The appropriate NSG and UDR rules are created to allow routing between the subnets on each VNET designated as **internal**. 
 

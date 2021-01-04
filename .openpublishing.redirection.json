@@ -1,6 +1,16 @@
 {
   "redirections": [
     { 
+      "source_path": "azure-stack/mdc/customer-journey.md", 
+      "redirect_url": "/azure-stack/mdc/integration-overview", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/aks-hci/persistent-storage-windows-nodes.md", 
+      "redirect_url": "/azure-stack/aks-hci/persistent-volume", 
+      "redirect_document_id": false
+    },   
+    { 
       "source_path": "azure-stack/operator/azure-stack-diagnostic-log-collection-overview.md", 
       "redirect_url": "/azure-stack/operator/diagnostic-log-collection", 
       "redirect_document_id": false
@@ -8,6 +18,11 @@
     { 
       "source_path": "azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection.md", 
       "redirect_url": "/azure-stack/operator/diagnostic-log-collection", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/mdc/extended-storage-firmware-updates.md", 
+      "redirect_url": "/azure-stack/mdc/extended-storage-health-checks", 
       "redirect_document_id": false
     },
     { 
@@ -500,6 +515,26 @@
       "source_path": "azure-stack/hci/deploy/before-you-start.md", 
       "redirect_url": "/azure-stack/hci/concepts/system-requirements", 
       "redirect_document_id": false 
-    }    
+    },
+    { 
+      "source_path": "azure-stack/hci/concepts/plan-host-networking.md", 
+      "redirect_url": "/azure-stack/hci/concepts/host-network-requirements", 
+      "redirect_document_id": false 
+    },
+    { 
+      "source_path": "azure-stack/hci/deploy/network-controller-powershell.md", 
+      "redirect_url": "https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts", 
+      "redirect_document_id": false 
+    },
+    { 
+      "source_path": "azure-stack/hci/release-notes.md", 
+      "redirect_url": "https://support.microsoft.com/help/4595086", 
+      "redirect_document_id": false 
+    },
+    { 
+      "source_path": "azure-stack/hci/known-issues.md", 
+      "redirect_url": "https://support.microsoft.com/help/4595086", 
+      "redirect_document_id": false 
+    }
   ]
 }

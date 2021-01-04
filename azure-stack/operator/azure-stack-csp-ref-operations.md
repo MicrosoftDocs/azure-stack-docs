@@ -4,10 +4,10 @@ description: Learn how to register tenants and how tenant usage is tracked in Az
 author: sethmanheim
 
 ms.topic: article
-ms.date: 09/01/2020
+ms.date: 11/17/2020
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 10/14/2019
+ms.lastreviewed: 11/17/2020
 
 # Intent: As an Azure Stack operator, I want to register tenants for usage tracking so I can manage their usage tracking.
 # Keyword: register tenants azure stack
@@ -26,7 +26,7 @@ This article contains details about registration operations. You can use these o
 
 You can use this operation when you want to add a new tenant to your registration. Tenant usage is reported under an Azure subscription connected with the Azure Active Directory (Azure AD) tenant.
 
-You can also use this operation to change the subscription associated with a tenant. Call PUT or the **New-AzureRMResource** PowerShell cmdlet to overwrite the previous mapping.
+You can also use this operation to change the subscription associated with a tenant. Call PUT or the **New-AzResource** PowerShell cmdlet to overwrite the previous mapping. If you are using the AzureRM PowerShell module, use **New-AzureResource** PowerShell cmdlet.
 
 You can associate a single Azure subscription with a tenant. If you try to add a second subscription to an existing tenant, the first subscription is overwritten.
 
@@ -48,14 +48,24 @@ For more information about Azure Stack Hub and API profiles, see [Manage API ver
 > [!NOTE]  
 > Tenants must be registered with each Azure Stack Hub deployment that they use. If a tenant uses more than one Azure Stack Hub, update the initial registrations of each deployment with the tenant subscription.
 
+
 ### PowerShell
+### [Az modules](#tab/az1)
+
+Use the **New-AzResource** cmdlet to add a tenant. [Connect to Azure](/powershell/azure/get-started-azureps), and then from an elevated prompt run the following command:
+
+```powershell  
+New-AzResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
+```
+### [AzureRM modules](#tab/azurerm1)
 
 Use the **New-AzureRmResource** cmdlet to add a tenant. [Connect to Azure](/powershell/azure/get-started-azureps), and then from an elevated prompt run the following command:
 
 ```powershell  
-New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
+New-AzResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
 ```
 
+---
 ### API call
 
 **Operation**: PUT  
@@ -80,12 +90,23 @@ Get a list of all tenants that have been added to a registration.
 
 ### PowerShell
 
-Use the **Get-AzureRmResource** cmdlet to list all registered tenants. [Connect to Azure Stack Hub](azure-stack-powershell-configure-admin.md), and then from an elevated prompt run the following cmdlet:
+### [Az modules](#tab/az2)
+
+Use the **Get-AzResource** cmdlet to list all registered tenants. [Connect to Azure Stack Hub](azure-stack-powershell-configure-admin.md), and then from an elevated prompt run the following cmdlet:
 
 ```powershell
-Get-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions" -ApiVersion 2017-06-01
+Get-AzResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions" -ApiVersion 2017-06-01
 ```
 
+### [AzureRM modules](#tab/azurerm2)
+
+Use the **Get-AzureRMResource** cmdlet to list all registered tenants. [Connect to Azure Stack Hub](azure-stack-powershell-configure-admin.md), and then from an elevated prompt run the following cmdlet:
+
+```powershell
+Get-AzureRMResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions" -ApiVersion 2017-06-01
+```
+
+---
 ### API call
 
 You can get a list of all tenant mappings using the GET operation.
@@ -129,11 +150,23 @@ You can remove a tenant that has been added to a registration. If that tenant is
 
 ### PowerShell
 
-Use the **Remove-AzureRmResource** cmdlet to remove a tenant. [Connect to Azure Stack Hub](azure-stack-powershell-configure-admin.md), and then from an elevated prompt run the following cmdlet:
+### [Az modules](#tab/az3)
+
+Use the **Remove-AzResource** cmdlet to remove a tenant. [Connect to Azure Stack Hub](azure-stack-powershell-configure-admin.md), and then from an elevated prompt run the following cmdlet:
 
 ```powershell
-Remove-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
+Remove-AzResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
 ```
+
+### [AzureRM modules](#tab/azurerm3)
+
+Use the **Remove-AzureRMResource** cmdlet to remove a tenant. [Connect to Azure Stack Hub](azure-stack-powershell-configure-admin.md), and then from an elevated prompt run the following cmdlet:
+
+```powershell
+Remove-AzureRMResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
+```
+
+---
 
 ### API call
 

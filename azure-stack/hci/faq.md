@@ -6,7 +6,7 @@ author: JohnCobb1
 ms.author: v-johcob
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/04/2020
+ms.date: 11/24/2020
 ---
 
 # Azure Stack HCI FAQ
@@ -63,7 +63,7 @@ This depends on which features you’re using. At the minimum, Azure Stack HCI w
 
 **Where does the synced information actually go?**
 
-Azure Stack HCI syncs with the Azure region you chose during initial registration. The default is East US. Azure Stack HCI is also available in West Europe and we’re working to expand to more regions. For example, if you registered with East US, then your information is synced only to that region and stored only within the United States, in a secure Microsoft-operated datacenter. To learn more, see [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
+Azure Stack HCI syncs with Azure and stores data in a secure, Microsoft-operated datacenter. To learn more, see [Azure Stack HCI data collection](concepts/data-collection.md) and [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
 
 ### Disconnected or “air-gapped”
 
