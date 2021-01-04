@@ -93,7 +93,7 @@ Follow these steps to register the ASDK with Azure.
     Register-AzureRMResourceProvider -ProviderNamespace Microsoft.AzureRMureStack
     
     # Import the registration module that was downloaded with the GitHub tools
-    Import-Module C:\zureRMureStack-Tools-AzureRM-master\Registration\RegisterWithAzureRMure.psm1
+    Import-Module C:\AzureRMureStack-Tools-AzureRM-master\Registration\RegisterWithAzureRMure.psm1
     
     # If you have multiple subscriptions, run the following command to select the one you want to use:
     # Get-AzureRMSubscription -SubscriptionID "<subscription ID>" | Select-AzureRMSubscription
