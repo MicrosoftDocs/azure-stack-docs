@@ -3,7 +3,7 @@ title: Azure Marketplace items available for Azure Stack Hub
 description: Learn which Azure Marketplace items can be used in Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 12/9/2020
+ms.date: 01/04/2021
 ms.author: sethm
 ms.reviewer: gara
 ms.lastreviewed: 12/9/2020
@@ -249,4 +249,5 @@ Microsoft Azure Stack Hub supports the following Azure Marketplace VMs and solut
 | ![Teradici Cloud Access Software](media/azure-stack-marketplace-azure-items/teradici.png) | [Teradici Cloud Access Software](https://azuremarketplace.microsoft.com/marketplace/apps/teradici.teradici_cas_azure_stack) | Powered by PCoIP&reg; technology, Cloud Access Software delivers remote desktops and workstations from Azure Stack to any device, anywhere. Consolidate data storage, enhance collaboration, secure data, streamline desktop management, and more. | Teradici |
 | ![CipherTrust Cloud Key Manager](media/azure-stack-marketplace-azure-items/cckm.png) | [CipherTrust Cloud Key Manager](https://azuremarketplace.microsoft.com/marketplace/apps/thales-vormetric.ciphertrust-ckm) | Leveraging Microsoft Azure and other cloud provider Bring Your Own Key (BYOK) APIs, the CipherTrust Cloud Key Manager reduces key management complexity and operational costs by giving you multicloud lifecycle control of encryption keys with centralized management and visibility. | Thales eSecurity |
 | ![Veeam Backup & Replication](media/azure-stack-marketplace-azure-items/veeam.png) | [Veeam Backup & Replication](https://azuremarketplace.microsoft.com/marketplace/apps/veeam.veeam-backup-replication?tab=Overview) | Veeam&reg; Backup & Replication&trade; helps businesses achieve comprehensive data protection for all workloads — virtual, physical, and cloud-based. With a single console, you can achieve fast, flexible, and reliable backup, recovery, and replication of all apps and data. | Veeam Software |
+| ![Versa Operating System (VOS)](media/azure-stack-marketplace-azure-items/versa.png) | [Versa Operating System (VOS)](https://azuremarketplace.microsoft.com/marketplace/apps/versanetworks.versa-operating-system?tab=Overview) | The Versa Operating System (VOS) is a comprehensive and advanced next-generation virtual appliance that brings the power of SD-WAN, SD-Routing and SD-Security into the Microsoft Azure cloud. | Versa Networks |
 | ![ZeroDown Software BCaaS](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown Software Business Continuity as a Service](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.bcaasforazure) | ZeroDown&reg; Software technology provides businesses with continuous access to their company data via their Business Continuity as a Service (BCaaS)&trade; architecture, protecting apps, and transactions, if network interruptions occur that would normally cripple the enterprise. | ZeroDown Software |
