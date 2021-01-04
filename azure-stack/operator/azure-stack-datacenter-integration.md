@@ -185,7 +185,7 @@ If catastrophic data loss occurs, you can use the infrastructure backup to resee
 - Deployment inputs and identifiers
 - Service accounts
 - CA root certificate
-- fFederated resources (in disconnected deployments)
+- Federated resources (in disconnected deployments)
 - Plans, offers, subscriptions, and quotas
 - RBAC policy and role assignments
 - Key Vault secrets
