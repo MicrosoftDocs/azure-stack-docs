@@ -3,7 +3,7 @@ title: Overview of capacity planning for Azure Stack Hub | Microsoft Docs
 description: Learn about capacity planning for Azure Stack Hub deployments. See specifications for high and low models of the Azure Stack Hub ruggedized.
 services: azure-stack
 documentationcenter: ''
-author: justinha
+author: PatAltimore
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/14/2020
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: prchint
 ms.lastreviewed: 10/14/2020
 ---

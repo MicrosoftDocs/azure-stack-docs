@@ -8,8 +8,8 @@ metadata:
   description: Microsoft Azure Stack Hub ruggedized is a hybrid cloud platform that lets you provide Azure services from your datacenter. Learn how to manage the Azure Stack Hub ruggedized integrated systems infrastructure and how to offer services with our quickstarts and tutorials.
   ms.service: azure-stack
   ms.topic: landing-page
-  author: justinha
-  ms.author: justinha
+  author: PatAltimore
+  ms.author: patricka
   ms.date: 10/14/2020
 
 landingContent:
