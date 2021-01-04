@@ -4,7 +4,7 @@ description: Learn how to run a Windows N-tier application on Azure Stack Hub wi
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 08/24/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
