@@ -4,7 +4,7 @@ description: Learn how to download and configure an Azure Stack Hub Operator Acc
 author: ashika789
 ms.topic: article
 ms.date: 11/04/2020
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: asganesh
 ms.lastreviewed: 11/04/2020
 

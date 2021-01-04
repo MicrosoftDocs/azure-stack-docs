@@ -3,7 +3,7 @@ title: Azure Stack Hub ruggedized site readiness for Azure Stack Hub | Microsoft
 description: Learn site readiness specifications for a Azure Stack Hub ruggedized  .
 services: azure-stack
 documentationcenter: ''
-author: justinha
+author: PatAltimore
 manager: femila
 editor: ''
 
