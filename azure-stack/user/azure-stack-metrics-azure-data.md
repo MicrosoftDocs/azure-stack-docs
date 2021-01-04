@@ -4,7 +4,7 @@ description: Learn how to use Azure Monitor on Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 5/27/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.lastreviewed: 12/01/2019
 

@@ -1,11 +1,11 @@
 ---
 title: EMC PowerEdge tactical R640 server overview
 description: Learn about the EMC PowerEdge tactical R640 server
-author: myoungerman
+author: PatAltimore
 
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: 
 ms.lastreviewed: 
 

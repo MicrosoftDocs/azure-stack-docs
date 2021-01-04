@@ -4,7 +4,7 @@ description: Learn how to use the privileged endpoint (PEP) in Azure Stack Hub a
 author: mattbriggs
 
 ms.topic: article
-ms.date: 04/28/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/28/2020
