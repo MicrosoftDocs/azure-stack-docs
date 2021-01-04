@@ -2,11 +2,11 @@
 title: Azure Stack Hub storage infrastructure overview
 titleSuffix: Azure Stack
 description: Learn how to manage storage infrastructure for Azure Stack Hub.
-author: IngridAtMicrosoft
+author: PatAltimore
 
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.lastreviewed: 5/5/2020
 ms.reviewer: jiaha
 ms.custom: contperf-fy20q4

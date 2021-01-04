@@ -1,11 +1,11 @@
 ---
 title: Verify Scale Unit node disk health
 description: Learn how to verify Scale Unit node disk health
-author: myoungerman
+author: PatAltimore
 
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: 
 ms.lastreviewed: 
 
