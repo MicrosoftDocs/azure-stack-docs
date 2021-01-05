@@ -3,7 +3,7 @@ title: Troubleshoot cluster validation reporting
 description: Troubleshoot cluster validation reporting and validate QoS settings configuration for Azure Stack HCI clusters
 author: khdownie
 ms.topic: troubleshooting
-ms.date: 07/21/2020
+ms.date: 01/05/2021
 ms.author: v-kedow
 ms.reviewer: JasonGerend
 ---
@@ -13,6 +13,8 @@ ms.reviewer: JasonGerend
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
 This topic helps you troubleshoot cluster validation reporting for network and storage QoS (quality of service) settings across servers in an Azure Stack HCI cluster, and verify that important rules are defined. For optimal connectivity and performance, the cluster validation process verifies that Data Center Bridging (DCB) QoS configuration is consistent and, if defined, contains appropriate rules for Failover Clustering and SMB/SMB Direct traffic classes.
+
+DCB is required for RDMA over Converged Ethernet (RoCE) networks, and is optional (but recommended) for Internet Wide Area RDMA Protocol (iWARP) networks.
 
 ## Install data center bridging
 
