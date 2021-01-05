@@ -96,7 +96,6 @@ For more information about update build types, see [Manage updates in Azure Stac
 - The Azure Stack Hub user portal now uses the full screen experience for Load Balancers, Network Security Groups, DNS zone, disk and VM creation.
 - In the 2011 release, Windows Admin Center (WAC) is enabled on demand from an unlocked PEP session. By default, WAC is not enabled. To enable it, specify the `-EnableWac` flag; for example, `unlock-supportsession -EnableWac`.
 - Proactive log collection now uses an improved algorithm, which captures logs during error conditions that aren't visible to an operator. This ensures that the correct diagnostic info is collected at the right time, without needing any operator interaction. In some cases, Microsoft support can begin troubleshooting and resolving problems sooner. Initial algorithm improvements focus on patch and update operations. Enabling proactive log collections is recommended, as more operations are optimized and the benefits increase.
-- If any add-on resource provider is not in a supported version, the Azure Stack Hub update will be blocked. Please follow the warning information to update the add-on resource providers to the recommended version, then perform the Azure Stack Hub update.
 
 ### Fixes
 
