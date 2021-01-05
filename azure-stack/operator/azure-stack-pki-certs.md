@@ -37,7 +37,7 @@ The following list describes the general certificate issuance, security, and for
 ::: moniker-end
 - The use of self-signed certificates aren't supported.
 - For deployment and rotation, you can either use a single certificate covering all name spaces in the certificate's Subject Name and Subject Alternative Name (SAN) fields OR you can use individual certificates for each of the namespaces below that the Azure Stack Hub services you plan to utilize require. Both approaches require using wild cards for endpoints where they're required, such as **KeyVault** and **KeyVaultInternal**.
-- The certificate signature algorithm should **not** be SHA1.
+- The certificate signature algorithm shouldn't be SHA1.
 - The certificate format must be PFX, as both the public and private keys are required for Azure Stack Hub installation. The private key must have the local machine key attribute set.
 - The PFX encryption must be 3DES (this encryption is default when exporting from a Windows 10 client or Windows Server 2016 certificate store).
 - The certificate pfx files must have a value "Digital Signature" and "KeyEncipherment" in its "Key Usage" field.
