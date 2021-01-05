@@ -87,14 +87,14 @@ the following:
 
     1.  From the top menu select **Storage**:
 
-        ![](media/image-30.png)
+        ![Screenshot that shows the iDRAC page with the 'Storage' action selected.](media/image-30.png)
     
     1.  Locate the replaced disk and expand the item. Compare the disk
         **Revision** to the revision in the support matrix. If the disk
         is not in the support matrix, then engage support to remediate
         the problem.
 
-        ![](media/image-31.png)
+        ![Screenshot that shows the iDRAC 'Advanced Properties' page with 'Manufacturer', 'Product ID', and 'Revision' highlighted.](media/image-31.png)
         
 ## Next steps
 

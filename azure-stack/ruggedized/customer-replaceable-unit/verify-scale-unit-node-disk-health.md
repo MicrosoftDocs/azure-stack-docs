@@ -30,7 +30,7 @@ ms.lastreviewed:
         **HealthStatus** of **Healthy**, then wait a few minutes and then run
         the command again.
         
-        ![](media/image-57.png)
+        ![Screenshot that shows Windows PowerShell with the 'OperationsStatus' and 'HealthStatus' columns highlighted.](media/image-57.png)
         
     1.  Run `Get-VirtualDisk -cimsession "S-Cluster" | Get-StorageJob` to verify that all running storage jobs are complete.
     
