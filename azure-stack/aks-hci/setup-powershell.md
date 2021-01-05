@@ -58,7 +58,7 @@ Close all PowerShell windows again and reopen an administrative session and proc
   
 After running the above commands, close all PowerShell windows and reopen an administrative session to validate PowerShell module upgrade as detailed below and then run the `Update-AksHci` command as instructed later in the document.
 
-## Step 1.3: Validate upgraded PowerShell module
+### Step 1.3: Validate upgraded PowerShell module
 
 **Close all PowerShell windows** and reopen a new administrative session to check if you have the latest version of the PowerShell module.  
 
@@ -124,11 +124,11 @@ Configure your deployment with the following command.
                     [-vipPoolEndIp <String>]
                     [-macPoolStart <String>]
                     [-macPoolEnd <String>]
-                    [-vlanID <int>]
+                    [-vlandID <int>]
                     [-kvaLoadBalancerType {unstacked_haproxy, stacked_kube_vip}]
                     [-kvaControlPlaneEndpoint <String>]
                     [-proxyServerHTTP <String>]
-                    [-proxyServerHTTP <String>]
+                    [-proxyServerHTTPS <String>]
                     [-proxyServerNoProxy <String>]
                     [-proxyServerCredential <PSCredential>]
                     [-cloudServiceCidr <String>]
