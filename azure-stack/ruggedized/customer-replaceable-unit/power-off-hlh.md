@@ -26,7 +26,7 @@ so you can replace hardware components.
 
 2.  Select the **Start button** and select **Shut down** to shut down the HLH.
 
-    ![](media/image-22.png)
+    ![Screenshot that shows the Windows button and 'Shut down' selected.](media/image-22.png)
 
     Wait several minutes for the shutdown to complete.
     

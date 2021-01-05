@@ -1,5 +1,5 @@
 ---
-title: Register Azure Stack Hub with Azure
+title: Register Azure Stack Hub with Azure - Ruggedized
 description: Learn how to register Azure Stack Hub with Azure so you can download Azure Marketplace items and set up data reporting. 
 services: azure-stack
 documentationcenter: ''
