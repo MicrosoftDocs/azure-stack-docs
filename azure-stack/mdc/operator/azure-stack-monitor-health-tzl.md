@@ -1,6 +1,6 @@
 ---
 title: Monitor health and alerts in Azure Stack - MDC | Microsoft Docs
-description: Learn how to monitor health and alerts in Azure Stack for Modular Data Centers (MDC).
+description: Learn how to monitor health and alerts in Azure Stack for a Modular Data Center (MDC).
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs

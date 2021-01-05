@@ -1,6 +1,6 @@
 ---
 title: Offer Commvault marketplace item in Azure Stack - MDC
-description: Deploy Commvault from Azure Stack Marketplace for Modular Data Centers (MDC).
+description: Deploy Commvault from Azure Stack Marketplace for a Modular Data Center (MDC).
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
