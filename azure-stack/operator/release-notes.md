@@ -77,7 +77,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Users can now deploy all supported VM sizes, using Nvidia T4 via the Azure Stack Hub user portal.
 - Azure Stack Hub operators can now configure multi-tenancy in Azure Stack Hub via the administrator portal.
 - Azure Stack Hub operators can now configure a legal notice using the privileged endpoint.
-- During update, granular storage repair is used to repair the out of sync blocks due to update. Smaller segments needs to be repaired which leads to less repair time and hence less overall update duration. 
+- During the update, granular storage repair is used to repair the out-of-sync blocks due to the update. Smaller segments must be repaired, which leads to less repair time and  a shorter overall update duration. 
 
 ### Improvements
 
