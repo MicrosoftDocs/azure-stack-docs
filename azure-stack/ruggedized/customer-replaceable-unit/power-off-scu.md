@@ -29,16 +29,16 @@ procedure below to safely shut down the node.
     1.  From the Administration Portal, select the node in need of
         repair and then select **Drain**.
 
-        ![](media/image-23.png)
+        ![Screenshot that shows the 'Administration' page with the 'Drain' action selected and a node highlighted.](media/image-23.png)
         
     1.  When prompted, enter the name of the
         node to drain and select **Yes**.
 
-        ![](media/image-24.png)
+        ![Screenshot that shows the 'Administration - Nodes' page.](media/image-24.png)
     
     1.  You will see a notification saying the drain is in progress.
     
-        ![](media/image-25.png)
+        ![Screenshot that shows the 'Administration - Nodes' page with the drain notification displayed.](media/image-25.png)
         
     1.  Log in to the iDRAC interface and verify the node\'s service tag in the **System Information**.
     
@@ -48,18 +48,18 @@ procedure below to safely shut down the node.
     1.  Once the drain is completed, select the node again, verify that
         the **Operational State** is **Maintenance** and select **Shutdown**.
 
-        ![](media/image-26.png)
+        ![Screenshot that shows the 'Administration - Nodes' page with a node and the 'Shutdown' action selected.](media/image-26.png)
         
     1.  When prompted, select **Yes** to confirm the shutdown.
     
-        ![](media/image-27.png)
+        ![Screenshot that shows the 'Administration - Nodes' page with the 'Shutdown node' dialog displayed.](media/image-27.png)
         
     1.  You will see a notification saying
         the shutdown is in progress.
 
-        ![](media/image-28.png)
+        ![Screenshot that shows the 'Administration - Nodes' page with the shutdown in progress dialog displayed.](media/image-28.png)
     
     1.  When the shutdown is complete, the **Power Status** is **Stopped**.
     
-        ![](media/image-29.png)
+        ![Screenshot that shows the 'Administration - Nodes' page with a node selected and 'Stopped' highlighted for the 'Power Status'.](media/image-29.png)
         
