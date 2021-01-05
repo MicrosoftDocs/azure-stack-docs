@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/10/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: chasat
 ms.lastreviewed: 12/17/2019
@@ -36,7 +36,7 @@ You will need to have the following items before adding the Container Registry M
 
 | Item | Type | Details |
 | --- | --- | --- |
-| Azure Stack Hub PowerShell modules (Azs.Gallery.Admin) | PowerShell Modules | Only required if side loading the container registry template gallery item, the Azure Stack Hub PowerShell Modules are used to add and remove gallery items.<br>[Install Azure Stack PowerShell modules](../../operator/azure-stack-powershell-install.md) |
+| Azure Stack Hub PowerShell modules (Azs.Gallery.Admin) | PowerShell Modules | Only required if side loading the container registry template gallery item, the Azure Stack Hub PowerShell Modules are used to add and remove gallery items.<br>[Install Azure Stack PowerShell modules](../../operator/powershell-install-az-module.md) |
 | Container Registry Template | Marketplace item | In order to deploy the container registry as an Azure Stack Hub user, the Container registry template Marketplace item must be available in your subscription, or manually added (side loaded), into your Azure Stack Hub Marketplace. If side loading, follow the instructions to side load the package in the `readme.md` in the [GitHub repository](https://github.com/msazurestackworkloads/azurestack-gallery/releases/tag/registry-v1.0.1). |
 | AKS Base Ubuntu 16.04-LTS Image, September 2019 minimum release version | Marketplace item | For your Azure Stack Hub users to deploy the container registry, you must make the AKS Base Image available in the Marketplace. The Container registry template uses the image when installing an Ubuntu VM from the subscription that hosts the Docker container registry binaries. |
 | Linux Custom Script Extension 2.0 | Marketplace item | For your Azure Stack Hub users to deploy the container registry, you must make the Linux Custom Script Extension available in the Marketplace. The Container registry template deployment uses the extension to configure the registry. |

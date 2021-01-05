@@ -4,10 +4,10 @@ titleSuffix: Azure Stack Hub
 description: Learn how to validate PKI certificates for Azure Stack Hub integrated systems using the Azure Stack Hub Readiness Checker tool.
 services: azure-stack
 documentationcenter: ''
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: how-to
 ms.date:  10/19/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: ppacent
 ms.lastreviewed: 10/19/2020
 
@@ -238,6 +238,12 @@ Use these steps to validate the Azure Stack Hub PKI certificates for deployment 
     ```
 
 **Resolution**: Follow the tool's guidance in the details section under each set of tests for each certificate.
+
+**Symptom**: HTTP CRL Checking fails despite having an HTTP CDP written to x509 extensions.
+
+**Cause**: Currently, AzsReadinessChecker can't check for HTTP CDP in some languages.
+
+**Resolution**: Run validation with OS language set to EN-US.
 
 ## Certificates
 

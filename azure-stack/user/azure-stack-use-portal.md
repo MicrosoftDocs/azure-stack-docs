@@ -4,7 +4,7 @@ description: Learn how to access and use the user portal in Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 5/27/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: efemmano
 ms.lastreviewed: 01/25/2019

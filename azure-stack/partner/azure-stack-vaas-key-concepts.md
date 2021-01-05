@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Learn the key concepts of Azure Stack Hub validation as a service.
 author: mattbriggs
 ms.topic: article
-ms.date: 5/27/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 10/28/2019

@@ -3,7 +3,7 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 11/19/2020
+ms.date: 01/04/2021
 ms.author: sethm
 ms.reviewer: gara
 ms.lastreviewed: 05/28/2020
@@ -21,6 +21,7 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## New marketplace items
 
+- 01/04/2021: Versa Operating System 21.1.1 – version 21.1.1
 - 09/08/2020: Qualys Virtual Scanner Appliance
 - 01/21/2020: Teradici Cloud Access Software
 - 12/26/2019: CloudGuard IaaS High Availability
@@ -165,6 +166,23 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Updated marketplace items
 
+- 12/22/2020: Rogue Wave Software Centos 7.8 – version 7.8.2020062400
+- 12/07/2020: Bitnami Elasticsearch Cluster - version 1.0.2
+- 12/07/2020: Bitnami Cassandra Cluster - version 1.0.21
+- 12/07/2020: Bitnami etcd Cluster - version 1.0.16
+- 12/07/2020: Bitnami Jenkins Cluster - version 1.0.70
+- 12/07/2020: Bitnami Kafka Cluster - version 1.0.2
+- 12/07/2020: Bitnami MariaDB Galera Cluster - version 1.0.13
+- 12/07/2020: Bitnami MariaDB with Replication - version 1.0.36
+- 12/07/2020: Bitnami Memcached Multiple Instances - version 1.0.34
+- 12/07/2020: Bitnami Moodle Multi-Tier - version 1.0.46
+- 12/07/2020: Bitnami NATS Cluster - version 1.0.19
+- 12/07/2020: Bitnami PostgreSQL with Replication - version 1.0.37
+- 12/07/2020: Bitnami MySQL with Replication - version 1.0.37
+- 12/07/2020: Bitnami ZooKeeper Cluster - version 1.0.18
+- 12/07/2020: Bitnami Redis High Availability - version 1.0.27
+- 12/07/2020: Bitnami WordPress Multi-Tier - version 1.0.56
+- 12/07/2020: Bitnami RabbitMQ Cluster - version 1.0.38
 - 11/18/2020: SQL Server 2019 Standard on Windows Server 2019 - Bring your own license - version 15.0.20201015
 - 11/18/2020: SQL Server 2019 Standard on Windows Server 2019 - Pay as you go - version 15.0.20201015
 - 11/18/2020: Free SQL Server License: SQL 2019 Developer on Windows Server 2019 - Bring your own license - version 15.0.20201015

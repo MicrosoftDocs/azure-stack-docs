@@ -228,6 +228,12 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: If the stamp contains App Service resource provider (RP) version 1.7 and older, upon update of the stamp, the blades for App Service do not load.
 - Remediation: Update the RP to version 2002 Q2.
 
+## PowerShell
+
+[!Include[Known issue for install - one](../includes/known-issue-az-install-1.md)]
+
+[!Include[Known issue for install - two](../includes/known-issue-az-install-2.md)]
+
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
 <!-- ## App Service -->
@@ -353,8 +359,8 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 ### Cannot create a virtual machine scale set with Standard_DS2_v2 VM size on portal
 
 - Applicable: This issue applies to the 2002 release.
-- Cause: There is a portal bug that prevents virtual machine scale set creation with the Standard_DS2_v2 VM size. Creating one will error out with: "{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"BadRequest","message":"{\r\n \"error\": {\r\n \"code\": \"NetworkProfileValidationError\",\r\n \"message\": \"Virtual Machine size Standard_DS2_v2 is not in the allowed list of VM sizes for accelerated networking to be enabled on the VM at index 0 for VM Scale Set /subscriptions/x/resourceGroups/RGVMSS/providers/Microsoft.Compute/virtualMachineScaleSets/vmss. Allowed sizes: .\"\r\n }\r\n}"}]}"
-- Remediation: Create a virtual machine scale set with PowerShell or a resource manager template.
+- Cause: There is a portal bug that prevents virtual machine scale set creation with the Standard_DS2_v2 VM size. Creating one will error out with: "{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"BadRequest","message":"{\r\n \"error\": {\r\n \"code\": \"NetworkProfileValidationError\",\r\n \"message\": \"Virtual Machine size Standard_DS2_v2 is not in the allowed list of VM sizes for accelerated networking to be enabled on the VM at index 0 for virtual machine scale set /subscriptions/x/resourceGroups/RGVMSS/providers/Microsoft.Compute/virtualMachineScaleSets/vmss. Allowed sizes: .\"\r\n }\r\n}"}]}"
+- Remediation: Create a virtual machine scale set with PowerShell or a Resource Manager template.
 
 ### VM overview blade does not show correct computer name
 
@@ -416,7 +422,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 ### Retention period revert to 0
 
 - Applicable: This issue applies to release 2002 and 2005.
-- Cause: If you previously specified a time period other than 0 in retention period setting, it would be reverted back to 0 (the default value of this setting) during 2002 and 2005 update. And the 0 days setting would take effect immdiately after update finished, which causes all the existing deleted storage accounts and any upcoming newly deleted storage account being immediately out of retention and marked for periodic garbage collection (which runs hourly). 
+- Cause: If you previously specified a time period other than 0 in retention period setting, it would be reverted back to 0 (the default value of this setting) during 2002 and 2005 update. And the 0 days setting would take effect immediately after update finished, which causes all the existing deleted storage accounts and any upcoming newly deleted storage account being immediately out of retention and marked for periodic garbage collection (which runs hourly). 
 - Remediation: Manually specify the retention period to a proper period. However, any storage account already been garbage collected before the new retention period is specified is not recoverable.  
 
 ## Resource providers
@@ -432,6 +438,12 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Applicable: This issue applies to release 2002.
 - Cause: If the stamp contains App Service resource provider (RP) version 1.7 and older, upon update of the stamp, the blades for App Service do not load.
 - Remediation: Update the RP to version [2020 Q2](azure-stack-app-service-update.md).
+
+## PowerShell
+
+[!Include[Known issue for install - one](../includes/known-issue-az-install-1.md)]
+
+[!Include[Known issue for install - two](../includes/known-issue-az-install-2.md)]
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->

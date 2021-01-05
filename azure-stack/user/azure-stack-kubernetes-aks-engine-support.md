@@ -4,7 +4,7 @@ description: This topic contains the support policies for AKS engine on Azure St
 author: mattbriggs
 
 ms.topic: article
-ms.date: 09/10/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 09/0102020
