@@ -1,6 +1,6 @@
 ---
-title: Integrated Dell Remote Access Controller credentials
-description: Explains how to update credentials for Integrated Dell Remote Access Controller
+title: Integrated Dell Remote Access Controller credentials - MDC
+description: Learn how to update credentials for the Integrated Dell Remote Access Controller (iDRAC) in a Modular Data Center (MDC).
 author: troettinger
 ms.author: thoroet
 ms.service: azure-stack
@@ -10,7 +10,7 @@ ms.reviewer: justinha
 ms.lastreviewed: 10/27/2020
 ---
 
-# Update credentials for the Integrated Dell Remote Access Controller
+# Update credentials for the Integrated Dell Remote Access Controller - Modular Data Center (MDC)
 
 This section describes how to change the Integrated Dell Remote Access Controller (iDRAC) credentials. 
 
