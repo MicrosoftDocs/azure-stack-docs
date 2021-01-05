@@ -3,7 +3,7 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 12/22/2020
+ms.date: 01/04/2021
 ms.author: sethm
 ms.reviewer: gara
 ms.lastreviewed: 05/28/2020
@@ -21,6 +21,7 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## New marketplace items
 
+- 01/04/2021: Versa Operating System 21.1.1 – version 21.1.1
 - 09/08/2020: Qualys Virtual Scanner Appliance
 - 01/21/2020: Teradici Cloud Access Software
 - 12/26/2019: CloudGuard IaaS High Availability

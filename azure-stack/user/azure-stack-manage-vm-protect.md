@@ -4,7 +4,7 @@ description: Learn how to build a recovery plan to protect VMs deployed on Azure
 author: mattbriggs
 
 ms.topic: conceptual
-ms.date: 5/27/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: hectorl
 ms.lastreviewed: 3/5/2020

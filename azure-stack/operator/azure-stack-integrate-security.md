@@ -1,10 +1,10 @@
 ---
 title: Integrate Azure Stack Hub with monitoring solutions via syslog forwarding 
 description: Learn how to integrate Azure Stack Hub with monitoring solutions using syslog forwarding.
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: article
 ms.date: 01/10/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 06/15/2020
 

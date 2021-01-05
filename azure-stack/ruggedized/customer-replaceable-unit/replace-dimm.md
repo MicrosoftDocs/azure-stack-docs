@@ -1,11 +1,11 @@
 ---
 title: Replace a DIMM
 description: Learn how to replace a DIMM
-author: myoungerman
+author: PatAltimore
 
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: 
 ms.lastreviewed: 
 

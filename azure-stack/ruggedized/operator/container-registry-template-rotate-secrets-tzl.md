@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/8/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: chasat
 ms.lastreviewed: 12/17/2019
@@ -250,19 +250,19 @@ Follow the instructions below to set new secrets in Key Vault.
 
 2.  Navigate to the resource group that the container registry template VM is deployed.
 
-    ![Container registry template](./media/container-registry-template-rotating-secrets-tzl/image1.png)
+    ![Screenshot that shows the resource group where the container registry template VM is deployed.](./media/container-registry-template-rotating-secrets-tzl/image1.png)
 
 3. Select the deployments under **Deployments**.
 
-    ![Container registry template](./media/container-registry-template-rotating-secrets-tzl/image2.png)
+    ![Screenshot that shows a deployment selected on the 'Deployments' page.](./media/container-registry-template-rotating-secrets-tzl/image2.png)
 
 4.  If rotating secrets for the first time, select the original deployment. If this isn't the first time rotating secrets, select the most recent deployment and then select **Redeploy**.
 
-    ![Container registry template](./media/container-registry-template-rotating-secrets-tzl/image3.png)
+    ![Screenshot that shows the template 'Overview' page with the 'Redeploy' action highlighted.](./media/container-registry-template-rotating-secrets-tzl/image3.png)
 
 5.  In **Deploy Solution Template**, select **Use Existing Resource Group** and select the resource group that was used to originally deploy the container registry template. In order for a redeployment to be successful, it must use the same resource group.
 
-    ![Container registry template](./media/container-registry-template-rotating-secrets-tzl/image4.png)
+    ![Screenshot that shows the 'Deploy Solution Template' and 'Parameters' pages.](./media/container-registry-template-rotating-secrets-tzl/image4.png)
 
 6.  In **Parameters** check that the parameters match the original deployment. The service principal client ID and service principal secret will need to be added.
 

@@ -1,11 +1,11 @@
 ---
 title: Access iDRAC over USB connection
 description: Learn how to access iDRAC over USB connection
-author: myoungerman
+author: PatAltimore
 
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: 
 ms.lastreviewed: 
 
@@ -35,7 +35,7 @@ your laptop.
     laptop to the iDRAC Direct port, located on the front of the server.
     Refer to item 4 in the diagram.
 
-    ![](media/image-67.png)
+    ![Diagram that shows a power button, U S B, and micro U S B ports.](media/image-67.png)
 
 3.  Wait for the laptop to acquire the IP address 169.254.0.4.
 

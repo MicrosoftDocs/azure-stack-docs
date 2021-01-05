@@ -1,11 +1,11 @@
 ---
 title: Power on and repair a Scale Unit node
 description: Learn how to power on and repair a Scale Unit node
-author: myoungerman
+author: PatAltimore
 
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: 
 ms.lastreviewed: 
 
@@ -27,15 +27,15 @@ complete.
 
 1.  In the **Administration Portal**, select the node and select **Repair**.
 
-    ![](media/image-52.png)
+    ![Screenshot that shows the 'Administration - Nodes' page with a node and the 'Repair' action selected.](media/image-52.png)
 
 1.  Provide the **BMC IP Address** that corresponds to the node you are repairing and select **Repair**.
 
-    ![](media/image-53.png)
+    ![Screenshot that shows the 'Administration - Nodes' page with a node selected, the I P address highlighted and the 'Repair node' dialog displayed.](media/image-53.png)
 
 1.  Monitor the progress in the notification pane:
 
-    ![](media/image-54.png)
+    ![Screenshot that shows the 'Notifications' pane and 'Repairing node - Running' displayed.](media/image-54.png)
     
     
     > [!NOTE]

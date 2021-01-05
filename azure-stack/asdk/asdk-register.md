@@ -1,11 +1,11 @@
 ---
 title: Register the ASDK with Azure 
 description: Learn how to register the Azure Stack Development Kit (ASDK) with Azure to enable marketplace syndication and usage reporting.
-author: justinha
+author: PatAltimore
 
 ms.topic: article
 ms.date: 11/14/2020
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: misainat
 ms.lastreviewed: 11/14/2020
 
@@ -93,7 +93,7 @@ Follow these steps to register the ASDK with Azure.
     Register-AzureRMResourceProvider -ProviderNamespace Microsoft.AzureRMureStack
     
     # Import the registration module that was downloaded with the GitHub tools
-    Import-Module C:\zureRMureStack-Tools-AzureRM-master\Registration\RegisterWithAzureRMure.psm1
+    Import-Module C:\AzureRMureStack-Tools-AzureRM-master\Registration\RegisterWithAzureRMure.psm1
     
     # If you have multiple subscriptions, run the following command to select the one you want to use:
     # Get-AzureRMSubscription -SubscriptionID "<subscription ID>" | Select-AzureRMSubscription
