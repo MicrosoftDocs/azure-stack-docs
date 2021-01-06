@@ -81,7 +81,7 @@ You need to install Azure Stack Hub PowerShell modules. These cmdlets are in the
 
 The **Stop** action turns off the node. It's the same as pressing the power button. It doesn't send a shutdown signal to the operating system. For planned stop operations, always try the shutdown operation first.
 
-This action is typically used when a node is in a hung state and no longer responds to requests.
+This action is typically used when a node no longer responds to requests.
 
 To run the stop action, open an elevated PowerShell prompt, and run the following cmdlet:
 
