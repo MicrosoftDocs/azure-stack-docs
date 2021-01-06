@@ -54,7 +54,7 @@ To build and deploy RDS:
 1. Direct your users to install a [Remote Desktop client](/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients) to access apps and resources
 1. Add Connection Brokers and Session Hosts to enable high availability:
     - [Scale out an existing RDS collection with an RD Session Host farm](/windows-server/remote/remote-desktop-services/rds-scale-rdsh-farm)
-    - [Add high availability to the RD Connection Broker infrastructure](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/rds-connection-broker-cluster)
+    - [Add high availability to the RD Connection Broker infrastructure](/windows-server/remote/remote-desktop-services/rds-connection-broker-cluster)
     - [Add high availability to the RD Web and RD Gateway web front](/windows-server/remote/remote-desktop-services/rds-rdweb-gateway-ha)
     - [Deploy a two-node Storage Spaces Direct file system for UPD storage](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment)
 
