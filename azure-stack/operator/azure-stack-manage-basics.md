@@ -50,13 +50,15 @@ Currently, we support the following additional Platform-as-a-Service (PaaS) serv
 - App Service
 - Azure Functions
 - SQL and MySQL databases
+- Event Hubs
+- IoT Hub (in preview)
 - Kubernetes (in preview)
 
 These services require additional configuration before you can make them available to your users. For more information, see the "Tutorials" and the "How-to guides\Offer services" sections of our Azure Stack Hub operator documentation.
 
 **Service roadmap**
 
-Azure Stack Hub will continue to add support for Azure services. For the projected roadmap, see the [Azure Stack Hub: An extension of Azure](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) whitepaper. You can also monitor the [Azure Stack Hub blog posts](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) for new announcements.
+Azure Stack Hub will continue to add support for Azure services. For the projected roadmap, see the [Azure Stack Hub: An extension of Azure](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) whitepaper. You can also monitor the [Azure Stack Hub blog posts](https://techcommunity.microsoft.com/t5/azure-stack-blog/bg-p/AzureStackBlog) for new announcements.
 
 ## What account should I use?
 
