@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/17/2020
+ms.date: 01/06/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -46,10 +46,15 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 <!-- ## Compute -->
 
 <!-- ## Storage -->
+
 <!-- ## SQL and MySQL-->
+
 <!-- ## App Service -->
+
 <!-- ## Usage -->
+
 <!-- ### Identity -->
+
 <!-- ### Marketplace -->
 ::: moniker-end
 

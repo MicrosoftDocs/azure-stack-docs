@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/23/2020
+ms.date: 01/06/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -71,36 +71,36 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- What's new, also net new experiences and features. -->
 
-- The Azure Stack Hub Infrastructure Backup service now supports progressive backup. This feature helps reduce storage requirements on the external backup location, and changes the way files are organized on the external backup store. It is recommended that you not manipulate files under the backup root directory.
+- The Azure Stack Hub infrastructure backup service now supports progressive backup. This feature helps reduce storage requirements on the external backup location, and changes the way files are organized on the external backup store. It is recommended that you not manipulate files under the backup root directory.
 - Azure Stack Hub managed disks now support Azure Disk APIs version 2019-11-01, with a subset of the available features.
-- The Azure Stack Hub administrator portal now shows GPU-releated information, including capacity data. Note that this requires a GPU to be installed in the system.
+- The Azure Stack Hub administrator portal now shows GPU-related information, including capacity data. Note that this requires a GPU to be installed in the system.
 - Users can now deploy all supported VM sizes, using Nvidia T4 via the Azure Stack Hub user portal.
-- Azure Stack Hub operators can now configure multi-tenancy in Azure Stack Hub via the administrator portal.
+- Azure Stack Hub operators can now configure multi-tenancy in Azure Stack Hub via the administrator portal. For more information, see [Configure multi-tenancy](azure-stack-enable-multitenancy.md).
 - Azure Stack Hub operators can now configure a legal notice using the privileged endpoint.
-- During the update, granular storage repair is used to repair the out-of-sync blocks due to the update. Smaller segments must be repaired, which leads to less repair time and  a shorter overall update duration. 
+- During the update, granular storage repair is used to repair blocks that are out-of-sync due to the update. Smaller segments must be repaired, which leads to less repair time and a shorter overall update duration.
 
 ### Improvements
 
-- Increased Network Controller log retention period, so the logs will be available for longer to help engineers in effective troubleshooting, even after an issue has been mitigated.
-- Made improvements to preserve the Network Controller, Gateway VM, Load Balancer and Host Agent logs during an update.
+- Increased the Network Controller log retention period, so the logs will be available for longer to help engineers in effective troubleshooting, even after an issue has been resolved.
+- Improvements to preserve the Network Controller, Gateway VM, Load Balancer and Host Agent logs during an update.
 - Improved the deletion logic for networking resources that are blocked by a failed provisioning state.
-- Reduced the XRP memory to 14GB per VM and WAS memory to 10GB per VM. By avoiding the increase in total VM memory footprint, more tenant VMs will be deployable.
+- Reduced the XRP memory to 14GB per VM and WAS memory to 10GB per VM. By avoiding the increase in total VM memory footprint, more tenant VMs are deployable.
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
 ### Changes
 
-- The Fabric Resource Provider API now exposes information about GPUs if available in the scale unit.
+- The Fabric Resource Provider APIs now expose information about GPUs if available in the scale unit.
 - Azure Stack Hub operators can now change the GPU partitioning ratio via PowerShell (AMD only). Note that this requires all virtual machines to be deallocated.
 - This build includes a new version of Azure Resource Manager.
-- The Azure Stack Hub user portal now uses the full screen experience for Load Balancers, Network Security Groups, DNS zone, disk and VM creation.
-- In the 2011 release, Windows Admin Center (WAC) is enabled on demand from an unlocked PEP session. By default, WAC is not enabled. To enable it, specify the `-EnableWac` flag; for example, `unlock-supportsession -EnableWac`.
+- The Azure Stack Hub user portal now uses the full screen experience for load balancers, Network Security Groups, DNS zones, and disk and VM creation.
+- In the 2011 release, the Windows Admin Center (WAC) is enabled on demand from an unlocked PEP session. By default, WAC is not enabled. To enable it, specify the `-EnableWac` flag; for example, `unlock-supportsession -EnableWac`.
 - Proactive log collection now uses an improved algorithm, which captures logs during error conditions that aren't visible to an operator. This ensures that the correct diagnostic info is collected at the right time, without needing any operator interaction. In some cases, Microsoft support can begin troubleshooting and resolving problems sooner. Initial algorithm improvements focus on patch and update operations. Enabling proactive log collections is recommended, as more operations are optimized and the benefits increase.
 
 ### Fixes
 
-- Fixed an issue in which internal DNS zones become out of sync during update and cause the update to fail. This fix has been backported to 2008 and 2005 via hotfixes.
-- Fixed an issue in which disk space was exhausted by logs on physical hosts, Network Controllers, Gateways and Load Balancers. This fix has been backported to 2008.
+- Fixed an issue in which internal DNS zones become out of sync during update, and cause the update to fail. This fix has been backported to 2008 and 2005 via hotfixes.
+- Fixed an issue in which disk space was exhausted by logs on physical hosts, Network Controllers, Gateways and load balancers. This fix has been backported to 2008.
 - Fixed an issue in which deletion of resource groups or virtual networks fails due to an orphaned resource in the Network Controller layer.
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
