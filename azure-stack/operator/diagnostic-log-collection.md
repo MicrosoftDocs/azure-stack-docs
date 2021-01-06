@@ -140,6 +140,9 @@ If you're using the **Send logs now** method and want to use PowerShell instead 
   ```powershell
   Send-AzureStackDiagnosticLog -FilterByResourceProvider <<value-add RP name>>
   ```
+
+  ::: moniker range=">= azs-2008"
+
   To send diagnostic logs for SQL RP: 
 
   ```powershell
@@ -150,6 +153,8 @@ If you're using the **Send logs now** method and want to use PowerShell instead 
   ```powershell
   Send-AzureStackDiagnosticLog -FilterByResourceProvider MySQLAdapter
   ```
+  
+  ::: moniker-end
 
   To send diagnostic logs for IoT Hub: 
 
