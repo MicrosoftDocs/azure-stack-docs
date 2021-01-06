@@ -187,6 +187,14 @@ $session | Remove-PSSession
 
 ## Collect diagnostic logs
 
+::: moniker range=">= azs-2008"
+
+Azure Stack Hub has multiple ways to collect, save, and send diagnostic logs to Microsoft Support. Starting from version 1.1.93, SQL Resource Provider supports the standard way of collecting logs from you Azure Stack Hub environment. For more information, see [Diagnostic log collection](diagnostic-log-collection.md).
+
+::: moniker-end
+
+Starting from version 1.1.93, SQL Resource Provider supports the standard way of collecting logs from you Azure Stack Hub environment. If you are using an older version, it is recommended to update your SQL Resource Provider to the latest version.
+
 To collect logs from the locked down VM, use the PowerShell Just Enough Administration (JEA) endpoint *DBAdapterDiagnostics*. This endpoint provides the following commands:
 
 - **Get-AzsDBAdapterLog**. This command creates a zip package of the resource provider diagnostics logs and saves the file on the session's user drive. You can run this command without any parameters and the last four hours of logs are collected.
