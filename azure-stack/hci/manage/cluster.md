@@ -5,7 +5,7 @@ ms.topic: how-to
 author: v-dasis
 ms.author: v-dasis
 ms.reviewer: jgerend
-ms.date: 01/06/2021
+ms.date: 01/07/2021
 ---
 
 # Manage Azure Stack HCI clusters using Windows Admin Center
@@ -37,11 +37,11 @@ To view this information, select the cluster name under **All connections**, the
 
 The cluster overview page displays information on cluster resources such as servers, infrastructure, and quorum witness.
 
-:::image type="content" source="media/manage-cluster/cluster-overview.png" alt-text="Cluster Dashboard screen" lightbox="media/manage-cluster/cluster-overview.png":::
+:::image type="content" source="media/manage-cluster/cluster-overview.png" alt-text="Cluster Overview screen" lightbox="media/manage-cluster/cluster-overview.png":::
 
 To view this information, select the cluster name under **All connections**, then under **Tools** on the left, select **Overview**.
 
-## Use storage memory cache
+## Change storage settings
 
 You can select to use server memory to cache frequent reads and specify the maximum memory to be used per sever. For more information, see [Understanding the cache in Azure Stack HCI](../concepts/cache.md).
 
@@ -50,8 +50,6 @@ You can select to use server memory to cache frequent reads and specify the maxi
 1. Select **In-memory cache** and enter the new name.
 
     :::image type="content" source="media/manage-cluster/cluster-settings-memory.png" alt-text="cluster In-memory cache screen" lightbox="media/manage-cluster/cluster-settings-memory.png":::
-
-## Change storage pool name
 
 You can change the name of the storage pool that Storage Spaces Direct uses.
 
@@ -106,7 +104,7 @@ There are several general settings that can be applied to your cluster. Here is 
 
 1. To use affinity rules to control virtual machine placement across host servers and sites, select **Affinity rules**, then click **Create rule**. For detailed information on how set up rules, see [Create server and site affinity rules for VMs](vm-affinity.md).
 
-    :::image type="content" source="media/manage-cluster/affinity-rules.png" alt-text="cluster Witness screen" lightbox="media/manage-cluster/afffinity-rules.png":::
+    :::image type="content" source="media/manage-cluster/affinity-rules.png" alt-text="cluster Affinity rules screen" lightbox="media/manage-cluster/affinity-rules.png":::
 
 1. To select how much data to send to Microsoft for diagnostics,, select **Diagnostic data**, then select one of the following:
 
@@ -116,9 +114,9 @@ There are several general settings that can be applied to your cluster. Here is 
 
     :::image type="content" source="media/manage-cluster/cluster-diagnostic-data.png" alt-text="cluster Data Diagnostics screen" lightbox="media/manage-cluster/cluster-diagnostic-data.png":::
 
-## Change cluster Hyper-V settings
+## Change Hyper-V settings
 
-There are five Hyper-V host settings that can be applied to your cluster.
+There are several Hyper-V host settings that can be applied to your cluster.
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
 1. Under **Tools**, select **Settings**.
