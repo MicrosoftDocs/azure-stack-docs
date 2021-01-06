@@ -5,14 +5,14 @@ ms.topic: how-to
 author: v-dasis
 ms.author: v-dasis
 ms.reviewer: jgerend
-ms.date: 07/21/2020
+ms.date: 01/06/2021
 ---
 
 # Manage Azure Stack HCI clusters using Windows Admin Center
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-Windows Admin Center can be used to manage your Azure Stack HCI clusters. Specifically, you will be using the Cluster Manager extension in Windows Admin Center to manage your clusters.
+Windows Admin Center can be used to manage your Azure Stack HCI clusters. Specifically, you will be using the Cluster Manager feature in Windows Admin Center to manage your clusters.
 
 ## View the cluster dashboard
 
@@ -33,29 +33,37 @@ To view this information, select the cluster name under **All connections**, the
 - Total cluster input/output operations/second (IOPS)
 - Average cluster latency in milliseconds
 
-## Change cluster storage settings
+## View cluster overview
 
-There are two settings you can change related to Storage Spaces Direct that can be applied to your cluster.
+The cluster overview page displays information on cluster resources such as servers, infrastructure, and quorum witness.
+
+:::image type="content" source="media/manage-cluster/cluster-overview.png" alt-text="Cluster Dashboard screen" lightbox="media/manage-cluster/cluster-overview.png":::
+
+To view this information, select the cluster name under **All connections**, then under **Tools** on the left, select **Overview**.
+
+## Use storage memory cache
+
+You can select to use server memory to cache frequent reads and specify the maximum memory to be used per sever. For more information, see [Understanding the cache in Azure Stack HCI](../concepts/cache.md).
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
 1. Under **Tools**, select **Settings** at the bottom.
-1. To configure the storage cache, select **Storage Spaces Direct**, then configure the following:
-
-   - for **Persistent cache**, select either **Enabled** or **Disabled**
-
-   - for **Cache mode for HDD**, select **Read only**, **Write only**, or **Read/Write**
-
-   - for **Cache mode for SSD**, select **Read only**, **Write only**, or **Read/Write**
-
-        :::image type="content" source="media/manage-cluster/cluster-settings-ssd.png" alt-text="cluster Storage Spaces Direct screen" lightbox="media/manage-cluster/cluster-settings-ssd.png":::
-
-1. To use server memory to cache frequent reads, select **In-memory cache** and specify the maximum memory to be used per sever. Also see [Understanding the cache in Azure Stack HCI](../concepts/cache.md).
+1. Select **In-memory cache** and enter the new name.
 
     :::image type="content" source="media/manage-cluster/cluster-settings-memory.png" alt-text="cluster In-memory cache screen" lightbox="media/manage-cluster/cluster-settings-memory.png":::
 
-## Change cluster general settings
+## Change storage pool name
 
-There are five general settings that can be applied to your cluster. Here is where you can set and manage access points, node shutdown behavior, traffic encryption, VM load balancing, and cluster witness.
+You can change the name of the storage pool that Storage Spaces Direct uses.
+
+1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
+1. Under **Tools**, select **Settings** at the bottom.
+1. Select **Storage pools** and enter the new name.
+
+    :::image type="content" source="media/manage-cluster/cluster-settings-ssd.png" alt-text="cluster storage pool screen" lightbox="media/manage-cluster/cluster-settings-ssd.png":::
+
+## Change cluster settings
+
+There are several general settings that can be applied to your cluster. Here is where you can set and manage access points, node shutdown behavior, traffic encryption, VM load balancing, and cluster witness.
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
 1. Under **Tools**, select **Settings**.
@@ -90,9 +98,23 @@ There are five general settings that can be applied to your cluster. Here is whe
    - **Disk witness** - to use a disk resource as witness (do not use for stretched clusters)
    - **File share witness** - to use a file share as witness
 
-        For more information, see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).
+        For detailed information on how to set up a witness, see [Set up a cluster witness](../deploy/witness.md).
+
+        Also see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).
 
         :::image type="content" source="media/manage-cluster/cluster-settings-witness.png" alt-text="cluster Witness screen" lightbox="media/manage-cluster/cluster-settings-witness.png":::
+
+1. To use affinity rules to control virtual machine placement across host servers and sites, select **Affinity rules**, then click **Create rule**. For detailed information on how set up rules, see [Create server and site affinity rules for VMs](vm-affinity.md).
+
+    :::image type="content" source="media/manage-cluster/affinity-rules.png" alt-text="cluster Witness screen" lightbox="media/manage-cluster/afffinity-rules.png":::
+
+1. To select how much data to send to Microsoft for diagnostics,, select **Diagnostic data**, then select one of the following:
+
+    - **Diagnostic data off (Security)** - no data is sent
+    - **Required (Basic)** - minimum data sent to keep things secure and up-to-date
+    - **Optional (Full)** - all applicable data sent
+
+    :::image type="content" source="media/manage-cluster/cluster-diagnostic-data.png" alt-text="cluster Data Diagnostics screen" lightbox="media/manage-cluster/cluster-diagnostic-data.png":::
 
 ## Change cluster Hyper-V settings
 
@@ -131,6 +153,10 @@ There are five Hyper-V host settings that can be applied to your cluster.
 1. To specify the number of storage migrations that can be performed at the same time, select **Storage Migration**, then select a number.
 
     :::image type="content" source="media/manage-cluster/cluster-settings-sto-migration.png" alt-text="cluster Storage Migration screen" lightbox="media/manage-cluster/cluster-settings-sto-migration.png":::
+
+1. To register or unregister your cluster with Azure, select **Azure Stack HCI registration**. For detailed information on how to do this, see [Connect Azure Stack HCI to Azure](../deploy/register-with-azure.md).
+
+    :::image type="content" source="media/manage-cluster/cluster-registration.png" alt-text="cluster Azure Registration screen" lightbox="media/manage-cluster/cluster-registration.png":::
 
 ## Next steps
 
