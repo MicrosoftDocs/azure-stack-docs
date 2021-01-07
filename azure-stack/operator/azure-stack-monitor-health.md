@@ -69,11 +69,9 @@ You can click a specific alert to view the alert details. The alert details show
 
 ![The Alert details blade in Azure Stack Hub administrator portal](media/azure-stack-monitor-health/alert-detail.png)
 
-## Repair alerts
+## Alert remediation
 
-You can select **Repair** in some alerts.
-
-When selected, the **Repair** action performs steps specific to the alert to attempt to resolve the issue. Once selected, the status of the **Repair** action is available as a portal notification.
+Some alerts support a **Repair** option. When selected, the **Repair** action performs steps specific to the alert to attempt to resolve the issue. Once selected, the status of the **Repair** action is available as a portal notification.
 
 ![The Repair alert action in progress](media/azure-stack-monitor-health/repair-in-progress.png)
 
@@ -82,6 +80,10 @@ The **Repair** action will report successful completion or failure to complete t
 ![The Repair action completes successfully](media/azure-stack-monitor-health/repair-completed.png)
 
 After the infrastructure role instance is back online, this alert automatically closes. Many, but not every alert, automatically close when the underlying issue is resolved. Alerts that provide a Repair action button will close automatically if Azure Stack Hub resolves the issue. For all other alerts, select **Close Alert** after you do the remediation steps. If the issue persists, Azure Stack Hub generates a new alert. If you resolve the issue, the alert remains closed and requires no more steps.
+
+If the **Repair** option is not supported, be sure to follow the complete set of remediation instructions provided in the alert. For example, the internal certificate expiration remediation steps will guide you through the process of secret rotation:
+
+![Certificate expiration remediation](media/azure-stack-monitor-health/certificate-expiration.png)
 
 ## Next steps
 
