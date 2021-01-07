@@ -4,10 +4,10 @@ description: Learn how to troubleshoot Azure Stack Development Kit (ASDK).
 author: PatAltimore
 
 ms.topic: article
-ms.date: 11/05/2019
+ms.date: 01/06/2021
 ms.author: patricka
 ms.reviewer: misainat
-ms.lastreviewed: 11/05/2019
+ms.lastreviewed: 01/06/2021
 
 # Intent: As an ASDK user, I want to troubleshoot the ASDK so I can solve some common problems.
 # Keyword: troubleshoot asdk
@@ -17,8 +17,7 @@ ms.lastreviewed: 11/05/2019
 # Troubleshoot the ASDK
 This article provides common troubleshooting info for the Azure Stack Development Kit (ASDK). For help with Azure Stack integrated systems, see [Microsoft Azure Stack troubleshooting](../operator/azure-stack-troubleshooting.md). 
 
-Because the ASDK is an evaluation environment, Microsoft Support does not provide support. If you're experiencing an issue that isn't documented, you can get help from experts on the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
-
+Because the ASDK is an evaluation environment, Microsoft Support does not provide support. If you're experiencing an issue that isn't documented, you can get help from experts on [Microsoft Q&A](https://docs.microsoft.com/answers/questions/topics/single/25482.html).
 
 ## Deployment
 ### Deployment failure
