@@ -99,7 +99,7 @@ This section walks you through setting up CLI if you're using Azure AD as your i
 
    - Sign in as a *service principal*: 
     
-        Before you sign in, [create a service principal through the Azure portal](../operator/azure-stack-create-service-principals.md?view=azs-2002) or CLI and assign it a role. Now, sign in by using the following command:
+        Before you sign in, [create a service principal through the Azure portal](../operator/azure-stack-create-service-principals.md) or CLI and assign it a role. Now, sign in by using the following command:
     
         ```azurecli  
         az login `
@@ -282,7 +282,7 @@ Use the following steps to connect to Azure Stack Hub:
    
    * Sign in as a *service principal*
     
-     Before you sign in, [create a service principal through the Azure portal](../operator/azure-stack-create-service-principals.md?view=azs-2002) or CLI and assign it a role. Now, sign in by using the following command:
+     Before you sign in, [create a service principal through the Azure portal](../operator/azure-stack-create-service-principals.md) or CLI and assign it a role. Now, sign in by using the following command:
 
      ```azurecli  
      az login \

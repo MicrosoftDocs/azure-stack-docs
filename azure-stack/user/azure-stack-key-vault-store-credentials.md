@@ -92,6 +92,6 @@ After the secret is successfully created, the service principal information is s
 
 ## Next steps
 
-- [Use service principals](../operator/azure-stack-create-service-principals.md?view=azs-2002)
+- [Use service principals](../operator/azure-stack-create-service-principals.md)
 - [Manage Key Vault in Azure Stack Hub by the portal](azure-stack-key-vault-manage-portal.md)  
 - [Manage Key Vault in Azure Stack Hub by using PowerShell](azure-stack-key-vault-manage-powershell.md)
