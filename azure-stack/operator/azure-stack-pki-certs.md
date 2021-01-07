@@ -107,8 +107,8 @@ The following table describes the endpoints and certificates required for resour
 |App Service|API|api.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL Certificate<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|FTP|ftp.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL Certificate<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|SSO|sso.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL Certificate<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
-|Event Hubs|SSL|&#42;.eventhub.*&lt;region>.&lt;fqdn>* | eventhub.*&lt;region>.&lt;fqdn>* |
-|IoT Hub|SSL|&#42;.mgmtiothub.*&lt;region>.&lt;fqdn>* | mgmtiothub.*&lt;region>.&lt;fqdn>* |
+|Event Hubs|SSL|&#42;.eventhub.*&lt;region>.&lt;fqdn>*<br>(Wildcard SSL Certificate)|eventhub.*&lt;region>.&lt;fqdn>* |
+|IoT Hub|SSL|&#42;.mgmtiothub.*&lt;region>.&lt;fqdn>*<br>(Wildcard SSL Certificate)|mgmtiothub.*&lt;region>.&lt;fqdn>* |
 |SQL, MySQL|SQL and MySQL|&#42;.dbadapter.*&lt;region>.&lt;fqdn>*<br>(Wildcard SSL Certificate)|dbadapter.*&lt;region>.&lt;fqdn>*|
 
 <sup>1</sup> Requires one certificate with multiple wildcard subject alternative names. Multiple wildcard SANs on a single certificate might not be supported by all public certificate authorities.
