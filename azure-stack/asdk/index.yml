@@ -39,7 +39,7 @@ landingContent:
       - linkListType: tutorial
         links:
           - text: Offer IaaS services
-            url: ../operator/tutorial-offer-services.md?view=azs-2002
+            url: ../operator/tutorial-offer-services.md
 
   # Card
   - title: How to use

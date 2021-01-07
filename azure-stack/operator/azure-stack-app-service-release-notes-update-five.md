@@ -221,7 +221,7 @@ If you chose to deploy into an existing virtual network and an internal IP addre
 
 ## Known issues for cloud admins operating Azure App Service on Azure Stack Hub
 
-Refer to the documentation in the [Azure Stack Hub 1809 release notes](./release-notes.md?view=azs-2002).
+Refer to the documentation in the [Azure Stack Hub 1809 release notes](./release-notes.md).
 
 ## Next steps
 

@@ -36,9 +36,9 @@ This architecture builds on the one shown in [N-tier application with SQL Server
 
 -   **Virtual networks**. Create a separate virtual network for each region. Make sure the address spaces do not overlap.
 
--   **SQL Server Always On Availability Group**. If you are using SQL Server, we recommend [SQL Always On Availability Groups](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-ver15) for high availability. Create a single availability group that includes the SQL Server instances in both regions.
+-   **SQL Server Always On Availability Group**. If you are using SQL Server, we recommend [SQL Always On Availability Groups](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-ver15&preserve-view=true) for high availability. Create a single availability group that includes the SQL Server instances in both regions.
 
--   **VNET to VNET VPN Connection**. As VNET Peering is not yet available on Azure Stack Hub, use VNET to VNET VPN connection in order to connect the two VNETs. Please see [VNET to VNET in Azure Stack Hub](./azure-stack-network-howto-vnet-to-vnet.md?view=azs-1908) for more information.
+-   **VNET to VNET VPN Connection**. As VNET Peering is not yet available on Azure Stack Hub, use VNET to VNET VPN connection in order to connect the two VNETs. Please see [VNET to VNET in Azure Stack Hub](./azure-stack-network-howto-vnet-to-vnet.md) for more information.
 
 ## Recommendations
 
@@ -114,7 +114,7 @@ To configure the availability group:
     az network vnet update --resource-group <resource-group> --name <vnet-name> --dns-servers "10.0.0.4,10.0.0.6,172.16.0.4,172.16.0.6"
     ```
 
--   Create a [Windows Server Failover Clustering](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-ver15) (WSFC) cluster that includes the SQL Server instances in both regions.
+-   Create a [Windows Server Failover Clustering](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-ver15&preserve-view=true) (WSFC) cluster that includes the SQL Server instances in both regions.
 
 -   Create a SQL Server Always On Availability Group that includes the SQL Server instances in both the primary and secondary regions. See [Extending Always On Availability Group to Remote Azure Datacenter (PowerShell)](https://techcommunity.microsoft.com/t5/DataCAT/Extending-AlwaysOn-Availability-Group-to-Remote-Azure-Datacenter/ba-p/305217) for the steps.
 
@@ -135,10 +135,10 @@ Traffic Manager is a possible failure point in the system. If the Traffic Manage
 
 For the SQL Server cluster, there are two failover scenarios to consider:
 
--   All of the SQL Server database replicas in the primary region fail. For example, this could happen during a regional outage. In that case, you must manually fail over the availability group, even though Traffic Manager automatically fails over on the front end. Follow the steps in [Perform a Forced Manual Failover of a SQL Server Availability Group](/sql/database-engine/availability-groups/windows/perform-a-forced-manual-failover-of-an-availability-group-sql-server?view=sql-server-ver15), which describes how to perform a forced failover by using SQL Server Management Studio, Transact-SQL, or PowerShell in SQL Server 2016.
+-   All of the SQL Server database replicas in the primary region fail. For example, this could happen during a regional outage. In that case, you must manually fail over the availability group, even though Traffic Manager automatically fails over on the front end. Follow the steps in [Perform a Forced Manual Failover of a SQL Server Availability Group](/sql/database-engine/availability-groups/windows/perform-a-forced-manual-failover-of-an-availability-group-sql-server?view=sql-server-ver15&preserve-view=true), which describes how to perform a forced failover by using SQL Server Management Studio, Transact-SQL, or PowerShell in SQL Server 2016.
 
     > [!Warning]  
-    > With forced failover, there is a risk of data loss. Once the primary region is back online, take a snapshot of the database and use [tablediff](/sql/tools/tablediff-utility?view=sql-server-ver15) to find the differences.
+    > With forced failover, there is a risk of data loss. Once the primary region is back online, take a snapshot of the database and use [tablediff](/sql/tools/tablediff-utility?view=sql-server-ver15&preserve-view=true) to find the differences.
 
 -   Traffic Manager fails over to the secondary region, but the primary SQL Server database replica is still available. For example, the front-end tier might fail, without affecting the SQL Server VMs. In that case, Internet traffic is routed to the secondary region, and that region can still connect to the primary replica. However, there will be increased latency, because the SQL Server connections are going across regions. In this situation, you should perform a manual failover as follows:
 
