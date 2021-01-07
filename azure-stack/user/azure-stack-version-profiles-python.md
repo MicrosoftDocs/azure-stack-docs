@@ -39,7 +39,7 @@ The Python SDK supports the following API profiles:
 ## Install the Azure Python SDK
 
 1. [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-2. For instructions on how to install the Python SDK, see [Azure for Python developers](/python/azure/python-sdk-azure-install?view=azure-python).
+2. For instructions on how to install the Python SDK, see [Azure for Python developers](/python/azure/python-sdk-azure-install?view=azure-python&preserve-view=true).
 3. If not available, create a subscription and save the subscription ID to use later. For instructions on creating a subscription, see [Create subscriptions to offers in Azure Stack Hub](../operator/azure-stack-subscribe-plan-provision-vm.md).
 4. Create a service principal and save its ID and secret. For instructions on how to create a service principal for Azure Stack Hub, see [Provide applications access to Azure Stack Hub](../operator/azure-stack-create-service-principals.md).
 5. Make sure your service principal has the contributor/owner role on your subscription. For instructions on how to assign a role to your service principal, see [Provide applications access to Azure Stack Hub](../operator/azure-stack-create-service-principals.md).
