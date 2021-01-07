@@ -346,4 +346,4 @@ The most extreme method for managing space involves moving unmanaged disks. If t
 
 ## Next steps
 
-To learn more about offering VMs to users, see [Manage storage capacity for Azure Stack Hub](./tutorial-offer-services.md?view=azs-2002).
+To learn more about offering VMs to users, see [Manage storage capacity for Azure Stack Hub](./tutorial-offer-services.md).

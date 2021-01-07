@@ -29,12 +29,12 @@ As the Azure Stack Operator, you often want to put other people in charge of cre
 ## Make SQL databases available to your Azure Stack users
 As an Azure Stack Operator, you can create offers that let your users (tenants) create SQL databases that they can use with their cloud-native apps, websites, and workloads. By providing these custom, on-demand, cloud-based databases to your users, you save them time and resources.
 
-Use the SQL Server resource provider adapter to [make SQL databases available to your Azure Stack users](../operator/azure-stack-sql-resource-provider.md?view=azs-2002) as a service of Azure Stack. After you install the resource provider, you connect it to one or more SQL Server instances.
+Use the SQL Server resource provider adapter to [make SQL databases available to your Azure Stack users](../operator/azure-stack-sql-resource-provider.md) as a service of Azure Stack. After you install the resource provider, you connect it to one or more SQL Server instances.
 
 ## Make web and API apps available to your Azure Stack users
 As an Azure Stack Operator, you can create offers that let your users (tenants) create Azure Functions and web and API apps. By providing access to these on-demand and cloud-based apps to your users, you can save them time and resources.
 
-Deploy the App Service resource provider to [make web and API apps available to your Azure Stack users](../operator/azure-stack-app-service-overview.md?view=azs-2002).
+Deploy the App Service resource provider to [make web and API apps available to your Azure Stack users](../operator/azure-stack-app-service-overview.md).
 
 ## Next steps
 

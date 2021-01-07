@@ -30,9 +30,9 @@ landingContent:
       - linkListType: whats-new
         links:
           - text: Security updates
-            url: ./release-notes-security-updates.md?view=azs-2002
+            url: ./release-notes-security-updates.md
           - text: Release notes
-            url: ./release-notes.md?view=azs-2002
+            url: ./release-notes.md
           - text: Azure Stack Hub Capacity Planner
             url: azure-stack-capacity-planning-overview.md
 
@@ -88,7 +88,7 @@ landingContent:
       - linkListType: deploy
         links:
           - text: Create an offer for a virtual machine
-            url: ./tutorial-offer-services.md?view=azs-2002
+            url: ./tutorial-offer-services.md
           - text: Create a highly available MySQL database
             url: azure-stack-tutorial-mysql.md
           - text: Create apps for any platform

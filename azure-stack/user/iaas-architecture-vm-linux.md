@@ -83,7 +83,7 @@ All NSGs contain a set of [default rules](/azure/virtual-network/security-overvi
 
 **Diagnostics**. Enable monitoring and diagnostics, including basic health metrics, diagnostics infrastructure logs, and [boot diagnostics](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/). Boot diagnostics can help you diagnose boot failure if your VM gets into a non-bootable state. Create an Azure Storage account to store the logs. A standard locally redundant storage (LRS) account is sufficient for diagnostic logs. For more information, see [Enable monitoring and diagnostics](./azure-stack-metrics-azure-data.md).
 
-**Availability**. Your VM may be subject to a reboot due to planned maintenance as scheduled by the Azure Stack Hub operator. For higher availability, deploy multiple VMs in an [availability set](../operator/azure-stack-app-service-deploy.md?view=azs-2002).
+**Availability**. Your VM may be subject to a reboot due to planned maintenance as scheduled by the Azure Stack Hub operator. For higher availability, deploy multiple VMs in an [availability set](../operator/azure-stack-app-service-deploy.md).
 
 **Backups** For recommendations on protecting your Azure Stack Hub IaaS VMs, reference [this](./azure-stack-manage-vm-protect.md) article.
 
