@@ -4,7 +4,7 @@ description: This topic provides guidance on how to plan, configure, and deploy 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 12/23/2020
+ms.date: 01/07/2021
 ---
 
 # Deploy branch office and edge on Azure Stack HCI
@@ -35,12 +35,11 @@ To learn more, see [What is Azure IoT Edge](https://docs.microsoft.com/azure/iot
 This section describes at a high level how to acquire hardware for branch office and edge deployments on Azure Stack HCI and use Windows Admin Center for management. It also covers deploying Azure IoT Edge to manage containers in the cloud.
 
 ### Step 1: Acquire hardware from the Azure Stack HCI Catalog
-Refer to your specific hardware instructions for this step. For more information, reference your preferred Microsoft hardware partner in the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net).
+First, you'll need to procure hardware. The easiest way to do that is to locate your preferred Microsoft hardware partner in the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net) and purchase an integrated system with the Azure Stack HCI operating system preinstalled. In the catalog, you can filter to see vendor hardware that is optimized for this type of workload.
 
-You use Windows Admin Center to [create an Azure Stack HCI cluster](./create-cluster.md) on an Integrated System from the catalog that has the operating system preinstalled. Otherwise, you'll need to deploy the operating system on your hardware. For details on Azure Stack HCI deployment options and installing Windows Admin Center, see [Deploy the Azure Stack HCI operating system](./operating-system.md).
+Otherwise, you'll need to deploy the Azure Stack HCI operating system on your own hardware. For details on Azure Stack HCI deployment options and installing Windows Admin Center, see [Deploy the Azure Stack HCI operating system](./operating-system.md).
 
-   >[!NOTE]
-   > In the catalog, you can filter to see vendor hardware that is optimized for this workload.
+Next, use Windows Admin Center to [create an Azure Stack HCI cluster](./create-cluster.md).
 
 ### Step 2: Set up Azure Monitor in Windows Admin Center
 In Windows Admin Center, set up Azure Monitor to gain insight into the application, network, and server health of your Azure Stack HCI branch office and edge deployment.
