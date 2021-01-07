@@ -71,19 +71,25 @@ You can click a specific alert to view the alert details. The alert details show
 
 ## Alert remediation
 
-Some alerts support a **Repair** option. When selected, the **Repair** action performs steps specific to the alert to attempt to resolve the issue. Once selected, the status of the **Repair** action is available as a portal notification.
+### Automated remediation
+
+Some alerts support a **Repair** option, as shown in the previous image. When selected, the **Repair** action performs steps specific to the alert to attempt to resolve the issue. Once selected, the status of the **Repair** action is available as a portal notification.
 
 ![The Repair alert action in progress](media/azure-stack-monitor-health/repair-in-progress.png)
 
-The **Repair** action will report successful completion or failure to complete the action in the same portal notification blade.  If a Repair action fails for an alert, you may rerun the **Repair** action from the alert detail. If the Repair action successfully completes, **do not** rerun the **Repair** action.
+The **Repair** action will report successful completion or failure to complete the action in the same portal notification blade.  If a Repair action fails for an alert, you may rerun the **Repair** action from the alert detail. If the Repair action successfully completes, **do not** rerun the **Repair** action. After the infrastructure role instance is back online, this alert automatically closes.
 
 ![The Repair action completes successfully](media/azure-stack-monitor-health/repair-completed.png)
 
-After the infrastructure role instance is back online, this alert automatically closes. Many, but not every alert, automatically close when the underlying issue is resolved. Alerts that provide a Repair action button will close automatically if Azure Stack Hub resolves the issue. For all other alerts, select **Close Alert** after you do the remediation steps. If the issue persists, Azure Stack Hub generates a new alert. If you resolve the issue, the alert remains closed and requires no more steps.
+### Manual remediation
 
-If the **Repair** option is not supported, be sure to follow the complete set of remediation instructions provided in the alert. For example, the internal certificate expiration remediation steps will guide you through the process of secret rotation:
+If the **Repair** option is not supported, be sure to follow the complete set of remediation instructions provided in the alert. As an example, the internal certificate expiration remediation steps will guide you through the process of secret rotation:
 
 ![Certificate expiration remediation](media/azure-stack-monitor-health/certificate-expiration.png)
+
+### Alert closure
+
+Many, but not every alert, will automatically close when the underlying issue is resolved. Alerts that provide a Repair action button will close automatically if Azure Stack Hub resolves the issue. For all other alerts, select **Close Alert** after you do the remediation steps. If the issue persists, Azure Stack Hub generates a new alert. If you resolve the issue, the alert remains closed and requires no more steps.
 
 ## Next steps
 

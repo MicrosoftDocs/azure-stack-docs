@@ -34,7 +34,7 @@ When secrets are nearing expiration, the following alerts are generated in the a
 > - 90 days before expiration a warning alert is generated.
 > - 30 days before expiration a critical alert is generated. 
 >
-> **It's critical that secret rotation is completed when you receive these notifications, prior to expiration. Failure to do so can cause the loss of workloads and possible Azure Stack Hub redeployment at your own expense!**
+> **It's *critical* that you complete secret rotation if you receive these notifications. Failure to do so can cause the loss of workloads and possible Azure Stack Hub redeployment at your own expense!**
 
 For more information on alert monitoring and remediation, refer to [Monitor health and alerts in Azure Stack Hub](azure-stack-monitor-health.md).
 
