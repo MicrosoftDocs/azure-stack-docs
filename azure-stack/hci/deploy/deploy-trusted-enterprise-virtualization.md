@@ -4,7 +4,7 @@ description: This topic provides guidance on how to plan, configure, and deploy 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 12/30/2020
+ms.date: 01/07/2021
 ---
 
 # Deploy trusted enterprise virtualization on Azure Stack HCI
@@ -26,14 +26,11 @@ The hypervisor, the most privileged level of system software, sets and enforces 
 This section describes at a high level how to acquire hardware to deploy a highly secure infrastructure that uses trusted enterprise virtualization on Azure Stack HCI and Windows Admin Center for management.
 
 ### Step 1: Acquire hardware for trusted enterprise virtualization on Azure Stack HCI
-Refer to your specific hardware instructions for this step. For more information, reference your preferred Microsoft hardware partner in the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net).
+First, you'll need to procure hardware. The easiest way to do that is to locate your preferred Microsoft hardware partner in the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net) and purchase an integrated system with the Azure Stack HCI operating system preinstalled. In the catalog, you can filter to see vendor hardware that is optimized for this type of workload.
 
-You use Windows Admin Center to [create an Azure Stack HCI cluster](./create-cluster.md) on an integrated system that has the operating system preinstalled from a variety of vendors in the catalog. For more information, see [Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci).
+Otherwise, you'll need to deploy the Azure Stack HCI operating system on your own hardware. For details on Azure Stack HCI deployment options and installing Windows Admin Center, see [Deploy the Azure Stack HCI operating system](./operating-system.md).
 
-Otherwise, you'll need to deploy the operating system on your hardware. For details on Azure Stack HCI deployment options and installing Windows Admin Center, see [Deploy the Azure Stack HCI operating system](./operating-system.md).
-
-   >[!NOTE]
-   > In the catalog, you can filter to see vendor hardware that is optimized for this workload.
+Next, use Windows Admin Center to [create an Azure Stack HCI cluster](./create-cluster.md).
 
 All partner hardware for Azure Stack HCI is certified with the Hardware Assurance Additional Qualification. The qualification process tests for all required [VBS](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-vbs) functionality. However, VBS and HVCI are not automatically enabled in Azure Stack HCI. For more information about the the Hardware Assurance Additional Qualification, see "Hardware Assurance" under **Systems** in the [Windows Server Catalog](https://www.windowsservercatalog.com/content.aspx?ctf=AQinfo-systems.htm#:~:text=Hardware%20Assurance%20Windows%20Server%20systems%20that%20are%20awarded,of%20Windows%20Server%2C%20starting%20with%20Windows%20Server%202016).
 
