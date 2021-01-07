@@ -42,5 +42,5 @@ ms.lastreviewed:
     1.  If needed, additional storage health verification steps can be found
         in the [Check the status of virtual disk repair using Azure Stack
         Hub
-        PowerShell](https://docs.microsoft.com/azure-stack/operator/azure-stack-replace-disk?view=azs-2002&check-the-status-of-virtual-disk-repair-using-azure-stack-hub-powershell).
+        PowerShell](../../operator/azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair-using-azure-stack-hub-powershell).
         
