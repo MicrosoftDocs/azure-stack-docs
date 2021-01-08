@@ -29,7 +29,7 @@ The first step is to make your Azure Stack Hub system aware of the guest directo
 
 1. Sign in to the Azure Stack Hub administrator portal and go to **All services - Directories**.
 
-   [![Directories](./media/azure-stack-enable-multitenancy/directories.png)](./media/azure-stack-enable-multitenancy/directories-expanded.png#lightbox)
+   [![Directories list](./media/azure-stack-enable-multitenancy/directories.png)](./media/azure-stack-enable-multitenancy/directories-expanded.png#lightbox)
 
 2. Select **Add** to start the onboarding process. Enter the guest directory name "adatum.onmicrosoft.com", and then click **Add** at the bottom of the page.
 
@@ -102,7 +102,7 @@ the Azure Stack Hub subscription.
 
 4. When the process has finished, the status is shown as **Not registered**:
 
-   [![Not registered](./media/azure-stack-enable-multitenancy/status-not-registered.png)](./media/azure-stack-enable-multitenancy/status-not-registered-expanded.png#lightbox)
+   [![Not registered](./media/azure-stack-enable-multitenancy/status-not-registered-2.png)](./media/azure-stack-enable-multitenancy/status-not-registered-2-expanded.png#lightbox)
 
    Mary has successfully unregistered the directory **adatum.onmicrosoft.com**.
 
@@ -154,7 +154,7 @@ Mary, the owner of the guest directory, opens the URL again that she received vi
 
 1. Mary selects **Sign in** using her global admin credentials for **adatum.onmicrosoft.com**. Make sure pop-up blockers are disabled before signing in.
 
-   ![Graphical user interface, application Description automatically generated](./media/azure-stack-enable-multitenancy/image5.png)
+   ![Graphical user interface, application Description automatically generated](./media/azure-stack-enable-multitenancy/sign-in.png)
 
 2. Mary sees the status of the directory saying an update is required.
 
