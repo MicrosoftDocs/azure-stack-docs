@@ -29,25 +29,25 @@ The first step is to make your Azure Stack Hub system aware of the guest directo
 
 1. Sign in to the Azure Stack Hub administrator portal and go to **All services - Directories**.
 
-   [![Directories](./media/azure-stack-enable-multitenancy/image1.png)](./media/azure-stack-enable-multitenancy/image1-expanded.png#lightbox)
+   [![Directories](./media/azure-stack-enable-multitenancy/directories.png)](./media/azure-stack-enable-multitenancy/directories-expanded.png#lightbox)
 
 2. Select **Add** to start the onboarding process. Enter the guest directory name "adatum.onmicrosoft.com", and then click **Add** at the bottom of the page.
 
-   [![Add](./media/azure-stack-enable-multitenancy/image2.png)](./media/azure-stack-enable-multitenancy/image2-expanded.png#lightbox)
+   [![Add](./media/azure-stack-enable-multitenancy/add-directory.png)](./media/azure-stack-enable-multitenancy/add-directory-expanded.png#lightbox)
 
 3. The guest directory appears in the list view, with a status of **unregistered**.
 
-   [![Registered](./media/azure-stack-enable-multitenancy/image3.png)](./media/azure-stack-enable-multitenancy/image3-expanded.png#lightbox)
+   [![Registered](./media/azure-stack-enable-multitenancy/unregistered.png)](./media/azure-stack-enable-multitenancy/unregistered-expanded.png#lightbox)
 
 4. Only Mary has the credentials to authenticate to the guest directory, so you must send her the link to complete the registration. Check the box next to **adatum.onmicrosoft.com** and then select **Register**.
 
-   [![Click Register](./media/azure-stack-enable-multitenancy/image4.png)](./media/azure-stack-enable-multitenancy/image4-expanded.png#lightbox)
+   [![Click Register](./media/azure-stack-enable-multitenancy/register.png)](./media/azure-stack-enable-multitenancy/register-expanded.png#lightbox)
 
 5. A new browser tab opens. Select **Copy link** at the bottom of the page, and provide it to Mary.
 
 6. If you have the credentials for the guest directory, you can complete the registration yourself by clicking **Sign in**.
 
-   [![Sign in](./media/azure-stack-enable-multitenancy/image5.png)](./media/azure-stack-enable-multitenancy/image5-expanded.png#lightbox)
+   [![Sign in](./media/azure-stack-enable-multitenancy/sign-in.png)](./media/azure-stack-enable-multitenancy/sign-in-expanded.png#lightbox)
 
 ## Register guest directory
 
@@ -58,22 +58,22 @@ Mary received the email with the link to register the directory. She opens the l
    > [!NOTE]
    > Make sure pop-up blockers are disabled before signing in.
 
-   [![Sign in to manage directory](./media/azure-stack-enable-multitenancy/image5.png)](./media/azure-stack-enable-multitenancy/image5-expanded.png#lightbox)
+   [![Sign in to manage directory](./media/azure-stack-enable-multitenancy/sign-in.png)](./media/azure-stack-enable-multitenancy/sign-in-expanded.png#lightbox)
 
 2. Mary reviews the status for the directory and sees it is not registered.
 
-   [![Manage directory](./media/azure-stack-enable-multitenancy/image6.png)](./media/azure-stack-enable-multitenancy/image6-expanded.png#lightbox)
+   [![Manage directory](./media/azure-stack-enable-multitenancy/not-registered.png)](./media/azure-stack-enable-multitenancy/not-registered-expanded.png#lightbox)
 
 3. Mary clicks **Register** to start the process. 
 
    > [!NOTE]
    > Required objects for Visual Studio Code might not be able to be created, and must use PowerShell.
 
-   ![Register directory](./media/azure-stack-enable-multitenancy/image7.png)
+   ![Register directory](./media/azure-stack-enable-multitenancy/register-directory.png)
 
 4. Once the registration process is finished, Mary can review all the applications that were created in the directory, and check their status.
 
-   ![Check app status](./media/azure-stack-enable-multitenancy/image8.png)
+   ![Check app status](./media/azure-stack-enable-multitenancy/manage-directory.png)
 
 5. Mary has successfully completed the registration process and can now start using the Azure Stack Hub system with her directory **adatum.onmicrosoft.com**.
 
@@ -90,19 +90,19 @@ the Azure Stack Hub subscription.
    > [!NOTE]
    > Make sure pop-up blockers are disabled before signing in.
 
-   [![Graphical user interface, application description automatically generated](./media/azure-stack-enable-multitenancy/image5.png)](./media/azure-stack-enable-multitenancy/image5-expanded.png#lightbox)
+   [![Graphical user interface, application description automatically generated](./media/azure-stack-enable-multitenancy/sign-in.png)](./media/azure-stack-enable-multitenancy/sign-in-expanded.png#lightbox)
 
 2. Mary sees the status of the directory.
 
-   ![Directory status](./media/azure-stack-enable-multitenancy/image8.png)
+   ![Directory status](./media/azure-stack-enable-multitenancy/manage-directory.png)
 
 3. Mary clicks **Unregister** to start the action.
 
-   ![Unregister](./media/azure-stack-enable-multitenancy/image9.png)
+   ![Unregister](./media/azure-stack-enable-multitenancy/unregister-directory.png)
 
 4. When the process has finished, the status is shown as **Not registered**:
 
-   [![Not registered](./media/azure-stack-enable-multitenancy/image10.png)](./media/azure-stack-enable-multitenancy/image10-expanded.png#lightbox)
+   [![Not registered](./media/azure-stack-enable-multitenancy/status-not-registered.png)](./media/azure-stack-enable-multitenancy/status-not-registered-expanded.png#lightbox)
 
    Mary has successfully unregistered the directory **adatum.onmicrosoft.com**.
 
@@ -115,15 +115,15 @@ As an Azure Stack Hub operator, you can remove the guest directory at any point,
 
 1. Sign in to the Azure Stack Hub administrator portal and go to **All services - Directories**.
 
-   [![All services directories](./media/azure-stack-enable-multitenancy/image11.png)](./media/azure-stack-enable-multitenancy/image11-expanded.png#lightbox)
+   [![All services directories](./media/azure-stack-enable-multitenancy/directory-list.png)](./media/azure-stack-enable-multitenancy/directory-list-expanded.png#lightbox)
 
 2. Check the box next to the directory **adatum.onmicrosoft.com** and select **Remove**.
 
-   [![Remove](./media/azure-stack-enable-multitenancy/image12.png)](./media/azure-stack-enable-multitenancy/image12-expanded.png#lightbox)
+   [![Remove](./media/azure-stack-enable-multitenancy/directory-list-2.png)](./media/azure-stack-enable-multitenancy/directory-list-2-expanded.png#lightbox)
 
 3. Confirm the delete action by typing **yes** and selecting **Remove**.
 
-   [![Select Remove](./media/azure-stack-enable-multitenancy/image13.png)](./media/azure-stack-enable-multitenancy/image13-expanded.png#lightbox)
+   [![Select Remove](./media/azure-stack-enable-multitenancy/remove-directory.png)](./media/azure-stack-enable-multitenancy/remove-directory-expanded.png#lightbox)
 
    You have successfully removed the directory.
 
@@ -136,7 +136,7 @@ also see that an update is required for the home directory by opening the direct
 
 Each directory listing shows the type of directory. The type can be a home or guest directory, and its status is shown. When an update is needed, the home directory is shown with a status of **Update Required**. For example:
 
-![Update home directory](./media/azure-stack-enable-multitenancy/image14.png) |
+![Update home directory](./media/azure-stack-enable-multitenancy/update-directory.png) |
 
 To update the home directory, check the box for the home directory and select **Update**.
 
