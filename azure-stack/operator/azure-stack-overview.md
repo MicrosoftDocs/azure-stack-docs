@@ -28,7 +28,7 @@ Azure provides a rich platform for developers to build modern apps. However, som
 - **Cloud apps that meet varied regulations**. Develop and deploy apps in Azure with full flexibility to deploy on-premises with Azure Stack Hub to meet regulatory or policy requirements. No code changes are needed. App examples include global audit, financial reporting, foreign exchange trading, online gaming, and expense reporting.
 
    > [!IMPORTANT]
-   > Azure Stack Hub is an on-premises appliance that customers fully own and control. You can choose to store whatever data you would like, and have total control of the data you put in an Azure Stack Hub. This data is not accessed or moved out of the region by Microsoft.
+   > Azure Stack Hub is an on-premises appliance that customers fully own and control. Customers access and control the data they store in an Azure Stack Hub. Microsoft does not access any customer data stored in an Azure Stack Hub environment.
 
 - **Cloud app model on-premises**. Use Azure services, containers, serverless, and microservice architectures to update and extend existing apps or build new ones. Use consistent DevOps processes across Azure in the cloud and Azure Stack Hub on-premises to speed up app modernization for core mission-critical apps.
 
