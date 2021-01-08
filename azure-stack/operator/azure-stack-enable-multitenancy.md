@@ -4,7 +4,7 @@ title: Configure multi-tenancy in Azure Stack Hub.
 description: Learn how to enable and disable multiple Azure Active Directory tenants in Azure Stack Hub.
 author: sethmanheim
 ms.author: sethm
-ms.date: 01/05/2021
+ms.date: 01/08/2021
 ms.topic: how-to
 
 ms.reviewer: thoroet
@@ -16,8 +16,8 @@ ms.lastreviewed: 12/17/2020
 You can configure Azure Stack Hub to support users from multiple Azure Active Directory (Azure AD) tenants, allowing them to use services in Azure Stack Hub. For example, consider the following scenario:
 
 - You're the service administrator of contoso.onmicrosoft.com, where Azure Stack Hub is installed.
-- Mary is the directory administrator of fabrikam.onmicrosoft.com, where guest users are located.
-- Mary's company receives IaaS and PaaS services from your company and needs to allow users from the guest directory (fabrikam.onmicrosoft.com) to sign in and use Azure Stack Hub resources in contoso.onmicrosoft.com.
+- Mary is the directory administrator of adatum.onmicrosoft.com, where guest users are located.
+- Mary's company receives IaaS and PaaS services from your company and needs to allow users from the guest directory (fabrikam.onmicrosoft.com) to sign in and use Azure Stack Hub resources in adatum.onmicrosoft.com.
 
 This guide provides the steps required, in the context of this scenario, to configure multi-tenancy in Azure Stack Hub. In this scenario, you and Mary must complete steps to enable users from Fabrikam to sign in and consume services from the Azure Stack Hub deployment in Contoso.
 
@@ -58,13 +58,16 @@ Mary received the email with the link to register the directory. She opens the l
    > [!NOTE]
    > Make sure pop-up blockers are disabled before signing in.
 
-   ![Sign in to manage directory](./media/azure-stack-enable-multitenancy/image5.png)](./media/azure-stack-enable-multitenancy/image5-expanded.png#lightbox)
+   [![Sign in to manage directory](./media/azure-stack-enable-multitenancy/image5.png)](./media/azure-stack-enable-multitenancy/image5-expanded.png#lightbox)
 
 2. Mary reviews the status for the directory and sees it is not registered.
 
    [![Manage directory](./media/azure-stack-enable-multitenancy/image6.png)](./media/azure-stack-enable-multitenancy/image6-expanded.png#lightbox)
 
-3. Mary clicks **Register** to start the process. Required objects for Visual Studio Code might not be able to be created, and must use PowerShell.
+3. Mary clicks **Register** to start the process. 
+
+   > [!NOTE]
+   > Required objects for Visual Studio Code might not be able to be created, and must use PowerShell.
 
    ![Register directory](./media/azure-stack-enable-multitenancy/image7.png)
 
@@ -87,7 +90,7 @@ the Azure Stack Hub subscription.
    > [!NOTE]
    > Make sure pop-up blockers are disabled before signing in.
 
-   ![Graphical user interface, application description automatically generated](./media/azure-stack-enable-multitenancy/image5.png)](./media/azure-stack-enable-multitenancy/image5-expanded.png#lightbox)
+   [![Graphical user interface, application description automatically generated](./media/azure-stack-enable-multitenancy/image5.png)](./media/azure-stack-enable-multitenancy/image5-expanded.png#lightbox)
 
 2. Mary sees the status of the directory.
 
