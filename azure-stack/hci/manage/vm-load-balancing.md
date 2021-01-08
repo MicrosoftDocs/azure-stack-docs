@@ -47,7 +47,7 @@ The easiest way to configure VM load balancing is using Windows Admin Center.
 
 2. Under **Settings**, select **Virtual machine load balancing**.
 
-3. Under **Balance virtual machines**, select **Always** to load balance upon server join and every 30 minutes, **Server joins** to load balance only upon server joins, and **Never** to disable the VM load balancing feature. The default setting is **Always**.
+3. Under **Balance virtual machines**, select **Always** to load balance upon server join and every 30 minutes, **Server joins** to load balance only upon server joins, or **Never** to disable the VM load balancing feature. The default setting is **Always**.
 
 4. Under **Aggressiveness**, select **High** to average the servers and live migrate VMs when host is more than 5% above average. Select **Medium** to migrate VMs when the server is more than 70% loaded, or select **Low** to migrate when the server is more than 80% loaded.
 
@@ -72,10 +72,10 @@ You can configure if and when load balancing occurs using the cluster common pro
 ```
 
 |AutoBalancerMode |Behavior|
-|:----------------:|:----------:|
-|0| Disabled |
-|1| Load balance upon server join |
-|2 (default)| Load balance upon server join and every 30 minutes |
+|-----------------|-----------|
+| 0 | Disabled |
+| 1 | Load balance upon server join |
+| 2 (default) | Load balance upon server join and every 30 minutes |
 
 To check how the `AutoBalancerLevel` and `AutoBalancerMode` properties are set, run the following in PowerShell:
 
