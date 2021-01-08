@@ -4,6 +4,8 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
+  - name: Compare to Windows Server
+    href: concepts/compare-windows-server.md
   - name: Release information
     href: release-information.md
   - name: Release notes
@@ -26,6 +28,8 @@
     href: deploy/create-cluster.md
   - name: Set up a cluster witness
     href: deploy/witness.md
+  - name: Deploy an SDN infrastructure
+    href: deploy/sdn-express.md
   - name: Migrate to new hardware
     href: deploy/migrate-cluster-new-hardware.md
   - name: Migrate on same hardware
@@ -42,6 +46,8 @@
     items:
     - name: Deploy SQL Server
       href: deploy/deploy-sql-server-workload.md
+    - name: Deploy trusted enterprise virtualization
+      href: deploy/deploy-trusted-enterprise-virtualization.md
 - name: Manage
   items:
   - name: Manage VMs
@@ -120,8 +126,6 @@
     items:
     - name: System requirements
       href: concepts/system-requirements.md
-    - name: Compare to Windows Server
-      href: concepts/compare-windows-server.md
     - name: Choose drives
       href: concepts/choose-drives.md
     - name: Drive symmetry considerations
@@ -162,6 +166,8 @@
     items:
     - name: Billing
       href: concepts/billing.md
+    - name: Configure firewalls
+      href: concepts/configure-firewalls.md
     - name: Updates and upgrades
       href: concepts/updates.md
     - name: Security considerations
@@ -222,9 +228,13 @@
   items:
   - name: Azure Stack HCI product page
     href: https://azure.com/hci
-  - name: Azure Stack HCI Eval Guide
+  - name: Evaluation Guide
     href: https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md
-  - name: Azure Stack HCI pricing
+  - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
-  - name: Azure Stack HCI support
+  - name: Support
     href: manage/get-support.md
+  - name: Training
+    href: /learn/paths/azure-stack-hci-foundations/
+  - name: Archived release notes
+    href: preview-release-notes.md

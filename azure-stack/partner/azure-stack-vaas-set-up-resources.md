@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Learn how to set up Azure AD and storage resources for Azure Stack Hub validation as a service.
 author: mattbriggs
 ms.topic: tutorial
-ms.date: 5/27/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018

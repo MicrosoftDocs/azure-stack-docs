@@ -1,12 +1,12 @@
 ---
 title: Connect Azure Stack HCI to Azure
-description: How to register Azure Stack HCI with Azure.
+description: How to register Azure Stack HCI clusters with Azure.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/10/2020
+ms.date: 12/28/2020
 ---
 
 # Connect Azure Stack HCI to Azure
@@ -16,7 +16,11 @@ ms.date: 12/10/2020
 Azure Stack HCI is delivered as an Azure service and needs to register within 30 days of installation per the Azure Online Services Terms. This topic explains how to register your Azure Stack HCI cluster with [Azure Arc](https://azure.microsoft.com/services/azure-arc/) for monitoring, support, billing, and hybrid services. Upon registration, an Azure Resource Manager resource is created to represent each on-premises Azure Stack HCI cluster, effectively extending the Azure management plane to Azure Stack HCI. Information is periodically synced between the Azure resource and the on-premises cluster(s).
 
    > [!IMPORTANT]
-   > Registering with Azure is required. Until your cluster is registered with Azure, the Azure Stack HCI operating system is not validly licensed, is not supported, and has reduced functionality (for example, you won't be able to create virtual machines).
+   > Registering with Azure is required, and your cluster is not fully supported until your registration is active. If you do not register your cluster with Azure upon deployment, or if your cluster is registered but has not connected to Azure for more than 30 days, the system will not allow new virtual machines (VMs) to be created or added. When this occurs, you will see the following error message when attempting to create VMs:
+   >
+   > *There was a failure configuring the virtual machine role for 'vmname'. Job failed. Error opening "vmname" clustered roles. The service being accessed is licensed for a particular number of connections. No more connections can be made to the service at this time because there are already as many connections as the service can accept.*
+   >
+   > The solution is to allow outbound connectivity to Azure and make sure your cluster is registered as described in this topic.
 
 ## Prerequisites for registration
 
@@ -24,7 +28,7 @@ You won't be able to register with Azure until you've created an Azure Stack HCI
 
 ### Internet access
 
-Azure Stack HCI needs to periodically connect to the Azure public cloud. If outbound connectivity is restricted by your external corporate firewall or proxy server, they must be configured to allow outbound access to port 443 (HTTPS) on a limited number of well-known Azure IPs. 
+Azure Stack HCI needs to periodically connect to the Azure public cloud. If outbound connectivity is restricted by your external corporate firewall or proxy server, they must be configured to allow outbound access to port 443 (HTTPS) on a limited number of well-known Azure IPs. For information on how to prepare your firewalls, see [Configure firewalls for Azure Stack HCI](../concepts/configure-firewalls.md).
 
    > [!NOTE]
    > The registration process tries to contact the PowerShell Gallery to verify that you have the latest version of the necessary PowerShell modules such as Az and AzureAD. Although the PowerShell Gallery is hosted on Azure, it does not currently have a service tag. If you cannot run the above cmdlet from a management machine that has outbound internet access, we recommend downloading the modules and manually transferring them to a cluster node where you will run the `Register-AzStackHCI` command. Alternatively, you can [install the modules in a disconnected scenario](/powershell/scripting/gallery/how-to/working-with-local-psrepositories?view=powershell-7.1#installing-powershellget-on-a-disconnected-system).
@@ -92,7 +96,7 @@ You'll also need appropriate Azure Active Directory permissions to complete the 
 
 Use the following procedure to register an Azure Stack HCI cluster with Azure using a management PC.
 
-1. Install the required cmdlets on your management PC. If you are registering a cluster deployed from the General Availability (GA) image of Azure Stack HCI, simply run the following command. If your cluster was deployed from the Public Preview image, make sure you have applied the November 23, 2020 Preview Update (KB4586852) to each server in the cluster before attempting to register.
+1. Install the required cmdlets on your management PC. If you are registering a cluster deployed from the current General Availability (GA) image of Azure Stack HCI, simply run the following command. If your cluster was deployed from the Public Preview image, make sure you have applied the November 23, 2020 Preview Update (KB4586852) to each server in the cluster before attempting to register with Azure.
 
    ```PowerShell
    Install-Module -Name Az.StackHCI
@@ -105,7 +109,7 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure us
 2. Perform the registration using the name of any server in the cluster. To get your Azure subscription ID, visit [portal.azure.com](https://portal.azure.com), navigate to Subscriptions, and copy/paste your ID from the list.
 
    ```PowerShell
-   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 [–Credential] [-ResourceName] [-ResourceGroupName]
+   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 [–Credential] [-ResourceName] [-ResourceGroupName] [-Region]
    ```
 
    This syntax registers the cluster (of which Server1 is a member), as the current user, with the default Azure region and cloud environment, and using smart default names for the Azure resource and resource group, but you can add parameters to this command to specify these values if you want.

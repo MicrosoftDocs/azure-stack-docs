@@ -1,10 +1,10 @@
 ---
 title: Diagnostic log collection
 description: Learn about diagnostic log collection.
-author: myoungerman
+author: PatAltimore
 ms.topic: article
 ms.date: 10/30/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: shisab
 ms.lastreviewed: 12/08/2020
 
@@ -140,7 +140,22 @@ If you're using the **Send logs now** method and want to use PowerShell instead 
   ```powershell
   Send-AzureStackDiagnosticLog -FilterByResourceProvider <<value-add RP name>>
   ```
- 
+
+  ::: moniker range=">= azs-2008"
+
+  To send diagnostic logs for SQL RP: 
+
+  ```powershell
+  Send-AzureStackDiagnosticLog -FilterByResourceProvider SQLAdapter
+  ```
+  To send diagnostic logs for MySQL RP: 
+
+  ```powershell
+  Send-AzureStackDiagnosticLog -FilterByResourceProvider MySQLAdapter
+  ```
+  
+  ::: moniker-end
+
   To send diagnostic logs for IoT Hub: 
 
   ```powershell

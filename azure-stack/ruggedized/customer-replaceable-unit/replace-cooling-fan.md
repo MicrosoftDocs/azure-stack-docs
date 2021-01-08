@@ -1,11 +1,11 @@
 ---
 title: Replace a cooling fan
 description: Learn how to replace a cooling fan
-author: myoungerman
+author: PatAltimore
 
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: 
 ms.lastreviewed: 
 

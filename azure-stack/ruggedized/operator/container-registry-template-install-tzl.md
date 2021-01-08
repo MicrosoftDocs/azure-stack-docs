@@ -1,7 +1,7 @@
 ---
-title: Add a container registry to Azure Stack Hub | Microsoft Docs
+title: Add a container registry - Azure Stack Hub | Microsoft Docs
 titleSuffix: Azure Stack
-description: Learn how to add a container registry to Azure Stack Hub Marketplace.
+description: Learn how to add a container registry to Azure Stack Hub Marketplace (Ruggedized).
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -13,14 +13,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/10/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: chasat
 ms.lastreviewed: 12/17/2019
 
 ---
 
-# Add a container registry to Azure Stack Hub
+# Add a container registry to Azure Stack Hub (Ruggedized)
 
 You can add the container registry to your Azure Stack Hub Marketplace so that your users can deploy and maintain their own container registry. This solution template installs and configures the open-source Docker Container Registry in a user subscription running on the AKS Base Ubuntu 16.04-LTS Image. The template supports both connected and disconnected (air-gapped) deployments and supports both Azure Active Directory (AAD) and Active Directory Federated Services (AD FS) deployed Azure Stack Hubs.
 
@@ -114,15 +114,15 @@ Installation of the Container registry template requires several resources to be
 
 2. Select **Create** > **Compute** > **Container Registry Template**.
 
-    ![Container registry template](./media/container-registry-template-install-tzl/image1.png)
+    ![Screenshot that shows the 'Dashboard > New' page with 'Compute' selected and the 'Container Registry Template' selection displayed.](./media/container-registry-template-install-tzl/image1.png)
 
 3. Select the subscription, resource group, and location to deploy the container registry template.
 
-    ![Container registry template](./media/container-registry-template-install-tzl/image2.png)
+    ![Screenshot that shows the 'Create Container Registry Template - Basics' page.](./media/container-registry-template-install-tzl/image2.png)
 
 4. Complete the virtual machine configuration details. The image SKU defaults to **aks-ubuntu-1604-201909**; however, the output of the `Set-ContainerRegistryPrerequisites` function includes a list of available SKUs to use for deployment. If more than one SKU exists choose the most recent SKU for deployment.
 
-    ![Container registry template](./media/container-registry-template-install-tzl/image3.png)
+    ![Screenshot that shows the 'Create Container Registry Template - Virtual machine configuration' page.](./media/container-registry-template-install-tzl/image3.png)
 
     | Parameter | Details |
     | --- | --- |
@@ -138,7 +138,7 @@ Installation of the Container registry template requires several resources to be
 
 1. Complete the Storage and Key Vault configuration.
 
-    ![Container registry template](./media/container-registry-template-install-tzl/image4.png)
+    ![Screenshot that shows the "Create Container Registry Template - Storage and Key Vault configuration" page.](./media/container-registry-template-install-tzl/image4.png)
 
     | Parameter | Details |
     | --- | --- |

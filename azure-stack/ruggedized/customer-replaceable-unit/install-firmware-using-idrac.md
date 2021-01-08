@@ -1,11 +1,11 @@
 ---
 title: Install firmware using iDRAC
 description: Learn how to install firmware using iDRAC
-author: myoungerman
+author: PatAltimore
 
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: 
 ms.lastreviewed: 
 
@@ -33,7 +33,7 @@ the iDRAC web interface.
 1.  Go to **Maintenance** \**System
     Update**. The **Firmware Update** page is displayed.
 
-    ![](media/image-85.png)
+    ![Screenshot that shows the 'Maintenance' page for an 'Integrated Dell Remote Access Controller 9 | Enterprise'.](media/image-85.png)
 
 2.  In the **Update** tab, select **Local** as the File Location.
 

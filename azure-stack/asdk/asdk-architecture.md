@@ -1,11 +1,11 @@
 ---
 title: ASDK architecture 
 description: Learn about the Azure Stack Development Kit (ASDK) architecture.
-author: justinha
+author: PatAltimore
 
 ms.topic: article
 ms.date: 06/28/2019
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: misainat
 ms.lastreviewed: 06/28/2019
 

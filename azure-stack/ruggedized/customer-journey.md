@@ -14,7 +14,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/14/2020
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: asganesh
 ms.lastreviewed: 10/14/2020
 ---
@@ -31,8 +31,8 @@ The following table depicts what can be expected during the various phases of de
 
 |	|Order Process	|Pre-Deployment	|Integration, Validation, Transport	|Onsite Deployment	|Post-Deployment |
 |---|---------------|---------------|-----------------------------------|--------------------|----------------|
-|Microsoft	|- Signal to delivery to US location<br>- Azure Stack Hub ruggedized  = 10 Days	|Provide required tooling and documentation to collect datacenter requirements	|- Validate configuration artifacts and check validation results<br>- Ensure hardware is delivered	|- Rack and stack<br>- Network integration<br>- Azure Stack Hub deployment<br>- Hand off to customer	|Registration and Marketplace syndication|
-|Customer	|Signals purchase	|- Fills out network details in deployment worksheet<br>- Collects certificates<br>- Obtains Azure AD accounts<br>- Runs any validation tooling provided	|Ensure the site is ready with network, power, cooling prerequisites	|- Be prepared with deployment configuration artifacts<br>- Customer’s network engineer available	|     |
+| **Microsoft** |- Signal to delivery to US location<br>- Azure Stack Hub ruggedized  = 10 Days	|Provide required tooling and documentation to collect datacenter requirements	|- Validate configuration artifacts and check validation results<br>- Ensure hardware is delivered	|- Rack and stack<br>- Network integration<br>- Azure Stack Hub deployment<br>- Hand off to customer	|Registration and Marketplace syndication|
+| **Customer** |Signals purchase	|- Fills out network details in deployment worksheet<br>- Collects certificates<br>- Obtains Azure AD accounts<br>- Runs any validation tooling provided	|Ensure the site is ready with network, power, cooling prerequisites	|- Be prepared with deployment configuration artifacts<br>- Customer’s network engineer available	|     |
 
 
 ## Order Process

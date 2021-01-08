@@ -6,7 +6,7 @@ author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/11/2020
+ms.date: 12/22/2020
 ---
 
 # Compare Azure Stack HCI to Azure Stack Hub and Windows Server
@@ -36,7 +36,7 @@ Both Windows Server and Azure Stack HCI provide the same high-quality user exper
 
 | Windows Server | Azure Stack HCI |
 | --------------- | --------------- |
-| Windows Server can run on-premises or in the cloud, but isn't itself a complete hyperconverged offering.| Use Azure Stack HCI to run VMs on-premises, optionally stretched across two sites and with connections to Azure hybrid services. It's an easy way to modernize and secure your data centers and branch offices, achieve industry-best performance for SQL Server databases, and run virtual desktops on-premises for low latency and data sovereignty|
+| Windows Server can run on-premises or in the cloud, but will not offer the latest hyperconverged features moving forward.| Azure Stack HCI is Microsoft's premier hyperconverged infrastructure platform for running VMs on-premises, optionally stretched across two sites and with connections to Azure hybrid services. It's an easy way to modernize and secure your data centers and branch offices, achieve industry-best performance for SQL Server databases, and run VMs or virtual desktops on-premises for low latency and data sovereignty.|
 | Windows Server is a great multi-purpose "Swiss Army knife" for all Windows Server roles, virtualized or not. | Use Azure Stack HCI to virtualize classic enterprise apps like Exchange, SharePoint, and SQL Server, and to virtualize Windows Server roles like File Server, DNS, DHCP, IIS, and AD. Includes unrestricted access to all Hyper-V features like Shielded VMs.|
 | Many Windows Server deployments run on aging hardware. | Use Azure Stack HCI to use software-defined infrastructure in place of aging storage arrays or network appliances, without major rearchitecture. Built-in Hyper-V, Storage Spaces Direct, and Software-Defined Networking (SDN) are directly accessible and manageable. Run apps inside Windows or Linux VMs.|
 

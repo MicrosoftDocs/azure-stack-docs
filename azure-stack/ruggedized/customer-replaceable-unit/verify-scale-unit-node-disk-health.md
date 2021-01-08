@@ -1,11 +1,11 @@
 ---
 title: Verify Scale Unit node disk health
 description: Learn how to verify Scale Unit node disk health
-author: myoungerman
+author: PatAltimore
 
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: 
 ms.lastreviewed: 
 
@@ -30,7 +30,7 @@ ms.lastreviewed:
         **HealthStatus** of **Healthy**, then wait a few minutes and then run
         the command again.
         
-        ![](media/image-57.png)
+        ![Screenshot that shows Windows PowerShell with the 'OperationsStatus' and 'HealthStatus' columns highlighted.](media/image-57.png)
         
     1.  Run `Get-VirtualDisk -cimsession "S-Cluster" | Get-StorageJob` to verify that all running storage jobs are complete.
     
@@ -42,5 +42,5 @@ ms.lastreviewed:
     1.  If needed, additional storage health verification steps can be found
         in the [Check the status of virtual disk repair using Azure Stack
         Hub
-        PowerShell](https://docs.microsoft.com/azure-stack/operator/azure-stack-replace-disk?view=azs-2002&check-the-status-of-virtual-disk-repair-using-azure-stack-hub-powershell).
+        PowerShell](../../operator/azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair-using-azure-stack-hub-powershell).
         
