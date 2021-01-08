@@ -4,7 +4,7 @@ description: This topic provides guidance on how to deploy SQL Server on Azure S
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 01/08/2021
+ms.date: 01/11/2021
 ---
 
 # Deploy SQL Server on Azure Stack HCI
