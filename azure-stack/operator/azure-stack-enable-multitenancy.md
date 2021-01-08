@@ -136,7 +136,7 @@ also see that an update is required for the home directory by opening the direct
 
 Each directory listing shows the type of directory. The type can be a home or guest directory, and its status is shown. When an update is needed, the home directory is shown with a status of **Update Required**. For example:
 
-![Update home directory](./media/azure-stack-enable-multitenancy/update-directory.png) |
+![Update home directory](./media/azure-stack-enable-multitenancy/update-directory.png)
 
 To update the home directory, check the box for the home directory and select **Update**.
 
