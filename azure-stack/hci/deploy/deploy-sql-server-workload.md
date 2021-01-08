@@ -4,7 +4,7 @@ description: This topic provides guidance on how to deploy SQL Server on Azure S
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 01/07/2021
+ms.date: 01/08/2021
 ---
 
 # Deploy SQL Server on Azure Stack HCI
@@ -43,7 +43,7 @@ To ensure the performance and health of your SQL Server instances on Azure Stack
 For tuning SQL Server 2017 and SQL Server 2016, see [Recommended updates and configuration options for SQL Server 2017 and 2016 with high-performance workloads](https://support.microsoft.com/help/4465518/recommended-updates-and-configurations-for-sql-server).
 
 ### Step 4: Use SQL Server high availability features
-Azure Stack HCI leverages [Windows Server Failover Clustering with SQL Server](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) (WSFC) to support SQL Server running in VMs in the event of a hardware failure. SQL Server also offers [Always On availability groups](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) (AG) to provide database-level high availability that is designed to help with application and software faults. In addition to WSFC and AG, Azure Stack HCI can use [Always On Failover Cluster Instance](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server) (FCI), which is based on [Storage Spaces Direct](https://docs.microsoft.com/azure/site-recovery/site-recovery-sql) technology for shared storage.
+Azure Stack HCI leverages [Windows Server Failover Clustering with SQL Server](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) (WSFC) to support SQL Server running in VMs in the event of a hardware failure. SQL Server also offers [Always On availability groups](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) (AG) to provide database-level high availability that is designed to help with application and software faults. In addition to WSFC and AG, Azure Stack HCI can use [Always On Failover Cluster Instance](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server) (FCI), which is based on [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) technology for shared storage.
 
 These options all work with the Microsoft Azure [Cloud witness](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness) for quorum control. We recommend using cluster [AntiAffinity](https://docs.microsoft.com/windows-server/failover-clustering/cluster-affinity) rules in WSFC for VMs placed on different physical nodes to maintain uptime for SQL Server in the event of host failures when you configure Always On availability groups.
 
