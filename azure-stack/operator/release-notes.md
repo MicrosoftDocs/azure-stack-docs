@@ -85,6 +85,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Improvements to preserve the Network Controller, Gateway VM, Load Balancer and Host Agent logs during an update.
 - Improved the deletion logic for networking resources that are blocked by a failed provisioning state.
 - Reduced the XRP memory to 14GB per VM and WAS memory to 10GB per VM. By avoiding the increase in total VM memory footprint, more tenant VMs are deployable.
+- The Log Collection HTML report which gives a snapshot of the files on the stamp and diagnostic share , now has a summarized view of the collected files, roles, resource providers and event information to better help understand the success and failure rate of the log collection process. 
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
