@@ -4,7 +4,7 @@ description: An overview of what Azure Stack Hub is and how it lets you run Azur
 author: PatAltimore
 
 ms.topic: overview
-ms.date: 04/20/2020
+ms.date: 01/08/2021
 ms.author: patricka
 ms.reviewer: unknown
 ms.lastreviewed: 11/08/2019
@@ -26,6 +26,9 @@ Azure provides a rich platform for developers to build modern apps. However, som
 - **Edge and disconnected solutions**. Address latency and connectivity requirements by processing data locally in Azure Stack Hub and then aggregating it in Azure for further analytics, with common app logic across both. You can even deploy Azure Stack Hub disconnected from the internet without connectivity to Azure. Think of factory floors, cruise ships, and mine shafts as examples.
 
 - **Cloud apps that meet varied regulations**. Develop and deploy apps in Azure with full flexibility to deploy on-premises with Azure Stack Hub to meet regulatory or policy requirements. No code changes are needed. App examples include global audit, financial reporting, foreign exchange trading, online gaming, and expense reporting.
+
+   > [!IMPORTANT]
+   > Azure Stack Hub is an on-premises appliance that customers fully own and control. You can choose to store whatever data you would like, and have total control of the data you put in an Azure Stack Hub. This data is not accessed or moved out of the region by Microsoft.
 
 - **Cloud app model on-premises**. Use Azure services, containers, serverless, and microservice architectures to update and extend existing apps or build new ones. Use consistent DevOps processes across Azure in the cloud and Azure Stack Hub on-premises to speed up app modernization for core mission-critical apps.
 
