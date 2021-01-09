@@ -130,8 +130,8 @@ https://helm.sh/blog/get-helm-sh/  | 443 | Download Agent, WAC | Used to downloa
 https://storage.googleapis.com/  | 443 | Cloud Init | Downloading Kubernetes binaries 
 https://azurecliprod.blob.core.windows.net/ | 443 | Cloud Init | Downloading binaries and containers 
 https://aka.ms/installazurecliwindows | 443 | WAC | Downloading Azure CLI 
-https://:443 | 443 | TCP | Required for downloads 
-*.blob.core.windows.net | 443 | TCP | Used to support Azure Arc agents 
+https://:443 | 443 | TCP |Used to support Azure Arc agents  
+*.blob.core.windows.net | 443 | TCP | Required for downloads
 *.api.cdp.microsoft.com, *.dl.delivery.mp.microsoft.com, *.emdl.ws.microsoft.com | 80, 443 | Download Agent | Downloading metadata 
 *.dl.delivery.mp.microsoft.com, *.do.dsp.mp.microsoft.com. | 80, 443 | Download Agent | Downloading VHD images 
 ecpacr.azurecr.io | 443 | Kubernetes | Downloading container images 
