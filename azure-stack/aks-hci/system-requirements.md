@@ -114,8 +114,10 @@ When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following fire
 
 | Firewall port               | Description         | 
 | ---------------------------- | ------------ | 
+| 6443           | Used to ensure that a physical host can reach the VM  |
 | 45000           | wssdagent GPRC   server port           |
 | 45001             | wssdagent GPRC authentication port  | 
+| 46000           | Used to ensure that a physical host can reach the VM  |
 | 55000           | wssdcloudagent GPRC   server port           |
 | 65000            | wssdcloudagent GPRC authentication port  | 
 
@@ -128,7 +130,8 @@ https://helm.sh/blog/get-helm-sh/  | 443 | Download Agent, WAC | Used to downloa
 https://storage.googleapis.com/  | 443 | Cloud Init | Downloading Kubernetes binaries 
 https://azurecliprod.blob.core.windows.net/ | 443 | Cloud Init | Downloading binaries and containers 
 https://aka.ms/installazurecliwindows | 443 | WAC | Downloading Azure CLI 
-https://:443 | 443 | TCP | Used to support Azure Arc agents 
+https://:443 | 443 | TCP | Required for downloads 
+*.blob.core.windows.net | 443 | TCP | Used to support Azure Arc agents 
 *.api.cdp.microsoft.com, *.dl.delivery.mp.microsoft.com, *.emdl.ws.microsoft.com | 80, 443 | Download Agent | Downloading metadata 
 *.dl.delivery.mp.microsoft.com, *.do.dsp.mp.microsoft.com. | 80, 443 | Download Agent | Downloading VHD images 
 ecpacr.azurecr.io | 443 | Kubernetes | Downloading container images 
