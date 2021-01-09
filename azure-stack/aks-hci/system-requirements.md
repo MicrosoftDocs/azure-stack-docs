@@ -40,7 +40,7 @@ For Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacente
 
 ## Network requirements 
 
-The following requirements apply to an Azure Stack HCI cluster as well as a Windows Server 2019 Datacenter failover cluster: 
+The following requirements apply to an Azure Stack HCI cluster as well as a Windows Server 2019 Datacenter cluster: 
 
  - Verify that you have an existing, external virtual switch configured if you’re using Windows Admin Center. For Azure Stack HCI clusters, this switch and its name must be the same across all cluster nodes. 
 
@@ -53,6 +53,59 @@ The following requirements apply to an Azure Stack HCI cluster as well as a Wind
  - For this preview release, we provide only single VLAN support for the entire deployment. 
 
  - For this preview release, we have limited proxy support for Kubernetes clusters created through PowerShell. 
+ 
+### IP address assignment  
+ 
+There are two options for assigning IP addresses in an Azure Stack HCI cluster: an automatic DHCP assignment or a combination of DHCP and static IP assignments. For both options, it's recommended that you configure three to five highly available control plane nodes. In addition, each option has it's own set of requirements. 
+
+> [!NOTE]
+> Using static IP address assignments alone is not supported. You must use either DHCP or a combination of DHCP and static IP address assignments.
+
+#### Use DHCP
+If you are planning to use DHCP for assigning IP addresses throughout the cluster, follow these requirements:  
+
+ - The network must have an available DHCP server to provide TCP/IP addresses to the VMs and the VM hosts. The DHCP server should also contain network time protocol (NTP) and DNS host information. 
+
+ - A DHCP server with a dedicated scope of IPv4 addresses accessible by the Azure Stack HCI cluster. For example, you can reserve 10.0.1.1 for the default gateway, reserve 10.0.1.2 to 10.0.1.102 for Kubernetes services, and use 10.0.1.103-10.0.1.254 for Kubernetes cluster VMs. 
+ 
+ - The IPv4 addresses provided by the DHCP server should be routable and have a 30-day lease expiration to avoid loss of IP connectivity in the event of a VM update or reprovisioning.  
+
+At a minimum, you should reserve the following number of DHCP addresses in each pool range: 
+
+- **IP pool range**: We recommend having 16 or more IP addresses in the range. There's a minimum requirement of three IP addresses in the range to allow for multiple control plane nodes in each cluster. When setting up the management cluster, use the `-vipPoolStartIp` and `-vipPoolEndIp` parameters in `Set-AksHciConfig` to reserve IP addresses from the DHCP IP pool for Kubernetes services.
+
+- **MAC pool range**: We recommend having 16 or more MAC addresses in the range to allow for multiple control plane nodes in each cluster. When setting up the management cluster, use the `-macPoolStart` and `-macPoolEnd` parameters in `Set-AksHciConfig` to reserve MAC addresses from the DHCP MAC pool for Kubernetes services.
+
+Every management cluster and workload cluster has an API server and a load balancer, both of which require an IP address. DHCP automatically assigns the IP address to the load balancer, and the API server is assigned an IP address from the address pool.
+
+- **Management cluster**: DHCP automatically assigns an IP address for each management node VM. 
+
+- **Workload cluster**: For each control plane node, DHCP automatically assigns an IP address for each control plane node. If you have multiple control plane nodes, you need to allow for additional IP addresses for them. For each worker node in the cluster, DHCP automatically assigns the IP address.   
+
+You can see how the number of required IP addresses is variable depending on the number of workload (target) clusters and control plane and worker nodes you have in your environment.  
+  
+    
+#### Use DHCP with static IP 
+
+If you're planning to use a combination of DHCP and static IP assignments, ensure that the available ranges contain these minimum number of IP addresses:  
+
+- **IP pool range**: We recommend having 32 or more IP addresses in the range. There's a minimum requirement of 12 IP addresses in the range to allow for multiple control plane nodes in each cluster.  
+
+- **MAC pool range**: We recommend having a minimum of 16 MAC addresses in the range to allow for multiple control plane nodes in each cluster.
+
+In addition, you must configure the following:
+
+- **Subnet CIDR range prefix**: To provide the range prefix, use `-cloudServiceCidr` in `Set-AksHciConfig`.   
+
+- **Gateway**: Provide one IP address for the gateway.
+
+- **DNS servers**: Provide up to three IP addresses for the servers.
+
+For using DHCP and static IPs, follow the requirements below:
+
+**Management cluster**: Since the number of control plane nodes in the cluster equals the number of VMs, depending on the number of control plane nodes you have, you'll need to allow for one IP address for each VM. You'll also need to have two additional IP addresses for the API server and the load balancer. For example, if you have three control plane nodes in the cluster, you'll need a total of five IP addresses. 
+
+**Workload cluster**: Depending on the number of workload clusters you have, you may have multiple control plane nodes and worker nodes in each cluster that need IP addresses. You'll also need to have two additional IP addresses for the API server and the load balancer VM. For example, if you have two target clusters, and cluster A has three control plane nodes and two worker nodes, and cluster B has one control plane node and five worker nodes, then the total number of IP addresses needed is 20.
   
 ### Network port and URL requirements 
 
@@ -64,8 +117,7 @@ When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following fire
 | 45000           | wssdagent GPRC   server port           |
 | 45001             | wssdagent GPRC authentication port  | 
 | 55000           | wssdcloudagent GPRC   server port           |
-| 65000             | wssdcloudagent GPRC authentication port  | 
-
+| 55001             | wssdcloudagent GPRC authentication port  | 
 
 
 Firewall URL exceptions are needed for the Windows Admin Center machine and all nodes in the Azure Stack HCI cluster. 
