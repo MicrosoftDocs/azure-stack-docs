@@ -117,7 +117,7 @@ When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following fire
 | 45000           | wssdagent GPRC   server port           |
 | 45001             | wssdagent GPRC authentication port  | 
 | 55000           | wssdcloudagent GPRC   server port           |
-| 55001             | wssdcloudagent GPRC authentication port  | 
+| 65000            | wssdcloudagent GPRC authentication port  | 
 
 
 Firewall URL exceptions are needed for the Windows Admin Center machine and all nodes in the Azure Stack HCI cluster. 
