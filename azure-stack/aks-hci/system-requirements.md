@@ -47,6 +47,8 @@ The following requirements apply to an Azure Stack HCI cluster as well as a Wind
  - Verify that you have disabled IPv6 on all network adapters. 
 
  - For a successful deployment, the Azure Stack HCI cluster nodes and the Kubernetes cluster VMs must have external Internet connectivity. 
+ 
+ - Make sure all subnets that you define for the cluster are routable with each other and to the Internet.
 
  - DNS name resolution is required for all nodes to be able to communicate with each other. For Kubernetes external name resolution, use the DNS servers provided by the DHCP server when the IP address is obtained. For Kubernetes internal name resolution, use the default Kubernetes core DNS-based solution. 
 
@@ -130,7 +132,7 @@ https://helm.sh/blog/get-helm-sh/  | 443 | Download Agent, WAC | Used to downloa
 https://storage.googleapis.com/  | 443 | Cloud Init | Downloading Kubernetes binaries 
 https://azurecliprod.blob.core.windows.net/ | 443 | Cloud Init | Downloading binaries and containers 
 https://aka.ms/installazurecliwindows | 443 | WAC | Downloading Azure CLI 
-https://:443 | 443 | TCP |Used to support Azure Arc agents  
+https://:443 | 443 | TCP | Used to support Azure Arc agents  
 *.blob.core.windows.net | 443 | TCP | Required for downloads
 *.api.cdp.microsoft.com, *.dl.delivery.mp.microsoft.com, *.emdl.ws.microsoft.com | 80, 443 | Download Agent | Downloading metadata 
 *.dl.delivery.mp.microsoft.com, *.do.dsp.mp.microsoft.com. | 80, 443 | Download Agent | Downloading VHD images 
