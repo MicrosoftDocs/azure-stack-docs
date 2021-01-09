@@ -105,9 +105,9 @@ Prior to rotation of external secrets:
    - Make sure the PFX encryption is **TripleDES-SHA1**. If you run into an issue, see [Fix common issues with Azure Stack Hub PKI certificates](azure-stack-remediate-certs.md#pfx-encryption).
 
 3. Store a backup to the certificates used for rotation in a secure backup location. If your rotation runs and then fails, replace the certificates in the file share with the backup copies before you rerun the rotation. Keep backup copies in the secure backup location.
-4. Create a fileshare you can access from the ERCS VMs. The file share must be  readable and writable for the **CloudAdmin** identity.
+4. Create a fileshare you can access from the ERCS VMs. The file share must be readable and writable for the **CloudAdmin** identity.
 5. Open a PowerShell ISE console from a computer where you have access to the fileshare. Navigate to your fileshare, where you create directories to place your external certificates.
-6. Download **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)** to a network file share that can be accessed during rotation, and run the script. The script will create a folder structure that adheres to ***.\Certificates\AAD*** or ***.\Certificates\ADFS***, depending on your identity provider. Your folder structure must begin with a **\\Certificates** folder, followed by ONLY an **\\AAD** or **\\ADFS** folder. All additional subdirectories are contained within the preceding structure. For example:
+6. Download **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)** to your network fileshare, and run the script. The script will create a folder structure that adheres to ***.\Certificates\AAD*** or ***.\Certificates\ADFS***, depending on your identity provider. Your folder structure must begin with a **\\Certificates** folder, followed by ONLY an **\\AAD** or **\\ADFS** folder. All additional subdirectories are contained within the preceding structure. For example:
     - File share = **\\\\\<IPAddress>\\\<ShareName>**
     - Certificate root folder for Azure AD provider = **\\Certificates\AAD**
     - Full path = **\\\\\<IPAddress>\\\<ShareName>\Certificates\AAD**

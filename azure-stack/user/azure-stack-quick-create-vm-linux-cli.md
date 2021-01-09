@@ -4,7 +4,7 @@ description: Create a Linux virtual machine by using the Azure CLI in Azure Stac
 author: mattbriggs
 
 ms.topic: quickstart
-ms.date: 5/27/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.lastreviewed: 01/14/2019
 

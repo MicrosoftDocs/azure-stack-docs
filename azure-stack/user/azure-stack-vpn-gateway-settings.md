@@ -40,7 +40,7 @@ When you create a virtual network gateway, you must specify the gateway SKU that
 
 Azure Stack Hub offers the VPN gateway SKUs shown in the following table:
 
-| | VPN gateway throughput |VPN gateway maximum IPsec tunnels |
+| | Tunnel throughput |VPN gateway maximum IPsec tunnels |
 |-------|-------|-------|
 |**Basic SKU**  | 100 Mbps    | 20    |
 |**Standard SKU**   | 100 Mbps  | 20 |

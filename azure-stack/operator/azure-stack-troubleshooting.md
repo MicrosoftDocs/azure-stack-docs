@@ -2,13 +2,13 @@
 title: Troubleshoot Azure Stack Hub
 titleSuffix: Azure Stack
 description: Learn how to troubleshoot Azure Stack Hub, including issues with VMs, storage, and App Service.
-author: myoungerman
+author: PatAltimore
 
 ms.topic: article
-ms.date: 07/21/2020
-ms.author: v-myoung
+ms.date: 12/10/2020
+ms.author: patricka
 ms.reviewer: prchint
-ms.lastreviewed: 07/21/2020
+ms.lastreviewed: 12/10/2020
 
 # Intent: As an Azure Stack operator, I want to troubleshoot Azure Stack issues.
 # Keyword: troubleshoot azure stack
@@ -203,7 +203,7 @@ The Azure Stack Hub patch and update process is designed to allow operators to a
 
 1. Follow the remediation steps in the failure alert created when your update failed.
 
-2. If you have been unable to resolve your issue, create an [Azure Stack Hub support ticket](./azure-stack-help-and-support-overview.md?view=azs-2002). Be sure you have [logs collected](./azure-stack-diagnostic-log-collection-overview.md#send-logs-now) for the time span when the issue occurred.
+2. If you have been unable to resolve your issue, create an [Azure Stack Hub support ticket](./azure-stack-help-and-support-overview.md). Be sure you have [logs collected](./azure-stack-diagnostic-log-collection-overview.md#send-logs-now) for the time span when the issue occurred.
 
 ## Common Azure Stack Hub patch and update issues
 
@@ -219,6 +219,16 @@ The Azure Stack Hub patch and update process is designed to allow operators to a
 
 **Occurrence**: Common
 
+### Warnings and errors reported while update is in progress
+
+**Applicable**: This issue applies to all supported releases.
+
+**Cause**: When Azure Stack Hub update is in status **In progress**, warnings and errors may be reported in the portal. Components may timeout waiting for other components during upgrade resulting in an error. Azure Stack Hub has mechanism to retry or remediate some of the tasks due to intermittent errors.
+
+**Remediation**: While the Azure Stack Hub update is in status **In progress**, warnings and errors reported in the portal can be ignored.
+
+**Occurrence**: Common
+
 ::: moniker range="azs-2002"
 ### 2002 update failed
 
@@ -227,5 +237,5 @@ The Azure Stack Hub patch and update process is designed to allow operators to a
 **Cause**: When attempting the 2002 update, the update might fail and provide this message: `The private network parameter is missing from cloud parameters. Please use set-azsprivatenetwork cmdlet to set private networkTrace`.
 
 **Remediation**: 
-[Set up a private internal network](./azure-stack-network.md?view=azs-2002#private-network).
+[Set up a private internal network](./azure-stack-network.md?view=azs-2002&preserve-view=true#private-network).
 ::: moniker-end

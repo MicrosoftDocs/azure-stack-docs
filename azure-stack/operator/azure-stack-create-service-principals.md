@@ -6,7 +6,7 @@ ms.author: bryanla
 ms.topic: how-to
 ms.date: 11/16/2020
 ms.lastreviewed: 11/16/2020
-ms.custom: contperfq4
+ms.custom: contperf-fy20q4
 zone_pivot_groups: state-connected-disconnected
 
 # Intent: As an Azure Stack operator, I want to use an app identity to access resources. 

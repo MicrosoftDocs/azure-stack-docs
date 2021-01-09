@@ -14,7 +14,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2020
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: asganesh
 ms.lastreviewed: 10/20/2020
 ---
@@ -60,30 +60,33 @@ The following table lists some of the terms used in this guide.
 
 ## Deployment workflow
 
-At a high level, the MDC deployment process consists of the following steps:
+At a high level, the MDC deployment process consists of the following phases:
 
-1. Planning phase:
-   1. Planning for datacenter power.
-   1. Planning for logical network configuration of Azure Stack Hub.
-   1. Planning for datacenter network integration.
-   1. Planning for identity and security integration.
-   1. Planning for PKI certificates.
-1. Preparation phase:
-   1. Collecting inventory.
-   1. Connecting power and powering on the solution.
-   1. Validating HVAC system health.
-   1. Validating fire monitoring and alerting system health.
-   1. Validating physical hardware health.
-1. Execution phase – separately for each of the three pods:
-   1. Configuring the hardware lifecycle host.
-   1. Configuring network switches.
-   1. Datacenter network integration.
-   1. Configuring physical hardware settings.
-   1. Configuring Isilon storage.
-   1. Deploying Azure Stack Hub fabric infrastructure.
-   1. Datacenter identity integration.
-   1. Installing add-ons for extended functionality.
-1. Validation phase – separately for each of the three pods:
-   1. Post-deployment health validation.
-   1. Registering Azure Stack Hub with Microsoft.
-   1. Azure Stack Hub customer hand-off.
+### Planning phase
+1. Planning for datacenter power.
+1. Planning for logical network configuration of Azure Stack Hub.
+1. Planning for [datacenter network integration](https://docs.microsoft.com/azure-stack/operator/azure-stack-network).
+1. Planning for [identity and security integration](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices).
+1. Planning for [PKI certificates](https://docs.microsoft.com/azure-stack/operator/azure-stack-pki-certs).
+
+### Preparation phase
+1. Collecting inventory.
+1. Connecting power and powering on the solution.
+1. Validating HVAC system health.
+1. Validating fire monitoring and alerting system health.
+1. Validating physical hardware health.
+
+### Execution phase – separately for each of the three pods
+1. Configuring the hardware lifecycle host.
+1. Configuring network switches.
+1. Datacenter network integration.
+1. Configuring physical hardware settings.
+1. Configuring Isilon storage.
+1. Deploying Azure Stack Hub fabric infrastructure.
+1. Datacenter identity integration.
+1. Installing add-ons for extended functionality.
+
+### Validation phase – separately for each of the three pods
+1. Post-deployment health validation.
+1. Registering Azure Stack Hub with Microsoft.
+1. Azure Stack Hub customer hand-off.

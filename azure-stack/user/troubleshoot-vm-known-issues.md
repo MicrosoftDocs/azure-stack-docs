@@ -4,7 +4,7 @@ description: Learn how to troubleshoot virtual machine known issues on Azure Sta
 author: mattbriggs
 
 ms.topic: troubleshooting
-ms.date: 07/09/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 07/09/2020

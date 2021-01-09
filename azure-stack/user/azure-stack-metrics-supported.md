@@ -4,7 +4,7 @@ description: Learn about the supported metrics for Azure Monitor on Azure Stack 
 author: mattbriggs
 
 ms.topic: article
-ms.date: 08/24/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.lastreviewed: 11/11/2019
 

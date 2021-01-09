@@ -1,12 +1,12 @@
 ---
 title: Diagnostic log collection
 description: Learn about diagnostic log collection.
-author: myoungerman
+author: PatAltimore
 ms.topic: article
 ms.date: 10/30/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: shisab
-ms.lastreviewed: 10/30/2020
+ms.lastreviewed: 12/08/2020
 
 #Intent: As an Azure Stack Hub operator, I want to learn about diagnostic log collection so I can share them with Microsoft Support when I need help addressing an issue.
 #Keyword: diagnostic log collection azure stack hub
@@ -36,6 +36,12 @@ The flowchart below shows which option to use for sending diagnostic logs in eac
 
 Proactive log collection automatically collects and sends diagnostic logs from Azure Stack Hub to Microsoft before you open a support case. These logs are only collected when a [system health alert](#proactive-diagnostic-log-collection-alerts) is raised and are only accessed by Microsoft Support in the context of a support case.
 
+::: moniker range=">= azs-2008"
+
+Beginning with Azure Stack Hub version 2008, proactive log collection uses an improved algorithm that captures logs even during error conditions that aren’t visible to an operator. This makes sure that the right diagnostic info is collected at the right time without needing any operator interaction. Microsoft support can begin troubleshooting and resolve problems sooner in some cases. Initial algorithm improvements focus on patch and update operations. Enabling proactive log collections is recommended as more operations are optimized and the benefits increase.
+
+::: moniker-end
+
 Proactive log collection can be disabled and re-enabled anytime. Follow these steps to set up proactive log collection.
 
 1. Sign in to the Azure Stack Hub administrator portal.
@@ -54,6 +60,38 @@ The data will be used only troubleshooting system health alerts and won't be use
 Any data previously collected with your consent won't be affected by the revocation of your permission.
 
 Logs collected using **Proactive log collection** are uploaded to an Azure storage account managed and controlled by Microsoft. These logs may be accessed by Microsoft in the context of a support case and to improve the health of Azure Stack Hub.
+
+### Proactive diagnostic log collection alerts
+
+If enabled, proactive log collection uploads logs when one of the following events is raised.
+
+For example, **Update failed** is an alert that triggers proactive diagnostic log collection. If it's enabled, diagnostic logs are proactively captured during an update failure to help Microsoft Support troubleshoot the problem. The diagnostic logs are only collected when the alert for **Update failed** is raised.
+
+| Alert title | FaultIdType |
+|---|---|
+|Unable to connect to the remote service | UsageBridge.NetworkError|
+|Update failed | Urp.UpdateFailure |
+|Storage Resource Provider infrastructure/dependencies not available |    StorageResourceProviderDependencyUnavailable |
+|Node not connected to controller| ServerHostNotConnectedToController |  
+|Route publication failure | SlbMuxRoutePublicationFailure |
+|Storage Resource Provider internal data store unavailable |    StorageResourceProvider. DataStoreConnectionFail |
+|Storage device failure | Microsoft.Health.FaultType.VirtualDisks.Detached |
+|Health controller can't access storage account | Microsoft.Health.FaultType.StorageError |
+|Connectivity to a physical disk has been lost | Microsoft.Health.FaultType.PhysicalDisk.LostCommunication |
+|The blob service isn't running on a node | StorageService.The.blob.service.is.not.running.on.a.node-Critical |
+|Infrastructure role unhealthy | Microsoft.Health.FaultType.GenericExceptionFault |
+|Table service errors | StorageService.Table.service.errors-Critical |
+|A file share is over 80% utilized | Microsoft.Health.FaultType.FileShare.Capacity.Warning.Infra |
+|Scale unit node is offline | FRP.Heartbeat.PhysicalNode |
+|Infrastructure role instance unavailable | FRP.Heartbeat.InfraVM |
+|Infrastructure role instance unavailable  | FRP.Heartbeat.NonHaVm |
+|The infrastructure role, Directory Management, has reported time synchronization errors | DirectoryServiceTimeSynchronizationError |
+|Pending external certificate expiration | CertificateExpiration.ExternalCert.Warning |
+|Pending external certificate expiration | CertificateExpiration.ExternalCert.Critical |
+|Unable to provision virtual machines for specific class and size due to low memory capacity | AzureStack.ComputeController.VmCreationFailure.LowMemory |
+|Node inaccessible for virtual machine placement | AzureStack.ComputeController.HostUnresponsive |
+|Backup failed  | AzureStack.BackupController.BackupFailedGeneralFault |
+|The scheduled backup was skipped due to a conflict with failed operations    | AzureStack.BackupController.BackupSkippedWithFailedOperationFault |
 
 ## Send logs now
 
@@ -102,7 +140,22 @@ If you're using the **Send logs now** method and want to use PowerShell instead 
   ```powershell
   Send-AzureStackDiagnosticLog -FilterByResourceProvider <<value-add RP name>>
   ```
- 
+
+  ::: moniker range=">= azs-2008"
+
+  To send diagnostic logs for SQL RP: 
+
+  ```powershell
+  Send-AzureStackDiagnosticLog -FilterByResourceProvider SQLAdapter
+  ```
+  To send diagnostic logs for MySQL RP: 
+
+  ```powershell
+  Send-AzureStackDiagnosticLog -FilterByResourceProvider MySQLAdapter
+  ```
+  
+  ::: moniker-end
+
   To send diagnostic logs for IoT Hub: 
 
   ```powershell
@@ -179,38 +232,6 @@ The history of logs collected from Azure Stack Hub appears on the **Log collecti
 - **Type**: If it's a manual or proactive log collection.
 
 ![Log collections in Help + support](media/azure-stack-help-and-support/azure-stack-log-collection.png)
-
-## Proactive diagnostic log collection alerts
-
-If enabled, proactive log collection uploads logs only when one of the following events is raised.
-
-For example, **Update failed** is an alert that triggers proactive diagnostic log collection. If it's enabled, diagnostic logs are proactively captured during an update failure to help Microsoft Support troubleshoot the problem. The diagnostic logs are only collected when the alert for **Update failed** is raised.
-
-| Alert title | FaultIdType |
-|---|---|
-|Unable to connect to the remote service | UsageBridge.NetworkError|
-|Update failed | Urp.UpdateFailure |
-|Storage Resource Provider infrastructure/dependencies not available |    StorageResourceProviderDependencyUnavailable |
-|Node not connected to controller| ServerHostNotConnectedToController |  
-|Route publication failure | SlbMuxRoutePublicationFailure |
-|Storage Resource Provider internal data store unavailable |    StorageResourceProvider. DataStoreConnectionFail |
-|Storage device failure | Microsoft.Health.FaultType.VirtualDisks.Detached |
-|Health controller can't access storage account | Microsoft.Health.FaultType.StorageError |
-|Connectivity to a physical disk has been lost | Microsoft.Health.FaultType.PhysicalDisk.LostCommunication |
-|The blob service isn't running on a node | StorageService.The.blob.service.is.not.running.on.a.node-Critical |
-|Infrastructure role unhealthy | Microsoft.Health.FaultType.GenericExceptionFault |
-|Table service errors | StorageService.Table.service.errors-Critical |
-|A file share is over 80% utilized | Microsoft.Health.FaultType.FileShare.Capacity.Warning.Infra |
-|Scale unit node is offline | FRP.Heartbeat.PhysicalNode |
-|Infrastructure role instance unavailable | FRP.Heartbeat.InfraVM |
-|Infrastructure role instance unavailable  | FRP.Heartbeat.NonHaVm |
-|The infrastructure role, Directory Management, has reported time synchronization errors | DirectoryServiceTimeSynchronizationError |
-|Pending external certificate expiration | CertificateExpiration.ExternalCert.Warning |
-|Pending external certificate expiration | CertificateExpiration.ExternalCert.Critical |
-|Unable to provision virtual machines for specific class and size due to low memory capacity | AzureStack.ComputeController.VmCreationFailure.LowMemory |
-|Node inaccessible for virtual machine placement | AzureStack.ComputeController.HostUnresponsive |
-|Backup failed  | AzureStack.BackupController.BackupFailedGeneralFault |
-|The scheduled backup was skipped due to a conflict with failed operations    | AzureStack.BackupController.BackupSkippedWithFailedOperationFault |
 
 ## See also
 

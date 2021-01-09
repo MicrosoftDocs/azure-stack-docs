@@ -2,11 +2,11 @@
 title: Start and stop
 titleSuffix: Azure Stack Hub
 description: Learn how to start and stop Azure Stack Hub.
-author: IngridAtMicrosoft
+author: PatAltimore
 
 ms.topic: how-to
 ms.date: 03/04/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2019
 
@@ -85,4 +85,4 @@ Take the following steps if the infrastructure and tenant services don't success
 
 ## Next steps
 
-Learn more about [Azure Stack Hub diagnostic tools](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002)
+Learn more about [Azure Stack Hub diagnostic tools](./azure-stack-diagnostic-log-collection-overview.md)

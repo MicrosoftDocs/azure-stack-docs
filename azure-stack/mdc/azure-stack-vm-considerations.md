@@ -1,6 +1,6 @@
 ---
-title: Azure Stack VM features | Microsoft Docs
-description: Learn about different features and considerations when working with VMs in a MDC.
+title: Azure Stack virtual machine (VM) features | Microsoft Docs
+description: Learn about different features and considerations when working with virtual machines (VMs) in an MDC.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2019
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 12/20/2019
 
 ---
 
-# Azure Stack VM features
+# Azure Stack VM features - Modular Data Center (MDC)
 
 Azure Stack virtual machines (VMs) provide on-demand, scalable computing resources. Before you deploy VMs, you should learn the differences between the VM features available in Azure Stack and Microsoft Azure. This article describes these differences and identifies key considerations for planning VM deployments. To learn about high-level differences between Azure Stack and Azure, see the [Key considerations](../user/azure-stack-considerations.md) article.
 
@@ -77,6 +77,17 @@ Azure Stack includes a small set of extensions. Updates and additional extension
 
 Use the following PowerShell script to get the list of VM extensions that are available in your Azure Stack environment:
 
+### [Az modules](#tab/az1)
+
+```powershell
+Get-AzVmImagePublisher -Location local | `
+  Get-AzVMExtensionImageType | `
+  Get-AzVMExtensionImage | `
+  Select Type, Version | `
+  Format-Table -Property * -AutoSize
+```
+### [AzureRM modules](#tab/azurerm1)
+
 ```powershell
 Get-AzureRmVmImagePublisher -Location local | `
   Get-AzureRmVMExtensionImageType | `
@@ -84,6 +95,8 @@ Get-AzureRmVmImagePublisher -Location local | `
   Select Type, Version | `
   Format-Table -Property * -AutoSize
 ```
+
+---
 
 If provisioning an extension on a VM deployment takes too long, let the provisioning timeout instead of trying to stop the process to deallocate or delete the VM.
 
@@ -98,6 +111,17 @@ VM features in Azure Stack support the following API versions:
 
 You can use the following PowerShell script to get the API versions for the VM features that are available in your Azure Stack environment:
 
+### [Az modules](#tab/az)
+
+```powershell
+Get-AzResourceProvider | `
+  Select ProviderNamespace -Expand ResourceTypes | `
+  Select * -Expand ApiVersions | `
+  Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} | `
+  where-Object {$_.ProviderNamespace -like "Microsoft.compute"}
+```
+### [AzureRM modules](#tab/azurerm)
+
 ```powershell
 Get-AzureRmResourceProvider | `
   Select ProviderNamespace -Expand ResourceTypes | `
@@ -105,6 +129,8 @@ Get-AzureRmResourceProvider | `
   Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} | `
   where-Object {$_.ProviderNamespace -like "Microsoft.compute"}
 ```
+
+---
 
 The list of supported resource types and API versions may vary if the cloud operator updates your Azure Stack environment to a newer version.
 

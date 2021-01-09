@@ -63,7 +63,7 @@ This depends on which features you’re using. At the minimum, Azure Stack HCI w
 
 **Where does the synced information actually go?**
 
-Azure Stack HCI syncs with Azure and stores data in a secure, Microsoft-operated datacenter. To learn more, see [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
+Azure Stack HCI syncs with Azure and stores data in a secure, Microsoft-operated datacenter. To learn more, see [Azure Stack HCI data collection](concepts/data-collection.md) and [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
 
 ### Disconnected or “air-gapped”
 

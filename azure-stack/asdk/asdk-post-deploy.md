@@ -1,13 +1,13 @@
 ---
 title: Post deployment configurations for the ASDK 
 description: Learn about the recommended configuration changes to make after installing the Azure Stack Development Kit (ASDK).
-author: justinha
+author: PatAltimore
 
 ms.topic: article
-ms.date: 12/01/2020
-ms.author: justinha
+ms.date: 12/03/2020
+ms.author: patricka
 ms.reviewer: misainat
-ms.lastreviewed: 11/14/2020
+ms.lastreviewed: 12/03/2020
 
 # Intent: As an ASDK user, I want to know recommended configuration changes after I deploy the ASDK.
 # Keyword: asdk configuration changes
@@ -31,28 +31,24 @@ Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 
 Use API version profiles to specify Azure Stack compatible Az modules.  API version profiles provide a way to manage version differences between Azure and Azure Stack. An API version profile is a set of Az PowerShell modules with specific API versions. The **Az.BootStrapper** module that's available through the PowerShell Gallery provides PowerShell cmdlets that are required to work with API version profiles.
 
-You can install the latest Azure Stack PowerShell module with or without internet connectivity to the ASDK host computer:
+You can install the latest Azure Stack PowerShell module with or without internet connectivity to the ASDK host computer.
 
-> [!IMPORTANT]
-> Before installing the required version, make sure that you [uninstall any existing Azure PowerShell modules](../operator/powershell-install-az-module.md#3-uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules).
+1.  Validate your prerequisites on your Windows machine. For instructions see [Prerequisites for Windows](../operator/powershell-install-az-module.md#prerequisites-for-windows).
+2. Before installing the required PowerShell version, make sure that you [uninstall any existing Azure PowerShell modules](../operator/powershell-install-az-module.md#3-uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules). 
 
 - **With an internet connection** from the ASDK host computer: Run the following PowerShell script to install these modules on your ASDK installation:
 
 ### [Az modules](#tab/az1)
 
   ```powershell  
-  # Update the current PowerShellGet module to latest version, required to support PreRelease modules
-  Install-Module -Name PowerShellGet -Force
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-  Get-Module -Name Azs.* -ListAvailable | Uninstall-Module -Force -Verbose
-  Get-Module -Name Azure* -ListAvailable | Uninstall-Module -Force -Verbose
+    Install-Module -Name Az.BootStrapper -Force -AllowPrerelease
+    Install-AzProfile -Profile 2019-03-01-hybrid -Force
+    Install-Module -Name AzureStack -RequiredVersion 2.0.2-preview -AllowPrerelease
 
-  # Install the Az.BootStrapper module. Select Yes when prompted to install NuGet
-  Install-Module -Name Az.BootStrapper
-
-  # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
-  Use-AzProfile -Profile 2019-03-01-hybrid -Force
-  Install-Module -Name AzureStack -RequiredVersion 2.0.2-preview -AllowPrerelease
+    Get-Module -Name "Az*" -ListAvailable
+    Get-Module -Name "Azs*" -ListAvailable
   ```
 
 If the installation is successful, the Az and AzureStack modules are displayed in the output.
@@ -60,15 +56,17 @@ If the installation is successful, the Az and AzureStack modules are displayed i
 ### [AzureRM modules](#tab/azurerm1)
 
   ```powershell  
-  Get-Module -Name Azs.* -ListAvailable | Uninstall-Module -Force -Verbose
-  Get-Module -Name Azure* -ListAvailable | Uninstall-Module -Force -Verbose
-
-  # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
-  Install-Module -Name AzureRM.BootStrapper
-
-  # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
-  Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
-  Install-Module -Name AzureStack -RequiredVersion 1.8.2
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    
+    # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
+    Install-Module -Name AzureRM.BootStrapper
+    
+    # Install and import the API Version Profile required by Azure Stack Hub into the current PowerShell session.
+    Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
+    Install-Module -Name AzureStack -RequiredVersion 1.8.2
+    
+    Get-Module -Name "Az*" -ListAvailable
+    Get-Module -Name "Azs*" -ListAvailable
   ```
 
 If the installation is successful, the AureRM and AzureStack modules are displayed in the output.
@@ -108,10 +106,10 @@ If the installation is successful, the AureRM and AzureStack modules are display
   $Path = "<Path that is used to save the packages>"
 
   Save-Package `
-    -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.3.0
+    -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
   
   Save-Package `
-    -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.5.0
+    -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.8.0
   ```
 
   Next, copy the downloaded packages to the ASDK computer and register the location as the default repository and install the AzureRM and AzureStack modules from this repository:

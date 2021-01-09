@@ -4,26 +4,36 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
-  - name: Known issues
-    href: known-issues.md
+  - name: Compare to Windows Server
+    href: concepts/compare-windows-server.md
+  - name: Release information
+    href: release-information.md
   - name: Release notes
-    href: release-notes.md
+    href: https://support.microsoft.com/help/4595086
   - name: FAQ
     href: faq.md
-- name: Get started
+- name: Quickstarts
   items:
   - name: Use Azure Stack HCI with Windows Admin Center
     href: get-started.md
+  - name: Create an Azure Stack HCI cluster
+    href: deploy/deployment-quickstart.md
 - name: Deploy
   items:
   - name: Deployment overview
     href: deploy/deployment-overview.md
   - name: Deploy the Azure Stack HCI OS
     href: deploy/operating-system.md
-  - name: Create the cluster
+  - name: Create a cluster
     href: deploy/create-cluster.md
   - name: Set up a cluster witness
     href: deploy/witness.md
+  - name: Deploy an SDN infrastructure
+    href: deploy/sdn-express.md
+  - name: Migrate to new hardware
+    href: deploy/migrate-cluster-new-hardware.md
+  - name: Migrate on same hardware
+    href: deploy/migrate-cluster-same-hardware.md
   - name: Register with Azure
     href: deploy/register-with-azure.md
   - name: Validate the cluster
@@ -32,8 +42,10 @@
     items:
     - name: Create a cluster with PowerShell
       href: deploy/create-cluster-powershell.md
-    - name: Deploy Network Controller with PowerShell
-      href: deploy/network-controller-powershell.md
+  - name: Deploy workloads
+    items:
+    - name: Deploy trusted enterprise virtualization
+      href: deploy/deploy-trusted-enterprise-virtualization.md
 - name: Manage
   items:
   - name: Manage VMs
@@ -152,10 +164,16 @@
     items:
     - name: Billing
       href: concepts/billing.md
+    - name: Configure firewalls
+      href: concepts/configure-firewalls.md
     - name: Updates and upgrades
       href: concepts/updates.md
     - name: Security considerations
       href: concepts/security.md
+    - name: Utility applications
+      href: concepts/utility-applications.md
+    - name: Data collection
+      href: concepts/data-collection.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
@@ -208,7 +226,13 @@
   items:
   - name: Azure Stack HCI product page
     href: https://azure.com/hci
-  - name: Azure Stack HCI Eval Guide
+  - name: Evaluation Guide
     href: https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md
-  - name: Azure Stack HCI pricing
+  - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
+  - name: Support
+    href: manage/get-support.md
+  - name: Training
+    href: /learn/paths/azure-stack-hci-foundations/
+  - name: Archived release notes
+    href: preview-release-notes.md

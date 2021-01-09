@@ -3,7 +3,7 @@ title: Quickstart to set up an Azure Kubernetes Service host on Azure Stack HCI 
 description: Learn how to set up an Azure Kubernetes Service host on Azure Stack HCI with Windows PowerShell
 author: jessicaguan
 ms.topic: quickstart
-ms.date: 09/23/2020
+ms.date: 12/02/2020
 ms.author: jeguan
 ---
 # Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI using PowerShell
@@ -20,15 +20,18 @@ Make sure you have one of the following:
  - Single node Windows Server 2019 Datacenter 
  
 Before getting started, make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page. 
-**We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
+**We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).    
+
+   > [!IMPORTANT]
+   > When removing Azure Kubernetes Service on Azure Stack HCI, see [Remove Azure Kubernetes Service on Azure Stack HCI](#remove-azure-kubernetes-service-on-azure-stack-hci) and carefully follow the instructions. 
 
 ## Step 1: Download and install the AksHci PowerShell module
 
 Download the `AKS-HCI-Public-Preview-Dec-2020` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module.
 
 If you have previously installed Azure Kubernetes Service on Azure Stack HCI using PowerShell or Windows Admin Center, there are two installation flows for the new PowerShell module:
- - Perform a clean installation of the PowerShell module, so you start with a clean system and your previously deployed workloads are removed. To do this, go to Step 1.1.
- - Upgrade the PowerShell module if you want to keep your system and workloads in place. To do this, go to Step 1.2.
+ - Perform a clean installation of the PowerShell module, so you start with a clean system and your previously deployed workloads are removed. To perform a clean installation, go to Step 1.1.
+ - Upgrade the PowerShell module if you want to keep your system and workloads in place. To upgrade the PowerShell module, go to Step 1.2.
 
 ### Step 1.1: Clean install of the AksHci PowerShell module
 
@@ -37,7 +40,7 @@ Run the following command before proceeding.
    Uninstall-AksHci
    ```
 
-**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.UI, MOC and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once this is done, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`). Then, run the following commands.
+**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.UI, MOC, and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once the existing directories are deleted, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`). Then, run the following commands.
 
    ```powershell
    Import-Module AksHci
@@ -47,7 +50,7 @@ Close all PowerShell windows again and reopen an administrative session and proc
 
 ### Step 1.2: Upgrade the AksHci PowerShell module
 
-**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.UI, MOC and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once these directories are removed, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`). Then, run the following commands.
+**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.UI, MOC, and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once these directories are removed, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`). Then, run the following commands.
 
    ```powershell
    Import-Module AksHci
@@ -55,7 +58,7 @@ Close all PowerShell windows again and reopen an administrative session and proc
   
 After running the above commands, close all PowerShell windows and reopen an administrative session to validate PowerShell module upgrade as detailed below and then run the `Update-AksHci` command as instructed later in the document.
 
-## Step 1.3: Validate upgraded PowerShell module
+### Step 1.3: Validate upgraded PowerShell module
 
 **Close all PowerShell windows** and reopen a new administrative session to check if you have the latest version of the PowerShell module.  
 
@@ -125,7 +128,7 @@ Configure your deployment with the following command.
                     [-kvaLoadBalancerType {unstacked_haproxy, stacked_kube_vip}]
                     [-kvaControlPlaneEndpoint <String>]
                     [-proxyServerHTTP <String>]
-                    [-proxyServerHTTP <String>]
+                    [-proxyServerHTTPS <String>]
                     [-proxyServerNoProxy <String>]
                     [-proxyServerCredential <PSCredential>]
                     [-cloudServiceCidr <String>]
@@ -209,13 +212,13 @@ When using VIP pools for your deployment, this parameter specifies the network e
 
 `-macPoolStart` 
 
-This is used to specify the start of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (i.e. 00, 02, 04, 06...). A typical MAC address can look like: 02:1E:2B:78:00:00. You should use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. This is useful if you have a requirement that the VMs have specific MAC addresses. Default is none.
+This is used to specify the start of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (that is, 00, 02, 04, 06...). A typical MAC address can look like: 02:1E:2B:78:00:00. Use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. This is useful if you have a requirement that the VMs have specific MAC addresses. Default is none.
 
 `-macPoolEnd`
 
-This is used to specify the end of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (i.e. 00, 02, 04, 06...). The first byte of the address passed as the `-macPoolEnd` should be the same as the first byte of the address passed as the `-macPoolStart`. You should use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. This is useful if you have a requirement that the VMs have specific MAC addresses. Default is none.
+This is used to specify the end of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (that is, 00, 02, 04, 06...). The first byte of the address passed as the `-macPoolEnd` should be the same as the first byte of the address passed as the `-macPoolStart`. Use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. This is useful if you have a requirement that the VMs have specific MAC addresses. Default is none.
 
-`-vlandID`
+`-vlanID`
 
 This can be used to specify a network VLAN ID. Azure Kubernetes Service host and Kubernetes cluster VM network adapters will be tagged with the provided VLAN ID. This should be used if there is a specific VLAN ID that needs to be tagged to get the right connectivity. Default is none.
 
@@ -231,11 +234,11 @@ This specifies the static IP address to use as the Azure Kubernetes Service Host
 
 `-proxyServerHTTP`
 
-This provides a proxy server URI that should be used by all components that need to reach HTTP endpoints. The URI format includes the URI schema, server address, and port (i.e. https://server.com:8888). Default is none.
+This provides a proxy server URI that should be used by all components that need to reach HTTP endpoints. The URI format includes the URI schema, server address, and port (that is, https://server.com:8888). Default is none.
 
 `-proxyServerHTTPS`
 
-This provides a proxy server URI that should be used by all components that need to reach HTTPS endpoints. The URI format includes the URI schema, server address, and port (i.e. https://server.com:8888). Default is none.
+This provides a proxy server URI that should be used by all components that need to reach HTTPS endpoints. The URI format includes the URI schema, server address, and port (that is, https://server.com:8888). Default is none.
 
 `-proxyServerNoProxy`
 
@@ -244,7 +247,7 @@ This is a comma-delimited string of addresses that will be exempt from the proxy
 
 `-proxyServerCredential`
 
-This provides the username and password to authenticate to your HTTP/HTTPS proxy servers. You can use `Get-Credential` to generate a PSCredential object to pass to this parameter. Default is none.
+This provides the username and password to authenticate to your HTTP/HTTPS proxy servers. You can use `Get-Credential` to generate a `PSCredential` object to pass to this parameter. Default is none.
 
 `-cloudServiceCidr`
 
@@ -409,7 +412,7 @@ Install-AksHci
 
 ## Remove Azure Kubernetes Service on Azure Stack HCI
 
-To remove Azure Kubernetes Service on Azure Stack HCI, run the following command.
+To remove Azure Kubernetes Service on Azure Stack HCI, run the following command. **If you are using PowerShell to uninstall a Windows Admin Center deployment, you must run the command with the `-Force` flag.**
 
 ```powershell
 Uninstall-AksHci
@@ -423,7 +426,7 @@ If you don't want to retain the old configuration, run the following command.
 Uninstall-AksHci -Force
 ```
 
-If PowerShell commands are run on a cluster where Windows Admin Center was previously used to deploy, the PowerShell module checks the existence of the Windows Admin Center configuration file. Windows Admin Center places the Windows Admin Center configuration file across all nodes. If you use the uninstall command and go back to Windows Admin Center, run the above uninstall command with the `-Force` flag. If this is not done, PowerShell and Windows Admin Center will be out of sync.
+If PowerShell commands are run on a cluster where Windows Admin Center was previously used to deploy, the PowerShell module checks the existence of the Windows Admin Center configuration file. Windows Admin Center places the Windows Admin Center configuration file across all nodes. **If you use the uninstall command and go back to Windows Admin Center, run the above uninstall command with the `-Force` flag. If this is not done, PowerShell and Windows Admin Center will be out of sync.**
 
 ## Next steps
 

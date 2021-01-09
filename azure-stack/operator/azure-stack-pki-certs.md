@@ -1,10 +1,10 @@
 ---
 title: Azure Stack Hub public key infrastructure certificate requirements 
 description: Learn about the Azure Stack Hub PKI certificate requirements for Azure Stack Hub integrated systems.
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: ppacent
 ms.lastreviewed: 12/16/2019
 
@@ -37,7 +37,6 @@ The following list describes the general certificate issuance, security, and for
 ::: moniker-end
 - The use of self-signed certificates aren't supported.
 - For deployment and rotation, you can either use a single certificate covering all name spaces in the certificate's Subject Name and Subject Alternative Name (SAN) fields OR you can use individual certificates for each of the namespaces below that the Azure Stack Hub services you plan to utilize require. Both approaches require using wild cards for endpoints where they're required, such as **KeyVault** and **KeyVaultInternal**.
-- The certificate's PFX Encryption should be 3DES.
 - The certificate signature algorithm shouldn't be SHA1.
 - The certificate format must be PFX, as both the public and private keys are required for Azure Stack Hub installation. The private key must have the local machine key attribute set.
 - The PFX encryption must be 3DES (this encryption is default when exporting from a Windows 10 client or Windows Server 2016 certificate store).
@@ -108,8 +107,8 @@ The following table describes the endpoints and certificates required for resour
 |App Service|API|api.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL Certificate<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|FTP|ftp.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL Certificate<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|SSO|sso.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL Certificate<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
-|Event Hubs|SSL|&#42;.eventhub.*&lt;region>.&lt;fqdn>* | eventhub.*&lt;region>.&lt;fqdn>* |
-|IoT Hub|SSL|&#42;.mgmtiothub.*&lt;region>.&lt;fqdn>* | mgmtiothub.*&lt;region>.&lt;fqdn>* |
+|Event Hubs|SSL|&#42;.eventhub.*&lt;region>.&lt;fqdn>*<br>(Wildcard SSL Certificate)|eventhub.*&lt;region>.&lt;fqdn>* |
+|IoT Hub|SSL|&#42;.mgmtiothub.*&lt;region>.&lt;fqdn>*<br>(Wildcard SSL Certificate)|mgmtiothub.*&lt;region>.&lt;fqdn>* |
 |SQL, MySQL|SQL and MySQL|&#42;.dbadapter.*&lt;region>.&lt;fqdn>*<br>(Wildcard SSL Certificate)|dbadapter.*&lt;region>.&lt;fqdn>*|
 
 <sup>1</sup> Requires one certificate with multiple wildcard subject alternative names. Multiple wildcard SANs on a single certificate might not be supported by all public certificate authorities.
