@@ -5,7 +5,7 @@ ms.topic: how-to
 author: v-dasis
 ms.author: v-dasis
 ms.reviewer: jgerend
-ms.date: 01/07/2021
+ms.date: 01/11/2021
 ---
 
 # Manage Azure Stack HCI clusters using Windows Admin Center
@@ -152,7 +152,7 @@ To start, stop, remove, or to simulate failure of a cluster resource, do the fol
 
 1. Select **Overview**, then under **Cluster resources**, select the resource and select either **Start**, **Stop**, or **Remove**.
 
-    :::image type="content" source="media/manage-cluster/cluster-overview.png" alt-text="validate cluster screen" lightbox="media/manage-cluster/cluster-overview.png":::
+    :::image type="content" source="media/manage-cluster/cluster-overview.png" alt-text="manage cluster resources screen" lightbox="media/manage-cluster/cluster-overview.png":::
 
 1. Select **Simulate failure** to simulate a cluster failure:
 
