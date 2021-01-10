@@ -33,7 +33,7 @@ To view this information, select the cluster name under **All connections**, the
 - Total cluster input/output operations/second (IOPS)
 - Average cluster latency in milliseconds
 
-## View cluster overview
+## View cluster resources
 
 The cluster overview page displays information on cluster resources such as servers, infrastructure, and quorum witness.
 
@@ -51,11 +51,7 @@ You can select to use server memory to cache frequent reads and specify the maxi
 
     :::image type="content" source="media/manage-cluster/cluster-settings-memory.png" alt-text="cluster In-memory cache screen" lightbox="media/manage-cluster/cluster-settings-memory.png":::
 
-You can change the name of the storage pool that Storage Spaces Direct uses.
-
-1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
-1. Under **Tools**, select **Settings** at the bottom.
-1. Select **Storage pools** and enter the new name.
+1. You can change the name of the storage pool that Storage Spaces Direct uses. Select **Storage pools** and enter the new name.
 
     :::image type="content" source="media/manage-cluster/cluster-settings-ssd.png" alt-text="cluster storage pool screen" lightbox="media/manage-cluster/cluster-settings-ssd.png":::
 
@@ -90,15 +86,13 @@ There are several general settings that can be applied to your cluster. Here is 
 
         :::image type="content" source="media/manage-cluster/cluster-settings-vm-load.png" alt-text="cluster Virtual machine load balancing screen" lightbox="media/manage-cluster/cluster-settings-vm-load.png":::
 
-1. To select a quorum witness type, select **Witness**, then select one of the following:
+1. To select a quorum witness type, select **Witness**, then for **Witness type** select one of the following:
 
    - **Cloud witness** - to use an Azure cloud resource as witness
    - **Disk witness** - to use a disk resource as witness (do not use for stretched clusters)
    - **File share witness** - to use a file share as witness
 
-        For detailed information on how to set up a witness, see [Set up a cluster witness](../deploy/witness.md).
-
-        Also see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).
+        For detailed information on how to set up a witness, see [Set up a cluster witness](../deploy/witness.md). Also see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).
 
         :::image type="content" source="media/manage-cluster/cluster-settings-witness.png" alt-text="cluster Witness screen" lightbox="media/manage-cluster/cluster-settings-witness.png":::
 
@@ -106,7 +100,7 @@ There are several general settings that can be applied to your cluster. Here is 
 
     :::image type="content" source="media/manage-cluster/affinity-rules.png" alt-text="cluster Affinity rules screen" lightbox="media/manage-cluster/affinity-rules.png":::
 
-1. To select how much data to send to Microsoft for diagnostics,, select **Diagnostic data**, then select one of the following:
+1. To select how much data to send to Microsoft for diagnostics, select **Diagnostic data**, then select one of the following:
 
     - **Diagnostic data off (Security)** - no data is sent
     - **Required (Basic)** - minimum data sent to keep things secure and up-to-date
@@ -126,7 +120,7 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
    - **Virtual Machines Path** - specify the default folder for storing the virtual machine configuration files.
 
-   - **Hypervisor Scheduler Type** - select **Core Scheduler** or **Classic Scheduler**. This determines how the hypervisor schedules virtual processes to run on physical processors that use simultaneous multi-threading (also known as SMT or hyper-threading).
+   - **Hypervisor Scheduler Type** - select **Core Scheduler** or **Classic Scheduler**. This determines how the hypervisor schedules virtual processes to run on physical processors that use simultaneous multi-threading (also known as SMT or hyper-threading). Core scheduling is recommended.
 
         :::image type="content" source="media/manage-cluster/cluster-settings-hyperv.png" alt-text="cluster Hyper-V General settings  screen" lightbox="media/manage-cluster/cluster-settings-hyperv.png":::
 
@@ -152,10 +146,42 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
     :::image type="content" source="media/manage-cluster/cluster-settings-sto-migration.png" alt-text="cluster Storage Migration screen" lightbox="media/manage-cluster/cluster-settings-sto-migration.png":::
 
-1. To register or unregister your cluster with Azure, select **Azure Stack HCI registration**. For detailed information on how to do this, see [Connect Azure Stack HCI to Azure](../deploy/register-with-azure.md).
+## Manage cluster resources
 
-    :::image type="content" source="media/manage-cluster/cluster-registration.png" alt-text="cluster Azure Registration screen" lightbox="media/manage-cluster/cluster-registration.png":::
+To start, stop, remove, or to simulate failure of a cluster resource, do the following:
+
+1. Select **Overview**, then under **Cluster resources**, select the resource and select either **Start**, **Stop**, or **Remove**.
+
+    :::image type="content" source="media/manage-cluster/cluster-overview.png" alt-text="validate cluster screen" lightbox="media/manage-cluster/cluster-overview.png":::
+
+1. Select **Simulate failure** to simulate a cluster failure:
+
+    :::image type="content" source="media/manage-cluster/cluster-simulate-failure.png" alt-text="simulate resource failure screen" lightbox="media/manage-cluster/cluster-simulate-failure.png":::
+
+## Validate the cluster
+
+To validate your cluster, select **Overview**, then select **Validate cluster**. For detailed information on cluster validation, see [Connect Azure Stack HCI to Azure](../deploy/validate.md).
+
+:::image type="content" source="media/manage-cluster/validate-cluster.png" alt-text="validate cluster screen" lightbox="media/manage-cluster/validate-cluster.png":::
+
+To view and download cluster validation reports, select **Validation reports**, then select **Download Report**.
+
+:::image type="content" source="media/manage-cluster/validation-reports.png" alt-text="validation reports screen" lightbox="media/manage-cluster/validation-reports.png":::
+
+## Register the cluster with Azure
+
+To register or unregister your cluster with Azure, select **Azure Stack HCI registration**. For detailed information on how to do this, see [Connect Azure Stack HCI to Azure](../deploy/register-with-azure.md).
+
+:::image type="content" source="media/manage-cluster/cluster-registration.png" alt-text="cluster Azure Registration screen" lightbox="media/manage-cluster/cluster-registration.png":::
+
+## Remove the cluster
+
+To remove (destroy) the cluster, select **Overview**, then select **Remove cluster**.
+
+:::image type="content" source="media/manage-cluster/remove-cluster.png" alt-text="remove cluster screen" lightbox="media/manage-cluster/remove-cluster.png":::
 
 ## Next steps
 
 - To monitor your cluster, see [Monitor Azure Stack HCI with Azure Monitor](azure-monitor.md).
+
+- To troubleshoot cluster validation reports, see [Troubleshoot cluster validation reporting](validate-qos.md).
