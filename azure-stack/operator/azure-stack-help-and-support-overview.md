@@ -1,10 +1,10 @@
 ---
 title: Azure Stack Hub help and support
 description: Get support for Microsoft Azure Stack Hub.
-author: justinha
+author: PatAltimore
 ms.topic: article
 ms.date: 02/26/2020
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: shisab
 ms.lastreviewed: 02/26/2020
 
@@ -104,6 +104,6 @@ Select **Help** (question mark) in the upper-right corner of the administrator p
 
 ## Next steps
 
-- Learn about [diagnostic log collection](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002).
+- Learn about [diagnostic log collection](./azure-stack-diagnostic-log-collection-overview.md).
 - Learn how to [find your Cloud ID](azure-stack-find-cloud-id.md).
 - Learn about [troubleshooting Azure Stack Hub](azure-stack-troubleshooting.md).

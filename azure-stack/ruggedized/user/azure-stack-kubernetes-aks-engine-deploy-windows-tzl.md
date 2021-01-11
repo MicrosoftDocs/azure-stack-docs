@@ -1,5 +1,5 @@
 ---
-title: Deploy the AKS engine on Windows in Azure Stack Hub 
+title: Deploy the AKS engine on Windows in Azure Stack Hub - Ruggedized
 description: Learn how to use a Windows machine in your Azure Stack Hub to host the AKS engine in order to deploy and manage a Kubernetes cluster.
 services: azure-stack
 documentationcenter: ''
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2019
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: alfredop
 ms.lastreviewed: 12/20/2019
@@ -23,7 +23,7 @@ ms.lastreviewed: 12/20/2019
 ---
 
 
-# Install the AKS engine on Windows in Azure Stack Hub
+# Install the AKS engine on Windows in Azure Stack Hub - Ruggedized
 
 You can use a Windows machine in your Azure Stack Hub to host the AKS engine in order to deploy and manage a Kubernetes cluster. In this article, you prepare the client VM to manage your cluster for connected and disconnected Azure Stack Hub instances, and verify the installation.
 <!-- TZLASDKFIX2 Line above was previously:

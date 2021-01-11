@@ -24,9 +24,9 @@ For Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacente
 
  - Ensure the user account(s) that adds updates, and manages Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter clusters has the correct permissions in Active Directory. If you are using Organizational Units (OUs) to manage group policies for servers and services, the user account(s) will require list, read, modify, and delete permissions on all objects in the OU. 
 
- - We recommend using a separate OU for the servers and services you add your Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter clusters to. This will allow you to control access and permissions with more granularity.
+ - We recommend using a separate OU for the servers and services to which you add your Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter clusters. Using a separate OU allows you to control access and permissions with more granularity.
 
- - If you are using GPO templates on containers in Active Directory, ensure deploying AKS-HCI is exempt from that policy. Server hardening will be available in a subsequent preview release.
+ - If you are using GPO templates on containers in Active Directory, ensure deploying AKS-HCI is exempt from the policy. Server hardening will be available in a subsequent preview release.
 
 ## Compute requirements
 
@@ -46,31 +46,26 @@ The following requirements apply to an Azure Stack HCI cluster as well as a Wind
 
  - Verify that you have disabled IPv6 on all network adapters. 
 
- - The network must have an available DHCP server to provide TCP/IP addresses to the VMs and VM hosts. The DHCP server should also contain NTP and DNS host information. 
-
- - We also recommend having a DHCP server with a dedicated scope of IPv4 addresses accessible by the Azure Stack HCI cluster. For example, you can reserve 10.0.1.1 for the default gateway, reserve 10.0.1.2 to 10.0.1.102 for Kubernetes services (using -vipPoolStartIp and -vipPoolEndIp in Set-AksHciConfig), and use 10.0.1.103-10.0.1.254 for Kubernetes cluster VMs. 
-
- - For a successful deployment, the Azure Stack HCI cluster nodes and the Kubernetes cluster VMs must have external internet connectivity.
-
- - The IPv4 addresses provided by the DHCP server should be routable and have a 30-day lease expiration to avoid loss of IP connectivity in the event of a VM update or reprovisioning.  
+ - For a successful deployment, the Azure Stack HCI cluster nodes and the Kubernetes cluster VMs must have external Internet connectivity. 
 
  - DNS name resolution is required for all nodes to be able to communicate with each other. For Kubernetes external name resolution, use the DNS servers provided by the DHCP server when the IP address is obtained. For Kubernetes internal name resolution, use the default Kubernetes core DNS-based solution. 
- 
- - For this preview release, we provide only single VLAN support for the entire deployment.
 
- - For this preview release, we have limited proxy support for Kubernetes clusters created through PowerShell.
+ - For this preview release, we provide only single VLAN support for the entire deployment. 
 
+ - For this preview release, we have limited proxy support for Kubernetes clusters created through PowerShell. 
+  
 ### Network port and URL requirements 
 
 When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following firewall ports are automatically opened on each server in the cluster. 
 
 
-| Firewall Port               | Description         | 
+| Firewall port               | Description         | 
 | ---------------------------- | ------------ | 
 | 45000           | wssdagent GPRC   server port           |
 | 45001             | wssdagent GPRC authentication port  | 
 | 55000           | wssdcloudagent GPRC   server port           |
-| 55001             | wssdcloudagent GPRC authentication port  | 
+| 65000             | wssdcloudagent GPRC authentication port  | 
+
 
 
 Firewall URL exceptions are needed for the Windows Admin Center machine and all nodes in the Azure Stack HCI cluster. 
@@ -91,7 +86,7 @@ git://:9418 | 9418 | TCP | Used to support Azure Arc agents
 
 The following storage implementations are supported by Azure Kubernetes Service on Azure Stack HCI: 
 
-|  Name                         | Storage Type | Required Capacity |
+|  Name                         | Storage type | Required capacity |
 | ---------------------------- | ------------ | ----------------- |
 | Azure Stack HCI Cluster          | CSV          | 1 TB              |
 | Windows Server 2019 Datacenter failover cluster          | CSV          | 1 TB              |

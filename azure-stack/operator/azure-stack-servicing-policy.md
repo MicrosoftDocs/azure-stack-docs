@@ -48,9 +48,9 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
-- [Azure Stack Hub 2008 update](/azure-stack/operator/release-notes?view=azs-2008)
-- [Azure Stack Hub 2005 update](/azure-stack/operator/release-notes?view=azs-2005)
-- [Azure Stack Hub 2002 update](/azure-stack/operator/release-notes?view=azs-2002)
+- [Azure Stack Hub 2008 update](/azure-stack/operator/release-notes?view=azs-2008&preserve-view=true)
+- [Azure Stack Hub 2005 update](/azure-stack/operator/release-notes?view=azs-2005&preserve-view=true)
+- [Azure Stack Hub 2002 update](/azure-stack/operator/release-notes?view=azs-2002&preserve-view=true)
 
 ## Hotfixes
 
@@ -62,8 +62,8 @@ Hotfixes are downloaded and installed just like the regular full update packages
 
 For information about currently available hotfixes, see the release notes for that update:
 
-- [Azure Stack Hub 2005 hotfix](/azure-stack/operator/release-notes?view=azs-2005#hotfixes)
-- [Azure Stack Hub 2002 hotfix](/azure-stack/operator/release-notes?view=azs-2002#hotfixes-1)
+- [Azure Stack Hub 2005 hotfix](/azure-stack/operator/release-notes?view=azs-2005&preserve-view=true#hotfixes)
+- [Azure Stack Hub 2002 hotfix](/azure-stack/operator/release-notes?view=azs-2002&preserve-view=true#hotfixes-1)
 
 ## Keep your system under support
 

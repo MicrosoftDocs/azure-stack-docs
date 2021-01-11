@@ -1,8 +1,8 @@
 ---
 title: Azure Stack Hub ruggedized network integration
 description: Learn about Azure Stack network integration for the Azure Stack Hub ruggedized device. 
-author: justinha
-ms.author: justinha
+author: PatAltimore
+ms.author: patricka
 ms.service: azure-stack
 ms.topic: conceptual
 ms.date: 10/14/2020

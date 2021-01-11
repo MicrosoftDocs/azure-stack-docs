@@ -4,7 +4,7 @@ description: Learn how to deploy Kubernetes to use containers with Azure Stack H
 author: mattbriggs
 
 ms.topic: article
-ms.date: 5/27/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 06/18/2019

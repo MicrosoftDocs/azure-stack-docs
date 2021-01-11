@@ -4,7 +4,7 @@ description: Learn how to use the privileged endpoint (PEP) in Azure Stack Hub a
 author: mattbriggs
 
 ms.topic: article
-ms.date: 04/28/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/28/2020
@@ -254,5 +254,5 @@ The response token is then encrypted with the self-signed certificate contained 
 
 ## Next steps
 
-- [Azure Stack Hub diagnostic tools](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002)
+- [Azure Stack Hub diagnostic tools](./azure-stack-diagnostic-log-collection-overview.md)
 - [Azure Stack Hub privileged endpoint reference](../reference/pep-2002/index.md)

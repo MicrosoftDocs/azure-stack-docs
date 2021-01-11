@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Windows Server related FAQs | Microsoft Docs
-description: List of Azure Stack Marketplace FAQs for Windows Server
+title: Azure Stack Windows Server related FAQs - MDC | Microsoft Docs
+description: Read a list of Azure Stack Marketplace FAQs for Windows Server when operated by a Modular Data Center (MDC).
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -19,7 +19,7 @@ ms.lastreviewed: 10/26/2020
 
 ---
 
-# Windows Server in Azure Stack marketplace FAQ
+# Windows Server in Azure Stack marketplace FAQ - Modular Data Center (MDC)
 
 This article answers some frequently asked questions about Windows Server images in the [Azure Stack Hub marketplace](../../operator/azure-stack-marketplace.md).
 

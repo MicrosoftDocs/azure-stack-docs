@@ -1,11 +1,11 @@
 ---
-title: Azure Stack Hub administration basics
+title: Azure Stack Hub administration basics - Ruggedized
 titleSuffix: Azure Stack Hub
 description: Learn the basics to Azure Stack Hub administration.
-author: justinha
+author: PatAltimore
 ms.topic: article
 ms.date: 06/16/2020
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 06/16/2020
 
@@ -14,7 +14,7 @@ ms.lastreviewed: 06/16/2020
 
 ---
 
-# Azure Stack Hub administration basics
+# Azure Stack Hub administration basics - Ruggedized
 
 If you're new to Azure Stack Hub administration, there are several things you need to know. This article provides an overview of your role as an Azure Stack Hub operator and what you need to tell your users to help them become productive.
 

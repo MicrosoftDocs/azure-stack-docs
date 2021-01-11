@@ -42,6 +42,10 @@
     items:
     - name: Create a cluster with PowerShell
       href: deploy/create-cluster-powershell.md
+  - name: Deploy workloads
+    items:
+    - name: Deploy trusted enterprise virtualization
+      href: deploy/deploy-trusted-enterprise-virtualization.md
 - name: Manage
   items:
   - name: Manage VMs
@@ -222,11 +226,13 @@
   items:
   - name: Azure Stack HCI product page
     href: https://azure.com/hci
-  - name: Azure Stack HCI Eval Guide
+  - name: Evaluation Guide
     href: https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md
-  - name: Azure Stack HCI pricing
+  - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
-  - name: Azure Stack HCI support
+  - name: Support
     href: manage/get-support.md
-  - name: Azure Stack HCI archived release notes
+  - name: Training
+    href: /learn/paths/azure-stack-hci-foundations/
+  - name: Archived release notes
     href: preview-release-notes.md
