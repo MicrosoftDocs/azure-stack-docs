@@ -119,7 +119,7 @@ As an Azure Stack Hub operator, you can remove the guest directory at any point,
 
 2. Check the box next to the directory **adatum.onmicrosoft.com** and select **Remove**.
 
-   [![Remove](./media/azure-stack-enable-multitenancy/directory-list-2.png)](./media/azure-stack-enable-multitenancy/directory-list-2-expanded.png#lightbox)
+   ![Remove](./media/azure-stack-enable-multitenancy/directory-list-2.png)
 
 3. Confirm the delete action by typing **yes** and selecting **Remove**.
 
