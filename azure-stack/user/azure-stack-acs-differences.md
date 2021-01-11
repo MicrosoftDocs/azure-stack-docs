@@ -43,7 +43,7 @@ This article summarizes the known Azure Stack Hub Storage differences from Azure
 |Table partition key and row key size|1,024 characters (2,048 bytes).|400 characters (800 bytes).
 |Blob snapshot|The max number of snapshots of one blob isn't limited.|The max number of snapshots of one blob is 1,000.
 |Azure AD Authentication for storage|In preview. |Not yet supported.
-|Immutable Blobs|General available. |Not yet supported.
+|Immutable Blobs|General available. |Supported when you use version 2008 or later.
 |Firewall and virtual network rules for storage|General available. |Not yet supported.|
 
 There are also differences with storage metrics:
