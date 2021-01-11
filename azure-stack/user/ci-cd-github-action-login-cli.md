@@ -206,17 +206,6 @@ The instructions in this article do not require access to the Azure Stack Hub to
     ```
 
 3. If you need your runner to connect to your Azure Stack Hub instance, you can use PowerShell. You can find the instructions in the article [Connect to Azure Stack Hub with PowerShell](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-configure-admin?&tabs=az1%2Caz2%2Caz3).
-### Manual steps for installing PowerShell resources
-
-This section contains the steps you can use to install Azure Stack Hub PowerShell resources on the computer you will use as your self-hosted runner. You can use the instructions in this section to set up a connection from your self-hosted runner to your Azure Stack Hub instance if it is not accessible through the open web.
-
-1. Add a self-hosted runner to your GitHub repository. 
-
-1. PowerShell Core 6.x or later version is needed. For instructions, see [Installing PowerShell on Windows](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows).
-1. Configure your runner to run Azure Stack Hub PowerShell. You can find instructions on installing PowerShell for Azure Stack Hub [Install PowerShell Az module for Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/powershell-install-az-module).
-1. You may need the Azure Stack Hub tools on your runner. You can find instructions for installing the Azure Stack Hub PowerShell tools for the Az modules [Download Azure Stack Hub tools from GitHub](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-download?&tabs=az)
-
-
 ## Add the workflow to your repository
 
 Create a new workflow using the yaml in this section to create your workflow.
@@ -274,10 +263,12 @@ Create a new workflow using the yaml in this section to create your workflow.
 When the action runs, verify that it has run successfully.
 
 1. Open your GitHub repository.
-1. Select Actions.
-1. Select the name of the commit under All workflows.
+1. Select **Actions**.
+1. Select the name of the commit under **All workflows**.
+
     ![Review commit summary](.\media\ci-cd-github-action-login-cli\github-actions-review-log-summary.png)
 1. Select the name of the job, **azurestack-test**.
+
     ![Review commit detail](.\media\ci-cd-github-action-login-cli\github-action-success-screen.png)
 1. Expand the sections to review the return values for your PowerShell and CLI commands.
 
