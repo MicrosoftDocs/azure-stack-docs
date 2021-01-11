@@ -137,7 +137,7 @@ For instructions on setting up, configuring, and connecting your self-hosted run
 
 ![Self hosted runner connected](.\media\ci-cd-github-action-login-cli\github-actions-self-hosted-runner.png)
 
-Make a note of your hosted runner's name.
+Make a note of your self-hosted runner's name and tags. The workflow in this article will call it using the tag `self-hosted`.
 
 ## Create your VM and install prerequisites
 
@@ -272,10 +272,16 @@ When the action runs, verify that it has run successfully.
     ![Review commit detail](.\media\ci-cd-github-action-login-cli\github-action-success-screen.png)
 1. Expand the sections to review the return values for your PowerShell and CLI commands.
 
-You can find more Azure Stack Hub actions in the GitHub actions marketplace.
+Notes on the workflow file and the action:
+- The workflow contains a single job named `azurestack-test`.
+- The workflow contains three actions.
+- The first action calls the Azure Login action. With GitHub Actions for Azure you can create workflows that you can set up in your repository to build, test, package, release, and deploy to Azure. This action uses your Azure Stack service principle credentials to connect and open a session to your Azure Stack Hub environment. You can find more information about using the action in GitHub, [Azure Login Action](https://github.com/marketplace/actions/azure-login).
+- The second action uses Azure PowerShell. The action uses the Az PowerShell modules and works with both Government and Azure Stack Hub clouds. After you run this workflow, review the job to validate that the script has collected the resource groups in your Azure Stack Hub environment. For more information, see [Azure PowerShell Action](https://github.com/marketplace/actions/azure-powershell-action)
+- The third action, uses Azure CLI connected to your Azure Stack Hub to collect resource groups. For more information, see [Azure CLI Action](https://github.com/marketplace/actions/azure-cli-action).
 
 ## Next steps
 
+- Find more actions in the [GitHub Marketplace](https://github.com/marketplace).
 - Learn about [Common deployments for Azure Stack Hub](azure-stack-dev-start-deploy-app.md)  
 - Learn about [Use Azure Resource Manager templates in Azure Stack Hub](azure-stack-arm-templates.md)  
 - Review the DevOps hybrid cloud pattern, [DevOps pattern](https://docs.microsoft.com/hybrid/app-solutions/pattern-cicd-pipeline)
