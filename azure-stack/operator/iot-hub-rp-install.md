@@ -100,7 +100,7 @@ From the **Marketplace management** page, follow these steps to install the IoT 
 
 The IoT Hub resource provider is installed successfully! To get started, complete the following steps:
 
-1. If necessary, follow the instruction to [create a plan, offers, and subscription](azure-stack-plan-offer-quota-overview.md).
+1. If necessary, follow the instruction to [create a plan, offers, and subscription](./service-plan-offer-subscription-overview.md).
 
 2. If a subscription already exists, update the associated offer/plan to include **Microsoft.Devices** service. Go to **Plan** -> **Choose the plan to update** -> **Add Service and quota**.
 
