@@ -35,7 +35,7 @@ To view this information, select the cluster name under **All connections**, the
 
 ## View cluster resources
 
-The cluster overview page displays information on cluster resources such as servers, infrastructure, and quorum witness.
+The cluster Overview page displays information on cluster resources such as servers, infrastructure, and quorum witness.
 
 :::image type="content" source="media/manage-cluster/cluster-overview.png" alt-text="Cluster Overview screen" lightbox="media/manage-cluster/cluster-overview.png":::
 
