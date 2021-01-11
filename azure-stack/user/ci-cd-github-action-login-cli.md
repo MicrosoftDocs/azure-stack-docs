@@ -127,18 +127,6 @@ You can use GitHub secrets to encrypt sensitive information to use in your actio
 1. Paste the JSON object that represents your SPN.
 1. Select **Add secret**.
 
-## Create a self-hosted runner
-
-You can set up a self-hosted runner in the GitHub Docs. A self-hosted runner can run on any machine that can connect to GitHub. You may choose to use a self-hosted runner if you have an automation task in your workflow that requires extensive dependencies, specific licensing requirements such as a USB dongle for a software license, or other machine or software-specific needs. Your machine can be a physical machine, a VM, a container and located in your data center or in the cloud.
-
-In this article, we are going to use a Windows VM hosted in Azure that will be configured with Azure Stack Hub specific PowerShell requirements.
-
-For instructions on setting up, configuring, and connecting your self-hosted runner to your repository, see the GitHub Docs, "[About self-hosted runners](https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners)". Once you have your runner added to your repository, you can find instructions on adding the runner as an action in your workflow.
-
-![Self hosted runner connected](.\media\ci-cd-github-action-login-cli\github-actions-self-hosted-runner.png)
-
-Make a note of your self-hosted runner's name and tags. The workflow in this article will call it using the tag `self-hosted`.
-
 ## Create your VM and install prerequisites
 
 1. Create your self-hosted runner. The runner can be any computer that can be reached by GitHub. You can create you are a VM as your runner in Azure, in Azure Stack Hub, or elsewhere. These instructions create a runner as a Windows VM in Azure. If you need to connect to your Azure Stack Hub hosted in a datacenter, you may require a VPN connection. You can find instructions on enabling the connection in the section [Install Azure Stack Hub Tools on your custom runner][#stall-azure-stack-hub-tools-on-your-custom-runner] that may require a VPN connection.
@@ -206,6 +194,19 @@ The instructions in this article do not require access to the Azure Stack Hub to
     ```
 
 3. If you need your runner to connect to your Azure Stack Hub instance, you can use PowerShell. You can find the instructions in the article [Connect to Azure Stack Hub with PowerShell](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-configure-admin?&tabs=az1%2Caz2%2Caz3).
+
+## Create a self-hosted runner
+
+You can set up a self-hosted runner in the GitHub Docs. A self-hosted runner can run on any machine that can connect to GitHub. You may choose to use a self-hosted runner if you have an automation task in your workflow that requires extensive dependencies, specific licensing requirements such as a USB dongle for a software license, or other machine or software-specific needs. Your machine can be a physical machine, a VM, a container and located in your data center or in the cloud.
+
+In this article, we are going to use a Windows VM hosted in Azure that will be configured with Azure Stack Hub specific PowerShell requirements.
+
+For instructions on setting up, configuring, and connecting your self-hosted runner to your repository, see the GitHub Docs, "[About self-hosted runners](https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners)". Once you have your runner added to your repository, you can find instructions on adding the runner as an action in your workflow.
+
+![Self hosted runner connected](.\media\ci-cd-github-action-login-cli\github-actions-self-hosted-runner.png)
+
+Make a note of your self-hosted runner's name and tags. The workflow in this article will call it using the tag `self-hosted`.
+
 ## Add the workflow to your repository
 
 Create a new workflow using the yaml in this section to create your workflow.
