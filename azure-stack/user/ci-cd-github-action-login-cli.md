@@ -8,7 +8,7 @@ ms.author: mabrigg
 ms.reviewer: gara
 ms.lastreviewed: 1/11/2021
 
-# Intent: As a developer, I want create a continuous integration, continuous deployment workflow on Azure Stack Hub so that I can easily validate, integrate, and publish my solution on Azure Stack Hub.
+# Intent: As a developer, I want to create a continuous integration, continuous deployment workflow on Azure Stack Hub so I can easily validate, integrate, and publish my solution on Azure Stack Hub.
 # Keyword: GitHub Action Azure Stack Hub login
 
 ---
@@ -17,7 +17,7 @@ ms.lastreviewed: 1/11/2021
 
 You can set up a GitHub Action to sign in to your Azure Stack Hub instance, run PowerShell, and then run a CLI script. This can enable you to create a continuous integration, continuous deployment (CI/CD) workflow for your solution with Azure Stack Hub
 
-GitHub Actions are workflows composed of actions that enable automation right inside of your code repository. The workflows are triggered in your repository. You can perform common DevOps automation tasks such as testing, deployment, and continuous integration. To use GitHub Actions with Azure Stack Hub, you must use a service principle with specific requirements. 
+GitHub Actions are workflows composed of actions that enable automation right inside of your code repository. You can trigger the workflows in your repository. You can perform common DevOps automation tasks such as testing, deployment, and continuous integration. To use GitHub Actions with Azure Stack Hub, you must use a service principle with specific requirements. 
 
 This example workflow includes:
 - Instructions on creating and validating your service principle.
@@ -43,7 +43,7 @@ A limitation of using GitHub actions with Azure Stack Hub is that the process re
 
 A service principle provides role-based credentials so that processes outside of Azure can connect to and interact with resources. You will need an SPN with contributor access and the attributes specified in these instructions to use with your GitHub action.
 
-As a user of Azure Stack Hub you do not have the permission to create the SPN. You will need to request this principle from your Cloud Operator. The instructions are being provided here so that you can create the SPN if you are a cloud operator, or you can validate the SPN if you are a developer using an SPN in your workflow provided by a cloud operator.
+As a user of Azure Stack Hub you do not have the permission to create the SPN. You will need to request this principle from your Cloud Operator. The instructions are being provided here so you can create the SPN if you are a cloud operator, or you can validate the SPN if you are a developer using an SPN in your workflow provided by a cloud operator.
 
 The cloud operator will need to create the SPN using Azure CLI.
 
@@ -57,7 +57,7 @@ The following code snippets are written for a Windows machine using the PowerShe
     suffix-storage-endpoint | "orlando.azurestack.corp.microsoft.com"  | The endpoint suffix for storage accounts. |
     suffix-keyvault-dns | ".vault.orlando.azurestack.corp.microsoft.com"  | The Key Vault service dns suffix. |
     endpoint-active-directory-graph-resource-id | "https://graph.windows.net/"  | The Active Directory resource ID. |
-    endpoint-sql-management | https://notsupported  | The sql server management endpoint. This must be set to `https://notsupported` |
+    endpoint-sql-management | https://notsupported  | The sql server management endpoint. Set this to `https://notsupported` |
     profile | 2019-03-01-hybrid | Profile to use for this cloud. |
 
 2. Open your command-line tool such as Windows PowerShell or Bash and sign in. Use the following command:
@@ -111,7 +111,7 @@ The following code snippets are written for a Windows machine using the PowerShe
 You can use GitHub secrets to encrypt sensitive information to use in your actions. You will create a secret to contain your SPN so that the action can sign in to your Azure Stack Hub instance.
 
 > [!WARNING]  
-> GitHub recommends that you don't use self-hosted runners with public repositories Forks of your public repository can potentially run dangerous code on your self-hosted runner machine by creating a pull request that executes the code in a workflow. For more information, see "[About self-hosted runners](https://docs.github.com/en/free-pro-team@latest/github/automating-your-workflow-with-github-actions/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories)."
+> GitHub recommends that you don't use self-hosted runners with public repositories Forks of your public repository might run dangerous code on your self-hosted runner machine by creating a pull request that executes the code in a workflow. For more information, see "[About self-hosted runners](https://docs.github.com/en/free-pro-team@latest/github/automating-your-workflow-with-github-actions/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories)."
 
 1. Open or create a GitHub repository. If you need guidance on creating a repository in GitHub, you can find [instructions in the GitHub docs](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/create-a-repo).
 1. Set your repository to private.
@@ -129,15 +129,15 @@ You can use GitHub secrets to encrypt sensitive information to use in your actio
 
 ## Create a self-hosted runner
 
-You can set up a self-hosted runner in the GitHub Docs. A self-hosted runner can be run on any machine that can connect to GitHub. You may choose to use a self-hosted runner if you have an automation task in your workflow that requires extensive dependencies, specific licensing requirements such as a USB dongle for a software license, or other machine or software-specific needs. Your machine can be a physical machine, a VM, a container and located in your data center or in the cloud.
+You can set up a self-hosted runner in the GitHub Docs. A self-hosted runner can run on any machine that can connect to GitHub. You may choose to use a self-hosted runner if you have an automation task in your workflow that requires extensive dependencies, specific licensing requirements such as a USB dongle for a software license, or other machine or software-specific needs. Your machine can be a physical machine, a VM, a container and located in your data center or in the cloud.
 
 In this article, we are going to use a Windows VM hosted in Azure that will be configured with Azure Stack Hub specific PowerShell requirements.
 
-For instructions on setting up, configuring, and connecting your self-hosted runner to your repository, see the GitHub Docs, "[About self-hosted runners](https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners)". Once your have your runner added to your repository, you can find instructions on adding the runner as an action in your workflow.
+For instructions on setting up, configuring, and connecting your self-hosted runner to your repository, see the GitHub Docs, "[About self-hosted runners](https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners)". Once you have your runner added to your repository, you can find instructions on adding the runner as an action in your workflow.
 
 ![Self hosted runner connected](.\media\ci-cd-github-action-login-cli\github-actions-self-hosted-runner.png)
 
-Make a note of yourself hosted runner's name.
+Make a note of your hosted runner's name.
 
 ## Create your VM and install prerequisites
 
