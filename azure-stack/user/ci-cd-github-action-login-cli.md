@@ -110,7 +110,7 @@ The following code snippets are written for a Windows machine using the PowerShe
 
 You can use GitHub secrets to encrypt sensitive information to use in your actions. You will create a secret to contain your SPN so that the action can sign in to your Azure Stack Hub instance.
 
-> [!Warning]  GitHub recommends that you don't use self-hosted runners with public repositories Forks of your public repository can potentially run dangerous code on your self-hosted runner machine by creating a pull request that executes the code in a workflow. For more information, see "[About self-hosted runners](https://docs.github.com/en/free-pro-team@latest/github/automating-your-workflow-with-github-actions/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories)."
+> ![Warning]  GitHub recommends that you don't use self-hosted runners with public repositories Forks of your public repository can potentially run dangerous code on your self-hosted runner machine by creating a pull request that executes the code in a workflow. For more information, see "[About self-hosted runners](https://docs.github.com/en/free-pro-team@latest/github/automating-your-workflow-with-github-actions/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories)."
 
 1. Open or create a GitHub repository. If you need guidance on creating a repository in GitHub, you can find [instructions in the GitHub docs](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/create-a-repo).
 1. Set your repository to private.
@@ -277,7 +277,7 @@ When the action runs, verify that it has run successfully.
 1. Select the name of the commit under All workflows.
     ![Review commit summary](.\media\ci-cd-github-action-login-cli\github-actions-review-log-summary.png)
 1. Select the name of the job, **azurestack-test**.
-    ![Review commit summary](.\media\ci-cd-github-action-login-cli\github-action-success-screen.png)
+    ![Review commit detail](.\media\ci-cd-github-action-login-cli\github-action-success-screen.png)
 1. Expand the sections to review the return values for your PowerShell and CLI commands.
 
 You can find more Azure Stack Hub actions in the GitHub actions marketplace.
@@ -285,5 +285,5 @@ You can find more Azure Stack Hub actions in the GitHub actions marketplace.
 ## Next steps
 
 - Learn about [Common deployments for Azure Stack Hub](azure-stack-dev-start-deploy-app.md)  
-- Learn about [Use Azure Resource Manager templates in Azure Stack Hub](azure-stack-arm-template.md)  
+- Learn about [Use Azure Resource Manager templates in Azure Stack Hub](azure-stack-arm-templates.md)  
 - Review the DevOps hybrid cloud pattern, [DevOps pattern](https://docs.microsoft.com/hybrid/app-solutions/pattern-cicd-pipeline)
