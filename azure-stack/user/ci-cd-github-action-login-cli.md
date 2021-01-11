@@ -71,9 +71,9 @@ The following code snippets are written for a Windows machine using the PowerShe
     ```azurecli  
     az cloud register `
         -n "AzureStackUser" `
-        --endpoint-resource-manager "https://management.orlando.azurestack.corp.microsoft.com" `
-        --suffix-storage-endpoint "orlando.azurestack.corp.microsoft.com" `
-        --suffix-keyvault-dns ".vault.orlando.azurestack.corp.microsoft.com" `
+        --endpoint-resource-manager "https://management.<local>.<FQDN>" `
+        --suffix-storage-endpoint ".<local>.<FQDN>" `
+        --suffix-keyvault-dns ".vault..<local>.<FQDN>" `
         --endpoint-active-directory-graph-resource-id "https://graph.windows.net/" `
         --endpoint-sql-management https://notsupported  `
         --profile 2019-03-01-hybrid
@@ -110,7 +110,8 @@ The following code snippets are written for a Windows machine using the PowerShe
 
 You can use GitHub secrets to encrypt sensitive information to use in your actions. You will create a secret to contain your SPN so that the action can sign in to your Azure Stack Hub instance.
 
-> ![Warning]  GitHub recommends that you don't use self-hosted runners with public repositories Forks of your public repository can potentially run dangerous code on your self-hosted runner machine by creating a pull request that executes the code in a workflow. For more information, see "[About self-hosted runners](https://docs.github.com/en/free-pro-team@latest/github/automating-your-workflow-with-github-actions/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories)."
+> [!WARNING]  
+> GitHub recommends that you don't use self-hosted runners with public repositories Forks of your public repository can potentially run dangerous code on your self-hosted runner machine by creating a pull request that executes the code in a workflow. For more information, see "[About self-hosted runners](https://docs.github.com/en/free-pro-team@latest/github/automating-your-workflow-with-github-actions/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories)."
 
 1. Open or create a GitHub repository. If you need guidance on creating a repository in GitHub, you can find [instructions in the GitHub docs](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/create-a-repo).
 1. Set your repository to private.
