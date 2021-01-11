@@ -124,7 +124,7 @@ Configure your deployment with the following command.
                     [-vipPoolEndIp <String>]
                     [-macPoolStart <String>]
                     [-macPoolEnd <String>]
-                    [-vlandID <int>]
+                    [-vlanID <int>]
                     [-kvaLoadBalancerType {unstacked_haproxy, stacked_kube_vip}]
                     [-kvaControlPlaneEndpoint <String>]
                     [-proxyServerHTTP <String>]
@@ -218,7 +218,7 @@ This is used to specify the start of the MAC address of the MAC pool that you wi
 
 This is used to specify the end of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (that is, 00, 02, 04, 06...). The first byte of the address passed as the `-macPoolEnd` should be the same as the first byte of the address passed as the `-macPoolStart`. Use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. This is useful if you have a requirement that the VMs have specific MAC addresses. Default is none.
 
-`-vlandID`
+`-vlanID`
 
 This can be used to specify a network VLAN ID. Azure Kubernetes Service host and Kubernetes cluster VM network adapters will be tagged with the provided VLAN ID. This should be used if there is a specific VLAN ID that needs to be tagged to get the right connectivity. Default is none.
 

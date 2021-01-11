@@ -182,6 +182,8 @@ Azure Stack Hub has multiple ways to collect, save, and send diagnostic logs to 
 
 ::: moniker-end
 
+::: moniker range="< azs-2008"
+
 Starting from version 1.1.93, MySQL Resource Provider supports the standard way of collecting logs from you Azure Stack Hub environment. If you are using an older version, it is recommended to update your MySQL Resource Provider to the latest version.
 
 To collect logs from the locked down VM, use the PowerShell Just Enough Administration (JEA) endpoint DBAdapterDiagnostics. This endpoint provides the following commands:
@@ -235,6 +237,8 @@ $cleanup = Invoke-Command -Session $session -ScriptBlock {Remove-AzsDBAdapterLog
 $session | Remove-PSSession
 
 ```
+
+::: moniker-end
 
 ## Configure Azure Diagnostics extension for MySQL resource provider
 
