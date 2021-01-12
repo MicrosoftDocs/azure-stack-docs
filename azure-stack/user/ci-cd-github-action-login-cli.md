@@ -77,7 +77,7 @@ The following code snippets are written for a Windows machine using the PowerShe
         -n "AzureStackUser" `
         --endpoint-resource-manager "https://management.<local>.<FQDN>" `
         --suffix-storage-endpoint ".<local>.<FQDN>" `
-        --suffix-keyvault-dns ".vault..<local>.<FQDN>" `
+        --suffix-keyvault-dns ".vault.<local>.<FQDN>" `
         --endpoint-active-directory-graph-resource-id "https://graph.windows.net/" `
         --endpoint-sql-management https://notsupported  `
         --profile 2019-03-01-hybrid
