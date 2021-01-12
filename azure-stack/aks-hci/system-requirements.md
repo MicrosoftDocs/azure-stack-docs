@@ -46,9 +46,9 @@ The following requirements apply to an Azure Stack HCI cluster as well as a Wind
 
  - Verify that you have disabled IPv6 on all network adapters. 
 
- - For a successful deployment, the Azure Stack HCI cluster nodes and the Kubernetes cluster VMs must have external Internet connectivity. 
- 
- - Make sure all subnets that you define for the cluster are routable with each other and to the Internet.
+ - For a successful deployment, the Azure Stack HCI cluster nodes and the Kubernetes cluster VMs must have external Internet connectivity.
+  
+ - Make sure that there is network connectivity between Azure Stack HCI hosts and the tenant VMs.
 
  - DNS name resolution is required for all nodes to be able to communicate with each other. For Kubernetes external name resolution, use the DNS servers provided by the DHCP server when the IP address is obtained. For Kubernetes internal name resolution, use the default Kubernetes core DNS-based solution. 
 
@@ -58,13 +58,13 @@ The following requirements apply to an Azure Stack HCI cluster as well as a Wind
  
 ### IP address assignment  
  
-There are two options for assigning IP addresses in an Azure Stack HCI cluster: an automatic DHCP assignment or a combination of DHCP and static IP assignments. For both options, it's recommended that you configure three to five highly available control plane nodes. In addition, each option has it's own set of requirements. 
+As part of a successful AKS on Azure Stack HCI deployment, we recommend that you configure a virtual IP pool range with your DHCP server. It is also recommended that you configure three to five highly available control plane nodes for all your workload clusters. 
 
 > [!NOTE]
-> Using static IP address assignments alone is not supported. You must use either DHCP or a combination of DHCP and static IP address assignments.
+> Using static IP address assignments alone is not supported. You must configure a DHCP server as part of this preview release.
 
-#### Use DHCP
-If you are planning to use DHCP for assigning IP addresses throughout the cluster, follow these requirements:  
+#### DHCP
+Follow these requirements while using DHCP for assigning IP addresses throughout the cluster:  
 
  - The network must have an available DHCP server to provide TCP/IP addresses to the VMs and the VM hosts. The DHCP server should also contain network time protocol (NTP) and DNS host information. 
 
@@ -72,55 +72,42 @@ If you are planning to use DHCP for assigning IP addresses throughout the cluste
  
  - The IPv4 addresses provided by the DHCP server should be routable and have a 30-day lease expiration to avoid loss of IP connectivity in the event of a VM update or reprovisioning.  
 
-At a minimum, you should reserve the following number of DHCP addresses in each pool range: 
+At a minimum, you should reserve the following number of DHCP addresses:
 
-- **IP pool range**: We recommend having 16 or more IP addresses in the range. There's a minimum requirement of three IP addresses in the range to allow for multiple control plane nodes in each cluster. When setting up the management cluster, use the `-vipPoolStartIp` and `-vipPoolEndIp` parameters in `Set-AksHciConfig` to reserve IP addresses from the DHCP IP pool for Kubernetes services.
+- One IP address per cluster (workload, AKS Host), and one IP address per Kubernetes service.
 
-- **MAC pool range**: We recommend having 16 or more MAC addresses in the range to allow for multiple control plane nodes in each cluster. When setting up the management cluster, use the `-macPoolStart` and `-macPoolEnd` parameters in `Set-AksHciConfig` to reserve MAC addresses from the DHCP MAC pool for Kubernetes services.
-
-Every management cluster and workload cluster has an API server and a load balancer, both of which require an IP address. DHCP automatically assigns the IP address to the load balancer, and the API server is assigned an IP address from the address pool.
-
-- **Management cluster**: DHCP automatically assigns an IP address for each management node VM. 
-
-- **Workload cluster**: For each control plane node, DHCP automatically assigns an IP address for each control plane node. If you have multiple control plane nodes, you need to allow for additional IP addresses for them. For each worker node in the cluster, DHCP automatically assigns the IP address.   
-
-You can see how the number of required IP addresses is variable depending on the number of workload (target) clusters and control plane and worker nodes you have in your environment.  
+You can see how the number of required IP addresses is variable depending on the number of workload clusters and control plane and worker nodes you have in your environment. We recommend reserving 256 IP addresses (/24 subnet) in your DHCP IP pool.
   
     
-#### Use DHCP with static IP 
+#### VIP Pool Range
 
-If you're planning to use a combination of DHCP and static IP assignments, ensure that the available ranges contain these minimum number of IP addresses:  
+Virtual IP (VIP) pools are strongly recommended for an AKS on Azure Stack HCI deployment. VIP pools are a range of reserved static IP addresses that are used for long-lived deployments to guarantee that your deployment and application workloads are always reachable. We currently only support IPv4 addresses, so you must verify that you have disabled IPv6 on all network adapters. Make sure your virtual IP addresses are not a part of the DHCP IP reserve.
 
-- **IP pool range**: We recommend having 32 or more IP addresses in the range. There's a minimum requirement of 12 IP addresses in the range to allow for multiple control plane nodes in each cluster.  
+At a minimum, you should reserve the following number of IP addresses in your VIP pool:
+//AKS Host - 1 per node and 2 for update (total 3)
+//Workload - 1 per node (control, worker), 5 for update (2 for control plane, 3 for worker), 1 for lb  
 
-- **MAC pool range**: We recommend having a minimum of 16 MAC addresses in the range to allow for multiple control plane nodes in each cluster.
+| Cluster type  | Control plane node | Worker node | Update | Load balancer  |
+| ------------- | ------------------ | ---------- | ----------| -------------|
+| AKS Host |  1  |  0  |  2  |  0  |
+| Workload cluster  |  1 per node  | 1 per node |  5  |  1  |
 
-In addition, you must configure the following:
+You can see how the number of required IP addresses in the VIP pool range varies depending on the number of workload clusters and control plane and worker nodes you have in your environment. We recommend reserving 16 static IP addresses per workload cluster in addition to the 3 IP addresses for your AKS host.
 
-- **Subnet CIDR range prefix**: To provide the range prefix, use `-cloudServiceCidr` in `Set-AksHciConfig`.   
 
-- **Gateway**: Provide one IP address for the gateway.
-
-- **DNS servers**: Provide up to three IP addresses for the servers.
-
-For using DHCP and static IPs, follow the requirements below:
-
-**Management cluster**: Since the number of control plane nodes in the cluster equals the number of VMs, depending on the number of control plane nodes you have, you'll need to allow for one IP address for each VM. You'll also need to have two additional IP addresses for the API server and the load balancer. For example, if you have three control plane nodes in the cluster, you'll need a total of five IP addresses. 
-
-**Workload cluster**: Depending on the number of workload clusters you have, you may have multiple control plane nodes and worker nodes in each cluster that need IP addresses. You'll also need to have two additional IP addresses for the API server and the load balancer VM. For example, if you have two target clusters, and cluster A has three control plane nodes and two worker nodes, and cluster B has one control plane node and five worker nodes, then the total number of IP addresses needed is 20.
+#### MAC Pool Range
+We recommend having a minimum of 16 MAC addresses in the range to allow for multiple control plane nodes in each cluster.
   
 ### Network port and URL requirements 
 
 When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following firewall ports are automatically opened on each server in the cluster. 
 
 
-| Firewall port               | Description         | 
+| Firewall port               | Description     | 
 | ---------------------------- | ------------ | 
-| 6443           | Used to ensure that a physical host can reach the VM  |
-| 45000           | wssdagent GPRC   server port           |
+| 45000           | wssdagent GPRC   server port     |
 | 45001             | wssdagent GPRC authentication port  | 
-| 46000           | Used to ensure that a physical host can reach the VM  |
-| 55000           | wssdcloudagent GPRC   server port           |
+| 55000           | wssdcloudagent GPRC   server port      |
 | 65000            | wssdcloudagent GPRC authentication port  | 
 
 
