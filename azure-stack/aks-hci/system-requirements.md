@@ -81,19 +81,16 @@ You can see how the number of required IP addresses is variable depending on the
     
 #### VIP Pool Range
 
-Virtual IP (VIP) pools are strongly recommended for an AKS on Azure Stack HCI deployment. VIP pools are a range of reserved static IP addresses that are used for long-lived deployments to guarantee that your deployment and application workloads are always reachable. We currently only support IPv4 addresses, so you must verify that you have disabled IPv6 on all network adapters. Make sure your virtual IP addresses are not a part of the DHCP IP reserve.
+Virtual IP (VIP) pools are strongly recommended for an AKS on Azure Stack HCI deployment. VIP pools are a range of reserved static IP addresses that are used for long-lived deployments to guarantee that your deployment and application workloads are always reachable. Currently, we only support IPv4 addresses, so you must verify that you have disabled IPv6 on all network adapters. Make sure your virtual IP addresses are not a part of the DHCP IP reserve.
 
 At a minimum, you should reserve the following number of IP addresses in your VIP pool:
-//AKS Host - 1 per node and 2 for update (total 3)
-//Workload - 1 per node (control, worker), 5 for update (2 for control plane, 3 for worker), 1 for lb  
 
 | Cluster type  | Control plane node | Worker node | Update | Load balancer  |
 | ------------- | ------------------ | ---------- | ----------| -------------|
 | AKS Host |  1  |  0  |  2  |  0  |
 | Workload cluster  |  1 per node  | 1 per node |  5  |  1  |
 
-You can see how the number of required IP addresses in the VIP pool range varies depending on the number of workload clusters and control plane and worker nodes you have in your environment. We recommend reserving 16 static IP addresses per workload cluster in addition to the 3 IP addresses for your AKS host.
-
+You can see how the number of required IP addresses in the VIP pool range varies depending on the number of workload clusters and control plane and worker nodes you have in your environment. We recommend reserving 16 static IP addresses per workload cluster in addition to the 3 IP addresses for your AKS host.  
 
 #### MAC Pool Range
 We recommend having a minimum of 16 MAC addresses in the range to allow for multiple control plane nodes in each cluster.
