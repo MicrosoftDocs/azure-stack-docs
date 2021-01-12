@@ -66,9 +66,9 @@ As part of a successful AKS on Azure Stack HCI deployment, we recommend that you
 #### DHCP
 Follow these requirements while using DHCP for assigning IP addresses throughout the cluster:  
 
- - The network must have an available DHCP server to provide TCP/IP addresses to the VMs and the VM hosts. The DHCP server should also contain network time protocol (NTP) and DNS host information. 
-
- - A DHCP server with a dedicated scope of IPv4 addresses accessible by the Azure Stack HCI cluster. For example, you can reserve 10.0.1.1 for the default gateway, reserve 10.0.1.2 to 10.0.1.102 for Kubernetes services, and use 10.0.1.103-10.0.1.254 for Kubernetes cluster VMs. 
+ - The network must have an available DHCP server to provide TCP/IP addresses to the VMs and the VM hosts. The DHCP server should also contain network time protocol (NTP) and DNS host information.
+ 
+ - A DHCP server with a dedicated scope of IPv4 addresses accessible by the Azure Stack HCI cluster.
  
  - The IPv4 addresses provided by the DHCP server should be routable and have a 30-day lease expiration to avoid loss of IP connectivity in the event of a VM update or reprovisioning.  
 
@@ -91,7 +91,7 @@ At a minimum, you should reserve one IP address per cluster (workload and AKS ho
 When setting up the AKS host, use the `-vipPoolStartIp` and `-vipPoolEndIp` parameters in `Set-AksHciConfig` to create a VIP pool.
 
 #### MAC Pool Range
-We recommend having a minimum of 16 MAC addresses in the range to allow for multiple control plane nodes in each cluster.
+We recommend having a minimum of 16 MAC addresses in the range to allow for multiple control plane nodes in each cluster. When setting up the management cluster, use the `-macPoolStart` and `-macPoolEnd` parameters in `Set-AksHciConfig` to reserve MAC addresses from the DHCP MAC pool for Kubernetes services.
   
 ### Network port and URL requirements 
 
