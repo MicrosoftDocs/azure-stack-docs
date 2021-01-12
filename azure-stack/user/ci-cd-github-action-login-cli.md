@@ -2,7 +2,7 @@
 title: Use the Azure login action with Azure CLI and PowerShell on Azure Stack Hub 
 description: Use the Azure login action with Azure CLI and PowerShell to create a continuous integration, continuous deployment (CI/CD) workflow on Azure Stack Hub
 author: mattbriggs
-ms.topic: overview
+ms.topic: how-to
 ms.date: 1/11/2021
 ms.author: mabrigg
 ms.reviewer: gara
@@ -15,15 +15,15 @@ ms.lastreviewed: 1/11/2021
 
 # Use the Azure login action with Azure CLI and PowerShell on Azure Stack Hub
 
-You can set up GitHub Actions to sign in to your Azure Stack Hub instance, run PowerShell, and then run a CLI script. You can use this to create a continuous integration, continuous deployment (CI/CD) workflow for your solution with Azure Stack Hub.
+You can set up GitHub Actions to sign in to your Azure Stack Hub instance, run PowerShell, and then run an Azure CLI script. You can use this as the basis of a continuous integration, continuous deployment (CI/CD) workflow for your solution with Azure Stack Hub. With this workflow, you can automate building, testing, and deploying your solution so that you can focus on writing code. For example by adding some other actions you might use this workflow along with an Azure Resource Manager template to provision a VM, validate an application repository, and then deploy an application to that VM every time you merge to specific branch in GitHub. For now, this article will help you get oriented with GitHub Actions and Azure Stack Hub.
 
-GitHub Actions are workflows composed of actions that enable automation right inside of your code repository. You can trigger the workflows with events in your GitHub development process. You can perform common DevOps automation tasks such as testing, deployment, and continuous integration. 
+GitHub Actions are workflows composed of actions that enable automation right inside of your code repository. You can trigger the workflows with events in your GitHub development process. You can perform common DevOps automation tasks such as testing, deployment, and continuous integration.
 
-To use GitHub Actions with Azure Stack Hub, you must use a service principal (SPN) with specific requirements. In this article, you will create a self-hosted runner. The self-hosted runner can be any machine that can be reached by GitHub. You can create you are a virtual machine (VM) as your runner in Azure, in Azure Stack Hub, or elsewhere. 
+To use GitHub Actions with Azure Stack Hub, you must use a service principal (SPN) with specific requirements. In this article, you will create a *self-hosted runner*. GitHub allows you to use any machine that can be reached by GitHub in your GitHub Actions. You can create you a virtual machine (VM) as your runner in Azure, in Azure Stack Hub, or elsewhere.
 
 This example workflow includes:
 - Instructions on creating and validating your SPN.
-- Configuring a Windows 2016 Server core machine as your self-hosted runner to use with Azure Stack Hub.
+- Configuring a Windows 2016 Server core machine as GitHub Actions self-hosted runner to work with Azure Stack Hub.
 - A workflow that uses:
     - The Azure Login action
     - The PowerShell script action
@@ -138,7 +138,7 @@ You can use GitHub secrets to encrypt sensitive information to use in your actio
     These instructions create a runner as a Windows VM in Azure. If you need to connect to your Azure Stack Hub hosted in a datacenter, you may require a VPN connection. You can find instructions on enabling the connection in the section [Install Azure Stack Hub Tools on your self-hosted runner](#optional-install-azure-stack-hub-tools-on-your-self-hosted-runner) that may require a VPN connection.
     - For guidance on creating a Windows VM in Azure, see [Quickstart: Create a Windows virtual machine in the Azure portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal). When following these instructions, install Windows Server 2016 Core.
     - For guidance on creating a Windows VM in Azure Stack Hub, see [Quickstart: Create a Windows server VM with the Azure Stack Hub portal](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-windows-portal). When following these instructions, install Windows Server 2016 Core.
-1. Use remote connection to connect to your Windows 2016 server using the server IP address, username, and password that you defined when creating the machine.
+1. Use a remote connection to connect to your Windows 2016 server using the server IP address, username, and password that you defined when creating the machine.
 1. Install Chocolatey. Chocolatey is a package manager for Windows that you can use to install and manage dependencies from the command line. From an elevated PowerShell prompt, type:
     ```powershell
     Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
@@ -168,11 +168,11 @@ You can use GitHub secrets to encrypt sensitive information to use in your actio
 
     ![Runner is listening](.\media\ci-cd-github-action-login-cli\github-action-runner-listen.png)
 
-9. When you are done, verify that the service is running and listening to your service. Double check by running.`/run.cmd` from the runner's directory.
+9. When you are done, verify that the service is running and listening to your service. Double check by running `/run.cmd` from the runner's directory.
 
 ### Optional: Install Azure Stack Hub Tools on your self-hosted runner
 
-The instructions in this article do not require access to the Azure Stack Hub Tools, but as you develop your own workflow you may need to use the tools. The following instructions can help you install the tools on your Windows self-hosted runner. For more information about Azure Stack Hub Tools, see [Download Azure Stack Hub Tools from GitHub](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-download?&tabs=az). These instructions assume you have installed the package manager Chocolatey.
+The instructions in this article do not require access to the [Azure Stack Hub Tools](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-download?&tabs=az), but as you develop your own workflow you may need to use the tools. The following instructions can help you install the tools on your Windows self-hosted runner. For more information about Azure Stack Hub Tools, see [Download Azure Stack Hub Tools from GitHub](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-download?&tabs=az). These instructions assume you have installed the package manager Chocolatey.
 
 1. Install Git.
     ```powershell  
@@ -225,7 +225,7 @@ Create a new workflow using the yaml in this section to create your workflow.
 
 4. In the path, name the file `workflow.yml`.
 5. Copy and paste the workflow yml.
-    ```yml  
+    ```yaml  
     on: [push]
     
     env:
@@ -283,11 +283,12 @@ Notes on the workflow file and the action:
 
 - The workflow contains a single job named `azurestack-test`.
 - A push event triggers the workflow.
-- The action uses a self-hosted runner that has been set up in the repository, and is called in by the runner's label in the workflow with the line: `runs on: self-hosted`.s
+- The action uses a self-hosted runner that has been set up in the repository, and is called in by the runner's label in the workflow with the line: `runs on: self-hosted`.
 - The workflow contains three actions.
-- The first action calls the Azure Login action. With GitHub Actions for Azure, you can create workflows that you can set up in your repository to build, test, package, release, and deploy to Azure. This action uses your Azure Stack SPN credentials to connect and open a session to your Azure Stack Hub environment. You can find more information about using the action in GitHub, [Azure Login Action](https://github.com/marketplace/actions/azure-login).
+- The first action calls the Azure Login action to sign in with PowerShell With GitHub Actions for Azure, you can create workflows that you can set up in your repository to build, test, package, release, and deploy to Azure. This action uses your Azure Stack SPN credentials to connect and open a session to your Azure Stack Hub environment. You can find more information about using the action in GitHub, [Azure Login Action](https://github.com/marketplace/actions/azure-login).
 - The second action uses Azure PowerShell. The action uses the Az PowerShell modules and works with both Government and Azure Stack Hub clouds. After you run this workflow, review the job to validate that the script has collected the resource groups in your Azure Stack Hub environment. For more information, see [Azure PowerShell Action](https://github.com/marketplace/actions/azure-powershell-action)
-- The third action, uses Azure CLI connected to your Azure Stack Hub to collect resource groups. For more information, see [Azure CLI Action](https://github.com/marketplace/actions/azure-cli-action).
+- The third action, uses Azure CLI to sign in and connect to your Azure Stack Hub to collect resource groups. For more information, see [Azure CLI Action](https://github.com/marketplace/actions/azure-cli-action).
+- For more information about working with GitHub Actions and self-hosted runner, see the [Gitub Actions](https://github.com/features/actions) documentation.
 
 ## Next steps
 
