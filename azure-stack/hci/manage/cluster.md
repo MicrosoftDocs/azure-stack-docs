@@ -5,7 +5,7 @@ ms.topic: how-to
 author: v-dasis
 ms.author: v-dasis
 ms.reviewer: jgerend
-ms.date: 01/11/2021
+ms.date: 01/12/2021
 ---
 
 # Manage Azure Stack HCI clusters using Windows Admin Center
@@ -33,14 +33,6 @@ To view this information, select the cluster name under **All connections**, the
 - Total cluster input/output operations/second (IOPS)
 - Average cluster latency in milliseconds
 
-## View cluster resources
-
-The cluster Overview page displays information on cluster resources such as servers, infrastructure, and quorum witness.
-
-:::image type="content" source="media/manage-cluster/cluster-overview.png" alt-text="Cluster Overview screen" lightbox="media/manage-cluster/cluster-overview.png":::
-
-To view this information, select the cluster name under **All connections**, then under **Tools** on the left, select **Overview**.
-
 ## Change storage settings
 
 You can select to use server memory to cache frequent reads and specify the maximum memory to be used per sever. For more information, see [Understanding the cache in Azure Stack HCI](../concepts/cache.md).
@@ -51,9 +43,17 @@ You can select to use server memory to cache frequent reads and specify the maxi
 
     :::image type="content" source="media/manage-cluster/cluster-settings-memory.png" alt-text="cluster In-memory cache screen" lightbox="media/manage-cluster/cluster-settings-memory.png":::
 
-1. You can change the name of the storage pool that Storage Spaces Direct uses. Select **Storage pools** and enter the new name.
+1. You can change the name of the storage pool that Storage Spaces Direct uses. Select **Storage pools** and enter the new name. This is applicable for stretched clusters.
 
-    :::image type="content" source="media/manage-cluster/cluster-settings-ssd.png" alt-text="cluster storage pool screen" lightbox="media/manage-cluster/cluster-settings-ssd.png":::
+    :::image type="content" source="media/manage-cluster/cluster-settings-storage-pools.png" alt-text="cluster storage pool screen" lightbox="media/manage-cluster/cluster-settings-storage-pools.png":::
+
+1. You can change Storage Spaces Direct settings. Select **Storage Spaces Direct** and change the following settings as needed:
+
+    - **Persistent cache** - enable or disable the persistent cache
+    - **Cache mode for HDD** - change the cache mode for HDD drives
+    - **Cache mode for SSD** - change the cache for SSD drives
+
+    :::image type="content" source="media/manage-cluster/cluster-settings-storage-spaces-direct.png" alt-text="cluster Storage Spaces Direct screen" lightbox="media/manage-cluster/cluster-settings-storage-spaces-direct.png":::
 
 ## Change cluster settings
 
@@ -73,7 +73,7 @@ There are several general settings that can be applied to your cluster. Here is 
 
    - **Core traffic** - encrypts traffic sent over NetFT (cluster virtual adapter) on port 3343
 
-   - **Server traffic** - encrypts Cluster Shared Volume (CSV) and Storage Bus Layer (SBL) traffic
+   - **Storage traffic** - encrypts Cluster Shared Volume (CSV) and Storage Bus Layer (SBL) traffic
 
         :::image type="content" source="media/manage-cluster/cluster-settings-encryption.png" alt-text="cluster Cluster traffic encryption screen" lightbox="media/manage-cluster/cluster-settings-encryption.png":::
 
@@ -120,8 +120,6 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
    - **Virtual Machines Path** - specify the default folder for storing the virtual machine configuration files.
 
-   - **Hypervisor Scheduler Type** - select **Core Scheduler** or **Classic Scheduler**. This determines how the hypervisor schedules virtual processes to run on physical processors that use simultaneous multi-threading (also known as SMT or hyper-threading). Core scheduling is recommended.
-
         :::image type="content" source="media/manage-cluster/cluster-settings-hyperv.png" alt-text="cluster Hyper-V General settings  screen" lightbox="media/manage-cluster/cluster-settings-hyperv.png":::
 
 1. To allow redirection of local devices and resources from virtual machines, select **Enhanced Session Mode**. Note that enhanced session mode connections require a supported guest operating system.
@@ -136,37 +134,15 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
    - for **Authentication Protocol**, select either **CredSSP** or **Kerberos**.
 
-   - for **Performance Option**, select either **Compression** or **SMB**. Compressed data is sent over a TCP/IP connection.
+   - for **Performance Options**, select either **Compression** or **SMB**. Compressed data is sent over a TCP/IP connection.
 
    - enable the **Use any network** checkbox to use any available network on a node to perform the migration
 
-        :::image type="content" source="media/manage-cluster/cluster-settings-liv-migration.png" alt-text="cluster Live Migration screen" lightbox="media/manage-cluster/cluster-settings-liv-migration.png":::
+        :::image type="content" source="media/manage-cluster/cluster-settings-live-migration.png" alt-text="cluster Live Migration screen" lightbox="media/manage-cluster/cluster-settings-live-migration.png":::
 
 1. To specify the number of storage migrations that can be performed at the same time, select **Storage Migration**, then select a number.
 
-    :::image type="content" source="media/manage-cluster/cluster-settings-sto-migration.png" alt-text="cluster Storage Migration screen" lightbox="media/manage-cluster/cluster-settings-sto-migration.png":::
-
-## Manage cluster resources
-
-To start, stop, remove, or to simulate failure of a cluster resource, do the following:
-
-1. Select **Overview**, then under **Cluster resources**, select the resource and select either **Start**, **Stop**, or **Remove**.
-
-    :::image type="content" source="media/manage-cluster/cluster-overview.png" alt-text="manage cluster resources screen" lightbox="media/manage-cluster/cluster-overview.png":::
-
-1. Select **Simulate failure** to simulate a cluster failure:
-
-    :::image type="content" source="media/manage-cluster/cluster-simulate-failure.png" alt-text="simulate resource failure screen" lightbox="media/manage-cluster/cluster-simulate-failure.png":::
-
-## Validate the cluster
-
-To validate your cluster, select **Overview**, then select **Validate cluster**. For detailed information on cluster validation, see [Connect Azure Stack HCI to Azure](../deploy/validate.md).
-
-:::image type="content" source="media/manage-cluster/validate-cluster.png" alt-text="validate cluster screen" lightbox="media/manage-cluster/validate-cluster.png":::
-
-To view and download cluster validation reports, select **Validation reports**, then select **Download Report**.
-
-:::image type="content" source="media/manage-cluster/validation-reports.png" alt-text="validation reports screen" lightbox="media/manage-cluster/validation-reports.png":::
+    :::image type="content" source="media/manage-cluster/cluster-settings-storage-migration.png" alt-text="cluster Storage Migration screen" lightbox="media/manage-cluster/cluster-settings-storage-migration.png":::
 
 ## Register the cluster with Azure
 
@@ -174,14 +150,6 @@ To register or unregister your cluster with Azure, select **Azure Stack HCI regi
 
 :::image type="content" source="media/manage-cluster/cluster-registration.png" alt-text="cluster Azure Registration screen" lightbox="media/manage-cluster/cluster-registration.png":::
 
-## Remove the cluster
-
-To remove (destroy) the cluster, select **Overview**, then select **Remove cluster**.
-
-:::image type="content" source="media/manage-cluster/remove-cluster.png" alt-text="remove cluster screen" lightbox="media/manage-cluster/remove-cluster.png":::
-
 ## Next steps
 
-- To monitor your cluster, see [Monitor Azure Stack HCI with Azure Monitor](azure-monitor.md).
-
-- To troubleshoot cluster validation reports, see [Troubleshoot cluster validation reporting](validate-qos.md).
+To monitor your cluster, see [Monitor Azure Stack HCI with Azure Monitor](azure-monitor.md).
