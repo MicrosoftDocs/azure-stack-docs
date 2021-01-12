@@ -51,7 +51,7 @@ In this scenario, we will deploy and configure a Windows Server 2019 virtual mac
 
 2.  Once you have a Windows Server 2019 image in your Azure Stack Hub environment, **sign into the Azure Stack Hub user portal**.
 
-3.  Once logged into the Azure Stack Hub user portal, ensure you have a [subscription to an offer](../operator/azure-stack-subscribe-plan-provision-vm.md?view=azs-1908), that allows you to provision IaaS resources (Compute, Storage and Network).
+3.  Once logged into the Azure Stack Hub user portal, ensure you have a [subscription to an offer](../operator/azure-stack-subscribe-plan-provision-vm.md), that allows you to provision IaaS resources (Compute, Storage and Network).
 
 4.  Once you have a subscription available, back on the **dashboard** in the Azure Stack Hub user portal, select **Create a resource**, select **Compute** and then select the **Windows Server 2019 Datacenter gallery item**.
 

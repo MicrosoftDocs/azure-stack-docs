@@ -35,7 +35,7 @@ your laptop.
     laptop to the iDRAC Direct port, located on the front of the server.
     Refer to item 4 in the diagram.
 
-    ![](media/image-67.png)
+    ![Diagram that shows a power button, U S B, and micro U S B ports.](media/image-67.png)
 
 3.  Wait for the laptop to acquire the IP address 169.254.0.4.
 

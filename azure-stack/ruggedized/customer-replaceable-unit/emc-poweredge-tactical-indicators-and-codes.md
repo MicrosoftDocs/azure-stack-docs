@@ -27,7 +27,7 @@ the front panel.
 
 Figure 10. LED behavior
 
-![](media/image-75.png)
+![The system information label for LED behavior.](media/image-75.png)
 
 ## iDRAC Direct LED indicator codes
 
@@ -56,7 +56,7 @@ indicators.
 
 Figure 11. Left control panel
 
-![](media/image-76.png)
+![Diagram that shows the left control panel status and health indicators.](media/image-76.png)
 
 The following table describes the features on the left panel.
 
@@ -65,7 +65,7 @@ Table 5. PowerEdge left control panel status and health indicators
 |    <br>Item       |    <br>Indicator or button                       |    <br>Icon                                |    <br>Description                                                                                                  |
 |-------------------|--------------------------------------------------|--------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
 |    <br>1          |    <br>Status LED indicators                     |    <br>N/A                                 |    <br>Indicates the status of the system. For more information, see PowerEdge status LED indicators on page 61.    |
-|    <br>2 and 3    |    <br>System health and system ID indicators    | ![](media/image-77.png) |    <br>Indicates the system health.                                                                                 |
+|    <br>2 and 3    |    <br>System health and system ID indicators    | ![System health icon](media/image-77.png) |    <br>Indicates the system health.                                                                                 |
 
 The following table lists the PowerEdge status LED indicators.
 
@@ -94,7 +94,7 @@ The following figure shows the AC PSU.
 
 Figure 12. AC PSU
 
-![](media/image-83.png)
+![A diagram that shows the AC PSU, with the LED indicated.](media/image-83.png)
 
 The following table defines the indicator codes.
 

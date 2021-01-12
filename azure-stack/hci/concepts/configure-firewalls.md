@@ -4,7 +4,7 @@ description: This topic provides guidance on how to configure firewalls for the 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 01/06/2020
 ---
 
 # Configure firewalls for Azure Stack HCI
@@ -41,7 +41,7 @@ Azure maintains well-known IP addresses for Azure services that are organized us
 | :-----------------------------| :-----------------------  | :---------------------------------------------------------------------------------- |
 | Azure Active Directory        | AzureActiveDirectory      | `https://login.microsoftonline.com`<br> `https://graph.microsoft.com`               |
 | Azure Resource Manager        | AzureResourceManager      | `https://management.azure.com`                        |
-| Azure Stack HCI Cloud Service | AzureFrontDoor.Frontend   | Depends on the region you registered with:<br> East US: `https://eus-azurestackhci-usage.azurewebsites.net`<br> West Europe: `https://weu-azurestackhci-usage.azurewebsites.net` |
+| Azure Stack HCI Cloud Service | AzureFrontDoor.Frontend   | `https://azurestackhci.azurefd.net` |
 | Azure Arc                     | AzureArcInfrastructure<br> AzureTrafficManager | Depends on the functionality you want to use:<br> Hybrid Identity Service: `*.his.arc.azure.com`<br> Guest Configuration: `*.guestconfiguration.azure.com`<br> **Note:** Expect more URLs as we enable more functionality. |
 
 ## Update Microsoft Defender Firewall
