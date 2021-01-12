@@ -6,35 +6,39 @@ author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 1/4/2021
+ms.date: 1/12/2021
 ---
 
 # Compare Azure Stack HCI to Windows Server 2019
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-Many customers will wonder whether Windows Server 2019 or Azure Stack HCI is a better fit for their needs. This topic helps you determine which is right for your organization.
-
-| Windows Server 2019 | Azure Stack HCI |
-| --------------- | --------------- |
-| Best guest and traditional server | Best virtualization host for a software-defined data center, including Storage Spaces Direct |
-| Runs anywhere, using a traditional software licensing model | Runs on hardware from your preferred vendor, but is delivered as an Azure service and billed to your Azure account |
-| Two installation options: Server with desktop experience or Server Core | Based on a lightly customized Server Core |
+This topic explains the key differences between Windows Server 2019 and Azure Stack HCI and provides guidance about when to use each. It's important to remember that both Windows Server 2019 and Azure Stack HCI are current products that are actively supported and maintained by Microsoft. Many organizations may choose to deploy both, as they are intended for different purposes.
 
 ## When to use Windows Server 2019
 
-| Windows Server 2019 | Azure Stack HCI |
-| --------------- | --------------- |
-| Windows Server is a highly versatile, multi-purpose operating system, with dozens of roles and hundreds of features, including guest rights. | Azure Stack HCI doesn't include guest rights and is intended to be used for a modern, hyperconverged architecture. |
-| Use Windows Server to run VMs or for bare metal installations encompassing all traditional server roles, including Active Directory, file services, DNS, DHCP, Internet Information Services (IIS), container host/guest, SQL Server, Exchange Server, Host Guardian Service (HGS), and many more. | Intended as a Hyper-V virtualization host, Azure Stack HCI is only licensed to run a small number of server roles directly; any other roles must run inside of VMs. |
+Windows Server is a highly versatile, multi-purpose operating system, with dozens of roles and hundreds of features, including guest rights. Windows Server machines can be in the cloud or on-premises, including virtualized on top of Azure Stack HCI. 
+
+Use Windows Server 2019 for:
+
+- A guest operating system inside of virtual machines (VMs) or containers
+- As the runtime for a Windows application
+- To use one or more of the built-in server roles such as Active Directory, file services, DNS, DHCP, Internet Information Services (IIS), or Host Guardian Service (HGS)
+- As a traditional server, such as a bare-metal domain controller or SQL Server installation
+- For traditional infrastructure such as VMs connected to Fibre Channel SAN storage
 
 ## When to use Azure Stack HCI
 
-| Windows Server 2019 | Azure Stack HCI |
-| --------------- | --------------- |
-| Windows Server can run on-premises or in the cloud, but will not offer the latest hyperconverged features moving forward.| Azure Stack HCI is Microsoft's premier hyperconverged infrastructure platform for running VMs on-premises, optionally stretched across two sites and with connections to Azure hybrid services. It's an easy way to modernize and secure your data centers and branch offices, achieve industry-best performance for SQL Server databases, and run VMs or virtual desktops on-premises for low latency and data sovereignty.|
-| Windows Server is a great multi-purpose "Swiss Army knife" for all Windows Server roles, virtualized or not. | Use Azure Stack HCI to virtualize classic enterprise apps like Exchange, SharePoint, and SQL Server, and to virtualize Windows Server roles like File Server, DNS, DHCP, IIS, and AD. Includes unrestricted access to all Hyper-V features like Shielded VMs.|
-| Many Windows Server deployments run on aging hardware. | Use Azure Stack HCI to use software-defined infrastructure in place of aging storage arrays or network appliances, without major rearchitecture. Built-in Hyper-V, Storage Spaces Direct, and Software-Defined Networking (SDN) are directly accessible and manageable. Run apps inside Windows or Linux VMs.|
+Azure Stack HCI is Microsoft's premier hyperconverged infrastructure platform for running VMs or virtual desktops on-premises with connections to Azure hybrid services. It's an easy way to modernize and secure your datacenters and branch offices, and achieve industry-best performance with low latency and data sovereignty.
+
+Use Azure Stack HCI for:
+
+- The best virtualization host to modernize your infrastructure, either for existing workloads in your core datacenter or emerging requirements for branch office and edge locations
+- Easy extensibility to the cloud, with a regular stream of innovations from your Azure subscription and a consistent set of tools and experiences
+- All the benefits of hyperconverged infrastructure: a simpler, more consolidated datacenter architecture with high-speed storage and networking
+
+>[!NOTE]
+>Because Azure Stack HCI is intended to be used as a Hyper-V virtualization host for a modern, hyperconverged architecture, it does not include guest rights. Because of this, Azure Stack HCI is only licensed to run a small number of server roles directly; any other roles must run inside of VMs.
 
 ## Next steps
 

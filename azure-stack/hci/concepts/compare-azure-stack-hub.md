@@ -6,7 +6,7 @@ author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 1/4/2021
+ms.date: 1/12/2021
 ---
 
 # Compare Azure Stack HCI to Azure Stack Hub
@@ -33,7 +33,7 @@ As your organization digitally transforms, you may find you can move faster by u
 | Azure Stack Hub | Azure Stack HCI |
 | --------------- | --------------- |
 | Azure Stack Hub requires minimum 4 nodes and its own network switches. | Use Azure Stack HCI for the minimum footprint for remote offices and branches. Start with just 2 server nodes and switchless back-to-back networking for peak simplicity and affordability. Hardware offers start at 4 drives, 64 GB of memory, well under $10k/node. |
-| Azure Stack Hub constrains Hyper V configurability and feature set for consistency with Azure. | Use Azure Stack HCI for no-frills Hyper-V virtualization for classic enterprise apps like Exchange, SharePoint, and SQL Server, and to virtualize Windows Server roles like File Server, DNS, DHCP, IIS, and AD. Unrestricted access to all Hyper-V features like Shielded VMs.|
+| Azure Stack Hub constrains Hyper V configurability and feature set for consistency with Azure. | Use Azure Stack HCI for no-frills Hyper-V virtualization for classic enterprise apps like Exchange, SharePoint, and SQL Server, and to virtualize Windows Server roles like File Server, DNS, DHCP, IIS, and AD. Unrestricted access to Hyper-V features.|
 | Azure Stack Hub doesn't expose these infrastructural technologies. | Use Azure Stack HCI to use software-defined infrastructure in place of aging storage arrays or network appliances, without major rearchitecture. Built-in Hyper-V, Storage Spaces Direct, and Software-Defined Networking (SDN) are directly accessible and manageable. |
 
 ## Next steps
