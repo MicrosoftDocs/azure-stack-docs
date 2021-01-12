@@ -42,6 +42,12 @@
     items:
     - name: Create a cluster with PowerShell
       href: deploy/create-cluster-powershell.md
+  - name: Deploy workloads
+    items:
+    - name: Deploy SQL Server
+      href: deploy/deploy-sql-server-workload.md
+    - name: Deploy trusted enterprise virtualization
+      href: deploy/deploy-trusted-enterprise-virtualization.md
 - name: Manage
   items:
   - name: Manage VMs

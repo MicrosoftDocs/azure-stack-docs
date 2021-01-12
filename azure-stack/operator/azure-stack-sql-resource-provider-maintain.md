@@ -193,6 +193,8 @@ Azure Stack Hub has multiple ways to collect, save, and send diagnostic logs to 
 
 ::: moniker-end
 
+::: moniker range="< azs-2008"
+
 Starting from version 1.1.93, SQL Resource Provider supports the standard way of collecting logs from you Azure Stack Hub environment. If you are using an older version, it is recommended to update your SQL Resource Provider to the latest version.
 
 To collect logs from the locked down VM, use the PowerShell Just Enough Administration (JEA) endpoint *DBAdapterDiagnostics*. This endpoint provides the following commands:
@@ -245,6 +247,9 @@ $cleanup = Invoke-Command -Session $session -ScriptBlock {Remove-AzsDBAdapterLog
 # Close the session.
 $session | Remove-PSSession
 ```
+
+::: moniker-end
+
 ## Configure Azure Diagnostics extension for SQL resource provider
 Azure Diagnostics extension is installed on the SQL resource provider adapter VM by default. The following steps show how to customize the extension for gathering the SQL resource provider operational event logs and IIS logs for troubleshooting and auditing purpose.
 
