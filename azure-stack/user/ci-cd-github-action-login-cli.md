@@ -135,7 +135,7 @@ You can use GitHub secrets to encrypt sensitive information to use in your actio
 
 1. Create your self-hosted runner. 
 
-    These instructions create a runner as a Windows VM in Azure. If you need to connect to your Azure Stack Hub hosted in a datacenter, you may require a VPN connection. You can find instructions on enabling the connection in the section [Install Azure Stack Hub Tools on your self-hosted runner](#install-azure-stack-hub-tools-on-your-self-hosted-runner) that may require a VPN connection.
+    These instructions create a runner as a Windows VM in Azure. If you need to connect to your Azure Stack Hub hosted in a datacenter, you may require a VPN connection. You can find instructions on enabling the connection in the section [Install Azure Stack Hub Tools on your self-hosted runner](#optional:-install-azure-stack-hub-tools-on-your-self-hosted-runner) that may require a VPN connection.
     - For guidance on creating a Windows VM in Azure, see [Quickstart: Create a Windows virtual machine in the Azure portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal). When following these instructions, install Windows Server 2016 Core.
     - For guidance on creating a Windows VM in Azure Stack Hub, see [Quickstart: Create a Windows server VM with the Azure Stack Hub portal](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-windows-portal). When following these instructions, install Windows Server 2016 Core.
 1. Use remote connection to connect to your Windows 2016 server using the server IP address, username, and password that you defined when creating the machine.
