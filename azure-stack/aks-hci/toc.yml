@@ -37,11 +37,11 @@
       href: adapt-apps-mixed-os-clusters.md
     - name: Use Windows Server containers
       items:
-          - name: Deploy .NET applications in AKS on Azure Stack HCI
+          - name: Deploy .NET applications
             href: deploy-windows-application.md
           - name: Prepare Windows nodes for group Managed Service Account support
             href: prepare-windows-nodes-gmsa.md
-          - name: Use persistent volume in an AKS on Azure Stack HCI cluster
+          - name: Use persistent volume
             href: persistent-volume.md
     - name: Troubleshoot
       href: troubleshoot.md
