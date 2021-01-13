@@ -6,7 +6,7 @@ author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 1/12/2021
+ms.date: 1/13/2021
 ---
 
 # Compare Azure Stack HCI to Windows Server 2019
@@ -23,9 +23,11 @@ Use Windows Server 2019 for:
 
 - A guest operating system inside of virtual machines (VMs) or containers
 - As the runtime for a Windows application
-- To use one or more of the built-in server roles such as Active Directory, file services, DNS, DHCP, Internet Information Services (IIS), or Host Guardian Service (HGS)
+- To use one or more of the built-in server roles such as Active Directory, file services, DNS, DHCP, or Internet Information Services (IIS)
 - As a traditional server, such as a bare-metal domain controller or SQL Server installation
 - For traditional infrastructure such as VMs connected to Fibre Channel SAN storage
+
+:::image type="content" source="media/compare-windows-server/windows-server-scenarios.png" alt-text="When to use Windows Server over Azure Stack HCI" lightbox="media/compare-windows-server/windows-server-scenarios.png":::
 
 ## When to use Azure Stack HCI
 
@@ -39,6 +41,61 @@ Use Azure Stack HCI for:
 
 >[!NOTE]
 >Because Azure Stack HCI is intended to be used as a Hyper-V virtualization host for a modern, hyperconverged architecture, it does not include guest rights. Because of this, Azure Stack HCI is only licensed to run a small number of server roles directly; any other roles must run inside of VMs.
+
+:::image type="content" source="media/compare-windows-server/hci-scenarios.png" alt-text="When to use Azure Stack HCI over Windows Server" lightbox="media/compare-windows-server/hci-scenarios.png":::
+
+## Compare product positioning
+
+The table below shows the high-level product packaging for Azure Stack HCI and Windows Server 2019.
+
+| **Attribute** | **Azure Stack HCI** | **Windows Server 2019** |
+| ------------- | ------------------- | ----------------------- |
+| Product type | Cloud service which includes an operating system and more | Operating system |
+| Legal | Covered under your Microsoft Customer Agreement or Online Subscription Agreement | Has its own end-user license agreement |
+| Licensing | Billed to your Azure subscription | Has its own paid license |
+| Support | Covered under Azure support | Can be covered by different support agreements, including Microsoft Premier Support |
+| Where to get it | Download from [Azure.com/HCI](https://azure.com/hci), or comes preinstalled on Integrated Systems | Microsoft Volume Licensing Service Center or Evaluation Center |
+| Runs in VMs | For evaluation only; intended as a host OS | Yes, in the cloud or on premises |
+| Hardware | Runs on any of more than 200 pre-validated solutions from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/) | Runs on any hardware with the "Certified for Windows Server 2019" logo |
+| Lifecycle policy | Always up to date with the latest features | Choose between [Windows Server servicing channels](/windows-server/get-started-19/servicing-channels-19): Long-Term Servicing Channel (LTSC) and Semi-Annual Channel (SAC) |
+
+## Compare technical features
+
+The table below compares the technical features of Azure Stack HCI and Windows Server 2019.
+
+| **Attribute** | **Azure Stack HCI** | **Windows Server 2019** |
+| ------------- | ------------------- | ----------------------- |
+| Core Hyper-V | Yes | Yes |
+| Core Storage Spaces Direct | Yes | Yes |
+| Core SDN | Yes | Yes |
+| Stretch clustering for DR | Yes | - |
+| 4-5x faster Storage Spaces repairs | Yes | - |
+| Integrated full-stack updates | Yes (Integrated Systems only) | - |
+| Guided deployment | Yes | - |
+
+## Compare management options
+
+The table below compares the management options for Azure Stack HCI and Windows Server 2019. Both products are designed for remote management and can be managed with many of the same tools.
+
+| **Attribute** | **Azure Stack HCI** | **Windows Server 2019** |
+| ------------- | ------------------- | ----------------------- |
+| Desktop experience | - | Yes |
+| Windows Admin Center | Yes | Yes |
+| Microsoft System Center | Yes (sold separately) | Yes (sold separately) |
+| Azure portal | Yes (natively) | Requires Arc agent wire-up |
+| Third-party tools | Yes | Yes |
+
+## Compare product pricing
+
+The table below compares the product pricing for Azure Stack HCI and Windows Server 2019. For details, see [Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
+
+| **Attribute** | **Azure Stack HCI** | **Windows Server 2019** |
+| ------------- | ------------------- | ----------------------- |
+| Price type | Subscription service | Varies: most often a one-time license |
+| Price structure | Per core, per month | Varies: usually per core (minimum 16) |
+| Price | $10 USD per core, per month | From $882 USD for Standard to $6,155 for Datacenter Edition |
+| Evaluation/trial period | 30-day free trial once registered | 180-day evaluation copy |
+| Channels | Enterprise agreement, cloud service provider, or direct | Enterprise agreement/volume licensing, OEM, services provider license agreement (SPLA) |
 
 ## Next steps
 
