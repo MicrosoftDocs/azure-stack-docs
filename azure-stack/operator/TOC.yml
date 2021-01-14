@@ -69,6 +69,8 @@
         href: azure-stack-configure-time.md
       - name: Firewall integration
         href: azure-stack-firewall.md
+      - name: Transparent proxy
+        href: azure-stack-transparent-proxy.md
         items:
         - name: Publish endpoints
           href: azure-stack-integrate-endpoints.md
