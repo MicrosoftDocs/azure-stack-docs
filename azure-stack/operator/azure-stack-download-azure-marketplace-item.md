@@ -196,7 +196,7 @@ Once you have registered your Azure Stack, you can disregard the following messa
    You are prompted to enter your Azure account credentials and you might have to use two-factor authentication, depending on your account configuration.
 
    > [!NOTE]
-   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using `Add-AzureRMRmAccount`: `RemoveAzAccount -Scope Process`.
+   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using `Add-AzureRMRmAccount`: `RemoveAzureRMAccount -Scope Process`.
 
 3. If you have multiple subscriptions, run the following command to select the one you used for registration:
 
@@ -213,7 +213,7 @@ Once you have registered your Azure Stack, you can disregard the following messa
 5. To select the Marketplace items such as VM images, extensions, or solution templates to download, run the following command:
 
    ```powershell
-   $products = Select-AzureRMsMarketplaceItem
+   $products = Select-AzsMarketplaceItem
    ```
 
    This displays a table that lists all the Azure Stack registrations available in the selected subscription. Choose the registration that matches the Azure Stack environment you're downloading the marketplace items for, and select **OK**.
