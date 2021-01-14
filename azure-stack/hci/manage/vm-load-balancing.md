@@ -1,12 +1,12 @@
 ---
 title: Virtual machine load balancing
-description: Use this topic to learn how to configure the VM load balancing in Azure Stack HCI and Windows Server.
+description: Use this topic to learn how to configure the VM load balancing feature in Azure Stack HCI and Windows Server.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 1/7/2021
+ms.date: 1/14/2021
 ---
 # Virtual machine load balancing
 
@@ -21,7 +21,7 @@ VM load balancing evaluates a server's load based on the following heuristics:
 - **Current memory pressure:** Memory is the most common resource constraint on a Hyper-V host.
 - **CPU utilization averaged over a five-minute window:** Mitigates any server in the cluster from becoming over-committed.
 
-## How does it work?
+## How does VM load balancing work?
 
 When you add a new server to your cluster, the VM load balancing feature automatically balances capacity from the existing servers to the newly added server in the following order:
 
@@ -49,21 +49,9 @@ The easiest way to configure VM load balancing is using Windows Admin Center.
 
 3. Under **Balance virtual machines**, select **Always** to load balance upon server join and every 30 minutes, **Server joins** to load balance only upon server joins, or **Never** to disable the VM load balancing feature. The default setting is **Always**.
 
-4. Under **Aggressiveness**, select **High** to average the servers and live migrate VMs when host is more than 5% above average. Select **Medium** to migrate VMs when the server is more than 70% loaded, or select **Low** to migrate when the server is more than 80% loaded.
+4. Under **Aggressiveness**, select **Low** to live migrate VMs when the server is more than 80% loaded, **Medium** to migrate when the server is more than 70% loaded, or **High** to average the servers in the cluster and migrate when the server is more than 5% above average. The default setting is **Low**.
 
 ## Configure VM load balancing using Windows PowerShell
-
-You can also configure the aggressiveness of balancing by using the cluster common property `AutoBalancerLevel`. To control the aggressiveness threshold, run the following in PowerShell, substituting a value from the table below:
-
-```PowerShell
-(Get-Cluster).AutoBalancerLevel = <value>
-```
-
-| AutoBalancerLevel | Aggressiveness | Behavior |
-|-------------------|----------------|----------|
-| 1 (default) | Low | Move when host is more than 80% loaded |
-| 2 | Medium | Move when host is more than 70% loaded |
-| 3 | High | Average servers in the cluster and move when host is more than 5% above average |
 
 You can configure if and when load balancing occurs using the cluster common property `AutoBalancerMode`. To control when to balance the cluster, run the following in PowerShell, substituting a value from the table below:
 
@@ -76,6 +64,18 @@ You can configure if and when load balancing occurs using the cluster common pro
 | 0 | Disabled |
 | 1 | Load balance upon server join |
 | 2 (default) | Load balance upon server join and every 30 minutes |
+
+You can also configure the aggressiveness of balancing by using the cluster common property `AutoBalancerLevel`. To control the aggressiveness threshold, run the following in PowerShell, substituting a value from the table below:
+
+```PowerShell
+(Get-Cluster).AutoBalancerLevel = <value>
+```
+
+| AutoBalancerLevel | Aggressiveness | Behavior |
+|-------------------|----------------|----------|
+| 1 (default) | Low | Move when host is more than 80% loaded |
+| 2 | Medium | Move when host is more than 70% loaded |
+| 3 | High | Average servers in the cluster and move when host is more than 5% above average |
 
 To check how the `AutoBalancerLevel` and `AutoBalancerMode` properties are set, run the following in PowerShell:
 
