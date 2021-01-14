@@ -23,7 +23,7 @@ VM load balancing evaluates a server's load based on the following heuristics:
 
 ## How does VM load balancing work?
 
-VM load balancing occurs automatically when you add a new server to your cluster and can also be configured for periodic, recurring load balancing.
+VM load balancing occurs automatically when you add a new server to your cluster and can also be configured to perform periodic, recurring load balancing.
 
 ### When a new server is added to a cluster
 
@@ -38,7 +38,7 @@ When you join a new server to your cluster, the VM load balancing feature automa
 
 ### Recurring load balancing
 
-By default, VM load balancing is configured for periodic balancing: the memory pressure and CPU utilization on each server in the cluster are evaluated for balancing every 30 minutes. Alternately, memory pressure and CPU utilization can be evaluated on demand. Here is the flow of the steps:
+By default, VM load balancing is configured for periodic balancing: the memory pressure and CPU utilization on each server in the cluster are evaluated for balancing every 30 minutes. Here is the flow of the steps:
 
 1. The memory pressure and CPU utilization are evaluated on all servers in the cluster.
 2. All servers exceeding the threshold and those below the threshold are identified.
