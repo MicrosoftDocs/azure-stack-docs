@@ -288,7 +288,7 @@ Notes on the workflow file and the action:
 - The first action calls the Azure Login action to sign in with PowerShell With GitHub Actions for Azure, you can create workflows that you can set up in your repository to build, test, package, release, and deploy to Azure. This action uses your Azure Stack SPN credentials to connect and open a session to your Azure Stack Hub environment. You can find more information about using the action in GitHub, [Azure Login Action](https://github.com/marketplace/actions/azure-login).
 - The second action uses Azure PowerShell. The action uses the Az PowerShell modules and works with both Government and Azure Stack Hub clouds. After you run this workflow, review the job to validate that the script has collected the resource groups in your Azure Stack Hub environment. For more information, see [Azure PowerShell Action](https://github.com/marketplace/actions/azure-powershell-action)
 - The third action, uses Azure CLI to sign in and connect to your Azure Stack Hub to collect resource groups. For more information, see [Azure CLI Action](https://github.com/marketplace/actions/azure-cli-action).
-- For more information about working with GitHub Actions and self-hosted runner, see the [Gitub Actions](https://github.com/features/actions) documentation.
+- For more information about working with GitHub Actions and self-hosted runner, see the [GitHub Actions](https://github.com/features/actions) documentation.
 
 ## Next steps
 
