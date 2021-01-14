@@ -196,7 +196,7 @@ Once you have registered your Azure Stack, you can disregard the following messa
    You are prompted to enter your Azure account credentials and you might have to use two-factor authentication, depending on your account configuration.
 
    > [!NOTE]
-   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using `Add-AzureRMRmAccount`: `RemoveAzureRMAccount -Scope Process`.
+   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using `Add-AzureRMRmAccount`: `Remove-AzureRMAccount -Scope Process`.
 
 3. If you have multiple subscriptions, run the following command to select the one you used for registration:
 
