@@ -23,25 +23,35 @@ VM load balancing evaluates a server's load based on the following heuristics:
 
 ## How does VM load balancing work?
 
-When you add a new server to your cluster, the VM load balancing feature automatically balances capacity from the existing servers to the newly added server in the following order:
+VM load balancing occurs automatically when you add a new server to your cluster and can also be configured for periodic, recurring load balancing.
+
+### When a new server is added to a cluster
+
+When you join a new server to your cluster, the VM load balancing feature automatically balances capacity from the existing servers to the newly added server in the following order:
 
 1. The memory pressure and CPU utilization are evaluated on the existing servers in the cluster.
 2. All servers exceeding the threshold are identified.
 3. The servers with the highest memory pressure and CPU utilization are identified to determine priority of balancing.
 4. VMs are live migrated (with no downtime) from a server that exceeds the threshold to the newly added server in the cluster.
 
-When configured for periodic balancing, the memory pressure and CPU utilization on each server in the cluster are evaluated for balancing every 30 minutes. Alternately, memory pressure and CPU utilization can be evaluated on-demand. Here is the flow of the steps:
+:::image type="content" source="media/vm-load-balancing/server-added.png" alt-text="Image showing a new server being added to a cluster" border="false"::: 
+
+### Recurring load balancing
+
+By default, VM load balancing is configured for periodic balancing: the memory pressure and CPU utilization on each server in the cluster are evaluated for balancing every 30 minutes. Alternately, memory pressure and CPU utilization can be evaluated on demand. Here is the flow of the steps:
 
 1. The memory pressure and CPU utilization are evaluated on all servers in the cluster.
 2. All servers exceeding the threshold and those below the threshold are identified.
 3. The servers with the highest memory pressure and CPU utilization are identified to determine priority of balancing.
 4. VMs are live migrated (with no downtime) from a server that exceeds the threshold to another server that is under the minimum threshold.
 
+:::image type="content" source="media/vm-load-balancing/periodic-balancing.png" alt-text="Image showing a live cluster being automatically rebalanced" border="false"::: 
+
 ## Configure VM load balancing using Windows Admin Center
 
 The easiest way to configure VM load balancing is using Windows Admin Center. 
 
-:::image type="content" source="media/vm-load-balancing/vm-load-balancing.png" alt-text="Configuring VM load balancing with Windows Admin Center." lightbox="media/vm-load-balancing/vm-load-balancing.png":::
+:::image type="content" source="media/vm-load-balancing/vm-load-balancing.png" alt-text="Configuring VM load balancing with Windows Admin Center" lightbox="media/vm-load-balancing/vm-load-balancing.png":::
 
 1. Connect to your cluster and go to **Tools > Settings**.
 
