@@ -57,7 +57,9 @@
     - name: Manage VMs with PowerShell
       href: manage/vm-powershell.md
     - name: Create VM affinity rules
-      href: manage/vm-affinity.md  
+      href: manage/vm-affinity.md
+    - name: VM load balancing
+      href: manage/vm-load-balancing.md
     - name: Attach GPU to Linux VM
       href: manage/attach-gpu-to-linux-vm.md
   - name: Manage storage
