@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: v-dasis
 ms.topic: how-to
-ms.date: 012/13/2021
+ms.date: 01/13/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
