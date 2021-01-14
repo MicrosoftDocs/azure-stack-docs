@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: v-dasis
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 012/13/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -194,7 +194,7 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
 
     :::image type="content" source="media/cluster/create-cluster.png" alt-text="Create cluster wizard - Create cluster" lightbox="media/cluster/create-cluster.png":::
 
-1. Under **IP address**, select either static or dynamic IP addresses to use.
+1. Under **IP address**, select either static or dynamic IP addresses to use. The IP address must be entered in the following format: *IP address/current subnet length*. For example: 10.0.0.200/24.
 1. Select **Advanced**. You have a couple of options here:
 
     - **Register the cluster with DNS and Active Directory**
@@ -225,70 +225,6 @@ Step 4 of the wizard walks you through setting up Storage Spaces Direct for your
 It can take some time for the cluster name to be replicated across your domain, especially if workgroup servers have been newly added to Active Directory. Although the cluster might be displayed in Windows Admin Center, it might not be available to connect to yet.
 
 If resolving the cluster isn't successful after some time, in most cases you can substitute a server name instead of the cluster name.
-
-## Step 5: SDN (optional)
-
-This optional step walks you through setting up the Network Controller component of [Software Defined Networking (SDN)](../concepts/software-defined-networking.md). Once the Network Controller is set up, you can configure other components of SDN such as Software Load Balancer (SLB) and RAS Gateway as needed.
-
-> [!NOTE]
-> The wizard does not configure SLB and RAS Gateway for SDN. You can use SDN Express scripts to configure these components. For information on how to do this, see the [SDNExpress GitHub repo](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts).
-
-> [!NOTE]
-> SDN is not supported for stretched clusters.
-
-1. Select **Next: SDN**.
-
-    :::image type="content" source="media/cluster/create-cluster-network-controller.png" alt-text="Create cluster wizard - SDN Network Controller" lightbox="media/cluster/create-cluster-network-controller.png":::
-
-1. On **5.1 Define the Network Controller cluster**, under **Host**, enter a name for the Network Controller. This is the DNS name used by management clients (such as Windows Admin Center) to communicate with the Network Controller.
-1. Specify a path to the Azure Stack HCI VHD file. Use **Browse** to find it quicker.
-1. Specify the number of VMs to be dedicated for Network Controller. At least three VMs are recommended for high availability.
-1. Under **Network**, enter the VLAN ID of the management network. Network Controller needs connectivity to the same management network as the hosts to communicate and configure the hosts.
-
-    > [!NOTE]
-    > Network Controller VMs use the virtual switch used for cluster management if available, otherwise they use the "Compute" virtual switch like the rest of the cluster VMs. For more information, see the [Network Controller requirements](../concepts/network-controller.md#network-controller-requirements) section in [Plan to deploy Network Controller](../concepts/network-controller.md).
-
-1. For **VM network addressing**, select either **DHCP** or **Static**.
-1. If you selected **DHCP**, enter the name for the Network Controller VMs.
-1. If you selected **Static**, specify the following:
-    1. IP address.
-    1. Subnet prefix.
-    1. Default gateway.
-    1. One or more DNS servers. Click **Add** to add additional DNS servers.
-1. Under **Credentials**, enter the username and password used to join the Network Controller VMs to the cluster domain.
-1. Enter the local administrative password for these VMs.
-1. Under **Advanced**, enter the path to the VMs.
-1. Enter values for **MAC address pool start** and **MAC address pool end**.
-1. When finished, click **Next**.
-1. On **Deploy the Network Controller**, wait until the wizard completes its job. Stay on this page until all progress tasks are complete. Then click **Finish**.
-
-1. After Network Controller VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For information on how to do this, see [Configure dynamic DNS registration for Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller#step-3-configure-dynamic-dns-registration-for-network-controller).
-
-1. If Network Controller deployment fails, do the following before you try this again:
-
-- Stop and delete any Network Controller VMs that the wizard created.  
-
-- Clean up any VHD mount points that the wizard created.  
-
-- Ensure you have at least 50-100GB of free space on your Hyper-V hosts.  
-
-## After you complete the wizard
-
-After the wizard has completed, there are still some important tasks you need to complete.
-
-The first task is to disable the Credential Security Support Provider (CredSSP) protocol on each server for security purposes. Remember that CredSSP needed to be enabled for the wizard. If you experience issues with CredSSP, see [Troubleshoot CredSSP](../manage/troubleshoot-credssp.md) for more information.
-
-1. In Windows Admin Center, under **All connections**, select the cluster you just created.
-1. Under **Tools**, select **Servers**.
-1. In the right pane, select the first server in the cluster.
-1. Under **Overview**, select **Disable CredSSP**. You will see that the red **CredSSP ENABLED** banner at the top disappears.
-1. Repeat steps 3 and 4 for each server in your cluster.
-
-OK, now here are the other tasks you will need to do:
-
-- Setup a cluster witness. See [Set up a cluster witness](witness.md).
-- Create your volumes. See [Create volumes](../manage/create-volumes.md).
-- For stretched clusters, create your volumes and setup replication. See [Create stretched cluster volumes and set up replication](../manage/create-stretched-volumes.md).
 
 ## Next steps
 
