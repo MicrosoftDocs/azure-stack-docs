@@ -7,7 +7,7 @@ documentationcenter: ''
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/12/2021
+ms.date: 01/14/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 02/26/2019
@@ -311,8 +311,12 @@ Usage is reported for the following resource providers:
 ### Event Hubs
 
 **Meter ID**: d3a257e7-cf59-43bd-82c0-cf29ca8f7da0 (paid meter)  
-**Meter ID**: 29ea0bfc-6780-4711-98fc-2c7db191e1a4 (admin meter)   
-**Meter name**: Number of operational Event Hubs Capacity Units per hour    
+**Meter name**: 1 Core    
+**Unit**: Core\*hours  
+**Notes**: Number of cores used by Event Hubs clusters deployed. Numbers of cores are in multiples of 10.
+
+**Meter ID**: 29ea0bfc-6780-4711-98fc-2c7db191e1a4 (admin meter)  
+**Meter name**: 1 Core Admin   
 **Unit**: Core\*hours  
 **Notes**: Number of cores used by Event Hubs clusters deployed. Numbers of cores are in multiples of 10.
 
