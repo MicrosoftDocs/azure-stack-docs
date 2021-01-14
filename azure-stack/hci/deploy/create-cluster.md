@@ -232,4 +232,3 @@ If resolving the cluster isn't successful after some time, in most cases you can
 - Do a final validation of the cluster. See [Validate an Azure Stack HCI cluster](validate.md)
 - Provision your VMs. See [Manage VMs on Azure Stack HCI using Windows Admin Center](../manage/vm.md).
 - You can also deploy a cluster using PowerShell. See [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md).
-- You can also deploy Network Controller using PowerShell. See [Deploy Network Controller using PowerShell](network-controller-powershell.md).

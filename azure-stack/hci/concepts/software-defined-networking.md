@@ -55,4 +55,4 @@ For related information, see also:
 
 - [Plan a Software Defined Network infrastructure](plan-software-defined-networking-infrastructure.md)
 - [SDN in Windows Server overview](/windows-server/networking/sdn/software-defined-networking)
-- [Deploy a Software Defined Network infrastructure using scripts](/windows-server/networking/sdn/deploy/deploy-a-software-defined-network-infrastructure-using-scripts)
+- [Deploy an SDN infrastructure using SDN Express](../deploy/sdn-express.md)
