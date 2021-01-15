@@ -66,9 +66,9 @@ Take a few minutes to watch the video on adding server nodes to a stretched clus
 
 > [!VIDEO https://www.youtube.com/embed/AVHPkRmsZ5Y]
 
-You add or remove servers to a stretched cluster using Windows PowerShell. Using the [Get-ClusterFaultDomainXML](https://docs.microsoft.com/powershell/module/failoverclusters/get-clusterfaultdomainxml) and [Set-ClusterFaultDomainXML](https://docs.microsoft.com/powershell/module/failoverclusters/set-clusterfaultdomainxml) cmdlets, you first modify the site (fault domain) information prior to adding the servers.
+You add or remove servers to a stretched cluster using Windows PowerShell. Using the [Get-ClusterFaultDomainXML](/powershell/module/failoverclusters/get-clusterfaultdomainxml) and [Set-ClusterFaultDomainXML](/powershell/module/failoverclusters/set-clusterfaultdomainxml) cmdlets, you first modify the site (fault domain) information prior to adding the servers.
 
-Then, you can add the server pair to each site simultaneously using the [Add-ClusterNode](https://docs.microsoft.com/powershell/module/failoverclusters/add-clusternode) cmdlet, allowing each new server's drives to be added at the same time also.
+Then, you can add the server pair to each site simultaneously using the [Add-ClusterNode](/powershell/module/failoverclusters/add-clusternode) cmdlet, allowing each new server's drives to be added at the same time also.
 
 Typically, you manage clusters from a remote computer, rather than on a server in a cluster. This remote computer is called the management computer.
 
@@ -162,7 +162,7 @@ Once the servers have been successfully added, the associated drives are automat
 
 ## Remove server pairs from a stretched cluster
 
-Removing a server pair from a stretched cluster is a similar process to adding a server pair, but using the [Remove-ClusterNode](https://docs.microsoft.com/powershell/module/failoverclusters/remove-clusternode) cmdlet instead.
+Removing a server pair from a stretched cluster is a similar process to adding a server pair, but using the [Remove-ClusterNode](/powershell/module/failoverclusters/remove-clusternode) cmdlet instead.
 
 1. Use the following PowerShell cmdlets to determine the state of the cluster:
 

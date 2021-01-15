@@ -31,7 +31,7 @@ There are several requirements and things to consider before you begin migration
 
 - You must have domain credentials with administrator permissions for Azure Stack HCI.
 
-- Backup all VMs on your source cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases.  To backup to Azure, see [Use Azure Backup](https://docs.microsoft.com/azure-stack/hci/manage/use-azure-backup).
+- Backup all VMs on your source cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases.  To backup to Azure, see [Use Azure Backup](../manage/use-azure-backup.md).
 
 - Collect inventory and configuration of all cluster nodes and cluster naming, network configuration, Cluster Shared Volume (CSV) resiliency and capacity, and quorum witness.
 
@@ -176,7 +176,7 @@ For more information on how to create the cluster using PowerShell, see [Create 
     Get-StoragePool | ? IsPrimordial -eq $false | ft FriendlyName,Version
     ```
 
-1. Create the quorum witness. For information on how, see [Set up a cluster witness](https://docs.microsoft.com/azure-stack/hci/deploy/witness).
+1. Create the quorum witness. For information on how, see [Set up a cluster witness](./witness.md).
 
 1. Verify that storage repair jobs are completed using the following:
 

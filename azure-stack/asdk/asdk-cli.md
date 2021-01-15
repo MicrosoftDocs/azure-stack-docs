@@ -17,7 +17,7 @@ ms.lastreviewed: 12/2/2020
 
 Follow the steps in this article to set up the Azure Command-Line Interface (CLI) to manage Azure Stack Development Kit (ASDK) resources from Linux, Mac, and Windows client platforms.
 
-This article addresses getting your certificates and trusting them on your remote management machine. To install the Azure CLI and connect to your environment, see [Install Azure CLI on Azure Stack Hub](/azure-stack/user/azure-stack-version-profiles-azurecli2).
+This article addresses getting your certificates and trusting them on your remote management machine. To install the Azure CLI and connect to your environment, see [Install Azure CLI on Azure Stack Hub](../user/azure-stack-version-profiles-azurecli2.md).
 
 ## Prepare for Azure CLI
 
@@ -125,7 +125,7 @@ To use Azure CLI with the aSDK, you must trust the CA root certificate on your r
     Write-Host "Python Cert store was updated to allow the Azure Stack Hub CA root certificate"
     ```
 
-For instructions on Installing and connecting with Azure CLI see [Install Azure CLI on Azure Stack Hub](/azure-stack/user/azure-stack-version-profiles-azurecli2).
+For instructions on Installing and connecting with Azure CLI see [Install Azure CLI on Azure Stack Hub](../user/azure-stack-version-profiles-azurecli2.md).
 
 ### [Linux](#tab/lin)
 
@@ -153,7 +153,7 @@ When setting up CLI, trust the Azure Stack Hub CA root certificate by appending 
      sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
      ```
 
-For instructions on Installing and connecting with Azure CLI see [Install Azure CLI on Azure Stack Hub](/azure-stack/user/azure-stack-version-profiles-azurecli2).
+For instructions on Installing and connecting with Azure CLI see [Install Azure CLI on Azure Stack Hub](../user/azure-stack-version-profiles-azurecli2.md).
 
 ---
 

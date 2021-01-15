@@ -67,7 +67,7 @@ This section walks you through setting up CLI if you're using Azure AD as your i
           --endpoint-active-directory-graph-resource-id "https://graph.windows.net/"
       ```
 
-    You can find a reference for the [register command](https://docs.microsoft.com/cli/azure/cloud?view=azure-cli-latest#az_cloud_register) in the Azure CLI reference documentation.
+    You can find a reference for the [register command](/cli/azure/cloud?view=azure-cli-latest#az_cloud_register) in the Azure CLI reference documentation.
 
 
 4. Set the active environment by using the following commands.
@@ -402,4 +402,4 @@ There are known issues when using CLI in Azure Stack Hub:
 
 - [Deploy templates with Azure CLI](azure-stack-deploy-template-command-line.md)
 - [Enable Azure CLI for Azure Stack Hub users (Operator)](../operator/azure-stack-cli-admin.md)
-- [Manage user permissions](azure-stack-manage-permissions.md) 
+- [Manage user permissions](azure-stack-manage-permissions.md)
