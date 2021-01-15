@@ -87,7 +87,7 @@ Once you have set up your Windows Server, you will need to install [Azure Stack 
     azcopy sync "https:/<storagaccount>/<container>?<SAS Key>" "C:\\myFolder" --recursive=true --delete-destination=true
     ```
 
-5.  Enter the **storage account**,** SAS key**, and **local directory path.  You'll will use this to copy data incrementally to the **target** storage account
+5.  Enter the **storage account**,**SAS key**, and **local directory path**.  You'll will use this to copy data incrementally to the **target** storage account
     
     ```
     azcopy sync "C:\\myFolder" "https:// <storagaccount>/<container>?<SAS Key>" --recursive=true --delete-destination=true

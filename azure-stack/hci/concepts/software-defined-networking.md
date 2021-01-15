@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/21/2020
+ms.date: 01/13/2021
 ---
 
 # Software Defined Networking (SDN) in Azure Stack HCI
@@ -33,7 +33,7 @@ Deploying Network Controller enables the following functionalities:
 - Attach virtual appliances to your virtual networks.
 - Configure Quality of Service (QoS) policies for VMs attached to virtual networks or traditional VLAN-based networks.
 
-We recommend [deploying the Network Controller during cluster creation](../deploy/create-cluster.md#step-5-sdn-optional). Alternatively, you can [deploy the Network Controller using PowerShell](../deploy/network-controller-powershell.md) after creating an Azure Stack HCI cluster.
+We recommend deploying [Network Controller using SDN Express](../deploy/sdn-express.md) after creating an Azure Stack HCI cluster.
 
 ## Software Load Balancing
 
@@ -55,4 +55,4 @@ For related information, see also:
 
 - [Plan a Software Defined Network infrastructure](plan-software-defined-networking-infrastructure.md)
 - [SDN in Windows Server overview](/windows-server/networking/sdn/software-defined-networking)
-- [Deploy a Software Defined Network infrastructure using scripts](/windows-server/networking/sdn/deploy/deploy-a-software-defined-network-infrastructure-using-scripts)
+- [Deploy an SDN infrastructure using SDN Express](../deploy/sdn-express.md)
