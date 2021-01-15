@@ -4,7 +4,7 @@ description: This topic provides guidance on how to plan, configure, and deploy 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 01/07/2021
+ms.date: 01/15/2021
 ---
 
 # Deploy virtual desktop infrastructure (VDI) on Azure Stack HCI
@@ -37,7 +37,7 @@ In Windows Admin Center, set up [Azure Update Management](/windows-server/manage
 
 To get started with Azure Update Management, you need a subscription to Microsoft Azure. If you don’t have a subscription, you can sign up for a [free trial](https://azure.microsoft.com/free).
 
-You can also use Windows Admin Center to set up additional Azure hybrid services, such as Backup, File Sync, Site Recovery, Point-to-Site VPN, and Azure Security Center. To learn more, see [Use Azure hybrid services]().
+You can also use Windows Admin Center to set up additional Azure hybrid services, such as Backup, File Sync, Site Recovery, Point-to-Site VPN, and Azure Security Center.
 
 ### Step 3: Deploy Remote Desktop Services (RDS) for VDI support
 After completing your Azure Stack HCI deployment and registering with Azure to use Update Management, you’re ready to use the guidance in this section to build and deploy RDS to support VDI.
@@ -55,5 +55,4 @@ To build and deploy RDS:
 
 ## Next steps
 For more information related to VDI, see:
-- [Windows Virtual Desktop pricing](https://azure.microsoft.com/pricing/details/virtual-desktop)
 - [Supported configurations for Remote Desktop Services](/windows-server/remote/remote-desktop-services/rds-supported-config)
