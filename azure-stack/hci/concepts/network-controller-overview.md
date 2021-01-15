@@ -76,5 +76,5 @@ To learn more about user-defined routes, see [Use Network Virtual Appliances on 
 For related information, see also:
 
 - [Plan to deploy Network Controller](network-controller.md)
-- [Deploy Network Controller using Windows PowerShell](../deploy/network-controller-powershell.md)
+- [Deploy Network Controller using Windows PowerShell](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts)
 - [SDN in Azure Stack HCI](software-defined-networking.md)
