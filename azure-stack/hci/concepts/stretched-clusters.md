@@ -20,7 +20,7 @@ Storage Replica supports both synchronous and asynchronous replication:
 - Asynchronous replication mirrors data across sites beyond metropolitan ranges over network links with higher latencies, but without a guarantee that both sites have identical copies of the data at the time of a failure.
 
 >[!NOTE]
-> For asynchronous replication, you need to bring destination volumes in the other site online manually after failover. For more information, see [Asynchronous replication](https://docs.microsoft.com/windows-server/storage/storage-replica/storage-replica-overview#asynchronous-replication).
+> For asynchronous replication, you need to bring destination volumes in the other site online manually after failover. For more information, see [Asynchronous replication](/windows-server/storage/storage-replica/storage-replica-overview#asynchronous-replication).
 
 There are two types of stretched clusters, active-passive and active-active. You can set up active-passive site replication, where there is a preferred site and direction for replication. Active-active replication is where replication can happen bi-directionally from either site. This article covers the active/passive configuration only.
 
@@ -45,8 +45,8 @@ The following diagram shows both Site 1 and Site 2 as being active sites, with b
 
 ## Next steps
 
-- Learn more about Storage Replica. See [Storage Replica overview](https://docs.microsoft.com/windows-server/storage/storage-replica/storage-replica-overview).
-- Learn even more about using Storage Replica. See [Configure a Hyper-V Failover Cluster or a File Server for a General Use Cluster](https://docs.microsoft.com/windows-server/storage/storage-replica/stretch-cluster-replication-using-shared-storage#configure-a-hyper-v-failover-cluster-or-a-file-server-for-a-general-use-cluster).
+- Learn more about Storage Replica. See [Storage Replica overview](/windows-server/storage/storage-replica/storage-replica-overview).
+- Learn even more about using Storage Replica. See [Configure a Hyper-V Failover Cluster or a File Server for a General Use Cluster](/windows-server/storage/storage-replica/stretch-cluster-replication-using-shared-storage#configure-a-hyper-v-failover-cluster-or-a-file-server-for-a-general-use-cluster).
 - Learn about hardware and other requirements for stretched clusters. See [System requirements](system-requirements.md).
 - Learn how to deploy a stretched cluster using Windows Admin Center. See [Create a cluster using Windows Admin Center](../deploy/create-cluster.md).
 - Learn how to deploy a stretched cluster using PowerShell. See [Create a cluster using PowerShell](../deploy/create-cluster-powershell.md).

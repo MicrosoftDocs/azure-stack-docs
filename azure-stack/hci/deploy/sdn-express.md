@@ -16,7 +16,7 @@ In this topic, you deploy an end-to-end Software Defined Network (SDN) infrastru
 
 The scripts support a phased deployment, where you can deploy just the Network Controller to achieve a core set of functionality with minimal network requirements. You can also deploy Network Controller using the Create Cluster wizard in Windows Admin Center. To deploy other SDN components such as SLB and Gateway however, you must use the SDN Express scripts.
 
-You can also deploy an SDN infrastructure using System Center Virtual Machine Manager (VMM). For more information, see [Manage SDN resources in the VMM fabric](https://docs.microsoft.com/system-center/vmm/network-sdn).
+You can also deploy an SDN infrastructure using System Center Virtual Machine Manager (VMM). For more information, see [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
 
 ## Before you begin
 
@@ -57,7 +57,7 @@ Make sure all host servers have the Azure Stack HCI operating system installed. 
     SDNExpress\scripts\SDNExpress.ps1 -ConfigurationDataFile MultiNodeSampleConfig.psd1 -Verbose
     ```
 
-1. After the network controller VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For more information, see Step 3 of [Requirements for Deploying Network Controller](https://docs.microsoft.com/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller#step-3-configure-dynamic-dns-registration-for-network-controller).
+1. After the network controller VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For more information, see Step 3 of [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller#step-3-configure-dynamic-dns-registration-for-network-controller).
 
 ## Next steps
 

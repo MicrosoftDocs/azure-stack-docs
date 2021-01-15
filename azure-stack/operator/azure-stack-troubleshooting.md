@@ -30,7 +30,7 @@ These sections include links to docs that cover common questions sent to Microso
 
 ### Updates and diagnostics
 
-* [How to use diagnostics tools in Azure Stack Hub](./azure-stack-diagnostic-log-collection-overview.md)
+* [How to use diagnostics tools in Azure Stack Hub](./diagnostic-log-collection.md)
 * [How to validate Azure Stack Hub system state](azure-stack-diagnostic-test.md)
 * [Update package release cadence](azure-stack-servicing-policy.md#update-package-release-cadence)
 * [Verify and troubleshoot node status](azure-stack-node-actions.md)
@@ -199,11 +199,11 @@ If the Create-AADIdentityApp.ps1 script that's required for App Service fails, b
 
 The Azure Stack Hub patch and update process is designed to allow operators to apply update packages in a consistent, streamlined way. While uncommon, issues can occur during patch and update process. The following steps are recommended should you encounter an issue during the patch and update process:
 
-0. **Prerequisites**: Be sure that you have followed the [Update Activity Checklist](release-notes-checklist.md) and [enable proactive log collection](./azure-stack-diagnostic-log-collection-overview.md#send-logs-proactively).
+0. **Prerequisites**: Be sure that you have followed the [Update Activity Checklist](release-notes-checklist.md) and [enable proactive log collection](./diagnostic-log-collection.md#send-logs-proactively).
 
 1. Follow the remediation steps in the failure alert created when your update failed.
 
-2. If you have been unable to resolve your issue, create an [Azure Stack Hub support ticket](./azure-stack-help-and-support-overview.md?view=azs-2002). Be sure you have [logs collected](./azure-stack-diagnostic-log-collection-overview.md#send-logs-now) for the time span when the issue occurred.
+2. If you have been unable to resolve your issue, create an [Azure Stack Hub support ticket](./azure-stack-help-and-support-overview.md). Be sure you have [logs collected](./diagnostic-log-collection.md#send-logs-now) for the time span when the issue occurred.
 
 ## Common Azure Stack Hub patch and update issues
 
@@ -237,5 +237,5 @@ The Azure Stack Hub patch and update process is designed to allow operators to a
 **Cause**: When attempting the 2002 update, the update might fail and provide this message: `The private network parameter is missing from cloud parameters. Please use set-azsprivatenetwork cmdlet to set private networkTrace`.
 
 **Remediation**: 
-[Set up a private internal network](./azure-stack-network.md?view=azs-2002#private-network).
+[Set up a private internal network](./azure-stack-network.md?view=azs-2002&preserve-view=true#private-network).
 ::: moniker-end

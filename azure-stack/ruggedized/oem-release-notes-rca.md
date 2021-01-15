@@ -49,7 +49,7 @@ This document describes the contents of Azure Stack Hub ruggedized first party u
 
 | Release version    | Firmware version    | Changes                                                                                                          |
 |--------------------|---------------------|------------------------------------------------------------------------------------------------------------------|
-|     2008           |     14.27.60.08     | Fixed a firmware fatal assert that showed an IRISC HANG due to init_hca waiting on the timers flow lock release. |
+|     2008           |     14.27.60.08     | Fixed a firmware fatal assert that cause the IRISC to stop responding due to init_hca waiting on the timers flow lock release. |
 |     2005           |     14.26.60.00     |                                                                                                                  |
 
 ### NIC-HLH
@@ -70,7 +70,7 @@ This document describes the contents of Azure Stack Hub ruggedized first party u
 
 |     Release version |     Firmware version |     Changes                                                                                           |
 |---------------------|----------------------|-------------------------------------------------------------------------------------------------------|
-| 2005, 2008          | 25.5.7.0005          | Fixed an issue where a controller could hang at boot due to an incomplete non-volatile memory config. |
+| 2005, 2008          | 25.5.7.0005          | Fixed an issue where a controller could stop responding at boot due to an incomplete non-volatile memory config. |
 
 ### HBA - boot drives
 
@@ -82,7 +82,7 @@ This document describes the contents of Azure Stack Hub ruggedized first party u
 
 | Release version | Firmware version | Changes                                                                                                                                                                                                |
 |-----------------|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|     2008        |     9.0.6        | Addresses possible IDRAC hang during firmware update.<br> Signal noise filtering added to prevent false errors reported.<br> Host memory map modified to prevent potential front USB port disablement. |
+|     2008        |     9.0.6        | Addresses possible issue where the IDRAC may stop responding during firmware update.<br> Signal noise filtering added to prevent false errors reported.<br> Host memory map modified to prevent potential front USB port disablement. |
 |     2005        |     1.0.6        |                                                                                                                                                                                                        |
 
 ### Drive FW

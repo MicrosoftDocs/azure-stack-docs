@@ -70,7 +70,7 @@ Azure Stack Hub supports the use of managed disks and unmanaged disks in VMs, as
 
 It is recommended that you use Managed Disks for VM for easier management and capacity balance. You don't have to prepare a storage account and containers before using Managed Disks. When creating multiple managed disks, the disks are distributed into multiple volumes, which helps to balance the capacity of volumes.  
 
-**Unmanaged disks** are VHD files that are stored as page blobs in Azure storage accounts. The page blobs created by tenants are referred to as VM disks and are stored in containers in the storage accounts. We recommend you use Unmanaged Disks only for VMs that need to compatible with third party tools only support Azure-Unmanaged Disks.
+**Unmanaged disks** are VHD files that are stored as page blobs in Azure storage accounts. The page blobs created by tenants are referred to as VM disks and are stored in containers in the storage accounts. We recommend you use Unmanaged Disks only for VMs that need to be compatible with third party tools which only support Azure-Unmanaged Disks.
 
 The guidance to tenants is to place each disk into a separate container to improve performance of the VM.
 
@@ -346,4 +346,4 @@ The most extreme method for managing space involves moving unmanaged disks. If t
 
 ## Next steps
 
-To learn more about offering VMs to users, see [Manage storage capacity for Azure Stack Hub](./tutorial-offer-services.md?view=azs-2002).
+To learn more about offering VMs to users, see [Manage storage capacity for Azure Stack Hub](./tutorial-offer-services.md).
