@@ -370,7 +370,7 @@
         - name: Backup & restore
           href: azure-stack-backup-infrastructure-backup.md
         - name: Collect logs
-          href: azure-stack-diagnostic-log-collection-overview.md
+          href: ./diagnostic-log-collection.md
         - name: Health & alerts
           href: azure-stack-monitor-health.md
         - name: Manage 
