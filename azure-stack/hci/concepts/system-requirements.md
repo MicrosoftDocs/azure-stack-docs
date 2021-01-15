@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/29/2020
+ms.date: 01/14/2021
 ---
 
 # System requirements for Azure Stack HCI
@@ -56,20 +56,6 @@ An Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency netwo
 
 - Verify at least one network adapter is available and dedicated for cluster management.
 - Verify that physical switches in your network are configured to allow traffic on any VLANs you will use.
-
-There are multiple types of communication going on between server nodes:
-
-- Cluster communication (node joins, cluster updates, registry updates)
-- Cluster Heartbeats
-- Cluster Shared Volume (CSV) redirected traffic
-- Live migration traffic for virtual machines
-
-With Storage Spaces Direct, there is additional network traffic to consider:
-
-- Storage Bus Layer (SBL) – extents, or data, spread out between the nodes
-- Health – monitoring and managing objects (nodes, drives, network cards, Cluster Service)
-
-For stretched clusters, there is also additional Storage Replica traffic flowing between the sites. Storage Bus Layer (SBL) and Cluster Shared Volume (CSV) traffic does not go between sites, only between the server nodes within each site.
 
 For host networking considerations and requirements, see [Host network requirements](host-network-requirements.md).
 
