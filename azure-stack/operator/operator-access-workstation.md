@@ -3,10 +3,10 @@ title: Azure Stack Hub Operator Access Workstation
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: ashika789
 ms.topic: article
-ms.date: 11/04/2020
+ms.date: 1/15/2021
 ms.author: patricka
 ms.reviewer: asganesh
-ms.lastreviewed: 11/04/2020
+ms.lastreviewed: 1/15/2021
 
 # Intent: As an Azure Stack operator, I want to download and configure an Azure Stack Hub Operator Access Workstation.
 # Keyword: azure stack hub operator access workstation
