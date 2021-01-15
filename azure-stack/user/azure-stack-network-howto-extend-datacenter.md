@@ -265,7 +265,7 @@ To set up the iSCSI Initiator, firstly, log back into the **Azure Stack Hub user
 
 15. Repeat the process with the following:
 
-    a. ** IP address**: Your second iSCSI Target IP address.
+    a. **IP address**: Your second iSCSI Target IP address.
 
     b.  **Local adapter**: Microsoft iSCSI Initiator.
 
@@ -293,7 +293,7 @@ To set up the iSCSI Initiator, firstly, log back into the **Azure Stack Hub user
 
 1.  Repeat the process for the second initiator/target combination.
 
-    a. ** Local adapter**: Microsoft iSCSI Initiator.
+    a. **Local adapter**: Microsoft iSCSI Initiator.
 
     b.  **Initiator IP**: 10.10.11.4.
 

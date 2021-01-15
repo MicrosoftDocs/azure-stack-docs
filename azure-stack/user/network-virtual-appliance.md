@@ -184,4 +184,4 @@ If you need assistance, [contact the NVA vendor](https://support.microsoft.com/h
 
 ### Create a support ticket
 
-If the preceding steps don't resolve your problem, create a [support ticket](../operator/azure-stack-manage-basics.md#where-to-get-support) and use the [on demand log collection tool](../operator/azure-stack-diagnostic-log-collection-overview.md) to provide logs.
+If the preceding steps don't resolve your problem, create a [support ticket](../operator/azure-stack-manage-basics.md#where-to-get-support) and use the [on demand log collection tool](../operator/diagnostic-log-collection.md) to provide logs.

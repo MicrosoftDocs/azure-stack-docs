@@ -99,5 +99,4 @@ For more information on:
 
 Azure Stack Hub monitoring capabilities, including alerting, refer to [Monitor Health and Alerts](azure-stack-monitor-health.md).
 
-Azure Stack Hub log collection, see [Overview of Azure Stack diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md).
-
+Azure Stack Hub log collection, see [Overview of Azure Stack diagnostic log collection](./diagnostic-log-collection.md).
