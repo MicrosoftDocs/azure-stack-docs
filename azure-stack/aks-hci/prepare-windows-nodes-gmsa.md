@@ -38,7 +38,7 @@ netdom.exe join %computername% /domain:DomainName /UserD:DomainName\UserName /Pa
 
 Once all Windows worker nodes have been joined to a domain, follow the steps detailed at [configuring gMSA](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa/). Those steps will help you apply the Kubernetes gMSA custom resource definitions and webhooks on your Kubernetes cluster.
 
-For more information on Windows container with gMSA, see [Windows containers and gMSA](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts). 
+For more information on Windows container with gMSA, see [Windows containers and gMSA](/virtualization/windowscontainers/manage-containers/manage-serviceaccounts). 
 
 ## Next steps
 

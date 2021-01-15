@@ -55,7 +55,7 @@ Now you’re ready to deploy Network Controller on VMs running the operating sys
 
 To learn more, see:
 - [Create an Azure Stack HCI cluster](../deploy/create-cluster.md)
-- [Deploy Network Controller using Windows PowerShell](../deploy/network-controller-powershell.md)
+- [Deploy Network Controller using Windows PowerShell](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts)
 
 ## See also
 - [Network Controller](/windows-server/networking/sdn/technologies/network-controller/network-controller)

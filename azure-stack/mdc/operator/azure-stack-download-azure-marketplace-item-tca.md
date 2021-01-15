@@ -70,7 +70,7 @@ Your Azure Stack Hub deployment must have internet connectivity and be [registe
 
 In a disconnected environment, you cannot download marketplace items from Azure. You must use the offline syndication tool to download the marketplace items to a local drive, and then upload those items to your Azure Stack Hub from there.
 
-You can [download the offline syndication tools here](https://aka.ms/azsSyndicationtool).
+You can [download the offline syndication tools here](../../operator/azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected).
 
 ### Download Marketplace items from Azure
 

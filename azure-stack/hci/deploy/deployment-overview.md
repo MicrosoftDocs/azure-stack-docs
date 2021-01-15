@@ -63,7 +63,7 @@ After creating and registering the cluster, [run cluster validation tests](valid
 
 You are now ready to deploy workloads on Azure Stack HCI using Windows Admin Center.
 
-For details on how to get started deploying an Azure Kubernetes Service workload on Azure Stack HCI, see the following overview: [What is Azure Kubernetes Service on Azure Stack HCI?](https://docs.microsoft.com/azure-stack/aks-hci/overview)
+For details on how to get started deploying an Azure Kubernetes Service workload on Azure Stack HCI, see the following overview: [What is Azure Kubernetes Service on Azure Stack HCI?](../../aks-hci/overview.md)
 
 ## Next steps
 

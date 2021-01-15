@@ -58,4 +58,4 @@ Datadog is a fully unified platform encompassing infrastructure monitoring, appl
 ## Next steps
 For more information, see also:
 - [Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/)
-- [Microsoft Defender Antivirus](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-antivirus/microsoft-defender-antivirus-in-windows-10)
+- [Microsoft Defender Antivirus](/windows/security/threat-protection/microsoft-defender-antivirus/microsoft-defender-antivirus-in-windows-10)

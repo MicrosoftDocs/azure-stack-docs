@@ -254,5 +254,5 @@ The response token is then encrypted with the self-signed certificate contained 
 
 ## Next steps
 
-- [Azure Stack Hub diagnostic tools](./azure-stack-diagnostic-log-collection-overview.md)
+- [Azure Stack Hub diagnostic tools](./diagnostic-log-collection.md)
 - [Azure Stack Hub privileged endpoint reference](../reference/pep-2002/index.md)
