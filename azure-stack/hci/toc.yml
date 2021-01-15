@@ -57,7 +57,9 @@
     - name: Manage VMs with PowerShell
       href: manage/vm-powershell.md
     - name: Create VM affinity rules
-      href: manage/vm-affinity.md  
+      href: manage/vm-affinity.md
+    - name: VM load balancing
+      href: manage/vm-load-balancing.md
     - name: Attach GPU to Linux VM
       href: manage/attach-gpu-to-linux-vm.md
   - name: Manage storage
@@ -179,9 +181,9 @@
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
-    href: https://docs.microsoft.com/cli/azure/ext/stack-hci/stack-hci
+    href: /cli/azure/ext/stack-hci/stack-hci
   - name: Azure registration PowerShell commands
-    href: https://docs.microsoft.com/powershell/module/az.stackhci
+    href: /powershell/module/az.stackhci
   - name: Go package for ARM Azure Stack HCI service API
     href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
   - name: Azure Stack HCI Java service classes and interfaces

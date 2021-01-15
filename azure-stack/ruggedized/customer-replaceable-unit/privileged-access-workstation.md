@@ -62,5 +62,5 @@ To close the privileged endpoint session, run the following:
 
 For more information on connecting to and working with the privileged
 endpoint see [Use the privileged endpoint in Azure
-Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint)
-[Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint).
+Stack](../../operator/azure-stack-privileged-endpoint.md)
+[Hub](../../operator/azure-stack-privileged-endpoint.md).
