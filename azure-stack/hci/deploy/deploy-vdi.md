@@ -54,5 +54,4 @@ To build and deploy RDS:
     - [Deploy a two-node Storage Spaces Direct file system for UPD storage](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment)
 
 ## Next steps
-For more information related to VDI, see:
-- [Supported configurations for Remote Desktop Services](/windows-server/remote/remote-desktop-services/rds-supported-config)
+For more information related to VDI, see [Supported configurations for Remote Desktop Services](/windows-server/remote/remote-desktop-services/rds-supported-config)
