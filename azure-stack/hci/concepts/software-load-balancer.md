@@ -199,5 +199,5 @@ The following sections describe some of the features and capabilities of Softwar
 For related information, see also:
 
 - [Network Controller overview](network-controller-overview.md)
-- [Deploy Network Controller using Windows PowerShell](../deploy/network-controller-powershell.md)
+- [Deploy Network Controller using Windows PowerShell](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts)
 - [SDN in Azure Stack HCI](software-defined-networking.md)

@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 
-This topic describes how to migrate virtual machine (VM) files on Windows Server 2012 R2, Windows Server 2016, or Windows Server 2019 to new Azure Stack HCI server hardware using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one server to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy).
+This topic describes how to migrate virtual machine (VM) files on Windows Server 2012 R2, Windows Server 2016, or Windows Server 2019 to new Azure Stack HCI server hardware using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one server to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](/windows-server/administration/windows-commands/robocopy).
 
 > [!NOTE]
 > Hyper-V Live Migration and Hyper-V Replica from Windows Server to Azure Stack HCI is not supported.
@@ -52,7 +52,7 @@ There are several requirements and things to consider before you begin migration
 
 - Check if Azure Stack HCI supports your version of the VMs to import and update your VMs as needed. See the [VM version support and update](#vm-version-support-and-update) section on how to do this.
 
-- Backup all VMs on your source cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases. To backup to Azure, see [Use Azure Backup](https://docs.microsoft.com/azure-stack/hci/manage/use-azure-backup).
+- Backup all VMs on your source cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases. To backup to Azure, see [Use Azure Backup](../manage/use-azure-backup.md).
 
 - Make a checkpoint of your source cluster VMs and domain controller in case you have to roll back to a prior state. This is not applicable for physical servers.
 
@@ -331,9 +331,9 @@ Here is the process you use:
 
     `Robocopy \\2012R2-Clus01\c$\clusterstorage\volume01\Hyper-V\ \\20H2-Clus01\c$\clusterstorage\volume01\Hyper-V\ /E /MT:32 /R:0 /w:1 /NFL /NDL /copyall /log:c:\log.txt /xf`
 
-1. Create new Generation 1 VMs. For detailed information on how to do this, see [Manage VMs](https://docs.microsoft.com/azure-stack/hci/manage/vm).
+1. Create new Generation 1 VMs. For detailed information on how to do this, see [Manage VMs](../manage/vm.md).
 
-1. Attach the copied VHD files to the new VMs. For detailed information, see [Manage Virtual Hard Disks (VHD)](https://docs.microsoft.com/windows-server/storage/disk-management/manage-virtual-hard-disks)
+1. Attach the copied VHD files to the new VMs. For detailed information, see [Manage Virtual Hard Disks (VHD)](/windows-server/storage/disk-management/manage-virtual-hard-disks)
 
 As an FYI, the following Windows Server guest operating systems support Generation 2 VMs:
 
@@ -344,7 +344,7 @@ As an FYI, the following Windows Server guest operating systems support Generati
 - Windows 10
 - 64-bit versions of Windows 8.1 (64-bit)
 - 64-bit versions of Windows 8 (64-bit)
-- Linux (See [Supported Linux and FreeBSD VMs](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Linux-and-FreeBSD-virtual-machines-for-Hyper-V-on-Windows))
+- Linux (See [Supported Linux and FreeBSD VMs](/windows-server/virtualization/hyper-v/Supported-Linux-and-FreeBSD-virtual-machines-for-Hyper-V-on-Windows))
 
 ## Next steps
 

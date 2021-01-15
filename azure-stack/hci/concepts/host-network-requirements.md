@@ -151,7 +151,7 @@ SET provides additional features over LBFO including quality and performance imp
 - speed (throughput)
 - configuration
 
-The easiest way to identify if adapters are symmetric is if the speeds are the same and the interface descriptions match. They can deviate only in the numeral listed in the description. Use the [`Get-NetAdapterAdvancedProperty`](https://docs.microsoft.com/powershell/module/netadapter/get-netadapteradvancedproperty) cmdlet to ensure the configuration reported lists the same property values.
+The easiest way to identify if adapters are symmetric is if the speeds are the same and the interface descriptions match. They can deviate only in the numeral listed in the description. Use the [`Get-NetAdapterAdvancedProperty`](/powershell/module/netadapter/get-netadapteradvancedproperty) cmdlet to ensure the configuration reported lists the same property values.
 
 See the following table for an example of the interface descriptions deviating only by numeral (#):
 
@@ -293,6 +293,6 @@ Stretched clusters have the following requirements and characteristics:
 
 - Learn about network switch and physical network requirements. See [Physical network requirements](physical-network-requirements.md).
 - Brush up on failover clustering basics. See [Failover Clustering Networking Basics](https://techcommunity.microsoft.com/t5/failover-clustering/failover-clustering-networking-basics-and-fundamentals/ba-p/1706005?s=09)
-- Brush up on using SET. See [Remote Direct Memory Access (RDMA) and Switch Embedded Teaming (SET)](https://docs.microsoft.com/windows-server/virtualization/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming)
-- For deployment, see [Create a cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster)
-- For deployment, see [Create a cluster using Windows PowerShell](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster-powershell)
+- Brush up on using SET. See [Remote Direct Memory Access (RDMA) and Switch Embedded Teaming (SET)](/windows-server/virtualization/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming)
+- For deployment, see [Create a cluster using Windows Admin Center](../deploy/create-cluster.md)
+- For deployment, see [Create a cluster using Windows PowerShell](../deploy/create-cluster-powershell.md)
