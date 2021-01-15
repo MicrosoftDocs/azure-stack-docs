@@ -85,4 +85,4 @@ Take the following steps if the infrastructure and tenant services don't success
 
 ## Next steps
 
-Learn more about [Azure Stack Hub diagnostic tools](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002)
+Learn more about [Azure Stack Hub diagnostic tools](./diagnostic-log-collection.md)

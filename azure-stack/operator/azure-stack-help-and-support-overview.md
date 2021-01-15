@@ -65,8 +65,8 @@ This set of tutorials is customized depending on whether you're running the ASDK
 
 You can send diagnostic logs to Microsoft in two ways:
 
-- [Send logs proactively](./azure-stack-diagnostic-log-collection-overview.md#send-logs-proactively): If enabled, log collection is triggered by specific health alerts.
-- [Send logs now](./azure-stack-diagnostic-log-collection-overview.md#send-logs-now): You can manually choose a specific sliding window as the time frame for log collection.
+- [Send logs proactively](./diagnostic-log-collection.md#send-logs-proactively): If enabled, log collection is triggered by specific health alerts.
+- [Send logs now](./diagnostic-log-collection.md#send-logs-now): You can manually choose a specific sliding window as the time frame for log collection.
 
 ![Screenshot that shows how to start collecting diagnostic logs.](media/azure-stack-help-and-support/banner-enable-automatic-log-collection.png)
 
@@ -82,7 +82,7 @@ Beginning with the 1907 release, there are two new ways to collect logs in **Hel
 
 ![Diagnostic log collection options](media/azure-stack-automatic-log-collection/azure-stack-log-collection-overview.png)
 
-Integrated systems can share the diagnostic logs with Microsoft Support. Because Azure Stack Development Kit (ASDK) is an evaluation environment, it's not supported by Microsoft Support. For more information, see [Azure Stack Hub diagnostic log collection overview](azure-stack-diagnostic-log-collection-overview.md).
+Integrated systems can share the diagnostic logs with Microsoft Support. Because Azure Stack Development Kit (ASDK) is an evaluation environment, it's not supported by Microsoft Support. For more information, see [Azure Stack Hub diagnostic log collection overview](./diagnostic-log-collection.md).
 
 ## Help and support for earlier releases Azure Stack Hub (pre-1905)
 
@@ -104,6 +104,6 @@ Select **Help** (question mark) in the upper-right corner of the administrator p
 
 ## Next steps
 
-- Learn about [diagnostic log collection](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002).
+- Learn about [diagnostic log collection](./diagnostic-log-collection.md).
 - Learn how to [find your Cloud ID](azure-stack-find-cloud-id.md).
 - Learn about [troubleshooting Azure Stack Hub](azure-stack-troubleshooting.md).

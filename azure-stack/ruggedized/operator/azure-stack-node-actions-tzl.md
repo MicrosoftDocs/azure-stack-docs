@@ -81,7 +81,7 @@ You need to install Azure Stack Hub PowerShell modules. These cmdlets are in the
 
 The **Stop** action turns off the node. It's the same as pressing the power button. It doesn't send a shutdown signal to the operating system. For planned stop operations, always try the shutdown operation first.
 
-This action is typically used when a node is in a hung state and no longer responds to requests.
+This action is typically used when a node no longer responds to requests.
 
 To run the stop action, open an elevated PowerShell prompt, and run the following cmdlet:
 
@@ -91,7 +91,7 @@ To run the stop action, open an elevated PowerShell prompt, and run the followin
 
 In the unlikely case that the stop action doesn't work, retry the operation and if it fails a second time use the BMC web interface instead.
 
-For more information, see [Stop-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/stop-azsscaleunitnode).
+For more information, see [Stop-AzsScaleUnitNode](/powershell/module/azs.fabric.admin/stop-azsscaleunitnode).
 
 ## Start
 
@@ -105,7 +105,7 @@ To run the start action, open an elevated PowerShell prompt, and run the followi
 
 In the unlikely case that the start action doesn't work, retry the operation. If it fails a second time, use the BMC web interface instead.
 
-For more information, see [Start-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/start-azsscaleunitnode).
+For more information, see [Start-AzsScaleUnitNode](/powershell/module/azs.fabric.admin/start-azsscaleunitnode).
 
 ## Drain
 
@@ -122,7 +122,7 @@ To run the drain action, open an elevated PowerShell prompt, and run the followi
   Disable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ```
 
-For more information, see [Disable-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/disable-azsscaleunitnode).
+For more information, see [Disable-AzsScaleUnitNode](/powershell/module/azs.fabric.admin/disable-azsscaleunitnode).
 
 ## Resume
 
@@ -134,7 +134,7 @@ To run the resume action, open an elevated PowerShell prompt, and run the follow
   Enable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ```
 
-For more information, see [Enable-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/enable-azsscaleunitnode).
+For more information, see [Enable-AzsScaleUnitNode](/powershell/module/azs.fabric.admin/enable-azsscaleunitnode).
 
 ## Repair
 
@@ -170,4 +170,4 @@ To run the shutdown action, open an elevated PowerShell prompt, and run the foll
 
 ## Next steps
 
-[Learn about the Azure Stack Hub Fabric operator module](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0).
+[Learn about the Azure Stack Hub Fabric operator module](/powershell/module/azs.fabric.admin/).
