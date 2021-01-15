@@ -3,7 +3,7 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 01/04/2021
+ms.date: 01/15/2021
 ms.author: sethm
 ms.reviewer: gara
 ms.lastreviewed: 05/28/2020
@@ -166,6 +166,29 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Updated marketplace items
 
+- 01/06/2021: SQL Server 2017 Enterprise Windows Server 2016 - Bring your own license - version 14.0.20201111
+- 01/06/2021: SQL Server 2017 Standard on Windows Server 2016 - Pay as you go - version 14.0.20201111
+- 01/06/2021: SQL Server 2017 Standard on Windows Server 2016 - Bring your own license - version 14.0.20201111
+- 01/06/2021: SQL Server 2019 Enterprise on Windows Server 2019 - Pay as you go - version 15.0.20201111
+- 01/06/2021: SQL Server 2019 Enterprise on Windows Server 2019 - Bring your own license - version 15.0.20201111
+- 01/06/2021: Free SQL Server License: SQL 2019 Developer on Windows Server 2019 - Pay as you go - version 15.0.20201111
+- 01/06/2021: Free SQL Server License: SQL 2019 Developer on Windows Server 2019 - Bring your own license - version 15.0.20201111
+- 01/06/2021: SQL Server 2019 Standard on Windows Server 2019 - Pay as you go - version 15.0.20201111
+- 01/06/2021: SQL Server 2019 Standard on Windows Server 2019 - Bring your own license - version 15.0.20201111
+- 01/06/2021: Free License: SQL Server 2016 SP2 Developer on Windows Server 2016 - Pay as you go - version 13.2.20201111
+- 01/06/2021: Free License: SQL Server 2016 SP2 Developer on Windows Server 2016 - Bring your own license - version 13.2.20201111
+- 01/06/2021: Free License: SQL Server 2016 SP2 Express on Windows Server 2016 - Pay as you go - version 13.2.20201111
+- 01/06/2021: Free License: SQL Server 2016 SP2 Express on Windows Server 2016 - Bring your own license - version 13.2.20201111
+- 01/06/2021: Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016 - Pay as you go - version 14.0.20201111
+- 01/06/2021: Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016 - Bring your own license - version 14.0.20201111
+- 01/06/2021: Free SQL Server License: SQL Server 2017 Express on Windows Server 2016 - Pay as you go - version 14.0.20201111
+- 01/06/2021: Free SQL Server License: SQL Server 2017 Express on Windows Server 2016 - Bring your own license - version 14.0.20201111
+- 01/06/2021: SQL Server 2016 SP2 Enterprise on Windows Server 2016 - Pay as you go - version 13.2.20201111
+- 01/06/2021: SQL Server 2016 SP2 Enterprise on Windows Server 2016 - Bring your own license - version 13.2.20201111
+- 01/06/2021: SQL Server 2016 SP2 Standard on Windows Server 2016 - Pay as you go - version 13.2.20201111
+- 01/06/2021: SQL Server 2016 SP2 Standard on Windows Server 2016 - Bring your own license - version 13.2.20201111
+- 01/06/2021: SQL Server 2017 Enterprise Windows Server 2016 - Pay as you go - version 14.0.20201111
+- 01/06/2021: SqlIaaSExtension   1.3.20560
 - 12/22/2020: Rogue Wave Software Centos 7.8 – version 7.8.2020062400
 - 12/07/2020: Bitnami Elasticsearch Cluster - version 1.0.2
 - 12/07/2020: Bitnami Cassandra Cluster - version 1.0.21
