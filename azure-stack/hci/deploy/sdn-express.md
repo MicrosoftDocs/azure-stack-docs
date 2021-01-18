@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 12/16/2020 
+ms.date: 01/16/2021
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version 20H2
 
-In this topic, you deploy an end-to-end Software Defined Network (SDN) infrastructure using SDN Express PowerShell scripts. The infrastructure includes a highly available (HA) network controller, a highly available Software Load Balancer (SLB) and a highly available gateway.  
+In this topic, you deploy an end-to-end Software Defined Network (SDN) infrastructure using SDN Express PowerShell scripts. The infrastructure may include a highly available (HA) network controller (NC), a highly available Software Load Balancer (SLB), and a highly available gateway.  
 
 The scripts support a phased deployment, where you can deploy just the Network Controller to achieve a core set of functionality with minimal network requirements. You can also deploy Network Controller using the Create Cluster wizard in Windows Admin Center. To deploy other SDN components such as SLB and Gateway however, you must use the SDN Express scripts.
 
@@ -32,7 +32,37 @@ You do not have to deploy all SDN components. See the [Phased deployment](../con
 
 Make sure all host servers have the Azure Stack HCI operating system installed. See [Deploy the Azure Stack HCI operating system](operating-system.md) on how to do this.
 
-## Run the SDN Express scripts
+## Requirements
+
+The following requirements must be met for a successful SDN deployment:
+
+- All host servers must have Hyper-V enabled
+- All host servers must be joined to Active Directory
+- A virtual switch must be created
+- The physical network must be configured for the subnets and VLANs defined in the configuration file
+- The VHDX file specified in the configuration file must be reachable from the deployment computer where the SDN Express script is run
+
+## Create the VDX file
+
+SDN uses a VHDX file containing the Azure Stack HCI OS as a source for creating the SDN virtual machines (VMs). The version of the OS in your VHDX must match the version used by the Hyper-V hosts.
+
+If you've downloaded and installed the Azure Stack HCI OS from an ISO, you can create this VHDX using the `Convert-WindowsImage` utility as described in the [Script Center](https://gallery.technet.microsoft.com/scriptcenter/Convert-WindowsImageps1-0fe23a8f).
+
+The following shows an example using `Convert-WindowsImage`:
+
+ ```powershell
+$wimpath = "d:\sources\install.wim"
+$vhdpath = "c:\temp\WindowsServerDatacenter.vhdx"
+$Edition = 4   # 4 = Full Desktop, 3 = Server Core
+
+import-module ".\convert-windowsimage.ps1"
+
+Convert-WindowsImage -SourcePath $wimpath -Edition $Edition -VHDPath $vhdpath -SizeBytes 500GB -DiskLayout UEFI
+```
+
+## Download the GitHub repository
+
+The SDN Express script files live in GitHub. The first step is to get the necessary files and folders onto your deployment computer.
 
 1. Go to the [SDN Express](https://github.com/microsoft/SDN) GitHub repository.
 
@@ -43,15 +73,41 @@ Make sure all host servers have the Azure Stack HCI operating system installed. 
 
 1. Extract the ZIP file and copy the `SDNExpress` folder to your deployment computer's `C:\` folder.
 
+## Edit the configuration file
+
+The PowerShell `MultiNodeSampleConfig.psd1` configuration data file contains all the parameters and settings that are needed for the SDN Express script as input for the various parameters and configuration settings. This file has specific information about what needs to be filled out based on whether you are deploying only the network controller component, or the software load balancer and gateway components as well.
+
+For detailed information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md) topic.
+
+Let's begin:
+
 1. Navigate to the `C:\SDNExpress\scripts` folder.
 
-1. Run the `SDNExpress.ps1` script file. This script uses a PowerShell deployment (PSD) file as input for the various configuration settings. See the `README.md` file for instructions on how to run the script.  
+1. Open the `MultiNodeSampleConfig.psd1` file in your favorite text editor.
 
-1. Use a VHDX containing the Azure Stack HCI OS as a source for creating the SDN VMs. If you've downloaded and installed the Azure Stack HCI OS from an ISO, you can create this VHDX using the `convert-windowsimage` utility as described in the documentation.
+1. Change specific parameter values to fit your infrastructure:
 
-1. Customize the `SDNExpress\scripts\MultiNodeSampleConfig.psd1` file by changing the specific values to fit your infrastructure including host names, domain names, usernames and passwords, and network information for the networks listed as discussed in the [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md) topic. This file has specific information about what needs to be filled out based on whether you are deploying only the network controller component, or the software load balancer and gateway components as well.
+    - VHDPath - vhd file path
+    - VHDFile - vhd file name
+    - VMLocation - file path to virtual machines
+    - JoinDomain - domain name of cluster
+    - SDNMacPoolStart - beginning MAC address of storage pool 
+    - SDNMacPoolEnd -  end MAC address of storage pool
+    - ManagementSubnet - subnet for management network
+    - ManagementGateway - gateway subnet for management network
+    - ManagementDNS - DNS for management network
+    - ManagementVLANID - VLAN ID of cluster management network
+    - DomainJoinUsername - administrative user name
+    - LocalAdminDomainUser - administrative password
+    - RestName - Representational State Transfer (REST) IP address
 
-1. Run the following script from a user account with Administrator credentials on the Hyper-V hosts:
+## Run the deployment script
+
+The SDN Express script deploys your SDN infrastructure. When the script is complete, your infrastructure is ready to be used for workload deployments.
+
+1. Review the `README.md` file for late-breaking information on how to run the deployment script.  
+
+1. Run the following command from a user account with administrative credentials for the cluster host servers:
 
     ```powershell
     SDNExpress\scripts\SDNExpress.ps1 -ConfigurationDataFile MultiNodeSampleConfig.psd1 -Verbose
