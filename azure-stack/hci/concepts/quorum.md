@@ -208,8 +208,8 @@ Each of the 24 drives has one vote and node two also has one vote (since it's th
 ![Pool Quorum 3](media/quorum/pool-3.png)
 
 - Can survive one server failure: **Yes**.
-- Can survive one server failure, then another: **Depends **(cannot survive if both nodes three and four go down, but can survive all other scenarios.
-- Can survive two server failures at once: **Depends **(cannot survive if both nodes three and four go down, but can survive all other scenarios.
+- Can survive one server failure, then another: **Depends** (cannot survive if both nodes three and four go down, but can survive all other scenarios.
+- Can survive two server failures at once: **Depends** (cannot survive if both nodes three and four go down, but can survive all other scenarios.
 
 ### Pool quorum recommendations
 

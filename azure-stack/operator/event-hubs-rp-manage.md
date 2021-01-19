@@ -45,8 +45,8 @@ The Event Hubs resource provider supports the following alerts:
 |----------|-------|------|-----------|
 | Performance | | | |
 | | EventHub-CpuUsage | Warning | The average of % CPU usage of Event Hubs cluster in the last 6 hours is larger than 50%. |
-| | EventHub-MemoryUsage | Warning | The average of % Data Disk(E:) usage of Event Hubs cluster in the last 6 hours is larger than 50%. |
-| | EventHub-DiskUsage | Warning | The average of % free memory space of Event Hubs cluster in the last 6 hours is smaller than 50%. |
+| | EventHub-MemoryUsage | Warning | The average of % free memory space of Event Hubs cluster in the last 6 hours is smaller than 50%. |
+| | EventHub-DiskUsage | Warning | The average of % Data Disk(E:) usage of Event Hubs cluster in the last 6 hours is larger than 50%. |
 | Usage/Quota | | | |
 | | EventHub-QuotaExceeded | Warning | A quota exceeded error occurred within the last six hours. |
 | | EventHub-NamespaceCreditUsage | Warning | The sum of namespace credit usages in the last six hours is larger than 10000.0. |
