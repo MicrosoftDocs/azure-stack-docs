@@ -42,6 +42,8 @@ It's recommended that you apply MySQL resource provider 1.1.93.1 after Azure Sta
 ## Known issues
 Deployment of 1.1.93.0 version may fail if the wrong AzureRmContext is used. It is recommended to upgrade to 1.1.93.1 version directly. If you have already successfully upgraded to 1.1.93.0, you can safely skip the 1.1.93.1 version.
 
+When redeploying the MySQL resource provider while the same version had deployed already (for example, when MySQL resource provider 1.1.93.1 is already deployed, and the same version is deployed again), the VM that is hosting the MySQL resource provider will be stopped. To fix this issue, go to the admin portal, locate and restart the VM named mysqlvm\<version\> in the resource group named system.\<region\>.mysqladapter.
+
 ## Next steps
 
 - [Learn more about the MySQL resource provider](azure-stack-mysql-resource-provider.md).
