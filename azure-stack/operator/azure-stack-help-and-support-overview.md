@@ -3,10 +3,10 @@ title: Azure Stack Hub help and support
 description: Get support for Microsoft Azure Stack Hub.
 author: PatAltimore
 ms.topic: article
-ms.date: 02/26/2020
+ms.date: 01/19/20201
 ms.author: patricka
 ms.reviewer: shisab
-ms.lastreviewed: 02/26/2020
+ms.lastreviewed: 01/19/20201
 
 
 # Intent: As an Azure Stack Hub user, I want to collect diagnostic logs and get expert help and support with Azure Stack.
@@ -31,7 +31,7 @@ At the top of **Help + support** are things you should try first, like read abou
 
 ![Self-service support in Azure Stack Hub](media/azure-stack-help-and-support/get-support-tiles.png)
 
-- **Documentation**. [Azure Stack Hub Operator Documentation](index.yml) includes concepts, how-to topics, and tutorials that show how to offer Azure Stack Hub services. These services include virtual machines, SQL databases, web apps, and more.
+- **Documentation**. [Azure Stack Hub Operator Documentation](index.yml) includes concepts, how-to instructions, and tutorials that show how to offer Azure Stack Hub services. These services include virtual machines, SQL databases, web apps, and more.
 
 - **Learn about billing**. Get tips on [usage and billing](azure-stack-billing-and-chargeback.md).
 
@@ -54,6 +54,22 @@ Select **Help** (question mark) in the upper-right corner of the administrator p
 You can also reach out to the MSDN Forums to discuss an issue, or take online training and improve your own skills.
 
 ![Get expert help for Azure Stack Hub](media/azure-stack-help-and-support/get-support-cards.png)
+
+### Information for a support request
+
+To speed up your support experience, have the following information:
+
+ - Are you an Azure Stack Hub hardware partner?
+ - How many Azure Stack Hub nodes are you in your system?
+ - What is the current patch level for your system?
+ - What build number is your system currently running?
+ - What is the name of your cloud's region?
+ - Is a connected or disconnected system?
+ - When did the problem start?
+ - Can you provide the exact time when the last backup failed?
+ - For what roles is the backup failing?
+ - Did you perform any recent changes? For example, did you perform an update, make a hardware change, or apply an OEM update?
+ - Are you able to provide logs in order to investigate the issue?
 
 ### Get up to speed with Azure Stack Hub
 
