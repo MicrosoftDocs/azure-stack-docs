@@ -4,10 +4,10 @@ description: Deploy a C# ASP.NET web app to a VM in Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: overview
-ms.date: 12/2/2020
+ms.date: 1/19/2021
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 12/2/2020
+ms.lastreviewed: 1/19/2021
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -40,7 +40,7 @@ This article uses a C# 6.0 app that uses ASP.NET Core 2.2 running on a Windows 2
 
 1. Download [Web Deploy v3.6](https://www.microsoft.com/download/details.aspx?id=43717). Install it from the MSI file, and then enable all of the features.
 
-1. Install the .NET Core 2.2 Hosting Bundle on your server. For instructions, see [.NET Core Installer](https://dotnet.microsoft.com/download/dotnet-core/2.2). Make sure you're using the same version of .NET Core on both your development machine and your target server.
+1. Install the .NET Core 5.0 Hosting Bundle on your server. For instructions, see [.NET Core Installer](https://dotnet.microsoft.com/download/dotnet/5.0). Make sure you're using the same version of .NET Core on both your development machine and your target server.
 
 1. In the Azure Stack Hub portal, open the ports that are listed in the network settings for your VM.
 
@@ -129,7 +129,7 @@ Create a publish target to your VM in Azure Stack Hub.
 1. Go to your new server. You should see your running web application.
 
     ```http  
-        mywebapp.local.cloudapp.azurestack.external
+    mywebapp.local.cloudapp.azurestack.external
     ```
 
 ## Next steps
