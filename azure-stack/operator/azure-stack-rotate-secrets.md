@@ -4,10 +4,10 @@ titleSuffix: Azure Stack Hub
 description: Learn how to rotate your secrets in Azure Stack Hub.
 author: BryanLa
 ms.topic: how-to
-ms.date: 01/07/2021
+ms.date: 01/19/2021
 ms.reviewer: fiseraci
 ms.author: bryanla
-ms.lastreviewed: 01/07/2021
+ms.lastreviewed: 01/19/2021
 monikerRange: '>=azs-1803'
 
 # Intent: As an Azure Stack Hub operator, I want to rotate secrets in Azure Stack Hub.
@@ -66,6 +66,7 @@ For more information on alert monitoring and remediation, refer to [Monitor heal
 > - **Non-certificate secrets such as secure keys and strings** must be done manually by the administrator. This includes user and administrator account passwords, and [network switch passwords](azure-stack-customer-defined.md).
 > - **Value-add resource provider (RP) secrets** is covered under seperate guidance:
 >    - [App Service on Azure Stack Hub](app-service-rotate-certificates.md)
+>    - [Event Hubs on Azure Stack Hub](event-hubs-rp-rotate-secrets.md)
 >    - [IoT Hub on Azure Stack Hub](iot-hub-rp-rotate-secrets.md)
 >    - [MySQL on Azure Stack Hub](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation)
 >    - [SQL on Azure Stack Hub](azure-stack-sql-resource-provider-maintain.md#secrets-rotation)
