@@ -42,6 +42,8 @@ It's recommended that you apply SQL resource provider 1.1.93.1 after Azure Stack
 ## Known issue
 Deployment of 1.1.93.0 version may fail if the wrong AzureRmContext is used. It is recommended to upgrade to 1.1.93.1 version directly. If you have already successfully upgraded to 1.1.93.0, you can safely skip the 1.1.93.1 version.
 
+When redeploying the SQL resource provider while the same version had deployed already (for example, when SQL resource provider 1.1.93.1 is already deployed, and the same version is deployed again), the VM that is hosting the SQL resource provider will be stopped. To fix this issue, go to the admin portal, locate and restart the VM named sqlvm\<version\> in the resource group named system.\<region\>.sqladapter.
+
 ## Next steps
 
 - [Learn more about the SQL resource provider](azure-stack-sql-resource-provider.md).
