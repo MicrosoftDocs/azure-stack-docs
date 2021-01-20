@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a cluster for Azure Stack HCI using Windows PowerShell
 author: v-dasis
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 01/20/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -453,5 +453,3 @@ Now that you are done, there are still some important tasks you need to complete
 
 - Register your cluster with Azure. See [Manage Azure registration](../manage/manage-azure-registration.md).
 - Do a final validation of the cluster. See [Validate an Azure Stack HCI cluster](validate.md)
-- Provision your VMs. See [Manage VMs on Azure Stack HCI using PowerShell](../manage/vm-powershell.md).
-- You can also create a cluster using Windows Admin Center. See [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md).
