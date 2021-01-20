@@ -5,7 +5,7 @@ description: Learn how to troubleshoot Azure Stack Hub, including issues with VM
 author: PatAltimore
 
 ms.topic: article
-ms.date: 12/10/2020
+ms.date: 01/20/2021
 ms.author: patricka
 ms.reviewer: prchint
 ms.lastreviewed: 12/10/2020
@@ -203,7 +203,7 @@ The Azure Stack Hub patch and update process is designed to allow operators to a
 
 1. Follow the remediation steps in the failure alert created when your update failed.
 
-2. If you have been unable to resolve your issue, create an [Azure Stack Hub support ticket](./azure-stack-help-and-support-overview.md). Be sure you have [logs collected](./diagnostic-log-collection.md#send-logs-now) for the time span when the issue occurred.
+2. If you have been unable to resolve your issue, create an [Azure Stack Hub support ticket](./azure-stack-help-and-support-overview.md). Be sure you have [logs collected](./diagnostic-log-collection.md#send-logs-now) for the time span when the issue occurred. Please resolve the update issue as soon as possible. Failed updates can indicate problems in hardware or software. Those problems can lead to cluster instability.
 
 ## Common Azure Stack Hub patch and update issues
 
