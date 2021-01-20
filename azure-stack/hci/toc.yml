@@ -26,10 +26,6 @@
     href: deploy/operating-system.md
   - name: Create a cluster
     href: deploy/create-cluster.md
-  - name: Set up a cluster witness
-    href: deploy/witness.md
-  - name: Deploy an SDN infrastructure
-    href: deploy/sdn-express.md
   - name: Migrate to new hardware
     href: deploy/migrate-cluster-new-hardware.md
   - name: Migrate on same hardware
@@ -92,6 +88,10 @@
       href: manage/update-cluster.md
     - name: Monitor the cluster
       href: manage/monitor-cluster.md
+    - name: Set up a cluster witness
+      href: manage/witness.md
+    - name: Deploy an SDN infrastructure
+      href: manage/sdn-express.md
     - name: Use Datacenter Firewall
       href: manage/use-datacenter-firewall.md
     - name: Use DISKSPD to test workloads
