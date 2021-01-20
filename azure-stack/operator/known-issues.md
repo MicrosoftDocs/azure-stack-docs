@@ -81,14 +81,11 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ## Networking
 
-### Network Security Groups
+### Admin and Tenant Portal
 
-#### DenyAllOutbound rule cannot be created
-
-- Applicable: This issue applies to all supported releases.
-- Cause: An explicit **DenyAllOutbound** rule to the internet cannot be created in an NSG during VM creation as this will prevent the communication required for the VM deployment to complete. It will also deny the two essential IPs that are required in order to deploy VMs: DHCP IP:169.254.169.254 and DNS IP: 168.63.129.16.
-
-- Remediation: Allow outbound traffic to the internet during VM creation, and modify the NSG to block the required traffic after VM creation is complete.
+#### IPv6 button visible on 'Add frontend IP address' on a Load Balancer
+- Applicable: This issue applied to releases 2011 and above.
+- Cause: IP versions IPv4 and IPv6 buttons are visible on the Add frontend IP address on a load balancer. These buttons are disabled and cannot be selected. 
 - Occurrence: Common
 
 ### Virtual Network Gateway
