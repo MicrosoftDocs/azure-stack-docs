@@ -44,10 +44,12 @@
       href: deploy/create-cluster-powershell.md
   - name: Deploy workloads
     items:
-    - name: Deploy SQL Server
-      href: deploy/deploy-sql-server-workload.md
-    - name: Deploy trusted enterprise virtualization
-      href: deploy/deploy-trusted-enterprise-virtualization.md
+    - name: Virtual desktop infrastructure
+      href: deploy/virtual-desktop-infrastructure.md
+    - name: SQL Server
+      href: deploy/sql-server.md
+    - name: Trusted enterprise virtualization
+      href: deploy/trusted-enterprise-virtualization.md
 - name: Manage
   items:
   - name: Manage VMs
@@ -181,9 +183,9 @@
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
-    href: https://docs.microsoft.com/cli/azure/ext/stack-hci/stack-hci
+    href: /cli/azure/ext/stack-hci/stack-hci
   - name: Azure registration PowerShell commands
-    href: https://docs.microsoft.com/powershell/module/az.stackhci
+    href: /powershell/module/az.stackhci
   - name: Go package for ARM Azure Stack HCI service API
     href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
   - name: Azure Stack HCI Java service classes and interfaces

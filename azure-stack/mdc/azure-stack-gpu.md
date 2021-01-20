@@ -45,8 +45,8 @@ GPU VMs will undergo downtime during operations such as patch and update (PnU) a
 
 ## Guest driver installation 
 
-[This](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-amd-driver-setup) document goes over setting up the AMD guest driver inside the NVv4 GPU-P enabled VM along with steps on how to verify driver installation. 
+[This](/azure/virtual-machines/windows/n-series-amd-driver-setup) document goes over setting up the AMD guest driver inside the NVv4 GPU-P enabled VM along with steps on how to verify driver installation. 
 
 ## Next steps 
 
-[Azure Stack VM features](azure-stack-vm-considerations.md) 
+[Azure Stack VM features](azure-stack-vm-considerations.md)

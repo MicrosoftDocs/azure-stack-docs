@@ -41,7 +41,7 @@ You'll need to have the following resources in place in your Azure Stack Hub ins
   - A global Azure subscription. If you don't have a global Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 - An [Azure Container Registry (ACR)](/). Make a note of the ACR sign-in server, username, and password.
 -   A free or standard-tier [IoT
-    hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)
+    hub](/azure/iot-hub/iot-hub-create-through-portal)
     in global Azure.
 
 ### A development machine
@@ -66,15 +66,15 @@ Use a separate device to host your IoT Edge device. Using a separate device will
 Create an IoT Edge device in Azure with a Linux VM:
 
 1.  [Create an N-series Linux server
-    VM](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-linux-portal)
-    on Azure Stack Hub. As you install components for your server, you'll interact with the server via SSH. For more information, see [Use an SSH public key](/azure-stack/user/azure-stack-dev-start-howto-ssh-public-key).
+    VM](./azure-stack-quick-linux-portal.md)
+    on Azure Stack Hub. As you install components for your server, you'll interact with the server via SSH. For more information, see [Use an SSH public key](./azure-stack-dev-start-howto-ssh-public-key.md).
 
 2.  [Create and register an IoT Edge
-    Device](https://docs.microsoft.com/azure/iot-edge/how-to-register-device)
+    Device](/azure/iot-edge/how-to-register-device)
 
 ## Prepare a GPU-enabled VM
 
-1. Install the NVIDA GPU Drivers on your N-series Linux server by following the steps in the article, [Install NVIDIA GPU drivers on N-series VMs running Linux](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup).
+1. Install the NVIDA GPU Drivers on your N-series Linux server by following the steps in the article, [Install NVIDIA GPU drivers on N-series VMs running Linux](/azure/virtual-machines/linux/n-series-driver-setup).
 
     > [!NOTE]  
     > You'll use the bash command line to install your software. Make a note of the commands since you'll use the same commands to install the drivers on the container running in Docker on your GPU-enabled VM
@@ -89,7 +89,7 @@ You must install Docker 19.02 or greater. The Docker runtime now supports the NV
 
 ### Install Docker
 
-Docker containers can run anywhere, on-premises in the customer datacenter, in an external service provider or in the cloud, on Azure. Docker image containers can run natively on Linux and Windows. However, Windows images can run only on Windows hosts and Linux images can run on Linux hosts and Windows hosts (using a Hyper-V Linux VM, so far), where host means a server or a VM. For more information, see [What is Docker?](https://docs.microsoft.com/dotnet/architecture/microservices/container-docker-introduction/docker-defined).
+Docker containers can run anywhere, on-premises in the customer datacenter, in an external service provider or in the cloud, on Azure. Docker image containers can run natively on Linux and Windows. However, Windows images can run only on Windows hosts and Linux images can run on Linux hosts and Windows hosts (using a Hyper-V Linux VM, so far), where host means a server or a VM. For more information, see [What is Docker?](/dotnet/architecture/microservices/container-docker-introduction/docker-defined).
 
 1. Connect to your N-series Linux server using your SSH client.
 
@@ -182,4 +182,4 @@ For instructions see [Select device and add modules](/azure/iot-edge/how-to-depl
 
   - Learn more about Azure Stack Hub, Data Box Edge and the Intelligent Edge, [The future of computing: intelligent cloud and intelligent edge](https://azure.microsoft.com/overview/future-of-cloud)
 
-  - Learn more about hybrid cloud applications, see [Hybrid Cloud Solutions](https://docs.microsoft.com/hybrid/app-solutions/)
+  - Learn more about hybrid cloud applications, see [Hybrid Cloud Solutions](/hybrid/app-solutions/)
