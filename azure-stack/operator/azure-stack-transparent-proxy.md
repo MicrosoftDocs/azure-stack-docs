@@ -46,7 +46,7 @@ For more information on how to configure a transparent proxy with Azure Stack Hu
 
 - [Configure a Citrix ADC transparent proxy]()
 - [Configure Cisco WSA transparent proxy]()
-- [Configure a Check Point Security Gateway transparent proxy]()
+- [Configure a Check Point Security Gateway transparent proxy](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk171559)
 - [Configure a Sophos XG firewall transparent proxy](https://community.sophos.com/xg-firewall/f/recommended-reads/124106/xg-firewall-integration-with-azure-stack-hub)
 
 > [!IMPORTANT]
