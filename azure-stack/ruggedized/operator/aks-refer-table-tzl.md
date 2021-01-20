@@ -34,7 +34,7 @@ This article provides a cross reference for the vanity aka.ms links, and their c
 | `https://aka.ms/azurestackaddcapacity` | [Add additional scale unit nodes in Azure Stack](../../operator/azure-stack-add-scale-node.md) |
 | `https://aka.ms/azurestackaddnode` | [Add additional scale unit nodes in Azure Stack](../../operator/azure-stack-add-scale-node.md) |
 | `https://aka.ms/azurestackhealthreport` | [https://github.com/Azure/AzureStack-Tools/blob/master/Identity/README.md#retrieve-azure-stack-identity-health-report](https://aka.ms/aa708dy) |
-| `https://aka.ms/azurestacklogfiles` | [Collect Azure Stack diagnostic logs on demand](../../operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal.md) |
+| `https://aka.ms/azurestacklogfiles` | [Collect Azure Stack diagnostic logs on demand](../../operator/diagnostic-log-collection.md) |
 | `https://aka.ms/azurestackpep` | [Use the privileged endpoint in Azure Stack](../../operator/azure-stack-privileged-endpoint.md) |
 | `https://aka.ms/azurestackreplacenode` | [Replace a scale unit node on an Azure Stack integrated system](../../operator/azure-stack-replace-node.md) |
 | `https://aka.ms/azurestackupdatedirectory` | [https://github.com/Azure/AzureStack-Tools/tree/master/Identity#updating-the-azure-stack-aad-home-directory-after-installing-updates-or-new-resource-providers](https://aka.ms/aa700j2) |

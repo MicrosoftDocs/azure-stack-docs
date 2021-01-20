@@ -22,7 +22,7 @@ ms.lastreviewed: 10/01/2020
 
 This article provides guidance for checking the health of the datacenter extended storage hardware and the Azure Stack Hub deployment.
 
-Before you start, review and follow the steps in [Updating firmware for the extended storage](extended-storage-firmware-updates.md).
+Before you start, review and follow the steps in [Updating firmware for the extended storage]().
 
 The final step before shipping the system is shutting it down. Follow the steps in the Quick Start Guide.
 
@@ -106,4 +106,4 @@ Contact Microsoft Support for help with any issues.
 
 ## Next steps
 
-- [Update firmware](extended-storage-firmware-updates.md)
+- [Update firmware]()
