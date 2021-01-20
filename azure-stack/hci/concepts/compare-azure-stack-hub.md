@@ -6,7 +6,7 @@ author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 1/15/2021
+ms.date: 1/20/2021
 ---
 
 # Compare Azure Stack HCI to Azure Stack Hub
