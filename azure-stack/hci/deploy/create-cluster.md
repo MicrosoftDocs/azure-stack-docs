@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: v-dasis
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 01/20/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -147,9 +147,6 @@ For more information on RDMA and Hyper-V host networking for Azure Stack HCI, se
 
         :::image type="content" source="media/cluster/create-cluster-virtual-switches.png" alt-text="Create cluster wizard - virtual switches" lightbox="media/cluster/create-cluster-virtual-switches.png":::
 
-    > [!NOTE]
-    > If you are going to deploy Network Controller for SDN (in **Step 5: SDN** of the wizard), you will need a virtual switch. So if you opt out of creating a virtual switch here and don't create one outside the wizard, the wizard won't deploy Network Controller.
-
     The following table shows which virtual switch configurations are supported and enabled for various network adapter configurations:
 
     | Option | 1-2 adapters | 3+ adapters | teamed adapters |
@@ -230,5 +227,3 @@ If resolving the cluster isn't successful after some time, in most cases you can
 
 - Register your cluster with Azure. See [Manage Azure registration](../manage/manage-azure-registration.md).
 - Do a final validation of the cluster. See [Validate an Azure Stack HCI cluster](validate.md)
-- Provision your VMs. See [Manage VMs on Azure Stack HCI using Windows Admin Center](../manage/vm.md).
-- You can also deploy a cluster using PowerShell. See [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md).
