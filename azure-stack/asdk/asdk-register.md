@@ -48,7 +48,7 @@ Follow these steps to register the ASDK with Azure.
 
 1. Open a PowerShell console as an admin.  
 
-2. Run the following PowerShell commands to register your ASDK installation with Azure. Sign in to both your Azure billing Subscription ID and the local ASDK installation. If you don't have an Azure billing subscription ID yet, you can [create a free Azure account here](https://azure.microsoft.com/free/?b=17.06). Registering Azure Stack incurs no cost on your Azure subscription.<br><br>Set a unique name for the registration when you run the **Set-AzsRegistration** cmdlet. The **RegistrationName** parameter has a default value of **AzureStackRegistration**. However, if you use the same name on more than one instance of Azure Stack, the script will fail.
+2. Run the following PowerShell cmdlets to register your ASDK installation with Azure. Sign in to both your Azure billing Subscription ID and the local ASDK installation. If you don't have an Azure billing subscription ID yet, you can [create a free Azure account here](https://azure.microsoft.com/free/?b=17.06). Registering Azure Stack incurs no cost on your Azure subscription.<br><br>Set a unique name for the registration when you run the **Set-AzsRegistration** cmdlet. The **RegistrationName** parameter has a default value of **AzureStackRegistration**. However, if you use the same name on more than one instance of Azure Stack, the script will fail.
 
     ```powershell  
     # Add the Azure cloud subscription environment name. 
