@@ -333,7 +333,7 @@ Return to the Azure Stack Hub environment with the file or text from the activat
 
   ```Powershell
   # Import the registration module that was downloaded with the GitHub tools
-  Import-Module C:\AzureStack-Tools-Master\Registration\RegisterWithAzure.psm1
+  Import-Module C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1
   
   $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
   $ActivationKey = "<activation key>"
