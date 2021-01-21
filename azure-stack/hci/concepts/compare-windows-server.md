@@ -21,7 +21,7 @@ Azure Stack HCI is Microsoft's premier hyperconverged infrastructure platform fo
 
 <center>
 
-:::image type="content" source="media/compare-windows-server/hci-scenarios.png" alt-text="When to use Azure Stack HCI over Windows Server 2019" border="false":::
+:::image type="content" source="media/compare-windows-server/hci-scenarios.png" alt-text="When to use Azure Stack HCI over Windows Server 2019" border="false" lightbox="media/compare-windows-server/hci-scenarios.png":::
 
 </center>
 
@@ -40,7 +40,7 @@ Windows Server 2019 is a highly versatile, multi-purpose operating system, with 
 
 <center>
 
-:::image type="content" source="media/compare-windows-server/windows-server-scenarios.png" alt-text="When to use Windows Server 2019 over Azure Stack HCI" border="false":::
+:::image type="content" source="media/compare-windows-server/windows-server-scenarios.png" alt-text="When to use Windows Server 2019 over Azure Stack HCI" border="false" lightbox="media/compare-windows-server/windows-server-scenarios.png":::
 
 </center>
 
@@ -76,9 +76,9 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Core Hyper-V | Yes | Yes |
 | Core Storage Spaces Direct | Yes | Yes |
 | Core SDN | Yes | Yes |
-| Stretch clustering for DR | Yes | - |
+| Stretch clustering for disaster recovery | Yes | - |
 | 4-5x faster Storage Spaces repairs | Yes | - |
-| Integrated full-stack updates | Yes (Integrated Systems only) | - |
+| Integrated driver and firmware updates | Yes (Integrated Systems only) | - |
 | Guided deployment | Yes | - |
 
 ## Compare management options
@@ -90,7 +90,7 @@ The following table compares the management options for Azure Stack HCI and Wind
 | Desktop experience | - | Yes |
 | Windows Admin Center | Yes | Yes |
 | Microsoft System Center | Yes (sold separately) | Yes (sold separately) |
-| Azure portal | Yes (natively) | Requires Arc agent wire-up |
+| Azure portal | Yes (natively) | Requires Arc agent |
 | Third-party tools | Yes | Yes |
 
 ## Compare product pricing
@@ -100,8 +100,8 @@ The table below compares the product pricing for Azure Stack HCI and Windows Ser
 | **Attribute** | **Azure Stack HCI** | **Windows Server 2019** |
 | ------------- | ------------------- | ----------------------- |
 | Price type | Subscription service | Varies: most often a one-time license |
-| Price structure | Per core, per month | Varies: usually per core (minimum 16) |
-| Price | $10 USD per core, per month | From $882 USD for Standard to $6,155 for Datacenter Edition |
+| Price structure | Per core, per month | Varies: usually per core |
+| Price | $10 USD per core, per month | See [Pricing and licensing for Windows Server 2019](/windows-server/pricing) |
 | Evaluation/trial period | 30-day free trial once registered | 180-day evaluation copy |
 | Channels | Enterprise agreement, cloud service provider, or direct | Enterprise agreement/volume licensing, OEM, services provider license agreement (SPLA) |
 
