@@ -101,7 +101,7 @@ The table below compares the product pricing for Azure Stack HCI and Windows Ser
 | ------------- | ------------------- | ----------------------- |
 | Price type | Subscription service | Varies: most often a one-time license |
 | Price structure | Per core, per month | Varies: usually per core |
-| Price | $10 USD per core, per month | See [Pricing and licensing for Windows Server 2019](/windows-server/pricing) |
+| Price | $10 USD per core, per month | See [Pricing and licensing for Windows Server 2019](https://www.microsoft.com/en-us/windows-server/pricing) |
 | Evaluation/trial period | 30-day free trial once registered | 180-day evaluation copy |
 | Channels | Enterprise agreement, cloud service provider, or direct | Enterprise agreement/volume licensing, OEM, services provider license agreement (SPLA) |
 
