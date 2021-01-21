@@ -1,13 +1,13 @@
 ---
 title: Use the ASDK to validate an Azure Stack backup 
 description: Learn how to use the ASDK to validate an Azure Stack integrated systems backup.
-author: justinha
+author: PatAltimore
 
 ms.topic: article
-ms.date: 07/31/2019
-ms.author: justinha
+ms.date: 1/15/2020
+ms.author: patricka
 ms.reviewer: hectorl
-ms.lastreviewed: 03/11/2020
+ms.lastreviewed: 1/15/2020
 
 # Intent: As an ASDK user, I want to use the ASDK to validate an Azure Stack backup so I don't impact my production cloud.
 # Keyword: validate azure stack backup
@@ -163,7 +163,7 @@ After logging in as the Azure Stack operator, [install Azure Stack PowerShell](a
 
 ```powershell
 $decryptioncertpassword = Read-Host -AsSecureString -Prompt "Password for the decryption certificate"
-Restore-AzsBackup -ResourceId "<BackupID>" `
+Restore-AzsBackup -Name "<BackupID>" `
  -DecryptionCertPath "<path to decryption certificate with file name (.pfx)>" `
  -DecryptionCertPassword $decryptioncertpassword
 ```

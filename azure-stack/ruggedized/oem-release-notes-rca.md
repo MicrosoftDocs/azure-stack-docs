@@ -31,7 +31,7 @@ This document describes the contents of Azure Stack Hub ruggedized first party u
 
 ### Bios
 
-| Release version | Firmware version | Changes                                                                                                                                                                                                                                                                                                                                                                                                       |   |   |
+| Release version | Firmware version | Changes |
 |-----------------|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|---|
 | 2008            | 2.8.2            | Fixed an industry-issue seen on BIOS versions 2.6.4 through 2.8.1 where the system may reset during power-on at the time "Configuring Memory" is displayed on the boot screen. The issue is applicable to DDR4 and NVDIMM-N memory configurations.<br><br>Enhancement to address the security vulnerabilities (Common Vulnerabilities and Exposures-CVE) such as CVE-2020-0545, CVE-2020-0548, and CVE-2020-0549. |   |   |
 | 2005            | 2.7.7            |                                                                                                                                                                                                                                                                                                                                                                                                               |   |   |
@@ -39,7 +39,7 @@ This document describes the contents of Azure Stack Hub ruggedized first party u
 
 ### IDRAC
 
-| Release version | Firmware version | Changes                                                                                                                                                                                                                                                                          |   |   |
+| Release version | Firmware version | Changes |
 |-----------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|---|
 | 2008            | 4.22.0.0         | 167411: Fixed an issue that caused force system restart while updating firmware through Redfish API.<br><br>155376: Fixed an issue that caused iDRAC to reboot while collecting SupportAssist logs.<br><br>162778: Fixed a low memory condition on iDRAC due to virtual console service. |   |   |
 | 2005            | 4.10.10.10       |                                                                                                                                                                                                                                                                                  |   |   |
@@ -49,7 +49,7 @@ This document describes the contents of Azure Stack Hub ruggedized first party u
 
 | Release version    | Firmware version    | Changes                                                                                                          |
 |--------------------|---------------------|------------------------------------------------------------------------------------------------------------------|
-|     2008           |     14.27.60.08     | Fixed a firmware fatal assert that showed an IRISC HANG due to init_hca waiting on the timers flow lock release. |
+|     2008           |     14.27.60.08     | Fixed a firmware fatal assert that cause the IRISC to stop responding due to init_hca waiting on the timers flow lock release. |
 |     2005           |     14.26.60.00     |                                                                                                                  |
 
 ### NIC-HLH
@@ -70,7 +70,7 @@ This document describes the contents of Azure Stack Hub ruggedized first party u
 
 |     Release version |     Firmware version |     Changes                                                                                           |
 |---------------------|----------------------|-------------------------------------------------------------------------------------------------------|
-| 2005, 2008          | 25.5.7.0005          | Fixed an issue where a controller could hang at boot due to an incomplete non-volatile memory config. |
+| 2005, 2008          | 25.5.7.0005          | Fixed an issue where a controller could stop responding at boot due to an incomplete non-volatile memory config. |
 
 ### HBA - boot drives
 
@@ -82,7 +82,7 @@ This document describes the contents of Azure Stack Hub ruggedized first party u
 
 | Release version | Firmware version | Changes                                                                                                                                                                                                |
 |-----------------|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|     2008        |     9.0.6        | Addresses possible IDRAC hang during firmware update.<br> Signal noise filtering added to prevent false errors reported.<br> Host memory map modified to prevent potential front USB port disablement. |
+|     2008        |     9.0.6        | Addresses possible issue where the IDRAC may stop responding during firmware update.<br> Signal noise filtering added to prevent false errors reported.<br> Host memory map modified to prevent potential front USB port disablement. |
 |     2005        |     1.0.6        |                                                                                                                                                                                                        |
 
 ### Drive FW

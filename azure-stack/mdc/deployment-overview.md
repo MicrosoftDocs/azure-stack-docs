@@ -14,7 +14,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2020
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: asganesh
 ms.lastreviewed: 10/20/2020
 ---
@@ -65,9 +65,9 @@ At a high level, the MDC deployment process consists of the following phases:
 ### Planning phase
 1. Planning for datacenter power.
 1. Planning for logical network configuration of Azure Stack Hub.
-1. Planning for [datacenter network integration](https://docs.microsoft.com/azure-stack/operator/azure-stack-network).
-1. Planning for [identity and security integration](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices).
-1. Planning for [PKI certificates](https://docs.microsoft.com/azure-stack/operator/azure-stack-pki-certs).
+1. Planning for [datacenter network integration](../operator/azure-stack-network.md).
+1. Planning for [identity and security integration](/azure/security/fundamentals/identity-management-best-practices).
+1. Planning for [PKI certificates](../operator/azure-stack-pki-certs.md).
 
 ### Preparation phase
 1. Collecting inventory.

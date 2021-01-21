@@ -1,11 +1,11 @@
 ---
 title: Required knowledge for working with Scale Unit nodes in a Tactical Cloud Appliance
 description: Learn about the required knowledge for working with Scale Unit nodes in a Tactical Cloud Appliance
-author: myoungerman
+author: PatAltimore
 
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: 
 ms.lastreviewed: 
 
@@ -38,9 +38,9 @@ access.
 
 Obtain the Administrator Portal credentials and URL from the customer.
 For more information see [Use the administrator
-portal](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-portals)
+portal](../../operator/azure-stack-manage-portals.md)
 [in Azure Stack
-Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-portals).
+Hub](../../operator/azure-stack-manage-portals.md).
 
 ## Dell EMC PowerEdge R640 Installation and Service Manual
 
@@ -66,4 +66,3 @@ You must understand how to navigate and use the Dell EMC PowerEdge
 iDRAC web interface. For more information on using the iDRAC, refer to
 the [Integrated Dell Remote Access Controller 9 User\'s
 Guide](https://www.dell.com/support/manuals/us/en/04/poweredge-r840/idrac9_4.00.00.00_ug_new/overview-of-idrac?guid=guid-a03c2558-4f39-40c8-88b8-38835d0e9003).
-

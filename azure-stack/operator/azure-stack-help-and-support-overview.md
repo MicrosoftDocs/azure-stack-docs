@@ -1,12 +1,12 @@
 ---
 title: Azure Stack Hub help and support
 description: Get support for Microsoft Azure Stack Hub.
-author: justinha
+author: PatAltimore
 ms.topic: article
-ms.date: 02/26/2020
-ms.author: justinha
+ms.date: 01/19/2021
+ms.author: patricka
 ms.reviewer: shisab
-ms.lastreviewed: 02/26/2020
+ms.lastreviewed: 01/19/2021
 
 
 # Intent: As an Azure Stack Hub user, I want to collect diagnostic logs and get expert help and support with Azure Stack.
@@ -31,7 +31,7 @@ At the top of **Help + support** are things you should try first, like read abou
 
 ![Self-service support in Azure Stack Hub](media/azure-stack-help-and-support/get-support-tiles.png)
 
-- **Documentation**. [Azure Stack Hub Operator Documentation](index.yml) includes concepts, how-to topics, and tutorials that show how to offer Azure Stack Hub services. These services include virtual machines, SQL databases, web apps, and more.
+- **Documentation**. [Azure Stack Hub Operator Documentation](index.yml) includes concepts, how-to instructions, and tutorials that show how to offer Azure Stack Hub services. These services include virtual machines, SQL databases, web apps, and more.
 
 - **Learn about billing**. Get tips on [usage and billing](azure-stack-billing-and-chargeback.md).
 
@@ -55,6 +55,22 @@ You can also reach out to the MSDN Forums to discuss an issue, or take online tr
 
 ![Get expert help for Azure Stack Hub](media/azure-stack-help-and-support/get-support-cards.png)
 
+### Information for a support request
+
+To speed up your support experience, have the following information:
+
+ - Are you an Azure Stack Hub hardware partner?
+ - How many Azure Stack Hub nodes are you in your system?
+ - What is the current patch level for your system?
+ - What build number is your system currently running?
+ - What is the name of your cloud's region?
+ - Is a connected or disconnected system?
+ - When did the problem start?
+ - Can you provide the exact time when the last backup failed?
+ - For what roles is the backup failing?
+ - Did you perform any recent changes? For example, did you perform an update, make a hardware change, or apply an OEM update?
+ - Are you able to provide logs in order to investigate the issue?
+
 ### Get up to speed with Azure Stack Hub
 
 This set of tutorials is customized depending on whether you're running the ASDK or integrated systems so you can quickly get up to speed with your environment.
@@ -65,8 +81,8 @@ This set of tutorials is customized depending on whether you're running the ASDK
 
 You can send diagnostic logs to Microsoft in two ways:
 
-- [Send logs proactively](./azure-stack-diagnostic-log-collection-overview.md#send-logs-proactively): If enabled, log collection is triggered by specific health alerts.
-- [Send logs now](./azure-stack-diagnostic-log-collection-overview.md#send-logs-now): You can manually choose a specific sliding window as the time frame for log collection.
+- [Send logs proactively](./diagnostic-log-collection.md#send-logs-proactively): If enabled, log collection is triggered by specific health alerts.
+- [Send logs now](./diagnostic-log-collection.md#send-logs-now): You can manually choose a specific sliding window as the time frame for log collection.
 
 ![Screenshot that shows how to start collecting diagnostic logs.](media/azure-stack-help-and-support/banner-enable-automatic-log-collection.png)
 
@@ -82,7 +98,7 @@ Beginning with the 1907 release, there are two new ways to collect logs in **Hel
 
 ![Diagnostic log collection options](media/azure-stack-automatic-log-collection/azure-stack-log-collection-overview.png)
 
-Integrated systems can share the diagnostic logs with Microsoft Support. Because Azure Stack Development Kit (ASDK) is an evaluation environment, it's not supported by Microsoft Support. For more information, see [Azure Stack Hub diagnostic log collection overview](azure-stack-diagnostic-log-collection-overview.md).
+Integrated systems can share the diagnostic logs with Microsoft Support. Because Azure Stack Development Kit (ASDK) is an evaluation environment, it's not supported by Microsoft Support. For more information, see [Azure Stack Hub diagnostic log collection overview](./diagnostic-log-collection.md).
 
 ## Help and support for earlier releases Azure Stack Hub (pre-1905)
 
@@ -104,6 +120,6 @@ Select **Help** (question mark) in the upper-right corner of the administrator p
 
 ## Next steps
 
-- Learn about [diagnostic log collection](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002).
+- Learn about [diagnostic log collection](./diagnostic-log-collection.md).
 - Learn how to [find your Cloud ID](azure-stack-find-cloud-id.md).
 - Learn about [troubleshooting Azure Stack Hub](azure-stack-troubleshooting.md).

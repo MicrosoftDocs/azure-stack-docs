@@ -14,7 +14,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/14/2020
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: asganesh
 ms.lastreviewed: 10/14/2020
 ---
@@ -37,7 +37,7 @@ The Deployment Engineer must have knowledge of Microsoft Windows Server 2019 wit
 
 This guide focuses on deployment of core components of Microsoft Azure Stack Hub, and the specifics of the Azure Stack Hub ruggedized solution. 
 The guide does not explain the operating procedures of Azure Stack Hub and does not cover all the features available in Azure Stack Hub. 
-For more information, see [Azure Stack Hub Operator Guide](https://docs.microsoft.com/azure-stack/operator/).
+For more information, see [Azure Stack Hub Operator Guide](../operator/index.yml).
 
 ## Introduction
 

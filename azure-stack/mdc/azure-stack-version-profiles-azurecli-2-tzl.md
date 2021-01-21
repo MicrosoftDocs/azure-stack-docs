@@ -1,6 +1,6 @@
 ---
-title: Manage Azure Stack Hub with Azure CLI | Microsoft Docs
-description: Learn how to use the cross-platform command-line interface (CLI) to manage and deploy resources on Azure Stack Hub.
+title: Manage Azure Stack Hub with Azure CLI - MDC | Microsoft Docs
+description: Learn how to use the cross-platform command-line interface (CLI) to manage and deploy resources on Azure Stack Hub for a Modular Data Center (MDC).
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -17,7 +17,7 @@ ms.reviewer: sijuman
 ms.lastreviewed: 12/2/2020
 
 ---
-# Manage and deploy resources to Azure Stack Hub with Azure CLI
+# Manage and deploy resources to Azure Stack Hub with Azure CLI - Modular Data Center (MDC)
 
 *Applies to: Azure Stack Hub integrated systems*
 
@@ -43,7 +43,7 @@ You can set up a publicly accessible endpoint that hosts a VM alias file. The VM
 
 ### Install or upgrade CLI
 
-Sign in to your development workstation and install CLI. Azure Stack Hub requires version 2.0 or later of Azure CLI. The latest version of the API Profiles requires a current version of the CLI. You install the CLI by using the steps described in the [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) article. 
+Sign in to your development workstation and install CLI. Azure Stack Hub requires version 2.0 or later of Azure CLI. The latest version of the API Profiles requires a current version of the CLI. You install the CLI by using the steps described in the [Install the Azure CLI](/cli/azure/install-azure-cli) article. 
 
 To verify whether the installation was successful, open a terminal or command prompt window and run the following command:
 
@@ -214,4 +214,4 @@ There are known issues when using CLI in Azure Stack Hub:
 
 - [Deploy templates with Azure CLI](../user/azure-stack-deploy-template-command-line.md)
 - [Enable Azure CLI for Azure Stack Hub users (Operator)](../operator/azure-stack-cli-admin.md)
-- [Manage user permissions](../operator/azure-stack-manage-permissions.md) 
+- [Manage user permissions](../operator/azure-stack-manage-permissions.md)

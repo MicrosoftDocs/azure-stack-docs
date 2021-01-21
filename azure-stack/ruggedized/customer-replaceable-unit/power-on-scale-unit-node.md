@@ -1,11 +1,11 @@
 ---
 title: Power on Scale Unit node
 description: Learn how to power on Scale Unit node
-author: myoungerman
+author: PatAltimore
 
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: 
 ms.lastreviewed: 
 
@@ -23,15 +23,15 @@ ms.lastreviewed:
     1.  Return to the **Administration Portal**, if
         the node is still **Stopped**, select the node and select
         **Start**:
-        ![](media/image-46.png)
+        ![Screenshot that shows the 'Administration - Nodes' page with a node and the 'Start' action selected.](media/image-46.png)
 
     1.  Select **Yes** to confirm the start operation:
 
-        ![](media/image-47.png)
+        ![Screenshot that shows the 'Administration - Nodes' page with the 'Start node' dialog displayed.](media/image-47.png)
         
     1.  Monitor the progress in the notification pane:
     
-        ![](media/image-48.png)
+        ![Screenshot that shows the 'Administration - Nodes' page with the progress shown in the notification pane.](media/image-48.png)
             
     > [!NOTE]
     > You can also use the iDRAC virtual console to verify there
@@ -43,14 +43,14 @@ ms.lastreviewed:
         **Administration Portal**, select the node and select
         **Resume**.
 
-        ![](media/image-49.png)
+        ![Screenshot that shows the 'Administration - Nodes' page with a node and the 'Resume' action selected.](media/image-49.png)
         
     1.  Select **Yes** to confirm the resume
         operation:
     
-        ![](media/image-50.png)
+        ![Screenshot that shows the 'Administration - Nodes' page with the 'Resume node' dialog displayed.](media/image-50.png)
     
     1.  Monitor the progress in the notification pane:
     
-        ![](media/image-51.png)
+        ![Screenshot that shows the 'Administration - Nodes' page with the node progress shown in the notification pane.](media/image-51.png)
         

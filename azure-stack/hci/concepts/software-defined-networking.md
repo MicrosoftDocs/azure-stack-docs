@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/16/2020
+ms.date: 01/13/2021
 ---
 
 # Software Defined Networking (SDN) in Azure Stack HCI
@@ -33,11 +33,11 @@ Deploying Network Controller enables the following functionalities:
 - Attach virtual appliances to your virtual networks.
 - Configure Quality of Service (QoS) policies for VMs attached to virtual networks or traditional VLAN-based networks.
 
-We recommend [deploying the Network Controller during cluster creation](../deploy/create-cluster.md#step-5-sdn-optional). Alternatively, you can [deploy the Network Controller using PowerShell](../deploy/network-controller-powershell.md) after creating an Azure Stack HCI cluster.
+We recommend deploying [Network Controller using SDN Express](../deploy/sdn-express.md) after creating an Azure Stack HCI cluster.
 
 ## Software Load Balancing
 
-[Software Load Balancing](/windows-server/networking/sdn/technologies/network-function-virtualization/software-load-balancing-for-sdn) (SLB) can be used to evenly distribute customer network traffic among multiple VMs. It enables multiple servers to host the same workload, providing high availability and scalability. SLB uses [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) to advertise virtual IP addresses to the physical network.
+[Software Load Balancer](software-load-balancer.md) (SLB) can be used to evenly distribute customer network traffic among multiple VMs. It enables multiple servers to host the same workload, providing high availability and scalability. SLB uses [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) to advertise virtual IP addresses to the physical network.
 
 ## Gateway
 
@@ -55,4 +55,4 @@ For related information, see also:
 
 - [Plan a Software Defined Network infrastructure](plan-software-defined-networking-infrastructure.md)
 - [SDN in Windows Server overview](/windows-server/networking/sdn/software-defined-networking)
-- [Deploy a Software Defined Network infrastructure using scripts](/windows-server/networking/sdn/deploy/deploy-a-software-defined-network-infrastructure-using-scripts)
+- [Deploy an SDN infrastructure using SDN Express](../deploy/sdn-express.md)

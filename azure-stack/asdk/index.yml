@@ -9,8 +9,8 @@ metadata:
   ms.service: azure-stack
   ms.subservice: asdk 
   ms.topic: landing-page
-  author: justinha
-  ms.author: justinha
+  author: PatAltimore
+  ms.author: patricka
   ms.date: 07/02/2020
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
@@ -39,7 +39,7 @@ landingContent:
       - linkListType: tutorial
         links:
           - text: Offer IaaS services
-            url: ../operator/tutorial-offer-services.md?view=azs-2002
+            url: ../operator/tutorial-offer-services.md
 
   # Card
   - title: How to use

@@ -1,13 +1,13 @@
 ---
 title: Scale unit node actions in Azure Stack Hub 
 description: Learn about scale unit node actions, including power on, power off, disable, resume, and how to view node status in Azure Stack Hub integrated systems.
-author: IngridAtMicrosoft
+author: PatAltimore
 
 ms.topic: how-to
-ms.date: 11/19/2020
-ms.author: inhenkel
+ms.date: 1/19/2021
+ms.author: patricka
 ms.reviewer: thoroet
-ms.lastreviewed: 11/19/2020
+ms.lastreviewed: 1/19/2021
 
 # Intent: As an Azure Stack operator, I want to learn about the scale unit node actions I can take.
 # Keyword: azure stack scale unit node actions
@@ -42,6 +42,8 @@ To view the status of a scale unit:
    - IP address of the baseboard management controller (BMC).
    - Total number of cores.
    - Total amount of memory.
+   
+    Node actions can also raise expected alerts in the administrator portal. 
 
 ![status of a scale unit](media/azure-stack-node-actions/multinodeactions.png)
 
@@ -62,8 +64,6 @@ Azure Stack Hub may show the operational node status as **Adding** after an oper
 This can happen when the Fabric Resource Provider Role cache did not refresh after an operation. 
 
 Before applying the following steps ensure that no operation is currently in progress. Update the endpoint to match your environment.
-
-
 
 ### [Az modules](#tab/az1)
 

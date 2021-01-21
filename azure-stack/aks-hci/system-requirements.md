@@ -24,9 +24,9 @@ For Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacente
 
  - Ensure the user account(s) that adds updates, and manages Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter clusters has the correct permissions in Active Directory. If you are using Organizational Units (OUs) to manage group policies for servers and services, the user account(s) will require list, read, modify, and delete permissions on all objects in the OU. 
 
- - We recommend using a separate OU for the servers and services you add your Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter clusters to. This will allow you to control access and permissions with more granularity.
+ - We recommend using a separate OU for the servers and services to which you add your Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter clusters. Using a separate OU allows you to control access and permissions with more granularity.
 
- - If you are using GPO templates on containers in Active Directory, ensure deploying AKS-HCI is exempt from that policy. Server hardening will be available in a subsequent preview release.
+ - If you are using GPO templates on containers in Active Directory, ensure deploying AKS-HCI is exempt from the policy. Server hardening will be available in a subsequent preview release.
 
 ## Compute requirements
 
@@ -40,37 +40,70 @@ For Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacente
 
 ## Network requirements 
 
-The following requirements apply to an Azure Stack HCI cluster as well as a Windows Server 2019 Datacenter failover cluster: 
+The following requirements apply to an Azure Stack HCI cluster as well as a Windows Server 2019 Datacenter cluster: 
 
  - Verify that you have an existing, external virtual switch configured if you’re using Windows Admin Center. For Azure Stack HCI clusters, this switch and its name must be the same across all cluster nodes. 
 
  - Verify that you have disabled IPv6 on all network adapters. 
 
- - The network must have an available DHCP server to provide TCP/IP addresses to the VMs and VM hosts. The DHCP server should also contain NTP and DNS host information. 
-
- - We also recommend having a DHCP server with a dedicated scope of IPv4 addresses accessible by the Azure Stack HCI cluster. For example, you can reserve 10.0.1.1 for the default gateway, reserve 10.0.1.2 to 10.0.1.102 for Kubernetes services (using -vipPoolStartIp and -vipPoolEndIp in Set-AksHciConfig), and use 10.0.1.103-10.0.1.254 for Kubernetes cluster VMs. 
-
- - For a successful deployment, the Azure Stack HCI cluster nodes and the Kubernetes cluster VMs must have external internet connectivity.
-
- - The IPv4 addresses provided by the DHCP server should be routable and have a 30-day lease expiration to avoid loss of IP connectivity in the event of a VM update or reprovisioning.  
+ - For a successful deployment, the Azure Stack HCI cluster nodes and the Kubernetes cluster VMs must have external Internet connectivity.
+  
+ - Make sure that there is network connectivity between Azure Stack HCI hosts and the tenant VMs.
 
  - DNS name resolution is required for all nodes to be able to communicate with each other. For Kubernetes external name resolution, use the DNS servers provided by the DHCP server when the IP address is obtained. For Kubernetes internal name resolution, use the default Kubernetes core DNS-based solution. 
+
+ - For this preview release, we provide only single VLAN support for the entire deployment. 
+
+ - For this preview release, we have limited proxy support for Kubernetes clusters created through PowerShell. 
  
- - For this preview release, we provide only single VLAN support for the entire deployment.
+### IP address assignment  
+ 
+As part of a successful AKS on Azure Stack HCI deployment, we recommend that you configure a virtual IP pool range with your DHCP server. It is also recommended that you configure three to five highly available control plane nodes for all your workload clusters. 
 
- - For this preview release, we have limited proxy support for Kubernetes clusters created through PowerShell.
+> [!NOTE]
+> Using static IP address assignments alone is not supported. You must configure a DHCP server as part of this preview release.
 
+#### DHCP
+Follow these requirements while using DHCP for assigning IP addresses throughout the cluster:  
+
+ - The network must have an available DHCP server to provide TCP/IP addresses to the VMs and the VM hosts. The DHCP server should also contain network time protocol (NTP) and DNS host information.
+ 
+ - A DHCP server with a dedicated scope of IPv4 addresses accessible by the Azure Stack HCI cluster.
+ 
+ - The IPv4 addresses provided by the DHCP server should be routable and have a 30-day lease expiration to avoid loss of IP connectivity in the event of a VM update or reprovisioning.  
+
+At a minimum, you should reserve the following number of DHCP addresses:
+
+| Cluster type  | Control plane node | Worker node | Update | Load balancer  |
+| ------------- | ------------------ | ---------- | ----------| -------------|
+| AKS Host |  1  |  0  |  2  |  0  |
+| Workload cluster  |  1 per node  | 1 per node |  5  |  1  |
+
+You can see how the number of required IP addresses is variable depending on the number of workload clusters and control plane and worker nodes you have in your environment. We recommend reserving 256 IP addresses (/24 subnet) in your DHCP IP pool.
+  
+    
+#### VIP Pool Range
+
+Virtual IP (VIP) pools are strongly recommended for an AKS on Azure Stack HCI deployment. VIP pools are a range of reserved static IP addresses that are used for long-lived deployments to guarantee that your deployment and application workloads are always reachable. Currently, we only support IPv4 addresses, so you must verify that you have disabled IPv6 on all network adapters. Also, make sure your virtual IP addresses are not a part of the DHCP IP reserve.
+
+At a minimum, you should reserve one IP address per cluster (workload and AKS host), and one IP address per Kubernetes service. The number of required IP addresses in the VIP pool range varies depending on the number of workload clusters and Kubernetes services you have in your environment. We recommend reserving 16 static IP addresses for your AKS-HCI deployment. 
+
+When setting up the AKS host, use the `-vipPoolStartIp` and `-vipPoolEndIp` parameters in `Set-AksHciConfig` to create a VIP pool.
+
+#### MAC Pool Range
+We recommend having a minimum of 16 MAC addresses in the range to allow for multiple control plane nodes in each cluster. When setting up the AKS host, use the `-macPoolStart` and `-macPoolEnd` parameters in `Set-AksHciConfig` to reserve MAC addresses from the DHCP MAC pool for Kubernetes services.
+  
 ### Network port and URL requirements 
 
 When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following firewall ports are automatically opened on each server in the cluster. 
 
 
-| Firewall Port               | Description         | 
+| Firewall port               | Description     | 
 | ---------------------------- | ------------ | 
-| 45000           | wssdagent GPRC   server port           |
+| 45000           | wssdagent GPRC   server port     |
 | 45001             | wssdagent GPRC authentication port  | 
-| 55000           | wssdcloudagent GPRC   server port           |
-| 55001             | wssdcloudagent GPRC authentication port  | 
+| 55000           | wssdcloudagent GPRC   server port      |
+| 65000            | wssdcloudagent GPRC authentication port  | 
 
 
 Firewall URL exceptions are needed for the Windows Admin Center machine and all nodes in the Azure Stack HCI cluster. 
@@ -81,7 +114,8 @@ https://helm.sh/blog/get-helm-sh/  | 443 | Download Agent, WAC | Used to downloa
 https://storage.googleapis.com/  | 443 | Cloud Init | Downloading Kubernetes binaries 
 https://azurecliprod.blob.core.windows.net/ | 443 | Cloud Init | Downloading binaries and containers 
 https://aka.ms/installazurecliwindows | 443 | WAC | Downloading Azure CLI 
-https://:443 | 443 | TCP | Used to support Azure Arc agents 
+https://:443 | 443 | TCP | Used to support Azure Arc agents  
+*.blob.core.windows.net | 443 | TCP | Required for downloads
 *.api.cdp.microsoft.com, *.dl.delivery.mp.microsoft.com, *.emdl.ws.microsoft.com | 80, 443 | Download Agent | Downloading metadata 
 *.dl.delivery.mp.microsoft.com, *.do.dsp.mp.microsoft.com. | 80, 443 | Download Agent | Downloading VHD images 
 ecpacr.azurecr.io | 443 | Kubernetes | Downloading container images 
@@ -91,7 +125,7 @@ git://:9418 | 9418 | TCP | Used to support Azure Arc agents
 
 The following storage implementations are supported by Azure Kubernetes Service on Azure Stack HCI: 
 
-|  Name                         | Storage Type | Required Capacity |
+|  Name                         | Storage type | Required capacity |
 | ---------------------------- | ------------ | ----------------- |
 | Azure Stack HCI Cluster          | CSV          | 1 TB              |
 | Windows Server 2019 Datacenter failover cluster          | CSV          | 1 TB              |

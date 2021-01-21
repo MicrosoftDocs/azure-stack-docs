@@ -4,6 +4,8 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
+  - name: Compare to Windows Server
+    href: concepts/compare-windows-server.md
   - name: Release information
     href: release-information.md
   - name: Release notes
@@ -44,6 +46,12 @@
     items:
     - name: Branch office and edge
       href: deploy/branch-office-edge.md
+    - name: Virtual desktop infrastructure
+      href: deploy/virtual-desktop-infrastructure.md
+    - name: SQL Server
+      href: deploy/sql-server.md
+    - name: Trusted enterprise virtualization
+      href: deploy/trusted-enterprise-virtualization.md
 - name: Manage
   items:
   - name: Manage VMs
@@ -53,7 +61,9 @@
     - name: Manage VMs with PowerShell
       href: manage/vm-powershell.md
     - name: Create VM affinity rules
-      href: manage/vm-affinity.md  
+      href: manage/vm-affinity.md
+    - name: VM load balancing
+      href: manage/vm-load-balancing.md
     - name: Attach GPU to Linux VM
       href: manage/attach-gpu-to-linux-vm.md
   - name: Manage storage
@@ -122,8 +132,6 @@
     items:
     - name: System requirements
       href: concepts/system-requirements.md
-    - name: Compare to Windows Server
-      href: concepts/compare-windows-server.md
     - name: Choose drives
       href: concepts/choose-drives.md
     - name: Drive symmetry considerations
@@ -177,9 +185,9 @@
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
-    href: https://docs.microsoft.com/cli/azure/ext/stack-hci/stack-hci
+    href: /cli/azure/ext/stack-hci/stack-hci
   - name: Azure registration PowerShell commands
-    href: https://docs.microsoft.com/powershell/module/az.stackhci
+    href: /powershell/module/az.stackhci
   - name: Go package for ARM Azure Stack HCI service API
     href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
   - name: Azure Stack HCI Java service classes and interfaces
@@ -226,9 +234,13 @@
   items:
   - name: Azure Stack HCI product page
     href: https://azure.com/hci
-  - name: Azure Stack HCI Eval Guide
+  - name: Evaluation Guide
     href: https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md
-  - name: Azure Stack HCI pricing
+  - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
-  - name: Azure Stack HCI support
+  - name: Support
     href: manage/get-support.md
+  - name: Training
+    href: /learn/paths/azure-stack-hci-foundations/
+  - name: Archived release notes
+    href: preview-release-notes.md

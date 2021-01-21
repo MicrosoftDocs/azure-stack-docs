@@ -1,11 +1,11 @@
 ---
 title: Privileged Access Workstation and privileged endpoint access
 description: Learn about the Privileged Access Workstation and privileged endpoint access
-author: myoungerman
+author: PatAltimore
 
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: 
 ms.lastreviewed: 
 
@@ -62,5 +62,5 @@ To close the privileged endpoint session, run the following:
 
 For more information on connecting to and working with the privileged
 endpoint see [Use the privileged endpoint in Azure
-Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint)
-[Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint).
+Stack](../../operator/azure-stack-privileged-endpoint.md)
+[Hub](../../operator/azure-stack-privileged-endpoint.md).

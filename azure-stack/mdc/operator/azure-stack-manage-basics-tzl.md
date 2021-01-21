@@ -2,10 +2,10 @@
 title: Azure Stack Hub administration basics - MDC
 titleSuffix: Azure Stack Hub
 description: Learn about the basics of Azure Stack Hub administration. See additional support information and view next steps.
-author: justinha
+author: PatAltimore
 ms.topic: article
 ms.date: 10/26/2020
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 10/26/2020
 
@@ -48,7 +48,7 @@ We support the following additional platform-as-a-service (PaaS) services:
 - IoT Hub
 - Event Hub
 
-These services require additional configuration before you can make them available to your users. For more information, see **Tutorials** and **How-to guides** > **Offer services** in our [Azure Stack Hub operator documentation](https://docs.microsoft.com/azure-stack/operator/).
+These services require additional configuration before you can make them available to your users. For more information, see **Tutorials** and **How-to guides** > **Offer services** in our [Azure Stack Hub operator documentation](../../operator/index.yml).
 
 ### Service roadmap
 
@@ -87,11 +87,11 @@ In addition to providing services, you must do the regular duties of an operator
 - Manage [network](../../operator/azure-stack-viewing-public-ip-address-consumption.md) and [storage](../../operator/azure-stack-manage-storage-accounts.md) resources.
 - [Start and stop Azure Stack Hub](../../operator/azure-stack-start-and-stop.md).
 - [Operating the extended storage](../../user/azure-stack-network-howto-extend-datacenter.md).
-- [Manage IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub).
-- [Manage Event Hub](https://docs.microsoft.com/azure-stack/operator/event-hubs-rp-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl).
-- [Manage App Service](https://docs.microsoft.com/azure-stack/operator/azure-stack-app-service-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl).
+- [Manage IoT Hub](/azure/iot-hub/about-iot-hub).
+- [Manage Event Hub](../../operator/event-hubs-rp-overview.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&branch=release-tzl&toc=%2fazure-stack%2ftdc%2ftoc.json&view=azs-2002).
+- [Manage App Service](../../operator/azure-stack-app-service-overview.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&branch=release-tzl&toc=%2fazure-stack%2ftdc%2ftoc.json&view=azs-2002).
 - Replace bad hardware. Here is the list of [replaceable parts](../../operator/azure-stack-replace-component.md).
-- [Get support](https://docs.microsoft.com/azure-stack/operator/azure-stack-help-and-support-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl).
+- [Get support](../../operator/azure-stack-help-and-support-overview.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&branch=release-tzl&toc=%2fazure-stack%2ftdc%2ftoc.json&view=azs-2002).
 
 ## Operator tasks
 
@@ -134,7 +134,7 @@ Here is a list of daily, weekly, and monthly tasks for an operator:
 
 ## What to tell your users
 
-You'll need to let your users know how to work with services in Azure Stack Hub, how to connect to the environment, and how to subscribe to offers. Besides any custom documentation that you may want to provide your users, you can direct users to [Azure Stack Hub User Documentation](https://docs.microsoft.com/azure-stack/user/).
+You'll need to let your users know how to work with services in Azure Stack Hub, how to connect to the environment, and how to subscribe to offers. Besides any custom documentation that you may want to provide your users, you can direct users to [Azure Stack Hub User Documentation](../../user/index.yml).
 
 ### Understand how to work with services in Azure Stack Hub
 

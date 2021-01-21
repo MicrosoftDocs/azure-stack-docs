@@ -4,7 +4,7 @@ description: Learn how to develop Azure Resource Manager templates for app porta
 author: mattbriggs
 
 ms.topic: article
-ms.date: 5/27/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: unknown
 ms.lastreviewed: 05/21/2019

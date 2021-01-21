@@ -124,6 +124,7 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 ## Next steps
 
+- [Use PowerShell to manage subscriptions, plans, and offers in Azure Stack Hub](azure-stack-powershell-plan-offer.md)
 - [Develop templates for Azure Stack Hub](../user/azure-stack-develop-templates.md).
 - [Deploy templates with PowerShell](../user/azure-stack-deploy-template-powershell.md).
-  - [Azure Stack Hub Module Reference](/powershell/azure/azure-stack/overview).
+- [Azure Stack Hub Module Reference](/powershell/azure/azure-stack/overview).

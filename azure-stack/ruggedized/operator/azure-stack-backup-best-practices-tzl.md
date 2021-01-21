@@ -19,7 +19,7 @@ ms.lastreviewed: 12/11/2019
 
 ---
 
-# Infrastructure Backup Service best practices
+# Infrastructure Backup Service best practices - Ruggedized
 
 *Applies to: Modular Data Center, Azure Stack Hub ruggedized*
 
