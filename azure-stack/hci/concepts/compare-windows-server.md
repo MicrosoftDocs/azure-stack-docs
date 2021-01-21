@@ -25,7 +25,11 @@ Use Azure Stack HCI for:
 - Easy extensibility to the cloud, with a regular stream of innovations from your Azure subscription and a consistent set of tools and experiences
 - All the benefits of hyperconverged infrastructure: a simpler, more consolidated datacenter architecture with high-speed storage and networking
 
-:::image type="content" source="media/compare-windows-server/hci-scenarios.png" alt-text="When to use Azure Stack HCI over Windows Server 2019":::
+<center>
+
+:::image type="content" source="media/compare-windows-server/hci-scenarios.png" alt-text="When to use Azure Stack HCI over Windows Server 2019" border="false":::
+
+</center>
 
   >[!NOTE]
   >Because Azure Stack HCI is intended to be used as a Hyper-V virtualization host for a modern, hyperconverged architecture, it does not include guest rights. Because of this, Azure Stack HCI is only licensed to run a small number of server roles directly; any other roles must run inside of VMs.
@@ -42,7 +46,11 @@ Use Windows Server 2019 for:
 - As a traditional server, such as a bare-metal domain controller or SQL Server installation
 - For traditional infrastructure such as VMs connected to Fibre Channel SAN storage
 
-:::image type="content" source="media/compare-windows-server/windows-server-scenarios.png" alt-text="When to use Windows Server 2019 over Azure Stack HCI":::
+<center>
+
+:::image type="content" source="media/compare-windows-server/windows-server-scenarios.png" alt-text="When to use Windows Server 2019 over Azure Stack HCI" border="false":::
+
+</center>
 
 ## Compare product positioning
 
