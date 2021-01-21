@@ -310,7 +310,7 @@ To get the activation key, run the following PowerShell commands. Use the same u
 ---
 
 
-### Create an Activation Resource in Azure Stack Hub
+### Create an activation resource in Azure Stack Hub
 
 Return to the Azure Stack Hub environment with the file or text from the activation key created from **Get-AzsActivationKey**. Run the following PowerShell commands to create an activation resource in Azure Stack Hub using that activation key:   
 
