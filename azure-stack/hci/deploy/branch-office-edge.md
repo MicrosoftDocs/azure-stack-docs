@@ -4,7 +4,7 @@ description: This topic provides guidance on how to plan, configure, and deploy 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 01/07/2021
+ms.date: 01/21/2021
 ---
 
 # Deploy branch office and edge on Azure Stack HCI
@@ -59,8 +59,8 @@ To deploy Azure IoT Edge on Azure Stack HCI:
     For information on supported operating system versions, VM types, processor architectures, and system requirements, see [Azure IoT Edge supported systems](https://docs.microsoft.com/azure/iot-edge/support).
 
 1. If you don’t already have an Azure account, start a [free account](https://azure.microsoft.com/free).
-1. In the Azure portal, [create an Azure IoT Hub](https://docs.microsoft.com/azure/iot-edge/quickstart#create-an-iot-hub).
-1.	In the Azure portal, [register an IoT Edge device](https://docs.microsoft.com/azure/iot-edge/quickstart#register-an-iot-edge-device).
+1. In the Azure portal, [create an Azure IoT hub](https://docs.microsoft.com/azure/iot-edge/quickstart#create-an-iot-hub).
+1. In the Azure portal, [register an IoT Edge device](https://docs.microsoft.com/azure/iot-edge/quickstart#register-an-iot-edge-device).
 
     >[!NOTE]
     > The IoT Edge device is on a VM running either Windows or Linux on Azure Stack HCI.
@@ -77,4 +77,4 @@ To deploy Azure IoT Edge on Azure Stack HCI:
 ## Next steps
 For more information about branch office and edge, and Azure IoT Edge, see:
 - [Quickstart: Deploy your first IoT Edge module to a virtual Linux device](https://docs.microsoft.com/azure/iot-edge/quickstart-linux?view=iotedge-2018-06&preserve-view=true)
-- [Quickstart: Deploy your first IoT Edge module to a virtual Windows device](https://docs.microsoft.com/azure/iot-edge/quickstart?view=iotedge-2018-06&preserve-view=true)
+- [Quickstart: Deploy your first IoT Edge module to a Windows device](https://docs.microsoft.com/azure/iot-edge/quickstart?view=iotedge-2018-06&preserve-view=true)

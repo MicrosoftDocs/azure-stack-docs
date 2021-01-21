@@ -40,6 +40,10 @@
     items:
     - name: Create a cluster with PowerShell
       href: deploy/create-cluster-powershell.md
+  - name: Deploy workloads
+    items:
+    - name: Branch office and edge
+      href: deploy/branch-office-edge.md
 - name: Manage
   items:
   - name: Manage VMs
