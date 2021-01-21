@@ -25,7 +25,7 @@ Primary features of Azure IoT Edge:
 - Runs “on the edge” to provide near-real time responses
 - Secure software and hardware mechanisms
 - Available in the [AI Toolkit for Azure IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge)
-- Open programmability support for: Java, .Net Core 2.0, Node.js, C, and Python
+- Open programmability support for: Java, .NET Core 2.0, Node.js, C, and Python
 - Offline and intermittent connectivity support
 - Native management from Azure IoT Hub
 
