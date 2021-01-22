@@ -344,7 +344,7 @@ Congrats, your cluster has now been created.
 
 After the cluster is created, it can some take time for the cluster name to be replicated via DNS across your domain, especially if workgroup servers have been newly added to Active Directory. Although the cluster might be displayed in Windows Admin Center, it might not be available to connect to yet.
 
-A good check to ensure all are cluster resources are online:
+A good check to ensure all cluster resources are online:
 
 ```powershell
 Get-Cluster -Name $ClusterName | Get-ClusterResource
