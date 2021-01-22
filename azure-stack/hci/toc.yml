@@ -90,8 +90,6 @@
       href: manage/monitor-cluster.md
     - name: Set up a cluster witness
       href: manage/witness.md
-    - name: Deploy an SDN infrastructure
-      href: manage/sdn-express.md
     - name: Use Datacenter Firewall
       href: manage/use-datacenter-firewall.md
     - name: Use DISKSPD to test workloads
@@ -110,6 +108,10 @@
       href: manage/validate-qos.md
     - name: Troubleshoot CredSSP
       href: manage/troubleshoot-credssp.md
+  - name: Manage SDN
+    items:
+    - name: Deploy an SDN infrastructure
+      href: manage/sdn-express.md
   - name: Manage Azure services
     items:
     - name: Register Windows Admin Center with Azure
