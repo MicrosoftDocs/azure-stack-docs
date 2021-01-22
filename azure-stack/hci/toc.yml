@@ -44,6 +44,8 @@
       href: deploy/create-cluster-powershell.md
   - name: Deploy workloads
     items:
+    - name: Branch office and edge
+      href: deploy/branch-office-edge.md
     - name: Virtual desktop infrastructure
       href: deploy/virtual-desktop-infrastructure.md
     - name: SQL Server
