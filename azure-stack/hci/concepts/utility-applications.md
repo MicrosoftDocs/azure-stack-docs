@@ -4,7 +4,7 @@ description: This topic spotlights utility applications from Microsoft partners 
 author: burcuerdemir
 ms.author: burcue
 ms.topic: conceptual
-ms.date: 12/18/2020
+ms.date: 01/22/2021
 ---
 
 # Utility applications for Azure Stack HCI
@@ -26,6 +26,7 @@ Altaro VM Backup is an award-winning VM backup and replication solution for Hype
 
 - Application listing: [Virtual Machine Backup and Replication for Hyper-V and VMware](https://www.altaro.com/vm-backup/)
 - Application support: [Altaro support for Azure Stack HCI](https://www.altaro.com/news/single/News-Altaro-applies-its-expertise-in-Hyper-V-backup-to-support-Microsoft.php)
+- Replication support: [Altaro WAN-Optimized Replication](https://www.altaro.com/vm-backup/wan-optimized-replication.php)
 
 :::image type="content" source="./media/utility-applications/veeam-logo.png" alt-text="Veeam company logo" border="false":::
 
@@ -33,6 +34,7 @@ Veeam Backup & Replication is the one solution for simple, reliable, and flexibl
 
 - Application listing: [Veeam Backup & Replication](https://www.veeam.com/vm-backup-recovery-replication-software.html)
 - Application support: [Veeam Support for Azure Stack HCI](https://www.veeam.com/kb4047)
+- [Replication support for Hyper-V VMs](https://www.veeam.com/vm-advanced-replication.html?ad=in-text-link)
 
 :::image type="content" source="./media/utility-applications/commvault-logo.png" alt-text="Commvault company logo" border="false":::
 
@@ -40,6 +42,7 @@ Commvault is a complete data management platform to store, protect, manage, and 
 
 - Application listing: [Microsoft Azure Stack](https://www.commvault.com/supported-technologies/microsoft/azurestack)
 - Application support: [Azure Stack HCI](https://documentation.commvault.com/11.21/essential/132799_microsoft_azure_stack_hci.html)
+- [Commvault Backup and Recovery Now Supports Microsoft Azure Stack HCI](https://www.commvault.com/blogs/commvault-backup-and-recovery-now-supports-microsoft-azure-stack-hci)
 
 :::image type="content" source="./media/utility-applications/veritas-logo.png" alt-text="Veritas company logo" border="false":::
 
@@ -47,6 +50,7 @@ Veritas Backup Exec is an easy-to-use backup and recovery solution that helps pr
 
 - Application listing: [Backup Exec](https://www.veritas.com/protection/backup-exec)
 - Application support: [Protect Azure Stack HCI with Backup Exec](https://www.veritas.com/support/en_US/article.100048860)
+- [Veritas Backup Exec support for Microsoft Azure](https://www.veritas.com/protection/backup-exec/azure)
 
 :::image type="content" source="./media/utility-applications/datadog-logo.png" alt-text="Datadag company logo" border="false":::
 
