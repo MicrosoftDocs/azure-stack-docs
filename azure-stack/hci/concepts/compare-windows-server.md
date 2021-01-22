@@ -1,70 +1,106 @@
 ---
-title: Compare Azure Stack HCI to Azure Stack Hub and Windows Server
-description: This topic helps you determine whether Azure Stack HCI, Azure Stack Hub, or Windows Server is right for your organization.
+title: Compare Azure Stack HCI to Windows Server
+description: This topic helps you determine whether Azure Stack HCI or Windows Server is right for your organization.
 ms.topic: conceptual
 author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/22/2020
+ms.date: 01/21/2021
 ---
 
-# Compare Azure Stack HCI to Azure Stack Hub and Windows Server
+# Compare Azure Stack HCI to Windows Server 2019
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019; Azure Stack Hub
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-Many customers will wonder whether Windows Server, Azure Stack HCI, or Azure Stack Hub is a better fit for their needs. This topic helps you determine which is right for your organization. 
+This topic explains the key differences between Azure Stack HCI and Windows Server 2019, and provides guidance about when to use each. Both products are actively supported and maintained by Microsoft. Many organizations may choose to deploy both, as they are intended for different and complementary purposes.
 
-## Compare Azure Stack HCI to Windows Server
+## When to use Azure Stack HCI
 
-Both Windows Server and Azure Stack HCI provide the same high-quality user experience with a road map of new releases.
+Azure Stack HCI is Microsoft's premier hyperconverged infrastructure platform for running VMs or virtual desktops on-premises with connections to Azure hybrid services. It's an easy way to modernize and secure your datacenters and branch offices, and achieve industry-best performance with low latency and data sovereignty.
 
-| Windows Server | Azure Stack HCI |
-| --------------- | --------------- |
-| Best guest and traditional server | Best virtualization host for a software-defined data center, including Storage Spaces Direct |
-| Runs anywhere, using a traditional software licensing model | Runs on hardware from your preferred vendor, but is delivered as an Azure service and billed to your Azure account |
-| Two installation options: Server with desktop experience or Server Core | Based on a lightly customized Server Core |
 
-### When to use Windows Server
+:::image type="content" source="media/compare-windows-server/hci-scenarios.png" alt-text="When to use Azure Stack HCI over Windows Server 2019" border="false" lightbox="media/compare-windows-server/hci-scenarios.png":::
 
-| Windows Server | Azure Stack HCI |
-| --------------- | --------------- |
-| Windows Server is a highly versatile, multi-purpose operating system, with dozens of roles and hundreds of features, including guest rights. | Azure Stack HCI doesn't include guest rights and is intended to be used for a modern, hyperconverged architecture. |
-| Use Windows Server to run VMs or for bare metal installations encompassing all traditional server roles, including Active Directory, file services, DNS, DHCP, Internet Information Services (IIS), container host/guest, SQL Server, Exchange Server, Host Guardian Service (HGS), and many more. | Intended as a Hyper-V virtualization host, Azure Stack HCI is only licensed to run a small number of server roles directly; any other roles must run inside of VMs. |
 
-### When to use Azure Stack HCI
+Use Azure Stack HCI for:
 
-| Windows Server | Azure Stack HCI |
-| --------------- | --------------- |
-| Windows Server can run on-premises or in the cloud, but will not offer the latest hyperconverged features moving forward.| Azure Stack HCI is Microsoft's premier hyperconverged infrastructure platform for running VMs on-premises, optionally stretched across two sites and with connections to Azure hybrid services. It's an easy way to modernize and secure your data centers and branch offices, achieve industry-best performance for SQL Server databases, and run VMs or virtual desktops on-premises for low latency and data sovereignty.|
-| Windows Server is a great multi-purpose "Swiss Army knife" for all Windows Server roles, virtualized or not. | Use Azure Stack HCI to virtualize classic enterprise apps like Exchange, SharePoint, and SQL Server, and to virtualize Windows Server roles like File Server, DNS, DHCP, IIS, and AD. Includes unrestricted access to all Hyper-V features like Shielded VMs.|
-| Many Windows Server deployments run on aging hardware. | Use Azure Stack HCI to use software-defined infrastructure in place of aging storage arrays or network appliances, without major rearchitecture. Built-in Hyper-V, Storage Spaces Direct, and Software-Defined Networking (SDN) are directly accessible and manageable. Run apps inside Windows or Linux VMs.|
+- The best virtualization host to modernize your infrastructure, either for existing workloads in your core datacenter or emerging requirements for branch office and edge locations
+- Easy extensibility to the cloud, with a regular stream of innovations from your Azure subscription and a consistent set of tools and experiences
+- All the benefits of hyperconverged infrastructure: a simpler, more consolidated datacenter architecture with high-speed storage and networking
 
-## Compare Azure Stack HCI to Azure Stack Hub
+  >[!NOTE]
+  >Because Azure Stack HCI is intended to be used as a Hyper-V virtualization host for a modern, hyperconverged architecture, it does not include guest rights. Because of this, Azure Stack HCI is only licensed to run a small number of server roles directly; any other roles must run inside of VMs.
 
-As your organization digitally transforms, you may find you can move faster by using public cloud services to build on modern architectures and refresh legacy apps. However, for reasons that include technological and regulatory obstacles, many workloads must remain on-premises. Use this table to help determine which Microsoft hybrid cloud strategy provides what you need where you need it, delivering cloud innovation for workloads wherever they are.
+## When to use Windows Server 2019
 
-| Azure Stack Hub | Azure Stack HCI |
-| --------------- | --------------- |
-| New skills, innovative processes | Same skills, familiar processes |
-| Azure services in your datacenter | Connect your datacenter to Azure services |
+Windows Server 2019 is a highly versatile, multi-purpose operating system, with dozens of roles and hundreds of features, including guest rights. Windows Server machines can be in the cloud or on-premises, including virtualized on top of Azure Stack HCI.
 
-### When to use Azure Stack Hub
 
-| Azure Stack Hub | Azure Stack HCI |
-| --------------- | --------------- |
-| Use Azure Stack Hub for self-service Infrastructure-as-a-Service (IaaS), with strong isolation and precise usage tracking and chargeback for multiple colocated tenants. Ideal for service providers and enterprise private clouds. Templates from the Azure Marketplace. | Azure Stack HCI doesn't natively enforce or provide for multi-tenancy. |
-| Use Azure Stack Hub to develop and run apps that rely on Platform-as-a-Service (PaaS) services like Web Apps, Functions, or Event Hubs on-premises. These services run on Azure Stack Hub exactly like they do in Azure, providing a consistent hybrid development and runtime environment. | Azure Stack HCI doesn't run PaaS services on-premises. |
-| Use Azure Stack Hub to modernize app deployment and operation with DevOps practices like infrastructure as code, continuous integration and continuous deployment (CI/CD), and convenient features like Azure-consistent VM extensions. Ideal for Dev and DevOps teams. | Azure Stack HCI doesn't natively include any DevOps tooling. |
+:::image type="content" source="media/compare-windows-server/windows-server-scenarios.png" alt-text="When to use Windows Server 2019 over Azure Stack HCI" border="false" lightbox="media/compare-windows-server/windows-server-scenarios.png":::
 
-### When to use Azure Stack HCI
 
-| Azure Stack Hub | Azure Stack HCI |
-| --------------- | --------------- |
-| Azure Stack Hub requires minimum 4 nodes and its own network switches. | Use Azure Stack HCI for the minimum footprint for remote offices and branches. Start with just 2 server nodes and switchless back-to-back networking for peak simplicity and affordability. Hardware offers start at 4 drives, 64 GB of memory, well under $10k/node. |
-| Azure Stack Hub constrains Hyper V configurability and feature set for consistency with Azure. | Use Azure Stack HCI for no-frills Hyper-V virtualization for classic enterprise apps like Exchange, SharePoint, and SQL Server, and to virtualize Windows Server roles like File Server, DNS, DHCP, IIS, and AD. Unrestricted access to all Hyper-V features like Shielded VMs.|
-| Azure Stack Hub doesn't expose these infrastructural technologies. | Use Azure Stack HCI to use software-defined infrastructure in place of aging storage arrays or network appliances, without major rearchitecture. Built-in Hyper-V, Storage Spaces Direct, and Software-Defined Networking (SDN) are directly accessible and manageable. |
+Use Windows Server 2019 for:
+
+- A guest operating system inside of virtual machines (VMs) or containers
+- As the runtime for a Windows application
+- To use one or more of the built-in server roles such as Active Directory, file services, DNS, DHCP, or Internet Information Services (IIS)
+- As a traditional server, such as a bare-metal domain controller or SQL Server installation
+- For traditional infrastructure such as VMs connected to Fibre Channel SAN storage
+
+## Compare product positioning
+
+The following table shows the high-level product packaging for Azure Stack HCI and Windows Server 2019.
+
+| **Attribute**    | **Azure Stack HCI** | **Windows Server 2019** |
+| ---------------- | ------------------- | ----------------------- |
+| Product type     | Cloud service which includes an operating system and more | Operating system |
+| Legal            | Covered under your Microsoft Customer Agreement or Online Subscription Agreement | Has its own end-user license agreement |
+| Licensing        | Billed to your Azure subscription | Has its own paid license |
+| Support          | Covered under Azure support | Can be covered by different support agreements, including Microsoft Premier Support |
+| Where to get it  | Download from [Azure.com/HCI](https://azure.com/hci), or comes preinstalled on Integrated Systems | Microsoft Volume Licensing Service Center or Evaluation Center |
+| Runs in VMs      | For evaluation only; intended as a host OS | Yes, in the cloud or on premises |
+| Hardware         | Runs on any of more than 200 pre-validated solutions from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net) | Runs on any hardware with the "Certified for Windows Server 2019" logo |
+| Lifecycle policy | Always up to date with the latest features | Choose between [Windows Server servicing channels](/windows-server/get-started-19/servicing-channels-19): Long-Term Servicing Channel (LTSC) and Semi-Annual Channel (SAC) |
+
+## Compare technical features
+
+The following table compares the technical features of Azure Stack HCI and Windows Server 2019.
+
+| **Attribute** | **Azure Stack HCI** | **Windows Server 2019** |
+| ------------- | ------------------- | ----------------------- |
+| Core Hyper-V | Yes | Yes |
+| Core Storage Spaces Direct | Yes | Yes |
+| Core SDN | Yes | Yes |
+| Stretch clustering for disaster recovery | Yes | - |
+| 4-5x faster Storage Spaces repairs | Yes | - |
+| Integrated driver and firmware updates | Yes (Integrated Systems only) | - |
+| Guided deployment | Yes | - |
+
+## Compare management options
+
+The following table compares the management options for Azure Stack HCI and Windows Server 2019. Both products are designed for remote management and can be managed with many of the same tools.
+
+| **Attribute** | **Azure Stack HCI** | **Windows Server 2019** |
+| ------------- | ------------------- | ----------------------- |
+| Desktop experience | - | Yes |
+| Windows Admin Center | Yes | Yes |
+| Microsoft System Center | Yes (sold separately) | Yes (sold separately) |
+| Azure portal | Yes (natively) | Requires Arc agent |
+| Third-party tools | Yes | Yes |
+
+## Compare product pricing
+
+The table below compares the product pricing for Azure Stack HCI and Windows Server 2019. For details, see [Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
+
+| **Attribute** | **Azure Stack HCI** | **Windows Server 2019** |
+| ------------- | ------------------- | ----------------------- |
+| Price type | Subscription service | Varies: most often a one-time license |
+| Price structure | Per core, per month | Varies: usually per core |
+| Price | $10 USD per core, per month | See [Pricing and licensing for Windows Server 2019](https://www.microsoft.com/windows-server/pricing) |
+| Evaluation/trial period | 30-day free trial once registered | 180-day evaluation copy |
+| Channels | Enterprise agreement, cloud service provider, or direct | Enterprise agreement/volume licensing, OEM, services provider license agreement (SPLA) |
 
 ## Next steps
 
-- [What is Azure Stack HCI?](../overview.md)
+- [Compare Azure Stack HCI to Azure Stack Hub](compare-azure-stack-hub.md)
