@@ -18,7 +18,7 @@ You have a choice between two cluster types:
 - Standard cluster with at least two server nodes, all residing in a single site.
 - Stretched cluster with at least four server nodes that span across two sites, with two nodes per site.
 
-In this article, we will create an example cluster named Cluster1 that is comprised of four server nodes named Server1, Server2, Server3, and Server4.
+In this article, we will create an example cluster named Cluster1 that is composed of four server nodes named Server1, Server2, Server3, and Server4.
 
 For the stretched cluster scenario, we will use ClusterS1 as the name and use the same four server nodes stretched across sites Site1 and Site2.
 
