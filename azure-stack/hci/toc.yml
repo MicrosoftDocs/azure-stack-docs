@@ -6,6 +6,8 @@
     href: overview.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md
+  - name: Compare to Azure Stack Hub
+    href: concepts/compare-azure-stack-hub.md
   - name: Release information
     href: release-information.md
   - name: Release notes
@@ -44,6 +46,8 @@
       href: deploy/create-cluster-powershell.md
   - name: Deploy workloads
     items:
+    - name: Branch office and edge
+      href: deploy/branch-office-edge.md
     - name: Virtual desktop infrastructure
       href: deploy/virtual-desktop-infrastructure.md
     - name: SQL Server
