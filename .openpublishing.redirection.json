@@ -550,12 +550,12 @@
       "source_path": "azure-stack/hci/known-issues.md", 
       "redirect_url": "https://support.microsoft.com/help/4595086", 
       "redirect_document_id": false 
-    }
+    },
     { 
       "source_path": "azure-stack/hci/deploy/witness.md", 
       "redirect_url": "/azure-stack/hci/manage/witness", 
       "redirect_document_id": false 
-    }
+    },
     { 
       "source_path": "azure-stack/hci/deploy/sdn-express.md", 
       "redirect_url": "/azure-stack/hci/manage/sdn-express", 
