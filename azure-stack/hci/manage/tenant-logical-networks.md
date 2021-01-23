@@ -26,13 +26,14 @@ Use the following steps in Windows Admin Center to create a logical network.
 1. In the **Logical networks** pane, type a name for the logical network.
 1. Under **Logical subnet**, select **Add**.
 
-:::image type="content" source="./media/tenant-logical-networks/create-logical-network-subnet.png" alt-text="The Logical subnet pane in Windows Admin Center." lightbox="./media/tenant-logical-networks/create-logical-network-subnet.png":::
+    :::image type="content" source="./media/tenant-logical-networks/create-logical-network-subnet.png" alt-text="The Logical subnet pane in Windows Admin Center." lightbox="./media/tenant-logical-networks/create-logical-network-subnet.png":::
 
 1. In the **Logical subnet** pane, type a name for the subnet, and then provide the following information:
     1. A **VLAN ID** for the network.
     1. An **Address Prefix** in CIDR notation.
     1. The **Default Gateway** for the network.
-    1. The **DNS** server address, if needed. Specify the DNS server address if this is a public logical network to provide connectivity for external clients.
+    1. The **DNS** server address, if needed.
+    1. Select the **Public Logical network** checkbox if the logical network is to provide connectivity for external clients.
 1. Under **Logical subnet IP Pools**, select **Add** and then provide the following information:
     1. A logical **IP Pool Name**
     1. A **Start IP address**
@@ -43,12 +44,31 @@ Use the following steps in Windows Admin Center to create a logical network.
 1. In the **Logical networks** list, verify that the state of the logical network is **Healthy**.
 
 ## Get a list of logical networks
-TBD
+You can easily see all of the logical networks in your cluster.
 
+:::image type="content" source="./media/tenant-logical-networks/list-logical-networks.png" alt-text="The Inventory pane of Logical networks in Windows Admin Center." lightbox="./media/tenant-logical-networks/list-logical-networks.png":::
+
+1. On the Windows Admin Center home screen, under **All Connections**, select the cluster on which you want to view logical networks.
+1. Under **Tools**, scroll down to the **Networking** area, and select **Logical networks**.
+1. The **Inventory** tab lists all logical network available on the cluster, and provides commands to manage individual logical networks. You can:
+    - View the list of logical networks.
+    - View the logical network settings, the state of the logical network, and whether network virtualization is enabled for the logical network. If network virtualization is enabled, you can also view the number of virtual networks associated with this logical network.
+    - Change settings for a logical network.
+    - Delete a logical network.
 
 ## View logical network details
-TBD
+You can view detailed information for a specific logical network from its dedicated page.
 
+:::image type="content" source="./media/tenant-logical-networks/view-logical-network-details.png" alt-text="The details view of a logical network in Windows Admin Center." lightbox="./media/tenant-logical-networks/view-logical-network-details.png":::
+
+1. Under **Tools**, scroll down to the **Networking** area, and select **Logical networks**.
+1. Select the **Inventory** tab, and then select the logical network that you want to view details on. On the subsequent page, you can:
+    - View the provisioning state of the logical network (Succeeded, Failed).
+    - View whether network virtualization is enabled for the logical network.
+    - View the subnets in the logical network.
+    - Add new subnets, delete existing subnets, and modify the settings for a logical network subnet.
+    - Select each subnet to go to its **Subnet** page, where you can add, remove, and modify logical subnet IP pools.
+    - View virtual networks and connections associated with the logical network.
 
 ## Change logical network settings
 TBD
