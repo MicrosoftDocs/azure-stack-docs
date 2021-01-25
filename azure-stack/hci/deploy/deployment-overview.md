@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/11/2020
+ms.date: 01/22/2021
 ---
 
 # What is the deployment process for Azure Stack HCI?
@@ -45,7 +45,7 @@ Create a failover cluster using [Windows Admin Center](create-cluster.md) or [Po
 
 ### 3. Set up a cluster witness
 
-[Setting up a witness resource](witness.md) is mandatory for all clusters. Two-node clusters need a witness so that either server going offline does not cause the other node to become unavailable as well. Three and higher-node clusters need a witness to be able to withstand two servers failing or being offline. 
+[Setting up a witness resource](../manage/witness.md) is mandatory for all clusters. Two-node clusters need a witness so that either server going offline does not cause the other node to become unavailable as well. Three and higher-node clusters need a witness to be able to withstand two servers failing or being offline. 
 
 ### 4. Register with Azure
 

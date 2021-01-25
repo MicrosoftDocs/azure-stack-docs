@@ -5,7 +5,7 @@ ms.topic: how-to
 author: v-dasis
 ms.author: v-dasis
 ms.reviewer: jgerend
-ms.date: 01/12/2021
+ms.date: 01/22/2021
 ---
 
 # Manage Azure Stack HCI clusters using Windows Admin Center
@@ -92,7 +92,7 @@ There are several general settings that can be applied to your cluster. Here is 
    - **Disk witness** - to use a disk resource as witness (do not use for stretched clusters)
    - **File share witness** - to use a file share as witness
 
-        For detailed information on how to set up a witness, see [Set up a cluster witness](../deploy/witness.md). Also see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).
+        For detailed information on how to set up a witness, see [Set up a cluster witness](witness.md). Also see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).
 
         :::image type="content" source="media/manage-cluster/cluster-settings-witness.png" alt-text="cluster Witness screen" lightbox="media/manage-cluster/cluster-settings-witness.png":::
 
