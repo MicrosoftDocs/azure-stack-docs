@@ -4,7 +4,7 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 01/22/2020
+ms.date: 01/25/2020
 ---
 
 # Update Azure Stack HCI clusters
@@ -30,17 +30,21 @@ Follow these steps to install updates:
    > [!NOTE]
    > To use the Cluster-Aware updating tool in Windows Admin Center, you must enable Credential Security Service Provider (CredSSP) and provide explicit credentials. If you are asked if CredSSP should be enabled, click **Yes**. Specify your username and password, and click **Continue**.
 
-3. The cluster's update status will be displayed; click **Check for updates** to get a list of the operating system updates that are available for each server in the cluster. You may need to supply administrator credentials.
+3. The cluster's update status will be displayed; click **Check for updates** to get a list of the operating system updates that are available for each server in the cluster. You may need to supply administrator credentials. If no operating system updates are available, click **Next: hardware updates** and proceed to step 7.
 
-4. Select **Next: Install** to proceed to install the updates, or click **Skip** to exclude them. 
+4. Select **Next: Install** to proceed to install the operating system updates, or click **Skip** to exclude them. 
 
    :::image type="content" source="media/update-cluster/operating-system-updates.png" alt-text="Click Next: Install to proceed to installing operating system updates, or click Skip to exclude them" lightbox="media/update-cluster/operating-system-updates.png":::
 
-5. Select **Install** to install the operating system updates on each server in the cluster. If any of the updates requires a restart, servers will be restarted one at a time, moving cluster roles such as virtual machines between servers to prevent downtime.
+5. Select **Install** to install the operating system updates on each server in the cluster. You will see the update status change to "installing updates." If any of the updates requires a restart, servers will be restarted one at a time, moving cluster roles such as virtual machines between servers to prevent downtime.
 
    :::image type="content" source="media/update-cluster/install-os-updates.png" alt-text="Click Install to install operating system updates on each server in the cluster" lightbox="media/update-cluster/install-os-updates.png":::
 
-6. To improve security, disable CredSSP as soon as you're finished installing the updates:
+6. When operating system updates are complete, the update status will change to "succeeded." Click **Next: hardware updates** to proceed to the hardware updates screen.
+
+7. Windows Admin Center will check the cluster for installed extensions that support your specific server hardware. Click **Next: install** to install the hardware updates on each server in the cluster. If no extensions or updates are found, click **Exit**.
+
+8. To improve security, disable CredSSP as soon as you're finished installing the updates:
     - In Windows Admin Center, under **All connections**, select the first server in your cluster, and then select **Connect**.
     - On the **Overview** page, select **Disable CredSSP**, and then on the **Disable CredSSP** pop-up window, select **Yes**.
 
