@@ -135,7 +135,7 @@ Restart-Computer -ComputerName $ServerList
 
 ## Step 2: Configure networking
 
-This step configures various networking elements, such as virtual switches and network adapters, in your environment. RDMA (both iWARP and RoCE ) network adapters are supported.
+This step configures various networking elements, such as virtual switches and network adapters, in your environment. RDMA (both iWARP and RoCE) network adapters are supported.
 
 For more information on RDMA and Hyper-V host networking for Azure Stack HCI, see [Host network requirements](../concepts/host-network-requirements.md).
 
