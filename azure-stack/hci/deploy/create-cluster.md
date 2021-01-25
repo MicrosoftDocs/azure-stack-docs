@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: v-dasis
 ms.topic: how-to
-ms.date: 01/20/2021
+ms.date: 01/22/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -226,4 +226,5 @@ If resolving the cluster isn't successful after some time, in most cases you can
 ## Next steps
 
 - Register your cluster with Azure. See [Manage Azure registration](../manage/manage-azure-registration.md).
+- Set up a witness. See [Set up a cluster witness](../manage/witness.md).
 - Do a final validation of the cluster. See [Validate an Azure Stack HCI cluster](validate.md)
