@@ -31,9 +31,11 @@ If you’re interested in testing Azure Stack HCI, but have limited or no spare 
 Before you begin, make sure you:
 
 - Have read the [Azure Stack HCI system requirements](../concepts/system-requirements.md).
+- Have read the [Physical network requirements](../concepts/physical-network-requirements.md) and [Host network requirements](../concepts/host-network-requirements.md) for Azure Stack HCI.
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
 - Have an account that’s a member of the local Administrators group on each server.
 - Have rights in Active Directory to create objects.
+- For stretched clusters, set up your two sites beforehand in Active Directory.
 
 ## Using Windows PowerShell
 
@@ -135,7 +137,9 @@ Restart-Computer -ComputerName $ServerList -WSManAuthentication Kerberos
 
 ## Step 2: Configure networking
 
-This step configures various networking elements in your environment.
+This step configures various networking elements, such as virtual switches and network adapters, in your environment. RDMA (both iWARP and RoCE) network adapters are supported.
+
+For more information on RDMA and Hyper-V host networking for Azure Stack HCI, see [Host network requirements](../concepts/host-network-requirements.md).
 
 ### Disable unused networks
 
@@ -455,7 +459,7 @@ Congrats, you have now created a cluster.
 
 Now that you are done, there are still some important tasks you need to complete:
 
-- Setup a cluster witness. See [Set up a cluster witness](witness.md).
+- Setup a cluster witness. See [Set up a cluster witness](../manage/witness.md).
 - Create your volumes. See [Create volumes](../manage/create-volumes.md).
 - For stretched clusters, create volumes and setup replication using Storage Replica. See [Create volumes and set up replication for stretched clusters](../manage/create-stretched-volumes.md).
 
