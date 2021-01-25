@@ -60,7 +60,7 @@ In this scenario, the source infrastructure networks that require access to the 
 - Infrastructure network – Last /27
 - BMC Network – Last /27
 
-The solution is based on policy based routing (PBR) which uses an administrator defined set of criteria implemented by an access control list (ACL). The ACL categorizes the traffic which is directed to the next-hop IP of the proxy devices implemented in a route-map, rather than normal routing which is based only on destination IP address.
+The solution is based on policy based routing (PBR) which uses an administrator defined set of criteria implemented by an access control list (ACL). The ACL categorizes the traffic that is directed to the next-hop IP of the proxy devices implemented in a route-map, rather than normal routing that is based only on destination IP address.
 
 The following subnets receive Policy Based Routing (PBR) treatment in this scenario:
 
@@ -72,7 +72,7 @@ The following subnets receive Policy Based Routing (PBR) treatment in this scena
 
 ### Configure border device
 
-Enable PBR by entering the `feature pbr` command. The following is an example border device configuration.
+Enable PBR by entering the `feature pbr` command. The following example is the border device configuration for the scenario.
 
 ```
 ****************************************************************************
@@ -209,7 +209,7 @@ ip access-list PERMITTED_TO_PROXY_ENV1
 150 permit tcp 10.60.32.160/27 any eq 443 <<HTTPS traffic from DVM and HLH leaving test rack>>
 ```
 
-The core of the PBR functionality is implemented by the **TRAFFIC_TO_PROXY_ENV1** route-map. The **pbr-statistics** option is added to enable viewing the policy match statistics to verify the number packets that do and do not get PBR forwarding. Route-map sequence 10 permits PBR treatment to traffic meeting ACL **PERMITTED_TO_PROXY_ENV1** criteria. That traffic is forwarded to the next-hop IP addresses of `10.60.3.34` and `10.60.3.35` which are the VIPs for the primary/secondary proxy devices in our example configuration
+The core of the PBR functionality is implemented by the **TRAFFIC_TO_PROXY_ENV1** route-map. The **pbr-statistics** option is added to enable viewing the policy match statistics to verify the number packets that do and do not get PBR forwarding. Route-map sequence 10 permits PBR treatment to traffic meeting ACL **PERMITTED_TO_PROXY_ENV1** criteria. That traffic is forwarded to the next-hop IP addresses of `10.60.3.34` and `10.60.3.35`, which are the VIPs for the primary/secondary proxy devices in our example configuration
 
 ```
 !
