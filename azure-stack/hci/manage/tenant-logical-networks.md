@@ -4,7 +4,7 @@ description: This topic ...
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 01/25/2021
 ---
 
 # Manage tenant logical networks
@@ -22,7 +22,7 @@ Use the following steps in Windows Admin Center to create a logical network.
 
 1. On the Windows Admin Center home screen, under **All Connections**, select the cluster that you want to create the logical network on.
 1. Under **Tools**, scroll down to the **Networking** area, and select **Logical networks**.
-1. Under **Logical networks**, select the **Inventory** tab, then select **New**. 
+1. Under **Logical networks**, select the **Inventory** tab, then select **New**.
 1. In the **Logical networks** pane, type a name for the logical network.
 1. Under **Logical subnet**, select **Add**.
 
@@ -70,14 +70,26 @@ You can view detailed information for a specific logical network from its dedica
     - Select each subnet to go to its **Subnet** page, where you can add, remove, and modify logical subnet IP pools.
     - View virtual networks and connections associated with the logical network.
 
-## Change logical network settings
-TBD
+## Change a logical network's virtualization setting
+You can change the network virtualization setting for a logical network.
 
+:::image type="content" source="./media/tenant-logical-networks/change-logical-network-setting.png" alt-text="The Enable network virtualization checkbox option of a logical network in Windows Admin Center." lightbox="./media/tenant-logical-networks/change-logical-network-setting.png":::
+
+1. Under **Tools**, scroll down to the **Networking** area, and select **Logical networks**.
+1. Select the **Inventory** tab, select the virtual network, and then select **Settings**.
+1. If you plan to deploy virtual networks on top of the logical network, under the logical network name, select the checkbox to **Enable network virtualization** for the logical network. and then select **Submit**.
 
 ## Delete a logical network
-TBD
+You can delete a logical network if you no longer need it.
 
+:::image type="content" source="./media/tenant-logical-networks/delete-logical-network.png" alt-text="The Delete confirmation prompt to delete a logical network in Windows Admin Center." lightbox="./media/tenant-logical-networks/delete-logical-network.png":::
+
+1. Under **Tools**, scroll down to the **Networking** area, and select **Logical networks**.
+1. Select the **Inventory** tab, select the virtual network, and then select **Delete**.
+1. On the **Delete** confirmation prompt, select **Yes**.
+1. Next to the **Logical networks** search box, select **Refresh** to ensure that the logical network has been deleted.
 
 ## Next steps
 For more information, see also:
 - [Manage tenant virtual networks]()
+- [Software Defined Networking (SDN) in Azure Stack HCI](../concepts/software-defined-networking)
