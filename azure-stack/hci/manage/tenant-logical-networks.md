@@ -77,7 +77,7 @@ You can change the network virtualization setting for a logical network.
 
 1. Under **Tools**, scroll down to the **Networking** area, and select **Logical networks**.
 1. Select the **Inventory** tab, select the virtual network, and then select **Settings**.
-1. If you plan to deploy virtual networks on top of the logical network, under the logical network name, select the checkbox to **Enable network virtualization** for the logical network. and then select **Submit**.
+1. If you plan to deploy virtual networks on top of the logical network, under the logical network name, select the **Enable network virtualization** checkbox, and then select **Submit**.
 
 ## Delete a logical network
 You can delete a logical network if you no longer need it.
