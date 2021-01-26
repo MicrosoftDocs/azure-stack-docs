@@ -39,6 +39,10 @@ Before registering or unregistering a guest directory, you and Mary must complet
 
 ## Register a guest directory
 
+To register a guest directory for multi-tenancy, both the home Azure Stack Hub directory and guest directory will need to be configured.
+
+### Configure Azure Stack Hub directory
+
 1. As the service administrator of contoso.onmicrosoft.com, you must first onboard the Fabrikam's guest directory tenant to Azure Stack Hub. The following script will configure Azure Resource Manager to accept sign-ins from users and service principals in the fabrikam.onmicrosoft.com tenant:
 
 ```powershell  
@@ -67,6 +71,8 @@ Register-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint
  -ResourceGroupName $ResourceGroupName `
  -SubscriptionName $SubscriptionName
 ```
+
+### Configure guest directory
 
 2. Next, Mary (directory admin of Fabrikam) must register Azure Stack Hub with the fabrikam.onmicrosoft.com guest directory, by running the following script:
 
