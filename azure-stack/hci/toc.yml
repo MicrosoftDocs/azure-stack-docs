@@ -124,6 +124,10 @@
       href: manage/use-azure-backup.md
     - name: Use Azure Network Adapter
       href: manage/use-azure-network-adapter.md
+  - name: Manage SDN
+    items:
+    - name: Tenant virtual networks
+      href: manage/tenant-logical-networks.md
 - name: Concepts
   items:
   - name: Storage and clusters

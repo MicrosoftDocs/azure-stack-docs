@@ -4,12 +4,12 @@ description: This topic ...
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 01/26/2021
 ---
 
 # Manage tenant logical networks
 
->Applies to: Azure Stack HCI, version 20H2
+>Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
 This topic provides step-by-step instructions on how to use Windows Admin Center to create, update, and delete logical networks after you have deployed Network Controller. A Software Defined Networking (SDN) logical network is a traditional VLAN-based network.
 
@@ -37,7 +37,7 @@ Use the following steps in Windows Admin Center to create a logical network.
 1. Under **Logical subnet IP Pools**, select **Add** and then provide the following information:
     1. A logical **IP Pool Name**
     1. A **Start IP address**
-    1. An **End IP address**. The start and end IP address must be within the address prefix provided for the subnet.
+    1. An **End IP address**. The start and end IP addresses must be within the address prefix provided for the subnet.
     1. Select **Add**.
 1. On the **Logical Subnet** page, select **Add**.
 1. On the **Logical networks** page, select **Submit**.
@@ -91,5 +91,4 @@ You can delete a logical network if you no longer need it.
 
 ## Next steps
 For more information, see also:
-- [Manage tenant virtual networks]()
 - [Software Defined Networking (SDN) in Azure Stack HCI](../concepts/software-defined-networking.md)
