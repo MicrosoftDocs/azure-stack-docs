@@ -4,7 +4,7 @@ description: This topic ...
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 01/27/2021
 ---
 
 # Manage tenant logical networks
@@ -50,7 +50,7 @@ You can easily see all of the logical networks in your cluster.
 
 1. On the Windows Admin Center home screen, under **All Connections**, select the cluster on which you want to view logical networks.
 1. Under **Tools**, scroll down to the **Networking** area, and select **Logical networks**.
-1. The **Inventory** tab lists all logical network available on the cluster, and provides commands to manage individual logical networks. You can:
+1. The **Inventory** tab lists all logical networks available on the cluster, and provides commands to manage individual logical networks. You can:
     - View the list of logical networks.
     - View the logical network settings, the state of the logical network, and whether network virtualization is enabled for the logical network. If network virtualization is enabled, you can also view the number of virtual networks associated with this logical network.
     - Change settings for a logical network.
