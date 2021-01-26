@@ -40,7 +40,7 @@ landingContent:
           - text: Create a cluster
             url: deploy/create-cluster.md
           - text: Setup a cluster witness
-            url: deploy/witness.md
+            url: manage/witness.md
           - text: Register with Azure
             url: deploy/register-with-azure.md
           - text: Validate a cluster
