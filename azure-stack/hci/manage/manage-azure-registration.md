@@ -1,10 +1,10 @@
 ---
 title: Manage Azure registration for Azure Stack HCI
-description: How to manage your Azure registration for Azure Stack HCI and understand registration status using PowerShell.
+description: How to manage your Azure registration for Azure Stack HCI, understand registration status, and unregister your cluster when you're ready to decommission it.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 01/26/2021
 ---
 
 # Manage Azure registration
@@ -13,9 +13,19 @@ ms.date: 12/10/2020
 
 Once you've created an Azure Stack HCI cluster, you must [register the cluster with Azure Arc](../deploy/register-with-azure.md). Once the cluster is registered, it periodically syncs information between the on-premises cluster and the cloud. This topic explains how to understand your registration status, grant Azure Active Directory permissions, and unregister your cluster when you're ready to decommission it.
 
-## Understanding registration status
+## Understanding registration status using Windows Admin Center
 
-To understand registration status, use the `Get-AzureStackHCI` PowerShell cmdlet and the `ClusterStatus`, `RegistrationStatus`, and `ConnectionStatus` properties. For example, after installing the Azure Stack HCI operating system, before creating or joining a cluster, the `ClusterStatus` property shows "not yet" status:
+When you connect to a cluster using Windows Admin Center, you'll see the Dashboard, which displays Azure connection status. **Connected** means that the cluster has successfully synced to the cloud within the last day.
+
+   :::image type="content" source="media/manage-azure-registration/registration-status.png" alt-text="The Windows Admin Center Dashboard will always display cluster registration status" lightbox="media/manage-azure-registration/registration-status.png":::
+
+You can get more information by selecting **Settings** at the very bottom of the **Tools** menu on the left, then selecting **Azure Stack HCI registration**.
+
+   :::image type="content" source="media/manage-azure-registration/azure-stack-hci-registration.png" alt-text="The Windows Admin Center Dashboard will always display cluster registration status" lightbox="media/manage-azure-registration/azure-stack-hci-registration.png":::
+
+## Understanding registration status using PowerShell
+
+To understand registration status using Windows PowerShell, use the `Get-AzureStackHCI` PowerShell cmdlet and the `ClusterStatus`, `RegistrationStatus`, and `ConnectionStatus` properties. For example, after installing the Azure Stack HCI operating system, before creating or joining a cluster, the `ClusterStatus` property shows "not yet" status:
 
 :::image type="content" source="media/manage-azure-registration/1-get-azurestackhci.png" alt-text="Azure registration status before cluster creation":::
 
