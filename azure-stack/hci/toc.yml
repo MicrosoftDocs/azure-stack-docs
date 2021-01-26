@@ -126,7 +126,7 @@
       href: manage/use-azure-network-adapter.md
   - name: Manage SDN
     items:
-    - name: Tenant virtual networks
+    - name: Tenant logical networks
       href: manage/tenant-logical-networks.md
 - name: Concepts
   items:
