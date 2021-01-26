@@ -43,7 +43,7 @@ To register a guest directory for multi-tenancy, both the home Azure Stack Hub d
 
 ### Configure Azure Stack Hub directory
 
-1. As the service administrator of contoso.onmicrosoft.com, you must first onboard the Fabrikam's guest directory tenant to Azure Stack Hub. The following script will configure Azure Resource Manager to accept sign-ins from users and service principals in the fabrikam.onmicrosoft.com tenant:
+As the service administrator of contoso.onmicrosoft.com, you must first onboard the Fabrikam's guest directory tenant to Azure Stack Hub. The following script will configure Azure Resource Manager to accept sign-ins from users and service principals in the fabrikam.onmicrosoft.com tenant:
 
 ```powershell  
 ## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint, formatted as adminmanagement.<region>.<FQDN>.
@@ -74,7 +74,7 @@ Register-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint
 
 ### Configure guest directory
 
-2. Next, Mary (directory admin of Fabrikam) must register Azure Stack Hub with the fabrikam.onmicrosoft.com guest directory, by running the following script:
+Next, Mary (directory admin of Fabrikam) must register Azure Stack Hub with the fabrikam.onmicrosoft.com guest directory, by running the following script:
 
 ```powershell
 ## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint, formatted as management.<region>.<FQDN>.
@@ -96,15 +96,17 @@ Register-AzSWithMyDirectoryTenant `
 >
 > If you've noticed issues with creating VMs in Managed Disks (introduced in the 1808 update), a new **Disk Resource Provider** was added requiring this script to be run again.
 
-3. Finally, Mary can direct Fabrikam users with @fabrikam.onmicrosoft.com accounts to sign in by visiting the [Azure Stack Hub user portal](../user/azure-stack-use-portal.md). For multinode systems, the user portal URL is formatted as `https://management.<region>.<FQDN>`. For an ASDK deployment, the URL is `https://portal.local.azurestack.external`.
+### Direct users to sign in
+
+Finally, Mary can direct Fabrikam users with @fabrikam.onmicrosoft.com accounts to sign in by visiting the [Azure Stack Hub user portal](../user/azure-stack-use-portal.md). For multinode systems, the user portal URL is formatted as `https://management.<region>.<FQDN>`. For an ASDK deployment, the URL is `https://portal.local.azurestack.external`.
 
 Mary must also direct any foreign principals (users in the Fabrikam directory without the suffix of fabrikam.onmicrosoft.com) to sign in using `https://<user-portal-url>/fabrikam.onmicrosoft.com`. If they don't specify the `/fabrikam.onmicrosoft.com` directory tenant in the URL, they're sent to their default directory and receive an error that says their administrator hasn't consented.
 
 ## Unregister a guest directory
 
-If you no longer want to allow sign-ins to Azure Stack Hub services from a guest directory tenant, you can unregister the directory:
+If you no longer want to allow sign-ins to Azure Stack Hub services from a guest directory tenant, you can unregister the directory. Again, both the home Azure Stack Hub directory and guest directory will need to be configured:
 
-1. As the administrator of the guest directory (Mary in this scenario), run *Unregister-AzsWithMyDirectoryTenant*. The cmdlet uninstalls all the Azure Stack Hub apps from the new directory.
+1. As the administrator of the guest directory (Mary in this scenario), run `Unregister-AzsWithMyDirectoryTenant`. The cmdlet uninstalls all the Azure Stack Hub apps from the new directory.
 
     ``` PowerShell
     ## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint, formatted as management.<region>.<FQDN>.
@@ -119,7 +121,7 @@ If you no longer want to allow sign-ins to Azure Stack Hub services from a guest
      -Verbose 
     ```
 
-2. As the service administrator of Azure Stack Hub (you in this scenario), run *Unregister-AzSGuestDirectoryTenant*.
+2. As the service administrator of Azure Stack Hub (you in this scenario), run the `Unregister-AzSGuestDirectoryTenant` cmdlet:
 
     ``` PowerShell
     ## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint, formatted as adminmanagement.<region>.<FQDN>.
