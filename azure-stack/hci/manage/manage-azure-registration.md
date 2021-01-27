@@ -45,7 +45,7 @@ If that maximum period is exceeded, the `ConnectionStatus` will show `OutOfPolic
 
 In addition to creating an Azure resource in your subscription, registering Azure Stack HCI creates an app identity, conceptually similar to a user, in your Azure Active Directory tenant. The app identity inherits the cluster name. This identity acts on behalf on the Azure Stack HCI cloud service, as appropriate, within your subscription.
 
-If the user who runs `Register-AzureStackHCI` is an Azure Active Directory administrator or has been delegated sufficient permissions, this all happens automatically, and no additional action is required. If not, approval may be needed from your Azure Active Directory administrator to complete registration. Your administrator can either explicitly grant consent to the app, or they can delegate permissions so that you can grant consent to the app:
+If the user who registers the cluster is an Azure Active Directory administrator or has been delegated sufficient permissions, this all happens automatically, and no additional action is required. If not, approval may be needed from your Azure Active Directory administrator to complete registration. Your administrator can either explicitly grant consent to the app, or they can delegate permissions so that you can grant consent to the app:
 
 :::image type="content" source="media/manage-azure-registration/aad-permissions.png" alt-text="Azure Active Directory permissions and identity diagram" border="false":::
 
@@ -71,7 +71,7 @@ https://azurestackhci-usage.trafficmanager.net/AzureStackHCI.Census.Sync
 https://azurestackhci-usage.trafficmanager.net/AzureStackHCI.Billing.Sync
 ```
 
-Seeking approval from your Azure Active Directory administrator could take some time, so the `Register-AzureStackHCI` cmdlet will exit and leave the registration in status "pending admin consent," i.e. partially completed. Once consent has been granted, simply re-run `Register-AzureStackHCI` to complete registration.
+Seeking approval from your Azure Active Directory administrator could take some time, so the `Register-AzStackHCI` cmdlet will exit and leave the registration in status "pending admin consent," i.e. partially completed. Once consent has been granted, simply re-run `Register-AzStackHCI` to complete registration.
 
 ## Azure Active Directory user permissions
 
@@ -163,47 +163,37 @@ When you're ready to decommission your Azure Stack HCI cluster, simply connect t
 
 You can also use the `Unregister-AzStackHCI` cmdlet to unregister an Azure Stack HCI cluster. You can run the cmdlet either on a cluster node or from a management PC.
 
-If running the `Unregister-AzStackHCI` cmdlet on a cluster node, use this syntax and specify your Azure subscription ID as well as the resource name of the Azure Stack HCI cluster you wish to unregister:
+You may need to install the latest version of the `Az.StackHCI` module. You may be prompted "Are you sure you want to install the modules from 'PSGallery'?" to which you should answer Yes (Y).
 
 ```PowerShell
-Unregister-AzStackHCI -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" -ResourceName "HCI001"
+Install-Module -Name Az.StackHCI
+```
+
+### Unregister from a cluster node
+
+If running the `Unregister-AzStackHCI` cmdlet on a server in the cluster, use this syntax and specify your Azure subscription ID as well as the resource name of the Azure Stack HCI cluster you wish to unregister:
+
+```PowerShell
+Unregister-AzStackHCI -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" -ResourceName HCI001
 ```
 
 You'll be prompted to visit microsoft.com/devicelogin on another device (like your PC or phone), enter the code, and sign in there to authenticate with Azure.
 
+### Unregister from a management PC
+
 If running the cmdlet from a management PC, you'll also need to specify the name of a server in the cluster:
 
 ```PowerShell
-Unregister-AzStackHCI -ComputerName ClusterNode1 -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" -ResourceName "HCI001"
+Unregister-AzStackHCI -ComputerName ClusterNode1 -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" -ResourceName HCI001
 ```
 
 An interactive Azure login window will pop up. The exact prompts you see will vary depending on your security settings (e.g. two-factor authentication). Follow the prompts to log in.
 
 ## Cleaning up after a cluster that was not properly unregistered
 
-If a user destroys an Azure Stack HCI cluster without unregistering it using one of the methods above, such as by re-imaging their servers or deleting virtual cluster nodes, then artifacts will be left over in Azure. These are harmless and will not incur billing or use resources, but they clutter up the Azure portal. To clean them up, you can manually delete them.
+If a user destroys an Azure Stack HCI cluster without unregistering it, such as by re-imaging the host servers or deleting virtual cluster nodes, then artifacts will be left over in Azure. These are harmless and will not incur billing or use resources, but they can clutter the Azure portal. To clean them up, you can manually delete them.
 
 To delete the Azure Stack HCI resource, navigate to its page in the Azure portal and select **Delete** from the action bar at the top. Type the name of the resource to confirm the deletion, and then select **Delete**. To delete the Azure AD app identity, navigate to **Azure AD**, then **App Registrations**, and you'll find it under **All Applications**. Select **Delete** and confirm.
-
-If you prefer to use PowerShell, use the following cmdlets.
-
-To delete the Azure Stack HCI resource:
-
-```PowerShell
-Remove-AzResource -ResourceName "HCI001"
-```
-
-To delete the Azure AD app identity:
-
-```PowerShell
-Remove-AzureADApplication -ObjectId "acd10942-5747-4385-8824-4c5d5fa904f9"
-```
-
-If the resource group was creating during registration and doesn't contain any other resources, you may delete it as well:
-
-```PowerShell
-Remove-AzResourceGroup -Name "ContosoRG01"
-```
 
 ## Next steps
 
