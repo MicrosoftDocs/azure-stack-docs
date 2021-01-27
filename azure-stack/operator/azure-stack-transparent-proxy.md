@@ -3,10 +3,10 @@ title: Transparent proxy for Azure Stack Hub integrated systems
 description: Overview of transparent property in Azure Stack Hub integrated systems.
 author: PatAltimore
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 01/25/2021
 ms.author: patricka
 ms.reviewer: sranthar
-ms.lastreviewed: 01/15/2021
+ms.lastreviewed: 01/25/2021
 
 # Intent: As an Azure Stack operator, I want to know how to transparent proxy works in Azure Stack.
 # Keyword: azure stack transparent proxy
@@ -197,7 +197,7 @@ neighbor 192.168.32.206
 !
 ```
 
-Create the new ACL (access list) that will be used to identify traffic that will get PBR treatment. That traffic is web traffic (HTTP port 80 and HTTPS port 443) from the hosts/subnets in the test rack that gets proxy service as detailed in this example. For example, the ACL name is **PERMITTED_TO_PROXY_ENV1**.
+Create the new ACL that will be used to identify traffic that will get PBR treatment. That traffic is web traffic (HTTP port 80 and HTTPS port 443) from the hosts/subnets in the test rack that gets proxy service as detailed in this example. For example, the ACL name is **PERMITTED_TO_PROXY_ENV1**.
 
 ```
 ip access-list PERMITTED_TO_PROXY_ENV1
@@ -225,4 +225,4 @@ The **TRAFFIC_TO_PROXY_ENV1** PBR policy is applied to traffic that enters the b
 
 ## Next steps
 
-Learn more about firewall integration, see [Azure Stack Hub firewall integration](azure-stack-firewall.md)
+Learn more about firewall integration, see [Azure Stack Hub firewall integration](azure-stack-firewall.md).
