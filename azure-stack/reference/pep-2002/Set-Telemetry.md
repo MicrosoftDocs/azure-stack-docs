@@ -1,6 +1,6 @@
 ---
 title: Set-Telemetry
-description: Reference for PowerShell Azure Stack privileged endpoint - Close-PrivilegedEndpoint
+description: Reference for PowerShell Azure Stack privileged endpoint - Set-Telemetry
 author: mattbriggs
 
 ms.topic: reference
