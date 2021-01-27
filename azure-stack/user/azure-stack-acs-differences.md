@@ -44,6 +44,7 @@ This article summarizes the known Azure Stack Hub Storage differences from Azure
 |Blob snapshot|The max number of snapshots of one blob isn't limited.|The max number of snapshots of one blob is 1,000.
 |Azure AD Authentication for storage|In preview. |Not yet supported.
 |Immutable Blobs|General available. |Supported when you use version 2008 or later.
+|Batch API for Blob Storage|In preview. |Not yet supported.
 |Firewall and virtual network rules for storage|General available. |Not yet supported.|
 
 There are also differences with storage metrics:
