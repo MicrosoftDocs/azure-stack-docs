@@ -4,7 +4,7 @@ description: How to manage your Azure registration for Azure Stack HCI, understa
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 01/27/2021
 ---
 
 # Manage Azure registration
@@ -15,9 +15,9 @@ Once you've created an Azure Stack HCI cluster, you must [register the cluster w
 
 ## Understanding registration status using Windows Admin Center
 
-When you connect to a cluster using Windows Admin Center, you'll see the Dashboard, which displays Azure connection status. **Connected** means that the cluster has successfully synced to the cloud within the last day.
+When you connect to a cluster using Windows Admin Center, you'll see the Dashboard, which displays Azure connection status. **Connected** means that the cluster is already registered with Azure and has successfully synced to the cloud within the last day.
 
-   :::image type="content" source="media/manage-azure-registration/registration-status.png" alt-text="The Windows Admin Center Dashboard will always display cluster registration status" lightbox="media/manage-azure-registration/registration-status.png":::
+   :::image type="content" source="media/manage-azure-registration/registration-status.png" alt-text="The Windows Admin Center Dashboard will always display cluster connection status" lightbox="media/manage-azure-registration/registration-status.png":::
 
 You can get more information by selecting **Settings** at the very bottom of the **Tools** menu on the left, then selecting **Azure Stack HCI registration**.
 
@@ -35,7 +35,7 @@ Once the cluster is created, only `RegistrationStatus` shows "not yet" status:
 
 Azure Stack HCI needs to register within 30 days of installation per the Azure Online Services Terms. If not clustered after 30 days, the `ClusterStatus` will show `OutOfPolicy`, and if not registered after 30 days, the `RegistrationStatus` will show `OutOfPolicy`.
 
-Once the cluster is registered, you can see the `ConnectionStatus` and `LastConnected` time, which is usually within the last day unless the cluster is temporarily disconnected from the Internet. An Azure Stack HCI cluster can operate fully offline for up to 30 consecutive days.
+Once the cluster is registered, you can see the `ConnectionStatus` and `LastConnected` time, which is usually within the last day unless the cluster is temporarily disconnected from the internet. An Azure Stack HCI cluster can operate fully offline for up to 30 consecutive days.
 
 :::image type="content" source="media/manage-azure-registration/3-get-azurestackhci.png" alt-text="Azure registration status after registration":::
 
@@ -92,7 +92,7 @@ This will allow any user to register applications. However, the user will still 
 
 ### Option 2: Assign Cloud Application Administration role
 
-Assign the built-in "Cloud Application Administration" Azure AD role to the user. This will allow the user to register clusters without the need for additional AD admin consent.
+Assign the built-in "Cloud Application Administration" Azure AD role to the user. This will allow the user to register and unregister clusters without the need for additional AD admin consent.
 
 ### Option 3: Create a custom AD role and consent policy
 
@@ -152,14 +152,21 @@ The most restrictive option is to create a custom AD role with a custom consent 
 
    6. Assign the new custom AD role to the user who will register the Azure Stack HCI cluster with Azure by following [these instructions](/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=/azure/active-directory/roles/context/ugr-context).
 
+## Unregister Azure Stack HCI using Windows Admin Center
+
+When you're ready to decommission your Azure Stack HCI cluster, simply connect to the cluster using Windows Admin Center and select **Settings** at the very bottom of the **Tools** menu on the left. Then select **Azure Stack HCI registration**, and click the **Unregister** button. The unregistration process automatically cleans up the Azure resource representing the cluster, the Azure resource group (if the group was creating during registration and doesn't contain any other resources), and the Azure AD app identity. This stops all monitoring, support, and billing functionality through Azure Arc.
+
+   > [!NOTE]
+   > Unregistering an Azure Stack HCI cluster requires an Azure Active Directory administrator or another user who has been delegated sufficient permissions. See [Azure Active Directory user permissions](#azure-active-directory-user-permissions).
+
 ## Unregister Azure Stack HCI using PowerShell
 
-When you're ready to decommission your Azure Stack HCI cluster, use the `Unregister-AzStackHCI` cmdlet to unregister. This stops all monitoring, support, and billing functionality through Azure Arc. The Azure resource representing the cluster and the Azure Active Directory app identity are deleted, but the resource group is not, because it may contain other unrelated resources.
+You can also use the `Unregister-AzStackHCI` cmdlet to unregister an Azure Stack HCI cluster. You can run the cmdlet either on a cluster node or from a management PC.
 
 If running the `Unregister-AzStackHCI` cmdlet on a cluster node, use this syntax and specify your Azure subscription ID as well as the resource name of the Azure Stack HCI cluster you wish to unregister:
 
 ```PowerShell
-Unregister-AzStackHCI -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" -ResourceName HCI001
+Unregister-AzStackHCI -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" -ResourceName "HCI001"
 ```
 
 You'll be prompted to visit microsoft.com/devicelogin on another device (like your PC or phone), enter the code, and sign in there to authenticate with Azure.
@@ -167,14 +174,39 @@ You'll be prompted to visit microsoft.com/devicelogin on another device (like yo
 If running the cmdlet from a management PC, you'll also need to specify the name of a server in the cluster:
 
 ```PowerShell
-Unregister-AzStackHCI -ComputerName ClusterNode1 -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" -ResourceName HCI001
+Unregister-AzStackHCI -ComputerName ClusterNode1 -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" -ResourceName "HCI001"
 ```
 
 An interactive Azure login window will pop up. The exact prompts you see will vary depending on your security settings (e.g. two-factor authentication). Follow the prompts to log in.
+
+## Cleaning up after a cluster that was not properly unregistered
+
+If a user destroys an Azure Stack HCI cluster without unregistering it using one of the methods above, such as by re-imaging their servers or deleting virtual cluster nodes, then artifacts will be left over in Azure. These are harmless and will not incur billing or use resources, but they clutter up the Azure portal. To clean them up, you can manually delete them.
+
+To delete the Azure Stack HCI resource, navigate to its page in the Azure portal and select **Delete** from the action bar at the top. Type the name of the resource to confirm the deletion, and then select **Delete**. To delete the Azure AD app identity, navigate to **Azure AD**, then **App Registrations**, and you'll find it under **All Applications**. Select **Delete** and confirm.
+
+If you prefer to use PowerShell, use the following cmdlets.
+
+To delete the Azure Stack HCI resource:
+
+```PowerShell
+Remove-AzResource -ResourceName "HCI001"
+```
+
+To delete the Azure AD app identity:
+
+```PowerShell
+Remove-AzureADApplication -ObjectId "acd10942-5747-4385-8824-4c5d5fa904f9"
+```
+
+If the resource group was creating during registration and doesn't contain any other resources, you may delete it as well:
+
+```PowerShell
+Remove-AzResourceGroup -Name "ContosoRG01"
+```
 
 ## Next steps
 
 For related information, see also:
 
 - [Connect Azure Stack HCI to Azure](../deploy/register-with-azure.md)
-- [Monitor Azure Stack HCI with Azure Monitor](azure-monitor.md)
