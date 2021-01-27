@@ -21,7 +21,7 @@ When you connect to a cluster using Windows Admin Center, you'll see the Dashboa
 
 You can get more information by selecting **Settings** at the very bottom of the **Tools** menu on the left, then selecting **Azure Stack HCI registration**.
 
-   :::image type="content" source="media/manage-azure-registration/azure-stack-hci-registration.png" alt-text="The Windows Admin Center Dashboard will always display cluster registration status" lightbox="media/manage-azure-registration/azure-stack-hci-registration.png":::
+   :::image type="content" source="media/manage-azure-registration/azure-stack-hci-registration.png" alt-text="Select Settings > Tools > Azure Stack HCI registration for more information" lightbox="media/manage-azure-registration/azure-stack-hci-registration.png":::
 
 ## Understanding registration status using PowerShell
 
@@ -152,7 +152,7 @@ The most restrictive option is to create a custom AD role with a custom consent 
 
    6. Assign the new custom AD role to the user who will register the Azure Stack HCI cluster with Azure by following [these instructions](/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=/azure/active-directory/roles/context/ugr-context).
 
-## Unregister Azure Stack HCI with Azure
+## Unregister Azure Stack HCI using PowerShell
 
 When you're ready to decommission your Azure Stack HCI cluster, use the `Unregister-AzStackHCI` cmdlet to unregister. This stops all monitoring, support, and billing functionality through Azure Arc. The Azure resource representing the cluster and the Azure Active Directory app identity are deleted, but the resource group is not, because it may contain other unrelated resources.
 
