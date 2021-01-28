@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: v-dasis
 ms.topic: how-to
-ms.date: 01/20/2021
+ms.date: 01/27/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -32,6 +32,7 @@ Before you run the Create Cluster wizard, make sure you:
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
 - Have an account that’s a member of the local Administrators group on each server.
 - Install Windows Admin Center on a PC or server for management. See [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
+- If you are using an Integrated System from a Microsoft hardware partner, make sure you have the latest version of vendor extensions installed on Windows Admin Center to take advantage of integrated hardware and firmware updates.
 - For stretched clusters, set up your two sites beforehand in Active Directory. But not to worry, the wizard can set them up for you too.
 
 If you're running Windows Admin Center on a server (instead of a local PC), use an account that's a member of the Gateway administrators group, or the local administrators group on the Windows Admin Center server.
@@ -47,12 +48,13 @@ Here are the major steps in the Create Cluster wizard:
 
 After the wizard completes, you set up the cluster witness, register with Azure, and create volumes (which also sets up replication between sites if you're creating a stretched cluster).
 
-Before you start the wizard, make sure you have the latest Windows Admin Center extensions installed, particularly the Cluster Creation extension. To do so:
+Before you start the wizard, make sure you have the latest extensions installed, particularly the Cluster Creation extension for Windows Admin Center, and any partner extensions. To do so:
 
 1. Open Windows Admin Center and click Settings (gear icon) at the upper right.
 1. Under **Settings**, select **Extensions**.
 1. Select **Cluster Creation** and then click **Install**.
 1. Select **Cluster Manager** and click **Install** also while you are at it.
+1. Select any applicable hardware vendor extensions, and install them as well.
 
 Now you are ready, so let's begin:
 
@@ -226,4 +228,5 @@ If resolving the cluster isn't successful after some time, in most cases you can
 ## Next steps
 
 - Register your cluster with Azure. See [Manage Azure registration](../manage/manage-azure-registration.md).
+- Set up a witness. See [Set up a cluster witness](../manage/witness.md).
 - Do a final validation of the cluster. See [Validate an Azure Stack HCI cluster](validate.md)

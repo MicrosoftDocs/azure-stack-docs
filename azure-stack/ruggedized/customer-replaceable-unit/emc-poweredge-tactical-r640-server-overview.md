@@ -1,12 +1,12 @@
 ---
-title: EMC PowerEdge tactical R640 server overview
-description: Learn about the EMC PowerEdge tactical R640 server
-author: PatAltimore
+title: Server overview
+description: Learn about the server for Azure Stack Hub ruggedized
+author: justinha
 
 ms.topic: how-to
-ms.date: 11/13/2020
-ms.author: patricka
-ms.reviewer: 
+ms.date: 01/28/2021
+ms.author: justinha
+ms.reviewer: thoroet
 ms.lastreviewed: 
 
 # Intent: 
@@ -14,44 +14,36 @@ ms.lastreviewed:
 
 ---
 
-# Dell EMC PowerEdge Tactical R640 server overview
+# Server overview
 
-This section is an overview of the Dell EMC PowerEdge Tactical R640
-server components.
+This section is an overview of the server components.
 
 ## Chassis front view
 
-The following figure shows the PowerEdge Tactical R640 server, a 2U
-server.
+The following figure shows the 2U server.
 
-Figure 3. PowerEdge Tactical R640 HLH and SU front chassis view
 
-![Diagram that shows the PowerEdge Tactical R640 server front chassis.](media/image-60.png)
+![Diagram that shows the server front chassis.](media/image-60.png)
 
-The following table describes the PowerEdge Tactical R640\'s front
+The following table describes the front
 panel features.
-
-Table 1. PowerEdge Tactical R640 front panel features
 
 | Ports, panels, and slots  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Left control panel        | Contains the system health and system ID, status LED, and the iDRAC Quick Sync 2 (wireless) indicator. <br>**Note:** The iDRAC Quick Sync 2 indicator is available only on certain configurations. <br>Status LED: Enables you to identify any failed hardware components. There are up to five status LEDs and an overall system health LED (chassis health and system ID) bar. For more information, see PowerEdge status LED indicators on page 61. <br>Quick Sync 2 (wireless): Indicates a Quick Sync enabled system. The Quick Sync feature is optional. This feature allows management of the system by using mobile devices. This feature aggregates hardware or firmware inventory and various system-level diagnostic and error information that can be used in troubleshooting the system.  |
+| Left control panel        | Contains the system health and system ID, status LED, and the iDRAC Quick Sync 2 (wireless) indicator. <br>**Note:** The iDRAC Quick Sync 2 indicator is available only on certain configurations. <br>Status LED: Enables you to identify any failed hardware components. There are up to five status LEDs and an overall system health LED (chassis health and system ID) bar. <br>Quick Sync 2 (wireless): Indicates a Quick Sync enabled system. The Quick Sync feature is optional. This feature allows management of the system by using mobile devices. This feature aggregates hardware or firmware inventory and various system-level diagnostic and error information that can be used in troubleshooting the system.  |
 | VGA port                  | Enables you to connect a display device to the system.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | Right control panel       | Contains the power button, USB port, iDRAC Direct micro port, and the iDRAC Direct status LED.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 
 ## Chassis back view
 
-The following figure shows the PowerEdge Tactical R640 back chassis
+The following figure shows the back chassis
 components.
 
-Figure 4. PowerEdge Tactical R640 HLH back chassis view
 
-![Diagram that shows the PowerEdge Tactical R640 server back chassis.](media/image-61.png)
+![Diagram that shows the server back chassis.](media/image-61.png)
 
-The following table describes the features on the PowerEdge Tactical
-R640 back panel.
+The following table describes the features on the back panel.
 
-Table 2. PowerEdge Tactical R640 back panel features
 
 | Ports, panels and slots       | Icon                      | Description                                                                                                                                                                                                                                                                 |
 |-------------------------------|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -67,17 +59,14 @@ Table 2. PowerEdge Tactical R640 back panel features
 
 ## Right control panel
 
-The following figure shows the PowerEdge Tactical R640 right control
+The following figure shows the right control
 panel.
 
-Figure 5. PowerEdge Tactical R640 right control panel
-
-![Diagram that shows the power button and U S B ports on the control panel.](media/image-67.png)
+![Diagram that shows the power button and USB ports on the control panel.](media/image-67.png)
 
 The following table describes the controls and indicators on the right
 panel.
 
-Table 3. PowerEdge Tactical R640 right control panel controls and indicators
 
 | Item  | Indicator or button  | Icon                      | Description                                                                                                                                                                                               |
 |-------|----------------------|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -86,16 +75,12 @@ Table 3. PowerEdge Tactical R640 right control panel controls and indicators
 | 3     | iDRAC Direct LED     | N/A                       | The iDRAC Direct LED indicator lights up to indicate that the iDRAC Direct port is actively connected to a device.                                                                                        |
 | 4     | iDRAC Direct port    |   :::image type="icon" source="media/image-65.png"::: | The iDRAC Direct port is micro USB 2.0-compliant. This port enables you to access the iDRAC Direct features.                                                                                              |
 
-## Inside the PowerEdge Tactical R640
+## Inside the server
 
-The following figure shows the internal PowerEdge Tactical R640
-components.
-
-Figure 6. Inside the PowerEdge Tactical R640 HLH
+The following figures shows the internal server components.
 
 ![Diagram that shows a top-side view of the R640 HLH internal server components.](media/image-71.png)
 
-Figure 7. Inside the PowerEdge Tactical R640 SU
 
 ![Diagram that shows a top-side view of the R640 SU internal server components.](media/image-72.png)
 
@@ -103,15 +88,13 @@ Figure 7. Inside the PowerEdge Tactical R640 SU
 
 The following figure shows the motherboard layout.
 
-Figure 8. PowerEdge Tactical R640 motherboard layout
 
 ![Diagram that shows the R640 service information and motherboard layout.](media/image-73.png)
 
 ## Memory
 
-The following figure shows the PowerEdge Tactical R640 memory
+The following figure shows the memory
 information.
 
-Figure 9. PowerEdge Tactical R640 memory information
 
 ![Diagram that shows the R640 memory information.](media/image-74.png)
