@@ -4,7 +4,7 @@ description: This topic provides step-by-step instructions on how to use Windows
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 01/28/2021
 ---
 
 # Manage tenant virtual networks
@@ -34,8 +34,17 @@ Use the following steps in Windows Admin Center to create a virtual network.
 1. In the **Virtual networks** list, verify that the state of the virtual network is **Healthy**.
 
 ## Get a list of virtual networks
-TBD
+You can easily see all the virtual networks in your cluster.
 
+:::image type="content" source="./media/tenant-virtual-networks/list-virtual-networks.png" alt-text="Screenshot of Windows Admin Center showing list of virtual networks." lightbox="./media/tenant-virtual-networks/list-virtual-networks.png":::
+
+1. On the Windows Admin Center home screen, under **All connections**, select the cluster on which you want to view virtual networks.
+1. Under **Tools**, scroll down to the **Networking** area, and select **Virtual networks**.
+1. The **Inventory** tab lists all virtual networks available on the cluster, and provides commands to manage individual virtual networks. You can:
+    - View the list of virtual networks.
+    - View virtual network settings, the state of each virtual network, and the number of virtual machines (VMs) connected to each virtual network.
+    - Change the settings of a virtual network.
+    - Delete a virtual network.
 
 ## View virtual network details
 TBD
