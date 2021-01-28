@@ -88,6 +88,12 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: When enabling **Session Affinity** on a load balancer, the 2 tuple hash utilizes the PA IP (Physical Address IP) instead of the private IPs assigned to the VMs. In scenarios where traffic directed to the load balancer arrives through a VPN, or if all the client VMs (source IPs) reside on the same node and Session Affinity is enabled, all traffic is directed to one backend VM.
 - Occurrence: Common
 
+#### IPv6 button visible in frontend IP configuration 
+
+- Applicable: This issue applies to 2008 release. 
+- Cause: IPv6 button is visible and enabled when creating the frontend IP configuration of a Public Load balancer. This is a cosmetic issue on the portal. IPv6 is **not** supported on Azure Stack Hub. 
+- Occurrence: Common
+
 <!-- ## Compute -->
 
 <!-- ## Storage -->
