@@ -162,7 +162,7 @@ Write-Host "Unhealthy directories: "
 $healthReport.directoryTenants | Where status -NE 'Healthy' | Select -Property tenantName,tenantId,status | ft
 ```
 
-### Update Azure AD tenant permissions
+## Update Azure AD tenant permissions
 
 This action will clear an alert in Azure Stack Hub, indicating that a directory requires an update. Run the following command from the **Azurestack-tools-master/identity** folder:
 
