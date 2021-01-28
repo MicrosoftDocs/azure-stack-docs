@@ -55,13 +55,13 @@ This update includes the following improvements for Azure Stack.
 - **Virtual Machine Scale Set scaling**. You can use the portal to [scale a Virtual Machine Scale Set](../azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set) (VMSS).    
 
 <!-- 2489570 | IS ASDK--> 
-- **Support for custom IPSec/IKE policy configurations** for [VPN gateways in Azure Stack](../azure-stack-vpn-gateway-about-vpn-gateways.md).
+- **Support for custom IPSec/IKE policy configurations** for [VPN gateways in Azure Stack](../../user/azure-stack-vpn-gateway-about-vpn-gateways.md).
 
 <!-- | IS ASDK--> 
 - **Kubernetes marketplace item**. You can now deploy Kubernetes clusters using the [Kubernetes Marketplace item](../azure-stack-solution-template-kubernetes-cluster-add.md). Users can select the Kubernetes item and fill out a few parameters to deploy a Kubernetes cluster to Azure Stack. The purpose of the templates is to make it simple to users to setup dev/test Kubernetes deployments in a few steps.
 
 <!-- | IS ASDK--> 
-- **Blockchain templates**. You can now execute [Ethereum consortium deployments](azure-stack-ethereum.md) on Azure Stack. You can find three new templates in the [Azure Stack Quick Start Templates](https://github.com/Azure/AzureStack-QuickStart-Templates). They allow the user to deploy and configure a multi-member consortium Ethereum network with minimal Azure and Ethereum knowledge. The purpose of the templates is to make it simple to users to setup dev/test Blockchain deployments in a few steps.
+- **Blockchain templates**. You can now execute [Ethereum consortium deployments](../../user/azure-stack-ethereum.md) on Azure Stack. You can find three new templates in the [Azure Stack Quick Start Templates](https://github.com/Azure/AzureStack-QuickStart-Templates). They allow the user to deploy and configure a multi-member consortium Ethereum network with minimal Azure and Ethereum knowledge. The purpose of the templates is to make it simple to users to setup dev/test Blockchain deployments in a few steps.
 
 <!-- | IS ASDK--> 
 - **The API version profile 2017-03-09-profile has been updated to 2018-03-01-hybrid**. API profiles specify the Azure resource provider and the API version for Azure REST endpoints. For more information about profiles, see [Manage API version profiles in Azure Stack](../../user/azure-stack-version-profiles.md).
@@ -140,7 +140,7 @@ This update also contains the mitigation for the speculative execution side chan
 - During installation of this update, you might see alerts with the title *Error Template for FaultType UserAccounts.New is missing.*  You can safely ignore these alerts. These alerts will close automatically after installation of this update completes.
 
 <!-- 2489559 - IS --> 
-- Do not attempt to create virtual machines during the installation of this update. For more information about managing updates, see [Manage updates in Azure Stack overview](../azure-stack-updates.md#plan-for-updates).
+- Do not attempt to create virtual machines during the installation of this update. For more information about managing updates, see [Manage updates in Azure Stack overview](../azure-stack-updates.md).
 
 <!-- 2830461 - IS --> 
 - In certain circumstances when an update requires attention, the corresponding alert may not be generated. The accurate status will still be reflected in the portal and is not impacted.
@@ -240,7 +240,7 @@ The following are post-installation known issues for this build version.
       2. Under the same subscription, go to **Access Control (IAM)**, and verify that **Azure Stack Managed Disk** is listed.
    2. If you have configured a multi-tenant environment, deploying VMs in a subscription associated with a guest directory may fail with an internal error message. To resolve the error, follow these steps:
       1. Apply the [1808 Azure Stack Hotfix](https://support.microsoft.com/help/4465859).
-      2. Follow the steps in [this article](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) to reconfigure each of your guest directories.
+      2. Follow the steps in [this article](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) to reconfigure each of your guest directories.
 
 <!-- 2869209 IS, ASDK --> 
 - When using the [**Add-AzsPlatformImage** cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), you must use the **-OsUri** parameter as the storage account URI where the disk is uploaded. If you use the local path of the disk, the cmdlet fails with the following error: *Long running operation failed with status Failed*. 
@@ -325,7 +325,7 @@ You can download the Azure Stack 1808 update package from [here](https://aka.ms/
   
 
 ## Next steps
-- To review the servicing policy for Azure Stack integrated systems, and what you must do to keep your system in a supported state, see [Azure Stack servicing policy](azure-stack-servicing-policy.md).  
+- To review the servicing policy for Azure Stack integrated systems, and what you must do to keep your system in a supported state, see [Azure Stack servicing policy](../azure-stack-servicing-policy.md).  
 - To use the Privileged End Point (PEP) to monitor and resume updates, see [Monitor updates in Azure Stack using the privileged endpoint](../azure-stack-monitor-update.md).  
 - For an overview of the update management in Azure Stack, see [Manage updates in Azure Stack overview](../azure-stack-updates.md).  
 - For more information about how to apply updates with Azure Stack, see [Apply updates in Azure Stack](../azure-stack-apply-updates.md).  
