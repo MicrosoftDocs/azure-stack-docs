@@ -110,6 +110,10 @@
       href: manage/validate-qos.md
     - name: Troubleshoot CredSSP
       href: manage/troubleshoot-credssp.md
+  - name: Manage SDN
+    items:
+    - name: Manage tenant virtual networks
+      href: manage/tenant-virtual-networks.md
   - name: Manage Azure services
     items:
     - name: Register Windows Admin Center with Azure

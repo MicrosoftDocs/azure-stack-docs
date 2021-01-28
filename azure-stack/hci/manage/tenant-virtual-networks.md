@@ -21,10 +21,17 @@ Use the following steps in Windows Admin Center to create a virtual network.
 :::image type="content" source="./media/tenant-virtual-networks/create-virtual-network.png" alt-text="Screenshot of Windows Admin Center home screen showing pane in which to create a Virtual network name and address prefix." lightbox="./media/tenant-virtual-networks/create-virtual-network.png":::
 
 1. On the Windows Admin Center home screen, under **All connections**, select the cluster that you want to create the virtual network on.
+1. Under **Tools**, scroll down to the **Networking** area, and select **Virtual networks**.
+1. Under **Virtual networks**, select the **Inventory** tab, and then select **New**.
+1. In the **Virtual networks** pane, type a name for the virtual network.
+1. Under **Address Prefixes** select **Add**, and then type an address prefix in CIDR notation. You can optionally add more address prefixes.
+1. Under **Subnets**, select **Add**, type a name for the subnet, and then provide an address prefix in CIDR notation.
 
+   >[!NOTE]
+   > The subnet address prefix must be within the address prefix range that you defined in **Address Prefixes** of the virtual network.
 
-
-
+1. Select **Submit** or optionally add more subnets and then select **Submit**.
+1. In the **Virtual networks** list, verify that the state of the virtual network is **Healthy**.
 
 ## Get a list of virtual networks
 TBD
