@@ -89,11 +89,11 @@ This update includes the following new features and improvements for Azure Stack
 
 - Added support for device authentication with Active Directory Federated Services (AD FS), when using Azure CLI in particular. For more information, see [Use API version profiles with Azure CLI in Azure Stack](../../user/azure-stack-version-profiles-azurecli2.md)
 
-- Added support for Service Principals using a client secret with Active Directory Federated Services (AD FS). For more information, see [Create service principal for AD FS](../azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs).
+- Added support for Service Principals using a client secret with Active Directory Federated Services (AD FS). For more information, see [Create service principal for AD FS](../azure-stack-create-service-principals.md#manage-an-azure-ad-app-identity).
 
 - This release adds support for the following Azure Storage Service API versions: **2017-07-29**, **2017-11-09**. Support is also added for the following Azure Storage Resource Provider API versions: **2016-05-01**, **2016-12-01**, **2017-06-01**, and **2017-10-01**. For more information, see [Azure Stack storage: Differences and considerations](../../user/azure-stack-acs-differences.md).
 
-- Added new privileged endpoint commands to update and remove service principles for ADFS. For more information, see [Create service principal for AD FS](../azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs).
+- Added new privileged endpoint commands to update and remove service principles for ADFS. For more information, see [Create service principal for AD FS](../azure-stack-create-service-principals.md#manage-an-azure-ad-app-identity).
 
 - Added new Scale Unit Node operations that allow an Azure Stack operator to start, stop, and shut down a scale unit node. For more information, see [Scale unit node actions in Azure Stack](../azure-stack-node-actions.md).
 
@@ -103,7 +103,7 @@ This update includes the following new features and improvements for Azure Stack
 
 - Added the ability to access the Azure roadmap though the help and support icon (question mark) in the upper right corner of the administrator and user portals, similar to the way it is available in the Azure portal.
 
-- Added an improved Marketplace management experience for disconnected users. The upload process to publish a Marketplace item in a disconnected environment is simplified to one step, instead of uploading the image and the Marketplace package separately. The uploaded product will also be visible in the Marketplace management blade. For more information, see [this section](../azure-stack-download-azure-marketplace-item.md#import-the-download-and-publish-to-azure-stack-marketplace-1811-and-higher). 
+- Added an improved Marketplace management experience for disconnected users. The upload process to publish a Marketplace item in a disconnected environment is simplified to one step, instead of uploading the image and the Marketplace package separately. The uploaded product will also be visible in the Marketplace management blade.
 
 - This release reduces the required maintenance window for secret rotation by adding the ability to rotate only external certificates during [Azure Stack secret rotation](../azure-stack-rotate-secrets.md).
 
@@ -220,7 +220,7 @@ For more information about these vulnerabilities, click on the preceding links, 
 
 - After the installation of this update, install any applicable hotfixes. For more information, see [Hotfixes](#hotfixes), as well as our [Servicing Policy](../azure-stack-servicing-policy.md).  
 
-- Retrieve the data at rest encryption keys and securely store them outside of your Azure Stack deployment. Follow the [instructions on how to retrieve the keys](azure-stack-security-bitlocker.md).
+- Retrieve the data at rest encryption keys and securely store them outside of your Azure Stack deployment. Follow the [instructions on how to retrieve the keys](../azure-stack-security-bitlocker.md).
 
 ## Known issues (post-installation)
 
@@ -272,7 +272,7 @@ The following are post-installation known issues for this build version.
 
    The error occurs if you enable boot diagnostics on a VM but delete your boot diagnostics storage account. To work around this issue, recreate the storage account with the same name as you used previously.
 
-- When creating a [Dv2 series VM](../../user/azure-stack-vm-considerations.md#virtual-machine-sizes), D11-14v2 VMs allow you to create 4, 8, 16, and 32 data disks respectively. However, the create VM pane shows 8, 16, 32, and 64 data disks.
+- When creating a [Dv2 series VM](../../user/azure-stack-vm-considerations.md#vm-sizes), D11-14v2 VMs allow you to create 4, 8, 16, and 32 data disks respectively. However, the create VM pane shows 8, 16, 32, and 64 data disks.
 
 - Usage records on Azure Stack may contain unexpected capitalization; for example:
 
@@ -319,7 +319,7 @@ The following are post-installation known issues for this build version.
    - If the subscription was created before the 1808 update, deploying a VM with Managed Disks might fail with an internal error message. To resolve the error, follow these steps for each subscription:
       1. In the Tenant portal, go to **Subscriptions** and find the subscription. Select **Resource Providers**, then select **Microsoft.Compute**, and then click **Re-register**.
       2. Under the same subscription, go to **Access Control (IAM)**, and verify that the **AzureStack-DiskRP-Client** role is listed.
-   - If you have configured a multi-tenant environment, deploying VMs in a subscription associated with a guest directory might fail with an internal error message. To resolve the error, follow these steps in [this article](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) to reconfigure each of your guest directories.
+   - If you have configured a multi-tenant environment, deploying VMs in a subscription associated with a guest directory might fail with an internal error message. To resolve the error, follow these steps in [this article](../azure-stack-enable-multitenancy.md#register-azure-stack-hub-with-the-guest-directory) to reconfigure each of your guest directories.
 
 - An Ubuntu 18.04 VM created with SSH authorization enabled will not allow you to use the SSH keys to log in. As a workaround, use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
 
@@ -391,11 +391,11 @@ The following are post-installation known issues for this build version.
 
 You can download the Azure Stack 1811 update package from [here](https://aka.ms/azurestackupdatedownload). 
 
-In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#using-the-update-tile-to-manage-updates).
+In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-an-update-is-available).
 
 ## Next steps
 
-- To review the servicing policy for Azure Stack integrated systems, and what you must do to keep your system in a supported state, see [Azure Stack servicing policy](azure-stack-servicing-policy.md).  
+- To review the servicing policy for Azure Stack integrated systems, and what you must do to keep your system in a supported state, see [Azure Stack servicing policy](servicing-policy.md).  
 - To use the Privileged End Point (PEP) to monitor and resume updates, see [Monitor updates in Azure Stack using the privileged endpoint](../azure-stack-monitor-update.md).  
 - For an overview of the update management in Azure Stack, see [Manage updates in Azure Stack overview](../azure-stack-updates.md).  
 - For more information about how to apply updates with Azure Stack, see [Apply updates in Azure Stack](../azure-stack-apply-updates.md).  
