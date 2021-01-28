@@ -14,6 +14,31 @@ ms.lastreviewed: 09/09/2020
 
 ---
 
+# Azure Stack Hub release notes
+
+This article describes the contents of Azure Stack Hub update packages. The update includes improvements and fixes for the latest release of Azure Stack Hub.
+
+> [!IMPORTANT]  
+> This update package is only for Azure Stack Hub integrated systems. Do not apply this update package to the Azure Stack Development Kit (ASDK).
+
+> [!IMPORTANT]  
+> If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](../azure-stack-servicing-policy.md#keep-your-system-under-support).
+
+## Update planning
+
+Before applying the update, make sure to review the following information:
+
+- [Checklist of activities before and after applying the update](../release-notes-checklist.md)
+- [Known issues](../known-issues.md)
+- [Hotfixes](#hotfixes)
+- [Security updates](../release-notes-security-updates.md)
+
+For help with troubleshooting updates and the update process, see [Troubleshoot patch and update issues for Azure Stack Hub](../azure-stack-troubleshooting.md).
+
+## Download the update
+
+You can download the Azure Stack Hub update package using [the Azure Stack Hub update downloader tool](https://aka.ms/azurestackupdatedownload).
+
 ## 1910 build reference
 
 The Azure Stack Hub 1910 update build number is **1.1910.0.58**.

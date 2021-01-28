@@ -17,9 +17,9 @@
     - name: Archived release notes
       items:
       - name: 1910 release notes
-        href: release-notes-1910.md
+        href: ./relnotearchive/release-notes-1910.md
       - name: 1910 known issues
-        href: known-issues-1910.md
+        href: ./relnotearchive/known-issues-1910.md
 - name: Quickstarts
   expanded: true
   items:

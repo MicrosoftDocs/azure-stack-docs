@@ -210,7 +210,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
   - [Gateway SKUs](../../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-skus)
   - [Highly Available Connections](../../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
   - [Configure BGP on Azure Stack Hub](../../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
-  - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
+  - [ExpressRoute circuits](../azure-stack-connect-expressroute.md)
   - [Specify custom IPsec/IKE policies](../../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
 ## Compute
