@@ -181,7 +181,7 @@ The 1904 release of Azure Stack must be applied on the 1903 release with the fol
 
 ### After successfully applying the 1904 update
 
-After the installation of this update, install any applicable hotfixes. For more information, see our [Servicing Policy](azure-stack-servicing-policy.md).
+After the installation of this update, install any applicable hotfixes. For more information, see our [Servicing Policy](../azure-stack-servicing-policy.md).
 
 - [Azure Stack hotfix 1.1904.4.45](https://support.microsoft.com/help/4505688)
 
