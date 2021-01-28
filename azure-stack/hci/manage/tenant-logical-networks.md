@@ -1,8 +1,8 @@
 ---
 title: Manage tenant logical networks
-description: This topic ...
-author: JohnCobb1
-ms.author: v-johcob
+description: This topic provides step-by-step instructions on how to use Windows Admin Center to create, update, and delete logical networks after you have deployed Network Controller.
+author: AnirbanPaul
+ms.author: anpaul
 ms.topic: how-to
 ms.date: 01/28/2021
 ---
