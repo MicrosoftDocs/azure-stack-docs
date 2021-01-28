@@ -31,7 +31,9 @@
       - name: 1809 release notes
         href: ./relnotearchive/release-notes-known-issues-1809.md
       - name: 1808 release notes
-        href: ./relnotearchive/release-notes-known-issues-1808.md        
+        href: ./relnotearchive/release-notes-known-issues-1808.md
+      - name: 1807 release notes
+        href: ./relnotearchive/release-notes-known-issues-1807.md
 - name: Quickstarts
   expanded: true
   items:
