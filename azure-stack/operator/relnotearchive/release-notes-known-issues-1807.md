@@ -91,7 +91,7 @@ This update includes the following improvements for Azure Stack.
 - **Improved VM creation time** for VMs that are created with images you download from the Azure marketplace.
 
 <!-- TBD | IS, ASDK -->  
-- **Azure Stack Capacity Planner usability improvements**. The Azure Stack [Capacity Planner](http://aka.ms/azstackcapacityplanner) now offers a simplified experience for inputting S2D cache and S2D capacity when defining solution SKUs. The 1000 VM limit has been removed.
+- **Azure Stack Capacity Planner usability improvements**. The Azure Stack [Capacity Planner](https://aka.ms/azstackcapacityplanner) now offers a simplified experience for inputting S2D cache and S2D capacity when defining solution SKUs. The 1000 VM limit has been removed.
 
 
 ### Fixed issues
@@ -361,7 +361,7 @@ You can download the Azure Stack 1807 update package from [here](https://aka.ms/
 
 
 ## Next steps
-- To review the servicing policy for Azure Stack integrated systems, and what you must do to keep your system in a supported state, see [Azure Stack servicing policy](azure-stack-servicing-policy.md).  
+- To review the servicing policy for Azure Stack integrated systems, and what you must do to keep your system in a supported state, see [Azure Stack servicing policy](../azure-stack-servicing-policy.md).  
 - To use the Privileged End Point (PEP) to monitor and resume updates, see [Monitor updates in Azure Stack using the privileged endpoint](../azure-stack-monitor-update.md).  
 - For an overview of the update management in Azure Stack, see [Manage updates in Azure Stack overview](../azure-stack-updates.md).  
 - For more information about how to apply updates with Azure Stack, see [Apply updates in Azure Stack](../azure-stack-apply-updates.md).  
