@@ -562,9 +562,9 @@
           href: customer-replaceable-unit/verify-scale-unit-node-disk-health.md
         - name: Azure Stack Hub hardware diagram
           href: customer-replaceable-unit/azure-stack-hub-hardware-diagram.md
-        - name: EMC PowerEdge Tactical R640 server overview
+        - name: Server overview
           href: customer-replaceable-unit/emc-poweredge-tactical-r640-server-overview.md
-        - name: EMC PowerEdge Tactical indicators and codes
+        - name: Indicators and codes
           href: customer-replaceable-unit/emc-poweredge-tactical-indicators-and-codes.md
         - name: Access iDRAC interface via direct USB connection
           href: customer-replaceable-unit/access-idrac-over-usb-connection.md
