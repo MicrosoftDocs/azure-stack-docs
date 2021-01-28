@@ -97,13 +97,20 @@ If your Azure subscription is through an EA or CSP, the easiest way is to ask yo
 
 You'll also need appropriate Azure Active Directory permissions to complete the registration process. If you don't already have them, ask your Azure AD administrator to grant consent or delegate the permissions to you. See [Manage Azure registration](../manage/manage-azure-registration.md#azure-active-directory-app-permissions) for more information.
 
-## Register using Windows Admin Center
+## Register a cluster using Windows Admin Center
 
-Before beginning the registration process, you must first [register your Windows Admin Center gateway](../manage/register-windows-admin-center.md) with Azure using the same Azure subscription ID and tenant ID that you plan to use for cluster registration.
+The easiest way to register your Azure Stack HCI cluster is using Windows Admin Center. Remember that the user must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#azure-active-directory-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval.
 
-Remember to use the same subscription ID and tenant ID for cluster registration as you did for Windows Admin Center registration.
+1. Before beginning the registration process, you must first [register your Windows Admin Center gateway](../manage/register-windows-admin-center.md) with Azure, if you haven't already.
 
-## Register using PowerShell
+   > [!IMPORTANT]
+   > When registering Windows Admin Center with Azure, it's important to use the same Azure subscription ID and tenant ID that you plan to use for the actual cluster registration. An Azure AD tenant ID represents a specific instance of Azure AD containing accounts and groups, whereas an Azure subscription ID represents an agreement to use Azure resources for which charges accrue. To find your tenant ID, visit [portal.azure.com](https://portal.azure.com) and select **Azure Active Directory**. Your tenant ID will be displayed under **Tenant information**. To get your Azure subscription ID, navigate to **Subscriptions** and copy/paste your ID from the list.
+
+2. Open Windows Admin Center and select **Settings** from the very bottom of the **Tools** menu at the left. Then select **Azure Stack HCI registration** from the bottom of the **Settings** menu. If your cluster has not yet been registered with Azure, then **Registration status** will say **Not registered**. Click the **Register** button to proceed.
+
+3. To complete the registration process, you need to authenticate (sign in) using your Azure account. Your account needs to have access to the Azure subscription that was specified when you registered your Windows Admin Center gateway in order for registration to proceed. Copy the code provided, navigate to microsoft.com/devicelogin on another device (like your PC or phone), enter the code, and sign in there. The registration workflow will detect when you've logged in and proceed to completion. You should then be able to see your cluster in the Azure portal.
+
+## Register a cluster using PowerShell
 
 Use the following procedure to register an Azure Stack HCI cluster with Azure using a management PC.
 
@@ -117,7 +124,7 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure us
    > - You may see a prompt such as **Do you want PowerShellGet to install and import the NuGet provider now?** to which you should answer **Yes** (Y).
    > - You may further be prompted **Are you sure you want to install the modules from 'PSGallery'?** to which you should answer **Yes** (Y).
 
-2. Perform the registration using the name of any server in the cluster. To get your Azure subscription ID, visit [portal.azure.com](https://portal.azure.com), navigate to Subscriptions, and copy/paste your ID from the list.
+2. Perform the registration using the name of any server in the cluster. To get your Azure subscription ID, visit [portal.azure.com](https://portal.azure.com), navigate to **Subscriptions** and copy/paste your ID from the list.
 
    ```PowerShell
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1
@@ -125,13 +132,11 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure us
 
    This syntax registers the cluster (of which Server1 is a member), as the current user, with the default Azure region and cloud environment, and using smart default names for the Azure resource and resource group.You can also add the optional `-Region`, `-ResourceName`, and `-ResourceGroupName` parameters to this command to specify these values.
 
-   Remember that the user running the `Register-AzStackHCI` cmdlet must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#azure-active-directory-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin consent. Once permissions have been granted, simply re-run `Register-AzStackHCI` to complete registration.
+   Remember that the user running the `Register-AzStackHCI` cmdlet must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#azure-active-directory-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval. Once permissions have been granted, simply re-run `Register-AzStackHCI` to complete registration.
 
 3. Authenticate with Azure
 
-   To complete the registration process, you need to authenticate (sign in) using your Azure account. Your account needs to have access to the Azure subscription that was specified in step 4 above in order for registration to proceed. Copy the code provided, navigate to microsoft.com/devicelogin on another device (like your PC or phone), enter the code, and sign in there. This is the same experience Microsoft uses for other devices with limited input modalities, like Xbox.
-
-The registration workflow will detect when you've logged in and proceed to completion. You should then be able to see your cluster in the Azure portal.
+   To complete the registration process, you need to authenticate (sign in) using your Azure account. Your account needs to have access to the Azure subscription that was specified in step 2 above in order for registration to proceed. Copy the code provided, navigate to microsoft.com/devicelogin on another device (like your PC or phone), enter the code, and sign in there. The registration workflow will detect when you've logged in and proceed to completion. You should then be able to see your cluster in the Azure portal.
 
 ## Next steps
 
