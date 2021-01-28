@@ -518,7 +518,7 @@
 #        href: tca-safety-guide-version-two.md
 #      - name: Tactical Cloud Appliance service manual (V2)
 #        href: tca-service-manual-version-two.md
-      - name: Tactical Cloud Appliance Customer Replaceable Unit guide
+      - name: Customer replaceable units
         items:
         - name: Handling precautions
           href: customer-replaceable-unit/handling-precautions.md

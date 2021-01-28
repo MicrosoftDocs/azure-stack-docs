@@ -1,12 +1,12 @@
 ---
-title: EMC PowerEdge tactical indicators and codes
-description: Learn about EMC PowerEdge tactical indicators and codes
+title: Indicators and codes
+description: Learn about indicators and codes
 author: PatAltimore
 
 ms.topic: how-to
-ms.date: 11/13/2020
+ms.date: 01/28/2021
 ms.author: patricka
-ms.reviewer: 
+ms.reviewer: thoroet
 ms.lastreviewed: 
 
 # Intent: 
@@ -14,18 +14,13 @@ ms.lastreviewed:
 
 ---
 
-# Dell EMC PowerEdge Tactical indicators and codes
+# Indicators and codes
 
-The features described in this section are the same for the Hardware
-Lifecycle Host and Scale Unit node servers.
+The features described in this section are the same for the Hardware Lifecycle Host and Scale Unit node servers.
 
 ## System information label
 
-The following figure shows the system information label, which is on
-the front panel.
-
-
-Figure 10. LED behavior
+The following figure shows the system information label, which is on the front panel.
 
 ![The system information label for LED behavior.](media/image-75.png)
 
@@ -60,20 +55,19 @@ Figure 11. Left control panel
 
 The following table describes the features on the left panel.
 
-Table 5. PowerEdge left control panel status and health indicators
 
 |    <br>Item       |    <br>Indicator or button                       |    <br>Icon                                |    <br>Description                                                                                                  |
 |-------------------|--------------------------------------------------|--------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
-|    <br>1          |    <br>Status LED indicators                     |    <br>N/A                                 |    <br>Indicates the status of the system. For more information, see PowerEdge status LED indicators on page 61.    |
+|    <br>1          |    <br>Status LED indicators                     |    <br>N/A                                 |    <br>Indicates the status of the system.     |
 |    <br>2 and 3    |    <br>System health and system ID indicators    | ![System health icon](media/image-77.png) |    <br>Indicates the system health.                                                                                 |
 
-The following table lists the PowerEdge status LED indicators.
+The following table lists the status LED indicators.
 
 > [!NOTE]
 > The status LED indicators are always off and only change to
 a solid amber if any error occurs.
 
-Table 6. PowerEdge status LED indicators
+
 
 | <br>Icon | <br>Description           | <br>Condition                                                                                                                                                                       | <br>Corrective action                                                                                                                                                                                                                                                                                                    |
 |----------|---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -106,4 +100,4 @@ Table 7. AC PSU indicator codes
 | Blinking amber                | Indicates a problem with the PSU.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | Not illuminated               | Power is not connected to the PSU.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | Blinking green                | When the firmware of the PSU is being updated, the PSU handle blinks green. <br>Do not disconnect the power cord or unplug the PSU when updating firmware. If firmware update is interrupted, the PSUs do not function.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| Blinking green and turns off  | When hot-plugging a PSU, the PSU handle blinks green five times at a rate of 4 Hz and turns off. This indicates a PSU mismatch with respect to efficiency, feature set, health status, or supported voltage. <br><br>If two PSUs are installed, both the PSUs must have the same type of label; for example, Extended Power Performance (EPP) label. Mixing PSUs from previous generations of PowerEdge servers is not supported, even if the PSUs have the same power rating. This results in a PSU mismatch condition or failure to turn the system on. <br>When correcting a PSU mismatch, replace only the PSU with the blinking indicator. Swapping the PSU to make a matched pair can result in an error condition and <br>unexpected system shutdown. To change from a high output configuration to a low output configuration or vice versa, you must turn off the system. <br>AC PSUs support both 240 V and 120 V input voltages with the exception of Titanium PSUs, which support only 240 V. When two identical PSUs receive different input voltages, they can output different wattages, and trigger a mismatch. <br>If two PSUs are used, they must be of the same type and have the same maximum output power. <br>Combining AC and DC PSUs is not supported and triggers a mismatch. |
+| Blinking green and turns off  | When hot-plugging a PSU, the PSU handle blinks green five times at a rate of 4 Hz and turns off. This indicates a PSU mismatch with respect to efficiency, feature set, health status, or supported voltage. <br><br>If two PSUs are installed, both the PSUs must have the same type of label; for example, Extended Power Performance (EPP) label. Mixing PSUs from previous generations of servers is not supported, even if the PSUs have the same power rating. This results in a PSU mismatch condition or failure to turn the system on. <br>When correcting a PSU mismatch, replace only the PSU with the blinking indicator. Swapping the PSU to make a matched pair can result in an error condition and <br>unexpected system shutdown. To change from a high output configuration to a low output configuration or vice versa, you must turn off the system. <br>AC PSUs support both 240 V and 120 V input voltages with the exception of Titanium PSUs, which support only 240 V. When two identical PSUs receive different input voltages, they can output different wattages, and trigger a mismatch. <br>If two PSUs are used, they must be of the same type and have the same maximum output power. <br>Combining AC and DC PSUs is not supported and triggers a mismatch. |
