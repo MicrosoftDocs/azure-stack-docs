@@ -94,6 +94,12 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: IPv6 button is visible and enabled when creating the frontend IP configuration of a Public Load balancer. This is a cosmetic issue on the portal. IPv6 is **not** supported on Azure Stack Hub. 
 - Occurrence: Common
 
+#### Backend Port and Frontend port need to be same when Floating IP is enabled
+
+- Applicable: This issues applies to all releases. 
+- Cause: Both the frontend port and backend port need to be the same in the load balancing rule when floating IP is enabled. This is by design. 
+- Occurrence: Common
+
 <!-- ## Compute -->
 
 <!-- ## Storage -->
