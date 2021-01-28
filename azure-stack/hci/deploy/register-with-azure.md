@@ -6,14 +6,14 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/28/2020
+ms.date: 01/28/2020
 ---
 
 # Connect Azure Stack HCI to Azure
 
 > Applies to: Azure Stack HCI v20H2
 
-Azure Stack HCI is delivered as an Azure service and needs to register within 30 days of installation per the Azure Online Services Terms. This topic explains how to register your Azure Stack HCI cluster with [Azure Arc](https://azure.microsoft.com/services/azure-arc/) for monitoring, support, billing, and hybrid services. Upon registration, an Azure Resource Manager resource is created to represent each on-premises Azure Stack HCI cluster, effectively extending the Azure management plane to Azure Stack HCI. Information is periodically synced between the Azure resource and the on-premises cluster(s).
+Azure Stack HCI is delivered as an Azure service and needs to register within 30 days of installation per the Azure Online Services Terms. This topic explains how to register your Azure Stack HCI cluster with [Azure Arc](https://azure.microsoft.com/services/azure-arc/) for monitoring, support, billing, and hybrid services. Upon registration, an Azure Resource Manager resource is created to represent each on-premises Azure Stack HCI cluster, effectively extending the Azure management plane to Azure Stack HCI. Information is periodically synced between the Azure resource and the on-premises cluster(s). Azure Arc registration is a native capability of the Azure Stack HCI operating system, so there is no agent needed to register.
 
    > [!IMPORTANT]
    > Registering with Azure is required, and your cluster is not fully supported until your registration is active. If you do not register your cluster with Azure upon deployment, or if your cluster is registered but has not connected to Azure for more than 30 days, the system will not allow new virtual machines (VMs) to be created or added. When this occurs, you will see the following error message when attempting to create VMs:
@@ -24,7 +24,12 @@ Azure Stack HCI is delivered as an Azure service and needs to register within 30
 
 ## Prerequisites for registration
 
-You won't be able to register with Azure until you've created an Azure Stack HCI cluster. In order for the cluster to be supported, the cluster nodes must be physical servers. Virtual machines can be used for testing, but they must support Unified Extensible Firmware Interface (UEFI), meaning you can't use Hyper-V Generation 1 virtual machines. Azure Arc registration is a native capability of the Azure Stack HCI operating system, so there is no agent needed to register.
+You won't be able to register with Azure until you've created an Azure Stack HCI cluster. In order for the cluster to be supported, the cluster nodes must be physical servers. Virtual machines can be used for testing, but they must support Unified Extensible Firmware Interface (UEFI), meaning you can't use Hyper-V Generation 1 virtual machines.
+
+For the simplest registration experience, have an Azure AD administrator complete the registration using either Windows Admin Center or PowerShell.
+
+   > [!IMPORTANT]
+   > If you plan to register the cluster using Windows Admin Center, you must first [register your Windows Admin Center gateway](../manage/register-windows-admin-center.md) with Azure using the same Azure subscription ID and tenant ID that you plan to use for cluster registration.
 
 ### Internet access
 
@@ -91,6 +96,12 @@ If your Azure subscription is through an EA or CSP, the easiest way is to ask yo
 ### Azure Active Directory permissions
 
 You'll also need appropriate Azure Active Directory permissions to complete the registration process. If you don't already have them, ask your Azure AD administrator to grant consent or delegate the permissions to you. See [Manage Azure registration](../manage/manage-azure-registration.md#azure-active-directory-app-permissions) for more information.
+
+## Register using Windows Admin Center
+
+Before beginning the registration process, you must first [register your Windows Admin Center gateway](../manage/register-windows-admin-center.md) with Azure using the same Azure subscription ID and tenant ID that you plan to use for cluster registration.
+
+Remember to use the same subscription ID and tenant ID for cluster registration as you did for Windows Admin Center registration.
 
 ## Register using PowerShell
 
