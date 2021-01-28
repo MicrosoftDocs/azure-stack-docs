@@ -23,7 +23,9 @@
       - name: 1904 release notes
         href: ./relnotearchive/release-notes-1904.md
       - name: 1904 known issues
-        href: ./relnotearchive/known-issues-1904.md        
+        href: ./relnotearchive/known-issues-1904.md
+      - name: 1903 release notes and known issues
+        href: ./relnotearchive/release-notes-known-issues-1903.md        
 - name: Quickstarts
   expanded: true
   items:
