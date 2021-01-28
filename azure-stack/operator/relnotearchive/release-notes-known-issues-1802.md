@@ -81,7 +81,7 @@ This update includes the following improvements and fixes for Azure Stack.
 
 - **Role-Based Access Control (RBAC) improvements** - You can now use RBAC to delegate permissions to Universal User Groups when Azure Stack is deployed with AD FS. To learn more about RBAC, see [Manage RBAC](../azure-stack-manage-permissions.md).
 
-- **Support is added for multiple fault domains**.  For more information, see [High availability for Azure Stack](../azure-stack-key-features.md#high-availability-for-azure-stack).
+- **Support is added for multiple fault domains**.  For more information, see High availability for Azure Stack.
 
 - **Support for physical memory upgrades** - You can now expand the memory capacity of Azure Stack integrated system after your initial deployment. For more information, see [Manage physical memory capacity for Azure Stack](../azure-stack-manage-storage-physical-memory-capacity.md).
 
