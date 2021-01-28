@@ -1,11 +1,11 @@
 ---
 title: Indicators and codes
 description: Learn about indicators and codes
-author: PatAltimore
+author: justinha
 
 ms.topic: how-to
 ms.date: 01/28/2021
-ms.author: patricka
+ms.author: justinha
 ms.reviewer: thoroet
 ms.lastreviewed: 
 
