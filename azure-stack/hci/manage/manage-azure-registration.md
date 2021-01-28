@@ -4,7 +4,7 @@ description: How to manage your Azure registration for Azure Stack HCI, understa
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 01/28/2021
 ---
 
 # Manage Azure registration
@@ -163,7 +163,7 @@ When you're ready to decommission your Azure Stack HCI cluster, simply connect t
 
 You can also use the `Unregister-AzStackHCI` cmdlet to unregister an Azure Stack HCI cluster. You can run the cmdlet either on a cluster node or from a management PC.
 
-You may need to install the latest version of the `Az.StackHCI` module. You may be prompted "Are you sure you want to install the modules from 'PSGallery'?" to which you should answer Yes (Y).
+You may need to install the latest version of the `Az.StackHCI` module. You may be prompted **Are you sure you want to install the modules from 'PSGallery'?** to which you should answer **Yes** (Y).
 
 ```PowerShell
 Install-Module -Name Az.StackHCI
