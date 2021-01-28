@@ -51,7 +51,7 @@ The Azure Stack Hub 1910 update build type is **Express**.
 
 The 1910 update package is larger in size compared to previous updates, which results in longer download times. The update will remain in the **Preparing** state for a long time and operators can expect this process to take longer than previous updates. The expected time for the 1910 update to complete is approximately 10 hours, regardless of the number of physical nodes in your Azure Stack Hub environment. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes lasting longer than the expected value aren't uncommon and don't require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 1910 update and shouldn't be compared to other Azure Stack Hub updates.
 
-For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
+For more information about update build types, see [Manage updates in Azure Stack Hub](../azure-stack-updates.md).
 
 <!-- ## What's in this update -->
 
@@ -187,7 +187,7 @@ The 1910 release of Azure Stack Hub must be applied on the 1908 release with the
 
 ### After successfully applying the 1910 update
 
-After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
+After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](../azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
 - [Azure Stack Hub hotfix 1.1910.63.186](https://support.microsoft.com/help/4574735)
