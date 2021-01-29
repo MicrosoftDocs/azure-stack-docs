@@ -33,7 +33,7 @@ The flowchart shows which option to use for sending diagnostic logs in each case
 
 ## Send logs proactively
 
-Proactive log collection automatically collects and sends diagnostic logs from Azure Stack Hub to Microsoft before you open a support case. These logs are only collected when a [system health alert](#proactive-diagnostic-log-collection-alerts) is raised and are only accessed by Microsoft Support in the context of a support case.
+Proactive log collection automatically collects and sends diagnostic logs from Azure Stack Hub to Microsoft before you open a support case. These logs are only collected when a system health alert is raised and are only accessed by Microsoft Support in the context of a support case.
 
 ::: moniker range=">= azs-2008"
 
@@ -69,7 +69,7 @@ k## Send logs now
 Send logs now is an option where you manually collect and uploads your diagnostic logs from Azure Stack Hub, usually before opening a support case.
 
 There are two ways you can manually send diagnostic logs to Microsoft Support:
-* [Administrator portal (recommended)](#send-logs-now)
+* [Administrator portal (recommended)](#send-logs-now-with-the-administrator-portal)
 * [PowerShell](#send-logs-now-with-powershell)
 
 If Azure Stack Hub is connected to Azure, we recommend using the administrator portal because it's the simplest way to send the logs directly to Microsoft. If the portal is unavailable, you should send logs using PowerShell.
