@@ -22,7 +22,7 @@ To get started with Azure Stack Hub diagnostic log collection, you have to regis
 
 You have multiple ways to send diagnostic logs to Microsoft Support. Depending on connectivity to Azure, your options for collecting and sending logs are:
 * [Send logs proactively (recommended)](#send-logs-proactively)
-* [Send logs now](#send-logs-now)
+* [Send logs now](#send-logs-now-with-the-administrator-portal)
 * [Save logs locally](#save-logs-locally)
 
 The flowchart shows which option to use for sending diagnostic logs in each case. If Azure Stack Hub can connect to Azure, we recommend enabling **Proactive log collection**, which will automatically upload diagnostic logs to a Microsoft-controlled storage blob in Azure when a critical alert gets raised. You can alternatively collect logs on-demand by using **Send logs now**. If your Azure Stack Hub runs disconnected from Azure or if you typically can connect but cannot connect, you can **Save logs locally**.

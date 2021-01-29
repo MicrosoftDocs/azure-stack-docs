@@ -51,4 +51,4 @@ This topic covers how to get your Cloud ID by using the Administrator portal or 
 ## Next steps
 
 * [Send logs proactively](./diagnostic-log-collection.md#send-logs-proactively)
-* [Send logs now](./diagnostic-log-collection.md#send-logs-now)
+* [Send logs now](./diagnostic-log-collection.md#send-logs-now-with-the-administrator-portal)
