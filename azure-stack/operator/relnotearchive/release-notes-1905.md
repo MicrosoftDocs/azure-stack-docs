@@ -17,7 +17,7 @@ ms.date: 06/14/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 06/14/2019
-monikerRange: 'azs-1905'
+ROBOTS: NOINDEX
 ---
 
 # Azure Stack 1905 update

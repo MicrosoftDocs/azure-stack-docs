@@ -8,6 +8,7 @@ ms.date: 11/16/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
+ROBOTS: NOINDEX
 
 ---
 # Azure Stack Hub 1910 known issues

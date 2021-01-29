@@ -8,9 +8,7 @@ ms.date: 01/25/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
-
-# Intent: As an Azure Stack Hub user, I want to know what's new in the latest release so that I can plan my update.
-# Keyword: Notdone: keyword noun phrase
+ROBOTS: NOINDEX
 
 ---
 
