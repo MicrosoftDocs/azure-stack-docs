@@ -63,7 +63,7 @@ Set-AzsUserSubscription -InputObject $subscription
 
 [!include[Remove Account](../includes/remove-account-az.md)]
 
-### [AzRM modules](#tab/azurerm)
+### [AzureRM modules](#tab/azurerm)
 
 ```powershell
 # Set up AzureRMure Stack Hub admin environment
