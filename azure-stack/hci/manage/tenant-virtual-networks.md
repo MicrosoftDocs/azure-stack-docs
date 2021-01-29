@@ -71,7 +71,7 @@ You can update virtual network address prefixes, manage virtual network peering,
     - Remove existing address prefixes or add new ones.
     - Configure peering with another virtual network. To learn more, see [Manage virtual network peering]().
     - Add a BGP router to the virtual network. To do so, you need to provide the BGP router name and Autonomous System Number (ASN) number.
-    - Add one or more BGP peers for the BG router. To do so, you need to provide each BGP peer name, and the ASN number for each BGP peer.
+    - Add one or more BGP peers for the BGP router. To do so, you need to provide each BGP peer name, and the ASN number for each BGP peer.
 
 ## Delete a virtual network
 You can delete a virtual network if you no longer need it.
