@@ -4,7 +4,7 @@ description: This topic provides step-by-step instructions on how to use Windows
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 01/29/2021
 ---
 
 # Manage tenant logical networks
@@ -30,7 +30,7 @@ Use the following steps in Windows Admin Center to create a logical network.
 
 1. In the **Logical subnet** pane, type a name for the subnet, and then provide the following information:
     1. A **VLAN ID** for the network.
-    1. An **Address Prefix** in CIDR notation.
+    1. An **Address Prefix** in Classless Interdomain Routing (CIDR) notation.
     1. The **Default Gateway** for the network.
     1. The **DNS** server address, if needed.
     1. Select the **Public Logical network** checkbox if the logical network is to provide connectivity for external clients.
