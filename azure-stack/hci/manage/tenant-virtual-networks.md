@@ -66,13 +66,22 @@ You can update virtual network address prefixes, manage virtual network peering,
 :::image type="content" source="./media/tenant-virtual-networks/change-virtual-network-settings.png" alt-text="Screenshot of Windows Admin Center showing the Settings view of a virtual network." lightbox="./media/tenant-virtual-networks/change-virtual-network-settings.png":::
 
 1. Under **Tools**, scroll down to the **Networking** area, and select **Virtual networks**.
-1. 
-
-
+1. Select the **Inventory** tab, select a virtual network, and then select **Settings**.
+1. On the **General** tab, you can:
+    - Remove existing address prefixes or add new ones.
+    - Configure peering with another virtual network. To learn more, see [Manage virtual network peering]().
+    - Add a BGP router to the virtual network. To do so, you need to provide the BGP router name and Autonomous System Number (ASN) number.
+    - Add one or more BGP peers for the BG router. To do so, you need to provide each BGP peer name, and the ASN number for each BGP peer.
 
 ## Delete a virtual network
-TBD
+You can delete a virtual network if you no longer need it.
 
+:::image type="content" source="./media/tenant-virtual-networks/delete-virtual-network.png" alt-text="Screenshot of Windows Admin Center showing the Delete virtual network confirmation prompt." lightbox="./media/tenant-virtual-networks/delete-virtual-network.png":::
+
+1. Under **Tools**, scroll down to the **Networking** area, and select **Virtual networks**.
+1. Select the **Inventory** tab, select a virtual network, and then select **Delete**.
+1. On the **Delete virtual network** confirmation prompt, select **Delete**.
+1. Next to the Virtual networks search box, select **Refresh** to ensure that the virtual network has been deleted.
 
 ## Next steps
 For more information, see also:
