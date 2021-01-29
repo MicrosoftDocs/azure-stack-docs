@@ -17,6 +17,7 @@ ms.date: 05/31/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 05/31/2019
+ROBOTS: NOINDEX
 ---
 
 # Azure Stack 1904 known issues
