@@ -25,7 +25,7 @@ You have multiple ways to send diagnostic logs to Microsoft Support. Depending o
 * [Send logs now](#send-logs-now)
 * [Save logs locally](#save-logs-locally)
 
-The flowchart shows which option to use for sending diagnostic logs in each case. If Azure Stack Hub can connect to Azure, we recommend enabling **Proactive log collection**, which will automatically upload diagnostic logs to a Microsoft-controlled storage blob in Azure when a critical alert gets raised. You can alternatively collect logs on-demand by using **Send logs now**. If Azure Stack Hub is disconnected from Azure, you can **Save logs locally**. 
+The flowchart shows which option to use for sending diagnostic logs in each case. If Azure Stack Hub can connect to Azure, we recommend enabling **Proactive log collection**, which will automatically upload diagnostic logs to a Microsoft-controlled storage blob in Azure when a critical alert gets raised. You can alternatively collect logs on-demand by using **Send logs now**. If your Azure Stack Hub runs disconnected from Azure or if you typically can connect but cannot connect, you can **Save logs locally**.
 
 ![Flowchart shows how to send logs now to Microsoft](media/azure-stack-help-and-support/send-logs-now-flowchart.png)
 
@@ -169,7 +169,9 @@ By initiating diagnostic log collection from Azure Stack Hub, you acknowledge an
 
 ## Save logs locally
 
-You can save logs to a local Server Message Block (SMB) share when Azure Stack Hub is disconnected from Azure. In the **Settings** blade, enter the path and a username and password with permission to write to the share. During a support case, Microsoft Support will provide detailed steps on how to get these local logs transferred. If the Administrator portal is unavailable, you can use [Get-AzureStackLog](azure-stack-get-azurestacklog.md) to save logs locally.
+You can save logs to a local Server Message Block (SMB) share when Azure Stack Hub is disconnected from Azure. You may, for example, run a disconnected environment. But if you your are normally connected but are experiencing connectivity issues, you can save logs locally to help troubleshoot your issues.
+
+ In the **Settings** blade, enter the path and a username and password with permission to write to the share. During a support case, Microsoft Support will provide detailed steps on how to get these local logs transferred. If the Administrator portal is unavailable, you can use [Get-AzureStackLog](azure-stack-get-azurestacklog.md) to save logs locally.
 
 ![Screenshot of diagnostic log collection options](media/azure-stack-help-and-support/save-logs-locally.png)
 
