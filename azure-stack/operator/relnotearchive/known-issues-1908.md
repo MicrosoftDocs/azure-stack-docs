@@ -131,7 +131,7 @@ To access known issues for a different version, use the version selector dropdow
   - [Highly Available Connections](../../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
   - [Configure BGP on Azure Stack](../../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
   - [ExpressRoute circuits](../azure-stack-connect-expressroute.md)
-  - [Specify custom IPsec/IKE policies](....//user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
+  - [Specify custom IPsec/IKE policies](../../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
 ## Compute
 
