@@ -64,13 +64,13 @@ k## Send logs now
 > [!TIP]
 > Save time by using [Send logs proactively](#send-logs-proactively) instead of Send logs now.
 
-Send logs now is an option where you manually collect and upload your diagnostic logs from Azure Stack Hub, usually before opening a support case.
+Send logs now is an option where you manually collect and uploads your diagnostic logs from Azure Stack Hub, usually before opening a support case.
 
 There are two ways you can manually send diagnostic logs to Microsoft Support:
 * [Administrator portal (recommended)](#send-logs-now-with-the-administrator-portal)
 * [PowerShell](#send-logs-now-with-powershell)
 
-If Azure Stack Hub is connected to Azure, we recommend using the administrator portal because it's the simplest way to send the logs directly to Microsoft. If the portal is unavailable, you should instead send logs using PowerShell.
+If Azure Stack Hub is connected to Azure, we recommend using the administrator portal because it's the simplest way to send the logs directly to Microsoft. If the portal is unavailable, you should send logs using PowerShell.
 
 ### Send logs now with the administrator portal
 
@@ -169,7 +169,7 @@ By initiating diagnostic log collection from Azure Stack Hub, you acknowledge an
 
 ## Save logs locally
 
-You can save logs to a local Server Message Block (SMB) share when Azure Stack Hub is disconnected from Azure. You may, for example, run a disconnected environment. But if you your are normally connected but are experiencing connectivity issues, you can save logs locally to help troubleshoot your issues.
+You can save logs to a local Server Message Block (SMB) share when Azure Stack Hub is disconnected from Azure. You may, for example, run a disconnected environment. But if you you are normally connected but are experiencing connectivity issues, you can save logs locally to help troubleshoot your issues.
 
  In the **Settings** blade, enter the path and a username and password with permission to write to the share. During a support case, Microsoft Support will provide detailed steps on how to get these local logs transferred. If the Administrator portal is unavailable, you can use [Get-AzureStackLog](azure-stack-get-azurestacklog.md) to save logs locally.
 
@@ -187,7 +187,7 @@ The following table lists considerations for environments with limited or metere
 |----|---|
 | Low-bandwidth/high-latency connection | Log upload will take an extended amount of time to complete. |
 | Shared connection | The upload may also impact other apps/users sharing the network connection. |
-| Metered connection | There may be an additional charge from your ISP for the extra network usage. |
+| Metered connection | There may be another charge from your ISP for the extra network usage. |
 
 ## View log collection
 
