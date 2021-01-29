@@ -24,7 +24,7 @@ Use the following steps in Windows Admin Center to create a virtual network.
 1. Under **Tools**, scroll down to the **Networking** area, and select **Virtual networks**.
 1. Under **Virtual networks**, select the **Inventory** tab, and then select **New**.
 1. In the **Virtual networks** pane, type a name for the virtual network.
-1. Under **Address Prefixes** select **Add**, and then type an address prefix in CIDR notation. You can optionally add more address prefixes.
+1. Under **Address Prefixes** select **Add**, and then type an address prefix in Classless Interdomain Routing (CIDR) notation. You can optionally add more address prefixes.
 1. Under **Subnets**, select **Add**, type a name for the subnet, and then provide an address prefix in CIDR notation.
 
    >[!NOTE]
