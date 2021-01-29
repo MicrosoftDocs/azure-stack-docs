@@ -14,54 +14,6 @@
       href: release-notes.md
     - name: Known issues
       href: known-issues.md
-    - name: Archive
-      items:
-      - name: 1910 release notes
-        href: ./relnotearchive/release-notes-1910.md
-      - name: 1910 known issues
-        href: ./relnotearchive/known-issues-1910.md
-      - name: 1908 release notes
-        href: ./relnotearchive/release-notes-1908.md
-      - name: 1908 known issues
-        href: ./relnotearchive/known-issues-1908.md
-      - name: 1907 release notes
-        href: ./relnotearchive/release-notes-1907.md
-      - name: 1907 known issues
-        href: ./relnotearchive/known-issues-1907.md                
-      - name: 1906 release notes
-        href: ./relnotearchive/release-notes-1906.md
-      - name: 1906 known issues
-        href: ./relnotearchive/known-issues-1906.md
-      - name: 1905 release notes
-        href: ./relnotearchive/release-notes-1905.md
-      - name: 1905 known issues
-        href: ./relnotearchive/known-issues-1905.md
-      - name: 1904 release notes
-        href: ./relnotearchive/release-notes-1904.md
-      - name: 1904 known issues
-        href: ./relnotearchive/known-issues-1904.md
-      - name: 1903 release notes
-        href: ./relnotearchive/release-notes-known-issues-1903.md
-      - name: 1902 release notes
-        href: ./relnotearchive/release-notes-known-issues-1902.md        
-      - name: 1901 release notes
-        href: ./relnotearchive/release-notes-known-issues-1901.md
-      - name: 1811 release notes
-        href: ./relnotearchive/release-notes-known-issues-1811.md
-      - name: 1809 release notes
-        href: ./relnotearchive/release-notes-known-issues-1809.md
-      - name: 1808 release notes
-        href: ./relnotearchive/release-notes-known-issues-1808.md
-      - name: 1807 release notes
-        href: ./relnotearchive/release-notes-known-issues-1807.md
-      - name: 1805 release notes
-        href: ./relnotearchive/release-notes-known-issues-1805.md
-      - name: 1804 release notes
-        href: ./relnotearchive/release-notes-known-issues-1804.md
-      - name: 1803 release notes
-        href: ./relnotearchive/release-notes-known-issues-1803.md
-      - name: 1802 release notes
-        href: ./relnotearchive/release-notes-known-issues-1802.md
 - name: Quickstarts
   expanded: true
   items:
@@ -571,6 +523,54 @@
     href: /hybrid    
 - name: Resources
   items:
+    - name: Release notes archive
+      items:
+      - name: 1910 release notes
+        href: ./relnotearchive/release-notes-1910.md
+      - name: 1910 known issues
+        href: ./relnotearchive/known-issues-1910.md
+      - name: 1908 release notes
+        href: ./relnotearchive/release-notes-1908.md
+      - name: 1908 known issues
+        href: ./relnotearchive/known-issues-1908.md
+      - name: 1907 release notes
+        href: ./relnotearchive/release-notes-1907.md
+      - name: 1907 known issues
+        href: ./relnotearchive/known-issues-1907.md                
+      - name: 1906 release notes
+        href: ./relnotearchive/release-notes-1906.md
+      - name: 1906 known issues
+        href: ./relnotearchive/known-issues-1906.md
+      - name: 1905 release notes
+        href: ./relnotearchive/release-notes-1905.md
+      - name: 1905 known issues
+        href: ./relnotearchive/known-issues-1905.md
+      - name: 1904 release notes
+        href: ./relnotearchive/release-notes-1904.md
+      - name: 1904 known issues
+        href: ./relnotearchive/known-issues-1904.md
+      - name: 1903 release notes
+        href: ./relnotearchive/release-notes-known-issues-1903.md
+      - name: 1902 release notes
+        href: ./relnotearchive/release-notes-known-issues-1902.md        
+      - name: 1901 release notes
+        href: ./relnotearchive/release-notes-known-issues-1901.md
+      - name: 1811 release notes
+        href: ./relnotearchive/release-notes-known-issues-1811.md
+      - name: 1809 release notes
+        href: ./relnotearchive/release-notes-known-issues-1809.md
+      - name: 1808 release notes
+        href: ./relnotearchive/release-notes-known-issues-1808.md
+      - name: 1807 release notes
+        href: ./relnotearchive/release-notes-known-issues-1807.md
+      - name: 1805 release notes
+        href: ./relnotearchive/release-notes-known-issues-1805.md
+      - name: 1804 release notes
+        href: ./relnotearchive/release-notes-known-issues-1804.md
+      - name: 1803 release notes
+        href: ./relnotearchive/release-notes-known-issues-1803.md
+      - name: 1802 release notes
+        href: ./relnotearchive/release-notes-known-issues-1802.md  
   - name: Training and certification
     href: azure-stack-train-and-cert.md
   - name: Azure Stack Hub road map
