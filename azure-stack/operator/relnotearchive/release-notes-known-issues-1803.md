@@ -96,7 +96,7 @@ This update includes the following improvements and fixes for Azure Stack.
 - Usage data for virtual machines is now separated at hourly intervals. This is consistent with Azure. 
 
 <!--  2253274 --> 
-- The issue where in the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0) cmdlet to view and manage this information.
+- The issue where in the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0&preserve-view=true) cmdlet to view and manage this information.
 
 - When you create a virtual machine, the message *Unable to display pricing* no longer appears when choosing a size for the VM size.
 

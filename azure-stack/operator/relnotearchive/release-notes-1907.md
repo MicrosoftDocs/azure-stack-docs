@@ -36,7 +36,7 @@ To access release notes for a different version, use the version selector dropdo
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](known-issues-1906.md)
+- [Known issues](known-issues-1907.md)
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
@@ -129,14 +129,6 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 ## Security updates
 
 For information about security updates in this update of Azure Stack, see [Azure Stack security updates](../release-notes-security-updates.md).
-
-## Update planning
-
-Before applying the update, make sure to review the following information:
-
-- [Known issues](known-issues-1907.md)
-- [Security updates](../release-notes-security-updates.md)
-- [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
 ## Download the update
 

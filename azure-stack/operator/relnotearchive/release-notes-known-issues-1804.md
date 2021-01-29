@@ -76,7 +76,7 @@ The following are now available, but don't require Azure Stack update 1804.
 
 - **New Azure Stack Admin PowerShell Version 1.3.0**.  Azure Stack PowerShell 1.3.0 is now available for installation. This version provides commands for all Admin resource providers to manage Azure Stack.  With this release, some content will be deprecated from the Azure Stack Tools GitHub [repository](https://github.com/Azure/AzureStack-Tools). 
 
-   For installation details, follow the [instructions](../azure-stack-powershell-install.md) or the [help](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0) content for Azure Stack Module 1.3.0. 
+   For installation details, follow the [instructions](../azure-stack-powershell-install.md) or the [help](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0&preserve-view=true) content for Azure Stack Module 1.3.0. 
 
 - **Initial release of Azure Stack API Rest Reference**. The [API reference for all Azure Stack Admin resource providers](https://docs.microsoft.com/rest/api/azure-stack/) is now published. 
 
@@ -115,7 +115,7 @@ The following are post-installation known issues for build  **20180513.1**.
 
 <!-- 1272111 - IS --> 
 - After you install or update to this version of Azure Stack, you might not be able to view Azure Stack scale units in the Admin portal.  
-  Workaround: Use PowerShell to view information about Scale Units. For more information, see the [help](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0) content for Azure Stack Module 1.3.0. 
+  Workaround: Use PowerShell to view information about Scale Units. For more information, see the [help](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0&preserve-view=true) content for Azure Stack Module 1.3.0. 
 
 <!-- 2332636 - IS -->  
 - When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
@@ -183,9 +183,9 @@ The following are post-installation known issues for build  **20180513.1**.
                 "vmSize": "Standard_F32s_v2"
         },
     ```  
-  - **Azure CLI:** You can use the [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) command and specify the VM size as a parameter, similar to `--size "Standard_F32s_v2"`.
+  - **Azure CLI:** You can use the [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create&preserve-view=true) command and specify the VM size as a parameter, similar to `--size "Standard_F32s_v2"`.
 
-  - **PowerShell:** With PowerShell you can use [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) with the parameter that specifies the VM size, similar to `-VMSize "Standard_F32s_v2"`.
+  - **PowerShell:** With PowerShell you can use [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0&preserve-view=true) with the parameter that specifies the VM size, similar to `-VMSize "Standard_F32s_v2"`.
 
 
 <!-- TBD - IS ASDK --> 
