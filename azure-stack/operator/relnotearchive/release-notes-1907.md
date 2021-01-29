@@ -1,6 +1,6 @@
 ---
 title: Azure Stack 1907 release notes | Microsoft Docs
-description: Learn about the updates for Azure Stack integrated systems 1907, including what's new, and where to download the update.
+description: Learn about the updates for Azure Stack integrated systems 1907
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim

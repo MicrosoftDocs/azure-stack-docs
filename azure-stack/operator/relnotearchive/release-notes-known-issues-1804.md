@@ -1,5 +1,5 @@
 ---
-title: Azure Stack 1804 Update | Microsoft Docs
+title: Azure Stack 1804 update | Microsoft Docs
 description: Learn about what's in the 1804 update for Azure Stack integrated systems, the known issues, and where to download the update.
 services: azure-stack
 documentationcenter: ''

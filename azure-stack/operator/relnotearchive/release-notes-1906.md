@@ -1,6 +1,6 @@
 ---
-title: Azure Stack release notes | Microsoft Docs
-description: Learn about the updates for Azure Stack integrated systems, including what's new, and where to download the update.
+title: Azure Stack 1906 release notes | Microsoft Docs
+description: Learn about the updates for Azure Stack integrated systems 1906
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim

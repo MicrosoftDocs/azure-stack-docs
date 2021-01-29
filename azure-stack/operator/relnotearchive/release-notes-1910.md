@@ -14,7 +14,7 @@ ms.lastreviewed: 09/09/2020
 
 ---
 
-# Azure Stack Hub release notes
+# Azure Stack Hub 1910 release notes
 
 This article describes the contents of Azure Stack Hub update packages. The update includes improvements and fixes for the latest release of Azure Stack Hub.
 

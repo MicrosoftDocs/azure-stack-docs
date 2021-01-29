@@ -1,6 +1,6 @@
 ---
 title: Azure Stack 1904 release notes | Microsoft Docs
-description: Learn about the 1904 update for Azure Stack integrated systems, including what's new, known issues, and where to download the update and archived Azure Stack release notes.
+description: Learn about the 1904 update for Azure Stack integrated systems
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim

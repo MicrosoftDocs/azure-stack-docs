@@ -1,6 +1,6 @@
 ---
 title: Azure Stack 1908 release notes | Microsoft Docs
-description: Learn about the updates for Azure Stack 1908 integrated systems, including what's new, and where to download the update.
+description: Learn about the updates for Azure Stack 1908 integrated systems
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim

@@ -1,5 +1,5 @@
 ---
-title: Azure Stack 1807 Update | Microsoft Docs
+title: Azure Stack 1807 update | Microsoft Docs
 description: Learn about what's new in the 1807 update for Azure Stack integrated systems, including the known issues and where to download the update.
 services: azure-stack
 documentationcenter: ''

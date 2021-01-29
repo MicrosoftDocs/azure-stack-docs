@@ -1,5 +1,5 @@
 ---
-title: 1910 Azure Stack Hub known issues 
+title: Azure Stack Hub 1910 known issues 
 description: Learn about known issues in Azure Stack Hub 1910.
 author: sethmanheim
 
@@ -9,11 +9,8 @@ ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
 
-# Intent: As an Azure Stack Hub user, I want to know about known issues in the latest release so that I can plan my update and be aware of any issues.
-# Keyword: Notdone: keyword noun phrase
-
 ---
-# Azure Stack Hub known issues
+# Azure Stack Hub 1910 known issues
 
 This article lists known issues in Azure Stack Hub releases. The list is updated as new issues are identified.
 
