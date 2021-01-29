@@ -4,7 +4,7 @@ description: This topic provides step-by-step instructions on how to use Windows
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 01/29/2021
 ---
 
 # Manage tenant virtual networks
@@ -47,11 +47,28 @@ You can easily see all the virtual networks in your cluster.
     - Delete a virtual network.
 
 ## View virtual network details
-TBD
+You can view detailed information for a specific virtual network from its dedicated page.
 
+:::image type="content" source="./media/tenant-virtual-networks/view-virtual-network-details.png" alt-text="Screenshot of Windows Admin Center showing the details view of a virtual network." lightbox="./media/tenant-virtual-networks/view-virtual-network-details.png":::
+
+1. Under **Tools**, scroll down to the **Networking** area, and select **Virtual networks**.
+1. Select the **Inventory** tab, and then select the virtual network that you want to view details on. On the subsequent page, you can:
+    - View the **Provisioning State** of the virtual network (Succeeded, Failed).
+    - View the **Configuration State** of the virtual network (Healthy, Error, Warning, Unknown).
+    - View the underlying **Logical Network** of the virtual network.
+    - View the **Address Space** of the virtual network.
+    - Add new subnets, delete existing subnets, and modify the settings of a virtual network subnet.
+    - View **Virtual machine connections** to the virtual network.
 
 ## Change virtual network settings
-TBD
+You can update virtual network address prefixes, manage virtual network peering, and configure a Border Gateway Protocol (BGP) router and peers for the virtual network.
+
+:::image type="content" source="./media/tenant-virtual-networks/change-virtual-network-settings.png" alt-text="Screenshot of Windows Admin Center showing the Settings view of a virtual network." lightbox="./media/tenant-virtual-networks/change-virtual-network-settings.png":::
+
+1. Under **Tools**, scroll down to the **Networking** area, and select **Virtual networks**.
+1. 
+
+
 
 ## Delete a virtual network
 TBD
