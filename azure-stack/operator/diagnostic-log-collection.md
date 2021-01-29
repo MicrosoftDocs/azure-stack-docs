@@ -3,10 +3,10 @@ title: Diagnostic log collection
 description: Learn about diagnostic log collection.
 author: PatAltimore
 ms.topic: article
-ms.date: 1/28/20201
+ms.date: 1/28/2021
 ms.author: patricka
 ms.reviewer: shisab
-ms.lastreviewed: 1/28/20201
+ms.lastreviewed: 1/28/2021
 
 #Intent: As an Azure Stack Hub operator, I want to learn about diagnostic log collection so I can share them with Microsoft Support when I need help addressing an issue.
 #Keyword: diagnostic log collection azure stack hub
