@@ -182,5 +182,5 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 
 ## Next steps
 
-- [Review update activity checklist](release-notes-checklist.md)
-- [Review list of security updates](release-notes-security-updates.md)
+- [Review update activity checklist](../release-notes-checklist.md)
+- [Review list of security updates](../release-notes-security-updates.md)

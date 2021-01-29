@@ -38,7 +38,7 @@ The Azure Stack 1905 update build number is **1.1905.0.40**.
 
 ### Update type
 
-The Azure Stack 1905 update build type is **Full**. As a result, the 1905 update has a longer runtime than express updates like 1903 and 1904. Exact runtimes for full updates typically depend on the number of nodes that your Azure Stack instance contains, the capacity used on your system by tenant workloads, your system's network connectivity (if connected to the internet), and your system hardware configuration. The 1905 update has had the following expected runtimes in our internal testing: 4 nodes - 35 hours, 8 nodes - 45 hours, 12 nodes - 55 hours, 16 nodes - 70 hours. 1905 runtimes lasting longer than these expected values are not uncommon and do not require action by Azure Stack operators unless the update fails. For more information about update build types, see [Manage updates in Azure Stack](azure-stack-updates.md).
+The Azure Stack 1905 update build type is **Full**. As a result, the 1905 update has a longer runtime than express updates like 1903 and 1904. Exact runtimes for full updates typically depend on the number of nodes that your Azure Stack instance contains, the capacity used on your system by tenant workloads, your system's network connectivity (if connected to the internet), and your system hardware configuration. The 1905 update has had the following expected runtimes in our internal testing: 4 nodes - 35 hours, 8 nodes - 45 hours, 12 nodes - 55 hours, 16 nodes - 70 hours. 1905 runtimes lasting longer than these expected values are not uncommon and do not require action by Azure Stack operators unless the update fails. For more information about update build types, see [Manage updates in Azure Stack](../azure-stack-updates.md).
 
 ## What's in this update
 
@@ -128,7 +128,7 @@ Before applying the update, make sure to review the following information:
 
 - [Known issues](known-issues-1905.md)
 - [Security updates](../release-notes-security-updates.md)
-- [Checklist of activities before and after applying the update](release-notes-checklist.md)
+- [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
 ## Download the update
 
