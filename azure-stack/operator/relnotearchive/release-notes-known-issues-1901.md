@@ -163,7 +163,7 @@ To review the reference for the updated modules, see [Azure Stack Module Referen
 <!-- 3083238 IS -->
 - Security enhancements in this update result in an increase in the backup size of the directory service role. For updated sizing guidance for the external storage location, see the [infrastructure backup documentation../azure-stack-backup-reference.md#storage-location-sizing). This change results in a longer time to complete the backup due to the larger size data transfer. This change impacts integrated systems. 
 
-- Starting in January 2019, you can deploy Kubernetes clusters on Active Directory Federated Services (AD FS) registered, connected Azure Stack stamps (internet access is required). Follow the instructions [here](../azure-stack-solution-template-kubernetes-cluster-add.md) to download the new Kubernetes Marketplace item. Follow the instructions [here](../user/../azure-stack-solution-template-kubernetes-adfs.md) to deploy a Kubernetes cluster. Note the new parameters for indicating whether the target system is ADD or AD FS registered. If it is AD FS, new fields are available to enter the Key Vault parameters in which the deployment certificate is stored.
+- Starting in January 2019, you can deploy Kubernetes clusters on Active Directory Federated Services (AD FS) registered, connected Azure Stack stamps (internet access is required). Follow the instructions [here](../azure-stack-solution-template-kubernetes-cluster-add.md) to download the new Kubernetes Marketplace item. Follow the instructions [here](../../user/azure-stack-solution-template-kubernetes-adfs.md) to deploy a Kubernetes cluster. Note the new parameters for indicating whether the target system is ADD or AD FS registered. If it is AD FS, new fields are available to enter the Key Vault parameters in which the deployment certificate is stored.
 
    Note that even with AD FS support, the deployment of Kubernetes clusters requires internet access.
 
@@ -273,7 +273,7 @@ The following are post-installation known issues for this build version.
    - If the subscription was created before the 1808 update, deploying a VM with Managed Disks might fail with an internal error message. To resolve the error, follow these steps for each subscription:
       1. In the Tenant portal, go to **Subscriptions** and find the subscription. Select **Resource Providers**, then select **Microsoft.Compute**, and then click **Re-register**.
       2. Under the same subscription, go to **Access Control (IAM)**, and verify that **AzureStack-DiskRP-Client** is listed.
-   - If you have configured a multi-tenant environment, deploying VMs in a subscription associated with a guest directory might fail with an internal error message. To resolve the error, follow these steps in [this article](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) to reconfigure each of your guest directories.
+   - If you have configured a multi-tenant environment, deploying VMs in a subscription associated with a guest directory might fail with an internal error message. To resolve the error, follow these steps in [this article](../azure-stack-enable-multitenancy.md#register-azure-stack-hub-with-the-guest-directory) to reconfigure each of your guest directories.
 
 - An Ubuntu 18.04 VM created with SSH authorization enabled will not allow you to use the SSH keys to log in. As a workaround, use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
 
@@ -324,7 +324,7 @@ The following are post-installation known issues for this build version.
 
 You can download the Azure Stack 1901 update package from [here](https://aka.ms/azurestackupdatedownload). 
 
-In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#using-the-update-tile-to-manage-updates).
+In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-an-update-is-available).
 
 ## Next steps
 
