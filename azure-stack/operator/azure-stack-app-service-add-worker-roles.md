@@ -4,10 +4,10 @@ description: Detailed guidance for scaling Azure App Service on Azure Stack Hub
 author: bryanla
 
 ms.topic: article
-ms.date: 11/15/2020
+ms.date: 1/29/2020
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 11/15/2020
+ms.lastreviewed: 1/29/2020
 
 # Intent: As an Azure Stack operator, I want to scale infrastructure and worker roles in App Service on Azure Stack so I can deploy workloads onto them.
 # Keyword: add workers app service azure stack
@@ -77,8 +77,8 @@ Azure App Service on Azure Stack Hub deploys all roles using Virtual Machine Sca
     
     ##### Scale out the AppService Role instances ######
     
-    # Set context to AzureRMureStack admin.
-    Login-AzureRMAccount -EnvironmentName AzureRMureStackAdmin
+    # Set context to AzureStackAdmin admin.
+    Login-AzureRMAccount -EnvironmentName AzureStackAdmin
                                                     
     ## Name of the Resource group where AppService is deployed.
     $AppServiceResourceGroupName = "AppService.local"

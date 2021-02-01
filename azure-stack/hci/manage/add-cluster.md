@@ -5,7 +5,7 @@ ms.topic: how-to
 author: v-dasis
 ms.author: v-dasis
 ms.reviewer: jgerend
-ms.date: 01/06/2021
+ms.date: 01/29/2021
 ---
 
 # Add or remove servers for an Azure Stack HCI cluster
@@ -16,7 +16,7 @@ You can easily add or remove servers from a cluster in Azure Stack HCI. Keep in 
 
 Whenever you add or remove a server, you must also perform cluster validation afterwards to ensure the cluster is functioning normally. This applies to both non-stretched and stretched clusters.
 
-## Obtain OEM hardware
+## Before you begin
 
 The first step is to acquire new HCI hardware from your original OEM. Always refer to your OEM-provided documentation when adding new server hardware for use in your cluster.
 
@@ -24,11 +24,13 @@ The first step is to acquire new HCI hardware from your original OEM. Always ref
 1. Enable physical switch ports and adjust access control lists (ACLs) and VLAN IDs if applicable.
 1. Configure the correct IP address in the baseboard management controller (BMC) and apply all BIOS settings per OEM instructions.
 1. Apply the current firmware baseline to all components by using the tools that are provided by your OEM.
-1. Run OEM validation tests to ensure homogeneity with the existing cluster servers.
+1. Run OEM validation tests to ensure hardware homogeneity with the existing clustered servers.
+1. Install the Azure Stack HCI operating system on the new server. For detailed information, see [Deploy Azure Stack HCI](../deploy/operating-system.md).
+1. Join the server to the cluster domain.
 
 ## Add a server to a cluster
 
-Once your server has spun up correctly, use Windows Admin Center to join the server to your cluster.
+Use Windows Admin Center to join the server to your cluster.
 
 :::image type="content" source="media/manage-cluster/add-server.png" alt-text="Add server screen" lightbox="media/manage-cluster/add-server.png":::
 
