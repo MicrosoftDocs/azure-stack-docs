@@ -66,7 +66,7 @@ Microsoft or an Azure Stack Hub solution partner will help evaluate your goals. 
 -   What size solution will you need?
 -   What are the power and cooling requirements?
 
-Use the [Azure Stack Hub Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) to investigate and analyze the best hardware capacity and configuration for your needs. 
+Use the [Azure Stack Hub Capacity Planner](https://download.microsoft.com/download/4/a/2/4a2bd10c-58a0-4ee7-8c3f-55b526ce7e75/AzureStackHubCapacityPlanner_v2005.01.xlsm) to investigate and analyze the best hardware capacity and configuration for your needs. 
 
 ## Ordering
 Your organization commits to purchasing Azure Stack Hub, signs contracts and purchase orders, and provides the integration requirements data to the solution provider.

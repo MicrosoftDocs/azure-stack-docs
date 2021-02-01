@@ -4,7 +4,7 @@ description: Reference for the resource usage API, which retrieves Azure Stack H
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/09/2020
+ms.date: 02/01/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 01/25/2019
@@ -114,13 +114,13 @@ You can collect usage information for deleted subscriptions by calling the **Mic
 
 | Method | Request URI |
 | --- | --- |
-| GET | `https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&api-version=2015-06-01-preview` |
+| GET | `https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&api-version=2015-06-01-preview` |
 
 #### Return usage for deleted or active tenant
 
 | Method | Request URI |
 | --- | --- |
-| GET |`https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&subscriberId={subscriber-id}&api-version=2015-06-01-preview` |
+| GET |`https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&subscriberId={subscriber-id}&api-version=2015-06-01-preview` |
 
 ## Next steps
 
