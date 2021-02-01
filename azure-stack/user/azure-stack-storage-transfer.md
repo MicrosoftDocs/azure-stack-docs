@@ -240,13 +240,13 @@ New-AzureRMStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAc
 Set-AzureRMCurrentStorageAccount -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName 
 
 # Create a new container.
-New-AzureRMureStorageContainer -Name $ContainerName -Permission Off
+New-AzureContainer -Name $ContainerName -Permission Off
 
 # Upload a blob into a container.
-Set-AzureRMureStorageBlobContent -Container $ContainerName -File $ImageToUpload
+Set-AzureBlobContent -Container $ContainerName -File $ImageToUpload
 
 # List all blobs in a container.
-Get-AzureRMureStorageBlob -Container $ContainerName
+Get-AzureBlob -Container $ContainerName
 
 # Download blobs from the container:
 # Get a reference to a list of all blobs in a container.
