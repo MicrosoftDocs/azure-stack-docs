@@ -12,9 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version 20H2
 
-In this topic, you deploy an end-to-end Software Defined Network (SDN) infrastructure using SDN Express PowerShell scripts. The infrastructure may include a highly available (HA) network controller (NC), a highly available Software Load Balancer (SLB), and a highly available gateway.  
-
-The scripts support a phased deployment, where you can deploy just the Network Controller to achieve a core set of functionality with minimal network requirements. You can also deploy Network Controller using the Create Cluster wizard in Windows Admin Center. To deploy other SDN components such as SLB and Gateway however, you must use the SDN Express scripts.
+In this topic, you deploy an end-to-end Software Defined Network (SDN) infrastructure using SDN Express PowerShell scripts. The infrastructure may include a highly available (HA) network controller (NC), a highly available Software Load Balancer (SLB), and a highly available gateway.  The scripts support a phased deployment, where you can deploy just the Network Controller to achieve a core set of functionality with minimal network requirements. 
 
 You can also deploy an SDN infrastructure using System Center Virtual Machine Manager (VMM). For more information, see [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
 
@@ -85,44 +83,7 @@ Let's begin:
 
 1. Open the `MultiNodeSampleConfig.psd1` file in your favorite text editor.
 
-1. Change specific parameter values to fit your infrastructure, including:
-
-    - VHDPath - vhd file path
-    - VHDFile - vhd file name
-    - VMLocation - file path to virtual machines
-    - JoinDomain - domain name of cluster
-    - SDNMacPoolStart - beginning MAC address of storage pool
-    - SDNMacPoolEnd -  end MAC address of storage pool
-    - ManagementSubnet - subnet for management network
-    - ManagementGateway - gateway subnet for management network
-    - ManagementDNS - DNS for management network
-    - ManagementVLANID - VLAN ID of management network
-    - DomainJoinUsername - administrative user name
-    - LocalAdminDomainUser - administrative password
-    - RestName - Representational State Transfer (REST) IP address
-    - HyperVHosts = server host names
-    - ComputerName - VM name for SDN component
-    - ManagementIP - management network IP address for SDN component
-    - MACAddress - MAC address for SDN component
-    - PAIPAddress - IP address for for SLB/Mux component
-    - PAMACAddress - MAC address for for SLB/Mux component
-    - FrontEndIp - IP address for Gateway component
-    - FrontEndMac - starting MAC address for Gateway component
-    - BackEndMac - ending MAC address for Gateway component
-    - NCUsername -  NC account user name
-    - PASubnet -  subnet for PA
-    - PAVLANID - VLAN ID for PA
-    - PAGateway - = IP address for PA Gateway
-    - PAPoolStart - beginning IP address for PA
-    - PAPoolEnd - = ending IP address for PA  
-    - SDNASN - 
-    - RouterASN - 
-    - RouterIPAddress - IP address for Gateway router
-    - PrivateVIPSubnet -  IP address for private VIP subnet
-    - PublicVIPSubnet -  IP address for public VIP subnet
-    - PoolName - 
-    - GRESubnet -  subnet for GRE
-    - Capacity - 
+1. Change specific parameter values to fit your infrastructure.
 
 ## Run the deployment script
 
