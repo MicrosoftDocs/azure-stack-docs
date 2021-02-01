@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a cluster for Azure Stack HCI using Windows PowerShell
 author: v-dasis
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 02/01/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -141,9 +141,11 @@ This step configures various networking elements, such as virtual switches and n
 
 For more information on RDMA and Hyper-V host networking for Azure Stack HCI, see [Host network requirements](../concepts/host-network-requirements.md).
 
-### Disable unused networks
+### Disable unused network adapters
 
-You must disable any networks disconnected or not used for management, storage or workload traffic (such as VMs). Here is how to identify unused networks:
+You must disable any disconnected networks and adapters not used for management, storage or for workload traffic such as VMs. This includes network adapters used for headless management such as baseboard management controllers (BMCs).
+
+Here is how to identify unused networks:
 
 ```powershell
 $ServerList = "Server1", "Server2", "Server3", "Server4"
