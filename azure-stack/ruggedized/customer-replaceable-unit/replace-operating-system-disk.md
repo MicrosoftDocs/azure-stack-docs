@@ -25,7 +25,7 @@ in a Scale Unit node.
 
 2.  Review Handling precautions.
 
-3.  Required knowledge for working with Scale Unit nodes in a Tactical
+3.  Required knowledge for working with Scale Unit nodes in a Ruggedized
 Cloud
 Appliance if you are working with a Scale Unit node.
 

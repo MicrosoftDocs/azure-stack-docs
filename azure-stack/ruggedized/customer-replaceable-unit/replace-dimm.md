@@ -28,7 +28,7 @@ Use the following procedure to replace a DIMM.
 3.  Review
 
     -   Required knowledge for working with Scale Unit nodes in a
-        Tactical Cloud
+        Ruggedized Cloud
         Appliance if you are working with a Scale Unit node
 
     -   Required knowledge for working with the Hardware Lifecycle

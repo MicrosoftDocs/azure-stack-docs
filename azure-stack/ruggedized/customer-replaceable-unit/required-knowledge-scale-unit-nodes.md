@@ -1,6 +1,6 @@
 ---
-title: Required knowledge for working with Scale Unit nodes in a Tactical Cloud Appliance
-description: Learn about the required knowledge for working with Scale Unit nodes in a Tactical Cloud Appliance
+title: Required knowledge for working with Scale Unit nodes in a Ruggedized Cloud Appliance
+description: Learn about the required knowledge for working with Scale Unit nodes in a Ruggedized Cloud Appliance
 author: PatAltimore
 
 ms.topic: how-to
@@ -14,7 +14,7 @@ ms.lastreviewed:
 
 ---
 
-# Required knowledge for working with Scale Unit nodes in a Tactical Cloud Appliance
+# Required knowledge for working with Scale Unit nodes in a Ruggedized Cloud Appliance
 
 To complete FRU procedures, you must be familiar with and able to
 access the following concepts, guides, and web sites.
@@ -54,11 +54,11 @@ removing](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_is
 components](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/installing-and-removing-system-components?guid=guid-5a5943c4-fe26-4faa-a10c-2afa4c1993ff&lang=en-us)
 section.
 
-## Microsoft Azure Stack Hub Tactical Cloud Appliance Service Manual
+## Microsoft Azure Stack Hub Ruggedized Cloud Appliance Service Manual
 
-The Microsoft Azure Stack Hub Tactical Cloud Appliance Service Manual
+The Microsoft Azure Stack Hub Ruggedized Cloud Appliance Service Manual
 contains instructions for removing Scale Unit node servers from the
-Tracewell Tactical Pods.
+Tracewell Ruggedized Pods.
 
 ## Dell EMC PowerEdge iDRAC
 
