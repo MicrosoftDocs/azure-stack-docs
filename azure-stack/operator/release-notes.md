@@ -421,5 +421,5 @@ After the installation of this update, install any applicable hotfixes.
 ::: moniker-end
 
 ::: moniker range="<azs-2002"
-You can access older versions of Azure Stack Hub release notes in the table of contents on the left side, under [**Resources > Archive**](./relnotearchive/release-notes-1910.md). These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
+You can access older versions of Azure Stack Hub release notes in the table of contents on the left side, under [Resources > Release notes archive](./relnotearchive/release-notes-1910.md). These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end
