@@ -4,7 +4,7 @@ description: Learn how to enable the cross-platform command-line interface (CLI)
 author: mattbriggs
 
 ms.topic: article
-ms.date: 12/16/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.lastreviewed: 05/16/2019
 

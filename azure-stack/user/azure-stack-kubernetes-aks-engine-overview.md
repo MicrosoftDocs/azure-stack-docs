@@ -4,7 +4,7 @@ description: Learn how to use the AKS engine command-line tool to deploy and man
 author: mattbriggs
 
 ms.topic: article
-ms.date: 12/16/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 09/02/2020
