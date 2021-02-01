@@ -4,12 +4,12 @@ description: This topic provides step-by-step instructions on how to use Windows
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: how-to
-ms.date: 01/29/2021
+ms.date: 02/01/2021
 ---
 
 # Manage tenant virtual networks
 
->Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+>Applies to: Azure Stack HCI, version 20H2; Windows Server 2019; Windows Server 2016
 
 This topic provides step-by-step instructions on how to use Windows Admin Center to create, update, and delete Hyper-V Network Virtualization (HNV) virtual networks after you have deployed Software Defined Networking (SDN).
 
@@ -69,7 +69,7 @@ You can update virtual network address prefixes, manage virtual network peering,
 1. Select the **Inventory** tab, select a virtual network, and then select **Settings**.
 1. On the **General** tab, you can:
     - Remove existing address prefixes or add new ones.
-    - Configure peering with another virtual network. To learn more, see [Manage virtual network peering]().
+    - Configure peering with another virtual network.
     - Add a BGP router to the virtual network. To do so, you need to provide the BGP router name and Autonomous System Number (ASN) number.
     - Add one or more BGP peers for the BGP router. To do so, you need to provide each BGP peer name, and the ASN number for each BGP peer.
 
