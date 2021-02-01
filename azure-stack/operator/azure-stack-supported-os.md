@@ -4,7 +4,7 @@ titleSuffix: Azure Stack
 description: Learn which guest operating systems can be used on Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 12/15/2020
+ms.date: 02/01/2021
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/06/2019
@@ -50,9 +50,17 @@ Linux distributions listed as available in Azure Stack Hub Marketplace include t
 
 | Distribution | Description | Publisher | Azure Stack Hub Marketplace |
 | --- | --- | --- | --- |
-| CentOS-based 6.9 | 64-bit | Rogue Wave | Yes |
+| CentOS-based 8.0 | 64-bit | Rogue Wave | Yes |
+| CentOS-based 7.8 | 64-bit | Rogue Wave | Yes |
+| CentOS-based 7.7 LVM | 64-bit | Rogue Wave | Yes |
+| CentOS-based 7.7 | 64-bit | Rogue Wave | Yes |
+| CentOS-based 7.6 | 64-bit | Rogue Wave | Yes |
 | CentOS-based 7.5 | 64-bit | Rogue Wave | Yes |
+| CentOS-based 7.5 LVM | 64-bit | Rogue Wave | Yes |
+| CentOS-based 7.4 | 64-bit | Rogue Wave | Yes |
 | CentOS-based 7.3 | 64-bit | Rogue Wave | Yes |
+| CentOS-based 6.9 | 64-bit | Rogue Wave | Yes |
+| CentOS-based 6.10 | 64-bit | Rogue Wave | Yes |
 | ClearLinux | 64-bit | ClearLinux.org | Yes |
 | CoreOS Linux (Stable) |  64-bit | CoreOS | Yes |
 | Debian 8 "Jessie" | 64-bit | credativ |  Yes |
@@ -64,6 +72,7 @@ Linux distributions listed as available in Azure Stack Hub Marketplace include t
 | Ubuntu 14.04-LTS | 64-bit | Canonical | Yes |
 | Ubuntu 16.04-LTS | 64-bit | Canonical | Yes |
 | Ubuntu 18.04-LTS | 64-bit | Canonical | Yes |
+| Ubuntu Server 20.04 LTS | 64-bit | Canonical | Yes |
 
 For Red Hat Enterprise Linux support information, see [Red Hat and Azure Stack Hub: Frequently Asked Questions](https://access.redhat.com/articles/3413531).
 
