@@ -749,6 +749,8 @@
               href: ../user/azure-stack-vpn-gateway-about-vpn-gateways.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
             - name: Configure IPSec/IKE connection policies
               href: ../user/azure-stack-vpn-s2s.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Virtual network peering
+            href: ../user/virtual-network-peering.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: Connect to Azure using ExpressRoute
             href: ../operator/azure-stack-connect-expressroute.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json  
           - name: VPN gateway settings
