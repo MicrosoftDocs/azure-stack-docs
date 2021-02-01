@@ -735,7 +735,7 @@
     - name: Deploy foundational patterns
       items:
       - name: Deploy foundational patterns
-        href: deploy-foundational-patterns.md
+        href: ../user/deploy-foundational-patterns.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Networking patterns
         items:
         - name: Use third-party NVAs (Fortinet Fortigate NVA)
