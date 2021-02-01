@@ -6,6 +6,8 @@
     href: overview.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md
+  - name: Compare to Azure Stack Hub
+    href: concepts/compare-azure-stack-hub.md
   - name: Release information
     href: release-information.md
   - name: Release notes
@@ -26,10 +28,6 @@
     href: deploy/operating-system.md
   - name: Create a cluster
     href: deploy/create-cluster.md
-  - name: Set up a cluster witness
-    href: deploy/witness.md
-  - name: Deploy an SDN infrastructure
-    href: deploy/sdn-express.md
   - name: Migrate to new hardware
     href: deploy/migrate-cluster-new-hardware.md
   - name: Migrate on same hardware
@@ -44,12 +42,14 @@
       href: deploy/create-cluster-powershell.md
   - name: Deploy workloads
     items:
-    - name: Deploy VDI
-      href: deploy/deploy-vdi.md
-    - name: Deploy SQL Server
-      href: deploy/deploy-sql-server-workload.md
-    - name: Deploy trusted enterprise virtualization
-      href: deploy/deploy-trusted-enterprise-virtualization.md
+    - name: Branch office and edge
+      href: deploy/branch-office-edge.md
+    - name: Virtual desktop infrastructure
+      href: deploy/virtual-desktop-infrastructure.md
+    - name: SQL Server
+      href: deploy/sql-server.md
+    - name: Trusted enterprise virtualization
+      href: deploy/trusted-enterprise-virtualization.md
 - name: Manage
   items:
   - name: Manage VMs
@@ -92,6 +92,8 @@
       href: manage/update-cluster.md
     - name: Monitor the cluster
       href: manage/monitor-cluster.md
+    - name: Set up a cluster witness
+      href: manage/witness.md
     - name: Use Datacenter Firewall
       href: manage/use-datacenter-firewall.md
     - name: Use DISKSPD to test workloads
@@ -100,8 +102,6 @@
       href: manage/add-cluster.md
     - name: Take a server offline for maintenance
       href: manage/maintain-servers.md
-    - name: Manage Azure registration
-      href: manage/manage-azure-registration.md
     - name: Change languages
       href: manage/languages.md
     - name: Change privacy settings
@@ -110,10 +110,16 @@
       href: manage/validate-qos.md
     - name: Troubleshoot CredSSP
       href: manage/troubleshoot-credssp.md
+  - name: Manage SDN
+    items:
+    - name: Deploy an SDN infrastructure
+      href: manage/sdn-express.md
   - name: Manage Azure services
     items:
     - name: Register Windows Admin Center with Azure
       href: manage/register-windows-admin-center.md
+    - name: Manage cluster registration with Azure
+      href: manage/manage-azure-registration.md
     - name: Use Azure portal
       href: manage/azure-portal.md
     - name: Monitor with Azure Monitor

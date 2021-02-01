@@ -573,7 +573,7 @@ Set-AzureRMCurrentStorageAccount `
 
 # Create a storage container to store the VM image
 $containerName = 'osdisks'
-$container = New-AzureRMureStorageContainer `
+$container = New-AzureStorageContainer `
   -Name $containerName `
   -Permission Blob
 

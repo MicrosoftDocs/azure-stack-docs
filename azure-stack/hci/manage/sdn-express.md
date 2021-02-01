@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 01/16/2021
+ms.date: 02/01/2021
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -24,13 +24,13 @@ Before you begin SDN deployment, plan out and configure your physical and host n
 
 - [Physical network requirements](../concepts/physical-network-requirements.md)
 - [Host network requirements](../concepts/host-network-requirements.md)
-- [Create a cluster using Windows Admin Center](create-cluster.md)
-- [Create a cluster using Windows PowerShell](create-cluster-powershell.md)
+- [Create a cluster using Windows Admin Center](../deploy/create-cluster.md)
+- [Create a cluster using Windows PowerShell](../deploy/create-cluster-powershell.md)
 - [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md)
 
 You do not have to deploy all SDN components. See the [Phased deployment](../concepts/plan-software-defined-networking-infrastructure.md#phased-deployment) section of [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md) to determine which infrastructure components you need, and then run the scripts accordingly.
 
-Make sure all host servers have the Azure Stack HCI operating system installed. See [Deploy the Azure Stack HCI operating system](operating-system.md) on how to do this.
+Make sure all host servers have the Azure Stack HCI operating system installed. See [Deploy the Azure Stack HCI operating system](../deploy/operating-system.md) on how to do this.
 
 ## Requirements
 

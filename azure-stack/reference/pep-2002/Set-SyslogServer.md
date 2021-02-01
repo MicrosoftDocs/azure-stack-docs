@@ -1,6 +1,6 @@
 ---
 title: Set-SyslogServer
-description: Reference for PowerShell Azure Stack privileged endpoint - Close-PrivilegedEndpoint
+description: Reference for PowerShell Azure Stack privileged endpoint - Set-SyslogServer
 author: mattbriggs
 
 ms.topic: reference
