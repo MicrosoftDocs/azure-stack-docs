@@ -4,12 +4,12 @@ description: This topic provides step-by-step instructions on how to use Windows
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: how-to
-ms.date: 01/29/2021
+ms.date: 02/02/2021
 ---
 
 # Manage tenant logical networks
 
->Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+>Applies to: Azure Stack HCI, version 20H2; Windows Server 2019; Windows Server 2016
 
 This topic provides step-by-step instructions on how to use Windows Admin Center to create, update, and delete logical networks after you have deployed Network Controller. A Software Defined Networking (SDN) logical network is a traditional VLAN-based network.
 
@@ -76,7 +76,7 @@ You can change the network virtualization setting for a logical network.
 :::image type="content" source="./media/tenant-logical-networks/change-logical-network-setting.png" alt-text="The Enable network virtualization checkbox option of a logical network in Windows Admin Center." lightbox="./media/tenant-logical-networks/change-logical-network-setting.png":::
 
 1. Under **Tools**, scroll down to the **Networking** area, and select **Logical networks**.
-1. Select the **Inventory** tab, select the virtual network, and then select **Settings**.
+1. Select the **Inventory** tab, select the logical network, and then select **Settings**.
 1. If you plan to deploy virtual networks on top of the logical network, under the logical network name, select the **Enable network virtualization** checkbox, and then select **Submit**.
 
 ## Delete a logical network
