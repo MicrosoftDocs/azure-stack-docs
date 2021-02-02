@@ -26,7 +26,7 @@ Use the following steps in Windows Admin Center to create a logical network.
 1. In the **Logical networks** pane, type a name for the logical network.
 1. Under **Logical subnet**, select **Add**.
 
-    :::image type="content" source="./media/tenant-logical-networks/create-logical-network-subnet.png" alt-text="The Logical subnet pane in Windows Admin Center." lightbox="./media/tenant-logical-networks/create-logical-network-subnet.png":::
+    :::image type="content" source="./media/tenant-logical-networks/create-logical-network-subnet.png" alt-text="Screenshot of Windows Admin Center home screen showing the Logical subnet pane." lightbox="./media/tenant-logical-networks/create-logical-network-subnet.png":::
 
 1. In the **Logical subnet** pane, type a name for the subnet, and then provide the following information:
     1. A **VLAN ID** for the network.
@@ -46,9 +46,9 @@ Use the following steps in Windows Admin Center to create a logical network.
 ## Get a list of logical networks
 You can easily see all of the logical networks in your cluster.
 
-:::image type="content" source="./media/tenant-logical-networks/list-logical-networks.png" alt-text="The Inventory pane of Logical networks in Windows Admin Center." lightbox="./media/tenant-logical-networks/list-logical-networks.png":::
+:::image type="content" source="./media/tenant-logical-networks/list-logical-networks.png" alt-text="Screenshot of Windows Admin Center home screen showing the Inventory pane of Logical networks." lightbox="./media/tenant-logical-networks/list-logical-networks.png":::
 
-1. On the Windows Admin Center home screen, under **All Connections**, select the cluster on which you want to view logical networks.
+1. On the Windows Admin Center home screen, under **All connections**, select the cluster on which you want to view logical networks.
 1. Under **Tools**, scroll down to the **Networking** area, and select **Logical networks**.
 1. The **Inventory** tab lists all logical networks available on the cluster, and provides commands to manage individual logical networks. You can:
     - View the list of logical networks.
@@ -59,7 +59,7 @@ You can easily see all of the logical networks in your cluster.
 ## View logical network details
 You can view detailed information for a specific logical network from its dedicated page.
 
-:::image type="content" source="./media/tenant-logical-networks/view-logical-network-details.png" alt-text="The details view of a logical network in Windows Admin Center." lightbox="./media/tenant-logical-networks/view-logical-network-details.png":::
+:::image type="content" source="./media/tenant-logical-networks/view-logical-network-details.png" alt-text="Screenshot of Windows Admin Center showing the details view of a logical network." lightbox="./media/tenant-logical-networks/view-logical-network-details.png":::
 
 1. Under **Tools**, scroll down to the **Networking** area, and select **Logical networks**.
 1. Select the **Inventory** tab, and then select the logical network that you want to view details on. On the subsequent page, you can:
@@ -73,7 +73,7 @@ You can view detailed information for a specific logical network from its dedica
 ## Change a logical network's virtualization setting
 You can change the network virtualization setting for a logical network.
 
-:::image type="content" source="./media/tenant-logical-networks/change-logical-network-setting.png" alt-text="The Enable network virtualization checkbox option of a logical network in Windows Admin Center." lightbox="./media/tenant-logical-networks/change-logical-network-setting.png":::
+:::image type="content" source="./media/tenant-logical-networks/change-logical-network-setting.png" alt-text="Screenshot of Windows Admin Center showing the Enable network virtualization checkbox option of a logical network." lightbox="./media/tenant-logical-networks/change-logical-network-setting.png":::
 
 1. Under **Tools**, scroll down to the **Networking** area, and select **Logical networks**.
 1. Select the **Inventory** tab, select the logical network, and then select **Settings**.
@@ -82,7 +82,7 @@ You can change the network virtualization setting for a logical network.
 ## Delete a logical network
 You can delete a logical network if you no longer need it.
 
-:::image type="content" source="./media/tenant-logical-networks/delete-logical-network.png" alt-text="The Delete confirmation prompt to delete a logical network in Windows Admin Center." lightbox="./media/tenant-logical-networks/delete-logical-network.png":::
+:::image type="content" source="./media/tenant-logical-networks/delete-logical-network.png" alt-text="Screenshot of Windows Admin Center showing the Delete confirmation prompt to delete a logical network." lightbox="./media/tenant-logical-networks/delete-logical-network.png":::
 
 1. Under **Tools**, scroll down to the **Networking** area, and select **Logical networks**.
 1. Select the **Inventory** tab, select the virtual network, and then select **Delete**.
@@ -91,4 +91,5 @@ You can delete a logical network if you no longer need it.
 
 ## Next steps
 For more information, see also:
+- [Manage tenant virtual networks](tenant-virtual-networks.md)
 - [Software Defined Networking (SDN) in Azure Stack HCI](../concepts/software-defined-networking.md)
