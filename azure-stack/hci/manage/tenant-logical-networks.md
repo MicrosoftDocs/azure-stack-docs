@@ -35,8 +35,8 @@ Use the following steps in Windows Admin Center to create a logical network.
     1. The **DNS** server address, if needed.
     1. Select the **Public Logical network** checkbox if the logical network is to provide connectivity for external clients.
 1. Under **Logical subnet IP Pools**, select **Add** and then provide the following information:
-    1. A logical **IP Pool Name**
-    1. A **Start IP address**
+    1. A logical **IP Pool Name**.
+    1. A **Start IP address**.
     1. An **End IP address**. The start and end IP addresses must be within the address prefix provided for the subnet.
     1. Select **Add**.
 1. On the **Logical Subnet** page, select **Add**.
