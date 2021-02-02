@@ -734,6 +734,8 @@
           href: ../user/azure-stack-dev-start-howto-vm-nodejs.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Deploy foundational patterns
       items:
+      - name: Deploy foundational patterns
+        href: ../user/deploy-foundational-patterns.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Networking patterns
         items:
         - name: Use third-party NVAs (Fortinet Fortigate NVA)
@@ -744,16 +746,16 @@
             href: ../user/azure-stack-network-howto-vnet-to-onprem.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: VNet to VNet connectivity between Azure Stack Hub instances
             href: ../user/azure-stack-network-howto-vnet-to-vnet-stacks.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Use RRAS
-        items:
-        - name: VNet to VNet connectivity with RRAS
-          href: ../user/azure-stack-network-howto-vnet-peering.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-        - name: Set up multiple site-to-site VPN tunnels
-          href: ../user/network-howto-vpn-tunnel.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-        - name: Create a VPN tunnel (GRE)
-          href: ../user/network-howto-vpn-tunnel-gre.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-        - name: Create a VPN tunnel (IPSEC)
-          href: ../user/network-howto-vpn-tunnel-ipsec.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        - name: Use RRAS
+          items:
+          - name: VNet to VNet connectivity with RRAS
+            href: ../user/azure-stack-network-howto-vnet-peering.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Set up multiple site-to-site VPN tunnels
+            href: ../user/network-howto-vpn-tunnel.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Create a VPN tunnel (GRE)
+            href: ../user/network-howto-vpn-tunnel-gre.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Create a VPN tunnel (IPSEC)
+            href: ../user/network-howto-vpn-tunnel-ipsec.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: F5 load balancer
         href: ../user/network-howto-f5.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Connect to external storage
