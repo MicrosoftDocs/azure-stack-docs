@@ -15,11 +15,14 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 |         |            |
 | ------- | ---------- |
 | [Get-AksHciCluster](Get-AksHciCluster.md) | List deployed clusters including the Azure Kubernetes Service host. |
+| [Get-AksHciClusterUpgrades](Get-AksHciClusterUpgrades.md) | Get the available upgrades for an Azure Kubernetes Service cluster. |
 | [Get-AksHciConfig](Get-AksHciConfig.md) | List the current configuration settings for the Azure Kubernetes Service host. |
 | [Get-AksHciCredential](Get-AksHciCredential.md) | Access your cluster using kubectl. |
+| [Get-AksHciEventLog](Get-AksHciEventLog.md) | Gets all the event logs from the AKS HCI PowerShell module. |
 | [Get-AksHciKubernetesVersion](Get-AksHciKubernetesVersion.md) | List available version for creating managed Kubernetes cluster. |
 | [Get-AksHciLogs](Get-AksHciLogs.md) | Create a zipped folder with logs from all your pods. |
 | [Get-AksHciUpdates](Get-AksHciUpdatesn.md) | List available updates for Azure Kubernetes Service on Azure Stack HCI. |
+| [Get-AksHciVersion](Get-AksHciVersion.md) | Get the current version of Azure Kubernetes Service on Azure Stack HCI. |
 | [Get-AksHciVmSize](Get-AksHciVmSize.md) | List supported VM sizes. |
 | [Initialize-AksHciNode](Initialize-AksHciNode.md) | Run checks on every physical node to see if all requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI. |
 | [Install-AksHci](Install-AksHci.md) | Install the Azure Kubernetes Service on Azure Stack HCI agents/services and host. |
