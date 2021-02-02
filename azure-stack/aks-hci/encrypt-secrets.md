@@ -39,7 +39,7 @@ Once you deploy a new cluster with the `-enableSecretsEncryption` parameter, you
 To simplify application deployment on Kubernetes clusters, review the [documentation and scripts](https://github.com/microsoft/AKS-HCI-Apps) that are available.
 
 - To set up logging using Elasticsearch, Fluent Bit and Kibana, follow the steps to [install the tools and set up logging](https://github.com/microsoft/AKS-HCI-Apps/tree/main/Logging)
-- To use the monitoring tool Prometheus, follow the steps to [install Prometheus in a Kubernetes cluster](https://github.com/microsoft/AKS-HCI-Apps/tree/main/Monitoring)
+- To use the monitoring tool Prometheus, follow the steps to [install Prometheus in a Kubernetes cluster](https://github.com/microsoft/AKS-HCI-Apps/tree/main/Monitoring#certs-and-keys-monitoring)
 
 > [!NOTE]
 > You can find the logs on the control plane node under `/var/log/pods`.

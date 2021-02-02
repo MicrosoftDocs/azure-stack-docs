@@ -10,7 +10,7 @@ Locale: en-US
 
 Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 
-## Azure Kubernetes Service on Azure Stack HCI cmdlets
+## AksHci cmdlets
 
 |         |            |
 | ------- | ---------- |
