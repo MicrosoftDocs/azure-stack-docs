@@ -47,6 +47,8 @@ The following requirements apply to an Azure Stack HCI cluster as well as a Wind
  - Verify that you have disabled IPv6 on all network adapters. 
 
  - For a successful deployment, the Azure Stack HCI cluster nodes and the Kubernetes cluster VMs must have external internet connectivity.
+ 
+ - Make sure all subnets you define for the cluster are routable amongst each other and to the internet.
   
  - Make sure that there is network connectivity between Azure Stack HCI hosts and the tenant VMs.
 
