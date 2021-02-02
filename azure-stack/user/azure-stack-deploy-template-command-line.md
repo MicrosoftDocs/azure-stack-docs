@@ -4,7 +4,7 @@ description: Learn how to use the Azure cross-platform command-line interface (C
 author: mattbriggs
 
 ms.topic: article
-ms.date: 12/16/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: unknown
 ms.lastreviewed: 05/09/2019

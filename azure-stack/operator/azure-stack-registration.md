@@ -295,7 +295,7 @@ Connected environments can access the internet and Azure. For these environments
 
 1. To register the Azure Stack Hub resource provider with Azure, start PowerShell ISE as an administrator and use the following PowerShell cmdlets with the **EnvironmentName** parameter set to the appropriate Azure subscription type (see parameters below).
 
-2. Add the Azure account that you used to register AzureRMure Stack Hub. To add the account, run the **Add-AzureRMAccount** cmdlet. You're prompted to enter your Azure account credentials and you may have to use two-factor authentication based on your account's configuration.
+2. Add the Azure account that you used to register Azure Stack Hub. To add the account, run the **Add-AzureRMAccount** cmdlet. You're prompted to enter your Azure account credentials and you may have to use two-factor authentication based on your account's configuration.
 
    ```powershell  
    Connect-AzureRMAccount -Environment "<environment name>"

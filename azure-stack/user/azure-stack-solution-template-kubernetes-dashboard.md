@@ -3,7 +3,7 @@ title: Access the Kubernetes Dashboard in Azure Stack Hub
 description: Learn how to access the Kubernetes Dashboard in Azure Stack Hub  
 author: mattbriggs  
 ms.topic: article 
-ms.date: 12/16/2020
+ms.date: 2/1/2021
 ms.author: mabrigg 
 ms.reviewer: waltero 
 ms.lastreviewed: 06/18/2019

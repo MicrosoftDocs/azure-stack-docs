@@ -4,7 +4,7 @@ description: Learn how to use a Linux machine in your Azure Stack Hub to host th
 author: mattbriggs
 
 ms.topic: article
-ms.date: 10/1/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 10/1/2020

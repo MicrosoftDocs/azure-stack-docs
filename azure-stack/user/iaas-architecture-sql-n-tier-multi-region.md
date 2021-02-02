@@ -4,7 +4,7 @@ description: Learn how to run an N-tier application in multiple Azure Stack Hub 
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 12/16/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
