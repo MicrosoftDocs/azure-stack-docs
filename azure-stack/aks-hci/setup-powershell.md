@@ -25,13 +25,11 @@ Before getting started, make sure you have satisfied all the prerequisites on th
    > [!IMPORTANT]
    > When removing Azure Kubernetes Service on Azure Stack HCI, see [Remove Azure Kubernetes Service on Azure Stack HCI](#remove-azure-kubernetes-service-on-azure-stack-hci) and carefully follow the instructions. 
 
-## Step 1: Download and install the AksHci PowerShell module
+## Step 1: Install the AksHci PowerShell module
 
-Download the `AKS-HCI-Public-Preview-Dec-2020` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module.
-
-If you have previously installed Azure Kubernetes Service on Azure Stack HCI using PowerShell or Windows Admin Center, there are two installation flows for the new PowerShell module:
- - Perform a clean installation of the PowerShell module, so you start with a clean system and your previously deployed workloads are removed. To perform a clean installation, go to Step 1.1.
- - Upgrade the PowerShell module if you want to keep your system and workloads in place. To upgrade the PowerShell module, go to Step 1.2.
+   ```powershell
+   Install-Module -Name AksHci -RequiredVersion 0.2.15 -Repository PSGallery
+   ```
 
 ### Step 1.1: Clean install of the AksHci PowerShell module
 
@@ -40,25 +38,7 @@ Run the following command before proceeding.
    Uninstall-AksHci
    ```
 
-**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.UI, MOC, and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once the existing directories are deleted, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`). Then, run the following commands.
-
-   ```powershell
-   Import-Module AksHci
-   ```
-
-Close all PowerShell windows again and reopen an administrative session and proceed to Step 1.3 - Validate upgraded PowerShell module.
-
-### Step 1.2: Upgrade the AksHci PowerShell module
-
-**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.UI, MOC, and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once these directories are removed, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`). Then, run the following commands.
-
-   ```powershell
-   Import-Module AksHci
-   ```
-  
-After running the above commands, close all PowerShell windows and reopen an administrative session to validate PowerShell module upgrade as detailed below and then run the `Update-AksHci` command as instructed later in the document.
-
-### Step 1.3: Validate upgraded PowerShell module
+### Step 1.2: Validate upgraded PowerShell module
 
 **Close all PowerShell windows** and reopen a new administrative session to check if you have the latest version of the PowerShell module.  
 
@@ -70,28 +50,31 @@ After running the above commands, close all PowerShell windows and reopen an adm
 ```
 CommandType     Name                                               Version    Source
 -----------     ----                                               -------    ------
-Alias           Initialize-AksHciNode                              0.2.12     AksHci
-Function        Get-AksHciCluster                                  0.2.12     AksHci
-Function        Get-AksHciConfig                                   0.2.12     AksHci
-Function        Get-AksHciCredential                               0.2.12     AksHci
-Function        Get-AksHciKubernetesVersion                        0.2.12     AksHci
-Function        Get-AksHciLogs                                     0.2.12     AksHci
-Function        Get-AksHciUpdates                                  0.2.12     AksHci
-Function        Get-AksHciVersion                                  0.2.12     AksHci
-Function        Get-AksHciVmSize                                   0.2.12     AksHci
-Function        Install-AksHci                                     0.2.12     AksHci
-Function        Install-AksHciAdAuth                               0.2.12     AksHci
-Function        Install-AksHciArcOnboarding                        0.2.12     AksHci
-Function        New-AksHciCluster                                  0.2.12     AksHci
-Function        Remove-AksHciCluster                               0.2.12     AksHci
-Function        Restart-AksHci                                     0.2.12     AksHci
-Function        Set-AksHciClusterNodeCount                         0.2.12     AksHci
-Function        Set-AksHciConfig                                   0.2.12     AksHci
-Function        Uninstall-AksHci                                   0.2.12     AksHci
-Function        Uninstall-AksHciAdAuth                             0.2.12     AksHci
-Function        Uninstall-AksHciArcOnboarding                      0.2.12     AksHci
-Function        Update-AksHci                                      0.2.12     AksHci
-Function        Update-AksHciCluster                               0.2.12     AksHci
+Alias           Initialize-AksHciNode                              0.2.15     akshci
+Function        Get-AksHciCluster                                  0.2.15     akshci
+Function        Get-AksHciClusterUpgrades                          0.2.15     akshci
+Function        Get-AksHciConfig                                   0.2.15     akshci
+Function        Get-AksHciCredential                               0.2.15     akshci
+Function        Get-AksHciEventLog                                 0.2.15     akshci
+Function        Get-AksHciKubernetesVersion                        0.2.15     akshci
+Function        Get-AksHciLogs                                     0.2.15     akshci
+Function        Get-AksHciUpdates                                  0.2.15     akshci
+Function        Get-AksHciVersion                                  0.2.15     akshci
+Function        Get-AksHciVmSize                                   0.2.15     akshci
+Function        Install-AksHci                                     0.2.15     akshci
+Function        Install-AksHciAdAuth                               0.2.15     akshci
+Function        Install-AksHciArcOnboarding                        0.2.15     akshci
+Function        New-AksHciCluster                                  0.2.15     akshci
+Function        New-AksHciNetworkSetting                           0.2.15     akshci
+Function        Remove-AksHciCluster                               0.2.15     akshci
+Function        Restart-AksHci                                     0.2.15     akshci
+Function        Set-AksHciClusterNodeCount                         0.2.15     akshci
+Function        Set-AksHciConfig                                   0.2.15     akshci
+Function        Uninstall-AksHci                                   0.2.15     akshci
+Function        Uninstall-AksHciAdAuth                             0.2.15     akshci
+Function        Uninstall-AksHciArcOnboarding                      0.2.15     akshci
+Function        Update-AksHci                                      0.2.15     akshci
+Function        Update-AksHciCluster                               0.2.15     akshci
 ```
 
 ## Step 2: Prepare your machine(s) for deployment
@@ -106,196 +89,25 @@ Open PowerShell as an administrator and run the following command.
 
 When the checks are finished, you'll see "Done" displayed in green text.
 
-## Step 3: Configure your deployment
+## Step 3: Create a virtual network
+
+To create a virtual network for the nodes in your deployment to use, create an environment variable with the following command. This will be used later to configure a deployment that uses static IP.
+
+   ```powershell
+   $vnet = New-AksHciNetworkSetting -vnetName "Default Switch" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipaddressprefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsservers "172.16.0.1"
+   ```
+
+
+## Step 4: Configure your deployment
 
 Set the configuration settings for the Azure Kubernetes Service host. **If you're deploying on a 2-4 node Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster, you must specify the `imageDir` and `cloudConfigLocation` parameters.** For a single node Windows Server 2019 Datacenter, all parameters are optional and set to their default values. However, for optimal performance, **we recommend using a 2-4 node Azure Stack HCI cluster deployment.**
 
 Configure your deployment with the following command.
 
-   ```powershell
-   Set-AksHciConfig [-imageDir <String>]
-                    [-cloudConfigLocation <String>]
-                    [-nodeConfigLocation <String>]
-                    [-vnetName <String>]
-                    [-controlPlaneVmSize <VmSize>]
-                    [-loadBalancerVmSize <VmSize>]
-                    [-sshPublicKey <String>]
-                    [-vipPoolStartIp <String>]
-                    [-vipPoolEndIp <String>]
-                    [-macPoolStart <String>]
-                    [-macPoolEnd <String>]
-                    [-vlanID <int>]
-                    [-kvaLoadBalancerType {unstacked_haproxy, stacked_kube_vip}]
-                    [-kvaControlPlaneEndpoint <String>]
-                    [-proxyServerHTTP <String>]
-                    [-proxyServerHTTPS <String>]
-                    [-proxyServerNoProxy <String>]
-                    [-proxyServerCredential <PSCredential>]
-                    [-cloudServiceCidr <String>]
-                    [-workingDir <String>]
-                    [-version <String>]
-                    [-vnetType <String>]
-                    [-nodeAgentPort <int>]
-                    [-nodeAgentAuthorizerPort <int>]
-                    [-clusterRoleName <String>]
-                    [-cloudLocation <String>]
-                    [-skipHostLimitChecks]
-                    [-insecure]
-                    [-skipUpdates]
-                    [-forceDnsReplication]
 
+   ```powershell
+   Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet
    ```
-
-### Example
-
-To deploy on a 2-4 node cluster with DHCP networking:
-
-   ```powershell
-   Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config
-   ```
-
-To deploy with a virtual IP pool:
-
-   ```powershell
-   Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vipPoolStartIp 10.0.0.20 -vipPoolEndIp 10.0.0.80
-   ```
-
-To deploy with `stacked_kube_vip` load balancer:
-
-   ```powershell
-   Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -kvaLoadBalancerType stacked_kube_vip -kvaControlPlaneEndpoint 10.0.1.10
-   ```
-
-To deploy with a proxy server:
-
-   ```powershell
-   Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -proxyServerHttp "http://proxy.contoso.com:8888" -proxyServerHttps "http://proxy.contoso.com:8888" -proxyServerNoProxy "localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16,10.231.110.0/24,10.68.237.0/24" -proxyServerCredential $credential
-   ```  
-
-### Optional parameters
-
-`-imageDir`
-
-The path to the directory where Azure Kubernetes Service on Azure Stack HCI will store its VHD images. Defaults to `%systemdrive%\AksHciImageStore` for single node deployments. *For multi-node deployments, this parameter must be specified*. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore` or an SMB share such as `\\FileShare\ImageStore`.
-
-`-cloudConfigLocation`
-
-The location where the cloud agent will store its configuration. Defaults to `%systemdrive%\wssdcloudagent` for single node deployments. The location can be the same as the path of `-imageDir` above. For *multi-node deployments, this parameter must be specified*. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore` or an SMB share such as `\\FileShare\ImageStore`. The location needs to be on a highly available share so that the storage will always be accessible.
-
-`-nodeConfigLocation`
-
-The location where the node agents will store their configuration. Every node has a node agent, so its configuration is local to it. This location must be a local path. Defaults to `%systemdrive%\programdata\wssdagent` for all deployments.
-
-`-vnetName`
-
-The name of the virtual switch to connect the virtual machines to. If you already have an external switch on the host, you should pass the name of the switch here. The switch will be created if it does not exist. Defaults to “External” name.  
-
-`-controlPlaneVmSize`
-
-The size of the VM to create for the control plane. To get a list of available VM sizes, run `Get-AksHciVmSize`.
-
-`-loadBalancerVmSize`
-
-The size of the VM to create for the Load Balancer VMs. To get a list of available VM sizes, run `Get-AksHciVmSize`.
-
-`-sshPublicKey`
-
-Path to an SSH public key file. Using this public key, you will be able to log in to any of the VMs created by the Azure Kubernetes Service on Azure Stack HCI deployment. If you have your own SSH public key, you will pass its location here. If no key is provided, we will look for one under `%systemdrive%\akshci\.ssh\akshci_rsa.pub`. If the file does not exist, an SSH key pair in the above location will be generated and used.
-
-`-vipPoolStartIp`
-
-When using VIP pools for your deployment, this parameter specifies the network start of the pool. You should use VIP pools for long-lived deployments to guarantee that a pool of IP addresses remain consistent. This is useful when you have workloads that always need to be reachable. Default is none.
-
-`-vipPoolEndIp`
-
-When using VIP pools for your deployment, this parameter specifies the network end of the pool. You should use VIP pools for long-lived deployments to guarantee that a pool of IP addresses remain consistent. This is useful when you have workloads that always need to be reachable. Default is none.
-
-`-macPoolStart` 
-
-This is used to specify the start of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (that is, 00, 02, 04, 06...). A typical MAC address can look like: 02:1E:2B:78:00:00. Use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. This is useful if you have a requirement that the VMs have specific MAC addresses. Default is none.
-
-`-macPoolEnd`
-
-This is used to specify the end of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (that is, 00, 02, 04, 06...). The first byte of the address passed as the `-macPoolEnd` should be the same as the first byte of the address passed as the `-macPoolStart`. Use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. This is useful if you have a requirement that the VMs have specific MAC addresses. Default is none.
-
-`-vlanID`
-
-This can be used to specify a network VLAN ID. Azure Kubernetes Service host and Kubernetes cluster VM network adapters will be tagged with the provided VLAN ID. This should be used if there is a specific VLAN ID that needs to be tagged to get the right connectivity. Default is none.
-
-`-kvaLoadBalancerType`
-
-This takes in either `unstacked_haproxy` or `stacked_kube_vip`. `unstacked_haproxy` is the default where a separate load balancer VM is deployed with HAProxy as the Azure Kubernetes Service host's API server endpoint. `stacked_kube_vip`is a load balancer solution, [Kubevip](https://kube-vip.io/), for the Azure Kubernetes Service host. It allows you to specify a static IP address in the host as a floating IP across the control plane nodes to keep the API server highly available through the IP. If this option is chosen, you must specify the static IP address in the `kvaControlPlaneEndpoint` parameter, and no separate load balancer VM is deployed.
-
-`stacked_kube_vip` requires an IP address and is more resource friendly by saving memory, CPU, and deployment time. If you do not have an IP address to use as the floating IP, you should use `unstacked_haproxy`. The latter option requires a load balancer VM. 
-
-`-kvaControlPlaneEndpoint`
-
-This specifies the static IP address to use as the Azure Kubernetes Service Host API server address when the `kvaLoadBalancerType` parameter is set to `stacked_kube_vip`. If `stacked_kube_vip` is used, this parameter must be specified.
-
-`-proxyServerHTTP`
-
-This provides a proxy server URI that should be used by all components that need to reach HTTP endpoints. The URI format includes the URI schema, server address, and port (that is, https://server.com:8888). Default is none.
-
-`-proxyServerHTTPS`
-
-This provides a proxy server URI that should be used by all components that need to reach HTTPS endpoints. The URI format includes the URI schema, server address, and port (that is, https://server.com:8888). Default is none.
-
-`-proxyServerNoProxy`
-
-This is a comma-delimited string of addresses that will be exempt from the proxy. Default value is `localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16`. This excludes  the localhost traffic (localhost, 127.0.0.1), internal Kubernetes service traffic (.svc), the Kubernetes Service CIDR (10.96.0.0/12), and the Kubernetes POD CIDR (10.244.0.0/16) from the proxy server. You can use this parameter to add more subnet ranges or name exemptions. **The settings for this parameter are very important because, if it's not correctly configured, you may unexpectedly route internal Kubernetes cluster traffic to your proxy. This can cause various failures in network communication.**
-
-
-`-proxyServerCredential`
-
-This provides the username and password to authenticate to your HTTP/HTTPS proxy servers. You can use `Get-Credential` to generate a `PSCredential` object to pass to this parameter. Default is none.
-
-`-cloudServiceCidr`
-
-This can be used to provide a static IP/network prefix to be assigned to the MOC CloudAgent service. This value should be provided using the CIDR format. (Example: 192.168.1.2/16). You may want to specify this to ensure that anything important on the network is always accessible because the IP address will not change. Default is none.
-
-`-workingDir`
-
-This is a working directory for the module to use for storing small files. Defaults to `%PROGRAMFILES%\AksHci` and should not be changed for most deployments. We do not recommend changing the default. 
-
-`-version`
-
-The version of Azure Kubernetes Service on Azure Stack HCI that you want to deploy. The default is the latest version. We do not recommend changing the default.
-
-`-vnetType`
-
-The type of virtual switch to connect to or create. This defaults to “External” switch type. We do not recommend changing the default.
-
-`-nodeAgentPort`
-
-The TCP/IP port number that node agents should listen on. Defaults to 45000. We do not recommend changing the default. 
-
-`-nodeAgentAuthorizerPort`
-
-The TCP/IP port number that node agents should use for their authorization port. Defaults to 45001. We do not recommend changing the default.  
-
-`-clusterRoleName`
-
-This specifies the name to use when creating cloud agent as a generic service within the cluster. This defaults to a unique name with a prefix of ca- and a guid suffix (for example: “ca-9e6eb299-bc0b-4f00-9fd7-942843820c26”). We do not recommend changing the default.
-
-`-cloudLocation` 
-
-This parameter provides a custom Microsoft Operated Cloud location name. The default name is "MocLocation". We do not recommend changing the default.
-
-`-skipHostLimitChecks`
-
-Requests the script to skip any checks it does to confirm memory and disk space is available before allowing the deployment to proceed. We do not recommend using this setting.
-
-`-insecure`
-
-Deploys Azure Kubernetes Service on Azure Stack HCI components such as cloud agent and node agent(s) in insecure mode (no TLS secured connections).  We do not recommend using insecure mode in production environments.
-
-`-skipUpdates`
-
-Use this flag if you want to skip any updates available. We do not recommend using this setting.
-
-`-forceDnsReplication`
-
-DNS replication can take up to an hour on some systems. This will cause the deployment to be slow. If you hit this issue, you'll see that the Install-AksHci will be stuck in a loop. To get past this issue, try to use this flag. The `-forceDnsReplication` flag is not a guaranteed fix. If the logic behind the flag fails, the error will be hidden, and the command will carry on as if the flag was not provided. 
 
 ### Reset the Azure Kubernetes Service on Azure Stack HCI configuration
 
@@ -305,7 +117,7 @@ To reset the Azure Kubernetes Service on Azure Stack HCI configuration, run the 
 Set-AksHciConfig
 ```
 
-## Step 4: Start a new deployment
+## Step 5: Start a new deployment
 
 After you've configured your deployment, you must start deployment. This will install the Azure Kubernetes Service on Azure Stack HCI agents/services and the Azure Kubernetes Service host.
 
@@ -335,32 +147,13 @@ Phase           : provisioned
 Ready           : True
 ```
 
-## Step 5: Access your clusters using kubectl
+## Step 6: Access your clusters using kubectl
 
-To access your Azure Kubernetes Service host or Kubernetes cluster using kubectl, run the following command. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl.
-
-```powershell
-Get-AksHciCredential -clusterName <String>
-                     [-outputLocation <String>]
-```
-
-### Example
+To access your Azure Kubernetes Service host using kubectl, run the following command. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl. You can also use this command to access other Kubernetes clusters after they are deployed.
 
 ```powershell
 Get-AksHciCredential -clusterName clustergroup-management
 ```
-
-### Required Parameters
-
-`clusterName`
-
-The name of the cluster.
-
-### Optional Parameters
-
-`outputLocation`
-
-The location where you want the kubeconfig downloaded. Default is `%USERPROFILE%\.kube`.
 
 ## Get logs
 

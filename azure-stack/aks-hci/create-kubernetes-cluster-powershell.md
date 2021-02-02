@@ -25,62 +25,9 @@ After installing your Azure Kubernetes Service host, you are ready to deploy a K
 Open PowerShell as an administrator and run the following command.
 
    ```powershell
-   New-AksHciCluster -clusterName <String>
-                    [-kubernetesVersion <String>]
-                    [-controlPlaneNodeCount <int>]
-                    [-linuxNodeCount <int>]
-                    [-windowsNodeCount <int>]
-                    [-controlPlaneVmSize <VmSize>]
-                    [-loadBalancerVmSize <VmSize>]
-                    [-linuxNodeVmSize <VmSize>]
-                    [-windowsNodeVmSize <VmSize>]
+   New-AksHciCluster -clusterName mycluster
    ```
 
-### Example
-
-   ```powershell
-   New-AksHciCluster -clusterName mynewcluster -kubernetesVersion v1.18.8 -controlPlaneNodeCount 1 -linuxNodeCount 1 -windowsNodeCount 0 
-   ```
-
-### Required parameters
-
-`-clusterName`
-
-The alphanumeric name of your Kubernetes cluster.
-
-### Optional parameters
-
-`-kubernetesVersion`
-
-The version of Kubernetes that you want to deploy. Default is v1.18.8. To get a list of available versions, run `Get-AksHciKubernetesVersion`.
-
-`-controlPlaneNodeCount`
-
-The number of nodes in your control plane. Default is 1.
-
-`-linuxNodeCount`
-
-The number of Linux nodes in your Kubernetes cluster. Default is 1.
-
-`-windowsNodeCount`
-
-The number of Windows nodes in your Kubernetes cluster. Default is 0. You can only deploy Windows nodes if you are running Kubernetes v1.18.8.
-
-`-controlPlaneVmSize`
-
-The size of your control plane VM. Default is Standard_A2_v2. To get a list of available VM sizes, run `Get-AksHciVmSize`.
-
-`-loadBalancerVmSize`
-
-The size of your load balancer VM. Default is Standard_A2_V2. To get a list of available VM sizes, run `Get-AksHciVmSize`.
-
-`-linuxNodeVmSize`
-
-The size of your Linux Node VM. Default is  Standard_K8S3_v1. To get a list of available VM sizes, run `Get-AksHciVmSize`.
-
-`-windowsNodeVmSize`
-
-The size of your Windows Node VM. Default is  Standard_K8S3_v1. To get a list of available VM sizes, run `Get-AksHciVmSize`.
 
 ### Check your deployed clusters
 
@@ -97,29 +44,16 @@ If you need to scale your cluster up or down, you can change the number of contr
 To scale control plane nodes, run the following command.
 
 ```powershell
-Set-AksHciClusterNodeCount –clusterName <String>
-                           -controlPlaneNodeCount <int>
+Set-AksHciClusterNodeCount –name mycluster -controlPlaneNodeCount 2
 ```
 
 To scale the worker nodes, run the following command.
 
 ```powershell
-Set-AksHciClusterNodeCount –clusterName <String>
-                           -linuxNodeCount <int>
-                           -windowsNodeCount <int>
+Set-AksHciClusterNodeCount –name mycluster -linuxNodeCount 3 -windowsNodeCount 1
 ```
 
 The control plane nodes and the worker nodes must be scaled independently.
-
-### Example
-
-```powershell
-Set-AksHciClusterNodeCount –clusterName mynewcluster -controlPlaneNodeCount 3
-```
-
-```powershell
-Set-AksHciClusterNodeCount –clusterName mynewcluster -linuxNodeCount 2 -windowsNodeCount 2 
-```
 
 ## Step 3: Upgrade Kubernetes version
 
@@ -132,8 +66,7 @@ Get-AksHciKubernetesVersion
 To update to the next Kubernetes version, run the following command.
 
 ```powershell
-Update-AksHciCluster -clusterName <String>
-                     [-patch]
+Update-AksHciCluster -name mycluster
 ```
 Every Kubernetes version has a major release, a minor version, and a patch version. For example, in v1.18.6, 1 is the major release, 18 is the minor version, and 6 is the patch version. Over time, AKS-HCI will support one major release, three minor releases, and two patches per minor release for a total of 6 supported versions. However, for this preview release, we support a total of 4 releases - v1.16.10, v1.16.15, v1.17.11, v1.18.8. 
 
@@ -148,58 +81,26 @@ When the parameter `patch` is added while running `Update-AksHciCluster`, the co
 
 In place add-on upgrade updates all the Kubernetes add-ons like CSI that AKS-HCI manages for you. This upgrade does not change the OS version of the node. It also does not change the Kubernetes version.
 
-### Example - Upgrade Kubernetes version to the next minor version
-
-```powershell
-Update-AksHciCluster -clusterName mynewcluster
-```
-
-### Example - Upgrade Kubernetes version to the next patch version
-
-```powershell
-Update-AksHciCluster -clusterName mynewcluster -patch
-```
-
-
 ## Step 4: Access your clusters using kubectl
 
 To access your Kubernetes clusters using kubectl, run the following command. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl.
 
 ```powershell
-Get-AksHciCredential -clusterName <String>
-                     [-outputLocation <String>]
+Get-AksHciCredential -name mycluster
 ```
 
 ### Example
 
 ```powershell
-Get-AksHciCredential -clusterName mynewcluster
+Get-AksHciCredential -clusterName mycluster
 ```
-
-### Required Parameters
-
-`clusterName`
-
-The name of the cluster.
-
-### Optional Parameters
-
-`outputLocation`
-
-The location were you want the kubeconfig downloaded. Default is `%USERPROFILE%\.kube`.
 
 ## Delete a Kubernetes cluster
 
 If you need to delete a Kubernetes cluster, run the following command.
 
 ```powershell
-Remove-AksHciCluster -clusterName
-```
-
-### Example
-
-```powershell
-Remove-AksHciCluster -clusterName mynewcluster
+Remove-AksHciCluster -name mycluster
 ```
 
 ## Get logs

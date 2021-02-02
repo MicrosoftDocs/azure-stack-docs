@@ -1,0 +1,76 @@
+---
+external help file: 
+Module Name: Aks.Hci
+online version: 
+schema: 
+---
+
+# Get-AksHciCredential
+
+## SYNOPSIS
+Access your cluster using kubectl.This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl.
+
+## SYNTAX
+
+```powershell
+Get-AksHciCredential -name <String>
+                    [-outputLocation <String>]
+                    [-adAuth]
+```
+
+## DESCRIPTION
+Access your cluster using kubectl.
+
+## EXAMPLES
+
+### Access your cluster using kubectl.
+```powershell
+PS C:\> Get-AksHciCredential -name myCluster
+```
+
+## PARAMETERS
+
+### -name
+The name of the cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -outputLocation
+The location where you want the kubeconfig downloaded. Default is `%USERPROFILE%\.kube`.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: %USERPROFILE%\.kube
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -adAuth
+Use this flag to get the Active Directory SSO version of the kubeconfig.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
