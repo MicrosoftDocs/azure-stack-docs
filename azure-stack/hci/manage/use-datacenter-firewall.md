@@ -1,15 +1,15 @@
 ---
-title: Use Datacenter Firewall for SDN in Azure Stack HCI
-description: Use this topic to get started with Datacenter Firewall for Software-Defined Networking in Azure Stack HCI.
+title: Use Datacenter Firewall for SDN in Azure Stack HCI and Windows Server
+description: Use this topic to get started with Datacenter Firewall for Software-Defined Networking in Azure Stack HCI, Windows Server 2019, and Windows Server 2016.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/28/2021
+ms.date: 02/01/2021
 ---
 
-# Use Datacenter Firewall for Software-Defined Networking in Azure Stack HCI
+# Use Datacenter Firewall for Software-Defined Networking in Azure Stack HCI and Windows Server
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019; Windows Server 2016
 
@@ -254,7 +254,7 @@ In this example, we show you how to remove an ACL from a network interface. Remo
 
 ## Firewall auditing
 
-New in Windows Server 2019, firewall auditing is a new capability for the Datacenter Firewall that records any flow processed by SDN firewall rules. All ACLs that have logging enabled are recorded. The log files must be in a syntax that is consistent with the [Azure Network Watcher flow logs](/azure/network-watcher/network-watcher-nsg-flow-logging-overview). These logs can be used for diagnostics or archived for later analysis.
+Introduced in Windows Server 2019, firewall auditing is a new capability for the Datacenter Firewall that records any flow processed by SDN firewall rules. All ACLs that have logging enabled are recorded. The log files must be in a syntax that is consistent with the [Azure Network Watcher flow logs](/azure/network-watcher/network-watcher-nsg-flow-logging-overview). These logs can be used for diagnostics or archived for later analysis.
 
 Here is a sample script to enable firewall auditing on the host servers. Update the variables at the beginning and run this on an Azure Stack HCI cluster with [Network Controller](../concepts/network-controller-overview.md) deployed:
 
