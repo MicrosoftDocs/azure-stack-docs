@@ -5,7 +5,7 @@ online version:
 schema: 
 ---
 
-# Get-AksHciUpdates
+# Get-AksHciVmSize
 
 ## SYNOPSIS
 List supported VM sizes.

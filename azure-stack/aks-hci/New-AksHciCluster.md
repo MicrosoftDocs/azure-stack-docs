@@ -5,7 +5,7 @@ online version:
 schema: 
 ---
 
-# New-AzAksCluster
+# New-AksHciCluster
 
 ## SYNOPSIS
 Create a new managed Kubernetes cluster.

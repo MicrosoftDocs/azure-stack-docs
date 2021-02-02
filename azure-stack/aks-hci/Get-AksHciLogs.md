@@ -8,7 +8,7 @@ schema:
 # Get-AksHciLogs
 
 ## SYNOPSIS
-Create a zipped folder with logs from all your pods. This command will create an output zipped folder called `akshcilogs` in the path `C:\wssd\akshcilogs`.
+Create a zipped folder with logs from all your pods. This command will create an output zipped folder called `akshcilogs` in the path `c:\AksHci\0.9.6.0\akshcilogs.zip` (working directory\AKS HCI release number\filename).
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-AksHciLogs
 ```
 
 ## DESCRIPTION
-Create a zipped folder with logs from all your pods. This command will create an output zipped folder called `akshcilogs` in the path `C:\wssd\akshcilogs`.
+Create a zipped folder with logs from all your pods. This command will create an output zipped folder called `akshcilogs` in the path `c:\AksHci\0.9.6.0\akshcilogs.zip` (working directory\AKS HCI release number\filename).
 
 ## EXAMPLES
 
