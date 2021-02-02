@@ -18,9 +18,9 @@ By modeling a VLAN-based network as a SDN logical network, you can apply network
 ## Create a logical network
 Use the following steps in Windows Admin Center to create a logical network.
 
-:::image type="content" source="./media/tenant-logical-networks/create-logical-network.png" alt-text="The Logical networks name box in Windows Admin Center." lightbox="./media/tenant-logical-networks/create-logical-network.png":::
+:::image type="content" source="./media/tenant-logical-networks/create-logical-network.png" alt-text="Screenshot of Windows Admin Center home screen showing the Logical networks name box." lightbox="./media/tenant-logical-networks/create-logical-network.png":::
 
-1. On the Windows Admin Center home screen, under **All Connections**, select the cluster that you want to create the logical network on.
+1. On the Windows Admin Center home screen, under **All connections**, select the cluster that you want to create the logical network on.
 1. Under **Tools**, scroll down to the **Networking** area, and select **Logical networks**.
 1. Under **Logical networks**, select the **Inventory** tab, then select **New**.
 1. In the **Logical networks** pane, type a name for the logical network.
@@ -85,7 +85,7 @@ You can delete a logical network if you no longer need it.
 :::image type="content" source="./media/tenant-logical-networks/delete-logical-network.png" alt-text="Screenshot of Windows Admin Center showing the Delete confirmation prompt to delete a logical network." lightbox="./media/tenant-logical-networks/delete-logical-network.png":::
 
 1. Under **Tools**, scroll down to the **Networking** area, and select **Logical networks**.
-1. Select the **Inventory** tab, select the virtual network, and then select **Delete**.
+1. Select the **Inventory** tab, select the logical network, and then select **Delete**.
 1. On the **Delete** confirmation prompt, select **Yes**.
 1. Next to the **Logical networks** search box, select **Refresh** to ensure that the logical network has been deleted.
 
