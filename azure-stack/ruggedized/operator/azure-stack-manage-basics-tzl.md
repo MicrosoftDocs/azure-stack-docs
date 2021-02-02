@@ -52,7 +52,7 @@ These services require additional configuration before you can make them availab
 
 ### Service roadmap
 
-Azure Stack Hub will continue to add support for Azure services. For the projected roadmap, see the [Azure Stack Hub: An extension of Azure](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) whitepaper. You can also monitor the [Azure Stack Hub blog posts](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) for new announcements.
+Azure Stack Hub will continue to add support for Azure services. For the projected roadmap, see the [Azure Stack Hub: An extension of Azure](https://azure.microsoft.com/resources/videos/azure-friday-azure-stack-an-extension-of-azure/) whitepaper. You can also monitor the [Azure Stack Hub blog posts](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) for new announcements.
 
 ## What account should I use?
 
