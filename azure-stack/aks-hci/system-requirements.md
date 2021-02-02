@@ -59,7 +59,7 @@ The following requirements apply to an Azure Stack HCI cluster as well as a Wind
 
 In AKS on Azure Stack HCI, you can deploy a cluster that uses one of the following two IP address allocation methods:
 
-- DHCP - Use a default DHCP server to allocation IP addresses to Azure Stack HCI nodes, VMs, Kubernetes resources and services.
+- DHCP - Use a default DHCP server to allocate IP addresses to Azure Stack HCI nodes, VMs, Kubernetes resources and services.
 - Virtual Network - Create a virtual network to allocate static IP addresses to Azure Stack HCI nodes, VMs, Kubernetes resources and services.
 
 In addition to the above, it is mandatory to configure a virtual IP pool range along with your DHCP server or virtual network. We also recommend that you configure three to five highly available control plane nodes for all your workload clusters. 
@@ -83,7 +83,7 @@ At a minimum, you should reserve the following number of DHCP addresses:
 You can see how the number of required IP addresses is variable depending on the number of workload clusters and control plane and worker nodes you have in your environment. We recommend reserving 256 IP addresses (/24 subnet) in your DHCP IP pool.
   
 #### Virtual Network
-Create a virtual network to provide routable, static IPv4 addresses addresses for control plane nodes, load balancers and agent endpoints used in the deployment as well as provide a static IP range for nodes in all Kubernetes clusters.
+Create a virtual network to provide routable, static IPv4 addresses for control plane nodes, load balancers and agent endpoints used in the deployment as well as provide a static IP range for nodes in all Kubernetes clusters.
 
 At a minimum, your subnet must contain the following number of static IP addresses for your Kubernetes clusters:
 

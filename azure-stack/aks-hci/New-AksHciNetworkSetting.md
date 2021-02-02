@@ -19,7 +19,7 @@ New-AksHciNetworkSetting -vnetName <String>
                          -ipAddressPrefix <String>
                          -vipPoolStart <IP address>
                          -vipPoolEnd <IP address>
-                        [-vlanId <int>]
+                        [-vlanID <int>]
                     
 ```
 
@@ -125,11 +125,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -vlandId
+### -vlanID
 The vLAN ID for the network specified. If omitted the network will not be tagged.
 
 ```yaml
-Type: System.Int
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
