@@ -113,7 +113,9 @@
   - name: Manage SDN
     items:
     - name: Deploy an SDN infrastructure
-      href: manage/sdn-express.md
+      href: manage/sdn-express.md    
+    - name: Manage tenant virtual networks
+      href: manage/tenant-virtual-networks.md
   - name: Manage Azure services
     items:
     - name: Register Windows Admin Center with Azure
