@@ -52,6 +52,8 @@ landingContent:
             url: adapt-apps-mixed-os-clusters.md
           - text: Deploy Windows applications
             url: deploy-windows-application.md
+          - text: Configure proxy settings
+            url: proxy.md
           - text: Prepare Windows nodes for gMSA support
             url: prepare-windows-nodes-gmsa.md
           - text: Use persistent volumes

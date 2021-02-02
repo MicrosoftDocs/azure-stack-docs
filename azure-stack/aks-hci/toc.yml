@@ -35,6 +35,12 @@
       href: connect-to-arc.md
     - name: Adapt apps for mixed-OS Kubernetes clusters
       href: adapt-apps-mixed-os-clusters.md
+    - name: Use Active Directory single sign-on
+      href: ad-sso.md
+    - name: Configure proxy settings for AKS on Azure Stack HCI
+      href: proxy.md
+    - name: Monitor AKS on Azure Stack HCI clusters
+      href: monitor-logging.md
     - name: Use Windows Server containers
       items:
           - name: Deploy .NET applications
