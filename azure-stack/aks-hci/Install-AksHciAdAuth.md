@@ -59,12 +59,12 @@ Install Active Directory authentication.
 
 ### Example
 ```powershell
-PS C:\> Install-AksHciAdAuth -clusterName mynewcluster1 -keytab <.\current.keytab> -previousKeytab <.\previous.keytab> -SPN <service/principal@CONTOSO.COM> -adminUser CONTOSO\Bob
+PS C:\> Install-AksHciAdAuth -name mynewcluster1 -keytab <.\current.keytab> -previousKeytab <.\previous.keytab> -SPN <service/principal@CONTOSO.COM> -adminUser CONTOSO\Bob
 ```
 
 ## PARAMETERS
 
-### -clusterName
+### -name
 The alphanumeric name of your Kubernetes cluster.
 
 ```yaml

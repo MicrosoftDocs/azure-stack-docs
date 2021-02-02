@@ -49,7 +49,7 @@ Before you install AD authentication, you must first create an AKS on Azure Stac
 Open PowerShell as an administrator and run the following using the **-enableADAuth** parameter of the `New-AksHciCluster` command:
 
 ```powershell
-New-AksHciCluster -clusterName mynewcluster1 -enableADAuth
+New-AksHciCluster -name mynewcluster1 -enableADAuth
 ```
 
 For each workload cluster, ensure there's one API server AD account available.
@@ -65,7 +65,7 @@ Before you can install AD authentication, make sure the workload cluster is inst
 For a domain-joined Azure Stack HCI cluster, open PowerShell as an administrator and run the following command:
 
 ```powershell
-Install-AksHciAdAuth -clusterName mynewcluster1 -keytab .\current.keytab -SPN k8s/apiserver@CONTOSO.COM -adminUser contoso\bob
+Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8s/apiserver@CONTOSO.COM -adminUser contoso\bob
 ```  
 
 #### Option 2
@@ -73,7 +73,7 @@ Install-AksHciAdAuth -clusterName mynewcluster1 -keytab .\current.keytab -SPN k8
 If the cluster host is not domain-joined, use the admin user name or group name in SID format as shown in the example below:
  
 ```powershell
-Install-AksHciAdAuth -clusterName mynewcluster1 -keytab .\current.keytab -SPN k8s/apiserver@CONTOSO.COM --adminuserSID (or admingroupSID)
+Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8s/apiserver@CONTOSO.COM --adminuserSID (or admingroupSID)
 ```  
 
 To find the SID for the user account, see [determine the user or group security identifier](#determine-the-user-or-group-security-identifier). 
@@ -91,7 +91,7 @@ You need to make sure the AD webhook is running on the API server and the keytab
 1. Get a certificate-based _kubeconfig_ file. You'll use the _kubeconfig_ file to connect to the cluster as a local host using the following command:
 
    ```powershell
-   Get-AksHciCredential -clusterName mynewcluster1
+   Get-AksHciCredential -name mynewcluster1
    ```  
 
 2. Run `kubectl` on the server that you connected to (using the certificate-based _kubeconfig_ file you previously created) and then check the AD webhook deployment to make sure it's in the format _ad-auth-webhook-xxxx_.  
@@ -114,7 +114,7 @@ After the file is created, you'll copy the AD _kubeconfig_ file to the client ma
 Open PowerShell as an administrator and run the following command:  
 
    ```powershell
-   Get-AksHciCredential -clusterName mynewcluster1 -outputLocation .\AdKubeconfig -adAuth
+   Get-AksHciCredential -name mynewcluster1 -outputLocation .\AdKubeconfig -adAuth
    ```
 
 ### Step 5: Copy kubeconfig and other files to the client machine
@@ -218,13 +218,13 @@ You may want to reinstall AD SSO when the account for the API server is changed,
 To uninstall AD authentication, open PowerShell as an administrator and run the following command:  
 
 ```powershell
-Uninstall-AksHciAdAuth -clusterName mynewcluster1
+Uninstall-AksHciAdAuth -name mynewcluster1
 ```
 
 To reinstall AD authentication, open PowerShell as an administrator and run the following command:
 
 ```powershell
-Install-AksHciAdAuth -clusterName mynewcluster1 -keytab <.\current.keytab> -previousKeytab <.\previous.keytab> -SPN <service/principal@CONTOSO.COM> -adminUser CONTOSO\Bob
+Install-AksHciAdAuth -name mynewcluster1 -keytab <.\current.keytab> -previousKeytab <.\previous.keytab> -SPN <service/principal@CONTOSO.COM> -adminUser CONTOSO\Bob
 ```
 
 > [!Note] 
