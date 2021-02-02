@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/01/2021
+ms.date: 02/02/2021
 ---
 
 # Use Datacenter Firewall for Software-Defined Networking in Azure Stack HCI and Windows Server
@@ -202,7 +202,7 @@ New-NetworkControllerAccessControlList -ResourceId "Subnet-192-168-0-0" -Propert
 
 ## Add an ACL to a network interface
 
-Once you've created an ACL and assigned it to a virtual subnet, you might want to override that default ACL on the virtual subnet with a specific ACL for an individual network interface. In this case, you apply specific ACLs directly to network interfaces attached to VLANs, instead of the virtual network. If you have ACLs set on the virtual subnet connected to the network interface, both ACLs are applied and prioritizes the network interface ACLs above the virtual subnet ACLs.
+Once you've created an ACL and assigned it to a virtual subnet, you might want to override that default ACL on the virtual subnet with a specific ACL for an individual network interface. Beginning in Windows Server 2019 Datacenter, you can apply specific ACLs directly to network interfaces attached to SDN logical networks, in addition to SDN virtual networks. If you have ACLs set on the virtual subnet connected to the network interface, both ACLs are applied, and the network interface ACLs are prioritized above the virtual subnet ACLs.
 
 In this example, we demonstrate how to add an ACL to a virtual network.
 
@@ -407,4 +407,4 @@ For related information, see also:
 
 - [Datacenter Firewall overview](../concepts/datacenter-firewall-overview.md)
 - [Network Controller overview](../concepts/network-controller-overview.md)
-- [SDN in Azure Stack HCI](../concepts/software-defined-networking.md)
+- [SDN in Azure Stack HCI and Windows Server](../concepts/software-defined-networking.md)
