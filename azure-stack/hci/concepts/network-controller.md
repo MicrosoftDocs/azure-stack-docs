@@ -1,17 +1,17 @@
 ---
 title: Plan to deploy Network Controller
-description: This topic covers how to plan to deploy Network Controller via Windows Admin Center on a set of virtual machines (VMs) running the Azure Stack HCI operating system.
+description: This topic covers how to plan to deploy Network Controller via Windows Admin Center on a set of virtual machines (VMs).
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: conceptual
-ms.date: 10/7/2020
+ms.date: 02/02/2021
 ---
 
 # Plan to deploy Network Controller
 
->Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+>Applies to: Azure Stack HCI, version 20H2; Windows Server 2019; Windows Server 2016
 
-Planning to deploy Network Controller via Windows Admin Center requires a set of virtual machines (VMs) running the Azure Stack HCI operating system. Network Controller is a highly available and scalable server role that requires a minimum of three VMs to provide high availability on your network.
+Planning to deploy Network Controller via Windows Admin Center requires a set of virtual machines (VMs) running the Azure Stack HCI or Windows Server operating system. Network Controller is a highly available and scalable server role that requires a minimum of three VMs to provide high availability on your network.
 
    >[!NOTE]
    > We recommend deploying Network Controller on its own dedicated VMs.
@@ -51,12 +51,10 @@ You can deploy Network Controller cluster nodes on either the same subnet or dif
 To learn more, see [Configure dynamic DNS registration for Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller#step-3-configure-dynamic-dns-registration-for-network-controller).
 
 ## Next steps
-Now you’re ready to deploy Network Controller on VMs running the operating system.
-
-To learn more, see:
-- [Create an Azure Stack HCI cluster](../deploy/create-cluster.md)
-- [Deploy Network Controller using Windows PowerShell](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts)
+Now you’re ready to deploy Network Controller on VMs.
 
 ## See also
-- [Network Controller](/windows-server/networking/sdn/technologies/network-controller/network-controller)
+- [Create an Azure Stack HCI cluster](../deploy/create-cluster.md)
+- [Deploy an SDN infrastructure using SDN Express](../manage/sdn-express.md)
+- [Network Controller overview](network-controller-overview.md)
 - [Network Controller High Availability](/windows-server/networking/sdn/technologies/network-controller/network-controller-high-availability)
