@@ -24,7 +24,7 @@ New-AksHciNetworkSetting -vnetName <String>
 ```
 
 ## DESCRIPTION
-Create a virtual network to set static IP address for control plane, load balancer, agent endpoints and a static IP range for nodes in all Kubernetes clusters. You should create a virtual network in an environment variable which will be used later in configuration steps.
+Create a virtual network to set the DHCP or static IP address for the control plane, load balancer, agent endpoints, and a static IP range for nodes in all Kubernetes clusters. This cmdlet will return a VirtualNetwork object which can be used later in the configuration steps.
 
 ## EXAMPLES
 
@@ -55,7 +55,7 @@ The IP address of the default gateway of the subnet.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: (StaticIP)
 Aliases:
 
 Required: False (True when SubnetCidr is provided)
@@ -70,7 +70,7 @@ Required: (when SubnetCidr is provided). An array of IP addresses pointing to th
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: (StaticIP)
 Aliases:
 
 Required: False (True when SubnetCidr is provided)
@@ -85,7 +85,7 @@ The address prefix to use for Static IP assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: (StaticIP)
 Aliases:
 
 Required: True

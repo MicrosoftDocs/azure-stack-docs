@@ -58,7 +58,7 @@ Accept wildcard characters: False
 ```
 
 ### -kubernetesVersion
-The version of Kubernetes that you want to deploy. Default is v1.18.8. To get a list of available versions, run `Get-AksHciKubernetesVersion`.
+The version of Kubernetes that you want to deploy. The default is the latest version. To get a list of available versions, run `Get-AksHciKubernetesVersion`.
 
 ```yaml
 Type: System.String
@@ -67,7 +67,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: v1.18.8
+Default value: v1.18.8 or later
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
