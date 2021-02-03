@@ -109,7 +109,7 @@ New-Volume -FriendlyName "Volume2" -FileSystem CSVFS_ReFS -StoragePoolFriendlyNa
 New-Volume -FriendlyName "Volume3" -FileSystem CSVFS_ReFS -StoragePoolFriendlyName S2D* -Size 1TB -ResiliencySettingName Parity
 ```
 
-### Example: Using storage tiers
+## Using storage tiers
 
 In deployments with three types of drives, one volume can span the SSD and HDD tiers to reside partially on each. Likewise, in deployments with four or more servers, one volume can mix mirroring and dual parity to reside partially on each.
 
@@ -140,11 +140,11 @@ New-Volume -FriendlyName "Volume1" -FileSystem CSVFS_ReFS -StoragePoolFriendlyNa
 
 Repeat as needed to create more than one volume.
 
-## Nested resiliency volumes
+### Nested resiliency volumes
 
-On two-node cluster configurations, it's possible to create "special volumes" that can tolerate multiple failures. Let's create some.
+On two-node cluster configurations, it's possible to create "special volumes" that can tolerate multiple failures.
 
-### Create nested storage tiers
+#### Create nested storage tiers
 
 To create a NestedMirror tier:
 
@@ -158,7 +158,7 @@ To create a NestedParity tier:
 New-StorageTier -StoragePoolFriendlyName S2D* -FriendlyName NestedParity -ResiliencySettingName Parity -NumberOfDataCopies 2 -PhysicalDiskRedundancy 1 -NumberOfGroups 1 -FaultDomainAwareness StorageScaleUnit -ColumnIsolation PhysicalDisk -MediaType HDD -CimSession 2nodecluster
 ```
 
-### Create nested volumes
+#### Create nested volumes
 
 To create a NestedMirror volume:
 
