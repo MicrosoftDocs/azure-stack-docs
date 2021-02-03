@@ -76,7 +76,7 @@ The following code snippets are written for a Windows machine using the PowerShe
         --sdk-auth
     ```
 
-    > [!NOTE]  You can also login with the SPN provided to you by your cloud operator. You will need the SPN ID, also known as the client ID, the secret, and your tenant ID. With these values you can use the following Azure CLI commands:
+    If you do not have cloud operator privileges, you can also login with the SPN provided to you by your cloud operator. You will need the the client ID, the secret, and your tenant ID. With these values you can use the following Azure CLI commands to create the JSON object you can add to your GitHub repository as a secret.
 
     ```azurecli  
     az login --service-principal -u "<client-id>" -p "<secret>" --tenant "<tenant-ID>" --allow-no-subscriptions
@@ -100,12 +100,13 @@ The following code snippets are written for a Windows machine using the PowerShe
     }
     ```
 
+## Create the web app publish profile
+
+stub
+
 ## Add service principal to repository
 
 You can use GitHub secrets to encrypt sensitive information to use in your actions. You will create a secret to contain your SPN so that the action can sign in to your Azure Stack Hub instance.
-
-> [!WARNING]  
-> GitHub recommends that you don't use self-hosted runners with public repositories Forks of your public repository might run dangerous code on your self-hosted runner machine by creating a pull request that executes the code in a workflow. For more information, see "[About self-hosted runners](https://docs.github.com/en/free-pro-team@latest/github/automating-your-workflow-with-github-actions/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories)."
 
 1. Open or create a GitHub repository. If you need guidance on creating a repository in GitHub, you can find [instructions in the GitHub docs](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/create-a-repo).
 1. Set your repository to private.
@@ -120,14 +121,6 @@ You can use GitHub secrets to encrypt sensitive information to use in your actio
 1. Name your secret `AZURE_CREDENTIALS`.
 1. Paste the JSON object that represents your SPN.
 1. Select **Add secret**.
-
-## Create the web app publish profile
-
-stub
-
-## Create your repository
-
-stub
 
 ## Add a runtime workflow
 
