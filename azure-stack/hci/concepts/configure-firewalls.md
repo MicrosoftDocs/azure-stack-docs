@@ -4,7 +4,7 @@ description: This topic provides guidance on how to configure firewalls for the 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 01/06/2020
+ms.date: 02/03/2021
 ---
 
 # Configure firewalls for Azure Stack HCI
@@ -70,7 +70,15 @@ This section shows how to configure Microsoft Defender Firewall to allow IP addr
     ```
 
 ## Additional endpoint for one-time Azure registration
-During the Azure registration process, when you run either `Register-AzStackHCI` or use Windows Admin Center, the cmdlet tries to contact the PowerShell Gallery to verify that you have the latest version of required PowerShell modules, such as Az and AzureAD. Although the PowerShell Gallery is hosted on Azure, currently there isn't a service tag for it. If you can't run the `Register-AzStackHCI` cmdlet from a server node because of no internet access, we recommend downloading the modules to your management computer, and then manually transferring them to the server node where you want to run the cmdlet.
+During the Azure registration process, when you run either `Register-AzStackHCI` or use Windows Admin Center, the cmdlet tries to contact the PowerShell Gallery to verify that you have the latest version of required PowerShell modules, such as Az and AzureAD.
+
+Although the PowerShell Gallery is hosted on Azure, currently there isn't a service tag for it. If you can't run the `Register-AzStackHCI` cmdlet from a server node because of no internet access, we recommend downloading the modules to your management computer, and then manually transferring them to the server node where you want to run the cmdlet.
+
+## Set up a proxy server
+
+
+
+
 
 ## Next steps
 For more information, see also:
