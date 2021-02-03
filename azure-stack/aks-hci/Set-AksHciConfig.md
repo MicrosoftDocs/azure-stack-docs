@@ -112,7 +112,7 @@ Accept wildcard characters: False
 ### -vnet
 The name of the AksHciNetworkSetting object created with New-AksHciNetworkSetting command.
 ```yaml
-Type: System.String
+Type: VirtualNetwork
 Parameter Sets: (All)
 Aliases:
 
@@ -133,7 +133,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: Standard_A2_V2
+Default value: Standard_A4_V2
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

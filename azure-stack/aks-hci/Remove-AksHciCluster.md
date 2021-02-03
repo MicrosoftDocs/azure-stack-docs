@@ -45,17 +45,4 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -force
-Delete a cluster without prompt.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
 ```

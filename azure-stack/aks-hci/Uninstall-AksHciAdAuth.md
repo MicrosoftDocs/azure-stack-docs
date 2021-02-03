@@ -5,7 +5,7 @@ online version:
 schema: 
 ---
 
-# uninstall-AksHciAdAuth
+# Uninstall-AksHciAdAuth
 
 ## SYNOPSIS
 Uninstall Active Directory authentication.

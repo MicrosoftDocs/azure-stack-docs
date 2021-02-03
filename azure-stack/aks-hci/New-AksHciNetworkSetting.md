@@ -28,9 +28,17 @@ Create a virtual network to set the DHCP or static IP address for the control pl
 
 ## EXAMPLES
 
-### Example
+### Static IP example
 ```powershell
-PS C:\> $vnet = New-AksHciNetworkSetting -vnetName "Default Switch" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1"
+PS C:\> $vnet = New-AksHciNetworkSetting -vnetName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1"
+```
+
+> [!NOTE]
+> The values given in this example command will need to be customized for your environment.
+
+### DHCP example
+```powershell
+$vnet = New-AksHciNetworkSetting -vnetName "External" -vipPoolStart "192.168.0.150" -vipPoolEnd "192.168.0.250"
 ```
 
 ## PARAMETERS

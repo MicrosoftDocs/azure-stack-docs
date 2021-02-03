@@ -58,7 +58,7 @@ Accept wildcard characters: False
 ```
 
 ### -controlPlaneNodeCount
-The number of nodes in your control plane. Default is 1.
+The number of nodes in your control plane. There is no default value.
 
 ```yaml
 Type: System.Int32
@@ -67,7 +67,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: 1
+Default value: none
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
