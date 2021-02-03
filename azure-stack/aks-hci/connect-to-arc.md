@@ -138,7 +138,7 @@ Next, we will connect our Kubernetes cluster to Azure using service principal an
 Reference the newly created service principal and run the `Install-AksHciArcOnboarding` command available in the Aks-Hci PowerShell module.
 
 ```PowerShell
-Install-AksHciArcOnboarding -clusterName $clusterName -resourcegroup $resourceGroup -location $location -subscriptionid $subscriptionId -clientid $appId -clientsecret $password -tenantid $tenant
+Install-AksHciArcOnboarding -name $clusterName -resourcegroup $resourceGroup -location $location -subscriptionid $subscriptionId -clientid $appId -clientsecret $password -tenantid $tenant
 ```
 ## Verify connected cluster
 

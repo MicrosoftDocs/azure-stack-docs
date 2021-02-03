@@ -7,10 +7,10 @@ schema:
 
 # Get-AksHciCredential
 
-## SYNOPSIS
+## Synopsis
 Access your cluster using kubectl.This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl.
 
-## SYNTAX
+## Syntax
 
 ```powershell
 Get-AksHciCredential -name <String>
@@ -18,17 +18,17 @@ Get-AksHciCredential -name <String>
                     [-adAuth]
 ```
 
-## DESCRIPTION
+## Description
 Access your cluster using kubectl.
 
-## EXAMPLES
+## Examples
 
 ### Access your cluster using kubectl.
 ```powershell
 PS C:\> Get-AksHciCredential -name myCluster
 ```
 
-## PARAMETERS
+## Parameters
 
 ### -name
 The name of the cluster.

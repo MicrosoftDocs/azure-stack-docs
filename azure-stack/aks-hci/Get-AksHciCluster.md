@@ -7,26 +7,26 @@ schema:
 
 # Get-AksHciCluster
 
-## SYNOPSIS
+## Synopsis
 List Kubernetes managed clusters including the Azure Kubernetes Service host.
 
-## SYNTAX
+## Syntax
 
 ```powershell
 Get-AksHciCluster [-name <String>]
 ```
 
-## DESCRIPTION
+## Description
 List Kubernetes managed clusters including the Azure Kubernete Service host.
 
-## EXAMPLES
+## Examples
 
 ### List all Kubernetes clusters
 ```powershell
 PS C:\> Get-AksHciCluster
 ```
 
-## PARAMETERS
+## Parameters
 
 ### -name
 The name of your cluster.
