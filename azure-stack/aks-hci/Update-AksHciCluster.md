@@ -5,7 +5,7 @@ online version:
 schema: 
 ---
 
-# Update-AksHci
+# Update-AksHciCluster
 
 ## SYNOPSIS
 Update a managed Kubernetes cluster to a newer Kubernetes or OS version.
