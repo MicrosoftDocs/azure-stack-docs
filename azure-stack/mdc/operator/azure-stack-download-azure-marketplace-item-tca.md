@@ -103,7 +103,7 @@ You can [download the offline syndication tools here](../../operator/azure-stack
     Alternatively, if you've already logged in through Azure PowerShell, you can pass in the Azure context:
 
     ```powershell
-    Add-AzAccount -Environment AzureCloud -Tenant mytenant.onmicrosoft.com 
+    Connect-AzAccount -Environment AzureCloud -Tenant mytenant.onmicrosoft.com 
     .\Invoke-AzSMarketplaceDownload.ps1 -RegistrationResourceGroup 'azurestack' -RegistrationName '<registration name>' -DownloadFolder 'F:\offlineSyndication' -AzureContext $(Get-AzureRMContext)
     ```
     If you do not pass in the Azure context, it will ask you to sign in.
@@ -162,7 +162,7 @@ You can [download the offline syndication tools here](../../operator/azure-stack
     ```powershell
     Add-AzEnvironment -Name Redmond-Admin -ARMEndpoint https://adminmanagement.redmond.azurestack.corp.microsoft.com
 
-    Add-AzAccount -Environment Redmond-Admin
+    Connect-AzAccount -Environment Redmond-Admin
 
     .\Invoke-AzsMarketplaceUpload.ps1 -DownloadFolder F:\Downloads\offlining -AzureContext $(GetAzContext)
     ```
