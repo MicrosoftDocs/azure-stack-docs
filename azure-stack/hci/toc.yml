@@ -94,8 +94,6 @@
       href: manage/monitor-cluster.md
     - name: Set up a cluster witness
       href: manage/witness.md
-    - name: Use Datacenter Firewall
-      href: manage/use-datacenter-firewall.md
     - name: Use DISKSPD to test workloads
       href: manage/diskspd-overview.md
     - name: Add or remove servers
@@ -113,7 +111,9 @@
   - name: Manage SDN
     items:
     - name: Deploy an SDN infrastructure
-      href: manage/sdn-express.md    
+      href: manage/sdn-express.md
+    - name: Use Datacenter Firewall
+      href: manage/use-datacenter-firewall.md
     - name: Manage tenant virtual networks
       href: manage/tenant-virtual-networks.md
   - name: Manage Azure services
