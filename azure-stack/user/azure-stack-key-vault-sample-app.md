@@ -74,7 +74,7 @@ $TenantID = Get-AzsDirectoryTenantId `
   -EnvironmentName AzureStackUser
 
 # Sign in to the user portal.
-Add-AzAccount `
+Connect-AzAccount `
   -EnvironmentName "AzureStackUser" `
   -TenantId $TenantID `
 

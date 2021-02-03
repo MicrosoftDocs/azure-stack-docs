@@ -53,7 +53,7 @@ Follow these steps to register the ASDK with Azure.
     ```powershell  
     # Add the Azure cloud subscription environment name. 
     # Supported environment names are AzureCloud, AzureChinaCloud, or AzureUSGovernment depending which Azure subscription you're using.
-    Add-AzAccount -EnvironmentName "<environment name>"
+    Connect-AzAccount -EnvironmentName "<environment name>"
     
     # Register the Azure Stack Hub resource provider in your Azure subscription
     Register-AzResourceProvider -ProviderNamespace Microsoft.AzureStack
@@ -176,7 +176,7 @@ On the internet-connected computer, use the following PowerShell commands to imp
   ```powershell  
   # Add the Azure cloud subscription environment name. 
   # Supported environment names are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
-  Add-AzAccount -EnvironmentName "<environment name>"
+  Connect-AzAccount -EnvironmentName "<environment name>"
 
   # If you have multiple subscriptions, run the following command to select the one you want to use:
   # Get-AzSubscription -SubscriptionID "<subscription ID>" | Select-AzSubscription
@@ -229,7 +229,7 @@ Alternatively, you can use the **Get-Content** cmdlet to point to a file that co
   ```powershell  
   # Add the Azure cloud subscription environment name. 
   # Supported environment names are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
-  Add-AzAccount -EnvironmentName "<environment name>"
+  Connect-AzAccount -EnvironmentName "<environment name>"
 
   # If you have multiple subscriptions, run the following command to select the one you want to use:
   # Get-AzSubscription -SubscriptionID "<subscription ID>" | Select-AzSubscription
