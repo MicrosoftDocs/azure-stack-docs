@@ -22,7 +22,7 @@ In this quickstart, you learn how to use Windows PowerShell to create a Kubernet
 
 After installing your Azure Kubernetes Service host, you are ready to deploy a Kubernetes cluster.
 
-Open PowerShell as an administrator and run the following command.
+Open PowerShell as an administrator and run the following [New-AksHciCluster](./new-akshcicluster) command.
 
    ```powershell
    New-AksHciCluster -name mycluster
@@ -39,7 +39,7 @@ Get-AksHciCluster
 
 ## Step 2: Scale a Kubernetes cluster
 
-If you need to scale your cluster up or down, you can change the number of control plane nodes, Linux worker nodes, or Windows worker nodes.
+If you need to scale your cluster up or down, you can change the number of control plane nodes, Linux worker nodes, or Windows worker nodes using the [Set-AksHciClusterNodeCount](./set-akshciclusternodecount) command.
 
 To scale control plane nodes, run the following command.
 
@@ -83,7 +83,7 @@ In place add-on upgrade updates all the Kubernetes add-ons like CSI that AKS-HCI
 
 ## Step 4: Access your clusters using kubectl
 
-To access your Kubernetes clusters using kubectl, run the following command. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl.
+To access your Kubernetes clusters using kubectl, run the [Get-AksHciCredential](./get-akshcicredential) command. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl.
 
 ```powershell
 Get-AksHciCredential -name mycluster

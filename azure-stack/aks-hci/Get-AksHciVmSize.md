@@ -26,7 +26,8 @@ List supported VM sizes.
 PS C:\> Get-AksHciVmSize
 ```
 
-```Output
+**Output:**
+```
 VmSize  CPU MemoryGB
 ------  --- --------
 Default 4   4
