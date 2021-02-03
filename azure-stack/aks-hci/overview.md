@@ -98,12 +98,12 @@ The following sections summarize what you need to run Azure Kubernetes Service o
 
 ### On your Windows Admin Center system
 
-Your machine running the Windows Admin Center gateway has the following requirements:
+Windows Admin Center is the user interface for creating and managing Azure Kubernetes Service on Azure Stack HCI. You can run Windows Admin Center on a server or Windows 10 machine. To use Windows Admin Center with Azure Kubernetes Service on Azure Stack HCI, you must meet all the criteria listed below.  
 
-- A Windows 10 machine (we don't support running Windows Admin Center on the Azure Stack HCI or Windows Server 2019 Datacenter right now.)
-- 60 GB of free space
-- Registered with Azure
-- In the same domain as the Azure Stack HCI or Windows Server 2019 Datacenter cluster
+Requirements for the machine running the Windows Admin Center gateway: 
+
+ - Registered with Azure
+ - In the same domain as the Azure Stack HCI or Windows Server 2019 Datacenter cluster
 
 ### On the Azure Stack HCI cluster or Windows Server 2019 Datacenter failover cluster that hosts Azure Kubernetes Service
 
@@ -118,11 +118,12 @@ For general Azure Stack HCI system requirements, see [Azure Stack HCI system req
 
 ### The network configuration for Azure Stack HCI
 
-The network connected to VMs on the Azure Stack HCI or Windows Server 2019 Datacenter cluster requires a dedicated scope of DHCP IPv4 addresses available for Azure Kubernetes Service and accessible by VMs on the Azure Stack HCI or Windows Server 2019 Datacenter cluster.
+The network connected to VMs on the Azure Stack HCI or Windows Server 2019 Datacenter cluster requires a dedicated scope of IPv4 addresses available for Azure Kubernetes Service and accessible by VMs on the Azure Stack HCI or Windows Server 2019 Datacenter cluster. For more information on networking requirements, visit [AKS on Azure Stack HCI system requirements](system-requirements.md).
 
 ## Next steps
 
 To get started with Azure Kubernetes Service on Azure Stack HCI, see the following articles:
 
 - [Review requirements](system-requirements.md)
-- [Set up Azure Kubernetes Service on Azure Stack HCI](create-kubernetes-cluster.md)
+- [Set up Azure Kubernetes Service on Azure Stack HCI using PowerShell](setup-powershell.md)
+- [Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center](create-kubernetes-cluster.md)
