@@ -23,26 +23,9 @@ To use GitHub Actions with Azure Stack Hub, you must use a service principal (SP
 
 This example workflow includes:
 - Instructions on creating and validating your SPN.
-- Configuring a Windows 2016 Server core machine as GitHub Actions self-hosted runner to work with Azure Stack Hub.
-- A workflow that uses:
-    - The Azure Login action
-    - The PowerShell script action
-
-### Azure Stack Hub GitHub Actions
-
-The following diagram shows the different environments and their relationships.
-
-![Azure Stack Hub Github action](.\media\ci-cd-github-action-login-cli\ash-github-actions-v1d1.svg)
-Parts of using the self-hosted runner:
-
-- GitHub Actions hosted on GitHub
-- Self-hosted runner hosted on Azure
-- Azure Stack Hub
-
-A limitation of using GitHub Actions with Azure Stack Hub is that the process requires using an Azure Stack Hub connected to the web. The workflow is triggered in a GitHub repository. You can use both Azure Active Directory (Azure AD) or Active Directory Federated Services (AD FS) as your identity provider.
-
-Although this is out of the scope of this article, your self-hosted runner can also use a virtual private network to connect to your Azure Stack Hub behind a firewall.
-
+- Instructions on creating your web app publication profile
+- Adding a runtime-specific workflow
+- Adding a matching workflow with web app deploy
 ## Get service principal
 
 An SPN provides role-based credentials so that processes outside of Azure can connect to and interact with resources. You will need an SPN with contributor access and the attributes specified in these instructions to use with your GitHub Actions.
@@ -91,6 +74,13 @@ The following code snippets are written for a Windows machine using the PowerShe
     az ad sp create-for-rbac --name "myApp" --role contributor `
         --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} `
         --sdk-auth
+    ```
+
+    > [!NOTE]  You can also login with the SPN provided to you by your cloud operator. You will need the SPN ID, also known as the client ID, the secret, and your tenant ID. With these values you can use the following Azure CLI commands:
+
+    ```azurecli  
+    az login --service-principal -u "<client-id>" -p "<secret>" --tenant "<tenant-ID>" --allow-no-subscriptions
+    az account show --sdk-auth
     ```
 
 6. Check the resulting JSON object. You will use the JSON object to create your secret in your GitHub repository that contains your action. The JSON object should have the following attributes:
