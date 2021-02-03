@@ -87,6 +87,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -proxyServerCertFile
+The certificate used to authenticate to the proxy server.
+ 
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+ 
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -windowsNodeCount
 The number of Windows nodes in your Kubernetes cluster. Default is 1.
 
@@ -97,7 +112,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: 1
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
