@@ -7,10 +7,10 @@ schema:
 
 # New-AksHciCluster
 
-## SYNOPSIS
+## Synopsis
 Create a new managed Kubernetes cluster.
 
-## SYNTAX
+## Syntax
 
 ```powershell
 New-AksHciCluster -name <String>
@@ -28,11 +28,11 @@ New-AksHciCluster -name <String>
                  [-enableSecretsEncryption]          
 ```
 
-## DESCRIPTION
+## Description
 
 Create a new Azure Kubernetes Service on Azure Stack HCI cluster.
 
-## EXAMPLES
+## Examples
 
 ### New AKS-HCI cluster with required params.
 
@@ -40,10 +40,10 @@ Create a new Azure Kubernetes Service on Azure Stack HCI cluster.
 PS C:\> New-AksHciCluster -name myCluster
 ```
 
-## PARAMETERS
+## Parameters
 
 ### -name
-The alphanumeric name of your Kubernetes cluster.
+The name of your Kubernetes cluster.
 
 ```yaml
 Type: System.String

@@ -25,7 +25,7 @@ After installing your Azure Kubernetes Service host, you are ready to deploy a K
 Open PowerShell as an administrator and run the following command.
 
    ```powershell
-   New-AksHciCluster -clusterName mycluster
+   New-AksHciCluster -name mycluster
    ```
 
 
@@ -92,7 +92,7 @@ Get-AksHciCredential -name mycluster
 ### Example
 
 ```powershell
-Get-AksHciCredential -clusterName mycluster
+Get-AksHciCredential -name mycluster
 ```
 
 ## Delete a Kubernetes cluster

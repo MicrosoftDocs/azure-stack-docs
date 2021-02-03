@@ -94,9 +94,17 @@ When the checks are finished, you'll see "Done" displayed in green text.
 To create a virtual network for the nodes in your deployment to use, create an environment variable with the following command. This will be used later to configure a deployment that uses static IP.
 
    ```powershell
-   $vnet = New-AksHciNetworkSetting -vnetName "Default Switch" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipaddressprefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsservers "172.16.0.1"
+   $vnet = New-AksHciNetworkSetting -vnetName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipaddressprefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsservers "172.16.0.1"
    ```
 
+> [!NOTE]
+> The values given in this example command will need to be customized for your environment.
+
+To get the names of your available switches, run this command:
+
+```powershell
+Get-VMSwitch
+```
 
 ## Step 4: Configure your deployment
 
@@ -152,7 +160,7 @@ Ready           : True
 To access your Azure Kubernetes Service host using kubectl, run the following command. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl. You can also use this command to access other Kubernetes clusters after they are deployed.
 
 ```powershell
-Get-AksHciCredential -clusterName clustergroup-management
+Get-AksHciCredential -name clustergroup-management
 ```
 
 ## Get logs

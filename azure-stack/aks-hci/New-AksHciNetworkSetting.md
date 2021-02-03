@@ -7,11 +7,10 @@ schema:
 
 # New-AksHciNetworkSetting
 
-## SYNOPSIS
+## Synopsis
 Create an object for a new virtual network.
 
-## SYNTAX
-
+## Syntax
 ```powershell
 New-AksHciNetworkSetting -vnetName <String>
                          -gateway <String>
@@ -23,10 +22,10 @@ New-AksHciNetworkSetting -vnetName <String>
                     
 ```
 
-## DESCRIPTION
+## Description
 Create a virtual network to set the DHCP or static IP address for the control plane, load balancer, agent endpoints, and a static IP range for nodes in all Kubernetes clusters. This cmdlet will return a VirtualNetwork object which can be used later in the configuration steps.
 
-## EXAMPLES
+## Examples
 
 ### Static IP example
 ```powershell
@@ -41,7 +40,7 @@ PS C:\> $vnet = New-AksHciNetworkSetting -vnetName "External" -vipPoolStart "172
 $vnet = New-AksHciNetworkSetting -vnetName "External" -vipPoolStart "192.168.0.150" -vipPoolEnd "192.168.0.250"
 ```
 
-## PARAMETERS
+## Parameters
 
 ### -vnetName
 The alphanumeric name of your virtual network.
@@ -66,7 +65,7 @@ Type: System.String
 Parameter Sets: (StaticIP)
 Aliases:
 
-Required: False (True when SubnetCidr is provided)
+Required: False (This is required when creating a network with a static IP.)
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -74,14 +73,14 @@ Accept wildcard characters: False
 ```
 
 ### -dnsServers
-Required: (when SubnetCidr is provided). An array of IP addresses pointing to the DNS servers to be used for the subnet. A minimum of one and a maximum of 3 servers can be provided. i.e. "8.8.8.8","192.168.1.1".
+Required when creating a network with a static IP. An array of IP addresses pointing to the DNS servers to be used for the subnet. A minimum of one and a maximum of 3 servers can be provided. i.e. "8.8.8.8","192.168.1.1".
 
 ```yaml
 Type: System.String[]
 Parameter Sets: (StaticIP)
 Aliases:
 
-Required: False (True when SubnetCidr is provided)
+Required: False (This is required when creating a network with a static IP.)
 Position: Named
 Default value: None
 Accept pipeline input: False
