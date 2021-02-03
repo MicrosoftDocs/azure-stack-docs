@@ -1,18 +1,18 @@
 ---
-title: Software Load Balancer (SLB) for SDN in Azure Stack HCI
-description: Use this topic to learn about Software Load Balancer for Software Defined Networking in Azure Stack HCI.
+title: Software Load Balancer (SLB) for SDN in Azure Stack HCI and Windows Server
+description: Use this topic to learn about Software Load Balancer for Software Defined Networking in Azure Stack HCI and Windows Server.
 author: khdownie
 ms.author: v-kedow
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/8/2020
+ms.date: 02/02/2021
 ---
 # What is Software Load Balancer \(SLB\) for SDN?
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019; Windows Server 2016
 
-Cloud Service Providers (CSPs) and enterprises that are deploying [Software Defined Networking (SDN) in Azure Stack HCI](software-defined-networking.md) can use Software Load Balancer (SLB) to evenly distribute tenant and tenant customer network traffic among virtual network resources. SLB enables multiple servers to host the same workload, providing high availability and scalability.
+Cloud Service Providers (CSPs) and enterprises that are deploying [Software Defined Networking (SDN)](software-defined-networking.md) can use Software Load Balancer (SLB) to evenly distribute tenant and tenant customer network traffic among virtual network resources. SLB enables multiple servers to host the same workload, providing high availability and scalability.
 
 Software Load Balancer includes the following capabilities:
 
@@ -200,4 +200,4 @@ For related information, see also:
 
 - [Network Controller overview](network-controller-overview.md)
 - [Deploy Network Controller using Windows PowerShell](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts)
-- [SDN in Azure Stack HCI](software-defined-networking.md)
+- [SDN in Azure Stack HCI and Windows Server](software-defined-networking.md)

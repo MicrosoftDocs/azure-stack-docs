@@ -1,16 +1,16 @@
 ---
-title: Overview of RAS Gateway in Azure Stack HCI
-description: Use this topic to learn about RAS Gateway for Software Defined Networking in Azure Stack HCI.
+title: Overview of RAS Gateway in Azure Stack HCI and Windows Server
+description: Use this topic to learn about RAS Gateway for Software Defined Networking in Azure Stack HCI and Windows Server.
 author: khdownie
 ms.author: v-kedow
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/8/2020
+ms.date: 02/02/2021
 ---
 # What is RAS Gateway for Software Defined Networking?
 
-> Applies to Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to Azure Stack HCI, version 20H2; Windows Server 2019; Windows Server 2016
 
 Remote Access Service (RAS) Gateway is a software-based Border Gateway Protocol (BGP) capable router designed for cloud service providers (CSPs) and enterprises that host multitenant virtual networks using Hyper-V Network Virtualization (HNV). You can use RAS Gateway to route network traffic between a virtual network and another network, either local or remote.
 
@@ -64,4 +64,4 @@ For related information, see also:
 - [RAS Gateway Deployment Architecture](/windows-server/networking/sdn/technologies/network-function-virtualization/ras-gateway-deployment-architecture)
 - [Network Controller overview](network-controller-overview.md)
 - [Plan to deploy Network Controller](network-controller.md)
-- [SDN in Azure Stack HCI](software-defined-networking.md)
+- [SDN in Azure Stack HCI and Windows Server](software-defined-networking.md)

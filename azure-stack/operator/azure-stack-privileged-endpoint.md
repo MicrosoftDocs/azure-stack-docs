@@ -44,7 +44,7 @@ You may also find the IP address in the Azure Stack Hub administrator portal. Op
 You will need set your current culture setting to `en-US` when running the privileged endpoint, otherwise cmdlets such as Test-AzureStack or Get-AzureStackLog will not work as expected.
 
 > [!NOTE]
-> For security reasons, we require that you connect to the PEP only from a hardened VM running on top of the hardware lifecycle host, or from a dedicated and secure computer, such as a [Privileged Access Workstation](/windows-server/identity/securing-privileged-access/privileged-access-workstations). The original configuration of the hardware lifecycle host must not be modified from its original configuration  (including installing new software) or used to connect to the PEP.
+> For security reasons, we require that you connect to the PEP only from a hardened VM running on top of the hardware lifecycle host, or from a dedicated and secure computer, such as a [Privileged Access Workstation](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model). The original configuration of the hardware lifecycle host must not be modified from its original configuration  (including installing new software) or used to connect to the PEP.
 
 1. Establish the trust.
 
