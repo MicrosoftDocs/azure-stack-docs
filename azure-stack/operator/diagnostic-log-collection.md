@@ -37,7 +37,7 @@ Proactive log collection automatically collects and sends diagnostic logs from A
 
 ::: moniker range=">= azs-2008"
 
-Beginning with Azure Stack Hub version 2008, proactive log collection uses an improved algorithm that captures logs even during error conditions that aren't visible to an operator. This makes sure that the right diagnostic info is collected at the right time without needing any operator interaction. Microsoft support can begin troubleshooting and resolve problems sooner in some cases. Initial algorithm improvements focus on patch and update operations. Logs will be collected by path and update events that trigger alerts in the portal such as `Urp.UpdateFailure` and `Urp.UpdateWarning`. Enabling proactive log collections is recommended as more operations are optimized and the benefits increase.
+Beginning with Azure Stack Hub version 2008, proactive log collection uses an improved algorithm that captures logs even during error conditions that aren't visible to an operator. This makes sure that the right diagnostic info is collected at the right time without needing any operator interaction. Microsoft support can begin troubleshooting and resolve problems sooner in some cases. Initial algorithm improvements focus on patch and update operations. Logs will be collected for events such as `Urp.UpdateFailure` and `Urp.UpdateWarning`. Enabling proactive log collections is recommended as more operations are optimized and the benefits increase.
 
 ::: moniker-end
 
