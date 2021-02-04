@@ -119,7 +119,7 @@ External External Mellanox ConnectX-3 Pro Ethernet Adapter
 To create a virtual network for the nodes in your deployment to use, create an environment variable with the [New-AksHciNetworkSetting](.\new-akshcinetworksetting.md) PowerShell command. This will be used later to configure a deployment that uses static IP.
 
    ```powershell
-    $vnet = New-AksHciNetworkSetting -vnetName "External" -k8snodeippoolstart "172.16.10.0" -k8snodeippoolend "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipaddressprefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsservers "172.16.0.1"
+    $vnet = New-AksHciNetworkSetting -vnetName "External" -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1"
    ```
 
 > [!NOTE]
