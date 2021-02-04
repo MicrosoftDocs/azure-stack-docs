@@ -142,7 +142,7 @@ Repeat as needed to create more than one volume.
 
 ### Nested resiliency volumes
 
-Nested resiliency only applies to two-server clusters; you can't use nested resiliency if your cluster has three or more servers. Nested resiliency enables a two-server cluster to withstand multiple hardware failures at the same time without loss of storage availability, allowing users, apps, and virtual machines to continue to run without disruption. To learn more, see [Plan volumes: Choosing the resiliency type](plan-volumes.md#choosing-the-resiliency-type).
+Nested resiliency only applies to two-server clusters; you can't use nested resiliency if your cluster has three or more servers. Nested resiliency enables a two-server cluster to withstand multiple hardware failures at the same time without loss of storage availability, allowing users, apps, and virtual machines to continue to run without disruption. To learn more, see [Plan volumes](plan-volumes.md).
 
 #### Create nested storage tiers
 
