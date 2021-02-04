@@ -48,7 +48,7 @@ Replace the following values in the script before it runs:
 ```powershell
 # Set up Azure Stack Hub admin environment
 Add-AzEnvironment -ARMEndpoint $ArmEndpoint -Name AzureStack-admin
-Add-AzAccount -Environment AzureStack-admin -TenantId $TenantId
+Connect-AzAccount -Environment AzureStack-admin -TenantId $TenantId
 
 # Select admin subscription
 $providerSubscriptionId = (Get-AzSubscription -SubscriptionName "Default Provider Subscription").Id
