@@ -38,7 +38,9 @@ If you have previously installed Azure Kubernetes Service on Azure Stack HCI usi
 **Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.Day2, and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once this is done, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`).
 
    ```powershell
+
    Import-Module AksHci
+
    ```
 
 After running the above command, close all PowerShell windows and reopen an administrative session to run the commands in the following steps.
@@ -62,31 +64,31 @@ Run the following command before proceeding.
 ```
 CommandType     Name                                               Version    Source
 -----------     ----                                               -------    ------
-Alias           Initialize-AksHciNode                              0.2.15     akshci
-Function        Get-AksHciCluster                                  0.2.15     akshci
-Function        Get-AksHciClusterUpgrades                          0.2.15     akshci
-Function        Get-AksHciConfig                                   0.2.15     akshci
-Function        Get-AksHciCredential                               0.2.15     akshci
-Function        Get-AksHciEventLog                                 0.2.15     akshci
-Function        Get-AksHciKubernetesVersion                        0.2.15     akshci
-Function        Get-AksHciLogs                                     0.2.15     akshci
-Function        Get-AksHciUpdates                                  0.2.15     akshci
-Function        Get-AksHciVersion                                  0.2.15     akshci
-Function        Get-AksHciVmSize                                   0.2.15     akshci
-Function        Install-AksHci                                     0.2.15     akshci
-Function        Install-AksHciAdAuth                               0.2.15     akshci
-Function        Install-AksHciArcOnboarding                        0.2.15     akshci
-Function        New-AksHciCluster                                  0.2.15     akshci
-Function        New-AksHciNetworkSetting                           0.2.15     akshci
-Function        Remove-AksHciCluster                               0.2.15     akshci
-Function        Restart-AksHci                                     0.2.15     akshci
-Function        Set-AksHciClusterNodeCount                         0.2.15     akshci
-Function        Set-AksHciConfig                                   0.2.15     akshci
-Function        Uninstall-AksHci                                   0.2.15     akshci
-Function        Uninstall-AksHciAdAuth                             0.2.15     akshci
-Function        Uninstall-AksHciArcOnboarding                      0.2.15     akshci
-Function        Update-AksHci                                      0.2.15     akshci
-Function        Update-AksHciCluster                               0.2.15     akshci
+Alias           Initialize-AksHciNode                              0.2.16     akshci
+Function        Get-AksHciCluster                                  0.2.16     akshci
+Function        Get-AksHciClusterUpgrades                          0.2.16     akshci
+Function        Get-AksHciConfig                                   0.2.16     akshci
+Function        Get-AksHciCredential                               0.2.16     akshci
+Function        Get-AksHciEventLog                                 0.2.16     akshci
+Function        Get-AksHciKubernetesVersion                        0.2.16     akshci
+Function        Get-AksHciLogs                                     0.2.16     akshci
+Function        Get-AksHciUpdates                                  0.2.16     akshci
+Function        Get-AksHciVersion                                  0.2.16     akshci
+Function        Get-AksHciVmSize                                   0.2.16     akshci
+Function        Install-AksHci                                     0.2.16     akshci
+Function        Install-AksHciAdAuth                               0.2.16     akshci
+Function        Install-AksHciArcOnboarding                        0.2.16     akshci
+Function        New-AksHciCluster                                  0.2.16     akshci
+Function        New-AksHciNetworkSetting                           0.2.16     akshci
+Function        Remove-AksHciCluster                               0.2.16     akshci
+Function        Restart-AksHci                                     0.2.16     akshci
+Function        Set-AksHciClusterNodeCount                         0.2.16     akshci
+Function        Set-AksHciConfig                                   0.2.16     akshci
+Function        Uninstall-AksHci                                   0.2.16     akshci
+Function        Uninstall-AksHciAdAuth                             0.2.16     akshci
+Function        Uninstall-AksHciArcOnboarding                      0.2.16     akshci
+Function        Update-AksHci                                      0.2.16     akshci
+Function        Update-AksHciCluster                               0.2.16     akshci
 ```
 
 ## Step 2: Prepare your machine(s) for deployment
@@ -184,7 +186,7 @@ Get-AksHciCredential -name clustergroup-management
 
 ## Get logs
 
-To get logs from your all your pods, run the [Get-AksHciLogs](./get-akshcilogs) command. This command will create an output zipped folder called `akshcilogs` in the path `c:\workingdirectory\akshcilogs`.
+To get logs from your all your pods, run the [Get-AksHciLogs](./get-akshcilogs) command. This command will create an output zipped folder called `akshcilogs` in the path `c:\%workingdirectory%\%AKS HCI release number%\%filename%` (for example, `c:\AksHci\0.9.6.0\akshcilogs.zip`).
 
 ```powershell
 Get-AksHciLogs
@@ -232,13 +234,14 @@ Install-AksHci
 
 ## Remove Azure Kubernetes Service on Azure Stack HCI
 
-To remove Azure Kubernetes Service on Azure Stack HCI, run the following command. This command removes your configuration. You will have to run `Set-AksHciConfig` again when you reinstall.
+
+To remove Azure Kubernetes Service on Azure Stack HCI, run the following command. This command will remove the old configuration, and you will have to run `Set-AksHciConfig` again when you reinstall.
 
 ```powershell
 Uninstall-AksHci
 ```
 
-If you want to retain your old configuration, run the following command.
+If you want to retain the old configuration, run the following command.
 
 ```powershell
 Uninstall-AksHci -SkipConfigCleanup
