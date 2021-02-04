@@ -525,6 +525,10 @@
   items:
     - name: Release notes archive
       items:
+      - name: 2002 release notes
+        href: ./relnotearchive/release-notes-2002.md
+      - name: 2002 known issues
+        href: ./relnotearchive/known-issues-2002.md
       - name: 1910 release notes
         href: ./relnotearchive/release-notes-1910.md
       - name: 1910 known issues
