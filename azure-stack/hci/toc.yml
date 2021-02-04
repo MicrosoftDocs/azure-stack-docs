@@ -114,6 +114,8 @@
       href: manage/sdn-express.md
     - name: Use Datacenter Firewall
       href: manage/use-datacenter-firewall.md
+    - name: Manage tenant logical networks
+      href: manage/tenant-logical-networks.md
     - name: Manage tenant virtual networks
       href: manage/tenant-virtual-networks.md
   - name: Manage Azure services
@@ -132,10 +134,6 @@
       href: manage/use-azure-backup.md
     - name: Use Azure Network Adapter
       href: manage/use-azure-network-adapter.md
-  - name: Manage SDN
-    items:
-    - name: Tenant logical networks
-      href: manage/tenant-logical-networks.md
 - name: Concepts
   items:
   - name: Storage and clusters

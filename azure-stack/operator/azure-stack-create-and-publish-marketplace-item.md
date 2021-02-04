@@ -161,7 +161,7 @@ To create a custom marketplace item, do the following:
     ```powershell
     $ArmEndpoint = "https://adminmanagement.local.azurestack.external"
     Add-AzEnvironment -Name "AzureStackAdmin" -ArmEndpoint $ArmEndpoint
-    Add-AzAccount -EnvironmentName "AzureStackAdmin"
+    Connect-AzAccount -EnvironmentName "AzureStackAdmin"
     ```
 
 4. Run the following script to import the resource into your gallery:
