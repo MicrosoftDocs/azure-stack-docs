@@ -103,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -windowsNodeCount
-The number of Windows nodes in your Kubernetes cluster. Default is 0. You can only deploy Windows nodes if you are running Kubernetes v1.18.8.
+The number of Windows nodes in your Kubernetes cluster. Default is 0. You can only deploy Windows nodes if you are running Kubernetes v1.18.8 or highter.
 
 ```yaml
 Type: System.Int32
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -controlPlaneVmSize
-The size of your control plane VM. Default is Standard_A2_v2. To get a list of available VM sizes, run `Get-AksHciVmSize`.
+The size of your control plane VM. Default is Standard_A4_V2. To get a list of available VM sizes, run `Get-AksHciVmSize`.
 
 ```yaml
 Type: System.String
@@ -127,13 +127,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: Standard_A2_V2
+Default value: Standard_A4_V2
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -loadBalancerVmSize
-The size of your load balancer VM. Default is Standard_A2_V2. To get a list of available VM sizes, run `Get-AksHciVmSize`.
+The size of your load balancer VM. Default is Standard_A4_V2. To get a list of available VM sizes, run `Get-AksHciVmSize`.
 
 ```yaml
 Type: System.String
@@ -142,7 +142,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: Standard_A4_V2
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -157,7 +157,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: Standard_K8S3_v1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -172,7 +172,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: Standard_K8S3_v1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
