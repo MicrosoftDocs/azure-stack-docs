@@ -94,7 +94,7 @@ You can find the current version and upgrade version in the following table for 
 | 1.15.12, 1.16.8, 1.16.9 | 1.16.14 |
 | 1.16.8, 1.16.9, 1.16.14 | 1.17.11 |
 
-In the API Model json file, please specify the release and version values under the `orchestratorProfile` section, for example, if you are planning to deploy Kubernetes 1.16.14, the following two values must be set, (see example [kubernetes-azurestack.json](https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-azurestack.json)):
+In the API Model json file, please specify the release and version values under the `orchestratorProfile` section, for example, if you are planning to deploy Kubernetes 1.16.14, the following two values must be set, (see example [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw)):
 
 ```json  
     -   "orchestratorRelease": "1.16",
@@ -205,7 +205,7 @@ You can find the current version and upgrade version in the following table for 
 
 ## What's new 
 
--   Support for Kubernetes version 1.15.10 ([\#2834](https://github.com/Azure/aks-engine/issues/2834)). When deploying a new cluster make sure to specify in your api model json file (a.k.s. cluster definition file) the release version number as well as the minor version number. You can find an example: [kubernetes-azurestack.json](https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-azurestack.json):
+-   Support for Kubernetes version 1.15.10 ([\#2834](https://github.com/Azure/aks-engine/issues/2834)). When deploying a new cluster make sure to specify in your api model json file (a.k.s. cluster definition file) the release version number as well as the minor version number. You can find an example: [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw):
 
     - `"orchestratorRelease": "1.15`,
 
