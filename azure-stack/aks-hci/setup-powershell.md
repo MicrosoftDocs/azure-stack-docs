@@ -165,7 +165,7 @@ Get-AksHciCredential -name clustergroup-management
 
 ## Get logs
 
-To get logs from your all your pods, run the [Get-AksHciLogs](./get-akshcilogs) command. This command will create an output zipped folder called `akshcilogs` in the path `c:\workingdirectory\akshcilogs`.
+To get logs from your all your pods, run the [Get-AksHciLogs](./get-akshcilogs) command. This command will create an output zipped folder called `akshcilogs` in the path `c:\%workingdirectory%\%AKS HCI release number%\%filename%` (for example, `c:\AksHci\0.9.6.0\akshcilogs.zip`).
 
 ```powershell
 Get-AksHciLogs
