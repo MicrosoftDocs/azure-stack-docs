@@ -1,22 +1,34 @@
 ---
-title: Change languages in Azure Stack HCI
-description: This topic provides guidance on how to change languages in the Azure Stack HCI operating system.
-author: JohnCobb1
-ms.author: v-johcob
+title: Manage access control lists (ACLs) for network access
+description: This topic provides ...
+author: AnirbanPaul
+ms.author: anpaul
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 02/05/2021
 ---
 
-# Azure Stack HCI change languages
+# Manage access control lists (ACLs) for network access
 
->Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+>Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016
 
-This topic provides guidance on how to change languages in the Azure Stack HCI operating system.
+This topic provides ...
 
-## Drive types
+## Create a new ACL rule
 TBD
 
-## Built-in cache
+## Create an ACL rule
+TBD
+
+## Apply an ACL to a virtual network
+TBD
+
+## Apply an ACL to a network interface
+TBD
+
+## Get a list of ACLs
+TBD
+
+## Delete an ACL
 TBD
 
 <!---Example note format.--->
@@ -36,13 +48,8 @@ TBD
 | $100                                     | $100                                    |
 | $10                                      | $10                                     |
 
-
-
-
 ## Next steps
 For more information, see also:
 <!---Placeholders for format examples. Replace all before initial topic review.--->
 
-- [Azure Stack HCI overview](../overview.md)
-- [Understand the cache in Azure Stack HCI](cache.md)
-- [Storage Spaces Direct hardware requirements](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements)
+- [Software Defined Networking (SDN) in Azure Stack HCI](../concepts/software-defined-networking.md)
