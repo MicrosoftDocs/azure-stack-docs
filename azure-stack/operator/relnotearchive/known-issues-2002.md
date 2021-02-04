@@ -22,7 +22,7 @@ This article lists known issues in Azure Stack Hub releases. The list is updated
 
 After applying the 2002 update, an alert for an "Invalid Time Source" may incorrectly appear in the Administrator portal. This false-positive alert can be ignored and will be fixed in an upcoming release. 
 
-For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
+For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](../azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
 ### Update failed to install package Microsoft.AzureStack.Compute.Installer to CA VM
 
@@ -123,11 +123,11 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Applicable: This issue applies to all supported releases.
 - Cause: The documentation links in the overview page of Virtual Network gateway link to Azure-specific documentation instead of Azure Stack Hub. Use the following links for the Azure Stack Hub documentation:
 
-  - [Gateway SKUs](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-skus)
-  - [Highly Available Connections](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
-  - [Configure BGP on Azure Stack Hub](../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
+  - [Gateway SKUs](../../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-skus)
+  - [Highly Available Connections](../../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
+  - [Configure BGP on Azure Stack Hub](../../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
   - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
-  - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
+  - [Specify custom IPsec/IKE policies](../../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
 ## Compute
 
@@ -212,10 +212,10 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 - Applicable: This issue applies to release 2002.
 - Cause: If the stamp contains App Service resource provider (RP) version 1.7 and older, upon update of the stamp, the blades for App Service do not load.
-- Remediation: Update the RP to version [2020 Q2](azure-stack-app-service-update.md).
+- Remediation: Update the RP to version [2020 Q2](../azure-stack-app-service-update.md).
 
 ## PowerShell
 
-[!Include[Known issue for install - one](../includes/known-issue-az-install-1.md)]
+[!Include[Known issue for install - one](../../includes/known-issue-az-install-1.md)]
 
-[!Include[Known issue for install - two](../includes/known-issue-az-install-2.md)]
+[!Include[Known issue for install - two](../../includes/known-issue-az-install-2.md)]
