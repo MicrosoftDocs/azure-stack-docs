@@ -30,37 +30,37 @@ When configuring a transparent proxy, you can choose to send all outbound traffi
 
 ## Partner integration
 
-Microsoft has partnered with Citrix ADC, Cisco WSA, Check Point Security Gateway, and Sophos XG Firewall to validate Azure Stack Hub’s use case scenarios with a transparent proxy configuration. The following diagram is an example Azure Stack Hub network configuration.
+Microsoft has partnered with leading proxy vendors in the industry to validate Azure Stack Hub’s use case scenarios with a transparent proxy configuration. The following diagram is an example Azure Stack Hub network configuration with HA Proxies. External proxy devices must be placed north of the the border devices.
 
 ![Network diagram with proxy before border devices](./media/azure-stack-transparent-proxy/proxy.svg)
 
-External proxy devices must be placed before the border devices. Additionally, the border devices must be configured to route traffic to Azure Stack Hub one of the following ways:
-- Route all traffic to Azure Stack Hub
-- Route traffic from the first `/27` range of the Azure Stack Hub virtual IP pool to the proxy devices via a policy-based routing rule or a default route.  
+ Additionally, the border devices must be configured to route traffic from Azure Stack Hub in one of the following ways:
+- Route all outbound traffic from Azure Stack Hub to the proxy devices
+- Route all outbound traffic from the first `/27` range of the Azure Stack Hub virtual IP pool to the proxy devices via policy-based routing.  
 
 For a sample border configuration, see [Example border configuration](#example-border-configuration) section in this article.
 
-The Sophos and Check Point devices provide a dual-mode feature that allows specific ranges of traffic through transparent mode, while other ranges can be configured to be through an explicit mode. Using this feature, only infrastructure traffic is sent through the transparent proxy, while all tenant traffic is sent through the explicit mode.
-
-For more information on how to configure a transparent proxy with Azure Stack Hub, see the following articles: 
+Please review the following documents for validated transparent proxy configurations with Azure Stack Hub: 
 
 - [Configure a Check Point Security Gateway transparent proxy](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk171559)
 - [Configure a Sophos XG firewall transparent proxy](https://community.sophos.com/xg-firewall/f/recommended-reads/124106/xg-firewall-integration-with-azure-stack-hub)
+
+In scenarios where outbound traffic from Azure Stack Hub is required to flow through an explicit proxy, Sophos and Checkpoint devices provide a dual-mode feature that allows specific ranges of traffic through transparent mode, while other ranges can be configured to pass through an explicit mode. Using this feature, these proxy devices can be configured such that only infrastructure traffic is sent through the transparent proxy, while all tenant traffic is sent through the explicit mode.
 
 > [!IMPORTANT]
 > SSL traffic interception is not supported and can lead to service failures when accessing endpoints. The maximum supported timeout to communicate with endpoints required for identity is 60s with 3 retry attempts. For more information, see [Azure Stack Hub firewall integration](azure-stack-firewall.md#ssl-interception).
 
 ## Example border configuration
 
-In the following example, specific infrastructure network traffic for ports 80 and 443 are routed from the border devices to the transparent proxy deployment. The transparent squid proxy does URL filtering, and *none allowed* traffic is dropped.
+The solution is based on policy based routing (PBR) which uses an administrator defined set of criteria implemented by an access control list (ACL). The ACL categorizes the traffic that is directed to the next-hop IP of the proxy devices implemented in a route-map, rather than normal routing that is based only on destination IP address. Specific infrastructure network traffic for ports 80 and 443 are routed from the border devices to the transparent proxy deployment. The transparent proxy does URL filtering, and *none allowed* traffic is dropped.
+
+The following configuration sample is for an Cisco Nexus 9508 Chassis. 
 
 In this scenario, the source infrastructure networks that require access to the internet are as follows:
 
 - Public VIP - First /27
 - Infrastructure network – Last /27
 - BMC Network – Last /27
-
-The solution is based on policy based routing (PBR) which uses an administrator defined set of criteria implemented by an access control list (ACL). The ACL categorizes the traffic that is directed to the next-hop IP of the proxy devices implemented in a route-map, rather than normal routing that is based only on destination IP address.
 
 The following subnets receive Policy Based Routing (PBR) treatment in this scenario:
 
@@ -72,11 +72,11 @@ The following subnets receive Policy Based Routing (PBR) treatment in this scena
 
 ### Configure border device
 
-Enable PBR by entering the `feature pbr` command. The following example is the border device configuration for the scenario.
+Enable PBR by entering the `feature pbr` command. 
 
 ```
 ****************************************************************************
-PBR Configuration Notes for Cisco Nexus 9508 Chassis
+PBR Configuration for Cisco Nexus 9508 Chassis
 PBR Enivronment configured to use VRF08
 The test rack has is a 4-node Azure Stack stamp with 2x TOR switches and 1x BMC switch. Each TOR switch 
 has a single uplink to the Nexus 9508 chassis using BGP for routing. In this example the test rack 
