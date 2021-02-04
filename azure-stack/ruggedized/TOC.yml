@@ -518,7 +518,7 @@
 #        href: tca-safety-guide-version-two.md
 #      - name: Tactical Cloud Appliance service manual (V2)
 #        href: tca-service-manual-version-two.md
-      - name: Tactical Cloud Appliance Customer Replaceable Unit guide
+      - name: Customer replaceable units
         items:
         - name: Handling precautions
           href: customer-replaceable-unit/handling-precautions.md
@@ -562,9 +562,9 @@
           href: customer-replaceable-unit/verify-scale-unit-node-disk-health.md
         - name: Azure Stack Hub hardware diagram
           href: customer-replaceable-unit/azure-stack-hub-hardware-diagram.md
-        - name: EMC PowerEdge Tactical R640 server overview
+        - name: Server overview
           href: customer-replaceable-unit/emc-poweredge-tactical-r640-server-overview.md
-        - name: EMC PowerEdge Tactical indicators and codes
+        - name: Indicators and codes
           href: customer-replaceable-unit/emc-poweredge-tactical-indicators-and-codes.md
         - name: Access iDRAC interface via direct USB connection
           href: customer-replaceable-unit/access-idrac-over-usb-connection.md
@@ -749,6 +749,8 @@
               href: ../user/azure-stack-vpn-gateway-about-vpn-gateways.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
             - name: Configure IPSec/IKE connection policies
               href: ../user/azure-stack-vpn-s2s.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Virtual network peering
+            href: ../user/virtual-network-peering.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: Connect to Azure using ExpressRoute
             href: ../operator/azure-stack-connect-expressroute.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json  
           - name: VPN gateway settings
@@ -846,30 +848,36 @@
           href: ../user/azure-stack-dev-start-howto-vm-nodejs.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Deploy foundational patterns
       items:
-      - name: VNET peering
+      - name: Deploy foundational patterns
+        href: ../user/deploy-foundational-patterns.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+      - name: Networking patterns
         items:
-        - name: VNet peering with FortiGate
-          href: ../user/azure-stack-network-howto-vnet-to-vnet.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-        - name: VNet peering with VMs
-          href: ../user/azure-stack-network-howto-vnet-peering.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Setup VPN to on-prem
-        href: ../user/azure-stack-network-howto-vnet-to-onprem.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: VNET to VNET connection
-        href: ../user/azure-stack-network-howto-vnet-to-vnet-stacks.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Extend the datacenter
-        href: ../user/azure-stack-network-howto-extend-datacenter.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        - name: Use third-party NVAs (Fortinet Fortigate NVA)
+          items:
+          - name: VNet-to-vnet connectivity with FortiGate
+            href: ../user/azure-stack-network-howto-vnet-to-vnet.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Setup VPN to on-prem
+            href: ../user/azure-stack-network-howto-vnet-to-onprem.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: VNet to VNet connectivity between Azure Stack Hub instances
+            href: ../user/azure-stack-network-howto-vnet-to-vnet-stacks.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        - name: Use RRAS
+          items:
+          - name: VNet to VNet connectivity with RRAS
+            href: ../user/azure-stack-network-howto-vnet-peering.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Set up multiple site-to-site VPN tunnels
+            href: ../user/network-howto-vpn-tunnel.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Create a VPN tunnel (GRE)
+            href: ../user/network-howto-vpn-tunnel-gre.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Create a VPN tunnel (IPSEC)
+          href: ../user/network-howto-vpn-tunnel-ipsec.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: F5 load balancer
         href: ../user/network-howto-f5.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Connect to iSCSI storage
-        href: ../user/azure-stack-network-howto-iscsi-storage.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Set up tunnels
-        items:
-        - name: Set up a multiple site-to-site VPN
-          href: ../user/network-howto-vpn-tunnel.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-        - name: Create a VPN tunnel (GRE)
-          href: ../user/network-howto-vpn-tunnel-gre.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-        - name: Create a VPN tunnel (IPSEC)
-          href: ../user/network-howto-vpn-tunnel-ipsec.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+      - name: Connect to external storage
+        items: 
+        - name: Connect to iSCSI storage
+          href: ../user/azure-stack-network-howto-iscsi-storage.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        - name: Extend the datacenter
+          href: ../user/azure-stack-network-howto-extend-datacenter.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Backup and recovery
         items:
         - name: Back up your VM on Azure Stack Hub ruggedized with Commvault

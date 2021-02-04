@@ -5,7 +5,7 @@ description: Understand the differences between Azure Stack Hub storage and Azur
 author: mattbriggs
 
 ms.topic: conceptual
-ms.date: 12/16/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviwer: jiahan
 ms.lastreviewed: 08/12/2020

@@ -52,7 +52,7 @@ Make sure you replace the following script variables with values from your Azure
 
     # After signing in to your environment, Azure Stack Hub cmdlets
     # can be easily targeted at your Azure Stack Hub instance.
-    Add-AzAccount -EnvironmentName "AzureStackUser" -TenantId $TenantId
+    Connect-AzAccount -EnvironmentName "AzureStackUser" -TenantId $TenantId
 ```
 ### [AzureRM modules](#tab/azurerm1)
  
@@ -80,7 +80,7 @@ Make sure you replace the following script variables with values from your Azure
   Add-AzEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
 
   # Sign in to your environment
-  Login-AzAccount -EnvironmentName "AzureStackUser"
+  Connect-AzAccount -EnvironmentName "AzureStackUser"
   ```
 ### [AzureRM modules](#tab/azurerm2)
  

@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/16/2020
+ms.date: 01/28/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -86,6 +86,18 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 - Applicable: This issue applies to all supported releases. 
 - Cause: When enabling **Session Affinity** on a load balancer, the 2 tuple hash utilizes the PA IP (Physical Address IP) instead of the private IPs assigned to the VMs. In scenarios where traffic directed to the load balancer arrives through a VPN, or if all the client VMs (source IPs) reside on the same node and Session Affinity is enabled, all traffic is directed to one backend VM.
+- Occurrence: Common
+
+#### IPv6 button visible in frontend IP configuration
+
+- Applicable: This issue applies to the 2008 release.
+- Cause: The IPv6 button is visible and enabled when creating the frontend IP configuration of a public load balancer. This is a cosmetic issue on the portal. IPv6 is not supported on Azure Stack Hub.
+- Occurrence: Common
+
+#### Backend port and frontend port need to be the same when floating IP is enabled
+
+- Applicable: This issue applies to all releases. 
+- Cause: Both the frontend port and backend port need to be the same in the load balancing rule when floating IP is enabled. This is by design.
 - Occurrence: Common
 
 <!-- ## Compute -->
@@ -520,5 +532,5 @@ To access archived known issues for an older version, use the version selector d
 ::: moniker-end
 
 ::: moniker range="<azs-2002"
-You can access [older versions of Azure Stack Hub known issues on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived documents are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
+You can access older versions of Azure Stack Hub known issues in the table of contents on the left side, under [**Resources > Release notes archive**](./relnotearchive/known-issues-1910.md). These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end

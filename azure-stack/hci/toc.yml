@@ -94,16 +94,12 @@
       href: manage/monitor-cluster.md
     - name: Set up a cluster witness
       href: manage/witness.md
-    - name: Use Datacenter Firewall
-      href: manage/use-datacenter-firewall.md
     - name: Use DISKSPD to test workloads
       href: manage/diskspd-overview.md
     - name: Add or remove servers
       href: manage/add-cluster.md
     - name: Take a server offline for maintenance
       href: manage/maintain-servers.md
-    - name: Manage Azure registration
-      href: manage/manage-azure-registration.md
     - name: Change languages
       href: manage/languages.md
     - name: Change privacy settings
@@ -116,10 +112,18 @@
     items:
     - name: Deploy an SDN infrastructure
       href: manage/sdn-express.md
+    - name: Use Datacenter Firewall
+      href: manage/use-datacenter-firewall.md
+    - name: Manage tenant logical networks
+      href: manage/tenant-logical-networks.md
+    - name: Manage tenant virtual networks
+      href: manage/tenant-virtual-networks.md
   - name: Manage Azure services
     items:
     - name: Register Windows Admin Center with Azure
       href: manage/register-windows-admin-center.md
+    - name: Manage cluster registration with Azure
+      href: manage/manage-azure-registration.md
     - name: Use Azure portal
       href: manage/azure-portal.md
     - name: Monitor with Azure Monitor
