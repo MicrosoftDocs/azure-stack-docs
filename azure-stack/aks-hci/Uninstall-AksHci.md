@@ -8,7 +8,7 @@ schema:
 # Uninstall-AksHci
 
 ## Synopsis
-Remove Azure Kubernetes Service on Azure Stack HCI.
+Removes Azure Kubernetes Service on Azure Stack HCI.
 
 ## Syntax
 
@@ -16,16 +16,12 @@ Remove Azure Kubernetes Service on Azure Stack HCI.
 Uninstall-AksHci [-skipConfigCleanup]
 ```
 
-```powershell
-Uninstall-AksHci -Force
-```
-
 ## Description
-Remove Azure Kubernetes Service on Azure Stack HCI. **If you are using PowerShell to uninstall a Windows Admin Center deployment, you must run the command with the -Force flag.**
+Removes Azure Kubernetes Service on Azure Stack HCI. 
 
-If PowerShell commands are run on a cluster where Windows Admin Center was previously used to deploy, the PowerShell module checks the existence of the Windows Admin Center configuration file. Windows Admin Center places the Windows Admin Center configuration file across all nodes. **If you use the uninstall command and go back to Windows Admin Center, run the above uninstall command with the -Force flag. If this is not done, PowerShell and Windows Admin Center will be out of sync.**
+If PowerShell commands are run on a cluster where Windows Admin Center was previously used to deploy, the PowerShell module checks the existence of the Windows Admin Center configuration file. Windows Admin Center places the Windows Admin Center configuration file across all nodes. 
 
-## Examples
+## Example
 
 ### Example
 ```powershell
