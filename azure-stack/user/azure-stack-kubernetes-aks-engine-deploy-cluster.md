@@ -27,7 +27,7 @@ You can specify a cluster specification in a document file using the JSON format
 
 This section looks at creating an API model for your cluster.
 
-1.  Start by using an Azure Stack Hub [example](https://github.com/Azure/aks-engine/tree/master/examples/azure-stack) API Model file and make a local copy for your deployment. From the machine, you installed AKS engine, run:
+1.  Start by using an Azure Stack Hub API Model file for [Linux](https://aka.ms/aksengine-json-example-raw) or for [Windows](https://aka.ms/aksengine-json-example-raw-win) and make a local copy for your deployment. From the machine, you installed AKS engine, run:
 
     ```bash
     curl -o kubernetes-azurestack.json https://aka.ms/aksengine-json-example-raw
