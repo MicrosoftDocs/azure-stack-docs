@@ -17,7 +17,7 @@ This topic describes how to create volumes on an Azure Stack HCI cluster by usin
 
 To create a three-way mirror volume using Windows Admin Center:
 
-1. In Windows Admin Center, connect to a Storage Spaces Direct cluster, and then select **Volumes** from the **Tools** pane.
+1. In Windows Admin Center, connect to a cluster, and then select **Volumes** from the **Tools** pane.
 2. On the **Volumes** page, select the **Inventory** tab, and then select **Create volume**.
 3. In the **Create volume** pane, enter a name for the volume, and leave **Resiliency** as **Three-way mirror**.
 4. In **Size on HDD**, specify the size of the volume. For example, 5 TB (terabytes).
