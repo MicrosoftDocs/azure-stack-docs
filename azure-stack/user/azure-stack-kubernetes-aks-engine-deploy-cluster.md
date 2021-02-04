@@ -30,7 +30,7 @@ This section looks at creating an API model for your cluster.
 1.  Start by using an Azure Stack Hub [example](https://github.com/Azure/aks-engine/tree/master/examples/azure-stack) API Model file and make a local copy for your deployment. From the machine, you installed AKS engine, run:
 
     ```bash
-    curl -o kubernetes-azurestack.json https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-azurestack.json
+    curl -o kubernetes-azurestack.json https://aka.ms/aksengine-json-example-raw
     ```
 
     > [!NOTE]  
