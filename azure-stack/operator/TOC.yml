@@ -67,9 +67,12 @@
         href: azure-stack-configure-dns.md
       - name: Configure time server
         href: azure-stack-configure-time.md
-      - name: Firewall integration
-        href: azure-stack-firewall.md
+      - name: Firewall / proxy
         items:
+        - name: Firewall integration
+          href: azure-stack-firewall.md
+        - name: Transparent proxy
+          href: azure-stack-transparent-proxy.md
         - name: Publish endpoints
           href: azure-stack-integrate-endpoints.md
         - name: Extension host

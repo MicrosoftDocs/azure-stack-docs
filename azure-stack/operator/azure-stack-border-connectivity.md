@@ -3,10 +3,10 @@ title: Border connectivity and network integration for Azure Stack Hub integrate
 description: Learn how to plan for datacenter border network connectivity in Azure Stack Hub integrated systems.
 author: PatAltimore
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 01/14/2021
 ms.author: patricka
 ms.reviewer: wamota
-ms.lastreviewed: 11/15/2019
+ms.lastreviewed: 01/14/2021
 
 # Intent: As an Azure Stack operator, I want to know how to plan for datacenter border network connectivity with multi-node Azure Stack.
 # Keyword: azure stack border connectivity
@@ -50,17 +50,7 @@ Static routing applies only to the uplinks between the TOR and border switches. 
 
 <sup>\*\*\*</sup> The Switch Management network is required and can be added separately from the Switch Infrastructure network.
 
-## Transparent proxy
-If your datacenter requires all traffic to use a proxy, you must configure a *transparent proxy* to process all traffic from the rack to handle it according to policy, separating traffic between the zones on your network.
-
-> [!IMPORTANT]
-> The Azure Stack Hub solution doesn't support normal web proxies.  
-
-A transparent proxy (also known as an intercepting, inline, or forced proxy) intercepts normal communication at the network layer without requiring any special client configuration. Clients don't need to be aware of the existence of the proxy.
-
-![Transparent proxy](media/azure-stack-border-connectivity/transparent-proxy.svg)
-
-SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-interception) and can lead to service failures when accessing endpoints. The maximum supported timeout to communicate with endpoints required for identity is 60s with 3 retry attempts.
-
 ## Next steps
-[DNS integration](azure-stack-integrate-dns.md)
+
+- [DNS integration](azure-stack-integrate-dns.md)
+- [Transparent proxy for Azure Stack Hub](azure-stack-transparent-proxy.md)
