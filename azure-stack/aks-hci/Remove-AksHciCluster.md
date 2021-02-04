@@ -7,10 +7,10 @@ schema:
 
 # Remove-AksHciCluster
 
-## SYNOPSIS
+## Synopsis
 Delete a managed Kubernetes cluster.
 
-## SYNTAX
+## Syntax
 
 ### Delete a managed Kubernetes cluster
 ```powershell
@@ -18,20 +18,20 @@ Remove-AksHciCluster -name
                     [-force]   
 ```
 
-## DESCRIPTION
+## Description
 Delete a managed Kubernetes cluster.
 
-## EXAMPLES
+## Examples
 
 ### Delete an existing managed Kubernetes cluster
 ```powershell
 PS C:\> Remove-AksHciCluster -name myCluster
 ```
 
-## PARAMETERS
+## Parameters
 
 ### -name
-The alphanumeric name of your Kubernetes cluster.
+The name of your Kubernetes cluster.
 
 ```yaml
 Type: System.String

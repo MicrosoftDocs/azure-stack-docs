@@ -7,19 +7,19 @@ schema:
 
 # Get-AksHciEventLog
 
-## SYNOPSIS
+## Synopsis
 Gets all the event logs from the Azure Kubernetes Service on Azure Stack HCI PowerShell module.
 
-## SYNTAX
+## Syntax
 
 ```powershell
 Get-AksHciEventLog
 ```
 
-## DESCRIPTION
+## Description
 Gets all the event logs from the Azure Kubernetes Service on Azure Stack HCI PowerShell module.
 
-## EXAMPLES
+## Examples
 
 ### Example
 ```powershell

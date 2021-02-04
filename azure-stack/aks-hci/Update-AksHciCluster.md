@@ -5,12 +5,12 @@ online version:
 schema: 
 ---
 
-# Update-AksHci
+# Update-AksHciCluster
 
-## SYNOPSIS
+## Synopsis
 Update a managed Kubernetes cluster to a newer Kubernetes or OS version.
 
-## SYNTAX
+## Syntax
 
 ```powershell
 Update-AksHciCluster -name <String>
@@ -18,20 +18,20 @@ Update-AksHciCluster -name <String>
                     [-operatingSystem]
 ```
 
-## DESCRIPTION
+## Description
 Update a managed Kubernetes cluster to a newer Kubernetes or OS version.
 
-## EXAMPLES
+## Examples
 
 ### Example
 ```powershell
 PS C:\> Update-AksHciCluster -clusterName myCluster -kubernetesVersion v1.18.8 -operatingSystem
 ```
 
-## PARAMETERS
+## Parameters
 
 ### -name
-The alphanumeric name of your Kubernetes cluster.
+The name of your Kubernetes cluster.
 
 ```yaml
 Type: System.String

@@ -7,26 +7,26 @@ schema:
 
 # Uninstall-AksHciAdAuth
 
-## SYNOPSIS
+## Synopsis
 Uninstall Active Directory authentication.
 
-## SYNTAX
+## Syntax
 
 ```powershell
 Uninstall-AksHciAdAuth -name <String>
 ```
 
-## DESCRIPTION
+## Description
 Uninstall Active Directory authentication.
 
-## EXAMPLES
+## Examples
 
 ### Example
 ```powershell
 PS C:\> Uninstall-AksHciAksHciAdAuth -name myCluster
 ```
 
-## PARAMETERS
+## Parameters
 
 ### -name
 The alphanumeric name of your Kubernetes cluster.

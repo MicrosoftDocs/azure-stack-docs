@@ -7,10 +7,10 @@ schema:
 
 # Set-AksHciClusterNodeCount
 
-## SYNOPSIS
+## Synopsis
 Scale the number of control plane nodes or worker nodes in a cluster.
 
-## SYNTAX
+## Syntax
 
 ### Scale control plane nodes
 ```powershell
@@ -25,10 +25,10 @@ Set-AksHciClusterNodeCount -name <String>
                            -windowsNodeCount <int>
 ```
 
-## DESCRIPTION
+## Description
 Scale the number of control plane nodes or worker nodes in a cluster. The control plane nodes and the worker nodes must be scaled independently.
 
-## EXAMPLES
+## Examples
 
 ### Scale control plane nodes
 ```powershell
@@ -40,7 +40,7 @@ PS C:\> Set-AksHciClusterNodeCount -name myCluster -controlPlaneNodeCount 3
 PS C:\> Set-AksHciClusterNodeCount -name myCluster -linuxNodeCount 2 -windowsNodeCount 2
 ```
 
-## PARAMETERS
+## Parameters
 
 ### -name
 The alphanumeric name of your Kubernetes cluster.
@@ -87,6 +87,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -proxyServerCertFile
+The certificate used to authenticate to the proxy server.
+ 
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+ 
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -windowsNodeCount
 The number of Windows nodes in your Kubernetes cluster. Default is 1.
 
@@ -97,7 +112,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: 1
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

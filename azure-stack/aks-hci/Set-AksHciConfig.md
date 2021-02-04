@@ -7,10 +7,10 @@ schema:
 
 # Set-AksHciConfig
 
-## SYNOPSIS
+## Synopsis
 Set or update the configurations settings for the Azure Kubernetes Service host.
 
-## SYNTAX
+## Syntax
 
 ### Set configuration for host
 ```powershell
@@ -41,10 +41,10 @@ Set-AksHciConfig [-imageDir <String>]
                  [-enableDiagnosticData]   
 ```
 
-## DESCRIPTION
+## Description
 Set the configuration settings for the Azure Kubernetes Service host. If you're deploying on a 2-4 node Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster, you must specify the imageDir and cloudConfigLocation parameters. For a single node Windows Server 2019 Datacenter, all parameters are optional and set to their default values. However, for optimal performance, we recommend using a 2-4 node Azure Stack HCI cluster deployment.
 
-## EXAMPLES
+## Examples
 
 ### To deploy on a 2-4 node cluster with DHCP networking
 ```powershell
@@ -62,7 +62,7 @@ PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfig
 PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -proxyServerHttp "http://proxy.contoso.com:8888" -proxyServerHttps "http://proxy.contoso.com:8888" -proxyServerNoProxy "localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16,10.231.110.0/24,10.68.237.0/24" -proxyServerCredential $credential
 ```
 
-## PARAMETERS
+## Parameters
 
 ### -imageDir
 The path to the directory where Azure Kubernetes Service on Azure Stack HCI will store its VHD images. Defaults to `%systemdrive%\AksHciImageStore` for single node deployments. For multi-node deployments, this parameter must be specified. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore` or an SMB share such as `\\FileShare\ImageStore`.
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -controlPlaneVmSize
-The size of the VM to create for the control plane. To get a list of available VM sizes, run `Get-AksHciVmSize`.
+The size of the VM to create for the control plane. Default is Standard_A4_V2. To get a list of available VM sizes, run `Get-AksHciVmSize`.
 
 ```yaml
 Type: System.String

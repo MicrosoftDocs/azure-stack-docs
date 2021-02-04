@@ -7,11 +7,10 @@ schema:
 
 # New-AksHciNetworkSetting
 
-## SYNOPSIS
+## Synopsis
 Create an object for a new virtual network.
 
-## SYNTAX
-
+## Syntax
 ```powershell
 New-AksHciNetworkSetting -vnetName <String>
                          -gateway <String>
@@ -19,18 +18,20 @@ New-AksHciNetworkSetting -vnetName <String>
                          -ipAddressPrefix <String>
                          -vipPoolStart <IP address>
                          -vipPoolEnd <IP address>
+                         -k8sNodeIpPoolStart <IP address>
+                         -k8sNodeIpPoolEnd <IP address>
                         [-vlanID <int>]
                     
 ```
 
-## DESCRIPTION
+## Description
 Create a virtual network to set the DHCP or static IP address for the control plane, load balancer, agent endpoints, and a static IP range for nodes in all Kubernetes clusters. This cmdlet will return a VirtualNetwork object which can be used later in the configuration steps.
 
-## EXAMPLES
+## Examples
 
 ### Static IP example
 ```powershell
-PS C:\> $vnet = New-AksHciNetworkSetting -vnetName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1"
+PS C:\> $vnet = New-AksHciNetworkSetting -vnetName "External" -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1"
 ```
 
 > [!NOTE]
@@ -41,10 +42,10 @@ PS C:\> $vnet = New-AksHciNetworkSetting -vnetName "External" -vipPoolStart "172
 $vnet = New-AksHciNetworkSetting -vnetName "External" -vipPoolStart "192.168.0.150" -vipPoolEnd "192.168.0.250"
 ```
 
-## PARAMETERS
+## Parameters
 
 ### -vnetName
-The alphanumeric name of your virtual network.
+The the name of your vSwitch. To get a list of the names of your available switches, run the command `Get-VMSwitch`.
 
 ```yaml
 Type: System.String
@@ -66,7 +67,7 @@ Type: System.String
 Parameter Sets: (StaticIP)
 Aliases:
 
-Required: False (True when SubnetCidr is provided)
+Required: False (This is required when creating a network with a static IP.)
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -74,14 +75,14 @@ Accept wildcard characters: False
 ```
 
 ### -dnsServers
-Required: (when SubnetCidr is provided). An array of IP addresses pointing to the DNS servers to be used for the subnet. A minimum of one and a maximum of 3 servers can be provided. i.e. "8.8.8.8","192.168.1.1".
+Required when creating a network with a static IP. An array of IP addresses pointing to the DNS servers to be used for the subnet. A minimum of one and a maximum of 3 servers can be provided. i.e. "8.8.8.8","192.168.1.1".
 
 ```yaml
 Type: System.String[]
 Parameter Sets: (StaticIP)
 Aliases:
 
-Required: False (True when SubnetCidr is provided)
+Required: False (This is required when creating a network with a static IP.)
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -127,6 +128,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -k8sNodeIpPoolStart
+The start IP address of a VM pool. The address must be in range of the subnet. This is required for Static IP deployments.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -k8sNodeIpPoolEnd
+The end IP address of a VM pool. The address must be in range of the subnet. This is required for Static IP deployments.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
