@@ -68,7 +68,7 @@ With the addition of the [Extension Host](azure-stack-extension-host-prepare.md)
 
 ## Ports and URLs (outbound)
 
-Azure Stack Hub supports only transparent proxy servers. In a deployment with a transparent proxy uplink to a traditional proxy server, you must allow the ports and URLs in the following table for outbound communication.
+Azure Stack Hub supports only transparent proxy servers. In a deployment with a transparent proxy uplink to a traditional proxy server, you must allow the ports and URLs in the following table for outbound communication. For more information on configuring transparent proxy servers, see [Transparent proxy for Azure Stack Hub](azure-stack-transparent-proxy.md).
 
 SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-interception) and can lead to service failures when accessing endpoints. The maximum supported timeout to communicate with endpoints required for identity is 60s.
 
