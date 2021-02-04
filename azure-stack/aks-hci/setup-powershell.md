@@ -28,7 +28,7 @@ Before getting started, make sure you have satisfied all the prerequisites on th
 ## Step 1: Install the AksHci PowerShell module
 
    ```powershell
-   Install-Module -Name AksHci -RequiredVersion 0.2.15 -Repository PSGallery
+   Install-Module -Name AksHci -RequiredVersion 0.2.16 -Repository PSGallery
    ```
 
 ### Step 1.1: Clean install of the AksHci PowerShell module
@@ -50,31 +50,31 @@ Run the following command before proceeding.
 ```
 CommandType     Name                                               Version    Source
 -----------     ----                                               -------    ------
-Alias           Initialize-AksHciNode                              0.2.15     akshci
-Function        Get-AksHciCluster                                  0.2.15     akshci
-Function        Get-AksHciClusterUpgrades                          0.2.15     akshci
-Function        Get-AksHciConfig                                   0.2.15     akshci
-Function        Get-AksHciCredential                               0.2.15     akshci
-Function        Get-AksHciEventLog                                 0.2.15     akshci
-Function        Get-AksHciKubernetesVersion                        0.2.15     akshci
-Function        Get-AksHciLogs                                     0.2.15     akshci
-Function        Get-AksHciUpdates                                  0.2.15     akshci
-Function        Get-AksHciVersion                                  0.2.15     akshci
-Function        Get-AksHciVmSize                                   0.2.15     akshci
-Function        Install-AksHci                                     0.2.15     akshci
-Function        Install-AksHciAdAuth                               0.2.15     akshci
-Function        Install-AksHciArcOnboarding                        0.2.15     akshci
-Function        New-AksHciCluster                                  0.2.15     akshci
-Function        New-AksHciNetworkSetting                           0.2.15     akshci
-Function        Remove-AksHciCluster                               0.2.15     akshci
-Function        Restart-AksHci                                     0.2.15     akshci
-Function        Set-AksHciClusterNodeCount                         0.2.15     akshci
-Function        Set-AksHciConfig                                   0.2.15     akshci
-Function        Uninstall-AksHci                                   0.2.15     akshci
-Function        Uninstall-AksHciAdAuth                             0.2.15     akshci
-Function        Uninstall-AksHciArcOnboarding                      0.2.15     akshci
-Function        Update-AksHci                                      0.2.15     akshci
-Function        Update-AksHciCluster                               0.2.15     akshci
+Alias           Initialize-AksHciNode                              0.2.16     akshci
+Function        Get-AksHciCluster                                  0.2.16     akshci
+Function        Get-AksHciClusterUpgrades                          0.2.16     akshci
+Function        Get-AksHciConfig                                   0.2.16     akshci
+Function        Get-AksHciCredential                               0.2.16     akshci
+Function        Get-AksHciEventLog                                 0.2.16     akshci
+Function        Get-AksHciKubernetesVersion                        0.2.16     akshci
+Function        Get-AksHciLogs                                     0.2.16     akshci
+Function        Get-AksHciUpdates                                  0.2.16     akshci
+Function        Get-AksHciVersion                                  0.2.16     akshci
+Function        Get-AksHciVmSize                                   0.2.16     akshci
+Function        Install-AksHci                                     0.2.16     akshci
+Function        Install-AksHciAdAuth                               0.2.16     akshci
+Function        Install-AksHciArcOnboarding                        0.2.16     akshci
+Function        New-AksHciCluster                                  0.2.16     akshci
+Function        New-AksHciNetworkSetting                           0.2.16     akshci
+Function        Remove-AksHciCluster                               0.2.16     akshci
+Function        Restart-AksHci                                     0.2.16     akshci
+Function        Set-AksHciClusterNodeCount                         0.2.16     akshci
+Function        Set-AksHciConfig                                   0.2.16     akshci
+Function        Uninstall-AksHci                                   0.2.16     akshci
+Function        Uninstall-AksHciAdAuth                             0.2.16     akshci
+Function        Uninstall-AksHciArcOnboarding                      0.2.16     akshci
+Function        Update-AksHci                                      0.2.16     akshci
+Function        Update-AksHciCluster                               0.2.16     akshci
 ```
 
 ## Step 2: Prepare your machine(s) for deployment
@@ -91,6 +91,19 @@ When the checks are finished, you'll see "Done" displayed in green text.
 
 ## Step 3: Create a virtual network
 
+To get the names of your available switches, run this command:
+
+```powershell
+Get-VMSwitch
+```
+
+Sample Output:
+```output
+Name SwitchType NetAdapterInterfaceDescription
+---- ---------- ------------------------------
+External External Mellanox ConnectX-3 Pro Ethernet Adapter
+```
+
 To create a virtual network for the nodes in your deployment to use, create an environment variable with the [New-AksHciNetworkSetting](.\new-akshcinetworksetting.md) PowerShell command. This will be used later to configure a deployment that uses static IP.
 
    ```powershell
@@ -99,12 +112,6 @@ To create a virtual network for the nodes in your deployment to use, create an e
 
 > [!NOTE]
 > The values given in this example command will need to be customized for your environment.
-
-To get the names of your available switches, run this command:
-
-```powershell
-Get-VMSwitch
-```
 
 ## Step 4: Configure your deployment
 
@@ -147,7 +154,7 @@ Get-AksHciCluster
 ```
 
 Name            : clustergroup-management
-Version         : v1.18.8
+Version         : v1.18.10
 Control Planes  : 1
 Linux Workers   : 0
 Windows Workers : 0
@@ -213,21 +220,17 @@ Install-AksHci
 
 ## Remove Azure Kubernetes Service on Azure Stack HCI
 
-To remove Azure Kubernetes Service on Azure Stack HCI, run the following command. **If you are using PowerShell to uninstall a Windows Admin Center deployment, you must run the command with the `-Force` flag.**
+To remove Azure Kubernetes Service on Azure Stack HCI, run the following command. This command will remove the old configuration, and you will have to run `Set-AksHciConfig` again when you reinstall.
 
 ```powershell
 Uninstall-AksHci
 ```
 
-After running the above command, you can run the `Install-AksHci` command to install the Azure Kubernetes Service host with the same configuration as before. If you want to change the configuration, run `Set-AksHciConfig` with the changes you want to make before running the install command.
-
-If you don't want to retain the old configuration, run the following command.
+If you want to retain the old configuration, run the following command.
 
 ```powershell
-Uninstall-AksHci -Force
+Uninstall-AksHci -SkipConfigCleanup
 ```
-
-If PowerShell commands are run on a cluster where Windows Admin Center was previously used to deploy, the PowerShell module checks the existence of the Windows Admin Center configuration file. Windows Admin Center places the Windows Admin Center configuration file across all nodes. **If you use the uninstall command and go back to Windows Admin Center, run the above uninstall command with the `-Force` flag. If this is not done, PowerShell and Windows Admin Center will be out of sync.**
 
 ## Next steps
 
