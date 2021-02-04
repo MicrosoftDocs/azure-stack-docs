@@ -100,7 +100,7 @@ Virtual IP (VIP) pools are mandatory for an AKS on Azure Stack HCI deployment. V
 
 At a minimum, you should reserve one IP address per cluster (workload and AKS host), and one IP address per Kubernetes service. The number of required IP addresses in the VIP pool ranges varies depending on the number of workload clusters and Kubernetes services you have in your environment. We recommend reserving 16 static IP addresses in each VIP pool for your AKS-HCI deployment. 
 
-When setting up the AKS host, use the `New-AksHciNetworkSetting` command to create VIP pools.
+When setting up the AKS host, use the [New-AksHciNetworkSetting](./new-akshcinetworksetting) command to create VIP pools.
 
 #### MAC Pool Range
 We recommend having a minimum of 16 MAC addresses in the range to allow for multiple control plane nodes in each cluster. When setting up the AKS host, use the `-macPoolStart` and `-macPoolEnd` parameters in `Set-AksHciConfig` to reserve MAC addresses from the DHCP MAC pool for Kubernetes services.

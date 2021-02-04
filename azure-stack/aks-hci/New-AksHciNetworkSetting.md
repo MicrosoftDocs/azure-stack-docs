@@ -18,6 +18,8 @@ New-AksHciNetworkSetting -vnetName <String>
                          -ipAddressPrefix <String>
                          -vipPoolStart <IP address>
                          -vipPoolEnd <IP address>
+                         -k8sNodeIpPoolStart <IP address>
+                         -k8sNodeIpPoolEnd <IP address>
                         [-vlanID <int>]
                     
 ```
@@ -29,7 +31,7 @@ Create a virtual network to set the DHCP or static IP address for the control pl
 
 ### Static IP example
 ```powershell
-PS C:\> $vnet = New-AksHciNetworkSetting -vnetName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1"
+PS C:\> $vnet = New-AksHciNetworkSetting -vnetName "External" -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1"
 ```
 
 > [!NOTE]
@@ -43,7 +45,7 @@ $vnet = New-AksHciNetworkSetting -vnetName "External" -vipPoolStart "192.168.0.1
 ## Parameters
 
 ### -vnetName
-The alphanumeric name of your virtual network.
+The the name of your vSwitch. To get a list of the names of your available switches, run the command `Get-VMSwitch`.
 
 ```yaml
 Type: System.String
@@ -126,6 +128,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -k8sNodeIpPoolStart
+The start IP address of a VM pool. The address must be in range of the subnet. This is required for Static IP deployments.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -k8sNodeIpPoolEnd
+The end IP address of a VM pool. The address must be in range of the subnet. This is required for Static IP deployments.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
