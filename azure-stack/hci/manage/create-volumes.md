@@ -4,12 +4,12 @@ description: How to create volumes in Azure Stack HCI using Windows Admin Center
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 02/03/2021
+ms.date: 02/04/2021
 ---
 
 # Create volumes in Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, version 20H2
 
 This topic describes how to create volumes on an Azure Stack HCI cluster by using Windows Admin Center and Windows PowerShell, how to work with files on the volumes, and how to enable data deduplication and compression on volumes. To learn how to create volumes and set up replication for stretched clusters, see [Create stretched volumes](create-stretched-volumes.md).
 
@@ -113,7 +113,7 @@ New-Volume -FriendlyName "Volume3" -FileSystem CSVFS_ReFS -StoragePoolFriendlyNa
 
 In deployments with three types of drives, one volume can span the SSD and HDD tiers to reside partially on each. Likewise, in deployments with four or more servers, one volume can mix mirroring and dual parity to reside partially on each.
 
-To help you create such volumes, Azure Stack HCI and Windows Server 2019 provide default tier templates called **MirrorOnMediaType** and **NestedMirrorOnMediaType** (for performance), and **ParityOnMediaType** and **NestedParityOnMediaType** (for capacity). They encapsulate definitions for three-way mirroring on the faster capacity drives (if applicable), and dual parity on the slower capacity drives (if applicable).
+To help you create such volumes, Azure Stack HCI provides default tier templates called **MirrorOn*MediaType*** and **NestedMirrorOn*MediaType*** (for performance), and **ParityOn*MediaType*** and **NestedParityOn*MediaType*** (for capacity), where *MediaType* is HDD or SSD. The templates represent storage tiers based on media types and encapsulate definitions for three-way mirroring on the faster capacity drives (if applicable), and dual parity on the slower capacity drives (if applicable).
 
 You can see them by running the **Get-StorageTier** cmdlet on any server in the cluster.
 
@@ -121,7 +121,7 @@ You can see them by running the **Get-StorageTier** cmdlet on any server in the 
 Get-StorageTier | Select FriendlyName, ResiliencySettingName, PhysicalDiskRedundancy
 ```
 
-If you have a two-node cluster with only HDD, your output might look something like this: **(It seems like the below is a bad example, since nobody does tiering with just HDD. Do either of you know what the output would look like with SSD?)**
+For example, if you have a two-node cluster with only HDD, your output might look something like this:
 
 ```PowerShell
 FriendlyName      ResiliencySettingName PhysicalDiskRedundancy
@@ -132,7 +132,7 @@ NestedMirrorOnHDD Mirror                                     3
 MirrorOnHDD       Mirror                                     1
 ```
 
-To create tiered volumes, reference these tier templates using the **StorageTierFriendlyNames** and **StorageTierSizes** parameters of the **New-Volume** cmdlet. For example, the following cmdlet creates one volume which mixes three-way mirroring and dual parity in 30:70 proportions. **(Is the command below still correct? I just changed the FriendlyNames)**
+To create tiered volumes, reference these tier templates using the **StorageTierFriendlyNames** and **StorageTierSizes** parameters of the **New-Volume** cmdlet. For example, the following cmdlet creates one volume which mixes three-way mirroring and dual parity in 30:70 proportions.
 
 ```PowerShell
 New-Volume -FriendlyName "Volume1" -FileSystem CSVFS_ReFS -StoragePoolFriendlyName S2D* -StorageTierFriendlyNames MirrorOnHDD, Capacity -StorageTierSizes 300GB, 700GB
@@ -142,7 +142,7 @@ Repeat as needed to create more than one volume.
 
 ### Nested resiliency volumes
 
-On two-node cluster configurations, it's possible to create "special volumes" that can tolerate multiple failures.
+Nested resiliency only applies to two-server clusters; you can't use nested resiliency if your cluster has three or more servers. Nested resiliency enables a two-server cluster to withstand multiple hardware failures at the same time without loss of storage availability, allowing users, apps, and virtual machines to continue to run without disruption. To learn more, see [Plan volumes: Choosing the resiliency type](plan-volumes.md#choosing-the-resiliency-type).
 
 #### Create nested storage tiers
 
@@ -174,7 +174,7 @@ New-Volume -StoragePoolFriendlyName S2D* -FriendlyName MyParityNestedVolume -Sto
 
 ### Storage tier summary table
 
-The following tables summarize the storage tiers that are/can be created in Azure Stack HCI and Windows Server 2019.
+The following tables summarize the storage tiers that are/can be created in Azure Stack HCI.
 
 **NumberOfNodes: 2**
 
