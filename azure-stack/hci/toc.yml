@@ -118,6 +118,8 @@
       href: manage/tenant-logical-networks.md
     - name: Manage tenant virtual networks
       href: manage/tenant-virtual-networks.md
+    - name: Manage ACLs
+      href: manage/access control lists.md
   - name: Manage Azure services
     items:
     - name: Register Windows Admin Center with Azure

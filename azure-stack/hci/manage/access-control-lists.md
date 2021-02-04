@@ -38,18 +38,6 @@ TBD
 <!---Example figure format--->
 <!---:::image type="content" source="./media/network-controller/topology-option-1.png" alt-text="Option 1 to create a physical network for the Network Controller." lightbox="./media/network-controller/topology-option-1.png":::--->
 
-### Cache
-TBD
-
-<!---Example table format.--->
-| Fun                                      | Table                                   |
-| :--------------------------------------- | :-------------------------------------- |
-| left-aligned column                      | right-aligned column                    |
-| $100                                     | $100                                    |
-| $10                                      | $10                                     |
-
 ## Next steps
 For more information, see also:
-<!---Placeholders for format examples. Replace all before initial topic review.--->
-
 - [Software Defined Networking (SDN) in Azure Stack HCI](../concepts/software-defined-networking.md)
