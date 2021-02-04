@@ -7,19 +7,19 @@ schema:
 
 # Update-AksHci
 
-## SYNOPSIS
+## Synopsis
 Update the Azure Kubernetes Service host to the latest Kubernetes version.
 
-## SYNTAX
+## Syntax
 
 ```powershell
 Update-AksHci
 ```
 
-## DESCRIPTION
+## Description
 Update the Azure Kubernetes Service host to the latest Kubernetes version.
 
-## EXAMPLES
+## Examples
 
 ### Example
 ```powershell

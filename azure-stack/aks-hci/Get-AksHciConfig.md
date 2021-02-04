@@ -7,19 +7,19 @@ schema:
 
 # Get-AksHciConfig
 
-## SYNOPSIS
+## Synopsis
 List the current configuration settings for the Azure Kubernetes Service host.
 
-## SYNTAX
+## Syntax
 
 ```powershell
 Get-AksHciConfig
 ```
 
-## DESCRIPTION
+## Description
 List the current configuration settings for the Azure Kubernetes Service host.
 
-## EXAMPLES
+## Examples
 
 ### Example 
 ```powershell

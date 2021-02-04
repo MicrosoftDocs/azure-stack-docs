@@ -7,21 +7,26 @@ schema:
 
 # Get-AksHciKubernetesVersion
 
-## SYNOPSIS
-List available version for creating managed Kubernetes cluster.
+## Synopsis
+List the available versions for creating a managed Kubernetes cluster.
 
-## SYNTAX
+## Syntax
 
 ```powershell
 Get-AksHciKubernetesVersion
 ```
 
-## DESCRIPTION
-List available version for creating managed Kubernetes cluster.
+## Description
+List the available versions for creating a managed Kubernetes cluster.
 
-## EXAMPLES
+## Examples
 
 ### Example 
 ```powershell
 PS C:\> Get-AksHciKubernetesVersion
+```
+
+```Output
+Linux {v1.16.10, v1.16.15, v1.17.11, v1.17.13...}
+Windows {v1.18.8, v1.18.10}
 ```

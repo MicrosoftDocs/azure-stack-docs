@@ -7,19 +7,19 @@ schema:
 
 # Get-AksHciUpdates
 
-## SYNOPSIS
+## Synopsis
 List available updates for Azure Kubernetes Service on Azure Stack HCI
 
-## SYNTAX
+## Syntax
 
 ```powershell
 Get-AksHciUpdates
 ```
 
-## DESCRIPTION
+## Description
 List available updates for Azure Kubernetes Service on Azure Stack HCI
 
-## EXAMPLES
+## Examples
 
 ### Example
 ```powershell

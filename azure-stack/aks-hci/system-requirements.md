@@ -98,9 +98,10 @@ You must also reserve 1 IP address per Kubernetes service and 1 IP address per K
 
 Virtual IP (VIP) pools are mandatory for an AKS on Azure Stack HCI deployment. VIP pools are a range of reserved static IP addresses that are used for long-lived deployments to guarantee that your deployment and application workloads are always reachable. Currently, we only support IPv4 addresses, so you must verify that you have disabled IPv6 on all network adapters. If you're using DHCP, make sure your virtual IP addresses are not a part of the DHCP IP reserve. If you're using static IP, make sure your virtual IPs are from the same subnet. 
 
-At a minimum, you should reserve one IP address per cluster (workload and AKS host), and one IP address per Kubernetes service. The number of required IP addresses in the VIP pool range varies depending on the number of workload clusters and Kubernetes services you have in your environment. We recommend reserving 16 static IP addresses for your AKS-HCI deployment. 
+At a minimum, you should reserve one IP address per cluster (workload and AKS host), and one IP address per Kubernetes service. The number of required IP addresses in the VIP pool ranges varies depending on the number of workload clusters and Kubernetes services you have in your environment. We recommend reserving 16 static IP addresses in each VIP pool for your AKS-HCI deployment. 
 
-When setting up the AKS host, use the `-vipPoolStartIp` and `-vipPoolEndIp` parameters in `Set-AksHciConfig` to create a VIP pool.
+When setting up the AKS host, use the [New-AksHciNetworkSetting](./new-akshcinetworksetting) command to create VIP pools.
+
 
 #### MAC Pool Range
 We recommend having a minimum of 16 MAC addresses in the range to allow for multiple control plane nodes in each cluster. When setting up the AKS host, use the `-macPoolStart` and `-macPoolEnd` parameters in `Set-AksHciConfig` to reserve MAC addresses from the DHCP MAC pool for Kubernetes services.
@@ -155,7 +156,7 @@ Azure Kubernetes Service on Azure Stack HCI deployments that exceed the followin
 
 ## Windows Admin Center requirements
 
-Windows Admin Center is the user interface for creating and managing Azure Kubernetes Service on Azure Stack HCI. To use Windows Admin Center with Azure Kubernetes Service on Azure Stack HCI, you must meet all the criteria listed below. 
+Windows Admin Center is the user interface for creating and managing Azure Kubernetes Service on Azure Stack HCI. To use Windows Admin Center with Azure Kubernetes Service on Azure Stack HCI, you must meet all the criteria listed below. You can run Windows Admin Center on a server or Windows 10 machine. 
 
 Requirements for the machine running the Windows Admin Center gateway: 
 
