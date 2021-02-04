@@ -20,8 +20,8 @@ Read the following sections before you replace the Heater.
 
 ## Unpacking and taking inventory of the heater
 
-The Tactical 1U Heater -- V2 (the heater) typically ships as a
-pre-installed sub-component of the Tactical Cloud Appliance system.
+The Ruggedized 1U Heater -- V2 (the heater) typically ships as a
+pre-installed sub-component of the Ruggedized Cloud Appliance system.
 When shipped separately, the heater is shipped in a standard
 commercial shipping carton with protective packing material.
 

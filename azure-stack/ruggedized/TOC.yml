@@ -512,12 +512,6 @@
         href: ../operator/azure-stack-troubleshooting.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Support link reference 
         href: operator/aks-refer-table-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-#      - name: Tactical Cloud Appliance safety guide (V1)
-#        href: tca-safety-guide-version-one.md
-#      - name: Tactical Cloud Appliance safety guide (V2)
-#        href: tca-safety-guide-version-two.md
-#      - name: Tactical Cloud Appliance service manual (V2)
-#        href: tca-service-manual-version-two.md
       - name: Customer replaceable units
         items:
         - name: Handling precautions
@@ -563,9 +557,9 @@
         - name: Azure Stack Hub hardware diagram
           href: customer-replaceable-unit/azure-stack-hub-hardware-diagram.md
         - name: Server overview
-          href: customer-replaceable-unit/emc-poweredge-tactical-r640-server-overview.md
+          href: customer-replaceable-unit/r640-server-overview.md
         - name: Indicators and codes
-          href: customer-replaceable-unit/emc-poweredge-tactical-indicators-and-codes.md
+          href: customer-replaceable-unit/indicators-and-codes.md
         - name: Access iDRAC interface via direct USB connection
           href: customer-replaceable-unit/access-idrac-over-usb-connection.md
         - name: Install firmware via iDRAC interface

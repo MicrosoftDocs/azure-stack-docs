@@ -20,7 +20,7 @@ Read the following sections before you remove the old heater and install the new
 
 ## Unpacking and taking inventory of the heater 
 
-The Tactical 1U Heater – V2 (the heater) typically ships as a pre-installed sub-component of the Tactical Cloud Appliance system. When shipped separately, the heater is shipped in a standard commercial shipping carton with protective packing material. 
+The Ruggedized 1U Heater – V2 (the heater) typically ships as a pre-installed sub-component of the Ruggedized Cloud Appliance system. When shipped separately, the heater is shipped in a standard commercial shipping carton with protective packing material. 
 
 Carefully remove the heater from the shipping carton. When packed in a shipping carton, the heater has all key components installed in the chassis. The heater is usually part of a transit case and integrated with an entire group of devices in a transit case. Keep the shipping carton and packing materials for any possible need to re-ship the heater in the future. While the heater is robust, ensure that the unit is properly packed for shipment. 
 
@@ -75,7 +75,7 @@ The heater is mounted into a transit case capable of holding the unit.
 
     ![Pulling away the filter assembly.](media/image-89.png)
 
-1. Pull the release tabs away from the Tactical 1U Heater - V2 until the cover releases and then move the cover outward from the chassis rack in the pod. 
+1. Pull the release tabs away from the Ruggedized 1U Heater - V2 until the cover releases and then move the cover outward from the chassis rack in the pod. 
 
     ![Diagram that shows the release tabs.](media/image-90.png)
 
@@ -83,7 +83,7 @@ The heater is mounted into a transit case capable of holding the unit.
 
     ![Diagram that shows the plenum being removed.](media/image-91.png)
 
-1. In the front of the case, remove the zip tie from under the Tactical 1U Heater - V2. Use the diagonal cutters if necessary. 
+1. In the front of the case, remove the zip tie from under the Ruggedized 1U Heater - V2. Use the diagonal cutters if necessary. 
 
     ![Diagram that shows the bracket for the zip tie and the micro connector for the temperature inlet sensor highlighted.](media/image-92.png)
 
@@ -126,7 +126,7 @@ The heater is mounted into a transit case capable of holding the unit.
     ![Diagram that shows the plenum being pulled down from the left-back side.](media/image-101.png)
 
 
-1. At the back of the case, unplug the server power cables from the Tactical 1U Heater - V2 and allow them to hang freely. 
+1. At the back of the case, unplug the server power cables from the Ruggedized 1U Heater - V2 and allow them to hang freely. 
 
     ![Diagram that shows the location of the server power cables at the back of the case.](media/image-102.png)
 
@@ -235,19 +235,19 @@ The heater is mounted into a transit case capable of holding the unit.
 > [!WARNING]
 > Use caution when lifting the pod to prevent damage to the equipment and personal injury. For best results, use a two-person lift or lifting equipment to reduce personal injury or damage to the components or pod. 
 
-1. At the front of the pod, slide a new zip tie though the loop in the bottom front of the Tactical 1U Heater - V2, but do not zip the tie into place. 
+1. At the front of the pod, slide a new zip tie though the loop in the bottom front of the Ruggedized 1U Heater - V2, but do not zip the tie into place. 
 
     ![Diagram that shows the loop on the bottom front of the heater.](media/image-119.png)
 
 
-1. At the front of the pod, insert the Tactical 1U Heater - V2 by sliding it in from front to back. Ensure that the zip tie does not fall out. 
+1. At the front of the pod, insert the Ruggedized 1U Heater - V2 by sliding it in from front to back. Ensure that the zip tie does not fall out. 
 
-1. At the front of the pod, install the two .064 inch shims between the rack and the Tactical 1U Heater - V2. 
+1. At the front of the pod, install the two .064 inch shims between the rack and the Ruggedized 1U Heater - V2. 
 
     ![Diagram that shows the location of the shims on the front of the pod.](media/image-120.png)
 
 
-1. At the back of the pod, install the two .064 inch shims between the rack and the Tactical 1U Heater - V2. 
+1. At the back of the pod, install the two .064 inch shims between the rack and the Ruggedized 1U Heater - V2. 
 
     ![Diagram that shows the location of the shims on the back of the pod.](media/image-121.png)
 
@@ -269,19 +269,19 @@ The heater is mounted into a transit case capable of holding the unit.
     ![Diagram that shows the two server rear mounting screws being reattached.](media/image-124.png)
 
 
-1. At the back of the pod, install the Tactical 1U Heater - V2 four rear mounting 10-32 screws, lock washers, and flat washers. Apply primer and low strength threadlocker to the screw threads, and torque the screws to 27 inch-pounds. 
+1. At the back of the pod, install the Ruggedized 1U Heater - V2 four rear mounting 10-32 screws, lock washers, and flat washers. Apply primer and low strength threadlocker to the screw threads, and torque the screws to 27 inch-pounds. 
 
     ![Diagram that shows the four screws for the heater being reattached.](media/image-125.png)
 
 
-1. At the back of the pod, remove the two shims from below the Tactical 1U Heater - V2 and place them in the Heater Kit for future use. 
+1. At the back of the pod, remove the two shims from below the Ruggedized 1U Heater - V2 and place them in the Heater Kit for future use. 
 
-1. At the front of the pod, remove the two shims from below the Tactical 1U Heater - V2 and place them in the Heater Kit for future use. 
+1. At the front of the pod, remove the two shims from below the Ruggedized 1U Heater - V2 and place them in the Heater Kit for future use. 
 
-1. At the back of the pod, install the six 4-40 screws that attach the plenum hinge to the Tactical 1U Heater - V2. Apply primer and low strength threadlocker to the screw threads, and torque the screws to 4.5 inch-pounds. 
+1. At the back of the pod, install the six 4-40 screws that attach the plenum hinge to the Ruggedized 1U Heater - V2. Apply primer and low strength threadlocker to the screw threads, and torque the screws to 4.5 inch-pounds. 
 
     > [!NOTE]
-    > Place an electrostatic discharge (ESD) bag or ESD foam over the Tactical 1U Heater - V2 vent to prevent foreign object damage to the heater. 
+    > Place an electrostatic discharge (ESD) bag or ESD foam over the Ruggedized 1U Heater - V2 vent to prevent foreign object damage to the heater. 
 
 1. At the back of the pod, install the left inner cableway bracket. While pressing the bracket inwards toward the rack, fully tighten the captive 6-32 screws then torque the screws to 9 inch-pounds. 
 
@@ -305,7 +305,7 @@ The heater is mounted into a transit case capable of holding the unit.
 
 1. Torque the nut to 16 inch-pounds. 
 
-1. At the back of the pod, reconnect the two server power cables, then the four Tactical 1U Heater - V2 power cables into their original locations. 
+1. At the back of the pod, reconnect the two server power cables, then the four Ruggedized 1U Heater - V2 power cables into their original locations. 
 
 1. At the back of the pod, linkage should be resting up and behind the ball detents, if not move the linkage arm up to the required position. 
 
