@@ -102,6 +102,7 @@ At a minimum, you should reserve one IP address per cluster (workload and AKS ho
 
 When setting up the AKS host, use the [New-AksHciNetworkSetting](./new-akshcinetworksetting) command to create VIP pools.
 
+
 #### MAC Pool Range
 We recommend having a minimum of 16 MAC addresses in the range to allow for multiple control plane nodes in each cluster. When setting up the AKS host, use the `-macPoolStart` and `-macPoolEnd` parameters in `Set-AksHciConfig` to reserve MAC addresses from the DHCP MAC pool for Kubernetes services.
   
@@ -155,7 +156,7 @@ Azure Kubernetes Service on Azure Stack HCI deployments that exceed the followin
 
 ## Windows Admin Center requirements
 
-Windows Admin Center is the user interface for creating and managing Azure Kubernetes Service on Azure Stack HCI. To use Windows Admin Center with Azure Kubernetes Service on Azure Stack HCI, you must meet all the criteria listed below. You can run Windows Admin Center on a server or a Windows 10 machine. 
+Windows Admin Center is the user interface for creating and managing Azure Kubernetes Service on Azure Stack HCI. To use Windows Admin Center with Azure Kubernetes Service on Azure Stack HCI, you must meet all the criteria listed below. You can run Windows Admin Center on a server or Windows 10 machine. 
 
 Requirements for the machine running the Windows Admin Center gateway: 
 
