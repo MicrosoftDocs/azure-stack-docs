@@ -124,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -controlPlaneVmSize
-The size of the VM to create for the control plane. To get a list of available VM sizes, run `Get-AksHciVmSize`.
+The size of the VM to create for the control plane. Default is Standard_A4_V2. To get a list of available VM sizes, run `Get-AksHciVmSize`.
 
 ```yaml
 Type: System.String
