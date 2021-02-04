@@ -25,11 +25,25 @@ Before getting started, make sure you have satisfied all the prerequisites on th
    > [!IMPORTANT]
    > When removing Azure Kubernetes Service on Azure Stack HCI, see [Remove Azure Kubernetes Service on Azure Stack HCI](#remove-azure-kubernetes-service-on-azure-stack-hci) and carefully follow the instructions. 
 
-## Step 1: Install the AksHci PowerShell module
+## Step 1: Download and install the AksHci PowerShell module
+
+Download the `AKS-HCI-Public-Preview-Feb-2021` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module.
+
+If you have previously installed Azure Kubernetes Service on Azure Stack HCI using PowerShell or Windows Admin Center, run the following command before proceeding.
 
    ```powershell
-   Install-Module -Name AksHci -RequiredVersion 0.2.16 -Repository PSGallery
+   Uninstall-AksHci
    ```
+
+**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.Day2, and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once this is done, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`).
+
+   ```powershell
+
+   Import-Module AksHci
+
+   ```
+
+After running the above command, close all PowerShell windows and reopen an administrative session to run the commands in the following steps.
 
 ### Step 1.1: Clean install of the AksHci PowerShell module
 
@@ -107,7 +121,7 @@ External External Mellanox ConnectX-3 Pro Ethernet Adapter
 To create a virtual network for the nodes in your deployment to use, create an environment variable with the [New-AksHciNetworkSetting](.\new-akshcinetworksetting.md) PowerShell command. This will be used later to configure a deployment that uses static IP.
 
    ```powershell
-   $vnet = New-AksHciNetworkSetting -vnetName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipaddressprefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsservers "172.16.0.1"
+    $vnet = New-AksHciNetworkSetting -vnetName "External" -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1"
    ```
 
 > [!NOTE]
@@ -219,6 +233,7 @@ Install-AksHci
 ```
 
 ## Remove Azure Kubernetes Service on Azure Stack HCI
+
 
 To remove Azure Kubernetes Service on Azure Stack HCI, run the following command. This command will remove the old configuration, and you will have to run `Set-AksHciConfig` again when you reinstall.
 
