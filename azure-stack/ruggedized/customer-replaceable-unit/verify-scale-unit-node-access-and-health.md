@@ -47,7 +47,7 @@ resumed.
     alerts. If any unexpected alerts are present, verify with Dell
     Technologies Support that they can be cleared or safely ignored.
     
-    [![Screenshot that shows the 'Properties' page with the 'Name' section highlighted.](media/image-19-inline.png)](media/image-19-expanded.png#lightbox)]
+    [![Screenshot that shows the 'Properties' page with the 'Name' section highlighted.](media/image-19-inline.png)](media/image-19-expanded.png#lightbox)
     
 5.  Identify the Scale Unit nodes.
 
