@@ -154,14 +154,14 @@ Azure Kubernetes Service on Azure Stack HCI deployments that exceed the followin
 | Physical servers per cluster | 4       |
 | Kubernetes Clusters            | 4       |
 | Total number of VMs          | 200     |
+
 ## Windows Admin Center requirements
 
 Windows Admin Center is the user interface for creating and managing Azure Kubernetes Service on Azure Stack HCI. To use Windows Admin Center with Azure Kubernetes Service on Azure Stack HCI, you must meet all the criteria in the list below. 
 
 Here are the requirements for the machine running the Windows Admin Center gateway: 
 
- - Windows 10 or Windows Server machine (we don't support running Windows Admin Center on the Azure Stack HCI or Windows Server 2019 Datacenter cluster right now)
- - 60 GB of free space
+ - Windows 10 or Windows Server machine
  - [Registered with Azure](/windows-server/manage/windows-admin-center/azure/azure-integration)
  - In the same domain as the Azure Stack HCI or Windows Server 2019 Datacenter cluster
 
