@@ -6,7 +6,7 @@ author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/21/2021
+ms.date: 02/04/2021
 ---
 
 # Compare Azure Stack HCI to Azure Stack Hub
@@ -37,7 +37,7 @@ The following table compares use cases for which Azure Stack Hub is a better fit
 | Azure Stack HCI                                                                 | Azure Stack Hub                                                                          |
 | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | Azure Stack HCI doesn't natively enforce or provide for multi-tenancy. | Use Azure Stack Hub for self-service Infrastructure-as-a-Service (IaaS), with strong isolation and precise usage tracking and chargeback for multiple colocated tenants. Ideal for service providers and enterprise private clouds. Templates from the Azure Marketplace. | 
-| Azure Stack HCI doesn't run Platform-as-a-Service (PaaS) services on-premises. | Use Azure Stack Hub to develop and run apps that rely on PaaS services like Web Apps, Functions, or Event Hubs on-premises. These services run on Azure Stack Hub exactly like they do in Azure, providing a consistent hybrid development and runtime environment. |
+| Azure Stack HCI is not intended to run Platform-as-a-Service (PaaS) services on-premises, although it does include the ability to host [Azure Kubernetes Service](../../aks-hci/overview.md). | Use Azure Stack Hub to develop and run apps that rely on PaaS services like Web Apps, Functions, or Event Hubs on-premises. These services run on Azure Stack Hub exactly like they do in Azure, providing a consistent hybrid development and runtime environment. |
 | Azure Stack HCI doesn't natively include any DevOps tooling. | Use Azure Stack Hub to modernize app deployment and operation with DevOps practices like infrastructure as code, continuous integration and continuous deployment (CI/CD), and convenient features like Azure-consistent VM extensions. Ideal for Dev and DevOps teams. |
 
 ## Next steps

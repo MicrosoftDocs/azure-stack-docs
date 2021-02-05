@@ -1,17 +1,17 @@
 ---
-title: Use Datacenter Firewall for SDN in Azure Stack HCI
-description: Use this topic to get started with Datacenter Firewall for Software-Defined Networking in Azure Stack HCI.
+title: Use Datacenter Firewall for SDN in Azure Stack HCI and Windows Server
+description: Use this topic to get started with Datacenter Firewall for Software-Defined Networking in Azure Stack HCI, Windows Server 2019, and Windows Server 2016.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/17/2020
+ms.date: 02/02/2021
 ---
 
-# Use Datacenter Firewall for Software-Defined Networking in Azure Stack HCI
+# Use Datacenter Firewall for Software-Defined Networking in Azure Stack HCI and Windows Server
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019; Windows Server 2016
 
 This topic provides instructions for configuring access control lists (ACLs) to manage data traffic flow using [Datacenter Firewall](../concepts/datacenter-firewall-overview.md) for Software Defined Networking (SDN) in Azure Stack HCI using Windows PowerShell. You enable and configure Datacenter Firewall by creating ACLs that get applied to a subnet or a network interface. The example scripts in this topic use Windows PowerShell commands exported from the **NetworkController** module. You can also use Windows Admin Center to configure and manage ACLs.
 
@@ -202,7 +202,7 @@ New-NetworkControllerAccessControlList -ResourceId "Subnet-192-168-0-0" -Propert
 
 ## Add an ACL to a network interface
 
-Once you've created an ACL and assigned it to a virtual subnet, you might want to override that default ACL on the virtual subnet with a specific ACL for an individual network interface. In this case, you apply specific ACLs directly to network interfaces attached to VLANs, instead of the virtual network. If you have ACLs set on the virtual subnet connected to the network interface, both ACLs are applied and prioritizes the network interface ACLs above the virtual subnet ACLs.
+Once you've created an ACL and assigned it to a virtual subnet, you might want to override that default ACL on the virtual subnet with a specific ACL for an individual network interface. Beginning in Windows Server 2019 Datacenter, you can apply specific ACLs directly to network interfaces attached to SDN logical networks, in addition to SDN virtual networks. If you have ACLs set on the virtual subnet connected to the network interface, both ACLs are applied, and the network interface ACLs are prioritized above the virtual subnet ACLs.
 
 In this example, we demonstrate how to add an ACL to a virtual network.
 
@@ -254,7 +254,7 @@ In this example, we show you how to remove an ACL from a network interface. Remo
 
 ## Firewall auditing
 
-Firewall auditing is a new capability for the Datacenter Firewall that records any flow processed by SDN firewall rules. All ACLs that have logging enabled are recorded. The log files must be in a syntax that is consistent with the [Azure Network Watcher flow logs](/azure/network-watcher/network-watcher-nsg-flow-logging-overview). These logs can be used for diagnostics or archived for later analysis.
+Introduced in Windows Server 2019, firewall auditing is a new capability for the Datacenter Firewall that records any flow processed by SDN firewall rules. All ACLs that have logging enabled are recorded. The log files must be in a syntax that is consistent with the [Azure Network Watcher flow logs](/azure/network-watcher/network-watcher-nsg-flow-logging-overview). These logs can be used for diagnostics or archived for later analysis.
 
 Here is a sample script to enable firewall auditing on the host servers. Update the variables at the beginning and run this on an Azure Stack HCI cluster with [Network Controller](../concepts/network-controller-overview.md) deployed:
 
@@ -407,4 +407,4 @@ For related information, see also:
 
 - [Datacenter Firewall overview](../concepts/datacenter-firewall-overview.md)
 - [Network Controller overview](../concepts/network-controller-overview.md)
-- [SDN in Azure Stack HCI](../concepts/software-defined-networking.md)
+- [SDN in Azure Stack HCI and Windows Server](../concepts/software-defined-networking.md)

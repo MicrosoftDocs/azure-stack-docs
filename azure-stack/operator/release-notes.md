@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/25/2021
+ms.date: 02/03/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -118,7 +118,7 @@ For information about security updates in this update of Azure Stack Hub, see [A
 
 ## Hotfixes
 
-Azure Stack Hub releases hotfixes on a regular basis. Starting with the 2005 release, when you update to a new major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+Azure Stack Hub releases hotfixes on a regular basis. Make sure you install the latest 2005 hotfix before updating to 2008. Also, starting with the 2005 release, when you update to a new major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any are available at the time of package download) in the new major version are installed automatically. Your 2008 installation is then current with all hotfixes. From that point forward, if a hotfix is released for 2008, you should install it.
 
 > [!NOTE]
 > Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
@@ -129,11 +129,11 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 ### After successfully applying the 2008 update
 
-Because Azure Stack Hub hotfixes are cumulative, as a best practice you should install all hotfixes released for your build, to ensure the best update experience between major releases. When you update to a new major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any) in the new major version are installed automatically.
+Because Azure Stack Hub hotfixes are cumulative, as a best practice you should install all hotfixes released for your build, to ensure the best update experience between major releases. When you update to a new major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any are available at the time of package download) in the new major version are installed automatically.
 
 After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2008.23.108](https://support.microsoft.com/topic/c0d203fd-7585-4c8d-8ea5-ae13897e352e)
+- [Azure Stack Hub hotfix 1.2008.25.114](https://support.microsoft.com/topic/87ee234e-7f33-4342-bc0a-5779dbb33263)
 ::: moniker-end
 
 ::: moniker range="azs-2005"
@@ -233,7 +233,7 @@ Starting with the 2005 release, when you update to a new major version (for exam
 
 After the installation of 2005, if any 2005 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2005.28.98](https://support.microsoft.com/topic/ecf727b1-3dc1-4070-ace8-1291cc437389)
+- [Azure Stack Hub hotfix 1.2005.29.100](https://support.microsoft.com/topic/10c1b6e2-7bf7-4f71-8204-f1b12e2f744a)
 ::: moniker-end
 
 ::: moniker range="azs-2002"
@@ -421,5 +421,5 @@ After the installation of this update, install any applicable hotfixes.
 ::: moniker-end
 
 ::: moniker range="<azs-2002"
-You can access [older versions of Azure Stack Hub release notes on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived documents are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
+You can access older versions of Azure Stack Hub release notes in the table of contents on the left side, under [**Resources > Release notes archive**](./relnotearchive/release-notes-1910.md). These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end

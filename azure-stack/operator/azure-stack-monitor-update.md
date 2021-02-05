@@ -27,7 +27,7 @@ The following new PowerShell cmdlets for update management are included in the 1
 | | |
 
 ## Verify the cmdlets are available
-Because the cmdlets are new in the 1710 update package for Azure Stack Hub, the 1710 update process needs to get to a certain point before the monitoring capability is available. Typically, the cmdlets are available if the status in the administrator portal indicates that the 1710 update is at the **Restart Storage Hosts** step. Specifically, the cmdlet update occurs during **Step: Running step 2.6 - Update PrivilegedEndpoint allow list**.
+Because the cmdlets are new in the 1710 update package for Azure Stack Hub, the 1710 update process needs to get to a certain point before the monitoring capability is available. Typically, the cmdlets are available if the status in the administrator portal indicates that the 1710 update is at the **Restart Storage Hosts** step. Specifically, the cmdlet update occurs during **Step: Running step 2.6 - Update PrivilegedEndpoint allowlist**.
 
 You can also determine whether the cmdlets are available programmatically by querying the command list from the privileged endpoint. To do this query, run the following commands from the hardware lifecycle host or from a Privileged Access Workstation. Also, make sure the privileged endpoint is a trusted host. For more information, see step 1 of [Access the privileged endpoint](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint).
 

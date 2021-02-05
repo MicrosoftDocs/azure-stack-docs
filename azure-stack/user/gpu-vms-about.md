@@ -5,7 +5,7 @@ author: mattbriggs
 ms.author: mabrigg
 ms.service: azure-stack
 ms.topic: reference
-ms.date: 10/20/2020
+ms.date: 2/1/2021
 ms.reviewer: kivenkat
 ms.lastreviewed: 07/07/2020
 

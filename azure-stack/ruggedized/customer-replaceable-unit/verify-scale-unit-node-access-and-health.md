@@ -39,7 +39,7 @@ resumed.
     note of these as may be needed later in this procedure or will be
     needed by support in the event of any issues.
 
-    [![Screenshot that shows the 'Administration' page with the 'Privileged endpoint I P addresses' section highlighted.](media/image-18-inline.png)](media/image-18-expanded.png)
+    [![Screenshot that shows the 'Administration' page with the 'Privileged endpoint I P addresses' section highlighted.](media/image-18-inline.png)](media/image-18-expanded.png#lightbox)
     
 4.  Review any current alerts.
 
@@ -47,7 +47,7 @@ resumed.
     alerts. If any unexpected alerts are present, verify with Dell
     Technologies Support that they can be cleared or safely ignored.
     
-    [![Screenshot that shows the 'Properties' page with the 'Name' section highlighted.](media/image-19-inline.png)](media/image-19-expanded.png)]
+    [![Screenshot that shows the 'Properties' page with the 'Name' section highlighted.](media/image-19-inline.png)](media/image-19-expanded.png#lightbox)
     
 5.  Identify the Scale Unit nodes.
 
@@ -64,7 +64,7 @@ resumed.
         on the **BMC** IP address link, which opens the server's iDRAC web
         interface in a new tab or window.
 
-        [![Screenshot that shows the 'Nodes' page with the 'BMC' column highlighted.](media/image-20-inline.png)](media/image-20-expanded.png) 
+        [![Screenshot that shows the 'Nodes' page with the 'BMC' column highlighted.](media/image-20-inline.png)](media/image-20-expanded.png#lightbox) 
     
     1.  Log in to the iDRAC interface and verify the service tag of the node
         in the **System Information** pane.
@@ -73,5 +73,5 @@ resumed.
         and correlate these service tags with the scheduled hardware
         replacement to determine which node or nodes need to be serviced.
 
-        [![Screenshot that shows the 'Dashboard' with the 'Service Tag' highlighted.](media/image-21-inline.png)](media/image-21-expanded.png)
+        [![Screenshot that shows the 'Dashboard' with the 'Service Tag' highlighted.](media/image-21-inline.png)](media/image-21-expanded.png#lightbox)
     

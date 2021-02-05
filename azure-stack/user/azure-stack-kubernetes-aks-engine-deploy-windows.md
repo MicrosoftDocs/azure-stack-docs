@@ -4,7 +4,7 @@ description: Learn how to use a Windows machine in your Azure Stack Hub to host 
 author: mattbriggs
 
 ms.topic: article
-ms.date: 09/16/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 09/16/2020

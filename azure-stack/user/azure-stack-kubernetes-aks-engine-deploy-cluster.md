@@ -4,7 +4,7 @@ description: How to deploy a Kubernetes cluster on Azure Stack Hub from a client
 author: mattbriggs
 
 ms.topic: article
-ms.date: 12/16/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 09/02/2020
@@ -27,10 +27,10 @@ You can specify a cluster specification in a document file using the JSON format
 
 This section looks at creating an API model for your cluster.
 
-1.  Start by using an Azure Stack Hub [example](https://github.com/Azure/aks-engine/tree/master/examples/azure-stack) API Model file and make a local copy for your deployment. From the machine, you installed AKS engine, run:
+1.  Start by using an Azure Stack Hub API Model file for [Linux](https://aka.ms/aksengine-json-example-raw) or for [Windows](https://aka.ms/aksengine-json-example-raw-win) and make a local copy for your deployment. From the machine, you installed AKS engine, run:
 
     ```bash
-    curl -o kubernetes-azurestack.json https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-azurestack.json
+    curl -o kubernetes-azurestack.json https://aka.ms/aksengine-json-example-raw
     ```
 
     > [!NOTE]  
@@ -76,7 +76,7 @@ This section looks at creating an API model for your cluster.
 
     | Field | Description |
     | --- | --- |
-    | count | Enter the number of agents you want for your deployment. The maximum count of nodes to use per subscription is 50. If you are deploying more than one cluster per subscription ensure that the total agent count doesn't go beyond 50. Make sure to use the configuration items specified in [the sample API model JSON file](https://aka.ms/aksengine-json-example).  |
+    | count | Enter the number of agents you want for your deployment. The maximum count of nodes to use per subscription is 50. If you are deploying more than one cluster per subscription ensure that the total agent count doesn't go beyond 50. Make sure to use the configuration items specified in [the sample API model JSON file](https://aka.ms/aksengine-json-example-raw).  |
     | vmSize | Enter [a size supported by Azure Stack Hub](./azure-stack-vm-sizes.md), example `Standard_D2_v2`. |
     | distro | Enter `aks-ubuntu-16.04`. |
 

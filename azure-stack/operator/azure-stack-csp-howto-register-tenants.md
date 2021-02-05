@@ -55,11 +55,11 @@ Update your registration with the new customer subscription. Azure reports the c
 1. Open Windows PowerShell in an elevated prompt, and run:  
 
    ```powershell
-   Add-AzAccount
+   Connect-AzAccount
    ```
 
    >[!NOTE]
-   > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using **Add-AzAccount**: `Remove-AzAccount-Scope Process`.
+   > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using **Connect-AzAccount**: `Remove-AzAccount-Scope Process`.
 
 2. Type your Azure credentials.
 3. In the PowerShell session, run:
@@ -88,7 +88,7 @@ The following section describes the parameters for the **New-AzResource** cmdlet
    ```
 
    >[!NOTE]
-   > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using **Add-AzAccount**: `Remove-AzAccount-Scope Process`.
+   > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using **Connect-AzAccount**: `Remove-AzAccount-Scope Process`.
 
 2. Type your Azure credentials.
 3. In the PowerShell session, run:
