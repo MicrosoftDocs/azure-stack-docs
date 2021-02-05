@@ -17,9 +17,3 @@ For example, you need to make choices regarding the CPU, memory density, storage
 An Azure Stack Hub solution is built as a hyperconverged cluster of compute and storage. The convergence allows for the sharing of the hardware capacity in the cluster, referred to as a *scale unit*. In Azure Stack Hub, a scale unit provides the availability and scalability of resources. A scale unit consists of a set of Azure Stack Hub servers, referred to as *hosts*. The infrastructure software is hosted within a set of virtual machines (VMs), and shares the same physical servers as the tenant VMs. All Azure Stack Hub VMs are then managed by the scale unit’s Windows Server clustering technologies and individual Hyper-V instances.
 
 The scale unit simplifies the acquisition and management of Azure Stack Hub. The scale unit also allows for the movement and scalability of all services (tenant and infrastructure) across Azure Stack Hub.
-
-The following topics provide more details about each component:
-
-- [Azure Stack Hub compute](azure-stack-capacity-planning-compute.md)
-- [Azure Stack Hub storage](azure-stack-capacity-planning-storage.md)
-- [Azure Stack Hub Capacity Planner](azure-stack-capacity-planner.md)

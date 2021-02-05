@@ -18,3 +18,9 @@ ms.lastreviewed: 05/31/2019
 # Capacity planning for Azure Stack Hub overview
 
 [!INCLUDE [capacity-planning-overview](../includes/capacity-planning-overview.md)]
+
+## Next steps
+
+- [Azure Stack Hub compute capacity](azure-stack-capacity-planning-compute.md)
+- [Azure Stack Hub storage capacity planning](azure-stack-capacity-planning-storage.md)
+- [Azure Stack Hub Capacity Planner](azure-stack-capacity-planner.md)

@@ -22,3 +22,9 @@ ms.lastreviewed: 01/10/2020
 # Overview of Azure Stack Hub capacity planning - Modular Data Center (MDC)
 
 [!INCLUDE [capacity-planning-overview](../includes/capacity-planning-overview.md)]
+
+## Next steps
+
+- [Azure Stack Hub compute capacity](../operator/azure-stack-capacity-planning-compute.md)
+- [Azure Stack Hub storage capacity planning](../operator/azure-stack-capacity-planning-storage.md)
+- [Azure Stack Hub Capacity Planner - Modular Data Center (MDC)](azure-stack-capacity-planner.md)
