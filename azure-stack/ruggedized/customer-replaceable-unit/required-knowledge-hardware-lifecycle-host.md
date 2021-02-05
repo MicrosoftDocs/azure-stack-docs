@@ -57,8 +57,4 @@ If not connecting directly to the server using a crash cart, then you
 will need the iDRAC account credentials to gain access to the virtual
 KVM.
 
-## Dell EMC PowerEdge iDRAC
-
-You must understand how to navigate and use the Dell EMC PowerEdge
-iDRAC web interface.
 

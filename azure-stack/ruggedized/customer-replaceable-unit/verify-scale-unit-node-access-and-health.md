@@ -16,8 +16,6 @@ ms.lastreviewed:
 
 # Verifying Scale Unit node access and health
 
-
-
 Log in to the Privileged Access Workstation, launch the Administrator
 Portal, verify the system health, obtain the privileged endpoint IP
 addresses, and identify which nodes will need to be drained or
@@ -44,8 +42,7 @@ resumed.
 4.  Review any current alerts.
 
     In **Region Management**, select **Alerts** and review the current
-    alerts. If any unexpected alerts are present, verify with Dell
-    Technologies Support that they can be cleared or safely ignored.
+    alerts. If any unexpected alerts are present, verify with Microsoft Support that they can be cleared or safely ignored.
     
     [![Screenshot that shows the 'Properties' page with the 'Name' section highlighted.](media/image-19-inline.png)](media/image-19-expanded.png#lightbox)
     
