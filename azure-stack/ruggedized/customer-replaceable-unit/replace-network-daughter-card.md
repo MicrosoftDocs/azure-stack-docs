@@ -28,7 +28,7 @@ cards.
 
 3.  Review
 
-    -   Required knowledge for working with Scale Unit nodes in a Tactical Cloud Appliance
+    -   Required knowledge for working with Scale Unit nodes in a Ruggedized Cloud Appliance
 
     -   Required knowledge for working with the Hardware Lifecycle Host on page 5 if you are working with the Hardware Lifecycle Host
 
