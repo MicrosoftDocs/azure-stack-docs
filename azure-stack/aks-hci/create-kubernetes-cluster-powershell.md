@@ -11,12 +11,12 @@ ms.author: jeguan
 
 > Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
 
-In this quickstart, you learn how to use Windows PowerShell to create a Kubernetes cluster on Azure Stack HCI. You then learn how to scale your Kubernetes cluster and upgrade the Kubernetes version of your cluster. To instead use Windows Admin Center, see [Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center](setup.md).
+In this quickstart, you learn how to use Windows PowerShell to create an Azure Kubernetes cluster on Azure Stack HCI. You then learn how to scale your Kubernetes cluster and upgrade the Kubernetes version of your cluster. To instead use Windows Admin Center, see [Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center](setup.md).
 
 ## Before you begin
 
  - Make sure you have an Azure Stack Kubernetes host set up. If you don't, see [Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI using PowerShell](./setup-powershell.md).
- - Make sure you have the latest Aks-Hci PowerShell module installed. If don't, see [Download and install the AksHci PowerShell module](./setup-powershell.md#step-1-download-and-install-the-akshci-powershell-module).
+ - Make sure you have the latest Aks-Hci PowerShell module installed. If you don't, see [Download and install the AksHci PowerShell module](./setup-powershell.md#step-1-download-and-install-the-akshci-powershell-module).
 
 ## Step 1: Create a Kubernetes cluster
 
@@ -24,10 +24,9 @@ After installing your Azure Kubernetes Service host, you are ready to deploy a K
 
 Open PowerShell as an administrator and run the following [New-AksHciCluster](./new-akshcicluster) command.
 
-   ```powershell
-   New-AksHciCluster -name mycluster
-   ```
-
+```powershell
+New-AksHciCluster -name mycluster
+```
 
 ### Check your deployed clusters
 
@@ -44,7 +43,7 @@ If you need to scale your cluster up or down, you can change the number of contr
 To scale control plane nodes, run the following command.
 
 ```powershell
-Set-AksHciClusterNodeCount –name mycluster -controlPlaneNodeCount 2
+Set-AksHciClusterNodeCount –name mycluster -controlPlaneNodeCount 3
 ```
 
 To scale the worker nodes, run the following command.
