@@ -24,7 +24,7 @@ access the following concepts, guides, and web sites.
 The Privileged Access Workstation (PAW) is a dedicated workstation
 protected from the Internet and external threat vectors. It can reside
 on the Hardware Lifecycle Host (HLH) or externally on the customer
-network with routable access to the Azure Stack Hub Scale Unit nodes.
+network with routable access to the Azure Stack Hub scale unit nodes.
 
 To access the PAW, you must log in using Remote Desktop. Obtain the
 credentials and IP address from the customer.

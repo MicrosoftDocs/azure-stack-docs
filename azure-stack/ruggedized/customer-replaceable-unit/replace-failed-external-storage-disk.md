@@ -43,7 +43,7 @@ Use the following procedure to replace a failed data drive.
 
 5.  Complete
 
-    -   Powering off Scale Unit nodes if you are working with a scale unit node
+    -   Powering off scale unit nodes if you are working with a scale unit node
 
     -   Powering off the Hardware Lifecycle
         Host if you are working with the Hardware Lifecycle Host

@@ -27,20 +27,20 @@ Use the following procedure to replace a cooling fan or fans.
 
 3.  Review
 
-    -   Required knowledge for working with Scale Unit nodes in a Ruggedized Cloud Appliance
+    -   Required knowledge for working with scale unit nodes in a Ruggedized Cloud Appliance
 
     -   Required knowledge for working with the Hardware Lifecycle Host on page 5 if you are working with the Hardware Lifecycle Host
 
 4.  Complete
 
-    -   Verifying Scale Unit node access and health if you are working with a Scale Unit node
+    -   Verifying scale unit node access and health if you are working with a scale unit node
 
     -   Verifying Hardware Lifecycle Host access and
         health if you are working with the Hardware Lifecycle Host
 
 5.  Complete
 
-    -   Powering off Scale Unit nodes if you are working with a Scale Unit node
+    -   Powering off scale unit nodes if you are working with a scale unit node
 
     -   Powering off the Hardware Lifecycle
         Host if
@@ -58,7 +58,7 @@ Use the following procedure to replace a cooling fan or fans.
 3.  Replace the fan or fans.
 
     Follow the [fan replacement process](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/dell-emc-poweredge-r640-overview?guid=guid-f39be9ba-158c-45e3-b8b1-f07bb750d6d4)
-    for Scale Unit nodes or Hardware Lifecycle Hosts.
+    for scale unit nodes or Hardware Lifecycle Hosts.
     
 4.  Power on the node.
 
@@ -67,12 +67,12 @@ Use the following procedure to replace a cooling fan or fans.
     
 ## Next steps
 
-If you are working with a Scale Unit node:
+If you are working with a scale unit node:
 
-1.  Complete Powering on a Scale Unit
+1.  Complete Powering on a scale unit
     node
 
-2.  Complete Verifying Scale Unit node
+2.  Complete Verifying scale unit node
     health. If you are
     working with the Hardware Lifecycle Host:
 
