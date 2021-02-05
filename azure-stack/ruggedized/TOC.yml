@@ -530,7 +530,7 @@
           href: customer-replaceable-unit/power-off-scu.md
         - name: Replace DIMM
           href: customer-replaceable-unit/replace-dimm.md
-        - name: Replace failed external storage disk
+        - name: Replace failed data drive
           href: customer-replaceable-unit/replace-failed-external-storage-disk.md
         - name: Replace cooling fan
           href: customer-replaceable-unit/replace-cooling-fan.md
@@ -562,8 +562,6 @@
           href: customer-replaceable-unit/indicators-and-codes.md
         - name: Access iDRAC interface via direct USB connection
           href: customer-replaceable-unit/access-idrac-over-usb-connection.md
-        - name: Install firmware via iDRAC interface
-          href: customer-replaceable-unit/install-firmware-using-idrac.md
         - name: Privileged Access Workstation and privileged endpoint access
           href: customer-replaceable-unit/privileged-access-workstation.md
 
