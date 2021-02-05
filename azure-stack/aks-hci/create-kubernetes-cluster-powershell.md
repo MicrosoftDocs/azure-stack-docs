@@ -11,12 +11,12 @@ ms.author: jeguan
 
 > Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
 
-In this quickstart, you learn how to use Windows PowerShell to create a Kubernetes cluster on Azure Stack HCI. You then learn how to scale your Kubernetes cluster and upgrade the Kubernetes version of your cluster. To instead use Windows Admin Center, see [Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center](setup.md).
+In this quickstart, you learn how to use Windows PowerShell to create an Azure Kubernetes cluster on Azure Stack HCI. You then learn how to scale your Kubernetes cluster and upgrade the Kubernetes version of your cluster. To instead use Windows Admin Center, see [Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center](setup.md).
 
 ## Before you begin
 
  - Make sure you have an Azure Stack Kubernetes host set up. If you don't, see [Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI using PowerShell](./setup-powershell.md).
- - Make sure you have the latest Aks-Hci PowerShell module installed. If don't, see [Download and install the AksHci PowerShell module](./setup-powershell.md#step-1-download-and-install-the-akshci-powershell-module).
+ - Make sure you have the latest Aks-Hci PowerShell module installed. If you don't, see [Download and install the AksHci PowerShell module](./setup-powershell.md#step-1-download-and-install-the-akshci-powershell-module).
 
 ## Step 1: Create a Kubernetes cluster
 
@@ -24,10 +24,9 @@ After installing your Azure Kubernetes Service host, you are ready to deploy a K
 
 Open PowerShell as an administrator and run the following [New-AksHciCluster](./new-akshcicluster) command.
 
-   ```powershell
-   New-AksHciCluster -name mycluster
-   ```
-
+```powershell
+New-AksHciCluster -name mycluster
+```
 
 ### Check your deployed clusters
 
@@ -44,7 +43,7 @@ If you need to scale your cluster up or down, you can change the number of contr
 To scale control plane nodes, run the following command.
 
 ```powershell
-Set-AksHciClusterNodeCount –name mycluster -controlPlaneNodeCount 2
+Set-AksHciClusterNodeCount –name mycluster -controlPlaneNodeCount 3
 ```
 
 To scale the worker nodes, run the following command.
@@ -68,28 +67,11 @@ To update to the next Kubernetes version, run the following command.
 ```powershell
 Update-AksHciCluster -name mycluster
 ```
-Every Kubernetes version has a major release, a minor version, and a patch version. For example, in v1.18.6, 1 is the major release, 18 is the minor version, and 6 is the patch version. Over time, AKS-HCI will support one major release, three minor releases, and two patches per minor release for a total of 6 supported versions. However, for this preview release, we support a total of 4 releases - v1.16.10, v1.16.15, v1.17.11, v1.18.8. 
-
-When the parameter `patch` is added while running `Update-AksHciCluster`, the command upgrades to the next patch version (if any) for the minor version. When the command is run without the parameter `patch`, the default upgrade experience is to the next minor release. To make this easier, the following table contains all possible update experiences:
-
-| Current release           | Kubernetes updated version without -patch         | Kubernetes updated version with -patch
-| ---------------------------- | ------------ | -------------------------------- |
-| v1.16.10           |     v1.17.11      | v1.16.15
-| v1.16.15            | v1.17.11 | in place add-on upgrade
-| v1.17.11           |  v1.18.8          | in place add-on upgrade
-| v1.18.8             | in place add-on upgrade   | in place add-on upgrade
-
-In place add-on upgrade updates all the Kubernetes add-ons like CSI that AKS-HCI manages for you. This upgrade does not change the OS version of the node. It also does not change the Kubernetes version.
+Running this command without specifying the Kubernetes version will upgrade the cluster to the latest version.
 
 ## Step 4: Access your clusters using kubectl
 
 To access your Kubernetes clusters using kubectl, run the [Get-AksHciCredential](./get-akshcicredential) command. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl.
-
-```powershell
-Get-AksHciCredential -name mycluster
-```
-
-### Example
 
 ```powershell
 Get-AksHciCredential -name mycluster
@@ -105,7 +87,7 @@ Remove-AksHciCluster -name mycluster
 
 ## Get logs
 
-To get logs from your all your pods, run the following command. This command will create an output zipped folder called `akshcilogs` in the path `C:\wssd\akshcilogs`.
+To get logs from your all your pods, run the following command. This command will create an output zipped folder called `akshcilogs` in the path `C:\%workingdirectory%\akshcilogs`.
 
 ```powershell
 Get-AksHciLogs

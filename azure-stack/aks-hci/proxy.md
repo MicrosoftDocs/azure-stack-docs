@@ -37,13 +37,17 @@ Set-WinInetProxy -ProxyServer http://proxy.contoso.com:3128 -ProxyBypass "local"
 
 To configure a proxy server that requires authentication, you need to configure credentials for the AKS on Azure Stack host to use with the WinINet proxy. This varies depending on what kind of authentication the proxy requires, and can either be NTLM/Kerberos or basic authentication.
 
+> [!NOTE]
+> If you want to use a certificate to connect to the proxy server, then you are responsible for provisioning that certificate to the appropriate certificate store on your hosts to ensure that it's trusted.
+
 ### Configure a proxy server with NTLM/Kerberos authentication
 
 Add new Windows Credentials using the below command. Enter your secure password when prompted. Alternatively, you can also use Windows Credential Manager under **Windows Credentials** to add a new entry for Windows Credentials. 
 
 ```powershell
-cmdkey /add:proxy.contoso.com /user:usersname /pass
+cmdkey /generic:proxy.contoso.com /user:username /pass
 ```
+When you run this command, you will be asked to enter the password.
 
 In the PowerShell profile, add the following command to allow AKS-HCI agents to use the cached credentials:
 
@@ -55,7 +59,7 @@ notepad $PROFILE
 
 ### Configure a proxy server with basic authentication
 
-Since you can't use cached credentials in Credential Manager, you need to add the credentials directly to the PowerShell profile so that the download agent can use it. 
+You need to add basic authentication credentials need to be added to the PowerShell profile so that the download agent module can use them. 
 
 > [!NOTE]
 > The credentials in the PowerShell profile are not encrypted and appear in clear text. Make sure the PowerShell profile is protected by access control lists (ACLs), so only Administrators and the LocalSystem account can view them.
@@ -100,7 +104,7 @@ Set-AksHciConfig -proxyServerHTTP "http://proxy.contoso.com:8888" -proxyServerHT
 
 ### Configure an AKS host for a proxy server with a trusted certificate
 
-If your proxy server requires proxy clients to trust a certificate, specify the certificate file (.crt) when you run `Set-AksHciConfig`. This will enable us to provision and trust the certificate throughout our stack:
+If your proxy server requires proxy clients to trust a certificate, specify the certificate file when you run `Set-AksHciConfig`. The format of the certificate file is *Base-64 encoded X .509*. This will enable us to provision and trust the certificate throughout our stack:
 
 ```powershell
 Set-AksHciConfig -proxyServerHTTP "http://proxy.contoso.com:8888" -proxyServerHTTPS "http://proxy.contoso.com:8888" -proxyServerCertFile "C:\proxycertificate.crt"

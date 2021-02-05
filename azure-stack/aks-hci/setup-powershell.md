@@ -26,6 +26,7 @@ Before getting started, make sure you have satisfied all the prerequisites on th
    > When removing Azure Kubernetes Service on Azure Stack HCI, see [Remove Azure Kubernetes Service on Azure Stack HCI](#remove-azure-kubernetes-service-on-azure-stack-hci) and carefully follow the instructions. 
 
 ## Step 1: Download and install the AksHci PowerShell module
+<<<<<<< HEAD
 
 Download the `AKS-HCI-Public-Preview-Feb-2021` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module.
 
@@ -46,14 +47,17 @@ If you have previously installed Azure Kubernetes Service on Azure Stack HCI usi
 After running the above command, close all PowerShell windows and reopen an administrative session to run the commands in the following steps.
 
 ### Step 1.1: Clean install of the AksHci PowerShell module
+=======
 
-Run the following command before proceeding.
+Download the `AKS-HCI-Public-Preview-Feb-2021` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module.
+
+**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.Day2, Kva, Moc and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once this is done, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`).
+>>>>>>> 5a9186d15110846926fd50be7258a5c2beedf292
+
    ```powershell
-   Uninstall-AksHci
+   Import-Module AksHci
    ```
-
-### Step 1.2: Validate upgraded PowerShell module
-
+   
 **Close all PowerShell windows** and reopen a new administrative session to check if you have the latest version of the PowerShell module.  
 
    ```powershell
@@ -89,17 +93,33 @@ Function        Uninstall-AksHciAdAuth                             0.2.16     ak
 Function        Uninstall-AksHciArcOnboarding                      0.2.16     akshci
 Function        Update-AksHci                                      0.2.16     akshci
 Function        Update-AksHciCluster                               0.2.16     akshci
+<<<<<<< HEAD
+=======
 ```
+
+After running the above command, close all PowerShell windows and reopen an administrative session to run the commands in the following steps.
+
+### Update your clusters to the latest AKS-HCI version
+
+Follow this step if you have an existing deployment and want to update it. If you do not have an existing deployment, skip this step and proceed to Step 2. Alternatively, if you have a deployment but want to run a clean install of the next AKSHCI version, run `Uninstall-AksHci` and proceed to Step 2.
+
+To update to the latest version of Azure Kubernetes Service on Azure Stack HCI, run the [Update-AksHci](./update-akshci) command. The update command only works if you have installed the October release or later. It will not work for releases older than the October release. This update command updates the Azure Kubernetes Service host and the on-premise Microsoft operated cloud platform. This command does not upgrade Kubernetes and Windows node OS versions in any existing workload clusters. New workload clusters created after updating the AKS host will differ from existing workload clusters in their Windows node OS version and Kubernetes version.
+
+```powershell
+Update-AksHci
+>>>>>>> 5a9186d15110846926fd50be7258a5c2beedf292
+```
+
+We recommend updating workload clusters immediately after updating the management cluster to prevent running unsupported Windows Server OS versions in your Kubernetes clusters with Windows nodes. To update your workload cluster, visit [update your workload cluster](create-kubernetes-cluster-powershell.md).
 
 ## Step 2: Prepare your machine(s) for deployment
 
 Run checks on every physical node to see if all the requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI.
-
 Open PowerShell as an administrator and run the following command.
 
-   ```powershell
-   Initialize-AksHciNode
-   ```
+```powershell
+Initialize-AksHciNode
+```
 
 When the checks are finished, you'll see "Done" displayed in green text.
 
@@ -117,6 +137,7 @@ Name SwitchType NetAdapterInterfaceDescription
 ---- ---------- ------------------------------
 External External Mellanox ConnectX-3 Pro Ethernet Adapter
 ```
+<<<<<<< HEAD
 
 To create a virtual network for the nodes in your deployment to use, create an environment variable with the [New-AksHciNetworkSetting](.\new-akshcinetworksetting.md) PowerShell command. This will be used later to configure a deployment that uses static IP.
 
@@ -128,27 +149,34 @@ To create a virtual network for the nodes in your deployment to use, create an e
 > The values given in this example command will need to be customized for your environment.
 
 ## Step 4: Configure your deployment
+=======
+>>>>>>> 5a9186d15110846926fd50be7258a5c2beedf292
 
-Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./set-akshciconfig) command. **If you're deploying on a 2-4 node Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster, you must specify the `imageDir` and `cloudConfigLocation` parameters.** For a single node Windows Server 2019 Datacenter, all parameters are optional and set to their default values. However, for optimal performance, **we recommend using a 2-4 node Azure Stack HCI cluster deployment.**
+To create a virtual network for the nodes in your deployment to use, create an environment variable with the [New-AksHciNetworkSetting](.\new-akshcinetworksetting.md) PowerShell command. This will be used later to configure a deployment that uses static IP. If you want to configure your AKS deployment with DHCP, visit [New-AksHciNetworkSetting](.\new-akshcinetworksetting.md) for examples.
+
+```powershell
+#static IP
+$vnet = New-AksHciNetworkSetting -vnetName "External" -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd
+"172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1"
+```
+
+> [!NOTE]
+> The values given in this example command will need to be customized for your environment.
+
+## Step 4: Configure your deployment
+
+Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./set-akshciconfig) command. **If you're deploying on a 2-4 node Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster, you must specify the `imageDir` and `cloudConfigLocation` parameters.** If you want to reset your config details, run the command again with new parameters.
 
 Configure your deployment with the following command.
 
-
-   ```powershell
-   Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet
-   ```
-
-### Reset the Azure Kubernetes Service on Azure Stack HCI configuration
-
-To reset the Azure Kubernetes Service on Azure Stack HCI configuration, run the following command. Running this command on its own will reset the configuration to default values.
-
 ```powershell
-Set-AksHciConfig
+Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -enableDiagnosticData
 ```
+For this preview release, it is mandatory to run `-enableDiagnosticData`.
 
 ## Step 5: Start a new deployment
 
-After you've configured your deployment, you must start deployment. This will install the Azure Kubernetes Service on Azure Stack HCI agents/services and the Azure Kubernetes Service host.
+After you've configured your deployment, you must start it. This will install the Azure Kubernetes Service on Azure Stack HCI agents/services and the Azure Kubernetes Service host.
 
 To begin deployment, run the following command.
 
@@ -194,11 +222,11 @@ Get-AksHciLogs
 
 ## Update to the latest version of Azure Kubernetes Service on Azure Stack HCI
 
-To update to the latest version of Azure Kubernetes Service on Azure Stack HCI, run the [Update-AksHci](./update-akshci) command. The update command only works if you have installed the Oct release. It will not work for releases older than the October release. This update command updates the Azure Kubernetes Service host and the on-premise Microsoft operated cloud platform. For this preview release, the Kubernetes version and AKS host OS version still remain the same. This command does not upgrade any existing workload clusters. New workload clusters created after updating the AKS host will differ from existing workload clusters in terms of Windows node OS version and Kubernetes version.
+To update to the latest version of Azure Kubernetes Service on Azure Stack HCI, run the [Update-AksHci](./update-akshci) command. The update command only works if you have installed the Oct release or later. It will not work for releases older than the October release. This update command updates the Azure Kubernetes Service host and the on-premise Microsoft operated cloud platform. This command does not upgrade any existing workload clusters. New workload clusters created after updating the AKS host will differ from existing workload clusters in their Windows node OS version and Kubernetes version.
 
-   ```powershell
-   Update-AksHci
-   ```
+```powershell
+Update-AksHci
+```
    
 We recommend updating workload clusters immediately after updating the management cluster to prevent running unsupported Windows Server OS versions in your Kubernetes clusters with Windows nodes. To update your workload cluster, visit [update your workload cluster](create-kubernetes-cluster-powershell.md).
 
@@ -220,10 +248,10 @@ To reinstall Azure Kubernetes Service on Azure Stack HCI with different configur
 Uninstall-AksHci
 ```
 
-After running the above command, you can change the configuration settings with the following command. The parameters remain the same as described in Step 3. If you run this command with no specified parameters, the parameters will be reset to their default values.
+After running the above command, you can change the configuration settings with the following command. The parameters remain the same as described in Step 3. 
 
 ```powershell
-Set-AksHciConfig
+Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet
 ```
 
 After changing the configuration to your desired settings, run the following command to reinstall Azure Stack Kubernetes on Azure Stack HCI.

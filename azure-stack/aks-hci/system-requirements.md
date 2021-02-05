@@ -234,9 +234,13 @@ Install-AksHci
 
 To remove Azure Kubernetes Service on Azure Stack HCI, run the following command. This command removes your configuration. You will have to run `Set-AksHciConfig` again when you reinstall.
 
+<<<<<<< HEAD
 ```powershell
 Uninstall-AksHci
 ```
+=======
+Windows Admin Center is the user interface for creating and managing Azure Kubernetes Service on Azure Stack HCI. To use Windows Admin Center with Azure Kubernetes Service on Azure Stack HCI, you must meet all the criteria listed below. You can run Windows Admin Center on a server or Windows 10 machine. 
+>>>>>>> 5a9186d15110846926fd50be7258a5c2beedf292
 
 If you want to retain your old configuration, run the following command.
 
@@ -246,4 +250,10 @@ Uninstall-AksHci -SkipConfigCleanup
 
 ## Next steps
 
+<<<<<<< HEAD
 - [Create a Kubernetes cluster for your applications](create-kubernetes-cluster-powershell.md)
+=======
+After you have satisfied all of the prerequisites above, you can set up a Azure Kubernetes Service host on Azure Stack HCI using:
+ - [Windows Admin Center](setup.md)
+ - [PowerShell](setup-powershell.md)
+>>>>>>> 5a9186d15110846926fd50be7258a5c2beedf292
