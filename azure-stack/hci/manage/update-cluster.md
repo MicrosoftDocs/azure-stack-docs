@@ -36,7 +36,7 @@ Follow these steps to install updates:
 3. The cluster's update status will be displayed; click **Check for updates** to get a list of the operating system updates that are available for each server in the cluster. You may need to supply administrator credentials. If no operating system updates are available, click **Next: hardware updates** and proceed to step 7.
 
    > [!IMPORTANT]
-   > If you navigate away from the Updates screen while an update is in progress, there may be unexpected behavior, such as the history section of the Updates page not populating correctly until the current run is finished. We recommend opening Windows Admin Center in a new tab if you wish to continue using the application while the updates are in progress.
+   > If you navigate away from the Updates screen while an update is in progress, there may be unexpected behavior, such as the history section of the Updates page not populating correctly until the current run is finished. We recommend opening Windows Admin Center in a new browser tab or window if you wish to continue using the application while the updates are in progress.
 
 4. Select **Next: Install** to proceed to install the operating system updates, or click **Skip** to exclude them. 
 
