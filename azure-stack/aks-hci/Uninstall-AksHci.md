@@ -31,7 +31,7 @@ PS C:\> Uninstall-AksHci
 ## Parameters
 
 ### -skipConfigCleanup
-Skips removal of the configurations after uninstall. If you use this flag, you must run `Set-AksHciConfig` to install again.
+Skips removal of the configurations after uninstall. If you use this flag, your old configuration will be retained.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
