@@ -17,10 +17,19 @@ A secret in Kubernetes is an object that contains a small amount of sensitiv
 
 ## Enable encryption of etcd secrets
 
-Use the `-enableSecretsEncryption` parameter of the [New-AksHciCluster](./new-akshcicluster) command to enable encryption of etcd secrets and automate encryption key rotation as shown below: 
+Use the `-enableSecretsEncryption` parameter of the **New-AksHciCluster** command to enable encryption of etcd secrets and automate encryption key rotation as shown below:
 
 ```powershell
-New-AksHciCluster -name mynewcluster -enableSecretsEncryption
+New-AksHciCluster -name mynewcluster
+                 [-kubernetesVersion v1.18.8]
+                 [-controlPlaneNodeCount 1]
+                 [-linuxNodeCount 1]
+                 [-windowsNodeCount 0]
+                 [-controlPlaneVmSize Standard_A2_v2]
+                 [-loadBalancerVmSize Standard_A2_v2]
+                 [-linuxNodeVmSize Standard_K8S3_v1]
+                 [-windowsNodeVmSize Standard_K8S3_v1]
+		         [-enableSecretsEncryption]
 ```
 
 Once you deploy a new cluster with the `-enableSecretsEncryption` parameter, you cannot disable this feature.
