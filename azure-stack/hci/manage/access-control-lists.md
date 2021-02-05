@@ -26,12 +26,13 @@ Additionally, if you want to apply ACLs to an SDN logical network, you need to f
 ## Create an ACL
 You can easily create an ACL in Windows Admin Center.
 
-<!---Example figure format--->
-<!---:::image type="content" source="./media/network-controller/topology-option-1.png" alt-text="Option 1 to create a physical network for the Network Controller." lightbox="./media/network-controller/topology-option-1.png":::--->
+:::image type="content" source="./media/access-control-lists/create-acl.png" alt-text="Screenshot of Windows Admin Center home screen showing the Access Control List Name box." lightbox="./media/access-control-lists/create-acl.png":::
 
-
-
-
+1. On the Windows Admin Center home screen, under **All connections**, select the cluster that you want to create the ACL on.
+1. Under **Tools**, scroll down to the **Networking** area, and select **Access control lists**.
+1. Under **Access control lists**, select the **Inventory** tab, and then select **New**.
+1. In the **Access Control List** pane, type a name for the ACL, and then select **Submit**.
+1. Under **Access control lists**, verify that the **Provisioning state** of the new ACL shows **Succeeded**.
 
 ## Create an ACL rule
 TBD
@@ -58,4 +59,3 @@ TBD
 ## Next steps
 For more information, see also:
 - [Software Defined Networking (SDN) in Azure Stack HCI](../concepts/software-defined-networking.md)
-- 
