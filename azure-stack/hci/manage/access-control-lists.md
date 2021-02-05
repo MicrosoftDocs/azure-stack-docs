@@ -15,7 +15,7 @@ This topic provides step-by-step instructions on how to use Windows Admin Center
 
 <!--- Maybe retitle to Use Datacenter Firewall to create ACLs with PowerShell.--->
 
-Before you configure ACLs, you need to deploy Network Controller. To learn about Network Controller, see [What is Network Controller?](network-controller-overview.md) To deploy Network Controller using PowerShell scripts, see [Deploy an SDN infrastructure](sdn-express.md).
+Before you configure ACLs, you need to deploy Network Controller. To learn about Network Controller, see [What is Network Controller?](../concepts/network-controller-overview.md) To deploy Network Controller using PowerShell scripts, see [Deploy an SDN infrastructure](sdn-express.md).
 
 <!---Deploying NC pulled from the Cluster creation wizard. Note in review handoff to Anirban.--->
 
