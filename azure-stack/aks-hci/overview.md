@@ -98,9 +98,7 @@ The following sections summarize what you need to run Azure Kubernetes Service o
 
 ### On your Windows Admin Center system
 
-Windows Admin Center is the user interface for creating and managing Azure Kubernetes Service on Azure Stack HCI. You can run Windows Admin Center on a server or Windows 10 machine. To use Windows Admin Center with Azure Kubernetes Service on Azure Stack HCI, you must meet all the criteria listed below.  
-
-Requirements for the machine running the Windows Admin Center gateway: 
+Your machine running the Windows Admin Center gateway has the following requirements:  
 
  - Registered with Azure
  - In the same domain as the Azure Stack HCI or Windows Server 2019 Datacenter cluster
