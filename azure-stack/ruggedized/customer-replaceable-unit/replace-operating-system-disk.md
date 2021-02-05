@@ -33,10 +33,7 @@ health.
 5.  Complete Powering off Scale Unit
     nodes.
 
-    For the Azure Stack Hub Scale Unit nodes, the operating system runs
-    from a mirrored pair of M.2 SSD modules residing on the Dell PowerEdge
-    Boot Optimized Storage Solution (BOSS) card. The system must be
-    powered off to replace an operating system disk.
+    For the Azure Stack Hub Scale Unit nodes, the operating system runs from a mirrored pair of M.2 SSD modules residing on the Boot Optimized Storage Solution (BOSS) card. The system must be powered off to replace an operating system disk.
     
 ## Steps
 
