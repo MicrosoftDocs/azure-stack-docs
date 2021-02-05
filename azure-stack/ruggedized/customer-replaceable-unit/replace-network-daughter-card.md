@@ -4,7 +4,7 @@ description: Learn how to replace a network daughter card
 author: PatAltimore
 
 ms.topic: how-to
-ms.date: 11/13/2020
+ms.date: 02/05/2021
 ms.author: patricka
 ms.reviewer: 
 ms.lastreviewed: 
@@ -28,7 +28,7 @@ cards.
 
 3.  Review
 
-    -   Required knowledge for working with Scale Unit nodes in a Ruggedized Cloud Appliance
+    -   Required knowledge for working with Scale Unit nodes in Azure Stack Hub ruggedized
 
     -   Required knowledge for working with the Hardware Lifecycle Host on page 5 if you are working with the Hardware Lifecycle Host
 
@@ -59,9 +59,7 @@ cards.
     
 3.  Replace the network daughter card or cards.
 
-    Follow the network daughter card replacement process in the [Dell EMC
-    PowerEdge R640 Installation and Service
-    Manual](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/dell-emc-poweredge-r640-overview?guid=guid-f39be9ba-158c-45e3-b8b1-f07bb750d6d4)
+    Follow the [network daughter card replacement process](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/dell-emc-poweredge-r640-overview?guid=guid-f39be9ba-158c-45e3-b8b1-f07bb750d6d4)
     for Scale Unit nodes or Hardware Lifecycle Hosts.
     
 4.  Power on the node.
