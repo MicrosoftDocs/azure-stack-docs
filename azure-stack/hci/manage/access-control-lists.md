@@ -34,8 +34,27 @@ You can easily create an ACL in Windows Admin Center.
 1. In the **Access Control List** pane, type a name for the ACL, and then select **Submit**.
 1. Under **Access control lists**, verify that the **Provisioning state** of the new ACL shows **Succeeded**.
 
-## Create an ACL rule
-TBD
+## Create ACL rules
+After you create an ACL, you’re ready to create ACLs rules. If you want to apply ACL rules to both inbound and outbound traffic, you need to create two rules.
+
+:::image type="content" source="./media/access-control-lists/create-acl-rules.png" alt-text="Screenshot of Windows Admin Center home screen showing the Access Control Rule pane." lightbox="./media/access-control-lists/create-acl-rules.png":::
+
+1. On the Windows Admin Center home screen, under **All connections**, select the cluster that you want to create the ACL on.
+1. Under **Tools**, scroll down to the **Networking** area, and select **Access control lists**.
+1. Under **Access control lists**, select the **Inventory** tab, and then select the ACL that you just created.
+1. Under **Access Control Rule**, select **New**.
+1. In the **Access Control Rule** pane, provide the following information:
+    1. **Name** of the rule.
+    1. **Priority** of the rule – Acceptable values are **101** to **65000**. A lower value denotes a higher priority.
+    1. **Types** – This can be inbound or outbound.
+    1. **Protocol** – Specify the protocol to match either an incoming or outgoing packet. Acceptable values are **All**, **TCP** and **UDP**.
+    1. **Source Address Prefix** – Specify the source address prefix to match either an incoming or outgoing packet. If you provide *, that denotes all source addresses.
+    1. **Source Port Range** – Specify the source port range to match either an incoming or outgoing packet. If you provide *, that denotes all source ports.
+    1. **Destination Address Prefix** – Specify the destination address prefix to match either an incoming or outgoing packet. If you provide *, that denotes all destination addresses.
+    1. **Destination Port Range** – Specify the destination port range to match either an incoming or outgoing packet. If you provide *, that denotes all destination ports.
+    1. **Actions** – If the above conditions are matched, specify either to allow or block the packet. Acceptable values are **Allow** and **Deny**.
+    1. **Logging** – Specify either to enable or disable logging for the rule. If logging is enabled, all  traffic matched by this rule is logged on the host computers.
+1. Select **Submit**.
 
 ## Apply an ACL to a virtual network
 TBD
@@ -52,9 +71,6 @@ TBD
 <!---Example note format.--->
    >[!NOTE]
    > TBD.
-
-<!---Example figure format--->
-<!---:::image type="content" source="./media/network-controller/topology-option-1.png" alt-text="Option 1 to create a physical network for the Network Controller." lightbox="./media/network-controller/topology-option-1.png":::--->
 
 ## Next steps
 For more information, see also:
