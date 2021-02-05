@@ -74,19 +74,16 @@ Function        Update-AksHciCluster                               0.2.16     ak
 
 After running the above command, close all PowerShell windows and reopen an administrative session to run the commands in the following steps.
 
-### Step 1.1: Clean install of the AksHci PowerShell module
+### Update your clusters to the latest AKS-HCI version
 
-Run the following command before proceeding. Close all PowerShell sessions after you run this step.
-```powershell
-Uninstall-AksHci
-```
-### Step 1.2: Update your clusters to the latest AKS-HCI version
-To update to the latest version of Azure Kubernetes Service on Azure Stack HCI, run the [Update-AksHci](./update-akshci) command. The update command only works if you have installed the Oct release or later. It will not work for releases older than the October release. This update command updates the Azure Kubernetes Service host and the on-premise Microsoft operated cloud platform. This command does not upgrade Kubernetes and Windows node OS versions in any existing workload clusters. New workload clusters created after updating the AKS host will differ from existing workload clusters in their Windows node OS version and Kubernetes version.
+Follow this step if you have an existing deployment and want to update it. If you do not have an existing deployment, skip this step and proceed to Step 2. Alternatively, if you have a deployment but want to run a clean install of the next AKSHCI version, run `Uninstall-AksHci` and proceed to Step 2.
+
+To update to the latest version of Azure Kubernetes Service on Azure Stack HCI, run the [Update-AksHci](./update-akshci) command. The update command only works if you have installed the October release or later. It will not work for releases older than the October release. This update command updates the Azure Kubernetes Service host and the on-premise Microsoft operated cloud platform. This command does not upgrade Kubernetes and Windows node OS versions in any existing workload clusters. New workload clusters created after updating the AKS host will differ from existing workload clusters in their Windows node OS version and Kubernetes version.
 
 ```powershell
 Update-AksHci
 ```
-   
+
 We recommend updating workload clusters immediately after updating the management cluster to prevent running unsupported Windows Server OS versions in your Kubernetes clusters with Windows nodes. To update your workload cluster, visit [update your workload cluster](create-kubernetes-cluster-powershell.md).
 
 ## Step 2: Prepare your machine(s) for deployment
@@ -133,9 +130,9 @@ Set the configuration settings for the Azure Kubernetes Service host using the [
 Configure your deployment with the following command.
 
 ```powershell
-Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet
+Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -enableDiagnosticData
 ```
-
+For this preview release, it is mandatory to run `-enableDiagnosticData`.
 
 ## Step 5: Start a new deployment
 
