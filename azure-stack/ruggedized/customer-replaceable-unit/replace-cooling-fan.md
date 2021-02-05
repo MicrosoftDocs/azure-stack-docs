@@ -27,7 +27,7 @@ Use the following procedure to replace a cooling fan or fans.
 
 3.  Review
 
-    -   Required knowledge for working with scale unit nodes in a Ruggedized Cloud Appliance
+    -   Required knowledge for working with scale unit nodes in Azure Stack Hub ruggedized
 
     -   Required knowledge for working with the Hardware Lifecycle Host on page 5 if you are working with the Hardware Lifecycle Host
 
