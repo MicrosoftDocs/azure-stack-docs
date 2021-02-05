@@ -1,259 +1,159 @@
 ---
-title: Quickstart to set up an Azure Kubernetes Service host on Azure Stack HCI using Windows PowerShell
-description: Learn how to set up an Azure Kubernetes Service host on Azure Stack HCI with Windows PowerShell
-author: jessicaguan
-ms.topic: quickstart
+title: Azure Kubernetes Service on Azure Stack HCI requirements
+description: Before you begin Azure Kubernetes Service on Azure Stack HCI
+ms.topic: conceptual
+author: abhilashaagarwala
+ms.author: abha
 ms.date: 12/02/2020
-ms.author: jeguan
 ---
-# Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI using PowerShell
+# System requirements for Azure Kubernetes Service on Azure Stack HCI
 
 > Applies to: Azure Stack HCI, Windows Server 2019 Datacenter
 
-In this quickstart, you'll learn how to set up an Azure Kubernetes Service host using PowerShell. To instead use Windows Admin Center, see [Set up with Windows Admin Center](setup.md).
+This article covers the requirements for setting up Azure Kubernetes Service on Azure Stack HCI or on Windows Server 2019 Datacenter and using it to create Kubernetes clusters. For an overview of Azure Kubernetes Service on Azure Stack HCI, see [AKS on Azure Stack HCI overview](overview.md).
 
-## Before you begin
+## Determine hardware requirements
 
-Make sure you have one of the following:
- - 2-4 node Azure Stack HCI cluster
- - Windows Server 2019 Datacenter failover cluster
- - Single node Windows Server 2019 Datacenter 
+Microsoft recommends purchasing a validated Azure Stack HCI hardware/software solution from our partners. These solutions are designed, assembled, and validated against our reference architecture to ensure compatibility and reliability so you get up and running quickly. Check that the systems, components, devices, and drivers you are using are Windows Server 2019 Certified per the Windows Server Catalog. Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) website for validated solutions.
+
+## General requirements
+
+For Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter to function optimally in an Active Directory environment, ensure the following requirements are fulfilled: 
+
+ - Ensure time synchronization is set up and the divergence is not greater than 2 minutes across all cluster nodes and the domain controller. For information on setting time synchronization, see [Windows Time Service](/windows-server/networking/windows-time-service/windows-time-service-top). 
+
+ - Ensure the user account(s) that adds updates, and manages Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter clusters has the correct permissions in Active Directory. If you are using Organizational Units (OUs) to manage group policies for servers and services, the user account(s) will require list, read, modify, and delete permissions on all objects in the OU. 
+
+ - We recommend using a separate OU for the servers and services to which you add your Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter clusters. Using a separate OU allows you to control access and permissions with more granularity.
+
+ - If you are using GPO templates on containers in Active Directory, ensure deploying AKS-HCI is exempt from the policy. Server hardening will be available in a subsequent preview release.
+
+## Compute requirements
+
+ - An Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster with a maximum of four servers in the cluster. We recommend that each server in the cluster have at least 24 CPU cores and at least 256 GB RAM.
+
+ - While you can technically run Azure Kubernetes Service on a single node Windows Server 2019 Datacenter, we do not recommend doing so. However, you can run Azure Kubernetes Service on a single node Windows Server 2019 Datacenter for evaluation purposes.
+
+ - Other compute requirements for Azure Kubernetes Service on Azure Stack HCI are in line with Azure Stack HCI’s requirements. Visit [Azure Stack HCI system requirements](../hci/concepts/system-requirements.md#server-requirements) for more details on Azure Stack HCI server requirements.
+
+ - This preview release requires that you install the Azure Stack HCI operating system on each server in the cluster using the EN-US region and language selections; changing them after installation isn't sufficient at this time.
+
+## Network requirements 
+
+The following requirements apply to an Azure Stack HCI cluster as well as a Windows Server 2019 Datacenter cluster: 
+
+ - Verify that you have an existing, external virtual switch configured if you’re using Windows Admin Center. For Azure Stack HCI clusters, this switch and its name must be the same across all cluster nodes. 
+
+ - Verify that you have disabled IPv6 on all network adapters. 
+
+ - For a successful deployment, the Azure Stack HCI cluster nodes and the Kubernetes cluster VMs must have external Internet connectivity.
+  
+ - Make sure that there is network connectivity between Azure Stack HCI hosts and the tenant VMs.
+
+ - DNS name resolution is required for all nodes to be able to communicate with each other. For Kubernetes external name resolution, use the DNS servers provided by the DHCP server when the IP address is obtained. For Kubernetes internal name resolution, use the default Kubernetes core DNS-based solution. 
+
+ - For this preview release, we provide only single VLAN support for the entire deployment. 
+
+ - For this preview release, we have limited proxy support for Kubernetes clusters created through PowerShell. 
  
-Before getting started, make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page. 
-**We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).    
-
-   > [!IMPORTANT]
-   > When removing Azure Kubernetes Service on Azure Stack HCI, see [Remove Azure Kubernetes Service on Azure Stack HCI](#remove-azure-kubernetes-service-on-azure-stack-hci) and carefully follow the instructions. 
-
-## Step 1: Download and install the AksHci PowerShell module
-
-Download the `AKS-HCI-Public-Preview-Feb-2021` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module.
-
-If you have previously installed Azure Kubernetes Service on Azure Stack HCI using PowerShell or Windows Admin Center, run the following command before proceeding.
-
-   ```powershell
-   Uninstall-AksHci
-   ```
-
-**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.Day2, and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once this is done, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`).
-
-   ```powershell
-   Import-Module AksHci
-   ```
-
-After running the above command, close all PowerShell windows and reopen an administrative session to run the commands in the following steps.
-
-### Step 1.1: Clean install of the AksHci PowerShell module
-
-Run the following command before proceeding.
-   ```powershell
-   Uninstall-AksHci
-   ```
-
-### Step 1.2: Validate upgraded PowerShell module
-
-**Close all PowerShell windows** and reopen a new administrative session to check if you have the latest version of the PowerShell module.  
-
-   ```powershell
-   Get-Command -Module AksHci
-   ```
+### IP address assignment  
  
-**Output:**
-```
-CommandType     Name                                               Version    Source
------------     ----                                               -------    ------
-Alias           Initialize-AksHciNode                              0.2.15     akshci
-Function        Get-AksHciCluster                                  0.2.15     akshci
-Function        Get-AksHciClusterUpgrades                          0.2.15     akshci
-Function        Get-AksHciConfig                                   0.2.15     akshci
-Function        Get-AksHciCredential                               0.2.15     akshci
-Function        Get-AksHciEventLog                                 0.2.15     akshci
-Function        Get-AksHciKubernetesVersion                        0.2.15     akshci
-Function        Get-AksHciLogs                                     0.2.15     akshci
-Function        Get-AksHciUpdates                                  0.2.15     akshci
-Function        Get-AksHciVersion                                  0.2.15     akshci
-Function        Get-AksHciVmSize                                   0.2.15     akshci
-Function        Install-AksHci                                     0.2.15     akshci
-Function        Install-AksHciAdAuth                               0.2.15     akshci
-Function        Install-AksHciArcOnboarding                        0.2.15     akshci
-Function        New-AksHciCluster                                  0.2.15     akshci
-Function        New-AksHciNetworkSetting                           0.2.15     akshci
-Function        Remove-AksHciCluster                               0.2.15     akshci
-Function        Restart-AksHci                                     0.2.15     akshci
-Function        Set-AksHciClusterNodeCount                         0.2.15     akshci
-Function        Set-AksHciConfig                                   0.2.15     akshci
-Function        Uninstall-AksHci                                   0.2.15     akshci
-Function        Uninstall-AksHciAdAuth                             0.2.15     akshci
-Function        Uninstall-AksHciArcOnboarding                      0.2.15     akshci
-Function        Update-AksHci                                      0.2.15     akshci
-Function        Update-AksHciCluster                               0.2.15     akshci
-```
-
-## Step 2: Prepare your machine(s) for deployment
-
-Run checks on every physical node to see if all the requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI.
-
-Open PowerShell as an administrator and run the following command.
-
-   ```powershell
-   Initialize-AksHciNode
-   ```
-
-When the checks are finished, you'll see "Done" displayed in green text.
-
-## Step 3: Create a virtual network
-
-To get the names of your available switches, run this command:
-
-```powershell
-Get-VMSwitch
-```
-
-Sample Output:
-```output
-Name SwitchType NetAdapterInterfaceDescription
----- ---------- ------------------------------
-External External Mellanox ConnectX-3 Pro Ethernet Adapter
-```
-
-To create a virtual network for the nodes in your deployment to use, create an environment variable with the [New-AksHciNetworkSetting](.\new-akshcinetworksetting.md) PowerShell command. This will be used later to configure a deployment that uses static IP.
-
-   ```powershell
-    $vnet = New-AksHciNetworkSetting -vnetName "External" -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1"
-   ```
+As part of a successful AKS on Azure Stack HCI deployment, we recommend that you configure a virtual IP pool range with your DHCP server. It is also recommended that you configure three to five highly available control plane nodes for all your workload clusters. 
 
 > [!NOTE]
-> The values given in this example command will need to be customized for your environment.
+> Using static IP address assignments alone is not supported. You must configure a DHCP server as part of this preview release.
 
-## Step 4: Configure your deployment
+#### DHCP
+Follow these requirements while using DHCP for assigning IP addresses throughout the cluster:  
 
-Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./set-akshciconfig) command. **If you're deploying on a 2-4 node Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster, you must specify the `imageDir` and `cloudConfigLocation` parameters.** For a single node Windows Server 2019 Datacenter, all parameters are optional and set to their default values. However, for optimal performance, **we recommend using a 2-4 node Azure Stack HCI cluster deployment.**
+ - The network must have an available DHCP server to provide TCP/IP addresses to the VMs and the VM hosts. The DHCP server should also contain network time protocol (NTP) and DNS host information.
+ 
+ - A DHCP server with a dedicated scope of IPv4 addresses accessible by the Azure Stack HCI cluster.
+ 
+ - The IPv4 addresses provided by the DHCP server should be routable and have a 30-day lease expiration to avoid loss of IP connectivity in the event of a VM update or reprovisioning.  
 
-Configure your deployment with the following command.
+At a minimum, you should reserve the following number of DHCP addresses:
+
+| Cluster type  | Control plane node | Worker node | Update | Load balancer  |
+| ------------- | ------------------ | ---------- | ----------| -------------|
+| AKS Host |  1  |  0  |  2  |  0  |
+| Workload cluster  |  1 per node  | 1 per node |  5  |  1  |
+
+You can see how the number of required IP addresses is variable depending on the number of workload clusters and control plane and worker nodes you have in your environment. We recommend reserving 256 IP addresses (/24 subnet) in your DHCP IP pool.
+  
+    
+#### VIP Pool Range
+
+Virtual IP (VIP) pools are strongly recommended for an AKS on Azure Stack HCI deployment. VIP pools are a range of reserved static IP addresses that are used for long-lived deployments to guarantee that your deployment and application workloads are always reachable. Currently, we only support IPv4 addresses, so you must verify that you have disabled IPv6 on all network adapters. Also, make sure your virtual IP addresses are not a part of the DHCP IP reserve.
+
+At a minimum, you should reserve one IP address per cluster (workload and AKS host), and one IP address per Kubernetes service. The number of required IP addresses in the VIP pool range varies depending on the number of workload clusters and Kubernetes services you have in your environment. We recommend reserving 16 static IP addresses for your AKS-HCI deployment. 
+
+When setting up the AKS host, use the `-vipPoolStartIp` and `-vipPoolEndIp` parameters in `Set-AksHciConfig` to create a VIP pool.
+
+#### MAC Pool Range
+We recommend having a minimum of 16 MAC addresses in the range to allow for multiple control plane nodes in each cluster. When setting up the AKS host, use the `-macPoolStart` and `-macPoolEnd` parameters in `Set-AksHciConfig` to reserve MAC addresses from the DHCP MAC pool for Kubernetes services.
+  
+### Network port and URL requirements 
+
+When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following firewall ports are automatically opened on each server in the cluster. 
 
 
-   ```powershell
-   Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet
-   ```
+| Firewall port               | Description     | 
+| ---------------------------- | ------------ | 
+| 45000           | wssdagent GPRC   server port     |
+| 45001             | wssdagent GPRC authentication port  | 
+| 55000           | wssdcloudagent GPRC   server port      |
+| 65000            | wssdcloudagent GPRC authentication port  | 
 
-### Reset the Azure Kubernetes Service on Azure Stack HCI configuration
 
-To reset the Azure Kubernetes Service on Azure Stack HCI configuration, run the following command. Running this command on its own will reset the configuration to default values.
+Firewall URL exceptions are needed for the Windows Admin Center machine and all nodes in the Azure Stack HCI cluster. 
 
-```powershell
-Set-AksHciConfig
-```
+| URL        | Port | Service | Notes |
+| ---------- | ---- | --- | ---- |
+https://helm.sh/blog/get-helm-sh/  | 443 | Download Agent, WAC | Used to download the Helm binaries 
+https://storage.googleapis.com/  | 443 | Cloud Init | Downloading Kubernetes binaries 
+https://azurecliprod.blob.core.windows.net/ | 443 | Cloud Init | Downloading binaries and containers 
+https://aka.ms/installazurecliwindows | 443 | WAC | Downloading Azure CLI 
+https://:443 | 443 | TCP | Used to support Azure Arc agents  
+*.blob.core.windows.net | 443 | TCP | Required for downloads
+*.api.cdp.microsoft.com, *.dl.delivery.mp.microsoft.com, *.emdl.ws.microsoft.com | 80, 443 | Download Agent | Downloading metadata 
+*.dl.delivery.mp.microsoft.com, *.do.dsp.mp.microsoft.com. | 80, 443 | Download Agent | Downloading VHD images 
+ecpacr.azurecr.io | 443 | Kubernetes | Downloading container images 
+git://:9418 | 9418 | TCP | Used to support Azure Arc agents 
 
-## Step 5: Start a new deployment
+## Storage requirements 
 
-After you've configured your deployment, you must start deployment. This will install the Azure Kubernetes Service on Azure Stack HCI agents/services and the Azure Kubernetes Service host.
+The following storage implementations are supported by Azure Kubernetes Service on Azure Stack HCI: 
 
-To begin deployment, run the following command.
+|  Name                         | Storage type | Required capacity |
+| ---------------------------- | ------------ | ----------------- |
+| Azure Stack HCI Cluster          | CSV          | 1 TB              |
+| Windows Server 2019 Datacenter failover cluster          | CSV          | 1 TB              |
+| Single Node Windows Server 2019 Datacenter | Direct Attached Storage | 500 GB|
 
-```powershell
-Install-AksHci
-```
+## Review maximum supported hardware specifications 
 
-### Verify your deployed Azure Kubernetes Service host
+Azure Kubernetes Service on Azure Stack HCI deployments that exceed the following specifications are not supported: 
 
-To ensure that your Azure Kubernetes Service host was deployed, run the [Get-AksHciCluster](./get-akshcicluster) command. You will also be able to get Kubernetes clusters using the same command after deploying them.
+| Resource                     | Maximum |
+| ---------------------------- | --------|
+| Physical servers per cluster | 4       |
+| Kubernetes Clusters            | 4       |
+| Total number of VMs          | 200     |
 
-```powershell
-Get-AksHciCluster
-```
+## Windows Admin Center requirements
 
-**Output:**
-```
+Windows Admin Center is the user interface for creating and managing Azure Kubernetes Service on Azure Stack HCI. To use Windows Admin Center with Azure Kubernetes Service on Azure Stack HCI, you must meet all the criteria in the list below. 
 
-Name            : clustergroup-management
-Version         : v1.18.10
-Control Planes  : 1
-Linux Workers   : 0
-Windows Workers : 0
-Phase           : provisioned
-Ready           : True
-```
+Here are the requirements for the machine running the Windows Admin Center gateway: 
 
-## Step 6: Access your clusters using kubectl
+ - Windows 10 or Windows Server machine (we don't support running Windows Admin Center on the Azure Stack HCI or Windows Server 2019 Datacenter cluster right now)
+ - 60 GB of free space
+ - [Registered with Azure](/windows-server/manage/windows-admin-center/azure/azure-integration)
+ - In the same domain as the Azure Stack HCI or Windows Server 2019 Datacenter cluster
 
-To access your Azure Kubernetes Service host using `kubectl`, run the [Get-AksHciCredential](./get-akshcicredential) command. This will use the specified cluster's _kubeconfig_ file as the default _kubeconfig_ file for `kubectl`. You can also use this command to access other Kubernetes clusters after they are deployed.
+## Next steps 
 
-```powershell
-Get-AksHciCredential -name clustergroup-management
-```
-
-## Get logs
-
-To get logs from your all your pods, run the [Get-AksHciLogs](./get-akshcilogs) command. This command will create an output zipped folder called `akshcilogs` in the path `c:\workingdirectory\akshcilogs`.
-
-```powershell
-Get-AksHciLogs
-```
-
-## Update to the latest version of Azure Kubernetes Service on Azure Stack HCI
-
-To update to the latest version of Azure Kubernetes Service on Azure Stack HCI, run the [Update-AksHci](./update-akshci) command. The update command only works if you have installed the Oct release. It will not work for releases older than the October release. This update command updates the Azure Kubernetes Service host and the on-premise Microsoft operated cloud platform. For this preview release, the Kubernetes version and AKS host OS version still remain the same. This command does not upgrade any existing workload clusters. New workload clusters created after updating the AKS host will differ from existing workload clusters in terms of Windows node OS version and Kubernetes version.
-
-   ```powershell
-   Update-AksHci
-   ```
-   
-We recommend updating workload clusters immediately after updating the management cluster to prevent running unsupported Windows Server OS versions in your Kubernetes clusters with Windows nodes. To update your workload cluster, visit [update your workload cluster](create-kubernetes-cluster-powershell.md).
-
-## Restart Azure Kubernetes Service on Azure Stack HCI
-
-Restarting Azure Kubernetes Service on Azure Stack HCI will remove all of your Kubernetes clusters if any, and the Azure Kubernetes Service host. It will also uninstall the Azure Kubernetes Service on Azure Stack HCI agents and services from the nodes. It will then go back through the original install process steps until the host is recreated. The Azure Kubernetes Service on Azure Stack HCI configuration that you configured via `Set-AksHciConfig` and the downloaded VHDX images are preserved.
-
-To restart Azure Kubernetes Service on Azure Stack HCI with the same configuration settings, run the following command.
-
-```powershell
-Restart-AksHci
-```
-
-## Reset configuration settings and reinstall Azure Kubernetes Service on Azure Stack HCI
-
-To reinstall Azure Kubernetes Service on Azure Stack HCI with different configuration settings, run the following command first.
-
-```powershell
-Uninstall-AksHci
-```
-
-After running the above command, you can change the configuration settings with the following command. The parameters remain the same as described in Step 3. If you run this command with no specified parameters, the parameters will be reset to their default values.
-
-```powershell
-Set-AksHciConfig
-```
-
-After changing the configuration to your desired settings, run the following command to reinstall Azure Stack Kubernetes on Azure Stack HCI.
-
-```powershell
-Install-AksHci
-```
-
-## Remove Azure Kubernetes Service on Azure Stack HCI
-
-To remove Azure Kubernetes Service on Azure Stack HCI, run the following command. This command removes your configuration. You will have to run `Set-AksHciConfig` again when you reinstall.
-
-<<<<<<< HEAD
-```powershell
-Uninstall-AksHci
-```
-=======
-Windows Admin Center is the user interface for creating and managing Azure Kubernetes Service on Azure Stack HCI. To use Windows Admin Center with Azure Kubernetes Service on Azure Stack HCI, you must meet all the criteria listed below. You can run Windows Admin Center on a server or Windows 10 machine. 
->>>>>>> 5a9186d15110846926fd50be7258a5c2beedf292
-
-If you want to retain your old configuration, run the following command.
-
-```powershell
-Uninstall-AksHci -SkipConfigCleanup
-```
-
-## Next steps
-
-<<<<<<< HEAD
-- [Create a Kubernetes cluster for your applications](create-kubernetes-cluster-powershell.md)
-=======
 After you have satisfied all of the prerequisites above, you can set up a Azure Kubernetes Service host on Azure Stack HCI using:
  - [Windows Admin Center](setup.md)
  - [PowerShell](setup-powershell.md)
->>>>>>> 5a9186d15110846926fd50be7258a5c2beedf292
