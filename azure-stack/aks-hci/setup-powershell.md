@@ -22,50 +22,27 @@ Make sure you have one of the following:
 Before getting started, make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page. 
 **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).    
 
-   > [!IMPORTANT]
-   > When removing Azure Kubernetes Service on Azure Stack HCI, see [Remove Azure Kubernetes Service on Azure Stack HCI](#remove-azure-kubernetes-service-on-azure-stack-hci) and carefully follow the instructions. 
+> [!IMPORTANT]
+> When removing Azure Kubernetes Service on Azure Stack HCI, see [Remove Azure Kubernetes Service on Azure Stack HCI](#remove-azure-kubernetes-service-on-azure-stack-hci) and carefully follow the instructions. 
 
 ## Step 1: Download and install the AksHci PowerShell module
-<<<<<<< HEAD
-
-Download the `AKS-HCI-Public-Preview-Feb-2021` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module.
-
-If you have previously installed Azure Kubernetes Service on Azure Stack HCI using PowerShell or Windows Admin Center, run the following command before proceeding.
-
-   ```powershell
-   Uninstall-AksHci
-   ```
-
-**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.Day2, and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once this is done, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`).
-
-   ```powershell
-
-   Import-Module AksHci
-
-   ```
-
-After running the above command, close all PowerShell windows and reopen an administrative session to run the commands in the following steps.
-
-### Step 1.1: Clean install of the AksHci PowerShell module
-=======
 
 Download the `AKS-HCI-Public-Preview-Feb-2021` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module.
 
 **Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.Day2, Kva, Moc and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once this is done, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`).
->>>>>>> 5a9186d15110846926fd50be7258a5c2beedf292
 
    ```powershell
    Import-Module AksHci
    ```
-   
-**Close all PowerShell windows** and reopen a new administrative session to check if you have the latest version of the PowerShell module.  
 
+**Close all PowerShell windows** and reopen a new administrative session to check if you have the latest version of the PowerShell module.
+  
    ```powershell
    Get-Command -Module AksHci
    ```
- 
-**Output:**
-```
+
+ **Output:**
+```Output
 CommandType     Name                                               Version    Source
 -----------     ----                                               -------    ------
 Alias           Initialize-AksHciNode                              0.2.16     akshci
@@ -93,8 +70,6 @@ Function        Uninstall-AksHciAdAuth                             0.2.16     ak
 Function        Uninstall-AksHciArcOnboarding                      0.2.16     akshci
 Function        Update-AksHci                                      0.2.16     akshci
 Function        Update-AksHciCluster                               0.2.16     akshci
-<<<<<<< HEAD
-=======
 ```
 
 After running the above command, close all PowerShell windows and reopen an administrative session to run the commands in the following steps.
@@ -107,7 +82,6 @@ To update to the latest version of Azure Kubernetes Service on Azure Stack HCI, 
 
 ```powershell
 Update-AksHci
->>>>>>> 5a9186d15110846926fd50be7258a5c2beedf292
 ```
 
 We recommend updating workload clusters immediately after updating the management cluster to prevent running unsupported Windows Server OS versions in your Kubernetes clusters with Windows nodes. To update your workload cluster, visit [update your workload cluster](create-kubernetes-cluster-powershell.md).
@@ -137,20 +111,6 @@ Name SwitchType NetAdapterInterfaceDescription
 ---- ---------- ------------------------------
 External External Mellanox ConnectX-3 Pro Ethernet Adapter
 ```
-<<<<<<< HEAD
-
-To create a virtual network for the nodes in your deployment to use, create an environment variable with the [New-AksHciNetworkSetting](.\new-akshcinetworksetting.md) PowerShell command. This will be used later to configure a deployment that uses static IP.
-
-   ```powershell
-    $vnet = New-AksHciNetworkSetting -vnetName "External" -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1"
-   ```
-
-> [!NOTE]
-> The values given in this example command will need to be customized for your environment.
-
-## Step 4: Configure your deployment
-=======
->>>>>>> 5a9186d15110846926fd50be7258a5c2beedf292
 
 To create a virtual network for the nodes in your deployment to use, create an environment variable with the [New-AksHciNetworkSetting](.\new-akshcinetworksetting.md) PowerShell command. This will be used later to configure a deployment that uses static IP. If you want to configure your AKS deployment with DHCP, visit [New-AksHciNetworkSetting](.\new-akshcinetworksetting.md) for examples.
 
