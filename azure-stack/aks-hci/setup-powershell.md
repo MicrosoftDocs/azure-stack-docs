@@ -42,7 +42,7 @@ Download the `AKS-HCI-Public-Preview-Feb-2021` from the [Azure Kubernetes Servic
    ```
 
  **Output:**
-```Output
+```
 CommandType     Name                                               Version    Source
 -----------     ----                                               -------    ------
 Alias           Initialize-AksHciNode                              0.2.16     akshci
