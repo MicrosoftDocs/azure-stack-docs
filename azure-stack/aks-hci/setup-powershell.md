@@ -45,31 +45,31 @@ Download the `AKS-HCI-Public-Preview-Feb-2021` from the [Azure Kubernetes Servic
 ```
 CommandType     Name                                               Version    Source
 -----------     ----                                               -------    ------
-Alias           Initialize-AksHciNode                              0.2.16     akshci
-Function        Get-AksHciCluster                                  0.2.16     akshci
-Function        Get-AksHciClusterUpgrades                          0.2.16     akshci
-Function        Get-AksHciConfig                                   0.2.16     akshci
-Function        Get-AksHciCredential                               0.2.16     akshci
-Function        Get-AksHciEventLog                                 0.2.16     akshci
-Function        Get-AksHciKubernetesVersion                        0.2.16     akshci
-Function        Get-AksHciLogs                                     0.2.16     akshci
-Function        Get-AksHciUpdates                                  0.2.16     akshci
-Function        Get-AksHciVersion                                  0.2.16     akshci
-Function        Get-AksHciVmSize                                   0.2.16     akshci
-Function        Install-AksHci                                     0.2.16     akshci
-Function        Install-AksHciAdAuth                               0.2.16     akshci
-Function        Install-AksHciArcOnboarding                        0.2.16     akshci
-Function        New-AksHciCluster                                  0.2.16     akshci
-Function        New-AksHciNetworkSetting                           0.2.16     akshci
-Function        Remove-AksHciCluster                               0.2.16     akshci
-Function        Restart-AksHci                                     0.2.16     akshci
-Function        Set-AksHciClusterNodeCount                         0.2.16     akshci
-Function        Set-AksHciConfig                                   0.2.16     akshci
-Function        Uninstall-AksHci                                   0.2.16     akshci
-Function        Uninstall-AksHciAdAuth                             0.2.16     akshci
-Function        Uninstall-AksHciArcOnboarding                      0.2.16     akshci
-Function        Update-AksHci                                      0.2.16     akshci
-Function        Update-AksHciCluster                               0.2.16     akshci
+Alias           Initialize-AksHciNode                              0.2.17     akshci
+Function        Get-AksHciCluster                                  0.2.17     akshci
+Function        Get-AksHciClusterUpgrades                          0.2.17     akshci
+Function        Get-AksHciConfig                                   0.2.17     akshci
+Function        Get-AksHciCredential                               0.2.17     akshci
+Function        Get-AksHciEventLog                                 0.2.17     akshci
+Function        Get-AksHciKubernetesVersion                        0.2.17     akshci
+Function        Get-AksHciLogs                                     0.2.17     akshci
+Function        Get-AksHciUpdates                                  0.2.17     akshci
+Function        Get-AksHciVersion                                  0.2.17     akshci
+Function        Get-AksHciVmSize                                   0.2.17     akshci
+Function        Install-AksHci                                     0.2.17     akshci
+Function        Install-AksHciAdAuth                               0.2.17     akshci
+Function        Install-AksHciArcOnboarding                        0.2.17     akshci
+Function        New-AksHciCluster                                  0.2.17     akshci
+Function        New-AksHciNetworkSetting                           0.2.17     akshci
+Function        Remove-AksHciCluster                               0.2.17     akshci
+Function        Restart-AksHci                                     0.2.17     akshci
+Function        Set-AksHciClusterNodeCount                         0.2.17     akshci
+Function        Set-AksHciConfig                                   0.2.17     akshci
+Function        Uninstall-AksHci                                   0.2.17     akshci
+Function        Uninstall-AksHciAdAuth                             0.2.17     akshci
+Function        Uninstall-AksHciArcOnboarding                      0.2.17     akshci
+Function        Update-AksHci                                      0.2.17     akshci
+Function        Update-AksHciCluster                               0.2.17     akshci
 ```
 
 After running the above command, close all PowerShell windows and reopen an administrative session to run the commands in the following steps.
