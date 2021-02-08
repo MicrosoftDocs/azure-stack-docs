@@ -25,7 +25,7 @@ You can choose from three GPU models in the public preview period. They are avai
 - [NCasT4_v3](/azure/virtual-machines/nct4-v3-series)
 
 > [!IMPORTANT]  
-> Azure Stack Hub GPU support is currently in public preview. To participate in the preview, complete the form at [aka.ms/azurestackhubgpupreview](https://aka.ms/azurestackhubgpupreview).
+> Azure Stack Hub GPU support is in public preview for the 2005 and 2008 Azure Stack Hub release. 
 > This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities.
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
