@@ -4,7 +4,7 @@ description: Learn how to manage updates in Azure Stack Hub
 author: sethmanheim
 
 ms.topic: how-to
-ms.date: 09/25/2020
+ms.date: 02/08/2021
 ms.author: sethm
 ms.lastreviewed: 07/16/2020
 ms.reviewer: niy
@@ -34,7 +34,7 @@ There are three types of update packages for integrated systems:
 
     **Express** update packages are scoped and don't update the underlying physical host operating systems.
 
-- **Azure Stack Hub hotfixes**. Microsoft provides [hotfixes for Azure Stack Hub](azure-stack-servicing-policy.md#hotfixes) that address a specific issue that's often preventive or time-sensitive. Each hotfix is released with a corresponding Microsoft Knowledge Base article that details the issue, cause, and resolution. You download and install hotfixes just like the regular full update packages for Azure Stack Hub. Hotfixes are cumulative and can install in minutes.
+- **Azure Stack Hub hotfixes**. Microsoft provides [hotfixes for Azure Stack Hub](azure-stack-servicing-policy.md#hotfixes) that address a specific issue that's often preventive or time-sensitive. Each hotfix is released with a corresponding Microsoft Knowledge Base article that details the fixes in that package. You download and install hotfixes just like the regular full update packages for Azure Stack Hub. Hotfixes are cumulative and can install in minutes.
 
    Starting with build 2005, when you update to a new major version (for example, 1.2002.x to 1.2005.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
 
@@ -46,7 +46,7 @@ The three types of updates are released with the following cadence:
 
 - **Azure Stack Hub software updates**. Microsoft releases multiple full and express software update packages per year.
 
-- **Azure Stack Hub hotfixes**. Hotfixes are time-sensitive releases that can be released at any time. If you are upgrading from one major version to another (for example, 1.2002.x to 1.2005.x), the latest hotfixes (if any) in the new major version are installed automatically.
+- **Azure Stack Hub hotfixes**. Hotfixes are time-sensitive releases that can be released at any time. If you are upgrading from one major version to another (for example, 1.2002.x to 1.2005.x), the latest hotfixes, if any have been released for that new major version, are installed automatically.
 
 - **OEM hardware vendor-provided updates**. OEM hardware vendors release their updates on an as-needed basis.
 
@@ -60,11 +60,11 @@ Notice of updates varies on a couple of factors, such as your connection to the 
 
     An update alert for Microsoft software updates and hotfixes will appear in the **Update** blade for Azure Stack Hub instances that are connected to the internet. If the **Update** blade isn't displayed, restart the infrastructure management controller VM.
 
-    If your instance isn't connected and you would like to be notified about each hotfix release, subscribe to the [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss) or [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom) feed.
+    If your instance isn't connected and you would like to be notified about each hotfix release, subscribe to the [RSS feed](https://azurestackhubdocs.azurewebsites.net/xml/hotfixes.rss).
 
 - **OEM hardware vendor-provided updates**
 
-    OEM updates depend on your manufacturer. You'll need to establish a communication channel with your OEM so that you can be aware of updates from your OEM that need to be applied. For more information about the OEMs and the OEM update process, see [Apply Azure Stack Hub original equipment manufacturer (OEM) updates](azure-stack-update-oem.md).
+    OEM updates depend on your manufacturer. You must establish a communication channel with your OEM so that you can be aware of updates from your OEM that need to be applied. For more information about the OEMs and the OEM update process, see [Apply Azure Stack Hub original equipment manufacturer (OEM) updates](azure-stack-update-oem.md).
 
 ### Major version to major version
 
