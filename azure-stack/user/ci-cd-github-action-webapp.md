@@ -1,5 +1,5 @@
 ---
-title: Use the Azure web apps deploy action to Azure Stack Hub 
+title: Use the Azure web apps deploy action with Azure Stack Hub 
 description: Use the Azure web apps deploy action to create a continuous integration, continuous deployment (CI/CD) workflow to Azure Stack Hub
 author: mattbriggs
 ms.topic: how-to
@@ -13,7 +13,7 @@ ms.lastreviewed: 2/08/2021
 
 ---
 
-# Use the Azure web app deploy action to Azure Stack Hub
+# Use the Azure web app deploy action with Azure Stack Hub
 
 You can set up GitHub Actions to deploy a web app to your Azure Stack Hub instance. This allows you to set up continuous integration and deployment for your app. This article will help you get up and running with automated deployment using GitHub Actions and Azure Stack Hub. You will create a web app and use the publish profile to create the web app to host your app.
 
