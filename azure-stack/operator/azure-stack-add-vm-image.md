@@ -3,7 +3,7 @@ title: Add a custom VM image to Azure Stack Hub
 description: Learn how to add or remove a custom VM image to Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 02/08/2021
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 9/8/2020

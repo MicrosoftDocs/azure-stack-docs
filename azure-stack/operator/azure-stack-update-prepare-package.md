@@ -3,7 +3,7 @@ title: Prepare update package in Azure Stack Hub
 description: Learn to prepare an update package in Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 02/08/2021
 ms.author: sethm
 ms.lastreviewed: 09/10/2019
 ms.reviewer: sranthar
@@ -55,7 +55,7 @@ Azure Stack Hub updates for [full and express updates](./azure-stack-updates.md#
 
 ### Where to download Azure Stack Hub hotfix packages
 
-Packages for [Azure Stack Hub hotfixes](./azure-stack-updates.md#update-package-types) are hosted in the same secure Azure endpoint as Azure Stack Hub updates. Azure Stack Hub operators with connected instances will see the [Azure Stack Hub updates automatically appear in the administrator portal](#automatic-download-and-preparation-for-update-packages) when they become available. You can download them using the embedded links in each of the respective hotfix KB articles, such as [Azure Stack Hub hotfix 1.1906.11.52](https://support.microsoft.com/help/4515650). You can also find links to hotfixes in the release notes corresponding to your Azure Stack Hub version.
+Packages for [Azure Stack Hub hotfixes](./azure-stack-updates.md#update-package-types) are hosted in the same secure Azure endpoint as Azure Stack Hub updates. Azure Stack Hub operators with connected instances will see the [Azure Stack Hub updates automatically appear in the administrator portal](#automatic-download-and-preparation-for-update-packages) when they become available. You can download them using the embedded links in each of the respective hotfix KB articles. You can also find links to hotfix KB articles in the release notes corresponding to your Azure Stack Hub version.
 
 ### Where to download OEM update packages
 
