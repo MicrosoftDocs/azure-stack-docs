@@ -1,14 +1,14 @@
 ---
 title: Configure multi-tenancy in Azure Stack Hub 
-description: Learn how to enable and disable multiple Azure Active Directory tenants in Azure Stack Hub.
+description: Learn how to configure multi-tenancy for guest Azure Active Directory tenants in Azure Stack Hub.
 author: BryanLa
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 01/26/2021
 ms.author: bryanla
 ms.reviewer: bryanr
-ms.lastreviewed: 10/16/2020
+ms.lastreviewed: 01/26/2021
 
-# Intent: As an Azure Stack operator, I want to configure multi-tenancy so multiple tenants can access my Azure Stack.
+# Intent: As an Azure Stack operator, I want to configure multi-tenancy so multiple directory tenants can access my Azure Stack.
 # Keyword: configure multi-tenancy azure stack
 
 ---
@@ -16,44 +16,43 @@ ms.lastreviewed: 10/16/2020
 
 # Configure multi-tenancy in Azure Stack Hub
 
-You can configure Azure Stack Hub to support users from multiple Azure Active Directory (Azure AD) tenants, allowing them to use services in Azure Stack Hub. For example, consider the following scenario:
+You can configure Azure Stack Hub to support sign-ins from users that reside in other Azure Active Directory (Azure AD) directories, allowing them to use services in Azure Stack Hub. These directories have a "guest" relationship with your Azure Stack Hub, and as such, are considered guest Azure AD tenants. For example, consider the following scenario:
 
-- You're the service administrator of contoso.onmicrosoft.com, where Azure Stack Hub is installed.
-- Mary is the directory administrator of fabrikam.onmicrosoft.com, where guest users are located.
-- Mary's company receives IaaS and PaaS services from your company and needs to allow users from the guest directory (fabrikam.onmicrosoft.com) to sign in and use Azure Stack Hub resources in contoso.onmicrosoft.com.
+- You're the service administrator of contoso.onmicrosoft.com, the home Azure AD tenant providing identity and access management services to your Azure Stack Hub.
+- Mary is the directory administrator of fabrikam.onmicrosoft.com, the guest Azure AD tenant where guest users are located.
+- Mary's company (Fabrikam) uses IaaS and PaaS services from your company. Fabrikam wants to allow users from the guest directory (fabrikam.onmicrosoft.com) to sign in and use Azure Stack Hub resources secured by contoso.onmicrosoft.com.
 
-This guide provides the steps required, in the context of this scenario, to configure multi-tenancy in Azure Stack Hub. In this scenario, you and Mary must complete steps to enable users from Fabrikam to sign in and consume services from the Azure Stack Hub deployment in Contoso.
+This guide provides the steps required, in the context of this scenario, to enable or disable multi-tenancy in Azure Stack Hub for a guest directory tenant. You and Mary accomplish this process by registering/unregistering the guest directory tenant, which will enable/disable Azure Stack Hub sign-ins and service consumption by Fabrikam users. 
 
 If you're a Cloud Solution Provider (CSP), you have additional ways you can [configure and manage a multi-tenant Azure Stack Hub](azure-stack-add-manage-billing-as-a-csp.md). 
 
-## Enable multi-tenancy
+## Prerequisites
 
-There are a few prerequisites to account for before you configure multi-tenancy in Azure Stack Hub:
-  
- - You and Mary must coordinate administrative steps across both the directory Azure Stack Hub is installed in (Contoso), and the guest directory (Fabrikam).
- - Make sure you've [installed](powershell-install-az-module.md) and [configured](azure-stack-powershell-configure-admin.md) PowerShell for Azure Stack Hub.
+Before registering or unregistering a guest directory, you and Mary must complete administrative steps for your respective Azure AD tenants: the Azure Stack Hub home directory (Contoso), and the guest directory (Fabrikam):
+
+ - [Install](powershell-install-az-module.md) and [configure](azure-stack-powershell-configure-admin.md) PowerShell for Azure Stack Hub.
  - [Download the Azure Stack Hub Tools](azure-stack-powershell-download.md), and import the Connect and Identity modules:
 
     ```powershell
     Import-Module .\Identity\AzureStack.Identity.psm1
     ```
 
-### Configure Azure Stack Hub directory
+## Register a guest directory
 
-In this section, you configure Azure Stack Hub to allow sign-ins from Fabrikam Azure AD directory tenants.
+To register a guest directory for multi-tenancy, both the home Azure Stack Hub directory and guest directory will need to be configured.
 
-Onboard the guest directory tenant (Fabrikam) to Azure Stack Hub by configuring Azure Resource Manager to accept users and service principals from the guest directory tenant.
+#### Configure Azure Stack Hub directory
 
-The service admin of contoso.onmicrosoft.com runs the following commands:
+As the service administrator of contoso.onmicrosoft.com, you must first onboard the Fabrikam's guest directory tenant to Azure Stack Hub. The following script will configure Azure Resource Manager to accept sign-ins from users and service principals in the fabrikam.onmicrosoft.com tenant:
 
 ```powershell  
-## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint.
+## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint, formatted as adminmanagement.<region>.<FQDN>.
 $adminARMEndpoint = "https://adminmanagement.local.azurestack.external"
 
 ## Replace the value below with the Azure Stack Hub directory
 $azureStackDirectoryTenant = "contoso.onmicrosoft.com"
 
-## Replace the value below with the guest tenant directory. 
+## Replace the value below with the guest directory tenant. 
 $guestDirectoryTenantToBeOnboarded = "fabrikam.onmicrosoft.com"
 
 ## Replace the value below with the name of the resource group in which the directory tenant registration resource should be created (resource group must already exist).
@@ -73,19 +72,15 @@ Register-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint
  -SubscriptionName $SubscriptionName
 ```
 
-### Configure guest directory
+#### Configure guest directory
 
-Once the Azure Stack Hub operator has enabled the Fabrikam directory to be used with Azure Stack Hub, Mary must register Azure Stack Hub with Fabrikam's directory tenant.
-
-#### Register Azure Stack Hub with the guest directory
-
-Mary (directory admin of Fabrikam) runs the following commands in the guest directory fabrikam.onmicrosoft.com:
+Next, Mary (directory admin of Fabrikam) must register Azure Stack Hub with the fabrikam.onmicrosoft.com guest directory, by running the following script:
 
 ```powershell
-## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint.
+## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint, formatted as management.<region>.<FQDN>.
 $tenantARMEndpoint = "https://management.local.azurestack.external"
     
-## Replace the value below with the guest tenant directory.
+## Replace the value below with the guest directory tenant.
 $guestDirectoryTenantName = "fabrikam.onmicrosoft.com"
 
 Register-AzSWithMyDirectoryTenant `
@@ -103,21 +98,21 @@ Register-AzSWithMyDirectoryTenant `
 
 ### Direct users to sign in
 
-Now that you and Mary have completed the steps to onboard Mary's directory, Mary can direct Fabrikam users to sign in. Fabrikam users (users with the fabrikam.onmicrosoft.com suffix) sign in by visiting https\://portal.local.azurestack.external.
+Finally, Mary can direct Fabrikam users with @fabrikam.onmicrosoft.com accounts to sign in by visiting the [Azure Stack Hub user portal](../user/azure-stack-use-portal.md). For multinode systems, the user portal URL is formatted as `https://management.<region>.<FQDN>`. For an ASDK deployment, the URL is `https://portal.local.azurestack.external`.
 
-Mary will direct any [foreign principals](/azure/role-based-access-control/rbac-and-directory-admin-roles) in the Fabrikam directory (users in the Fabrikam directory without the suffix of fabrikam.onmicrosoft.com) to sign in using https\://portal.local.azurestack.external/fabrikam.onmicrosoft.com. If they don't use this URL, they're sent to their default directory (Fabrikam) and receive an error that says their administrator hasn't consented.
+Mary must also direct any foreign principals (users in the Fabrikam directory without the suffix of fabrikam.onmicrosoft.com) to sign in using `https://<user-portal-url>/fabrikam.onmicrosoft.com`. If they don't specify the `/fabrikam.onmicrosoft.com` directory tenant in the URL, they're sent to their default directory and receive an error that says their administrator hasn't consented.
 
-## Disable multi-tenancy
+## Unregister a guest directory
 
-If you no longer want multiple tenants in Azure Stack Hub, you can disable multi-tenancy by doing the following steps in order:
+If you no longer want to allow sign-ins to Azure Stack Hub services from a guest directory tenant, you can unregister the directory. Again, both the home Azure Stack Hub directory and guest directory will need to be configured:
 
-1. As the administrator of the guest directory (Mary in this scenario), run *Unregister-AzsWithMyDirectoryTenant*. The cmdlet uninstalls all the Azure Stack Hub apps from the new directory.
+1. As the administrator of the guest directory (Mary in this scenario), run `Unregister-AzsWithMyDirectoryTenant`. The cmdlet uninstalls all the Azure Stack Hub apps from the new directory.
 
     ``` PowerShell
-    ## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint.
+    ## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint, formatted as management.<region>.<FQDN>.
     $tenantARMEndpoint = "https://management.local.azurestack.external"
         
-    ## Replace the value below with the guest tenant directory.
+    ## Replace the value below with the guest directory tenant.
     $guestDirectoryTenantName = "fabrikam.onmicrosoft.com"
     
     Unregister-AzsWithMyDirectoryTenant `
@@ -126,19 +121,19 @@ If you no longer want multiple tenants in Azure Stack Hub, you can disable multi
      -Verbose 
     ```
 
-2. As the service administrator of Azure Stack Hub (you in this scenario), run *Unregister-AzSGuestDirectoryTenant*.
+2. As the service administrator of Azure Stack Hub (you in this scenario), run the `Unregister-AzSGuestDirectoryTenant` cmdlet:
 
     ``` PowerShell
-    ## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint.
+    ## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint, formatted as adminmanagement.<region>.<FQDN>.
     $adminARMEndpoint = "https://adminmanagement.local.azurestack.external"
     
     ## Replace the value below with the Azure Stack Hub directory
     $azureStackDirectoryTenant = "contoso.onmicrosoft.com"
     
-    ## Replace the value below with the guest tenant directory. 
+    ## Replace the value below with the guest directory tenant. 
     $guestDirectoryTenantToBeDecommissioned = "fabrikam.onmicrosoft.com"
     
-    ## Replace the value below with the name of the resource group in which the directory tenant registration resource should be created (resource group must already exist).
+    ## Replace the value below with the name of the resource group in which the directory tenant resource was created (resource group must already exist).
     $ResourceGroupName = "system.local"
     
     Unregister-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint `
@@ -167,16 +162,16 @@ Write-Host "Unhealthy directories: "
 $healthReport.directoryTenants | Where status -NE 'Healthy' | Select -Property tenantName,tenantId,status | ft
 ```
 
-### Update Azure AD tenant permissions
+## Update Azure AD tenant permissions
 
-This action will clear the alert in Azure Stack Hub, indicating that a directory requires an update. Run the following command from the **Azurestack-tools-master/identity** folder:
+This action will clear an alert in Azure Stack Hub, indicating that a directory requires an update. Run the following command from the **Azurestack-tools-master/identity** folder:
 
 ```powershell
 Import-Module ..\Identity\AzureStack.Identity.psm1
 
 $adminResourceManagerEndpoint = "https://adminmanagement.<region>.<domain>"
 
-# This is the primary tenant Azure Stack is registered to:
+# This is the primary tenant Azure Stack Hub is registered to:
 $homeDirectoryTenantName = "<homeDirectoryTenant>.onmicrosoft.com"
 
 Update-AzsHomeDirectoryTenant -AdminResourceManagerEndpoint $adminResourceManagerEndpoint `
