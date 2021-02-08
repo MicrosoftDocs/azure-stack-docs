@@ -4,7 +4,7 @@ description: Learn about Azure Stack Hub VMs.
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 02/08/2021
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/05/2020
