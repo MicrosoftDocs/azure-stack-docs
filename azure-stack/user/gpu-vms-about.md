@@ -55,6 +55,11 @@ The NVv4-series virtual machines are powered by [AMD Radeon Instinct MI25](https
 
 ## NCasT4_v3
 
+::: moniker range=">=azs-2005"
+> [!IMPORTANT]
+> These VM sizes can't be deployed using the portal user interface (UI). You can use PowerShell, Azure CLI or Azure Resource Manager templates.
+::: moniker-end
+
 | Size | vCPU | Memory: GiB | GPU | GPU memory: GiB | Max data disks | Max NICs | 
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_NC4as_T4_v3 |4 |28 | 1 | 16 | 8 | 4 | 
