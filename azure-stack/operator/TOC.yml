@@ -12,6 +12,12 @@
       href: release-notes-security-updates.md
     - name: Release notes
       href: release-notes.md
+    - name: Hotfixes
+      items:
+      - name: Hotfix 1.2005.29.100
+        href: hotfix-1-2005-29-100.md
+      - name: Hotfix 1.2008.25.114
+        href: hotfix-1-2008-25-114.md  
     - name: Known issues
       href: known-issues.md
 - name: Quickstarts
