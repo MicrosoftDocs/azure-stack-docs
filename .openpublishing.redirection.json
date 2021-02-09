@@ -567,6 +567,11 @@
       "redirect_document_id": false 
     },
     { 
+      "source_path": "azure-stack/hci/manage/use-datacenter-firewall.md", 
+      "redirect_url": "/azure-stack/hci/manage/use-datacenter-firewall-powershell", 
+      "redirect_document_id": false 
+    },    
+    { 
       "source_path": "azure-stack/hci/deploy/sdn-express.md", 
       "redirect_url": "/azure-stack/hci/manage/sdn-express", 
       "redirect_document_id": false 
