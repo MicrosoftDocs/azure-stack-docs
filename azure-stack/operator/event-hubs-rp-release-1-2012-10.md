@@ -16,9 +16,9 @@ These release notes describe improvements and fixes in Event Hubs on Azure Stack
 
 [!INCLUDE [Azure Stack Hub update reminder](../includes/event-hubs-hub-update-banner.md)]
 
-## Updates
+## Updates om this release
 
-This release includes the following improvements:
+This release includes the following updates:
 
 - For Azure Portal SDK developers, portal version 5.0.303.7361 is now supported.
 - Internal logging improvements for Event Hubs clusters.
