@@ -60,15 +60,15 @@ This template installs the following components:
 
 1. Select **+ Create a resource**, then **Custom**, then **Template deployment**.
 
-    ![Create a template](media/azure-stack-create-vm-template/vm-template-1.png)
+   [![Create a template](media/azure-stack-create-vm-template/vm-template-1.png)](media/azure-stack-create-vm-template/vm-template-1-expanded.png#lightbox)
 
 2. Type the name of the template to load; in this example it's **101-vm-linux-minikube**. Then select **Edit template**.
 
-    ![Edit a template](media/azure-stack-create-vm-template/vm-template-2.png)
+    [![Edit a template](media/azure-stack-create-vm-template/vm-template-2.png)](media/azure-stack-create-vm-template/vm-template-2-expanded.png#lightbox)
 
 3. Select **Quickstart template**. Then select **101-vm-linux-minikube** from the available templates using the **Select a template** dropdown list, and then click **OK**.
 
-    ![Quickstart template](media/azure-stack-create-vm-template/vm-template-3.png)
+    [![Quickstart template](media/azure-stack-create-vm-template/vm-template-3.png)](media/azure-stack-create-vm-template/vm-template-3-expanded.png#lightbox)
 
 4. If you want to make modifications to the template JSON, you can do so. If not, or when complete, select **Save** to close the **Edit template** dialog.
 
@@ -76,7 +76,7 @@ This template installs the following components:
 
 6. Choose the subscription to use and then create or choose an existing resource group name. Then, select **Create** to start the template deployment.
 
-    ![Choose subscription](media/azure-stack-create-vm-template/vm-template-4.png)
+    [![Choose subscription](media/azure-stack-create-vm-template/vm-template-4.png)](media/azure-stack-create-vm-template/vm-template-4-expanded.png#lightbox)
 
 7. The resource group deployment takes several minutes to create the custom template-based VM. You can monitor the installation status through notifications and from the resource group properties.
 
@@ -89,7 +89,7 @@ Now that the Linux VM has been successfully created, you can sign in to start Mi
 
 1. After the deployment completes, select **Connect** to view the public IP address that will be used to connect to the Linux VM.
 
-    ![Connect](media/azure-stack-create-vm-template/vm-template-5.png)
+    [![Connect](media/azure-stack-create-vm-template/vm-template-5.png)](media/azure-stack-create-vm-template/vm-template-5-expanded.png#lightbox)
 
 2. From an elevated command prompt, run **mstsc.exe** to open Remote Desktop Connection and connect to the Linux VM public IP address discovered in the previous step. When prompted to sign in to xRDP, use the credentials you specified when creating the VM.
 
