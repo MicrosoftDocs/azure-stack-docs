@@ -14,8 +14,6 @@ ms.lastreviewed: 02/09/2021
 
 These release notes describe improvements and fixes in Event Hubs on Azure Stack Hub version 1.2012.1.0, and any known issues. 
 
-[!INCLUDE [Azure Stack Hub update reminder](../includes/event-hubs-hub-update-banner.md)]
-
 ## Prerequisites
 
 If you have not installed Event Hubs on Azure Stack Hub previously, refer to [Prerequisites for installing Event Hubs on Azure Stack Hub](event-hubs-rp-prerequisites.md) first before beginning deployment.
@@ -26,6 +24,8 @@ Before you begin the upgrade of Event Hubs on Azure Stack to 1.2012.1.0:
 - TBD - backup anything?
 - TBD - notify users?
 - TBD - etc
+
+[!INCLUDE [Azure Stack Hub update reminder](../includes/event-hubs-hub-update-banner.md)]
 
 ## Updates
 

@@ -356,7 +356,7 @@
       - name: Release notes
         items:
         - name: 1.2012.1.0 release notes [Feb 2021] 
-          href: event-hubs-rp-release-notes-1202010.md
+          href: event-hubs-rp-release-1-2012-10.md
       - name: Remove
         href: event-hubs-rp-remove.md 
     - name: IoT Hub on Azure Stack Hub
