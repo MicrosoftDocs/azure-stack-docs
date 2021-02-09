@@ -31,7 +31,7 @@ You can choose from three GPU models in the public preview period. They are avai
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 ::: moniker-end
 
-::: moniker range=">=azs-2005"
+::: moniker range="<=azs-2005"
 > [!WARNING]  
 > GPU VMs are not supported in this release. You will need to upgrade to Azure Stack Hub 2005 or later.
 ::: moniker-end
