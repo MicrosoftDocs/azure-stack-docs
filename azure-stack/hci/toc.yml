@@ -112,7 +112,7 @@
     items:
     - name: Deploy an SDN infrastructure
       href: manage/sdn-express.md
-    - name: Use Datacenter Firewall
+    - name: Use Datacenter Firewall with PowerShell
       href: manage/use-datacenter-firewall.md
     - name: Manage tenant logical networks
       href: manage/tenant-logical-networks.md
