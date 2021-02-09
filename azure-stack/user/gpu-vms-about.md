@@ -33,7 +33,7 @@ You can choose from three GPU models in the public preview period. They are avai
 
 ::: moniker range="<=azs-2002"
 > [!WARNING]  
-> GPU VMs are not supported in this release. You will need to upgrade to Azure Stack Hub 2005 or later.
+> GPU VMs are not supported in this release. You will need to upgrade to Azure Stack Hub 2005 or later. In addition, your Azure Stack Hub hardware must have physical GPUs.
 ::: moniker-end
 ## NCv3
 
