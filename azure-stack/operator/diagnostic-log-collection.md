@@ -43,8 +43,8 @@ Azure Stack Hub collects logs for alerts and other hidden failure events, which 
 
 Azure Stack Hub proactively collects logs for:
 
-1. Update failed
-2. Update needs attention
+- Update failed.
+- Update needs attention.
 
 When an event triggers these alerts, Azure Stack Hub proactively sends the logs to Microsoft.
 
@@ -72,7 +72,6 @@ The data will be used only troubleshooting system health alerts and won't be use
 Any data previously collected with your consent won't be affected by the revocation of your permission.
 
 Logs collected using **Proactive log collection** are uploaded to an Azure storage account managed and controlled by Microsoft. These logs may be accessed by Microsoft in the context of a support case and to improve the health of Azure Stack Hub.
-k## Send logs now
 
 ## Send logs now
 
