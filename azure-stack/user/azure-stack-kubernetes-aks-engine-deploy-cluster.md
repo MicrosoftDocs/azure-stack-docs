@@ -4,10 +4,10 @@ description: How to deploy a Kubernetes cluster on Azure Stack Hub from a client
 author: mattbriggs
 
 ms.topic: article
-ms.date: 2/1/2021
+ms.date: 2/5/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/02/2020
+ms.lastreviewed: 2/5/2021
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -30,7 +30,7 @@ This section looks at creating an API model for your cluster.
 1.  Start by using an Azure Stack Hub API Model file for [Linux](https://aka.ms/aksengine-json-example-raw) or for [Windows](https://aka.ms/aksengine-json-example-raw-win) and make a local copy for your deployment. From the machine, you installed AKS engine, run:
 
     ```bash
-    curl -o kubernetes-azurestack.json https://aka.ms/aksengine-json-example-raw
+    curl -o kubernetes-azurestack.json https://raw.githubusercontent.com/Azure/aks-engine/v0.55.4/examples/azure-stack/kubernetes-azurestack.json
     ```
 
     > [!NOTE]  
