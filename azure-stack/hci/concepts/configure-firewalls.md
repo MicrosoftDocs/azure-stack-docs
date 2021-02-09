@@ -4,7 +4,7 @@ description: This topic provides guidance on how to configure firewalls for the 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 02/03/2021
+ms.date: 02/09/2021
 ---
 
 # Configure firewalls for Azure Stack HCI
@@ -84,6 +84,36 @@ Set-WinInetProxy -ProxySettingsPerUser 0 -ProxyServer webproxy1.com:9090
 Use the `ProxySettingsPerUser 0` flag to make the proxy configuration server-wide instead of per user, which is the default. If you need to manage multiple users on the proxy server who may have different proxies, then don't use this flag and instead run the command for each user.
 
 Download the WinInetProxy.psm1 script at: [PowerShell Gallery | WinInetProxy.psm1 0.1.0](https://www.powershellgallery.com/packages/WinInetProxy/0.1.0/Content/WinInetProxy.psm1).
+
+## Network port requirements
+Ensure that the proper network ports are open between all server nodes both within a site and between sites (for stretched clusters). You'll need appropriate firewall and router rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct), and WS-MAN (port 5985) bi-directional traffic between all servers in the cluster.
+
+When using the Cluster Creation wizard in Windows Admin Center to create the cluster, the wizard automatically opens the appropriate firewall ports on each server in the cluster for Failover Clustering, Hyper-V, and Storage Replica. If you're using a different firewall on each server, open the following ports:
+
+### Failover Clustering ports
+- ICMPv4 and ICMPv6
+- TCP port 445
+- RPC Dynamic Ports
+- TCP port 135
+- TCP port 137
+- TCP port 3343
+- UDP port 3343
+
+### Hyper-V ports
+- TCP port 135
+- TCP port 80 (HTTP connectivity)
+- TCP port 443 (HTTPS connectivity)
+- TCP port 6600
+- TCP port 2179
+- RPC Dynamic Ports
+- RPC Endpoint Mapper
+- TCP port 445
+
+### Storage Replica ports (stretched cluster)
+- TCP port 445
+- TCP 5445 (if using iWarp RDMA)
+- TCP port 5985
+- ICMPv4 and ICMPv6 (if using the `Test-SRTopology` PowerShell cmdlet)
 
 ## Next steps
 For more information, see also:
