@@ -1,13 +1,13 @@
 ---
-title: Manage access control lists (ACLs) for network access
+title: Use Datacenter Firewall to configure ACLs with Windows Admin Center
 description: This topic provides instructions on how to use Windows Admin Center to create and configure access control lists (ACLs) to manage data traffic flow using Datacenter Firewall and ACLs on Software Defined Network (SDN) logical and virtual networks.
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: how-to
-ms.date: 02/05/2021
+ms.date: 02/09/2021
 ---
 
-# Manage access control lists (ACLs) for network access
+# Use Datacenter Firewall to configure ACLs with Windows Admin Center
 
 >Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016
 
