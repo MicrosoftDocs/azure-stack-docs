@@ -512,6 +512,16 @@
       "redirect_document_id": true 
     },
     { 
+      "source_path": "azure-stack/ruggedized/customer-replaceable-unit/emc-poweredge-tactical-indicators-and-codes.md", 
+      "redirect_url": "/azure-stack/ruggedized/customer-replaceable-unit/indicators-and-codes", 
+      "redirect_document_id": true 
+    },
+    { 
+      "source_path": "azure-stack/ruggedized/customer-replaceable-unit/emc-poweredge-tactical-r640-server-overview.md", 
+      "redirect_url": "/azure-stack/ruggedized/customer-replaceable-unit/r640-server-overview", 
+      "redirect_document_id": true 
+    },
+    { 
       "source_path": "azure-stack/hci/deploy/before-you-start.md", 
       "redirect_url": "/azure-stack/hci/concepts/system-requirements", 
       "redirect_document_id": false 

@@ -68,11 +68,10 @@ Browse to the [Installing and removing system
 components](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/installing-and-removing-system-components?guid=guid-5a5943c4-fe26-4faa-a10c-2afa4c1993ff&lang=en-us)
 section.
 
-## Microsoft Azure Stack Hub Tactical Cloud Appliance Service Manual
+## Microsoft Azure Stack Hub Ruggedized Cloud Appliance Service Manual
 
-The Microsoft Azure Stack Hub Tactical Cloud Appliance Service Manual
-contains instructions for removing the Hardware Lifecycle Host from
-the Tracewell Tactical Pods.
+The Microsoft Azure Stack Hub Ruggedized Cloud Appliance Service Manual
+contains instructions for removing the Hardware Lifecycle Host.
 
 ## Dell EMC PowerEdge iDRAC
 

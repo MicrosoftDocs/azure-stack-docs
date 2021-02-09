@@ -114,6 +114,8 @@
       href: manage/sdn-express.md
     - name: Use Datacenter Firewall
       href: manage/use-datacenter-firewall-wac.md
+    - name: Use Datacenter Firewall with PowerShell
+      href: manage/use-datacenter-firewall-powershell.md
     - name: Manage tenant logical networks
       href: manage/tenant-logical-networks.md
     - name: Manage tenant virtual networks

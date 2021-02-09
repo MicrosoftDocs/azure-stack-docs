@@ -5,9 +5,9 @@ author: mattbriggs
 ms.author: mabrigg
 ms.service: azure-stack
 ms.topic: reference
-ms.date: 2/1/2021
+ms.date: 2/8/2021
 ms.reviewer: kivenkat
-ms.lastreviewed: 07/07/2020
+ms.lastreviewed: /8/2021
 
 # Intent: As a a developer on Azure Stack Hub, I want to use a machine with a Graphics Processing Unit (GPU) in order to deliver an processing intensive visualization application.
 # Keyword: Azure Stack Hub Graphics Processing Unit (GPU)
@@ -24,11 +24,17 @@ You can choose from three GPU models in the public preview period. They are avai
 - [NVv4 (AMD MI25)](/azure/virtual-machines/nvv4-series)
 - [NCasT4_v3](/azure/virtual-machines/nct4-v3-series)
 
+::: moniker range=">=azs-2005"
 > [!IMPORTANT]  
-> Azure Stack Hub GPU support is currently in public preview. To participate in the preview, complete the form at [aka.ms/azurestackhubgpupreview](https://aka.ms/azurestackhubgpupreview).
+> Azure Stack Hub GPU support is in public preview for the 2005 and 2008 Azure Stack Hub releases.  
 > This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities.
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+::: moniker-end
 
+::: moniker range="<=azs-2002"
+> [!WARNING]  
+> GPU VMs are not supported in this release. You will need to upgrade to Azure Stack Hub 2005 or later. In addition, your Azure Stack Hub hardware must have physical GPUs.
+::: moniker-end
 ## NCv3
 
 NCv3-series VMs are powered by NVIDIA Tesla V100 GPUs. Customers can take advantage of these updated GPUs for traditional HPC workloads such as reservoir modeling, DNA sequencing, protein analysis, Monte Carlo simulations, and others. 
@@ -48,6 +54,11 @@ The NVv4-series virtual machines are powered by [AMD Radeon Instinct MI25](https
 | Standard_NV4as_v4 |4 |14 |88 | 1/8 | 2 | 4 | 2 | 
 
 ## NCasT4_v3
+
+::: moniker range=">=azs-2005"
+> [!IMPORTANT]
+> These VM sizes can't be deployed using the portal user interface (UI). You can use PowerShell, Azure CLI or Azure Resource Manager templates.
+::: moniker-end
 
 | Size | vCPU | Memory: GiB | GPU | GPU memory: GiB | Max data disks | Max NICs | 
 | --- | --- | --- | --- | --- | --- | --- |

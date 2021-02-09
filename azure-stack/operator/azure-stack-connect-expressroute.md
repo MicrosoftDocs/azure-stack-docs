@@ -4,7 +4,7 @@ description: Learn how to connect virtual networks in Azure Stack Hub to virtual
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 10/20/2020
+ms.date: 02/08/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/22/2019
