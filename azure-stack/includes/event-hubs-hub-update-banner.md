@@ -14,6 +14,6 @@ ms.lastreviewed: 02/09/2021
 > | Supported Azure Stack Hub version | Event Hubs RP version |
 > |-----|---|
 > | 2008 | 1.2012.1.0 [Install](../operator/event-hubs-rp-install.md) ([release notes](../operator/event-hubs-rp-release-1-2012-10.md)) |
-> | 2002 | Preview version [Install](../operator/event-hubs-rp-install.md) |
+> | 2005 | Preview version [Install](../operator/event-hubs-rp-install.md) |
 > 
 > If you have not installed Event Hubs on Azure Stack Hub previously, refer to [Prerequisites for installing Event Hubs on Azure Stack Hub](../operator/event-hubs-rp-prerequisites.md) first before beginning deployment.
