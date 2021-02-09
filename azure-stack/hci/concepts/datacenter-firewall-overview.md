@@ -57,5 +57,5 @@ The Datacenter Firewall offers the following advantages for tenants:
 
 For related information, see also:
 
-- [Use Datacenter Firewall for Software-Defined Networking in Azure Stack HCI and Windows Server](../manage/use-datacenter-firewall-powershell.md)
+- [Use Datacenter Firewall to configure ACLs with PowerShell](../manage/use-datacenter-firewall-powershell.md)
 - [SDN in Azure Stack HCI and Windows Server](software-defined-networking.md)
