@@ -26,7 +26,7 @@ You can choose from three GPU models in the public preview period. They are avai
 
 ::: moniker range=">=azs-2005"
 > [!IMPORTANT]  
-> Azure Stack Hub GPU support is in public preview for the 2005 and 2008 Azure Stack Hub release.  
+> Azure Stack Hub GPU support is in public preview for the 2005 and 2008 Azure Stack Hub releases.  
 > This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities.
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 ::: moniker-end
