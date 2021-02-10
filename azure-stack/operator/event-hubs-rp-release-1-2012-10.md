@@ -16,7 +16,7 @@ These release notes describe improvements and fixes in Event Hubs on Azure Stack
 
 [!INCLUDE [Azure Stack Hub update reminder](../includes/event-hubs-hub-update-banner.md)]
 
-## Updates om this release
+## Updates in this release
 
 This release includes the following updates:
 
