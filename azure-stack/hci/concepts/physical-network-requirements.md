@@ -21,7 +21,7 @@ This topic discusses physical (fabric) network considerations and requirements f
 
 Microsoft tests Azure Stack HCI to the standards and protocols identified in the **Network switch requirements** section below. While Microsoft does not certify network switches, we do work with vendors to identify devices that support Azure Stack HCI requirements.
 
-These requirements are also published in [Windows Hardware Compatibility Program Specifications and Policies](https://docs.microsoft.com/windows-hardware/design/compatibility/whcp-specifications-policies).  Select **Download Specifications and Policies, version 1809**, open the ZIP file, open **WHCP-Components-Peripherals-Specification-1809.pdf**, then see the **Device.Network.Switch.SDDC** section.
+These requirements are also published in [Windows Hardware Compatibility Program Specifications and Policies](/windows-hardware/design/compatibility/whcp-specifications-policies).  Select **Download Specifications and Policies, version 1809**, open the ZIP file, open **WHCP-Components-Peripherals-Specification-1809.pdf**, then see the **Device.Network.Switch.SDDC** section.
 
 > [!IMPORTANT]
 > While other network switches using technologies and protocols not listed here may work, Microsoft cannot guarantee they will work with Azure Stack HCI and may be unable to assist in troubleshooting issues that occur.
@@ -64,9 +64,9 @@ Ethernet switches must comply with the IEEE 802.1Qaz specification that defines 
 
 ### Standard: IEEE 802.1AB
 
-Ethernet switches must comply with the IEEE 802.1AB specification that defines the Link Layer Discovery Protocol (LLDP). LLDP is required for Azure Stack HCI and supports teaming to discover switch configuration.
+Ethernet switches must comply with the IEEE 802.1AB specification that defines the Link Layer Discovery Protocol (LLDP). LLDP is required for Azure Stack HCI and enables troubleshooting of physical networking configurations.
 
-Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled. These switches must not require additional configuration beyond enablement of a specific TLV. For example, enabling 802.1 Subtype 3 should automatically advertise all VLANs available on switch ports.
+Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled. Switches must not require additional configuration beyond enablement of a specific TLV. For example, enabling 802.1 Subtype 3 should automatically advertise all VLANs available on switch ports.
 
 ### Custom TLV requirements
 
@@ -140,6 +140,6 @@ Azure Stack HCI supports switchless (direct) connections for East-West traffic f
 
 - Learn about network adapter and host requirements. See [Host network requirements](host-network-requirements.md).
 - Brush up on failover clustering basics. See [Failover Clustering Networking Basics](https://techcommunity.microsoft.com/t5/failover-clustering/.failover-clustering-networking-basics-and-fundamentals/ba-p/1706005?s=09).
-- Brush up on using SET. See [Remote Direct Memory Access (RDMA) and Switch Embedded Teaming (SET)](https://docs.microsoft.com/windows-server/virtualization/.hyper-v-virtual-switch/rdma-and-switch-embedded-teaming).
-- For deployment, see [Create a cluster using Windows Admin Center](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster).
-- For deployment, see [Create a cluster using Windows PowerShell](https://docs.microsoft.com/azure-stack/hci/deploy/create-cluster-powershell).
+- Brush up on using SET. See [Remote Direct Memory Access (RDMA) and Switch Embedded Teaming (SET)](/windows-server/virtualization/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming).
+- For deployment, see [Create a cluster using Windows Admin Center](../deploy/create-cluster.md).
+- For deployment, see [Create a cluster using Windows PowerShell](../deploy/create-cluster-powershell.md).

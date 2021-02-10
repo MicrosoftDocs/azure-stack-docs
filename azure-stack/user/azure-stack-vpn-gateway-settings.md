@@ -4,7 +4,7 @@ description: Learn about and configure VPN gateways settings for Azure Stack Hub
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 02/08/2021
 ms.author: sethm
 ms.lastreviewed: 12/27/2019
 
@@ -18,7 +18,7 @@ ms.lastreviewed: 12/27/2019
 
 A VPN gateway is a type of virtual network gateway that sends encrypted traffic between your virtual network in Azure Stack Hub and a remote VPN gateway. The remote VPN gateway can be in Azure, a device in your datacenter, or a device on another site. If there is network connectivity between the two endpoints, you can establish a secure Site-to-Site (S2S) VPN connection between the two networks.
 
-A VPN gateway connection relies on the configuration of multiple resources, each of which contains configurable settings. This article describes the resources and settings that relate to a VPN gateway for a virtual network that you create in the Resource Manager deployment model. You can find descriptions and topology diagrams for each connection solution in [About VPN Gateway for Azure Stack Hub](azure-stack-vpn-gateway-about-vpn-gateways.md).
+A VPN gateway connection relies on the configuration of multiple resources, each of which contains configurable settings. This article describes the resources and settings that relate to a VPN gateway for a virtual network that you create in the Resource Manager deployment model. You can find descriptions and topology diagrams for each connection solution in [Create VPN gateways for Azure Stack Hub](azure-stack-vpn-gateway-about-vpn-gateways.md).
 
 ## VPN gateway settings
 
@@ -30,8 +30,8 @@ When you create a virtual network gateway, you must make sure that the gateway t
 
 ```powershell
 New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
--Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn `
--VpnType RouteBased
+   -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn `
+   -VpnType RouteBased
 ```
 
 ### Gateway SKUs
@@ -40,7 +40,7 @@ When you create a virtual network gateway, you must specify the gateway SKU that
 
 Azure Stack Hub offers the VPN gateway SKUs shown in the following table:
 
-| | VPN gateway throughput |VPN gateway maximum IPsec tunnels |
+| | Tunnel throughput |VPN gateway maximum IPsec tunnels |
 |-------|-------|-------|
 |**Basic SKU**  | 100 Mbps    | 20    |
 |**Standard SKU**   | 100 Mbps  | 20 |
@@ -64,8 +64,8 @@ The following PowerShell example specifies the `-GatewaySku` parameter as **Stan
 
 ```powershell
 New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
--Location 'West US' -IpConfigurations $gwipconfig -GatewaySku Standard `
--GatewayType Vpn -VpnType RouteBased
+   -Location 'West US' -IpConfigurations $gwipconfig -GatewaySku Standard `
+   -GatewayType Vpn -VpnType RouteBased
 ```
 
 ### Connection types
@@ -76,8 +76,8 @@ In the following PowerShell example, a S2S connection is created that requires t
 
 ```powershell
 New-AzVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
--Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
--ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
+   -Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
+   -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
 ```
 
 ### VPN types
@@ -100,8 +100,8 @@ The following PowerShell example specifies the `-VpnType` as **RouteBased**. Whe
 
 ```powershell
 New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
--Location 'West US' -IpConfigurations $gwipconfig `
--GatewayType Vpn -VpnType RouteBased
+   -Location 'West US' -IpConfigurations $gwipconfig `
+   -GatewayType Vpn -VpnType RouteBased
 ```
 
 ### Gateway requirements
@@ -145,7 +145,7 @@ This PowerShell example creates a new local network gateway:
 
 ```powershell
 New-AzLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
--Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.5.51.0/24'
+   -Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.5.51.0/24'
 ```
 
 Sometimes you need to modify the local network gateway settings; for example, when you add or modify the address range, or if the IP address of the VPN device changes. For more info, see [Modify local network gateway settings using PowerShell](/azure/vpn-gateway/vpn-gateway-modify-local-network-gateway).

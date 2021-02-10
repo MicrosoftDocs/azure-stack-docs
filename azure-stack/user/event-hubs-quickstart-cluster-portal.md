@@ -7,12 +7,10 @@ ms.service: azure-stack
 ms.topic: quickstart
 ms.date: 01/22/2020
 ms.reviewer: bryanla
-ms.lastreviewed: 01/22/2020
+ms.lastreviewed: 08/15/2020
 ---
 
 # Quickstart: Create an Event Hubs cluster using the Azure Stack Hub portal
-
-[!INCLUDE [preview-banner](../includes/event-hubs-preview.md)]
 
 In this quickstart, you learn how to create an Event Hubs cluster, using the Azure Stack Hub user portal. 
 
@@ -23,6 +21,8 @@ Event Hubs clusters offer single-tenant deployments for the most demanding strea
 Before you can complete this quickstart, you must ensure the Event Hubs service is available in your subscription. If not, work with your administrator to [install the Event Hubs on Azure Stack Hub resource provider](../operator/event-hubs-rp-overview.md). The installation steps also cover the creation of an offer that includes the Event Hubs service. 
 
 Once an offer is available, your administrator can create or update your subscription to include Event Hubs. Alternatively, you can [subscribe to the new offer and create your own subscription](azure-stack-subscribe-services.md).
+
+Your account must be assigned at least [Contributor permissions](/azure/role-based-access-control/rbac-and-directory-admin-roles#azure-roles) at the resource group scope or higher, to create a new cluster.
 
 ## Overview
 
@@ -45,6 +45,9 @@ An Event Hubs cluster provides a unique scoping container in which you can creat
    - **Cluster name**: Enter a name. The system immediately checks to see if the name is available. If available, a checkmark will show at the right end of the field. 
    - **Subscription**: Select the subscription in which you want to create the cluster. 
    - **Resource group**: Create/Select the resource group in which you want to create the cluster. 
+   - **Location**: You can leave the defaulted current location, or change to another.
+   - **Cluster Capacity**: For this quickstart, leave the default of 1 CU.
+      [!INCLUDE [event-hubs-scale](../includes/event-hubs-scale.md)]
    - Select the **Next: Tags >** button at the bottom of the page to continue. You may have to wait for the system to fully provision resources. 
 
    [![Create Event Hub cluster - basics](media/event-hubs-quickstart-cluster-portal/1-create-cluster-basics.png)](media/event-hubs-quickstart-cluster-portal/1-create-cluster-basics.png#lightbox)
@@ -111,7 +114,7 @@ To delete the cluster:
 1. Select **All services** from the left navigation pane again. Enter "Event Hubs Clusters" in the search bar, and select the **Event Hubs Clusters** item from results list.
 2. On the **Event Hub Clusters** page, find and select the cluster you created previously.
 
-   [![Screenshot that shows how to select a cluster to delete.](media/event-hubs-quickstart-cluster-portal/4-delete-cluster-clusters.png)](media/event-hubs-quickstart-cluster-portal/4-delete-cluster-clusters.png#lightbox)
+   [![Event Hubs Clusters - find cluster to be deleted](media/event-hubs-quickstart-cluster-portal/4-delete-cluster-clusters.png)](media/event-hubs-quickstart-cluster-portal/4-delete-cluster-clusters.png#lightbox)
 
 3. On the **Overview** page of **Event Hubs Cluster**:
    - Select **Delete** from the top menu.  

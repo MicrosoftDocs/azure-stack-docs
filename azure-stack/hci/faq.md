@@ -6,7 +6,7 @@ author: JohnCobb1
 ms.author: v-johcob
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/24/2020
+ms.date: 1/21/2021
 ---
 
 # Azure Stack HCI FAQ
@@ -19,7 +19,9 @@ Azure Stack HCI is an on-premises hyperconverged infrastructure stack delivered 
 
 **Does my data stored on Azure Stack HCI get sent to the cloud?**
 
-No. The names, metadata, configuration, and contents of your on-premises virtual machines (VMs) is never sent to the cloud unless you turn on additional services expressly for that purpose, like Azure Backup or Azure Site Recovery. Or unless you enroll those VMs individually into cloud management services like Azure Arc.
+No. Customer data, including the names, metadata, configuration, and contents of your on-premises virtual machines (VMs) is never sent to the cloud unless you turn on additional services expressly for that purpose, like Azure Backup or Azure Site Recovery, or unless you enroll those VMs individually into cloud management services like Azure Arc.
+
+To learn more about the diagnostic data we collect to keep Azure Stack HCI secure, up to date, and working as expected, see [Azure Stack HCI data collection](concepts/data-collection.md) and [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
 
 ### Edge-local management and control
 
@@ -63,7 +65,7 @@ This depends on which features you’re using. At the minimum, Azure Stack HCI w
 
 **Where does the synced information actually go?**
 
-Azure Stack HCI syncs with Azure and stores data in a secure, Microsoft-operated datacenter. To learn more, see [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
+Azure Stack HCI syncs with Azure and stores data in a secure, Microsoft-operated datacenter. To learn more about the diagnostic data we collect to keep Azure Stack HCI secure, up to date, and working as expected, see [Azure Stack HCI data collection](concepts/data-collection.md) and [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
 
 ### Disconnected or “air-gapped”
 

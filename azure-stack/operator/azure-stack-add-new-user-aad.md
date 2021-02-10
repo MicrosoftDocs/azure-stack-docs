@@ -1,11 +1,11 @@
 ---
 title: Add a new Azure Stack Hub user account in Azure Active Directory
 description: Learn how to create a user account in Azure Active Directory, so you can explore the user portal.
-author: JustinHall
+author: PatAltimore
 
 ms.topic: article
 ms.date: 05/20/2019
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 09/17/2019
 
@@ -55,7 +55,7 @@ If you don't have an Azure subscription, you can't use the Azure portal to add a
 > [!NOTE]
 > If you're using Microsoft Account to deploy the ASDK, you can't use Azure AD PowerShell to create a tenant account.
 
-1. Install the **64-bit** version of the [Microsoft Online Services Sign-in Assistant for IT Professionals RTW](https://go.microsoft.com/fwlink/p/?LinkId=286152).
+1. Install the **64-bit** version of the [Microsoft Online Services Sign-in Assistant for IT Professionals RTW](https://www.microsoft.com/download/details.aspx?id=28177).
 
 2. Install the Microsoft Azure AD Module for Windows PowerShell with these steps:
 

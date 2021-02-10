@@ -4,7 +4,7 @@ description: Understanding cluster and pool quorum in Storage Spaces Direct on A
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 01/22/2021
 ---
 
 # Understanding cluster and pool quorum on Azure Stack HCI
@@ -208,8 +208,8 @@ Each of the 24 drives has one vote and node two also has one vote (since it's th
 ![Pool Quorum 3](media/quorum/pool-3.png)
 
 - Can survive one server failure: **Yes**.
-- Can survive one server failure, then another: **Depends **(cannot survive if both nodes three and four go down, but can survive all other scenarios.
-- Can survive two server failures at once: **Depends **(cannot survive if both nodes three and four go down, but can survive all other scenarios.
+- Can survive one server failure, then another: **Depends** (cannot survive if both nodes three and four go down, but can survive all other scenarios.
+- Can survive two server failures at once: **Depends** (cannot survive if both nodes three and four go down, but can survive all other scenarios.
 
 ### Pool quorum recommendations
 
@@ -222,4 +222,4 @@ Each of the 24 drives has one vote and node two also has one vote (since it's th
 For more information, see the following:
 
 - [Configure and manage quorum](/windows-server/failover-clustering/manage-cluster-quorum)
-- [Set up a cluster witness](../deploy/witness.md)
+- [Set up a cluster witness](../manage/witness.md)

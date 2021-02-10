@@ -20,7 +20,7 @@ This article helps you validate basic platform requirements of Azure Stack Hub f
 An NVA's vendor provides technical support for the NVA and its integration with the Azure Stack Hub platform.
 
 > [!NOTE]
-> If you have a connectivity or routing problem that involves an NVA, you should [contact the NVA vendor](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) directly.
+> If you have a connectivity or routing problem that involves an NVA, you should [contact the NVA vendor](https://mskb.pkisolutions.com/kb/2984655) directly.
 
 If this article doesn't address your NVA problem with Azure Stack Hub, create an [Azure Stack Hub support ticket](../operator/azure-stack-manage-basics.md#where-to-get-support).
 
@@ -41,7 +41,7 @@ If this article doesn't address your NVA problem with Azure Stack Hub, create an
 
 ## Check the minimum configuration requirements for NVAs on Azure
 
-Each NVA must meet basic configuration requirements to function correctly on Azure Stack Hub. This section shows the steps to verify these basic configurations. For more information, [contact the NVA vendor](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+Each NVA must meet basic configuration requirements to function correctly on Azure Stack Hub. This section shows the steps to verify these basic configurations. For more information, [contact the NVA vendor](https://mskb.pkisolutions.com/kb/2984655).
 
 > [!IMPORTANT]
 > When packets use an S2S tunnel, they're further encapsulated with additional headers. This encapsulation increases the overall size of each packet.
@@ -132,7 +132,7 @@ Some guest-level operating systems might have firewall policies in place to bloc
    netstat -an | grep -i listen
    ```
 
-1. Look for the TCP ports used by the NVA software that is listed in the results. If you don't see them, configure the application on the NVA and VM to listen and respond to traffic that reaches those ports. [Contact the NVA vendor for assistance](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+1. Look for the TCP ports used by the NVA software that is listed in the results. If you don't see them, configure the application on the NVA and VM to listen and respond to traffic that reaches those ports. [Contact the NVA vendor for assistance](https://mskb.pkisolutions.com/kb/2984655).
 
 ## Check NVA performance
 
@@ -144,7 +144,7 @@ During a CPU spike, investigate which process on the guest VM is causing the hig
 
 You might also need to resize the VM to a larger SKU size or, for a virtual machine scale set, increase the instance count.
 
-If you need assistance, [contact the NVA vendor](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+If you need assistance, [contact the NVA vendor](https://mskb.pkisolutions.com/kb/2984655).
 
 ### Validate VM network statistics
 
@@ -180,8 +180,8 @@ If you don't see packets come into the backend VM trace, an NSG or UDR is likely
 
 If you see packets come in but with no response, you might need to address a problem with a VM application or firewall.
 
-If you need assistance, [contact the NVA vendor](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+If you need assistance, [contact the NVA vendor](https://mskb.pkisolutions.com/kb/2984655).
 
 ### Create a support ticket
 
-If the preceding steps don't resolve your problem, create a [support ticket](../operator/azure-stack-manage-basics.md#where-to-get-support) and use the [on demand log collection tool](../operator/azure-stack-diagnostic-log-collection-overview.md) to provide logs.
+If the preceding steps don't resolve your problem, create a [support ticket](../operator/azure-stack-manage-basics.md#where-to-get-support) and use the [on demand log collection tool](../operator/diagnostic-log-collection.md) to provide logs.

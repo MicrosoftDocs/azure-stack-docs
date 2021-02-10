@@ -5,7 +5,7 @@ description: Overview of region management in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 12/15/2020
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/27/2019

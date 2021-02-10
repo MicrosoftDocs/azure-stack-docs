@@ -4,7 +4,7 @@ description: Learn how to connect Storage Explorer to an  Azure Stack Hub subscr
 author: mattbriggs
 
 ms.topic: conceptual
-ms.date: 08/24/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/11/2019

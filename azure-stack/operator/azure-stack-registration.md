@@ -2,14 +2,14 @@
 title: Register Azure Stack Hub with Azure
 titleSuffix: Azure Stack Hub
 description: Learn how to register Azure Stack Hub integrated systems with Azure so you can download Azure Marketplace items and set up data reporting. 
-author: IngridAtMicrosoft
+author: PatAltimore
 
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: avishwan
 ms.lastreviewed: 11/19/2020
-ms.custom: contperfq4
+ms.custom: contperf-fy20q4
 zone_pivot_groups: state-connected-disconnected
 
 # Intent: As an Azure Stack operator, I want to register my Azure Stack with Azure so I can download marketplace items and set up data reporting.
@@ -123,10 +123,10 @@ Connected environments can access the internet and Azure. For these environments
 
 1. To register the Azure Stack Hub resource provider with Azure, start PowerShell ISE as an administrator and use the following PowerShell cmdlets with the **EnvironmentName** parameter set to the appropriate Azure subscription type (see parameters below).
 
-2. Add the Azure account that you used to register Azure Stack Hub. To add the account, run the **Add-AzAccount** cmdlet. You're prompted to enter your Azure account credentials and you may have to use two-factor authentication based on your account's configuration.
+2. Add the Azure account that you used to register Azure Stack Hub. To add the account, run the **Connect-AzAccount** cmdlet. You're prompted to enter your Azure account credentials and you may have to use two-factor authentication based on your account's configuration.
 
    ```powershell
-   Add-AzAccount -EnvironmentName "<environment name>"
+   Connect-AzAccount -EnvironmentName "<environment name>"
    ```
 
    | Parameter | Description |  
@@ -134,7 +134,7 @@ Connected environments can access the internet and Azure. For these environments
    | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or if using a China Azure Subscription, **AzureChinaCloud**.  |
 
    >[!Note]
-   > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using Add-AzAccount: `Remove-AzAccount-Scope Process`
+   > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using Connect-AzAccount: `Remove-AzAccount-Scope Process`
 
 3. If you have multiple subscriptions, run the following command to select the one you want to use:  
 
@@ -252,7 +252,7 @@ Connected environments can access the internet and Azure. For these environments
 
 1. To register the Azure Stack Hub resource provider with Azure, start PowerShell ISE as an administrator and use the following PowerShell cmdlets with the **EnvironmentName** parameter set to the appropriate Azure subscription type (see parameters below).
 
-2. Add the Azure account that you used to register Azure Stack Hub. To add the account, run the **Add-AzAccount** cmdlet. You're prompted to enter your Azure account credentials and you may have to use two-factor authentication based on your account's configuration.
+2. Add the Azure account that you used to register Azure Stack Hub. To add the account, run the **Connect-AzAccount** cmdlet. You're prompted to enter your Azure account credentials and you may have to use two-factor authentication based on your account's configuration.
 
    ```powershell  
    Connect-AzAccount -Environment "<environment name>"
@@ -295,7 +295,7 @@ Connected environments can access the internet and Azure. For these environments
 
 1. To register the Azure Stack Hub resource provider with Azure, start PowerShell ISE as an administrator and use the following PowerShell cmdlets with the **EnvironmentName** parameter set to the appropriate Azure subscription type (see parameters below).
 
-2. Add the Azure account that you used to register AzureRMure Stack Hub. To add the account, run the **Add-AzureRMAccount** cmdlet. You're prompted to enter your Azure account credentials and you may have to use two-factor authentication based on your account's configuration.
+2. Add the Azure account that you used to register Azure Stack Hub. To add the account, run the **Add-AzureRMAccount** cmdlet. You're prompted to enter your Azure account credentials and you may have to use two-factor authentication based on your account's configuration.
 
    ```powershell  
    Connect-AzureRMAccount -Environment "<environment name>"

@@ -2,7 +2,7 @@
 title: Azure Stack Hub networking differences 
 description: Learn about differences and considerations when working with networking in Azure Stack Hub.
 author: mattbriggs
-ms.date: 5/27/2020
+ms.date: 2/1/2021
 ms.topic: article
 ms.author: mabrigg
 ms.reviewer: wamota
@@ -30,7 +30,7 @@ This article provides an overview of the unique considerations for Azure Stack H
 |  | DNS record sets per zone | 5000 (default)<br>Can be increased on request. | 5000 |
 |  | Name servers for zone delegation | Azure provides four name servers for each user (tenant) zone that is created. | Azure Stack Hub provides two name servers for each user (tenant) zone that is created. |
 | Azure Firewall | Network security service | Azure Firewall is a managed, cloud-based network security service that protects your Azure Virtual Network resources. | Not yet supported. |
-| Virtual Network | Virtual network peering | Connect two virtual networks in the same region through the Azure backbone network. | Not yet supported |
+| Virtual Network | Virtual network peering | Connect two virtual networks in the same region through the Azure backbone network. | Supported since version 2008 [Virtual Network peering](virtual-network-peering.md) |
 |  | IPv6 addresses | You can assign an IPv6 address as part of the [Network Interface Configuration](/azure/virtual-network/virtual-network-network-interface-addresses#ip-address-versions). | Only IPv4 is supported. |
 |  | DDoS Protection Plan | Supported | Not yet supported. |
 |  | Scale Set IP Configurations | Supported | Not yet supported. |
@@ -53,7 +53,7 @@ This article provides an overview of the unique considerations for Azure Stack H
 |  | Availability Configuration | Active/Active | Active/Passive |
 |  | UsePolicyBasedTrafficSelectors | Azure supports using policy-based traffic selectors with route-based gateway connections. | Not yet supported. |
 |  | Monitoring and Alerts | Azure uses Azure Monitor to provide the ability to set up alerts for VPN resources. | Not yet supported.|
-| Load balancer | SKU | Basic and Standard Load Balancers are supported | Only the Basic Load Balancer is supported.<br>The SKU property is not supported.<br>The Basic SKU load balancer /path/ cannot have more than 5 front-end IP configurations.  |
+| Load balancer | SKU | Basic and Standard Load Balancers are supported | Only the Basic Load Balancer is supported.<br>The SKU property is not supported.<br>The Basic SKU load balancer supports 10 front-end IP configurations for releases 1807-1906 and 200 front-end IP configurations for releases 1907 and above per load balancer.  |
 |  | Zones | Availability Zones are Supported. | Not yet supported |
 |  | Inbound NAT Rules support for Service Endpoints | Azure supports specifying Service Endpoints for Inbound NAT rules. | Azure Stack Hub doesn't yet support Service Endpoints, so these can't be specified. |
 |  | Protocol | Azure Supports specifying GRE or ESP. | Protocol Class isn't supported in Azure Stack Hub. |

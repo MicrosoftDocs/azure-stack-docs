@@ -1,6 +1,6 @@
 ---
 title: Azure Stack Hub Capacity Planner | Microsoft Docs
-description: Learn about capacity planning for Azure Stack Hub deployments.
+description: Learn how to use the Azure Stack Hub Capacity planner to view allocations of computing resources for Azure Stack Hub deployments.
 services: azure-stack
 documentationcenter: ''
 author: prchint
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: prchint
 ms.lastreviewed: 05/31/2019
 ---
 
-# Azure Stack Hub Capacity Planner
+# Azure Stack Hub Capacity Planner - Modular Data Center (MDC)
 
 The Azure Stack Hub Capacity Planner is a spreadsheet that shows how different allocations of computing resources would fit across a selection of hardware offerings. 
 

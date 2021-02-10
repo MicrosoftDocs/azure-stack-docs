@@ -12,8 +12,6 @@ ms.lastreviewed: 12/09/2019
 
 # How to manage Event Hubs on Azure Stack Hub
 
-[!INCLUDE [preview-banner](../includes/event-hubs-preview.md)]
-
 The Event Hubs management experience allows you to control the service and visualize its status and alerts. 
 
 ## Overview
@@ -47,8 +45,8 @@ The Event Hubs resource provider supports the following alerts:
 |----------|-------|------|-----------|
 | Performance | | | |
 | | EventHub-CpuUsage | Warning | The average of % CPU usage of Event Hubs cluster in the last 6 hours is larger than 50%. |
-| | EventHub-MemoryUsage | Warning | The average of % Data Disk(E:) usage of Event Hubs cluster in the last 6 hours is larger than 50%. |
-| | EventHub-DiskUsage | Warning | The average of % free memory space of Event Hubs cluster in the last 6 hours is smaller than 50%. |
+| | EventHub-MemoryUsage | Warning | The average of % free memory space of Event Hubs cluster in the last 6 hours is smaller than 50%. |
+| | EventHub-DiskUsage | Warning | The average of % Data Disk(E:) usage of Event Hubs cluster in the last 6 hours is larger than 50%. |
 | Usage/Quota | | | |
 | | EventHub-QuotaExceeded | Warning | A quota exceeded error occurred within the last six hours. |
 | | EventHub-NamespaceCreditUsage | Warning | The sum of namespace credit usages in the last six hours is larger than 10000.0. |
@@ -69,7 +67,7 @@ Selecting an alert from the list, displays the **Alert details** panel on the ri
 
 [![Manage event hubs - alerts detail](media/event-hubs-rp-manage/2-alerts-detail.png)](media/event-hubs-rp-manage/2-alerts-detail.png#lightbox)
 
-For more information on Azure Stack Hub monitoring capability, including alerting, see [Monitor Health and Alerts](azure-stack-monitor-health.md). For details on collecting logs, see [Overview of Azure Stack diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md).
+For more information on Azure Stack Hub monitoring capability, including alerting, see [Monitor Health and Alerts](azure-stack-monitor-health.md). For details on collecting logs, see [Overview of Azure Stack diagnostic log collection](./diagnostic-log-collection.md).
 
 ## Event Hubs clusters
 
@@ -98,17 +96,4 @@ For more information on:
 
 - The quota types defined for Event Hubs, consult [Quota Types](azure-stack-quota-types.md#event-hubs-quota-types).
 - Azure Stack Hub monitoring capabilities, including alerting, refer to [Monitor Health and Alerts](azure-stack-monitor-health.md). 
-- Azure Stack Hub log collection, see [Overview of Azure Stack diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md).
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Azure Stack Hub log collection, see [Overview of Azure Stack diagnostic log collection](./diagnostic-log-collection.md).

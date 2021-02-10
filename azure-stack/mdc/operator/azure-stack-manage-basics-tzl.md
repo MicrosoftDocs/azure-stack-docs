@@ -1,11 +1,11 @@
 ---
-title: Azure Stack Hub administration basics
+title: Azure Stack Hub administration basics - MDC
 titleSuffix: Azure Stack Hub
-description: Learn the basics to Azure Stack Hub administration.
-author: justinha
+description: Learn about the basics of Azure Stack Hub administration. See additional support information and view next steps.
+author: PatAltimore
 ms.topic: article
 ms.date: 10/26/2020
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 10/26/2020
 
@@ -14,7 +14,7 @@ ms.lastreviewed: 10/26/2020
 
 ---
 
-# Azure Stack Hub administration basics
+# Azure Stack Hub administration basics - Modular Data Center (MDC)
 
 If you're new to Azure Stack Hub administration, there are several things you need to know. This article provides an overview of your role as an Azure Stack Hub operator and what you need to tell your users to help them become productive.
 
@@ -48,11 +48,11 @@ We support the following additional platform-as-a-service (PaaS) services:
 - IoT Hub
 - Event Hub
 
-These services require additional configuration before you can make them available to your users. For more information, see **Tutorials** and **How-to guides** > **Offer services** in our [Azure Stack Hub operator documentation](https://docs.microsoft.com/azure-stack/operator/).
+These services require additional configuration before you can make them available to your users. For more information, see **Tutorials** and **How-to guides** > **Offer services** in our [Azure Stack Hub operator documentation](../../operator/index.yml).
 
 ### Service roadmap
 
-Azure Stack Hub will continue to add support for Azure services. For the projected roadmap, see the [Azure Stack Hub: An extension of Azure](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) whitepaper. You can also monitor the [Azure Stack Hub blog posts](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) for new announcements.
+Azure Stack Hub will continue to add support for Azure services. For the projected roadmap, see the [Azure Stack Hub: An extension of Azure](https://azure.microsoft.com/resources/videos/azure-friday-azure-stack-an-extension-of-azure/) whitepaper. You can also monitor the [Azure Stack Hub blog posts](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) for new announcements.
 
 ## What account should I use?
 
@@ -87,11 +87,11 @@ In addition to providing services, you must do the regular duties of an operator
 - Manage [network](../../operator/azure-stack-viewing-public-ip-address-consumption.md) and [storage](../../operator/azure-stack-manage-storage-accounts.md) resources.
 - [Start and stop Azure Stack Hub](../../operator/azure-stack-start-and-stop.md).
 - [Operating the extended storage](../../user/azure-stack-network-howto-extend-datacenter.md).
-- [Manage IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub).
-- [Manage Event Hub](https://docs.microsoft.com/azure-stack/operator/event-hubs-rp-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl).
-- [Manage App Service](https://docs.microsoft.com/azure-stack/operator/azure-stack-app-service-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl).
+- [Manage IoT Hub](/azure/iot-hub/about-iot-hub).
+- [Manage Event Hub](../../operator/event-hubs-rp-overview.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&branch=release-tzl&toc=%2fazure-stack%2ftdc%2ftoc.json&view=azs-2002).
+- [Manage App Service](../../operator/azure-stack-app-service-overview.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&branch=release-tzl&toc=%2fazure-stack%2ftdc%2ftoc.json&view=azs-2002).
 - Replace bad hardware. Here is the list of [replaceable parts](../../operator/azure-stack-replace-component.md).
-- [Get support](https://docs.microsoft.com/azure-stack/operator/azure-stack-help-and-support-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl).
+- [Get support](../../operator/azure-stack-help-and-support-overview.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&branch=release-tzl&toc=%2fazure-stack%2ftdc%2ftoc.json&view=azs-2002).
 
 ## Operator tasks
 
@@ -134,7 +134,7 @@ Here is a list of daily, weekly, and monthly tasks for an operator:
 
 ## What to tell your users
 
-You'll need to let your users know how to work with services in Azure Stack Hub, how to connect to the environment, and how to subscribe to offers. Besides any custom documentation that you may want to provide your users, you can direct users to [Azure Stack Hub User Documentation](https://docs.microsoft.com/azure-stack/user/).
+You'll need to let your users know how to work with services in Azure Stack Hub, how to connect to the environment, and how to subscribe to offers. Besides any custom documentation that you may want to provide your users, you can direct users to [Azure Stack Hub User Documentation](../../user/index.yml).
 
 ### Understand how to work with services in Azure Stack Hub
 
@@ -150,7 +150,7 @@ The information in these articles summarizes the differences between a service i
 
 Your users will want to know how to [access the user portal](../../user/azure-stack-use-portal.md) or how to connect through PowerShell. In an integrated systems environment, the user portal address varies per deployment. You'll need to provide your users with the correct URL.
 
-If using PowerShell, users may have to register resource providers before they can use services. A resource provider manages a service. For example, the networking resource provider manages resources like virtual networks, network interfaces, and load balancers. They must [install](../../operator/azure-stack-powershell-install.md) PowerShell, [download](../../operator/azure-stack-powershell-download.md) additional modules,
+If using PowerShell, users may have to register resource providers before they can use services. A resource provider manages a service. For example, the networking resource provider manages resources like virtual networks, network interfaces, and load balancers. They must [install](../../operator/powershell-install-az-module.md) PowerShell, [download](../../operator/azure-stack-powershell-download.md) additional modules,
 and [configure](../../user/azure-stack-powershell-configure-user.md) PowerShell (which includes resource provider registration).
 
 ### Subscribe to an offer

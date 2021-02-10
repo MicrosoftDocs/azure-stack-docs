@@ -4,7 +4,7 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 02/05/2021
 ---
 
 # Update Azure Stack HCI clusters
@@ -13,23 +13,44 @@ ms.date: 10/27/2020
 
 When updating Azure Stack HCI clusters, the goal is to maintain availability by updating only one server in the cluster at a time. Many operating system updates require taking the server offline, for example to do a restart or to update software such as the network stack. We recommend using Cluster-Aware Updating (CAU), a feature that makes it easy to install updates on every server in your cluster while keeping your applications running. Cluster-Aware Updating automates taking the server in and out of maintenance mode while installing updates and restarting the server, if necessary. Cluster-Aware Updating is the default updating method used by Windows Admin Center and can also be initiated using PowerShell.
 
-   > [!IMPORTANT]
-   > The October 20, 2020 Preview Update (KB4580388) for Azure Stack HCI may cause a Cluster Aware Updating operation to fail if any of the virtual machines are expected to perform Live Migration during CAU. See the [Release notes](../release-notes.md#october-20-2020-preview-update-kb4580388) for a workaround.
-
 This topic focuses on operating system and software updates. If you need to take a server offline to perform maintenance on the hardware, see [Take a server offline for maintenance](maintain-servers.md).
 
 ## Update a cluster using Windows Admin Center
 
 Windows Admin Center makes it easy to update a cluster and apply operating system and solution updates using a simple user interface. If you've purchased an integrated system from a Microsoft hardware partner, it’s easy to get the latest drivers, firmware, and other updates directly from Windows Admin Center by installing the appropriate partner update extension(s). ​If your hardware was not purchased as an integrated system, firmware and driver updates may need to be performed separately, following the hardware vendor's recommendations.
 
-Windows Admin Center will check if the cluster is properly configured to run Cluster-Aware Updating, and if needed, will ask if you’d like Windows Admin Center to configure CAU for you, including installing the CAU cluster role and enabling the required firewall rules.
+   > [!WARNING]
+   > If you begin the update process using Windows Admin Center, continue using the wizard until updates complete. Do not attempt to use the Cluster-Aware Updating tool or update a cluster with PowerShell after partially completing the update process in Windows Admin Center. If you wish to use PowerShell to perform the updates instead of Windows Admin Center, skip ahead to [Update a cluster using PowerShell](#update-a-cluster-using-powershell).
+
+Follow these steps to install updates:
 
 1. When you connect to a cluster, the Windows Admin Center dashboard will alert you if one or more servers have updates ready to be installed, and provide a link to update now. Alternatively, you can select **Updates** from the **Tools** menu at the left.
-1. To use the Cluster-Aware updating tool in Windows Admin Center, you must enable Credential Security Service Provider (CredSSP) and provide explicit credentials. When asked if CredSSP should be enabled, click **Yes**.
-1. Specify your username and password, and click **Continue**.
-1. Any available updates will be displayed; click **Check Available Updates** to refresh the list.
-1. Select the updates you wish to install and click **Apply All Updates**. This will install the updates on every server in the cluster. If a restart is needed, cluster roles such as virtual machines will be moved to another server first to prevent any disruption.
-1. To improve security, disable CredSSP as soon as you're finished installing the updates:
+
+2. If you are updating your cluster for the first time, Windows Admin Center will check if the cluster is properly configured to run Cluster-Aware Updating, and if needed, will ask if you’d like Windows Admin Center to configure CAU for you, including installing the CAU cluster role and enabling the required firewall rules. To begin the update process, click **Get Started**.
+
+   :::image type="content" source="media/update-cluster/add-cau-role.png" alt-text="Windows Admin Center will automatically configure the cluster to run Cluster-Aware Updating" lightbox="media/update-cluster/add-cau-role.png":::
+
+   > [!NOTE]
+   > To use the Cluster-Aware updating tool in Windows Admin Center, you must enable Credential Security Service Provider (CredSSP) and provide explicit credentials. If you are asked if CredSSP should be enabled, click **Yes**. Specify your username and password, and click **Continue**.
+
+3. The cluster's update status will be displayed; click **Check for updates** to get a list of the operating system updates that are available for each server in the cluster. You may need to supply administrator credentials. If no operating system updates are available, click **Next: hardware updates** and proceed to step 7.
+
+   > [!IMPORTANT]
+   > If you navigate away from the Updates screen while an update is in progress, there may be unexpected behavior, such as the history section of the Updates page not populating correctly until the current run is finished. We recommend opening Windows Admin Center in a new browser tab or window if you wish to continue using the application while the updates are in progress.
+
+4. Select **Next: Install** to proceed to install the operating system updates, or click **Skip** to exclude them. 
+
+   :::image type="content" source="media/update-cluster/operating-system-updates.png" alt-text="Click Next: Install to proceed to installing operating system updates, or click Skip to exclude them" lightbox="media/update-cluster/operating-system-updates.png":::
+
+5. Select **Install** to install the operating system updates on each server in the cluster. You will see the update status change to "installing updates." If any of the updates requires a restart, servers will be restarted one at a time, moving cluster roles such as virtual machines between servers to prevent downtime.
+
+   :::image type="content" source="media/update-cluster/install-os-updates.png" alt-text="Click Install to install operating system updates on each server in the cluster" lightbox="media/update-cluster/install-os-updates.png":::
+
+6. When operating system updates are complete, the update status will change to "succeeded." Click **Next: hardware updates** to proceed to the hardware updates screen.
+
+7. Windows Admin Center will check the cluster for installed extensions that support your specific server hardware. Click **Next: install** to install the hardware updates on each server in the cluster. If no extensions or updates are found, click **Exit**.
+
+8. To improve security, disable CredSSP as soon as you're finished installing the updates:
     - In Windows Admin Center, under **All connections**, select the first server in your cluster, and then select **Connect**.
     - On the **Overview** page, select **Disable CredSSP**, and then on the **Disable CredSSP** pop-up window, select **Yes**.
 

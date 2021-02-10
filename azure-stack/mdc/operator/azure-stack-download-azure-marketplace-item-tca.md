@@ -1,6 +1,6 @@
 ---
-title: Download marketplace items from Azure and publish to Azure Stack | Microsoft Docs
-description: Learn how to download marketplace items from Azure and publish to Azure Stack.
+title: Download marketplace items from Azure and publish to Azure Stack
+description: Learn how to download marketplace items from Azure and publish to Azure Stack for modular data centers (MDC).
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -18,7 +18,7 @@ ms.reviewer: avishwan
 ms.lastreviewed: 10/26/2020
 ---
 
-# Download Marketplace items to Azure Stack Hub 
+# Download Marketplace items to Azure Stack Hub - Modular Data Center (MDC) 
 
 As a cloud operator, you can download items to Azure Stack Hub from the Marketplace and make them available to all users using the Azure Stack Hub environment. The items you can choose are from a curated list of Azure Marketplace items that are pre-tested and supported to work with Azure Stack. Additional items are frequently added to this list, so continue to check back for new content.
 
@@ -56,11 +56,11 @@ Your Azure Stack Hub deployment must have internet connectivity and be [registe
 
 4. Each line item also shows the currently available version. If more than one version of a Marketplace item is available, the **Version** column shows **Multiple**. You can click on each item to view its description and additional information, including its download size:
 
-   ![Add from Azure](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure-1.png)
+   ![Screenshot that shows the 'Add from Azure' page.](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure-1.png)
 
 5. If the version of an item is shown as **Multiple**, you can select that item and then choose a specific version from the resulting version selector dropdown:
 
-   ![Add from Azure](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure-3.png)
+   ![Screnshot that shows the 'Administration' page with the version selector dropdown highlighted.](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure-3.png)
 
 6. Select the item you want, and then select **Download**. Download times vary and depends on the network connectivity. After the download completes, you can deploy the new marketplace item as either an Azure Stack operator or a user.
 
@@ -70,7 +70,7 @@ Your Azure Stack Hub deployment must have internet connectivity and be [registe
 
 In a disconnected environment, you cannot download marketplace items from Azure. You must use the offline syndication tool to download the marketplace items to a local drive, and then upload those items to your Azure Stack Hub from there.
 
-You can [download the offline syndication tools here](https://aka.ms/azsSyndicationtool).
+You can [download the offline syndication tools here](../../operator/azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected).
 
 ### Download Marketplace items from Azure
 
@@ -85,6 +85,33 @@ You can [download the offline syndication tools here](https://aka.ms/azsSyndicat
 - A local drive or network path to which the offline files can be written.
 
 #### Download items
+
+
+
+### [Az modules](#tab/az1)
+
+1. Open PowerShell and go to the extracted folder.
+
+2. Run the **Invoke-AzSMarketplaceDownload.ps1** PowerShell script:
+
+    ```powershell
+    .\Invoke-AzSMarketplaceDownload.ps1 -RegistrationSubscriptionId '<subscription ID>' ` 
+       -RegistrationResourceGroup 'azurestack' -RegistrationName '<registration name>' `
+       -TenantName mytenant.onmicrosoft.com -DownloadFolder 'F:\offlineSyndication'
+    ```
+
+    Alternatively, if you've already logged in through Azure PowerShell, you can pass in the Azure context:
+
+    ```powershell
+    Connect-AzAccount -Environment AzureCloud -Tenant mytenant.onmicrosoft.com 
+    .\Invoke-AzSMarketplaceDownload.ps1 -RegistrationResourceGroup 'azurestack' -RegistrationName '<registration name>' -DownloadFolder 'F:\offlineSyndication' -AzureContext $(Get-AzureRMContext)
+    ```
+    If you do not pass in the Azure context, it will ask you to sign in.
+
+3. A window appears in which you can select the product you would like to download. You can Ctrl + click to select multiple items.
+
+4. Select **OK**. This downloads the marketplace item and its dependencies, if any.
+### [AzureRM modules](#tab/azurerm1)
 
 1. Open PowerShell and go to the extracted folder.
 
@@ -102,12 +129,13 @@ You can [download the offline syndication tools here](https://aka.ms/azsSyndicat
     Add-AzureRmAccount -Environment AzureCloud -Tenant mytenant.onmicrosoft.com 
     .\Invoke-AzSMarketplaceDownload.ps1 -RegistrationResourceGroup 'azurestack' -RegistrationName '<registration name>' -DownloadFolder 'F:\offlineSyndication' -AzureContext $(Get-AzureRMContext)
     ```
-
     If you do not pass in the Azure context, it will ask you to sign in.
 
 3. A window appears in which you can select the product you would like to download. You can Ctrl + click to select multiple items.
 
 4. Select **OK**. This downloads the marketplace item and its dependencies, if any.
+
+---
 
 ### Upload Marketplace items to Azure Stack Hub
 
@@ -118,6 +146,30 @@ You can [download the offline syndication tools here](https://aka.ms/azsSyndicat
 - Access to the offline Marketplace items.
 
 #### Upload items
+
+### [Az modules](#tab/az2)
+
+1. Open PowerShell and go to the extracted folder.
+
+2. Run the **Invoke-AzSMarketplaceUpload.ps1** PowerShell script:
+
+    ```powershell
+    .\Invoke-AzsMarketplaceUpload.ps1 -AzureStackCloudName "AzureStack-Admin" -AzureStackAdminARMEndpoint https://adminmanagement.<region>.<fqdn> -TenantName mytenant.onmicrosoft.com -DownloadFolder F:\offlineSyndication
+    ```
+
+    Alternatively, you can set up the Azure Stack environment yourself in Azure PowerShell, authenticate to the admin Resource Manager endpoint, and pass the context to the script:
+
+    ```powershell
+    Add-AzEnvironment -Name Redmond-Admin -ARMEndpoint https://adminmanagement.redmond.azurestack.corp.microsoft.com
+
+    Connect-AzAccount -Environment Redmond-Admin
+
+    .\Invoke-AzsMarketplaceUpload.ps1 -DownloadFolder F:\Downloads\offlining -AzureContext $(GetAzContext)
+    ```
+
+    This procedure uploads the marketplace items to the specified Azure Stack Hub.
+
+### [AzureRM modules](#tab/azurerm2)
 
 1. Open PowerShell and go to the extracted folder.
 
@@ -138,3 +190,5 @@ You can [download the offline syndication tools here](https://aka.ms/azsSyndicat
     ```
 
     This procedure uploads the marketplace items to the specified Azure Stack Hub.
+
+---

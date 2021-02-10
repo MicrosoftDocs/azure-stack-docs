@@ -4,7 +4,7 @@ description: Learn how to build a recovery plan to protect VMs deployed on Azure
 author: mattbriggs
 
 ms.topic: conceptual
-ms.date: 5/27/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: hectorl
 ms.lastreviewed: 3/5/2020
@@ -18,7 +18,7 @@ ms.lastreviewed: 3/5/2020
 
 Use this article as a guide to help you develop a data protection and disaster recovery strategy for user-deployed IaaS virtual machines (VMs) deployed on Azure Stack Hub.
 
-To protect against data loss and extended downtime, implement a backup-recovery or disaster-recovery plan for user applications and their data. Each application must be evaluated as part of your organization’s comprehensive business continuity and disaster recovery (BC/DR) strategy. A good starting point is [Azure Stack Hub: Considerations for business continuity and disaster recovery](https://aka.ms/azurestackbcdrconsiderationswp).
+To protect against data loss and extended downtime, implement a backup-recovery or disaster-recovery plan for user applications and their data. Each application must be evaluated as part of your organization's comprehensive business continuity and disaster recovery (BC/DR) strategy. A good starting point is [Azure Stack Hub: Considerations for business continuity and disaster recovery](https://aka.ms/azurestackbcdrconsiderationswp).
 
 ## Considerations for protecting IaaS VMs
 

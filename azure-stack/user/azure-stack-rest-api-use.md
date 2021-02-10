@@ -4,7 +4,7 @@ description: Learn how to retrieve an authentication from Azure to make API requ
 author: sethmanheim
 
 ms.topic: article
-ms.date: 10/01/2020
+ms.date: 02/08/2021
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2020
@@ -19,7 +19,7 @@ ms.lastreviewed: 01/14/2020
 
 # Make API requests to Azure Stack Hub
 
-You can use the Azure Stack Hub REST APIs to automate operations such as adding a virtual machine (VM) to your Azure Stack Hub cloud.
+You can use the Azure Stack Hub REST APIs to automate operations, such as adding a virtual machine (VM) to your Azure Stack Hub cloud.
 
 The APIs require your client to authenticate to the Microsoft Azure sign-in endpoint. The endpoint returns a token to use in the header of every request sent to the Azure Stack Hub APIs. Microsoft Azure uses Oauth 2.0.
 
@@ -213,4 +213,4 @@ https://adminmanagement.local.azurestack.external/subscriptions/800c4168-3eb1-40
 
 ## Next steps
 
-For more information about using the Azure REST endpoints, see the [Azure REST API Reference](/rest/api/).
+For more information about using the Azure REST endpoints, see the [Azure REST API reference](/rest/api/).

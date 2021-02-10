@@ -1,23 +1,23 @@
 ---
-title: Software defined networking (SDN) in Azure Stack HCI
+title: Software defined networking (SDN) in Azure Stack HCI and Windows Server
 description: Software defined networking (SDN) provides a way to centrally configure and manage networks and network services such as switching, routing, and load balancing in your data center.
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/16/2020
+ms.date: 02/02/2021
 ---
 
-# Software Defined Networking (SDN) in Azure Stack HCI
+# Software Defined Networking (SDN) in Azure Stack HCI and Windows Server
 
-> Applies to Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to Azure Stack HCI, version 20H2; Windows Server 2019; Windows Server 2016
 
 Software defined networking (SDN) provides a way to centrally configure and manage networks and network services such as switching, routing, and load balancing in your data center. You can use SDN to dynamically create, secure, and connect your network to meet the evolving needs of your apps. Operating global-scale datacenter networks for services like Microsoft Azure, which efficiently performs tens of thousands of network changes every day, is possible only because of SDN.
 
 Virtual network elements such as [Hyper-V Virtual Switch](/windows-server/virtualization/hyper-v-virtual-switch/hyper-v-virtual-switch), [Hyper-V Network Virtualization](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyper-v-network-virtualization), [Software Load Balancing](/windows-server/networking/sdn/technologies/network-function-virtualization/software-load-balancing-for-sdn), and [RAS Gateway](/windows-server/networking/sdn/technologies/network-function-virtualization/ras-gateway-for-sdn) are designed to be integral elements of your SDN infrastructure. You can also use your existing SDN-compatible devices to achieve deeper integration between your workloads running in virtual networks and the physical network.
 
-There are three major SDN components on Azure Stack HCI, and you can choose which you want to deploy: Network Controller, Software Load Balancer, and Gateway.
+There are three major SDN components, and you can choose which you want to deploy: Network Controller, Software Load Balancer, and Gateway.
 
    > [!NOTE]
    > SDN is not supported on stretched (multi-site) clusters.
@@ -33,11 +33,11 @@ Deploying Network Controller enables the following functionalities:
 - Attach virtual appliances to your virtual networks.
 - Configure Quality of Service (QoS) policies for VMs attached to virtual networks or traditional VLAN-based networks.
 
-We recommend [deploying the Network Controller during cluster creation](../deploy/create-cluster.md#step-5-sdn-optional). Alternatively, you can [deploy the Network Controller using PowerShell](../deploy/network-controller-powershell.md) after creating an Azure Stack HCI cluster.
+We recommend deploying [Network Controller using SDN Express](../manage/sdn-express.md).
 
 ## Software Load Balancing
 
-[Software Load Balancing](/windows-server/networking/sdn/technologies/network-function-virtualization/software-load-balancing-for-sdn) (SLB) can be used to evenly distribute customer network traffic among multiple VMs. It enables multiple servers to host the same workload, providing high availability and scalability. SLB uses [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) to advertise virtual IP addresses to the physical network.
+[Software Load Balancer](software-load-balancer.md) (SLB) can be used to evenly distribute customer network traffic among multiple VMs. It enables multiple servers to host the same workload, providing high availability and scalability. SLB uses [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) to advertise virtual IP addresses to the physical network.
 
 ## Gateway
 
@@ -54,5 +54,4 @@ Gateways use [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/
 For related information, see also:
 
 - [Plan a Software Defined Network infrastructure](plan-software-defined-networking-infrastructure.md)
-- [SDN in Windows Server overview](/windows-server/networking/sdn/software-defined-networking)
-- [Deploy a Software Defined Network infrastructure using scripts](/windows-server/networking/sdn/deploy/deploy-a-software-defined-network-infrastructure-using-scripts)
+- [Deploy an SDN infrastructure using SDN Express](../manage/sdn-express.md)

@@ -4,26 +4,34 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
-  - name: Known issues
-    href: known-issues.md
+  - name: Compare to Windows Server
+    href: concepts/compare-windows-server.md
+  - name: Compare to Azure Stack Hub
+    href: concepts/compare-azure-stack-hub.md
+  - name: Release information
+    href: release-information.md
   - name: Release notes
-    href: release-notes.md
+    href: https://support.microsoft.com/help/4595086
   - name: FAQ
     href: faq.md
-- name: Get started
+- name: Quickstarts
   items:
   - name: Use Azure Stack HCI with Windows Admin Center
     href: get-started.md
+  - name: Create an Azure Stack HCI cluster
+    href: deploy/deployment-quickstart.md
 - name: Deploy
   items:
   - name: Deployment overview
     href: deploy/deployment-overview.md
   - name: Deploy the Azure Stack HCI OS
     href: deploy/operating-system.md
-  - name: Create the cluster
+  - name: Create a cluster
     href: deploy/create-cluster.md
-  - name: Set up a cluster witness
-    href: deploy/witness.md
+  - name: Migrate to new hardware
+    href: deploy/migrate-cluster-new-hardware.md
+  - name: Migrate on same hardware
+    href: deploy/migrate-cluster-same-hardware.md
   - name: Register with Azure
     href: deploy/register-with-azure.md
   - name: Validate the cluster
@@ -32,6 +40,16 @@
     items:
     - name: Create a cluster with PowerShell
       href: deploy/create-cluster-powershell.md
+  - name: Deploy workloads
+    items:
+    - name: Branch office and edge
+      href: deploy/branch-office-edge.md
+    - name: Virtual desktop infrastructure
+      href: deploy/virtual-desktop-infrastructure.md
+    - name: SQL Server
+      href: deploy/sql-server.md
+    - name: Trusted enterprise virtualization
+      href: deploy/trusted-enterprise-virtualization.md
 - name: Manage
   items:
   - name: Manage VMs
@@ -41,7 +59,9 @@
     - name: Manage VMs with PowerShell
       href: manage/vm-powershell.md
     - name: Create VM affinity rules
-      href: manage/vm-affinity.md  
+      href: manage/vm-affinity.md
+    - name: VM load balancing
+      href: manage/vm-load-balancing.md
     - name: Attach GPU to Linux VM
       href: manage/attach-gpu-to-linux-vm.md
   - name: Manage storage
@@ -72,16 +92,14 @@
       href: manage/update-cluster.md
     - name: Monitor the cluster
       href: manage/monitor-cluster.md
-    - name: Use Datacenter Firewall
-      href: manage/use-datacenter-firewall.md
+    - name: Set up a cluster witness
+      href: manage/witness.md
     - name: Use DISKSPD to test workloads
       href: manage/diskspd-overview.md
     - name: Add or remove servers
       href: manage/add-cluster.md
     - name: Take a server offline for maintenance
       href: manage/maintain-servers.md
-    - name: Manage Azure registration
-      href: manage/manage-azure-registration.md
     - name: Change languages
       href: manage/languages.md
     - name: Change privacy settings
@@ -90,10 +108,22 @@
       href: manage/validate-qos.md
     - name: Troubleshoot CredSSP
       href: manage/troubleshoot-credssp.md
+  - name: Manage SDN
+    items:
+    - name: Deploy an SDN infrastructure
+      href: manage/sdn-express.md
+    - name: Use Datacenter Firewall with PowerShell
+      href: manage/use-datacenter-firewall-powershell.md
+    - name: Manage tenant logical networks
+      href: manage/tenant-logical-networks.md
+    - name: Manage tenant virtual networks
+      href: manage/tenant-virtual-networks.md
   - name: Manage Azure services
     items:
     - name: Register Windows Admin Center with Azure
       href: manage/register-windows-admin-center.md
+    - name: Manage cluster registration with Azure
+      href: manage/manage-azure-registration.md
     - name: Use Azure portal
       href: manage/azure-portal.md
     - name: Monitor with Azure Monitor
@@ -150,16 +180,22 @@
     items:
     - name: Billing
       href: concepts/billing.md
+    - name: Configure firewalls
+      href: concepts/configure-firewalls.md
     - name: Updates and upgrades
       href: concepts/updates.md
     - name: Security considerations
       href: concepts/security.md
+    - name: Utility applications
+      href: concepts/utility-applications.md
+    - name: Data collection
+      href: concepts/data-collection.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
-    href: https://docs.microsoft.com/cli/azure/ext/stack-hci/stack-hci
+    href: /cli/azure/ext/stack-hci/stack-hci
   - name: Azure registration PowerShell commands
-    href: https://docs.microsoft.com/powershell/module/az.stackhci
+    href: /powershell/module/az.stackhci
   - name: Go package for ARM Azure Stack HCI service API
     href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
   - name: Azure Stack HCI Java service classes and interfaces
@@ -206,7 +242,13 @@
   items:
   - name: Azure Stack HCI product page
     href: https://azure.com/hci
-  - name: Azure Stack HCI Eval Guide
+  - name: Evaluation Guide
     href: https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md
-  - name: Azure Stack HCI pricing
+  - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
+  - name: Support
+    href: manage/get-support.md
+  - name: Training
+    href: /learn/paths/azure-stack-hci-foundations/
+  - name: Archived release notes
+    href: preview-release-notes.md

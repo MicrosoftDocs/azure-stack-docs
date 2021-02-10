@@ -152,7 +152,7 @@ Add-AzEnvironment -Name $ARMEvnName -ARMEndpoint $ARMEndPoint
 
 # Login
 $TenantID = Get-AzsDirectoryTenantId -AADTenantName $AADTenantName -EnvironmentName $ARMEvnName
-Add-AzAccount -EnvironmentName $ARMEvnName -TenantId $TenantID 
+Connect-AzAccount -EnvironmentName $ARMEvnName -TenantId $TenantID 
 
 # Set a default Azure subscription.
 Select-AzSubscription -SubscriptionName $SubscriptionName
@@ -167,17 +167,17 @@ New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAccount
 Set-AzCurrentStorageAccount -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName 
 
 # Create a new container.
-New-AzureStorageContainer -Name $ContainerName -Permission Off
+New-AzStorageContainer -Name $ContainerName -Permission Off
 
 # Upload a blob into a container.
-Set-AzureStorageBlobContent -Container $ContainerName -File $ImageToUpload
+Set-AzStorageBlobContent -Container $ContainerName -File $ImageToUpload
 
 # List all blobs in a container.
-Get-AzureStorageBlob -Container $ContainerName
+Get-AzStorageBlob -Container $ContainerName
 
 # Download blobs from the container:
 # Get a reference to a list of all blobs in a container.
-$blobs = Get-AzureStorageBlob -Container $ContainerName
+$blobs = Get-AzStorageBlob -Container $ContainerName
 
 # Create the destination directory.
 New-Item -Path $DestinationFolder -ItemType Directory -Force  
@@ -240,13 +240,13 @@ New-AzureRMStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAc
 Set-AzureRMCurrentStorageAccount -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName 
 
 # Create a new container.
-New-AzureRMureStorageContainer -Name $ContainerName -Permission Off
+New-AzureContainer -Name $ContainerName -Permission Off
 
 # Upload a blob into a container.
-Set-AzureRMureStorageBlobContent -Container $ContainerName -File $ImageToUpload
+Set-AzureBlobContent -Container $ContainerName -File $ImageToUpload
 
 # List all blobs in a container.
-Get-AzureRMureStorageBlob -Container $ContainerName
+Get-AzureBlob -Container $ContainerName
 
 # Download blobs from the container:
 # Get a reference to a list of all blobs in a container.

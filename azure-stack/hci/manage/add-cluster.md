@@ -5,7 +5,7 @@ ms.topic: how-to
 author: v-dasis
 ms.author: v-dasis
 ms.reviewer: jgerend
-ms.date: 11/06/2020
+ms.date: 01/29/2021
 ---
 
 # Add or remove servers for an Azure Stack HCI cluster
@@ -16,7 +16,7 @@ You can easily add or remove servers from a cluster in Azure Stack HCI. Keep in 
 
 Whenever you add or remove a server, you must also perform cluster validation afterwards to ensure the cluster is functioning normally. This applies to both non-stretched and stretched clusters.
 
-## Obtain OEM hardware
+## Before you begin
 
 The first step is to acquire new HCI hardware from your original OEM. Always refer to your OEM-provided documentation when adding new server hardware for use in your cluster.
 
@@ -24,11 +24,13 @@ The first step is to acquire new HCI hardware from your original OEM. Always ref
 1. Enable physical switch ports and adjust access control lists (ACLs) and VLAN IDs if applicable.
 1. Configure the correct IP address in the baseboard management controller (BMC) and apply all BIOS settings per OEM instructions.
 1. Apply the current firmware baseline to all components by using the tools that are provided by your OEM.
-1. Run OEM validation tests to ensure homogeneity with the existing cluster servers.
+1. Run OEM validation tests to ensure hardware homogeneity with the existing clustered servers.
+1. Install the Azure Stack HCI operating system on the new server. For detailed information, see [Deploy Azure Stack HCI](../deploy/operating-system.md).
+1. Join the server to the cluster domain.
 
 ## Add a server to a cluster
 
-Once your server has spun up correctly, use Windows Admin Center to join the server to your cluster.
+Use Windows Admin Center to join the server to your cluster.
 
 :::image type="content" source="media/manage-cluster/add-server.png" alt-text="Add server screen" lightbox="media/manage-cluster/add-server.png":::
 
@@ -62,9 +64,13 @@ Anytime you add or remove servers from a cluster, be sure and run a cluster vali
 
 Stretched clusters require the same number of server nodes and the same number of drives in each site. When adding a server pair to a stretched cluster, their drives are immediately added to the storage pool of both sites in the stretched cluster. If the storage pool at each site is not the same size at the time of addition, it is rejected. This is because the size of the storage pool must be the same between sites.
 
-Unlike for non-stretched clusters, you can only add or remove servers to a stretched cluster using Windows PowerShell. Using the [Get-ClusterFaultDomainXML](https://docs.microsoft.com/powershell/module/failoverclusters/get-clusterfaultdomainxml) and [Set-ClusterFaultDomainXML](https://docs.microsoft.com/powershell/module/failoverclusters/set-clusterfaultdomainxml) cmdlets, you first modify the site (fault domain) information prior to adding the servers.
+Take a few minutes to watch the video on adding server nodes to a stretched cluster:
 
-Then, you can add the server pair to each site simultaneously using the [Add-ClusterNode](https://docs.microsoft.com/powershell/module/failoverclusters/add-clusternode) cmdlet, allowing each new server's drives to be added at the same time also.
+> [!VIDEO https://www.youtube.com/embed/AVHPkRmsZ5Y]
+
+You add or remove servers to a stretched cluster using Windows PowerShell. Using the [Get-ClusterFaultDomainXML](/powershell/module/failoverclusters/get-clusterfaultdomainxml) and [Set-ClusterFaultDomainXML](/powershell/module/failoverclusters/set-clusterfaultdomainxml) cmdlets, you first modify the site (fault domain) information prior to adding the servers.
+
+Then, you can add the server pair to each site simultaneously using the [Add-ClusterNode](/powershell/module/failoverclusters/add-clusternode) cmdlet, allowing each new server's drives to be added at the same time also.
 
 Typically, you manage clusters from a remote computer, rather than on a server in a cluster. This remote computer is called the management computer.
 
@@ -158,7 +164,7 @@ Once the servers have been successfully added, the associated drives are automat
 
 ## Remove server pairs from a stretched cluster
 
-Removing a server pair from a stretched cluster is a similar process to adding a server pair, but using the [Remove-ClusterNode](https://docs.microsoft.com/powershell/module/failoverclusters/remove-clusternode) cmdlet instead.
+Removing a server pair from a stretched cluster is a similar process to adding a server pair, but using the [Remove-ClusterNode](/powershell/module/failoverclusters/remove-clusternode) cmdlet instead.
 
 1. Use the following PowerShell cmdlets to determine the state of the cluster:
 

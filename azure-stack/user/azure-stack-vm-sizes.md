@@ -4,7 +4,7 @@ description: Reference for the supported VM sizes in Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: reference
-ms.date: 07/24/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 03/23/2020

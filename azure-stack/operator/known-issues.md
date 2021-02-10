@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/16/2020
+ms.date: 01/28/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -86,6 +86,18 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 - Applicable: This issue applies to all supported releases. 
 - Cause: When enabling **Session Affinity** on a load balancer, the 2 tuple hash utilizes the PA IP (Physical Address IP) instead of the private IPs assigned to the VMs. In scenarios where traffic directed to the load balancer arrives through a VPN, or if all the client VMs (source IPs) reside on the same node and Session Affinity is enabled, all traffic is directed to one backend VM.
+- Occurrence: Common
+
+#### IPv6 button visible in frontend IP configuration
+
+- Applicable: This issue applies to the 2008 release.
+- Cause: The IPv6 button is visible and enabled when creating the frontend IP configuration of a public load balancer. This is a cosmetic issue on the portal. IPv6 is not supported on Azure Stack Hub.
+- Occurrence: Common
+
+#### Backend port and frontend port need to be the same when floating IP is enabled
+
+- Applicable: This issue applies to all releases. 
+- Cause: Both the frontend port and backend port need to be the same in the load balancing rule when floating IP is enabled. This is by design.
 - Occurrence: Common
 
 <!-- ## Compute -->
@@ -228,6 +240,12 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: If the stamp contains App Service resource provider (RP) version 1.7 and older, upon update of the stamp, the blades for App Service do not load.
 - Remediation: Update the RP to version 2002 Q2.
 
+## PowerShell
+
+[!Include[Known issue for install - one](../includes/known-issue-az-install-1.md)]
+
+[!Include[Known issue for install - two](../includes/known-issue-az-install-2.md)]
+
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
 <!-- ## App Service -->
@@ -353,8 +371,8 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 ### Cannot create a virtual machine scale set with Standard_DS2_v2 VM size on portal
 
 - Applicable: This issue applies to the 2002 release.
-- Cause: There is a portal bug that prevents virtual machine scale set creation with the Standard_DS2_v2 VM size. Creating one will error out with: "{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"BadRequest","message":"{\r\n \"error\": {\r\n \"code\": \"NetworkProfileValidationError\",\r\n \"message\": \"Virtual Machine size Standard_DS2_v2 is not in the allowed list of VM sizes for accelerated networking to be enabled on the VM at index 0 for VM Scale Set /subscriptions/x/resourceGroups/RGVMSS/providers/Microsoft.Compute/virtualMachineScaleSets/vmss. Allowed sizes: .\"\r\n }\r\n}"}]}"
-- Remediation: Create a virtual machine scale set with PowerShell or a resource manager template.
+- Cause: There is a portal bug that prevents virtual machine scale set creation with the Standard_DS2_v2 VM size. Creating one will error out with: "{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"BadRequest","message":"{\r\n \"error\": {\r\n \"code\": \"NetworkProfileValidationError\",\r\n \"message\": \"Virtual Machine size Standard_DS2_v2 is not in the allowed list of VM sizes for accelerated networking to be enabled on the VM at index 0 for virtual machine scale set /subscriptions/x/resourceGroups/RGVMSS/providers/Microsoft.Compute/virtualMachineScaleSets/vmss. Allowed sizes: .\"\r\n }\r\n}"}]}"
+- Remediation: Create a virtual machine scale set with PowerShell or a Resource Manager template.
 
 ### VM overview blade does not show correct computer name
 
@@ -416,7 +434,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 ### Retention period revert to 0
 
 - Applicable: This issue applies to release 2002 and 2005.
-- Cause: If you previously specified a time period other than 0 in retention period setting, it would be reverted back to 0 (the default value of this setting) during 2002 and 2005 update. And the 0 days setting would take effect immdiately after update finished, which causes all the existing deleted storage accounts and any upcoming newly deleted storage account being immediately out of retention and marked for periodic garbage collection (which runs hourly). 
+- Cause: If you previously specified a time period other than 0 in retention period setting, it would be reverted back to 0 (the default value of this setting) during 2002 and 2005 update. And the 0 days setting would take effect immediately after update finished, which causes all the existing deleted storage accounts and any upcoming newly deleted storage account being immediately out of retention and marked for periodic garbage collection (which runs hourly). 
 - Remediation: Manually specify the retention period to a proper period. However, any storage account already been garbage collected before the new retention period is specified is not recoverable.  
 
 ## Resource providers
@@ -432,6 +450,12 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Applicable: This issue applies to release 2002.
 - Cause: If the stamp contains App Service resource provider (RP) version 1.7 and older, upon update of the stamp, the blades for App Service do not load.
 - Remediation: Update the RP to version [2020 Q2](azure-stack-app-service-update.md).
+
+## PowerShell
+
+[!Include[Known issue for install - one](../includes/known-issue-az-install-1.md)]
+
+[!Include[Known issue for install - two](../includes/known-issue-az-install-2.md)]
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
@@ -508,5 +532,5 @@ To access archived known issues for an older version, use the version selector d
 ::: moniker-end
 
 ::: moniker range="<azs-2002"
-You can access [older versions of Azure Stack Hub known issues on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived documents are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
+You can access older versions of Azure Stack Hub known issues in the table of contents on the left side, under [**Resources > Release notes archive**](./relnotearchive/known-issues-1910.md). These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end

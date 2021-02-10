@@ -4,7 +4,7 @@ description: Learn how to deploy a Kubernetes cluster to a custom virtual networ
 author: mattbriggs
 
 ms.topic: article
-ms.date: 9/2/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 9/2/2020

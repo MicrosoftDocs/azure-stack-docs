@@ -6,14 +6,14 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/09/2020
+ms.date: 12/10/2020
 ---
 
 # Get started with Azure Stack HCI and Windows Admin Center
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-This topic provides instructions for connecting to an Azure Stack HCI cluster, and for monitoring cluster and storage performance. If you haven't set up a cluster yet, [download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) and see [Deployment overview](deploy/deployment-overview.md) for instructions.
+This topic provides instructions for connecting to an Azure Stack HCI cluster, and for monitoring cluster and storage performance. If you haven't set up a cluster yet, [download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) and see [Quickstart: Create an Azure Stack HCI cluster and register it with Azure](deploy/deployment-quickstart.md) for instructions.
 
 ## Install Windows Admin Center
 
@@ -41,7 +41,7 @@ After you have completed the installation of Windows Admin Center, you can add a
 
 The Windows Admin Center dashboard provides alerts and health information about servers, drives, and volumes, as well as details about CPU, memory, and storage usage. The bottom of the dashboard displays cluster performance information such as IOPS and latency by hour, day, week, month, or year.
 
-:::image type="content" source="media/get-started/dashboard.png" alt-text="Windows Admin Center Dashboard Screen Shot":::
+:::image type="content" source="media/get-started/dashboard.png" alt-text="Windows Admin Center Dashboard Screenshot":::
 
 ## Monitor performance of individual components
 

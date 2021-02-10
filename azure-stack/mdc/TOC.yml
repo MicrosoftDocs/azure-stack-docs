@@ -117,9 +117,9 @@
           - name: Deploy App Service
             href: ../operator/azure-stack-app-service-deploy.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: Deploy App Service for high availability
-            href:  ../operator/app-service-deploy-ha.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+            href:  ../operator/azure-stack-app-service-deploy.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fmdc%2ftoc.json
           - name: Deploy App Service offline
-            href: ../operator/azure-stack-app-service-deploy-offline.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+            href: ../operator/azure-stack-app-service-deploy.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&pivots=state-disconnected%3fpivots%3dstate-disconnected&toc=%2fazure-stack%2fmdc%2ftoc.json
         - name: Event Hubs
           items:
           - name: Capacity planning
@@ -149,7 +149,7 @@
           - name: Deploy highly available SQL databases
             href: ../operator/azure-stack-tutorial-sql.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Start-AzsReadiness cmdlet reference
-        href: ../operator/azure-stack-azsreadiness-cmdlet.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        href: ../operator/azure-stack-validate-identity.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fmdc%2ftoc.json
       - name: View the readiness report  
         href: ../operator/azure-stack-validation-report.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Datacenter configuration
@@ -193,7 +193,7 @@
       - name: Set up management environment
         items:
         - name: Install Azure Stack PowerShell
-          href: ../operator/azure-stack-powershell-install.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: ../operator/powershell-install-az-module.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Connect with PowerShell
           href: ../operator/azure-stack-powershell-configure-admin.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Access privileged endpoint
@@ -217,7 +217,7 @@
         - name: Update App Service
           href: ../operator/azure-stack-app-service-update.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Update App Service Offline
-          href: ../operator/azure-stack-app-service-update-offline.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: ../operator/azure-stack-app-service-update.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&pivots=state-disconnected%3fpivots%3dstate-disconnected&toc=%2fazure-stack%2fmdc%2ftoc.json
         - name: Update Event Hubs
           href: ../operator/resource-provider-apply-updates.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Update MySQL Server
@@ -329,13 +329,13 @@
         - name: Deploy App Service
           href: ../operator/azure-stack-app-service-deploy.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Deploy App Service for high availability
-          href:  ../operator/app-service-deploy-ha.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href:  ../operator/azure-stack-app-service-deploy.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fmdc%2ftoc.json
         - name: Deploy App Service offline
-          href: ../operator/azure-stack-app-service-deploy-offline.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: ../operator/azure-stack-app-service-deploy.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&pivots=state-disconnected%3fpivots%3dstate-disconnected&toc=%2fazure-stack%2fmdc%2ftoc.json
         - name: Update App Service
           href: ../operator/azure-stack-app-service-update.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Update App Service Offline
-          href: ../operator/azure-stack-app-service-update-offline.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: ../operator/azure-stack-app-service-update.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&pivots=state-disconnected%3fpivots%3dstate-disconnected&toc=%2fazure-stack%2fmdc%2ftoc.json
         - name: Add App Service infrastructure roles
           href: ../operator/azure-stack-app-service-add-worker-roles.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Configure deployment sources
@@ -367,7 +367,7 @@
           - name: Backup & restore
             href: operator/azure-stack-backup-infrastructure-backup-tzl.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: Collect logs
-            href: ../operator/azure-stack-diagnostic-log-collection-overview.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+            href: ../operator/diagnostic-log-collection.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fmdc%2ftoc.json
           - name: Health & alerts
             href: operator/azure-stack-monitor-health-tzl.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: Manage
@@ -449,11 +449,11 @@
         - name: Diagnostic log collection
           items:
           - name: Overview 
-            href: ../operator/azure-stack-diagnostic-log-collection-overview.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+            href: ../operator/diagnostic-log-collection.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fmdc%2ftoc.json
           - name: Proactive collection
-            href: ../operator/azure-stack-configure-automatic-diagnostic-log-collection.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+            href: ../operator/diagnostic-log-collection.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fmdc%2ftoc.json
           - name: On-demand collection
-            href: ../operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+            href: ../operator/diagnostic-log-collection.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fmdc%2ftoc.json
       - name: Get Azure Stack Hub state
         href: ../operator/azure-stack-diagnostic-test.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Troubleshooting
@@ -519,7 +519,7 @@
             - name: Azure Stack PowerShell overview
               href: ../user/azure-stack-powershell-overview.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
             - name: Install Azure Stack PowerShell
-              href: /azure-stack/operator/azure-stack-powershell-install?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+              href: ../operator/powershell-install-az-module.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fuser%2ftoc.json
               maintainContext: true
             - name: Connect with PowerShell
               href: ../user/azure-stack-powershell-configure-user.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
@@ -584,7 +584,7 @@
         - name: Use role-based access control
           href: ../user/azure-stack-manage-permissions.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Use an app identity to access resources
-          href: /azure-stack/operator/azure-stack-create-service-principals?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: ../operator/azure-stack-create-service-principals.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fuser%2ftoc.json
       - name: Use services
         items:
         - name: Compute
@@ -734,35 +734,41 @@
           href: ../user/azure-stack-dev-start-howto-vm-nodejs.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Deploy foundational patterns
       items:
-      - name: VNET peering
+      - name: Deploy foundational patterns
+        href: ../user/deploy-foundational-patterns.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+      - name: Networking patterns
         items:
-        - name: VNet peering with FortiGate
-          href: ../user/azure-stack-network-howto-vnet-to-vnet.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-        - name: VNet peering with VMs
-          href: ../user/azure-stack-network-howto-vnet-peering.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Setup VPN to on-prem
-        href: ../user/azure-stack-network-howto-vnet-to-onprem.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: VNET to VNET connection
-        href: ../user/azure-stack-network-howto-vnet-to-vnet-stacks.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Extend the datacenter
-        href: ../user/azure-stack-network-howto-extend-datacenter.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        - name: Use third-party NVAs (Fortinet Fortigate NVA)
+          items:
+          - name: VNet-to-vnet connectivity with FortiGate
+            href: ../user/azure-stack-network-howto-vnet-to-vnet.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Setup VPN to on-prem
+            href: ../user/azure-stack-network-howto-vnet-to-onprem.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: VNet to VNet connectivity between Azure Stack Hub instances
+            href: ../user/azure-stack-network-howto-vnet-to-vnet-stacks.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        - name: Use RRAS
+          items:
+          - name: VNet to VNet connectivity with RRAS
+            href: ../user/azure-stack-network-howto-vnet-peering.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Set up multiple site-to-site VPN tunnels
+            href: ../user/network-howto-vpn-tunnel.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Create a VPN tunnel (GRE)
+            href: ../user/network-howto-vpn-tunnel-gre.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Create a VPN tunnel (IPSEC)
+            href: ../user/network-howto-vpn-tunnel-ipsec.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: F5 load balancer
         href: ../user/network-howto-f5.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Connect to iSCSI storage
-        href: ../user/azure-stack-network-howto-iscsi-storage.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Set up tunnels
-        items:
-        - name: Set up a multiple site-to-site VPN
-          href: ../user/network-howto-vpn-tunnel.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-        - name: Create a VPN tunnel (GRE)
-          href: ../user/network-howto-vpn-tunnel-gre.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-        - name: Create a VPN tunnel (IPSEC)
-          href: ../user/network-howto-vpn-tunnel-ipsec.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+      - name: Connect to external storage
+        items: 
+        - name: Connect to iSCSI storage
+          href: ../user/azure-stack-network-howto-iscsi-storage.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        - name: Extend the datacenter
+          href: ../user/azure-stack-network-howto-extend-datacenter.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Backup and recovery
         items:
-        - name: Back up your VM on MDC with Commvault
+        - name: Back up your VM on Azure Stack Hub ruggedized with Commvault
           href: ../user/azure-stack-network-howto-backup-commvault.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-        - name: Back up your storage accounts on MDC
+        - name: Back up your storage accounts on Azure Stack Hub ruggedized
           href: ../user/azure-stack-network-howto-backup-storage.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Copy subscription resources
           href: ../user/azure-stack-network-howto-backup-replicator.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
@@ -797,8 +803,4 @@
     - name: Stack Overflow
       href: https://stackoverflow.com/questions/tagged/azure-stack
     - name: Training and certification
-      href: /azure-stack/operator/azure-stack-train-and-cert
-
-
-
-
+      href: ../operator/azure-stack-train-and-cert.md

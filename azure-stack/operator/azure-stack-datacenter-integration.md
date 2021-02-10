@@ -1,10 +1,10 @@
 ---
 title: Plan datacenter integration for Azure Stack Hub integrated systems 
 description: Learn how to plan and prepare for datacenter integration with Azure Stack Hub integrated systems.
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2019
 
@@ -185,7 +185,7 @@ If catastrophic data loss occurs, you can use the infrastructure backup to resee
 - Deployment inputs and identifiers
 - Service accounts
 - CA root certificate
-- fFederated resources (in disconnected deployments)
+- Federated resources (in disconnected deployments)
 - Plans, offers, subscriptions, and quotas
 - RBAC policy and role assignments
 - Key Vault secrets
@@ -201,7 +201,7 @@ To replicate data to a secondary location and orchestrate application failover i
 ## Learn more
 
 - For information about use cases, purchasing, partners, and OEM hardware vendors, see the [Azure Stack Hub](https://azure.microsoft.com/overview/azure-stack/) product page.
-- For information about the roadmap and geo-availability for Azure Stack Hub integrated systems, see the white paper: [Azure Stack Hub: An extension of Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
+- For information about the roadmap and geo-availability for Azure Stack Hub integrated systems, see the white paper: [Azure Stack Hub: An extension of Azure](https://azure.microsoft.com/resources/videos/azure-friday-azure-stack-an-extension-of-azure/). 
 
 ## Next steps
 [Azure Stack Hub deployment connection models](azure-stack-connection-models.md)

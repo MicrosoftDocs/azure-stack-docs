@@ -5,7 +5,7 @@ description: Understand the differences between Azure Stack Hub storage and Azur
 author: mattbriggs
 
 ms.topic: conceptual
-ms.date: 5/27/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviwer: jiahan
 ms.lastreviewed: 08/12/2020
@@ -43,7 +43,8 @@ This article summarizes the known Azure Stack Hub Storage differences from Azure
 |Table partition key and row key size|1,024 characters (2,048 bytes).|400 characters (800 bytes).
 |Blob snapshot|The max number of snapshots of one blob isn't limited.|The max number of snapshots of one blob is 1,000.
 |Azure AD Authentication for storage|In preview. |Not yet supported.
-|Immutable Blobs|General available. |Not yet supported.
+|Immutable Blobs|General available. |Supported when you use version 2008 or later.
+|Batch API for Blob Storage|In preview. |Not yet supported.
 |Firewall and virtual network rules for storage|General available. |Not yet supported.|
 
 There are also differences with storage metrics:
@@ -57,7 +58,24 @@ The following versions are supported with Azure Stack Hub Storage:
 
 Azure Storage services APIs:
 
-2005 update or newer versions:
+::: moniker range=">=azs-2008"
+
+2008 update or newer versions:
+- [2019-07-07](/rest/api/storageservices/version-2019-07-07)
+- [2019-02-02](/rest/api/storageservices/version-2019-02-02)
+- [2018-11-09](/rest/api/storageservices/version-2018-11-09)
+- [2018-03-28](/rest/api/storageservices/version-2018-03-28)
+- [2017-11-09](/rest/api/storageservices/version-2017-11-09)
+- [2017-07-29](/rest/api/storageservices/version-2017-07-29)
+- [2017-04-17](/rest/api/storageservices/version-2017-04-17)
+- [2016-05-31](/rest/api/storageservices/version-2016-05-31)
+- [2015-12-11](/rest/api/storageservices/version-2015-12-11)
+- [2015-07-08](/rest/api/storageservices/version-2015-07-08)
+- [2015-04-05](/rest/api/storageservices/version-2015-04-05)
+
+::: moniker-end
+
+2005 update:
 
 - [2019-02-02](/rest/api/storageservices/version-2019-02-02)
 - [2018-11-09](/rest/api/storageservices/version-2018-11-09)
@@ -82,7 +100,21 @@ Previous versions:
 
 Azure Storage services management APIs:
 
-1811 update or newer versions:
+::: moniker range=">=azs-2008"
+
+2008 update or newer versions:
+- [2018-02-01](/rest/api/storagerp/)
+- [2017-10-01](/rest/api/storagerp/)
+- [2017-06-01](/rest/api/storagerp/)
+- [2016-12-01](/rest/api/storagerp/)
+- [2016-05-01](/rest/api/storagerp/)
+- [2016-01-01](/rest/api/storagerp/)
+- [2015-06-15](/rest/api/storagerp/)
+- [2015-05-01-preview](/rest/api/storagerp/)
+
+::: moniker-end
+
+1811 update to 2005 update:
 
 - [2017-10-01](/rest/api/storagerp/)
 - [2017-06-01](/rest/api/storagerp/)

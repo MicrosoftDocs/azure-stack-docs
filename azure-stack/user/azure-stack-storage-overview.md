@@ -4,7 +4,7 @@ description: Learn about Azure Stack Hub Storage services.
 author: mattbriggs
 
 ms.topic: conceptual
-ms.date: 5/27/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.lastreviewed: 01/14/2020
 

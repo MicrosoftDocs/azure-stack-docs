@@ -4,10 +4,10 @@ description: Use Docker to run PowerShell in Azure Stack Hub
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 12/2/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 12/2/2020
+ms.lastreviewed: 12/16/2020
 
 # Intent: As an Azure Stack Hub user, I want to run my Azure Stack Hub PowerShell modules in a Docker container to keep them isolated from other processes.
 # Keyword: Azure Stack Hub AzureRM Az PowerShell Docker
@@ -34,7 +34,7 @@ In this article, you can use Docker to create a container on which to run the ve
 
 To use PowerShell to access resources in Azure Stack Hub, you need a service principal in your Azure Active Directory (Azure AD) tenant. You delegate permissions with user role-based access control (RBAC). You may need to request the service principal from your cloud operator.
 
-1. To set up your service principal, follow the instructions in [Give applications access to Azure Stack Hub resources by creating service principals](../operator/azure-stack-create-service-principals.md?view=azs-2002).
+1. To set up your service principal, follow the instructions in [Give applications access to Azure Stack Hub resources by creating service principals](../operator/azure-stack-create-service-principals.md).
 
 2. Note the application ID, the secret, your tenant ID, and object ID for later use.
 
@@ -99,7 +99,7 @@ In these instructions, you will run a Linux-based container image that contains 
 
 ### [AzureRM modules](#tab/rm)
 
-In these instructions, you will run a Windows-based container image and install the PowerShell and the required modules for Azure Stack Hub.
+In these instructions, you will run a Windows-based container image and install the PowerShell and the required modules for Azure Stack Hub. If you plan to run Docker with Windows, you will need to run Docker on a physical machine. Nested virtualization is not supported on Hyper-V.
 
 1. You need to run Docker by using Windows containers that require Windows 10. When you run Docker, switch to Windows containers. The images supporting the Az module will require Docker 17.05 or newer.
 

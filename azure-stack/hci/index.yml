@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: khdownie
   ms.author: v-kedow
-  ms.date: 10/28/2020
+  ms.date: 12/10/2020
 
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
@@ -27,6 +27,8 @@ landingContent:
         links:
           - text: Use Azure Stack HCI with Windows Admin Center
             url: get-started.md
+          - text: Create an Azure Stack HCI cluster
+            url: deploy/deployment-quickstart.md
 
   # Card 
   - title: Deploy Azure Stack HCI
@@ -38,7 +40,7 @@ landingContent:
           - text: Create a cluster
             url: deploy/create-cluster.md
           - text: Setup a cluster witness
-            url: deploy/witness.md
+            url: manage/witness.md
           - text: Register with Azure
             url: deploy/register-with-azure.md
           - text: Validate a cluster

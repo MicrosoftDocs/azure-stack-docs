@@ -3,10 +3,10 @@ title: Download marketplace items from Azure and publish to Azure Stack Hub
 description: Learn how to download marketplace items from Azure and publish to Azure Stack Hub.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 11/18/2020
+ms.date: 12/16/2020
 ms.author: sethm
 ms.reviewer: avishwan
-ms.lastreviewed: 11/18/2020
+ms.lastreviewed: 12/16/2020
 zone_pivot_groups: state-connected-disconnected
 
 # Intent: As an Azure Stack operator, I want to download marketplace items from Azure Marketplace and publish them to my Azure Stack.
@@ -88,14 +88,23 @@ There are two parts to this scenario:
   - The computer that has internet connectivity must have **Azure Stack Hub PowerShell Module version 1.2.11** or later. If not already present, [install Azure Stack Hub-specific PowerShell modules](powershell-install-az-module.md).
 
   - To enable import of a downloaded Marketplace item, the [PowerShell environment for the Azure Stack Hub operator](azure-stack-powershell-configure-admin.md) must be configured.
+  - .NET Framework 4.7 or later.
 
-- Download the **Azs.Syndication.Admin** module from the PowerShell Gallery using the following command:
+Download the **Azs.Syndication.Admin** module from the PowerShell Gallery using the following command:
+
+### [Az modules](#tab/az1)
+
+  ```powershell
+  Install-Module -Name Azs.Syndication.Admin -AllowPrerelease -PassThru
+  ```
+
+### [AzureRM modules](#tab/azurerm1)
 
   ```powershell
   Install-Module -Name Azs.Syndication.Admin -RequiredVersion 0.1.140
   ```
-  
-- .NET Framework 4.7 or later.
+
+---
 
 Once you have registered your Azure Stack, you can disregard the following message that appears on the Marketplace management blade, as this is not relevant for the disconnected use case:
 
@@ -106,20 +115,20 @@ Once you have registered your Azure Stack, you can disregard the following messa
 > [!IMPORTANT]
 > Be sure to download the marketplace syndication tool each time you download marketplace items in a disconnected scenario. Frequent changes are made to this tool and the most current version should be used for each download.
 
-### [Az modules](#tab/az)
+### [Az modules](#tab/az2)
 
 1. On a computer with an Internet connection, open a PowerShell console as an administrator.
 
-2. Sign in to the appropriate Azure cloud and AzureAD directory tenant using the Azure account that you've used to register Azure Stack Hub. To add the account, in PowerShell run `Add-AzureRmAccount`:
+2. Sign in to the appropriate Azure cloud and AzureAD directory tenant using the Azure account that you've used to register Azure Stack Hub. To add the account, in PowerShell run `Connect-AzAccount`:
 
    ```powershell  
-   Login-AzAccount -Environment AzureCloud -Tenant '<mydirectory>.onmicrosoft.com'
+   Connect-AzAccount -Environment AzureCloud -Tenant '<mydirectory>.onmicrosoft.com'
    ```
 
    You are prompted to enter your Azure account credentials and you might have to use two-factor authentication, depending on your account configuration.
 
    > [!NOTE]
-   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using `Add-AzRmAccount`: `RemoveAzAccount -Scope Process`.
+   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using `Connect-AzAccount`: `Remove-AzAccount -Scope Process`.
 
 3. If you have multiple subscriptions, run the following command to select the one you used for registration:
 
@@ -130,7 +139,7 @@ Once you have registered your Azure Stack, you can disregard the following messa
 4. If you haven't done it in the pre-requisites step already, download the latest version of the Marketplace syndication tool:
 
    ```powershell
-   Install-Module -Name Azs.Syndication.Admin -RequiredVersion 0.1.140
+   Install-Module -Name Azs.Syndication.Admin -AllowPrerelease -PassThru
    ```
 
 5. To select the Marketplace items such as VM images, extensions, or solution templates to download, run the following command:
@@ -174,11 +183,11 @@ Once you have registered your Azure Stack, you can disregard the following messa
     Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Azs.Syndication.Admin -Path "Destination folder path in quotes" -Force
     ```
 
-### [AzureRM modules](#tab/azurerm)
+### [AzureRM modules](#tab/azurerm2)
 
 1. On a computer with an Internet connection, open a PowerShell console as an administrator.
 
-2. Sign in to the appropriate Azure cloud and AzureAD directory tenant using the Azure account that you've used to register Azure Stack Hub. To add the account, in PowerShell run `Add-AzureRMureRmAccount`:
+2. Sign in to the appropriate Azure cloud and AzureAD directory tenant using the Azure account that you've used to register Azure Stack Hub. To add the account, in PowerShell run `Add-AzureRMAccount`:
 
    ```powershell  
    Login-AzureRMAccount -Environment AzureCloud -Tenant '<mydirectory>.onmicrosoft.com'
@@ -187,7 +196,7 @@ Once you have registered your Azure Stack, you can disregard the following messa
    You are prompted to enter your Azure account credentials and you might have to use two-factor authentication, depending on your account configuration.
 
    > [!NOTE]
-   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using `Add-AzureRMRmAccount`: `RemoveAzAccount -Scope Process`.
+   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using `Add-AzureRMAccount`: `Remove-AzureRMAccount -Scope Process`.
 
 3. If you have multiple subscriptions, run the following command to select the one you used for registration:
 
@@ -198,13 +207,13 @@ Once you have registered your Azure Stack, you can disregard the following messa
 4. If you haven't done it in the pre-requisites step already, download the latest version of the Marketplace syndication tool:
 
    ```powershell
-   Install-Module -Name Azs.Syndication.Admin -PassThru
+   Install-Module -Name Azs.Syndication.Admin -RequiredVersion 0.1.140
    ```
 
 5. To select the Marketplace items such as VM images, extensions, or solution templates to download, run the following command:
 
    ```powershell
-   $products = Select-AzureRMsMarketplaceItem
+   $products = Select-AzsMarketplaceItem
    ```
 
    This displays a table that lists all the Azure Stack registrations available in the selected subscription. Choose the registration that matches the Azure Stack environment you're downloading the marketplace items for, and select **OK**.

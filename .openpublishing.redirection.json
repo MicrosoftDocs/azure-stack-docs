@@ -512,6 +512,16 @@
       "redirect_document_id": true 
     },
     { 
+      "source_path": "azure-stack/ruggedized/customer-replaceable-unit/emc-poweredge-tactical-indicators-and-codes.md", 
+      "redirect_url": "/azure-stack/ruggedized/customer-replaceable-unit/indicators-and-codes", 
+      "redirect_document_id": true 
+    },
+    { 
+      "source_path": "azure-stack/ruggedized/customer-replaceable-unit/emc-poweredge-tactical-r640-server-overview.md", 
+      "redirect_url": "/azure-stack/ruggedized/customer-replaceable-unit/r640-server-overview", 
+      "redirect_document_id": true 
+    },
+    { 
       "source_path": "azure-stack/hci/deploy/before-you-start.md", 
       "redirect_url": "/azure-stack/hci/concepts/system-requirements", 
       "redirect_document_id": false 
@@ -523,7 +533,47 @@
     },
     { 
       "source_path": "azure-stack/hci/deploy/network-controller-powershell.md", 
-      "redirect_url": "https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts", 
+      "redirect_url": "/azure-stack/hci/manage/sdn-express", 
+      "redirect_document_id": false 
+    },
+    { 
+      "source_path": "azure-stack/hci/release-notes.md", 
+      "redirect_url": "https://support.microsoft.com/help/4595086", 
+      "redirect_document_id": false 
+    },
+    { 
+      "source_path": "azure-stack/hci/deploy/deploy-vdi.md", 
+      "redirect_url": "/azure-stack/hci/deploy/virtual-desktop-infrastructure", 
+      "redirect_document_id": false 
+    },
+    { 
+      "source_path": "azure-stack/hci/deploy/deploy-sql-server-workload.md", 
+      "redirect_url": "/azure-stack/hci/deploy/sql-server", 
+      "redirect_document_id": false 
+    },
+    { 
+      "source_path": "azure-stack/hci/deploy/deploy-trusted-enterprise-virtualization.md", 
+      "redirect_url": "/azure-stack/hci/deploy/trusted-enterprise-virtualization", 
+      "redirect_document_id": false 
+    },
+    { 
+      "source_path": "azure-stack/hci/known-issues.md", 
+      "redirect_url": "https://support.microsoft.com/help/4595086", 
+      "redirect_document_id": false 
+    },
+    { 
+      "source_path": "azure-stack/hci/deploy/witness.md", 
+      "redirect_url": "/azure-stack/hci/manage/witness", 
+      "redirect_document_id": false 
+    },
+    { 
+      "source_path": "azure-stack/hci/manage/use-datacenter-firewall.md", 
+      "redirect_url": "/azure-stack/hci/manage/use-datacenter-firewall-powershell", 
+      "redirect_document_id": false 
+    },    
+    { 
+      "source_path": "azure-stack/hci/deploy/sdn-express.md", 
+      "redirect_url": "/azure-stack/hci/manage/sdn-express", 
       "redirect_document_id": false 
     }
   ]

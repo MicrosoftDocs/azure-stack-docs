@@ -3,7 +3,7 @@ title: Configure IPsec/IKE site-to-site VPN connections in Azure Stack Hub
 description: Learn more about and configure IPsec/IKE policy for site-to-site VPN or VNet-to-VNet connections in Azure Stack Hub.
 author: sethmanheim
 
-ms.custom: contperfq4
+ms.custom: contperf-fy20q4
 ms.topic: article
 ms.date: 11/22/2020
 ms.author: sethm
@@ -77,7 +77,7 @@ The following table lists the supported cryptographic algorithms and key strengt
 | IKEv2 Integrity                                      | SHA384, SHA256, SHA1, MD5                                                |
 | DH Group                                             | ECP384, DHGroup14, DHGroup2, DHGroup1, ECP256*, DHGroup24*             |
 | IPsec Encryption                                     | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, None |
-| IPsec Integrity                                      | GCMAES256, GCMAES192, GCMAES128                                          |
+| IPsec Integrity                                      | GCMAES256, GCMAES192, GCMAES128, SHA256                                         |
 | PFS Group                                            | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, PFSMM, None                  |
 | QM SA Lifetime                                       | (Optional: default values are used if not specified)<br />                         Seconds (integer; min. 300/default 27000 seconds)<br />                         KBytes (integer; min. 1024/default 102400000 KBytes) |
 | Traffic Selector                                     | Policy-based Traffic Selectors are not supported in Azure Stack Hub.         |

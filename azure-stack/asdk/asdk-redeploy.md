@@ -1,11 +1,11 @@
 ﻿---
 title: Redeploy the ASDK 
 description: Learn how to redeploy the Azure Stack Development Kit (ASDK).
-author: myoungerman
+author: PatAltimore
 
 ms.topic: article
 ms.date: 11/14/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: misainat
 ms.lastreviewed: 11/14/2020
 
@@ -36,7 +36,7 @@ To remove the registration resource, use the **Remove-AzsRegistration** cmdlet t
    Import-Module C:\AzureStack-Tools-az\Registration\RegisterWithAzure.psm1
 
    # Provide Azure subscription admin credentials
-   Add-AzAccount
+   Connect-AzAccount
 
    # Provide ASDK admin credentials
    $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the cloud domain credentials to access the privileged endpoint"

@@ -4,7 +4,7 @@ titleSuffix: Azure Stack
 description: Learn which guest operating systems can be used on Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 02/01/2021
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/06/2019
@@ -33,7 +33,7 @@ Azure Stack Hub supports the Windows guest operating systems listed in the follo
 | Windows 10 *(see note 1)* | 64-bit, Pro, and Enterprise | Bring your own image |
 
 > [!NOTE]
-> To deploy Windows 10 client operating systems on Azure Stack Hub, you must have [Windows per-user licensing](https://www.microsoft.com/licensing/product-licensing/windows10.aspx) or purchase through a Qualified Multitenant Hoster ([QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)).
+> To deploy Windows 10 client operating systems on Azure Stack Hub, you must have [Windows per-user licensing](https://www.microsoft.com/licensing/product-licensing/windows10.aspx) or purchase through a [Qualified Multitenant Hoster (QMTH)](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
 
 Marketplace images are available for pay-as-you-use or BYOL (EA/SPLA) licensing. Use of both on a single Azure Stack Hub instance isn't supported. During deployment, Azure Stack Hub injects a suitable version of the guest agent into the image.
 
@@ -50,9 +50,17 @@ Linux distributions listed as available in Azure Stack Hub Marketplace include t
 
 | Distribution | Description | Publisher | Azure Stack Hub Marketplace |
 | --- | --- | --- | --- |
-| CentOS-based 6.9 | 64-bit | Rogue Wave | Yes |
+| CentOS-based 8.0 | 64-bit | Rogue Wave | Yes |
+| CentOS-based 7.8 | 64-bit | Rogue Wave | Yes |
+| CentOS-based 7.7 LVM | 64-bit | Rogue Wave | Yes |
+| CentOS-based 7.7 | 64-bit | Rogue Wave | Yes |
+| CentOS-based 7.6 | 64-bit | Rogue Wave | Yes |
 | CentOS-based 7.5 | 64-bit | Rogue Wave | Yes |
+| CentOS-based 7.5 LVM | 64-bit | Rogue Wave | Yes |
+| CentOS-based 7.4 | 64-bit | Rogue Wave | Yes |
 | CentOS-based 7.3 | 64-bit | Rogue Wave | Yes |
+| CentOS-based 6.9 | 64-bit | Rogue Wave | Yes |
+| CentOS-based 6.10 | 64-bit | Rogue Wave | Yes |
 | ClearLinux | 64-bit | ClearLinux.org | Yes |
 | CoreOS Linux (Stable) |  64-bit | CoreOS | Yes |
 | Debian 8 "Jessie" | 64-bit | credativ |  Yes |
@@ -64,6 +72,7 @@ Linux distributions listed as available in Azure Stack Hub Marketplace include t
 | Ubuntu 14.04-LTS | 64-bit | Canonical | Yes |
 | Ubuntu 16.04-LTS | 64-bit | Canonical | Yes |
 | Ubuntu 18.04-LTS | 64-bit | Canonical | Yes |
+| Ubuntu Server 20.04 LTS | 64-bit | Canonical | Yes |
 
 For Red Hat Enterprise Linux support information, see [Red Hat and Azure Stack Hub: Frequently Asked Questions](https://access.redhat.com/articles/3413531).
 
