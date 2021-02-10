@@ -228,6 +228,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -proxyServerCertFile
+The certificate used to authenticate to the proxy server.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+ 
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -proxyServerCredential
 This provides the username and password to authenticate to your HTTP/HTTPS proxy servers. You can use `Get-Credential` to generate a PSCredential object to pass to this parameter. Default is none.
 

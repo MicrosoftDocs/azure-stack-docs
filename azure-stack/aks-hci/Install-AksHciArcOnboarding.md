@@ -10,7 +10,7 @@ schema:
 ## Synopsis
 Connects an AKS-HCI workload cluster to Azure Arc for Kubernetes.
 
-## SYNTAX
+## Syntax
 
 ```powershell
 Install-AksHciArcOnboarding -Name <String> 

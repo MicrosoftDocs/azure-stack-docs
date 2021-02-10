@@ -8,7 +8,7 @@ schema:
 # Get-AksHciCredential
 
 ## Synopsis
-Access your cluster using kubectl. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl.
+Access your cluster using `kubectl`. This will use the specified cluster's _kubeconfig_ file as the default _kubeconfig_ file for `kubectl`.
 
 ## Syntax
 

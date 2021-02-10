@@ -8,18 +8,17 @@ schema:
 # Get-AksHciClusterUpgrades
 
 ## Synopsis
-Get the available upgrades for an Azure Kubernetes Service cluster.
+Get the available Kubernetes upgrades for an Azure Kubernetes Service cluster.
 
 ## Syntax
 
-### Get a virtual network
 ```powershell
 Get-AksHciClusterUpgrades -name <String>
                           
 ```
 
 ## Description
-Get the available upgrades for an Azure Kubernetes Service cluster.
+Get the available Kubernetes upgrades for an Azure Kubernetes Service cluster.
 
 ## Examples
 
