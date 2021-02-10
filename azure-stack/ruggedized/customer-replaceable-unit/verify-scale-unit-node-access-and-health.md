@@ -1,6 +1,6 @@
 ---
-title: Verify Scale Unit node access and health
-description: Learn how to verify Scale Unit node access and health
+title: Verify scale unit node access and health
+description: Learn how to verify scale unit node access and health
 author: PatAltimore
 
 ms.topic: how-to
@@ -14,9 +14,7 @@ ms.lastreviewed:
 
 ---
 
-# Verifying Scale Unit node access and health
-
-
+# Verifying scale unit node access and health
 
 Log in to the Privileged Access Workstation, launch the Administrator
 Portal, verify the system health, obtain the privileged endpoint IP
@@ -44,12 +42,11 @@ resumed.
 4.  Review any current alerts.
 
     In **Region Management**, select **Alerts** and review the current
-    alerts. If any unexpected alerts are present, verify with Dell
-    Technologies Support that they can be cleared or safely ignored.
+    alerts. If any unexpected alerts are present, verify with Microsoft Support that they can be cleared or safely ignored.
     
     [![Screenshot that shows the 'Properties' page with the 'Name' section highlighted.](media/image-19-inline.png)](media/image-19-expanded.png#lightbox)
     
-5.  Identify the Scale Unit nodes.
+5.  Identify the scale unit nodes.
 
     If you are only provided the service tag and you are unable to
     identify which node has the issue from the Azure Stack Hub Admin

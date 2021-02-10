@@ -26,6 +26,11 @@
       "redirect_document_id": false
     },
     { 
+      "source_path": "azure-stack/ruggedized/customer-replaceable-unit/install-firmware-using-idrac.md", 
+      "redirect_url": "/azure-stack/ruggedized/customer-replaceable-unit/required-knowledge-scale-unit-nodes", 
+      "redirect_document_id": false
+    },
+    { 
       "source_path": "azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal.md", 
       "redirect_url": "/azure-stack/operator/diagnostic-log-collection", 
       "redirect_document_id": false
