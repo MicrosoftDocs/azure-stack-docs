@@ -7,19 +7,19 @@ schema:
 
 # Initialize-AksHciNode
 
-## SYNOPSIS
+## Synopsis
 Run checks on every physical node to see if all requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI.
 
-## SYNTAX
+## Syntax
 
 ```powershell
 Initialize-AksHciNode
 ```
 
-## DESCRIPTION
+## Description
 Run checks on every physical node to see if all requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI.
 
-## EXAMPLES
+## Examples
 
 ### Example
 ```powershell

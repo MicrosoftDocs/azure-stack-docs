@@ -8,7 +8,7 @@ schema:
 # Install-AksHciArcOnboarding
 
 ## Synopsis
-Connects an AKS-HCI workload cluster to Azure Arc for Kubernetes.
+Connects an AKS on Azure Stack HCI workload cluster to Azure Arc for Kubernetes.
 
 ## Syntax
 
@@ -23,20 +23,20 @@ Install-AksHciArcOnboarding -Name <String>
 ```
 
 ## Description
-Connects an AKS-HCI workload cluster to Azure Arc for Kubernetes.
+Connects an AKS on Azure Stack HCI workload cluster to Azure Arc for Kubernetes.
 
 ## Examples
 
-### Connect an AKS-HCI cluster to Azure Arc for Kubernetes with required parameters
+### Connect an AKS on Azure Stack HCI cluster to Azure Arc for Kubernetes with required parameters
 
 ```PowerShell
-Install-AksHciArcOnboarding -clusterName "myCluster" -resourcegroup "myResourceGroup" -subscriptionid "57ac26cf-a9f0-4908-b300-9a4e9a0fb205"  -clientid "22cc2695-54b9-49c1-9a73-2269592103d8" -clientsecret "09d3a928-b223-4dfe-80e8-fed13baa3b3d" -tenantid "72f988bf-86f1-41af-91ab-2d7cd011db47"
+Install-AksHciArcOnboarding -name "myCluster" -resourcegroup "myResourceGroup" -subscriptionid "57ac26cf-a9f0-4908-b300-9a4e9a0fb205"  -clientid "22cc2695-54b9-49c1-9a73-2269592103d8" -clientsecret "09d3a928-b223-4dfe-80e8-fed13baa3b3d" -tenantid "72f988bf-86f1-41af-91ab-2d7cd011db47"
 ```
 
-### Connect an AKS-HCI cluster to Azure Arc for Kubernetes with all parameters
+### Connect an AKS on Azure Stack HCI cluster to Azure Arc for Kubernetes with all parameters
 
 ```PowerShell
-Install-AksHciArcOnboarding -clusterName "myCluster" -resourcegroup "myResourceGroup" -location "eastus" -subscriptionid "57ac26cf-a9f0-4908-b300-9a4e9a0fb205"  -clientid "22cc2695-54b9-49c1-9a73-2269592103d8" -clientsecret "09d3a928-b223-4dfe-80e8-fed13baa3b3d" -tenantid "72f988bf-86f1-41af-91ab-2d7cd011db47"
+Install-AksHciArcOnboarding -name "myCluster" -resourcegroup "myResourceGroup" -location "eastus" -subscriptionid "57ac26cf-a9f0-4908-b300-9a4e9a0fb205"  -clientid "22cc2695-54b9-49c1-9a73-2269592103d8" -clientsecret "09d3a928-b223-4dfe-80e8-fed13baa3b3d" -tenantid "72f988bf-86f1-41af-91ab-2d7cd011db47"
 ```
 
 ## Parameters
@@ -55,8 +55,9 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
 ### -tenantId
-The tenant Id of your Azure service principal.
+The tenant ID of your Azure service principal.
 
 ```yaml
 Type: System.String
@@ -101,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -clientId
-The client Id or app Id of your Azure service principal
+The client ID or app Id of your Azure service principal
 
 ```yaml
 Type: System.String
