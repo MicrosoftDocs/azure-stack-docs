@@ -20,7 +20,7 @@ These release notes describe improvements and fixes in Event Hubs on Azure Stack
 
 This release includes the following updates:
 
-- For Azure Portal SDK developers, portal version 5.0.303.7361 is now supported.
+- For Azure portal SDK developers, portal version 5.0.303.7361 is now supported.
 - Internal logging improvements for Event Hubs clusters.
 
 ## Issues fixed in this release
@@ -28,8 +28,8 @@ This release includes the following updates:
 This release includes the following fixes:
 
 - A fix to the upgrade order for Event Hubs clusters, to address an upgrade issue.
-- The cluster health and backup health check for Event Hubs clusters were previously not running
-when clusters were in "Upgrading" or "Upgrade Failed" state. This has been fixed in this release.
+- The cluster health and backup health check for Event Hubs clusters were not running
+when clusters were in "Upgrading" or "Upgrade Failed" state. The issue has been fixed in this release.
 
 ## Known issues 
 
@@ -37,5 +37,5 @@ There are no known issues for this release.
 
 ## Next steps
 
-- For more information on the Event Hubs on Azure Stack Hub RP, start with the [Event Hubs on Azure Stack Hub operator overview](event-hubs-rp-overview.md).
+- For more information, start with the [Event Hubs on Azure Stack Hub operator overview](event-hubs-rp-overview.md).
 
