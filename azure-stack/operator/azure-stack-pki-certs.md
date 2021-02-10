@@ -27,7 +27,7 @@ Azure Stack Hub has a public infrastructure network using externally accessible 
 ## Certificate requirements
 The following list describes the general certificate issuance, security, and formatting requirements:
 
-- Certificates must be issued from either an internal certificate authority or a public certificate authority. If a public certificate authority is used, it must be included in the base operating system image as part of the Microsoft Trusted Root Authority Program. For the full list, see [Microsoft Trusted Root Certificate Program: Participants](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
+- Certificates must be issued from either an internal certificate authority or a public certificate authority. If a public certificate authority is used, it must be included in the base operating system image as part of the Microsoft Trusted Root Authority Program. For the full list, see [List of Participants - Microsoft Trusted Root Program](~/security/trusted-root/participants-list.md).
 - Your Azure Stack Hub infrastructure must have network access to the certificate authority's Certificate Revocation List (CRL) location published in the certificate. This CRL must be an http endpoint.
 ::: moniker range="< azs-1903"
 - When rotating certificates in pre-1903 builds, certificates must be either issued from the same internal certificate authority used to sign certificates provided at deployment or any public certificate authority from above.
