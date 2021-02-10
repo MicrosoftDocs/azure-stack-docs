@@ -1,10 +1,10 @@
 ---
-title: Power on and repair a Scale Unit node
-description: Learn how to power on and repair a Scale Unit node
+title: Power on and repair a scale unit node
+description: Learn how to power on and repair a scale unit node
 author: PatAltimore
 
 ms.topic: how-to
-ms.date: 11/13/2020
+ms.date: 02/05/2021
 ms.author: patricka
 ms.reviewer: 
 ms.lastreviewed: 
@@ -14,11 +14,11 @@ ms.lastreviewed:
 
 ---
 
-# Powering on and repairing a Scale Unit node
+# Powering on and repairing a scale unit node
 
 **Steps**
 
-To repair and bring a Scale Unit node back into production you must
+To repair and bring a scale unit node back into production you must
 run the Azure Stack Hub repair procedure.
 
 > [!NOTE]
@@ -40,8 +40,7 @@ complete.
     
     > [!NOTE]
     > If the repair procedure does not complete in three hours or
-    an issue occurs, then open a case with Dell Technologies Support who
-    may engage Microsoft Support for further troubleshooting.
+    an issue occurs, then open a case with Microsoft Support for further troubleshooting.
     
     When the repair process is complete, the node returns to a **Running
     Operational Status**.

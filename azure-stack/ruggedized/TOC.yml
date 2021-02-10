@@ -520,17 +520,17 @@
           href: customer-replaceable-unit/required-knowledge-hardware-lifecycle-host.md
         - name: Verify Hardware Lifecycle Host access and health
           href: customer-replaceable-unit/verify-hardware-lifecycle-host-access-and-health.md
-        - name: Required knowledge to work with Scale Unit nodes
+        - name: Required knowledge to work with scale unit nodes
           href: customer-replaceable-unit/required-knowledge-scale-unit-nodes.md
-        - name: Verify Scale Unit node access and health
+        - name: Verify scale unit node access and health
           href: customer-replaceable-unit/verify-scale-unit-node-access-and-health.md
         - name: Power off Hardware Lifecycle Host
           href: customer-replaceable-unit/power-off-hlh.md
-        - name: Power off Scale Unit nodes
+        - name: Power off scale unit nodes
           href: customer-replaceable-unit/power-off-scu.md
         - name: Replace DIMM
           href: customer-replaceable-unit/replace-dimm.md
-        - name: Replace failed external storage disk
+        - name: Replace failed data drive
           href: customer-replaceable-unit/replace-failed-external-storage-disk.md
         - name: Replace cooling fan
           href: customer-replaceable-unit/replace-cooling-fan.md
@@ -544,15 +544,15 @@
           href: customer-replaceable-unit/unpack-heater-and-plan-installation.md
         - name: Replace heater
           href: customer-replaceable-unit/replace-heater.md
-        - name: Power on Scale Unit node
+        - name: Power on scale unit node
           href: customer-replaceable-unit/power-on-scale-unit-node.md
-        - name: Repair Scale Unit node
+        - name: Repair scale unit node
           href: customer-replaceable-unit/repair-scale-unit-node.md
         - name: Verify Hardware Lifecycle Host health
           href: customer-replaceable-unit/verify-hardware-lifecycle-host-health.md
-        - name: Verify Scale Unit node health
+        - name: Verify scale unit node health
           href: customer-replaceable-unit/verify-scale-unit-node-health.md
-        - name: Verify Scale Unit node disk health
+        - name: Verify scale unit node disk health
           href: customer-replaceable-unit/verify-scale-unit-node-disk-health.md
         - name: Azure Stack Hub hardware diagram
           href: customer-replaceable-unit/azure-stack-hub-hardware-diagram.md
@@ -562,8 +562,6 @@
           href: customer-replaceable-unit/indicators-and-codes.md
         - name: Access iDRAC interface via direct USB connection
           href: customer-replaceable-unit/access-idrac-over-usb-connection.md
-        - name: Install firmware via iDRAC interface
-          href: customer-replaceable-unit/install-firmware-using-idrac.md
         - name: Privileged Access Workstation and privileged endpoint access
           href: customer-replaceable-unit/privileged-access-workstation.md
 

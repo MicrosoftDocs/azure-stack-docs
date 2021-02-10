@@ -4,7 +4,7 @@ description: How to manage your Azure registration for Azure Stack HCI clusters,
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 02/09/2021
+ms.date: 02/10/2021
 ---
 
 # Manage cluster registration with Azure
@@ -157,7 +157,7 @@ The most restrictive option is to create a custom AD role with a custom consent 
 When you're ready to decommission your Azure Stack HCI cluster, simply connect to the cluster using Windows Admin Center and select **Settings** at the very bottom of the **Tools** menu on the left. Then select **Azure Stack HCI registration**, and click the **Unregister** button. The unregistration process automatically cleans up the Azure resource representing the cluster, the Azure resource group (if the group was creating during registration and doesn't contain any other resources), and the Azure AD app identity. This stops all monitoring, support, and billing functionality through Azure Arc.
 
    > [!NOTE]
-   > Unregistering an Azure Stack HCI cluster requires an Azure Active Directory administrator or another user who has been delegated sufficient permissions. See [Azure Active Directory user permissions](#azure-active-directory-user-permissions). If your Windows Admin Center is registered to a different Azure Active Directory (tenant) ID and Application ID than were used to initially register the cluster, you may encounter issues when attempting to unregister a cluster using Windows Admin Center. If this occurs, following the PowerShell instructions below.
+   > Unregistering an Azure Stack HCI cluster requires an Azure Active Directory administrator or another user who has been delegated sufficient permissions. See [Azure Active Directory user permissions](#azure-active-directory-user-permissions). If your Windows Admin Center is registered to a different Azure Active Directory (tenant) ID and Application ID than were used to initially register the cluster, you may encounter issues when attempting to unregister a cluster using Windows Admin Center. If this occurs, follow the PowerShell instructions below.
 
 ## Unregister Azure Stack HCI using PowerShell
 
@@ -194,6 +194,24 @@ An interactive Azure login window will pop up. The exact prompts you see will va
 If a user destroys an Azure Stack HCI cluster without unregistering it, such as by re-imaging the host servers or deleting virtual cluster nodes, then artifacts will be left over in Azure. These are harmless and will not incur billing or use resources, but they can clutter the Azure portal. To clean them up, you can manually delete them.
 
 To delete the Azure Stack HCI resource, navigate to its page in the Azure portal and select **Delete** from the action bar at the top. Type the name of the resource to confirm the deletion, and then select **Delete**. To delete the Azure AD app identity, navigate to **Azure AD**, then **App Registrations**, and you'll find it under **All Applications**. Select **Delete** and confirm.
+
+You can also delete the Azure Stack HCI resource using PowerShell:
+
+```PowerShell
+Remove-AzResource -ResourceId "HCI001"
+```
+
+You may need to install the `Az.Resources` module:
+
+```PowerShell
+Install-Module -Name Az.Resources
+```
+
+If the resource group was created during registration and doesn't contain any other resources, you may delete it as well:
+
+```PowerShell
+Remove-AzResourceGroup -Name "HCI001-rg"
+```
 
 ## Next steps
 
