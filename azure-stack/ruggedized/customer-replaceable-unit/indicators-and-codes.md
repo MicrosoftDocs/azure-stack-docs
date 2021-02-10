@@ -16,7 +16,7 @@ ms.lastreviewed:
 
 # Indicators and codes
 
-The features described in this section are the same for the Hardware Lifecycle Host and Scale Unit node servers.
+The features described in this section are the same for the Hardware Lifecycle Host and scale unit node servers.
 
 ## System information label
 
