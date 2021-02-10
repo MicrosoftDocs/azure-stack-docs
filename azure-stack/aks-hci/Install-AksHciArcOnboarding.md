@@ -7,7 +7,7 @@ schema:
 
 # Install-AksHciArcOnboarding
 
-## SYNOPSIS
+## Synopsis
 Connects an AKS-HCI workload cluster to Azure Arc for Kubernetes.
 
 ## SYNTAX
@@ -22,10 +22,10 @@ Install-AksHciArcOnboarding -Name <String>
                             [-location <String>]
 ```
 
-## DESCRIPTION
+## Description
 Connects an AKS-HCI workload cluster to Azure Arc for Kubernetes.
 
-## EXAMPLES
+## Examples
 
 ### Connect an AKS-HCI cluster to Azure Arc for Kubernetes with required parameters
 
@@ -39,7 +39,7 @@ Install-AksHciArcOnboarding -clusterName "myCluster" -resourcegroup "myResourceG
 Install-AksHciArcOnboarding -clusterName "myCluster" -resourcegroup "myResourceGroup" -location "eastus" -subscriptionid "57ac26cf-a9f0-4908-b300-9a4e9a0fb205"  -clientid "22cc2695-54b9-49c1-9a73-2269592103d8" -clientsecret "09d3a928-b223-4dfe-80e8-fed13baa3b3d" -tenantid "72f988bf-86f1-41af-91ab-2d7cd011db47"
 ```
 
-## PARAMETERS
+## Parameters
 
 ### -Name
 The alphanumeric name of your Kubernetes cluster.

@@ -8,7 +8,7 @@ schema:
 # Get-AksHciVersion
 
 ## Synopsis
-Get the current version of Azure Kubernetes Service on Azure Stack HCI.
+Get the current Kubernetes version of Azure Kubernetes Service on Azure Stack HCI.
 
 ## Syntax
 
@@ -19,7 +19,7 @@ Get-AksHciVersion
 ```
 
 ## Description
-Get the current version of Azure Kubernetes Service on Azure Stack HCI.
+Get the current Kubernetes version of Azure Kubernetes Service on Azure Stack HCI.
 
 ## Examples
 

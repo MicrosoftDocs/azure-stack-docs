@@ -8,7 +8,7 @@ schema:
 # Get-AksHciUpdates
 
 ## Synopsis
-List available updates for Azure Kubernetes Service on Azure Stack HCI
+List the available Kubernetes updates for Azure Kubernetes Service on Azure Stack HCI.
 
 ## Syntax
 
@@ -17,7 +17,7 @@ Get-AksHciUpdates
 ```
 
 ## Description
-List available updates for Azure Kubernetes Service on Azure Stack HCI
+List the Kubernetes available updates for Azure Kubernetes Service on Azure Stack HCI.
 
 ## Examples
 
