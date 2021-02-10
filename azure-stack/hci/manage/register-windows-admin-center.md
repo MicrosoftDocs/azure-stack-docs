@@ -13,7 +13,7 @@ ms.date: 01/28/2021
 
 To use Azure services with Windows Admin Center, you must first install Windows Admin Center on a management PC and complete a one-time registration of your Windows Admin Center gateway. This is a prerequisite for registering your cluster with Azure, and should be done on the same management PC you plan to use to complete the [cluster registration](../deploy/register-with-azure.md) process, using the same Azure subscription ID and tenant ID.
 
-## Complete the gateway registration process using Windows Admin Center
+## Complete the registration process
 
 1. Launch Windows Admin Center and click the **Settings** gear icon in the upper right, which will take you to your Account page. Then, from the **Gateway** menu at the left, select **Azure**, and then click **Register**.
 
