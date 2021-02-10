@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/28/2020
+ms.date: 02/10/2020
 ---
 
 # Connect Azure Stack HCI to Azure
@@ -29,7 +29,7 @@ You won't be able to register with Azure until you've created an Azure Stack HCI
 For the simplest registration experience, have an Azure AD administrator complete the registration using either Windows Admin Center or PowerShell.
 
    > [!IMPORTANT]
-   > If you plan to register the cluster using Windows Admin Center, you must first [register your Windows Admin Center gateway](../manage/register-windows-admin-center.md) with Azure using the same Azure subscription ID and tenant ID that you plan to use for cluster registration.
+   > In order to register an Azure Stack HCI cluster using Windows Admin Center, you must first [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md) using the same Azure Active Directory (tenant) ID that you plan to use for cluster registration.
 
 ### Internet access
 
@@ -101,10 +101,10 @@ You'll also need appropriate Azure Active Directory permissions to complete the 
 
 The easiest way to register your Azure Stack HCI cluster is using Windows Admin Center. Remember that the user must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#azure-active-directory-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval.
 
-1. Before beginning the registration process, you must first [register your Windows Admin Center gateway](../manage/register-windows-admin-center.md) with Azure, if you haven't already.
+1. Before beginning the registration process, you must first [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md), if you haven't already.
 
    > [!IMPORTANT]
-   > When registering Windows Admin Center with Azure, it's important to use the same Azure subscription ID and tenant ID that you plan to use for the actual cluster registration. An Azure AD tenant ID represents a specific instance of Azure AD containing accounts and groups, whereas an Azure subscription ID represents an agreement to use Azure resources for which charges accrue. To find your tenant ID, visit [portal.azure.com](https://portal.azure.com) and select **Azure Active Directory**. Your tenant ID will be displayed under **Tenant information**. To get your Azure subscription ID, navigate to **Subscriptions** and copy/paste your ID from the list.
+   > When registering Windows Admin Center with Azure, it's important to use the same Azure Active Directory (tenant) ID that you plan to use for the actual cluster registration. An Azure AD tenant ID represents a specific instance of Azure AD containing accounts and groups, whereas an Azure subscription ID represents an agreement to use Azure resources for which charges accrue. To find your tenant ID, visit [portal.azure.com](https://portal.azure.com) and select **Azure Active Directory**. Your tenant ID will be displayed under **Tenant information**. To get your Azure subscription ID, navigate to **Subscriptions** and copy/paste your ID from the list.
 
 2. Open Windows Admin Center and select **Settings** from the very bottom of the **Tools** menu at the left. Then select **Azure Stack HCI registration** from the bottom of the **Settings** menu. If your cluster has not yet been registered with Azure, then **Registration status** will say **Not registered**. Click the **Register** button to proceed.
 
