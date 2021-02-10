@@ -38,7 +38,7 @@ Without further ado, let’s get started:
     ```
 
      ```powershell
-     $client.DownloadFile("https://github.com/Microsoft/diskspd/releases/download/v2.0.21a/DiskSpd-2.0.21a.zip","<ENTER_PATH>\DiskSpd-2.0.21a.zip")
+     $client.DownloadFile("https://github.com/microsoft/diskspd/releases/download/v2.0.21a/DiskSpd.zip","<ENTER_PATH>\DiskSpd-2.0.21a.zip")
     ```
 
 1. Use the following command to unzip the downloaded file:

@@ -222,7 +222,7 @@ Because Azure Stack Hub hotfixes are cumulative, as a best practice you should i
 
 After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2008.25.114](https://support.microsoft.com/topic/87ee234e-7f33-4342-bc0a-5779dbb33263)
+- [Azure Stack Hub hotfix 1.2008.25.114](hotfix-1-2008-25-114.md)
 ::: moniker-end
 
 ::: moniker range="azs-2005"
@@ -322,7 +322,7 @@ Starting with the 2005 release, when you update to a new major version (for exam
 
 After the installation of 2005, if any 2005 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2005.29.100](https://support.microsoft.com/topic/10c1b6e2-7bf7-4f71-8204-f1b12e2f744a)
+- [Azure Stack Hub hotfix 1.2005.29.100](hotfix-1-2005-29-100.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>
