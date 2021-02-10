@@ -60,13 +60,13 @@ Put each unmanaged disk you add into a separate container.
 ### Use the portal to create and attach a new data disk
 
 1. In the portal, select **All services**, then **Compute**, then **Virtual machines**.
-   ![Example: VM dashboard](media/azure-stack-manage-vm-disks/vm-dashboard.png)
+   [![Example: VM dashboard](media/azure-stack-manage-vm-disks/vm-dashboard-small.png)](media/azure-stack-manage-vm-disks/vm-dashboard.png#lightbox)
 
 2. Select a VM that has previously been created.
    ![Screenshot that shows a selected virtual machine.](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
 3. For the VM, select **Disks**, then **Add data disk**.
-   ![Screenshot that shows how to attach a new disk to the VM.](media/azure-stack-manage-vm-disks/Attach-disks.png)
+   [![Screenshot that shows how to attach a new disk to the VM.](media/azure-stack-manage-vm-disks/attach-disks-small.png)](media/azure-stack-manage-vm-disks/attach-disks.png#lightbox)
 
 4. For the data disk:
    * Enter the **LUN**. The LUN must be a valid number.
@@ -100,9 +100,9 @@ Put each unmanaged disk you add into a separate container.
 
    * Select **Create**. Azure Stack Hub creates and validates the managed disk.
 
-6. After Azure Stack Hub creates the disk and attaches it to the VM, the new disk is listed in the VM disk settings under **DATA DISKS**.
+6. After Azure Stack Hub creates the disk and attaches it to the VM, the new disk is listed in the VM disk settings under **Data disks**.
 
-   ![Example: View disk](media/azure-stack-manage-vm-disks/view-data-disk.png)
+   [![Example: View disk](media/azure-stack-manage-vm-disks/view-data-disk-small.png)](media/azure-stack-manage-vm-disks/view-data-disk.png#lightbox)
 
 ### Add a data disk from a storage account
 
@@ -112,7 +112,7 @@ For more information about working with storage accounts in Azure Stack Hub, see
 2. Select the **Container** where you want to put the data disk. From the **Containers** blade, you can create a new container if you want. You can then change the location for the new disk to its own container. When you use a separate container for each disk, you distribute the placement of the data disk which improves performance.
 3. Choose **Select** to save the selection.
 
-    ![Screenshot that shows how to select a container.](media/azure-stack-manage-vm-disks/select-container.png)
+    [![Screenshot that shows how to select a container.](media/azure-stack-manage-vm-disks/select-container-small.png)](media/azure-stack-manage-vm-disks/select-container.png#lightbox)
 
 ## Attach an existing data disk to a VM
 
