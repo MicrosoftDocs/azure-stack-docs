@@ -78,14 +78,22 @@ You can apply an ACL to a network Interface, either while creating a virtual mac
     Completing the last step associates the ACL with the network interface and applies it to all incoming and outgoing traffic for the network interface.
 
 ## Get a list of ACLs
-TBD
+You can easily view all the ACLs in your cluster in a list.
+
+:::image type="content" source="./media/access-control-lists/get-acl-list.png" alt-text="Screenshot of Windows Admin Center showing a list of ACLs on the Inventory tab." lightbox="./media/access-control-lists/get-acl-list.png":::
+
+1. On the Windows Admin Center home screen, under **All connections**, select the cluster that you want to view a list of ACLs on.
+1. Under **Tools**, scroll down to the **Networking** area, and select **Access control lists**.
+1. The **Inventory** tab displays the list of the ACLs available on the cluster and provides commands that you can use to manage individual ACLs in the list. You can:
+    - View the ACLs list.
+    - View the number of rules for each ACL, and the number of applied subnets and NICs applied to each ACL.
+    - View the **Provisioning State** of each ACL (**Succeeded**, **Failed**).
+    - Delete an ACL.
+    - If you select an ACL in the list, you can view its rules. You can then add, delete, or modify ACL rule settings.
 
 ## Delete an ACL
 TBD
 
-<!---Example note format.--->
-   >[!NOTE]
-   > TBD.
 
 ## Next steps
 For more information, see also:
