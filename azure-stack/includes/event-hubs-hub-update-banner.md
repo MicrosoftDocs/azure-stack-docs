@@ -16,4 +16,4 @@ ms.lastreviewed: 02/09/2021
 > | 2008 | 1.2012.1.0 [Install](../operator/event-hubs-rp-install.md) ([release notes](../operator/event-hubs-rp-release-1-2012-10.md)) |
 > | 2005 | 1.2012.0.0 [Install](../operator/event-hubs-rp-install.md) |
 > 
-> If you have not installed Event Hubs on Azure Stack Hub previously, refer to [Prerequisites for installing Event Hubs on Azure Stack Hub](../operator/event-hubs-rp-prerequisites.md) first before beginning deployment. Upgrades from Event Hubs RP preview versions, to the versions listed above are also supported.
+> If you have not installed Event Hubs on Azure Stack Hub previously, refer to [Prerequisites for installing Event Hubs on Azure Stack Hub](../operator/event-hubs-rp-prerequisites.md) first before beginning deployment. Upgrading from an Event Hubs RP preview version to a version listed above is also recommended.
