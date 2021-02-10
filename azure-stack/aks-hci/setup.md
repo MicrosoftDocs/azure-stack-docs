@@ -3,7 +3,7 @@ title: Quickstart to set up Azure Kubernetes Service on Azure Stack HCI using Wi
 description: Learn how to set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center
 author: davannaw-msft
 ms.topic: quickstart
-ms.date: 12/02/2020
+ms.date: 01/22/2021
 ms.author: dawhite
 ---
 # Quickstart: Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center
@@ -56,15 +56,15 @@ This tool will install and download the necessary packages, as well as create an
 
 Now that we've verified our system settings, let's get started: 
 1. Select **Set up** to launch the set up wizard.
-2. Review the prerequisites for the machine you are running Windows Admin Center on, the cluster you're connected to, as well as the network.  Additionally, make sure you're signed into an Azure account on Windows Admin Center and that the Azure subscription you're planning on using is not expired. When you're finished, select **Next**.
+2. Review the prerequisites for the machine you are running Windows Admin Center on, the cluster you're connected to, as well as the network. Additionally, make sure you're signed into an Azure account on Windows Admin Center and that the Azure subscription you're planning on using is not expired. When you're finished, select **Next**.
 
 > [!WARNING]
 > If you're using a 2-4 node Azure Stack HCI cluster, make sure you have configured at least one external virtual switch before proceeding past this step, or you will not be able to successfully set up your Azure Kubernetes Service host.
 
 3. On the **System checks** page of the wizard, take any required actions, such as [connecting your Windows Admin Center gateway to Azure](/windows-server/manage/windows-admin-center/azure/azure-integration). This step checks that Windows Admin Center and the system that will host Azure Kubernetes Service have the proper configurations to continue. When you're finished taking action, select **Next**.
-4. Configure the machine that will host Azure Kubernetes Service in the **Host configuration** step. We recommend you select **automatically download updates** in this section.  This step of the wizard asks you to configure the following details:
+4. Configure the machine that will host Azure Kubernetes Service in the **Host configuration** step. We recommend you select **automatically download updates** in this section. This step of the wizard asks you to configure the following details:
     * **Host details**, such as a name for the AKS host cluster and an image directory where VM images will be stored. The image directory must point to a shared storage path or an SMB share that is accessible by the host machine.
-    * **VM networking**, which will apply to all Linux and Windows VMs (nodes) that are created to run containers and orchestrate container management. If you have selected the Static IP address allocation method, there are a few additional fields that must be specified:
+    * **VM networking**, which will apply to all Linux and Windows VMs (nodes) that are created to run containers and orchestrate container management. This includes the fields for internet connected virtual switch, virtual LAN identification enablement, IP address allocation method, and Cloudagent IP. Cloudagent IP can be used to provide a static IP address to the CloudAgent service. This is applicable regardless of your IP address allocation selection. If you have selected the Static IP address allocation method, there are a few additional fields that must be specified:
       - **Subnet prefix**, an IP address range that does not conflict with other addresses
       - **Gateway**, the gateway through which packets will be routed outside the machine
       - **DNS servers**, IP addresses of DNS servers in the network

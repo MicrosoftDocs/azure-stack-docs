@@ -84,3 +84,6 @@ az connectedk8s delete
 
 ## When setting up an Azure Kubernetes Service host using Windows Admin Center, setup may fail if File Explorer is open
 If File Explorer is open and in the **C:\Program Files\AksHci** directory when you reach the "Review + create" step, your creation may fail with the error "The process could not access the file 'C:\Program Files\AksHci\wssdcloudagent.exe'. This is because it's being used by another process. To avoid this error, close File Explorer or navigate to a different directory before reaching this step. 
+
+## Cannot connect Windows Admin Center to Azure as create new Azure App ID fails
+If you're unable to connect Windows Admin Center to Azure because you're unable to automatically create and use an Azure App ID on the gateway, create an Azure App ID and assign it the right permissions on the portal and then click on use existing in the gateway. For more information here, visit [connecting your gateway to Azure.](/windows-server/manage/windows-admin-center/azure/azure-integration).
