@@ -11,7 +11,7 @@ ms.date: 02/10/2021
 
 > Applies to Azure Stack HCI v20H2; Windows Server 2019
 
-To use Azure services with Windows Admin Center, you must first install Windows Admin Center on a management PC and complete a one-time registration of your Windows Admin Center gateway. This is a prerequisite for [registering your cluster](../deploy/register-with-azure.md) with Azure.
+To use Azure services with Windows Admin Center, you must first [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) on a management PC and complete a one-time registration of your Windows Admin Center gateway. This is a prerequisite for [registering your cluster](../deploy/register-with-azure.md) with Azure.
 
    > [!IMPORTANT]
    > Register Windows Admin Center on the same management PC you plan to use to register your cluster, using the same Azure Active Directory (tenant) ID and application ID.
