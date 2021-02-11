@@ -143,6 +143,7 @@ Configure your deployment with the following command.
                     [-insecure]
                     [-skipUpdates]
                     [-forceDnsReplication]
+                    [-enableDiagnosticData]
 
    ```
 
@@ -296,6 +297,11 @@ Use this flag if you want to skip any updates available. We do not recommend usi
 `-forceDnsReplication`
 
 DNS replication can take up to an hour on some systems. This will cause the deployment to be slow. If you hit this issue, you'll see that the Install-AksHci will be stuck in a loop. To get past this issue, try to use this flag. The `-forceDnsReplication` flag is not a guaranteed fix. If the logic behind the flag fails, the error will be hidden, and the command will carry on as if the flag was not provided. 
+
+`-enableDiagnosticData`
+
+Use this flag to consent to send required diagnostic data to Microsoft. This is useful if you want to skip the consent prompt that `Set-AksHciConfig` will present otherwise. `Install-AksHci` will fail if you do not accept the consempt prompt when `Set-AksHciConfig` presents it.
+
 
 ### Reset the Azure Kubernetes Service on Azure Stack HCI configuration
 
