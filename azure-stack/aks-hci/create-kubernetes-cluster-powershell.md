@@ -56,7 +56,7 @@ The control plane nodes and the worker nodes must be scaled independently.
 
 ## Step 3: Upgrade Kubernetes version
 
-To see if there are any uprades available for your Kubernetes cluster, run the following command.
+To see if there are any upgrades available for your Kubernetes cluster, run the following command.
 
 ```powershell
 Get-AksHciClusterUpgrades -name mycluster
@@ -65,7 +65,7 @@ Get-AksHciClusterUpgrades -name mycluster
 To update to the latest Kubernetes version, run the following command.
 
 ```powershell
-Update-AksHciCluster -name mycluster
+Update-AksHciCluster -name mycluster -kubernetesVersion <k8s version>
 ```
 
 Running this command without specifying the Kubernetes version will upgrade the cluster to the latest version. If you want to upgrade to a different version that is not the latest, use the [Update-AksHciCluster](./update-akshcicluster) with the `-kubernetesVersion` parameter and your desired version as the value (i.e. v1.18.8).
