@@ -59,6 +59,10 @@ PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfig
 
 ### To deploy with a proxy server
 ```powershell
+PS C:\> $credential = Get-Credential
+```
+
+```powershell
 PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -proxyServerHttp "http://proxy.contoso.com:8888" -proxyServerHttps "http://proxy.contoso.com:8888" -proxyServerNoProxy "localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16,10.231.110.0/24,10.68.237.0/24" -proxyServerCredential $credential
 ```
 
