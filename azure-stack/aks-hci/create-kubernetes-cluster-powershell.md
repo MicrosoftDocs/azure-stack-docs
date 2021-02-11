@@ -3,7 +3,7 @@ title: Quickstart to create Kubernetes clusters on Azure Stack HCI using Windows
 description: Learn how to create Kubernetes clusters on Azure Stack HCI with Windows PowerShell
 author: jessicaguan
 ms.topic: quickstart
-ms.date: 12/02/2020
+ms.date: 2/10/2021
 ms.author: jeguan
 ---
 
@@ -56,18 +56,19 @@ The control plane nodes and the worker nodes must be scaled independently.
 
 ## Step 3: Upgrade Kubernetes version
 
-To see the list of available Kubernetes versions, run the following command.
+To see if there are any uprades available for your Kubernetes cluster, run the following command.
 
 ```powershell
-Get-AksHciKubernetesVersion
+Get-AksHciClusterUpgrades -name mycluster
 ```
 
-To update to the next Kubernetes version, run the following command.
+To update to the latest Kubernetes version, run the following command.
 
 ```powershell
 Update-AksHciCluster -name mycluster
 ```
-Running this command without specifying the Kubernetes version will upgrade the cluster to the latest version.
+
+Running this command without specifying the Kubernetes version will upgrade the cluster to the latest version. If you want to upgrade to a different version that is not the latest, use the [Update-AksHciCluster](./update-akshcicluster) with the `-kubernetesVersion` parameter and your desired version as the value (i.e. v1.18.8).
 
 ## Step 4: Access your clusters using kubectl
 
