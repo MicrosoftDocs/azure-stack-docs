@@ -6,7 +6,7 @@ author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/13/2021
+ms.date: 02/10/2021
 ---
 
 # Azure Stack HCI solution overview
@@ -98,6 +98,16 @@ To get started, here's what you need:
 - If you plan to use Software Defined Networking (SDN), you'll need a virtual hard disk (VHD) for the Azure Stack HCI operating system to create Network Controller VMs (see [Plan to deploy Network Controller](concepts/network-controller.md))
 
 For more information, see [System requirements](concepts/system-requirements.md). For Azure Kubernetes Service on Azure Stack HCI requirements, see [AKS requirements on Azure Stack HCI](../aks-hci/overview.md#what-you-need-to-get-started).
+
+## Availability
+
+|Aspect|Details|
+|----|:----|
+|Release state:|General Availability (GA)|
+|Pricing:|$10 USD per core, per month (billed to Azure subscription)|
+|Required roles and permissions:|**Azure Active Directory Administrator** or delegated permissions|
+|Clouds:|Private cloud<br>Public cloud (Azure)|
+|||
 
 ## Hardware partners
 
