@@ -78,13 +78,13 @@ After running the above command, close all PowerShell windows and reopen an admi
 
 Follow this step if you have an existing deployment and want to update it. If you do not have an existing deployment, skip this step and proceed to Step 2. Alternatively, if you have a deployment but want to run a clean install of the next AKSHCI version, run `Uninstall-AksHci` and proceed to Step 2.
 
-To update to the latest version of Azure Kubernetes Service on Azure Stack HCI, run the [Update-AksHci](./update-akshci) command. The update command only works if you have installed the October release or later. It will not work for releases older than the October release. This update command updates the Azure Kubernetes Service host and the on-premise Microsoft operated cloud platform. This command does not upgrade Kubernetes and Windows node OS versions in any existing workload clusters. New workload clusters created after updating the AKS host will differ from existing workload clusters in their Windows node OS version and Kubernetes version.
+To update to the latest version of Azure Kubernetes Service on Azure Stack HCI, run the [Update-AksHci](./update-akshci) command. This command updates the Azure Kubernetes Service host and the on-premise Microsoft operated cloud platform. This command does not upgrade Kubernetes and Windows node OS versions in any existing workload clusters. New workload clusters created after updating the AKS host will differ from existing workload clusters in their Windows node OS version and Kubernetes version.
 
 ```powershell
 Update-AksHci
 ```
 
-We recommend updating workload clusters immediately after updating the management cluster to prevent running unsupported Windows Server OS versions in your Kubernetes clusters with Windows nodes. To update your workload cluster, visit [update your workload cluster](create-kubernetes-cluster-powershell.md).
+We recommend updating workload clusters immediately after updating the management cluster to prevent running unsupported Windows Server OS versions in your Kubernetes clusters with Windows nodes. If your workload clusters are on an unsupported version, they will still be supported but you will not be able to create new nodes. To update your workload cluster, visit [update your workload cluster](create-kubernetes-cluster-powershell.md).
 
 ## Step 2: Prepare your machine(s) for deployment
 
@@ -99,24 +99,26 @@ When the checks are finished, you'll see "Done" displayed in green text.
 
 ## Step 3: Create a virtual network
 
-To get the names of your available switches, run this command:
+To get the names of your available external switches, run this command:
 
 ```powershell
 Get-VMSwitch
 ```
 
+You must use an external switch.
+
 Sample Output:
 ```output
 Name SwitchType NetAdapterInterfaceDescription
 ---- ---------- ------------------------------
-External External Mellanox ConnectX-3 Pro Ethernet Adapter
+extSwitch External Mellanox ConnectX-3 Pro Ethernet Adapter
 ```
 
 To create a virtual network for the nodes in your deployment to use, create an environment variable with the [New-AksHciNetworkSetting](.\new-akshcinetworksetting.md) PowerShell command. This will be used later to configure a deployment that uses static IP. If you want to configure your AKS deployment with DHCP, visit [New-AksHciNetworkSetting](.\new-akshcinetworksetting.md) for examples.
 
 ```powershell
 #static IP
-$vnet = New-AksHciNetworkSetting -vnetName "External" -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd
+$vnet = New-AksHciNetworkSetting -vnetName "extSwitch" -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd
 "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1"
 ```
 
@@ -130,9 +132,13 @@ Set the configuration settings for the Azure Kubernetes Service host using the [
 Configure your deployment with the following command.
 
 ```powershell
-Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -enableDiagnosticData -cloudservicecidr "172.16.10.10" 
+Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -enableDiagnosticData -cloudservicecidr "172.16.10.10/16" 
 ```
-For this preview release, it is mandatory to run `-enableDiagnosticData`.
+
+> [!NOTE]
+> The value for `-cloudservicecidr` given in this example command will need to be customized for your environment.
+
+For this preview release, you should include the flag `-enableDiagnosticData`. If this flag is not used, then you will be prompted to enable diagnostic data. If you choose `No` to this prompt, installation is blocked.
 
 ## Step 5: Start a new deployment
 
@@ -188,7 +194,7 @@ To update to the latest version of Azure Kubernetes Service on Azure Stack HCI, 
 Update-AksHci
 ```
    
-We recommend updating workload clusters immediately after updating the management cluster to prevent running unsupported Windows Server OS versions in your Kubernetes clusters with Windows nodes. To update your workload cluster, visit [update your workload cluster](create-kubernetes-cluster-powershell.md).
+We recommend updating workload clusters immediately after updating the management cluster to prevent running unsupported Windows Server OS versions in your Kubernetes clusters with Windows nodes. If your workload clusters are on an unsupported version, they will still be supported but you will not be able to create new nodes. To update your workload cluster, visit [update your workload cluster](create-kubernetes-cluster-powershell.md).
 
 ## Restart Azure Kubernetes Service on Azure Stack HCI
 
@@ -211,7 +217,7 @@ Uninstall-AksHci
 After running the above command, you can change the configuration settings with the following command. The parameters remain the same as described in Step 3. 
 
 ```powershell
-Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet
+Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -enableDiagnosticData -cloudservicecidr "172.16.10.10/16" 
 ```
 
 After changing the configuration to your desired settings, run the following command to reinstall Azure Stack Kubernetes on Azure Stack HCI.
