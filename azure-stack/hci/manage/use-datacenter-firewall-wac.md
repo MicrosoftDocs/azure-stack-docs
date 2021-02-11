@@ -4,7 +4,7 @@ description: This topic provides instructions on how to use Windows Admin Center
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 02/11/2021
 ---
 
 # Use Datacenter Firewall to configure ACLs with Windows Admin Center
@@ -92,8 +92,17 @@ You can easily view all the ACLs in your cluster in a list.
     - If you select an ACL in the list, you can view its rules. You can then add, delete, or modify ACL rule settings.
 
 ## Delete an ACL
-TBD
+You can delete an ACL if you no longer need it.
 
+>[!NOTE]
+> After you delete an ACL from the list of ACLs, ensure that it is not associated with either a subnet or a network interface.
+
+:::image type="content" source="./media/access-control-lists/delete-acl.png" alt-text="Screenshot of Windows Admin Center showing the Delete confirmation prompt to delete an ACL." lightbox="./media/access-control-lists/delete-acl.png":::
+
+1. Under **Tools**, scroll down to the **Networking** area, and select **Access control lists**.
+1. Select the **Inventory** tab, select an ACL in the list, and then select **Delete**.
+1. On the **Delete Confirmation** prompt select **Yes**.
+1. Next to the search box, select **Refresh** to ensure that the ACL has been deleted.
 
 ## Next steps
 For more information, see also:
