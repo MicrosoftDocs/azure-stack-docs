@@ -220,6 +220,15 @@
         "partner/**/*.md": "azure-stack-hub",
         "reference/**/*.md": "azure-stack-hub",
         "user/**/*.md": "azure-stack-hub"
+      },
+      "recommendations":{
+        "aks-hci/*.md": true,
+        "asdk/*.md": true,
+        "hci/*.md": true,
+        "mdc/*.md": true,
+        "operator/*.md": true,
+        "ruggedized/*.md": true,
+        "user/*.md": true        
       }
     },
     "template": [],
