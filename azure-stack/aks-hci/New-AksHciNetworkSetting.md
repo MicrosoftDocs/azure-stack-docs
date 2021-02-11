@@ -33,7 +33,7 @@ Create a virtual network to set the DHCP or static IP address for the control pl
 
 ```powershell
 PS C:\> $vnet = New-AksHciNetworkSetting -vnetName "External" -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1" 
-PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -enableDiagnosticData -cloudservicecidr "172.16.10.10"
+PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -enableDiagnosticData -cloudservicecidr "172.16.10.10/16"
 ```
 
 > [!NOTE]
@@ -46,13 +46,13 @@ PS C:\> $vnet = New-AksHciNetworkSetting -vnetName "External" -vipPoolStart "172
 ```
 
 ```powershell
-PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -enableDiagnosticData -cloudservicecidr "172.16.10.10"
+PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -enableDiagnosticData"
 ```
 
 ## Parameters
 
 ### -vnetName
-The the name of your vSwitch. To get a list of the names of your available switches, run the command `Get-VMSwitch`.
+The the name of your external switch. To get a list of the names of your available switches, run the command `Get-VMSwitch`.
 
 ```yaml
 Type: System.String
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -vipPoolStart
-The start IP address of the VIP pool. The address must be within the range either served by the DHCP server or within the range provided in the Subnet CIDR.
+The start IP address of the VIP pool. The address must be within the range either served by the DHCP server or within the range provided in the Subnet CIDR. The IP addresses in the VIP pool will be used for the API Server and for Kubernetes services. If you're using DHCP, make sure your virtual IP addresses are a part of the DHCP IP reserve. If you're using static IP, make sure your virtual IPs are from the same subnet.
 
 ```yaml
 Type: System.String
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -vipPoolEnd
-The end IP address of the VIP pool. The address must be within the range either served by the DHCP server or within the range provided in the Subnet CIDR.
+The end IP address of the VIP pool. The address must be within the range either served by the DHCP server or within the range provided in the Subnet CIDR. The IP addresses in the VIP pool will be used for the API Server and for Kubernetes services. If you're using DHCP, make sure your virtual IP addresses are a part of the DHCP IP reserve. If you're using static IP, make sure your virtual IPs are from the same subnet.
 
 ```yaml
 Type: System.String
