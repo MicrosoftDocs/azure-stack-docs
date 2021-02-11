@@ -91,7 +91,7 @@ The heater is mounted into a transit case capable of holding the unit.
 
     ![Diagram that shows the server inlet temp sensor with the cable attached.](media/image-93.png)
 
-1. At the front of the case, remove the four 10-32 screws, lock washers, and flat washers from the management server or bottom Scale Unit node server. 
+1. At the front of the case, remove the four 10-32 screws, lock washers, and flat washers from the management server or bottom scale unit node server. 
 
     ![Diagram that shows the location of the screws at the front of the case.](media/image-94.png)
 
@@ -103,7 +103,7 @@ The heater is mounted into a transit case capable of holding the unit.
 
     ![Two diagrams that show the screws being removed from each side of the heater.](media/image-97.png)
 
-1. Unwind ethernet cables from the rear plenum, then remove any cable connected to the management server or bottom Scale Unit node server. 
+1. Unwind ethernet cables from the rear plenum, then remove any cable connected to the management server or bottom scale unit node server. 
 
 1. At the back of the case, loosen the six Velcro straps and pull the cables out from the Velcro. 
 
@@ -173,7 +173,7 @@ The heater is mounted into a transit case capable of holding the unit.
 
 1. Place the brackets in a safe location for reinstallation. 
 
-1. At the back of the case, remove the one Cat 6 blue and two 25 Gbps black ethernet cables from the management or bottom Scale Unit node server. 
+1. At the back of the case, remove the one Cat 6 blue and two 25 Gbps black ethernet cables from the management or bottom scale unit node server. 
 
     ![Diagram that shows the location of the Cat 6 blue and 25 Gbps black ethernet cable locations on the back of the case.](media/image-109.png)
 
@@ -257,7 +257,7 @@ The heater is mounted into a transit case capable of holding the unit.
     ![Diagram that shows the screws being reattached.](media/image-122.png)
 
 
-1. At the front of the pod, install the management server or lower Scale Unit node server, sliding it in from front to rear. Ensure there are no loose cables in the way of the server. 
+1. At the front of the pod, install the management server or lower scale unit node server, sliding it in from front to rear. Ensure there are no loose cables in the way of the server. 
 
 1. At the front of the pod, reattach the four 10-32 screws, lock washers, and flat washers. Apply primer and low strength threadlocker to the screw threads, and torque the screws to 27 inch-pounds. 
 
@@ -285,7 +285,7 @@ The heater is mounted into a transit case capable of holding the unit.
 
 1. At the back of the pod, install the left inner cableway bracket. While pressing the bracket inwards toward the rack, fully tighten the captive 6-32 screws then torque the screws to 9 inch-pounds. 
 
-1. At the back of the case, install the one Cat 6 blue and two 25 Gbps black ethernet cables into the management or bottom Scale Unit node server. 
+1. At the back of the case, install the one Cat 6 blue and two 25 Gbps black ethernet cables into the management or bottom scale unit node server. 
 
 1. At the back of the pod, install the left cableway bracket in its original location. Carefully align all cables back into position while pressing the bracket inwards toward the rack. 
 
@@ -293,7 +293,7 @@ The heater is mounted into a transit case capable of holding the unit.
 
 1. At the back of the pod, install the right filler bracket in its original location while pressing the bracket inwards toward the rack. Fully tighten the two captive 6-32 screws then torque the screws to 9 inch-pounds.
 
-1. At the back of the pod, install the management server or lower Scale Unit node server ground hardware in this order: 
+1. At the back of the pod, install the management server or lower scale unit node server ground hardware in this order: 
 
     1. two washers 
     

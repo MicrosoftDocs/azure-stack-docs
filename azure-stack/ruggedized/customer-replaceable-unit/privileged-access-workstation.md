@@ -28,7 +28,7 @@ To allow connections to the privileged endpoint from the PAW, ensure
 that the privileged endpoint IP addresses, as defined in the Azure
 Stack Hub Admin Portal, are set as a trusted host on the PAW. The
 instructions for obtaining these IP addresses from the Administrator
-Portal are in Verifying Scale Unit node access and
+Portal are in Verifying scale unit node access and
 health on page 16.
 
 To view or edit the WinRM trusted hosts, launch an elevated PowerShell
