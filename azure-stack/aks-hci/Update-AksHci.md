@@ -1,6 +1,7 @@
 ---
 title: Update-AksHci
 author: jessicaguan
+description: The Update-AksHci PowerShell command updates the AKS host to the latest Kubernetes version.
 ms.topic: reference
 ms.date: 2/12/2021
 ms.author: jeguan
@@ -25,3 +26,4 @@ Update the Azure Kubernetes Service host to the latest Kubernetes version.
 ### Example
 ```powershell
 PS C:\> Update-AksHci
+```  

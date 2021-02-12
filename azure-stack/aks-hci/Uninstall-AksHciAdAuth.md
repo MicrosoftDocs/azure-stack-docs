@@ -1,7 +1,7 @@
 ---
 title: Uninstall-AksHciAdAuth
 author: jessicaguan
-ms.topic: reference
+description: The Uninstall-AksHciAdAuth PowerShell command uninstalls AD authentication.
 ms.date: 2/12/2021
 ms.author: jeguan
 ---

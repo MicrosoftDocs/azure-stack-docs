@@ -1,5 +1,6 @@
 ---
 title: Remove-AksHciCluster
+description: The Remove-AksHciCluster PowerShell command deletes a managed Kubernetes cluster.
 author: jessicaguan
 ms.topic: reference
 ms.date: 2/12/2021
@@ -44,6 +45,4 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-```
-
 ```

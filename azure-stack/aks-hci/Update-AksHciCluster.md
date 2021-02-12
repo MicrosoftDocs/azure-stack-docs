@@ -1,6 +1,7 @@
 ---
 title: Update-AksHciCluster
 author: jessicaguan
+description: The Update-AksHciCluster PowerShell command updates a managed Kubernetes cluster to a newer Kubernetes or OS version.
 ms.topic: reference
 ms.date: 2/12/2021
 ms.author: jeguan

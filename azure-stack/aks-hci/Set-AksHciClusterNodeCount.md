@@ -1,6 +1,7 @@
 ---
 title: Set-AksHciClusterNodeCount
 author: jessicaguan
+description: The Set-AksHciClusterNodeCount PowerShell command scales the number of control plane nodes or worker nodes in a cluster.
 ms.topic: reference
 ms.date: 2/12/2021
 ms.author: jeguan

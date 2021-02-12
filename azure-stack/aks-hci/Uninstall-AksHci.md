@@ -1,6 +1,7 @@
 ---
 title: Uninstall-AksHci
 author: jessicaguan
+description: The Uninstall-AksHci PowerShell command removes AKS on Azure Stack HCI.
 ms.topic: reference
 ms.date: 2/12/2021
 ms.author: jeguan
