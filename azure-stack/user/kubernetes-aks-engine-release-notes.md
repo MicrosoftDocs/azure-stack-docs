@@ -75,7 +75,6 @@ New versions of these are available with this update:
     -   Follow the instructions in the following article [Add the Azure Kubernetes Services (AKS) engine prerequisites to the Azure Stack Hub Marketplace](../operator/azure-stack-aks-engine.md)
 
 -   The Kubernetes cluster administrator will need to download the new aks-engine version 0.51.0. See instructions in the following article, [Install the AKS engine on Linux in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-linux.md). You can follow the same process you use to install the cluster for the first time. The update will overwrite the previous binary. For example, if you used the get-akse.sh script, follow the same steps outlined in this section [Install in a connected environment](./azure-stack-kubernetes-aks-engine-deploy-linux.md#install-in-a-connected-environment). The same process applies if you're installing in on a Windows system, article [Install the AKS engine on Windows in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-windows.md).
-- 
 ## AKS engine versions
 
 | AKS Engine | AKS Base Image | Kubernetes versions | Notes |
