@@ -1,6 +1,7 @@
 ---
 title: Get-AksHciConfig
 author: jessicaguan
+description: The Get-AksHciConfig PowerShell command lists the current configuration settings for the Azure Kubernetes Service host.
 ms.topic: reference
 ms.date: 2/12/2021
 ms.author: jeguan

@@ -1,6 +1,7 @@
 ---
 title: Get-AksHciClusterUpgrades
 author: jessicaguan
+description: The Get-AksHciClusterUpgrades PowerShell command gets the available Kubernetes upgrades for an Azure Kubernetes Service cluster.
 ms.topic: reference
 ms.date: 2/12/2021
 ms.author: jeguan

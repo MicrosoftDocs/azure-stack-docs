@@ -1,6 +1,7 @@
 ---
 title: Get-AksHciEventLog
 author: jessicaguan
+description: The RGet-AksHciEventLog PowerShell command gets all the event logs from the AKS on Azure Stack HCI PowerShell module.
 ms.topic: reference
 ms.date: 2/12/2021
 ms.author: jeguan

@@ -1,6 +1,7 @@
 ---
 title: Install-AksHciAdAuth
 author: jessicaguan
+description: The Install-AksHciAdAuth PowerShell command installs Active Directory authentication.
 ms.topic: reference
 ms.date: 2/12/2021
 ms.author: jeguan
@@ -111,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -SPN
-The name of the service principal associated with the api-server AD account.
+The name of the service principal associated with the API server AD account.
 
 ```yaml
 Type: System.String
@@ -141,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -adminGroup
-The group name to be given cluster admin permssions.
+The group name to be given cluster admin permissions.
 
 ```yaml
 Type: System.String

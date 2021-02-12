@@ -1,6 +1,7 @@
 ---
 title: Install-AksHciArcOnboarding
 author: jessicaguan
+description: The Install-AksHciArcOnboarding PowerShell command Connects an AKS on Azure Stack HCI workload cluster to Azure Arc for Kubernetes.
 ms.topic: reference
 ms.date: 2/12/2021
 ms.author: jeguan
@@ -73,7 +74,7 @@ Accept wildcard characters: False
 ```
 
 ### -subscriptionId
-Your Azure account's subscirption Id.
+Your Azure account's subscription ID.
 
 ```yaml
 Type: System.String
@@ -103,7 +104,7 @@ Accept wildcard characters: False
 ```
 
 ### -clientId
-The client ID or app Id of your Azure service principal
+The client ID or app ID of your Azure service principal
 
 ```yaml
 Type: System.String
@@ -133,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -location
-The location or Azure region of your Azure resource. Default value is the location of your Azure resource group. This can only be eastus or westeurope for Azure Arc for Kubernetes.
+The location or Azure region of your Azure resource. Default value is the location of your Azure resource group. The location can be only eastus or westeurope for Azure Arc for Kubernetes.
 
 ```yaml
 Type: System.String

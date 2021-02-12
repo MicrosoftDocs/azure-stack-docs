@@ -1,6 +1,7 @@
 ---
 title: Get-AksHciVmSize
 author: jessicaguan
+description: The Get-AksHciVmSize PowerShell command lists the supported VM sizes.
 ms.topic: reference
 ms.date: 2/12/2021
 ms.author: jeguan

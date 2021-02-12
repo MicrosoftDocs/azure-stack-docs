@@ -1,6 +1,7 @@
 ---
 title: Get-AksHciVersion
 author: jessicaguan
+description: The Get-AksHciVersion PowerShell command gets the current Kubernetes version of Azure Kubernetes Service on Azure Stack HCI.
 ms.topic: reference
 ms.date: 2/12/2021
 ms.author: jeguan

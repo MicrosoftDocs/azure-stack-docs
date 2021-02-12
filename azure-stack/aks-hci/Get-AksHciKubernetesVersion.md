@@ -1,6 +1,7 @@
 ---
 title: Get-AksHciKubernetesVersion
 author: jessicaguan
+description: The Get-AksHciKubernetesVersion PowerShell command lists the available versions for creating a managed Kubernetes cluster.
 ms.topic: reference
 ms.date: 2/12/2021
 ms.author: jeguan

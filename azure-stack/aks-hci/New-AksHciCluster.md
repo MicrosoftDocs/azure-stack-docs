@@ -1,6 +1,7 @@
 ---
 title: New-AksHciCluster
 author: jessicaguan
+description: The New-AksHciCluster PowerShell command creates a new managed Kubernetes cluster.
 ms.topic: reference
 ms.date: 2/12/2021
 ms.author: jeguan
@@ -105,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -windowsNodeCount
-The number of Windows nodes in your Kubernetes cluster. Default is 0. You can only deploy Windows nodes if you are running Kubernetes v1.18.8 or highter.
+The number of Windows nodes in your Kubernetes cluster. Default is 0. You can only deploy Windows nodes if you are running Kubernetes v1.18.8 or higher.
 
 ```yaml
 Type: System.Int32
@@ -225,7 +226,7 @@ Accept wildcard characters: False
 ```
 
 ### -enableSecretsEncryption
-Use this flag to enable encryption in your the Kubernetes Secrets.
+Use this flag to enable encryption in your Kubernetes secrets.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

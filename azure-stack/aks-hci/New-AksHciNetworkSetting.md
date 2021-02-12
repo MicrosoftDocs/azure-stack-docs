@@ -1,6 +1,7 @@
 ---
 title: New-AksHciNetworkSetting
 author: jessicaguan
+description: The New-AksHciNetworkSetting PowerShell command creates an object for a new virtual network.
 ms.topic: reference
 ms.date: 2/12/2021
 ms.author: jeguan
@@ -26,7 +27,7 @@ New-AksHciNetworkSetting -vnetName <String>
 ```
 
 ## Description
-Create a virtual network to set the DHCP or static IP address for the control plane, load balancer, agent endpoints, and a static IP range for nodes in all Kubernetes clusters. This cmdlet will return a VirtualNetwork object which can be used later in the configuration steps.
+Create a virtual network to set the DHCP or static IP address for the control plane, load balancer, agent endpoints, and a static IP range for nodes in all Kubernetes clusters. This cmdlet will return a VirtualNetwork object, which can be used later in the configuration steps.
 
 ## Examples
 
