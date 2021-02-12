@@ -1,9 +1,10 @@
 ---
-Module Name: AksHci
-Module Guid: 
-Download Help Link: 
-Help Version:
-Locale: en-US
+title: AksHci PowerShell module
+description: Learn how to use the AksHci module commands to manage AKS on Azure Stack HCI 
+author: jessicaguan
+ms.topic: reference
+ms.date: 2/12/2021
+ms.author: jeguan
 ---
 
 # AksHci 

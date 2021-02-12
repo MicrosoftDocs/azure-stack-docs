@@ -1,9 +1,11 @@
 ---
-external help file: 
-Module Name: Aks.Hci
-online version: 
-schema: 
+title: Initialize-AksHciNode
+author: jessicaguan
+ms.topic: reference
+ms.date: 2/12/2021
+ms.author: jeguan
 ---
+
 
 # Initialize-AksHciNode
 
