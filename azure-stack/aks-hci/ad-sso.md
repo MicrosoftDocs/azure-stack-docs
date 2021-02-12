@@ -3,7 +3,7 @@ title: Use Active Directory single sign-on in AKS for Azure Stack HCI
 description: Use Active Directory Authentication to securely connect to the API server with SSO credentials
 author: v-susbo
 ms.topic: how-to
-ms.date: 01/18/2021
+ms.date: 02/12/2021
 ms.author: v-susbo
 ms.reviewer: 
 ---
@@ -34,7 +34,7 @@ This document will guide you through the following steps to set up Active Direct
 Before you start the process of configuring Active Directory SSO credentials, you should ensure you have the following items available:
 
  - The latest **Aks-Hci PowerShell** module is installed. If you don't, see [download and install the AksHci PowerShell module](./setup-powershell.md#step-1-download-and-install-the-akshci-powershell-module). 
- - The AKS host is installed and configured. If you don't, follow [configure your deployment](./setup-powershell.md#step-3-configure-your-deployment).  
+ - The AKS host is installed and configured. If you don't, follow [configure your deployment](./setup-powershell.md#step-4-configure-your-deployment).  
  - Make sure the keytab file is available to use. If it's not, see [create the API server AD account and the keytab file](#create-the-api-server-ad-account-and-the-keytab-file). 
  - The keytab file is generated for a specific service principal name (SPN), and this SPN must correspond to the API server AD account for the workload cluster. You should also ensure that the same SPN is used throughout the AD authentication process. The keytab file should be named _current.keytab_.
  - For each AKS on Azure Stack HCI workload cluster, ensure there's one API server AD account available.
@@ -236,7 +236,7 @@ There are two steps involved in this process. First, create a new AD account/use
 
 ### Step 1: Create a new AD account or user for the API server
 
-Use the [New-ADUser](https://docs.microsoft.com/powershell/module/addsadministration/new-aduser?view=win10-ps) PowerShell command to create a new AD account/user with the SPN. Here's an example: 
+Use the [New-ADUser](https://docs.microsoft.com/powershell/module/addsadministration/new-aduser?view=win10-ps&preserve-view=true) PowerShell command to create a new AD account/user with the SPN. Here's an example: 
 
 ```powershell 
 New-ADUser -Name apiserver -ServicePrincipalNames K8s/apiserver -AccountPassword (ConvertTo-SecureString "password" -AsPlainText -Force) -KerberosEncryptionType AES128 -Enabled 1
