@@ -104,13 +104,13 @@ In the API Model json file, please specify the release and version values under 
 
 ## AKS engine and corresponding image mapping
 
-| Kubernetes versions | Notes |
+| AKS Engine | AKS Base Image | Kubernetes versions | Notes |
 |---|---|---|---|
-| 1.15.5, 1.15.4, 1.14.8, 1.14.7 |  |
-| 1.15.10, 1.14.7 |  |
-| 1.15.12, 1.16.8, 1.16.9 | API Model Samples ([Linux](https://github.com/Azure/aks-engine/blob/v0.51.0/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine/blob/v0.51.0/examples/azure-stack/kubernetes-windows.json)) |
-| 1.15.12, 1.16.14, 1.17.11 | API Model Samples ([Linux](https://github.com/Azure/aks-engine/blob/v0.55.0/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine/blob/v0.55.0/examples/azure-stack/kubernetes-windows.json)) |
-| 1.15.12, 1.16.14, 1.17.11 | API Model Samples ([Linux](https://github.com/Azure/aks-engine/blob/v0.55.0/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine/blob/v0.55.0/examples/azure-stack/kubernetes-windows.json)) |
+| v0.43.1 | AKS Base Ubuntu 16.04-LTS Image Distro, October 2019 (2019.10.24) | 1.15.5, 1.15.4, 1.14.8, 1.14.7 |  |
+| v0.48.0 | AKS Base Ubuntu 16.04-LTS Image Distro, March 2020 (2020.03.19) | 1.15.10, 1.14.7 |  |
+| v0.51.0 | AKS Base Ubuntu 16.04-LTS Image Distro, May 2020 (2020.05.13), AKS Base Windows Image (17763.1217.200513) | 1.15.12, 1.16.8, 1.16.9 | API Model Samples ([Linux](https://github.com/Azure/aks-engine/blob/v0.51.0/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine/blob/v0.51.0/examples/azure-stack/kubernetes-windows.json)) |
+| v0.55.0 | AKS Base Ubuntu 16.04-LTS Image Distro, August 2020 (2020.08.24), AKS Base Windows Image (17763.1397.200820) | 1.15.12, 1.16.14, 1.17.11 | API Model Samples ([Linux](https://github.com/Azure/aks-engine/blob/v0.55.0/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine/blob/v0.55.0/examples/azure-stack/kubernetes-windows.json)) |
+| v0.55.4 | AKS Base Ubuntu 16.04-LTS Image Distro, September 2020 (2020.09.14), AKS Base Windows Image (17763.1397.200820) | 1.15.12, 1.16.14, 1.17.11 | API Model Samples ([Linux](https://github.com/Azure/aks-engine/blob/v0.55.0/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine/blob/v0.55.0/examples/azure-stack/kubernetes-windows.json) |
 
 ## What's new
 
