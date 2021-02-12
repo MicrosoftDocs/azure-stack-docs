@@ -104,9 +104,8 @@ For more information, see [System requirements](concepts/system-requirements.md)
 |Aspect|Details|
 |----|:----|
 |Release state:|General Availability (GA)|
-|Pricing:|$10 USD per core, per month (billed to Azure subscription)|
+|Pricing:|[Billed to Azure subscription](concepts/billing.md)|
 |Required roles and permissions:|**Azure Active Directory Administrator** or delegated permissions|
-|Clouds:|Private cloud<br>Public cloud (Azure)|
 |||
 
 ## Hardware partners
