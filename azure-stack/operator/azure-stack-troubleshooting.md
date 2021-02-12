@@ -5,7 +5,7 @@ description: Learn how to troubleshoot Azure Stack Hub, including issues with VM
 author: PatAltimore
 
 ms.topic: article
-ms.date: 01/20/2021
+ms.date: 02/12/2021
 ms.author: patricka
 ms.reviewer: prchint
 ms.lastreviewed: 12/10/2020
@@ -218,6 +218,14 @@ The Azure Stack Hub patch and update process is designed to allow operators to a
 **Remediation**: You can work around this issue by clicking **Install now** again. If the problem persists, we recommend manually uploading the update package by following the [Install updates](azure-stack-apply-updates.md?#install-updates-and-monitor-progress) section.
 
 **Occurrence**: Common
+
+### Update failed: Check and Enforce external key protectors on CSVs
+
+**Applicable**: This issue applies to all supported releases.
+
+**Cause**: The baseboard management controller (BMC) password is not set correctly.
+
+**Remediation**: [Update the BMC credential](/azure-stack/operator/azure-stack-rotate-secrets.md?view=azs-2008#update-the-bmc-credential) and resume the update.
 
 ### Warnings and errors reported while update is in progress
 
