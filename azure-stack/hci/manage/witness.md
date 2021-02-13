@@ -22,7 +22,7 @@ Before you can create a cloud witness, you must have an Azure account and subscr
 
 - [Create an Azure account](https://docs.microsoft.com/dotnet/azure/create-azure-account)
 - If applicable, [create an additional Azure subscription](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription)
-- [Connect Azure Stack HCI to Azure](../deploy/register-with-azure)
+- [Connect Azure Stack HCI to Azure](../deploy/register-with-azure.md)
 
 For file share witnesses, there are requirements for the file server. See [System requirements](../concepts/system-requirements.md) for more information.
 
