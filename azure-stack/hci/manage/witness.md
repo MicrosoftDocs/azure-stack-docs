@@ -64,7 +64,7 @@ This section describes how to create an Azure storage account. This account is u
 
 When you create an Azure storage account, it generates two access keys that are automatically generated, a primary key (key1) and a secondary key (key2). For the first time creation of a cloud witness, **key1** is used for the witness. The endpoint URL is also generated automatically.
 
-An Azure cloud witness uses a blob file for storage, with an endpoint generated of the form *https://storage_account_name.blob.core.windows.net* as the endpoint. 
+An Azure cloud witness uses a blob file for storage, with an endpoint generated of the form *storage_account_name.blob.core.windows.net* as the endpoint. 
 
 > [!NOTE]  
 > An Azure cloud witness uses HTTPS (default port 443) to establish communication with the Azure blob service. Ensure that the HTTPS port is accessible.
