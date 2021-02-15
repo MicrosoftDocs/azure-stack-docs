@@ -4,14 +4,14 @@ description: This topic provides instructions on how to use Windows Admin Center
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: how-to
-ms.date: 02/11/2021
+ms.date: 02/15/2021
 ---
 
 # Use Datacenter Firewall to configure ACLs with Windows Admin Center
 
 >Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016
 
-This topic provides step-by-step instructions on how to use Windows Admin Center to create and configure access control lists (ACLs) to manage data traffic flow using Datacenter Firewall. It also provides instructions on managing ACLs on Software Defined Network (SDN) logical and virtual networks. You enable and configure Datacenter Firewall by creating ACLs and applying them to either a subnet or a network interface. To learn more, see [What is Datacenter Firewall?](../concepts/datacenter-firewall-overview.md) To use PowerShell scripts to create and manage ACLs, see [Use Datacenter Firewall to configure ACLs with PowerShell](use-datacenter-firewall-powershell.md).
+This topic provides step-by-step instructions on how to use Windows Admin Center to create and configure access control lists (ACLs) to manage data traffic flow using Datacenter Firewall. It also provides instructions on managing ACLs on Software Defined Network (SDN) logical and virtual networks. You enable and configure Datacenter Firewall by creating ACLs and applying them to either a subnet or a network interface. To learn more, see [What is Datacenter Firewall?](../concepts/datacenter-firewall-overview.md) To use PowerShell scripts to do this, see [Use Datacenter Firewall to configure ACLs with PowerShell](use-datacenter-firewall-powershell.md).
 
 Before you configure ACLs, you need to deploy Network Controller. To learn about Network Controller, see [What is Network Controller?](../concepts/network-controller-overview.md) To deploy Network Controller using PowerShell scripts, see [Deploy an SDN infrastructure](sdn-express.md).
 
