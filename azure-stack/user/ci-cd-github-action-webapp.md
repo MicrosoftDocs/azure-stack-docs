@@ -20,7 +20,7 @@ You can set up GitHub Actions to deploy a web app to your Azure Stack Hub instan
 GitHub Actions are workflows composed of actions that enable automation right in your code repository. You can trigger the workflows with events in your GitHub development process. You can set common DevOps automation tasks such as testing, deployment, and continuous integration.
 
 This example workflow includes:
-- Instructions on creating and validating your SPN.
+- Instructions on creating and validating your service principal (SPN).
 - Instructions on creating your web app publish profile
 - Adding a runtime-specific workflow
 - Adding a matching workflow with web app deploy
@@ -217,7 +217,7 @@ To build app code in a specific language-based environment, use setup actions:
 | Python     | [Setup Python ](https://github.com/actions/setup-python) |
 | Docker | [docker-login ](https://github.com/Azure/docker-login) |
 
-Once login is done, the next set of actions in the workflow can perform tasks such as building, tagging, and pushing containers. For more information, see the documentation for the [Azure Webapp action](https://github.com/marketplace/actions/azure-webapp).
+Once the login action is done, the next set of actions in the workflow can perform tasks such as building, tagging, and pushing containers. For more information, see the documentation for the [Azure Webapp action](https://github.com/marketplace/actions/azure-webapp).
 ## Trigger your deployment
 
 When the action runs, verify that it has run successfully.
