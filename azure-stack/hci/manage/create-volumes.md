@@ -1,33 +1,32 @@
 ---
-title: Create volumes in Azure Stack HCI
-description: How to create volumes in Azure Stack HCI using Windows Admin Center and PowerShell.
+title: Create volumes in Azure Stack HCI and Windows Server
+description: How to create volumes in Azure Stack HCI and Windows Server using Windows Admin Center and PowerShell.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 02/04/2021
+ms.date: 02/16/2021
 ---
 
 # Create volumes in Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, 2016
 
-This topic describes how to create volumes on an Azure Stack HCI cluster by using Windows Admin Center and Windows PowerShell, how to work with files on the volumes, and how to enable data deduplication and compression on volumes. To learn how to create volumes and set up replication for stretched clusters, see [Create stretched volumes](create-stretched-volumes.md).
+This topic describes how to create volumes on a cluster by using Windows Admin Center and Windows PowerShell, how to work with files on the volumes, and how to enable data deduplication and compression on volumes. To learn how to create volumes and set up replication for stretched clusters, see [Create stretched volumes](create-stretched-volumes.md).
 
-## Create a three-way mirror volume
+## Create a two-way or three-way mirror volume
 
-To create a three-way mirror volume using Windows Admin Center:
+To create a two-way or three-way mirror volume using Windows Admin Center:
 
 1. In Windows Admin Center, connect to a cluster, and then select **Volumes** from the **Tools** pane.
 2. On the **Volumes** page, select the **Inventory** tab, and then select **Create volume**.
-3. In the **Create volume** pane, enter a name for the volume, and leave **Resiliency** as **Three-way mirror**.
+3. In the **Create volume** pane, enter a name for the volume, and under **Resiliency**, select **Two-way mirror** or **Three-way mirror**. If your cluster only has two servers, only the **Two-way mirror** option will be available.
 4. In **Size on HDD**, specify the size of the volume. For example, 5 TB (terabytes).
-5. Select **Create**.
+5. Under **More options,** you can use the checkboxes to turn on deduplication and compression, integrity checksums, or encryption.
+6. Select **Create**.
 
-Depending on the size, creating the volume can take a few minutes. Notifications in the upper-right will let you know when the volume is created. The new volume appears in the Inventory list.
+   :::image type="content" source="media/create-volumes/create-mirror-volume.png" alt-text="You can use Windows Admin Center to create a two-way or three-way mirror volume" lightbox="media/create-volumes/create-mirror-volume.png":::
 
-Watch a quick video on how to create a three-way mirror volume.
-
-> [!VIDEO https://www.youtube-nocookie.com/embed/o66etKq70N8]
+Depending on the size, creating the volume can take a few minutes. Notifications in the upper-right will let you know when the volume is created. The new volume will then appear in the Inventory list.
 
 ## Create a mirror-accelerated parity volume
 
