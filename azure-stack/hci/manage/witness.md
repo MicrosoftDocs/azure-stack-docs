@@ -3,7 +3,7 @@ title: Set up a cluster witness
 description: Learn how to set up a cluster witness 
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 02/12/2021
+ms.date: 02/16/2021
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -62,7 +62,7 @@ This section describes how to create an Azure storage account. This account is u
 
 ## Copy the access key and endpoint URL
 
-When you create an Azure storage account, it generates two access keys that are automatically generated, a primary key (key1) and a secondary key (key2). For the first time creation of a cloud witness, **key1** is used for the witness. The endpoint URL is also generated automatically.
+When you create an Azure storage account, the process automatically generates two access keys, a primary key (key1) and a secondary key (key2). For the first time creation of a cloud witness, **key1** is used. The endpoint URL is also generated automatically.
 
 An Azure cloud witness uses a blob file for storage, with an endpoint generated of the form *storage_account_name.blob.core.windows.net* as the endpoint. 
 
@@ -112,7 +112,7 @@ Now you are ready to create a witness instance for your cluster using Windows Ad
 
 ## Create a cloud witness using Windows PowerShell
 
-You are ready to create a witness instance for your cluster using PowerShell.
+Alternatively, you can create a witness instance for your cluster using PowerShell.
 
 Use the following cmdlet to create an Azure cloud witness. Enter the Azure storage account name and access key information as described previously:
 
@@ -120,7 +120,7 @@ Use the following cmdlet to create an Azure cloud witness. Enter the Azure stora
 Set-ClusterQuorum –Cluster "Cluster1" -CloudWitness -AccountName "AzureStorageAccountName" -AccessKey "AzureStorageAccountAccessKey"
 ```
 
-Use the following cmdlet to create a file-share witness. Enter the path to the file server share:
+Use the following cmdlet to create a file share witness. Enter the path to the file server share:
 
 ```powershell
 Set-ClusterQuorum -FileShareWitness "\\fileserver\share" -Credential (Get-Credential)
@@ -130,4 +130,4 @@ Set-ClusterQuorum -FileShareWitness "\\fileserver\share" -Credential (Get-Creden
 
 - For more information on cluster quorum, see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).
 
-- For more information about creating and managing Azure Storage Accounts, see [About Azure Storage Accounts](/azure/storage/common/storage-account-create).
+- For more information about creating and managing Azure Storage Accounts, see [Create a storage account](https://docs.microsoft.com/azure/storage/common/storage-account-create).
