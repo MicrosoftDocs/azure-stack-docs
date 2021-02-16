@@ -9,7 +9,7 @@ ms.date: 02/02/2021
 
 # Manage tenant logical networks
 
->Applies to: Azure Stack HCI, version 20H2; Windows Server 2019; Windows Server 2016
+>Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016
 
 This topic provides step-by-step instructions on how to use Windows Admin Center to create, update, and delete logical networks after you have deployed Network Controller. A Software Defined Networking (SDN) logical network is a traditional VLAN-based network.
 
