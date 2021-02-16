@@ -1,6 +1,6 @@
 ---
-title: Analyze Azure Stack usage and resource usage API - MDC
-description: Analyzing Azure Stack usage and reference for the resource usage API, which retrieves Azure Stack usage information. For a Modular Data Center (MDC).
+title: Analyze Azure Stack usage and resource usage API | Microsoft Docs
+description: Analyzing Azure Stack usage and reference for the resource usage API, which retrieves Azure Stack usage information.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/16/2021
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 10/27/2020
+ms.lastreviewed: 07/29/2020
 
 ---
 
-# Analyze Azure Stack usage with local usage meters - Modular Data Center (MDC)
+# Analyze Azure Stack usage with local usage meters
 
 Information about which subscriptions use which resources is stored in a local usage database. Administrators can retrieve this data to analyze which users are consuming resources.
 
@@ -99,28 +99,15 @@ meterID1",
 
 ### PowerShell
 
-To generate the usage data, you should have resources that are running and actively using the system; for example, an active virtual machine (VM), or a storage account containing some data. If you're not sure whether you have any resources running in the Azure Stack marketplace, deploy a VM, and verify the VM monitoring blade to make sure it's running. Use the following PowerShell cmdlets to view the usage data.
+To generate the usage data, you should have resources that are running and actively using the system; for example, an active virtual machine (VM), or a storage account containing some data. If you're not sure whether you have any resources running in the Azure Stack marketplace, deploy a VM, and verify the VM monitoring blade to make sure it's running. Use the following PowerShell cmdlets to view the usage data:
 
-### [Az modules](#tab/az1)
-
-1. [Install PowerShell for Azure Stack](../../operator/powershell-install-az-module.md).
-2. [Configure the Azure Stack user](../../user/azure-stack-powershell-configure-user.md) or the [Azure Stack operator](../../operator/azure-stack-powershell-configure-admin.md) PowerShell environment.
+1. [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).
+2. [Configure the Azure Stack user](../user/azure-stack-powershell-configure-user.md) or the [Azure Stack operator](azure-stack-powershell-configure-admin.md) PowerShell environment.
 3. To retrieve the usage data, call the [Get-AzsSubscriberUsage](/powershell/module/azs.commerce.admin/get-azssubscriberusage) PowerShell cmdlet:
 
    ```powershell
    Get-AzsSubscriberUsage -ReportedStartTime "2017-09-06T00:00:00Z" -ReportedEndTime "2017-09-07T00:00:00Z"
    ```
-### [AzureRM modules](#tab/azurerm1)
-
-1. [Install PowerShell for Azure Stack](../../operator/powershell-install-az-module.md).
-2. [Configure the Azure Stack user](../../user/azure-stack-powershell-configure-user.md) or the [Azure Stack operator](../../operator/azure-stack-powershell-configure-admin.md) PowerShell environment.
-3. To retrieve the usage data, call the [Get-AzsSubscriberUsage](/powershell/module/azs.commerce.admin/get-azssubscriberusage) PowerShell cmdlet:
-
-   ```powershell
-   Get-AzsSubscriberUsage -ReportedStartTime "2017-09-06T00:00:00Z" -ReportedEndTime "2017-09-07T00:00:00Z"
-   ```
-
----
 
 ### REST API
 
