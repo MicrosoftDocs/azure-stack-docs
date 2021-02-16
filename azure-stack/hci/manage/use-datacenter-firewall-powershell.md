@@ -11,7 +11,7 @@ ms.date: 02/09/2021
 
 # Use Datacenter Firewall to configure ACLs with PowerShell
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019; Windows Server 2016
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016
 
 This topic provides instructions for configuring access control lists (ACLs) to manage data traffic flow using [Datacenter Firewall](../concepts/datacenter-firewall-overview.md) for Software Defined Networking (SDN) in Azure Stack HCI using Windows PowerShell. You enable and configure Datacenter Firewall by creating ACLs that get applied to a subnet or a network interface. The example scripts in this topic use Windows PowerShell commands exported from the **NetworkController** module. You can also use Windows Admin Center to configure and manage ACLs.
 
