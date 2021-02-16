@@ -1,6 +1,6 @@
 ---
-title: Verify Scale Unit node access and health
-description: Learn how to verify Scale Unit node access and health
+title: Verify scale unit node access and health
+description: Learn how to verify scale unit node access and health
 author: PatAltimore
 
 ms.topic: how-to
@@ -14,9 +14,7 @@ ms.lastreviewed:
 
 ---
 
-# Verifying Scale Unit node access and health
-
-
+# Verifying scale unit node access and health
 
 Log in to the Privileged Access Workstation, launch the Administrator
 Portal, verify the system health, obtain the privileged endpoint IP
@@ -39,17 +37,16 @@ resumed.
     note of these as may be needed later in this procedure or will be
     needed by support in the event of any issues.
 
-    [![Screenshot that shows the 'Administration' page with the 'Privileged endpoint I P addresses' section highlighted.](media/image-18-inline.png)](media/image-18-expanded.png)
+    [![Screenshot that shows the 'Administration' page with the 'Privileged endpoint I P addresses' section highlighted.](media/image-18-inline.png)](media/image-18-expanded.png#lightbox)
     
 4.  Review any current alerts.
 
     In **Region Management**, select **Alerts** and review the current
-    alerts. If any unexpected alerts are present, verify with Dell
-    Technologies Support that they can be cleared or safely ignored.
+    alerts. If any unexpected alerts are present, verify with Microsoft Support that they can be cleared or safely ignored.
     
-    [![Screenshot that shows the 'Properties' page with the 'Name' section highlighted.](media/image-19-inline.png)](media/image-19-expanded.png)]
+    [![Screenshot that shows the 'Properties' page with the 'Name' section highlighted.](media/image-19-inline.png)](media/image-19-expanded.png#lightbox)
     
-5.  Identify the Scale Unit nodes.
+5.  Identify the scale unit nodes.
 
     If you are only provided the service tag and you are unable to
     identify which node has the issue from the Azure Stack Hub Admin
@@ -64,7 +61,7 @@ resumed.
         on the **BMC** IP address link, which opens the server's iDRAC web
         interface in a new tab or window.
 
-        [![Screenshot that shows the 'Nodes' page with the 'BMC' column highlighted.](media/image-20-inline.png)](media/image-20-expanded.png) 
+        [![Screenshot that shows the 'Nodes' page with the 'BMC' column highlighted.](media/image-20-inline.png)](media/image-20-expanded.png#lightbox) 
     
     1.  Log in to the iDRAC interface and verify the service tag of the node
         in the **System Information** pane.
@@ -73,5 +70,5 @@ resumed.
         and correlate these service tags with the scheduled hardware
         replacement to determine which node or nodes need to be serviced.
 
-        [![Screenshot that shows the 'Dashboard' with the 'Service Tag' highlighted.](media/image-21-inline.png)](media/image-21-expanded.png)
+        [![Screenshot that shows the 'Dashboard' with the 'Service Tag' highlighted.](media/image-21-inline.png)](media/image-21-expanded.png#lightbox)
     

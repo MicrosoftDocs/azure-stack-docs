@@ -4,10 +4,10 @@ description: Learn how to change the billing owner for an Azure Stack Hub user s
 author: PatAltimore
 
 ms.topic: conceptual
-ms.date: 1/29/2021
+ms.date: 02/11/2021
 ms.author: patricka
 ms.reviewer: shnatara
-ms.lastreviewed: 1/29/2021
+ms.lastreviewed: 02/11/2021
 
 # Intent: As an Azure Stack operator, I want to change the billing owner for a user subscription because I may need to make changes to my organization.
 # Keyword: change billing owner azure stack
@@ -48,7 +48,7 @@ Replace the following values in the script before it runs:
 ```powershell
 # Set up Azure Stack Hub admin environment
 Add-AzEnvironment -ARMEndpoint $ArmEndpoint -Name AzureStack-admin
-Add-AzAccount -Environment AzureStack-admin -TenantId $TenantId
+Connect-AzAccount -Environment AzureStack-admin -TenantId $TenantId
 
 # Select admin subscription
 $providerSubscriptionId = (Get-AzSubscription -SubscriptionName "Default Provider Subscription").Id
@@ -76,15 +76,12 @@ Write-Output "Setting context to the Default Provider Subscription: $providerSub
 Set-AzureRMContext -Subscription $providerSubscriptionId
 
 # Change user subscription owner
-$subscription = Get-AzureRMsUserSubscription -SubscriptionId $SubscriptionId
+$subscription = Get-AzsUserSubscription -SubscriptionId $SubscriptionId
 $Subscription.Owner = $OwnerUpn
-Set-AzureRMsUserSubscription -InputObject $subscription
+Set-AzsUserSubscription -InputObject $subscription
 ```
 [!include[Remove Account](../includes/remove-account-azurerm.md)]
 ---
-
-
-
 
 ## Next steps
 

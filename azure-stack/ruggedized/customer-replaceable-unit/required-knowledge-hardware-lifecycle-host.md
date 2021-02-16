@@ -4,7 +4,7 @@ description: Learn about the required knowledge for working with the Hardware Li
 author: PatAltimore
 
 ms.topic: how-to
-ms.date: 11/13/2020
+ms.date: 02/05/2021
 ms.author: patricka
 ms.reviewer: 
 ms.lastreviewed: 
@@ -57,25 +57,4 @@ If not connecting directly to the server using a crash cart, then you
 will need the iDRAC account credentials to gain access to the virtual
 KVM.
 
-## Dell EMC PowerEdge R640 Installation and Service Manual
-
-For details on physically replacing the relevant hardware, refer to
-the PowerEdge R640 FRU replacement procedures in the
-[Dell](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/dell-emc-poweredge-r640-overview?guid=guid-f39be9ba-158c-45e3-b8b1-f07bb750d6d4)
-[EMC PowerEdge R640 Installation and Service
-Manual](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/dell-emc-poweredge-r640-overview?guid=guid-f39be9ba-158c-45e3-b8b1-f07bb750d6d4).
-Browse to the [Installing and removing system
-components](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/installing-and-removing-system-components?guid=guid-5a5943c4-fe26-4faa-a10c-2afa4c1993ff&lang=en-us)
-section.
-
-## Microsoft Azure Stack Hub Tactical Cloud Appliance Service Manual
-
-The Microsoft Azure Stack Hub Tactical Cloud Appliance Service Manual
-contains instructions for removing the Hardware Lifecycle Host from
-the Tracewell Tactical Pods.
-
-## Dell EMC PowerEdge iDRAC
-
-You must understand how to navigate and use the Dell EMC PowerEdge
-iDRAC web interface.
 

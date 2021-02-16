@@ -1,6 +1,6 @@
 ---
-title: Power on Scale Unit node
-description: Learn how to power on Scale Unit node
+title: Power on scale unit node
+description: Learn how to power on scale unit node
 author: PatAltimore
 
 ms.topic: how-to
@@ -14,11 +14,11 @@ ms.lastreviewed:
 
 ---
 
-# Powering on a Scale Unit node
+# Powering on a scale unit node
 
 **Steps**
 
-1.  Start the Scale Unit node.
+1.  Start the scale unit node.
 
     1.  Return to the **Administration Portal**, if
         the node is still **Stopped**, select the node and select
@@ -37,7 +37,7 @@ ms.lastreviewed:
     > You can also use the iDRAC virtual console to verify there
     are no issues with the swapped component during POST.
     
-2.  Resume the Scale Unit node.
+2.  Resume the scale unit node.
 
     1.  Now that the node has successfully powered back up, in the
         **Administration Portal**, select the node and select

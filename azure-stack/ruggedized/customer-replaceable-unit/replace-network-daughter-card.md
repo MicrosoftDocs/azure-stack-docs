@@ -4,7 +4,7 @@ description: Learn how to replace a network daughter card
 author: PatAltimore
 
 ms.topic: how-to
-ms.date: 11/13/2020
+ms.date: 02/05/2021
 ms.author: patricka
 ms.reviewer: 
 ms.lastreviewed: 
@@ -28,20 +28,20 @@ cards.
 
 3.  Review
 
-    -   Required knowledge for working with Scale Unit nodes in a Tactical Cloud Appliance
+    -   Required knowledge for working with scale unit nodes in Azure Stack Hub ruggedized
 
     -   Required knowledge for working with the Hardware Lifecycle Host on page 5 if you are working with the Hardware Lifecycle Host
 
 4.  Complete
 
-    -   Verifying Scale Unit node access and health if you are working with a Scale Unit node
+    -   Verifying scale unit node access and health if you are working with a scale unit node
 
     -   Verifying Hardware Lifecycle Host access and
         health if you are working with the Hardware Lifecycle Host
 
 5.  Complete
 
-    -   Powering off Scale Unit nodes if you are working with a Scale Unit node
+    -   Powering off scale unit nodes if you are working with a scale unit node
 
     -   Powering off the Hardware Lifecycle
         Host if
@@ -59,10 +59,8 @@ cards.
     
 3.  Replace the network daughter card or cards.
 
-    Follow the network daughter card replacement process in the [Dell EMC
-    PowerEdge R640 Installation and Service
-    Manual](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/dell-emc-poweredge-r640-overview?guid=guid-f39be9ba-158c-45e3-b8b1-f07bb750d6d4)
-    for Scale Unit nodes or Hardware Lifecycle Hosts.
+    Follow the [network daughter card replacement process](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/dell-emc-poweredge-r640-overview?guid=guid-f39be9ba-158c-45e3-b8b1-f07bb750d6d4)
+    for scale unit nodes or Hardware Lifecycle Hosts.
     
 4.  Power on the node.
 
@@ -71,11 +69,11 @@ cards.
     
 ## Next steps
 
-If you are working with a Scale Unit node:
+If you are working with a scale unit node:
 
-1.  Complete Powering on and repairing a Scale Unit node.
+1.  Complete Powering on and repairing a scale unit node.
 
-2.  Complete Verifying Scale Unit node
+2.  Complete Verifying scale unit node
     health. If you are
     working with the Hardware Lifecycle Host:
 
