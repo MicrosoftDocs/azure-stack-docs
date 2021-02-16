@@ -15,9 +15,9 @@ ms.lastreviewed: 2/16/2021
 
 # Use the Azure web app deploy action with Azure Stack Hub
 
-You can set up GitHub Actions to deploy a web app to your Azure Stack Hub instance. This allows you to set up continuous integration and deployment for your app. This article will help you get up and running with automated deployment using GitHub Actions and Azure Stack Hub. You will create a web app and use the publish profile to create the web app to host your app.
+You can set up GitHub Actions to deploy a web app to your Azure Stack Hub instance. This allows you to set up continuous integration and deployment for your app. This article will help you get up and running with automated deployment using GitHub Actions and Azure Stack Hub. You'll create a web app and use the publish profile to create the web app to host your app.
 
-GitHub Actions are workflows composed of actions that enable automation right inside of your code repository. You can trigger the workflows with events in your GitHub development process. You can perform common DevOps automation tasks such as testing, deployment, and continuous integration.
+GitHub Actions are workflows composed of actions that enable automation right in your code repository. You can trigger the workflows with events in your GitHub development process. You can set common DevOps automation tasks such as testing, deployment, and continuous integration.
 
 This example workflow includes:
 - Instructions on creating and validating your SPN.
@@ -26,13 +26,13 @@ This example workflow includes:
 - Adding a matching workflow with web app deploy
 ## Get service principal
 
-An SPN provides role-based credentials so that processes outside of Azure can connect to and interact with resources. You will need an SPN with contributor access and the attributes specified in these instructions to use with your GitHub Actions.
+An SPN provides role-based credentials so that processes outside of Azure can connect to and interact with resources. You'll need an SPN with contributor access and the attributes specified in these instructions to use with your GitHub Actions.
 
-As a user of Azure Stack Hub you do not have the permission to create the SPN. You will need to request this principle from your cloud operator. The instructions are being provided here so you can create the SPN if you are a cloud operator, or you can validate the SPN if you are a developer using an SPN in your workflow provided by a cloud operator.
+As a user of Azure Stack Hub you don't have the permission to create the SPN. You'll need to request this principle from your cloud operator. The instructions are being provided here so you can create the SPN if you're a cloud operator. Or if you're a developer, you can validate the SPN provided by a cloud operator.
 
 The cloud operator will need to create the SPN using Azure CLI.
 
-The following code snippets are written for a Windows machine using the PowerShell prompt with Azure CLI. If you are using CLI on a Linux machine and bash, either remove the line extension or replace them with a `\`.
+The following code snippets are written for a Windows machine using the PowerShell prompt with Azure CLI. If you're using CLI on a Linux machine and bash, either remove the line extension or replace them with a `\`.
 
 1. Prepare the values of the following parameters used to create the SPN:
 
@@ -51,7 +51,7 @@ The following code snippets are written for a Windows machine using the PowerShe
     az login
     ```
 
-3. Use the `register` command for a new environment or the `update` command if you are using an existing environment. Use the following command.
+3. Use the `register` command for a new environment or the `update` command if you're using an existing environment. Use the following command.
 
     ```azurecli  
     az cloud register `
@@ -74,14 +74,14 @@ The following code snippets are written for a Windows machine using the PowerShe
         --sdk-auth
     ```
 
-    If you do not have cloud operator privileges, you can also sign in with the SPN provided to you by your cloud operator. You will need the client ID, the secret, and your tenant ID. With these values, you can use the following Azure CLI commands to create the JSON object you can add to your GitHub repository as a secret.
+    If you don't have cloud operator privileges, you can also sign in with the SPN provided to you by your cloud operator. You'll need the client ID, the secret, and your tenant ID. With these values, you can use the following Azure CLI commands to create the JSON object you can add to your GitHub repository as a secret.
 
     ```azurecli  
     az login --service-principal -u "<client-id>" -p "<secret>" --tenant "<tenant-ID>" --allow-no-subscriptions
     az account show --sdk-auth
     ```
 
-6. Check the resulting JSON object. You will use the JSON object to create your secret in your GitHub repository that contains your action. The JSON object should have the following attributes:
+6. Check the resulting JSON object. You'll use the JSON object to create your secret in your GitHub repository that contains your action. The JSON object should have the following attributes:
 
     ```json
     {
@@ -124,7 +124,7 @@ The following code snippets are written for a Windows machine using the PowerShe
 
 ## Add your secrets to the repository
 
-You can use GitHub secrets to encrypt sensitive information to use in your actions. You will create a secret to contain your SPN and another secret to contain your web app publish profile so that the action can sign in to your Azure Stack Hub instance and build your app to the web app target.
+You can use GitHub secrets to encrypt sensitive information to use in your actions. You'll create a secret to contain your SPN and another secret to contain your web app publish profile so that the action can sign in to your Azure Stack Hub instance and build your app to the web app target.
 
 1. Open or create a GitHub repository. If you need guidance on creating a repository in GitHub, you can find [instructions in the GitHub docs](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/create-a-repo).
 1. Select **Settings**.
@@ -157,7 +157,7 @@ You can use GitHub secrets to encrypt sensitive information to use in your actio
 
 ## Add the web app deploy action
 
-Create a second workflow using the yaml in this section. In this example, you are deploying a Python web app. You would need to select a setup action based on your workflow. You can find references to set up actions for various runtimes in the table, [Workflows for different runtimes](#workflows-for-different-runtimes), after the steps used to create the action.
+Create a second workflow using the yaml in this section. In this example, you're deploying a Python web app. You would need to select a setup action based on your workflow. You can find references to set up actions for various runtimes in the table, [Setup actions for different runtimes](#setup-actions-for-different-runtimes), after the steps used to create the action.
 
 ### Example GitHub action workflow
 
@@ -205,17 +205,19 @@ Create a second workflow using the yaml in this section. In this example, you ar
 8. Add the commit title and optional details, and then select **Commit new file**.
 
 
-### Workflows for different runtimes
+### Setup actions for different runtimes
 
-|  Runtime | Template |Sample Code|
-|------------|---------|---------|
-| DotNet     | [dotnet.yml](https://github.com/Azure/actions-workflow-samples/blob/master/AppService/asp.net-webapp-on-azure.yml) | https://github.com/Azure-Samples/dotnet-sample |
-| DotNet Core    | [dotnet_core.yml](https://github.com/Azure/actions-workflow-samples/blob/master/AppService/asp.net-core-webapp-on-azure.yml) | https://github.com/Azure-Samples/dotnet_core_sample |
-| Node       | [node.yml](https://github.com/Azure/actions-workflow-samples/blob/master/AppService/node.js-webapp-on-azure.yml) | https://github.com/Azure-Samples/node_express_app |
-| Java | [java_jar.yml](https://github.com/Azure/actions-workflow-samples/blob/master/AppService/java-jar-webapp-on-azure.yml) |https://github.com/Azure-Samples/java-spring-petclinic |
-| Java      | [java_war.yml](https://github.com/Azure/actions-workflow-samples/blob/master/AppService/java-war-webapp-on-azure.yml) |https://github.com/Azure-Samples/Java-application-petstore-ee7|
-| Python     | [python.yml](https://github.com/Azure/actions-workflow-samples/blob/master/AppService/python-webapp-on-azure.yml) | https://github.com/Azure-Samples/pythonSample_thecatsaidno|
-| DOCKER     | [docker.yml](https://github.com/Azure/actions-workflow-samples/blob/master/AppService/docker-webapp-container-on-azure.yml) | https://github.com/Azure-Samples/Node_express_container|
+To build app code in a specific language-based environment, use setup actions:
+
+|  Runtime | Set up actions |
+|------------|---------|
+| DotNet     | [Setup DotNet](https://github.com/actions/setup-dotnet) |
+| NodeJS     | [Setup Node](https://github.com/actions/setup-node) |
+| Java     | [Setup Java  ](https://github.com/actions/setup-java) |
+| Python     | [Setup Python ](https://github.com/actions/setup-python) |
+| Docker | [docker-login ](https://github.com/Azure/docker-login) |
+
+Once login is done, the next set of actions in the workflow can perform tasks such as building, tagging, and pushing containers. For more information, see the documentation for the [Azure Webapp action](https://github.com/marketplace/actions/azure-webapp).
 ## Trigger your deployment
 
 When the action runs, verify that it has run successfully.
