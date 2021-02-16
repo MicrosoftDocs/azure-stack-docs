@@ -99,7 +99,7 @@ The settings and parameters are used by SDN in general for all deployments:
 - **ProductKey** - product key for SDN infrastructure VMs
 - **SwitchName** - only required if more than one virtual switch exists on the Hyper-V hosts
 - **VMMemory** - memory (in GB) assigned to infrastructure VMs. Default is 4GB
-- **VMProcessorCount** = number of processors assigned to infrastructure VMs. Default is 8
+- **VMProcessorCount** - number of processors assigned to infrastructure VMs. Default is 8
 - **Locale** - if not specified, locale of deployment computer is used
 - **TimeZone** - if not specified, local time zone of deployment computer is used
 
