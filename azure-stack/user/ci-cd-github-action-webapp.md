@@ -3,10 +3,10 @@ title: Use the Azure web apps deploy action with Azure Stack Hub
 description: Use the Azure web apps deploy action to create a continuous integration, continuous deployment (CI/CD) workflow to Azure Stack Hub
 author: mattbriggs
 ms.topic: how-to
-ms.date: 2/08/2021
+ms.date: 2/16/2021
 ms.author: mabrigg
 ms.reviewer: gara
-ms.lastreviewed: 2/08/2021
+ms.lastreviewed: 2/16/2021
 
 # Intent: As a developer, I want to create a continuous integration, continuous deployment workflow on Azure Stack Hub so I can easily validate, integrate, and publish my solution on Azure Stack Hub.
 # Keyword: GitHub Actions Azure Stack Hub web app deploy
@@ -151,13 +151,15 @@ You can use GitHub secrets to encrypt sensitive information to use in your actio
     | Java | [java_war.yml](https://github.com/Azure/actions-workflow-samples/tree/master/AppService/java-war-webapp-on-azure.yml) |
     | Python | [python.yml](https://github.com/Azure/actions-workflow-samples/tree/master/AppService/python-webapp-on-azure.yml) |
     | PHP | [php.yml](https://github.com/Azure/actions-workflow-samples/blob/master/AppService/php-webapp-on-azure.yml) |
-    | DOCKER | [docker.yml](https://github.com/Azure/actions-workflow-samples/blob/master/AppService/docker-webapp-container-on-azure.yml) |
+    | Docker | [docker.yml](https://github.com/Azure/actions-workflow-samples/blob/master/AppService/docker-webapp-container-on-azure.yml) |
 
 2. Place the template GitHub action workflow directory in your project repository: `.github/workflows/<runtime.yml>` Your workflow directory will contain two workflows.
 
 ## Add the web app deploy action
 
-Create a second workflow using the yaml in this section. In this example, you are deploying a Python web app. You would need to select a setup action based on your workflow.
+Create a second workflow using the yaml in this section. In this example, you are deploying a Python web app. You would need to select a setup action based on your workflow. You can find references to set up actions for various runtimes in the table, [Workflows for different runtimes](#workflows-for-different-runtimes), after the steps used to create the action.
+
+### Example GitHub action workflow
 
 1. Open your GitHub repository. If you have not already added your web app application resources, add them now. In this example, I am using the [Python Flask Hello World](https://github.com/Azure-Samples/python-docs-hello-world) sample, and I added the Python `.gitignore`, `app.py`, and `requirements.txt` files.
 
@@ -202,6 +204,18 @@ Create a second workflow using the yaml in this section. In this example, you ar
 7. Select **Start commit**.
 8. Add the commit title and optional details, and then select **Commit new file**.
 
+
+### Workflows for different runtimes
+
+|  Runtime | Template |Sample Code|
+|------------|---------|---------|
+| DotNet     | [dotnet.yml](https://github.com/Azure/actions-workflow-samples/blob/master/AppService/asp.net-webapp-on-azure.yml) | https://github.com/Azure-Samples/dotnet-sample |
+| DotNet Core    | [dotnet_core.yml](https://github.com/Azure/actions-workflow-samples/blob/master/AppService/asp.net-core-webapp-on-azure.yml) | https://github.com/Azure-Samples/dotnet_core_sample |
+| Node       | [node.yml](https://github.com/Azure/actions-workflow-samples/blob/master/AppService/node.js-webapp-on-azure.yml) | https://github.com/Azure-Samples/node_express_app |
+| Java | [java_jar.yml](https://github.com/Azure/actions-workflow-samples/blob/master/AppService/java-jar-webapp-on-azure.yml) |https://github.com/Azure-Samples/java-spring-petclinic |
+| Java      | [java_war.yml](https://github.com/Azure/actions-workflow-samples/blob/master/AppService/java-war-webapp-on-azure.yml) |https://github.com/Azure-Samples/Java-application-petstore-ee7|
+| Python     | [python.yml](https://github.com/Azure/actions-workflow-samples/blob/master/AppService/python-webapp-on-azure.yml) | https://github.com/Azure-Samples/pythonSample_thecatsaidno|
+| DOCKER     | [docker.yml](https://github.com/Azure/actions-workflow-samples/blob/master/AppService/docker-webapp-container-on-azure.yml) | https://github.com/Azure-Samples/Node_express_container|
 ## Trigger your deployment
 
 When the action runs, verify that it has run successfully.
