@@ -44,7 +44,7 @@ The following requirements must be met for a successful SDN deployment:
 
 SDN uses a VHDX file containing the Azure Stack HCI operating system (OS) as a source for creating the SDN virtual machines (VMs). The version of the OS in your VHDX must match the version used by the Azure Stack HCI Hyper-V hosts. This VHDX file is used by all SDN infrastructure components.
 
-If you've downloaded and installed the Azure Stack HCI OS from an ISO, you can create the VHDX file using the `Convert-WindowsImage` utility as described in the [Script Center](https://gallery.technet.microsoft.com/scriptcenter/Convert-WindowsImageps1-0fe23a8f).
+If you've downloaded and installed the Azure Stack HCI OS from an ISO, you can create the VHDX file using the [Convert-WindowsImage ](https://www.powershellgallery.com/packages/Convert-WindowsImage/10.0) utility.
 
 The following shows an example using `Convert-WindowsImage`:
 
@@ -182,7 +182,7 @@ The SDN Express script deploys your specified SDN infrastructure. When the scrip
     SDNExpress\scripts\SDNExpress.ps1 -ConfigurationDataFile MultiNodeSampleConfig.psd1 -Verbose
     ```
 
-1. After the NC VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For more information, see Step 3 of [How to configure DNS dynamic updates](https://docs.microsoft.com/troubleshoot/windows-server/networking/configure-dns-dynamic-updates-windows-server-2003).
+1. After the NC VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For more information, see [How to configure DNS dynamic updates](https://docs.microsoft.com/troubleshoot/windows-server/networking/configure-dns-dynamic-updates-windows-server-2003).
 
 ## Next steps
 
