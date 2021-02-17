@@ -62,7 +62,7 @@ Convert-WindowsImage -SourcePath $wimpath -Edition $Edition -VHDPath $vhdpath -S
 
 The SDN Express script files live in GitHub. The first step is to get the necessary files and folders onto your deployment computer.
 
-1. Go to the [Microsoft SDN Github](https://github.com/microsoft/SDN) repository.
+1. Go to the [Microsoft SDN GitHub](https://github.com/microsoft/SDN) repository.
 
 1. In the repository, expand the **Code** drop-down list, and then choose either **Clone** or **Download ZIP** to download the SDN files to your designated deployment computer.
 
