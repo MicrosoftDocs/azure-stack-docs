@@ -4,7 +4,7 @@ description: Improvements, fixes, and known issues for Azure Stack Development K
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/16/2020
+ms.date: 02/17/2021
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 08/10/2020
@@ -20,6 +20,17 @@ ms.lastreviewed: 08/10/2020
 This article provides information about changes, fixes, and known issues in the Azure Stack Development Kit (ASDK). If you're not sure which version you're running, [use the portal to check](../operator/azure-stack-updates.md).
 
 Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media/asdk-release-notes/feed-icon-14x14.png) [RSS feed](/api/search/rss?locale=en-us&search=ASDK+release+notes).
+
+::: moniker range="azs-2102"
+## Build 1.2102.x.xx
+
+### New features
+
+- For a list of fixed issues, changes, and new features in this release, see the relevant sections in the [Azure Stack release notes](../operator/release-notes.md).
+
+### Fixed and known issues
+
+::: moniker-end
 
 ::: moniker range="azs-2008"
 ## Build 1.2008.0.59
@@ -82,24 +93,4 @@ Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media
 
 - Applicable: This issue applies to the ASDK 2002.
 - Cause: When creating a new SQL VM in the ASDK 2002, you may receive an error message **Extension with publisher 'Microsoft.SqlServer.Management', type 'SqlIaaSAgent', and type handler version '2.0' could not be found in the extension repository.** There is no **SqlIaaSAgent** 2.0 in Azure Stack Hub.
-::: moniker-end
-
-::: moniker range="azs-1910"
-## Build 1.1910.0.58
-
-### New features
-
-- For a list of fixed issues, changes, and new features in this release, see the relevant sections in the [Azure Stack release notes](../operator/release-notes.md).
-
-### Fixed and known issues
-
-- Fixed an issue with collecting logs and storing them in an Azure Storage blob container. The syntax for this operation is as follows:
-
-  ```powershell
-  Get-AzureStackLog -OutputSasUri "<Blob service SAS Uri>"
-  ``` 
-
-- Fixed a deployment issue where a slow loading spooler service prevents the removal of some Windows features and requires a reboot.
-- For a list of Azure Stack known issues in this release, see the [known issues](../operator/known-issues.md) article.
-- Note that available Azure Stack hotfixes are not applicable to the ASDK.
 ::: moniker-end
