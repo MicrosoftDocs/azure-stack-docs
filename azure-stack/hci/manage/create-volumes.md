@@ -4,7 +4,7 @@ description: How to create volumes in Azure Stack HCI and Windows Server using W
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 02/17/2021
 ---
 
 # Create volumes in Azure Stack HCI
