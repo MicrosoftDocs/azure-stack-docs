@@ -13,10 +13,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/14/2020
+ms.date: 02/17/2021
 ms.author: patricka
 ms.reviewer: asganesh
-ms.lastreviewed: 10/14/2020
+ms.lastreviewed: 02/17/2021
 ---
  
 # Azure Stack Hub ruggedized deployment overview
@@ -67,31 +67,36 @@ The following table lists some of the terms used in this guide.
 |Pod	|In context of Azure Stack Hub ruggedized, a pod is a physical rugged container designed to be carried by two people that contains rack mounting brackets and shock absorbers to protect Azure Stack Hub ruggedized hardware from environmental physical stress. Includes front and back transit case covers that can be installed and sealed for transporting the hardware. A complete solution in minimum configuration includes three pods.|
 
 
-## Deployment overflow
+## Deployment workflow
 
-At a high level, the Azure Stack Hub ruggedized deployment process consists of the following steps.
+At a high level, the MDC deployment process consists of the phases outlined in the following sections.
 
-1. Planning phase:
-   1. Planning for datacenter power and cooling.
-   1. Planning for logical network configuration of Azure Stack Hub.
-   1. Planning for datacenter network integration.
-   1. Planning for identity and security integration.
-   1. Planning for PKI certificates.
-1. Preparation phase:
-   1. Unboxing and collecting inventory.
-   1. Connecting power and powering on the solution.
-   1. Validating physical hardware health.
-1. Execution phase:
-   1. Configuring the hardware lifecycle host.
-   1. Configuring network switches.
-   1. Datacenter network integration.
-   1. Configuring physical hardware settings.
-   1. Deploying Azure Stack Hub fabric infrastructure.
-   1. Datacenter identity integration.
-   1. Installing add-ons for extended functionality.
-1. Validation phase:
-   1. Post-deployment health validation.
-   1. Registering Azure Stack Hub with Microsoft.
-   1. Azure Stack Hub operator hand-off.
-   
-Each of the above topics is explained in detail further in this guide.
+### Planning phase
+1. Planning for datacenter power.
+1. Planning for logical network configuration of Azure Stack Hub.
+1. Planning for [datacenter network integration](../operator/azure-stack-network.md).
+1. Planning for [identity](../operator/azure-stack-identity-overview.md) integration.
+1. Planning for [security](../operator/azure-stack-security-foundations.md) integration.
+1. Planning for [PKI certificates](../operator/azure-stack-pki-certs.md).
+
+### Preparation phase
+1. Collecting inventory.
+1. Connecting power and powering on the solution.
+1. Validating HVAC system health.
+1. Validating fire monitoring and alerting system health.
+1. Validating physical hardware health.
+
+### Execution phase – separately for each of the three pods
+1. Configuring the hardware lifecycle host.
+1. Configuring network switches.
+1. Datacenter network integration.
+1. Configuring physical hardware settings.
+1. Configuring Isilon storage.
+1. Deploying Azure Stack Hub fabric infrastructure.
+1. Datacenter identity integration.
+1. Installing add-ons for extended functionality.
+
+### Validation phase – separately for each of the three pods
+1. Post-deployment health validation.
+1. Registering Azure Stack Hub with Microsoft.
+1. Azure Stack Hub customer hand-off.
