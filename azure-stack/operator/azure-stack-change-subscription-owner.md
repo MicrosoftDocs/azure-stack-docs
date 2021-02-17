@@ -4,7 +4,7 @@ description: Learn how to change the billing owner for an Azure Stack Hub user s
 author: PatAltimore
 
 ms.topic: conceptual
-ms.date: 02/11/2021
+ms.date: 02/17/2021
 ms.author: patricka
 ms.reviewer: shnatara
 ms.lastreviewed: 02/11/2021
@@ -58,7 +58,7 @@ Set-AzContext -Subscription $providerSubscriptionId
 # Change user subscription owner
 $subscription = Get-AzsUserSubscription -SubscriptionId $SubscriptionId
 $Subscription.Owner = $OwnerUpn
-Set-AzsUserSubscription -InputObject $subscription
+$Subscription | Set-AzsUserSubscription | fl *
 ```
 
 [!include[Remove Account](../includes/remove-account-az.md)]
@@ -78,7 +78,7 @@ Set-AzureRMContext -Subscription $providerSubscriptionId
 # Change user subscription owner
 $subscription = Get-AzsUserSubscription -SubscriptionId $SubscriptionId
 $Subscription.Owner = $OwnerUpn
-Set-AzsUserSubscription -InputObject $subscription
+$Subscription | Set-AzsUserSubscription | fl *
 ```
 [!include[Remove Account](../includes/remove-account-azurerm.md)]
 ---
