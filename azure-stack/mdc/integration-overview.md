@@ -28,10 +28,10 @@ This article describes the end-to-end process for Azure Modular Datacenter (MDC)
 
 The following table lists what can be expected during the various phases of deployment.
 
-| Participant |Order process |Predeployment	|Integration, validation, transport	|Onsite deployment |Post deployment |
+| Participant |Order process |Predeployment |Integration, validation, transport |Onsite deployment |Post deployment |
 |---|---------------|---------------|-----------------------------------|--------------------|----------------|
-|Microsoft	| Signal to delivery to US location.	|Provide required tooling and documentation to collect datacenter requirements.	|- Validate configuration artifacts and check validation results.<br>- Ensure hardware is delivered.	|- Rack and stack.<br>- Network integration.<br>- Azure Stack Hub deployment.<br>- Hand off to customer.	|Registration and Azure Stack Hub Marketplace syndication.|
-|Customer	|Signal purchase.	|- Fill out network details in deployment worksheet.<br>- Collect certificates.<br>- Obtain Azure Active Directory (Azure AD) accounts.<br>- Run any validation tooling provided.	|Ensure the site is ready with network, power, and cooling prerequisites.	|- Be prepared with deployment configuration artifacts.<br>- Ensure customer's network engineer is available.	|     |
+|Microsoft | Signal to delivery to US location. |Provide required tooling and documentation to collect datacenter requirements. |- Validate configuration artifacts and check validation results.<br>- Ensure hardware is delivered. |- Rack and stack.<br>- Network integration.<br>- Azure Stack Hub deployment.<br>- Hand off to customer. |Registration and Azure Stack Hub Marketplace syndication.|
+|Customer |Signal purchase. |- Fill out network details in deployment worksheet.<br>- Collect certificates.<br>- Obtain Azure Active Directory (Azure AD) accounts.<br>- Run any validation tooling provided. |Ensure the site is ready with network, power, and cooling prerequisites. |- Be prepared with deployment configuration artifacts.<br>- Ensure customer's network engineer is available. |     |
 
 
 ## Order process
@@ -52,7 +52,7 @@ It's *crucial* that all prerequisite data is locked and available *before the on
 >[!Tip]
 >If any of this information has changed, make sure to work with your internal organization to ensure the information is updated prior to the arrival of the onsite deployment engineer. Updating your information will prevent any delays in the deployment process.
 
-## Predeployment
+## Pre-deployment
 
 You decide how to integrate Azure Stack Hub into your datacenter. Microsoft has published a [deployment worksheet](../operator/azure-stack-deployment-worksheet.md) that guides you through gathering all necessary information needed to integrate successfully into your datacenter. In addition, a certain set of certificates is required at the time of deployment. To help you obtain these certificates, Microsoft provides you with the [Azure Stack Hub Readiness Checker](../operator/azure-stack-validation-report.md). This tool will help you create Certificate Signing Requests (CSRs) to provide to your internal certificate authority.
 

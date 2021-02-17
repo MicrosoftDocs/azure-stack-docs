@@ -19,30 +19,25 @@ ms.reviewer: asganesh
 ms.lastreviewed: 10/14/2020
 ---
  
-# Customer journey
+# Azure Stack Hub datacenter integration overview
 
-This article describes the end-to-end process for Azure Stack Hub datacenter integration, from purchasing to post-deployment. 
-The integration is a collaborative project between the customer and Microsoft. 
-The following sections cover different phases for the project timeline and specific steps for project members.
+This article describes the end-to-end process for Azure Stack Hub datacenter integration, from purchasing to post-deployment. The integration is a collaborative project between the customer and Microsoft. The following sections cover different phases for the project timeline and specific steps for project members.
 
 ## Introduction
 
 The following table depicts what can be expected during the various phases of deployment.
 
-|	|Order Process	|Pre-Deployment	|Integration, Validation, Transport	|Onsite Deployment	|Post-Deployment |
+| Participant |Order Process |Pre-Deployment |Integration, Validation, Transport |Onsite Deployment |Post-Deployment |
 |---|---------------|---------------|-----------------------------------|--------------------|----------------|
-| **Microsoft** |- Signal to delivery to US location<br>- Azure Stack Hub ruggedized  = 10 Days	|Provide required tooling and documentation to collect datacenter requirements	|- Validate configuration artifacts and check validation results<br>- Ensure hardware is delivered	|- Rack and stack<br>- Network integration<br>- Azure Stack Hub deployment<br>- Hand off to customer	|Registration and Marketplace syndication|
-| **Customer** |Signals purchase	|- Fills out network details in deployment worksheet<br>- Collects certificates<br>- Obtains Azure AD accounts<br>- Runs any validation tooling provided	|Ensure the site is ready with network, power, cooling prerequisites	|- Be prepared with deployment configuration artifacts<br>- Customer’s network engineer available	|     |
+|Microsoft |- Signal to delivery to US location<br>- Azure Stack Hub ruggedized  = 10 Days |Provide required tooling and documentation to collect datacenter requirements |- Validate configuration artifacts and check validation results<br>- Ensure hardware is delivered |- Rack and stack<br>- Network integration<br>- Azure Stack Hub deployment<br>- Hand off to customer |Registration and Marketplace syndication|
+| Customer |Signals purchase |- Fills out network details in deployment worksheet<br>- Collects certificates<br>- Obtains Azure AD accounts<br>- Runs any validation tooling provided |Ensure the site is ready with network, power, cooling prerequisites |- Be prepared with deployment configuration artifacts<br>- Customer’s network engineer available |     |
 
+## Order process
 
-## Order Process
-
-Your organization will work with Microsoft to place an order for an allocated number of systems. 
-Once you place the order, Microsoft will have 10 days to deliver the Azure Stack Hub ruggedized to your US location. Microsoft will ensure that all secure supply chain requirements are met. 
+Your organization will work with Microsoft to place an order for an allocated number of systems. After you place the order, Microsoft will have 10 days to deliver the Azure Stack Hub ruggedized to your US location. Microsoft will ensure that all secure supply chain requirements are met.
 
 >[!NOTE] 
 >Billing starts 14 days after the hardware has shipped.
-
 
 To create an Azure Stack Hub resource, take the following steps in the Azure portal.
 
@@ -80,7 +75,7 @@ The resource creation takes a few minutes. After the resource is successfully cr
 
 After the order is placed, Microsoft reviews the order and reaches out to you (via email) with shipping details.
 
-## Pre-Deployment
+## Pre-deployment
 
 You decide how to integrate Azure Stack Hub into your datacenter. 
 Microsoft has published a [deployment worksheet](../operator/azure-stack-deployment-worksheet.md) that guides you through gathering all necessary information needed to integrate successfully into your datacenter. 
