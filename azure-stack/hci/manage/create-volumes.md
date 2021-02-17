@@ -9,20 +9,24 @@ ms.date: 02/17/2021
 
 # Create volumes in Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, 2016
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016
 
-This topic describes how to create volumes on a cluster by using Windows Admin Center and Windows PowerShell, how to work with files on the volumes, and how to enable data deduplication and compression on volumes. To learn how to create volumes and set up replication for stretched clusters, see [Create stretched volumes](create-stretched-volumes.md).
+This topic describes how to create volumes on a cluster by using Windows Admin Center and Windows PowerShell, how to work with files on the volumes, and how to enable deduplication and compression, integrity checksums, or BitLocker encryption on volumes. To learn how to create volumes and set up replication for stretched clusters, see [Create stretched volumes](create-stretched-volumes.md).
+
+> [!TIP]
+> If you haven't already, check out [Plan volumes](../concepts/plan-volumes.md) first.
 
 ## Create a two-way or three-way mirror volume
 
 To create a two-way or three-way mirror volume using Windows Admin Center:
 
 1. In Windows Admin Center, connect to a cluster, and then select **Volumes** from the **Tools** pane.
-2. On the **Volumes** page, select the **Inventory** tab, and then select **Create volume**.
-3. In the **Create volume** pane, enter a name for the volume, and under **Resiliency**, select **Two-way mirror** or **Three-way mirror**. If your cluster only has two servers, only the **Two-way mirror** option will be available.
-4. In **Size on HDD**, specify the size of the volume. For example, 5 TB (terabytes).
-5. Under **More options,** you can use the checkboxes to turn on deduplication and compression, integrity checksums, or encryption.
-6. Select **Create**.
+1. On the **Volumes** page, select the **Inventory** tab, and then select **Create**.
+1. In the **Create volume** pane, enter a name for the volume.
+1. In **Resiliency**, select **Two-way mirror** or **Three-way mirror** depending on the number of servers in your cluster.
+1. In **Size on HDD**, specify the size of the volume. For example, 5 TB (terabytes).
+1. Under **More options,** you can use the checkboxes to turn on deduplication and compression, integrity checksums, or BitLocker encryption.
+1. Select **Create**.
 
    :::image type="content" source="media/create-volumes/create-mirror-volume.png" alt-text="You can use Windows Admin Center to create a two-way or three-way mirror volume" lightbox="media/create-volumes/create-mirror-volume.png":::
 
@@ -30,7 +34,7 @@ Depending on the size, creating the volume can take a few minutes. Notifications
 
 ## Create a mirror-accelerated parity volume
 
-Mirror-accelerated parity (MAP) reduces the footprint of the volume on the HDD. For example, a three-way mirror volume would mean that for every 10 terabytes of size, you will need 30 terabytes as footprint. To reduce the overhead in footprint, create a volume with mirror-accelerated parity. This reduces the footprint from 30 terabytes to just 22 terabytes, even with only 4 servers, by mirroring the most active 20 percent of data, and using parity, which is more space efficient, to store the rest. You can adjust this ratio of parity and mirror to make the performance versus capacity tradeoff that's right for your workload. For example, 90 percent parity and 10 percent mirror yields less performance but streamlines the footprint even further.
+Mirror-accelerated parity (MAP) reduces the footprint of the volume on the HDD. For example, a three-way mirror volume would mean that for every 10 terabytes of size, you will need 30 terabytes as a footprint. To reduce the overhead in footprint, create a volume with mirror-accelerated parity. This reduces the footprint from 30 terabytes to just 22 terabytes, even with only 4 servers, by mirroring the most active 20 percent of data and using parity, which is more space efficient, to store the rest. You can adjust this ratio of parity and mirror to make the performance versus capacity tradeoff that's right for your workload. For example, 90 percent parity and 10 percent mirror yields less performance but streamlines the footprint even further.
 
   >[!NOTE]
   >Mirror-accelerated parity volumes require Resilient File System (ReFS).
@@ -38,15 +42,12 @@ Mirror-accelerated parity (MAP) reduces the footprint of the volume on the HDD. 
 To create a volume with mirror-accelerated parity in Windows Admin Center:
 
 1. In Windows Admin Center, connect to a cluster, and then select **Volumes** from the **Tools** pane.
-2. On the Volumes page, select the **Inventory** tab, and then select **Create volume**.
-3. In the **Create volume** pane, enter a name for the volume.
-4. In **Resiliency**, select **Mirror-accelerated parity**.
-5. In **Parity percentage**, select the percentage of parity.
-6. Select **Create**.
-
-Watch a quick video on how to create a mirror-accelerated parity volume.
-
-> [!VIDEO https://www.youtube-nocookie.com/embed/R72QHudqWpE]
+1. On the Volumes page, select the **Inventory** tab, and then select **Create**.
+1. In the **Create volume** pane, enter a name for the volume.
+1. In **Resiliency**, select **Mirror-accelerated parity**.
+1. In **Parity percentage**, select the percentage of parity.
+1. Under **More options,** you can use the checkboxes to turn on deduplication and compression, integrity checksums, or BitLocker encryption.
+1. Select **Create**.
 
 ## Open volume and add files
 
@@ -62,10 +63,6 @@ To open a volume and add files to the volume in Windows Admin Center:
 5. Navigate to the path of the volume. Here you can browse the files in the volume.
 6. Select **Upload**, and then select a file to upload.
 7. Use the browser **Back** button to go back to the **Tools** pane in Windows Admin Center.
-
-Watch a quick video on how to open a volume and add files.
-
-> [!VIDEO https://www.youtube-nocookie.com/embed/j59z7ulohs4]
 
 ## Turn on deduplication and compression
 
@@ -112,9 +109,12 @@ New-Volume -FriendlyName "Volume3" -FileSystem CSVFS_ReFS -StoragePoolFriendlyNa
 
 In deployments with three types of drives, one volume can span the SSD and HDD tiers to reside partially on each. Likewise, in deployments with four or more servers, one volume can mix mirroring and dual parity to reside partially on each.
 
-To help you create such volumes, Azure Stack HCI provides default tier templates called **MirrorOn*MediaType*** and **NestedMirrorOn*MediaType*** (for performance), and **ParityOn*MediaType*** and **NestedParityOn*MediaType*** (for capacity), where *MediaType* is HDD or SSD. The templates represent storage tiers based on media types and encapsulate definitions for three-way mirroring on the faster capacity drives (if applicable), and dual parity on the slower capacity drives (if applicable).
+To help you create such volumes, Azure Stack HCI and Windows Server 2019 provide default tier templates called **MirrorOn*MediaType*** and **NestedMirrorOn*MediaType*** (for performance), and **ParityOn*MediaType*** and **NestedParityOn*MediaType*** (for capacity), where *MediaType* is HDD or SSD. The templates represent storage tiers based on media types and encapsulate definitions for three-way mirroring on the faster capacity drives (if applicable), and dual parity on the slower capacity drives (if applicable).
 
-You can see them by running the **Get-StorageTier** cmdlet on any server in the cluster.
+   > [!NOTE]
+   > On Windows Server 2016 clusters running Storage Spaces Direct, the default tier templates were simply called **Performance** and **Capacity**.
+
+You can see the storage tiers by running the **Get-StorageTier** cmdlet on any server in the cluster.
 
 ```PowerShell
 Get-StorageTier | Select FriendlyName, ResiliencySettingName, PhysicalDiskRedundancy
@@ -141,7 +141,7 @@ Repeat as needed to create more than one volume.
 
 ### Nested resiliency volumes
 
-Nested resiliency only applies to two-server clusters; you can't use nested resiliency if your cluster has three or more servers. Nested resiliency enables a two-server cluster to withstand multiple hardware failures at the same time without loss of storage availability, allowing users, apps, and virtual machines to continue to run without disruption. To learn more, see [Plan volumes: choosing the resiliency type](../concepts/plan-volumes.md#choosing-the-resiliency-type).
+Nested resiliency only applies to two-server clusters running Azure Stack HCI or Windows Server 2019; you can't use nested resiliency if your cluster has three or more servers, or if your cluster runs Windows Server 2016. Nested resiliency enables a two-server cluster to withstand multiple hardware failures at the same time without loss of storage availability, allowing users, apps, and virtual machines to continue to run without disruption. To learn more, see [Plan volumes: choosing the resiliency type](../concepts/plan-volumes.md#choosing-the-resiliency-type).
 
 #### Create nested storage tiers
 
@@ -173,7 +173,7 @@ New-Volume -StoragePoolFriendlyName S2D* -FriendlyName MyParityNestedVolume -Sto
 
 ### Storage tier summary table
 
-The following tables summarize the storage tiers that are/can be created in Azure Stack HCI.
+The following tables summarize the storage tiers that are/can be created in Azure Stack HCI and Windows Server 2019.
 
 **NumberOfNodes: 2**
 
@@ -213,6 +213,5 @@ The following tables summarize the storage tiers that are/can be created in Azur
 For related topics and other storage management tasks, see also:
 
 - [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Plan volumes](../concepts/plan-volumes.md)
 - [Extend volumes](extend-volumes.md)
 - [Delete volumes](delete-volumes.md)
