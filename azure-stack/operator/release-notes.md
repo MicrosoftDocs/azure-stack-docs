@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 02/03/2021
+ms.date: 02/17/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -50,16 +50,16 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
-::: moniker range="azs-2011"
-## 2011 build reference
+::: moniker range="azs-2102"
+## 2102 build reference
 
-The Azure Stack Hub 2011 update build number is **1.2011.xx.xx**.
+The Azure Stack Hub 2102 update build number is **1.2102.xx.xx**.
 
 ### Update type
 
-The Azure Stack Hub 2011 update build type is **Full**.
+The Azure Stack Hub 2102 update build type is **Full**.
 
-The 2011 update has had the following expected runtimes in our internal testing- 4 nodes: 8-20 hours, 8 nodes: 11-26 hours, 12 nodes: 14-32 hours, 16 nodes: 17-38 hours. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2011 update and should not be compared to other Azure Stack Hub updates.
+The 2102 update has had the following expected runtimes in our internal testing- 4 nodes: 8-20 hours, 8 nodes: 11-26 hours, 12 nodes: 14-32 hours, 16 nodes: 17-38 hours. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2102 update and should not be compared to other Azure Stack Hub updates.
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
@@ -95,7 +95,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Azure Stack Hub operators can now change the GPU partitioning ratio via PowerShell (AMD only). Note that this requires all virtual machines to be deallocated.
 - This build includes a new version of Azure Resource Manager.
 - The Azure Stack Hub user portal now uses the full screen experience for load balancers, Network Security Groups, DNS zones, and disk and VM creation.
-- In the 2011 release, the Windows Admin Center (WAC) is enabled on demand from an unlocked PEP session. By default, WAC is not enabled. To enable it, specify the `-EnableWac` flag; for example, `unlock-supportsession -EnableWac`.
+- In the 2102 release, the Windows Admin Center (WAC) is enabled on demand from an unlocked PEP session. By default, WAC is not enabled. To enable it, specify the `-EnableWac` flag; for example, `unlock-supportsession -EnableWac`.
 - Proactive log collection now uses an improved algorithm, which captures logs during error conditions that aren't visible to an operator. This ensures that the correct diagnostic info is collected at the right time, without needing any operator interaction. In some cases, Microsoft support can begin troubleshooting and resolving problems sooner. Initial algorithm improvements focus on patch and update operations. Enabling proactive log collections is recommended, as more operations are optimized and the benefits increase.
 
 ### Fixes
@@ -121,19 +121,19 @@ For more information, see our [servicing policy](azure-stack-servicing-policy.md
 
 Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
 
-### Hotfix prerequisites: before applying the 2011 update
+### Hotfix prerequisites: before applying the 2102 update
 
-The 2011 release of Azure Stack Hub must be applied on the 2008 release with the following hotfixes:
+The 2102 release of Azure Stack Hub must be applied on the 2008 release with the following hotfixes:
 
 - [Azure Stack Hub hotfix 1.2008.20.102](https://support.microsoft.com/help/4595075)
 
-### After successfully applying the 2011 update
+### After successfully applying the 2102 update
 
-When you update to a new major version (for example, 1.2008.x to 1.2011.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+When you update to a new major version (for example, 1.2008.x to 1.2102.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
 
-After the installation of 2011, if any 2011 hotfixes are subsequently released, you should install them:
+After the installation of 2102, if any 20210211 hotfixes are subsequently released, you should install them:
 
-- No Azure Stack Hub hotfix available for 2011.
+- No Azure Stack Hub hotfix available for 2102.
 ::: moniker-end
 
 ::: moniker range="azs-2008"

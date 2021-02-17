@@ -4,7 +4,7 @@ description: Learn about the 1910 security updates for Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/17/2020
+ms.date: 02/17/2021
 ms.author: sethm
 ms.reviewer: fiseraci
 ms.lastreviewed: 08/11/2020
@@ -19,8 +19,8 @@ ms.lastreviewed: 08/11/2020
 
 This article lists all the security updates in the last three updates of Azure Stack Hub. This information is provided for reference purposes only.
 
-::: moniker range="azs-2011"
-## 2011 update
+::: moniker range="azs-2102"
+## 2102 update
 
 This list of CVEs reflects the security payloads since the last update.
 
