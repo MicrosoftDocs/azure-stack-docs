@@ -4,7 +4,7 @@ description: Learn how to register Azure Stack Hub as a Cloud Solution Provider 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/09/2020
+ms.date: 02/16/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 10/15/2019
