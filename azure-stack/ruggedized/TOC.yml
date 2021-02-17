@@ -269,7 +269,7 @@
       - name: Replace hardware
         items:
         - name: Node actions
-          href: azure-stack-node-actions-tzl.md
+          href: operator/azure-stack-node-actions-tzl.md
     - name: Security & compliance
       items:
       - name: Configure security 
