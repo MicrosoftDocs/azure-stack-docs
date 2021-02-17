@@ -69,7 +69,7 @@ The following table lists some of the terms used in this guide.
 
 ## Deployment workflow
 
-At a high level, the MDC deployment process consists of the following phases:
+At a high level, the MDC deployment process consists of the phases outlined in the following sections.
 
 ### Planning phase
 1. Planning for datacenter power.
