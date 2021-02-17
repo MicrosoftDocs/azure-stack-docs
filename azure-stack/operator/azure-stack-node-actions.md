@@ -71,7 +71,7 @@ Before applying the following steps ensure that no operation is currently in pro
 
     ```powershell
     Add-AzEnvironment -Name AzureStack -ARMEndpoint https://adminmanagement.local.azurestack.external
-    Add-AzAccount -Environment AzureStack
+    Connect-AzAccount -Environment AzureStack
     ```
 
 2. Run the following command to restart the Fabric Resource Provider Role.

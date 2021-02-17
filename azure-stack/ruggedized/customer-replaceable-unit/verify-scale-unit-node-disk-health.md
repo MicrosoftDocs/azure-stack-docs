@@ -1,6 +1,6 @@
 ---
-title: Verify Scale Unit node disk health
-description: Learn how to verify Scale Unit node disk health
+title: Verify scale unit node disk health
+description: Learn how to verify scale unit node disk health
 author: PatAltimore
 
 ms.topic: how-to
@@ -14,7 +14,7 @@ ms.lastreviewed:
 
 ---
 
-# Verifying Scale Unit node disk health
+# Verifying scale unit node disk health
 
 1.  Connect to the privileged endpoint (PEP).
 

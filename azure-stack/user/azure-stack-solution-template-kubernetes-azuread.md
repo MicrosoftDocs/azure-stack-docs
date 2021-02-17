@@ -4,7 +4,7 @@ description: Learn how to deploy Kubernetes to Azure Stack Hub using Azure Activ
 author: mattbriggs
 
 ms.topic: article
-ms.date: 12/16/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 3/12/2020

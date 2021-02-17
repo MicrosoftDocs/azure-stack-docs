@@ -4,7 +4,7 @@ description: Learn how to replace an operating system disk
 author: PatAltimore
 
 ms.topic: how-to
-ms.date: 11/13/2020
+ms.date: 02/05/2021
 ms.author: patricka
 ms.reviewer: 
 ms.lastreviewed: 
@@ -17,7 +17,7 @@ ms.lastreviewed:
 # Replacing an operating system disk
 
 Use the following procedure to replace a failed operating system disk
-in a Scale Unit node.
+in a scale unit node.
 
 ## Prerequisites
 
@@ -25,20 +25,15 @@ in a Scale Unit node.
 
 2.  Review Handling precautions.
 
-3.  Required knowledge for working with Scale Unit nodes in a Tactical
-Cloud
-Appliance if you are working with a Scale Unit node.
+3.  Required knowledge for working with scale unit nodes in Azure Stack Hub ruggedized if you are working with a scale unit node.
 
-4.  Complete Verifying Scale Unit node access and
+4.  Complete Verifying scale unit node access and
 health.
 
-5.  Complete Powering off Scale Unit
+5.  Complete Powering off scale unit
     nodes.
 
-    For the Azure Stack Hub Scale Unit nodes, the operating system runs
-    from a mirrored pair of M.2 SSD modules residing on the Dell PowerEdge
-    Boot Optimized Storage Solution (BOSS) card. The system must be
-    powered off to replace an operating system disk.
+    For the Azure Stack Hub scale unit nodes, the operating system runs from a mirrored pair of M.2 SSD modules residing on the Boot Optimized Storage Solution (BOSS) card. The system must be powered off to replace an operating system disk.
     
 ## Steps
 
@@ -51,10 +46,8 @@ health.
     
 3.  Replace the failed M.2 SSD module.
 
-    Follow the M.2 SSD module replacement process in the [Dell EMC
-    PowerEdge R640 Installation and Service
-    Manual](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/dell-emc-poweredge-r640-overview?guid=guid-f39be9ba-158c-45e3-b8b1-f07bb750d6d4)
-    for Scale Unit nodes.
+    Follow the [M.2 SSD module replacement process](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/dell-emc-poweredge-r640-overview?guid=guid-f39be9ba-158c-45e3-b8b1-f07bb750d6d4)
+    for scale unit nodes.
     
 4.  Power on the node.
 
@@ -63,7 +56,7 @@ health.
     
 ## Next steps
 
-1.  Complete Powering on and repairing a Scale Unit node.
+1.  Complete Powering on and repairing a scale unit node.
 
-2.  Complete Verifying Scale Unit node health.
+2.  Complete Verifying scale unit node health.
 

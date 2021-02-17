@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/11/2020
+ms.date: 01/22/2021
 ---
 
 # Quickstart: Create an Azure Stack HCI cluster and register it with Azure
@@ -53,7 +53,7 @@ If you enabled the CredSSP protocol in the wizard, you'll want to disable it on 
 
 ## Set up a cluster witness
 
-Setting up a witness resource is required so that if one of the servers in the cluster goes offline, it does not cause the other node to become unavailable as well. For this quickstart, we'll use an SMB file share located on another server as a witness. You may prefer to use an Azure cloud witness, provided all server nodes in the cluster have a reliable internet connection. For more information about witness options, see [Set up a cluster witness](witness.md).
+Setting up a witness resource is required so that if one of the servers in the cluster goes offline, it does not cause the other node to become unavailable as well. For this quickstart, we'll use an SMB file share located on another server as a witness. You may prefer to use an Azure cloud witness, provided all server nodes in the cluster have a reliable internet connection. For more information about witness options, see [Set up a cluster witness](../manage/witness.md).
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
 1. Under **Cluster connections**, select the cluster.

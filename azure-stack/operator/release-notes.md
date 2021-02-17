@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/23/2020
+ms.date: 02/17/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -118,7 +118,7 @@ For information about security updates in this update of Azure Stack Hub, see [A
 
 ## Hotfixes
 
-Azure Stack Hub releases hotfixes on a regular basis. Starting with the 2005 release, when you update to a new major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+Azure Stack Hub releases hotfixes on a regular basis. Make sure you install the latest 2005 hotfix before updating to 2008. Also, starting with the 2005 release, when you update to a new major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any are available at the time of package download) in the new major version are installed automatically. Your 2008 installation is then current with all hotfixes. From that point forward, if a hotfix is released for 2008, you should install it.
 
 > [!NOTE]
 > Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
@@ -127,19 +127,16 @@ For more information, see our [servicing policy](azure-stack-servicing-policy.md
 
 Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
 
-### Hotfix prerequisites: before applying the 2008 update
-
-The 2008 release of Azure Stack Hub must be applied on the 2005 release with the following hotfixes:
-
-- [Azure Stack Hub hotfix 1.2005.25.92](https://support.microsoft.com/help/4595074)
+> [!TIP]
+> If you want to be notified about each hotfix release, subscribe to the [**RSS feed**](https://azurestackhubdocs.azurewebsites.net/xml/hotfixes.rss) to be notified about each hotfix release.
 
 ### After successfully applying the 2008 update
 
-When you update to a new major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+Because Azure Stack Hub hotfixes are cumulative, as a best practice you should install all hotfixes released for your build, to ensure the best update experience between major releases. When you update to a new major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any are available at the time of package download) in the new major version are installed automatically.
 
 After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2008.20.102](https://support.microsoft.com/help/4595075)
+- [Azure Stack Hub hotfix 1.2008.25.114](hotfix-1-2008-25-114.md)
 ::: moniker-end
 
 ::: moniker range="azs-2005"
@@ -231,7 +228,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2005 release of Azure Stack Hub must be applied on the 2002 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2002.63.167](https://support.microsoft.com/help/4595072)
+- [Azure Stack Hub hotfix 1.2002.65.171](https://support.microsoft.com/topic/d743db84-df31-496b-b37c-6e5618b4cc8f)
 
 ### After successfully applying the 2005 update
 
@@ -239,7 +236,7 @@ Starting with the 2005 release, when you update to a new major version (for exam
 
 After the installation of 2005, if any 2005 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2005.25.92](https://support.microsoft.com/help/4595074)
+- [Azure Stack Hub hotfix 1.2005.29.100](hotfix-1-2005-29-100.md)
 ::: moniker-end
 
 ::: moniker range="azs-2002"
@@ -368,7 +365,7 @@ The 2002 release of Azure Stack Hub must be applied on the 1910 release with the
 After the installation of this update, install any applicable hotfixes.
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.2002.63.167](https://support.microsoft.com/help/4595072)
+- [Azure Stack Hub hotfix 1.2002.65.171](https://support.microsoft.com/topic/d743db84-df31-496b-b37c-6e5618b4cc8f)
 ::: moniker-end
 
 <!------------------------------------------------------------>
@@ -427,5 +424,5 @@ After the installation of this update, install any applicable hotfixes.
 ::: moniker-end
 
 ::: moniker range="<azs-2002"
-You can access [older versions of Azure Stack Hub release notes on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived documents are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
+You can access older versions of Azure Stack Hub release notes in the table of contents on the left side, under [**Resources > Release notes archive**](./relnotearchive/release-notes-1910.md). These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end

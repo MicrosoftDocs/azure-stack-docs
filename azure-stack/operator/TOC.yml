@@ -12,6 +12,12 @@
       href: release-notes-security-updates.md
     - name: Release notes
       href: release-notes.md
+    - name: Hotfixes
+      items:
+      - name: Hotfix 1.2005.29.100
+        href: hotfix-1-2005-29-100.md
+      - name: Hotfix 1.2008.25.114
+        href: hotfix-1-2008-25-114.md  
     - name: Known issues
       href: known-issues.md
 - name: Quickstarts
@@ -67,9 +73,12 @@
         href: azure-stack-configure-dns.md
       - name: Configure time server
         href: azure-stack-configure-time.md
-      - name: Firewall integration
-        href: azure-stack-firewall.md
+      - name: Firewall / proxy
         items:
+        - name: Firewall integration
+          href: azure-stack-firewall.md
+        - name: Transparent proxy
+          href: azure-stack-transparent-proxy.md
         - name: Publish endpoints
           href: azure-stack-integrate-endpoints.md
         - name: Extension host
@@ -353,6 +362,10 @@
           href: event-hubs-rp-rotate-secrets.md          
         - name: Service update announcements
           href: https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs
+      - name: Release notes
+        items:
+        - name: 1.2012.1.0 release notes [Feb 2021] 
+          href: event-hubs-rp-release-1-2012-10.md
       - name: Remove
         href: event-hubs-rp-remove.md 
     - name: IoT Hub on Azure Stack Hub
@@ -523,15 +536,63 @@
     href: /hybrid    
 - name: Resources
   items:
-  - name: Training and certification
-    href: azure-stack-train-and-cert.md
-  - name: Azure Stack Hub road map
-    href: https://azure.microsoft.com/updates/?query=azure%20stack%20hub
-  - name: Azure Stack Hub Microsoft Q&A
-    href: /answers/questions/topics/single/50514.html
-  - name: Azure Stack Hub Documentation feedback
-    href: https://feedback.azure.com/forums/344565-azure-stack?category_id=160275
-  - name: Pricing information
-    href: https://azure.microsoft.com/overview/azure-stack/how-to-buy/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-stack
+    - name: Release notes archive
+      items:
+      - name: 1910 release notes
+        href: ./relnotearchive/release-notes-1910.md
+      - name: 1910 known issues
+        href: ./relnotearchive/known-issues-1910.md
+      - name: 1908 release notes
+        href: ./relnotearchive/release-notes-1908.md
+      - name: 1908 known issues
+        href: ./relnotearchive/known-issues-1908.md
+      - name: 1907 release notes
+        href: ./relnotearchive/release-notes-1907.md
+      - name: 1907 known issues
+        href: ./relnotearchive/known-issues-1907.md                
+      - name: 1906 release notes
+        href: ./relnotearchive/release-notes-1906.md
+      - name: 1906 known issues
+        href: ./relnotearchive/known-issues-1906.md
+      - name: 1905 release notes
+        href: ./relnotearchive/release-notes-1905.md
+      - name: 1905 known issues
+        href: ./relnotearchive/known-issues-1905.md
+      - name: 1904 release notes
+        href: ./relnotearchive/release-notes-1904.md
+      - name: 1904 known issues
+        href: ./relnotearchive/known-issues-1904.md
+      - name: 1903 release notes
+        href: ./relnotearchive/release-notes-known-issues-1903.md
+      - name: 1902 release notes
+        href: ./relnotearchive/release-notes-known-issues-1902.md        
+      - name: 1901 release notes
+        href: ./relnotearchive/release-notes-known-issues-1901.md
+      - name: 1811 release notes
+        href: ./relnotearchive/release-notes-known-issues-1811.md
+      - name: 1809 release notes
+        href: ./relnotearchive/release-notes-known-issues-1809.md
+      - name: 1808 release notes
+        href: ./relnotearchive/release-notes-known-issues-1808.md
+      - name: 1807 release notes
+        href: ./relnotearchive/release-notes-known-issues-1807.md
+      - name: 1805 release notes
+        href: ./relnotearchive/release-notes-known-issues-1805.md
+      - name: 1804 release notes
+        href: ./relnotearchive/release-notes-known-issues-1804.md
+      - name: 1803 release notes
+        href: ./relnotearchive/release-notes-known-issues-1803.md
+      - name: 1802 release notes
+        href: ./relnotearchive/release-notes-known-issues-1802.md  
+    - name: Training and certification
+      href: azure-stack-train-and-cert.md
+    - name: Azure Stack Hub road map
+      href: https://azure.microsoft.com/updates/?query=azure%20stack%20hub
+    - name: Azure Stack Hub Microsoft Q&A
+      href: /answers/questions/topics/single/50514.html
+    - name: Azure Stack Hub Documentation feedback
+      href: https://feedback.azure.com/forums/344565-azure-stack?category_id=160275
+    - name: Pricing information
+      href: https://azure.microsoft.com/overview/azure-stack/how-to-buy/
+    - name: Stack Overflow
+      href: https://stackoverflow.com/questions/tagged/azure-stack

@@ -5,7 +5,7 @@ description: Understand the differences between Azure Stack Hub storage and Azur
 author: mattbriggs
 
 ms.topic: conceptual
-ms.date: 12/16/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviwer: jiahan
 ms.lastreviewed: 08/12/2020
@@ -44,6 +44,7 @@ This article summarizes the known Azure Stack Hub Storage differences from Azure
 |Blob snapshot|The max number of snapshots of one blob isn't limited.|The max number of snapshots of one blob is 1,000.
 |Azure AD Authentication for storage|In preview. |Not yet supported.
 |Immutable Blobs|General available. |Supported when you use version 2008 or later.
+|Batch API for Blob Storage|In preview. |Not yet supported.
 |Firewall and virtual network rules for storage|General available. |Not yet supported.|
 
 There are also differences with storage metrics:

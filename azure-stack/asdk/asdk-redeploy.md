@@ -36,7 +36,7 @@ To remove the registration resource, use the **Remove-AzsRegistration** cmdlet t
    Import-Module C:\AzureStack-Tools-az\Registration\RegisterWithAzure.psm1
 
    # Provide Azure subscription admin credentials
-   Add-AzAccount
+   Connect-AzAccount
 
    # Provide ASDK admin credentials
    $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the cloud domain credentials to access the privileged endpoint"

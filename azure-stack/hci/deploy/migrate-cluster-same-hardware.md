@@ -3,7 +3,7 @@ title: Migrate to Azure Stack HCI on same hardware
 description: Learn how to migrate a cluster to Azure Stack HCI on the same hardware
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 12/10/2020 
+ms.date: 02/12/2021
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -176,7 +176,7 @@ For more information on how to create the cluster using PowerShell, see [Create 
     Get-StoragePool | ? IsPrimordial -eq $false | ft FriendlyName,Version
     ```
 
-1. Create the quorum witness. For information on how, see [Set up a cluster witness](./witness.md).
+1. Create the quorum witness. For information on how, see [Set up a cluster witness](../manage/witness.md).
 
 1. Verify that storage repair jobs are completed using the following:
 
@@ -210,15 +210,9 @@ For more information on how to create the cluster using PowerShell, see [Create 
 
 ## ReFS volumes
 
-If migrating from Windows Server 2016, Resilient File System (ReFS) volumes are supported, but such volumes do not benefit from the following performance enhancements in Azure Stack HCI:
+If migrating from Windows Server 2016, Resilient File System (ReFS) volumes are supported, but such volumes do not benefit from performance enhancements in Azure Stack HCI from using mirror-accelerated parity (MAP) volumes. This enhancement requires a new ReFS volume to be created using the PowerShell `New-Volume` cmdlet.
 
-- Mirror-accelerated parity
-- MAP log bypass
-
-These enhancements require a new ReFS volume to be created using the `New-Volume` cmdlet.
-
-> [!NOTE]
-> For Windows Server 2016 Mirror Accelerated Parity Volumes, ReFS compaction was not available, so re-attaching these volumes is OK but will be less performant compared to creating a new MAP volume on an Azure Stack HCI cluster.
+For Windows Server 2016 MAP volumes, ReFS compaction was not available, so re-attaching these volumes is OK but will be less performant compared to creating a new MAP volume in an Azure Stack HCI cluster.
 
 ## Import the VMs
 
