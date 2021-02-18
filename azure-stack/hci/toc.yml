@@ -160,7 +160,9 @@
       href: concepts/physical-network-requirements.md
     - name: Host network requirements
       href: concepts/host-network-requirements.md
-    - name: Software Defined Networking (SDN)
+  - name: Software Defined Networking (SDN)
+    items:
+    - name: SDN overview
       href: concepts/software-defined-networking.md
     - name: Plan a SDN infrastructure
       href: concepts/plan-software-defined-networking-infrastructure.md
