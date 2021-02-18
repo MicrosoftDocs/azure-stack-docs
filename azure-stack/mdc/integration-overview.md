@@ -33,24 +33,9 @@ The following table lists what can be expected during the various phases of depl
 |Microsoft | Signal to delivery to US location. |Provide required tooling and documentation to collect datacenter requirements. |- Validate configuration artifacts and check validation results.<br>- Ensure hardware is delivered. |- Rack and stack.<br>- Network integration.<br>- Azure Stack Hub deployment.<br>- Hand off to customer. |Registration and Azure Stack Hub Marketplace syndication.|
 |Customer |Signal purchase. |- Fill out network details in deployment worksheet.<br>- Collect certificates.<br>- Obtain Azure Active Directory (Azure AD) accounts.<br>- Run any validation tooling provided. |Ensure the site is ready with network, power, and cooling prerequisites. |- Be prepared with deployment configuration artifacts.<br>- Ensure customer's network engineer is available. |     |
 
-
 ## Order process
 
 Your organization will work with Microsoft to place an order for an allocated number of systems. After you place the order, Microsoft will deliver MDC to your US location. Microsoft will ensure that all secure supply chain requirements are met.
-
-## Hardware delivery
-
-Microsoft will work with you to ensure all required hardware arrives at the US location within the allocated time given.
-
-It's *crucial* that all prerequisite data is locked and available *before the onsite Microsoft deployment engineer arrives to deploy the solution.*
-
-- Deployment worksheet has all data filled out.
-- All certificates must be validated and ready.
-- Region name must be decided on.
-- All network integration parameters are finalized.
-
->[!Tip]
->If any of this information has changed, make sure to work with your internal organization to ensure the information is updated prior to the arrival of the onsite deployment engineer. Updating your information will prevent any delays in the deployment process.
 
 ## Pre-deployment
 
@@ -68,6 +53,19 @@ You'll choose the following items:
 
 After all the prerequisite information is gathered through the deployment worksheet, Microsoft will ensure that we verify all validation tools have been run and assist with any further questions that you might have.
 
+## Hardware delivery
+
+Microsoft will work with you to ensure all required hardware arrives at the US location within the allocated time given.
+
+It's *crucial* that all prerequisite data is locked and available *before the onsite Microsoft deployment engineer arrives to deploy the solution.*
+
+- Deployment worksheet has all data filled out.
+- All certificates must be validated and ready.
+- Region name must be decided on.
+- All network integration parameters are finalized.
+
+>[!Tip]
+>If any of this information has changed, make sure to work with your internal organization to ensure the information is updated prior to the arrival of the onsite deployment engineer. Updating your information will prevent any delays in the deployment process.
 ## Onsite deployment
 
 To deploy Azure Stack Hub, a Microsoft deployment engineer will be present to kick off the deployment. We also require a network engineer from your organization to be available during the onsite deployment.
