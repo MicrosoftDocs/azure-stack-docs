@@ -47,6 +47,9 @@ After the *UpdateMySQLProvider.ps1* script creates a new VM, the script migrates
 * hosting server information
 * required DNS record
 
+> [!IMPORTANT]
+> We strongly recommend using **Clear-AzureRmContext -Scope CurrentUser** and **Clear-AzureRmContext -Scope Process** to clear the cache before running the deployment or update script.
+
 ## Update script parameters 
 Specify the following parameters from the command line when you run the **UpdateMySQLProvider.ps1** PowerShell script. If you don't, or if any parameter validation fails, you're prompted to provide the required parameters.
 
