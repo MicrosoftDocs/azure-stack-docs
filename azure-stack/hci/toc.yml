@@ -72,7 +72,7 @@
       href: manage/create-stretched-volumes.md
     - name: Protect volumes
       href: manage/volume-encryption-deduplication.md
-    - name: Extend volumes
+    - name: Expand volumes
       href: manage/extend-volumes.md
     - name: Delete volumes
       href: manage/delete-volumes.md
