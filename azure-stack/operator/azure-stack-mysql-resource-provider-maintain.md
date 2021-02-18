@@ -51,7 +51,7 @@ You can edit and run the following script to update the Defender definitions. Re
 
 ```powershell
 # Set credentials for the local admin on the resource provider VM.
-$vmLocalAdminPass = ConvertTo-SecureString "<local admin user password>" -AsPlainText -Force
+$vmLocalAdminPass = ConvertTo-SecureString '<local admin user password>' -AsPlainText -Force
 $vmLocalAdminUser = "<local admin user name>"
 $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential `
     ($vmLocalAdminUser, $vmLocalAdminPass)
