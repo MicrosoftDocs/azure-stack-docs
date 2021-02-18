@@ -1,8 +1,10 @@
 ---
 title: Concepts - Networking in Azure Kubernetes Services (AKS) on Azure Stack HCI
 description: Learn about networking in Azure Kubernetes Service (AKS) on Azure Stack HCI, including static IP and DHCP networking and load balancers.
+author: abha
 ms.topic: conceptual
-ms.date: 06/11/2020
+ms.date: 02/17/2021
+ms.author: abha
 ms.custom: fasttrack-edit
 
 ---
@@ -11,19 +13,19 @@ ms.custom: fasttrack-edit
 
 In a container-based microservices approach to application development, application components must work together to process their tasks. Kubernetes provides various resources that enable this application communication. You can connect to and expose applications internally or externally. To build highly available applications, you can load balance your applications. 
 
-This article introduces the core concepts that provide networking to your applications in AKS-HCI. It then walks you through different deployment models and examples on setting the best networking infrastructure for your on premises AKS deployment.
+This article introduces the core concepts that provide networking to your applications in AKS on Azure Stack HCI. Then, it walks you through different deployment models and examples on setting the best networking infrastructure for your on-premises AKS deployment.
 
 ## Kubernetes on Azure Stack HCI basics
 
-To allow access to your applications, or for application components to communicate with each other, Kubernetes provides an abstraction layer to virtual networking. Kubernetes nodes are connected to a virtual network, and can provide inbound and outbound connectivity for pods. The *kube-proxy* component runs on each node to provide these network features.
+To allow access to your applications, or for application components to communicate with each other, Kubernetes provides an abstraction layer to virtual networking. Kubernetes nodes are connected to a virtual network and can provide inbound and outbound connectivity for pods. The *kube-proxy* component runs on each node to provide these network features.
 
-In Kubernetes, *Services* logically group pods to allow for direct access via an IP address or DNS name and on a specific port. You can also distribute traffic using a *load balancer*. 
+In Kubernetes, *services* logically group pods to allow for direct access via an IP address or DNS name and on a specific port. You can also distribute traffic using a *load balancer*. 
 
-The Azure Stack HCI platform also helps to simplify virtual networking for AKS-HCI clusters. When you create a cluster on AKS-HCI, an underlying `HAProxy` load balancer resource is created and configured. As you build applications on top of your Kubernetes clusters, IP addresses are configured for your Kubernetes services.
+The Azure Stack HCI platform also helps to simplify virtual networking for AKS on Azure Stack HCI clusters. When you create a cluster on AKS on Azure Stack HCI, an underlying `HAProxy` load balancer resource is created and configured. As you build applications on top of your Kubernetes clusters, IP addresses are configured for your Kubernetes services.
 
 ## AKS on Azure Stack HCI resources 
 
-To simplify the network configuration for application workloads, AKS-HCI allocates IP addresses to the following objects in a deployment: 
+To simplify the network configuration for application workloads, AKS on Azure Stack HCI allocates IP addresses to the following objects in a deployment: 
 
 - **Kubernetes cluster API server** - The API server is a component of the Kubernetes control plane that exposes the Kubernetes API. The API server is the front end for the Kubernetes control plane. API servers are always allocated static IP addresses irrespective of the underlying networking model.
 
