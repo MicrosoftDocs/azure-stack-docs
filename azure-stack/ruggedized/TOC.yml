@@ -34,8 +34,8 @@
         href: ../operator/azure-stack-app-service-capacity-planning.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Capacity planner tool
         href: ../operator/azure-stack-capacity-planner.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-    - name: Customer journey 
-      href: customer-journey.md
+    - name: Integration overview
+      href: integration-overview.md
     - name: Connection models
       href: ../operator/azure-stack-connection-models.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Connected deployment
