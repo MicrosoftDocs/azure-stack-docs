@@ -40,7 +40,7 @@ To simplify the network configuration for application workloads, AKS on Azure St
 
 ## Virtual networks
 
-In AKS-HCI, virtual networks are used to allocate IP addresses to the Kubernetes resources that require them, as listed above. There are two networking models to choose from, depending on your desired AKS-HCI networking architecture. Note that the virtual networking architecture defined here for your AKS-HCI deployments is different from the underlying physical networking architecture in your datacenter.
+In AKS on Azure Stack HCI, virtual networks are used to allocate IP addresses to the Kubernetes resources that require them, as listed above. There are two networking models to choose from, depending on your desired AKS on Azure Stack HCI networking architecture. Note that the virtual networking architecture defined here for your AKS on Azure Stack HCI deployments is different from the underlying physical networking architecture in your datacenter.
 
 - Static IP networking - The virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers and any Kubernetes services you run on top of your cluster.
 
@@ -53,11 +53,11 @@ Virtual IP (VIP) pool is mandatory for an AKS on Azure Stack HCI deployment. VIP
 - DHCP - If your network is configured with DHCP, you will need to work with your network administrator and reserve an IP range to use for the VIP Pool.
 
 ### Kubernetes node IP pool
-As explained above, Kubernetes nodes run on specialized virtual machines in an AKS on Azure Stack HCI deployment. AKS-HCI allocates IP addresses to these virtual machines in order to communicate between Kubernetes nodes. For a DHCP networking model, you dont need to specify a Kubernetes Node VM Pool as IP addresses to the Kubernetes nodes are dynamically allocated by the DHCP server on your network. For a static IP based networking model, you must specify a Kubernetes node IP pool range. The number of IP addresses in this range depends on the sum total number of Kubernetes nodes across your AKS host and workload Kubernetes clusters.
+As explained above, Kubernetes nodes run on specialized virtual machines in an AKS on Azure Stack HCI deployment. AKS on Azure Stack HCI allocates IP addresses to these virtual machines in order to communicate between Kubernetes nodes. For a DHCP networking model, you dont need to specify a Kubernetes Node VM Pool as IP addresses to the Kubernetes nodes are dynamically allocated by the DHCP server on your network. For a static IP based networking model, you must specify a Kubernetes node IP pool range. The number of IP addresses in this range depends on the sum total number of Kubernetes nodes across your AKS host and workload Kubernetes clusters.
 
 ### Virtual network with static IP networking
 
-This networking model creates a virtual network that allocates static IP addresses to all objects in your deployment. An added benefit of using static IP networking is that long-lived deployments and application workloads are guaranteed to always be reachable. We recommend creating a static IP virtual network model for your AKS-HCI deployment.
+This networking model creates a virtual network that allocates static IP addresses to all objects in your deployment. An added benefit of using static IP networking is that long-lived deployments and application workloads are guaranteed to always be reachable. We recommend creating a static IP virtual network model for your AKS on Azure Stack HCI deployment.
 
 You must specify the following parameters while defining a virtual network with static IP configurations:
 
@@ -103,11 +103,11 @@ If your Azure Stack HCI cluster nodes are assigned static IP addresses, then you
 Both DHCP and Static IP provide network connectivity for your AKS on Azure Stack HCI deployment. However, there are advantages and disadvantages to each. At a high level, the following considerations apply:
 
 * **DHCP**
-    - Does not guarantee long lived IP addresses for some resource types in an AKS-HCI deployment.
+    - Does not guarantee long lived IP addresses for some resource types in an AKS on Azure Stack HCI deployment.
     - Supports expansion of reserved DHCP IP addresses if your deployment gets bigger than you initially anticipated.
     
 * **Static IP**
-    - Guarantees long lived IP addresses for all resources in an AKS-HCI deployment.
+    - Guarantees long lived IP addresses for all resources in an AKS on Azure Stack HCI deployment.
     - Since we do not support automatic expansion of Kubernetes node IP pool, you may not be able to create new clusters if you have exhausted the Kubernetes node IP pool.
 
 
@@ -125,7 +125,7 @@ The following table compares IP address allocation for resources between static 
 
 
 ## Minimum IP address reservations for an AKS on Azure Stack HCI deployment
-Irrespective of your deployment model, the number of IP addresses reserved remains the same. This section talks about the number of IP address to reserve based on your AKS-HCI deployment model.
+Irrespective of your deployment model, the number of IP addresses reserved remains the same. This section talks about the number of IP address to reserve based on your AKS on Azure Stack HCI deployment model.
 
 ### Minimum IP address reservation
 
@@ -143,11 +143,11 @@ Additionally, you should reserve the following number of IP addresses for your V
 | Cluster API server |  1 per cluster 
 | Kubernetes Services  |  1 per service  
 
-As you can see, the number of required IP addresses is variable depending on the AKS-HCI architecture and the number of services you run on your Kubernetes cluster. We recommend reserving a total of 256 IP addresses (/24 subnet) for your deployment.
+As you can see, the number of required IP addresses is variable depending on the AKS on Azure Stack HCI architecture and the number of services you run on your Kubernetes cluster. We recommend reserving a total of 256 IP addresses (/24 subnet) for your deployment.
 
 ### Walking through an example deployment
 
-Jane is an IT administrator just starting with AKS-HCI. She wants to deploy 2 Kubernetes clusters - Kubernetes cluster A and Kubernetes cluster B on her Azure Stack HCI cluster. She also wants to run a voting application on top of her cluster. This application has 3 instances of the front-end UI running across the two clusters and 1 instance of the backend database.
+Jane is an IT administrator just starting with AKS on Azure Stack HCI. She wants to deploy 2 Kubernetes clusters - Kubernetes cluster A and Kubernetes cluster B on her Azure Stack HCI cluster. She also wants to run a voting application on top of her cluster. This application has 3 instances of the front-end UI running across the two clusters and 1 instance of the backend database.
 
 - Kubernetes cluster A has 3 control plane nodes and 5 worker nodes
 - Kubernetes cluster B has 1 control plane node and 3 worker nodes
@@ -190,4 +190,9 @@ Working with the example above:
 - She must reserve 5 (2 for Kubernetes cluster API server and 3 for Kubernetes services) out of the 32 IP addresses for her VIP pool 
 
 ## Next steps
+
+In this topic, you learned the core concepts that provide networking to your applications in AKS on Azure Stack HCI. Next, you can:
+
+- [Configure proxy settings on AKS on Azure Stack HCI](./proxy.md)
+- [System requirements](./system-requirements.md)
 
