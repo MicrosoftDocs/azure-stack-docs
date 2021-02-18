@@ -239,14 +239,10 @@ Mary received the email with the link to register the directory. She opens the l
 
    ![Check app status](./media/enable-multitenancy/manage-directory.png)
 
-5. Mary has successfully completed the registration process and can now start using the Azure Stack Hub system with her directory **adatum.onmicrosoft.com**.
+5. Mary has successfully completed the registration process and can now direct Adatum users with @adatum.onmicrosoft.com accounts to sign in by visiting the [Azure Stack Hub user portal](../user/azure-stack-use-portal.md). For multinode systems, the user portal URL is formatted as `https://management.<region>.<FQDN>`. For an ASDK deployment, the URL is `https://portal.local.azurestack.external`.
 
 > [!IMPORTANT]
 > It can take up to one hour for the Azure Stack operator to see the directory status updated in the admin portal.
-
-### Direct users to sign in
-
-Finally, Mary can direct Adatum users with @adatum.onmicrosoft.com accounts to sign in by visiting the [Azure Stack Hub user portal](../user/azure-stack-use-portal.md). For multinode systems, the user portal URL is formatted as `https://management.<region>.<FQDN>`. For an ASDK deployment, the URL is `https://portal.local.azurestack.external`.
 
 Mary must also direct any foreign principals (users in the Adatum directory without the suffix of adatum.onmicrosoft.com) to sign in using `https://<user-portal-url>/adatum.onmicrosoft.com`. If they don't specify the `/adatum.onmicrosoft.com` directory tenant in the URL, they're sent to their default directory and receive an error that says their administrator hasn't consented.
 

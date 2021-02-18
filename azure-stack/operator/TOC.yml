@@ -237,7 +237,7 @@
       - name: Use an app identity to access resources
         href: Azure-stack-create-service-principals.md
       - name: Enable multi-tenancy
-        href: azure-stack-enable-multitenancy.md
+        href: enable-multitenancy.md
     - name: Data at rest encryption
       href: azure-stack-security-bitlocker.md
     - name: Rotate secrets
