@@ -310,8 +310,8 @@ Usage is reported for the following resource providers:
 
 ### Event Hubs
 
-**Meter ID**: CB6A35C5-FADE-406C-B14D-6DDB7C4CA3D5
-**Meter name**: 1 Core
+**Meter ID**: CB6A35C5-FADE-406C-B14D-6DDB7C4CA3D5  
+**Meter name**: 1 Core  
 **Unit**: Core\*hours  
 **Notes**: Unit represents the number of cores per hour used by deployed Event Hubs clusters. Numbers of cores are in multiples of 10 because each configured CU uses 10 cores.
 
