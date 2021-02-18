@@ -1,9 +1,9 @@
 ---
-title: Customer journey from purchasing to Azure Stack Hub post-deployment | Microsoft Docs
+title: Azure Stack Hub datacenter integration overview
 description: Learn what to expect for a successful on-site deployment of Azure Stack Hub ruggedized from Microsoft, from planning to post-deployment.
 services: azure-stack
 documentationcenter: ''
-author: ashika789
+author: PatAltimore
 manager: femila
 editor: ''
 
@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/14/2020
+ms.date: 02/18/2021
 ms.author: patricka
 ms.reviewer: asganesh
 ms.lastreviewed: 10/14/2020

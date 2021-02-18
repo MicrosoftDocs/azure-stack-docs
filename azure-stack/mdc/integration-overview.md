@@ -1,9 +1,9 @@
 ---
-title: Customer journey from purchasing to Azure Stack Hub post deployment | Microsoft Docs
+title: Modular Datacenter integration overview
 description: Learn what to expect for a successful onsite deployment of Azure Modular Datacenter (MDC), from planning to post deployment.
 services: azure-stack
 documentationcenter: ''
-author: ashika789
+author: PatAltimore
 manager: femila
 editor: ''
 
@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/04/2020
+ms.date: 02/18/2021
 ms.author: patricka
 ms.reviewer: asganesh
 ms.lastreviewed: 11/04/2020
