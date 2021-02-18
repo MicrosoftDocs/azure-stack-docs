@@ -7,7 +7,7 @@ documentationcenter: ''
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/14/2021
+ms.date: 02/18/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 02/26/2019
@@ -310,15 +310,10 @@ Usage is reported for the following resource providers:
 
 ### Event Hubs
 
-**Meter ID**: d3a257e7-cf59-43bd-82c0-cf29ca8f7da0 (paid meter)  
-**Meter name**: 1 Core    
+**Meter ID**: CB6A35C5-FADE-406C-B14D-6DDB7C4CA3D5
+**Meter name**: 1 Core
 **Unit**: Core\*hours  
-**Notes**: Number of cores used by Event Hubs clusters deployed. Numbers of cores are in multiples of 10.
-
-**Meter ID**: 29ea0bfc-6780-4711-98fc-2c7db191e1a4 (admin meter)  
-**Meter name**: 1 Core Admin   
-**Unit**: Core\*hours  
-**Notes**: Number of cores used by Event Hubs clusters deployed. Numbers of cores are in multiples of 10.
+**Notes**: Unit represents the number of cores per hour used by deployed Event Hubs clusters. Numbers of cores are in multiples of 10 because each configured CU uses 10 cores.
 
 ### Key Vault
   
