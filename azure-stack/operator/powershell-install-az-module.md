@@ -75,8 +75,6 @@ Before installing the required version, make sure that you uninstall any previou
 
 The Azure Stack Az module will work Azure Stack Hub 2002 or later. In addition, the Azure Stack Az module will work with PowerShell 5.1 or greater on a Windows machine, or PowerShell 6.x or greater on a Linux or macOS platform. Using the PowerShellGet cmdlets is the preferred installation method. This method works the same on the supported platforms.
 
-Prior to installing the modules as specified in "Connected: Install with internet connectivity" you must first update PowerShellGet to a minimum of version 2.2.3. To update PowerShellGet execute the following:
-
 1. Run the following command from a PowerShell session to update PowerShellGet to a minimum of version 2.2.3
 
     ```powershell  
