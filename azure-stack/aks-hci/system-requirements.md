@@ -55,58 +55,34 @@ The following requirements apply to an Azure Stack HCI cluster as well as a Wind
 
  - DNS name resolution is required for all nodes to be able to communicate with each other. 
 
- 
 ## IP address assignment  
 
-In AKS on Azure Stack HCI, you can deploy a cluster that uses one of the following two IP address allocation methods:
+In AKS on Azure Stack HCI, virtual networks are used to allocate IP addresses to the Kubernetes resources that require them, as listed above. There are two networking models to choose from, depending on your desired AKS on Azure Stack HCI networking architecture. Note that the virtual networking architecture defined here for your AKS on Azure Stack HCI deployments is different from the underlying physical networking architecture in your datacenter.
 
-- DHCP - Use a default DHCP server to allocate IP addresses to Azure Stack HCI nodes, VMs, Kubernetes resources and services.
-- Virtual Network - Create a virtual network to allocate static IP addresses to Azure Stack HCI nodes, VMs, Kubernetes resources and services.
+- Static IP networking - The virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers and any Kubernetes services you run on top of your cluster.
 
-In addition to the above, it is mandatory to configure a virtual IP pool range along with your DHCP server or virtual network. We also recommend that you configure three to five highly available control plane nodes for all your workload clusters. 
+- DHCP networking - The virtual network allocates dynamic IP addresses to the Kubernetes nodes, underlying VMs and load balancers using a DHCP server. The Kubernetes cluster API server and any Kubernetes services you run on top of your cluster are still allocated static IP addresses.
 
-#### DHCP
-Follow these requirements while using DHCP for assigning IP addresses throughout the cluster:  
+### Minimum IP address reservation
 
- - The network must have an available DHCP server to provide TCP/IP addresses to the VMs and the VM hosts. The DHCP server should also contain network time protocol (NTP) and DNS host information.
- 
- - A DHCP server with a dedicated scope of IPv4 addresses accessible by the Azure Stack HCI cluster.
- 
- - The IPv4 addresses provided by the DHCP server should be routable and have a 30-day lease expiration to avoid loss of IP connectivity in the event of a VM update or reprovisioning.  
+At a minimum, you should reserve the following number of IP addresses for your deployment:
 
-At a minimum, you should reserve the following number of DHCP addresses:
-
-| Cluster type  | Control plane node | Worker node | Update | Load balancer  |
+| Cluster type  | Control plane node | Worker node | For update operations | Load balancer  |
 | ------------- | ------------------ | ---------- | ----------| -------------|
-| AKS Host |  1  |  0  |  2  |  0  |
-| Workload cluster  |  1 per node  | 1 per node |  5  |  1  |
+| AKS Host |  1 IP |  NA  |  2 IP |  NA  |
+| Workload cluster  |  1 IP per node  | 1 IP per node |  5 IP  |  1 IP |
 
-You can see how the number of required IP addresses is variable depending on the number of workload clusters and control plane and worker nodes you have in your environment. We recommend reserving 256 IP addresses (/24 subnet) in your DHCP IP pool.
-  
-#### Virtual Network
-Create a virtual network to provide routable, static IPv4 addresses for control plane nodes, load balancers and agent endpoints used in the deployment as well as provide a static IP range for nodes in all Kubernetes clusters.
+Additionally, you should reserve the following number of IP addresses for your VIP pool:
 
-At a minimum, your subnet must contain the following number of static IP addresses for your Kubernetes clusters:
+| Resource type  | Number of IP addresses 
+| ------------- | ------------------
+| Cluster API server |  1 per cluster 
+| Kubernetes Services  |  1 per service  
 
-| Cluster type  | Control plane node | Worker node | Update | Load balancer  |
-| ------------- | ------------------ | ---------- | ----------| -------------|
-| AKS Host |  1  |  0  |  2  |  0  |
-| Workload cluster  |  1 per node  | 1 per node |  6  |  1  |
+As you can see, the number of required IP addresses is variable depending on the AKS on Azure Stack HCI architecture and the number of services you run on your Kubernetes cluster. We recommend reserving a total of 256 IP addresses (/24 subnet) for your deployment.
 
-You must also reserve 1 IP address per Kubernetes service and 1 IP address per Kubernetes pod. This reservation depends on the number of applications, and therefore the number of Kubernetes services and pods running in your workload clusters. We recommend reserving 256 IP addresses (/24 subnet) for your AKS on Azure Stack HCI deployment.
+For more information on networking requirements, visit [networking concepts in AKS on Azure Stack HCI](./concepts-networking.md).
 
-#### VIP Pool Range
-
-Virtual IP (VIP) pools are mandatory for an AKS on Azure Stack HCI deployment. VIP pools are a range of reserved static IP addresses that are used for long-lived deployments to guarantee that your deployment and application workloads are always reachable. Currently, we only support IPv4 addresses, so you must verify that you have disabled IPv6 on all network adapters. If you're using DHCP, make sure your virtual IP addresses are not a part of the DHCP IP reserve. If you're using static IP, make sure your virtual IPs are from the same subnet. 
-
-At a minimum, you should reserve one IP address per cluster (workload and AKS host), and one IP address per Kubernetes service. The number of required IP addresses in the VIP pool ranges varies depending on the number of workload clusters and Kubernetes services you have in your environment. We recommend reserving 16 static IP addresses in each VIP pool for your AKS-HCI deployment. 
-
-When setting up the AKS host, use the [New-AksHciNetworkSetting](./new-akshcinetworksetting) command to create VIP pools.
-
-
-#### MAC Pool Range
-We recommend having a minimum of 16 MAC addresses in the range to allow for multiple control plane nodes in each cluster. When setting up the AKS host, use the `-macPoolStart` and `-macPoolEnd` parameters in `Set-AksHciConfig` to reserve MAC addresses from the DHCP MAC pool for Kubernetes services.
-  
 ### Network port and URL requirements 
 
 When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following firewall ports are automatically opened on each server in the cluster. 
