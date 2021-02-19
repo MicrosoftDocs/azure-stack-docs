@@ -43,7 +43,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 <!-- ## Networking -->
 
-### Virtual Network Gateway
+### Virtual network gateway
 
 #### Documentation
 
