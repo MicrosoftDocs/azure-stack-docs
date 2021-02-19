@@ -3,7 +3,7 @@ title: Deploy an Azure Stack HCI cluster set
 description: Learn how to Deploy an Azure Stack HCI cluster set
 author: v-dasis
 ms.topic: how-to
-ms.date: 02/17/2021
+ms.date: 02/19/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -34,31 +34,31 @@ The following provides a quick summary of each of the elements in the above imag
 
 **Management cluster**
 
-Management cluster in a cluster set is a Failover Cluster that hosts the highly-available management plane of the entire cluster set and the unified storage namespace (Cluster Set Namespace) referral Scale-Out File Server (SOFS). A management cluster is logically decoupled from member clusters that run the virtual machine workloads. This makes the cluster set management plane resilient to any localized cluster-wide failures, e.g. loss of power of a member cluster.
+The management cluster hosts the highly-available management plane of the cluster set and the unified storage namespace (Cluster Set Namespace) referral Scale-Out File Server (SOFS). A management cluster is logically decoupled from member clusters that run the VM workloads. This makes the cluster set management plane resilient to any localized cluster-wide failures, such as loss of power of a member cluster.
 
 **Member cluster**
 
-A member cluster in a cluster set is typically a traditional hyper-converged cluster running virtual machine and Storage Spaces Direct workloads. Multiple member clusters participate in a single cluster set deployment, forming the larger SDDC cloud fabric. Member clusters differ from a management cluster in two key aspects: member clusters participate in fault domain and availability set constructs, and member clusters are also sized to host virtual machine and Storage Spaces Direct workloads. Cluster set virtual machines that move across cluster boundaries in a cluster set must not be hosted on the management cluster for this reason.
+A member cluster in a cluster set is a cluster running VM and Storage Spaces Direct workloads. Multiple member clusters participate in a single cluster set deployment, forming the larger SDDC cloud fabric. Member clusters differ from a management cluster in two key aspects: member clusters participate in fault domain and availability set constructs, and member clusters are also sized to host VM and Storage Spaces Direct workloads. Cluster set VMs that move across cluster boundaries in a cluster set can't be hosted on the management cluster for this reason.
 
 **Cluster set namespace referral SOFS**
 
-A cluster set namespace referral (Cluster Set Namespace) SOFS is a Scale-Out File Server wherein each SMB Share on the Cluster Set Namespace SOFS is a referral share – of type 'SimpleReferral' newly introduced in Windows Server 2019. This referral allows Server Message Block (SMB) clients access to the target SMB share hosted on the member cluster SOFS. The cluster set namespace referral SOFS is a light-weight referral mechanism and as such, does not participate in the I/O path. The SMB referrals are cached perpetually on the each of the client nodes and the cluster sets namespace dynamically updates automatically these referrals as needed.
+A cluster set namespace referral SOFS is a Scale-Out File Server where each Server Message Block (SMB) share on the Cluster Set Namespace SOFS is a referral share of type `SimpleReferral`. This referral allows SMB clients access to the target SMB share hosted on the member cluster SOFS. The cluster set namespace referral SOFS is a lightweight referral mechanism and as such, does not participate in the I/O path. The SMB referrals are cached perpetually on the each of the client nodes and the cluster sets namespace dynamically updates automatically these referrals as needed.
 
 **Cluster set master**
 
-In a cluster set, the communication between the member clusters is loosely coupled, and is coordinated by a new cluster resource called "Cluster Set Master" (CS-Master). Like any other cluster resource, CS-Master is highly available and resilient to individual member cluster failures and/or the management cluster node failures. Through a new Cluster Set WMI provider, CS-Master provides the management endpoint for all Cluster Set manageability interactions.
+In a cluster set, the communication between the member clusters is loosely coupled, and is coordinated by the Cluster Set Master (CS-Master) resource. Like other cluster resources, CS-Master is highly available and resilient to individual member cluster failures or management cluster node failures. Through a Cluster Set WMI provider, CS-Master provides the management endpoint for all cluster set management actions.
 
 **Cluster set worker**
 
-In a Cluster Set deployment, the CS-Master interacts with a new cluster resource on the member Clusters called "Cluster Set Worker" (CS-Worker). CS-Worker acts as the only liaison on the cluster to orchestrate the local cluster interactions as requested by the CS-Master. Examples of such interactions include virtual machine placement and cluster-local resource inventorying. There is only one CS-Worker instance for each of the member clusters in a cluster set.
+The CS-Master interacts with a new cluster resource on the member Clusters called *Cluster Set Worker* (CS-Worker). CS-Worker responds to requests by the CS-Master. This includes VM placement and resource inventorying. There is one CS-Worker instance per member cluster.
 
 **Fault domain**
 
-A fault domain is the grouping of software and hardware artifacts that the administrator determines could fail together when a failure does occur. While an administrator could designate one or more clusters together as a fault domain, each node could participate in a fault domain in an availability set. Cluster sets by design leaves the decision of fault domain boundary determination to the administrator who is well-versed with data center topology considerations – e.g. PDU, networking – that member clusters share.
+A fault domain is the grouping of software and hardware artifacts that the administrator determines could fail together when a failure does occur. While you could designate one or more clusters together as a fault domain, each node could participate in a fault domain in an availability set. Cluster sets by design leaves the decision of fault domain boundary determination to the administrator who is well-versed with data center topology considerations – e.g. PDU, networking – that member clusters share.
 
 **Availability set**
 
-An availability set helps the administrator configure desired redundancy of clustered workloads across fault domains, by organizing those into an availability set and deploying workloads into that availability set. Let's say if you are deploying a two-tier application, we recommend that you configure at least two virtual machines in an availability set for each tier which will ensure that when one fault domain in that availability set goes down, your application will at least have one virtual machine in each tier hosted on a different fault domain of that same availability set.
+An availability set is used to configure desired redundancy of clustered workloads across fault domains, by organizing those into an availability set and deploying workloads into that availability set. Let's say if you are deploying a two-tier application, we recommend that you configure at least two virtual machines in an availability set for each tier which will ensure that when one fault domain in that availability set goes down, your application will at least have one virtual machine in each tier hosted on a different fault domain of that same availability set.
 
 ## Why use cluster sets
 
@@ -71,15 +71,15 @@ Cluster sets allows for clustering multiple clusters together to create a large 
 3. Add additional compute nodes with drives into the current cluster. This takes us back to Option 1 needing to be considered.
 4. Purchase a whole new cluster
 
-This is where cluster sets provides the benefit of scaling. If I add my clusters into a cluster set, I can take advantage of storage or memory that may be available on another cluster without any additional purchases. From a resiliency perspective, adding additional nodes to a Storage Spaces Direct is not going to provide additional votes for quorum. As mentioned [here](drive-symmetry-considerations.md), a Storage Spaces Direct Cluster can survive the loss of 2 nodes before going down. If you have a 4-node HCI cluster, 3 nodes go down will take the entire cluster down. If you have an 8-node cluster, 3 nodes go down will take the entire cluster down. With Cluster sets that has two 4-node HCI clusters in the set, 2 nodes in one HCI go down and 1 node in the other HCI go down, both clusters remain up. Is it better to create one large 16-node Storage Spaces Direct cluster or break it down into four 4-node clusters and use cluster sets?  Having four 4-node clusters with cluster sets gives the same scale, but better resiliency in that multiple compute nodes can go down (unexpectedly or for maintenance) and production remains.
+This is where cluster sets provides the benefit of scaling. If I add my clusters into a cluster set, I can take advantage of storage or memory that may be available on another cluster without any additional purchases. From a resiliency perspective, adding additional nodes to a Storage Spaces Direct is not going to provide additional votes for quorum. As mentioned in [Drive symmetry considerations](../windows-server/storage/storage-spaces/drive-symmetry-considerations.md), a Storage Spaces Direct Cluster can survive the loss of 2 nodes before going down. If you have a 4-node HCI cluster, 3 nodes go down will take the entire cluster down. If you have an 8-node cluster, 3 nodes go down will take the entire cluster down. With Cluster sets that has two 4-node HCI clusters in the set, 2 nodes in one HCI go down and 1 node in the other HCI go down, both clusters remain up. Is it better to create one large 16-node Storage Spaces Direct cluster or break it down into four 4-node clusters and use cluster sets?  Having four 4-node clusters with cluster sets gives the same scale, but better resiliency in that multiple compute nodes can go down (unexpectedly or for maintenance) and production remains.
 
-## Considerations for deploying cluster sets
+## Considerations for deployment
 
-When considering if cluster sets is something you need to use, consider these questions:
+When considering if cluster sets is something you need to use, consider the following:
 
-- Do you need to go beyond the current HCI compute and storage scale limits?
+- Do you need to go beyond the current Azure Stack HCI compute and storage scale limits?
 - Are all compute and storage not identically the same?
-- Do you live migrate virtual machines between clusters?
+- Do you Live Migrate VMs between clusters?
 - Would you like Azure-like computer availability sets and fault domains across multiple clusters?
 - Do you need to take the time to look at all your clusters to determine where any new virtual machines need to be placed?
 
