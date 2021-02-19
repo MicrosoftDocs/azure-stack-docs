@@ -429,3 +429,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -enableDiagnosticData`
+
+Use this flag to consent to send required diagnostic data to Microsoft. This is useful if you want to skip the consent prompt that `Set-AksHciConfig` will present otherwise. `Install-AksHci` will fail if you do not accept the consent prompt when `Set-AksHciConfig` presents it.

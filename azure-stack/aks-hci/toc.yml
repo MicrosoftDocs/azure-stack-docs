@@ -35,6 +35,8 @@
     href: concepts-networking.md
 - name: How-to guides
   items: 
+    - name: Evaluate on an Azure VM
+      href: https://github.com/Azure/aks-hci/blob/main/eval/readme.md
     - name: Connect to Azure Arc for Kubernetes
       href: connect-to-arc.md
     - name: Adapt apps for mixed-OS Kubernetes clusters
