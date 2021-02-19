@@ -43,6 +43,33 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 <!-- ## Networking -->
 
+### Virtual network gateway
+
+#### Documentation
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The documentation links in the overview page of Virtual Network gateway link to Azure-specific documentation instead of Azure Stack Hub. Use the following links for the Azure Stack Hub documentation:
+
+  - [Gateway SKUs](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-skus)
+  - [Highly Available Connections](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
+  - [Configure BGP on Azure Stack Hub](../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
+  - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
+  - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
+
+### Load Balancer
+
+#### IPv6 button visible in frontend IP configuration
+
+- Applicable: This issue applies to the 2102 release.
+- Cause: The IPv6 button is visible but disabled when creating the frontend IP configuration of a public load balancer. IPv6 is not supported on Azure Stack Hub.
+- Occurrence: Common
+
+#### Backend port and frontend port need to be the same when floating IP is enabled
+
+- Applicable: This issue applies to all releases. 
+- Cause: Both the frontend port and backend port need to be the same in the load balancing rule when floating IP is enabled. This is by design.
+- Occurrence: Common
+
 <!-- ## Compute -->
 
 <!-- ## Storage -->
