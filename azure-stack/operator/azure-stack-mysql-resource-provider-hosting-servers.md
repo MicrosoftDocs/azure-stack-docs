@@ -157,7 +157,7 @@ Use a SKU name that describes the capabilities of the servers in the SKU, such a
 
 As a best practice, all the hosting servers in a SKU should have the same resource and performance characteristics.
 
-SKUs can't be assigned to specific users or groups.
+SKUs cannot be hidden from certain tenants, nor can it be dedicated to certain tenants.
 
 To edit a SKU, go to **All services** > **MySQL Adapter** > **SKUs**. Select the SKU to modify, make any necessary changes, and click **Save** to save changes. 
 
