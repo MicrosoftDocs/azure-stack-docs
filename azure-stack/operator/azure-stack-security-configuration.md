@@ -1,10 +1,10 @@
 ---
 title: Configure security controls in Azure Stack Hub
 description: Learn how to configure security controls in Azure Stack Hub.
-author: PatAltimore
+author: BryanLa
 ms.topic: how-to
-ms.date: 03/04/2020
-ms.author: patricka
+ms.date: 02/19/2021
+ms.author: bryanla
 ms.reviewer: fiseraci
 ms.lastreviewed: 06/17/2019
 
@@ -28,7 +28,7 @@ Since TLS 1.0 and 1.1 are incrementally being deprecated or banned by organizati
 > [!IMPORTANT]
 > Microsoft recommends using TLS 1.2 only policy for Azure Stack Hub production environments.
 
-## Get TLS policy
+### Get TLS policy
 
 Use the [privileged endpoint (PEP)](azure-stack-privileged-endpoint.md) to view the TLS policy for all Azure Stack Hub endpoints:
 
@@ -42,7 +42,7 @@ Example output:
 TLS_1.2
 ```
 
-## Set TLS policy
+### Set TLS policy
 
 Use the [privileged endpoint (PEP)](azure-stack-privileged-endpoint.md) to set the TLS policy for all Azure Stack Hub endpoints:
 
@@ -65,7 +65,7 @@ Use one of the following values to configure the permitted TLS versions for all 
 
 Updating the TLS policy takes a few minutes to complete.
 
-### Enforce TLS 1.2 configuration example
+#### Enforce TLS 1.2 configuration example
 
 This example sets your TLS policy to enforce TLS 1.2 only.
 
@@ -92,7 +92,7 @@ VERBOSE:     TLS protocol TLS 1.2 enabled value: 1
 VERBOSE: TLS 1.2 is enforced
 ```
 
-### Allow all versions of TLS (1.2, 1.1, and 1.0) configuration example
+#### Allow all versions of TLS (1.2, 1.1, and 1.0) configuration example
 
 This example sets your TLS policy to allow all versions of TLS (1.2, 1.1, and 1.0).
 
@@ -118,6 +118,14 @@ VERBOSE:     TLS protocol TLS 1.1 enabled value: 1
 VERBOSE:     TLS protocol TLS 1.2 enabled value: 1
 VERBOSE: TLS 1.2 is not enforced
 ```
+
+## Legal notice for PEP sessions
+
+There are many scenarios where it's useful to display a legal notice, upon login to a [privileged endpoint (PEP)](azure-stack-privileged-endpoint.md) session. The [Set-AzSLegalNotice](../reference/pep-2002/set-azslegalnotice.md) and [Get-AzSLegalNotice](../reference/pep-2002/get-azslegalnotice.md) cmdlets are used to manage the caption and body of such legal notice text.
+
+### Set-AzSLegalNotice
+
+### Get-AzSLegalNotice
 
 ## Next steps
 
