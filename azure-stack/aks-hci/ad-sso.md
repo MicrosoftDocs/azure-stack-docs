@@ -253,7 +253,7 @@ ktpass /out current.keytab /princ k8s/apiserver@BCONTOSO.COM /mapuser contoso\ap
 ```
 
 > [!NOTE]
-> If you see this error, **DsCrackNames returned 0x2 in the name entry**, ensure the parameter for `/mapuser` is in form `mapuser DOMAIN\user` where DOMAIN is the output of echo `%userdomain%`.
+> If you see this error, **DsCrackNames returned 0x2 in the name entry**, ensure the parameter for `/mapuser` is in form `mapuser DOMAIN\user` where **DOMAIN** is the output of echo `%userdomain%`.
 
   
 ## Determine the user or group security identifier
