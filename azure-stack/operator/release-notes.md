@@ -75,8 +75,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Azure Stack Hub managed disks now support Azure Disk APIs version 2019-11-01, with a subset of the available features.
 - The Azure Stack Hub administrator portal now shows GPU-related information, including capacity data. Note that this requires a GPU to be installed in the system.
 - Users can now deploy all supported VM sizes, using Nvidia T4 via the Azure Stack Hub user portal.
-- Azure Stack Hub operators can now configure multi-tenancy in Azure Stack Hub via the administrator portal. For more information, see [Configure multi-tenancy](azure-stack-enable-multitenancy.md).
-- Azure Stack Hub operators can now configure a legal notice using the privileged endpoint.
+- Azure Stack Hub operators can now configure multi-tenancy in Azure Stack Hub via the administrator portal. For more information, see [Configure multi-tenancy](enable-multitenancy.md).
+- Azure Stack Hub operators can now configure a legal notice using the privileged endpoint. For more information, see [Configure Azure Stack Hub security controls](azure-stack-security-configuration.md#legal-notice-for-pep-sessions)
 - During the update, granular storage repair is used to repair blocks that are out-of-sync due to the update. Smaller segments must be repaired, which leads to less repair time and a shorter overall update duration.
 
 ### Improvements
