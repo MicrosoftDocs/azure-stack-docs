@@ -73,7 +73,7 @@ Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8s/apise
 If the cluster host is not domain-joined, use the admin user name or group name in SID format as shown in the example below:
  
 ```powershell
-Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8s/apiserver@CONTOSO.COM --adminuserSID (or admingroupSID)
+Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8
 ```  
 
 To find the SID for the user account, see [determine the user or group security identifier](#determine-the-user-or-group-security-identifier). 
@@ -239,7 +239,7 @@ There are two steps involved in this process. First, create a new AD account/use
 Use the [New-ADUser](https://docs.microsoft.com/powershell/module/addsadministration/new-aduser?view=win10-ps&preserve-view=true) PowerShell command to create a new AD account/user with the SPN. Here's an example: 
 
 ```powershell 
-New-ADUser -Name apiserver -ServicePrincipalNames K8s/apiserver -AccountPassword (ConvertTo-SecureString "password" -AsPlainText -Force) -KerberosEncryptionType AES128 -Enabled 1
+New-ADUser -Name apiserver -ServicePrincipalNames k8s/apiserver -AccountPassword (ConvertTo-SecureString "password" -AsPlainText -Force) -KerberosEncryptionType AES128 -Enabled 1
 ```
 
 ### Step 2: Create the keytab file for the AD account
@@ -251,6 +251,10 @@ Here's an example using ktpass:
 ```bash
 ktpass /out current.keytab /princ k8s/apiserver@BCONTOSO.COM /mapuser contoso\apiserver_acct /crypto all /pass p@$$w0rd /ptype KRB5_NT_PRINCIPAL
 ```
+
+> [!NOTE]
+> If you see this error, **DsCrackNames returned 0x2 in the name entry**, ensure the parameter for `/mapuser` is in form `mapuser DOMAIN\user` where DOMAIN is the output of echo `%userdomain%`.
+
   
 ## Determine the user or group security identifier
 
@@ -259,7 +263,7 @@ Use one of the following two options to find the SID for your account or for oth
 To find the SID associated with your account, from a command prompt of your home directory, type the following:
 
 ```bash
-whoami/user
+whoami /user
 ``` 
 
 To find the SID associated with another account, open PowerShell as an administrator and run the following:
