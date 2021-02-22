@@ -250,7 +250,7 @@ Accept wildcard characters: False
 ```
 
 ### -proxyServerCredential
-This provides the username and password to authenticate to your HTTP/HTTPS proxy servers. You can use `Get-Credential` to generate a PSCredential object to pass to this parameter. Default is none.
+This provides the username and password to authenticate to your HTTP/HTTPS proxy servers. You can use `Get-Credential` to generate a **PSCredential** object to pass to this parameter. Default is none.
 
 ```yaml
 Type: System.String
@@ -265,7 +265,7 @@ Accept wildcard characters: False
 ```
 
 ### -cloudServiceCidr
-This can be used to provide a static IP/network prefix to be assigned to the MOC CloudAgent service. This value should be provided using the CIDR format. (Example: 192.168.1.2/16). You may want to specify this to ensure that anything important on the network is always accessible because the IP address will not change. Default is none.
+This parameter can be used to provide a static IP/network prefix to be assigned to the MOC CloudAgent service. This value should be provided using the CIDR format. (Example: 192.168.1.2/16). You may want to specify this to ensure that anything important on the network is always accessible because the IP address will not change. Default is none.
 
 ```yaml
 Type: System.String
@@ -340,7 +340,7 @@ Accept wildcard characters: False
 ```
 
 ### -clusterRoleName
-This specifies the name to use when creating cloud agent as a generic service within the cluster. This defaults to a unique name with a prefix of ca- and a guid suffix (for example: “ca-9e6eb299-bc0b-4f00-9fd7-942843820c26”). We do not recommend changing the default.
+This parameter specifies the name to use when creating cloud agent as a generic service within the cluster. This defaults to a unique name with a prefix of ca- and a guid suffix (for example: “ca-9e6eb299-bc0b-4f00-9fd7-942843820c26”). We do not recommend changing the default.
 
 ```yaml
 Type: System.String
@@ -400,7 +400,7 @@ Accept wildcard characters: False
 ```
 
 ### -skipUpdates
-Use this flag if you want to skip any updates available. We do not recommend using this setting.
+Use this parameter if you want to skip any available updates. We do not recommend using this setting.
 
 ```yaml
 Type: System.String
@@ -415,7 +415,7 @@ Accept wildcard characters: False
 ```
 
 ### -forceDnsReplication
-DNS replication can take up to an hour on some systems. This will cause the deployment to be slow. If you hit this issue, you'll see that the Install-AksHci will be stuck in a loop. To get past this issue, try to use this flag. The -forceDnsReplication flag is not a guaranteed fix. If the logic behind the flag fails, the error will be hidden, and the command will carry on as if the flag was not provided.
+DNS replication can take up to an hour on some systems. This will cause the deployment to be slow. If you hit this issue, you'll see that the Install-AksHci will be stuck in a loop. To get past this issue, try to use this flag. The `-forceDnsReplication` parameter is not a guaranteed fix. If the logic behind the flag fails, the error will be hidden, and the command will carry on as if the flag was not provided.
 
 ```yaml
 Type: System.String
@@ -431,4 +431,4 @@ Accept wildcard characters: False
 
 ### -enableDiagnosticData`
 
-Use this flag to consent to send required diagnostic data to Microsoft. This is useful if you want to skip the consent prompt that `Set-AksHciConfig` will present otherwise. `Install-AksHci` will fail if you do not accept the consent prompt when `Set-AksHciConfig` presents it.
+Use this parameter to consent to send required diagnostic data to Microsoft. This is useful if you want to skip the consent prompt that `Set-AksHciConfig` will present. `Install-AksHci` will fail if you do not accept the consent prompt when `Set-AksHciConfig` presents it.
