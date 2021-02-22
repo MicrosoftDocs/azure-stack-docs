@@ -10,7 +10,7 @@ ms.reviewer: fiseraci
 ms.lastreviewed: 02/19/2021
 ---
 
-# Get-TLSPolicy
+# Get-AzSLegalNotice
 
 ## Synopsis
 Sets the legal notice caption and text.
