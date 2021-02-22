@@ -121,11 +121,9 @@ VERBOSE: TLS 1.2 is not enforced
 
 ## Legal notice for PEP sessions
 
-There are many scenarios where it's useful to display a legal notice, upon login to a [privileged endpoint (PEP)](azure-stack-privileged-endpoint.md) session. The [Set-AzSLegalNotice](../reference/pep-2002/set-azslegalnotice.md) and [Get-AzSLegalNotice](../reference/pep-2002/get-azslegalnotice.md) cmdlets are used to manage the caption and body of such legal notice text.
+There are scenarios where it's useful to display a legal notice, upon login to a [privileged endpoint (PEP)](azure-stack-privileged-endpoint.md) session. The [Set-AzSLegalNotice](../reference/pep-2002/set-azslegalnotice.md) and [Get-AzSLegalNotice](../reference/pep-2002/get-azslegalnotice.md) cmdlets are used to manage the caption and body of such legal notice text.
 
-### Set-AzSLegalNotice
-
-### Get-AzSLegalNotice
+To set the legal notice caption and text, see the [Set-AzSLegalNotice cmdlet](../reference/pep-2002/set-azslegalnotice.md). If the legal notice caption and text have previously been set, you can review them by using the [Get-AzSLegalNotice cmdlet](../reference/pep-2002/get-azslegalnotice.md).
 
 ## Next steps
 
