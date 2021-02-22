@@ -37,7 +37,7 @@ The PowerShell Azure Stack privileged endpoint (PEP) is a pre-configured remote 
 | [Get-TLSPolicy](Get-TLSPolicy.md) | No description. |
 | [Get-VirtualDisk](Get-VirtualDisk.md) | No description. |
 | [Invoke-AzureStackOnDemandLog](Invoke-AzureStackOnDemandLog.md) | Generates on demand logs from AzureStack roles where applicable. |
-| [New-AzureBridgeServicePrincipal](New-AzureBridgeServicePrincipal.md) | Creates a new servcie principal in Azure Active Directory. |
+| [New-AzureBridgeServicePrincipal](New-AzureBridgeServicePrincipal.md) | Creates a new service principal in Azure Active Directory. |
 | [New-AzureStackActivation](New-AzureStackActivation.md) | Activate Azure Stack. |
 | [New-CloudAdminUser](New-CloudAdminUser.md) | No description. |
 | [New-GraphApplication](New-GraphApplication.md) | New-GraphApplication is a wrapper function to call ADFS Graph cmdlets on AD FS. |
