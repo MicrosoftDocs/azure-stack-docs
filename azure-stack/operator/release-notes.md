@@ -75,8 +75,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Azure Stack Hub managed disks now support Azure Disk APIs version 2019-11-01, with a subset of the available features.
 - The Azure Stack Hub administrator portal now shows GPU-related information, including capacity data. Note that this requires a GPU to be installed in the system.
 - Users can now deploy all supported VM sizes, using Nvidia T4 via the Azure Stack Hub user portal.
-- Azure Stack Hub operators can now configure multi-tenancy in Azure Stack Hub via the administrator portal. For more information, see [Configure multi-tenancy](azure-stack-enable-multitenancy.md).
-- Azure Stack Hub operators can now configure a legal notice using the privileged endpoint.
+- Azure Stack Hub operators can now configure multi-tenancy in Azure Stack Hub via the administrator portal. For more information, see [Configure multi-tenancy](enable-multitenancy.md).
+- Azure Stack Hub operators can now configure a legal notice using the privileged endpoint. For more information, see [Configure Azure Stack Hub security controls](azure-stack-security-configuration.md#legal-notice-for-pep-sessions)
 - During the update, granular storage repair is used to repair blocks that are out-of-sync due to the update. Smaller segments must be repaired, which leads to less repair time and a shorter overall update duration.
 
 ### Improvements
@@ -86,7 +86,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Improved the deletion logic for networking resources that are blocked by a failed provisioning state.
 - Reduced the XRP memory to 14GB per VM and WAS memory to 10GB per VM. By avoiding the increase in total VM memory footprint, more tenant VMs are deployable.
 - The log collection HTML report, which gives a snapshot of the files on the stamp and diagnostic share, now has a summarized view of the collected files, roles, resource providers and event information to better help understand the success and failure rate of the log collection process. 
-- Added cmdlets **Get-AzSLegalNotice** and **Set-AzSLegalNotice** to the privileged endpoint (PEP) to retrieve and update the content of the login banner text after deployment.
+- Added cmdlets [Set-AzSLegalNotice](../reference/pep-2002/set-azslegalnotice.md) and [Get-AzSLegalNotice](../reference/pep-2002/get-azslegalnotice.md) to the privileged endpoint (PEP) to retrieve and update the content of the login banner text after deployment.
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 

@@ -4,7 +4,7 @@ description: Reference for PowerShell Azure Stack privileged endpoint
 author: mattbriggs
 
 ms.topic: reference
-ms.date: 04/27/2020
+ms.date: 02/19/2021
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/27/2020
@@ -20,6 +20,7 @@ The PowerShell Azure Stack privileged endpoint (PEP) is a pre-configured remote 
 | --- | --- |
 | [Close-PrivilegedEndpoint](Close-PrivilegedEndpoint.md) | No description. |
 | [Get-ActionStatus](Get-ActionStatus.md) | Gets the status of the latest action for the operation with the specified function name. |
+| [Get-AzSLegalNotice](Get-AzSLegalNotice.md) | Get legal notice caption and text |
 | [Get-AzureStackLog](Get-AzureStackLog.md) | Get logs from various roles of AzureStack with timeout. |
 | [Get-AzureStackStampInformation](Get-AzureStackStampInformation.md) | Gets the stamp information. |
 | [Get-AzureStackSupportConfiguration](Get-AzureStackSupportConfiguration.md) | Gets Support Service configuration settings. |
@@ -36,7 +37,7 @@ The PowerShell Azure Stack privileged endpoint (PEP) is a pre-configured remote 
 | [Get-TLSPolicy](Get-TLSPolicy.md) | No description. |
 | [Get-VirtualDisk](Get-VirtualDisk.md) | No description. |
 | [Invoke-AzureStackOnDemandLog](Invoke-AzureStackOnDemandLog.md) | Generates on demand logs from AzureStack roles where applicable. |
-| [New-AzureBridgeServicePrincipal](New-AzureBridgeServicePrincipal.md) | Creates a new servcie principal in Azure Active Directory. |
+| [New-AzureBridgeServicePrincipal](New-AzureBridgeServicePrincipal.md) | Creates a new service principal in Azure Active Directory. |
 | [New-AzureStackActivation](New-AzureStackActivation.md) | Activate Azure Stack. |
 | [New-CloudAdminUser](New-CloudAdminUser.md) | No description. |
 | [New-GraphApplication](New-GraphApplication.md) | New-GraphApplication is a wrapper function to call ADFS Graph cmdlets on AD FS. |
@@ -50,6 +51,7 @@ The PowerShell Azure Stack privileged endpoint (PEP) is a pre-configured remote 
 | [Repair-VirtualDisk](Repair-VirtualDisk.md) | No description. |
 | [Reset-DatacenterIntegrationConfiguration](Reset-DatacenterIntegrationConfiguration.md) | Script to reset Datacenter Integration changes. |
 | [Send-AzureStackDiagnosticLog](Send-AzureStackDiagnosticLog.md) | Sends Azure Stack Diagnostic Logs to Microsoft. |
+| [Set-AzSLegalNotice](Get-AzSLegalNotice.md) | Set legal notice caption and text |
 | [Set-CloudAdminUserPassword](Set-CloudAdminUserPassword.md) | No description. |
 | [Set-GraphApplication](Set-GraphApplication.md) | Set-GraphApplication is a wrapper function to call ADFS Graph cmdlets on AD FS. |
 | [Set-ServiceAdminOwner](Set-ServiceAdminOwner.md) | Script to update service administrator. |
