@@ -336,7 +336,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue where Windows VM images from the RETAIL channel could not have their license activated by AVMA.
 - Fixed an issue where VMs would fail to be created if the number of virtual cores requested by the VM was equal to the node's physical cores. We now allow VMs to have virtual cores equal to or less than the node's physical cores.
 - Fixed an issue where we do not allow the license type to be set to "null" to switch pay-as-you-go images to BYOL.
-- Fixed an issue to allow extensions to be added to a VM scale set.
+- Fixed an issue to allow extensions to be added to a virtual machine scale set.
 
 ## Security updates
 
