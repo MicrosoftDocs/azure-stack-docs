@@ -35,14 +35,14 @@ To simplify the network configuration for application workloads, AKS on Azure St
 
 - **HAProxy load balancers** - HAProxy (High Availability Proxy) is a TCP/HTTP load balancer and proxy server that allows a webserver to spread incoming requests across multiple endpoints. Every workload cluster in AKS-HCI has a HAProxy load balancer running inside its own specialized virtual machine.
 
-- **Microsoft On-Premise Cloud Service** - This is the Azure Stack HCI cloud provider for running Kubernetes on an on-premises Azure Stack HCI cluster. The networking model followed by your Azure Stack HCI cluster determines the IP address allocation method for this object.
+- **Microsoft On Premise Cloud Service** - This is the Azure Stack HCI cloud provider for running Kubernetes on an on-premises Azure Stack HCI cluster. The networking model followed by your Azure Stack HCI cluster determines the IP address allocation method for this object.
 
 
 ## Virtual networks
 
-In AKS on Azure Stack HCI, virtual networks are used to allocate IP addresses to the Kubernetes resources that require them, as listed above. There are two networking models to choose from, depending on your desired AKS on Azure Stack HCI networking architecture. You should note that the virtual networking architecture defined here for your AKS on Azure Stack HCI deployments is different from the underlying physical networking architecture in your datacenter.
+In AKS on Azure Stack HCI, virtual networks are used to allocate IP addresses to the Kubernetes resources that require them, as listed above. There are two networking models to choose from, depending on your desired AKS on Azure Stack HCI networking architecture. Note that the virtual networking architecture defined here for your AKS on Azure Stack HCI deployments is different from the underlying physical networking architecture in your datacenter.
 
-- Static IP networking - The virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers, and any Kubernetes services you run on top of your cluster.
+- Static IP networking - The virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers and any Kubernetes services you run on top of your cluster.
 
 - DHCP networking - The virtual network allocates dynamic IP addresses to the Kubernetes nodes, underlying VMs and load balancers using a DHCP server. The Kubernetes cluster API server and any Kubernetes services you run on top of your cluster are still allocated static IP addresses.
 
@@ -53,7 +53,7 @@ Virtual IP (VIP) pool is mandatory for an AKS on Azure Stack HCI deployment. VIP
 - DHCP - If your network is configured with DHCP, you will need to work with your network administrator and reserve an IP range to use for the VIP Pool.
 
 ### Kubernetes node IP pool
-As explained above, Kubernetes nodes run on specialized virtual machines in an AKS on Azure Stack HCI deployment. AKS on Azure Stack HCI allocates IP addresses to these virtual machines in order to communicate between Kubernetes nodes. For a DHCP networking model, you don't need to specify a Kubernetes Node VM Pool as IP addresses to the Kubernetes nodes are dynamically allocated by the DHCP server on your network. For a static IP-based networking model, you must specify a Kubernetes node IP pool range. The number of IP addresses in this range depends on the sum total number of Kubernetes nodes across your AKS host and workload Kubernetes clusters.
+As explained above, Kubernetes nodes run on specialized virtual machines in an AKS on Azure Stack HCI deployment. AKS on Azure Stack HCI allocates IP addresses to these virtual machines in order to communicate between Kubernetes nodes. For a DHCP networking model, you dont need to specify a Kubernetes Node VM Pool as IP addresses to the Kubernetes nodes are dynamically allocated by the DHCP server on your network. For a static IP based networking model, you must specify a Kubernetes node IP pool range. The number of IP addresses in this range depends on the sum total number of Kubernetes nodes across your AKS host and workload Kubernetes clusters.
 
 ### Virtual network with static IP networking
 
@@ -64,7 +64,7 @@ You must specify the following parameters while defining a virtual network with 
 - Name: The name of your virtual network
 - AddressPrefix: The IP address prefix to use for your subnet.
 - Gateway: The IP address of the default gateway for the subnet.
-- DNS server: An array of IP addresses pointing to the DNS servers to be used for the subnet. A minimum of one and a maximum of three servers can be provided.
+- DNS server: An array of IP addresses pointing to the DNS servers to be used for the subnet. A minimum of one and a maximum of 3 servers can be provided.
 - Kubernetes node IP pool: The continuous range of IP addresses to be used for your Kubernetes node VMs.
 - Virtual IP pool: The continuous range of IP addresses to be used for your Kubernetes cluster API server and Kubernetes services that require an external IP address.
 - vLAN ID: The vLAN ID for the virtual network. If omitted, the virtual network will not be tagged.
@@ -90,13 +90,13 @@ The `-cloudserviceCIDR` is a parameter in the `Set-AksHciConfig` command that's 
 
 The allocation of an IP address for MOC service depends on the underlying networking model followed by your Azure Stack HCI cluster deployment. **The IP address allocation for MOC service is independent of your virtual network model and is ONLY dependent on the underlying physical network that gives IP addresses to the Azure Stack HCI cluster nodes in your datacenter.**
 
-### Azure Stack HCI cluster nodes with a DHCP-based IP address allocation model
+### Azure Stack HCI cluster nodes with a DHCP based IP address allocation model
 
 If your Azure Stack HCI nodes are assigned an IP address from a DHCP server present on the physical network, then you do not need to explicitly provide an IP address to the MOC service.
 
 ### Azure Stack HCI cluster nodes with a static IP allocation model 
 
-If your Azure Stack HCI cluster nodes are assigned static IP addresses, then you must explicitly provide an IP address for the MOC cloud service. This IP address for MOC service must be in the same subnet as the Azure Stack HCI cluster nodes. To explicitly assign an IP address for MOC service, use the `-cloudserviceCIDR` parameter in the `Set-AksHciConfig` command. Make sure you enter an IP address in the CIDR format, for example - "10.11.23.45/16".
+If your Azure Stack HCI cluster nodes are assigned static IP addresses, then you must explicitly provide an IP address for the MOC cloud service. This IP address for MOC service must be in the same subnet as the Azure Stack HCI cluster nodes. To explicitly assign an IP address for MOC service use the `-cloudserviceCIDR` parameter in the `Set-AksHciConfig` command. Make sure you enter an IP address in the CIDR format, for example - "10.11.23.45/16".
 
 ## Compare network models
 
@@ -119,7 +119,7 @@ The following table compares IP address allocation for resources between static 
 | Kubernetes nodes (on virtual machines)                                                                         | Assigned using Kubernetes node IP pool | Assigned dynamically |
 | Kubernetes services                                          | Assigned statically using VIP pool | Assigned statically using VIP pool |
 | HAProxy load balancer VM                                          | Assigned using Kubernetes node IP pool | Assigned dynamically |
-| Microsoft On-Premise Cloud Service                                               | Depends on the physical networking configuration for Azure Stack HCI cluster nodes | Depends on the physical networking configuration for Azure Stack HCI cluster nodes |
+| Microsoft On Premise Cloud Service                                               | Depends on the physical networking configuration for Azure Stack HCI cluster nodes | Depends on the physical networking configuration for Azure Stack HCI cluster nodes |
 | VIP pool                                             | Mandatory | Mandatory |
 | Kubernetes node IP pool | Mandatory | Not Supported |
 
@@ -147,7 +147,7 @@ As you can see, the number of required IP addresses is variable depending on the
 
 ### Walking through an example deployment
 
-Jane is an IT administrator just starting with AKS on Azure Stack HCI. She wants to deploy two Kubernetes clusters - Kubernetes cluster A and Kubernetes cluster B on her Azure Stack HCI cluster. She also wants to run a voting application on top of her cluster. This application has three instances of the front-end UI running across the two clusters and one instance of the backend database.
+Jane is an IT administrator just starting with AKS on Azure Stack HCI. She wants to deploy 2 Kubernetes clusters - Kubernetes cluster A and Kubernetes cluster B on her Azure Stack HCI cluster. She also wants to run a voting application on top of her cluster. This application has 3 instances of the front-end UI running across the two clusters and 1 instance of the backend database.
 
 - Kubernetes cluster A has 3 control plane nodes and 5 worker nodes
 - Kubernetes cluster B has 1 control plane node and 3 worker nodes
@@ -170,13 +170,13 @@ As explained above, Jane requires a total of 32 IP addresses. Jane should theref
 
 ### Splitting reserved IP addresses based on a static IP network model
 
-While the total number of reserved IP addresses remain the same, the deployment model determines how these IP addresses are divided among IP groups. As we've discussed before, static IP network model has two IP pools:
+While the total number of reserved IP addresses remain the same, the deployment model determines how these IP addresses are divided among IP groups. As we've discussed before, static IP network model has 2 IP pools:
 
 - Kubernetes node IP pool - for Kubernetes node VMs and the load balancer VM. This IP pool also includes IP address required for running update operations.
 - Virtual IP pool - for the Kubernetes API server and Kubernetes services
 
 Working with the example above, Jane must further divide these IP addresses across VIP pools and Kubernetes node IP pools:
-- 5 (2 for Kubernetes cluster API server and 3 for Kubernetes services) out of the 32 IP addresses for her VIP pool.
+- 5 (2 for Kubernetes cluster API server and 3 for Kubernetes services ) out of the 32 IP addresses for her VIP pool.
 - 27 (all the IP addresses for her Kubernetes nodes and underlying VMs, load balancer VMs and updates operations) for her Kubernetes node IP pool.
 
 ### Splitting reserved IP addresses based on a DHCP network model

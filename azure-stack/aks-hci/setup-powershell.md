@@ -78,7 +78,7 @@ After running the above command, close all PowerShell windows and reopen an admi
 
 Follow this step if you have an existing deployment and want to update it. If you do not have an existing deployment, skip this step and proceed to Step 2. Alternatively, if you have a deployment but want to run a clean install of the next AKSHCI version, run `Uninstall-AksHci` and proceed to Step 2.
 
-To update to the latest version of Azure Kubernetes Service on Azure Stack HCI, run the [Update-AksHci](./update-akshci) command. This command updates the Azure Kubernetes Service host and the on-premise Microsoft operated cloud platform. This command does not upgrade Kubernetes and Windows node OS versions in any existing workload clusters. New workload clusters created after updating the AKS host will differ from existing workload clusters in their Windows node OS version and Kubernetes version.
+To update to the latest version of Azure Kubernetes Service on Azure Stack HCI, run the [update-akshci](./update-akshci.md) command. This command updates the Azure Kubernetes Service host and the on-premise Microsoft operated cloud platform. This command does not upgrade Kubernetes and Windows node OS versions in any existing workload clusters. New workload clusters created after updating the AKS host will differ from existing workload clusters in their Windows node OS version and Kubernetes version.
 
 ```powershell
 Update-AksHci
@@ -114,7 +114,7 @@ Name SwitchType NetAdapterInterfaceDescription
 extSwitch External Mellanox ConnectX-3 Pro Ethernet Adapter
 ```
 
-To create a virtual network for the nodes in your deployment to use, create an environment variable with the [New-AksHciNetworkSetting](.\new-akshcinetworksetting.md) PowerShell command. This will be used later to configure a deployment that uses static IP. If you want to configure your AKS deployment with DHCP, visit [New-AksHciNetworkSetting](.\new-akshcinetworksetting.md) for examples.
+To create a virtual network for the nodes in your deployment to use, create an environment variable with the [new-akshcinetworksetting](.\new-akshcinetworksetting.md) PowerShell command. This will be used later to configure a deployment that uses static IP. If you want to configure your AKS deployment with DHCP, visit [new-akshcinetworksetting](.\new-akshcinetworksetting.md) for examples.
 
 ```powershell
 #static IP
@@ -127,7 +127,7 @@ $vnet = New-AksHciNetworkSetting -vnetName "extSwitch" -k8sNodeIpPoolStart "172.
 
 ## Step 4: Configure your deployment
 
-Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./set-akshciconfig) command. **If you're deploying on a 2-4 node Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster, you must specify the `imageDir` and `cloudConfigLocation` parameters.** If you want to reset your config details, run the command again with new parameters.
+Set the configuration settings for the Azure Kubernetes Service host using the [set-akshciconfig](./set-akshciconfig.md) command. **If you're deploying on a 2-4 node Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster, you must specify the `imageDir` and `cloudConfigLocation` parameters.** If you want to reset your config details, run the command again with new parameters.
 
 Configure your deployment with the following command.
 
@@ -152,7 +152,7 @@ Install-AksHci
 
 ### Verify your deployed Azure Kubernetes Service host
 
-To ensure that your Azure Kubernetes Service host was deployed, run the [Get-AksHciCluster](./get-akshcicluster) command. You will also be able to get Kubernetes clusters using the same command after deploying them.
+To ensure that your Azure Kubernetes Service host was deployed, run the [get-akshcicluster](./get-akshcicluster.md) command. You will also be able to get Kubernetes clusters using the same command after deploying them.
 
 ```powershell
 Get-AksHciCluster
@@ -172,7 +172,7 @@ Ready           : True
 
 ## Step 6: Access your clusters using kubectl
 
-To access your Azure Kubernetes Service host using `kubectl`, run the [Get-AksHciCredential](./get-akshcicredential) command. This will use the specified cluster's _kubeconfig_ file as the default _kubeconfig_ file for `kubectl`. You can also use this command to access other Kubernetes clusters after they are deployed.
+To access your Azure Kubernetes Service host using `kubectl`, run the [get-akshcicredential](./get-akshcicredential.md) command. This will use the specified cluster's _kubeconfig_ file as the default _kubeconfig_ file for `kubectl`. You can also use this command to access other Kubernetes clusters after they are deployed.
 
 ```powershell
 Get-AksHciCredential -name clustergroup-management
@@ -180,7 +180,7 @@ Get-AksHciCredential -name clustergroup-management
 
 ## Get logs
 
-To get logs from your all your pods, run the [Get-AksHciLogs](./get-akshcilogs) command. This command will create an output zipped folder called `akshcilogs` in the path `c:\%workingdirectory%\%AKS HCI release number%\%filename%` (for example, `c:\AksHci\0.9.6.0\akshcilogs.zip`).
+To get logs from your all your pods, run the [get-akshcilogs](./get-akshcilogs) command. This command will create an output zipped folder called `akshcilogs` in the path `c:\%workingdirectory%\%AKS HCI release number%\%filename%` (for example, `c:\AksHci\0.9.6.0\akshcilogs.zip`).
 
 ```powershell
 Get-AksHciLogs
@@ -188,7 +188,7 @@ Get-AksHciLogs
 
 ## Update to the latest version of Azure Kubernetes Service on Azure Stack HCI
 
-To update to the latest version of Azure Kubernetes Service on Azure Stack HCI, run the [Update-AksHci](./update-akshci) command. The update command only works if you have installed the Oct release or later. It will not work for releases older than the October release. This update command updates the Azure Kubernetes Service host and the on-premise Microsoft operated cloud platform. This command does not upgrade any existing workload clusters. New workload clusters created after updating the AKS host will differ from existing workload clusters in their Windows node OS version and Kubernetes version.
+To update to the latest version of Azure Kubernetes Service on Azure Stack HCI, run the [update-akshci](./update-akshci.md) command. The update command only works if you have installed the Oct release or later. It will not work for releases older than the October release. This update command updates the Azure Kubernetes Service host and the on-premise Microsoft operated cloud platform. This command does not upgrade any existing workload clusters. New workload clusters created after updating the AKS host will differ from existing workload clusters in their Windows node OS version and Kubernetes version.
 
 ```powershell
 Update-AksHci

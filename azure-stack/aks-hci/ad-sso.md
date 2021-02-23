@@ -8,7 +8,7 @@ ms.author: v-susbo
 ms.reviewer: 
 ---
 
-# Use Active Directory single sign-on credentials for AKS on Azure Stack HCI
+# Use Active Directory single sign-in credentials for AKS on Azure Stack HCI
 
 > Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
 
@@ -253,7 +253,7 @@ ktpass /out current.keytab /princ k8s/apiserver@BCONTOSO.COM /mapuser contoso\ap
 ```
 
 > [!NOTE]
-> If you see this error, **DsCrackNames returned 0x2 in the name entry**, ensure the parameter for `/mapuser` is in form `mapuser DOMAIN\user` where **DOMAIN** is the output of echo `%userdomain%`.
+> If you see this error, **DsCrackNames returned 0x2 in the name entry**, ensure the parameter for `/mapuser` is in form `mapuser DOMAIN\user` where DOMAIN is the output of echo `%userdomain%`.
 
   
 ## Determine the user or group security identifier

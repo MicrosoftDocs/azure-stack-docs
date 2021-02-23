@@ -84,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -dnsServers
-Required when creating a network with a static IP. An array of IP addresses pointing to the DNS servers to be used for the subnet. A minimum of one and a maximum of three servers can be provided such as "8.8.8.8","192.168.1.1".
+Required when creating a network with a static IP. An array of IP addresses pointing to the DNS servers to be used for the subnet. A minimum of one and a maximum of 3 servers can be provided. i.e. "8.8.8.8","192.168.1.1".
 
 ```yaml
 Type: System.String[]
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -ipAddressPrefix
-The address prefix to use for the static IP assignment.
+The address prefix to use for Static IP assignment.
 
 ```yaml
 Type: System.String
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 ```
 
 ### -k8sNodeIpPoolStart
-The start IP address of a VM pool. The address must be in range of the subnet and is required for Static IP deployments.
+The start IP address of a VM pool. The address must be in range of the subnet. This is required for Static IP deployments.
 
 ```yaml
 Type: System.String
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 ```
 
 ### -k8sNodeIpPoolEnd
-The end IP address of a VM pool. The address must be in range of the subnet and is required for Static IP deployments.
+The end IP address of a VM pool. The address must be in range of the subnet. This is required for Static IP deployments.
 
 ```yaml
 Type: System.String
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### -vlanID
-The vLAN ID for the network specified. If omitted, the network will not be tagged.
+The vLAN ID for the network specified. If omitted the network will not be tagged.
 
 ```yaml
 Type: System.Int32
