@@ -29,8 +29,8 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [install-akshci](install-akshci.md) | Install the Azure Kubernetes Service on Azure Stack HCI agents/services and host. |
 | [install-akshciadauth](install-akshciadauth.md) | Install Active Directory authentication. |
 | [install-akshciarconboarding](install-akshciarconboarding.md) | Download and install kubectl, the Kubernetes command-line tool. |
-| [New-AksHciCluster](New-AksHciCluster.md) | Create a new managed Kubernetes cluster. |
-| [New-AksHciNetworkSetting](New-AksHciNetworkSetting.md) | Create an object for a new virtual network. |
+| [new-akshcicluster](new-akshcicluster.md) | Create a new managed Kubernetes cluster. |
+| [new-akshcinetworksetting](new-akshcinetworksetting.md) | Create an object for a new virtual network. |
 | [Remove-AksHciCluster](Remove-AksHciCluster.md) | Delete a managed Kubernetes cluster. |
 | [Restart-AksHci](Restart-AksHci.md) | Restart Azure Kubernetes Service on Azure Stack HCI and remove all deployed Kubernetes clusters. |
 | [Set-AksHciClusterNodeCount](Set-AksHciClusterNodeCount.md) | Scale the number of control plane nodes or worker nodes in a cluster. |
