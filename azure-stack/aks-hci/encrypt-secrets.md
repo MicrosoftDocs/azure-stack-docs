@@ -13,7 +13,7 @@ ms.reviewer:
 A secret in Kubernetes is an object that contains a small amount of sensitive data, such as passwords and SSH keys. In the Kubernetes API server, secrets are stored in _etcd_, which is a highly available key values store used as the Kubernetes backing store for all cluster data. When you enable encryption of etcd secrets, you can [encrypt secret data at rest](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/) and also automate the management and rotation of encryption keys. 
 
 > [!NOTE]
-> In this preview release, encryption of etcd secrets is available only for new workload clusters. Support for encryption of etcd secrets on AKS host clusters will be available at a later date.
+> In this preview release, encryption of etcd secrets is available only for new workload clusters. 
 
 ## Enable encryption of etcd secrets
 
