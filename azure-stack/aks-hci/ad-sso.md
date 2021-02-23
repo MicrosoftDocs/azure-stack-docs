@@ -21,7 +21,7 @@ AD integration uses AD _kubeconfig_, which is distinct from the certificate-base
 Another security benefit with AD integration is that the users and groups are stored as [security identifiers (SIDs)](https://docs.microsoft.com/troubleshoot/windows-server/identity/security-identifiers-in-windows). Unlike group names, SIDs are immutable and unique and therefore present no naming conflicts.
 
 > [!Note] 
-> For this preview release, we provide AD SSO connectivity only for workload clusters. AD support for the AKS management cluster will be available in a later release.
+> For this preview release, we provide AD SSO connectivity only for workload clusters. 
 
 This document will guide you through the following steps to set up Active Directory as the identity provider and to enable SSO via `kubectl`:
 
