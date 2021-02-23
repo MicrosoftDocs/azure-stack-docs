@@ -15,7 +15,7 @@ ms.reviewer: bganapa
 
 # Use PowerShell to manage subscriptions, plans, and offers in Azure Stack Hub
 
-You can use PowerShell to configure and deliver services by using offers, plans, and subscriptions. using PowerShell. For instructions on getting set up with PowerShell on Azure Stack Hub, see [Install PowerShell Az module for Azure Stack Hub](powershell-install-az-module.md). For information on connecting to Azure Stack Hub using PowerShell, see [Connect to Azure Stack Hub with PowerShell](azure-stack-powershell-configure-admin.md).
+You can use PowerShell to configure and deliver services by using offers, plans, and subscriptions. For instructions on getting set up with PowerShell on Azure Stack Hub, see [Install PowerShell Az module for Azure Stack Hub](powershell-install-az-module.md). For information on connecting to Azure Stack Hub using PowerShell, see [Connect to Azure Stack Hub with PowerShell](azure-stack-powershell-configure-admin.md).
 
 Before you begin, verify the Azure Stack Hub PowerShell module is loaded. In a PowerShell console, type `Import-Module AzureStack`.
 
