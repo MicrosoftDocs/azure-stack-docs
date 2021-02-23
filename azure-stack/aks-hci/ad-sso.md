@@ -8,7 +8,7 @@ ms.author: v-susbo
 ms.reviewer: 
 ---
 
-# Use Active Directory single sign-in credentials for AKS on Azure Stack HCI
+# Use Active Directory single sign-on credentials for AKS on Azure Stack HCI
 
 > Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
 
