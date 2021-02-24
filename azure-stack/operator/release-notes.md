@@ -226,7 +226,7 @@ Because Azure Stack Hub hotfixes are cumulative, as a best practice you should i
 
 After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2008.25.114](hotfix-1-2008-25-114.md)
+- [Azure Stack Hub hotfix 1.2008.26.116](hotfix-1-2008-26-116.md)
 ::: moniker-end
 
 ::: moniker range="azs-2005"
@@ -318,7 +318,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2005 release of Azure Stack Hub must be applied on the 2002 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2002.65.171](https://support.microsoft.com/topic/d743db84-df31-496b-b37c-6e5618b4cc8f)
+- [Azure Stack Hub hotfix 1.2002.66.173](hotfix-1-2002-66-173.md)
 
 ### After successfully applying the 2005 update
 
@@ -326,7 +326,7 @@ Starting with the 2005 release, when you update to a new major version (for exam
 
 After the installation of 2005, if any 2005 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2005.29.100](hotfix-1-2005-29-100.md)
+- [Azure Stack Hub hotfix 1.2005.30.102](hotfix-1-2005-30-102.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>

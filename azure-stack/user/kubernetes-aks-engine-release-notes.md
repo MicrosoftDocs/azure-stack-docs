@@ -4,10 +4,10 @@ description: Learn the steps you need to take with the update to AKS engine on A
 author: mattbriggs
 
 ms.topic: article
-ms.date: 2/11/2021
+ms.date: 02/23/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 2/11/2021
+ms.lastreviewed: 02/23/2021
 
 # Intent: As an Azure Stack Hub user, I would like to update a Kubernetes cluster using the AKS engine on a custom virtual network so that I can deliver my service in an environment that extends my data center or in a hybrid cloud solution with my cluster in Azure Stack Hub and Azure.
 # Keywords: update ASK engine Azure Stack Hub
@@ -132,7 +132,7 @@ In the API Model json file, please specify the release and version values under 
 -   Since aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
 
 > [!NOTE]  
-> Windows Container and Azure CNI support is available in the private preview. If you would like to join the preview, you can request access: [https://aka.ms/ash-k8s-win-azurecni](https://aka.ms/ash-k8s-win-azurecni)
+> Windows Container and Azure CNI support is available in the public preview. If you would like to join the preview, you can request access: [https://aka.ms/ash-k8s-win-azurecni](https://aka.ms/ash-k8s-win-azurecni)
 
 ## Reference
 

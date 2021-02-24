@@ -14,10 +14,16 @@
       href: release-notes.md
     - name: Hotfixes
       items:
-      - name: Hotfix 1.2005.29.100
-        href: hotfix-1-2005-29-100.md
+      - name: Hotfix 1.2008.26.116
+        href: hotfix-1-2008-26-116.md      
+      - name: Hotfix 1.2005.30.102
+        href: hotfix-1-2005-30-102.md
+      - name: Hotfix 1.2002.66.173
+        href: hotfix-1-2002-66-173.md      
       - name: Hotfix 1.2008.25.114
         href: hotfix-1-2008-25-114.md  
+      - name: Hotfix 1.2005.29.100
+        href: hotfix-1-2005-29-100.md
     - name: Known issues
       href: known-issues.md
 - name: Quickstarts
