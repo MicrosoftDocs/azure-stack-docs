@@ -205,6 +205,7 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 | **Standard_E4_v3**  | 4  | 32  | 100  | 8 /8x500 | 2 |
 | **Standard_E8_v3**  | 8  | 64  | 200  | 16 /16x500| 4 |
 | **Standard_E16_v3** | 16 | 128 | 400  | 32 /32x500| 8 |
+
 ::: moniker-end
 
 ## Next steps
