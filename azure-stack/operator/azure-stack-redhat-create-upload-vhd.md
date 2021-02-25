@@ -21,8 +21,8 @@ This article describes how to prepare a Red Hat Enterprise Linux virtual machine
 
 There are two ways that you can offer Red Hat-based VM in Azure Stack Hub:
 
-- You can add offer the machine through the Azure Stack Hub Marketplace. 
-    - Red Hat Enterprise Linux Images are a private offering on Azure Stack Hub. To make this offering available to your **Marketplace Management** tab, you will need to [complete a a survey](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR_e32WQju3tMrgXNcUR94AVUNkJTWjdQRjc3TzFLREdGU0dIVFRUQ1JCSi4u).
+- You can add offer the machine through the Azure Stack Hub Marketplace.
+    - Red Hat Enterprise Linux Images are a private offering on Azure Stack Hub. To make this offering available to your **Marketplace Management** tab, you will need to [complete a survey](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR_e32WQju3tMrgXNcUR94AVUNkJTWjdQRjc3TzFLREdGU0dIVFRUQ1JCSi4u).
     - For more information, see [Azure Stack Hub Marketplace overview](azure-stack-marketplace.md).
 - You can add your own custom to your Azure Stack Hub and then offer the image in the Marketplace. 
     1. You will need to have Red Hat cloud access.
