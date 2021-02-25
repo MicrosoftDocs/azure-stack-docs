@@ -78,7 +78,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Azure Stack Hub operators can now configure multi-tenancy in Azure Stack Hub via the administrator portal. For more information, see [Configure multi-tenancy](enable-multitenancy.md).
 - Azure Stack Hub operators can now configure a legal notice using the privileged endpoint. For more information, see [Configure Azure Stack Hub security controls](azure-stack-security-configuration.md#legal-notice-for-pep-sessions)
 - During the update process, Granular Bitmap Repair (GBR), an optimization in the storage repair process, is introduced to repair out-of-sync data. Compared to the previous process, smaller segments are repaired, which leads to less repair time and a shorter overall update duration. GBR is enabled by default for all new deployments of 2102. For an update to 2102 from an earlier version (2008), GBR is enabled during the update. GBR enablement requires that all physical disks are in a healthy state, so an additional validation was added in the **UpdateReadiness** check. Patch & update will fail at a very early stage if the validation fails. At that point, a cloud admin must take action to resolve the disk problem before resuming the update. To follow up with the OEM, please check the [OEM contact information](azure-stack-update-oem.md#oem-contact-information).
-- Azure Stack Hub now supports new Dv3, Ev3 and SQL specific D-series VM sizes
+- Azure Stack Hub now supports new Dv3, Ev3, and SQL-specific D-series VM sizes.
 
 ### Improvements
 
@@ -105,7 +105,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue in which internal DNS zones become out of sync during update, and cause the update to fail. This fix has been backported to 2008 and 2005 via hotfixes.
 - Fixed an issue in which disk space was exhausted by logs on physical hosts, Network Controllers, Gateways and load balancers. This fix has been backported to 2008.
 - Fixed an issue in which deletion of resource groups or virtual networks fails due to an orphaned resource in the Network Controller layer.
-- Removed ND6s_dev size from the VM size picker as it is an unsupported VM size
+- Removed ND6s_dev size from the VM size picker, as it is an unsupported VM size.
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
