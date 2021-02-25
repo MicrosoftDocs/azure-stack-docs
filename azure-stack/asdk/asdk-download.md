@@ -25,7 +25,7 @@ After ensuring that your development kit host computer meets the basic requireme
    - [.NET Framework 4.6 (or a later version)](https://dotnet.microsoft.com/download/dotnet-framework-runtime/net46) must be installed.
 
 2. [Go to the Get Started page](https://azure.microsoft.com/overview/azure-stack/try/?v=try) where you can download the ASDK, provide your details, and then click **Submit**.
-3. Download and run the [Deployment Checker for ASDK](https://go.microsoft.com/fwlink/?LinkId=828735&clcid=0x409) prerequisite checker script. This standalone script goes through the prerequisite checks done by the setup for ASDK. It provides a way to confirm you're meeting the hardware and software requirements before downloading the larger package for ASDK.
+3. Download and run the [Deployment Checker for ASDK](https://github.com/Azure/AzureStack-Tools/blob/master/Deployment/asdk-prechecker.ps1) prerequisite checker script. This standalone script goes through the prerequisite checks done by the setup for ASDK. It provides a way to confirm you're meeting the hardware and software requirements before downloading the larger package for ASDK.
 4. Under **Download the software**, click **Azure Stack Development Kit**.
 
    > [!NOTE]
