@@ -81,7 +81,7 @@ The Azure Stack Az module will work Azure Stack Hub 2002 or later. In addition, 
     Install-Module PowerShellGet -MinimumVersion 2.2.3 -Force
     ```
 
-2. Close your PowerShell session, then open a new PowerShell session so that update can be take effect.
+2. Close your PowerShell session, then open a new PowerShell session so that update can take effect.
 
 3. Run the following command from a PowerShell session:
 
