@@ -46,12 +46,16 @@ landingContent:
         links:
           - text: Use Linux containers
             url: deploy-linux-application.md
+          - text: Deploy .NET applications
+            url: deploy-windows-application.md
       - linkListType: how-to-guide
         links:
           - text: Adapt apps for mixed-OS Kubernetes clusters
             url: adapt-apps-mixed-os-clusters.md
-          - text: Deploy Windows applications
-            url: deploy-windows-application.md
+          - text: Use Active Directory single sign-in credentials
+            url: ad-sso.md
+          - text: Configure proxy settings
+            url: proxy.md
           - text: Prepare Windows nodes for gMSA support
             url: prepare-windows-nodes-gmsa.md
           - text: Use persistent volumes
@@ -63,4 +67,6 @@ landingContent:
         links:
           - text: Connect to Azure Arc for Kubernetes
             url: connect-to-arc.md
+          - text: Monitor AKS on Azure Stack HCI clusters
+            url: monitor-logging.md
 

@@ -116,7 +116,7 @@ After you've completed all of the prerequisites, run the **DeploySqlProvider.ps1
 To deploy the SQL resource provider, open a **new** elevated PowerShell window (not PowerShell ISE) and change to the directory where you extracted the SQL resource provider binary files. 
 
 > [!IMPORTANT]
-> We strongly recommend using **Clear-AzureRmContext -Scope CurrentUser** and **Clear-AzureRmContext -Scope Process** to clear the cache before running the update script.
+> We strongly recommend using **Clear-AzureRmContext -Scope CurrentUser** and **Clear-AzureRmContext -Scope Process** to clear the cache before running the deploy or update script.
 
 Run the DeploySqlProvider.ps1 script, which completes the following tasks:
 

@@ -4,9 +4,9 @@ description: Create a Linux VM by using PowerShell in Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: quickstart
-ms.date: 11/22/2020
+ms.date: 02/18/2021
 ms.author: mabrigg
-ms.lastreviewed: 11/22/2020
+ms.lastreviewed: 02/18/2021
 
 # Intent: As an Azure Stack user, I want to create a Linux server virtual machine using PowerShell.
 # Keyword: linuxVM powershell
@@ -278,7 +278,7 @@ $VirtualMachine = Set-AzVMSourceImage `
 $VirtualMachine = Set-AzVMOSDisk `
   -VM $VirtualMachine `
   -CreateOption FromImage | `
-  Set-AzVMBootDiagnostics -ResourceGroupName $ResourceGroupName `
+  Set-AzVMBootDiagnostic -ResourceGroupName $ResourceGroupName `
   -StorageAccountName $StorageAccountName -Enable |`
   Add-AzVMNetworkInterface -Id $nic.Id
 

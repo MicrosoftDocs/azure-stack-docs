@@ -303,6 +303,8 @@
         href: azure-stack-dev-start-howto-vm-nodejs.md
     - name: Create GitHub action - Login
       href: ci-cd-github-action-login-cli.md
+    - name: Create GitHub action - Web app deploy
+      href: ci-cd-github-action-webapp.md
     - name: Deploy a GPU IoT module
       href: gpu-deploy-sample-module.md
   - name: Deploy foundational patterns
