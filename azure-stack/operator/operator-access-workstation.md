@@ -29,12 +29,12 @@ The following tables list common scenarios for the OAW. Use Remote Desktop to co
 
 | **Scenario**                                                                                                                                          | **Description**                                                                                                                                                                                                                                                                                                         |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Access the Administration portal](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-portals?view=azs-2008)                    | Perform administrative operations                                                                                                                                                                                                                                                                                       |
-| [Access PEP](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint?view=azs-2008)                                     | Log collection and upload:<br>-[Create an SMB share](https://docs.microsoft.com/azure-stack/operator/operator-access-workstation?view=azs-2008#transfer-files-between-the-hlh-and-oaw) on the HLH for file transfer from Azure Stack Hub<br>-Use Azure Storage Explorer to upload logs saved to the SMB share. |
+| [Access the Administration portal](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-portals?view=azs-2008)                    | Perform administrative operations.                                                                                                                                                                                                                                                                                       |
+| [Access PEP](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint?view=azs-2008)                                     | Log collection and upload:<br>-[Create an SMB share](https://docs.microsoft.com/azure-stack/operator/operator-access-workstation?view=azs-2008#transfer-files-between-the-hlh-and-oaw) on the HLH for file transfer from Azure Stack Hub.<br>-Use Azure Storage Explorer to upload logs saved to the SMB share. |
 | [Register Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-registration?view=azs-2008#renew-or-change-registration) | For re-registration, get previous Registration Name and Resource Group from the Administration portal.                                                                                                                                                                                                                   |
 | [Marketplace syndication](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item?view=azs-2008)            | [Create an SMB share](https://docs.microsoft.com/azure-stack/operator/operator-access-workstation?view=azs-2008#transfer-files-between-the-hlh-and-oaw) on the HLH to store the downloaded image or extension.                                                                                                     |
 | [Create Virtual Machines](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-create-vm-windows-cli?view=azs-2008)                    | Create virtual machines using CLI.                                                                                                                                                                                                                                                                                       |
-| [Manage AKS](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-scale?view=azs-2008)                                 | Manage AKS clusters, for example,  scale or upgrade                                                                                                                                                                                                                                                                        |
+| [Manage AKS](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-scale?view=azs-2008)                                 | Manage AKS clusters, for example,  scale or upgrade.                                                                                                                                                                                                                                                                        |
 
 ## Pre-installed software
 
@@ -149,8 +149,8 @@ New-OAW.ps1 -LocalAdministratorPassword $securePassword `
 ```
 
 If the DeploymentData.json file includes the Naming Prefix for OAW VM, that
-value will be used for the **VirtualMachineName**parameter. Otherwise, the
-default name is **AzSOAW** or whatever name specified is by the user.
+value will be used for the `VirtualMachineName` parameter. Otherwise, the
+default name is `AzSOAW` or whatever name specified is by the user.
 
 > [!NOTE]  
 > The parameter `AzureStackCertificatePath` should only be used when Azure
@@ -267,7 +267,7 @@ The following table lists the definition for each parameter.
 2.  Open PowerShell ISE and run the following script:
 
     ```powershell  
-    'C:\\Version\\Get-Version.ps1'
+    C:\\Version\\Get-Version.ps1
     ```
 
     For example:
@@ -277,8 +277,7 @@ The following table lists the definition for each parameter.
 ## Transfer files between the HLH and OAW
 
 If you need to transfer files between the HLH and the OAW, create an SMB share
-by using
-the [New-SmbShare](https://docs.microsoft.com/powershell/module/smbshare/new-smbshare?view=win10-ps) cmdlet.
+by using the [New-SmbShare](https://docs.microsoft.com/powershell/module/smbshare/new-smbshare?view=win10-ps) cmdlet.
 New-SmbShare exposes a file system folder to remote clients as a Server Message
 Block (SMB) share. For example:
 
