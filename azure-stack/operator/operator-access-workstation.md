@@ -19,7 +19,7 @@ The Operator Access Workstation (OAW) is used to deploy a virtual machine (VM)
 on an Azure Stack Hub's--Hardware Lifecycle Host (HLH) or any other machine that runs Microsoft Hyper-V. It does require network connectivity to the Azure
 Stack Hub endpoints to be used for operator or user scenarios.
 
-The OAW VM is an optional virtual machine that isn't requires by Azure Stack
+The OAW VM is an optional virtual machine that isn't required by Azure Stack
 Hub to function. Its purpose is to provide the latest tools to operators or user
 as they interact with Azure Stack Hub.
 
@@ -170,7 +170,6 @@ New-OAW.ps1 -LocalAdministratorPassword $securePassword `
 -VirtualSwitchName Example  
 ```
 
-
 > [!NOTE]  
 > The parameter `AzureStackCertificatePath` should only be used when Azure
 Stack Hub was deployed using certificates issued from an enterprise certificate
@@ -178,7 +177,17 @@ authority. The OAW virtual machine will be deployed without a network
 configuration. You can configure a static IP address or retrieve an IP address
 via DHCP.
 
-## New-PAW cmdlet parameters
+## User account policy
+
+The following user account policy is applied to the OAW VM:
+ - Built-in Administrator username: AdminUser
+ - MinimumPasswordLength = 14
+ - PasswordComplexity is enabled
+ - MinimumPasswordAge = 1 (day)
+ - MaximumPasswordAge = 42 (days)
+ - NewGuestName = GUser (disabled by default)
+
+## New-OAW cmdlet parameters
 
 Two parameter sets are available for New-OAW. Optional parameters are shown in
 brackets.
