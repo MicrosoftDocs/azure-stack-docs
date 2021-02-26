@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 02/24/2021
+ms.date: 02/26/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -72,12 +72,12 @@ For more information about update build types, see [Manage updates in Azure Stac
 <!-- What's new, also net new experiences and features. -->
 
 - The Azure Stack Hub infrastructure backup service now supports progressive backup. This feature helps reduce storage requirements on the external backup location, and changes the way files are organized on the external backup store. It is recommended that you not manipulate files under the backup root directory.
-- Azure Stack Hub managed disks now support Azure Disk APIs version 2019-11-01, with a subset of the available features.
+- Azure Stack Hub managed disks now support Azure Disk APIs version **2019-11-01**, with a subset of the available features.
 - The Azure Stack Hub administrator portal now shows GPU-related information, including capacity data. Note that this requires a GPU to be installed in the system.
 - Users can now deploy all supported VM sizes, using Nvidia T4 via the Azure Stack Hub user portal.
 - Azure Stack Hub operators can now configure multi-tenancy in Azure Stack Hub via the administrator portal. For more information, see [Configure multi-tenancy](enable-multitenancy.md).
 - Azure Stack Hub operators can now configure a legal notice using the privileged endpoint. For more information, see [Configure Azure Stack Hub security controls](azure-stack-security-configuration.md#legal-notice-for-pep-sessions)
-- During the update process, Granular Bitmap Repair (GBR), an optimization in the storage repair process, is introduced to repair out-of-sync data. Compared to the previous process, smaller segments are repaired, which leads to less repair time and a shorter overall update duration. GBR is enabled by default for all new deployments of 2102. For an update to 2102 from an earlier version (2008), GBR is enabled during the update. GBR enablement requires that all physical disks are in a healthy state, so an additional validation was added in the **UpdateReadiness** check. Patch & update will fail at a very early stage if the validation fails. At that point, a cloud admin must take action to resolve the disk problem before resuming the update. To follow up with the OEM, please check the [OEM contact information](azure-stack-update-oem.md#oem-contact-information).
+- During the update process, Granular Bitmap Repair (GBR), an optimization in the storage repair process, is now introduced to repair out-of-sync data. Compared to the previous process, smaller segments are repaired, which leads to less repair time and a shorter overall update duration. GBR is enabled by default for all new deployments of 2102. For an update to 2102 from an earlier version (2008), GBR is enabled during the update. GBR requires that all physical disks are in a healthy state, so an additional validation was added in the **UpdateReadiness** check. Patch & update will fail at a very early stage if the validation fails. At that point, a cloud admin must take action to resolve the disk problem before resuming the update. To follow up with the OEM, please check the [OEM contact information](azure-stack-update-oem.md#oem-contact-information).
 - Azure Stack Hub now supports new Dv3, Ev3, and SQL-specific D-series VM sizes.
 
 ### Improvements
@@ -86,8 +86,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Improvements to preserve the Network Controller, Gateway VM, Load Balancer and Host Agent logs during an update.
 - Improved the deletion logic for networking resources that are blocked by a failed provisioning state.
 - Reduced the XRP memory to 14GB per VM and WAS memory to 10GB per VM. By avoiding the increase in total VM memory footprint, more tenant VMs are deployable.
-- The log collection HTML report, which gives a snapshot of the files on the stamp and diagnostic share, now has a summarized view of the collected files, roles, resource providers and event information to better help understand the success and failure rate of the log collection process. 
-- Added cmdlets [Set-AzSLegalNotice](../reference/pep-2002/set-azslegalnotice.md) and [Get-AzSLegalNotice](../reference/pep-2002/get-azslegalnotice.md) to the privileged endpoint (PEP) to retrieve and update the content of the login banner text after deployment.
+- The log collection HTML report, which gives a snapshot of the files on the stamp and diagnostic share, now has a summarized view of the collected files, roles, resource providers and event information to better help understand the success and failure rate of the log collection process.
+- Added cmdlets [**Set-AzSLegalNotice**](../reference/pep-2002/set-azslegalnotice.md) and [**Get-AzSLegalNotice**](../reference/pep-2002/get-azslegalnotice.md) to the privileged endpoint (PEP) to retrieve and update the content of the login banner text after deployment.
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
@@ -102,9 +102,9 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Fixes
 
-- Fixed an issue in which internal DNS zones become out of sync during update, and cause the update to fail. This fix has been backported to 2008 and 2005 via hotfixes.
+- Fixed an issue in which internal DNS zones became out of sync during update, and caused the update to fail. This fix has been backported to 2008 and 2005 via hotfixes.
 - Fixed an issue in which disk space was exhausted by logs on physical hosts, Network Controllers, Gateways and load balancers. This fix has been backported to 2008.
-- Fixed an issue in which deletion of resource groups or virtual networks fails due to an orphaned resource in the Network Controller layer.
+- Fixed an issue in which deletion of resource groups or virtual networks failed due to an orphaned resource in the Network Controller layer.
 - Removed ND6s_dev size from the VM size picker, as it is an unsupported VM size.
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
