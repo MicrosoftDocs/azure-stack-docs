@@ -261,6 +261,10 @@
             href: azure-stack-kubernetes-aks-engine-upgrade.md
           - name: Enable service account token volume projection
             href: kubernetes-aks-engine-service-account.md
+          - name: Add container storage
+            href: kubernetes-aks-engine-container-storage-interface.md
+          - name: Rotate certs
+            href: kubernetes-aks-engine-rotate-certs.md
           - name: Troubleshoot AKS engine
             href: azure-stack-kubernetes-aks-engine-troubleshoot.md
           - name: Use Azure Monitor for containers
