@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 02/17/2021
+ms.date: 03/01/2021
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -79,7 +79,7 @@ Navigate to the `C:\SDNExpress\scripts` folder and open the `MultiNodeSampleConf
 
 ### General settings and parameters
 
-The settings and parameters are used by SDN in general for all deployments:
+The settings and parameters are used by SDN in general for all deployments. For specific recommendations, see [SDN infrastructure VM role requirements](../concepts/plan-software-defined-networking-infrastructure.md#sdn-infrastructure-vm-role-requirements).
 
 - **VHDPath** - VHD file path used by all SDN infrastructure VMs (NC, SLB, GW)
 - **VHDFile** - VHD file name used by all SDN infrastructure VMs
@@ -114,6 +114,8 @@ Passwords can be optionally included if stored encrypted as text-encoded secure 
 
 ### Network Controller VM section
 
+A minimum of three Network Controller VMs are recommended for SDN.
+
 The `NCs = @()` section is used for the Network Controller VMs. Make sure that the MAC address of each NC VM is outside the `SDNMACPool` range listed in the General settings:
 
 - **ComputerName** - name of NC VM
@@ -122,6 +124,8 @@ The `NCs = @()` section is used for the Network Controller VMs. Make sure that t
 - **MACAddress** - MAC address for the NC VM
 
 ### Software Load Balancer VM section
+
+A minimum of three Software Load Balancer VMs are recommended for SDN.
 
 The `Muxes = @()` section is used for the SLB VMs. Make sure that the MAC address of each SLB VM is outside the `SDNMACPool` range listed in the General settings. Leave this section empty (`Muxes = @()`) if not deploying the SLB component:
 
@@ -133,6 +137,8 @@ The `Muxes = @()` section is used for the SLB VMs. Make sure that the MAC addres
 - **PAMACAddress** - Provider network IP address (PA) for the SLB VM
 
 ### Gateway VM section
+
+A minimum of three Gateway VMs (two active and one redundant) are recommended for SDN.
 
 The `Gateways = @()` section is used for the Gateway VMs. Make sure that the MAC address of each Gateway VM is outside the `SDNMACPool` range listed in the General settings. Leave this section empty (`Gateways = @()`) if not deploying the Gateway component:
 
