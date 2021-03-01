@@ -19,7 +19,7 @@ Get-AksHciLogs
 ```
 
 ## Description
-Create a zipped folder with logs from all your pods. This command will create an output zipped folder called `akshcilogs.zip` in your AKS-HCI working directory. The full path to the `akshcilogs.zip` file will be the output at the end of running `Get-AksHciLogs` (i.e. `C:\AksHci\0.9.6.3\akshcilogs.zip`, where `0.9.6.3` is the AKS-HCI release number).
+Create a zipped folder with logs from all your pods. This command will create an output zipped folder called `akshcilogs.zip` in your AKS on Azure Stack HCI working directory. The full path to the `akshcilogs.zip` file will be the output after running  `Get-AksHciLogs` (for example, `C:\AksHci\0.9.6.3\akshcilogs.zip`, where `0.9.6.3` is the AKS on Azure Stack HCI release number).
 
 ## Examples
 
