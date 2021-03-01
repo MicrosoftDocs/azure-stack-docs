@@ -4,10 +4,10 @@ description: Learn the steps you need to take with the update to AKS engine on A
 author: mattbriggs
 
 ms.topic: article
-ms.date: 02/23/2021
+ms.date: 03/01/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 02/23/2021
+ms.lastreviewed: 03/01/2021
 
 # Intent: As an Azure Stack Hub user, I would like to update a Kubernetes cluster using the AKS engine on a custom virtual network so that I can deliver my service in an environment that extends my data center or in a hybrid cloud solution with my cluster in Azure Stack Hub and Azure.
 # Keywords: update ASK engine Azure Stack Hub
@@ -110,6 +110,9 @@ In the API Model json file, please specify the release and version values under 
 
 ## What's new
 
+If you are interested in participating in a private preview, you can [request preview access](https://forms.office.com/r/yqxXyiDcGG).
+
+New features inclue:
 -   General Availability of Ubuntu 18.04
 -   Certificate Rotation Public Preview [\#4214](https://github.com/Azure/aks-engine/pull/4214)
 -   T4 Nvidia GPU Private Preview [\#4259](https://github.com/Azure/aks-engine/pull/4259)
