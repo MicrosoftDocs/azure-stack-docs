@@ -48,16 +48,16 @@ Choose this option if you want to use your own identity store, such as your corp
 You can choose either **Pay-as-you-use** or the **Capacity** billing model. Pay-as-you-use billing model deployments must be able to report usage through a connection to Azure at least once every 30 days. Therefore, the pay-as-you-use billing model is only available for connected deployments.  
 
 ### Pay-as-you-use
-With the pay-as-you-use billing model, usage is charged to an Azure subscription. You only pay when you use the Azure Stack Hub services. If this is the model you decide on, you'll need an Azure subscription and the account ID associated with that subscription (for example, serviceadmin@contoso.onmicrosoft.com). EA, CSP, and CSL subscriptions are supported. Usage reporting is configured during [Azure Stack Hub registration](azure-stack-registration.md).
+With the pay-as-you-use billing model, usage is charged to an Azure subscription. You only pay when you use the Azure Stack Hub services. If this is the model you decide on, you'll need an Azure subscription and the account ID associated with that subscription (for example, serviceadmin@contoso.onmicrosoft.com). EA, CSP, and CSP Shared Services subscriptions are supported. Usage reporting is configured during [Azure Stack Hub registration](azure-stack-registration.md).
 
 > [!NOTE]
-> In most cases, Enterprise customers will use EA subscriptions, and service providers will use CSP or CSL subscriptions.
+> In most cases, Enterprise customers will use EA subscriptions, and service providers will use CSP or CSP Shared Services subscriptions.
 
 If you're going to use a CSP subscription, review the table below to identify which CSP subscription to use, as the correct approach depends on the exact CSP scenario:
 
 |Scenario|Domain and subscription options|
 |-----|-----|
-|You're a **Direct CSP Partner** or an **Indirect CSP Provider**, and you'll operate the Azure Stack Hub|Use a CSL (Common Service Layer) subscription.<br>     or<br>Create an Azure AD tenant with a descriptive name in Partner Center. For example, &lt;your organization>CSPAdmin with an Azure CSP subscription associated with it.|
+|You're a **Direct CSP Partner** or an **Indirect CSP Provider**, and you'll operate the Azure Stack Hub|Use a CSP Shared Services subscription.<br>     or<br>Create an Azure AD tenant with a descriptive name in Partner Center. For example, &lt;your organization>CSPAdmin with an Azure CSP subscription associated with it.|
 |You're an **Indirect CSP Reseller**, and you'll operate the Azure Stack Hub|Ask your indirect CSP Provider to create an Azure AD tenant for your organization with an Azure CSP subscription associated with it using Partner Center.|
 
 ### Capacity-based billing
