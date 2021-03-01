@@ -47,11 +47,7 @@ To download IoT Hub for a connected deployment, complete the following steps:
 
 <!-- ### Disconnected or partially connected scenario -->
 ::: zone pivot="state-disconnected"
-To download IoT Hub for a disconnected or partially connected deployment, first you download the packages to your local machine. After the download completes, you then import them into your Azure Stack Hub instance.
-
-1. If you haven't already, follow the instructions in [Download Marketplace items - Disconnected or partially connected scenarios](azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected). Here you download and run the Marketplace Syndication tool, which allows you to download the IoT Hub packages.
-2. After the syndication tool's "Azure Marketplace Items" window opens, find and select "IoT Hub" to download the required packages to your local machine.
-3. Once the download finishes, you import the packages to your Azure Stack Hub instance and publish to Marketplace.
+[!INCLUDE [prereqs](../includes/resource-provider-va-package-download-disconnected.md)]
 ::: zone-end
 
 ## Install IoT Hub
