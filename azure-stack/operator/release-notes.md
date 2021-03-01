@@ -79,15 +79,15 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Azure Stack Hub operators can now configure a legal notice using the privileged endpoint. For more information, see [Configure Azure Stack Hub security controls](azure-stack-security-configuration.md#legal-notice-for-pep-sessions)
 - During the update process, Granular Bitmap Repair (GBR), an optimization in the storage repair process, is now introduced to repair out-of-sync data. Compared to the previous process, smaller segments are repaired, which leads to less repair time and a shorter overall update duration. GBR is enabled by default for all new deployments of 2102. For an update to 2102 from an earlier version (2008), GBR is enabled during the update. GBR requires that all physical disks are in a healthy state, so an additional validation was added in the **UpdateReadiness** check. Patch & update will fail at a very early stage if the validation fails. At that point, a cloud admin must take action to resolve the disk problem before resuming the update. To follow up with the OEM, please check the [OEM contact information](azure-stack-update-oem.md#oem-contact-information).
 - Azure Stack Hub now supports new Dv3, Ev3, and SQL-specific D-series VM sizes.
-- Aks Engine on Azure Stack Hub is adding new features. For details see release notes under the [AKS Engine documentation](https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-kubernetes-aks-engine-overview):
-   1. General Availability of Ubuntu 18.04
-   2. Support for Kubernetes 1.17.17 and 1.18.15
-   3. Certificate Rotation command Public Preview
-   4. CSI Driver Azure Disks Public Preview 
-   5. CSI Driver NFS Public Preview 
-   6. CSI Driver for Azure Blobs Private Preview 
-   7. T4 Nvidia GPU support Private Preview
-   8. Azure Active Directory integration Private Preview
+- The AKS engine on Azure Stack Hub is adding new features. For details, see the release notes under the [AKS Engine documentation](../user/azure-stack-kubernetes-aks-engine-overview.md):
+   1. General availability of Ubuntu 18.04.
+   2. Support for Kubernetes 1.17.17 and 1.18.15.
+   3. Certificate rotation command public preview.
+   4. CSI Driver Azure Disks public preview. 
+   5. CSI Driver NFS public preview. 
+   6. CSI Driver for Azure Blobs private preview. 
+   7. T4 Nvidia GPU support private preview.
+   8. Azure Active Directory integration private preview.
 
 ### Improvements
 
