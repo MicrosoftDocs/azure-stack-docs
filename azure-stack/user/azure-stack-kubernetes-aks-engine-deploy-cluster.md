@@ -13,7 +13,8 @@ ms.lastreviewed: 2/5/2021
 # Keyword: Notdone: keyword noun phrase
 
 ---
-
+    > [!NOTE]  
+    > You can find the mapping of Azure Stack Hub to AKS engine version number in the [AKS engine release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 
 # Deploy a Kubernetes cluster with the AKS engine on Azure Stack Hub
 
@@ -27,12 +28,16 @@ You can specify a cluster specification in a document file using the JSON format
 
 This section looks at creating an API model for your cluster.
 
-1.  Start by using an Azure Stack Hub API Model file for [Linux](https://aka.ms/aksengine-json-example-raw) or for [Windows](https://aka.ms/aksengine-json-example-raw-win) and make a local copy for your deployment. From the machine, you installed AKS engine, run:
+1.  Start by using an Azure Stack Hub API Model file for Linux or Windows.
 
-    ```bash
-    curl -o kubernetes-azurestack.json https://raw.githubusercontent.com/Azure/aks-engine/v0.55.4/examples/azure-stack/kubernetes-azurestack.json
-    ```
-
+    1. For [Linux download](https://aka.ms/aksengine-json-example-raw) and then from the machine, you installed AKS engine, run:
+        ```bash
+        curl -o kubernetes-azurestack.json https://raw.githubusercontent.com/Azure/aks-engine/patch-release-v0.60.1/examples/azure-stack/kubernetes-azurestack.json
+        ```
+    1. For [Windows download](https://aka.ms/aksengine-json-example-raw-win) and make a local copy for your deployment. Then from the machine, you installed AKS engine, run:
+        ```bash
+        curl -o kubernetes-azurestack.json https://raw.githubusercontent.com/Azure/aks-engine/patch-release-v0.60.1/examples/azure-stack/kubernetes-windows.json
+        ```
     > [!NOTE]  
     > If you are disconnected, you can download the file and manually copy it to the disconnected machine where you plan to edit it. You can copy the file to your Linux machine using tools such as [PuTTY or WinSCP](https://www.suse.com/documentation/opensuse103/opensuse103_startup/data/sec_filetrans_winssh.html).
 
@@ -45,7 +50,7 @@ This section looks at creating an API model for your cluster.
     > [!NOTE]  
     > If you don't have nano installed, you can install nano on Ubuntu: `sudo apt-get install nano`.
 
-3.  In the kubernetes-azurestack.json file, find orchestratorRelease and orchestratorVersion. Select one of the supported Kubernetes versions. For example, for `orchestratorRelease` use 1.14 or 1.15 and for `orchestratorVersion` use 1.14.7 or 1.15.10 respectively. Specify the `orchestratorRelease` as x.xx and orchestratorVersion as x.xx.x. For a list of current versions, see [Supported AKS engine Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions)
+3.  In the kubernetes-azurestack.json file, find orchestratorRelease and orchestratorVersion. Select one of the supported Kubernetes versions; [you can find the version table in the release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping). Specify the `orchestratorRelease` as x.xx and orchestratorVersion as x.xx.x. For a list of current versions, see [Supported AKS engine Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions)
 
 4.  Find `customCloudProfile` and provide the URL to the tenant portal. For example, `https://portal.local.azurestack.external`. 
 
@@ -70,7 +75,7 @@ This section looks at creating an API model for your cluster.
     | dnsPrefix | Enter a unique string that will serve to identify the hostname of VMs. For example, a name based on the resource group name. |
     | count |  Enter the number of masters you want for your deployment. The minimum for an HA deployment is 3, but 1 is allowed for non-HA deployments. |
     | vmSize |  Enter [a size supported by Azure Stack Hub](./azure-stack-vm-sizes.md), example `Standard_D2_v2`. |
-    | distro | Enter `aks-ubuntu-16.04`. |
+    | distro | Enter `aks-ubuntu-16.04` or `aks-ubuntu-18.04`. |
 
 8.  In `agentPoolProfiles` update:
 
@@ -78,10 +83,7 @@ This section looks at creating an API model for your cluster.
     | --- | --- |
     | count | Enter the number of agents you want for your deployment. The maximum count of nodes to use per subscription is 50. If you are deploying more than one cluster per subscription ensure that the total agent count doesn't go beyond 50. Make sure to use the configuration items specified in [the sample API model JSON file](https://aka.ms/aksengine-json-example-raw).  |
     | vmSize | Enter [a size supported by Azure Stack Hub](./azure-stack-vm-sizes.md), example `Standard_D2_v2`. |
-    | distro | Enter `aks-ubuntu-16.04`. |
-
-
-
+    | distro | Enter `aks-ubuntu-16.04`, `aks-ubuntu-18.04` or `Windows`.<br>Use `Windows` for agents that will run on Windows. For example, see [kubernetes-windows.json](https://raw.githubusercontent.com/Azure/aks-engine/patch-release-v0.60.1/examples/azure-stack/kubernetes-windows.json) |
 
 9.  In `linuxProfile` update:
 
@@ -90,10 +92,19 @@ This section looks at creating an API model for your cluster.
     | adminUsername | Enter the VM admin user name. |
     | ssh | Enter the public key that will be used for SSH authentication with VMs. Use `ssh-rsa` and then the key. For instructions on creating a public key, see [Create an SSH key for Linux](create-ssh-key-on-windows.md). |
 
-    If you are deploying to a custom virtual network, you can find instructions on finding and adding the required key and values to the appropriate arrays in the API Model in [Deploy a Kubernetes cluster to a custom virtual network](kubernetes-aks-engine-custom-vnet.md).
+    If you're deploying to a custom virtual network, you can find instructions on finding and adding the required key and values to the appropriate arrays in the API Model in [Deploy a Kubernetes cluster to a custom virtual network](kubernetes-aks-engine-custom-vnet.md).
 
     > [!NOTE]  
     > The AKS engine for Azure Stack Hub doesn't allow you to provide your own certificates for the creation of the cluster.
+
+10. If you're using Windows, in `windowsProfile` update the values of `adminUsername:` and `adminPassword`:
+
+```json
+"windowsProfile": {
+"adminUsername": "azureuser",
+"adminPassword": "",
+"sshEnabled": true
+```
 
 ### More information about the API model
 
