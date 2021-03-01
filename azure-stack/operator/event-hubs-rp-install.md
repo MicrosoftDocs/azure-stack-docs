@@ -17,10 +17,7 @@ This article shows you how to download and install the Event Hubs resource provi
 
 ## Download packages
 
-Before you can install Event Hubs on Azure Stack Hub, you must download the resource provider and its dependent packages using the Marketplace Management feature. If you're not familiar with Marketplace Management, spend time reviewing [Download marketplace items from Azure and publish to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md). This section walks you through the process of downloading items from the Azure marketplace. 
-
-> [!NOTE]
-> The download process can take 30 minutes to 2 hours, depending on the network latency and existing packages on your Azure Stack Hub instance. 
+[!INCLUDE [prereqs](../includes/resource-provider-va-package-download-common.md)]
 
 ::: zone pivot="state-connected"
 For a connected scenario, you download the items from the Azure marketplace directly to the Azure Stack Hub marketplace:
@@ -40,12 +37,8 @@ Notice that additional software packages are downloaded along with Event Hubs, i
 - PowerShell Desired State Configuration
 ::: zone-end
 
-::: zone pivot="state-disconnected"
-For a disconnected or partially connected scenario, you download the packages to your local machine then import them into your Azure Stack Hub marketplace:
-
-1. If you haven't already, follow the instructions in [Download Marketplace items - Disconnected or partially connected scenarios](azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected). Here you download and run the Marketplace Syndication tool, which allows you to download the Event Hubs packages.
-2. After the syndication tool's "Azure Marketplace Items" window opens, find and select "Event Hubs" to download the required packages to your local machine.
-3. Once the download finishes, you import the packages to your Azure Stack Hub instance and publish to Marketplace. 
+::: zone pivot="state-disconnected" 
+[!INCLUDE [prereqs](../includes/resource-provider-va-package-download-disconnected.md)]
 ::: zone-end
 
 ## Installation 
