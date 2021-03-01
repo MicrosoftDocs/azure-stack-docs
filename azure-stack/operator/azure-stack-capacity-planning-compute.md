@@ -43,7 +43,7 @@ If the VM scale limit is reached, the following error codes are returned as a re
 
 ## Consideration for batch deployment of VMs
 
-In releases prior to and including 2002, 2-5 VMs per batch with 5 mins gap in between batches provided reliable VM deployments to reach a scale of 700 VMs. With the 2005 version of Azure Stack Hub, we are able to reliably provision VMs at batch sizes of 40 with 5 mins gap in between batch deployments.
+In releases prior to and including 2002, 2-5 VMs per batch with 5 mins gap in between batches provided reliable VM deployments to reach a scale of 700 VMs. With the 2005 version of Azure Stack Hub, we are able to reliably provision VMs at batch sizes of 40 with 5 mins gap in between batch deployments. Start, Stop-deallocate and update operations should be done at a batch size of 30 leaving 5 mins in between each batch.
 
 ## Azure Stack Hub memory
 
