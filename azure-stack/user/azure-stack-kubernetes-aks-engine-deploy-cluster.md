@@ -99,12 +99,12 @@ This section looks at creating an API model for your cluster.
 
 10. If you're using Windows, in `windowsProfile` update the values of `adminUsername:` and `adminPassword`:
 
-```json
-"windowsProfile": {
-"adminUsername": "azureuser",
-"adminPassword": "",
-"sshEnabled": true
-```
+    ```json
+    "windowsProfile": {
+    "adminUsername": "azureuser",
+    "adminPassword": "",
+    "sshEnabled": true
+    ```
 
 ### More information about the API model
 
