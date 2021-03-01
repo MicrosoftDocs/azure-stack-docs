@@ -4,10 +4,10 @@ description: Learn how to add AKS engine prerequisites to the Azure Stack Hub Ma
 author: mattbriggs
 
 ms.topic: article
-ms.date: 2/1/2021
+ms.date: 3/1/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/16/2020
+ms.lastreviewed: 3/1/2021
 
 # Intent: As a Azure Stack Hub operator, I want to offer the Kubernetes so that users can run the AKS engine.
 # Keyword: Kubernetes Azure Stack Hub Marketplace
@@ -40,9 +40,9 @@ If you use Azure Active Directory (Azure AD) for your identity management servic
 
 If you use Active Directory Federated Services (AD FS) for your identity management service, you will need to create a service principal for users deploying a Kubernetes cluster. Create a service principal using a client secret. For instructions, see [Create a service principal using a client secret](azure-stack-create-service-principals.md#create-a-service-principal-that-uses-client-secret-credentials).
 
-## Add the AKS Base Image
+## Add an AKS Base Image
 
-You can add the AKS Base Image to the marketplace by getting the item from Azure. However, if your Azure Stack Hub is disconnected, use these instructions [Download marketplace items from Azure](azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected) to add the item. Add the item specified in step 5.
+You can add an AKS Base Image to the marketplace by getting the item from Azure. However, if your Azure Stack Hub is disconnected, use these instructions [Download marketplace items from Azure](azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected) to add the item. Add the item specified in step 5.
 
 Add the following item to the marketplace:
 
@@ -54,13 +54,7 @@ Add the following item to the marketplace:
 
 1. Enter `AKS Base`.
 
-1. Select the image version that matches the version of the AKS engine. You can find listing of AKS Base Image to AKS engine version at [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions). 
-
-    In the list, select:
-    - **Publisher**: Azure Kubernetes Service
-    - **Offer**: aks
-    - **Name**: AKS Base Ubuntu 16.04-LTS Image Distro, August 2020 (2020.09.14 or version that maps to AKS engine)
-    - **Version**: 2020.09.14
+1. Select the image version that matches the version of the AKS engine. You can find listing of AKS Base Image to AKS engine version at [Supported Kubernetes Versions](..\user\kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping). 
 
 1. Select **Download.**
 
