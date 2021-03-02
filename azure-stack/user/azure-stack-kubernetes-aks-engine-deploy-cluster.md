@@ -13,9 +13,6 @@ ms.lastreviewed: 2/5/2021
 # Keyword: Notdone: keyword noun phrase
 
 ---
-    > [!NOTE]  
-    > You can find the mapping of Azure Stack Hub to AKS engine version number in the [AKS engine release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
-
 # Deploy a Kubernetes cluster with the AKS engine on Azure Stack Hub
 
 You can deploy a Kubernetes cluster on Azure Stack Hub from a client VM running the AKS engine. In this article, we look at writing a cluster specification, deploying a cluster with the `apimodel.json` file, and checking your cluster by deploying MySQL with Helm.
