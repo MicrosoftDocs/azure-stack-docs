@@ -17,6 +17,8 @@ This article shows you how to download and install the IoT Hub resource provider
 
 ## Download IoT Hub
 
+[!INCLUDE [prereqs](../includes/resource-provider-va-package-download-common.md)]
+
 <!-- ### Connected Scenario -->
 ::: zone pivot="state-connected"
 If your Azure Stack Hub can access the Azure Marketplace, follow the steps in this section to download and install IoT Hub and its dependencies. 
