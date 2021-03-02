@@ -5,7 +5,7 @@ author: mattbriggs
 ms.topic: article
 ms.date: 03/02/2021
 ms.author: mabrigg
-ms.reviewer: madelinelee
+ms.reviewer: thoroet
 ms.lastreviewed: 03/02/2021
 
 # Intent: As an Azure Stack operator, I want to download and configure an Azure Stack Hub Operator Access Workstation.
