@@ -101,7 +101,7 @@ In **orchestratorProfile**, find **kubernetesConfig** and set the following valu
 
 | Field | Example | Description |
 | --- | --- | --- |
-| clusterSubnet | `172.16.244.0/24` | IP range of the cluster subnet (POD network) must use an IP range within the space of the custom VNET IP range you defined. |
+| clusterSubnet | `10.244.0.0/16` | The IP subnet used for allocating IP addresses for pod network interfaces. The subnet must be in the VNET address space. With Azure CNI enabled, the default value is 10.240.0.0/12. Without Azure CNI, the default value is 10.244.0.0/16.  the cluster subnet (POD network) network should not use the same IP space as that of the VNET. Use /16 instead /24 subnet. If you use /24, this subnet will be assigned to one node only. Other node will not get POD network assigned, as you will have run out of the IP space, so they will be not ready in the cluster. |
 
 For example:
 
@@ -123,7 +123,7 @@ For example:
 "kubernetesConfig": [
   {
     ...
-    "clusterSubnet": "172.16.244.0/24",
+    "clusterSubnet": "172.16.244.0/16",
     ...
   },
 
