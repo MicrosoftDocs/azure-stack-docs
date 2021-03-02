@@ -49,12 +49,12 @@ When upgrading a production cluster, consider:
 The following instructions use the minimum steps to perform the upgrade. If would like additional detail, see the article [Upgrading Kubernetes Clusters](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 
 1. You need to first determine the versions you can target for the upgrade. This version depends on the version you currently have and then use that version value to perform the upgrade. The Kubernetes versions supported by your AKS Engine can be listed by running the following command:
-
-```bash
-aks-engine get-versions --azure-env AzureStackCloud
-```
-
-For a complete mapping of AKS engine, AKS Base Image and Kubernetes versions see [Supported AKS Engine Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions).
+    
+    ```bash
+    aks-engine get-versions --azure-env AzureStackCloud
+    ```
+    
+    For a complete mapping of AKS engine, AKS Base Image and Kubernetes versions see [Supported AKS Engine Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions).
 
 2. Collect the information you will need to run the `upgrade` command. The upgrade uses the following parameters:
 

@@ -27,11 +27,11 @@ This section looks at creating an API model for your cluster.
 
 1.  Start by using an Azure Stack Hub API Model file for Linux or Windows.
 
-    1. For [Linux download](https://aka.ms/aksengine-json-example-raw) and then from the machine, you installed AKS engine, run:
+    1. For [**Linux**, download](https://aka.ms/aksengine-json-example-raw) and then from the machine, you installed AKS engine, run:
         ```bash
         curl -o kubernetes-azurestack.json https://raw.githubusercontent.com/Azure/aks-engine/patch-release-v0.60.1/examples/azure-stack/kubernetes-azurestack.json
         ```
-    1. For [Windows download](https://aka.ms/aksengine-json-example-raw-win) and make a local copy for your deployment. Then from the machine, you installed AKS engine, run:
+    1. For [**Windows**, download](https://aka.ms/aksengine-json-example-raw-win) and make a local copy for your deployment. Then from the machine, you installed AKS engine, run:
         ```bash
         curl -o kubernetes-azurestack.json https://raw.githubusercontent.com/Azure/aks-engine/patch-release-v0.60.1/examples/azure-stack/kubernetes-windows.json
         ```
@@ -101,6 +101,7 @@ This section looks at creating an API model for your cluster.
     "adminUsername": "azureuser",
     "adminPassword": "",
     "sshEnabled": true
+    }
     ```
 
 ### More information about the API model

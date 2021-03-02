@@ -29,7 +29,7 @@ To use the AKS engine, you need to have the following resources available. Keep 
 Your cloud operator will need to have the following items in place.
 
 | Prerequisite | Description | Required | Instructions |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | Azure Stack Hub 1910 or greater | The AKS engine requires Azure Stack Hub 1910 or greater. | Required | If you are unsure of your version of Azure Stack Hub, contact your cloud operator. |
 | Linux custom script extension | Linux Custom Script extension 2.0<br>Offer: Custom Script for Linux 2.0<br>Version: 2.0.6 (or latest version)<br>Publisher: Microsoft Corp | Required | If you do not have this item in your subscription, contact your cloud operator. |
 | AKS Base images | AKS Base Ubuntu and Windows Image<br>See more information on the version dependency see [Matching engine to base image version](#matching-engine-to-base-image-version) | Required | If you don't have this item in your subscription, contact your cloud operator.<br> If you are the cloud operator for Azure Stack Hub and would like to offer the AKS engine, follow the instructions at [Add the AKS engine to the Azure Stack Hub Marketplace](../operator/azure-stack-aks-engine.md). |
