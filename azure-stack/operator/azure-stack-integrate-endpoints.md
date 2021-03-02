@@ -1,9 +1,9 @@
 ---
 title: Publish Azure Stack Hub services in your datacenter 
 description: Learn how to publish Azure Stack Hub services in your datacenter.
-author: myoung
+author: patricka
 ms.topic: article
-ms.date: 09/24/2020
+ms.date: 03/02/2021
 ms.author: patricka
 ms.reviewer: wamota
 ms.lastreviewed: 09/24/2020
@@ -75,25 +75,24 @@ SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-intercep
 > [!Note]  
 > Azure Stack Hub doesn't support using ExpressRoute to reach the Azure services listed in the following table because ExpressRoute may not be able to route traffic to all of the endpoints.
 
-|Purpose|Destination URL|Protocol|Ports|Source Network|
-|---------|---------|---------|---------|---------|
-|Identity|**Azure**<br>login.windows.net<br>login.microsoftonline.com<br>graph.windows.net<br>https:\//secure.aadcdn.microsoftonline-p.com<br>www.office.com<br>ManagementServiceUri = https:\//management.core.windows.net<br>ARMUri = https:\//management.azure.com<br>https:\//\*.msftauth.net<br>https:\//\*.msauth.net<br>https:\//\*.msocdn.com<br>**Azure Government**<br>https:\//login.microsoftonline.us/<br>https:\//graph.windows.net/<br>**Azure China 21Vianet**<br>https:\//login.chinacloudapi.cn/<br>https:\//graph.chinacloudapi.cn/<br>**Azure Germany**<br>https:\//login.microsoftonline.de/<br>https:\//graph.cloudapi.de/|HTTP<br>HTTPS|80<br>443|Public VIP - /27<br>Public infrastructure Network|
-|Marketplace syndication|**Azure**<br>https:\//management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://&#42;.azureedge.net<br>**Azure Government**<br>https:\//management.usgovcloudapi.net/<br>https://&#42;.blob.core.usgovcloudapi.net/<br>**Azure China 21Vianet**<br>https:\//management.chinacloudapi.cn/<br>http://&#42;.blob.core.chinacloudapi.cn|HTTPS|443|Public VIP - /27|
-|Patch & Update|https://&#42;.azureedge.net<br>https:\//aka.ms/azurestackautomaticupdate|HTTPS|443|Public VIP - /27|
-|Registration|**Azure**<br>https:\//management.azure.com<br>**Azure Government**<br>https:\//management.usgovcloudapi.net/<br>**Azure China 21Vianet**<br>https:\//management.chinacloudapi.cn|HTTPS|443|Public VIP - /27|
-|Usage|**Azure**<br>https://&#42;.trafficmanager.net<br>**Azure Government**<br>https://&#42;.usgovtrafficmanager.net<br>**Azure China 21Vianet**<br>https://&#42;.trafficmanager.cn|HTTPS|443|Public VIP - /27|
-|Windows Defender|&#42;.wdcp.microsoft.com<br>&#42;.wdcpalt.microsoft.com<br>&#42;.wd.microsoft.com<br>&#42;.update.microsoft.com<br>&#42;.download.microsoft.com<br><br>https:\//secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|Public VIP - /27<br>Public infrastructure Network|
-|NTP|(IP of NTP server provided for deployment)|UDP|123|Public VIP - /27|
-|DNS|(IP of DNS server provided for deployment)|TCP<br>UDP|53|Public VIP - /27|
-|SYSLOG|(IP of SYSLOG server provided for deployment)|TCP<br>UDP|6514<br>514|Public VIP - /27|
-|CRL|(URL under CRL Distribution Points on your certificate)<br>http://crl.microsoft.com/pki/crl/products<br>http://mscrl.microsoft.com/pki/mscorp<br>http://www.microsoft.com/pki/certs<br>http://www.microsoft.com/pki/mscorp<br>http://www.microsoft.com/pkiops/crl<br>http://www.microsoft.com/pkiops/certs<br>|HTTP|80|Public VIP - /27|
-|LDAP|Active Directory Forest provided for Graph integration|TCP<br>UDP|389|Public VIP - /27|
-|LDAP SSL|Active Directory Forest provided for Graph integration|TCP|636|Public VIP - /27|
-|LDAP GC|Active Directory Forest provided for Graph integration|TCP|3268|Public VIP - /27|
-|LDAP GC SSL|Active Directory Forest provided for Graph integration|TCP|3269|Public VIP - /27|
-|AD FS|AD FS metadata endpoint provided for AD FS integration|TCP|443|Public VIP - /27|
-| Diagnostic log collection |https://*.blob.core.windows.net<br>https://azsdiagprdlocalwestus02.blob.core.windows.net<br>https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com<br>https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com | HTTPS | 443 | Public VIP - /27 |
-|     |     |     |     |     |
+|Purpose|Destination URL|Protocol|Ports|Source Network|Requirement|
+|---------|---------|---------|---------|---------|---------|
+|**Identity**<br>Allows Azure Stack Hub to connect to Azure Active Directory for User & Service authentication.|**Azure**<br>`login.windows.net`<br>`login.microsoftonline.com`<br>`graph.windows.net`<br>`https://secure.aadcdn.microsoftonline-p.com`<br>`www.office.com`<br>ManagementServiceUri = `https://management.core.windows.net`<br>ARMUri = `https://management.azure.com`<br>`https://*.msftauth.net`<br>`https://*.msauth.net`<br>`https://*.msocdn.com`<br>**Azure Government**<br>`https://login.microsoftonline.us/`<br>`https://graph.windows.net/`<br>**Azure China 21Vianet**<br>`https://login.chinacloudapi.cn/`<br>`https://graph.chinacloudapi.cn/`<br>**Azure Germany**<br>`https://login.microsoftonline.de/`<br>`https://graph.cloudapi.de/`|HTTP<br>HTTPS|80<br>443|Public VIP - /27<br>Public infrastructure Network|Mandatory for a connected deployment.|
+|**Marketplace syndication**<br>Allows you to download items to Azure Stack Hub from the Marketplace and make them available to all users using the Azure Stack Hub environment.|**Azure**<br>`https://management.azure.com`<br>`https://*.blob.core.windows.net`<br>`https://*.azureedge.net`<br>**Azure Government**<br>`https://management.usgovcloudapi.net/`<br>`https://*.blob.core.usgovcloudapi.net/`<br>**Azure China 21Vianet**<br>`https://management.chinacloudapi.cn/`<br>`https://*.blob.core.chinacloudapi.cn`|HTTPS|443|Public VIP - /27|Not required. Use the [disconnected scenario instructions](azure-stack-download-azure-marketplace-item.md) to upload images to Azure Stack Hub.|
+|**Patch & Update**<br>When connected to update endpoints, Azure Stack Hub software updates and hotfixes are displayed as available for download.|`https://*.azureedge.net`<br>`https://aka.ms/azurestackautomaticupdate`|HTTPS|443|Public VIP - /27|Not required. Use the [disconnected deployment connection instructions](azure-stack-update-prepare-package.md) to manually download and prepare the update.|
+|**Registration**<br>Allows you to register Azure Stack Hub with Azure to download Azure Marketplace items and set up commerce data reporting back to Microsoft. |**Azure**<br>`https://management.azure.com`<br>**Azure Government**<br>`https://management.usgovcloudapi.net/`<br>**Azure China 21Vianet**<br>`https://management.chinacloudapi.cn`|HTTPS|443|Public VIP - /27|Not required. You can use the disconnected scenario for [offline registration](azure-stack-registration.md).|
+|**Usage**<br>Allows Azure Stack Hub operators to configure their Azure Stack Hub instance to report usage data to Azure.|**Azure**<br>`https://*.trafficmanager.net`<br>**Azure Government**<br>`https://*.usgovtrafficmanager.net`<br>**Azure China 21Vianet**<br>`https://*.trafficmanager.cn`|HTTPS|443|Public VIP - /27|Required for Azure Stack Hub consumption based licensing model.|
+|**Windows Defender**<br>Allows the update resource provider to download antimalware definitions and engine updates multiple times per day.|`*.wdcp.microsoft.com`<br>`*.wdcpalt.microsoft.com`<br>`*.wd.microsoft.com`<br>`*.update.microsoft.com`<br>`*.download.microsoft.com`<br><br>`https://secure.aadcdn.microsoftonline-p.com`<br>|HTTPS|80<br>443|Public VIP - /27<br>Public infrastructure Network|Not required. You can use the [disconnected scenario to update antivirus signature files](azure-stack-security-av.md#disconnected-scenario).|
+|**NTP**<br>Allows Azure Stack Hub to connect to time servers.|(IP of NTP server provided for deployment)|UDP|123|Public VIP - /27|Required|
+|**DNS**<br>Allows Azure Stack Hub to connect to the DNS server forwarder.|(IP of DNS server provided for deployment)|TCP<br>UDP|53|Public VIP - /27|Required|
+|**SYSLOG**<br>Allows Azure Stack Hub to send syslog message for monitoring or security purposes.|(IP of SYSLOG server provided for deployment)|TCP<br>UDP|6514<br>514|Public VIP - /27|Optional|
+|**CRL**<br>Allows Azure Stack Hub to validate certificates and check for revoked certificates.|(URL under CRL Distribution Points on your certificate)<br>`http://crl.microsoft.com/pki/crl/products`<br>`http://mscrl.microsoft.com/pki/mscorp`<br>`http://www.microsoft.com/pki/certs`<br>`http://www.microsoft.com/pki/mscorp`<br>`http://www.microsoft.com/pkiops/crl`<br>`http://www.microsoft.com/pkiops/certs`<br>|HTTP|80|Public VIP - /27|Not required. Highly recommended security best practice.|
+|**LDAP**<br>Allows Azure Stack Hub to communicate with Microsoft Active Directory on-premises.|Active Directory Forest provided for Graph integration|TCP<br>UDP|389|Public VIP - /27|Required when Azure Stack Hub is deployed using AD FS.|
+|**LDAP SSL**<br>Allows Azure Stack Hub to communicate encrypted with Microsoft Active Directory on-premises.|Active Directory Forest provided for Graph integration|TCP|636|Public VIP - /27|Required when Azure Stack Hub is deployed using AD FS.|
+|**LDAP GC**<br>Allows Azure Stack Hub to communicate with Microsoft Active Global Catalog Servers.|Active Directory Forest provided for Graph integration|TCP|3268|Public VIP - /27|Required when Azure Stack Hub is deployed using AD FS.|
+|**LDAP GC SSL**<br>Allows Azure Stack Hub to communicate encrypted with Microsoft Active Directory Global Catalog Servers.|Active Directory Forest provided for Graph integration|TCP|3269|Public VIP - /27|Required when Azure Stack Hub is deployed using AD FS.|
+|**AD FS**<br>Allows Azure Stack Hub to communicate with on-premise AD FS.|AD FS metadata endpoint provided for AD FS integration|TCP|443|Public VIP - /27|Optional. The AD FS claims provider trust can be created using a [metadata file](azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file).|
+|**Diagnostic log collection**<br>Allows Azure Stack Hub to send logs either proactively or manually by an operator to Microsoft support.|`https://*.blob.core.windows.net`<br>`https://azsdiagprdlocalwestus02.blob.core.windows.net`<br>`https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com`<br>`https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com` | HTTPS | 443 | Public VIP - /27 |Not required. You can [save logs locally](diagnostic-log-collection.md#save-logs-locally).|
 
 Outbound URLs are load balanced using Azure traffic manager to provide the best possible connectivity based on geographic location. With load balanced URLs, Microsoft can update and change backend endpoints without affecting customers. Microsoft doesn't share the list of IP addresses for the load balanced URLs. Use a device that supports filtering by URL rather than by IP.
 
