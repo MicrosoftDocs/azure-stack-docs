@@ -1,6 +1,6 @@
 ---
-title: Deploy Kubernetes cluster to custom virtual network on Azure Stack Hub  
-description: Learn how to deploy a Kubernetes cluster to a custom virtual network on Azure Stack Hub.
+title: Add container storage to Kubernetes in Azure Stack Hub 
+description: Learn how to add container storage to Kubernetes in Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: how-to

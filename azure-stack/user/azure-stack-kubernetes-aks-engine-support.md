@@ -86,7 +86,6 @@ Microsoft does not provide technical support for the following:
 -  Kubernetes configuration changes persisted outside the Kubernetes configuration store etcd. For example, static pods running in nodes of the cluster.
 -  Questions about how to use Kubernetes. For example, Microsoft Support doesn't provide advice on how to create custom ingress controllers, use application workloads, or apply third-party or open-source software packages or tools.
 -  Third-party open-source projects that aren't provided as part of the Kubernetes cluster deployed by AKS engine. These projects might include Kubeadm, Kubespray, Native, Istio, Helm, Envoy, or others.
--  Using the AKS engine in use-case scenarios outside the ones specified in [Supported scenarios with the AKS engine](azure-stack-kubernetes-aks-engine-overview.md#supported-scenarios-with-the-aks-engine).
 -  Third-party software. This software can include security scanning tools and networking devices or software.
 -  Issues about multicloud or multivendor build-outs. For example, Microsoft doesn't support issues related to running a federated multipublic cloud vendor solution.
 -  Network customizations other than those listed in the [AKS engine supported areas](#aks-engine-supported-areas) section.
