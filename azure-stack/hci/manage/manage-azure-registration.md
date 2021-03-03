@@ -169,7 +169,7 @@ When you're ready to decommission your Azure Stack HCI cluster, connect to the c
 The unregistration process automatically cleans up the Azure resource that represents the cluster, the Azure resource group (if the group was creating during registration and doesn't contain any other resources), and the Azure AD app identity. This cleanup stops all monitoring, support, and billing functionality through Azure Arc.
 
 > [!NOTE]
-> Unregistering an Azure Stack HCI cluster requires an Azure AD administrator or another user who has [sufficient permissions](#azure-ad-user-permissions). 
+> Unregistering an Azure Stack HCI cluster requires an Azure AD administrator or another user who has [sufficient permissions](#assign-azure-ad-user-permissions). 
 >
 > If your Windows Admin Center gateway is registered to a different Azure Active Directory (tenant) ID than was used to initially register the cluster, you might encounter problems when you try to unregister the cluster by using Windows Admin Center. If this happens, use the following PowerShell instructions.
 
