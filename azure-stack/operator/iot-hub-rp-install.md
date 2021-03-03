@@ -5,7 +5,7 @@ author: yiyiguo
 ms.author: yiygu
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 1/6/2020 
+ms.date: 3/3/2020 
 zone_pivot_groups: state-connected-disconnected
 ---
 
