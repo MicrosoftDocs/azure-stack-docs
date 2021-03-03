@@ -17,9 +17,8 @@ ms.lastreviewed: 09/02/2020
 
 # Upgrade a Kubernetes cluster on Azure Stack Hub
 
-## Upgrade a cluster
-
 The AKS engine allows you to upgrade the cluster that was originally deployed using the tool. You can maintain the clusters using the AKS engine. Your maintenance tasks are similar to any IaaS system. You should be aware of the availability of new updates and use the AKS engine to apply them.
+## Upgrade a cluster
 
 The upgrade command updates the Kubernetes version and the base OS image. Every time that you run the upgrade command, for every node of the cluster, the AKS engine creates a new VM using the AKS Base Image associated to the version of **aks-engine** used. You can use the `aks-engine upgrade` command to maintain the currency of every master and agent node in your cluster. 
 

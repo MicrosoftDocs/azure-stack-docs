@@ -16,6 +16,8 @@ ms.lastreviewed: 3/1/2021
 
 # Rotate Kubernetes certificates on Azure Stack Hub
 
+This document provides guidance on how to rotate certificates on an existing AKS Engine cluster and recommendations for using adopting `aks-engine rotate-certs` as a tool.
+
 > [!IMPORTANT]  
 > This feature is currently in public preview.
 > This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities. 
@@ -24,12 +26,7 @@ ms.lastreviewed: 3/1/2021
 ## Prerequisites
 
 This guide assumes that you already have deployed a cluster using AKS engine and the cluster is in a healthy state.
-
-## Certificate Rotation
-
-This document provides guidance on how to rotate certificates on an existing AKS Engine cluster and recommendations for using adopting `aks-engine rotate-certs` as a tool.
-
-## Planning for Certificate Rotation
+## Planning for certificate rotation
 
 When considering using this functionality, be aware that the Kubernetes control plane will be unavailable during the update, validation, and restart steps. Plan this maintenance operation accordingly. Also, plan to execute this operation in a staging environment with equal configuration to the production environment before trying in production.
 

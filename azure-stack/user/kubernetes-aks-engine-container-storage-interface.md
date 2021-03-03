@@ -43,20 +43,20 @@ Currently, disconnected environments do not support CSI Drivers.
 -   Since the Controller server of CSI Drivers requires two replicas, a single node master pool is not recommended.
 -   [Helm 3](https://helm.sh/docs/intro/install/)
 
-## Install and uninstall csi drivers
+## Install and uninstall CSI drivers
 
 In this section, follow the example commands to deploy a statefulset application consuming CSI Driver.
 
-## Azure Disk CSI Driver
+## Azure disk CSI driver
 
-### Install CSI Driver
+### Install CSI driver
 
 ```bash  
 helm repo add azuredisk-csi-driver https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/charts
 helm install azuredisk-csi-driver azuredisk-csi-driver/azuredisk-csi-driver --namespace kube-system --set cloud=AzureStackCloud --set controller.runOnMaster=true --version v1.0.0
 
 ```
-### Deploy Storage Class
+### Deploy storage class
 
 ```bash  
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/storageclass-azuredisk-csi-azurestack.yaml
@@ -82,7 +82,7 @@ kubectl exec statefulset-azuredisk-0 -- tail /mnt/azuredisk/outfile
 kubectl delete -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/statefulset.yaml
 ```
 
-### Delete Storage Class
+### Delete storage class
 
 Before you delete the Storage Class,  make sure Pods that consume the Storage Class have been terminated.
 
@@ -90,23 +90,23 @@ Before you delete the Storage Class,  make sure Pods that consume the Storage Cl
 kubectl delete -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/storageclass-azuredisk-csi-azurestack.yaml
 ```
 
-### Uninstall CSI Driver
+### Uninstall CSI driver
 
 ```bash  
 helm uninstall azuredisk-csi-driver --namespace kube-system
 helm repo remove azuredisk-csi-driver
 ```
 
-## NFS CSI Driver
+## NFS CSI driver
 
-### Install CSI Driver
+### Install CSI driver
 
 ```bash  
 helm repo add csi-driver-nfs https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
 helm install csi-driver-nfs csi-driver-nfs/csi-driver-nfs --namespace kube-system --set controller.runOnMaster=true --version v3.0.0
 ```
 
-### Deploy NFS Server. 
+### Deploy NFS server
 
 > [!NOTE]  
 > The NFS Server is just for validation, set up and maintain your NFS Server properly for production.
@@ -143,26 +143,26 @@ kubectl exec statefulset-nfs-0 -- tail /mnt/nfs/outfile
 kubectl delete -f https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/deploy/example/nfs-provisioner/nfs-server.yaml
 ```
 
-### Delete Storage Class
+### Delete storage class
 
 Before you delete the Storage Class,  make sure Pods that consume the Storage Class have been terminated.
 
 ```bash  
 kubectl delete -f https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/deploy/example/storageclass-nfs.yaml
 ```
-### Delete example NFS Server.
+### Delete example NFS server
 
 ```bash  
 kubectl delete -f https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/deploy/example/nfs-provisioner/nfs-server.yaml
 ```
 
-### Uninstall CSI Driver
+### Uninstall CSI driver
 
 ```bash  
 helm uninstall csi-driver-nfs --namespace kube-system
 helm repo remove csi-driver-nfs
 ```
-## Azure Disk CSI Driver Limitations on Azure Stack Hub
+## Azure Disk CSI Driver limitations on Azure Stack Hub
 
 -   Azure Disk IOPS is capped at 2300,  read [VM sizes supported in Azure Stack Hub](azure-stack-vm-sizes.md) for details.
 -   Azure Stack Hub doesn't support shared disk, so parameter `maxShares` larger than 1 is not valid in a StorageClass.

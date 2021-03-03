@@ -58,7 +58,7 @@ Add the following item to the marketplace:
 
 1. Select **Download.**
 
-## Add a Custom Script extension
+## Add a custom script extension
 
 You can add the custom script to the marketplace by getting the item from Azure. However, if your Azure Stack Hub is disconnected, use the instructions [Download marketplace items from Azure](azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected) to add the item.  Add the item specified in step 5.
 
