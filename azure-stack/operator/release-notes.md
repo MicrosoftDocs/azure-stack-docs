@@ -94,7 +94,6 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Increased the Network Controller log retention period, so the logs will be available for longer to help engineers in effective troubleshooting, even after an issue has been resolved.
 - Improvements to preserve the Network Controller, Gateway VM, Load Balancer and Host Agent logs during an update.
 - Improved the deletion logic for networking resources that are blocked by a failed provisioning state.
-- Reduced the XRP memory to 14GB per VM and WAS memory to 10GB per VM. By avoiding the increase in total VM memory footprint, more tenant VMs are deployable.
 - The log collection HTML report, which gives a snapshot of the files on the stamp and diagnostic share, now has a summarized view of the collected files, roles, resource providers and event information to better help understand the success and failure rate of the log collection process.
 - Added cmdlets [**Set-AzSLegalNotice**](../reference/pep-2002/set-azslegalnotice.md) and [**Get-AzSLegalNotice**](../reference/pep-2002/get-azslegalnotice.md) to the privileged endpoint (PEP) to retrieve and update the content of the login banner text after deployment.
 
@@ -108,6 +107,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - The Azure Stack Hub user portal now uses the full screen experience for load balancers, Network Security Groups, DNS zones, and disk and VM creation.
 - In the 2102 release, the Windows Admin Center (WAC) is enabled on demand from an unlocked PEP session. By default, WAC is not enabled. To enable it, specify the `-EnableWac` flag; for example, `unlock-supportsession -EnableWac`.
 - Proactive log collection now uses an improved algorithm, which captures logs during error conditions that aren't visible to an operator. This ensures that the correct diagnostic info is collected at the right time, without needing any operator interaction. In some cases, Microsoft support can begin troubleshooting and resolving problems sooner. Initial algorithm improvements focus on patch and update operations. Enabling proactive log collections is recommended, as more operations are optimized and the benefits increase.
+- There is a temporary increase of 10GB memory used by the Azure Stack Hub infrastructure. 
 
 ### Fixes
 
