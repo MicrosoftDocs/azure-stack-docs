@@ -4,10 +4,10 @@ titleSuffix: Azure Stack Hub
 description: Learn to create and upload an Azure virtual hard disk (VHD) that contains a Red Hat Linux operating system.
 author: sethmanheim
 ms.topic: article
-ms.date: 2/18/2021
+ms.date: 3/3/2021
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.lastreviewed: 2/18/2021
+ms.lastreviewed: 3/3/2021
 
 # Intent: As an Azure Stack operator, I want to prepare a red hat-based virtual machine for Azure Stack.
 # Keyword: red hat operating system azure stack
@@ -22,7 +22,8 @@ This article describes how to prepare a Red Hat Enterprise Linux virtual machine
 There are two ways that you can offer Red Hat-based VM in Azure Stack Hub:
 
 - You can add offer the machine through the Azure Stack Hub Marketplace.
-    - Red Hat Enterprise Linux Images are a private offering on Azure Stack Hub. To make this offering available to your **Marketplace Management** tab, you will need to [complete a survey](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR_e32WQju3tMrgXNcUR94AVUNkJTWjdQRjc3TzFLREdGU0dIVFRUQ1JCSi4u).
+    - o	Get familiar with the [Red Hat Cloud Access program](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) terms. Enable your Red Hat subscriptions for Cloud Access at [Red Hat Subscription-Manager](https://access.redhat.com/management/cloud). You need to have on hand the Azure subscriptions that your Azure Stack Hub is registered with to be registered for Cloud Access.
+    - Red Hat Enterprise Linux Images are a private offering on Azure Stack Hub. To make this offering available to your **Marketplace Management** tab, you will need to [complete a survey](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR_e32WQju3tMrgXNcUR94AVUNkJTWjdQRjc3TzFLREdGU0dIVFRUQ1JCSi4u). After you post the survey, it'll take 7 business days to see it in your **Add from Azure** tab within Marketplace Management.
     - For more information, see [Azure Stack Hub Marketplace overview](azure-stack-marketplace.md).
 - You can add your own custom to your Azure Stack Hub and then offer the image in the Marketplace. 
     1. You will need to have Red Hat cloud access.
