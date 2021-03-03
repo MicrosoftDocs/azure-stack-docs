@@ -3,7 +3,7 @@ title: Transparent proxy for Azure Stack Hub integrated systems
 description: Overview of transparent property in Azure Stack Hub integrated systems.
 author: PatAltimore
 ms.topic: conceptual
-ms.date: 01/25/2021
+ms.date: 02/24/2021
 ms.author: patricka
 ms.reviewer: sranthar
 ms.lastreviewed: 01/25/2021
@@ -30,7 +30,7 @@ When configuring a transparent proxy, you can choose to send all outbound traffi
 
 ## Partner integration
 
-Microsoft has partnered with leading proxy vendors in the industry to validate Azure Stack Hub’s use case scenarios with a transparent proxy configuration. The following diagram is an example Azure Stack Hub network configuration with HA Proxies. External proxy devices must be placed north of the the border devices.
+Microsoft has partnered with leading proxy vendors in the industry to validate Azure Stack Hub’s use case scenarios with a transparent proxy configuration. The following diagram is an example Azure Stack Hub network configuration with HA Proxies. External proxy devices must be placed north of the border devices.
 
 ![Network diagram with proxy before border devices](./media/azure-stack-transparent-proxy/proxy.svg)
 
@@ -40,10 +40,11 @@ Microsoft has partnered with leading proxy vendors in the industry to validate A
 
 For a sample border configuration, see [Example border configuration](#example-border-configuration) section in this article.
 
-Please review the following documents for validated transparent proxy configurations with Azure Stack Hub: 
+Review the following documents for validated transparent proxy configurations with Azure Stack Hub:
 
 - [Configure a Check Point Security Gateway transparent proxy](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk171559)
 - [Configure a Sophos XG firewall transparent proxy](https://community.sophos.com/xg-firewall/f/recommended-reads/124106/xg-firewall-integration-with-azure-stack-hub)
+- [Integrating Citrix ADC, Citrix Secure Web Gateway with Azure Stack Hub](https://www.citrix.com/blogs/2021/02/19/integrating-citrix-adc-citrix-secure-web-gateway-with-azure-stack-hub/)
 
 In scenarios where outbound traffic from Azure Stack Hub is required to flow through an explicit proxy, Sophos and Checkpoint devices provide a dual-mode feature that allows specific ranges of traffic through transparent mode, while other ranges can be configured to pass through an explicit mode. Using this feature, these proxy devices can be configured such that only infrastructure traffic is sent through the transparent proxy, while all tenant traffic is sent through the explicit mode.
 
@@ -54,7 +55,7 @@ In scenarios where outbound traffic from Azure Stack Hub is required to flow thr
 
 The solution is based on policy based routing (PBR) which uses an administrator defined set of criteria implemented by an access control list (ACL). The ACL categorizes the traffic that is directed to the next-hop IP of the proxy devices implemented in a route-map, rather than normal routing that is based only on destination IP address. Specific infrastructure network traffic for ports 80 and 443 are routed from the border devices to the transparent proxy deployment. The transparent proxy does URL filtering, and *none allowed* traffic is dropped.
 
-The following configuration sample is for an Cisco Nexus 9508 Chassis. 
+The following configuration sample is for a Cisco Nexus 9508 Chassis.
 
 In this scenario, the source infrastructure networks that require access to the internet are as follows:
 
@@ -62,7 +63,7 @@ In this scenario, the source infrastructure networks that require access to the 
 - Infrastructure network – Last /27
 - BMC Network – Last /27
 
-The following subnets receive Policy Based Routing (PBR) treatment in this scenario:
+The following subnets receive policy based routing (PBR) treatment in this scenario:
 
 | Network | IP Range | Subnet receiving PBR treatment
 |---------|----------|-------------------------------
