@@ -124,7 +124,6 @@ New features inclue:
 ## Known issues
 
 -   Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. We recommend deploying one service at the time.
--   Running aks-engine get-versions will produce information applicable to Azure and Azure Stack Hub, however, there is not an explicit way to discern what corresponds to Azure Stack Hub. Do not use this command to figure out what versions are available to upgrade. Use the upgrade reference table described above.
 -   Since the aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
 
 > [!NOTE]  
