@@ -5,9 +5,9 @@ author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 03/01/21
+ms.date: 03/01/2021
 ms.reviewer: jfggdl
-ms.lastreviewed: 03/01/21
+ms.lastreviewed: 03/01/2021
 zone_pivot_groups: state-connected-disconnected
 ---
 
