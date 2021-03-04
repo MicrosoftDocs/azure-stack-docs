@@ -51,7 +51,7 @@ The PowerShell Azure Stack privileged endpoint (PEP) is a pre-configured remote 
 | [Repair-VirtualDisk](Repair-VirtualDisk.md) | No description. |
 | [Reset-DatacenterIntegrationConfiguration](Reset-DatacenterIntegrationConfiguration.md) | Script to reset Datacenter Integration changes. |
 | [Send-AzureStackDiagnosticLog](Send-AzureStackDiagnosticLog.md) | Sends Azure Stack Diagnostic Logs to Microsoft. |
-| [Set-AzSLegalNotice](Get-AzSLegalNotice.md) | Set legal notice caption and text |
+| [Set-AzSLegalNotice](Set-AzSLegalNotice.md) | Set legal notice caption and text |
 | [Set-CloudAdminUserPassword](Set-CloudAdminUserPassword.md) | No description. |
 | [Set-GraphApplication](Set-GraphApplication.md) | Set-GraphApplication is a wrapper function to call ADFS Graph cmdlets on AD FS. |
 | [Set-ServiceAdminOwner](Set-ServiceAdminOwner.md) | Script to update service administrator. |
