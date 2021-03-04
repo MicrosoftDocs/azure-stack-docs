@@ -111,10 +111,10 @@ helm install csi-driver-nfs csi-driver-nfs/csi-driver-nfs --namespace kube-syste
 > [!NOTE]  
 > The NFS Server is just for validation, set up and maintain your NFS Server properly for production.
 
-```bash  
-set up and maintain your NFS Server properly for production.
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/deploy/example/nfs-provisioner/nfs-server.yaml
+Set up and maintain your NFS Server properly for production.
 
+```bash  
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/deploy/example/nfs-provisioner/nfs-server.yaml
 ```
 
 ### Deploy Storage Class
