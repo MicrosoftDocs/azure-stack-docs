@@ -293,8 +293,6 @@ Block (SMB) share. For example:
 To delete a share that was created by this cmdlet, use
 the [Remove-SmbShare](https://docs.microsoft.com/powershell/module/smbshare/remove-smbshare?view=win10-ps) cmdlet.
 
-For example:
-
 ## Remove the OAW VM
 
 The following script removes the OAW VM, which is used to access Azure Stack Hub
