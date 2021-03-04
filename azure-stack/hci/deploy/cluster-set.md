@@ -200,8 +200,8 @@ When creating a cluster set, you following prerequisites are recommended:
 
 After creating the cluster set, the next step is to create new virtual machines. Normally, when it is time to create virtual machines and add them to a cluster, you need to do some checks on the clusters to see which it may be best to run on. These checks could include:
 
-- How much memory is available on the cluster nodes?
-- How much disk space is available on the cluster nodes?
+- Available memory on the cluster nodes
+- Available disk space on the cluster nodes
 - Does the virtual machine require specific storage requirements (i.e. I want my SQL Server virtual machines to go to a cluster running faster drives; or, my infrastructure virtual machine is not as critical and can run on slower drives).
 
 Once this questions are answered, you create the virtual machine on the cluster you need it to be. One of the benefits of cluster sets is that cluster sets do those checks for you and place the virtual machine on the most optimal node.
