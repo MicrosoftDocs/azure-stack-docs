@@ -4,7 +4,7 @@ description: How to register your Windows Admin Center gateway with Azure.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 03/04/2021
 ---
 
 # Register Windows Admin Center with Azure
@@ -14,7 +14,7 @@ ms.date: 02/10/2021
 To use Azure services with Windows Admin Center, you must first [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) on a management PC and complete a one-time registration of your Windows Admin Center gateway. This is a prerequisite for [registering your cluster](../deploy/register-with-azure.md) with Azure.
 
    > [!IMPORTANT]
-   > Register Windows Admin Center on the same management PC you plan to use to register your cluster, using the same Azure Active Directory (tenant) ID.
+   > Register Windows Admin Center on the same management PC you plan to use to register your cluster, using the same Azure Active Directory (tenant) ID and Application ID.
 
 ## Complete the registration process
 
@@ -32,13 +32,13 @@ To use Azure services with Windows Admin Center, you must first [install Windows
 
    You should see the following message: "You have signed in to the Windows Admin Center application on your device." Close the browser window to return to the original registration page.
 
-4. Connect to Azure Active Directory by supplying your Azure Active Directory (tenant) ID. If you already have an Azure tenant ID and you've followed the preceding steps, the ID field may be pre-populated. Leave **Azure Active Directory application** set to **Create New** if your organization didn't provide you with an existing ID. If you already have an ID, click **Use existing**, and an empty field will appear for you to enter the ID provided by your admin. After entering your ID, Windows Admin Center will confirm that an account with that ID is found. If you have an existing ID but don't know what it is, follow [these steps](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) to retrieve it.
+4. Connect to Azure Active Directory by supplying your Azure Active Directory (tenant) ID and application ID. If you already have an Azure tenant ID and you've followed the preceding steps, the tenant ID field may be pre-populated and may contain multiple options. Select the correct tenant ID. If your Azure AD administrator has provided you with an application ID, click **Use existing**, and an empty field will appear for you to enter the ID provided by your admin. After entering your ID, Windows Admin Center will confirm that an account with that ID is found. If you have an existing ID but don't know what it is, follow [these steps](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) to retrieve it. If your organization didn't provide you with an existing ID, leave **Azure Active Directory application** set to **Create New**.
 
    :::image type="content" source="media/register-wac/connect-to-aad.png" alt-text="Connect to Azure Active Directory by supplying your existing Azure Active Directory (tenant) ID or creating a new one" lightbox="media/register-wac/connect-to-aad.png":::
 
-5. Click the **Connect** button to connect to Azure. You should see a confirmation that you are now connected to Azure AD.
+5. Click the **Connect** button to connect to Azure. If you are an Azure AD admin or if you used an existing application ID, you should see a confirmation that you are now connected to Azure AD. If not, you may see a message that you need admin approval. If this is the case, select **Return to the application without granting consent** and contact your Azure AD admin to grant permissions to the new application ID that was created upon registration by following the instructions in step 6.
 
-6. Grant permissions in Azure by going to **App permissions** in the Azure portal. Under **Grant consent**, select **Grant admin consent**.
+6. If you are an Azure AD admin, grant permissions in Azure by navigating to **Azure Active Directory**, then **App registrations**. Select the app identity named after the gateway you're registering and navigate to **API permissions**. Under **Grant consent**, select **Grant admin consent**.
 
 7. Close the window and sign into Windows Admin Center with your Azure account.
 
