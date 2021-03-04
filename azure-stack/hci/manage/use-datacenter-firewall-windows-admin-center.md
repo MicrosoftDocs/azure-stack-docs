@@ -106,4 +106,4 @@ You can delete an ACL if you no longer need it.
 
 ## Next steps
 For more information, see also:
-- [Software Defined Networking (SDN) in Azure Stack HCI](../concepts/software-defined-networking.md)
+- [Software Defined Networking (SDN) in Azure Stack HCI and Windows Server](../concepts/software-defined-networking.md)
