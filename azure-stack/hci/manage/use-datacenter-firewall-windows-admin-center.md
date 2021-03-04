@@ -15,8 +15,6 @@ This topic provides step-by-step instructions on how to use Windows Admin Center
 
 Before you configure ACLs, you need to deploy Network Controller. To learn about Network Controller, see [What is Network Controller?](../concepts/network-controller-overview.md) To deploy Network Controller using PowerShell scripts, see [Deploy an SDN infrastructure](sdn-express.md).
 
-<!---Deploying NC pulled from the Cluster creation wizard. Note in review handoff to Anirban.--->
-
 Additionally, if you want to apply ACLs to an SDN logical network, you need to first create a logical network. Likewise, if you want to apply ACLs to an SDN virtual network, you need to first create a virtual network. To learn more, see:
 - [Manage tenant logical networks](tenant-logical-networks.md)
 - [Manage tenant virtual networks](tenant-virtual-networks.md)
@@ -57,7 +55,7 @@ After you create an ACL, you’re ready to create ACLs rules. If you want to app
 ## Apply an ACL to a virtual network
 After you create an ACL and rules for it, you need to apply them to either a virtual network subnet, a logical network subnet, or a network interface.
 
-:::image type="content" source="./media/access-control-lists/apply-acl-virtual-netowrk.png" alt-text="Screenshot of Windows Admin Center showing the Virtual subnet pane." lightbox="./media/access-control-lists/apply-acl-virtual-netowrk.png":::
+:::image type="content" source="./media/access-control-lists/apply-acl-virtual-network.png" alt-text="Screenshot of Windows Admin Center showing the Virtual subnet pane." lightbox="./media/access-control-lists/apply-acl-virtual-network.png":::
 
 1. Under **Tools**, scroll down to the **Networking** area, and select **Virtual networks**.
 1. Select the **Inventory** tab, and then select a virtual network. On the subsequent page, select a virtual network subnet, and then select **Settings**.
