@@ -17,7 +17,7 @@ A secret in Kubernetes is an object that contains a small amount of sensitiv
 
 ## Enable encryption of etcd secrets
 
-Use the `-enableSecretsEncryption` parameter of the [New-AksHciCluster](./new-akshcicluster) command to enable encryption of etcd secrets and automate encryption key rotation as shown below: 
+Use the `-enableSecretsEncryption` parameter of the [New-AksHciCluster](./new-akshcicluster.md) command to enable encryption of etcd secrets and automate encryption key rotation as shown below: 
 
 ```powershell
 New-AksHciCluster -name mynewcluster -enableSecretsEncryption
