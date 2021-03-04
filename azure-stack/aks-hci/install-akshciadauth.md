@@ -9,10 +9,10 @@ ms.author: jeguan
 
 # Install-AksHciAdAuth
 
-## SYNOPSIS
+## Synopsis
 Install Active Directory authentication.
 
-## SYNTAX
+## Syntax
 
 ```powershell
 Install-AksHciAdAuth -name <String>
@@ -54,7 +54,7 @@ Install-AksHciAdAuth -name <String>
                     
 ```
 
-## DESCRIPTION
+## Description
 Install Active Directory authentication.
 
 ## EXAMPLES
@@ -64,7 +64,7 @@ Install Active Directory authentication.
 PS C:\> Install-AksHciAdAuth -name mynewcluster1 -keytab <.\current.keytab> -previousKeytab <.\previous.keytab> -SPN <service/principal@CONTOSO.COM> -adminUser CONTOSO\Bob
 ```
 
-## PARAMETERS
+## Parameters
 
 ### -name
 The alphanumeric name of your Kubernetes cluster.

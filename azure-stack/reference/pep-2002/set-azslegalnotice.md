@@ -22,7 +22,7 @@ Set-AzSLegalNotice [-Caption <String>] [-Text <String>]
 ```
 
 ## Description
-Sets the legal notice caption and text that is presented after sign-in using the `Enter-PSSession` cmdlet.
+Sets the legal notice caption and text that is presented, after sign-in using the `Enter-PSSession` cmdlet.
 
 ## Examples
 

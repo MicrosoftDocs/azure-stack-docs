@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 02/17/2021
+ms.date: 02/26/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -41,11 +41,9 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 <!-- ## Portal -->
 
-<!-- ## Networking -->
+## Virtual network gateway
 
-### Virtual network gateway
-
-#### Documentation
+### Documentation
 
 - Applicable: This issue applies to all supported releases.
 - Cause: The documentation links in the overview page of Virtual Network gateway link to Azure-specific documentation instead of Azure Stack Hub. Use the following links for the Azure Stack Hub documentation:
@@ -56,18 +54,28 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
   - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
   - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
-### Load Balancer
+## Load Balancer
 
-#### IPv6 button visible in frontend IP configuration
+### IPv6 button visible in frontend IP configuration
 
 - Applicable: This issue applies to the 2102 release.
 - Cause: The IPv6 button is visible but disabled when creating the frontend IP configuration of a public load balancer. IPv6 is not supported on Azure Stack Hub.
 - Occurrence: Common
 
-#### Backend port and frontend port need to be the same when floating IP is enabled
+### Backend port and frontend port need to be the same when floating IP is enabled
 
-- Applicable: This issue applies to all releases. 
+- Applicable: This issue applies to all supported releases.
 - Cause: Both the frontend port and backend port need to be the same in the load balancing rule when floating IP is enabled. This is by design.
+- Occurrence: Common
+
+## Networking
+
+### Admin and Tenant Portal
+
+#### IPv6 button visible on 'Add frontend IP address' on a Load Balancer
+
+- Applicable: This issue applies to releases 2102 and later.
+- Cause: IP versions IPv4 and IPv6 buttons are visible on the Add frontend IP address on a load balancer. These buttons are disabled and cannot be selected.
 - Occurrence: Common
 
 <!-- ## Compute -->
@@ -104,16 +112,6 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Applicable: This issue applies to all supported releases.
 - Cause: The two administrative subscriptions that were introduced with version 1804 should not be used. The subscription types are **Metering** subscription, and **Consumption** subscription.
 - Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
-- Occurrence: Common
-
-## Networking
-
-### Admin and Tenant Portal
-
-#### IPv6 button visible on 'Add frontend IP address' on a Load Balancer
-
-- Applicable: This issue applied to releases 2102 and later.
-- Cause: IP versions IPv4 and IPv6 buttons are visible on the Add frontend IP address on a load balancer. These buttons are disabled and cannot be selected. 
 - Occurrence: Common
 
 ### Virtual Network Gateway

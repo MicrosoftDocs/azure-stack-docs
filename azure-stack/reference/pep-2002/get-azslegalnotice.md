@@ -13,7 +13,7 @@ ms.lastreviewed: 02/19/2021
 # Get-AzSLegalNotice
 
 ## Synopsis
-Sets the legal notice caption and text.
+Gets the legal notice caption and text.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Get-AzSLegalNotice
 ```
 
 ## Description
-Gets the legal notice caption and text, if it was previously set by the `Get-AzSLegalNotice` cmdlet.
+Gets the legal notice caption and text, if it was previously set by the [Set-AzSLegalNotice](set-azslegalnotice.md) cmdlet.
 
 ## Examples
 
