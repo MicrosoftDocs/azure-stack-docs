@@ -20,7 +20,7 @@ This article shows you how to download and install the Event Hubs resource provi
 [!INCLUDE [prereqs](../includes/resource-provider-va-package-download-common.md)]
 
 ::: zone pivot="state-connected"
-For a connected scenario, you download the items from the Azure marketplace directly to the Azure Stack Hub marketplace:
+For a connected scenario, you download the items from Azure Marketplace directly to Azure Stack Hub Marketplace:
 
 1. Sign in to the Azure Stack Hub administrator portal.
 2. Select **Marketplace Management** on the left.
