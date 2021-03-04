@@ -34,7 +34,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [remove-akshcicluster](remove-akshcicluster.md) | Delete a managed Kubernetes cluster. |
 | [restart-akshci](restart-akshci.md) | Restart Azure Kubernetes Service on Azure Stack HCI and remove all deployed Kubernetes clusters. |
 | [set-akshciclusternodecount](set-akshciclusternodecount.md) | Scale the number of control plane nodes or worker nodes in a cluster. |
-| [set-akshciconfig](Sset-akshciconfig.md) | Set or update the configurations settings for the Azure Kubernetes Service host. |
+| [set-akshciconfig](set-akshciconfig.md) | Set or update the configurations settings for the Azure Kubernetes Service host. |
 | [uninstall-akshci](uninstall-akshci.md) | Remove Azure Kubernetes Service on Azure Stack HCI. |
 | [uninstall-akshciadauth](uninstall-akshciadauth.md) | Remove Active Directory authentication. |
 | [update-akshci](update-akshci.md) | Update the Azure Kubernetes Service host to the latest Kubernetes version. |
