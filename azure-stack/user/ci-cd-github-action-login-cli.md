@@ -172,7 +172,7 @@ You can use GitHub secrets to encrypt sensitive information to use in your actio
 
 ### Optional: Install Azure Stack Hub Tools on your self-hosted runner
 
-The instructions in this article do not require access to the [Azure Stack Hub Tools](../operator/azure-stack-powershell-download.md?tabs=), but as you develop your own workflow you may need to use the tools. The following instructions can help you install the tools on your Windows self-hosted runner. For more information about Azure Stack Hub Tools, see [Download Azure Stack Hub Tools from GitHub](../operator/azure-stack-powershell-download.md?tabs=). These instructions assume you have installed the package manager Chocolatey.
+The instructions in this article do not require access to the [Azure Stack Hub Tools](../operator/azure-stack-powershell-download.md?tabs=az), but as you develop your own workflow you may need to use the tools. The following instructions can help you install the tools on your Windows self-hosted runner. For more information about Azure Stack Hub Tools, see [Download Azure Stack Hub Tools from GitHub](../operator/azure-stack-powershell-download.md?tabs=az). These instructions assume you have installed the package manager Chocolatey.
 
 1. Install Git.
     ```powershell  
@@ -199,7 +199,7 @@ The instructions in this article do not require access to the [Azure Stack Hub T
     cd AzureStack-Tools-az
     ```
 
-3. If you need your runner to connect to your Azure Stack Hub instance, you can use PowerShell. You can find the instructions in the article [Connect to Azure Stack Hub with PowerShell](../operator/azure-stack-powershell-configure-admin.md?tabs=).
+3. If you need your runner to connect to your Azure Stack Hub instance, you can use PowerShell. You can find the instructions in the article [Connect to Azure Stack Hub with PowerShell](../operator/azure-stack-powershell-configure-admin.md?tabs=az1%2Caz2%2Caz3).
 
 ## Create a self-hosted runner
 
