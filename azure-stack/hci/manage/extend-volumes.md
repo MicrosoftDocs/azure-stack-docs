@@ -11,7 +11,7 @@ ms.date: 03/04/2021
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-This topic provides instructions for expanding volumes on an Azure Stack HCI cluster by using Windows Admin Center.
+This topic provides instructions for expanding volumes on a cluster by using Windows Admin Center and PowerShell.
 
 > [!WARNING]
 > **Not supported: resizing the underlying storage used by Storage Spaces Direct.** If you are running Storage Spaces Direct in a virtualized storage environment, including in Azure, resizing or changing the characteristics of the storage devices used by the virtual machines isn't supported and will cause data to become inaccessible. Instead, follow the instructions in the [Add servers or drives](/windows-server/storage/storage-spaces/add-nodes) section to add additional capacity before expanding volumes.
