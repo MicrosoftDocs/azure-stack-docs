@@ -4,10 +4,10 @@ description: Establish the requirements for running the ASK Engine on your Azure
 author: mattbriggs
 
 ms.topic: article
-ms.date: 3/1/2021
+ms.date: 3/4/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 3/1/2021
+ms.lastreviewed: 3/4/2021
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -51,7 +51,7 @@ You can set the following items.
 
 ## Matching engine to base image version
 
-The AKS engine deploys a customized Ubuntu Server OS to each cluster node image, the **AKS Base Ubuntu and Windows Image Distro**. Any AKS engine version is dependent on a specific image version made available in your Azure Stack Hub by your Azure Stack Hub operator. You can find a table listing the AKS engine versions and corresponding supported Kubernetes versions at [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions). For example, AKS engine version `v0.55.0` depends on version `2020.08.24` of the AKS Base Ubuntu and Windows Image Distro. Ask your Azure Stack Hub operator to download the specific image version from the Azure Marketplace to the Azure Stack Hub Marketplace.
+The AKS engine deploys a customized Ubuntu Server OS to each cluster node image, the **AKS Base Ubuntu and Windows Image Distro**. Any AKS engine version is dependent on a specific image version made available in your Azure Stack Hub by your Azure Stack Hub operator. You can find a table listing the AKS engine versions and corresponding supported Kubernetes versions at [Supported Kubernetes Versions](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping). For example, AKS engine version `v0.55.0` depends on version `2020.08.24` of the AKS Base Ubuntu and Windows Image Distro. Ask your Azure Stack Hub operator to download the specific image version from the Azure Marketplace to the Azure Stack Hub Marketplace.
 
 You will trigger and error if the image is not available in your Azure Stack Hub Marketplace. For example, if you're currently using AKS engine version v0.55.0 and AKS Base Ubuntu and Windows Image Distro version `2020.08.24` isn't available, you will see the following error when running the AKS engine: 
 

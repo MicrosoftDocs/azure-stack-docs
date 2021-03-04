@@ -4,10 +4,10 @@ description: How to deploy a Kubernetes cluster on Azure Stack Hub from a client
 author: mattbriggs
 
 ms.topic: article
-ms.date: 2/5/2021
+ms.date: 3/4/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 2/5/2021
+ms.lastreviewed: 3/4/2021
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -47,7 +47,7 @@ This section looks at creating an API model for your cluster.
     > [!NOTE]  
     > If you don't have nano installed, you can install nano on Ubuntu: `sudo apt-get install nano`.
 
-3.  In the kubernetes-azurestack.json file, find orchestratorRelease and orchestratorVersion. Select one of the supported Kubernetes versions; [you can find the version table in the release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping). Specify the `orchestratorRelease` as x.xx and orchestratorVersion as x.xx.x. For a list of current versions, see [Supported AKS engine Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions)
+3.  In the kubernetes-azurestack.json file, find orchestratorRelease and orchestratorVersion. Select one of the supported Kubernetes versions; [you can find the version table in the release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping). Specify the `orchestratorRelease` as x.xx and orchestratorVersion as x.xx.x. For a list of current versions, see [Supported AKS engine Versions](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping)
 
 4.  Find `customCloudProfile` and provide the URL to the tenant portal. For example, `https://portal.local.azurestack.external`. 
 
