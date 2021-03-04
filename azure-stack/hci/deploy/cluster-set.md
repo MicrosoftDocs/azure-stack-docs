@@ -3,7 +3,7 @@ title: Deploy an Azure Stack HCI cluster set
 description: Learn how to Deploy an Azure Stack HCI cluster set
 author: v-dasis
 ms.topic: how-to
-ms.date: 02/19/2021
+ms.date: 03/04/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -71,7 +71,7 @@ Cluster sets allows for clustering multiple clusters together to create a large 
 3. Add additional compute nodes with drives into the current cluster. This takes us back to Option 1 needing to be considered.
 4. Purchase a whole new cluster
 
-This is where cluster sets provides the benefit of scaling. If I add my clusters into a cluster set, I can take advantage of storage or memory that may be available on another cluster without any additional purchases. From a resiliency perspective, adding additional nodes to a Storage Spaces Direct is not going to provide additional votes for quorum. As mentioned in [Drive symmetry considerations](../windows-server/storage/storage-spaces/drive-symmetry-considerations.md), a Storage Spaces Direct Cluster can survive the loss of 2 nodes before going down. If you have a 4-node HCI cluster, 3 nodes go down will take the entire cluster down. If you have an 8-node cluster, 3 nodes go down will take the entire cluster down. With Cluster sets that has two 4-node HCI clusters in the set, 2 nodes in one HCI go down and 1 node in the other HCI go down, both clusters remain up. Is it better to create one large 16-node Storage Spaces Direct cluster or break it down into four 4-node clusters and use cluster sets?  Having four 4-node clusters with cluster sets gives the same scale, but better resiliency in that multiple compute nodes can go down (unexpectedly or for maintenance) and production remains.
+This is where cluster sets provides the benefit of scaling. If I add my clusters into a cluster set, I can take advantage of storage or memory that may be available on another cluster without any additional purchases. From a resiliency perspective, adding additional nodes to a Storage Spaces Direct is not going to provide additional votes for quorum. As mentioned in [Drive symmetry considerations](https://docs.microsoft.com/windows-server/storage/storage-spaces/drive-symmetry-considerations), a Storage Spaces Direct Cluster can survive the loss of 2 nodes before going down. If you have a 4-node HCI cluster, 3 nodes go down will take the entire cluster down. If you have an 8-node cluster, 3 nodes go down will take the entire cluster down. With Cluster sets that has two 4-node HCI clusters in the set, 2 nodes in one HCI go down and 1 node in the other HCI go down, both clusters remain up. Is it better to create one large 16-node Storage Spaces Direct cluster or break it down into four 4-node clusters and use cluster sets?  Having four 4-node clusters with cluster sets gives the same scale, but better resiliency in that multiple compute nodes can go down (unexpectedly or for maintenance) and production remains.
 
 ## Considerations for deployment
 
