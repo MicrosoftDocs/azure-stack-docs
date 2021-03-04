@@ -32,6 +32,10 @@ Removing the MySQL resource provider will delete the associated plans and quotas
   
 2. Get a copy of the MySQL resource provider installation package and then run the self-extractor to extract the contents to a temporary directory.
 3. Open a new elevated PowerShell console window and change to the directory where you extracted the MySQL resource provider installation files.
+
+> [!IMPORTANT]
+> We strongly recommend using **Clear-AzureRmContext -Scope CurrentUser** and **Clear-AzureRmContext -Scope Process** to clear the cache before running the script.
+
 4. Run the DeployMySqlProvider.ps1 script using the following parameters:
     - **Uninstall**: Removes the resource provider and all associated resources.
     - **PrivilegedEndpoint**: The IP address or DNS name of the privileged endpoint.

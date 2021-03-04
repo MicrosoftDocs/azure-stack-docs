@@ -36,6 +36,10 @@ Removing the SQL resource provider will delete the associated plans and quotas m
 
 3. Open a new elevated PowerShell console window and change to the directory where you extracted the SQL resource provider installation files.
 
+> [!IMPORTANT]
+> We strongly recommend using **Clear-AzureRmContext -Scope CurrentUser** and **Clear-AzureRmContext -Scope Process** to clear the cache before running the script.
+
+
 4. Run the DeploySqlProvider.ps1 script using the following parameters:
 
     * **Uninstall**: Removes the resource provider and all associated resources.

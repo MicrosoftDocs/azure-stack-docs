@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 02/17/2021
+ms.date: 02/18/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -87,7 +87,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 - Implemented internal monitoring for Network Controller and SLB host agents, so the services are auto-remediated if they ever enter into a stopped state.
-- Active Directory Federation Services (AD FS) now retrieves the new token signing certificate afer the customer has rotated it on their own AD FS server. To take advantage of this new capability for already configured systems, the AD FS integration must be configured again. For more information, see [Integrate AD FS identity with your Azure Stack Hub datacenter](azure-stack-integrate-identity.md).
+- Active Directory Federation Services (AD FS) now retrieves the new token signing certificate after the customer has rotated it on their own AD FS server. To take advantage of this new capability for already configured systems, the AD FS integration must be configured again. For more information, see [Integrate AD FS identity with your Azure Stack Hub datacenter](azure-stack-integrate-identity.md).
 - Changes to the startup and shutdown process on infrastructure role instances and their dependencies on scale unit nodes. This increases the reliability for Azure Stack Hub startup and shutdown.
 - The **AzSScenarios** suite of the **Test-AzureStack** validation tool has been updated to enable Cloud Service Providers to run this suite successfully with multi-factor authentication enforced on all customer accounts.
 - Improved alert reliability by adding suppression logic for 29 customer facing alerts during lifecycle operations.
@@ -103,7 +103,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
   Note that these changes are added at the host level of an Azure Stack Hub system. Please contact your OEM to arrange making the required changes at the top-of-rack (ToR) network switches. This ToR change can be performed either prior to updating to the 2008 release or after updating to 2008. For more information, see the [Network Integration documentation](azure-stack-network.md).
 
-- The GPU capable VM sizes **NCas_v4 (NVIDIA T4)** have been replaced in this build with the VM sizes **NCasT4_v3**, to be consistent with Azure. Note that those are not visible in the portal yet, and can only be used via Azure Resouce Manager templates.
+- The GPU capable VM sizes **NCas_v4 (NVIDIA T4)** have been replaced in this build with the VM sizes **NCasT4_v3**, to be consistent with Azure. Note that those are not visible in the portal yet, and can only be used via Azure Resource Manager templates.
 
 ### Fixes
 
@@ -136,7 +136,7 @@ Because Azure Stack Hub hotfixes are cumulative, as a best practice you should i
 
 After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2008.25.114](hotfix-1-2008-25-114.md)
+- [Azure Stack Hub hotfix 1.2008.26.116](hotfix-1-2008-26-116.md)
 ::: moniker-end
 
 ::: moniker range="azs-2005"
@@ -189,7 +189,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Removed the actions to stop, shut down, and restart an infrastructure role instance from the admin portal. The corresponding APIs have also been removed in the Fabric Resource Provider. The following PowerShell cmdlets in the admin RM module and AZ preview for Azure Stack Hub no longer work: **Stop-AzsInfrastructureRoleInstance**, **Disable-InfrastructureRoleInstance**, and **Restart-InfrastructureRoleInstance**. These cmdlets will be removed from the next admin AZ module release for Azure Stack Hub.
 - Azure Stack Hub 2005 now only supports [App Service on Azure Stack Hub 2020 (versions 87.x)](app-service-release-notes-2020-Q2.md).
-- The user encryption setting that is required for hardware monitoring was changed from DES to AES to increase security. Please reach out to your hardware partner to learn how to change the setting in the base board management controller (BMC). After the change is made in the BMC, it may require you to run the command **Set-BmcCredential** again using the priviledged endpoint. For more information, see [Rotate secrets in Azure Stack Hub](azure-stack-rotate-secrets.md)
+- The user encryption setting that is required for hardware monitoring was changed from DES to AES to increase security. Please reach out to your hardware partner to learn how to change the setting in the base board management controller (BMC). After the change is made in the BMC, it may require you to run the command **Set-BmcCredential** again using the privileged endpoint. For more information, see [Rotate secrets in Azure Stack Hub](azure-stack-rotate-secrets.md)
 
 ### Fixes
 
@@ -228,7 +228,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2005 release of Azure Stack Hub must be applied on the 2002 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2002.65.171](https://support.microsoft.com/topic/d743db84-df31-496b-b37c-6e5618b4cc8f)
+- [Azure Stack Hub hotfix 1.2002.66.173](hotfix-1-2002-66-173.md)
 
 ### After successfully applying the 2005 update
 
@@ -236,7 +236,7 @@ Starting with the 2005 release, when you update to a new major version (for exam
 
 After the installation of 2005, if any 2005 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2005.29.100](hotfix-1-2005-29-100.md)
+- [Azure Stack Hub hotfix 1.2005.30.102](hotfix-1-2005-30-102.md)
 ::: moniker-end
 
 ::: moniker range="azs-2002"
@@ -336,7 +336,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue where Windows VM images from the RETAIL channel could not have their license activated by AVMA.
 - Fixed an issue where VMs would fail to be created if the number of virtual cores requested by the VM was equal to the node's physical cores. We now allow VMs to have virtual cores equal to or less than the node's physical cores.
 - Fixed an issue where we do not allow the license type to be set to "null" to switch pay-as-you-go images to BYOL.
-- Fixed an issue to allow extensions to be added to a VM scale set.
+- Fixed an issue to allow extensions to be added to a virtual machine scale set.
 
 ## Security updates
 
@@ -365,7 +365,7 @@ The 2002 release of Azure Stack Hub must be applied on the 1910 release with the
 After the installation of this update, install any applicable hotfixes.
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.2002.65.171](https://support.microsoft.com/topic/d743db84-df31-496b-b37c-6e5618b4cc8f)
+- [Azure Stack Hub hotfix 1.2002.66.173](hotfix-1-2002-66-173.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>

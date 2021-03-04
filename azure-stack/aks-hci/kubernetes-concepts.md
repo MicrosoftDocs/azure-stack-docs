@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 12/02/2020
 ---
 
-# Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI
+# Clusters and workloads for Azure Kubernetes Service on Azure Stack HCI
 
 > Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
 

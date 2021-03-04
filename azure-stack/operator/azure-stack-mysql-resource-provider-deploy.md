@@ -118,7 +118,7 @@ After you've completed all of the prerequisites, you can run the **DeployMySqlPr
 To deploy the MySQL resource provider, open a **new** elevated PowerShell window (not PowerShell ISE) and change to the directory where you extracted the MySQL resource provider binary files. 
 
 > [!IMPORTANT]
-> We strongly recommend using **Clear-AzureRmContext -Scope CurrentUser** and **Clear-AzureRmContext -Scope Process** to clear the cache before running the update script.
+> We strongly recommend using **Clear-AzureRmContext -Scope CurrentUser** and **Clear-AzureRmContext -Scope Process** to clear the cache before running the deployment or update script.
 
 Run the **DeployMySqlProvider.ps1** script, which completes the following tasks:
 

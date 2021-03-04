@@ -4,10 +4,10 @@ description: Create a Windows Server VM with PowerShell in Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: quickstart
-ms.date: 11/22/2020
+ms.date: 02/18/2021
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 11/22/2020
+ms.lastreviewed: 02/18/2021
 ms.custom: conteperfq4
 
 # Intent: As an Azure Stack user, I want to create a Windows Server VM with PowerShell in Azure Stack so that I can automate the creation of VMs.
@@ -313,7 +313,7 @@ $VirtualMachine = Set-AzVMSourceImage `
 $VirtualMachine = Set-AzVMOSDisk `
   -VM $VirtualMachine `
   -CreateOption FromImage | `
-  Set-AzVMBootDiagnostics -ResourceGroupName $ResourceGroupName `
+  Set-AzVMBootDiagnostic -ResourceGroupName $ResourceGroupName `
   -StorageAccountName $StorageAccountName -Enable |`
   Add-AzVMNetworkInterface -Id $nic.Id
 
