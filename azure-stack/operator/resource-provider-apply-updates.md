@@ -26,7 +26,7 @@ Resource providers are updated using the same update feature that is used to app
 2. Select the **All services** link on the left, then under the **Administration** section select **Updates**.
    [![All services page](media/resource-provider-apply-updates/1-all-services.png)](media/resource-provider-apply-updates/1-all-services.png#lightbox)
 
-3. On the **Updates** page, you find updates for the resource providers, under the **Resource provider** section.
+3. On the **Updates** page, you find updates for the resource providers under the **Resource provider** section, with **State** showing "Available".
 
    [![Screenshot that shows the Resource Provider section.](media/resource-provider-apply-updates/3-update-available.png)](media/resource-provider-apply-updates/3-update-available.png#lightbox)
 
@@ -48,9 +48,9 @@ If an update is available for a given resource provider:
 
 ## Apply an update
 
-Once the resource provider package has been downloaded:
+Once the resource provider package has been downloaded, return to the **Resource provider** section of the **Updates** page:
 
-1. From the **Resource provider** section of the **Updates** page, select the row of the resource provider you want to update. The **State** will show "Ready to install", and the **Install now** link at the top of the page becomes enabled.
+1. Select the row of the resource provider you want to update. The **State** will now show "Ready to install", and the **Install now** link at the top of the page becomes enabled.
 2. Select the **Install now** link and you're taken to the **Install** page for the resource provider. 
 3. Select the **Install** button to begin the installation.
 4. An "Installation in progress" notification will be shown in the upper right, and you return to the **Updates** page. The resource provider row **Status** column also changes to "Installing".
