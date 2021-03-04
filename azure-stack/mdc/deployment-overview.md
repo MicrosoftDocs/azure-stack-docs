@@ -38,10 +38,7 @@ The guide does not explain the operating procedures of Azure Stack Hub and does 
 
 The MDC is an integrated offering for Azure Stack Hub packaged in a standard 40-foot metal shipping container. 
 The container includes a climate control unit, lighting and alerting system. 
-The core Azure Stack Hub components are installed as three independent pods: Pod 1, Rack 1 and Rack 2, Pod 2, Rack 1 and Rack 2, and Pod 3, Rack 1 and Rack 2.
-
-Each pod consists of two 42U racks. A pod includes the top-of-rack (ToR) switches, edge switches, and a baseboard management controller (BMC) switch. Additionally, each pod includes a hardware lifecycle host (HLH) and a serial port concentrator. 
-Core compute and storage capacity is provided by Azure Stack Hub scale units (SU) consisting of eight Rugged Edge Appliance (REA) R840 servers. Additional storage capacity is provided by 48 Isilon storage nodes. Physical configuration of all pods is identical.
+The core Azure Stack Hub components are installed as pods.
 
 ## Terminology
 
@@ -54,9 +51,9 @@ The following table lists some of the terms used in this guide.
 |Azure Stack Hub Partner Toolkit|    A collection of software tools used to capture customer-specific input parameters and initiate installation and configuration of Azure Stack Hub. It includes the deployment worksheet, which is a Graphical User Interface (GUI) tool used for capturing and storing configurable parameters for Azure Stack Hub installation. It also includes the network configuration generator tool that uses deployment worksheet inputs to produce network configuration files for all physical network devices in the solution.|
 |OEM Extension Package    |A package of firmware, device drivers, and hardware management tools in a specialized format used by Azure Stack Hub during initial deployment and update.|
 |Serial port concentrator    |A physical device installed in each pod that provides network access to serial ports of network switches for deployment and management purposes.|
-|Scale unit    |A core component of Azure Stack Hub that provides compute and storage resources to Azure Stack Hub fabric infrastructure and workloads. Each pod includes eight MDC R840 servers also called nodes.|
-|Isilon storage |    An Azure Stack Hub component that is specific to the MDC solution. Isilon provides additional blob and file storage for Azure Stack Hub workloads. Each pod includes 48 Isilon storage nodes.|
-|Pod    |In the context of MDC, a pod is an independent logical unit consisting of two interconnected physical racks. A complete solution includes three pods installed in a single container.|
+|Scale unit    |A core component of Azure Stack Hub that provides compute and storage resources to Azure Stack Hub fabric infrastructure and workloads.|
+|Isilon storage |    An Azure Stack Hub component that is specific to the MDC solution. Isilon provides additional blob and file storage for Azure Stack Hub workloads. |
+|Pod    |In the context of MDC, a pod is an independent logical unit consisting of two interconnected physical racks.|
 
 ## Deployment workflow
 

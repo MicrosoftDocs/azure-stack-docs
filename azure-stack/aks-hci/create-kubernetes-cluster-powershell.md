@@ -88,7 +88,7 @@ Remove-AksHciCluster -name mycluster
 
 ## Get logs
 
-To get logs from your all your pods, run the following command. This command will create an output zipped folder called `akshcilogs` in the path `c:\%workingdirectory%\%AKS HCI release number%\%filename%` (for example, `c:\AksHci\0.9.6.0\akshcilogs.zip`).
+To get logs from your all your pods, run the [Get-AksHciLogs](./get-akshcilogs) command. This command will create an output zipped folder called `akshcilogs.zip` in your working directory. The full path to the `akshcilogs.zip` folder will be the output after running the command below.
 
 ```powershell
 Get-AksHciLogs
