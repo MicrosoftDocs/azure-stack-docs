@@ -111,7 +111,7 @@ In the API Model json file, please specify the release and version values under 
 
 If you are interested in participating in a private preview, you can [request preview access](https://forms.office.com/r/yqxXyiDcGG).
 
-New features inclue:
+New features include:
 -   General Availability of Ubuntu 18.04
 -   Certificate Rotation Public Preview [\#4214](https://github.com/Azure/aks-engine/pull/4214)
 -   T4 Nvidia GPU Private Preview [\#4259](https://github.com/Azure/aks-engine/pull/4259)
