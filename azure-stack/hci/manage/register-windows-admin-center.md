@@ -46,7 +46,7 @@ To use Azure services with Windows Admin Center, you must first [install Windows
 
    In Windows Admin Center, select the **Settings** gear icon in the upper right. Then, from the **Gateway** menu at the left, select **Azure**, and then click **View in Azure**, which will display Azure AD details. In the Azure portal, select **Manage > Authentication** from the menu on the left. In the **Redirect URIs** box, you will see an existing URI representing the first gateway that registered to the app ID. Select **Add URI** and add two new redirect URIs, such as *http://localhost:6516* and *https://localhost:6516*.
 
-   :::image type="content" source="media/register-wac/add-redirect-urls.png" alt-text="To enable multiple users in an organization to register Windows Admin Center using the same Azure app ID, add redirect URIs by selecting Authentication in the Azure portal" lightbox="media/register-wac/add-redirect-urls.png":::
+   :::image type="content" source="media/register-wac/add-redirect-uris.png" alt-text="To enable multiple users in an organization to register Windows Admin Center using the same Azure app ID, add redirect URIs by selecting Authentication in the Azure portal" lightbox="media/register-wac/add-redirect-uris.png":::
 
    > [!IMPORTANT]
    > If the Azure AD admin doesn't add redirect URIs and more than one user tries to register Windows Admin Center to the same app ID, the user will get an error that the reply URL doesn't match.
