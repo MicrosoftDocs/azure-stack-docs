@@ -2,11 +2,11 @@
 title: Update Microsoft Defender Antivirus
 titleSuffix: Azure Stack Hub
 description: Learn how to update Microsoft Defender Antivirus on Azure Stack Hub
-author: PatAltimore
+author: BryanLa
 
 ms.topic: article
 ms.date: 12/04/2019
-ms.author: patricka
+ms.author: bryanla
 ms.reviewer: fiseraci
 ms.lastreviewed: 12/04/2019
 
