@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 02/26/2021
+ms.date: 03/05/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -147,6 +147,12 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: Both the frontend port and backend port need to be the same in the load balancing rule when floating IP is enabled. This is by design.
 - Occurrence: Common
 
+### Stop-Deallocate VM results in MTU configuration
+
+- Applicable: This issue applies to all supported releases.
+- Cause: Performing **Stop-Deallocate** on a VM results in MTU configuration on the VM to be removed. This behavior is inconsistent with Azure.
+- Occurrence: Common
+
 <!-- ## Compute -->
 
 <!-- ## Storage -->
@@ -222,6 +228,12 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Applicable: This issue applies to all supported releases.
 - Cause: The **IdleTimeoutInMinutes** value for a public IP that is associated to a load balancer cannot be changed. The operation puts the public IP into a failed state.
 - Remediation: To bring the public IP back into a successful state, change the **IdleTimeoutInMinutes** value on the load balancer rule that references the public IP back to the original value (the default is 4 minutes).
+- Occurrence: Common
+
+### Stop-Deallocate VM results in MTU configuration
+
+- Applicable: This issue applies to all supported releases.
+- Cause: Performing **Stop-Deallocate** on a VM results in MTU configuration on the VM to be removed. This behavior is inconsistent with Azure.
 - Occurrence: Common
 
 ## Compute
