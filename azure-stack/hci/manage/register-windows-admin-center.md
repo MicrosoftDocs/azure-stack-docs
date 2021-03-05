@@ -43,8 +43,9 @@ To use Azure services with Windows Admin Center, you must first [install Windows
 6. If you are an Azure AD admin, grant permissions in Azure by navigating to **Azure Active Directory**, then **App registrations**. Select **All applications** and search for **WindowsAdminCenter**. Select the display name of the gateway you're registering. Take note of the **Application (client) ID** displayed near the top of the page, as you'll need to provide it to the user. Next, navigate to **API permissions**. Under **Grant consent**, select **Grant admin consent**. Then, give the application ID to the user.
 
    > [!IMPORTANT]
-   > For convenience and ease of management, it's possible to enable multiple users in an organization to register their Windows Admin Center gateways to the same Azure app ID. To do this, all users must register their gateways to the same domain and port, for example: https://localhost:6516
-   > This also requires the Azure AD admin to take an extra step and add redirect URIs in Azure. In Windows Admin Center, select the **Settings** gear icon in the upper right. Then, from the **Gateway** menu at the left, select **Azure**, and then click **View in Azure**, which will display Azure AD details. In the Azure portal, select **Manage > Authentication** from the menu on the left. In the **Redirect URIs** box, select **Add URI** and add two redirect URIs:
+   > For convenience and ease of management, it's possible to enable multiple users in an organization to register Windows Admin Center using the same Azure app ID. To do this, all users must register their gateways to the same domain and port, such as *https://localhost:6516* for example.
+   > 
+   > This also requires the Azure AD admin to take an extra step and add redirect URIs in the Azure portal. In Windows Admin Center, select the **Settings** gear icon in the upper right. Then, from the **Gateway** menu at the left, select **Azure**, and then click **View in Azure**, which will display Azure AD details. In the Azure portal, select **Manage > Authentication** from the menu on the left. In the **Redirect URIs** box, you will see an existing URI representing the first gateway that registered to the app ID. Select **Add URI** and add two new redirect URIs, such as:
    > http://localhost:6516
    > https://localhost:6516
    >
