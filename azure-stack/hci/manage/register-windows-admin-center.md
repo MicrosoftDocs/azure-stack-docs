@@ -40,9 +40,9 @@ To use Azure services with Windows Admin Center, you must first [install Windows
 
 5. Click the **Connect** button to connect to Azure. If you are an Azure AD admin or if you used an existing application ID, you should see a confirmation that you are now connected to Azure AD, indicating that the process is complete. If not, you may see a message that you need admin approval. If this is the case, select **Return to the application without granting consent**, and contact your Azure AD admin to grant permissions to the new application ID that was created upon registration by following the instructions in step 6.
 
-6. If you are an Azure AD admin, grant permissions in Azure by navigating to **Azure Active Directory**, then **App registrations**. Select **All applications** and search for **WindowsAdminCenter**. Select the display name of the gateway you're registering. Take note of the **Application (client) ID** displayed near the top of the page, as you'll need to provide it to the user. Next, navigate to **API permissions**. Under **Grant consent**, select **Grant admin consent**.
+6. If you are an Azure AD admin, grant permissions in Azure by navigating to **Azure Active Directory**, then **App registrations**. Select **All applications** and search for **WindowsAdminCenter**. Select the display name of the gateway you're registering. Take note of the **Application (client) ID** displayed near the top of the page, as you'll need to provide it to the user. Next, navigate to **API permissions**. Under **Grant consent**, select **Grant admin consent**. Then, give the application ID to the user.
 
-7. At this point, the user must repeat the registration process, this time selecting **Use existing** application ID in step 4 and specifying the application ID provided by the Azure AD admin in step 6.
+7. At this point, the user must repeat the registration process, this time selecting **Use existing** application ID and specifying the application ID provided by the Azure AD admin.
 
 8. Select **Sign in** to sign into Windows Admin Center with your Azure account.
 
