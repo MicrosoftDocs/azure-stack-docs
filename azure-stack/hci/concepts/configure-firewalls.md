@@ -19,7 +19,7 @@ Azure Stack HCI needs to periodically connect to Azure. Access is limited to onl
 - Outbound direction
 - Port 443 (HTTPS)
 
-For more information, see the "Azure Stack HCI connectivity" section of the [Azure Stack HCI FAQ](../faq.md)
+For more information, see the "Azure Stack HCI connectivity" section of the [Azure Stack HCI FAQ](../faq.yml)
 
 This topic describes how to optionally use a highly locked-down firewall configuration to block all traffic to all destinations except those included on your allow list.
 
