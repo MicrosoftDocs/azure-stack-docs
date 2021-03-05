@@ -117,4 +117,4 @@ When using the Cluster Creation wizard in Windows Admin Center to create the clu
 
 ## Next steps
 For more information, see also:
-- The connectivity section of the [Azure Stack HCI FAQ](../faq.md)
+- The connectivity section of the [Azure Stack HCI FAQ](../faq.yml)

@@ -13,7 +13,7 @@
   - name: Release notes
     href: https://support.microsoft.com/help/4595086
   - name: FAQ
-    href: faq.md
+    href: faq.yml
 - name: Quickstarts
   items:
   - name: Use Azure Stack HCI with Windows Admin Center
