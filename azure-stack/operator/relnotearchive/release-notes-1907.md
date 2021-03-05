@@ -40,7 +40,7 @@ Before applying the update, make sure to review the following information:
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
-For help with troubleshooting updates and the update process, see [Troubleshoot patch and update issues for Azure Stack](../azure-stack-updates-troubleshoot.md).
+For help with troubleshooting updates and the update process, see [Troubleshoot patch and update issues for Azure Stack](../azure-stack-troubleshooting.md).
 
 ## 1907 build reference
 
@@ -62,7 +62,7 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 <!-- What's new, also net new experiences and features. -->
 
-- General availability release of the Azure Stack diagnostic log collection service to facilitate and improve diagnostic log collection. The Azure Stack diagnostic log collection service provides a simplified way to collect and share diagnostic logs with Microsoft Customer Support Services (CSS). This diagnostic log collection service provides a new user experience in the Azure Stack administrator portal that enables operators to set up the automatic upload of diagnostic logs to a storage blob when certain critical alerts are raised, or to perform the same operation on demand. For more information, see the [Diagnostic log collection](../azure-stack-diagnostic-log-collection-overview.md) article.
+- General availability release of the Azure Stack diagnostic log collection service to facilitate and improve diagnostic log collection. The Azure Stack diagnostic log collection service provides a simplified way to collect and share diagnostic logs with Microsoft Customer Support Services (CSS). This diagnostic log collection service provides a new user experience in the Azure Stack administrator portal that enables operators to set up the automatic upload of diagnostic logs to a storage blob when certain critical alerts are raised, or to perform the same operation on demand. For more information, see the [Diagnostic log collection](../diagnostic-log-collection.md) article.
 
 - General availability release of the Azure Stack network infrastructure validation as a part of the Azure Stack validation tool **Test-AzureStack**. Azure Stack network infrastructure will be a part of **Test-AzureStack**, to identify if a failure occurs on the network infrastructure of Azure Stack. The test checks connectivity of the network infrastructure by bypassing the Azure Stack software-defined network. It demonstrates connectivity from a public VIP to the configured DNS forwarders, NTP servers, and identity endpoints. In addition, it checks for connectivity to Azure when using Azure AD as the identity provider, or the federated server when using ADFS. For more information, see the [Azure Stack validation tool](../azure-stack-diagnostic-test.md) article.
 
