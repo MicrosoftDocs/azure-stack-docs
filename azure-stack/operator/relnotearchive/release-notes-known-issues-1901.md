@@ -104,7 +104,7 @@ This update includes the following new features and improvements for Azure Stack
    * **Azs.Storage.Admin Module**  
          Bug fix - New Storage Quota uses defaults if none provided.
 
-To review the reference for the updated modules, see [Azure Stack Module Reference](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.6.0&viewFallbackFrom=azurestackps-1.7.0&preserve-view=true).
+To review the reference for the updated modules, see [Azure Stack Module Reference](/powershell/azure/azure-stack/overview?preserve-view=true&view=azurestackps-1.6.0&viewFallbackFrom=azurestackps-1.7.0).
 
 ## Fixed issues
 
@@ -331,4 +331,4 @@ In connected scenarios only, Azure Stack deployments periodically check a secure
 - For an overview of the update management in Azure Stack, see [Manage updates in Azure Stack overview](../azure-stack-updates.md).  
 - For more information about how to apply updates with Azure Stack, see [Apply updates in Azure Stack](../azure-stack-apply-updates.md).
 - To review the servicing policy for Azure Stack integrated systems, and what you must do to keep your system in a supported state, see [Azure Stack servicing policy](../azure-stack-servicing-policy.md).  
-- To use the Privileged End Point (PEP) to monitor and resume updates, see [Monitor updates in Azure Stack using the privileged endpoint](../azure-stack-monitor-update.md).  
+- To use the Privileged End Point (PEP) to monitor and resume updates, see [Monitor updates in Azure Stack using the privileged endpoint](../azure-stack-monitor-update.md).
