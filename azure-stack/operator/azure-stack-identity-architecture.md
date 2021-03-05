@@ -88,7 +88,7 @@ This topology features the following characteristics:
 - You can integrate the Graph service in Azure Stack Hub with your existing Active Directory instance. You can also use the OData-based Graph API service that supports APIs that are consistent with the Azure AD Graph API.
 
   To interact with your Active Directory instance, the Graph API requires user credentials from your Active Directory instance that have read-only permissions.
-  - The built-in AD FS instance is based on Windows Server 2016.
+  - The built-in AD FS instance is based on Windows Server 2019.
   - Your AD FS and Active Directory instances must be based on Windows Server 2012 or later.
   
   Between your Active Directory instance and the built-in AD FS instance, interactions aren't restricted to OpenID Connect, and they can use any mutually supported protocol.
