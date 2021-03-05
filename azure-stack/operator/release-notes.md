@@ -119,6 +119,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue in which disk space was exhausted by logs on physical hosts, Network Controllers, Gateways and load balancers. This fix has been backported to 2008.
 - Fixed an issue in which deletion of resource groups or virtual networks failed due to an orphaned resource in the Network Controller layer.
 - Removed ND6s_dev size from the VM size picker, as it is an unsupported VM size.
+- Fixed an issue where Stop-Deallocate VM results in MTU configuration on VM to be removed. This behavior was inconsistent with Azure.
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
