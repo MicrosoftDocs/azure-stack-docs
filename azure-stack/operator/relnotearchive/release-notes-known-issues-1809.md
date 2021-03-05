@@ -48,7 +48,7 @@ This update includes the following improvements for Azure Stack:
 
 - You can now [move the registration resource](../azure-stack-registration.md#move-a-registration-resource) on Azure between resource groups without having to re-register. Cloud Solution Providers (CSPs) can also move the registration resource between subscriptions, as long as both the new and old subscriptions are mapped to the same CSP partner ID. This does not impact the existing customer tenant mappings. 
 
-- Added support for assigning multiple IP addresses per network interface.  For more details see [Assign multiple IP addresses to virtual machines using PowerShell](https://docs.microsoft.com/azure/virtual-network/virtual-network-multiple-ip-addresses-powershell).
+- Added support for assigning multiple IP addresses per network interface.  For more details see [Assign multiple IP addresses to virtual machines using PowerShell](/azure/virtual-network/virtual-network-multiple-ip-addresses-powershell).
 
 ### Fixed issues
 
@@ -76,7 +76,7 @@ This update includes the following improvements for Azure Stack:
 ### Changes
 
 <!-- 2635202 - IS, ASDK -->
-- Infrastructure backup service moves from the [public infrastructure network](https://docs.microsoft.com/azure/azure-stack/azure-stack-network) to the [public VIP network](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-vip-network). Customers will need to ensure the service has access the backup storage location from the public VIP network.  
+- Infrastructure backup service moves from the [public infrastructure network](/azure/azure-stack/azure-stack-network) to the [public VIP network](/azure/azure-stack/azure-stack-network#public-vip-network). Customers will need to ensure the service has access the backup storage location from the public VIP network.  
 
 > [!IMPORTANT]  
 > If you have a firewall that does not allow connections from the public VIP network to the file server, this change will cause infrastructure backups to fail with "Error 53 The network path was not found." This is a breaking change that has no reasonable workaround. Based on customer feedback, Microsoft will revert this change in a hotfix. 
@@ -265,7 +265,7 @@ The following are post-installation known issues for this build version.
 - When you create a new virtual machine (VM) using the Azure Stack portal, and you select the VM size, the USD/Month column is displayed with an **Unavailable** message. This column should not appear; displaying the VM pricing column is not supported in Azure Stack.
 
 <!-- 2869209 - IS, ASDK --> 
-- When using the [**Add-AzsPlatformImage** cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0&preserve-view=true), you must use the **-OsUri** parameter as the storage account URI where the disk is uploaded. If you use the local path of the disk, the cmdlet fails with the following error: *Long running operation failed with status �Failed�*. 
+- When using the [**Add-AzsPlatformImage** cmdlet](/powershell/module/azs.compute.admin/add-azsplatformimage?preserve-view=true&view=azurestackps-1.4.0), you must use the **-OsUri** parameter as the storage account URI where the disk is uploaded. If you use the local path of the disk, the cmdlet fails with the following error: *Long running operation failed with status �Failed�*. 
 
 <!--  2795678 - IS, ASDK --> 
 - When you use the portal to create virtual machines (VM) in a premium VM size (DS,Ds_v2,FS,FSv2), the VM is created in a standard storage account. Creation in a standard storage account does not affect functionally, IOPs, or billing. 
@@ -352,4 +352,4 @@ You can download the Azure Stack 1809 update package from [here](https://aka.ms/
 - To review the servicing policy for Azure Stack integrated systems, and what you must do to keep your system in a supported state, see [Azure Stack servicing policy](../azure-stack-servicing-policy.md).  
 - To use the Privileged End Point (PEP) to monitor and resume updates, see [Monitor updates in Azure Stack using the privileged endpoint](../azure-stack-monitor-update.md).  
 - For an overview of the update management in Azure Stack, see [Manage updates in Azure Stack overview](../azure-stack-updates.md).  
-- For more information about how to apply updates with Azure Stack, see [Apply updates in Azure Stack](../azure-stack-apply-updates.md).  
+- For more information about how to apply updates with Azure Stack, see [Apply updates in Azure Stack](../azure-stack-apply-updates.md).

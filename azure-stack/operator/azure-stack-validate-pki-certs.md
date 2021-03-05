@@ -4,10 +4,10 @@ titleSuffix: Azure Stack Hub
 description: Learn how to validate PKI certificates for Azure Stack Hub integrated systems using the Azure Stack Hub Readiness Checker tool.
 services: azure-stack
 documentationcenter: ''
-author: PatAltimore
+author: BryanLa
 ms.topic: how-to
 ms.date:  10/19/2020
-ms.author: patricka
+ms.author: bryanla
 ms.reviewer: ppacent
 ms.lastreviewed: 10/19/2020
 

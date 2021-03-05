@@ -3,7 +3,7 @@ title: Configure security controls in Azure Stack Hub
 description: Learn how to configure security controls in Azure Stack Hub.
 author: BryanLa
 ms.topic: how-to
-ms.date: 02/19/2021
+ms.date: 03/04/2020
 ms.author: bryanla
 ms.reviewer: fiseraci
 ms.lastreviewed: 06/17/2019
