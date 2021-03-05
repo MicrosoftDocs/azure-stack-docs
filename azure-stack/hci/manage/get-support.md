@@ -31,4 +31,4 @@ To learn more about Integrated System partners and their solutions and support o
 
 ## Next steps
 For related information, see also:
-- [Azure Stack HCI FAQ](../faq.md)
+- [Azure Stack HCI FAQ](../faq.yml)

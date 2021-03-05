@@ -3,10 +3,10 @@ title: Azure Stack Hub Operator Access Workstation
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: mattbriggs
 ms.topic: article
-ms.date: 03/02/2021
+ms.date: 03/05/2021
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 03/02/2021
+ms.lastreviewed: 03/05/2021
 
 # Intent: As an Azure Stack operator, I want to download and configure an Azure Stack Hub Operator Access Workstation.
 # Keyword: azure stack hub operator access workstation
@@ -79,7 +79,7 @@ param(
     [string] 
     $DownloadedOAWZipFilePath 
 ) 
-$expectedHash = '6E412551C7921A6FA4E9D64812A4D3770EB1B1257E2BE55B8426E5EFBCB2C001' 
+$expectedHash = '2B268EFB113A3BEDA008FCF382A5EF2F2D4E5DCC7FD0D12DB061E37F9671D3A7' 
 $actualHash = (Get-FileHash -Path $DownloadedOAWZipFilePath).Hash 
 Write-Host "Expected hash: $expectedHash" 
 if ($expectedHash -eq $actualHash) 
