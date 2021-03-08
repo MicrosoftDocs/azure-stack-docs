@@ -4,7 +4,7 @@ description: Learn how to plan and configure proxy support to connect to the int
 author: abha
 ms.topic: how-to
 ms.date: 01/27/2021
-ms.author: abha
+ms.author: mkostersitz
 ms.reviewer: 
 ---
 
