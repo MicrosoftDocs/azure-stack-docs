@@ -1,9 +1,9 @@
 ---
 title: Set-AksHciConfig
-author: jessicaguan
 description: The Set-AksHciConfig PowerShell command updates the configurations settings for the Azure Kubernetes Service host.
 ms.topic: reference
 ms.date: 2/12/2021
+author: jessicaguan
 ms.author: jeguan
 ---
 
@@ -265,12 +265,13 @@ Accept wildcard characters: False
 ```
 
 ### -cloudServiceCidr
-This can be used to provide a static IP/network prefix to be assigned to the MOC CloudAgent service. This value should be provided using the CIDR format. (Example: 192.168.1.2/16). You may want to specify this to ensure that anything important on the network is always accessible because the IP address will not change. Default is none.
+
+This can be used to provide a static IP/network prefix to be assigned to the MOC CloudAgent service. This value can be provided using an IP address or in the CIDR format. (Example: 192.168.1.2/16). You may want to specify this to ensure that anything important on the network is always accessible because the IP address will not change. Default is none.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: -cloudServiceIP
 
 Required: False
 Position: Named

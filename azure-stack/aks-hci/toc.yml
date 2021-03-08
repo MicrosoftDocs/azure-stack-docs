@@ -37,10 +37,12 @@
   items: 
     - name: Evaluate on an Azure VM
       href: https://github.com/Azure/aks-hci/blob/main/eval/readme.md
-    - name: Connect to Azure Arc for Kubernetes
-      href: connect-to-arc.md
-    - name: Adapt apps for mixed-OS Kubernetes clusters
-      href: adapt-apps-mixed-os-clusters.md
+    - name: Use Azure Arc Kuberetes
+      items:
+          - name: Connect to Azure Arc for Kubernetes
+            href: connect-to-arc.md
+          - name: Adapt apps for mixed-OS Kubernetes clusters
+            href: adapt-apps-mixed-os-clusters.md
     - name: Configure networking
       items:
           - name: Configure proxy settings
@@ -51,11 +53,19 @@
             href: ad-sso.md
           - name: Encrypt etcd secrets
             href: encrypt-secrets.md
+    - name: Cluster operations
+      items:    
+          - name: Scale the node count in a cluster
+            href: scale-cluster.md
+          - name: Upgrade Azure Kubernetes Service on Azure Stack HCI
+            href: upgrade.md
+          - name: Restart, reset or remove Azure Kubernetes Service on Azure Stack HCI
+            href: restart-cluster.md
     - name: Monitoring and logging
       items:    
           - name: Use Azure Monitor for containers
             href: https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-overview
-          - name: On-premises monitoring
+          - name: Use on-premises monitoring
             href: monitor-logging.md
     - name: Use Windows Server containers
       items:

@@ -28,7 +28,10 @@ New-AksHciCluster -name <String>
                  [-vnet <Virtual Network>]
                  [-primaryNetworkPlugin <Network Plugin>]   
                  [-enableAdAuth]
-                 [-enableSecretsEncryption]          
+                 [-enableSecretsEncryption]      
+                 [-enableCsiSmb]   
+                 [-enableCsiNfs] 
+                 [-enableMonitoring]
 ```
 
 ## Description
@@ -37,7 +40,7 @@ Create a new Azure Kubernetes Service on Azure Stack HCI cluster.
 
 ## Examples
 
-### New AKS-HCI cluster with required params.
+### New AKS-HCI cluster with required parameters
 
 ```powershell
 PS C:\> New-AksHciCluster -name myCluster
@@ -227,6 +230,51 @@ Accept wildcard characters: False
 
 ### -enableSecretsEncryption
 Use this flag to enable encryption in your Kubernetes secrets.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -enableCsiSmb
+Use this flag to enable a SMB CSI driver during deployment.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -enableCsiNfs
+Use this flag to enable a NFS CSI driver during deployment.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -enableMonitoring
+Use this flag to enable Prometheus monitoring.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

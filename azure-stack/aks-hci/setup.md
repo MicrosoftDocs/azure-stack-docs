@@ -23,11 +23,12 @@ Before getting started, make sure you have satisfied all the prerequisites on th
 
 ## Download Azure Kubernetes Service on Azure Stack HCI
 
-If you haven't already downloaded the preview software, see [evaluate AKS on Azure Stack HCI](https://aka.ms/AKS-HCI-Evaluate). You will be asked to download AKS on Azure Stack HCI. Please make sure you do not install the Windows Admin Center build on this page as it points to the 2103 build and some AKS-HCI features may not work as expected if you choose Windows Admin Center build 2103 for your deployment. 
+If you haven't already downloaded the preview software, see [evaluate AKS on Azure Stack HCI](https://aka.ms/AKS-HCI-Evaluate). You will be asked to download AKS on Azure Stack HCI. Please make sure you do not install the Windows Admin Center build on this page as it points to the 2103 build and some AKS on Azure Stack HCI features may not work as expected if you choose Windows Admin Center build 2103 for your deployment.
 
 ## Setting up Windows Admin Center
 
-If you haven't already installed Windows Admin Center, see [install Windows Admin Center](http://aka.ms/aks-hci-wac-2009). You can either run Windows Admin Center on a Windows 10 machine or on a server. **Azure Kubernetes Service on Azure Stack HCI functionality works best on Windows Admin Center build 2009. Please make sure you download and install build 2009 for deploying AKS clusters on Azure Stack HCI.** We are working on integrating AKS-HCI with Windows Admin Center build 2103, and some features may not work as expected if you choose to use build 2103 for your deployment.
+If you haven't already installed Windows Admin Center, see [install Windows Admin Center](https://aka.ms/aks-hci-wac-2009). You can either run Windows Admin Center on a Windows 10 machine or on a server. **Azure Kubernetes Service on Azure Stack HCI functionality works best on Windows Admin Center build 2009. Please make sure you download and install build 2009 for deploying AKS clusters on Azure Stack HCI.** We are working on integrating AKS-HCI with Windows Admin Center build 2103, and some features may not work as expected if you choose to use build 2103 for your deployment.
+
 
 ## Installing the Azure Kubernetes Service extension
 

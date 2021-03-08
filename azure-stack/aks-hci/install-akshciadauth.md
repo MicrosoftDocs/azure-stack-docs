@@ -60,6 +60,7 @@ Install Active Directory authentication.
 ## EXAMPLES
 
 ### Example
+
 ```powershell
 PS C:\> Install-AksHciAdAuth -name mynewcluster1 -keytab <.\current.keytab> -previousKeytab <.\previous.keytab> -SPN <service/principal@CONTOSO.COM> -adminUser CONTOSO\Bob
 ```
