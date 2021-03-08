@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ---
 
 # What is Datacenter Firewall?
@@ -57,5 +57,6 @@ The Datacenter Firewall offers the following advantages for tenants:
 
 For related information, see also:
 
+- [Use Datacenter Firewall to configure ACLs with Windows Admin Center](../manage/use-datacenter-firewall-windows-admin-center.md)
 - [Use Datacenter Firewall to configure ACLs with PowerShell](../manage/use-datacenter-firewall-powershell.md)
 - [SDN in Azure Stack HCI and Windows Server](software-defined-networking.md)
