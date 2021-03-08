@@ -98,7 +98,7 @@ The following procedure shows how to import and install update packages in the a
 
 10. Go back to the **Update** blade on the dashboard. The blade should show that an update is available. This indicates that the update has been prepared successfully. Select the blade to review the newly-added update package.
 
-11. To install the update, select the package that's marked as **Ready**, and either right-click the package and select **Update now**, or select the **Update now** action near the top.
+11. To install the update, select the package that's marked as **Ready**, and then select **Update now**.
 
 12. When you select the installing update package, you can view the status in the **Update run details** area. From here, you can also select **Download summary** to download the log files. Logs from update runs are available for six months after the attempt ended.
 
