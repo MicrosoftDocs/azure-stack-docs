@@ -46,7 +46,7 @@ If the VM scale limit is reached, the following error codes are returned as a re
 In releases prior to and including 2002, 2-5 VMs per batch with 5 mins gap in between batches provided reliable VM deployments to reach a scale of 700 VMs. With the 2005 version of Azure Stack Hub, we are able to reliably provision VMs at batch sizes of 40 with 5 mins gap in between batch deployments. Start, Stop-deallocate, and update operations should be done at a batch size of 30, leaving 5 mins in between each batch.
 
 ## Consideration for GPU VMs
-As you know, Azure Stack hub reserves memory for the infrastructure and tenant VMs to failover. Unlike other VMs, GPU VMs run in a non-HA (high availability) mode and therefore do not failover. As a result, reserved memory for a GPU VM only stamp is what is required by the infrastructure to failover, as opposed to accounting for HA tenant VM memory too.  
+Azure Stack hub reserves memory for the infrastructure and tenant VMs to failover. Unlike other VMs, GPU VMs run in a non-HA (high availability) mode and therefore do not failover. As a result, reserved memory for a GPU VM-only stamp is what is required by the infrastructure to failover, as opposed to accounting for HA tenant VM memory too.  
 
 ## Azure Stack Hub memory
 
