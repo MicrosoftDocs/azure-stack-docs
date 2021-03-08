@@ -102,12 +102,12 @@ The following are post-installation known issues for this build version.
 <!-- 2551834 - IS, ASDK --> 
 - When you select **Overview** for a storage account in either the admin or user portals, the information from the *Essentials* pane does not display.  The Essentials pane displays information about the account like its *Resource group*, *Location*, and *Subscription ID*.  Other options for Overview  are accessible, like *Services* and *Monitoring*, as well as options to *Open in Explorer* or to *Delete storage account*. 
 
-  To view the unavailable information, use the [Get-azureRMstorageaccount](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccount?view=azurermps-6.2.0&preserve-view=true) PowerShell cmdlet. 
+  To view the unavailable information, use the [Get-azureRMstorageaccount](/powershell/module/azurerm.storage/get-azurermstorageaccount?preserve-view=true&view=azurermps-6.2.0) PowerShell cmdlet. 
 
 <!-- 2551834 - IS, ASDK --> 
 - When you select **Tags** for a storage account in either the admin or user portals, the information fails to load and does not display.  
 
-  To view the unavailable information, use the [Get-AzureRmTag](https://docs.microsoft.com/powershell/module/azurerm.tags/get-azurermtag?view=azurermps-6.2.0&preserve-view=true) PowerShell cmdlet.
+  To view the unavailable information, use the [Get-AzureRmTag](/powershell/module/azurerm.tags/get-azurermtag?preserve-view=true&view=azurermps-6.2.0) PowerShell cmdlet.
 
 
 <!-- 2332636 - IS -->  
@@ -180,13 +180,13 @@ The following are post-installation known issues for this build version.
                 "vmSize": "Standard_F32s_v2"
         },
     ```  
-  - **Azure CLI:** You can use the [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create&preserve-view=true) command and specify the VM size as a parameter, similar to `--size "Standard_F32s_v2"`.
+  - **Azure CLI:** You can use the [az vm create](/cli/azure/vm?preserve-view=true&view=azure-cli-latest#az-vm-create) command and specify the VM size as a parameter, similar to `--size "Standard_F32s_v2"`.
 
-  - **PowerShell:** With PowerShell you can use [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0&preserve-view=true) with the parameter that specifies the VM size, similar to `-VMSize "Standard_F32s_v2"`.
+  - **PowerShell:** With PowerShell you can use [New-AzureRMVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig?preserve-view=true&view=azurermps-6.0.0) with the parameter that specifies the VM size, similar to `-VMSize "Standard_F32s_v2"`.
 
 
 <!-- TBD - IS ASDK --> 
-- Scaling settings for virtual machine scale sets are not available in the portal. As a workaround, you can use [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Because of PowerShell version differences, you must use the `-Name` parameter instead of `-VMScaleSetName`.
+- Scaling settings for virtual machine scale sets are not available in the portal. As a workaround, you can use [Azure PowerShell](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Because of PowerShell version differences, you must use the `-Name` parameter instead of `-VMScaleSetName`.
 
 <!-- TBD - IS --> 
 - When you create an availability set in the portal by going to **New** > **Compute** > **Availability set**, you can only create an availability set with a fault domain and update domain of 1. As a workaround, when creating a new virtual machine, create the availability set by using PowerShell, CLI, or from within the portal.
@@ -210,7 +210,7 @@ The following are post-installation known issues for this build version.
 
 ### Networking
 <!-- TBD - IS ASDK --> 
-- You cannot create user-defined routes in either the admin or user portal. As a workaround, use [Azure PowerShell](https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell).
+- You cannot create user-defined routes in either the admin or user portal. As a workaround, use [Azure PowerShell](/azure/virtual-network/tutorial-create-route-table-powershell).
 
 <!-- 1766332 - IS ASDK --> 
 - Under **Networking**, if you click **Create VPN Gateway** to set up a VPN connection, **Policy Based** is listed as a VPN type. Do not select this option. Only the **Route Based** option is supported in Azure Stack.
