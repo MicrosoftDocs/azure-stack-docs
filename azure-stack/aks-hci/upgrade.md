@@ -54,4 +54,6 @@ The `-operatingSystem` parameter will automatically update the operating system 
 
 ## Next steps
 
-In this article, you learned how to upgrade the Azure Kubernetes Service on Azure Stack HCI host and clusters.
+In this article, you learned how to upgrade the Azure Kubernetes Service on Azure Stack HCI host and clusters. Next, you can:
+- [Deploy a Linux applications on a Kubernetes cluster](./deploy-linux-application.md).
+- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).

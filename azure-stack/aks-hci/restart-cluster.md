@@ -68,4 +68,6 @@ Install-AksHci
 
 ## Next steps
 
-In this article, you learned how to restart, reinstall, and remove Azure Kubernetes Service on Azure Stack HCI.
+In this article, you learned how to restart, reinstall, and remove Azure Kubernetes Service on Azure Stack HCI. Next, you can:
+- [Deploy a Linux applications on a Kubernetes cluster](./deploy-linux-application.md).
+- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).
