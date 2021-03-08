@@ -31,10 +31,12 @@
     href: kubernetes-concepts.md
   - name: System requirements
     href: system-requirements.md
-  - name: Kubernetes node Networking
+  - name: Kubernetes node networking
     href: concepts-node-networking.md
-  - name: Kubernetes container Networking
+  - name: Kubernetes container networking
     href: concepts-container-networking.md
+  - name: Understand proxy server settings
+    href: set-proxy-settings.md
   - name: Updates and upgrades
     href: update-akshci-concepts.md
 
@@ -52,7 +54,7 @@
       items:
           - name: Configure proxy settings
             href: proxy.md
-          - name: Use Calico network policy
+          - name: Use the Calico network policy
             href: calico-networking-policy.md
     - name: Security and authentication
       items:
@@ -60,6 +62,8 @@
             href: ad-sso.md
           - name: Encrypt etcd secrets
             href: encrypt-secrets.md
+          - name: Secure communication with certificates
+            href: secure-communication.md
     - name: Cluster operations
       items:    
           - name: Scale the node count in a cluster

@@ -119,8 +119,8 @@ Calico supports multiple data planes, including: a Linux eBPF data plane, a Linu
 >New-AksHciCluster -name MyCluster -primaryNetworkPlugin 'calico'
 >```
 
-For more information about the Calico Network plugin and policies check the [project website](https://docs.projectcalico.org/security/calico-network-policy)
+For more information about the Calico Network plug-in and policies, check out [getting started with Calico network policy](https://docs.projectcalico.org/security/calico-network-policy).
 
 ## Next steps
 
-Apply a network policy to restrict traffic. See the [How to use Calico Network policy chapter](how-to-use-calico-network-policy.md)
+Apply a network policy to restrict traffic using [the Calico network policy](./calico-networking-policy.md).
