@@ -8,7 +8,7 @@ ms.author: mikek
 author: mkostersitz
 ---
 
-# Manage Azure Kubernetes Service on Azure Stack HCI updates and upgrades
+# Run updates and upgrades on Azure Kubernetes Service on Azure Stack HCI
 
 There are several types of updates, which can happen independently from each other and in certain supported combinations.
 
@@ -24,7 +24,7 @@ The examples below assume that the workload cluster `myCluster` is currently on 
 ## Update the AKS on Azure Stack HCI host
 
 > [!Important]
-> Updating the AKS on Azure Stack HCI host is the first step in any update flow and must be initiated before running `Update-AksHciCluster`. The command doesn't need any arguments and always updates the management cluster to the latest version.
+> Updating the AKS on Azure Stack HCI host is the first step in any update flow and must be initiated before running [`Update-AksHciCluster`](./update-akshcicluster.md). The command doesn't need any arguments and always updates the management cluster to the latest version.
 
 ### Example flow for updating the AKS on Azure Stack HCI host
 
@@ -70,9 +70,9 @@ The output shows the updated version of the AKS on Azure Stack HCI host.
 
 ## Update the Kubernetes version of a workload cluster
 
->[!Important]
+> [!Important]
 > Updating a workload cluster to a newer version of Kubernetes will only work if the target Kubernetes version is supported by the current operating system version.
-> To check for supported operating system - Kubernetes version combinations use the `Get-AksHciUpdateVersions` command.
+> To check for supported operating system and Kubernetes version combinations, use the `Get-AksHciUpdateVersion` command.
 
 ### Example for updating the Kubernetes version of a workload cluster
 
@@ -122,10 +122,10 @@ PS C:\> Update-AksHciCluster -clusterName myCluster -kubernetesVersion v1.18.8 -
 
 ## Update the OS version and the Kubernetes version
 
->[!Important]
->Updating a workload cluster to a newer version of the operating system and Kubernetes version is allowed.
+> [!Important]
+> Updating a workload cluster to a newer version of the operating system and Kubernetes version is allowed.
 
-The below example assumes there is a new Kubernetes version available and the version number is v1.18.12.
+The example below assumes there is a new Kubernetes version available and the version number is v1.18.12.
 
 ### Example for updating a workload cluster
 

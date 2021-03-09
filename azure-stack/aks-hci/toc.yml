@@ -80,7 +80,7 @@
             href: prepare-windows-nodes-gmsa.md
           - name: Use persistent volume
             href: persistent-volume.md
-    - name: Manage updates and upgrades
+    - name: Run updates and upgrades
       href: update-akshci-concepts.md
     - name: Troubleshoot
       href: troubleshoot.md
