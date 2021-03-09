@@ -49,24 +49,13 @@ The following table lists the pre-installed software on the OAW VM.
 | [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)                     | [SystemDrive]\\Program Files (x86)\\Microsoft Azure Storage Explorer |
 | [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)                         | [SystemDrive]\\VMSoftware\\azcopy_windows_amd64_10.3.4               |
 | [AzureStack-Tools](https://github.com/Azure/AzureStack-Tools/tree/az)                                          | [SystemDrive]\\VMSoftware\\AzureStack-Tools                          |
-
 ## Download files
+To get the files to create the OAW VM, [download here](https://aka.ms/OAWDownload). Be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](https://docs.microsoft.com/legal/azure-stack-hub/azure-stack-operator-access-workstation-legal-terms) before you download.
 
-To get the files to create the OAW VM, [download
-here](https://aka.ms/OAWDownload). Be sure to review the [Microsoft
-Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal
-Terms](https://docs.microsoft.com/legal/azure-stack-hub/azure-stack-operator-access-workstation-legal-terms) before you
-download.
+Because of the stateless nature of the solution, there are no updates for the OAW VM. For each milestone, a new version of the VM image file is released. Use the latest version to create a new OAW VM. The image file is based on the latest Windows Server 2019 version. After installation, you can apply updates, including any critical updates, using Windows Update.
 
-Because of the stateless nature of the solution, there are no updates for the OAW
-VM. For each milestone, a new version of the VM image file is released. Use
-the latest version to create a new OAW VM. The image file is based on the latest
-Windows Server 2019 version. After installation, you can apply updates,
-including any critical updates, using Windows Update.
+Validate the hash of the downloaded OAW.zip file to make sure it hasn't been modified before using it to create the OAW VM. Run the following PowerShell script. If the return value is True, you can use the downloaded OAW.zip:
 
-Validate the hash of the downloaded OAW.zip file to make sure it hasn't been
-modified before using it to create the OAW VM. Run the following PowerShell
-script. If the return value is `True`, you can use the downloaded OAW.zip:
 
 > [!NOTE]  
 > Unblock the script files after extracting the download.
@@ -88,7 +77,7 @@ if ($expectedHash -eq $actualHash)
 } 
 else 
 { 
-    Write-Error 'ERROR: OAW.zip file hash does not match! It isn't safe to use it, please download it again.' 
+    Write-Error "ERROR: OAW.zip file hash does not match! It isn't safe to use it, please download it again." 
     Write-Error "Actual hash: $actualHash" 
 } 
 ```
@@ -112,7 +101,7 @@ general Microsoft Hyper-V, you can skip this step.
     ![Screenshot of PowerShell cmdlet to check the version of the OAW VM.](media/operator-access-workstation/check-operator-access-workstation-vm-version.png)
 
 > [!NOTE]  
-> This PowerShell cmdlet might not be present on a HLH that was deployed
+> This PowerShell cmdlet is not present on a HLH that was deployed
 using an OEM image.
 
 ## Create the OAW VM using a script
@@ -142,40 +131,25 @@ New-OAW.ps1 -LocalAdministratorPassword $securePassword
 
 ```powershell  
 $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString 
-New-OAW.ps1 -LocalAdministratorPassword $securePassword `
-   -AzureStackCertificatePath 'F:\certroot.cer' `
-   -DeploymentDataFilePath 'F:\DeploymentData.json' `
-   -AzSStampInfoFilePath 'F:\AzureStackStampInformation.json'
+New-OAW.ps1 -LocalAdministratorPassword $securePassword -AzureStackCertificatePath 'F:\certroot.cer' -DeploymentDataFilePath 'F:\DeploymentData.json' -AzSStampInfoFilePath 'F:\AzureStackStampInformation.json'
 ```
 
-If the DeploymentData.json file includes the Naming Prefix for OAW VM, that
-value will be used for the `VirtualMachineName` parameter. Otherwise, the
-default name is `AzSOAW` or whatever name specified is by the user.
+If the` DeploymentData.json` file includes the naming prefix for OAW VM, that value will be used for the `VirtualMachineName` parameter. Otherwise, the default name is `AzSOAW` or whatever name specified is by the user. The `DeploymentData.json` can be re-created using the [privileged endpoint](https://docs.microsoft.com/azure-stack/reference/pep-2002/get-azurestackstampinformation) in case it is not present on the HLH. 
 
 > [!NOTE]  
-> The parameter `AzureStackCertificatePath` should only be used when Azure
-Stack Hub was deployed using certificates issued from an enterprise certificate
-authority.
+> The parameter `AzureStackCertificatePath` should only be used when Azure Stack Hub was deployed using certificates issued from an enterprise certificate authority.
 
 ### Example: Deploy on Microsoft Hyper-V
 
-The machine running Microsoft Hyper-V does requires four cores and four GB of
-available memory.
+The machine running Microsoft Hyper-V does requires four cores and four GB of available memory.
 
 ```powershell  
 $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString 
-New-OAW.ps1 -LocalAdministratorPassword $securePassword ` 
--AzureStackCertificatePath 'F:\certroot.cer' ` 
--SkipNetworkConfiguration ` 
--VirtualSwitchName Example  
+New-OAW.ps1 -LocalAdministratorPassword $securePassword -AzureStackCertificatePath 'F:\certroot.cer' `-SkipNetworkConfiguration -VirtualSwitchName Example  
 ```
 
 > [!NOTE]  
-> The parameter `AzureStackCertificatePath` should only be used when Azure
-Stack Hub was deployed using certificates issued from an enterprise certificate
-authority. The OAW virtual machine will be deployed without a network
-configuration. You can configure a static IP address or retrieve an IP address
-via DHCP.
+> The parameter `AzureStackCertificatePath` should only be used when Azure Stack Hub was deployed using certificates issued from an enterprise certificate authority. The OAW virtual machine will be deployed without a network configuration. You can configure a static IP address or retrieve an IP address via DHCP.
 
 ## User account policy
 
