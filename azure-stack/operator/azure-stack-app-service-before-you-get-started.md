@@ -57,7 +57,7 @@ To run the resource provider in production, you must provide the following certi
 - Publishing certificate
 - Identity certificate
 
-In addition to specific requirements listed in each of the following sections, you'll also run validation tests on your certificates in the next section. The tests will verify completion of [additional requirements listed in Validate Azure Stack Hub PKI certificates](azure-stack-validate-pki-certs.md). 
+In addition to specific requirements listed in the following sections, you'll also use the Readiness Checker tool later to test for additional requirements. See [Validate Azure Stack Hub PKI certificates](azure-stack-validate-pki-certs.md) for the complete list of additional requirements enforced by the tool.
 
 #### Default domain certificate
 
