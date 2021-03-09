@@ -64,7 +64,7 @@ To simplify the network configuration for application workloads, AKS-HCI assigns
 
 - **Kubernetes services** - In Kubernetes, *Services* logically group pod IP addresses to allow for direct access via a single IP address or DNS name on a specific port. Services can also distribute traffic using a *load balancer*. Kubernetes services are always allocated static IP addresses irrespective of the underlying networking model.
 
-- **HAProxy load balancers** - HAProxy (for more information see [here](https://www.haproxy.org/#desc)) is a TCP/HTTP load balancer and proxy server which enables spreading incoming requests across multiple endpoints. Every workload cluster in AKS-HCI has a HAProxy load balancer deployed and configured as a specialized virtual machine.
+- **HAProxy load balancers** - [HAProxy](https://www.haproxy.org/#desc) is a TCP/HTTP load balancer and proxy server which enables spreading incoming requests across multiple endpoints. Every workload cluster in AKS-HCI has a HAProxy load balancer deployed and configured as a specialized virtual machine.
 
 - **Microsoft On Premise Cloud Service** - This is the Azure Stack HCI cloud provider enabling the creation and management of the virtualized environment hosting Kubernetes on an on-premises Azure Stack HCI cluster. The networking model followed by your Azure Stack HCI cluster determines the IP address allocation method used by the Microsoft on premise cloud service. To learn more about the networking concepts implemented by the Microsoft on Premise Cloud Service see [Node networking concepts](concepts-node-networking.md).
 
@@ -77,7 +77,7 @@ In AKS-HCI, you can deploy a cluster that uses one of the following network mode
 
 Both networking implementations use an overlay network configuration model, which provides an IP address assignment that's disconnected from the rest of the data center networking.
 
-To learn more about overlay networking see: [this blog post](https://techcommunity.microsoft.com/t5/networking-blog/introducing-kubernetes-overlay-networking-for-windows/ba-p/363082)
+To learn more about overlay networking see [Introducing: Kubernetes Overlay Networking for Windows](https://techcommunity.microsoft.com/t5/networking-blog/introducing-kubernetes-overlay-networking-for-windows/ba-p/363082).
 
 ### Comparing networking models
 
@@ -110,10 +110,9 @@ Calico supports multiple data planes, including: a Linux eBPF data plane, a Linu
 |Command line|none|calicoctl|
 
 >[!Important]
->The default selection is currently to use Flannel in overlay networking mode.
->To enable Calico CNI and network policy use the `-primaryNetworkPlugin` parameter of the `New-AksHciCluster` PowerShellCommand and specify `calico` as the value.
->**This cannot be changed after the cluster has been deployed and will apply to both Windows and Linux cluster nodes.**
->For example:
+>The default selection is currently to use Flannel in overlay networking mode. To enable Calico CNI and network policy use the `-primaryNetworkPlugin` parameter of the `New-AksHciCluster` PowerShell command and specify `calico` as the value. **This cannot be changed after the cluster has been deployed and will apply to both Windows and Linux cluster nodes.**
+
+Here's an example:
 
 >```powershell
 >New-AksHciCluster -name MyCluster -primaryNetworkPlugin 'calico'
