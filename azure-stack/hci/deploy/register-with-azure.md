@@ -11,7 +11,7 @@ ms.date: 02/10/2020
 
 # Connect Azure Stack HCI to Azure
 
-> Applies to: Azure Stack HCI v20H2
+> Applies to: Azure Stack HCI, version 20H2
 
 Azure Stack HCI is delivered as an Azure service and needs to register within 30 days of installation per the Azure Online Services Terms. This topic explains how to register your Azure Stack HCI cluster with [Azure Arc](https://azure.microsoft.com/services/azure-arc/) for monitoring, support, billing, and hybrid services. Upon registration, an Azure Resource Manager resource is created to represent each on-premises Azure Stack HCI cluster, effectively extending the Azure management plane to Azure Stack HCI. Information is periodically synced between the Azure resource and the on-premises cluster(s). Azure Arc registration is a native capability of the Azure Stack HCI operating system, so there is no agent needed to register.
 
@@ -99,7 +99,7 @@ You'll also need appropriate Azure Active Directory permissions to complete the 
 
 ## Register a cluster using Windows Admin Center
 
-The easiest way to register your Azure Stack HCI cluster is using Windows Admin Center. Remember that the user must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval.
+The easiest way to register your Azure Stack HCI cluster is using Windows Admin Center. Remember that the user must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval, and the user will have to re-run the registration wizard once permissions are granted.
 
 1. Before beginning the registration process, you must first [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md), if you haven't already.
 
