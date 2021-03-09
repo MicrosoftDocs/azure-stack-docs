@@ -101,7 +101,7 @@ general Microsoft Hyper-V, you can skip this step.
     ![Screenshot of PowerShell cmdlet to check the version of the OAW VM.](media/operator-access-workstation/check-operator-access-workstation-vm-version.png)
 
 > [!NOTE]  
-> This PowerShell cmdlet might is not present on a HLH that was deployed
+> This PowerShell cmdlet is not present on a HLH that was deployed
 using an OEM image.
 
 ## Create the OAW VM using a script
@@ -131,10 +131,7 @@ New-OAW.ps1 -LocalAdministratorPassword $securePassword
 
 ```powershell  
 $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString 
-New-OAW.ps1 -LocalAdministratorPassword $securePassword `
-   -AzureStackCertificatePath 'F:\certroot.cer' `
-   -DeploymentDataFilePath 'F:\DeploymentData.json' `
-   -AzSStampInfoFilePath 'F:\AzureStackStampInformation.json'
+New-OAW.ps1 -LocalAdministratorPassword $securePassword -AzureStackCertificatePath 'F:\certroot.cer' -DeploymentDataFilePath 'F:\DeploymentData.json' -AzSStampInfoFilePath 'F:\AzureStackStampInformation.json'
 ```
 
 If the` DeploymentData.json` file includes the naming prefix for OAW VM, that value will be used for the `VirtualMachineName` parameter. Otherwise, the default name is `AzSOAW` or whatever name specified is by the user. The `DeploymentData.json` can be re-created using the [privileged endpoint](https://docs.microsoft.com/azure-stack/reference/pep-2002/get-azurestackstampinformation) in case it is not present on the HLH. 
