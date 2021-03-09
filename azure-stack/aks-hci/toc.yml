@@ -35,10 +35,6 @@
     href: concepts-node-networking.md
   - name: Kubernetes container networking
     href: concepts-container-networking.md
-  - name: Understand proxy server settings
-    href: set-proxy-settings.md
-  - name: Updates and upgrades
-    href: update-akshci-concepts.md
 
 - name: How-to guides
   items: 
@@ -52,8 +48,8 @@
             href: adapt-apps-mixed-os-clusters.md
     - name: Configure networking
       items:
-          - name: Configure proxy settings
-            href: proxy.md
+          - name: Use proxy settings
+            href: set-proxy-settings.md
           - name: Use the Calico network policy
             href: calico-networking-policy.md
     - name: Security and authentication
@@ -84,6 +80,8 @@
             href: prepare-windows-nodes-gmsa.md
           - name: Use persistent volume
             href: persistent-volume.md
+    - name: Manage updates and upgrades
+      href: update-akshci-concepts.md
     - name: Troubleshoot
       href: troubleshoot.md
 - name: Related

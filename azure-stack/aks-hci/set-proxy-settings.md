@@ -1,5 +1,5 @@
 ---
-title: Concepts - Proxy Server settings in Azure Kubernetes Services (AKS) on Azure Stack HCI
+title: Proxy Server settings in Azure Kubernetes Services (AKS) on Azure Stack HCI
 description: Learn about proxy server settings in Azure Kubernetes Service (AKS) on Azure Stack HCI
 ms.topic: conceptual
 ms.date: 03/04/2021
@@ -7,7 +7,7 @@ ms.custom: fasttrack-edit
 ms.author: mikek
 author: mkostersitz
 ---
-# Understand proxy server settings on AKS on Azure Stack HCI
+# Use proxy server settings on AKS on Azure Stack HCI
 
 If your network requires the use of a proxy server to connect to the internet, this topic walks you through the steps required to set up proxy support on AKS on Azure Stack HCI using the **AksHci** and **WinInetProxy** PowerShell modules.
 
