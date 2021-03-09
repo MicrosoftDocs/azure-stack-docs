@@ -37,7 +37,7 @@ To create a custom marketplace item, do the following:
 
    :::image type="content" source="media/azure-stack-create-and-publish-marketplace-item/samples-tool.png" alt-text="Gallery packager":::
 
-2. The tool includes sample packages that are in the .azpk format, and must be extracted first. You can rename the file extensions from ".azpk" to ".zip," or use an archiver tool of your choice.
+2. The tool includes sample packages that are in the .azpk format, and must be extracted first. You can rename the file extensions from ".azpk" to ".zip," or use an archiver tool of your choice:
 
    :::image type="content" source="media/azure-stack-create-and-publish-marketplace-item/sample-packages.png" alt-text="Samples packages":::
 
