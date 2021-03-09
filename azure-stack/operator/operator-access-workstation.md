@@ -50,7 +50,7 @@ The following table lists the pre-installed software on the OAW VM.
 | [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)                         | [SystemDrive]\\VMSoftware\\azcopy_windows_amd64_10.3.4               |
 | [AzureStack-Tools](https://github.com/Azure/AzureStack-Tools/tree/az)                                          | [SystemDrive]\\VMSoftware\\AzureStack-Tools                          |
 ## Download files
-To get the files to create the OAW VM, [download here](https://aka.ms/OAWDownload). Be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](https://docs.microsoft.com/en-us/legal/azure-stack-hub/azure-stack-operator-access-workstation-legal-terms) before you download.
+To get the files to create the OAW VM, [download here](https://aka.ms/OAWDownload). Be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](https://docs.microsoft.com/legal/azure-stack-hub/azure-stack-operator-access-workstation-legal-terms) before you download.
 
 Because of the stateless nature of the solution, there are no updates for the OAW VM. For each milestone, a new version of the VM image file is released. Use the latest version to create a new OAW VM. The image file is based on the latest Windows Server 2019 version. After installation, you can apply updates, including any critical updates, using Windows Update.
 
@@ -137,7 +137,7 @@ New-OAW.ps1 -LocalAdministratorPassword $securePassword `
    -AzSStampInfoFilePath 'F:\AzureStackStampInformation.json'
 ```
 
-If the` DeploymentData.json` file includes the naming prefix for OAW VM, that value will be used for the `VirtualMachineName` parameter. Otherwise, the default name is `AzSOAW` or whatever name specified is by the user. The `DeploymentData.json` can be re-created using the [privileged endpoint](https://docs.microsoft.com/en-us/azure-stack/reference/pep-2002/get-azurestackstampinformation) in case it is not present on the HLH. 
+If the` DeploymentData.json` file includes the naming prefix for OAW VM, that value will be used for the `VirtualMachineName` parameter. Otherwise, the default name is `AzSOAW` or whatever name specified is by the user. The `DeploymentData.json` can be re-created using the [privileged endpoint](https://docs.microsoft.com/azure-stack/reference/pep-2002/get-azurestackstampinformation) in case it is not present on the HLH. 
 
 > [!NOTE]  
 > The parameter `AzureStackCertificatePath` should only be used when Azure Stack Hub was deployed using certificates issued from an enterprise certificate authority.
