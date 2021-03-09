@@ -41,7 +41,7 @@ To create a custom marketplace item, do the following:
 
    :::image type="content" source="media/azure-stack-create-and-publish-marketplace-item/sample-packages.png" alt-text="Samples packages":::
 
-3. Once extracted, the .zip file contains the Linux or Windows templates that are available. You can re-use the pre-made templates, and modify the respective parameters with the product details of the item that you will show on your Azure Stack Hub portal. Or, you can re-use the .azpkg file and skip the following steps to customize your own gallery package.
+3. Once extracted, the .zip file contains the Linux or Windows Azure Resource Manager templates that are available. You can re-use the pre-made Resource Manager templates, and modify the respective parameters with the product details of the item that you will show on your Azure Stack Hub portal. Or, you can re-use the .azpkg file and skip the following steps to customize your own gallery package.
 
 4. Create an Azure Resource Manager template or use our sample templates for Windows/Linux. These sample templates are provided in the packager tool .zip file you downloaded in step 1. You can either use the template and change the text fields, or you can download a pre-configured template from GitHub. For more information about Azure Resource Manager templates, see [Azure Resource Manager templates](/azure/azure-resource-manager/resource-group-authoring-templates).
 
