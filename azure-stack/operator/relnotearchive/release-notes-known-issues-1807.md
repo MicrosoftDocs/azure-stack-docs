@@ -50,7 +50,7 @@ This update includes the following improvements for Azure Stack.
 - **Expand capacity** by [adding additional scale unit nodes](../azure-stack-add-scale-node.md).
 
 <!-- 2753130 |  IS, ASDK   -->  
-- **Azure Resource Manager templates now support the condition element** - You can now deploy a resource in an Azure Resource Manger template using a condition. You can design your template to deploy a resource based on a condition, such as evaluating if a parameter value is present. For information about using a template as a condition, see [Conditionally deploy a resource](/azure/architecture/building-blocks/extending-templates/conditional-deploy) and [Variables section of Azure Resource Manager templates](/azure/azure-resource-manager/resource-manager-templates-variables) in the Azure documentation. 
+- **Azure Resource Manager templates now support the condition element** - You can now deploy a resource in an Azure Resource Manger template using a condition. You can design your template to deploy a resource based on a condition, such as evaluating if a parameter value is present. For information about using a template as a condition, see [Conditionally deploy a resource](/azure/architecture/guide/azure-resource-manager/advanced-templates/conditional-deploy) and [Variables section of Azure Resource Manager templates](/azure/azure-resource-manager/resource-manager-templates-variables) in the Azure documentation. 
 
    You can also use templates to [deploy resources to more than one subscription or resource group](/azure/azure-resource-manager/resource-manager-cross-resource-group-deployment).  
 
