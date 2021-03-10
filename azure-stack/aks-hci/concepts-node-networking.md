@@ -28,14 +28,14 @@ The number of IP addresses in the VIP pool depends on the number of workload clu
 - Static IP - If you're using static IP, make sure your virtual IPs addresses are from the same subnet provided.
 - DHCP - If your network is configured with DHCP, you will need to work with your network administrator and exclude the VIP pool IP range from the DHCP scope used for the AKS-HCI deployment.
 
-### Kubernetes node VM IP pool
+## Kubernetes node VM IP pool
 
 As explained above, Kubernetes nodes are deployed as specialized virtual machines in an AKS on Azure Stack HCI. AKS-HCI allocates IP addresses to these virtual machines in order to enable communication between Kubernetes nodes.
 
 - Static IP - You must specify a Kubernetes node VM IP pool range. The number of IP addresses in this range depends on the total number of Kubernetes nodes you plan to deploy across your AKS host and workload Kubernetes clusters. Take into account that updates will consume 1-3 additional IP addresses during the update.
 - DHCP - You do not need to specify a Kubernetes Node VM Pool as IP addresses to the Kubernetes nodes are dynamically allocated by the DHCP server on your network.
 
-### Virtual network with static IP networking (Recommended)
+## Virtual network with static IP networking (Recommended)
 
 This networking model creates a virtual network that allocates IP addresses from a statically defined address pool to all objects in your deployment. An added benefit of using static IP networking is that long-lived deployments and application workloads are guaranteed to always be reachable.
 
@@ -51,25 +51,25 @@ You must specify the following parameters while defining a virtual network with 
 - Kubernetes node VM pool: A continuous range of IP addresses to be used for your Kubernetes node VMs.
 - Virtual IP pool: A continuous range of IP addresses to be used for your Kubernetes cluster API server and Kubernetes services.
 
->[!Note]
->The VIP pool must be part of the same subnet as the Kubernetes node VM pool.
+> [!Note]
+> The VIP pool must be part of the same subnet as the Kubernetes node VM pool.
 
 - vLAN ID: The vLAN ID for the virtual network. If omitted, the virtual network will not be tagged.
 
-### Virtual network with DHCP networking
+## Virtual network with DHCP networking
 
 This networking model creates a virtual network that allocates IP addresses using DHCP to all objects in your deployment.  
 
 You must specify the following parameters while defining a virtual network with static IP configurations:
 
->[!Important]
->In this version of AKS on Azure Stack HCI it is not possible to change the network configuration once the AKS host or the workload cluster are deployed. The only way to change the networking settings is to start fresh by removing the workload cluster(s) and uninstall AKS on Azure Stack HCI.
+> [!Important]
+> In this version of AKS on Azure Stack HCI it is not possible to change the network configuration once the AKS host or the workload cluster are deployed. The only way to change the networking settings is to start fresh by removing the workload cluster(s) and uninstall AKS on Azure Stack HCI.
 
 - Name: The name of your virtual network
 - Virtual IP pool: The continuous range of IP addresses to be used for your Kubernetes cluster API server and Kubernetes services. 
 
->[!Note]
->The VIP pool addresses need to be in the same subnet as the DHCP scope and have to be excluded from the DHCP scope to avoid address conflicts.
+> [!Note]
+> The VIP pool addresses need to be in the same subnet as the DHCP scope and have to be excluded from the DHCP scope to avoid address conflicts.
 
 - vLAN ID: The vLAN ID for the virtual network. If omitted, the virtual network will not be tagged.
 

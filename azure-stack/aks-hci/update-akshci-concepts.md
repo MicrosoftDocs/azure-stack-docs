@@ -8,7 +8,7 @@ ms.author: mikek
 author: mkostersitz
 ---
 
-# Update Azure Kubernetes Services on Azure Stack HCI
+# Update concepts for Azure Kubernetes Services on Azure Stack HCI
 
 There are several types of updates, which can happen independently from each other and in certain supported combinations.
 

@@ -11,25 +11,24 @@ author: mkostersitz
 
 # Secure pod traffic with network policies
 
-This step-by-step guide can be used to verify and try out basic pod-to-pod connectivity and the application of network policy in a cluster using Calico network policies.
-We will create client and server pods on Linux and Windows nodes, verify connectivity between the pods, and then we’ll apply a basic network policy to isolate pod traffic.
+Use this step-by-step guide to verify and test basic pod-to-pod connectivity and to use Calico network policies in a cluster. You can create client and server pods on Linux and Windows nodes, verify connectivity between the pods, and then apply a basic network policy to isolate pod traffic.
 
 ## Prerequisites
 
-Follow the steps in [Installing AKS on Azure Stack HCI](setup-powershell.md) to deploy AKS on Azure Stack HCI.
+Follow the steps in [Installing AKS on Azure Stack HCI](./setup-powershell.md) to deploy AKS on Azure Stack HCI.
 
-To use this guide, you will need
+To use this guide, you will need:
 
-- an AKS on Azure Stack HCI workload cluster.
-- at least one Windows worker node deployed in the cluster.
-- at least one Linux worker node deployed in the cluster.
-- have enabled the Calico network plugin enabled during workload cluster creation. See the [`New-AksHciCluster`](./new-akshcicluster.md) chapter.
+- An AKS on Azure Stack HCI workload cluster.
+- At least one Windows worker node deployed in the cluster.
+- At least one Linux worker node deployed in the cluster.
+- The Calico network plug-in enabled during the workload cluster creation. If this plug-in wasn't enabled, see [`New-AksHciCluster`](./new-akshcicluster.md) for instructions.
  
 ## Create pods on Linux nodes
 
 First, create a client (busybox) and server (nginx) pod on the Linux nodes.
 
-### create a YAML file policy-demo-linux.yaml
+### Create a YAML file called policy-demo-linux.yaml
 
 ```yaml
 
@@ -81,9 +80,9 @@ spec:
 
 ### Apply the policy-demo-linux.yaml file to the Kubernetes cluster
 
-1. Open a powershell window.
-1. Load the credentials for your target cluster using the `get-AksHciCredential` command. See [here](./get-akshcicredential.md) for more details.
-1. Use `kubectl` to apply the `policy-demo-linux.yaml` configuration
+Open a PowerShell window and load the credentials for your target cluster using the [`get-AksHciCredential`](./get-akshcicredential.md) command. 
+
+Next, use `kubectl` to apply the `policy-demo-linux.yaml` configuration, as shown below:
 
 ```powershell
 kubectl apply -f policy-demo-linux.yaml
@@ -91,11 +90,12 @@ kubectl apply -f policy-demo-linux.yaml
 
 ## Create pods on Window nodes
 
-Next, we’ll create a client (pwsh) and server (porter) pod on the Windows nodes. 
->[!Note]
->The pwsh and porter pod manifests below use images based on mcr.microsoft.com/windows/servercore:1809. If you are using a more recent Windows Server version, update the manifests to use a servercore image that matches your Windows Server version.
+Create a client (pwsh) and server (porter) pod on the Windows nodes. 
 
-### create the policy-demo-windows.yaml
+> [!Note]
+> The pwsh and porter pod manifests below use images based on `mcr.microsoft.com/windows/servercore:1809`. If you are using a more recent Windows Server version, update the manifests to use a Server Core image that matches your Windows Server version.
+
+### Create the policy-demo-windows.yaml
 
 ```yaml
 
@@ -141,28 +141,28 @@ spec:
 
 ### Apply the policy-demo-windows.yaml file to the Kubernetes cluster
 
-1. Open a powershell window.
-1. Load the credentials for your target cluster using the `get-AksHciCredential` command. See [here](./get-akshcicredential.md) for more details.
-1. Use `kubectl` to apply the `policy-demo-windows.yaml` configuration
+Open a powershell window and load the credentials for your target cluster using the [`get-AksHciCredential`](./get-akshcicredential.md) command. 
+
+Next, use `kubectl` to apply the `policy-demo-windows.yaml` configuration:
 
 ```powershell
 kubectl apply -f policy-demo-windows.yaml
 ```
 
-### Verify four pds have been created and are running
+### Verify the four pods have been created and are running
 
->[!Note]
->Launching the Windows pods is going to take sometime depending on your network download speed.
+> [!Note]
+> Depending on your network download speed, launching the Windows pods may take time.
 
-1. Open a powershell window.
-1. Load the credentials for your target cluster using the `get-AksHciCredential` command. See [here](./get-akshcicredential.md) for more details.
-1. Using `kubectl` to list the pods in the `calico-demo` namespace.
+Open a PowerShell window and load the credentials for your target cluster using the [`get-AksHciCredential`](./get-akshcicredential.md) command. 
+
+Next, use `kubectl` to list the pods in the `calico-demo` namespace:
 
 ```powershell
 kubectl get pods --namespace calico-demo
 ```
 
-You should see something like the below
+You should see output similar to below:
 
 ```output
 NAME      READY   STATUS              RESTARTS   AGE
@@ -184,24 +184,23 @@ pwsh      1/1     Running   0          5m19s
 
 ### Check connectivity between pods on Linux and Windows nodes
 
-Now that client and server pods are running on both Linux and Windows nodes, let’s verify that client pods on Linux nodes can reach server pods on Windows nodes.
+Now that the client and server pods are running on both Linux and Windows nodes, verify that client pods on Linux nodes can reach server pods on Windows nodes.
 
-1. Open a powershell window.
-1. Load the credentials for your target cluster using the `get-AksHciCredential` command. See [here](./get-akshcicredential.md) for more details.
-1. Using `kubectl` to determine the porter pod IP address:
+1. Open a PowerShell window.
+2. Load the credentials for your target cluster using the [`Get-AksHciCredential`](./get-akshcicredential.md) command.
+3. Use `kubectl` to determine the porter pod IP address:
 
     ```powershell
     kubectl get pod porter --namespace calico-demo -o 'jsonpath={.status.podIP}'
     ```
 
-1. Log into the busybox pod and try reaching the porter pod on port 80. Replace the '<porter_ip>' tag with the IP address returned from the previous command.
+4. Log into the busybox pod and try reaching the porter pod on port 80. Replace the '<porter_ip>' tag with the IP address returned from the previous command.
 
     ```powershell
     kubectl exec --namespace calico-demo busybox -- nc -vz <porter_ip> 80
     ```
 
-    >[!Note]
-    >You can also combine both of the above steps:
+    You can also combine both of the above steps:
 
     ```powershell
     kubectl exec --namespace calico-demo busybox -- nc -vz $(kubectl get pod porter --namespace calico-demo -o 'jsonpath={.status.podIP}') 80
@@ -213,10 +212,10 @@ Now that client and server pods are running on both Linux and Windows nodes, let
     192.168.40.166 (192.168.40.166:80) open
     ```
 
->[!Note]
-> The IP addresses returned will vary depending on your environment setup.
+   > [!Note]
+   > The IP addresses returned will vary depending on your environment setup.
 
-1. Now you can verify that the pwsh pod can reach the nginx pod:
+5. Verify that the pwsh pod can reach the nginx pod:
 
     ```powershell
     kubectl exec --namespace calico-demo pwsh -- powershell Invoke-WebRequest -Uri http://$(kubectl get po nginx -n calico-demo -o 'jsonpath={.status.podIP}') -UseBasicParsing -TimeoutSec 5
@@ -241,7 +240,7 @@ Now that client and server pods are running on both Linux and Windows nodes, let
                         <...
     ```
 
-1. Verify that the pwsh pod can reach the porter pod:
+6. Verify that the pwsh pod can reach the porter pod:
 
     ```powershell
     kubectl exec --namespace calico-demo pwsh -- powershell Invoke-WebRequest -Uri http://$(kubectl get po porter -n calico-demo -o 'jsonpath={.status.podIP}') -UseBasicParsing -TimeoutSec 5
@@ -270,15 +269,13 @@ Now that client and server pods are running on both Linux and Windows nodes, let
 
     ```
 
-### Conclusion
-
 You have now verified that communication is possible between all pods in the application.
 
 ## Apply policy to the Windows client pod
 
-In a real world deployment you would want to make sure only pods that are supposed to communicate with each other, are actually allowed to do so.
+In a real world deployment, you would want to make sure only pods that are supposed to communicate with each other are actually allowed to do so.
 
-To achieve this you wil apply a basic network policy which allows only the busybox pod to reach the porter pod.
+To achieve this, you apply a basic network policy which allows only the busybox pod to reach the porter pod.
 
 ### Create the network-policy.yaml file
 
@@ -343,10 +340,8 @@ pWebRequest) [Invoke-WebRequest], WebException
 command terminated with exit code 1
 ```
 
-## Wrap up
-
-In this demo we’ve configured pods on Linux and Windows nodes, verified basic pod connectivity, and tried a basic network policy to isolate pod to pod traffic.
-as the final step you can clean up all of the demo resources:
+In this demo, we’ve configured pods on Linux and Windows nodes, verified basic pod connectivity, and tried a basic network policy to isolate pod to pod traffic.
+As the final step you can clean up all of the demo resources:
 
 ```powershell
 kubectl delete namespace calico-demo
