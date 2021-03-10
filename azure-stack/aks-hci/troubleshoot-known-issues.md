@@ -1,10 +1,10 @@
 ---
 title: Troubleshoot known issues on Azure Kubernetes Service on Azure Stack HCI
 description: Learn how to resolve known issues in an Azure Kubernetes Service (AKS) on Azure Stack HCI deployment.
-author: ekasonye
+author: EkeleAsonye
 ms.topic: how-to
 ms.date: 03/05/2021
-ms.author: ekasonye
+ms.author: v-susbo
 ---
 
 # Troubleshoot known issues in Azure Kubernetes Service on Azure Stack HCI

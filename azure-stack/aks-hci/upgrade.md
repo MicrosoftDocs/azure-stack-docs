@@ -1,13 +1,13 @@
 ---
-title: Upgrade Azure Kubernetes Service on Azure Stack HCI
-description: Learn how to upgrade an Azure Kubernetes Service on Azure Stack HCI host and workload clusters
+title: Upgrade the Kubernetes version on AKS on Azure Stack HCI
+description: Learn how to upgrade the Kubernetes version on AKS on Azure Stack HCI host and workload clusters
 ms.topic: article
 ms.date: 03/02/2021
 author: jessicaguan
 ms.author: jeguan
 ---
 
-# Upgrade Azure Kubernetes Service on Azure Stack HCI
+# Upgrade the Kubernetes version on AKS on Azure Stack HCI
 
 After deploying Azure Kubernetes Service on Azure Stack HCI, upgrades to the host and workload clusters are managed by the customer. During an upgrade, you may not be able to perform new cluster operations. After the upgrade completes, you will not be able to revert to older versions.
 
@@ -15,7 +15,7 @@ After deploying Azure Kubernetes Service on Azure Stack HCI, upgrades to the hos
 
 We recommend upgrading the Azure Kubernetes Service on Azure Stack HCI host every 30 days. If the host is not running on the latest version, then support could be lost in your deployment.
 
-Use the [Get-AksHciUpdates](get-akshciupdates.md) command to see the available updates for Azure Kubernetes Service on Azure Stack HCI.
+Use the [Get-AksHciUpdates](get-akshciupdates.md) command to see the available Kubernetes updates for Azure Kubernetes Service on Azure Stack HCI.
 
 ```powershell
 Get-AksHciUpdates

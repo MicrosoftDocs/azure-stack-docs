@@ -8,7 +8,7 @@ ms.author: mikek
 author: mkostersitz
 ---
 
-# Run updates and upgrades on Azure Kubernetes Service on Azure Stack HCI
+# Update Azure Kubernetes Services on Azure Stack HCI
 
 There are several types of updates, which can happen independently from each other and in certain supported combinations.
 
@@ -72,7 +72,7 @@ The output shows the updated version of the AKS on Azure Stack HCI host.
 
 > [!Important]
 > Updating a workload cluster to a newer version of Kubernetes will only work if the target Kubernetes version is supported by the current operating system version.
-> To check for supported operating system and Kubernetes version combinations, use the `Get-AksHciUpdateVersion` command.
+> To check for supported operating system and Kubernetes version combinations, use the `Get-AksHciKubernetesVersion` command.
 
 ### Example for updating the Kubernetes version of a workload cluster
 

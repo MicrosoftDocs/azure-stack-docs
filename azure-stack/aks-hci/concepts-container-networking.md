@@ -8,7 +8,6 @@ ms.author: mikek
 author: mkostersitz
 ---
 
----
 # Container networking concepts in Azure Kubernetes Service (AKS) on Azure Stack HCI
 
 In a container-based microservices approach to application development, application components must work together to process their tasks. Kubernetes provides various resources that enable this application communication. You can connect to and expose applications internally or externally. To build highly available applications, you can load balance your applications. More complex applications may require configuration of ingress traffic for SSL/TLS termination or routing of multiple components. For security reasons, you may also need to restrict the flow of network traffic into or between pods and nodes.

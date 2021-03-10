@@ -41,5 +41,5 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [uninstall-akshciadauth](uninstall-akshciadauth.md) | Remove Active Directory authentication. |
 | [update-akshci](update-akshci.md) | Update the Azure Kubernetes Service host to the latest Kubernetes version. |
 | [update-akshcicluster](update-akshcicluster.md) | Update a managed Kubernetes cluster to a newer Kubernetes or OS version. |
-| [upgrade](upgrade.md) | Upgrade Azure Kubernetes Service on Azure Stack HCI. |
+
 

@@ -30,6 +30,9 @@ This will be fixed in a future release
 To ensure gMSA and AD authentication works, ensure that the Azure Stack HCI cluster nodes are configured to synchronize their time with a domain controller or other
 time source and that Hyper-V is configured to synchronize time to any virtual machines.
 
+## Hyper-V manager shows high CPU and or Memory demand for the management cluster
+When checking in Hyper-V manger high CPU and Memory demands for the management cluster can be safely ignored. They are usually related to spikes in compute resource usage when provisioning workload clusters. Increasing the memory or CPU size for the management cluster has not shown a significant improvement and can be safely ignored.
+
 ## Special Active Directory permissions are needed for domain joined Azure Stack HCI nodes 
 Users deploying and configuring Azure Kubernetes Service on Azure Stack HCI need to have "Full Control" permission to create AD objects in the Active Directory container the server and service objects are created in. 
 

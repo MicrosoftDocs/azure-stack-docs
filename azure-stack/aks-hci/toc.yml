@@ -31,27 +31,35 @@
     href: kubernetes-concepts.md
   - name: System requirements
     href: system-requirements.md
-  - name: Kubernetes node networking
-    href: concepts-node-networking.md
-  - name: Kubernetes container networking
-    href: concepts-container-networking.md
+  - name: Networking
+    items:
+      - name: Kubernetes node networking
+        href: concepts-node-networking.md
+      - name: Kubernetes container networking
+        href: concepts-container-networking.md
 
 - name: How-to guides
   items: 
     - name: Evaluate on an Azure VM
       href: https://github.com/Azure/aks-hci/blob/main/eval/readme.md
+    - name: Cluster operations
+      items:    
+          - name: Scale an AKS cluster
+            href: scale-cluster.md
+          - name: Upgrade the Kubernetes version
+            href: upgrade.md
+          - name: Update Azure Kubernetes Services on Azure Stack HCI
+            href: update-akshci-concepts.md
+          - name: Restart, reset or remove Azure Kubernetes Service on Azure Stack HCI
+            href: restart-cluster.md
     - name: Use Azure Arc Kuberetes
       items:
-          - name: Connect to Azure Arc for Kubernetes
+          - name: Connect to Azure Arc for Kubernetes-
             href: connect-to-arc.md
-          - name: Adapt apps for mixed-OS Kubernetes clusters
-            href: adapt-apps-mixed-os-clusters.md
     - name: Configure networking
       items:
           - name: Use proxy settings
             href: set-proxy-settings.md
-          - name: Use the Calico network policy
-            href: calico-networking-policy.md
     - name: Security and authentication
       items:
           - name: Use Active Directory single sign-on
@@ -60,14 +68,8 @@
             href: encrypt-secrets.md
           - name: Secure communication with certificates
             href: secure-communication.md
-    - name: Cluster operations
-      items:    
-          - name: Scale the node count in a cluster
-            href: scale-cluster.md
-          - name: Upgrade Azure Kubernetes Service on Azure Stack HCI
-            href: upgrade.md
-          - name: Restart, reset or remove Azure Kubernetes Service on Azure Stack HCI
-            href: restart-cluster.md
+          - name: Secure pod traffic with network policies
+            href: calico-networking-policy.md
     - name: Monitoring and logging
       items:    
           - name: Use Azure Monitor for containers
@@ -80,8 +82,8 @@
             href: prepare-windows-nodes-gmsa.md
           - name: Use persistent volume
             href: persistent-volume.md
-    - name: Run updates and upgrades
-      href: update-akshci-concepts.md
+          - name: Adapt apps for mixed-OS Kubernetes clusters
+            href: adapt-apps-mixed-os-clusters.md
     - name: Troubleshoot
       href: troubleshoot.md
 - name: Related
