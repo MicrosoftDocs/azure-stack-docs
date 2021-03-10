@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -38,6 +38,12 @@ To access known issues for a different version, use the version selector dropdow
 ## Update
 
 For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
+
+### Update to 2102 failed at step Configure DNS for SqlServer
+
+- Applicable: This issue applies to Azure Container Registry preview customers that have installed the Container Registry service.
+- Remediation: A hotfix for this issue must be applied prior to attempting the update for private preview customers that have installed Azure Container Registry service. The hotfix is not yet available.
+- Occurrence: Any stamp that has Azure Container Registry installed as part of the private preview will experience this update failure. Please do not attempt the update until further guidance is provided.
 
 <!-- ## Portal -->
 

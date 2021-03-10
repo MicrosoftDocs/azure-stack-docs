@@ -148,8 +148,6 @@ Once the VM has the **Azure Monitor, Update and Configuration Management**, and 
 
 Azure Monitor for VMs includes a set of performance charts that target several key performance indicators (KPIs) to help you determine how well a VM is performing. The charts show resource use over a period of time so you can identify bottlenecks and anomalies. You can also switch to a perspective listing each machine to view resource use based on the metric selected. While there are many elements to consider when dealing with performance, Azure Monitor for VMs monitors key operating system performance indicators related to processor, memory, network adapter, and disk use. Performance charts complement the health monitoring feature and help expose issues that indicate a possible system component failure. Azure Monitor for VMs also supports capacity planning and tuning and optimization to achieve efficiency.
 
-   ![Azure Monitor VMs Performance tab](http:/docs.microsoft.com/azure/azure-monitor/insights/media/vminsights-performance/vminsights-performance-aggview-01.png)
-
 Viewing the discovered app components on Windows and Linux VMs running in Azure Stack Hub can be observed in two ways with Azure Monitor for VMs. The first is from a VM directly and the second is across groups of VMs from Azure Monitor.
 The [Using Azure Monitor for VMs Map to understand app components](/azure/azure-monitor/insights/vminsights-maps) article will help you understand the experience between the two perspectives and how to use the Map feature.
 
