@@ -4,7 +4,7 @@ description: How to register your Windows Admin Center gateway with Azure.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ---
 
 # Register Windows Admin Center with Azure
@@ -54,6 +54,12 @@ To use Azure services with Windows Admin Center, you must first [install Windows
 7. At this point, the user must re-run the registration wizard, this time selecting **Use existing** application ID and specifying the application ID provided by the Azure AD admin.
 
 8. Select **Sign in** to sign into Windows Admin Center with your Azure account.
+
+## Unregister Windows Admin Center
+
+To unregister your Windows Admin Center gateway, select the **Settings** gear icon in the upper right. Then, from the **Gateway** menu at the left, select **Azure**, then **Unregister**, then **Confirm**. 
+
+This will remove the association between Windows Admin Center and the Azure AD app ID that was provided by your Azure AD admin or created when you registered the gateway. It will not delete the Azure AD app nor affect any Azure services used by servers or clusters managed by Windows Admin Center.
 
 ## Next steps
 
