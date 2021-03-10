@@ -68,7 +68,7 @@
             href: encrypt-secrets.md
           - name: Secure communication with certificates
             href: secure-communication.md
-          - name: Secure pod traffic with network policies
+          - name: Secure traffic between pods using network policies
             href: calico-networking-policy.md
     - name: Monitoring and logging
       items:    
