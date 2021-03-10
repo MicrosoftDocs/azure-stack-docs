@@ -9,67 +9,67 @@ author: mkostersitz
 ---
 
 ---
-# Network concepts for deploying Azure Kubernetes Service (AKS) Nodes on Azure Stack HCI
+# Network concepts for deploying Azure Kubernetes Service (AKS) nodes on Azure Stack HCI
 
-There are two IP address assignment models to choose from, depending on your desired AKS-HCI networking architecture. Note that the virtual networking architecture defined here for your AKS-HCI deployments could be different from the underlying physical networking architecture in your data center.
+There are two IP address assignment models to choose from, depending on the AKS on Azure Stack HCI networking architecture you choose to use. Note that the virtual networking architecture defined here for AKS on Azure Stack HCI deployments could be different from the underlying physical networking architecture in a data center.
 
-- Static IP networking - The virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers and any Kubernetes services you run on top of your cluster.
+- Static IP networking - The virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers, and any Kubernetes services run on top of the cluster.
 
-- DHCP networking - The virtual network allocates dynamic IP addresses to the Kubernetes nodes, underlying VMs and load balancers using a DHCP server. The Kubernetes cluster API server and any Kubernetes services you run on top of your cluster are still allocated static IP addresses.
+- DHCP networking - The virtual network allocates dynamic IP addresses to the Kubernetes nodes, underlying VMs and load balancers using a DHCP server. The Kubernetes cluster API server, and any Kubernetes services you run on top of your cluster, are still allocated static IP addresses.
 
 ## Virtual IP Pool
 
-Virtual IP (VIP) pool is set of IP addresses mandatory for any AKS on Azure Stack HCI deployment. The VIP pool is a range of reserved IP addresses which are used for allocating IP addresses to the Kubernetes cluster API server and for Kubernetes services to guarantee that your applications are always reachable. Irrespective of your virtual networking model and address assignment model you must provide a VIP pool for your AKS host deployment.
+Virtual IP (VIP) pool is set of IP addresses that are mandatory for any AKS on Azure Stack HCI deployment. The VIP pool is a range of reserved IP addresses used for allocating IP addresses to the Kubernetes cluster API server and for Kubernetes services to guarantee that your applications are always reachable. Irrespective of the virtual networking model and the address assignment model you choose, you must provide a VIP pool for your AKS host deployment.
+
 The number of IP addresses in the VIP pool depends on the number of workload clusters and Kubernetes services planned for your deployment.
 
->[!Note]
->The VIP pool definition will differ in the following ways depending on your networking model:
+Depending on your networking model, the VIP pool definition will differ in the following ways:
 
 - Static IP - If you're using static IP, make sure your virtual IPs addresses are from the same subnet provided.
-- DHCP - If your network is configured with DHCP, you will need to work with your network administrator and exclude the VIP pool IP range from the DHCP scope used for the AKS-HCI deployment.
+- DHCP - If your network is configured with DHCP, you will need to work with your network administrator and exclude the VIP pool IP range from the DHCP scope used for the AKS on Azure Stack HCI deployment.
 
 ## Kubernetes node VM IP pool
 
-As explained above, Kubernetes nodes are deployed as specialized virtual machines in an AKS on Azure Stack HCI. AKS-HCI allocates IP addresses to these virtual machines in order to enable communication between Kubernetes nodes.
+Kubernetes nodes are deployed as specialized virtual machines in an AKS on Azure Stack HCI deployment. AKS on Azure Stack HCI allocates IP addresses to these virtual machines to enable communication between Kubernetes nodes.
 
-- Static IP - You must specify a Kubernetes node VM IP pool range. The number of IP addresses in this range depends on the total number of Kubernetes nodes you plan to deploy across your AKS host and workload Kubernetes clusters. Take into account that updates will consume 1-3 additional IP addresses during the update.
-- DHCP - You do not need to specify a Kubernetes Node VM Pool as IP addresses to the Kubernetes nodes are dynamically allocated by the DHCP server on your network.
+- Static IP - You must specify a Kubernetes node VM IP pool range. The number of IP addresses in this range depends on the total number of Kubernetes nodes you plan to deploy across your AKS host and workload Kubernetes clusters. You should take into account that updates will consume one to three additional IP addresses during the update.
+- DHCP - You do not need to specify a Kubernetes node VM pool as IP addresses to the Kubernetes nodes are dynamically allocated by the DHCP server on your network.
 
 ## Virtual network with static IP networking (Recommended)
 
-This networking model creates a virtual network that allocates IP addresses from a statically defined address pool to all objects in your deployment. An added benefit of using static IP networking is that long-lived deployments and application workloads are guaranteed to always be reachable.
+This networking model creates a virtual network that allocates IP addresses from a statically-defined address pool to all objects in your deployment. An added benefit of using static IP networking is that long-lived deployments and application workloads are guaranteed to always be reachable.
 
 You must specify the following parameters while defining a virtual network with static IP configurations:
 
->[!Important]
->In this version of AKS on Azure Stack HCI it is not possible to change the network configuration once the AKS host or the workload cluster are deployed. The only way to change the networking settings is to start fresh by removing the workload cluster(s) and uninstall AKS on Azure Stack HCI.
+> [!Important]
+> In this version of AKS on Azure Stack HCI, it is not possible to change the network configuration once the AKS host or the workload cluster are deployed. The only way to change the networking settings is to start fresh by removing the workload cluster(s) and uninstall AKS on Azure Stack HCI.
 
-- Name: The name of your virtual network
+- Name: The name of your virtual network.
 - AddressPrefix: The IP address prefix to use for your subnet.
 - Gateway: The IP address of the default gateway for the subnet.
-- DNS server: An array of IP addresses pointing to the DNS servers to be used for the subnet. A minimum of one and a maximum of 3 servers can be provided.
+- DNS server: An array of IP addresses pointing to the DNS servers to be used for the subnet. A minimum of one and a maximum of three servers can be provided.
 - Kubernetes node VM pool: A continuous range of IP addresses to be used for your Kubernetes node VMs.
 - Virtual IP pool: A continuous range of IP addresses to be used for your Kubernetes cluster API server and Kubernetes services.
 
-> [!Note]
-> The VIP pool must be part of the same subnet as the Kubernetes node VM pool.
+  > [!Note]
+  > The VIP pool must be part of the same subnet as the Kubernetes node VM pool.
 
 - vLAN ID: The vLAN ID for the virtual network. If omitted, the virtual network will not be tagged.
 
 ## Virtual network with DHCP networking
 
-This networking model creates a virtual network that allocates IP addresses using DHCP to all objects in your deployment.  
+This networking model creates a virtual network that allocates IP addresses using DHCP to all objects in the deployment.  
 
 You must specify the following parameters while defining a virtual network with static IP configurations:
 
 > [!Important]
-> In this version of AKS on Azure Stack HCI it is not possible to change the network configuration once the AKS host or the workload cluster are deployed. The only way to change the networking settings is to start fresh by removing the workload cluster(s) and uninstall AKS on Azure Stack HCI.
+> In this version of AKS on Azure Stack HCI, it is not possible to change the network configuration once the AKS host or the workload cluster are deployed. The only way to change the networking settings is to start fresh by removing the workload cluster(s) and uninstall AKS on Azure Stack HCI.
 
-- Name: The name of your virtual network
+- Name: The name of your virtual network.
 - Virtual IP pool: The continuous range of IP addresses to be used for your Kubernetes cluster API server and Kubernetes services. 
 
-> [!Note]
-> The VIP pool addresses need to be in the same subnet as the DHCP scope and have to be excluded from the DHCP scope to avoid address conflicts.
+  > [!Note]
+  > The VIP pool addresses need to be in the same subnet as the DHCP scope and have to be excluded from the DHCP scope to avoid address conflicts.
 
 - vLAN ID: The vLAN ID for the virtual network. If omitted, the virtual network will not be tagged.
 
@@ -192,5 +192,8 @@ Ingress controllers work at layer 7, and can use more intelligent rules to distr
 ![Diagram showing Ingress traffic flow in an AKS-HCI cluster](media/net/aks-ingress.png)
 
 ## Next steps
+This article covers some of the networking concepts for deploying AKS nodes on Azure Stack HCI. For more information on AKS on Azure Stack HCI concepts, see the following articles:
 
-Deploy a Kubernetes workload cluster see this [chapter](create-kubernetes-cluster-powershell.md)
+- [Container networking concepts](./concepts-container-networking.md)
+- [Cluster and workloads](./kubernetes-concepts.md)
+- [Deploy a Kubernetes workload cluster](./create-kubernetes-cluster-powershell.md)

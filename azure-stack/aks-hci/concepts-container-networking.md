@@ -120,5 +120,8 @@ Here's an example:
 For more information about the Calico Network plug-in and policies, check out [getting started with Calico network policy](https://docs.projectcalico.org/security/calico-network-policy).
 
 ## Next steps
+This article covers networking concepts for containers in AKS nodes on Azure Stack HCI. For more information on AKS on Azure Stack HCI concepts, see the following articles:
 
-Apply a network policy to restrict traffic using [the Calico network policy](./calico-networking-policy.md).
+- [Network concepts for AKS nodes](./concepts-node-networking.md)
+- [Cluster and workloads](./kubernetes-concepts.md)
+- [Secure traffic between pods using network policies](./calico-networking-policy.md).

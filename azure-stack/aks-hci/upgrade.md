@@ -7,7 +7,7 @@ author: jessicaguan
 ms.author: jeguan
 ---
 
-# Update Kubernetes version of AKS clusters on Azure Stack HCI
+# Update the Kubernetes version of AKS clusters on Azure Stack HCI
 
 This article talks about the following update options for AKS workload clusters on Azure Stack HCI: 
 - Update an AKS on Azure Stack HCI workload cluster to a new Kubernetes version.
