@@ -14,12 +14,16 @@ There are several types of updates, which can happen independently from each oth
 
 - Update the AKS on Azure Stack HCI core system to the latest version.
 - Update an AKS on Azure Stack HCI workload cluster to a new Kubernetes version.
-- Update the container hosts to a newer version of the operating system.
-- Combined update of the operating system and Kubernetes version.
+- Update the container hosts of AKS workload clusters to a newer version of the operating system.
+- Combined update of the operating system and Kubernetes version of AKS workload clusters.
 
 All updates are done in a rolling update flow. When a *new* node with the newer build is brought into the cluster, resources are moved from the *old* node to the *new* node, and the *old* node is decommissioned.
 
-The examples below assume that the workload cluster `myCluster` is currently on Kubernetes version 1.18.8 and has an operating system version that's more than 30 days old.
+This article talks about updating the AKS on Azure Stack HCI core system to the latest version. For information on updating an AKS workload cluster, visit [how to update Kubernetes version of AKS clusters](./upgrade.md).
+
+You can update to the latest version of Azure Kubernetes Service on Azure Stack HCI by running the [update-akshci](./update-akshci.md) command. The update command only works if you have installed the Oct release or later. It will not work for releases older than the October release. This update command updates the Azure Kubernetes Service host and the on-premise Microsoft operated cloud platform. This command does not update any existing AKS workload clusters. New AKS workload clusters created after updating the AKS host may differ from existing AKS workload clusters in their OS version and Kubernetes version.
+
+We recommend updating AKS workload clusters immediately after updating the AKS host to prevent running unsupported container host OS versions or Kubernetes versions in your AKS workload clusters. If your workload clusters are on an old Kubernetes version, they will still be supported but you will not be able to scale your cluster. 
 
 ## Update the AKS on Azure Stack HCI host
 
@@ -35,7 +39,7 @@ PS C:\> Get-AksHciVersion
 ```
 
 ```output
-0.9.6.1
+0.9.6.4
 ```
 
 #### Get available AKS on Azure Stack HCI updates
@@ -47,7 +51,7 @@ Get-AksHciUpdates
 The output shows the available versions this AKS on Azure Stack HCI host can be updated to.
 
 ```output
-0.9.6.4
+0.9.7.2
 ```
 
 #### Initiate the AKS on Azure Stack HCI update
@@ -65,86 +69,8 @@ PS C:\> Get-AksHciVersion
 The output shows the updated version of the AKS on Azure Stack HCI host.
 
 ```output
-0.9.6.4
+0.9.7.2
 ```
 
-## Update the Kubernetes version of a workload cluster
-
-> [!Important]
-> Updating a workload cluster to a newer version of Kubernetes will only work if the target Kubernetes version is supported by the current operating system version.
-> To check for supported operating system and Kubernetes version combinations, use the `Get-AksHciKubernetesVersion` command.
-
-### Example for updating the Kubernetes version of a workload cluster
-
-#### Get available Kubernetes versions
-
-```powershell
-PS C:\> Get-AksHciKubernetesVersion
-```
-
-```Output
-Linux {v1.16.10, v1.16.15, v1.17.11, v1.17.13...}
-Windows {v1.18.8, v1.18.10}
-```
-
-#### Initiate the Kubernetes version update
-
-```powershell
-PS C:\> Update-AksHciCluster -clusterName myCluster -kubernetesVersion v1.18.10
-```
-
-## Update only the operating system version 
-
-> [!Important]
-> Updating a target cluster to a newer version of the operating system without changing the Kubernetes version will only work if the new operating system version does not require a different Kubernetes version.
-
-### Example for updating the operating system only
-
-#### Get available workload cluster updates
-
-```powershell
-PS C:\> Get-AksHciClusterUpgrades -name mycluster
-```
-
-```output
-details                                                     kubernetesversion operatingsystemversion
--------                                                     ----------------- ----------------------
-This is a patch kubernetes upgrade. (i.e v1.1.X  to v1.1.Y) v1.17.13          @{mariner=January 2021; windows=January 2021}
-This is a minor kubernetes upgrade. (i.e v1.X.1 to v1.Y.1)  v1.18.12          @{mariner=January 2021; windows=January 2021}
-This is a minor kubernetes upgrade. (i.e v1.X.1 to v1.Y.1)  v1.18.8           @{mariner=January 2021; windows=January 2021}
-```
-
-#### Initiate the operating system version update
-
-```powershell
-PS C:\> Update-AksHciCluster -clusterName myCluster -kubernetesVersion v1.18.8 -operatingSystem
-```
-
-## Update the OS version and the Kubernetes version
-
-> [!Important]
-> Updating a workload cluster to a newer version of the operating system and Kubernetes version is allowed.
-
-The example below assumes there is a new Kubernetes version available and the version number is v1.18.12.
-
-### Example for updating a workload cluster
-
-#### Get all available workload cluster updates
-
-```powershell
-PS C:\> Get-AksHciClusterUpgrades -name mycluster
-```
-
-```output
-details                                                     kubernetesversion operatingsystemversion
--------                                                     ----------------- ----------------------
-This is a patch kubernetes upgrade. (i.e v1.1.X  to v1.1.Y) v1.17.13          @{mariner=January 2021; windows=January 2021}
-This is a minor kubernetes upgrade. (i.e v1.X.1 to v1.Y.1)  v1.18.12          @{mariner=January 2021; windows=January 2021}
-This is a minor kubernetes upgrade. (i.e v1.X.1 to v1.Y.1)  v1.18.8           @{mariner=January 2021; windows=January 2021}
-```
-
-#### Initiate the workload cluster update
-
-```powershell
-PS C:\> Update-AksHciCluster -clusterName myCluster -kubernetesVersion v1.18.12
-```
+## Next Steps
+[Update Kubernetes version and container host OS of your AKS workload clusters](./upgrade.md)
