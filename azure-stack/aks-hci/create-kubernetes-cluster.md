@@ -21,7 +21,6 @@ There are two ways to create a Kubernetes cluster in Windows Admin Center. One o
 1. To begin creating a Kubernetes cluster in Windows Admin Center, press the **Add** button on the gateway screen. 
 2. In the **Add or create resources** panel, under **Kubernetes cluster (preview)**, select **Create new** to launch the Kubernetes cluster wizard. While the “Add” button under Kubernetes clusters is present in the public preview, it is nonfunctional. At any point during the Kubernetes cluster create process, you may exit the wizard, but note that your progress won't be saved. 
 
-
     ![Illustrates the Add or create resources blade in Windows Admin Center, which now includes the new tile for Kubernetes clusters.](.\media\create-kubernetes-cluster\add-connection.png)
   
 ## Creating a Kubernetes cluster from the Azure Kubernetes Service host dashboard  
@@ -42,13 +41,14 @@ You've reached the Kubernetes cluster create wizard through the **All Connection
  [ ![Illustrates the Basics page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\basics.png) ](.\media\create-kubernetes-cluster\basics.png#lightbox)
  
 3. You may configure additional node pools to run your workloads on the **Node pools** page. During public preview, you may add up to one Windows node pool and one Linux node pool (in addition to the system node pool). If you'd like to enable Azure Arc integration later in this wizard, you will need at least one Linux node pool that is not the primary node pool. When you're finished, select **Next**.
-4. Specify your network configuration on the **Networking** page. If you select "Advanced," you can customize the address range used when creating a virtual network for nodes in the cluster. If you select "Basics," virtual networks for nodes in the cluster will be created with a default address range. The Network Settings (load balancer, network policy, and HTTP application routing) cannot be changed in public preview. When complete, select **Next**.
+4. In the **Authentication** step, you may select if you'd like to enable Active Directory authentication. If you do choose to enable this feature, you will need to provide information such as your API Server service principal name, a Keylab file, and a cluster admin group or user name. When you're finished, select **Next**.
+5. Specify your network configuration on the **Networking** page. If you select "Basics," virtual networks for nodes in the cluster will be created with a default address range. Selecting the "Advanced" configuration is currently no different the "Basic" configuration. In the future, you will be able to customize the address range used when creating a virtual network for nodes in the cluster. The Network Settings (load balancer, network policy, and HTTP application routing) cannot be changed in public preview. When complete, select **Next**.
 
     [ ![Illustrates the Networking page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\networking.png) ](\media\create-kubernetes-cluster\networking.png#lightbox)
 
-5. On the **Integration** page, connect your cluster with additional services, such as persistent storage. You are required to configure persistent storage on this page. In public preview, the persistent storage location will default to the storage location selected during host setup. This field is currently not editable. When you're finished, select **Next**.
-6. Review your selections on the **Review + create** page. When you're satisfied, select **Create** to begin deployment. Your deployment progress will be shown at the top of this page. 
-7. After your deployment is complete, the **Next steps** page details how to manage your cluster. This page also contains your SSH Key. If you chose to disable the Azure Arc integration in the previous step, some of the information and instructions on this page may not be available or functional.
+6. On the **Integration** page, connect your cluster with additional services, such as persistent storage. You are required to configure persistent storage on this page. In public preview, the persistent storage location will default to the storage location selected during host setup. The fields on this page are currently not editable. When you're finished, select **Next**.
+7. Review your selections on the **Review + create** page. When you're satisfied, select **Create** to begin deployment. Your deployment progress will be shown at the top of this page. 
+8. After your deployment is complete, the **Next steps** page details how to manage your cluster. This page also contains your SSH Key. If you chose to disable the Azure Arc integration in the previous step, some of the information and instructions on this page may not be available or functional.
 
 > [!IMPORTANT] 
 > We recommend saving your SSH Key in a secure, accessible location.
