@@ -48,11 +48,11 @@
             href: scale-cluster.md
           - name: Upgrade the Kubernetes version
             href: upgrade.md
-          - name: Update Azure Kubernetes Services on Azure Stack HCI
+          - name: Update AKS on Azure Stack HCI
             href: update-akshci-concepts.md
-          - name: Restart, reset or remove Azure Kubernetes Service on Azure Stack HCI
+          - name: Restart, remove, or reinstall AKS on Azure Stack HCI
             href: restart-cluster.md
-    - name: Use Azure Arc Kuberetes
+    - name: Use Azure Arc Kubernetes
       items:
           - name: Connect to Azure Arc for Kubernetes-
             href: connect-to-arc.md

@@ -1,13 +1,13 @@
 ---
-title: Restart, reset or remove Azure Kubernetes Service on Azure Stack HCI 
-description: Learn how to restart, reset, or remove Azure Kubernetes Service on Azure Stack
+title: Restart, remove, or reinstall Azure Kubernetes Service on Azure Stack HCI 
+description: Learn how to restart, remove, or reinstall Azure Kubernetes Service on Azure Stack
 author: jessicaguan
 ms.topic: article
 ms.date: 03/02/2021
 ms.author: jeguan
 ---
 
-# Restart, reset or remove Azure Kubernetes Service on Azure Stack HCI
+# Restart, remove, or reinstall Azure Kubernetes Service on Azure Stack HCI
 
 After deploying Azure Kubernetes Service on Azure Stack HCI, you can restart, reset, or remove your deployment if needed.
 
@@ -23,7 +23,7 @@ Restart-AksHci
 
 ## Remove Azure Kubernetes Service on Azure Stack HCI
 
-To remove Azure Kubernetes Service on Azure Stack HCI, run the following [Uninstall-AksHci](./uninstall-akshci.md) command. This command will remove the old configuration, and you will have to run [Set-AksHciConfig](./set-akshciconfig.md) again when you reinstall. If your clusters are Arc-enabled, delete your clusters before proceeding. To delete your cluster, follow the guidance for [connecting an existing Kubernetes cluster to Azure Arc](https://docs.microsoft.com/azure/azure-arc/kubernetes/quickstart-connect-cluster).
+To remove Azure Kubernetes Service on Azure Stack HCI, run the following [Uninstall-AksHci](./uninstall-akshci.md) command. This command will remove the old configuration, and you will have to run [Set-AksHciConfig](./set-akshciconfig.md) again when you reinstall. If your clusters are Arc-enabled, delete any Azure resources before proceeding. To delete any associated Arc resources for your on-premises cluster, follow the guidance for [cleaning up Azure Arc resources](https://docs.microsoft.com/azure/azure-arc/kubernetes/quickstart-connect-cluster#clean-up-resources).
 
 ```powershell
 Uninstall-AksHci
@@ -35,11 +35,11 @@ If you want to retain the old configuration, run the following command:
 Uninstall-AksHci -SkipConfigCleanup
 ```
 
-## Reset configuration settings and reinstall Azure Kubernetes Service on Azure Stack HCI
+## Reinstall configuration settings and reinstall Azure Kubernetes Service on Azure Stack HCI
 
 If you want to reinstall Azure Kubernetes Service on Azure Stack HCI after uninstalling, follow the instructions below.
 
-If you ran the `Uninstall-AksHci` command with the `-SkipConfigCleanup` parameters, then your old configuration settings were retained. To reinstall, run the following command.
+If you ran the `Uninstall-AksHci` command with the `-SkipConfigCleanup` parameters, your old configuration settings were retained. To reinstall, run the following command.
 
 ```powershell
 Install-AksHci
@@ -52,17 +52,9 @@ If you didn't use the `-SkipConfigCleanup` parameter when uninstalling, then you
 #static IP
 $vnet = New-AksHciNetworkSetting -vnetName "extSwitch" -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd
 "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1"
-```
 
-Then, run the following command to configure your deployment.
-
-```powershell
 Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -enableDiagnosticData -cloudservicecidr "172.16.10.10/16"
-```
 
-Next, reinstall the Azure Kubernetes Service on Azure Stack HCI host with the following command.
-
-```powershell
 Install-AksHci
 ```
 
