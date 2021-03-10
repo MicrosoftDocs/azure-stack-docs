@@ -105,7 +105,7 @@ Firewall URL exceptions are needed for the Windows Admin Center machine and all 
 <https://storage.googleapis.com/>  | 443 | Cloud Init | Downloading Kubernetes binaries
 <https://azurecliprod.blob.core.windows.net/> | 443 | Cloud Init | Downloading binaries and containers
 <https://aka.ms/installazurecliwindows> | 443 | WAC | Downloading Azure CLI
-<https://:443> | 443 | TCP | Used to support Azure Arc agents  
+<https://443> | 443 | TCP | Used to support Azure Arc agents  
 *.blob.core.windows.net | 443 | TCP | Required for downloads
 *.dl.delivery.mp.microsoft.com, *.do.dsp.mp.microsoft.com. | 80, 443 | Download Agent | Downloading VHD images
 ecpacr.azurecr.io | 443 | Kubernetes | Downloading container images
