@@ -87,7 +87,7 @@ This topology features the following characteristics:
 - To support the use of this topology in production, you must integrate the built-in Azure Stack Hub AD FS instance with an existing AD FS instance that's backed by Active Directory, through a federation trust.
 - You can integrate the Graph service in Azure Stack Hub with your existing Active Directory instance. You can also use the OData-based Graph API service that supports APIs that are consistent with the Azure AD Graph API.
 
-  To interact with your Active Directory instance, the Graph API requires a user credential with read-only permission to your active directory instance.  
+  To interact with your Active Directory instance, the Graph API requires a user credential with read-only permission to your Active Directory instance.  
   - The built-in AD FS instance.
   - Your AD FS and Active Directory instances, which must be based on Windows Server 2012 or later.
   
