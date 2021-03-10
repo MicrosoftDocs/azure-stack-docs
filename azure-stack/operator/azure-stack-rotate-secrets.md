@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Learn how to rotate your secrets in Azure Stack Hub.
 author: BryanLa
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 03/09/2021
 ms.reviewer: fiseraci
 ms.author: bryanla
 ms.lastreviewed: 01/19/2021
@@ -45,7 +45,7 @@ For more information on alert monitoring and remediation, refer to [Monitor heal
 
 ## Prerequisites
 
-1. It's highly recommended that you first update your Azure Stack Hub instance to the [latest version](release-notes.md).
+1. It's highly recommended that you are running a supported version of Azure Stack Hub, and make sure to apply the latest available hotfix for the Azure Stack Hub version your instance is running. For example, if you are running 2008, make sure you have installed the [latest hotfix available](release-notes.md?view=azs-2008#hotfixes) for 2008.
 
     ::: moniker range="<azs-1811"  
     >[!IMPORTANT]

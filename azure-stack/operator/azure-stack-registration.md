@@ -5,7 +5,7 @@ description: Learn how to register Azure Stack Hub integrated systems with Azure
 author: PatAltimore
 
 ms.topic: how-to
-ms.date: 11/19/2020
+ms.date: 02/26/2021
 ms.author: patricka
 ms.reviewer: avishwan
 ms.lastreviewed: 11/19/2020
@@ -286,6 +286,9 @@ Connected environments can access the internet and Azure. For these environments
       -BillingModel Capacity `
       -RegistrationName $RegistrationName
    ```
+
+    Use the *EA agreement number* where your capacity SKU licenses were purchased.
+
    > [!Note]  
    > You can disable usage reporting with the UsageReportingEnabled parameter for the **Set-AzsRegistration** cmdlet by setting the parameter to false. 
    
@@ -329,6 +332,9 @@ Connected environments can access the internet and Azure. For these environments
       -BillingModel Capacity `
       -RegistrationName $RegistrationName
    ```
+
+    Use the *EA agreement number* where your capacity SKU licenses were purchased.
+
    > [!Note]  
    > You can disable usage reporting with the UsageReportingEnabled parameter for the **Set-AzsRegistration** cmdlet by setting the parameter to false. 
    
@@ -357,6 +363,9 @@ If you're registering Azure Stack Hub in a disconnected environment (with no int
    $FilePathForRegistrationToken = "$env:SystemDrive\RegistrationToken.txt"
    $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential -UsageReportingEnabled:$False -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```
+
+   Use the *EA agreement number* where your capacity SKU licenses were purchased.
+
    For more information on the Get-AzsRegistrationToken cmdlet, see [Registration reference](#registration-reference).
 
    > [!Tip]  
@@ -609,6 +618,8 @@ Run the following PowerShell cmdlets:
    $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -UsageReportingEnabled:$False
    $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```
+
+    Use the *EA agreement number* where your capacity SKU licenses were purchased.
 
    > [!Tip]  
    > The registration token is saved in the file specified for *$FilePathForRegistrationToken*. You can change the filepath or filename at your discretion.
