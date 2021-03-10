@@ -45,7 +45,7 @@ For more information on alert monitoring and remediation, refer to [Monitor heal
 
 ## Prerequisites
 
-1. It's highly recommended that you are running a supported version of Azure Stack Hub, and make sure to apply the latest available hotfix for the Azure Stack Hub version your instance is running. For example, if you are running 2008, make sure you have installed the [latest hotfix available](release-notes.md?view=azs-2008#hotfixes) for 2008.
+1. It's highly recommended that you are running a supported version of Azure Stack Hub, and make sure to apply the latest available hotfix for the Azure Stack Hub version your instance is running. For example, if you are running 2008, make sure you have installed the latest hotfix available for 2008.
 
     ::: moniker range="<azs-1811"  
     >[!IMPORTANT]
