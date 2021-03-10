@@ -57,6 +57,11 @@ To run the resource provider in production, you must provide the following certi
 - Publishing certificate
 - Identity certificate
 
+In addition to specific requirements listed in the following sections, you'll also use a tool later to test for general requirements. See [Validate Azure Stack Hub PKI certificates](azure-stack-validate-pki-certs.md) for the complete list of validations, including:
+- **File format** of .PFX
+- **Key usage** set to server and client authentication
+- and several others
+
 #### Default domain certificate
 
 The default domain certificate is placed on the front-end role. User apps for wildcard or default domain request to Azure App Service use this certificate. The certificate is also used for source control operations (Kudu).
