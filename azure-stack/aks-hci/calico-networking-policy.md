@@ -346,3 +346,10 @@ As the final step you can clean up all of the demo resources:
 ```powershell
 kubectl delete namespace calico-demo
 ```
+  
+## Next steps
+
+In this article, you learned how to secure traffic between pods using network policies. 
+Next, you can:
+- [Deploy a Linux applications on a Kubernetes cluster](./deploy-linux-application.md).
+- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).
