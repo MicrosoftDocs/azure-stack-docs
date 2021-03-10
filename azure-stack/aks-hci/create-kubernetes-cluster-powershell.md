@@ -22,7 +22,7 @@ In this quickstart, you learn how to use Windows PowerShell to create an Azure K
 
 After installing your Azure Kubernetes Service host, you are ready to deploy a Kubernetes cluster.
 
-Open PowerShell as an administrator and run the following [New-AksHciCluster](./new-akshcicluster) command.
+Open PowerShell as an administrator and run the following [New-AksHciCluster](./new-akshcicluster.md) command.
 
 ```powershell
 New-AksHciCluster -name mycluster
@@ -38,7 +38,7 @@ Get-AksHciCluster
 
 ## Step 2: Scale a Kubernetes cluster
 
-If you need to scale your cluster up or down, you can change the number of control plane nodes, Linux worker nodes, or Windows worker nodes using the [Set-AksHciClusterNodeCount](./set-akshciclusternodecount) command.
+If you need to scale your cluster up or down, you can change the number of control plane nodes, Linux worker nodes, or Windows worker nodes using the [Set-AksHciClusterNodeCount](./set-akshciclusternodecount.md) command.
 
 To scale control plane nodes, run the following command.
 
@@ -68,11 +68,11 @@ To update to the latest Kubernetes version, run the following command.
 Update-AksHciCluster -name mycluster -kubernetesVersion <k8s version>
 ```
 
-Running this command without specifying the Kubernetes version will upgrade the cluster to the latest version. If you want to upgrade to a different version that is not the latest, use the [Update-AksHciCluster](./update-akshcicluster) with the `-kubernetesVersion` parameter and your desired version as the value (that is, v1.18.8).
+Running this command without specifying the Kubernetes version will upgrade the cluster to the latest version. If you want to upgrade to a different version that is not the latest, use the [Update-AksHciCluster](./update-akshcicluster.md) with the `-kubernetesVersion` parameter and your desired version as the value (that is, v1.18.8).
 
 ## Step 4: Access your clusters using kubectl
 
-To access your Kubernetes clusters using kubectl, run the [Get-AksHciCredential](./get-akshcicredential) command. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl.
+To access your Kubernetes clusters using kubectl, run the [Get-AksHciCredential](./get-akshcicredential.md) command. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl.
 
 ```powershell
 Get-AksHciCredential -name mycluster
@@ -88,7 +88,7 @@ Remove-AksHciCluster -name mycluster
 
 ## Get logs
 
-To get logs from your all your pods, run the following command. This command will create an output zipped folder called `akshcilogs` in the path `c:\%workingdirectory%\%AKS HCI release number%\%filename%` (for example, `c:\AksHci\0.9.6.0\akshcilogs.zip`).
+To get logs from your all your pods, run the [Get-AksHciLogs](./get-akshcilogs.md) command. This command will create an output zipped folder called `akshcilogs.zip` in your working directory. The full path to the `akshcilogs.zip` folder will be the output after running the command below.
 
 ```powershell
 Get-AksHciLogs

@@ -19,7 +19,7 @@ Get-AksHciUpdates
 ```
 
 ## Description
-List the Kubernetes available updates for Azure Kubernetes Service on Azure Stack HCI.
+List the available Kubernetes updates for Azure Kubernetes Service on Azure Stack HCI.
 
 ## Examples
 

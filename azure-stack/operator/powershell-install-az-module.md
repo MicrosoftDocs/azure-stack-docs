@@ -4,10 +4,10 @@ description: Learn how to install PowerShell for Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 12/10/2020
+ms.date: 02/18/2021
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 12/10/2020
+ms.lastreviewed:  02/18/2021
 
 # Intent: As an Azure Stack operator, I want to install Powershell Az for Azure Stack.
 # Keyword: install powershell azure stack Az
@@ -33,10 +33,10 @@ You can install Azure Stack Hub compatible PowerShell Az modules in Internet-con
 
 ## 1. Verify your prerequisites
 
-Az modules are supported on Azure Stack Hub with Update 2002 or later and with the current hotfixes installed. Please see the [Azure Stack Hub release notes](release-notes.md) for more information.
+Az modules are supported on Azure Stack Hub with Update 2002 or later and with the current hotfixes installed. See the [Azure Stack Hub release notes](release-notes.md) for more information.
 
 The Azure PowerShell Az modules work with PowerShell 5.1 or higher on Windows, or PowerShell Core 6.x and later on all platforms. You should install the
-[latest version of PowerShell Core](/powershell/scripting/install/installing-powershell#powershell-core) available for your operating system. Azure PowerShell has no additional requirements when run on PowerShell Core.
+[latest version of PowerShell Core](/powershell/scripting/install/installing-powershell#powershell-core) available for your operating system. Azure PowerShell has no other requirements when run on PowerShell Core.
 
 To check your PowerShell version, run the command:
 
@@ -75,15 +75,23 @@ Before installing the required version, make sure that you uninstall any previou
 
 The Azure Stack Az module will work Azure Stack Hub 2002 or later. In addition, the Azure Stack Az module will work with PowerShell 5.1 or greater on a Windows machine, or PowerShell 6.x or greater on a Linux or macOS platform. Using the PowerShellGet cmdlets is the preferred installation method. This method works the same on the supported platforms.
 
-Run the following command from a PowerShell session:
+1. Run the following command from a PowerShell session to update PowerShellGet to a minimum of version 2.2.3
 
-```powershell  
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    ```powershell  
+    Install-Module PowerShellGet -MinimumVersion 2.2.3 -Force
+    ```
 
-Install-Module -Name Az.BootStrapper -Force -AllowPrerelease
-Install-AzProfile -Profile 2019-03-01-hybrid -Force
-Install-Module -Name AzureStack -RequiredVersion 2.0.2-preview -AllowPrerelease
-```
+2. Close your PowerShell session, then open a new PowerShell session so that update can take effect.
+
+3. Run the following command from a PowerShell session:
+
+    ```powershell  
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    
+    Install-Module -Name Az.BootStrapper -Force -AllowPrerelease
+    Install-AzProfile -Profile 2019-03-01-hybrid -Force
+    Install-Module -Name AzureStack -RequiredVersion 2.0.2-preview -AllowPrerelease
+    ```
 
 > [!Note]  
 > Azure Stack Hub module version 2.0.0 is a breaking change. Refer to the [Migrate from AzureRM to Azure PowerShell Az in Azure Stack Hub](migrate-azurerm-az.md) for details.
