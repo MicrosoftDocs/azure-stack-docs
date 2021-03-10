@@ -14,7 +14,7 @@ ms.date: 03/05/2021
 To use Azure services with Windows Admin Center, you must first [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) on a management PC and register your Windows Admin Center gateway. This is a prerequisite for [registering a cluster](../deploy/register-with-azure.md) with Azure.
 
    > [!IMPORTANT]
-   > In order to use Windows Admin Center to register Azure Stack HCI clusters, your Windows Admin Center gateway must be registered to an Azure AD application ID that is approved by your organization's Azure AD admin. Register Windows Admin Center on the same management PC you plan to use to register your cluster(s), using the same Azure Active Directory (tenant) ID and application ID.
+   > In order to use Windows Admin Center to register Azure Stack HCI clusters, your Windows Admin Center gateway must be registered to an Azure Active Directory (Azure AD) application ID that is approved by your organization's Azure AD admin. Register Windows Admin Center on the same management PC you plan to use to register your cluster(s), using the same Azure Active Directory (tenant) ID.
 
 ## Complete the registration process
 
@@ -51,7 +51,7 @@ To use Azure services with Windows Admin Center, you must first [install Windows
    > [!IMPORTANT]
    > If the Azure AD admin doesn't add redirect URIs and more than one user tries to register Windows Admin Center to the same app ID, the user will get an error that the reply URL doesn't match.
 
-7. At this point, the user must repeat the registration process, this time selecting **Use existing** application ID and specifying the application ID provided by the Azure AD admin.
+7. At this point, the user must re-run the registration wizard, this time selecting **Use existing** application ID and specifying the application ID provided by the Azure AD admin.
 
 8. Select **Sign in** to sign into Windows Admin Center with your Azure account.
 
