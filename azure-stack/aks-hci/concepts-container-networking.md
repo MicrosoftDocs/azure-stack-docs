@@ -38,8 +38,8 @@ For additional control and routing of the inbound traffic, you may instead use a
 
 **ExternalName** - Creates a specific DNS entry for easier application access.
 
-The IP addresses for load balancers and services can be internal or external addresses depending on your over all network setup and can be dynamically assigned, or you can specify an existing static IP address to use. An existing static IP address is often tied to a DNS entry.
-Internal load balancers are only assigned a private IP address, so they can not be accessed from the Internet.
+The IP addresses for load balancers and services can be internal or external addresses depending on your overall network setup and can be dynamically assigned, or you can specify an existing static IP address to use. An existing static IP address is often tied to a DNS entry.
+Internal load balancers are only assigned a private IP address, so they cannot be accessed from the Internet.
 
 ## Kubernetes networking on Azure Stack HCI basics
 
@@ -51,7 +51,7 @@ In Kubernetes, *Services* logically group pods to allow
 - distribute traffic using a *load balancer* between multiple pods hosting the same service or application.
 
  The Azure Stack HCI platform also helps to simplify virtual networking for AKS on Azure Stack HCI clusters by providing the "underlay" network in a highly available manner.
-When you create a AKS cluster, we also create and configure an underlying `HAProxy` load balancer resource. As you deploy applications in a Kubernetes cluster, IP addresses are configured for your pods and Kubernetes services as endpoints in this load balancer.
+When you create an AKS cluster, we also create and configure an underlying `HAProxy` load balancer resource. As you deploy applications in a Kubernetes cluster, IP addresses are configured for your pods and Kubernetes services as endpoints in this load balancer.
 
 ## AKS on Azure Stack HCI IP address resources 
 
@@ -59,17 +59,17 @@ To simplify the network configuration for application workloads, AKS-HCI assigns
 
 - **Kubernetes cluster API server** - The API server is a component of the Kubernetes control plane that exposes the Kubernetes API. The API server is the front end for the Kubernetes control plane. API servers are always allocated static IP addresses irrespective of the underlying networking model.
 
-- **Kubernetes nodes (virtual machines)** - A Kubernetes cluster consists of a set of worker machines, called nodes, the nodes host containerized applications. Besides the control plane nodes every cluster has at least one worker node. For an AKS on Azure Stack HCI cluster, Kubernetes nodes are configured as virtual machines. These virtual machines are created as highly available virtual machines in Azure Stack HCI, see [Node networking concepts](concepts-node-networking.md).
+- **Kubernetes nodes (virtual machines)** - A Kubernetes cluster consists of a set of worker machines, called nodes, the nodes host containerized applications. Besides the control plane nodes, every cluster has at least one worker node. For an AKS on Azure Stack HCI cluster, Kubernetes nodes are configured as virtual machines. These virtual machines are created as highly available virtual machines in Azure Stack HCI, see [Node networking concepts](concepts-node-networking.md).
 
 - **Kubernetes services** - In Kubernetes, *Services* logically group pod IP addresses to allow for direct access via a single IP address or DNS name on a specific port. Services can also distribute traffic using a *load balancer*. Kubernetes services are always allocated static IP addresses irrespective of the underlying networking model.
 
-- **HAProxy load balancers** - [HAProxy](https://www.haproxy.org/#desc) is a TCP/HTTP load balancer and proxy server which enables spreading incoming requests across multiple endpoints. Every workload cluster in AKS-HCI has a HAProxy load balancer deployed and configured as a specialized virtual machine.
+- **HAProxy load balancers** - [HAProxy](https://www.haproxy.org/#desc) is a TCP/HTTP load balancer and proxy server that enables spreading incoming requests across multiple endpoints. Every workload cluster in AKS-HCI has a HAProxy load balancer deployed and configured as a specialized virtual machine.
 
-- **Microsoft On Premise Cloud Service** - This is the Azure Stack HCI cloud provider enabling the creation and management of the virtualized environment hosting Kubernetes on an on-premises Azure Stack HCI cluster. The networking model followed by your Azure Stack HCI cluster determines the IP address allocation method used by the Microsoft on premise cloud service. To learn more about the networking concepts implemented by the Microsoft on Premise Cloud Service see [Node networking concepts](concepts-node-networking.md).
+- **Microsoft On-Premise Cloud Service** - This is the Azure Stack HCI cloud provider enabling the creation and management of the virtualized environment hosting Kubernetes on an on-premises Azure Stack HCI cluster. The networking model followed by your Azure Stack HCI cluster determines the IP address allocation method used by the Microsoft On-Premise Cloud Service. To learn more about the networking concepts implemented by the Microsoft On-Premise Cloud Service see [Node networking concepts](concepts-node-networking.md).
 
 ## Kubernetes networks
 
-In AKS-HCI, you can deploy a cluster that uses one of the following network models:
+In AKS on Azure Stack HCI, you can deploy a cluster that uses one of the following network models:
 
 - Flannel Overlay networking - The network resources are typically created and configured as the cluster is deployed.
 - Project Calico networking - Offers additional networking features like network policies and flow control.
@@ -82,7 +82,7 @@ To learn more about overlay networking see [Introducing: Kubernetes Overlay Netw
 
 #### Flannel
 
-Flannel is a virtual networking layer designed specifically for containers. Flannel creates a flat network which overlays the host network. All containers/pods will be assigned one IP address in this overlay network, they communicate with each other by connecting to each other’s IP address directly.
+Flannel is a virtual networking layer designed specifically for containers. Flannel creates a flat network, which overlays the host network. All containers/pods will be assigned one IP address in this overlay network, they communicate with each other by connecting to each other’s IP address directly.
 
 #### Calico
 
