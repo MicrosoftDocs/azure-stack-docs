@@ -4,7 +4,7 @@ description: This topic provides guidance on how to configure firewalls for the 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 03/11/2021
+ms.date: 03/12/2021
 ---
 
 # Configure firewalls for Azure Stack HCI
@@ -86,7 +86,7 @@ To remove the proxy configuration, run the PowerShell command `Set-WinInetProxy`
 
 Download the WinInetProxy.psm1 script at: [PowerShell Gallery | WinInetProxy.psm1 0.1.0](https://www.powershellgallery.com/packages/WinInetProxy/0.1.0/Content/WinInetProxy.psm1).
 
-   >[!NOTE]Using the **Proxy** setting in Windows Admin Center redirects all Windows Admin Center outbound traffic (for example, download extensions, connecting to Azure and so on).
+   >[!NOTE] Using the **Proxy** setting in Windows Admin Center redirects all Windows Admin Center outbound traffic (for example, download extensions, connecting to Azure and so on).
 
 ## Network port requirements
 Ensure that the proper network ports are open between all server nodes both within a site and between sites (for stretched clusters). You'll need appropriate firewall and router rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct), and WS-MAN (port 5985) bi-directional traffic between all servers in the cluster.
