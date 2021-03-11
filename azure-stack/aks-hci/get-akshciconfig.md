@@ -23,7 +23,7 @@ List the current configuration settings for the Azure Kubernetes Service host. I
 
 Name                           Value
 ----                           -----
-Moc                            {catalog, ipaddressprefix, cloudServiceCidr, deploymentType...}
+MOC                            {catalog, ipaddressprefix, cloudServiceCidr, deploymentType...}
 AksHci                         {manifestCache, enableDiagnosticData, installationPackageDir, workingDir...}
 Kva                            {catalog, vlanid, vnetvippoolend, ring...}
 

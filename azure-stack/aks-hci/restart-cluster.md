@@ -9,7 +9,7 @@ ms.author: jeguan
 
 # Restart, remove, or reinstall Azure Kubernetes Service on Azure Stack HCI
 
-After deploying Azure Kubernetes Service on Azure Stack HCI, you can restart, reset, or remove your deployment if needed.
+After deploying Azure Kubernetes Service on Azure Stack HCI, you can restart, remove, or reinstall your deployment, if necessary.
 
 ## Restart Azure Kubernetes Service on Azure Stack HCI
 
@@ -37,7 +37,7 @@ Uninstall-AksHci -SkipConfigCleanup
 
 ## Reinstall configuration settings and reinstall Azure Kubernetes Service on Azure Stack HCI
 
-If you want to reinstall Azure Kubernetes Service on Azure Stack HCI after uninstalling, follow the instructions below.
+To reinstall Azure Kubernetes Service on Azure Stack HCI after uninstalling it, follow the instructions below.
 
 If you ran the `Uninstall-AksHci` command with the `-SkipConfigCleanup` parameters, your old configuration settings were retained. To reinstall, run the following command.
 
@@ -45,7 +45,7 @@ If you ran the `Uninstall-AksHci` command with the `-SkipConfigCleanup` paramete
 Install-AksHci
 ```
 
-If you didn't use the `-SkipConfigCleanup` parameter when uninstalling, then you will need to reset your configuration settings with the commands below. This example command creates a virtual network with a static IP. If you want to configure your AKS deployment with DHCP, visit [new-akshcinetworksetting](.\new-akshcinetworksetting.md) for examples.
+If you didn't use the `-SkipConfigCleanup` parameter when uninstalling, then you will need to reset your configuration settings with the commands below. This example command creates a virtual network with a static IP. If you want to configure your AKS deployment with DHCP, see [new-akshcinetworksetting](.\new-akshcinetworksetting.md) for examples on how to configure DHCP.
 
 
 ```powershell
@@ -60,6 +60,6 @@ Install-AksHci
 
 ## Next steps
 
-In this article, you learned how to restart, reinstall, and remove Azure Kubernetes Service on Azure Stack HCI. Next, you can:
+In this article, you learned how to restart, remove, or reinstall Azure Kubernetes Service on Azure Stack HCI. Next, you can:
 - [Deploy a Linux applications on a Kubernetes cluster](./deploy-linux-application.md).
 - [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).

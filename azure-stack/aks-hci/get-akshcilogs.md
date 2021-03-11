@@ -36,7 +36,7 @@ PS C:\> Get-AksHciLogs
 ## Parameters
 
 ### -agentLogs
-Use this flag to get the logs from the MOC stack cloudagent and node agent services.
+Use this flag to get the logs from the MOC stack Cloudagent and node agent services.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
