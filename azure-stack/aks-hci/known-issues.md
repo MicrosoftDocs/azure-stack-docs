@@ -14,6 +14,22 @@ This article describes known issues with the public preview release of Azure Kub
 ## Recovering from a failed AKS on Azure Stack HCI deployment
 If you're experiencing deployment issues or want to reset your deployment make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running Uninstall-AksHci from a PowerShell administrative window.
 
+## Set-AksHciConfig fails with WinRM errors, but shows WinRM is configured correctly
+When running [Set-AksHciConfig](./set-akshciconfig.md), you might encounter the following error:
+
+```powershell
+WinRM service is already running on this machine.
+WinRM is already set up for remote management on this computer.
+Powershell remoting to TK5-3WP08R0733 was not successful.
+At C:\Program Files\WindowsPowerShell\Modules\Moc\0.2.23\Moc.psm1:2957 char:17
++ ...             throw "Powershell remoting to "+$env:computername+" was n ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Powershell remo...not successful.:String) [], RuntimeException
+    + FullyQualifiedErrorId : Powershell remoting to TK5-3WP08R0733 was not successful.
+```
+
+Most of the time, this occurs as a result of a change in the user's security token (due to a change in group membership), a password change, or an expired password. In most cases, the issue can be remediated by logging off from the computer and logging back in. If this still fails, you can file an issue at [GitHub AKS HCI issues](https://aka.ms/aks-hci/issues).
+
 ## When using kubectl to delete a node, the associated VM might not be deleted
 You'll meet this issue if you follow these steps:
 * Create a Kubernetes cluster
@@ -24,7 +40,7 @@ You'll meet this issue if you follow these steps:
 * Run get-vm. The removed node is still listed
 
 This leads to the system not recognizing the node is missing and a new node will not spin up. 
-This will be fixed in a future release
+This will be fixed in a future release.
 
 ## Time synchronization must be configured across all physical cluster nodes and in Hyper-V
 To ensure gMSA and AD authentication works, ensure that the Azure Stack HCI cluster nodes are configured to synchronize their time with a domain controller or other
@@ -59,7 +75,7 @@ This issue will be fixed in a future release
 When using the cluster administration tool to move a VM from one node (Node A) to another node (Node B) in the Azure Stack HCI cluster, the VM may fail to start on the new node. After moving the VM back to the original node it will fail to start there as well.
 This issue happens because the logic to clean up the first migration runs asynchronously. As a result, Azure Kubernetes Service's "update VM location" logic finds the VM on the original Hyper-V on node A, and deletes it, instead of unregistering it.
 Workaround: Ensure the VM has started successfully on the new node before moving it back to the original node.
-This issue will be fixed in a future release
+This issue will be fixed in a future release.
 
 ## Load balancer in Azure Kubernetes Service requires DHCP reservation
 The load balancing solution in Azure Kubernetes Service on Azure Stack HCI uses DHCP to assign IP addresses to service endpoints. If the IP address changes for the service endpoint due to a service restart, DHCP lease expires due to a short expiration time. The service will therefore become inaccessible because the IP address in the Kubernetes configuration is different from what it is on the end point. This can lead to the Kubernetes cluster becoming unavailable.
