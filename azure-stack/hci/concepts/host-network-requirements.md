@@ -85,9 +85,6 @@ Not all network adapters from vendors support RDMA. The following table lists th
 |Marvell (Qlogic/Cavium)|Yes|Yes|
 |Nvidia (Mellanox)|No|Yes|
 
-> [!NOTE]
-> Not all adapters from the vendors support RDMA. Please verify RDMA support with your specific network card vendor.
-
 For more information on deploying RDMA, download the Word doc from the [SDN GitHub repo](https://github.com/Microsoft/SDN/blob/master/Diagnostics/S2D%20WS2016_ConvergedNIC_Configuration.docx).
 
 #### Internet Wide Area RDMA Protocol (iWARP)
@@ -104,18 +101,18 @@ We recommend that you use iWARP if:
 
 #### RDMA over Converged Ethernet (RoCE)
 
-RoCE uses User Datagram Protocol (UDP), and requires Data Center Bridging PFC and ETS to provide reliability.
+RoCE uses User Datagram Protocol (UDP), and requires Data Center Bridging (DCB) PFC and ETS to provide reliability.
 
 We recommend that you use RoCE if:
 
 - You already have deployments with RoCE in your data center
-- You are knowledgeable with your physical network requirements
+- You are comfortable managing the DCB network requirements
 
 ### Guest RDMA
 
 Guest RDMA enables SMB workloads for VMs to gain the same benefits of using RDMA on hosts.
 
-**Applicable traffic types**: compute
+**Applicable traffic types**: Guest-based storage
 
 **Certifications required**: Premium
 
