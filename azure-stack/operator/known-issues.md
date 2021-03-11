@@ -84,7 +84,14 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: IP versions IPv4 and IPv6 buttons are visible on the Add frontend IP address on a load balancer. These buttons are disabled and cannot be selected.
 - Occurrence: Common
 
-<!-- ## Compute -->
+## Compute
+
+### No alerts in Syslog pipeline
+
+- Applicable: This issue applies to release 2102.
+- Cause: The alert module for customers depending on Syslog for alerts has been disabled in this release. For this release, the health and monitoring pipeline was modified to reduce the number of dependencies and services requirements. As a result, the new services will not emit alerts to the Syslog pipeline.
+- Remediation: None.
+- Occurrence: Common
 
 <!-- ## Storage -->
 
