@@ -93,7 +93,7 @@ kubectl apply -f policy-demo-linux.yaml
 Create a client pod named _pwsh_ and server pod named _porter_ on the Windows nodes. 
 
 > [!Note]
-> The _pwsh_ and _porter_ pods manifest below use images based on `mcr.microsoft.com/windows/servercore:1809`. If you are using a more recent Windows Server version, update the manifests to use a Server Core image that matches your Windows Server version.
+> The _pwsh_ and _porter_ pods manifest use images based on `mcr.microsoft.com/windows/servercore:1809`. If you are using a more recent Windows Server version, update the manifests to use a Server Core image that matches your Windows Server version.
 
 ### Create the policy-demo-windows.yaml
 
@@ -162,7 +162,7 @@ Next, use `kubectl` to list the pods in the `calico-demo` namespace:
 kubectl get pods --namespace calico-demo
 ```
 
-You should see output similar to below:
+You should see output similar to what's shown below:
 
 ```output
 NAME      READY   STATUS              RESTARTS   AGE
@@ -186,27 +186,27 @@ pwsh      1/1     Running   0          5m19s
 
 Now that the client and server pods are running on both Linux and Windows nodes, verify that client pods on Linux nodes can reach server pods on Windows nodes.
 
-1. Open a PowerShell window.
-2. Load the credentials for your target cluster using the [`Get-AksHciCredential`](./get-akshcicredential.md) command.
-3. Use `kubectl` to determine the porter pod IP address:
+1. Open a PowerShell window and load the credentials for your target cluster using the [`Get-AksHciCredential`](./get-akshcicredential.md) command.
+
+2. Use `kubectl` to determine the porter pod IP address:
 
     ```powershell
     kubectl get pod porter --namespace calico-demo -o 'jsonpath={.status.podIP}'
     ```
 
-4. Log into the _busybox_ pod and try reaching the _porter_ pod on port 80. Replace the '<porter_ip>' tag with the IP address returned from the previous command.
+3. Log into the _busybox_ pod and try to reach the _porter_ pod on port 80. Replace the '<porter_ip>' tag with the IP address returned from the previous command.
 
     ```powershell
     kubectl exec --namespace calico-demo busybox -- nc -vz <porter_ip> 80
     ```
 
-    You can also combine both of the above steps:
+   You can also combine both of the above steps:
 
     ```powershell
     kubectl exec --namespace calico-demo busybox -- nc -vz $(kubectl get pod porter --namespace calico-demo -o 'jsonpath={.status.podIP}') 80
     ```
 
-    If the connection from the _busybox_ pod to the _porter_ pod succeeds, you will get output similar to the following:
+   If the connection from the _busybox_ pod to the _porter_ pod succeeds, you will get output similar to the following:
 
     ```powershell
     192.168.40.166 (192.168.40.166:80) open
@@ -215,7 +215,7 @@ Now that the client and server pods are running on both Linux and Windows nodes,
    > [!Note]
    > The IP addresses returned will vary depending on your environment setup.
 
-5. Verify that the _pwsh_ pod can reach the _nginx_ pod:
+4. Verify that the _pwsh_ pod can reach the _nginx_ pod:
 
     ```powershell
     kubectl exec --namespace calico-demo pwsh -- powershell Invoke-WebRequest -Uri http://$(kubectl get po nginx -n calico-demo -o 'jsonpath={.status.podIP}') -UseBasicParsing -TimeoutSec 5
@@ -240,13 +240,13 @@ Now that the client and server pods are running on both Linux and Windows nodes,
                         <...
     ```
 
-6. Verify that the _pwsh_ pod can reach the _porter_ pod:
+5. Verify that the _pwsh_ pod can reach the _porter_ pod:
 
     ```powershell
     kubectl exec --namespace calico-demo pwsh -- powershell Invoke-WebRequest -Uri http://$(kubectl get po porter -n calico-demo -o 'jsonpath={.status.podIP}') -UseBasicParsing -TimeoutSec 5
     ```
 
-    If that succeeds, you will see something like:
+    If that succeeds, you will see something similar to what's shown below:
 
     ```powershell
     StatusCode        : 200
@@ -271,7 +271,7 @@ Now that the client and server pods are running on both Linux and Windows nodes,
 
 You have now verified that communication is possible between all pods in the application.
 
-## Apply policy to the Windows client pod
+## Apply the policy to the Windows client pod
 
 In a real world deployment, you would want to make sure only pods that are supposed to communicate with each other are allowed to do so.
 
@@ -304,18 +304,18 @@ spec:
 ### Apply the network-policy.yaml file
 
 1. Open a PowerShell window.
-1. Load the credentials for your target cluster using the `get-AksHciCredential` command. See [here](./get-akshcicredential.md) for more details.
-1. Use `kubectl` to apply the network-policy.yaml file.
+2. Load the credentials for your target cluster using the [`get-AksHciCredential`](./get-akshcicredential.md) command. 
+3. Use `kubectl` to apply the network-policy.yaml file.
 
-```powershell
-kubectl apply -f network-policy.yaml
-```
+   ```powershell
+   kubectl apply -f network-policy.yaml
+   ```
 
 ### Verify the policy is in effect
 
 With the policy in place, the _busybox_ pod should still be able to reach the porter pod:
->[!Note]
->We will be using the combined command line from earlier in this chapter.
+> [!Note]
+> The combined command line will be used as done previously in this article.
 
 ```powershell
 kubectl exec --namespace calico-demo busybox -- nc -vz $(kubectl get po porter -n calico-demo -o 'jsonpath={.status.podIP}') 80
@@ -327,7 +327,7 @@ However, the _pwsh_ pod will not able to reach the _porter_ pod:
 kubectl exec --namespace calico-demo pwsh -- powershell Invoke-WebRequest -Uri http://$(kubectl get po porter -n calico-demo -o 'jsonpath={.status.podIP}') -UseBasicParsing -TimeoutSec 5
 ```
 
-The request times out with a message like the below:
+The request times out with a message as shown below:
 
 ```powershell
 Invoke-WebRequest : The operation has timed out.
