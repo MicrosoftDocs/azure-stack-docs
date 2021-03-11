@@ -85,7 +85,11 @@
           - name: Adapt apps for mixed-OS Kubernetes clusters
             href: adapt-apps-mixed-os-clusters.md
     - name: Troubleshoot
-      href: troubleshoot.md
+      items:
+          - name: Common issues
+            href: troubleshoot.md
+          - name: Known deployment issues
+            href: troubleshoot-known-issues.md
 - name: Related
   items:
   - name: Azure Stack HCI
