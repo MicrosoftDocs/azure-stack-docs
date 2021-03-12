@@ -3,7 +3,7 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 01/15/2021
+ms.date: 03/12/2021
 ms.author: sethm
 ms.reviewer: gara
 ms.lastreviewed: 05/28/2020
@@ -54,6 +54,7 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Deprecated marketplace items
 
+- 03/01/2021: SLES 15 (BYOS), SUSE Linux Enterprise Server 15
 - 08/21/2020: Windows 10 Enterprise, Version 1903-Bring your own license - version 18362.959.2007101755
 - 08/21/2020: Windows 10 Pro, Version 1903-Bring your own license - version 18362.959.2007101755
 - 08/21/2020: Windows 10 Enterprise, Version 1909-Bring your own license - version 18363.959.2007101752
@@ -166,6 +167,14 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Updated marketplace items
 
+- 03/11/2021: Data Box Gateway Virtual Device - version 1.0.2103
+- 03/08/2021: AKS Base Ubuntu 16.04-LTS Image Distro, January 2021 - version 2021.01.28
+- 03/08/2021: AKS Base Ubuntu 18.04-LTS Image Distro, 2021 Q1 - version 2021.01.28
+- 03/08/2021: AKS Base Windows Image, January 28 2021 - version 17763.1697.210129
+- 02/22/2021: F5 Networks, Inc. F5 BIG-IP VE – LTM/DNS (BYOL, 1 Boot Location) - version 16.0.101000
+- 02/22/2021: F5 Networks, Inc. F5 BIG-IP VE – ALL (BYOL, 1 Boot Location) - version 16.0.101000
+- 02/22/2021: F5 Networks, Inc. F5 BIG-IP VE – LTM/DNS (BYOL, 2 Boot Locations) - version 16.0.101000
+- 02/22/2021: F5 Networks, Inc. F5 BIG-IP VE – ALL (BYOL, 2 Boot Locations) - version 16.0.101000
 - 01/06/2021: SQL Server 2017 Enterprise Windows Server 2016 - Bring your own license - version 14.0.20201111
 - 01/06/2021: SQL Server 2017 Standard on Windows Server 2016 - Pay as you go - version 14.0.20201111
 - 01/06/2021: SQL Server 2017 Standard on Windows Server 2016 - Bring your own license - version 14.0.20201111
