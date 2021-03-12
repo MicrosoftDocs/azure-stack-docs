@@ -23,17 +23,13 @@ You can use Visual Studio to write and deploy Azure Resource Manager [templates]
 
 1. [Install Visual Studio Community 2019](https://visualstudio.microsoft.com/), or one of the trial versions.  
 
-2. Open the **Microsoft Web Platform Installer**.
-
-3. Search for **Visual Studio Community 2015 with Microsoft Azure SDK - 2.9.6**. Click **Add**, and then **Install**.
-
-4. Uninstall the **Microsoft Azure PowerShell** that's installed as part of the Azure SDK.
+2. Uninstall the **Microsoft Azure PowerShell** that's installed as part of the Azure SDK.
 
     ![Screenshot of WebPI install steps](./media/azure-stack-install-visual-studio/image1.png)
 
-5. [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md).
+3. [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md).
 
-6. Restart the computer after the installation completes.
+4. Restart the computer after the installation completes.
 
 ## Connect to Azure Stack Hub with Azure AD
 
