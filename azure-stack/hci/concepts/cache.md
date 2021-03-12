@@ -1,6 +1,6 @@
 ---
-title: Understanding the storage pool cache in Azure Stack HCI
-description: How read and write caching works to accelerate performance in Storage Spaces Direct and Azure Stack HCI.
+title: Understanding the storage pool cache in Azure Stack HCI and Windows Server clusters
+description: How read and write caching works to accelerate performance in Storage Spaces Direct.
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
@@ -9,11 +9,11 @@ ms.subservice: azure-stack-hci
 ms.date: 03/11/2021
 ---
 
-# Understanding the storage pool cache in Azure Stack HCI
+# Understanding the storage pool cache
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-Storage Spaces Direct, the foundational storage virtualization technology behind Azure Stack HCI, features a built-in server-side cache to maximize storage performance while reducing costs. It is a large, persistent, real-time read *and* write cache. The cache is configured automatically when Azure Stack HCI is deployed. In most cases, no manual management whatsoever is required. How the cache works depends on the types of drives present.
+Storage Spaces Direct, the foundational storage virtualization technology behind Azure Stack HCI, features a built-in server-side cache to maximize storage performance while reducing costs. It's a large, persistent, real-time read *and* write cache that is configured automatically upon deployment. In most cases, no manual management whatsoever is required. How the cache works depends on the types of drives present.
 
 ## Drive types and deployment options
 
@@ -22,9 +22,9 @@ Storage Spaces Direct currently works with four types of drives:
 | Type of drive | Description |
 |----------------------|--------------------------|
 |![PMem](media/choose-drives/pmem-100px.png)|**PMem** refers to persistent memory, a new type of low latency, high performance storage.|
-|![NVMe](media/choose-drives/NVMe-100-px.png)|**NVMe** (Non-Volatile Memory Express) refers to solid-state drives that sit directly on the PCIe bus. Common form factors are 2.5" U.2, PCIe Add-In-Card (AIC), and M.2. NVMe offers higher IOPS and IO throughput with lower latency than any other type of drive we support today except PMem.|
+|![NVMe](media/choose-drives/NVMe-100-px.png)|**NVMe** (Non-Volatile Memory Express) refers to solid-state drives that sit directly on the PCIe bus. Common form factors are 2.5" U.2, PCIe Add-In-Card (AIC), and M.2. NVMe offers higher IOPS and I/O throughput with lower latency than any other type of drive we support today except PMem.|
 |![SSD](media/choose-drives/SSD-100-px.png)|**SSD** refers to solid-state drives, which connect via conventional SATA or SAS.|
-|![HDD](media/choose-drives/HDD-100-px.png)|**HDD** refers to rotational, magnetic hard disk drives, which offer vast storage capacity.|
+|![HDD](media/choose-drives/HDD-100-px.png)|**HDD** refers to rotational, magnetic hard disk drives, which offer vast storage capacity at a low cost.|
 
 These can be combined in various ways, which we group into two categories: "all-flash" and "hybrid". Deployments with all HDD are not supported.
 
@@ -58,17 +58,17 @@ If you have SSDs and HDDs, the SSDs will cache for the HDDs.
 When all drives are of the same type, no cache is configured automatically. You have the option to manually configure higher-endurance drives to cache for lower-endurance drives of the same type – see the [Manual configuration](#manual-configuration) section to learn how.
 
    >[!TIP]
-   > In all-NVMe or all-SSD deployments, especially at very small scale, having no drives "spent" on cache can improve storage efficiency.
+   > In some cases, using the storage pool cache does not make sense. For example, in all-NVMe or all-SSD deployments, especially at very small scale, having no drives "spent" on cache can improve storage efficiency and maximize performance. Likewise, small remote or branch office deployments may have limited space for cache drives.
 
 ## Cache behavior is set automatically
 
-The behavior of the cache is determined automatically based on the type(s) of drives that are being cached for. When caching for flash drives (such as NVMe caching for SSDs), only writes are cached. When caching for hard disk drives (such as SSDs caching for HDDs), both reads and writes are cached.
+The behavior of the cache is determined automatically based on the type(s) of drives that are being cached for. When caching for flash drives (such as NVMe caching for SSDs), only writes are cached. When caching for rotating disk drives (such as SSDs caching for HDDs), both reads and writes are cached.
 
 ![Diagram comparing caching for all-flash, where writes are cached and reads are not, with hybrid, where both reads and writes are cached.](media/cache/Cache-Read-Write-Behavior.png)
 
 ### Write-only caching for all-flash deployments
 
-When caching for solid-state drives (NVMe or SSDs), only writes are cached. This reduces wear on the capacity drives because many writes and re-writes can coalesce in the cache and then de-stage only as needed, reducing the cumulative traffic to the capacity drives and extending their lifetime. For this reason, we recommend selecting [higher-endurance, write-optimized](http://whatis.techtarget.com/definition/DWPD-device-drive-writes-per-day) drives for the cache. The capacity drives may reasonably have lower write endurance.
+Caching can be used in an all-flash scenario, for example using NVMe as cache to accelerate the performance of SSDs. When caching for all-flash deployments, only writes are cached. This reduces wear on the capacity drives because many writes and re-writes can coalesce in the cache and then de-stage only as needed, reducing the cumulative traffic to the capacity drives and extending their lifespan. For this reason, we recommend selecting [higher-endurance, write-optimized](http://whatis.techtarget.com/definition/DWPD-device-drive-writes-per-day) drives for the cache. The capacity drives may reasonably have lower write endurance.
 
 Because reads do not significantly affect the lifespan of flash, and because SSDs universally offer low read latency, reads are not cached: they are served directly from the capacity drives (except when the data was written so recently that it has not yet been de-staged). This allows the cache to be dedicated entirely to writes, maximizing its effectiveness.
 
@@ -82,7 +82,7 @@ Storage Spaces Direct implements an algorithm that de-randomizes writes before d
 
 ### Caching in deployments with NVMe, SSD, and HDD
 
-When drives of all three types are present, the NVMe drives provides caching for both the SSDs and the HDDs. The behavior is as described above: only writes are cached for the SSDs, and both reads and writes are cached for the HDDs. The burden of caching for the HDDs is distributed evenly among the cache drives.
+When drives of all three types are present, the NVMe drives provide caching for both the SSDs and the HDDs. The behavior is as described above: only writes are cached for the SSDs, and both reads and writes are cached for the HDDs. The burden of caching for the HDDs is distributed evenly among the cache drives.
 
 ## Summary
 
@@ -105,7 +105,7 @@ Because the cache is below the rest of the Windows software-defined storage stac
 
 Given that resiliency in Storage Spaces Direct is at least server-level (meaning data copies are always written to different servers; at most one copy per server), data in the cache benefits from the same resiliency as data not in the cache.
 
-![Diagram represents three servers joined by a three-way mirror in a storage space layer, which accesses a cache layer of N V M e drives which access unlabeled capacity drives.](media/cache/Cache-Server-Side-Architecture.png)
+![Diagram represents three servers joined by a three-way mirror in a Storage Space layer, which accesses a cache layer of NVMe drives which access unlabeled capacity drives.](media/cache/Cache-Server-Side-Architecture.png)
 
 For example, when using three-way mirroring, three copies of any data are written to different servers, where they land in cache. Regardless of whether they are later de-staged or not, three copies will always exist.
 
@@ -113,7 +113,7 @@ For example, when using three-way mirroring, three copies of any data are writte
 
 The binding between cache and capacity drives can have any ratio, from 1:1 up to 1:12 and beyond. It adjusts dynamically whenever drives are added or removed, such as when scaling up or after failures. This means you can add cache drives or capacity drives independently, whenever you want.
 
-![Animated diagram shows two N V M e cache drives dynamically mapping to first four, then six, then eight capacity drives.](media/cache/Dynamic-Binding.gif)
+![Animated diagram shows two NVMe cache drives dynamically mapping to first four, then six, then eight capacity drives.](media/cache/Dynamic-Binding.gif)
 
 We recommend making the number of capacity drives a multiple of the number of cache drives, for symmetry. For example, if you have 4 cache drives, you will experience more even performance with 8 capacity drives (1:2 ratio) than with 7 or 9.
 
@@ -125,7 +125,7 @@ For a brief period, the capacity drives which were bound to the lost cache drive
 
 This scenario is why at minimum two cache drives are required per server to preserve performance.
 
-![Animated diagram shows two S S D cache drives mapped to six capacity drives until one cache drive fails, which causes all six drives to be mapped to the remaining cache drive.](media/cache/Handling-Failure.gif)
+![Animated diagram shows two SSD cache drives mapped to six capacity drives until one cache drive fails, which causes all six drives to be mapped to the remaining cache drive.](media/cache/Handling-Failure.gif)
 
 You can then replace the cache drive just like any other drive replacement.
 
