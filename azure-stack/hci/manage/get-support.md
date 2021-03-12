@@ -15,7 +15,9 @@ This topic provides guidance on how to get support for the Azure Stack HCI opera
 
 To create an Azure Stack HCI support request requires either a Standard or Professional Direct Azure Support Plan. Basic and Developer plans cannot be used.
 
-For more information, see the [Azure Support Plans FAQs](https://azure.microsoft.com/support/faq/).
+For more information, see:
+- [Compare support plans](https://azure.microsoft.com/support/plans/)
+- [Azure Support Plans FAQs](https://azure.microsoft.com/support/faq/)
 
 ## Azure support resources for Azure Stack HCI
 For information about other Azure Stack HCI support resources available through Azure, see:
