@@ -12,7 +12,7 @@ ms.reviewer:
 This article describes known issues with the public preview release of Azure Kubernetes Service on Azure Stack HCI.
 
 ## Recovering from a failed AKS on Azure Stack HCI deployment
-If you're experiencing deployment issues or want to reset your deployment make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running Uninstall-AksHci from a PowerShell administrative window.
+If you're experiencing deployment issues or want to reset your deployment, make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running Uninstall-AksHci from a PowerShell administrative window.
 
 ## Set-AksHciConfig fails with WinRM errors, but shows WinRM is configured correctly
 When running [Set-AksHciConfig](./set-akshciconfig.md), you might encounter the following error:
@@ -53,7 +53,7 @@ When checking in Hyper-V manger high CPU and Memory demands for the management c
 Users deploying and configuring Azure Kubernetes Service on Azure Stack HCI need to have "Full Control" permission to create AD objects in the Active Directory container the server and service objects are created in. 
 
 ## Get-AksHciLogs command may fail
-With large clusters the Get-AksHciLogs command may throw an exception, fail to enumerate nodes or will not generate c:\wssd\wssdlogs.zip output file.
+With large clusters the Get-AksHciLogs command may throw an exception, fail to enumerate nodes, or will not generate c:\wssd\wssdlogs.zip output file.
 This is because the PowerShell command to zip a file `Compress-Archive` has an output file size limit of 2 GB. 
 This issue will be fixed in a future release.
 

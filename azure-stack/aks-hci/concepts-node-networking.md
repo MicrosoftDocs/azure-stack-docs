@@ -120,7 +120,7 @@ The following table compares IP address allocation for resources between static 
 
 ## Minimum IP address reservations for an AKS on Azure Stack HCI deployment
 
-Irrespective of your deployment model, the number of IP addresses reserved remains the same. This section talks about the number of IP addresses to reserve based on your AKS-HCI deployment model.
+Irrespective of your deployment model, the number of IP addresses reserved remains the same. This section talks about the number of IP addresses to reserve based on your AKS on Azure Stack HCI deployment model.
 
 ### Minimum IP address reservation
 
@@ -139,7 +139,7 @@ Additionally, you should reserve the following number of IP addresses for your V
 | Kubernetes Services  |  1 per service  |
 | Application Services | 1 per service planned |
 
-As you can see, the number of required IP addresses is variable depending on the AKS-HCI architecture and the number of services you run on your Kubernetes cluster. We recommend reserving a minimum of 256 IP addresses (/24 subnet) for your deployment.
+As you can see, the number of required IP addresses is variable depending on the AKS on Azure Stack HCI architecture, and the number of services you run on your Kubernetes cluster. We recommend reserving a minimum of 256 IP addresses (/24 subnet) for your deployment.
 
 ### Walking through an example deployment
 
@@ -166,21 +166,21 @@ As explained above, Jane requires a total of 32 IP addresses to deploy the clust
 
 ### Splitting reserved IP addresses based on a static IP network model
 
-While the total number of reserved IP addresses remains the same, the deployment model determines how these IP addresses are divided among IP groups. As we've discussed before, static IP network model has two IP pools:
+While the total number of reserved IP addresses remains the same, the deployment model determines how these IP addresses are divided among IP groups. As discussed before, the static IP network model has two IP pools:
 
-- Kubernetes node VM IP pool - for Kubernetes node VMs and the load balancer VM. This IP pool also includes IP address required for running update operations.
-- Virtual IP pool - for the Kubernetes API server and Kubernetes services
+- **Kubernetes node VM IP pool** - for Kubernetes node VMs and the load balancer VM. This IP pool also includes the IP address required for running update operations.
+- **Virtual IP pool** - for the Kubernetes API server and Kubernetes services.
 
 Working with the example above, Jane must further divide these IP addresses across VIP pools and Kubernetes node IP pools:
 
 - 5 (2 for Kubernetes cluster API server and 3 for Kubernetes services) out of the 32 IP addresses for her VIP pool.
-- 27 (all the IP addresses for her Kubernetes nodes and underlying VMs, load balancer VMs and updates operations) for her Kubernetes node IP pool.
+- 27 (all the IP addresses for her Kubernetes nodes and underlying VMs, the load balancer VMs, and update operations) for her Kubernetes node IP pool.
 
 ### Splitting reserved IP addresses based on a DHCP network model
 
-While the total number of reserved IP addresses remain the same, the deployment model determines how these IP addresses are divided among IP group(s). As we've discussed before, the DHCP network model has one IP scope:
+While the total number of reserved IP addresses remain the same, the deployment model determines how these IP addresses are divided among IP group(s). As discussed before, the DHCP network model has one IP scope:
 
-- Virtual IP pool - for the Kubernetes API server and Kubernetes services
+- **Virtual IP pool** - for the Kubernetes API server and Kubernetes services
 
 Working with the example above:
 
@@ -189,7 +189,7 @@ Working with the example above:
 
 ## Ingress controllers
 
-During deployment of a target cluster, a `HAProxy`-based load balancer resource is created. The load balancer is configured to distribute traffic to the pods in your service on a given port. The load balancer only works at layer 4: the Service is unaware of the actual applications, and it can't make any additional routing considerations.
+During deployment of a target cluster, a `HAProxy`-based load balancer resource is created. The load balancer is configured to distribute traffic to the pods in your service on a given port. The load balancer only works at layer 4 that means the Service is unaware of the actual applications, and it can't make any additional routing considerations.
 
 Ingress controllers work at layer 7 and can use more intelligent rules to distribute application traffic. A common use of an Ingress controller is to route HTTP traffic to different applications based on the inbound URL.
 

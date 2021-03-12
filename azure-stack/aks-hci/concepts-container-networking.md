@@ -109,7 +109,7 @@ Calico supports multiple data planes including: a Linux eBPF data plane, a Linux
 |Command line|none|calicoctl|
 
 > [!Important]
-> Currently, the default selection is to use Flannel in an overlay networking mode. To enable Calico CNI and network policy, use the **-primaryNetworkPlugin** parameter of the [`New-AksHciCluster`](./new-akshcicluster.md) PowerShell command and specify `calico` as the value. **This cannot be changed after the cluster has been deployed and will apply to both Windows and Linux cluster nodes.**
+> Currently, the default selection is to use Flannel in an overlay networking mode. To enable Calico, Azure CNI, and network policy, use the **-primaryNetworkPlugin** parameter of the [`New-AksHciCluster`](./new-akshcicluster.md) PowerShell command and specify `calico` as the value. **This cannot be changed after the cluster has been deployed and will apply to both Windows and Linux cluster nodes.**
 
 Here's an example:
 

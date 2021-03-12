@@ -57,9 +57,8 @@ kube-system   coredns-5644d7b6d9-8bsvl                        1/1     Running   
 kube-system   csi-msk8scsi-controller-dcf7d9759-qs9vd         5/5     Running             0          5h38m 
 kube-system   csi-msk8scsi-node-2zx8b                         3/3     Running             0          5h38m 
 kube-system   csi-msk8scsi-node-9x47m                         0/3     ContainerCreating   0          5h44m 
-kub-system   csi-msk8scsi-node-z5ff8                          3/3     Running             0          5h40m 
+kub-system    csi-msk8scsi-node-z5ff8                         3/3     Running             0          5h40m 
 kube-system   etcd-moc-lwan4ro72he                            1/1     Running             0          5h44m 
-
 kube-system   kube-proxy-n5cf4                                1/1     Running             0          5h39m 
 kube-system   kube-proxy-qqnkr                                1/1     Terminating         0          5h44m 
 kube-system   kube-proxy-wqh4d                                1/1     Running             0          5h40m 
