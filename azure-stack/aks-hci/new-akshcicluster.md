@@ -244,7 +244,7 @@ Accept wildcard characters: False
 ```
 
 ### -enableCsiSmb
-Use this flag to enable a SMB CSI driver during deployment.
+Use this flag to enable an SMB CSI driver during deployment.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -259,7 +259,7 @@ Accept wildcard characters: False
 ```
 
 ### -enableCsiNfs
-Use this flag to enable a NFS CSI driver during deployment.
+Use this flag to enable an NFS CSI driver during deployment.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

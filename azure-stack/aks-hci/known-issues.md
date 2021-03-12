@@ -28,7 +28,7 @@ At C:\Program Files\WindowsPowerShell\Modules\Moc\0.2.23\Moc.psm1:2957 char:17
     + FullyQualifiedErrorId : Powershell remoting to TK5-3WP08R0733 was not successful.
 ```
 
-Most of the time, this occurs as a result of a change in the user's security token (due to a change in group membership), a password change, or an expired password. In most cases, the issue can be remediated by logging off from the computer and logging back in. If this still fails, you can file an issue at [GitHub AKS HCI issues](https://aka.ms/aks-hci/issues).
+Most of the time, this error occurs as a result of a change in the user's security token (due to a change in group membership), a password change, or an expired password. In most cases, the issue can be remediated by logging off from the computer and logging back in. If this still fails, you can file an issue at [GitHub AKS HCI issues](https://aka.ms/aks-hci/issues).
 
 ## When using kubectl to delete a node, the associated VM might not be deleted
 You'll meet this issue if you follow these steps:
@@ -39,15 +39,15 @@ You'll meet this issue if you follow these steps:
 * Open a PowerShell Admin Window
 * Run get-vm. The removed node is still listed
 
-This leads to the system not recognizing the node is missing and a new node will not spin up. 
+This failure leads to the system not recognizing the node is missing and a new node will not spin up. 
 This will be fixed in a future release.
 
 ## Time synchronization must be configured across all physical cluster nodes and in Hyper-V
 To ensure gMSA and AD authentication works, ensure that the Azure Stack HCI cluster nodes are configured to synchronize their time with a domain controller or other
 time source and that Hyper-V is configured to synchronize time to any virtual machines.
 
-## Hyper-V manager shows high CPU and or Memory demand for the management cluster
-When checking in Hyper-V manger high CPU and Memory demands for the management cluster can be safely ignored. They are usually related to spikes in compute resource usage when provisioning workload clusters. Increasing the memory or CPU size for the management cluster has not shown a significant improvement and can be safely ignored.
+## Hyper-V manager shows high CPU and or memory demands for the management cluster
+When you check Hyper-V manager, high CPU and memory demands for the management cluster can be safely ignored. They are usually related to spikes in compute resource usage when provisioning workload clusters. Increasing the memory or CPU size for the management cluster has not shown a significant improvement and can be safely ignored.
 
 ## Special Active Directory permissions are needed for domain joined Azure Stack HCI nodes 
 Users deploying and configuring Azure Kubernetes Service on Azure Stack HCI need to have "Full Control" permission to create AD objects in the Active Directory container the server and service objects are created in. 

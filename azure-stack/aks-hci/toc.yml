@@ -88,7 +88,7 @@
       items:
           - name: Common issues
             href: troubleshoot.md
-          - name: Known deployment issues
+          - name: Resolve known issues
             href: troubleshoot-known-issues.md
 - name: Related
   items:

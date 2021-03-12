@@ -93,7 +93,7 @@ kubectl apply -f policy-demo-linux.yaml
 Create a client pod (_pwsh_) and server pod (_porter_) on the Windows nodes. 
 
 > [!Note]
-> The (_pwsh_) and (_porter_) pods manifest use images based on `mcr.microsoft.com/windows/servercore:1809`. If you are using a more recent Windows Server version, update the manifests to use a Server Core image that matches your Windows Server version.
+> The pods' manifest use images based on `mcr.microsoft.com/windows/servercore:1809`. If you are using a more recent Windows Server version, update the manifests to use a Server Core image that matches your Windows Server version.
 
 ### Create the policy-demo-windows.yaml
 

@@ -33,7 +33,7 @@ If you haven't already installed Windows Admin Center, see [install Windows Admi
 
 Once you have obtained the Azure Kubernetes Service on Azure Stack HCI public preview files, you must save the `.nupkg` file locally or to an SMB share and add the file path to the "Feeds" list in your Windows Admin Center extension manager. The `.nupkg` file is a NuGet package that contains the Windows Admin Center extension.
 
-To access your existing extension feed, open Windows Admin Center and select on the gear in the top right corner of the screen. This will take you to the settings menu. The extension feeds can be found under the **Gateway** section in the **Extensions** menu. Navigate to the **Feeds** tab and select **Add**. In this pane, paste the file path to your copy of the Azure Kubernetes Service extension and select **Add**. If your file path was added successfully, you'll receive a success notification. 
+To access your existing extension feed, open Windows Admin Center and select on the gear in the top-right corner of the screen. This will take you to the settings menu. The extension feeds can be found under the **Gateway** section in the **Extensions** menu. Navigate to the **Feeds** tab and select **Add**. In this pane, paste the file path to your copy of the Azure Kubernetes Service extension and select **Add**. If your file path was added successfully, you'll receive a success notification. 
 
 Now that we have added the feed, the Azure Kubernetes Service extension will be available in the list of available extensions. Once you have the extension selected, select **Install** at the top of the table to install this extension. Windows Admin Center will reload after installation is complete. 
 
@@ -55,7 +55,7 @@ This set up can be done using the new Azure Kubernetes Service tool.
 This tool will install and download the necessary packages, as well as create an AKS host cluster that provides core Kubernetes services and orchestrates application workloads. 
 
 Now that we've verified our system settings, let's get started: 
-1. Select **Set up** to launch the set up wizard.
+1. Select **Set up** to launch the Setup wizard.
 2. Review the prerequisites for the machine you are running Windows Admin Center on, the cluster you're connected to, as well as the network. Additionally, make sure you're signed into an Azure account on Windows Admin Center and that the Azure subscription you're planning on using is not expired. When you're finished, select **Next**.
 
 > [!WARNING]
@@ -77,7 +77,7 @@ Now that we've verified our system settings, let's get started:
     
     Select **Next** after you're finished.
 
-6. On the **Azure Registration** page of the wizard, provide details about the subscription and resource group you wish to use for this service. While Azure Kubernetes Service is in preview, you will not be charged. Windows Admin Center also requires permisions to access resources in your organization that only an admin can grant. Select the **View in Azure** hyperlink to view your Windows Admin Center gateway in Azure and confirm you have been granted admin consent. When you're finished, select **Next**.
+6. On the **Azure Registration** page of the wizard, provide details about the subscription and resource group you wish to use for this service. While Azure Kubernetes Service is in preview, you will not be charged. Windows Admin Center also requires permissions to access resources in your organization that only an admin can grant. Select the **View in Azure** hyperlink to view your Windows Admin Center gateway in Azure and confirm you have been granted admin consent. When you're finished, select **Next**.
 7. Review all of your selections in the **Review + create** step. If you're satisfied with your selections, select **Next** to begin host setup. 
 8. On the **Setup progress** page, you can watch the progress of your host setup. At this point, you are welcome to open Windows Admin Center in a new tab and continue your management tasks. 
 9. If the deployment succeeds, select *Finish*, and you will be presented with a management dashboard where you can create and manage your Kubernetes clusters. This dashboard, like the rest of Azure Kubernetes Services on Azure Stack HCI, is in a preview release and will be updated with additional functionality in future releases.

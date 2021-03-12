@@ -15,9 +15,9 @@ For issues not covered by this article, see [troubleshooting Kubernetes clusters
 
 ## Windows Admin Center throws a WinRM error when creating a new Kubernetes workload cluster on an AKS host deployed using PowerShell with static IPs
 
-**Issue description**: When I switched my test environment from DHCP to static IP, I started seeing an error from WAC that the WinRM client cannot process the request. After investigating, I found that this also occurred outside of WAC. WinRM broke when I used static IP addresses, and my servers were not registering an SPN when I moved over to static IP addresses. 
+**Issue description**: When I switched my test environment from DHCP to static IP, I started seeing an error from WAC that the WinRM client cannot process the request. After investigating, I found this issue also occurred outside of WAC. WinRM broke when I used static IP addresses, and my servers were not registering an SPN when I moved over to static IP addresses. 
 
-**Resolution**: This issue can be resolved by using `SetSPN` to create the SPN (Service Principal Name). From a command prompt on your WAC gateway, run the following: 
+**Resolution**: This issue can be resolved by using `SetSPN` to create the SPN (Service Principal Name). From a command prompt on your WAC gateway, run the following command: 
 
 ```
 Setspn /Q WSMAN/<FQDN on the Azure Stack HCI Server> 
@@ -71,4 +71,4 @@ kube-system   csi-msk8scsi-node-9x47m                         0/3     ContainerC
 kube-system   kube-proxy-qqnkr                                1/1     Terminating         0          5h44m
 ```
 
-**Resolution**: Since _kubelet_ ended up in a bad state and can no longer talk to the API server, the only solution is to restart the _kubelet_ service. After restarting, the cluster goes into a _running_ state. This issue is expected to be resolved in Kubernetes version 1.19. 
+**Resolution**: Since _kubelet_ ended up in a bad state and can no longer talk to the API server, the only solution is to restart the _kubelet_ service. After restarting, the cluster goes into a _running_ state. This issue should be resolved in Kubernetes version 1.19. 

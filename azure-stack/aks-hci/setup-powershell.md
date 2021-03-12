@@ -26,7 +26,7 @@ Before getting started, make sure you have satisfied all the prerequisites on th
 
 Download the `AKS-HCI-Public-Preview-Feb-2021` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module.
 
-**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.Day2, Kva, Moc and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once this is done, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`).
+**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.Day2, Kva, MOC, and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once the directories are deleted, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`).
 
    ```powershell
    Import-Module AksHci

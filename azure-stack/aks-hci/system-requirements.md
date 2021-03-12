@@ -143,7 +143,7 @@ Here are the requirements for the machine running the Windows Admin Center gatew
 
 ## Next steps
 
-After you have satisfied all of the prerequisites above, you can set up a Azure Kubernetes Service host on Azure Stack HCI using:
+After you have satisfied all of the prerequisites above, you can set up an Azure Kubernetes Service host on Azure Stack HCI using:
 
 - [Windows Admin Center](setup.md)
 - [PowerShell](setup-powershell.md)

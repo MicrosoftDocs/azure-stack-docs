@@ -20,8 +20,8 @@ Certificates are a means to build secure communication between in-cluster compon
 AKS on Azure Stack HCI generates and uses the following certificates and CAs: 
 
 **Cluster CA**:
-  - The API server has a Cluster CA, which signs certificates for one-way communication from the API server to kubelets.
-  - Each kubelet also creates a Certificate Signing Request (CSR), which is signed by the Cluster CA, for communication from the kubelet to the API server.
+  - The API server has a Cluster CA, which signs certificates for one-way communication from the API server to `kubelet`.
+  - Each `kubelet` also creates a Certificate Signing Request (CSR), which is signed by the Cluster CA, for communication from the kubelet to the API server.
   - The etcd key value store has a certificate signed by the Cluster CA for communication from etcd to the API server. 
 
 **etcd CA**:
