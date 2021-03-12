@@ -11,11 +11,14 @@ author: mkostersitz
 ---
 # Network concepts for deploying Azure Kubernetes Service (AKS) nodes on Azure Stack HCI
 
-There are two IP address assignment models to choose from, depending on the AKS on Azure Stack HCI networking architecture you choose to use. Note that the virtual networking architecture defined here for AKS on Azure Stack HCI deployments could be different from the underlying physical networking architecture in a data center.
+There are two IP address assignment models to choose from, depending on the AKS on Azure Stack HCI networking architecture you choose to use. 
 
-- Static IP networking - The virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers, and any Kubernetes services run on top of the cluster.
+> [!NOTE]
+> The virtual networking architecture defined here for AKS on Azure Stack HCI deployments could be different from the underlying physical networking architecture in a data center.
 
-- DHCP networking - The virtual network allocates dynamic IP addresses to the Kubernetes nodes, underlying VMs and load balancers using a DHCP server. The Kubernetes cluster API server, and any Kubernetes services you run on top of your cluster, are still allocated static IP addresses.
+- Static IP networking - The virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers, and any Kubernetes services that run on top of the cluster.
+
+- DHCP networking - The virtual network allocates dynamic IP addresses to the Kubernetes nodes, underlying VMs, and load balancers using a DHCP server. The Kubernetes cluster API server, and any Kubernetes services you run on top of your cluster, are still allocated static IP addresses.
 
 ## Virtual IP Pool
 
@@ -25,7 +28,7 @@ The number of IP addresses in the VIP pool depends on the number of workload clu
 
 Depending on your networking model, the VIP pool definition will differ in the following ways:
 
-- Static IP - If you're using static IP, make sure your virtual IP's addresses are from the same subnet provided.
+- Static IP - If you're using static IP, make sure your virtual IP addresses are from the same subnet provided.
 - DHCP - If your network is configured with DHCP, you will need to work with your network administrator and exclude the VIP pool IP range from the DHCP scope used for the AKS on Azure Stack HCI deployment.
 
 ## Kubernetes node VM IP pool
@@ -45,7 +48,7 @@ You must specify the following parameters while defining a virtual network with 
 > In this version of AKS on Azure Stack HCI, it is not possible to change the network configuration once the AKS host or the workload cluster are deployed. The only way to change the networking settings is to start fresh by removing the workload cluster(s) and uninstall AKS on Azure Stack HCI.
 
 - Name: The name of your virtual network.
-- AddressPrefix: The IP address prefix to use for your subnet.
+- Address prefix: The IP address prefix to use for your subnet.
 - Gateway: The IP address of the default gateway for the subnet.
 - DNS server: An array of IP addresses pointing to the DNS servers to be used for the subnet. A minimum of one and a maximum of three servers can be provided.
 - Kubernetes node VM pool: A continuous range of IP addresses to be used for your Kubernetes node VMs.
@@ -75,32 +78,33 @@ You must specify the following parameters while defining a virtual network with 
 
 ## Microsoft On-premises Cloud service
 
-Microsoft On-Premise Cloud (MOC) is the management stack enabling management of virtual machines on Azure Stack HCI and Windows Server based SDDC clouds. MOC consists of:
+Microsoft On-premises Cloud (MOC) is the management stack that enables virtual machines on Azure Stack HCI and Windows Server-based SDDC to be managed in the cloud. MOC consists of:
 
-- a single instance of a highly available `cloud agent` service deployed in the cluster. This agent runs on any one node in the Azure Stack HCI cluster and is configured to fail over to another node.
-- a `node agent` running on every Azure Stack HCI physical node. 
+- A single instance of a highly available `cloud agent` service deployed in the cluster. This agent runs on any one node in the Azure Stack HCI cluster and is configured to fail over to another node.
+- A `node agent` running on every Azure Stack HCI physical node. 
 
-To enable communication with MOC, you need to provide the IP Address CIDR to be used for the service. The `-cloudserviceCIDR` is a parameter in the `Set-AksHciConfig` command that's used to assign the IP address to the cloud agent service and enable high availability of the cloud agent service.
+To enable communication with MOC, you need to provide the IP Address CIDR to be used for the service. The `-cloudserviceCIDR` is a parameter in the [`Set-AksHciConfig`](./set-akshciconfig.md) command that's used to assign the IP address to the cloud agent service and enable high availability of the cloud agent service.
 
 The choice of an IP address for the MOC service depends on the underlying networking model used by your Azure Stack HCI cluster deployment.
->[!Note]
->The IP address allocation for MOC service is independent of your Kubernetes virtual network model and is ONLY dependent on the underlying physical network and the IP addresses > configured for the Azure Stack HCI cluster nodes in your data center.
 
-- Azure Stack HCI cluster nodes with a DHCP-based IP address allocation mode: If your Azure Stack HCI nodes are assigned an IP address from a DHCP server present on the physical network, then you do not need to explicitly provide an IP address to the MOC service as the MOC service will also receive an IP address from the DHCP server.
+> [!Note]
+> The IP address allocation for the MOC service is independent of your Kubernetes virtual network model. The IP address allocation is dependent on the underlying physical network, and the IP addresses configured for the Azure Stack HCI cluster nodes in your data center.
 
-- Azure Stack HCI cluster nodes with a static IP allocation model: If your Azure Stack HCI cluster nodes are assigned static IP addresses, then you must explicitly provide an IP address for the MOC cloud service. The IP address for the MOC service must be in the same subnet as the IP addresses of Azure Stack HCI cluster nodes. To explicitly assign an IP address for MOC service use the -cloudserviceCIDR parameter in the Set-AksHciConfig command. Make sure you enter an IP address in the CIDR format, for example - "10.11.23.45/16".
+- **Azure Stack HCI cluster nodes with a DHCP-based IP address allocation mode**: If your Azure Stack HCI nodes are assigned an IP address from a DHCP server present on the physical network, then you do not need to explicitly provide an IP address to the MOC service as the MOC service will also receive an IP address from the DHCP server.
+
+- **Azure Stack HCI cluster nodes with a static IP allocation model**: If your Azure Stack HCI cluster nodes are assigned static IP addresses, then you must explicitly provide an IP address for the MOC cloud service. The IP address for the MOC service must be in the same subnet as the IP addresses of Azure Stack HCI cluster nodes. To explicitly assign an IP address for MOC service, use the `-cloudserviceCIDR` parameter in the `Set-AksHciConfig` command. Make sure you enter an IP address in the CIDR format, for example: "10.11.23.45/16".
 
 ## Compare network models
 
 Both DHCP and Static IP provide network connectivity for your AKS on Azure Stack HCI deployment. However, there are advantages and disadvantages to each. At a high level, the following considerations apply:
 
 **DHCP**
-    - Does not guarantee long lived IP addresses for some resource types in an AKS-HCI deployment.
+    - Does not guarantee long-lived IP addresses for some resource types in an AKS on Azure Stack HCI deployment.
     - Supports expansion of reserved DHCP IP addresses if your deployment gets bigger than you initially anticipated.
 
 **Static IP**
-    - Guarantees long lived IP addresses for all resources in an AKS-HCI deployment.
-    - Since we do not support automatic expansion of Kubernetes node IP pool, you may not be able to create new clusters if you have exhausted the Kubernetes node IP pool.
+    - Guarantees long-lived IP addresses for all resources in an  AKS on Azure Stack HCI deployment.
+    - Since automatic expansion of Kubernetes node IP pool is not supported, you may not be able to create new clusters if you have exhausted the Kubernetes node IP pool.
 
 The following table compares IP address allocation for resources between static IP and DHCP networking models:
 
@@ -174,7 +178,7 @@ Working with the example above, Jane must further divide these IP addresses acro
 
 ### Splitting reserved IP addresses based on a DHCP network model
 
-While the total number of reserved IP addresses remain the same, the deployment model determines how these IP addresses are divided among IP group(s). As we've discussed before, the DHCP network model has 1 IP scope:
+While the total number of reserved IP addresses remain the same, the deployment model determines how these IP addresses are divided among IP group(s). As we've discussed before, the DHCP network model has one IP scope:
 
 - Virtual IP pool - for the Kubernetes API server and Kubernetes services
 
@@ -185,9 +189,9 @@ Working with the example above:
 
 ## Ingress controllers
 
-During deployment of a target cluster a HAProxy based load balancer resource is created. The load balancer is configured to distribute traffic to the pods in your Service on a given port. The LoadBalancer only works at layer 4 - the Service is unaware of the actual applications, and can't make any additional routing considerations.
+During deployment of a target cluster, a `HAProxy`-based load balancer resource is created. The load balancer is configured to distribute traffic to the pods in your service on a given port. The load balancer only works at layer 4: the Service is unaware of the actual applications, and it can't make any additional routing considerations.
 
-Ingress controllers work at layer 7, and can use more intelligent rules to distribute application traffic. A common use of an Ingress controller is to route HTTP traffic to different applications based on the inbound URL.
+Ingress controllers work at layer 7 and can use more intelligent rules to distribute application traffic. A common use of an Ingress controller is to route HTTP traffic to different applications based on the inbound URL.
 
 ![Diagram showing Ingress traffic flow in an AKS-HCI cluster](media/net/aks-ingress.png)
 

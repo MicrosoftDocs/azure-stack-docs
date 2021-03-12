@@ -42,19 +42,15 @@ Klist purge
 
 AKS on Azure Stack HCI did not reinstall between iterations. Each iteration of the update reliability script only creates a new workload cluster, updates it, and deletes it. 
 
-```
+```output
 Error: PS C:\Program Files\AksHci> .\kubectl.exe get nodes --kubeconfig=C:\Users\wolfpack\Documents\kubeconfig-update-cluster70 
 NAME              STATUS     ROLES    AGE     VERSION 
 moc-lf22jcmu045   Ready      <none>   5h40m   v1.16.15 
 moc-lqjzhhsuo42   Ready      <none>   5h38m   v1.16.15 
 moc-lwan4ro72he   NotReady   master   5h44m   v1.16.15
-```  
 
-```powershell
 PS C:\Program Files\AksHci> .\kubectl.exe get pods -A --kubeconfig=C:\Users\wolfpack\Documents\kubeconfig-update-cluster70
-```
 
-```output
 NAMESPACE     NAME                                            READY   STATUS              RESTARTS   AGE 
 kube-system   coredns-5644d7b6d9-8bqgg                        1/1     Running             0          5h40m 
 kube-system   coredns-5644d7b6d9-8bsvl                        1/1     Running             0          5h38m 
@@ -69,5 +65,11 @@ kube-system   kube-proxy-qqnkr                                1/1     Terminatin
 kube-system   kube-proxy-wqh4d                                1/1     Running             0          5h40m 
 ```
 
+In the error output above, the following lines show the errors that occurred:
+
+```
+kube-system   csi-msk8scsi-node-9x47m                         0/3     ContainerCreating   0          5h44m
+kube-system   kube-proxy-qqnkr                                1/1     Terminating         0          5h44m
+```
 
 **Resolution**: Since _kubelet_ ended up in a bad state and can no longer talk to the API server, the only solution is to restart the _kubelet_ service. After restarting, the cluster goes into a _running_ state. This issue is expected to be resolved in Kubernetes version 1.19. 
