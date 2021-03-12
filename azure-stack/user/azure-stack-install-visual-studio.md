@@ -4,9 +4,9 @@ description: Learn how to install Visual Studio and connect to Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 06/11/2020
+ms.date: 03/12/2021
 ms.author: sethm
-ms.reviewer: unknown
+ms.reviewer: raymondl
 ms.lastreviewed: 01/04/2020
 
 # Intent: As an Azure Stack user, I want to install Visual Studio on Azure stack so I can write and deploy Azure Resource Manager templates.
@@ -21,7 +21,7 @@ You can use Visual Studio to write and deploy Azure Resource Manager [templates]
 
 ## Install Visual Studio
 
-1. Download and run the [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx).  
+1. [Install Visual Studio Community 2019](https://visualstudio.microsoft.com/), or one of the trial versions.  
 
 2. Open the **Microsoft Web Platform Installer**.
 
