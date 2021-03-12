@@ -32,21 +32,37 @@ Most of the time, this error occurs as a result of a change in the user's securi
 
 ## When using kubectl to delete a node, the associated VM might not be deleted
 You'll meet this issue if you follow these steps:
-* Create a Kubernetes cluster
-* Scale the cluster to more than two nodes
-* Use kubectl delete node <node-name> to delete a node 
-* Run kubectl get nodes. The removed node isn't listed in the output
-* Open a PowerShell Admin Window
-* Run get-vm. The removed node is still listed
+* Create a Kubernetes cluster.
+* Scale the cluster to more than two nodes.
+* Use `kubectl` delete node <node-name> to delete a node.
+* Run `kubectl` get nodes. The removed node isn't listed in the output.
+* Open a PowerShell Admin Window.
+* Run `get-vm`. The removed node is still listed
 
 This failure leads to the system not recognizing the node is missing and a new node will not spin up. 
 This will be fixed in a future release.
+
+## The workload cluster may not be found if the IP address pools of two AKS on Azure Stack HCI deployments are the same or overlap
+
+If you deploy two AKS on Azure Stack HCI hosts and use the same `AksHciNetworkSetting` configuration for both, PowerShell and WAC will potentially fail to find the workload cluster as the API server will be assigned the same IP address in both clusters resulting in a conflict.
+
+```powershell
+The error message you will receive will look similar to the below.
+A workload cluster with the name 'clustergroup-management' was not found.
+At C:\Program Files\WindowsPowerShell\Modules\Kva\0.2.23\Common.psm1:3083 char:9
++         throw $("A workload cluster with the name '$Name' was not fou ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (A workload clus... was not found.:String) [], RuntimeException
+    + FullyQualifiedErrorId : A workload cluster with the name 'clustergroup-management' was not found.
+```
+
+>[!Note] Your cluster name will be different.
 
 ## Time synchronization must be configured across all physical cluster nodes and in Hyper-V
 To ensure gMSA and AD authentication works, ensure that the Azure Stack HCI cluster nodes are configured to synchronize their time with a domain controller or other
 time source and that Hyper-V is configured to synchronize time to any virtual machines.
 
-## Hyper-V manager shows high CPU and or memory demands for the management cluster
+## Hyper-V manager shows high CPU and/or memory demands for the management cluster
 When you check Hyper-V manager, high CPU and memory demands for the management cluster can be safely ignored. They are usually related to spikes in compute resource usage when provisioning workload clusters. Increasing the memory or CPU size for the management cluster has not shown a significant improvement and can be safely ignored.
 
 ## Special Active Directory permissions are needed for domain joined Azure Stack HCI nodes 
@@ -58,9 +74,9 @@ This is because the PowerShell command to zip a file `Compress-Archive` has an o
 This issue will be fixed in a future release.
 
 ## Azure Kubernetes Service PowerShell deployment doesn't check for available memory before creating a new target cluster
-The Aks-Hci PowerShell commands do not validate the available memory on the host server before creating Kubernetes nodes. This can lead to memory exhaustion and virtual machines to not start. This failure is currently not handled gracefully and the deployment will stop responding with no clear error message.
-If you have a deployment that stops responding, open `Eventviewer` and check for Hyper-V related error messages indicating not enough memory to start the VM.
-This issue will be fixed in a future release
+The **Aks-Hci** PowerShell commands do not validate the available memory on the host server before creating Kubernetes nodes. This can lead to memory exhaustion and virtual machines that do not start. This failure is currently not handled gracefully, and the deployment will stop responding with no clear error message.
+If you have a deployment that stops responding, open `Eventviewer` and check for a Hyper-V-related error message indicating there's not enough memory to start the VM.
+This issue will be fixed in a future release.
 
 ## Azure Kubernetes Service deployment fails on an Azure Stack HCI configured with static IPs, VLANs, SDN, or proxies.
 While deploying Azure Kubernetes Service on an Azure Stack HCI cluster that has static IPs, VLANs, SDN, or proxies, the deployment fails at cluster creation. 

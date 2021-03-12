@@ -22,15 +22,6 @@ $proxyCred = Get-Credential
 Set-AksHciConfig -proxyServerHTTP "http://proxy.contoso.com:8888" -proxyServerHTTPS "http://proxy.contoso.com:8888" -proxyServerCredential $ProxyCred
 ```
 
-## Configure an AKS host for a proxy server with NTLM/Kerberos authentication
-
-If your proxy server requires NTLM/Kerberos authentication, run the following command to get credentials and set the configuration details:
-
-```powershell
-$credential = Get-Credential # get the credential for the proxy server
-Set-AksHciConfig -proxyServerHttp "http://proxy.contoso.com:8888" -proxyServerHttps "http://proxy.contoso.com:8888" -proxyServerCredential $credential
-```
-
 ### Configure an AKS host for a proxy server without authentication  
 
 If your proxy server does not require authentication, run the following command:
