@@ -40,9 +40,9 @@ Kubernetes nodes are deployed as specialized virtual machines in an AKS on Azure
 
 ## Virtual network with static IP networking (Recommended)
 
-This networking model creates a virtual network that allocates IP addresses from a statically-defined address pool to all objects in your deployment. An added benefit of using static IP networking is that long-lived deployments and application workloads are guaranteed to always be reachable.
+This networking model creates a virtual network that allocates IP addresses from a statically defined address pool to all objects in your deployment. An added benefit of using static IP networking is that long-lived deployments and application workloads are guaranteed to always be reachable.
 
-You must specify the following parameters while defining a virtual network with static IP configurations:
+Specify the following parameters while defining a virtual network with static IP configurations:
 
 > [!Important]
 > In this version of AKS on Azure Stack HCI, it is not possible to change the network configuration once the AKS host or the workload cluster are deployed. The only way to change the networking settings is to start fresh by removing the workload cluster(s) and uninstall AKS on Azure Stack HCI.
@@ -152,15 +152,15 @@ Jane is an IT administrator just starting with AKS on Azure Stack HCI. She wants
 
 Based on the table above, she will have to reserve:
 
-- 3 IP addresses for the AKS host (1 IP for control plane node and 2 IPs for running update operations)
-- 3 IP addresses for the control plane nodes in cluster A (1 IP per control plane node)
-- 5 IP addresses for the worker nodes in cluster A (1 IP per control plane node)
-- 6 IP addresses additionally for cluster A (5 IPs for running update operations and 1 IP for load balancer)
-- 1 IP addresses for the control plane nodes in cluster B (1 IP per control plane node)
-- 3 IP addresses for the worker nodes in cluster B (1 IP per control plane node)
-- 6 IP addresses additionally for cluster B (5 IPs for running update operations and 1 IP for load balancer)
-- 2 IP addresses for the Kubernetes cluster API servers (1 IP per Kubernetes cluster)
-- 3 IP addresses for the Kubernetes service (1 IP address per instance of the front-end UI, since they all use the same port. The backend database can use any one of the 3 IP addresses as long as it will use a different port)
+- 3 IP addresses for the AKS host (one IP for control plane node and two IPs for running update operations)
+- 3 IP addresses for the control plane nodes in cluster A (one IP per control plane node)
+- 5 IP addresses for the worker nodes in cluster A (one IP per control plane node)
+- 6 IP addresses additionally for cluster A (five IPs for running update operations and 1 IP for load balancer)
+- 1 IP addresses for the control plane nodes in cluster B (one IP per control plane node)
+- 3 IP addresses for the worker nodes in cluster B (one IP per control plane node)
+- 6 IP addresses additionally for cluster B (five IPs for running update operations and 1 IP for load balancer)
+- 2 IP addresses for the Kubernetes cluster API servers (one IP per Kubernetes cluster)
+- 3 IP addresses for the Kubernetes service (one IP address per instance of the front-end UI, since they all use the same port. The backend database can use any one of the three IP addresses as long as it will use a different port)
 
 As explained above, Jane requires a total of 32 IP addresses to deploy the cluster. Jane should therefore reserve a /26 subnet for her virtual network. 
 
@@ -173,7 +173,7 @@ While the total number of reserved IP addresses remains the same, the deployment
 
 Working with the example above, Jane must further divide these IP addresses across VIP pools and Kubernetes node IP pools:
 
-- 5 (2 for Kubernetes cluster API server and 3 for Kubernetes services) out of the 32 IP addresses for her VIP pool.
+- 5 (two for Kubernetes cluster API server and three for Kubernetes services) out of the 32 IP addresses for her VIP pool.
 - 27 (all the IP addresses for her Kubernetes nodes and underlying VMs, the load balancer VMs, and update operations) for her Kubernetes node IP pool.
 
 ### Splitting reserved IP addresses based on a DHCP network model
@@ -185,7 +185,7 @@ While the total number of reserved IP addresses remain the same, the deployment 
 Working with the example above:
 
 - Jane must reserve a total of 32 IP addresses or a /26 subnet on her DHCP server. 
-- She must exclude 5 (2 for Kubernetes cluster API server and 3 for Kubernetes services) from the DHCP scope of 32 IP addresses for her VIP pool.
+- She must exclude 5 (two for Kubernetes cluster API server and three for Kubernetes services) from the DHCP scope of 32 IP addresses for her VIP pool.
 
 ## Ingress controllers
 
