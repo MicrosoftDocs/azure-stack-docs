@@ -57,7 +57,7 @@ Install-AksHciAdAuth -name <String>
 ## Description
 Install Active Directory authentication.
 
-## EXAMPLES
+## Examples
 
 ### Example
 
