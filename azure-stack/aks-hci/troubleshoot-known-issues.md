@@ -11,13 +11,13 @@ ms.author: v-susbo
 
 This article includes workaround steps for known issues that occur on AKS on Azure Stack HCI.
 
-For issues not covered by this article, see [troubleshooting Kubernetes clusters](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/) and this [troubleshooting guide](./troubleshoot.md) for troubleshooting common scenarios on Windows Admin Center (WAC), Windows worker nodes, Linux worker nodes, and Azure Arc Kubernetes.
+For issues not covered by this article, see [troubleshooting Kubernetes clusters](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/), and this [troubleshooting guide](./troubleshoot.md) for troubleshooting common scenarios on Windows Admin Center (WAC), Windows worker nodes, Linux worker nodes, and Azure Arc Kubernetes.
 
 ## Windows Admin Center throws a WinRM error when creating a new Kubernetes workload cluster on an AKS host deployed using PowerShell with static IPs
 
 **Issue description**: When I switched my test environment from DHCP to static IP, I started seeing an error from WAC that the WinRM client cannot process the request. After investigating, I found that this also occurred outside of WAC. WinRM broke when I used static IP addresses, and my servers were not registering an SPN when I moved over to static IP addresses. 
 
-**Resolution**: This issue can be resolved by using `SetSPN` to create the SPN (Service Principal Name). Open a command prompt on your WAC gateway and run: 
+**Resolution**: This issue can be resolved by using `SetSPN` to create the SPN (Service Principal Name). From a command prompt on your WAC gateway, run the following: 
 
 ```
 Setspn /Q WSMAN/<FQDN on the Azure Stack HCI Server> 
@@ -36,11 +36,11 @@ Finally, on your WAC gateway, run the following to ensure that it gets new serve
 Klist purge 
 ```
 
-## Pod stuck in ContainerCreating state at the 70th iteration of an update reliability script
+## Pod stuck in _ContainerCreating_ state at the 70th iteration of an update reliability script
 
-**Issue description**: On the 70th iteration of an update reliability script, a new Kubernetes workload cluster was created with Kubernetes version 1.16.10 and then updated to 1.16.15. After the update, the `csi-msk8scsi-node-9x47m` pod was stuck in the _ContainerCreating_ state and the `kube-proxy-qqnkr` pod was stuck in the _Terminating_ state. 
+**Issue description**: On the 70th iteration of an update reliability script, a new Kubernetes workload cluster was created with Kubernetes version 1.16.10, and then updated to 1.16.15. After the update, the `csi-msk8scsi-node-9x47m` pod was stuck in the _ContainerCreating_ state, and the `kube-proxy-qqnkr` pod was stuck in the _Terminating_ state. 
 
-AKS on Azure Stack HCI was not reinstalled between iterations. Each iteration of the update reliability script only creates a new workload cluster, updates it and deletes it. 
+AKS on Azure Stack HCI did not reinstall between iterations. Each iteration of the update reliability script only creates a new workload cluster, updates it, and deletes it. 
 
 ```
 Error: PS C:\Program Files\AksHci> .\kubectl.exe get nodes --kubeconfig=C:\Users\wolfpack\Documents\kubeconfig-update-cluster70 
@@ -61,7 +61,7 @@ kube-system   coredns-5644d7b6d9-8bsvl                        1/1     Running   
 kube-system   csi-msk8scsi-controller-dcf7d9759-qs9vd         5/5     Running             0          5h38m 
 kube-system   csi-msk8scsi-node-2zx8b                         3/3     Running             0          5h38m 
 kube-system   csi-msk8scsi-node-9x47m                         0/3     ContainerCreating   0          5h44m 
-kub-system   csi-msk8scsi-node-z5ff8                         3/3     Running             0          5h40m 
+kub-system   csi-msk8scsi-node-z5ff8                          3/3     Running             0          5h40m 
 kube-system   etcd-moc-lwan4ro72he                            1/1     Running             0          5h44m 
 
 kube-system   kube-proxy-n5cf4                                1/1     Running             0          5h39m 
@@ -70,4 +70,4 @@ kube-system   kube-proxy-wqh4d                                1/1     Running   
 ```
 
 
-**Resolution**: Since _kubelet_ landed in a bad state and can no longer talk to the api-server, the only solution for the issue is to restart the _kubelet_ service. After restarting, the cluster goes into a functioning state. This issue is expected to be resolved in Kubernetes version 1.19. 
+**Resolution**: Since _kubelet_ ended up in a bad state and can no longer talk to the API server, the only solution is to restart the _kubelet_ service. After restarting, the cluster goes into a _running_ state. This issue is expected to be resolved in Kubernetes version 1.19. 
