@@ -13,7 +13,7 @@ ms.date: 03/11/2021
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-Storage Spaces Direct, the foundational storage virtualization technology behind Azure Stack HCI, features a built-in server-side cache to maximize storage performance while reducing costs. It's a large, persistent, real-time read *and* write cache. The cache is configured automatically upon deployment. In most cases, no manual management whatsoever is required. How the cache works depends on the types of drives present.
+Storage Spaces Direct, the foundational storage virtualization technology behind Azure Stack HCI, features a built-in server-side cache to maximize storage performance while reducing costs. It's a large, persistent, real-time read *and* write cache that is configured automatically upon deployment. In most cases, no manual management whatsoever is required. How the cache works depends on the types of drives present.
 
 ## Drive types and deployment options
 
@@ -58,11 +58,11 @@ If you have SSDs and HDDs, the SSDs will cache for the HDDs.
 When all drives are of the same type, no cache is configured automatically. You have the option to manually configure higher-endurance drives to cache for lower-endurance drives of the same type – see the [Manual configuration](#manual-configuration) section to learn how.
 
    >[!TIP]
-   > In all-NVMe or all-SSD deployments, especially at very small scale, having no drives "spent" on cache can improve storage efficiency.
+   > In some cases, using the storage pool cache does not make sense. For example, in all-NVMe or all-SSD deployments, especially at very small scale, having no drives "spent" on cache can improve storage efficiency and maximize performance. Likewise, small remote or branch office deployments may have limited space for cache drives.
 
 ## Cache behavior is set automatically
 
-The behavior of the cache is determined automatically based on the type(s) of drives that are being cached for. When caching for flash drives (such as NVMe caching for SSDs), only writes are cached. When caching for hard disk drives (such as SSDs caching for HDDs), both reads and writes are cached.
+The behavior of the cache is determined automatically based on the type(s) of drives that are being cached for. When caching for flash drives (such as NVMe caching for SSDs), only writes are cached. When caching for rotating disk drives (such as SSDs caching for HDDs), both reads and writes are cached.
 
 ![Diagram comparing caching for all-flash, where writes are cached and reads are not, with hybrid, where both reads and writes are cached.](media/cache/Cache-Read-Write-Behavior.png)
 
