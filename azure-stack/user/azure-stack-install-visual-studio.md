@@ -25,7 +25,7 @@ You can use Visual Studio to write and deploy Azure Resource Manager [templates]
 
 2. Uninstall the **Microsoft Azure PowerShell** that's installed as part of the Azure SDK.
 
-    ![Screenshot of WebPI install steps](./media/azure-stack-install-visual-studio/image1.png)
+    ![Screenshot of WebPI install steps](./media/azure-stack-install-visual-studio/uninstall-powershell.png)
 
 3. [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md).
 
@@ -39,7 +39,7 @@ You can use Visual Studio to write and deploy Azure Resource Manager [templates]
 
 3. Select **Manage Accounts**, then in the new pane, sign in with your Azure Active Directory (Azure AD) credentials.  
 
-    ![Screenshot thas shows Cloud Explorer once logged in and connected to Azure Stack Hub](./media/azure-stack-install-visual-studio/image2.png)
+    ![Screenshot thas shows Cloud Explorer once logged in and connected to Azure Stack Hub](./media/azure-stack-install-visual-studio/sign-in-visual-studio.png)
 
 Once logged in, you can [deploy templates](azure-stack-deploy-template-visual-studio.md) or browse available resource types and resource groups to create your own templates.  
 
@@ -53,19 +53,15 @@ Once logged in, you can [deploy templates](azure-stack-deploy-template-visual-st
 
 4. Select **Add**, and enter the User Azure Resource Manger endpoint. For the Azure Stack Development Kit (ASDK), the URL is: `https://management.local.azurestack/external`.  For Azure Stack Hub integrated systems, the URL is: `https://management.[Region}.[External FQDN]`.
 
-    ![Add new Azure Cloud discovery endpoint](./media/azure-stack-install-visual-studio/image5.png)
+    ![Add new Azure Cloud discovery endpoint](./media/azure-stack-install-visual-studio/add-cloud.png)
 
-5. Select **Add**.  
-
-    Visual Studio calls Azure Resource Manger and discovers the endpoints, including the authentication endpoint, for Azure Directory Federated Services (AD FS).
-
-    ![Screenshot that shows the endpoints for Azure Directory Federated Services.](./media/azure-stack-install-visual-studio/image6.png)
+5. Select **Add**. Visual Studio calls Azure Resource Manger and discovers the endpoints, including the authentication endpoint, for Azure Directory Federated Services (AD FS). Azure Stack Hub now appears in the list of registered clouds.
 
 6. Select **Cloud Explorer** from the **View** menu.
 
-7. Select **Add Account** and sign in with your AD FS credentials.  
+7. Select **Manage Accounts** and sign in with your AD FS credentials.  
 
-    ![Sign in to Visual Studio in Cloud Explorer](./media/azure-stack-install-visual-studio/image7.png)
+    ![Sign in to Visual Studio in Cloud Explorer](./media/azure-stack-install-visual-studio/sign-in-visual-studio.png)
 
     Cloud Explorer queries the available subscriptions. You can select an available subscription to manage.
 
