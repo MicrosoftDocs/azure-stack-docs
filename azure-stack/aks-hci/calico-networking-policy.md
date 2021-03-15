@@ -15,14 +15,14 @@ Use this step-by-step guide to verify and try out basic pod-to-pod connectivity 
 
 ## Prerequisites
 
-Follow the steps in [Installing AKS on Azure Stack HCI](./setup-powershell.md) to deploy AKS on Azure Stack HCI.
+ To deploy AKS on Azure Stack HCI, follow the steps to [install AKS on Azure Stack HCI](./setup-powershell.md).
 
 To use this guide, you will need:
 
 - An AKS on Azure Stack HCI workload cluster.
 - At least one Windows worker node deployed in the cluster.
 - At least one Linux worker node deployed in the cluster.
-- The Calico network plug-in enabled during the workload cluster creation. If this plug-in wasn't enabled, see [`New-AksHciCluster`](./new-akshcicluster.md) for instructions.
+- The Calico network plug-in enabled when creating the workload cluster. If this plug-in wasn't enabled, see [`New-AksHciCluster`](./new-akshcicluster.md) for instructions.
  
 ## Create pods on Linux nodes
 
@@ -82,7 +82,7 @@ spec:
 
 Open a PowerShell window and load the credentials for your target cluster using the [`get-AksHciCredential`](./get-akshcicredential.md) command. 
 
-Next, use `kubectl` to apply the `policy-demo-linux.yaml` configuration, as shown below:
+Next, use `kubectl` to apply the `policy-demo-linux.yaml` configuration as shown below:
 
 ```powershell
 kubectl apply -f policy-demo-linux.yaml
@@ -93,7 +93,7 @@ kubectl apply -f policy-demo-linux.yaml
 Create a client pod _pwsh_ and server pod _porter_ on the Windows nodes. 
 
 > [!Note]
-> The pods' manifest use images based on `mcr.microsoft.com/windows/servercore:1809`. If you are using a more recent Windows Server version, update the manifests to use a Server Core image that matches your Windows Server version.
+> The pods' manifest uses images based on `mcr.microsoft.com/windows/servercore:1809`. If you are using a more recent Windows Server version, update the manifests to use a Server Core image that matches your Windows Server version.
 
 ### Create the policy-demo-windows.yaml
 
@@ -206,7 +206,7 @@ Now that the client and server pods are running on both Linux and Windows nodes,
     kubectl exec --namespace calico-demo busybox -- nc -vz $(kubectl get pod porter --namespace calico-demo -o 'jsonpath={.status.podIP}') 80
     ```
 
-   If the connection from the _busybox_ pod to the _porter_ pod succeeds, you will get output similar to the following:
+   If the connection from the _busybox_ pod to the _porter_ pod succeeds, you will get output similar to what's shown below:
 
     ```powershell
     192.168.40.166 (192.168.40.166:80) open
@@ -275,7 +275,7 @@ You have now verified that communication is possible between all pods in the app
 
 In a real world deployment, you would want to make sure only pods that are supposed to communicate with each other are allowed to do so.
 
-To achieve this, you apply a basic network policy, which allows only the _busybox_ pod to reach the porter pod.
+To achieve this, you apply a basic network policy, which allows only the _busybox_ pod to reach the _porter_ pod.
 
 ### Create the network-policy.yaml file
 
@@ -313,9 +313,9 @@ spec:
 
 ### Verify the policy is in effect
 
-With the policy in place, the _busybox_ pod should still be able to reach the porter pod:
+With the policy in place, the _busybox_ pod should still be able to reach the _porter_ pod:
 > [!Note]
-> The combined command line will be used as done previously in this article.
+> The combined command line is used just as it was run earlier in this article.
 
 ```powershell
 kubectl exec --namespace calico-demo busybox -- nc -vz $(kubectl get po porter -n calico-demo -o 'jsonpath={.status.podIP}') 80
@@ -340,8 +340,8 @@ pWebRequest) [Invoke-WebRequest], WebException
 command terminated with exit code 1
 ```
 
-In this demo, we’ve configured pods on Linux and Windows nodes, verified basic pod connectivity, and tried a basic network policy to isolate pod to pod traffic.
-As the final step you can clean up all of the demo resources:
+In this demo, we’ve configured pods on Linux and Windows nodes, verified basic pod connectivity, and tried a basic network policy to isolate pod-to-pod traffic.
+As the final step, you can clean up all of the demo resources:
 
 ```powershell
 kubectl delete namespace calico-demo
