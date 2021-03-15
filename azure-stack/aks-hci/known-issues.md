@@ -46,8 +46,9 @@ This will be fixed in a future release.
 
 If you deploy two AKS on Azure Stack HCI hosts and use the same `AksHciNetworkSetting` configuration for both, PowerShell and WAC will potentially fail to find the workload cluster as the API server will be assigned the same IP address in both clusters resulting in a conflict.
 
+The error message you receive will look similar to the example shown below.
+
 ```powershell
-The error message you will receive will look similar to the below.
 A workload cluster with the name 'clustergroup-management' was not found.
 At C:\Program Files\WindowsPowerShell\Modules\Kva\0.2.23\Common.psm1:3083 char:9
 +         throw $("A workload cluster with the name '$Name' was not fou ...
@@ -56,7 +57,8 @@ At C:\Program Files\WindowsPowerShell\Modules\Kva\0.2.23\Common.psm1:3083 char:9
     + FullyQualifiedErrorId : A workload cluster with the name 'clustergroup-management' was not found.
 ```
 
->[!Note] Your cluster name will be different.
+> [!NOTE]
+> Your cluster name will be different.
 
 ## Time synchronization must be configured across all physical cluster nodes and in Hyper-V
 To ensure gMSA and AD authentication works, ensure that the Azure Stack HCI cluster nodes are configured to synchronize their time with a domain controller or other
