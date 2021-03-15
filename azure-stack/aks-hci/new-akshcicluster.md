@@ -199,7 +199,7 @@ Accept wildcard characters: False
 ```
 
 ### -primaryNetworkPlugin
-The network plugin to be used for your deployment. This parameter takes in either `flannel` or `calico`. Calico is only available for Linux only clusters. If you choose Calico for your cluster, the addition of Windows nodes is not allowed.
+The network plug-in to be used for your deployment. This parameter takes in either `flannel` or `calico`. Calico is available for both Linux and Windows workload clusters.
 
 ```yaml
 Type: System.String
