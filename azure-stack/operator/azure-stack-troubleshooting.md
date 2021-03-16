@@ -225,7 +225,7 @@ The Azure Stack Hub patch and update process is designed to allow operators to a
 
 **Cause**: The baseboard management controller (BMC) password is not set correctly.
 
-**Remediation**: [Update the BMC credential](/azure-stack/operator/azure-stack-rotate-secrets.md#update-the-bmc-credential) and resume the update.
+**Remediation**: [Update the BMC credential](/azure-stack/operator/azure-stack-rotate-secrets#update-the-bmc-credential) and resume the update.
 
 ### Warnings and errors reported while update is in progress
 
