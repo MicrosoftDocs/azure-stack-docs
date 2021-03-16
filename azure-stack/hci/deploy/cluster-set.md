@@ -3,7 +3,7 @@ title: Deploy an Azure Stack HCI cluster set
 description: Learn how to Deploy an Azure Stack HCI cluster set
 author: v-dasis
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 03/16/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
