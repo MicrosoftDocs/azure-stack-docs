@@ -6,7 +6,7 @@ author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/10/2021
+ms.date: 03/17/2021
 ---
 
 # Azure Stack HCI solution overview
