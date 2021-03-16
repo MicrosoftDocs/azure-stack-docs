@@ -22,9 +22,9 @@ Make sure you have one of the following:
 Before getting started, make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page. 
 **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).    
 
-## Step 1: Download and install the AksHci PowerShell module
+## Download and install the AksHci PowerShell module
 
-Download the `AKS-HCI-Public-Preview-Feb-2021` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module.
+Download the `AKS-HCI-Public-Preview-Mar-2021` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module.
 
 **Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.Day2, Kva, MOC, and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once the directories are deleted, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`).
 
@@ -42,36 +42,36 @@ Download the `AKS-HCI-Public-Preview-Feb-2021` from the [Azure Kubernetes Servic
 ```
 CommandType     Name                                               Version    Source
 -----------     ----                                               -------    ------
-Alias           Initialize-AksHciNode                              0.2.23     AksHci
-Function        Add-AksHciGMSACredentialSpec                       0.2.23     AksHci
-Function        Get-AksHciCluster                                  0.2.23     AksHci
-Function        Get-AksHciClusterUpgrades                          0.2.23     AksHci
-Function        Get-AksHciConfig                                   0.2.23     AksHci
-Function        Get-AksHciCredential                               0.2.23     AksHci
-Function        Get-AksHciEventLog                                 0.2.23     AksHci
-Function        Get-AksHciKubernetesVersion                        0.2.23     AksHci
-Function        Get-AksHciLogs                                     0.2.23     AksHci
-Function        Get-AksHciUpdates                                  0.2.23     AksHci
-Function        Get-AksHciVersion                                  0.2.23     AksHci
-Function        Get-AksHciVmSize                                   0.2.23     AksHci
-Function        Install-AksHci                                     0.2.23     AksHci
-Function        Install-AksHciAdAuth                               0.2.23     AksHci
-Function        Install-AksHciArcOnboarding                        0.2.23     AksHci
-Function        Install-AksHciGMSAWebhook                          0.2.23     AksHci
-Function        New-AksHciCluster                                  0.2.23     AksHci
-Function        New-AksHciNetworkSetting                           0.2.23     AksHci
-Function        Remove-AksHciCluster                               0.2.23     AksHci
-Function        Remove-AksHciGMSACredentialSpec                    0.2.23     AksHci
-Function        Repair-AksHciClusterCerts                          0.2.23     AksHci
-Function        Restart-AksHci                                     0.2.23     AksHci
-Function        Set-AksHciClusterNodeCount                         0.2.23     AksHci
-Function        Set-AksHciConfig                                   0.2.23     AksHci
-Function        Uninstall-AksHci                                   0.2.23     AksHci
-Function        Uninstall-AksHciAdAuth                             0.2.23     AksHci
-Function        Uninstall-AksHciArcOnboarding                      0.2.23     AksHci
-Function        Uninstall-AksHciGMSAWebhook                        0.2.23     AksHci
-Function        Update-AksHci                                      0.2.23     AksHci
-Function        Update-AksHciCluster                               0.2.23     AksHci
+Alias           Initialize-AksHciNode                              0.2.25     AksHci
+Function        Add-AksHciGMSACredentialSpec                       0.2.25     AksHci
+Function        Get-AksHciCluster                                  0.2.25     AksHci
+Function        Get-AksHciClusterUpgrades                          0.2.25     AksHci
+Function        Get-AksHciConfig                                   0.2.25     AksHci
+Function        Get-AksHciCredential                               0.2.25     AksHci
+Function        Get-AksHciEventLog                                 0.2.25     AksHci
+Function        Get-AksHciKubernetesVersion                        0.2.25     AksHci
+Function        Get-AksHciLogs                                     0.2.25     AksHci
+Function        Get-AksHciUpdates                                  0.2.25     AksHci
+Function        Get-AksHciVersion                                  0.2.25     AksHci
+Function        Get-AksHciVmSize                                   0.2.25     AksHci
+Function        Install-AksHci                                     0.2.25     AksHci
+Function        Install-AksHciAdAuth                               0.2.25     AksHci
+Function        Install-AksHciArcOnboarding                        0.2.25     AksHci
+Function        Install-AksHciGMSAWebhook                          0.2.25     AksHci
+Function        New-AksHciCluster                                  0.2.25     AksHci
+Function        New-AksHciNetworkSetting                           0.2.25     AksHci
+Function        Remove-AksHciCluster                               0.2.25     AksHci
+Function        Remove-AksHciGMSACredentialSpec                    0.2.25     AksHci
+Function        Repair-AksHciClusterCerts                          0.2.25     AksHci
+Function        Restart-AksHci                                     0.2.25     AksHci
+Function        Set-AksHciClusterNodeCount                         0.2.25     AksHci
+Function        Set-AksHciConfig                                   0.2.25     AksHci
+Function        Uninstall-AksHci                                   0.2.25     AksHci
+Function        Uninstall-AksHciAdAuth                             0.2.25     AksHci
+Function        Uninstall-AksHciArcOnboarding                      0.2.25     AksHci
+Function        Uninstall-AksHciGMSAWebhook                        0.2.25     AksHci
+Function        Update-AksHci                                      0.2.25     AksHci
+Function        Update-AksHciCluster                               0.2.25     AksHci
 ```
 
 After running the above command, close all PowerShell windows and reopen an administrative session to run the commands in the following steps.
@@ -152,7 +152,7 @@ Get-AksHciCluster
 ```
 
 Name            : clustergroup-management
-Version         : v1.18.10
+Version         : v1.18.14
 Control Planes  : 1
 Linux Workers   : 0
 Windows Workers : 0

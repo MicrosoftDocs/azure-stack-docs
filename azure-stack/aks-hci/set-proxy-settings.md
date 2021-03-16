@@ -13,7 +13,7 @@ If your network requires the use of a proxy server to connect to the internet, t
 
 Once you have configured your deployment using the options listed below, you can [install an AKS host on Azure Stack HCI](./setup-powershell.md) and [create AKS clusters using PowerShell](./create-kubernetes-cluster-powershell.md).
 
-### Configure an AKS host for a proxy server with basic authentication  
+## Configure an AKS host for a proxy server with basic authentication  
 
 If your proxy server requires authentication, open PowerShell as an administrator and run the following command to get credentials and set the configuration details:
 
@@ -22,7 +22,7 @@ $proxyCred = Get-Credential
 Set-AksHciConfig -proxyServerHTTP "http://proxy.contoso.com:8888" -proxyServerHTTPS "http://proxy.contoso.com:8888" -proxyServerCredential $ProxyCred
 ```
 
-### Configure an AKS host for a proxy server without authentication  
+## Configure an AKS host for a proxy server without authentication  
 
 If your proxy server does not require authentication, run the following command:
 
@@ -30,14 +30,14 @@ If your proxy server does not require authentication, run the following command:
 Set-AksHciConfig -proxyServerHTTP "http://proxy.contoso.com:8888" -proxyServerHTTPS "http://proxy.contoso.com:8888"
 ```
 
-### Configure an AKS host for a proxy server with a trusted certificate
+## Configure an AKS host for a proxy server with a trusted certificate
 
 If your proxy server requires proxy clients to trust a certificate, specify the certificate file when you run `Set-AksHciConfig`. The format of the certificate file is *Base-64 encoded X .509*. This will enable you to provision and trust the certificate throughout the stack.
 
 > [!Important]
 > If your proxy requires a certificate to be trusted by the physical Azure Stack HCI nodes, make sure that you have imported the certificate chain to the appropriate certificate store on each Azure Stack HCI node before you continue. Follow the procedures for your deployment to enroll the Azure Stack HCI nodes with the required certificates for proxy authentication.
 
-#### Configure AKS on Azure Stack HCI for using a certificate for proxy authentication
+## Configure an AKS host to use a certificate for proxy authentication
 
 ```powershell
 Set-AksHciConfig -proxyServerHTTP "http://proxy.contoso.com:8888" -proxyServerHTTPS "http://proxy.contoso.com:8888" -proxyServerCertFile "C:\proxycertificate.crt"
