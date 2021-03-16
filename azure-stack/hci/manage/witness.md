@@ -20,8 +20,8 @@ You can either use an SMB file share as a witness or an Azure cloud witness. An 
 
 Before you can create a cloud witness, you must have an Azure account and subscription, and register your Azure Stack HCI cluster with Azure. See the following articles for more information:
 
-- [Create an Azure account](https://docs.microsoft.com/dotnet/azure/create-azure-account)
-- If applicable, [create an additional Azure subscription](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription)
+- [Create an Azure account](/dotnet/azure/create-azure-account)
+- If applicable, [create an additional Azure subscription](/azure/cost-management-billing/manage/create-subscription)
 - [Connect Azure Stack HCI to Azure](../deploy/register-with-azure.md)
 - Make sure DNS is available for the cluster
 
@@ -131,4 +131,4 @@ Set-ClusterQuorum -FileShareWitness "\\fileserver\share" -Credential (Get-Creden
 
 - For more information on cluster quorum, see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).
 
-- For more information about creating and managing Azure Storage Accounts, see [Create a storage account](https://docs.microsoft.com/azure/storage/common/storage-account-create).
+- For more information about creating and managing Azure Storage Accounts, see [Create a storage account](/azure/storage/common/storage-account-create).
