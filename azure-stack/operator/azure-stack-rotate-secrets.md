@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Learn how to rotate your secrets in Azure Stack Hub.
 author: BryanLa
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/17/2021
 ms.reviewer: fiseraci
 ms.author: bryanla
 ms.lastreviewed: 01/19/2021
@@ -34,7 +34,7 @@ When secrets are nearing expiration, the following alerts are generated in the a
 > - 90 days before expiration a warning alert is generated.
 > - 30 days before expiration a critical alert is generated. 
 >
-> **It's *critical* that you complete secret rotation if you receive these notifications. Failure to do so can cause the loss of workloads and possible Azure Stack Hub redeployment at your own expense!**
+> **It's critical that you complete secret rotation if you receive these notifications. Failure to do so can cause the loss of workloads and possible Azure Stack Hub redeployment at your own expense!**
 
 For more information on alert monitoring and remediation, refer to [Monitor health and alerts in Azure Stack Hub](azure-stack-monitor-health.md).
 
@@ -208,7 +208,7 @@ Complete the following steps to rotate external secrets:
         - `-PathAccessCredential`: The PSCredential object for credentials to the share.
         - `-CertificatePassword`: A secure string of the password used for all of the pfx certificate files created.
 
-2. External secret rotation takes approximately one hour. After successful completion, your console will display a `ActionPlanInstanceID ... CurrentStatus: Completed` message, followed by `DONE`. Remove your certificates from the share created in the Preparation section and store them in their secure backup location.
+2. External secret rotation takes approximately one hour. After successful completion, your console will display a `ActionPlanInstanceID ... CurrentStatus: Completed` message, followed by `Action plan finished with status: 'Completed'`. Remove your certificates from the share created in the Preparation section and store them in their secure backup location.
 
     > [!Note]
     > If secret rotation fails, follow the instructions in the error message and re-run `Start-SecretRotation` with the `-ReRun` parameter.
@@ -250,7 +250,7 @@ Complete the following steps to rotate internal secrets:
     ::: moniker-end
 
 
-2. After successful completion, your console will display a `ActionPlanInstanceID ... CurrentStatus: Completed` message, followed by `DONE`.
+2. After successful completion, your console will display a `ActionPlanInstanceID ... CurrentStatus: Completed` message, followed by `Action plan finished with status: 'Completed'`.
 
     > [!Note]
     > If secret rotation fails, follow the instructions in the error message and rerun `Start-SecretRotation` with the  `-Internal` and `-ReRun` parameters.  
