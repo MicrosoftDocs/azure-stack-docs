@@ -3,7 +3,7 @@ title: Set up a cluster witness
 description: Learn how to set up a cluster witness 
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 02/17/2021
+ms.date: 03/17/2021
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -23,6 +23,7 @@ Before you can create a cloud witness, you must have an Azure account and subscr
 - [Create an Azure account](https://docs.microsoft.com/dotnet/azure/create-azure-account)
 - If applicable, [create an additional Azure subscription](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription)
 - [Connect Azure Stack HCI to Azure](../deploy/register-with-azure.md)
+- Make sure DNS is available for the cluster
 
 For file share witnesses, there are requirements for the file server. See [System requirements](../concepts/system-requirements.md) for more information.
 

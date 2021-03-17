@@ -1,13 +1,13 @@
 ---
-title: Expand volumes in Azure Stack HCI
-description: How to expand volumes in Azure Stack HCI using Windows Admin Center and PowerShell.
+title: Expand volumes on Azure Stack HCI and Windows Server clusters
+description: How to expand volumes on Azure Stack HCI and Windows Server clusters by using Windows Admin Center and PowerShell.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
 ms.date: 03/04/2021
 ---
 
-# Expanding volumes in Azure Stack HCI
+# Expand volumes on Azure Stack HCI and Windows Server clusters
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
@@ -18,7 +18,7 @@ This topic provides instructions for expanding volumes on a cluster by using Win
 
 ## Expand volumes using Windows Admin Center
 
-1. In Windows Admin Center, connect to an Azure Stack HCI cluster, and then select **Volumes** from the **Tools** pane.
+1. In Windows Admin Center, connect to an Azure Stack HCI or Windows Server cluster, and then select **Volumes** from the **Tools** pane.
 2. On the **Volumes** page, select the **Inventory** tab, and then select the volume that you want to expand.
 
     On the volume detail page, the storage capacity for the volume is indicated. You can also open the volumes detail page directly from the Dashboard. On the Dashboard, in the Alerts pane, select the alert, which notifies you if a volume is running low on storage capacity, and then select **Go To Volume**.
