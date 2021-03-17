@@ -208,7 +208,7 @@ Now that the client and server pods are running on both Linux and Windows nodes,
 
    If the connection from the _busybox_ pod to the _porter_ pod succeeds, you will get output similar to what's shown below:
 
-    ```powershell
+    ```output
     192.168.40.166 (192.168.40.166:80) open
     ```
 
@@ -223,7 +223,7 @@ Now that the client and server pods are running on both Linux and Windows nodes,
 
     If the connection succeeds, you will see output similar to:
 
-    ```powershell
+    ```output
     StatusCode        : 200
     StatusDescription : OK
     Content           : <!DOCTYPE html>
@@ -248,7 +248,7 @@ Now that the client and server pods are running on both Linux and Windows nodes,
 
     If that succeeds, you will see something similar to what's shown below:
 
-    ```powershell
+    ```output
     StatusCode        : 200
     StatusDescription : OK
     Content           : This is a Calico for Windows demo.
@@ -329,7 +329,7 @@ kubectl exec --namespace calico-demo pwsh -- powershell Invoke-WebRequest -Uri h
 
 The request times out with a message as shown below:
 
-```powershell
+```output
 Invoke-WebRequest : The operation has timed out.
 At line:1 char:1
 + Invoke-WebRequest -Uri http://192.168.40.166 -UseBasicParsing -Timeout ...
