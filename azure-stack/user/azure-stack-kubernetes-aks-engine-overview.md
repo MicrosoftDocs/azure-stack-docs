@@ -29,14 +29,6 @@ Before you use the AKS engine on Azure Stack Hub, it's important to understand t
 
 For more information on the specifics of the AKS engine on Azure Stack Hub and its differences with respect to Azure see [AKS engine on Azure Stack Hub](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md).
 
-## Supported scenarios with the AKS engine
-
-The following scenarios are supported by the Azure Stack Hub support team:
-
-1.  AKS engine deploys all cluster artifacts following the guidelines in this documentation and using the [following template](https://github.com/Azure/aks-engine/tree/master/examples/azure-stack).
-2.  AKS engine deploys the cluster on an existing VNET. For more information, see [Using a custom virtual network with AKS engine](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/custom-vnet.md).
-3.  [Upgrade](azure-stack-kubernetes-aks-engine-upgrade.md) and [scale](azure-stack-kubernetes-aks-engine-scale.md) operations.
-
 For more information on the AKS engine and Azure Stack Hub, see [Support policies for AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-support.md).
 
 ## Install the AKS engine and deploy a Kubernetes cluster
