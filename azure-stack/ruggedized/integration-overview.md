@@ -112,7 +112,7 @@ To deploy Azure Stack Hub, a Microsoft deployment engineer will be present to ki
 
 The following checks are what you should expect from the onsite engineer during the deployment experience:
 
-- Unbox and inventory of hardware.
+- Unbox and inventory hardware.
 - Connect power and power on the solution.
 - Validate physical hardware health.
 - Check all the cabling and border connectivity to ensure the solution is properly put together and meets your requirements.
@@ -139,4 +139,3 @@ Actions that should be taken by the Microsoft deployment engineer:
 ## Next steps
 
 Learn more about [steps to install and configure Microsoft Azure Stack Hub Ruggedized](deployment-overview.md).
-
