@@ -3,7 +3,7 @@ title: AksHci PowerShell module
 description: Learn how to use the AksHci module commands to manage AKS on Azure Stack HCI 
 author: jessicaguan
 ms.topic: reference
-ms.date: 2/12/2021
+ms.date: 03/03/2021
 ms.author: jeguan
 ---
 
