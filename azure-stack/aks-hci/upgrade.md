@@ -18,7 +18,7 @@ We recommend updating an AKS workload cluster on Azure Stack HCI at least once e
 All updates are done in a rolling update flow. When a *new* node with the newer build is brought into the cluster, resources are moved from the *old* node to the *new* node, and the *old* node is decommissioned.
 
 > [!Important]
-> Updating the AKS on Azure Stack HCI host is the first step in any update flow and must be initiated before running [`Update-AksHciCluster`](./update-akshcicluster.md). For information on updating the AKS host, visit [how to update AKS host on Azure Stack HCI](./update-akshci-concepts.md). 
+> Updating the AKS on Azure Stack HCI host is the first step in any update flow and must be initiated before running [`Update-AksHciCluster`](./update-akshcicluster.md). For information on updating the AKS host, visit [how to update AKS host on Azure Stack HCI](./update-aks-hci-concepts.md). 
 
 
 ## Get available Kubernetes versions
