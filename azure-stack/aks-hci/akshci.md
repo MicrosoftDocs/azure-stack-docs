@@ -13,7 +13,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 
 ## AksHci cmdlets
 
-|         |            |
+| Cmdlet        |  Description          |
 | ------- | ---------- |
 | [get-akshcicluster](get-akshcicluster.md) | List deployed clusters including the Azure Kubernetes Service host. |
 | [get-akshciclusterupgrades](get-akshciclusterupgrades.md) | Get the available upgrades for an Azure Kubernetes Service cluster. |

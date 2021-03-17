@@ -23,7 +23,7 @@ ms.lastreviewed: 3/4/2021
 
 As part of the Kubernetes community effort ([Kubernetes in-tree to CSI volume migration](https://kubernetes.io/blog/2019/12/09/kubernetes-1-17-feature-csi-migration-beta/)) to move in-tree volume providers to Container Storage Interface [CSI](https://kubernetes.io/blog/2019/01/15/container-storage-interface-ga/), you can find the following two CSI drivers in Azure Stack: Azure Disk and NFS.
 
-|                       | **Azure Disk CSI Driver**                                                                                                    | **NFS CSI Driver**                                                       |
+|   **Details**                    | **Azure Disk CSI Driver**                                                                                                    | **NFS CSI Driver**                                                       |
 |-----------------------|------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
 | Project Repository    | [azuredisk-csi-driver](https://github.com/kubernetes-sigs/azuredisk-csi-driver)                                              | [csi-driver-nfs](https://github.com/kubernetes-csi/csi-driver-nfs)       |
 | CSI Driver Version    | v1.0.0+                                                                                                                      | v3.0.0+                                                                  |
