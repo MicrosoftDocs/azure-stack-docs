@@ -1,5 +1,5 @@
 ---
-title: Proxy Server settings in Azure Kubernetes Services (AKS) on Azure Stack HCI
+title: Proxy server settings in Azure Kubernetes Services (AKS) on Azure Stack HCI
 description: Learn about proxy server settings in Azure Kubernetes Service (AKS) on Azure Stack HCI
 ms.topic: conceptual
 ms.date: 03/04/2021
