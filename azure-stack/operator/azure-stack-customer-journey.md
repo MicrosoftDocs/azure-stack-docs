@@ -68,10 +68,12 @@ Microsoft or an Azure Stack Hub solution partner will help evaluate your goals. 
 
 Use the [Azure Stack Hub Capacity Planner](https://download.microsoft.com/download/4/a/2/4a2bd10c-58a0-4ee7-8c3f-55b526ce7e75/AzureStackHubCapacityPlanner_v2005.01.xlsm) to investigate and analyze the best hardware capacity and configuration for your needs. 
 
-## Ordering
+## Order process
+
 Your organization commits to purchasing Azure Stack Hub, signs contracts and purchase orders, and provides the integration requirements data to the solution provider.
 
 ## Pre-deployment
+
 You decide how to integrate Azure Stack Hub into your datacenter. Microsoft collaborated with solution providers to publish a [deployment worksheet](azure-stack-deployment-worksheet.md) to help you gather the necessary information.
 The [general datacenter integration considerations](azure-stack-datacenter-integration.md) article provides information that helps you complete the template, known as the Deployment Worksheet.
 
@@ -93,9 +95,10 @@ You'll choose the following items:
 
 - **Certificate requirements**. It's critical that all [required certificates](azure-stack-pki-certs.md) are available *before* an onsite engineer arrives at your datacenter for deployment.
 
-Once all the pre-requisite information is gathered through the deployment worksheet, the solution provider will kick off the factory process based on the data collected to ensure a successful integration of Azure Stack Hub into your datacenter.
+After all the pre-requisite information is gathered through the deployment worksheet, the solution provider will kick off the factory process based on the data collected to ensure a successful integration of Azure Stack Hub into your datacenter.
 
 ## Hardware delivery 
+
 Your solution provider will work with you on scheduling when the solution will arrive to your facility. Once received and put in place, you'll need to schedule time with the solution provider to have an engineer come onsite to perform the Azure Stack Hub deployment.
 
 It's **crucial** that all prerequisite data is locked and available *before the onsite engineer arrives to deploy the solution*.
@@ -109,13 +112,14 @@ It's **crucial** that all prerequisite data is locked and available *before the 
 > [!TIP]
 > If any of this information has changed, make sure to communicate the change with the solution provider before you schedule the actual deployment.
 
-## Onsite deployment 
+## Onsite deployment
+
 To deploy Azure Stack Hub, an onsite engineer from your hardware solution provider will need to be present to kick off the deployment. To ensure a successful deployment, ensure that all information provided through the deployment worksheet hasn't changed.
 
 The following checks are what you should expect from the onsite engineer during the deployment experience:
 
 - Check all the cabling and border connectivity to ensure the solution is properly put together and meets your requirements.
-- Configure the solution HLH (Hardware Lifecycle Host), if present.
+- Configure the solution Hardware Lifecycle Host (HLH), if present.
 - Check to make sure all BMC, BIOS, and network settings are correct.
 - Make sure firmware for all components is at the latest approved version by the solution.
 - Start the deployment.
@@ -123,24 +127,25 @@ The following checks are what you should expect from the onsite engineer during 
 > [!NOTE]
 > A deployment procedure by the onsite engineer might take about one business week to complete.
 
-## Post-deployment 
-Several steps must be performed by the partner before the solution is handed off to the customer in the post-integration phase. In this phase, validation is important to ensure the system is deployed and performing correctly. 
+## Post deployment
+
+Several steps must be performed by the partner before the solution is handed off to the customer in the post-integration phase. In this phase, validation is important to ensure the system is deployed and performing correctly.
 
 Actions that should be taken by the OEM Partner are:
 
-- [Run test-azurestack](azure-stack-diagnostic-test.md).
+- Run [test-azurestack](azure-stack-diagnostic-test.md).
 
-- [Registration with Azure](azure-stack-registration.md).
+- [Register](azure-stack-registration.md) with Azure.
 
-- [Marketplace Syndication](azure-stack-download-azure-marketplace-item.md#use-the-marketplace-syndication-tool-to-download-marketplace-items).
+- Ensure [Azure Stack Hub Marketplace syndication](azure-stack-download-azure-marketplace-item.md#use-the-marketplace-syndication-tool-to-download-marketplace-items).
 
-- Backup Switch Configuration and HLH Configuration files.
+- Back up Switch Configuration and HLH Configuration files.
 
 - Remove DVM.
 
 - Prepare a customer summary for deployment.
 
-- [Check updates to make sure the solution software is updated to the latest version](./azure-stack-updates.md).
+- [Check updates](./azure-stack-updates.md) to make sure the solution software is updated to the latest version.
 
 There are several steps that are required or optional depending on the installation type.
 

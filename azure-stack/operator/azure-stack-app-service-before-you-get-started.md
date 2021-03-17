@@ -32,6 +32,9 @@ This section lists the prerequisites for both integrated system and Azure Stack 
 ### Installer and helper scripts
 
 1. Download the [App Service on Azure Stack Hub deployment helper scripts](https://aka.ms/appsvconmashelpers).
+   > [!NOTE]
+   > The deployment helper scripts require the AzureRM PowerShell module. See [Install PowerShell AzureRM module for Azure Stack Hub](azure-stack-powershell-install.md) for installation details.
+
 2. Download the [App Service on Azure Stack Hub installer](https://aka.ms/appsvconmasinstaller).
 3. Extract the files from the helper scripts .zip file. The following files and folders are extracted:
 
