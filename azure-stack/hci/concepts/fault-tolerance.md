@@ -88,7 +88,7 @@ To mix three-way mirror and dual parity, you need at least four fault domains, m
 The storage efficiency of mirror-accelerated parity is in between what you'd get from using all mirror or all parity, and depends on the proportions you choose. For example, the demo at the 37-minute mark of this presentation shows [various mixes achieving 46 percent, 54 percent, and 65 percent efficiency](https://www.youtube.com/watch?v=-LK2ViRGbWs&t=36m55s) with 12 servers.
 
 > [!IMPORTANT]
-> We recommend using mirroring for most performance-sensitive workloads. To learn more about how to balance performance and capacity depending on your workload, see [Plan volumes](/windows-server/storage/storage-spaces/plan-volumes#choosing-the-resiliency-type).
+> We recommend using mirroring for most performance-sensitive workloads. To learn more about how to balance performance and capacity depending on your workload, see [Plan volumes](plan-volumes.md#choosing-the-resiliency-type).
 
 ## <a name="summary"></a>Summary
 
