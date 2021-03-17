@@ -20,7 +20,7 @@ There are two IP address assignment models to choose from, depending on the AKS 
 
 - DHCP networking - The virtual network allocates dynamic IP addresses to the Kubernetes nodes, underlying VMs, and load balancers using a DHCP server. The Kubernetes cluster API server, and any Kubernetes services you run on top of your cluster, are still allocated static IP addresses.
 
-## Virtual IP Pool
+## Virtual IP pool
 
 Virtual IP (VIP) pool is set of IP addresses that are mandatory for any AKS on Azure Stack HCI deployment. The VIP pool is a range of reserved IP addresses used for allocating IP addresses to the Kubernetes cluster API server and for Kubernetes services to guarantee that your applications are always reachable. Irrespective of the virtual networking model and the address assignment model you choose, you must provide a VIP pool for your AKS host deployment.
 
