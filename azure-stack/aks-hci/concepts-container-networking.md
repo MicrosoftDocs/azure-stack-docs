@@ -113,9 +113,8 @@ Calico supports multiple data planes including: a Linux eBPF data plane, a Linux
 
 Here's an example:
 
->```powershell
->New-AksHciCluster -name MyCluster -primaryNetworkPlugin 'calico'
->```
+```powershell
+New-AksHciCluster -name MyCluster -primaryNetworkPlugin 'calico'
 
 For more information about the Calico Network plug-in and policies, check out [getting started with Calico network policy](https://docs.projectcalico.org/security/calico-network-policy).
 
