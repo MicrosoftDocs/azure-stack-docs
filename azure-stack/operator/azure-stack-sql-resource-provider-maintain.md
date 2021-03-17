@@ -82,7 +82,7 @@ When using the SQL and MySQL resource providers with Azure Stack Hub integrated 
     -VMLocalCredential $localCreds
 ```
 
-**Change the SSL certificate password.**
+**Rotate the SSL certificate**
 
 ```powershell
 .\SecretRotationSQLProvider.ps1 `
@@ -93,7 +93,7 @@ When using the SQL and MySQL resource providers with Azure Stack Hub integrated 
     -DefaultSSLCertificatePassword $certPasswd
 ```
 
-**Change the Key Vault certificate password.**
+**Rotate the Key Vault certificate**
 
 ```powershell
 .\SecretRotationSQLProvider.ps1 `
