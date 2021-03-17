@@ -40,7 +40,6 @@ You'll meet this issue if you follow these steps:
 * Run `get-vm`. The removed node is still listed
 
 This failure leads to the system not recognizing the node is missing and a new node will not spin up. 
-This will be fixed in a future release.
 
 ## The workload cluster may not be found if the IP address pools of two AKS on Azure Stack HCI deployments are the same or overlap
 
