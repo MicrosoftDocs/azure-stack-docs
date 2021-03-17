@@ -1,6 +1,6 @@
 ---
-title: How to - Use Calico network policy to secure pod traffic
-description: Learn about using network policy to secure traffic between pods in Azure Kubernetes Service (AKS) on Azure Stack HCI.
+title: How to - Use Calico network policy to secure pod traffic in Azure Kubernetes Service on Azure Stack HCI
+description: Learn about using network policy to secure traffic between pods in Azure Kubernetes Service on Azure Stack HCI.
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.custom: fasttrack-edit
