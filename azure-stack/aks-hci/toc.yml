@@ -49,7 +49,7 @@
           - name: Update the Kubernetes version
             href: upgrade.md
           - name: Update AKS on Azure Stack HCI
-            href: update-akshci-concepts.md
+            href: update-aks-hci-concepts.md
           - name: Restart, remove, or reinstall AKS on Azure Stack HCI
             href: restart-cluster.md
     - name: Use Azure Arc Kubernetes
