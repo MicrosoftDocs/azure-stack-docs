@@ -12,36 +12,72 @@ ms.reviewer:
 This article describes known issues with the public preview release of Azure Kubernetes Service on Azure Stack HCI.
 
 ## Recovering from a failed AKS on Azure Stack HCI deployment
-If you're experiencing deployment issues or want to reset your deployment make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running Uninstall-AksHci from a PowerShell administrative window.
+If you're experiencing deployment issues or want to reset your deployment, make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running Uninstall-AksHci from a PowerShell administrative window.
+
+## Set-AksHciConfig fails with WinRM errors, but shows WinRM is configured correctly
+When running [Set-AksHciConfig](./set-akshciconfig.md), you might encounter the following error:
+
+```powershell
+WinRM service is already running on this machine.
+WinRM is already set up for remote management on this computer.
+Powershell remoting to TK5-3WP08R0733 was not successful.
+At C:\Program Files\WindowsPowerShell\Modules\Moc\0.2.23\Moc.psm1:2957 char:17
++ ...             throw "Powershell remoting to "+$env:computername+" was n ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Powershell remo...not successful.:String) [], RuntimeException
+    + FullyQualifiedErrorId : Powershell remoting to TK5-3WP08R0733 was not successful.
+```
+
+Most of the time, this error occurs as a result of a change in the user's security token (due to a change in group membership), a password change, or an expired password. In most cases, the issue can be remediated by logging off from the computer and logging back in. If this still fails, you can file an issue at [GitHub AKS HCI issues](https://aka.ms/aks-hci/issues).
 
 ## When using kubectl to delete a node, the associated VM might not be deleted
 You'll meet this issue if you follow these steps:
-* Create a Kubernetes cluster
-* Scale the cluster to more than two nodes
-* Use kubectl delete node <node-name> to delete a node 
-* Run kubectl get nodes. The removed node isn't listed in the output
-* Open a PowerShell Admin Window
-* Run get-vm. The removed node is still listed
+* Create a Kubernetes cluster.
+* Scale the cluster to more than two nodes.
+* Use `kubectl` delete node <node-name> to delete a node.
+* Run `kubectl` get nodes. The removed node isn't listed in the output.
+* Open a PowerShell Admin Window.
+* Run `get-vm`. The removed node is still listed
 
-This leads to the system not recognizing the node is missing and a new node will not spin up. 
-This will be fixed in a future release
+This failure leads to the system not recognizing the node is missing and a new node will not spin up. 
+
+## The workload cluster may not be found if the IP address pools of two AKS on Azure Stack HCI deployments are the same or overlap
+
+If you deploy two AKS on Azure Stack HCI hosts and use the same `AksHciNetworkSetting` configuration for both, PowerShell and WAC will potentially fail to find the workload cluster as the API server will be assigned the same IP address in both clusters resulting in a conflict.
+
+The error message you receive will look similar to the example shown below.
+
+```powershell
+A workload cluster with the name 'clustergroup-management' was not found.
+At C:\Program Files\WindowsPowerShell\Modules\Kva\0.2.23\Common.psm1:3083 char:9
++         throw $("A workload cluster with the name '$Name' was not fou ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (A workload clus... was not found.:String) [], RuntimeException
+    + FullyQualifiedErrorId : A workload cluster with the name 'clustergroup-management' was not found.
+```
+
+> [!NOTE]
+> Your cluster name will be different.
 
 ## Time synchronization must be configured across all physical cluster nodes and in Hyper-V
 To ensure gMSA and AD authentication works, ensure that the Azure Stack HCI cluster nodes are configured to synchronize their time with a domain controller or other
 time source and that Hyper-V is configured to synchronize time to any virtual machines.
 
+## Hyper-V manager shows high CPU and/or memory demands for the management cluster
+When you check Hyper-V manager, high CPU and memory demands for the management cluster can be safely ignored. They are usually related to spikes in compute resource usage when provisioning workload clusters. Increasing the memory or CPU size for the management cluster has not shown a significant improvement and can be safely ignored.
+
 ## Special Active Directory permissions are needed for domain joined Azure Stack HCI nodes 
 Users deploying and configuring Azure Kubernetes Service on Azure Stack HCI need to have "Full Control" permission to create AD objects in the Active Directory container the server and service objects are created in. 
 
 ## Get-AksHciLogs command may fail
-With large clusters the Get-AksHciLogs command may throw an exception, fail to enumerate nodes or will not generate c:\wssd\wssdlogs.zip output file.
+With large clusters the Get-AksHciLogs command may throw an exception, fail to enumerate nodes, or will not generate c:\wssd\wssdlogs.zip output file.
 This is because the PowerShell command to zip a file `Compress-Archive` has an output file size limit of 2 GB. 
 This issue will be fixed in a future release.
 
 ## Azure Kubernetes Service PowerShell deployment doesn't check for available memory before creating a new target cluster
-The Aks-Hci PowerShell commands do not validate the available memory on the host server before creating Kubernetes nodes. This can lead to memory exhaustion and virtual machines to not start. This failure is currently not handled gracefully and the deployment will stop responding with no clear error message.
-If you have a deployment that stops responding, open `Eventviewer` and check for Hyper-V related error messages indicating not enough memory to start the VM.
-This issue will be fixed in a future release
+The **Aks-Hci** PowerShell commands do not validate the available memory on the host server before creating Kubernetes nodes. This can lead to memory exhaustion and virtual machines that do not start. This failure is currently not handled gracefully, and the deployment will stop responding with no clear error message.
+If you have a deployment that stops responding, open `Eventviewer` and check for a Hyper-V-related error message indicating there's not enough memory to start the VM.
+This issue will be fixed in a future release.
 
 ## Azure Kubernetes Service deployment fails on an Azure Stack HCI configured with static IPs, VLANs, SDN, or proxies.
 While deploying Azure Kubernetes Service on an Azure Stack HCI cluster that has static IPs, VLANs, SDN, or proxies, the deployment fails at cluster creation. 
@@ -56,7 +92,7 @@ This issue will be fixed in a future release
 When using the cluster administration tool to move a VM from one node (Node A) to another node (Node B) in the Azure Stack HCI cluster, the VM may fail to start on the new node. After moving the VM back to the original node it will fail to start there as well.
 This issue happens because the logic to clean up the first migration runs asynchronously. As a result, Azure Kubernetes Service's "update VM location" logic finds the VM on the original Hyper-V on node A, and deletes it, instead of unregistering it.
 Workaround: Ensure the VM has started successfully on the new node before moving it back to the original node.
-This issue will be fixed in a future release
+This issue will be fixed in a future release.
 
 ## Load balancer in Azure Kubernetes Service requires DHCP reservation
 The load balancing solution in Azure Kubernetes Service on Azure Stack HCI uses DHCP to assign IP addresses to service endpoints. If the IP address changes for the service endpoint due to a service restart, DHCP lease expires due to a short expiration time. The service will therefore become inaccessible because the IP address in the Kubernetes configuration is different from what it is on the end point. This can lead to the Kubernetes cluster becoming unavailable.
