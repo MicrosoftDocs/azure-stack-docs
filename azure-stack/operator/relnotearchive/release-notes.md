@@ -21,7 +21,7 @@ To access release notes for a different archived version, use the version select
 > This update package is only for Azure Stack Hub integrated systems. Do not apply this update package to the Azure Stack Development Kit (ASDK).
 
 > [!IMPORTANT]  
-> If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
+> If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](../azure-stack-servicing-policy.md#keep-your-system-under-support).
 
 
 <!------------------------------------------------------------>
@@ -4368,5 +4368,5 @@ Microsoft has provided a way to monitor and resume updates using the Privileged 
 ::: moniker-end
 
 ::: moniker range=">azs-1910"
-You can access known issues for supported versions of Azure Stack Hub in the table of contents on the left side, under [Known issues](../known-issues.md)
+You can access release notes for supported versions of Azure Stack Hub in the table of contents on the left side, under [Overview > Release notes](../release-notes.md)
 ::: moniker-end

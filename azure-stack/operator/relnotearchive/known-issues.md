@@ -1186,5 +1186,5 @@ Known issues for this release are combined with the [release notes](release-note
 ::: moniker-end
 
 ::: moniker range=">azs-1910"
-You can access known issues for supported versions of Azure Stack Hub in the table of contents on the left side, under [Known issues](../known-issues.md)
+You can access known issues for supported versions of Azure Stack Hub in the table of contents on the left side, under [Overview > Release notes > Known issues](../known-issues.md)
 ::: moniker-end
