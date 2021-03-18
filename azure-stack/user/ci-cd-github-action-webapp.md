@@ -235,4 +235,4 @@ When the action runs, verify that it has run successfully.
 - Find more actions in the [GitHub Marketplace](https://github.com/marketplace).
 - Learn about [Common deployments for Azure Stack Hub](azure-stack-dev-start-deploy-app.md)  
 - Learn about [Use Azure Resource Manager templates in Azure Stack Hub](azure-stack-arm-templates.md)  
-- Review the DevOps hybrid cloud pattern, [DevOps pattern](https://docs.microsoft.com/hybrid/app-solutions/pattern-cicd-pipeline)
+- Review the DevOps hybrid cloud pattern, [DevOps pattern](/hybrid/app-solutions/pattern-cicd-pipeline)
