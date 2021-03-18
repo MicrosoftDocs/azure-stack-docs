@@ -1,9 +1,9 @@
 ---
 title: Set-AksHciConfig
-author: jessicaguan
 description: The Set-AksHciConfig PowerShell command updates the configurations settings for the Azure Kubernetes Service host.
 ms.topic: reference
 ms.date: 2/12/2021
+author: jessicaguan
 ms.author: jeguan
 ---
 
@@ -160,7 +160,7 @@ Accept wildcard characters: False
 ```
 
 ### -macPoolStart
-This is used to specify the start of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (that is, 00, 02, 04, 06...). A typical MAC address can look like: 02:1E:2B:78:00:00. Use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. This is useful if you have a requirement that the VMs have specific MAC addresses. Default is none.
+This is used to specify the start of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (that is, 00, 02, 04, 06...). A typical MAC address can look like: 02:1E:2B:78:00:00. Use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. MAC pools are useful if you have a requirement that the VMs have specific MAC addresses. Default is none.
 
 ```yaml
 Type: System.String
@@ -175,7 +175,7 @@ Accept wildcard characters: False
 ```
 
 ### -macPoolEnd
-This is used to specify the end of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (that is, 00, 02, 04, 06...). The first byte of the address passed as the -macPoolEnd should be the same as the first byte of the address passed as the -macPoolStart. Use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. This is useful if you have a requirement that the VMs have specific MAC addresses. Default is none.
+This is used to specify the end of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (that is, 00, 02, 04, 06...). The first byte of the address passed as the -macPoolEnd should be the same as the first byte of the address passed as the -macPoolStart. Use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. MAC pools are useful if you have a requirement that the VMs have specific MAC addresses. Default is none.
 
 ```yaml
 Type: System.String
@@ -190,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -proxyServerHTTP
-This provides a proxy server URI that should be used by all components that need to reach HTTP endpoints. The URI format includes the URI schema, server address, and port (that is, https://server.com:8888). Default is none.
+This parameter provides a proxy server URI that should be used by all components that need to reach HTTP endpoints. The URI format includes the URI schema, server address, and port (that is, https://server.com:8888). Default is none.
 
 ```yaml
 Type: System.String
@@ -205,7 +205,7 @@ Accept wildcard characters: False
 ```
 
 ### -proxyServerHTTPS
-This provides a proxy server URI that should be used by all components that need to reach HTTPS endpoints. The URI format includes the URI schema, server address, and port (that is, https://server.com:8888). Default is none.
+This parameter provides a proxy server URI that should be used by all components that need to reach HTTPS endpoints. The URI format includes the URI schema, server address, and port (that is, https://server.com:8888). Default is none.
 
 ```yaml
 Type: System.String
@@ -220,7 +220,7 @@ Accept wildcard characters: False
 ```
 
 ### -proxyServerNoProxy
-This is a comma-delimited string of addresses that will be exempt from the proxy. Default value is localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16. This excludes the localhost traffic (localhost, 127.0.0.1), internal Kubernetes service traffic (.svc), the Kubernetes Service CIDR (10.96.0.0/12), and the Kubernetes POD CIDR (10.244.0.0/16) from the proxy server. You can use this parameter to add more subnet ranges or name exemptions. **The settings for this parameter are very important because, if it's not correctly configured, you may unexpectedly route internal Kubernetes cluster traffic to your proxy. This can cause various failures in network communication.**
+This parameter is a comma-delimited string of addresses that will be exempt from the proxy. Default value is localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16. This excludes the localhost traffic (localhost, 127.0.0.1), internal Kubernetes service traffic (.svc), the Kubernetes Service CIDR (10.96.0.0/12), and the Kubernetes POD CIDR (10.244.0.0/16) from the proxy server. You can use this parameter to add more subnet ranges or name exemptions. **The settings for this parameter are very important because, if it's not correctly configured, you may unexpectedly route internal Kubernetes cluster traffic to your proxy. This can cause various failures in network communication.**
 
 ```yaml
 Type: System.String
@@ -250,7 +250,7 @@ Accept wildcard characters: False
 ```
 
 ### -proxyServerCredential
-This provides the username and password to authenticate to your HTTP/HTTPS proxy servers. You can use `Get-Credential` to generate a PSCredential object to pass to this parameter. Default is none.
+This parameter provides the username and password to authenticate to your HTTP/HTTPS proxy servers. You can use `Get-Credential` to generate a PSCredential object to pass to this parameter. Default is none.
 
 ```yaml
 Type: System.String
@@ -265,12 +265,13 @@ Accept wildcard characters: False
 ```
 
 ### -cloudServiceCidr
-This can be used to provide a static IP/network prefix to be assigned to the MOC CloudAgent service. This value should be provided using the CIDR format. (Example: 192.168.1.2/16). You may want to specify this to ensure that anything important on the network is always accessible because the IP address will not change. Default is none.
+
+This can be used to provide a static IP/network prefix to be assigned to the MOC CloudAgent service. This value can be provided using an IP address or in the CIDR format. (Example: 192.168.1.2/16). You may want to specify this to ensure that anything important on the network is always accessible because the IP address will not change. Default is none.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: -cloudServiceIP
 
 Required: False
 Position: Named
