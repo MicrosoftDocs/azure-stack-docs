@@ -31,7 +31,7 @@ Before you run the Create Cluster wizard, make sure you:
 - Have read the [Physical network requirements](../concepts/physical-network-requirements.md) and [Host network requirements](../concepts/host-network-requirements.md) for Azure Stack HCI.
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
 - Have an account that’s a member of the local Administrators group on each server.
-- Install Windows Admin Center on a PC or server for management. See [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
+- Install the latest version of Windows Admin Center on a PC or server for management. See [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
 - If you are using an Integrated System from a Microsoft hardware partner, make sure you have the latest version of vendor extensions installed on Windows Admin Center to take advantage of integrated hardware and firmware updates.
 - For stretched clusters, set up your two sites beforehand in Active Directory. But not to worry, the wizard can set them up for you too.
 
