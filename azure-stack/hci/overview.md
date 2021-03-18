@@ -6,7 +6,7 @@ author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/10/2021
+ms.date: 03/17/2021
 ---
 
 # Azure Stack HCI solution overview
@@ -137,13 +137,25 @@ Azure Stack HCI is part of the Azure and Azure Stack family, using the same soft
 
 ## What's new in Azure Stack HCI
 
-Windows Admin Center version 2009 adds a number of features to Azure Stack HCI, including the following:
+Windows Admin Center version 2103 adds a number of features and improvements to Azure Stack HCI, including the following:
 
-- **Azure Kubernetes Service hosting capabilities**: You can now install a preview version of [Azure Kubernetes Service on Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
+- **Windows Admin Center updates automatically**: Windows Admin Center and extensions now update automatically when a new release is available.
 
-- **Remote direct memory access (RDMA) enhancements in the Cluster Creation wizard**: The Cluster Creation wizard can now configure RDMA for iWARP and RoCE network adapters, including Data Center Bridging (DCB).
+- **Event tool redesign (Preview)**: We’ve redesigned the Events tool for servers and PCs for the first time in ages. To check it out, open the Events tool and then toggle **Preview Mode**.
 
-For details on new features, see [Announcing general availability of the cluster creation extension in Windows Admin Center](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/announcing-general-availability-of-the-cluster-creation/ba-p/1978332).
+- **Install and manage Azure IoT Edge for Linux on Windows**: Install, manage, and troubleshoot IoT Edge for Linux on Windows from within Windows Admin Center.
+To learn more, see [Enabling Linux based Azure IoT Edge Modules on Windows IoT](https://techcommunity.microsoft.com/t5/internet-of-things/enabling-linux-based-azure-iot-edge-modules-on-windows-iot/ba-p/2075882?ocid=wac2103).
+
+- **Use Windows Admin Center in the Azure portal (Preview)**: Manage the Windows Server operating system running in an Azure VM by using Windows Admin Center directly in the Azure portal.
+To learn more, see [Windows Admin Center in the Azure portal](https://cloudblogs.microsoft.com/windowsserver/2021/03/02/announcing-public-preview-of-window-admin-center-in-the-azure-portal/).
+
+- **Use a proxy server**: Windows Admin Center can now access Azure and the internet through a proxy server. To set up a proxy server in Windows Admin Center, next to **Notifications** select **Settings** and then under **Gateway** select **Proxy**.
+
+- **Open tools in separate windows**: Connect to a system and then on the **Tools** menu, hover over a tool and select **Open tool in a separate window**.
+
+- **Virtual machines tool improvements**: You can now create your own VM groups in the tool and edit columns. We’ve also made moving a VM easier, allowing you to reassign virtual switches while moving a VM.
+
+For details on the new features and improvements, see [Windows Admin Center version 2103 is now generally available](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/windows-admin-center-version-2103-is-now-generally-available/ba-p/2176438).
 
 Clusters running Azure Stack HCI, version 20H2 have the following new features as compared to Windows Server 2019-based solutions:
 
