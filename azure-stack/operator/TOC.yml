@@ -544,6 +544,10 @@
   items:
     - name: Release notes archive
       items:
+      - name: Release notes
+        href: ./relnotearchive/release-notes.md
+      - name: Known issues
+        href: ./relnotearchive/known-issues.md              
       - name: 1910 release notes
         href: ./relnotearchive/release-notes-1910.md
       - name: 1910 known issues
