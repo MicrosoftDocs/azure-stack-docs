@@ -32,7 +32,7 @@ The table below correlates the ACL references with the Azure Stack networks.
 | Network                                      | Description |
 |----------------------------------------------|--------------|
 | BMC Mgmt Internal                            | Traffic is limited to internal only.|
-| BMC Mgmt External                            | ACL permit access to beyond the border device. |   |   |   |   |   |
+| BMC Mgmt External                            | ACL permit access to beyond the border device. |
 | Extended Storage Mgmt                        | Dedicated management interfaces for the extended storage system|
 | Switch Mgmt                                  | Dedicated Switch management interfaces.|
 | "Azure Stack Infrastructure"                 | Azure Stack Infrastructure services and VM's, restricted network|
