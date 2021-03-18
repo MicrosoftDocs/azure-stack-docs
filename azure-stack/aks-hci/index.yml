@@ -20,8 +20,12 @@ landingContent:
             url: overview.md
       - linkListType: concept
         links:
-          - text: Kubernetes core concepts for AKS
+          - text: Clusters and workloads
             url: kubernetes-concepts.md
+          - text: Kubernetes node networking
+            url: concepts-node-networking.md
+          - text: Kubernetes container networking
+            url: concepts-container-networking.md
             
   - title: Get started
     linkLists:
@@ -55,7 +59,7 @@ landingContent:
           - text: Use Active Directory single sign-in credentials
             url: ad-sso.md
           - text: Configure proxy settings
-            url: proxy.md
+            url: set-proxy-settings.md
           - text: Prepare Windows nodes for gMSA support
             url: prepare-windows-nodes-gmsa.md
           - text: Use persistent volumes

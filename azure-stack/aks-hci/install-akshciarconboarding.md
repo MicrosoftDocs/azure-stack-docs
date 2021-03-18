@@ -1,7 +1,7 @@
 ---
 title: Install-AksHciArcOnboarding
 author: jessicaguan
-description: The Install-AksHciArcOnboarding PowerShell command Connects an AKS on Azure Stack HCI workload cluster to Azure Arc for Kubernetes.
+description: The Install-AksHciArcOnboarding PowerShell command connects an AKS on Azure Stack HCI workload cluster to Azure Arc for Kubernetes.
 ms.topic: reference
 ms.date: 2/12/2021
 ms.author: jeguan
@@ -29,13 +29,13 @@ Connects an AKS on Azure Stack HCI workload cluster to Azure Arc for Kubernetes.
 
 ## Examples
 
-### Connect an AKS on Azure Stack HCI cluster to Azure Arc for Kubernetes with required parameters
+### Connect an AKS on Azure Stack HCI cluster to Azure Arc for Kubernetes
 
 ```PowerShell
 Install-AksHciArcOnboarding -name "myCluster" -resourcegroup "myResourceGroup" -subscriptionid "57ac26cf-a9f0-4908-b300-9a4e9a0fb205"  -clientid "22cc2695-54b9-49c1-9a73-2269592103d8" -clientsecret "09d3a928-b223-4dfe-80e8-fed13baa3b3d" -tenantid "72f988bf-86f1-41af-91ab-2d7cd011db47"
 ```
 
-### Connect an AKS on Azure Stack HCI cluster to Azure Arc for Kubernetes with all parameters
+### Connect an AKS on Azure Stack HCI cluster to Azure Arc for Kubernetes
 
 ```PowerShell
 Install-AksHciArcOnboarding -name "myCluster" -resourcegroup "myResourceGroup" -location "eastus" -subscriptionid "57ac26cf-a9f0-4908-b300-9a4e9a0fb205"  -clientid "22cc2695-54b9-49c1-9a73-2269592103d8" -clientsecret "09d3a928-b223-4dfe-80e8-fed13baa3b3d" -tenantid "72f988bf-86f1-41af-91ab-2d7cd011db47"

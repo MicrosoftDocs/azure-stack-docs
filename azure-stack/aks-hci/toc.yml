@@ -32,30 +32,49 @@
   - name: System requirements
     href: system-requirements.md
   - name: Networking
-    href: concepts-networking.md
+    items:
+      - name: Kubernetes node networking
+        href: concepts-node-networking.md
+      - name: Kubernetes container networking
+        href: concepts-container-networking.md
+
 - name: How-to guides
   items: 
     - name: Evaluate on an Azure VM
       href: https://github.com/Azure/aks-hci/blob/main/eval/readme.md
-    - name: Connect to Azure Arc for Kubernetes
-      href: connect-to-arc.md
-    - name: Adapt apps for mixed-OS Kubernetes clusters
-      href: adapt-apps-mixed-os-clusters.md
+    - name: Cluster operations
+      items:    
+          - name: Scale an AKS cluster
+            href: scale-cluster.md
+          - name: Update the Kubernetes version
+            href: upgrade.md
+          - name: Update AKS on Azure Stack HCI
+            href: update-aks-hci-concepts.md
+          - name: Restart, remove, or reinstall AKS on Azure Stack HCI
+            href: restart-cluster.md
+    - name: Use Azure Arc Kubernetes
+      items:
+          - name: Connect to Azure Arc for Kubernetes-
+            href: connect-to-arc.md
     - name: Configure networking
       items:
-          - name: Configure proxy settings
-            href: proxy.md
+          - name: Use proxy settings
+            href: set-proxy-settings.md
     - name: Security and authentication
       items:
           - name: Use Active Directory single sign-on
             href: ad-sso.md
           - name: Encrypt etcd secrets
             href: encrypt-secrets.md
+          - name: Secure communication with certificates
+            href: secure-communication.md
+          - name: Secure traffic between pods using network policies
+            href: calico-networking-policy.md
     - name: Monitoring and logging
       items:    
           - name: Use Azure Monitor for containers
             href: https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-overview
-          - name: On-premises monitoring
+          - name: Use on-premises monitoring
             href: monitor-logging.md
     - name: Use Windows Server containers
       items:
@@ -63,8 +82,14 @@
             href: prepare-windows-nodes-gmsa.md
           - name: Use persistent volume
             href: persistent-volume.md
+          - name: Adapt apps for mixed-OS Kubernetes clusters
+            href: adapt-apps-mixed-os-clusters.md
     - name: Troubleshoot
-      href: troubleshoot.md
+      items:
+          - name: Common issues
+            href: troubleshoot.md
+          - name: Resolve known issues
+            href: troubleshoot-known-issues.md
 - name: Related
   items:
   - name: Azure Stack HCI

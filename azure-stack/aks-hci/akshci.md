@@ -13,7 +13,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 
 ## AksHci cmdlets
 
-|         |            |
+|     Command    |    Description        |
 | ------- | ---------- |
 | [get-akshcicluster](get-akshcicluster.md) | List deployed clusters including the Azure Kubernetes Service host. |
 | [get-akshciclusterupgrades](get-akshciclusterupgrades.md) | Get the available upgrades for an Azure Kubernetes Service cluster. |
@@ -33,10 +33,13 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [new-akshcinetworksetting](new-akshcinetworksetting.md) | Create an object for a new virtual network. |
 | [remove-akshcicluster](remove-akshcicluster.md) | Delete a managed Kubernetes cluster. |
 | [restart-akshci](restart-akshci.md) | Restart Azure Kubernetes Service on Azure Stack HCI and remove all deployed Kubernetes clusters. |
+| [restart-cluster](restart-cluster.md) | Restart, reset, or remove Azure Kubernetes Service on Azure Stack HCI. |
+| [scale-cluster](scale-cluster.md) | Scale an Azure Kubernetes Service on Azure Stack HCI cluster. |
 | [set-akshciclusternodecount](set-akshciclusternodecount.md) | Scale the number of control plane nodes or worker nodes in a cluster. |
 | [set-akshciconfig](set-akshciconfig.md) | Set or update the configurations settings for the Azure Kubernetes Service host. |
 | [uninstall-akshci](uninstall-akshci.md) | Remove Azure Kubernetes Service on Azure Stack HCI. |
 | [uninstall-akshciadauth](uninstall-akshciadauth.md) | Remove Active Directory authentication. |
 | [update-akshci](update-akshci.md) | Update the Azure Kubernetes Service host to the latest Kubernetes version. |
 | [update-akshcicluster](update-akshcicluster.md) | Update a managed Kubernetes cluster to a newer Kubernetes or OS version. |
+
 
