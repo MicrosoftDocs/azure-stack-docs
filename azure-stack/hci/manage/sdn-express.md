@@ -188,7 +188,7 @@ The SDN Express script deploys your specified SDN infrastructure. When the scrip
     SDNExpress\scripts\SDNExpress.ps1 -ConfigurationDataFile MultiNodeSampleConfig.psd1 -Verbose
     ```
 
-1. After the NC VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For more information, see [How to configure DNS dynamic updates](https://docs.microsoft.com/troubleshoot/windows-server/networking/configure-dns-dynamic-updates-windows-server-2003).
+1. After the NC VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For more information, see [How to configure DNS dynamic updates](/troubleshoot/windows-server/networking/configure-dns-dynamic-updates-windows-server-2003).
 
 ## Next steps
 

@@ -73,7 +73,7 @@
     - name: Monitoring and logging
       items:    
           - name: Use Azure Monitor for containers
-            href: https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-overview
+            href: /azure/azure-monitor/containers/container-insights-overview
           - name: Use on-premises monitoring
             href: monitor-logging.md
     - name: Use Windows Server containers

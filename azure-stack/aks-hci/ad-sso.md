@@ -18,7 +18,7 @@ As an alternative to using certificate-based _kubeconfig_, you can use Active Di
 
 AD integration uses AD _kubeconfig_, which is distinct from the certificate-based _kubeconfig_ files and doesn't contain any secrets. The certificate-based _kubeconfig_ file can however be used for backup purposes such as troubleshooting, if there are issues with connecting using Active Directory credentials.
 
-Another security benefit with AD integration is that the users and groups are stored as [security identifiers (SIDs)](https://docs.microsoft.com/troubleshoot/windows-server/identity/security-identifiers-in-windows). Unlike group names, SIDs are immutable and unique and therefore present no naming conflicts.
+Another security benefit with AD integration is that the users and groups are stored as [security identifiers (SIDs)](/troubleshoot/windows-server/identity/security-identifiers-in-windows). Unlike group names, SIDs are immutable and unique and therefore present no naming conflicts.
 
 > [!Note] 
 > For this preview release, we provide AD SSO connectivity only for workload clusters. 
@@ -236,7 +236,7 @@ There are two steps involved in this process. First, create a new AD account/use
 
 ### Step 1: Create a new AD account or user for the API server
 
-Use the [New-ADUser](https://docs.microsoft.com/powershell/module/addsadministration/new-aduser?view=win10-ps&preserve-view=true) PowerShell command to create a new AD account/user with the SPN. Here's an example: 
+Use the [New-ADUser](/powershell/module/addsadministration/new-aduser?preserve-view=true&view=win10-ps) PowerShell command to create a new AD account/user with the SPN. Here's an example: 
 
 ```powershell 
 New-ADUser -Name apiserver -ServicePrincipalNames k8s/apiserver -AccountPassword (ConvertTo-SecureString "password" -AsPlainText -Force) -KerberosEncryptionType AES128 -Enabled 1
@@ -244,7 +244,7 @@ New-ADUser -Name apiserver -ServicePrincipalNames k8s/apiserver -AccountPassword
 
 ### Step 2: Create the keytab file for the AD account
 
-To create the keytab file, you use the [ktpass](https://docs.microsoft.com/windows-server/administration/windows-commands/ktpass) Windows command. 
+To create the keytab file, you use the [ktpass](/windows-server/administration/windows-commands/ktpass) Windows command. 
 
 Here's an example using ktpass:
 
