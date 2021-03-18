@@ -57,9 +57,10 @@ Install-AksHciAdAuth -name <String>
 ## Description
 Install Active Directory authentication.
 
-## EXAMPLES
+## Examples
 
 ### Example
+
 ```powershell
 PS C:\> Install-AksHciAdAuth -name mynewcluster1 -keytab <.\current.keytab> -previousKeytab <.\previous.keytab> -SPN <service/principal@CONTOSO.COM> -adminUser CONTOSO\Bob
 ```
@@ -111,7 +112,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SPN
+### - Service Principal Name (SPN)
 The name of the service principal associated with the API server AD account.
 
 ```yaml

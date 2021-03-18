@@ -5,11 +5,25 @@
       "redirect_url": "/azure-stack/operator/enable-multitenancy", 
       "redirect_document_id": false
     },  
+      "source_path": "azure-stack/aks-hci/concepts-networking.md", 
+      "redirect_url": "/azure-stack/aks-hci/concepts-node-networking", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/aks-hci/proxy.md", 
+      "redirect_url": "/azure-stack/aks-hci/set-proxy-settings", 
+      "redirect_document_id": false
+    },
     { 
       "source_path": "azure-stack/mdc/customer-journey.md", 
       "redirect_url": "/azure-stack/mdc/integration-overview", 
       "redirect_document_id": false
     },       
+    { 
+      "source_path": "azure-stack/ruggedized/customer-journey.md", 
+      "redirect_url": "/azure-stack/ruggedized/integration-overview", 
+      "redirect_document_id": false
+    },
     { 
       "source_path": "azure-stack/aks-hci/persistent-storage-windows-nodes.md", 
       "redirect_url": "/azure-stack/aks-hci/persistent-volume", 
