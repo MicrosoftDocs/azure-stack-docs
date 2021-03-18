@@ -21,20 +21,34 @@ Take a few minutes to watch the video on the high-level features of Azure Stack 
 
 > [!VIDEO https://www.youtube.com/embed/fw8RVqo9dcs]
 
-At its core, Azure Stack HCI is a solution that combines the following:
+From a hardware standpoint, each Azure Stack HCI cluster consists of between 2 and 16 physical, validated servers running a specialized operating system purposely defined for hyperconverged infrastructure. The clustered servers share common configuration and resources by leveraging the Windows Server Failover Clustering feature.
 
-- Validated hardware from an OEM partner
-- Azure Stack HCI operating system
-- Windows Admin Center
+At its core, Azure Stack HCI is a solution that combines the following:
 - Azure services
+- Windows Admin Center
+- Hyper-V-based compute resources
+- Storage Spaces Direct (S2D)-based virtualized storage
+- Software Defined Networking (SDN)-based virtualized networking using Network Controller (optional)
+- Azure Stack HCI operating system
+- Validated hardware from an OEM partner
 
 :::image type="content" source="media/overview/azure-stack-hci-solution.png" alt-text="The Azure Stack HCI OS runs on top of validated hardware, is managed by Windows Admin Center, and connects to Azure" border="false":::
 
 Azure Stack HCI, version 20H2 provides new functionality not present in Windows Server, such as the ability to use Windows Admin Center to create a hyperconverged cluster that uses Storage Spaces Direct for superior storage price-performance. This includes the option to stretch the cluster across sites for automatic failover across sites. See [What's new in Azure Stack HCI](#whats-new-in-azure-stack-hci) for details.
 
-## Use cases for Azure Stack HCI
+## Azure Stack HCI use cases
 
-There are many use cases for Azure Stack HCI, although it isn't intended for non-virtualized workloads. Customers often choose Azure Stack HCI in the following scenarios:
+There are many use cases for Azure Stack HCI, although it isn't intended for non-virtualized workloads. Customers often choose Azure Stack HCI in the following scenarios.
+
+| Use case                                    | Description                             |
+| :------------------------------------------ | :-------------------------------------- |
+| Branch office and edge                      | right-aligned column                    |
+| Virtual desktop infrastructure (VDI)        | $100                                    |
+| Highly performant SQL Server                | $10                                     |
+| Trusted enterprise virtualization           | right-aligned column                    |
+| Scale-out storage                           | $100                                    |
+| Azure Kubernetes Service (AKS)              | $10                                     |
+| Disaster recovery for virtualized workloads | $10                                     |
 
 ### Data center consolidation and modernization
 
