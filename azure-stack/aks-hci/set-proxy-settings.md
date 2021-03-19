@@ -64,6 +64,6 @@ While these default values will work for many networks, you may need to add more
 Set-AksHciConfig -proxyServerHttp "http://proxy.contoso.com:8888" -proxyServerHttps "http://proxy.contoso.com:8888" -proxyServerNoProxy "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.contoso.com"
 ```
 
-## Next Steps
+## Next steps
 
 [Deploy Azure Kubernetes Services on Azure Stack HCI using PowerShell](./setup-powershell.md)
