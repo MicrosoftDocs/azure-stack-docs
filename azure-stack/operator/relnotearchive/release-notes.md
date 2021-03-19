@@ -21,7 +21,9 @@ To access release notes for a different archived version, use the version select
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
 ::: moniker range=">azs-1910"
-You can access release notes for supported versions of Azure Stack Hub in the table of contents on the left side, under [Overview > Release notes](../release-notes.md)
+## Release notes for supported versions
+
+Release notes for supported versions of Azure Stack Hub can be found under [Overview > Release notes](../release-notes.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>

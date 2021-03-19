@@ -22,7 +22,9 @@ To access known issues for a different archived version, use the version selecto
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
 ::: moniker range=">azs-1910"
-You can access known issues for supported versions of Azure Stack Hub in the table of contents on the left side, under [Overview > Release notes > Known issues](../known-issues.md)
+## Known issues for supported versions
+
+Known issues for supported versions of Azure Stack Hub can be found under [Overview > Release notes > Known issues](../known-issues.md)
 ::: moniker-end
 
 <!---------------------------------------------------------->
