@@ -60,7 +60,7 @@ For information about Hyper-V Network Virtualization (HNV) that you can use to v
 #### Gateways and the Software Load Balancer (SLB)
 You need to create and provision additional logical networks to use gateways and the SLB. Make sure to obtain the correct IP prefixes, VLAN IDs, and gateway IP addresses for these networks.
 
-|                                |                     |
+| Logical network| Description                    |
 | :----------------------------- | :------------------ |
 | **Public VIP logical network** | The Public virtual IP (VIP) logical network must use IP subnet prefixes that are routable outside of the cloud environment (typically internet routable). These are the front-end IP addresses that external clients use to access resources in the virtual networks, including the front-end VIP for the site-to-site gateway. You don’t need to assign a VLAN to this network. |
 | **Private VIP logical network** | The Private VIP logical network is not required to be routable outside of the cloud. This is because only VIPs that can be accessed from internal cloud clients use it, such as private services. You don’t need to assign a VLAN to this network. |
