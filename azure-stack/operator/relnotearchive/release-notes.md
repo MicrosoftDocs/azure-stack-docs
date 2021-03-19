@@ -17,16 +17,24 @@ This article describes the contents of Azure Stack Hub update packages. The upda
 
 To access release notes for a different archived version, use the version selector dropdown above the table of contents on the left.
 
+<!---------------------------------------------------------->
+<!------------------- SUPPORTED VERSIONS ------------------->
+<!---------------------------------------------------------->
+::: moniker range=">azs-1910"
+You can access release notes for supported versions of Azure Stack Hub in the table of contents on the left side, under [Overview > Release notes](../release-notes.md)
+::: moniker-end
+
+<!------------------------------------------------------------>
+<!------------------- UNSUPPORTED VERSIONS ------------------->
+<!------------------------------------------------------------>
+::: moniker range="<=azs-1910"
 > [!IMPORTANT]  
 > This update package is only for Azure Stack Hub integrated systems. Do not apply this update package to the Azure Stack Development Kit (ASDK).
 
 > [!IMPORTANT]  
 > If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](../azure-stack-servicing-policy.md#keep-your-system-under-support).
+::: moniker-end
 
-
-<!------------------------------------------------------------>
-<!------------------- UNSUPPORTED VERSIONS ------------------->
-<!------------------------------------------------------------>
 ::: moniker range="azs-1910"
 ## 1910 archived release notes
 This article describes the contents of Azure Stack Hub update packages. The update includes improvements and fixes for the latest release of Azure Stack Hub.
@@ -4365,8 +4373,4 @@ Microsoft has provided a way to monitor and resume updates using the Privileged 
 
 - For an overview of the update management in Azure Stack, see [Manage updates in Azure Stack overview](../azure-stack-updates.md).
 - For more information about how to apply updates with Azure Stack, see [Apply updates in Azure Stack](../azure-stack-apply-updates.md).
-::: moniker-end
-
-::: moniker range=">azs-1910"
-You can access release notes for supported versions of Azure Stack Hub in the table of contents on the left side, under [Overview > Release notes](../release-notes.md)
 ::: moniker-end

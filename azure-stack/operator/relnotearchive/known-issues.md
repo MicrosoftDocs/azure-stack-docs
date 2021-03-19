@@ -18,13 +18,21 @@ This article lists known issues in unsupported Azure Stack Hub releases. The lis
 
 To access known issues for a different archived version, use the version selector dropdown above the table of contents on the left.
 
-> [!IMPORTANT]  
-> If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](../azure-stack-servicing-policy.md#keep-your-system-under-support).
-
+<!---------------------------------------------------------->
+<!------------------- SUPPORTED VERSIONS ------------------->
+<!---------------------------------------------------------->
+::: moniker range=">azs-1910"
+You can access known issues for supported versions of Azure Stack Hub in the table of contents on the left side, under [Overview > Release notes > Known issues](../known-issues.md)
+::: moniker-end
 
 <!---------------------------------------------------------->
 <!------------------- UNSUPPORTED VERSIONS ----------------->
 <!---------------------------------------------------------->
+::: moniker range="<=azs-1910"
+> [!IMPORTANT]  
+> If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](../azure-stack-servicing-policy.md#keep-your-system-under-support).
+::: moniker-end
+
 ::: moniker range="azs-1910"
 ## 1910 archived known issues
 
@@ -1183,8 +1191,4 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 
 ::: moniker range="<azs-1904"
 Known issues for this release are combined with the [release notes](release-notes.md)
-::: moniker-end
-
-::: moniker range=">azs-1910"
-You can access known issues for supported versions of Azure Stack Hub in the table of contents on the left side, under [Overview > Release notes > Known issues](../known-issues.md)
 ::: moniker-end
