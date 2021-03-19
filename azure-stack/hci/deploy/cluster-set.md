@@ -283,7 +283,7 @@ WARNING: Report file location: C:\Windows\Cluster\Reports\Update-ClusterVirtualM
 
 This warning can be ignored as the warning is "No changes in the virtual machine role storage configuration were detected". The reason for the warning is that the actual physical location does not change; only the configuration paths do.
 
-For more information on `Move-VMStorage`, see [Move-VMStorage](https://docs.microsoft.com/powershell/module/hyper-v/move-vmstorage?view=windowsserver2019-ps).
+For more information on `Move-VMStorage`, see [Move-VMStorage](https://docs.microsoft.com/powershell/module/hyper-v/move-vmstorage).
 
 Live migrating a VM between different clusters in the set is not the same as in the past. In non-cluster set scenarios, the steps would be:
 
@@ -309,9 +309,9 @@ This does not move the VM storage or configuration files and is not necessary as
 
 There can be at most only one Infrastructure SOFS cluster role on a cluster. The Infrastructure SOFS role is created by specifying the `-Infrastructure` switch parameter to the `Add-ClusterScaleOutFileServerRole` cmdlet. For example:
 
-    ```PowerShell
-    Add-ClusterScaleoutFileServerRole -Name "my_infra_sofs_name" -Infrastructure
-    ```
+ ```PowerShell
+ Add-ClusterScaleoutFileServerRole -Name "my_infra_sofs_name" -Infrastructure
+```
 
 Each CSV volume created automatically triggers the creation of an SMB share with an auto-generated name based on the CSV volume name. You cannot directly create or modify SMB shares under an SOFS role, other than via CSV volume create/modify operations.
 
@@ -331,7 +331,7 @@ A namespace for cluster sets is provided via a continuously available referral s
 
 Specifically, the cluster set namespace offers an overlay referral namespace within a cluster set similar to the Distributed File System Namespace (DFSN). Unlike DFSN however, cluster set namespace referral metadata is auto-populated on all nodes without any intervention, so there is almost no performance overhead in the storage access path.
 
-System state backup will backup the cluster state and metadata as well. Using Windows Server Backup, you can do restore just a node's cluster database if needed or do an authoritative restore to roll back the entire cluster database across all nodes. For cluster sets, we recommend doing an authoritative restore first for the member clusters and then for the management cluster. For more information on system state backup, see [Back up system state and bare metal](https://docs.microsoft.com/system-center/dpm/back-up-system-state-and-bare-metal?view=sc-dpm-2019).
+System state backup will backup the cluster state and metadata as well. Using Windows Server Backup, you can do restore just a node's cluster database if needed or do an authoritative restore to roll back the entire cluster database across all nodes. For cluster sets, we recommend doing an authoritative restore first for the member clusters and then for the management cluster. For more information on system state backup, see [Back up system state and bare metal](https://docs.microsoft.com/system-center/dpm/back-up-system-state-and-bare-metal).
 
 ## Create fault domains and availability sets
 
