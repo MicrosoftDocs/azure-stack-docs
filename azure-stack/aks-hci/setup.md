@@ -58,8 +58,8 @@ Now that we've verified our system settings, let's get started:
 1. Select **Set up** to launch the Setup wizard.
 2. Review the prerequisites for the machine you are running Windows Admin Center on, the cluster you're connected to, as well as the network. Additionally, make sure you're signed into an Azure account on Windows Admin Center and that the Azure subscription you're planning on using is not expired. When you're finished, select **Next**.
 
-> [!WARNING]
-> If you're using a 2-4 node Azure Stack HCI cluster, make sure you have configured at least one external virtual switch before proceeding past this step, or you will not be able to successfully set up your Azure Kubernetes Service host.
+   > [!WARNING]
+   > If you're using a 2-4 node Azure Stack HCI cluster, make sure you have configured at least one external virtual switch before proceeding past this step, or you will not be able to successfully set up your Azure Kubernetes Service host.
 
 3. On the **System checks** page of the wizard, take any required actions, such as [connecting your Windows Admin Center gateway to Azure](/windows-server/manage/windows-admin-center/azure/azure-integration). When connecting your Windows Admin Center gateway to Azure, be sure to create a **new** Azure Active Directory application. This step checks that Windows Admin Center and the system that will host Azure Kubernetes Service have the proper configurations to continue. When you're finished taking action, select **Next**.
 4. Ensure system connectivity through CredSSP in the **Connectivity** step. CredSSP lets Windows Admin Center delegate the user's credentials from the gateway to a target server for remote authentication. CredSSP needs to be enabled to set up Azure Kubernetes Service. After you've enabled CredSSP, select **Next**.  
@@ -77,7 +77,7 @@ Now that we've verified our system settings, let's get started:
     
     Select **Next** after you're finished.
 
-6. On the **Azure Registration** page of the wizard, provide details about the subscription and resource group you wish to use for this service. While Azure Kubernetes Service is in preview, you will not be charged. Windows Admin Center also requires permissions to access resources in your organization that only an admin can grant. Select the **View in Azure** hyperlink to view your Windows Admin Center gateway in Azure and confirm you have been granted admin consent. When you're finished, select **Next**.
+6. On the **Azure Registration** page of the wizard, provide details about the subscription and resource group you wish to use for this service. While Azure Kubernetes Service is in preview, you will not be charged. Windows Admin Center also requires permissions to access resources in your organization that only an admin can grant. Select the **View in Azure** hyperlink to view your Windows Admin Center gateway in Azure and confirm you have been granted admin consent. You also have the option to enable Azure Arc, for more information, see [enable Azure Arc integration](https://github.com/mattmcspirit/aks-hci/blob/main/eval/steps/2a_DeployAKSHCI_WAC.md#enable-azure-arc-integration-optional). When you're finished, select **Next**.
 7. Review all of your selections in the **Review + create** step. If you're satisfied with your selections, select **Next** to begin host setup. 
 8. On the **Setup progress** page, you can watch the progress of your host setup. At this point, you are welcome to open Windows Admin Center in a new tab and continue your management tasks. 
 9. If the deployment succeeds, select *Finish*, and you will be presented with a management dashboard where you can create and manage your Kubernetes clusters. This dashboard, like the rest of Azure Kubernetes Services on Azure Stack HCI, is in a preview release and will be updated with additional functionality in future releases.

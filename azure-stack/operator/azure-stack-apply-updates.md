@@ -3,7 +3,7 @@ title: Install Azure Stack Hub Updates
 description: Learn how to install Azure Stack Hub Updates.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 12/16/2020
+ms.date: 03/19/2021
 ms.author: sethm
 ms.lastreviewed: 09/10/2019
 ms.reviewer: sranthar
@@ -68,9 +68,9 @@ You can view the current version of Azure Stack Hub in the **Updates** blade. To
 
 1. Open the administrator portal.
 
-2. Select **Dashboard**. Select **Update**.
+2. Select **Dashboard**, then select **Update**.
 
-3. Select **Update history**.
+3. Select the **Update history** tab.
 
     ![Azure Stack Hub update history](./media/azure-stack-apply-updates/image5.png)
 
