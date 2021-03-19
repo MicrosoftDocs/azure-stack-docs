@@ -28,6 +28,8 @@
     href: deploy/operating-system.md
   - name: Create a cluster
     href: deploy/create-cluster.md
+  - name: Deploy a cluster set
+    href: deploy/cluster-set.md
   - name: Migrate to new hardware
     href: deploy/migrate-cluster-new-hardware.md
   - name: Migrate on same hardware
