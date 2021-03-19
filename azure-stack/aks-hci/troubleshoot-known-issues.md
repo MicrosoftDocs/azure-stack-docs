@@ -9,66 +9,78 @@ ms.author: v-susbo
 
 # Troubleshoot known issues in Azure Kubernetes Service on Azure Stack HCI
 
-This article includes workaround steps for known issues that occur on AKS on Azure Stack HCI.
+This article includes workaround steps for resolving known issues that occur on AKS on Azure Stack HCI.
 
 For issues not covered by this article, see [troubleshooting Kubernetes clusters](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/), and this [troubleshooting guide](./troubleshoot.md) for troubleshooting common scenarios on Windows Admin Center (WAC), Windows worker nodes, Linux worker nodes, and Azure Arc Kubernetes.
 
-## Windows Admin Center throws a WinRM error when creating a new Kubernetes workload cluster on an AKS host deployed using PowerShell with static IPs
+## Windows Admin Center displays an WinRM error when creating a new workload cluster
 
-**Issue description**: When I switched my test environment from DHCP to static IP, I started seeing an error from WAC that the WinRM client cannot process the request. After investigating, I found this issue also occurred outside of WAC. WinRM broke when I used static IP addresses, and my servers were not registering an SPN when I moved over to static IP addresses. 
+**Issue description**: When switching from DHCP to static IP, WAC displayed an error that said the WinRM client cannot process the request. This error also occurred outside of WAC. WinRM broke when static IP addresses were used, and the servers were not registering an Service Principal Name (SPN) when moving to static IP addresses. 
 
-**Resolution**: This issue can be resolved by using `SetSPN` to create the SPN (Service Principal Name). From a command prompt on your WAC gateway, run the following command: 
+**Resolution**: To resolve this issue, use the **SetSPN** command to create the SPN. From a command prompt on the WAC gateway, run the following command: 
 
-```
+```Bash
 Setspn /Q WSMAN/<FQDN on the Azure Stack HCI Server> 
 ```
 
-Next, if any of the servers in your environment return `No Such SPN Found`, then log in to that server and run:  
+Next, if any of the servers in the environment return the message `No Such SPN Found`, then log in to that server and run the following commands:  
 
-```
+```Bash
 Setspn /S WSMAN/<server name> <server name> 
 Setspn /S WSMAN/<FQDN of server> <server name> 
 ```
 
-Finally, on your WAC gateway, run the following to ensure that it gets new server information from the domain controller:
+Finally, on the WAC gateway, run the following to ensure that it gets new server information from the domain controller:
 
-```
+```Bash
 Klist purge 
 ```
 
-## Pod stuck in _ContainerCreating_ state at the 70th iteration of an update reliability script
+## Csi pod stuck in a _ContainerCreating_ state
 
-**Issue description**: On the 70th iteration of an update reliability script, a new Kubernetes workload cluster was created with Kubernetes version 1.16.10, and then updated to 1.16.15. After the update, the `csi-msk8scsi-node-9x47m` pod was stuck in the _ContainerCreating_ state, and the `kube-proxy-qqnkr` pod was stuck in the _Terminating_ state. 
+**Issue description**: A new Kubernetes workload cluster was created with Kubernetes version 1.16.10, and then updated to 1.16.15. After the update, the `csi-msk8scsi-node-9x47m` pod was stuck in the _ContainerCreating_ state, and the `kube-proxy-qqnkr` pod was stuck in the _Terminating_ state. 
 
 AKS on Azure Stack HCI did not reinstall between iterations. Each iteration of the update reliability script only creates a new workload cluster, updates it, and deletes it. 
 
 ```output
-Error: PS C:\Program Files\AksHci> .\kubectl.exe get nodes --kubeconfig=C:\Users\wolfpack\Documents\kubeconfig-update-cluster70 
+Error: kubectl.exe get nodes  
 NAME              STATUS     ROLES    AGE     VERSION 
 moc-lf22jcmu045   Ready      <none>   5h40m   v1.16.15 
 moc-lqjzhhsuo42   Ready      <none>   5h38m   v1.16.15 
 moc-lwan4ro72he   NotReady   master   5h44m   v1.16.15
 
-PS C:\Program Files\AksHci> .\kubectl.exe get pods -A --kubeconfig=C:\Users\wolfpack\Documents\kubeconfig-update-cluster70
+\kubectl.exe get pods -A 
 
 NAMESPACE     NAME                                            READY   STATUS              RESTARTS   AGE 
-kube-system   coredns-5644d7b6d9-8bqgg                        1/1     Running             0          5h40m 
-kube-system   coredns-5644d7b6d9-8bsvl                        1/1     Running             0          5h38m 
-kube-system   csi-msk8scsi-controller-dcf7d9759-qs9vd         5/5     Running             0          5h38m 
-kube-system   csi-msk8scsi-node-2zx8b                         3/3     Running             0          5h38m 
+    5h38m 
 kube-system   csi-msk8scsi-node-9x47m                         0/3     ContainerCreating   0          5h44m 
-kub-system    csi-msk8scsi-node-z5ff8                         3/3     Running             0          5h40m 
-kube-system   etcd-moc-lwan4ro72he                            1/1     Running             0          5h44m 
-kube-system   kube-proxy-n5cf4                                1/1     Running             0          5h39m 
-kube-system   kube-proxy-qqnkr                                1/1     Terminating         0          5h44m 
-kube-system   kube-proxy-wqh4d                                1/1     Running             0          5h40m 
+kube-system   kube-proxy-qqnkr                                1/1     Terminating         0          5h44m  
 ```
 
-In the error output above, the following lines show the errors that occurred:
+**Resolution**: Since _kubelet_ ended up in a bad state and can no longer talk to the API server, the only solution is to restart the _kubelet_ service. After restarting, the cluster goes into a _running_ state.  
 
-```
-kube-system   csi-msk8scsi-node-9x47m                         0/3     ContainerCreating   0          5h44m
-kube-system   kube-proxy-qqnkr                                1/1     Terminating         0          5h44m
+## Install-AksHci timed out with an error
+
+**Issue description**: After running `Install-AksHci`, the installation stopped and displayed a **waiting for API server** error message. Then, When `Get-AksHciCluster` was run, the following error was displayed:
+
+```output
+\kubectl.exe --kubeconfig=C:\AksHci\0.9.7.3\kubeconfig-clustergroup-management get akshciclusters -o json returned a non zero exit code 1 [Unable to connect to the server: dial tcp 192.168.0.150:6443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.]
 ```
 
-**Resolution**: Since _kubelet_ ended up in a bad state and can no longer talk to the API server, the only solution is to restart the _kubelet_ service. After restarting, the cluster goes into a _running_ state. This issue should be resolved in Kubernetes version 1.19. 
+**Resolution**: There are multiple reasons why an installation might fail when the **waiting for API server** error occurs. One of the causes may occur when using static IP.
+
+If you’re using static IP, confirm that the DNS server is correctly configured. Check the host's DNS server address using the following command:
+
+```powershell
+Get-NetIPConfiguration.DNSServer | ?{ $_.AddressFamily -ne 23} ).ServerAddresses
+```
+
+Confirm that the DNS server address is the same as the address used when running `New-AksHciNetworkSetting` by running the following command:
+
+```powershell
+Get-MocConfig
+```
+
+If the DNS server has been incorrectly configured, reinstall AKS on Azure Stack HCI with the correct DNS server. For more information, see [Restart, remove, or reinstall Azure Kubernetes Service on Azure Stack HCI ](./restart-cluster.md).
+
+The issue was resolved after deleting the configuration and restarting the VM with a new configuration.
