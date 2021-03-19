@@ -36,7 +36,7 @@ Finally, on the WAC gateway, run the following to ensure that it gets new server
 Klist purge 
 ```
 
-## Csi pod stuck in a _ContainerCreating_ state
+## Container storage interface pod stuck in a _ContainerCreating_ state
 
 **Issue description**: A new Kubernetes workload cluster was created with Kubernetes version 1.16.10, and then updated to 1.16.15. After the update, the `csi-msk8scsi-node-9x47m` pod was stuck in the _ContainerCreating_ state, and the `kube-proxy-qqnkr` pod was stuck in the _Terminating_ state. 
 
