@@ -183,6 +183,8 @@ The script prompts you for administrative credentials on the Azure AD tenant, an
 ::: zone-end
 
 ::: moniker range="<azs-2102"
+## Portal-base management is not supported for this version
+
 Multi-tenancy management using the administrator portal is only available for versions 2102 and higher. Please select a higher version using the selector in the upper left part of the page.
 ::: moniker-end
 ::: moniker range=">=azs-2102"
