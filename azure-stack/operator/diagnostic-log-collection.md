@@ -167,14 +167,14 @@ If you're using the **Send logs now** method and want to use PowerShell instead 
 
   ```powershell
   $fromDate = (Get-Date).AddHours(-8)
-  Send-AzureStackDiagnosticLog -FilterByRole VirtualMachines,BareMetal -FromDate $using:fromDate
+  Invoke-Command -Session $pepsession -ScriptBlock {Send-AzureStackDiagnosticLog -FilterByRole VirtualMachines,BareMetal -FromDate $using:fromDate}
   ```
 
 * To send diagnostic logs from VirtualMachines and BareMetal roles, with date filtering for log files for the time period between 8 hours ago and 2 hours ago:
 
   ```powershell
   $fromDate = (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
-  Send-AzureStackDiagnosticLog -FilterByRole VirtualMachines,BareMetal -FromDate $using:fromDate
+  Invoke-Command -Session $pepsession -ScriptBlock {Send-AzureStackDiagnosticLog -FilterByRole VirtualMachines,BareMetal -FromDate $using:fromDate}
   ```
 
 > [!NOTE]
