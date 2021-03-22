@@ -5,7 +5,7 @@ author: mattbriggs
 ms.topic: how-to
 ms.date: 12/2/2020
 ms.author: mabrigg
-ms.reviewer: sijuman
+ms.reviewer: raymondl
 ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack user, I want to use cross-platform CLI to manage and deploy resources on Azure Stack.
