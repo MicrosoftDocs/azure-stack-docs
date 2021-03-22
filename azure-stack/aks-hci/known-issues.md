@@ -69,19 +69,12 @@ When you check Hyper-V manager, high CPU and memory demands for the management c
 ## Special Active Directory permissions are needed for domain joined Azure Stack HCI nodes 
 Users deploying and configuring Azure Kubernetes Service on Azure Stack HCI need to have "Full Control" permission to create AD objects in the Active Directory container the server and service objects are created in. 
 
-## Get-AksHciLogs command may fail
-With large clusters the Get-AksHciLogs command may throw an exception, fail to enumerate nodes, or will not generate c:\wssd\wssdlogs.zip output file.
-This is because the PowerShell command to zip a file `Compress-Archive` has an output file size limit of 2 GB. 
-This issue will be fixed in a future release.
-
 ## Azure Kubernetes Service PowerShell deployment doesn't check for available memory before creating a new target cluster
 The **Aks-Hci** PowerShell commands do not validate the available memory on the host server before creating Kubernetes nodes. This can lead to memory exhaustion and virtual machines that do not start. This failure is currently not handled gracefully, and the deployment will stop responding with no clear error message.
 If you have a deployment that stops responding, open `Eventviewer` and check for a Hyper-V-related error message indicating there's not enough memory to start the VM.
-This issue will be fixed in a future release.
 
 ## Azure Kubernetes Service deployment fails on an Azure Stack HCI configured with static IPs, VLANs, SDN, or proxies.
 While deploying Azure Kubernetes Service on an Azure Stack HCI cluster that has static IPs, VLANs, SDN, or proxies, the deployment fails at cluster creation. 
-This issue will be fixed in a future release.
 
 ## IPv6 must be disabled in the hosting environment
 If both IPv4 and IPv6 addresses are bound to the physical NIC, the `cloudagent` service for clustering uses the IPv6 address for communication. Other components in the deployment framework only use IPv4. This will result in Windows Admin Center unable to connect to the cluster and will report a remoting failure when trying to connect to the machine.
