@@ -182,6 +182,10 @@ Update-AzsHomeDirectoryTenant -AdminResourceManagerEndpoint $adminResourceManage
 The script prompts you for administrative credentials on the Azure AD tenant, and takes several minutes to run. The alert should clear after you run the cmdlet.
 ::: zone-end
 
+::: moniker range="<azs-2102"
+Multi-tenancy management using the administrator portal is only available for versions 2102 and higher. Please select a higher version using the selector in the upper left part of the page.
+::: moniker-end
+::: moniker range=">=azs-2102"
 ::: zone pivot="management-tool-portal"
 ## Register a guest directory
 
@@ -329,6 +333,7 @@ in the Azure Stack admin portal.
 
 An Azure Stack Hub operator can view the subscriptions associated with a directory. In addition, each directory has an action to manage the directory directly in the Azure portal. To manage, the target directory must have manage permissions in the Azure portal.
 ::: zone-end
+::: moniker-end
 
 ## Next steps
 
