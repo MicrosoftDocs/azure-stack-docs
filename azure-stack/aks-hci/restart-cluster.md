@@ -35,7 +35,7 @@ If you want to retain the old configuration, run the following command:
 Uninstall-AksHci -SkipConfigCleanup
 ```
 
-## Reinstall configuration settings and reinstall Azure Kubernetes Service on Azure Stack HCI
+## Reinstall configuration settings and reinstall AKS on Azure Stack HCI
 
 To reinstall Azure Kubernetes Service on Azure Stack HCI after uninstalling it, follow the instructions below.
 
