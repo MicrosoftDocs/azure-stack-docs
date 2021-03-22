@@ -6,7 +6,7 @@ author: mattbriggs
 ms.topic: article
 ms.date: 12/16/2020
 ms.author: mabrigg
-ms.reviewer: sijuman
+ms.reviewer: raymondl
 ms.lastreviewed: 12/16/2020
 
 # Intent: As an Azure Stack operator, I want to install Powershell for Azure Stack.
