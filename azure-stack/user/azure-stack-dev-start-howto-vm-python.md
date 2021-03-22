@@ -6,7 +6,7 @@ author: mattbriggs
 ms.topic: overview
 ms.date: 12/2/2020
 ms.author: mabrigg
-ms.reviewer: sijuman
+ms.reviewer: raymondl
 ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack Hub user, I want to deploy a Python web app to a virtual machine in Azure Stack Hub.

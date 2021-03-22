@@ -6,14 +6,14 @@ author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/17/2021
+ms.date: 03/22/2021
 ---
 
 # Azure Stack HCI solution overview
 
 > Applies to: Azure Stack HCI, version 20H2
 
-Azure Stack HCI is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid, on-premises environment. Azure hybrid services enhance the cluster with capabilities such as cloud-based monitoring, Site Recovery, and VM backups, as well as a central view of all of your Azure Stack HCI deployments in the Azure portal. You can manage the cluster with your existing tools including Windows Admin Center and PowerShell.
+Azure Stack HCI is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid, on-premises environment. Azure hybrid services enhance the cluster with capabilities such as cloud-based monitoring, Site Recovery, and virtual machine (VM) backups, as well as a central view of all of your Azure Stack HCI deployments in the Azure portal. You can manage the cluster with your existing tools including Windows Admin Center and PowerShell.
 
 Azure Stack HCI, version 20H2 is now [available for download](https://azure.microsoft.com/products/azure-stack/hci/hci-download/). It's intended for on-premises clusters running virtualized workloads, with hybrid-cloud connections built-in. As such, Azure Stack HCI is delivered as an Azure service and billed on an Azure subscription. Azure Stack HCI also now includes the ability to host the Azure Kubernetes Service; for details, see [Azure Kubernetes Service on Azure Stack HCI](../aks-hci/overview.md).
 
@@ -21,36 +21,35 @@ Take a few minutes to watch the video on the high-level features of Azure Stack 
 
 > [!VIDEO https://www.youtube.com/embed/fw8RVqo9dcs]
 
-At its core, Azure Stack HCI is a solution that combines the following:
+From a hardware standpoint, each Azure Stack HCI cluster consists of between 2 and 16 physical, validated servers running a specialized operating system purposely defined for hyperconverged infrastructure. The clustered servers share common configuration and resources by leveraging the Windows Server Failover Clustering feature.
 
-- Validated hardware from an OEM partner
-- Azure Stack HCI operating system
-- Windows Admin Center
+At its core, Azure Stack HCI is a solution that combines the following:
 - Azure services
+- Windows Admin Center
+- Hyper-V-based compute resources
+- Storage Spaces Direct (S2D)-based virtualized storage
+- Software Defined Networking (SDN)-based virtualized networking using Network Controller (optional)
+- Azure Stack HCI operating system
+- Validated hardware from an OEM partner
 
 :::image type="content" source="media/overview/azure-stack-hci-solution.png" alt-text="The Azure Stack HCI OS runs on top of validated hardware, is managed by Windows Admin Center, and connects to Azure" border="false":::
 
-Azure Stack HCI, version 20H2 provides new functionality not present in Windows Server, such as the ability to use Windows Admin Center to create a hyperconverged cluster that uses Storage Spaces Direct for superior storage price-performance. This includes the option to stretch the cluster across sites for automatic failover across sites. See [What's new in Azure Stack HCI](#whats-new-in-azure-stack-hci) for details.
+Azure Stack HCI, version 20H2 provides new functionality not present in Windows Server, such as the ability to use Windows Admin Center to create a hyperconverged cluster that uses Storage Spaces Direct for superior storage price-performance. This includes the option to stretch the cluster across sites and use automatic failover. See [What's new in Azure Stack HCI](#whats-new-in-azure-stack-hci) for details.
 
-## Use cases for Azure Stack HCI
+## Azure Stack HCI use cases
 
-There are many use cases for Azure Stack HCI, although it isn't intended for non-virtualized workloads. Customers often choose Azure Stack HCI in the following scenarios:
+There are many use cases for Azure Stack HCI, although it isn't intended for non-virtualized workloads. Customers often choose Azure Stack HCI in the following scenarios.
 
-### Data center consolidation and modernization
-
-Refreshing and consolidating aging virtualization hosts with Azure Stack HCI can improve scalability and make your environment easier to manage and secure. It's also an opportunity to retire legacy SAN storage to reduce footprint and total cost of ownership. Operations and systems administration are simplified with unified tools and interfaces and a single point of support.
-
-### Remote and branch offices
-
-With two-server cluster solutions starting at less than $20,000 per location, Azure Stack HCI is a great way to affordably modernize remote and branch offices, retail stores, and field sites. Innovative nested resiliency allows volumes to stay online and accessible even if multiple hardware failures happen at the same time. Cloud witness technology allows you to use Azure as the lightweight tie-breaker for cluster quorum, preventing split-brain conditions without the cost of a third host. Customers can also centrally view remote Azure Stack HCI deployments in the Azure portal.
-
-### Virtual desktops
-
-Many organizations want to host virtual desktops on-premises for low latency and data sovereignty. Azure Stack HCI can provide like-local performance.
-
-### High-performance virtualized workloads
-
-Azure Stack HCI can provide industry-best performance for SQL Server databases and other performance-sensitive virtualized workloads that require millions of storage IOPS or database transactions per second, offering consistently low latency with NVMe SSDs, a robust RDMA stack, and persistent memory.
+| Use case                                          | Description                             |
+| :------------------------------------------------ | :-------------------------------------- |
+| Branch office and edge                            | For branch office and edge workloads, you can minimize infrastructure costs by deploying two-node clusters with inexpensive witness options, such as Cloud Witness or a USB drive–based file share witness. Another factor that contributes to the lower cost of two-node clusters is support for switchless networking, which relies on crossover cable between cluster nodes instead of more expensive high-speed switches. Customers can also centrally view remote Azure Stack HCI deployments in the Azure portal. To learn more about this workload, see [Deploy branch office and edge on Azure Stack HCI](deploy/branch-office-edge.md).|
+| Virtual desktop infrastructure (VDI)              | Azure Stack HCI clusters are well suited for large-scale VDI deployments with RDS or equivalent third-party offerings as the virtual desktop broker. Azure Stack HCI provides additional benefits by including centralized storage and enhanced security, which simplifies protecting user data and minimizes the risk of accidental or intentional data leaks. To learn more about this workload, see [Deploy virtual desktop infrastructure (VDI) on Azure Stack HCI](deploy/virtual-desktop-infrastructure.md).|
+| Highly performant SQL Server                      | Azure Stack HCI provides an additional layer of resiliency to highly available, mission-critical Always On availability groups-based deployments of SQL Server. This approach also offers extra benefits associated with the single-vendor approach, including simplified support and performance optimizations built into the underlying platform. To learn more about this workload, see [Deploy SQL Server on Azure Stack HCI](deploy/sql-server.md).|
+| Trusted enterprise virtualization                 | Azure Stack HCI satisfies the trusted enterprise virtualization requirements through its built-in support for Virtualization-based Security (VBS). VBS relies on Hyper-V to implement the mechanism referred to as virtual secure mode, which forms a dedicated, isolated memory region within its guest VMs. By using programming techniques, it's possible to perform designated, security-sensitive operations in this dedicated memory region while blocking access to it from the host OS. This considerably limits potential vulnerability to kernel-based exploits. To learn more about this workload, see [Deploy Trusted Enterprise Virtualization on Azure Stack HCI](deploy/trusted-enterprise-virtualization.md).|
+| Azure Kubernetes Service (AKS)                    | You can leverage Azure Stack HCI to host container-based deployments, which increases workload density and resource usage efficiency. Azure Stack HCI also further enhances the agility and resiliency inherent to Azure Kubernetes deployments. Azure Stack HCI manages automatic failover of VMs serving as Kubernetes cluster nodes in case of a localized failure of the underlying physical components. This supplements the high availability built into Kubernetes, which automatically restarts failed containers on either the same or another VM. To learn more about this workload, see [What is Azure Kubernetes Service on Azure Stack HCI?](https://docs.microsoft.com/azure-stack/aks-hci/overview).|
+| Scale-out storage                                 | S2D is a core technology of Azure Stack HCI that uses industry-standard servers with locally attached drives to offer high availability, performance, and scalability. Using S2D results in significant cost reductions compared with competing offers based on storage area network (SAN) or network-attached storage (NAS) technologies. These benefits result from an innovative design and a wide range of enhancements, such as persistent read/write cache drives, mirror-accelerated parity, nested resiliency, and deduplication.|
+| Disaster recovery for virtualized workloads       | An Azure Stack HCI stretched cluster provides automatic failover of virtualized workloads to a secondary site following a primary site failure. Synchronous replication ensures crash consistency of VM disks.|
+| Data center consolidation and modernization       | Refreshing and consolidating aging virtualization hosts with Azure Stack HCI can improve scalability and make your environment easier to manage and secure. It's also an opportunity to retire legacy SAN storage to reduce footprint and total cost of ownership. Operations and systems administration are simplified with unified tools and interfaces and a single point of support.|
 
 ## Azure integration benefits
 
