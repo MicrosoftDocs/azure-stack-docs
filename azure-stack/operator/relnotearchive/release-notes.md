@@ -643,7 +643,7 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
 
 - Improved reliability of infrastructure backup operations during service failover.
 
-- A new version of the [Azure Stack Nagios plugin](../azure-stack-integrate-monitor.md#integrate-with-nagios) is available that uses the [Azure Active Directory authentication libraries](/azure/active-directory/develop/active-directory-authentication-libraries) (ADAL) for authentication. The plugin now also supports Azure AD and Active Directory Federation Services (AD FS) deployments of Azure Stack. For more information, see the [Nagios plugin exchange](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details) site.
+- A new version of the [Azure Stack Nagios plugin](../azure-stack-integrate-monitor.md#integrate-with-nagios) is available that uses the [Azure Active Directory Authentication Libraries](/azure/active-directory/develop/active-directory-authentication-libraries) (ADAL) for authentication. The plugin now also supports Azure AD and Active Directory Federation Services (AD FS) deployments of Azure Stack. For more information, see the [Nagios plugin exchange](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details) site.
 
 - A new hybrid profile **2019-03-01-Hybrid** was released that supports all the latest features in Azure Stack. Both Azure PowerShell and Azure CLI support the **2019-03-01-Hybrid** profile. The .NET, Ruby, Node.js, Go, and Python SDKs have published packages that support the **2019-03-01-Hybrid** profile. The respective documentation and some samples have been updated to reflect the changes.
 
@@ -1047,7 +1047,7 @@ The following are post-installation known issues for this build version.
 <!-- Daniel 3/28 -->
 - In the user portal, when you try to upload a blob using the **OAuth(preview)** option, the task fails with an error message. To work around this issue, upload the blob using the **SAS** option.
 
-- When logged into the Azure Stack portals you might see notifications about the public Azure portal. You can safely ignore these notifications, as they do not currently apply to Azure Stack (for example, "1 new update - The following updates are now available: Azure portal April 2019 update").
+- When logged into the Azure Stack portals you might see notifications about the global Azure portal. You can safely ignore these notifications, as they do not currently apply to Azure Stack (for example, "1 new update - The following updates are now available: Azure portal April 2019 update").
 
 - In the user portal dashboard, when you select the **Feedback** tile, an empty browser tab opens. As a workaround, you can use [Azure Stack User Voice](https://aka.ms/azurestackuservoice) to file a User Voice request.
 
@@ -1192,7 +1192,7 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 
   If the `AzsControlPlane` parameter is included when **Test-AzureStack** is executed, you will see the following failure in the **Test-AzureStack** output: **FAIL Azure Stack Control Plane Websites Summary**. You can safely ignore this specific error.
 
-- When Azure Stack is managed by System Center Operations Manager (SCOM), make sure to update the [Management Pack for Microsoft Azure Stack](https://www.microsoft.com/download/details.aspx?id=55184) to version 1.0.3.11 before applying 1902.
+- When Azure Stack is managed by System Center Operations Manager, make sure to update the [Management Pack for Microsoft Azure Stack](https://www.microsoft.com/download/details.aspx?id=55184) to version 1.0.3.11 before applying 1902.
 
 - The package format for the Azure Stack update has changed from **.bin/.exe/.xml** to **.zip/.xml** starting with the 1902 release. Customers with connected Azure Stack scale units will see the **Update available** message in the portal. Customers that are not connected can now simply download and import the .zip file with the corresponding .xml.
 
@@ -1238,7 +1238,7 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 1436561	Bug 3949187: [Bug Fix] Remove AzsStorageSvcsSummary test from SecretRotationReadiness Test-AzureStack flag	Diagnostics
 1404512	3849946: Get-AzureStackLog should collect all child folders from c:\Windows\Debug	Diagnostics 
 -->
-- Improvements to Azure stack diagnostic tools to improve log collection reliability and performance. Additional logging for networking and identity services. 
+- Improvements to Azure Stack diagnostic tools to improve log collection reliability and performance. Additional logging for networking and identity services. 
 
 <!-- 1384958	Adding a Test-AzureStack group for Secret Rotation	Diagnostics -->
 - Improvements to the reliability of Test-AzureStack for secret rotation readiness test.
@@ -1473,7 +1473,7 @@ If you already have 1901 and you have not installed any hotfixes yet, you can in
     Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
 
-- When Azure Stack is managed by System Center Operations Manager (SCOM), be sure to update the Management Pack for Microsoft Azure Stack to version 1.0.3.11 before applying 1901.
+- When Azure Stack is managed by System Center Operations Manager, be sure to update the Management Pack for Microsoft Azure Stack to version 1.0.3.11 before applying 1901.
 
 ## New features
 
@@ -1798,7 +1798,7 @@ Azure Stack releases hotfixes on a regular basis. Be sure to install the [latest
 
     During the installation of this update, the Azure Stack user portal is unavailable while the extension host is being configured. The configuration of the extension host can take up to 5 hours. During that time, you can check the status of an update, or resume a failed update installation using [Azure Stack Administrator PowerShell or the privileged endpoint](../azure-stack-monitor-update.md).
 
-- When Azure Stack is managed by System Center Operations Manager (SCOM), be sure to update the Management Pack for Microsoft Azure Stack to version 1.0.3.11 before applying 1811.
+- When Azure Stack is managed by System Center Operations Manager, be sure to update the Management Pack for Microsoft Azure Stack to version 1.0.3.11 before applying 1811.
 
 ## New features
 
@@ -2139,7 +2139,8 @@ This update includes the following improvements for Azure Stack:
 
 - With this release, Azure Stack integrated systems supports configurations of 4-16 nodes. You can use the [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) to help in your planning for Azure Stack capacity and configuration.
 
-- <!--  2712869   | IS  ASDK -->  **Azure Stack syslog client (General Availability)**  This client allows the forwarding of audits, alerts, and security logs related to the Azure Stack infrastructure to a syslog server or security information and event management (SIEM) software external to Azure Stack. The syslog client now supports specifying the port on which the syslog server is listening.
+<!--  2712869   | IS  ASDK --> 
+- **Azure Stack syslog client (General Availability)**:  This client allows the forwarding of audits, alerts, and security logs related to the Azure Stack infrastructure to a syslog server or security information and event management (SIEM) software external to Azure Stack. The syslog client now supports specifying the port on which the syslog server is listening.
 
    With this release, the syslog client is generally available, and it can be used in production environments.
 
@@ -2249,17 +2250,19 @@ For more information about these vulnerabilities, click on the preceding links, 
   Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary
   ```
 
-- When Azure Stack is managed by System Center Operations Manager (SCOM), be sure to update the Management Pack for Microsoft Azure Stack to version 1.0.3.11 before applying 1809.
+- When Azure Stack is managed by System Center Operations Manager, be sure to update the Management Pack for Microsoft Azure Stack to version 1.0.3.11 before applying 1809.
 
 ### Known issues with the update process
 
 - When you run [Test-AzureStack](../azure-stack-diagnostic-test.md) after the 1809 update, a warning message from the Baseboard Management Controller (BMC) is displayed. You can safely ignore this warning.
 
-- <!-- 2468613 - IS --> During installation of this update, you might see alerts with the title *Error - Template for FaultType UserAccounts.New is missing.*  You can safely ignore these alerts. These alerts will close automatically after installation of this update completes.
+<!-- 2468613 - IS --> 
+- During installation of this update, you might see alerts with the title *Error - Template for FaultType UserAccounts.New is missing.*  You can safely ignore these alerts. These alerts will close automatically after installation of this update completes.
 
-- <!-- 2489559 - IS --> Do not attempt to create virtual machines during the installation of this update. For more information about managing updates, see [Manage updates in Azure Stack overview](../azure-stack-updates.md#plan-for-updates).
-
-- <!-- 3139614 | IS --> If you've applied an update to Azure Stack from your OEM, the **Update available** notification may not appear in the Azure Stack Admin portal. To install the Microsoft update, download and import it manually using the instructions located here [Apply updates in Azure Stack](../azure-stack-apply-updates.md).
+   <!-- 2489559 - IS --> 
+- Do not attempt to create virtual machines during the installation of this update. For more information about managing updates, see [Manage updates in Azure Stack overview](../azure-stack-updates.md#plan-for-updates).
+   <!-- 3139614 | IS -->
+- If you've applied an update to Azure Stack from your OEM, the **Update available** notification may not appear in the Azure Stack Admin portal. To install the Microsoft update, download and import it manually using the instructions located here [Apply updates in Azure Stack](../azure-stack-apply-updates.md).
 
 ### Post-update steps
 
@@ -2364,7 +2367,7 @@ The following are post-installation known issues for this build version.
 - When you create a new virtual machine (VM) using the Azure Stack portal, and you select the VM size, the USD/Month column is displayed with an **Unavailable** message. This column should not appear; displaying the VM pricing column is not supported in Azure Stack.
 
 <!-- 2869209 - IS, ASDK --> 
-- When using the [**Add-AzsPlatformImage** cmdlet](/powershell/module/azs.compute.admin/add-azsplatformimage?preserve-view=true&view=azurestackps-1.4.0), you must use the **-OsUri** parameter as the storage account URI where the disk is uploaded. If you use the local path of the disk, the cmdlet fails with the following error: *Long running operation failed with status �Failed�*. 
+- When using the [**Add-AzsPlatformImage** cmdlet](/powershell/module/azs.compute.admin/add-azsplatformimage?preserve-view=true&view=azurestackps-1.4.0), you must use the **-OsUri** parameter as the storage account URI where the disk is uploaded. If you use the local path of the disk, the cmdlet fails with the following error: *Long running operation failed with status 'Failed'*. 
 
 <!--  2795678 - IS, ASDK --> 
 - When you use the portal to create virtual machines (VM) in a premium VM size (DS,Ds_v2,FS,FSv2), the VM is created in a standard storage account. Creation in a standard storage account does not affect functionally, IOPs, or billing. 
@@ -2487,7 +2490,7 @@ This update includes the following improvements for Azure Stack.
 - **Gallery items for Virtual Machine Scale Sets are now built-in**. The Virtual Machine Scale Set gallery item is now made available in the user and administrator portals without having to download it.  If you upgrade to 1808 it is available upon completion of upgrade.  
 
 <!-- IS, ASDK --> 
-- **Virtual Machine Scale Set scaling**. You can use the portal to [scale a Virtual Machine Scale Set](../azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set) (VMSS).    
+- **Virtual machine scale set scaling**. You can use the portal to [scale a virtual machine scale set](../azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set) (VMSS).    
 
 <!-- 2489570 | IS ASDK--> 
 - **Support for custom IPSec/IKE policy configurations** for [VPN gateways in Azure Stack](../../user/azure-stack-vpn-gateway-about-vpn-gateways.md).
@@ -2829,13 +2832,13 @@ This update includes the following improvements for Azure Stack.
   For more information, see [Azure Stack syslog forwarding](../azure-stack-integrate-security.md).
 
 <!-- ####### | IS, ASDK | --> 
-- **Azure Resource Manager includes the region name.** With this release, objects retrieved from the Azure Resource Manager will now include the region name attribute. If an existing PowerShell script directly passes the object to another cmdlet, the script may produce an error and fail. This is Azure Resource Manager compliant behavior, and requires the calling client to subtract the region attribute. For more information about the Azure Resource Manager see [Azure Resource Manager Documentation](/azure/azure-resource-manager/). verify 8-10 mdb -->
+- **Azure Resource Manager includes the region name.** With this release, objects retrieved from the Azure Resource Manager will now include the region name attribute. If an existing PowerShell script directly passes the object to another cmdlet, the script may produce an error and fail. This is Azure Resource Manager compliant behavior, and requires the calling client to subtract the region attribute. For more information about the Azure Resource Manager see [Azure Resource Manager Documentation](/azure/azure-resource-manager/). <!-- verify 8-10 mdb -->
 
 <!-- TBD | IS, ASDK -->  
 - **Changes to Delegated Providers functionality.** Starting with 1807 the Delegated Providers model is simplified in order to better align with the Azure reseller model and Delegated Providers will not be able to create other Delegated Providers, essentially flattening the model and making the Delegated Provider feature available on a single level. To enable the transition to the new model and the management of the subscriptions, the user-subscriptions can now be moved between new or existing Delegated Provider subscriptions that belong to the same Directory tenant. User-subscriptions belonging to the Default Provider Subscription can also be moved to the Delegated Provider Subscriptions in the same Directory-tenant.  For more information see [Delegate offers in Azure Stack](../azure-stack-delegated-provider.md).
 
 <!-- 2536808 IS ASDK --> 
-- **Improved VM creation time** for VMs that are created with images you download from the Azure marketplace.
+- **Improved VM creation time** for VMs that are created with images you download from Azure Marketplace.
 
 <!-- TBD | IS, ASDK -->  
 - **Azure Stack Capacity Planner usability improvements**. The Azure Stack [Capacity Planner](https://aka.ms/azstackcapacityplanner) now offers a simplified experience for inputting S2D cache and S2D capacity when defining solution SKUs. The 1000 VM limit has been removed.
@@ -3516,7 +3519,7 @@ The following are now available, but don't require Azure Stack update 1804.
 
 
 ### Known issues with the update process   
-- During installation of the 1804 update, you might see alerts with the title *Error � Template for FaultType UserAccounts.New is missing.*  You can safely ignore these alerts. These alerts will close automatically after the update to 1804 completes.   
+- During installation of the 1804 update, you might see alerts with the title *Error : Template for FaultType UserAccounts.New is missing.*  You can safely ignore these alerts. These alerts will close automatically after the update to 1804 completes.   
  
 <!-- TBD - IS --> 
 - Do not attempt to create virtual machines during the installation of this update. For more information about managing updates, see [Manage updates in Azure Stack overview](../azure-stack-updates.md).
@@ -3556,7 +3559,7 @@ The following are post-installation known issues for build  **20180513.1**.
     - For Azure Stack integrated systems, use https://aka.ms/newsupportrequest.
 
 <!-- 2403291 - IS ASDK --> 
-- You might not have use of the horizontal scroll bar along the bottom of the admin and user portals. If you can�t access the horizontal scroll bar, use the breadcrumbs to navigate to a previous blade in the portal by selecting the name of the blade you want to view from the breadcrumb list found at the top left of the portal.
+- You might not have use of the horizontal scroll bar along the bottom of the admin and user portals. If you can't access the horizontal scroll bar, use the breadcrumbs to navigate to a previous blade in the portal by selecting the name of the blade you want to view from the breadcrumb list found at the top left of the portal.
 
 <!-- TBD - IS --> 
 - It might not be possible to view compute or storage resources in the administrator portal. The cause of this issue is an error during the installation of the update that causes the update to be incorrectly reported as successful. If this issue occurs, contact Microsoft Customer Support Services for assistance.
@@ -3680,7 +3683,7 @@ The following are post-installation known issues for build  **20180513.1**.
       
       $RuleConfig_Inbound_Rdp_3389 =  $nsg | Get-AzureRmNetworkSecurityRuleConfig -Name "Inbound_Rdp_3389"
       
-      ##This doesn�t work. Need to set properties again even in case of edit
+      ##This doesn't work. Need to set properties again even in case of edit
       
       #Set-AzureRmNetworkSecurityRuleConfig -Name "Inbound_Rdp_3389" -NetworkSecurityGroup $nsg -Access Allow  
       
@@ -3710,7 +3713,7 @@ The following are post-installation known issues for build  **20180513.1**.
         
         $RuleConfig_Inbound_Rdp_3389 =  $nsg | Get-AzureRmNetworkSecurityRuleConfig -Name "Inbound_Rdp_3389"
         
-        ##This doesn�t work. Need to set properties again even in case of edit
+        ##This doesn't work. Need to set properties again even in case of edit
     
         #Set-AzureRmNetworkSecurityRuleConfig -Name "Inbound_Rdp_3389" -NetworkSecurityGroup $nsg -Access Allow  
     
@@ -3759,7 +3762,7 @@ The following are post-installation known issues for build  **20180513.1**.
 
 #### Usage  
 <!-- TBD - IS ASDK --> 
-- Usage Public IP address usage meter data shows the same *EventDateTime* value for each record instead of the *TimeDate* stamp that shows when the record was created. Currently, you can�t use this data to perform accurate accounting of public IP address usage.
+- Usage Public IP address usage meter data shows the same *EventDateTime* value for each record instead of the *TimeDate* stamp that shows when the record was created. Currently, you can't use this data to perform accurate accounting of public IP address usage.
 
 
 <!-- #### Identity -->
@@ -3819,7 +3822,7 @@ This update includes the following improvements and fixes for Azure Stack.
 - **Automatic redirect to HTTPS** when you use HTTP to access the administrator and user portals. This improvement was made based on [UserVoice](https://feedback.azure.com/forums/344565-azure-stack/suggestions/32205385-it-would-be-great-if-there-was-a-automatic-redirec) feedback for Azure Stack. 
 
 <!-- 2202621  --> 
-- **Access the Marketplace** � You can now open the Azure Stack Marketplace by using the [+New](https://ms.portal.azure.com/#create/hub) option from within the admin and user portals the same way you do in the Azure portals.
+- **Access the Marketplace** - You can now open the Azure Stack Marketplace by using the [+New](https://ms.portal.azure.com/#create/hub) option from within the admin and user portals the same way you do in the Azure portals.
  
 <!-- 2202621 --> 
 - **Azure Monitor** - Azure Stack adds [Azure Monitor](/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) to the admin and user portals. This includes new explorers for metrics and activity logs. To access this Azure Monitor from external networks, port **13012** must be open in firewall configurations. For more information about ports required by Azure Stack, see [Azure Stack datacenter integration - Publish endpoints](../azure-stack-integrate-endpoints.md).
@@ -3865,7 +3868,7 @@ This update includes the following improvements and fixes for Azure Stack.
 
 ### Known issues with the update process    
 <!-- 2328416 --> 
-During installation of the 1803 update, there can be downtime of the blob service and internal services that use blob service. This includes some virtual machine operations. This down time can cause failures of tenant operations or alerts from services that can�t access data. This issue resolves itself when the update completes installation. 
+During installation of the 1803 update, there can be downtime of the blob service and internal services that use blob service. This includes some virtual machine operations. This down time can cause failures of tenant operations or alerts from services that can't access data. This issue resolves itself when the update completes installation. 
 
 
 
@@ -3979,7 +3982,7 @@ The following are post-installation known issues for build  **20180323.2**.
       
       $RuleConfig_Inbound_Rdp_3389 =  $nsg | Get-AzureRmNetworkSecurityRuleConfig -Name "Inbound_Rdp_3389"
       
-      ##This doesn�t work. Need to set properties again even in case of edit
+      ##This doesn't work. Need to set properties again even in case of edit
       
       #Set-AzureRmNetworkSecurityRuleConfig -Name "Inbound_Rdp_3389" -NetworkSecurityGroup $nsg -Access Allow  
       
@@ -4009,7 +4012,7 @@ The following are post-installation known issues for build  **20180323.2**.
         
         $RuleConfig_Inbound_Rdp_3389 =  $nsg | Get-AzureRmNetworkSecurityRuleConfig -Name "Inbound_Rdp_3389"
         
-        ##This doesn�t work. Need to set properties again even in case of edit
+        ##This doesn't work. Need to set properties again even in case of edit
     
         #Set-AzureRmNetworkSecurityRuleConfig -Name "Inbound_Rdp_3389" -NetworkSecurityGroup $nsg -Access Allow  
     
@@ -4055,7 +4058,7 @@ The following are post-installation known issues for build  **20180323.2**.
 
 
 #### Usage  
-- Usage Public IP address usage meter data shows the same *EventDateTime* value for each record instead of the *TimeDate* stamp that shows when the record was created. Currently, you can�t use this data to perform accurate accounting of public IP address usage.
+- Usage Public IP address usage meter data shows the same *EventDateTime* value for each record instead of the *TimeDate* stamp that shows when the record was created. Currently, you can't use this data to perform accurate accounting of public IP address usage.
 
 <!-- #### Identity -->
 
@@ -4225,7 +4228,7 @@ The following are post-installation known issues for build  **20180302.1**
 
 - Azure Stack supports using only Fixed type VHDs. Some images offered through the marketplace on Azure Stack use dynamic VHDs but those have been removed. Resizing a virtual machine (VM) with a dynamic disk attached to it leaves the VM in a failed state.
 
-  To mitigate this issue, delete the VM without deleting the VM�s disk, a VHD blob in a storage account. Then convert the VHD from a dynamic disk to a fixed disk, and then re-create the virtual machine.
+  To mitigate this issue, delete the VM without deleting the VM's disk, a VHD blob in a storage account. Then convert the VHD from a dynamic disk to a fixed disk, and then re-create the virtual machine.
 
 - When you create an availability set in the portal by going to **New** > **Compute** > **Availability set**, you can only create an availability set with a fault domain and update domain of 1. As a workaround, when creating a new virtual machine, create the availability set by using PowerShell, CLI, or from within the portal.
 
@@ -4276,7 +4279,7 @@ The following are post-installation known issues for build  **20180302.1**
       
       $RuleConfig_Inbound_Rdp_3389 =  $nsg | Get-AzureRmNetworkSecurityRuleConfig -Name "Inbound_Rdp_3389"
       
-      ##This doesn�t work. Need to set properties again even in case of edit
+      ##This doesn't work. Need to set properties again even in case of edit
       
       #Set-AzureRmNetworkSecurityRuleConfig -Name "Inbound_Rdp_3389" -NetworkSecurityGroup $nsg -Access Allow  
       
@@ -4306,7 +4309,7 @@ The following are post-installation known issues for build  **20180302.1**
         
         $RuleConfig_Inbound_Rdp_3389 =  $nsg | Get-AzureRmNetworkSecurityRuleConfig -Name "Inbound_Rdp_3389"
         
-        ##This doesn�t work. Need to set properties again even in case of edit
+        ##This doesn't work. Need to set properties again even in case of edit
     
         #Set-AzureRmNetworkSecurityRuleConfig -Name "Inbound_Rdp_3389" -NetworkSecurityGroup $nsg -Access Allow  
     
