@@ -1,12 +1,12 @@
 ---
 title: Azure Stack Hub archived release notes 
 description: Archived release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
-author: BryanLa
+author: sethmanheim
 
 ms.topic: article
 ms.date: 03/18/2021
-ms.author: bryanla
-ms.reviewer: bryanla
+ms.author: sethm
+ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
 ROBOTS: NOINDEX
 ---

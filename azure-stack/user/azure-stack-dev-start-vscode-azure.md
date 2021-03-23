@@ -6,7 +6,7 @@ author: mattbriggs
 ms.topic: conceptual
 ms.date: 12/2/2020
 ms.author: mabrigg
-ms.reviewer: sijuman
+ms.reviewer: raymondl
 ms.lastreviewed: 12/2/2020
 
 # Intent: As a developer, I want to use VS Code to connect to Azure Stack Hub so that I can provision resources.

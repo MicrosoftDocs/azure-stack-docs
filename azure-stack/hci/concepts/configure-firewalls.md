@@ -4,7 +4,7 @@ description: This topic provides guidance on how to configure firewalls for the 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 03/1/2021
 ---
 
 # Configure firewalls for Azure Stack HCI
@@ -25,7 +25,6 @@ This topic describes how to optionally use a highly locked-down firewall configu
 
    >[!IMPORTANT]
    > If outbound connectivity is restricted by your external corporate firewall or proxy server, ensure that the URLs listed in the table below are not blocked. For related information, see the "Networking configuration" section of [Overview of Azure Arc enabled servers agent](/azure/azure-arc/servers/agent-overview#networking-configuration).
-
 
 As shown below, Azure Stack HCI accesses Azure using more than one firewall potentially.
 
@@ -75,15 +74,20 @@ During the Azure registration process, when you run either `Register-AzStackHCI`
 Although the PowerShell Gallery is hosted on Azure, currently there isn't a service tag for it. If you can't run the `Register-AzStackHCI` cmdlet from a server node because of no internet access, we recommend downloading the modules to your management computer, and then manually transferring them to the server node where you want to run the cmdlet.
 
 ## Set up a proxy server
-To set up a proxy server for Azure Stack HCI, run the following PowerShell command as an administrator:
+To set up a proxy server for Azure Stack HCI, run the following PowerShell command as an administrator on each server in the cluster:
 
 ```powershell
 Set-WinInetProxy -ProxySettingsPerUser 0 -ProxyServer webproxy1.com:9090
 ```
 
-Use the `ProxySettingsPerUser 0` flag to make the proxy configuration server-wide instead of per user, which is the default. 
+Use the `ProxySettingsPerUser 0` flag to make the proxy configuration server-wide instead of per user, which is the default.
+
+To remove the proxy configuration, run the PowerShell command `Set-WinInetProxy` without arguments.
 
 Download the WinInetProxy.psm1 script at: [PowerShell Gallery | WinInetProxy.psm1 0.1.0](https://www.powershellgallery.com/packages/WinInetProxy/0.1.0/Content/WinInetProxy.psm1).
+
+   >[!NOTE]
+   > Using the **Proxy** setting in Windows Admin Center redirects all Windows Admin Center outbound traffic (for example, download extensions, connecting to Azure and so on).
 
 ## Network port requirements
 Ensure that the proper network ports are open between all server nodes both within a site and between sites (for stretched clusters). You'll need appropriate firewall and router rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct), and WS-MAN (port 5985) bi-directional traffic between all servers in the cluster.

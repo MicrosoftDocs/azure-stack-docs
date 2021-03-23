@@ -21,7 +21,9 @@ sections:
 
       - question: Does my data stored on Azure Stack HCI get sent to the cloud?
         answer: |
-          No. Customer data, including the names, metadata, configuration, and contents of your on-premises virtual machines (VMs) is never sent to the cloud unless you turn on additional services expressly for that purpose, like Azure Backup or Azure Site Recovery, or unless you enroll those VMs individually into cloud management services like Azure Arc.
+          No. Customer data, including the names, metadata, configuration, and contents of your on-premises virtual machines (VMs) is never sent to the cloud unless you turn on additional services, like Azure Backup or Azure Site Recovery, or unless you enroll those VMs individually into cloud management services like Azure Arc.
+
+          Because Azure Stack HCI doesn't store customer data in the cloud, business continuity disaster recovery (BCDR) for the customer's on-premises data is defined and controlled by the customer. To set up your own site-to-site replication using a stretched cluster, see [Stretched clusters overview](concepts/stretched-clusters.md).
           
           To learn more about the diagnostic data we collect to keep Azure Stack HCI secure, up to date, and working as expected, see [Azure Stack HCI data collection](concepts/data-collection.md) and [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
 

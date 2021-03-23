@@ -1,10 +1,140 @@
 {
   "redirections": [
     { 
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1802.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1802", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1803.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1803", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1804.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1804", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1805.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1805", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1807.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1807", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1808.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1808", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1809.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1809", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1811.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1811", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1901.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1901", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1902.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1902", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1903.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1903", 
+      "redirect_document_id": false
+    },                                 
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/known-issues-1904.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/known-issues?view=azs-1904", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/known-issues-1905.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/known-issues?view=azs-1905", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/known-issues-1906.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/known-issues?view=azs-1906", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/known-issues-1907.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/known-issues?view=azs-1907", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/known-issues-1908.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/known-issues?view=azs-1908", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/known-issues-1910.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/known-issues?view=azs-1910", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-1904.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1904", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-1905.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1905", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-1906.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1906", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-1907.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1907", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-1908.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1908", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-1910.md", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1910", 
+      "redirect_document_id": false
+    },                          
+    { 
+      "source_path": "azure-stack/aks-hci/concepts-networking.md", 
+      "redirect_url": "/azure-stack/aks-hci/concepts-node-networking", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/aks-hci/proxy.md", 
+      "redirect_url": "/azure-stack/aks-hci/set-proxy-settings", 
+      "redirect_document_id": false
+    },
+    { 
       "source_path": "azure-stack/mdc/customer-journey.md", 
       "redirect_url": "/azure-stack/mdc/integration-overview", 
       "redirect_document_id": false
     }, 
+    { 
+      "source_path": "azure-stack/ruggedized/customer-journey.md", 
+      "redirect_url": "/azure-stack/ruggedized/integration-overview", 
+      "redirect_document_id": false
+    },
     { 
       "source_path": "azure-stack/aks-hci/persistent-storage-windows-nodes.md", 
       "redirect_url": "/azure-stack/aks-hci/persistent-volume", 

@@ -1,17 +1,17 @@
 ---
-title: Create volumes in Azure Stack HCI and Windows Server clusters
-description: How to create volumes in Azure Stack HCI and Windows Server clusters using Windows Admin Center and PowerShell.
+title: Create volumes on Azure Stack HCI and Windows Server clusters
+description: How to create volumes on Azure Stack HCI and Windows Server clusters by using Windows Admin Center and PowerShell.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
 ms.date: 02/17/2021
 ---
 
-# Create volumes in Azure Stack HCI and Windows Server clusters
+# Create volumes on Azure Stack HCI and Windows Server clusters
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016
 
-This topic describes how to create volumes on a cluster by using Windows Admin Center and Windows PowerShell, how to work with files on the volumes, and how to enable deduplication and compression, integrity checksums, or BitLocker encryption on volumes. To learn how to create volumes and set up replication for stretched clusters, see [Create stretched volumes](create-stretched-volumes.md).
+This article describes how to create volumes on a cluster by using Windows Admin Center and Windows PowerShell, how to work with files on the volumes, and how to enable deduplication and compression, integrity checksums, or BitLocker encryption on volumes. To learn how to create volumes and set up replication for stretched clusters, see [Create stretched volumes](create-stretched-volumes.md).
 
 > [!TIP]
 > If you haven't already, check out [Plan volumes](../concepts/plan-volumes.md) first.
