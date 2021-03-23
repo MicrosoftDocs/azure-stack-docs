@@ -279,7 +279,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Fixes
 
-- Fixed an issue with compatibility with future Azure Stack OEM updates and an issue with VM deployment useing customer user images. This issue was found in 1907 and fixed in hotfix [KB4517473](https://support.microsoft.com/en-us/help/4517473/azure-stack-hotfix-1-1907-12-44)  
+- Fixed an issue with compatibility with future Azure Stack OEM updates and an issue with VM deployment using customer user images. This issue was found in 1907 and fixed in hotfix [KB4517473](https://support.microsoft.com/en-us/help/4517473/azure-stack-hotfix-1-1907-12-44)  
 - Fixed an issue with OEM Firmware update and corrected misdiagnosis in Test-AzureStack for Fabric Ring Health. This issue was found in 1907 and fixed in hotfix [KB4515310](https://support.microsoft.com/en-us/help/4515310/azure-stack-hotfix-1-1907-7-35)
 - Fixed an issue with OEM Firmware update process. This issue was found in 1907 and fixed in hotfix [KB4515650](https://support.microsoft.com/en-us/help/4515650/azure-stack-hotfix-1-1907-8-37)
 
@@ -1880,7 +1880,7 @@ This update includes the following new features and improvements for Azure Stack
 - Fixed an issue that generated noisy alerts indicating that an Infrastructure Role Instance was unavailable or Scale Unit Node was offline.
 
 <!-- 2724961 - IS ASDK -->
-- Fiexed an issue in which the VM overview page cannot correctly show the VM metrics chart. 
+- Fixed an issue in which the VM overview page cannot correctly show the VM metrics chart. 
 
 ## Changes
 
@@ -3552,7 +3552,7 @@ The following are post-installation known issues for build  **20180513.1**.
 
 
 <!-- TBD -  IS ASDK -->
-- The ability [to open a new support request from the dropdown](../azure-stack-manage-portals.md#quick-access-to-help-and-support) from within the administrator portal isn�t available. Instead, use the following link:     
+- The ability [to open a new support request from the dropdown](../azure-stack-manage-portals.md#quick-access-to-help-and-support) from within the administrator portal isn't available. Instead, use the following link:     
     - For Azure Stack integrated systems, use https://aka.ms/newsupportrequest.
 
 <!-- 2403291 - IS ASDK --> 
@@ -3885,7 +3885,7 @@ The following are post-installation known issues for build  **20180323.2**.
 - When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
   Workaround:  To resolve this issue after you install this update, use step 3 from the [Trigger automation to configure claims provider trust in Azure Stack](../azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-hub) procedure to reset the owner of the default provider subscription.   
 
-- The ability [to open a new support request from the dropdown](../azure-stack-manage-portals.md#quick-access-to-help-and-support) from within the administrator portal isn�t available. Instead, use the following link:     
+- The ability [to open a new support request from the dropdown](../azure-stack-manage-portals.md#quick-access-to-help-and-support) from within the administrator portal isn't available. Instead, use the following link:     
     - For Azure Stack integrated systems, use https://aka.ms/newsupportrequest.
 
 <!-- 2050709 --> 
@@ -4060,7 +4060,7 @@ The following are post-installation known issues for build  **20180323.2**.
 <!-- #### Identity -->
 
 #### Downloading Azure Stack Tools from GitHub
-- When using the *invoke-webrequest* PowerShell cmdlet to download the Azure Stack tools from Github, you receive an error:     
+- When using the *invoke-webrequest* PowerShell cmdlet to download the Azure Stack tools from GitHub, you receive an error:     
     -  *invoke-webrequest : The request was aborted: Could not create SSL/TLS secure channel.*     
 
   This error occurs because of a recent GitHub support deprecation of the Tlsv1 and Tlsv1.1 cryptographic standards (the default for PowerShell). For more information, see [Weak cryptographic standards removal notice](https://githubengineering.com/crypto-removal-notice/).
@@ -4162,7 +4162,7 @@ The following are post-installation known issues for build  **20180302.1**
 - When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
   Workaround:  To resolve this issue after you install this update, use step 3 from the [Trigger automation to configure claims provider trust in Azure Stack](../azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-hub) procedure to reset the owner of the default provider subscription.   
 
-- The ability [to open a new support request from the dropdown](../azure-stack-manage-portals.md#quick-access-to-help-and-support) from within the administrator portal isn�t available. Instead, use the following link:     
+- The ability [to open a new support request from the dropdown](../azure-stack-manage-portals.md#quick-access-to-help-and-support) from within the administrator portal isn't available. Instead, use the following link:     
     - For Azure Stack integrated systems, use https://aka.ms/newsupportrequest.
 
 <!-- 2050709 --> 
@@ -4354,7 +4354,7 @@ The following are post-installation known issues for build  **20180302.1**
 <!-- #### Identity -->
 
 #### Downloading Azure Stack Tools from GitHub
-- When using the *invoke-webrequest* PowerShell cmdlet to download the Azure Stack tools from Github, you receive an error:     
+- When using the *invoke-webrequest* PowerShell cmdlet to download the Azure Stack tools from GitHub, you receive an error:     
     -  *invoke-webrequest : The request was aborted: Could not create SSL/TLS secure channel.*     
 
   This error occurs because of a recent GitHub support deprecation of the Tlsv1 and Tlsv1.1 cryptographic standards (the default for PowerShell). For more information, see [Weak cryptographic standards removal notice](https://githubengineering.com/crypto-removal-notice/).

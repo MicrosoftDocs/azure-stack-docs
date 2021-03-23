@@ -307,7 +307,7 @@ To access known issues for a different version, use the version selector dropdow
 ### Subscriptions Lock blade
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the administrator portal, the **Lock** blade for user subscriptions has two butons that say **subscription**.
+- Cause: In the administrator portal, the **Lock** blade for user subscriptions has two buttons that say **subscription**.
 - Occurrence: Common
 
 ### Subscription permissions
@@ -1192,5 +1192,5 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 ::: moniker-end
 
 ::: moniker range="<azs-1904"
-Known issues for this release are combined with the [release notes](release-notes.md)
+Known issues for this release are combined with the [archived release notes](release-notes.md)
 ::: moniker-end
