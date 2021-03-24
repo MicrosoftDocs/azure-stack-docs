@@ -104,7 +104,7 @@ Name SwitchType NetAdapterInterfaceDescription
 extSwitch External Mellanox ConnectX-3 Pro Ethernet Adapter
 ```
 
-To create a virtual network for the nodes in your deployment to use, create an environment variable with the [new-akshcinetworksetting](.\new-akshcinetworksetting.md) PowerShell command. This will be used later to configure a deployment that uses static IP. If you want to configure your AKS deployment with DHCP, visit [new-akshcinetworksetting](.\new-akshcinetworksetting.md) for examples.
+To create a virtual network for the nodes in your deployment to use, create an environment variable with the **New-AksHciNetworkSetting** PowerShell command. This will be used later to configure a deployment that uses static IP. If you want to configure your AKS deployment with DHCP, visit [New-AksHciNetworkSetting](.\new-akshcinetworksetting.md) for examples. You can also review some [networking node concepts](./concepts-node-networking.md).
 
 ```powershell
 #static IP
