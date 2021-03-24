@@ -58,7 +58,7 @@ Review this checklist in order to prepare for an Azure Stack Hub update. This ar
 | Apply latest hotfixes | Apply the latest hotfixes applicable to the updated version. |
 | Retrieve encryption keys | Retrieve the data at rest encryption keys and securely store them outside of your Azure Stack Hub deployment. Follow the [instructions on how to retrieve the keys](azure-stack-security-bitlocker.md). |
 |  |  |
-| Re-enable multi-tenancy | In case of a multi-tenanted Azure Stack Hub, [make sure you configure all guest directory tenants](azure-stack-enable-multitenancy.md#configure-guest-directory) after a successful update. |
+| Re-enable multi-tenancy | In case of a multi-tenanted Azure Stack Hub, [make sure you configure all guest directory tenants](enable-multitenancy.md#configure-guest-directory) after a successful update. |
 
 ## Next steps
 
