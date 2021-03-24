@@ -42,20 +42,20 @@ When switching from DHCP to static IP, WAC displayed an error that said the WinR
 
 To resolve this issue, use the **SetSPN** command to create the SPN. From a command prompt on the WAC gateway, run the following command: 
 
-```Bash
+```
 Setspn /Q WSMAN/<FQDN on the Azure Stack HCI Server> 
 ```
 
 Next, if any of the servers in the environment return the message `No Such SPN Found`, then log in to that server and run the following commands:  
 
-```Bash
+```
 Setspn /S WSMAN/<server name> <server name> 
 Setspn /S WSMAN/<FQDN of server> <server name> 
 ```
 
 Finally, on the WAC gateway, run the following to ensure that it gets new server information from the domain controller:
 
-```Bash
+```
 Klist purge 
 ```
 
