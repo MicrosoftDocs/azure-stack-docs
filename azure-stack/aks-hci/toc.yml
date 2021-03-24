@@ -92,7 +92,7 @@
             href: troubleshoot.md
           - name: Resolve known issues
             href: troubleshoot-known-issues.md
-          - name: Windows Admin Console
+          - name: Windows Admin Center
             href: troubleshoot-windows-admin-center.md
 - name: Related
   items:
