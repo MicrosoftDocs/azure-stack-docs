@@ -138,5 +138,5 @@ For CredSSP to function successfully in the Cluster Create wizard, Windows Admin
 
 ## Next steps
 - [Troubleshoot common issues](./troubleshoot.md)
-- [Troubleshoot Windows Admin Center](./troubleshoot-wac.md)
+- [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
 - [Resolve known issues](./troubleshoot-known-issues.md)
