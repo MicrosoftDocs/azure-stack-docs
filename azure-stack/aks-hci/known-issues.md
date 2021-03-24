@@ -136,4 +136,7 @@ If you receive an error in either wizard about a wrong configuration, perform cl
 ## Error occurs when attempting to use Windows Admin Center
 For CredSSP to function successfully in the Cluster Create wizard, Windows Admin Center must be installed and used by the same account. If you install Windows Admin Center with one account and try to use it with another, you'll get errors.
 
-
+## Next steps
+- [Troubleshoot common issues](./troubleshoot.md)
+- [Troubleshoot Windows Admin Center](./troubleshoot-wac.md)
+- [Resolve known issues](./troubleshoot-known-issues.md)
