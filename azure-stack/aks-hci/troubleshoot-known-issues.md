@@ -11,10 +11,7 @@ ms.author: v-susbo
 
 This article includes workaround steps for resolving known issues that occur when using Azure Kubernetes Service on Azure Stack HCI.
 
-For issues not covered by this article, see the following topics:
-- [Troubleshooting Kubernetes clusters](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)
-- [AKS on Azure Stack HCI troubleshooting](./troubleshoot.md)
-- [Troubleshooting Windows Admin Center](./troubleshoot-wac.md)
+If you need additional troubleshooting data not covered by this article, [AKS troubleshooting](./troubleshoot.md), or [Windows Admin Center troubleshooting](./troubleshoot-wac.md), see [Troubleshooting Kubernetes clusters](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/).
 
 ## _Install-AksHci_ timed out with an error
 
@@ -24,7 +21,7 @@ After running `Install-AksHci`, the installation stopped and displayed a **waiti
 \kubectl.exe --kubeconfig=C:\AksHci\0.9.7.3\kubeconfig-clustergroup-management get akshciclusters -o json returned a non zero exit code 1 [Unable to connect to the server: dial tcp 192.168.0.150:6443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.]
 ```
 
-There are multiple reasons why an installation might fail with the **waiting for API server** error. See the following sections for possible causes of this error.
+There are multiple reasons why an installation might fail with the **waiting for API server** error. See the following sections for possible causes and solutions for this error.
 
 ### Incorrect DNS server
 
@@ -64,3 +61,9 @@ kube-system   kube-proxy-qqnkr                                1/1     Terminatin
 ```
 
 Since _kubelet_ ended up in a bad state and can no longer talk to the API server, the only solution is to restart the _kubelet_ service. After restarting, the cluster goes into a _running_ state.  
+
+## Next steps
+- [Troubleshoot common issues](./troubleshoot.md)
+- [Troubleshoot Windows Admin Center](./troubleshoot-wac.md)
+
+If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
