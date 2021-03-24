@@ -7,7 +7,7 @@ metadata:
   ms.author: v-johcob
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
-  ms.date: 1/21/2021
+  ms.date: 3/24/2021
     
 title: Azure Stack HCI FAQ
 summary: The Azure Stack HCI FAQ provides information on Azure Stack HCI connectivity with the cloud, and how Azure Stack HCI relates to Windows Server and Azure Stack Hub.
@@ -87,7 +87,7 @@ sections:
         answer: |
           Azure Stack HCI features the same Hyper-V-based software-defined compute, storage, and networking technologies as Azure Stack Hub. Both offerings meet rigorous testing and validation criteria to ensure reliability and compatibility with the underlying hardware platform.
           
-      - question: How are they different?
+      - question: How are the Azure Stack Hub and Azure Stack HCI solutions different?
         answer: |
           With Azure Stack Hub, you run cloud services on-premises. You can run Azure IaaS and PaaS services on-premises to consistently build and run cloud apps anywhere, managed with the Azure portal on-premises.
           
