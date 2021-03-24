@@ -1,34 +1,37 @@
 ---
-title: Troubleshoot Windows Admin Console issues on Azure Kubernetes Service on Azure Stack HCI
-description: Learn how to resolve Windows Admin Console issues on Azure Kubernetes Service (AKS) on Azure Stack HCI.
+title: Troubleshoot Windows Admin Center issues on Azure Kubernetes Service on Azure Stack HCI
+description: Learn how to resolve Windows Admin Center issues on Azure Kubernetes Service (AKS) on Azure Stack HCI.
 author: v-susbo
 ms.topic: how-to
 ms.date: 03/23/2021
 ms.author: v-susbo
 ---
 
-# Windows Admin Console troubleshooting
+# Windows Admin Center troubleshooting
+
+When you use Windows Admin Center (WAC) to create or manage AKS on Azure Stack HCI clusters, you might occasionally come across problems. This article details some common problems and troubleshooting steps that are specific to WAC.
 
 ## Troubleshoot CredSSP issues
 
 When deploying AKS on Azure Stack HCI using WAC, and the deployment hangs for an extended period, you might be having CredSSP or connectivity problems. Try the following steps to troubleshoot your deployment:
  
 1. On the machine running Windows Admin Center, run the following command in a PowerShell window: 
-    ```PowerShell
-        Enter-PSSession <servername>
-          ```
+
+   ```PowerShell
+      Enter-PSSession <servername>
+   ```
 2. If this command succeeds, you can connect to the server and there's no connectivity issue.
     
 3. If you're having CredSSP problems, run this command to test the trust between the gateway machine and the target machine: 
 
-    ```PowerShell
-        Enter-PSSession –ComputerName <server> –Credential company\administrator –Authentication CredSSP
-          ``` 
-    You can also run the following command to test the trust in accessing the local gateway: 
+   ```PowerShell
+      Enter-PSSession –ComputerName <server> –Credential company\administrator –Authentication CredSSP
+   ``` 
+   You can also run the following command to test the trust in accessing the local gateway: 
 
-    ```PowerShell
-        Enter-PSSession -computer localhost -credential (Get-Credential)
-          ``` 
+   ```PowerShell
+      Enter-PSSession -computer localhost -credential (Get-Credential)
+   ``` 
 
 > [!NOTE]
 > For CredSSP to function successfully in the cluster creation wizard, Windows Admin Center must be installed and used by the same account. If you install Windows Admin Center with one account and try to use it with another, you'll get errors.
