@@ -93,7 +93,7 @@
           - name: Resolve known issues
             href: troubleshoot-known-issues.md
           - name: Windows Admin Console
-            href: troubleshoot-wac.md
+            href: troubleshoot-windows-admin-center.md
 - name: Related
   items:
   - name: Azure Stack HCI
