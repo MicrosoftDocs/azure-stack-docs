@@ -64,6 +64,6 @@ Since _kubelet_ ended up in a bad state and can no longer talk to the API server
 
 ## Next steps
 - [Troubleshoot common issues](./troubleshoot.md)
-- [Troubleshoot Windows Admin Center](./troubleshoot-wac.md)
+- [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
 
 If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
