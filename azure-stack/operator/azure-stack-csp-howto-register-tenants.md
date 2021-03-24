@@ -116,7 +116,7 @@ The following section describes the parameters for the **New-AzureRMResource** c
 
 ### Onboard tenant to Azure Stack Hub
 
-Configure Azure Stack Hub to support users from multiple Azure AD tenants to use services in Azure Stack Hub. For instructions, see [Enable multi-tenancy in Azure Stack Hub](azure-stack-enable-multitenancy.md).
+Configure Azure Stack Hub to support users from multiple Azure AD tenants to use services in Azure Stack Hub. For instructions, see [Enable multi-tenancy in Azure Stack Hub](enable-multitenancy.md).
 
 ### Create a local resource in the end customer tenant in Azure Stack Hub
 
