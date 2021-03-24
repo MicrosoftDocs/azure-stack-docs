@@ -13,7 +13,7 @@ title: Azure Stack HCI FAQ
 summary: The Azure Stack HCI FAQ includes a section on Azure Stack HCI connectivity and a general FAQ section.
 
 sections:
-  - name: Azure Stack HCI connectivity
+  - name: Azure Stack HCI connectivity and general FAQ
     questions:
       - question: How does Azure Stack HCI use the cloud?
         answer: |
@@ -71,8 +71,6 @@ sections:
         answer: |
           No. There is currently no mechanism to register and sync between on-premises and Azure without network connectivity. For example, you can't transport certificates or billing data using removable storage. If there is sufficient customer demand, we're open to exploring such a feature in the future. Let us know in the [Azure Stack HCI feedback forum](https://feedback.azure.com/forums/929833-azure-stack-hci).
 
-  - name: Azure Stack HCI general FAQ
-    questions:
       - question: How does Azure Stack HCI relate to Windows Server?
         answer: |
           Windows Server is the foundation of nearly every Azure product, and all the features you value continue to release with support in Windows Server. The initial offering of Azure Stack HCI was based on Windows Server 2019 and used the traditional Windows Server licensing model. Today, Azure Stack HCI has its own operating system and subscription-based licensing model. Azure Stack HCI is the recommended way to deploy HCI on-premises, using Microsoft-validated hardware from our partners.
