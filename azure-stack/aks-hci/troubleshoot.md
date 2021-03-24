@@ -31,10 +31,10 @@ To use the script, run this command in the folder where your script is stored:
  
 The command has the following parameters:
  
-* `-ComputerNames`: A list of machines you want to collect logs from.
-* `-Destination`: The machine you want to aggregate the logs to.
-* `-HoursAgo`: The start time for collecting logs, expressed in hours before the time you run the script.
-* `-NoCredentialPrompt`: A switch to turn off the credentials prompt and use the default credentials in your current environment.
+- `-ComputerNames`: A list of machines you want to collect logs from.
+- `-Destination`: The machine you want to aggregate the logs to.
+- `-HoursAgo`: The start time for collecting logs, expressed in hours before the time you run the script.
+- `-NoCredentialPrompt`: A switch to turn off the credentials prompt and use the default credentials in your current environment.
  
 If you have difficulties running this script, you can run the following command to view the Help text: 
  

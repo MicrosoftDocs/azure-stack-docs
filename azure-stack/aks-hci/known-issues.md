@@ -108,10 +108,15 @@ The Azure Kubernetes Service host setup wizard will fail if the one or more serv
 When using Windows Admin Center to set up the Azure Kubernetes Service host, you may be asked to try again after entering the required information on the Azure registration page. You may need to sign in to Azure again on the Windows Admin Center gateway to proceed with this step. If you're having difficulty signing in to Azure through Windows Admin Center, try signing in to your Azure account from another source, like the [Azure portal](https://portal.azure.com/). If you continue to have problems, check the [Windows Admin Center known issues](/windows-server/manage/windows-admin-center/support/known-issues) article before you contact support.
 
 ## Windows Admin Center doesn't have an Arc offboarding experience
-Windows Admin Center does not currently have a process to offboard a cluster from Azure Arc. To delete Arc aganets on a cluster that has been destroyed, navigate to the resource group the of the cluster in the Azure portal and manually delete the Arc content. To delete Arc agents on a cluster that is still up and running, users should run the following command:
-```PowerShell
-az connectedk8s delete
-```
+Windows Admin Center does not currently have a process to offboard a cluster from Azure Arc. To delete Arc agents on a cluster that has been destroyed, navigate to the resource group the of the cluster in the Azure portal, and manually delete the Arc content. To delete Arc agents on a cluster that is still up and running, you should run the following command:
+
+```azurecli
+az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
+``` 
+ 
+> [!NOTE]
+> If you use the Azure portal to delete the Azure Arc-enabled Kubernetes resource, it removes any associated configuration resources, but does not remove the agents running on the cluster. Best practice is to delete the Azure Arc-enabled Kubernetes resource using `az connectedk8s delete` instead of Azure portal.
+
 
 ## When setting up an AKS host using Windows Admin Center, setup may fail if File Explorer is open
 If File Explorer is open and in the **C:\Program Files\AksHci** directory when you reach the "Review + create" step, your creation may fail with the error "The process could not access the file 'C:\Program Files\AksHci\wssdcloudagent.exe'. This is because it's being used by another process. To avoid this error, close File Explorer or navigate to a different directory before reaching this step. 
