@@ -1,7 +1,7 @@
 ### YamlMime:FAQ
 metadata:
   title: Azure Stack HCI FAQ
-  description: Azure Stack HCI FAQ.
+  description: The Azure Stack HCI FAQ provides information on Azure Stack HCI connectivity with the cloud, and how Azure Stack HCI relates to Windows Server and Azure Stack Hub.
   ms.topic: conceptual
   author: JohnCobb1
   ms.author: v-johcob
@@ -10,7 +10,7 @@ metadata:
   ms.date: 1/21/2021
     
 title: Azure Stack HCI FAQ
-summary: The Azure Stack HCI FAQ includes a section on Azure Stack HCI connectivity and a general FAQ section.
+summary: The Azure Stack HCI FAQ provides information on Azure Stack HCI connectivity with the cloud, and how Azure Stack HCI relates to Windows Server and Azure Stack Hub.
 
 sections:
   - name: Azure Stack HCI connectivity and general FAQ
