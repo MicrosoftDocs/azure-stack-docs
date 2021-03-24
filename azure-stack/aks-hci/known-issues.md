@@ -37,12 +37,12 @@ You'll see this issue if you follow these steps:
 1. Create a Kubernetes cluster.
 2. Scale the cluster to more than two nodes.
 3. To delete a node, run the following command: 
-   ```bash
+   ```powershell
    kubectl delete node <node-name>
    ```
 
 4. To return a list of the nodes:
-   ```bash
+   ```powershell
    kubectl get nodes
    ```
    The removed node isn't listed in the output.
@@ -54,9 +54,9 @@ The removed node is still listed.
 
 This failure causes the system not to recognize that the node is missing, and therefore, a new node will not spin up. 
 
-## The workload cluster may not be found if the IP address pools of two AKS on Azure Stack HCI deployments are the same or overlap
+## The workload cluster not found 
 
-If you deploy two AKS on Azure Stack HCI hosts and use the same `AksHciNetworkSetting` configuration for both, PowerShell and WAC will potentially fail to find the workload cluster as the API server will be assigned the same IP address in both clusters resulting in a conflict.
+The workload cluster may not be found if the IP address pools of two AKS on Azure Stack HCI deployments are the same or overlap. If you deploy two AKS hosts and use the same `AksHciNetworkSetting` configuration for both, PowerShell and WAC will potentially fail to find the workload cluster as the API server will be assigned the same IP address in both clusters resulting in a conflict.
 
 The error message you receive will look similar to the example shown below.
 
@@ -82,7 +82,7 @@ When you check Hyper-V manager, high CPU and memory demands for the management c
 ## Special Active Directory permissions are needed for domain joined Azure Stack HCI nodes 
 Users deploying and configuring Azure Kubernetes Service on Azure Stack HCI need to have "Full Control" permission to create AD objects in the Active Directory container the server and service objects are created in. 
 
-## Azure Kubernetes Service PowerShell deployment doesn't check for available memory before creating a new target cluster
+## PowerShell deployment doesn't check for available memory before creating a new target cluster
 The **Aks-Hci** PowerShell commands do not validate the available memory on the host server before creating Kubernetes nodes. This can lead to memory exhaustion and virtual machines that do not start. This failure is currently not handled gracefully, and the deployment will stop responding with no clear error message.
 If you have a deployment that stops responding, open `Eventviewer` and check for a Hyper-V-related error message indicating there's not enough memory to start the VM.
 
@@ -97,7 +97,7 @@ This issue happens because the logic to clean up the first migration runs asynch
 Workaround: Ensure the VM has started successfully on the new node before moving it back to the original node.
 This issue will be fixed in a future release.
 
-## Cannot deploy Azure Kubernetes Service to an environment that has separate storage and compute clusters
+## Cannot deploy AKS to an environment that has separate storage and compute clusters
 Windows Admin Center will not deploy Azure Kubernetes Service to an environment with separate storage and compute clusters as it expects the compute and storage resources to be provided by the same cluster. In most cases, it will not find CSVs exposed by the compute cluster and will refuse to continue with deployment.
 This issue will be fixed in a future release.
 
