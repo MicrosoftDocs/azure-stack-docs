@@ -80,7 +80,7 @@ spec:
 
 ### Apply the policy-demo-linux.yaml file to the Kubernetes cluster
 
-Open a PowerShell window and load the credentials for your target cluster using the [`get-AksHciCredential`](./get-akshcicredential.md) command. 
+Open a PowerShell window and load the credentials for your target cluster using the [`Get-AksHciCredential`](./get-akshcicredential.md) command. 
 
 Next, use `kubectl` to apply the `policy-demo-linux.yaml` configuration as shown below:
 
@@ -141,7 +141,7 @@ spec:
 
 ### Apply the policy-demo-windows.yaml file to the Kubernetes cluster
 
-Open a PowerShell window and load the credentials for your target cluster using the [`get-AksHciCredential`](./get-akshcicredential.md) command. 
+Open a PowerShell window and load the credentials for your target cluster using the [`Get-AksHciCredential`](./get-akshcicredential.md) command. 
 
 Next, use `kubectl` to apply the `policy-demo-windows.yaml` configuration:
 
@@ -149,12 +149,12 @@ Next, use `kubectl` to apply the `policy-demo-windows.yaml` configuration:
 kubectl apply -f policy-demo-windows.yaml
 ```
 
-### Verify the four pods have been created and are running
+### Verify the four pods are created and running
 
 > [!Note]
 > Depending on your network download speed, it may take time to launch the Windows pods.
 
-Open a PowerShell window and load the credentials for your target cluster using the [`get-AksHciCredential`](./get-akshcicredential.md) command. 
+Open a PowerShell window and load the credentials for your target cluster using the [`Get-AksHciCredential`](./get-akshcicredential.md) command. 
 
 Next, use `kubectl` to list the pods in the `calico-demo` namespace:
 
@@ -304,7 +304,7 @@ spec:
 ### Apply the network-policy.yaml file
 
 1. Open a PowerShell window.
-2. Load the credentials for your target cluster using the [`get-AksHciCredential`](./get-akshcicredential.md) command. 
+2. Load the credentials for your target cluster using the [`Get-AksHciCredential`](./get-akshcicredential.md) command. 
 3. Use `kubectl` to apply the network-policy.yaml file.
 
    ```powershell
@@ -313,9 +313,7 @@ spec:
 
 ### Verify the policy is in effect
 
-With the policy in place, the _busybox_ pod should still be able to reach the _porter_ pod:
-> [!Note]
-> The combined command line is used just as it was run earlier in this article.
+With the policy in place, the _busybox_ pod should still be able to reach the _porter_ pod. As noted earlier in this topic, you can combine the steps in the command line:
 
 ```powershell
 kubectl exec --namespace calico-demo busybox -- nc -vz $(kubectl get po porter -n calico-demo -o 'jsonpath={.status.podIP}') 80
@@ -346,7 +344,7 @@ As the final step, you can clean up all of the demo resources:
 ```powershell
 kubectl delete namespace calico-demo
 ```
-  
+ 
 ## Next steps
 
 In this article, you learned how to secure traffic between pods using network policies. 
