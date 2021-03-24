@@ -83,7 +83,7 @@ sections:
         answer: |
           For an updated list of Azure services that you can connect Azure Stack HCI to, see [Connecting Windows Server to Azure hybrid services](/windows-server/manage/windows-admin-center/azure/index).
           
-      - question: What do Azure Stack Hub and Azure Stack HCI solutions have in common?
+      - question: What do the Azure Stack Hub and Azure Stack HCI solutions have in common?
         answer: |
           Azure Stack HCI features the same Hyper-V-based software-defined compute, storage, and networking technologies as Azure Stack Hub. Both offerings meet rigorous testing and validation criteria to ensure reliability and compatibility with the underlying hardware platform.
           
