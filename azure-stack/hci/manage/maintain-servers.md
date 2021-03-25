@@ -6,14 +6,14 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/24/2021
+ms.date: 03/25/2021
 ---
 
 # Taking an Azure Stack HCI server offline for maintenance
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-Taking a server offline for maintenance requires taking portions of storage offline that are shared across all servers in the cluster. This requires pausing the server that you want to take offline, putting the node's disks in maintenance mode, moving roles and virtual machines (VMs) to other servers in the cluster, and verifying that all data is available on the other servers in the cluster. This process ensures that the data remains safe and accessible throughout the maintenance period.
+Taking a server offline for maintenance requires taking portions of storage offline that are shared across all servers in the cluster. This requires pausing the server that you want to take offline, putting the server's disks in maintenance mode, moving roles and virtual machines (VMs) to other servers in the cluster, and verifying that all data is available on the other servers in the cluster. This process ensures that the data remains safe and accessible throughout the maintenance period.
 
 You can use either Windows Admin Center or PowerShell to take a server offline for maintenance. This topic covers both methods.
 
@@ -34,7 +34,7 @@ The simplest way to prepare to take a server offline is by using Windows Admin C
 
 Before either shutting down or restarting a server, you should pause the server and drain (move off) any clustered roles such as VMs running on it. Always pause and drain clustered servers before taking them offline for maintenance.
 
-1. Using Windows Admin Center, connect to the cluster and then select **Compute > Nodes** from the **Tools** menu in Cluster Manager.
+1. Using Windows Admin Center, connect to the cluster and then select **Compute > Servers** from the **Tools** menu in Cluster Manager.
 
 2. Click on the name of the server you wish to pause and drain, and select **Pause**. You should see the following prompt:
 
@@ -105,7 +105,7 @@ Run the following cmdlet as an administrator to pause and drain the server:
 Suspend-ClusterNode -Drain
 ```
 
-Then set the disks for that server in maintenance mode by running the following cmdlet as administrator:
+Then put the server's disks in maintenance mode by running the following cmdlet as administrator:
 
 ```PowerShell
 Get-StorageScaleUnit -FriendlyName "Server1" | Enable-StorageMaintenanceMode
