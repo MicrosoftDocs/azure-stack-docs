@@ -1,5 +1,5 @@
 ---
-title: Troubleshoot known issues on Azure Kubernetes Service on Azure Stack HCI
+title: Resolve known issues on Azure Kubernetes Service on Azure Stack HCI
 description: Learn how to resolve known issues in an Azure Kubernetes Service (AKS) on Azure Stack HCI deployment.
 author: EkeleAsonye
 ms.topic: how-to
@@ -7,11 +7,9 @@ ms.date: 03/05/2021
 ms.author: v-susbo
 ---
 
-# Troubleshoot known issues
+# Resolve known issues
 
 This article includes workaround steps for resolving known issues that occur when using Azure Kubernetes Service on Azure Stack HCI.
-
-If you need additional troubleshooting data not covered by this article, [AKS troubleshooting](./troubleshoot.md), or [Windows Admin Center troubleshooting](./troubleshoot-windows-admin-center.md), see [Troubleshooting Kubernetes clusters](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/).
 
 ## _Install-AksHci_ timed out with an error
 
@@ -65,5 +63,6 @@ Since _kubelet_ ended up in a bad state and can no longer talk to the API server
 ## Next steps
 - [Troubleshoot common issues](./troubleshoot.md)
 - [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
+- [Troubleshooting Kubernetes clusters](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)
 
 If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
