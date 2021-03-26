@@ -3,35 +3,36 @@ title: Deploy C# ASP.NET web app to a VM in Azure Stack Hub
 description: Deploy a C# ASP.NET web app to a VM in Azure Stack Hub.
 author: mattbriggs
 
-ms.topic: overview
-ms.date: 1/19/2021
+ms.topic: how-to
+ms.date: 3/25/2021
 ms.author: mabrigg
 ms.reviewer: raymondl
 ms.lastreviewed: 1/19/2021
+ms.custom: contperf-fy21q3
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As a developer using Azure Stack Hub, I want to deploy a VM to host my Web app using .Net.
+# Keyword: ASP .NET web app on a VM
 
 ---
 
-
 # Deploy a C# ASP.NET web app to a VM in Azure Stack Hub
 
-You can create a virtual machine (VM) to host your C# ASP.NET web app in Azure Stack Hub. This article discusses the instructions to follow when you set up your server, configure it to host your C# ASP.NET web app, and then deploy the app right from Visual Studio.
+You can create a virtual machine (VM) to host your C# ASP.NET web app in Azure Stack Hub. This article shows you how to set up your server, configure it to host your C# ASP.NET web app, and then deploy the app right from Visual Studio.
 
-This article uses a C# 6.0 app that uses ASP.NET Core 2.2 running on a Windows 2016 server.
+This article is about using Azure Stack Hub. You can run Azure in your data center using Azure Stack Hub. If you are looking for guidance for global Azure, check out [Publish an ASP.NET Core app to Azure with Visual Studio](/aspnet/core/tutorials/razor-pages/razor-pages-start?tabs=visual-studio&view=aspnetcore-2.2).
+
 
 ## Create a VM
 
 1. Create a [Windows Server VM](azure-stack-quick-windows-portal.md).
 
-1. To install the IIS (with Management Console) and ASP.NET 4.6 components on your VM, run the following script:
+1. To install the IIS (with Management Console) and [ASP.NET 4.5](https://dotnet.microsoft.com/download/dotnet-framework/net45) components on your VM, run the following script in your PowerShell 5.x console:
 
     ```PowerShell  
     # Install IIS (with Management Console)
     Install-WindowsFeature -name Web-Server -IncludeManagementTools
     
-    # Install ASP.NET 4.6
+    # Install ASP.NET 4.5
     Install-WindowsFeature Web-Asp-Net45
     
     # Install Web Management Service
@@ -40,7 +41,7 @@ This article uses a C# 6.0 app that uses ASP.NET Core 2.2 running on a Windows 2
 
 1. Download [Web Deploy v3.6](https://www.microsoft.com/download/details.aspx?id=43717). Install it from the MSI file, and then enable all of the features.
 
-1. Install the .NET Core 5.0 Hosting Bundle on your server. For instructions, see [.NET Core Installer](https://dotnet.microsoft.com/download/dotnet/5.0). Make sure you're using the same version of .NET Core on both your development machine and your target server.
+1. Install the .NET Framework 4.5 Hosting Bundle on your server. For instructions, see [.NET Framework Installer](https://dotnet.microsoft.com/download/dotnet-framework/net45). Make sure you're using the same version of .NET on both your development machine and your target server.
 
 1. In the Azure Stack Hub portal, open the ports that are listed in the network settings for your VM.
 
