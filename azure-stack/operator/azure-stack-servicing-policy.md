@@ -5,7 +5,7 @@ description: Learn about the Azure Stack Hub servicing policy and how to keep an
 author: sethmanheim
 
 ms.topic: article
-ms.date: 02/17/2020
+ms.date: 03/26/2021
 ms.author: sethm
 ms.reviewer: niy
 ms.lastreviewed: 03/18/2020
@@ -56,14 +56,13 @@ For information about a specific update, including how to download it, see the r
 
 Occasionally, Microsoft provides hotfixes for Azure Stack Hub that address a specific issue that's often preventative or time-sensitive. Each hotfix is released with a corresponding Microsoft Knowledge Base (KB) article that details the issues addressed in that hotfix.
 
-Starting with build 2005, when you update to a new major version (for example, 1.2002.x to 1.2005.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
-
 Hotfixes are downloaded and installed just like the regular full update packages for Azure Stack Hub. However, unlike a full update, hotfixes can install in minutes. We recommend Azure Stack Hub operators set maintenance windows when installing hotfixes. Hotfixes update the version of your Azure Stack Hub cloud so you can easily determine if the hotfix has been applied. A separate hotfix is provided for each version of Azure Stack Hub that's still in support. **Each hotfix for a specific iteration is cumulative and includes the previous hotfixes for that same version.** You can read more about the applicability of a specific hotfix in the corresponding KB article. See the release notes links in the previous section.
 
-For information about currently available hotfixes, see the release notes for that update:
+Before you update to the new major version, apply the latest hotfix in the **current** major version.
 
-- [Azure Stack Hub 2005 hotfix](./release-notes.md?preserve-view=true&view=azs-2005#hotfixes)
-- [Azure Stack Hub 2002 hotfix](./release-notes.md?preserve-view=true&view=azs-2002#hotfixes-1)
+Starting with build 2005, when you update to a **new** major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any are available at the time of package download) in the new major version are installed automatically. Your 2008 installation is then current with all hotfixes. From that point forward, if a hotfix is released for 2008, you should install it.
+
+For information about currently available hotfixes, [see the release notes](release-notes.md) "Hotfixes" section for that update.
 
 ## Keep your system under support
 

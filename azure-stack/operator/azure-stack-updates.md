@@ -4,7 +4,7 @@ description: Learn how to manage updates in Azure Stack Hub
 author: sethmanheim
 
 ms.topic: how-to
-ms.date: 02/08/2021
+ms.date: 03/26/2021
 ms.author: sethm
 ms.lastreviewed: 07/16/2020
 ms.reviewer: niy
@@ -36,7 +36,9 @@ There are three types of update packages for integrated systems:
 
 - **Azure Stack Hub hotfixes**. Microsoft provides [hotfixes for Azure Stack Hub](azure-stack-servicing-policy.md#hotfixes) that address a specific issue that's often preventive or time-sensitive. Each hotfix is released with a corresponding Microsoft Knowledge Base article that details the fixes in that package. You download and install hotfixes just like the regular full update packages for Azure Stack Hub. Hotfixes are cumulative and can install in minutes.
 
-   Starting with build 2005, when you update to a new major version (for example, 1.2002.x to 1.2005.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+   Before you update to the new major version, apply the latest hotfix in the **current** major version.
+
+   Starting with build 2005, when you update to a **new** major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any are available at the time of package download) in the new major version are installed automatically. Your 2008 installation is then current with all hotfixes. From that point forward, if a hotfix is released for 2008, you should install it.
 
 - **OEM hardware-vendor-provided updates**. Azure Stack Hub hardware partners are responsible for the end-to-end servicing lifecycle (including guidance) for the hardware-related firmware and driver update packages. In addition, Azure Stack Hub hardware partners own and maintain guidance for all software and hardware on the hardware lifecycle host. The OEM hardware vendor hosts these update packages on their own download site.
 
