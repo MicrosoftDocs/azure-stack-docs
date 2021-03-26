@@ -22,7 +22,7 @@ This article describes the servicing policy for Azure Stack Hub integrated syste
 
 ## Download update packages for integrated systems
 
-Microsoft releases both full update packages as well as hotfix packages to address specific issues.
+Microsoft releases both full update packages and hotfix packages to address specific issues.
 
 Full update packages are hosted in a secure Azure endpoint. You can download them manually using the [Azure Stack Hub Updates downloader tool](https://aka.ms/azurestackupdatedownload). If your scale unit is connected, the update appears automatically in the administrator portal as **Update available**. For more information about each release, you can click any release from the [Update package release cadence](#update-package-release-cadence) section of this article.
 
@@ -42,7 +42,7 @@ There are two types of update packages for integrated systems:
 
 Microsoft expects to release software update packages multiple times throughout the year.
 
-OEM hardware vendors release their updates on an as-needed basis. Please check with your OEM for the latest updates to hardware.
+OEM hardware vendors release their updates on an as-needed basis. Check with your OEM for the latest updates to hardware.
 
 Find documentation on how to plan for and manage updates, and how to determine your current version in [Manage updates overview](azure-stack-updates.md).
 
@@ -80,13 +80,13 @@ Microsoft software update packages are non-cumulative and require the previous u
 
 For Azure Stack Hub resource providers, it's important to note that only the most recently released version of a given resource provider that is compatible with your supported version of Azure Stack Hub is supported, even though you may be using an older version of Azure Stack Hub that is still within the support window.
 
-For more information about resource provider compatibility, please see the release notes for that specific resource provider.
+For more information about resource provider compatibility, see the release notes for that specific resource provider.
 
 ## Get support
 
 Azure Stack Hub follows the same support process as Azure. Enterprise customers can follow the process described in [How to create an Azure support request](/azure/azure-supportability/how-to-create-azure-support-request). If you're a customer of a Cloud Solution Provider (CSP), contact your CSP for support. For more information, see the [Azure Support FAQs](https://azure.microsoft.com/support/faq/).
 
-For help troubleshooting update issues, see [Best practices for troubleshooting Azure Stack Hub patch and update issues](azure-stack-troubleshooting.md).
+For help with troubleshooting update issues, see [Best practices for troubleshooting Azure Stack Hub patch and update issues](azure-stack-troubleshooting.md).
 
 ## Next steps
 
