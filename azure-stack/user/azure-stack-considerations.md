@@ -32,7 +32,7 @@ The [Azure technical documentation content](/azure) assumes that apps are being 
 
 ## High-level differences
 
-The following table describes the high-level differences between Azure Stack Hub and Azure. Note these differences when you develop for Azure Stack Hub or use Azure Stack Hub services:
+The following table describes the high-level differences between Azure Stack Hub and global Azure. Note these differences when you develop for Azure Stack Hub or use Azure Stack Hub services:
 
 | Area | Azure (global) | Azure Stack Hub |
 | -------- | ------------- | ----------|
