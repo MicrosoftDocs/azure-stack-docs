@@ -155,23 +155,21 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ### Load balancer
 
+#### Error: Failed to save load balancer backend pool
+
 - Applicable: This issue applies to all supported releases.
 - Cause: When adding availability set VMs to the backend pool of a load balancer, an error message is displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal; the functionality is still in place and VMs are successfully added to the backend pool internally.
 - Occurrence: Common
 
 ### Network Security Groups
 
+#### VM deployment fails due to DenyAllOutbound rule
+
 - Applicable: This issue applies to all supported releases. 
 - Cause: An explicit **DenyAllOutbound** rule cannot be created in an NSG as this will prevent all internal communication to infrastructure needed for the VM deployment to complete.
 - Occurrence: Common
 
-### Service endpoints
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **Virtual Network** blade shows an option to use **Service Endpoints**. This feature is currently not supported in Azure Stack Hub.
-- Occurrence: Common
-
-### Cannot delete an NSG if NICs not attached to running VM
+#### Cannot delete an NSG if NICs not attached to running VM
 
 - Applicable: This issue applies to all supported releases.
 - Cause: When disassociating an NSG and a NIC that is not attached to a running VM, the update (PUT) operation for that object fails at the network controller layer. The NSG will be updated at the network resource provider layer, but not on the network controller, so the NSG moves to a failed state.
@@ -180,14 +178,14 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ### Network interface
 
-#### Adding/removing network interface
+#### NIC cannot be added to running VM
 
 - Applicable: This issue applies to all supported releases.
 - Cause: A new network interface cannot be added to a VM that is in a **running** state.
 - Remediation: Stop the virtual machine before adding or removing a network interface.
 - Occurrence: Common
 
-#### Primary network interface
+#### VM startup issues after deleting/detaching primary NIC
 
 - Applicable: This issue applies to all supported releases.
 - Cause: The primary NIC of a VM cannot be changed. Deleting or detaching the primary NIC results in issues when starting up the VM.
@@ -195,37 +193,37 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ### Virtual Network Gateway
 
-#### Next Hop Type
+#### Virtual Network gateway appears as a Next Hop Type routing option
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, when you create a route table, **Virtual Network gateway** appears as one of the next hop type options; however, this is not supported in Azure Stack Hub.
 - Occurrence: Common
 
-#### Alerts
+#### Virtual Network Gateway blade shows option to use Alerts
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, the **Virtual Network Gateway** blade shows an option to use **Alerts**. This feature is currently not supported in Azure Stack Hub.
 - Occurrence: Common
 
-#### Active-Active
+#### Virtual Network Gateway blade shows Active-Active option
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, while creating, and in the resource menu of **Virtual Network Gateway**, you will see an option to enable **Active-Active** configuration. This feature is currently not supported in Azure Stack Hub.
 - Occurrence: Common
 
-#### VPN troubleshooter
+#### Connections blade shows VPN troubleshooter feature
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, the **Connections** blade displays a feature called **VPN Troubleshooter**. This feature is currently not supported in Azure Stack Hub.
 - Occurrence: Common
 
-#### VPN troubleshooter
+#### VPN gateway resource shows VPN Troubleshoot and Metrics feature
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, the **VPN Troubleshoot** feature and **Metrics** in a VPN gateway resource appears, however this is not supported in Azure Stack Hub.
 - Occurrence: Common
 
-#### Documentation
+#### Documentation links to Azure networking
 
 - Applicable: This issue applies to all supported releases.
 - Cause: The documentation links in the overview page of Virtual Network gateway link to Azure-specific documentation instead of Azure Stack Hub. Use the following links for the Azure Stack Hub documentation:
@@ -235,6 +233,12 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
   - [Configure BGP on Azure Stack Hub](../../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
   - [ExpressRoute circuits](../azure-stack-connect-expressroute.md)
   - [Specify custom IPsec/IKE policies](../../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
+
+#### Service endpoints not available
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Virtual Network** blade shows an option to use **Service Endpoints**. This feature is currently not supported in Azure Stack Hub.
+- Occurrence: Common
 
 ## Compute
 

@@ -59,7 +59,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ### Network Security Groups
 
-#### DenyAllOutbound rule cannot be created
+#### VM deployment fails due to DenyAllOutbound rule
 
 - Applicable: This issue applies to all supported releases.
 - Cause: An explicit **DenyAllOutbound** rule to the internet cannot be created in an NSG during VM creation as this will prevent the communication required for the VM deployment to complete. It will also deny the two essential IPs that are required in order to deploy VMs: DHCP IP:169.254.169.254 and DNS IP: 168.63.129.16.
@@ -69,7 +69,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ### Virtual Network Gateway
 
-#### Documentation
+#### Documentation links to Azure networking
 
 - Applicable: This issue applies to all supported releases.
 - Cause: The documentation links in the overview page of Virtual Network gateway link to Azure-specific documentation instead of Azure Stack Hub. Use the following links for the Azure Stack Hub documentation:
@@ -148,7 +148,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Remediation: Attach the NICs associated to the NSG that needs to be removed with running VMs, and disassociate the NSG or remove all the NICs that were associated with the NSG.
 - Occurrence: Common
 
-#### DenyAllOutbound rule cannot be created
+#### VM deployment fails due to DenyAllOutbound rule
 
 - Applicable: This issue applies to all supported releases.
 - Cause: An explicit **DenyAllOutbound** rule to the internet cannot be created in an NSG during VM creation as this will prevent the communication required for the VM deployment to complete.
@@ -157,7 +157,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ### Virtual Network Gateway
 
-#### Documentation
+#### Documentation links to Azure networking
 
 - Applicable: This issue applies to all supported releases.
 - Cause: The documentation links in the overview page of Virtual Network gateway link to Azure-specific documentation instead of Azure Stack Hub. Use the following links for the Azure Stack Hub documentation:
@@ -176,7 +176,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: When enabling **Session Affinity** on a load balancer, the 2 tuple hash utilizes the PA IP (Physical Address IP) instead of the private IPs assigned to the VMs. In scenarios where traffic directed to the load balancer arrives through a VPN, or if all the client VMs (source IPs) reside on the same node and Session Affinity is enabled, all traffic is directed to one backend VM.
 - Occurrence: Common
 
-#### Public IP
+#### Public IP is in a failed state
 
 - Applicable: This issue applies to all supported releases.
 - Cause: The **IdleTimeoutInMinutes** value for a public IP that is associated to a load balancer cannot be changed. The operation puts the public IP into a failed state.
@@ -317,27 +317,31 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ## Networking
 
-### DenyAllOutbound rule cannot be created
+### Network Security Groups
+
+#### VM deployment fails due to DenyAllOutbound rule
 
 - Applicable: This issue applies to all supported releases.
 - Cause: An explicit **DenyAllOutbound** rule to the internet cannot be created in an NSG during VM creation as this will prevent the communication required for the VM deployment to complete.
 - Remediation: Allow outbound traffic to the internet during VM creation, and modify the NSG to block the required traffic after VM creation is complete.
 - Occurrence: Common
 
-### ICMP protocol not supported for NSG rules
+#### Can’t apply ICMP protocol when creating rule
 
 - Applicable: This issue applies to all supported releases. 
 - Cause: When creating an inbound or an outbound network security rule, the **Protocol** option shows an **ICMP** option. This is currently not supported on Azure Stack Hub. This issue is fixed and will not appear in the next Azure Stack Hub release.
 - Occurrence: Common
 
-### Cannot delete an NSG if NICs not attached to running VM
+#### Cannot delete an NSG if NICs not attached to running VM
 
 - Applicable: This issue applies to all supported releases.
 - Cause: When disassociating an NSG and a NIC that is not attached to a running VM, the update (PUT) operation for that object fails at the network controller layer. The NSG will be updated at the network resource provider layer, but not on the network controller, so the NSG moves to a failed state.
 - Remediation: Attach the NICs associated to the NSG that needs to be removed with running VMs, and disassociate the NSG or remove all the NICs that were associated with the NSG.
 - Occurrence: Common
 
-### Load Balancer directing traffic to one backend VM in specific scenarios 
+### Load Balancer
+
+#### Load Balancer directing traffic to one backend VM in specific scenarios 
 
 - Applicable: This issue applies to all supported releases. 
 - Cause: When enabling **Session Affinity** on a load balancer, the 2 tuple hash utilizes the PA IP (Physical Address IP) instead of the private IPs assigned to the VMs. In scenarios where traffic directed to the load balancer arrives through a VPN, or if all the client VMs (source IPs) reside on the same node and Session Affinity is enabled, all traffic is directed to one backend VM.
@@ -345,14 +349,14 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ### Network interface
 
-#### Adding/removing network interface
+#### NIC cannot be added to running VM
 
 - Applicable: This issue applies to all supported releases.
 - Cause: A new network interface cannot be added to a VM that is in a **running** state.
 - Remediation: Stop the virtual machine before adding or removing a network interface.
 - Occurrence: Common
 
-#### Primary network interface
+#### VM startup issues after deleting/detaching primary NIC
 
 - Applicable: This issue applies to all supported releases.
 - Cause: The primary NIC of a VM cannot be changed. Deleting or detaching the primary NIC results in issues when starting up the VM.
@@ -367,7 +371,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ### Virtual Network Gateway
 
-#### Documentation
+#### Documentation links to Azure networking
 
 - Applicable: This issue applies to all supported releases.
 - Cause: The documentation links in the overview page of Virtual Network gateway link to Azure-specific documentation instead of Azure Stack Hub. Use the following links for the Azure Stack Hub documentation:
