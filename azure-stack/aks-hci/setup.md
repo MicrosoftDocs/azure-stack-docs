@@ -68,10 +68,10 @@ Now that we've verified our system settings, let's get started:
     * **VM networking**, which will apply to all Linux and Windows VMs (nodes) that are created to run containers and orchestrate container management. This includes the fields for internet connected virtual switch, virtual LAN identification enablement, IP address allocation method, and Cloudagent IP. Cloudagent IP can be used to provide a static IP address to the CloudAgent service. This is applicable regardless of your IP address allocation selection. If you have selected the Static IP address allocation method, there are a few additional fields that must be specified:
       - **Subnet prefix**, an IP address range that does not conflict with other addresses
       - **Gateway**, the gateway through which packets will be routed outside the machine
-      - **DNS servers**, IP addresses of DNS servers in the network
+      - **DNS servers**, the comma-separated list of IP addresses for the DNS servers. Use a minimum of one and a maximum of three addresses. 
       - **Kubernetes node IP pool start**, the pool start range for IP addresses used by Kubernetes clusters
       - **Kubernetes node IP pool end**, the pool end range for IP addresses used by Kubernetes clusters
-    * **Load balancer settings**, which define the pool of addresses used for external services. If you have selected the static configuration in the VM Networking section, the address pool start and end must be within the subnet range specified in that section. 
+    * **Load balancer settings**, which define the pool of addresses used for external services. If you have selected the static IP configuration in the VM Networking section, the address pool start and end must be within the subnet range specified in that section. 
 
     ![Illustrates the Host configuration step of the Azure Kubernetes Service host wizard.](.\media\setup\host-configuration.png)
     
@@ -94,7 +94,7 @@ Now that we've verified our system settings, let's get started:
 8. On the **Setup progress** page, you can watch the progress of your host setup. At this point, you are welcome to open Windows Admin Center in a new tab and continue your management tasks. 
 9. If the deployment succeeds, select *Finish*, and you will be presented with a management dashboard where you can create and manage your Kubernetes clusters. This dashboard, like the rest of Azure Kubernetes Services on Azure Stack HCI, is in a preview release and will be updated with additional functionality in future releases.
  
-  ![Illustrates the Azure Kubernetes Services on Azure Stack HCI management dashboard.](.\media\setup\dashboard.png)
+   ![Illustrates the Azure Kubernetes Services on Azure Stack HCI management dashboard.](.\media\setup\dashboard.png)
  
 ## Next steps
 
