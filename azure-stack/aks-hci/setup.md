@@ -88,7 +88,7 @@ Now that we've verified our system settings, let's get started:
    4. Select the checkbox and click **Add permissions**.
    5. Click **Grant admin consent for <_user_>**, and to confirm the permissions, click **Yes**.
    
-When you're finished, select **Next**.
+   When you're finished, select **Next**.
 
 7. Review all of your selections in the **Review + create** step. If you're satisfied with your selections, select **Next** to begin host setup. 
 8. On the **Setup progress** page, you can watch the progress of your host setup. At this point, you are welcome to open Windows Admin Center in a new tab and continue your management tasks. 
