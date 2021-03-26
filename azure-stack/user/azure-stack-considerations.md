@@ -46,7 +46,7 @@ The following table describes the high-level differences between Azure Stack Hub
 |Supported namespaces, resource types, and API versions | The latest (or earlier versions that aren't yet deprecated). | Azure Stack Hub supports specific versions. See the [Version requirements](#version-requirements) section of this article.
 | | |
 
-*If you're an Azure Stack Hub operator, see [Using the administrator portal](../operator/azure-stack-manage-portals.md) and [Administration basics](../operator/azure-stack-manage-basics.md) for more information.
+*If you're an Azure Stack Hub operator, for more information see [Using the administrator portal](../operator/azure-stack-manage-portals.md) and [Administration basics](../operator/azure-stack-manage-basics.md).
 
 ## Helpful tools and best practices
 
@@ -68,7 +68,7 @@ To make sure that you use a correct version of Azure PowerShell, use [API versio
 > [!NOTE]
 > If you're using the Azure Stack Development Kit, and you have administrative access, see the [Determine the current version](../operator/azure-stack-updates.md) section to determine the Azure Stack Hub build.
 
-For other APIs, run the following PowerShell command to output the namespaces, resource types, and API versions that are supported in your Azure Stack Hub subscription (there may still be differences at a property level). For this command to work, you must have already [installed](../operator/powershell-install-az-module.md) and [configured](azure-stack-powershell-configure-user.md) PowerShell for an Azure Stack Hub environment. You must also have a subscription to an Azure Stack Hub offer.
+For other APIs, run the following PowerShell command to output the namespaces, resource types, and API versions that are supported in your Azure Stack Hub subscription. There may still be differences at a property level. For this command to work, you must have already [installed](../operator/powershell-install-az-module.md) and [configured](azure-stack-powershell-configure-user.md) PowerShell for an Azure Stack Hub environment. You must also have a subscription to an Azure Stack Hub offer.
 
 ### [Az modules](#tab/az)
 
