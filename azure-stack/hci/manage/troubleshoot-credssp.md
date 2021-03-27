@@ -67,7 +67,7 @@ To resolve the error, try the following remedy steps as needed:
     ```
 
     ```powershell  
-    Enable-WsmanCredSSP -Role Client -DelagateComputer <Server FQDN Name>
+    Enable-WsmanCredSSP -Role Client -DelegateComputer <Server FQDN Name>
     ```
 
 1. Use the RDP feature to connect to the server, and then run the following PowerShell commands:

@@ -22,14 +22,11 @@ Make sure you have one of the following:
 Before getting started, make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page. 
 **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).    
 
-> [!IMPORTANT]
-> When removing Azure Kubernetes Service on Azure Stack HCI, see [Remove Azure Kubernetes Service on Azure Stack HCI](#remove-azure-kubernetes-service-on-azure-stack-hci) and carefully follow the instructions. 
+## Download and install the AksHci PowerShell module
 
-## Step 1: Download and install the AksHci PowerShell module
+Download the `AKS-HCI-Public-Preview-Mar-2021` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module.
 
-Download the `AKS-HCI-Public-Preview-Feb-2021` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module.
-
-**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.Day2, Kva, Moc and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once this is done, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`).
+**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.Day2, Kva, MOC, and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once the directories are deleted, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`).
 
    ```powershell
    Import-Module AksHci
@@ -45,48 +42,41 @@ Download the `AKS-HCI-Public-Preview-Feb-2021` from the [Azure Kubernetes Servic
 ```
 CommandType     Name                                               Version    Source
 -----------     ----                                               -------    ------
-Alias           Initialize-AksHciNode                              0.2.19     akshci
-Function        Get-AksHciCluster                                  0.2.19     akshci
-Function        Get-AksHciClusterUpgrades                          0.2.19     akshci
-Function        Get-AksHciConfig                                   0.2.19     akshci
-Function        Get-AksHciCredential                               0.2.19     akshci
-Function        Get-AksHciEventLog                                 0.2.19     akshci
-Function        Get-AksHciKubernetesVersion                        0.2.19     akshci
-Function        Get-AksHciLogs                                     0.2.19     akshci
-Function        Get-AksHciUpdates                                  0.2.19     akshci
-Function        Get-AksHciVersion                                  0.2.19     akshci
-Function        Get-AksHciVmSize                                   0.2.19     akshci
-Function        Install-AksHci                                     0.2.19     akshci
-Function        Install-AksHciAdAuth                               0.2.19     akshci
-Function        Install-AksHciArcOnboarding                        0.2.19     akshci
-Function        New-AksHciCluster                                  0.2.19     akshci
-Function        New-AksHciNetworkSetting                           0.2.19     akshci
-Function        Remove-AksHciCluster                               0.2.19     akshci
-Function        Restart-AksHci                                     0.2.19     akshci
-Function        Set-AksHciClusterNodeCount                         0.2.19     akshci
-Function        Set-AksHciConfig                                   0.2.19     akshci
-Function        Uninstall-AksHci                                   0.2.19     akshci
-Function        Uninstall-AksHciAdAuth                             0.2.19     akshci
-Function        Uninstall-AksHciArcOnboarding                      0.2.19     akshci
-Function        Update-AksHci                                      0.2.19     akshci
-Function        Update-AksHciCluster                               0.2.19     akshci
+Alias           Initialize-AksHciNode                              0.2.25     AksHci
+Function        Add-AksHciGMSACredentialSpec                       0.2.25     AksHci
+Function        Get-AksHciCluster                                  0.2.25     AksHci
+Function        Get-AksHciClusterUpgrades                          0.2.25     AksHci
+Function        Get-AksHciConfig                                   0.2.25     AksHci
+Function        Get-AksHciCredential                               0.2.25     AksHci
+Function        Get-AksHciEventLog                                 0.2.25     AksHci
+Function        Get-AksHciKubernetesVersion                        0.2.25     AksHci
+Function        Get-AksHciLogs                                     0.2.25     AksHci
+Function        Get-AksHciUpdates                                  0.2.25     AksHci
+Function        Get-AksHciVersion                                  0.2.25     AksHci
+Function        Get-AksHciVmSize                                   0.2.25     AksHci
+Function        Install-AksHci                                     0.2.25     AksHci
+Function        Install-AksHciAdAuth                               0.2.25     AksHci
+Function        Install-AksHciArcOnboarding                        0.2.25     AksHci
+Function        Install-AksHciGMSAWebhook                          0.2.25     AksHci
+Function        New-AksHciCluster                                  0.2.25     AksHci
+Function        New-AksHciNetworkSetting                           0.2.25     AksHci
+Function        Remove-AksHciCluster                               0.2.25     AksHci
+Function        Remove-AksHciGMSACredentialSpec                    0.2.25     AksHci
+Function        Repair-AksHciClusterCerts                          0.2.25     AksHci
+Function        Restart-AksHci                                     0.2.25     AksHci
+Function        Set-AksHciClusterNodeCount                         0.2.25     AksHci
+Function        Set-AksHciConfig                                   0.2.25     AksHci
+Function        Uninstall-AksHci                                   0.2.25     AksHci
+Function        Uninstall-AksHciAdAuth                             0.2.25     AksHci
+Function        Uninstall-AksHciArcOnboarding                      0.2.25     AksHci
+Function        Uninstall-AksHciGMSAWebhook                        0.2.25     AksHci
+Function        Update-AksHci                                      0.2.25     AksHci
+Function        Update-AksHciCluster                               0.2.25     AksHci
 ```
 
 After running the above command, close all PowerShell windows and reopen an administrative session to run the commands in the following steps.
 
-### Update your clusters to the latest AKS-HCI version
-
-Follow this step if you have an existing deployment and want to update it. If you do not have an existing deployment, skip this step and proceed to Step 2. Alternatively, if you have a deployment but want to run a clean install of the next AKSHCI version, run `Uninstall-AksHci` and proceed to Step 2.
-
-To update to the latest version of Azure Kubernetes Service on Azure Stack HCI, run the [update-akshci](./update-akshci.md) command. This command updates the Azure Kubernetes Service host and the on-premise Microsoft operated cloud platform. This command does not upgrade Kubernetes and Windows node OS versions in any existing workload clusters. New workload clusters created after updating the AKS host will differ from existing workload clusters in their Windows node OS version and Kubernetes version.
-
-```powershell
-Update-AksHci
-```
-
-We recommend updating workload clusters immediately after updating the management cluster to prevent running unsupported Windows Server OS versions in your Kubernetes clusters with Windows nodes. If your workload clusters are on an unsupported version, they will still be supported but you will not be able to create new nodes. To update your workload cluster, visit [update your workload cluster](create-kubernetes-cluster-powershell.md).
-
-## Step 2: Prepare your machine(s) for deployment
+## Step 1: Prepare your machine(s) for deployment
 
 Run checks on every physical node to see if all the requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI.
 Open PowerShell as an administrator and run the following command.
@@ -97,7 +87,7 @@ Initialize-AksHciNode
 
 When the checks are finished, you'll see "Done" displayed in green text.
 
-## Step 3: Create a virtual network
+## Step 2: Create a virtual network
 
 To get the names of your available external switches, run this command:
 
@@ -114,7 +104,7 @@ Name SwitchType NetAdapterInterfaceDescription
 extSwitch External Mellanox ConnectX-3 Pro Ethernet Adapter
 ```
 
-To create a virtual network for the nodes in your deployment to use, create an environment variable with the [new-akshcinetworksetting](.\new-akshcinetworksetting.md) PowerShell command. This will be used later to configure a deployment that uses static IP. If you want to configure your AKS deployment with DHCP, visit [new-akshcinetworksetting](.\new-akshcinetworksetting.md) for examples.
+To create a virtual network for the nodes in your deployment to use, create an environment variable with the **New-AksHciNetworkSetting** PowerShell command. This will be used later to configure a deployment that uses static IP. If you want to configure your AKS deployment with DHCP, visit [New-AksHciNetworkSetting](.\new-akshcinetworksetting.md) for examples. You can also review some [networking node concepts](./concepts-node-networking.md).
 
 ```powershell
 #static IP
@@ -125,9 +115,9 @@ $vnet = New-AksHciNetworkSetting -vnetName "extSwitch" -k8sNodeIpPoolStart "172.
 > [!NOTE]
 > The values given in this example command will need to be customized for your environment.
 
-## Step 4: Configure your deployment
+## Step 3: Configure your deployment
 
-Set the configuration settings for the Azure Kubernetes Service host using the [set-akshciconfig](./set-akshciconfig.md) command. **If you're deploying on a 2-4 node Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster, you must specify the `imageDir` and `cloudConfigLocation` parameters.** If you want to reset your config details, run the command again with new parameters.
+Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./set-akshciconfig.md) command. **If you're deploying on a 2-4 node Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster, you must specify the `imageDir` and `cloudConfigLocation` parameters.** If you want to reset your config details, run the command again with new parameters.
 
 Configure your deployment with the following command.
 
@@ -140,7 +130,7 @@ Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation
 
 Use the `-enableDiagnosticData` parameter to consent to send required diagnostic data to Microsoft. If this parameter is not used, then you will be prompted to enable diagnostic data when `Set-AksHciConfig` is run. `Install-AksHci` will fail if you do not accept the consent prompt when `Set-AksHciConfig` presents it.
 
-## Step 5: Start a new deployment
+## Step 4: Start a new deployment
 
 After you've configured your deployment, you must start it. This will install the Azure Kubernetes Service on Azure Stack HCI agents/services and the Azure Kubernetes Service host.
 
@@ -152,7 +142,7 @@ Install-AksHci
 
 ### Verify your deployed Azure Kubernetes Service host
 
-To ensure that your Azure Kubernetes Service host was deployed, run the [get-akshcicluster](./get-akshcicluster.md) command. You will also be able to get Kubernetes clusters using the same command after deploying them.
+To ensure that your Azure Kubernetes Service host was deployed, run the [Get-AksHciCluster](./get-akshcicluster.md) command. You will also be able to get Kubernetes clusters using the same command after deploying them.
 
 ```powershell
 Get-AksHciCluster
@@ -162,7 +152,7 @@ Get-AksHciCluster
 ```
 
 Name            : clustergroup-management
-Version         : v1.18.10
+Version         : v1.18.14
 Control Planes  : 1
 Linux Workers   : 0
 Windows Workers : 0
@@ -170,9 +160,9 @@ Phase           : provisioned
 Ready           : True
 ```
 
-## Step 6: Access your clusters using kubectl
+## Access your clusters using kubectl
 
-To access your Azure Kubernetes Service host using `kubectl`, run the [get-akshcicredential](./get-akshcicredential.md) command. This will use the specified cluster's _kubeconfig_ file as the default _kubeconfig_ file for `kubectl`. You can also use this command to access other Kubernetes clusters after they are deployed.
+To access your Azure Kubernetes Service host using `kubectl`, run the [Get-AksHciCredential](./get-akshcicredential.md) command. This will use the specified cluster's _kubeconfig_ file as the default _kubeconfig_ file for `kubectl`. You can also use this command to access other Kubernetes clusters after they are deployed.
 
 ```powershell
 Get-AksHciCredential -name clustergroup-management
@@ -180,65 +170,10 @@ Get-AksHciCredential -name clustergroup-management
 
 ## Get logs
 
-To get logs from your all your pods, run the [get-akshcilogs](./get-akshcilogs.md) command. This command will create an output zipped folder called `akshcilogs` in the path `c:\%workingdirectory%\%AKS HCI release number%\%filename%` (for example, `c:\AksHci\0.9.6.0\akshcilogs.zip`).
+To get logs from your all your pods, run the [Get-AksHciLogs](./get-akshcilogs.md) command. This command will create an output zipped folder called `akshcilogs` in the path `c:\%workingdirectory%\%AKS HCI release number%\%filename%` (for example, `c:\AksHci\0.9.6.0\akshcilogs.zip`).
 
 ```powershell
 Get-AksHciLogs
-```
-
-## Update to the latest version of Azure Kubernetes Service on Azure Stack HCI
-
-To update to the latest version of Azure Kubernetes Service on Azure Stack HCI, run the [update-akshci](./update-akshci.md) command. The update command only works if you have installed the Oct release or later. It will not work for releases older than the October release. This update command updates the Azure Kubernetes Service host and the on-premise Microsoft operated cloud platform. This command does not upgrade any existing workload clusters. New workload clusters created after updating the AKS host will differ from existing workload clusters in their Windows node OS version and Kubernetes version.
-
-```powershell
-Update-AksHci
-```
-   
-We recommend updating workload clusters immediately after updating the management cluster to prevent running unsupported Windows Server OS versions in your Kubernetes clusters with Windows nodes. If your workload clusters are on an unsupported version, they will still be supported but you will not be able to create new nodes. To update your workload cluster, visit [update your workload cluster](create-kubernetes-cluster-powershell.md).
-
-## Restart Azure Kubernetes Service on Azure Stack HCI
-
-Restarting Azure Kubernetes Service on Azure Stack HCI will remove all of your Kubernetes clusters if any, and the Azure Kubernetes Service host. It will also uninstall the Azure Kubernetes Service on Azure Stack HCI agents and services from the nodes. It will then go back through the original install process steps until the host is recreated. The Azure Kubernetes Service on Azure Stack HCI configuration that you configured via `Set-AksHciConfig` and the downloaded VHDX images are preserved.
-
-To restart Azure Kubernetes Service on Azure Stack HCI with the same configuration settings, run the following command.
-
-```powershell
-Restart-AksHci
-```
-
-## Reset configuration settings and reinstall Azure Kubernetes Service on Azure Stack HCI
-
-To reinstall Azure Kubernetes Service on Azure Stack HCI with different configuration settings, run the following command first.
-
-```powershell
-Uninstall-AksHci
-```
-
-After running the above command, you can change the configuration settings with the following command. The parameters remain the same as described in Step 3. 
-
-```powershell
-Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -enableDiagnosticData -cloudservicecidr "172.16.10.10/16" 
-```
-
-After changing the configuration to your desired settings, run the following command to reinstall Azure Stack Kubernetes on Azure Stack HCI.
-
-```powershell
-Install-AksHci
-```
-
-## Remove Azure Kubernetes Service on Azure Stack HCI
-
-
-To remove Azure Kubernetes Service on Azure Stack HCI, run the following command. This command will remove the old configuration, and you will have to run `Set-AksHciConfig` again when you reinstall.
-
-```powershell
-Uninstall-AksHci
-```
-
-If you want to retain the old configuration, run the following command.
-
-```powershell
-Uninstall-AksHci -SkipConfigCleanup
 ```
 
 ## Next steps

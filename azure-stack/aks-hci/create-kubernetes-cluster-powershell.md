@@ -16,7 +16,7 @@ In this quickstart, you learn how to use Windows PowerShell to create an Azure K
 ## Before you begin
 
  - Make sure you have an Azure Stack Kubernetes host set up. If you don't, see [Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI using PowerShell](./setup-powershell.md).
- - Make sure you have the latest Aks-Hci PowerShell module installed. If you don't, see [Download and install the AksHci PowerShell module](./setup-powershell.md#step-1-download-and-install-the-akshci-powershell-module).
+ - Make sure you have the latest Aks-Hci PowerShell module installed. If you don't, see [Download and install the AksHci PowerShell module](./setup-powershell.md#download-and-install-the-akshci-powershell-module).
 
 ## Step 1: Create a Kubernetes cluster
 

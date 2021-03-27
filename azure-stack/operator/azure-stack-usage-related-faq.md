@@ -441,6 +441,8 @@ Running and stopped VMs generate usage data. Consistent with Azure, deallocation
 
 The easiest way to extract usage data from local usage APIs on an Azure Stack Hub is by using the [usage summary script on GitHub](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/Usagesummary.ps1). The script requires the start and end dates as input parameters.
 
+A common scenario is to retrieve detailed information about usage billed from Azure. Detail can be found in your Azure bill. Also, you can access the Azure commerce APIs. For more information about the Azure commerce APIs, see [Getting started with Azure in Cloud Solution Provider](https://download.microsoft.com/download/C/0/E/C0E897FF-8E51-45B1-BC96-C16DCE44EA2F/Level%2050-%20Getting%20started%20guide%20for%20Azure%20in%20CSP.pdf).
+
 Alternatively, you can use the REST APIs, as explained in the [Provider resource usage API](azure-stack-provider-resource-api.md) and [Tenant resource usage API](azure-stack-tenant-resource-usage-api.md) articles.
 
 ## How can I associate usage extracted from Azure usage APIs to a specific Azure Stack Hub user subscription?
