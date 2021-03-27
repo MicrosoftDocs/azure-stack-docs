@@ -12,45 +12,29 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version v20H2; Windows Server 2019
 
-A cluster set is a loosely-coupled grouping of multiple failover clusters for compute, storage, or hyper-converged environments. By using a cluster set, you can increase the number of server nodes in a single Software Defined Data Center (SDDC) cloud by orders of magnitude. Cluster sets enable virtual machine (VM) flexibility across member clusters and a presents a unified storage namespace.
+This article provides you the necessary information and instructions to deploy a cluster set. Cluster sets enable the clustering of multiple clusters together to create a large fabric, while each member cluster remains independent for resiliency.  Windows PowerShell is used to create cluster sets.
 
-While preserving existing failover cluster management experiences on member clusters, a cluster set also offers key use cases around lifecycle management. This article provides you the necessary information and instructions for deployment. Windows PowerShell is used to create cluster sets.
+A cluster set is a group of multiple failover clusters for compute, storage, hyper-converged environments, or mixed-use environments. By using a cluster set, you can increase the number of server nodes in a single Software Defined Data Center (SDDC) cloud by orders of magnitude. Cluster sets enable virtual machine (VM) flexibility across member clusters and a presents a unified storage namespace.
 
-You can mix Storage Spaces Direct clusters with traditional clusters in a set. Or, you can scale Hyper-V compute or Storage Spaces Direct clusters.
+By adding clusters into a cluster set, you can take advantage of storage or memory that may be available on another cluster without additional purchases. 
 
 Cluster sets been tested and supported up to 64 total cluster nodes. However, cluster sets architecture scales to much larger limits and is not something that is hardcoded for a limit. Let us know if larger scale is critical to you and how you plan to use it.
 
 ## Benefits
 
-Cluster sets allows for clustering multiple clusters together to create a large fabric, while each cluster remains independent for resiliency. For example, you have a several 4-node HCI clusters running virtual machines. Each cluster provides the resiliency needed for itself.
+Cluster sets offer the following benefits:
 
-Cluster sets offer the following value propositions:
+- Significantly increases the supported SDDC cloud scale for running highly available VMs by combining multiple smaller clusters into a single large fabric, while keeping the software fault boundary to a single cluster.
 
-- Significantly increase the supported SDDC cloud scale for running highly available VMs by combining multiple smaller clusters into a single large fabric, even while keeping the software fault boundary to a single cluster
+- Manage failover cluster lifecycle, including onboarding and retiring clusters, without impacting tenant virtual machine (VM) availability, via fluidly migrating VMs across this large fabric.
 
-- Manage entire failover cluster lifecycle including onboarding and retiring clusters, without impacting tenant virtual machine availability, via fluidly migrating virtual machines across this large fabric
+- Easily change the compute-to-storage workload ratio in your hyper-converged environment.
 
-- Easily change the compute-to-storage ratio in your hyper-converged environment
+- Benefit from [Azure-like Fault Domains and Availability sets](htttps://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) across clusters in initial VM placement and subsequent migration.
 
-- Benefit from [Azure-like Fault Domains and Availability sets](htttps://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) across clusters in initial virtual machine placement and subsequent virtual machine migration
+If you have a 4-node cluster, three nodes down will take the entire cluster down. If you have an 8-node cluster, 3 nodes go down will take the entire cluster down. With cluster sets that have two 4-node clusters in the set, if two nodes in one cluster go down and one node in the other go down, both clusters remain up.
 
-- Mix-and-match different generations of CPU hardware into the same cluster set fabric, even while keeping individual fault domains homogeneous for maximum efficiency. Please note that the recommendation of same hardware is still present within each individual cluster as well as the entire cluster set.
-
-If the storage or memory starts to fill up, scaling up is your next step. With scaling up, there are some options and considerations:
-
-- Add more storage to the current cluster. With Storage Spaces Direct, this may be tricky as the exact same model/firmware drives may not be available. The consideration of rebuild times also need to be taken into account.
-
-- Add more memory. What if you are maxed out on the memory the machines can handle?  What if all available memory slots are full?
-
-- Add additional compute nodes with drives into the current cluster. This takes us back to Option 1 needing to be considered.
-
-- Purchase a whole new cluster.
-
-This is where cluster sets provides the benefit of scaling. By adding clusters into a cluster set, you can take advantage of storage or memory that may be available on another cluster without any additional purchases. From a resiliency perspective, adding additional nodes to a Storage Spaces Direct is not going to provide additional votes for quorum.
-
-A Storage Spaces Direct Cluster can survive the loss of 2 nodes before going down. If you have a 4-node HCI cluster, 3 nodes go down will take the entire cluster down. If you have an 8-node cluster, 3 nodes go down will take the entire cluster down. With Cluster sets that has two 4-node HCI clusters in the set, 2 nodes in one HCI go down and 1 node in the other HCI go down, both clusters remain up. 
-
-Is it better to create one large 16-node Storage Spaces Direct cluster or break it down into four 4-node clusters and use cluster sets?  Having four 4-node clusters with cluster sets gives the same scale, but better resiliency in that multiple compute nodes can go down (unexpectedly or for maintenance) and production remains.
+Is it better to deploy one 16-node cluster or break it down into four 4-node clusters and use cluster sets?  Having four 4-node clusters with cluster sets gives the same scale, but better resiliency in that multiple compute nodes can go down (unexpectedly or for maintenance) and production remains intact.
 
 ## Architecture
 
