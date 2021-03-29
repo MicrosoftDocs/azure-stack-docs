@@ -98,11 +98,15 @@ The following procedure shows how to import and install update packages in the a
 
 10. Go back to the **Update** blade on the dashboard. The blade should show that an update is available. This indicates that the update has been prepared successfully. Select the blade to review the newly-added update package.
 
-11. To install the update, select the package that's marked as **Ready**, and then select **Update now**.
+11. Verify no updates are running. Additional update operations are disabled while another update is in progress. If an update is running, an update alert banner displays *The exclusive operation is in progress* and the update status is *Intalling*.
 
-12. When you select the installing update package, you can view the status in the **Update run details** area. From here, you can also select **Download summary** to download the log files. Logs from update runs are available for six months after the attempt ended.
+    ![Update dashboard showing an update installing and an alert that update operations are disabled](./media/azure-stack-update-prepare-package/update-alert.png)
 
-13. When the update finishes, the **Update** blade shows the updated Azure Stack Hub version.
+12. To install the update, select the package that's marked as **Ready**, and then select **Update now**.
+
+13. When you select the installing update package, you can view the status in the **Update run details** area. From here, you can also select **Download summary** to download the log files. Logs from update runs are available for six months after the attempt ended.
+
+14. When the update finishes, the **Update** blade shows the updated Azure Stack Hub version.
 
 You can manually delete updates from the storage account after they've been installed on Azure Stack Hub. Azure Stack Hub periodically checks for older update packages and removes them from storage. It may take Azure Stack Hub up to two weeks to remove the old packages.
 
