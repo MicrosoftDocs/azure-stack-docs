@@ -1,12 +1,12 @@
 ---
 title: Taking an Azure Stack HCI server offline for maintenance
-description: This topic provides guidance on how to properly pause, drain, and resume servers running the Azure Stack HCI operating system using Windows Admin Center and PowerShell.
+description: This topic provides guidance on how to properly pause, drain, and resume servers running the Azure Stack HCI operating system by using Windows Admin Center and PowerShell.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/25/2021
+ms.date: 03/29/2021
 ---
 
 # Taking an Azure Stack HCI server offline for maintenance
