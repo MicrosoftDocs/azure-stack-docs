@@ -98,7 +98,7 @@ The following procedure shows how to import and install update packages in the a
 
 10. Go back to the **Update** blade on the dashboard. The blade should show that an update is available. This indicates that the update has been prepared successfully. Select the blade to review the newly-added update package.
 
-11. Verify no updates are running. If an update is installing, an update alert banner displays *The exclusive operation is in progress. Additional update operations are disabled while the operation is running*. Wait for the update to finish before starting another update.
+11. Verify no updates are running. If an update is installing, an alert banner displays *The exclusive operation is in progress. Additional update operations are disabled while the operation is running*. Wait for the update to finish before starting another update.
 
     ![Update dashboard showing an update installing and an alert that update operations are disabled](./media/azure-stack-update-prepare-package/update-alert.png)
 
