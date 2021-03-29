@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: khdownie
   ms.author: v-kedow
-  ms.date: 12/10/2020
+  ms.date: 03/16/2021
 
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
@@ -57,7 +57,7 @@ landingContent:
             url: manage/create-stretched-volumes.md
           - text: Protect volumes
             url: manage/volume-encryption-deduplication.md
-          - text: Extend volumes
+          - text: Expand volumes
             url: manage/extend-volumes.md
           - text: Delete volumes
             url: manage/delete-volumes.md
@@ -163,3 +163,7 @@ landingContent:
             url: concepts/gateway-overview.md
           - text: Route Reflector overview
             url: concepts/route-reflector-overview.md
+      - linkListType: how-to-guide
+        links:
+          - text: Deploy an SDN infrastructure
+            url: manage/sdn-express.md

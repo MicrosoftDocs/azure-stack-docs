@@ -130,7 +130,7 @@ When using the SQL and MySQL resource providers with Azure Stack Hub integrated 
     -VMLocalCredential $localCreds
 ```
 
-**Change the SSL certificate password:**
+**Rotate the SSL certificate**
 
 ```powershell
 .\SecretRotationMySQLProvider.ps1 `
@@ -141,7 +141,7 @@ When using the SQL and MySQL resource providers with Azure Stack Hub integrated 
     -DefaultSSLCertificatePassword $certPasswd
 ```
 
-**Change the Key Vault certificate password:**
+**Rotate the Key Vault certificate**
 
 ```powershell
 .\SecretRotationSQLProvider.ps1 `
@@ -158,13 +158,12 @@ When using the SQL and MySQL resource providers with Azure Stack Hub integrated 
 |AzureEnvironment|The Azure environment of the service admin account used for deploying Azure Stack Hub. Required only for Azure AD deployments. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or if using a China Azure Active Directory, **AzureChinaCloud**.|Optional|
 |AzCredential|Azure Stack Hub service admin account credential. The script will fail if the account you use with AzCredential requires multi-factor authentication (MFA).|Mandatory|
 |CloudAdminCredential|Azure Stack Hub cloud admin domain account credential.|Mandatory|
-|PrivilegedEndpoint|Privileged Endpoint to access Get-AzureStackStampInformation.|Mandatory|Optional|
+|PrivilegedEndpoint|Privileged Endpoint to access Get-AzureStackStampInformation.|Mandatory|
 |DiagnosticsUserPassword|Diagnostics user account password.|Optional|
 |VMLocalCredential|The local admin account on the MySQLAdapter VM.|Optional|
 |DefaultSSLCertificatePassword|Default SSL Certificate (*.pfx) password.|Optional|
 |DependencyFilesLocalPath|Dependency files local path.|Optional|
 |KeyVaultPfxPassword|The password used for generating the Key Vault certificate for database adapter.|Optional|
-|     |     |     |
 
 ### Known issues
 

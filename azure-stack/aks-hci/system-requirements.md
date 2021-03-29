@@ -4,8 +4,9 @@ description: Before you begin Azure Kubernetes Service on Azure Stack HCI
 ms.topic: conceptual
 author: abhilashaagarwala
 ms.author: abha
-ms.date: 12/02/2020
+ms.date: 02/02/2021
 ---
+
 # System requirements for Azure Kubernetes Service on Azure Stack HCI
 
 > Applies to: Azure Stack HCI, Windows Server 2019 Datacenter
@@ -18,112 +19,103 @@ Microsoft recommends purchasing a validated Azure Stack HCI hardware/software so
 
 ## General requirements
 
-For Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter to function optimally in an Active Directory environment, ensure the following requirements are fulfilled: 
+For Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter to function optimally in an Active Directory environment, ensure the following requirements are fulfilled:
 
- - Ensure time synchronization is set up and the divergence is not greater than 2 minutes across all cluster nodes and the domain controller. For information on setting time synchronization, see [Windows Time Service](/windows-server/networking/windows-time-service/windows-time-service-top). 
+- Ensure time synchronization is set up and the divergence is not greater than 2 minutes across all cluster nodes and the domain controller. For information on setting time synchronization, see [Windows Time Service](/windows-server/networking/windows-time-service/windows-time-service-top).
 
- - Ensure the user account(s) that adds updates, and manages Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter clusters has the correct permissions in Active Directory. If you are using Organizational Units (OUs) to manage group policies for servers and services, the user account(s) will require list, read, modify, and delete permissions on all objects in the OU. 
+- Ensure the user account(s) that adds updates, and manages Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter clusters has the correct permissions in Active Directory. If you are using Organizational Units (OUs) to manage group policies for servers and services, the user account(s) will require list, read, modify, and delete permissions on all objects in the OU.
 
- - We recommend using a separate OU for the servers and services to which you add your Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter clusters. Using a separate OU allows you to control access and permissions with more granularity.
+- We recommend using a separate OU for the servers and services to which you add your Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter clusters. Using a separate OU allows you to control access and permissions with more granularity.
 
- - If you are using GPO templates on containers in Active Directory, ensure deploying AKS-HCI is exempt from the policy. Server hardening will be available in a subsequent preview release.
+- If you are using GPO templates on containers in Active Directory, ensure deploying AKS-HCI is exempt from the policy. Server hardening will be available in a subsequent preview release.
 
 ## Compute requirements
 
- - An Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster with a maximum of four servers in the cluster. We recommend that each server in the cluster have at least 24 CPU cores and at least 256 GB RAM.
+- For test environments: An Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster with a maximum of four servers in the cluster. We recommend that each server in the cluster have at least 8 (recommended 16) CPU cores and at least 256 GB RAM.
 
- - While you can technically run Azure Kubernetes Service on a single node Windows Server 2019 Datacenter, we do not recommend doing so. However, you can run Azure Kubernetes Service on a single node Windows Server 2019 Datacenter for evaluation purposes.
+- For production environments: An Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster with a maximum of four servers in the cluster. We recommend that each server in the cluster have at least 16 (recommended 32) CPU cores and at least 256 GB RAM. The final sizing will depend on the application and number of worker nodes you are planning to deploy on the Azure Stack HCI cluster.
 
- - Other compute requirements for Azure Kubernetes Service on Azure Stack HCI are in line with Azure Stack HCI’s requirements. Visit [Azure Stack HCI system requirements](../hci/concepts/system-requirements.md#server-requirements) for more details on Azure Stack HCI server requirements.
+- While you can technically run Azure Kubernetes Service on a single node Windows Server 2019 Datacenter, we do not recommend doing so. However, you can run Azure Kubernetes Service on a single node Windows Server 2019 Datacenter for evaluation purposes.
 
- - This preview release requires that you install the Azure Stack HCI operating system on each server in the cluster using the EN-US region and language selections; changing them after installation isn't sufficient at this time.
+- Other compute requirements for Azure Kubernetes Service on Azure Stack HCI are in line with Azure Stack HCI’s requirements. Visit [Azure Stack HCI system requirements](../hci/concepts/system-requirements.md#server-requirements) for more details on Azure Stack HCI server requirements.
 
-## Network requirements 
+- This preview release requires that you install the Azure Stack HCI operating system on each server in the cluster using the EN-US region and language selections; changing them after installation isn't sufficient at this time.
 
-The following requirements apply to an Azure Stack HCI cluster as well as a Windows Server 2019 Datacenter cluster: 
+## General network requirements
 
- - Verify that you have an existing, external virtual switch configured if you’re using Windows Admin Center. For Azure Stack HCI clusters, this switch and its name must be the same across all cluster nodes. 
+The following requirements apply to an Azure Stack HCI cluster as well as a Windows Server 2019 Datacenter cluster:
 
- - Verify that you have disabled IPv6 on all network adapters. 
+- Verify that you have an existing, external virtual switch configured if you’re using Windows Admin Center. For Azure Stack HCI clusters, this switch and its name must be the same across all cluster nodes. 
 
- - For a successful deployment, the Azure Stack HCI cluster nodes and the Kubernetes cluster VMs must have external Internet connectivity.
+- Verify that you have disabled IPv6 on all network adapters.
+
+- For a successful deployment, the Azure Stack HCI cluster nodes and the Kubernetes cluster VMs must have external internet connectivity.
+
+- Make sure all subnets you define for the cluster are routable amongst each other and to the internet.
   
- - Make sure that there is network connectivity between Azure Stack HCI hosts and the tenant VMs.
+- Make sure that there is network connectivity between Azure Stack HCI hosts and the tenant VMs.
 
- - DNS name resolution is required for all nodes to be able to communicate with each other. For Kubernetes external name resolution, use the DNS servers provided by the DHCP server when the IP address is obtained. For Kubernetes internal name resolution, use the default Kubernetes core DNS-based solution. 
+- DNS name resolution is required for all nodes to be able to communicate with each other.
 
- - For this preview release, we provide only single VLAN support for the entire deployment. 
+## IP address assignment  
 
- - For this preview release, we have limited proxy support for Kubernetes clusters created through PowerShell. 
- 
-### IP address assignment  
- 
-As part of a successful AKS on Azure Stack HCI deployment, we recommend that you configure a virtual IP pool range with your DHCP server. It is also recommended that you configure three to five highly available control plane nodes for all your workload clusters. 
+In AKS on Azure Stack HCI, virtual networks are used to allocate IP addresses to the Kubernetes resources that require them, as listed above. There are two networking models to choose from, depending on your desired AKS on Azure Stack HCI networking architecture.
 
 > [!NOTE]
-> Using static IP address assignments alone is not supported. You must configure a DHCP server as part of this preview release.
+ > The virtual networking architecture defined here for your AKS on Azure Stack HCI deployments is different from the underlying physical networking architecture in your data center.
 
-#### DHCP
-Follow these requirements while using DHCP for assigning IP addresses throughout the cluster:  
+- Static IP networking - The virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers and any Kubernetes services you run on top of your cluster.
 
- - The network must have an available DHCP server to provide TCP/IP addresses to the VMs and the VM hosts. The DHCP server should also contain network time protocol (NTP) and DNS host information.
- 
- - A DHCP server with a dedicated scope of IPv4 addresses accessible by the Azure Stack HCI cluster.
- 
- - The IPv4 addresses provided by the DHCP server should be routable and have a 30-day lease expiration to avoid loss of IP connectivity in the event of a VM update or reprovisioning.  
+- DHCP networking - The virtual network allocates dynamic IP addresses to the Kubernetes nodes, underlying VMs and load balancers using a DHCP server. The Kubernetes cluster API server and any Kubernetes services you run on top of your cluster are still allocated static IP addresses.
 
-At a minimum, you should reserve the following number of DHCP addresses:
+### Minimum IP address reservation
 
-| Cluster type  | Control plane node | Worker node | Update | Load balancer  |
+At a minimum, you should reserve the following number of IP addresses for your deployment:
+
+| Cluster type  | Control plane node | Worker node | For update operations | Load balancer  |
 | ------------- | ------------------ | ---------- | ----------| -------------|
-| AKS Host |  1  |  0  |  2  |  0  |
-| Workload cluster  |  1 per node  | 1 per node |  5  |  1  |
+| AKS Host |  1 IP |  NA  |  2 IP |  NA  |
+| Workload cluster  |  1 IP per node  | 1 IP per node |  5 IP  |  1 IP |
 
-You can see how the number of required IP addresses is variable depending on the number of workload clusters and control plane and worker nodes you have in your environment. We recommend reserving 256 IP addresses (/24 subnet) in your DHCP IP pool.
-  
-    
-#### VIP Pool Range
+Additionally, you should reserve the following number of IP addresses for your VIP pool:
 
-Virtual IP (VIP) pools are strongly recommended for an AKS on Azure Stack HCI deployment. VIP pools are a range of reserved static IP addresses that are used for long-lived deployments to guarantee that your deployment and application workloads are always reachable. Currently, we only support IPv4 addresses, so you must verify that you have disabled IPv6 on all network adapters. Also, make sure your virtual IP addresses are not a part of the DHCP IP reserve.
+| Resource type  | Number of IP addresses |
+| ------------- | ------------------ |
+| Cluster API server |  1 per cluster |
+| Kubernetes Services  |  1 per service |
 
-At a minimum, you should reserve one IP address per cluster (workload and AKS host), and one IP address per Kubernetes service. The number of required IP addresses in the VIP pool range varies depending on the number of workload clusters and Kubernetes services you have in your environment. We recommend reserving 16 static IP addresses for your AKS-HCI deployment. 
+As you can see, the number of required IP addresses is variable depending on the AKS on Azure Stack HCI architecture and the number of services you run on your Kubernetes cluster. We recommend reserving a total of 256 IP addresses (/24 subnet) for your deployment.
 
-When setting up the AKS host, use the `-vipPoolStartIp` and `-vipPoolEndIp` parameters in `Set-AksHciConfig` to create a VIP pool.
+For more information on networking requirements, visit [node networking concepts in AKS on Azure Stack HCI](./concepts-node-networking.md) and [container networking concepts in AKS on Azure Stack HCI](./concepts-container-networking.md).
 
-#### MAC Pool Range
-We recommend having a minimum of 16 MAC addresses in the range to allow for multiple control plane nodes in each cluster. When setting up the AKS host, use the `-macPoolStart` and `-macPoolEnd` parameters in `Set-AksHciConfig` to reserve MAC addresses from the DHCP MAC pool for Kubernetes services.
-  
-### Network port and URL requirements 
+### Network port and URL requirements
 
-When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following firewall ports are automatically opened on each server in the cluster. 
+When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following firewall ports are automatically opened on each server in the cluster.
 
-
-| Firewall port               | Description     | 
-| ---------------------------- | ------------ | 
+| Firewall port               | Description     |
+| ---------------------------- | ------------ |
 | 45000           | wssdagent GPRC   server port     |
-| 45001             | wssdagent GPRC authentication port  | 
+| 45001             | wssdagent GPRC authentication port  |
 | 55000           | wssdcloudagent GPRC   server port      |
-| 65000            | wssdcloudagent GPRC authentication port  | 
+| 65000            | wssdcloudagent GPRC authentication port  |
 
-
-Firewall URL exceptions are needed for the Windows Admin Center machine and all nodes in the Azure Stack HCI cluster. 
+Firewall URL exceptions are needed for the Windows Admin Center machine and all nodes in the Azure Stack HCI cluster.
 
 | URL        | Port | Service | Notes |
 | ---------- | ---- | --- | ---- |
-https://helm.sh/blog/get-helm-sh/  | 443 | Download Agent, WAC | Used to download the Helm binaries 
-https://storage.googleapis.com/  | 443 | Cloud Init | Downloading Kubernetes binaries 
-https://azurecliprod.blob.core.windows.net/ | 443 | Cloud Init | Downloading binaries and containers 
-https://aka.ms/installazurecliwindows | 443 | WAC | Downloading Azure CLI 
-https://:443 | 443 | TCP | Used to support Azure Arc agents  
+<https://helm.sh/blog/get-helm-sh/>  | 443 | Download Agent, WAC | Used to download the Helm binaries
+<https://storage.googleapis.com/>  | 443 | Cloud Init | Downloading Kubernetes binaries
+<https://azurecliprod.blob.core.windows.net/> | 443 | Cloud Init | Downloading binaries and containers
+<https://aka.ms/installazurecliwindows> | 443 | WAC | Downloading Azure CLI
+<https://443> | 443 | TCP | Used to support Azure Arc agents  
 *.blob.core.windows.net | 443 | TCP | Required for downloads
-*.api.cdp.microsoft.com, *.dl.delivery.mp.microsoft.com, *.emdl.ws.microsoft.com | 80, 443 | Download Agent | Downloading metadata 
-*.dl.delivery.mp.microsoft.com, *.do.dsp.mp.microsoft.com. | 80, 443 | Download Agent | Downloading VHD images 
-ecpacr.azurecr.io | 443 | Kubernetes | Downloading container images 
-git://:9418 | 9418 | TCP | Used to support Azure Arc agents 
+*.dl.delivery.mp.microsoft.com, *.do.dsp.mp.microsoft.com. | 80, 443 | Download Agent | Downloading VHD images
+ecpacr.azurecr.io | 443 | Kubernetes | Downloading container images
+git://:9418 | 9418 | TCP | Used to support Azure Arc agents
 
-## Storage requirements 
+## Storage requirements
 
-The following storage implementations are supported by Azure Kubernetes Service on Azure Stack HCI: 
+The following storage implementations are supported by Azure Kubernetes Service on Azure Stack HCI:
 
 |  Name                         | Storage type | Required capacity |
 | ---------------------------- | ------------ | ----------------- |
@@ -131,9 +123,9 @@ The following storage implementations are supported by Azure Kubernetes Service 
 | Windows Server 2019 Datacenter failover cluster          | CSV          | 1 TB              |
 | Single Node Windows Server 2019 Datacenter | Direct Attached Storage | 500 GB|
 
-## Review maximum supported hardware specifications 
+## Review maximum supported hardware specifications
 
-Azure Kubernetes Service on Azure Stack HCI deployments that exceed the following specifications are not supported: 
+Azure Kubernetes Service on Azure Stack HCI deployments that exceed the following specifications are not supported:
 
 | Resource                     | Maximum |
 | ---------------------------- | --------|
@@ -143,17 +135,17 @@ Azure Kubernetes Service on Azure Stack HCI deployments that exceed the followin
 
 ## Windows Admin Center requirements
 
-Windows Admin Center is the user interface for creating and managing Azure Kubernetes Service on Azure Stack HCI. To use Windows Admin Center with Azure Kubernetes Service on Azure Stack HCI, you must meet all the criteria in the list below. 
+Windows Admin Center is the user interface for creating and managing Azure Kubernetes Service on Azure Stack HCI. To use Windows Admin Center with Azure Kubernetes Service on Azure Stack HCI, you must meet all the criteria in the list below.
 
 Here are the requirements for the machine running the Windows Admin Center gateway: 
 
- - Windows 10 or Windows Server machine (we don't support running Windows Admin Center on the Azure Stack HCI or Windows Server 2019 Datacenter cluster right now)
- - 60 GB of free space
- - Registered with Azure
- - In the same domain as the Azure Stack HCI or Windows Server 2019 Datacenter cluster
+- Windows 10 or Windows Server machine
+- [Registered with Azure](/windows-server/manage/windows-admin-center/azure/azure-integration)
+- In the same domain as the Azure Stack HCI or Windows Server 2019 Datacenter cluster
 
-## Next steps 
+## Next steps
 
-After you have satisfied all of the prerequisites above, you can set up a Azure Kubernetes Service host on Azure Stack HCI using:
- - [Windows Admin Center](setup.md)
- - [PowerShell](setup-powershell.md)
+After you have satisfied all of the prerequisites above, you can set up an Azure Kubernetes Service host on Azure Stack HCI using:
+
+- [Windows Admin Center](setup.md)
+- [PowerShell](setup-powershell.md)

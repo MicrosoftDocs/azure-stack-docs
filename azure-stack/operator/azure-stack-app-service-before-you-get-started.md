@@ -32,6 +32,9 @@ This section lists the prerequisites for both integrated system and Azure Stack 
 ### Installer and helper scripts
 
 1. Download the [App Service on Azure Stack Hub deployment helper scripts](https://aka.ms/appsvconmashelpers).
+   > [!NOTE]
+   > The deployment helper scripts require the AzureRM PowerShell module. See [Install PowerShell AzureRM module for Azure Stack Hub](azure-stack-powershell-install.md) for installation details.
+
 2. Download the [App Service on Azure Stack Hub installer](https://aka.ms/appsvconmasinstaller).
 3. Extract the files from the helper scripts .zip file. The following files and folders are extracted:
 
@@ -56,6 +59,11 @@ To run the resource provider in production, you must provide the following certi
 - API certificate
 - Publishing certificate
 - Identity certificate
+
+In addition to specific requirements listed in the following sections, you'll also use a tool later to test for general requirements. See [Validate Azure Stack Hub PKI certificates](azure-stack-validate-pki-certs.md) for the complete list of validations, including:
+- **File format** of .PFX
+- **Key usage** set to server and client authentication
+- and several others
 
 #### Default domain certificate
 

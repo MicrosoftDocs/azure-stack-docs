@@ -3,10 +3,10 @@ title: Diagnostic log collection
 description: Learn about diagnostic log collection.
 author: PatAltimore
 ms.topic: article
-ms.date: 02/03/2021
+ms.date: 03/26/2021
 ms.author: patricka
 ms.reviewer: shisab
-ms.lastreviewed: 02/03/2021
+ms.lastreviewed: 03/26/2021
 
 #Intent: As an Azure Stack Hub operator, I want to learn about diagnostic log collection so I can share them with Microsoft Support when I need help addressing an issue.
 #Keyword: diagnostic log collection azure stack hub
@@ -86,6 +86,9 @@ There are two ways you can manually send diagnostic logs to Microsoft Support:
 
 If Azure Stack Hub is connected to Azure, we recommend using the administrator portal because it's the simplest way to send the logs directly to Microsoft. If the portal is unavailable, you should send logs using PowerShell.
 
+> [!NOTE]
+> If you send logs using the administrator portal or PowerShell cmdlet, [Test-AzureStack](azure-stack-diagnostic-test.md) runs automatically in the background to collect diagnostic information.
+
 ### Send logs now with the administrator portal
 
 To send logs now using the administrator portal:
@@ -163,13 +166,15 @@ If you're using the **Send logs now** method and want to use PowerShell instead 
 * To send diagnostic logs from VirtualMachines and BareMetal roles, with date filtering for log files for the past 8 hours:
 
   ```powershell
-  Send-AzureStackDiagnosticLog -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
+  $fromDate = (Get-Date).AddHours(-8)
+  Invoke-Command -Session $pepsession -ScriptBlock {Send-AzureStackDiagnosticLog -FilterByRole VirtualMachines,BareMetal -FromDate $using:fromDate}
   ```
 
 * To send diagnostic logs from VirtualMachines and BareMetal roles, with date filtering for log files for the time period between 8 hours ago and 2 hours ago:
 
   ```powershell
-  Send-AzureStackDiagnosticLog -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
+  $fromDate = (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
+  Invoke-Command -Session $pepsession -ScriptBlock {Send-AzureStackDiagnosticLog -FilterByRole VirtualMachines,BareMetal -FromDate $using:fromDate}
   ```
 
 > [!NOTE]

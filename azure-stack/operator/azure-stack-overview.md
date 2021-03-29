@@ -4,7 +4,7 @@ description: An overview of what Azure Stack Hub is and how it lets you run Azur
 author: PatAltimore
 
 ms.topic: overview
-ms.date: 01/08/2021
+ms.date: 03/22/2021
 ms.author: patricka
 ms.reviewer: unknown
 ms.lastreviewed: 11/08/2019
@@ -27,10 +27,11 @@ Azure provides a rich platform for developers to build modern apps. However, som
 
 - **Cloud apps that meet varied regulations**. Develop and deploy apps in Azure with full flexibility to deploy on-premises with Azure Stack Hub to meet regulatory or policy requirements. No code changes are needed. App examples include global audit, financial reporting, foreign exchange trading, online gaming, and expense reporting.
 
-   > [!IMPORTANT]
-   > Azure Stack Hub is an on-premises appliance that customers fully own and control. Customers access and control the data they store in an Azure Stack Hub. Microsoft does not access any customer data stored in an Azure Stack Hub environment.
-
 - **Cloud app model on-premises**. Use Azure services, containers, serverless, and microservice architectures to update and extend existing apps or build new ones. Use consistent DevOps processes across Azure in the cloud and Azure Stack Hub on-premises to speed up app modernization for core mission-critical apps.
+
+### Data residency
+
+If the customer deploys Azure Stack Hub disconnected from global Azure and from the internet, no data that is stored on the appliance is sent to Microsoft. Azure Stack Hub is an on-premises appliance. Customers fully own and control the appliance, access to the appliance, and any data stored on the appliance. Disconnected deployment allows for complete control over data location by the customer. A customer can alternatively elect to connect an Azure Stack Hub appliance to global Azure or to the Internet in a hybrid workload scenario (for example, a solution that uses resources deployed on Azure Stack Hub and public Azure with data transmitting between both) or with hybrid cloud management (for example, connecting a virtual machine deployed on Azure Stack Hub to Azure Monitor in public Azure for monitoring.) In such scenarios, the customer is responsible for validating whether the Azure or other online services used with the appliance satisfy any data residency concerns. For more information about data residency, please see [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
 
 ## Azure Stack Hub architecture
 

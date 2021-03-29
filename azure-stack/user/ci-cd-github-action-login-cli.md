@@ -136,8 +136,8 @@ You can use GitHub secrets to encrypt sensitive information to use in your actio
 1. Create your self-hosted runner. 
 
     These instructions create a runner as a Windows VM in Azure. If you need to connect to your Azure Stack Hub hosted in a datacenter, you may require a VPN connection. You can find instructions on enabling the connection in the section [Install Azure Stack Hub Tools on your self-hosted runner](#optional-install-azure-stack-hub-tools-on-your-self-hosted-runner) that may require a VPN connection.
-    - For guidance on creating a Windows VM in Azure, see [Quickstart: Create a Windows virtual machine in the Azure portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal). When following these instructions, install Windows Server 2016 Core.
-    - For guidance on creating a Windows VM in Azure Stack Hub, see [Quickstart: Create a Windows server VM with the Azure Stack Hub portal](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-windows-portal). When following these instructions, install Windows Server 2016 Core.
+    - For guidance on creating a Windows VM in Azure, see [Quickstart: Create a Windows virtual machine in the Azure portal](/azure/virtual-machines/windows/quick-create-portal). When following these instructions, install Windows Server 2016 Core.
+    - For guidance on creating a Windows VM in Azure Stack Hub, see [Quickstart: Create a Windows server VM with the Azure Stack Hub portal](./azure-stack-quick-windows-portal.md). When following these instructions, install Windows Server 2016 Core.
 1. Use a remote connection to connect to your Windows 2016 server using the server IP address, username, and password that you defined when creating the machine.
 1. Install Chocolatey. Chocolatey is a package manager for Windows that you can use to install and manage dependencies from the command line. From an elevated PowerShell prompt, type:
     ```powershell
@@ -159,7 +159,7 @@ You can use GitHub secrets to encrypt sensitive information to use in your actio
     Install-AzProfile -Profile 2019-03-01-hybrid -Force
     Install-Module -Name AzureStack -RequiredVersion 2.0.2-preview -AllowPrerelease
     ```
-    For more information about using the Azure Stack Hub Az modules, see [Install PowerShell Az module for Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/powershell-install-az-module).
+    For more information about using the Azure Stack Hub Az modules, see [Install PowerShell Az module for Azure Stack Hub](../operator/powershell-install-az-module.md).
 7. Restart your machine. From an elevated PowerShell prompt, type:
     ```powershell  
     shutdown /r
@@ -172,7 +172,7 @@ You can use GitHub secrets to encrypt sensitive information to use in your actio
 
 ### Optional: Install Azure Stack Hub Tools on your self-hosted runner
 
-The instructions in this article do not require access to the [Azure Stack Hub Tools](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-download?&tabs=az), but as you develop your own workflow you may need to use the tools. The following instructions can help you install the tools on your Windows self-hosted runner. For more information about Azure Stack Hub Tools, see [Download Azure Stack Hub Tools from GitHub](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-download?&tabs=az). These instructions assume you have installed the package manager Chocolatey.
+The instructions in this article do not require access to the [Azure Stack Hub Tools](../operator/azure-stack-powershell-download.md?tabs=az), but as you develop your own workflow you may need to use the tools. The following instructions can help you install the tools on your Windows self-hosted runner. For more information about Azure Stack Hub Tools, see [Download Azure Stack Hub Tools from GitHub](../operator/azure-stack-powershell-download.md?tabs=az). These instructions assume you have installed the package manager Chocolatey.
 
 1. Install Git.
     ```powershell  
@@ -199,7 +199,7 @@ The instructions in this article do not require access to the [Azure Stack Hub T
     cd AzureStack-Tools-az
     ```
 
-3. If you need your runner to connect to your Azure Stack Hub instance, you can use PowerShell. You can find the instructions in the article [Connect to Azure Stack Hub with PowerShell](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-configure-admin?&tabs=az1%2Caz2%2Caz3).
+3. If you need your runner to connect to your Azure Stack Hub instance, you can use PowerShell. You can find the instructions in the article [Connect to Azure Stack Hub with PowerShell](../operator/azure-stack-powershell-configure-admin.md?tabs=az1%2Caz2%2Caz3).
 
 ## Create a self-hosted runner
 
@@ -295,4 +295,4 @@ Notes on the workflow file and the action:
 - Find more actions in the [GitHub Marketplace](https://github.com/marketplace).
 - Learn about [Common deployments for Azure Stack Hub](azure-stack-dev-start-deploy-app.md)  
 - Learn about [Use Azure Resource Manager templates in Azure Stack Hub](azure-stack-arm-templates.md)  
-- Review the DevOps hybrid cloud pattern, [DevOps pattern](https://docs.microsoft.com/hybrid/app-solutions/pattern-cicd-pipeline)
+- Review the DevOps hybrid cloud pattern, [DevOps pattern](/hybrid/app-solutions/pattern-cicd-pipeline)

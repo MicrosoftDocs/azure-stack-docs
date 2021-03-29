@@ -5,7 +5,7 @@ author: mattbriggs
 ms.topic: how-to
 ms.date: 12/2/2020
 ms.author: mabrigg
-ms.reviewer: sijuman
+ms.reviewer: raymondl
 ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack Hub operator, I want to add Fortinet FortiGate to Azure Stack Hub Marketplace so my users can create network solutions.

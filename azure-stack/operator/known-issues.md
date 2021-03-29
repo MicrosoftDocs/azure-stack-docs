@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/28/2021
+ms.date: 03/05/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -100,6 +100,12 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: Both the frontend port and backend port need to be the same in the load balancing rule when floating IP is enabled. This is by design.
 - Occurrence: Common
 
+### Stop-Deallocate VM results in MTU configuration
+
+- Applicable: This issue applies to all supported releases.
+- Cause: Performing **Stop-Deallocate** on a VM results in MTU configuration on the VM to be removed. This behavior is inconsistent with Azure.
+- Occurrence: Common
+
 <!-- ## Compute -->
 
 <!-- ## Storage -->
@@ -175,6 +181,12 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Applicable: This issue applies to all supported releases.
 - Cause: The **IdleTimeoutInMinutes** value for a public IP that is associated to a load balancer cannot be changed. The operation puts the public IP into a failed state.
 - Remediation: To bring the public IP back into a successful state, change the **IdleTimeoutInMinutes** value on the load balancer rule that references the public IP back to the original value (the default is 4 minutes).
+- Occurrence: Common
+
+### Stop-Deallocate VM results in MTU configuration
+
+- Applicable: This issue applies to all supported releases.
+- Cause: Performing **Stop-Deallocate** on a VM results in MTU configuration on the VM to be removed. This behavior is inconsistent with Azure.
 - Occurrence: Common
 
 ## Compute
@@ -365,6 +377,12 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
   - [Configure BGP on Azure Stack Hub](../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
   - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
   - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
+  
+### Stop-Deallocate VM results in MTU configuration
+
+- Applicable: This issue applies to all supported releases.
+- Cause: Performing **Stop-Deallocate** on a VM results in MTU configuration on the VM to be removed. This behavior is inconsistent with Azure.
+- Occurrence: Common
 
 ## Compute
 
@@ -532,5 +550,5 @@ To access archived known issues for an older version, use the version selector d
 ::: moniker-end
 
 ::: moniker range="<azs-2002"
-You can access older versions of Azure Stack Hub known issues in the table of contents on the left side, under [**Resources > Release notes archive**](./relnotearchive/known-issues-1910.md). These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
+You can access older versions of Azure Stack Hub known issues in the table of contents on the left side, under the [Resources > Release notes archive](./relnotearchive/known-issues.md). Select the desired archived version from the version selector dropdown in the upper left. These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end
