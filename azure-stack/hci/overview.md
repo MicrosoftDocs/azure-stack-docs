@@ -7,6 +7,7 @@ ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 03/22/2021
+ms.custom: e2e-hybrid
 ---
 
 # Azure Stack HCI solution overview
