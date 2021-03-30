@@ -7,32 +7,32 @@
     }, 
     { 
       "source_path": "azure-stack/mdc/operator/container-registry-template-install-tzl.md", 
-      "redirect_url": "/azure-stack/mdc/operator/ruggedized-overview", 
+      "redirect_url": "/azure-stack/mdc/ruggedized-overview", 
       "redirect_document_id": false
     }, 
     { 
       "source_path": "azure-stack/mdc/operator/container-registry-template-update-tzl.md", 
-      "redirect_url": "/azure-stack/mdc/operator/ruggedized-overview", 
+      "redirect_url": "/azure-stack/mdc/ruggedized-overview", 
       "redirect_document_id": false
     }, 
     { 
       "source_path": "azure-stack/mdc/operator/container-registry-template-rotate-secrets-tzl.md", 
-      "redirect_url": "/azure-stack/mdc/operator/ruggedized-overview", 
+      "redirect_url": "/azure-stack/mdc/ruggedized-overview", 
       "redirect_document_id": false
     }, 
     { 
       "source_path": "azure-stack/ruggedized/operator/container-registry-template-install-tzl.md", 
-      "redirect_url": "/azure-stack/ruggedized/operator/ruggedized-overview", 
+      "redirect_url": "/azure-stack/ruggedized/ruggedized-overview", 
       "redirect_document_id": false
     }, 
     { 
       "source_path": "azure-stack/ruggedized/operator/container-registry-template-update-tzl.md", 
-      "redirect_url": "/azure-stack/ruggedized/operator/ruggedized-overview", 
+      "redirect_url": "/azure-stack/ruggedized/ruggedized-overview", 
       "redirect_document_id": false
     }, 
     { 
       "source_path": "azure-stack/ruggedized/operator/container-registry-template-rotate-secrets-tzl.md", 
-      "redirect_url": "/azure-stack/ruggedized/operator/ruggedized-overview", 
+      "redirect_url": "/azure-stack/ruggedized/ruggedized-overview", 
       "redirect_document_id": false
     }, 
     { 
