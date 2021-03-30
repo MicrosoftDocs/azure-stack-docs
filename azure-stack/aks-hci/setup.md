@@ -65,7 +65,7 @@ Now that we've verified our system settings, let's get started:
 4. Ensure system connectivity through CredSSP in the **Connectivity** step. CredSSP lets Windows Admin Center delegate the user's credentials from the gateway to a target server for remote authentication. CredSSP needs to be enabled to set up Azure Kubernetes Service. After you've enabled CredSSP, select **Next**.  
 5. Configure the machine that will host Azure Kubernetes Service in the **Host configuration** step. We recommend you select **automatically download updates** in this section. This step of the wizard asks you to configure the following details:
     * **Host details**, such as a name for the AKS host cluster and an image directory where VM images will be stored. The image directory must point to a shared storage path or an SMB share that is accessible by the host machine.
-    * **VM networking**, which will apply to all Linux and Windows VMs (nodes) that are created to run containers and orchestrate container management. This includes the fields for internet connected virtual switch, virtual LAN identification enablement, IP address allocation method, and Cloudagent IP. Cloudagent IP can be used to provide a static IP address to the CloudAgent service. This is applicable regardless of your IP address allocation selection. If you have selected the Static IP address allocation method, there are a few additional fields that must be specified:
+    * **VM networking**, which will apply to all Linux and Windows VMs (nodes) that are created to run containers and orchestrate container management. This includes the fields for the internet connected virtual switch, virtual LAN identification enablement, IP address allocation method, and Cloudagent IP. Cloudagent IP can be used to provide a static IP address to the CloudAgent service. This is applicable regardless of your IP address allocation selection. For additional details, see [Kubernetes node networking](./concepts-node-networking.md). If you have selected the static IP address allocation method, there are a few additional fields that must be specified:
       - **Subnet prefix**, an IP address range that does not conflict with other addresses
       - **Gateway**, the gateway through which packets will be routed outside the machine
       - **DNS servers**, the comma-separated list of IP addresses for the DNS servers. Use a minimum of one and a maximum of three addresses. 
@@ -85,7 +85,7 @@ Now that we've verified our system settings, let's get started:
    1. Click **Add a permission** in the top left corner.
    2. Select **Microsoft Graph**, and then select **Delegated permissions**.
    3. Search for **Application.ReadWrite.All**, and if necessary, expand the **Application** dropdown box.
-   4. Select the checkbox and click **Add permissions**.
+   4. Select the checkbox and then click **Add permissions**.
    5. Click **Grant admin consent for <_user_>**, and to confirm the permissions, click **Yes**.
    
    When you're finished, select **Next**.
