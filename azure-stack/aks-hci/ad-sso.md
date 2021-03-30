@@ -272,12 +272,15 @@ To find the SID associated with another account, open PowerShell as an administr
 (New-Object System.Security.Principal.NTAccount(<CONTOSO\Bob>)).Translate([System.Security.Principal.SecurityIdentifier]).value
 ```
 
-## Troubleshooting (Certificates)
-The webhook and the api-server use certificates to mutually validate the TLS connection. This certificate expires in 500 days. To verify that the certificate has expired, view the logs from a ad-auth-webhook container.
+## Troubleshooting (certificates)
+
+The webhook and the API server use certificates to mutually validate the TLS connection. This certificate expires in 500 days. To verify that the certificate has expired, view the logs from an `ad-auth-webhook` container:
+
 ```bash
 kubectl logs ad-auth-webhook-xxx
 ``` 
-If you see certificate validation errors, follow the [instructions](https://docs.microsoft.com/en-us/azure-stack/aks-hci/ad-sso#uninstall-and-reinstall-ad-authentication) to uninstall and reinstall the webhook. This will get new certificates.
+
+If you see certificate validation errors, complete the steps to [uninstall and reinstall the webhook](/azure-stack/aks-hci/ad-sso.md#uninstall-and-reinstall-ad-authentication) and get new certificates.
 
 ## Next steps 
 
