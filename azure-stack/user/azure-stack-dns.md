@@ -3,9 +3,9 @@ title: DNS in Azure Stack Hub
 description: Learn about DNS in Azure Stack Hub and how to create and manage DNS zones.
 author: sethmanheim
 ms.topic: article
-ms.date: 06/11/2020
+ms.date: 3/26/2021
 ms.author: sethm
-ms.lastreviewed: 01/05/2020
+ms.lastreviewed: 3/26/2021
 
 # Intent: As an Azure Stack user, I want to use DNS features so I can compare and manage DNS zones.
 # Keyword: azure stack dns zones
@@ -24,6 +24,8 @@ Azure Stack Hub supports the following Azure DNS features:
 You can specify a DNS domain name label for public IP resources. Azure Stack Hub uses **domainnamelabel.location.cloudapp.azurestack.external** for the label name and maps it to the public IP address in Azure Stack Hub-managed DNS servers.
 
 For example, if you create a public IP resource with **contoso** as a domain name label in the local Azure Stack Hub location, the [fully qualified domain name (FQDN)](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) **contoso.local.cloudapp.azurestack.external** resolves to the public IP address of the resource. You can use this FQDN to create a custom domain CNAME record that points to the public IP address in Azure Stack Hub.
+
+For DNS resolution from outside the Azure Stack Hub, you can create a new zone with the public IP address instead of delegating the internal DNS zone. Otherwise, the clients won't have access to the IP address resolved by the Azure Stack Hub Infrastructure DNS servers.
 
 To learn more about name resolution, see the [DNS resolution](/azure/dns/dns-for-azure-services?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) article.
 

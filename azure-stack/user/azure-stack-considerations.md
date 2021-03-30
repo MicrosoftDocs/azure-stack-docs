@@ -2,10 +2,11 @@
 title: Differences between Azure Stack Hub and Azure when using services and building apps
 description: Understand the differences between Azure and Azure Stack Hub when using services and building apps.
 author: sethmanheim
-ms.topic: overview
-ms.date: 11/20/2020
+ms.topic: conceptual
+ms.date: 03/26/2021
 ms.author: sethm
 ms.lastreviewed: 11/20/2020
+ms.custom: contperf-fy21q4
 
 # Intent: As an Azure Stack user, I want to know the differences between Azure and Azure stack when using services and building apps.
 # Keyword: azure stack building apps
@@ -15,7 +16,7 @@ ms.lastreviewed: 11/20/2020
 
 # Differences between Azure Stack Hub and Azure when using services and building apps
 
-Before you use services or build apps for Azure Stack Hub, it's important to understand the differences between Azure Stack Hub and Azure. This article identifies different features and key considerations when using Azure Stack Hub as your hybrid cloud development environment.
+Before you use services or build apps for Azure Stack Hub, it's important to understand the differences between Azure Stack Hub and global Azure. This article identifies different features and key considerations when using Azure Stack Hub as your hybrid cloud development environment.
 
 ## Overview
 
@@ -30,23 +31,23 @@ The [Azure technical documentation content](/azure) assumes that apps are being 
 * Use the correct Azure Stack Hub-specific endpoints (for example, the URLs for the portal address and the Azure Resource Manager endpoint).
 * You must use PowerShell and API versions that are supported by Azure Stack Hub. Using supported versions ensures that your apps work in both Azure Stack Hub and Azure.
 
-## Cheat sheet: High-level differences
+## High-level differences
 
-The following table describes the high-level differences between Azure Stack Hub and Azure. Keep these differences in mind when you develop for Azure Stack Hub or use Azure Stack Hub services:
+The following table describes the high-level differences between Azure Stack Hub and global Azure. Note these differences when you develop for Azure Stack Hub or use Azure Stack Hub services:
 
 | Area | Azure (global) | Azure Stack Hub |
 | -------- | ------------- | ----------|
 | Who operates it? | Microsoft | Your organization or service provider.|
 | Who do you contact for support? | Microsoft | For an integrated system, contact your Azure Stack Hub operator (at your organization or service provider) for support.<br><br>For Azure Stack Development Kit (ASDK) support, visit the [Microsoft forums](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack). Because the development kit is an evaluation environment, there's no official support offered through Microsoft Support.
-| Available services | See the list of [Azure products](https://azure.microsoft.com/services/?b=17.04b). Available services vary by Azure region. | Azure Stack Hub supports a subset of Azure services. Actual services will vary based on what your organization or service provider chooses to offer.
-| Azure Resource Manager endpoint* | `https://management.azure.com` | For an Azure Stack Hub integrated system, use the endpoint that your Azure Stack Hub operator provides.<br><br>For the development kit, use: `https://management.local.azurestack.external`.
-| Portal URL* | [https://portal.azure.com](https://portal.azure.com) | For an Azure Stack Hub integrated system, use the URL that your Azure Stack Hub operator provides.<br><br>For the development kit, use: `https://portal.local.azurestack.external`.
-| Region | You can select which region you want to deploy to. | For an  Azure Stack Hub integrated system, use the region that's available on your system.<br><br>For the Azure Stack Development Kit (ASDK), the region will always be **local**.
+| Available services | See the list of [Azure services](https://azure.microsoft.com/services). Available services vary by Azure region. | Azure Stack Hub supports a subset of Azure services. Actual services will vary based on what your organization or service provider chooses to offer.
+| Azure Resource Manager endpoint* | `https://management.azure.com` | For an Azure Stack Hub integrated system, use the endpoint that your Azure Stack Hub operator provides.<br><br>For the ASDK, use: `https://management.local.azurestack.external`.
+| Portal URL* | [https://portal.azure.com](https://portal.azure.com) | For an Azure Stack Hub integrated system, use the URL that your Azure Stack Hub operator provides.<br><br>For the ASDK, use: `https://portal.local.azurestack.external`.
+| Region | You can select which region you want to deploy to. | For an  Azure Stack Hub integrated system, use the region that's available on your system.<br><br>For the Azure Stack Development Kit (ASDK), the region is always **local**.
 | Resource groups | A resource group can span regions. | For both integrated systems and the development kit, there's only one region.
 |Supported namespaces, resource types, and API versions | The latest (or earlier versions that aren't yet deprecated). | Azure Stack Hub supports specific versions. See the [Version requirements](#version-requirements) section of this article.
 | | |
 
-*If you're an Azure Stack Hub operator, see [Using the administrator portal](../operator/azure-stack-manage-portals.md) and [Administration basics](../operator/azure-stack-manage-basics.md) for more information.
+*If you're an Azure Stack Hub operator, for more information see [Using the administrator portal](../operator/azure-stack-manage-portals.md) and [Administration basics](../operator/azure-stack-manage-basics.md).
 
 ## Helpful tools and best practices
 
@@ -61,14 +62,14 @@ Microsoft provides tools and guidance that help you develop for Azure Stack Hub.
 
 ## Version requirements
 
-Azure Stack Hub supports specific versions of Azure PowerShell and Azure service APIs. Use supported versions to ensure that your app can deploy to both Azure Stack Hub and to Azure.
+Azure Stack Hub supports specific versions of Azure PowerShell and Azure service APIs. Use supported versions to ensure that your app can deploy to both Azure Stack Hub and to global Azure.
 
-To make sure that you use a correct version of Azure PowerShell, use [API version profiles](azure-stack-version-profiles.md). To determine the latest API version profile that you can use, find out the build of Azure Stack Hub you're using. You can get this information from your Azure Stack Hub administrator.
+To make sure that you use a correct version of Azure PowerShell, use [API version profiles](azure-stack-version-profiles.md). To determine the latest API version profile that you can use, determine the build of Azure Stack Hub you're using. You can get this information from your Azure Stack Hub administrator.
 
 > [!NOTE]
 > If you're using the Azure Stack Development Kit, and you have administrative access, see the [Determine the current version](../operator/azure-stack-updates.md) section to determine the Azure Stack Hub build.
 
-For other APIs, run the following PowerShell command to output the namespaces, resource types, and API versions that are supported in your Azure Stack Hub subscription (there may still be differences at a property level). For this command to work, you must have already [installed](../operator/powershell-install-az-module.md) and [configured](azure-stack-powershell-configure-user.md) PowerShell for an Azure Stack Hub environment. You must also have a subscription to an Azure Stack Hub offer.
+For other APIs, run the following PowerShell command to output the namespaces, resource types, and API versions that are supported in your Azure Stack Hub subscription. There may still be differences at a property level. For this command to work, you must have already [installed](../operator/powershell-install-az-module.md) and [configured](azure-stack-powershell-configure-user.md) PowerShell for an Azure Stack Hub environment. You must also have a subscription to an Azure Stack Hub offer.
 
 ### [Az modules](#tab/az)
 
