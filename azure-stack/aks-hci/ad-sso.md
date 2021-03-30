@@ -280,7 +280,7 @@ The webhook and the API server use certificates to mutually validate the TLS con
 kubectl logs ad-auth-webhook-xxx
 ``` 
 
-If you see certificate validation errors, complete the steps to [uninstall and reinstall the webhook](/azure-stack/aks-hci/ad-sso.md#uninstall-and-reinstall-ad-authentication) and get new certificates.
+If you see certificate validation errors, complete the steps to [uninstall and reinstall the webhook](ad-sso.md#uninstall-and-reinstall-ad-authentication) and get new certificates.
 
 ## Next steps 
 
