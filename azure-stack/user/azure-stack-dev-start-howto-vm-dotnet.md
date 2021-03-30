@@ -24,7 +24,7 @@ This article is about using Azure Stack Hub. You can run Azure in your data cent
 
 ## Create a VM
 
-Create a VM and then install the components you need to host your .NET web app. You will need the IIS Management Console, Web management service, .NET runtime, and Microsoft Web Deploy on your VM. You will need to open the ports for your web serve and for Web Deploy from your development machine. When installing the .NET runtime, make sure you're using the same version of .NET on both your target server and development machine.
+Create a VM and then install the components you need to host your .NET web app. You will need the IIS Management Console, Web management service, .NET runtime, and Microsoft Web Deploy on your VM. You will need to open the ports for your web server and for Web Deploy from your development machine. When installing the .NET runtime, make sure you're using the same version of .NET on both your target server and development machine.
 
 1. Create a [Windows Server VM](azure-stack-quick-windows-portal.md).
 
@@ -60,7 +60,7 @@ Create a VM and then install the components you need to host your .NET web app. 
     | 443 | HTTPS | Hypertext Transfer Protocol Secure (HTTPS) is a secure version of HTTP that requires a security certificate and allows for the encrypted transmission of information.  |
     | 22 | SSH | Secure Shell (SSH) is an encrypted network protocol for secure communications. You will use this connection with an SSH client to configure the VM and deploy the app. |
     | 3389 | RDP | Optional. The Remote Desktop Protocol allows for a remote desktop connection to use a graphic user interface your machine.   |
-    | 8172 | Custom | The port used by WebDeploy. |
+    | 8172 | Custom | The port used by Web Deploy. |
 
     For each port:
 
@@ -94,7 +94,7 @@ Create a VM and then install the components you need to host your .NET web app. 
 
     e. For **Assignment**, select **Dynamic**.
 
-    f. Enter the DNS name label, such as **mywebapp**, so that your full URL becomes *mywebapp.region.cloudapp.azurestack.corp.contoso.com*.
+    f. Enter the DNS name label, such as **mywebapp**, so that your full URL becomes something like *mywebapp.region.cloudapp.azurestack.corp.contoso.com*.
 
 ## Create an app 
 
@@ -108,7 +108,7 @@ Create a publish target from your development machine to your VM in Azure Stack 
 
     ![Deploy an ASP.NET web app to Azure Stack Hub publish](media/azure-stack-dev-start-howto-vm-dotnet/deploy-app-to-azure-stack.png)
 
-1. In the **Publish** window, select **Newrofile**.
+1. In the **Publish** window, select **New**.
 1. Select **Web Server (IIS)**.
 1. Select **Next** > **Web Deploy** > **Next**.
 1. For **Server** enter the DNS name that you defined earlier, such as `mywebapp.region.cloudapp.azurestack.corp.contoso.com`.
