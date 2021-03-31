@@ -40,7 +40,7 @@ Non hot-swappable components include the following items:
 - Motherboard/baseboard management controller (BMC)/video card
 - Disk controller/host bus adapter (HBA)/backplane
 - Network adapter (NIC)
-- Graphic processing unit (GPU)
+- Graphics processing unit (GPU)
 - Operating system disk*
 - Data drives (drives that don't support hot swap, for example PCI-e add-in cards)*
 
