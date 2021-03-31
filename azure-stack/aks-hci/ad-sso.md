@@ -272,6 +272,16 @@ To find the SID associated with another account, open PowerShell as an administr
 (New-Object System.Security.Principal.NTAccount(<CONTOSO\Bob>)).Translate([System.Security.Principal.SecurityIdentifier]).value
 ```
 
+## Troubleshooting (certificates)
+
+The webhook and the API server use certificates to mutually validate the TLS connection. This certificate expires in 500 days. To verify that the certificate has expired, view the logs from an `ad-auth-webhook` container:
+
+```bash
+kubectl logs ad-auth-webhook-xxx
+``` 
+
+If you see certificate validation errors, complete the steps to [uninstall and reinstall the webhook](ad-sso.md#uninstall-and-reinstall-ad-authentication) and get new certificates.
+
 ## Next steps 
 
 In this how-to guide, you learned how to configure AD Authentication to securely connect to the API server with SSO credentials. Next, you can:
