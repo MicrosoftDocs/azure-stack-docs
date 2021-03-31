@@ -6,14 +6,14 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/29/2021
+ms.date: 03/31/2021
 ---
 
 # Taking an Azure Stack HCI server offline for maintenance
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-Taking a server offline for maintenance requires taking portions of storage offline that are shared across all servers in the cluster. This requires pausing the server that you want to take offline, putting the server's disks in maintenance mode, moving roles and virtual machines (VMs) to other servers in the cluster, and verifying that all data is available on the other servers in the cluster. This process ensures that the data remains safe and accessible throughout the maintenance period.
+Taking a server offline for maintenance requires taking portions of storage offline that are shared across all servers in the cluster. This requires pausing the server that you want to take offline, putting the server's disks in maintenance mode, moving clustered roles and virtual machines (VMs) to other servers in the cluster, and verifying that all data is available on the other servers in the cluster. This process ensures that the data remains safe and accessible throughout the maintenance period.
 
 You can use either Windows Admin Center or PowerShell to take a server offline for maintenance. This topic covers both methods.
 
@@ -36,32 +36,28 @@ Before either shutting down or restarting a server, you should pause the server 
 
 1. Using Windows Admin Center, connect to the cluster and then select **Compute > Servers** from the **Tools** menu in Cluster Manager.
 
-2. Click on the name of the server you wish to pause and drain, and select **Pause**. You should see the following prompt:
+2. Select **Inventory**. Click on the name of the server you wish to pause and drain, and select **Pause**. You should see the following prompt:
 
-   *If you pause this node, all clustered roles move to other nodes and no roles can be added to this node until it's resumed. Are you sure you want to pause cluster node?*
+   *Pause server(s) for maintenance: Are you sure you want to pause server(s)? This moves workloads, such as virtual machines, to other servers in the cluster.​*
 
-3. Select **yes** to pause the server and initiate the drain process. The cluster node status will show as **Draining**, and roles such as Hyper-V and VMs will immediately begin live migrating to other server(s) in the cluster. This can take a few minutes.
+3. Select **yes** to pause the server and initiate the drain process. The server status will show as **In maintenance, Draining**, and roles such as Hyper-V and VMs will immediately begin live migrating to other server(s) in the cluster. This can take a few minutes. No roles can be added to the server until it's resumed. When the draining process is finished, the server status will show as **In maintenance, Drain completed**.
 
    > [!NOTE]
    > When you pause and drain the server properly, Azure Stack HCI performs an automatic safety check to ensure it is safe to proceed. If there are unhealthy volumes, it will stop and alert you that it's not safe to proceed.
 
 ### Shut down the server
 
-Once the server has completed draining, it status will show as **Paused** in Windows Admin Center. You can now safely shut the server down for maintenance or reboot it.
+Once the server has completed draining, you can safely shut it down for maintenance or reboot it.
 
 ### Resume the server
 
 When you are ready for the server to begin hosting clustered roles and VMs again, simply turn the server on, wait for it to boot up, and resume the server using the following steps.
 
-1. In Cluster Manager, select **Compute > Nodes** from the **Tools** menu at the left.
+1. In Cluster Manager, select **Compute > Servers** from the **Tools** menu at the left.
 
-2. Select the name of the server you wish to resume, and then click **Resume**. You should see the following prompt:
+2. Select **Inventory**. Click on the name of the server you wish to resume, and then click **Resume**.
 
-   *Are you sure you want to resume cluster node?*
-
-3. In most situations, you should select the checkbox that says *Transfer clustered roles back to this node*. Select **yes** to resume the server.
-
-If you checked the box in step 3 above, clustered roles and VMs will immediately begin live migrating back to the server. This can take a few minutes.
+Clustered roles and VMs will immediately begin live migrating back to the server. This can take a few minutes.
 
 ### Wait for storage to resync
 

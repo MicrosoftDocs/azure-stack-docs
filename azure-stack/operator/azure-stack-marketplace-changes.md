@@ -3,7 +3,7 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 03/12/2021
+ms.date: 03/31/2021
 ms.author: sethm
 ms.reviewer: gara
 ms.lastreviewed: 05/28/2020
@@ -167,6 +167,23 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Updated marketplace items
 
+- 03/30/2021: Free License: SQL Server 2016 SP2 Developer on Windows Server 2016 - Pay as you go - version 13.2.20210219
+- 03/30/2021: Free License: SQL Server 2016 SP2 Developer on Windows Server 2016 - Bring your own license - version 13.2.20210219
+- 03/30/2021: Free License: SQL Server 2016 SP2 Express on Windows Server 2016 - Pay as you go - version 13.2.20210219
+- 03/30/2021: Free License: SQL Server 2016 SP2 Express on Windows Server 2016 - Bring your own license - version 13.2.20210219
+- 03/30/2021: Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016 - Pay as you go - version 14.0.20210219
+- 03/30/2021: Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016 - Bring your own license - version 14.0.20210219
+- 03/30/2021: Free SQL Server License: SQL Server 2017 Express on Windows Server 2016 - Pay as you go - version 14.0.20210219
+- 03/30/2021: Free SQL Server License: SQL Server 2017 Express on Windows Server 2016 - Bring your own license - version 14.0.20210219
+- 03/30/2021: SQL Server 2016 SP2 Enterprise on Windows Server 2016 - Pay as you go - version 13.2.20210219
+- 03/30/2021: SQL Server 2016 SP2 Enterprise on Windows Server 2016 - Bring your own license - version 13.2.20210219
+- 03/30/2021: SQL Server 2016 SP2 Standard on Windows Server 2016 - Pay as you go - version 13.2.20210219
+- 03/30/2021: SQL Server 2016 SP2 Standard on Windows Server 2016 - Bring your own license - version 13.2.20210219
+- 03/30/2021: SQL Server 2017 Enterprise Windows Server 2016 - Pay as you go - version 14.0.20210219
+- 03/30/2021: SQL Server 2017 Enterprise Windows Server 2016 - Bring your own license - version 14.0.20210219
+- 03/30/2021: SQL Server 2017 Standard on Windows Server 2016 - Pay as you go - version 14.0.20210219
+- 03/30/2021: SQL Server 2017 Standard on Windows Server 2016 - Bring your own license - version 14.0.20210219
+- 03/30/2021: SqlIaaSExtension - version 1.3.20590
 - 03/11/2021: Data Box Gateway Virtual Device - version 1.0.2103
 - 03/08/2021: AKS Base Ubuntu 16.04-LTS Image Distro, January 2021 - version 2021.01.28
 - 03/08/2021: AKS Base Ubuntu 18.04-LTS Image Distro, 2021 Q1 - version 2021.01.28
