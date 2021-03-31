@@ -3,7 +3,7 @@ title: Azure Stack Hub Operator Access Workstation
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: mattbriggs
 ms.topic: article
-ms.date: 03/26/2021
+ms.date: 03/31/2021
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 03/26/2021
@@ -80,6 +80,20 @@ else
     Write-Error "ERROR: OAW.zip file hash does not match! It isn't safe to use it, please download it again." 
     Write-Error "Actual hash: $actualHash" 
 } 
+```
+
+In case that copying the above script to your environment is difficult, you could also use the `Verify-Hash` cmdlet offered in the `AzureStack-Tools` located at `[SystemDrive]\VMSoftware\AzureStack-Tools` inside the OAW. 
+
+Relative to the `HashVerify` folder in `AzureStack-Tools`, run:
+
+```powershell
+Import-Module .\Verify-Hash.psm1 -Force -Verbose
+```
+
+Once you import the `Verify-Hash` module, verify the hash of the `OAW.zip` file by running: 
+
+```powershell
+Verify-Hash -ExpectedHash "AC58B69B13FC7F3FEB2FA9612DC79572D2D4BA49D1F2443A876B9663866481B0" -FilePath "<path to the OAW.zip file>"
 ```
 
 ## Check HLH version
