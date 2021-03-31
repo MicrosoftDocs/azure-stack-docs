@@ -4,10 +4,10 @@ titleSuffix: Azure Stack Hub
 description: Learn how to replace a hardware component on an Azure Stack Hub integrated system.
 author: PatAltimore
 ms.topic: how-to
-ms.date: 03/04/2020
+ms.date: 03/31/2021
 ms.author: patricka
 ms.reviewer: thoroet 
-ms.lastreviewed: 07/18/2019
+ms.lastreviewed: 03/31/2021
 
 # Intent: As an Azure Stack operator, I want to replace a hardware component in Azure Stack.
 # Keyword: replace hardware component azure stack
@@ -40,6 +40,7 @@ Non hot-swappable components include the following items:
 - Motherboard/baseboard management controller (BMC)/video card
 - Disk controller/host bus adapter (HBA)/backplane
 - Network adapter (NIC)
+- Graphic processing unit (GPU)
 - Operating system disk*
 - Data drives (drives that don't support hot swap, for example PCI-e add-in cards)*
 
