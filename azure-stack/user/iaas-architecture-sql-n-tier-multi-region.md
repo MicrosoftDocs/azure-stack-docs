@@ -32,7 +32,7 @@ This architecture builds on the one shown in [N-tier application with SQL Server
 
 -   **Azure Traffic Manager**. [Traffic Manager](https://azure.microsoft.com/services/traffic-manager) routes incoming requests to one of the regions. During normal operations, it routes requests to the primary region. If that region becomes unavailable, Traffic Manager fails over to the secondary region. For more information, see the section [Traffic Manager configuration](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server#traffic-manager-configuration).
 
--   **Resource groups**. Create separate [resource groups](/azure/azure-resource-manager/resource-group-overview) for the primary region, the secondary region. This gives you the flexibility to manage each region as a single collection of resources. For example, you could redeploy one region, without taking down the other one. [Link the resource groups](/azure/resource-group-link-resources), so that you can run a query to list all the resources for the application.
+-   **Resource groups**. Create separate [resource groups](/azure/azure-resource-manager/resource-group-overview) for the primary region, the secondary region. This gives you the flexibility to manage each region as a single collection of resources. For example, you could redeploy one region, without taking down the other one. Link the resource groups, so that you can run a query to list all the resources for the application.
 
 -   **Virtual networks**. Create a separate virtual network for each region. Make sure the address spaces do not overlap.
 
