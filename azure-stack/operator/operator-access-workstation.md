@@ -3,7 +3,7 @@ title: Azure Stack Hub Operator Access Workstation
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: mattbriggs
 ms.topic: article
-ms.date: 03/26/2021
+ms.date: 04/01/2021
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 03/26/2021
@@ -77,21 +77,33 @@ if ($expectedHash -eq $actualHash)
 } 
 else 
 { 
-    Write-Error "ERROR: OAW.zip file hash does not match! It isn't safe to use it, please download it again." 
-    Write-Error "Actual hash: $actualHash" 
-} 
+    Write-Error "ERROR: OAW.zip file hash does not match! It isn't safe to use it, please download it again. Actual hash: $actualHash" 
+}
 ```
+
+Another way to copy this script to your environment is to use the Test-FileHash cmdlet that's offered in [AzureStack-Tools](https://github.com/Azure/AzureStack-Tools/tree/az/HashVerify/Test-FileHash.psm1) to verify the hash of the OAW.zip file:
+
+1. Download the [Test-FileHash.psm1](https://github.com/Azure/AzureStack-Tools/tree/az/HashVerify/Test-FileHash.psm1) file from GitHub, and then run:
+
+   ```powershell
+   Import-Module .\Test-FileHash.psm1 -Force -Verbose
+   ```
+
+2. After you import the Test-FileHash module, verify the hash of the OAW.zip file:
+ 
+   ```powershell
+   Verify-Hash -ExpectedHash "AC58B69B13FC7F3FEB2FA9612DC79572D2D4BA49D1F2443A876B9663866481B0" -FilePath "<path to the OAW.zip file>"
+   ```
 
 ## Check HLH version
 
 > [!NOTE]  
-> This step is important to determine if you deploy the OAW on a HLH that
-was deployed using a Microsoft image or an OEM image. If you deploy the OAW on a
-general Microsoft Hyper-V, you can skip this step.
+> This step is important to determine if you deploy the OAW on a HLH that was deployed using a Microsoft image or an OEM image. If you deploy the OAW on a general Microsoft Hyper-V, you can skip this step.
 
 1.  Sign in to the HLH with your credentials.
 
 2.  Open PowerShell ISE and run the following script:
+
     ```powershell  
     C:\Version\Get-Version.ps1
     ```
@@ -101,13 +113,11 @@ general Microsoft Hyper-V, you can skip this step.
     ![Screenshot of PowerShell cmdlet to check the version of the OAW VM.](media/operator-access-workstation/check-operator-access-workstation-vm-version.png)
 
 > [!NOTE]  
-> This PowerShell cmdlet is not present on a HLH that was deployed
-using an OEM image.
+> This PowerShell cmdlet is not present on a HLH that was deployed using an OEM image.
 
 ## Create the OAW VM using a script
 
-The following script prepares the virtual machine as the Operator Access
-Workstation (OAW), which is used to access Microsoft Azure Stack Hub.
+The following script prepares the virtual machine as the Operator Access Workstation (OAW), which is used to access Microsoft Azure Stack Hub.
 
 1.  Sign in to the HLH with your credentials.
 
