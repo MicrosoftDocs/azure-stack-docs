@@ -28,7 +28,7 @@ Altaro VM Backup is an award-winning VM backup and replication solution for Hype
 - Application support: [Altaro support for Azure Stack HCI](https://www.altaro.com/news/single/News-Altaro-applies-its-expertise-in-Hyper-V-backup-to-support-Microsoft.php)
 - Replication support: [Altaro WAN-Optimized Replication](https://www.altaro.com/vm-backup/wan-optimized-replication.php)
  
-To learn how you can back up VMs running on Azure Stack HCI with ease, check out the [Solution Brief](www.altaro.com/azurestackhci).
+To learn how you can back up VMs running on Azure Stack HCI with ease, check out the [Solution Brief](https://www.altaro.com/azurestackhci).
 
 :::image type="content" source="./media/utility-applications/veeam-logo.png" alt-text="Veeam company logo" border="false":::
 
@@ -38,7 +38,7 @@ Veeam Backup & Replication is the one solution for simple, reliable, and flexibl
 - Application support: [Veeam Support for Azure Stack HCI](https://www.veeam.com/kb4047)
 - [Replication support for Hyper-V VMs](https://www.veeam.com/vm-advanced-replication.html?ad=in-text-link)
 
-To get modern data protection for your Azure Stack HCI deployment, check out the [Solution Brief](http://vee.am/azurestackhciwp).
+To get modern data protection for your Azure Stack HCI deployment, check out the [Solution Brief](https://vee.am/azurestackhciwp).
 
 :::image type="content" source="./media/utility-applications/commvault-logo.png" alt-text="Commvault company logo" border="false":::
 
@@ -67,7 +67,7 @@ Datadog is a fully unified platform encompassing infrastructure monitoring, appl
 - Application listing: [Modern monitoring & security](https://www.datadoghq.com/)
 - Application support: [Monitor Microsoft Azure Stack HCI with Datadog](https://www.datadoghq.com/blog/monitor-azure-stack-hci-datadog)
 
-To observe and correlate disparate data types across your entire infrastructure including Azure Stack HCI, check out the [Solution Brief](www.datadoghq.com/pdf/azurehci).
+To observe and correlate disparate data types across your entire infrastructure including Azure Stack HCI, check out the [Solution Brief](https://www.datadoghq.com/pdf/azurehci).
 
 ## Next steps
 For more information, see also:
