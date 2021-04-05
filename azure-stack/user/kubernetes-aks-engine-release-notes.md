@@ -4,10 +4,10 @@ description: Learn the steps you need to take with the update to AKS engine on A
 author: mattbriggs
 
 ms.topic: article
-ms.date: 03/01/2021
+ms.date: 04/05/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 03/01/2021
+ms.lastreviewed: 04/05/2021
 
 # Intent: As an Azure Stack Hub user, I would like to update a Kubernetes cluster using the AKS engine on a custom virtual network so that I can deliver my service in an environment that extends my data center or in a hybrid cloud solution with my cluster in Azure Stack Hub and Azure.
 # Keywords: update ASK engine Azure Stack Hub
@@ -125,10 +125,6 @@ New features include:
 
 -   Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. We recommend deploying one service at the time.
 -   Since the aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
-
-> [!NOTE]  
-> Windows Container and Azure CNI support is available in public preview.
-
 ## Reference
 
 This is the complete set of release notes for Azure and Azure Stack Hub combined:
@@ -227,6 +223,15 @@ In the API Model json file, please specify the release and version values under 
 
 ## AKS engine and corresponding image mapping
 
+<<<<<<< HEAD
+| Kubernetes versions | Notes |
+|---|---|
+| 1.15.5, 1.15.4, 1.14.8, 1.14.7 |  |
+| 1.15.10, 1.14.7 |  |
+| 1.15.12, 1.16.8, 1.16.9 | API Model Samples ([Linux](https://github.com/Azure/aks-engine/blob/v0.51.0/examples/azure-stack/kubernetes-azurestack.json), [Windows)](https://github.com/Azure/aks-engine/blob/v0.51.0/examples/azure-stack/kubernetes-windows.json) |
+| 1.15.12, 1.16.14, 1.17.11 | API Model Samples ([Linux](https://github.com/Azure/aks-engine/blob/v0.55.0/examples/azure-stack/kubernetes-azurestack.json), [Windows)](https://github.com/Azure/aks-engine/blob/v0.55.0/examples/azure-stack/kubernetes-windows.json) |
+| 1.15.12, 1.16.14, 1.17.11 | API Model Samples ([Linux](https://github.com/Azure/aks-engine/blob/v0.55.0/examples/azure-stack/kubernetes-azurestack.json), [Windows)](https://github.com/Azure/aks-engine/blob/v0.55.0/examples/azure-stack/kubernetes-windows.json) |
+=======
 | AKS Engine | AKS Base Image | Kubernetes versions | Notes |
 |---|---|---|---|
 | v0.43.1 | AKS Base Ubuntu 16.04-LTS Image Distro, October 2019 (2019.10.24) | 1.15.5, 1.15.4, 1.14.8, 1.14.7 |  |
@@ -234,6 +239,7 @@ In the API Model json file, please specify the release and version values under 
 | v0.51.0 | AKS Base Ubuntu 16.04-LTS Image Distro, May 2020 (2020.05.13), AKS Base Windows Image (17763.1217.200513) | 1.15.12, 1.16.8, 1.16.9 | API Model Samples ([Linux](https://github.com/Azure/aks-engine/blob/v0.51.0/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine/blob/v0.51.0/examples/azure-stack/kubernetes-windows.json)) |
 | v0.55.0 | AKS Base Ubuntu 16.04-LTS Image Distro, August 2020 (2020.08.24), AKS Base Windows Image (17763.1397.200820) | 1.15.12, 1.16.14, 1.17.11 | API Model Samples ([Linux](https://github.com/Azure/aks-engine/blob/v0.55.0/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine/blob/v0.55.0/examples/azure-stack/kubernetes-windows.json)) |
 | v0.55.4 | AKS Base Ubuntu 16.04-LTS Image Distro, September 2020 (2020.09.14), AKS Base Windows Image (17763.1397.200820) | 1.15.12, 1.16.14, 1.17.11 | API Model Samples ([Linux](https://github.com/Azure/aks-engine/blob/v0.55.0/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine/blob/v0.55.0/examples/azure-stack/kubernetes-windows.json) |
+>>>>>>> ad383caedf3cd03595173ed2041c856b5033b9f6
 
 ## What's new
 
