@@ -67,7 +67,7 @@ Datadog is a fully unified platform encompassing infrastructure monitoring, appl
 - Application listing: [Modern monitoring & security](https://www.datadoghq.com/)
 - Application support: [Monitor Microsoft Azure Stack HCI with Datadog](https://www.datadoghq.com/blog/monitor-azure-stack-hci-datadog)
 
-To observe and correlate disparate data types across your entire infrastructure including Azure Stack HCI, check out the [Solution Brief](https://www.datadoghq.com/pdf/azurehci).
+To observe and correlate disparate data types across your entire infrastructure including Azure Stack HCI, check out the [Solution Brief](https://www.datadoghq.com/pdf/azurehci.pdf).
 
 ## Next steps
 For more information, see also:
