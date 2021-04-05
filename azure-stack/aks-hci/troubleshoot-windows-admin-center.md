@@ -59,7 +59,7 @@ When deploying AKS on Azure Stack HCI using WAC, and the deployment hangs for an
       Enter-PSSession -computer localhost -credential (Get-Credential)
    ``` 
 
-## Windows Admin Center displays an WinRM error when creating a new workload cluster
+## A WinRM error is displayed when creating a new workload cluster
 
 When switching from DHCP to static IP, WAC displayed an error that said the WinRM client cannot process the request. This error also occurred outside of WAC. WinRM broke when static IP addresses were used, and the servers were not registering an Service Principal Name (SPN) when moving to static IP addresses. 
 

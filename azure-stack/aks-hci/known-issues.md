@@ -12,7 +12,7 @@ ms.reviewer:
 This article describes known issues with the public preview release of Azure Kubernetes Service on Azure Stack HCI.
 
 ## Recovering from a failed AKS on Azure Stack HCI deployment
-If you're experiencing deployment issues or want to reset your deployment, make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running Uninstall-AksHci from a PowerShell administrative window.
+If you're experiencing deployment issues or want to reset your deployment, make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running [Uninstall-AksHci](./uninstall-akshci.md) from a PowerShell administrative window.
 
 ## Set-AksHciConfig fails with WinRM errors, but shows WinRM is configured correctly
 When running [Set-AksHciConfig](./set-akshciconfig.md), you might encounter the following error:
@@ -118,7 +118,7 @@ az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
 > If you use the Azure portal to delete the Azure Arc-enabled Kubernetes resource, it removes any associated configuration resources, but does not remove the agents running on the cluster. Best practice is to delete the Azure Arc-enabled Kubernetes resource using `az connectedk8s delete` instead of Azure portal.
 
 
-## When setting up an AKS host using Windows Admin Center, setup may fail if File Explorer is open
+## When using Windows Admin Center to set up an AKS host, setup may fail if File Explorer is open
 If File Explorer is open and in the **C:\Program Files\AksHci** directory when you reach the "Review + create" step, your creation may fail with the error "The process could not access the file 'C:\Program Files\AksHci\wssdcloudagent.exe'. This is because it's being used by another process. To avoid this error, close File Explorer or navigate to a different directory before reaching this step. 
 
 ## Cannot connect Windows Admin Center to Azure as create new Azure App ID fails
