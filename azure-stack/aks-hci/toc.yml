@@ -88,11 +88,13 @@
             href: adapt-apps-mixed-os-clusters.md
     - name: Troubleshoot
       items:
-          - name: Common issues
+          - name: Troubleshoot common issues
             href: troubleshoot.md
+          - name: Known issues
+            href: known-issues.md
           - name: Resolve known issues
             href: troubleshoot-known-issues.md
-          - name: Windows Admin Center
+          - name: Troubleshoot Windows Admin Center
             href: troubleshoot-windows-admin-center.md
 - name: Related
   items:
@@ -110,8 +112,6 @@
     href: https://aka.ms/aks-hci-relnotes/
   - name: PowerShell
     href: AksHci.md
-  - name: Known issues
-    href: known-issues.md
   - name: Azure roadmap
     href: https://azure.microsoft.com/roadmap/
   - name: AKS on Azure Stack HCI roadmap
