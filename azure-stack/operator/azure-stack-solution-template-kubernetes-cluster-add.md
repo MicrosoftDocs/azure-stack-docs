@@ -55,7 +55,7 @@ Create a plan, an offer, and a subscription for the Kubernetes marketplace item.
 
 ## Create a service principal and credentials in AD FS
 
-If you use Active Directory Federated Services (AD FS) for your identity management service, you need to create a service principal for users deploying a Kubernetes cluster. Create service principal using a client secret. For instructions, see [Create a service principal using a client secret](azure-stack-create-service-principals.md#create-app-registration-client-secret-adfs).
+If you use Active Directory Federated Services (AD FS) for your identity management service, you need to create a service principal for users deploying a Kubernetes cluster. Create service principal using a client secret. For instructions, see [Create an app registration that uses a client secret credential](azure-stack-create-service-principals.md#create-app-registration-client-secret-adfs).
 
 ## Add an Ubuntu server image
 
