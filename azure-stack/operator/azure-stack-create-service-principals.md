@@ -32,10 +32,10 @@ Running an app under its own identity is preferable to running it under the user
  - **More restrictive permissions** can be assigned to an app. Typically, these permissions are restricted to only what the app needs to do, known as the *principle of least privilege*.
  - **Credentials and permissions don't change as frequently** for an app as user credentials. For example, when the user's responsibilities change, password requirements dictate a change, or when a user leaves the company.
 
-You start by creating a new app registration in your directory, which creates an associated [service principal object](/azure/active-directory/develop/developer-glossary#service-principal-object) to represent the app's identity within the directory. The process varies depending on the directory you chose for your Azure Stack Hub instance:
+You start by creating a new app registration in your directory, which creates an associated [service principal object](/azure/active-directory/develop/developer-glossary#service-principal-object) to represent the app's identity within the directory. The registration process varies depending on the directory you chose for your Azure Stack Hub instance:
 
-- **Azure Active Directory (Azure AD)**. Azure AD is a multi-tenant, cloud-based, directory and identity management service. You can use Azure AD with a connected Azure Stack Hub instance. The examples presented later will use the Azure portal.
-- **Active Directory Federation Services (AD FS)**. AD FS provides simplified, secured identity federation, and web single sign-on (SSO) capabilities. You can use AD FS with both connected and disconnected Azure Stack Hub instances. The examples presented later will use Azure Stack Hub PowerShell.
+- **Azure Active Directory (Azure AD)**: Azure AD is a multi-tenant, cloud-based, directory and identity management service. You can use Azure AD with a connected Azure Stack Hub instance. The examples presented later will use the Azure portal for Azure AD app registration.
+- **Active Directory Federation Services (AD FS)**: AD FS provides simplified, secured identity federation, and web single sign-on (SSO) capabilities. You can use AD FS with both connected and disconnected Azure Stack Hub instances. The examples presented later will use Azure Stack Hub PowerShell for AD FS app registration.
 
 After creating the app's identity you learn how to assign its service principal to a role, limiting its resource access.
 
@@ -48,9 +48,9 @@ After creating the app's identity you learn how to assign its service principal 
 
 If you deployed Azure Stack Hub with Azure AD as your identity management service, you create and manage app identities just like you do for Azure. This section shows you how to perform the steps using the Azure portal. Review [Permissions required for registering an app](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app) before beginning, to make sure you have sufficient permissions to register an app.
 
-### Create a service principal that uses a client secret credential
+### Create an app registration that uses a client secret credential
 
-In this section, you register your app using the Azure portal, which creates the service principal object in your Azure AD tenant. In this example, you specify a client secret credential, but the portal also supports X509 certificate-based credentials.
+In this section, you register your app in your Azure AD tenant using the Azure portal. In following example you specify a client secret credential, but the portal also supports X509 certificate-based credentials.
 
 1. Sign in to the [Azure portal](https://portal.azure.com) using your Azure account.
 2. Select **Azure Active Directory** > **App registrations** > **New registration**.
@@ -71,11 +71,11 @@ Now proceed to [Assign a role](#assign-a-role) to learn how to establish role-ba
 
 ## Manage an AD FS app identity
 
-If you deployed Azure Stack Hub with AD FS as your identity management service, you must use PowerShell to manage your app's identity. Examples are provided below for managing service principal credentials, demonstrating both an X509 certificate and a client secret.
+If you deployed Azure Stack Hub with AD FS as your identity management service, you must use PowerShell to manage your app's identity. The following examples demonstrate both an X509 certificate and a client secret credential.
 
-The scripts must be run in an elevated ("Run as administrator") PowerShell console, which opens another session to a VM that hosts a privileged endpoint for your Azure Stack Hub instance. Once the privileged endpoint session has been established, additional cmdlets will execute and manage the service principal. For more information about the privileged endpoint, see [Using the privileged endpoint in Azure Stack Hub](azure-stack-privileged-endpoint.md).
+The scripts must be run in an elevated ("Run as administrator") PowerShell console, which opens another session to a VM that hosts a privileged endpoint for your Azure Stack Hub instance. Once the privileged endpoint session has been established, additional cmdlets are used to create and manage the app registration. For more information about the privileged endpoint, see [Using the privileged endpoint in Azure Stack Hub](azure-stack-privileged-endpoint.md).
 
-### Create a service principal that uses a certificate credential
+### Create an app registration that uses a certificate credential
 
 When creating a certificate credential, the following requirements must be met:
 
@@ -84,7 +84,7 @@ When creating a certificate credential, the following requirements must be met:
  - The certificate format must be in PFX file, as both the public and private keys are required. Windows servers use .pfx files that contain the public key file (TLS/SSL certificate file) and the associated private key file.
  - Your Azure Stack Hub infrastructure must have network access to the certificate authority's Certificate Revocation List (CRL) location published in the certificate. This CRL must be an HTTP endpoint.
 
-Once you have a certificate, use the PowerShell script below to register your app and create a service principal. You also use the service principal to sign in to Azure. Substitute your own values for the following placeholders:
+Once you have a certificate, use the PowerShell script below to register your app and sign in using the service principal. Substitute your own values for the following placeholders:
 
 | Placeholder | Description | Example |
 | ----------- | ----------- | ------- |
@@ -211,7 +211,7 @@ Keep your PowerShell console session open, as you use it with the `ApplicationId
 
 ### Update a certificate credential
 
-Now that you created a service principal, this section will show you how to:
+Now that you registered the application, this section will show you how to:
 
 1. Create a new self-signed X509 certificate for testing.
 2. Update the service principal's credentials, by updating its **Thumbprint** property to match the new certificate.
@@ -256,7 +256,7 @@ Update the certificate credential using PowerShell, substituting your own values
      RunspaceId            : a580f894-8f9b-40ee-aa10-77d4d142b4e5
      ```
 
-### Create a service principal that uses client secret credentials
+### Create an app registration that uses a client secret credential
 
 > [!WARNING]
 > Using a client secret is less secure than using an X509 certificate credential. Not only is the authentication mechanism less secure, but it also typically requires embedding the secret in the client app source code. As such, for production apps, you're strongly encouraged to use a certificate credential.
@@ -369,7 +369,7 @@ Keep your PowerShell console session open, as you use it with the `ApplicationId
 
 ---
 
-### Update a client secret
+### Update a client secret credential
 
 Update the client secret credential using PowerShell, using the **ResetClientSecret** parameter, which immediately changes the client secret. Substitute your own values for the following placeholders:
 
@@ -404,7 +404,7 @@ Update the client secret credential using PowerShell, using the **ResetClientSec
      RunspaceId            : 6ed9f903-f1be-44e3-9fef-e7e0e3f48564
      ```
 
-### Remove a service principal
+### Remove an app registration
 
 Now you'll see how to remove/delete an app registration from your directory, and its associated service principal object, using PowerShell. 
 
