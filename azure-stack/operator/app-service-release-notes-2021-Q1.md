@@ -23,7 +23,7 @@ These release notes describe the improvements and fixes in Azure App Service on 
 
 ## Build reference
 
-The App Service on Azure Stack Hub 2021 Q1 build number is **91.0.2.10**
+The App Service on Azure Stack Hub 2021 Q1 build number is **91.0.2.12**
 
 ## Prerequisites
 
@@ -62,7 +62,7 @@ Azure App Service on Azure Stack Update 2021 Q1 includes the following improveme
 - Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.
 
 - **Updates to the following application frameworks and tools**:
-  - ASP.NET Core 5.0.0
+  - ASP.NET Core 5.0.4
   - .NET Framework 4.8
   - NodeJS
     - 14.15.0
@@ -79,9 +79,23 @@ Azure App Service on Azure Stack Update 2021 Q1 includes the following improveme
 
 - **Cumulative Updates for Windows Server are now applied to Controller roles as part of deployment and upgrade**
 
+- MMC based management console replaced with WPF application for improved accessibility
+
+- SSL Cipher Suites synchronized to match those deployed in Azure.
+
 ## Issues fixed in this release
 
-- TBC
+- Custom Shared SKU tenant usage not showing in tenant usage reports
+
+- Unable to select subscription and location when using Service Principal to deploy/upgrade.
+
+- Log scavenger on infrastructure roles
+
+- Added step to wait for management
+
+- When generated storage account names exceed 24 characters installation fails as storage account names cannot exceed 24 characters
+
+- Remote git push error: Invalid Version: transformer
 
 ## Pre-Update steps
 
