@@ -87,7 +87,7 @@ For this procedure, use a computer in your datacenter network that can communica
 
    ```powershell  
    $creds = Get-Credential
-   $pep = New-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
+   $pep = New-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
    ```
 
 2. Now that you have a session with the privileged endpoint, run the following command: 
