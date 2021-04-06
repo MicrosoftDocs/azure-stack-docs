@@ -185,7 +185,7 @@ Complete the following steps to rotate external secrets:
     # Create a PEP Session
     winrm s winrm/config/client '@{TrustedHosts= "<IP_address_of_ERCS>"}'
     $PEPCreds = Get-Credential
-    $PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS_Machine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
+    $PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS_Machine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint" -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
     # Run Secret Rotation
     $CertPassword = ConvertTo-SecureString "<Cert_Password>" -AsPlainText -Force
@@ -235,7 +235,7 @@ Complete the following steps to rotate internal secrets:
     # Create a PEP Session
     winrm s winrm/config/client '@{TrustedHosts= "<IP_address_of_ERCS>"}'
     $PEPCreds = Get-Credential
-    $PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS_Machine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
+    $PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS_Machine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint" -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
     # Run Secret Rotation
     Invoke-Command -Session $PEPSession -ScriptBlock {
@@ -289,7 +289,7 @@ The baseboard management controller monitors the physical state of your servers.
     $NewBmcPwd = Read-Host -Prompt "Enter New BMC password" -AsSecureString
     $NewBmcUser = Read-Host -Prompt "Enter New BMC user name"
 
-    $PEPSession = New-PSSession -ComputerName $PEPIp -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
+    $PEPSession = New-PSSession -ComputerName $PEPIp -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint" -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
     Invoke-Command -Session $PEPSession -ScriptBlock {
         # Parameter BmcPassword is mandatory, while the BmcUser parameter is optional.
@@ -309,7 +309,7 @@ The baseboard management controller monitors the physical state of your servers.
     $NewBmcPwd = ConvertTo-SecureString "<New BMC Password>" -AsPlainText -Force
     $NewBmcUser = "<New BMC User name>"
 
-    $PEPSession = New-PSSession -ComputerName $PEPIp -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
+    $PEPSession = New-PSSession -ComputerName $PEPIp -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint" -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
     Invoke-Command -Session $PEPSession -ScriptBlock {
         # Parameter BmcPassword is mandatory, while the BmcUser parameter is optional.
@@ -374,7 +374,7 @@ This command rotates all of the infrastructure secrets exposed to the Azure Stac
 # Create a PEP Session
 winrm s winrm/config/client '@{TrustedHosts= "<IP_address_of_ERCS>"}'
 $PEPCreds = Get-Credential
-$PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
+$PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint" -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
 # Create Credentials for the fileshare
 $CertPassword = ConvertTo-SecureString "<CertPasswordHere>" -AsPlainText -Force
@@ -401,8 +401,7 @@ This command rotates the TLS certificates used for Azure Stack Hub's external ne
 # Create a PEP Session
 winrm s winrm/config/client '@{TrustedHosts= "<IP_address_of_ERCS>"}'
 $PEPCreds = Get-Credential
-$PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
-
+$PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint" -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 # Create Credentials for the fileshare
 $CertPassword = ConvertTo-SecureString "<CertPasswordHere>" -AsPlainText -Force
 $CertShareCreds = Get-Credential

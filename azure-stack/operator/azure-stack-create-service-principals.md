@@ -103,7 +103,7 @@ Once you have a certificate, use the PowerShell script below to register your ap
     $Creds = Get-Credential
     
     # Create a PSSession to the Privileged Endpoint VM
-    $Session = New-PSSession -ComputerName "<PepVm>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
+    $Session = New-PSSession -ComputerName "<PepVm>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
     
     # Use the Get-Item cmdlet to retrieve your certificate.
     # If you don't want to use a managed certificate, you can produce a self signed cert for testing purposes: 
@@ -161,7 +161,7 @@ Keep your PowerShell console session open, as you use it with the `ApplicationId
     $Creds = Get-Credential
     
     # Create a PSSession to the Privileged Endpoint VM
-    $Session = New-PSSession -ComputerName "<PepVm>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
+    $Session = New-PSSession -ComputerName "<PepVm>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
     
     # Use the Get-Item cmdlet to retrieve your certificate.
     # If you don't want to use a managed certificate, you can produce a self signed cert for testing purposes: 
@@ -231,7 +231,7 @@ Update the certificate credential using PowerShell, substituting your own values
 
      ```powershell
      # Create a PSSession to the PrivilegedEndpoint VM
-     $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
+     $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
      # Create a self-signed certificate for testing purposes. 
      $NewCert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
@@ -279,7 +279,7 @@ Now you create another app registration, but this time specify a client secret c
     $Creds = Get-Credential
     
     # Create a PSSession to the Privileged Endpoint VM
-    $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
+    $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
     
     # Use the privileged endpoint to create the new app registration (and service principal object)
     $SpObject = Invoke-Command -Session $Session -ScriptBlock {New-GraphApplication -Name "<YourAppName>" -GenerateClientSecret}
@@ -328,7 +328,7 @@ Keep your PowerShell console session open, as you use it with the `ApplicationId
     $Creds = Get-Credential
     
     # Create a PSSession to the Privileged Endpoint VM
-    $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
+    $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
     
     # Use the privileged endpoint to create the new app registration (and service principal object)
     $SpObject = Invoke-Command -Session $Session -ScriptBlock {New-GraphApplication -Name "<YourAppName>" -GenerateClientSecret}
@@ -384,7 +384,7 @@ Update the client secret credential using PowerShell, using the **ResetClientSec
 
      ```powershell
      # Create a PSSession to the PrivilegedEndpoint VM
-     $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
+     $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
      # Use the privileged endpoint to update the client secret, used by the service principal associated with <AppIdentifier>
      $SpObject = Invoke-Command -Session $Session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier "<AppIdentifier>" -ResetClientSecret}
@@ -422,7 +422,7 @@ Substitute your own values for the following placeholders:
 $Creds = Get-Credential
 
 # Create a PSSession to the PrivilegedEndpoint VM
-$Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
+$Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
 # OPTIONAL: Use the privileged endpoint to get a list of applications registered in AD FS
 $AppList = Invoke-Command -Session $Session -ScriptBlock {Get-GraphApplication}
