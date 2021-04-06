@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 03/10/2021
+ms.date: 04/06/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -99,7 +99,13 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 <!-- ## App Service -->
 
-<!-- ## Usage -->
+## Usage
+
+### Wrong status on infrastructure backup
+
+- Applicable: This issue applies to release 2102.
+- Cause: The infrastructure backup job can display the wrong status (failed or successful) while the status itself is refreshed. This does not impact the consistency of the backup data, but can cause confusion if an actual failure occurred.
+- Remediation: The issue will be fixed in the next hotfix for 2102.
 
 <!-- ### Identity -->
 
