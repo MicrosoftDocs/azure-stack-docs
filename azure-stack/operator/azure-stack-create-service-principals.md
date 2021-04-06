@@ -1,30 +1,30 @@
 ---
-title: Use an app identity to access resources
-description: Learn to access Azure Stack Hub resources using an app identity, which can be used with role-based access control for sign-in and access to resources.
+title: Use an app identity to access Azure Stack Hub resources
+description: Learn how to access Azure Stack Hub resources using an app identity, and use  role-based access control for authorization.
 author: BryanLa
 ms.author: bryanla
 ms.topic: how-to
-ms.date: 11/16/2020
-ms.lastreviewed: 11/16/2020
+ms.date: 04/06/2021
+ms.lastreviewed: 04/06/2021
 ms.custom: contperf-fy20q4
 zone_pivot_groups: state-connected-disconnected
 
-# Intent: As an Azure Stack operator, I want to use an app identity to access resources. 
-# Keyword: azure stack hub app identity service principal
+# Intent: As an Azure Stack operator, I want to use an app identity to access Azure Stack Hub resources. 
+# Keyword: azure stack hub app identity
 
 ---
 # Use an app identity to access Azure Stack Hub resources
 
-An application that needs to deploy or configure resources through Azure Resource Manager must be represented by its own identity. Just as a user is represented by a security principal called a user principal, an app is represented by a service principal. The service principal provides an identity for your app, allowing you to delegate only the necessary permissions to the app.  
+An application that needs to deploy or configure resources through Azure Resource Manager must be represented by its own identity. Just as a user is represented by a security principal called a user principal, an app is represented by a service principal. 
 
-As an example, you may have a configuration management app that uses Azure Resource Manager to inventory Azure resources. In this scenario, you can create a service principal, grant the "reader" role to that service principal, and limit the configuration management app to read-only access.
+The service principal identity allows you to delegate only the necessary permissions to the app. For example, a configuration management app might use Azure Resource Manager to inventory Azure resources. In this scenario, you create a service principal, grant the "reader" role to that service principal, and limit the configuration management app to read-only access.
 
 ## Overview
 
-Like a user, an app must present credentials during authentication. This authentication consists of two elements:
+Like a user, an app must present credentials during authentication, which requires two elements:
 
 - An **Application ID**, sometimes referred to as a Client ID. A GUID that uniquely identifies the app's registration in your Active Directory tenant.
-- A **secret** associated with the application ID. You can either generate a client secret string (similar to a password), or specify an X509 certificate (which uses its public key).
+- A **secret** associated with the application ID. You can either generate a client secret string (similar to a password), or specify an X509 certificate thumbprint (which uses its public key).
 
 Running an app under its own identity is preferable to running it under the user's identity for the following reasons:
 
@@ -32,14 +32,12 @@ Running an app under its own identity is preferable to running it under the user
  - **More restrictive permissions** can be assigned to an app. Typically, these permissions are restricted to only what the app needs to do, known as the *principle of least privilege*.
  - **Credentials and permissions don't change as frequently** for an app as user credentials. For example, when the user's responsibilities change, password requirements dictate a change, or when a user leaves the company.
 
-You start by creating a new app registration in your directory, which creates an associated [service principal object](/azure/active-directory/develop/developer-glossary#service-principal-object) to represent the app's identity within the directory. 
+You start by creating a new app registration in your directory, which creates an associated [service principal object](/azure/active-directory/develop/developer-glossary#service-principal-object) to represent the app's identity within the directory. The process varies depending on the directory you chose for your Azure Stack Hub instance:
 
-This article begins with the process of creating and managing a service principal, depending on the directory you chose for your Azure Stack Hub instance:
+- **Azure Active Directory (Azure AD)**. Azure AD is a multi-tenant, cloud-based, directory and identity management service. You can use Azure AD with a connected Azure Stack Hub instance. The examples presented later will use the Azure portal.
+- **Active Directory Federation Services (AD FS)**. AD FS provides simplified, secured identity federation, and web single sign-on (SSO) capabilities. You can use AD FS with both connected and disconnected Azure Stack Hub instances. The examples presented later will use Azure Stack Hub PowerShell.
 
-- **Azure Active Directory (Azure AD)**. Azure AD is a multi-tenant, cloud-based directory, and identity management service. You can use Azure AD with a connected Azure Stack Hub instance.
-- **Active Directory Federation Services (AD FS)**. AD FS provides simplified, secured identity federation, and web single sign-on (SSO) capabilities. You can use AD FS with both connected and disconnected Azure Stack Hub instances.
-
-Then you learn how to assign the service principal to a role, limiting its resource access.
+After creating the app's identity you learn how to assign its service principal to a role, limiting its resource access.
 
 ::: zone pivot="state-disconnected"
 <!-- this is intentionally a noop -->
@@ -48,7 +46,7 @@ Then you learn how to assign the service principal to a role, limiting its resou
 ::: zone pivot="state-connected"
 ## Manage an Azure AD app identity
 
-If you deployed Azure Stack Hub with Azure AD as your identity management service, you create service principals just like you do for Azure. This section shows you how to perform the steps through the Azure portal. Check that you have the [required Azure AD permissions](/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) before beginning.
+If you deployed Azure Stack Hub with Azure AD as your identity management service, you create and manage app identities just like you do for Azure. This section shows you how to perform the steps using the Azure portal. Review [Permissions required for registering an app](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app) before beginning, to make sure you have sufficient permissions to register an app.
 
 ### Create a service principal that uses a client secret credential
 
