@@ -48,8 +48,8 @@ After creating the app's identity you learn how to assign its service principal 
 
 If you deployed Azure Stack Hub with Azure AD as your identity management service, you create and manage app identities just like you do for Azure. This section shows you how to perform the steps using the Azure portal. Review [Permissions required for registering an app](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app) before beginning, to make sure you have sufficient permissions to register an app.
 
-### Create an app registration that uses a client secret credential
 <a name="create-app-registration-client-secret-aad"></a>
+### Create an app registration that uses a client secret credential
 
 In this section, you register your app in your Azure AD tenant using the Azure portal. In following example you specify a client secret credential, but the portal also supports X509 certificate-based credentials.
 
@@ -257,8 +257,8 @@ Update the certificate credential using PowerShell, substituting your own values
      RunspaceId            : a580f894-8f9b-40ee-aa10-77d4d142b4e5
      ```
 
-### Create an app registration that uses a client secret credential
 <a name="create-app-registration-client-secret-adfs"></a>
+### Create an app registration that uses a client secret credential
 
 > [!WARNING]
 > Using a client secret is less secure than using an X509 certificate credential. Not only is the authentication mechanism less secure, but it also typically requires embedding the secret in the client app source code. As such, for production apps, you're strongly encouraged to use a certificate credential.
