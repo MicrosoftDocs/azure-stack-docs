@@ -57,6 +57,8 @@ An Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency netwo
 - Verify at least one network adapter is available and dedicated for cluster management.
 - Verify that physical switches in your network are configured to allow traffic on any VLANs you will use.
 
+For physical networking considerations and requirements, see [Physical network requirements](physical-network-requirements.md).
+
 For host networking considerations and requirements, see [Host network requirements](host-network-requirements.md).
 
 ## Software Defined Networking (SDN) requirements
