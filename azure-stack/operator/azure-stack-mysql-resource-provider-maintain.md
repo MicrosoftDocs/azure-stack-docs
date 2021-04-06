@@ -66,7 +66,7 @@ Invoke-WebRequest -Uri 'https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64'
 
 # Create a session to the maintenance endpoint.
 $session = New-PSSession -ComputerName $databaseRPMachine `
-    -Credential $vmLocalAdminCreds -ConfigurationName DBAdapterMaintenance '
+    -Credential $vmLocalAdminCreds -ConfigurationName DBAdapterMaintenance `
     -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
 # Copy the defender update file to the adapter VM.
