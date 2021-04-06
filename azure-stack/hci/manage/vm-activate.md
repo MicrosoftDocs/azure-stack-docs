@@ -1,22 +1,22 @@
 ---
-title: Change languages in Azure Stack HCI
-description: This topic provides guidance on how to change languages in the Azure Stack HCI operating system.
+title: Activate Windows Server VMs using Automatic Virtual Machine Activation (AVMA)
+description: This topic provides guidance on how to ....
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 04/06/2021
 ---
 
-# Azure Stack HCI change languages
+# Activate Windows Server VMs using Automatic Virtual Machine Activation (AVMA)
 
->Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+>Applies to: Azure Stack HCI, version 20H2; Windows Server 2019 Datacenter Edition and later
 
 This topic provides guidance on how to change languages in the Azure Stack HCI operating system.
 
-## Drive types
+## Why use AVMA?
 TBD
 
-## Built-in cache
+## Supported keys and guest OS versions
 TBD
 
 <!---Example note format.--->
@@ -26,7 +26,11 @@ TBD
 <!---Example figure format--->
 <!---:::image type="content" source="./media/network-controller/topology-option-1.png" alt-text="Option 1 to create a physical network for the Network Controller." lightbox="./media/network-controller/topology-option-1.png":::--->
 
-### Cache
+
+### Where you can get keys
+TBD
+
+### Supported guest OS versions
 TBD
 
 <!---Example table format.--->
@@ -37,12 +41,46 @@ TBD
 | $10                                      | $10                                     |
 
 
+## Use AVMA in Windows Admin Center
+TBD
+<!---Video demo here--->
+
+### Before you start
+TBD
+
+
+### Set up AVMA
+TBD
+
+
+### Activate VMs against a host server
+TBD
+
+
+### Change or add keys later (optional)
+TBD
+
+
+### Troubleshooting
+TBD
+
+
+## Use AVMA in PowerShell
+TBD
+
+### Troubleshooting
+TBD
+
+### Activate VMs against a host server
+TBD
+<!---Verify that this same content in above section should also be here.--->
+
+
+## FAQ
+TBD
 
 
 ## Next steps
 For more information, see also:
-<!---Placeholders for format examples. Replace all before initial topic review.--->
-
-- [Azure Stack HCI overview](../overview.md)
-- [Understand the cache in Azure Stack HCI](cache.md)
-- [Storage Spaces Direct hardware requirements](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements)
+- [AVMA]()
+- [VLSC]()
