@@ -11,6 +11,32 @@ ms.author: v-susbo
 
 When you use Windows Admin Center (WAC) to create or manage AKS on Azure Stack HCI clusters, you might occasionally come across problems. This article details some common problems and troubleshooting steps that are specific to WAC.
 
+## Create Windows Admin Center logs
+When you report problems with Windows Admin Center, it's a good idea to attach logs to help the development team diagnose your problem. Errors in Windows Admin Center generally come in one of two forms: 
+- Events that appear in the event viewer on the machine running Windows Admin Center 
+- JavaScript problems that surface in the browser console 
+
+To collect logs for Windows Admin Center, use the `Get-SMEUILogs.ps1` script that's provided in the public preview package. 
+ 
+To use the script, run this command in the folder where your script is stored: 
+ 
+```PowerShell
+./Get-SMEUILogs.ps1 -ComputerNames [comp1, comp2, etc.] -Destination [comp3] -HoursAgo [48] -NoCredentialPrompt
+```
+ 
+The command has the following parameters:
+ 
+- `-ComputerNames`: A list of machines you want to collect logs from.
+- `-Destination`: The machine you want to aggregate the logs to.
+- `-HoursAgo`: The start time for collecting logs, expressed in hours before the time you run the script.
+- `-NoCredentialPrompt`: A switch to turn off the credentials prompt and use the default credentials in your current environment.
+ 
+If you have difficulties running this script, you can run the following command to view the Help text: 
+ 
+```PowerShell
+GetHelp .\Get-SMEUILogs.ps1 -Examples
+```
+
 ## Troubleshoot CredSSP issues
 
 When deploying AKS on Azure Stack HCI using WAC, and the deployment hangs for an extended period, you might be having CredSSP or connectivity problems. Try the following steps to troubleshoot your deployment:
@@ -33,7 +59,7 @@ When deploying AKS on Azure Stack HCI using WAC, and the deployment hangs for an
       Enter-PSSession -computer localhost -credential (Get-Credential)
    ``` 
 
-## Windows Admin Center displays an WinRM error when creating a new workload cluster
+## A WinRM error is displayed when creating a new workload cluster
 
 When switching from DHCP to static IP, WAC displayed an error that said the WinRM client cannot process the request. This error also occurred outside of WAC. WinRM broke when static IP addresses were used, and the servers were not registering an Service Principal Name (SPN) when moving to static IP addresses. 
 
