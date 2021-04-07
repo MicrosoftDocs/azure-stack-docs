@@ -218,6 +218,13 @@ Complete the following steps to rotate external secrets:
     >```  
     >
     >Contact support if you experience repeated secret rotation failures.
+
+3. Optionally, to confirm that all external certificates were rotated, run the [**Test-AzureStack** validation tool](azure-stack-diagnostic-test.md) using the following script:
+
+    ```powershell
+    Test-AzureStack -Include AzsExternalCertificates -DetailedResults -debug
+    ```
+
 ::: moniker-end
 
 ## Rotate internal secrets
