@@ -74,6 +74,7 @@ These low impact tests work on an infrastructure level and provide you with info
 | Azure Stack Hub Cloud Hosting Infrastructure Utilization | AzsHostingInfraUtilization        |
 | Azure Stack Hub Control Plane Summary                    | AzsControlPlane                   |
 | Azure Stack Hub Defender Summary                         | AzsDefenderSummary                |
+| Azure Stack Hub External Certificates Summary            | AzsExternalCertificates           |
 | Azure Stack Hub Hosting Infrastructure Firmware Summary  | AzsHostingInfraFWSummary          |
 | Azure Stack Hub Infrastructure Capacity                  | AzsInfraCapacity                  |
 | Azure Stack Hub Infrastructure Performance               | AzsInfraPerformance               |
