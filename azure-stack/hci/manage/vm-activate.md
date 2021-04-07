@@ -11,9 +11,6 @@ ms.date: 04/06/2021
 
 >Applies to: Azure Stack HCI, version 20H2; Windows Server 2019 Datacenter Edition and later
 
-Nested resiliency is a new capability of Storage Spaces Direct in Windows Server 2019 that enables a two-server cluster to withstand multiple hardware failures at the same time without loss of storage availability, so users, apps, and virtual machines continue to run without disruption. This topic explains how it works, provides step-by-step instructions to get started, and answers the most frequently asked questions.
-<!---Looks like this para is for a different topic. Verify it should be here--->
-
 Automatic Virtual Machine Activation (AVMA) is an *optional* feature in Azure Stack HCI that you can use to activate Windows Server VMs running on Azure Stack HCI hosts. This topic explains the benefits of using AVMA over other activation methods and provides instructions on setting up AVMA on Azure Stack HCI.
 
 To use other methods to activate VMs, see [Windows Server 2019 Activation](/windows-server/get-started-19/activation-19).
@@ -21,8 +18,7 @@ To use other methods to activate VMs, see [Windows Server 2019 Activation](/wind
 ## Why use AVMA?
 AVMA allows properly activated host servers to activate VMs. The AVMA process binds VM activation to host servers, instead of to each individual VM.
 
-<!---Example figure format--->
-<!---:::image type="content" source="./media/network-controller/topology-option-1.png" alt-text="Option 1 to create a physical network for the Network Controller." lightbox="./media/network-controller/topology-option-1.png":::--->
+:::image type="content" source="./media/vm-activation/avma-binding-process.png" alt-text="Conceptual figure showing how AVMA binds the VM activation key process to the host server instead of binding the process to each VM running on top of the host server." lightbox="./media/vm-activation/avma-binding-process.png":::
 
 There are multiple benefits to this approach:
 - Individual VMs don't have to be connected to the internet. Only licensed host servers with internet connectivity are required.
@@ -30,29 +26,33 @@ There are multiple benefits to this approach:
 - AVMA acts as a proof-of-purchase mechanism. This capability helps to ensure that Windows products are used in accordance with Product Use Rights and Microsoft Software License Terms.
 
 ## Supported keys and guest OS versions
-TBD
-
-<!---Example note format.--->
-   >[!NOTE]
-   > TBD.
-
-<!---Example figure format--->
-<!---:::image type="content" source="./media/network-controller/topology-option-1.png" alt-text="Option 1 to create a physical network for the Network Controller." lightbox="./media/network-controller/topology-option-1.png":::--->
-
+To use AVMA with Azure Stack HCI, each server in the cluster requires a valid product key for Windows Server 2019 Datacenter Edition or later.
 
 ### Where you can get keys
-TBD
+Choose from the following options to get a product key.
+
+Your OEM:
+- Find a Certificates of Authenticity (COA) key label on the outside of OEM boxed software. You can use this key once per server in the cluster. To learn more, see [Packaged Software](https://www.microsoft.com/howtotell/software-packaged).
+
+The Volume Licensing Service Center (VLSC):
+- From the VLSC, you can download a Multiple Activation Key (MAK) that you may reuse up to a predetermined number of allowed activations. To learn more, see the [Microsoft Volume Licensing Service Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx).
+
+Other retail channels:
+- You can also find a retail key on a retail box label. You can only use this key once per server in the cluster.
 
 ### Supported guest OS versions
-TBD
+AVMA activates all editions (Datacenter, Standard, or Essentials) of the following guest OS versions.
 
-<!---Example table format.--->
-| Fun                                      | Table                                   |
+| Guest OS version                         | Host server key version                 |
 | :--------------------------------------- | :-------------------------------------- |
-| left-aligned column                      | right-aligned column                    |
-| $100                                     | $100                                    |
-| $10                                      | $10                                     |
+|                                          | Windows Server 2019 Datacenter          |
+| Windows Server 2019                      | X                                       |
+| Windows Server 2016                      | X                                       |
+| Windows Server 2012 R2                   | X                                       |
 
+
+   >[!NOTE]
+   > For VMs to stay activated regardless of which server they run on, AVMA must be set up for each server in the cluster. Servers also must be activated with keys from the same operating system version.
 
 ## Use AVMA in Windows Admin Center
 TBD
