@@ -18,7 +18,7 @@ To use other methods to activate VMs, see [Windows Server 2019 Activation](/wind
 ## Why use AVMA?
 AVMA allows properly activated host servers to activate VMs. The AVMA process binds VM activation to host servers, instead of to each individual VM.
 
-:::image type="content" source="./media/vm-activation/avma-binding-process.png" alt-text="Conceptual figure showing how AVMA binds the VM activation key process to the host server instead of binding the process to each VM running on top of the host server." lightbox="./media/vm-activation/avma-binding-process.png":::
+:::image type="content" source="./media/vm-activation/avma-binding-process.png" alt-text="Conceptual figure showing how AVMA binds the VM activation key process to each host server instead of binding the process to each VM running on top of each host server." lightbox="./media/vm-activation/avma-binding-process.png":::
 
 There are multiple benefits to this approach:
 - Individual VMs don't have to be connected to the internet. Only licensed host servers with internet connectivity are required.
@@ -50,30 +50,55 @@ AVMA activates all editions (Datacenter, Standard, or Essentials) of the followi
 | Windows Server 2016                      | X                                       |
 | Windows Server 2012 R2                   | X                                       |
 
-
    >[!NOTE]
    > For VMs to stay activated regardless of which server they run on, AVMA must be set up for each server in the cluster. Servers also must be activated with keys from the same operating system version.
 
 ## Use AVMA in Windows Admin Center
-TBD
+You can use Windows Admin Center to set up and manage AVMA for your Azure Stack HCI cluster.
 
+Take a few minutes to watch the video on the using the AVMA feature in Windows Admin Center:
 <!---Video demo format > [!VIDEO https://www.youtube.com/embed/fw8RVqo9dcs]--->
 
 ### Before you start
-TBD
-
+Before using the the AVMA feature in Windows Admin Center, the following is required:
+- An Azure Stack HCI cluster (version 20H2, with the April 14, 2021 security update or later)
+- Windows Admin Center (version 2103 or later)
+- The Cluster Manager extension for Windows Admin Center (version 1.491.5 or later)
+- A Windows Server Datacenter key (version 2019 or later)
 
 ### Set up AVMA
-TBD
+To use AVMA in Windows Admin Center:
+1. Download and install the Cluster Manager extension update for Windows Admin Center from this resource.
+<!---[resource]()--->
+<!---supporting screenshot here--->
 
+1. Select **Cluster Manager** from the top drop-down arrow, navigate to the cluster that you want to activate, then under **Settings**, select **Activate Windows Server VMs**.
+
+1.	In the **Automatically activate VMs** pane, select **Set up** and then in the **Apply activation keys to each server** pane, enter your Windows Server Datacenter keys.
+
+    When you have finished entering keys for each host server in the cluster, select **Apply**. The process will take a few moments to complete.
+
+   >[!NOTE]
+   > Each server requires a unique key, unless you have a valid volume license key.
+
+   After the AVMA feature is successfully set up, you can view and manage the feature for your cluster.
 
 ### Activate VMs against a host server
-TBD
-
+You can also install AVMA keys in VMs against a host server in a cluster. To learn more, see [Automatic virtual machine activation](/windows-server/get-started-19/vm-activation-19).
 
 ### Change or add keys later (optional)
-TBD
+You may want to edit keys when there are changes to your cluster. Examples for this include adding a server to your cluster, using new Windows Server VM versions, or after updating your servers.
 
+To change or add keys to a cluster:
+<!---See deck to validate steps for this section.--->
+
+1. 
+
+1. 
+
+
+   >[!NOTE]
+   > Overwriting keys does not reduce activation count for used keys. Ensure that you're using the right keys before applying them to the servers.
 
 ### Troubleshooting
 TBD
@@ -86,9 +111,7 @@ TBD
 TBD
 
 ### Activate VMs against a host server
-TBD
-<!---Verify that this same content in above section should also be here.--->
-
+You can also install AVMA keys in VMs against a host server in a cluster. To learn more, see [Automatic virtual machine activation](/windows-server/get-started-19/vm-activation-19).
 
 ## FAQ
 TBD
