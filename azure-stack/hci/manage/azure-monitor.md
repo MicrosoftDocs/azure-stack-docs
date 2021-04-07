@@ -15,13 +15,11 @@ ms.date: 07/21/2020
 
 ## How does Azure Monitor work?
 :::image type="content" source="media/monitor/azure-monitor-diagram.png" alt-text="diagram of how Azure Monitor works" border="false":::
-Data generated from on-premises Windows Servers is collected in a Log Analytics workspace in Azure Monitor. Within a workspace, you can enable various monitoring solutions—sets of logic that provide insights for a particular scenario. For example, Azure Update Management, Azure Security Center, and Azure Monitor for VMs are all monitoring solutions that can be enabled within a workspace.
+Data generated from on-premises Windows Servers is collected in a Log Analytics workspace in Azure Monitor. Within a workspace, you can enable various monitoring solutions—sets of logic that provide insights for a particular scenario. For example, performance metrics.
 
 When you enable a monitoring solution in a Log Analytics workspace, all the servers reporting to that workspace will start collecting data relevant to that solution, so that the solution can generate insights for all the servers in the workspace.
 
-To collect diagnostic data on an on-premises server and push it to the Log Analytics workspace, Azure Monitor requires the installation of the Microsoft Monitoring Agent (MMA). Certain monitoring solutions also require a secondary agent. For example, Azure Monitor for VMs also depends on a ServiceMap agent for additional functionality that this solution provides.
-
-Some solutions, like Azure Update Management, also depend on Azure Automation, which enables you to centrally manage resources across Azure and non-Azure environments. For example, Azure Update Management uses Azure Automation to schedule and orchestrate installation of updates across machines in your environment, centrally, from the Azure portal.
+To collect diagnostic data on an on-premises server and push it to the Log Analytics workspace, Azure Monitor requires the installation of the Microsoft Monitoring Agent (MMA). Certain monitoring solutions also require a secondary agent. For example, Azure Monitor for VMs also depends on a Dependency agent for additional functionality that this solution provides.
 
 ## What data does Azure Monitor collect?
 
@@ -40,16 +38,9 @@ All data collected by Azure Monitor fits into one of two fundamental types: metr
 From within Windows Admin Center, you can enable three monitoring solutions:
 
 - [Azure Monitor for Clusters](#onboard-your-cluster-using-windows-admin-center)
-- [Azure Update Management](/windows-server/manage/windows-admin-center/azure/azure-update-management) (in the **Updates** tool)
 - Azure Monitor for VMs (in server Settings), a.k.a Virtual Machine insights
 
-You can get started using Azure Monitor from any of these tools. If you've never used Azure Monitor before, Windows Admin Center will automatically provision a Log Analytics workspace (and Azure Automation account, if needed), and install and configure the MMA on the target server. It will then install the corresponding solution into the workspace.
-
-For instance, if you first go to the **Updates** tool to setup Azure Update Management, Windows Admin Center will:
-
-1. Install the MMA on the machine.
-2. Create the Log Analytics workspace and the Azure Automation account (because an Azure Automation account is necessary in this case).
-3. Install the Update Management solution in the newly created workspace.
+You can get started using Azure Monitor from any of these tools. If you've never used Azure Monitor before, Windows Admin Center will automatically provision a Log Analytics workspace (and Azure Automation account, if needed), and install and configure the MMA and the dependency Agent on the target server. It will then install the corresponding solution into the workspace.
 
 If you want to add another monitoring solution from within Windows Admin Center on the same server, Windows Admin Center will simply install that solution into the existing workspace to which that server is connected. Windows Admin Center will additionally install any other necessary agents.
 
