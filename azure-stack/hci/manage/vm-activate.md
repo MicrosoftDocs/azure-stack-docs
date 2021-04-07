@@ -68,13 +68,14 @@ Before using the the AVMA feature in Windows Admin Center, the following is requ
 
 ### Set up AVMA
 To use AVMA in Windows Admin Center:
-1. Download and install the Cluster Manager extension update for Windows Admin Center from this resource.
 <!---[resource]()--->
-<!---supporting screenshot here--->
+<!---Add resource and supporting screenshot after first step--->
+
+1. Download and install the Cluster Manager extension update for Windows Admin Center from this resource.
 
 1. Select **Cluster Manager** from the top drop-down arrow, navigate to the cluster that you want to activate, then under **Settings**, select **Activate Windows Server VMs**.
 
-1.	In the **Automatically activate VMs** pane, select **Set up** and then in the **Apply activation keys to each server** pane, enter your Windows Server Datacenter keys.
+1. In the **Automatically activate VMs** pane, select **Set up** and then in the **Apply activation keys to each server** pane, enter your Windows Server Datacenter keys.
 
     When you have finished entering keys for each host server in the cluster, select **Apply**. The process will take a few moments to complete.
 
@@ -87,15 +88,13 @@ To use AVMA in Windows Admin Center:
 You can also install AVMA keys in VMs against a host server in a cluster. To learn more, see [Automatic virtual machine activation](/windows-server/get-started-19/vm-activation-19).
 
 ### Change or add keys later (optional)
-You may want to edit keys when there are changes to your cluster. Examples for this include adding a server to your cluster, using new Windows Server VM versions, or after updating your servers.
+You might want to either change or add keys when your cluster host servers change. Examples for doing this include adding a server to the cluster, using new Windows Server VM versions, or after updating the servers.
+<!---supporting screenshot here--->
 
-To change or add keys to a cluster:
-<!---See deck to validate steps for this section.--->
+To change or add keys to host servers in a cluster:
+1. In the **Automatically activate VMs** pane, select the servers that you want to manage, and then select **Manage activation keys**.
 
-1. 
-
-1. 
-
+1.	In the **Manage activation keys** pane, enter the new keys for the affected host servers, and then select **Apply**.
 
    >[!NOTE]
    > Overwriting keys does not reduce activation count for used keys. Ensure that you're using the right keys before applying them to the servers.
@@ -103,12 +102,18 @@ To change or add keys to a cluster:
 ### Troubleshooting
 TBD
 
+`Error 1: AVMA setup fails because “the key you entered didn’t work”`
+
+
+
+
 
 ## Use AVMA in PowerShell
 TBD
 
-### Troubleshooting
-TBD
+<!---see deck for supporting examples--->
+
+
 
 ### Activate VMs against a host server
 You can also install AVMA keys in VMs against a host server in a cluster. To learn more, see [Automatic virtual machine activation](/windows-server/get-started-19/vm-activation-19).
