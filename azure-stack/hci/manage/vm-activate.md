@@ -4,7 +4,7 @@ description: This topic explains the benefits of using AVMA over other activatio
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 04/06/2021
+ms.date: 04/08/2021
 ---
 
 # Activate Windows Server VMs using Automatic Virtual Machine Activation (AVMA)
@@ -56,14 +56,11 @@ AVMA activates all editions (Datacenter, Standard, or Essentials) of the followi
 ## Use AVMA in Windows Admin Center
 You can use Windows Admin Center to set up and manage AVMA for your Azure Stack HCI cluster.
 
-Take a few minutes to watch the video on the using the AVMA feature in Windows Admin Center:
-<!---Video demo format > [!VIDEO https://www.youtube.com/embed/fw8RVqo9dcs]--->
-
 ### Before you start
-Before using the the AVMA feature in Windows Admin Center, the following is required:
+The following is required to use the AVMA feature in Windows Admin Center:
 - An Azure Stack HCI cluster (version 20H2, with the April 14, 2021 security update or later)
 - Windows Admin Center (version 2103 or later)
-- The Cluster Manager extension for Windows Admin Center (version 1.491.5 or later)
+- The Cluster Manager extension for Windows Admin Center (version 1.491.1 or later)
 - A Windows Server Datacenter key (version 2019 or later)
 
 ### Set up AVMA
@@ -100,18 +97,45 @@ To change or add keys to host servers in a cluster:
    > Overwriting keys does not reduce activation count for used keys. Ensure that you're using the right keys before applying them to the servers.
 
 ### Troubleshooting
-TBD
+If you receive the following AVMA error messages, try using the verification steps in this section to resolve them.
 
 `Error 1: AVMA setup fails because “the key you entered didn’t work”`
 
+This error might be due to any of the following issues:
+- A key submitted to activate a server in the cluster was not accepted.
+- A disruption of the activation process prevented a server in the cluster from being activated.
+- A valid key hasn’t yet been applied to a server that was added to the cluster.
 
+To resolve such issues, on the **Activate Windows Server VMs** tab, select the server with the warning, and then select **Manage activation keys** to enter a new key.
 
+`Error 2: “Some servers use keys for an older version of Windows Server.”`
 
+All servers must use the same version of keys. Update the keys to the same version to ensure that the VMs stay activated regardless of which server they run on.
+
+`Error 3: “Server is down” or “Bring all servers online and then try again”`
+
+Your server is offline and cannot be reached. Bring all servers online and then refresh the page.
+
+`Error 4: “Couldn’t check the status on this server.” or “To use this feature, install the latest update”`
+
+One or more of your servers is not updated and does not have the required packages to set up AVMA. Ensure that your cluster is updated, and then refresh the page. To learn more, see [Update Azure Stack HCI clusters](./update-cluster.md).
 
 ## Use AVMA in PowerShell
-TBD
+You can use the following PowerShell commands to set up and manage AVMA for your Azure Stack HCI cluster.
 
-<!---see deck for supporting examples--->
+1.  From each Azure Stack HCI server in your cluster, use the following command to import the AVMA PowerShell module:
+
+    ```powershell
+     Import-module "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\ServerAVMAManager\ServerAVMAMAnager.psm1"
+    ```
+1. Apply Windows Server Datacenter keys to each server:
+
+    ```powershell
+     Set-VMAutomaticActivation <product key>
+    ```
+1. 
+
+
 
 
 
@@ -124,5 +148,5 @@ TBD
 
 ## Next steps
 For more information, see also:
-- [AVMA]()
-- [VLSC]()
+- [Automatic virtual machine activation](/windows-server/get-started-19/vm-activation-19)
+- [Microsoft Volume Licensing Service Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx)
