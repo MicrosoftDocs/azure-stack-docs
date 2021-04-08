@@ -102,7 +102,7 @@ The following table lists some info about this condition.
 
 | Heading | Description |
 | --- | --- |
-| Likely condition | Warning Threshold breached |
+| Likely condition | Warning threshold breached |
 | Root Cause | PMem devices track various thresholds, such as temperature, NVM lifetime, and/or energy source lifetime. When one of those thresholds is exceeded, the operating system is notified. |
 | General behavior | Device remains fully operational. This is a warning, not an error. |
 | Storage Spaces behavior | Device remains fully operational. This is a warning, not an error. |
@@ -122,8 +122,8 @@ The following table lists some info about this condition.
 
 | Heading | Description |
 | --- | --- |
-| Likely condition | Loss of Persistence / Backup Power |
-|Root Cause|NVDIMM-N devices rely on a back-up power source for their persistence – usually a battery or super-cap. If this back-up power source is unavailable or the device cannot perform a backup for any reason (Controller/Flash Error), data is at risk and Windows will prevent any further writes to the affected devices. Reads are still possible to evacuate data.|
+| Likely condition | Loss of persistence / backup Power |
+|Root Cause|Persistent memory devices rely on a back-up power source for their persistence – usually a battery or super-cap. If this back-up power source is unavailable or the device cannot perform a backup for any reason (Controller/Flash Error), data is at risk and Windows will prevent any further writes to the affected devices. Reads are still possible to evacuate data.|
 |General behavior|The NTFS volume will be dismounted.<br>The PhysicalDisk Health Status field will show "Unhealthy" for all affected NVDIMM-N devices.|
 |Storage Spaces behavior|Storage Space will remain operational as long as only one PMem module is affected. If multiple devices are affected, writes to the Storage Space will fail. <br>The PhysicalDisk Health Status field will show "Unhealthy" for all affected PMem devices.|
 |More info|OperationalStatus field of the PhysicalDisk object.<br>EventLog – Microsoft-Windows-ScmDisk0101/Operational|

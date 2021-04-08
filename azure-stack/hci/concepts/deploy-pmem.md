@@ -39,7 +39,7 @@ There are two methods for accessing persistent memory. They are:
 1. **Block access**, which operates like storage for app compatibility. In this configuration, the data flows through the stack. You can use this configuration in combination with NTFS and ReFS, and it is the recommended configuration for most use cases.
 1. **Direct access (DAX)**, which operates like memory to get the lowest latency. Note that you can only use DAX in combination with NTFS. **If you don't use DAX correctly, there is a high potential for data loss.** DAX must always be used in conjunction with BTT. [Learn more about DAX](pmem-dax.md).
 
-Azure Stack HCI only supports block access, with BTT turned on. **Tom: We should outline the differences, if any, for using PMem in Azure Stack HCI, Windows Server, and Windows 10 environments, as well as clustered/non clustered. 
+Azure Stack HCI only supports block access, with BTT turned on. **Tom: We should outline the differences, if any, for using PMem in Azure Stack HCI, Windows Server, and Windows 10 environments, as well as clustered/non clustered.**
 
 ### Regions
 
@@ -47,7 +47,7 @@ A region is a set of one or more PMem modules. Regions are often created as [int
 
 ### Namespaces
 
-To use Pmem as storage, you must define at least one namespace, which is a contiguously addressed range of non-volatile memory that you can think of like a hard disk partition or LUN. You can create multiple namespaces using Windows PowerShell cmdlets to divide up the available raw capacity. Each PMem module contains a Label Storage Area (LSA) that stores the configuration metadata to define a namespace. **Tom: Is a "PmemDisk" in PowerShell actually a namespace? Are they the same thing, or something different? Do we need to go into namespace types, like Intel does? Which would be relevant to our users (Filesystem-DAX, Device Dax, Sector, or Raw)?**
+To use PMem as storage, you must define at least one namespace, which is a contiguously addressed range of non-volatile memory that you can think of like a hard disk partition or LUN. You can create multiple namespaces using Windows PowerShell cmdlets to divide up the available raw capacity. Each PMem module contains a Label Storage Area (LSA) that stores the configuration metadata to define a namespace. **Tom: Is a "PmemDisk" in PowerShell actually a namespace? Are they the same thing, or something different? Do we need to go into namespace types, like Intel does? Which would be relevant to our users (Filesystem-DAX, Device Dax, Sector, or Raw)?**
 
 ### Supported hardware
 
@@ -203,7 +203,7 @@ Any storage system that provides fault tolerance necessarily makes distributed c
 
 If you watch the video closely, you'll notice that what's even more jaw-dropping is the latency. Even at over 13.7 M IOPS, the file system in Windows is reporting latency that's consistently less than 40 µs! (That's the symbol for microseconds, one-millionth of a second.) This speed is an order of magnitude faster than what typical all-flash vendors proudly advertise today.
 
-Together, Storage Spaces Direct in Windows Server 2019 and Intel&reg; Optane&trade; DC persistent memory deliver breakthrough performance. This industry-leading HCI benchmark of over 13.7M IOPS, accompanied by predictable and extremely low latency, is more than double our previous industry-leading benchmark of 6.7M IOPS. What's more, this time we needed only 12 server nodes&mdash;25 percent fewer than two years ago.
+Together, Storage Spaces Direct in Windows Server 2019 and Intel&reg; Optane&trade; DC persistent memory deliver breakthrough performance. This industry-leading HCI benchmark of over 13.7M IOPS, accompanied by predictable and extremely low latency, is more than double our previous industry-leading benchmark of 6.7M IOPS. What's more, this time we needed only 12 server nodes&mdash;25 percent fewer than before.
 
 The test hardware was a 12-server cluster that was configured to use three-way mirroring and delimited ReFS volumes, **12** x Intel&reg; S2600WFT, **384 GiB** memory, 2 x 28-core "CascadeLake," **1.5 TB** Intel&reg; Optane&trade; DC persistent memory as cache, **32 TB** NVMe (4 x 8 TB Intel&reg; DC P4510) as capacity, **2** x Mellanox ConnectX-4 25 Gbps.
 
