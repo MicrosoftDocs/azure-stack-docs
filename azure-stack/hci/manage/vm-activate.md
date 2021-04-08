@@ -146,7 +146,7 @@ You can also install AVMA keys in VMs against a host server in a cluster. To lea
 ## FAQ
 This FAQ provides answers to some questions about using the AVMA feature:
 - What happens if I add or remove a new server?
-    - You'll need to [add activation keys](#change-or-add-keys-later-(optional)) for each new server, so that the Windows Server VMs may be activated against the new server.
+    - You'll need to [add activation keys](#change-or-add-keys-later-optional) for each new server, so that the Windows Server VMs may be activated against the new server.
     - Removing a server does not impact how AVMA is set up for the remaining servers in the cluster.
 - Does AVMA work in disconnected scenarios?
     - Only the host server needs to be connected to the internet for AVMA to work. VMs running on top of the host server do not require internet connectivity to be activated.
