@@ -1,8 +1,8 @@
 ---
 title: Activate Windows Server VMs using Automatic Virtual Machine Activation (AVMA)
 description: This topic explains the benefits of using AVMA over other activation methods and provides instructions on setting up AVMA on Azure Stack HCI.
-author: jelei
-ms.author: jelei
+author: JohnCobb1
+ms.author: v-johcob
 ms.topic: how-to
 ms.date: 04/13/2021
 ---
@@ -154,7 +154,7 @@ This FAQ provides answers to some questions about using the AVMA feature:
     - Absolutely! While AVMA cannot be set up with Windows Server 2016 keys (requires Windows Server 2019 or later), you can run Windows Server 2016 VMs on Azure Stack HCI by using [other activation methods](/windows-server/get-started/server-2016-activation). For example, you can enter a Windows Server 2016 key into your VM directly.
     - Windows Server 2019 keys also support running Windows Server 2016 guests ([see the full list of supported versions](#supported-guest-os-versions)), and you can set this up through AVMA.
 - Previously I purchased a Windows Server Software-Defined Datacenter (WSSD) solution with a Windows Server 2019 key. Can I use that key for Azure Stack HCI?
-    - Yes! First ensure that you are not using the key on another system, then go ahead and apply the key on the host server runing Azure Stack HCI (unless your key is a multi-use volume key).
+    - Yes! First ensure that you are not using the key on another system, then go ahead and apply the key on the host server running Azure Stack HCI (unless your key is a multi-use volume key).
 - I'm excited about Windows Server 2022. If I follow the instructions in this article, will my Windows Server 2022 guests activate on Azure Stack HCI?
     - Yes, but you’ll need to use keys for Windows Server 2022 or later, which will be available after the general availability of Windows Server 2022.
 
