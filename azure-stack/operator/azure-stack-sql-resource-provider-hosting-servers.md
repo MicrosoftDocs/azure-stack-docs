@@ -180,7 +180,7 @@ Use a SKU name that describes the capabilities of the servers in the SKU, such a
 
 As a best practice, all the hosting servers in a SKU should have the same resource and performance characteristics.
 
-SKUs can't be assigned to specific users or groups.
+SKUs cannot be hidden from certain tenants, nor can it be dedicated to certain tenants.
 
 SKUs can take up to an hour to be visible in the portal. Users can't create a database until the SKU is fully created.
 

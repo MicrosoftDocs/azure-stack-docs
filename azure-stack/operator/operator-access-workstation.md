@@ -3,10 +3,10 @@ title: Azure Stack Hub Operator Access Workstation
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: mattbriggs
 ms.topic: article
-ms.date: 03/05/2021
+ms.date: 04/01/2021
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 03/05/2021
+ms.lastreviewed: 03/26/2021
 
 # Intent: As an Azure Stack operator, I want to download and configure an Azure Stack Hub Operator Access Workstation.
 # Keyword: azure stack hub operator access workstation
@@ -68,7 +68,7 @@ param(
     [string] 
     $DownloadedOAWZipFilePath 
 ) 
-$expectedHash = '2B268EFB113A3BEDA008FCF382A5EF2F2D4E5DCC7FD0D12DB061E37F9671D3A7' 
+$expectedHash = 'AC58B69B13FC7F3FEB2FA9612DC79572D2D4BA49D1F2443A876B9663866481B0' 
 $actualHash = (Get-FileHash -Path $DownloadedOAWZipFilePath).Hash 
 Write-Host "Expected hash: $expectedHash" 
 if ($expectedHash -eq $actualHash) 
@@ -77,21 +77,33 @@ if ($expectedHash -eq $actualHash)
 } 
 else 
 { 
-    Write-Error "ERROR: OAW.zip file hash does not match! It isn't safe to use it, please download it again." 
-    Write-Error "Actual hash: $actualHash" 
-} 
+    Write-Error "ERROR: OAW.zip file hash does not match! It isn't safe to use it, please download it again. Actual hash: $actualHash" 
+}
 ```
+
+Another way to copy this script to your environment is to use the Test-FileHash cmdlet that's offered in [AzureStack-Tools](https://github.com/Azure/AzureStack-Tools/tree/az/HashVerify/Test-FileHash.psm1) to verify the hash of the OAW.zip file:
+
+1. Download the [Test-FileHash.psm1](https://github.com/Azure/AzureStack-Tools/tree/az/HashVerify/Test-FileHash.psm1) file from GitHub, and then run:
+
+   ```powershell
+   Import-Module .\Test-FileHash.psm1 -Force -Verbose
+   ```
+
+2. After you import the Test-FileHash module, verify the hash of the OAW.zip file:
+ 
+   ```powershell
+   Verify-Hash -ExpectedHash "AC58B69B13FC7F3FEB2FA9612DC79572D2D4BA49D1F2443A876B9663866481B0" -FilePath "<path to the OAW.zip file>"
+   ```
 
 ## Check HLH version
 
 > [!NOTE]  
-> This step is important to determine if you deploy the OAW on a HLH that
-was deployed using a Microsoft image or an OEM image. If you deploy the OAW on a
-general Microsoft Hyper-V, you can skip this step.
+> This step is important to determine if you deploy the OAW on a HLH that was deployed using a Microsoft image or an OEM image. If you deploy the OAW on a general Microsoft Hyper-V, you can skip this step.
 
 1.  Sign in to the HLH with your credentials.
 
 2.  Open PowerShell ISE and run the following script:
+
     ```powershell  
     C:\Version\Get-Version.ps1
     ```
@@ -101,13 +113,11 @@ general Microsoft Hyper-V, you can skip this step.
     ![Screenshot of PowerShell cmdlet to check the version of the OAW VM.](media/operator-access-workstation/check-operator-access-workstation-vm-version.png)
 
 > [!NOTE]  
-> This PowerShell cmdlet is not present on a HLH that was deployed
-using an OEM image.
+> This PowerShell cmdlet is not present on a HLH that was deployed using an OEM image.
 
 ## Create the OAW VM using a script
 
-The following script prepares the virtual machine as the Operator Access
-Workstation (OAW), which is used to access Microsoft Azure Stack Hub.
+The following script prepares the virtual machine as the Operator Access Workstation (OAW), which is used to access Microsoft Azure Stack Hub.
 
 1.  Sign in to the HLH with your credentials.
 
@@ -141,7 +151,7 @@ If the` DeploymentData.json` file includes the naming prefix for OAW VM, that va
 
 ### Example: Deploy on Microsoft Hyper-V
 
-The machine running Microsoft Hyper-V does requires four cores and four GB of available memory.
+The machine running Microsoft Hyper-V does requires four (4) cores and two (2) GB of available memory.
 
 ```powershell  
 $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString 
@@ -230,8 +240,8 @@ The following table lists the definition for each parameter.
 | DNS                        | Required              | DNS server(s) to configure TCP/IP on the virtual machine.                                                                                                                                                                                                                                                                                           |
 | ImageFilePath              | Optional              | Path of OAW.vhdx provided by Microsoft. Default value is **OAW.vhdx** under the same parent folder of this script.                                                                                                                                                                                                                                  |
 | VirtualMachineName         | Optional              | The name to be assigned to the virtual machine. If the Naming Prefix can be found in the DeploymentData.json file, it will be used as the default name. Otherwise, **AzSOAW**will be used as the default name. You can specify another name to overwrite the default value.                                                                         |
-| VirtualMachineMemory       | Optional              | Memory to be assigned to the virtual machine. Default value is **4 GB**.                                                                                                                                                                                                                                                                             |
-| VirtualProcessorCount      | Optional              | Number of virtual processors to be assigned to the virtual machine. Default value is **8**.                                                                                                                                                                                                                                                         |
+| VirtualMachineMemory       | Optional              | Memory to be assigned to the virtual machine. Default value is **2 GB**.                                                                                                                                                                                                                                                                             |
+| VirtualProcessorCount      | Optional              | Number of virtual processors to be assigned to the virtual machine. Default value is **4**.                                                                                                                                                                                                                                                         |
 | VirtualMachineDiffDiskPath | Optional              | Path to store temporary diff disk files while the management VM was active. Default value is **DiffDisks** subdirectory under the same parent folder of this script.                                                                                                                                                                                |
 | AzureStackCertificatePath  | Optional              | Path of certificates to be imported to the virtual machine for Azure Stack Hub access.                                                                                                                                                                                                                                                              |
 | AzSStampInfoFilePath       | Optional              | Path of AzureStackStampInformation.json file where the script can retrieve the IPs of the ERCS VM.                                                                                                                                                                                                                                                  |

@@ -11,8 +11,6 @@ ms.author: v-susbo
 
 This article includes workaround steps for resolving known issues that occur when using Azure Kubernetes Service on Azure Stack HCI.
 
-If you need additional troubleshooting data not covered by this article, [AKS troubleshooting](./troubleshoot.md), or [Windows Admin Center troubleshooting](./troubleshoot-windows-admin-center.md), see [Troubleshooting Kubernetes clusters](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/).
-
 ## _Install-AksHci_ timed out with an error
 
 After running `Install-AksHci`, the installation stopped and displayed a **waiting for API server** error message:
@@ -65,5 +63,6 @@ Since _kubelet_ ended up in a bad state and can no longer talk to the API server
 ## Next steps
 - [Troubleshoot common issues](./troubleshoot.md)
 - [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
+- [Troubleshooting Kubernetes clusters](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)
 
 If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
